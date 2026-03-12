@@ -2,644 +2,4046 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>関東から日帰りできる百名山10選【新宿駅発・2025年版】| 登山ナビ</title>
-<meta name="description" content="関東から日帰りで登れる百名山を10座厳選。筑波山・丹沢山・谷川岳・雲取山など、新宿からのアクセス・見どころ・おすすめシーズンを詳しく解説。初心者から中上級者まで対応。">
-<meta property="og:title" content="関東から日帰りできる百名山10選【新宿駅発】">
-<meta property="og:description" content="新宿から日帰りで登れる百名山10座を厳選紹介。見どころ・アクセス・おすすめ時期付き。">
-<meta property="og:type" content="article">
-<link rel="canonical" href="https://tozan-navi.com/articles/kanto-day-trip-100/">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "関東から日帰りできる百名山10選【新宿駅発・2025年版】",
-  "description": "関東から日帰りで登れる百名山10座を厳選。筑波山・丹沢山・谷川岳など見どころ満載。",
-  "author": {"@type": "Person", "name": "登山ナビ編集部"},
-  "publisher": {"@type": "Organization", "name": "登山ナビ"}
-}
-</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>登山ナビ from 大船駅</title>
+<meta name="description" content="大船駅・新宿駅・横浜駅・大宮駅から車で行ける百名山・二百名山・人気の山を検索。">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif; background: #f0ede8; color: #3a3530; line-height: 1.8; font-size: 15px; }
-a { color: inherit; text-decoration: none; }
-
-header { background: linear-gradient(135deg, #3a4e3a 0%, #4a5e4a 100%); padding: 14px 20px; }
-.header-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 10px; }
-.site-name { color: white; font-size: 14px; font-weight: bold; }
-.back-link { color: #b8c8b8; font-size: 12px; }
-.back-link:hover { color: white; }
-
-.article-hero { background: linear-gradient(160deg, #1e2e1e 0%, #3a4e3a 50%, #4a6a4a 100%); padding: 44px 20px 40px; }
-.hero-inner { max-width: 760px; margin: 0 auto; }
-.article-label { display: inline-block; background: rgba(255,255,255,0.18); color: #c8e0c8; font-size: 11px; font-weight: bold; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; letter-spacing: 0.08em; }
-h1.article-title { font-size: clamp(22px, 5.5vw, 34px); font-weight: bold; color: white; line-height: 1.3; margin-bottom: 14px; }
-.article-desc { color: #c0d4c0; font-size: 14px; line-height: 1.7; max-width: 540px; }
-.article-meta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
-.meta-pill { background: rgba(255,255,255,0.12); color: #b0c8b0; font-size: 12px; padding: 4px 12px; border-radius: 20px; }
-
-main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
-
-.lead-box { background: white; border-radius: 14px; padding: 22px 24px; margin-bottom: 24px; border: 1px solid #ddd8d0; line-height: 1.9; color: #4a4540; font-size: 15px; }
-.lead-box strong { color: #3a4e3a; }
-
-.toc-box { background: #faf8f5; border: 1px solid #ddd8d0; border-radius: 14px; padding: 22px 24px; margin-bottom: 32px; }
-.toc-title { font-size: 13px; font-weight: bold; color: #7a7068; margin-bottom: 14px; }
-.toc-box ol { list-style: none; display: flex; flex-direction: column; gap: 3px; }
-.toc-link { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 8px; transition: background 0.15s; }
-.toc-link:hover { background: #ede9e4; }
-.toc-num { background: #4a5e4a; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; flex-shrink: 0; }
-.toc-name { font-weight: 600; flex: 1; font-size: 14px; color: #3a3530; }
-.toc-meta { font-size: 11px; color: #a09888; white-space: nowrap; }
-
-.mountain-section { background: white; border-radius: 16px; padding: 28px 24px; margin-bottom: 8px; border: 1px solid #ddd8d0; }
-.section-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
-.rank-num { background: #4a5e4a; color: white; font-size: 20px; font-weight: bold; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; letter-spacing: -1px; }
-.section-title { font-size: clamp(20px, 4.5vw, 26px); font-weight: bold; color: #2a2520; line-height: 1.25; }
-.kana { font-size: 13px; font-weight: normal; color: #9a9088; }
-.badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
-.elev-badge { font-size: 12px; color: #7a7068; }
-.feature-tag { font-size: 12px; font-weight: bold; padding: 3px 10px; border-radius: 10px; }
-
-.meta-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; padding: 14px 16px; background: #f5f3ef; border-radius: 10px; }
-.meta-chip { font-size: 13px; color: #5a5048; }
-.meta-chip strong { color: #3a3530; }
-
-.mountain-body { color: #4a4540; line-height: 1.9; margin-bottom: 18px; }
-.mountain-body p { margin-bottom: 14px; }
-.mountain-body p:last-child { margin-bottom: 0; }
-.mountain-body strong { color: #2a3e2a; font-weight: 700; }
-
-.best-season, .access-info { display: flex; gap: 10px; font-size: 13px; margin-bottom: 8px; color: #4a4540; align-items: flex-start; }
-.best-label, .access-label { color: #4a5e4a; font-weight: bold; flex-shrink: 0; }
-
-.detail-btn { display: flex; align-items: center; justify-content: center; background: #4a5e4a; color: white; font-weight: bold; font-size: 14px; padding: 14px; border-radius: 10px; margin-top: 20px; transition: opacity 0.2s; }
-.detail-btn:hover { opacity: 0.85; }
-
-.section-divider { height: 16px; }
-
-.summary-box { background: white; border-radius: 14px; padding: 22px 24px; border: 1px solid #ddd8d0; margin-bottom: 20px; }
-.summary-box h2 { font-size: 16px; font-weight: bold; color: #3a4e3a; margin-bottom: 16px; }
-.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.summary-table th { background: #4a5e4a; color: white; padding: 9px 12px; text-align: left; font-size: 12px; }
-.summary-table td { padding: 9px 12px; border-bottom: 1px solid #eee; }
-.td-rank { font-weight: bold; color: #7a7068; width: 28px; }
-.summary-table tr:last-child td { border-bottom: none; }
-.summary-table tr:nth-child(even) td { background: #faf8f5; }
-.table-link { color: #3a4e3a; font-weight: 600; }
-.table-link:hover { text-decoration: underline; }
-
-.cta-box { background: linear-gradient(135deg, #2a3e2a, #4a5e4a); border-radius: 16px; padding: 28px 24px; text-align: center; margin-bottom: 24px; }
-.cta-box h3 { color: white; font-size: 18px; font-weight: bold; margin-bottom: 10px; }
-.cta-box p { color: #b8d0b8; font-size: 14px; margin-bottom: 20px; line-height: 1.7; }
-.cta-btn { display: inline-block; background: white; color: #2a3e2a; font-weight: bold; font-size: 15px; padding: 14px 32px; border-radius: 30px; transition: opacity 0.2s; }
-.cta-btn:hover { opacity: 0.9; }
-
-footer { text-align: center; padding: 28px 16px; font-size: 12px; color: #a09888; border-top: 1px solid #ddd8d0; background: #faf8f5; }
+*{box-sizing:border-box;}body{margin:0;padding:0;-webkit-text-size-adjust:100%;}
+::-webkit-scrollbar{height:4px;}::-webkit-scrollbar-thumb{background:#ccc8c0;border-radius:4px;}
+button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
 </style>
 </head>
 <body>
+<div id="root"></div>
+<script>window.storage={_data:{},get:async(k)=>{const v=window.storage._data[k];return v!==undefined?{key:k,value:v}:null;},set:async(k,v)=>{window.storage._data[k]=v;return{key:k,value:v};},delete:async(k)=>{delete window.storage._data[k];return{key:k,deleted:true};},list:async(p)=>{const keys=Object.keys(window.storage._data).filter(k=>!p||k.startsWith(p));return{keys};}};</script>
+<script type="text/babel">
+const {useState,useMemo,useEffect,useRef}=React;
 
-<header>
-  <div class="header-inner">
-    <div>
-      <a href="/" class="back-link">← トップに戻る</a>
-      <div class="site-name">登山ナビ from 大船駅</div>
-    </div>
-  </div>
-</header>
+// カテゴリスタイル定義
+const CATEGORY_STYLE = {
+  "百名山":   { bg: "#e8e4dc", color: "#5a4e3a", label: "百名山" },
+  "二百名山": { bg: "#dde4dd", color: "#3a5240", label: "二百名山" },
+  "人気の山": { bg: "#e4e4e8", color: "#48485a", label: "人気の山" },
+};
 
-<div class="article-hero">
-  <div class="hero-inner">
-    <span class="article-label">📝 登山ガイド</span>
-    <h1 class="article-title">関東から日帰りできる<br>百名山10選</h1>
-    <p class="article-desc">新宿を起点に、日帰りで登れる百名山を厳選。見どころ・おすすめシーズン・アクセスをまとめて紹介します。</p>
-    <div class="article-meta">
-      <span class="meta-pill">🗓 2025年版</span>
-      <span class="meta-pill">⏱ 読了約7分</span>
-      <span class="meta-pill">🔰 初心者〜中上級者向け</span>
-    </div>
-  </div>
-</div>
+const mountains = [
+  {
+    id: "tanzawa",
+    lat: 35.4779,
+    lng: 139.1583,
+    name: "丹沢山",
+    kana: "たんざわさん",
+    elevation: 1567,
+    area: "神奈川県",
+    driveTime: 60,
+    driveDistance: 65,
+    driveTimeShinjuku: 95,
+    driveTimeYokohama: 75,
+    driveTimeOmiya: 105,
+    trailhead: "塩水橋",
+    trailheadAddress: "神奈川県愛甲郡清川村煤ヶ谷",
+    parking: "塩水橋駐車場（約20台・無料）",
+    season: "通年（冬季は積雪注意）",
+    difficulty: "中級",
+    courseCoefficientRange: "26〜33",
+    courseCoefficient: [26, 33],
+    routes: [
+      { name: "塩水橋ルート（周回）", time: "6時間", distance: "13.4km", elevation: "+1100m" },
+      { name: "堂平ルート", time: "5時間", distance: "10.2km", elevation: "+900m" },
+    ],
+    description: "神奈川県最高峰エリア。ブナの原生林が美しく、四季を通じて楽しめる。",
+    yamapUrl: "https://yamap.com/mountains/110",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        category: "百名山",
+  },
+  {
+    id: "fuji",
+    lat: 35.3606,
+    lng: 138.7274,
+    name: "富士山",
+    kana: "ふじさん",
+    elevation: 3776,
+    area: "静岡県",
+    driveTime: 120,
+    driveDistance: 110,
+    driveTimeShinjuku: 145,
+    driveTimeYokohama: 135,
+    driveTimeOmiya: 175,
+    trailhead: "富士宮口五合目",
+    trailheadAddress: "静岡県富士宮市粟倉地先",
+    parking: "富士宮口駐車場（約500台・1000円）※マイカー規制期間あり",
+    season: "7月〜9月上旬",
+    difficulty: "中級",
+    courseCoefficientRange: "24〜38",
+    courseCoefficient: [24, 38],
+    routes: [
+      { name: "富士宮ルート", time: "9時間", distance: "8.5km", elevation: "+1396m" },
+      { name: "吉田口ルート", time: "10時間", distance: "14.0km", elevation: "+1471m" },
+    ],
+    description: "日本最高峰。富士宮ルートは最短距離で山頂を目指せる人気ルート。",
+    yamapUrl: "https://yamap.com/mountains/196",
+    seasonNoGear: "7月〜9月上旬",
+    season6Crampons: "不可（残雪期は12本必要）",
+        category: "百名山",
+  },
+  {
+    id: "tsukuba",
+    lat: 36.2253,
+    lng: 140.1067,
+    name: "筑波山",
+    kana: "つくばさん",
+    elevation: 877,
+    area: "茨城県",
+    driveTime: 120,
+    driveDistance: 90,
+    driveTimeShinjuku: 150,
+    driveTimeYokohama: 120,
+    driveTimeOmiya: 85,
+    trailhead: "筑波山神社",
+    trailheadAddress: "茨城県つくば市筑波1",
+    parking: "筑波山神社駐車場（約200台・500円〜）",
+    season: "通年",
+    difficulty: "初級",
+    courseCoefficientRange: "8〜16",
+    courseCoefficient: [8, 16],
+    routes: [
+      { name: "御幸ヶ原コース（往復）", time: "3時間30分", distance: "5.6km", elevation: "+610m" },
+      { name: "白雲橋コース（周回）", time: "4時間", distance: "7.0km", elevation: "+630m" },
+    ],
+    description: "百名山最低峰。ケーブルカー・ロープウェイあり。山頂からは関東平野を一望。",
+    yamapUrl: "https://yamap.com/mountains/90",
+    seasonNoGear: "通年",
+    season6Crampons: "なし",
+        category: "百名山",
+  },
+  {
+    id: "kumotori",
+    lat: 35.8558,
+    lng: 138.9433,
+    name: "雲取山",
+    kana: "くもとりやま",
+    elevation: 2017,
+    area: "東京都・埼玉県",
+    driveTime: 130,
+    driveDistance: 100,
+    driveTimeShinjuku: 130,
+    driveTimeYokohama: 120,
+    driveTimeOmiya: 110,
+    trailhead: "鴨沢",
+    trailheadAddress: "東京都西多摩郡奥多摩町留浦",
+    parking: "鴨沢駐車場（約15台・無料）",
+    season: "通年（冬季は積雪あり）",
+    difficulty: "中級",
+    courseCoefficientRange: "22〜36",
+    courseCoefficient: [22, 36],
+    routes: [
+      { name: "鴨沢ルート（往復）", time: "8時間", distance: "22.8km", elevation: "+1380m" },
+      { name: "三峯ルート（往復）", time: "8時間30分", distance: "20.0km", elevation: "+1300m" },
+    ],
+    description: "東京都最高峰。奥多摩を代表する名峰で、ブナ林の縦走路が美しい。",
+    yamapUrl: "https://yamap.com/mountains/25",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "奥多摩駅→バス15分→鴨沢",
+    category: "百名山",
+  },
+  {
+    id: "amagi",
+    lat: 34.8589,
+    lng: 138.9664,
+    name: "天城山",
+    kana: "あまぎさん",
+    elevation: 1406,
+    area: "静岡県",
+    driveTime: 150,
+    driveDistance: 115,
+    driveTimeShinjuku: 185,
+    driveTimeYokohama: 145,
+    driveTimeOmiya: 195,
+    trailhead: "天城高原ゴルフ場",
+    trailheadAddress: "静岡県伊豆市冷川",
+    parking: "天城高原駐車場（約100台・無料）",
+    season: "通年",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "12〜20",
+    courseCoefficient: [12, 20],
+    routes: [
+      { name: "万二郎岳〜万三郎岳周回", time: "4時間30分", distance: "8.0km", elevation: "+650m" },
+      { name: "万三郎岳往復", time: "3時間30分", distance: "6.2km", elevation: "+500m" },
+    ],
+    description: "伊豆半島の最高峰。シャクナゲの群生地として有名。川端康成の小説の舞台。",
+    yamapUrl: "https://yamap.com/mountains/179",
+    seasonNoGear: "通年",
+    season6Crampons: "なし",
+        category: "百名山",
+  },
+  {
+    id: "okutama",
+    lat: 35.672,
+    lng: 138.7284,
+    name: "大菩薩嶺",
+    kana: "だいぼさつれい",
+    elevation: 2057,
+    area: "山梨県",
+    driveTime: 150,
+    driveDistance: 115,
+    driveTimeShinjuku: 130,
+    driveTimeYokohama: 140,
+    driveTimeOmiya: 135,
+    trailhead: "上日川峠",
+    trailheadAddress: "山梨県甲州市塩山上萩原",
+    parking: "上日川峠駐車場（約100台・無料）",
+    season: "5月〜11月",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "10〜18",
+    courseCoefficient: [10, 18],
+    routes: [
+      { name: "上日川峠〜大菩薩峠周回", time: "4時間", distance: "9.0km", elevation: "+600m" },
+      { name: "裂石温泉ルート", time: "5時間30分", distance: "12.0km", elevation: "+1200m" },
+    ],
+    description: "草原状の稜線から富士山や南アルプスの展望が開ける。アクセスが良く人気。",
+    yamapUrl: "https://yamap.com/mountains/178",
+    seasonNoGear: "通年",
+    season6Crampons: "なし",
+        trainAccess: "塩山駅→バス25分→上日川峠（季節）",
+    category: "百名山",
+  },
+  {
+    id: "ryokami",
+    lat: 36.0837,
+    lng: 138.8336,
+    name: "両神山",
+    kana: "りょうかみさん",
+    elevation: 1723,
+    area: "埼玉県",
+    driveTime: 150,
+    driveDistance: 110,
+    driveTimeShinjuku: 125,
+    driveTimeYokohama: 150,
+    driveTimeOmiya: 125,
+    trailhead: "日向大谷口",
+    trailheadAddress: "埼玉県秩父市両神薄",
+    parking: "日向大谷口駐車場（約30台・500円）",
+    season: "4月〜11月",
+    difficulty: "中級",
+    courseCoefficientRange: "18〜28",
+    courseCoefficient: [18, 28],
+    routes: [
+      { name: "日向大谷口ルート（往復）", time: "7時間30分", distance: "11.0km", elevation: "+1200m" }
+    ],
+    description: "鋸状の岩峰が連なる個性的な山容。クサリ場が多く登り応えがある。",
+    yamapUrl: "https://yamap.com/mountains/24",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "西武秩父駅→バス50分→日向大谷口（季節）",
+    category: "百名山",
+  },
+  {
+    id: "kobushigatake",
+    lat: 35.8788,
+    lng: 138.7786,
+    name: "甲武信ヶ岳",
+    kana: "こぶしがたけ",
+    elevation: 2475,
+    area: "山梨県",
+    driveTime: 150,
+    driveDistance: 120,
+    driveTimeShinjuku: 135,
+    driveTimeYokohama: 170,
+    driveTimeOmiya: 175,
+    trailhead: "毛木平",
+    trailheadAddress: "長野県南佐久郡川上村毛木平",
+    parking: "毛木平駐車場（約80台・無料）",
+    season: "6月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "22〜38",
+    courseCoefficient: [22, 38],
+    routes: [
+      { name: "毛木平ルート（往復）", time: "7時間", distance: "16.0km", elevation: "+1250m" },
+      { name: "西沢渓谷ルート（往復）", time: "9時間", distance: "18.0km", elevation: "+1600m" },
+    ],
+    description: "甲州・武州・信州の3県の境に位置。千曲川・荒川・笛吹川の源流の山。",
+    yamapUrl: "https://yamap.com/mountains/26",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        category: "百名山",
+  },
+  {
+    id: "mizugaki",
+    lat: 35.8539,
+    lng: 138.5992,
+    name: "瑞牆山",
+    kana: "みずがきやま",
+    elevation: 2230,
+    area: "山梨県",
+    driveTime: 150,
+    driveDistance: 130,
+    driveTimeShinjuku: 135,
+    driveTimeYokohama: 160,
+    driveTimeOmiya: 165,
+    trailhead: "瑞牆山荘",
+    trailheadAddress: "山梨県北杜市須玉町小尾",
+    parking: "富士見平駐車場（約70台・無料）",
+    season: "5月〜11月",
+    difficulty: "中級",
+    courseCoefficientRange: "14〜22",
+    courseCoefficient: [14, 22],
+    routes: [
+      { name: "瑞牆山荘ルート（往復）", time: "4時間30分", distance: "8.2km", elevation: "+850m" },
+      { name: "富士見平〜大ヤスリ岩周回", time: "5時間", distance: "9.0km", elevation: "+900m" },
+    ],
+    description: "奇岩・巨石が林立する個性的な山容。花崗岩の岩峰がそびえ立つ。",
+    yamapUrl: "https://yamap.com/mountains/177",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "韮崎駅→バス→瑞牆山荘（季節）",
+    category: "百名山",
+  },
+  {
+    id: "akagi",
+    lat: 36.5497,
+    lng: 139.1783,
+    name: "赤城山",
+    kana: "あかぎさん",
+    elevation: 1828,
+    area: "群馬県",
+    driveTime: 170,
+    driveDistance: 130,
+    driveTimeShinjuku: 140,
+    driveTimeYokohama: 170,
+    driveTimeOmiya: 125,
+    trailhead: "黒檜山登山口",
+    trailheadAddress: "群馬県前橋市富士見町赤城山",
+    parking: "大沼湖畔駐車場（約100台・無料）",
+    season: "通年（冬季は積雪あり）",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "10〜20",
+    courseCoefficient: [10, 20],
+    routes: [
+      { name: "黒檜山〜駒ヶ岳周回", time: "3時間30分", distance: "6.0km", elevation: "+500m" },
+      { name: "黒檜山往復", time: "2時間30分", distance: "4.2km", elevation: "+390m" },
+    ],
+    description: "上毛三山の一つ。カルデラ湖（大沼）を擁する成層火山。展望が良い。",
+    yamapUrl: "https://yamap.com/mountains/21",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "前橋駅→バス→赤城山（大洞・季節）",
+    category: "百名山",
+  },
+  {
+    id: "kinpusan",
+    lat: 35.8329,
+    lng: 138.5743,
+    name: "金峰山",
+    kana: "きんぷさん",
+    elevation: 2599,
+    area: "山梨県",
+    driveTime: 180,
+    driveDistance: 140,
+    driveTimeShinjuku: 160,
+    driveTimeYokohama: 175,
+    driveTimeOmiya: 180,
+    trailhead: "大弛峠",
+    trailheadAddress: "山梨県山梨市牧丘町",
+    parking: "大弛峠駐車場（約40台・無料）",
+    season: "6月〜10月",
+    difficulty: "中級",
+    courseCoefficientRange: "18〜32",
+    courseCoefficient: [18, 32],
+    routes: [
+      { name: "大弛峠ルート（往復）", time: "4時間", distance: "8.6km", elevation: "+500m" },
+      { name: "廻り目平ルート（往復）", time: "8時間", distance: "18.0km", elevation: "+1400m" },
+    ],
+    description: "奥秩父の盟主。山頂に五丈石という奇岩がそびえ、展望も抜群。",
+    yamapUrl: "https://yamap.com/mountains/176",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        category: "百名山",
+  },
+  {
+    id: "houou",
+    lat: 35.673,
+    lng: 138.229,
+    name: "鳳凰山",
+    kana: "ほうおうさん",
+    elevation: 2841,
+    area: "山梨県",
+    driveTime: 180,
+    driveDistance: 145,
+    driveTimeShinjuku: 160,
+    driveTimeYokohama: 190,
+    driveTimeOmiya: 185,
+    trailhead: "夜叉神峠登山口",
+    trailheadAddress: "山梨県南アルプス市芦安芦倉",
+    parking: "夜叉神峠駐車場（約100台・無料）",
+    season: "6月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "33〜48",
+    courseCoefficient: [33, 48],
+    routes: [
+      { name: "夜叉神峠ルート（往復）", time: "9時間", distance: "18.0km", elevation: "+1700m" },
+      { name: "青木鉱泉ルート（周回）", time: "10時間", distance: "20.0km", elevation: "+2000m" },
+    ],
+    description: "南アルプス北部の山。地蔵岳のオベリスクが特徴的。白砂の稜線が美しい。",
+    yamapUrl: "https://yamap.com/mountains/71",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "不可（残雪期は12本必要）",
+        category: "百名山",
+  },
+  {
+    id: "ontake",
+    lat: 36.7697,
+    lng: 139.4993,
+    name: "男体山",
+    kana: "なんたいさん",
+    elevation: 2486,
+    area: "栃木県",
+    driveTime: 180,
+    driveDistance: 140,
+    driveTimeShinjuku: 160,
+    driveTimeYokohama: 175,
+    driveTimeOmiya: 130,
+    trailhead: "二荒山神社",
+    trailheadAddress: "栃木県日光市中宮祠",
+    parking: "二荒山神社駐車場（約100台・500円）",
+    season: "5月〜11月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "14〜22",
+    courseCoefficient: [14, 22],
+    routes: [
+      { name: "二荒山神社ルート（往復）", time: "7時間", distance: "8.2km", elevation: "+1200m" },
+      { name: "志津乗越ルート（往復）", time: "5時間", distance: "7.0km", elevation: "+800m" },
+    ],
+    description: "日光の象徴。中禅寺湖の西に聳える円錐形の火山。山頂から中禅寺湖の絶景。",
+    yamapUrl: "https://yamap.com/mountains/20",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "東武日光駅→バス20分→二荒山神社",
+    category: "百名山",
+  },
+  {
+    id: "kitadake",
+    lat: 35.6741,
+    lng: 138.2358,
+    name: "北岳",
+    kana: "きただけ",
+    elevation: 3193,
+    area: "山梨県",
+    driveTime: 190,
+    driveDistance: 150,
+    driveTimeShinjuku: 180,
+    driveTimeYokohama: 200,
+    driveTimeOmiya: 195,
+    trailhead: "広河原",
+    trailheadAddress: "山梨県南アルプス市芦安",
+    parking: "芦安駐車場（約400台・無料）※バス乗換",
+    season: "7月〜9月",
+    difficulty: "上級",
+    courseCoefficientRange: "30〜44",
+    courseCoefficient: [30, 44],
+    routes: [
+      { name: "広河原〜肩ノ小屋ルート（往復）", time: "10時間", distance: "12.0km", elevation: "+1600m" },
+      { name: "大樺沢二俣ルート（往復）", time: "10時間30分", distance: "14.0km", elevation: "+1700m" },
+    ],
+    description: "日本第2位の高峰。南アルプスの盟主で、高山植物の宝庫。",
+    yamapUrl: "https://yamap.com/mountains/138",
+    seasonNoGear: "7月〜9月",
+    season6Crampons: "不可（12本必要）",
+        category: "百名山",
+  },
+  {
+    id: "yatsugatake",
+    lat: 35.9706,
+    lng: 138.3711,
+    name: "八ヶ岳（赤岳）",
+    kana: "やつがたけ（あかだけ）",
+    elevation: 2899,
+    area: "山梨県・長野県南部",
+    driveTime: 200,
+    driveDistance: 160,
+    driveTimeShinjuku: 160,
+    driveTimeYokohama: 165,
+    driveTimeOmiya: 205,
+    trailhead: "美濃戸口",
+    trailheadAddress: "長野県茅野市泉野",
+    parking: "美濃戸口駐車場（約50台・1000円）",
+    season: "通年（冬季は積雪・アイゼン必要）",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "18〜34",
+    courseCoefficient: [18, 34],
+    routes: [
+      { name: "南沢ルート〜文三郎道（周回）", time: "9時間", distance: "14.0km", elevation: "+1400m" },
+      { name: "北沢ルート〜地蔵尾根（周回）", time: "9時間30分", distance: "15.0km", elevation: "+1500m" },
+    ],
+    description: "八ヶ岳連峰の最高峰。岩稜帯が続くダイナミックなルート。",
+    yamapUrl: "https://yamap.com/mountains/101",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        category: "百名山",
+  },
+  {
+    id: "keirisan",
+    lat: 36.1064,
+    lng: 138.3146,
+    name: "蓼科山",
+    kana: "たてしなやま",
+    elevation: 2531,
+    area: "長野県南部",
+    driveTime: 200,
+    driveDistance: 165,
+    driveTimeShinjuku: 175,
+    driveTimeYokohama: 205,
+    driveTimeOmiya: 200,
+    driveTimeLabel: "3時間20分",
+    trailhead: "竜源橋",
+    trailheadAddress: "長野県茅野市北山竜源橋",
+    parking: "竜源橋駐車場（約30台・無料）",
+    season: "6月〜10月",
+    difficulty: "中級",
+    courseCoefficientRange: "10〜20",
+    courseCoefficient: [10, 20],
+    routes: [
+      { name: "竜源橋ルート（往復）", time: "5時間", distance: "8.0km", elevation: "+900m" },
+      { name: "七合目登山口ルート（往復）", time: "4時間", distance: "6.2km", elevation: "+700m" },
+    ],
+    description: "八ヶ岳連峰北端の独立峰。山頂は広大な岩原で、360度の大展望。",
+    yamapUrl: "https://yamap.com/mountains/149",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "茅野駅→バス30分→竜源橋（土日・季節）",
+    category: "百名山",
+  },
+  {
+    id: "kirigamine",
+    lat: 36.1003,
+    lng: 138.2378,
+    name: "霧ヶ峰",
+    kana: "きりがみね",
+    elevation: 1925,
+    area: "長野県南部",
+    driveTime: 200,
+    driveDistance: 160,
+    driveTimeShinjuku: 170,
+    driveTimeYokohama: 190,
+    driveTimeOmiya: 215,
+    trailhead: "霧ヶ峰高原",
+    trailheadAddress: "長野県諏訪市四賀霧ヶ峰",
+    parking: "強清水駐車場（約100台・無料）",
+    season: "通年（冬季はスキー場）",
+    difficulty: "初級",
+    courseCoefficientRange: "6〜12",
+    courseCoefficient: [6, 12],
+    routes: [
+      { name: "車山周回コース", time: "2時間30分", distance: "6.0km", elevation: "+300m" },
+      { name: "八島ヶ原湿原コース", time: "3時間", distance: "8.0km", elevation: "+200m" },
+    ],
+    description: "高原のなだらかな地形が広がる。ニッコウキスゲの群生で有名。",
+    yamapUrl: "https://yamap.com/mountains/129",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "茅野駅→バス30分→霧ヶ峰（季節）",
+    category: "百名山",
+  },
+  {
+    id: "asama",
+    lat: 36.4062,
+    lng: 138.5236,
+    name: "浅間山",
+    kana: "あさまやま",
+    elevation: 2568,
+    area: "長野県南部",
+    driveTime: 180,
+    driveDistance: 145,
+    driveTimeShinjuku: 165,
+    driveTimeYokohama: 170,
+    driveTimeOmiya: 165,
+    trailhead: "車坂峠",
+    trailheadAddress: "長野県北佐久郡軽井沢町峰の茶屋",
+    parking: "高峰高原ビジターセンター駐車場（約100台・無料）",
+    season: "活火山のため入山規制あり・確認要",
+    difficulty: "中級",
+    courseCoefficientRange: "14〜28",
+    courseCoefficient: [14, 28],
+    routes: [
+      { name: "表コース（往復）", time: "6時間", distance: "10.0km", elevation: "+850m" },
+      { name: "中コース（往復）", time: "5時間30分", distance: "9.0km", elevation: "+800m" },
+    ],
+    description: "日本最大級の活火山。噴火活動のため入山規制あり。事前確認必須。",
+    yamapUrl: "https://yamap.com/mountains/172",
+    seasonNoGear: "6月〜10月（規制確認要）",
+    season6Crampons: "不可（活火山規制）",
+        trainAccess: "軽井沢駅→バス40分→車坂峠",
+    category: "百名山",
+  },
+  {
+    id: "tanigawa",
+    lat: 36.8355,
+    lng: 138.9437,
+    name: "谷川岳",
+    kana: "たにがわだけ",
+    elevation: 1977,
+    area: "群馬県",
+    driveTime: 180,
+    driveDistance: 145,
+    driveTimeShinjuku: 150,
+    driveTimeYokohama: 185,
+    driveTimeOmiya: 135,
+    trailhead: "谷川岳ロープウェイ土合口駅",
+    trailheadAddress: "群馬県利根郡みなかみ町湯檜曽",
+    parking: "谷川岳ベースプラザ（約600台・600円〜）",
+    season: "5月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "16〜32",
+    courseCoefficient: [16, 32],
+    routes: [
+      { name: "天神尾根ルート（往復）", time: "5時間", distance: "7.0km", elevation: "+620m" },
+      { name: "西黒尾根ルート（往復）", time: "7時間", distance: "10.0km", elevation: "+1300m" },
+    ],
+    description: "魔の山とも称される難峰。双耳峰（トマの耳・オキの耳）が特徴。",
+    yamapUrl: "https://yamap.com/mountains/164",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "11月〜5月",
+        trainAccess: "土合駅から徒歩5分（ロープウェイ駅）",
+    category: "百名山",
+  },
+  {
+    id: "nasu",
+    lat: 37.115,
+    lng: 139.9683,
+    name: "那須岳",
+    kana: "なすだけ",
+    elevation: 1915,
+    area: "栃木県",
+    driveTime: 230,
+    driveDistance: 155,
+    driveTimeShinjuku: 210,
+    driveTimeYokohama: 220,
+    driveTimeOmiya: 160,
+    trailhead: "峠の茶屋",
+    trailheadAddress: "栃木県那須郡那須町大字那須",
+    parking: "峠の茶屋駐車場（約100台・無料）",
+    season: "5月〜10月（活火山・規制確認要）",
+    difficulty: "中級",
+    courseCoefficientRange: "12〜22",
+    courseCoefficient: [12, 22],
+    routes: [
+      { name: "茶臼岳周回コース", time: "3時間30分", distance: "5.5km", elevation: "+500m" },
+      { name: "三本槍岳縦走コース", time: "6時間", distance: "12.0km", elevation: "+850m" },
+    ],
+    description: "栃木県の名峰。活火山で荒涼とした火山景観が広がる。",
+    yamapUrl: "https://yamap.com/mountains/8564",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "那須塩原駅→バス30分→峠の茶屋入口",
+    category: "百名山",
+  },
+  {
+    id: "shirane_nikko",
+    lat: 36.5452,
+    lng: 138.5095,
+    name: "四阿山",
+    kana: "あずまやさん",
+    elevation: 2354,
+    area: "群馬県",
+    driveTime: 220,
+    driveDistance: 180,
+    driveTimeShinjuku: 175,
+    driveTimeYokohama: 200,
+    driveTimeOmiya: 140,
+    trailhead: "菅平高原牧場",
+    trailheadAddress: "長野県上田市菅平高原",
+    parking: "菅平牧場駐車場（約50台・500円）",
+    season: "6月〜10月",
+    difficulty: "中級",
+    courseCoefficientRange: "16〜26",
+    courseCoefficient: [16, 26],
+    routes: [
+      { name: "菅平高原ルート（往復）", time: "5時間30分", distance: "10.0km", elevation: "+900m" },
+      { name: "根子岳〜四阿山縦走", time: "6時間", distance: "11.0km", elevation: "+950m" },
+    ],
+    description: "上信国境の雄峰。なだらかな山容で、高山植物が豊富。",
+    yamapUrl: "https://yamap.com/mountains/51",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "11月〜5月",
+        trainAccess: "上田駅→バス40分→菅平高原（四阿山）",
+    category: "百名山",
+  },
+  {
+    id: "nikko_shirane",
+    lat: 36.7976,
+    lng: 139.3673,
+    name: "日光白根山",
+    kana: "にっこうしらねさん",
+    elevation: 2578,
+    area: "栃木県",
+    driveTime: 220,
+    driveDistance: 175,
+    driveTimeShinjuku: 185,
+    driveTimeYokohama: 200,
+    driveTimeOmiya: 140,
+    trailhead: "丸沼高原ロープウェイ",
+    trailheadAddress: "群馬県利根郡片品村東小川",
+    parking: "丸沼高原スキー場駐車場（約500台・無料）",
+    season: "7月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "16〜26",
+    courseCoefficient: [16, 26],
+    routes: [
+      { name: "ロープウェイ〜山頂往復", time: "5時間", distance: "9.0km", elevation: "+750m" },
+      { name: "菅沼ルート（往復）", time: "7時間", distance: "12.0km", elevation: "+1100m" },
+    ],
+    description: "関東以北の最高峰。コバルトブルーの五色沼が山頂付近に広がる。",
+    yamapUrl: "https://yamap.com/mountains/252",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "11月〜5月",
+        trainAccess: "沼田駅→バス→丸沼高原（季節）",
+    category: "百名山",
+  },
+  {
+    id: "takeson",
+    lat: 36.7834,
+    lng: 139.1617,
+    name: "武尊山",
+    kana: "ほたかやま",
+    elevation: 2158,
+    area: "群馬県",
+    driveTime: 220,
+    driveDistance: 175,
+    driveTimeShinjuku: 185,
+    driveTimeYokohama: 240,
+    driveTimeOmiya: 205,
+    trailhead: "川場スキー場",
+    trailheadAddress: "群馬県利根郡川場村大字川場湯原",
+    parking: "川場スキー場駐車場（約500台・無料）",
+    season: "7月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "16〜28",
+    courseCoefficient: [16, 28],
+    routes: [
+      { name: "川場スキー場リフト利用ルート", time: "5時間30分", distance: "9.0km", elevation: "+600m" },
+      { name: "オグナほたかスキー場ルート", time: "7時間", distance: "12.0km", elevation: "+1000m" },
+    ],
+    description: "上州武尊山とも呼ばれる。日本武尊の伝説が残る上毛三山の一つ。",
+    yamapUrl: "https://yamap.com/mountains/170",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "11月〜5月",
+        trainAccess: "沼田駅→バス→川場スキー場（季節）",
+    category: "百名山",
+  },
+  {
+    id: "komagatake",
+    name: "甲斐駒ヶ岳",
+    kana: "かいこまがたけ",
+    elevation: 2967,
+    area: "山梨県",
+    driveTime: 220,
+    driveDistance: 175,
+    driveTimeShinjuku: 175,
+    driveTimeYokohama: 225,
+    driveTimeOmiya: 265,
+    trailhead: "広河原（バス）",
+    trailheadAddress: "山梨県南アルプス市芦安",
+    parking: "芦安駐車場（約400台・無料）※バス乗換",
+    season: "7月〜9月",
+    difficulty: "上級",
+    courseCoefficientRange: "35〜56",
+    courseCoefficient: [35, 56],
+    routes: [
+      { name: "黒戸尾根ルート（往復）", time: "14時間", distance: "18.6km", elevation: "+2400m" },
+      { name: "北沢峠ルート（往復）", time: "7時間", distance: "10.0km", elevation: "+1100m" },
+    ],
+    description: "白い花崗岩の山頂が印象的。黒戸尾根は日本三大急登の一つ。",
+    yamapUrl: "https://yamap.com/mountains/59",
+    seasonNoGear: "7月〜9月",
+    season6Crampons: "10月〜11月・5月〜6月",
+        category: "百名山",
+  },
+  {
+    id: "senjogatake",
+    name: "仙丈ヶ岳",
+    kana: "せんじょうがたけ",
+    elevation: 3033,
+    area: "山梨県",
+    driveTime: 220,
+    driveDistance: 175,
+    driveTimeShinjuku: 185,
+    driveTimeYokohama: 235,
+    driveTimeOmiya: 275,
+    trailhead: "北沢峠",
+    trailheadAddress: "長野県伊那市長谷",
+    parking: "仙流荘駐車場（約300台・無料）※バス乗換",
+    season: "7月〜9月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "28〜40",
+    courseCoefficient: [28, 40],
+    routes: [
+      { name: "小仙丈ヶ岳経由（往復）", time: "8時間", distance: "12.0km", elevation: "+1150m" },
+      { name: "藪沢〜馬の背周回", time: "9時間", distance: "14.0km", elevation: "+1300m" },
+    ],
+    description: "南アルプスの女王。カール地形が美しく、高山植物が豊富。",
+    yamapUrl: "https://yamap.com/mountains/60",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "不可（残雪期は12本必要）",
+        category: "百名山",
+  },
+  {
+    id: "shirouma",
+    lat: 36.7589,
+    lng: 137.7601,
+    name: "白馬岳",
+    kana: "しろうまだけ",
+    elevation: 2932,
+    area: "長野県北部",
+    driveTime: 250,
+    driveDistance: 210,
+    driveTimeShinjuku: 275,
+    driveTimeYokohama: 265,
+    driveTimeOmiya: 255,
+    trailhead: "猿倉",
+    trailheadAddress: "長野県北安曇郡白馬村北城",
+    parking: "猿倉駐車場（約250台・無料）",
+    season: "7月〜9月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "24〜40",
+    courseCoefficient: [24, 40],
+    routes: [
+      { name: "白馬大雪渓ルート（往復）", time: "10時間", distance: "16.0km", elevation: "+1700m" },
+      { name: "栂池高原ルート（往復）", time: "8時間", distance: "12.0km", elevation: "+1200m" },
+    ],
+    description: "北アルプス屈指の高山植物の宝庫。大雪渓は夏でも残雪がある。",
+    yamapUrl: "https://yamap.com/mountains/17",
+    seasonNoGear: "7月〜9月",
+    season6Crampons: "不可（雪渓・12本必要）",
+        trainAccess: "白馬駅→バス25分→猿倉（季節）",
+    category: "百名山",
+  },
+  {
+    id: "norikura",
+    lat: 36.106,
+    lng: 137.553,
+    name: "乗鞍岳",
+    kana: "のりくらだけ",
+    elevation: 3026,
+    area: "長野県北部",
+    driveTime: 260,
+    driveDistance: 220,
+    driveTimeShinjuku: 270,
+    driveTimeYokohama: 240,
+    driveTimeOmiya: 265,
+    trailhead: "畳平",
+    trailheadAddress: "岐阜県高山市丹生川町",
+    parking: "ほおのき平駐車場（約600台・無料）※バス乗換",
+    season: "7月〜9月",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "8〜18",
+    courseCoefficient: [8, 18],
+    routes: [
+      { name: "畳平〜剣ヶ峰往復", time: "2時間30分", distance: "5.0km", elevation: "+250m" },
+      { name: "肩の小屋〜剣ヶ峰往復", time: "1時間30分", distance: "3.0km", elevation: "+150m" },
+    ],
+    description: "バスで2700mの畳平まで行けるため、初心者でも3000m峰に登れる。",
+    yamapUrl: "https://yamap.com/mountains/146",
+    seasonNoGear: "7月〜10月",
+    season6Crampons: "5月〜6月（残雪あり・注意）",
+        trainAccess: "新島々駅→バス→畳平（季節）",
+    category: "百名山",
+  },
+  {
+    id: "tateyama",
+    lat: 36.5728,
+    lng: 137.6175,
+    name: "立山",
+    kana: "たてやま",
+    elevation: 3015,
+    area: "長野県北部",
+    driveTime: 355,
+    driveDistance: 250,
+    driveTimeShinjuku: 340,
+    driveTimeYokohama: 350,
+    driveTimeOmiya: 345,
+    trailhead: "室堂",
+    trailheadAddress: "富山県中新川郡立山町",
+    parking: "立山駅駐車場（約1000台・無料）※ケーブル・バス乗換",
+    season: "7月〜10月",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "18〜30",
+    courseCoefficient: [18, 30],
+    routes: [
+      { name: "室堂〜雄山往復", time: "4時間", distance: "6.0km", elevation: "+500m" },
+      { name: "一ノ越〜大汝山〜真砂岳縦走", time: "6時間", distance: "10.0km", elevation: "+700m" },
+    ],
+    description: "富山県を代表する霊峰。室堂から比較的容易に登れ、眺望が素晴らしい。",
+    yamapUrl: "https://yamap.com/mountains/12",
+    seasonNoGear: "7月〜9月",
+    season6Crampons: "不可（12本必要）",
+        trainAccess: "富山駅→立山ケーブル→室堂（季節）",
+    category: "百名山",
+  },
+  {
+    id: "tsurugi",
+    lat: 36.6243,
+    lng: 137.6157,
+    name: "剱岳",
+    kana: "つるぎだけ",
+    elevation: 2999,
+    area: "長野県北部",
+    driveTime: 360,
+    driveDistance: 265,
+    driveTimeShinjuku: 345,
+    driveTimeYokohama: 350,
+    driveTimeOmiya: 345,
+    trailhead: "室堂",
+    trailheadAddress: "富山県中新川郡立山町",
+    parking: "立山駅駐車場（約1000台・無料）※ケーブル・バス乗換",
+    season: "7月〜9月",
+    difficulty: "上級",
+    courseCoefficientRange: "36〜56",
+    courseCoefficient: [36, 56],
+    routes: [
+      { name: "別山尾根ルート（往復）", time: "11時間", distance: "18.0km", elevation: "+1600m" },
+      { name: "早月尾根ルート（往復）", time: "14時間", distance: "22.0km", elevation: "+2200m" },
+    ],
+    description: "日本最難関の百名山。クサリ場・岩場の連続で技術と体力が必要。",
+    yamapUrl: "https://yamap.com/mountains/11",
+    seasonNoGear: "7月〜9月",
+    season6Crampons: "不可（12本必要・ガイド推奨）",
+        trainAccess: "富山駅→立山ケーブル→室堂（季節）",
+    category: "百名山",
+  },
+  {
+    id: "yari",
+    lat: 36.3419,
+    lng: 137.6481,
+    name: "槍ヶ岳",
+    kana: "やりがたけ",
+    elevation: 3180,
+    area: "長野県北部",
+    driveTime: 340,
+    driveDistance: 255,
+    driveTimeShinjuku: 330,
+    driveTimeYokohama: 280,
+    driveTimeOmiya: 275,
+    trailhead: "上高地",
+    trailheadAddress: "長野県松本市安曇",
+    parking: "沢渡駐車場（約2000台・600円）※バス乗換",
+    season: "7月〜9月",
+    difficulty: "上級",
+    courseCoefficientRange: "48〜72",
+    courseCoefficient: [48, 72],
+    routes: [
+      { name: "上高地〜槍沢ルート（往復）", time: "14時間", distance: "30.0km", elevation: "+1750m" },
+      { name: "新穂高〜飛騨沢ルート（往復）", time: "13時間", distance: "24.0km", elevation: "+1900m" },
+    ],
+    description: "北アルプスの象徴。鋭く尖った穂先は日本の山のシンボル。",
+    yamapUrl: "https://yamap.com/mountains/142",
+    seasonNoGear: "7月〜9月",
+    season6Crampons: "不可（12本必要）",
+        trainAccess: "松本駅→バス→上高地（季節）",
+    category: "百名山",
+  },
+  {
+    id: "hotaka",
+    lat: 36.2889,
+    lng: 137.6489,
+    name: "奥穂高岳",
+    kana: "おくほたかだけ",
+    elevation: 3190,
+    area: "長野県北部",
+    driveTime: 335,
+    driveDistance: 255,
+    driveTimeShinjuku: 325,
+    driveTimeYokohama: 280,
+    driveTimeOmiya: 275,
+    trailhead: "上高地",
+    trailheadAddress: "長野県松本市安曇",
+    parking: "沢渡駐車場（約2000台・600円）※バス乗換",
+    season: "7月〜9月",
+    difficulty: "上級",
+    courseCoefficientRange: "42〜66",
+    courseCoefficient: [42, 66],
+    routes: [
+      { name: "上高地〜涸沢〜奥穂高岳", time: "14時間", distance: "28.0km", elevation: "+2000m" },
+      { name: "新穂高〜白出沢ルート", time: "12時間", distance: "22.0km", elevation: "+1900m" },
+    ],
+    description: "日本第3位の高峰。北アルプス最高峰で、岩稜帯が連続する難峰。",
+    yamapUrl: "https://yamap.com/mountains/45",
+    seasonNoGear: "7月〜9月",
+    season6Crampons: "不可（12本必要）",
+        trainAccess: "松本駅→バス→上高地（季節）",
+    category: "百名山",
+  },
+  {
+    id: "myoko",
+    lat: 36.899,
+    lng: 138.1096,
+    name: "妙高山",
+    kana: "みょうこうさん",
+    elevation: 2454,
+    area: "新潟県",
+    driveTime: 255,
+    driveDistance: 230,
+    driveTimeShinjuku: 240,
+    driveTimeYokohama: 240,
+    driveTimeOmiya: 220,
+    trailhead: "燕温泉",
+    trailheadAddress: "新潟県妙高市大字関山",
+    parking: "燕温泉駐車場（約50台・無料）",
+    season: "7月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "18〜30",
+    courseCoefficient: [18, 30],
+    routes: [
+      { name: "燕温泉〜北地獄谷ルート（往復）", time: "9時間", distance: "14.0km", elevation: "+1700m" },
+      { name: "笹ヶ峰〜黒沢ルート（往復）", time: "9時間30分", distance: "16.0km", elevation: "+1700m" },
+    ],
+    description: "越後富士の異名を持つ新潟の名峰。スカイケーブル利用ルートも人気。火打山とのセット登山も定番。",
+    yamapUrl: "https://yamap.com/mountains/244",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "5月・11月",
+        trainAccess: "妙高高原駅→バス30分→燕温泉",
+    category: "百名山",
+  },
+  {
+    id: "makihata",
+    lat: 36.9048,
+    lng: 138.8071,
+    name: "巻機山",
+    kana: "まきはたやま",
+    elevation: 1967,
+    area: "新潟県",
+    driveTime: 220,
+    driveDistance: 175,
+    driveTimeShinjuku: 205,
+    driveTimeYokohama: 205,
+    driveTimeOmiya: 185,
+    trailhead: "清水登山口",
+    trailheadAddress: "新潟県南魚沼市清水",
+    parking: "桜坂駐車場（約100台・500円）",
+    season: "6月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "22〜34",
+    courseCoefficient: [22, 34],
+    routes: [
+      { name: "清水ルート（往復）", time: "7時間", distance: "13.0km", elevation: "+1400m" },
+      { name: "割引岳経由周回", time: "8時間", distance: "14.0km", elevation: "+1500m" },
+    ],
+    description: "越後の名峰。山頂付近は広大な湿原が広がり、池塘が点在する。",
+    yamapUrl: "https://yamap.com/mountains/246",
+    seasonNoGear: "7月〜10月",
+    season6Crampons: "5月〜6月・11月",
+        trainAccess: "六日町駅→バス→清水（季節）",
+    category: "百名山",
+  },
+  {
+    id: "iide",
+    lat: 37.8525,
+    lng: 139.6311,
+    name: "飯豊山",
+    kana: "いいでさん",
+    elevation: 2105,
+    area: "福島県",
+    driveTime: 310,
+    driveDistance: 250,
+    driveTimeShinjuku: 270,
+    driveTimeYokohama: 310,
+    driveTimeOmiya: 270,
+    trailhead: "川入",
+    trailheadAddress: "福島県喜多方市山都町",
+    parking: "川入キャンプ場駐車場（約100台・無料）",
+    season: "7月〜9月",
+    difficulty: "上級",
+    courseCoefficientRange: "50〜72",
+    courseCoefficient: [50, 72],
+    routes: [
+      { name: "川入〜剣ヶ峰〜御西岳縦走", time: "16時間（1泊2日）", distance: "30.0km", elevation: "+2800m" },
+      { name: "弥平四郎ルート", time: "14時間（1泊2日）", distance: "28.0km", elevation: "+2500m" },
+    ],
+    description: "東北の秘峰。アプローチが長く体力を要する。高山植物の宝庫。",
+    yamapUrl: "https://yamap.com/mountains/262",
+    seasonNoGear: "7月〜9月",
+    season6Crampons: "不可（残雪多・上級者のみ）",
+        category: "百名山",
+  },
+  {
+    id: "shibutsu",
+    lat: 36.9328,
+    lng: 139.1767,
+    name: "至仏山",
+    kana: "しぶつさん",
+    elevation: 2228,
+    area: "群馬県",
+    driveTime: 270,
+    driveDistance: 220,
+    driveTimeShinjuku: 185,
+    driveTimeYokohama: 260,
+    driveTimeOmiya: 235,
+    trailhead: "尾瀬ヶ原（鳩待峠）",
+    trailheadAddress: "群馬県利根郡片品村戸倉",
+    parking: "戸倉駐車場（約400台・1000円）※バス乗換",
+    season: "6月〜10月",
+    difficulty: "中級",
+    courseCoefficientRange: "14〜24",
+    courseCoefficient: [14, 24],
+    routes: [
+      { name: "鳩待峠〜至仏山往復", time: "6時間", distance: "10.0km", elevation: "+900m" },
+      { name: "山ノ鼻〜至仏山〜鳩待峠縦走", time: "7時間", distance: "13.0km", elevation: "+1000m" },
+    ],
+    description: "尾瀬を代表する山。蛇紋岩の山で固有種の高山植物が多い。",
+    yamapUrl: "https://yamap.com/mountains/256",
+    seasonNoGear: "7月〜10月",
+    season6Crampons: "5月〜6月・11月",
+        trainAccess: "沼田駅→バス→鳩待峠（季節）",
+    category: "百名山",
+  },
+  {
+    id: "aizu_koma",
+    lat: 37.2242,
+    lng: 139.3619,
+    name: "会津駒ヶ岳",
+    kana: "あいづこまがたけ",
+    elevation: 2133,
+    area: "福島県",
+    driveTime: 295,
+    driveDistance: 220,
+    driveTimeShinjuku: 265,
+    driveTimeYokohama: 270,
+    driveTimeOmiya: 240,
+    trailhead: "登山口（滝沢登山口）",
+    trailheadAddress: "福島県南会津郡檜枝岐村",
+    parking: "滝沢登山口駐車場（約30台・無料）",
+    season: "7月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "20〜34",
+    courseCoefficient: [20, 34],
+    routes: [
+      { name: "滝沢登山口〜山頂往復", time: "7時間", distance: "11.0km", elevation: "+1200m" },
+      { name: "中門岳縦走（往復）", time: "8時間", distance: "13.0km", elevation: "+1300m" },
+    ],
+    description: "湿原と池塘が広がる稜線が美しい。東北南部の名峰。",
+    yamapUrl: "https://yamap.com/mountains/260",
+    seasonNoGear: "7月〜10月",
+    season6Crampons: "5月〜6月・11月",
+        category: "百名山",
+  },
+  {
+    id: "shirane_gunma",
+    lat: 36.6173,
+    lng: 138.5396,
+    name: "草津白根山",
+    kana: "くさつしらねさん",
+    elevation: 2160,
+    area: "群馬県",
+    driveTime: 200,
+    driveDistance: 160,
+    driveTimeShinjuku: 165,
+    driveTimeYokohama: 185,
+    driveTimeOmiya: 155,
+    trailhead: "草津温泉",
+    trailheadAddress: "群馬県吾妻郡草津町草津",
+    parking: "草津温泉駐車場（各所・有料）",
+    season: "活火山・入山規制頻繁。確認必須",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "8〜16",
+    courseCoefficient: [8, 16],
+    routes: [
+      { name: "弓池〜逢ノ峰周回", time: "2時間", distance: "4.0km", elevation: "+200m" },
+      { name: "草津温泉〜本白根山往復", time: "4時間", distance: "8.0km", elevation: "+600m" },
+    ],
+    description: "活火山で入山規制あり。湯釜は鮮やかなコバルトブルーの火口湖。",
+    yamapUrl: "https://yamap.com/mountains/171",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "不可（活火山規制）",
+        trainAccess: "長野原草津口駅→バス25分→草津温泉",
+    category: "百名山",
+  },
+  {
+    id: "bandai",
+    lat: 37.6011,
+    lng: 140.0773,
+    name: "磐梯山",
+    kana: "ばんだいさん",
+    elevation: 1816,
+    area: "福島県",
+    driveTime: 265,
+    driveDistance: 230,
+    driveTimeShinjuku: 240,
+    driveTimeYokohama: 290,
+    driveTimeOmiya: 250,
+    trailhead: "八方台",
+    trailheadAddress: "福島県耶麻郡磐梯町大字更科",
+    parking: "八方台駐車場（約100台・無料）",
+    season: "5月〜10月",
+    difficulty: "中級",
+    courseCoefficientRange: "14〜24",
+    courseCoefficient: [14, 24],
+    routes: [
+      { name: "八方台ルート（往復）", time: "4時間30分", distance: "8.0km", elevation: "+700m" },
+      { name: "猪苗代スキー場ルート（往復）", time: "6時間", distance: "12.0km", elevation: "+1100m" },
+    ],
+    description: "福島のシンボル。磐梯朝日国立公園の主峰。猪苗代湖を見下ろす。",
+    yamapUrl: "https://yamap.com/mountains/261",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "猪苗代駅→バス30分→八方台（季節）",
+    category: "百名山",
+  },
+  {
+    id: "nikko_nantai",
+    lat: 36.7731,
+    lng: 139.5117,
+    name: "燧ヶ岳",
+    kana: "ひうちがたけ",
+    elevation: 2356,
+    area: "福島県",
+    driveTime: 295,
+    driveDistance: 220,
+    driveTimeShinjuku: 265,
+    driveTimeYokohama: 190,
+    driveTimeOmiya: 130,
+    trailhead: "御池",
+    trailheadAddress: "福島県南会津郡檜枝岐村",
+    parking: "御池駐車場（約600台・1000円）",
+    season: "7月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "18〜30",
+    courseCoefficient: [18, 30],
+    routes: [
+      { name: "御池〜柴安嵓往復", time: "6時間", distance: "10.0km", elevation: "+900m" },
+      { name: "沼山峠〜尾瀬沼〜長英新道", time: "8時間", distance: "15.0km", elevation: "+1100m" },
+    ],
+    description: "東北最高峰。双耳峰の雄姿と尾瀬の自然が魅力。",
+    yamapUrl: "https://yamap.com/mountains/259",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "会津高原尾瀬口駅→バス連絡→御池（季節）",
+    category: "百名山",
+  },
 
-<main>
+  // ── 百名山以外の人気の山 ──────────────────────────────
 
-  <div class="lead-box">
-    百名山は全国各地に散らばっていますが、関東在住者にとって嬉しいことに、<strong>新宿から3〜4時間圏内に意外と多くの百名山が集まっています</strong>。しかも、そのうちのいくつかは日帰りで登頂できます。<br><br>
-    この記事では、難易度・アクセス・景色のバランスを考えて関東日帰り百名山を10座厳選しました。<strong>初めての百名山を探している方から、コレクションを増やしたい中上級者まで</strong>、参考にしていただける内容になっています。ぜひ次の登山計画に役立ててください。
-  </div>
+  // 関東近郊（〜1.5時間）
+  {
+    id: "takao",
+    lat: 35.6254,
+    lng: 139.2431,
+    name: "高尾山",
+    kana: "たかおさん",
+    elevation: 599,
+    area: "東京都",
+    driveTime: 50,
+    driveDistance: 40,
+    driveTimeShinjuku: 50,
+    driveTimeYokohama: 55,
+    driveTimeOmiya: 70,
+    trailhead: "清滝（1号路）",
+    trailheadAddress: "東京都八王子市高尾町",
+    parking: "高尾山IC周辺駐車場（有料）",
+    season: "通年",
+    difficulty: "初級",
+    courseCoefficientRange: "8〜14",
+    courseCoefficient: [8, 14],
+    routes: [
+      { name: "1号路（薬王院経由）", time: "2時間", distance: "5.0km", elevation: "+400m" },
+      { name: "稲荷山コース", time: "2時間30分", distance: "6.5km", elevation: "+400m" },
+    ],
+    description: "年間300万人が訪れる世界屈指の登山者数を誇る山。ケーブルカー・リフトあり。紅葉の名所。",
+    yamapUrl: "https://yamap.com/mountains/108",
+    seasonNoGear: "通年",
+    season6Crampons: "なし",
+        trainAccess: "高尾山口駅から徒歩5分",
+    category: "人気の山",
+  },
+  {
+    id: "oyama",
+    lat: 35.4394,
+    lng: 139.2254,
+    name: "大山（丹沢）",
+    kana: "おおやま",
+    elevation: 1252,
+    area: "神奈川県",
+    driveTime: 70,
+    driveDistance: 55,
+    driveTimeShinjuku: 90,
+    driveTimeYokohama: 55,
+    driveTimeOmiya: 90,
+    trailhead: "大山ケーブル駅",
+    trailheadAddress: "神奈川県伊勢原市大山",
+    parking: "大山第1〜3駐車場（有料）",
+    season: "通年",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "14〜22",
+    courseCoefficient: [14, 22],
+    routes: [
+      { name: "ケーブルカー〜大山山頂（往復）", time: "3時間", distance: "5.0km", elevation: "+600m" },
+      { name: "大山登山口〜山頂（往復）", time: "4時間30分", distance: "7.0km", elevation: "+1000m" }
+    ],
+    description: "丹沢の霊峰。ケーブルカーあり。山頂からの展望と紅葉が名高い信仰の山。",
+    yamapUrl: "https://yamap.com/mountains/32",
+    seasonNoGear: "通年",
+    season6Crampons: "なし",
+        trainAccess: "伊勢原駅→バス25分→大山ケーブル駅",
+    category: "人気の山",
+  },
+  {
+    id: "tonosaki",
+    lat: 35.4576,
+    lng: 139.1511,
+    name: "塔ノ岳",
+    kana: "とうのだけ",
+    elevation: 1491,
+    area: "神奈川県",
+    driveTime: 75,
+    driveDistance: 60,
+    driveTimeShinjuku: 95,
+    driveTimeYokohama: 65,
+    driveTimeOmiya: 100,
+    trailhead: "大倉（バス停）",
+    trailheadAddress: "神奈川県秦野市堀山下",
+    parking: "大倉駐車場（約80台・500円）",
+    season: "通年",
+    difficulty: "中級",
+    courseCoefficientRange: "18〜25",
+    courseCoefficient: [18, 25],
+    routes: [
+      { name: "大倉尾根ルート（往復）", time: "5時間", distance: "14.0km", elevation: "+1200m" }
+    ],
+    description: "丹沢の要。大倉尾根（バカ尾根）は急登で有名。山頂から富士山〜相模湾の大展望。",
+    yamapUrl: "https://yamap.com/mountains/245",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "渋沢駅→バス15分→大倉",
+    category: "人気の山",
+  },
+  {
+    id: "hirugata",
+    lat: 35.4932,
+    lng: 139.1597,
+    name: "蛭ヶ岳",
+    kana: "ひるがたけ",
+    elevation: 1673,
+    area: "神奈川県",
+    driveTime: 80,
+    driveDistance: 65,
+    driveTimeShinjuku: 120,
+    driveTimeYokohama: 70,
+    driveTimeOmiya: 105,
+    trailhead: "大倉 or 姫次",
+    trailheadAddress: "神奈川県足柄上郡山北町",
+    parking: "大倉駐車場（約80台・500円）",
+    season: "通年（冬季積雪注意）",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "28〜42",
+    courseCoefficient: [28, 42],
+    routes: [
+      { name: "大倉〜塔ノ岳〜蛭ヶ岳（往復）", time: "9時間", distance: "22.0km", elevation: "+1700m" }
+    ],
+    description: "丹沢最高峰。神奈川県最高点。稜線からの眺望は抜群で、富士山・南アルプスが一望。",
+    yamapUrl: "https://yamap.com/mountains/33",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "渋沢駅→バス15分→大倉",
+    category: "人気の山",
+  },
+  {
+    id: "jinba",
+    lat: 35.6484,
+    lng: 139.1693,
+    name: "陣馬山",
+    kana: "じんばさん",
+    elevation: 857,
+    area: "東京都",
+    driveTime: 75,
+    driveDistance: 60,
+    driveTimeShinjuku: 70,
+    driveTimeYokohama: 70,
+    driveTimeOmiya: 85,
+    trailhead: "陣馬登山口（和田）",
+    trailheadAddress: "神奈川県相模原市緑区和田",
+    parking: "和田バス停付近（数台）",
+    season: "通年",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "16〜26",
+    courseCoefficient: [16, 26],
+    routes: [
+      { name: "陣馬登山口〜陣馬山（往復）", time: "3時間", distance: "7.0km", elevation: "+600m" },
+      { name: "高尾〜陣馬縦走", time: "5時間30分", distance: "20.0km", elevation: "+1200m" }
+    ],
+    description: "山頂に白馬のモニュメント。高尾〜陣馬縦走コースのゴール。茶屋が充実。",
+    yamapUrl: "https://yamap.com/mountains/29",
+    seasonNoGear: "通年",
+    season6Crampons: "なし",
+        trainAccess: "藤野駅→バス20分→陣馬登山口",
+    category: "人気の山",
+  },
 
-  <div class="toc-box">
-    <div class="toc-title">📋 この記事で紹介する10座</div>
-    <ol>
-      <li>
-        <a href="#mountain-1" class="toc-link">
-          <span class="toc-num">1</span>
-          <span class="toc-name">筑波山</span>
-          <span class="toc-meta">877m · 新宿から2時間30分</span>
-        </a>
-      </li>
-      <li>
-        <a href="#mountain-2" class="toc-link">
-          <span class="toc-num">2</span>
-          <span class="toc-name">赤城山</span>
-          <span class="toc-meta">1,828m · 新宿から3時間10分</span>
-        </a>
-      </li>
-      <li>
-        <a href="#mountain-3" class="toc-link">
-          <span class="toc-num">3</span>
-          <span class="toc-name">大菩薩嶺</span>
-          <span class="toc-meta">2,057m · 新宿から2時間55分</span>
-        </a>
-      </li>
-      <li>
-        <a href="#mountain-4" class="toc-link">
-          <span class="toc-num">4</span>
-          <span class="toc-name">丹沢山</span>
-          <span class="toc-meta">1,567m · 新宿から1時間35分</span>
-        </a>
-      </li>
-      <li>
-        <a href="#mountain-5" class="toc-link">
-          <span class="toc-num">5</span>
-          <span class="toc-name">雲取山</span>
-          <span class="toc-meta">2,017m · 新宿から2時間10分</span>
-        </a>
-      </li>
-      <li>
-        <a href="#mountain-6" class="toc-link">
-          <span class="toc-num">6</span>
-          <span class="toc-name">瑞牆山</span>
-          <span class="toc-meta">2,230m · 新宿から2時間55分</span>
-        </a>
-      </li>
-      <li>
-        <a href="#mountain-7" class="toc-link">
-          <span class="toc-num">7</span>
-          <span class="toc-name">両神山</span>
-          <span class="toc-meta">1,723m · 新宿から2時間55分</span>
-        </a>
-      </li>
-      <li>
-        <a href="#mountain-8" class="toc-link">
-          <span class="toc-num">8</span>
-          <span class="toc-name">谷川岳</span>
-          <span class="toc-meta">1,977m · 新宿から3時間</span>
-        </a>
-      </li>
-      <li>
-        <a href="#mountain-9" class="toc-link">
-          <span class="toc-num">9</span>
-          <span class="toc-name">甲武信ヶ岳</span>
-          <span class="toc-meta">2,475m · 新宿から3時間</span>
-        </a>
-      </li>
-      <li>
-        <a href="#mountain-10" class="toc-link">
-          <span class="toc-num">10</span>
-          <span class="toc-name">金峰山</span>
-          <span class="toc-meta">2,599m · 新宿から3時間20分</span>
-        </a>
-      </li>
-    </ol>
-  </div>
+  // 中距離（1.5〜3時間）
+  {
+    id: "mitsuToge",
+    lat: 35.5283,
+    lng: 138.7681,
+    name: "三ツ峠山",
+    kana: "みつとうげさん",
+    elevation: 1785,
+    area: "山梨県",
+    driveTime: 100,
+    driveDistance: 85,
+    driveTimeShinjuku: 105,
+    driveTimeYokohama: 100,
+    driveTimeOmiya: 110,
+    trailhead: "三ツ峠登山口",
+    trailheadAddress: "山梨県都留市中津桂",
+    parking: "三ツ峠登山口駐車場（約30台・無料）",
+    season: "通年（冬季アイゼン推奨）",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "12〜20",
+    courseCoefficient: [12, 20],
+    routes: [
+      { name: "三ツ峠登山口〜三ツ峠山（往復）", time: "3時間", distance: "5.0km", elevation: "+650m" }
+    ],
+    description: "富士山の最高の展望台。左右対称に見える富士山の姿は絶品。南面にロッククライミングエリアも。",
+    yamapUrl: "https://yamap.com/mountains/747",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        category: "二百名山",
+  },
+  {
+    id: "kintoki",
+    lat: 35.3299,
+    lng: 138.9694,
+    name: "金時山",
+    kana: "きんときさん",
+    elevation: 1212,
+    area: "静岡県",
+    driveTime: 80,
+    driveDistance: 70,
+    driveTimeShinjuku: 115,
+    driveTimeYokohama: 85,
+    driveTimeOmiya: 125,
+    trailhead: "金時登山口（乙女峠）",
+    trailheadAddress: "静岡県駿東郡小山町須走",
+    parking: "乙女峠駐車場（約20台・無料）",
+    season: "通年",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "12〜19",
+    courseCoefficient: [12, 19],
+    routes: [
+      { name: "乙女峠ルート（往復）", time: "3時間", distance: "6.0km", elevation: "+500m" },
+      { name: "仙石原ルート（往復）", time: "3時間30分", distance: "7.0km", elevation: "+600m" },
+    ],
+    description: "箱根の名峰。坂田金時（金太郎）伝説の山。山頂から富士山が大きく見える。茶屋あり。",
+    yamapUrl: "https://yamap.com/mountains/91",
+    seasonNoGear: "通年",
+    season6Crampons: "なし",
+        category: "人気の山",
+  },
+  {
+    id: "kayagatake",
+    lat: 35.6781,
+    lng: 138.5256,
+    name: "茅ヶ岳",
+    kana: "かやがたけ",
+    elevation: 1704,
+    area: "山梨県",
+    driveTime: 130,
+    driveDistance: 110,
+    driveTimeShinjuku: 130,
+    driveTimeYokohama: 120,
+    driveTimeOmiya: 160,
+    trailhead: "深田記念公園",
+    trailheadAddress: "山梨県韮崎市円野町",
+    parking: "深田記念公園駐車場（約50台・無料）",
+    season: "通年（冬季積雪注意）",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "16〜25",
+    courseCoefficient: [16, 25],
+    routes: [
+      { name: "深田記念公園〜山頂往復", time: "4時間", distance: "7.6km", elevation: "+750m" },
+      { name: "金ヶ岳〜茅ヶ岳縦走（周回）", time: "5時間", distance: "10.0km", elevation: "+900m" },
+    ],
+    description: "「ニセ八ヶ岳」の異名を持つ。百名山の著者・深田久弥の終焉の地。山頂から八ヶ岳〜富士山の大展望。",
+    yamapUrl: "https://yamap.com/mountains/16093",
+    seasonNoGear: "4月〜11月",
+    season6Crampons: "12月〜3月",
+        category: "二百名山",
+  },
+  {
+    id: "kentoku",
+    lat: 35.8553,
+    lng: 138.7161,
+    name: "乾徳山",
+    kana: "けんとくさん",
+    elevation: 2031,
+    area: "山梨県",
+    driveTime: 140,
+    driveDistance: 115,
+    driveTimeShinjuku: 130,
+    driveTimeYokohama: 130,
+    driveTimeOmiya: 170,
+    trailhead: "乾徳山登山口",
+    trailheadAddress: "山梨県山梨市三富徳和",
+    parking: "徳和駐車場（約50台・無料）",
+    season: "5月〜11月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "22〜28",
+    courseCoefficient: [22, 28],
+    routes: [
+      { name: "徳和ルート（往復）", time: "7時間", distance: "12.0km", elevation: "+1300m" },
+      { name: "国師ヶ原経由周回", time: "8時間", distance: "14.0km", elevation: "+1400m" },
+    ],
+    description: "奥秩父の名峰。山頂直下に巨大な岩壁があり、クサリ場が続くスリリングな登山が楽しめる。",
+    yamapUrl: "https://yamap.com/mountains/14413",
+    seasonNoGear: "4月〜11月",
+    season6Crampons: "12月〜3月",
+        trainAccess: "山梨市駅→バス30分→乾徳山登山口（季節）",
+    category: "二百名山",
+  },
+  {
+    id: "hinata",
+    lat: 35.7736,
+    lng: 138.2594,
+    name: "日向山",
+    kana: "ひなたやま",
+    elevation: 1660,
+    area: "山梨県",
+    driveTime: 160,
+    driveDistance: 130,
+    driveTimeShinjuku: 145,
+    driveTimeYokohama: 150,
+    driveTimeOmiya: 190,
+    trailhead: "矢立石登山口",
+    trailheadAddress: "山梨県北杜市白州町",
+    parking: "矢立石駐車場（約30台・無料）",
+    season: "5月〜11月",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "12〜16",
+    courseCoefficient: [12, 16],
+    routes: [
+      { name: "矢立石ルート（往復）", time: "3時間30分", distance: "6.4km", elevation: "+560m" },
+      { name: "錦滝経由周回", time: "5時間", distance: "9.0km", elevation: "+750m" },
+    ],
+    description: "山頂が花崗岩の白砂のビーチ状になる奇景が人気。甲斐駒ヶ岳の眺望も絶景。",
+    yamapUrl: "https://yamap.com/mountains/16090",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        category: "人気の山",
+  },
+  {
+    id: "bonori",
+    lat: 35.9056,
+    lng: 139.1081,
+    name: "棒ノ折山",
+    kana: "ぼうのおれやま",
+    elevation: 969,
+    area: "東京都・埼玉県",
+    driveTime: 90,
+    driveDistance: 75,
+    driveTimeShinjuku: 75,
+    driveTimeYokohama: 110,
+    driveTimeOmiya: 75,
+    trailhead: "白谷沢登山口",
+    trailheadAddress: "埼玉県飯能市上名栗",
+    parking: "さわらびの湯駐車場（約200台・無料）",
+    season: "通年",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "12〜16",
+    courseCoefficient: [12, 16],
+    routes: [
+      { name: "白谷沢ルート（往復）", time: "4時間", distance: "8.0km", elevation: "+650m" },
+      { name: "岩茸石山縦走（周回）", time: "5時間", distance: "10.0km", elevation: "+750m" },
+    ],
+    description: "沢沿いのゴルジュを通る変化に富んだルートが人気。山頂は関東平野の大展望。",
+    yamapUrl: "https://yamap.com/mountains/255",
+    seasonNoGear: "通年",
+    season6Crampons: "なし",
+        trainAccess: "飯能駅→バス25分→河又名栗湖入口",
+    category: "人気の山",
+  },
+  {
+    id: "otake",
+    lat: 35.7709,
+    lng: 139.0184,
+    name: "大岳山",
+    kana: "おおたけさん",
+    elevation: 1266,
+    area: "東京都",
+    driveTime: 85,
+    driveDistance: 70,
+    driveTimeShinjuku: 80,
+    driveTimeYokohama: 80,
+    driveTimeOmiya: 110,
+    trailhead: "御岳山ケーブル〜御岳山",
+    trailheadAddress: "東京都青梅市御岳山",
+    parking: "滝本駅駐車場（有料）",
+    season: "通年",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "12〜18",
+    courseCoefficient: [12, 18],
+    routes: [
+      { name: "御嶽山〜大岳山（往復）", time: "4時間", distance: "9.0km", elevation: "+500m" }
+    ],
+    description: "奥多摩の名峰。苔むすロックガーデンと山頂からの富士山の眺望が人気。",
+    yamapUrl: "https://yamap.com/mountains/109",
+    seasonNoGear: "通年",
+    season6Crampons: "なし",
+        trainAccess: "御嶽駅→バス20分→御岳登山口",
+    category: "人気の山",
+  },
 
-  
-  <section class="mountain-section" id="mountain-1">
-    <div class="section-header">
-      <div class="rank-num">#1</div>
-      <div>
-        <h2 class="section-title">筑波山 <span class="kana">（つくばさん）</span></h2>
-        <div class="badges">
-          <span class="elev-badge">⛰ 877m · 茨城県</span>
-          <span class="feature-tag" style="background:#e8f5e8;color:#2d6040">🔰 初心者おすすめ</span>
+  // 遠距離（3〜6時間）
+  {
+    id: "jonengatake",
+    lat: 36.3246,
+    lng: 137.8403,
+    name: "常念岳",
+    kana: "じょうねんだけ",
+    elevation: 2857,
+    area: "長野県北部",
+    driveTime: 290,
+    driveDistance: 250,
+    driveTimeShinjuku: 255,
+    driveTimeYokohama: 265,
+    driveTimeOmiya: 260,
+    trailhead: "一ノ沢",
+    trailheadAddress: "長野県安曇野市穂高有明",
+    parking: "一ノ沢駐車場（約60台・無料）",
+    season: "7月〜9月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "20〜36",
+    courseCoefficient: [20, 36],
+    routes: [
+      { name: "一ノ沢〜常念岳往復", time: "9時間", distance: "14.0km", elevation: "+1500m" },
+      { name: "三股〜蝶ヶ岳〜常念岳縦走", time: "11時間", distance: "18.0km", elevation: "+1800m" },
+    ],
+    description: "北アルプスのパノラマ台。山頂から槍・穂高の絶景が広がる。北アルプス入門の山。",
+    yamapUrl: "https://yamap.com/mountains/340",
+    seasonNoGear: "7月〜9月",
+    season6Crampons: "10月・6月",
+        trainAccess: "穂高駅→バス60分→一ノ沢（季節）",
+    category: "百名山",
+  },
+  {
+    id: "yakedake",
+    lat: 36.2268,
+    lng: 137.5868,
+    name: "焼岳",
+    kana: "やけだけ",
+    elevation: 2455,
+    area: "長野県北部",
+    driveTime: 280,
+    driveDistance: 245,
+    driveTimeShinjuku: 285,
+    driveTimeYokohama: 260,
+    driveTimeOmiya: 255,
+    trailhead: "中の湯温泉",
+    trailheadAddress: "長野県松本市安曇",
+    parking: "中の湯バス停付近（路肩）",
+    season: "7月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "14〜24",
+    courseCoefficient: [14, 24],
+    routes: [
+      { name: "中の湯ルート（往復）", time: "6時間", distance: "9.0km", elevation: "+900m" },
+      { name: "上高地〜焼岳往復", time: "5時間", distance: "8.0km", elevation: "+850m" },
+    ],
+    description: "北アルプス唯一の活火山。山頂付近の噴気と硫黄の景観が迫力満点。",
+    yamapUrl: "https://yamap.com/mountains/345",
+    seasonNoGear: "6月〜10月（規制確認要）",
+    season6Crampons: "不可（活火山・12本必要）",
+        trainAccess: "松本駅→バス→上高地（季節）",
+    category: "百名山",
+  },
+  {
+    id: "kashimayari",
+    lat: 36.7045,
+    lng: 137.7591,
+    name: "鹿島槍ヶ岳",
+    kana: "かしまやりがたけ",
+    elevation: 2889,
+    area: "長野県北部",
+    driveTime: 290,
+    driveDistance: 255,
+    driveTimeShinjuku: 285,
+    driveTimeYokohama: 260,
+    driveTimeOmiya: 255,
+    trailhead: "扇沢",
+    trailheadAddress: "長野県大町市平扇沢",
+    parking: "扇沢駐車場（約300台・無料）",
+    season: "7月〜9月",
+    difficulty: "上級",
+    courseCoefficientRange: "26〜42",
+    courseCoefficient: [26, 42],
+    routes: [
+      { name: "扇沢〜冷池山荘〜鹿島槍往復", time: "13時間（1泊）", distance: "22.0km", elevation: "+2000m" },
+      { name: "爺ヶ岳〜鹿島槍縦走", time: "12時間（1泊）", distance: "20.0km", elevation: "+1900m" },
+    ],
+    description: "北アルプス後立山連峰の主峰。南北に双耳峰をもつ優美な山容。吊尾根が特徴的。",
+    yamapUrl: "https://yamap.com/mountains/315",
+    seasonNoGear: "7月〜9月",
+    season6Crampons: "不可（12本必要）",
+        trainAccess: "信濃大町駅→バス30分→扇沢（季節）",
+    category: "百名山",
+  },
+  {
+    id: "koganzan",
+    lat: 35.7231,
+    lng: 138.5636,
+    name: "小金沢山",
+    kana: "こがねざわやま",
+    elevation: 2014,
+    area: "山梨県",
+    driveTime: 150,
+    driveDistance: 120,
+    driveTimeShinjuku: 130,
+    driveTimeYokohama: 140,
+    driveTimeOmiya: 180,
+    trailhead: "大菩薩峠〜牛奥ノ雁ヶ腹摺山",
+    trailheadAddress: "山梨県甲州市塩山上萩原",
+    parking: "上日川峠駐車場（約100台・無料）",
+    season: "5月〜11月",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "20〜28",
+    courseCoefficient: [20, 28],
+    routes: [
+      { name: "大菩薩峠〜小金沢山縦走（周回）", time: "6時間", distance: "14.0km", elevation: "+700m" },
+      { name: "上日川峠〜大菩薩嶺〜小金沢山", time: "7時間", distance: "16.0km", elevation: "+800m" },
+    ],
+    description: "大菩薩連嶺の一峰。富士山と南アルプスを望む開けた稜線歩きが魅力。",
+    yamapUrl: "https://yamap.com/mountains/402",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "塩山駅→バス25分→上日川峠（季節）",
+    category: "二百名山",
+  },
+  {
+    id: "mizugatake",
+    lat: 36.0044,
+    lng: 138.7006,
+    name: "瑞牆山周辺（廻り目平）",
+    kana: "みずがきやましゅうへん",
+    elevation: 2075,
+    area: "山梨県",
+    driveTime: 160,
+    driveDistance: 130,
+    driveTimeShinjuku: 150,
+    driveTimeYokohama: 150,
+    driveTimeOmiya: 190,
+    trailhead: "廻り目平",
+    trailheadAddress: "長野県南佐久郡川上村廻り目平",
+    parking: "廻り目平駐車場（約100台・500円）",
+    season: "5月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "25〜35",
+    courseCoefficient: [25, 35],
+    routes: [
+      { name: "廻り目平〜金峰山往復", time: "9時間", distance: "18.0km", elevation: "+1400m" },
+      { name: "廻り目平〜瑞牆山往復", time: "7時間", distance: "14.0km", elevation: "+1100m" },
+    ],
+    description: "奥秩父の巨岩地帯。花崗岩のクライミングの聖地としても名高い。",
+    yamapUrl: "https://yamap.com/mountains/176",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        category: "人気の山",
+  },
+
+  // 二百名山（追加分）
+  {
+    id: "arafune",
+    lat: 36.2108,
+    lng: 138.6281,
+    name: "荒船山",
+    kana: "あらふねやま",
+    elevation: 1423,
+    area: "群馬県",
+    driveTime: 155,
+    driveDistance: 125,
+    driveTimeShinjuku: 120,
+    driveTimeYokohama: 165,
+    driveTimeOmiya: 165,
+    trailhead: "内山峠",
+    trailheadAddress: "群馬県甘楽郡下仁田町",
+    parking: "内山峠駐車場（約20台・無料）",
+    season: "4月〜11月",
+    difficulty: "初級",
+    courseCoefficientRange: "14〜20",
+    courseCoefficient: [14, 20],
+    routes: [
+      { name: "内山峠〜艫岩〜行塚山往復", time: "3時間30分", distance: "7.0km", elevation: "+500m" },
+      { name: "相沢登山口〜荒船山周回", time: "4時間30分", distance: "9.0km", elevation: "+700m" },
+    ],
+    description: "航空母艦のような平らな山頂部が特徴的。艫岩からの断崖絶壁の眺望が圧巻。",
+    yamapUrl: "https://yamap.com/mountains/14407",
+    seasonNoGear: "4月〜11月",
+    season6Crampons: "12月〜3月",
+        category: "二百名山",
+  },
+  {
+    id: "asamamakurayama",
+    lat: 36.4756,
+    lng: 138.6447,
+    name: "浅間隠山",
+    kana: "あさまかくしやま",
+    elevation: 1757,
+    area: "群馬県",
+    driveTime: 175,
+    driveDistance: 145,
+    driveTimeShinjuku: 145,
+    driveTimeYokohama: 185,
+    driveTimeOmiya: 185,
+    trailhead: "二度上峠",
+    trailheadAddress: "群馬県吾妻郡長野原町",
+    parking: "二度上峠駐車場（約10台・無料）",
+    season: "4月〜11月",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "11〜16",
+    courseCoefficient: [11, 16],
+    routes: [
+      { name: "二度上峠〜山頂往復", time: "2時間30分", distance: "5.0km", elevation: "+450m" },
+    ],
+    description: "浅間山を隠すように立つことが名の由来。山頂からは浅間山・草津白根山の大展望。",
+    yamapUrl: "https://yamap.com/mountains/16579",
+    seasonNoGear: "4月〜11月",
+    season6Crampons: "12月〜3月",
+        category: "二百名山",
+  },
+  {
+    id: "kazahariyama",
+    lat: 36.0639,
+    lng: 138.5953,
+    name: "御座山",
+    kana: "おぐらやま",
+    elevation: 2112,
+    area: "長野県南部",
+    driveTime: 160,
+    driveDistance: 130,
+    driveTimeShinjuku: 165,
+    driveTimeYokohama: 155,
+    driveTimeOmiya: 190,
+    trailhead: "栗生登山口",
+    trailheadAddress: "長野県南佐久郡北相木村",
+    parking: "栗生登山口駐車場（約20台・無料）",
+    season: "5月〜10月",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "18〜24",
+    courseCoefficient: [18, 24],
+    routes: [
+      { name: "栗生〜御座山往復", time: "5時間", distance: "9.0km", elevation: "+950m" },
+    ],
+    description: "奥秩父の南端に位置する静かな山。展望台からの八ヶ岳・南アルプスの眺めが美しい。",
+    yamapUrl: "https://yamap.com/mountains/18",
+    seasonNoGear: "5月〜10月",
+    season6Crampons: "11月〜4月",
+        category: "二百名山",
+  },
+  {
+    id: "iwasugesan",
+    lat: 36.8006,
+    lng: 138.5747,
+    name: "岩菅山",
+    kana: "いわすげやま",
+    elevation: 2295,
+    area: "長野県北部",
+    driveTime: 195,
+    driveDistance: 165,
+    driveTimeShinjuku: 195,
+    driveTimeYokohama: 190,
+    driveTimeOmiya: 225,
+    trailhead: "聖平登山口",
+    trailheadAddress: "長野県下高井郡山ノ内町",
+    parking: "聖平登山口駐車場（約30台・無料）",
+    season: "6月〜10月",
+    difficulty: "中級",
+    courseCoefficientRange: "20〜26",
+    courseCoefficient: [20, 26],
+    routes: [
+      { name: "聖平〜岩菅山〜裏岩菅山往復", time: "6時間", distance: "12.0km", elevation: "+1100m" },
+      { name: "ノッキリ経由往復", time: "5時間", distance: "10.0km", elevation: "+950m" },
+    ],
+    description: "志賀高原の最高峰。北アルプスや北信五岳など360度の大展望が楽しめる。",
+    yamapUrl: "https://yamap.com/mountains/9836",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "11月〜5月",
+        trainAccess: "湯田中駅→バス25分→聖平入口（季節）",
+    category: "二百名山",
+  },
+  {
+    id: "iizunasan",
+    lat: 36.7281,
+    lng: 138.2039,
+    name: "飯縄山",
+    kana: "いいづなやま",
+    elevation: 1917,
+    area: "長野県北部",
+    driveTime: 215,
+    driveDistance: 180,
+    driveTimeShinjuku: 215,
+    driveTimeYokohama: 210,
+    driveTimeOmiya: 245,
+    trailhead: "一ノ鳥居苑地",
+    trailheadAddress: "長野県長野市富士里",
+    parking: "一ノ鳥居苑地駐車場（約100台・無料）",
+    season: "5月〜11月",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "14〜20",
+    courseCoefficient: [14, 20],
+    routes: [
+      { name: "一ノ鳥居〜飯縄山往復", time: "4時間", distance: "8.0km", elevation: "+850m" },
+    ],
+    description: "長野市の北西にそびえる修験道の山。北アルプスや善光寺平の眺望が広がる。",
+    yamapUrl: "https://yamap.com/mountains/4405",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "長野駅→バス30分→一ノ鳥居苑地",
+    category: "二百名山",
+  },
+  {
+    id: "kurohimesan",
+    lat: 36.8100,
+    lng: 138.1700,
+    name: "黒姫山",
+    kana: "くろひめやま",
+    elevation: 2053,
+    area: "長野県北部",
+    driveTime: 225,
+    driveDistance: 195,
+    driveTimeShinjuku: 220,
+    driveTimeYokohama: 220,
+    driveTimeOmiya: 255,
+    trailhead: "大橋林道登山口",
+    trailheadAddress: "長野県上水内郡信濃町",
+    parking: "大橋林道駐車場（約20台・無料）",
+    season: "6月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "24〜30",
+    courseCoefficient: [24, 30],
+    routes: [
+      { name: "大橋林道〜黒姫山往復", time: "5時間30分", distance: "10.0km", elevation: "+1000m" },
+      { name: "しなの鉄道黒姫駅〜古池〜黒姫山周回", time: "7時間", distance: "14.0km", elevation: "+1300m" },
+    ],
+    description: "北信五岳のひとつ。静かな樹林帯と山頂からの妙高・戸隠連峰の眺めが魅力。",
+    yamapUrl: "https://yamap.com/mountains/16886",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "11月〜4月",
+        trainAccess: "黒姫駅→バス20分→古池登山口（季節）",
+    category: "二百名山",
+  },
+  {
+    id: "kenashiyama",
+    lat: 35.4536,
+    lng: 138.5008,
+    name: "毛無山",
+    kana: "けなしやま",
+    elevation: 1964,
+    area: "山梨県",
+    driveTime: 145,
+    driveDistance: 118,
+    driveTimeShinjuku: 145,
+    driveTimeYokohama: 135,
+    driveTimeOmiya: 175,
+    trailhead: "毛無山登山口（朝霧高原）",
+    trailheadAddress: "静岡県富士宮市麓",
+    parking: "毛無山登山口駐車場（約30台・有料）",
+    season: "4月〜11月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "20〜28",
+    courseCoefficient: [20, 28],
+    routes: [
+      { name: "朝霧高原〜毛無山往復", time: "6時間", distance: "10.0km", elevation: "+1300m" },
+    ],
+    description: "富士山の展望台として名高い。朝霧高原からの急登が続くが山頂からの富士山の眺めは絶景。",
+    yamapUrl: "https://yamap.com/mountains/16",
+    seasonNoGear: "4月下旬〜11月",
+    season6Crampons: "12月〜4月中旬",
+        category: "二百名山",
+  },
+  {
+    id: "shirasunayama",
+    lat: 36.7747,
+    lng: 138.6783,
+    name: "白砂山",
+    kana: "しらすなやま",
+    elevation: 2140,
+    area: "群馬県",
+    driveTime: 210,
+    driveDistance: 175,
+    driveTimeShinjuku: 205,
+    driveTimeYokohama: 220,
+    driveTimeOmiya: 220,
+    trailhead: "野反湖",
+    trailheadAddress: "群馬県吾妻郡中之条町入山",
+    parking: "野反湖駐車場（約50台・無料）",
+    season: "6月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "24〜30",
+    courseCoefficient: [24, 30],
+    routes: [
+      { name: "野反湖〜白砂山往復", time: "6時間30分", distance: "13.0km", elevation: "+900m" },
+    ],
+    description: "野反湖を起点とするアクセスのよい奥志賀の山。高山植物が豊富で秋の草紅葉が美しい。",
+    yamapUrl: "https://yamap.com/mountains/16853",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "11月〜5月",
+        trainAccess: "中之条駅→バス→野反湖（季節）",
+    category: "二百名山",
+  },
+  {
+    id: "nanaitsurasan",
+    lat: 35.4503,
+    lng: 138.3664,
+    name: "七面山",
+    kana: "しちめんざん",
+    elevation: 1989,
+    area: "山梨県",
+    driveTime: 155,
+    driveDistance: 130,
+    driveTimeShinjuku: 175,
+    driveTimeYokohama: 145,
+    driveTimeOmiya: 185,
+    trailhead: "羽衣登山口（身延町）",
+    trailheadAddress: "山梨県南巨摩郡身延町",
+    parking: "羽衣橋駐車場（約30台・無料）",
+    season: "通年（冬期は注意）",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "26〜34",
+    courseCoefficient: [26, 34],
+    routes: [
+      { name: "羽衣〜七面山往復", time: "6時間30分", distance: "11.0km", elevation: "+1500m" },
+    ],
+    description: "日蓮宗の霊山。急登の参道を登ると富士山の展望台・敬慎院が迎える。信仰登山の山。",
+    yamapUrl: "https://yamap.com/mountains/8268",
+    seasonNoGear: "4月〜11月",
+    season6Crampons: "12月〜3月",
+        trainAccess: "身延駅→バス20分→羽衣登山口（季節）",
+    category: "二百名山",
+  },
+  {
+    id: "arasawadake",
+    lat: 37.0483,
+    lng: 139.0628,
+    name: "荒沢岳",
+    kana: "あらさわだけ",
+    elevation: 1969,
+    area: "新潟県",
+    driveTime: 300,
+    driveDistance: 165,
+    driveTimeShinjuku: 285,
+    driveTimeYokohama: 315,
+    driveTimeOmiya: 310,
+    trailhead: "前山登山口（銀山平）",
+    trailheadAddress: "新潟県魚沼市大白川",
+    parking: "銀山平駐車場（約50台・無料）",
+    season: "6月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "30〜38",
+    courseCoefficient: [30, 38],
+    routes: [
+      { name: "銀山平〜前グラ〜荒沢岳往復", time: "7時間", distance: "12.0km", elevation: "+1200m" },
+    ],
+    description: "奥只見の秘峰。前グラの岩場が核心部で鎖場が続く。越後三山の展望が素晴らしい。",
+    yamapUrl: "https://yamap.com/mountains/9268",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "11月〜5月",
+        category: "二百名山",
+  },
+  {
+    id: "nakawarayama",
+    lat: 35.9708,
+    lng: 138.9303,
+    name: "和名倉山",
+    kana: "わなくらやま",
+    elevation: 2036,
+    area: "埼玉県",
+    driveTime: 155,
+    driveDistance: 125,
+    driveTimeShinjuku: 135,
+    driveTimeYokohama: 150,
+    driveTimeOmiya: 170,
+    trailhead: "三ノ瀬登山口",
+    trailheadAddress: "山梨県甲州市塩山一ノ瀬高橋",
+    parking: "三ノ瀬駐車場（約20台・無料）",
+    season: "5月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "34〜42",
+    courseCoefficient: [34, 42],
+    routes: [
+      { name: "三ノ瀬〜将監峠〜和名倉山往復", time: "8時間", distance: "18.0km", elevation: "+1000m" },
+    ],
+    description: "奥秩父最深部の静かな山。長大なアプローチを経た頂上には深山の静寂が漂う。",
+    yamapUrl: "https://yamap.com/mountains/15125",
+    seasonNoGear: "5月〜10月",
+    season6Crampons: "11月〜4月",
+        category: "二百名山",
+  },
+  {
+    id: "yarigatake2",
+    lat: 36.3472,
+    lng: 138.0919,
+    name: "笊ヶ岳",
+    kana: "ざるがたけ",
+    elevation: 2629,
+    area: "山梨県",
+    driveTime: 155,
+    driveDistance: 130,
+    driveTimeShinjuku: 195,
+    driveTimeYokohama: 145,
+    driveTimeOmiya: 185,
+    trailhead: "老平登山口",
+    trailheadAddress: "山梨県南巨摩郡早川町雨畑",
+    parking: "老平駐車場（約10台・無料）",
+    season: "6月〜10月",
+    difficulty: "上級",
+    courseCoefficientRange: "42〜55",
+    courseCoefficient: [42, 55],
+    routes: [
+      { name: "老平〜笊ヶ岳往復（日帰り健脚）", time: "12時間", distance: "20.0km", elevation: "+2100m" },
+    ],
+    description: "南アルプス深部の難峰。標高差2000m超の急登が続く上級者向けの山。頂上から富士山が大きく見える。",
+    yamapUrl: "https://yamap.com/mountains/15947",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "不可（残雪多・12本必要）",
+        category: "二百名山",
+  },
+  {
+    id: "gakedake",
+    lat: 36.5131,
+    lng: 137.6736,
+    name: "餓鬼岳",
+    kana: "がきだけ",
+    elevation: 2647,
+    area: "長野県北部",
+    driveTime: 270,
+    driveDistance: 235,
+    driveTimeShinjuku: 260,
+    driveTimeYokohama: 265,
+    driveTimeOmiya: 300,
+    trailhead: "白沢登山口",
+    trailheadAddress: "長野県北安曇郡松川村",
+    parking: "白沢登山口駐車場（約30台・無料）",
+    season: "7月〜9月",
+    difficulty: "上級",
+    courseCoefficientRange: "50〜60",
+    courseCoefficient: [50, 60],
+    routes: [
+      { name: "白沢〜餓鬼岳〜餓鬼岳小屋（1泊）", time: "9時間", distance: "14.0km", elevation: "+1800m" },
+    ],
+    description: "北アルプスの展望台。安曇野側から急登をこなした先に広がる大展望が素晴らしい。",
+    yamapUrl: "https://yamap.com/mountains/151",
+    seasonNoGear: "7月〜9月",
+    season6Crampons: "不可（12本必要）",
+        category: "二百名山",
+  },
+  {
+    id: "arikayama",
+    lat: 36.4542,
+    lng: 137.7931,
+    name: "有明山",
+    kana: "ありあけやま",
+    elevation: 2268,
+    area: "長野県北部",
+    driveTime: 255,
+    driveDistance: 220,
+    driveTimeShinjuku: 250,
+    driveTimeYokohama: 250,
+    driveTimeOmiya: 285,
+    trailhead: "有明荘",
+    trailheadAddress: "長野県安曇野市穂高有明",
+    parking: "有明荘駐車場（約50台・無料）",
+    season: "6月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "28〜36",
+    courseCoefficient: [28, 36],
+    routes: [
+      { name: "有明荘〜有明山往復", time: "7時間", distance: "11.0km", elevation: "+1400m" },
+    ],
+    description: "安曇野のシンボル「安曇富士」とも呼ばれる美しい山容。山頂からの北アルプスの眺めが壮観。",
+    yamapUrl: "https://yamap.com/mountains/16362",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "11月〜5月",
+        category: "二百名山",
+  },
+  {
+    id: "keizandake",
+    lat: 35.8272,
+    lng: 137.8003,
+    name: "経ヶ岳",
+    kana: "きょうがたけ",
+    elevation: 2296,
+    area: "長野県南部",
+    driveTime: 240,
+    driveDistance: 205,
+    driveTimeShinjuku: 230,
+    driveTimeYokohama: 235,
+    driveTimeOmiya: 270,
+    trailhead: "仲仙寺",
+    trailheadAddress: "長野県上伊那郡宮田村",
+    parking: "仲仙寺駐車場（約30台・無料）",
+    season: "5月〜10月",
+    difficulty: "中級",
+    courseCoefficientRange: "26〜32",
+    courseCoefficient: [26, 32],
+    routes: [
+      { name: "仲仙寺〜経ヶ岳往復", time: "6時間", distance: "11.0km", elevation: "+1100m" },
+    ],
+    description: "中央アルプス北端の静かな山。深い原生林と山頂からの南・北アルプスの展望が魅力。",
+    yamapUrl: "https://yamap.com/mountains/2989",
+    seasonNoGear: "5月〜10月",
+    season6Crampons: "11月〜4月",
+        category: "二百名山",
+  },
+
+  // 百名山で未収録だったもの（全件追加）
+  {
+    id: "adatara",
+    lat: 37.6156,
+    lng: 140.2833,
+    name: "安達太良山",
+    kana: "あだたらやま",
+    elevation: 1700,
+    area: "福島県",
+    driveTime: 285,
+    driveDistance: 180,
+    driveTimeShinjuku: 265,
+    driveTimeYokohama: 275,
+    driveTimeOmiya: 240,
+    trailhead: "奥岳登山口",
+    trailheadAddress: "福島県二本松市奥岳温泉",
+    parking: "あだたら高原スキー場駐車場（約500台・無料）",
+    season: "5月〜10月（活火山・沼ノ平火口立入禁止）",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "12〜24",
+    courseCoefficient: [12, 24],
+    routes: [
+      { name: "ゴンドラ利用〜山頂往復", time: "3時間30分", distance: "6.0km", elevation: "+500m" },
+      { name: "奥岳〜くろがね小屋〜山頂周回", time: "5時間30分", distance: "10.0km", elevation: "+850m" },
+    ],
+    description: "「ほんとの空」で知られる高村光太郎の詩の舞台。ゴンドラで気軽に登れる人気の福島の名山。",
+    yamapUrl: "https://yamap.com/mountains/157",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
+        trainAccess: "二本松駅→バス30分→岳温泉（季節）",
+    category: "百名山",
+  },
+  {
+    id: "azuma",
+    lat: 37.7293,
+    lng: 140.2486,
+    name: "吾妻山",
+    kana: "あずまやま",
+    elevation: 2035,
+    area: "福島県",
+    driveTime: 300,
+    driveDistance: 200,
+    driveTimeShinjuku: 280,
+    driveTimeYokohama: 290,
+    driveTimeOmiya: 255,
+    trailhead: "浄土平",
+    trailheadAddress: "福島県福島市土湯温泉",
+    parking: "浄土平駐車場（約700台・500円）",
+    season: "6月〜10月（活火山・規制確認要）",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "16〜30",
+    courseCoefficient: [16, 30],
+    routes: [
+      { name: "浄土平〜一切経山往復", time: "2時間30分", distance: "5.0km", elevation: "+350m" },
+      { name: "浄土平〜東吾妻山〜一切経山周回", time: "5時間", distance: "10.0km", elevation: "+650m" },
+    ],
+    description: "磐梯吾妻スカイラインで浄土平まで車で行ける。一切経山の魔女の瞳（五色沼）は絶景。",
+    yamapUrl: "https://yamap.com/mountains/156",
+    seasonNoGear: "6月〜10月（規制確認要）",
+    season6Crampons: "11月〜5月",
+        trainAccess: "福島駅→バス→浄土平（季節）",
+    category: "百名山",
+  },
+  {
+    id: "echigokoma",
+    lat: 37.0439,
+    lng: 139.1167,
+    name: "越後駒ヶ岳",
+    kana: "えちごこまがたけ",
+    elevation: 2003,
+    area: "新潟県",
+    driveTime: 300,
+    driveDistance: 165,
+    driveTimeShinjuku: 285,
+    driveTimeYokohama: 250,
+    driveTimeOmiya: 230,
+    trailhead: "枝折峠",
+    trailheadAddress: "新潟県魚沼市大白川",
+    parking: "枝折峠駐車場（約30台・無料）",
+    season: "6月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "24〜36",
+    courseCoefficient: [24, 36],
+    routes: [
+      { name: "枝折峠〜越後駒ヶ岳往復", time: "8時間", distance: "16.0km", elevation: "+1100m" },
+      { name: "道行山経由往復", time: "9時間", distance: "18.0km", elevation: "+1200m" },
+    ],
+    description: "越後三山の主峰。稜線からの眺望が素晴らしい。枝折峠からの雲海も絶景。",
+    yamapUrl: "https://yamap.com/mountains/160",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "11月〜5月",
+        category: "百名山",
+  },
+  {
+    id: "hiragadake",
+    lat: 37.0374,
+    lng: 139.1589,
+    name: "平ヶ岳",
+    kana: "ひらがたけ",
+    elevation: 2141,
+    area: "新潟県",
+    driveTime: 340,
+    driveDistance: 210,
+    driveTimeShinjuku: 325,
+    driveTimeYokohama: 230,
+    driveTimeOmiya: 220,
+    trailhead: "鷹ノ巣登山口",
+    trailheadAddress: "新潟県魚沼市鷹ノ巣",
+    parking: "鷹ノ巣登山口駐車場（約50台・無料）",
+    season: "7月〜10月",
+    difficulty: "上級",
+    courseCoefficientRange: "28〜40",
+    courseCoefficient: [28, 40],
+    routes: [
+      { name: "鷹ノ巣〜平ヶ岳往復（日帰り強行）", time: "12時間", distance: "22.0km", elevation: "+1500m" },
+      { name: "中ノ岐林道ショートカット（要民宿送迎）", time: "7時間", distance: "12.0km", elevation: "+800m" },
+    ],
+    description: "深田久弥が「孤高の山」と呼んだ秘峰。長大なアプローチが必要な難関百名山の一つ。",
+    yamapUrl: "https://yamap.com/mountains/161",
+    seasonNoGear: "7月〜10月",
+    season6Crampons: "不可（小屋なし・超長距離）",
+        category: "百名山",
+  },
+  {
+    id: "naeba",
+    lat: 36.9114,
+    lng: 138.6683,
+    name: "苗場山",
+    kana: "なえばさん",
+    elevation: 2145,
+    area: "新潟県",
+    driveTime: 195,
+    driveDistance: 175,
+    driveTimeShinjuku: 175,
+    driveTimeYokohama: 185,
+    driveTimeOmiya: 150,
+    trailhead: "和田小屋（かぐら）",
+    trailheadAddress: "新潟県南魚沼郡湯沢町",
+    parking: "かぐらスキー場駐車場（無料）",
+    season: "7月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "20〜32",
+    courseCoefficient: [20, 32],
+    routes: [
+      { name: "和田小屋〜苗場山（往復）", time: "7時間", distance: "12.0km", elevation: "+1100m" },
+      { name: "小赤沢ルート往復", time: "6時間", distance: "10.0km", elevation: "+900m" }
+    ],
+    description: "山頂に広大な高層湿原が広がる独特の山。池塘が点在する別天地のような山頂台地。",
+    yamapUrl: "https://yamap.com/mountains/152",
+    seasonNoGear: "7月〜10月",
+    season6Crampons: "5月〜6月・11月",
+        trainAccess: "越後湯沢駅→バス30分→和田小屋（季節）",
+    category: "百名山",
+  },
+  {
+    id: "amakazari",
+    lat: 36.9147,
+    lng: 137.9281,
+    name: "雨飾山",
+    kana: "あまかざりやま",
+    elevation: 1963,
+    area: "長野県北部",
+    driveTime: 310,
+    driveDistance: 260,
+    driveTimeShinjuku: 295,
+    driveTimeYokohama: 280,
+    driveTimeOmiya: 295,
+    trailhead: "雨飾高原キャンプ場",
+    trailheadAddress: "長野県北安曇郡小谷村",
+    parking: "雨飾高原駐車場（約100台・無料）",
+    season: "7月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "18〜28",
+    courseCoefficient: [18, 28],
+    routes: [
+      { name: "雨飾高原〜山頂往復", time: "6時間", distance: "10.0km", elevation: "+1100m" },
+      { name: "小谷温泉ルート往復", time: "7時間", distance: "12.0km", elevation: "+1200m" },
+    ],
+    description: "北アルプス最北端の名峰。笹平の笹原と双耳峰の山容が美しい。紅葉の名所。",
+    yamapUrl: "https://yamap.com/mountains/165",
+    seasonNoGear: "7月〜10月",
+    season6Crampons: "5月〜6月・11月",
+        category: "百名山",
+  },
+  {
+    id: "hiuchi",
+    lat: 36.8367,
+    lng: 138.2381,
+    name: "火打山",
+    kana: "ひうちやま",
+    elevation: 2462,
+    area: "新潟県",
+    driveTime: 270,
+    driveDistance: 230,
+    driveTimeShinjuku: 255,
+    driveTimeYokohama: 270,
+    driveTimeOmiya: 250,
+    trailhead: "笹ヶ峰",
+    trailheadAddress: "新潟県妙高市杉野沢",
+    parking: "笹ヶ峰キャンプ場駐車場（約200台・500円）",
+    season: "7月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "20〜32",
+    courseCoefficient: [20, 32],
+    routes: [
+      { name: "笹ヶ峰〜高谷池〜火打山（往復）", time: "9時間", distance: "17.0km", elevation: "+1400m" }
+    ],
+    description: "妙高山と並ぶ頸城山塊の名峰。山頂付近の天狗の庭は高層湿原の絶景。高山植物が豊富。",
+    yamapUrl: "https://yamap.com/mountains/167",
+    seasonNoGear: "7月〜10月",
+    season6Crampons: "5月〜6月・11月",
+        trainAccess: "妙高高原駅→バス30分→笹ヶ峰（季節）",
+    category: "百名山",
+  },
+  {
+    id: "takatsuma",
+    lat: 36.7572,
+    lng: 138.1967,
+    name: "高妻山",
+    kana: "たかつまやま",
+    elevation: 2353,
+    area: "長野県北部",
+    driveTime: 240,
+    driveDistance: 215,
+    driveTimeShinjuku: 225,
+    driveTimeYokohama: 195,
+    driveTimeOmiya: 165,
+    trailhead: "戸隠キャンプ場",
+    trailheadAddress: "長野県長野市戸隠",
+    parking: "戸隠キャンプ場駐車場（有料）",
+    season: "7月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "22〜34",
+    courseCoefficient: [22, 34],
+    routes: [
+      { name: "戸隠〜弥勒尾根〜高妻山往復", time: "9時間", distance: "14.0km", elevation: "+1400m" },
+      { name: "戸隠〜一不動〜高妻山往復", time: "9時間30分", distance: "14.5km", elevation: "+1500m" },
+    ],
+    description: "戸隠連峰の最高峰。修験道の山として長い歴史を持つ。急登が続く本格登山コース。",
+    yamapUrl: "https://yamap.com/mountains/168",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "11月〜5月",
+        trainAccess: "長野駅→バス55分→戸隠キャンプ場（季節）",
+    category: "百名山",
+  },
+  {
+    id: "kasagatake",
+    lat: 36.3019,
+    lng: 137.5614,
+    name: "笠ヶ岳",
+    kana: "かさがたけ",
+    elevation: 2898,
+    area: "長野県北部",
+    driveTime: 345,
+    driveDistance: 275,
+    driveTimeShinjuku: 335,
+    driveTimeYokohama: 330,
+    driveTimeOmiya: 350,
+    trailhead: "新穂高温泉",
+    trailheadAddress: "岐阜県高山市奥飛騨温泉郷",
+    parking: "新穂高第３駐車場（約400台・600円）",
+    season: "7月〜9月",
+    difficulty: "上級",
+    courseCoefficientRange: "52〜78",
+    courseCoefficient: [52, 78],
+    routes: [
+      { name: "新穂高〜笠新道〜笠ヶ岳（往復）", time: "13時間", distance: "22.0km", elevation: "+2100m" }
+    ],
+    description: "日本百名山の中でも「きつい山」として知られる笠新道。稜線からの槍・穂高の眺望は圧巻。",
+    yamapUrl: "https://yamap.com/mountains/46",
+    seasonNoGear: "7月〜9月",
+    season6Crampons: "不可（12本必要）",
+        trainAccess: "新穂高口駅→バス→新穂高温泉（季節）",
+    category: "百名山",
+  },
+  {
+    id: "ontakesan",
+    lat: 35.8936,
+    lng: 137.4797,
+    name: "御嶽山",
+    kana: "おんたけさん",
+    elevation: 3067,
+    area: "長野県南部",
+    driveTime: 290,
+    driveDistance: 255,
+    driveTimeShinjuku: 290,
+    driveTimeYokohama: 275,
+    driveTimeOmiya: 300,
+    trailhead: "王滝口（田の原）",
+    trailheadAddress: "長野県木曽郡王滝村田の原",
+    parking: "田の原駐車場（約300台・無料）",
+    season: "7月〜9月（活火山・規制区域確認要）",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "18〜32",
+    courseCoefficient: [18, 32],
+    routes: [
+      { name: "田の原〜剣ヶ峰（往復）", time: "4時間30分", distance: "8.0km", elevation: "+600m" }
+    ],
+    description: "独立峰の霊峰。2014年噴火で現在も入山規制あり。規制区域・最新情報の確認必須。",
+    yamapUrl: "https://yamap.com/mountains/147",
+    seasonNoGear: "7月〜9月（規制確認要）",
+    season6Crampons: "不可（活火山規制）",
+        trainAccess: "木曽福島駅→バス55分→田の原（季節）",
+    category: "百名山",
+  },
+  {
+    id: "goryudake",
+    lat: 36.6894,
+    lng: 137.7706,
+    name: "五竜岳",
+    kana: "ごりゅうだけ",
+    elevation: 2814,
+    area: "長野県北部",
+    driveTime: 285,
+    driveDistance: 248,
+    driveTimeShinjuku: 280,
+    driveTimeYokohama: 260,
+    driveTimeOmiya: 280,
+    trailhead: "白馬五竜テレキャビン",
+    trailheadAddress: "長野県北安曇郡白馬村神城",
+    parking: "白馬五竜スキー場駐車場（無料）",
+    season: "7月〜9月",
+    difficulty: "上級",
+    courseCoefficientRange: "30〜46",
+    courseCoefficient: [30, 46],
+    routes: [
+      { name: "テレキャビン〜遠見尾根〜五竜岳（往復）", time: "10時間", distance: "16.0km", elevation: "+1400m" }
+    ],
+    description: "後立山連峰の主峰。山頂から剱岳・立山・白馬岳の眺望が圧巻。唐松岳との縦走が人気。",
+    yamapUrl: "https://yamap.com/mountains/173",
+    seasonNoGear: "7月〜9月",
+    season6Crampons: "不可（12本必要）",
+        trainAccess: "神城駅から徒歩10分（テレキャビン乗り場）",
+    category: "百名山",
+  },
+  {
+    id: "sukai",
+    lat: 36.6322,
+    lng: 139.3017,
+    name: "皇海山",
+    kana: "すかいさん",
+    elevation: 2144,
+    area: "群馬県",
+    driveTime: 230,
+    driveDistance: 185,
+    driveTimeShinjuku: 185,
+    driveTimeYokohama: 265,
+    driveTimeOmiya: 295,
+    trailhead: "皇海橋（クラシックルート）",
+    trailheadAddress: "栃木県日光市足尾町",
+    parking: "皇海橋駐車場（約20台・無料）※林道長距離",
+    season: "6月〜10月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "32〜40",
+    courseCoefficient: [32, 40],
+    routes: [
+      { name: "皇海橋〜皇海山（往復）", time: "5時間", distance: "11.0km", elevation: "+800m" }
+    ],
+    description: "上州と下野の国境に位置する深山。クラシックルートは林道が長く秘境感がある。",
+    yamapUrl: "https://yamap.com/mountains/169",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "11月〜5月",
+        category: "百名山",
+  },
+  {
+    id: "kisokoma",
+    lat: 35.7757,
+    lng: 137.8016,
+    name: "木曽駒ヶ岳",
+    kana: "きそこまがたけ",
+    elevation: 2956,
+    area: "長野県南部",
+    driveTime: 230,
+    driveDistance: 200,
+    driveTimeShinjuku: 210,
+    driveTimeYokohama: 230,
+    driveTimeOmiya: 225,
+    trailhead: "菅の台バスセンター（マイカー規制）",
+    trailheadAddress: "長野県駒ヶ根市赤穂黒川平",
+    parking: "菅の台バスセンター駐車場（約300台・800円）",
+    season: "7月〜10月",
+    seasonNoGear: "7月〜10月",
+    season6Crampons: "不可（残雪期は12本必要）",
+    difficulty: "初〜中級",
+    courseCoefficientRange: "10〜16",
+    courseCoefficient: [10, 16],
+    routes: [
+      { name: "千畳敷〜乗越浄土〜木曽駒ヶ岳往復", time: "4時間", distance: "4.0km", elevation: "+350m" },
+      { name: "千畳敷〜木曽駒ヶ岳〜濃ヶ池周回", time: "5時間", distance: "6.0km", elevation: "+400m" },
+    ],
+    description: "ロープウェイで標高2,612mの千畳敷カールまで一気にアクセス。初心者でも本格的な高山の雰囲気を楽しめる中央アルプスの主峰。夏の千畳敷カールは高山植物の宝庫。",
+    yamapUrl: "https://yamap.com/mountains/56",
+    trainAccess: "駒ヶ根駅→バス25分→菅の台バスセンター",
+    category: "百名山",
+  },
+  {
+    id: "utsukushigahara",
+    lat: 36.0836, lng: 138.0478,
+    name: "美ヶ原",
+    kana: "うつくしがはら",
+    elevation: 2034,
+    area: "長野県中部",
+    driveTime: 195, driveDistance: 175, driveTimeShinjuku: 175,
+    driveTimeYokohama: 185,
+    driveTimeOmiya: 210,
+    trailhead: "山本小屋ふる里館",
+    trailheadAddress: "長野県松本市入山辺",
+    parking: "山本小屋駐車場（約200台・無料）",
+    season: "5月〜10月", seasonNoGear: "5月〜10月", season6Crampons: "11月〜4月",
+    difficulty: "初級",
+    courseCoefficientRange: "6〜14", courseCoefficient: [6, 14],
+    routes: [
+      { name: "山本小屋〜王ヶ頭往復", time: "2時間", distance: "5.0km", elevation: "+100m" },
+      { name: "三城いこいの広場〜王ヶ頭往復", time: "4時間", distance: "10.0km", elevation: "+600m" },
+    ],
+    description: "日本最大規模の高原状の山。山頂付近まで車道が通じており、広大な草原と牛の放牧が広がる。王ヶ頭からはアルプス全山の大パノラマ。",
+    yamapUrl: "https://yamap.com/mountains/285",
+    trainAccess: "茅野駅→バス→美ヶ原（季節）",
+    category: "百名山",
+  },
+  {
+    id: "karamatsu",
+    lat: 36.6789, lng: 137.7458,
+    name: "唐松岳",
+    kana: "からまつだけ",
+    elevation: 2696,
+    area: "長野県北部",
+    driveTime: 270, driveDistance: 240, driveTimeShinjuku: 255,
+    driveTimeYokohama: 265,
+    driveTimeOmiya: 300,
+    trailhead: "八方尾根（ゴンドラ・リフト利用）",
+    trailheadAddress: "長野県北安曇郡白馬村北城",
+    parking: "八方第5駐車場ほか（約1000台・無料）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
+    difficulty: "中級",
+    courseCoefficientRange: "14〜27", courseCoefficient: [14, 27],
+    routes: [
+      { name: "八方池山荘〜唐松岳往復", time: "5時間", distance: "8.0km", elevation: "+700m" },
+      { name: "八方池山荘〜唐松岳〜不帰ノ嶮〜天狗山荘（1泊）", time: "10時間", distance: "14.0km", elevation: "+1000m" },
+    ],
+    description: "ゴンドラとリフトで1830mまで上がれる北アルプス入門の名峰。八方尾根から望む白馬三山と剱岳の展望が圧巻。稜線上の唐松山荘は人気の山小屋。",
+    yamapUrl: "https://yamap.com/mountains/226",
+    trainAccess: "白馬駅→バス15分→八方バスターミナル",
+    category: "二百名山",
+  },
+  {
+    id: "utsugi",
+    lat: 35.6472, lng: 137.7967,
+    name: "空木岳",
+    kana: "うつぎだけ",
+    elevation: 2864,
+    area: "長野県南部",
+    driveTime: 255, driveDistance: 220, driveTimeShinjuku: 235,
+    driveTimeYokohama: 230,
+    driveTimeOmiya: 225,
+    trailhead: "駒ヶ根高原（池山林道終点）",
+    trailheadAddress: "長野県駒ヶ根市赤穂",
+    parking: "池山林道終点駐車場（約20台・無料）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "32〜52", courseCoefficient: [32, 52],
+    routes: [
+      { name: "池山登山口〜空木岳（往復）", time: "10時間", distance: "18.0km", elevation: "+1700m" }
+    ],
+    description: "中央アルプス南部の盟主。長い池山尾根からの日帰りは健脚向け。木曽駒からの縦走でセットで登られることも多い。山頂からの御嶽・南アルプスの眺望が素晴らしい。",
+    yamapUrl: "https://yamap.com/mountains/57",
+    category: "百名山",
+  },
+  {
+    id: "enasan",
+    lat: 35.4397, lng: 137.5928,
+    name: "恵那山",
+    kana: "えなさん",
+    elevation: 2191,
+    area: "長野県南部",
+    driveTime: 270, driveDistance: 240, driveTimeShinjuku: 250,
+    driveTimeYokohama: 230,
+    driveTimeOmiya: 270,
+    trailhead: "神坂峠",
+    trailheadAddress: "長野県下伊那郡阿智村智里",
+    parking: "神坂峠駐車場（約30台・無料）",
+    season: "5月〜11月", seasonNoGear: "5月〜11月", season6Crampons: "12月〜4月",
+    difficulty: "中級",
+    courseCoefficientRange: "24〜41", courseCoefficient: [24, 41],
+    routes: [
+      { name: "神坂峠〜恵那山往復", time: "6時間", distance: "10.0km", elevation: "+700m" },
+      { name: "広河原〜恵那山往復", time: "8時間", distance: "14.0km", elevation: "+1300m" },
+    ],
+    description: "木曽山脈南端、中央アルプスの最南峰。深い森に覆われた山頂部は展望がないが、古くから信仰を集めた山。中央道を使えば大船から比較的アクセスしやすい。",
+    yamapUrl: "https://yamap.com/mountains/181",
+    category: "百名山",
+  },
+  {
+    id: "shiomidake",
+    lat: 35.4744, lng: 138.1589,
+    name: "塩見岳",
+    kana: "しおみだけ",
+    elevation: 3052,
+    area: "長野県南部",
+    driveTime: 270, driveDistance: 240, driveTimeShinjuku: 250,
+    driveTimeYokohama: 255,
+    driveTimeOmiya: 295,
+    trailhead: "鳥倉林道ゲート",
+    trailheadAddress: "長野県下伊那郡大鹿村大河原",
+    parking: "鳥倉林道ゲート手前駐車場（約50台・無料）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
+    difficulty: "上級",
+    courseCoefficientRange: "46〜68", courseCoefficient: [46, 68],
+    routes: [
+      { name: "鳥倉〜塩見岳往復（1泊）", time: "17時間", distance: "26.0km", elevation: "+2000m" },
+      { name: "鳥倉〜塩見岳〜三伏峠（1泊）", time: "12時間", distance: "20.0km", elevation: "+1800m" },
+    ],
+    description: "南アルプス中央部に位置する3000m超の峰。アクセスに時間がかかる分、静かな山行が楽しめる。山頂直下の岩場が核心部。日本最高所の峠・三伏峠（2580m）が拠点。",
+    yamapUrl: "https://yamap.com/mountains/73",
+    category: "百名山",
+  },
+  {
+    id: "arakawadake",
+    lat: 35.4197, lng: 138.2178,
+    name: "荒川岳",
+    kana: "あらかわだけ",
+    elevation: 3141,
+    area: "静岡県北部",
+    driveTime: 330, driveDistance: 280, driveTimeShinjuku: 310,
+    driveTimeYokohama: 255,
+    driveTimeOmiya: 295,
+    trailhead: "椹島ロッジ",
+    trailheadAddress: "静岡県静岡市葵区田代",
+    parking: "畑薙第一ダム臨時駐車場（無料・シャトルバス乗換必須）",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "10月〜6月",
+    difficulty: "上級",
+    courseCoefficientRange: "52〜88", courseCoefficient: [52, 88],
+    routes: [
+      { name: "椹島〜荒川岳〜赤石岳縦走（2泊）", time: "24時間", distance: "30.0km", elevation: "+3000m" },
+    ],
+    description: "南アルプス深部の3000m峰。前岳・中岳・悪沢岳（東岳）の総称。椹島まで一般車両進入不可のため、ほぼ必然的に1泊以上の山行になる。",
+    yamapUrl: "https://yamap.com/mountains/74",
+    category: "百名山",
+  },
+  {
+    id: "akaisidake",
+    lat: 35.3669, lng: 138.2336,
+    name: "赤石岳",
+    kana: "あかいしだけ",
+    elevation: 3121,
+    area: "静岡県北部",
+    driveTime: 330, driveDistance: 280, driveTimeShinjuku: 310,
+    driveTimeYokohama: 275,
+    driveTimeOmiya: 265,
+    trailhead: "椹島ロッジ",
+    trailheadAddress: "静岡県静岡市葵区田代",
+    parking: "畑薙第一ダム臨時駐車場（無料・シャトルバス乗換必須）",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "10月〜6月",
+    difficulty: "上級",
+    courseCoefficientRange: "48〜76", courseCoefficient: [48, 76],
+    routes: [
+      { name: "椹島〜赤石岳往復（1泊）", time: "18時間", distance: "24.0km", elevation: "+2600m" },
+      { name: "椹島〜荒川岳〜赤石岳縦走（2泊）", time: "24時間", distance: "30.0km", elevation: "+3000m" },
+    ],
+    description: "南アルプスの盟主とも呼ばれる3000m峰。荒川岳とのセット縦走が定番。赤石小屋からの山頂眺望は圧巻。南アルプスらしい大きなカールが特徴。",
+    yamapUrl: "https://yamap.com/mountains/75",
+    category: "百名山",
+  },
+  {
+    id: "hijiridade",
+    lat: 35.3253, lng: 138.1589,
+    name: "聖岳",
+    kana: "ひじりだけ",
+    elevation: 3013,
+    area: "静岡県北部",
+    driveTime: 340, driveDistance: 290, driveTimeShinjuku: 320,
+    driveTimeYokohama: 275,
+    driveTimeOmiya: 315,
+    trailhead: "便ヶ島（易老渡付近）",
+    trailheadAddress: "静岡県浜松市天竜区水窪町",
+    parking: "便ヶ島駐車場（約30台・無料）",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "10月〜6月",
+    difficulty: "上級",
+    courseCoefficientRange: "50〜74", courseCoefficient: [50, 74],
+    routes: [
+      { name: "便ヶ島〜聖岳往復（1泊）", time: "18時間", distance: "22.0km", elevation: "+2400m" },
+    ],
+    description: "南アルプス最南部の3000m峰。最南の3000m峰として知られる。深い森を抜けてたどり着く山頂からの展望は格別。光岳とのセット縦走も人気。",
+    yamapUrl: "https://yamap.com/mountains/76",
+    category: "百名山",
+  },
+  {
+    id: "terkari",
+    lat: 35.2944, lng: 138.0908,
+    name: "光岳",
+    kana: "てかりだけ",
+    elevation: 2591,
+    area: "静岡県北部",
+    driveTime: 360, driveDistance: 310, driveTimeShinjuku: 340,
+    driveTimeYokohama: 290,
+    driveTimeOmiya: 310,
+    trailhead: "易老渡",
+    trailheadAddress: "長野県飯田市南信濃和田",
+    parking: "易老渡手前駐車場（約30台・無料）",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "10月〜6月",
+    difficulty: "上級",
+    courseCoefficientRange: "48〜64", courseCoefficient: [48, 64],
+    routes: [
+      { name: "易老渡〜光岳往復（1泊）", time: "16時間", distance: "20.0km", elevation: "+2000m" },
+    ],
+    description: "百名山の最南部に位置する山。光石という白い岩が山名の由来。アクセスが非常に長く、百名山の中でも特に大変な山として知られる。聖岳とのセット縦走が一般的。",
+    yamapUrl: "https://yamap.com/mountains/77",
+    category: "百名山",
+  },
+  {
+    id: "yakushidake",
+    lat: 36.4572, lng: 137.6258,
+    name: "薬師岳",
+    kana: "やくしだけ",
+    elevation: 2926,
+    area: "富山県",
+    driveTime: 370, driveDistance: 330, driveTimeShinjuku: 355,
+    driveTimeYokohama: 355,
+    driveTimeOmiya: 390,
+    trailhead: "折立",
+    trailheadAddress: "富山県富山市有峰",
+    parking: "折立駐車場（約250台・無料）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
+    difficulty: "中〜上級",
+    courseCoefficientRange: "32〜55", courseCoefficient: [32, 55],
+    routes: [
+      { name: "折立〜薬師岳往復（日帰り）", time: "10時間", distance: "22.0km", elevation: "+1600m" },
+      { name: "折立〜薬師岳（1泊）", time: "10時間", distance: "22.0km", elevation: "+1600m" },
+    ],
+    description: "北アルプス南部の大きな山。有峰湖を抱く折立からのルートが一般的。広大なカールと日本最大級の高山植物群落が見どころ。太郎平小屋から望む夕暮れが絶景。",
+    yamapUrl: "https://yamap.com/mountains/232",
+    category: "百名山",
+  },
+  {
+    id: "kurobegorodam",
+    lat: 36.3833, lng: 137.5667,
+    name: "黒部五郎岳",
+    kana: "くろべごろうだけ",
+    elevation: 2840,
+    area: "富山県",
+    driveTime: 390, driveDistance: 350, driveTimeShinjuku: 375,
+    driveTimeYokohama: 350,
+    driveTimeOmiya: 365,
+    trailhead: "折立または新穂高",
+    trailheadAddress: "富山県富山市有峰",
+    parking: "折立駐車場（約250台・無料）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
+    difficulty: "上級",
+    courseCoefficientRange: "52〜80", courseCoefficient: [52, 80],
+    routes: [
+      { name: "折立〜太郎平〜黒部五郎岳往復（1泊）", time: "18時間", distance: "34.0km", elevation: "+2200m" },
+    ],
+    description: "北アルプス奥部の秘峰。巨大なカール（五郎カール）が圧巻で、高山植物の宝庫。折立からの日帰りは距離が長く1泊が一般的。鷲羽・水晶とのセット縦走が人気。",
+    yamapUrl: "https://yamap.com/mountains/233",
+    category: "百名山",
+  },
+  {
+    id: "ainodake",
+    lat: 35.4678, lng: 138.2411,
+    name: "間ノ岳",
+    kana: "あいのだけ",
+    elevation: 3190,
+    area: "山梨県",
+    driveTime: 195, driveDistance: 155, driveTimeShinjuku: 185,
+    driveTimeYokohama: 220,
+    driveTimeOmiya: 260,
+    trailhead: "広河原",
+    trailheadAddress: "山梨県南アルプス市芦安",
+    parking: "芦安駐車場（約400台・無料）※バス乗換",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "不可（12本必要）",
+    difficulty: "上級",
+    courseCoefficientRange: "44〜62", courseCoefficient: [44, 62],
+    routes: [
+      { name: "広河原〜北岳〜間ノ岳（1泊2日）", time: "13時間（2日合計）", distance: "22.0km", elevation: "+2200m" }
+    ],
+    description: "日本第3位の高峰（奥穂高岳と同高）。北岳から続く白峰三山縦走の中間点。広大な山頂からは南アルプス全山と富士山を一望。北岳とセットで1泊が一般的。",
+    yamapUrl: "https://yamap.com/mountains/139",
+    category: "百名山",
+  },
+  {
+    id: "noutori",
+    lat: 35.4344, lng: 138.2258,
+    name: "農鳥岳",
+    kana: "のうとりだけ",
+    elevation: 3026,
+    area: "山梨県",
+    driveTime: 195, driveDistance: 155, driveTimeShinjuku: 185,
+    driveTimeYokohama: 185,
+    driveTimeOmiya: 225,
+    trailhead: "広河原",
+    trailheadAddress: "山梨県南アルプス市芦安",
+    parking: "芦安駐車場（約400台・無料）※バス乗換",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "不可（12本必要）",
+    difficulty: "上級",
+    courseCoefficientRange: "52〜76", courseCoefficient: [52, 76],
+    routes: [
+      { name: "広河原〜北岳〜間ノ岳〜農鳥岳（2泊3日）", time: "18時間（3日合計）", distance: "28.0km", elevation: "+2500m" }
+    ],
+    description: "白峰三山の最南端。残雪期に山腹に現れる農鳥（田植えを知らせる雪形）が名の由来。北岳・間ノ岳と合わせた白峰三山縦走の締めくくり。奈良田への下山が一般的。",
+    yamapUrl: "https://yamap.com/mountains/140",
+    category: "人気の山",
+  },
+  {
+    id: "hakusan", lat: 36.1539, lng: 136.7714,
+    name: "白山", kana: "はくさん", elevation: 2702, area: "石川県",
+    driveTime: 345, driveDistance: 310, driveTimeShinjuku: 330,
+    driveTimeYokohama: 325,
+    driveTimeOmiya: 355,
+    trailhead: "別当出合", trailheadAddress: "石川県白山市白峰",
+    parking: "別当出合駐車場（約100台・無料）※夏季はシャトルバス",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
+    difficulty: "中級", courseCoefficientRange: "26〜39", courseCoefficient: [26, 39],
+    routes: [
+      { name: "別当出合〜砂防新道〜白山往復", time: "8時間", distance: "13.0km", elevation: "+1450m" },
+      { name: "別当出合〜砂防新道〜お花松原〜観光新道周回", time: "9時間", distance: "15.0km", elevation: "+1500m" },
+    ],
+    description: "富士山・立山と並ぶ日本三霊山のひとつ。高山植物の宝庫で、クロユリの群生が有名。北陸自動車道経由で大船から約6時間。山頂の白山比咩神社奥宮が信仰の中心。",
+    yamapUrl: "https://yamap.com/mountains/318",
+    trainAccess: "金沢駅→バス→別当出合（季節）",
+    category: "百名山",
+  },
+  {
+    id: "zaosan", lat: 38.1361, lng: 140.4436,
+    name: "蔵王山", kana: "ざおうさん", elevation: 1841, area: "宮城県・山形県",
+    driveTime: 360, driveDistance: 340, driveTimeShinjuku: 340,
+    driveTimeYokohama: 365,
+    driveTimeOmiya: 315,
+    trailhead: "刈田岳（蔵王エコーライン）", trailheadAddress: "宮城県刈田郡蔵王町遠刈田温泉",
+    parking: "刈田岳山頂駐車場（約200台・無料）",
+    season: "6月〜10月", seasonNoGear: "6月〜10月", season6Crampons: "11月〜5月",
+    difficulty: "初〜中級", courseCoefficientRange: "6〜16", courseCoefficient: [6, 16],
+    routes: [
+      { name: "刈田岳〜熊野岳往復", time: "2時間", distance: "5.0km", elevation: "+200m" },
+      { name: "地蔵山〜熊野岳〜刈田岳縦走", time: "4時間", distance: "8.0km", elevation: "+400m" },
+    ],
+    description: "東北を代表する火山。エコーラインで標高1600mまで車で上がれ、御釜（火口湖）の神秘的な青い水面が名物。冬の樹氷（スノーモンスター）でも知られる。東北道経由で大船から約6時間。",
+    yamapUrl: "https://yamap.com/mountains/302",
+    trainAccess: "白石蔵王駅→バス→蔵王温泉（季節）",
+    category: "百名山",
+  },
+  {
+    id: "karisaka",
+    lat: 35.9139, lng: 138.7031,
+    name: "雁坂嶺",
+    kana: "かりさかれい",
+    elevation: 2289,
+    area: "奥秩父",
+    driveTime: 160, driveDistance: 130, driveTimeShinjuku: 145,
+    driveTimeYokohama: 150,
+    driveTimeOmiya: 155,
+    trailhead: "道の駅みとみ（雁坂トンネル料金所付近）",
+    trailheadAddress: "山梨県山梨市三富川浦",
+    parking: "道の駅みとみ駐車場（無料）",
+    season: "5月〜11月", seasonNoGear: "5月〜11月", season6Crampons: "12月〜4月",
+    difficulty: "中級",
+    courseCoefficientRange: "22〜30", courseCoefficient: [22, 30],
+    routes: [
+      { name: "道の駅みとみ〜雁坂嶺往復", time: "6時間30分", distance: "13.0km", elevation: "+1200m" },
+      { name: "道の駅みとみ〜破風山〜雁坂嶺周回", time: "8時間", distance: "16.0km", elevation: "+1500m" },
+    ],
+    description: "奥秩父主脈の一峰で、雁坂峠（日本三大峠のひとつ）のすぐ北に位置する。深い奥秩父の雰囲気が漂う静かな山。雁坂トンネルを使えばアクセスしやすい。",
+    yamapUrl: "https://yamap.com/mountains/16130",
+    category: "二百名山",
+  },
+  {
+    id: "nokogiriyama",
+    lat: 35.8069, lng: 138.2347,
+    name: "鋸岳",
+    kana: "のこぎりだけ",
+    elevation: 2685,
+    area: "南アルプス北部",
+    driveTime: 230, driveDistance: 200, driveTimeShinjuku: 210,
+    driveTimeYokohama: 230,
+    driveTimeOmiya: 255,
+    trailhead: "戸台口（仙流荘）",
+    trailheadAddress: "長野県伊那市長谷溝口",
+    parking: "仙流荘前駐車場（無料）",
+    season: "6月〜10月", seasonNoGear: "6月〜10月", season6Crampons: "11月〜5月",
+    difficulty: "上級",
+    courseCoefficientRange: "45〜60", courseCoefficient: [45, 60],
+    routes: [
+      { name: "戸台〜角兵衛沢〜鋸岳往復", time: "10時間", distance: "18.0km", elevation: "+1800m" }
+    ],
+    description: "南アルプス北端の鋸状稜線が特徴的な難峰。甲斐駒ヶ岳の北西に位置し、第一高点への角兵衛沢ルートは崩壊地・鎖場があり上級者向け。南アルプス北部随一のバリエーションルート。",
+    yamapUrl: "https://yamap.com/mountains/2064",
+    category: "二百名山",
+  },
+  {
+    id: "minamikomagatake",
+    lat: 35.7253, lng: 137.8203,
+    name: "南駒ヶ岳",
+    kana: "みなみこまがたけ",
+    elevation: 2841,
+    area: "中央アルプス",
+    driveTime: 270, driveDistance: 240, driveTimeShinjuku: 250,
+    driveTimeYokohama: 270,
+    driveTimeOmiya: 295,
+    trailhead: "菅の台バスセンター",
+    trailheadAddress: "長野県駒ヶ根市赤穂",
+    parking: "菅の台バスセンター駐車場（有料・500円/日）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
+    difficulty: "上級",
+    courseCoefficientRange: "42〜52", courseCoefficient: [42, 52],
+    routes: [
+      { name: "越百山登山口〜南駒ヶ岳（往復）", time: "10時間", distance: "16.0km", elevation: "+1700m" }
+    ],
+    description: "中央アルプスの空木岳南に連なる二百名山。山頂からは360度の大展望が広がり、摺鉢窪カールが美しい。空木岳との縦走コースが人気。ロープウェイ利用で千畳敷からのアクセスも可能。",
+    yamapUrl: "https://yamap.com/mountains/2439",
+    trainAccess: "駒ヶ根駅→バス25分→菅の台バスセンター",
+    category: "二百名山",
+  },
+  {
+    id: "chogatake",
+    lat: 36.2644, lng: 137.7006,
+    name: "蝶ヶ岳",
+    kana: "ちょうがたけ",
+    elevation: 2677,
+    area: "北アルプス南部",
+    driveTime: 300, driveDistance: 265, driveTimeShinjuku: 280,
+    driveTimeYokohama: 300,
+    driveTimeOmiya: 325,
+    trailhead: "上高地バスターミナル",
+    trailheadAddress: "長野県松本市安曇上高地",
+    parking: "沢渡駐車場（有料・700円/日）＋バス",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
+    difficulty: "中級",
+    courseCoefficientRange: "28〜40", courseCoefficient: [28, 40],
+    routes: [
+      { name: "上高地〜長塀山〜蝶ヶ岳往復", time: "8時間", distance: "14.0km", elevation: "+1400m" },
+      { name: "三股〜蝶ヶ岳往復", time: "8時間", distance: "12.0km", elevation: "+1400m" },
+    ],
+    description: "常念山脈南端の山で、穂高・槍ヶ岳の絶好の展望台。稜線から望む穂高連峰の眺めは北アルプス随一。上高地または三股からのアクセスで、常念岳との縦走も人気。",
+    yamapUrl: "https://yamap.com/mountains/102",
+    trainAccess: "松本駅→バス→上高地（季節）",
+    category: "二百名山",
+  },
+  {
+    id: "otenshoudake",
+    lat: 36.3775, lng: 137.7197,
+    name: "大天井岳",
+    kana: "おてんしょうだけ",
+    elevation: 2922,
+    area: "北アルプス南部",
+    driveTime: 320, driveDistance: 285, driveTimeShinjuku: 300,
+    driveTimeYokohama: 320,
+    driveTimeOmiya: 345,
+    trailhead: "中房温泉登山口",
+    trailheadAddress: "長野県安曇野市穂高有明",
+    parking: "有明荘駐車場（有料・1000円/日）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
+    difficulty: "上級",
+    courseCoefficientRange: "42〜56", courseCoefficient: [42, 56],
+    routes: [
+      { name: "中房温泉〜合戦尾根〜燕岳〜大天井岳往復", time: "11時間", distance: "18.0km", elevation: "+1800m" },
+    ],
+    description: "常念山脈の最高峰で北アルプス表銀座縦走路の要衝。合戦尾根〜燕岳を経由するコースは北アルプス三大急登のひとつ。山頂からは360度の展望で槍・穂高が間近に見える。",
+    yamapUrl: "https://yamap.com/mountains/1499",
+    trainAccess: "穂高駅→バス60分→中房温泉（季節）",
+    category: "二百名山",
+  },
+  {
+    id: "harinokidake",
+    lat: 36.5261, lng: 137.6658,
+    name: "針ノ木岳",
+    kana: "はりのきだけ",
+    elevation: 2821,
+    area: "北アルプス後立山",
+    driveTime: 330, driveDistance: 295, driveTimeShinjuku: 315,
+    driveTimeYokohama: 330,
+    driveTimeOmiya: 355,
+    trailhead: "扇沢",
+    trailheadAddress: "長野県大町市平扇沢",
+    parking: "扇沢市営駐車場（無料）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
+    difficulty: "中級",
+    courseCoefficientRange: "28〜38", courseCoefficient: [28, 38],
+    routes: [
+      { name: "扇沢〜針ノ木雪渓〜針ノ木岳往復", time: "8時間", distance: "14.0km", elevation: "+1400m" },
+      { name: "扇沢〜針ノ木岳〜蓮華岳周回", time: "9時間", distance: "15.0km", elevation: "+1500m" },
+    ],
+    description: "後立山連峰南端、日本三大雪渓のひとつ針ノ木大雪渓で知られる山。扇沢から雪渓を登るルートは爽快。隣の蓮華岳とのセット登山が定番。",
+    yamapUrl: "https://yamap.com/mountains/54",
+    trainAccess: "信濃大町駅→バス30分→扇沢（季節）",
+    category: "二百名山",
+  },
+  {
+    id: "eboshidake_kita",
+    lat: 36.5769, lng: 137.6483,
+    name: "烏帽子岳（北ア）",
+    kana: "えぼしだけ",
+    elevation: 2628,
+    area: "北アルプス裏銀座",
+    driveTime: 355, driveDistance: 320, driveTimeShinjuku: 340,
+    driveTimeYokohama: 355,
+    driveTimeOmiya: 380,
+    trailhead: "高瀬ダム（ブナ立尾根登山口）",
+    trailheadAddress: "長野県大町市平",
+    parking: "七倉駐車場（無料）＋タクシー",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
+    difficulty: "上級",
+    courseCoefficientRange: "38〜50", courseCoefficient: [38, 50],
+    routes: [
+      { name: "高瀬ダム〜ブナ立尾根〜烏帽子岳往復", time: "9時間", distance: "14.0km", elevation: "+1500m" },
+    ],
+    description: "裏銀座縦走路の入口に立つ山。ブナ立尾根は北アルプス三大急登のひとつ。コマクサの群生地として名高く、稜線からの展望も抜群。野口五郎岳への縦走が人気。",
+    yamapUrl: "https://yamap.com/mountains/55",
+    category: "二百名山",
+  },
+  {
+    id: "noguchigoro",
+    lat: 36.5297, lng: 137.7008,
+    name: "野口五郎岳",
+    kana: "のぐちごろうだけ",
+    elevation: 2924,
+    area: "北アルプス裏銀座",
+    driveTime: 355, driveDistance: 320, driveTimeShinjuku: 340,
+    driveTimeYokohama: 355,
+    driveTimeOmiya: 380,
+    trailhead: "高瀬ダム（ブナ立尾根登山口）",
+    trailheadAddress: "長野県大町市平",
+    parking: "七倉駐車場（無料）＋タクシー",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
+    difficulty: "上級",
+    courseCoefficientRange: "44〜58", courseCoefficient: [44, 58],
+    routes: [
+      { name: "高瀬ダム〜ブナ立尾根〜烏帽子岳〜野口五郎岳（1泊）", time: "2日間", distance: "22.0km", elevation: "+1900m" },
+    ],
+    description: "裏銀座縦走路中央に位置する北アルプスの静かな名峰。丸みを帯びた山容と花崗岩の白い砂礫地が印象的。水晶岳・鷲羽岳への縦走拠点で、野口五郎小屋からの夕景が美しい。",
+    yamapUrl: "https://yamap.com/mountains/56",
+    category: "二百名山",
+  },
+
+];
+
+const AREAS = ["すべて", "埼玉県", "山梨県", "新潟県", "東京都", "栃木県", "神奈川県", "福島県", "群馬県", "茨城県", "長野県北部", "長野県南部", "静岡県"];
+const CATEGORIES = ["すべて", "百名山", "二百名山", "人気の山"];
+
+const SORTS = ["近い順", "標高順", "体力度順", "五十音順"];
+
+function parseTimeToMinutes(timeStr) {
+  const hMatch = timeStr.match(/(\d+)時間/);
+  const mMatch = timeStr.match(/(\d+)分/);
+  const h = hMatch ? parseInt(hMatch[1]) : 0;
+  const m = mMatch ? parseInt(mMatch[1]) : 0;
+  return h * 60 + m;
+}
+
+function isDayTrip(mountain) {
+  return mountain.routes.some(r => parseTimeToMinutes(r.time) <= 480);
+}
+
+// テーマカラー（彩度を落としたアースカラー）
+const C = {
+  primary:    "#4a5e4a",
+  primaryDark:"#3a4e3a",
+  bg:         "#f0ede8",
+  card:       "#faf8f5",
+  border:     "#ddd8d0",
+  textMain:   "#3a3530",
+  textSub:    "#7a7068",
+  textMuted:  "#a09888",
+};
+
+const difficultyColor = {
+  "初級":    { bg: "#e8f0e4", color: "#4a6840" },
+  "初〜中級":{ bg: "#e4ecf0", color: "#405868" },
+  "中級":    { bg: "#f0ece0", color: "#685e30" },
+  "中〜上級":{ bg: "#f0e8e0", color: "#685038" },
+  "上級":    { bg: "#f0e0e0", color: "#683838" },
+};
+
+function formatDriveTime(min) {
+  if (min < 60) return `${min}分`;
+  const h = Math.floor(min / 60);
+  const m = min % 60;
+  return m === 0 ? `${h}時間` : `${h}時間${m}分`;
+}
+
+
+function MapView({ mountains, onSelect }) {
+  const mapRef = useRef(null);
+  const mapInstanceRef = useRef(null);
+  const markersRef = useRef([]);
+  const [mapReady, setMapReady] = useState(false);
+
+  const filtered = mountains; // 呼び出し元でフィルター済み
+
+  // cdnjsからLeafletをロード（Artifact環境で動作）
+  useEffect(() => {
+    if (window.L) { setMapReady(true); return; }
+
+    const cssId = "leaflet-css";
+    if (!document.getElementById(cssId)) {
+      const link = document.createElement("link");
+      link.id = cssId;
+      link.rel = "stylesheet";
+      link.href = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css";
+      document.head.appendChild(link);
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js";
+    script.onload = () => setMapReady(true);
+    script.onerror = () => console.error("Leaflet load failed");
+    document.head.appendChild(script);
+  }, []);
+
+  // 地図初期化
+  useEffect(() => {
+    if (!mapReady || !mapRef.current || mapInstanceRef.current) return;
+    const L = window.L;
+    const map = L.map(mapRef.current, { zoomControl: true }).setView([36.3, 138.5], 7);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>",
+      maxZoom: 18,
+    }).addTo(map);
+    mapInstanceRef.current = map;
+  }, [mapReady]);
+
+  // マーカー更新
+  useEffect(() => {
+    if (!mapReady || !mapInstanceRef.current) return;
+    const L = window.L;
+    const map = mapInstanceRef.current;
+
+    markersRef.current.forEach(m => m.remove());
+    markersRef.current = [];
+
+    filtered.forEach(mountain => {
+      if (!mountain.lat || !mountain.lng) return;
+      const dayTrip = isDayTrip(mountain);
+      const color = dayTrip ? "#15803d" : "#b45309";
+
+      const icon = L.divIcon({
+        className: "",
+        html: `<div style="width:30px;height:30px;border-radius:50%;background:${color};border:2.5px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;cursor:pointer;">⛰</div>`,
+        iconSize: [30, 30],
+        iconAnchor: [15, 15],
+        popupAnchor: [0, -18],
+      });
+
+      const marker = L.marker([mountain.lat, mountain.lng], { icon }).addTo(map);
+      marker.bindPopup(`
+        <div style="min-width:170px;font-family:sans-serif;padding:2px;">
+          <div style="font-weight:bold;font-size:14px;margin-bottom:4px;">${mountain.name}</div>
+          <div style="font-size:12px;color:#555;">${mountain.elevation.toLocaleString()}m ・ ${mountain.area}</div>
+          <div style="font-size:11px;color:#777;margin-top:3px;">🚗 ${formatDriveTime(mountain.driveTime)}</div>
+          <div style="font-size:11px;margin-top:3px;font-weight:600;color:${dayTrip ? "#15803d" : "#b45309"};">${dayTrip ? "🌅 日帰り可" : "🏕 宿泊推奨"}</div>
+          <button id="btn-${mountain.id}" style="margin-top:8px;width:100%;padding:7px;background:#1a3d2b;color:white;border:none;border-radius:7px;font-size:12px;cursor:pointer;font-weight:bold;">詳細を見る →</button>
+        </div>
+      `);
+      marker.on("popupopen", () => {
+        setTimeout(() => {
+          const btn = document.getElementById("btn-" + mountain.id);
+          if (btn) btn.onclick = () => onSelect(mountain.id);
+        }, 50);
+      });
+      markersRef.current.push(marker);
+    });
+  }, [mapReady, filtered, onSelect]);
+
+  return (
+    <div style={{ position: "relative" }}>
+      {!mapReady && (
+        <div style={{ height: 460, borderRadius: 12, background: "#e8f0e9", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 8 }}>
+          <div style={{ fontSize: 32 }}>🗺️</div>
+          <div style={{ color: "#555", fontSize: 14 }}>地図を読み込み中...</div>
+        </div>
+      )}
+      <div ref={mapRef} style={{ height: 460, borderRadius: 12, overflow: "hidden", display: mapReady ? "block" : "none" }} />
+      <div style={{
+        position: "absolute", bottom: 12, left: 12, zIndex: 1000,
+        background: "white", borderRadius: 8, padding: "8px 12px",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.15)", fontSize: 11,
+        display: "flex", flexDirection: "column", gap: 5
+      }}>
+        <div style={{ fontWeight: "bold", marginBottom: 2, color: "#333" }}>凡例</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#15803d" }} />
+          <span>日帰り可（8h以内）</span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#b45309" }} />
+          <span>宿泊推奨</span>
         </div>
       </div>
     </div>
+  );
+}
 
-    <div class="meta-strip">
-      <div class="meta-chip">🚗 新宿から <strong>2時間30分</strong></div>
-      <div class="meta-chip">🥾 難易度 <strong>初級</strong></div>
-      <div class="meta-chip">📅 通年</div>
+function CourseMeter({ range }) {
+  const [min, max] = range;
+  const pct = (v) => (v / 70) * 100;
+  return (
+    <div className="relative h-2 bg-gray-200 rounded-full my-2">
+      <div
+        className="absolute h-2 rounded-full"
+        style={{
+          left: `${pct(min)}%`,
+          width: `${pct(max) - pct(min)}%`,
+          backgroundColor: max >= 40 ? "#8a4040" : max >= 25 ? "#8a6830" : "#4a6840",
+        }}
+      />
+      {[0, 10, 20, 30, 40, 50, 60, 70].map(v => (
+        <span key={v} className="absolute text-xs text-gray-400" style={{ left: `${pct(v)}%`, top: "10px", transform: "translateX(-50%)" }}>{v}</span>
+      ))}
     </div>
+  );
+}
 
-    <div class="mountain-body">
-      
-<p>筑波山は、関東平野にぽつんと佇む独立峰。標高877mと百名山の中では最も低い山ですが、「西の富士、東の筑波」と並び称されるほど関東を代表する名峰です。</p>
-<p>最大の魅力は<strong>アクセスのよさと多様なルート</strong>。ロープウェイやケーブルカーを使えば山頂直下まで一気に上がれるので、体力に自信がない方でも頂上の眺望を楽しめます。もちろん自分の足で登ることも可能で、御幸ヶ原コースや白雲橋コースなど複数のルートから選べます。</p>
-<p>山頂は「男体山」と「女体山」のふたつのピークに分かれており、どちらからも関東平野を一望する大パノラマが待っています。晴れた日には富士山や東京スカイツリーまで見渡せることも。春は梅・桜、秋は紅葉と、四季を通じて楽しめる懐の深さも魅力です。</p>
-<p><strong>百名山デビューの一座として、これ以上ない山</strong>だと思います。登山後はつくば市内の飲食店でゆっくりするのもおすすめです。</p>
+function GearBadge({ mountain, month }) {
+  const noGear = canClimbNoGear(mountain, month);
+  const sixOk = canClimb6Crampons(mountain, month);
+  if (noGear) return <span style={{ display: "inline-flex", alignItems: "center", gap: "4px", background: "#e6f0e8", color: "#2d6040", borderRadius: "8px", padding: "3px 9px", fontSize: "12px", fontWeight: 700 }}>アイゼン不要</span>;
+  if (sixOk) return <span style={{ display: "inline-flex", alignItems: "center", gap: "4px", background: "#f5f0e0", color: "#7a5a20", borderRadius: "8px", padding: "3px 9px", fontSize: "12px", fontWeight: 700 }}>6本で可</span>;
+  return <span style={{ display: "inline-flex", alignItems: "center", gap: "4px", background: "#f5e8e8", color: "#8a3030", borderRadius: "8px", padding: "3px 9px", fontSize: "12px", fontWeight: 700 }}>12本必要</span>;
+}
 
+function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
+  const [min, max] = mountain.courseCoefficient;
+  const stars = max >= 45 ? 5 : max >= 35 ? 4 : max >= 25 ? 3 : max >= 15 ? 2 : 1;
+  const now = new Date().getMonth() + 1;
+  const next = now === 12 ? 1 : now + 1;
+  return (
+    <div className="max-w-2xl mx-auto">
+      <button onClick={onBack} className="mb-4 text-stone-600 flex items-center gap-1 hover:underline text-sm">
+        ← 一覧に戻る
+      </button>
+      <div className="rounded-xl overflow-hidden" style={{ background: "#4a5e4a" }}>
+        <div className="p-4 flex justify-between items-start gap-2">
+          <div style={{ minWidth: 0, flex: 1 }}>
+            <h2 className="text-xl font-bold text-white leading-tight">{mountain.name}</h2>
+            <p className="text-stone-300 text-xs mt-1">{mountain.kana} · {mountain.area}</p>
+            <CategoryBadge category={mountain.category} />
+          </div>
+          <div className="text-right" style={{ flexShrink: 0 }}>
+            <div className="text-2xl font-bold text-white">{mountain.elevation.toLocaleString()}<span className="text-sm">m</span></div>
+            <span className="text-xs px-2 py-1 rounded-full mt-1 inline-block" style={{ backgroundColor: (difficultyColor[mountain.difficulty]||{bg:"#e8e8e8"}).bg, color: (difficultyColor[mountain.difficulty]||{color:"#555"}).color }}>{mountain.difficulty}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-xl p-4">
+        <h3 className="font-semibold text-gray-700 flex items-center gap-2 mb-3">
+          🚗 {departure}駅からのアクセス
+        </h3>
+        <div className="grid grid-cols-2 gap-4 bg-gray-50 rounded-lg p-3">
+          <div><p className="text-xs text-gray-500">所要時間</p><p className="font-bold text-lg">{formatDriveTime(departure === "新宿" && mountain.driveTimeShinjuku ? mountain.driveTimeShinjuku : mountain.driveTime)}</p></div>
+          <div><p className="text-xs text-gray-500">距離</p><p className="font-bold text-lg">{mountain.driveDistance}km</p></div>
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-xl p-4">
+        <h3 className="font-semibold text-gray-700 flex items-center gap-2 mb-3">
+          📍 登山口情報
+        </h3>
+        <div className="space-y-2 text-sm">
+          <div className="flex gap-2"><span className="text-gray-500 shrink-0" style={{ minWidth: "56px" }}>登山口</span><span className="font-medium">{mountain.trailhead}</span></div>
+          <div className="flex gap-2"><span className="text-gray-500 shrink-0" style={{ minWidth: "56px" }}>住所</span><span style={{ wordBreak: "break-all" }}>{mountain.trailheadAddress}</span></div>
+          <div className="flex gap-2"><span className="text-gray-500 shrink-0" style={{ minWidth: "56px" }}>駐車場</span><span>{mountain.parking}</span></div>
+          {mountain.trainAccess && (
+            <div className="flex gap-4 items-start mt-1 rounded-lg p-2" style={{ background: "#eef4fb" }}>
+              <span className="text-base">🚃</span>
+              <span className="text-sm" style={{ color: "#1a4a70" }}>{mountain.trainAccess}</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-xl p-4">
+        <h3 className="font-semibold text-gray-700 flex items-center gap-2 mb-3">
+          代表的な登山ルート
+        </h3>
+        <div className="space-y-3">
+          {mountain.routes.map((r, i) => (
+            <div key={i} className="bg-gray-50 rounded-lg p-3">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: "#4a5e4a" }}>{i + 1}</span>
+                <span className="font-medium text-sm">{r.name}</span>
+              </div>
+              <div className="grid grid-cols-3 gap-2 text-xs text-gray-600">
+                <div><span className="text-gray-400">コースタイム</span><br /><span className="font-semibold text-gray-800">{r.time}</span></div>
+                <div><span className="text-gray-400">距離</span><br /><span className="font-semibold text-gray-800">{r.distance}</span></div>
+                <div><span className="text-gray-400">標高差</span><br /><span className="font-semibold text-gray-800">{r.elevation}</span></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-xl p-4">
+        <h3 className="font-semibold text-gray-700 flex items-center gap-2 mb-2">
+          🔄 コース定数（YAMAP参照）
+        </h3>
+        <div className="bg-gray-50 rounded-lg p-3">
+          <div className="text-3xl font-bold">{mountain.courseCoefficientRange}</div>
+          <div className="text-stone-600 text-sm font-medium mt-1">
+            体力度{"★".repeat(stars)}{"☆".repeat(5 - stars)} ({mountain.difficulty})
+          </div>
+          <div className="mt-3 mb-6">
+            <CourseMeter range={mountain.courseCoefficient} />
+          </div>
+        </div>
+        <div className="mt-3 rounded-lg overflow-hidden text-xs" style={{ border: "1px solid #ddd8d0" }}>
+          <div className="grid grid-cols-2" style={{ borderBottom: "1px solid #ddd8d0" }}>
+            <div className="px-3 py-2 text-center font-semibold" style={{ background: "#e8eee8", color: "#3a5240", borderRight: "1px solid #ddd8d0" }}>今月（{now}月）</div>
+            <div className="px-3 py-2 text-center font-semibold" style={{ background: "#f0ede8", color: "#5a4e3a" }}>来月（{next}月）</div>
+          </div>
+          <div className="grid grid-cols-2">
+            <div className="flex items-center justify-center px-3 py-3" style={{ background: "#f5f8f5", borderRight: "1px solid #ddd8d0" }}>
+              <GearBadge mountain={mountain} month={now} />
+            </div>
+            <div className="flex items-center justify-center px-3 py-3" style={{ background: "#faf8f5" }}>
+              <GearBadge mountain={mountain} month={next} />
+            </div>
+          </div>
+          <div className="px-3 py-2 text-center" style={{ background: "#f8f6f2", borderTop: "1px solid #ddd8d0", color: "#7a7068" }}>
+            アイゼン不要：{mountain.seasonNoGear || mountain.season}　6本可：{mountain.season6Crampons || "—"}
+          </div>
+        </div>
+        <p className="text-sm text-gray-600 mt-2">{mountain.description}</p>
+      </div>
+
+      <div className="mt-4 flex gap-2">
+        <a href={mountain.yamapUrl} target="_blank" rel="noopener noreferrer"
+          className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl text-white font-bold text-sm"
+          style={{ backgroundColor: "#4a5e4a" }}>
+          🔗 YAMAPで詳細を見る ↗
+        </a>
+        <button
+          onClick={() => onReport(mountain.name)}
+          className="flex items-center justify-center gap-1 px-4 rounded-xl font-bold text-sm"
+          style={{ background: "#f5f0eb", color: "#7a6a58", border: "1px solid #ddd8d0", cursor: "pointer", whiteSpace: "nowrap" }}
+        >
+          ✏️ 改善提案・修正依頼
+        </button>
+      </div>
+
+      <div className="mt-4 border border-stone-200 rounded-xl p-4 text-xs text-gray-600">
+        <p className="font-semibold mb-1">⚠ ご注意</p>
+        所要時間は高速道路利用時の目安です。交通状況や季節により大きく変動します。コース定数は一般的なコースタイムを基に算出した参考値です。登山前は必ず最新の道路状況・登山道情報・天気予報をご確認ください。マイカー規制やバス運行期間にもご注意ください。
+      </div>
     </div>
+  );
+}
 
-    <div class="best-season">
-      <span class="best-label">🌸 おすすめの時期</span>
-      <span>3月〜5月（春の梅・桜）、10月〜11月（紅葉）</span>
-    </div>
-    <div class="access-info">
-      <span class="access-label">🚗 アクセス</span>
-      <span>新宿駅から車で約2時間30分。つくばエクスプレス利用でつくば駅から登山口バスも便利。</span>
-    </div>
+// カードの山カテゴリバッジ
+function CategoryBadge({ category }) {
+  const s = CATEGORY_STYLE[category] || { bg: "#e8e8e8", color: "#555", label: category };
+  return (
+    <span className="text-xs px-1.5 py-0.5 rounded font-medium"
+      style={{ backgroundColor: s.bg, color: s.color, fontSize: "10px" }}>
+      {s.label}
+    </span>
+  );
+}
 
-    <a href="/mountains/tsukuba/" class="detail-btn">
-      筑波山の詳細情報を見る →
-    </a>
-  </section>
-  <div class="section-divider"></div>
-  <section class="mountain-section" id="mountain-2">
-    <div class="section-header">
-      <div class="rank-num">#2</div>
-      <div>
-        <h2 class="section-title">赤城山 <span class="kana">（あかぎやま）</span></h2>
-        <div class="badges">
-          <span class="elev-badge">⛰ 1,828m · 群馬県</span>
-          <span class="feature-tag" style="background:#f0f5e8;color:#3a5a20">🌿 景色が素晴らしい</span>
+// コース定数の体力度バッジ
+function CourseBadge({ courseCoefficient, courseCoefficientRange }) {
+  const max = courseCoefficient[1];
+  const bg = max >= 25 ? "#f0e0e0" : max >= 16 ? "#f0ece0" : "#e8f0e4";
+  const color = max >= 25 ? "#7a3838" : max >= 16 ? "#7a6030" : "#4a6840";
+  return (
+    <span className="text-xs font-semibold px-1.5 py-0.5 rounded"
+      style={{ backgroundColor: bg, color }}>
+      {courseCoefficientRange}
+    </span>
+  );
+}
+
+// 月テキストから月数値配列を抽出するヘルパー
+function parseMonthRange(text) {
+  if (!text || text === "通年" || text === "なし") return null;
+  if (text.startsWith("不可")) return [];
+  // 「上旬」「中旬」「下旬」などを除去して純粋な月文字列にする
+  const cleaned = text.replace(/[上中下]旬/g, "").replace(/頃/g, "");
+  const months = [];
+  const parts = cleaned.split(/[・、]/);
+  for (const part of parts) {
+    const rangeMatch = part.match(/(\d+)月〜(\d+)月/);
+    if (rangeMatch) {
+      const s = Number(rangeMatch[1]);
+      const e = Number(rangeMatch[2]);
+      if (s <= e) { for (let i = s; i <= e; i++) months.push(i); }
+      else { for (let i = s; i <= 12; i++) months.push(i); for (let i = 1; i <= e; i++) months.push(i); }
+    } else {
+      const single = part.match(/(\d+)月/);
+      if (single) months.push(Number(single[1]));
+    }
+  }
+  return months.length > 0 ? months : [];
+}
+
+function canClimbNoGear(m, month) {
+  const months = parseMonthRange(m.seasonNoGear);
+  if (months === null) return true; // 通年
+  return months.includes(month);
+}
+
+function canClimb6Crampons(m, month) {
+  const noGearMonths = parseMonthRange(m.seasonNoGear);
+  if (noGearMonths === null) return true;
+  if (noGearMonths.includes(month)) return true;
+  const months = parseMonthRange(m.season6Crampons);
+  if (!months || months.length === 0) return false;
+  return months.includes(month);
+}
+
+// ===================== 掲示板コンポーネント =====================
+function FeedbackBoard({ onClose, initMountain = "" }) {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [form, setForm] = useState({ mountain: initMountain, category: "誤情報の指摘", body: "", name: "" });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    setForm({ mountain: initMountain, category: "誤情報の指摘", body: "", name: "" });
+    setError("");
+    setSuccess(false);
+  }, [initMountain]);
+
+  const CATEGORIES = ["誤情報の指摘", "情報の追加・補足", "ルートの提案", "その他"];
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const r = await window.storage.get("feedback_posts", true);
+        if (r) setPosts(JSON.parse(r.value));
+      } catch {}
+      setLoading(false);
+    })();
+  }, []);
+
+  const handleSubmit = async () => {
+    if (!form.body.trim()) { setError("内容を入力してください"); return; }
+    if (form.body.length > 500) { setError("500文字以内で入力してください"); return; }
+    setError("");
+    setSubmitting(true);
+    try {
+      const newPost = {
+        id: Date.now(),
+        mountain: form.mountain.trim() || "（山名未指定）",
+        category: form.category,
+        body: form.body.trim(),
+        name: form.name.trim() || "匿名",
+        date: new Date().toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }),
+      };
+      const updated = [newPost, ...posts];
+      await window.storage.set("feedback_posts", JSON.stringify(updated), true);
+      setPosts(updated);
+      setForm({ mountain: "", category: "誤情報の指摘", body: "", name: "" });
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 3000);
+    } catch (e) {
+      setError("送信に失敗しました。もう一度お試しください。");
+    }
+    setSubmitting(false);
+  };
+
+  const CATEGORY_COLOR = {
+    "誤情報の指摘": { bg: "#fce8e8", color: "#b04040", border: "#f5c0c0" },
+    "情報の追加・補足": { bg: "#e8f0e8", color: "#3a5a3a", border: "#b8d0b8" },
+    "ルートの提案": { bg: "#e8eef8", color: "#3a4a7a", border: "#b8c8e8" },
+    "その他": { bg: "#f0ede8", color: "#7a6a58", border: "#d8d0c8" },
+  };
+
+  return (
+    <div style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(0,0,0,0.45)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
+      <div style={{ background: "#faf8f5", borderRadius: "16px", width: "100%", maxWidth: "640px", maxHeight: "90vh", display: "flex", flexDirection: "column", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
+        {/* ヘッダー */}
+        <div style={{ padding: "20px 24px 16px", borderBottom: "1px solid #ddd8d0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div>
+            <h1 style={{ margin: 0, fontSize: "17px", fontWeight: 700, color: "#3a3530" }}>💬 改善提案・情報修正</h1>
+            <p style={{ margin: "4px 0 0", fontSize: "12px", color: "#a09888" }}>
+              {initMountain ? `「${initMountain}」について` : "誤情報の修正・ルートの提案など、お気づきの点をお寄せください"}
+            </p>
+          </div>
+          <button onClick={onClose} style={{ background: "none", border: "none", fontSize: "20px", cursor: "pointer", color: "#a09888", padding: "4px 8px" }}>✕</button>
+        </div>
+
+        <div style={{ flex: 1, overflowY: "auto", padding: "20px 24px" }}>
+          {/* 投稿フォーム */}
+          <div style={{ background: "#fff", border: "1px solid #ddd8d0", borderRadius: "12px", padding: "18px", marginBottom: "24px" }}>
+            <h3 style={{ margin: "0 0 14px", fontSize: "14px", fontWeight: 700, color: "#4a5e4a" }}>✏️ 書き込む</h3>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "10px" }}>
+              <div>
+                <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>山名（任意）</label>
+                <input
+                  value={form.mountain}
+                  onChange={e => setForm(f => ({ ...f, mountain: e.target.value }))}
+                  placeholder="例：安達太良山"
+                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
+                />
+              </div>
+              <div>
+                <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>種別</label>
+                <select
+                  value={form.category}
+                  onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
+                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none" }}
+                >
+                  {CATEGORIES.map(c => <option key={c}>{c}</option>)}
+                </select>
+              </div>
+            </div>
+
+            <div style={{ marginBottom: "10px" }}>
+              <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>
+                内容 <span style={{ color: "#b04040" }}>*</span>
+                <span style={{ float: "right", fontWeight: 400 }}>{form.body.length}/500</span>
+              </label>
+              <textarea
+                value={form.body}
+                onChange={e => setForm(f => ({ ...f, body: e.target.value }))}
+                placeholder="例：コース定数が違います。奥岳周回の正しい値は○○です。"
+                rows={4}
+                style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", resize: "vertical", boxSizing: "border-box", fontFamily: "inherit" }}
+              />
+            </div>
+
+            <div style={{ display: "flex", gap: "10px", alignItems: "flex-end" }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>ニックネーム（任意）</label>
+                <input
+                  value={form.name}
+                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                  placeholder="匿名"
+                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
+                />
+              </div>
+              <button
+                onClick={handleSubmit}
+                disabled={submitting || !form.body.trim()}
+                style={{ padding: "8px 20px", background: submitting || !form.body.trim() ? "#c0bab0" : "#4a5e4a", color: "#fff", border: "none", borderRadius: "7px", fontSize: "13px", fontWeight: 700, cursor: submitting || !form.body.trim() ? "not-allowed" : "pointer", whiteSpace: "nowrap" }}
+              >
+                {submitting ? "送信中…" : "投稿する"}
+              </button>
+            </div>
+
+            {error && <p style={{ margin: "8px 0 0", fontSize: "12px", color: "#b04040" }}>⚠️ {error}</p>}
+            {success && <p style={{ margin: "8px 0 0", fontSize: "12px", color: "#3a7a3a" }}>✅ 投稿しました！ありがとうございます。</p>}
+            <p style={{ margin: "10px 0 0", fontSize: "11px", color: "#a09888" }}>※ 書き込みはすべてのユーザーに表示されます</p>
+          </div>
+
+          {/* 投稿一覧 */}
+          <h3 style={{ margin: "0 0 14px", fontSize: "14px", fontWeight: 700, color: "#3a3530" }}>
+            書き込み一覧
+            {posts.length > 0 && <span style={{ marginLeft: "8px", fontSize: "12px", color: "#7a7068", fontWeight: 400 }}>{posts.length}件</span>}
+          </h3>
+
+          {loading ? (
+            <p style={{ textAlign: "center", color: "#a09888", fontSize: "13px", padding: "20px 0" }}>読み込み中…</p>
+          ) : posts.length === 0 ? (
+            <div style={{ textAlign: "center", padding: "32px 0", color: "#a09888" }}>
+              <div style={{ fontSize: "32px", marginBottom: "8px" }}>📝</div>
+              <p style={{ margin: 0, fontSize: "13px" }}>まだ書き込みがありません<br />気づいた点があればぜひ投稿してください</p>
+            </div>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {posts.map(post => {
+                const cc = CATEGORY_COLOR[post.category] || CATEGORY_COLOR["その他"];
+                return (
+                  <div key={post.id} style={{ background: "#fff", border: "1px solid #ddd8d0", borderRadius: "10px", padding: "14px 16px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px", flexWrap: "wrap" }}>
+                      <span style={{ fontSize: "11px", fontWeight: 700, padding: "2px 8px", borderRadius: "10px", background: cc.bg, color: cc.color, border: `1px solid ${cc.border}` }}>
+                        {post.category}
+                      </span>
+                      {post.mountain !== "（山名未指定）" && (
+                        <span style={{ fontSize: "12px", fontWeight: 700, color: "#4a5e4a" }}>🏔 {post.mountain}</span>
+                      )}
+                      <span style={{ marginLeft: "auto", fontSize: "11px", color: "#a09888" }}>{post.name} · {post.date}</span>
+                    </div>
+                    <p style={{ margin: 0, fontSize: "13px", color: "#3a3530", lineHeight: 1.7, whiteSpace: "pre-wrap" }}>{post.body}</p>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </div>
+  );
+}
+// ===================== 掲示板ここまで =====================
 
-    <div class="meta-strip">
-      <div class="meta-chip">🚗 新宿から <strong>3時間10分</strong></div>
-      <div class="meta-chip">🥾 難易度 <strong>初〜中級</strong></div>
-      <div class="meta-chip">📅 5月〜11月</div>
-    </div>
+function App() {
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("近い順");
+  const [area, setArea] = useState("すべて");
+  const [departure, setDeparture] = useState("大船"); // "大船" | "新宿" | "横浜" | "大宮"
 
-    <div class="mountain-body">
-      
-<p>赤城山は群馬県のシンボルともいえる火山。最高峰の黒檜山（くろびさん・1828m）を中心に、大沼・小沼というカルデラ湖を抱えた個性的な山容が特徴です。</p>
-<p>黒檜山の山頂からは<strong>上州の山並みと関東平野を一望</strong>できます。特に「展望台」と呼ばれるスポットからの眺めは格別で、空気の澄んだ晴天時には富士山や日光連山まで見渡せます。</p>
-<p>コースは黒檜山登山口から駒ヶ岳を周回するルートが定番。急登もありますが、距離はさほど長くなく3〜4時間で周回できます。湖畔の散策と組み合わせて半日〜1日で楽しむのがおすすめのプランです。</p>
-<p>冬は樹氷が美しく、アイゼンを使った雪山ハイクも楽しめます。<strong>四季それぞれの顔を持つ、何度訪れても飽きない山</strong>です。</p>
+  const getDriveTime = (m) => {
+    if (departure === "新宿" && m.driveTimeShinjuku) return m.driveTimeShinjuku;
+    if (departure === "横浜" && m.driveTimeYokohama) return m.driveTimeYokohama;
+    if (departure === "大宮" && m.driveTimeOmiya) return m.driveTimeOmiya;
+    return m.driveTime;
+  };
+  const [categoryFilter, setCategoryFilter] = useState("すべて");
+  const [dayTripOnly, setDayTripOnly] = useState(false);
+  const [trainOnly, setTrainOnly] = useState(false);
+  const [driveTimeFilter, setDriveTimeFilter] = useState(null); // null | 180 | 360
+  const [courseFilter, setCourseFilter] = useState([]); // 複数選択
+  const [cramponsFilter, setCramponsFilter] = useState("すべて"); // "すべて"|"アイゼン不要"|"6本以内でOK"
+  const [filterMonth, setFilterMonth] = useState("今月"); // "今月"|"来月"
+  const [viewMode, setViewMode] = useState("list");
+  const [showBoard, setShowBoard] = useState(false);
+  const [boardInitMountain, setBoardInitMountain] = useState("");
+  const [selected, setSelected] = useState(null);
 
-    </div>
+  const currentMonth = new Date().getMonth() + 1;
+  const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
+  const activeMonth = filterMonth === "来月" ? nextMonth : currentMonth;
 
-    <div class="best-season">
-      <span class="best-label">🌸 おすすめの時期</span>
-      <span>6月（レンゲツツジ）、10月（紅葉）、1〜2月（樹氷）</span>
-    </div>
-    <div class="access-info">
-      <span class="access-label">🚗 アクセス</span>
-      <span>新宿駅から車で約3時間10分。関越自動車道・前橋ICから約40分。</span>
-    </div>
+  const filtered = useMemo(() => {
+    let list = mountains.filter(m => {
+      const matchSearch = !search || m.name.includes(search) || m.kana.includes(search);
+      const matchArea = area === "すべて" || m.area.includes(area);
+      const matchCat = categoryFilter === "すべて" || m.category === categoryFilter;
+      const matchDayTrip = !dayTripOnly || isDayTrip(m);
+      const matchTrainOnly = !trainOnly || !!m.trainAccess;
+      const matchDriveTime = !driveTimeFilter || getDriveTime(m) <= driveTimeFilter;
+      const [cMin, cMax] = m.courseCoefficient;
+      const matchCourse = courseFilter.length === 0
+        || (courseFilter.includes("〜15") && cMin <= 15)
+        || (courseFilter.includes("16〜20") && cMin <= 20 && cMax >= 16)
+        || (courseFilter.includes("21〜25") && cMin <= 25 && cMax >= 21)
+        || (courseFilter.includes("26〜") && cMax >= 26);
+      const matchCrampons = cramponsFilter === "すべて"
+        || (cramponsFilter === "アイゼン不要" && canClimbNoGear(m, activeMonth))
+        || (cramponsFilter === "6本以内でOK" && canClimb6Crampons(m, activeMonth));
+      return matchSearch && matchArea && matchCat && matchDayTrip && matchTrainOnly && matchDriveTime && matchCourse && matchCrampons;
+    });
+    if (sort === "近い順") list = [...list].sort((a, b) => getDriveTime(a) - getDriveTime(b));
+    else if (sort === "標高順") list = [...list].sort((a, b) => b.elevation - a.elevation);
+    else if (sort === "体力度順") list = [...list].sort((a, b) => b.courseCoefficient[1] - a.courseCoefficient[1]);
+    else if (sort === "五十音順") list = [...list].sort((a, b) => a.kana.localeCompare(b.kana, "ja"));
+    return list;
+  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure]);
 
-    <a href="/mountains/akagi/" class="detail-btn">
-      赤城山の詳細情報を見る →
-    </a>
-  </section>
-  <div class="section-divider"></div>
-  <section class="mountain-section" id="mountain-3">
-    <div class="section-header">
-      <div class="rank-num">#3</div>
-      <div>
-        <h2 class="section-title">大菩薩嶺 <span class="kana">（だいぼさつれい）</span></h2>
-        <div class="badges">
-          <span class="elev-badge">⛰ 2,057m · 山梨県</span>
-          <span class="feature-tag" style="background:#e8eef5;color:#2a4a70">🏔️ 2000m超なのに楽ちん</span>
-        </div>
+  const btnActive = { backgroundColor: "#4a5e4a", color: "white", borderColor: "#4a5e4a" };
+  const btnInactive = { backgroundColor: "white", color: "#5a5248", borderColor: "#ccc8c0" };
+
+  if (selected) {
+    const mountain = mountains.find(m => m.id === selected);
+    return (
+      <div style={{ background: "#f0ede8", minHeight: "100vh", fontFamily: "sans-serif" }}>
+        {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
+        <header style={{ background: "linear-gradient(135deg, #3a4e3a 0%, #4a5e4a 100%)" }} className="p-6">
+          <div className="max-w-2xl mx-auto flex items-center gap-3">
+            <span className="text-2xl">⛰️</span>
+            <div style={{ flex: 1 }}>
+              <h1 className="text-xl font-bold text-white">登山ナビ from 大船駅</h1>
+              <p className="text-stone-300 text-xs">百名山・人気の山</p>
+            </div>
+            <button
+              onClick={() => { setBoardInitMountain(""); setShowBoard(true); }}
+              style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)", color: "white", borderRadius: "10px", padding: "6px 12px", fontSize: "12px", cursor: "pointer", whiteSpace: "nowrap" }}
+            >
+              💬 改善提案はこちら
+            </button>
+          </div>
+        </header>
+        <main className="max-w-2xl mx-auto p-4">
+          <MountainDetail mountain={mountain} onBack={() => setSelected(null)} onReport={(name) => { setBoardInitMountain(name); setShowBoard(true); }} departure={departure} />
+        </main>
       </div>
-    </div>
+    );
+  }
 
-    <div class="meta-strip">
-      <div class="meta-chip">🚗 新宿から <strong>2時間55分</strong></div>
-      <div class="meta-chip">🥾 難易度 <strong>初〜中級</strong></div>
-      <div class="meta-chip">📅 5月〜11月</div>
-    </div>
+  return (
+    <div style={{ background: "#f0ede8", minHeight: "100vh", fontFamily: "sans-serif" }}>
+      {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
 
-    <div class="mountain-body">
-      
-<p>「2000m超の百名山に日帰りで登りたい」という方に真っ先に勧めたい山が大菩薩嶺です。上日川峠（1585m）まで車で上がれるため、実際に歩く標高差は500m足らず。<strong>体力的なハードルが非常に低いのに、景色は一流</strong>というコスパ抜群の山です。</p>
-<p>圧巻なのは大菩薩峠から稜線を歩くときの景色。右手に南アルプスの白い峰々、正面に富士山という絶景が広がります。稜線上は遮るものがなく開放的で、晴れた日は本当に気持ちがいい。</p>
-<p>中里介山の長編小説『大菩薩峠』の舞台としても有名で、峠には介山荘という山小屋もあります。山旅の雰囲気を味わいながらのんびり歩けるのも魅力のひとつ。</p>
-<p>紅葉シーズンの10月は特に人気で駐車場が混雑することも。<strong>早朝出発がおすすめ</strong>です。</p>
-
-    </div>
-
-    <div class="best-season">
-      <span class="best-label">🌸 おすすめの時期</span>
-      <span>6月〜7月（初夏の稜線歩き）、10月（紅葉と富士山）</span>
-    </div>
-    <div class="access-info">
-      <span class="access-label">🚗 アクセス</span>
-      <span>新宿駅から車で約2時間55分。中央自動車道・勝沼ICから約40分。</span>
-    </div>
-
-    <a href="/mountains/okutama/" class="detail-btn">
-      大菩薩嶺の詳細情報を見る →
-    </a>
-  </section>
-  <div class="section-divider"></div>
-  <section class="mountain-section" id="mountain-4">
-    <div class="section-header">
-      <div class="rank-num">#4</div>
-      <div>
-        <h2 class="section-title">丹沢山 <span class="kana">（たんざわさん）</span></h2>
-        <div class="badges">
-          <span class="elev-badge">⛰ 1,567m · 神奈川県</span>
-          <span class="feature-tag" style="background:#f5ece0;color:#8a5020">🚇 新宿から最短アクセス</span>
+      <header style={{ background: "linear-gradient(135deg, #3a4e3a 0%, #4a5e4a 100%)" }} className="px-4 py-5">
+        <div className="max-w-3xl mx-auto">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-2xl">⛰️</span>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <h1 className="text-lg font-bold text-white leading-tight">登山ナビ from {departure}駅</h1>
+              <p className="text-stone-300 text-xs">百名山・二百名山・人気の山</p>
+            </div>
+            <button
+              onClick={() => setShowBoard(true)}
+              style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)", color: "white", borderRadius: "10px", padding: "6px 10px", fontSize: "12px", cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0 }}
+            >
+              💬 提案
+            </button>
+          </div>
+          {/* 出発地選択 */}
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-stone-300 text-xs">出発地：</span>
+            <div className="flex rounded-full overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.3)" }}>
+              {["大船", "新宿", "横浜", "大宮"].map(d => (
+                <button key={d} onClick={() => setDeparture(d)}
+                  className="px-3 py-1 text-sm font-semibold transition-all"
+                  style={departure === d
+                    ? { background: "rgba(255,255,255,0.9)", color: "#3a4e3a" }
+                    : { background: "transparent", color: "rgba(255,255,255,0.8)" }}>
+                  {d}駅
+                </button>
+              ))}
+            </div>
+          </div>
+          <p className="text-stone-200 text-xs leading-relaxed">
+            {departure}駅から車で6時間以内の登山スポットを検索。登山口・アクセス・コース定数を確認。
+          </p>
         </div>
-      </div>
-    </div>
+      </header>
 
-    <div class="meta-strip">
-      <div class="meta-chip">🚗 新宿から <strong>1時間35分</strong></div>
-      <div class="meta-chip">🥾 難易度 <strong>中級</strong></div>
-      <div class="meta-chip">📅 通年</div>
-    </div>
-
-    <div class="mountain-body">
-      
-<p>丹沢山は、新宿から最短で行ける百名山のひとつ。神奈川県最高峰エリアに位置し、都市近郊でありながらブナの原生林や豊かな生態系が残る本格的な山域です。</p>
-<p>丹沢といえば塔ノ岳が有名ですが、百名山の頂は塔ノ岳のさらに奥にある丹沢山。塩水橋からのルートは静かで、ブナ林の中を歩く気持ちよさが格別です。山頂には<strong>みやま山荘</strong>があり、テラスから丹沢主脈の稜線を一望できます。</p>
-<p>標高差は約1100mとしっかりあり、体力が試されるルートです。ただしその分、<strong>登り応えと達成感は抜群</strong>。「近くて本格的」を求める登山者に愛される理由がよく分かります。</p>
-<p>春はヤマビルに注意が必要ですが、冬から春（12〜4月）はヤマビルが少なく積雪の丹沢も楽しめます。近場でトレーニングを積みたい人にも最適な山です。</p>
-
-    </div>
-
-    <div class="best-season">
-      <span class="best-label">🌸 おすすめの時期</span>
-      <span>12月〜4月（ヤマビル回避・冬景色）、5月（新緑）</span>
-    </div>
-    <div class="access-info">
-      <span class="access-label">🚗 アクセス</span>
-      <span>新宿駅から車で約1時間35分。東名自動車道・秦野中井ICから約30分。</span>
-    </div>
-
-    <a href="/mountains/tanzawa/" class="detail-btn">
-      丹沢山の詳細情報を見る →
-    </a>
-  </section>
-  <div class="section-divider"></div>
-  <section class="mountain-section" id="mountain-5">
-    <div class="section-header">
-      <div class="rank-num">#5</div>
-      <div>
-        <h2 class="section-title">雲取山 <span class="kana">（くもとりやま）</span></h2>
-        <div class="badges">
-          <span class="elev-badge">⛰ 2,017m · 東京都・埼玉県</span>
-          <span class="feature-tag" style="background:#ede8f5;color:#4a2a70">🗼 東京都最高峰</span>
+      <main className="max-w-3xl mx-auto p-4">
+        {/* おすすめ記事 */}
+        <div style={{ marginBottom: "16px" }}>
+          <div style={{ fontSize: "12px", fontWeight: "bold", color: "#a09888", marginBottom: "8px", letterSpacing: "0.05em" }}>おすすめ記事</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <a href="/articles/kanto-day-trip-100/" style={{ display: "flex", alignItems: "center", gap: "12px", background: "#faf8f5", border: "1px solid #ddd8d0", borderRadius: "12px", padding: "12px 14px", textDecoration: "none" }}
+              onMouseEnter={e => e.currentTarget.style.background = "#f0ede8"}
+              onMouseLeave={e => e.currentTarget.style.background = "#faf8f5"}>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ color: "#3a3530", fontWeight: "bold", fontSize: "14px", lineHeight: 1.4 }}>関東から日帰りできる百名山10選</div>
+                <div style={{ color: "#a09888", fontSize: "12px", marginTop: "3px" }}>新宿発 · 難易度・見どころ・おすすめシーズンを解説</div>
+              </div>
+              <span style={{ color: "#c0b8b0", fontSize: "16px", flexShrink: 0 }}>→</span>
+            </a>
+            <a href="/articles/train-access-mountains/" style={{ display: "flex", alignItems: "center", gap: "12px", background: "#faf8f5", border: "1px solid #ddd8d0", borderRadius: "12px", padding: "12px 14px", textDecoration: "none" }}
+              onMouseEnter={e => e.currentTarget.style.background = "#f0ede8"}
+              onMouseLeave={e => e.currentTarget.style.background = "#faf8f5"}>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ color: "#3a3530", fontWeight: "bold", fontSize: "14px", lineHeight: 1.4 }}>車なしで行ける！電車・バスでおすすめの山10選</div>
+                <div style={{ color: "#a09888", fontSize: "12px", marginTop: "3px" }}>新宿発 · アクセス方法・見どころを詳しく解説</div>
+              </div>
+              <span style={{ color: "#c0b8b0", fontSize: "16px", flexShrink: 0 }}>→</span>
+            </a>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div class="meta-strip">
-      <div class="meta-chip">🚗 新宿から <strong>2時間10分</strong></div>
-      <div class="meta-chip">🥾 難易度 <strong>中級</strong></div>
-      <div class="meta-chip">📅 通年</div>
-    </div>
-
-    <div class="mountain-body">
-      
-<p>「東京都にある唯一の百名山」というキャッチフレーズで知られる雲取山。都内から日帰りできる2000m超の山として、多くの登山者に親しまれています。</p>
-<p>鴨沢ルートは奥多摩の森の中を歩く気持ちのいいコース。七ツ石山を経由して雲取山荘へ至るルートは、急登が少なく歩きやすいことで知られています。山頂からは<strong>富士山・南アルプス・奥秩父の山並みが一望</strong>でき、「これが東京都！？」と驚くほどの大展望です。</p>
-<p>日帰りだとコースタイムは10〜11時間とかなりのロングコース。体力に余裕があれば雲取山荘に一泊して翌朝のご来光を狙うのが最高です。日帰りの場合は<strong>早朝4〜5時出発</strong>を推奨します。</p>
-<p>小説『鬼滅の刃』の主人公・炭治郎の出身地として有名になり、近年は若い登山者も増えています。</p>
-
-    </div>
-
-    <div class="best-season">
-      <span class="best-label">🌸 おすすめの時期</span>
-      <span>5月〜6月（新緑）、10月〜11月（紅葉）、12月〜3月（雪景色）</span>
-    </div>
-    <div class="access-info">
-      <span class="access-label">🚗 アクセス</span>
-      <span>新宿駅から車で約2時間10分。圏央道・青梅ICから約40分。</span>
-    </div>
-
-    <a href="/mountains/kumotori/" class="detail-btn">
-      雲取山の詳細情報を見る →
-    </a>
-  </section>
-  <div class="section-divider"></div>
-  <section class="mountain-section" id="mountain-6">
-    <div class="section-header">
-      <div class="rank-num">#6</div>
-      <div>
-        <h2 class="section-title">瑞牆山 <span class="kana">（みずがきやま）</span></h2>
-        <div class="badges">
-          <span class="elev-badge">⛰ 2,230m · 山梨県</span>
-          <span class="feature-tag" style="background:#f0ede0;color:#6a5010">🪨 唯一無二の奇岩景観</span>
+        {/* 検索バー */}
+        <div className="rounded-xl px-4 py-3 flex items-center gap-3 shadow-sm mb-4"
+          style={{ background: "#faf8f5", border: "1px solid #ddd8d0" }}>
+          <span style={{ color: "#a09888" }}>🔍</span>
+          <input
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            placeholder="山の名前を入力（例：富士山、塔ノ岳、赤岳）"
+            className="flex-1 outline-none text-sm"
+            style={{ color: "#3a3530", background: "transparent" }}
+          />
         </div>
-      </div>
-    </div>
 
-    <div class="meta-strip">
-      <div class="meta-chip">🚗 新宿から <strong>2時間55分</strong></div>
-      <div class="meta-chip">🥾 難易度 <strong>中級</strong></div>
-      <div class="meta-chip">📅 5月〜11月</div>
-    </div>
+        <div className="rounded-xl p-4 shadow-sm" style={{ background: "#faf8f5", border: "1px solid #ddd8d0" }}>
+          {/* タイトル行 */}
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <h2 className="font-bold" style={{ color: "#3a3530" }}>{departure}から6時間以内の山</h2>
+              <span className="text-xs px-2 py-1 rounded-full" style={{ background: "#e8e4dc", color: "#7a7068" }}>{filtered.length}座</span>
+            </div>
+            <div className="flex rounded-lg overflow-hidden" style={{ border: "1px solid #ccc8c0" }}>
+              <button onClick={() => setViewMode("list")} className="px-3 py-1.5 text-xs font-medium transition-colors"
+                style={viewMode === "list" ? { background: "#4a5e4a", color: "white" } : { background: "white", color: "#7a7068" }}>
+                ☰ 一覧
+              </button>
+              <button onClick={() => setViewMode("map")} className="px-3 py-1.5 text-xs font-medium transition-colors"
+                style={viewMode === "map" ? { background: "#4a5e4a", color: "white" } : { background: "white", color: "#7a7068" }}>
+                🗺 地図
+              </button>
+            </div>
+          </div>
 
-    <div class="mountain-body">
-      
-<p>瑞牆山は百名山の中でも特に「見た目のインパクト」が強い山。麓から見上げると花崗岩の巨大な岩塔が林立する独特の山容が目に飛び込んできます。その景観は他の百名山とは一線を画し、<strong>まるで別の惑星にいるような感覚</strong>を味わえます。</p>
-<p>登山道も面白く、奥深い森の中に突如現れる巨岩をくぐり抜けながら登っていきます。岩場も多いため、足元を楽しみながら歩けるルートです。山頂からは金峰山や八ヶ岳、富士山が見渡せる大展望が広がります。</p>
-<p>瑞牆山荘からのルートは距離もさほど長くなく、<strong>4〜5時間で往復できる</strong>コスパの高さも魅力。体力的に余裕があれば隣の金峰山（百名山）と1泊2日で両方登るのも定番のスタイルです。</p>
-<p>クライマーにも人気のエリアで、岩場では本格的なクライミングも楽しめます。</p>
+          {/* 並び替え */}
+          <div className="flex items-center gap-2 mb-3" style={{ overflowX: "auto", flexWrap: "nowrap", paddingBottom: "4px" }}>
+            <span className="text-xs shrink-0" style={{ color: "#a09888" }}>並び替え</span>
+            {SORTS.map(s => (
+              <button key={s} onClick={() => setSort(s)}
+                className="px-3 py-1 rounded-full text-xs font-medium transition-colors border shrink-0"
+                style={sort === s ? btnActive : { ...btnInactive, border: "1px solid #ddd8d0" }}>
+                {s}
+              </button>
+            ))}
+          </div>
 
-    </div>
+          {/* カテゴリフィルター */}
+          <div className="flex items-center gap-2 mb-3" style={{ overflowX: "auto", flexWrap: "nowrap", paddingBottom: "4px" }}>
+            <span className="text-xs shrink-0" style={{ color: "#a09888" }}>種別</span>
+            {CATEGORIES.map(cat => {
+              const s = cat === "すべて" ? null : CATEGORY_STYLE[cat];
+              const isActive = categoryFilter === cat;
+              return (
+                <button key={cat} onClick={() => setCategoryFilter(cat)}
+                  className="px-3 py-1 rounded-full text-xs font-medium transition-colors border"
+                  style={isActive
+                    ? (s ? { backgroundColor: s.color, color: "white", borderColor: s.color } : btnActive)
+                    : (s ? { backgroundColor: s.bg, color: s.color, borderColor: s.bg } : { ...btnInactive, border: "1px solid #ddd8d0" })}>
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
 
-    <div class="best-season">
-      <span class="best-label">🌸 おすすめの時期</span>
-      <span>6月〜7月（新緑と奇岩のコントラスト）、10月（紅葉）</span>
-    </div>
-    <div class="access-info">
-      <span class="access-label">🚗 アクセス</span>
-      <span>新宿駅から車で約2時間55分。中央自動車道・須玉ICから約45分。</span>
-    </div>
+          {/* エリアフィルター */}
+          <div className="flex items-center gap-2 mb-3" style={{ overflowX: "auto", flexWrap: "nowrap", paddingBottom: "4px" }}>
+            <span className="text-xs shrink-0" style={{ color: "#a09888" }}>エリア</span>
+            {AREAS.map(a => (
+              <button key={a} onClick={() => setArea(a)}
+                className="px-3 py-1 rounded-full text-xs font-medium transition-colors border"
+                style={area === a ? btnActive : { ...btnInactive, border: "1px solid #ddd8d0" }}>
+                {a}
+              </button>
+            ))}
+          </div>
 
-    <a href="/mountains/mizugaki/" class="detail-btn">
-      瑞牆山の詳細情報を見る →
-    </a>
-  </section>
-  <div class="section-divider"></div>
-  <section class="mountain-section" id="mountain-7">
-    <div class="section-header">
-      <div class="rank-num">#7</div>
-      <div>
-        <h2 class="section-title">両神山 <span class="kana">（りょうかみさん）</span></h2>
-        <div class="badges">
-          <span class="elev-badge">⛰ 1,723m · 埼玉県</span>
-          <span class="feature-tag" style="background:#f0e8e8;color:#702a2a">⚔️ 険しさと歴史が同居</span>
+          {/* コース・体力度フィルター */}
+          <div className="flex flex-wrap items-center gap-3 mb-4 pt-2" style={{ borderTop: "1px solid #e8e4dc" }}>
+            <span className="text-xs" style={{ color: "#a09888", flexShrink: 0 }}>コース</span>
+            <button
+              onClick={() => setDayTripOnly(!dayTripOnly)}
+              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all border"
+              style={dayTripOnly ? btnActive : btnInactive}>
+              <span>🌅</span>
+              <span>日帰り可能のみ</span>
+            </button>
+            <button
+              onClick={() => setTrainOnly(!trainOnly)}
+              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all border"
+              style={trainOnly ? btnActive : btnInactive}>
+              <span>🚃</span>
+              <span>電車・バスで行ける</span>
+            </button>
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="text-xs" style={{ color: "#a09888" }}>体力度</span>
+{"〜15,16〜20,21〜25,26〜".split(",").map(f => (
+                <button key={f}
+                  onClick={() => setCourseFilter(prev => prev.includes(f) ? prev.filter(x => x !== f) : [...prev, f])}
+                  className="px-3 py-1.5 rounded-full text-xs font-medium transition-all border"
+                  style={courseFilter.includes(f) ? btnActive : btnInactive}>
+                  {f === "〜15" ? "▲ 〜15" : f === "16〜20" ? "▲▲ 16〜20" : f === "21〜25" ? "▲▲▲ 21〜25" : "▲▲▲▲ 26〜"}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* アクセスフィルター */}
+          <div className="flex flex-wrap items-center gap-3 mb-4 pt-2" style={{ borderTop: "1px solid #e8e4dc" }}>
+            <span className="text-xs" style={{ color: "#a09888", flexShrink: 0 }}>登山口まで</span>
+            <button
+              onClick={() => setDriveTimeFilter(driveTimeFilter === 180 ? null : 180)}
+              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all border"
+              style={driveTimeFilter === 180 ? btnActive : btnInactive}>
+              🚗 3時間以内
+            </button>
+            <button
+              onClick={() => setDriveTimeFilter(driveTimeFilter === 360 ? null : 360)}
+              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all border"
+              style={driveTimeFilter === 360 ? btnActive : btnInactive}>
+              🚗 6時間以内
+            </button>
+          </div>
+
+          {/* アイゼンフィルター */}
+          <div className="flex flex-wrap items-center gap-2 mb-4 pt-2" style={{ borderTop: "1px solid #e8e4dc" }}>
+            {/* 月切り替えトグル */}
+            <div className="flex rounded-full overflow-hidden" style={{ border: "1px solid #ccc8c0", flexShrink: 0 }}>
+              {["今月", "来月"].map(m => (
+                <button key={m} onClick={() => setFilterMonth(m)}
+                  className="px-3 py-1.5 text-xs font-semibold transition-all"
+                  style={filterMonth === m
+                    ? { background: "#4a5e4a", color: "white" }
+                    : { background: "white", color: "#7a7068" }}>
+                  {m === "今月" ? `今月(${currentMonth}月)` : `来月(${nextMonth}月)`}
+                </button>
+              ))}
+            </div>
+            <span className="text-xs" style={{ color: "#a09888" }}>の装備</span>
+            {["すべて", "アイゼン不要", "6本以内でOK"].map(f => (
+              <button key={f} onClick={() => setCramponsFilter(f)}
+                className="px-3 py-1.5 rounded-full text-xs font-medium transition-all border"
+                style={cramponsFilter === f ? btnActive : btnInactive}>
+                {f === "すべて" ? "すべて" : f === "アイゼン不要" ? "アイゼン不要" : "6本以内でOK"}
+              </button>
+            ))}
+          </div>
+
+          {/* 一覧 / 地図 */}
+          {viewMode === "list" ? (
+            <>
+              <div className="grid grid-cols-2 gap-2" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
+                {filtered.map(m => (
+                  <button key={m.id} onClick={() => setSelected(m.id)}
+                    className="text-left p-3 rounded-lg transition-colors flex flex-col"
+                    style={{ border: "1px solid transparent", background: "transparent" }}
+                    onMouseEnter={e => { e.currentTarget.style.background = "#f0ede8"; e.currentTarget.style.borderColor = "#ccc8c0"; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "transparent"; }}>
+                    {/* カテゴリバッジ */}
+                    <div style={{ minHeight: "22px" }} className="mb-1">
+                      <CategoryBadge category={m.category} />
+                    </div>
+                    {/* 山名 + バッジ */}
+                    <div className="flex items-center gap-1 flex-wrap" style={{ minHeight: "36px" }}>
+                      <span className="font-semibold text-sm" style={{ color: "#3a3530" }}>{m.name}</span>
+                      {m.trainAccess && (
+                        <span title={m.trainAccess} className="text-xs px-1 py-0.5 rounded font-medium" style={{ backgroundColor: "#dce8f5", color: "#2a6090", fontSize: "11px" }}>🚃</span>
+                      )}
+                      {isDayTrip(m) && (
+                        <span className="text-xs px-1.5 py-0.5 rounded font-medium" style={{ backgroundColor: "#e0e8da", color: "#4a6840", fontSize: "10px" }}>日帰り</span>
+                      )}
+                    </div>
+                    {/* 標高 + 所要時間 */}
+                    <div className="flex justify-between items-center mt-1" style={{ minHeight: "20px" }}>
+                      <span className="text-xs" style={{ color: "#7a7068" }}>{m.elevation.toLocaleString()}m</span>
+                      <span className="text-xs flex items-center gap-0.5" style={{ color: "#a09888" }}>
+                        🚗 {formatDriveTime(getDriveTime(m))}
+                      </span>
+                    </div>
+                    {/* コース定数 */}
+                    <div className="flex items-center gap-1 mt-1.5" style={{ minHeight: "24px" }}>
+                      <span className="text-xs" style={{ color: "#a09888" }}>体力度</span>
+                      <CourseBadge courseCoefficient={m.courseCoefficient} courseCoefficientRange={m.courseCoefficientRange} />
+                    </div>
+                    {/* 今月・来月の装備 */}
+                    <div className="mt-2 flex gap-1 items-center flex-wrap" style={{ minHeight: "48px" }}>
+                      <span className="text-xs" style={{ color: filterMonth === "今月" ? "#5a4e3a" : "#c0b8b0", fontWeight: filterMonth === "今月" ? 700 : 400 }}>{currentMonth}月</span>
+                      <span style={{ opacity: filterMonth === "今月" ? 1 : 0.45 }}><GearBadge mountain={m} month={currentMonth} /></span>
+                      <span className="text-xs" style={{ color: "#c0b8b0" }}>→</span>
+                      <span className="text-xs" style={{ color: filterMonth === "来月" ? "#5a4e3a" : "#c0b8b0", fontWeight: filterMonth === "来月" ? 700 : 400 }}>{nextMonth}月</span>
+                      <span style={{ opacity: filterMonth === "来月" ? 1 : 0.45 }}><GearBadge mountain={m} month={nextMonth} /></span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+              {filtered.length === 0 && (
+                <p className="text-center py-8 text-sm" style={{ color: "#a09888" }}>該当する山が見つかりませんでした</p>
+              )}
+            </>
+          ) : (
+            <MapView
+              mountains={filtered}
+              onSelect={(id) => setSelected(id)}
+            />
+          )}
         </div>
-      </div>
+      </main>
     </div>
+  );
+}
 
-    <div class="meta-strip">
-      <div class="meta-chip">🚗 新宿から <strong>2時間55分</strong></div>
-      <div class="meta-chip">🥾 難易度 <strong>中級</strong></div>
-      <div class="meta-chip">📅 4月〜11月</div>
-    </div>
-
-    <div class="mountain-body">
-      
-<p>両神山は奥秩父に位置する、ギザギザとした鋭い稜線が特徴的な山です。遠くからでもひと目でそれと分かる個性的な山容は、関東の山の中でも際立っています。</p>
-<p>日向大谷口ルートは両神神社への参道を歩くルートで、山岳信仰の歴史を感じながら登れます。清流沿いの道や急な尾根道を経て山頂へ。山頂の眺望は木々に遮られる部分もありますが、<strong>稜線の岩場からは奥秩父の山並みが一望</strong>できます。</p>
-<p>山頂直下は鎖場もあり、スリルある岩場歩きを楽しめます。「百名山の中でも難しめ」と言われますが、ゆっくり慎重に歩けば中級者には問題なく登れます。難易度より達成感が大きい山です。</p>
-<p>5月上旬には山頂付近でシャクナゲが咲き誇り、<strong>ピンクの花と険しい岩稜のコントラスト</strong>が絶景。花の季節に訪れるのが特におすすめです。</p>
-
-    </div>
-
-    <div class="best-season">
-      <span class="best-label">🌸 おすすめの時期</span>
-      <span>5月上旬（シャクナゲ）、10月〜11月（紅葉）</span>
-    </div>
-    <div class="access-info">
-      <span class="access-label">🚗 アクセス</span>
-      <span>新宿駅から車で約2時間55分。関越自動車道・花園ICから約70分。</span>
-    </div>
-
-    <a href="/mountains/ryokami/" class="detail-btn">
-      両神山の詳細情報を見る →
-    </a>
-  </section>
-  <div class="section-divider"></div>
-  <section class="mountain-section" id="mountain-8">
-    <div class="section-header">
-      <div class="rank-num">#8</div>
-      <div>
-        <h2 class="section-title">谷川岳 <span class="kana">（たにがわだけ）</span></h2>
-        <div class="badges">
-          <span class="elev-badge">⛰ 1,977m · 群馬県</span>
-          <span class="feature-tag" style="background:#f5e8e0;color:#7a3010">⚡ 最高峰の達成感</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="meta-strip">
-      <div class="meta-chip">🚗 新宿から <strong>3時間</strong></div>
-      <div class="meta-chip">🥾 難易度 <strong>中〜上級</strong></div>
-      <div class="meta-chip">📅 7月〜10月</div>
-    </div>
-
-    <div class="mountain-body">
-      
-<p>谷川岳は「魔の山」という異名を持つほど険しい山として知られています。しかしロープウェイを使えば天神平（1319m）まで一気にアクセスでき、そこから山頂まで往復4〜5時間の日帰り登山が可能です。</p>
-<p>山頂は「トマの耳」と「オキの耳」のふたつのピークからなる双耳峰。晴れた日の山頂からの展望は圧巻で、<strong>上越国境の山並みと眼下に広がる雲海</strong>は忘れられない景色になるはずです。</p>
-<p>稜線上の眺めも素晴らしく、国境稜線を歩く開放感は他の山では味わえません。天神尾根は登山道が整備されていますが、岩場や鎖場もあるため、ある程度の登山経験があると安心です。</p>
-<p>秋の紅葉シーズンは特に人気。<strong>10月初旬〜中旬の紅葉の時期</strong>はロープウェイも大変混雑するため、早朝の始発便を狙うのがベストです。</p>
-
-    </div>
-
-    <div class="best-season">
-      <span class="best-label">🌸 おすすめの時期</span>
-      <span>7月〜8月（夏山・高山植物）、10月（紅葉）</span>
-    </div>
-    <div class="access-info">
-      <span class="access-label">🚗 アクセス</span>
-      <span>新宿駅から車で約3時間。関越自動車道・水上ICから約20分。</span>
-    </div>
-
-    <a href="/mountains/tanigawa/" class="detail-btn">
-      谷川岳の詳細情報を見る →
-    </a>
-  </section>
-  <div class="section-divider"></div>
-  <section class="mountain-section" id="mountain-9">
-    <div class="section-header">
-      <div class="rank-num">#9</div>
-      <div>
-        <h2 class="section-title">甲武信ヶ岳 <span class="kana">（こぶしがたけ）</span></h2>
-        <div class="badges">
-          <span class="elev-badge">⛰ 2,475m · 山梨・長野・埼玉県境</span>
-          <span class="feature-tag" style="background:#e8ede8;color:#2a4a2a">🗻 三県の源流を持つ秘峰</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="meta-strip">
-      <div class="meta-chip">🚗 新宿から <strong>3時間</strong></div>
-      <div class="meta-chip">🥾 難易度 <strong>中級</strong></div>
-      <div class="meta-chip">📅 6月〜10月</div>
-    </div>
-
-    <div class="mountain-body">
-      
-<p>甲武信ヶ岳は、甲斐（山梨）・武蔵（埼玉）・信濃（長野）の三国の境に立つ奥秩父の盟主です。千曲川（信濃川）・荒川・笛吹川という三つの大河の源流を持つ、水の山でもあります。</p>
-<p>毛木平からのルートは比較的歩きやすく、千曲川源流沿いを遡る渓谷歩きが魅力的。<strong>源流の最初の一滴が湧き出る場所</strong>に立ち寄ることができ、山旅の特別な体験になります。</p>
-<p>山頂は展望が開けており、金峰山・国師ヶ岳・八ヶ岳・富士山など奥秩父・南アルプス方面の眺めが素晴らしい。静かな奥秩父の山並みを独り占めできる感覚は、メジャーな山では味わえないものがあります。</p>
-<p>登山口へのアクセスはやや不便ですが、<strong>「山深さ」を感じたい人</strong>には強くおすすめしたい一座。百名山を重ねてきた頃に登ると、その良さがより分かる山です。</p>
-
-    </div>
-
-    <div class="best-season">
-      <span class="best-label">🌸 おすすめの時期</span>
-      <span>7月〜8月（夏山）、10月（紅葉と草紅葉）</span>
-    </div>
-    <div class="access-info">
-      <span class="access-label">🚗 アクセス</span>
-      <span>新宿駅から車で約3時間。中央自動車道・須玉ICから約60分。</span>
-    </div>
-
-    <a href="/mountains/kobushigatake/" class="detail-btn">
-      甲武信ヶ岳の詳細情報を見る →
-    </a>
-  </section>
-  <div class="section-divider"></div>
-  <section class="mountain-section" id="mountain-10">
-    <div class="section-header">
-      <div class="rank-num">#10</div>
-      <div>
-        <h2 class="section-title">金峰山 <span class="kana">（きんぷさん）</span></h2>
-        <div class="badges">
-          <span class="elev-badge">⛰ 2,599m · 山梨・長野県境</span>
-          <span class="feature-tag" style="background:#e8e8f5;color:#2a2a6a">🏔️ 2599mをお得に登れる</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="meta-strip">
-      <div class="meta-chip">🚗 新宿から <strong>3時間20分</strong></div>
-      <div class="meta-chip">🥾 難易度 <strong>中級</strong></div>
-      <div class="meta-chip">📅 6月〜10月</div>
-    </div>
-
-    <div class="mountain-body">
-      
-<p>金峰山は奥秩父を代表する2599mの高峰。しかし日本最高所の車道峠・大弛峠（2360m）まで車でアクセスできるため、実際の標高差はわずか240m。<strong>2500m超の山頂に比較的楽に立てる</strong>のが最大の特徴です。</p>
-<p>山頂のシンボルは高さ15mにも及ぶ「五丈岩」という巨大な岩塔。この岩は山頂からの展望と合わせて圧倒的なインパクトがあります。山頂からは富士山・南アルプス・八ヶ岳・北アルプスまで見渡せる<strong>360度の大パノラマ</strong>が広がります。</p>
-<p>大弛峠は舗装状態が悪い林道を走るため、車高の低い車は要注意。また開通期間が限られており（例年6月上旬〜11月中旬）、シーズン外は閉鎖されます。</p>
-<p>瑞牆山とセットで1泊2日の縦走を楽しむ人も多く、富士見平小屋を拠点にした奥秩父周回は最高の山旅になります。<strong>「なるべく楽に高い山に登りたい」という欲張りな願いを叶えてくれる山</strong>です。</p>
-
-    </div>
-
-    <div class="best-season">
-      <span class="best-label">🌸 おすすめの時期</span>
-      <span>7月〜8月（夏山）、10月（紅葉・草紅葉）</span>
-    </div>
-    <div class="access-info">
-      <span class="access-label">🚗 アクセス</span>
-      <span>新宿駅から車で約3時間20分。中央自動車道・須玉ICから約90分（大弛峠まで）。</span>
-    </div>
-
-    <a href="/mountains/kinpusan/" class="detail-btn">
-      金峰山の詳細情報を見る →
-    </a>
-  </section>
-  <div class="section-divider"></div>
-
-  <div class="summary-box">
-    <h2>📊 10座まとめ一覧</h2>
-    <div style="overflow-x:auto">
-      <table class="summary-table">
-        <thead>
-          <tr><th>#</th><th>山名</th><th>標高</th><th>新宿から</th><th>難易度</th></tr>
-        </thead>
-        <tbody><tr><td class="td-rank">1</td><td><a href="/mountains/tsukuba/" class="table-link">筑波山</a></td><td>877m</td><td>2時間30分</td><td>初級</td></tr><tr><td class="td-rank">2</td><td><a href="/mountains/akagi/" class="table-link">赤城山</a></td><td>1,828m</td><td>3時間10分</td><td>初〜中級</td></tr><tr><td class="td-rank">3</td><td><a href="/mountains/okutama/" class="table-link">大菩薩嶺</a></td><td>2,057m</td><td>2時間55分</td><td>初〜中級</td></tr><tr><td class="td-rank">4</td><td><a href="/mountains/tanzawa/" class="table-link">丹沢山</a></td><td>1,567m</td><td>1時間35分</td><td>中級</td></tr><tr><td class="td-rank">5</td><td><a href="/mountains/kumotori/" class="table-link">雲取山</a></td><td>2,017m</td><td>2時間10分</td><td>中級</td></tr><tr><td class="td-rank">6</td><td><a href="/mountains/mizugaki/" class="table-link">瑞牆山</a></td><td>2,230m</td><td>2時間55分</td><td>中級</td></tr><tr><td class="td-rank">7</td><td><a href="/mountains/ryokami/" class="table-link">両神山</a></td><td>1,723m</td><td>2時間55分</td><td>中級</td></tr><tr><td class="td-rank">8</td><td><a href="/mountains/tanigawa/" class="table-link">谷川岳</a></td><td>1,977m</td><td>3時間</td><td>中〜上級</td></tr><tr><td class="td-rank">9</td><td><a href="/mountains/kobushigatake/" class="table-link">甲武信ヶ岳</a></td><td>2,475m</td><td>3時間</td><td>中級</td></tr><tr><td class="td-rank">10</td><td><a href="/mountains/kinpusan/" class="table-link">金峰山</a></td><td>2,599m</td><td>3時間20分</td><td>中級</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="cta-box">
-    <h3>⛰ 条件で絞り込んで山を探す</h3>
-    <p>アイゼン不要・電車でアクセス可能・日帰り可能など<br>さらに細かく絞り込めます。あなたにぴったりの山を見つけてください。</p>
-    <a href="/" class="cta-btn">登山ナビで検索する →</a>
-  </div>
-
-</main>
-
-<footer>
-  <p>登山ナビ from 大船駅 — 大船駅・新宿駅から行ける百名山・二百名山・人気の山</p>
-  <p style="margin-top:6px"><a href="/" style="color:#7a9a7a">← トップページに戻る</a></p>
-</footer>
+const root=ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);
+</script>
 </body>
 </html>
