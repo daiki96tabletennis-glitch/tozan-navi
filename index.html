@@ -2,6 +2,13 @@
 <html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Yamatch｜出発地から登る山を探せる登山サーチ</title>
 <meta name="description" content="出発地から登る山を探せる登山サーチサービス。百名山・二百名山・人気の山を条件で絞り込み。">
+<link rel="canonical" href="https://tozan-navi.com/">
+<meta property="og:title" content="Yamatch｜出発地から登る山を探せる登山サーチ">
+<meta property="og:description" content="大船・新宿・横浜・大宮から行ける百名山・二百名山・人気の山を、コース定数・難易度・日帰り可否で絞り込めるサービス。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tozan-navi.com/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
@@ -2071,8 +2078,8 @@ const mountains = [
   },
   {
     id: "yarigatake2",
-    lat: 36.3472,
-    lng: 138.0919,
+    lat: 35.4153,
+    lng: 138.1903,
     name: "笊ヶ岳",
     kana: "ざるがたけ",
     elevation: 2629,
@@ -3699,6 +3706,12 @@ function App() {
   const [boardInitMountain, setBoardInitMountain] = useState("");
   const [selected, setSelected] = useState(null);
 
+  
+  const getMountainUrl = (id) => {
+    const special = { mizugatake: "mizugaki" };
+    return "/mountains/" + (special[id] || id) + "/";
+  };
+
   const currentMonth = new Date().getMonth() + 1;
   const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
   const activeMonth = filterMonth === "来月" ? nextMonth : currentMonth;
@@ -3982,9 +3995,9 @@ function App() {
             <>
               <div className="grid grid-cols-2 gap-2" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
                 {filtered.map(m => (
-                  <button key={m.id} onClick={() => setSelected(m.id)}
+                  <a key={m.id} href={getMountainUrl(m.id)}
                     className="text-left p-3 rounded-lg transition-colors flex flex-col"
-                    style={{ border: "1px solid transparent", background: "transparent" }}
+                    style={{ border: "1px solid transparent", background: "transparent", textDecoration: "none", color: "inherit" }}
                     onMouseEnter={e => { e.currentTarget.style.background = "#f0ede8"; e.currentTarget.style.borderColor = "#ccc8c0"; }}
                     onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "transparent"; }}>
                     {/* カテゴリバッジ */}
@@ -4021,7 +4034,7 @@ function App() {
                       <span className="text-xs" style={{ color: filterMonth === "来月" ? "#5a4e3a" : "#c0b8b0", fontWeight: filterMonth === "来月" ? 700 : 400 }}>{nextMonth}月</span>
                       <span style={{ opacity: filterMonth === "来月" ? 1 : 0.45 }}><GearBadge mountain={m} month={nextMonth} /></span>
                     </div>
-                  </button>
+                  </a>
                 ))}
               </div>
               {filtered.length === 0 && (
@@ -4031,11 +4044,21 @@ function App() {
           ) : (
             <MapView
               mountains={filtered}
-              onSelect={(id) => setSelected(id)}
+              onSelect={(id) => { window.location.href = getMountainUrl(id); }}
             />
           )}
         </div>
       </main>
+      <footer style={{ textAlign: "center", padding: "20px 16px", fontSize: "12px", color: "#a09888", borderTop: "1px solid #e8e4dc", marginTop: "8px" }}>
+        <p>Yamatch — 出発地から登る山を探せる登山サーチ</p>
+        <p style={{ marginTop: "6px" }}>
+          <a href="/about/" style={{ color: "#7a9a7a" }}>運営者</a>
+          <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
+          <a href="/terms/" style={{ color: "#7a9a7a" }}>利用規約</a>
+          <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
+          <a href="/privacy/" style={{ color: "#7a9a7a" }}>プライバシーポリシー</a>
+        </p>
+      </footer>
     </div>
   );
 }

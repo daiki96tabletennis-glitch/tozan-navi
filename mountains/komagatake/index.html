@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>甲斐駒ヶ岳（かいこまがたけ）大船駅からのアクセス・登山情報 | 登山ナビ</title>
+<title>甲斐駒ヶ岳 登山ガイド｜標高2,967m・上級 | Yamatch</title>
 <meta name="description" content="大船駅から車で3時間40分の甲斐駒ヶ岳（2967m）。登山口・駐車場・コース定数・アイゼン情報を掲載。白い花崗岩の山頂が印象的。黒戸尾根は日本三大急登の一つ。">
-<meta property="og:title" content="甲斐駒ヶ岳（かいこまがたけ）大船駅からのアクセス・登山情報 | 登山ナビ">
+<meta property="og:title" content="甲斐駒ヶ岳 登山ガイド｜標高2,967m・上級 | Yamatch">
 <meta property="og:description" content="大船駅から車で3時間40分の甲斐駒ヶ岳（2967m）。登山口・駐車場・コース定数・アイゼン情報を掲載。白い花崗岩の山頂が印象的。黒戸尾根は日本三大急登の一つ。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://tozan-navi.com/mountains/komagatake/">
@@ -13,28 +13,42 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "TouristAttraction",
-  "name": "甲斐駒ヶ岳",
-  "description": "白い花崗岩の山頂が印象的。黒戸尾根は日本三大急登の一つ。",
-  "address": {
-    "@type": "PostalAddress",
-    "addressRegion": "山梨県"
-  },
-  "geo": {
-    "@type": "GeoCoordinates"
-  }
+  "@graph": [
+    {
+      "@type": "TouristAttraction",
+      "name": "甲斐駒ヶ岳",
+      "alternateName": "かいこまがたけ",
+      "description": "甲斐駒ヶ岳の登山情報。大船・新宿・横浜・大宮からのアクセス時間、コース定数、登山ルートを掲載。",
+      "url": "https://tozan-navi.com/mountains/komagatake/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "山梨県",
+        "addressCountry": "JP"
+      }, "elevation": "2967m"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Yamatch", "item": "https://tozan-navi.com/"},
+        {"@type": "ListItem", "position": 2, "name": "山一覧", "item": "https://tozan-navi.com/"},
+        {"@type": "ListItem", "position": 3, "name": "甲斐駒ヶ岳", "item": "https://tozan-navi.com/mountains/komagatake/"}
+      ]
+    }
+  ]
 }
 </script>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { scroll-behavior: auto; }
 body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; background: #f0ede8; color: #3a3530; font-size: 15px; line-height: 1.6; }
 a { color: inherit; text-decoration: none; }
-header { background: linear-gradient(135deg, #3a4e3a 0%, #4a5e4a 100%); padding: 16px 20px; }
-.header-inner { max-width: 680px; margin: 0 auto; display: flex; align-items: center; gap: 10px; }
-.header-title { color: white; font-size: 15px; font-weight: bold; }
-.header-sub { color: #b8c8b8; font-size: 11px; }
-.back-btn { color: #b8c8b8; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+header { background: linear-gradient(135deg, #4a6038 0%, #607848 100%); padding: 12px 16px; }
+.header-inner { max-width: 680px; margin: 0 auto; display: flex; align-items: center; gap: 8px; }
+.header-title { color: white; font-family: Georgia, serif; font-size: 19px; font-weight: bold; letter-spacing: 0.02em; }
+.header-sub { color: rgba(255,255,255,0.5); font-size: 10px; margin-top: 1px; }
+.back-btn { color: rgba(255,255,255,0.7); font-size: 12px; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
 .back-btn:hover { color: white; }
+.header-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; border-radius: 8px; padding: 4px 9px; font-size: 11px; text-decoration: none; white-space: nowrap; cursor: pointer; }
 main { max-width: 680px; margin: 0 auto; padding: 16px; }
 .hero { background: #4a5e4a; border-radius: 14px; overflow: hidden; margin-bottom: 16px; }
 .hero-body { padding: 20px; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
@@ -73,15 +87,30 @@ main { max-width: 680px; margin: 0 auto; padding: 16px; }
 .other-link:hover { background: #e8e4dc; }
 .other-link span { font-size: 11px; color: #a09888; }
 footer { text-align: center; padding: 24px; font-size: 12px; color: #a09888; }
+
+.rw{background:#fff;border-radius:12px;padding:16px;border:1px solid #ddd8d0;margin-bottom:16px}
+.rh{font-size:14px;font-weight:bold;color:#4a5e4a;margin:0 0 12px}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rc{display:flex;flex-direction:column;gap:6px;background:#f5f3ef;border:1px solid #e8e4dc;border-radius:10px;padding:12px;text-decoration:none;color:inherit;transition:background .15s}
+.rc:hover{background:#ede9e3}
+.rn{font-size:14px;font-weight:bold;color:#3a3530}
+.rb{display:flex;gap:5px;flex-wrap:wrap}
+.rbd,.rbc{font-size:10px;font-weight:bold;padding:2px 7px;border-radius:8px;white-space:nowrap}
+.rbc{background:#eef0e8;color:#4a5e4a}
+.rt{font-size:16px;font-weight:bold;color:#4a5e4a;margin-top:4px}
+.rs{font-size:10px;color:#a09888;font-weight:normal;margin-left:4px}
 </style>
 </head>
 <body>
 <header>
   <div class="header-inner">
-    <div>
-      <a href="/" class="back-btn">← トップに戻る</a>
-      <div class="header-title">Yamatch</div>
+    <svg width="26" height="26" viewBox="0 0 36 36" style="flex-shrink:0"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
+    <div style="flex:1;min-width:0;">
+      <div class="header-title">Yamatch <span style="font-size:12px;font-weight:normal;opacity:0.7;">from 大船</span></div>
+      <div class="header-sub">百名山・二百名山・人気の山</div>
     </div>
+    <a href="/about/" class="header-btn">運営者</a>
+    <a href="/" class="back-btn">← 一覧に戻る</a>
   </div>
 </header>
 
@@ -89,7 +118,7 @@ footer { text-align: center; padding: 24px; font-size: 12px; color: #a09888; }
   <div class="hero">
     <div class="hero-body">
       <div>
-        <div class="mountain-name">甲斐駒ヶ岳</div>
+        <h1 class="mountain-name">甲斐駒ヶ岳</h1>
         <div class="mountain-kana">かいこまがたけ</div>
         <div class="mountain-area">📍 山梨県</div>
         <span class="category-badge">百名山</span>
@@ -169,23 +198,18 @@ footer { text-align: center; padding: 24px; font-size: 12px; color: #a09888; }
     <strong>⚠ ご注意</strong><br>
     所要時間は高速道路利用時の目安です。交通状況や季節により大きく変動します。登山前は必ず最新の道路状況・登山道情報・天気予報をご確認ください。
   </div>
-
-  <div class="others">
-    <h3>⛰ 他の百名山を見る（大船駅から）</h3>
-    <div class="others-grid">
-      <a href="/mountains/tanzawa/" class="other-link">⛰ 丹沢山<span>1時間</span></a><a href="/mountains/fuji/" class="other-link">⛰ 富士山<span>2時間</span></a><a href="/mountains/tsukuba/" class="other-link">⛰ 筑波山<span>2時間</span></a><a href="/mountains/kumotori/" class="other-link">⛰ 雲取山<span>2時間10分</span></a><a href="/mountains/amagi/" class="other-link">⛰ 天城山<span>2時間30分</span></a><a href="/mountains/okutama/" class="other-link">⛰ 大菩薩嶺<span>2時間30分</span></a>
-    </div>
   </div>
+<div class="rw"><p class="rh">⛰ 近くて似た山</p><div class="rg"><a href="/mountains/kitadake/" class="rc"><div class="rn">北岳</div><div class="rb"><span class="rbd" style="background:#fde8e8;color:#8a2020">上級</span><span class="rbc">定数38〜54</span></div><div class="rt">3時間10分<span class="rs">大船から</span></div></a>
+<a href="/mountains/eboshidake_kita/" class="rc"><div class="rn">烏帽子岳（北ア）</div><div class="rb"><span class="rbd" style="background:#fde8e8;color:#8a2020">上級</span><span class="rbc">定数38〜50</span></div><div class="rt">5時間55分<span class="rs">大船から</span></div></a>
+</div></div>
 </main>
 
   <div style="text-align:center;padding:0 16px 16px">
-    <a href="/" style="display:inline-block;background:#4a5e4a;color:white;font-weight:bold;font-size:15px;padding:14px 32px;border-radius:12px;text-decoration:none;">
-      ← 山の一覧に戻る
-    </a>
+    <a href="/" style="display:inline-block;background:#607848;color:white;font-weight:bold;font-size:15px;padding:14px 32px;border-radius:12px;text-decoration:none;">← 山の一覧に戻る</a>
   </div>
 <footer>
   <p>Yamatch — 大船駅から行ける百名山・二百名山・人気の山</p>
-  <p style="margin-top:4px"><a href="/" style="color:#7a9a7a">← トップページに戻る</a></p>
+<p style="margin-top:6px"><a href="/terms/" style="color:#7a9a7a">利用規約</a> | <a href="/privacy/" style="color:#7a9a7a">プライバシーポリシー</a></p>
 </footer>
-</body>
+<script>window.addEventListener("load", function(){ window.scrollTo(0, 0); });</script></body>
 </html>
