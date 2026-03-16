@@ -39,7 +39,7 @@
 </head><body><div id="root"></div>
 <script>window.storage={_data:{},get:async(k)=>{const v=window.storage._data[k];return v!==undefined?{key:k,value:v}:null;},set:async(k,v)=>{window.storage._data[k]=v;return{key:k,value:v};},delete:async(k)=>{delete window.storage._data[k];return{key:k,deleted:true};},list:async(p)=>{const keys=Object.keys(window.storage._data).filter(k=>!p||k.startsWith(p));return{keys};}};</script>
 <script type="text/babel">
-const {useState,useMemo,useEffect,useRef}=React;
+import { useState, useMemo, useEffect, useRef } from "react";
 
 // カテゴリスタイル定義
 const CATEGORY_STYLE = {
@@ -62,9 +62,9 @@ const mountains = [
     driveTimeShinjuku: 95,
     driveTimeYokohama: 75,
     driveTimeOmiya: 105,
-    trailhead: "塩水橋",
-    trailheadAddress: "神奈川県愛甲郡清川村煤ヶ谷",
-    parking: "塩水橋駐車場（約20台・無料）",
+    trailhead: "大倉（秦野戸川公園）",
+    trailheadAddress: "神奈川県秦野市堀山下",
+    parking: "大倉駐車場（約150台・平日100〜500円・土日200〜800円・トイレあり）",
     season: "通年（冬季は積雪注意）",
     difficulty: "中級",
     courseCoefficientRange: "26〜33",
@@ -184,7 +184,7 @@ const mountains = [
     driveTimeYokohama: 145,
     driveTimeOmiya: 195,
     trailhead: "天城高原ゴルフ場",
-    trailheadAddress: "静岡県伊豆市冷川",
+    trailheadAddress: "静岡県伊豆市菅引",
     parking: "天城高原駐車場（約100台・無料）",
     season: "通年",
     difficulty: "初〜中級",
@@ -258,8 +258,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/24",
     seasonNoGear: "5月〜11月",
     season6Crampons: "12月〜4月",
-        trainAccess: "西武秩父駅→バス50分→日向大谷口（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "kobushigatake",
@@ -319,8 +318,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/177",
     seasonNoGear: "5月〜11月",
     season6Crampons: "12月〜4月",
-        trainAccess: "韮崎駅→バス→瑞牆山荘（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "akagi",
@@ -350,8 +348,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/21",
     seasonNoGear: "5月〜11月",
     season6Crampons: "12月〜4月",
-        trainAccess: "前橋駅→バス→赤城山（大洞・季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "kinpusan",
@@ -596,8 +593,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/172",
     seasonNoGear: "6月〜10月（規制確認要）",
     season6Crampons: "不可（活火山規制）",
-        trainAccess: "軽井沢駅→バス40分→車坂峠",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "tanigawa",
@@ -658,7 +654,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/8564",
     seasonNoGear: "5月〜11月",
     season6Crampons: "12月〜4月",
-        trainAccess: "那須塩原駅→バス30分→峠の茶屋入口",
+        trainAccess: "🚅那須塩原駅→バス30分→峠の茶屋入口",
     category: "百名山",
   },
   {
@@ -689,8 +685,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/51",
     seasonNoGear: "6月〜10月",
     season6Crampons: "11月〜5月",
-        trainAccess: "上田駅→バス40分→菅平高原（四阿山）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "nikko_shirane",
@@ -720,8 +715,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/252",
     seasonNoGear: "6月〜10月",
     season6Crampons: "11月〜5月",
-        trainAccess: "沼田駅→バス→丸沼高原（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "takeson",
@@ -751,8 +745,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/170",
     seasonNoGear: "6月〜10月",
     season6Crampons: "11月〜5月",
-        trainAccess: "沼田駅→バス→川場スキー場（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "komagatake",
@@ -869,8 +862,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/146",
     seasonNoGear: "7月〜10月",
     season6Crampons: "5月〜6月（残雪あり・注意）",
-        trainAccess: "新島々駅→バス→畳平（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "tateyama",
@@ -962,8 +954,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/142",
     seasonNoGear: "7月〜9月",
     season6Crampons: "不可（12本必要）",
-        trainAccess: "松本駅→バス→上高地（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "hotaka",
@@ -993,8 +984,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/143",
     seasonNoGear: "7月〜9月",
     season6Crampons: "不可（12本必要）",
-        trainAccess: "松本駅→バス→上高地（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "myoko",
@@ -1055,7 +1045,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/162",
     seasonNoGear: "7月〜10月",
     season6Crampons: "5月〜6月・11月",
-        trainAccess: "六日町駅→バス→清水（季節）",
+        trainAccess: "六日町駅→バス27分→清水（季節）",
     category: "百名山",
   },
   {
@@ -1116,8 +1106,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/103",
     seasonNoGear: "7月〜10月",
     season6Crampons: "5月〜6月・11月",
-        trainAccess: "沼田駅→バス→鳩待峠（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "aizu_koma",
@@ -1178,7 +1167,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/171",
     seasonNoGear: "6月〜10月",
     season6Crampons: "不可（活火山規制）",
-        trainAccess: "長野原草津口駅→バス25分→草津温泉",
+        trainAccess: "🚅長野原草津口駅→バス25分→草津温泉",
     category: "百名山",
   },
   {
@@ -1240,8 +1229,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/163",
     seasonNoGear: "5月〜11月",
     season6Crampons: "12月〜4月",
-        trainAccess: "会津高原尾瀬口駅→バス連絡→御池（季節）",
-    category: "百名山",
+            category: "百名山",
   },
 
   // ── 百名山以外の人気の山 ──────────────────────────────
@@ -1353,7 +1341,7 @@ const mountains = [
     driveTimeYokohama: 70,
     driveTimeOmiya: 105,
     trailhead: "大倉 or 姫次",
-    trailheadAddress: "神奈川県足柄上郡山北町",
+    trailheadAddress: "神奈川県秦野市堀山下",
     parking: "大倉駐車場（約80台・500円）",
     season: "通年（冬季積雪注意）",
     difficulty: "中〜上級",
@@ -1383,8 +1371,8 @@ const mountains = [
     driveTimeYokohama: 70,
     driveTimeOmiya: 85,
     trailhead: "陣馬登山口（和田）",
-    trailheadAddress: "神奈川県相模原市緑区和田",
-    parking: "和田バス停付近（数台）",
+    trailheadAddress: "東京都八王子市上恩方町",
+    parking: "和田峠駐車場（約70台・普通車800円・トイレあり）",
     season: "通年",
     difficulty: "初〜中級",
     courseCoefficientRange: "16〜26",
@@ -1643,8 +1631,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/144",
     seasonNoGear: "7月〜9月",
     season6Crampons: "10月・6月",
-        trainAccess: "穂高駅→バス60分→一ノ沢（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "yakedake",
@@ -1662,7 +1649,7 @@ const mountains = [
     driveTimeOmiya: 255,
     trailhead: "中の湯温泉",
     trailheadAddress: "長野県松本市安曇",
-    parking: "中の湯バス停付近（路肩）",
+    parking: "新中の湯登山口（約15台・無料・トイレなし）",
     season: "7月〜10月",
     difficulty: "中〜上級",
     courseCoefficientRange: "14〜24",
@@ -1675,8 +1662,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/145",
     seasonNoGear: "6月〜10月（規制確認要）",
     season6Crampons: "不可（活火山・12本必要）",
-        trainAccess: "松本駅→バス→上高地（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "kashimayari",
@@ -2008,8 +1994,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/16853",
     seasonNoGear: "6月〜10月",
     season6Crampons: "11月〜5月",
-        trainAccess: "中之条駅→バス→野反湖（季節）",
-    category: "二百名山",
+            category: "二百名山",
   },
   {
     id: "nanaitsurasan",
@@ -2245,7 +2230,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/157",
     seasonNoGear: "5月〜11月",
     season6Crampons: "12月〜4月",
-        trainAccess: "二本松駅→バス30分→岳温泉（季節）",
+        trainAccess: "🚅二本松駅→バス30分→岳温泉（季節）",
     category: "百名山",
   },
   {
@@ -2276,8 +2261,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/156",
     seasonNoGear: "6月〜10月（規制確認要）",
     season6Crampons: "11月〜5月",
-        trainAccess: "福島駅→バス→浄土平（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "echigokoma",
@@ -2367,7 +2351,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/152",
     seasonNoGear: "7月〜10月",
     season6Crampons: "5月〜6月・11月",
-        trainAccess: "越後湯沢駅→バス30分→和田小屋（季節）",
+        trainAccess: "🚅越後湯沢駅→バス30分→和田小屋（季節）",
     category: "百名山",
   },
   {
@@ -2458,8 +2442,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/168",
     seasonNoGear: "6月〜10月",
     season6Crampons: "11月〜5月",
-        trainAccess: "長野駅→バス55分→戸隠キャンプ場（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "kasagatake",
@@ -2488,8 +2471,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/175",
     seasonNoGear: "7月〜9月",
     season6Crampons: "不可（12本必要）",
-        trainAccess: "新穂高口駅→バス→新穂高温泉（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "ontakesan",
@@ -2519,8 +2501,7 @@ const mountains = [
     yamapUrl: "https://yamap.com/mountains/147",
     seasonNoGear: "7月〜9月（規制確認要）",
     season6Crampons: "不可（活火山規制）",
-        trainAccess: "木曽福島駅→バス55分→田の原（季節）",
-    category: "百名山",
+            category: "百名山",
   },
   {
     id: "goryudake",
@@ -2565,9 +2546,9 @@ const mountains = [
     driveTimeShinjuku: 185,
     driveTimeYokohama: 265,
     driveTimeOmiya: 295,
-    trailhead: "皇海橋（クラシックルート）",
-    trailheadAddress: "栃木県日光市足尾町",
-    parking: "皇海橋駐車場（約20台・無料）※林道長距離",
+    trailhead: "銀山平（クラシックルート）",
+    trailheadAddress: "栃木県日光市足尾",
+    parking: "銀山平駐車場（約50台・無料）※群馬側林道は廃道・クラシックルート起点",
     season: "6月〜10月",
     difficulty: "中〜上級",
     courseCoefficientRange: "45〜50",
@@ -2634,8 +2615,7 @@ const mountains = [
     ],
     description: "日本最大規模の高原状の山。山頂付近まで車道が通じており、広大な草原と牛の放牧が広がる。王ヶ頭からはアルプス全山の大パノラマ。",
     yamapUrl: "https://yamap.com/mountains/285",
-    trainAccess: "茅野駅→バス→美ヶ原（季節）",
-    category: "百名山",
+        category: "百名山",
   },
   {
     id: "karamatsu",
@@ -2935,7 +2915,6 @@ const mountains = [
     ],
     description: "富士山・立山と並ぶ日本三霊山のひとつ。高山植物の宝庫で、クロユリの群生が有名。北陸自動車道経由で大船から約6時間。山頂の白山比咩神社奥宮が信仰の中心。",
     yamapUrl: "https://yamap.com/mountains/99",
-    trainAccess: "金沢駅→バス→別当出合（季節）",
     category: "百名山",
   },
   {
@@ -2954,7 +2933,6 @@ const mountains = [
     ],
     description: "東北を代表する火山。エコーラインで標高1600mまで車で上がれ、御釜（火口湖）の神秘的な青い水面が名物。冬の樹氷（スノーモンスター）でも知られる。東北道経由で大船から約6時間。",
     yamapUrl: "https://yamap.com/mountains/191",
-    trainAccess: "白石蔵王駅→バス→蔵王温泉（季節）",
     category: "百名山",
   },
   {
@@ -3050,8 +3028,7 @@ const mountains = [
     ],
     description: "常念山脈南端の山で、穂高・槍ヶ岳の絶好の展望台。稜線から望む穂高連峰の眺めは北アルプス随一。上高地または三股からのアクセスで、常念岳との縦走も人気。",
     yamapUrl: "https://yamap.com/mountains/102",
-    trainAccess: "松本駅→バス→上高地（季節）",
-    category: "二百名山",
+        category: "二百名山",
   },
   {
     id: "otenshoudake",
@@ -3074,8 +3051,7 @@ const mountains = [
     ],
     description: "常念山脈の最高峰で北アルプス表銀座縦走路の要衝。合戦尾根〜燕岳を経由するコースは北アルプス三大急登のひとつ。山頂からは360度の展望で槍・穂高が間近に見える。",
     yamapUrl: "https://yamap.com/mountains/1499",
-    trainAccess: "穂高駅→バス60分→中房温泉（季節）",
-    category: "二百名山",
+        category: "二百名山",
   },
   {
     id: "harinokidake",
@@ -3706,11 +3682,11 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
 }
 // ===================== 掲示板ここまで =====================
 
-function App() {
-  const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("近い順");
-  const [area, setArea] = useState("すべて");
-  const [departure, setDeparture] = useState("大船"); // "大船" | "新宿" | "横浜" | "大宮"
+export default function App() {
+  const [search, setSearch] = useState(() => { try { const _v = sessionStorage.getItem("ym_search"); return _v !== null ? JSON.parse(_v) : ""; } catch { return ""; } });
+  const [sort, setSort] = useState(() => { try { const _v = sessionStorage.getItem("ym_sort"); return _v !== null ? JSON.parse(_v) : "近い順"; } catch { return "近い順"; } });
+  const [area, setArea] = useState(() => { try { const _v = sessionStorage.getItem("ym_area"); return _v !== null ? JSON.parse(_v) : "すべて"; } catch { return "すべて"; } });
+  const [departure, setDeparture] = useState(() => { try { const _v = sessionStorage.getItem("ym_departure"); return _v !== null ? JSON.parse(_v) : "大船"; } catch { return "大船"; } }); // "大船" | "新宿" | "横浜" | "大宮"
 
   const getDriveTime = (m) => {
     if (departure === "新宿" && m.driveTimeShinjuku) return m.driveTimeShinjuku;
@@ -3718,19 +3694,37 @@ function App() {
     if (departure === "大宮" && m.driveTimeOmiya) return m.driveTimeOmiya;
     return m.driveTime;
   };
-  const [categoryFilter, setCategoryFilter] = useState("すべて");
-  const [dayTripOnly, setDayTripOnly] = useState(false);
-  const [trainOnly, setTrainOnly] = useState(false);
-  const [driveTimeFilter, setDriveTimeFilter] = useState(null); // null | 180 | 360
-  const [courseFilter, setCourseFilter] = useState([]); // 複数選択
-  const [cramponsFilter, setCramponsFilter] = useState("すべて"); // "すべて"|"アイゼン不要"|"6本以内でOK"
-  const [filterMonth, setFilterMonth] = useState("今月"); // "今月"|"来月"
-  const [viewMode, setViewMode] = useState("list");
+  const [categoryFilter, setCategoryFilter] = useState(() => { try { const _v = sessionStorage.getItem("ym_category"); return _v !== null ? JSON.parse(_v) : "すべて"; } catch { return "すべて"; } });
+  const [dayTripOnly, setDayTripOnly] = useState(() => { try { const _v = sessionStorage.getItem("ym_daytrip"); return _v !== null ? JSON.parse(_v) : false; } catch { return false; } });
+  const [trainOnly, setTrainOnly] = useState(() => { try { const _v = sessionStorage.getItem("ym_train"); return _v !== null ? JSON.parse(_v) : false; } catch { return false; } });
+  const [driveTimeFilter, setDriveTimeFilter] = useState(() => { try { const _v = sessionStorage.getItem("ym_drivetime"); return _v !== null ? JSON.parse(_v) : null; } catch { return null; } }); // null | 180 | 360
+  const [courseFilter, setCourseFilter] = useState(() => { try { const _v = sessionStorage.getItem("ym_course"); return _v !== null ? JSON.parse(_v) : []; } catch { return []; } }); // 複数選択
+  const [cramponsFilter, setCramponsFilter] = useState(() => { try { const _v = sessionStorage.getItem("ym_crampons"); return _v !== null ? JSON.parse(_v) : "すべて"; } catch { return "すべて"; } }); // "すべて"|"アイゼン不要"|"6本以内でOK"
+  const [filterMonth, setFilterMonth] = useState(() => { try { const _v = sessionStorage.getItem("ym_month"); return _v !== null ? JSON.parse(_v) : "今月"; } catch { return "今月"; } }); // "今月"|"来月"
+  const [viewMode, setViewMode] = useState(() => { try { const _v = sessionStorage.getItem("ym_viewmode"); return _v !== null ? JSON.parse(_v) : "list"; } catch { return "list"; } });
   const [showBoard, setShowBoard] = useState(false);
   const [boardInitMountain, setBoardInitMountain] = useState("");
   const [selected, setSelected] = useState(null);
 
   
+
+  // フィルター条件をsessionStorageに保存（個別ページから戻ったとき復元用）
+  useEffect(() => {
+    try {
+      sessionStorage.setItem("ym_search", JSON.stringify(search));
+    sessionStorage.setItem("ym_sort", JSON.stringify(sort));
+    sessionStorage.setItem("ym_area", JSON.stringify(area));
+    sessionStorage.setItem("ym_departure", JSON.stringify(departure));
+    sessionStorage.setItem("ym_category", JSON.stringify(categoryFilter));
+    sessionStorage.setItem("ym_daytrip", JSON.stringify(dayTripOnly));
+    sessionStorage.setItem("ym_train", JSON.stringify(trainOnly));
+    sessionStorage.setItem("ym_drivetime", JSON.stringify(driveTimeFilter));
+    sessionStorage.setItem("ym_course", JSON.stringify(courseFilter));
+    sessionStorage.setItem("ym_crampons", JSON.stringify(cramponsFilter));
+    sessionStorage.setItem("ym_month", JSON.stringify(filterMonth));
+    sessionStorage.setItem("ym_viewmode", JSON.stringify(viewMode));
+    } catch {}
+  }, [search, sort, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, viewMode]);
   const getMountainUrl = (id) => {
     const special = { mizugatake: "mizugaki" };
     return "/mountains/" + (special[id] || id) + "/";
@@ -4032,7 +4026,7 @@ function App() {
                     <div className="flex items-center gap-1 flex-wrap" style={{ minHeight: "36px" }}>
                       <span className="font-semibold text-sm" style={{ color: "#3a3530" }}>{m.regulated && <span style={{color:"#e67700",marginRight:"3px",fontSize:"13px"}}>⚠️</span>}{m.name}</span>
                       {m.trainAccess && (
-                        <span title={m.trainAccess} className="text-xs px-1 py-0.5 rounded font-medium" style={{ backgroundColor: "#dce8f5", color: "#2a6090", fontSize: "11px" }}>🚃</span>
+                        <span title={m.trainAccess} className="text-xs px-1 py-0.5 rounded font-medium" style={{ backgroundColor: "#dce8f5", color: "#2a6090", fontSize: "11px" }}>{m.trainAccess && (m.trainAccess.includes('バス') || m.trainAccess.includes('ケーブル')) ? '🚃🚌' : '🚃'}</span>
                       )}
                       {isDayTrip(m) && (
                         <span className="text-xs px-1.5 py-0.5 rounded font-medium" style={{ backgroundColor: "#e0e8da", color: "#4a6840", fontSize: "10px" }}>日帰り</span>
@@ -4073,31 +4067,6 @@ function App() {
           )}
         </div>
       </main>
-      <div style={{ margin: "16px auto", display: "flex", gap: "8px", maxWidth: "480px", padding: "0 16px" }}>
-        <button
-          id="share-native-top"
-          onClick={() => {
-            var title = "Yamatch｜出発地から登る山を探せる登山サーチ";
-            var url = window.location.href;
-            if (navigator.share) {
-              navigator.share({ title, text: title, url });
-            } else {
-              navigator.clipboard && navigator.clipboard.writeText(url);
-            }
-          }}
-          style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center", gap:"6px", padding:"12px 8px", borderRadius:"10px", fontSize:"13px", fontWeight:"bold", border:"none", cursor:"pointer", background:"#607848", color:"white" }}
-        >📤 このページをシェア</button>
-        <a
-          href={"https://social-plugins.line.me/lineit/share?url=" + encodeURIComponent(window.location.href)}
-          target="_blank" rel="noopener noreferrer"
-          style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center", gap:"6px", padding:"12px 8px", borderRadius:"10px", fontSize:"13px", fontWeight:"bold", textDecoration:"none", background:"#06C755", color:"white" }}
-        >💬 LINE</a>
-        <a
-          href={"https://twitter.com/intent/tweet?text=" + encodeURIComponent("Yamatch｜出発地から登る山を探せる登山サーチ") + "&url=" + encodeURIComponent(window.location.href)}
-          target="_blank" rel="noopener noreferrer"
-          style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center", gap:"6px", padding:"12px 8px", borderRadius:"10px", fontSize:"13px", fontWeight:"bold", textDecoration:"none", background:"#000", color:"white" }}
-        >𝕏 X</a>
-      </div>
       <footer style={{ textAlign: "center", padding: "20px 16px", fontSize: "12px", color: "#a09888", borderTop: "1px solid #e8e4dc", marginTop: "8px" }}>
         <p>Yamatch — 出発地から登る山を探せる登山サーチ</p>
         <p style={{ marginTop: "6px" }}>
@@ -4112,6 +4081,4 @@ function App() {
   );
 }
 
-const root=ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App/>);
 </script></body></html>
