@@ -31,6 +31,13 @@ main { max-width: 680px; margin: 0 auto; padding: 24px 16px; }
 footer { text-align: center; padding: 24px; font-size: 12px; color: #a09888; }
 .footer-links { margin-top: 8px; display: flex; justify-content: center; gap: 16px; }
 .footer-links a { color: #7a9a7a; }
+
+.share-section{margin:16px;display:flex;gap:8px;max-width:480px;margin-left:auto;margin-right:auto}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 8px;border-radius:10px;font-size:13px;font-weight:bold;border:none;cursor:pointer;text-decoration:none}
+.share-btn-native{background:#607848;color:white}
+.share-btn-line{background:#06C755;color:white}
+.share-btn-x{background:#000;color:white}
+.share-btn-copy{background:#f0ede8;color:#4a6038;border:1px solid #c8c4bc}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -129,6 +136,12 @@ footer { text-align: center; padding: 24px; font-size: 12px; color: #a09888; }
   </div>
 </main>
 
+<div class="share-section">
+  <button id="share-native" class="share-btn share-btn-native">📤 このページをシェア</button>
+  <a id="share-line" class="share-btn share-btn-line" href="#" target="_blank" rel="noopener">💬 LINE</a>
+  <a id="share-x" class="share-btn share-btn-x" href="#" target="_blank" rel="noopener">𝕏 X</a>
+  <button id="share-copy" class="share-btn share-btn-copy">🔗 URLコピー</button>
+</div>
 <footer>
   <p>Yamatch</p>
   <div class="footer-links">
@@ -138,5 +151,33 @@ footer { text-align: center; padding: 24px; font-size: 12px; color: #a09888; }
     <a href="/privacy/">プライバシーポリシー</a>
   </div>
 </footer>
+<script>
+(function(){
+  var title = document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : document.title;
+  var url = window.location.href;
+  var shareText = title + ' | Yamatch';
+  var nativeBtn = document.getElementById('share-native');
+  var lineBtn = document.getElementById('share-line');
+  var xBtn = document.getElementById('share-x');
+  var copyBtn = document.getElementById('share-copy');
+  if (navigator.share) {
+    if (nativeBtn) { nativeBtn.style.display='flex'; nativeBtn.onclick=function(){ navigator.share({title:title,text:shareText,url:url}); }; }
+    if (lineBtn) lineBtn.style.display='none';
+    if (xBtn) xBtn.style.display='none';
+  } else {
+    if (nativeBtn) nativeBtn.style.display='none';
+    if (lineBtn) { lineBtn.href='https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(url); lineBtn.style.display='flex'; }
+    if (xBtn) { xBtn.href='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText)+'&url='+encodeURIComponent(url); xBtn.style.display='flex'; }
+  }
+  if (copyBtn) {
+    copyBtn.onclick=function(){
+      navigator.clipboard.writeText(url).then(function(){
+        copyBtn.textContent='✅ コピーしました';
+        setTimeout(function(){ copyBtn.innerHTML='🔗 URLコピー'; },2000);
+      });
+    };
+  }
+})();
+</script>
 </body>
 </html>

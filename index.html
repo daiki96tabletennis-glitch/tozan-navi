@@ -4073,6 +4073,31 @@ function App() {
           )}
         </div>
       </main>
+      <div style={{ margin: "16px auto", display: "flex", gap: "8px", maxWidth: "480px", padding: "0 16px" }}>
+        <button
+          id="share-native-top"
+          onClick={() => {
+            var title = "Yamatch｜出発地から登る山を探せる登山サーチ";
+            var url = window.location.href;
+            if (navigator.share) {
+              navigator.share({ title, text: title, url });
+            } else {
+              navigator.clipboard && navigator.clipboard.writeText(url);
+            }
+          }}
+          style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center", gap:"6px", padding:"12px 8px", borderRadius:"10px", fontSize:"13px", fontWeight:"bold", border:"none", cursor:"pointer", background:"#607848", color:"white" }}
+        >📤 このページをシェア</button>
+        <a
+          href={"https://social-plugins.line.me/lineit/share?url=" + encodeURIComponent(window.location.href)}
+          target="_blank" rel="noopener noreferrer"
+          style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center", gap:"6px", padding:"12px 8px", borderRadius:"10px", fontSize:"13px", fontWeight:"bold", textDecoration:"none", background:"#06C755", color:"white" }}
+        >💬 LINE</a>
+        <a
+          href={"https://twitter.com/intent/tweet?text=" + encodeURIComponent("Yamatch｜出発地から登る山を探せる登山サーチ") + "&url=" + encodeURIComponent(window.location.href)}
+          target="_blank" rel="noopener noreferrer"
+          style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center", gap:"6px", padding:"12px 8px", borderRadius:"10px", fontSize:"13px", fontWeight:"bold", textDecoration:"none", background:"#000", color:"white" }}
+        >𝕏 X</a>
+      </div>
       <footer style={{ textAlign: "center", padding: "20px 16px", fontSize: "12px", color: "#a09888", borderTop: "1px solid #e8e4dc", marginTop: "8px" }}>
         <p>Yamatch — 出発地から登る山を探せる登山サーチ</p>
         <p style={{ marginTop: "6px" }}>
