@@ -31,6 +31,10 @@
   gtag('js', new Date());
   gtag('config', 'G-TMTVVTEEGF');
 </script>
+<link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+<link rel="manifest" href="/manifest.json">
 </head><body><div id="root"></div>
 <script>window.storage={_data:{},get:async(k)=>{const v=window.storage._data[k];return v!==undefined?{key:k,value:v}:null;},set:async(k,v)=>{window.storage._data[k]=v;return{key:k,value:v};},delete:async(k)=>{delete window.storage._data[k];return{key:k,deleted:true};},list:async(p)=>{const keys=Object.keys(window.storage._data).filter(k=>!p||k.startsWith(p));return{keys};}};</script>
 <script type="text/babel">
@@ -564,6 +568,7 @@ const mountains = [
   },
   {
     id: "asama",
+    regulated: true,
     lat: 36.4062,
     lng: 138.5236,
     name: "浅間山",
@@ -1145,6 +1150,7 @@ const mountains = [
   },
   {
     id: "shirane_gunma",
+    regulated: true,
     lat: 36.6173,
     lng: 138.5396,
     name: "草津白根山",
@@ -1641,6 +1647,7 @@ const mountains = [
   },
   {
     id: "yakedake",
+    regulated: true,
     lat: 36.2268,
     lng: 137.5868,
     name: "焼岳",
@@ -2485,6 +2492,7 @@ const mountains = [
   },
   {
     id: "ontakesan",
+    regulated: true,
     lat: 35.8936,
     lng: 137.4797,
     name: "御嶽山",
@@ -4021,7 +4029,7 @@ function App() {
                     </div>
                     {/* 山名 + バッジ */}
                     <div className="flex items-center gap-1 flex-wrap" style={{ minHeight: "36px" }}>
-                      <span className="font-semibold text-sm" style={{ color: "#3a3530" }}>{m.name}</span>
+                      <span className="font-semibold text-sm" style={{ color: "#3a3530" }}>{m.regulated && <span style={{color:"#e67700",marginRight:"3px",fontSize:"13px"}}>⚠️</span>}{m.name}</span>
                       {m.trainAccess && (
                         <span title={m.trainAccess} className="text-xs px-1 py-0.5 rounded font-medium" style={{ backgroundColor: "#dce8f5", color: "#2a6090", fontSize: "11px" }}>🚃</span>
                       )}
