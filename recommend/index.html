@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>登山診断 | あなたにおすすめの山を見つける - Yamatch</title>
+<meta name="description" content="出発地・体力・日帰り希望などの条件から、あなたにおすすめの山を3つ提案。百名山・二百名山・人気の山107座から最適な山を無料で診断します。">
+<meta property="og:title" content="登山診断 | あなたにおすすめの山 - Yamatch">
+<meta property="og:description" content="5つの質問に答えるだけで、あなたにぴったりの山を3つご提案します。">
+<meta property="og:image" content="https://tozan-navi.com/ogp.png">
+<meta property="og:url" content="https://tozan-navi.com/recommend/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tozan-navi.com/recommend/">
+<link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="manifest" href="/manifest.json">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TMTVVTEEGF');</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;background:#f0ede8;color:#3a3530;min-height:100vh;}
+header{background:linear-gradient(135deg,#4a6038 0%,#607848 100%);padding:12px 16px;}
+.header-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:8px;}
+.header-title{color:white;font-family:Georgia,serif;font-size:19px;font-weight:bold;}
+.header-sub{color:rgba(255,255,255,0.5);font-size:10px;margin-top:1px;}
+.back-btn{color:rgba(255,255,255,0.7);font-size:12px;white-space:nowrap;text-decoration:none;}
+.header-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;border-radius:8px;padding:4px 9px;font-size:11px;white-space:nowrap;text-decoration:none;}
+main{max-width:480px;margin:0 auto;padding:16px;}
+.step{display:none;animation:fadeIn 0.3s ease;}
+.step.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.progress-wrap{margin-bottom:20px;}
+.progress-label{display:flex;justify-content:space-between;font-size:11px;color:#a09888;margin-bottom:6px;}
+.progress-bar{height:4px;background:#e0dbd4;border-radius:2px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,#4a6038,#8aaa70);border-radius:2px;transition:width 0.4s ease;}
+.question{font-size:16px;font-weight:700;color:#2a2520;margin-bottom:16px;line-height:1.5;}
+.q-emoji{font-size:24px;display:block;margin-bottom:8px;}
+.choices{display:flex;flex-direction:column;gap:8px;}
+.choice{display:flex;align-items:center;gap:12px;background:white;border:1.5px solid #e0dbd4;border-radius:12px;padding:13px 16px;cursor:pointer;transition:all 0.15s;}
+.choice:hover{border-color:#607848;background:#f5f8f2;}
+.choice-icon{font-size:22px;flex-shrink:0;width:32px;text-align:center;}
+.choice-main{font-size:14px;font-weight:600;color:#2a2520;}
+.choice-sub{font-size:11px;color:#8a8078;margin-top:2px;}
+/* 導入 */
+.intro-wrap{text-align:center;padding:24px 16px 20px;}
+.intro-icon{font-size:48px;margin-bottom:10px;}
+.intro-title{font-size:20px;font-weight:700;color:#2a2520;margin-bottom:8px;}
+.intro-desc{font-size:13px;color:#7a7068;line-height:1.7;margin-bottom:20px;}
+.start-btn{display:inline-block;background:linear-gradient(135deg,#4a6038,#607848);color:white;font-size:15px;font-weight:700;padding:14px 40px;border-radius:28px;border:none;cursor:pointer;}
+/* 結果 */
+.result-header{text-align:center;margin-bottom:20px;padding-top:4px;}
+.result-title{font-size:18px;font-weight:700;color:#2a2520;margin-bottom:4px;}
+.result-sub{font-size:12px;color:#7a7068;}
+.result-card{background:white;border-radius:14px;border:1px solid #e0dbd4;margin-bottom:10px;overflow:hidden;}
+.result-rank{display:flex;align-items:center;gap:12px;padding:14px 16px 10px;}
+.rank-badge{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;}
+.rank-1{background:linear-gradient(135deg,#c9a227,#f0c040);color:white;}
+.rank-2{background:linear-gradient(135deg,#8a8a8a,#b0b0b0);color:white;}
+.rank-3{background:linear-gradient(135deg,#a05a30,#c07848);color:white;}
+.result-name{font-size:17px;font-weight:700;color:#2a2520;}
+.result-area{font-size:11px;color:#8a8078;margin-top:1px;}
+.result-badges{display:flex;gap:4px;flex-wrap:wrap;padding:0 16px 8px;}
+.rbadge{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500;}
+.rb100{background:rgba(160,200,240,0.35);color:#1a4060;}
+.rbother{background:rgba(180,220,180,0.4);color:#2d5a1a;}
+.rbday{background:rgba(200,235,210,0.8);color:#1e5a2e;}
+.rbstay{background:rgba(250,230,190,0.8);color:#7a4800;}
+.rbtrain{background:rgba(200,220,245,0.8);color:#1a4878;}
+.result-desc{font-size:12px;color:#5a5248;line-height:1.6;padding:0 16px;margin-bottom:8px;}
+.result-reason{font-size:11px;color:#607848;background:#f0f6ec;border-radius:8px;padding:8px 10px;margin:0 16px 12px;line-height:1.5;}
+.result-reason::before{content:"✓ ";font-weight:700;}
+.result-link{display:block;text-align:center;padding:10px;border-top:1px solid #f0ede8;font-size:13px;font-weight:600;color:#4a6038;text-decoration:none;}
+.retry-btn{display:block;width:100%;padding:13px;background:white;border:1.5px solid #c8d8b8;border-radius:12px;font-size:14px;font-weight:600;color:#4a6038;cursor:pointer;margin-top:8px;}
+footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1px solid #e8e4dc;margin-top:16px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <svg width="26" height="26" viewBox="0 0 36 36" style="flex-shrink:0"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
+    <div style="flex:1;min-width:0;">
+      <div class="header-title">Yamatch</div>
+      <div class="header-sub">出発地から登る山を探せる登山サーチ</div>
+    </div>
+    <a href="/about/" class="header-btn">運営者</a>
+    <a href="/" class="back-btn">← 一覧に戻る</a>
+  </div>
+</header>
+
+<main>
+  <!-- 導入 -->
+  <div id="intro" class="step active">
+    <div class="intro-wrap">
+      <div class="intro-icon">🗻</div>
+      <h1 class="intro-title">登山診断</h1>
+      <p class="intro-desc">出発地・体力・スタイルなど5つの質問に答えるだけで、あなたにぴったりの山を3つご提案します。百名山・二百名山・人気の山107座からマッチング。</p>
+      <button class="start-btn" onclick="startQuiz()">診断スタート ▶</button>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div id="q1" class="step">
+    <div class="progress-wrap">
+      <div class="progress-label"><span>質問 1 / 5</span><span>20%</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
+    </div>
+    <div class="question"><span class="q-emoji">🚉</span>どこから出発しますか？</div>
+    <div class="choices">
+      <div class="choice" onclick="answer('dep','ofuna')"><span class="choice-icon">🚃</span><div><div class="choice-main">大船・横浜方面</div><div class="choice-sub">神奈川県東部から出発</div></div></div>
+      <div class="choice" onclick="answer('dep','shinjuku')"><span class="choice-icon">🚃</span><div><div class="choice-main">新宿・渋谷方面</div><div class="choice-sub">東京都心から出発</div></div></div>
+      <div class="choice" onclick="answer('dep','omiya')"><span class="choice-icon">🚃</span><div><div class="choice-main">大宮・浦和方面</div><div class="choice-sub">埼玉県から出発</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div id="q2" class="step">
+    <div class="progress-wrap">
+      <div class="progress-label"><span>質問 2 / 5</span><span>40%</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div>
+    </div>
+    <div class="question"><span class="q-emoji">⏱</span>移動時間はどのくらいまで？</div>
+    <div class="choices">
+      <div class="choice" onclick="answer('drive',90)"><span class="choice-icon">⚡</span><div><div class="choice-main">1時間30分以内</div><div class="choice-sub">サクッと近場で</div></div></div>
+      <div class="choice" onclick="answer('drive',180)"><span class="choice-icon">🚗</span><div><div class="choice-main">3時間以内</div><div class="choice-sub">ある程度遠くても</div></div></div>
+      <div class="choice" onclick="answer('drive',999)"><span class="choice-icon">🗺</span><div><div class="choice-main">どこでも</div><div class="choice-sub">遠くても行きたい山に</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div id="q3" class="step">
+    <div class="progress-wrap">
+      <div class="progress-label"><span>質問 3 / 5</span><span>60%</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+    </div>
+    <div class="question"><span class="q-emoji">💪</span>体力・登山経験は？</div>
+    <div class="choices">
+      <div class="choice" onclick="answer('coeff',18)"><span class="choice-icon">🌱</span><div><div class="choice-main">初心者・お散歩感覚で</div><div class="choice-sub">ケーブルカーや整備された道が安心</div></div></div>
+      <div class="choice" onclick="answer('coeff',35)"><span class="choice-icon">🥾</span><div><div class="choice-main">ある程度は歩ける</div><div class="choice-sub">日帰り5〜7時間くらいまで</div></div></div>
+      <div class="choice" onclick="answer('coeff',999)"><span class="choice-icon">⛰</span><div><div class="choice-main">ガッツリ登りたい</div><div class="choice-sub">急登・岩場も楽しめる</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div id="q4" class="step">
+    <div class="progress-wrap">
+      <div class="progress-label"><span>質問 4 / 5</span><span>80%</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+    </div>
+    <div class="question"><span class="q-emoji">🏕</span>日帰りか泊まりか？</div>
+    <div class="choices">
+      <div class="choice" onclick="answer('daytrip',true)"><span class="choice-icon">🌅</span><div><div class="choice-main">日帰りがいい</div><div class="choice-sub">その日のうちに帰りたい</div></div></div>
+      <div class="choice" onclick="answer('daytrip','any')"><span class="choice-icon">✨</span><div><div class="choice-main">どちらでも</div><div class="choice-sub">山小屋泊も楽しそう</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div id="q5" class="step">
+    <div class="progress-wrap">
+      <div class="progress-label"><span>質問 5 / 5</span><span>100%</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+    </div>
+    <div class="question"><span class="q-emoji">🎯</span>こだわりは？</div>
+    <div class="choices">
+      <div class="choice" onclick="answer('pref','hyaku')"><span class="choice-icon">📜</span><div><div class="choice-main">百名山を制覇したい</div><div class="choice-sub">深田久弥の百名山に挑戦</div></div></div>
+      <div class="choice" onclick="answer('pref','train')"><span class="choice-icon">🚃</span><div><div class="choice-main">電車・バスで行きたい</div><div class="choice-sub">車なしでアクセスしたい</div></div></div>
+      <div class="choice" onclick="answer('pref','view')"><span class="choice-icon">🔭</span><div><div class="choice-main">展望・景色を重視</div><div class="choice-sub">山頂からの絶景を楽しみたい</div></div></div>
+      <div class="choice" onclick="answer('pref','any')"><span class="choice-icon">🎲</span><div><div class="choice-main">特にこだわらない</div><div class="choice-sub">おまかせ</div></div></div>
+    </div>
+  </div>
+
+  <!-- 結果 -->
+  <div id="result" class="step">
+    <div class="result-header">
+      <div class="result-title">あなたへのおすすめ ⛰</div>
+      <div class="result-sub" id="result-sub"></div>
+    </div>
+    <div id="result-cards"></div>
+    <button class="retry-btn" onclick="restart()">↺ もう一度診断する</button>
+  </div>
+</main>
+
+<footer>
+  <p>Yamatch — 出発地から登る山を探せる登山サーチ</p>
+  <p style="margin-top:6px;">
+    <a href="/terms/" style="color:#7a9a7a;">利用規約</a>
+    <span style="margin:0 8px;opacity:0.4;">|</span>
+    <a href="/privacy/" style="color:#7a9a7a;">プライバシーポリシー</a>
+    <span style="margin:0 8px;opacity:0.4;">|</span>
+    <a href="/about/" style="color:#7a9a7a;">運営者</a>
+  </p>
+</footer>
+
+<script>
+const MOUNTAINS = [{"id": "tanzawa", "name": "丹沢山", "area": "神奈川県", "elevation": 1567, "category": "百名山", "difficulty": "中級", "coeffMax": 33, "daytrip": true, "trainAccess": false, "driveOfuna": 60, "driveShinjuku": 95, "driveYokohama": 75, "driveOmiya": 105, "description": "神奈川県最高峰エリア。ブナの原生林が美しく、四季を通じて楽しめる。"}, {"id": "fuji", "name": "富士山", "area": "静岡県", "elevation": 3776, "category": "百名山", "difficulty": "中級", "coeffMax": 58, "daytrip": false, "trainAccess": false, "driveOfuna": 120, "driveShinjuku": 145, "driveYokohama": 135, "driveOmiya": 175, "description": "日本最高峰。富士宮ルートは最短距離で山頂を目指せる人気ルート。"}, {"id": "tsukuba", "name": "筑波山", "area": "茨城県", "elevation": 877, "category": "百名山", "difficulty": "初級", "coeffMax": 17, "daytrip": true, "trainAccess": false, "driveOfuna": 120, "driveShinjuku": 150, "driveYokohama": 120, "driveOmiya": 85, "description": "百名山最低峰。ケーブルカー・ロープウェイあり。山頂からは関東平野を一望。"}, {"id": "kumotori", "name": "雲取山", "area": "東京都・埼玉県", "elevation": 2017, "category": "百名山", "difficulty": "中級", "coeffMax": 54, "daytrip": true, "trainAccess": true, "driveOfuna": 130, "driveShinjuku": 130, "driveYokohama": 120, "driveOmiya": 110, "description": "東京都最高峰。奥多摩を代表する名峰で、ブナ林の縦走路が美しい。"}, {"id": "amagi", "name": "天城山", "area": "静岡県", "elevation": 1406, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 20, "daytrip": true, "trainAccess": false, "driveOfuna": 150, "driveShinjuku": 185, "driveYokohama": 145, "driveOmiya": 195, "description": "伊豆半島の最高峰。シャクナゲの群生地として有名。川端康成の小説の舞台。"}, {"id": "okutama", "name": "大菩薩嶺", "area": "山梨県", "elevation": 2057, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 30, "daytrip": true, "trainAccess": true, "driveOfuna": 150, "driveShinjuku": 130, "driveYokohama": 140, "driveOmiya": 135, "description": "草原状の稜線から富士山や南アルプスの展望が開ける。アクセスが良く人気。"}, {"id": "ryokami", "name": "両神山", "area": "埼玉県", "elevation": 1723, "category": "百名山", "difficulty": "中級", "coeffMax": 33, "daytrip": true, "trainAccess": false, "driveOfuna": 150, "driveShinjuku": 125, "driveYokohama": 150, "driveOmiya": 125, "description": "鋸状の岩峰が連なる個性的な山容。クサリ場が多く登り応えがある。"}, {"id": "kobushigatake", "name": "甲武信ヶ岳", "area": "山梨県", "elevation": 2475, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 38, "daytrip": true, "trainAccess": false, "driveOfuna": 150, "driveShinjuku": 135, "driveYokohama": 170, "driveOmiya": 175, "description": "甲州・武州・信州の3県の境に位置。千曲川・荒川・笛吹川の源流の山。"}, {"id": "mizugaki", "name": "瑞牆山", "area": "山梨県", "elevation": 2230, "category": "百名山", "difficulty": "中級", "coeffMax": 45, "daytrip": true, "trainAccess": false, "driveOfuna": 150, "driveShinjuku": 135, "driveYokohama": 160, "driveOmiya": 165, "description": "奇岩・巨石が林立する個性的な山容。花崗岩の岩峰がそびえ立つ。"}, {"id": "akagi", "name": "赤城山", "area": "群馬県", "elevation": 1828, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 20, "daytrip": true, "trainAccess": false, "driveOfuna": 170, "driveShinjuku": 140, "driveYokohama": 170, "driveOmiya": 125, "description": "上毛三山の一つ。カルデラ湖（大沼）を擁する成層火山。展望が良い。"}, {"id": "kinpusan", "name": "金峰山", "area": "山梨県", "elevation": 2599, "category": "百名山", "difficulty": "中級", "coeffMax": 45, "daytrip": true, "trainAccess": false, "driveOfuna": 180, "driveShinjuku": 160, "driveYokohama": 175, "driveOmiya": 180, "description": "奥秩父の盟主。山頂に五丈石という奇岩がそびえ、展望も抜群。"}, {"id": "houou", "name": "鳳凰山", "area": "山梨県", "elevation": 2841, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 48, "daytrip": false, "trainAccess": false, "driveOfuna": 180, "driveShinjuku": 160, "driveYokohama": 190, "driveOmiya": 185, "description": "南アルプス北部の山。地蔵岳のオベリスクが特徴的。白砂の稜線が美しい。"}, {"id": "ontake", "name": "男体山", "area": "栃木県", "elevation": 2486, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 22, "daytrip": true, "trainAccess": true, "driveOfuna": 180, "driveShinjuku": 160, "driveYokohama": 175, "driveOmiya": 130, "description": "日光の象徴。中禅寺湖の西に聳える円錐形の火山。山頂から中禅寺湖の絶景。"}, {"id": "kitadake", "name": "北岳", "area": "山梨県", "elevation": 3193, "category": "百名山", "difficulty": "上級", "coeffMax": 54, "daytrip": false, "trainAccess": false, "driveOfuna": 190, "driveShinjuku": 180, "driveYokohama": 200, "driveOmiya": 195, "description": "日本第2位の高峰。南アルプスの盟主で、高山植物の宝庫。"}, {"id": "yatsugatake", "name": "八ヶ岳（赤岳）", "area": "山梨県・長野県南部", "elevation": 2899, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 42, "daytrip": false, "trainAccess": false, "driveOfuna": 200, "driveShinjuku": 160, "driveYokohama": 165, "driveOmiya": 205, "description": "八ヶ岳連峰の最高峰。岩稜帯が続くダイナミックなルート。"}, {"id": "keirisan", "name": "蓼科山", "area": "長野県南部", "elevation": 2531, "category": "百名山", "difficulty": "中級", "coeffMax": 89, "daytrip": true, "trainAccess": true, "driveOfuna": 200, "driveShinjuku": 175, "driveYokohama": 205, "driveOmiya": 200, "description": "八ヶ岳連峰北端の独立峰。山頂は広大な岩原で、360度の大展望。"}, {"id": "kirigamine", "name": "霧ヶ峰", "area": "長野県南部", "elevation": 1925, "category": "百名山", "difficulty": "初級", "coeffMax": 18, "daytrip": true, "trainAccess": true, "driveOfuna": 200, "driveShinjuku": 170, "driveYokohama": 190, "driveOmiya": 215, "description": "高原のなだらかな地形が広がる。ニッコウキスゲの群生で有名。"}, {"id": "asama", "name": "浅間山", "area": "長野県南部", "elevation": 2568, "category": "百名山", "difficulty": "中級", "coeffMax": 35, "daytrip": true, "trainAccess": false, "driveOfuna": 180, "driveShinjuku": 165, "driveYokohama": 170, "driveOmiya": 165, "description": "日本最大級の活火山。噴火活動のため入山規制あり。事前確認必須。"}, {"id": "tanigawa", "name": "谷川岳", "area": "群馬県", "elevation": 1977, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 42, "daytrip": true, "trainAccess": true, "driveOfuna": 180, "driveShinjuku": 150, "driveYokohama": 185, "driveOmiya": 135, "description": "魔の山とも称される難峰。双耳峰（トマの耳・オキの耳）が特徴。"}, {"id": "nasu", "name": "那須岳", "area": "栃木県", "elevation": 1915, "category": "百名山", "difficulty": "中級", "coeffMax": 30, "daytrip": true, "trainAccess": true, "driveOfuna": 230, "driveShinjuku": 210, "driveYokohama": 220, "driveOmiya": 160, "description": "栃木県の名峰。活火山で荒涼とした火山景観が広がる。"}, {"id": "shirane_nikko", "name": "四阿山", "area": "群馬県", "elevation": 2354, "category": "百名山", "difficulty": "中級", "coeffMax": 30, "daytrip": true, "trainAccess": false, "driveOfuna": 220, "driveShinjuku": 175, "driveYokohama": 200, "driveOmiya": 140, "description": "上信国境の雄峰。なだらかな山容で、高山植物が豊富。"}, {"id": "nikko_shirane", "name": "日光白根山", "area": "栃木県", "elevation": 2578, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 31, "daytrip": true, "trainAccess": false, "driveOfuna": 220, "driveShinjuku": 185, "driveYokohama": 200, "driveOmiya": 140, "description": "関東以北の最高峰。コバルトブルーの五色沼が山頂付近に広がる。"}, {"id": "takeson", "name": "武尊山", "area": "群馬県", "elevation": 2158, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 38, "daytrip": true, "trainAccess": false, "driveOfuna": 220, "driveShinjuku": 185, "driveYokohama": 240, "driveOmiya": 205, "description": "上州武尊山とも呼ばれる。日本武尊の伝説が残る上毛三山の一つ。"}, {"id": "komagatake", "name": "甲斐駒ヶ岳", "area": "山梨県", "elevation": 2967, "category": "百名山", "difficulty": "上級", "coeffMax": 62, "daytrip": true, "trainAccess": false, "driveOfuna": 220, "driveShinjuku": 175, "driveYokohama": 225, "driveOmiya": 265, "description": "白い花崗岩の山頂が印象的。黒戸尾根は日本三大急登の一つ。"}, {"id": "senjogatake", "name": "仙丈ヶ岳", "area": "山梨県", "elevation": 3033, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 45, "daytrip": true, "trainAccess": false, "driveOfuna": 220, "driveShinjuku": 185, "driveYokohama": 235, "driveOmiya": 275, "description": "南アルプスの女王。カール地形が美しく、高山植物が豊富。"}, {"id": "shirouma", "name": "白馬岳", "area": "長野県北部", "elevation": 2932, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 55, "daytrip": true, "trainAccess": true, "driveOfuna": 250, "driveShinjuku": 275, "driveYokohama": 265, "driveOmiya": 255, "description": "北アルプス屈指の高山植物の宝庫。大雪渓は夏でも残雪がある。"}, {"id": "norikura", "name": "乗鞍岳", "area": "長野県北部", "elevation": 3026, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 18, "daytrip": true, "trainAccess": false, "driveOfuna": 260, "driveShinjuku": 270, "driveYokohama": 240, "driveOmiya": 265, "description": "バスで2700mの畳平まで行けるため、初心者でも3000m峰に登れる。"}, {"id": "tateyama", "name": "立山", "area": "長野県北部", "elevation": 3015, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 35, "daytrip": true, "trainAccess": true, "driveOfuna": 355, "driveShinjuku": 340, "driveYokohama": 350, "driveOmiya": 345, "description": "富山県を代表する霊峰。室堂から比較的容易に登れ、眺望が素晴らしい。"}, {"id": "tsurugi", "name": "剱岳", "area": "長野県北部", "elevation": 2999, "category": "百名山", "difficulty": "上級", "coeffMax": 65, "daytrip": false, "trainAccess": true, "driveOfuna": 360, "driveShinjuku": 345, "driveYokohama": 350, "driveOmiya": 345, "description": "日本最難関の百名山。クサリ場・岩場の連続で技術と体力が必要。"}, {"id": "yari", "name": "槍ヶ岳", "area": "長野県北部", "elevation": 3180, "category": "百名山", "difficulty": "上級", "coeffMax": 85, "daytrip": false, "trainAccess": false, "driveOfuna": 340, "driveShinjuku": 330, "driveYokohama": 280, "driveOmiya": 275, "description": "北アルプスの象徴。鋭く尖った穂先は日本の山のシンボル。"}, {"id": "hotaka", "name": "奥穂高岳", "area": "長野県北部", "elevation": 3190, "category": "百名山", "difficulty": "上級", "coeffMax": 80, "daytrip": false, "trainAccess": false, "driveOfuna": 335, "driveShinjuku": 325, "driveYokohama": 280, "driveOmiya": 275, "description": "日本第3位の高峰。北アルプス最高峰で、岩稜帯が連続する難峰。"}, {"id": "myoko", "name": "妙高山", "area": "新潟県", "elevation": 2454, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 30, "daytrip": false, "trainAccess": true, "driveOfuna": 255, "driveShinjuku": 240, "driveYokohama": 240, "driveOmiya": 220, "description": "越後富士の異名を持つ新潟の名峰。スカイケーブル利用ルートも人気。火打山とのセット登山も定番。"}, {"id": "makihata", "name": "巻機山", "area": "新潟県", "elevation": 1967, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 34, "daytrip": true, "trainAccess": true, "driveOfuna": 220, "driveShinjuku": 205, "driveYokohama": 205, "driveOmiya": 185, "description": "越後の名峰。山頂付近は広大な湿原が広がり、池塘が点在する。"}, {"id": "iide", "name": "飯豊山", "area": "福島県", "elevation": 2105, "category": "百名山", "difficulty": "上級", "coeffMax": 90, "daytrip": false, "trainAccess": false, "driveOfuna": 310, "driveShinjuku": 270, "driveYokohama": 310, "driveOmiya": 270, "description": "東北の秘峰。アプローチが長く体力を要する。高山植物の宝庫。"}, {"id": "shibutsu", "name": "至仏山", "area": "群馬県", "elevation": 2228, "category": "百名山", "difficulty": "中級", "coeffMax": 28, "daytrip": true, "trainAccess": false, "driveOfuna": 240, "driveShinjuku": 185, "driveYokohama": 250, "driveOmiya": 220, "description": "尾瀬を代表する山。蛇紋岩の山で固有種の高山植物が多い。"}, {"id": "aizu_koma", "name": "会津駒ヶ岳", "area": "福島県", "elevation": 2133, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 34, "daytrip": true, "trainAccess": false, "driveOfuna": 295, "driveShinjuku": 265, "driveYokohama": 270, "driveOmiya": 240, "description": "湿原と池塘が広がる稜線が美しい。東北南部の名峰。"}, {"id": "shirane_gunma", "name": "草津白根山", "area": "群馬県", "elevation": 2160, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 16, "daytrip": true, "trainAccess": true, "driveOfuna": 200, "driveShinjuku": 165, "driveYokohama": 185, "driveOmiya": 155, "description": "活火山で入山規制あり。湯釜は鮮やかなコバルトブルーの火口湖。"}, {"id": "bandai", "name": "磐梯山", "area": "福島県", "elevation": 1816, "category": "百名山", "difficulty": "中級", "coeffMax": 28, "daytrip": true, "trainAccess": true, "driveOfuna": 265, "driveShinjuku": 240, "driveYokohama": 290, "driveOmiya": 250, "description": "福島のシンボル。磐梯朝日国立公園の主峰。猪苗代湖を見下ろす。"}, {"id": "nikko_nantai", "name": "燧ヶ岳", "area": "福島県", "elevation": 2356, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 30, "daytrip": true, "trainAccess": false, "driveOfuna": 295, "driveShinjuku": 265, "driveYokohama": 190, "driveOmiya": 130, "description": "東北最高峰。双耳峰の雄姿と尾瀬の自然が魅力。"}, {"id": "takao", "name": "高尾山", "area": "東京都", "elevation": 599, "category": "人気の山", "difficulty": "初級", "coeffMax": 14, "daytrip": true, "trainAccess": true, "driveOfuna": 50, "driveShinjuku": 50, "driveYokohama": 55, "driveOmiya": 70, "description": "年間300万人が訪れる世界屈指の登山者数を誇る山。ケーブルカー・リフトあり。紅葉の名所。"}, {"id": "oyama", "name": "大山（丹沢）", "area": "神奈川県", "elevation": 1252, "category": "人気の山", "difficulty": "初〜中級", "coeffMax": 22, "daytrip": true, "trainAccess": true, "driveOfuna": 70, "driveShinjuku": 90, "driveYokohama": 55, "driveOmiya": 90, "description": "丹沢の霊峰。ケーブルカーあり。山頂からの展望と紅葉が名高い信仰の山。"}, {"id": "tonosaki", "name": "塔ノ岳", "area": "神奈川県", "elevation": 1491, "category": "人気の山", "difficulty": "中級", "coeffMax": 25, "daytrip": true, "trainAccess": true, "driveOfuna": 75, "driveShinjuku": 95, "driveYokohama": 65, "driveOmiya": 100, "description": "丹沢の要。大倉尾根（バカ尾根）は急登で有名。山頂から富士山〜相模湾の大展望。"}, {"id": "hirugata", "name": "蛭ヶ岳", "area": "神奈川県", "elevation": 1673, "category": "人気の山", "difficulty": "中〜上級", "coeffMax": 42, "daytrip": false, "trainAccess": true, "driveOfuna": 80, "driveShinjuku": 120, "driveYokohama": 70, "driveOmiya": 105, "description": "丹沢最高峰。神奈川県最高点。稜線からの眺望は抜群で、富士山・南アルプスが一望。"}, {"id": "jinba", "name": "陣馬山", "area": "東京都", "elevation": 857, "category": "人気の山", "difficulty": "初〜中級", "coeffMax": 26, "daytrip": true, "trainAccess": true, "driveOfuna": 75, "driveShinjuku": 70, "driveYokohama": 70, "driveOmiya": 85, "description": "山頂に白馬のモニュメント。高尾〜陣馬縦走コースのゴール。茶屋が充実。"}, {"id": "mitsuToge", "name": "三ツ峠山", "area": "山梨県", "elevation": 1785, "category": "二百名山", "difficulty": "初〜中級", "coeffMax": 20, "daytrip": true, "trainAccess": false, "driveOfuna": 100, "driveShinjuku": 105, "driveYokohama": 100, "driveOmiya": 110, "description": "富士山の最高の展望台。左右対称に見える富士山の姿は絶品。南面にロッククライミングエリアも。"}, {"id": "kintoki", "name": "金時山", "area": "静岡県", "elevation": 1212, "category": "人気の山", "difficulty": "初〜中級", "coeffMax": 19, "daytrip": true, "trainAccess": false, "driveOfuna": 80, "driveShinjuku": 115, "driveYokohama": 85, "driveOmiya": 125, "description": "箱根の名峰。坂田金時（金太郎）伝説の山。山頂から富士山が大きく見える。茶屋あり。"}, {"id": "kayagatake", "name": "茅ヶ岳", "area": "山梨県", "elevation": 1704, "category": "二百名山", "difficulty": "初〜中級", "coeffMax": 25, "daytrip": true, "trainAccess": false, "driveOfuna": 130, "driveShinjuku": 130, "driveYokohama": 120, "driveOmiya": 160, "description": "「ニセ八ヶ岳」の異名を持つ。百名山の著者・深田久弥の終焉の地。山頂から八ヶ岳〜富士山の大展望。"}, {"id": "kentoku", "name": "乾徳山", "area": "山梨県", "elevation": 2031, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 28, "daytrip": true, "trainAccess": true, "driveOfuna": 140, "driveShinjuku": 130, "driveYokohama": 130, "driveOmiya": 170, "description": "奥秩父の名峰。山頂直下に巨大な岩壁があり、クサリ場が続くスリリングな登山が楽しめる。"}, {"id": "hinata", "name": "日向山", "area": "山梨県", "elevation": 1660, "category": "人気の山", "difficulty": "初〜中級", "coeffMax": 16, "daytrip": true, "trainAccess": false, "driveOfuna": 160, "driveShinjuku": 145, "driveYokohama": 150, "driveOmiya": 190, "description": "山頂が花崗岩の白砂のビーチ状になる奇景が人気。甲斐駒ヶ岳の眺望も絶景。"}, {"id": "bonori", "name": "棒ノ折山", "area": "東京都・埼玉県", "elevation": 969, "category": "人気の山", "difficulty": "初〜中級", "coeffMax": 16, "daytrip": true, "trainAccess": true, "driveOfuna": 90, "driveShinjuku": 75, "driveYokohama": 110, "driveOmiya": 75, "description": "沢沿いのゴルジュを通る変化に富んだルートが人気。山頂は関東平野の大展望。"}, {"id": "otake", "name": "大岳山", "area": "東京都", "elevation": 1266, "category": "人気の山", "difficulty": "初〜中級", "coeffMax": 18, "daytrip": true, "trainAccess": true, "driveOfuna": 85, "driveShinjuku": 80, "driveYokohama": 80, "driveOmiya": 110, "description": "奥多摩の名峰。苔むすロックガーデンと山頂からの富士山の眺望が人気。"}, {"id": "jonengatake", "name": "常念岳", "area": "長野県北部", "elevation": 2857, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 45, "daytrip": false, "trainAccess": false, "driveOfuna": 290, "driveShinjuku": 255, "driveYokohama": 265, "driveOmiya": 260, "description": "北アルプスのパノラマ台。山頂から槍・穂高の絶景が広がる。北アルプス入門の山。"}, {"id": "yakedake", "name": "焼岳", "area": "長野県北部", "elevation": 2455, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 24, "daytrip": true, "trainAccess": false, "driveOfuna": 280, "driveShinjuku": 285, "driveYokohama": 260, "driveOmiya": 255, "description": "北アルプス唯一の活火山。山頂付近の噴気と硫黄の景観が迫力満点。"}, {"id": "kashimayari", "name": "鹿島槍ヶ岳", "area": "長野県北部", "elevation": 2889, "category": "百名山", "difficulty": "上級", "coeffMax": 65, "daytrip": false, "trainAccess": true, "driveOfuna": 290, "driveShinjuku": 285, "driveYokohama": 260, "driveOmiya": 255, "description": "北アルプス後立山連峰の主峰。南北に双耳峰をもつ優美な山容。吊尾根が特徴的。"}, {"id": "koganzan", "name": "小金沢山", "area": "山梨県", "elevation": 2014, "category": "二百名山", "difficulty": "初〜中級", "coeffMax": 28, "daytrip": true, "trainAccess": true, "driveOfuna": 150, "driveShinjuku": 130, "driveYokohama": 140, "driveOmiya": 180, "description": "大菩薩連嶺の一峰。富士山と南アルプスを望む開けた稜線歩きが魅力。"}, {"id": "mizugatake", "name": "瑞牆山周辺（廻り目平）", "area": "山梨県", "elevation": 2075, "category": "人気の山", "difficulty": "中〜上級", "coeffMax": 35, "daytrip": true, "trainAccess": false, "driveOfuna": 160, "driveShinjuku": 150, "driveYokohama": 150, "driveOmiya": 190, "description": "奥秩父の巨岩地帯。花崗岩のクライミングの聖地としても名高い。"}, {"id": "arafune", "name": "荒船山", "area": "群馬県", "elevation": 1423, "category": "二百名山", "difficulty": "初級", "coeffMax": 20, "daytrip": true, "trainAccess": false, "driveOfuna": 155, "driveShinjuku": 120, "driveYokohama": 165, "driveOmiya": 165, "description": "航空母艦のような平らな山頂部が特徴的。艫岩からの断崖絶壁の眺望が圧巻。"}, {"id": "asamamakurayama", "name": "浅間隠山", "area": "群馬県", "elevation": 1757, "category": "二百名山", "difficulty": "初〜中級", "coeffMax": 28, "daytrip": true, "trainAccess": false, "driveOfuna": 175, "driveShinjuku": 145, "driveYokohama": 185, "driveOmiya": 185, "description": "浅間山を隠すように立つことが名の由来。山頂からは浅間山・草津白根山の大展望。"}, {"id": "kazahariyama", "name": "御座山", "area": "長野県南部", "elevation": 2112, "category": "二百名山", "difficulty": "初〜中級", "coeffMax": 24, "daytrip": true, "trainAccess": false, "driveOfuna": 160, "driveShinjuku": 165, "driveYokohama": 155, "driveOmiya": 190, "description": "奥秩父の南端に位置する静かな山。展望台からの八ヶ岳・南アルプスの眺めが美しい。"}, {"id": "iwasugesan", "name": "岩菅山", "area": "長野県北部", "elevation": 2295, "category": "二百名山", "difficulty": "中級", "coeffMax": 26, "daytrip": true, "trainAccess": true, "driveOfuna": 195, "driveShinjuku": 195, "driveYokohama": 190, "driveOmiya": 225, "description": "志賀高原の最高峰。北アルプスや北信五岳など360度の大展望が楽しめる。"}, {"id": "iizunasan", "name": "飯縄山", "area": "長野県北部", "elevation": 1917, "category": "二百名山", "difficulty": "初〜中級", "coeffMax": 20, "daytrip": true, "trainAccess": true, "driveOfuna": 215, "driveShinjuku": 215, "driveYokohama": 210, "driveOmiya": 245, "description": "長野市の北西にそびえる修験道の山。北アルプスや善光寺平の眺望が広がる。"}, {"id": "kurohimesan", "name": "黒姫山", "area": "長野県北部", "elevation": 2053, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 30, "daytrip": true, "trainAccess": true, "driveOfuna": 225, "driveShinjuku": 220, "driveYokohama": 220, "driveOmiya": 255, "description": "北信五岳のひとつ。静かな樹林帯と山頂からの妙高・戸隠連峰の眺めが魅力。"}, {"id": "kenashiyama", "name": "毛無山", "area": "山梨県", "elevation": 1964, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 28, "daytrip": true, "trainAccess": false, "driveOfuna": 145, "driveShinjuku": 145, "driveYokohama": 135, "driveOmiya": 175, "description": "富士山の展望台として名高い。朝霧高原からの急登が続くが山頂からの富士山の眺めは絶景。"}, {"id": "shirasunayama", "name": "白砂山", "area": "群馬県", "elevation": 2140, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 30, "daytrip": true, "trainAccess": false, "driveOfuna": 210, "driveShinjuku": 205, "driveYokohama": 220, "driveOmiya": 220, "description": "野反湖を起点とするアクセスのよい奥志賀の山。高山植物が豊富で秋の草紅葉が美しい。"}, {"id": "nanaitsurasan", "name": "七面山", "area": "山梨県", "elevation": 1989, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 34, "daytrip": true, "trainAccess": true, "driveOfuna": 155, "driveShinjuku": 175, "driveYokohama": 145, "driveOmiya": 185, "description": "日蓮宗の霊山。急登の参道を登ると富士山の展望台・敬慎院が迎える。信仰登山の山。"}, {"id": "arasawadake", "name": "荒沢岳", "area": "新潟県", "elevation": 1969, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 38, "daytrip": true, "trainAccess": false, "driveOfuna": 300, "driveShinjuku": 285, "driveYokohama": 315, "driveOmiya": 310, "description": "奥只見の秘峰。前グラの岩場が核心部で鎖場が続く。越後三山の展望が素晴らしい。"}, {"id": "nakawarayama", "name": "和名倉山", "area": "埼玉県", "elevation": 2036, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 42, "daytrip": true, "trainAccess": false, "driveOfuna": 155, "driveShinjuku": 135, "driveYokohama": 150, "driveOmiya": 170, "description": "奥秩父最深部の静かな山。長大なアプローチを経た頂上には深山の静寂が漂う。"}, {"id": "yarigatake2", "name": "笊ヶ岳", "area": "山梨県", "elevation": 2629, "category": "二百名山", "difficulty": "上級", "coeffMax": 55, "daytrip": false, "trainAccess": false, "driveOfuna": 155, "driveShinjuku": 195, "driveYokohama": 145, "driveOmiya": 185, "description": "南アルプス深部の難峰。標高差2000m超の急登が続く上級者向けの山。頂上から富士山が大きく見える。"}, {"id": "gakedake", "name": "餓鬼岳", "area": "長野県北部", "elevation": 2647, "category": "二百名山", "difficulty": "上級", "coeffMax": 60, "daytrip": false, "trainAccess": false, "driveOfuna": 270, "driveShinjuku": 260, "driveYokohama": 265, "driveOmiya": 300, "description": "北アルプスの展望台。安曇野側から急登をこなした先に広がる大展望が素晴らしい。"}, {"id": "arikayama", "name": "有明山", "area": "長野県北部", "elevation": 2268, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 36, "daytrip": true, "trainAccess": false, "driveOfuna": 255, "driveShinjuku": 250, "driveYokohama": 250, "driveOmiya": 285, "description": "安曇野のシンボル「安曇富士」とも呼ばれる美しい山容。山頂からの北アルプスの眺めが壮観。"}, {"id": "keizandake", "name": "経ヶ岳", "area": "長野県南部", "elevation": 2296, "category": "二百名山", "difficulty": "中級", "coeffMax": 32, "daytrip": true, "trainAccess": false, "driveOfuna": 240, "driveShinjuku": 230, "driveYokohama": 235, "driveOmiya": 270, "description": "中央アルプス北端の静かな山。深い原生林と山頂からの南・北アルプスの展望が魅力。"}, {"id": "adatara", "name": "安達太良山", "area": "福島県", "elevation": 1700, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 28, "daytrip": true, "trainAccess": true, "driveOfuna": 285, "driveShinjuku": 265, "driveYokohama": 275, "driveOmiya": 240, "description": "「ほんとの空」で知られる高村光太郎の詩の舞台。ゴンドラで気軽に登れる人気の福島の名山。"}, {"id": "azuma", "name": "西吾妻山", "area": "福島県", "elevation": 2035, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 30, "daytrip": true, "trainAccess": false, "driveOfuna": 300, "driveShinjuku": 280, "driveYokohama": 290, "driveOmiya": 255, "description": "磐梯吾妻スカイラインで浄土平まで車で行ける。一切経山の魔女の瞳（五色沼）は絶景。"}, {"id": "echigokoma", "name": "越後駒ヶ岳", "area": "新潟県", "elevation": 2003, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 36, "daytrip": true, "trainAccess": false, "driveOfuna": 300, "driveShinjuku": 285, "driveYokohama": 250, "driveOmiya": 230, "description": "越後三山の主峰。稜線からの眺望が素晴らしい。枝折峠からの雲海も絶景。"}, {"id": "hiragadake", "name": "平ヶ岳", "area": "新潟県", "elevation": 2141, "category": "百名山", "difficulty": "上級", "coeffMax": 55, "daytrip": true, "trainAccess": false, "driveOfuna": 340, "driveShinjuku": 325, "driveYokohama": 230, "driveOmiya": 220, "description": "深田久弥が「孤高の山」と呼んだ秘峰。長大なアプローチが必要な難関百名山の一つ。"}, {"id": "naeba", "name": "苗場山", "area": "新潟県", "elevation": 2145, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 40, "daytrip": true, "trainAccess": true, "driveOfuna": 195, "driveShinjuku": 175, "driveYokohama": 185, "driveOmiya": 150, "description": "山頂に広大な高層湿原が広がる独特の山。池塘が点在する別天地のような山頂台地。"}, {"id": "amakazari", "name": "雨飾山", "area": "長野県北部", "elevation": 1963, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 28, "daytrip": true, "trainAccess": false, "driveOfuna": 310, "driveShinjuku": 295, "driveYokohama": 280, "driveOmiya": 295, "description": "北アルプス最北端の名峰。笹平の笹原と双耳峰の山容が美しい。紅葉の名所。"}, {"id": "hiuchi", "name": "火打山", "area": "新潟県", "elevation": 2462, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 32, "daytrip": false, "trainAccess": true, "driveOfuna": 270, "driveShinjuku": 255, "driveYokohama": 270, "driveOmiya": 250, "description": "妙高山と並ぶ頸城山塊の名峰。山頂付近の天狗の庭は高層湿原の絶景。高山植物が豊富。"}, {"id": "takatsuma", "name": "高妻山", "area": "長野県北部", "elevation": 2353, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 42, "daytrip": false, "trainAccess": false, "driveOfuna": 240, "driveShinjuku": 225, "driveYokohama": 195, "driveOmiya": 165, "description": "戸隠連峰の最高峰。修験道の山として長い歴史を持つ。急登が続く本格登山コース。"}, {"id": "kasagatake", "name": "笠ヶ岳", "area": "長野県北部", "elevation": 2898, "category": "百名山", "difficulty": "上級", "coeffMax": 78, "daytrip": false, "trainAccess": false, "driveOfuna": 345, "driveShinjuku": 335, "driveYokohama": 330, "driveOmiya": 350, "description": "日本百名山の中でも「きつい山」として知られる笠新道。稜線からの槍・穂高の眺望は圧巻。"}, {"id": "ontakesan", "name": "御嶽山", "area": "長野県南部", "elevation": 3067, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 32, "daytrip": true, "trainAccess": false, "driveOfuna": 290, "driveShinjuku": 290, "driveYokohama": 275, "driveOmiya": 300, "description": "独立峰の霊峰。2014年噴火で現在も入山規制あり。規制区域・最新情報の確認必須。"}, {"id": "goryudake", "name": "五竜岳", "area": "長野県北部", "elevation": 2814, "category": "百名山", "difficulty": "上級", "coeffMax": 65, "daytrip": false, "trainAccess": true, "driveOfuna": 285, "driveShinjuku": 280, "driveYokohama": 260, "driveOmiya": 280, "description": "後立山連峰の主峰。山頂から剱岳・立山・白馬岳の眺望が圧巻。唐松岳との縦走が人気。"}, {"id": "sukai", "name": "皇海山", "area": "群馬県", "elevation": 2144, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 50, "daytrip": true, "trainAccess": false, "driveOfuna": 230, "driveShinjuku": 185, "driveYokohama": 265, "driveOmiya": 295, "description": "上州と下野の国境に位置する深山。クラシックルートは林道が長く秘境感がある。"}, {"id": "kisokoma", "name": "木曽駒ヶ岳", "area": "長野県南部", "elevation": 2956, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 25, "daytrip": true, "trainAccess": true, "driveOfuna": 230, "driveShinjuku": 210, "driveYokohama": 230, "driveOmiya": 225, "description": "ロープウェイで標高2,612mの千畳敷カールまで一気にアクセス。初心者でも本格的な高山の雰囲気を楽しめる中央アルプスの主峰。夏の千畳敷カールは高山植物の宝庫。"}, {"id": "utsukushigahara", "name": "美ヶ原", "area": "長野県中部", "elevation": 2034, "category": "百名山", "difficulty": "初級", "coeffMax": 14, "daytrip": true, "trainAccess": false, "driveOfuna": 195, "driveShinjuku": 175, "driveYokohama": 185, "driveOmiya": 210, "description": "日本最大規模の高原状の山。山頂付近まで車道が通じており、広大な草原と牛の放牧が広がる。王ヶ頭からはアルプス全山の大パノラマ。"}, {"id": "karamatsu", "name": "唐松岳", "area": "長野県北部", "elevation": 2696, "category": "二百名山", "difficulty": "中級", "coeffMax": 27, "daytrip": true, "trainAccess": true, "driveOfuna": 270, "driveShinjuku": 255, "driveYokohama": 265, "driveOmiya": 300, "description": "ゴンドラとリフトで1830mまで上がれる北アルプス入門の名峰。八方尾根から望む白馬三山と剱岳の展望が圧巻。稜線上の唐松山荘は人気の山小屋。"}, {"id": "utsugi", "name": "空木岳", "area": "長野県南部", "elevation": 2864, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 70, "daytrip": false, "trainAccess": false, "driveOfuna": 255, "driveShinjuku": 235, "driveYokohama": 230, "driveOmiya": 225, "description": "中央アルプス南部の盟主。長い池山尾根からの日帰りは健脚向け。木曽駒からの縦走でセットで登られることも多い。山頂からの御嶽・南アルプスの眺望が素晴らしい。"}, {"id": "enasan", "name": "恵那山", "area": "長野県南部", "elevation": 2191, "category": "百名山", "difficulty": "中級", "coeffMax": 41, "daytrip": true, "trainAccess": false, "driveOfuna": 270, "driveShinjuku": 250, "driveYokohama": 230, "driveOmiya": 270, "description": "木曽山脈南端、中央アルプスの最南峰。深い森に覆われた山頂部は展望がないが、古くから信仰を集めた山。中央道を使えば大船から比較的アクセスしやすい。"}, {"id": "shiomidake", "name": "塩見岳", "area": "長野県南部", "elevation": 3052, "category": "百名山", "difficulty": "上級", "coeffMax": 75, "daytrip": false, "trainAccess": false, "driveOfuna": 270, "driveShinjuku": 250, "driveYokohama": 255, "driveOmiya": 295, "description": "南アルプス中央部に位置する3000m超の峰。アクセスに時間がかかる分、静かな山行が楽しめる。山頂直下の岩場が核心部。日本最高所の峠・三伏峠（2580m）が拠点。"}, {"id": "arakawadake", "name": "荒川岳", "area": "静岡県北部", "elevation": 3141, "category": "百名山", "difficulty": "上級", "coeffMax": 95, "daytrip": false, "trainAccess": false, "driveOfuna": 330, "driveShinjuku": 310, "driveYokohama": 255, "driveOmiya": 295, "description": "南アルプス深部の3000m峰。前岳・中岳・悪沢岳（東岳）の総称。椹島まで一般車両進入不可のため、ほぼ必然的に1泊以上の山行になる。"}, {"id": "akaisidake", "name": "赤石岳", "area": "静岡県北部", "elevation": 3121, "category": "百名山", "difficulty": "上級", "coeffMax": 90, "daytrip": false, "trainAccess": false, "driveOfuna": 330, "driveShinjuku": 310, "driveYokohama": 275, "driveOmiya": 265, "description": "南アルプスの盟主とも呼ばれる3000m峰。荒川岳とのセット縦走が定番。赤石小屋からの山頂眺望は圧巻。南アルプスらしい大きなカールが特徴。"}, {"id": "hijiridade", "name": "聖岳", "area": "静岡県北部", "elevation": 3013, "category": "百名山", "difficulty": "上級", "coeffMax": 85, "daytrip": false, "trainAccess": false, "driveOfuna": 340, "driveShinjuku": 320, "driveYokohama": 275, "driveOmiya": 315, "description": "南アルプス最南部の3000m峰。最南の3000m峰として知られる。深い森を抜けてたどり着く山頂からの展望は格別。光岳とのセット縦走も人気。"}, {"id": "terkari", "name": "光岳", "area": "静岡県北部", "elevation": 2591, "category": "百名山", "difficulty": "上級", "coeffMax": 95, "daytrip": false, "trainAccess": false, "driveOfuna": 360, "driveShinjuku": 340, "driveYokohama": 290, "driveOmiya": 310, "description": "百名山の最南部に位置する山。光石という白い岩が山名の由来。アクセスが非常に長く、百名山の中でも特に大変な山として知られる。聖岳とのセット縦走が一般的。"}, {"id": "yakushidake", "name": "薬師岳", "area": "富山県", "elevation": 2926, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 75, "daytrip": false, "trainAccess": false, "driveOfuna": 370, "driveShinjuku": 355, "driveYokohama": 355, "driveOmiya": 390, "description": "北アルプス南部の大きな山。有峰湖を抱く折立からのルートが一般的。広大なカールと日本最大級の高山植物群落が見どころ。太郎平小屋から望む夕暮れが絶景。"}, {"id": "kurobegorodam", "name": "黒部五郎岳", "area": "富山県", "elevation": 2840, "category": "百名山", "difficulty": "上級", "coeffMax": 90, "daytrip": false, "trainAccess": false, "driveOfuna": 390, "driveShinjuku": 375, "driveYokohama": 350, "driveOmiya": 365, "description": "北アルプス奥部の秘峰。巨大なカール（五郎カール）が圧巻で、高山植物の宝庫。折立からの日帰りは距離が長く1泊が一般的。鷲羽・水晶とのセット縦走が人気。"}, {"id": "ainodake", "name": "間ノ岳", "area": "山梨県", "elevation": 3190, "category": "百名山", "difficulty": "上級", "coeffMax": 75, "daytrip": false, "trainAccess": false, "driveOfuna": 195, "driveShinjuku": 185, "driveYokohama": 220, "driveOmiya": 260, "description": "日本第3位の高峰（奥穂高岳と同高）。北岳から続く白峰三山縦走の中間点。広大な山頂からは南アルプス全山と富士山を一望。北岳とセットで1泊が一般的。"}, {"id": "noutori", "name": "農鳥岳", "area": "山梨県", "elevation": 3026, "category": "人気の山", "difficulty": "上級", "coeffMax": 76, "daytrip": false, "trainAccess": false, "driveOfuna": 195, "driveShinjuku": 185, "driveYokohama": 185, "driveOmiya": 225, "description": "白峰三山の最南端。残雪期に山腹に現れる農鳥（田植えを知らせる雪形）が名の由来。北岳・間ノ岳と合わせた白峰三山縦走の締めくくり。奈良田への下山が一般的。"}, {"id": "hakusan", "name": "白山", "area": "石川県", "elevation": 2702, "category": "百名山", "difficulty": "中級", "coeffMax": 55, "daytrip": true, "trainAccess": false, "driveOfuna": 345, "driveShinjuku": 330, "driveYokohama": 325, "driveOmiya": 355, "description": "富士山・立山と並ぶ日本三霊山のひとつ。高山植物の宝庫で、クロユリの群生が有名。北陸自動車道経由で大船から約6時間。山頂の白山比咩神社奥宮が信仰の中心。"}, {"id": "zaosan", "name": "蔵王山", "area": "宮城県・山形県", "elevation": 1841, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 16, "daytrip": true, "trainAccess": false, "driveOfuna": 360, "driveShinjuku": 340, "driveYokohama": 365, "driveOmiya": 315, "description": "東北を代表する火山。エコーラインで標高1600mまで車で上がれ、御釜（火口湖）の神秘的な青い水面が名物。冬の樹氷（スノーモンスター）でも知られる。東北道経由で大船から約6時間。"}, {"id": "karisaka", "name": "雁坂嶺", "area": "奥秩父", "elevation": 2289, "category": "二百名山", "difficulty": "中級", "coeffMax": 52, "daytrip": true, "trainAccess": false, "driveOfuna": 160, "driveShinjuku": 145, "driveYokohama": 150, "driveOmiya": 155, "description": "奥秩父主脈の一峰で、雁坂峠（日本三大峠のひとつ）のすぐ北に位置する。深い奥秩父の雰囲気が漂う静かな山。雁坂トンネルを使えばアクセスしやすい。"}, {"id": "nokogiriyama", "name": "鋸岳", "area": "南アルプス北部", "elevation": 2685, "category": "二百名山", "difficulty": "上級", "coeffMax": 60, "daytrip": false, "trainAccess": false, "driveOfuna": 230, "driveShinjuku": 210, "driveYokohama": 230, "driveOmiya": 255, "description": "南アルプス北端の鋸状稜線が特徴的な難峰。甲斐駒ヶ岳の北西に位置し、第一高点への角兵衛沢ルートは崩壊地・鎖場があり上級者向け。南アルプス北部随一のバリエーションルート。"}, {"id": "minamikomagatake", "name": "南駒ヶ岳", "area": "中央アルプス", "elevation": 2841, "category": "二百名山", "difficulty": "上級", "coeffMax": 52, "daytrip": false, "trainAccess": true, "driveOfuna": 270, "driveShinjuku": 250, "driveYokohama": 270, "driveOmiya": 295, "description": "中央アルプスの空木岳南に連なる二百名山。山頂からは360度の大展望が広がり、摺鉢窪カールが美しい。空木岳との縦走コースが人気。ロープウェイ利用で千畳敷からのアクセスも可能。"}, {"id": "chogatake", "name": "蝶ヶ岳", "area": "北アルプス南部", "elevation": 2677, "category": "二百名山", "difficulty": "中級", "coeffMax": 40, "daytrip": true, "trainAccess": false, "driveOfuna": 300, "driveShinjuku": 280, "driveYokohama": 300, "driveOmiya": 325, "description": "常念山脈南端の山で、穂高・槍ヶ岳の絶好の展望台。稜線から望む穂高連峰の眺めは北アルプス随一。上高地または三股からのアクセスで、常念岳との縦走も人気。"}, {"id": "otenshoudake", "name": "大天井岳", "area": "北アルプス南部", "elevation": 2922, "category": "二百名山", "difficulty": "上級", "coeffMax": 56, "daytrip": false, "trainAccess": false, "driveOfuna": 320, "driveShinjuku": 300, "driveYokohama": 320, "driveOmiya": 345, "description": "常念山脈の最高峰で北アルプス表銀座縦走路の要衝。合戦尾根〜燕岳を経由するコースは北アルプス三大急登のひとつ。山頂からは360度の展望で槍・穂高が間近に見える。"}, {"id": "harinokidake", "name": "針ノ木岳", "area": "北アルプス後立山", "elevation": 2821, "category": "二百名山", "difficulty": "中級", "coeffMax": 38, "daytrip": true, "trainAccess": true, "driveOfuna": 330, "driveShinjuku": 315, "driveYokohama": 330, "driveOmiya": 355, "description": "後立山連峰南端、日本三大雪渓のひとつ針ノ木大雪渓で知られる山。扇沢から雪渓を登るルートは爽快。隣の蓮華岳とのセット登山が定番。"}, {"id": "eboshidake_kita", "name": "烏帽子岳（北ア）", "area": "北アルプス裏銀座", "elevation": 2628, "category": "二百名山", "difficulty": "上級", "coeffMax": 50, "daytrip": false, "trainAccess": false, "driveOfuna": 355, "driveShinjuku": 340, "driveYokohama": 355, "driveOmiya": 380, "description": "裏銀座縦走路の入口に立つ山。ブナ立尾根は北アルプス三大急登のひとつ。コマクサの群生地として名高く、稜線からの展望も抜群。野口五郎岳への縦走が人気。"}, {"id": "noguchigoro", "name": "野口五郎岳", "area": "北アルプス裏銀座", "elevation": 2924, "category": "二百名山", "difficulty": "上級", "coeffMax": 58, "daytrip": true, "trainAccess": false, "driveOfuna": 355, "driveShinjuku": 340, "driveYokohama": 355, "driveOmiya": 380, "description": "裏銀座縦走路中央に位置する北アルプスの静かな名峰。丸みを帯びた山容と花崗岩の白い砂礫地が印象的。水晶岳・鷲羽岳への縦走拠点で、野口五郎小屋からの夕景が美しい。"}];
+const answers = {};
+let current = 0;
+
+function show(id) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function startQuiz() { current = 1; show('q' + current); }
+function answer(key, val) {
+  answers[key] = val;
+  current++;
+  if(current <= 5) show('q' + current);
+  else showResult();
+}
+function restart() {
+  Object.keys(answers).forEach(k => delete answers[k]);
+  current = 0;
+  show('intro');
+}
+function getDriveTime(m) {
+  const map = {ofuna:'driveOfuna',shinjuku:'driveShinjuku',yokohama:'driveYokohama',omiya:'driveOmiya'};
+  return m[map[answers.dep || 'ofuna']] || 999;
+}
+function formatTime(mins) {
+  if(!mins || mins===999) return '—';
+  const h = Math.floor(mins/60), m = mins%60;
+  return m ? h+'時間'+m+'分' : h+'時間';
+}
+function showResult() {
+  const depLabel = {ofuna:'大船・横浜',shinjuku:'新宿・渋谷',omiya:'大宮・浦和'}[answers.dep] || '大船・横浜';
+  const scored = MOUNTAINS.map(m => {
+    let score = 0;
+    const drive = getDriveTime(m);
+    if(answers.drive !== 999 && drive > answers.drive) return null;
+    if(m.coeffMax > answers.coeff) return null;
+    if(answers.daytrip === true && !m.daytrip) return null;
+    if(answers.pref === 'hyaku' && m.category !== '百名山') return null;
+    if(answers.pref === 'train' && !m.trainAccess) return null;
+    score += Math.max(0, 100 - drive);
+    if(m.daytrip) score += 15;
+    if(m.trainAccess) score += 10;
+    if(m.category === '百名山') score += 20;
+    if(answers.pref === 'view' && m.elevation >= 2000) score += 30;
+    if(answers.pref === 'view' && m.elevation >= 2500) score += 20;
+    const ratio = m.coeffMax / answers.coeff;
+    if(ratio >= 0.5 && ratio <= 1.0) score += 25;
+    return {...m, score, drive};
+  }).filter(Boolean).sort((a,b) => b.score - a.score);
+
+  let top3 = scored.slice(0, 3);
+  if(top3.length === 0) {
+    top3 = MOUNTAINS.map(m => ({...m, drive:getDriveTime(m)})).sort((a,b)=>a.drive-b.drive).slice(0,3);
+  }
+
+  document.getElementById('result-sub').textContent = depLabel + '発 · あなたの条件にマッチした山';
+  const medals = ['1','2','3'];
+  const rankClass = ['rank-1','rank-2','rank-3'];
+
+  document.getElementById('result-cards').innerHTML = top3.map((m,i) => {
+    const catClass = m.category === '百名山' ? 'rb100' : 'rbother';
+    const dayBadge = m.daytrip ? '<span class="rbadge rbday">🌅 日帰り可</span>' : '<span class="rbadge rbstay">🏕 宿泊推奨</span>';
+    const trainBadge = m.trainAccess ? '<span class="rbadge rbtrain">🚃 電車OK</span>' : '';
+    const reasons = [];
+    if(m.drive <= 90) reasons.push('近くて行きやすい（' + formatTime(m.drive) + '）');
+    else reasons.push(formatTime(m.drive) + 'でアクセス可能');
+    if(m.daytrip && answers.daytrip === true) reasons.push('日帰り可能');
+    if(m.trainAccess && answers.pref === 'train') reasons.push('電車・バスでアクセスできる');
+    if(m.category === '百名山' && answers.pref === 'hyaku') reasons.push('百名山のひとつ');
+    if(m.elevation >= 2500 && answers.pref === 'view') reasons.push('標高' + m.elevation.toLocaleString() + 'mの大展望');
+    return `<div class="result-card">
+      <div class="result-rank"><div class="rank-badge ${rankClass[i]}">${medals[i]}</div><div><div class="result-name">${m.name}</div><div class="result-area">${m.area} · ${m.elevation.toLocaleString()}m</div></div></div>
+      <div class="result-badges"><span class="rbadge ${catClass}">${m.category}</span>${dayBadge}${trainBadge}</div>
+      ${m.description ? `<div class="result-desc">${m.description}</div>` : ''}
+      <div class="result-reason">${reasons[0] || 'あなたの条件にマッチ'}</div>
+      <a href="/mountains/${m.id}/" class="result-link">詳しく見る →</a>
+    </div>`;
+  }).join('');
+  show('result');
+}
+</script>
+</body>
+</html>
