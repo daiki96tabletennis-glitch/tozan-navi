@@ -39,6 +39,7 @@
 </head><body><div id="root"></div>
 <script>window.storage={_data:{},get:async(k)=>{const v=window.storage._data[k];return v!==undefined?{key:k,value:v}:null;},set:async(k,v)=>{window.storage._data[k]=v;return{key:k,value:v};},delete:async(k)=>{delete window.storage._data[k];return{key:k,deleted:true};},list:async(p)=>{const keys=Object.keys(window.storage._data).filter(k=>!p||k.startsWith(p));return{keys};}};</script>
 <script type="text/babel">
+const {useState,useMemo,useEffect,useRef}=React;
 const { useState, useMemo, useEffect, useRef } = React;
 
 // カテゴリスタイル定義
@@ -3682,7 +3683,7 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
 }
 // ===================== 掲示板ここまで =====================
 
-export default function App() {
+function App() {
   const [search, setSearch] = useState(() => { try { const _v = sessionStorage.getItem("ym_search"); return _v !== null ? JSON.parse(_v) : ""; } catch { return ""; } });
   const [sort, setSort] = useState(() => { try { const _v = sessionStorage.getItem("ym_sort"); return _v !== null ? JSON.parse(_v) : "近い順"; } catch { return "近い順"; } });
   const [area, setArea] = useState(() => { try { const _v = sessionStorage.getItem("ym_area"); return _v !== null ? JSON.parse(_v) : "すべて"; } catch { return "すべて"; } });
@@ -4080,5 +4081,8 @@ export default function App() {
     </div>
   );
 }
+
+const root=ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);
 
 </script></body></html>
