@@ -98,7 +98,12 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <div><h1 class="mountain-name">丹沢山</h1><div class="mountain-kana">たんざわさん</div><div class="mountain-area">📍 神奈川県</div><span class="category-badge">百名山</span></div>
     <div style="text-align:right"><div class="elevation">1,567<span>m</span></div><div class="difficulty-badge">中級</div></div>
   </div></div>
-  <div class="card"><h2>🚗 車でのアクセス時間</h2><div class="access-grid"><div class="access-item"><div class="label">大船駅</div><div class="value">1時間</div></div><div class="access-item"><div class="label">横浜駅</div><div class="value">1時間15分</div></div><div class="access-item"><div class="label">新宿駅</div><div class="value">1時間35分</div></div><div class="access-item"><div class="label">大宮駅</div><div class="value">1時間45分</div></div></div></div>
+  <div class="card"><h2>🚗 車でのアクセス時間</h2><div class="access-grid" id="access-grid">
+<div class="access-item" data-dep="大船駅" data-min="60"><div class="label">大船駅</div><div class="value">1時間</div></div>
+<div class="access-item" data-dep="横浜駅" data-min="75"><div class="label">横浜駅</div><div class="value">1時間15分</div></div>
+<div class="access-item" data-dep="新宿駅" data-min="95"><div class="label">新宿駅</div><div class="value">1時間35分</div></div>
+<div class="access-item" data-dep="大宮駅" data-min="105"><div class="label">大宮駅</div><div class="value">1時間45分</div></div>
+</div></div>
   <div class="card"><h2>📍 登山口情報</h2><div class="info-row"><span class="info-label">登山口</span><span><strong>大倉（秦野戸川公園）</strong></span></div><div class="info-row"><span class="info-label">住所</span><span>神奈川県秦野市堀山下</span></div><div class="info-row"><span class="info-label">駐車場</span><span>大倉駐車場（約150台・平日100〜500円・土日200〜800円・トイレあり）<span style="display:inline-flex;gap:4px;margin-left:6px;vertical-align:middle"><a href="https://www.google.com/maps/search/大倉駐車場/@35.4779,139.1583,16z" target="_blank" rel="noopener" style="font-size:10px;background:#e8f0e8;color:#3a6a3a;padding:2px 6px;border-radius:4px;text-decoration:none;white-space:nowrap">🗺 Google</a><a href="https://maps.apple.com/?q=大倉駐車場&ll=35.4779,139.1583&z=15" target="_blank" rel="noopener" style="font-size:10px;background:#e8f0e8;color:#3a6a3a;padding:2px 6px;border-radius:4px;text-decoration:none;white-space:nowrap">🍎 Apple</a></span></span></div></div>
   <div class="card"><h2>🥾 代表的な登山ルート</h2><div class="route-card"><div class="route-title"><span class="route-num">1</span><span>塩水橋ルート（周回）</span></div><div class="route-stats"><div><span class="label">コースタイム</span><span class="value">6時間</span></div><div><span class="label">距離</span><span class="value">13.4km</span></div><div><span class="label">標高差</span><span class="value">+1100m</span></div></div></div><div class="route-card"><div class="route-title"><span class="route-num">2</span><span>堂平ルート</span></div><div class="route-stats"><div><span class="label">コースタイム</span><span class="value">5時間</span></div><div><span class="label">距離</span><span class="value">10.2km</span></div><div><span class="label">標高差</span><span class="value">+900m</span></div></div></div></div>
   <div class="card"><h2>🔄 コース定数・体力度</h2><div class="course-num">26〜33</div><p style="font-size:13px;color:#7a7068;margin-top:4px;margin-bottom:12px">コース定数（YAMAP参照）</p><div class="gear-section"><p style="font-size:13px;font-weight:bold;margin-bottom:6px">🧤 アイゼン情報</p><p>🟢 アイゼン不要：5月〜11月</p><p>🟡 6本アイゼンで可：12月〜4月</p></div><p style="font-size:13px;color:#5a5050;margin-top:12px">神奈川県最高峰エリア。ブナの原生林が美しく、四季を通じて楽しめる。</p></div>
@@ -111,7 +116,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   </div>
 
   <div class="note"><strong>⚠ ご注意</strong><br>所要時間は高速道路利用時の目安です。交通状況や季節により大きく変動します。登山前は必ず最新の道路状況・登山道情報・天気予報をご確認ください。</div>
-  <div class="rw"><p class="rh">⛰ 近くて似た山</p><div class="rg"><a href="/mountains/tonosaki/" class="rc"><div class="rn">塔ノ岳</div><div class="rb"><span class="rbd" style="background:#f8f0e0;color:#7a6020">中級</span><span class="rbc">定数18〜25</span></div><div class="rt">1時間15分<span class="rs">大船から</span></div></a><a href="/mountains/hirugata/" class="rc"><div class="rn">蛭ヶ岳</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数28〜42</span></div><div class="rt">1時間20分<span class="rs">大船から</span></div></a></div></div>
+  <div class="rw"><p class="rh">⛰ 近くて似た山</p><div class="rg"><a href="/mountains/tonosaki/" class="rc"><div class="rn">塔ノ岳</div><div class="rb"><span class="rbd" style="background:#f8f0e0;color:#7a6020">中級</span><span class="rbc">定数18〜25</span></div><div class="rt" id="nearby-time-tonosaki" data-ofuna="1時間15分" data-shinjuku="1時間35分" data-yokohama="1時間5分" data-omiya="1時間40分">1時間15分<span class="rs" id="nearby-label-tonosaki">大船から</span></div></a><a href="/mountains/hirugata/" class="rc"><div class="rn">蛭ヶ岳</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数28〜42</span></div><div class="rt" id="nearby-time-hirugata" data-ofuna="1時間20分" data-shinjuku="2時間" data-yokohama="1時間10分" data-omiya="1時間45分">1時間20分<span class="rs" id="nearby-label-hirugata">大船から</span></div></a></div></div>
 </main>
 <div style="text-align:center;padding:0 16px 16px"><a href="/" style="display:inline-block;background:#607848;color:white;font-weight:bold;font-size:15px;padding:14px 32px;border-radius:12px">← 山の一覧に戻る</a></div>
 <footer><p>Yamatch — 出発地から登る山を探せる登山サーチ</p><p style="margin-top:6px"><a href="/terms/" style="color:#7a9a7a">利用規約</a> | <a href="/privacy/" style="color:#7a9a7a">プライバシーポリシー</a></p></footer>
@@ -161,6 +166,35 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
       });
     };
   }
+})();
+</script>
+<script>
+(function(){
+  var dep = sessionStorage.getItem('ym_departure') || '大船';
+  var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya'};
+  var key = depMap[dep] || 'ofuna';
+  var label = dep + 'から';
+
+  // アクセスカード: 選択駅をハイライト
+  var items = document.querySelectorAll('#access-grid .access-item');
+  items.forEach(function(el){
+    var isSelected = el.dataset.dep === dep + '駅';
+    el.style.background = isSelected ? '#e8f0e4' : '#f8f6f2';
+    el.style.border = isSelected ? '1px solid #a8c898' : '';
+  });
+
+  // 近くて似た山の時間を切り替え
+  ['tonosaki','hirugata'].forEach(function(id){
+    var timeEl = document.getElementById('nearby-time-' + id);
+    var labelEl = document.getElementById('nearby-label-' + id);
+    if(timeEl && labelEl){
+      var t = timeEl.dataset[key];
+      if(t){
+        timeEl.childNodes[0].textContent = t;
+        labelEl.textContent = label;
+      }
+    }
+  });
 })();
 </script>
 </body></html>
