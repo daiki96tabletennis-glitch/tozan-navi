@@ -3809,7 +3809,7 @@ function App() {
             <a href="/about/" style={{background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.3)",color:"white",borderRadius:"8px",padding:"4px 9px",fontSize:"11px",whiteSpace:"nowrap",textDecoration:"none",flexShrink:0}}>運営者</a>
             <button onClick={() => setShowBoard(true)} style={{background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.3)",color:"white",borderRadius:"8px",padding:"4px 9px",fontSize:"11px",cursor:"pointer",whiteSpace:"nowrap",flexShrink:0}}>提案</button>
           </div>
-          <div style={{display:"flex",gap:"0"}}>
+          <div style={{display:"flex",gap:"0",alignItems:"center"}}>
             {["大船","新宿","横浜","大宮"].map(d => (
               <button key={d} onClick={() => setDeparture(d)}
                 style={{
@@ -3822,6 +3822,15 @@ function App() {
                 {d}駅
               </button>
             ))}
+            <div style={{width:"1px",background:"rgba(255,255,255,0.2)",height:"14px",margin:"0 8px"}} />
+            <button
+              onClick={() => {
+                if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); }
+                else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); }
+              }}
+              style={{padding:"4px 12px",fontSize:"13px",border:"none",cursor:"pointer",background:"transparent",color:"rgba(255,255,255,0.6)",fontWeight:"400"}}>
+              シェア
+            </button>
           </div>
         </div>
       </header>

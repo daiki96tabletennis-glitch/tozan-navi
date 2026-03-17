@@ -25,7 +25,7 @@ header{background:linear-gradient(135deg,#4a6038 0%,#607848 100%);padding:12px 1
 .header-sub{color:rgba(255,255,255,0.5);font-size:10px;margin-top:1px}
 .back-btn{color:rgba(255,255,255,0.7);font-size:12px;white-space:nowrap}
 .header-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;border-radius:8px;padding:4px 9px;font-size:11px;white-space:nowrap}
-main{padding:12px}
+main{max-width:680px;margin:0 auto;padding:12px}
 .hero{background:#4a5e4a;border-radius:14px;overflow:hidden;margin-bottom:16px}
 .hero-body{padding:20px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .mountain-name{font-size:26px;font-weight:bold;color:white;line-height:1.2}
@@ -53,17 +53,17 @@ main{padding:12px}
 .yamap-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#4a5e4a;color:white;font-weight:bold;font-size:15px;padding:16px;border-radius:12px;margin-bottom:12px}
 .note{background:#faf8f5;border:1px solid #ddd8d0;border-radius:10px;padding:12px;font-size:12px;color:#7a7068;margin-bottom:16px}
 
-.rw{background:#fff;border-radius:12px;padding:16px;border:1px solid #ddd8d0;margin-bottom:16px}
-.rh{font-size:14px;font-weight:bold;color:#4a5e4a;margin:0 0 12px}
+.rw{background:#fff;border-radius:12px;padding:14px;border:1px solid #ddd8d0;margin-bottom:12px}
+.rh{font-size:13px;font-weight:700;color:#4a5e4a;margin:0 0 10px}
 .rg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.rc{display:flex;flex-direction:column;gap:6px;background:#f5f3ef;border:1px solid #e8e4dc;border-radius:10px;padding:12px;text-decoration:none;color:inherit;transition:background .15s}
+.rc{display:flex;flex-direction:column;gap:5px;background:#f5f3ef;border:1px solid #e8e4dc;border-radius:10px;padding:10px;text-decoration:none;color:inherit;transition:background .15s}
 .rc:hover{background:#ede9e3}
-.rn{font-size:14px;font-weight:bold;color:#3a3530}
-.rb{display:flex;gap:5px;flex-wrap:wrap}
-.rbd,.rbc{font-size:10px;font-weight:bold;padding:2px 7px;border-radius:8px;white-space:nowrap}
+.rn{font-size:13px;font-weight:700;color:#3a3530}
+.rb{display:flex;gap:4px;flex-wrap:wrap}
+.rbd,.rbc{font-size:10px;font-weight:600;padding:2px 6px;border-radius:8px;white-space:nowrap}
 .rbc{background:#eef0e8;color:#4a5e4a}
-.rt{font-size:16px;font-weight:bold;color:#4a5e4a;margin-top:4px}
-.rs{font-size:10px;color:#a09888;font-weight:normal;margin-left:4px}
+.rt{font-size:13px;font-weight:700;color:#4a5e4a;margin-top:2px}
+.rs{font-size:10px;color:#a09888;font-weight:normal;margin-left:3px}
 
 footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 
@@ -140,6 +140,17 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .dep-btn-m{padding:4px 12px;font-size:13px;border:none;background:transparent;color:rgba(255,255,255,0.4);font-weight:400;cursor:pointer;}
 .dep-btn-m.active{color:white;font-weight:700;}
 
+
+.route-list-c{display:flex;flex-direction:column;}
+.rl-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid #f0ede8;}
+.rl-item:last-child{border-bottom:none;}
+.rl-num{width:22px;height:22px;background:linear-gradient(135deg,#4a6038,#607848);color:white;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.rl-content{flex:1;}
+.rl-name{font-size:13px;font-weight:600;color:#2a2520;margin-bottom:4px;}
+.rl-waypoints{font-size:11px;color:#6a8060;margin-bottom:5px;line-height:1.5;}
+.rl-chips{display:flex;gap:4px;flex-wrap:wrap;}
+.rl-chip{font-size:10px;padding:2px 7px;border-radius:20px;background:#f0f5ec;color:#4a6038;font-weight:500;}
+.rl-chip-coef{background:#e8f0e4;color:#3a6030;}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -208,19 +219,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <div class="leg"><div class="leg-dot" style="background:#d4a830"></div>🟡 6本アイゼンで可</div></div>
   </div>
 
-  <div class="card"><h2>🥾 代表的な登山ルート</h2><div class="route-list-c"><div class="rl-item">
-          <div class="rl-num">1</div>
-          <div class="rl-content">
-            <div class="rl-name">ゴンドラ利用〜山頂往復</div>
-            <div class="rl-chips"><span class="rl-chip">⏱&nbsp;3時間30分</span><span class="rl-chip">距離&nbsp;6.0km</span><span class="rl-chip">↑&nbsp;+500m</span></div>
-          </div>
-        </div><div class="rl-item">
-          <div class="rl-num">2</div>
-          <div class="rl-content">
-            <div class="rl-name">奥岳〜くろがね小屋〜山頂周回</div>
-            <div class="rl-chips"><span class="rl-chip">⏱&nbsp;5時間30分</span><span class="rl-chip">距離&nbsp;10.0km</span><span class="rl-chip">↑&nbsp;+850m</span></div>
-          </div>
-        </div></div></div></div>
+  <div class="card"><h2>🥾 代表的な登山ルート</h2><div class="route-list-c"><div class="rl-item"><div class="rl-num">1</div><div class="rl-content"><div class="rl-name">ゴンドラ利用〜山頂往復</div><div class="rl-waypoints">ゴンドラ利用 → 山頂</div><div class="rl-chips"><span class="rl-chip">⏱&nbsp;3時間30分</span><span class="rl-chip">距離&nbsp;6.0km</span><span class="rl-chip">↑&nbsp;+500m</span></div></div></div><div class="rl-item"><div class="rl-num">2</div><div class="rl-content"><div class="rl-name">奥岳〜くろがね小屋〜山頂周回</div><div class="rl-waypoints">奥岳 → くろがね小屋 → 山頂</div><div class="rl-chips"><span class="rl-chip">⏱&nbsp;5時間30分</span><span class="rl-chip">距離&nbsp;10.0km</span><span class="rl-chip">↑&nbsp;+850m</span></div></div></div></div></div></div></div>
 
   <a href="https://yamap.com/mountains/157" target="_blank" rel="noopener noreferrer" class="yamap-btn">
     <svg width="20" height="20" viewBox="0 0 36 36" fill="white"><polygon points="18,4 34,30 2,30"/><polygon points="18,10 30,30 6,30" fill="rgba(255,255,255,0.6)"/></svg>
