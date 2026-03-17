@@ -3957,6 +3957,24 @@ function App() {
             );
           })()}
 
+          {/* 件数 + 一覧/地図切り替え */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
+            <span style={{ fontSize: "12px", color: "#a09888" }}>{filtered.length}件</span>
+            <div style={{ display: "flex", gap: "4px" }}>
+              {["list", "map"].map(mode => (
+                <button key={mode} onClick={() => setViewMode(mode)} style={{
+                  padding: "4px 12px", borderRadius: "20px", fontSize: "12px", fontWeight: "500",
+                  border: "none", cursor: "pointer",
+                  background: viewMode === mode ? "#4a5e4a" : "white",
+                  color: viewMode === mode ? "white" : "#5a5248",
+                  border: viewMode === mode ? "none" : "1px solid #ddd8d0",
+                }}>
+                  {mode === "list" ? "一覧" : "🗺 地図から探す"}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* 一覧 / 地図 */}
           {viewMode === "list" ? (
             <>
