@@ -39,7 +39,7 @@
 </head><body><div id="root"></div>
 <script>window.storage={_data:{},get:async(k)=>{const v=window.storage._data[k];return v!==undefined?{key:k,value:v}:null;},set:async(k,v)=>{window.storage._data[k]=v;return{key:k,value:v};},delete:async(k)=>{delete window.storage._data[k];return{key:k,deleted:true};},list:async(p)=>{const keys=Object.keys(window.storage._data).filter(k=>!p||k.startsWith(p));return{keys};}};</script>
 <script type="text/babel">
-import { useState, useMemo, useEffect, useRef } from "react";
+const { useState, useMemo, useEffect, useRef } = React;
 
 // カテゴリスタイル定義
 const CATEGORY_STYLE = {
