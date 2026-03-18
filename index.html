@@ -3769,12 +3769,41 @@ function App() {
     return (
       <div style={{ background: "#f0ede8", minHeight: "100vh", fontFamily: "sans-serif" }}>
         {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
-        <header style={{ background: "linear-gradient(135deg, #4a6038 0%, #607848 100%)" }} className="p-6">
-          <div className="max-w-2xl mx-auto flex items-center gap-3">
+        <header style={{ background: "linear-gradient(135deg, #4a6038 0%, #607848 100%)", position:"relative", overflow:"hidden" }} className="p-6">
+          {/* 背景SVG山 */}
+          <svg style={{position:"absolute",bottom:0,left:0,width:"100%",height:"100%",zIndex:0,pointerEvents:"none"}} viewBox="0 0 900 120" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="hm1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#3a6030"/><stop offset="100%" stopColor="#4a7040"/></linearGradient>
+              <linearGradient id="hm2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#4a7040"/><stop offset="100%" stopColor="#5a8050"/></linearGradient>
+              <linearGradient id="hgr" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#5a8848"/><stop offset="100%" stopColor="#6a9858"/></linearGradient>
+            </defs>
+            {/* 奥の山（薄く） */}
+            <path d="M-20 120 L-20 65 L30 42 L60 58 L95 28 L122 52 L155 18 L178 45 L200 10 L222 42 L248 22 L275 50 L308 32 L335 55 L365 38 L395 60 L425 28 L452 55 L480 35 L508 58 L535 40 L562 62 L592 30 L618 58 L648 42 L675 65 L705 48 L732 68 L762 52 L792 72 L820 55 L852 75 L882 60 L920 80 L920 120 Z" fill="url(#hm1)" opacity="0.45"/>
+            {/* 手前の山（メイン） */}
+            <path d="M-20 120 L-20 88 L25 72 L62 60 L92 68 L118 55 L145 44 L168 55 L188 42 L210 32 L232 44 L255 35 L282 25 L308 38 L335 28 L362 42 L390 32 L420 22 L448 35 L475 28 L502 40 L528 32 L555 20 L582 35 L608 28 L635 42 L662 35 L690 48 L718 40 L748 55 L778 48 L808 62 L840 55 L870 68 L900 62 L920 72 L920 120 Z" fill="url(#hm2)"/>
+            {/* 地面 */}
+            <rect x="0" y="108" width="900" height="12" fill="url(#hgr)"/>
+            {/* 草・花 */}
+            <g strokeLinecap="round">
+              <line x1="18" y1="114" x2="16" y2="107" stroke="#5a9838" strokeWidth="1.2"/>
+              <line x1="24" y1="114" x2="24" y2="105" stroke="#4a8828" strokeWidth="1.2"/>
+              <line x1="30" y1="114" x2="32" y2="107" stroke="#5a9838" strokeWidth="1.2"/>
+              <circle cx="21" cy="106" r="2" fill="white" opacity="0.7"/>
+              <circle cx="29" cy="104" r="2" fill="#f0e050" opacity="0.65"/>
+            </g>
+            <g strokeLinecap="round">
+              <line x1="862" y1="114" x2="860" y2="107" stroke="#5a9838" strokeWidth="1.2"/>
+              <line x1="868" y1="114" x2="868" y2="105" stroke="#4a8828" strokeWidth="1.2"/>
+              <line x1="874" y1="114" x2="876" y2="107" stroke="#5a9838" strokeWidth="1.2"/>
+              <circle cx="865" cy="106" r="2" fill="#f0a0b0" opacity="0.7"/>
+              <circle cx="873" cy="104" r="2" fill="white" opacity="0.65"/>
+            </g>
+          </svg>
+          <div className="max-w-2xl mx-auto flex items-center gap-3" style={{position:"relative",zIndex:1}}>
             <svg width="32" height="32" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
             <div style={{ flex: 1 }}>
-              <h1 className="text-xl font-bold text-white" style={{fontFamily:"Georgia,serif",fontSize:"22px",letterSpacing:"0.02em"}}>Yamatch <span style={{fontSize:"15px",fontWeight:"normal",opacity:0.75}}>from 大船</span></h1>
-              <p className="text-stone-300 text-xs">百名山・人気の山</p>
+              <h1 className="text-xl font-bold text-white" style={{fontFamily:"Georgia,serif",fontSize:"22px",letterSpacing:"0.02em"}}>Yamatch</h1>
+              <p className="text-stone-300 text-xs">出発地から登る山を探せる登山サーチ</p>
             </div>
             <a href="/about/" style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)", color: "white", borderRadius: "10px", padding: "6px 12px", fontSize: "12px", whiteSpace: "nowrap", textDecoration: "none" }}>
               🥾 運営者について
@@ -3855,9 +3884,10 @@ function App() {
         {/* 登山診断バナー */}
         <a href="/recommend/" style={{
           display:"flex", alignItems:"center", gap:"10px",
-          background:"linear-gradient(135deg,#3a5030 0%,#4a6840 100%)",
+          background:"linear-gradient(135deg,#4a6838 0%,#5a7848 100%)",
           borderRadius:"12px", padding:"11px 14px",
           textDecoration:"none", position:"relative", overflow:"hidden",
+          marginBottom:"4px",
         }}>
           <div style={{position:"absolute",right:"-8px",bottom:"-6px",fontSize:"56px",opacity:0.08,pointerEvents:"none"}}>⛰</div>
           <div style={{flex:1,position:"relative",zIndex:1}}>
@@ -3895,6 +3925,8 @@ function App() {
                 {categoryFilter !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"#e8f0e4",color:"#3a6030",fontWeight:"500"}}>{categoryFilter}</span>}
                 {area !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"#e8f0e4",color:"#3a6030",fontWeight:"500"}}>{area}</span>}
                 {driveTimeFilter && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"#e8f0e4",color:"#3a6030",fontWeight:"500"}}>{driveTimeFilter/60}h以内</span>}
+                {courseFilter && courseFilter.length > 0 && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"#e8f0e4",color:"#3a6030",fontWeight:"500"}}>体力度{courseFilter[0]}</span>}
+                {cramponsFilter && cramponsFilter !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"#e8f0e4",color:"#3a6030",fontWeight:"500"}}>{cramponsFilter}</span>}
                 {sort !== "近い順" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"#e8f0e4",color:"#3a6030",fontWeight:"500"}}>{sort}</span>}
               </div>
             </div>
