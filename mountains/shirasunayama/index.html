@@ -283,7 +283,7 @@ function updateDepButtons(dep){
   });
 }
 function applyDep(){
-  var dep = sessionStorage.getItem('ym_departure') || '大船';
+  var raw = sessionStorage.getItem('ym_departure'); var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
   var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya'};
   var timeMap = {'ofuna':'3時間30分','shinjuku':'3時間25分','yokohama':'3時間40分','omiya':'3時間40分'};
   var heroMinMap = {'ofuna':'210','shinjuku':'205','yokohama':'220','omiya':'220'};
