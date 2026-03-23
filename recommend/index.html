@@ -457,6 +457,7 @@ const TYPES = {
 
 
 
+const TYPE_SLUGS = {'ACPS':'mountain-explorer','ACPL':'solitary-climber','ACFS':'wild-hiker','ACFL':'variation-seeker','AHPS':'view-hunter','AHPL':'silent-climber','AHFS':'party-hiker','AHFL':'photo-walker','VCPS':'mountain-researcher','VCPL':'deep-mountain-seeker','VCFS':'mountain-traveler','VCFL':'hidden-hiker','VHPS':'mountain-resort','VHPL':'meditation-hiker','VHFS':'mountain-picnic','VHFL':'forest-wanderer'};
 const RARE_LABELS  = {ultra:'超希少タイプ',high:'レアタイプ',mid:'標準タイプ',low:'ポピュラータイプ'};
 const RARE_CLASSES = {ultra:'rare-ultra',high:'rare-high',mid:'rare-mid',low:'rare-low'};
 
@@ -635,6 +636,10 @@ function showResult(){
     '<span class="type-rare '+rareClass+'">'+rareLabel+' · '+type.rare+'%</span>'+
     '</div>'+
     '<div class="type-axes" style="margin-top:6px;">'+axesHtml+'</div>'+
+    '<div style="margin-top:12px;">'+
+    '<a href="/type/'+TYPE_SLUGS[typeCode]+'/" style="display:block;text-align:center;background:rgba(255,255,255,0.15);color:white;font-size:12px;font-weight:700;padding:8px;border-radius:10px;text-decoration:none;border:1px solid rgba(255,255,255,0.3);">'+
+    'このタイプの詳細ページを見る →'+'</a>'+
+    '</div>'+
     '</div>'+
     '</div>'+
     '</div>';

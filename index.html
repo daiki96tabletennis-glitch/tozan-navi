@@ -16,12 +16,26 @@
 <meta name="twitter:description" content="大船・新宿・横浜・大宮から行ける百名山・二百名山・人気の山をコース定数・難易度で絞り込める登山サーチ。">
 <meta name="twitter:image" content="https://tozan-navi.com/ogp.png">
 <link rel="canonical" href="https://tozan-navi.com/">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" as="script">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" as="script">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js" as="script">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" media="print" onload="this.media='all'">
+<!-- Leaflet は地図表示時に動的ロード -->
+<script>
+function loadLeaflet(cb){
+  if(window.L){cb&&cb();return;}
+  var css=document.createElement('link');
+  css.rel='stylesheet';css.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+  document.head.appendChild(css);
+  var s=document.createElement('script');
+  s.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  s.onload=cb;document.head.appendChild(s);
+}
+</script>
 <style>*{box-sizing:border-box;}body{margin:0;padding:0;-webkit-text-size-adjust:100%;}::-webkit-scrollbar{height:4px;}::-webkit-scrollbar-thumb{background:#ccc8c0;border-radius:4px;}button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -36,7 +50,35 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
 <meta property="og:updated_time" content="2026-03-16T00:00:00+09:00">
-</head><body><div id="root"></div>
+
+<style>
+#app-skeleton{display:flex;flex-direction:column;min-height:100vh;background:#f0ede8;}
+.sk-header{background:linear-gradient(135deg,#4a6038,#607848);padding:14px 16px;display:flex;align-items:center;gap:10px;}
+.sk-logo{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.3);}
+.sk-title{width:100px;height:18px;background:rgba(255,255,255,0.3);border-radius:4px;}
+.sk-body{padding:16px;max-width:480px;margin:0 auto;width:100%;}
+.sk-bar{height:44px;background:#e8e4dc;border-radius:12px;margin-bottom:10px;animation:sk-pulse 1.2s ease-in-out infinite;}
+.sk-card{height:90px;background:white;border-radius:12px;margin-bottom:8px;animation:sk-pulse 1.2s ease-in-out infinite;}
+.sk-card:nth-child(2){animation-delay:0.1s;}
+.sk-card:nth-child(3){animation-delay:0.2s;}
+@keyframes sk-pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+#root:not(:empty) ~ #app-skeleton,
+#root:not(:empty) + * #app-skeleton{display:none;}
+</style>
+</head><body>
+<div id="app-skeleton">
+  <div class="sk-header">
+    <div class="sk-logo"></div>
+    <div class="sk-title"></div>
+  </div>
+  <div class="sk-body">
+    <div class="sk-bar"></div>
+    <div class="sk-bar" style="width:80%;height:36px;"></div>
+    <div class="sk-card"></div>
+    <div class="sk-card"></div>
+    <div class="sk-card"></div>
+  </div>
+</div><div id="root"></div>
 <script>window.storage={_data:{},get:async(k)=>{const v=window.storage._data[k];return v!==undefined?{key:k,value:v}:null;},set:async(k,v)=>{window.storage._data[k]=v;return{key:k,value:v};},delete:async(k)=>{delete window.storage._data[k];return{key:k,deleted:true};},list:async(p)=>{const keys=Object.keys(window.storage._data).filter(k=>!p||k.startsWith(p));return{keys};}};</script>
 <script type="text/babel">
 const {useState,useMemo,useEffect,useRef}=React;
@@ -4179,5 +4221,6 @@ function App() {
 
 const root=ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App/>);
+const _sk=document.getElementById('app-skeleton');if(_sk)_sk.style.display='none';
 
 </script></body></html>
