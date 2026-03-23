@@ -198,6 +198,43 @@ main{max-width:480px;margin:0 auto;padding:16px;}
 .retry-btn{display:block;width:100%;padding:12px;background:white;border:1.5px solid #c8d8b8;border-radius:12px;font-size:14px;font-weight:600;color:#4a6038;cursor:pointer;margin-top:8px;text-align:center;touch-action:manipulation;}
 footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1px solid #e8e4dc;margin-top:16px;}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+
+/* ── 結果カード強化 ─────────────────── */
+.result-card-top{border:2px solid #4a6038;box-shadow:0 4px 16px rgba(74,96,56,0.15);}
+.rc-section-label{font-size:11px;font-weight:700;color:#7a9a6a;letter-spacing:0.06em;padding:10px 16px 4px;text-transform:uppercase;}
+
+/* おすすめ理由 */
+.reasons-block{padding:0 12px 10px;display:flex;flex-direction:column;gap:8px;}
+.reason-item{display:flex;align-items:flex-start;gap:10px;background:#f4f8f0;border-radius:10px;padding:10px 12px;}
+.reason-icon{font-size:20px;flex-shrink:0;line-height:1.2;}
+.reason-text{font-size:13px;font-weight:700;color:#2a3820;line-height:1.3;}
+.reason-sub{font-size:11px;color:#7a9068;margin-top:2px;line-height:1.4;}
+
+/* 装備カード */
+.gears-block{padding:0 12px 10px;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.gear-item{display:flex;align-items:center;gap:8px;background:#faf9f6;border:1px solid #e8e4dc;border-radius:8px;padding:8px 10px;}
+.gear-icon{font-size:18px;flex-shrink:0;}
+.gear-name{font-size:12px;font-weight:700;color:#3a3530;line-height:1.2;}
+.gear-note{font-size:10px;color:#9a9088;margin-top:2px;line-height:1.3;}
+
+/* アクセス */
+.access-row{padding:0 12px 12px;display:flex;flex-direction:column;gap:6px;}
+.access-item{display:flex;align-items:flex-start;gap:10px;padding:8px 12px;background:#f0f4f8;border-radius:8px;}
+.access-icon{font-size:18px;flex-shrink:0;}
+.access-label{font-size:10px;color:#6a8098;font-weight:600;}
+.access-val{font-size:13px;font-weight:700;color:#1a3050;margin-top:1px;}
+.access-train{font-size:12px;font-weight:600;line-height:1.4;}
+
+/* CTAボタン */
+.rc-cta{display:block;margin:0 12px 14px;text-align:center;padding:12px;border-radius:10px;font-size:14px;font-weight:700;color:#4a6038;text-decoration:none;background:#f0f4ec;border:1.5px solid #c0d0a8;}
+.rc-cta-primary{background:linear-gradient(135deg,#3a5828,#4a7038);color:white;border:none;font-size:15px;padding:14px;box-shadow:0 3px 10px rgba(58,88,40,0.3);}
+
+/* 固定CTAバー */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #e0dbd4;padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:100;display:none;box-shadow:0 -4px 16px rgba(0,0,0,0.1);}
+.sticky-cta.visible{display:block;}
+.sticky-cta-inner{max-width:480px;margin:0 auto;display:flex;align-items:center;gap:10px;}
+.sticky-cta-name{flex:1;font-size:13px;font-weight:700;color:#3a3530;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sticky-cta-btn{flex-shrink:0;background:linear-gradient(135deg,#3a5828,#4a7038);color:white;font-size:13px;font-weight:700;padding:10px 18px;border-radius:22px;text-decoration:none;white-space:nowrap;box-shadow:0 2px 8px rgba(58,88,40,0.3);}
 </style>
 </head>
 <body>
@@ -385,6 +422,12 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 </div>
 
 </main>
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-cta-inner">
+    <div class="sticky-cta-name" id="sticky-cta-name">おすすめの山を見る</div>
+    <a href="#" class="sticky-cta-btn" id="sticky-cta-link">この山、行ってみる →</a>
+  </div>
+</div>
 <footer>
   <p>Yamatch — 出発地から登る山を探せる登山サーチ</p>
   <p style="margin-top:6px;"><a href="/terms/" style="color:#7a9a7a;">利用規約</a><span style="margin:0 8px;opacity:0.4;">|</span><a href="/privacy/" style="color:#7a9a7a;">プライバシーポリシー</a><span style="margin:0 8px;opacity:0.4;">|</span><a href="/about/" style="color:#7a9a7a;">運営者</a></p>
@@ -478,6 +521,7 @@ function answer(key,val){
 }
 
 function restart(){
+  if(window._hideStickyOnRestart) window._hideStickyOnRestart();
   Object.keys(answers).forEach(k=>delete answers[k]);
   axisScore.av=axisScore.ch=axisScore.pf=axisScore.sl=0;
   current=0;
@@ -500,6 +544,32 @@ function fmtTime(mins){
   if(!mins||mins===999)return'—';
   const h=Math.floor(mins/60),m=mins%60;
   return m?h+'時間'+m+'分':h+'時間';
+}
+
+function getGearList(m){
+  var coeff=m.coeffMax||20;
+  var base=[
+    {icon:'👟',name:'登山靴',note:'トレイルシューズ以上推奨'},
+    {icon:'🧥',name:'レインウェア',note:'山の天気は急変します'},
+    {icon:'🎒',name:'ザック',note:coeff<=20?'15〜20L程度':'25〜30L程度'},
+    {icon:'💧',name:'水・行動食',note:'1L以上＋補給食を持参'},
+  ];
+  if(coeff>=30) base.push({icon:'🧦',name:'ゲイター（スパッツ）',note:'急登・泥道・雪道の足首を保護'});
+  if(coeff>=45) base.push({icon:'🦯',name:'ストック（トレッキングポール）',note:'急登・下りの膝保護に'});
+  if(m.crampons&&m.crampons!=='なし') base.push({icon:'❄️',name:'軽アイゼン',note:m.crampons});
+  return base;
+}
+function getReasons(m,depLabel,driveMin){
+  var r=[];
+  if(m.daytrip) r.push({icon:'🌅',text:'日帰りで楽しめる',sub:'日帰りOKなコース設定'});
+  else r.push({icon:'🏕',text:'山小屋泊でゆったり',sub:'宿泊でしか見られない景色がある'});
+  if(m.trainAccess) r.push({icon:'🚃',text:'電車・バスで行ける',sub:'公共交通機関でアクセス可能'});
+  else r.push({icon:'🚗',text:depLabel+'から'+fmtTime(driveMin),sub:'車でスムーズにアクセス可能'});
+  var coeff=m.coeffMax||20;
+  if(coeff<=22) r.push({icon:'🌱',text:'初心者でも安心のルート',sub:'整備されていて歩きやすい'});
+  else if(coeff>=50) r.push({icon:'🏔',text:'やりがいのある本格コース',sub:'達成感は最高クラス'});
+  else r.push({icon:'⚖️',text:'難易度と景色のバランスが良い',sub:'中級者に最適なコース'});
+  return r.slice(0,3);
 }
 
 function scoreMount(m,typeCode){
@@ -575,17 +645,30 @@ function showResult(){
     const catClass=m.category==='百名山'?'rb-100':'rb-pop';
     const dayBadge=m.daytrip?'<span class="rb rb-day">🌅 日帰り可</span>':'<span class="rb rb-stay">🏕 宿泊推奨</span>';
     const trainBadge=m.trainAccess?'<span class="rb rb-train">🚃 電車OK</span>':'';
-    const reason=m.drive<=90?'近くて行きやすい（'+fmtTime(m.drive)+'）':fmtTime(m.drive)+'でアクセス可能';
-    const affilItems=getAffilItems(m);
-    const affilHtml=''; // アフィリエイト：準備中（非表示）
     const ranks=['r1','r2','r3'];
-    return '<div class="result-card">'+
-      '<div class="rc-top"><div class="rank-badge '+ranks[i]+'">'+(i+1)+'</div><div><div class="rc-name">'+m.name+'</div><div class="rc-area">'+m.area+' · '+(m.elevation||0).toLocaleString()+'m</div></div></div>'+
+    const reasons=getReasons(m, depLabel, m.drive);
+    const gears=getGearList(m);
+    const reasonsHtml=reasons.map(r=>
+      '<div class="reason-item"><span class="reason-icon">'+r.icon+'</span><div><div class="reason-text">'+r.text+'</div><div class="reason-sub">'+r.sub+'</div></div></div>'
+    ).join('');
+    const gearsHtml=gears.map(g=>
+      '<div class="gear-item"><span class="gear-icon">'+g.icon+'</span><div><div class="gear-name">'+g.name+'</div><div class="gear-note">'+g.note+'</div></div></div>'
+    ).join('');
+    const accessHtml='<div class="access-row">'+
+      '<div class="access-item"><span class="access-icon">🚗</span><div class="access-label">'+depLabel+'から</div><div class="access-val">'+fmtTime(m.drive)+'</div></div>'+
+      (m.trainAccess?'<div class="access-item"><span class="access-icon">🚃</span><div class="access-label">電車・バス</div><div class="access-val access-train">'+(typeof m.trainAccess==='string'?m.trainAccess:'公共交通機関でアクセス可')+'</div></div>':'')+'</div>';
+    const isFirst=(i===0);
+    return '<div class="result-card'+(isFirst?' result-card-top':'')+'">'+
+      '<div class="rc-top"><div class="rank-badge '+ranks[i]+'">'+(i+1)+'</div><div style="flex:1"><div class="rc-name">'+m.name+'</div><div class="rc-area">'+m.area+' · '+(m.elevation||0).toLocaleString()+'m</div></div></div>'+
       '<div class="rc-badges"><span class="rb '+catClass+'">'+m.category+'</span>'+dayBadge+trainBadge+'</div>'+
-      (m.description?'<div class="rc-desc">'+m.description+'</div>':'')+
-      '<div class="rc-reason">'+reason+'</div>'+
-      affilHtml+
-      '<a href="/mountains/'+m.id+'/" class="rc-link">詳しく見る →</a>'+
+      '<div class="rc-section-label">📍 あなたにおすすめの理由</div>'+
+      '<div class="reasons-block">'+reasonsHtml+'</div>'+
+      '<div class="rc-section-label">🎒 必要な装備</div>'+
+      '<div class="gears-block">'+gearsHtml+'</div>'+
+      '<div class="rc-section-label">🚌 アクセス</div>'+
+      accessHtml+
+      '<a href="/mountains/'+m.id+'/" class="rc-cta'+(isFirst?' rc-cta-primary':'')+'">'+
+        (i===0?'この山、行ってみる →':i===1?'この山も見てみる →':'こっちも気になる →')+'</a>'+
     '</div>';
   }).join('');
 
@@ -611,6 +694,22 @@ function showResult(){
   document.getElementById('share-x').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText)+'&url='+encodeURIComponent(shareUrlWithType);
   document.getElementById('share-line').href='https://line.me/R/msg/text/?'+encodeURIComponent(shareText+'\n'+shareUrlWithType);
 
+
+  // 固定CTAバー制御
+  const top1 = top3[0];
+  if(top1){
+    document.getElementById('sticky-cta-name').textContent = top1.name;
+    document.getElementById('sticky-cta-link').href = '/mountains/'+top1.id+'/';
+    document.getElementById('sticky-cta-link').textContent = 'この山、行ってみる →';
+  }
+  // スクロールで表示
+  setTimeout(function(){
+    document.getElementById('sticky-cta').classList.add('visible');
+  }, 800);
+  // result非表示時は隠す
+  window._hideStickyOnRestart = function(){
+    document.getElementById('sticky-cta').classList.remove('visible');
+  };
   show('result');
 }
 
