@@ -29,6 +29,7 @@ main{max-width:680px;margin:0 auto;padding:12px}
 .hero{background:#4a5e4a;border-radius:14px;overflow:hidden;margin-bottom:16px}
 .hero-body{padding:20px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .mountain-name{font-size:26px;font-weight:bold;color:white;line-height:1.2}
+.mountain-name-kana{font-size:13px;font-weight:400;color:rgba(255,255,255,0.65);margin-left:8px;letter-spacing:0.04em;}
 .mountain-kana{color:#b8c8b8;font-size:12px;margin-top:4px}
 .mountain-area{color:#c8d8c8;font-size:13px;margin-top:2px}
 .category-badge{display:inline-block;background:#e8e4dc;color:#5a4e3a;font-size:11px;font-weight:bold;padding:2px 8px;border-radius:10px;margin-top:8px}
@@ -136,7 +137,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .ai-a-bar{height:100%;background:linear-gradient(90deg,#607848,#8aaa70);border-radius:3px;transition:width 0.3s;}
 .ai-a-val{font-size:11px;font-weight:600;color:#3a3530;width:56px;text-align:right;flex-shrink:0;white-space:nowrap;}
 
-.dep-row{display:flex;gap:0;padding:0 12px 10px;}
+.dep-row{display:flex;gap:0;padding:0 12px 10px;max-width:680px;margin:0 auto;}
 .dep-btn-m{padding:4px 12px;font-size:13px;border:none;background:transparent;color:rgba(255,255,255,0.4);font-weight:400;cursor:pointer;}
 .dep-btn-m.active{color:white;font-weight:700;}
 
@@ -184,8 +185,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </svg>
     <div class="hero-top">
       <div>
-        <h1 class="mountain-name">野口五郎岳（のぐちごろうだけ）登山ガイド</h1>
-  <p class="mountain-intro">野口五郎岳は北アルプス裏銀座にある標高2924mの二百名山。上級レベルで、コース定数44〜58、日帰り可能。新宿から車で約5時間40分でアクセスできます。裏銀座縦走路中央に位置する北アルプスの静かな名峰。丸みを帯びた山容と花崗岩の白い砂礫地が印象的。水晶岳・鷲羽岳への縦走拠点で、野口五郎小屋からの夕景が美しい。</p>
+        <h1 class="mountain-name">野口五郎岳<span class="mountain-name-kana">のぐちごろうだけ</span></h1>
         <div class="mountain-kana">のぐちごろうだけ</div>
         <div class="mountain-area">📍 北アルプス裏銀座</div>
         <div class="hero-badges">
@@ -201,7 +201,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </div>
   </div>
 
-  <div class="card"><h2>📝 山の紹介</h2><p class="intro-text">裏銀座縦走路中央に位置する北アルプスの静かな名峰。丸みを帯びた山容と花崗岩の白い砂礫地が印象的。水晶岳・鷲羽岳への縦走拠点で、野口五郎小屋からの夕景が美しい。</p></div>
+  <div class="card"><h2>📝 山の紹介</h2><p class="intro-text">裏銀座縦走路中央に位置する北アルプスの静かな名峰。丸みを帯びた山容と花崗岩の白い砂礫地が印象的。水晶岳・鷲羽岳への縦走拠点で、野口五郎小屋からの夕景が美しい。上級レベルでコース定数44〜58、日帰りでの登山が可能。代表コース（高瀬ダム〜ブナ立尾根〜烏帽子岳〜野口五郎岳（1泊））は所要2日間/22.0km/標高差+1900m。</p></div>
 
   <div class="card"><h2>🚗 車でのアクセス時間</h2>
     <div class="ag-a" id="access-grid">

@@ -29,6 +29,7 @@ main{max-width:680px;margin:0 auto;padding:12px}
 .hero{background:#4a5e4a;border-radius:14px;overflow:hidden;margin-bottom:16px}
 .hero-body{padding:20px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .mountain-name{font-size:26px;font-weight:bold;color:white;line-height:1.2}
+.mountain-name-kana{font-size:13px;font-weight:400;color:rgba(255,255,255,0.65);margin-left:8px;letter-spacing:0.04em;}
 .mountain-kana{color:#b8c8b8;font-size:12px;margin-top:4px}
 .mountain-area{color:#c8d8c8;font-size:13px;margin-top:2px}
 .category-badge{display:inline-block;background:#e8e4dc;color:#5a4e3a;font-size:11px;font-weight:bold;padding:2px 8px;border-radius:10px;margin-top:8px}
@@ -136,7 +137,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .ai-a-bar{height:100%;background:linear-gradient(90deg,#607848,#8aaa70);border-radius:3px;transition:width 0.3s;}
 .ai-a-val{font-size:11px;font-weight:600;color:#3a3530;width:56px;text-align:right;flex-shrink:0;white-space:nowrap;}
 
-.dep-row{display:flex;gap:0;padding:0 12px 10px;}
+.dep-row{display:flex;gap:0;padding:0 12px 10px;max-width:680px;margin:0 auto;}
 .dep-btn-m{padding:4px 12px;font-size:13px;border:none;background:transparent;color:rgba(255,255,255,0.4);font-weight:400;cursor:pointer;}
 .dep-btn-m.active{color:white;font-weight:700;}
 
@@ -184,8 +185,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </svg>
     <div class="hero-top">
       <div>
-        <h1 class="mountain-name">赤城山（あかぎさん）登山ガイド</h1>
-  <p class="mountain-intro">赤城山は群馬県にある標高1828mの百名山。初〜中級レベルで、コース定数10〜20、日帰り可能。新宿から車で約2時間20分でアクセスできます。上毛三山の一つ。カルデラ湖（大沼）を擁する成層火山。展望が良い。</p>
+        <h1 class="mountain-name">赤城山<span class="mountain-name-kana">あかぎさん</span></h1>
         <div class="mountain-kana">あかぎさん</div>
         <div class="mountain-area">📍 群馬県</div>
         <div class="hero-badges">
@@ -201,7 +201,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </div>
   </div>
 
-  <div class="card"><h2>📝 山の紹介</h2><p class="intro-text">上毛三山の一つ。カルデラ湖（大沼）を擁する成層火山。展望が良い。</p></div>
+  <div class="card"><h2>📝 山の紹介</h2><p class="intro-text">上毛三山の一つ。カルデラ湖（大沼）を擁する成層火山。展望が良い。初〜中級レベルでコース定数10〜20、日帰りでの登山が可能。代表コース（黒檜山〜駒ヶ岳周回）は所要3時間30分/6.0km/標高差+500m。</p></div>
 
   <div class="card"><h2>🚗 車でのアクセス時間</h2>
     <div class="ag-a" id="access-grid">
