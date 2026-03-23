@@ -152,6 +152,12 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .rl-chips{display:flex;gap:4px;flex-wrap:wrap;}
 .rl-chip{font-size:10px;padding:2px 7px;border-radius:20px;background:#f0f5ec;color:#4a6038;font-weight:500;}
 .rl-chip-coef{background:#e8f0e4;color:#3a6030;}
+
+.faq-item{padding:12px 0;border-bottom:1px solid #f0ede8;}
+.faq-item:last-child{border-bottom:none;padding-bottom:0;}
+.faq-q{font-size:14px;font-weight:700;color:#2a3820;margin-bottom:6px;line-height:1.5;}
+.faq-q::before{content:"Q. ";color:#4a7838;}
+.faq-a p{font-size:13px;color:#5a5248;line-height:1.8;padding-left:18px;}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -159,6 +165,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"茅ヶ岳は初心者でも登れますか？","acceptedAnswer":{"@type":"Answer","text":"コース定数16〜25の初〜中級レベルで、日帰りが可能。初〜中級レベルのため、ある程度の体力・経験が必要です。装備は登山靴・レインウェア・水を必ず持参してください。"}},{"@type":"Question","name":"茅ヶ岳の登山シーズンはいつですか？","acceptedAnswer":{"@type":"Answer","text":"5月〜11月が最も登りやすいシーズンです。特に秋（9〜11月）は紅葉と安定した天候でおすすめです。冬季は積雪・凍結に注意が必要です。"}},{"@type":"Question","name":"新宿から茅ヶ岳へのアクセス方法は？","acceptedAnswer":{"@type":"Answer","text":"車で約2時間10分。"}}]}</script>
 </head>
 <body>
 <header>
@@ -245,6 +252,25 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <a href="/search/ofuna-daytrip/">🏔 大船・横浜から日帰りで行ける山一覧</a>
     <a href="/recommend/">🎯 登山タイプ診断で自分に合う山を探す</a>
   </div>
+</div>
+<div class="card" itemscope itemtype="https://schema.org/FAQPage">
+  <h2 style="font-size:15px;font-weight:700;color:#2a3820;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #e8f0e0;">❓ よくある質問</h2>
+  <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <h2 class="faq-q" itemprop="name">茅ヶ岳は初心者でも登れますか？</h2>
+      <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <p itemprop="text">コース定数16〜25の初〜中級レベルで、日帰りが可能。初〜中級レベルのため、ある程度の体力・経験が必要です。装備は登山靴・レインウェア・水を必ず持参してください。</p>
+      </div>
+    </div><div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <h2 class="faq-q" itemprop="name">茅ヶ岳の登山シーズンはいつですか？</h2>
+      <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <p itemprop="text">5月〜11月が最も登りやすいシーズンです。特に秋（9〜11月）は紅葉と安定した天候でおすすめです。冬季は積雪・凍結に注意が必要です。</p>
+      </div>
+    </div><div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <h2 class="faq-q" itemprop="name">新宿から茅ヶ岳へのアクセス方法は？</h2>
+      <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <p itemprop="text">車で約2時間10分。</p>
+      </div>
+    </div>
 </div>
 <div class="rw"><p class="rh">⛰ 近くて似た山</p><div class="rg"><a href="/mountains/koganzan/" class="rc"><div class="rn">小金沢山</div><div class="rb"><span class="rbd" style="background:#edf4e8;color:#3a5a3a">初〜中級</span><span class="rbc">定数20〜28</span></div><div class="rt" id="nearby-time-koganzan" data-ofuna="2時間30分" data-shinjuku="2時間10分" data-yokohama="2時間20分" data-omiya="3時間">2時間30分<span class="rs" id="nearby-label-koganzan">大船から</span></div></div></a>
 <a href="/mountains/okutama/" class="rc"><div class="rn">大菩薩嶺</div><div class="rb"><span class="rbd" style="background:#edf4e8;color:#3a5a3a">初〜中級</span><span class="rbc">定数10〜30</span></div><div class="rt" id="nearby-time-okutama" data-ofuna="2時間30分" data-shinjuku="2時間10分" data-yokohama="2時間20分" data-omiya="2時間15分">2時間30分<span class="rs" id="nearby-label-okutama">大船から</span></div></div></a>
