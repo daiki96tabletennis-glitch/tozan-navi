@@ -158,6 +158,27 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .faq-q{font-size:14px;font-weight:700;color:#2a3820;margin-bottom:6px;line-height:1.5;}
 .faq-q::before{content:"Q. ";color:#4a7838;}
 .faq-a p{font-size:13px;color:#5a5248;line-height:1.8;padding-left:18px;}
+
+.ts-section{background:white;border-radius:12px;border:1.5px solid #c8dff0;padding:14px 16px;margin-bottom:0;}
+.ts-header{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.ts-title{font-size:14px;font-weight:700;color:#1a4a70;}
+.ts-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;}
+.ts-badge-seasonal{background:#fff3cd;color:#856404;}
+.ts-badge-year{background:#d4edda;color:#155724;}
+.ts-line-name{font-size:11px;color:#6a8098;margin-bottom:10px;}
+.ts-route{display:flex;flex-direction:column;gap:0;}
+.ts-step{display:flex;flex-direction:column;}
+.ts-node{padding:4px 12px;background:#eef4fb;border-radius:8px;border-left:3px solid #4a7898;margin-bottom:2px;}
+.ts-node-last{border-left-color:#2a7a38;background:#eef6ee;}
+.ts-station{font-size:13px;font-weight:700;color:#1a3050;}
+.ts-arrow{padding:4px 16px;margin-bottom:2px;}
+.ts-method{font-size:12px;color:#4a6888;}
+.ts-duration{font-weight:700;color:#2a5070;margin-left:4px;}
+.ts-note{font-size:12px;color:#7a6048;background:#fdf8ee;border-radius:6px;padding:6px 10px;margin-top:8px;line-height:1.6;}
+.ts-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
+.ts-link{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
+.ts-link-yahoo{background:#deeaf4;color:#1a4a70;}
+.ts-link-bus{background:#c8dff0;color:#1a4070;}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -208,15 +229,32 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </div>
   </div>
 
-  <div class="card" style="border-left:3px solid #4a7898;">
-  <h2>🚃 電車・バスでのアクセス</h2>
-  <div style="display:flex;align-items:flex-start;gap:10px;padding:8px;background:#eef4fb;border-radius:8px;">
-    <span style="font-size:18px;flex-shrink:0;">🚃</span>
-    <span style="font-size:13px;color:#1a4a70;line-height:1.6;">茅野駅→バス30分→霧ヶ峰（季節）</span>
-  </div>
-  <div style="margin-top:8px;">
-    <a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=茅野駅&type=1" target="_blank" rel="noopener" style="font-size:12px;color:#4a7898;text-decoration:none;display:inline-flex;align-items:center;gap:4px;background:#deeaf4;padding:4px 10px;border-radius:20px;">🗓 乗換案内で検索（新宿発）</a>
-    <a href="https://www.alpico.co.jp/traffic/local/suwa/" target="_blank" rel="noopener" style="font-size:12px;color:#1a4a70;text-decoration:none;display:inline-flex;align-items:center;gap:4px;background:#c8dff0;padding:4px 10px;border-radius:20px;">🚌 アルピコ交通 茅野〜霧ヶ峰</a>
+  <div class="card">
+  <div class="ts-section">
+    <div class="ts-header">
+      <div class="ts-title">🚃 電車・バスでのアクセス</div>
+      <span class="ts-badge ts-badge-seasonal">⚠️ 季節運行</span>
+    </div>
+    <div class="ts-line-name">JR中央線・アルピコ交通</div>
+    <div class="ts-route">
+      <div class="ts-step">
+        <div class="ts-node">
+          <div class="ts-station">新宿駅</div>
+        </div>
+        <div class="ts-arrow">
+          <span class="ts-method">🚃 JR特急あずさ　<span class="ts-duration">約2時間</span></span>
+        </div>
+      </div><div class="ts-step">
+        <div class="ts-node">
+          <div class="ts-station">茅野駅</div>
+        </div>
+        <div class="ts-arrow">
+          <span class="ts-method">🚌 アルピコ交通バス　<span class="ts-duration">約30分</span></span>
+        </div>
+      </div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">霧ヶ峰</div></div></div>
+    </div>
+    <div class="ts-note">💡 バスは夏季のみ運行</div>
+    <div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=茅野駅&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo">🗓 乗換案内で検索</a><a href="https://www.alpico.co.jp/traffic/local/suwa/" target="_blank" rel="noopener" class="ts-link ts-link-bus">🚌 バス時刻表</a></div>
   </div>
 </div>
 <div class="card"><h2>📝 山の紹介</h2><p class="intro-text">高原のなだらかな地形が広がる。ニッコウキスゲの群生で有名。初級レベルでコース定数10〜18、日帰りでの登山が可能。代表コース（車山周回コース）は所要2時間30分/6.0km/標高差+300m。公共交通機関でのアクセス可（茅野駅→バス30分→霧ヶ峰（季節））。</p></div>
@@ -315,6 +353,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <span style="margin:0 8px;opacity:0.4">|</span>
     <a href="/about/" style="color:#7a9a7a">運営者</a>
   </p>
+  <p style="margin-top:8px;opacity:0.6;">© 2026 Yamatch. All rights reserved.</p>
 </footer>
 <script>
 function shareNative(){
