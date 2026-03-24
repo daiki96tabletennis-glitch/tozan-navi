@@ -79,7 +79,7 @@ function loadLeaflet(cb){
     <div class="sk-card"></div>
   </div>
 </div><div id="root"></div>
-<script>window.storage={_data:{},get:async(k)=>{const v=window.storage._data[k];return v!==undefined?{key:k,value:v}:null;},set:async(k,v)=>{window.storage._data[k]=v;return{key:k,value:v};},delete:async(k)=>{delete window.storage._data[k];return{key:k,deleted:true};},list:async(p)=>{const keys=Object.keys(window.storage._data).filter(k=>!p||k.startsWith(p));return{keys};}};</script>
+
 <script type="text/babel">
 const {useState,useMemo,useEffect,useRef}=React;
 
@@ -3166,7 +3166,7 @@ const mountains = [
     description: "裏銀座縦走路中央に位置する北アルプスの静かな名峰。丸みを帯びた山容と花崗岩の白い砂礫地が印象的。水晶岳・鷲羽岳への縦走拠点で、野口五郎小屋からの夕景が美しい。",
     yamapUrl: "https://yamap.com/mountains/56",
     category: "二百名山",
-  },
+  },,
   {
     id: "nokogiriyama_chiba",
     lat: 35.1462,
@@ -3712,38 +3712,26 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
   const CATEGORIES = ["誤情報の指摘", "情報の追加・補足", "ルートの提案", "その他"];
 
   useEffect(() => {
-    (async () => {
-      try {
-        const r = await window.storage.get("feedback_posts", true);
-        if (r) setPosts(JSON.parse(r.value));
-      } catch {}
-      setLoading(false);
-    })();
+    setLoading(false);
   }, []);
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (!form.body.trim()) { setError("内容を入力してください"); return; }
     if (form.body.length > 500) { setError("500文字以内で入力してください"); return; }
     setError("");
     setSubmitting(true);
-    try {
-      const newPost = {
-        id: Date.now(),
-        mountain: form.mountain.trim() || "（山名未指定）",
-        category: form.category,
-        body: form.body.trim(),
-        name: form.name.trim() || "匿名",
-        date: new Date().toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }),
-      };
-      const updated = [newPost, ...posts];
-      await window.storage.set("feedback_posts", JSON.stringify(updated), true);
-      setPosts(updated);
-      setForm({ mountain: "", category: "誤情報の指摘", body: "", name: "" });
-      setSuccess(true);
-      setTimeout(() => setSuccess(false), 3000);
-    } catch (e) {
-      setError("送信に失敗しました。もう一度お試しください。");
-    }
+    const newPost = {
+      id: Date.now(),
+      mountain: form.mountain.trim() || "（山名未指定）",
+      category: form.category,
+      body: form.body.trim(),
+      name: form.name.trim() || "匿名",
+      date: new Date().toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }),
+    };
+    setPosts(prev => [newPost, ...prev]);
+    setForm({ mountain: "", category: "誤情報の指摘", body: "", name: "" });
+    setSuccess(true);
+    setTimeout(() => setSuccess(false), 3000);
     setSubmitting(false);
   };
 
