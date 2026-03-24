@@ -81,9 +81,8 @@ main{max-width:680px;margin:0 auto;padding:16px;}
 .share-title{color:white;font-size:15px;font-weight:700;margin-bottom:6px;}
 .share-sub{color:rgba(255,255,255,0.7);font-size:12px;margin-bottom:14px;}
 .share-btns{display:flex;gap:8px;justify-content:center;}
-.share-btn{flex:1;max-width:160px;font-size:13px;font-weight:700;padding:10px;border-radius:22px;text-decoration:none;text-align:center;}
-.sb-x{background:#000;color:white;}
-.sb-line{background:#06C755;color:white;}
+.share-btn{flex:1;max-width:200px;font-size:14px;font-weight:700;padding:12px 20px;border-radius:22px;text-decoration:none;text-align:center;border:none;cursor:pointer;}
+.sb-native{background:white;color:#3a5828;}
 
 footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1px solid #e8e4dc;margin-top:8px;}
 footer a{color:#7a9a7a;}
@@ -115,7 +114,7 @@ footer a{color:#7a9a7a;}
     <div class="axes"><span class="axis-tag">行動派</span><span class="axis-tag">癒し派</span><span class="axis-tag">計画派</span><span class="axis-tag">ソロ派</span></div>
     <div class="hero-cta">
       <a href="/recommend/" class="cta-main">診断してみる →</a>
-      <a href="https://twitter.com/intent/tweet?text=私は「サイレントクライマー」タイプでした！診断者の6.7%のレアタイプ%0A%23Yamatch+%23登山タイプ診断&url=https://tozan-navi.com/type/silent-climber/" target="_blank" class="cta-sub">𝕏 シェア</a>
+      <button class="cta-sub" onclick="shareNative()" style="border:1px solid rgba(255,255,255,0.3);cursor:pointer;padding:11px 16px;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 16H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4h-3"/></svg></button>
     </div>
   </div>
 
@@ -204,10 +203,7 @@ footer a{color:#7a9a7a;}
   <div class="share-section">
     <div class="share-title">友達のタイプも気になる？</div>
     <div class="share-sub">シェアして一緒に診断しよう</div>
-    <div class="share-btns">
-      <a href="https://twitter.com/intent/tweet?text=私は「サイレントクライマー」タイプでした！%0A診断者の6.7%のレアタイプ%0A%23Yamatch+%23登山タイプ診断&url=https://tozan-navi.com/type/silent-climber/" target="_blank" class="share-btn sb-x">𝕏 Xでシェア</a>
-      <a href="https://line.me/R/msg/text/?私は「サイレントクライマー」タイプ！あなたは？%0Ahttps://tozan-navi.com/type/silent-climber/" target="_blank" class="share-btn sb-line">💬 LINEで送る</a>
-    </div>
+    <div class="share-btns"><button class="share-btn sb-native" onclick="shareNative()" style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;padding:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 16H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4h-3"/></svg></button></div>
   </div>
 
 </main>
@@ -216,5 +212,17 @@ footer a{color:#7a9a7a;}
   <p style="margin-top:6px;"><a href="/terms/">利用規約</a> | <a href="/privacy/">プライバシーポリシー</a> | <a href="/about/">運営者</a> | <a href="/recommend/">登山タイプ診断</a></p>
   <p style="margin-top:8px;opacity:0.6;">© 2026 Yamatch. All rights reserved.</p>
 </footer>
+<script>
+function shareNative(){
+  if(navigator.share){
+    navigator.share({
+      title: document.title,
+      url: location.href
+    });
+  } else {
+    navigator.clipboard.writeText(location.href).then(()=>alert('URLをコピーしました'));
+  }
+}
+</script>
 </body>
 </html>
