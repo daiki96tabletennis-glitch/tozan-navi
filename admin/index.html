@@ -482,13 +482,17 @@ let selectedBanner = 'none';
 // データ（インライン埋め込み）
 // mountains.jsonからフル데이터を読み込む
 fetch('/data/mountains.json')
-  .then(function(r){ return r.json(); })
+  .then(function(r){
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  })
   .then(function(data){
     allMountains = data;
     renderList(data);
   })
-  .catch(function(){
-    document.getElementById('mt-list').innerHTML = '<div class="loading">データの読み込みに失敗しました。</div>';
+  .catch(function(err){
+    console.error('mountains.json fetch error:', err);
+    document.getElementById('mt-list').innerHTML = '<div class="loading">⚠️ データ読み込みエラー: ' + err.message + '<br>data/mountains.json がGitHubに存在するか確認してください。</div>';
   });
 
 function renderList(data) {
@@ -520,7 +524,7 @@ function openEdit(id) {
   
   // フォームに値をセット
   document.getElementById('edit-name').textContent = currentMountain.name;
-  document.getElementById('edit-sub').textContent = `ID: ${currentMountain.id} ／ CC: ${currentMountain.cc}`;
+  document.getElementById('edit-sub').textContent = `ID: ${currentMountain.id} ／ CC: ${currentMountain.coeffMin||'?'}〜${currentMountain.coeffMax||'?'}`;
   
   // 車アクセス時間
   document.getElementById('f-ofuna').value = currentMountain.driveOfuna || '';
@@ -549,9 +553,10 @@ function openEdit(id) {
     driveShinjuku: currentMountain.driveShinjuku,
     driveYokohama: currentMountain.driveYokohama,
     driveOmiya: currentMountain.driveOmiya,
-    cc: currentMountain.cc,
+    coeffMin: currentMountain.coeffMin,
+    coeffMax: currentMountain.coeffMax,
     yamapUrl: currentMountain.yamapUrl,
-    busLink: (currentMountain.busLinks || [])[0] || '',
+    busLinks: currentMountain.busLinks || [],
   };
   
   hasChanges = false;
