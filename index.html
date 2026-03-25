@@ -3883,6 +3883,8 @@ function App() {
   const [filterMonth, setFilterMonth] = useState(() => { try { const _v = sessionStorage.getItem("ym_month"); return _v !== null ? JSON.parse(_v) : "今月"; } catch { return "今月"; } }); // "今月"|"来月"
   const [viewMode, setViewMode] = useState(() => { try { const _v = sessionStorage.getItem("ym_viewmode"); return _v !== null ? JSON.parse(_v) : "list"; } catch { return "list"; } });
   const [filterOpen, setFilterOpen] = React.useState(false);
+  const [quickOpen, setQuickOpen] = React.useState(false);
+  const [matrixOpen, setMatrixOpen] = React.useState(false);
   const [showBoard, setShowBoard] = useState(false);
   const [boardInitMountain, setBoardInitMountain] = useState("");
   const [selected, setSelected] = useState(null);
@@ -4065,13 +4067,13 @@ function App() {
           {/* ① はじめての山 */}
           <div style={{background:"white",borderRadius:"12px",border:"1px solid #ddd8d0",overflow:"hidden"}}>
             <button
-              onClick={() => { const el=document.getElementById('quick-panel'); if(el) el.style.display=el.style.display==='none'?'block':'none'; }}
+              onClick={() => setQuickOpen(!quickOpen)}
               style={{width:"100%",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"11px 13px",background:"none",border:"none",cursor:"pointer",textAlign:"left"}}
             >
               <span style={{fontSize:"12px",fontWeight:"700",color:"#4a5e4a"}}>🔰 はじめての山を探す</span>
-              <span style={{fontSize:"11px",color:"#a09888"}}>▼</span>
+              <span style={{fontSize:"11px",color:"#a09888",display:"inline-block",transform:quickOpen?"rotate(180deg)":"rotate(0deg)",transition:"transform 0.2s"}}>▼</span>
             </button>
-            <div id="quick-panel" style={{display:"none",padding:"0 13px 11px"}}>
+            {quickOpen && <div style={{padding:"0 13px 11px"}}>
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"6px"}}>
                 {[
                   {icon:"🚶",label:"2時間で登れる山",sub:"大船から近場",href:"/search/ofuna/coeff-under15/"},
@@ -4086,19 +4088,19 @@ function App() {
                   </a>
                 ))}
               </div>
-            </div>
+            </div>}
           </div>
 
           {/* ② 時間×体力マトリクス */}
           <div style={{background:"white",borderRadius:"12px",border:"1px solid #ddd8d0",overflow:"hidden"}}>
             <button
-              onClick={() => { const el=document.getElementById('matrix-panel'); if(el) el.style.display=el.style.display==='none'?'block':'none'; }}
+              onClick={() => setMatrixOpen(!matrixOpen)}
               style={{width:"100%",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"11px 13px",background:"none",border:"none",cursor:"pointer",textAlign:"left"}}
             >
               <span style={{fontSize:"12px",fontWeight:"700",color:"#4a5e4a"}}>⏱ 所要時間と体力で選ぶ</span>
-              <span style={{fontSize:"11px",color:"#a09888"}}>▼</span>
+              <span style={{fontSize:"11px",color:"#a09888",display:"inline-block",transform:matrixOpen?"rotate(180deg)":"rotate(0deg)",transition:"transform 0.2s"}}>▼</span>
             </button>
-            <div id="matrix-panel" style={{display:"none",padding:"0 13px 11px"}}>
+            {matrixOpen && <div style={{padding:"0 13px 11px"}}>
               {/* 列ヘッダー */}
               <div style={{display:"flex",gap:"5px",marginLeft:"52px",marginBottom:"4px"}}>
                 {["〜2h","2〜4h","4h〜"].map(t=>(
@@ -4134,7 +4136,7 @@ function App() {
                   </div>
                 </div>
               ))}
-            </div>
+            </div>}
           </div>
         </div>
 
