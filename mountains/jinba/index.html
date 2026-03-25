@@ -454,6 +454,135 @@ function applyDep(){
 var initDep = sessionStorage.getItem('ym_departure') || '大船';
 updateDepButtons(initDep);
 applyDep();
+
+// === JSONから動的データを反映 ===
+(function(){
+  var MID = 'jinba';
+  fetch('/data/mountains.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var mt = data.find(function(m){ return m.id === MID; });
+      if(!mt) return;
+      applyMountainData(mt);
+    })
+    .catch(function(){ /* fetch失敗時は既存HTMLの値をそのまま使用 */ });
+
+  function applyMountainData(mt){
+    // 1. コース定数（ヒーローカード）
+    var ccEl = document.querySelector('.stat-unit');
+    var statCards = document.querySelectorAll('.stat-card');
+    statCards.forEach(function(card){
+      var unit = card.querySelector('.stat-unit');
+      if(unit && unit.textContent === 'コース定数'){
+        var val = card.querySelector('.stat-val');
+        if(val) val.textContent = mt.coeffMin + '〜' + mt.coeffMax;
+      }
+    });
+
+    // 2. 車アクセス時間バー
+    var depMap = {'大船駅':'driveOfuna','横浜駅':'driveYokohama','新宿駅':'driveShinjuku','大宮駅':'driveOmiya'};
+    document.querySelectorAll('#access-grid .ai-a').forEach(function(el){
+      var dep = el.dataset.dep;
+      var key = depMap[dep];
+      if(!key) return;
+      var mins = mt[key];
+      if(!mins) return;
+      el.dataset.min = mins;
+      var valEl = el.querySelector('.ai-a-val');
+      if(valEl) valEl.textContent = fmtMin(mins);
+      var barEl = el.querySelector('.ai-a-bar');
+      if(barEl) barEl.style.width = Math.min(Math.round(mins/360*100),100) + '%';
+    });
+
+    // 3. timeMap・heroMinMap を上書き（applyDepを再実行）
+    window._mtTimeMap = {
+      ofuna: fmtMin(mt.driveOfuna),
+      shinjuku: fmtMin(mt.driveShinjuku),
+      yokohama: fmtMin(mt.driveYokohama),
+      omiya: fmtMin(mt.driveOmiya)
+    };
+    window._mtHeroMinMap = {
+      ofuna: mt.driveOfuna,
+      shinjuku: mt.driveShinjuku,
+      yokohama: mt.driveYokohama,
+      omiya: mt.driveOmiya
+    };
+    // applyDepを再実行して表示を更新
+    if(typeof applyDep === 'function') applyDep();
+
+    // 4. YAMAPリンク
+    if(mt.yamapUrl){
+      document.querySelectorAll('a.yamap-btn').forEach(function(a){
+        a.href = mt.yamapUrl;
+      });
+    }
+
+    // 5. 登山口・駐車場・住所
+    document.querySelectorAll('.info-row').forEach(function(row){
+      var label = row.querySelector('.info-label');
+      var val = row.querySelector('.info-val');
+      if(!label || !val) return;
+      if(label.textContent === '登山口' && mt.trailhead) val.textContent = mt.trailhead;
+      if(label.textContent === '駐車場' && mt.parking) val.textContent = mt.parking;
+      if(label.textContent === '住所' && mt.address) val.textContent = mt.address;
+    });
+
+    // 6. 地図リンク
+    if(mt.gmapUrl){
+      document.querySelectorAll('.map-btn-link').forEach(function(a){
+        if(a.textContent.includes('Google')) a.href = mt.gmapUrl;
+        if(a.textContent.includes('Apple') && mt.amapUrl) a.href = mt.amapUrl;
+      });
+    }
+
+    // 7. シーズンカレンダー
+    if(mt.seasonCalendar && mt.seasonCalendar.length === 12){
+      var calBars = document.querySelectorAll('.cal-b');
+      calBars.forEach(function(bar, i){
+        if(i < 12){
+          bar.className = 'cal-b ' + mt.seasonCalendar[i];
+        }
+      });
+    }
+
+    // 8. 凡例テキスト
+    if(mt.calLegend && mt.calLegend.length > 0){
+      var legEls = document.querySelectorAll('.cal-legend .leg');
+      legEls.forEach(function(el, i){
+        if(mt.calLegend[i]){
+          // 絵文字+テキストの形式に合わせる
+          var icons = ['🟢','🟡','🔴'];
+          el.childNodes[el.childNodes.length-1].textContent = ' ' + mt.calLegend[i];
+        }
+      });
+    }
+  }
+
+  // timeMapをJSONデータで上書きするためapplyDepを拡張
+  var _origApplyDep = window.applyDep;
+  window.applyDep = function(){
+    if(window._mtTimeMap && window._mtHeroMinMap){
+      var raw = sessionStorage.getItem('ym_departure');
+      var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
+      var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya'};
+      var key = depMap[dep] || 'ofuna';
+      var label = dep + 'から';
+      var heroTime = document.getElementById('hero-time');
+      var heroLabel = document.getElementById('hero-dep-label');
+      if(heroTime) heroTime.textContent = window._mtHeroMinMap[key] || '—';
+      if(heroLabel) heroLabel.textContent = label;
+    }
+    if(_origApplyDep) _origApplyDep();
+  };
+})();
+
+function fmtMin(m){
+  if(!m) return '—';
+  var h=Math.floor(m/60), mn=m%60;
+  if(h===0) return mn+'分';
+  if(mn===0) return h+'時間';
+  return h+'時間'+mn+'分';
+}
 </script>
 </body>
 </html>
