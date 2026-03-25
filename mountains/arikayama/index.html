@@ -439,21 +439,22 @@ applyDep();
       if(barEl) barEl.style.width = Math.min(Math.round(mins/360*100),100) + '%';
     });
 
-    // 3. timeMap・heroMinMap を上書き（applyDepを再実行）
-    window._mtTimeMap = {
-      ofuna: fmtMin(mt.driveOfuna),
-      shinjuku: fmtMin(mt.driveShinjuku),
-      yokohama: fmtMin(mt.driveYokohama),
-      omiya: fmtMin(mt.driveOmiya)
-    };
+    // 3. timeMap・heroMinMap を上書き（次回のapplyDep呼び出し時に使用）
     window._mtHeroMinMap = {
       ofuna: mt.driveOfuna,
       shinjuku: mt.driveShinjuku,
       yokohama: mt.driveYokohama,
       omiya: mt.driveOmiya
     };
-    // applyDepを再実行して表示を更新
-    if(typeof applyDep === 'function') applyDep();
+    // ヒーロー時間を即時更新
+    var raw = sessionStorage.getItem('ym_departure');
+    var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
+    var depKeyMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya'};
+    var dKey = depKeyMap[dep] || 'ofuna';
+    var heroTime = document.getElementById('hero-time');
+    var heroLabel = document.getElementById('hero-dep-label');
+    if(heroTime && window._mtHeroMinMap[dKey]) heroTime.textContent = window._mtHeroMinMap[dKey];
+    if(heroLabel) heroLabel.textContent = dep + 'から';
 
     // 4. YAMAPリンク
     if(mt.yamapUrl){
