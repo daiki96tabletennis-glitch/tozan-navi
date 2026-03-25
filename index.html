@@ -4418,7 +4418,29 @@ function App() {
 }
 
 const root=ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App/>);
-const _sk=document.getElementById('app-skeleton');if(_sk)_sk.style.display='none';
+
+// JSONから最新データを読み込んでからレンダリング
+fetch('/data/mountains.json')
+  .then(function(r){ return r.json(); })
+  .then(function(jsonData){
+    jsonData.forEach(function(jmt){
+      var idx = mountains.findIndex(function(m){ return m.id === jmt.id; });
+      if(idx < 0) return;
+      var m = mountains[idx];
+      if(jmt.driveOfuna) m.driveTime = jmt.driveOfuna;
+      if(jmt.driveShinjuku) m.driveTimeShinjuku = jmt.driveShinjuku;
+      if(jmt.driveYokohama) m.driveTimeYokohama = jmt.driveYokohama;
+      if(jmt.driveOmiya) m.driveTimeOmiya = jmt.driveOmiya;
+      if(jmt.coeffMin && jmt.coeffMax){
+        m.courseCoefficient = [jmt.coeffMin, jmt.coeffMax];
+        m.courseCoefficientRange = jmt.coeffMin + '〜' + jmt.coeffMax;
+      }
+    });
+  })
+  .catch(function(){})
+  .finally(function(){
+    root.render(<App/>);
+    const _sk=document.getElementById('app-skeleton');if(_sk)_sk.style.display='none';
+  });
 
 </script></body></html>

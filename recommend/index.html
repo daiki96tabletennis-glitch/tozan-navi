@@ -743,8 +743,41 @@ function copyResult(){
   navigator.clipboard.writeText('https://tozan-navi.com/recommend/')
     .then(()=>alert('URLをコピーしました！友達にシェアしてね🗻'));
 }
-// 初期表示時にグリッドを構築
-document.addEventListener('DOMContentLoaded', buildIntroGrid);
+// JSONから最新データを読み込んでからグリッドを構築
+document.addEventListener('DOMContentLoaded', function(){
+  fetch('/data/mountains.json')
+    .then(function(r){ return r.json(); })
+    .then(function(jsonData){
+      jsonData.forEach(function(jmt){
+        var idx = MOUNTAINS.findIndex(function(m){ return m.id === jmt.id; });
+        if(idx < 0) return;
+        var m = MOUNTAINS[idx];
+        if(jmt.driveOfuna) m.driveOfuna = jmt.driveOfuna;
+        if(jmt.driveShinjuku) m.driveShinjuku = jmt.driveShinjuku;
+        if(jmt.driveYokohama) m.driveYokohama = jmt.driveYokohama;
+        if(jmt.driveOmiya) m.driveOmiya = jmt.driveOmiya;
+        if(jmt.coeffMin) m.coeffMin = jmt.coeffMin;
+        if(jmt.coeffMax) m.coeffMax = jmt.coeffMax;
+        if(jmt.calLegend) m.calLegend = jmt.calLegend;
+        if(jmt.seasonCalendar) m.seasonCalendar = jmt.seasonCalendar;
+        if(jmt.gearLinks) m.gearLinks = jmt.gearLinks;
+      });
+    })
+    .catch(function(){})
+    .finally(function(){
+      buildIntroGrid();
+      // ?type=XXX でアクセスした場合は診断結果も表示
+      var typeParam = new URLSearchParams(location.search).get('type');
+      if(typeParam){
+        // answersを設定してshowResultを呼ぶ
+        setTimeout(function(){
+          if(typeof showResultByType === 'function') showResultByType(typeParam);
+          else if(typeof showResult === 'function') showResult();
+        }, 100);
+      }
+    });
+});
 </script>
+
 </body>
 </html>

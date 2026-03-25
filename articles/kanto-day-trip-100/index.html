@@ -704,5 +704,42 @@ footer { text-align: center; padding: 28px 16px; font-size: 12px; color: #a09888
   }
 })();
 </script>
+
+<script>
+// JSONから最新データを読み込んでカード内の情報を更新
+document.addEventListener('DOMContentLoaded', function(){
+  fetch('/data/mountains.json')
+    .then(function(r){ return r.json(); })
+    .then(function(jsonData){
+      var mtMap = {};
+      jsonData.forEach(function(m){ mtMap[m.id] = m; });
+
+      // 山へのリンクからIDを取得してCC・難易度を更新
+      document.querySelectorAll('a[href^="/mountains/"]').forEach(function(a){
+        var m = a.href.match(/\/mountains\/(\w+)\//);
+        if(!m) return;
+        var mid = m[1];
+        var mt = mtMap[mid];
+        if(!mt) return;
+
+        // カード内のCC表示を更新
+        var ccEl = a.closest('section, div, article')
+          ? a.closest('section, div, article').querySelector('[class*="coeff"], [class*="cc"]')
+          : null;
+
+        // data-mountain-id属性があるカード内のCC
+        var card = a.closest('[data-mountain-id]') || a.closest('.mountain-section') || a.closest('.mt-card');
+        if(card){
+          card.querySelectorAll('*').forEach(function(el){
+            if(el.textContent.match(/定数\s*[\d〜]+/) && el.children.length === 0){
+              el.textContent = el.textContent.replace(/[\d]+〜[\d]+/, mt.coeffMin + '〜' + mt.coeffMax);
+            }
+          });
+        }
+      });
+    })
+    .catch(function(){});
+});
+</script>
 </body>
 </html>

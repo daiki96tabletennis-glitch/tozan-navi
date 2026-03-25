@@ -96,6 +96,25 @@ main{max-width:680px;margin:0 auto;padding:12px;}
 /* ローディング */
 .loading{text-align:center;padding:40px;color:#a09888;font-size:13px;}
 
+/* タブ */
+.tab-bar{display:flex;gap:0;background:white;border-radius:12px;padding:4px;margin-bottom:12px;border:1px solid #ddd8d0;}
+.tab-btn{flex:1;padding:8px;border:none;background:none;border-radius:8px;font-size:13px;font-weight:600;color:#a09888;cursor:pointer;transition:all 0.15s;}
+.tab-btn.active{background:#4a5e4a;color:white;}
+
+/* 履歴 */
+.log-empty{text-align:center;padding:32px;color:#a09888;font-size:13px;}
+.log-item{background:white;border-radius:10px;padding:12px 14px;border:1px solid #ddd8d0;margin-bottom:8px;}
+.log-item-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.log-item-name{font-size:14px;font-weight:700;color:#2a2520;}
+.log-item-date{font-size:11px;color:#a09888;}
+.log-item-changes{display:flex;flex-direction:column;gap:3px;}
+.log-change-row{display:flex;gap:8px;font-size:12px;}
+.log-change-field{color:#7a7068;width:100px;flex-shrink:0;}
+.log-change-val{color:#3a3530;}
+.log-change-arrow{color:#c0b8b0;}
+.log-copy-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:#4a5e4a;color:white;border:none;border-radius:10px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;width:100%;margin-bottom:8px;}
+.log-clear-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:white;color:#dc2626;border:1px solid #fca5a5;border-radius:10px;padding:8px;font-size:12px;cursor:pointer;width:100%;}
+
 /* マニュアル */
 .manual-card{background:white;border-radius:12px;padding:16px;margin-bottom:16px;border:1px solid #ddd8d0;}
 .manual-title{font-size:13px;font-weight:700;color:#2a3820;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e8f0e0;}
@@ -127,12 +146,32 @@ code{background:#f0ede8;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
 
 <main>
 
+  <!-- タブバー -->
+  <div class="tab-bar">
+    <button class="tab-btn active" id="tab-list" onclick="switchTab('list')">⛰ 山一覧</button>
+    <button class="tab-btn" id="tab-log" onclick="switchTab('log')">📝 変更履歴</button>
+  </div>
+
   <!-- 山一覧パネル -->
   <div class="list-panel" id="list-panel">
     <input type="text" class="search-input" placeholder="🔍 山名で検索..." oninput="filterList(this.value)" style="margin-bottom:10px;">
     <div class="mt-list" id="mt-list">
       <div class="loading">データを読み込み中...</div>
     </div>
+  </div>
+
+  <!-- 変更履歴パネル -->
+  <div id="log-panel" style="display:none;">
+    <button class="log-copy-btn" onclick="copyLogForClaude()" style="margin-bottom:6px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      Claudeに共有する（テキストコピー）
+    </button>
+    <button class="log-copy-btn" onclick="downloadEditLog()" style="background:#607848;margin-bottom:8px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      edit-log.json をダウンロード（永続保存用）
+    </button>
+    <div id="log-list"></div>
+    <button class="log-clear-btn" onclick="clearLog()">🗑 履歴をすべて削除</button>
   </div>
 
   <!-- 編集パネル -->
@@ -293,9 +332,9 @@ code{background:#f0ede8;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
         <div style="font-size:11px;color:#7a7068;font-weight:600;margin-bottom:6px;">月ごとの登山難易度（タップで変更）</div>
         <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;" id="season-grid"></div>
         <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;">
-          <div style="display:flex;align-items:center;gap:4px;font-size:11px;"><div style="width:12px;height:12px;background:#4a7840;border-radius:3px;"></div>緑：問題なし</div>
-          <div style="display:flex;align-items:center;gap:4px;font-size:11px;"><div style="width:12px;height:12px;background:#d4a830;border-radius:3px;"></div>黄：装備必要</div>
-          <div style="display:flex;align-items:center;gap:4px;font-size:11px;"><div style="width:12px;height:12px;background:#c06040;border-radius:3px;"></div>赤：困難・閉山</div>
+          <div style="display:flex;align-items:center;gap:4px;font-size:11px;"><div style="width:12px;height:12px;background:#4a7840;border-radius:3px;"></div>緑：アイゼン不要</div>
+          <div style="display:flex;align-items:center;gap:4px;font-size:11px;"><div style="width:12px;height:12px;background:#d4a830;border-radius:3px;"></div>黄：6本アイゼン推奨</div>
+          <div style="display:flex;align-items:center;gap:4px;font-size:11px;"><div style="width:12px;height:12px;background:#c06040;border-radius:3px;"></div>赤：12本アイゼン必要</div>
         </div>
       </div>
       <div class="field">
@@ -441,9 +480,16 @@ let hasChanges = false;
 let selectedBanner = 'none';
 
 // データ（インライン埋め込み）
-const MOUNTAINS_DATA = [{"id": "tanzawa", "name": "丹沢山", "cc": "28〜59", "driveOfuna": "70", "driveShinjuku": "75", "driveYokohama": "75", "driveOmiya": "105", "yamapUrl": "https://yamap.com/mountains/110", "busLinks": [], "hasWarn": false}, {"id": "fuji", "name": "富士山", "cc": "31〜58", "driveOfuna": "120", "driveShinjuku": "145", "driveYokohama": "135", "driveOmiya": "175", "yamapUrl": "https://yamap.com/mountains/14", "busLinks": [], "hasWarn": true}, {"id": "tsukuba", "name": "筑波山", "cc": "8〜17", "driveOfuna": "120", "driveShinjuku": "150", "driveYokohama": "120", "driveOmiya": "85", "yamapUrl": "https://yamap.com/mountains/90", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=つくば駅&type=1", "https://transit.yahoo.co.jp/search/result?from=新宿&to=伊勢原駅&type=1"], "hasWarn": false}, {"id": "kumotori", "name": "雲取山", "cc": "43〜54", "driveOfuna": "130", "driveShinjuku": "130", "driveYokohama": "120", "driveOmiya": "110", "yamapUrl": "https://yamap.com/mountains/25", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=奥多摩駅&type=1"], "hasWarn": false}, {"id": "amagi", "name": "天城山", "cc": "12〜20", "driveOfuna": "150", "driveShinjuku": "185", "driveYokohama": "145", "driveOmiya": "195", "yamapUrl": "https://yamap.com/mountains/179", "busLinks": [], "hasWarn": false}, {"id": "okutama", "name": "大菩薩嶺", "cc": "10〜30", "driveOfuna": "150", "driveShinjuku": "130", "driveYokohama": "140", "driveOmiya": "135", "yamapUrl": "https://yamap.com/mountains/178", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=塩山駅&type=1"], "hasWarn": false}, {"id": "ryokami", "name": "両神山", "cc": "18〜33", "driveOfuna": "150", "driveShinjuku": "125", "driveYokohama": "150", "driveOmiya": "125", "yamapUrl": "https://yamap.com/mountains/24", "busLinks": [], "hasWarn": false}, {"id": "kobushigatake", "name": "甲武信ヶ岳", "cc": "22〜38", "driveOfuna": "150", "driveShinjuku": "135", "driveYokohama": "170", "driveOmiya": "175", "yamapUrl": "https://yamap.com/mountains/26", "busLinks": [], "hasWarn": false}, {"id": "mizugaki", "name": "瑞牆山", "cc": "21〜45", "driveOfuna": "150", "driveShinjuku": "135", "driveYokohama": "160", "driveOmiya": "165", "yamapUrl": "https://yamap.com/mountains/177", "busLinks": [], "hasWarn": false}, {"id": "akagi", "name": "赤城山", "cc": "10〜20", "driveOfuna": "170", "driveShinjuku": "140", "driveYokohama": "170", "driveOmiya": "125", "yamapUrl": "https://yamap.com/mountains/21", "busLinks": [], "hasWarn": false}, {"id": "kinpusan", "name": "金峰山", "cc": "21〜45", "driveOfuna": "180", "driveShinjuku": "160", "driveYokohama": "175", "driveOmiya": "180", "yamapUrl": "https://yamap.com/mountains/176", "busLinks": [], "hasWarn": false}, {"id": "houou", "name": "鳳凰山", "cc": "33〜48", "driveOfuna": "180", "driveShinjuku": "160", "driveYokohama": "190", "driveOmiya": "185", "yamapUrl": "https://yamap.com/mountains/63", "busLinks": [], "hasWarn": false}, {"id": "ontake", "name": "男体山", "cc": "14〜22", "driveOfuna": "180", "driveShinjuku": "160", "driveYokohama": "175", "driveOmiya": "130", "yamapUrl": "https://yamap.com/mountains/20", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=東武日光駅&type=1"], "hasWarn": false}, {"id": "kitadake", "name": "北岳", "cc": "38〜54", "driveOfuna": "190", "driveShinjuku": "180", "driveYokohama": "200", "driveOmiya": "195", "yamapUrl": "https://yamap.com/mountains/138", "busLinks": [], "hasWarn": true}, {"id": "yatsugatake", "name": "八ヶ岳（赤岳）", "cc": "26〜42", "driveOfuna": "200", "driveShinjuku": "160", "driveYokohama": "165", "driveOmiya": "205", "yamapUrl": "https://yamap.com/mountains/101", "busLinks": [], "hasWarn": false}, {"id": "keirisan", "name": "蓼科山", "cc": "65〜89", "driveOfuna": "200", "driveShinjuku": "175", "driveYokohama": "205", "driveOmiya": "200", "yamapUrl": "https://yamap.com/mountains/149", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=茅野駅&type=1"], "hasWarn": false}, {"id": "kirigamine", "name": "霧ヶ峰", "cc": "10〜18", "driveOfuna": "200", "driveShinjuku": "170", "driveYokohama": "190", "driveOmiya": "215", "yamapUrl": "https://yamap.com/mountains/129", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=茅野駅&type=1"], "hasWarn": false}, {"id": "asama", "name": "浅間山", "cc": "27〜35", "driveOfuna": "180", "driveShinjuku": "165", "driveYokohama": "170", "driveOmiya": "165", "yamapUrl": "https://yamap.com/mountains/172", "busLinks": [], "hasWarn": true}, {"id": "tanigawa", "name": "谷川岳", "cc": "18〜42", "driveOfuna": "180", "driveShinjuku": "150", "driveYokohama": "185", "driveOmiya": "135", "yamapUrl": "https://yamap.com/mountains/164", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=土合駅&type=1"], "hasWarn": false}, {"id": "nasu", "name": "那須岳", "cc": "15〜30", "driveOfuna": "230", "driveShinjuku": "210", "driveYokohama": "220", "driveOmiya": "160", "yamapUrl": "https://yamap.com/mountains/8564", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=那須塩原駅&type=1"], "hasWarn": true}, {"id": "shirane_nikko", "name": "四阿山", "cc": "24〜30", "driveOfuna": "220", "driveShinjuku": "175", "driveYokohama": "200", "driveOmiya": "140", "yamapUrl": "https://yamap.com/mountains/51", "busLinks": [], "hasWarn": false}, {"id": "nikko_shirane", "name": "日光白根山", "cc": "21〜31", "driveOfuna": "220", "driveShinjuku": "185", "driveYokohama": "200", "driveOmiya": "140", "yamapUrl": "https://yamap.com/mountains/252", "busLinks": [], "hasWarn": false}, {"id": "takeson", "name": "武尊山", "cc": "29〜38", "driveOfuna": "220", "driveShinjuku": "185", "driveYokohama": "240", "driveOmiya": "205", "yamapUrl": "https://yamap.com/mountains/170", "busLinks": [], "hasWarn": false}, {"id": "komagatake", "name": "甲斐駒ヶ岳", "cc": "38〜62", "driveOfuna": "220", "driveShinjuku": "175", "driveYokohama": "225", "driveOmiya": "265", "yamapUrl": "https://yamap.com/mountains/62", "busLinks": [], "hasWarn": false}, {"id": "senjogatake", "name": "仙丈ヶ岳", "cc": "32〜45", "driveOfuna": "220", "driveShinjuku": "185", "driveYokohama": "235", "driveOmiya": "275", "yamapUrl": "https://yamap.com/mountains/15", "busLinks": [], "hasWarn": true}, {"id": "shirouma", "name": "白馬岳", "cc": "35〜55", "driveOfuna": "250", "driveShinjuku": "275", "driveYokohama": "265", "driveOmiya": "255", "yamapUrl": "https://yamap.com/mountains/17", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=白馬駅&type=1"], "hasWarn": false}, {"id": "norikura", "name": "乗鞍岳", "cc": "8〜18", "driveOfuna": "260", "driveShinjuku": "270", "driveYokohama": "240", "driveOmiya": "265", "yamapUrl": "https://yamap.com/mountains/146", "busLinks": [], "hasWarn": true}, {"id": "tateyama", "name": "立山", "cc": "22〜35", "driveOfuna": "355", "driveShinjuku": "340", "driveYokohama": "350", "driveOmiya": "345", "yamapUrl": "https://yamap.com/mountains/12", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=立山駅&type=1"], "hasWarn": true}, {"id": "tsurugi", "name": "剱岳", "cc": "42〜65", "driveOfuna": "360", "driveShinjuku": "345", "driveYokohama": "350", "driveOmiya": "345", "yamapUrl": "https://yamap.com/mountains/11", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=立山駅&type=1"], "hasWarn": false}, {"id": "yari", "name": "槍ヶ岳", "cc": "55〜85", "driveOfuna": "340", "driveShinjuku": "330", "driveYokohama": "280", "driveOmiya": "275", "yamapUrl": "https://yamap.com/mountains/142", "busLinks": [], "hasWarn": true}, {"id": "hotaka", "name": "奥穂高岳", "cc": "50〜80", "driveOfuna": "335", "driveShinjuku": "325", "driveYokohama": "280", "driveOmiya": "275", "yamapUrl": "https://yamap.com/mountains/45", "busLinks": [], "hasWarn": true}, {"id": "myoko", "name": "妙高山", "cc": "18〜30", "driveOfuna": "255", "driveShinjuku": "240", "driveYokohama": "240", "driveOmiya": "220", "yamapUrl": "https://yamap.com/mountains/166", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=妙高高原駅&type=1"], "hasWarn": false}, {"id": "makihata", "name": "巻機山", "cc": "22〜34", "driveOfuna": "220", "driveShinjuku": "205", "driveYokohama": "205", "driveOmiya": "185", "yamapUrl": "https://yamap.com/mountains/162", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=六日町駅&type=1"], "hasWarn": false}, {"id": "iide", "name": "飯豊山", "cc": "65〜90", "driveOfuna": "310", "driveShinjuku": "270", "driveYokohama": "310", "driveOmiya": "270", "yamapUrl": "https://yamap.com/mountains/262", "busLinks": [], "hasWarn": false}, {"id": "shibutsu", "name": "至仏山", "cc": "18〜28", "driveOfuna": "240", "driveShinjuku": "185", "driveYokohama": "250", "driveOmiya": "220", "yamapUrl": "https://yamap.com/mountains/103", "busLinks": [], "hasWarn": true}, {"id": "aizu_koma", "name": "会津駒ヶ岳", "cc": "20〜34", "driveOfuna": "295", "driveShinjuku": "265", "driveYokohama": "270", "driveOmiya": "240", "yamapUrl": "https://yamap.com/mountains/260", "busLinks": [], "hasWarn": false}, {"id": "shirane_gunma", "name": "草津白根山", "cc": "8〜16", "driveOfuna": "200", "driveShinjuku": "165", "driveYokohama": "185", "driveOmiya": "155", "yamapUrl": "https://yamap.com/mountains/171", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=長野原草津口駅&type=1"], "hasWarn": true}, {"id": "bandai", "name": "磐梯山", "cc": "16〜28", "driveOfuna": "265", "driveShinjuku": "240", "driveYokohama": "290", "driveOmiya": "250", "yamapUrl": "https://yamap.com/mountains/158", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=猪苗代駅&type=1"], "hasWarn": false}, {"id": "nikko_nantai", "name": "燧ヶ岳", "cc": "18〜30", "driveOfuna": "295", "driveShinjuku": "265", "driveYokohama": "190", "driveOmiya": "130", "yamapUrl": "https://yamap.com/mountains/259", "busLinks": [], "hasWarn": false}, {"id": "takao", "name": "高尾山", "cc": "8〜51", "driveOfuna": "50", "driveShinjuku": "50", "driveYokohama": "55", "driveOmiya": "70", "yamapUrl": "https://yamap.com/mountains/108", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=高尾山口駅&type=1"], "hasWarn": false}, {"id": "oyama", "name": "大山（丹沢）", "cc": "12〜46", "driveOfuna": "45", "driveShinjuku": "55", "driveYokohama": "55", "driveOmiya": "90", "yamapUrl": "https://yamap.com/mountains/32", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=伊勢原駅&type=1"], "hasWarn": false}, {"id": "tonosaki", "name": "塔ノ岳", "cc": "23〜59", "driveOfuna": "50", "driveShinjuku": "60", "driveYokohama": "50", "driveOmiya": "90", "yamapUrl": "https://yamap.com/mountains/245", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=渋沢駅&type=1"], "hasWarn": false}, {"id": "hirugata", "name": "蛭ヶ岳", "cc": "38〜59", "driveOfuna": "50", "driveShinjuku": "60", "driveYokohama": "50", "driveOmiya": "90", "yamapUrl": "https://yamap.com/mountains/33", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=渋沢駅&type=1"], "hasWarn": false}, {"id": "jinba", "name": "陣馬山", "cc": "3〜81", "driveOfuna": "75", "driveShinjuku": "70", "driveYokohama": "70", "driveOmiya": "85", "yamapUrl": "https://yamap.com/mountains/29", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=藤野駅&type=1"], "hasWarn": false}, {"id": "mitsuToge", "name": "三ツ峠山", "cc": "12〜93", "driveOfuna": "120", "driveShinjuku": "105", "driveYokohama": "120", "driveOmiya": "130", "yamapUrl": "https://yamap.com/mountains/92", "busLinks": [], "hasWarn": false}, {"id": "kintoki", "name": "金時山", "cc": "8〜96", "driveOfuna": "65", "driveShinjuku": "80", "driveYokohama": "70", "driveOmiya": "110", "yamapUrl": "https://yamap.com/mountains/91", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=新松田駅&type=1", "https://transit.yahoo.co.jp/search/result?from=新宿&to=渋沢駅&type=1"], "hasWarn": false}, {"id": "kayagatake", "name": "茅ヶ岳", "cc": "16〜25", "driveOfuna": "130", "driveShinjuku": "130", "driveYokohama": "120", "driveOmiya": "160", "yamapUrl": "https://yamap.com/mountains/16093", "busLinks": [], "hasWarn": false}, {"id": "kentoku", "name": "乾徳山", "cc": "22〜28", "driveOfuna": "140", "driveShinjuku": "130", "driveYokohama": "130", "driveOmiya": "170", "yamapUrl": "https://yamap.com/mountains/14413", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=山梨市駅&type=1"], "hasWarn": false}, {"id": "hinata", "name": "日向山", "cc": "12〜16", "driveOfuna": "160", "driveShinjuku": "145", "driveYokohama": "150", "driveOmiya": "190", "yamapUrl": "https://yamap.com/mountains/16090", "busLinks": [], "hasWarn": false}, {"id": "bonori", "name": "棒ノ折山", "cc": "12〜51", "driveOfuna": "100", "driveShinjuku": "85", "driveYokohama": "100", "driveOmiya": "90", "yamapUrl": "https://yamap.com/mountains/255", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=飯能駅&type=1"], "hasWarn": false}, {"id": "otake", "name": "大岳山", "cc": "15〜132", "driveOfuna": "85", "driveShinjuku": "80", "driveYokohama": "90", "driveOmiya": "100", "yamapUrl": "https://yamap.com/mountains/109", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=御嶽駅&type=1"], "hasWarn": false}, {"id": "jonengatake", "name": "常念岳", "cc": "32〜45", "driveOfuna": "290", "driveShinjuku": "255", "driveYokohama": "265", "driveOmiya": "260", "yamapUrl": "https://yamap.com/mountains/340", "busLinks": [], "hasWarn": false}, {"id": "yakedake", "name": "焼岳", "cc": "14〜24", "driveOfuna": "280", "driveShinjuku": "285", "driveYokohama": "260", "driveOmiya": "255", "yamapUrl": "https://yamap.com/mountains/345", "busLinks": [], "hasWarn": true}, {"id": "kashimayari", "name": "鹿島槍ヶ岳", "cc": "45〜65", "driveOfuna": "290", "driveShinjuku": "285", "driveYokohama": "260", "driveOmiya": "255", "yamapUrl": "https://yamap.com/mountains/315", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=信濃大町駅&type=1"], "hasWarn": false}, {"id": "koganzan", "name": "小金沢山", "cc": "20〜28", "driveOfuna": "150", "driveShinjuku": "130", "driveYokohama": "140", "driveOmiya": "180", "yamapUrl": "https://yamap.com/mountains/14781", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=塩山駅&type=1"], "hasWarn": false}, {"id": "arafune", "name": "荒船山", "cc": "14〜20", "driveOfuna": "155", "driveShinjuku": "120", "driveYokohama": "165", "driveOmiya": "165", "yamapUrl": "https://yamap.com/mountains/14407", "busLinks": [], "hasWarn": false}, {"id": "asamamakurayama", "name": "浅間隠山", "cc": "11〜28", "driveOfuna": "175", "driveShinjuku": "145", "driveYokohama": "185", "driveOmiya": "185", "yamapUrl": "https://yamap.com/mountains/16579", "busLinks": [], "hasWarn": false}, {"id": "kazahariyama", "name": "御座山", "cc": "18〜24", "driveOfuna": "160", "driveShinjuku": "165", "driveYokohama": "155", "driveOmiya": "190", "yamapUrl": "https://yamap.com/mountains/18", "busLinks": [], "hasWarn": false}, {"id": "iwasugesan", "name": "岩菅山", "cc": "20〜26", "driveOfuna": "195", "driveShinjuku": "195", "driveYokohama": "190", "driveOmiya": "225", "yamapUrl": "https://yamap.com/mountains/9836", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=湯田中駅&type=1"], "hasWarn": false}, {"id": "iizunasan", "name": "飯縄山", "cc": "14〜20", "driveOfuna": "215", "driveShinjuku": "215", "driveYokohama": "210", "driveOmiya": "245", "yamapUrl": "https://yamap.com/mountains/4405", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=長野駅&type=1"], "hasWarn": false}, {"id": "kurohimesan", "name": "黒姫山", "cc": "24〜30", "driveOfuna": "225", "driveShinjuku": "220", "driveYokohama": "220", "driveOmiya": "255", "yamapUrl": "https://yamap.com/mountains/16886", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=黒姫駅&type=1"], "hasWarn": false}, {"id": "kenashiyama", "name": "毛無山", "cc": "20〜28", "driveOfuna": "145", "driveShinjuku": "145", "driveYokohama": "135", "driveOmiya": "175", "yamapUrl": "https://yamap.com/mountains/16", "busLinks": [], "hasWarn": false}, {"id": "shirasunayama", "name": "白砂山", "cc": "24〜30", "driveOfuna": "210", "driveShinjuku": "205", "driveYokohama": "220", "driveOmiya": "220", "yamapUrl": "https://yamap.com/mountains/16853", "busLinks": [], "hasWarn": false}, {"id": "nanaitsurasan", "name": "七面山", "cc": "26〜34", "driveOfuna": "155", "driveShinjuku": "175", "driveYokohama": "145", "driveOmiya": "185", "yamapUrl": "https://yamap.com/mountains/8268", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=身延駅&type=1"], "hasWarn": false}, {"id": "arasawadake", "name": "荒沢岳", "cc": "30〜38", "driveOfuna": "300", "driveShinjuku": "285", "driveYokohama": "315", "driveOmiya": "310", "yamapUrl": "https://yamap.com/mountains/9268", "busLinks": [], "hasWarn": false}, {"id": "nakawarayama", "name": "和名倉山", "cc": "34〜42", "driveOfuna": "155", "driveShinjuku": "135", "driveYokohama": "150", "driveOmiya": "170", "yamapUrl": "https://yamap.com/mountains/15125", "busLinks": [], "hasWarn": false}, {"id": "yarigatake2", "name": "笊ヶ岳", "cc": "42〜55", "driveOfuna": "155", "driveShinjuku": "195", "driveYokohama": "145", "driveOmiya": "185", "yamapUrl": "https://yamap.com/mountains/15947", "busLinks": [], "hasWarn": false}, {"id": "gakedake", "name": "餓鬼岳", "cc": "50〜60", "driveOfuna": "270", "driveShinjuku": "260", "driveYokohama": "265", "driveOmiya": "300", "yamapUrl": "https://yamap.com/mountains/151", "busLinks": [], "hasWarn": false}, {"id": "arikayama", "name": "有明山", "cc": "28〜36", "driveOfuna": "255", "driveShinjuku": "250", "driveYokohama": "250", "driveOmiya": "285", "yamapUrl": "https://yamap.com/mountains/16362", "busLinks": [], "hasWarn": false}, {"id": "keizandake", "name": "経ヶ岳", "cc": "26〜32", "driveOfuna": "240", "driveShinjuku": "230", "driveYokohama": "235", "driveOmiya": "270", "yamapUrl": "https://yamap.com/mountains/2989", "busLinks": [], "hasWarn": false}, {"id": "adatara", "name": "安達太良山", "cc": "16〜28", "driveOfuna": "285", "driveShinjuku": "265", "driveYokohama": "275", "driveOmiya": "240", "yamapUrl": "https://yamap.com/mountains/157", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=二本松駅&type=1"], "hasWarn": false}, {"id": "azuma", "name": "西吾妻山", "cc": "16〜30", "driveOfuna": "300", "driveShinjuku": "280", "driveYokohama": "290", "driveOmiya": "255", "yamapUrl": "https://yamap.com/mountains/156", "busLinks": [], "hasWarn": false}, {"id": "echigokoma", "name": "越後駒ヶ岳", "cc": "24〜36", "driveOfuna": "300", "driveShinjuku": "285", "driveYokohama": "250", "driveOmiya": "230", "yamapUrl": "https://yamap.com/mountains/160", "busLinks": [], "hasWarn": false}, {"id": "hiragadake", "name": "平ヶ岳", "cc": "50〜55", "driveOfuna": "340", "driveShinjuku": "325", "driveYokohama": "230", "driveOmiya": "220", "yamapUrl": "https://yamap.com/mountains/161", "busLinks": [], "hasWarn": false}, {"id": "naeba", "name": "苗場山", "cc": "28〜40", "driveOfuna": "195", "driveShinjuku": "175", "driveYokohama": "185", "driveOmiya": "150", "yamapUrl": "https://yamap.com/mountains/152", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=越後湯沢駅&type=1"], "hasWarn": false}, {"id": "amakazari", "name": "雨飾山", "cc": "18〜28", "driveOfuna": "310", "driveShinjuku": "295", "driveYokohama": "280", "driveOmiya": "295", "yamapUrl": "https://yamap.com/mountains/165", "busLinks": [], "hasWarn": false}, {"id": "hiuchi", "name": "火打山", "cc": "20〜32", "driveOfuna": "270", "driveShinjuku": "255", "driveYokohama": "270", "driveOmiya": "250", "yamapUrl": "https://yamap.com/mountains/167", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=妙高高原駅&type=1"], "hasWarn": false}, {"id": "takatsuma", "name": "高妻山", "cc": "35〜42", "driveOfuna": "240", "driveShinjuku": "225", "driveYokohama": "195", "driveOmiya": "165", "yamapUrl": "https://yamap.com/mountains/168", "busLinks": [], "hasWarn": false}, {"id": "kasagatake", "name": "笠ヶ岳", "cc": "52〜78", "driveOfuna": "345", "driveShinjuku": "335", "driveYokohama": "330", "driveOmiya": "350", "yamapUrl": "https://yamap.com/mountains/46", "busLinks": [], "hasWarn": false}, {"id": "ontakesan", "name": "御嶽山", "cc": "18〜32", "driveOfuna": "290", "driveShinjuku": "290", "driveYokohama": "275", "driveOmiya": "300", "yamapUrl": "https://yamap.com/mountains/147", "busLinks": [], "hasWarn": true}, {"id": "goryudake", "name": "五竜岳", "cc": "45〜65", "driveOfuna": "285", "driveShinjuku": "280", "driveYokohama": "260", "driveOmiya": "280", "yamapUrl": "https://yamap.com/mountains/173", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=神城駅&type=1"], "hasWarn": false}, {"id": "sukai", "name": "皇海山", "cc": "45〜50", "driveOfuna": "230", "driveShinjuku": "185", "driveYokohama": "265", "driveOmiya": "295", "yamapUrl": "https://yamap.com/mountains/169", "busLinks": [], "hasWarn": false}, {"id": "kisokoma", "name": "木曽駒ヶ岳", "cc": "15〜25", "driveOfuna": "230", "driveShinjuku": "210", "driveYokohama": "230", "driveOmiya": "225", "yamapUrl": "https://yamap.com/mountains/100", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=駒ヶ根駅&type=1"], "hasWarn": true}, {"id": "utsukushigahara", "name": "美ヶ原", "cc": "6〜14", "driveOfuna": "195", "driveShinjuku": "175", "driveYokohama": "185", "driveOmiya": "210", "yamapUrl": "https://yamap.com/mountains/148", "busLinks": [], "hasWarn": false}, {"id": "karamatsu", "name": "唐松岳", "cc": "14〜27", "driveOfuna": "270", "driveShinjuku": "255", "driveYokohama": "265", "driveOmiya": "300", "yamapUrl": "https://yamap.com/mountains/226", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=白馬駅&type=1"], "hasWarn": false}, {"id": "utsugi", "name": "空木岳", "cc": "55〜70", "driveOfuna": "255", "driveShinjuku": "235", "driveYokohama": "230", "driveOmiya": "225", "yamapUrl": "https://yamap.com/mountains/180", "busLinks": [], "hasWarn": false}, {"id": "enasan", "name": "恵那山", "cc": "24〜41", "driveOfuna": "270", "driveShinjuku": "250", "driveYokohama": "230", "driveOmiya": "270", "yamapUrl": "https://yamap.com/mountains/181", "busLinks": [], "hasWarn": false}, {"id": "shiomidake", "name": "塩見岳", "cc": "55〜75", "driveOfuna": "270", "driveShinjuku": "250", "driveYokohama": "255", "driveOmiya": "295", "yamapUrl": "https://yamap.com/mountains/73", "busLinks": [], "hasWarn": false}, {"id": "arakawadake", "name": "荒川岳", "cc": "65〜95", "driveOfuna": "330", "driveShinjuku": "310", "driveYokohama": "255", "driveOmiya": "295", "yamapUrl": "https://yamap.com/mountains/74", "busLinks": [], "hasWarn": true}, {"id": "akaisidake", "name": "赤石岳", "cc": "60〜90", "driveOfuna": "330", "driveShinjuku": "310", "driveYokohama": "275", "driveOmiya": "265", "yamapUrl": "https://yamap.com/mountains/75", "busLinks": [], "hasWarn": true}, {"id": "hijiridade", "name": "聖岳", "cc": "60〜85", "driveOfuna": "340", "driveShinjuku": "320", "driveYokohama": "275", "driveOmiya": "315", "yamapUrl": "https://yamap.com/mountains/76", "busLinks": [], "hasWarn": true}, {"id": "terkari", "name": "光岳", "cc": "75〜95", "driveOfuna": "360", "driveShinjuku": "340", "driveYokohama": "290", "driveOmiya": "310", "yamapUrl": "https://yamap.com/mountains/77", "busLinks": [], "hasWarn": false}, {"id": "yakushidake", "name": "薬師岳", "cc": "50〜75", "driveOfuna": "370", "driveShinjuku": "355", "driveYokohama": "355", "driveOmiya": "390", "yamapUrl": "https://yamap.com/mountains/232", "busLinks": [], "hasWarn": false}, {"id": "kurobegorodam", "name": "黒部五郎岳", "cc": "65〜90", "driveOfuna": "390", "driveShinjuku": "375", "driveYokohama": "350", "driveOmiya": "365", "yamapUrl": "https://yamap.com/mountains/233", "busLinks": [], "hasWarn": false}, {"id": "ainodake", "name": "間ノ岳", "cc": "55〜75", "driveOfuna": "195", "driveShinjuku": "185", "driveYokohama": "220", "driveOmiya": "260", "yamapUrl": "https://yamap.com/mountains/139", "busLinks": [], "hasWarn": true}, {"id": "noutori", "name": "農鳥岳", "cc": "52〜76", "driveOfuna": "195", "driveShinjuku": "185", "driveYokohama": "185", "driveOmiya": "225", "yamapUrl": "https://yamap.com/mountains/140", "busLinks": [], "hasWarn": false}, {"id": "hakusan", "name": "白山", "cc": "40〜55", "driveOfuna": "345", "driveShinjuku": "330", "driveYokohama": "325", "driveOmiya": "355", "yamapUrl": "https://yamap.com/mountains/318", "busLinks": [], "hasWarn": true}, {"id": "zaosan", "name": "蔵王山", "cc": "6〜16", "driveOfuna": "360", "driveShinjuku": "340", "driveYokohama": "365", "driveOmiya": "315", "yamapUrl": "https://yamap.com/mountains/302", "busLinks": [], "hasWarn": false}, {"id": "karisaka", "name": "雁坂嶺", "cc": "32〜52", "driveOfuna": "160", "driveShinjuku": "145", "driveYokohama": "150", "driveOmiya": "155", "yamapUrl": "https://yamap.com/mountains/16130", "busLinks": [], "hasWarn": false}, {"id": "nokogiriyama", "name": "鋸岳", "cc": "45〜60", "driveOfuna": "230", "driveShinjuku": "210", "driveYokohama": "230", "driveOmiya": "255", "yamapUrl": "https://yamap.com/mountains/2064", "busLinks": [], "hasWarn": false}, {"id": "minamikomagatake", "name": "南駒ヶ岳", "cc": "42〜52", "driveOfuna": "270", "driveShinjuku": "250", "driveYokohama": "270", "driveOmiya": "295", "yamapUrl": "https://yamap.com/mountains/2439", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=駒ヶ根駅&type=1"], "hasWarn": false}, {"id": "chogatake", "name": "蝶ヶ岳", "cc": "28〜40", "driveOfuna": "300", "driveShinjuku": "280", "driveYokohama": "300", "driveOmiya": "325", "yamapUrl": "https://yamap.com/mountains/102", "busLinks": [], "hasWarn": false}, {"id": "otenshoudake", "name": "大天井岳", "cc": "42〜56", "driveOfuna": "320", "driveShinjuku": "300", "driveYokohama": "320", "driveOmiya": "345", "yamapUrl": "https://yamap.com/mountains/1499", "busLinks": [], "hasWarn": false}, {"id": "harinokidake", "name": "針ノ木岳", "cc": "28〜38", "driveOfuna": "330", "driveShinjuku": "315", "driveYokohama": "330", "driveOmiya": "355", "yamapUrl": "https://yamap.com/mountains/54", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=信濃大町駅&type=1"], "hasWarn": false}, {"id": "eboshidake_kita", "name": "烏帽子岳（北ア）", "cc": "38〜50", "driveOfuna": "355", "driveShinjuku": "340", "driveYokohama": "355", "driveOmiya": "380", "yamapUrl": "https://yamap.com/mountains/55", "busLinks": [], "hasWarn": false}, {"id": "noguchigoro", "name": "野口五郎岳", "cc": "44〜58", "driveOfuna": "355", "driveShinjuku": "340", "driveYokohama": "355", "driveOmiya": "380", "yamapUrl": "https://yamap.com/mountains/56", "busLinks": [], "hasWarn": false}, {"id": "nokogiriyama_chiba", "name": "鋸山", "cc": "6〜10", "driveOfuna": "75", "driveShinjuku": "90", "driveYokohama": "70", "driveOmiya": "120", "yamapUrl": "https://yamap.com/mountains/111", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=浜金谷駅&type=1", "https://transit.yahoo.co.jp/search/result?from=新宿&to=浜金谷駅&type=1"], "hasWarn": false}, {"id": "mitakesan", "name": "御岳山", "cc": "8〜14", "driveOfuna": "100", "driveShinjuku": "75", "driveYokohama": "95", "driveOmiya": "100", "yamapUrl": "https://yamap.com/mountains/238", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=御嶽駅&type=1", "https://transit.yahoo.co.jp/search/result?from=新宿&to=御嶽駅&type=1"], "hasWarn": false}, {"id": "takamizusanzan", "name": "高水三山", "cc": "16〜20", "driveOfuna": "110", "driveShinjuku": "85", "driveYokohama": "105", "driveOmiya": "110", "yamapUrl": "https://yamap.com/mountains/16242", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=軍畑駅&type=1", "https://transit.yahoo.co.jp/search/result?from=新宿&to=軍畑駅&type=1"], "hasWarn": false}, {"id": "tenzandake", "name": "天覧山・多峯主山", "cc": "5〜8", "driveOfuna": "100", "driveShinjuku": "65", "driveYokohama": "95", "driveOmiya": "60", "yamapUrl": "https://yamap.com/mountains/16254", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=飯能駅&type=1", "https://transit.yahoo.co.jp/search/result?from=新宿&to=飯能駅&type=1"], "hasWarn": false}, {"id": "hiwadayama", "name": "日和田山", "cc": "4〜7", "driveOfuna": "110", "driveShinjuku": "75", "driveYokohama": "105", "driveOmiya": "65", "yamapUrl": "https://yamap.com/mountains/16255", "busLinks": ["https://transit.yahoo.co.jp/search/result?from=新宿&to=高麗駅&type=1", "https://transit.yahoo.co.jp/search/result?from=新宿&to=高麗駅&type=1"], "hasWarn": false}];
-allMountains = MOUNTAINS_DATA;
-renderList(MOUNTAINS_DATA);
+// mountains.jsonからフル데이터を読み込む
+fetch('/data/mountains.json')
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    allMountains = data;
+    renderList(data);
+  })
+  .catch(function(){
+    document.getElementById('mt-list').innerHTML = '<div class="loading">データの読み込みに失敗しました。</div>';
+  });
 
 function renderList(data) {
   const list = document.getElementById('mt-list');
@@ -455,9 +501,9 @@ function renderList(data) {
     <div class="mt-item" onclick="openEdit('${mt.id}')">
       <div>
         <div class="mt-item-name">${mt.name}</div>
-        <div class="mt-item-cc">CC: ${mt.cc} ／ 大船${mt.driveOfuna}分・新宿${mt.driveShinjuku}分</div>
+        <div class="mt-item-cc">CC: ${mt.coeffMin||mt.cc||'?'}〜${mt.coeffMax||''} ／ 大船${mt.driveOfuna}分・新宿${mt.driveShinjuku}分</div>
       </div>
-      ${mt.hasWarn ? '<span class="mt-item-warn">規制あり</span>' : ''}
+      ${(mt.hasWarn||mt.warnBanner) ? '<span class="mt-item-warn">規制あり</span>' : ''}
       <div class="mt-item-arrow">›</div>
     </div>
   `).join('');
@@ -663,6 +709,13 @@ function getFormData() {
 function saveChanges() {
   if (!currentMountain) return;
   const formData = getFormData();
+
+  // 変更点を記録
+  const changes = buildChanges(currentMountain, formData);
+  if(changes.length > 0) {
+    recordChange(currentMountain.id, currentMountain.name, changes);
+  }
+
   const idx = allMountains.findIndex(m => m.id === currentMountain.id);
   if (idx >= 0) Object.assign(allMountains[idx], formData);
 
@@ -678,6 +731,135 @@ function saveChanges() {
   el.style.display = 'block';
   setTimeout(() => el.style.display = 'none', 4000);
 }
+
+// ===== 変更履歴 =====
+const LOG_KEY = 'yamatch_edit_log';
+
+function loadLog() {
+  try { return JSON.parse(localStorage.getItem(LOG_KEY) || '[]'); }
+  catch(e) { return []; }
+}
+
+function saveLog(log) {
+  localStorage.setItem(LOG_KEY, JSON.stringify(log));
+}
+
+function recordChange(mountainId, mountainName, changes) {
+  var log = loadLog();
+  var entry = {
+    id: mountainId,
+    name: mountainName,
+    date: new Date().toLocaleString('ja-JP'),
+    changes: changes
+  };
+  log.unshift(entry); // 最新を先頭に
+  if(log.length > 100) log = log.slice(0, 100); // 最大100件
+  saveLog(log);
+}
+
+function buildChanges(before, after) {
+  var LABELS = {
+    driveOfuna: '大船（分）', driveShinjuku: '新宿（分）',
+    driveYokohama: '横浜（分）', driveOmiya: '大宮（分）',
+    coeffMin: 'CC最小', coeffMax: 'CC最大',
+    yamapUrl: 'YAMAPリンク', busLinks: 'バスリンク',
+    trailhead: '登山口', parking: '駐車場',
+    address: '住所', gmapUrl: 'Googleマップ',
+    busScheduleLinks: 'バス時刻表',
+  };
+  var changes = [];
+  Object.keys(LABELS).forEach(function(key) {
+    var bv = Array.isArray(before[key]) ? before[key].join(',') : String(before[key] || '');
+    var av = Array.isArray(after[key]) ? after[key].join(',') : String(after[key] || '');
+    if(bv !== av) {
+      changes.push({ field: LABELS[key], before: bv, after: av });
+    }
+  });
+  // シーズンカレンダー
+  if(JSON.stringify(before.seasonCalendar) !== JSON.stringify(after.seasonCalendar)) {
+    changes.push({ field: 'シーズン', before: '変更前', after: '変更後' });
+  }
+  return changes;
+}
+
+function renderLog() {
+  var log = loadLog();
+  var container = document.getElementById('log-list');
+  if(!log.length) {
+    container.innerHTML = '<div class="log-empty">まだ変更履歴がありません</div>';
+    return;
+  }
+  container.innerHTML = log.map(function(entry) {
+    var changesHtml = entry.changes.map(function(c) {
+      return '<div class="log-change-row">' +
+        '<span class="log-change-field">' + c.field + '</span>' +
+        '<span class="log-change-val">' + (c.before||'—') + '</span>' +
+        '<span class="log-change-arrow"> → </span>' +
+        '<span class="log-change-val" style="color:#3a6030;font-weight:600;">' + (c.after||'—') + '</span>' +
+        '</div>';
+    }).join('');
+    return '<div class="log-item">' +
+      '<div class="log-item-header">' +
+        '<span class="log-item-name">' + entry.name + '</span>' +
+        '<span class="log-item-date">' + entry.date + '</span>' +
+      '</div>' +
+      '<div class="log-item-changes">' + changesHtml + '</div>' +
+      '</div>';
+  }).join('');
+}
+
+function switchTab(tab) {
+  document.getElementById('tab-list').classList.toggle('active', tab === 'list');
+  document.getElementById('tab-log').classList.toggle('active', tab === 'log');
+  document.getElementById('list-panel').style.display = tab === 'list' ? 'block' : 'none';
+  document.getElementById('log-panel').style.display = tab === 'log' ? 'block' : 'none';
+  document.getElementById('edit-panel').classList.remove('active');
+  if(tab === 'log') renderLog();
+}
+
+function clearLog() {
+  if(confirm('変更履歴をすべて削除しますか？')) {
+    localStorage.removeItem(LOG_KEY);
+    renderLog();
+  }
+}
+
+function copyLogForClaude() {
+  var log = loadLog();
+  if(!log.length) { alert('変更履歴がありません'); return; }
+  var text = '【Yamatch 変更履歴】\n\n';
+  log.forEach(function(entry) {
+    text += '▼ ' + entry.name + '（' + entry.date + '）\n';
+    entry.changes.forEach(function(c) {
+      text += '  ' + c.field + ': ' + (c.before||'—') + ' → ' + c.after + '\n';
+    });
+    text += '\n';
+  });
+  navigator.clipboard.writeText(text)
+    .then(function() { alert('コピーしました！Claudeのチャットに貼り付けてください'); })
+    .catch(function() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      alert('コピーしました！');
+    });
+}
+
+function downloadEditLog() {
+  var log = loadLog();
+  if(!log.length) { alert('変更履歴がありません'); return; }
+  var blob = new Blob([JSON.stringify(log, null, 2)], {type: 'application/json'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'edit-log.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+// ===== 変更履歴 END =====
 
 function copyTsv() {
   if (!currentMountain) return;
