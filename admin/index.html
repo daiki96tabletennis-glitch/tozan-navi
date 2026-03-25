@@ -529,9 +529,9 @@ function openEdit(id) {
   document.getElementById('f-omiya').value = currentMountain.driveOmiya || '';
   
   // CC
-  const ccParts = (currentMountain.cc || '').split('〜');
-  document.getElementById('f-ccmin').value = ccParts[0] || '';
-  document.getElementById('f-ccmax').value = ccParts[1] || '';
+  // CC（mountains.jsonはcoeffMin/coeffMaxで管理）
+  document.getElementById('f-ccmin').value = currentMountain.coeffMin || (currentMountain.cc||'').split('〜')[0] || '';
+  document.getElementById('f-ccmax').value = currentMountain.coeffMax || (currentMountain.cc||'').split('〜')[1] || '';
   
   // YAMAP
   document.getElementById('f-yamap').value = currentMountain.yamapUrl || '';
