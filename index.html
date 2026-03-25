@@ -4109,20 +4109,14 @@ function App() {
               </div>
               {[
                 {label:"楽に登りたい", items:[
-                  {name:"高尾山
-筑波山",href:"/search/ofuna/coeff-under15/",hi:true},
-                  {name:"陣馬山
-大山",href:"/search/ofuna/coeff-under20/",hi:false},
-                  {name:"金時山
-棒ノ折",href:"/search/ofuna/",hi:false},
+                  {name:"高尾山・筑波山",href:"/search/ofuna/coeff-under15/",hi:true},
+                  {name:"陣馬山・大山",href:"/search/ofuna/coeff-under20/",hi:false},
+                  {name:"金時山・棒ノ折",href:"/search/ofuna/",hi:false},
                 ]},
                 {label:"少し本格的に", items:[
-                  {name:"御岳山
-日和田山",href:"/search/ofuna/coeff-under15/",hi:false},
-                  {name:"塔ノ岳
-大岳山",href:"/search/ofuna/coeff-under25/",hi:true},
-                  {name:"丹沢山
-雲取山",href:"/search/ofuna/coeff-under40/",hi:false},
+                  {name:"御岳山・日和田山",href:"/search/ofuna/coeff-under15/",hi:false},
+                  {name:"塔ノ岳・大岳山",href:"/search/ofuna/coeff-under25/",hi:true},
+                  {name:"丹沢山・雲取山",href:"/search/ofuna/coeff-under40/",hi:false},
                 ]},
               ].map(row => (
                 <div key={row.label} style={{display:"flex",gap:"5px",marginBottom:"5px",alignItems:"center"}}>
@@ -4130,7 +4124,7 @@ function App() {
                   <div style={{display:"flex",gap:"5px",flex:1}}>
                     {row.items.map(item => (
                       <a key={item.name} href={item.href}
-                        style={{flex:1,background:item.hi?"#eef4e8":"#f5f3ef",border:item.hi?"1px solid #c0d8a8":"1px solid #eae6e0",borderRadius:"8px",padding:"7px 4px",textAlign:"center",fontSize:"10px",fontWeight:"600",color:item.hi?"#3a6030":"#4a5e4a",lineHeight:1.4,textDecoration:"none",whiteSpace:"pre-line"}}
+                        style={{flex:1,background:item.hi?"#eef4e8":"#f5f3ef",border:item.hi?"1px solid #c0d8a8":"1px solid #eae6e0",borderRadius:"8px",padding:"7px 4px",textAlign:"center",fontSize:"10px",fontWeight:"600",color:item.hi?"#3a6030":"#4a5e4a",lineHeight:1.4,textDecoration:"none"}}
                       >{item.name}</a>
                     ))}
                   </div>
