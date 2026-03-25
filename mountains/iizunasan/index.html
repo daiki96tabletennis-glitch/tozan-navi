@@ -179,6 +179,22 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .ts-link{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
 .ts-link-yahoo{background:#deeaf4;color:#1a4a70;}
 .ts-link-bus{background:#c8dff0;color:#1a4070;}
+
+/* ① おすすめユーザーカード */
+.rec-card{background:white;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #ddd8d0}
+.rec-card-title{font-size:13px;font-weight:700;color:#4a5e4a;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.rec-list{display:flex;flex-direction:column;gap:7px}
+.rec-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#3a3530;line-height:1.5}
+
+/* ④ まとめリンク改善 */
+.related-links-card{background:white;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #ddd8d0}
+.related-links-title{font-size:11px;font-weight:700;color:#7a9a6a;letter-spacing:0.06em;margin-bottom:10px}
+.related-link-item{display:flex;flex-direction:column;gap:2px;padding:8px 0;border-bottom:1px solid #f0ede8;text-decoration:none;color:inherit}
+.related-link-item:last-child{border-bottom:none;padding-bottom:0}
+.related-link-main{font-size:13px;font-weight:600;color:#3a5a28;display:flex;align-items:center;gap:5px}
+.related-link-sub{font-size:11px;color:#a09888;padding-left:18px}
+
+.rc-desc{font-size:11px;color:#7a7068;line-height:1.5;margin-top:2px}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -186,7 +202,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"飯縄山は初心者でも登れますか？","acceptedAnswer":{"@type":"Answer","text":"コース定数14〜20の初〜中級レベルで、日帰りが可能。整備されたルートで初心者でも楽しめます。装備は登山靴・レインウェア・水を必ず持参してください。"}},{"@type":"Question","name":"飯縄山の登山シーズンはいつですか？","acceptedAnswer":{"@type":"Answer","text":"5月〜11月が最も登りやすいシーズンです。特に秋（9〜11月）は紅葉と安定した天候でおすすめです。冬季は積雪・凍結に注意が必要です。"}},{"@type":"Question","name":"新宿から飯縄山へのアクセス方法は？","acceptedAnswer":{"@type":"Answer","text":"車で約3時間35分。電車・バスの場合は長野駅→バス30分→一ノ鳥居苑地。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "飯縄山は初心者でも登れますか？難易度とコース定数を解説", "acceptedAnswer": {"@type": "Answer", "text": "飯縄山の難易度は初〜中級、コース定数14〜20です。日帰り可能。登山靴・レインウェア・水を必ず持参してください。"}}, {"@type": "Question", "name": "飯縄山の所要時間は？日帰りできますか？", "acceptedAnswer": {"@type": "Answer", "text": "飯縄山は日帰り登山が可能です。コース定数14〜20を参考に体力に合ったプランを選んでください。"}}, {"@type": "Question", "name": "飯縄山へのアクセス方法は？新宿・横浜からの行き方", "acceptedAnswer": {"@type": "Answer", "text": "コース定数14〜20の初〜中級レベルで、日帰りが可能。整備されたルートで初心者でも楽しめます。装備は登山靴・レインウェア・水を必ず持参してください。"}}, {"@type": "Question", "name": "飯縄山の登山シーズンはいつですか？おすすめの時期", "acceptedAnswer": {"@type": "Answer", "text": "5月〜11月が登りやすいシーズンです。冬季は積雪・凍結に注意が必要です。"}}]}</script>
 </head>
 <body>
 <header>
@@ -229,6 +245,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </div>
   </div>
 
+  <div class="card"><h2>📝 山の紹介</h2><p class="intro-text">長野市の北西にそびえる修験道の山。北アルプスや善光寺平の眺望が広がる。初〜中級レベルでコース定数14〜20、日帰りでの登山が可能。代表コース（一ノ鳥居〜飯縄山往復）は所要4時間/8.0km/標高差+850m。公共交通機関でのアクセス可（長野駅→バス30分→一ノ鳥居苑地）。</p></div>
+
   <div class="card">
   <div class="ts-section">
     <div class="ts-header">
@@ -257,7 +275,6 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=長野駅&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo">🗓 乗換案内で検索</a><a href="https://www.alpico.co.jp/traffic/local/nagano/" target="_blank" rel="noopener" class="ts-link ts-link-bus">🚌 バス時刻表</a></div>
   </div>
 </div>
-<div class="card"><h2>📝 山の紹介</h2><p class="intro-text">長野市の北西にそびえる修験道の山。北アルプスや善光寺平の眺望が広がる。初〜中級レベルでコース定数14〜20、日帰りでの登山が可能。代表コース（一ノ鳥居〜飯縄山往復）は所要4時間/8.0km/標高差+850m。公共交通機関でのアクセス可（長野駅→バス30分→一ノ鳥居苑地）。</p></div>
 
   <div class="card"><h2>🚗 車でのアクセス時間</h2>
     <div class="ag-a" id="access-grid">
@@ -294,32 +311,57 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   </a>
 
   
-<div class="related-search-links" style="margin:16px 0;padding:14px 16px;background:white;border-radius:12px;border:1px solid #e0dbd4;">
-  <div style="font-size:11px;font-weight:700;color:#7a9a6a;letter-spacing:0.06em;margin-bottom:8px;">関連するまとめ</div>
-  <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
-    <a href="/search/train-daytrip/">🚃 電車で行ける日帰り登山一覧</a>
-    <a href="/recommend/">🎯 登山タイプ診断で自分に合う山を探す</a>
-  </div>
+<div class="related-links-card">
+  <div class="related-links-title">📋 関連するまとめ</div>
+    <a href="/search/shinjuku-daytrip/" class="related-link-item">
+      <span class="related-link-main">🏔 新宿から日帰りで行ける山一覧</span>
+      <span class="related-link-sub">新宿発・飯縄山と難易度・時間を比較できる</span>
+    </a>
+    <a href="/search/ofuna-daytrip/" class="related-link-item">
+      <span class="related-link-main">🏔 大船・横浜から日帰りで行ける山一覧</span>
+      <span class="related-link-sub">神奈川発で飯縄山の前後に検討したい山を比較</span>
+    </a>
+    <a href="/search/train-daytrip/" class="related-link-item">
+      <span class="related-link-main">🚃 電車で行ける日帰り登山一覧</span>
+      <span class="related-link-sub">車なしOK・駅近の山だけを集めたリスト</span>
+    </a>
+    <a href="/search/shinjuku-beginner/" class="related-link-item">
+      <span class="related-link-main">🌱 新宿から行ける初心者向けの山一覧</span>
+      <span class="related-link-sub">コース定数15以下の初級山のみ。飯縄山と難易度比較に</span>
+    </a>
+    <a href="/recommend/" class="related-link-item">
+      <span class="related-link-main">🎯 登山タイプ診断で自分に合う山を探す</span>
+      <span class="related-link-sub">体力・好み・出発地から「あなた向けの山」をAIが提案</span>
+    </a>
 </div>
 <div class="card" itemscope itemtype="https://schema.org/FAQPage">
   <h2 style="font-size:15px;font-weight:700;color:#2a3820;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #e8f0e0;">❓ よくある質問</h2>
   <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-      <h2 class="faq-q" itemprop="name">飯縄山は初心者でも登れますか？</h2>
-      <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-        <p itemprop="text">コース定数14〜20の初〜中級レベルで、日帰りが可能。整備されたルートで初心者でも楽しめます。装備は登山靴・レインウェア・水を必ず持参してください。</p>
-      </div>
-    </div><div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-      <h2 class="faq-q" itemprop="name">飯縄山の登山シーズンはいつですか？</h2>
-      <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-        <p itemprop="text">5月〜11月が最も登りやすいシーズンです。特に秋（9〜11月）は紅葉と安定した天候でおすすめです。冬季は積雪・凍結に注意が必要です。</p>
-      </div>
-    </div><div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-      <h2 class="faq-q" itemprop="name">新宿から飯縄山へのアクセス方法は？</h2>
-      <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-        <p itemprop="text">車で約3時間35分。電車・バスの場合は長野駅→バス30分→一ノ鳥居苑地。</p>
-      </div>
+    <h2 class="faq-q" itemprop="name">飯縄山は初心者でも登れますか？難易度とコース定数を解説</h2>
+    <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <p itemprop="text">飯縄山の難易度は初〜中級、コース定数14〜20です。日帰り可能。登山靴・レインウェア・水を必ず持参してください。</p>
     </div>
+  </div>
+  <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h2 class="faq-q" itemprop="name">飯縄山の所要時間は？日帰りできますか？</h2>
+    <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <p itemprop="text">飯縄山は日帰り登山が可能です。コース定数14〜20を参考に体力に合ったプランを選んでください。</p>
+    </div>
+  </div>
+  <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h2 class="faq-q" itemprop="name">飯縄山へのアクセス方法は？新宿・横浜からの行き方</h2>
+    <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <p itemprop="text">コース定数14〜20の初〜中級レベルで、日帰りが可能。整備されたルートで初心者でも楽しめます。装備は登山靴・レインウェア・水を必ず持参してください。</p>
+    </div>
+  </div>
+  <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h2 class="faq-q" itemprop="name">飯縄山の登山シーズンはいつですか？おすすめの時期</h2>
+    <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <p itemprop="text">5月〜11月が登りやすいシーズンです。冬季は積雪・凍結に注意が必要です。</p>
+    </div>
+  </div>
 </div>
+
 <div class="rw"><p class="rh">⛰ 近くて似た山</p><div class="rg"><a href="/mountains/shirane_gunma/" class="rc"><div class="rn">草津白根山</div><div class="rb"><span class="rbd" style="background:#edf4e8;color:#3a5a3a">初〜中級</span><span class="rbc">定数8〜16</span></div><div class="rt" id="nearby-time-shirane_gunma" data-ofuna="3時間20分" data-shinjuku="2時間45分" data-yokohama="3時間5分" data-omiya="2時間35分">3時間20分<span class="rs" id="nearby-label-shirane_gunma">大船から</span></div></div></a>
 <a href="/mountains/hiuchi/" class="rc"><div class="rn">火打山</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数20〜32</span></div><div class="rt" id="nearby-time-hiuchi" data-ofuna="4時間30分" data-shinjuku="4時間15分" data-yokohama="4時間30分" data-omiya="4時間10分">4時間30分<span class="rs" id="nearby-label-hiuchi">大船から</span></div></div></a>
 </div></div>
