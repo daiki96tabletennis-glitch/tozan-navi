@@ -408,10 +408,12 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 <div id="result" class="step">
   <div id="result-type-card"></div>
   <p class="result-subtitle" id="result-subtitle"></p>
+  <button id="share-top" onclick="window._shareNative&&window._shareNative()" style="display:none;width:100%;margin-bottom:12px;background:#4a5e4a;color:white;border:none;border-radius:10px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>この結果をシェア</button>
   <div id="result-cards"></div>
   <div id="compat-area"></div>
   <div class="share-section">
     <div class="share-title">📤 友達にも診断してもらおう</div>
+      <button class="share-btn sb-native" onclick="window._shareNative&&window._shareNative()" style="background:#4a5e4a;color:white;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg> シェア</button>
     <div class="share-btns">
       <a id="share-x" href="#" target="_blank" class="share-btn sb-x">𝕏 Xでシェア</a>
       <a id="share-line" href="#" target="_blank" class="share-btn sb-line">💬 LINE</a>
@@ -695,10 +697,15 @@ function showResult(){
 
   // シェア
   const shareText='登山タイプ診断の結果\n私は「'+type.name+'」（'+typeCode+'型）でした！\n診断者の'+type.rare+'%の'+RARE_LABELS[type.affilLevel]+'\nあなたも試してみよう→';
-  const shareUrl='https://tozan-navi.com/recommend/';
-  const shareUrlWithType=shareUrl+'?type='+typeCode;
+  const shareUrlWithType='https://tozan-navi.com/recommend/'+typeCode+'/';
   document.getElementById('share-x').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText)+'&url='+encodeURIComponent(shareUrlWithType);
   document.getElementById('share-line').href='https://line.me/R/msg/text/?'+encodeURIComponent(shareText+'\n'+shareUrlWithType);
+  window._shareNative=function(){
+    if(navigator.share){ navigator.share({title:'私は「'+type.name+'」でした！ - Yamatch登山タイプ診断',url:shareUrlWithType}); }
+    else{ navigator.clipboard.writeText(shareUrlWithType).then(()=>alert('URLをコピーしました')); }
+  };
+  var topShareBtn=document.getElementById('share-top');
+  if(topShareBtn) topShareBtn.style.display='flex';
 
 
   // 固定CTAバー制御
