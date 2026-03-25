@@ -279,10 +279,13 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 
   <div class="card"><h2>🚗 車でのアクセス時間</h2>
     <div class="ag-a" id="access-grid">
-<div class="ai-a" data-dep="大船駅" data-min="50"><div class="ai-a-dep">大船駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:14%"></div></div><div class="ai-a-val">0時間50分</div></div>
-<div class="ai-a" data-dep="横浜駅" data-min="55"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:15%"></div></div><div class="ai-a-val">0時間55分</div></div>
-<div class="ai-a" data-dep="新宿駅" data-min="50"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:14%"></div></div><div class="ai-a-val">0時間50分</div></div>
-<div class="ai-a" data-dep="大宮駅" data-min="70"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:19%"></div></div><div class="ai-a-val">2時間</div></div>
+<div class="ai-a" data-dep="大船駅" data-min="75"><div class="ai-a-dep">大船駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:20%"></div></div><div class="ai-a-val">1時間15分</div></div>
+<div class="ai-a" data-dep="横浜駅" data-min="70"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:19%"></div></div><div class="ai-a-val">1時間10分</div></div>
+<div class="ai-a" data-dep="新宿駅" data-min="90"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:25%"></div></div><div class="ai-a-val">1時間30分</div></div>
+<div class="ai-a" data-dep="大宮駅" data-min="120"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:33%"></div></div><div class="ai-a-val">2時間</div></div><div class="ai-a-val">1時間15分</div></div>
+<div class="ai-a" data-dep="横浜駅" data-min="70"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:15%"></div></div><div class="ai-a-val">1時間10分</div></div>
+<div class="ai-a" data-dep="新宿駅" data-min="90"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:14%"></div></div><div class="ai-a-val">1時間30分</div></div>
+<div class="ai-a" data-dep="大宮駅" data-min="120"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:19%"></div></div><div class="ai-a-val">2時間</div></div>
     </div>
   </div>
 
@@ -414,7 +417,7 @@ function updateDepButtons(dep){
 function applyDep(){
   var raw = sessionStorage.getItem('ym_departure'); var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
   var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya'};
-  var timeMap = {'ofuna':'0時間50分','shinjuku':'0時間50分','yokohama':'0時間55分','omiya':'2時間'};
+  var timeMap = {'ofuna':'1時間15分','shinjuku':'1時間30分','yokohama':'1時間10分','omiya':'2時間'};
   var heroMinMap = {'ofuna':'75','shinjuku':'90','yokohama':'70','omiya':'120'};
   var key = depMap[dep] || 'ofuna';
   var label = dep + 'から';
