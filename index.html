@@ -52,7 +52,7 @@ function loadLeaflet(cb){
 <meta property="og:updated_time" content="2026-03-16T00:00:00+09:00">
 
 <style>
-#app-skeleton{display:flex;flex-direction:column;min-height:100vh;background:#f0ede8;}
+#app-skeleton{display:flex;flex-direction:column;min-height:100vh;background:#e8e0d5;}
 .sk-header{background:linear-gradient(135deg,#4a6038,#607848);padding:14px 16px;display:flex;align-items:center;gap:10px;}
 .sk-logo{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.3);}
 .sk-title{width:100px;height:18px;background:rgba(255,255,255,0.3);border-radius:4px;}
@@ -3949,7 +3949,7 @@ function App() {
   if (selected) {
     const mountain = mountains.find(m => m.id === selected);
     return (
-      <div style={{ background: "#f0ede8", minHeight: "100vh", fontFamily: "sans-serif" }}>
+      <div style={{ background: "#e8e0d5", minHeight: "100vh", fontFamily: "sans-serif" }}>
         {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
         <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden"}} className="px-4 py-4">
           {/* 背景山シルエット */}
@@ -3962,7 +3962,7 @@ function App() {
               <svg width="24" height="24" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
               <div style={{flex:1}}>
                 <h1 style={{fontFamily:"Georgia,serif",fontSize:"23px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
-                <p style={{fontSize:"9px",color:"rgba(255,255,255,0.42)",margin:"2px 0 0"}}>出発地から登る山を探せる登山サーチ</p>
+                
               </div>
               <a href="/about/" style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",textDecoration:"none",flexShrink:0}}>運営者</a>
               <button onClick={() => setShowBoard(true)} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",cursor:"pointer",flexShrink:0}}>提案</button>
@@ -3993,7 +3993,7 @@ function App() {
   }
 
   return (
-    <div style={{ background: "#f0ede8", minHeight: "100vh", fontFamily: "sans-serif" }}>
+    <div style={{ background: "#e8e0d5", minHeight: "100vh", fontFamily: "sans-serif" }}>
       {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
 
       <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden"}} className="px-4 py-4">
@@ -4006,7 +4006,7 @@ function App() {
             <svg width="24" height="24" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
             <div style={{flex:1}}>
               <h1 style={{fontFamily:"Georgia,serif",fontSize:"21px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
-              <p style={{fontSize:"9px",color:"rgba(255,255,255,0.42)",margin:"2px 0 0"}}>出発地から登る山を探せる登山サーチ</p>
+              
             </div>
             <a href="/about/" style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",textDecoration:"none",flexShrink:0}}>運営者</a>
             <button onClick={() => setShowBoard(true)} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",cursor:"pointer",flexShrink:0}}>提案</button>
