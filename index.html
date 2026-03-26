@@ -4014,7 +4014,7 @@ function App() {
           </div>
           <div style={{position:"relative",zIndex:1,marginBottom:"14px",display:"flex",alignItems:"flex-start",justifyContent:"space-between",gap:"8px"}}>
             <div>
-              <div style={{fontSize:"clamp(15px,4vw,20px)",fontWeight:"700",color:"white",lineHeight:1.35,marginBottom:"5px"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
+              <div style={{fontSize:"clamp(13px,3vw,17px)",fontWeight:"600",color:"white",lineHeight:1.35,marginBottom:"5px"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
               <div style={{fontSize:"11px",color:"rgba(255,255,255,0.48)",lineHeight:1.65}}>アクセス時間・難易度・体力で絞り込める登山サーチ</div>
             </div>
             <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"6px 7px",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",marginTop:"2px"}}>
