@@ -264,6 +264,10 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <div class="ai-a" data-dep="大船駅" data-min="280"><div class="ai-a-dep">大船駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:77%"></div></div><div class="ai-a-val">4時間40分</div></div>
 <div class="ai-a" data-dep="横浜駅" data-min="260"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:72%"></div></div><div class="ai-a-val">4時間20分</div></div>
 <div class="ai-a" data-dep="新宿駅" data-min="285"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:79%"></div></div><div class="ai-a-val">4時間45分</div></div>
+<div class="ai-a" data-dep="大宮駅" data-min="255"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:70%"></div></div><div class="ai-a-val">4時間15分</div></div>
+    </div></div><div class="ai-a-val">4時間40分</div></div>
+<div class="ai-a" data-dep="横浜駅" data-min="260"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:72%"></div></div><div class="ai-a-val">4時間20分</div></div>
+<div class="ai-a" data-dep="新宿駅" data-min="285"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:79%"></div></div><div class="ai-a-val">4時間45分</div></div>
 <div class="ai-a" data-dep="大宮駅" data-min="255"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:70%"></div></div><div class="ai-a-val">4時間15分</div></div><div class="ai-a-val">4時間40分</div></div>
 <div class="ai-a" data-dep="横浜駅" data-min="260"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:72%"></div></div><div class="ai-a-val">4時間20分</div></div>
 <div class="ai-a" data-dep="新宿駅" data-min="285"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:79%"></div></div><div class="ai-a-val">4時間45分</div></div>
@@ -427,6 +431,7 @@ var initDep = sessionStorage.getItem('ym_departure') || '大船';
 updateDepButtons(initDep);
 applyDep();
 
+
 // === JSONから動的データを反映 ===
 (function(){
   var MID = 'yakedake';
@@ -437,11 +442,18 @@ applyDep();
       if(!mt) return;
       applyMountainData(mt);
     })
-    .catch(function(){ /* fetch失敗時は既存HTMLの値をそのまま使用 */ });
+    .catch(function(){ });
+
+  function fmtMin(m){
+    if(!m) return '—';
+    var h=Math.floor(m/60), mn=m%60;
+    if(h===0) return mn+'分';
+    if(mn===0) return h+'時間';
+    return h+'時間'+mn+'分';
+  }
 
   function applyMountainData(mt){
     // 1. コース定数（ヒーローカード）
-    var ccEl = document.querySelector('.stat-unit');
     var statCards = document.querySelectorAll('.stat-card');
     statCards.forEach(function(card){
       var unit = card.querySelector('.stat-unit');
@@ -451,14 +463,13 @@ applyDep();
       }
     });
 
-    // 2. 車アクセス時間バー
+    // 2. 車アクセス時間バー（値だけ更新・表示はapplyDepに任せる）
     var depMap = {'大船駅':'driveOfuna','横浜駅':'driveYokohama','新宿駅':'driveShinjuku','大宮駅':'driveOmiya'};
     document.querySelectorAll('#access-grid .ai-a').forEach(function(el){
       var dep = el.dataset.dep;
       var key = depMap[dep];
-      if(!key) return;
+      if(!key || !mt[key]) return;
       var mins = mt[key];
-      if(!mins) return;
       el.dataset.min = mins;
       var valEl = el.querySelector('.ai-a-val');
       if(valEl) valEl.textContent = fmtMin(mins);
@@ -466,21 +477,13 @@ applyDep();
       if(barEl) barEl.style.width = Math.min(Math.round(mins/360*100),100) + '%';
     });
 
-    // 3. timeMap・heroMinMap を上書き（次回のapplyDep呼び出し時に使用）
-    window._mtHeroMinMap = {
-      ofuna: mt.driveOfuna,
-      shinjuku: mt.driveShinjuku,
-      yokohama: mt.driveYokohama,
-      omiya: mt.driveOmiya
-    };
-    // ヒーロー時間を即時更新
+    // 3. ヒーロー時間を直接更新
     var raw = sessionStorage.getItem('ym_departure');
     var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
-    var depKeyMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya'};
-    var dKey = depKeyMap[dep] || 'ofuna';
+    var dk = {'大船':'driveOfuna','新宿':'driveShinjuku','横浜':'driveYokohama','大宮':'driveOmiya'};
     var heroTime = document.getElementById('hero-time');
     var heroLabel = document.getElementById('hero-dep-label');
-    if(heroTime && window._mtHeroMinMap[dKey]) heroTime.textContent = window._mtHeroMinMap[dKey];
+    if(heroTime && mt[dk[dep]]) heroTime.textContent = mt[dk[dep]];
     if(heroLabel) heroLabel.textContent = dep + 'から';
 
     // 4. YAMAPリンク
@@ -501,20 +504,16 @@ applyDep();
     });
 
     // 6. 地図リンク
-    if(mt.gmapUrl){
-      document.querySelectorAll('.map-btn-link').forEach(function(a){
-        if(a.textContent.includes('Google')) a.href = mt.gmapUrl;
-        if(a.textContent.includes('Apple') && mt.amapUrl) a.href = mt.amapUrl;
-      });
-    }
+    document.querySelectorAll('.map-btn-link').forEach(function(a){
+      if(a.textContent.includes('Google') && mt.gmapUrl) a.href = mt.gmapUrl;
+      if(a.textContent.includes('Apple') && mt.amapUrl) a.href = mt.amapUrl;
+    });
 
     // 7. シーズンカレンダー
     if(mt.seasonCalendar && mt.seasonCalendar.length === 12){
       var calBars = document.querySelectorAll('.cal-b');
       calBars.forEach(function(bar, i){
-        if(i < 12){
-          bar.className = 'cal-b ' + mt.seasonCalendar[i];
-        }
+        if(i < 12) bar.className = 'cal-b ' + mt.seasonCalendar[i];
       });
     }
 
@@ -523,39 +522,17 @@ applyDep();
       var legEls = document.querySelectorAll('.cal-legend .leg');
       legEls.forEach(function(el, i){
         if(mt.calLegend[i]){
-          // 絵文字+テキストの形式に合わせる
-          var icons = ['🟢','🟡','🔴'];
-          el.childNodes[el.childNodes.length-1].textContent = ' ' + mt.calLegend[i];
+          var dotEl = el.querySelector('.leg-dot');
+          if(dotEl) {
+            el.innerHTML = '';
+            el.appendChild(dotEl);
+            el.appendChild(document.createTextNode(' ' + mt.calLegend[i]));
+          }
         }
       });
     }
   }
-
-  // timeMapをJSONデータで上書きするためapplyDepを拡張
-  var _origApplyDep = window.applyDep;
-  window.applyDep = function(){
-    if(window._mtTimeMap && window._mtHeroMinMap){
-      var raw = sessionStorage.getItem('ym_departure');
-      var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
-      var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya'};
-      var key = depMap[dep] || 'ofuna';
-      var label = dep + 'から';
-      var heroTime = document.getElementById('hero-time');
-      var heroLabel = document.getElementById('hero-dep-label');
-      if(heroTime) heroTime.textContent = window._mtHeroMinMap[key] || '—';
-      if(heroLabel) heroLabel.textContent = label;
-    }
-    if(_origApplyDep) _origApplyDep();
-  };
 })();
-
-function fmtMin(m){
-  if(!m) return '—';
-  var h=Math.floor(m/60), mn=m%60;
-  if(h===0) return mn+'分';
-  if(mn===0) return h+'時間';
-  return h+'時間'+mn+'分';
-}
 </script>
 </body>
 </html>
