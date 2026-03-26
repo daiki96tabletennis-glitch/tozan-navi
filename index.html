@@ -3951,51 +3951,38 @@ function App() {
     return (
       <div style={{ background: "#f0ede8", minHeight: "100vh", fontFamily: "sans-serif" }}>
         {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
-        <header style={{ background: "linear-gradient(135deg, #4a6038 0%, #607848 100%)", position:"relative", overflow:"hidden" }} className="p-6">
-          {/* 背景SVG山 */}
-          <svg style={{position:"absolute",bottom:0,left:0,width:"100%",height:"100%",zIndex:0,pointerEvents:"none"}} viewBox="0 0 900 120" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="hm1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#3a6030"/><stop offset="100%" stopColor="#4a7040"/></linearGradient>
-              <linearGradient id="hm2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#4a7040"/><stop offset="100%" stopColor="#5a8050"/></linearGradient>
-              <linearGradient id="hgr" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#5a8848"/><stop offset="100%" stopColor="#6a9858"/></linearGradient>
-            </defs>
-            {/* 奥の山（薄く） */}
-            <path d="M-20 120 L-20 65 L30 42 L60 58 L95 28 L122 52 L155 18 L178 45 L200 10 L222 42 L248 22 L275 50 L308 32 L335 55 L365 38 L395 60 L425 28 L452 55 L480 35 L508 58 L535 40 L562 62 L592 30 L618 58 L648 42 L675 65 L705 48 L732 68 L762 52 L792 72 L820 55 L852 75 L882 60 L920 80 L920 120 Z" fill="url(#hm1)" opacity="0.45"/>
-            {/* 手前の山（メイン） */}
-            <path d="M-20 120 L-20 88 L25 72 L62 60 L92 68 L118 55 L145 44 L168 55 L188 42 L210 32 L232 44 L255 35 L282 25 L308 38 L335 28 L362 42 L390 32 L420 22 L448 35 L475 28 L502 40 L528 32 L555 20 L582 35 L608 28 L635 42 L662 35 L690 48 L718 40 L748 55 L778 48 L808 62 L840 55 L870 68 L900 62 L920 72 L920 120 Z" fill="url(#hm2)"/>
-            {/* 地面 */}
-            <rect x="0" y="108" width="900" height="12" fill="url(#hgr)"/>
-            {/* 草・花 */}
-            <g strokeLinecap="round">
-              <line x1="18" y1="114" x2="16" y2="107" stroke="#5a9838" strokeWidth="1.2"/>
-              <line x1="24" y1="114" x2="24" y2="105" stroke="#4a8828" strokeWidth="1.2"/>
-              <line x1="30" y1="114" x2="32" y2="107" stroke="#5a9838" strokeWidth="1.2"/>
-              <circle cx="21" cy="106" r="2" fill="white" opacity="0.7"/>
-              <circle cx="29" cy="104" r="2" fill="#f0e050" opacity="0.65"/>
-            </g>
-            <g strokeLinecap="round">
-              <line x1="862" y1="114" x2="860" y2="107" stroke="#5a9838" strokeWidth="1.2"/>
-              <line x1="868" y1="114" x2="868" y2="105" stroke="#4a8828" strokeWidth="1.2"/>
-              <line x1="874" y1="114" x2="876" y2="107" stroke="#5a9838" strokeWidth="1.2"/>
-              <circle cx="865" cy="106" r="2" fill="#f0a0b0" opacity="0.7"/>
-              <circle cx="873" cy="104" r="2" fill="white" opacity="0.65"/>
-            </g>
+        <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden"}} className="px-4 py-4">
+          {/* 背景山シルエット */}
+          <svg style={{position:"absolute",bottom:0,left:0,right:0,height:"50px",opacity:0.1,pointerEvents:"none",width:"100%"}} viewBox="0 0 390 50" fill="white" preserveAspectRatio="xMidYMax slice">
+            <polygon points="0,50 0,30 50,14 90,24 130,6 170,20 210,3 250,18 290,8 330,22 390,10 390,50"/>
           </svg>
-          <div className="max-w-2xl mx-auto flex items-center gap-3" style={{position:"relative",zIndex:1}}>
-            <svg width="32" height="32" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
-            <div style={{ flex: 1 }}>
-              <h1 className="text-xl font-bold text-white" style={{fontFamily:"Georgia,serif",fontSize:"22px",letterSpacing:"0.02em"}}>Yamatch</h1>
-              <p className="text-stone-300 text-xs">出発地から登る山を探せる登山サーチ</p>
+          <div className="max-w-3xl mx-auto">
+            {/* ロゴ行 */}
+            <div style={{display:"flex",alignItems:"center",gap:"9px",marginBottom:"16px",position:"relative",zIndex:1}}>
+              <svg width="24" height="24" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
+              <div style={{flex:1}}>
+                <h1 style={{fontFamily:"Georgia,serif",fontSize:"21px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
+                <p style={{fontSize:"9px",color:"rgba(255,255,255,0.42)",margin:"2px 0 0"}}>出発地から登る山を探せる登山サーチ</p>
+              </div>
+              <a href="/about/" style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",textDecoration:"none",flexShrink:0}}>運営者</a>
+              <button onClick={() => setShowBoard(true)} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",cursor:"pointer",flexShrink:0}}>提案</button>
             </div>
-            <a href="/about/" style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)", color: "white", borderRadius: "10px", padding: "6px 12px", fontSize: "12px", whiteSpace: "nowrap", textDecoration: "none" }}>
-              🥾 運営者について
-            </a>
-            <button
-              onClick={() => { setBoardInitMountain(""); setShowBoard(true); }}
-              style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)", color: "white", borderRadius: "10px", padding: "6px 12px", fontSize: "12px", cursor: "pointer", whiteSpace: "nowrap" }}
-            >
-              💬 改善提案はこちら
-            </button>
+            {/* キャッチコピー */}
+            <div style={{position:"relative",zIndex:1,marginBottom:"14px"}}>
+              <div style={{fontSize:"18px",fontWeight:"700",color:"white",lineHeight:1.35,letterSpacing:"-0.01em",marginBottom:"5px",whiteSpace:"nowrap"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
+              <div style={{fontSize:"11px",color:"rgba(255,255,255,0.48)",lineHeight:1.65}}>アクセス時間・難易度・体力で絞り込める登山サーチ</div>
+            </div>
+            {/* 出発地タブ */}
+            <div style={{position:"relative",zIndex:1}}>
+              <div style={{display:"flex",background:"rgba(0,0,0,0.18)",borderRadius:"10px",padding:"3px",marginBottom:"14px"}}>
+                {["大船","新宿","横浜","大宮"].map(d => (
+                  <button key={d} onClick={() => setDeparture(d)}
+                    style={{flex:1,textAlign:"center",fontSize:"12px",color:departure===d?"#2d4a28":"rgba(255,255,255,0.42)",background:departure===d?"white":"transparent",padding:"6px 4px",borderRadius:"7px",fontWeight:departure===d?"700":"500",border:"none",cursor:"pointer",transition:"all 0.15s"}}>
+                    {d}駅
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </header>
         <main className="max-w-2xl mx-auto p-4">
@@ -4061,92 +4048,34 @@ function App() {
       </header>
 
       <main className="max-w-3xl mx-auto p-4">
-        {/* ① はじめての山・② 時間×体力（アコーディオン） */}
-        <div style={{display:"flex",flexDirection:"column",gap:"6px",marginBottom:"8px"}}>
 
-          {/* ① はじめての山 */}
-          <div style={{background:"white",borderRadius:"12px",border:"1px solid #ddd8d0",overflow:"hidden"}}>
-            <button
-              onClick={() => setQuickOpen(!quickOpen)}
-              style={{width:"100%",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"11px 13px",background:"none",border:"none",cursor:"pointer",textAlign:"left"}}
-            >
-              <span style={{fontSize:"12px",fontWeight:"700",color:"#4a5e4a"}}>🔰 はじめての山を探す</span>
-              <span style={{fontSize:"11px",color:"#a09888",display:"inline-block",transform:quickOpen?"rotate(180deg)":"rotate(0deg)",transition:"transform 0.2s"}}>▼</span>
-            </button>
-            {quickOpen && <div style={{padding:"0 13px 11px"}}>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"6px"}}>
-                {[
-                  {icon:"🚶",label:"2時間で登れる山",sub:"大船から近場",href:"/search/ofuna/coeff-under15/"},
-                  {icon:"🚃",label:"電車で行ける山",sub:"車なしOK",href:"/search/train-daytrip/"},
-                  {icon:"🍂",label:"初心者向けの山",sub:"コース定数15以下",href:"/search/shinjuku-beginner/"},
-                  {icon:"📸",label:"絶景・展望の山",sub:"富士山が見える",href:"/search/shinjuku-daytrip/"},
-                ].map(item => (
-                  <a key={item.label} href={item.href} style={{background:"#f5f3ef",border:"1px solid #eae6e0",borderRadius:"9px",padding:"9px 10px",textDecoration:"none",color:"inherit",display:"flex",flexDirection:"column",gap:"3px"}}>
-                    <span style={{fontSize:"16px"}}>{item.icon}</span>
-                    <span style={{fontSize:"12px",fontWeight:"700",color:"#3a3530",lineHeight:1.3}}>{item.label}</span>
-                    <span style={{fontSize:"10px",color:"#a09888",lineHeight:1.3}}>{item.sub}</span>
-                  </a>
-                ))}
-              </div>
-            </div>}
+        {/* 診断＋こんな人におすすめ 統合バナー */}
+        <div style={{background:"linear-gradient(155deg,#1e3010,#2d4a22)",borderRadius:"14px",padding:"14px 15px",marginBottom:"8px",position:"relative",overflow:"hidden"}}>
+          <svg style={{position:"absolute",right:"-8px",bottom:"-8px",width:"90px",height:"70px",opacity:0.1,pointerEvents:"none"}} viewBox="0 0 90 70" fill="white"><polygon points="0,70 45,12 90,70"/><polygon points="18,70 55,28 90,70" opacity=".5"/></svg>
+          <div style={{position:"relative",zIndex:1,marginBottom:"12px"}}>
+            <div style={{fontSize:"9px",fontWeight:"600",letterSpacing:"0.1em",color:"rgba(255,255,255,0.4)",marginBottom:"4px"}}>登山タイプ診断</div>
+            <div style={{fontSize:"15px",fontWeight:"700",color:"white",lineHeight:1.3,marginBottom:"3px"}}>16タイプ診断・あなたは<br/>どのタイプ？</div>
+            <div style={{fontSize:"10px",color:"rgba(255,255,255,0.45)"}}>9問・約1分・完全無料・おすすめの山も提案</div>
           </div>
-
-          {/* ② 時間×体力マトリクス */}
-          <div style={{background:"white",borderRadius:"12px",border:"1px solid #ddd8d0",overflow:"hidden"}}>
-            <button
-              onClick={() => setMatrixOpen(!matrixOpen)}
-              style={{width:"100%",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"11px 13px",background:"none",border:"none",cursor:"pointer",textAlign:"left"}}
-            >
-              <span style={{fontSize:"12px",fontWeight:"700",color:"#4a5e4a"}}>⏱ 所要時間と体力で選ぶ</span>
-              <span style={{fontSize:"11px",color:"#a09888",display:"inline-block",transform:matrixOpen?"rotate(180deg)":"rotate(0deg)",transition:"transform 0.2s"}}>▼</span>
-            </button>
-            {matrixOpen && <div style={{padding:"0 13px 11px"}}>
-              {/* 列ヘッダー */}
-              <div style={{display:"flex",gap:"5px",marginLeft:"52px",marginBottom:"4px"}}>
-                {["〜2h","2〜4h","4h〜"].map(t=>(
-                  <div key={t} style={{flex:1,textAlign:"center",fontSize:"9px",color:"#a09888"}}>{t}</div>
-                ))}
-              </div>
-              {[
-                {label:"楽に登りたい", items:[
-                  {name:"高尾山・筑波山",href:"/search/ofuna/coeff-under15/",hi:true},
-                  {name:"陣馬山・大山",href:"/search/ofuna/coeff-under20/",hi:false},
-                  {name:"金時山・棒ノ折",href:"/search/ofuna/",hi:false},
-                ]},
-                {label:"少し本格的に", items:[
-                  {name:"御岳山・日和田山",href:"/search/ofuna/coeff-under15/",hi:false},
-                  {name:"塔ノ岳・大岳山",href:"/search/ofuna/coeff-under25/",hi:true},
-                  {name:"丹沢山・雲取山",href:"/search/ofuna/coeff-under40/",hi:false},
-                ]},
-              ].map(row => (
-                <div key={row.label} style={{display:"flex",gap:"5px",marginBottom:"5px",alignItems:"center"}}>
-                  <div style={{fontSize:"10px",color:"#a09888",width:"48px",flexShrink:0,lineHeight:1.3}}>{row.label}</div>
-                  <div style={{display:"flex",gap:"5px",flex:1}}>
-                    {row.items.map(item => (
-                      <a key={item.name} href={item.href}
-                        style={{flex:1,background:item.hi?"#eef4e8":"#f5f3ef",border:item.hi?"1px solid #c0d8a8":"1px solid #eae6e0",borderRadius:"8px",padding:"7px 4px",textAlign:"center",fontSize:"10px",fontWeight:"600",color:item.hi?"#3a6030":"#4a5e4a",lineHeight:1.4,textDecoration:"none"}}
-                      >{item.name}</a>
-                    ))}
-                  </div>
+          <div style={{borderTop:"1px solid rgba(255,255,255,0.1)",marginBottom:"10px",position:"relative",zIndex:1}}></div>
+          <div style={{position:"relative",zIndex:1,marginBottom:"12px"}}>
+            <div style={{fontSize:"10px",fontWeight:"600",color:"rgba(255,255,255,0.45)",marginBottom:"7px",letterSpacing:"0.06em"}}>こんな人におすすめ</div>
+            <div style={{display:"flex",flexDirection:"column",gap:"6px"}}>
+              {[["🏔","初めての登山"],["🌅","日帰りで行きたい"],["🚃","電車で行きたい"]].map(([icon,text]) => (
+                <div key={text} style={{display:"flex",alignItems:"center",gap:"8px",fontSize:"13px",color:"rgba(255,255,255,0.85)"}}>
+                  <span style={{width:"18px",height:"18px",background:"rgba(255,255,255,0.12)",borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"10px",flexShrink:0}}>{icon}</span>
+                  {text}
                 </div>
               ))}
-            </div>}
+            </div>
           </div>
+          <a href="/recommend/" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",background:"#a8d860",color:"#1a3010",fontSize:"13px",fontWeight:"800",padding:"11px",borderRadius:"10px",textDecoration:"none",position:"relative",zIndex:1}}>
+            診断する →
+          </a>
         </div>
 
-        {/* 診断バナー（コンパクト） */}
-        <a href="/recommend/" style={{display:"flex",alignItems:"center",gap:"10px",textDecoration:"none",background:"linear-gradient(135deg,#1e3018,#3a5830)",borderRadius:"12px",padding:"11px 13px",marginBottom:"8px",position:"relative",overflow:"hidden"}}>
-          <svg style={{position:"absolute",bottom:0,right:0,width:"40%",height:"100%",opacity:0.1,pointerEvents:"none"}} viewBox="0 0 200 120" preserveAspectRatio="xMaxYMax slice"><polygon points="0,120 60,40 90,65 130,20 165,50 200,30 200,120" fill="white"/></svg>
-          <div style={{flex:1,position:"relative",zIndex:1}}>
-            <div style={{fontSize:"9px",fontWeight:"700",letterSpacing:"0.08em",color:"rgba(255,255,255,0.5)",marginBottom:"2px"}}>登山タイプ診断</div>
-            <div style={{fontSize:"14px",fontWeight:"800",color:"white",lineHeight:1.2,marginBottom:"1px"}}>あなたの山スタイルは？</div>
-            <div style={{fontSize:"10px",color:"rgba(255,255,255,0.6)"}}>9問・約1分・16タイプで診断</div>
-          </div>
-          <div style={{background:"rgba(255,255,255,0.18)",border:"1px solid rgba(255,255,255,0.3)",borderRadius:"20px",padding:"6px 12px",fontSize:"11px",fontWeight:"700",color:"white",whiteSpace:"nowrap",flexShrink:0,position:"relative",zIndex:1}}>診断する →</div>
-        </a>
-
         {/* 記事（横スクロールチップ） */}
-        <div style={{display:"flex",gap:"7px",overflowX:"auto",marginBottom:"10px",WebkitOverflowScrolling:"touch",paddingBottom:"2px"}}>
+        <div style={{display:"flex",gap:"7px",overflowX:"auto",marginBottom:"8px",WebkitOverflowScrolling:"touch",paddingBottom:"2px"}}>
           <a href="/articles/kanto-day-trip-100/" style={{background:"#faf8f5",border:"1px solid #ddd8d0",borderRadius:"20px",padding:"6px 12px",fontSize:"11px",fontWeight:"500",color:"#5a5248",whiteSpace:"nowrap",flexShrink:0,textDecoration:"none"}}>📖 関東発・日帰り百名山10選</a>
           <a href="/articles/train-access-mountains/" style={{background:"#faf8f5",border:"1px solid #ddd8d0",borderRadius:"20px",padding:"6px 12px",fontSize:"11px",fontWeight:"500",color:"#5a5248",whiteSpace:"nowrap",flexShrink:0,textDecoration:"none"}}>🚃 電車で行ける登山10選</a>
         </div>
@@ -4154,6 +4083,17 @@ function App() {
   
 
 
+
+        {/* 検索バー */}
+        <div style={{marginBottom:"8px"}}>
+          <input
+            type="text"
+            placeholder="🔍 山名・エリアで検索"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            style={{width:"100%",padding:"10px 14px",borderRadius:"11px",border:"1px solid #e0dbd4",fontSize:"13px",boxSizing:"border-box",outline:"none",background:"white",color:"#3a3530"}}
+          />
+        </div>
 
         {/* フィルタートグル */}
         <div>
@@ -4315,11 +4255,17 @@ function App() {
                   const cardBorder = is100 ? "#d0dcea" : "#cfdcc0";
                   const iconColor = is100 ? "#1a4a80" : "#2a5010";
 
-                  // 体力度バッジ
+                  // 体力度バッジ＋難易度ラベル
                   const cMax = m.courseCoefficient ? m.courseCoefficient[1] : 0;
                   const courseBg    = cMax >= 25 ? "#f0e0e0" : cMax >= 16 ? "#f0ece0" : "#e8f0e4";
                   const courseColor = cMax >= 25 ? "#7a3838" : cMax >= 16 ? "#7a6030" : "#4a6840";
                   const courseLabel = m.courseCoefficientRange ? "体力度" + m.courseCoefficientRange : null;
+                  const diffLabel = cMax >= 40 ? "上級" : cMax >= 22 ? "中級" : "初級";
+                  const diffBg = cMax >= 40 ? "#f0e0e0" : cMax >= 22 ? "#f0ece0" : "#e8f0e4";
+                  const diffColor = cMax >= 40 ? "#7a3838" : cMax >= 22 ? "#7a6030" : "#4a6840";
+                  const driveMin = getDriveTime(m);
+                  const barPct = Math.min(Math.round(driveMin / 360 * 100), 100);
+                  const barColor = driveMin >= 240 ? "linear-gradient(90deg,#c05030,#e07050)" : driveMin >= 120 ? "linear-gradient(90deg,#7a8830,#9aaa50)" : "linear-gradient(90deg,#4a6038,#607848)";
 
                   // アイゼンバッジ（今月）
                   const noGear = canClimbNoGear(m, currentMonth);
@@ -4358,10 +4304,14 @@ function App() {
                       {/* エリア */}
                       <div style={{ fontSize: "10px", color: "#8a8078", position: "relative", zIndex: 1 }}>{m.area}</div>
                       {/* 標高・時間 */}
-                      <div style={{ display: "flex", gap: "5px", alignItems: "center", fontSize: "11px", color: "#6a6058", position: "relative", zIndex: 1, marginBottom: "3px" }}>
+                      <div style={{ display: "flex", gap: "5px", alignItems: "center", fontSize: "11px", color: "#6a6058", position: "relative", zIndex: 1, marginBottom: "2px" }}>
                         <span>{m.elevation.toLocaleString()}m</span>
                         <span style={{ color: "#c8c0b8" }}>·</span>
                         <span>🚗 {formatDriveTime(getDriveTime(m))}</span>
+                      </div>
+                      {/* アクセス時間バー */}
+                      <div style={{height:"3px",background:"rgba(0,0,0,0.08)",borderRadius:"2px",marginBottom:"5px",overflow:"hidden",position:"relative",zIndex:1}}>
+                        <div style={{width:barPct+"%",height:"100%",background:barColor,borderRadius:"2px"}}></div>
                       </div>
                       {/* バッジ群 */}
                       <div style={{ display: "flex", gap: "3px", flexWrap: "wrap", position: "relative", zIndex: 1 }}>
@@ -4378,11 +4328,9 @@ function App() {
                             {(m.trainAccess.includes("バス") || m.trainAccess.includes("ケーブル")) ? "🚃🚌" : "🚃"}
                           </span>
                         )}
-                        {courseLabel && (
-                          <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "500", background: courseBg, color: courseColor }}>
-                            {courseLabel}
-                          </span>
-                        )}
+                        <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "600", background: diffBg, color: diffColor }}>
+                          {diffLabel}
+                        </span>
                         <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "500", background: cramponBg, color: cramponColor }}>
                           {cramponLabel}
                         </span>
