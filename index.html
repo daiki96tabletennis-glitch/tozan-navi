@@ -3969,7 +3969,7 @@ function App() {
             </div>
             {/* キャッチコピー */}
             <div style={{position:"relative",zIndex:1,marginBottom:"14px"}}>
-              <div style={{fontSize:"18px",fontWeight:"700",color:"white",lineHeight:1.35,letterSpacing:"-0.01em",marginBottom:"5px",whiteSpace:"nowrap"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
+              <div style={{fontSize:"clamp(15px,4vw,20px)",fontWeight:"700",color:"white",lineHeight:1.35,letterSpacing:"-0.01em",marginBottom:"5px"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
               <div style={{fontSize:"11px",color:"rgba(255,255,255,0.48)",lineHeight:1.65}}>アクセス時間・難易度・体力で絞り込める登山サーチ</div>
             </div>
             {/* 出発地タブ */}
@@ -4260,9 +4260,12 @@ function App() {
                   const courseBg    = cMax >= 25 ? "#f0e0e0" : cMax >= 16 ? "#f0ece0" : "#e8f0e4";
                   const courseColor = cMax >= 25 ? "#7a3838" : cMax >= 16 ? "#7a6030" : "#4a6840";
                   const courseLabel = m.courseCoefficientRange ? "体力度" + m.courseCoefficientRange : null;
-                  const diffLabel = cMax >= 40 ? "上級" : cMax >= 22 ? "中級" : "初級";
-                  const diffBg = cMax >= 40 ? "#f0e0e0" : cMax >= 22 ? "#f0ece0" : "#e8f0e4";
-                  const diffColor = cMax >= 40 ? "#7a3838" : cMax >= 22 ? "#7a6030" : "#4a6840";
+                  // difficulty フィールドを直接使用
+                  const diffLabel = m.difficulty || (cMax >= 60 ? "上級" : cMax >= 35 ? "中級" : "初級");
+                  const isHard = diffLabel.includes("上級");
+                  const isMid  = diffLabel.includes("中級") || diffLabel.includes("中〜");
+                  const diffBg    = isHard ? "#f0e0e0" : isMid ? "#f0ece0" : "#e8f0e4";
+                  const diffColor = isHard ? "#7a3838" : isMid ? "#7a6030" : "#4a6840";
                   const driveMin = getDriveTime(m);
                   const barPct = Math.min(Math.round(driveMin / 360 * 100), 100);
                   const barColor = driveMin >= 240 ? "linear-gradient(90deg,#c05030,#e07050)" : driveMin >= 120 ? "linear-gradient(90deg,#7a8830,#9aaa50)" : "linear-gradient(90deg,#4a6038,#607848)";
