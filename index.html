@@ -3996,56 +3996,7 @@ function App() {
     <div style={{ background: "#f0ede8", minHeight: "100vh", fontFamily: "sans-serif" }}>
       {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
 
-      <header style={{ background: "linear-gradient(135deg, #4a6038 0%, #607848 100%)" }} className="px-4 py-4">
-        <div className="max-w-3xl mx-auto">
-          <div className="flex items-center gap-2 mb-3">
-            <svg width="32" height="32" viewBox="0 0 36 36" style={{flexShrink:0,marginTop:"3px"}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
-            <div>
-              <h1 style={{fontFamily:"Georgia,serif",fontSize:"28px",fontWeight:"bold",color:"white",letterSpacing:"0.02em",lineHeight:1.1,margin:0}}>Yamatch</h1>
-              <p style={{fontSize:"11px",color:"rgba(255,255,255,0.65)",margin:"2px 0 0",letterSpacing:"0.02em"}}>出発地から登る山を探せる登山サーチ</p>
-            </div>
-            <div style={{flex:1}} />
-            <a href="/about/" style={{background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.3)",color:"white",borderRadius:"8px",padding:"4px 9px",fontSize:"11px",whiteSpace:"nowrap",textDecoration:"none",flexShrink:0}}>運営者</a>
-            <button onClick={() => setShowBoard(true)} style={{background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.3)",color:"white",borderRadius:"8px",padding:"4px 9px",fontSize:"11px",cursor:"pointer",whiteSpace:"nowrap",flexShrink:0}}>提案</button>
-          </div>
-          <div style={{display:"flex",gap:"0",alignItems:"center"}}>
-            {["大船","新宿","横浜","大宮"].map(d => (
-              <button key={d} onClick={() => setDeparture(d)}
-                style={{
-                  padding:"4px 12px", fontSize:"13px", border:"none", cursor:"pointer",
-                  background:"transparent",
-                  color: departure === d ? "white" : "rgba(255,255,255,0.4)",
-                  fontWeight: departure === d ? "700" : "400",
-                  transition:"color 0.15s, font-weight 0.15s",
-                }}>
-                {d}駅
-              </button>
-            ))}
-            <div style={{width:"1px",background:"rgba(255,255,255,0.2)",height:"14px",margin:"0 8px"}} />
-            <button
-              onClick={() => {
-                if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); }
-                else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); }
-              }}
-              style={{padding:"4px 12px",fontSize:"13px",border:"none",cursor:"pointer",background:"transparent",color:"rgba(255,255,255,0.6)",fontWeight:"400"}}><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle",marginRight:"3px"}}><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>シェア</button>
-          </div>
-          {/* 検索バー（ヘッダー内・常に見える） */}
-          <div style={{padding:"8px 0 4px"}}>
-            <input
-              type="text"
-              placeholder="🔍 山名・エリアで検索"
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              style={{
-                width:"100%", padding:"9px 14px", borderRadius:"22px",
-                border:"none", fontSize:"13px",
-                boxSizing:"border-box", outline:"none", background:"white",
-                color:"#3a3530",
-              }}
-            />
-          </div>
-        </div>
-      </header>
+      
 
       <main className="max-w-3xl mx-auto p-4">
 
