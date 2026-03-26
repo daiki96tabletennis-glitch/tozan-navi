@@ -323,11 +323,11 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
     <div class="prog-top"><span>質問 4 / 9</span><span>44%</span></div>
     <div class="prog-bar"><div class="prog-fill" style="width:44%"></div></div>
   </div>
-  <div class="q-title"><span class="q-emoji">🌧</span>登山中に雨が降ってきた。どうする？</div>
+  <div class="q-title"><span class="q-emoji">🌿</span>好きな山の雰囲気は？</div>
   <div class="choices">
-    <div class="choice" data-key="a4" data-val="C"><span class="ch-icon">💨</span><div><div class="ch-main">気にせず進む</div><div class="ch-sub">雨くらいで止まらない</div></div><span class="ch-axis ch-c">挑戦派</span></div>
-    <div class="choice" data-key="a4" data-val="H"><span class="ch-icon">🧭</span><div><div class="ch-main">状況を見て慎重に判断</div><div class="ch-sub">無理は禁物</div></div><span class="ch-axis ch-h">癒し派</span></div>
-    <div class="choice" data-key="a4" data-val="C"><span class="ch-icon">🌧</span><div><div class="ch-main">むしろテンションが上がる</div><div class="ch-sub">雨の山も最高じゃん</div></div><span class="ch-axis ch-c">挑戦派</span></div>
+    <div class="choice" data-key="a4" data-val="C"><span class="ch-icon">⛰</span><div><div class="ch-main">岩場・急登・稜線歩き</div><div class="ch-sub">ダイナミックな地形が好き</div></div><span class="ch-axis ch-c">挑戦派</span></div>
+    <div class="choice" data-key="a4" data-val="H"><span class="ch-icon">🌲</span><div><div class="ch-main">樹林帯・花・湿原</div><div class="ch-sub">自然に包まれたい</div></div><span class="ch-axis ch-h">癒し派</span></div>
+    <div class="choice" data-key="a4" data-val="C"><span class="ch-icon">🗻</span><div><div class="ch-main">高山・アルプス・展望</div><div class="ch-sub">スケールの大きな山が好き</div></div><span class="ch-axis ch-c">挑戦派</span></div>
     <div class="choice" data-key="a4" data-val="H"><span class="ch-icon">🏕</span><div><div class="ch-main">早めに下山・引き返す</div><div class="ch-sub">また来ればいい</div></div><span class="ch-axis ch-h">癒し派</span></div>
   </div>
 </div>
@@ -591,35 +591,91 @@ function scoreMount(m,typeCode){
   let score=0;
   const drive=getDrive(m);
   const coeffLimit=answers.coeff||999;
-  // ソフトペナルティ
-  if(coeffLimit!==999&&m.coeffMax>coeffLimit) score-=Math.min(50,(m.coeffMax-coeffLimit)*1.5);
-  // 距離スコア
-  score+=Math.max(0,(360-drive)/3);
-  // 体力マッチ
+  const v=m.vibes||[];
+  const a=typeCode[0],c=typeCode[1],p=typeCode[2],s=typeCode[3];
+
+  // ── 距離スコア（出発地との近さ）──
+  // 近い山ほど高スコアだが、遠征好きタイプは減衰を抑える
+  const distDecay = (a==='A'&&c==='C') ? 4 : 3;
+  score += Math.max(0, (360-drive)/distDecay);
+
+  // ── 体力マッチ（コース定数）──
   if(coeffLimit<999){
     const ratio=(m.coeffMax||20)/coeffLimit;
-    if(ratio>=0.7&&ratio<=1.0) score+=35;
-    else if(ratio>=0.5)        score+=18;
-    else if(ratio<0.3)         score+=5;
+    if(ratio>=0.75&&ratio<=1.05)  score+=45; // ピッタリ
+    else if(ratio>=0.55&&ratio<0.75) score+=25;
+    else if(ratio>=1.05&&ratio<=1.25) score+=15; // 少しきつめ
+    else if(ratio<0.4)            score+=5;
+    // 超過ペナルティ（きつすぎる）
+    if(m.coeffMax>coeffLimit) score-=Math.min(60,(m.coeffMax-coeffLimit)*2);
   }
-  // タイプ軸によるボーナス
-  const a=typeCode[0],c=typeCode[1],p=typeCode[2],s=typeCode[3];
-  if(a==='A'&&m.vibes&&m.vibes.includes('rock'))    score+=30;
-  if(a==='A'&&m.vibes&&m.vibes.includes('view'))    score+=20;
-  if(a==='V'&&m.vibes&&m.vibes.includes('forest'))  score+=30;
-  if(a==='V'&&m.vibes&&m.vibes.includes('wetland')) score+=25;
-  if(c==='C'&&m.coeffMax>=35)    score+=25;
-  if(c==='H'&&m.coeffMax<=25)    score+=25;
-  if(c==='C'&&m.vibes&&m.vibes.includes('volcano')) score+=15;
-  if(p==='P'&&m.category==='百名山') score+=20;
-  if(p==='F')                    score+=5; // 自由派はボーナス少なめ・広く分散
-  if(s==='S'&&m.trainAccess)     score+=15;
-  if(s==='S'&&m.daytrip)         score+=10;
-  if(s==='L'&&!m.daytrip&&m.coeffMax>=30) score+=10;
-  // 基本
-  if(m.daytrip)              score+=8;
-  if(m.trainAccess)          score+=6;
-  if(m.category==='百名山')  score+=10;
+
+  // ── 軸A：アクティブ(A) vs ヴィジュアル(V) ──
+  if(a==='A'){
+    if(v.includes('rock'))    score+=35; // 岩場・バリエーション
+    if(v.includes('ridge'))   score+=30; // 稜線歩き
+    if(v.includes('view'))    score+=22; // 眺望
+    if(v.includes('volcano')) score+=18; // 火山
+    if(m.types&&m.types.includes('adventure'))  score+=25;
+    if(m.types&&m.types.includes('challenge'))  score+=20;
+  } else { // V
+    if(v.includes('forest'))   score+=38; // 樹林帯・癒し
+    if(v.includes('wetland'))  score+=30; // 湿原・お花畑
+    if(v.includes('highland')) score+=25; // 高原
+    if(v.includes('view'))     score+=20; // 景色（V派にも有効）
+    if(v.includes('historic')) score+=15; // 歴史・寺社
+    if(m.types&&m.types.includes('casual'))     score+=20;
+    if(m.types&&m.types.includes('easy'))       score+=15;
+  }
+
+  // ── 軸C：チャレンジ(C) vs ヒーリング(H) ──
+  if(c==='C'){
+    if(m.coeffMax>=40)  score+=30;
+    else if(m.coeffMax>=28) score+=18;
+    if(v.includes('rock'))    score+=20;
+    if(v.includes('ridge'))   score+=18;
+    if(m.types&&m.types.includes('challenge')) score+=20;
+    if(m.category==='百名山') score+=12; // 百名山制覇志向
+  } else { // H
+    if(m.coeffMax<=20)  score+=30;
+    else if(m.coeffMax<=30) score+=15;
+    if(v.includes('forest'))  score+=20;
+    if(v.includes('wetland')) score+=18;
+    if(v.includes('highland'))score+=15;
+    if(m.daytrip)             score+=12; // 気軽に行きたい
+    if(m.types&&m.types.includes('easy')) score+=18;
+  }
+
+  // ── 軸P：プランナー(P) vs フリー(F) ──
+  if(p==='P'){
+    if(m.category==='百名山') score+=25; // 目標がはっきりしている
+    if(m.category==='二百名山') score+=15;
+    if(v.includes('ridge'))   score+=12; // 縦走計画好き
+    if(m.types&&m.types.includes('collector')) score+=20;
+  } else { // F
+    if(m.types&&m.types.includes('casual'))   score+=15;
+    if(v.includes('accessible'))              score+=12; // アクセス良く気軽
+    score+=8; // F派は分散させる
+  }
+
+  // ── 軸S：ソロ(S) vs ソーシャル(L) ──
+  if(s==='S'){
+    if(m.trainAccess)    score+=18; // 電車で一人でも行きやすい
+    if(m.daytrip)        score+=12;
+    if(!v.includes('accessible')) score+=8; // 人が少なそうな山に加点
+  } else { // L
+    if(v.includes('accessible')) score+=15; // 友人を連れて行きやすい
+    if(m.trainAccess)             score+=12;
+    if(m.daytrip)                 score+=10;
+    if(m.types&&m.types.includes('casual')) score+=15;
+    if(!m.daytrip&&m.coeffMax>=30) score+=8; // 山小屋で語り合う
+  }
+
+  // ── ベーススコア ──
+  if(m.daytrip)             score+=6;
+  if(m.trainAccess)         score+=5;
+  if(m.category==='百名山') score+=8;
+
   return score;
 }
 
