@@ -3592,7 +3592,7 @@ function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
         <div className="mt-3 rounded-lg overflow-hidden text-xs" style={{ border: "1px solid #ddd8d0" }}>
           <div className="grid grid-cols-2" style={{ borderBottom: "1px solid #ddd8d0" }}>
             <div className="px-3 py-2 text-center font-semibold" style={{ background: "#e8eee8", color: "#3a5240", borderRight: "1px solid #ddd8d0" }}>今月（{now}月）</div>
-            <div className="px-3 py-2 text-center font-semibold" style={{ background: "#f0ede8", color: "#5a4e3a" }}>来月（{next}月）</div>
+            <div className="px-3 py-2 text-center font-semibold" style={{ background: "#e8e0d5", color: "#5a4e3a" }}>来月（{next}月）</div>
           </div>
           <div className="grid grid-cols-2">
             <div className="flex items-center justify-center px-3 py-3" style={{ background: "#f5f8f5", borderRight: "1px solid #ddd8d0" }}>
@@ -3997,8 +3997,9 @@ function App() {
       {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
 
       <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden"}} className="px-4 py-4">
-        <svg style={{position:"absolute",bottom:0,left:0,right:0,height:"50px",opacity:0.1,pointerEvents:"none",width:"100%"}} viewBox="0 0 390 50" fill="white" preserveAspectRatio="xMidYMax slice">
-          <polygon points="0,50 0,30 50,14 90,24 130,6 170,20 210,3 250,18 290,8 330,22 390,10 390,50"/>
+        <svg style={{position:"absolute",bottom:0,left:0,width:"100%",height:"52px",opacity:0.09,pointerEvents:"none"}} viewBox="0 0 1400 52" preserveAspectRatio="xMidYMax slice">
+          <path d="M0 52 L0 36 L70 22 L130 30 L190 12 L250 24 L310 6 L370 18 L430 4 L490 16 L550 6 L610 18 L670 8 L730 20 L790 10 L850 22 L910 12 L970 24 L1030 14 L1090 26 L1150 16 L1210 28 L1270 18 L1330 30 L1400 20 L1400 52 Z" fill="white" opacity="0.6"/>
+          <path d="M0 52 L0 42 L90 32 L160 38 L230 24 L300 34 L370 18 L440 28 L510 14 L580 26 L650 12 L720 24 L790 10 L860 22 L930 8 L1000 20 L1070 6 L1140 18 L1210 4 L1280 16 L1350 6 L1400 12 L1400 52 Z" fill="white"/>
         </svg>
         <div className="max-w-3xl mx-auto">
           <div style={{display:"flex",alignItems:"center",gap:"9px",marginBottom:"16px",position:"relative",zIndex:1}}>
@@ -4035,20 +4036,20 @@ function App() {
 
       <main className="max-w-3xl mx-auto p-4">
 
-        {/* 診断＋こんな人におすすめ 統合バナー（案B） */}
-        <div style={{background:"#eef5e4",border:"1px solid #c0d89a",borderRadius:"12px",padding:"13px 14px",marginBottom:"8px"}}>
-          <div style={{marginBottom:"8px"}}>
-            <div style={{fontSize:"9px",fontWeight:"700",letterSpacing:"0.08em",color:"#5a7840",marginBottom:"3px"}}>登山タイプ診断</div>
-            <div style={{fontSize:"14px",fontWeight:"700",color:"#2a3820",lineHeight:1.25}}>16タイプ診断・あなたはどのタイプ？</div>
-            <div style={{fontSize:"10px",color:"#7a9060",marginTop:"2px"}}>9問・約1分・完全無料・おすすめの山も提案</div>
+        {/* 診断＋こんな人におすすめ 統合バナー */}
+        <div style={{background:"#c8d4b8",border:"1px solid #a8b898",borderRadius:"12px",padding:"13px 14px",marginBottom:"8px"}}>
+          <div style={{marginBottom:"7px"}}>
+            <div style={{fontSize:"9px",fontWeight:"700",letterSpacing:"0.08em",color:"#5a6848",marginBottom:"2px"}}>登山タイプ診断</div>
+            <div style={{fontSize:"14px",fontWeight:"700",color:"#2a3020",lineHeight:1.25,marginBottom:"2px"}}>16タイプ診断・あなたはどのタイプ？</div>
+            <div style={{fontSize:"10px",color:"#6a7858"}}>9問・約1分・完全無料・おすすめの山も提案</div>
           </div>
-          <div style={{fontSize:"10px",fontWeight:"600",color:"#5a7840",marginBottom:"6px"}}>こんな人におすすめ</div>
-          <div style={{display:"flex",gap:"6px",flexWrap:"wrap",marginBottom:"10px"}}>
-            {[["🏔","初めての登山"],["🌅","日帰りで行きたい"],["🚃","電車で行きたい"]].map(([icon,text]) => (
-              <span key={text} style={{fontSize:"11px",color:"#4a6830",background:"#d8eebc",padding:"3px 8px",borderRadius:"20px"}}>{icon} {text}</span>
+          <div style={{fontSize:"9px",fontWeight:"600",color:"#5a6848",marginBottom:"4px"}}>こんな人におすすめ</div>
+          <div style={{display:"flex",gap:"5px",flexWrap:"nowrap",marginBottom:"9px",overflow:"hidden"}}>
+            {["初めての登山","日帰りで行きたい","電車で行きたい"].map(text => (
+              <span key={text} style={{fontSize:"9px",color:"#2a3020",background:"rgba(0,0,0,0.1)",padding:"2px 8px",borderRadius:"20px",whiteSpace:"nowrap"}}>{text}</span>
             ))}
           </div>
-          <a href="/recommend/" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",background:"rgba(45,74,34,0.35)",border:"1px solid #8ab060",color:"#2a4018",fontSize:"13px",fontWeight:"700",padding:"10px",borderRadius:"9px",textDecoration:"none"}}>
+          <a href="/recommend/" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",background:"#3a5030",color:"white",fontSize:"13px",fontWeight:"700",padding:"10px",borderRadius:"9px",textDecoration:"none"}}>
             診断する →
           </a>
         </div>
