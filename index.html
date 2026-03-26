@@ -5,7 +5,7 @@
 <meta name="description" content="出発地から登る山を探せる登山サーチサービス。百名山・二百名山・人気の山を条件で絞り込み。">
 <meta property="og:title" content="Yamatch｜出発地から登る山を探せる登山サーチ">
 <meta property="og:description" content="大船・新宿・横浜・大宮から行ける百名山・二百名山・人気の山を、コース定数・難易度・日帰り可否で絞り込めるサービス。">
-<meta property="og:image" content="https://tozan-navi.com/ogp.png?v=2">
+<meta property="og:image" content="https://tozan-navi.com/ogp.png?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
@@ -3961,7 +3961,7 @@ function App() {
             <div style={{display:"flex",alignItems:"center",gap:"9px",marginBottom:"16px",position:"relative",zIndex:1}}>
               <svg width="24" height="24" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
               <div style={{flex:1}}>
-                <h1 style={{fontFamily:"Georgia,serif",fontSize:"21px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
+                <h1 style={{fontFamily:"Georgia,serif",fontSize:"23px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
                 <p style={{fontSize:"9px",color:"rgba(255,255,255,0.42)",margin:"2px 0 0"}}>出発地から登る山を探せる登山サーチ</p>
               </div>
               <a href="/about/" style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",textDecoration:"none",flexShrink:0}}>運営者</a>
@@ -4014,9 +4014,14 @@ function App() {
               シェア
             </button>
           </div>
-          <div style={{position:"relative",zIndex:1,marginBottom:"14px"}}>
-            <div style={{fontSize:"clamp(15px,4vw,20px)",fontWeight:"700",color:"white",lineHeight:1.35,marginBottom:"5px"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
-            <div style={{fontSize:"11px",color:"rgba(255,255,255,0.48)",lineHeight:1.65}}>アクセス時間・難易度・体力で絞り込める登山サーチ</div>
+          <div style={{position:"relative",zIndex:1,marginBottom:"14px",display:"flex",alignItems:"flex-start",justifyContent:"space-between",gap:"8px"}}>
+            <div>
+              <div style={{fontSize:"clamp(15px,4vw,20px)",fontWeight:"700",color:"white",lineHeight:1.35,marginBottom:"5px"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
+              <div style={{fontSize:"11px",color:"rgba(255,255,255,0.48)",lineHeight:1.65}}>アクセス時間・難易度・体力で絞り込める登山サーチ</div>
+            </div>
+            <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"6px 7px",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",marginTop:"2px"}}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>
+            </button>
           </div>
           <div style={{position:"relative",zIndex:1}}>
             <div style={{display:"flex",background:"rgba(0,0,0,0.18)",borderRadius:"10px",padding:"3px",marginBottom:"14px"}}>
@@ -4046,7 +4051,7 @@ function App() {
               <span key={text} style={{fontSize:"11px",color:"#4a6830",background:"#d8eebc",padding:"3px 8px",borderRadius:"20px"}}>{icon} {text}</span>
             ))}
           </div>
-          <a href="/recommend/" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",background:"#344f2c",color:"white",fontSize:"13px",fontWeight:"700",padding:"10px",borderRadius:"9px",textDecoration:"none"}}>
+          <a href="/recommend/" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",background:"rgba(45,74,34,0.35)",border:"1px solid #8ab060",color:"#2a4018",fontSize:"13px",fontWeight:"700",padding:"10px",borderRadius:"9px",textDecoration:"none"}}>
             診断する →
           </a>
         </div>
