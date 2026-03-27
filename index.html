@@ -3323,7 +3323,7 @@ const mountains = [
 const AREAS = ["すべて", "埼玉県", "千葉県", "山梨県", "新潟県", "東京都", "栃木県", "神奈川県", "福島県", "群馬県", "茨城県", "長野県北部", "長野県南部", "静岡県"];
 const CATEGORIES = ["すべて", "百名山", "二百名山", "人気の山"];
 
-const SORTS = ["近い順", "標高順", "体力度順", "五十音順"];
+const SORTS = ["おすすめ", "近い順", "標高順", "体力度順"];
 
 function parseTimeToMinutes(timeStr) {
   const hMatch = timeStr.match(/(\d+)時間/);
@@ -3880,7 +3880,7 @@ function App() {
   const [driveTimeFilter, setDriveTimeFilter] = useState(() => { try { const _v = sessionStorage.getItem("ym_drivetime"); return _v !== null ? JSON.parse(_v) : null; } catch { return null; } }); // null | 180 | 360
   const [courseFilter, setCourseFilter] = useState(() => { try { const _v = sessionStorage.getItem("ym_course"); return _v !== null ? JSON.parse(_v) : []; } catch { return []; } }); // 複数選択
   const [cramponsFilter, setCramponsFilter] = useState(() => { try { const _v = sessionStorage.getItem("ym_crampons"); return _v !== null ? JSON.parse(_v) : "すべて"; } catch { return "すべて"; } }); // "すべて"|"アイゼン不要"|"6本以内でOK"
-  const [filterMonth, setFilterMonth] = useState(() => { try { const _v = sessionStorage.getItem("ym_month"); return _v !== null ? JSON.parse(_v) : "今月"; } catch { return "今月"; } }); // "今月"|"来月"
+  const [filterMonth, setFilterMonth] = useState(() => { try { const _v = sessionStorage.getItem("ym_month"); return _v !== null ? JSON.parse(_v) : new Date().getMonth() + 1; } catch { return new Date().getMonth() + 1; } }); // 1-12の数字
   const [viewMode, setViewMode] = useState(() => { try { const _v = sessionStorage.getItem("ym_viewmode"); return _v !== null ? JSON.parse(_v) : "list"; } catch { return "list"; } });
   const [filterOpen, setFilterOpen] = React.useState(false);
   const [quickOpen, setQuickOpen] = React.useState(false);
@@ -3914,8 +3914,7 @@ function App() {
   };
 
   const currentMonth = new Date().getMonth() + 1;
-  const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
-  const activeMonth = filterMonth === "来月" ? nextMonth : currentMonth;
+  const activeMonth = typeof filterMonth === "number" ? filterMonth : currentMonth;
 
   const filtered = useMemo(() => {
     let list = mountains.filter(m => {
@@ -3936,10 +3935,23 @@ function App() {
         || (cramponsFilter === "6本以内でOK" && canClimb6Crampons(m, activeMonth));
       return matchSearch && matchArea && matchCat && matchDayTrip && matchTrainOnly && matchDriveTime && matchCourse && matchCrampons;
     });
-    if (sort === "近い順") list = [...list].sort((a, b) => getDriveTime(a) - getDriveTime(b));
+    if (sort === "おすすめ") list = [...list].sort((a, b) => {
+      const scoreM = m => {
+        let s = 0;
+        // その月にアイゼン不要なら大幅加点
+        if (canClimbNoGear(m, activeMonth)) s += 60;
+        // 近い山を優先
+        s += Math.max(0, (360 - getDriveTime(m)) / 5);
+        // 人気カテゴリ加点
+        if (m.category === "百名山") s += 10;
+        if (m.category === "人気の山") s += 8;
+        return s;
+      };
+      return scoreM(b) - scoreM(a);
+    });
+    else if (sort === "近い順") list = [...list].sort((a, b) => getDriveTime(a) - getDriveTime(b));
     else if (sort === "標高順") list = [...list].sort((a, b) => b.elevation - a.elevation);
     else if (sort === "体力度順") list = [...list].sort((a, b) => b.courseCoefficient[1] - a.courseCoefficient[1]);
-    else if (sort === "五十音順") list = [...list].sort((a, b) => a.kana.localeCompare(b.kana, "ja"));
     return list;
   }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure]);
 
@@ -4065,14 +4077,47 @@ function App() {
 
 
         {/* 検索バー */}
-        <div style={{marginBottom:"8px"}}>
+        <div style={{marginBottom:"8px",display:"flex",gap:"8px",alignItems:"center"}}>
           <input
             type="text"
-            placeholder="🔍 山名・エリアで検索"
+            placeholder="🔍 山名で検索"
             value={search}
             onChange={e => setSearch(e.target.value)}
-            style={{width:"100%",padding:"10px 14px",borderRadius:"11px",border:"1px solid #e0dbd4",fontSize:"13px",boxSizing:"border-box",outline:"none",background:"white",color:"#3a3530"}}
+            style={{flex:1,padding:"10px 14px",borderRadius:"11px",border:"1px solid #e0dbd4",fontSize:"13px",boxSizing:"border-box",outline:"none",background:"white",color:"#3a3530"}}
           />
+          {/* 月ピッカー */}
+          <div style={{position:"relative",flexShrink:0}}>
+            <select
+              value={filterMonth}
+              onChange={e => {
+                const v = Number(e.target.value);
+                setFilterMonth(v);
+                sessionStorage.setItem("ym_month", JSON.stringify(v));
+                setSort("おすすめ");
+                sessionStorage.setItem("ym_sort", JSON.stringify("おすすめ"));
+              }}
+              style={{appearance:"none",WebkitAppearance:"none",padding:"10px 32px 10px 12px",borderRadius:"11px",border:"1px solid #e0dbd4",fontSize:"13px",background:"white",color:"#3a3530",cursor:"pointer",outline:"none",fontWeight:"500"}}
+            >
+              {[1,2,3,4,5,6,7,8,9,10,11,12].map(m => (
+                <option key={m} value={m}>{m}月</option>
+              ))}
+            </select>
+            <span style={{position:"absolute",right:"10px",top:"50%",transform:"translateY(-50%)",pointerEvents:"none",fontSize:"10px",color:"#7a7068"}}>▼</span>
+          </div>
+        </div>
+
+        {/* 並び替えボタン */}
+        <div style={{display:"flex",gap:"6px",marginBottom:"6px",overflowX:"auto",WebkitOverflowScrolling:"touch",paddingBottom:"2px"}}>
+          <span style={{fontSize:"12px",color:"#7a7068",whiteSpace:"nowrap",alignSelf:"center",flexShrink:0}}>並び替え:</span>
+          {SORTS.map(s => (
+            <button key={s} onClick={() => { setSort(s); sessionStorage.setItem("ym_sort", JSON.stringify(s)); }} style={{
+              whiteSpace:"nowrap", fontSize:"12px", padding:"6px 13px",
+              borderRadius:"20px", border:"none", cursor:"pointer", flexShrink:0,
+              background: sort === s ? "#4a5e4a" : "#f0ede5",
+              color: sort === s ? "white" : "#5a5248",
+              fontWeight: sort === s ? "700" : "500",
+            }}>{s}</button>
+          ))}
         </div>
 
         {/* フィルタートグル */}
@@ -4094,7 +4139,6 @@ function App() {
                 {driveTimeFilter && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{driveTimeFilter/60}h以内</span>}
                 {courseFilter && courseFilter.length > 0 && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>体力度{courseFilter[0]}</span>}
                 {cramponsFilter && cramponsFilter !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{cramponsFilter}</span>}
-                {sort !== "近い順" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{sort}</span>}
               </div>
             </div>
             <span style={{fontSize:"11px",color:"white",display:"inline-block",transform:filterOpen?"rotate(180deg)":"rotate(0deg)",transition:"transform 0.25s"}}>▼</span>
@@ -4133,10 +4177,6 @@ function App() {
                   <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content" }}>
                     <button onClick={() => setDayTripOnly(!dayTripOnly)} style={chip(dayTripOnly)}>🌅 日帰り</button>
                     <button onClick={() => setTrainOnly(!trainOnly)} style={chip(trainOnly)}>🚃 電車OK</button>
-                    <div style={sep} />
-                    {SORTS.map(s => (
-                      <button key={s} onClick={() => setSort(s)} style={chipSort(sort === s)}>{s}</button>
-                    ))}
                   </div>
                 </div>
 
@@ -4250,9 +4290,9 @@ function App() {
                   const barPct = Math.min(Math.round(driveMin / 360 * 100), 100);
                   const barColor = driveMin >= 240 ? "linear-gradient(90deg,#c05030,#e07050)" : driveMin >= 120 ? "linear-gradient(90deg,#7a8830,#9aaa50)" : "linear-gradient(90deg,#4a6038,#607848)";
 
-                  // アイゼンバッジ（今月）
-                  const noGear = canClimbNoGear(m, currentMonth);
-                  const sixOk  = canClimb6Crampons(m, currentMonth);
+                  // アイゼンバッジ（選択月）
+                  const noGear = canClimbNoGear(m, activeMonth);
+                  const sixOk  = canClimb6Crampons(m, activeMonth);
                   const cramponLabel = noGear ? "🥾 不要" : sixOk ? "🥾 6本" : "🥾 12本";
                   const cramponBg    = noGear ? "#e4f0e8" : sixOk ? "#f5f0e0" : "#f0e4e4";
                   const cramponColor = noGear ? "#2a5838" : sixOk ? "#7a5a20" : "#6a3030";
