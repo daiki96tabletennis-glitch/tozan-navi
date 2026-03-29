@@ -208,7 +208,19 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="white">
       <polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/><polygon points="20,28 50,55 0,55"/>
     </svg>
-    <div class="hero-top">
+    <div class="hero-top" style="position:relative">
+  <!-- お気に入り・登頂記録ボタン（右上） -->
+  <div id="my-actions-hero" style="position:absolute;top:0;right:0;display:flex;gap:6px;z-index:5">
+    <button id="fav-btn" onclick="toggleFav()" title="お気に入り"
+      style="width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px)">
+      <span id="fav-icon">☆</span>
+    </button>
+    <button id="climb-btn" onclick="toggleClimb()" title="登頂記録"
+      style="width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px)">
+      <span id="climb-icon">🥾</span>
+    </button>
+  </div>
+
       <div>
         <h1 class="mountain-name">光岳</h1>
         <div class="mountain-kana">てかりだけ</div>
