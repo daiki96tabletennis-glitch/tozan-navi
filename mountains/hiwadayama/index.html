@@ -309,6 +309,16 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 
   <div class="card"><h2>🥾 代表的な登山ルート</h2><div class="route-list-c"><div class="rl-item"><div class="rl-num">1</div><div class="rl-content"><div class="rl-name">白谷沢ルート（往復）</div><div class="rl-chips"><span class="rl-chip">⏱&nbsp;4時間</span><span class="rl-chip">距離&nbsp;8.0km</span><span class="rl-chip">↑&nbsp;+650m</span></div></div></div><div class="rl-item"><div class="rl-num">2</div><div class="rl-content"><div class="rl-name">岩茸石山縦走（周回）</div><div class="rl-chips"><span class="rl-chip">⏱&nbsp;5時間</span><span class="rl-chip">距離&nbsp;10.0km</span><span class="rl-chip">↑&nbsp;+750m</span></div></div></div></div></div></div></div>
 
+  <!-- お気に入り・登頂記録 -->
+  <div id="my-actions" style="display:flex;gap:8px;margin-bottom:12px">
+    <button id="fav-btn" onclick="toggleFav()" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px;border-radius:10px;border:1px solid #d8d4cc;background:white;font-size:13px;font-weight:700;cursor:pointer;color:#5a5248">
+      <span id="fav-icon">☆</span> お気に入り
+    </button>
+    <button id="climb-btn" onclick="toggleClimb()" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px;border-radius:10px;border:1px solid #d8d4cc;background:white;font-size:13px;font-weight:700;cursor:pointer;color:#5a5248">
+      <span id="climb-icon">🥾</span> <span id="climb-label">登頂記録</span>
+    </button>
+  </div>
+
   <a href="https://yamap.com/mountains/16255" target="_blank" rel="noopener noreferrer" class="yamap-btn">
     <svg width="20" height="20" viewBox="0 0 36 36" fill="white"><polygon points="18,4 34,30 2,30"/><polygon points="18,10 30,30 6,30" fill="rgba(255,255,255,0.6)"/></svg>
     YAMAPで詳細を見る
@@ -549,5 +559,44 @@ applyDep();
   }
 })();
 </script>
+
+  <script>
+  (function(){
+    var MID_LOCAL = typeof MID !== 'undefined' ? MID : '';
+    var FAV_KEY = 'ym_favorites';
+    var CLM_KEY = 'ym_climbed';
+    function getFavs(){ try{return JSON.parse(localStorage.getItem(FAV_KEY)||'[]');}catch{return[];} }
+    function getClimbs(){ try{return new Map(JSON.parse(localStorage.getItem(CLM_KEY)||'[]'));}catch{return new Map();} }
+    function updateUI(){
+      var favs = getFavs();
+      var climbs = getClimbs();
+      var isFav = favs.indexOf(MID_LOCAL) >= 0;
+      var isClimbed = climbs.has(MID_LOCAL);
+      var fb = document.getElementById('fav-btn');
+      var fi = document.getElementById('fav-icon');
+      var cb = document.getElementById('climb-btn');
+      var cl = document.getElementById('climb-label');
+      if(fb){ fb.style.background = isFav ? '#fffbe0' : 'white'; fb.style.borderColor = isFav ? '#e8d860' : '#d8d4cc'; fb.style.color = isFav ? '#5a4a10' : '#5a5248'; }
+      if(fi){ fi.textContent = isFav ? '⭐' : '☆'; }
+      if(cb){ cb.style.background = isClimbed ? '#f0f5ec' : 'white'; cb.style.borderColor = isClimbed ? '#c8ddb0' : '#d8d4cc'; cb.style.color = isClimbed ? '#3a5028' : '#5a5248'; }
+      if(cl){ cl.textContent = isClimbed ? '登頂済み ✓' : '登頂記録'; }
+    }
+    window.toggleFav = function(){
+      var favs = getFavs();
+      var idx = favs.indexOf(MID_LOCAL);
+      if(idx>=0) favs.splice(idx,1); else favs.push(MID_LOCAL);
+      localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+      updateUI();
+    };
+    window.toggleClimb = function(){
+      var climbs = getClimbs();
+      if(climbs.has(MID_LOCAL)) climbs.delete(MID_LOCAL);
+      else climbs.set(MID_LOCAL, new Date().toLocaleDateString('ja-JP',{year:'numeric',month:'2-digit',day:'2-digit'}));
+      localStorage.setItem(CLM_KEY, JSON.stringify([...climbs]));
+      updateUI();
+    };
+    updateUI();
+  })();
+  </script>
 </body>
 </html>

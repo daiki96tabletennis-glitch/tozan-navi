@@ -4012,7 +4012,7 @@ function App() {
             <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"6px",position:"relative",zIndex:1}}>
               <svg width="24" height="24" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
               <h1 style={{fontFamily:"Georgia,serif",fontSize:"23px",fontWeight:"700",color:"white",lineHeight:1,margin:0,flex:1}}>Yamatch</h1>
-              <a href="/mypage/" style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",fontWeight:"700",textDecoration:"none",flexShrink:0}}>📋 マイページ</a>
+              <a href="/mypage/" style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",fontWeight:"700",textDecoration:"none",flexShrink:0}}>📋 Myページ</a>
               <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"5px 7px",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center"}}>
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>
               </button>
@@ -4149,15 +4149,7 @@ function App() {
           </div>
         </div>
 
-        {/* My記録 → マイページリンク */}
-        {(favorites.size > 0 || climbed.size > 0) && (
-          <a href="/mypage/" style={{display:"flex",alignItems:"center",gap:"7px",background:"#4a5e4a",borderRadius:"20px",padding:"8px 16px",fontSize:"12px",fontWeight:"700",color:"white",textDecoration:"none",marginBottom:"8px",justifyContent:"center"}}>
-            <span>📋</span>
-            My記録・登山計画
-            {favorites.size > 0 && <span style={{background:"#f5c518",color:"#3a3010",borderRadius:"20px",padding:"1px 7px",fontSize:"11px"}}>⭐ {favorites.size}</span>}
-            {climbed.size > 0 && <span style={{background:"rgba(255,255,255,0.25)",color:"white",borderRadius:"20px",padding:"1px 7px",fontSize:"11px"}}>🥾 {climbed.size}山</span>}
-          </a>
-        )}
+
         {/* 並び替えボタン */}
         <div style={{display:"flex",gap:"6px",marginBottom:"6px",overflowX:"auto",WebkitOverflowScrolling:"touch",paddingBottom:"2px"}}>
           <span style={{fontSize:"12px",color:"#7a7068",whiteSpace:"nowrap",alignSelf:"center",flexShrink:0}}>並び替え:</span>
