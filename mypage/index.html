@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>マイページ - Yamatch</title>
+<meta name="robots" content="noindex">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;color:#3a3530;min-height:100vh}
+
+/* ヘッダー */
+.header{background:linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%);padding:14px 16px}
+.header-inner{display:flex;align-items:center;gap:10px;max-width:480px;margin:0 auto}
+.header-back{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;padding:6px 10px;font-size:12px;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:4px}
+.header-title{font-size:17px;font-weight:700;color:white;flex:1}
+
+/* タブ */
+.tabs{display:flex;background:white;border-bottom:1px solid #e0dbd4;position:sticky;top:0;z-index:10}
+.tab{flex:1;padding:12px 4px;text-align:center;font-size:12px;font-weight:600;color:#8a8078;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s}
+.tab.active{color:#4a5e4a;border-bottom-color:#4a5e4a}
+
+/* メインコンテンツ */
+.main{max-width:480px;margin:0 auto;padding:16px}
+.section{display:none}
+.section.active{display:block}
+
+/* カード共通 */
+.card{background:white;border-radius:12px;border:1px solid #e0dbd4;margin-bottom:10px;overflow:hidden}
+.card-header{padding:12px 14px;font-size:13px;font-weight:700;color:#4a5e4a;border-bottom:1px solid #f0ede5;display:flex;align-items:center;justify-content:space-between}
+.card-body{padding:12px 14px}
+.empty{text-align:center;padding:40px 20px;color:#a09888;font-size:13px}
+
+/* お気に入り・登った記録 */
+.chip-list{display:flex;flex-wrap:wrap;gap:6px}
+.chip-g{display:inline-flex;align-items:center;gap:5px;background:#f0f5ec;border:1px solid #c8ddb0;border-radius:20px;padding:5px 11px;font-size:12px;color:#3a5028;text-decoration:none}
+.chip-g .mdate{font-size:10px;color:#8a9878}
+.chip-s{display:inline-flex;align-items:center;background:#fffbe0;border:1px solid #e8d860;border-radius:20px;padding:5px 11px;font-size:12px;color:#5a4a10;text-decoration:none}
+.stat-row{display:flex;gap:10px;margin-bottom:14px}
+.stat-box{flex:1;background:#f5f3ef;border-radius:10px;padding:10px;text-align:center}
+.stat-num{font-size:22px;font-weight:800;color:#4a5e4a}
+.stat-label{font-size:10px;color:#8a8078;margin-top:2px}
+
+/* 計画カード */
+.plan-card{background:white;border-radius:12px;border:1px solid #e0dbd4;margin-bottom:12px;overflow:hidden}
+.plan-card-top{background:linear-gradient(135deg,#344f2c,#4a6038);padding:14px 16px;position:relative}
+.plan-card-top .plan-name{font-size:16px;font-weight:800;color:white}
+.plan-card-top .plan-date{font-size:12px;color:rgba(255,255,255,0.7);margin-top:3px}
+.plan-card-body{padding:14px 16px}
+.plan-actions{display:flex;gap:8px;margin-top:12px}
+.btn{padding:9px 16px;border-radius:9px;border:none;font-size:13px;font-weight:700;cursor:pointer}
+.btn-primary{background:#4a5e4a;color:white;flex:1}
+.btn-outline{background:white;border:1px solid #c8d0c0;color:#4a5e4a;flex:1}
+.btn-danger{background:#fff0f0;border:1px solid #f0c0c0;color:#c05050}
+.btn-new{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:14px;background:#f0f5ec;border:2px dashed #c8ddb0;border-radius:12px;font-size:14px;font-weight:700;color:#4a5e4a;cursor:pointer;margin-bottom:12px}
+
+/* フォーム */
+.form-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;overflow-y:auto}
+.form-overlay.open{display:block}
+.form-sheet{background:#f0ede5;min-height:100vh;max-width:480px;margin:0 auto;padding:0 0 40px}
+.form-header{background:linear-gradient(155deg,#243d20,#344f2c);padding:14px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10}
+.form-title{font-size:16px;font-weight:700;color:white;flex:1}
+.form-save{background:#a8d860;color:#1a3010;border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:800;cursor:pointer}
+.form-close{background:rgba(255,255,255,0.15);border:none;color:white;border-radius:8px;padding:8px 10px;cursor:pointer;font-size:14px}
+.form-section{background:white;border-radius:12px;margin:10px 12px 0;padding:14px}
+.form-section-title{font-size:11px;font-weight:700;color:#8a8078;letter-spacing:0.08em;margin-bottom:10px}
+.form-field{margin-bottom:12px}
+.form-field label{display:block;font-size:12px;font-weight:600;color:#5a5248;margin-bottom:5px}
+.form-field input,.form-field textarea,.form-field select{width:100%;padding:9px 11px;border:1px solid #d8d4cc;border-radius:9px;font-size:13px;background:white;color:#3a3530;outline:none;font-family:inherit}
+.form-field textarea{resize:vertical;min-height:70px}
+.form-field input:focus,.form-field textarea:focus{border-color:#4a5e4a}
+.link-row{display:flex;gap:6px;margin-bottom:6px;align-items:center}
+.link-row input{flex:1}
+.link-del{background:#fff0f0;border:1px solid #f0c0c0;border-radius:7px;padding:7px 9px;font-size:12px;cursor:pointer;color:#c05050;flex-shrink:0}
+.add-link-btn{background:#f0f5ec;border:1px solid #c8ddb0;border-radius:8px;padding:7px 12px;font-size:12px;font-weight:600;color:#4a5e4a;cursor:pointer;width:100%;margin-top:4px}
+
+/* 持ち物チェックリスト */
+.checklist{display:flex;flex-direction:column;gap:4px}
+.check-item{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #f5f3ef}
+.check-item:last-child{border-bottom:none}
+.check-item input[type=checkbox]{width:17px;height:17px;accent-color:#4a5e4a;flex-shrink:0;cursor:pointer}
+.check-item .item-label{font-size:13px;flex:1;cursor:pointer}
+.check-item .item-del{background:none;border:none;color:#c0b8b0;font-size:16px;cursor:pointer;padding:0 4px;flex-shrink:0}
+.check-item.checked .item-label{color:#a09888;text-decoration:line-through}
+.add-item-row{display:flex;gap:6px;margin-top:8px}
+.add-item-row input{flex:1;padding:8px 10px;border:1px solid #d8d4cc;border-radius:8px;font-size:13px;outline:none}
+.add-item-row button{background:#4a5e4a;color:white;border:none;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer}
+.template-btns{display:flex;gap:6px;margin-bottom:10px}
+.tmpl-btn{flex:1;padding:6px;border-radius:8px;border:1px solid #d8d4cc;font-size:12px;font-weight:600;color:#5a5248;background:white;cursor:pointer}
+.tmpl-btn.active{background:#4a5e4a;color:white;border-color:#4a5e4a}
+.copy-notice{font-size:11px;color:#7a9060;background:#f0f5ec;border-radius:8px;padding:7px 10px;margin-bottom:8px;display:none}
+
+/* PDF印刷 */
+.pdf-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:12px;background:#344f2c;color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px}
+
+/* 計画詳細表示 */
+.detail-row{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid #f5f3ef;font-size:13px}
+.detail-row:last-child{border-bottom:none}
+.detail-label{color:#8a8078;font-weight:600;width:80px;flex-shrink:0}
+.detail-val{color:#3a3530;flex:1;word-break:break-all}
+.detail-val a{color:#4a5e4a;text-decoration:none}
+.detail-val a:hover{text-decoration:underline}
+
+@media print {
+  .header,.tabs,.plan-actions,.pdf-btn,.btn-new,.form-overlay{display:none!important}
+  .section{display:block!important}
+  body{background:white}
+  .card,.plan-card{break-inside:avoid;border:1px solid #ccc}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <a href="/" class="header-back">← 山を探す</a>
+    <div class="header-title">マイページ</div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('plans')">📋 登山計画</div>
+  <div class="tab" onclick="switchTab('favorites')">⭐ お気に入り</div>
+  <div class="tab" onclick="switchTab('climbed')">🥾 登った記録</div>
+</div>
+
+<div class="main">
+
+  <!-- 登山計画タブ -->
+  <div class="section active" id="tab-plans">
+    <div id="plans-list"></div>
+  </div>
+
+  <!-- お気に入りタブ -->
+  <div class="section" id="tab-favorites">
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" id="fav-count">0</div>
+        <div class="stat-label">お気に入り</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="climbed-count">0</div>
+        <div class="stat-label">登頂数</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">⭐ お気に入りの山</div>
+      <div class="card-body">
+        <div id="fav-list" class="chip-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 登った記録タブ -->
+  <div class="section" id="tab-climbed">
+    <div class="card">
+      <div class="card-header">🥾 登った山</div>
+      <div class="card-body">
+        <div id="climbed-list" class="chip-list"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 計画作成フォーム -->
+<div class="form-overlay" id="form-overlay">
+  <div class="form-sheet">
+    <div class="form-header">
+      <button class="form-close" onclick="closeForm()">✕</button>
+      <div class="form-title" id="form-title">新しい計画</div>
+      <button class="form-save" onclick="savePlan()">保存</button>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">📍 基本情報</div>
+      <div class="form-field">
+        <label>山名</label>
+        <input type="text" id="f-mountain" placeholder="例：谷川岳">
+      </div>
+      <div class="form-field">
+        <label>日程</label>
+        <input type="date" id="f-date">
+      </div>
+      <div class="form-field">
+        <label>集合場所</label>
+        <input type="text" id="f-place" placeholder="例：新宿駅南口 みどりの窓口前">
+      </div>
+      <div class="form-field">
+        <label>集合時間</label>
+        <input type="time" id="f-time">
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">🔗 リンク集</div>
+      <div class="form-field">
+        <label>YAMAPルート</label>
+        <input type="url" id="f-yamap" placeholder="https://yamap.com/...">
+      </div>
+      <div class="form-field">
+        <label>宿・テント場</label>
+        <input type="url" id="f-lodge" placeholder="https://...">
+      </div>
+      <div class="form-field">
+        <label>温泉・お風呂</label>
+        <input type="url" id="f-onsen" placeholder="https://...">
+      </div>
+      <div class="form-field">
+        <label>お店・グルメ</label>
+        <div id="shop-links"></div>
+        <button class="add-link-btn" onclick="addShopLink()">＋ お店を追加</button>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">🎒 持ち物チェックリスト</div>
+      <div id="copy-notice" class="copy-notice">前の計画の持ち物リストをコピーしました</div>
+      <div class="template-btns">
+        <button class="tmpl-btn active" id="tmpl-day" onclick="applyTemplate('day')">日帰り</button>
+        <button class="tmpl-btn" id="tmpl-stay" onclick="applyTemplate('stay')">宿泊</button>
+      </div>
+      <div class="checklist" id="checklist"></div>
+      <div class="add-item-row">
+        <input type="text" id="new-item-input" placeholder="持ち物を追加" onkeydown="if(event.key==='Enter')addCheckItem()">
+        <button onclick="addCheckItem()">追加</button>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">📝 メモ</div>
+      <div class="form-field">
+        <textarea id="f-memo" placeholder="注意事項、駐車場情報、緊急連絡先など自由に"></textarea>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 計画詳細表示 -->
+<div class="form-overlay" id="detail-overlay">
+  <div class="form-sheet">
+    <div class="form-header">
+      <button class="form-close" onclick="closeDetail()">✕</button>
+      <div class="form-title" id="detail-title">計画詳細</div>
+      <button class="form-save" onclick="printPlan()" style="background:rgba(255,255,255,0.2)">PDF</button>
+    </div>
+    <div id="detail-body" style="padding:12px"></div>
+  </div>
+</div>
+
+<script>
+// ===== データ =====
+const PLANS_KEY = 'ym_plans';
+const FAV_KEY   = 'ym_favorites';
+const CLM_KEY   = 'ym_climbed';
+
+const TEMPLATE_DAY = [
+  'レインウェア上下','行動食','水（500ml×2）','救急セット',
+  '防寒着（フリース等）','ヘッドライト','トレッキングポール',
+  '日焼け止め','サングラス','帽子','タオル','ザックカバー',
+  'クマ鈴','モバイルバッテリー','虫除け',
+  'チェーンスパイク','軽アイゼン（6本）',
+];
+const TEMPLATE_STAY = [
+  'レインウェア上下','行動食（余裕を持って）','水（500ml×3）','救急セット',
+  '防寒着（フリース等）','ヘッドライト','トレッキングポール',
+  '日焼け止め','サングラス','帽子','タオル','ザックカバー',
+  'クマ鈴','モバイルバッテリー','虫除け',
+  'チェーンスパイク','軽アイゼン（6本）',
+  '着替え','シュラフカバー','耳栓','洗面用具','サンダル',
+];
+
+let editingIndex = null; // null=新規, 0or1=編集
+let currentItems = []; // 持ち物リスト作業用
+
+// ===== 初期化 =====
+function init() {
+  renderPlans();
+  renderFavorites();
+  renderClimbed();
+}
+
+// ===== タブ切替 =====
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(function(t,i){
+    t.classList.toggle('active', ['plans','favorites','climbed'][i] === name);
+  });
+  document.querySelectorAll('.section').forEach(function(s){
+    s.classList.remove('active');
+  });
+  document.getElementById('tab-'+name).classList.add('active');
+}
+
+// ===== 計画一覧 =====
+function getPlans() {
+  try { return JSON.parse(localStorage.getItem(PLANS_KEY) || '[]'); } catch { return []; }
+}
+function savePlans(plans) {
+  localStorage.setItem(PLANS_KEY, JSON.stringify(plans));
+}
+
+function renderPlans() {
+  var plans = getPlans();
+  var el = document.getElementById('plans-list');
+  var html = '';
+
+  if (plans.length < 2) {
+    html += '<button class="btn-new" onclick="openForm(null)">＋ 新しい計画を作る</button>';
+  }
+
+  if (plans.length === 0) {
+    html += '<div class="empty">計画がまだありません<br><span style="font-size:11px;margin-top:6px;display:block;">山を決めたら計画を作ってみよう</span></div>';
+  } else {
+    plans.forEach(function(p, i) {
+      var dateStr = p.date ? new Date(p.date).toLocaleDateString('ja-JP', {month:'long',day:'numeric'}) : '日程未定';
+      var checkedCount = (p.items || []).filter(function(it){ return it.checked; }).length;
+      var totalCount = (p.items || []).length;
+      html += '<div class="plan-card">';
+      html += '<div class="plan-card-top">';
+      html += '<div class="plan-name">'+(p.mountain || '山名未設定')+'</div>';
+      html += '<div class="plan-date">📅 '+dateStr+(p.place ? '　📍 '+p.place : '')+'</div>';
+      html += '</div>';
+      html += '<div class="plan-card-body">';
+      if (totalCount > 0) {
+        html += '<div style="font-size:12px;color:#7a7068;margin-bottom:8px">持ち物 '+checkedCount+'/'+totalCount+'チェック済み</div>';
+        html += '<div style="height:4px;background:#f0ede5;border-radius:2px;margin-bottom:10px;overflow:hidden">';
+        html += '<div style="width:'+(totalCount>0?Math.round(checkedCount/totalCount*100):0)+'%;height:100%;background:#4a5e4a;border-radius:2px"></div></div>';
+      }
+      html += '<div class="plan-actions">';
+      html += '<button class="btn btn-outline" onclick="openDetail('+i+')">詳細</button>';
+      html += '<button class="btn btn-primary" onclick="openForm('+i+')">編集</button>';
+      html += '<button class="btn btn-danger" onclick="deletePlan('+i+')">削除</button>';
+      html += '</div></div></div>';
+    });
+  }
+
+  el.innerHTML = html;
+}
+
+// ===== フォーム =====
+function openForm(index) {
+  editingIndex = index;
+  var plans = getPlans();
+  var plan = (index !== null) ? plans[index] : null;
+
+  document.getElementById('form-title').textContent = (index !== null) ? '計画を編集' : '新しい計画';
+  document.getElementById('f-mountain').value = plan ? (plan.mountain || '') : '';
+  document.getElementById('f-date').value     = plan ? (plan.date || '') : '';
+  document.getElementById('f-place').value    = plan ? (plan.place || '') : '';
+  document.getElementById('f-time').value     = plan ? (plan.time || '') : '';
+  document.getElementById('f-yamap').value    = plan ? (plan.yamap || '') : '';
+  document.getElementById('f-lodge').value    = plan ? (plan.lodge || '') : '';
+  document.getElementById('f-onsen').value    = plan ? (plan.onsen || '') : '';
+  document.getElementById('f-memo').value     = plan ? (plan.memo || '') : '';
+
+  // お店リンク
+  var shopLinks = plan ? (plan.shops || []) : [];
+  renderShopLinks(shopLinks);
+
+  // 持ち物
+  var copyNotice = document.getElementById('copy-notice');
+  copyNotice.style.display = 'none';
+
+  if (plan && plan.items && plan.items.length > 0) {
+    // 編集時：既存リスト
+    currentItems = plan.items.map(function(it){ return Object.assign({}, it); });
+  } else if (index === null && plans.length > 0) {
+    // 新規作成時：前の計画の持ち物をコピー
+    var prevItems = plans[plans.length-1].items || [];
+    if (prevItems.length > 0) {
+      currentItems = prevItems.map(function(it){ return {label: it.label, checked: false}; });
+      copyNotice.style.display = 'block';
+    } else {
+      currentItems = TEMPLATE_DAY.map(function(s){ return {label:s, checked:false}; });
+    }
+  } else if (!plan) {
+    currentItems = TEMPLATE_DAY.map(function(s){ return {label:s, checked:false}; });
+  }
+
+  renderChecklist();
+  document.getElementById('tmpl-day').classList.add('active');
+  document.getElementById('tmpl-stay').classList.remove('active');
+  document.getElementById('form-overlay').classList.add('open');
+  window.scrollTo(0,0);
+}
+
+function closeForm() {
+  document.getElementById('form-overlay').classList.remove('open');
+}
+
+function savePlan() {
+  var plans = getPlans();
+  var shopInputs = document.querySelectorAll('.shop-input');
+  var shops = [];
+  shopInputs.forEach(function(inp){ if(inp.value.trim()) shops.push(inp.value.trim()); });
+
+  var plan = {
+    mountain: document.getElementById('f-mountain').value.trim(),
+    date:     document.getElementById('f-date').value,
+    place:    document.getElementById('f-place').value.trim(),
+    time:     document.getElementById('f-time').value,
+    yamap:    document.getElementById('f-yamap').value.trim(),
+    lodge:    document.getElementById('f-lodge').value.trim(),
+    onsen:    document.getElementById('f-onsen').value.trim(),
+    shops:    shops,
+    memo:     document.getElementById('f-memo').value.trim(),
+    items:    currentItems.slice(),
+  };
+
+  if (editingIndex !== null) {
+    plans[editingIndex] = plan;
+  } else {
+    plans.push(plan);
+  }
+  savePlans(plans);
+  closeForm();
+  renderPlans();
+}
+
+function deletePlan(index) {
+  if (!confirm('この計画を削除しますか？')) return;
+  var plans = getPlans();
+  plans.splice(index, 1);
+  savePlans(plans);
+  renderPlans();
+}
+
+// ===== お店リンク =====
+function renderShopLinks(links) {
+  var el = document.getElementById('shop-links');
+  var html = '';
+  links.forEach(function(link, i) {
+    html += '<div class="link-row">';
+    html += '<input type="url" class="shop-input" value="'+escHtml(link)+'" placeholder="https://...">';
+    html += '<button class="link-del" onclick="removeShopLink('+i+')">✕</button>';
+    html += '</div>';
+  });
+  el.innerHTML = html;
+}
+function addShopLink() {
+  var links = getShopLinks();
+  links.push('');
+  renderShopLinks(links);
+}
+function removeShopLink(i) {
+  var links = getShopLinks();
+  links.splice(i,1);
+  renderShopLinks(links);
+}
+function getShopLinks() {
+  var inputs = document.querySelectorAll('.shop-input');
+  var arr = [];
+  inputs.forEach(function(inp){ arr.push(inp.value); });
+  return arr;
+}
+
+// ===== 持ち物チェックリスト =====
+function applyTemplate(type) {
+  var tmpl = type === 'stay' ? TEMPLATE_STAY : TEMPLATE_DAY;
+  currentItems = tmpl.map(function(s){ return {label:s, checked:false}; });
+  renderChecklist();
+  document.getElementById('tmpl-day').classList.toggle('active', type==='day');
+  document.getElementById('tmpl-stay').classList.toggle('active', type==='stay');
+}
+
+function renderChecklist() {
+  var el = document.getElementById('checklist');
+  if (currentItems.length === 0) { el.innerHTML = ''; return; }
+  var html = '';
+  currentItems.forEach(function(item, i) {
+    html += '<div class="check-item'+(item.checked?' checked':'')+'">'; 
+    html += '<input type="checkbox"'+(item.checked?' checked':'')+' onchange="toggleCheck('+i+',this.checked)">';
+    html += '<span class="item-label" onclick="toggleCheck('+i+',!currentItems['+i+'].checked)">'
+      +escHtml(item.label)+'</span>';
+    html += '<button class="item-del" onclick="removeItem('+i+')">×</button>';
+    html += '</div>';
+  });
+  el.innerHTML = html;
+}
+
+function toggleCheck(i, val) {
+  currentItems[i].checked = val;
+  renderChecklist();
+  // 編集中の計画がある場合は即保存
+  if (editingIndex !== null) {
+    var plans = getPlans();
+    if (plans[editingIndex]) {
+      plans[editingIndex].items = currentItems.slice();
+      savePlans(plans);
+      renderPlans();
+    }
+  }
+}
+
+function removeItem(i) {
+  currentItems.splice(i,1);
+  renderChecklist();
+}
+
+function addCheckItem() {
+  var inp = document.getElementById('new-item-input');
+  var val = inp.value.trim();
+  if (!val) return;
+  currentItems.push({label:val, checked:false});
+  renderChecklist();
+  inp.value = '';
+  inp.focus();
+}
+
+// ===== 詳細表示 =====
+function openDetail(index) {
+  var plans = getPlans();
+  var p = plans[index];
+  if (!p) return;
+
+  document.getElementById('detail-title').textContent = p.mountain || '計画詳細';
+
+  var dateStr = p.date ? new Date(p.date).toLocaleDateString('ja-JP', {year:'numeric',month:'long',day:'numeric'}) : '未定';
+  var timeStr = p.time || '未定';
+
+  var html = '';
+
+  // 基本情報
+  html += '<div class="card" style="margin-bottom:10px"><div class="card-header">📍 基本情報</div><div class="card-body">';
+  html += detailRow('山名', p.mountain || '未設定');
+  html += detailRow('日程', dateStr);
+  html += detailRow('集合場所', p.place || '未設定');
+  html += detailRow('集合時間', timeStr);
+  html += '</div></div>';
+
+  // リンク集
+  var hasLinks = p.yamap || p.lodge || p.onsen || (p.shops && p.shops.length > 0);
+  if (hasLinks) {
+    html += '<div class="card" style="margin-bottom:10px"><div class="card-header">🔗 リンク集</div><div class="card-body">';
+    if (p.yamap) html += detailRow('YAMAPルート', '<a href="'+escHtml(p.yamap)+'" target="_blank">ルートを開く →</a>');
+    if (p.lodge) html += detailRow('宿・テント場', '<a href="'+escHtml(p.lodge)+'" target="_blank">開く →</a>');
+    if (p.onsen) html += detailRow('温泉', '<a href="'+escHtml(p.onsen)+'" target="_blank">開く →</a>');
+    if (p.shops && p.shops.length > 0) {
+      p.shops.forEach(function(s,i){
+        html += detailRow('お店'+(p.shops.length>1?' '+(i+1):''), '<a href="'+escHtml(s)+'" target="_blank">開く →</a>');
+      });
+    }
+    html += '</div></div>';
+  }
+
+  // 持ち物
+  if (p.items && p.items.length > 0) {
+    html += '<div class="card" style="margin-bottom:10px"><div class="card-header">🎒 持ち物チェックリスト</div><div class="card-body">';
+    html += '<div class="checklist">';
+    p.items.forEach(function(item, i) {
+      html += '<div class="check-item'+(item.checked?' checked':'')+'">'; 
+      html += '<input type="checkbox"'+(item.checked?' checked':'')+' onchange="toggleDetailCheck('+index+','+i+',this.checked)">';
+      html += '<span class="item-label">'+escHtml(item.label)+'</span>';
+      html += '</div>';
+    });
+    html += '</div></div></div>';
+  }
+
+  // メモ
+  if (p.memo) {
+    html += '<div class="card" style="margin-bottom:10px"><div class="card-header">📝 メモ</div>';
+    html += '<div class="card-body" style="font-size:13px;line-height:1.7;white-space:pre-wrap">'+escHtml(p.memo)+'</div></div>';
+  }
+
+  html += '<button class="pdf-btn" onclick="printPlan()">📄 PDFとして保存</button>';
+
+  document.getElementById('detail-body').innerHTML = html;
+  document.getElementById('detail-overlay').classList.add('open');
+  window.scrollTo(0,0);
+}
+
+function toggleDetailCheck(planIndex, itemIndex, val) {
+  var plans = getPlans();
+  if (plans[planIndex] && plans[planIndex].items && plans[planIndex].items[itemIndex]) {
+    plans[planIndex].items[itemIndex].checked = val;
+    savePlans(plans);
+    renderPlans();
+    // 詳細画面を再描画
+    openDetail(planIndex);
+  }
+}
+
+function closeDetail() {
+  document.getElementById('detail-overlay').classList.remove('open');
+}
+
+function printPlan() {
+  window.print();
+}
+
+function detailRow(label, val) {
+  return '<div class="detail-row"><div class="detail-label">'+label+'</div><div class="detail-val">'+val+'</div></div>';
+}
+
+// ===== お気に入り・登った記録 =====
+function renderFavorites() {
+  var favs = [];
+  var climbs = new Map();
+  try { favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); } catch {}
+  try { climbs = new Map(JSON.parse(localStorage.getItem(CLM_KEY) || '[]')); } catch {}
+
+  document.getElementById('fav-count').textContent = favs.length;
+  document.getElementById('climbed-count').textContent = climbs.size;
+
+  var el = document.getElementById('fav-list');
+  if (favs.length === 0) {
+    el.innerHTML = '<div class="empty" style="padding:20px 0">お気に入りの山がありません<br><span style="font-size:11px">山カードの ☆ ボタンで追加できます</span></div>';
+    return;
+  }
+  // mountains.jsonから山名を取得
+  fetchMountainNames(function(nameMap) {
+    var html = '';
+    favs.forEach(function(id) {
+      var name = nameMap[id] || id;
+      var url = '/mountains/'+id+'/';
+      html += '<a class="chip-s" href="'+url+'">'+escHtml(name)+'</a>';
+    });
+    el.innerHTML = html || '<div class="empty">なし</div>';
+  });
+}
+
+function renderClimbed() {
+  var climbs = new Map();
+  try { climbs = new Map(JSON.parse(localStorage.getItem(CLM_KEY) || '[]')); } catch {}
+
+  var el = document.getElementById('climbed-list');
+  if (climbs.size === 0) {
+    el.innerHTML = '<div class="empty" style="padding:20px 0">登った記録がありません<br><span style="font-size:11px">山カードの 🥾 ボタンで記録できます</span></div>';
+    return;
+  }
+  fetchMountainNames(function(nameMap) {
+    var entries = [...climbs.entries()].sort(function(a,b){ return b[1].localeCompare(a[1]); });
+    var html = '';
+    entries.forEach(function(e) {
+      var id = e[0], date = e[1];
+      var name = nameMap[id] || id;
+      var url = '/mountains/'+id+'/';
+      html += '<a class="chip-g" href="'+url+'"><span style="font-weight:700">'+escHtml(name)+'</span><span class="mdate">'+date+'</span></a>';
+    });
+    el.innerHTML = html;
+  });
+}
+
+var _nameMap = null;
+function fetchMountainNames(cb) {
+  if (_nameMap) { cb(_nameMap); return; }
+  fetch('/data/mountains.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data) {
+      _nameMap = {};
+      data.forEach(function(m){ _nameMap[m.id] = m.name; });
+      cb(_nameMap);
+    })
+    .catch(function(){ cb({}); });
+}
+
+// ===== ユーティリティ =====
+function escHtml(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+init();
+</script>
+</body>
+</html>

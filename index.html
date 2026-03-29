@@ -90,7 +90,7 @@ const CATEGORY_STYLE = {
   "人気の山": { bg: "#e4e4e8", color: "#48485a", label: "人気の山" },
 };
 
-const mountains = [
+window.__mountainsBase = [
   {
     id: "tanzawa",
     lat: 35.4779,
@@ -118,7 +118,7 @@ const mountains = [
     description: "神奈川県最高峰エリア。ブナの原生林が美しく、四季を通じて楽しめる。",
     yamapUrl: "https://yamap.com/mountains/110",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月〜4月",
+    season6Crampons: "12月・4月（1〜3月は12本必要）",
         category: "百名山",
   },
   {
@@ -177,7 +177,7 @@ const mountains = [
     ],
     description: "百名山最低峰。ケーブルカー・ロープウェイあり。山頂からは関東平野を一望。",
     yamapUrl: "https://yamap.com/mountains/90",
-    seasonNoGear: "通年",
+    seasonNoGear: "5月〜11月",
     season6Crampons: "なし",
         category: "百名山",
   },
@@ -207,8 +207,8 @@ const mountains = [
     ],
     description: "東京都最高峰。奥多摩を代表する名峰で、ブナ林の縦走路が美しい。",
     yamapUrl: "https://yamap.com/mountains/25",
-    seasonNoGear: "5月〜11月",
-    season6Crampons: "12月〜4月",
+    seasonNoGear: "4月下旬〜11月",
+    season6Crampons: "12月〜3月（チェーンスパイク推奨）",
         trainAccess: "奥多摩駅→バス15分→鴨沢",
     category: "百名山",
   },
@@ -268,8 +268,8 @@ const mountains = [
     ],
     description: "草原状の稜線から富士山や南アルプスの展望が開ける。アクセスが良く人気。",
     yamapUrl: "https://yamap.com/mountains/178",
-    seasonNoGear: "通年",
-    season6Crampons: "なし",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
         trainAccess: "塩山駅→バス25分→上日川峠（季節）",
     category: "百名山",
   },
@@ -299,7 +299,7 @@ const mountains = [
     description: "鋸状の岩峰が連なる個性的な山容。クサリ場が多く登り応えがある。",
     yamapUrl: "https://yamap.com/mountains/24",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月〜4月",
+    season6Crampons: "12月〜4月（岩場につきチェーンスパイク推奨）",
             category: "百名山",
   },
   {
@@ -328,7 +328,7 @@ const mountains = [
     ],
     description: "甲州・武州・信州の3県の境に位置。千曲川・荒川・笛吹川の源流の山。",
     yamapUrl: "https://yamap.com/mountains/26",
-    seasonNoGear: "5月〜11月",
+    seasonNoGear: "5月下旬〜11月",
     season6Crampons: "12月〜4月",
         category: "百名山",
   },
@@ -389,7 +389,7 @@ const mountains = [
     description: "上毛三山の一つ。カルデラ湖（大沼）を擁する成層火山。展望が良い。",
     yamapUrl: "https://yamap.com/mountains/21",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月〜4月",
+    season6Crampons: "12月・4月（1〜3月は12本必要）",
             category: "百名山",
   },
   {
@@ -418,7 +418,7 @@ const mountains = [
     ],
     description: "奥秩父の盟主。山頂に五丈石という奇岩がそびえ、展望も抜群。",
     yamapUrl: "https://yamap.com/mountains/176",
-    seasonNoGear: "5月〜11月",
+    seasonNoGear: "5月下旬〜11月",
     season6Crampons: "12月〜4月",
         category: "百名山",
   },
@@ -448,7 +448,7 @@ const mountains = [
     ],
     description: "南アルプス北部の山。地蔵岳のオベリスクが特徴的。白砂の稜線が美しい。",
     yamapUrl: "https://yamap.com/mountains/63",
-    seasonNoGear: "6月〜10月",
+    seasonNoGear: "7月〜10月",
     season6Crampons: "不可（残雪期は12本必要）",
         category: "百名山",
   },
@@ -539,7 +539,7 @@ const mountains = [
     ],
     description: "八ヶ岳連峰の最高峰。岩稜帯が続くダイナミックなルート。",
     yamapUrl: "https://yamap.com/mountains/101",
-    seasonNoGear: "5月〜11月",
+    seasonNoGear: "5月下旬〜11月",
     season6Crampons: "12月〜4月",
         category: "百名山",
   },
@@ -664,7 +664,7 @@ const mountains = [
     description: "魔の山とも称される難峰。双耳峰（トマの耳・オキの耳）が特徴。",
     yamapUrl: "https://yamap.com/mountains/164",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月〜5月",
+    season6Crampons: "11月・4月〜5月（12〜3月は12本必要）",
         trainAccess: "土合駅から徒歩5分（ロープウェイ駅）",
     category: "百名山",
   },
@@ -695,7 +695,7 @@ const mountains = [
     description: "栃木県の名峰。活火山で荒涼とした火山景観が広がる。",
     yamapUrl: "https://yamap.com/mountains/8564",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月〜4月",
+    season6Crampons: "3月〜5月・11月（12〜2月は12本推奨）",
         trainAccess: "🚅那須塩原駅→バス30分→峠の茶屋入口",
     category: "百名山",
   },
@@ -726,7 +726,7 @@ const mountains = [
     description: "上信国境の雄峰。なだらかな山容で、高山植物が豊富。",
     yamapUrl: "https://yamap.com/mountains/51",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月〜5月",
+    season6Crampons: "11月・4月〜5月（1〜3月は12本必要）",
             category: "百名山",
   },
   {
@@ -786,7 +786,7 @@ const mountains = [
     description: "上州武尊山とも呼ばれる。日本武尊の伝説が残る上毛三山の一つ。",
     yamapUrl: "https://yamap.com/mountains/170",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月〜5月",
+    season6Crampons: "11月・4月〜5月（1〜3月は12本必要）",
             category: "百名山",
   },
   {
@@ -871,7 +871,7 @@ const mountains = [
     ],
     description: "北アルプス屈指の高山植物の宝庫。大雪渓は夏でも残雪がある。",
     yamapUrl: "https://yamap.com/mountains/17",
-    seasonNoGear: "7月〜9月",
+    seasonNoGear: "8月〜9月",
     season6Crampons: "不可（雪渓・12本必要）",
         trainAccess: "白馬駅→バス25分→猿倉（季節）",
     category: "百名山",
@@ -903,7 +903,7 @@ const mountains = [
     description: "バスで2700mの畳平まで行けるため、初心者でも3000m峰に登れる。",
     yamapUrl: "https://yamap.com/mountains/146",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月（残雪あり・注意）",
+    season6Crampons: "5月〜7月上旬（残雪あり）",
             category: "百名山",
   },
   {
@@ -1055,7 +1055,7 @@ const mountains = [
     description: "越後富士の異名を持つ新潟の名峰。スカイケーブル利用ルートも人気。火打山とのセット登山も定番。",
     yamapUrl: "https://yamap.com/mountains/166",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "5月・11月",
+    season6Crampons: "5月〜6月・10月〜11月",
         trainAccess: "妙高高原駅→バス30分→燕温泉",
     category: "百名山",
   },
@@ -1086,7 +1086,7 @@ const mountains = [
     description: "越後の名峰。山頂付近は広大な湿原が広がり、池塘が点在する。",
     yamapUrl: "https://yamap.com/mountains/162",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月・11月",
+    season6Crampons: "5月〜6月・10月〜11月",
         trainAccess: "六日町駅→バス27分→清水（季節）",
     category: "百名山",
   },
@@ -1147,7 +1147,7 @@ const mountains = [
     description: "尾瀬を代表する山。蛇紋岩の山で固有種の高山植物が多い。",
     yamapUrl: "https://yamap.com/mountains/103",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月・11月",
+    season6Crampons: "6月上旬・11月（5月は入山禁止）",
             category: "百名山",
   },
   {
@@ -1177,7 +1177,7 @@ const mountains = [
     description: "湿原と池塘が広がる稜線が美しい。東北南部の名峰。",
     yamapUrl: "https://yamap.com/mountains/159",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月・11月",
+    season6Crampons: "5月〜6月上旬・10月〜11月",
         category: "百名山",
   },
   {
@@ -1239,7 +1239,7 @@ const mountains = [
     description: "福島のシンボル。磐梯朝日国立公園の主峰。猪苗代湖を見下ろす。",
     yamapUrl: "https://yamap.com/mountains/158",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月〜4月",
+    season6Crampons: "12月・4月〜5月上旬（1〜3月は12本推奨）",
         trainAccess: "猪苗代駅→バス30分→八方台（季節）",
     category: "百名山",
   },
@@ -1269,8 +1269,8 @@ const mountains = [
     ],
     description: "東北最高峰。双耳峰の雄姿と尾瀬の自然が魅力。",
     yamapUrl: "https://yamap.com/mountains/163",
-    seasonNoGear: "5月〜11月",
-    season6Crampons: "12月〜4月",
+    seasonNoGear: "6月〜10月",
+    season6Crampons: "11月〜6月上旬",
             category: "百名山",
   },
 
@@ -1547,7 +1547,7 @@ const mountains = [
     ],
     description: "奥秩父の名峰。山頂直下に巨大な岩壁があり、クサリ場が続くスリリングな登山が楽しめる。",
     yamapUrl: "https://yamap.com/mountains/14413",
-    seasonNoGear: "4月〜11月",
+    seasonNoGear: "4月下旬〜11月",
     season6Crampons: "12月〜3月",
         trainAccess: "山梨市駅→バス30分→乾徳山登山口（季節）",
     category: "二百名山",
@@ -1672,7 +1672,7 @@ const mountains = [
     description: "北アルプスのパノラマ台。山頂から槍・穂高の絶景が広がる。北アルプス入門の山。",
     yamapUrl: "https://yamap.com/mountains/144",
     seasonNoGear: "7月〜9月",
-    season6Crampons: "10月・6月",
+    season6Crampons: "10月〜11月・5月〜6月",
             category: "百名山",
   },
   {
@@ -1703,7 +1703,7 @@ const mountains = [
     description: "北アルプス唯一の活火山。山頂付近の噴気と硫黄の景観が迫力満点。",
     yamapUrl: "https://yamap.com/mountains/145",
     seasonNoGear: "6月〜10月（規制確認要）",
-    season6Crampons: "不可（活火山・12本必要）",
+    season6Crampons: "11月・5月（残雪期のみ・規制確認要）",
             category: "百名山",
   },
   {
@@ -1915,7 +1915,7 @@ const mountains = [
     description: "志賀高原の最高峰。北アルプスや北信五岳など360度の大展望が楽しめる。",
     yamapUrl: "https://yamap.com/mountains/9836",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月〜5月",
+    season6Crampons: "11月〜6月",
         trainAccess: "湯田中駅→バス25分→聖平入口（季節）",
     category: "二百名山",
   },
@@ -1945,7 +1945,7 @@ const mountains = [
     description: "長野市の北西にそびえる修験道の山。北アルプスや善光寺平の眺望が広がる。",
     yamapUrl: "https://yamap.com/mountains/4405",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月〜4月",
+    season6Crampons: "12月・4月（1〜3月は12本推奨）",
         trainAccess: "長野駅→バス30分→一ノ鳥居苑地",
     category: "二百名山",
   },
@@ -1976,7 +1976,7 @@ const mountains = [
     description: "北信五岳のひとつ。静かな樹林帯と山頂からの妙高・戸隠連峰の眺めが魅力。",
     yamapUrl: "https://yamap.com/mountains/16886",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月〜4月",
+    season6Crampons: "11月〜5月",
         trainAccess: "黒姫駅→バス20分→古池登山口（季節）",
     category: "二百名山",
   },
@@ -2035,7 +2035,7 @@ const mountains = [
     description: "野反湖を起点とするアクセスのよい奥志賀の山。高山植物が豊富で秋の草紅葉が美しい。",
     yamapUrl: "https://yamap.com/mountains/16853",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月〜5月",
+    season6Crampons: "11月〜6月",
             category: "二百名山",
   },
   {
@@ -2094,7 +2094,7 @@ const mountains = [
     description: "奥只見の秘峰。前グラの岩場が核心部で鎖場が続く。越後三山の展望が素晴らしい。",
     yamapUrl: "https://yamap.com/mountains/9268",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月〜5月",
+    season6Crampons: "11月〜6月",
         category: "二百名山",
   },
   {
@@ -2210,7 +2210,7 @@ const mountains = [
     description: "安曇野のシンボル「安曇富士」とも呼ばれる美しい山容。山頂からの北アルプスの眺めが壮観。",
     yamapUrl: "https://yamap.com/mountains/16362",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月〜5月",
+    season6Crampons: "11月〜6月",
         category: "二百名山",
   },
   {
@@ -2271,7 +2271,7 @@ const mountains = [
     description: "「ほんとの空」で知られる高村光太郎の詩の舞台。ゴンドラで気軽に登れる人気の福島の名山。",
     yamapUrl: "https://yamap.com/mountains/157",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月〜4月",
+    season6Crampons: "12月・4月（1〜3月は12本推奨）",
         trainAccess: "🚅二本松駅→バス30分→岳温泉（季節）",
     category: "百名山",
   },
@@ -2302,7 +2302,7 @@ const mountains = [
     description: "磐梯吾妻スカイラインで浄土平まで車で行ける。一切経山の魔女の瞳（五色沼）は絶景。",
     yamapUrl: "https://yamap.com/mountains/156",
     seasonNoGear: "6月〜10月（規制確認要）",
-    season6Crampons: "11月〜5月",
+    season6Crampons: "11月・4月〜5月（1〜3月は12本必要）",
             category: "百名山",
   },
   {
@@ -2332,7 +2332,7 @@ const mountains = [
     description: "越後三山の主峰。稜線からの眺望が素晴らしい。枝折峠からの雲海も絶景。",
     yamapUrl: "https://yamap.com/mountains/160",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月〜5月",
+    season6Crampons: "11月〜6月",
         category: "百名山",
   },
   {
@@ -2392,7 +2392,7 @@ const mountains = [
     description: "山頂に広大な高層湿原が広がる独特の山。池塘が点在する別天地のような山頂台地。",
     yamapUrl: "https://yamap.com/mountains/152",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月・11月",
+    season6Crampons: "5月〜6月・10月〜11月",
         trainAccess: "🚅越後湯沢駅→バス30分→和田小屋（季節）",
     category: "百名山",
   },
@@ -2423,7 +2423,7 @@ const mountains = [
     description: "北アルプス最北端の名峰。笹平の笹原と双耳峰の山容が美しい。紅葉の名所。",
     yamapUrl: "https://yamap.com/mountains/165",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月・11月",
+    season6Crampons: "5月〜6月・10月〜11月",
         category: "百名山",
   },
   {
@@ -2452,7 +2452,7 @@ const mountains = [
     description: "妙高山と並ぶ頸城山塊の名峰。山頂付近の天狗の庭は高層湿原の絶景。高山植物が豊富。",
     yamapUrl: "https://yamap.com/mountains/167",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月・11月",
+    season6Crampons: "5月〜7月上旬・10月〜11月",
         trainAccess: "妙高高原駅→バス30分→笹ヶ峰（季節）",
     category: "百名山",
   },
@@ -2483,7 +2483,7 @@ const mountains = [
     description: "戸隠連峰の最高峰。修験道の山として長い歴史を持つ。急登が続く本格登山コース。",
     yamapUrl: "https://yamap.com/mountains/168",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月〜5月",
+    season6Crampons: "11月〜6月",
             category: "百名山",
   },
   {
@@ -2601,7 +2601,7 @@ const mountains = [
     description: "上州と下野の国境に位置する深山。クラシックルートは林道が長く秘境感がある。",
     yamapUrl: "https://yamap.com/mountains/169",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月〜5月",
+    season6Crampons: "11月〜5月（冬期は通行止め多）",
         category: "百名山",
   },
   {
@@ -2672,7 +2672,7 @@ const mountains = [
     trailhead: "八方尾根（ゴンドラ・リフト利用）",
     trailheadAddress: "長野県北安曇郡白馬村北城",
     parking: "八方第5駐車場ほか（約1000台・無料）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "5月〜6月・11月（12〜4月は12本必要）",
     difficulty: "中級",
     courseCoefficientRange: "14〜27", courseCoefficient: [14, 27],
     routes: [
@@ -2967,7 +2967,7 @@ const mountains = [
     driveTimeOmiya: 315,
     trailhead: "刈田岳（蔵王エコーライン）", trailheadAddress: "宮城県刈田郡蔵王町遠刈田温泉",
     parking: "刈田岳山頂駐車場（約200台・無料）",
-    season: "6月〜10月", seasonNoGear: "6月〜10月", season6Crampons: "11月〜5月",
+    season: "6月〜10月", seasonNoGear: "6月〜10月", season6Crampons: "11月・4月〜5月（12〜3月は12本推奨）",
     difficulty: "初〜中級", courseCoefficientRange: "6〜16", courseCoefficient: [6, 16],
     routes: [
       { name: "刈田岳〜熊野岳往復", time: "2時間", distance: "5.0km", elevation: "+200m" },
@@ -3014,7 +3014,7 @@ const mountains = [
     trailhead: "戸台口（仙流荘）",
     trailheadAddress: "長野県伊那市長谷溝口",
     parking: "仙流荘前駐車場（無料）",
-    season: "6月〜10月", seasonNoGear: "6月〜10月", season6Crampons: "11月〜5月",
+    season: "6月〜10月", seasonNoGear: "6月〜10月", season6Crampons: "11月〜6月上旬",
     difficulty: "上級",
     courseCoefficientRange: "45〜60", courseCoefficient: [45, 60],
     routes: [
@@ -3863,6 +3863,24 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
 // ===================== 掲示板ここまで =====================
 
 function App() {
+  const [mountains, setMountains] = useState(() => window.__mountainsBase || []);
+  useEffect(() => {
+    fetch('/data/mountains.json')
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        // mountains.jsonのseasonNoGear/season6Cramponsでindex.html側を上書き
+        const updated = (window.__mountainsBase || []).map(function(m) {
+          const jm = data.find(function(d){ return d.id === m.id; });
+          if (!jm) return m;
+          return Object.assign({}, m, {
+            seasonNoGear:    jm.seasonNoGear    !== undefined ? jm.seasonNoGear    : m.seasonNoGear,
+            season6Crampons: jm.season6Crampons !== undefined ? jm.season6Crampons : m.season6Crampons,
+          });
+        });
+        setMountains(updated);
+      })
+      .catch(function(){});
+  }, []);
   const [search, setSearch] = useState(() => { try { const _v = sessionStorage.getItem("ym_search"); return _v !== null ? JSON.parse(_v) : ""; } catch { return ""; } });
   const [sort, setSort] = useState(() => { try { const _v = sessionStorage.getItem("ym_sort"); return _v !== null ? JSON.parse(_v) : "近い順"; } catch { return "近い順"; } });
   const [area, setArea] = useState(() => { try { const _v = sessionStorage.getItem("ym_area"); return _v !== null ? JSON.parse(_v) : "すべて"; } catch { return "すべて"; } });
@@ -3886,6 +3904,10 @@ function App() {
   const [quickOpen, setQuickOpen] = React.useState(false);
   const [matrixOpen, setMatrixOpen] = React.useState(false);
   const [showBoard, setShowBoard] = useState(false);
+  const [favorites, setFavorites] = useState(() => { try { return new Set(JSON.parse(localStorage.getItem("ym_favorites")||"[]")); } catch { return new Set(); } });
+  const [climbed, setClimbed] = useState(() => { try { return new Map(JSON.parse(localStorage.getItem("ym_climbed")||"[]")); } catch { return new Map(); } });
+  const [favOnly, setFavOnly] = useState(false);
+  const [myTab, setMyTab] = useState(false);
   const [boardInitMountain, setBoardInitMountain] = useState("");
   const [selected, setSelected] = useState(null);
 
@@ -3908,6 +3930,22 @@ function App() {
     sessionStorage.setItem("ym_viewmode", JSON.stringify(viewMode));
     } catch {}
   }, [search, sort, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, viewMode]);
+  const toggleFav = (e, id) => {
+    e.preventDefault(); e.stopPropagation();
+    const next = new Set(favorites);
+    if (next.has(id)) next.delete(id); else next.add(id);
+    localStorage.setItem("ym_favorites", JSON.stringify([...next]));
+    setFavorites(next);
+  };
+  const toggleClimb = (e, id) => {
+    e.preventDefault(); e.stopPropagation();
+    const next = new Map(climbed);
+    if (next.has(id)) next.delete(id);
+    else next.set(id, new Date().toLocaleDateString("ja-JP", {year:"numeric",month:"2-digit",day:"2-digit"}));
+    localStorage.setItem("ym_climbed", JSON.stringify([...next]));
+    setClimbed(next);
+  };
+
   const getMountainUrl = (id) => {
     const special = { mizugatake: "mizugaki" };
     return "/mountains/" + (special[id] || id) + "/";
@@ -3918,6 +3956,7 @@ function App() {
 
   const filtered = useMemo(() => {
     let list = mountains.filter(m => {
+      if (favOnly && !favorites.has(m.id)) return false;
       const matchSearch = !search || m.name.includes(search) || m.kana.includes(search);
       const matchArea = area === "すべて" || m.area.includes(area);
       const matchCat = categoryFilter === "すべて" || m.category === categoryFilter;
@@ -3953,7 +3992,7 @@ function App() {
     else if (sort === "標高順") list = [...list].sort((a, b) => b.elevation - a.elevation);
     else if (sort === "体力度順") list = [...list].sort((a, b) => b.courseCoefficient[1] - a.courseCoefficient[1]);
     return list;
-  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure]);
+  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure, favOnly, favorites, mountains]);
 
   const btnActive = { backgroundColor: "#4a5e4a", color: "white", borderColor: "#4a5e4a" };
   const btnInactive = { backgroundColor: "white", color: "#5a5248", borderColor: "#ccc8c0" };
@@ -3969,15 +4008,19 @@ function App() {
             <polygon points="0,50 0,30 50,14 90,24 130,6 170,20 210,3 250,18 290,8 330,22 390,10 390,50"/>
           </svg>
           <div className="max-w-3xl mx-auto">
-            {/* ロゴ行 */}
-            <div style={{display:"flex",alignItems:"center",gap:"9px",marginBottom:"16px",position:"relative",zIndex:1}}>
+            {/* ロゴ行1: ロゴ＋マイページ＋シェア */}
+            <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"6px",position:"relative",zIndex:1}}>
               <svg width="24" height="24" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
-              <div style={{flex:1}}>
-                <h1 style={{fontFamily:"Georgia,serif",fontSize:"23px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
-                
-              </div>
-              <a href="/about/" style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",textDecoration:"none",flexShrink:0}}>運営者</a>
-              <button onClick={() => setShowBoard(true)} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",cursor:"pointer",flexShrink:0}}>提案</button>
+              <h1 style={{fontFamily:"Georgia,serif",fontSize:"23px",fontWeight:"700",color:"white",lineHeight:1,margin:0,flex:1}}>Yamatch</h1>
+              <a href="/mypage/" style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",fontWeight:"700",textDecoration:"none",flexShrink:0}}>📋 マイページ</a>
+              <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"5px 7px",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center"}}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>
+              </button>
+            </div>
+            {/* ロゴ行2: 運営者・提案 */}
+            <div style={{display:"flex",alignItems:"center",gap:"10px",marginBottom:"10px",position:"relative",zIndex:1}}>
+              <a href="/about/" style={{fontSize:"10px",color:"rgba(255,255,255,0.45)",textDecoration:"none"}}>運営者</a>
+              <button onClick={() => setShowBoard(true)} style={{fontSize:"10px",color:"rgba(255,255,255,0.45)",background:"none",border:"none",cursor:"pointer",padding:0}}>ご意見・提案</button>
             </div>
             {/* キャッチコピー */}
             <div style={{position:"relative",zIndex:1,marginBottom:"14px"}}>
@@ -4106,6 +4149,15 @@ function App() {
           </div>
         </div>
 
+        {/* My記録 → マイページリンク */}
+        {(favorites.size > 0 || climbed.size > 0) && (
+          <a href="/mypage/" style={{display:"flex",alignItems:"center",gap:"7px",background:"#4a5e4a",borderRadius:"20px",padding:"8px 16px",fontSize:"12px",fontWeight:"700",color:"white",textDecoration:"none",marginBottom:"8px",justifyContent:"center"}}>
+            <span>📋</span>
+            My記録・登山計画
+            {favorites.size > 0 && <span style={{background:"#f5c518",color:"#3a3010",borderRadius:"20px",padding:"1px 7px",fontSize:"11px"}}>⭐ {favorites.size}</span>}
+            {climbed.size > 0 && <span style={{background:"rgba(255,255,255,0.25)",color:"white",borderRadius:"20px",padding:"1px 7px",fontSize:"11px"}}>🥾 {climbed.size}山</span>}
+          </a>
+        )}
         {/* 並び替えボタン */}
         <div style={{display:"flex",gap:"6px",marginBottom:"6px",overflowX:"auto",WebkitOverflowScrolling:"touch",paddingBottom:"2px"}}>
           <span style={{fontSize:"12px",color:"#7a7068",whiteSpace:"nowrap",alignSelf:"center",flexShrink:0}}>並び替え:</span>
@@ -4134,6 +4186,7 @@ function App() {
               <div style={{display:"flex",gap:"4px",flexWrap:"wrap"}}>
                 {dayTripOnly && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>日帰り</span>}
                 {trainOnly && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>電車OK</span>}
+                {favOnly && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>⭐お気に入り</span>}
                 {categoryFilter !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{categoryFilter}</span>}
                 {area !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{area}</span>}
                 {driveTimeFilter && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{driveTimeFilter/60}h以内</span>}
@@ -4177,6 +4230,7 @@ function App() {
                   <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content" }}>
                     <button onClick={() => setDayTripOnly(!dayTripOnly)} style={chip(dayTripOnly)}>🌅 日帰り</button>
                     <button onClick={() => setTrainOnly(!trainOnly)} style={chip(trainOnly)}>🚃 電車OK</button>
+                    <button onClick={() => setFavOnly(!favOnly)} style={chip(favOnly)}>⭐ お気に入り</button>
                   </div>
                 </div>
 
@@ -4357,6 +4411,28 @@ function App() {
                         <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "500", background: cramponBg, color: cramponColor }}>
                           {cramponLabel}
                         </span>
+                      </div>
+                      {/* お気に入り・登った記録ボタン */}
+                      <div style={{position:"absolute",top:"7px",right:"7px",display:"flex",gap:"4px",zIndex:2}}
+                           onClick={e => e.preventDefault()}>
+                        <button
+                          onClick={e => toggleClimb(e, m.id)}
+                          title={climbed.has(m.id) ? "登山済み（タップで解除）" : "登った記録をつける"}
+                          style={{width:"26px",height:"26px",borderRadius:"50%",border:"none",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"13px",
+                            background: climbed.has(m.id) ? "#4a6038" : "rgba(255,255,255,0.85)",
+                            boxShadow:"0 1px 3px rgba(0,0,0,0.15)"
+                          }}>
+                          {climbed.has(m.id) ? "✓" : "🥾"}
+                        </button>
+                        <button
+                          onClick={e => toggleFav(e, m.id)}
+                          title={favorites.has(m.id) ? "お気に入り解除" : "お気に入りに追加"}
+                          style={{width:"26px",height:"26px",borderRadius:"50%",border:"none",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"14px",
+                            background: favorites.has(m.id) ? "#fffbe0" : "rgba(255,255,255,0.85)",
+                            boxShadow:"0 1px 3px rgba(0,0,0,0.15)"
+                          }}>
+                          {favorites.has(m.id) ? "⭐" : "☆"}
+                        </button>
                       </div>
                     </a>
                   );

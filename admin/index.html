@@ -349,6 +349,16 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
         <label>凡例テキスト3（任意）</label>
         <input type="text" id="f-legend3" placeholder="🔴 12本アイゼン必要" oninput="markChanged()">
       </div>
+      <div class="field" style="margin-top:10px;">
+        <label>アイゼン不要期間（例：5月〜11月 / 通年）</label>
+        <input type="text" id="f-no-gear" placeholder="例：5月〜11月" oninput="markChanged()">
+        <div style="font-size:10px;color:#8a8078;margin-top:3px;">「通年」または「〇月〜〇月」形式。複数の場合は「5月〜11月・4月下旬」のように・区切り。</div>
+      </div>
+      <div class="field" style="margin-top:8px;">
+        <label>6本アイゼン対応期間（例：12月〜4月）</label>
+        <input type="text" id="f-six-crampons" placeholder="例：12月〜4月" oninput="markChanged()">
+        <div style="font-size:10px;color:#8a8078;margin-top:3px;">「不可（12本必要）」や注釈付き「12月・4月（1〜3月は12本必要）」も可。</div>
+      </div>
     </div>
 
     <!-- 持ち物アフィリエイトリンク -->
@@ -375,6 +385,9 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
         修正内容をテキストコピー（記録用）
       </button>
       <div class="copy-success" id="copy-success">✅ ダウンロードしました！GitHubにアップしてください</div>
+      <div id="crampon-warn" style="display:none;margin-top:6px;padding:8px 10px;background:#fff8e0;border:1px solid #e8d060;border-radius:8px;font-size:11px;color:#7a5800;line-height:1.6;">
+        ⚠️ アイゼン情報を変更しました。index.html 内の同じ山の seasonNoGear / season6Crampons も手動で合わせてください。
+      </div>
     </div>
 
     <!-- 反映手順マニュアル -->
@@ -580,6 +593,8 @@ function openEdit(id) {
   document.getElementById('f-busschedule2').value = busSchedule[1] || '';
 
   // シーズンカレンダー
+  document.getElementById('f-no-gear').value = currentMountain.seasonNoGear || '';
+  document.getElementById('f-six-crampons').value = currentMountain.season6Crampons || '';
   renderSeasonGrid(currentMountain.seasonCalendar || Array(12).fill('s-ok'));
   const legends = currentMountain.calLegend || [];
   document.getElementById('f-legend1').value = legends[0] || '';
@@ -700,6 +715,8 @@ function getFormData() {
     address: document.getElementById('f-address').value,
     gmapUrl: document.getElementById('f-gmap').value,
     amapUrl: document.getElementById('f-amap').value,
+    seasonNoGear: document.getElementById('f-no-gear').value.trim() || currentMountain.seasonNoGear || '',
+    season6Crampons: document.getElementById('f-six-crampons').value.trim() || currentMountain.season6Crampons || '',
     seasonCalendar: [...currentSeason],
     calLegend: [
       document.getElementById('f-legend1').value,
@@ -734,7 +751,14 @@ function saveChanges() {
 
   const el = document.getElementById('copy-success');
   el.style.display = 'block';
-  setTimeout(() => el.style.display = 'none', 4000);
+  setTimeout(() => el.style.display = 'none', 5000);
+  // アイゼン情報変更時の案内
+  const fd = getFormData();
+  const cur = allMountains.find(m => m.id === currentMountain.id) || {};
+  if (fd.seasonNoGear !== (cur.seasonNoGear||'') || fd.season6Crampons !== (cur.season6Crampons||'')) {
+    const warn = document.getElementById('crampon-warn');
+    if (warn) { warn.style.display = 'block'; setTimeout(() => warn.style.display = 'none', 8000); }
+  }
 }
 
 // ===== 変更履歴 =====
