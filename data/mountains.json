@@ -263,6 +263,10 @@
       "winter"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -270,11 +274,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要"
@@ -1273,7 +1273,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-ok",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -2189,13 +2189,13 @@
       "s-hard",
       "s-gear",
       "s-gear",
-      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear",
+      "s-ok",
+      "s-ok",
       "s-hard"
     ],
     "calLegend": [
@@ -2407,9 +2407,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -2418,7 +2418,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -2482,7 +2482,7 @@
       }
     ],
     "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月〜5月"
+    "season6Crampons": "4月〜5月・11月（12〜3月は12本必要）"
   },
   {
     "id": "takeson",
@@ -2633,13 +2633,13 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
       "s-hard"
     ],
     "calLegend": [
@@ -3560,11 +3560,11 @@
       "s-hard",
       "s-hard",
       "s-gear",
-      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear",
+      "s-ok",
+      "s-ok",
       "s-gear",
       "s-hard"
     ],
@@ -3679,7 +3679,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear",
+      "s-ok",
       "s-gear",
       "s-hard"
     ],
@@ -4020,7 +4020,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear",
+      "s-ok",
       "s-gear",
       "s-hard"
     ],
@@ -4249,7 +4249,7 @@
       "s-hard",
       "s-hard",
       "s-gear",
-      "s-gear",
+      "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -4357,18 +4357,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
+      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -4432,7 +4432,7 @@
       }
     ],
     "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月〜6月上旬"
+    "season6Crampons": "4月〜6月上旬・11月（12〜3月は12本必要）"
   },
   {
     "id": "takao",
@@ -4817,6 +4817,10 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -4824,11 +4828,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要"
@@ -5154,10 +5154,6 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -5165,7 +5161,11 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear"
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -5489,6 +5489,10 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -5496,11 +5500,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要"
@@ -5828,13 +5828,13 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard",
+      "s-gear",
       "s-hard"
     ],
     "calLegend": [
@@ -6610,9 +6610,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -6621,7 +6621,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -6687,7 +6687,7 @@
       }
     ],
     "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "iizunasan",
@@ -6724,9 +6724,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
@@ -6837,18 +6837,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
       "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -6915,7 +6915,7 @@
       }
     ],
     "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月〜5月"
+    "season6Crampons": "4月〜5月・11月（12〜3月は12本必要）"
   },
   {
     "id": "kenashiyama",
@@ -6954,13 +6954,13 @@
       "s-gear",
       "s-gear",
       "s-ok",
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
       "s-gear"
     ],
     "calLegend": [
@@ -7060,18 +7060,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
+      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -7135,7 +7135,7 @@
       }
     ],
     "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "nanaitsurasan",
@@ -7283,18 +7283,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
+      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -7358,7 +7358,7 @@
       }
     ],
     "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "nakawarayama",
@@ -7719,9 +7719,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -7730,7 +7730,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -7794,7 +7794,7 @@
       }
     ],
     "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "keizandake",
@@ -8053,9 +8053,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -8064,7 +8064,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -8164,18 +8164,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
+      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -8239,7 +8239,7 @@
       }
     ],
     "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "hiragadake",
@@ -8396,7 +8396,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear",
+      "s-ok",
       "s-gear",
       "s-hard"
     ],
@@ -8619,10 +8619,10 @@
       "s-hard",
       "s-gear",
       "s-gear",
-      "s-gear",
       "s-ok",
       "s-ok",
-      "s-gear",
+      "s-ok",
+      "s-ok",
       "s-gear",
       "s-hard"
     ],
@@ -8725,9 +8725,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -8736,7 +8736,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -8800,7 +8800,7 @@
       }
     ],
     "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "kasagatake",
@@ -9635,9 +9635,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -9646,7 +9646,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -9710,7 +9710,7 @@
       }
     ],
     "seasonNoGear": "7月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "enasan",
@@ -9856,9 +9856,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -9867,7 +9867,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -9931,7 +9931,7 @@
       }
     ],
     "seasonNoGear": "7月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "arakawadake",
@@ -9975,14 +9975,14 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
       "s-hard"
     ],
     "calLegend": [
@@ -10047,7 +10047,7 @@
       }
     ],
     "seasonNoGear": "7月〜9月",
-    "season6Crampons": "10月〜6月"
+    "season6Crampons": "4月〜6月・10月〜11月（12〜3月は12本必要）"
   },
   {
     "id": "akaisidake",
@@ -10092,14 +10092,14 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
       "s-hard"
     ],
     "calLegend": [
@@ -10164,7 +10164,7 @@
       }
     ],
     "seasonNoGear": "7月〜9月",
-    "season6Crampons": "10月〜6月"
+    "season6Crampons": "4月〜6月・10月〜11月（12〜3月は12本必要）"
   },
   {
     "id": "hijiridade",
@@ -10210,14 +10210,14 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
       "s-hard"
     ],
     "calLegend": [
@@ -10282,7 +10282,7 @@
       }
     ],
     "seasonNoGear": "7月〜9月",
-    "season6Crampons": "10月〜6月"
+    "season6Crampons": "4月〜6月・10月〜11月（12〜3月は12本必要）"
   },
   {
     "id": "terkari",
@@ -10318,9 +10318,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -10329,7 +10329,7 @@
       "s-ok",
       "s-gear",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -10393,7 +10393,7 @@
       }
     ],
     "seasonNoGear": "7月〜9月",
-    "season6Crampons": "10月〜6月"
+    "season6Crampons": "4月〜6月・10月〜11月（12〜3月は12本必要）"
   },
   {
     "id": "yakushidake",
@@ -10428,9 +10428,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -10439,7 +10439,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -10503,7 +10503,7 @@
       }
     ],
     "seasonNoGear": "7月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "kurobegorodam",
@@ -10538,9 +10538,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -10549,7 +10549,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -10613,7 +10613,7 @@
       }
     ],
     "seasonNoGear": "7月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "ainodake",
@@ -10763,18 +10763,18 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok"
+      "s-hard",
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要"
@@ -10879,9 +10879,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -10890,7 +10890,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -10954,7 +10954,7 @@
       }
     ],
     "seasonNoGear": "7月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "zaosan",
@@ -10993,7 +10993,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
@@ -11210,9 +11210,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -11221,7 +11221,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11285,7 +11285,7 @@
       }
     ],
     "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月〜6月上旬"
+    "season6Crampons": "4月〜6月上旬・11月（12〜3月は12本必要）"
   },
   {
     "id": "minamikomagatake",
@@ -11323,9 +11323,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -11334,7 +11334,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11400,7 +11400,7 @@
       }
     ],
     "seasonNoGear": "7月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "chogatake",
@@ -11435,9 +11435,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -11446,7 +11446,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11510,7 +11510,7 @@
       }
     ],
     "seasonNoGear": "7月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "otenshoudake",
@@ -11545,9 +11545,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -11556,7 +11556,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11620,7 +11620,7 @@
       }
     ],
     "seasonNoGear": "7月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "harinokidake",
@@ -11656,9 +11656,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -11667,7 +11667,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11733,7 +11733,7 @@
       }
     ],
     "seasonNoGear": "7月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "eboshidake_kita",
@@ -11769,9 +11769,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -11780,7 +11780,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11844,7 +11844,7 @@
       }
     ],
     "seasonNoGear": "7月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "noguchigoro",
@@ -11880,9 +11880,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -11891,7 +11891,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11955,7 +11955,7 @@
       }
     ],
     "seasonNoGear": "7月〜10月",
-    "season6Crampons": "11月〜6月"
+    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
   },
   {
     "id": "nokogiriyama_chiba",
@@ -12220,10 +12220,6 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -12231,7 +12227,11 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear"
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
     ],
     "calLegend": [
       "アイゼン不要",

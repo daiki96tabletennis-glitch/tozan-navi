@@ -88,7 +88,14 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 .detail-label{color:#8a8078;font-weight:600;width:80px;flex-shrink:0}
 .detail-val{color:#3a3530;flex:1;word-break:break-all}
 .detail-val a{color:#4a5e4a;text-decoration:none}
-@media print{.header,.tabs,.plan-actions,.pdf-btn,.btn-new,.modal-overlay,.add-btn{display:none!important}.section{display:block!important}body{background:white}.card,.plan-card{break-inside:avoid;border:1px solid #ccc}}
+@media print{
+  body > *{display:none!important}
+  #plan-detail{display:block!important;position:static!important;background:white!important;overflow:visible!important}
+  #plan-detail .modal{min-height:auto!important;background:white!important}
+  #plan-detail .modal-header{display:none!important}
+  #plan-detail .pdf-btn{display:none!important}
+  .card,.plan-card{break-inside:avoid;border:1px solid #ccc}
+}
 </style>
 </head>
 <body>
@@ -145,7 +152,8 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
       <div class="form-card">
         <div class="form-card-title">📍 基本情報</div>
         <div class="field"><label>山名</label><input type="text" id="f-mountain" placeholder="例：谷川岳"></div>
-        <div class="field"><label>日程</label><input type="date" id="f-date"></div>
+        <div class="field"><label>日程（開始）</label><input type="date" id="f-date"></div>
+        <div class="field"><label>日程（終了）<span style="font-size:10px;color:#a09888;font-weight:400">　日帰りは空白でOK</span></label><input type="date" id="f-date-end"></div>
         <div class="field"><label>集合場所</label><input type="text" id="f-place" placeholder="例：新宿駅南口"></div>
         <div class="field"><label>集合時間</label><input type="time" id="f-time"></div>
       </div>
@@ -200,7 +208,8 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
     <div class="modal-body">
       <div class="form-card">
         <div class="field"><label>山名 <span style="color:#e05050">*</span></label><input type="text" id="mc-name" placeholder="例：雲取山"></div>
-        <div class="field"><label>登頂日</label><input type="date" id="mc-date"></div>
+        <div class="field"><label>登頂日（開始）</label><input type="date" id="mc-date"></div>
+        <div class="field"><label>登頂日（終了）<span style="font-size:10px;color:#a09888;font-weight:400">　日帰りは空白でOK</span></label><input type="date" id="mc-date-end"></div>
         <div class="field"><label>エリア</label><input type="text" id="mc-area" placeholder="例：東京都・埼玉県"></div>
         <div class="field"><label>備考</label><textarea id="mc-memo" placeholder="天気、同行者、感想など"></textarea></div>
       </div>
@@ -294,6 +303,7 @@ function openPlanForm(index) {
   document.getElementById('plan-form-title').textContent = index!==null?'計画を編集':'新しい計画';
   document.getElementById('f-mountain').value = p?(p.mountain||''):'';
   document.getElementById('f-date').value = p?(p.date||''):'';
+  document.getElementById('f-date-end').value = p?(p.dateEnd||''):'';
   document.getElementById('f-place').value = p?(p.place||''):'';
   document.getElementById('f-time').value = p?(p.time||''):'';
   document.getElementById('f-yamap').value = p?(p.yamap||''):'';
@@ -326,6 +336,7 @@ function savePlan() {
   var p = {
     mountain: document.getElementById('f-mountain').value.trim(),
     date: document.getElementById('f-date').value,
+    dateEnd: document.getElementById('f-date-end').value,
     place: document.getElementById('f-place').value.trim(),
     time: document.getElementById('f-time').value,
     yamap: document.getElementById('f-yamap').value.trim(),
@@ -348,6 +359,7 @@ function openPlanDetail(index) {
   var p = getPlans()[index]; if(!p) return;
   document.getElementById('detail-title').textContent = p.mountain||'計画詳細';
   var dateStr = p.date ? new Date(p.date).toLocaleDateString('ja-JP',{year:'numeric',month:'long',day:'numeric'}) : '未定';
+  if (p.dateEnd) dateStr += ' 〜 ' + new Date(p.dateEnd).toLocaleDateString('ja-JP',{month:'long',day:'numeric'});
   var html = '';
   html += '<div class="card" style="margin-bottom:10px"><div class="card-header">📍 基本情報</div><div class="card-body">';
   html += dr('山名',p.mountain||'未設定')+dr('日程',dateStr)+dr('集合場所',p.place||'未設定')+dr('集合時間',p.time||'未設定');
@@ -493,7 +505,7 @@ function saveManualClimbed(){
   if (!name){ alert('山名を入力してください'); return; }
   try{
     var extra = JSON.parse(localStorage.getItem(CLM_EX_KEY)||'[]');
-    extra.push({name:name, date:document.getElementById('mc-date').value, area:document.getElementById('mc-area').value.trim(), memo:document.getElementById('mc-memo').value.trim()});
+    extra.push({name:name, date:document.getElementById('mc-date').value, dateEnd:document.getElementById('mc-date-end').value, area:document.getElementById('mc-area').value.trim(), memo:document.getElementById('mc-memo').value.trim()});
     localStorage.setItem(CLM_EX_KEY, JSON.stringify(extra));
   }catch{}
   closeAddClimbed(); renderClimbed(); renderFavorites();
