@@ -4028,7 +4028,7 @@ function App() {
     return (
       <div style={{ background: "#e8e0d5", minHeight: "100vh", fontFamily: "sans-serif" }}>
         {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
-        <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden"}} className="px-4 py-4">
+        <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden",padding:"10px 16px 14px"}}>
           {/* 背景山シルエット */}
           <svg style={{position:"absolute",bottom:0,left:0,right:0,height:"50px",opacity:0.1,pointerEvents:"none",width:"100%"}} viewBox="0 0 390 50" fill="white" preserveAspectRatio="xMidYMax slice">
             <polygon points="0,50 0,30 50,14 90,24 130,6 170,20 210,3 250,18 290,8 330,22 390,10 390,50"/>
