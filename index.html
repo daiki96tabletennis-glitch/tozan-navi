@@ -4027,7 +4027,23 @@ function App() {
     const mountain = mountains.find(m => m.id === selected);
     return (
       <div style={{ background: "#e8e0d5", minHeight: "100vh", fontFamily: "sans-serif" }}>
-        {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
+        {showMenu && (
+        <div onClick={() => setShowMenu(false)} style={{position:"fixed",inset:0,zIndex:9998,background:"transparent"}}/>
+      )}
+      {showMenu && (
+        <div style={{position:"fixed",top:"56px",right:"16px",background:"#ffffff",borderRadius:"12px",boxShadow:"0 8px 32px rgba(0,0,0,0.25)",zIndex:9999,minWidth:"220px",overflow:"hidden",border:"1px solid #e0dbd4"}}>
+          <button onClick={() => { setShowMenu(false); window.location.href="/mypage/"; }} style={{display:"flex",alignItems:"center",gap:"10px",padding:"13px 16px",fontSize:"14px",fontWeight:"600",color:"#3a3530",background:"none",border:"none",cursor:"pointer",width:"100%",borderBottom:"1px solid #f0ede5"}}>
+            📋 Myページ
+          </button>
+          <button onClick={() => { setShowMenu(false); window.location.href="/about/"; }} style={{display:"flex",alignItems:"center",gap:"10px",padding:"13px 16px",fontSize:"14px",fontWeight:"600",color:"#3a3530",background:"none",border:"none",cursor:"pointer",width:"100%",borderBottom:"1px solid #f0ede5"}}>
+            👤 運営者
+          </button>
+          <button onClick={() => { setShowMenu(false); setShowBoard(true); }} style={{display:"flex",alignItems:"center",gap:"10px",padding:"13px 16px",fontSize:"14px",fontWeight:"600",color:"#3a3530",background:"none",border:"none",cursor:"pointer",width:"100%"}}>
+            💬 改善提案・お問い合わせ
+          </button>
+        </div>
+      )}
+            {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
         <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden",padding:"10px 16px 14px"}}>
           {/* 背景山シルエット */}
           <svg style={{position:"absolute",bottom:0,left:0,right:0,height:"50px",opacity:0.1,pointerEvents:"none",width:"100%"}} viewBox="0 0 390 50" fill="white" preserveAspectRatio="xMidYMax slice">
@@ -4107,22 +4123,7 @@ function App() {
             <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"5px 7px",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center"}}>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>
             </button>
-            {showMenu && (
-              <div onClick={() => setShowMenu(false)} style={{position:"fixed",inset:0,zIndex:998,background:"transparent"}}/>
-            )}
-            {showMenu && (
-              <div style={{position:"fixed",top:"56px",right:"16px",background:"#ffffff",borderRadius:"12px",boxShadow:"0 8px 32px rgba(0,0,0,0.18)",zIndex:999,minWidth:"220px",overflow:"hidden",border:"1px solid #e8e4dc"}}>
-                <a href="/mypage/" style={{display:"flex",alignItems:"center",gap:"10px",padding:"13px 16px",fontSize:"14px",fontWeight:"600",color:"#3a3530",textDecoration:"none",borderBottom:"1px solid #f0ede5"}}>
-                  📋 Myページ
-                </a>
-                <a href="/about/" style={{display:"flex",alignItems:"center",gap:"10px",padding:"13px 16px",fontSize:"14px",fontWeight:"600",color:"#3a3530",textDecoration:"none",borderBottom:"1px solid #f0ede5"}}>
-                  👤 運営者
-                </a>
-                <button onClick={() => { setShowMenu(false); setShowBoard(true); }} style={{display:"flex",alignItems:"center",gap:"10px",padding:"13px 16px",fontSize:"14px",fontWeight:"600",color:"#3a3530",background:"none",border:"none",cursor:"pointer",width:"100%"}}>
-                  💬 改善提案・お問い合わせ
-                </button>
-              </div>
-            )}
+            
             <button onClick={() => setShowMenu(!showMenu)} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.2)",color:"white",borderRadius:"8px",padding:"7px 9px",cursor:"pointer",display:"flex",flexDirection:"column",gap:"4px",flexShrink:0}}>
               <span style={{display:"block",width:"16px",height:"2px",background:"white",borderRadius:"1px"}}/>
               <span style={{display:"block",width:"16px",height:"2px",background:"white",borderRadius:"1px"}}/>
