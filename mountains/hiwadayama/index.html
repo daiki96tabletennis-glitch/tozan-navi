@@ -214,8 +214,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
       <div class="header-title" style="color:white;font-size:18px;font-weight:800;">Yamatch</div>
       
     </div></a>
-    <a href="/about/" class="header-btn">運営者</a>
-    <a href="/" class="back-btn">← 一覧に戻る</a>
+    <a href="/" class="back-btn">← Yamatchトップへ</a>
   </div>
   <div class="dep-row" id="dep-row">
     <button class="dep-btn-m" onclick="changeDep('大船')">大船駅</button>
@@ -238,7 +237,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </button>
     <button id="climb-btn" onclick="toggleClimb()" title="登頂記録"
       style="width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px)">
-      <span id="climb-icon">🥾</span>
+      <span id="climb-icon">🚩</span>
     </button>
   </div>
 
@@ -586,14 +585,14 @@ applyDep();
       var climbs = getClimbs();
       var isFav = favs.indexOf(MID_LOCAL) >= 0;
       var isClimbed = climbs.has(MID_LOCAL);
-      var fb = document.getElementById('fav-btn');
       var fi = document.getElementById('fav-icon');
+      var ci = document.getElementById('climb-icon');
+      var fb = document.getElementById('fav-btn');
       var cb = document.getElementById('climb-btn');
-      var cl = document.getElementById('climb-label');
-      if(fb){ fb.style.background = isFav ? '#fffbe0' : 'white'; fb.style.borderColor = isFav ? '#e8d860' : '#d8d4cc'; fb.style.color = isFav ? '#5a4a10' : '#5a5248'; }
-      if(fi){ fi.textContent = isFav ? '⭐' : '☆'; }
-      if(cb){ cb.style.background = isClimbed ? '#f0f5ec' : 'white'; cb.style.borderColor = isClimbed ? '#c8ddb0' : '#d8d4cc'; cb.style.color = isClimbed ? '#3a5028' : '#5a5248'; }
-      if(cl){ cl.textContent = isClimbed ? '登頂済み ✓' : '登頂記録'; }
+      if(fi) fi.textContent = isFav ? '⭐' : '☆';
+      if(ci) ci.textContent = isClimbed ? '🚩' : '🏳';
+      if(fb) fb.style.background = isFav ? 'rgba(255,251,224,0.5)' : 'rgba(255,255,255,0.2)';
+      if(cb) cb.style.background = isClimbed ? 'rgba(240,245,236,0.5)' : 'rgba(255,255,255,0.2)';
     }
     window.toggleFav = function(){
       var favs = getFavs();
