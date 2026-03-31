@@ -4040,12 +4040,12 @@ function App() {
             )}
             {showMenu && (
               <div style={{position:"absolute",top:"50px",right:"16px",background:"white",borderRadius:"12px",boxShadow:"0 4px 20px rgba(0,0,0,0.15)",zIndex:99,minWidth:"180px",overflow:"hidden"}}>
-                <a href="/mypage/" style={{display:"flex",alignItems:"center",gap:"10px",padding:"13px 16px",fontSize:"14px",fontWeight:"600",color:"#3a3530",textDecoration:"none",borderBottom:"1px solid #f0ede5"}}>
+                <button onClick={() => { setShowMenu(false); window.location.href="/mypage/"; }} style={{display:"flex",alignItems:"center",gap:"10px",padding:"13px 16px",fontSize:"14px",fontWeight:"600",color:"#3a3530",background:"none",border:"none",cursor:"pointer",width:"100%",borderBottom:"1px solid #f0ede5"}}>
                   📋 Myページ
-                </a>
-                <a href="/about/" style={{display:"flex",alignItems:"center",gap:"10px",padding:"13px 16px",fontSize:"14px",fontWeight:"600",color:"#3a3530",textDecoration:"none",borderBottom:"1px solid #f0ede5"}}>
+                </button>
+                <button onClick={() => { setShowMenu(false); window.location.href="/about/"; }} style={{display:"flex",alignItems:"center",gap:"10px",padding:"13px 16px",fontSize:"14px",fontWeight:"600",color:"#3a3530",background:"none",border:"none",cursor:"pointer",width:"100%",borderBottom:"1px solid #f0ede5"}}>
                   👤 運営者
-                </a>
+                </button>
                 <button onClick={() => { setShowMenu(false); setShowBoard(true); }} style={{display:"flex",alignItems:"center",gap:"10px",padding:"13px 16px",fontSize:"14px",fontWeight:"600",color:"#3a3530",background:"none",border:"none",cursor:"pointer",width:"100%"}}>
                   💬 改善提案・お問い合わせ
                 </button>
@@ -4108,10 +4108,10 @@ function App() {
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>
             </button>
             {showMenu && (
-              <div onClick={() => setShowMenu(false)} style={{position:"fixed",inset:0,zIndex:98}}/>
+              <div onClick={() => setShowMenu(false)} style={{position:"fixed",inset:0,zIndex:998,background:"transparent"}}/>
             )}
             {showMenu && (
-              <div style={{position:"absolute",top:"46px",right:"0",background:"white",borderRadius:"12px",boxShadow:"0 4px 20px rgba(0,0,0,0.15)",zIndex:99,minWidth:"200px",overflow:"hidden"}}>
+              <div style={{position:"fixed",top:"56px",right:"16px",background:"#ffffff",borderRadius:"12px",boxShadow:"0 8px 32px rgba(0,0,0,0.18)",zIndex:999,minWidth:"220px",overflow:"hidden",border:"1px solid #e8e4dc"}}>
                 <a href="/mypage/" style={{display:"flex",alignItems:"center",gap:"10px",padding:"13px 16px",fontSize:"14px",fontWeight:"600",color:"#3a3530",textDecoration:"none",borderBottom:"1px solid #f0ede5"}}>
                   📋 Myページ
                 </a>
