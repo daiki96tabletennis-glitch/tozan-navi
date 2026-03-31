@@ -4033,7 +4033,7 @@ function App() {
           <svg style={{position:"absolute",bottom:0,left:0,right:0,height:"50px",opacity:0.1,pointerEvents:"none",width:"100%"}} viewBox="0 0 390 50" fill="white" preserveAspectRatio="xMidYMax slice">
             <polygon points="0,50 0,30 50,14 90,24 130,6 170,20 210,3 250,18 290,8 330,22 390,10 390,50"/>
           </svg>
-          <div className="max-w-3xl mx-auto">
+          <div style={{maxWidth:"768px",margin:"0 auto"}}>
             {/* ロゴ行: ロゴ＋ハンバーガー */}
             {showMenu && (
               <div onClick={() => setShowMenu(false)} style={{position:"fixed",inset:0,zIndex:98}}/>
@@ -4081,7 +4081,7 @@ function App() {
             </div>
           </div>
         </header>
-        <main className="max-w-2xl mx-auto p-4">
+        <main style={{maxWidth:"672px",margin:"0 auto",padding:"16px"}}>
           <MountainDetail mountain={mountain} onBack={() => setSelected(null)} onReport={(name) => { setBoardInitMountain(name); setShowBoard(true); }} departure={departure} />
         </main>
       </div>
@@ -4092,26 +4092,26 @@ function App() {
     <div style={{ background: "#e8e0d5", minHeight: "100vh", fontFamily: "sans-serif" }}>
       {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
 
-      <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden"}} className="px-4 py-4">
+      <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden",padding:"10px 16px 14px"}}>
         <svg style={{position:"absolute",bottom:0,left:0,width:"100%",height:"52px",opacity:0.09,pointerEvents:"none"}} viewBox="0 0 1400 52" preserveAspectRatio="xMidYMax slice">
           <path d="M0 52 L0 36 L70 22 L130 30 L190 12 L250 24 L310 6 L370 18 L430 4 L490 16 L550 6 L610 18 L670 8 L730 20 L790 10 L850 22 L910 12 L970 24 L1030 14 L1090 26 L1150 16 L1210 28 L1270 18 L1330 30 L1400 20 L1400 52 Z" fill="white" opacity="0.6"/>
           <path d="M0 52 L0 42 L90 32 L160 38 L230 24 L300 34 L370 18 L440 28 L510 14 L580 26 L650 12 L720 24 L790 10 L860 22 L930 8 L1000 20 L1070 6 L1140 18 L1210 4 L1280 16 L1350 6 L1400 12 L1400 52 Z" fill="white"/>
         </svg>
-        <div className="max-w-3xl mx-auto">
-          <div style={{display:"flex",alignItems:"center",gap:"9px",marginBottom:"16px",position:"relative",zIndex:1}}>
+        <div style={{maxWidth:"768px",margin:"0 auto"}}>
+          <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"10px",position:"relative",zIndex:1}}>
             <svg width="24" height="24" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
             <div style={{flex:1}}>
-              <h1 style={{fontFamily:"Georgia,serif",fontSize:"21px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
+              <h1 style={{fontFamily:"Georgia,serif",fontSize:"27px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
               
             </div>
             <a href="/about/" style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",textDecoration:"none",flexShrink:0}}>運営者</a>
             <button onClick={() => setShowBoard(true)} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",cursor:"pointer",flexShrink:0}}>提案</button>
 
           </div>
-          <div style={{position:"relative",zIndex:1,marginBottom:"14px",display:"flex",alignItems:"flex-start",justifyContent:"space-between",gap:"8px"}}>
+          <div style={{position:"relative",zIndex:1,marginBottom:"10px",display:"flex",alignItems:"flex-start",justifyContent:"space-between",gap:"8px"}}>
             <div>
-              <div style={{fontSize:"clamp(13px,3vw,17px)",fontWeight:"600",color:"white",lineHeight:1.35,marginBottom:"5px"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
-              <div style={{fontSize:"11px",color:"rgba(255,255,255,0.48)",lineHeight:1.65}}>アクセス時間・難易度・体力で絞り込める登山サーチ</div>
+              <div style={{fontSize:"clamp(9px,2.5vw,12px)",fontWeight:"700",color:"white",lineHeight:1.35,marginBottom:"5px"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
+              <div style={{fontSize:"11px",color:"rgba(255,255,255,0.48)",lineHeight:1.65}}>コース定数やアクセス条件で絞り込める登山検索サイト</div>
             </div>
             <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"6px 7px",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",marginTop:"2px"}}>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>
@@ -4130,7 +4130,7 @@ function App() {
         </div>
       </header>
 
-      <main className="max-w-3xl mx-auto p-4">
+      <main style={{maxWidth:"768px",margin:"0 auto",padding:"12px 16px"}}>
 
         {/* 診断＋こんな人におすすめ 統合バナー */}
         <div style={{background:"#c8d4b8",border:"1px solid #a8b898",borderRadius:"12px",padding:"13px 14px",marginBottom:"8px"}}>
