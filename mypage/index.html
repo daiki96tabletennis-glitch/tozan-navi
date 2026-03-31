@@ -546,12 +546,9 @@ function addShopLink(){ var l=[]; document.querySelectorAll('.shop-input').forEa
 function removeShopLink(i){ var l=[]; document.querySelectorAll('.shop-input').forEach(function(inp){l.push(inp.value);}); l.splice(i,1); renderShopLinks(l); }
 
 // ===== 山名取得 =====
-var _nameMap=null;
+var _nameMap={"tanzawa": "丹沢山", "fuji": "富士山", "tsukuba": "筑波山", "kumotori": "雲取山", "amagi": "天城山", "okutama": "大菩薩嶺", "ryokami": "両神山", "kobushigatake": "甲武信ヶ岳", "mizugaki": "瑞牆山", "akagi": "赤城山", "kinpusan": "金峰山", "houou": "鳳凰山", "ontake": "男体山", "kitadake": "北岳", "yatsugatake": "八ヶ岳（赤岳）", "keirisan": "蓼科山", "kirigamine": "霧ヶ峰", "asama": "浅間山", "tanigawa": "谷川岳", "nasu": "那須岳", "shirane_nikko": "四阿山", "nikko_shirane": "日光白根山", "takeson": "武尊山", "komagatake": "甲斐駒ヶ岳", "senjogatake": "仙丈ヶ岳", "shirouma": "白馬岳", "norikura": "乗鞍岳", "tateyama": "立山", "tsurugi": "剱岳", "yari": "槍ヶ岳", "hotaka": "奥穂高岳", "myoko": "妙高山", "makihata": "巻機山", "iide": "飯豊山", "shibutsu": "至仏山", "aizu_koma": "会津駒ヶ岳", "shirane_gunma": "草津白根山", "bandai": "磐梯山", "nikko_nantai": "燧ヶ岳", "takao": "高尾山", "oyama": "大山（丹沢）", "tonosaki": "塔ノ岳", "hirugata": "蛭ヶ岳", "jinba": "陣馬山", "mitsuToge": "三ツ峠山", "kintoki": "金時山", "kayagatake": "茅ヶ岳", "kentoku": "乾徳山", "hinata": "日向山", "bonori": "棒ノ折山", "otake": "大岳山", "jonengatake": "常念岳", "yakedake": "焼岳", "kashimayari": "鹿島槍ヶ岳", "koganzan": "小金沢山", "arafune": "荒船山", "asamamakurayama": "浅間隠山", "kazahariyama": "御座山", "iwasugesan": "岩菅山", "iizunasan": "飯縄山", "kurohimesan": "黒姫山", "kenashiyama": "毛無山", "shirasunayama": "白砂山", "nanaitsurasan": "七面山", "arasawadake": "荒沢岳", "nakawarayama": "和名倉山", "yarigatake2": "笊ヶ岳", "gakedake": "餓鬼岳", "arikayama": "有明山", "keizandake": "経ヶ岳", "adatara": "安達太良山", "azuma": "西吾妻山", "echigokoma": "越後駒ヶ岳", "hiragadake": "平ヶ岳", "naeba": "苗場山", "amakazari": "雨飾山", "hiuchi": "火打山", "takatsuma": "高妻山", "kasagatake": "笠ヶ岳", "ontakesan": "御嶽山", "goryudake": "五竜岳", "sukai": "皇海山", "kisokoma": "木曽駒ヶ岳", "utsukushigahara": "美ヶ原", "karamatsu": "唐松岳", "utsugi": "空木岳", "enasan": "恵那山", "shiomidake": "塩見岳", "arakawadake": "荒川岳", "akaisidake": "赤石岳", "hijiridade": "聖岳", "terkari": "光岳", "yakushidake": "薬師岳", "kurobegorodam": "黒部五郎岳", "ainodake": "間ノ岳", "noutori": "農鳥岳", "hakusan": "白山", "zaosan": "蔵王山", "karisaka": "雁坂嶺", "nokogiriyama": "鋸岳", "minamikomagatake": "南駒ヶ岳", "chogatake": "蝶ヶ岳", "otenshoudake": "大天井岳", "harinokidake": "針ノ木岳", "eboshidake_kita": "烏帽子岳（北ア）", "noguchigoro": "野口五郎岳", "nokogiriyama_chiba": "鋸山", "mitakesan": "御岳山", "takamizusanzan": "高水三山", "tenzandake": "天覧山・多峯主山", "hiwadayama": "日和田山"};
 function fetchNames(cb){
-  if(_nameMap){cb(_nameMap);return;}
-  fetch('/data/mountains.json').then(function(r){return r.json();}).then(function(data){
-    _nameMap={};data.forEach(function(m){_nameMap[m.id]=m.name;});cb(_nameMap);
-  }).catch(function(){cb({});});
+  cb(_nameMap);
 }
 
 function esc(s){
