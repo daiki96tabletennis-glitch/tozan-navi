@@ -150,6 +150,7 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
   <div class="tab-bar">
     <button class="tab-btn active" id="tab-list" onclick="switchTab('list')">⛰ 山一覧</button>
     <button class="tab-btn" id="tab-log" onclick="switchTab('log')">📝 変更履歴</button>
+    <button class="tab-btn" id="tab-feedback" onclick="switchTab('feedback')">💬 意見 <span id="feedback-badge" style="display:none;background:#e05040;color:white;border-radius:10px;font-size:10px;padding:1px 5px;margin-left:2px;font-weight:bold;"></span></button>
   </div>
 
   <!-- 山一覧パネル -->
@@ -504,6 +505,22 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
 
   </div>
 
+
+  <!-- 意見・要望パネル -->
+  <div id="feedback-panel" style="display:none;padding-bottom:20px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+      <div style="font-size:13px;font-weight:bold;color:#3a3530;">フォーム回答一覧</div>
+      <button onclick="loadFeedback(true)" style="background:#4a6038;color:white;border:none;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">🔄 更新</button>
+    </div>
+    <div id="feedback-loading" style="text-align:center;padding:20px;color:#8a8078;font-size:13px;display:none;">読み込み中...</div>
+    <div id="feedback-list"></div>
+    <div id="feedback-error" style="display:none;text-align:center;padding:20px;color:#c05040;font-size:13px;line-height:1.6;"></div>
+    <div style="margin-top:16px;padding-top:12px;border-top:1px solid #e8e4dc;text-align:center;">
+      <a href="https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform" target="_blank" style="font-size:12px;color:#4a6038;">フォームを開く ↗</a>
+      &nbsp;·&nbsp;
+      <a href="https://docs.google.com/spreadsheets/d/1H_7jTudgsfPrRkqwH29QVqFV_XbKFIVT9nALDgRXn8o/edit" target="_blank" style="font-size:12px;color:#4a6038;">スプレッドシートを開く ↗</a>
+    </div>
+  </div>
 </main>
 
 <script>
@@ -953,12 +970,15 @@ function renderLog() {
 }
 
 function switchTab(tab) {
-  document.getElementById('tab-list').classList.toggle('active', tab === 'list');
-  document.getElementById('tab-log').classList.toggle('active', tab === 'log');
+  ['list','log','feedback'].forEach(t => {
+    document.getElementById('tab-'+t).classList.toggle('active', tab === t);
+  });
   document.getElementById('list-panel').style.display = tab === 'list' ? 'block' : 'none';
   document.getElementById('log-panel').style.display = tab === 'log' ? 'block' : 'none';
+  document.getElementById('feedback-panel').style.display = tab === 'feedback' ? 'block' : 'none';
   document.getElementById('edit-panel').classList.remove('active');
   if(tab === 'log') renderLog();
+  if(tab === 'feedback') loadFeedback(false);
 }
 
 function clearLog() {
@@ -1020,6 +1040,137 @@ function copyTsv() {
     .then(() => alert('コピーしました！スプレッドシートに貼り付けてください'))
     .catch(() => { const ta=document.createElement('textarea'); ta.value=tsv; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); alert('コピーしました！'); });
 }
+
+
+// ===== フィードバック（Googleフォーム回答）=====
+const FB_SEEN_KEY = 'ym_fb_seen';
+const FB_CSV_URL = 'https://docs.google.com/spreadsheets/d/1H_7jTudgsfPrRkqwH29QVqFV_XbKFIVT9nALDgRXn8o/export?format=csv&gid=0';
+
+function getFbSeen() {
+  try { return new Set(JSON.parse(localStorage.getItem(FB_SEEN_KEY) || '[]')); }
+  catch { return new Set(); }
+}
+function saveFbSeen(seen) {
+  localStorage.setItem(FB_SEEN_KEY, JSON.stringify([...seen]));
+}
+
+function splitCSVRow(row) {
+  const result = [];
+  let cur = '', inQ = false;
+  for (let i = 0; i < row.length; i++) {
+    const ch = row[i];
+    if (ch === '"') { inQ = !inQ; }
+    else if (ch === ',' && !inQ) { result.push(cur.trim().replace(/^"|"$/g,'')); cur = ''; }
+    else { cur += ch; }
+  }
+  result.push(cur.trim().replace(/^"|"$/g,''));
+  return result;
+}
+
+function parseCSV(text) {
+  const lines = text.split('\n').filter(l => l.trim());
+  if (lines.length < 2) return { headers: [], rows: [] };
+  const headers = splitCSVRow(lines[0]);
+  const rows = lines.slice(1).map(line => splitCSVRow(line));
+  return { headers, rows };
+}
+
+function updateFbBadge(count) {
+  const badge = document.getElementById('feedback-badge');
+  if (!badge) return;
+  if (count > 0) { badge.style.display = 'inline'; badge.textContent = count; }
+  else { badge.style.display = 'none'; }
+}
+
+async function loadFeedback(forceRefresh) {
+  const loadingEl = document.getElementById('feedback-loading');
+  const listEl    = document.getElementById('feedback-list');
+  const errorEl   = document.getElementById('feedback-error');
+  loadingEl.style.display = 'block';
+  listEl.style.display    = 'none';
+  errorEl.style.display   = 'none';
+
+  try {
+    const url = FB_CSV_URL + (forceRefresh ? '&t=' + Date.now() : '');
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('取得失敗 (' + res.status + ')');
+    const text = await res.text();
+    const { headers, rows } = parseCSV(text);
+
+    loadingEl.style.display = 'none';
+    listEl.style.display = 'block';
+
+    if (rows.length === 0) {
+      listEl.innerHTML = '<div style="text-align:center;padding:24px;color:#8a8078;font-size:13px;">まだ回答がありません</div>';
+      updateFbBadge(0);
+      return;
+    }
+
+    const seen = getFbSeen();
+    const reversed = [...rows].reverse();
+    let newCount = 0;
+
+    listEl.innerHTML = reversed.map(vals => {
+      const ts = vals[0] || '';
+      const isNew = !seen.has(ts);
+      if (isNew) newCount++;
+
+      const fields = headers.slice(1).map((h, i) => {
+        const v = (vals[i+1] || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        if (!v) return '';
+        return `<div style="margin-bottom:8px;">
+          <div style="font-size:11px;color:#8a8078;margin-bottom:2px;">${h}</div>
+          <div style="font-size:13px;color:#3a3530;line-height:1.6;white-space:pre-wrap;">${v}</div>
+        </div>`;
+      }).join('');
+
+      return `<div onclick="markFbSeen('${ts.replace(/'/g,'')}',this)"
+        style="background:${isNew?'#fffbe8':'white'};border:1px solid ${isNew?'#e8d060':'#e8e4dc'};border-radius:12px;padding:14px 16px;margin-bottom:10px;cursor:pointer;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          ${isNew?'<span style="background:#e05040;color:white;border-radius:10px;font-size:10px;padding:2px 7px;font-weight:bold;">NEW</span>':''}
+          <span style="font-size:11px;color:#8a8078;">${ts}</span>
+        </div>
+        ${fields}
+      </div>`;
+    }).join('');
+
+    updateFbBadge(newCount);
+
+  } catch(e) {
+    loadingEl.style.display = 'none';
+    errorEl.style.display = 'block';
+    errorEl.innerHTML = '⚠️ ' + e.message + '<br><small>スプレッドシートの共有設定を「リンクを知っている全員が閲覧可」にしてください</small>';
+  }
+}
+
+function markFbSeen(ts, el) {
+  const seen = getFbSeen();
+  seen.add(ts);
+  saveFbSeen(seen);
+  el.style.background = 'white';
+  el.style.borderColor = '#e8e4dc';
+  const newBadge = el.querySelector('[style*="e05040"]');
+  if (newBadge) newBadge.remove();
+  const remaining = document.querySelectorAll('#feedback-list [style*="fffbe8"]').length;
+  updateFbBadge(remaining);
+}
+
+async function checkFbUnread() {
+  try {
+    const res = await fetch(FB_CSV_URL);
+    if (!res.ok) return;
+    const text = await res.text();
+    const { rows } = parseCSV(text);
+    const seen = getFbSeen();
+    const newCount = rows.filter(r => !seen.has(r[0])).length;
+    updateFbBadge(newCount);
+  } catch(e) {}
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  loadGhConfigUI();
+  checkFbUnread();
+});
 
 </script>
 

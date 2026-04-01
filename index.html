@@ -3720,173 +3720,6 @@ function canClimb6Crampons(m, month) {
 }
 
 // ===================== 掲示板コンポーネント =====================
-function FeedbackBoard({ onClose, initMountain = "" }) {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [submitting, setSubmitting] = useState(false);
-  const [form, setForm] = useState({ mountain: initMountain, category: "誤情報の指摘", body: "", name: "" });
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
-
-  useEffect(() => {
-    setForm({ mountain: initMountain, category: "誤情報の指摘", body: "", name: "" });
-    setError("");
-    setSuccess(false);
-  }, [initMountain]);
-
-  const CATEGORIES = ["誤情報の指摘", "情報の追加・補足", "ルートの提案", "その他"];
-
-  useEffect(() => {
-    setLoading(false);
-  }, []);
-
-  const handleSubmit = () => {
-    if (!form.body.trim()) { setError("内容を入力してください"); return; }
-    if (form.body.length > 500) { setError("500文字以内で入力してください"); return; }
-    setError("");
-    setSubmitting(true);
-    const newPost = {
-      id: Date.now(),
-      mountain: form.mountain.trim() || "（山名未指定）",
-      category: form.category,
-      body: form.body.trim(),
-      name: form.name.trim() || "匿名",
-      date: new Date().toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }),
-    };
-    setPosts(prev => [newPost, ...prev]);
-    setForm({ mountain: "", category: "誤情報の指摘", body: "", name: "" });
-    setSuccess(true);
-    setTimeout(() => setSuccess(false), 3000);
-    setSubmitting(false);
-  };
-
-  const CATEGORY_COLOR = {
-    "誤情報の指摘": { bg: "#fce8e8", color: "#b04040", border: "#f5c0c0" },
-    "情報の追加・補足": { bg: "#e8f0e8", color: "#3a5a3a", border: "#b8d0b8" },
-    "ルートの提案": { bg: "#e8eef8", color: "#3a4a7a", border: "#b8c8e8" },
-    "その他": { bg: "#f0ede8", color: "#7a6a58", border: "#d8d0c8" },
-  };
-
-  return (
-    <div style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(0,0,0,0.45)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
-      <div style={{ background: "#faf8f5", borderRadius: "16px", width: "100%", maxWidth: "640px", maxHeight: "90vh", display: "flex", flexDirection: "column", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
-        {/* ヘッダー */}
-        <div style={{ padding: "20px 24px 16px", borderBottom: "1px solid #ddd8d0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div>
-            <h1 style={{ margin: 0, fontSize: "17px", fontWeight: 700, color: "#3a3530" }}>💬 改善提案・情報修正</h1>
-            <p style={{ margin: "4px 0 0", fontSize: "12px", color: "#a09888" }}>
-              {initMountain ? `「${initMountain}」について` : "誤情報の修正・ルートの提案など、お気づきの点をお寄せください"}
-            </p>
-          </div>
-          <button onClick={onClose} style={{ background: "none", border: "none", fontSize: "20px", cursor: "pointer", color: "#a09888", padding: "4px 8px" }}>✕</button>
-        </div>
-
-        <div style={{ flex: 1, overflowY: "auto", padding: "20px 24px" }}>
-          {/* 投稿フォーム */}
-          <div style={{ background: "#fff", border: "1px solid #ddd8d0", borderRadius: "12px", padding: "18px", marginBottom: "24px" }}>
-            <h3 style={{ margin: "0 0 14px", fontSize: "14px", fontWeight: 700, color: "#4a5e4a" }}>✏️ 書き込む</h3>
-
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "10px" }}>
-              <div>
-                <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>山名（任意）</label>
-                <input
-                  value={form.mountain}
-                  onChange={e => setForm(f => ({ ...f, mountain: e.target.value }))}
-                  placeholder="例：安達太良山"
-                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
-                />
-              </div>
-              <div>
-                <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>種別</label>
-                <select
-                  value={form.category}
-                  onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
-                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none" }}
-                >
-                  {CATEGORIES.map(c => <option key={c}>{c}</option>)}
-                </select>
-              </div>
-            </div>
-
-            <div style={{ marginBottom: "10px" }}>
-              <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>
-                内容 <span style={{ color: "#b04040" }}>*</span>
-                <span style={{ float: "right", fontWeight: 400 }}>{form.body.length}/500</span>
-              </label>
-              <textarea
-                value={form.body}
-                onChange={e => setForm(f => ({ ...f, body: e.target.value }))}
-                placeholder="例：コース定数が違います。奥岳周回の正しい値は○○です。"
-                rows={4}
-                style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", resize: "vertical", boxSizing: "border-box", fontFamily: "inherit" }}
-              />
-            </div>
-
-            <div style={{ display: "flex", gap: "10px", alignItems: "flex-end" }}>
-              <div style={{ flex: 1 }}>
-                <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>ニックネーム（任意）</label>
-                <input
-                  value={form.name}
-                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                  placeholder="匿名"
-                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
-                />
-              </div>
-              <button
-                onClick={handleSubmit}
-                disabled={submitting || !form.body.trim()}
-                style={{ padding: "8px 20px", background: submitting || !form.body.trim() ? "#c0bab0" : "#4a5e4a", color: "#fff", border: "none", borderRadius: "7px", fontSize: "13px", fontWeight: 700, cursor: submitting || !form.body.trim() ? "not-allowed" : "pointer", whiteSpace: "nowrap" }}
-              >
-                {submitting ? "送信中…" : "投稿する"}
-              </button>
-            </div>
-
-            {error && <p style={{ margin: "8px 0 0", fontSize: "12px", color: "#b04040" }}>⚠️ {error}</p>}
-            {success && <p style={{ margin: "8px 0 0", fontSize: "12px", color: "#3a7a3a" }}>✅ 投稿しました！ありがとうございます。</p>}
-            <p style={{ margin: "10px 0 0", fontSize: "11px", color: "#a09888" }}>※ 書き込みはすべてのユーザーに表示されます</p>
-          </div>
-
-          {/* 投稿一覧 */}
-          <h3 style={{ margin: "0 0 14px", fontSize: "14px", fontWeight: 700, color: "#3a3530" }}>
-            書き込み一覧
-            {posts.length > 0 && <span style={{ marginLeft: "8px", fontSize: "12px", color: "#7a7068", fontWeight: 400 }}>{posts.length}件</span>}
-          </h3>
-
-          {loading ? (
-            <p style={{ textAlign: "center", color: "#a09888", fontSize: "13px", padding: "20px 0" }}>読み込み中…</p>
-          ) : posts.length === 0 ? (
-            <div style={{ textAlign: "center", padding: "32px 0", color: "#a09888" }}>
-              <div style={{ fontSize: "32px", marginBottom: "8px" }}>📝</div>
-              <p style={{ margin: 0, fontSize: "13px" }}>まだ書き込みがありません<br />気づいた点があればぜひ投稿してください</p>
-            </div>
-          ) : (
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              {posts.map(post => {
-                const cc = CATEGORY_COLOR[post.category] || CATEGORY_COLOR["その他"];
-                return (
-                  <div key={post.id} style={{ background: "#fff", border: "1px solid #ddd8d0", borderRadius: "10px", padding: "14px 16px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px", flexWrap: "wrap" }}>
-                      <span style={{ fontSize: "11px", fontWeight: 700, padding: "2px 8px", borderRadius: "10px", background: cc.bg, color: cc.color, border: `1px solid ${cc.border}` }}>
-                        {post.category}
-                      </span>
-                      {post.mountain !== "（山名未指定）" && (
-                        <span style={{ fontSize: "12px", fontWeight: 700, color: "#4a5e4a" }}>🏔 {post.mountain}</span>
-                      )}
-                      <span style={{ marginLeft: "auto", fontSize: "11px", color: "#a09888" }}>{post.name} · {post.date}</span>
-                    </div>
-                    <p style={{ margin: 0, fontSize: "13px", color: "#3a3530", lineHeight: 1.7, whiteSpace: "pre-wrap" }}>{post.body}</p>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-// ===================== 掲示板ここまで =====================
-
 function App() {
   const [mountains, setMountains] = useState(() => window.__mountainsBase || []);
   useEffect(() => {
@@ -3928,14 +3761,12 @@ function App() {
   const [filterOpen, setFilterOpen] = React.useState(false);
   const [quickOpen, setQuickOpen] = React.useState(false);
   const [matrixOpen, setMatrixOpen] = React.useState(false);
-  const [showBoard, setShowBoard] = useState(false);
-  React.useEffect(() => { window.__openBoard = () => setShowBoard(true); }, []);
+  React.useEffect(() => { window.__openBoard = () => window.open('https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform', '_blank'); }, []);
 
   const [favorites, setFavorites] = useState(() => { try { return new Set(JSON.parse(localStorage.getItem("ym_favorites")||"[]")); } catch { return new Set(); } });
   const [climbed, setClimbed] = useState(() => { try { return new Map(JSON.parse(localStorage.getItem("ym_climbed")||"[]")); } catch { return new Map(); } });
   const [favOnly, setFavOnly] = useState(false);
   const [myTab, setMyTab] = useState(false);
-  const [boardInitMountain, setBoardInitMountain] = useState("");
   const [selected, setSelected] = useState(null);
 
   
@@ -4028,8 +3859,7 @@ function App() {
     const mountain = mountains.find(m => m.id === selected);
     return (
       <div style={{ background: "#e8e0d5", minHeight: "100vh", fontFamily: "sans-serif" }}>
-      {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
-        <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden",padding:"10px 16px 14px"}}>
+              <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden",padding:"10px 16px 14px"}}>
           {/* 背景山シルエット */}
           <svg style={{position:"absolute",bottom:0,left:0,right:0,height:"50px",opacity:0.1,pointerEvents:"none",width:"100%"}} viewBox="0 0 390 50" fill="white" preserveAspectRatio="xMidYMax slice">
             <polygon points="0,50 0,30 50,14 90,24 130,6 170,20 210,3 250,18 290,8 330,22 390,10 390,50"/>
@@ -4068,7 +3898,7 @@ function App() {
           </div>
         </header>
         <main style={{maxWidth:"672px",margin:"0 auto",padding:"16px"}}>
-          <MountainDetail mountain={mountain} onBack={() => setSelected(null)} onReport={(name) => { setBoardInitMountain(name); setShowBoard(true); }} departure={departure} />
+          <MountainDetail mountain={mountain} onBack={() => setSelected(null)} } departure={departure} />
         </main>
       </div>
     );
@@ -4076,7 +3906,6 @@ function App() {
 
   return (
     <div style={{ background: "#e8e0d5", minHeight: "100vh", fontFamily: "sans-serif" }}>
-{showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
 
       <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden",padding:"10px 16px 14px"}}>
         <svg style={{position:"absolute",bottom:0,left:0,width:"100%",height:"52px",opacity:0.09,pointerEvents:"none"}} viewBox="0 0 1400 52" preserveAspectRatio="xMidYMax slice">
@@ -4506,6 +4335,6 @@ fetch('/data/mountains.json')
 <div id="ym-nav-menu" style="display:none;position:fixed;top:56px;right:16px;background:#ffffff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.25);z-index:9999;min-width:220px;overflow:hidden;border:1px solid #e0dbd4;">
   <button onclick="window.location.href='/mypage/';" style="display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:14px;font-weight:600;color:#3a3530;background:none;border:none;cursor:pointer;width:100%;border-bottom:1px solid #f0ede5;font-family:inherit;text-align:left;">📋 Myページ</button>
   <button onclick="window.location.href='/about/';" style="display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:14px;font-weight:600;color:#3a3530;background:none;border:none;cursor:pointer;width:100%;border-bottom:1px solid #f0ede5;font-family:inherit;text-align:left;">👤 運営者</button>
-  <button onclick="document.getElementById('ym-nav-menu').style.display='none';document.getElementById('ym-nav-overlay').style.display='none';if(window.__openBoard)window.__openBoard();" style="display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:14px;font-weight:600;color:#3a3530;background:none;border:none;cursor:pointer;width:100%;font-family:inherit;text-align:left;">💬 改善提案・お問い合わせ</button>
+  <button onclick="document.getElementById('ym-nav-menu').style.display='none';document.getElementById('ym-nav-overlay').style.display='none';window.open('https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform','_blank');" style="display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:14px;font-weight:600;color:#3a3530;background:none;border:none;cursor:pointer;width:100%;font-family:inherit;text-align:left;">💬 改善提案・お問い合わせ</button>
 </div>
 </body></html>
