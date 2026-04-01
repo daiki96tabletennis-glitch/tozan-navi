@@ -3526,7 +3526,7 @@ function GearBadge({ mountain, month }) {
   return <span style={{ display: "inline-flex", alignItems: "center", gap: "4px", background: "#f5e8e8", color: "#8a3030", borderRadius: "8px", padding: "3px 9px", fontSize: "12px", fontWeight: 700 }}>12本必要</span>;
 }
 
-function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
+function MountainDetail({ mountain, onBack, departure = "大船" }) {
   const [min, max] = mountain.courseCoefficient;
   const stars = max >= 45 ? 5 : max >= 35 ? 4 : max >= 25 ? 3 : max >= 15 ? 2 : 1;
   const now = new Date().getMonth() + 1;
@@ -3638,7 +3638,7 @@ function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
           🔗 YAMAPで詳細を見る ↗
         </a>
         <button
-          onClick={() => onReport(mountain.name)}
+          onClick={() => window.open('https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform', '_blank')}
           className="flex items-center justify-center gap-1 px-4 rounded-xl font-bold text-sm"
           style={{ background: "#f5f0eb", color: "#7a6a58", border: "1px solid #ddd8d0", cursor: "pointer", whiteSpace: "nowrap" }}
         >
