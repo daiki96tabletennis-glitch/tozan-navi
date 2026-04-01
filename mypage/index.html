@@ -108,7 +108,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 <div class="tabs">
   <div class="tab active" onclick="switchTab('plans')">📋 登山計画</div>
   <div class="tab" onclick="switchTab('favorites')">⭐ お気に入り</div>
-  <div class="tab" onclick="switchTab('climbed')">🥾 登頂記録</div>
+  <div class="tab" onclick="switchTab('climbed')">🚩 登頂記録</div>
 </div>
 <div class="main">
 
@@ -133,7 +133,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
   <div class="section" id="tab-climbed">
     <button class="add-btn" onclick="openAddClimbed()">＋ 登頂記録を手動追加</button>
     <div class="card">
-      <div class="card-header">🥾 登った山</div>
+      <div class="card-header">🚩 登った山</div>
       <div class="card-body" id="climbed-list"></div>
     </div>
   </div>
@@ -445,7 +445,7 @@ function renderClimbed() {
   });
   document.getElementById('climbed-count').textContent = keys.length;
   var el = document.getElementById('climbed-list');
-  if (keys.length===0){ el.innerHTML='<div class="empty">登頂記録がありません<br><small>山カードの 🥾 ボタンで記録できます</small></div>'; return; }
+  if (keys.length===0){ el.innerHTML='<div class="empty">登頂記録がありません<br><small>山カードの 🚩 ボタンで記録できます</small></div>'; return; }
   fetchNames(function(nameMap){
     var html = '';
     keys.forEach(function(k){
