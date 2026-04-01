@@ -371,20 +371,41 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
     <!-- 保存セクション -->
     <div class="copy-section" id="copy-section" style="display:none;">
       <div class="copy-title">💾 変更を保存してサイトに反映する</div>
-      <div class="copy-desc">
-        ① 下のボタンで <strong>mountains.json</strong> をダウンロード<br>
-        ② GitHubの <code>data/mountains.json</code> に上書きアップロード<br>
-        ③ 1〜2分で全ページに自動反映されます
+      <div class="copy-desc" style="margin-bottom:10px;">
+        GitHubに直接保存します。<br>
+        <small style="color:#8a8078">未設定の場合はjsonをダウンロードします</small>
       </div>
+
+      <!-- GitHub設定 -->
+      <details id="gh-settings" style="margin-bottom:10px;background:#f5f3ef;border-radius:10px;padding:10px 12px;border:1px solid #ddd8d0;">
+        <summary style="font-size:12px;font-weight:bold;color:#5a5248;cursor:pointer;">⚙️ GitHub設定</summary>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:7px;">
+          <div>
+            <label style="font-size:11px;color:#8a8078;display:block;margin-bottom:2px;">オーナー名（例: daiki96tabletennis-glitch）</label>
+            <input id="gh-owner" type="text" placeholder="GitHubユーザー名" style="width:100%;padding:7px 10px;border-radius:8px;border:1px solid #ddd;font-size:13px;">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#8a8078;display:block;margin-bottom:2px;">リポジトリ名（例: tozan-navi）</label>
+            <input id="gh-repo" type="text" placeholder="リポジトリ名" style="width:100%;padding:7px 10px;border-radius:8px;border:1px solid #ddd;font-size:13px;">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#8a8078;display:block;margin-bottom:2px;">Personal Access Token（repo権限）</label>
+            <input id="gh-token" type="password" placeholder="ghp_xxxxxxxxxxxx" style="width:100%;padding:7px 10px;border-radius:8px;border:1px solid #ddd;font-size:13px;">
+          </div>
+          <button onclick="saveGhConfig()" style="background:#4a6038;color:white;border:none;border-radius:8px;padding:8px;font-size:12px;font-weight:bold;cursor:pointer;">保存する</button>
+          <div id="gh-config-saved" style="display:none;font-size:11px;color:#3a6030;font-weight:bold;">✅ 設定を保存しました</div>
+        </div>
+      </details>
+
       <button class="copy-btn" onclick="saveChanges()" style="margin-bottom:8px;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        mountains.json をダウンロード
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v14a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        mountains.json を保存
       </button>
       <button class="copy-btn" onclick="copyTsv()" style="background:#607848;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         修正内容をテキストコピー（記録用）
       </button>
-      <div class="copy-success" id="copy-success">✅ ダウンロードしました！GitHubにアップしてください</div>
+      <div class="copy-success" id="copy-success"></div>
       <div id="crampon-warn" style="display:none;margin-top:6px;padding:8px 10px;background:#fff8e0;border:1px solid #e8d060;border-radius:8px;font-size:11px;color:#7a5800;line-height:1.6;">
         ⚠️ アイゼン情報を変更しました。index.html 内の同じ山の seasonNoGear / season6Crampons も手動で合わせてください。
       </div>
@@ -728,7 +749,84 @@ function getFormData() {
   };
 }
 
-function saveChanges() {
+// ===== GitHub設定 =====
+const GH_OWNER_KEY = 'ym_gh_owner';
+const GH_REPO_KEY  = 'ym_gh_repo';
+const GH_TOKEN_KEY = 'ym_gh_token';
+
+function getGhConfig() {
+  return {
+    owner: localStorage.getItem(GH_OWNER_KEY) || '',
+    repo:  localStorage.getItem(GH_REPO_KEY)  || '',
+    token: localStorage.getItem(GH_TOKEN_KEY) || '',
+  };
+}
+
+function saveGhConfig() {
+  const owner = document.getElementById('gh-owner').value.trim();
+  const repo  = document.getElementById('gh-repo').value.trim();
+  const token = document.getElementById('gh-token').value.trim();
+  if (!owner || !repo || !token) { alert('すべて入力してください'); return; }
+  localStorage.setItem(GH_OWNER_KEY, owner);
+  localStorage.setItem(GH_REPO_KEY,  repo);
+  localStorage.setItem(GH_TOKEN_KEY, token);
+  document.getElementById('gh-config-saved').style.display = 'block';
+  setTimeout(() => document.getElementById('gh-config-saved').style.display = 'none', 3000);
+}
+
+function loadGhConfigUI() {
+  const cfg = getGhConfig();
+  if (document.getElementById('gh-owner')) {
+    document.getElementById('gh-owner').value = cfg.owner;
+    document.getElementById('gh-repo').value  = cfg.repo;
+    document.getElementById('gh-token').value = cfg.token;
+  }
+}
+
+async function pushToGitHub(jsonContent) {
+  const cfg = getGhConfig();
+  if (!cfg.owner || !cfg.repo || !cfg.token) {
+    throw new Error('GitHub設定が未入力です。画面上部で設定してください。');
+  }
+  const path = 'data/mountains.json';
+  const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${path}`;
+
+  // 現在のSHAを取得
+  const getRes = await fetch(apiUrl, {
+    headers: {
+      'Authorization': `token ${cfg.token}`,
+      'Accept': 'application/vnd.github.v3+json',
+    }
+  });
+  if (!getRes.ok) throw new Error(`SHA取得失敗: ${getRes.status}`);
+  const getJson = await getRes.json();
+  const sha = getJson.sha;
+
+  // base64エンコード
+  const encoded = btoa(unescape(encodeURIComponent(jsonContent)));
+
+  // PUT でpush
+  const putRes = await fetch(apiUrl, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `token ${cfg.token}`,
+      'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message: `[admin] Update mountains.json`,
+      content: encoded,
+      sha: sha,
+    })
+  });
+  if (!putRes.ok) {
+    const errJson = await putRes.json().catch(() => ({}));
+    throw new Error(`push失敗: ${putRes.status} ${errJson.message || ''}`);
+  }
+  return putRes.json();
+}
+
+async function saveChanges() {
   if (!currentMountain) return;
   const formData = getFormData();
 
@@ -741,17 +839,34 @@ function saveChanges() {
   const idx = allMountains.findIndex(m => m.id === currentMountain.id);
   if (idx >= 0) Object.assign(allMountains[idx], formData);
 
-  const blob = new Blob([JSON.stringify(allMountains, null, 2)], {type: 'application/json'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'mountains.json';
-  a.click();
-  URL.revokeObjectURL(url);
+  const jsonContent = JSON.stringify(allMountains, null, 2);
+  const successEl = document.getElementById('copy-success');
+  const btn = document.querySelector('.copy-btn');
 
-  const el = document.getElementById('copy-success');
-  el.style.display = 'block';
-  setTimeout(() => el.style.display = 'none', 5000);
+  // GitHubへpush
+  try {
+    if (btn) { btn.disabled = true; btn.textContent = '保存中...'; }
+    await pushToGitHub(jsonContent);
+    successEl.textContent = '✅ GitHubに保存しました！1〜2分で反映されます';
+    successEl.style.color = '#3a6030';
+    successEl.style.display = 'block';
+    setTimeout(() => successEl.style.display = 'none', 6000);
+  } catch(e) {
+    // GitHub push失敗時はフォールバックでダウンロード
+    console.error(e);
+    const blob = new Blob([jsonContent], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'mountains.json'; a.click();
+    URL.revokeObjectURL(url);
+    successEl.textContent = '⚠️ GitHub保存失敗。ダウンロードしました: ' + e.message;
+    successEl.style.color = '#a05000';
+    successEl.style.display = 'block';
+    setTimeout(() => successEl.style.display = 'none', 8000);
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = 'mountains.json を保存'; }
+  }
+
   // アイゼン情報変更時の案内
   const fd = getFormData();
   const cur = allMountains.find(m => m.id === currentMountain.id) || {};
