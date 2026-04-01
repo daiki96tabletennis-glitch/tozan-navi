@@ -4140,11 +4140,15 @@ function App() {
           </a>
         </div>
 
-        {/* 記事チップ */}
-        <div style={{display:"flex",gap:"6px",marginBottom:"8px"}}>
-          <a href="/articles/kanto-day-trip-100/" style={{flex:1,background:"#faf8f5",border:"1px solid #ddd8d0",borderRadius:"20px",padding:"6px 8px",fontSize:"11px",fontWeight:"500",color:"#5a5248",textDecoration:"none",textAlign:"center",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>関東発・日帰り百名山10選</a>
-          <a href="/articles/train-access-mountains/" style={{flex:1,background:"#faf8f5",border:"1px solid #ddd8d0",borderRadius:"20px",padding:"6px 8px",fontSize:"11px",fontWeight:"500",color:"#5a5248",textDecoration:"none",textAlign:"center",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>電車で行ける登山10選</a>
-          <a href="/articles/" style={{flexShrink:0,background:"#f0f5ec",border:"1px solid #c8ddb0",borderRadius:"20px",padding:"6px 10px",fontSize:"11px",fontWeight:"600",color:"#4a6038",textDecoration:"none",whiteSpace:"nowrap"}}>その他の記事 →</a>
+        {/* 記事チップ：2行レイアウト */}
+        <div style={{display:"flex",flexDirection:"column",gap:"5px",marginBottom:"8px"}}>
+          <div style={{display:"flex",gap:"6px"}}>
+            <a href="/articles/kanto-day-trip-100/" style={{flex:1,background:"#faf8f5",border:"1px solid #ddd8d0",borderRadius:"20px",padding:"6px 10px",fontSize:"11px",fontWeight:"500",color:"#5a5248",textDecoration:"none",textAlign:"center"}}>関東発・日帰り百名山10選</a>
+            <a href="/articles/train-access-mountains/" style={{flex:1,background:"#faf8f5",border:"1px solid #ddd8d0",borderRadius:"20px",padding:"6px 10px",fontSize:"11px",fontWeight:"500",color:"#5a5248",textDecoration:"none",textAlign:"center"}}>電車で行ける登山10選</a>
+          </div>
+          <div style={{display:"flex",gap:"6px"}}>
+            <a href="/articles/" style={{flex:1,background:"#f0f5ec",border:"1px solid #c8ddb0",borderRadius:"20px",padding:"6px 10px",fontSize:"11px",fontWeight:"600",color:"#4a6038",textDecoration:"none",textAlign:"center"}}>その他のおすすめ記事はこちら →</a>
+          </div>
         </div>
 
   
