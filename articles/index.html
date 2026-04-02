@@ -11,7 +11,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;background:#e8e0d5;color:#3a3530;line-height:1.8;font-size:15px}
 a{color:inherit;text-decoration:none}
-header{background:linear-gradient(135deg,#4a6038 0%,#607848 100%);padding:14px 20px}
+/* header style moved to ym-header */
 .header-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:8px}
 .back-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;border-radius:8px;padding:4px 9px;font-size:11px;text-decoration:none;white-space:nowrap}
 .hero{background:linear-gradient(160deg,#1e2e1e 0%,#3a4e3a 50%,#4a6a4a 100%);padding:40px 20px 36px}
@@ -33,14 +33,54 @@ main{max-width:760px;margin:0 auto;padding:24px 16px 48px}
 .cta-section h2{color:white;font-size:18px;margin-bottom:10px}
 .cta-section p{color:#b0d0b0;font-size:14px;margin-bottom:20px}
 .cta-btn{display:inline-block;background:white;color:#2a3e2a;font-weight:bold;font-size:15px;padding:14px 32px;border-radius:30px}
+
+/* ===== 共通ヘッダー ===== */
+.ym-header{
+  background:linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%);
+  position:relative;overflow:hidden;
+  padding:10px 16px 12px;
+  position:sticky;top:0;z-index:200;
+}
+.ym-header::before{
+  content:"";position:absolute;bottom:0;left:0;width:100%;height:52px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 52' preserveAspectRatio='xMidYMax slice'%3E%3Cpath d='M0 52 L0 36 L70 22 L130 30 L190 12 L250 24 L310 6 L370 18 L430 4 L490 16 L550 6 L610 18 L670 8 L730 20 L790 10 L850 22 L910 12 L970 24 L1030 14 L1090 26 L1150 16 L1210 28 L1270 18 L1330 30 L1400 20 L1400 52 Z' fill='white' opacity='0.04'/%3E%3Cpath d='M0 52 L0 42 L90 32 L160 38 L230 24 L300 34 L370 18 L440 28 L510 14 L580 26 L650 12 L720 24 L790 10 L860 22 L930 8 L1000 20 L1070 6 L1140 18 L1210 4 L1280 16 L1350 6 L1400 12 L1400 52 Z' fill='white' opacity='0.06'/%3E%3C/svg%3E") no-repeat bottom/cover;
+  pointer-events:none;
+}
+.ym-header-inner{
+  max-width:768px;margin:0 auto;
+  display:flex;align-items:center;gap:10px;
+  position:relative;z-index:1;
+}
+.ym-header-logo{
+  display:flex;align-items:center;gap:8px;
+  text-decoration:none;flex:1;min-width:0;
+}
+.ym-header-wordmark{
+  font-family:Georgia,serif;font-size:27px;font-weight:700;
+  color:white;line-height:1;margin:0;
+}
+.ym-header-pagetitle{
+  font-size:12px;color:rgba(255,255,255,0.6);
+  font-weight:500;margin-top:2px;
+}
+.ym-header-share{
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
+  color:white;border-radius:7px;padding:5px 7px;cursor:pointer;
+  display:flex;align-items:center;flex-shrink:0;text-decoration:none;
+}
 </style>
 </head>
 <body>
-<header>
-  <div class="header-inner">
-    <a href="/" style="font-family:Georgia,serif;font-size:19px;font-weight:bold;color:white;">∧ Yamatch</a>
-    <span style="flex:1"></span>
-    <a href="/" class="back-btn">← トップへ</a>
+<header class="ym-header">
+  <div class="ym-header-inner">
+    <a href="/" class="ym-header-logo">
+      <svg width="24" height="24" viewBox="0 0 36 36" style="flex-shrink:0"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
+      <div>
+        <div class="ym-header-wordmark">Yamatch</div>
+        <div class="ym-header-pagetitle">登山ガイド記事</div>
+      </div>
+    </a>
+    <button class="ym-header-share" onclick="if(navigator.share){navigator.share({title:'Yamatch',url:location.href});}else{navigator.clipboard.writeText(location.href).then(function(){alert('URLをコピーしました');});}" aria-label="シェア"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg></button>
   </div>
 </header>
 
