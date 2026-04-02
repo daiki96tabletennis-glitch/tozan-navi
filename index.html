@@ -3345,7 +3345,7 @@ window.__mountainsBase = [
 const AREAS = ["すべて", "埼玉県", "千葉県", "山梨県", "新潟県", "東京都", "栃木県", "神奈川県", "福島県", "群馬県", "茨城県", "長野県北部", "長野県南部", "静岡県"];
 const CATEGORIES = ["すべて", "百名山", "二百名山", "人気の山"];
 
-const SORTS = ["おすすめ", "近い順", "標高順", "体力度順"];
+const SORTS = ["おすすめ", "近い順", "標高順", "体力度順", "相性順"];
 
 function parseTimeToMinutes(timeStr) {
   const hMatch = timeStr.match(/(\d+)時間/);
@@ -3750,6 +3750,12 @@ function App() {
     if (departure === "大宮" && m.driveTimeOmiya) return m.driveTimeOmiya;
     return m.driveTime;
   };
+
+  const calcMatchScore = (m) => {
+    if (!ymType) return null;
+    const driveMin = getDriveTime(m);
+    return Math.max(0, Math.min(100, 100 - Math.floor(driveMin / 3.6)));
+  };
   const [categoryFilter, setCategoryFilter] = useState(() => { try { const _v = sessionStorage.getItem("ym_category"); return _v !== null ? JSON.parse(_v) : "すべて"; } catch { return "すべて"; } });
   const [dayTripOnly, setDayTripOnly] = useState(() => { try { const _v = sessionStorage.getItem("ym_daytrip"); return _v !== null ? JSON.parse(_v) : false; } catch { return false; } });
   const [trainOnly, setTrainOnly] = useState(() => { try { const _v = sessionStorage.getItem("ym_train"); return _v !== null ? JSON.parse(_v) : false; } catch { return false; } });
@@ -3761,6 +3767,8 @@ function App() {
   const [filterOpen, setFilterOpen] = React.useState(false);
   const [quickOpen, setQuickOpen] = React.useState(false);
   const [matrixOpen, setMatrixOpen] = React.useState(false);
+  const [sortOpen, setSortOpen] = React.useState(false);
+  const [ymType, setYmType] = React.useState(() => { try { return localStorage.getItem("ym_type") || null; } catch { return null; } });
   React.useEffect(() => { window.__openBoard = () => window.open('https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform', '_blank'); }, []);
 
   const [favorites, setFavorites] = useState(() => { try { return new Set(JSON.parse(localStorage.getItem("ym_favorites")||"[]")); } catch { return new Set(); } });
@@ -3849,6 +3857,7 @@ function App() {
     else if (sort === "近い順") list = [...list].sort((a, b) => getDriveTime(a) - getDriveTime(b));
     else if (sort === "標高順") list = [...list].sort((a, b) => b.elevation - a.elevation);
     else if (sort === "体力度順") list = [...list].sort((a, b) => b.courseCoefficient[1] - a.courseCoefficient[1]);
+    else if (sort === "相性順" && ymType) list = [...list].sort((a, b) => (calcMatchScore(b)||0) - (calcMatchScore(a)||0));
     return list;
   }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure, favOnly, favorites, mountains]);
 
@@ -3950,39 +3959,27 @@ function App() {
         </div>
       </header>
 
-      <main style={{maxWidth:"768px",margin:"0 auto",padding:"12px 16px"}}>
+      <main style={{maxWidth:"768px",margin:"0 auto",padding:"12px 16px 80px"}}>
 
-        {/* 診断＋こんな人におすすめ 統合バナー */}
-        <div style={{background:"#c8d4b8",border:"1px solid #a8b898",borderRadius:"12px",padding:"9px 12px",marginBottom:"8px"}}>
-          <div style={{marginBottom:"4px"}}>
-            <div style={{fontSize:"14px",fontWeight:"700",color:"#2a3020",lineHeight:1.25,marginBottom:"2px"}}>16登山タイプ診断・あなたはどのタイプ？</div>
-            <div style={{fontSize:"15px",color:"#6a7858"}}>9問・約1分・完全無料・おすすめの山も提案</div>
+        {/* 診断バナー */}
+        <a href="/recommend/" style={{display:"flex",alignItems:"center",gap:"10px",background:"#c8d4b8",border:"1px solid #a8b898",borderRadius:"12px",padding:"10px 12px",marginBottom:"8px",textDecoration:"none"}}>
+          {/* 方位磁石アイコン */}
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2a4020" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+          </svg>
+          {/* テキスト */}
+          <div style={{flex:1,minWidth:0}}>
+            <div style={{fontSize:"10px",fontWeight:"800",color:"#2a4020",letterSpacing:"0.04em",marginBottom:"3px"}}>登山タイプ診断</div>
+            {ymType && <div style={{fontSize:"10px",fontWeight:"700",color:"#5a6848",marginBottom:"2px"}}>診断済み：<b style={{color:"#2a4020"}}>{ymType}型</b> · 山カードに相性%を表示中</div>}
+            <div style={{fontSize:"13px",fontWeight:"700",color:"#2a3020",lineHeight:1.3}}>{ymType ? "もう一度診断する" : "16タイプ診断・あなたはどのタイプ？"}</div>
+            <div style={{fontSize:"11px",color:"#6a7858",marginTop:"1px"}}>9問・約1分・完全無料</div>
           </div>
-          <div style={{fontSize:"9px",fontWeight:"600",color:"#5a6848",marginBottom:"4px"}}>こんな人におすすめ</div>
-          <div style={{display:"flex",gap:"5px",flexWrap:"wrap",marginBottom:"9px"}}>
-            {["初めての登山","日帰りで行きたい","電車で行きたい"].map(text => (
-              <span key={text} style={{fontSize:"11px",color:"#2a3020",background:"rgba(0,0,0,0.1)",padding:"3px 9px",borderRadius:"20px",whiteSpace:"nowrap"}}>{text}</span>
-            ))}
-          </div>
-          <a href="/recommend/" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",background:"#5a7848",color:"white",fontSize:"13px",fontWeight:"700",padding:"8px",borderRadius:"9px",textDecoration:"none",fontSize:"12px"}}>
-            診断する →
-          </a>
-        </div>
-
-        {/* 記事チップ：2行レイアウト */}
-        <div style={{display:"flex",flexDirection:"column",gap:"5px",marginBottom:"8px"}}>
-          <div style={{display:"flex",gap:"6px"}}>
-            <a href="/articles/kanto-day-trip-100/" style={{flex:1,background:"#faf8f5",border:"1px solid #ddd8d0",borderRadius:"20px",padding:"6px 10px",fontSize:"11px",fontWeight:"500",color:"#5a5248",textDecoration:"none",textAlign:"center"}}>関東発・日帰り百名山10選</a>
-            <a href="/articles/train-access-mountains/" style={{flex:1,background:"#faf8f5",border:"1px solid #ddd8d0",borderRadius:"20px",padding:"6px 10px",fontSize:"11px",fontWeight:"500",color:"#5a5248",textDecoration:"none",textAlign:"center"}}>電車で行ける登山10選</a>
-          </div>
-          <div style={{display:"flex",gap:"6px"}}>
-            <a href="/articles/" style={{flex:1,background:"#f0f5ec",border:"1px solid #c8ddb0",borderRadius:"20px",padding:"6px 10px",fontSize:"11px",fontWeight:"600",color:"#4a6038",textDecoration:"none",textAlign:"center"}}>その他のおすすめ記事はこちら →</a>
-          </div>
-        </div>
-
-  
-
-
+          {/* 右矢印 */}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5a7848" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0,opacity:0.7}}>
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </a>
 
         {/* 検索バー */}
         <div style={{marginBottom:"8px",display:"flex",gap:"8px",alignItems:"center"}}>
@@ -3995,6 +3992,7 @@ function App() {
           />
           {/* 月ピッカー */}
           <div style={{position:"relative",flexShrink:0}}>
+            <div style={{position:"absolute",top:"4px",left:0,right:"24px",textAlign:"center",fontSize:"9px",fontWeight:"600",color:"#9a8870",letterSpacing:"0.02em",pointerEvents:"none",lineHeight:1}}>登山時期</div>
             <select
               value={filterMonth}
               onChange={e => {
@@ -4004,57 +4002,53 @@ function App() {
                 setSort("おすすめ");
                 sessionStorage.setItem("ym_sort", JSON.stringify("おすすめ"));
               }}
-              style={{appearance:"none",WebkitAppearance:"none",padding:"10px 32px 10px 12px",borderRadius:"11px",border:"1px solid #e0dbd4",fontSize:"13px",background:"white",color:"#3a3530",cursor:"pointer",outline:"none",fontWeight:"500"}}
+              style={{appearance:"none",WebkitAppearance:"none",padding:"16px 28px 6px 10px",borderRadius:"11px",border:"1px solid #e0dbd4",fontSize:"13px",background:"white",color:"#3a3530",cursor:"pointer",outline:"none",fontWeight:"600",height:"44px"}}
             >
               {[1,2,3,4,5,6,7,8,9,10,11,12].map(m => (
                 <option key={m} value={m}>{m}月</option>
               ))}
             </select>
-            <span style={{position:"absolute",right:"10px",top:"50%",transform:"translateY(-50%)",pointerEvents:"none",fontSize:"10px",color:"#7a7068"}}>▼</span>
+            <span style={{position:"absolute",right:"8px",bottom:"10px",pointerEvents:"none",fontSize:"9px",color:"#7a7068"}}>▼</span>
           </div>
         </div>
 
-
-
-
-        {/* 並び替えボタン */}
-        <div style={{display:"flex",gap:"6px",marginBottom:"6px",overflowX:"auto",WebkitOverflowScrolling:"touch",paddingBottom:"2px"}}>
-          <span style={{fontSize:"12px",color:"#7a7068",whiteSpace:"nowrap",alignSelf:"center",flexShrink:0}}>並び替え:</span>
-          {SORTS.map(s => (
-            <button key={s} onClick={() => { setSort(s); sessionStorage.setItem("ym_sort", JSON.stringify(s)); }} style={{
-              whiteSpace:"nowrap", fontSize:"12px", padding:"6px 13px",
-              borderRadius:"20px", border:"none", cursor:"pointer", flexShrink:0,
-              background: sort === s ? "#4a5e4a" : "#f0ede5",
-              color: sort === s ? "white" : "#5a5248",
-              fontWeight: sort === s ? "700" : "500",
-            }}>{s}</button>
-          ))}
+        {/* 絞り込み＋並び替え 1行 */}
+        <div style={{display:"flex",alignItems:"center",gap:0,marginBottom:"8px",background:"white",border:"1px solid #e0dbd4",borderRadius:"10px",overflow:"visible",position:"relative"}}>
+          <button onClick={() => setFilterOpen(!filterOpen)} style={{
+            display:"flex",alignItems:"center",gap:"5px",
+            background:filterOpen?"#2e4820":"#344f2c",color:"white",
+            fontSize:"12px",fontWeight:"700",padding:"8px 12px",
+            borderRadius:"9px 0 0 9px",whiteSpace:"nowrap",cursor:"pointer",border:"none",flex:1,
+          }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+            絞り込み
+            <span style={{fontSize:"10px",color:"rgba(255,255,255,0.65)",marginLeft:"1px"}}>{filtered.length}件</span>
+          </button>
+          <div style={{width:"1px",height:"18px",background:"rgba(255,255,255,0.3)",flexShrink:0}}></div>
+          <button onClick={e => { e.stopPropagation(); setSortOpen(v => !v); }}
+            style={{display:"flex",alignItems:"center",gap:"5px",padding:"8px 12px",fontSize:"12px",fontWeight:"600",color:"white",cursor:"pointer",background:filterOpen?"#2e4820":"#344f2c",border:"none",whiteSpace:"nowrap",flexShrink:0,borderRadius:"0 9px 9px 0"}}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
+              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="9" y2="18"/>
+            </svg>
+            {sort}
+            <svg style={{opacity:0.6}} width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          {sortOpen && (
+            <div style={{position:"absolute",top:"calc(100% + 6px)",right:0,background:"white",borderRadius:"12px",boxShadow:"0 4px 24px rgba(0,0,0,0.15)",border:"1px solid #e8e4dc",zIndex:500,minWidth:"160px",overflow:"hidden"}}>
+              {SORTS.map(s => (
+                <button key={s} onClick={() => { setSort(s); sessionStorage.setItem("ym_sort", JSON.stringify(s)); setSortOpen(false); }}
+                  style={{display:"flex",alignItems:"center",justifyContent:"space-between",width:"100%",padding:"11px 16px",fontSize:"13px",fontWeight:sort===s?"700":"500",color:sort===s?"#344f2c":(s==="相性順"&&!ymType?"#b0a898":"#3a3530"),background:sort===s?"#f0f5ec":"white",border:"none",borderBottom:"1px solid #f5f3ef",cursor:"pointer",fontFamily:"inherit"}}>
+                  <span>{s}{s==="相性順"&&!ymType&&<span style={{fontSize:"10px",color:"#b0a898",marginLeft:"4px"}}>診断後に使える</span>}</span>
+                  {sort===s&&<span style={{fontSize:"12px",color:"#344f2c"}}>✓</span>}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* フィルタートグル */}
+        {/* フィルターパネル */}
         <div>
-          <button onClick={() => setFilterOpen(!filterOpen)} style={{
-            display:"flex", alignItems:"center", justifyContent:"space-between",
-            background: filterOpen ? "#3a4e3a" : "#4a5e4a",
-            border:"none", borderRadius:"22px",
-            padding:"9px 16px", cursor:"pointer", width:"100%",
-          }}>
-            <div style={{display:"flex",alignItems:"center",gap:"8px",fontSize:"13px",color:"white",fontWeight:"700"}}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
-              絞り込み
-              <div style={{display:"flex",gap:"4px",flexWrap:"wrap"}}>
-                {dayTripOnly && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>日帰り</span>}
-                {trainOnly && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>電車OK</span>}
-                {favOnly && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>⭐お気に入り</span>}
-                {categoryFilter !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{categoryFilter}</span>}
-                {area !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{area}</span>}
-                {driveTimeFilter && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{driveTimeFilter/60}h以内</span>}
-                {courseFilter && courseFilter.length > 0 && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>体力度{courseFilter[0]}</span>}
-                {cramponsFilter && cramponsFilter !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{cramponsFilter}</span>}
-              </div>
-            </div>
-            <span style={{fontSize:"11px",color:"white",display:"inline-block",transform:filterOpen?"rotate(180deg)":"rotate(0deg)",transition:"transform 0.25s"}}>▼</span>
-          </button>
+          <button onClick={() => setFilterOpen(!filterOpen)} style={{display:"none"}}></button>
           {filterOpen && <div style={{background:"white",border:"1.5px solid #ddd8d0",borderRadius:"14px",padding:"12px",marginTop:"6px"}}>
         {/* フィルターチップ */}
           {(() => {
@@ -4223,6 +4217,44 @@ function App() {
                       }}
                       onMouseEnter={e => e.currentTarget.style.opacity = "0.85"}
                       onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
+                      {/* ☆お気に入りボタン（右上） */}
+                      {(() => {
+                        const isFav = favorites.has(m.id);
+                        const matchPct = calcMatchScore(m);
+                        return (
+                          <div style={{position:"absolute",top:"7px",right:"7px",zIndex:2,display:"flex",flexDirection:"column",alignItems:"flex-end",gap:"3px"}}>
+                            {matchPct !== null && (
+                              <div style={{fontSize:"9px",fontWeight:"700",background:matchPct>=70?"#e8f5e0":"#f5f5f0",color:matchPct>=70?"#2a6020":"#8a8078",borderRadius:"8px",padding:"1px 5px",lineHeight:"1.4"}}>
+                                {matchPct}%
+                              </div>
+                            )}
+                            <button
+                              onClick={e => {
+                                e.preventDefault(); e.stopPropagation();
+                                const next = new Set(favorites);
+                                if(next.has(m.id)) next.delete(m.id); else next.add(m.id);
+                                localStorage.setItem("ym_favorites", JSON.stringify([...next]));
+                                setFavorites(next);
+                                const btn = e.currentTarget;
+                                btn.style.transform = "scale(1.5)";
+                                btn.style.transition = "transform 0.15s";
+                                setTimeout(() => { btn.style.transform = "scale(1)"; }, 150);
+                              }}
+                              style={{
+                                background: isFav ? "rgba(255,200,50,0.25)" : "rgba(255,255,255,0.55)",
+                                border: isFav ? "1px solid rgba(255,180,0,0.4)" : "1px solid rgba(0,0,0,0.08)",
+                                borderRadius: "50%",
+                                width: "24px", height: "24px",
+                                display: "flex", alignItems: "center", justifyContent: "center",
+                                fontSize: "13px", cursor: "pointer", padding: 0,
+                                backdropFilter: "blur(4px)",
+                                transition: "background 0.2s, border 0.2s",
+                              }}>
+                              {isFav ? "⭐" : "☆"}
+                            </button>
+                          </div>
+                        );
+                      })()}
                       {/* 背景SVG山シルエット */}
                       <svg style={{
                         position: "absolute", right: "-8px", bottom: "-4px",
@@ -4287,6 +4319,27 @@ function App() {
             />
           )}
       </main>
+      {/* ボトムナビ */}
+      <nav style={{position:"fixed",bottom:0,left:0,right:0,background:"white",borderTop:"1px solid #ece8e0",display:"flex",height:"56px",zIndex:1000,paddingBottom:"env(safe-area-inset-bottom,0px)"}}>
+        {[
+          { id:"search", label:"探す", path:"/", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg> },
+          { id:"diag", label:"診断", path:"/recommend/", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> },
+          { id:"articles", label:"記事", path:"/articles/", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="13" y2="11"/></svg> },
+          { id:"mypage", label:"マイページ", path:"/mypage/", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> },
+        ].map(tab => {
+          const isActive = tab.id === "search";
+          return (
+            <a key={tab.id} href={tab.path} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"3px",textDecoration:"none",position:"relative",cursor:"pointer"}}>
+              {isActive && <div style={{position:"absolute",bottom:0,left:"18%",right:"18%",height:"2.5px",background:"linear-gradient(90deg,#5a8040,#2e4820)",borderRadius:"2px 2px 0 0"}}></div>}
+              <div style={{height:"22px",display:"flex",alignItems:"center",justifyContent:"center",color:isActive?"#344f2c":"#c0b8b0"}}>
+                {tab.icon}
+              </div>
+              <div style={{fontSize:"10px",color:isActive?"#344f2c":"#b0a898",fontWeight:isActive?"700":"500"}}>{tab.label}</div>
+            </a>
+          );
+        })}
+      </nav>
+
       <footer style={{ textAlign: "center", padding: "20px 16px", fontSize: "12px", color: "#a09888", borderTop: "1px solid #e8e4dc", marginTop: "8px" }}>
         <p style={{ fontSize: "11px", color: "#a09888", lineHeight: "1.8", maxWidth: "480px", margin: "0 auto", wordBreak: "auto-phrase" }}>Yamatchは、コース定数・都道府県・アクセス時間・日帰り可否・アイゼン要否・電車アクセスなどの条件から登山を探せる検索サービスです。</p>
         <p style={{ marginTop: "6px" }}>
@@ -4298,6 +4351,8 @@ function App() {
         </p>
         <p style={{ marginTop: "8px", opacity: 0.6 }}>© 2026 Yamatch. All rights reserved.</p>
 </footer>
+      {/* ボトムナビ分スペーサー */}
+      <div style={{height:"56px"}}></div>
     </div>
   );
 }
