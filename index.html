@@ -3,9 +3,9 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta name="google-site-verification" content="dJ2byH9b8xF8S5lqAyWV-DqRwPGLEjWXs_-Un9oXGHs" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Yamatch｜コース定数やアクセス条件で登山を探せる検索サイト</title>
-<meta name="description" content="出発地から登る山を探せる登山サーチサービス。百名山・二百名山・人気の山を条件で絞り込み。">
-<meta property="og:title" content="Yamatch｜コース定数やアクセス条件で登山を探せる検索サイト">
+<title>Yamatch｜登山検索サイト｜コース定数・出発地・日帰りで山を探せる</title>
+<meta name="description" content="Yamatchは出発地・コース定数・アイゼン要否・日帰り可否から登山を検索できる無料サービス。関東の百名山・人気の山111座を条件で絞り込み、自分に合った山が見つかります。">
+<meta property="og:title" content="Yamatch｜登山検索サイト｜コース定数・出発地・日帰りで山を探せる">
 <meta property="og:description" content="大船・新宿・横浜・大宮から行ける百名山・二百名山・人気の山を、コース定数・難易度・日帰り可否で絞り込めるサービス。">
 <meta property="og:image" content="https://tozan-navi.com/ogp.png?v=3">
 <meta property="og:image:width" content="1200">
@@ -67,6 +67,36 @@ function loadLeaflet(cb){
 #root:not(:empty) ~ #app-skeleton,
 #root:not(:empty) + * #app-skeleton{display:none;}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Yamatch",
+  "url": "https://tozan-navi.com/",
+  "description": "出発地・コース定数・アイゼン要否・日帰り可否から登山を検索できるサービス",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://tozan-navi.com/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Yamatch 登山検索",
+  "url": "https://tozan-navi.com/",
+  "applicationCategory": "TravelApplication",
+  "description": "コース定数・出発地・日帰り可否・アイゼン要否で登山を検索できる無料サービス",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "JPY"
+  }
+}
+</script>
 </head><body>
 <div id="app-skeleton">
   <div class="sk-header">
@@ -80,7 +110,15 @@ function loadLeaflet(cb){
     <div class="sk-card"></div>
     <div class="sk-card"></div>
   </div>
-</div><div id="root"></div>
+</div><!-- SEO用静的コンテンツ（クローラー向け） -->
+<div id="seo-static" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;" aria-hidden="true">
+  <h1>Yamatch｜登山検索サイト｜コース定数・出発地・日帰りで山を探せる</h1>
+  <h2>出発地・コース定数・アイゼン要否から登山を検索できる無料サービス</h2>
+  <p>Yamatchは、コース定数・出発地・日帰り可否・アイゼン要否・電車アクセスなどの条件から登山を検索できる無料サービスです。関東の百名山・二百名山・人気の山111座に対応しています。</p>
+  <h2>こんな方におすすめの登山検索サービスです</h2>
+  <p>「電車で行ける日帰り登山を探している」「コース定数20以下の初心者向けの山を知りたい」「アイゼンなしで冬に登れる山を探している」という方は、条件を指定して検索するとすぐに見つかります。</p>
+</div>
+<div id="root"></div>
 
 <script type="text/babel">
 const {useState,useMemo,useEffect,useRef}=React;
@@ -4392,4 +4430,12 @@ fetch('/data/mountains.json')
   <button onclick="window.location.href='/about/';" style="display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:14px;font-weight:600;color:#3a3530;background:none;border:none;cursor:pointer;width:100%;border-bottom:1px solid #f0ede5;font-family:inherit;text-align:left;">👤 運営者</button>
   <button onclick="document.getElementById('ym-nav-menu').style.display='none';document.getElementById('ym-nav-overlay').style.display='none';window.open('https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform','_blank');" style="display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:14px;font-weight:600;color:#3a3530;background:none;border:none;cursor:pointer;width:100%;font-family:inherit;text-align:left;">💬 改善提案・お問い合わせ</button>
 </div>
+<!-- SEO用説明テキスト -->
+<section style="max-width:720px;margin:0 auto;padding:24px 16px 8px;font-size:14px;line-height:1.85;color:#6a6258;">
+  <h2 style="font-size:15px;font-weight:700;color:#3a3530;margin-bottom:8px;">Yamatchとは</h2>
+  <p>Yamatchは、出発地・コース定数・アイゼン要否・日帰り可否から登山を検索できる無料サービスです。関東の百名山・二百名山・人気の山111座を対象に、自分に合った山を条件で絞り込めます。</p>
+  <h2 style="font-size:15px;font-weight:700;color:#3a3530;margin:14px 0 8px;">電車で行ける登山・日帰り登山の検索に対応</h2>
+  <p>「電車アクセスのみで行ける山」「大船・新宿・横浜・大宮から2時間以内の山」「アイゼン不要で冬に登れる山」「コース定数15以下の初心者向けの山」など、細かい条件で絞り込めます。</p>
+</section>
+
 </body></html>
