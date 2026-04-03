@@ -278,13 +278,7 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 <body>
 <header class="ym-header">
   <div class="ym-header-inner">
-    <a href="/" class="ym-header-logo">
-      <svg width="24" height="24" viewBox="0 0 36 36" style="flex-shrink:0"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
-      <div>
-        <div class="ym-header-wordmark">Yamatch</div>
-        <div class="ym-header-pagetitle">登山タイプ診断</div>
-      </div>
-    </a>
+    <div style="flex:1;font-size:16px;font-weight:700;color:white;">登山タイプ診断</div>
     <button class="ym-header-share" onclick="if(navigator.share){navigator.share({title:'Yamatch',url:location.href});}else{navigator.clipboard.writeText(location.href).then(function(){alert('URLをコピーしました');});}" aria-label="シェア"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg></button>
   </div>
 </header>
