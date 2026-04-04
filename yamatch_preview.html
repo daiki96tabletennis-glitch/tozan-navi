@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja"><head><meta charset="UTF-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
 <meta name="google-site-verification" content="dJ2byH9b8xF8S5lqAyWV-DqRwPGLEjWXs_-Un9oXGHs" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Yamatch｜コース定数やアクセス条件で登山を探せる検索サイト</title>
+<title>Yamatch｜出発地から登る山を探せる登山サーチ</title>
 <meta name="description" content="出発地から登る山を探せる登山サーチサービス。百名山・二百名山・人気の山を条件で絞り込み。">
-<meta property="og:title" content="Yamatch｜コース定数やアクセス条件で登山を探せる検索サイト">
+<meta property="og:title" content="Yamatch｜出発地から登る山を探せる登山サーチ">
 <meta property="og:description" content="大船・新宿・横浜・大宮から行ける百名山・二百名山・人気の山を、コース定数・難易度・日帰り可否で絞り込めるサービス。">
-<meta property="og:image" content="https://tozan-navi.com/ogp.png?v=3">
+<meta property="og:image" content="https://tozan-navi.com/ogp.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
@@ -18,101 +16,28 @@
 <meta name="twitter:description" content="大船・新宿・横浜・大宮から行ける百名山・二百名山・人気の山をコース定数・難易度で絞り込める登山サーチ。">
 <meta name="twitter:image" content="https://tozan-navi.com/ogp.png">
 <link rel="canonical" href="https://tozan-navi.com/">
-<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" as="script">
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" as="script">
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js" as="script">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" media="print" onload="this.media='all'">
-<!-- Leaflet は地図表示時に動的ロード -->
-<script>
-function loadLeaflet(cb){
-  if(window.L){cb&&cb();return;}
-  var css=document.createElement('link');
-  css.rel='stylesheet';css.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-  document.head.appendChild(css);
-  var s=document.createElement('script');
-  s.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-  s.onload=cb;document.head.appendChild(s);
-}
-</script>
-<style>*{box-sizing:border-box;}body{margin:0;padding:0;-webkit-text-size-adjust:100%;}::-webkit-scrollbar{height:4px;}::-webkit-scrollbar-thumb{background:#ccc8c0;border-radius:4px;}button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
-/* ===== ボトムナビ ===== */
-.ym-bottom-nav {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  height: 56px;
-  background: white;
-  border-top: 1px solid #ece8e0;
-  display: flex;
-  z-index: 1000;
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-.ym-tab {
-  flex: 1; display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 3px; cursor: pointer; position: relative;
-  text-decoration: none; color: inherit;
-  -webkit-tap-highlight-color: transparent;
-}
-.ym-tab.active::after {
-  content: ""; position: absolute;
-  bottom: 0; left: 18%; right: 18%;
-  height: 2.5px;
-  background: linear-gradient(90deg, #5a8040, #2e4820);
-  border-radius: 2px 2px 0 0;
-}
-.ym-tab-ico { height: 22px; display: flex; align-items: center; justify-content: center; }
-.ym-tab-ico svg { stroke: #c0b8b0; transition: stroke 0.15s; }
-.ym-tab.active .ym-tab-ico svg { stroke: #344f2c; stroke-width: 2.2; }
-.ym-tab-lbl { font-size: 10px; color: #b0a898; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; }
-.ym-tab.active .ym-tab-lbl { color: #344f2c; font-weight: 700; }
-</style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>*{box-sizing:border-box;}body{margin:0;padding:0;-webkit-text-size-adjust:100%;}::-webkit-scrollbar{height:4px;}::-webkit-scrollbar-thumb{background:#ccc8c0;border-radius:4px;}button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}</style>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-TMTVVTEEGF');
+  
 </script>
 <link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
 <meta property="og:updated_time" content="2026-03-16T00:00:00+09:00">
-
-<style>
-#app-skeleton{display:flex;flex-direction:column;min-height:100vh;background:#e8e0d5;}
-.sk-header{background:linear-gradient(135deg,#4a6038,#607848);padding:14px 16px;display:flex;align-items:center;gap:10px;}
-.sk-logo{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.3);}
-.sk-title{width:100px;height:18px;background:rgba(255,255,255,0.3);border-radius:4px;}
-.sk-body{padding:16px;max-width:480px;margin:0 auto;width:100%;}
-.sk-bar{height:44px;background:#e8e4dc;border-radius:12px;margin-bottom:10px;animation:sk-pulse 1.2s ease-in-out infinite;}
-.sk-card{height:90px;background:white;border-radius:12px;margin-bottom:8px;animation:sk-pulse 1.2s ease-in-out infinite;}
-.sk-card:nth-child(2){animation-delay:0.1s;}
-.sk-card:nth-child(3){animation-delay:0.2s;}
-@keyframes sk-pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-#root:not(:empty) ~ #app-skeleton,
-#root:not(:empty) + * #app-skeleton{display:none;}
-</style>
-</head><body>
-<div id="app-skeleton">
-  <div class="sk-header">
-    <div class="sk-logo"></div>
-    <div class="sk-title"></div>
-  </div>
-  <div class="sk-body">
-    <div class="sk-bar"></div>
-    <div class="sk-bar" style="width:80%;height:36px;"></div>
-    <div class="sk-card"></div>
-    <div class="sk-card"></div>
-    <div class="sk-card"></div>
-  </div>
-</div><div id="root"></div>
-
+</head><body><div id="root"></div>
+<script>window.storage={_data:{},get:async(k)=>{const v=window.storage._data[k];return v!==undefined?{key:k,value:v}:null;},set:async(k,v)=>{window.storage._data[k]=v;return{key:k,value:v};},delete:async(k)=>{delete window.storage._data[k];return{key:k,deleted:true};},list:async(p)=>{const keys=Object.keys(window.storage._data).filter(k=>!p||k.startsWith(p));return{keys};}};</script>
 <script type="text/babel">
 const {useState,useMemo,useEffect,useRef}=React;
 
@@ -123,7 +48,7 @@ const CATEGORY_STYLE = {
   "人気の山": { bg: "#e4e4e8", color: "#48485a", label: "人気の山" },
 };
 
-window.__mountainsBase = [
+const mountains = [
   {
     id: "tanzawa",
     lat: 35.4779,
@@ -132,9 +57,9 @@ window.__mountainsBase = [
     kana: "たんざわさん",
     elevation: 1567,
     area: "神奈川県",
-    driveTime: 70,
+    driveTime: 60,
     driveDistance: 65,
-    driveTimeShinjuku: 75,
+    driveTimeShinjuku: 95,
     driveTimeYokohama: 75,
     driveTimeOmiya: 105,
     trailhead: "大倉（秦野戸川公園）",
@@ -142,8 +67,8 @@ window.__mountainsBase = [
     parking: "大倉駐車場（約150台・平日100〜500円・土日200〜800円・トイレあり）",
     season: "通年（冬季は積雪注意）",
     difficulty: "中級",
-    courseCoefficientRange: "28〜59",
-    courseCoefficient: [28, 59],
+    courseCoefficientRange: "26〜33",
+    courseCoefficient: [26, 33],
     routes: [
       { name: "塩水橋ルート（周回）", time: "6時間", distance: "13.4km", elevation: "+1100m" },
       { name: "堂平ルート", time: "5時間", distance: "10.2km", elevation: "+900m" },
@@ -151,7 +76,7 @@ window.__mountainsBase = [
     description: "神奈川県最高峰エリア。ブナの原生林が美しく、四季を通じて楽しめる。",
     yamapUrl: "https://yamap.com/mountains/110",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月・4月（1〜3月は12本必要）",
+    season6Crampons: "12月〜4月",
         category: "百名山",
   },
   {
@@ -210,7 +135,7 @@ window.__mountainsBase = [
     ],
     description: "百名山最低峰。ケーブルカー・ロープウェイあり。山頂からは関東平野を一望。",
     yamapUrl: "https://yamap.com/mountains/90",
-    seasonNoGear: "5月〜11月",
+    seasonNoGear: "通年",
     season6Crampons: "なし",
         category: "百名山",
   },
@@ -240,8 +165,8 @@ window.__mountainsBase = [
     ],
     description: "東京都最高峰。奥多摩を代表する名峰で、ブナ林の縦走路が美しい。",
     yamapUrl: "https://yamap.com/mountains/25",
-    seasonNoGear: "4月下旬〜11月",
-    season6Crampons: "12月〜3月（チェーンスパイク推奨）",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
         trainAccess: "奥多摩駅→バス15分→鴨沢",
     category: "百名山",
   },
@@ -301,8 +226,8 @@ window.__mountainsBase = [
     ],
     description: "草原状の稜線から富士山や南アルプスの展望が開ける。アクセスが良く人気。",
     yamapUrl: "https://yamap.com/mountains/178",
-    seasonNoGear: "5月〜11月",
-    season6Crampons: "12月〜4月",
+    seasonNoGear: "通年",
+    season6Crampons: "なし",
         trainAccess: "塩山駅→バス25分→上日川峠（季節）",
     category: "百名山",
   },
@@ -332,7 +257,7 @@ window.__mountainsBase = [
     description: "鋸状の岩峰が連なる個性的な山容。クサリ場が多く登り応えがある。",
     yamapUrl: "https://yamap.com/mountains/24",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月〜4月（岩場につきチェーンスパイク推奨）",
+    season6Crampons: "12月〜4月",
             category: "百名山",
   },
   {
@@ -361,7 +286,7 @@ window.__mountainsBase = [
     ],
     description: "甲州・武州・信州の3県の境に位置。千曲川・荒川・笛吹川の源流の山。",
     yamapUrl: "https://yamap.com/mountains/26",
-    seasonNoGear: "5月下旬〜11月",
+    seasonNoGear: "5月〜11月",
     season6Crampons: "12月〜4月",
         category: "百名山",
   },
@@ -422,7 +347,7 @@ window.__mountainsBase = [
     description: "上毛三山の一つ。カルデラ湖（大沼）を擁する成層火山。展望が良い。",
     yamapUrl: "https://yamap.com/mountains/21",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月・4月（1〜3月は12本必要）",
+    season6Crampons: "12月〜4月",
             category: "百名山",
   },
   {
@@ -451,7 +376,7 @@ window.__mountainsBase = [
     ],
     description: "奥秩父の盟主。山頂に五丈石という奇岩がそびえ、展望も抜群。",
     yamapUrl: "https://yamap.com/mountains/176",
-    seasonNoGear: "5月下旬〜11月",
+    seasonNoGear: "5月〜11月",
     season6Crampons: "12月〜4月",
         category: "百名山",
   },
@@ -481,7 +406,7 @@ window.__mountainsBase = [
     ],
     description: "南アルプス北部の山。地蔵岳のオベリスクが特徴的。白砂の稜線が美しい。",
     yamapUrl: "https://yamap.com/mountains/63",
-    seasonNoGear: "7月〜10月",
+    seasonNoGear: "6月〜10月",
     season6Crampons: "不可（残雪期は12本必要）",
         category: "百名山",
   },
@@ -572,7 +497,7 @@ window.__mountainsBase = [
     ],
     description: "八ヶ岳連峰の最高峰。岩稜帯が続くダイナミックなルート。",
     yamapUrl: "https://yamap.com/mountains/101",
-    seasonNoGear: "5月下旬〜11月",
+    seasonNoGear: "5月〜11月",
     season6Crampons: "12月〜4月",
         category: "百名山",
   },
@@ -697,7 +622,7 @@ window.__mountainsBase = [
     description: "魔の山とも称される難峰。双耳峰（トマの耳・オキの耳）が特徴。",
     yamapUrl: "https://yamap.com/mountains/164",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月・4月〜5月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
         trainAccess: "土合駅から徒歩5分（ロープウェイ駅）",
     category: "百名山",
   },
@@ -728,7 +653,7 @@ window.__mountainsBase = [
     description: "栃木県の名峰。活火山で荒涼とした火山景観が広がる。",
     yamapUrl: "https://yamap.com/mountains/8564",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "3月〜5月・11月（12〜2月は12本推奨）",
+    season6Crampons: "12月〜4月",
         trainAccess: "🚅那須塩原駅→バス30分→峠の茶屋入口",
     category: "百名山",
   },
@@ -759,7 +684,7 @@ window.__mountainsBase = [
     description: "上信国境の雄峰。なだらかな山容で、高山植物が豊富。",
     yamapUrl: "https://yamap.com/mountains/51",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月・4月〜5月（1〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
             category: "百名山",
   },
   {
@@ -789,7 +714,7 @@ window.__mountainsBase = [
     description: "関東以北の最高峰。コバルトブルーの五色沼が山頂付近に広がる。",
     yamapUrl: "https://yamap.com/mountains/252",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "4月〜5月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
             category: "百名山",
   },
   {
@@ -819,7 +744,7 @@ window.__mountainsBase = [
     description: "上州武尊山とも呼ばれる。日本武尊の伝説が残る上毛三山の一つ。",
     yamapUrl: "https://yamap.com/mountains/170",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月・4月〜5月（1〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
             category: "百名山",
   },
   {
@@ -847,7 +772,6 @@ window.__mountainsBase = [
     description: "白い花崗岩の山頂が印象的。黒戸尾根は日本三大急登の一つ。",
     yamapUrl: "https://yamap.com/mountains/62",
     seasonNoGear: "7月〜9月",
-    season12Crampons: "12月〜3月",
     season6Crampons: "10月〜11月・5月〜6月",
         category: "百名山",
   },
@@ -876,7 +800,6 @@ window.__mountainsBase = [
     description: "南アルプスの女王。カール地形が美しく、高山植物が豊富。",
     yamapUrl: "https://yamap.com/mountains/15",
     seasonNoGear: "6月〜10月",
-    season12Crampons: "12月〜3月",
     season6Crampons: "不可（残雪期は12本必要）",
         category: "百名山",
   },
@@ -906,7 +829,7 @@ window.__mountainsBase = [
     ],
     description: "北アルプス屈指の高山植物の宝庫。大雪渓は夏でも残雪がある。",
     yamapUrl: "https://yamap.com/mountains/17",
-    seasonNoGear: "8月〜9月",
+    seasonNoGear: "7月〜9月",
     season6Crampons: "不可（雪渓・12本必要）",
         trainAccess: "白馬駅→バス25分→猿倉（季節）",
     category: "百名山",
@@ -938,7 +861,7 @@ window.__mountainsBase = [
     description: "バスで2700mの畳平まで行けるため、初心者でも3000m峰に登れる。",
     yamapUrl: "https://yamap.com/mountains/146",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜7月上旬（残雪あり）",
+    season6Crampons: "5月〜6月（残雪あり・注意）",
             category: "百名山",
   },
   {
@@ -948,7 +871,7 @@ window.__mountainsBase = [
     name: "立山",
     kana: "たてやま",
     elevation: 3015,
-    area: "富山県",
+    area: "長野県北部",
     driveTime: 355,
     driveDistance: 250,
     driveTimeShinjuku: 340,
@@ -979,7 +902,7 @@ window.__mountainsBase = [
     name: "剱岳",
     kana: "つるぎだけ",
     elevation: 2999,
-    area: "富山県",
+    area: "長野県北部",
     driveTime: 360,
     driveDistance: 265,
     driveTimeShinjuku: 345,
@@ -999,7 +922,6 @@ window.__mountainsBase = [
     description: "日本最難関の百名山。クサリ場・岩場の連続で技術と体力が必要。",
     yamapUrl: "https://yamap.com/mountains/11",
     seasonNoGear: "7月〜9月",
-    season12Crampons: "12月〜3月",
     season6Crampons: "不可（12本必要・ガイド推奨）",
         trainAccess: "富山駅→立山ケーブル→室堂（季節）",
     category: "百名山",
@@ -1091,7 +1013,7 @@ window.__mountainsBase = [
     description: "越後富士の異名を持つ新潟の名峰。スカイケーブル利用ルートも人気。火打山とのセット登山も定番。",
     yamapUrl: "https://yamap.com/mountains/166",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "5月〜6月・10月〜11月",
+    season6Crampons: "5月・11月",
         trainAccess: "妙高高原駅→バス30分→燕温泉",
     category: "百名山",
   },
@@ -1122,7 +1044,7 @@ window.__mountainsBase = [
     description: "越後の名峰。山頂付近は広大な湿原が広がり、池塘が点在する。",
     yamapUrl: "https://yamap.com/mountains/162",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月・10月〜11月",
+    season6Crampons: "5月〜6月・11月",
         trainAccess: "六日町駅→バス27分→清水（季節）",
     category: "百名山",
   },
@@ -1183,7 +1105,7 @@ window.__mountainsBase = [
     description: "尾瀬を代表する山。蛇紋岩の山で固有種の高山植物が多い。",
     yamapUrl: "https://yamap.com/mountains/103",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "6月上旬・11月（5月は入山禁止）",
+    season6Crampons: "5月〜6月・11月",
             category: "百名山",
   },
   {
@@ -1213,7 +1135,7 @@ window.__mountainsBase = [
     description: "湿原と池塘が広がる稜線が美しい。東北南部の名峰。",
     yamapUrl: "https://yamap.com/mountains/159",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月上旬・10月〜11月",
+    season6Crampons: "5月〜6月・11月",
         category: "百名山",
   },
   {
@@ -1275,7 +1197,7 @@ window.__mountainsBase = [
     description: "福島のシンボル。磐梯朝日国立公園の主峰。猪苗代湖を見下ろす。",
     yamapUrl: "https://yamap.com/mountains/158",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月・4月〜5月上旬（1〜3月は12本推奨）",
+    season6Crampons: "12月〜4月",
         trainAccess: "猪苗代駅→バス30分→八方台（季節）",
     category: "百名山",
   },
@@ -1305,9 +1227,8 @@ window.__mountainsBase = [
     ],
     description: "東北最高峰。双耳峰の雄姿と尾瀬の自然が魅力。",
     yamapUrl: "https://yamap.com/mountains/163",
-    seasonNoGear: "6月〜10月",
-    season12Crampons: "12月〜3月",
-    season6Crampons: "4月〜6月上旬・11月（12〜3月は12本必要）",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
             category: "百名山",
   },
 
@@ -1332,8 +1253,8 @@ window.__mountainsBase = [
     parking: "高尾山IC周辺駐車場（有料）",
     season: "通年",
     difficulty: "初級",
-    courseCoefficientRange: "8〜51",
-    courseCoefficient: [8, 51],
+    courseCoefficientRange: "8〜14",
+    courseCoefficient: [8, 14],
     routes: [
       { name: "1号路（薬王院経由）", time: "2時間", distance: "5.0km", elevation: "+400m" },
       { name: "稲荷山コース", time: "2時間30分", distance: "6.5km", elevation: "+400m" },
@@ -1353,9 +1274,9 @@ window.__mountainsBase = [
     kana: "おおやま",
     elevation: 1252,
     area: "神奈川県",
-    driveTime: 45,
+    driveTime: 70,
     driveDistance: 55,
-    driveTimeShinjuku: 55,
+    driveTimeShinjuku: 90,
     driveTimeYokohama: 55,
     driveTimeOmiya: 90,
     trailhead: "大山ケーブル駅",
@@ -1363,8 +1284,8 @@ window.__mountainsBase = [
     parking: "大山第1〜3駐車場（有料）",
     season: "通年",
     difficulty: "初〜中級",
-    courseCoefficientRange: "12〜46",
-    courseCoefficient: [12, 46],
+    courseCoefficientRange: "14〜22",
+    courseCoefficient: [14, 22],
     routes: [
       { name: "ケーブルカー〜大山山頂（往復）", time: "3時間", distance: "5.0km", elevation: "+600m" },
       { name: "大山登山口〜山頂（往復）", time: "4時間30分", distance: "7.0km", elevation: "+1000m" }
@@ -1384,18 +1305,18 @@ window.__mountainsBase = [
     kana: "とうのだけ",
     elevation: 1491,
     area: "神奈川県",
-    driveTime: 50,
+    driveTime: 75,
     driveDistance: 60,
-    driveTimeShinjuku: 60,
-    driveTimeYokohama: 50,
-    driveTimeOmiya: 90,
+    driveTimeShinjuku: 95,
+    driveTimeYokohama: 65,
+    driveTimeOmiya: 100,
     trailhead: "大倉（バス停）",
     trailheadAddress: "神奈川県秦野市堀山下",
     parking: "大倉駐車場（約80台・500円）",
     season: "通年",
     difficulty: "中級",
-    courseCoefficientRange: "23〜59",
-    courseCoefficient: [23, 59],
+    courseCoefficientRange: "18〜25",
+    courseCoefficient: [18, 25],
     routes: [
       { name: "大倉尾根ルート（往復）", time: "5時間", distance: "14.0km", elevation: "+1200m" }
     ],
@@ -1414,18 +1335,18 @@ window.__mountainsBase = [
     kana: "ひるがたけ",
     elevation: 1673,
     area: "神奈川県",
-    driveTime: 50,
+    driveTime: 80,
     driveDistance: 65,
-    driveTimeShinjuku: 60,
-    driveTimeYokohama: 50,
-    driveTimeOmiya: 90,
+    driveTimeShinjuku: 120,
+    driveTimeYokohama: 70,
+    driveTimeOmiya: 105,
     trailhead: "大倉 or 姫次",
     trailheadAddress: "神奈川県秦野市堀山下",
     parking: "大倉駐車場（約80台・500円）",
     season: "通年（冬季積雪注意）",
     difficulty: "中〜上級",
-    courseCoefficientRange: "38〜59",
-    courseCoefficient: [38, 59],
+    courseCoefficientRange: "28〜42",
+    courseCoefficient: [28, 42],
     routes: [
       { name: "大倉〜塔ノ岳〜蛭ヶ岳（往復）", time: "9時間", distance: "22.0km", elevation: "+1700m" }
     ],
@@ -1454,8 +1375,8 @@ window.__mountainsBase = [
     parking: "和田峠駐車場（約70台・普通車800円・トイレあり）",
     season: "通年",
     difficulty: "初〜中級",
-    courseCoefficientRange: "3〜81",
-    courseCoefficient: [3, 81],
+    courseCoefficientRange: "16〜26",
+    courseCoefficient: [16, 26],
     routes: [
       { name: "陣馬登山口〜陣馬山（往復）", time: "3時間", distance: "7.0km", elevation: "+600m" },
       { name: "高尾〜陣馬縦走", time: "5時間30分", distance: "20.0km", elevation: "+1200m" }
@@ -1477,23 +1398,23 @@ window.__mountainsBase = [
     kana: "みつとうげさん",
     elevation: 1785,
     area: "山梨県",
-    driveTime: 120,
+    driveTime: 100,
     driveDistance: 85,
     driveTimeShinjuku: 105,
-    driveTimeYokohama: 120,
-    driveTimeOmiya: 130,
+    driveTimeYokohama: 100,
+    driveTimeOmiya: 110,
     trailhead: "三ツ峠登山口",
     trailheadAddress: "山梨県都留市中津桂",
     parking: "三ツ峠登山口駐車場（約30台・無料）",
     season: "通年（冬季アイゼン推奨）",
     difficulty: "初〜中級",
-    courseCoefficientRange: "12〜93",
-    courseCoefficient: [12, 93],
+    courseCoefficientRange: "12〜20",
+    courseCoefficient: [12, 20],
     routes: [
       { name: "三ツ峠登山口〜三ツ峠山（往復）", time: "3時間", distance: "5.0km", elevation: "+650m" }
     ],
     description: "富士山の最高の展望台。左右対称に見える富士山の姿は絶品。南面にロッククライミングエリアも。",
-    yamapUrl: "https://yamap.com/mountains/92",
+    yamapUrl: "https://yamap.com/maps/424",
     seasonNoGear: "5月〜11月",
     season6Crampons: "12月〜4月",
         category: "二百名山",
@@ -1506,18 +1427,18 @@ window.__mountainsBase = [
     kana: "きんときさん",
     elevation: 1212,
     area: "静岡県",
-    driveTime: 65,
+    driveTime: 80,
     driveDistance: 70,
-    driveTimeShinjuku: 80,
-    driveTimeYokohama: 70,
-    driveTimeOmiya: 110,
+    driveTimeShinjuku: 115,
+    driveTimeYokohama: 85,
+    driveTimeOmiya: 125,
     trailhead: "金時登山口（乙女峠）",
     trailheadAddress: "静岡県駿東郡小山町須走",
     parking: "乙女峠駐車場（約20台・無料）",
     season: "通年",
     difficulty: "初〜中級",
-    courseCoefficientRange: "8〜96",
-    courseCoefficient: [8, 96],
+    courseCoefficientRange: "12〜19",
+    courseCoefficient: [12, 19],
     routes: [
       { name: "乙女峠ルート（往復）", time: "3時間", distance: "6.0km", elevation: "+500m" },
       { name: "仙石原ルート（往復）", time: "3時間30分", distance: "7.0km", elevation: "+600m" },
@@ -1584,7 +1505,7 @@ window.__mountainsBase = [
     ],
     description: "奥秩父の名峰。山頂直下に巨大な岩壁があり、クサリ場が続くスリリングな登山が楽しめる。",
     yamapUrl: "https://yamap.com/mountains/14413",
-    seasonNoGear: "4月下旬〜11月",
+    seasonNoGear: "4月〜11月",
     season6Crampons: "12月〜3月",
         trainAccess: "山梨市駅→バス30分→乾徳山登山口（季節）",
     category: "二百名山",
@@ -1627,18 +1548,18 @@ window.__mountainsBase = [
     kana: "ぼうのおれやま",
     elevation: 969,
     area: "東京都・埼玉県",
-    driveTime: 100,
+    driveTime: 90,
     driveDistance: 75,
-    driveTimeShinjuku: 85,
-    driveTimeYokohama: 100,
-    driveTimeOmiya: 90,
+    driveTimeShinjuku: 75,
+    driveTimeYokohama: 110,
+    driveTimeOmiya: 75,
     trailhead: "白谷沢登山口",
     trailheadAddress: "埼玉県飯能市上名栗",
     parking: "さわらびの湯駐車場（約200台・無料）",
     season: "通年",
     difficulty: "初〜中級",
-    courseCoefficientRange: "12〜51",
-    courseCoefficient: [12, 51],
+    courseCoefficientRange: "12〜16",
+    courseCoefficient: [12, 16],
     routes: [
       { name: "白谷沢ルート（往復）", time: "4時間", distance: "8.0km", elevation: "+650m" },
       { name: "岩茸石山縦走（周回）", time: "5時間", distance: "10.0km", elevation: "+750m" },
@@ -1661,15 +1582,15 @@ window.__mountainsBase = [
     driveTime: 85,
     driveDistance: 70,
     driveTimeShinjuku: 80,
-    driveTimeYokohama: 90,
-    driveTimeOmiya: 100,
+    driveTimeYokohama: 80,
+    driveTimeOmiya: 110,
     trailhead: "御岳山ケーブル〜御岳山",
     trailheadAddress: "東京都青梅市御岳山",
     parking: "滝本駅駐車場（有料）",
     season: "通年",
     difficulty: "初〜中級",
-    courseCoefficientRange: "15〜132",
-    courseCoefficient: [15, 132],
+    courseCoefficientRange: "12〜18",
+    courseCoefficient: [12, 18],
     routes: [
       { name: "御嶽山〜大岳山（往復）", time: "4時間", distance: "9.0km", elevation: "+500m" }
     ],
@@ -1709,7 +1630,7 @@ window.__mountainsBase = [
     description: "北アルプスのパノラマ台。山頂から槍・穂高の絶景が広がる。北アルプス入門の山。",
     yamapUrl: "https://yamap.com/mountains/144",
     seasonNoGear: "7月〜9月",
-    season6Crampons: "10月〜11月・5月〜6月",
+    season6Crampons: "10月・6月",
             category: "百名山",
   },
   {
@@ -1740,7 +1661,7 @@ window.__mountainsBase = [
     description: "北アルプス唯一の活火山。山頂付近の噴気と硫黄の景観が迫力満点。",
     yamapUrl: "https://yamap.com/mountains/145",
     seasonNoGear: "6月〜10月（規制確認要）",
-    season6Crampons: "11月・5月（残雪期のみ・規制確認要）",
+    season6Crampons: "不可（活火山・12本必要）",
             category: "百名山",
   },
   {
@@ -1750,7 +1671,7 @@ window.__mountainsBase = [
     name: "鹿島槍ヶ岳",
     kana: "かしまやりがたけ",
     elevation: 2889,
-    area: "富山県",
+    area: "長野県北部",
     driveTime: 290,
     driveDistance: 255,
     driveTimeShinjuku: 285,
@@ -1952,7 +1873,7 @@ window.__mountainsBase = [
     description: "志賀高原の最高峰。北アルプスや北信五岳など360度の大展望が楽しめる。",
     yamapUrl: "https://yamap.com/mountains/9836",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
         trainAccess: "湯田中駅→バス25分→聖平入口（季節）",
     category: "二百名山",
   },
@@ -1982,7 +1903,7 @@ window.__mountainsBase = [
     description: "長野市の北西にそびえる修験道の山。北アルプスや善光寺平の眺望が広がる。",
     yamapUrl: "https://yamap.com/mountains/4405",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月・4月（1〜3月は12本推奨）",
+    season6Crampons: "12月〜4月",
         trainAccess: "長野駅→バス30分→一ノ鳥居苑地",
     category: "二百名山",
   },
@@ -2013,7 +1934,7 @@ window.__mountainsBase = [
     description: "北信五岳のひとつ。静かな樹林帯と山頂からの妙高・戸隠連峰の眺めが魅力。",
     yamapUrl: "https://yamap.com/mountains/16886",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "4月〜5月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜4月",
         trainAccess: "黒姫駅→バス20分→古池登山口（季節）",
     category: "二百名山",
   },
@@ -2072,8 +1993,7 @@ window.__mountainsBase = [
     description: "野反湖を起点とするアクセスのよい奥志賀の山。高山植物が豊富で秋の草紅葉が美しい。",
     yamapUrl: "https://yamap.com/mountains/16853",
     seasonNoGear: "6月〜10月",
-    season12Crampons: "12月〜3月",
-    season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
             category: "二百名山",
   },
   {
@@ -2132,8 +2052,7 @@ window.__mountainsBase = [
     description: "奥只見の秘峰。前グラの岩場が核心部で鎖場が続く。越後三山の展望が素晴らしい。",
     yamapUrl: "https://yamap.com/mountains/9268",
     seasonNoGear: "6月〜10月",
-    season12Crampons: "12月〜3月",
-    season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
         category: "二百名山",
   },
   {
@@ -2249,7 +2168,7 @@ window.__mountainsBase = [
     description: "安曇野のシンボル「安曇富士」とも呼ばれる美しい山容。山頂からの北アルプスの眺めが壮観。",
     yamapUrl: "https://yamap.com/mountains/16362",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
         category: "二百名山",
   },
   {
@@ -2310,7 +2229,7 @@ window.__mountainsBase = [
     description: "「ほんとの空」で知られる高村光太郎の詩の舞台。ゴンドラで気軽に登れる人気の福島の名山。",
     yamapUrl: "https://yamap.com/mountains/157",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月・4月（1〜3月は12本推奨）",
+    season6Crampons: "12月〜4月",
         trainAccess: "🚅二本松駅→バス30分→岳温泉（季節）",
     category: "百名山",
   },
@@ -2341,7 +2260,7 @@ window.__mountainsBase = [
     description: "磐梯吾妻スカイラインで浄土平まで車で行ける。一切経山の魔女の瞳（五色沼）は絶景。",
     yamapUrl: "https://yamap.com/mountains/156",
     seasonNoGear: "6月〜10月（規制確認要）",
-    season6Crampons: "11月・4月〜5月（1〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
             category: "百名山",
   },
   {
@@ -2371,8 +2290,7 @@ window.__mountainsBase = [
     description: "越後三山の主峰。稜線からの眺望が素晴らしい。枝折峠からの雲海も絶景。",
     yamapUrl: "https://yamap.com/mountains/160",
     seasonNoGear: "6月〜10月",
-    season12Crampons: "12月〜3月",
-    season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
         category: "百名山",
   },
   {
@@ -2432,7 +2350,7 @@ window.__mountainsBase = [
     description: "山頂に広大な高層湿原が広がる独特の山。池塘が点在する別天地のような山頂台地。",
     yamapUrl: "https://yamap.com/mountains/152",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月・10月〜11月",
+    season6Crampons: "5月〜6月・11月",
         trainAccess: "🚅越後湯沢駅→バス30分→和田小屋（季節）",
     category: "百名山",
   },
@@ -2463,7 +2381,7 @@ window.__mountainsBase = [
     description: "北アルプス最北端の名峰。笹平の笹原と双耳峰の山容が美しい。紅葉の名所。",
     yamapUrl: "https://yamap.com/mountains/165",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月・10月〜11月",
+    season6Crampons: "5月〜6月・11月",
         category: "百名山",
   },
   {
@@ -2492,7 +2410,7 @@ window.__mountainsBase = [
     description: "妙高山と並ぶ頸城山塊の名峰。山頂付近の天狗の庭は高層湿原の絶景。高山植物が豊富。",
     yamapUrl: "https://yamap.com/mountains/167",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜7月上旬・10月〜11月",
+    season6Crampons: "5月〜6月・11月",
         trainAccess: "妙高高原駅→バス30分→笹ヶ峰（季節）",
     category: "百名山",
   },
@@ -2523,7 +2441,7 @@ window.__mountainsBase = [
     description: "戸隠連峰の最高峰。修験道の山として長い歴史を持つ。急登が続く本格登山コース。",
     yamapUrl: "https://yamap.com/mountains/168",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
             category: "百名山",
   },
   {
@@ -2641,7 +2559,7 @@ window.__mountainsBase = [
     description: "上州と下野の国境に位置する深山。クラシックルートは林道が長く秘境感がある。",
     yamapUrl: "https://yamap.com/mountains/169",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月〜5月（冬期は通行止め多）",
+    season6Crampons: "11月〜5月",
         category: "百名山",
   },
   {
@@ -2712,8 +2630,7 @@ window.__mountainsBase = [
     trailhead: "八方尾根（ゴンドラ・リフト利用）",
     trailheadAddress: "長野県北安曇郡白馬村北城",
     parking: "八方第5駐車場ほか（約1000台・無料）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜4月", season6Crampons: "5月〜6月・11月（12〜4月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "中級",
     courseCoefficientRange: "14〜27", courseCoefficient: [14, 27],
     routes: [
@@ -2738,7 +2655,7 @@ window.__mountainsBase = [
     trailhead: "駒ヶ根高原（池山林道終点）",
     trailheadAddress: "長野県駒ヶ根市赤穂",
     parking: "池山林道終点駐車場（約20台・無料）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "中〜上級",
     courseCoefficientRange: "55〜70", courseCoefficient: [55, 70],
     routes: [
@@ -2785,8 +2702,7 @@ window.__mountainsBase = [
     trailhead: "鳥倉林道ゲート",
     trailheadAddress: "長野県下伊那郡大鹿村大河原",
     parking: "鳥倉林道ゲート手前駐車場（約50台・無料）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "55〜75", courseCoefficient: [55, 75],
     routes: [
@@ -2803,14 +2719,14 @@ window.__mountainsBase = [
     name: "荒川岳",
     kana: "あらかわだけ",
     elevation: 3141,
-    area: "静岡県",
+    area: "静岡県北部",
     driveTime: 330, driveDistance: 280, driveTimeShinjuku: 310,
     driveTimeYokohama: 255,
     driveTimeOmiya: 295,
     trailhead: "椹島ロッジ",
     trailheadAddress: "静岡県静岡市葵区田代",
     parking: "畑薙第一ダム臨時駐車場（無料・シャトルバス乗換必須）",
-    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "4月〜6月・10月〜11月（12〜3月は12本必要）",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "10月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "65〜95", courseCoefficient: [65, 95],
     routes: [
@@ -2826,14 +2742,14 @@ window.__mountainsBase = [
     name: "赤石岳",
     kana: "あかいしだけ",
     elevation: 3121,
-    area: "静岡県",
+    area: "静岡県北部",
     driveTime: 330, driveDistance: 280, driveTimeShinjuku: 310,
     driveTimeYokohama: 275,
     driveTimeOmiya: 265,
     trailhead: "椹島ロッジ",
     trailheadAddress: "静岡県静岡市葵区田代",
     parking: "畑薙第一ダム臨時駐車場（無料・シャトルバス乗換必須）",
-    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "4月〜6月・10月〜11月（12〜3月は12本必要）",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "10月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "60〜90", courseCoefficient: [60, 90],
     routes: [
@@ -2850,14 +2766,14 @@ window.__mountainsBase = [
     name: "聖岳",
     kana: "ひじりだけ",
     elevation: 3013,
-    area: "静岡県",
+    area: "静岡県北部",
     driveTime: 340, driveDistance: 290, driveTimeShinjuku: 320,
     driveTimeYokohama: 275,
     driveTimeOmiya: 315,
     trailhead: "便ヶ島（易老渡付近）",
     trailheadAddress: "静岡県浜松市天竜区水窪町",
     parking: "便ヶ島駐車場（約30台・無料）",
-    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "4月〜6月・10月〜11月（12〜3月は12本必要）",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "10月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "60〜85", courseCoefficient: [60, 85],
     routes: [
@@ -2873,15 +2789,14 @@ window.__mountainsBase = [
     name: "光岳",
     kana: "てかりだけ",
     elevation: 2591,
-    area: "静岡県",
+    area: "静岡県北部",
     driveTime: 360, driveDistance: 310, driveTimeShinjuku: 340,
     driveTimeYokohama: 290,
     driveTimeOmiya: 310,
     trailhead: "易老渡",
     trailheadAddress: "長野県飯田市南信濃和田",
     parking: "易老渡手前駐車場（約30台・無料）",
-    season: "7月〜9月", seasonNoGear: "7月〜9月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・10月〜11月（12〜3月は12本必要）",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "10月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "75〜95", courseCoefficient: [75, 95],
     routes: [
@@ -2904,8 +2819,7 @@ window.__mountainsBase = [
     trailhead: "折立",
     trailheadAddress: "富山県富山市有峰",
     parking: "折立駐車場（約250台・無料）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "中〜上級",
     courseCoefficientRange: "50〜75", courseCoefficient: [50, 75],
     routes: [
@@ -2929,8 +2843,7 @@ window.__mountainsBase = [
     trailhead: "折立または新穂高",
     trailheadAddress: "富山県富山市有峰",
     parking: "折立駐車場（約250台・無料）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "65〜90", courseCoefficient: [65, 90],
     routes: [
@@ -2994,8 +2907,7 @@ window.__mountainsBase = [
     driveTimeOmiya: 355,
     trailhead: "別当出合", trailheadAddress: "石川県白山市白峰",
     parking: "別当出合駐車場（約100台・無料）※夏季はシャトルバス",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "中級", courseCoefficientRange: "40〜55", courseCoefficient: [40, 55],
     routes: [
       { name: "別当出合〜砂防新道〜白山往復", time: "8時間", distance: "13.0km", elevation: "+1450m" },
@@ -3013,8 +2925,7 @@ window.__mountainsBase = [
     driveTimeOmiya: 315,
     trailhead: "刈田岳（蔵王エコーライン）", trailheadAddress: "宮城県刈田郡蔵王町遠刈田温泉",
     parking: "刈田岳山頂駐車場（約200台・無料）",
-    season: "6月〜10月", seasonNoGear: "6月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "11月・4月〜5月（12〜3月は12本推奨）",
+    season: "6月〜10月", seasonNoGear: "6月〜10月", season6Crampons: "11月〜5月",
     difficulty: "初〜中級", courseCoefficientRange: "6〜16", courseCoefficient: [6, 16],
     routes: [
       { name: "刈田岳〜熊野岳往復", time: "2時間", distance: "5.0km", elevation: "+200m" },
@@ -3054,14 +2965,14 @@ window.__mountainsBase = [
     name: "鋸岳",
     kana: "のこぎりだけ",
     elevation: 2685,
-    area: "山梨県",
+    area: "南アルプス北部",
     driveTime: 230, driveDistance: 200, driveTimeShinjuku: 210,
     driveTimeYokohama: 230,
     driveTimeOmiya: 255,
     trailhead: "戸台口（仙流荘）",
     trailheadAddress: "長野県伊那市長谷溝口",
     parking: "仙流荘前駐車場（無料）",
-    season: "6月〜10月", seasonNoGear: "6月〜10月", season6Crampons: "4月〜6月上旬・11月（12〜3月は12本必要）",
+    season: "6月〜10月", seasonNoGear: "6月〜10月", season6Crampons: "11月〜5月",
     difficulty: "上級",
     courseCoefficientRange: "45〜60", courseCoefficient: [45, 60],
     routes: [
@@ -3077,15 +2988,14 @@ window.__mountainsBase = [
     name: "南駒ヶ岳",
     kana: "みなみこまがたけ",
     elevation: 2841,
-    area: "長野県南部",
+    area: "中央アルプス",
     driveTime: 270, driveDistance: 240, driveTimeShinjuku: 250,
     driveTimeYokohama: 270,
     driveTimeOmiya: 295,
     trailhead: "菅の台バスセンター",
     trailheadAddress: "長野県駒ヶ根市赤穂",
     parking: "菅の台バスセンター駐車場（有料・500円/日）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "42〜52", courseCoefficient: [42, 52],
     routes: [
@@ -3102,15 +3012,14 @@ window.__mountainsBase = [
     name: "蝶ヶ岳",
     kana: "ちょうがたけ",
     elevation: 2677,
-    area: "長野県",
+    area: "北アルプス南部",
     driveTime: 300, driveDistance: 265, driveTimeShinjuku: 280,
     driveTimeYokohama: 300,
     driveTimeOmiya: 325,
     trailhead: "上高地バスターミナル",
     trailheadAddress: "長野県松本市安曇上高地",
     parking: "沢渡駐車場（有料・700円/日）＋バス",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "中級",
     courseCoefficientRange: "28〜40", courseCoefficient: [28, 40],
     routes: [
@@ -3127,15 +3036,14 @@ window.__mountainsBase = [
     name: "大天井岳",
     kana: "おてんしょうだけ",
     elevation: 2922,
-    area: "長野県",
+    area: "北アルプス南部",
     driveTime: 320, driveDistance: 285, driveTimeShinjuku: 300,
     driveTimeYokohama: 320,
     driveTimeOmiya: 345,
     trailhead: "中房温泉登山口",
     trailheadAddress: "長野県安曇野市穂高有明",
     parking: "有明荘駐車場（有料・1000円/日）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "42〜56", courseCoefficient: [42, 56],
     routes: [
@@ -3151,15 +3059,14 @@ window.__mountainsBase = [
     name: "針ノ木岳",
     kana: "はりのきだけ",
     elevation: 2821,
-    area: "富山県",
+    area: "北アルプス後立山",
     driveTime: 330, driveDistance: 295, driveTimeShinjuku: 315,
     driveTimeYokohama: 330,
     driveTimeOmiya: 355,
     trailhead: "扇沢",
     trailheadAddress: "長野県大町市平扇沢",
     parking: "扇沢市営駐車場（無料）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "中級",
     courseCoefficientRange: "28〜38", courseCoefficient: [28, 38],
     routes: [
@@ -3177,15 +3084,14 @@ window.__mountainsBase = [
     name: "烏帽子岳（北ア）",
     kana: "えぼしだけ",
     elevation: 2628,
-    area: "富山県",
+    area: "北アルプス裏銀座",
     driveTime: 355, driveDistance: 320, driveTimeShinjuku: 340,
     driveTimeYokohama: 355,
     driveTimeOmiya: 380,
     trailhead: "高瀬ダム（ブナ立尾根登山口）",
     trailheadAddress: "長野県大町市平",
     parking: "七倉駐車場（無料）＋タクシー",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "38〜50", courseCoefficient: [38, 50],
     routes: [
@@ -3202,15 +3108,14 @@ window.__mountainsBase = [
     name: "野口五郎岳",
     kana: "のぐちごろうだけ",
     elevation: 2924,
-    area: "富山県",
+    area: "北アルプス裏銀座",
     driveTime: 355, driveDistance: 320, driveTimeShinjuku: 340,
     driveTimeYokohama: 355,
     driveTimeOmiya: 380,
     trailhead: "高瀬ダム（ブナ立尾根登山口）",
     trailheadAddress: "長野県大町市平",
     parking: "七倉駐車場（無料）＋タクシー",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "44〜58", courseCoefficient: [44, 58],
     routes: [
@@ -3220,163 +3125,13 @@ window.__mountainsBase = [
     yamapUrl: "https://yamap.com/mountains/56",
     category: "二百名山",
   },
-  {
-    id: "nokogiriyama_chiba",
-    lat: 35.1462,
-    lng: 139.8321,
-    name: "鋸山",
-    kana: "のこぎりやま",
-    elevation: 329,
-    area: "千葉県",
-    driveTime: 75,
-    driveDistance: 75,
-    driveTimeShinjuku: 90,
-    driveTimeYokohama: 70,
-    driveTimeOmiya: 120,
-    trailhead: "浜金谷駅",
-    trailheadAddress: "千葉県富津市金谷",
-    parking: "鋸山ロープウェイ駐車場（有料）",
-    season: "通年",
-    difficulty: "初級",
-    courseCoefficientRange: "6〜10",
-    courseCoefficient: [6, 10],
-    routes: [
-      { name: "車力道コース", time: "2時間", distance: "4.0km", elevation: "+330m" }
-    ],
-    description: "千葉県最南部の低山。巨大な石切り場跡と日本一の大仏、海を見渡す絶壁「地獄のぞき」が名物。ロープウェイでも登れる。",
-    yamapUrl: "https://yamap.com/mountains/1326",
-    seasonNoGear: "通年",
-    season6Crampons: "なし",
-    trainAccess: "浜金谷駅から徒歩15分（JR内房線）",
-    category: "人気の山",
-  },
-  {
-    id: "mitakesan",
-    lat: 35.788,
-    lng: 139.1507,
-    name: "御岳山",
-    kana: "みたけさん",
-    elevation: 929,
-    area: "東京都",
-    driveTime: 100,
-    driveDistance: 60,
-    driveTimeShinjuku: 75,
-    driveTimeYokohama: 95,
-    driveTimeOmiya: 100,
-    trailhead: "御岳登山口バス停",
-    trailheadAddress: "東京都青梅市御岳山",
-    parking: "御岳平駐車場（有料）",
-    season: "通年",
-    difficulty: "初級",
-    courseCoefficientRange: "8〜14",
-    courseCoefficient: [8, 14],
-    routes: [
-      { name: "御嶽駅〜山頂往復", time: "3時間", distance: "5.5km", elevation: "+440m" }
-    ],
-    description: "奥多摩の霊山。武蔵御嶽神社が山頂に鎮座し、ケーブルカーでも登れる。ロックガーデンの渓谷美が人気で、犬連れ登山者にも人気が高い。",
-    yamapUrl: "https://yamap.com/mountains/251",
-    seasonNoGear: "通年",
-    season6Crampons: "なし",
-    trainAccess: "御嶽駅→バス10分→ケーブル下→ケーブルカー6分→御岳山",
-    category: "人気の山",
-  },
-  {
-    id: "takamizusanzan",
-    lat: 35.8107,
-    lng: 139.17,
-    name: "高水三山",
-    kana: "たかみずさんざん",
-    elevation: 793,
-    area: "東京都",
-    driveTime: 110,
-    driveDistance: 65,
-    driveTimeShinjuku: 85,
-    driveTimeYokohama: 105,
-    driveTimeOmiya: 110,
-    trailhead: "軍畑駅",
-    trailheadAddress: "東京都青梅市成木",
-    parking: "軍畑駅付近（限定）",
-    season: "通年",
-    difficulty: "初〜中級",
-    courseCoefficientRange: "16〜20",
-    courseCoefficient: [16, 20],
-    routes: [
-      { name: "軍畑駅〜御嶽駅縦走", time: "4時間", distance: "9.5km", elevation: "+760m" }
-    ],
-    description: "高水山・岩茸石山・惣岳山の3山を縦走する奥多摩入門コース。駅から駅への縦走が楽しめ、岩茸石山からは奥多摩の山々を一望できる。",
-    yamapUrl: "https://yamap.com/mountains/284",
-    seasonNoGear: "通年",
-    season6Crampons: "なし",
-    trainAccess: "軍畑駅から徒歩（JR青梅線）",
-    category: "人気の山",
-  },
-  {
-    id: "tenzandake",
-    lat: 35.8529,
-    lng: 139.3118,
-    name: "天覧山・多峯主山",
-    kana: "てんらんざん・とうのすやま",
-    elevation: 304,
-    area: "埼玉県",
-    driveTime: 100,
-    driveDistance: 50,
-    driveTimeShinjuku: 65,
-    driveTimeYokohama: 95,
-    driveTimeOmiya: 60,
-    trailhead: "飯能市街",
-    trailheadAddress: "埼玉県飯能市飯能",
-    parking: "飯能中央公園駐車場（有料）",
-    season: "通年",
-    difficulty: "初級",
-    courseCoefficientRange: "5〜8",
-    courseCoefficient: [5, 8],
-    routes: [
-      { name: "飯能駅〜天覧山〜多峯主山周回", time: "2時間", distance: "5.0km", elevation: "+280m" }
-    ],
-    description: "飯能市街に隣接する超入門の低山。天覧山からは飯能市街と奥武蔵の山並みが一望できる。ファミリーや登山デビューに最適。",
-    yamapUrl: "https://yamap.com/mountains/349",
-    seasonNoGear: "通年",
-    season6Crampons: "なし",
-    trainAccess: "飯能駅から徒歩20分（西武池袋線）",
-    category: "人気の山",
-  },
-  {
-    id: "hiwadayama",
-    lat: 35.896,
-    lng: 139.3198,
-    name: "日和田山",
-    kana: "ひわだやま",
-    elevation: 305,
-    area: "埼玉県",
-    driveTime: 110,
-    driveDistance: 58,
-    driveTimeShinjuku: 75,
-    driveTimeYokohama: 105,
-    driveTimeOmiya: 65,
-    trailhead: "高麗駅",
-    trailheadAddress: "埼玉県日高市高麗本郷",
-    parking: "高麗神社周辺（限定）",
-    season: "通年",
-    difficulty: "初級",
-    courseCoefficientRange: "4〜7",
-    courseCoefficient: [4, 7],
-    routes: [
-      { name: "高麗駅〜日和田山〜高指山周回", time: "1時間30分", distance: "3.5km", elevation: "+260m" }
-    ],
-    description: "埼玉県日高市の低山。高麗駅から徒歩15分と電車登山のアクセス最高峰。岩場の練習ゲレンデがあり、クライミング入門にも使われる。巾着田の彼岸花シーズンも人気。",
-    yamapUrl: "https://yamap.com/mountains/350",
-    seasonNoGear: "通年",
-    season6Crampons: "なし",
-    trainAccess: "高麗駅から徒歩15分（西武池袋線）",
-    category: "人気の山",
-  }
 
 ];
 
-const AREAS = ["すべて", "埼玉県", "千葉県", "山梨県", "新潟県", "東京都", "栃木県", "神奈川県", "福島県", "群馬県", "茨城県", "長野県北部", "長野県南部", "静岡県"];
+const AREAS = ["すべて", "埼玉県", "山梨県", "新潟県", "東京都", "栃木県", "神奈川県", "福島県", "群馬県", "茨城県", "長野県北部", "長野県南部", "静岡県"];
 const CATEGORIES = ["すべて", "百名山", "二百名山", "人気の山"];
 
-const SORTS = ["おすすめ", "近い順", "標高順", "体力度順"];
+const SORTS = ["近い順", "標高順", "体力度順", "五十音順"];
 
 function parseTimeToMinutes(timeStr) {
   const hMatch = timeStr.match(/(\d+)時間/);
@@ -3557,7 +3312,7 @@ function GearBadge({ mountain, month }) {
   return <span style={{ display: "inline-flex", alignItems: "center", gap: "4px", background: "#f5e8e8", color: "#8a3030", borderRadius: "8px", padding: "3px 9px", fontSize: "12px", fontWeight: 700 }}>12本必要</span>;
 }
 
-function MountainDetail({ mountain, onBack, departure = "大船" }) {
+function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
   const [min, max] = mountain.courseCoefficient;
   const stars = max >= 45 ? 5 : max >= 35 ? 4 : max >= 25 ? 3 : max >= 15 ? 2 : 1;
   const now = new Date().getMonth() + 1;
@@ -3645,7 +3400,7 @@ function MountainDetail({ mountain, onBack, departure = "大船" }) {
         <div className="mt-3 rounded-lg overflow-hidden text-xs" style={{ border: "1px solid #ddd8d0" }}>
           <div className="grid grid-cols-2" style={{ borderBottom: "1px solid #ddd8d0" }}>
             <div className="px-3 py-2 text-center font-semibold" style={{ background: "#e8eee8", color: "#3a5240", borderRight: "1px solid #ddd8d0" }}>今月（{now}月）</div>
-            <div className="px-3 py-2 text-center font-semibold" style={{ background: "#e8e0d5", color: "#5a4e3a" }}>来月（{next}月）</div>
+            <div className="px-3 py-2 text-center font-semibold" style={{ background: "#f0ede8", color: "#5a4e3a" }}>来月（{next}月）</div>
           </div>
           <div className="grid grid-cols-2">
             <div className="flex items-center justify-center px-3 py-3" style={{ background: "#f5f8f5", borderRight: "1px solid #ddd8d0" }}>
@@ -3669,7 +3424,7 @@ function MountainDetail({ mountain, onBack, departure = "大船" }) {
           🔗 YAMAPで詳細を見る ↗
         </a>
         <button
-          onClick={() => window.open('https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform', '_blank')}
+          onClick={() => onReport(mountain.name)}
           className="flex items-center justify-center gap-1 px-4 rounded-xl font-bold text-sm"
           style={{ background: "#f5f0eb", color: "#7a6a58", border: "1px solid #ddd8d0", cursor: "pointer", whiteSpace: "nowrap" }}
         >
@@ -3739,9 +3494,6 @@ function canClimbNoGear(m, month) {
 }
 
 function canClimb6Crampons(m, month) {
-  // 12本必要な月は6本フィルターで除外
-  const months12 = parseMonthRange(m.season12Crampons);
-  if (months12 && months12.includes(month)) return false;
   const noGearMonths = parseMonthRange(m.seasonNoGear);
   if (noGearMonths === null) return true;
   if (noGearMonths.includes(month)) return true;
@@ -3751,25 +3503,186 @@ function canClimb6Crampons(m, month) {
 }
 
 // ===================== 掲示板コンポーネント =====================
-function App() {
-  const [mountains, setMountains] = useState(() => window.__mountainsBase || []);
+function FeedbackBoard({ onClose, initMountain = "" }) {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [form, setForm] = useState({ mountain: initMountain, category: "誤情報の指摘", body: "", name: "" });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
   useEffect(() => {
-    fetch('/data/mountains.json')
-      .then(function(r){ return r.json(); })
-      .then(function(data){
-        // mountains.jsonのseasonNoGear/season6Cramponsでindex.html側を上書き
-        const updated = (window.__mountainsBase || []).map(function(m) {
-          const jm = data.find(function(d){ return d.id === m.id; });
-          if (!jm) return m;
-          return Object.assign({}, m, {
-            seasonNoGear:    jm.seasonNoGear    !== undefined ? jm.seasonNoGear    : m.seasonNoGear,
-            season6Crampons: jm.season6Crampons !== undefined ? jm.season6Crampons : m.season6Crampons,
-          });
-        });
-        setMountains(updated);
-      })
-      .catch(function(){});
+    setForm({ mountain: initMountain, category: "誤情報の指摘", body: "", name: "" });
+    setError("");
+    setSuccess(false);
+  }, [initMountain]);
+
+  const CATEGORIES = ["誤情報の指摘", "情報の追加・補足", "ルートの提案", "その他"];
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const r = await window.storage.get("feedback_posts", true);
+        if (r) setPosts(JSON.parse(r.value));
+      } catch {}
+      setLoading(false);
+    })();
   }, []);
+
+  const handleSubmit = async () => {
+    if (!form.body.trim()) { setError("内容を入力してください"); return; }
+    if (form.body.length > 500) { setError("500文字以内で入力してください"); return; }
+    setError("");
+    setSubmitting(true);
+    try {
+      const newPost = {
+        id: Date.now(),
+        mountain: form.mountain.trim() || "（山名未指定）",
+        category: form.category,
+        body: form.body.trim(),
+        name: form.name.trim() || "匿名",
+        date: new Date().toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }),
+      };
+      const updated = [newPost, ...posts];
+      await window.storage.set("feedback_posts", JSON.stringify(updated), true);
+      setPosts(updated);
+      setForm({ mountain: "", category: "誤情報の指摘", body: "", name: "" });
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 3000);
+    } catch (e) {
+      setError("送信に失敗しました。もう一度お試しください。");
+    }
+    setSubmitting(false);
+  };
+
+  const CATEGORY_COLOR = {
+    "誤情報の指摘": { bg: "#fce8e8", color: "#b04040", border: "#f5c0c0" },
+    "情報の追加・補足": { bg: "#e8f0e8", color: "#3a5a3a", border: "#b8d0b8" },
+    "ルートの提案": { bg: "#e8eef8", color: "#3a4a7a", border: "#b8c8e8" },
+    "その他": { bg: "#f0ede8", color: "#7a6a58", border: "#d8d0c8" },
+  };
+
+  return (
+    <div style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(0,0,0,0.45)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
+      <div style={{ background: "#faf8f5", borderRadius: "16px", width: "100%", maxWidth: "640px", maxHeight: "90vh", display: "flex", flexDirection: "column", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
+        {/* ヘッダー */}
+        <div style={{ padding: "20px 24px 16px", borderBottom: "1px solid #ddd8d0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div>
+            <h1 style={{ margin: 0, fontSize: "17px", fontWeight: 700, color: "#3a3530" }}>💬 改善提案・情報修正</h1>
+            <p style={{ margin: "4px 0 0", fontSize: "12px", color: "#a09888" }}>
+              {initMountain ? `「${initMountain}」について` : "誤情報の修正・ルートの提案など、お気づきの点をお寄せください"}
+            </p>
+          </div>
+          <button onClick={onClose} style={{ background: "none", border: "none", fontSize: "20px", cursor: "pointer", color: "#a09888", padding: "4px 8px" }}>✕</button>
+        </div>
+
+        <div style={{ flex: 1, overflowY: "auto", padding: "20px 24px" }}>
+          {/* 投稿フォーム */}
+          <div style={{ background: "#fff", border: "1px solid #ddd8d0", borderRadius: "12px", padding: "18px", marginBottom: "24px" }}>
+            <h3 style={{ margin: "0 0 14px", fontSize: "14px", fontWeight: 700, color: "#4a5e4a" }}>✏️ 書き込む</h3>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "10px" }}>
+              <div>
+                <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>山名（任意）</label>
+                <input
+                  value={form.mountain}
+                  onChange={e => setForm(f => ({ ...f, mountain: e.target.value }))}
+                  placeholder="例：安達太良山"
+                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
+                />
+              </div>
+              <div>
+                <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>種別</label>
+                <select
+                  value={form.category}
+                  onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
+                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none" }}
+                >
+                  {CATEGORIES.map(c => <option key={c}>{c}</option>)}
+                </select>
+              </div>
+            </div>
+
+            <div style={{ marginBottom: "10px" }}>
+              <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>
+                内容 <span style={{ color: "#b04040" }}>*</span>
+                <span style={{ float: "right", fontWeight: 400 }}>{form.body.length}/500</span>
+              </label>
+              <textarea
+                value={form.body}
+                onChange={e => setForm(f => ({ ...f, body: e.target.value }))}
+                placeholder="例：コース定数が違います。奥岳周回の正しい値は○○です。"
+                rows={4}
+                style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", resize: "vertical", boxSizing: "border-box", fontFamily: "inherit" }}
+              />
+            </div>
+
+            <div style={{ display: "flex", gap: "10px", alignItems: "flex-end" }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>ニックネーム（任意）</label>
+                <input
+                  value={form.name}
+                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                  placeholder="匿名"
+                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
+                />
+              </div>
+              <button
+                onClick={handleSubmit}
+                disabled={submitting || !form.body.trim()}
+                style={{ padding: "8px 20px", background: submitting || !form.body.trim() ? "#c0bab0" : "#4a5e4a", color: "#fff", border: "none", borderRadius: "7px", fontSize: "13px", fontWeight: 700, cursor: submitting || !form.body.trim() ? "not-allowed" : "pointer", whiteSpace: "nowrap" }}
+              >
+                {submitting ? "送信中…" : "投稿する"}
+              </button>
+            </div>
+
+            {error && <p style={{ margin: "8px 0 0", fontSize: "12px", color: "#b04040" }}>⚠️ {error}</p>}
+            {success && <p style={{ margin: "8px 0 0", fontSize: "12px", color: "#3a7a3a" }}>✅ 投稿しました！ありがとうございます。</p>}
+            <p style={{ margin: "10px 0 0", fontSize: "11px", color: "#a09888" }}>※ 書き込みはすべてのユーザーに表示されます</p>
+          </div>
+
+          {/* 投稿一覧 */}
+          <h3 style={{ margin: "0 0 14px", fontSize: "14px", fontWeight: 700, color: "#3a3530" }}>
+            書き込み一覧
+            {posts.length > 0 && <span style={{ marginLeft: "8px", fontSize: "12px", color: "#7a7068", fontWeight: 400 }}>{posts.length}件</span>}
+          </h3>
+
+          {loading ? (
+            <p style={{ textAlign: "center", color: "#a09888", fontSize: "13px", padding: "20px 0" }}>読み込み中…</p>
+          ) : posts.length === 0 ? (
+            <div style={{ textAlign: "center", padding: "32px 0", color: "#a09888" }}>
+              <div style={{ fontSize: "32px", marginBottom: "8px" }}>📝</div>
+              <p style={{ margin: 0, fontSize: "13px" }}>まだ書き込みがありません<br />気づいた点があればぜひ投稿してください</p>
+            </div>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {posts.map(post => {
+                const cc = CATEGORY_COLOR[post.category] || CATEGORY_COLOR["その他"];
+                return (
+                  <div key={post.id} style={{ background: "#fff", border: "1px solid #ddd8d0", borderRadius: "10px", padding: "14px 16px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px", flexWrap: "wrap" }}>
+                      <span style={{ fontSize: "11px", fontWeight: 700, padding: "2px 8px", borderRadius: "10px", background: cc.bg, color: cc.color, border: `1px solid ${cc.border}` }}>
+                        {post.category}
+                      </span>
+                      {post.mountain !== "（山名未指定）" && (
+                        <span style={{ fontSize: "12px", fontWeight: 700, color: "#4a5e4a" }}>🏔 {post.mountain}</span>
+                      )}
+                      <span style={{ marginLeft: "auto", fontSize: "11px", color: "#a09888" }}>{post.name} · {post.date}</span>
+                    </div>
+                    <p style={{ margin: 0, fontSize: "13px", color: "#3a3530", lineHeight: 1.7, whiteSpace: "pre-wrap" }}>{post.body}</p>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+// ===================== 掲示板ここまで =====================
+
+function App() {
   const [search, setSearch] = useState(() => { try { const _v = sessionStorage.getItem("ym_search"); return _v !== null ? JSON.parse(_v) : ""; } catch { return ""; } });
   const [sort, setSort] = useState(() => { try { const _v = sessionStorage.getItem("ym_sort"); return _v !== null ? JSON.parse(_v) : "近い順"; } catch { return "近い順"; } });
   const [area, setArea] = useState(() => { try { const _v = sessionStorage.getItem("ym_area"); return _v !== null ? JSON.parse(_v) : "すべて"; } catch { return "すべて"; } });
@@ -3787,17 +3700,10 @@ function App() {
   const [driveTimeFilter, setDriveTimeFilter] = useState(() => { try { const _v = sessionStorage.getItem("ym_drivetime"); return _v !== null ? JSON.parse(_v) : null; } catch { return null; } }); // null | 180 | 360
   const [courseFilter, setCourseFilter] = useState(() => { try { const _v = sessionStorage.getItem("ym_course"); return _v !== null ? JSON.parse(_v) : []; } catch { return []; } }); // 複数選択
   const [cramponsFilter, setCramponsFilter] = useState(() => { try { const _v = sessionStorage.getItem("ym_crampons"); return _v !== null ? JSON.parse(_v) : "すべて"; } catch { return "すべて"; } }); // "すべて"|"アイゼン不要"|"6本以内でOK"
-  const [filterMonth, setFilterMonth] = useState(() => { try { const _v = sessionStorage.getItem("ym_month"); return _v !== null ? JSON.parse(_v) : new Date().getMonth() + 1; } catch { return new Date().getMonth() + 1; } }); // 1-12の数字
+  const [filterMonth, setFilterMonth] = useState(() => { try { const _v = sessionStorage.getItem("ym_month"); return _v !== null ? JSON.parse(_v) : "今月"; } catch { return "今月"; } }); // "今月"|"来月"
   const [viewMode, setViewMode] = useState(() => { try { const _v = sessionStorage.getItem("ym_viewmode"); return _v !== null ? JSON.parse(_v) : "list"; } catch { return "list"; } });
-  const [filterOpen, setFilterOpen] = React.useState(false);
-  const [quickOpen, setQuickOpen] = React.useState(false);
-  const [matrixOpen, setMatrixOpen] = React.useState(false);
-  React.useEffect(() => { window.__openBoard = () => window.open('https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform', '_blank'); }, []);
-
-  const [favorites, setFavorites] = useState(() => { try { return new Set(JSON.parse(localStorage.getItem("ym_favorites")||"[]")); } catch { return new Set(); } });
-  const [climbed, setClimbed] = useState(() => { try { return new Map(JSON.parse(localStorage.getItem("ym_climbed")||"[]")); } catch { return new Map(); } });
-  const [favOnly, setFavOnly] = useState(false);
-  const [myTab, setMyTab] = useState(false);
+  const [showBoard, setShowBoard] = useState(false);
+  const [boardInitMountain, setBoardInitMountain] = useState("");
   const [selected, setSelected] = useState(null);
 
   
@@ -3819,33 +3725,17 @@ function App() {
     sessionStorage.setItem("ym_viewmode", JSON.stringify(viewMode));
     } catch {}
   }, [search, sort, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, viewMode]);
-  const toggleFav = (e, id) => {
-    e.preventDefault(); e.stopPropagation();
-    const next = new Set(favorites);
-    if (next.has(id)) next.delete(id); else next.add(id);
-    localStorage.setItem("ym_favorites", JSON.stringify([...next]));
-    setFavorites(next);
-  };
-  const toggleClimb = (e, id) => {
-    e.preventDefault(); e.stopPropagation();
-    const next = new Map(climbed);
-    if (next.has(id)) next.delete(id);
-    else next.set(id, new Date().toLocaleDateString("ja-JP", {year:"numeric",month:"2-digit",day:"2-digit"}));
-    localStorage.setItem("ym_climbed", JSON.stringify([...next]));
-    setClimbed(next);
-  };
-
   const getMountainUrl = (id) => {
     const special = { mizugatake: "mizugaki" };
     return "/mountains/" + (special[id] || id) + "/";
   };
 
   const currentMonth = new Date().getMonth() + 1;
-  const activeMonth = typeof filterMonth === "number" ? filterMonth : currentMonth;
+  const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
+  const activeMonth = filterMonth === "来月" ? nextMonth : currentMonth;
 
   const filtered = useMemo(() => {
     let list = mountains.filter(m => {
-      if (favOnly && !favorites.has(m.id)) return false;
       const matchSearch = !search || m.name.includes(search) || m.kana.includes(search);
       const matchArea = area === "すべて" || m.area.includes(area);
       const matchCat = categoryFilter === "すべて" || m.category === categoryFilter;
@@ -3863,25 +3753,12 @@ function App() {
         || (cramponsFilter === "6本以内でOK" && canClimb6Crampons(m, activeMonth));
       return matchSearch && matchArea && matchCat && matchDayTrip && matchTrainOnly && matchDriveTime && matchCourse && matchCrampons;
     });
-    if (sort === "おすすめ") list = [...list].sort((a, b) => {
-      const scoreM = m => {
-        let s = 0;
-        // その月にアイゼン不要なら大幅加点
-        if (canClimbNoGear(m, activeMonth)) s += 60;
-        // 近い山を優先
-        s += Math.max(0, (360 - getDriveTime(m)) / 5);
-        // 人気カテゴリ加点
-        if (m.category === "百名山") s += 10;
-        if (m.category === "人気の山") s += 8;
-        return s;
-      };
-      return scoreM(b) - scoreM(a);
-    });
-    else if (sort === "近い順") list = [...list].sort((a, b) => getDriveTime(a) - getDriveTime(b));
+    if (sort === "近い順") list = [...list].sort((a, b) => getDriveTime(a) - getDriveTime(b));
     else if (sort === "標高順") list = [...list].sort((a, b) => b.elevation - a.elevation);
     else if (sort === "体力度順") list = [...list].sort((a, b) => b.courseCoefficient[1] - a.courseCoefficient[1]);
+    else if (sort === "五十音順") list = [...list].sort((a, b) => a.kana.localeCompare(b.kana, "ja"));
     return list;
-  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure, favOnly, favorites, mountains]);
+  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure]);
 
   const btnActive = { backgroundColor: "#4a5e4a", color: "white", borderColor: "#4a5e4a" };
   const btnInactive = { backgroundColor: "white", color: "#5a5248", borderColor: "#ccc8c0" };
@@ -3889,421 +3766,250 @@ function App() {
   if (selected) {
     const mountain = mountains.find(m => m.id === selected);
     return (
-      <div style={{ background: "#e8e0d5", minHeight: "100vh", fontFamily: "sans-serif" }}>
-              <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden",padding:"10px 16px 14px"}}>
-          {/* 背景山シルエット */}
-          <svg style={{position:"absolute",bottom:0,left:0,right:0,height:"50px",opacity:0.1,pointerEvents:"none",width:"100%"}} viewBox="0 0 390 50" fill="white" preserveAspectRatio="xMidYMax slice">
-            <polygon points="0,50 0,30 50,14 90,24 130,6 170,20 210,3 250,18 290,8 330,22 390,10 390,50"/>
-          </svg>
-          <div style={{maxWidth:"768px",margin:"0 auto"}}>
-            {/* ロゴ行: ロゴ＋ハンバーガー */}
-
-            <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"10px",position:"relative",zIndex:1}}>
-              <svg width="24" height="24" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
-              <h1 style={{fontFamily:"Georgia,serif",fontSize:"27px",fontWeight:"700",color:"white",lineHeight:1,margin:0,flex:1}}>Yamatch</h1>
-              <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"5px 7px",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center"}}>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>
-              </button>
-              <button onClick={() => { var m=document.getElementById("nav-menu"); var o=document.getElementById("nav-overlay"); if(m.style.display==="block"){m.style.display="none";o.style.display="none";}else{m.style.display="block";o.style.display="block";} }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.2)",color:"white",borderRadius:"8px",padding:"7px 9px",cursor:"pointer",display:"flex",flexDirection:"column",gap:"4px",flexShrink:0}}>
-                <span style={{display:"block",width:"16px",height:"2px",background:"white",borderRadius:"1px"}}/>
-                <span style={{display:"block",width:"16px",height:"2px",background:"white",borderRadius:"1px"}}/>
-                <span style={{display:"block",width:"16px",height:"2px",background:"white",borderRadius:"1px"}}/>
-              </button>
+      <div style={{ background: "#f0ede8", minHeight: "100vh", fontFamily: "sans-serif" }}>
+        {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
+        <header style={{ background: "linear-gradient(135deg, #4a6038 0%, #607848 100%)" }} className="p-6">
+          <div className="max-w-2xl mx-auto flex items-center gap-3">
+            <svg width="32" height="32" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
+            <div style={{ flex: 1 }}>
+              <h1 className="text-xl font-bold text-white" style={{fontFamily:"Georgia,serif",fontSize:"22px",letterSpacing:"0.02em"}}>Yamatch <span style={{fontSize:"15px",fontWeight:"normal",opacity:0.75}}>from 大船</span></h1>
+              <p className="text-stone-300 text-xs">百名山・人気の山</p>
             </div>
-            {/* キャッチコピー */}
-            <div style={{position:"relative",zIndex:1,marginBottom:"10px"}}>
-              <div style={{fontSize:"clamp(13px,3.5vw,18px)",fontWeight:"700",color:"white",lineHeight:1.35,letterSpacing:"-0.01em",marginBottom:"5px"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
-              <div style={{fontSize:"11px",color:"rgba(255,255,255,0.48)",lineHeight:1.65}}>コース定数やアクセス条件で絞り込める登山検索サイト</div>
-            </div>
-            {/* 出発地タブ */}
-            <div style={{position:"relative",zIndex:1}}>
-              <div style={{display:"flex",background:"rgba(0,0,0,0.18)",borderRadius:"10px",padding:"3px",marginBottom:"6px"}}>
-                {["大船","新宿","横浜","大宮"].map(d => (
-                  <button key={d} onClick={() => setDeparture(d)}
-                    style={{flex:1,textAlign:"center",fontSize:"12px",color:departure===d?"#2d4a28":"rgba(255,255,255,0.42)",background:departure===d?"white":"transparent",padding:"6px 4px",borderRadius:"7px",fontWeight:departure===d?"700":"500",border:"none",cursor:"pointer",transition:"all 0.15s"}}>
-                    {d}駅
-                  </button>
-                ))}
-              </div>
-            </div>
+            <a href="/about/" style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)", color: "white", borderRadius: "10px", padding: "6px 12px", fontSize: "12px", whiteSpace: "nowrap", textDecoration: "none" }}>
+              🥾 運営者について
+            </a>
+            <button
+              onClick={() => { setBoardInitMountain(""); setShowBoard(true); }}
+              style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)", color: "white", borderRadius: "10px", padding: "6px 12px", fontSize: "12px", cursor: "pointer", whiteSpace: "nowrap" }}
+            >
+              💬 改善提案はこちら
+            </button>
           </div>
         </header>
-        <main style={{maxWidth:"672px",margin:"0 auto",padding:"16px"}}>
-          <MountainDetail mountain={mountain} onBack={() => setSelected(null)} } departure={departure} />
+        <main className="max-w-2xl mx-auto p-4">
+          <MountainDetail mountain={mountain} onBack={() => setSelected(null)} onReport={(name) => { setBoardInitMountain(name); setShowBoard(true); }} departure={departure} />
         </main>
       </div>
     );
   }
 
   return (
-    <div style={{ background: "#e8e0d5", minHeight: "100vh", fontFamily: "sans-serif" }}>
+    <div style={{ background: "#f0ede8", minHeight: "100vh", fontFamily: "sans-serif" }}>
+      {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
 
-      <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden",padding:"10px 16px 14px"}}>
-        <svg style={{position:"absolute",bottom:0,left:0,width:"100%",height:"52px",opacity:0.09,pointerEvents:"none"}} viewBox="0 0 1400 52" preserveAspectRatio="xMidYMax slice">
-          <path d="M0 52 L0 36 L70 22 L130 30 L190 12 L250 24 L310 6 L370 18 L430 4 L490 16 L550 6 L610 18 L670 8 L730 20 L790 10 L850 22 L910 12 L970 24 L1030 14 L1090 26 L1150 16 L1210 28 L1270 18 L1330 30 L1400 20 L1400 52 Z" fill="white" opacity="0.6"/>
-          <path d="M0 52 L0 42 L90 32 L160 38 L230 24 L300 34 L370 18 L440 28 L510 14 L580 26 L650 12 L720 24 L790 10 L860 22 L930 8 L1000 20 L1070 6 L1140 18 L1210 4 L1280 16 L1350 6 L1400 12 L1400 52 Z" fill="white"/>
-        </svg>
-        <div style={{maxWidth:"768px",margin:"0 auto"}}>
-          <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"10px",position:"relative",zIndex:1}}>
-            <svg width="24" height="24" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
-            <div style={{flex:1}}>
-              <h1 style={{fontFamily:"Georgia,serif",fontSize:"27px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
-              
+      <header style={{ background: "linear-gradient(135deg, #4a6038 0%, #607848 100%)" }} className="px-4 py-4">
+        <div className="max-w-3xl mx-auto">
+          {/* 1行目: ロゴ＋タイトル＋ボタン */}
+          <div className="flex items-center gap-2 mb-3">
+            <svg width="28" height="28" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <h1 style={{fontFamily:"Georgia,serif",fontSize:"23px",fontWeight:"bold",color:"white",letterSpacing:"0.02em",lineHeight:1.1,margin:0}}>Yamatch <span style={{fontSize:"13px",fontWeight:"normal",opacity:0.75}}>from {departure}</span></h1>
+              <p style={{fontSize:"10px",color:"rgba(255,255,255,0.5)",margin:0}}>百名山・二百名山・人気の山</p>
             </div>
-            <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"5px 7px",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center"}}>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>
+            <a href="/about/"
+              style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)", color: "white", borderRadius: "8px", padding: "4px 9px", fontSize: "11px", whiteSpace: "nowrap", textDecoration: "none", flexShrink: 0 }}>
+              運営者
+            </a>
+            <button
+              onClick={() => setShowBoard(true)}
+              style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)", color: "white", borderRadius: "8px", padding: "4px 9px", fontSize: "11px", cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0 }}
+            >
+              提案
             </button>
-            
-            <button onClick={() => { var m=document.getElementById("ym-nav-menu"); var o=document.getElementById("ym-nav-overlay"); if(m.style.display==="block"){m.style.display="none";o.style.display="none";}else{m.style.display="block";o.style.display="block";} }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.2)",color:"white",borderRadius:"8px",padding:"5px 9px",cursor:"pointer",display:"flex",alignItems:"center",gap:"3px",flexShrink:0,letterSpacing:"2px",fontSize:"16px",fontWeight:"900"}}>
-              <span>•••</span>
-            </button>
-
           </div>
-          <div style={{position:"relative",zIndex:1,marginBottom:"10px",display:"flex",alignItems:"flex-start",justifyContent:"space-between",gap:"8px"}}>
-            <div>
-              <div style={{fontSize:"clamp(13px,3.5vw,18px)",fontWeight:"700",color:"white",lineHeight:1.35,marginBottom:"5px"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
-              <div style={{fontSize:"11px",color:"rgba(255,255,255,0.48)",lineHeight:1.65}}>コース定数やアクセス条件で絞り込める登山検索サイト</div>
-            </div>
-
-          </div>
-          <div style={{position:"relative",zIndex:1}}>
-            <div style={{display:"flex",background:"rgba(0,0,0,0.18)",borderRadius:"10px",padding:"3px",marginBottom:"6px"}}>
-              {["大船","新宿","横浜","大宮"].map(d => (
+          {/* 2行目: 出発地選択 */}
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-stone-300 text-xs">出発地：</span>
+            <div className="flex rounded-full overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.3)" }}>
+              {["大船", "新宿", "横浜", "大宮"].map(d => (
                 <button key={d} onClick={() => setDeparture(d)}
-                  style={{flex:1,textAlign:"center",fontSize:"12px",color:departure===d?"#2d4a28":"rgba(255,255,255,0.42)",background:departure===d?"white":"transparent",padding:"6px 4px",borderRadius:"7px",fontWeight:departure===d?"700":"500",border:"none",cursor:"pointer",transition:"all 0.15s"}}>
+                  className="px-3 py-1 text-sm font-semibold transition-all"
+                  style={departure === d
+                    ? { background: "rgba(255,255,255,0.9)", color: "#4a6038" }
+                    : { background: "transparent", color: "rgba(255,255,255,0.8)" }}>
                   {d}駅
                 </button>
               ))}
             </div>
           </div>
+          <p className="text-stone-200 text-xs leading-relaxed">
+            {departure}駅から車で6時間以内の登山スポットを検索。登山口・アクセス・コース定数を確認。
+          </p>
         </div>
       </header>
 
-      <main style={{maxWidth:"768px",margin:"0 auto",padding:"12px 16px"}}>
-
-        {/* 診断＋こんな人におすすめ 統合バナー */}
-        <div style={{background:"#d8e4c8",border:"1px solid #c0d4a8",boxShadow:"0 1px 4px rgba(0,0,0,0.06)",borderRadius:"12px",padding:"9px 12px",marginBottom:"8px"}}>
-          <div style={{marginBottom:"4px"}}>
-            <div style={{fontSize:"14px",fontWeight:"700",color:"#2a3020",lineHeight:1.25,marginBottom:"2px"}}>16登山タイプ診断・あなたはどのタイプ？</div>
-            <div style={{fontSize:"15px",color:"#6a7858"}}>9問・約1分・完全無料・おすすめの山も提案</div>
-          </div>
-          <div style={{fontSize:"9px",fontWeight:"600",color:"#5a6848",marginBottom:"4px"}}>こんな人におすすめ</div>
-          <div style={{display:"flex",gap:"5px",flexWrap:"wrap",marginBottom:"9px"}}>
-            {["初めての登山","日帰りで行きたい","電車で行きたい"].map(text => (
-              <span key={text} style={{fontSize:"11px",color:"#2a3020",background:"rgba(0,0,0,0.1)",padding:"3px 9px",borderRadius:"20px",whiteSpace:"nowrap"}}>{text}</span>
-            ))}
-          </div>
-          <a href="/recommend/" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",background:"#5a7848",color:"white",fontSize:"13px",fontWeight:"700",padding:"8px",borderRadius:"9px",textDecoration:"none",fontSize:"12px"}}>
-            診断する →
-          </a>
-        </div>
-
-        {/* 記事チップ：2行レイアウト */}
-        <div style={{display:"flex",flexDirection:"column",gap:"5px",marginBottom:"8px"}}>
-          <div style={{display:"flex",gap:"6px"}}>
-            <a href="/articles/kanto-day-trip-100/" style={{flex:1,background:"#faf8f5",border:"1px solid #ddd8d0",borderRadius:"20px",padding:"6px 10px",fontSize:"11px",fontWeight:"500",color:"#5a5248",textDecoration:"none",textAlign:"center"}}>関東発・日帰り百名山10選</a>
-            <a href="/articles/train-access-mountains/" style={{flex:1,background:"#faf8f5",border:"1px solid #ddd8d0",borderRadius:"20px",padding:"6px 10px",fontSize:"11px",fontWeight:"500",color:"#5a5248",textDecoration:"none",textAlign:"center"}}>電車で行ける登山10選</a>
-          </div>
-          <div style={{display:"flex",gap:"6px"}}>
-            <a href="/articles/" style={{flex:1,background:"#f0f5ec",border:"1px solid #c8ddb0",borderRadius:"20px",padding:"6px 10px",fontSize:"11px",fontWeight:"600",color:"#4a6038",textDecoration:"none",textAlign:"center"}}>その他のおすすめ記事はこちら →</a>
+      <main className="max-w-3xl mx-auto p-4">
+        {/* おすすめ記事 */}
+        <div style={{ marginBottom: "16px" }}>
+          <div style={{ fontSize: "12px", fontWeight: "bold", color: "#a09888", marginBottom: "8px", letterSpacing: "0.05em" }}>おすすめ記事</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <a href="/articles/kanto-day-trip-100/" style={{ display: "flex", alignItems: "center", gap: "12px", background: "#faf8f5", border: "1px solid #ddd8d0", borderRadius: "12px", padding: "12px 14px", textDecoration: "none" }}
+              onMouseEnter={e => e.currentTarget.style.background = "#f0ede8"}
+              onMouseLeave={e => e.currentTarget.style.background = "#faf8f5"}>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ color: "#3a3530", fontWeight: "bold", fontSize: "14px", lineHeight: 1.4 }}>関東から日帰りできる百名山10選</div>
+                <div style={{ color: "#a09888", fontSize: "12px", marginTop: "3px" }}>新宿発 · 難易度・見どころ・おすすめシーズンを解説</div>
+              </div>
+              <span style={{ color: "#c0b8b0", fontSize: "16px", flexShrink: 0 }}>→</span>
+            </a>
+            <a href="/articles/train-access-mountains/" style={{ display: "flex", alignItems: "center", gap: "12px", background: "#faf8f5", border: "1px solid #ddd8d0", borderRadius: "12px", padding: "12px 14px", textDecoration: "none" }}
+              onMouseEnter={e => e.currentTarget.style.background = "#f0ede8"}
+              onMouseLeave={e => e.currentTarget.style.background = "#faf8f5"}>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ color: "#3a3530", fontWeight: "bold", fontSize: "14px", lineHeight: 1.4 }}>車なしで行ける！電車・バスでおすすめの山10選</div>
+                <div style={{ color: "#a09888", fontSize: "12px", marginTop: "3px" }}>新宿発 · アクセス方法・見どころを詳しく解説</div>
+              </div>
+              <span style={{ color: "#c0b8b0", fontSize: "16px", flexShrink: 0 }}>→</span>
+            </a>
           </div>
         </div>
-
-  
-
-
-
         {/* 検索バー */}
-        <div style={{marginBottom:"8px",display:"flex",gap:"8px",alignItems:"center"}}>
+        <div className="rounded-xl px-4 py-3 flex items-center gap-3 shadow-sm mb-4"
+          style={{ background: "#faf8f5", border: "1px solid #ddd8d0" }}>
+          <span style={{ color: "#a09888" }}>🔍</span>
           <input
-            type="text"
-            placeholder="🔍 山名で検索"
             value={search}
             onChange={e => setSearch(e.target.value)}
-            style={{flex:1,padding:"10px 14px 10px 34px",borderRadius:"11px",border:"1px solid #e0dbd4",fontSize:"13px",boxSizing:"border-box",outline:"none",background:"white url(\"data:%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2216%22 height%3D%2216%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22%23c8c0b8%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22%3E%3Ccircle cx%3D%2211%22 cy%3D%2211%22 r%3D%228%22%2F%3E%3Cline x1%3D%2221%22 y1%3D%2221%22 x2%3D%2216.65%22 y2%3D%2216.65%22%2F%3E%3C%2Fsvg%3E\") no-repeat 10px center",color:"#3a3530"}}
+            placeholder="山の名前を入力（例：富士山、塔ノ岳、赤岳）"
+            className="flex-1 outline-none text-sm"
+            style={{ color: "#3a3530", background: "transparent" }}
           />
-          {/* 月ピッカー */}
-          <div style={{position:"relative",flexShrink:0}}>
-            <select
-              value={filterMonth}
-              onChange={e => {
-                const v = Number(e.target.value);
-                setFilterMonth(v);
-                sessionStorage.setItem("ym_month", JSON.stringify(v));
-                setSort("おすすめ");
-                sessionStorage.setItem("ym_sort", JSON.stringify("おすすめ"));
-              }}
-              style={{appearance:"none",WebkitAppearance:"none",padding:"10px 30px 10px 10px",borderRadius:"11px",border:"1px solid #e0dbd4",fontSize:"12px",background:"white",color:"#3a3530",cursor:"pointer",outline:"none",fontWeight:"600",lineHeight:1.2}}
-            >
-              {[1,2,3,4,5,6,7,8,9,10,11,12].map(m => (
-                <option key={m} value={m}>{m}月</option>
-              ))}
-            </select>
-            <div style={{position:"absolute",top:"50%",transform:"translateY(-50%)",right:"8px",pointerEvents:"none",display:"flex",flexDirection:"column",alignItems:"center",gap:"0px"}}>
-              <span style={{fontSize:"9px",color:"#a09888",lineHeight:1}}>登山</span>
-              <span style={{fontSize:"9px",color:"#a09888",lineHeight:1}}>時期</span>
+        </div>
+
+        <div className="rounded-xl p-4 shadow-sm" style={{ background: "#faf8f5", border: "1px solid #ddd8d0" }}>
+          {/* タイトル行 */}
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <h2 className="font-bold" style={{ color: "#3a3530" }}>{departure}から6時間以内の山</h2>
+              <span className="text-xs px-2 py-1 rounded-full" style={{ background: "#e8e4dc", color: "#7a7068" }}>{filtered.length}座</span>
+            </div>
+            <div className="flex rounded-lg overflow-hidden" style={{ border: "1px solid #ccc8c0" }}>
+              <button onClick={() => setViewMode("list")} className="px-3 py-1.5 text-xs font-medium transition-colors"
+                style={viewMode === "list" ? { background: "#4a5e4a", color: "white" } : { background: "white", color: "#7a7068" }}>
+                ☰ 一覧
+              </button>
+              <button onClick={() => setViewMode("map")} className="px-3 py-1.5 text-xs font-medium transition-colors"
+                style={viewMode === "map" ? { background: "#4a5e4a", color: "white" } : { background: "white", color: "#7a7068" }}>
+                🗺 地図
+              </button>
             </div>
           </div>
-        </div>
 
-
-
-
-        {/* 並び替えボタン */}
-        <div style={{display:"flex",gap:"6px",marginBottom:"6px",overflowX:"auto",WebkitOverflowScrolling:"touch",paddingBottom:"2px"}}>
-          <span style={{fontSize:"12px",color:"#7a7068",whiteSpace:"nowrap",alignSelf:"center",flexShrink:0}}>並び替え:</span>
-          {SORTS.map(s => (
-            <button key={s} onClick={() => { setSort(s); sessionStorage.setItem("ym_sort", JSON.stringify(s)); }} style={{
-              whiteSpace:"nowrap", fontSize:"12px", padding:"6px 13px",
-              borderRadius:"20px", border:"none", cursor:"pointer", flexShrink:0,
-              background: sort === s ? "#4a5e4a" : "#f0ede5",
-              color: sort === s ? "white" : "#5a5248",
-              fontWeight: sort === s ? "700" : "500",
-            }}>{s}</button>
-          ))}
-        </div>
-
-        {/* フィルタートグル */}
-        <div>
-          <button onClick={() => setFilterOpen(!filterOpen)} style={{
-            display:"flex", alignItems:"center", justifyContent:"space-between",
-            background: filterOpen ? "#3a4e3a" : "#4a5e4a",
-            border:"none", borderRadius:"22px",
-            padding:"9px 16px", cursor:"pointer", width:"100%",
-          }}>
-            <div style={{display:"flex",alignItems:"center",gap:"8px",fontSize:"13px",color:"white",fontWeight:"700"}}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
-              絞り込み
-              <div style={{display:"flex",gap:"4px",flexWrap:"wrap"}}>
-                {dayTripOnly && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>日帰り</span>}
-                {trainOnly && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>電車OK</span>}
-                {favOnly && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>⭐お気に入り</span>}
-                {categoryFilter !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{categoryFilter}</span>}
-                {area !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{area}</span>}
-                {driveTimeFilter && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{driveTimeFilter/60}h以内</span>}
-                {courseFilter && courseFilter.length > 0 && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>体力度{courseFilter[0]}</span>}
-                {cramponsFilter && cramponsFilter !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{cramponsFilter}</span>}
-              </div>
-            </div>
-            <span style={{fontSize:"11px",color:"white",display:"inline-block",transform:filterOpen?"rotate(180deg)":"rotate(0deg)",transition:"transform 0.25s"}}>▼</span>
-          </button>
-          {filterOpen && <div style={{background:"white",border:"1.5px solid #ddd8d0",borderRadius:"14px",padding:"12px",marginTop:"6px"}}>
-        {/* フィルターチップ */}
+          {/* フィルターチップ */}
           {(() => {
-            const chip = (active) => ({
-              whiteSpace: "nowrap", fontSize: "12px",
-              padding: "6px 13px", borderRadius: "20px",
-              border: active ? "none" : "1px solid #ddd8d0",
-              background: active ? "#4a5e4a" : "white",
-              color: active ? "white" : "#5a5248",
-              fontWeight: "500", cursor: "pointer", flexShrink: 0,
-            });
-            const chipCat = (active, s) => ({
-              ...chip(false),
-              background: active ? s.color : "white",
-              color: active ? "white" : s.color,
-              border: active ? "none" : `1px solid ${s.color}44`,
-            });
+            const chip = (active) => ({ whiteSpace: "nowrap", fontSize: "12px", padding: "7px 14px", borderRadius: "20px", border: active ? "none" : "1px solid #ddd8d0", background: active ? "#4a5e4a" : "white", color: active ? "white" : "#5a5248", fontWeight: "500", cursor: "pointer", flexShrink: 0 });
+            const chipCat = (active, s) => ({ ...chip(false), background: active ? s.color : "white", color: active ? "white" : s.color, border: active ? "none" : "1px solid #ddd8d0" });
             const chipSort = (active) => ({ ...chip(active), background: active ? "#607848" : "white" });
+            const row = { overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" };
+            const inner = { display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content" };
             const sep = { width: "1px", background: "#e0dbd4", flexShrink: 0, alignSelf: "stretch", margin: "0 2px" };
-            const areas = AREAS.filter(a => a !== "すべて");
-            const half = Math.ceil(areas.length / 2);
-            const row1 = areas.slice(0, half);
-            const row2 = areas.slice(half);
-            const DRIVE_OPTIONS = [{ label: "3時間以内", val: 180 }, { label: "4時間以内", val: 240 }, { label: "6時間以内", val: 360 }];
-            const COURSE_OPTIONS = ["〜15", "16〜20", "21〜25", "26〜"];
-            const CRAMPONS_OPTIONS = ["アイゼン不要", "6本以内でOK"];
             return (
-              <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "14px" }}>
-
-                {/* 1行目: 日帰り・電車 + 並び替え */}
-                <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
-                  <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "7px", marginBottom: "12px" }}>
+                {/* 1行目: よく使うフィルター + 並び替え */}
+                <div style={row}>
+                  <div style={inner}>
                     <button onClick={() => setDayTripOnly(!dayTripOnly)} style={chip(dayTripOnly)}>🌅 日帰り</button>
                     <button onClick={() => setTrainOnly(!trainOnly)} style={chip(trainOnly)}>🚃 電車OK</button>
-                    <button onClick={() => setFavOnly(!favOnly)} style={chip(favOnly)}>⭐ お気に入り</button>
-                  </div>
-                </div>
-
-                {/* 2行目: カテゴリ */}
-                <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-                  {CATEGORIES.filter(c => c !== "すべて").map(cat => {
-                    const cs = CATEGORY_STYLE[cat];
-                    return (
-                      <button key={cat} onClick={() => setCategoryFilter(categoryFilter === cat ? "すべて" : cat)} style={chipCat(categoryFilter === cat, cs)}>{cat}</button>
-                    );
-                  })}
-                </div>
-
-                {/* 3行目: 移動時間 */}
-                <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
-                  <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content", alignItems: "center" }}>
-                    <span style={{ fontSize: "11px", color: "#a09888", flexShrink: 0 }}>🚗</span>
-                    {DRIVE_OPTIONS.map(o => (
-                      <button key={o.val} onClick={() => setDriveTimeFilter(driveTimeFilter === o.val ? null : o.val)} style={chip(driveTimeFilter === o.val)}>{o.label}</button>
+                    <div style={sep} />
+                    {SORTS.map(s => (
+                      <button key={s} onClick={() => setSort(s)} style={chipSort(sort === s)}>{s}</button>
                     ))}
                   </div>
                 </div>
-
-                {/* 4行目: 体力度（コース定数） */}
-                <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
-                  <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content", alignItems: "center" }}>
-                    <span style={{ fontSize: "11px", color: "#a09888", flexShrink: 0 }}>💪</span>
-                    {COURSE_OPTIONS.map(o => {
-                      const active = courseFilter.includes(o);
+                {/* 2行目: エリア + カテゴリ */}
+                <div style={row}>
+                  <div style={inner}>
+                    {AREAS.filter(a => a !== "すべて").map(a => (
+                      <button key={a} onClick={() => setArea(area === a ? "すべて" : a)} style={chip(area === a)}>{a}</button>
+                    ))}
+                    <div style={sep} />
+                    {CATEGORIES.filter(c => c !== "すべて").map(cat => {
+                      const cs = CATEGORY_STYLE[cat];
                       return (
-                        <button key={o} onClick={() => setCourseFilter(active ? courseFilter.filter(x => x !== o) : [...courseFilter, o])} style={chip(active)}>体力度{o}</button>
+                        <button key={cat} onClick={() => setCategoryFilter(categoryFilter === cat ? "すべて" : cat)} style={chipCat(categoryFilter === cat, cs)}>{cat}</button>
                       );
                     })}
                   </div>
                 </div>
-
-                {/* 5行目: アイゼン */}
-                <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", alignItems: "center" }}>
-                  <span style={{ fontSize: "11px", color: "#a09888" }}>🥾</span>
-                  {CRAMPONS_OPTIONS.map(o => (
-                    <button key={o} onClick={() => setCramponsFilter(cramponsFilter === o ? "すべて" : o)} style={chip(cramponsFilter === o)}>{o}</button>
-                  ))}
-                </div>
-
-                {/* 6〜7行目: エリア2行×横スクロール */}
-                <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "6px", minWidth: "max-content" }}>
-                    <div style={{ display: "flex", gap: "6px" }}>
-                      {row1.map(a => (
-                        <button key={a} onClick={() => setArea(area === a ? "すべて" : a)} style={chip(area === a)}>{a}</button>
-                      ))}
-                    </div>
-                    <div style={{ display: "flex", gap: "6px" }}>
-                      {row2.map(a => (
-                        <button key={a} onClick={() => setArea(area === a ? "すべて" : a)} style={chip(area === a)}>{a}</button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
               </div>
             );
           })()}
-          </div>}
-        </div>
-
-          {/* 件数 + 一覧/地図切り替え */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
-            <span style={{ fontSize: "12px", color: "#a09888" }}>{filtered.length}件</span>
-            <div style={{ display: "flex", gap: "4px" }}>
-              {["list", "map"].map(mode => (
-                <button key={mode} onClick={() => setViewMode(mode)} style={{
-                  padding: "4px 12px", borderRadius: "20px", fontSize: "12px", fontWeight: "500",
-                  border: "none", cursor: "pointer",
-                  background: viewMode === mode ? "#4a5e4a" : "white",
-                  color: viewMode === mode ? "white" : "#5a5248",
-                  border: viewMode === mode ? "none" : "1px solid #ddd8d0",
-                }}>
-                  {mode === "list" ? "一覧" : "🗺 地図から探す"}
-                </button>
-              ))}
-            </div>
-          </div>
 
           {/* 一覧 / 地図 */}
           {viewMode === "list" ? (
             <>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "8px" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
                 {filtered.map(m => {
                   const dayTrip = isDayTrip(m);
                   const catStyle = m.category && CATEGORY_STYLE[m.category];
-                  const is100 = m.category === "百名山";
-                  const cardBg = is100
-                    ? "linear-gradient(145deg,#eef2f7 0%,#e2eaf3 100%)"
-                    : "linear-gradient(145deg,#f0f5ec 0%,#e4edd8 100%)";
-                  const cardBorder = is100 ? "#d0dcea" : "#cfdcc0";
-                  const iconColor = is100 ? "#1a4a80" : "#2a5010";
-
-                  // 体力度バッジ＋難易度ラベル
-                  const cMax = m.courseCoefficient ? m.courseCoefficient[1] : 0;
-                  const courseBg    = cMax >= 25 ? "#f0e0e0" : cMax >= 16 ? "#f0ece0" : "#e8f0e4";
-                  const courseColor = cMax >= 25 ? "#7a3838" : cMax >= 16 ? "#7a6030" : "#4a6840";
-                  const courseLabel = m.courseCoefficientRange ? "体力度" + m.courseCoefficientRange : null;
-                  // difficulty フィールドを直接使用
-                  const diffLabel = m.difficulty || (cMax >= 60 ? "上級" : cMax >= 35 ? "中級" : "初級");
-                  const isHard = diffLabel.includes("上級");
-                  const isMid  = diffLabel.includes("中級") || diffLabel.includes("中〜");
-                  const diffBg    = isHard ? "#f0e0e0" : isMid ? "#f0ece0" : "#e8f0e4";
-                  const diffColor = isHard ? "#7a3838" : isMid ? "#7a6030" : "#4a6840";
-                  const driveMin = getDriveTime(m);
-                  const barPct = Math.min(Math.round(driveMin / 360 * 100), 100);
-                  const barColor = driveMin >= 240 ? "linear-gradient(90deg,#c05030,#e07050)" : driveMin >= 120 ? "linear-gradient(90deg,#7a8830,#9aaa50)" : "linear-gradient(90deg,#4a6038,#607848)";
-
-                  // アイゼンバッジ（選択月）
-                  const noGear = canClimbNoGear(m, activeMonth);
-                  const sixOk  = canClimb6Crampons(m, activeMonth);
-                  const cramponLabel = noGear ? "アイゼン不要" : sixOk ? "6本アイゼン" : "12本アイゼン";
-                  const cramponBg    = noGear ? "#e4f0e8" : sixOk ? "#f5f0e0" : "#f0e4e4";
-                  const cramponColor = noGear ? "#2a5838" : sixOk ? "#7a5a20" : "#6a3030";
-
+                  const iconBg = dayTrip
+                    ? "linear-gradient(145deg, #c8d8b8 0%, #607848 100%)"
+                    : "linear-gradient(145deg, #b8c8d8 0%, #4a6078 100%)";
                   return (
                     <a key={m.id} href={getMountainUrl(m.id)}
                       style={{
-                        position: "relative", overflow: "hidden",
-                        borderRadius: "12px", border: `1px solid ${cardBorder}`,
-                        background: cardBg,
-                        padding: "11px 10px 9px",
+                        display: "flex", alignItems: "center", gap: "12px",
+                        padding: "11px 4px",
+                        borderBottom: "1px solid #f0ede8",
                         textDecoration: "none", color: "inherit",
-                        display: "flex", flexDirection: "column", gap: "3px",
-                        transition: "opacity 0.12s",
+                        transition: "background 0.12s",
+                        borderRadius: "4px",
+                        margin: "0 -4px",
                       }}
-                      onMouseEnter={e => e.currentTarget.style.opacity = "0.85"}
-                      onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
-                      {/* 背景SVG山シルエット */}
-                      <svg style={{
-                        position: "absolute", right: "-8px", bottom: "-4px",
-                        width: "80px", height: "50px", opacity: 0.08,
-                        pointerEvents: "none",
-                      }} viewBox="0 0 100 60" fill={iconColor}>
-                        <polygon points="50,5 95,55 5,55"/>
-                        <polygon points="75,20 100,55 50,55"/>
-                        <polygon points="25,30 55,55 0,55"/>
-                      </svg>
-                      {/* 山名 */}
-                      <div style={{ fontSize: "14px", fontWeight: "700", color: "#1e1a16", position: "relative", zIndex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                        {m.regulated && <span style={{ color: "#e67700", marginRight: "3px" }}>⚠️</span>}{m.name}
-                      </div>
-                      {/* エリア */}
-                      <div style={{ fontSize: "10px", color: "#8a8078", position: "relative", zIndex: 1 }}>{m.area}</div>
-                      {/* 標高・時間 */}
-                      <div style={{ display: "flex", gap: "5px", alignItems: "center", fontSize: "11px", color: "#6a6058", position: "relative", zIndex: 1, marginBottom: "2px" }}>
-                        <span>{m.elevation.toLocaleString()}m</span>
-                        <span style={{ color: "#c8c0b8" }}>·</span>
-                        <span>🚗 {formatDriveTime(getDriveTime(m))}</span>
-                      </div>
-                      {/* アクセス時間バー */}
-                      <div style={{height:"3px",background:"rgba(0,0,0,0.08)",borderRadius:"2px",marginBottom:"5px",overflow:"hidden",position:"relative",zIndex:1}}>
-                        <div style={{width:barPct+"%",height:"100%",background:barColor,borderRadius:"2px"}}></div>
-                      </div>
-                      {/* バッジ群 */}
-                      <div style={{ display: "flex", gap: "3px", flexWrap: "wrap", position: "relative", zIndex: 1 }}>
-                        {catStyle && (
-                          <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "500", background: is100 ? "rgba(160,200,240,0.35)" : "rgba(180,220,180,0.4)", color: is100 ? "#1a4060" : "#2d5a1a" }}>
-                            {m.category}
-                          </span>
+                      onMouseEnter={e => e.currentTarget.style.background = "#f5f3ef"}
+                      onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
+                      {/* 左: グラデーションアイコン */}
+                      <div style={{
+                        width: "50px", height: "50px", borderRadius: "12px", flexShrink: 0,
+                        background: iconBg,
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        position: "relative",
+                      }}>
+                        <span style={{ fontSize: "22px", lineHeight: 1 }}>⛰</span>
+                        {m.regulated && (
+                          <span style={{ position: "absolute", top: "3px", right: "3px", fontSize: "10px", lineHeight: 1 }}>⚠️</span>
                         )}
-                        <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "500", background: dayTrip ? "rgba(200,235,210,0.8)" : "rgba(250,230,190,0.8)", color: dayTrip ? "#1e5a2e" : "#7a4800" }}>
-                          {dayTrip ? "日帰り" : "宿泊"}
-                        </span>
-                        {m.trainAccess && (
-                          <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "500", background: "rgba(200,220,245,0.8)", color: "#1a4878" }}>
-                            {(m.trainAccess.includes("バス") || m.trainAccess.includes("ケーブル")) ? "🚃🚌" : "🚃"}
-                          </span>
-                        )}
-                        <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "600", background: diffBg, color: diffColor }}>
-                          {diffLabel}
-                        </span>
-                        <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "500", background: cramponBg, color: cramponColor }}>
-                          {cramponLabel}
-                        </span>
                       </div>
-                      
+                      {/* 右: テキスト情報 */}
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        {/* 1行目: 山名 */}
+                        <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "3px" }}>
+                          <span style={{ fontSize: "15px", fontWeight: "600", color: "#2a2520", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                            {m.name}
+                          </span>
+                        </div>
+                        {/* 2行目: エリア・標高・ドライブ時間 */}
+                        <div style={{ fontSize: "12px", color: "#8a8078", marginBottom: "5px", display: "flex", gap: "6px", alignItems: "center", flexWrap: "wrap" }}>
+                          <span>{m.area}</span>
+                          <span style={{ color: "#d0c8c0" }}>·</span>
+                          <span>{m.elevation.toLocaleString()}m</span>
+                          <span style={{ color: "#d0c8c0" }}>·</span>
+                          <span>🚗 {formatDriveTime(getDriveTime(m))}</span>
+                        </div>
+                        {/* 3行目: バッジ群 */}
+                        <div style={{ display: "flex", gap: "5px", flexWrap: "wrap", alignItems: "center" }}>
+                          {catStyle && (
+                            <span style={{ fontSize: "10px", padding: "2px 7px", borderRadius: "20px", background: catStyle.bg, color: catStyle.color, fontWeight: "500" }}>
+                              {m.category}
+                            </span>
+                          )}
+                          <span style={{
+                            fontSize: "10px", padding: "2px 7px", borderRadius: "20px", fontWeight: "500",
+                            background: dayTrip ? "#e0f0e4" : "#fef3e2",
+                            color: dayTrip ? "#2d6a3f" : "#a05c00",
+                          }}>
+                            {dayTrip ? "🌅 日帰り可" : "🏕 宿泊推奨"}
+                          </span>
+                          {m.trainAccess && (
+                            <span style={{ fontSize: "10px", padding: "2px 7px", borderRadius: "20px", background: "#dce8f5", color: "#2a6090", fontWeight: "500" }}>
+                              {(m.trainAccess.includes("バス") || m.trainAccess.includes("ケーブル")) ? "🚃🚌" : "🚃"}
+                            </span>
+                          )}
+                          <CourseBadge courseCoefficient={m.courseCoefficient} courseCoefficientRange={m.courseCoefficientRange} />
+                        </div>
+                      </div>
+                      {/* 右端: 矢印 */}
+                      <div style={{ color: "#c8c0b8", fontSize: "16px", flexShrink: 0 }}>›</div>
                     </a>
                   );
                 })}
@@ -4318,9 +4024,10 @@ function App() {
               onSelect={(id) => { window.location.href = getMountainUrl(id); }}
             />
           )}
+        </div>
       </main>
       <footer style={{ textAlign: "center", padding: "20px 16px", fontSize: "12px", color: "#a09888", borderTop: "1px solid #e8e4dc", marginTop: "8px" }}>
-        <p style={{ fontSize: "11px", color: "#a09888", lineHeight: "1.8", maxWidth: "480px", margin: "0 auto", wordBreak: "auto-phrase" }}>Yamatchは、コース定数・都道府県・アクセス時間・日帰り可否・アイゼン要否・電車アクセスなどの条件から登山を探せる検索サービスです。</p>
+        <p>Yamatch — 出発地から登る山を探せる登山サーチ</p>
         <p style={{ marginTop: "6px" }}>
           <a href="/about/" style={{ color: "#7a9a7a" }}>運営者</a>
           <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
@@ -4328,87 +4035,12 @@ function App() {
           <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
           <a href="/privacy/" style={{ color: "#7a9a7a" }}>プライバシーポリシー</a>
         </p>
-        <p style={{ marginTop: "8px", opacity: 0.6 }}>© 2026 Yamatch. All rights reserved.</p>
-</footer>
+      </footer>
     </div>
   );
 }
 
 const root=ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);
 
-// JSONから最新データを読み込んでからレンダリング
-fetch('/data/mountains.json')
-  .then(function(r){ return r.json(); })
-  .then(function(jsonData){
-    jsonData.forEach(function(jmt){
-      var idx = mountains.findIndex(function(m){ return m.id === jmt.id; });
-      if(idx < 0) return;
-      var m = mountains[idx];
-      if(jmt.driveOfuna) m.driveTime = jmt.driveOfuna;
-      if(jmt.driveShinjuku) m.driveTimeShinjuku = jmt.driveShinjuku;
-      if(jmt.driveYokohama) m.driveTimeYokohama = jmt.driveYokohama;
-      if(jmt.driveOmiya) m.driveTimeOmiya = jmt.driveOmiya;
-      if(jmt.coeffMin && jmt.coeffMax){
-        m.courseCoefficient = [jmt.coeffMin, jmt.coeffMax];
-        m.courseCoefficientRange = jmt.coeffMin + '〜' + jmt.coeffMax;
-      }
-    });
-  })
-  .catch(function(){})
-  .finally(function(){
-    root.render(<App/>);
-    const _sk=document.getElementById('app-skeleton');if(_sk)_sk.style.display='none';
-  });
-
-</script>
-
-
-
-<!-- ボトムナビ -->
-<nav class="ym-bottom-nav">
-  <a href="/" class="ym-tab active">
-    <div class="ym-tab-ico">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round">
-        <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/>
-      </svg>
-    </div>
-    <div class="ym-tab-lbl">探す</div>
-  </a>
-  <a href="/recommend/" class="ym-tab">
-    <div class="ym-tab-ico">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
-      </svg>
-    </div>
-    <div class="ym-tab-lbl">診断</div>
-  </a>
-  <a href="/articles/" class="ym-tab">
-    <div class="ym-tab-ico">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-        <line x1="9" y1="7" x2="15" y2="7"/>
-        <line x1="9" y1="11" x2="13" y2="11"/>
-      </svg>
-    </div>
-    <div class="ym-tab-lbl">記事</div>
-  </a>
-  <a href="/mypage/" class="ym-tab">
-    <div class="ym-tab-ico">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-        <circle cx="12" cy="7" r="4"/>
-      </svg>
-    </div>
-    <div class="ym-tab-lbl">マイ</div>
-  </a>
-</nav>
-
-<div id="ym-nav-overlay" onclick="document.getElementById('ym-nav-menu').style.display='none';this.style.display='none';" style="display:none;position:fixed;inset:0;z-index:9997;background:transparent;"></div>
-<div id="ym-nav-menu" style="display:none;position:fixed;top:56px;right:16px;background:#ffffff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.25);z-index:9999;min-width:220px;overflow:hidden;border:1px solid #e0dbd4;">
-  <button onclick="window.location.href='/mypage/';" style="display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:14px;font-weight:600;color:#3a3530;background:none;border:none;cursor:pointer;width:100%;border-bottom:1px solid #f0ede5;font-family:inherit;text-align:left;">📋 Myページ</button>
-  <button onclick="window.location.href='/about/';" style="display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:14px;font-weight:600;color:#3a3530;background:none;border:none;cursor:pointer;width:100%;border-bottom:1px solid #f0ede5;font-family:inherit;text-align:left;">👤 運営者</button>
-  <button onclick="document.getElementById('ym-nav-menu').style.display='none';document.getElementById('ym-nav-overlay').style.display='none';window.open('https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform','_blank');" style="display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:14px;font-weight:600;color:#3a3530;background:none;border:none;cursor:pointer;width:100%;font-family:inherit;text-align:left;">💬 改善提案・お問い合わせ</button>
-</div>
-</body></html>
+</script></body></html>

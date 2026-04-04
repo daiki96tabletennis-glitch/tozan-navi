@@ -243,7 +243,8 @@
     "description": "百名山最低峰。ケーブルカー・ロープウェイあり。山頂からは関東平野を一望。",
     "yamapUrl": "https://yamap.com/mountains/90",
     "busLinks": [
-      "https://transit.yahoo.co.jp/search/result?from=新宿&to=つくば駅&type=1"
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=つくば駅&type=1",
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=伊勢原駅&type=1"
     ],
     "warnBanner": null,
     "nearby": [],
@@ -262,9 +263,10 @@
       "winter"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -272,8 +274,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要"
@@ -339,8 +340,7 @@
       }
     ],
     "seasonNoGear": "5月〜11月",
-    "season6Crampons": "なし",
-    "cc": "8〜17"
+    "season6Crampons": "なし"
   },
   {
     "id": "kumotori",
@@ -4441,7 +4441,7 @@
     "elevation": 599,
     "category": "人気の山",
     "difficulty": "初級",
-    "coeffMin": 10,
+    "coeffMin": 8,
     "coeffMax": 51,
     "daytrip": true,
     "trainAccess": true,
@@ -4553,8 +4553,7 @@
       }
     ],
     "seasonNoGear": "通年",
-    "season6Crampons": "なし",
-    "cc": "10〜51"
+    "season6Crampons": "なし"
   },
   {
     "id": "oyama",
