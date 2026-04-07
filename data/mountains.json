@@ -349,13 +349,13 @@
     "category": "百名山",
     "difficulty": "中級",
     "coeffMin": 43,
-    "coeffMax": 54,
+    "coeffMax": 70,
     "daytrip": true,
     "trainAccess": true,
     "driveOfuna": 130,
-    "driveShinjuku": 130,
-    "driveYokohama": 120,
-    "driveOmiya": 110,
+    "driveShinjuku": 120,
+    "driveYokohama": 140,
+    "driveOmiya": 150,
     "description": "東京都最高峰。奥多摩を代表する名峰で、ブナ林の縦走路が美しい。",
     "yamapUrl": "https://yamap.com/mountains/25",
     "busLinks": [
@@ -395,13 +395,13 @@
       "アイゼン不要",
       "6本アイゼンで可"
     ],
-    "trailhead": "鴨沢",
-    "parking": "鴨沢駐車場（約15台・無料）",
+    "trailhead": "鴨沢ルート登山口",
+    "parking": "雲取山駐車場（約30台・無料・トイレあり）",
     "address": "東京都西多摩郡奥多摩町留浦",
-    "gmapUrl": "https://google.com/maps/search/鴨沢/@35.8558,138.9433,16z",
+    "gmapUrl": "https://www.google.com/maps/place/%E9%B4%A8%E6%B2%A2%E3%83%AB%E3%83%BC%E3%83%88+%E7%99%BB%E5%B1%B1%E5%8F%A3+(%E9%9B%B2%E5%8F%96%E5%B1%B1%E3%80%9C%E5%B0%8F%E8%A2%96%E9%A7%90%E8%BB%8A%E5%A0%B4)/@35.7874216,138.9733084,17z/data=!3m1!4b1!4m6!3m5!1s0x601949e36366a4a1:0x3b2f8299d35ffacd!8m2!3d35.7874216!4d138.9758833!16s%2Fg%2F11t_v03hcn?authuser=0&entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
     "amapUrl": "https://maps.apple.com/?ll=35.8558,138.9433&q=鴨沢",
     "busScheduleLinks": [
-      "https://www.nisitokyobus.co.jp/rosen/noriba/okutama.html"
+      "https://www.nisitokyobus.co.jp/wp/wp-content/uploads/2026/03/20260401_hiking_Okutama.pdf"
     ],
     "gearLinks": [
       {
@@ -455,7 +455,8 @@
       }
     ],
     "seasonNoGear": "4月下旬〜11月",
-    "season6Crampons": "12月〜3月（チェーンスパイク推奨）"
+    "season6Crampons": "12月〜3月（チェーンスパイク推奨）",
+    "cc": "43〜70"
   },
   {
     "id": "amagi",
