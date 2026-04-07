@@ -233,18 +233,17 @@
     "category": "百名山",
     "difficulty": "初級",
     "coeffMin": 8,
-    "coeffMax": 17,
+    "coeffMax": 24,
     "daytrip": true,
     "trainAccess": false,
-    "driveOfuna": 120,
-    "driveShinjuku": 150,
+    "driveOfuna": 150,
+    "driveShinjuku": 110,
     "driveYokohama": 120,
-    "driveOmiya": 85,
+    "driveOmiya": 120,
     "description": "百名山最低峰。ケーブルカー・ロープウェイあり。山頂からは関東平野を一望。",
     "yamapUrl": "https://yamap.com/mountains/90",
     "busLinks": [
-      "https://transit.yahoo.co.jp/search/result?from=新宿&to=つくば駅&type=1",
-      "https://transit.yahoo.co.jp/search/result?from=新宿&to=伊勢原駅&type=1"
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=つくば駅&type=1"
     ],
     "warnBanner": null,
     "nearby": [],
@@ -285,8 +284,7 @@
     "gmapUrl": "https://google.com/maps/search/筑波山神社/@36.2255,140.1065,16z",
     "amapUrl": "https://maps.apple.com/?ll=36.2255,140.1065&q=筑波山神社",
     "busScheduleLinks": [
-      "https://www.kantetsu.co.jp/bus/rosen/rosen.html",
-      "https://www.kanachu.co.jp/dia/diagram/start=CS000097_1&noriba=0"
+      "https://www.kantetsu.co.jp/bus/tourist/mttsukuba"
     ],
     "gearLinks": [
       {
@@ -340,7 +338,8 @@
       }
     ],
     "seasonNoGear": "5月〜11月",
-    "season6Crampons": "なし"
+    "season6Crampons": "なし",
+    "cc": "0〜24"
   },
   {
     "id": "kumotori",
