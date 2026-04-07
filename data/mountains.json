@@ -465,14 +465,14 @@
     "elevation": 1406,
     "category": "百名山",
     "difficulty": "初〜中級",
-    "coeffMin": 12,
-    "coeffMax": 20,
+    "coeffMin": 17,
+    "coeffMax": 29,
     "daytrip": true,
     "trainAccess": false,
     "driveOfuna": 150,
-    "driveShinjuku": 185,
-    "driveYokohama": 145,
-    "driveOmiya": 195,
+    "driveShinjuku": 180,
+    "driveYokohama": 160,
+    "driveOmiya": 200,
     "description": "伊豆半島の最高峰。シャクナゲの群生地として有名。川端康成の小説の舞台。",
     "yamapUrl": "https://yamap.com/mountains/179",
     "busLinks": [],
@@ -566,7 +566,8 @@
       }
     ],
     "seasonNoGear": "通年",
-    "season6Crampons": "なし"
+    "season6Crampons": "なし",
+    "cc": "17〜29"
   },
   {
     "id": "okutama",
