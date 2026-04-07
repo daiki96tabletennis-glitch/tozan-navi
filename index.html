@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja"><head><meta charset="UTF-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
 <meta name="google-site-verification" content="dJ2byH9b8xF8S5lqAyWV-DqRwPGLEjWXs_-Un9oXGHs" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Yamatch｜コース定数やアクセス条件で登山を探せる検索サイト</title>
+<title>Yamatch｜出発地から登る山を探せる登山サーチ</title>
 <meta name="description" content="出発地から登る山を探せる登山サーチサービス。百名山・二百名山・人気の山を条件で絞り込み。">
-<meta property="og:title" content="Yamatch｜コース定数やアクセス条件で登山を探せる検索サイト">
+<meta property="og:title" content="Yamatch｜出発地から登る山を探せる登山サーチ">
 <meta property="og:description" content="大船・新宿・横浜・大宮から行ける百名山・二百名山・人気の山を、コース定数・難易度・日帰り可否で絞り込めるサービス。">
 <meta property="og:image" content="https://tozan-navi.com/ogp.png?v=3">
 <meta property="og:image:width" content="1200">
@@ -38,7 +36,10 @@ function loadLeaflet(cb){
   s.onload=cb;document.head.appendChild(s);
 }
 </script>
-<style>*{box-sizing:border-box;}body{margin:0;padding:0;-webkit-text-size-adjust:100%;}::-webkit-scrollbar{height:4px;}::-webkit-scrollbar-thumb{background:#ccc8c0;border-radius:4px;}button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}</style>
+<style>*{box-sizing:border-box;}body{margin:0;padding:0;-webkit-text-size-adjust:100%;}::-webkit-scrollbar{height:4px;}::-webkit-scrollbar-thumb{background:#ccc8c0;border-radius:4px;}button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+/* ボトムナビ分の余白 */
+#root > div { padding-bottom: env(safe-area-inset-bottom, 0px); }
+</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
 <script>
@@ -92,7 +93,7 @@ const CATEGORY_STYLE = {
   "人気の山": { bg: "#e4e4e8", color: "#48485a", label: "人気の山" },
 };
 
-window.__mountainsBase = [
+const mountains = [
   {
     id: "tanzawa",
     lat: 35.4779,
@@ -120,7 +121,7 @@ window.__mountainsBase = [
     description: "神奈川県最高峰エリア。ブナの原生林が美しく、四季を通じて楽しめる。",
     yamapUrl: "https://yamap.com/mountains/110",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月・4月（1〜3月は12本必要）",
+    season6Crampons: "12月〜4月",
         category: "百名山",
   },
   {
@@ -179,7 +180,7 @@ window.__mountainsBase = [
     ],
     description: "百名山最低峰。ケーブルカー・ロープウェイあり。山頂からは関東平野を一望。",
     yamapUrl: "https://yamap.com/mountains/90",
-    seasonNoGear: "5月〜11月",
+    seasonNoGear: "通年",
     season6Crampons: "なし",
         category: "百名山",
   },
@@ -209,8 +210,8 @@ window.__mountainsBase = [
     ],
     description: "東京都最高峰。奥多摩を代表する名峰で、ブナ林の縦走路が美しい。",
     yamapUrl: "https://yamap.com/mountains/25",
-    seasonNoGear: "4月下旬〜11月",
-    season6Crampons: "12月〜3月（チェーンスパイク推奨）",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
         trainAccess: "奥多摩駅→バス15分→鴨沢",
     category: "百名山",
   },
@@ -270,8 +271,8 @@ window.__mountainsBase = [
     ],
     description: "草原状の稜線から富士山や南アルプスの展望が開ける。アクセスが良く人気。",
     yamapUrl: "https://yamap.com/mountains/178",
-    seasonNoGear: "5月〜11月",
-    season6Crampons: "12月〜4月",
+    seasonNoGear: "通年",
+    season6Crampons: "なし",
         trainAccess: "塩山駅→バス25分→上日川峠（季節）",
     category: "百名山",
   },
@@ -301,7 +302,7 @@ window.__mountainsBase = [
     description: "鋸状の岩峰が連なる個性的な山容。クサリ場が多く登り応えがある。",
     yamapUrl: "https://yamap.com/mountains/24",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月〜4月（岩場につきチェーンスパイク推奨）",
+    season6Crampons: "12月〜4月",
             category: "百名山",
   },
   {
@@ -330,7 +331,7 @@ window.__mountainsBase = [
     ],
     description: "甲州・武州・信州の3県の境に位置。千曲川・荒川・笛吹川の源流の山。",
     yamapUrl: "https://yamap.com/mountains/26",
-    seasonNoGear: "5月下旬〜11月",
+    seasonNoGear: "5月〜11月",
     season6Crampons: "12月〜4月",
         category: "百名山",
   },
@@ -391,7 +392,7 @@ window.__mountainsBase = [
     description: "上毛三山の一つ。カルデラ湖（大沼）を擁する成層火山。展望が良い。",
     yamapUrl: "https://yamap.com/mountains/21",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月・4月（1〜3月は12本必要）",
+    season6Crampons: "12月〜4月",
             category: "百名山",
   },
   {
@@ -420,7 +421,7 @@ window.__mountainsBase = [
     ],
     description: "奥秩父の盟主。山頂に五丈石という奇岩がそびえ、展望も抜群。",
     yamapUrl: "https://yamap.com/mountains/176",
-    seasonNoGear: "5月下旬〜11月",
+    seasonNoGear: "5月〜11月",
     season6Crampons: "12月〜4月",
         category: "百名山",
   },
@@ -450,7 +451,7 @@ window.__mountainsBase = [
     ],
     description: "南アルプス北部の山。地蔵岳のオベリスクが特徴的。白砂の稜線が美しい。",
     yamapUrl: "https://yamap.com/mountains/63",
-    seasonNoGear: "7月〜10月",
+    seasonNoGear: "6月〜10月",
     season6Crampons: "不可（残雪期は12本必要）",
         category: "百名山",
   },
@@ -541,7 +542,7 @@ window.__mountainsBase = [
     ],
     description: "八ヶ岳連峰の最高峰。岩稜帯が続くダイナミックなルート。",
     yamapUrl: "https://yamap.com/mountains/101",
-    seasonNoGear: "5月下旬〜11月",
+    seasonNoGear: "5月〜11月",
     season6Crampons: "12月〜4月",
         category: "百名山",
   },
@@ -666,7 +667,7 @@ window.__mountainsBase = [
     description: "魔の山とも称される難峰。双耳峰（トマの耳・オキの耳）が特徴。",
     yamapUrl: "https://yamap.com/mountains/164",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月・4月〜5月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
         trainAccess: "土合駅から徒歩5分（ロープウェイ駅）",
     category: "百名山",
   },
@@ -697,7 +698,7 @@ window.__mountainsBase = [
     description: "栃木県の名峰。活火山で荒涼とした火山景観が広がる。",
     yamapUrl: "https://yamap.com/mountains/8564",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "3月〜5月・11月（12〜2月は12本推奨）",
+    season6Crampons: "12月〜4月",
         trainAccess: "🚅那須塩原駅→バス30分→峠の茶屋入口",
     category: "百名山",
   },
@@ -728,7 +729,7 @@ window.__mountainsBase = [
     description: "上信国境の雄峰。なだらかな山容で、高山植物が豊富。",
     yamapUrl: "https://yamap.com/mountains/51",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月・4月〜5月（1〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
             category: "百名山",
   },
   {
@@ -758,7 +759,7 @@ window.__mountainsBase = [
     description: "関東以北の最高峰。コバルトブルーの五色沼が山頂付近に広がる。",
     yamapUrl: "https://yamap.com/mountains/252",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "4月〜5月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
             category: "百名山",
   },
   {
@@ -788,7 +789,7 @@ window.__mountainsBase = [
     description: "上州武尊山とも呼ばれる。日本武尊の伝説が残る上毛三山の一つ。",
     yamapUrl: "https://yamap.com/mountains/170",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月・4月〜5月（1〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
             category: "百名山",
   },
   {
@@ -816,7 +817,6 @@ window.__mountainsBase = [
     description: "白い花崗岩の山頂が印象的。黒戸尾根は日本三大急登の一つ。",
     yamapUrl: "https://yamap.com/mountains/62",
     seasonNoGear: "7月〜9月",
-    season12Crampons: "12月〜3月",
     season6Crampons: "10月〜11月・5月〜6月",
         category: "百名山",
   },
@@ -845,7 +845,6 @@ window.__mountainsBase = [
     description: "南アルプスの女王。カール地形が美しく、高山植物が豊富。",
     yamapUrl: "https://yamap.com/mountains/15",
     seasonNoGear: "6月〜10月",
-    season12Crampons: "12月〜3月",
     season6Crampons: "不可（残雪期は12本必要）",
         category: "百名山",
   },
@@ -875,7 +874,7 @@ window.__mountainsBase = [
     ],
     description: "北アルプス屈指の高山植物の宝庫。大雪渓は夏でも残雪がある。",
     yamapUrl: "https://yamap.com/mountains/17",
-    seasonNoGear: "8月〜9月",
+    seasonNoGear: "7月〜9月",
     season6Crampons: "不可（雪渓・12本必要）",
         trainAccess: "白馬駅→バス25分→猿倉（季節）",
     category: "百名山",
@@ -907,7 +906,7 @@ window.__mountainsBase = [
     description: "バスで2700mの畳平まで行けるため、初心者でも3000m峰に登れる。",
     yamapUrl: "https://yamap.com/mountains/146",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜7月上旬（残雪あり）",
+    season6Crampons: "5月〜6月（残雪あり・注意）",
             category: "百名山",
   },
   {
@@ -968,7 +967,6 @@ window.__mountainsBase = [
     description: "日本最難関の百名山。クサリ場・岩場の連続で技術と体力が必要。",
     yamapUrl: "https://yamap.com/mountains/11",
     seasonNoGear: "7月〜9月",
-    season12Crampons: "12月〜3月",
     season6Crampons: "不可（12本必要・ガイド推奨）",
         trainAccess: "富山駅→立山ケーブル→室堂（季節）",
     category: "百名山",
@@ -1060,7 +1058,7 @@ window.__mountainsBase = [
     description: "越後富士の異名を持つ新潟の名峰。スカイケーブル利用ルートも人気。火打山とのセット登山も定番。",
     yamapUrl: "https://yamap.com/mountains/166",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "5月〜6月・10月〜11月",
+    season6Crampons: "5月・11月",
         trainAccess: "妙高高原駅→バス30分→燕温泉",
     category: "百名山",
   },
@@ -1091,7 +1089,7 @@ window.__mountainsBase = [
     description: "越後の名峰。山頂付近は広大な湿原が広がり、池塘が点在する。",
     yamapUrl: "https://yamap.com/mountains/162",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月・10月〜11月",
+    season6Crampons: "5月〜6月・11月",
         trainAccess: "六日町駅→バス27分→清水（季節）",
     category: "百名山",
   },
@@ -1152,7 +1150,7 @@ window.__mountainsBase = [
     description: "尾瀬を代表する山。蛇紋岩の山で固有種の高山植物が多い。",
     yamapUrl: "https://yamap.com/mountains/103",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "6月上旬・11月（5月は入山禁止）",
+    season6Crampons: "5月〜6月・11月",
             category: "百名山",
   },
   {
@@ -1182,7 +1180,7 @@ window.__mountainsBase = [
     description: "湿原と池塘が広がる稜線が美しい。東北南部の名峰。",
     yamapUrl: "https://yamap.com/mountains/159",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月上旬・10月〜11月",
+    season6Crampons: "5月〜6月・11月",
         category: "百名山",
   },
   {
@@ -1244,7 +1242,7 @@ window.__mountainsBase = [
     description: "福島のシンボル。磐梯朝日国立公園の主峰。猪苗代湖を見下ろす。",
     yamapUrl: "https://yamap.com/mountains/158",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月・4月〜5月上旬（1〜3月は12本推奨）",
+    season6Crampons: "12月〜4月",
         trainAccess: "猪苗代駅→バス30分→八方台（季節）",
     category: "百名山",
   },
@@ -1274,9 +1272,8 @@ window.__mountainsBase = [
     ],
     description: "東北最高峰。双耳峰の雄姿と尾瀬の自然が魅力。",
     yamapUrl: "https://yamap.com/mountains/163",
-    seasonNoGear: "6月〜10月",
-    season12Crampons: "12月〜3月",
-    season6Crampons: "4月〜6月上旬・11月（12〜3月は12本必要）",
+    seasonNoGear: "5月〜11月",
+    season6Crampons: "12月〜4月",
             category: "百名山",
   },
 
@@ -1553,7 +1550,7 @@ window.__mountainsBase = [
     ],
     description: "奥秩父の名峰。山頂直下に巨大な岩壁があり、クサリ場が続くスリリングな登山が楽しめる。",
     yamapUrl: "https://yamap.com/mountains/14413",
-    seasonNoGear: "4月下旬〜11月",
+    seasonNoGear: "4月〜11月",
     season6Crampons: "12月〜3月",
         trainAccess: "山梨市駅→バス30分→乾徳山登山口（季節）",
     category: "二百名山",
@@ -1678,7 +1675,7 @@ window.__mountainsBase = [
     description: "北アルプスのパノラマ台。山頂から槍・穂高の絶景が広がる。北アルプス入門の山。",
     yamapUrl: "https://yamap.com/mountains/144",
     seasonNoGear: "7月〜9月",
-    season6Crampons: "10月〜11月・5月〜6月",
+    season6Crampons: "10月・6月",
             category: "百名山",
   },
   {
@@ -1709,7 +1706,7 @@ window.__mountainsBase = [
     description: "北アルプス唯一の活火山。山頂付近の噴気と硫黄の景観が迫力満点。",
     yamapUrl: "https://yamap.com/mountains/145",
     seasonNoGear: "6月〜10月（規制確認要）",
-    season6Crampons: "11月・5月（残雪期のみ・規制確認要）",
+    season6Crampons: "不可（活火山・12本必要）",
             category: "百名山",
   },
   {
@@ -1921,7 +1918,7 @@ window.__mountainsBase = [
     description: "志賀高原の最高峰。北アルプスや北信五岳など360度の大展望が楽しめる。",
     yamapUrl: "https://yamap.com/mountains/9836",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
         trainAccess: "湯田中駅→バス25分→聖平入口（季節）",
     category: "二百名山",
   },
@@ -1951,7 +1948,7 @@ window.__mountainsBase = [
     description: "長野市の北西にそびえる修験道の山。北アルプスや善光寺平の眺望が広がる。",
     yamapUrl: "https://yamap.com/mountains/4405",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月・4月（1〜3月は12本推奨）",
+    season6Crampons: "12月〜4月",
         trainAccess: "長野駅→バス30分→一ノ鳥居苑地",
     category: "二百名山",
   },
@@ -1982,7 +1979,7 @@ window.__mountainsBase = [
     description: "北信五岳のひとつ。静かな樹林帯と山頂からの妙高・戸隠連峰の眺めが魅力。",
     yamapUrl: "https://yamap.com/mountains/16886",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "4月〜5月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜4月",
         trainAccess: "黒姫駅→バス20分→古池登山口（季節）",
     category: "二百名山",
   },
@@ -2041,8 +2038,7 @@ window.__mountainsBase = [
     description: "野反湖を起点とするアクセスのよい奥志賀の山。高山植物が豊富で秋の草紅葉が美しい。",
     yamapUrl: "https://yamap.com/mountains/16853",
     seasonNoGear: "6月〜10月",
-    season12Crampons: "12月〜3月",
-    season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
             category: "二百名山",
   },
   {
@@ -2101,8 +2097,7 @@ window.__mountainsBase = [
     description: "奥只見の秘峰。前グラの岩場が核心部で鎖場が続く。越後三山の展望が素晴らしい。",
     yamapUrl: "https://yamap.com/mountains/9268",
     seasonNoGear: "6月〜10月",
-    season12Crampons: "12月〜3月",
-    season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
         category: "二百名山",
   },
   {
@@ -2218,7 +2213,7 @@ window.__mountainsBase = [
     description: "安曇野のシンボル「安曇富士」とも呼ばれる美しい山容。山頂からの北アルプスの眺めが壮観。",
     yamapUrl: "https://yamap.com/mountains/16362",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
         category: "二百名山",
   },
   {
@@ -2279,7 +2274,7 @@ window.__mountainsBase = [
     description: "「ほんとの空」で知られる高村光太郎の詩の舞台。ゴンドラで気軽に登れる人気の福島の名山。",
     yamapUrl: "https://yamap.com/mountains/157",
     seasonNoGear: "5月〜11月",
-    season6Crampons: "12月・4月（1〜3月は12本推奨）",
+    season6Crampons: "12月〜4月",
         trainAccess: "🚅二本松駅→バス30分→岳温泉（季節）",
     category: "百名山",
   },
@@ -2310,7 +2305,7 @@ window.__mountainsBase = [
     description: "磐梯吾妻スカイラインで浄土平まで車で行ける。一切経山の魔女の瞳（五色沼）は絶景。",
     yamapUrl: "https://yamap.com/mountains/156",
     seasonNoGear: "6月〜10月（規制確認要）",
-    season6Crampons: "11月・4月〜5月（1〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
             category: "百名山",
   },
   {
@@ -2340,8 +2335,7 @@ window.__mountainsBase = [
     description: "越後三山の主峰。稜線からの眺望が素晴らしい。枝折峠からの雲海も絶景。",
     yamapUrl: "https://yamap.com/mountains/160",
     seasonNoGear: "6月〜10月",
-    season12Crampons: "12月〜3月",
-    season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
         category: "百名山",
   },
   {
@@ -2401,7 +2395,7 @@ window.__mountainsBase = [
     description: "山頂に広大な高層湿原が広がる独特の山。池塘が点在する別天地のような山頂台地。",
     yamapUrl: "https://yamap.com/mountains/152",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月・10月〜11月",
+    season6Crampons: "5月〜6月・11月",
         trainAccess: "🚅越後湯沢駅→バス30分→和田小屋（季節）",
     category: "百名山",
   },
@@ -2432,7 +2426,7 @@ window.__mountainsBase = [
     description: "北アルプス最北端の名峰。笹平の笹原と双耳峰の山容が美しい。紅葉の名所。",
     yamapUrl: "https://yamap.com/mountains/165",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜6月・10月〜11月",
+    season6Crampons: "5月〜6月・11月",
         category: "百名山",
   },
   {
@@ -2461,7 +2455,7 @@ window.__mountainsBase = [
     description: "妙高山と並ぶ頸城山塊の名峰。山頂付近の天狗の庭は高層湿原の絶景。高山植物が豊富。",
     yamapUrl: "https://yamap.com/mountains/167",
     seasonNoGear: "7月〜10月",
-    season6Crampons: "5月〜7月上旬・10月〜11月",
+    season6Crampons: "5月〜6月・11月",
         trainAccess: "妙高高原駅→バス30分→笹ヶ峰（季節）",
     category: "百名山",
   },
@@ -2492,7 +2486,7 @@ window.__mountainsBase = [
     description: "戸隠連峰の最高峰。修験道の山として長い歴史を持つ。急登が続く本格登山コース。",
     yamapUrl: "https://yamap.com/mountains/168",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season6Crampons: "11月〜5月",
             category: "百名山",
   },
   {
@@ -2610,7 +2604,7 @@ window.__mountainsBase = [
     description: "上州と下野の国境に位置する深山。クラシックルートは林道が長く秘境感がある。",
     yamapUrl: "https://yamap.com/mountains/169",
     seasonNoGear: "6月〜10月",
-    season6Crampons: "11月〜5月（冬期は通行止め多）",
+    season6Crampons: "11月〜5月",
         category: "百名山",
   },
   {
@@ -2681,8 +2675,7 @@ window.__mountainsBase = [
     trailhead: "八方尾根（ゴンドラ・リフト利用）",
     trailheadAddress: "長野県北安曇郡白馬村北城",
     parking: "八方第5駐車場ほか（約1000台・無料）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜4月", season6Crampons: "5月〜6月・11月（12〜4月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "中級",
     courseCoefficientRange: "14〜27", courseCoefficient: [14, 27],
     routes: [
@@ -2707,7 +2700,7 @@ window.__mountainsBase = [
     trailhead: "駒ヶ根高原（池山林道終点）",
     trailheadAddress: "長野県駒ヶ根市赤穂",
     parking: "池山林道終点駐車場（約20台・無料）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "中〜上級",
     courseCoefficientRange: "55〜70", courseCoefficient: [55, 70],
     routes: [
@@ -2754,8 +2747,7 @@ window.__mountainsBase = [
     trailhead: "鳥倉林道ゲート",
     trailheadAddress: "長野県下伊那郡大鹿村大河原",
     parking: "鳥倉林道ゲート手前駐車場（約50台・無料）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "55〜75", courseCoefficient: [55, 75],
     routes: [
@@ -2779,7 +2771,7 @@ window.__mountainsBase = [
     trailhead: "椹島ロッジ",
     trailheadAddress: "静岡県静岡市葵区田代",
     parking: "畑薙第一ダム臨時駐車場（無料・シャトルバス乗換必須）",
-    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "4月〜6月・10月〜11月（12〜3月は12本必要）",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "10月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "65〜95", courseCoefficient: [65, 95],
     routes: [
@@ -2802,7 +2794,7 @@ window.__mountainsBase = [
     trailhead: "椹島ロッジ",
     trailheadAddress: "静岡県静岡市葵区田代",
     parking: "畑薙第一ダム臨時駐車場（無料・シャトルバス乗換必須）",
-    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "4月〜6月・10月〜11月（12〜3月は12本必要）",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "10月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "60〜90", courseCoefficient: [60, 90],
     routes: [
@@ -2826,7 +2818,7 @@ window.__mountainsBase = [
     trailhead: "便ヶ島（易老渡付近）",
     trailheadAddress: "静岡県浜松市天竜区水窪町",
     parking: "便ヶ島駐車場（約30台・無料）",
-    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "4月〜6月・10月〜11月（12〜3月は12本必要）",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "10月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "60〜85", courseCoefficient: [60, 85],
     routes: [
@@ -2849,8 +2841,7 @@ window.__mountainsBase = [
     trailhead: "易老渡",
     trailheadAddress: "長野県飯田市南信濃和田",
     parking: "易老渡手前駐車場（約30台・無料）",
-    season: "7月〜9月", seasonNoGear: "7月〜9月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・10月〜11月（12〜3月は12本必要）",
+    season: "7月〜9月", seasonNoGear: "7月〜9月", season6Crampons: "10月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "75〜95", courseCoefficient: [75, 95],
     routes: [
@@ -2873,8 +2864,7 @@ window.__mountainsBase = [
     trailhead: "折立",
     trailheadAddress: "富山県富山市有峰",
     parking: "折立駐車場（約250台・無料）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "中〜上級",
     courseCoefficientRange: "50〜75", courseCoefficient: [50, 75],
     routes: [
@@ -2898,8 +2888,7 @@ window.__mountainsBase = [
     trailhead: "折立または新穂高",
     trailheadAddress: "富山県富山市有峰",
     parking: "折立駐車場（約250台・無料）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "65〜90", courseCoefficient: [65, 90],
     routes: [
@@ -2963,8 +2952,7 @@ window.__mountainsBase = [
     driveTimeOmiya: 355,
     trailhead: "別当出合", trailheadAddress: "石川県白山市白峰",
     parking: "別当出合駐車場（約100台・無料）※夏季はシャトルバス",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "中級", courseCoefficientRange: "40〜55", courseCoefficient: [40, 55],
     routes: [
       { name: "別当出合〜砂防新道〜白山往復", time: "8時間", distance: "13.0km", elevation: "+1450m" },
@@ -2982,8 +2970,7 @@ window.__mountainsBase = [
     driveTimeOmiya: 315,
     trailhead: "刈田岳（蔵王エコーライン）", trailheadAddress: "宮城県刈田郡蔵王町遠刈田温泉",
     parking: "刈田岳山頂駐車場（約200台・無料）",
-    season: "6月〜10月", seasonNoGear: "6月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "11月・4月〜5月（12〜3月は12本推奨）",
+    season: "6月〜10月", seasonNoGear: "6月〜10月", season6Crampons: "11月〜5月",
     difficulty: "初〜中級", courseCoefficientRange: "6〜16", courseCoefficient: [6, 16],
     routes: [
       { name: "刈田岳〜熊野岳往復", time: "2時間", distance: "5.0km", elevation: "+200m" },
@@ -3030,7 +3017,7 @@ window.__mountainsBase = [
     trailhead: "戸台口（仙流荘）",
     trailheadAddress: "長野県伊那市長谷溝口",
     parking: "仙流荘前駐車場（無料）",
-    season: "6月〜10月", seasonNoGear: "6月〜10月", season6Crampons: "4月〜6月上旬・11月（12〜3月は12本必要）",
+    season: "6月〜10月", seasonNoGear: "6月〜10月", season6Crampons: "11月〜5月",
     difficulty: "上級",
     courseCoefficientRange: "45〜60", courseCoefficient: [45, 60],
     routes: [
@@ -3053,8 +3040,7 @@ window.__mountainsBase = [
     trailhead: "菅の台バスセンター",
     trailheadAddress: "長野県駒ヶ根市赤穂",
     parking: "菅の台バスセンター駐車場（有料・500円/日）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "42〜52", courseCoefficient: [42, 52],
     routes: [
@@ -3078,8 +3064,7 @@ window.__mountainsBase = [
     trailhead: "上高地バスターミナル",
     trailheadAddress: "長野県松本市安曇上高地",
     parking: "沢渡駐車場（有料・700円/日）＋バス",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "中級",
     courseCoefficientRange: "28〜40", courseCoefficient: [28, 40],
     routes: [
@@ -3103,8 +3088,7 @@ window.__mountainsBase = [
     trailhead: "中房温泉登山口",
     trailheadAddress: "長野県安曇野市穂高有明",
     parking: "有明荘駐車場（有料・1000円/日）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "42〜56", courseCoefficient: [42, 56],
     routes: [
@@ -3127,8 +3111,7 @@ window.__mountainsBase = [
     trailhead: "扇沢",
     trailheadAddress: "長野県大町市平扇沢",
     parking: "扇沢市営駐車場（無料）",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "中級",
     courseCoefficientRange: "28〜38", courseCoefficient: [28, 38],
     routes: [
@@ -3153,8 +3136,7 @@ window.__mountainsBase = [
     trailhead: "高瀬ダム（ブナ立尾根登山口）",
     trailheadAddress: "長野県大町市平",
     parking: "七倉駐車場（無料）＋タクシー",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "38〜50", courseCoefficient: [38, 50],
     routes: [
@@ -3178,8 +3160,7 @@ window.__mountainsBase = [
     trailhead: "高瀬ダム（ブナ立尾根登山口）",
     trailheadAddress: "長野県大町市平",
     parking: "七倉駐車場（無料）＋タクシー",
-    season: "7月〜10月", seasonNoGear: "7月〜10月",
-    season12Crampons: "12月〜3月", season6Crampons: "4月〜6月・11月（12〜3月は12本必要）",
+    season: "7月〜10月", seasonNoGear: "7月〜10月", season6Crampons: "11月〜6月",
     difficulty: "上級",
     courseCoefficientRange: "44〜58", courseCoefficient: [44, 58],
     routes: [
@@ -3345,7 +3326,7 @@ window.__mountainsBase = [
 const AREAS = ["すべて", "埼玉県", "千葉県", "山梨県", "新潟県", "東京都", "栃木県", "神奈川県", "福島県", "群馬県", "茨城県", "長野県北部", "長野県南部", "静岡県"];
 const CATEGORIES = ["すべて", "百名山", "二百名山", "人気の山"];
 
-const SORTS = ["おすすめ", "近い順", "標高順", "体力度順", "相性順"];
+const SORTS = ["おすすめ", "近い順", "標高順", "体力度順"];
 
 function parseTimeToMinutes(timeStr) {
   const hMatch = timeStr.match(/(\d+)時間/);
@@ -3526,7 +3507,7 @@ function GearBadge({ mountain, month }) {
   return <span style={{ display: "inline-flex", alignItems: "center", gap: "4px", background: "#f5e8e8", color: "#8a3030", borderRadius: "8px", padding: "3px 9px", fontSize: "12px", fontWeight: 700 }}>12本必要</span>;
 }
 
-function MountainDetail({ mountain, onBack, departure = "大船" }) {
+function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
   const [min, max] = mountain.courseCoefficient;
   const stars = max >= 45 ? 5 : max >= 35 ? 4 : max >= 25 ? 3 : max >= 15 ? 2 : 1;
   const now = new Date().getMonth() + 1;
@@ -3638,7 +3619,7 @@ function MountainDetail({ mountain, onBack, departure = "大船" }) {
           🔗 YAMAPで詳細を見る ↗
         </a>
         <button
-          onClick={() => window.open('https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform', '_blank')}
+          onClick={() => onReport(mountain.name)}
           className="flex items-center justify-center gap-1 px-4 rounded-xl font-bold text-sm"
           style={{ background: "#f5f0eb", color: "#7a6a58", border: "1px solid #ddd8d0", cursor: "pointer", whiteSpace: "nowrap" }}
         >
@@ -3708,9 +3689,6 @@ function canClimbNoGear(m, month) {
 }
 
 function canClimb6Crampons(m, month) {
-  // 12本必要な月は6本フィルターで除外
-  const months12 = parseMonthRange(m.season12Crampons);
-  if (months12 && months12.includes(month)) return false;
   const noGearMonths = parseMonthRange(m.seasonNoGear);
   if (noGearMonths === null) return true;
   if (noGearMonths.includes(month)) return true;
@@ -3720,25 +3698,174 @@ function canClimb6Crampons(m, month) {
 }
 
 // ===================== 掲示板コンポーネント =====================
-function App() {
-  const [mountains, setMountains] = useState(() => window.__mountainsBase || []);
+function FeedbackBoard({ onClose, initMountain = "" }) {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [form, setForm] = useState({ mountain: initMountain, category: "誤情報の指摘", body: "", name: "" });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
   useEffect(() => {
-    fetch('/data/mountains.json')
-      .then(function(r){ return r.json(); })
-      .then(function(data){
-        // mountains.jsonのseasonNoGear/season6Cramponsでindex.html側を上書き
-        const updated = (window.__mountainsBase || []).map(function(m) {
-          const jm = data.find(function(d){ return d.id === m.id; });
-          if (!jm) return m;
-          return Object.assign({}, m, {
-            seasonNoGear:    jm.seasonNoGear    !== undefined ? jm.seasonNoGear    : m.seasonNoGear,
-            season6Crampons: jm.season6Crampons !== undefined ? jm.season6Crampons : m.season6Crampons,
-          });
-        });
-        setMountains(updated);
-      })
-      .catch(function(){});
+    setForm({ mountain: initMountain, category: "誤情報の指摘", body: "", name: "" });
+    setError("");
+    setSuccess(false);
+  }, [initMountain]);
+
+  const CATEGORIES = ["誤情報の指摘", "情報の追加・補足", "ルートの提案", "その他"];
+
+  useEffect(() => {
+    setLoading(false);
   }, []);
+
+  const handleSubmit = () => {
+    if (!form.body.trim()) { setError("内容を入力してください"); return; }
+    if (form.body.length > 500) { setError("500文字以内で入力してください"); return; }
+    setError("");
+    setSubmitting(true);
+    const newPost = {
+      id: Date.now(),
+      mountain: form.mountain.trim() || "（山名未指定）",
+      category: form.category,
+      body: form.body.trim(),
+      name: form.name.trim() || "匿名",
+      date: new Date().toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }),
+    };
+    setPosts(prev => [newPost, ...prev]);
+    setForm({ mountain: "", category: "誤情報の指摘", body: "", name: "" });
+    setSuccess(true);
+    setTimeout(() => setSuccess(false), 3000);
+    setSubmitting(false);
+  };
+
+  const CATEGORY_COLOR = {
+    "誤情報の指摘": { bg: "#fce8e8", color: "#b04040", border: "#f5c0c0" },
+    "情報の追加・補足": { bg: "#e8f0e8", color: "#3a5a3a", border: "#b8d0b8" },
+    "ルートの提案": { bg: "#e8eef8", color: "#3a4a7a", border: "#b8c8e8" },
+    "その他": { bg: "#f0ede8", color: "#7a6a58", border: "#d8d0c8" },
+  };
+
+  return (
+    <div style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(0,0,0,0.45)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
+      <div style={{ background: "#faf8f5", borderRadius: "16px", width: "100%", maxWidth: "640px", maxHeight: "90vh", display: "flex", flexDirection: "column", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
+        {/* ヘッダー */}
+        <div style={{ padding: "20px 24px 16px", borderBottom: "1px solid #ddd8d0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div>
+            <h1 style={{ margin: 0, fontSize: "17px", fontWeight: 700, color: "#3a3530" }}>💬 改善提案・情報修正</h1>
+            <p style={{ margin: "4px 0 0", fontSize: "12px", color: "#a09888" }}>
+              {initMountain ? `「${initMountain}」について` : "誤情報の修正・ルートの提案など、お気づきの点をお寄せください"}
+            </p>
+          </div>
+          <button onClick={onClose} style={{ background: "none", border: "none", fontSize: "20px", cursor: "pointer", color: "#a09888", padding: "4px 8px" }}>✕</button>
+        </div>
+
+        <div style={{ flex: 1, overflowY: "auto", padding: "20px 24px" }}>
+          {/* 投稿フォーム */}
+          <div style={{ background: "#fff", border: "1px solid #ddd8d0", borderRadius: "12px", padding: "18px", marginBottom: "24px" }}>
+            <h3 style={{ margin: "0 0 14px", fontSize: "14px", fontWeight: 700, color: "#4a5e4a" }}>✏️ 書き込む</h3>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "10px" }}>
+              <div>
+                <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>山名（任意）</label>
+                <input
+                  value={form.mountain}
+                  onChange={e => setForm(f => ({ ...f, mountain: e.target.value }))}
+                  placeholder="例：安達太良山"
+                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
+                />
+              </div>
+              <div>
+                <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>種別</label>
+                <select
+                  value={form.category}
+                  onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
+                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none" }}
+                >
+                  {CATEGORIES.map(c => <option key={c}>{c}</option>)}
+                </select>
+              </div>
+            </div>
+
+            <div style={{ marginBottom: "10px" }}>
+              <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>
+                内容 <span style={{ color: "#b04040" }}>*</span>
+                <span style={{ float: "right", fontWeight: 400 }}>{form.body.length}/500</span>
+              </label>
+              <textarea
+                value={form.body}
+                onChange={e => setForm(f => ({ ...f, body: e.target.value }))}
+                placeholder="例：コース定数が違います。奥岳周回の正しい値は○○です。"
+                rows={4}
+                style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", resize: "vertical", boxSizing: "border-box", fontFamily: "inherit" }}
+              />
+            </div>
+
+            <div style={{ display: "flex", gap: "10px", alignItems: "flex-end" }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>ニックネーム（任意）</label>
+                <input
+                  value={form.name}
+                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                  placeholder="匿名"
+                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
+                />
+              </div>
+              <button
+                onClick={handleSubmit}
+                disabled={submitting || !form.body.trim()}
+                style={{ padding: "8px 20px", background: submitting || !form.body.trim() ? "#c0bab0" : "#4a5e4a", color: "#fff", border: "none", borderRadius: "7px", fontSize: "13px", fontWeight: 700, cursor: submitting || !form.body.trim() ? "not-allowed" : "pointer", whiteSpace: "nowrap" }}
+              >
+                {submitting ? "送信中…" : "投稿する"}
+              </button>
+            </div>
+
+            {error && <p style={{ margin: "8px 0 0", fontSize: "12px", color: "#b04040" }}>⚠️ {error}</p>}
+            {success && <p style={{ margin: "8px 0 0", fontSize: "12px", color: "#3a7a3a" }}>✅ 投稿しました！ありがとうございます。</p>}
+            <p style={{ margin: "10px 0 0", fontSize: "11px", color: "#a09888" }}>※ 書き込みはすべてのユーザーに表示されます</p>
+          </div>
+
+          {/* 投稿一覧 */}
+          <h3 style={{ margin: "0 0 14px", fontSize: "14px", fontWeight: 700, color: "#3a3530" }}>
+            書き込み一覧
+            {posts.length > 0 && <span style={{ marginLeft: "8px", fontSize: "12px", color: "#7a7068", fontWeight: 400 }}>{posts.length}件</span>}
+          </h3>
+
+          {loading ? (
+            <p style={{ textAlign: "center", color: "#a09888", fontSize: "13px", padding: "20px 0" }}>読み込み中…</p>
+          ) : posts.length === 0 ? (
+            <div style={{ textAlign: "center", padding: "32px 0", color: "#a09888" }}>
+              <div style={{ fontSize: "32px", marginBottom: "8px" }}>📝</div>
+              <p style={{ margin: 0, fontSize: "13px" }}>まだ書き込みがありません<br />気づいた点があればぜひ投稿してください</p>
+            </div>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {posts.map(post => {
+                const cc = CATEGORY_COLOR[post.category] || CATEGORY_COLOR["その他"];
+                return (
+                  <div key={post.id} style={{ background: "#fff", border: "1px solid #ddd8d0", borderRadius: "10px", padding: "14px 16px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px", flexWrap: "wrap" }}>
+                      <span style={{ fontSize: "11px", fontWeight: 700, padding: "2px 8px", borderRadius: "10px", background: cc.bg, color: cc.color, border: `1px solid ${cc.border}` }}>
+                        {post.category}
+                      </span>
+                      {post.mountain !== "（山名未指定）" && (
+                        <span style={{ fontSize: "12px", fontWeight: 700, color: "#4a5e4a" }}>🏔 {post.mountain}</span>
+                      )}
+                      <span style={{ marginLeft: "auto", fontSize: "11px", color: "#a09888" }}>{post.name} · {post.date}</span>
+                    </div>
+                    <p style={{ margin: 0, fontSize: "13px", color: "#3a3530", lineHeight: 1.7, whiteSpace: "pre-wrap" }}>{post.body}</p>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+// ===================== 掲示板ここまで =====================
+
+function App() {
   const [search, setSearch] = useState(() => { try { const _v = sessionStorage.getItem("ym_search"); return _v !== null ? JSON.parse(_v) : ""; } catch { return ""; } });
   const [sort, setSort] = useState(() => { try { const _v = sessionStorage.getItem("ym_sort"); return _v !== null ? JSON.parse(_v) : "近い順"; } catch { return "近い順"; } });
   const [area, setArea] = useState(() => { try { const _v = sessionStorage.getItem("ym_area"); return _v !== null ? JSON.parse(_v) : "すべて"; } catch { return "すべて"; } });
@@ -3749,12 +3876,6 @@ function App() {
     if (departure === "横浜" && m.driveTimeYokohama) return m.driveTimeYokohama;
     if (departure === "大宮" && m.driveTimeOmiya) return m.driveTimeOmiya;
     return m.driveTime;
-  };
-
-  const calcMatchScore = (m) => {
-    if (!ymType) return null;
-    const driveMin = getDriveTime(m);
-    return Math.max(0, Math.min(100, 100 - Math.floor(driveMin / 3.6)));
   };
   const [categoryFilter, setCategoryFilter] = useState(() => { try { const _v = sessionStorage.getItem("ym_category"); return _v !== null ? JSON.parse(_v) : "すべて"; } catch { return "すべて"; } });
   const [dayTripOnly, setDayTripOnly] = useState(() => { try { const _v = sessionStorage.getItem("ym_daytrip"); return _v !== null ? JSON.parse(_v) : false; } catch { return false; } });
@@ -3767,14 +3888,8 @@ function App() {
   const [filterOpen, setFilterOpen] = React.useState(false);
   const [quickOpen, setQuickOpen] = React.useState(false);
   const [matrixOpen, setMatrixOpen] = React.useState(false);
-  const [sortOpen, setSortOpen] = React.useState(false);
-  const [ymType, setYmType] = React.useState(() => { try { return localStorage.getItem("ym_type") || null; } catch { return null; } });
-  React.useEffect(() => { window.__openBoard = () => window.open('https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform', '_blank'); }, []);
-
-  const [favorites, setFavorites] = useState(() => { try { return new Set(JSON.parse(localStorage.getItem("ym_favorites")||"[]")); } catch { return new Set(); } });
-  const [climbed, setClimbed] = useState(() => { try { return new Map(JSON.parse(localStorage.getItem("ym_climbed")||"[]")); } catch { return new Map(); } });
-  const [favOnly, setFavOnly] = useState(false);
-  const [myTab, setMyTab] = useState(false);
+  const [showBoard, setShowBoard] = useState(false);
+  const [boardInitMountain, setBoardInitMountain] = useState("");
   const [selected, setSelected] = useState(null);
 
   
@@ -3796,22 +3911,6 @@ function App() {
     sessionStorage.setItem("ym_viewmode", JSON.stringify(viewMode));
     } catch {}
   }, [search, sort, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, viewMode]);
-  const toggleFav = (e, id) => {
-    e.preventDefault(); e.stopPropagation();
-    const next = new Set(favorites);
-    if (next.has(id)) next.delete(id); else next.add(id);
-    localStorage.setItem("ym_favorites", JSON.stringify([...next]));
-    setFavorites(next);
-  };
-  const toggleClimb = (e, id) => {
-    e.preventDefault(); e.stopPropagation();
-    const next = new Map(climbed);
-    if (next.has(id)) next.delete(id);
-    else next.set(id, new Date().toLocaleDateString("ja-JP", {year:"numeric",month:"2-digit",day:"2-digit"}));
-    localStorage.setItem("ym_climbed", JSON.stringify([...next]));
-    setClimbed(next);
-  };
-
   const getMountainUrl = (id) => {
     const special = { mizugatake: "mizugaki" };
     return "/mountains/" + (special[id] || id) + "/";
@@ -3822,7 +3921,6 @@ function App() {
 
   const filtered = useMemo(() => {
     let list = mountains.filter(m => {
-      if (favOnly && !favorites.has(m.id)) return false;
       const matchSearch = !search || m.name.includes(search) || m.kana.includes(search);
       const matchArea = area === "すべて" || m.area.includes(area);
       const matchCat = categoryFilter === "すべて" || m.category === categoryFilter;
@@ -3857,9 +3955,8 @@ function App() {
     else if (sort === "近い順") list = [...list].sort((a, b) => getDriveTime(a) - getDriveTime(b));
     else if (sort === "標高順") list = [...list].sort((a, b) => b.elevation - a.elevation);
     else if (sort === "体力度順") list = [...list].sort((a, b) => b.courseCoefficient[1] - a.courseCoefficient[1]);
-    else if (sort === "相性順" && ymType) list = [...list].sort((a, b) => (calcMatchScore(b)||0) - (calcMatchScore(a)||0));
     return list;
-  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure, favOnly, favorites, mountains]);
+  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure]);
 
   const btnActive = { backgroundColor: "#4a5e4a", color: "white", borderColor: "#4a5e4a" };
   const btnInactive = { backgroundColor: "white", color: "#5a5248", borderColor: "#ccc8c0" };
@@ -3868,34 +3965,31 @@ function App() {
     const mountain = mountains.find(m => m.id === selected);
     return (
       <div style={{ background: "#e8e0d5", minHeight: "100vh", fontFamily: "sans-serif" }}>
-              <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden",padding:"10px 16px 14px"}}>
+        {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
+        <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden"}} className="px-4 py-4">
           {/* 背景山シルエット */}
           <svg style={{position:"absolute",bottom:0,left:0,right:0,height:"50px",opacity:0.1,pointerEvents:"none",width:"100%"}} viewBox="0 0 390 50" fill="white" preserveAspectRatio="xMidYMax slice">
             <polygon points="0,50 0,30 50,14 90,24 130,6 170,20 210,3 250,18 290,8 330,22 390,10 390,50"/>
           </svg>
-          <div style={{maxWidth:"768px",margin:"0 auto"}}>
-            {/* ロゴ行: ロゴ＋ハンバーガー */}
-
-            <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"10px",position:"relative",zIndex:1}}>
+          <div className="max-w-3xl mx-auto">
+            {/* ロゴ行 */}
+            <div style={{display:"flex",alignItems:"center",gap:"9px",marginBottom:"16px",position:"relative",zIndex:1}}>
               <svg width="24" height="24" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
-              <h1 style={{fontFamily:"Georgia,serif",fontSize:"27px",fontWeight:"700",color:"white",lineHeight:1,margin:0,flex:1}}>Yamatch</h1>
-              <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"5px 7px",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center"}}>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>
-              </button>
-              <button onClick={() => { var m=document.getElementById("nav-menu"); var o=document.getElementById("nav-overlay"); if(m.style.display==="block"){m.style.display="none";o.style.display="none";}else{m.style.display="block";o.style.display="block";} }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.2)",color:"white",borderRadius:"8px",padding:"7px 9px",cursor:"pointer",display:"flex",flexDirection:"column",gap:"4px",flexShrink:0}}>
-                <span style={{display:"block",width:"16px",height:"2px",background:"white",borderRadius:"1px"}}/>
-                <span style={{display:"block",width:"16px",height:"2px",background:"white",borderRadius:"1px"}}/>
-                <span style={{display:"block",width:"16px",height:"2px",background:"white",borderRadius:"1px"}}/>
-              </button>
+              <div style={{flex:1}}>
+                <h1 style={{fontFamily:"Georgia,serif",fontSize:"23px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
+                
+              </div>
+              <a href="/about/" style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",textDecoration:"none",flexShrink:0}}>運営者</a>
+              <button onClick={() => setShowBoard(true)} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",cursor:"pointer",flexShrink:0}}>提案</button>
             </div>
             {/* キャッチコピー */}
-            <div style={{position:"relative",zIndex:1,marginBottom:"10px"}}>
-              <div style={{fontSize:"clamp(13px,3.5vw,18px)",fontWeight:"700",color:"white",lineHeight:1.35,letterSpacing:"-0.01em",marginBottom:"5px"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
-              <div style={{fontSize:"11px",color:"rgba(255,255,255,0.48)",lineHeight:1.65}}>コース定数やアクセス条件で絞り込める登山検索サイト</div>
+            <div style={{position:"relative",zIndex:1,marginBottom:"14px"}}>
+              <div style={{fontSize:"clamp(15px,4vw,20px)",fontWeight:"700",color:"white",lineHeight:1.35,letterSpacing:"-0.01em",marginBottom:"5px"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
+              <div style={{fontSize:"11px",color:"rgba(255,255,255,0.48)",lineHeight:1.65}}>アクセス時間・難易度・体力で絞り込める登山サーチ</div>
             </div>
             {/* 出発地タブ */}
             <div style={{position:"relative",zIndex:1}}>
-              <div style={{display:"flex",background:"rgba(0,0,0,0.18)",borderRadius:"10px",padding:"3px",marginBottom:"6px"}}>
+              <div style={{display:"flex",background:"rgba(0,0,0,0.18)",borderRadius:"10px",padding:"3px",marginBottom:"14px"}}>
                 {["大船","新宿","横浜","大宮"].map(d => (
                   <button key={d} onClick={() => setDeparture(d)}
                     style={{flex:1,textAlign:"center",fontSize:"12px",color:departure===d?"#2d4a28":"rgba(255,255,255,0.42)",background:departure===d?"white":"transparent",padding:"6px 4px",borderRadius:"7px",fontWeight:departure===d?"700":"500",border:"none",cursor:"pointer",transition:"all 0.15s"}}>
@@ -3906,8 +4000,8 @@ function App() {
             </div>
           </div>
         </header>
-        <main style={{maxWidth:"672px",margin:"0 auto",padding:"16px"}}>
-          <MountainDetail mountain={mountain} onBack={() => setSelected(null)} departure={departure} />
+        <main className="max-w-2xl mx-auto p-4">
+          <MountainDetail mountain={mountain} onBack={() => setSelected(null)} onReport={(name) => { setBoardInitMountain(name); setShowBoard(true); }} departure={departure} />
         </main>
       </div>
     );
@@ -3915,43 +4009,76 @@ function App() {
 
   return (
     <div style={{ background: "#e8e0d5", minHeight: "100vh", fontFamily: "sans-serif" }}>
+      {showBoard && <FeedbackBoard initMountain={boardInitMountain} onClose={() => { setShowBoard(false); setBoardInitMountain(""); }} />}
 
-      <header style={{background:"linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%)",position:"relative",overflow:"hidden",padding:"10px 16px 14px"}}>
-        <svg style={{position:"absolute",bottom:0,left:0,width:"100%",height:"52px",opacity:0.09,pointerEvents:"none"}} viewBox="0 0 1400 52" preserveAspectRatio="xMidYMax slice">
-          <path d="M0 52 L0 36 L70 22 L130 30 L190 12 L250 24 L310 6 L370 18 L430 4 L490 16 L550 6 L610 18 L670 8 L730 20 L790 10 L850 22 L910 12 L970 24 L1030 14 L1090 26 L1150 16 L1210 28 L1270 18 L1330 30 L1400 20 L1400 52 Z" fill="white" opacity="0.6"/>
-          <path d="M0 52 L0 42 L90 32 L160 38 L230 24 L300 34 L370 18 L440 28 L510 14 L580 26 L650 12 L720 24 L790 10 L860 22 L930 8 L1000 20 L1070 6 L1140 18 L1210 4 L1280 16 L1350 6 L1400 12 L1400 52 Z" fill="white"/>
-        </svg>
-        <div style={{maxWidth:"768px",margin:"0 auto"}}>
-          <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"10px",position:"relative",zIndex:1}}>
-            <svg width="24" height="24" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
-            <div style={{flex:1}}>
-              <h1 style={{fontFamily:"Georgia,serif",fontSize:"27px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
-              
+      <header style={{position:"relative",overflow:"hidden",minHeight:"280px"}}>
+        {/* ヒーロー写真背景 */}
+        <div style={{position:"absolute",inset:0,backgroundImage:"url('data:image/jpeg;base64,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')",backgroundSize:"cover",backgroundPosition:"center 40%",zIndex:0}}></div>
+        {/* グラデオーバーレイ：上部暗め→中央透明→下部暗め */}
+        <div style={{position:"absolute",inset:0,background:"linear-gradient(180deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.15) 45%,rgba(0,0,0,0.45) 100%)",zIndex:1}}></div>
+        {/* コンテンツ */}
+        <div style={{position:"relative",zIndex:2,maxWidth:"480px",margin:"0 auto",padding:"0"}}>
+          {/* トップバー：ロゴ＋バーガー */}
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"14px 16px 0"}}>
+            <div style={{display:"flex",alignItems:"center",gap:"7px"}}>
+              <svg width="22" height="22" viewBox="0 0 36 36"><polygon points="18,4 34,30 2,30" fill="#c8d8b0"/><polygon points="18,10 30,30 6,30" fill="#a8c090"/><polygon points="10,30 17,17 24,30" fill="#88a870"/></svg>
+              <h1 style={{fontFamily:"Georgia,serif",fontSize:"20px",fontWeight:"700",color:"#c8d8b0",lineHeight:1,margin:0,letterSpacing:"0.01em"}}>Yamatch</h1>
             </div>
-            <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"5px 7px",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center"}}>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>
+            <button onClick={() => setFilterOpen(!filterOpen)} style={{background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.25)",borderRadius:"8px",padding:"6px 10px",cursor:"pointer",display:"flex",alignItems:"center",gap:"3px"}}>
+              <span style={{fontSize:"16px",color:"white",letterSpacing:"1px",fontWeight:"700",lineHeight:1}}>···</span>
             </button>
-            
-            <button onClick={() => { var m=document.getElementById("ym-nav-menu"); var o=document.getElementById("ym-nav-overlay"); if(m.style.display==="block"){m.style.display="none";o.style.display="none";}else{m.style.display="block";o.style.display="block";} }} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.2)",color:"white",borderRadius:"8px",padding:"7px 9px",cursor:"pointer",display:"flex",flexDirection:"column",gap:"4px",flexShrink:0}}>
-              <span style={{display:"block",width:"16px",height:"2px",background:"white",borderRadius:"1px"}}/>
-              <span style={{display:"block",width:"16px",height:"2px",background:"white",borderRadius:"1px"}}/>
-              <span style={{display:"block",width:"16px",height:"2px",background:"white",borderRadius:"1px"}}/>
-            </button>
-
           </div>
-          <div style={{position:"relative",zIndex:1,marginBottom:"10px",display:"flex",alignItems:"flex-start",justifyContent:"space-between",gap:"8px"}}>
-            <div>
-              <div style={{fontSize:"clamp(13px,3.5vw,18px)",fontWeight:"700",color:"white",lineHeight:1.35,marginBottom:"5px"}}>出発地から、<span style={{color:"#b8e090",fontWeight:"800"}}>次登る山</span>を見つけよう</div>
-              <div style={{fontSize:"11px",color:"rgba(255,255,255,0.48)",lineHeight:1.65}}>コース定数やアクセス条件で絞り込める登山検索サイト</div>
+          {/* キャッチコピー */}
+          <div style={{textAlign:"center",padding:"28px 20px 20px"}}>
+            <div style={{fontSize:"clamp(18px,5vw,24px)",fontWeight:"700",color:"white",lineHeight:1.3,marginBottom:"8px",textShadow:"0 1px 8px rgba(0,0,0,0.5)"}}>出発地から、次登る山を見つけよう</div>
+            <div style={{fontSize:"12px",color:"rgba(255,255,255,0.82)",lineHeight:1.6,textShadow:"0 1px 4px rgba(0,0,0,0.5)"}}>コース定数やアクセス条件で絞り込める検索サイト</div>
+          </div>
+          {/* 検索バー */}
+          <div style={{padding:"0 16px 16px"}}>
+            <div style={{background:"white",borderRadius:"14px",padding:"10px 14px",display:"flex",alignItems:"center",gap:"10px",boxShadow:"0 4px 20px rgba(0,0,0,0.25)",maxWidth:"300px",margin:"0 auto"}}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4e6535" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input
+                type="text"
+                placeholder="山を検索"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                style={{flex:1,border:"none",outline:"none",fontSize:"14px",color:"#3a3530",background:"transparent",minWidth:0}}
+              />
+              {search && (
+                <button onClick={() => setSearch("")} style={{background:"none",border:"none",fontSize:"16px",color:"#a09888",cursor:"pointer",padding:"0",lineHeight:1,flexShrink:0}}>✕</button>
+              )}
             </div>
-
           </div>
-          <div style={{position:"relative",zIndex:1}}>
-            <div style={{display:"flex",background:"rgba(0,0,0,0.18)",borderRadius:"10px",padding:"3px",marginBottom:"6px"}}>
+          {/* 出発地タブ（ベージュ背景） */}
+          <div style={{background:"rgba(240,237,229,0.92)",padding:"10px 16px"}}>
+            <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:"8px"}}>
+              <span style={{fontSize:"11px",color:"#4e6535",fontWeight:"600"}}>📍 出発地</span>
+              {/* 登山時期 */}
+              <div style={{display:"flex",alignItems:"center",gap:"5px"}}>
+                <span style={{fontSize:"11px",color:"#7a7068",fontWeight:"500"}}>🗓 登山時期</span>
+                <div style={{position:"relative"}}>
+                  <select
+                    value={filterMonth}
+                    onChange={e => {
+                      var v = Number(e.target.value);
+                      setFilterMonth(v);
+                      try { sessionStorage.setItem("ym_month", JSON.stringify(v)); } catch{}
+                    }}
+                    style={{appearance:"none",WebkitAppearance:"none",padding:"4px 24px 4px 10px",borderRadius:"8px",border:"1px solid #ddd8d0",fontSize:"12px",background:"white",color:"#3a3530",cursor:"pointer",outline:"none",fontWeight:"600"}}
+                  >
+                    {[1,2,3,4,5,6,7,8,9,10,11,12].map(m => (
+                      <option key={m} value={m}>{m}月</option>
+                    ))}
+                  </select>
+                  <span style={{position:"absolute",right:"7px",top:"50%",transform:"translateY(-50%)",pointerEvents:"none",fontSize:"9px",color:"#7a7068"}}>▼</span>
+                </div>
+              </div>
+            </div>
+            <div style={{display:"flex",gap:"6px"}}>
               {["大船","新宿","横浜","大宮"].map(d => (
                 <button key={d} onClick={() => setDeparture(d)}
-                  style={{flex:1,textAlign:"center",fontSize:"12px",color:departure===d?"#2d4a28":"rgba(255,255,255,0.42)",background:departure===d?"white":"transparent",padding:"6px 4px",borderRadius:"7px",fontWeight:departure===d?"700":"500",border:"none",cursor:"pointer",transition:"all 0.15s"}}>
-                  {d}駅
+                  style={{flex:1,textAlign:"center",fontSize:"12px",fontWeight:departure===d?"700":"500",color:departure===d?"white":"#5a5248",background:departure===d?"#4e6535":"white",padding:"7px 4px",borderRadius:"8px",border:departure===d?"none":"1px solid #ddd8d0",cursor:"pointer",transition:"all 0.15s"}}>
+                  {d}
                 </button>
               ))}
             </div>
@@ -3959,27 +4086,55 @@ function App() {
         </div>
       </header>
 
-      <main style={{maxWidth:"768px",margin:"0 auto",padding:"12px 16px 80px"}}>
+      <main className="max-w-3xl mx-auto p-4">
 
-        {/* 診断バナー */}
-        <a href="/recommend/" style={{display:"flex",alignItems:"center",gap:"10px",background:"#c8d4b8",border:"1px solid #a8b898",borderRadius:"12px",padding:"10px 12px",marginBottom:"8px",textDecoration:"none"}}>
-          {/* 方位磁石アイコン */}
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2a4020" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
-            <circle cx="12" cy="12" r="10"/>
-            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
-          </svg>
-          {/* テキスト */}
-          <div style={{flex:1,minWidth:0}}>
-            <div style={{fontSize:"10px",fontWeight:"800",color:"#2a4020",letterSpacing:"0.04em",marginBottom:"3px"}}>登山タイプ診断</div>
-            {ymType && <div style={{fontSize:"10px",fontWeight:"700",color:"#5a6848",marginBottom:"2px"}}>診断済み：<b style={{color:"#2a4020"}}>{ymType}型</b> · 山カードに相性%を表示中</div>}
-            <div style={{fontSize:"13px",fontWeight:"700",color:"#2a3020",lineHeight:1.3}}>{ymType ? "もう一度診断する" : "16タイプ診断・あなたはどのタイプ？"}</div>
-            <div style={{fontSize:"11px",color:"#6a7858",marginTop:"1px"}}>9問・約1分・完全無料</div>
+        {/* クイックフィルター */}
+        <div style={{display:"flex",gap:"6px",overflowX:"auto",WebkitOverflowScrolling:"touch",paddingBottom:"2px",marginBottom:"10px"}}>
+          {[
+            {label:"🚃 電車",key:"train",active:trainOnly,onClick:()=>setTrainOnly(!trainOnly)},
+            {label:"🌅 日帰り",key:"daytrip",active:dayTripOnly,onClick:()=>setDayTripOnly(!dayTripOnly)},
+            {label:"🥾 初心者",key:"beginner",active:categoryFilter==="人気の山"&&!dayTripOnly,onClick:()=>setCategoryFilter(categoryFilter==="人気の山"?"すべて":"人気の山")},
+            {label:"⛏ アイゼン不要",key:"nogear",active:cramponsFilter==="アイゼン不要",onClick:()=>setCramponsFilter(cramponsFilter==="アイゼン不要"?"すべて":"アイゼン不要")},
+            {label:"🏔 百名山",key:"100",active:categoryFilter==="百名山",onClick:()=>setCategoryFilter(categoryFilter==="百名山"?"すべて":"百名山")},
+          ].map(chip => (
+            <button key={chip.key} onClick={chip.onClick} style={{
+              whiteSpace:"nowrap",fontSize:"12px",padding:"7px 13px",borderRadius:"20px",
+              border:"none",cursor:"pointer",flexShrink:0,
+              background:chip.active?"#4e6535":"white",
+              color:chip.active?"white":"#5a5248",
+              fontWeight:chip.active?"700":"500",
+              boxShadow:"0 1px 3px rgba(0,0,0,0.08)",
+            }}>{chip.label}</button>
+          ))}
+        </div>
+
+        {/* 診断＋こんな人におすすめ 統合バナー */}
+        <div style={{background:"#c8d4b8",border:"1px solid #a8b898",borderRadius:"12px",padding:"13px 14px",marginBottom:"8px"}}>
+          <div style={{marginBottom:"7px"}}>
+            <div style={{fontSize:"9px",fontWeight:"700",letterSpacing:"0.08em",color:"#5a6848",marginBottom:"2px"}}>登山タイプ診断</div>
+            <div style={{fontSize:"14px",fontWeight:"700",color:"#2a3020",lineHeight:1.25,marginBottom:"2px"}}>16タイプ診断・あなたはどのタイプ？</div>
+            <div style={{fontSize:"10px",color:"#6a7858"}}>9問・約1分・完全無料・おすすめの山も提案</div>
           </div>
-          {/* 右矢印 */}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5a7848" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0,opacity:0.7}}>
-            <polyline points="9 18 15 12 9 6"/>
-          </svg>
-        </a>
+          <div style={{fontSize:"9px",fontWeight:"600",color:"#5a6848",marginBottom:"4px"}}>こんな人におすすめ</div>
+          <div style={{display:"flex",gap:"5px",flexWrap:"nowrap",marginBottom:"9px",overflow:"hidden"}}>
+            {["初めての登山","日帰りで行きたい","電車で行きたい"].map(text => (
+              <span key={text} style={{fontSize:"9px",color:"#2a3020",background:"rgba(0,0,0,0.1)",padding:"2px 8px",borderRadius:"20px",whiteSpace:"nowrap"}}>{text}</span>
+            ))}
+          </div>
+          <a href="/recommend/" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",background:"#3a5030",color:"white",fontSize:"13px",fontWeight:"700",padding:"10px",borderRadius:"9px",textDecoration:"none"}}>
+            診断する →
+          </a>
+        </div>
+
+        {/* 記事（横スクロールチップ） */}
+        <div style={{display:"flex",gap:"7px",overflowX:"auto",marginBottom:"8px",WebkitOverflowScrolling:"touch",paddingBottom:"2px"}}>
+          <a href="/articles/kanto-day-trip-100/" style={{background:"#faf8f5",border:"1px solid #ddd8d0",borderRadius:"20px",padding:"6px 12px",fontSize:"11px",fontWeight:"500",color:"#5a5248",whiteSpace:"nowrap",flexShrink:0,textDecoration:"none"}}>📖 関東発・日帰り百名山10選</a>
+          <a href="/articles/train-access-mountains/" style={{background:"#faf8f5",border:"1px solid #ddd8d0",borderRadius:"20px",padding:"6px 12px",fontSize:"11px",fontWeight:"500",color:"#5a5248",whiteSpace:"nowrap",flexShrink:0,textDecoration:"none"}}>🚃 電車で行ける登山10選</a>
+        </div>
+
+  
+
+
 
         {/* 検索バー */}
         <div style={{marginBottom:"8px",display:"flex",gap:"8px",alignItems:"center"}}>
@@ -3988,11 +4143,10 @@ function App() {
             placeholder="🔍 山名で検索"
             value={search}
             onChange={e => setSearch(e.target.value)}
-            style={{flex:1,padding:"10px 14px 10px 34px",borderRadius:"11px",border:"1px solid #e0dbd4",fontSize:"13px",boxSizing:"border-box",outline:"none",background:"white url(\"data:%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2216%22 height%3D%2216%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22%23c8c0b8%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22%3E%3Ccircle cx%3D%2211%22 cy%3D%2211%22 r%3D%228%22%2F%3E%3Cline x1%3D%2221%22 y1%3D%2221%22 x2%3D%2216.65%22 y2%3D%2216.65%22%2F%3E%3C%2Fsvg%3E\") no-repeat 10px center",color:"#3a3530"}}
+            style={{flex:1,padding:"10px 14px",borderRadius:"11px",border:"1px solid #e0dbd4",fontSize:"13px",boxSizing:"border-box",outline:"none",background:"white",color:"#3a3530"}}
           />
           {/* 月ピッカー */}
           <div style={{position:"relative",flexShrink:0}}>
-            <div style={{position:"absolute",top:"4px",left:0,right:"24px",textAlign:"center",fontSize:"9px",fontWeight:"600",color:"#9a8870",letterSpacing:"0.02em",pointerEvents:"none",lineHeight:1}}>登山時期</div>
             <select
               value={filterMonth}
               onChange={e => {
@@ -4002,53 +4156,53 @@ function App() {
                 setSort("おすすめ");
                 sessionStorage.setItem("ym_sort", JSON.stringify("おすすめ"));
               }}
-              style={{appearance:"none",WebkitAppearance:"none",padding:"16px 28px 6px 10px",borderRadius:"11px",border:"1px solid #e0dbd4",fontSize:"13px",background:"white",color:"#3a3530",cursor:"pointer",outline:"none",fontWeight:"600",height:"44px"}}
+              style={{appearance:"none",WebkitAppearance:"none",padding:"10px 32px 10px 12px",borderRadius:"11px",border:"1px solid #e0dbd4",fontSize:"13px",background:"white",color:"#3a3530",cursor:"pointer",outline:"none",fontWeight:"500"}}
             >
               {[1,2,3,4,5,6,7,8,9,10,11,12].map(m => (
                 <option key={m} value={m}>{m}月</option>
               ))}
             </select>
-            <span style={{position:"absolute",right:"8px",bottom:"10px",pointerEvents:"none",fontSize:"9px",color:"#7a7068"}}>▼</span>
+            <span style={{position:"absolute",right:"10px",top:"50%",transform:"translateY(-50%)",pointerEvents:"none",fontSize:"10px",color:"#7a7068"}}>▼</span>
           </div>
         </div>
 
-        {/* 絞り込み＋並び替え 1行 */}
-        <div style={{display:"flex",alignItems:"center",gap:0,marginBottom:"8px",background:"white",border:"1px solid #e0dbd4",borderRadius:"10px",overflow:"visible",position:"relative"}}>
-          <button onClick={() => setFilterOpen(!filterOpen)} style={{
-            display:"flex",alignItems:"center",gap:"5px",
-            background:filterOpen?"#2e4820":"#344f2c",color:"white",
-            fontSize:"12px",fontWeight:"700",padding:"8px 12px",
-            borderRadius:"9px 0 0 9px",whiteSpace:"nowrap",cursor:"pointer",border:"none",flex:1,
-          }}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-            絞り込み
-            <span style={{fontSize:"10px",color:"rgba(255,255,255,0.65)",marginLeft:"1px"}}>{filtered.length}件</span>
-          </button>
-          <div style={{width:"1px",height:"18px",background:"rgba(255,255,255,0.3)",flexShrink:0}}></div>
-          <button onClick={e => { e.stopPropagation(); setSortOpen(v => !v); }}
-            style={{display:"flex",alignItems:"center",gap:"5px",padding:"8px 12px",fontSize:"12px",fontWeight:"600",color:"white",cursor:"pointer",background:filterOpen?"#2e4820":"#344f2c",border:"none",whiteSpace:"nowrap",flexShrink:0,borderRadius:"0 9px 9px 0"}}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
-              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="9" y2="18"/>
-            </svg>
-            {sort}
-            <svg style={{opacity:0.6}} width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          {sortOpen && (
-            <div style={{position:"absolute",top:"calc(100% + 6px)",right:0,background:"white",borderRadius:"12px",boxShadow:"0 4px 24px rgba(0,0,0,0.15)",border:"1px solid #e8e4dc",zIndex:500,minWidth:"160px",overflow:"hidden"}}>
-              {SORTS.map(s => (
-                <button key={s} onClick={() => { setSort(s); sessionStorage.setItem("ym_sort", JSON.stringify(s)); setSortOpen(false); }}
-                  style={{display:"flex",alignItems:"center",justifyContent:"space-between",width:"100%",padding:"11px 16px",fontSize:"13px",fontWeight:sort===s?"700":"500",color:sort===s?"#344f2c":(s==="相性順"&&!ymType?"#b0a898":"#3a3530"),background:sort===s?"#f0f5ec":"white",border:"none",borderBottom:"1px solid #f5f3ef",cursor:"pointer",fontFamily:"inherit"}}>
-                  <span>{s}{s==="相性順"&&!ymType&&<span style={{fontSize:"10px",color:"#b0a898",marginLeft:"4px"}}>診断後に使える</span>}</span>
-                  {sort===s&&<span style={{fontSize:"12px",color:"#344f2c"}}>✓</span>}
-                </button>
-              ))}
-            </div>
-          )}
+        {/* 並び替えボタン */}
+        <div style={{display:"flex",gap:"6px",marginBottom:"6px",overflowX:"auto",WebkitOverflowScrolling:"touch",paddingBottom:"2px"}}>
+          <span style={{fontSize:"12px",color:"#7a7068",whiteSpace:"nowrap",alignSelf:"center",flexShrink:0}}>並び替え:</span>
+          {SORTS.map(s => (
+            <button key={s} onClick={() => { setSort(s); sessionStorage.setItem("ym_sort", JSON.stringify(s)); }} style={{
+              whiteSpace:"nowrap", fontSize:"12px", padding:"6px 13px",
+              borderRadius:"20px", border:"none", cursor:"pointer", flexShrink:0,
+              background: sort === s ? "#4a5e4a" : "#f0ede5",
+              color: sort === s ? "white" : "#5a5248",
+              fontWeight: sort === s ? "700" : "500",
+            }}>{s}</button>
+          ))}
         </div>
 
-        {/* フィルターパネル */}
+        {/* フィルタートグル */}
         <div>
-          <button onClick={() => setFilterOpen(!filterOpen)} style={{display:"none"}}></button>
+          <button onClick={() => setFilterOpen(!filterOpen)} style={{
+            display:"flex", alignItems:"center", justifyContent:"space-between",
+            background: filterOpen ? "#3a4e3a" : "#4a5e4a",
+            border:"none", borderRadius:"22px",
+            padding:"9px 16px", cursor:"pointer", width:"100%",
+          }}>
+            <div style={{display:"flex",alignItems:"center",gap:"8px",fontSize:"13px",color:"white",fontWeight:"700"}}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+              絞り込み
+              <div style={{display:"flex",gap:"4px",flexWrap:"wrap"}}>
+                {dayTripOnly && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>日帰り</span>}
+                {trainOnly && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>電車OK</span>}
+                {categoryFilter !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{categoryFilter}</span>}
+                {area !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{area}</span>}
+                {driveTimeFilter && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{driveTimeFilter/60}h以内</span>}
+                {courseFilter && courseFilter.length > 0 && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>体力度{courseFilter[0]}</span>}
+                {cramponsFilter && cramponsFilter !== "すべて" && <span style={{fontSize:"10px",padding:"2px 7px",borderRadius:"20px",background:"rgba(255,255,255,0.25)",color:"white",fontWeight:"600"}}>{cramponsFilter}</span>}
+              </div>
+            </div>
+            <span style={{fontSize:"11px",color:"white",display:"inline-block",transform:filterOpen?"rotate(180deg)":"rotate(0deg)",transition:"transform 0.25s"}}>▼</span>
+          </button>
           {filterOpen && <div style={{background:"white",border:"1.5px solid #ddd8d0",borderRadius:"14px",padding:"12px",marginTop:"6px"}}>
         {/* フィルターチップ */}
           {(() => {
@@ -4083,7 +4237,6 @@ function App() {
                   <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content" }}>
                     <button onClick={() => setDayTripOnly(!dayTripOnly)} style={chip(dayTripOnly)}>🌅 日帰り</button>
                     <button onClick={() => setTrainOnly(!trainOnly)} style={chip(trainOnly)}>🚃 電車OK</button>
-                    <button onClick={() => setFavOnly(!favOnly)} style={chip(favOnly)}>⭐ お気に入り</button>
                   </div>
                 </div>
 
@@ -4200,7 +4353,7 @@ function App() {
                   // アイゼンバッジ（選択月）
                   const noGear = canClimbNoGear(m, activeMonth);
                   const sixOk  = canClimb6Crampons(m, activeMonth);
-                  const cramponLabel = noGear ? "アイゼン不要" : sixOk ? "6本アイゼン" : "12本アイゼン";
+                  const cramponLabel = noGear ? "🥾 不要" : sixOk ? "🥾 6本" : "🥾 12本";
                   const cramponBg    = noGear ? "#e4f0e8" : sixOk ? "#f5f0e0" : "#f0e4e4";
                   const cramponColor = noGear ? "#2a5838" : sixOk ? "#7a5a20" : "#6a3030";
 
@@ -4217,44 +4370,6 @@ function App() {
                       }}
                       onMouseEnter={e => e.currentTarget.style.opacity = "0.85"}
                       onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
-                      {/* ☆お気に入りボタン（右上） */}
-                      {(() => {
-                        const isFav = favorites.has(m.id);
-                        const matchPct = calcMatchScore(m);
-                        return (
-                          <div style={{position:"absolute",top:"7px",right:"7px",zIndex:2,display:"flex",flexDirection:"column",alignItems:"flex-end",gap:"3px"}}>
-                            {matchPct !== null && (
-                              <div style={{fontSize:"9px",fontWeight:"700",background:matchPct>=70?"#e8f5e0":"#f5f5f0",color:matchPct>=70?"#2a6020":"#8a8078",borderRadius:"8px",padding:"1px 5px",lineHeight:"1.4"}}>
-                                {matchPct}%
-                              </div>
-                            )}
-                            <button
-                              onClick={e => {
-                                e.preventDefault(); e.stopPropagation();
-                                const next = new Set(favorites);
-                                if(next.has(m.id)) next.delete(m.id); else next.add(m.id);
-                                localStorage.setItem("ym_favorites", JSON.stringify([...next]));
-                                setFavorites(next);
-                                const btn = e.currentTarget;
-                                btn.style.transform = "scale(1.5)";
-                                btn.style.transition = "transform 0.15s";
-                                setTimeout(() => { btn.style.transform = "scale(1)"; }, 150);
-                              }}
-                              style={{
-                                background: isFav ? "rgba(255,200,50,0.25)" : "rgba(255,255,255,0.55)",
-                                border: isFav ? "1px solid rgba(255,180,0,0.4)" : "1px solid rgba(0,0,0,0.08)",
-                                borderRadius: "50%",
-                                width: "24px", height: "24px",
-                                display: "flex", alignItems: "center", justifyContent: "center",
-                                fontSize: "13px", cursor: "pointer", padding: 0,
-                                backdropFilter: "blur(4px)",
-                                transition: "background 0.2s, border 0.2s",
-                              }}>
-                              {isFav ? "⭐" : "☆"}
-                            </button>
-                          </div>
-                        );
-                      })()}
                       {/* 背景SVG山シルエット */}
                       <svg style={{
                         position: "absolute", right: "-8px", bottom: "-4px",
@@ -4289,7 +4404,7 @@ function App() {
                           </span>
                         )}
                         <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "500", background: dayTrip ? "rgba(200,235,210,0.8)" : "rgba(250,230,190,0.8)", color: dayTrip ? "#1e5a2e" : "#7a4800" }}>
-                          {dayTrip ? "日帰り" : "宿泊"}
+                          {dayTrip ? "🌅 日帰り" : "🏕 宿泊"}
                         </span>
                         {m.trainAccess && (
                           <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "500", background: "rgba(200,220,245,0.8)", color: "#1a4878" }}>
@@ -4303,7 +4418,6 @@ function App() {
                           {cramponLabel}
                         </span>
                       </div>
-                      
                     </a>
                   );
                 })}
@@ -4319,40 +4433,32 @@ function App() {
             />
           )}
       </main>
-      {/* ボトムナビ */}
-      <nav style={{position:"fixed",bottom:0,left:0,right:0,background:"white",borderTop:"1px solid #ece8e0",display:"flex",height:"56px",zIndex:1000,paddingBottom:"env(safe-area-inset-bottom,0px)"}}>
-        {[
-          { id:"search", label:"探す", path:"/", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg> },
-          { id:"diag", label:"診断", path:"/recommend/", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> },
-          { id:"articles", label:"記事", path:"/articles/", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="13" y2="11"/></svg> },
-          { id:"mypage", label:"マイページ", path:"/mypage/", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> },
-        ].map(tab => {
-          const isActive = tab.id === "search";
-          return (
-            <a key={tab.id} href={tab.path} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"3px",textDecoration:"none",position:"relative",cursor:"pointer"}}>
-              {isActive && <div style={{position:"absolute",bottom:0,left:"18%",right:"18%",height:"2.5px",background:"linear-gradient(90deg,#5a8040,#2e4820)",borderRadius:"2px 2px 0 0"}}></div>}
-              <div style={{height:"22px",display:"flex",alignItems:"center",justifyContent:"center",color:isActive?"#344f2c":"#c0b8b0"}}>
-                {tab.icon}
-              </div>
-              <div style={{fontSize:"10px",color:isActive?"#344f2c":"#b0a898",fontWeight:isActive?"700":"500"}}>{tab.label}</div>
-            </a>
-          );
-        })}
-      </nav>
-
-      <footer style={{ textAlign: "center", padding: "20px 16px", fontSize: "12px", color: "#a09888", borderTop: "1px solid #e8e4dc", marginTop: "8px" }}>
-        <p style={{ fontSize: "11px", color: "#a09888", lineHeight: "1.8", maxWidth: "480px", margin: "0 auto", wordBreak: "auto-phrase" }}>Yamatchは、コース定数・都道府県・アクセス時間・日帰り可否・アイゼン要否・電車アクセスなどの条件から登山を探せる検索サービスです。</p>
-        <p style={{ marginTop: "6px" }}>
-          <a href="/about/" style={{ color: "#7a9a7a" }}>運営者</a>
-          <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
-          <a href="/terms/" style={{ color: "#7a9a7a" }}>利用規約</a>
-          <span style={{ margin: "0 8px", opacity: 0.4 }}>|</span>
-          <a href="/privacy/" style={{ color: "#7a9a7a" }}>プライバシーポリシー</a>
+      <footer style={{textAlign:"center",padding:"20px 16px 88px",fontSize:"12px",color:"#a09888",borderTop:"1px solid #e8e4dc",marginTop:"8px"}}>
+        <p style={{fontWeight:"600",color:"#7a7068",marginBottom:"6px"}}>Yamatch</p>
+        <p style={{lineHeight:1.7,marginBottom:"6px"}}>出発地から登る山を探せる登山サーチ。<br/>コース定数・アクセス・アイゼン情報で絞り込み。</p>
+        <p>
+          <a href="/about/" style={{color:"#7a9a7a"}}>運営者</a>
+          <span style={{margin:"0 8px",opacity:0.4}}>|</span>
+          <a href="/terms/" style={{color:"#7a9a7a"}}>利用規約</a>
+          <span style={{margin:"0 8px",opacity:0.4}}>|</span>
+          <a href="/privacy/" style={{color:"#7a9a7a"}}>プライバシーポリシー</a>
         </p>
-        <p style={{ marginTop: "8px", opacity: 0.6 }}>© 2026 Yamatch. All rights reserved.</p>
-</footer>
-      {/* ボトムナビ分スペーサー */}
-      <div style={{height:"56px"}}></div>
+        <p style={{marginTop:"8px",opacity:0.6}}>© 2026 Yamatch. All rights reserved.</p>
+      </footer>
+      {/* ボトムナビ */}
+      <nav style={{position:"fixed",bottom:0,left:0,right:0,background:"white",borderTop:"1px solid #e8e4dc",display:"flex",zIndex:100,boxShadow:"0 -2px 12px rgba(0,0,0,0.08)"}}>
+        {[
+          {icon:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,label:"ホーム",href:"/",active:true},
+          {icon:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>,label:"診断",href:"/recommend/",active:false},
+          {icon:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>,label:"記事",href:"/articles/",active:false},
+          {icon:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,label:"マイページ",href:"/mypage/",active:false},
+        ].map(item => (
+          <a key={item.label} href={item.href} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"8px 4px 10px",textDecoration:"none",color:item.active?"#4e6535":"#a09888",gap:"3px"}}>
+            <span style={{color:item.active?"#4e6535":"#a09888"}}>{item.icon}</span>
+            <span style={{fontSize:"10px",fontWeight:item.active?"700":"500"}}>{item.label}</span>
+          </a>
+        ))}
+      </nav>
     </div>
   );
 }
@@ -4383,13 +4489,4 @@ fetch('/data/mountains.json')
     const _sk=document.getElementById('app-skeleton');if(_sk)_sk.style.display='none';
   });
 
-</script>
-
-
-<div id="ym-nav-overlay" onclick="document.getElementById('ym-nav-menu').style.display='none';this.style.display='none';" style="display:none;position:fixed;inset:0;z-index:9997;background:transparent;"></div>
-<div id="ym-nav-menu" style="display:none;position:fixed;top:56px;right:16px;background:#ffffff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.25);z-index:9999;min-width:220px;overflow:hidden;border:1px solid #e0dbd4;">
-  <button onclick="window.location.href='/mypage/';" style="display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:14px;font-weight:600;color:#3a3530;background:none;border:none;cursor:pointer;width:100%;border-bottom:1px solid #f0ede5;font-family:inherit;text-align:left;">📋 Myページ</button>
-  <button onclick="window.location.href='/about/';" style="display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:14px;font-weight:600;color:#3a3530;background:none;border:none;cursor:pointer;width:100%;border-bottom:1px solid #f0ede5;font-family:inherit;text-align:left;">👤 運営者</button>
-  <button onclick="document.getElementById('ym-nav-menu').style.display='none';document.getElementById('ym-nav-overlay').style.display='none';window.open('https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform','_blank');" style="display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:14px;font-weight:600;color:#3a3530;background:none;border:none;cursor:pointer;width:100%;font-family:inherit;text-align:left;">💬 改善提案・お問い合わせ</button>
-</div>
-</body></html>
+</script></body></html>

@@ -32,9 +32,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
@@ -105,9 +105,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月・4月（1〜3月は12本必要）"
+    ]
   },
   {
     "id": "fuji",
@@ -221,9 +219,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月上旬",
-    "season6Crampons": "不可（残雪期は12本必要）"
+    ]
   },
   {
     "id": "tsukuba",
@@ -233,17 +229,18 @@
     "category": "百名山",
     "difficulty": "初級",
     "coeffMin": 8,
-    "coeffMax": 24,
+    "coeffMax": 17,
     "daytrip": true,
     "trainAccess": false,
-    "driveOfuna": 150,
-    "driveShinjuku": 110,
+    "driveOfuna": 120,
+    "driveShinjuku": 150,
     "driveYokohama": 120,
-    "driveOmiya": 120,
+    "driveOmiya": 85,
     "description": "百名山最低峰。ケーブルカー・ロープウェイあり。山頂からは関東平野を一望。",
     "yamapUrl": "https://yamap.com/mountains/90",
     "busLinks": [
-      "https://transit.yahoo.co.jp/search/result?from=新宿&to=つくば駅&type=1"
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=つくば駅&type=1",
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=伊勢原駅&type=1"
     ],
     "warnBanner": null,
     "nearby": [],
@@ -262,10 +259,6 @@
       "winter"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -273,7 +266,11 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard"
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
     ],
     "calLegend": [
       "アイゼン不要"
@@ -284,7 +281,8 @@
     "gmapUrl": "https://google.com/maps/search/筑波山神社/@36.2255,140.1065,16z",
     "amapUrl": "https://maps.apple.com/?ll=36.2255,140.1065&q=筑波山神社",
     "busScheduleLinks": [
-      "https://www.kantetsu.co.jp/bus/tourist/mttsukuba"
+      "https://www.kantetsu.co.jp/bus/rosen/rosen.html",
+      "https://www.kanachu.co.jp/dia/diagram/start=CS000097_1&noriba=0"
     ],
     "gearLinks": [
       {
@@ -336,10 +334,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "なし",
-    "cc": "0〜24"
+    ]
   },
   {
     "id": "kumotori",
@@ -349,13 +344,13 @@
     "category": "百名山",
     "difficulty": "中級",
     "coeffMin": 43,
-    "coeffMax": 70,
+    "coeffMax": 54,
     "daytrip": true,
     "trainAccess": true,
     "driveOfuna": 130,
-    "driveShinjuku": 120,
-    "driveYokohama": 140,
-    "driveOmiya": 150,
+    "driveShinjuku": 130,
+    "driveYokohama": 120,
+    "driveOmiya": 110,
     "description": "東京都最高峰。奥多摩を代表する名峰で、ブナ林の縦走路が美しい。",
     "yamapUrl": "https://yamap.com/mountains/25",
     "busLinks": [
@@ -381,7 +376,7 @@
       "s-gear",
       "s-gear",
       "s-gear",
-      "s-ok",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -395,13 +390,13 @@
       "アイゼン不要",
       "6本アイゼンで可"
     ],
-    "trailhead": "鴨沢ルート登山口",
-    "parking": "雲取山駐車場（約30台・無料・トイレあり）",
+    "trailhead": "鴨沢",
+    "parking": "鴨沢駐車場（約15台・無料）",
     "address": "東京都西多摩郡奥多摩町留浦",
-    "gmapUrl": "https://www.google.com/maps/place/%E9%B4%A8%E6%B2%A2%E3%83%AB%E3%83%BC%E3%83%88+%E7%99%BB%E5%B1%B1%E5%8F%A3+(%E9%9B%B2%E5%8F%96%E5%B1%B1%E3%80%9C%E5%B0%8F%E8%A2%96%E9%A7%90%E8%BB%8A%E5%A0%B4)/@35.7874216,138.9733084,17z/data=!3m1!4b1!4m6!3m5!1s0x601949e36366a4a1:0x3b2f8299d35ffacd!8m2!3d35.7874216!4d138.9758833!16s%2Fg%2F11t_v03hcn?authuser=0&entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+    "gmapUrl": "https://google.com/maps/search/鴨沢/@35.8558,138.9433,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.8558,138.9433&q=鴨沢",
     "busScheduleLinks": [
-      "https://www.nisitokyobus.co.jp/wp/wp-content/uploads/2026/03/20260401_hiking_Okutama.pdf"
+      "https://www.nisitokyobus.co.jp/rosen/noriba/okutama.html"
     ],
     "gearLinks": [
       {
@@ -453,10 +448,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "4月下旬〜11月",
-    "season6Crampons": "12月〜3月（チェーンスパイク推奨）",
-    "cc": "43〜70"
+    ]
   },
   {
     "id": "amagi",
@@ -465,14 +457,14 @@
     "elevation": 1406,
     "category": "百名山",
     "difficulty": "初〜中級",
-    "coeffMin": 17,
-    "coeffMax": 29,
+    "coeffMin": 12,
+    "coeffMax": 20,
     "daytrip": true,
     "trainAccess": false,
     "driveOfuna": 150,
-    "driveShinjuku": 180,
-    "driveYokohama": 160,
-    "driveOmiya": 200,
+    "driveShinjuku": 185,
+    "driveYokohama": 145,
+    "driveOmiya": 195,
     "description": "伊豆半島の最高峰。シャクナゲの群生地として有名。川端康成の小説の舞台。",
     "yamapUrl": "https://yamap.com/mountains/179",
     "busLinks": [],
@@ -564,10 +556,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし",
-    "cc": "17〜29"
+    ]
   },
   {
     "id": "okutama",
@@ -576,14 +565,14 @@
     "elevation": 2057,
     "category": "百名山",
     "difficulty": "初〜中級",
-    "coeffMin": 13,
-    "coeffMax": 31,
+    "coeffMin": 10,
+    "coeffMax": 30,
     "daytrip": true,
     "trainAccess": true,
     "driveOfuna": 150,
     "driveShinjuku": 130,
-    "driveYokohama": 150,
-    "driveOmiya": 150,
+    "driveYokohama": 140,
+    "driveOmiya": 135,
     "description": "草原状の稜線から富士山や南アルプスの展望が開ける。アクセスが良く人気。",
     "yamapUrl": "https://yamap.com/mountains/178",
     "busLinks": [
@@ -606,10 +595,6 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -617,18 +602,22 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear"
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
     ],
     "calLegend": [
       "アイゼン不要"
     ],
-    "trailhead": "上日川峠（バスの場合は大菩薩嶺登山口）",
+    "trailhead": "上日川峠",
     "parking": "上日川峠駐車場（約100台・無料）",
     "address": "山梨県甲州市塩山上萩原",
     "gmapUrl": "https://google.com/maps/search/上日川峠/@35.672,138.7284,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.672,138.7284&q=上日川峠",
     "busScheduleLinks": [
-      "https://ykbus.jp/route_bus/route_sp_info/daibosatsutoge/"
+      "https://yamanashikotsu.co.jp/noriai/2211daigasanline/"
     ],
     "gearLinks": [
       {
@@ -680,10 +669,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月",
-    "cc": "13〜31"
+    ]
   },
   {
     "id": "ryokami",
@@ -791,9 +777,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月（岩場につきチェーンスパイク推奨）"
+    ]
   },
   {
     "id": "kobushigatake",
@@ -901,9 +885,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月下旬〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "mizugaki",
@@ -1011,9 +993,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "akagi",
@@ -1050,9 +1030,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
@@ -1123,9 +1103,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月・4月（1〜3月は12本必要）"
+    ]
   },
   {
     "id": "kinpusan",
@@ -1234,9 +1212,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月下旬〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "houou",
@@ -1275,7 +1251,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -1343,9 +1319,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "不可（残雪期は12本必要）"
+    ]
   },
   {
     "id": "ontake",
@@ -1458,9 +1432,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "kitadake",
@@ -1574,9 +1546,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "不可（12本必要）"
+    ]
   },
   {
     "id": "yatsugatake",
@@ -1683,9 +1653,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月下旬〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "keirisan",
@@ -1799,9 +1767,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "kirigamine",
@@ -1914,9 +1880,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "asama",
@@ -2030,9 +1994,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月（規制確認要）",
-    "season6Crampons": "不可（活火山規制）"
+    ]
   },
   {
     "id": "tanigawa",
@@ -2069,18 +2031,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -2142,9 +2104,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月・4月〜5月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "nasu",
@@ -2187,8 +2147,8 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -2198,7 +2158,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -2262,9 +2222,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "3月〜5月・11月（12〜2月は12本推奨）"
+    ]
   },
   {
     "id": "shirane_nikko",
@@ -2299,18 +2257,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -2372,9 +2330,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月・4月〜5月（1〜3月は12本必要）"
+    ]
   },
   {
     "id": "nikko_shirane",
@@ -2409,18 +2365,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -2482,9 +2438,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "4月〜5月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "takeson",
@@ -2519,18 +2473,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -2592,9 +2546,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月・4月〜5月（1〜3月は12本必要）"
+    ]
   },
   {
     "id": "komagatake",
@@ -2635,13 +2587,13 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
       "s-hard"
     ],
     "calLegend": [
@@ -2704,9 +2656,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "10月〜11月・5月〜6月"
+    ]
   },
   {
     "id": "senjogatake",
@@ -2820,9 +2770,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "不可（残雪期は12本必要）"
+    ]
   },
   {
     "id": "shirouma",
@@ -2866,7 +2814,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-ok",
       "s-ok",
       "s-ok",
       "s-hard",
@@ -2935,9 +2883,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "8月〜9月",
-    "season6Crampons": "不可（雪渓・12本必要）"
+    ]
   },
   {
     "id": "norikura",
@@ -3053,9 +2999,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "5月〜7月上旬（残雪あり）"
+    ]
   },
   {
     "id": "tateyama",
@@ -3173,9 +3117,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "不可（12本必要）"
+    ]
   },
   {
     "id": "tsurugi",
@@ -3287,9 +3229,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "不可（12本必要・ガイド推奨）"
+    ]
   },
   {
     "id": "yari",
@@ -3403,9 +3343,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "不可（12本必要）"
+    ]
   },
   {
     "id": "hotaka",
@@ -3519,9 +3457,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "不可（12本必要）"
+    ]
   },
   {
     "id": "myoko",
@@ -3633,9 +3569,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "5月〜6月・10月〜11月"
+    ]
   },
   {
     "id": "makihata",
@@ -3748,9 +3682,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "5月〜6月・10月〜11月"
+    ]
   },
   {
     "id": "iide",
@@ -3858,9 +3790,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "不可（残雪多・上級者のみ）"
+    ]
   },
   {
     "id": "shibutsu",
@@ -3905,7 +3835,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
@@ -3975,9 +3905,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "6月上旬・11月（5月は入山禁止）"
+    ]
   },
   {
     "id": "aizu_koma",
@@ -4087,9 +4015,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "5月〜6月上旬・10月〜11月"
+    ]
   },
   {
     "id": "shirane_gunma",
@@ -4208,9 +4134,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "不可（活火山規制）"
+    ]
   },
   {
     "id": "bandai",
@@ -4247,9 +4171,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
@@ -4322,9 +4246,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月・4月〜5月上旬（1〜3月は12本推奨）"
+    ]
   },
   {
     "id": "nikko_nantai",
@@ -4359,9 +4281,8 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -4369,8 +4290,9 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear",
-      "s-hard"
+      "s-ok",
+      "s-ok",
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -4432,9 +4354,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "4月〜6月上旬・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "takao",
@@ -4553,9 +4473,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし"
+    ]
   },
   {
     "id": "oyama",
@@ -4666,9 +4584,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし"
+    ]
   },
   {
     "id": "tonosaki",
@@ -4780,9 +4696,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "hirugata",
@@ -4819,10 +4733,6 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -4830,7 +4740,11 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear"
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
     ],
     "calLegend": [
       "アイゼン不要"
@@ -4893,9 +4807,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "jinba",
@@ -5006,9 +4918,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし"
+    ]
   },
   {
     "id": "mitsuToge",
@@ -5116,9 +5026,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "kintoki",
@@ -5156,6 +5064,10 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -5163,11 +5075,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -5231,9 +5139,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし"
+    ]
   },
   {
     "id": "kayagatake",
@@ -5340,9 +5246,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "4月〜11月",
-    "season6Crampons": "12月〜3月"
+    ]
   },
   {
     "id": "kentoku",
@@ -5453,9 +5357,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "4月下旬〜11月",
-    "season6Crampons": "12月〜3月"
+    ]
   },
   {
     "id": "hinata",
@@ -5491,10 +5393,6 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -5502,7 +5400,11 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear"
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
     ],
     "calLegend": [
       "アイゼン不要"
@@ -5563,9 +5465,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "bonori",
@@ -5677,9 +5577,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし"
+    ]
   },
   {
     "id": "otake",
@@ -5790,9 +5688,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし"
+    ]
   },
   {
     "id": "jonengatake",
@@ -5830,13 +5726,13 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear",
+      "s-hard",
       "s-hard"
     ],
     "calLegend": [
@@ -5900,9 +5796,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "10月〜11月・5月〜6月"
+    ]
   },
   {
     "id": "yakedake",
@@ -5947,13 +5841,13 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear",
+      "s-hard",
       "s-hard"
     ],
     "calLegend": [
@@ -6016,9 +5910,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月（規制確認要）",
-    "season6Crampons": "11月・5月（残雪期のみ・規制確認要）"
+    ]
   },
   {
     "id": "kashimayari",
@@ -6130,9 +6022,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "不可（12本必要）"
+    ]
   },
   {
     "id": "koganzan",
@@ -6243,9 +6133,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "arafune",
@@ -6354,9 +6242,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "4月〜11月",
-    "season6Crampons": "12月〜3月"
+    ]
   },
   {
     "id": "asamamakurayama",
@@ -6463,9 +6349,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "4月〜11月",
-    "season6Crampons": "12月〜3月"
+    ]
   },
   {
     "id": "kazahariyama",
@@ -6572,9 +6456,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜10月",
-    "season6Crampons": "11月〜4月"
+    ]
   },
   {
     "id": "iwasugesan",
@@ -6612,18 +6494,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -6687,9 +6569,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "iizunasan",
@@ -6726,9 +6606,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
@@ -6801,9 +6681,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月・4月（1〜3月は12本推奨）"
+    ]
   },
   {
     "id": "kurohimesan",
@@ -6839,18 +6717,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -6915,9 +6793,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "4月〜5月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "kenashiyama",
@@ -6956,13 +6832,13 @@
       "s-gear",
       "s-gear",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear"
     ],
     "calLegend": [
@@ -7026,9 +6902,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "4月下旬〜11月",
-    "season6Crampons": "12月〜4月中旬"
+    ]
   },
   {
     "id": "shirasunayama",
@@ -7062,18 +6936,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -7135,9 +7009,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "nanaitsurasan",
@@ -7248,9 +7120,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "4月〜11月",
-    "season6Crampons": "12月〜3月"
+    ]
   },
   {
     "id": "arasawadake",
@@ -7285,18 +7155,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -7358,9 +7228,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "nakawarayama",
@@ -7467,9 +7335,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜10月",
-    "season6Crampons": "11月〜4月"
+    ]
   },
   {
     "id": "yarigatake2",
@@ -7576,9 +7442,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "不可（残雪多・12本必要）"
+    ]
   },
   {
     "id": "gakedake",
@@ -7685,9 +7549,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "不可（12本必要）"
+    ]
   },
   {
     "id": "arikayama",
@@ -7721,18 +7583,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -7794,9 +7656,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "keizandake",
@@ -7904,9 +7764,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜10月",
-    "season6Crampons": "11月〜4月"
+    ]
   },
   {
     "id": "adatara",
@@ -7943,9 +7801,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
@@ -8018,9 +7876,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月・4月（1〜3月は12本推奨）"
+    ]
   },
   {
     "id": "azuma",
@@ -8055,18 +7911,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -8128,9 +7984,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月（規制確認要）",
-    "season6Crampons": "11月・4月〜5月（1〜3月は12本必要）"
+    ]
   },
   {
     "id": "echigokoma",
@@ -8166,18 +8020,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -8239,9 +8093,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "hiragadake",
@@ -8350,9 +8202,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "不可（小屋なし・超長距離）"
+    ]
   },
   {
     "id": "naeba",
@@ -8465,9 +8315,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "5月〜6月・10月〜11月"
+    ]
   },
   {
     "id": "amakazari",
@@ -8576,9 +8424,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "5月〜6月・10月〜11月"
+    ]
   },
   {
     "id": "hiuchi",
@@ -8691,9 +8537,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "5月〜7月上旬・10月〜11月"
+    ]
   },
   {
     "id": "takatsuma",
@@ -8727,18 +8571,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -8800,9 +8644,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "kasagatake",
@@ -8911,9 +8753,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "不可（12本必要）"
+    ]
   },
   {
     "id": "ontakesan",
@@ -9027,9 +8867,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月（規制確認要）",
-    "season6Crampons": "不可（活火山規制）"
+    ]
   },
   {
     "id": "goryudake",
@@ -9142,9 +8980,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "不可（12本必要）"
+    ]
   },
   {
     "id": "sukai",
@@ -9253,9 +9089,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月〜5月（冬期は通行止め多）"
+    ]
   },
   {
     "id": "kisokoma",
@@ -9373,9 +9207,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "不可（残雪期は12本必要）"
+    ]
   },
   {
     "id": "utsukushigahara",
@@ -9485,9 +9317,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜10月",
-    "season6Crampons": "11月〜4月"
+    ]
   },
   {
     "id": "karamatsu",
@@ -9528,13 +9358,13 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear",
+      "s-hard",
       "s-hard"
     ],
     "calLegend": [
@@ -9599,9 +9429,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "5月〜6月・11月（12〜4月は12本必要）"
+    ]
   },
   {
     "id": "utsugi",
@@ -9637,9 +9465,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -9648,7 +9476,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -9710,9 +9538,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "enasan",
@@ -9821,9 +9647,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "shiomidake",
@@ -9858,9 +9682,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -9869,7 +9693,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -9931,9 +9755,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "arakawadake",
@@ -9977,14 +9799,14 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
       "s-hard"
     ],
     "calLegend": [
@@ -10047,9 +9869,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "4月〜6月・10月〜11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "akaisidake",
@@ -10094,14 +9914,14 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
       "s-hard"
     ],
     "calLegend": [
@@ -10164,9 +9984,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "4月〜6月・10月〜11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "hijiridade",
@@ -10212,14 +10030,14 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
       "s-hard"
     ],
     "calLegend": [
@@ -10282,9 +10100,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "4月〜6月・10月〜11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "terkari",
@@ -10320,9 +10136,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -10331,7 +10147,7 @@
       "s-ok",
       "s-gear",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -10393,9 +10209,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "4月〜6月・10月〜11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "yakushidake",
@@ -10430,9 +10244,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -10441,7 +10255,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -10503,9 +10317,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "kurobegorodam",
@@ -10540,9 +10352,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -10551,7 +10363,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -10613,9 +10425,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "ainodake",
@@ -10729,9 +10539,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "不可（12本必要）"
+    ]
   },
   {
     "id": "noutori",
@@ -10765,18 +10573,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
-      "s-hard",
-      "s-hard"
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
     ],
     "calLegend": [
       "アイゼン不要"
@@ -10837,9 +10645,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "不可（12本必要）"
+    ]
   },
   {
     "id": "hakusan",
@@ -10881,9 +10687,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -10892,7 +10698,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -10954,9 +10760,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "zaosan",
@@ -10992,18 +10796,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11065,9 +10869,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月・4月〜5月（12〜3月は12本推奨）"
+    ]
   },
   {
     "id": "karisaka",
@@ -11175,9 +10977,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月"
+    ]
   },
   {
     "id": "nokogiriyama",
@@ -11212,18 +11012,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11285,9 +11085,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "4月〜6月上旬・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "minamikomagatake",
@@ -11325,9 +11123,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -11336,7 +11134,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11400,9 +11198,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "chogatake",
@@ -11437,9 +11233,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -11448,7 +11244,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11510,9 +11306,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "otenshoudake",
@@ -11547,9 +11341,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -11558,7 +11352,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11620,9 +11414,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "harinokidake",
@@ -11658,9 +11450,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -11669,7 +11461,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11733,9 +11525,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "eboshidake_kita",
@@ -11771,9 +11561,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -11782,7 +11572,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11844,9 +11634,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "noguchigoro",
@@ -11882,9 +11670,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-gear",
@@ -11893,7 +11681,7 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -11955,9 +11743,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "4月〜6月・11月（12〜3月は12本必要）"
+    ]
   },
   {
     "id": "nokogiriyama_chiba",
@@ -12068,9 +11854,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし"
+    ]
   },
   {
     "id": "mitakesan",
@@ -12183,9 +11967,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし"
+    ]
   },
   {
     "id": "takamizusanzan",
@@ -12222,6 +12004,10 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -12229,11 +12015,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -12295,9 +12077,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし"
+    ]
   },
   {
     "id": "tenzandake",
@@ -12410,9 +12190,7 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし"
+    ]
   },
   {
     "id": "hiwadayama",
@@ -12523,8 +12301,6 @@
         "affiliateUrl": "",
         "affiliateName": ""
       }
-    ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし"
+    ]
   }
 ]

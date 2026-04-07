@@ -2,8 +2,6 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>恵那山 登山｜中級・日帰り可・長野県南部【百名山】| Yamatch</title>
 <meta name="description" content="恵那山（えなさん・2191m）の登山情報。長野県南部、中級。新宿から車で約4時間10分、コース定数24〜41、日帰り可能。木曽山脈南端、中央アルプスの最南峰。深い森に覆われた山頂部は展望がないが、古くか">
@@ -193,7 +191,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
       <div class="header-title" style="color:white;font-size:18px;font-weight:800;">Yamatch</div>
       
     </div></a>
-    <a href="/" class="back-btn">← Yamatchトップへ</a>
+    <a href="/about/" class="header-btn">運営者</a>
+    <a href="/" class="back-btn">← 一覧に戻る</a>
   </div>
   <div class="dep-row" id="dep-row">
     <button class="dep-btn-m" onclick="changeDep('大船')">大船駅</button>
@@ -207,19 +206,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="white">
       <polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/><polygon points="20,28 50,55 0,55"/>
     </svg>
-    <div class="hero-top" style="position:relative">
-  <!-- お気に入り・登頂記録ボタン（右上） -->
-  <div id="my-actions-hero" style="position:absolute;top:0;right:0;display:flex;gap:6px;z-index:5">
-    <button id="fav-btn" onclick="toggleFav()" title="お気に入り"
-      style="width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px)">
-      <span id="fav-icon">☆</span>
-    </button>
-    <button id="climb-btn" onclick="toggleClimb()" title="登頂記録"
-      style="width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px)">
-      <span id="climb-icon">🏳</span>
-    </button>
-  </div>
-
+    <div class="hero-top">
       <div>
         <h1 class="mountain-name">恵那山</h1>
         <div class="mountain-kana">えなさん</div>
@@ -281,19 +268,13 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 
   <div class="card"><h2>🥾 代表的な登山ルート</h2><div class="route-list-c"><div class="rl-item"><div class="rl-num">1</div><div class="rl-content"><div class="rl-name">神坂峠〜恵那山往復</div><div class="rl-waypoints">神坂峠 → 恵那山</div><div class="rl-chips"><span class="rl-chip">⏱&nbsp;6時間</span><span class="rl-chip">距離&nbsp;10.0km</span><span class="rl-chip">↑&nbsp;+700m</span></div></div></div><div class="rl-item"><div class="rl-num">2</div><div class="rl-content"><div class="rl-name">広河原〜恵那山往復</div><div class="rl-waypoints">広河原 → 恵那山</div><div class="rl-chips"><span class="rl-chip">⏱&nbsp;8時間</span><span class="rl-chip">距離&nbsp;14.0km</span><span class="rl-chip">↑&nbsp;+1300m</span></div></div></div></div></div></div></div>
 
-  <!-- お気に入り・登頂記録 -->
-    <a href="https://yamap.com/mountains/181" target="_blank" rel="noopener noreferrer" class="yamap-btn">
+  <a href="https://yamap.com/mountains/181" target="_blank" rel="noopener noreferrer" class="yamap-btn">
     <svg width="20" height="20" viewBox="0 0 36 36" fill="white"><polygon points="18,4 34,30 2,30"/><polygon points="18,10 30,30 6,30" fill="rgba(255,255,255,0.6)"/></svg>
-    YAMAPでコースを見る
+    YAMAPで詳細を見る
   </a>
 
   
-  <!-- YM-BOTTOM-CTA -->
-  <a href="/" style="display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#344f2c,#4a6038);border-radius:12px;padding:14px;font-size:14px;font-weight:700;color:white;text-decoration:none;margin-bottom:12px">
-    👉 条件を変えて登山を探す（Yamatch）
-  </a>
-
-  <div class="related-links-card">
+<div class="related-links-card">
   <div class="related-links-title">📋 関連するまとめ</div>
     <a href="/search/shinjuku-daytrip/" class="related-link-item">
       <span class="related-link-main">🏔 新宿から日帰りで行ける山一覧</span>
@@ -358,7 +339,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <button class="share-btn share-btn-copy" onclick="copyUrl()">🔗 URLコピー</button>
   </div>
   <div style="text-align:center;margin-bottom:16px;">
-    <a href="https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform" target="_blank" style="font-size:11px;color:#a09888;text-decoration:underline;text-underline-offset:3px;">情報の誤り・改善提案はこちら</a>
+    <a href="https://forms.gle/qsXvFTcj6H1TM7ra7" target="_blank" style="font-size:11px;color:#a09888;text-decoration:underline;text-underline-offset:3px;">情報の誤り・改善提案はこちら</a>
   </div>
 </main>
 <footer style="text-align:center;padding:20px 16px;font-size:12px;color:#a09888;border-top:1px solid #e8e4dc;margin-top:8px">
@@ -425,7 +406,6 @@ applyDep();
 
 
 // === JSONから動的データを反映 ===
-window.MID = 'enasan';
 (function(){
   var MID = 'enasan';
   fetch('/data/mountains.json')
@@ -527,44 +507,5 @@ window.MID = 'enasan';
   }
 })();
 </script>
-
-  <script>
-  (function(){
-    var MID_LOCAL = window.MID || '';
-    var FAV_KEY = 'ym_favorites';
-    var CLM_KEY = 'ym_climbed';
-    function getFavs(){ try{return JSON.parse(localStorage.getItem(FAV_KEY)||'[]');}catch{return[];} }
-    function getClimbs(){ try{return new Map(JSON.parse(localStorage.getItem(CLM_KEY)||'[]'));}catch{return new Map();} }
-    function updateUI(){
-      var favs = getFavs();
-      var climbs = getClimbs();
-      var isFav = favs.indexOf(MID_LOCAL) >= 0;
-      var isClimbed = climbs.has(MID_LOCAL);
-      var fi = document.getElementById('fav-icon');
-      var ci = document.getElementById('climb-icon');
-      var fb = document.getElementById('fav-btn');
-      var cb = document.getElementById('climb-btn');
-      if(fi) fi.textContent = isFav ? '⭐' : '☆';
-      if(ci) ci.textContent = isClimbed ? '🚩' : '🏳';
-      if(fb) fb.style.background = isFav ? 'rgba(255,251,224,0.5)' : 'rgba(255,255,255,0.2)';
-      if(cb) cb.style.background = isClimbed ? 'rgba(240,245,236,0.5)' : 'rgba(255,255,255,0.2)';
-    }
-    window.toggleFav = function(){
-      var favs = getFavs();
-      var idx = favs.indexOf(MID_LOCAL);
-      if(idx>=0) favs.splice(idx,1); else favs.push(MID_LOCAL);
-      localStorage.setItem(FAV_KEY, JSON.stringify(favs));
-      updateUI();
-    };
-    window.toggleClimb = function(){
-      var climbs = getClimbs();
-      if(climbs.has(MID_LOCAL)) climbs.delete(MID_LOCAL);
-      else climbs.set(MID_LOCAL, new Date().toLocaleDateString('ja-JP',{year:'numeric',month:'2-digit',day:'2-digit'}));
-      localStorage.setItem(CLM_KEY, JSON.stringify([...climbs]));
-      updateUI();
-    };
-    updateUI();
-  })();
-  </script>
 </body>
 </html>

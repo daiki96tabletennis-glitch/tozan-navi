@@ -42,6 +42,15 @@ main{max-width:680px;margin:0 auto;padding:12px;}
 
 .section-card{background:white;border-radius:12px;padding:14px 16px;margin-bottom:10px;border:1px solid #ddd8d0;}
 .section-title{font-size:12px;font-weight:700;color:#4a5e4a;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.route-block{background:#f8f7f4;border:1px solid #ddd8d0;border-radius:8px;padding:10px;margin-bottom:8px;position:relative;}
+.route-block-title{font-size:11px;font-weight:700;color:#4a5e4a;margin-bottom:8px;}
+.step-block{background:white;border:0.5px solid #e0dbd4;border-radius:6px;padding:8px;margin-bottom:6px;position:relative;}
+.step-row{display:flex;gap:6px;margin-bottom:4px;}
+.step-row input{flex:1;padding:4px 7px;border:1px solid #ddd8d0;border-radius:5px;font-size:11px;}
+.step-row input.narrow{flex:0 0 70px;}
+.step-row input.mid{flex:0 0 90px;}
+.del-btn{background:#fce8e8;border:none;border-radius:4px;color:#b04040;font-size:10px;padding:3px 7px;cursor:pointer;flex-shrink:0;}
+.add-btn{background:#e8f0e8;border:1px solid #b8d0b8;border-radius:5px;color:#3a5e3a;font-size:11px;padding:5px 10px;cursor:pointer;width:100%;margin-top:4px;}
 
 /* フォーム要素 */
 .field{margin-bottom:12px;}
@@ -150,7 +159,6 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
   <div class="tab-bar">
     <button class="tab-btn active" id="tab-list" onclick="switchTab('list')">⛰ 山一覧</button>
     <button class="tab-btn" id="tab-log" onclick="switchTab('log')">📝 変更履歴</button>
-    <button class="tab-btn" id="tab-feedback" onclick="switchTab('feedback')">💬 意見 <span id="feedback-badge" style="display:none;background:#e05040;color:white;border-radius:10px;font-size:10px;padding:1px 5px;margin-left:2px;font-weight:bold;"></span></button>
   </div>
 
   <!-- 山一覧パネル -->
@@ -309,9 +317,16 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
       </div>
     </div>
 
+    <!-- 電車・バスルート編集 -->
+    <div class="section-card">
+      <div class="section-title">🚃 電車・バスアクセス情報</div>
+      <div id="train-routes-editor"></div>
+      <button class="add-btn" onclick="addTrainRoute()">＋ ルートを追加</button>
+    </div>
+
     <!-- バス時刻表URL -->
     <div class="section-card">
-      <div class="section-title">🚌 バス時刻表・アクセスリンク</div>
+      <div class="section-title">🚌 バス時刻表・リンク</div>
       <div class="field">
         <label>Yahoo乗換案内 URL</label>
         <input type="url" id="f-buslink" placeholder="https://transit.yahoo.co.jp/..." oninput="markChanged()">
@@ -350,16 +365,6 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
         <label>凡例テキスト3（任意）</label>
         <input type="text" id="f-legend3" placeholder="🔴 12本アイゼン必要" oninput="markChanged()">
       </div>
-      <div class="field" style="margin-top:10px;">
-        <label>アイゼン不要期間（例：5月〜11月 / 通年）</label>
-        <input type="text" id="f-no-gear" placeholder="例：5月〜11月" oninput="markChanged()">
-        <div style="font-size:10px;color:#8a8078;margin-top:3px;">「通年」または「〇月〜〇月」形式。複数の場合は「5月〜11月・4月下旬」のように・区切り。</div>
-      </div>
-      <div class="field" style="margin-top:8px;">
-        <label>6本アイゼン対応期間（例：12月〜4月）</label>
-        <input type="text" id="f-six-crampons" placeholder="例：12月〜4月" oninput="markChanged()">
-        <div style="font-size:10px;color:#8a8078;margin-top:3px;">「不可（12本必要）」や注釈付き「12月・4月（1〜3月は12本必要）」も可。</div>
-      </div>
     </div>
 
     <!-- 持ち物アフィリエイトリンク -->
@@ -372,44 +377,20 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
     <!-- 保存セクション -->
     <div class="copy-section" id="copy-section" style="display:none;">
       <div class="copy-title">💾 変更を保存してサイトに反映する</div>
-      <div class="copy-desc" style="margin-bottom:10px;">
-        GitHubに直接保存します。<br>
-        <small style="color:#8a8078">未設定の場合はjsonをダウンロードします</small>
+      <div class="copy-desc">
+        ① 下のボタンで <strong>mountains.json</strong> をダウンロード<br>
+        ② GitHubの <code>data/mountains.json</code> に上書きアップロード<br>
+        ③ 1〜2分で全ページに自動反映されます
       </div>
-
-      <!-- GitHub設定 -->
-      <details id="gh-settings" style="margin-bottom:10px;background:#f5f3ef;border-radius:10px;padding:10px 12px;border:1px solid #ddd8d0;">
-        <summary style="font-size:12px;font-weight:bold;color:#5a5248;cursor:pointer;">⚙️ GitHub設定</summary>
-        <div style="margin-top:10px;display:flex;flex-direction:column;gap:7px;">
-          <div>
-            <label style="font-size:11px;color:#8a8078;display:block;margin-bottom:2px;">オーナー名（例: daiki96tabletennis-glitch）</label>
-            <input id="gh-owner" type="text" placeholder="GitHubユーザー名" style="width:100%;padding:7px 10px;border-radius:8px;border:1px solid #ddd;font-size:13px;">
-          </div>
-          <div>
-            <label style="font-size:11px;color:#8a8078;display:block;margin-bottom:2px;">リポジトリ名（例: tozan-navi）</label>
-            <input id="gh-repo" type="text" placeholder="リポジトリ名" style="width:100%;padding:7px 10px;border-radius:8px;border:1px solid #ddd;font-size:13px;">
-          </div>
-          <div>
-            <label style="font-size:11px;color:#8a8078;display:block;margin-bottom:2px;">Personal Access Token（repo権限）</label>
-            <input id="gh-token" type="password" placeholder="ghp_xxxxxxxxxxxx" style="width:100%;padding:7px 10px;border-radius:8px;border:1px solid #ddd;font-size:13px;">
-          </div>
-          <button onclick="saveGhConfig()" style="background:#4a6038;color:white;border:none;border-radius:8px;padding:8px;font-size:12px;font-weight:bold;cursor:pointer;">保存する</button>
-          <div id="gh-config-saved" style="display:none;font-size:11px;color:#3a6030;font-weight:bold;">✅ 設定を保存しました</div>
-        </div>
-      </details>
-
       <button class="copy-btn" onclick="saveChanges()" style="margin-bottom:8px;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v14a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-        mountains.json を保存
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        mountains.json をダウンロード
       </button>
       <button class="copy-btn" onclick="copyTsv()" style="background:#607848;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         修正内容をテキストコピー（記録用）
       </button>
-      <div class="copy-success" id="copy-success"></div>
-      <div id="crampon-warn" style="display:none;margin-top:6px;padding:8px 10px;background:#fff8e0;border:1px solid #e8d060;border-radius:8px;font-size:11px;color:#7a5800;line-height:1.6;">
-        ⚠️ アイゼン情報を変更しました。index.html 内の同じ山の seasonNoGear / season6Crampons も手動で合わせてください。
-      </div>
+      <div class="copy-success" id="copy-success">✅ ダウンロードしました！GitHubにアップしてください</div>
     </div>
 
     <!-- 反映手順マニュアル -->
@@ -505,22 +486,6 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
 
   </div>
 
-
-  <!-- 意見・要望パネル -->
-  <div id="feedback-panel" style="display:none;padding-bottom:20px;">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-      <div style="font-size:13px;font-weight:bold;color:#3a3530;">フォーム回答一覧</div>
-      <button onclick="loadFeedback(true)" style="background:#4a6038;color:white;border:none;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;">🔄 更新</button>
-    </div>
-    <div id="feedback-loading" style="text-align:center;padding:20px;color:#8a8078;font-size:13px;display:none;">読み込み中...</div>
-    <div id="feedback-list"></div>
-    <div id="feedback-error" style="display:none;text-align:center;padding:20px;color:#c05040;font-size:13px;line-height:1.6;"></div>
-    <div style="margin-top:16px;padding-top:12px;border-top:1px solid #e8e4dc;text-align:center;">
-      <a href="https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform" target="_blank" style="font-size:12px;color:#4a6038;">フォームを開く ↗</a>
-      &nbsp;·&nbsp;
-      <a href="https://docs.google.com/spreadsheets/d/1H_7jTudgsfPrRkqwH29QVqFV_XbKFIVT9nALDgRXn8o/edit" target="_blank" style="font-size:12px;color:#4a6038;">スプレッドシートを開く ↗</a>
-    </div>
-  </div>
 </main>
 
 <script>
@@ -631,8 +596,6 @@ function openEdit(id) {
   document.getElementById('f-busschedule2').value = busSchedule[1] || '';
 
   // シーズンカレンダー
-  document.getElementById('f-no-gear').value = currentMountain.seasonNoGear || '';
-  document.getElementById('f-six-crampons').value = currentMountain.season6Crampons || '';
   renderSeasonGrid(currentMountain.seasonCalendar || Array(12).fill('s-ok'));
   const legends = currentMountain.calLegend || [];
   document.getElementById('f-legend1').value = legends[0] || '';
@@ -641,6 +604,9 @@ function openEdit(id) {
 
   // ギアアフィリエイトリンク
   renderGearLinks(currentMountain.gearLinks || []);
+
+  // 電車バスルート
+  renderTrainRoutes(currentMountain.trainRoutes || []);
   
   // パネル切り替え
   document.getElementById('list-panel').classList.add('hidden');
@@ -751,10 +717,9 @@ function getFormData() {
     trailhead: document.getElementById('f-trailhead').value,
     parking: document.getElementById('f-parking').value,
     address: document.getElementById('f-address').value,
+    trainRoutes: collectTrainRoutes(),
     gmapUrl: document.getElementById('f-gmap').value,
     amapUrl: document.getElementById('f-amap').value,
-    seasonNoGear: document.getElementById('f-no-gear').value.trim() || currentMountain.seasonNoGear || '',
-    season6Crampons: document.getElementById('f-six-crampons').value.trim() || currentMountain.season6Crampons || '',
     seasonCalendar: [...currentSeason],
     calLegend: [
       document.getElementById('f-legend1').value,
@@ -766,84 +731,7 @@ function getFormData() {
   };
 }
 
-// ===== GitHub設定 =====
-const GH_OWNER_KEY = 'ym_gh_owner';
-const GH_REPO_KEY  = 'ym_gh_repo';
-const GH_TOKEN_KEY = 'ym_gh_token';
-
-function getGhConfig() {
-  return {
-    owner: localStorage.getItem(GH_OWNER_KEY) || '',
-    repo:  localStorage.getItem(GH_REPO_KEY)  || '',
-    token: localStorage.getItem(GH_TOKEN_KEY) || '',
-  };
-}
-
-function saveGhConfig() {
-  const owner = document.getElementById('gh-owner').value.trim();
-  const repo  = document.getElementById('gh-repo').value.trim();
-  const token = document.getElementById('gh-token').value.trim();
-  if (!owner || !repo || !token) { alert('すべて入力してください'); return; }
-  localStorage.setItem(GH_OWNER_KEY, owner);
-  localStorage.setItem(GH_REPO_KEY,  repo);
-  localStorage.setItem(GH_TOKEN_KEY, token);
-  document.getElementById('gh-config-saved').style.display = 'block';
-  setTimeout(() => document.getElementById('gh-config-saved').style.display = 'none', 3000);
-}
-
-function loadGhConfigUI() {
-  const cfg = getGhConfig();
-  if (document.getElementById('gh-owner')) {
-    document.getElementById('gh-owner').value = cfg.owner;
-    document.getElementById('gh-repo').value  = cfg.repo;
-    document.getElementById('gh-token').value = cfg.token;
-  }
-}
-
-async function pushToGitHub(jsonContent) {
-  const cfg = getGhConfig();
-  if (!cfg.owner || !cfg.repo || !cfg.token) {
-    throw new Error('GitHub設定が未入力です。画面上部で設定してください。');
-  }
-  const path = 'data/mountains.json';
-  const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${path}`;
-
-  // 現在のSHAを取得
-  const getRes = await fetch(apiUrl, {
-    headers: {
-      'Authorization': `token ${cfg.token}`,
-      'Accept': 'application/vnd.github.v3+json',
-    }
-  });
-  if (!getRes.ok) throw new Error(`SHA取得失敗: ${getRes.status}`);
-  const getJson = await getRes.json();
-  const sha = getJson.sha;
-
-  // base64エンコード
-  const encoded = btoa(unescape(encodeURIComponent(jsonContent)));
-
-  // PUT でpush
-  const putRes = await fetch(apiUrl, {
-    method: 'PUT',
-    headers: {
-      'Authorization': `token ${cfg.token}`,
-      'Accept': 'application/vnd.github.v3+json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      message: `[admin] Update mountains.json`,
-      content: encoded,
-      sha: sha,
-    })
-  });
-  if (!putRes.ok) {
-    const errJson = await putRes.json().catch(() => ({}));
-    throw new Error(`push失敗: ${putRes.status} ${errJson.message || ''}`);
-  }
-  return putRes.json();
-}
-
-async function saveChanges() {
+function saveChanges() {
   if (!currentMountain) return;
   const formData = getFormData();
 
@@ -856,41 +744,124 @@ async function saveChanges() {
   const idx = allMountains.findIndex(m => m.id === currentMountain.id);
   if (idx >= 0) Object.assign(allMountains[idx], formData);
 
-  const jsonContent = JSON.stringify(allMountains, null, 2);
-  const successEl = document.getElementById('copy-success');
-  const btn = document.querySelector('.copy-btn');
+  const blob = new Blob([JSON.stringify(allMountains, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'mountains.json';
+  a.click();
+  URL.revokeObjectURL(url);
 
-  // GitHubへpush
-  try {
-    if (btn) { btn.disabled = true; btn.textContent = '保存中...'; }
-    await pushToGitHub(jsonContent);
-    successEl.textContent = '✅ GitHubに保存しました！1〜2分で反映されます';
-    successEl.style.color = '#3a6030';
-    successEl.style.display = 'block';
-    setTimeout(() => successEl.style.display = 'none', 6000);
-  } catch(e) {
-    // GitHub push失敗時はフォールバックでダウンロード
-    console.error(e);
-    const blob = new Blob([jsonContent], {type: 'application/json'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = 'mountains.json'; a.click();
-    URL.revokeObjectURL(url);
-    successEl.textContent = '⚠️ GitHub保存失敗。ダウンロードしました: ' + e.message;
-    successEl.style.color = '#a05000';
-    successEl.style.display = 'block';
-    setTimeout(() => successEl.style.display = 'none', 8000);
-  } finally {
-    if (btn) { btn.disabled = false; btn.textContent = 'mountains.json を保存'; }
-  }
+  const el = document.getElementById('copy-success');
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 4000);
+}
 
-  // アイゼン情報変更時の案内
-  const fd = getFormData();
-  const cur = allMountains.find(m => m.id === currentMountain.id) || {};
-  if (fd.seasonNoGear !== (cur.seasonNoGear||'') || fd.season6Crampons !== (cur.season6Crampons||'')) {
-    const warn = document.getElementById('crampon-warn');
-    if (warn) { warn.style.display = 'block'; setTimeout(() => warn.style.display = 'none', 8000); }
-  }
+// ===== 電車バスルート編集 =====
+function renderTrainRoutes(routes) {
+  var ed = document.getElementById('train-routes-editor');
+  ed.innerHTML = '';
+  (routes || []).forEach(function(route, ri) {
+    ed.appendChild(buildRouteBlock(route, ri));
+  });
+}
+
+function buildRouteBlock(route, ri) {
+  var div = document.createElement('div');
+  div.className = 'route-block';
+  div.dataset.ri = ri;
+  div.innerHTML =
+    '<div class="route-block-title">ルート ' + (ri+1) + '</div>' +
+    '<div class="step-row">' +
+      '<input type="text" placeholder="路線名（例：つくばEX＋関東鉄道バス）" value="' + esc(route.lineName||'') + '" data-field="lineName" oninput="markChanged()">' +
+      '<input type="text" class="mid" placeholder="運行期間メモ" value="' + esc(route.season||'') + '" data-field="season" oninput="markChanged()">' +
+      '<button class="del-btn" onclick="delRoute(this)">削除</button>' +
+    '</div>' +
+    '<div class="step-row">' +
+      '<input type="text" placeholder="備考・メモ（例：ケーブルカーあり）" value="' + esc(route.note||'') + '" data-field="note" style="flex:1" oninput="markChanged()">' +
+    '</div>' +
+    '<div class="step-row">' +
+      '<input type="url" placeholder="Yahoo乗換案内URL" value="' + esc(route.yahooUrl||'') + '" data-field="yahooUrl" oninput="markChanged()">' +
+      '<input type="url" placeholder="バス時刻表URL" value="' + esc(route.busUrl||'') + '" data-field="busUrl" oninput="markChanged()">' +
+    '</div>' +
+    '<div class="route-block-title" style="margin-top:6px;font-size:10px;">停車駅・乗換ステップ</div>' +
+    '<div class="steps-container"></div>' +
+    '<button class="add-btn" onclick="addStep(this)" style="font-size:10px;padding:3px 8px;width:auto;">＋ ステップ追加</button>';
+  var stepsContainer = div.querySelector('.steps-container');
+  (route.steps || []).forEach(function(step) {
+    stepsContainer.appendChild(buildStepBlock(step));
+  });
+  return div;
+}
+
+function buildStepBlock(step) {
+  var div = document.createElement('div');
+  div.className = 'step-block';
+  div.innerHTML =
+    '<div class="step-row">' +
+      '<input type="text" placeholder="駅・停留所名" value="' + esc(step.station||'') + '" data-field="station" oninput="markChanged()">' +
+      '<button class="del-btn" onclick="delStep(this)" style="font-size:9px;padding:2px 5px;">✕</button>' +
+    '</div>' +
+    '<div class="step-row">' +
+      '<input type="text" placeholder="交通手段（例：🚃 つくばEX快速）" value="' + esc(step.method||'') + '" data-field="method" oninput="markChanged()">' +
+      '<input type="text" class="narrow" placeholder="所要時間" value="' + esc(step.duration||'') + '" data-field="duration" oninput="markChanged()">' +
+      '<input type="text" class="narrow" placeholder="運賃（例：840円）" value="' + esc(step.fare||'') + '" data-field="fare" oninput="markChanged()">' +
+    '</div>';
+  return div;
+}
+
+function esc(s) {
+  return String(s).replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function addTrainRoute() {
+  var ed = document.getElementById('train-routes-editor');
+  var ri = ed.children.length;
+  var block = buildRouteBlock({lineName:'',season:'',note:'',yahooUrl:'',busUrl:'',steps:[{station:'',method:'',duration:'',fare:''}]}, ri);
+  ed.appendChild(block);
+  markChanged();
+}
+
+function addStep(btn) {
+  var container = btn.previousElementSibling;
+  container.appendChild(buildStepBlock({station:'',method:'',duration:'',fare:''}));
+  markChanged();
+}
+
+function delRoute(btn) {
+  btn.closest('.route-block').remove();
+  // ri再採番
+  document.querySelectorAll('#train-routes-editor .route-block').forEach(function(b, i){
+    b.querySelector('.route-block-title').textContent = 'ルート ' + (i+1);
+    b.dataset.ri = i;
+  });
+  markChanged();
+}
+
+function delStep(btn) {
+  btn.closest('.step-block').remove();
+  markChanged();
+}
+
+function collectTrainRoutes() {
+  var routes = [];
+  document.querySelectorAll('#train-routes-editor .route-block').forEach(function(rb) {
+    var route = {};
+    rb.querySelectorAll('[data-field]').forEach(function(el) {
+      if(!el.closest('.step-block')) route[el.dataset.field] = el.value;
+    });
+    var steps = [];
+    rb.querySelectorAll('.step-block').forEach(function(sb) {
+      var step = {};
+      sb.querySelectorAll('[data-field]').forEach(function(el) {
+        step[el.dataset.field] = el.value;
+      });
+      steps.push(step);
+    });
+    route.steps = steps;
+    routes.push(route);
+  });
+  return routes;
 }
 
 // ===== 変更履歴 =====
@@ -923,7 +894,7 @@ function buildChanges(before, after) {
     driveOfuna: '大船（分）', driveShinjuku: '新宿（分）',
     driveYokohama: '横浜（分）', driveOmiya: '大宮（分）',
     coeffMin: 'CC最小', coeffMax: 'CC最大',
-    yamapUrl: 'YAMAPリンク', busLinks: 'バスリンク',
+    yamapUrl: 'YAMAPリンク', busLinks: 'バスリンク', trainRoutes: '電車バスルート',
     trailhead: '登山口', parking: '駐車場',
     address: '住所', gmapUrl: 'Googleマップ',
     busScheduleLinks: 'バス時刻表',
@@ -970,15 +941,12 @@ function renderLog() {
 }
 
 function switchTab(tab) {
-  ['list','log','feedback'].forEach(t => {
-    document.getElementById('tab-'+t).classList.toggle('active', tab === t);
-  });
+  document.getElementById('tab-list').classList.toggle('active', tab === 'list');
+  document.getElementById('tab-log').classList.toggle('active', tab === 'log');
   document.getElementById('list-panel').style.display = tab === 'list' ? 'block' : 'none';
   document.getElementById('log-panel').style.display = tab === 'log' ? 'block' : 'none';
-  document.getElementById('feedback-panel').style.display = tab === 'feedback' ? 'block' : 'none';
   document.getElementById('edit-panel').classList.remove('active');
   if(tab === 'log') renderLog();
-  if(tab === 'feedback') loadFeedback(false);
 }
 
 function clearLog() {
@@ -1040,137 +1008,6 @@ function copyTsv() {
     .then(() => alert('コピーしました！スプレッドシートに貼り付けてください'))
     .catch(() => { const ta=document.createElement('textarea'); ta.value=tsv; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); alert('コピーしました！'); });
 }
-
-
-// ===== フィードバック（Googleフォーム回答）=====
-const FB_SEEN_KEY = 'ym_fb_seen';
-const FB_CSV_URL = 'https://docs.google.com/spreadsheets/d/1H_7jTudgsfPrRkqwH29QVqFV_XbKFIVT9nALDgRXn8o/export?format=csv&gid=0';
-
-function getFbSeen() {
-  try { return new Set(JSON.parse(localStorage.getItem(FB_SEEN_KEY) || '[]')); }
-  catch { return new Set(); }
-}
-function saveFbSeen(seen) {
-  localStorage.setItem(FB_SEEN_KEY, JSON.stringify([...seen]));
-}
-
-function splitCSVRow(row) {
-  const result = [];
-  let cur = '', inQ = false;
-  for (let i = 0; i < row.length; i++) {
-    const ch = row[i];
-    if (ch === '"') { inQ = !inQ; }
-    else if (ch === ',' && !inQ) { result.push(cur.trim().replace(/^"|"$/g,'')); cur = ''; }
-    else { cur += ch; }
-  }
-  result.push(cur.trim().replace(/^"|"$/g,''));
-  return result;
-}
-
-function parseCSV(text) {
-  const lines = text.split('\n').filter(l => l.trim());
-  if (lines.length < 2) return { headers: [], rows: [] };
-  const headers = splitCSVRow(lines[0]);
-  const rows = lines.slice(1).map(line => splitCSVRow(line));
-  return { headers, rows };
-}
-
-function updateFbBadge(count) {
-  const badge = document.getElementById('feedback-badge');
-  if (!badge) return;
-  if (count > 0) { badge.style.display = 'inline'; badge.textContent = count; }
-  else { badge.style.display = 'none'; }
-}
-
-async function loadFeedback(forceRefresh) {
-  const loadingEl = document.getElementById('feedback-loading');
-  const listEl    = document.getElementById('feedback-list');
-  const errorEl   = document.getElementById('feedback-error');
-  loadingEl.style.display = 'block';
-  listEl.style.display    = 'none';
-  errorEl.style.display   = 'none';
-
-  try {
-    const url = FB_CSV_URL + (forceRefresh ? '&t=' + Date.now() : '');
-    const res = await fetch(url);
-    if (!res.ok) throw new Error('取得失敗 (' + res.status + ')');
-    const text = await res.text();
-    const { headers, rows } = parseCSV(text);
-
-    loadingEl.style.display = 'none';
-    listEl.style.display = 'block';
-
-    if (rows.length === 0) {
-      listEl.innerHTML = '<div style="text-align:center;padding:24px;color:#8a8078;font-size:13px;">まだ回答がありません</div>';
-      updateFbBadge(0);
-      return;
-    }
-
-    const seen = getFbSeen();
-    const reversed = [...rows].reverse();
-    let newCount = 0;
-
-    listEl.innerHTML = reversed.map(vals => {
-      const ts = vals[0] || '';
-      const isNew = !seen.has(ts);
-      if (isNew) newCount++;
-
-      const fields = headers.slice(1).map((h, i) => {
-        const v = (vals[i+1] || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-        if (!v) return '';
-        return `<div style="margin-bottom:8px;">
-          <div style="font-size:11px;color:#8a8078;margin-bottom:2px;">${h}</div>
-          <div style="font-size:13px;color:#3a3530;line-height:1.6;white-space:pre-wrap;">${v}</div>
-        </div>`;
-      }).join('');
-
-      return `<div onclick="markFbSeen('${ts.replace(/'/g,'')}',this)"
-        style="background:${isNew?'#fffbe8':'white'};border:1px solid ${isNew?'#e8d060':'#e8e4dc'};border-radius:12px;padding:14px 16px;margin-bottom:10px;cursor:pointer;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-          ${isNew?'<span style="background:#e05040;color:white;border-radius:10px;font-size:10px;padding:2px 7px;font-weight:bold;">NEW</span>':''}
-          <span style="font-size:11px;color:#8a8078;">${ts}</span>
-        </div>
-        ${fields}
-      </div>`;
-    }).join('');
-
-    updateFbBadge(newCount);
-
-  } catch(e) {
-    loadingEl.style.display = 'none';
-    errorEl.style.display = 'block';
-    errorEl.innerHTML = '⚠️ ' + e.message + '<br><small>スプレッドシートの共有設定を「リンクを知っている全員が閲覧可」にしてください</small>';
-  }
-}
-
-function markFbSeen(ts, el) {
-  const seen = getFbSeen();
-  seen.add(ts);
-  saveFbSeen(seen);
-  el.style.background = 'white';
-  el.style.borderColor = '#e8e4dc';
-  const newBadge = el.querySelector('[style*="e05040"]');
-  if (newBadge) newBadge.remove();
-  const remaining = document.querySelectorAll('#feedback-list [style*="fffbe8"]').length;
-  updateFbBadge(remaining);
-}
-
-async function checkFbUnread() {
-  try {
-    const res = await fetch(FB_CSV_URL);
-    if (!res.ok) return;
-    const text = await res.text();
-    const { rows } = parseCSV(text);
-    const seen = getFbSeen();
-    const newCount = rows.filter(r => !seen.has(r[0])).length;
-    updateFbBadge(newCount);
-  } catch(e) {}
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  loadGhConfigUI();
-  checkFbUnread();
-});
 
 </script>
 

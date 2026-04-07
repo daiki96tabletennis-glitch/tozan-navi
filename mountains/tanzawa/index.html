@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja"><head>
 <meta charset="UTF-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
 <meta name="google-site-verification" content="dJ2byH9b8xF8S5lqAyWV-DqRwPGLEjWXs_-Un9oXGHs" /><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>丹沢山 登山｜中級・日帰り可・神奈川県【百名山】| Yamatch</title>
 <meta name="description" content="丹沢山（たんざわさん・1567m）の登山情報。神奈川県、中級。新宿から車で約1時間15分、コース定数28〜59、日帰り可能。神奈川県最高峰エリア。ブナの原生林が美しく、四季を通じて楽しめる。">
@@ -194,7 +192,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
       <div class="header-title" style="color:white;font-size:18px;font-weight:800;">Yamatch</div>
       
     </div></a>
-    <a href="/" class="back-btn">← Yamatchトップへ</a>
+    <a href="/about/" class="header-btn">運営者</a>
+    <a href="/" class="back-btn">← 一覧に戻る</a>
   </div>
   <div class="dep-row" id="dep-row">
     <button class="dep-btn-m" onclick="changeDep('大船')">大船駅</button>
@@ -211,19 +210,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
       <polygon points="75,20 100,55 50,55"/>
       <polygon points="20,28 50,55 0,55"/>
     </svg>
-    <div class="hero-top" style="position:relative">
-  <!-- お気に入り・登頂記録ボタン（右上） -->
-  <div id="my-actions-hero" style="position:absolute;top:0;right:0;display:flex;gap:6px;z-index:5">
-    <button id="fav-btn" onclick="toggleFav()" title="お気に入り"
-      style="width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px)">
-      <span id="fav-icon">☆</span>
-    </button>
-    <button id="climb-btn" onclick="toggleClimb()" title="登頂記録"
-      style="width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px)">
-      <span id="climb-icon">🏳</span>
-    </button>
-  </div>
-
+    <div class="hero-top">
       <div>
         <h1 class="mountain-name">丹沢山</h1>
         <div class="mountain-kana">たんざわさん</div>
@@ -298,23 +285,15 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </div>
   </div>
 
-    <!-- お気に入り・登頂記録 -->
-  
-
-<!-- YAMAP -->
+  <!-- YAMAP -->
   <a href="https://yamap.com/mountains/110" target="_blank" rel="noopener noreferrer" class="yamap-btn">
     <svg width="20" height="20" viewBox="0 0 36 36" fill="white"><polygon points="18,4 34,30 2,30"/><polygon points="18,10 30,30 6,30" fill="rgba(255,255,255,0.6)"/></svg>
-    YAMAPでコースを見る
+    YAMAPで詳細を見る
   </a>
 
   <!-- 近くて似た山 -->
   
-  <!-- YM-BOTTOM-CTA -->
-  <a href="/" style="display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#344f2c,#4a6038);border-radius:12px;padding:14px;font-size:14px;font-weight:700;color:white;text-decoration:none;margin-bottom:12px">
-    👉 条件を変えて登山を探す（Yamatch）
-  </a>
-
-  <div class="related-links-card">
+<div class="related-links-card">
   <div class="related-links-title">📋 関連するまとめ</div>
     <a href="/search/shinjuku-daytrip/" class="related-link-item">
       <span class="related-link-main">🏔 新宿から日帰りで行ける山一覧</span>
@@ -389,7 +368,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <button class="share-btn-sub" onclick="copyUrl()">🔗 URLコピー</button>
   </div>
   <div style="text-align:center;margin-bottom:16px;">
-    <a href="https://docs.google.com/forms/d/1j0ihvDwtdbjQ7La45faV16Cx1Oad3E9i01tZg2f3LJU/viewform" target="_blank" style="font-size:11px;color:#a09888;text-decoration:underline;text-underline-offset:3px;">情報の誤り・改善提案はこちら</a>
+    <a href="https://forms.gle/qsXvFTcj6H1TM7ra7" target="_blank" style="font-size:11px;color:#a09888;text-decoration:underline;text-underline-offset:3px;">情報の誤り・改善提案はこちら</a>
   </div>
 </main>
 <div style="text-align:center;padding:0 16px 16px"><a href="/" style="display:inline-block;background:#607848;color:white;font-weight:bold;font-size:15px;padding:14px 32px;border-radius:12px">← 山の一覧に戻る</a></div>
@@ -537,7 +516,6 @@ applyDep();
 
 
 // === JSONから動的データを反映 ===
-window.MID = 'tanzawa';
 (function(){
   var MID = 'tanzawa';
   fetch('/data/mountains.json')
@@ -639,43 +617,4 @@ window.MID = 'tanzawa';
   }
 })();
 </script>
-
-  <script>
-  (function(){
-    var MID_LOCAL = window.MID || '';
-    var FAV_KEY = 'ym_favorites';
-    var CLM_KEY = 'ym_climbed';
-    function getFavs(){ try{return JSON.parse(localStorage.getItem(FAV_KEY)||'[]');}catch{return[];} }
-    function getClimbs(){ try{return new Map(JSON.parse(localStorage.getItem(CLM_KEY)||'[]'));}catch{return new Map();} }
-    function updateUI(){
-      var favs = getFavs();
-      var climbs = getClimbs();
-      var isFav = favs.indexOf(MID_LOCAL) >= 0;
-      var isClimbed = climbs.has(MID_LOCAL);
-      var fi = document.getElementById('fav-icon');
-      var ci = document.getElementById('climb-icon');
-      var fb = document.getElementById('fav-btn');
-      var cb = document.getElementById('climb-btn');
-      if(fi) fi.textContent = isFav ? '⭐' : '☆';
-      if(ci) ci.textContent = isClimbed ? '🚩' : '🏳';
-      if(fb) fb.style.background = isFav ? 'rgba(255,251,224,0.5)' : 'rgba(255,255,255,0.2)';
-      if(cb) cb.style.background = isClimbed ? 'rgba(240,245,236,0.5)' : 'rgba(255,255,255,0.2)';
-    }
-    window.toggleFav = function(){
-      var favs = getFavs();
-      var idx = favs.indexOf(MID_LOCAL);
-      if(idx>=0) favs.splice(idx,1); else favs.push(MID_LOCAL);
-      localStorage.setItem(FAV_KEY, JSON.stringify(favs));
-      updateUI();
-    };
-    window.toggleClimb = function(){
-      var climbs = getClimbs();
-      if(climbs.has(MID_LOCAL)) climbs.delete(MID_LOCAL);
-      else climbs.set(MID_LOCAL, new Date().toLocaleDateString('ja-JP',{year:'numeric',month:'2-digit',day:'2-digit'}));
-      localStorage.setItem(CLM_KEY, JSON.stringify([...climbs]));
-      updateUI();
-    };
-    updateUI();
-  })();
-  </script>
 </body></html>
