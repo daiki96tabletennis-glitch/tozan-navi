@@ -576,14 +576,14 @@
     "elevation": 2057,
     "category": "百名山",
     "difficulty": "初〜中級",
-    "coeffMin": 10,
-    "coeffMax": 30,
+    "coeffMin": 13,
+    "coeffMax": 31,
     "daytrip": true,
     "trainAccess": true,
     "driveOfuna": 150,
     "driveShinjuku": 130,
-    "driveYokohama": 140,
-    "driveOmiya": 135,
+    "driveYokohama": 150,
+    "driveOmiya": 150,
     "description": "草原状の稜線から富士山や南アルプスの展望が開ける。アクセスが良く人気。",
     "yamapUrl": "https://yamap.com/mountains/178",
     "busLinks": [
@@ -622,13 +622,13 @@
     "calLegend": [
       "アイゼン不要"
     ],
-    "trailhead": "上日川峠",
+    "trailhead": "上日川峠（バスの場合は大菩薩嶺登山口）",
     "parking": "上日川峠駐車場（約100台・無料）",
     "address": "山梨県甲州市塩山上萩原",
     "gmapUrl": "https://google.com/maps/search/上日川峠/@35.672,138.7284,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.672,138.7284&q=上日川峠",
     "busScheduleLinks": [
-      "https://yamanashikotsu.co.jp/noriai/2211daigasanline/"
+      "https://ykbus.jp/route_bus/route_sp_info/daibosatsutoge/"
     ],
     "gearLinks": [
       {
@@ -682,7 +682,8 @@
       }
     ],
     "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月"
+    "season6Crampons": "12月〜4月",
+    "cc": "13〜31"
   },
   {
     "id": "ryokami",
