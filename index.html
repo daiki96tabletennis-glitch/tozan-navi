@@ -228,7 +228,7 @@ function MapView({ mountains, onSelect }) {
 }
 
 function CourseMeter({ range }) {
-  const [min, max] = range;
+  const [min, max] = Array.isArray(range) ? range : [0, 0];
   return (
     <div className="relative h-2 bg-gray-200 rounded-full my-2">
       <div
@@ -256,7 +256,7 @@ function GearBadge({ mountain, month }) {
 }
 
 function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
-  const [min, max] = mountain.courseCoefficient;
+  const [min, max] = Array.isArray(mountain.courseCoefficient) ? mountain.courseCoefficient : [0, 0];
   const stars = max >= 45 ? 5 : max >= 35 ? 4 : max >= 25 ? 3 : max >= 15 ? 2 : 1;
   const now = new Date().getMonth() + 1;
   const next = now === 12 ? 1 : now + 1;
@@ -397,7 +397,7 @@ function CategoryBadge({ category }) {
 
 // コース定数の体力度バッジ
 function CourseBadge({ courseCoefficient, courseCoefficientRange }) {
-  const max = courseCoefficient[1];
+  const max = Array.isArray(courseCoefficient) ? courseCoefficient[1] : 0;
   const bg = max >= 25 ? "#f0e0e0" : max >= 16 ? "#f0ece0" : "#e8f0e4";
   const color = max >= 25 ? "#7a3838" : max >= 16 ? "#7a6030" : "#4a6840";
   return (
@@ -699,7 +699,7 @@ function App() {
       const matchDayTrip = !dayTripOnly || isDayTrip(m);
       const matchTrainOnly = !trainOnly || !!m.trainAccess;
       const matchDriveTime = (!driveTimeFilter || getDriveTime(m) <= driveTimeFilter) && getDriveTime(m) <= 360;
-      const [cMin, cMax] = m.courseCoefficient;
+      const [cMin, cMax] = Array.isArray(m.courseCoefficient) ? m.courseCoefficient : [0, 0];
       const matchCourse = courseFilter.length === 0
         || (courseFilter.includes("〜15") && cMin <= 15)
         || (courseFilter.includes("16〜20") && cMin <= 20 && cMax >= 16)
@@ -726,7 +726,7 @@ function App() {
     });
     else if (sort === "近い順") list = [...list].sort((a, b) => getDriveTime(a) - getDriveTime(b));
     else if (sort === "標高順") list = [...list].sort((a, b) => b.elevation - a.elevation);
-    else if (sort === "体力度順") list = [...list].sort((a, b) => b.courseCoefficient[1] - a.courseCoefficient[1]);
+    else if (sort === "体力度順") list = [...list].sort((a, b) => (Array.isArray(b.courseCoefficient) ? b.courseCoefficient[1] : 0) - (Array.isArray(a.courseCoefficient) ? a.courseCoefficient[1] : 0));
     return list;
   }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure]);
 
