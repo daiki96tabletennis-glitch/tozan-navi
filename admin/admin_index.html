@@ -701,14 +701,26 @@ function getFormData() {
     affiliateUrl: document.getElementById('gear-url-'+i)?.value || g.affiliateUrl || '',
   }));
 
+  var driveOfuna    = parseInt(document.getElementById('f-ofuna').value)    || currentMountain.driveOfuna;
+  var driveShinjuku = parseInt(document.getElementById('f-shinjuku').value) || currentMountain.driveShinjuku;
+  var driveYokohama = parseInt(document.getElementById('f-yokohama').value) || currentMountain.driveYokohama;
+  var driveOmiya    = parseInt(document.getElementById('f-omiya').value)    || currentMountain.driveOmiya;
+  var coeffMin      = parseInt(document.getElementById('f-ccmin').value)    || currentMountain.coeffMin;
+  var coeffMax      = parseInt(document.getElementById('f-ccmax').value)    || currentMountain.coeffMax;
+
   return {
-    driveOfuna: parseInt(document.getElementById('f-ofuna').value) || currentMountain.driveOfuna,
-    driveShinjuku: parseInt(document.getElementById('f-shinjuku').value) || currentMountain.driveShinjuku,
-    driveYokohama: parseInt(document.getElementById('f-yokohama').value) || currentMountain.driveYokohama,
-    driveOmiya: parseInt(document.getElementById('f-omiya').value) || currentMountain.driveOmiya,
-    coeffMin: parseInt(document.getElementById('f-ccmin').value) || currentMountain.coeffMin,
-    coeffMax: parseInt(document.getElementById('f-ccmax').value) || currentMountain.coeffMax,
-    yamapUrl: document.getElementById('f-yamap').value || currentMountain.yamapUrl,
+    driveOfuna:             driveOfuna,
+    driveShinjuku:          driveShinjuku,
+    driveYokohama:          driveYokohama,
+    driveOmiya:             driveOmiya,
+    coeffMin:               coeffMin,
+    coeffMax:               coeffMax,
+    driveTime:              driveOfuna,
+    driveTimeShinjuku:      driveShinjuku,
+    driveTimeYokohama:      driveYokohama,
+    driveTimeOmiya:         driveOmiya,
+    courseCoefficient:      [coeffMin, coeffMax],
+    courseCoefficientRange: coeffMin + '〜' + coeffMax,
     busLinks: [document.getElementById('f-buslink').value].filter(Boolean),
     busScheduleLinks: [
       document.getElementById('f-busschedule').value,
@@ -727,7 +739,7 @@ function getFormData() {
       document.getElementById('f-legend3').value,
     ].filter(Boolean),
     gearLinks,
-    cc: document.getElementById('f-ccmin').value + '〜' + document.getElementById('f-ccmax').value,
+    cc: coeffMin + '〜' + coeffMax,
   };
 }
 
