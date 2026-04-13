@@ -6409,7 +6409,7 @@
     "coeffMin": 8,
     "coeffMax": 96,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "新松田駅→箱根登山バス25分→金時登山口（小田急小田原線）",
     "driveOfuna": 65,
     "driveShinjuku": 80,
     "driveYokohama": 70,
@@ -15573,5 +15573,627 @@
     "driveTimeShinjuku": 150,
     "driveTimeYokohama": 150,
     "driveTimeOmiya": 190
+  },
+  {
+    "id": "izugatake",
+    "name": "伊豆ヶ岳",
+    "area": "埼玉県 飯能市",
+    "elevation": 851,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 14,
+    "coeffMax": 18,
+    "daytrip": true,
+    "trainAccess": "正丸駅から徒歩約10分（西武秩父線）",
+    "driveShinjuku": 85,
+    "driveOfuna": 120,
+    "driveYokohama": 110,
+    "driveOmiya": 75,
+    "description": "正丸駅から徒歩圏内の奥武蔵を代表するハイキングコース。山頂直下の男坂（鎖場）が人気で、関東平野の眺望が広がる。",
+    "yamapUrl": "https://yamap.com/mountains/156",
+    "busLinks": [],
+    "warnBanner": "男坂（鎖場）は落石の危険があるため、現在は迂回路の女坂が推奨されています。",
+    "nearby": [],
+    "vibes": [
+      "rock",
+      "forest"
+    ],
+    "types": [
+      "easy",
+      "explorer"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "seasonCalendar": [
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
+    ],
+    "calLegend": [
+      "通年登山可能"
+    ],
+    "trailhead": "正丸駅前（登山口まで徒歩10分）",
+    "parking": "正丸駅前駐車場（有料）",
+    "address": "埼玉県飯能市",
+    "gmapUrl": "https://google.com/maps/search/正丸駅/@35.8657,139.0344,15z",
+    "amapUrl": "https://maps.apple.com/?ll=35.8657,139.0344&q=正丸駅",
+    "busScheduleLinks": [],
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "lat": 35.8657,
+    "lng": 139.0344,
+    "kana": "いずがたけ",
+    "driveDistance": 70,
+    "trailheadAddress": "埼玉県飯能市正丸",
+    "season": "通年（4〜6月・9〜11月が最適）",
+    "courseCoefficientRange": "14〜18",
+    "courseCoefficient": [
+      14,
+      18
+    ],
+    "seasonNoGear": "通年",
+    "season6Crampons": "なし",
+    "routes": [
+      {
+        "name": "正丸駅〜伊豆ヶ岳（ピストン）",
+        "time": "約3時間30分",
+        "distance": "7.5km",
+        "elevation": "+700m"
+      },
+      {
+        "name": "正丸駅〜古御岳〜高畑山縦走",
+        "time": "約5時間",
+        "distance": "12km",
+        "elevation": "+900m"
+      }
+    ],
+    "driveTime": 85,
+    "driveTimeShinjuku": 85,
+    "driveTimeYokohama": 110,
+    "driveTimeOmiya": 75
+  },
+  {
+    "id": "bukosan",
+    "name": "武甲山",
+    "area": "埼玉県 秩父市",
+    "elevation": 1304,
+    "category": "人気の山",
+    "difficulty": "中級",
+    "coeffMin": 22,
+    "coeffMax": 28,
+    "daytrip": true,
+    "trainAccess": "西武秩父駅→タクシー約15分→一ノ鳥居登山口（西武秩父線）",
+    "driveShinjuku": 110,
+    "driveOfuna": 140,
+    "driveYokohama": 130,
+    "driveOmiya": 80,
+    "description": "秩父盆地のシンボル。石灰岩採掘で特徴的な山容を持つが、杉林の登山道は静謐で秩父神社の奥宮もある信仰の山。山頂からの秩父盆地の眺望が圧巻。",
+    "yamapUrl": "https://yamap.com/mountains/157",
+    "busLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [
+      "forest",
+      "historical"
+    ],
+    "types": [
+      "explorer",
+      "collector"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear"
+    ],
+    "calLegend": [
+      "登山可（3〜11月）",
+      "積雪注意（12〜2月）"
+    ],
+    "trailhead": "一ノ鳥居登山口",
+    "parking": "一ノ鳥居登山口駐車場（無料・台数限定）",
+    "address": "埼玉県秩父市大字横瀬",
+    "gmapUrl": "https://google.com/maps/search/武甲山一ノ鳥居登山口/@35.9717,139.0072,15z",
+    "amapUrl": "https://maps.apple.com/?ll=35.9717,139.0072&q=武甲山登山口",
+    "busScheduleLinks": [],
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "lat": 35.9717,
+    "lng": 139.0072,
+    "kana": "ぶこうさん",
+    "driveDistance": 90,
+    "trailheadAddress": "埼玉県秩父市大字横瀬",
+    "season": "3月〜11月（冬季は積雪あり）",
+    "courseCoefficientRange": "22〜28",
+    "courseCoefficient": [
+      22,
+      28
+    ],
+    "seasonNoGear": "3月〜11月",
+    "season6Crampons": "12月〜2月",
+    "routes": [
+      {
+        "name": "一ノ鳥居〜武甲山（ピストン）",
+        "time": "約4〜5時間",
+        "distance": "8km",
+        "elevation": "+850m"
+      },
+      {
+        "name": "持山寺跡経由周回",
+        "time": "約5〜6時間",
+        "distance": "10km",
+        "elevation": "+900m"
+      }
+    ],
+    "driveTime": 110,
+    "driveTimeShinjuku": 110,
+    "driveTimeYokohama": 130,
+    "driveTimeOmiya": 80
+  },
+  {
+    "id": "nabewari",
+    "name": "鍋割山",
+    "area": "神奈川県 秦野市",
+    "elevation": 1272,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 24,
+    "coeffMax": 40,
+    "daytrip": true,
+    "trainAccess": "渋沢駅→バス15分→大倉（小田急小田原線）",
+    "driveShinjuku": 80,
+    "driveOfuna": 65,
+    "driveYokohama": 65,
+    "driveOmiya": 110,
+    "description": "山頂の小屋で食べられる鍋焼きうどんが名物。塔ノ岳・丹沢山への縦走起点でもあり、丹沢の奥深さを手軽に味わえる人気の山。",
+    "yamapUrl": "https://yamap.com/mountains/523",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=渋沢駅&type=1"
+    ],
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [
+      "forest",
+      "view"
+    ],
+    "types": [
+      "casual",
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear"
+    ],
+    "calLegend": [
+      "登山可（4〜11月）",
+      "軽アイゼン推奨（12〜3月）"
+    ],
+    "trailhead": "大倉バス停（後沢乗越ルート）",
+    "parking": "大倉駐車場（約150台・平日100〜500円・土日200〜800円）",
+    "address": "神奈川県秦野市堀山下",
+    "gmapUrl": "https://google.com/maps/search/大倉駐車場/@35.4479,139.1583,16z",
+    "amapUrl": "https://maps.apple.com/?ll=35.4479,139.1583&q=大倉駐車場",
+    "busScheduleLinks": [
+      "https://www.kanachu.co.jp/"
+    ],
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "lat": 35.4618,
+    "lng": 139.1453,
+    "kana": "なべわりやま",
+    "driveDistance": 65,
+    "trailheadAddress": "神奈川県秦野市堀山下",
+    "season": "通年（冬季は軽アイゼン推奨）",
+    "courseCoefficientRange": "24〜40",
+    "courseCoefficient": [
+      24,
+      40
+    ],
+    "seasonNoGear": "4月〜11月",
+    "season6Crampons": "12月〜3月",
+    "routes": [
+      {
+        "name": "大倉〜後沢乗越〜鍋割山（往復）",
+        "time": "約4時間〜4時間30分",
+        "distance": "9.4km",
+        "elevation": "+850m"
+      },
+      {
+        "name": "大倉〜塔ノ岳〜鍋割山周回",
+        "time": "約7時間",
+        "distance": "16km",
+        "elevation": "+1300m"
+      }
+    ],
+    "driveTime": 80,
+    "driveTimeShinjuku": 80,
+    "driveTimeYokohama": 65,
+    "driveTimeOmiya": 110
+  },
+  {
+    "id": "sannotou",
+    "name": "三ノ塔",
+    "area": "神奈川県 秦野市",
+    "elevation": 1205,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 18,
+    "coeffMax": 28,
+    "daytrip": true,
+    "trainAccess": "渋沢駅→バス15分→大倉（小田急小田原線）",
+    "driveShinjuku": 80,
+    "driveOfuna": 65,
+    "driveYokohama": 65,
+    "driveOmiya": 110,
+    "description": "丹沢表尾根の入口に位置する展望の山。山頂の避難小屋から塔ノ岳・丹沢山・大山を一望できる。大倉からのアクセスよく、半日で登れる丹沢入門コース。",
+    "yamapUrl": "https://yamap.com/mountains/2178",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=渋沢駅&type=1"
+    ],
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [
+      "view",
+      "forest"
+    ],
+    "types": [
+      "easy",
+      "explorer"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear"
+    ],
+    "calLegend": [
+      "登山可（4〜11月）",
+      "軽アイゼン推奨（12〜3月）"
+    ],
+    "trailhead": "大倉バス停（二俣ルート）",
+    "parking": "大倉駐車場（約150台・平日100〜500円・土日200〜800円）",
+    "address": "神奈川県秦野市堀山下",
+    "gmapUrl": "https://google.com/maps/search/大倉駐車場/@35.4479,139.1583,16z",
+    "amapUrl": "https://maps.apple.com/?ll=35.4479,139.1583&q=大倉駐車場",
+    "busScheduleLinks": [
+      "https://www.kanachu.co.jp/"
+    ],
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "lat": 35.4345,
+    "lng": 139.178,
+    "kana": "さんのとう",
+    "driveDistance": 65,
+    "trailheadAddress": "神奈川県秦野市堀山下",
+    "season": "通年（冬季は軽アイゼン推奨）",
+    "courseCoefficientRange": "18〜28",
+    "courseCoefficient": [
+      18,
+      28
+    ],
+    "seasonNoGear": "4月〜11月",
+    "season6Crampons": "12月〜3月",
+    "routes": [
+      {
+        "name": "大倉〜三ノ塔（往復）",
+        "time": "約3時間30分〜4時間",
+        "distance": "8km",
+        "elevation": "+800m"
+      },
+      {
+        "name": "大倉〜三ノ塔〜烏尾山縦走",
+        "time": "約5時間",
+        "distance": "11km",
+        "elevation": "+900m"
+      }
+    ],
+    "driveTime": 80,
+    "driveTimeShinjuku": 80,
+    "driveTimeYokohama": 65,
+    "driveTimeOmiya": 110
+  },
+  {
+    "id": "koubousan",
+    "name": "弘法山",
+    "area": "神奈川県 秦野市",
+    "elevation": 235,
+    "category": "人気の山",
+    "difficulty": "初級",
+    "coeffMin": 3,
+    "coeffMax": 6,
+    "daytrip": true,
+    "trainAccess": "鶴巻温泉駅・秦野駅から徒歩（小田急小田原線）",
+    "driveShinjuku": 75,
+    "driveOfuna": 55,
+    "driveYokohama": 55,
+    "driveOmiya": 105,
+    "description": "鶴巻温泉駅から徒歩で行ける低山ハイク。吾妻山・浅間山・権現山・弘法山を結ぶ4km程の稜線歩きが楽しめる。桜の名所でもあり春は特に人気。下山後に鶴巻温泉でひと風呂も。",
+    "yamapUrl": "https://yamap.com/mountains/2202",
+    "busLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [
+      "forest",
+      "historical"
+    ],
+    "types": [
+      "casual",
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "seasonCalendar": [
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
+    ],
+    "calLegend": [
+      "通年登山可"
+    ],
+    "trailhead": "鶴巻温泉駅（徒歩5分で登山口）",
+    "parking": "東名高速秦野中井IC付近有料Pなど",
+    "address": "神奈川県秦野市鶴巻",
+    "gmapUrl": "https://google.com/maps/search/弘法山公園/@35.3815,139.2257,15z",
+    "amapUrl": "https://maps.apple.com/?ll=35.3815,139.2257&q=弘法山",
+    "busScheduleLinks": [],
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "lat": 35.3815,
+    "lng": 139.2257,
+    "kana": "こうぼうやま",
+    "driveDistance": 55,
+    "trailheadAddress": "神奈川県秦野市鶴巻",
+    "season": "通年（桜シーズンは3月下旬〜4月上旬）",
+    "courseCoefficientRange": "3〜6",
+    "courseCoefficient": [
+      3,
+      6
+    ],
+    "seasonNoGear": "通年",
+    "season6Crampons": "なし",
+    "routes": [
+      {
+        "name": "鶴巻温泉駅〜弘法山〜秦野駅縦走",
+        "time": "約2時間〜2時間30分",
+        "distance": "5.5km",
+        "elevation": "+200m"
+      },
+      {
+        "name": "往復（鶴巻温泉駅発着）",
+        "time": "約1時間30分",
+        "distance": "4km",
+        "elevation": "+200m"
+      }
+    ],
+    "driveTime": 75,
+    "driveTimeShinjuku": 75,
+    "driveTimeYokohama": 55,
+    "driveTimeOmiya": 105
   }
 ]
