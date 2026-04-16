@@ -16195,5 +16195,128 @@
     "driveTimeShinjuku": 75,
     "driveTimeYokohama": 55,
     "driveTimeOmiya": 105
+  },
+  {
+    "id": "kagenobusan",
+    "name": "景信山",
+    "area": "東京都・神奈川県",
+    "elevation": 727,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 19,
+    "coeffMax": 32,
+    "daytrip": true,
+    "trainAccess": "高尾駅→京王バス21分→小仏バス停（JR中央線）",
+    "driveShinjuku": 60,
+    "driveOfuna": 55,
+    "driveYokohama": 55,
+    "driveOmiya": 90,
+    "description": "奥高尾の中心に位置する展望の山。山頂の茶屋からは富士山・関東平野を一望。なめこ汁が名物。高尾山〜陣馬山縦走の中継点でもあり、JR高尾駅からバスで手軽にアクセスできる。",
+    "yamapUrl": "https://yamap.com/mountains/239",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=高尾駅&type=1"
+    ],
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [
+      "view",
+      "forest"
+    ],
+    "types": [
+      "casual",
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "seasonCalendar": [
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
+    ],
+    "calLegend": [
+      "通年登山可"
+    ],
+    "trailhead": "小仏バス停（バス停から徒歩10分で登山口）",
+    "parking": "小仏駐車場（無料・台数少）",
+    "address": "東京都八王子市裏高尾町",
+    "gmapUrl": "https://google.com/maps/search/小仏バス停/@35.6346,139.2147,15z",
+    "amapUrl": "https://maps.apple.com/?ll=35.6346,139.2147&q=小仏バス停",
+    "busScheduleLinks": [
+      "https://www.keio-bus.com/rosen/timetable/"
+    ],
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "lat": 35.6346,
+    "lng": 139.2147,
+    "kana": "かげのぶさん",
+    "driveDistance": 45,
+    "trailheadAddress": "東京都八王子市裏高尾町小仏",
+    "season": "通年",
+    "courseCoefficientRange": "19〜32",
+    "courseCoefficient": [
+      19,
+      32
+    ],
+    "seasonNoGear": "通年",
+    "season6Crampons": "なし",
+    "routes": [
+      {
+        "name": "小仏バス停〜景信山（往復）",
+        "time": "約2時間30分〜3時間",
+        "distance": "5.5km",
+        "elevation": "+480m"
+      },
+      {
+        "name": "小仏バス停〜景信山〜陣馬山縦走",
+        "time": "約4時間30分",
+        "distance": "12km",
+        "elevation": "+900m"
+      }
+    ],
+    "driveTime": 60,
+    "driveTimeShinjuku": 60,
+    "driveTimeYokohama": 55,
+    "driveTimeOmiya": 90
   }
 ]
