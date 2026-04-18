@@ -6417,8 +6417,7 @@
     "description": "箱根の名峰。坂田金時（金太郎）伝説の山。山頂から富士山が大きく見える。茶屋あり。",
     "yamapUrl": "https://yamap.com/mountains/91",
     "busLinks": [
-      "https://transit.yahoo.co.jp/search/result?from=新宿&to=新松田駅&type=1",
-      "https://transit.yahoo.co.jp/search/result?from=新宿&to=渋沢駅&type=1"
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=新松田駅&type=1"
     ],
     "warnBanner": null,
     "nearby": [],
@@ -6458,7 +6457,7 @@
     "gmapUrl": "https://google.com/maps/search/金時登山口/@35.2514,139.0019,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.2514,139.0019&q=金時登山口",
     "busScheduleLinks": [
-      "https://www.hakone-tozanbus.co.jp/"
+      "https://www.hakonenavi.jp/transportation/ticket_info/search/timetable/detail/?timetableNo=20118-001-001"
     ],
     "gearLinks": [
       {
@@ -6541,7 +6540,9 @@
     "driveTime": 65,
     "driveTimeShinjuku": 80,
     "driveTimeYokohama": 70,
-    "driveTimeOmiya": 110
+    "driveTimeOmiya": 110,
+    "trainRoutes": [],
+    "cc": "8〜96"
   },
   {
     "id": "kayagatake",
