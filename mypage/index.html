@@ -331,6 +331,9 @@ function renderPlans() {
   el.innerHTML = html;
 }
 
+function hideChrome(){ document.querySelector('.ym-header').style.display='none'; document.querySelector('.tabs').style.display='none'; }
+function showChrome(){ document.querySelector('.ym-header').style.display=''; document.querySelector('.tabs').style.display=''; }
+
 function openPlanForm(index) {
   editingPlanIndex = index;
   var plans = getPlans();
@@ -361,8 +364,9 @@ function openPlanForm(index) {
   document.getElementById('tmpl-day').classList.add('active');
   document.getElementById('tmpl-stay').classList.remove('active');
   document.getElementById('plan-form').classList.add('open');
+  hideChrome();
 }
-function closePlanForm(){ document.getElementById('plan-form').classList.remove('open'); }
+function closePlanForm(){ document.getElementById('plan-form').classList.remove('open'); showChrome(); }
 
 function savePlan() {
   var plans = getPlans();
@@ -419,8 +423,9 @@ function openPlanDetail(index) {
   html += '<button class="pdf-btn" onclick="window.print()">📄 PDFとして保存</button>';
   document.getElementById('detail-body').innerHTML = html;
   document.getElementById('plan-detail').classList.add('open');
+  hideChrome();
 }
-function closePlanDetail(){ document.getElementById('plan-detail').classList.remove('open'); }
+function closePlanDetail(){ document.getElementById('plan-detail').classList.remove('open'); showChrome(); }
 
 function toggleDetailCheck(pi,ii,val) {
   var plans=getPlans(); if(plans[pi]&&plans[pi].items&&plans[pi].items[ii]){plans[pi].items[ii].checked=val;savePlans(plans);renderPlans();openPlanDetail(pi);}
@@ -533,8 +538,9 @@ function openAddClimbed(){
   document.getElementById('mc-area').value='';
   document.getElementById('mc-memo').value='';
   document.getElementById('add-climbed-modal').classList.add('open');
+  hideChrome();
 }
-function closeAddClimbed(){ document.getElementById('add-climbed-modal').classList.remove('open'); }
+function closeAddClimbed(){ document.getElementById('add-climbed-modal').classList.remove('open'); showChrome(); }
 function saveManualClimbed(){
   var name = document.getElementById('mc-name').value.trim();
   if (!name){ alert('山名を入力してください'); return; }
