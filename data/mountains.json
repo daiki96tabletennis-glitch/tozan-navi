@@ -714,7 +714,7 @@
     "driveTimeOmiya": 195
   },
   {
-    "id": "okutama",
+    "id": "daibosatsurei",
     "name": "大菩薩嶺",
     "area": "山梨県",
     "elevation": 2057,
@@ -1979,7 +1979,7 @@
   {
     "id": "yatsugatake",
     "name": "八ヶ岳（赤岳）",
-    "area": "山梨県・長野県南部",
+    "area": "山梨県・長野県",
     "elevation": 2899,
     "category": "百名山",
     "difficulty": "中〜上級",
@@ -2117,7 +2117,7 @@
   {
     "id": "keirisan",
     "name": "蓼科山",
-    "area": "長野県南部",
+    "area": "長野県",
     "elevation": 2531,
     "category": "百名山",
     "difficulty": "中級",
@@ -2262,7 +2262,7 @@
   {
     "id": "kirigamine",
     "name": "霧ヶ峰",
-    "area": "長野県南部",
+    "area": "長野県",
     "elevation": 1925,
     "category": "百名山",
     "difficulty": "初級",
@@ -2406,7 +2406,7 @@
   {
     "id": "asama",
     "name": "浅間山",
-    "area": "長野県南部",
+    "area": "長野県",
     "elevation": 2568,
     "category": "百名山",
     "difficulty": "中級",
@@ -3310,8 +3310,8 @@
     "trailhead": "広河原（バス）",
     "parking": "芦安駐車場（約400台・無料）※バス乗換",
     "address": "山梨県南アルプス市芦安",
-    "gmapUrl": "",
-    "amapUrl": "",
+    "gmapUrl": "https://google.com/maps/search/北沢峠/@35.7531,138.2356,16z",
+    "amapUrl": "https://maps.apple.com/?ll=35.7531,138.2356&q=北沢峠",
     "busScheduleLinks": [],
     "gearLinks": [
       {
@@ -3364,8 +3364,8 @@
         "affiliateName": ""
       }
     ],
-    "lat": null,
-    "lng": null,
+    "lat": 35.7531,
+    "lng": 138.2356,
     "kana": "かいこまがたけ",
     "driveDistance": 175,
     "trailheadAddress": "山梨県南アルプス市芦安",
@@ -3455,8 +3455,8 @@
     "trailhead": "北沢峠",
     "parking": "仙流荘駐車場（約300台・無料）※バス乗換",
     "address": "長野県伊那市長谷",
-    "gmapUrl": "",
-    "amapUrl": "",
+    "gmapUrl": "https://google.com/maps/search/北沢峠/@35.7031,138.2028,16z",
+    "amapUrl": "https://maps.apple.com/?ll=35.7031,138.2028&q=北沢峠",
     "busScheduleLinks": [],
     "gearLinks": [
       {
@@ -3509,8 +3509,8 @@
         "affiliateName": ""
       }
     ],
-    "lat": null,
-    "lng": null,
+    "lat": 35.7031,
+    "lng": 138.2028,
     "kana": "せんじょうがたけ",
     "driveDistance": 175,
     "trailheadAddress": "長野県伊那市長谷",
@@ -3544,7 +3544,7 @@
   {
     "id": "shirouma",
     "name": "白馬岳",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 2932,
     "category": "百名山",
     "difficulty": "中〜上級",
@@ -3688,7 +3688,7 @@
   {
     "id": "norikura",
     "name": "乗鞍岳",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 3026,
     "category": "百名山",
     "difficulty": "初〜中級",
@@ -4127,7 +4127,7 @@
   {
     "id": "yari",
     "name": "槍ヶ岳",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 3180,
     "category": "百名山",
     "difficulty": "上級",
@@ -4272,7 +4272,7 @@
   {
     "id": "hotaka",
     "name": "奥穂高岳",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 3190,
     "category": "百名山",
     "difficulty": "上級",
@@ -7244,7 +7244,7 @@
   {
     "id": "jonengatake",
     "name": "常念岳",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 2857,
     "category": "百名山",
     "difficulty": "中〜上級",
@@ -7383,7 +7383,7 @@
   {
     "id": "yakedake",
     "name": "焼岳",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 2455,
     "category": "百名山",
     "difficulty": "中〜上級",
@@ -8085,7 +8085,7 @@
   {
     "id": "kazahariyama",
     "name": "御座山",
-    "area": "長野県南部",
+    "area": "長野県",
     "elevation": 2112,
     "category": "二百名山",
     "difficulty": "初〜中級",
@@ -8217,7 +8217,7 @@
   {
     "id": "iwasugesan",
     "name": "岩菅山",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 2295,
     "category": "二百名山",
     "difficulty": "中級",
@@ -8361,7 +8361,7 @@
   {
     "id": "iizunasan",
     "name": "飯縄山",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 1917,
     "category": "二百名山",
     "difficulty": "初〜中級",
@@ -8498,7 +8498,7 @@
   {
     "id": "kurohimesan",
     "name": "黒姫山",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 2053,
     "category": "二百名山",
     "difficulty": "中〜上級",
@@ -9440,7 +9440,7 @@
   {
     "id": "gakedake",
     "name": "餓鬼岳",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 2647,
     "category": "二百名山",
     "difficulty": "上級",
@@ -9572,7 +9572,7 @@
   {
     "id": "arikayama",
     "name": "有明山",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 2268,
     "category": "二百名山",
     "difficulty": "中〜上級",
@@ -9704,7 +9704,7 @@
   {
     "id": "keizandake",
     "name": "経ヶ岳",
-    "area": "長野県南部",
+    "area": "長野県",
     "elevation": 2296,
     "category": "二百名山",
     "difficulty": "中級",
@@ -10543,7 +10543,7 @@
   {
     "id": "amakazari",
     "name": "雨飾山",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 1963,
     "category": "百名山",
     "difficulty": "中〜上級",
@@ -10821,7 +10821,7 @@
   {
     "id": "takatsuma",
     "name": "高妻山",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 2353,
     "category": "百名山",
     "difficulty": "中〜上級",
@@ -10959,7 +10959,7 @@
   {
     "id": "kasagatake",
     "name": "笠ヶ岳",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 2898,
     "category": "百名山",
     "difficulty": "上級",
@@ -11093,7 +11093,7 @@
   {
     "id": "ontakesan",
     "name": "御嶽山",
-    "area": "長野県南部",
+    "area": "長野県",
     "elevation": 3067,
     "category": "百名山",
     "difficulty": "中〜上級",
@@ -11232,7 +11232,7 @@
   {
     "id": "goryudake",
     "name": "五竜岳",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 2814,
     "category": "百名山",
     "difficulty": "上級",
@@ -11504,7 +11504,7 @@
   {
     "id": "kisokoma",
     "name": "木曽駒ヶ岳",
-    "area": "長野県南部",
+    "area": "長野県",
     "elevation": 2956,
     "category": "百名山",
     "difficulty": "初〜中級",
@@ -11653,7 +11653,7 @@
   {
     "id": "utsukushigahara",
     "name": "美ヶ原",
-    "area": "長野県中部",
+    "area": "長野県",
     "elevation": 2034,
     "category": "百名山",
     "difficulty": "初級",
@@ -11794,7 +11794,7 @@
   {
     "id": "karamatsu",
     "name": "唐松岳",
-    "area": "長野県北部",
+    "area": "長野県",
     "elevation": 2696,
     "category": "二百名山",
     "difficulty": "中級",
@@ -11937,7 +11937,7 @@
   {
     "id": "utsugi",
     "name": "空木岳",
-    "area": "長野県南部",
+    "area": "長野県",
     "elevation": 2864,
     "category": "百名山",
     "difficulty": "中〜上級",
@@ -12071,7 +12071,7 @@
   {
     "id": "enasan",
     "name": "恵那山",
-    "area": "長野県南部",
+    "area": "長野県",
     "elevation": 2191,
     "category": "百名山",
     "difficulty": "中級",
@@ -12211,7 +12211,7 @@
   {
     "id": "shiomidake",
     "name": "塩見岳",
-    "area": "長野県南部",
+    "area": "長野県",
     "elevation": 3052,
     "category": "百名山",
     "difficulty": "上級",
@@ -13738,7 +13738,7 @@
   {
     "id": "karisaka",
     "name": "雁坂嶺",
-    "area": "奥秩父",
+    "area": "山梨県・埼玉県",
     "elevation": 2289,
     "category": "二百名山",
     "difficulty": "中級",
@@ -14010,7 +14010,7 @@
   {
     "id": "minamikomagatake",
     "name": "南駒ヶ岳",
-    "area": "長野県南部",
+    "area": "長野県",
     "elevation": 2841,
     "category": "二百名山",
     "difficulty": "上級",
@@ -15577,7 +15577,7 @@
   {
     "id": "izugatake",
     "name": "伊豆ヶ岳",
-    "area": "埼玉県 飯能市",
+    "area": "埼玉県",
     "elevation": 851,
     "category": "人気の山",
     "difficulty": "初〜中級",
@@ -15702,7 +15702,7 @@
   {
     "id": "bukosan",
     "name": "武甲山",
-    "area": "埼玉県 秩父市",
+    "area": "埼玉県",
     "elevation": 1304,
     "category": "人気の山",
     "difficulty": "中級",
@@ -15827,7 +15827,7 @@
   {
     "id": "nabewari",
     "name": "鍋割山",
-    "area": "神奈川県 秦野市",
+    "area": "神奈川県",
     "elevation": 1272,
     "category": "人気の山",
     "difficulty": "初〜中級",
@@ -15957,7 +15957,7 @@
   {
     "id": "sannotou",
     "name": "三ノ塔",
-    "area": "神奈川県 秦野市",
+    "area": "神奈川県",
     "elevation": 1205,
     "category": "人気の山",
     "difficulty": "初〜中級",
@@ -16087,7 +16087,7 @@
   {
     "id": "koubousan",
     "name": "弘法山",
-    "area": "神奈川県 秦野市",
+    "area": "神奈川県",
     "elevation": 235,
     "category": "人気の山",
     "difficulty": "初級",
@@ -16322,7 +16322,7 @@
   {
     "id": "takagawayama",
     "name": "高川山",
-    "area": "山梨県 大月市・都留市",
+    "area": "山梨県",
     "elevation": 976,
     "category": "人気の山",
     "difficulty": "初〜中級",
