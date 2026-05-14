@@ -475,7 +475,7 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
       name: form.name.trim() || "匿名",
       date: new Date().toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }),
     };
-    setPosts(prev => [newPost, ...prev]);
+    setPosts(function(prev){ return [newPost].concat(prev); });
     setForm({ mountain: "", category: "誤情報の指摘", body: "", name: "" });
     setSuccess(true);
     setTimeout(() => setSuccess(false), 3000);
@@ -513,7 +513,7 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
                 <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>山名（任意）</label>
                 <input
                   value={form.mountain}
-                  onChange={e => setForm(f => ({ ...f, mountain: e.target.value }))}
+                  onChange={function(e){ setForm(function(f){ return Object.assign({}, f, { mountain: e.target.value }); }); }}
                   placeholder="例：安達太良山"
                   style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
                 />
@@ -522,7 +522,7 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
                 <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>種別</label>
                 <select
                   value={form.category}
-                  onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
+                  onChange={function(e){ setForm(function(f){ return Object.assign({}, f, { category: e.target.value }); }); }}
                   style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none" }}
                 >
                   {FEEDBACK_CATEGORIES.map(c => <option key={c}>{c}</option>)}
@@ -537,7 +537,7 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
               </label>
               <textarea
                 value={form.body}
-                onChange={e => setForm(f => ({ ...f, body: e.target.value }))}
+                onChange={function(e){ setForm(function(f){ return Object.assign({}, f, { body: e.target.value }); }); }}
                 placeholder="例：コース定数が違います。奥岳周回の正しい値は○○です。"
                 rows={4}
                 style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", resize: "vertical", boxSizing: "border-box", fontFamily: "inherit" }}
@@ -549,7 +549,7 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
                 <label style={{ fontSize: "11px", color: "#7a7068", fontWeight: 600, display: "block", marginBottom: "4px" }}>ニックネーム（任意）</label>
                 <input
                   value={form.name}
-                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                  onChange={function(e){ setForm(function(f){ return Object.assign({}, f, { name: e.target.value }); }); }}
                   placeholder="匿名"
                   style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
                 />
@@ -662,7 +662,7 @@ function App() {
   const [starredMountains, setStarredMountains] = useState(() => lsGet("ym_starred", []));
   const toggleStar = (id) => {
     setStarredMountains(prev => {
-      const next = prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id];
+      var next = prev.includes(id) ? prev.filter(function(x){ return x !== id; }) : prev.concat([id]);
       lsSet("ym_starred", next);
       return next;
     });
@@ -710,7 +710,7 @@ function App() {
         || (cramponsFilter === "6本以内でOK" && canClimb6Crampons(m, activeMonth));
       return matchSearch && matchArea && matchCat && matchDayTrip && matchTrainOnly && matchDriveTime && matchCourse && matchCrampons;
     });
-    if (sort === "おすすめ順") list = [...list].sort((a, b) => {
+    if (sort === "おすすめ順") list = list.slice().sort(function(a, b) {
       const scoreM = m => {
         let s = 0;
         // その月にアイゼン不要なら大幅加点
@@ -724,9 +724,9 @@ function App() {
       };
       return scoreM(b) - scoreM(a);
     });
-    else if (sort === "近い順") list = [...list].sort((a, b) => getDriveTime(a) - getDriveTime(b));
-    else if (sort === "標高順") list = [...list].sort((a, b) => b.elevation - a.elevation);
-    else if (sort === "体力度順") list = [...list].sort((a, b) => (Array.isArray(b.courseCoefficient) ? b.courseCoefficient[1] : 0) - (Array.isArray(a.courseCoefficient) ? a.courseCoefficient[1] : 0));
+    else if (sort === "近い順") list = list.slice().sort(function(a, b){ return getDriveTime(a) - getDriveTime(b); });
+    else if (sort === "標高順") list = list.slice().sort(function(a, b){ return b.elevation - a.elevation; });
+    else if (sort === "体力度順") list = list.slice().sort(function(a, b){ return (Array.isArray(b.courseCoefficient) ? b.courseCoefficient[1] : 0) - (Array.isArray(a.courseCoefficient) ? a.courseCoefficient[1] : 0); });
     return list;
   }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure]);
 
@@ -959,7 +959,7 @@ function App() {
                     {COURSE_OPTIONS.map(o => {
                       const active = courseFilter.includes(o);
                       return (
-                        <button key={o} onClick={() => setCourseFilter(active ? courseFilter.filter(x => x !== o) : [...courseFilter, o])} style={chip(active)}>体力度{o}</button>
+                        <button key={o} onClick={() => setCourseFilter(active ? courseFilter.filter(x => x !== o) : courseFilter.concat([o]))} style={chip(active)}>体力度{o}</button>
                       );
                     })}
                   </div>
