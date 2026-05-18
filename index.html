@@ -615,6 +615,9 @@ const FILTER_SEP = { width: "1px", background: "#e0dbd4", flexShrink: 0, alignSe
 const AREAS_LIST = AREAS.filter(a => a !== "すべて");
 const AREAS_ROW1 = AREAS_LIST.slice(0, Math.ceil(AREAS_LIST.length / 2));
 const AREAS_ROW2 = AREAS_LIST.slice(Math.ceil(AREAS_LIST.length / 2));
+const LINES_LIST = ["小田急線", "東武日光線", "東武伊勢崎線", "JR中央線", "西武池袋線", "西武秩父線", "JR北陸新幹線", "JR東北新幹線", "JR青梅線", "特急あずさ・大糸線", "京王線"];
+const LINES_ROW1 = LINES_LIST.slice(0, Math.ceil(LINES_LIST.length / 2));
+const LINES_ROW2 = LINES_LIST.slice(Math.ceil(LINES_LIST.length / 2));
 function chip(active) {
   return { whiteSpace: "nowrap", fontSize: "12px", padding: "6px 13px", borderRadius: "20px",
     border: active ? "none" : "1px solid #ddd8d0",
@@ -650,6 +653,7 @@ function App() {
   const [driveTimeFilter, setDriveTimeFilter] = useState(() => ssGet("ym_drivetime", null)); // null | 180 | 360
   const [courseFilter, setCourseFilter]     = useState(() => ssGet("ym_course", []));         // 複数選択
   const [cramponsFilter, setCramponsFilter] = useState(() => ssGet("ym_crampons", "すべて")); // "すべて"|"アイゼン不要"|"6本以内でOK"
+  const [lineFilter, setLineFilter]         = useState(() => ssGet("ym_line", "すべて")); // "すべて"|路線名
   const [filterMonth, setFilterMonth]       = useState(() => ssGet("ym_month", new Date().getMonth() + 1)); // 1-12
   const [viewMode, setViewMode]             = useState(() => ssGet("ym_viewmode", "list"));
   const [filterOpen, setFilterOpen] = useState(false);
@@ -680,6 +684,7 @@ function App() {
     ssSet("ym_drivetime", driveTimeFilter);
     ssSet("ym_course", courseFilter);
     ssSet("ym_crampons", cramponsFilter);
+    ssSet("ym_line", lineFilter);
     ssSet("ym_month", filterMonth);
     ssSet("ym_viewmode", viewMode);
   }, [search, sort, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, viewMode]);
@@ -708,7 +713,8 @@ function App() {
       const matchCrampons = cramponsFilter === "すべて"
         || (cramponsFilter === "アイゼン不要" && canClimbNoGear(m, activeMonth))
         || (cramponsFilter === "6本以内でOK" && canClimb6Crampons(m, activeMonth));
-      return matchSearch && matchArea && matchCat && matchDayTrip && matchTrainOnly && matchDriveTime && matchCourse && matchCrampons;
+      const matchLine = lineFilter === "すべて" || (m.lines && m.lines.includes(lineFilter));
+      return matchSearch && matchArea && matchCat && matchDayTrip && matchTrainOnly && matchDriveTime && matchCourse && matchCrampons && matchLine;
     });
     if (sort === "おすすめ順") list = list.slice().sort(function(a, b) {
       const scoreM = m => {
@@ -728,7 +734,7 @@ function App() {
     else if (sort === "標高順") list = list.slice().sort(function(a, b){ return b.elevation - a.elevation; });
     else if (sort === "体力度順") list = list.slice().sort(function(a, b){ return (Array.isArray(b.courseCoefficient) ? b.courseCoefficient[1] : 0) - (Array.isArray(a.courseCoefficient) ? a.courseCoefficient[1] : 0); });
     return list;
-  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure]);
+  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure, lineFilter]);
 
   if (selected) {
     const mountain = mountains.find(m => m.id === selected);
@@ -861,7 +867,7 @@ function App() {
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4a5a48" strokeWidth="2.5" strokeLinecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
                 <span style={{fontSize:"11px",color:"#4a5a48",fontWeight:"600"}}>条件で検索</span>
               </button>
-              <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); }} style={{flex:1,background:"rgba(255,255,255,0.88)",borderRadius:"8px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"none",cursor:"pointer"}}>
+              <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter("すべて"); }} style={{flex:1,background:"rgba(255,255,255,0.88)",borderRadius:"8px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"none",cursor:"pointer"}}>
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4a5a48" strokeWidth="2.5" strokeLinecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.1"/></svg>
                 <span style={{fontSize:"11px",color:"#4a5a48",fontWeight:"600"}}>リセット</span>
               </button>
@@ -912,9 +918,9 @@ function App() {
                 <div style={{display:"flex",alignItems:"center",gap:"6px",fontSize:"14px",fontWeight:"700",color:"#3a3530"}}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3a3530" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
                   絞り込み
-                  {[dayTripOnly,trainOnly,categoryFilter!=="すべて",area!=="すべて",!!driveTimeFilter,courseFilter.length>0,cramponsFilter!=="すべて"].filter(Boolean).length > 0 && (
+                  {[dayTripOnly,trainOnly,categoryFilter!=="すべて",area!=="すべて",!!driveTimeFilter,courseFilter.length>0,cramponsFilter!=="すべて",lineFilter!=="すべて"].filter(Boolean).length > 0 && (
                     <span style={{background:"#4e6535",color:"white",fontSize:"11px",padding:"1px 7px",borderRadius:"10px"}}>
-                      {[dayTripOnly,trainOnly,categoryFilter!=="すべて",area!=="すべて",!!driveTimeFilter,courseFilter.length>0,cramponsFilter!=="すべて"].filter(Boolean).length}
+                      {[dayTripOnly,trainOnly,categoryFilter!=="すべて",area!=="すべて",!!driveTimeFilter,courseFilter.length>0,cramponsFilter!=="すべて",lineFilter!=="すべて"].filter(Boolean).length}
                     </span>
                   )}
                 </div>
@@ -973,6 +979,22 @@ function App() {
                   ))}
                 </div>
 
+                {/* 路線フィルター: 2行×横スクロール */}
+                <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "6px", minWidth: "max-content" }}>
+                    <div style={{ display: "flex", gap: "6px" }}>
+                      {LINES_ROW1.map(l => (
+                        <button key={l} onClick={() => setLineFilter(lineFilter === l ? "すべて" : l)} style={chip(lineFilter === l)}>🚃 {l}</button>
+                      ))}
+                    </div>
+                    <div style={{ display: "flex", gap: "6px" }}>
+                      {LINES_ROW2.map(l => (
+                        <button key={l} onClick={() => setLineFilter(lineFilter === l ? "すべて" : l)} style={chip(lineFilter === l)}>🚃 {l}</button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
                 {/* 6〜7行目: エリア2行×横スクロール */}
                 <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px", minWidth: "max-content" }}>
@@ -993,7 +1015,7 @@ function App() {
               </div>
               {/* 固定フッター：適用ボタン */}
               <div style={{position:"sticky",bottom:0,background:"white",borderTop:"1px solid #e8e4dc",padding:"12px 16px",display:"flex",gap:"8px"}}>
-                <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); }} style={{flex:1,padding:"10px",borderRadius:"10px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
+                <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter("すべて"); }} style={{flex:1,padding:"10px",borderRadius:"10px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
                 <button onClick={() => setFilterOpen(false)} style={{flex:2,padding:"10px",borderRadius:"10px",border:"none",background:"#4e6535",fontSize:"13px",color:"white",fontWeight:"700",cursor:"pointer"}}>この条件で絞り込む（{filtered.length}件）</button>
               </div>
             </div>

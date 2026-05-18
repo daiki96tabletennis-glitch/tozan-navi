@@ -136,7 +136,8 @@
     "driveTime": 70,
     "driveTimeShinjuku": 75,
     "driveTimeYokohama": 75,
-    "driveTimeOmiya": 105
+    "driveTimeOmiya": 105,
+    "lines": []
   },
   {
     "id": "fuji",
@@ -281,7 +282,8 @@
     "driveTime": 120,
     "driveTimeShinjuku": 145,
     "driveTimeYokohama": 135,
-    "driveTimeOmiya": 175
+    "driveTimeOmiya": 175,
+    "lines": []
   },
   {
     "id": "tsukuba",
@@ -427,7 +429,8 @@
     "driveTime": 120,
     "driveTimeShinjuku": 150,
     "driveTimeYokohama": 120,
-    "driveTimeOmiya": 85
+    "driveTimeOmiya": 85,
+    "lines": []
   },
   {
     "id": "kumotori",
@@ -576,7 +579,10 @@
     "nearestStation": "奥多摩駅",
     "trainLine": "JR青梅線",
     "trainTimeShinjuku": 110,
-    "trainInfo": "新宿→奥多摩駅（青梅線約90分）→バス約20分"
+    "trainInfo": "新宿→奥多摩駅（青梅線約90分）→バス約20分",
+    "lines": [
+      "JR青梅線"
+    ]
   },
   {
     "id": "amagi",
@@ -715,7 +721,8 @@
     "driveTime": 150,
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 145,
-    "driveTimeOmiya": 195
+    "driveTimeOmiya": 195,
+    "lines": []
   },
   {
     "id": "okutama",
@@ -863,7 +870,10 @@
     "nearestStation": "塩山駅",
     "trainLine": "JR中央線",
     "trainTimeShinjuku": 110,
-    "trainInfo": "新宿→塩山駅（中央線特急約80分）→バス約30分"
+    "trainInfo": "新宿→塩山駅（中央線特急約80分）→バス約30分",
+    "lines": [
+      "JR中央線"
+    ]
   },
   {
     "id": "ryokami",
@@ -996,7 +1006,8 @@
     "driveTime": 150,
     "driveTimeShinjuku": 125,
     "driveTimeYokohama": 150,
-    "driveTimeOmiya": 125
+    "driveTimeOmiya": 125,
+    "lines": []
   },
   {
     "id": "kobushigatake",
@@ -1135,7 +1146,8 @@
     "driveTime": 150,
     "driveTimeShinjuku": 135,
     "driveTimeYokohama": 170,
-    "driveTimeOmiya": 175
+    "driveTimeOmiya": 175,
+    "lines": []
   },
   {
     "id": "mizugaki",
@@ -1274,7 +1286,8 @@
     "driveTime": 150,
     "driveTimeShinjuku": 135,
     "driveTimeYokohama": 160,
-    "driveTimeOmiya": 165
+    "driveTimeOmiya": 165,
+    "lines": []
   },
   {
     "id": "akagi",
@@ -1415,7 +1428,8 @@
     "driveTime": 170,
     "driveTimeShinjuku": 140,
     "driveTimeYokohama": 170,
-    "driveTimeOmiya": 125
+    "driveTimeOmiya": 125,
+    "lines": []
   },
   {
     "id": "kinpusan",
@@ -1555,7 +1569,8 @@
     "driveTime": 180,
     "driveTimeShinjuku": 160,
     "driveTimeYokohama": 175,
-    "driveTimeOmiya": 180
+    "driveTimeOmiya": 180,
+    "lines": []
   },
   {
     "id": "houou",
@@ -1693,7 +1708,8 @@
     "driveTime": 180,
     "driveTimeShinjuku": 160,
     "driveTimeYokohama": 190,
-    "driveTimeOmiya": 185
+    "driveTimeOmiya": 185,
+    "lines": []
   },
   {
     "id": "ontake",
@@ -1841,7 +1857,10 @@
     "nearestStation": "東武日光駅",
     "trainLine": "東武日光線",
     "trainTimeShinjuku": 130,
-    "trainInfo": "新宿→東武日光駅（特急約130分）→バス約10分"
+    "trainInfo": "新宿→東武日光駅（特急約130分）→バス約10分",
+    "lines": [
+      "東武日光線"
+    ]
   },
   {
     "id": "kitadake",
@@ -1986,7 +2005,8 @@
     "driveTime": 190,
     "driveTimeShinjuku": 180,
     "driveTimeYokohama": 200,
-    "driveTimeOmiya": 195
+    "driveTimeOmiya": 195,
+    "lines": []
   },
   {
     "id": "yatsugatake",
@@ -2124,7 +2144,8 @@
     "driveTime": 200,
     "driveTimeShinjuku": 160,
     "driveTimeYokohama": 165,
-    "driveTimeOmiya": 205
+    "driveTimeOmiya": 205,
+    "lines": []
   },
   {
     "id": "keirisan",
@@ -2273,7 +2294,10 @@
     "nearestStation": "茅野駅",
     "trainLine": "JR中央線",
     "trainTimeShinjuku": 120,
-    "trainInfo": "新宿→茅野駅（中央線特急約90分）→バス約30分"
+    "trainInfo": "新宿→茅野駅（中央線特急約90分）→バス約30分",
+    "lines": [
+      "JR中央線"
+    ]
   },
   {
     "id": "kirigamine",
@@ -2421,7 +2445,10 @@
     "nearestStation": "茅野駅",
     "trainLine": "JR中央線",
     "trainTimeShinjuku": 120,
-    "trainInfo": "新宿→茅野駅（中央線特急約90分）→バス約30分"
+    "trainInfo": "新宿→茅野駅（中央線特急約90分）→バス約30分",
+    "lines": [
+      "JR中央線"
+    ]
   },
   {
     "id": "asama",
@@ -2566,7 +2593,8 @@
     "driveTime": 180,
     "driveTimeShinjuku": 165,
     "driveTimeYokohama": 170,
-    "driveTimeOmiya": 165
+    "driveTimeOmiya": 165,
+    "lines": []
   },
   {
     "id": "tanigawa",
@@ -2711,7 +2739,8 @@
     "nearestStation": "土合駅",
     "trainLine": "JR上越線",
     "trainTimeShinjuku": 120,
-    "trainInfo": "新宿→土合駅（上越線約115分）徒歩→ロープウェイ"
+    "trainInfo": "新宿→土合駅（上越線約115分）徒歩→ロープウェイ",
+    "lines": []
   },
   {
     "id": "nasu",
@@ -2864,7 +2893,10 @@
     "nearestStation": "那須塩原駅",
     "trainLine": "JR東北新幹線",
     "trainTimeShinjuku": 100,
-    "trainInfo": "新宿→那須塩原駅（新幹線約70分）→バス約30分"
+    "trainInfo": "新宿→那須塩原駅（新幹線約70分）→バス約30分",
+    "lines": [
+      "JR東北新幹線"
+    ]
   },
   {
     "id": "shirane_nikko",
@@ -3003,7 +3035,8 @@
     "driveTime": 220,
     "driveTimeShinjuku": 175,
     "driveTimeYokohama": 200,
-    "driveTimeOmiya": 140
+    "driveTimeOmiya": 140,
+    "lines": []
   },
   {
     "id": "nikko_shirane",
@@ -3142,7 +3175,8 @@
     "driveTime": 220,
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 200,
-    "driveTimeOmiya": 140
+    "driveTimeOmiya": 140,
+    "lines": []
   },
   {
     "id": "takeson",
@@ -3281,7 +3315,8 @@
     "driveTime": 220,
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 240,
-    "driveTimeOmiya": 205
+    "driveTimeOmiya": 205,
+    "lines": []
   },
   {
     "id": "komagatake",
@@ -3422,7 +3457,8 @@
     "driveTime": 220,
     "driveTimeShinjuku": 175,
     "driveTimeYokohama": 225,
-    "driveTimeOmiya": 265
+    "driveTimeOmiya": 265,
+    "lines": []
   },
   {
     "id": "senjogatake",
@@ -3567,7 +3603,8 @@
     "driveTime": 220,
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 235,
-    "driveTimeOmiya": 275
+    "driveTimeOmiya": 275,
+    "lines": []
   },
   {
     "id": "shirouma",
@@ -3715,7 +3752,10 @@
     "trainLine": "特急あずさ・大糸線",
     "nearestStation": "白馬駅",
     "trainTimeShinjuku": 175,
-    "trainInfo": "新宿→松本（特急約150分）→白馬（大糸線約45分）→バス約30分"
+    "trainInfo": "新宿→松本（特急約150分）→白馬（大糸線約45分）→バス約30分",
+    "lines": [
+      "特急あずさ・大糸線"
+    ]
   },
   {
     "id": "norikura",
@@ -3862,7 +3902,8 @@
     "driveTime": 260,
     "driveTimeShinjuku": 270,
     "driveTimeYokohama": 240,
-    "driveTimeOmiya": 265
+    "driveTimeOmiya": 265,
+    "lines": []
   },
   {
     "id": "tateyama",
@@ -4015,7 +4056,8 @@
     "nearestStation": "立山駅",
     "trainLine": "富山地方鉄道",
     "trainTimeShinjuku": 210,
-    "trainInfo": "新宿→富山（新幹線約130分）→立山（地鉄約60分）→ケーブル＋高原バス"
+    "trainInfo": "新宿→富山（新幹線約130分）→立山（地鉄約60分）→ケーブル＋高原バス",
+    "lines": []
   },
   {
     "id": "tsurugi",
@@ -4162,7 +4204,8 @@
     "nearestStation": "立山駅",
     "trainLine": "富山地方鉄道",
     "trainTimeShinjuku": 240,
-    "trainInfo": "新宿→富山（新幹線約130分）→立山（地鉄約60分）→ケーブル＋高原バス＋徒歩"
+    "trainInfo": "新宿→富山（新幹線約130分）→立山（地鉄約60分）→ケーブル＋高原バス＋徒歩",
+    "lines": []
   },
   {
     "id": "yari",
@@ -4307,7 +4350,8 @@
     "driveTime": 340,
     "driveTimeShinjuku": 330,
     "driveTimeYokohama": 280,
-    "driveTimeOmiya": 275
+    "driveTimeOmiya": 275,
+    "lines": []
   },
   {
     "id": "hotaka",
@@ -4452,7 +4496,8 @@
     "driveTime": 335,
     "driveTimeShinjuku": 325,
     "driveTimeYokohama": 280,
-    "driveTimeOmiya": 275
+    "driveTimeOmiya": 275,
+    "lines": []
   },
   {
     "id": "myoko",
@@ -4599,7 +4644,8 @@
     "nearestStation": "妙高高原駅",
     "trainLine": "えちごトキめき鉄道",
     "trainTimeShinjuku": 150,
-    "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約20分"
+    "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約20分",
+    "lines": []
   },
   {
     "id": "makihata",
@@ -4747,7 +4793,8 @@
     "nearestStation": "六日町駅",
     "trainLine": "JR上越線",
     "trainTimeShinjuku": 150,
-    "trainInfo": "新宿→越後湯沢（新幹線約80分）→六日町（上越線約15分）→タクシー約30分"
+    "trainInfo": "新宿→越後湯沢（新幹線約80分）→六日町（上越線約15分）→タクシー約30分",
+    "lines": []
   },
   {
     "id": "iide",
@@ -4886,7 +4933,8 @@
     "driveTime": 310,
     "driveTimeShinjuku": 270,
     "driveTimeYokohama": 310,
-    "driveTimeOmiya": 270
+    "driveTimeOmiya": 270,
+    "lines": []
   },
   {
     "id": "shibutsu",
@@ -5032,7 +5080,8 @@
     "driveTime": 240,
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 250,
-    "driveTimeOmiya": 220
+    "driveTimeOmiya": 220,
+    "lines": []
   },
   {
     "id": "aizu_koma",
@@ -5173,7 +5222,8 @@
     "driveTime": 295,
     "driveTimeShinjuku": 265,
     "driveTimeYokohama": 270,
-    "driveTimeOmiya": 240
+    "driveTimeOmiya": 240,
+    "lines": []
   },
   {
     "id": "shirane_gunma",
@@ -5327,7 +5377,8 @@
     "nearestStation": "長野原草津口駅",
     "trainLine": "JR吾妻線",
     "trainTimeShinjuku": 150,
-    "trainInfo": "新宿→長野原草津口（吾妻線約120分）→バス約30分"
+    "trainInfo": "新宿→長野原草津口（吾妻線約120分）→バス約30分",
+    "lines": []
   },
   {
     "id": "bandai",
@@ -5474,7 +5525,8 @@
     "nearestStation": "猪苗代駅",
     "trainLine": "JR磐越西線",
     "trainTimeShinjuku": 180,
-    "trainInfo": "新宿→郡山（新幹線約70分）→猪苗代（磐越西線約35分）→バス"
+    "trainInfo": "新宿→郡山（新幹線約70分）→猪苗代（磐越西線約35分）→バス",
+    "lines": []
   },
   {
     "id": "nikko_nantai",
@@ -5613,7 +5665,8 @@
     "driveTime": 295,
     "driveTimeShinjuku": 265,
     "driveTimeYokohama": 190,
-    "driveTimeOmiya": 130
+    "driveTimeOmiya": 130,
+    "lines": []
   },
   {
     "id": "takao",
@@ -5767,7 +5820,10 @@
     "nearestStation": "高尾山口駅",
     "trainLine": "京王線",
     "trainTimeShinjuku": 50,
-    "trainInfo": "新宿→高尾山口駅（京王線約50分）徒歩5分"
+    "trainInfo": "新宿→高尾山口駅（京王線約50分）徒歩5分",
+    "lines": [
+      "京王線"
+    ]
   },
   {
     "id": "oyama",
@@ -5913,7 +5969,10 @@
     "nearestStation": "伊勢原駅",
     "trainLine": "小田急線",
     "trainTimeShinjuku": 75,
-    "trainInfo": "新宿→伊勢原駅（小田急約60分）→バス約15分"
+    "trainInfo": "新宿→伊勢原駅（小田急約60分）→バス約15分",
+    "lines": [
+      "小田急線"
+    ]
   },
   {
     "id": "tonosaki",
@@ -6054,7 +6113,10 @@
     "nearestStation": "渋沢駅",
     "trainLine": "小田急線",
     "trainTimeShinjuku": 90,
-    "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約25分"
+    "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約25分",
+    "lines": [
+      "小田急線"
+    ]
   },
   {
     "id": "hirugata",
@@ -6194,7 +6256,10 @@
     "nearestStation": "渋沢駅",
     "trainLine": "小田急線",
     "trainTimeShinjuku": 95,
-    "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約30分"
+    "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約30分",
+    "lines": [
+      "小田急線"
+    ]
   },
   {
     "id": "jinba",
@@ -6340,7 +6405,10 @@
     "nearestStation": "藤野駅",
     "trainLine": "JR中央線",
     "trainTimeShinjuku": 75,
-    "trainInfo": "新宿→藤野駅（中央線約55分）→バス約20分"
+    "trainInfo": "新宿→藤野駅（中央線約55分）→バス約20分",
+    "lines": [
+      "JR中央線"
+    ]
   },
   {
     "id": "mitsuToge",
@@ -6473,7 +6541,8 @@
     "driveTime": 120,
     "driveTimeShinjuku": 105,
     "driveTimeYokohama": 120,
-    "driveTimeOmiya": 130
+    "driveTimeOmiya": 130,
+    "lines": []
   },
   {
     "id": "kintoki",
@@ -6621,7 +6690,10 @@
     "nearestStation": "仙石原バス停",
     "trainLine": "小田急線",
     "trainTimeShinjuku": 100,
-    "trainInfo": "新宿→箱根湯本（小田急約80分）→バス約20分"
+    "trainInfo": "新宿→箱根湯本（小田急約80分）→バス約20分",
+    "lines": [
+      "小田急線"
+    ]
   },
   {
     "id": "kayagatake",
@@ -6759,7 +6831,8 @@
     "driveTime": 130,
     "driveTimeShinjuku": 130,
     "driveTimeYokohama": 120,
-    "driveTimeOmiya": 160
+    "driveTimeOmiya": 160,
+    "lines": []
   },
   {
     "id": "kentoku",
@@ -6905,7 +6978,10 @@
     "nearestStation": "塩山駅",
     "trainLine": "JR中央線",
     "trainTimeShinjuku": 120,
-    "trainInfo": "新宿→塩山駅（中央線特急約80分）→バス約40分"
+    "trainInfo": "新宿→塩山駅（中央線特急約80分）→バス約40分",
+    "lines": [
+      "JR中央線"
+    ]
   },
   {
     "id": "hinata",
@@ -7044,7 +7120,8 @@
     "driveTime": 160,
     "driveTimeShinjuku": 145,
     "driveTimeYokohama": 150,
-    "driveTimeOmiya": 190
+    "driveTimeOmiya": 190,
+    "lines": []
   },
   {
     "id": "bonori",
@@ -7191,7 +7268,10 @@
     "nearestStation": "飯能駅",
     "trainLine": "西武池袋線",
     "trainTimeShinjuku": 90,
-    "trainInfo": "池袋→飯能駅（西武池袋線約55分）→バス約35分"
+    "trainInfo": "池袋→飯能駅（西武池袋線約55分）→バス約35分",
+    "lines": [
+      "西武池袋線"
+    ]
   },
   {
     "id": "otake",
@@ -7331,7 +7411,10 @@
     "nearestStation": "御嶽駅",
     "trainLine": "JR青梅線",
     "trainTimeShinjuku": 100,
-    "trainInfo": "新宿→御嶽駅（青梅線約75分）→バス約25分"
+    "trainInfo": "新宿→御嶽駅（青梅線約75分）→バス約25分",
+    "lines": [
+      "JR青梅線"
+    ]
   },
   {
     "id": "jonengatake",
@@ -7470,7 +7553,8 @@
     "driveTime": 290,
     "driveTimeShinjuku": 255,
     "driveTimeYokohama": 265,
-    "driveTimeOmiya": 260
+    "driveTimeOmiya": 260,
+    "lines": []
   },
   {
     "id": "yakedake",
@@ -7615,7 +7699,8 @@
     "driveTime": 280,
     "driveTimeShinjuku": 285,
     "driveTimeYokohama": 260,
-    "driveTimeOmiya": 255
+    "driveTimeOmiya": 255,
+    "lines": []
   },
   {
     "id": "kashimayari",
@@ -7762,7 +7847,10 @@
     "trainLine": "特急あずさ・大糸線",
     "nearestStation": "信濃大町駅",
     "trainTimeShinjuku": 195,
-    "trainInfo": "新宿→松本（特急約150分）→信濃大町（大糸線約30分）→バス約55分＋徒歩"
+    "trainInfo": "新宿→松本（特急約150分）→信濃大町（大糸線約30分）→バス約55分＋徒歩",
+    "lines": [
+      "特急あずさ・大糸線"
+    ]
   },
   {
     "id": "koganzan",
@@ -7908,7 +7996,10 @@
     "nearestStation": "塩山駅",
     "trainLine": "JR中央線",
     "trainTimeShinjuku": 110,
-    "trainInfo": "新宿→塩山駅（中央線特急約80分）→バス約30分"
+    "trainInfo": "新宿→塩山駅（中央線特急約80分）→バス約30分",
+    "lines": [
+      "JR中央線"
+    ]
   },
   {
     "id": "arafune",
@@ -8048,7 +8139,8 @@
     "driveTime": 155,
     "driveTimeShinjuku": 120,
     "driveTimeYokohama": 165,
-    "driveTimeOmiya": 165
+    "driveTimeOmiya": 165,
+    "lines": []
   },
   {
     "id": "asamamakurayama",
@@ -8180,7 +8272,8 @@
     "driveTime": 175,
     "driveTimeShinjuku": 145,
     "driveTimeYokohama": 185,
-    "driveTimeOmiya": 185
+    "driveTimeOmiya": 185,
+    "lines": []
   },
   {
     "id": "kazahariyama",
@@ -8312,7 +8405,8 @@
     "driveTime": 160,
     "driveTimeShinjuku": 165,
     "driveTimeYokohama": 155,
-    "driveTimeOmiya": 190
+    "driveTimeOmiya": 190,
+    "lines": []
   },
   {
     "id": "iwasugesan",
@@ -8460,7 +8554,8 @@
     "nearestStation": "湯田中駅",
     "trainLine": "長野電鉄",
     "trainTimeShinjuku": 145,
-    "trainInfo": "新宿→長野（新幹線約90分）→湯田中（長野電鉄約40分）→バス約15分"
+    "trainInfo": "新宿→長野（新幹線約90分）→湯田中（長野電鉄約40分）→バス約15分",
+    "lines": []
   },
   {
     "id": "iizunasan",
@@ -8601,7 +8696,10 @@
     "nearestStation": "長野駅",
     "trainLine": "JR北陸新幹線",
     "trainTimeShinjuku": 120,
-    "trainInfo": "新宿→長野駅（新幹線約90分）→バス約30分"
+    "trainInfo": "新宿→長野駅（新幹線約90分）→バス約30分",
+    "lines": [
+      "JR北陸新幹線"
+    ]
   },
   {
     "id": "kurohimesan",
@@ -8748,7 +8846,8 @@
     "nearestStation": "黒姫駅",
     "trainLine": "JR信越本線",
     "trainTimeShinjuku": 130,
-    "trainInfo": "新宿→長野（新幹線約90分）→黒姫（信越本線約25分）→バス"
+    "trainInfo": "新宿→長野（新幹線約90分）→黒姫（信越本線約25分）→バス",
+    "lines": []
   },
   {
     "id": "kenashiyama",
@@ -8882,7 +8981,8 @@
     "driveTime": 145,
     "driveTimeShinjuku": 145,
     "driveTimeYokohama": 135,
-    "driveTimeOmiya": 175
+    "driveTimeOmiya": 175,
+    "lines": []
   },
   {
     "id": "shirasunayama",
@@ -9014,7 +9114,8 @@
     "driveTime": 210,
     "driveTimeShinjuku": 205,
     "driveTimeYokohama": 220,
-    "driveTimeOmiya": 220
+    "driveTimeOmiya": 220,
+    "lines": []
   },
   {
     "id": "nanaitsurasan",
@@ -9154,7 +9255,8 @@
     "nearestStation": "身延駅",
     "trainLine": "JR身延線",
     "trainTimeShinjuku": 150,
-    "trainInfo": "新宿→身延駅（新幹線＋身延線約130分）→バス約20分"
+    "trainInfo": "新宿→身延駅（新幹線＋身延線約130分）→バス約20分",
+    "lines": []
   },
   {
     "id": "arasawadake",
@@ -9287,7 +9389,8 @@
     "driveTime": 300,
     "driveTimeShinjuku": 285,
     "driveTimeYokohama": 315,
-    "driveTimeOmiya": 310
+    "driveTimeOmiya": 310,
+    "lines": []
   },
   {
     "id": "nakawarayama",
@@ -9419,7 +9522,8 @@
     "driveTime": 155,
     "driveTimeShinjuku": 135,
     "driveTimeYokohama": 150,
-    "driveTimeOmiya": 170
+    "driveTimeOmiya": 170,
+    "lines": []
   },
   {
     "id": "yarigatake2",
@@ -9551,7 +9655,8 @@
     "driveTime": 155,
     "driveTimeShinjuku": 195,
     "driveTimeYokohama": 145,
-    "driveTimeOmiya": 185
+    "driveTimeOmiya": 185,
+    "lines": []
   },
   {
     "id": "gakedake",
@@ -9683,7 +9788,8 @@
     "driveTime": 270,
     "driveTimeShinjuku": 260,
     "driveTimeYokohama": 265,
-    "driveTimeOmiya": 300
+    "driveTimeOmiya": 300,
+    "lines": []
   },
   {
     "id": "arikayama",
@@ -9815,7 +9921,8 @@
     "driveTime": 255,
     "driveTimeShinjuku": 250,
     "driveTimeYokohama": 250,
-    "driveTimeOmiya": 285
+    "driveTimeOmiya": 285,
+    "lines": []
   },
   {
     "id": "keizandake",
@@ -9948,7 +10055,8 @@
     "driveTime": 240,
     "driveTimeShinjuku": 230,
     "driveTimeYokohama": 235,
-    "driveTimeOmiya": 270
+    "driveTimeOmiya": 270,
+    "lines": []
   },
   {
     "id": "adatara",
@@ -10095,7 +10203,8 @@
     "nearestStation": "二本松駅",
     "trainLine": "JR東北本線",
     "trainTimeShinjuku": 170,
-    "trainInfo": "新宿→郡山（新幹線約70分）→二本松（東北本線約20分）→バス約40分"
+    "trainInfo": "新宿→郡山（新幹線約70分）→二本松（東北本線約20分）→バス約40分",
+    "lines": []
   },
   {
     "id": "azuma",
@@ -10234,7 +10343,8 @@
     "driveTime": 300,
     "driveTimeShinjuku": 280,
     "driveTimeYokohama": 290,
-    "driveTimeOmiya": 255
+    "driveTimeOmiya": 255,
+    "lines": []
   },
   {
     "id": "echigokoma",
@@ -10374,7 +10484,8 @@
     "driveTime": 300,
     "driveTimeShinjuku": 285,
     "driveTimeYokohama": 250,
-    "driveTimeOmiya": 230
+    "driveTimeOmiya": 230,
+    "lines": []
   },
   {
     "id": "hiragadake",
@@ -10514,7 +10625,8 @@
     "driveTime": 340,
     "driveTimeShinjuku": 325,
     "driveTimeYokohama": 230,
-    "driveTimeOmiya": 220
+    "driveTimeOmiya": 220,
+    "lines": []
   },
   {
     "id": "naeba",
@@ -10662,7 +10774,8 @@
     "nearestStation": "越後湯沢駅",
     "trainLine": "JR上越新幹線",
     "trainTimeShinjuku": 120,
-    "trainInfo": "新宿→越後湯沢（新幹線約80分）→バス約40分"
+    "trainInfo": "新宿→越後湯沢（新幹線約80分）→バス約40分",
+    "lines": []
   },
   {
     "id": "amakazari",
@@ -10802,7 +10915,8 @@
     "driveTime": 310,
     "driveTimeShinjuku": 295,
     "driveTimeYokohama": 280,
-    "driveTimeOmiya": 295
+    "driveTimeOmiya": 295,
+    "lines": []
   },
   {
     "id": "hiuchi",
@@ -10944,7 +11058,8 @@
     "nearestStation": "妙高高原駅",
     "trainLine": "えちごトキめき鉄道",
     "trainTimeShinjuku": 150,
-    "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約40分"
+    "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約40分",
+    "lines": []
   },
   {
     "id": "takatsuma",
@@ -11082,7 +11197,8 @@
     "driveTime": 240,
     "driveTimeShinjuku": 225,
     "driveTimeYokohama": 195,
-    "driveTimeOmiya": 165
+    "driveTimeOmiya": 165,
+    "lines": []
   },
   {
     "id": "kasagatake",
@@ -11216,7 +11332,8 @@
     "driveTime": 345,
     "driveTimeShinjuku": 335,
     "driveTimeYokohama": 330,
-    "driveTimeOmiya": 350
+    "driveTimeOmiya": 350,
+    "lines": []
   },
   {
     "id": "ontakesan",
@@ -11355,7 +11472,8 @@
     "driveTime": 290,
     "driveTimeShinjuku": 290,
     "driveTimeYokohama": 275,
-    "driveTimeOmiya": 300
+    "driveTimeOmiya": 300,
+    "lines": []
   },
   {
     "id": "goryudake",
@@ -11497,7 +11615,10 @@
     "trainLine": "特急あずさ・大糸線",
     "nearestStation": "神城駅",
     "trainTimeShinjuku": 175,
-    "trainInfo": "新宿→松本（特急約150分）→神城（大糸線約50分）→バス＋ゴンドラ"
+    "trainInfo": "新宿→松本（特急約150分）→神城（大糸線約50分）→バス＋ゴンドラ",
+    "lines": [
+      "特急あずさ・大糸線"
+    ]
   },
   {
     "id": "sukai",
@@ -11631,7 +11752,8 @@
     "driveTime": 230,
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 265,
-    "driveTimeOmiya": 295
+    "driveTimeOmiya": 295,
+    "lines": []
   },
   {
     "id": "kisokoma",
@@ -11784,7 +11906,8 @@
     "nearestStation": "駒ヶ根駅",
     "trainLine": "JR飯田線",
     "trainTimeShinjuku": 160,
-    "trainInfo": "新宿→駒ヶ根（特急約155分）→バス→ロープウェイ"
+    "trainInfo": "新宿→駒ヶ根（特急約155分）→バス→ロープウェイ",
+    "lines": []
   },
   {
     "id": "utsukushigahara",
@@ -11925,7 +12048,8 @@
     "driveTime": 195,
     "driveTimeShinjuku": 175,
     "driveTimeYokohama": 185,
-    "driveTimeOmiya": 210
+    "driveTimeOmiya": 210,
+    "lines": []
   },
   {
     "id": "karamatsu",
@@ -12072,7 +12196,10 @@
     "trainLine": "特急あずさ・大糸線",
     "nearestStation": "白馬駅",
     "trainTimeShinjuku": 170,
-    "trainInfo": "新宿→松本（特急約150分）→白馬（大糸線約45分）→バス＋ゴンドラ"
+    "trainInfo": "新宿→松本（特急約150分）→白馬（大糸線約45分）→バス＋ゴンドラ",
+    "lines": [
+      "特急あずさ・大糸線"
+    ]
   },
   {
     "id": "utsugi",
@@ -12206,7 +12333,8 @@
     "driveTime": 255,
     "driveTimeShinjuku": 235,
     "driveTimeYokohama": 230,
-    "driveTimeOmiya": 225
+    "driveTimeOmiya": 225,
+    "lines": []
   },
   {
     "id": "enasan",
@@ -12346,7 +12474,8 @@
     "driveTime": 270,
     "driveTimeShinjuku": 250,
     "driveTimeYokohama": 230,
-    "driveTimeOmiya": 270
+    "driveTimeOmiya": 270,
+    "lines": []
   },
   {
     "id": "shiomidake",
@@ -12485,7 +12614,8 @@
     "driveTime": 270,
     "driveTimeShinjuku": 250,
     "driveTimeYokohama": 255,
-    "driveTimeOmiya": 295
+    "driveTimeOmiya": 295,
+    "lines": []
   },
   {
     "id": "arakawadake",
@@ -12624,7 +12754,8 @@
     "driveTime": 330,
     "driveTimeShinjuku": 310,
     "driveTimeYokohama": 255,
-    "driveTimeOmiya": 295
+    "driveTimeOmiya": 295,
+    "lines": []
   },
   {
     "id": "akaisidake",
@@ -12770,7 +12901,8 @@
     "driveTime": 330,
     "driveTimeShinjuku": 310,
     "driveTimeYokohama": 275,
-    "driveTimeOmiya": 265
+    "driveTimeOmiya": 265,
+    "lines": []
   },
   {
     "id": "hijiridade",
@@ -12911,7 +13043,8 @@
     "driveTime": 340,
     "driveTimeShinjuku": 320,
     "driveTimeYokohama": 275,
-    "driveTimeOmiya": 315
+    "driveTimeOmiya": 315,
+    "lines": []
   },
   {
     "id": "terkari",
@@ -13045,7 +13178,8 @@
     "driveTime": 360,
     "driveTimeShinjuku": 340,
     "driveTimeYokohama": 290,
-    "driveTimeOmiya": 310
+    "driveTimeOmiya": 310,
+    "lines": []
   },
   {
     "id": "yakushidake",
@@ -13184,7 +13318,8 @@
     "driveTime": 370,
     "driveTimeShinjuku": 355,
     "driveTimeYokohama": 355,
-    "driveTimeOmiya": 390
+    "driveTimeOmiya": 390,
+    "lines": []
   },
   {
     "id": "kurobegorodam",
@@ -13317,7 +13452,8 @@
     "driveTime": 390,
     "driveTimeShinjuku": 375,
     "driveTimeYokohama": 350,
-    "driveTimeOmiya": 365
+    "driveTimeOmiya": 365,
+    "lines": []
   },
   {
     "id": "ainodake",
@@ -13456,7 +13592,8 @@
     "driveTime": 195,
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 220,
-    "driveTimeOmiya": 260
+    "driveTimeOmiya": 260,
+    "lines": []
   },
   {
     "id": "noutori",
@@ -13587,7 +13724,8 @@
     "driveTime": 195,
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 185,
-    "driveTimeOmiya": 225
+    "driveTimeOmiya": 225,
+    "lines": []
   },
   {
     "id": "hakusan",
@@ -13733,7 +13871,8 @@
     "driveTime": 345,
     "driveTimeShinjuku": 330,
     "driveTimeYokohama": 325,
-    "driveTimeOmiya": 355
+    "driveTimeOmiya": 355,
+    "lines": []
   },
   {
     "id": "zaosan",
@@ -13873,7 +14012,8 @@
     "driveTime": 360,
     "driveTimeShinjuku": 340,
     "driveTimeYokohama": 365,
-    "driveTimeOmiya": 315
+    "driveTimeOmiya": 315,
+    "lines": []
   },
   {
     "id": "karisaka",
@@ -14012,7 +14152,8 @@
     "driveTime": 160,
     "driveTimeShinjuku": 145,
     "driveTimeYokohama": 150,
-    "driveTimeOmiya": 155
+    "driveTimeOmiya": 155,
+    "lines": []
   },
   {
     "id": "nokogiriyama",
@@ -14145,7 +14286,8 @@
     "driveTime": 230,
     "driveTimeShinjuku": 210,
     "driveTimeYokohama": 230,
-    "driveTimeOmiya": 255
+    "driveTimeOmiya": 255,
+    "lines": []
   },
   {
     "id": "minamikomagatake",
@@ -14287,7 +14429,8 @@
     "nearestStation": "駒ヶ根駅",
     "trainLine": "JR飯田線",
     "trainTimeShinjuku": 175,
-    "trainInfo": "新宿→駒ヶ根（特急約155分）→バス→ロープウェイ＋徒歩"
+    "trainInfo": "新宿→駒ヶ根（特急約155分）→バス→ロープウェイ＋徒歩",
+    "lines": []
   },
   {
     "id": "chogatake",
@@ -14426,7 +14569,8 @@
     "driveTime": 300,
     "driveTimeShinjuku": 280,
     "driveTimeYokohama": 300,
-    "driveTimeOmiya": 325
+    "driveTimeOmiya": 325,
+    "lines": []
   },
   {
     "id": "otenshoudake",
@@ -14559,7 +14703,8 @@
     "driveTime": 320,
     "driveTimeShinjuku": 300,
     "driveTimeYokohama": 320,
-    "driveTimeOmiya": 345
+    "driveTimeOmiya": 345,
+    "lines": []
   },
   {
     "id": "harinokidake",
@@ -14705,7 +14850,10 @@
     "trainLine": "特急あずさ・大糸線",
     "nearestStation": "信濃大町駅",
     "trainTimeShinjuku": 190,
-    "trainInfo": "新宿→松本（特急約150分）→信濃大町（大糸線約30分）→バス約55分"
+    "trainInfo": "新宿→松本（特急約150分）→信濃大町（大糸線約30分）→バス約55分",
+    "lines": [
+      "特急あずさ・大糸線"
+    ]
   },
   {
     "id": "eboshidake_kita",
@@ -14839,7 +14987,8 @@
     "driveTime": 355,
     "driveTimeShinjuku": 340,
     "driveTimeYokohama": 355,
-    "driveTimeOmiya": 380
+    "driveTimeOmiya": 380,
+    "lines": []
   },
   {
     "id": "noguchigoro",
@@ -14973,7 +15122,8 @@
     "driveTime": 355,
     "driveTimeShinjuku": 340,
     "driveTimeYokohama": 355,
-    "driveTimeOmiya": 380
+    "driveTimeOmiya": 380,
+    "lines": []
   },
   {
     "id": "nokogiriyama_chiba",
@@ -15113,7 +15263,8 @@
     "nearestStation": "浜金谷駅",
     "trainLine": "JR内房線",
     "trainTimeShinjuku": 100,
-    "trainInfo": "新宿→君津（総武線快速約60分）→浜金谷（内房線約35分）徒歩"
+    "trainInfo": "新宿→君津（総武線快速約60分）→浜金谷（内房線約35分）徒歩",
+    "lines": []
   },
   {
     "id": "mitakesan",
@@ -15255,7 +15406,10 @@
     "nearestStation": "御嶽駅",
     "trainLine": "JR青梅線",
     "trainTimeShinjuku": 85,
-    "trainInfo": "新宿→御嶽駅（青梅線約75分）→バス→ケーブルカー"
+    "trainInfo": "新宿→御嶽駅（青梅線約75分）→バス→ケーブルカー",
+    "lines": [
+      "JR青梅線"
+    ]
   },
   {
     "id": "takamizusanzan",
@@ -15394,7 +15548,10 @@
     "nearestStation": "軍畑駅",
     "trainLine": "JR青梅線",
     "trainTimeShinjuku": 85,
-    "trainInfo": "新宿→軍畑駅（青梅線約75分）徒歩10分"
+    "trainInfo": "新宿→軍畑駅（青梅線約75分）徒歩10分",
+    "lines": [
+      "JR青梅線"
+    ]
   },
   {
     "id": "tenzandake",
@@ -15536,7 +15693,10 @@
     "nearestStation": "飯能駅",
     "trainLine": "西武池袋線",
     "trainTimeShinjuku": 60,
-    "trainInfo": "池袋→飯能駅（西武池袋線約55分）徒歩20分"
+    "trainInfo": "池袋→飯能駅（西武池袋線約55分）徒歩20分",
+    "lines": [
+      "西武池袋線"
+    ]
   },
   {
     "id": "hiwadayama",
@@ -15676,7 +15836,10 @@
     "nearestStation": "高麗駅",
     "trainLine": "西武池袋線",
     "trainTimeShinjuku": 65,
-    "trainInfo": "池袋→高麗駅（西武池袋線約55分）徒歩15分"
+    "trainInfo": "池袋→高麗駅（西武池袋線約55分）徒歩15分",
+    "lines": [
+      "西武池袋線"
+    ]
   },
   {
     "id": "mizugatake",
@@ -15740,7 +15903,8 @@
     "driveTime": 160,
     "driveTimeShinjuku": 150,
     "driveTimeYokohama": 150,
-    "driveTimeOmiya": 190
+    "driveTimeOmiya": 190,
+    "lines": []
   },
   {
     "id": "izugatake",
@@ -15869,7 +16033,10 @@
     "nearestStation": "正丸駅",
     "trainLine": "西武秩父線",
     "trainTimeShinjuku": 80,
-    "trainInfo": "池袋→正丸駅（西武秩父線約70分）徒歩10分"
+    "trainInfo": "池袋→正丸駅（西武秩父線約70分）徒歩10分",
+    "lines": [
+      "西武秩父線"
+    ]
   },
   {
     "id": "bukosan",
@@ -15998,7 +16165,10 @@
     "nearestStation": "西武秩父駅",
     "trainLine": "西武秩父線",
     "trainTimeShinjuku": 100,
-    "trainInfo": "池袋→西武秩父駅（西武秩父線約80分）→タクシー"
+    "trainInfo": "池袋→西武秩父駅（西武秩父線約80分）→タクシー",
+    "lines": [
+      "西武秩父線"
+    ]
   },
   {
     "id": "nabewari",
@@ -16132,7 +16302,10 @@
     "nearestStation": "渋沢駅",
     "trainLine": "小田急線",
     "trainTimeShinjuku": 95,
-    "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約30分"
+    "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約30分",
+    "lines": [
+      "小田急線"
+    ]
   },
   {
     "id": "sannotou",
@@ -16266,7 +16439,10 @@
     "nearestStation": "渋沢駅",
     "trainLine": "小田急線",
     "trainTimeShinjuku": 90,
-    "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約25分"
+    "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約25分",
+    "lines": [
+      "小田急線"
+    ]
   },
   {
     "id": "koubousan",
@@ -16382,7 +16558,10 @@
     "nearestStation": "鶴巻温泉駅",
     "trainLine": "小田急線",
     "trainTimeShinjuku": 65,
-    "trainInfo": "新宿→鶴巻温泉駅（小田急約55分）徒歩15分"
+    "trainInfo": "新宿→鶴巻温泉駅（小田急約55分）徒歩15分",
+    "lines": [
+      "小田急線"
+    ]
   },
   {
     "id": "kagenobusan",
@@ -16509,7 +16688,10 @@
     "nearestStation": "高尾駅",
     "trainLine": "JR中央線",
     "trainTimeShinjuku": 65,
-    "trainInfo": "新宿→高尾駅（中央線約40分）→バス約25分"
+    "trainInfo": "新宿→高尾駅（中央線約40分）→バス約25分",
+    "lines": [
+      "JR中央線"
+    ]
   },
   {
     "id": "takagawayama",
@@ -16634,7 +16816,10 @@
     "nearestStation": "初狩駅",
     "trainLine": "JR中央線",
     "trainTimeShinjuku": 80,
-    "trainInfo": "新宿→初狩駅（中央線約75分）徒歩すぐ"
+    "trainInfo": "新宿→初狩駅（中央線約75分）徒歩すぐ",
+    "lines": [
+      "JR中央線"
+    ]
   },
   {
     "id": "kobotokeshiroyama",
@@ -16679,7 +16864,10 @@
         "distance": 9.0
       }
     ],
-    "busUrl": "https://transfer.navitime.biz/keio-bus/pc/diagram/BusDiagram?stationCd=00003793&updown=0"
+    "busUrl": "https://transfer.navitime.biz/keio-bus/pc/diagram/BusDiagram?stationCd=00003793&updown=0",
+    "lines": [
+      "京王線"
+    ]
   },
   {
     "id": "kusatoriyama",
@@ -16724,7 +16912,10 @@
         "distance": 7.0
       }
     ],
-    "busUrl": ""
+    "busUrl": "",
+    "lines": [
+      "京王線"
+    ]
   },
   {
     "id": "akagisan",
@@ -16769,7 +16960,10 @@
         "distance": 4.0
       }
     ],
-    "busUrl": "https://kan-etsu.net/publics/index/42/"
+    "busUrl": "https://kan-etsu.net/publics/index/42/",
+    "lines": [
+      "東武伊勢崎線"
+    ]
   },
   {
     "id": "nakimushiyama",
@@ -16809,6 +17003,9 @@
         "distance": 8.5
       }
     ],
-    "busUrl": "https://www.tobu-bus.com/pc/area/nikko.html"
+    "busUrl": "https://www.tobu-bus.com/pc/area/nikko.html",
+    "lines": [
+      "東武日光線"
+    ]
   }
 ]
