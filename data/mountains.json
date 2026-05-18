@@ -2296,7 +2296,8 @@
     "trainTimeShinjuku": 120,
     "trainInfo": "新宿→茅野駅（中央線特急約90分）→バス約30分",
     "lines": [
-      "JR中央線"
+      "JR中央線",
+      "北陸新幹線・特急しなの"
     ]
   },
   {
@@ -2447,7 +2448,8 @@
     "trainTimeShinjuku": 120,
     "trainInfo": "新宿→茅野駅（中央線特急約90分）→バス約30分",
     "lines": [
-      "JR中央線"
+      "JR中央線",
+      "北陸新幹線・特急しなの"
     ]
   },
   {
@@ -4645,7 +4647,9 @@
     "trainLine": "えちごトキめき鉄道",
     "trainTimeShinjuku": 150,
     "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約20分",
-    "lines": []
+    "lines": [
+      "北陸新幹線・特急しなの"
+    ]
   },
   {
     "id": "makihata",
@@ -5526,7 +5530,9 @@
     "trainLine": "JR磐越西線",
     "trainTimeShinjuku": 180,
     "trainInfo": "新宿→郡山（新幹線約70分）→猪苗代（磐越西線約35分）→バス",
-    "lines": []
+    "lines": [
+      "JR東北新幹線"
+    ]
   },
   {
     "id": "nikko_nantai",
@@ -8699,7 +8705,7 @@
     "trainTimeShinjuku": 120,
     "trainInfo": "新宿→長野駅（新幹線約90分）→バス約30分",
     "lines": [
-      "JR北陸新幹線"
+      "北陸新幹線・特急しなの"
     ]
   },
   {
@@ -8848,7 +8854,9 @@
     "trainLine": "JR信越本線",
     "trainTimeShinjuku": 130,
     "trainInfo": "新宿→長野（新幹線約90分）→黒姫（信越本線約25分）→バス",
-    "lines": []
+    "lines": [
+      "北陸新幹線・特急しなの"
+    ]
   },
   {
     "id": "kenashiyama",
@@ -10205,7 +10213,9 @@
     "trainLine": "JR東北本線",
     "trainTimeShinjuku": 170,
     "trainInfo": "新宿→郡山（新幹線約70分）→二本松（東北本線約20分）→バス約40分",
-    "lines": []
+    "lines": [
+      "JR東北新幹線"
+    ]
   },
   {
     "id": "azuma",
@@ -11060,7 +11070,9 @@
     "trainLine": "えちごトキめき鉄道",
     "trainTimeShinjuku": 150,
     "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約40分",
-    "lines": []
+    "lines": [
+      "北陸新幹線・特急しなの"
+    ]
   },
   {
     "id": "takatsuma",
