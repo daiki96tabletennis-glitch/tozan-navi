@@ -303,8 +303,7 @@
     "description": "百名山最低峰。ケーブルカー・ロープウェイあり。山頂からは関東平野を一望。",
     "yamapUrl": "https://yamap.com/mountains/90",
     "busLinks": [
-      "https://transit.yahoo.co.jp/search/result?from=新宿&to=つくば駅&type=1",
-      "https://transit.yahoo.co.jp/search/result?from=新宿&to=伊勢原駅&type=1"
+      "https://www.kantetsu.co.jp/bus/rosen/rosen.html"
     ],
     "warnBanner": null,
     "nearby": [],
@@ -345,8 +344,7 @@
     "gmapUrl": "https://google.com/maps/search/筑波山神社/@36.2255,140.1065,16z",
     "amapUrl": "https://maps.apple.com/?ll=36.2255,140.1065&q=筑波山神社",
     "busScheduleLinks": [
-      "https://www.kantetsu.co.jp/bus/rosen/rosen.html",
-      "https://www.kanachu.co.jp/dia/diagram/start=CS000097_1&noriba=0"
+      "https://www.kantetsu.co.jp/bus/rosen/rosen.html"
     ],
     "gearLinks": [
       {
@@ -2296,7 +2294,8 @@
     "trainTimeShinjuku": 120,
     "trainInfo": "新宿→茅野駅（中央線特急約90分）→バス約30分",
     "lines": [
-      "JR中央線"
+      "JR中央線",
+      "北陸新幹線・特急しなの"
     ]
   },
   {
@@ -2447,7 +2446,8 @@
     "trainTimeShinjuku": 120,
     "trainInfo": "新宿→茅野駅（中央線特急約90分）→バス約30分",
     "lines": [
-      "JR中央線"
+      "JR中央線",
+      "北陸新幹線・特急しなの"
     ]
   },
   {
@@ -2740,7 +2740,9 @@
     "trainLine": "JR上越線",
     "trainTimeShinjuku": 120,
     "trainInfo": "新宿→土合駅（上越線約115分）徒歩→ロープウェイ",
-    "lines": []
+    "lines": [
+      "JR上越線・上越新幹線"
+    ]
   },
   {
     "id": "nasu",
@@ -4645,7 +4647,9 @@
     "trainLine": "えちごトキめき鉄道",
     "trainTimeShinjuku": 150,
     "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約20分",
-    "lines": []
+    "lines": [
+      "北陸新幹線・特急しなの"
+    ]
   },
   {
     "id": "makihata",
@@ -4657,7 +4661,7 @@
     "coeffMin": 22,
     "coeffMax": 34,
     "daytrip": true,
-    "trainAccess": "六日町駅→バス27分→清水（季節）",
+    "trainAccess": true,
     "driveOfuna": 220,
     "driveShinjuku": 205,
     "driveYokohama": 205,
@@ -4794,7 +4798,9 @@
     "trainLine": "JR上越線",
     "trainTimeShinjuku": 150,
     "trainInfo": "新宿→越後湯沢（新幹線約80分）→六日町（上越線約15分）→タクシー約30分",
-    "lines": []
+    "lines": [
+      "JR上越線・上越新幹線"
+    ]
   },
   {
     "id": "iide",
@@ -5526,7 +5532,9 @@
     "trainLine": "JR磐越西線",
     "trainTimeShinjuku": 180,
     "trainInfo": "新宿→郡山（新幹線約70分）→猪苗代（磐越西線約35分）→バス",
-    "lines": []
+    "lines": [
+      "JR東北新幹線"
+    ]
   },
   {
     "id": "hiuchigatake",
@@ -5538,7 +5546,7 @@
     "coeffMin": 18,
     "coeffMax": 30,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": true,
     "driveOfuna": 295,
     "driveShinjuku": 265,
     "driveYokohama": 190,
@@ -5666,7 +5674,12 @@
     "driveTimeShinjuku": 265,
     "driveTimeYokohama": 190,
     "driveTimeOmiya": 130,
-    "lines": []
+    "lines": [
+      "東武日光線"
+    ],
+    "trainLine": "会津鉄道・野岩鉄道",
+    "nearestStation": "会津高原尾瀬口駅",
+    "trainInfo": "浅草→（東武鉄道・野岩鉄道・会津鉄道）→会津高原尾瀬口駅（約3時間）→バス約80分で沼山峠"
   },
   {
     "id": "takao",
@@ -6407,7 +6420,8 @@
     "trainTimeShinjuku": 75,
     "trainInfo": "新宿→藤野駅（中央線約55分）→バス約20分",
     "lines": [
-      "JR中央線"
+      "JR中央線",
+      "京王線"
     ]
   },
   {
@@ -8698,7 +8712,7 @@
     "trainTimeShinjuku": 120,
     "trainInfo": "新宿→長野駅（新幹線約90分）→バス約30分",
     "lines": [
-      "JR北陸新幹線"
+      "北陸新幹線・特急しなの"
     ]
   },
   {
@@ -8847,7 +8861,9 @@
     "trainLine": "JR信越本線",
     "trainTimeShinjuku": 130,
     "trainInfo": "新宿→長野（新幹線約90分）→黒姫（信越本線約25分）→バス",
-    "lines": []
+    "lines": [
+      "北陸新幹線・特急しなの"
+    ]
   },
   {
     "id": "kenashiyama",
@@ -10204,7 +10220,9 @@
     "trainLine": "JR東北本線",
     "trainTimeShinjuku": 170,
     "trainInfo": "新宿→郡山（新幹線約70分）→二本松（東北本線約20分）→バス約40分",
-    "lines": []
+    "lines": [
+      "JR東北新幹線"
+    ]
   },
   {
     "id": "azuma",
@@ -10356,7 +10374,7 @@
     "coeffMin": 24,
     "coeffMax": 36,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": true,
     "driveOfuna": 300,
     "driveShinjuku": 285,
     "driveYokohama": 250,
@@ -10485,7 +10503,12 @@
     "driveTimeShinjuku": 285,
     "driveTimeYokohama": 250,
     "driveTimeOmiya": 230,
-    "lines": []
+    "lines": [
+      "JR上越線・上越新幹線"
+    ],
+    "trainLine": "JR上越線・上越新幹線",
+    "nearestStation": "小出駅",
+    "trainInfo": "新宿→越後湯沢（上越新幹線約70分）→小出駅（上越線約30分）→バス約40分"
   },
   {
     "id": "hiragadake",
@@ -11059,7 +11082,9 @@
     "trainLine": "えちごトキめき鉄道",
     "trainTimeShinjuku": 150,
     "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約40分",
-    "lines": []
+    "lines": [
+      "北陸新幹線・特急しなの"
+    ]
   },
   {
     "id": "takatsuma",
@@ -14165,7 +14190,7 @@
     "coeffMin": 45,
     "coeffMax": 60,
     "daytrip": false,
-    "trainAccess": false,
+    "trainAccess": true,
     "driveOfuna": 230,
     "driveShinjuku": 210,
     "driveYokohama": 230,
@@ -14287,7 +14312,9 @@
     "driveTimeShinjuku": 210,
     "driveTimeYokohama": 230,
     "driveTimeOmiya": 255,
-    "lines": []
+    "lines": [
+      "JR内房線"
+    ]
   },
   {
     "id": "minamikomagatake",
@@ -15264,7 +15291,9 @@
     "trainLine": "JR内房線",
     "trainTimeShinjuku": 100,
     "trainInfo": "新宿→君津（総武線快速約60分）→浜金谷（内房線約35分）徒歩",
-    "lines": []
+    "lines": [
+      "JR内房線"
+    ]
   },
   {
     "id": "mitakesan",
@@ -16690,7 +16719,8 @@
     "trainTimeShinjuku": 65,
     "trainInfo": "新宿→高尾駅（中央線約40分）→バス約25分",
     "lines": [
-      "JR中央線"
+      "JR中央線",
+      "京王線"
     ]
   },
   {
@@ -17006,6 +17036,932 @@
     "busUrl": "https://www.tobu-bus.com/pc/area/nikko.html",
     "lines": [
       "東武日光線"
+    ]
+  },
+  {
+    "id": "tairappyo",
+    "name": "平標山",
+    "kana": "たいらっぴょうやま",
+    "area": "新潟県",
+    "elevation": 1984,
+    "category": "人気の山",
+    "difficulty": "中級",
+    "coeffMin": 22,
+    "coeffMax": 28,
+    "daytrip": true,
+    "trainAccess": true,
+    "trainLine": "JR上越線・上越新幹線",
+    "nearestStation": "越後湯沢駅",
+    "trainTimeShinjuku": 105,
+    "trainInfo": "東京駅→越後湯沢駅（上越新幹線約70分）→平標登山口バス停（バス約35分）",
+    "lines": [
+      "JR上越線・上越新幹線"
+    ],
+    "driveOfuna": 180,
+    "driveShinjuku": 155,
+    "driveYokohama": 185,
+    "driveOmiya": 130,
+    "driveTime": 180,
+    "driveTimeShinjuku": 155,
+    "driveTimeYokohama": 185,
+    "driveTimeOmiya": 130,
+    "driveDistance": 175,
+    "description": "谷川連峰の西端に位置する花の名山。初夏のお花畑と仙ノ倉山への稜線歩きが圧巻。越後湯沢駅からバス直通でアクセスできる。",
+    "yamapUrl": "https://yamap.com/mountains/16907",
+    "busLinks": [
+      "https://www.minamiechigo.co.jp/"
+    ],
+    "busScheduleLinks": [
+      "https://www.minamiechigo.co.jp/"
+    ],
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [
+      "alpine",
+      "flower"
+    ],
+    "types": [
+      "adventure",
+      "casual"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear",
+      "s-hard"
+    ],
+    "calLegend": [
+      "アイゼン不要（6〜10月）",
+      "6本アイゼンで可（5月・11月）",
+      "入山困難（12〜4月）"
+    ],
+    "trailhead": "平標登山口駐車場",
+    "trailheadAddress": "新潟県南魚沼郡湯沢町三国",
+    "parking": "平標登山口駐車場（約150台・有料600円）",
+    "address": "新潟県南魚沼郡湯沢町三国",
+    "gmapUrl": "https://maps.google.com/maps/search/平標山登山口/@36.8333,138.8167,14z",
+    "amapUrl": "https://maps.apple.com/?ll=36.8333,138.8167&q=平標登山口",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "lat": 36.8333,
+    "lng": 138.8167,
+    "season": "6月〜10月",
+    "courseCoefficientRange": "22〜28",
+    "courseCoefficient": [
+      22,
+      28
+    ],
+    "seasonNoGear": "6月〜10月",
+    "season6Crampons": "5月・11月",
+    "routes": [
+      {
+        "name": "松手山コース（周回）",
+        "time": "6時間30分",
+        "distance": "13.0km",
+        "elevation": "+1050m"
+      },
+      {
+        "name": "平元新道コース（往復）",
+        "time": "5時間20分",
+        "distance": "10.5km",
+        "elevation": "+900m"
+      }
+    ]
+  },
+  {
+    "id": "tomisan",
+    "name": "富山",
+    "kana": "とみさん",
+    "area": "千葉県",
+    "elevation": 349,
+    "category": "人気の山",
+    "difficulty": "初級",
+    "coeffMin": 7,
+    "coeffMax": 9,
+    "daytrip": true,
+    "trainAccess": true,
+    "trainLine": "JR内房線",
+    "nearestStation": "岩井駅",
+    "trainTimeShinjuku": 120,
+    "trainInfo": "新宿→（横須賀線・内房線）→岩井駅（約2時間）→徒歩約20分で登山口",
+    "lines": [
+      "JR内房線"
+    ],
+    "driveOfuna": 90,
+    "driveShinjuku": 110,
+    "driveYokohama": 95,
+    "driveOmiya": 155,
+    "driveTime": 90,
+    "driveTimeShinjuku": 110,
+    "driveTimeYokohama": 95,
+    "driveTimeOmiya": 155,
+    "driveDistance": 90,
+    "description": "南総里見八犬伝の舞台となった歴史ある里山。双耳峰の山頂展望台から東京湾・鋸山を一望。伊予ヶ岳と縦走する登山者も多い。",
+    "yamapUrl": "https://yamap.com/mountains/14397",
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [
+      "forest",
+      "accessible"
+    ],
+    "types": [
+      "casual",
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "seasonCalendar": [
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
+    ],
+    "calLegend": [
+      "通年登山可（アイゼン不要）"
+    ],
+    "trailhead": "福満寺（岩井駅から徒歩約20分）",
+    "trailheadAddress": "千葉県南房総市市部",
+    "parking": "富山登山者駐車場（無料）",
+    "address": "千葉県南房総市市部",
+    "gmapUrl": "https://maps.google.com/maps/search/富山+南房総/@35.0167,139.8833,14z",
+    "amapUrl": "https://maps.apple.com/?ll=35.0167,139.8833&q=富山登山口",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "lat": 35.0167,
+    "lng": 139.8833,
+    "season": "通年",
+    "courseCoefficientRange": "7〜9",
+    "courseCoefficient": [
+      7,
+      9
+    ],
+    "seasonNoGear": "通年",
+    "season6Crampons": "なし",
+    "routes": [
+      {
+        "name": "岩井駅→福満寺→南峰→北峰→伏姫岩屋→岩井駅（周回）",
+        "time": "3時間10分",
+        "distance": "8.5km",
+        "elevation": "+450m"
+      }
+    ]
+  },
+  {
+    "id": "iyogatake",
+    "name": "伊予ヶ岳",
+    "kana": "いよがたけ",
+    "area": "千葉県",
+    "elevation": 336,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 5,
+    "coeffMax": 8,
+    "daytrip": true,
+    "trainAccess": true,
+    "trainLine": "JR内房線",
+    "nearestStation": "岩井駅",
+    "trainTimeShinjuku": 120,
+    "trainInfo": "新宿→（横須賀線・内房線）→岩井駅（約2時間）→バス約15分（天神郷）→徒歩5分",
+    "lines": [
+      "JR内房線"
+    ],
+    "driveOfuna": 90,
+    "driveShinjuku": 110,
+    "driveYokohama": 95,
+    "driveOmiya": 155,
+    "driveTime": 90,
+    "driveTimeShinjuku": 110,
+    "driveTimeYokohama": 95,
+    "driveTimeOmiya": 155,
+    "driveDistance": 90,
+    "description": "千葉で唯一「岳」がつく房総のマッターホルン。山頂直下の鎖場が醍醐味で、初めての鎖場体験に最適。360度の展望と東京湾の眺めが人気。",
+    "yamapUrl": "https://yamap.com/mountains/27",
+    "busLinks": [
+      "https://www.city.minamiboso.chiba.jp/0000001487.html"
+    ],
+    "busScheduleLinks": [
+      "https://www.city.minamiboso.chiba.jp/0000001487.html"
+    ],
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [
+      "accessible",
+      "ridge"
+    ],
+    "types": [
+      "casual",
+      "adventure",
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "seasonCalendar": [
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
+    ],
+    "calLegend": [
+      "通年登山可（アイゼン不要）"
+    ],
+    "trailhead": "平群天神社（天神郷バス停から徒歩5分）",
+    "trailheadAddress": "千葉県南房総市川上",
+    "parking": "平群天神社登山者駐車場（無料・約20台）",
+    "address": "千葉県南房総市川上",
+    "gmapUrl": "https://maps.google.com/maps/search/平群天神社/@35.0333,139.9167,15z",
+    "amapUrl": "https://maps.apple.com/?ll=35.0333,139.9167&q=平群天神社",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "glove",
+        "icon": "🧤",
+        "name": "グローブ（鎖場用）",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "lat": 35.0333,
+    "lng": 139.9167,
+    "season": "通年",
+    "courseCoefficientRange": "5〜8",
+    "courseCoefficient": [
+      5,
+      8
+    ],
+    "seasonNoGear": "通年",
+    "season6Crampons": "なし",
+    "routes": [
+      {
+        "name": "平群天神社往復（北峰）",
+        "time": "1時間30分",
+        "distance": "3.2km",
+        "elevation": "+290m"
+      },
+      {
+        "name": "伊予ヶ岳→富山縦走",
+        "time": "4時間30分",
+        "distance": "10.0km",
+        "elevation": "+550m"
+      }
+    ]
+  },
+  {
+    "id": "myojingatake",
+    "name": "明神ヶ岳",
+    "kana": "みょうじんがたけ",
+    "area": "神奈川県南足柄市・箱根町",
+    "elevation": 1169,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 16,
+    "coeffMax": 24,
+    "daytrip": true,
+    "trainAccess": true,
+    "trainLine": "小田急線",
+    "nearestStation": "箱根登山鉄道 宮城野駅",
+    "trainTimeShinjuku": 90,
+    "trainInfo": "新宿→小田原（小田急約70分）→宮城野（箱根登山バス約20分）→徒歩5分",
+    "lines": [
+      "小田急線"
+    ],
+    "driveOfuna": 65,
+    "driveShinjuku": 90,
+    "driveYokohama": 60,
+    "driveOmiya": 140,
+    "driveTime": 90,
+    "driveTimeShinjuku": 90,
+    "driveTimeYokohama": 60,
+    "driveTimeOmiya": 140,
+    "driveDistance": 80,
+    "description": "金時山・矢倉岳と並ぶ箱根外輪山の名峰。山頂から富士山・金時山・相模湾の大展望。金時山への縦走コースが人気。",
+    "yamapUrl": "https://yamap.com/mountains/294",
+    "busLinks": [
+      "https://www.hakone-tozanbus.co.jp/"
+    ],
+    "busScheduleLinks": [
+      "https://www.hakone-tozanbus.co.jp/"
+    ],
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [
+      "view",
+      "alpine"
+    ],
+    "types": [
+      "casual",
+      "adventure"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "seasonCalendar": [
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
+    ],
+    "calLegend": [
+      "通年登山可（アイゼン不要）"
+    ],
+    "trailhead": "明神ヶ岳登山口（神奈川県南足柄市矢倉沢）",
+    "trailheadAddress": "神奈川県南足柄市矢倉沢",
+    "parking": "矢倉沢地区駐車場（無料）",
+    "address": "神奈川県南足柄市矢倉沢",
+    "gmapUrl": "https://maps.google.com/maps/search/明神ヶ岳登山口/@35.3167,139.0167,14z",
+    "amapUrl": "https://maps.apple.com/?ll=35.3167,139.0167&q=明神ヶ岳登山口",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "lat": 35.3167,
+    "lng": 139.0167,
+    "season": "通年",
+    "courseCoefficientRange": "16〜24",
+    "courseCoefficient": [
+      16,
+      24
+    ],
+    "seasonNoGear": "通年",
+    "season6Crampons": "なし",
+    "routes": [
+      {
+        "name": "矢倉沢登山口 往復",
+        "time": "4時間30分",
+        "distance": "9.0km",
+        "elevation": "+850m"
+      },
+      {
+        "name": "金時山→明神ヶ岳 縦走",
+        "time": "5時間30分",
+        "distance": "11.0km",
+        "elevation": "+900m"
+      }
+    ]
+  },
+  {
+    "id": "yaguradake",
+    "name": "矢倉岳",
+    "kana": "やぐらだけ",
+    "area": "神奈川県南足柄市",
+    "elevation": 870,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 12,
+    "coeffMax": 18,
+    "daytrip": true,
+    "trainAccess": true,
+    "trainLine": "小田急線",
+    "nearestStation": "大雄山駅",
+    "trainTimeShinjuku": 85,
+    "trainInfo": "新宿→小田原（小田急約70分）→大雄山（大雄山線約15分）→バス約20分→地蔵堂",
+    "lines": [
+      "小田急線"
+    ],
+    "driveOfuna": 60,
+    "driveShinjuku": 85,
+    "driveYokohama": 55,
+    "driveOmiya": 135,
+    "driveTime": 85,
+    "driveTimeShinjuku": 85,
+    "driveTimeYokohama": 55,
+    "driveTimeOmiya": 135,
+    "driveDistance": 75,
+    "description": "南足柄の丘から突き出た独立峰。山頂からの富士山・箱根外輪山・相模湾の360度展望が美しい。地蔵堂からのコースが人気。",
+    "yamapUrl": "https://yamap.com/mountains/303",
+    "busLinks": [
+      "https://www.izuhakone.co.jp/bus/"
+    ],
+    "busScheduleLinks": [
+      "https://www.izuhakone.co.jp/bus/"
+    ],
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [
+      "view",
+      "accessible"
+    ],
+    "types": [
+      "casual",
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "seasonCalendar": [
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
+    ],
+    "calLegend": [
+      "通年登山可（アイゼン不要）"
+    ],
+    "trailhead": "地蔵堂（神奈川県南足柄市矢倉沢）",
+    "trailheadAddress": "神奈川県南足柄市矢倉沢",
+    "parking": "地蔵堂駐車場（無料）",
+    "address": "神奈川県南足柄市矢倉沢",
+    "gmapUrl": "https://maps.google.com/maps/search/地蔵堂+南足柄/@35.3000,139.0000,14z",
+    "amapUrl": "https://maps.apple.com/?ll=35.3000,139.0000&q=地蔵堂",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "lat": 35.3,
+    "lng": 139.0,
+    "season": "通年",
+    "courseCoefficientRange": "12〜18",
+    "courseCoefficient": [
+      12,
+      18
+    ],
+    "seasonNoGear": "通年",
+    "season6Crampons": "なし",
+    "routes": [
+      {
+        "name": "地蔵堂 往復",
+        "time": "3時間30分",
+        "distance": "7.0km",
+        "elevation": "+600m"
+      }
+    ]
+  },
+  {
+    "id": "kawanoriyama",
+    "name": "川苔山",
+    "kana": "かわのりやま",
+    "area": "東京都奥多摩町",
+    "elevation": 1363,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 20,
+    "coeffMax": 30,
+    "daytrip": true,
+    "trainAccess": true,
+    "trainLine": "JR青梅線",
+    "nearestStation": "奥多摩駅",
+    "trainTimeShinjuku": 110,
+    "trainInfo": "新宿→立川（中央線約35分）→奥多摩（青梅線約60分）→バス約10分→川乗橋バス停",
+    "lines": [
+      "JR青梅線"
+    ],
+    "driveOfuna": 120,
+    "driveShinjuku": 100,
+    "driveYokohama": 115,
+    "driveOmiya": 120,
+    "driveTime": 100,
+    "driveTimeShinjuku": 100,
+    "driveTimeYokohama": 115,
+    "driveTimeOmiya": 120,
+    "driveDistance": 80,
+    "description": "沢沿いの百尋ノ滝コースが人気の奥多摩の名峰。山頂からの展望と沢歩きの楽しさを両立できる。奥多摩三大急登のひとつ鳩ノ巣コースも有名。",
+    "yamapUrl": "https://yamap.com/mountains/152",
+    "busLinks": [
+      "https://www.nishitokyo.co.jp/"
+    ],
+    "busScheduleLinks": [
+      "https://www.nishitokyo.co.jp/"
+    ],
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [
+      "forest",
+      "river",
+      "view"
+    ],
+    "types": [
+      "adventure",
+      "casual"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear"
+    ],
+    "calLegend": [
+      "アイゼン不要（4〜11月）",
+      "6本アイゼンで可（12〜3月）"
+    ],
+    "trailhead": "川乗橋バス停（東京都奥多摩町川井）",
+    "trailheadAddress": "東京都奥多摩町川井",
+    "parking": "川乗橋付近駐車スペース（台数少）",
+    "address": "東京都奥多摩町川井",
+    "gmapUrl": "https://maps.google.com/maps/search/川乗橋バス停/@35.8167,139.0833,14z",
+    "amapUrl": "https://maps.apple.com/?ll=35.8167,139.0833&q=川乗橋",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "lat": 35.8167,
+    "lng": 139.0833,
+    "season": "4月〜11月",
+    "courseCoefficientRange": "20〜30",
+    "courseCoefficient": [
+      20,
+      30
+    ],
+    "seasonNoGear": "4月〜11月",
+    "season6Crampons": "12〜3月",
+    "routes": [
+      {
+        "name": "川乗橋→百尋ノ滝→山頂→鳩ノ巣駅（縦走）",
+        "time": "5時間30分",
+        "distance": "12.0km",
+        "elevation": "+1050m"
+      },
+      {
+        "name": "奥多摩駅→本仁田山経由（往復）",
+        "time": "6時間",
+        "distance": "11.0km",
+        "elevation": "+1150m"
+      }
+    ]
+  },
+  {
+    "id": "takanosuyama",
+    "name": "鷹ノ巣山",
+    "kana": "たかのすやま",
+    "area": "東京都奥多摩町",
+    "elevation": 1737,
+    "category": "人気の山",
+    "difficulty": "中級",
+    "coeffMin": 24,
+    "coeffMax": 36,
+    "daytrip": true,
+    "trainAccess": true,
+    "trainLine": "JR青梅線",
+    "nearestStation": "奥多摩駅",
+    "trainTimeShinjuku": 110,
+    "trainInfo": "新宿→立川（中央線約35分）→奥多摩（青梅線約60分）→バス約35分→東日原バス停",
+    "lines": [
+      "JR青梅線"
+    ],
+    "driveOfuna": 120,
+    "driveShinjuku": 100,
+    "driveYokohama": 115,
+    "driveOmiya": 120,
+    "driveTime": 100,
+    "driveTimeShinjuku": 100,
+    "driveTimeYokohama": 115,
+    "driveTimeOmiya": 120,
+    "driveDistance": 85,
+    "description": "奥多摩随一の展望峰。山頂の広い草原から富士山・南アルプス・奥多摩の山並みが一望できる。稲村岩尾根コースの急登が名物で、登り甲斐のある中級向けの山。",
+    "yamapUrl": "https://yamap.com/mountains/153",
+    "busLinks": [
+      "https://www.nishitokyo.co.jp/"
+    ],
+    "busScheduleLinks": [
+      "https://www.nishitokyo.co.jp/"
+    ],
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [
+      "view",
+      "alpine",
+      "forest"
+    ],
+    "types": [
+      "adventure",
+      "collector"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear"
+    ],
+    "calLegend": [
+      "アイゼン不要（4〜11月）",
+      "6本アイゼンで可（12〜3月）"
+    ],
+    "trailhead": "東日原バス停（東京都奥多摩町日原）",
+    "trailheadAddress": "東京都奥多摩町日原",
+    "parking": "東日原駐車場（有料）",
+    "address": "東京都奥多摩町日原",
+    "gmapUrl": "https://maps.google.com/maps/search/東日原バス停/@35.8333,139.1167,14z",
+    "amapUrl": "https://maps.apple.com/?ll=35.8333,139.1167&q=東日原バス停",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "lat": 35.8333,
+    "lng": 139.1167,
+    "season": "4月〜11月",
+    "courseCoefficientRange": "24〜36",
+    "courseCoefficient": [
+      24,
+      36
+    ],
+    "seasonNoGear": "4月〜11月",
+    "season6Crampons": "12〜3月",
+    "routes": [
+      {
+        "name": "東日原→稲村岩尾根→山頂（往復）",
+        "time": "6時間",
+        "distance": "11.0km",
+        "elevation": "+1150m"
+      },
+      {
+        "name": "奥多摩駅→水根→山頂→石尾根→奥多摩駅（縦走）",
+        "time": "7時間30分",
+        "distance": "16.0km",
+        "elevation": "+1300m"
+      }
     ]
   }
 ]
