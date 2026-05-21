@@ -19,7 +19,7 @@
 (function(){
   const type = new URLSearchParams(location.search).get('type');
   const ogpMap = {ACPS:'acps',ACPL:'acpl',ACFS:'acfs',ACFL:'acfl',AHPS:'ahps',AHPL:'ahpl',AHFS:'ahfs',AHFL:'ahfl',VCPS:'vcps',VCPL:'vcpl',VCFS:'vcfs',VCFL:'vcfl',VHPS:'vhps',VHPL:'vhpl',VHFS:'vhfs',VHFL:'vhfl'};
-  const names16 = {ACPS:'山岳探検家',ACPL:'孤高の登山家',ACFS:'ワイルドハイカー',ACFL:'バリエーター',AHPS:'展望ハンター',AHPL:'サイレントクライマー',AHFS:'お祭り登山家',AHFL:'フォトウォーカー',VCPS:'山岳研究家',VCPL:'深山の求道者',VCFS:'山旅人',VCFL:'隠れ登山家',VHPS:'山リゾーター',VHPL:'瞑想ハイカー',VHFS:'山ピクニック派',VHFL:'森の放浪者'};
+  const names16 = {ACPS:'山岳探検家',ACPL:'孤高の登山家',ACFS:'ワイルドハイカー',ACFL:'ルートファインダー',AHPS:'展望ハンター',AHPL:'サイレントクライマー',AHFS:'お祭り登山家',AHFL:'気まぐれ山人',VCPS:'山岳研究家',VCPL:'深山の求道者',VCFS:'山旅人',VCFL:'隠れ登山家',VHPS:'山リゾーター',VHPL:'瞑想ハイカー',VHFS:'山ピクニック派',VHFL:'森の放浪者'};
   if(type && ogpMap[type]){
     const img = 'https://tozan-navi.com/ogp/type-'+ogpMap[type]+'.png';
     document.querySelector('meta[property="og:image"]').content = img;
@@ -75,8 +75,7 @@ const PERSON_SVGS = {
 </script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;background:#e8e0d5;color:#3a3530;min-height:100vh;-webkit-text-size-adjust:100%;}
-/* header style moved to ym-header */
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;background:#f0ede5;color:#3a3530;min-height:100vh;-webkit-text-size-adjust:100%;}
 .header-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:8px;position:relative;z-index:1;}
 .header-title{color:white;font-family:Georgia,serif;font-size:19px;font-weight:bold;}
 .header-sub{color:rgba(255,255,255,0.5);font-size:10px;margin-top:1px;}
@@ -88,12 +87,18 @@ main{max-width:480px;margin:0 auto;padding:16px;}
 
 /* プログレス */
 .prog-wrap{margin-bottom:18px;}
-.prog-top{display:flex;justify-content:space-between;font-size:11px;color:#a09888;margin-bottom:6px;}
-.prog-bar{height:5px;background:#e0dbd4;border-radius:3px;overflow:hidden;}
-.prog-fill{height:100%;background:linear-gradient(90deg,#4a6038,#8aaa70);border-radius:3px;transition:width 0.4s ease;}
-.prog-axes{display:flex;gap:6px;margin-top:6px;}
-.axis-dot{width:8px;height:8px;border-radius:50%;background:#e0dbd4;transition:background 0.3s;}
-.axis-dot.done{background:#607848;}
+.prog-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#a09888;margin-bottom:6px;}
+.prog-label{font-weight:700;color:#4a6038;}
+.prog-pct{font-size:13px;font-weight:700;color:#4a6038;}
+.prog-remain{font-size:10px;color:#a09888;}
+.prog-bar{height:6px;background:#e0dbd4;border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,#4a6038,#8aaa70);border-radius:3px;transition:width 0.5s cubic-bezier(0.4,0,0.2,1);}
+.prog-axes{display:flex;gap:5px;margin-top:8px;align-items:center;}
+.prog-axes-label{font-size:9px;color:#c0b8b0;margin-right:2px;}
+.axis-dot{width:9px;height:9px;border-radius:50%;background:#e0dbd4;transition:background 0.4s,transform 0.2s;}
+.axis-dot.done{background:#607848;transform:scale(1.15);}
+.back-q-btn{display:flex;align-items:center;gap:3px;background:transparent;border:none;color:#a09888;font-size:12px;cursor:pointer;padding:2px 0;font-family:inherit;touch-action:manipulation;}
+.back-q-btn:active{color:#4a6038;}
 
 /* 質問 */
 .q-title{font-size:16px;font-weight:700;color:#2a2520;margin-bottom:6px;line-height:1.5;}
@@ -103,6 +108,8 @@ main{max-width:480px;margin:0 auto;padding:16px;}
 .choice{display:flex;align-items:center;gap:12px;background:white;border:1.5px solid #e0dbd4;border-radius:12px;padding:12px 14px;cursor:pointer;transition:all 0.15s;position:relative;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:rgba(0,0,0,0.1);}
 .choice:hover{border-color:#607848;background:#f5f8f2;}
 .choice:active{transform:scale(0.98);}
+.choice.selected{border-color:#4a6038;background:#eef5e8;animation:choicePop 0.25s ease;}
+@keyframes choicePop{0%{transform:scale(1)}40%{transform:scale(1.03)}100%{transform:scale(1)}}
 .ch-icon{font-size:20px;flex-shrink:0;width:28px;text-align:center;}
 .ch-main{font-size:13px;font-weight:600;color:#2a2520;}
 .ch-sub{font-size:11px;color:#8a8078;margin-top:2px;}
@@ -127,94 +134,113 @@ main{max-width:480px;margin:0 auto;padding:16px;}
 .intro-type-name{font-size:9px;color:#7a7068;margin-top:3px;line-height:1.3;}
 .start-btn{touch-action:manipulation;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:linear-gradient(135deg,#4a6038,#607848);color:white;font-size:15px;font-weight:700;padding:15px;border-radius:14px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(74,96,56,0.3);}
 
-/* 結果 */
-.type-card{background:linear-gradient(145deg,#2a4020,#3a5830);border-radius:16px;padding:14px 14px 12px;margin-bottom:14px;position:relative;overflow:hidden;}
-.type-card-inner{display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;z-index:1;text-align:center;}
-.type-illust-wrap{width:72px;height:90px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.type-illust-wrap svg{width:72px !important;height:90px !important;display:block;}
-.type-illust{width:72px !important;height:90px !important;flex-shrink:0;display:block;}
-.type-info{width:100%;}
-.type-card-bg{position:absolute;right:-10px;bottom:-10px;font-size:60px;opacity:0.06;pointer-events:none;}
-.type-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
-.type-code{font-size:12px;font-weight:800;color:rgba(255,255,255,0.5);letter-spacing:0.1em;font-family:monospace;}
-.type-emoji{font-size:32px;}
-.type-name{font-size:22px;font-weight:800;color:white;line-height:1.2;}
-.type-desc{font-size:13px;color:rgba(255,255,255,0.78);line-height:1.7;margin-bottom:14px;}
-.type-meta{display:flex;gap:8px;flex-wrap:wrap;}
-.type-rare{font-size:11px;padding:4px 10px;border-radius:20px;font-weight:700;}
-.rare-ultra{background:rgba(255,215,0,0.25);color:#f0d060;}
-.rare-high{background:rgba(200,160,255,0.25);color:#c8a0f0;}
-.rare-mid{background:rgba(100,200,255,0.25);color:#80c8f0;}
-.rare-low{background:rgba(200,255,200,0.25);color:#80d080;}
-.type-axes{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;}
-.axis-badge{font-size:10px;padding:3px 8px;border-radius:20px;background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);font-weight:600;}
+/* ===== タイプカード（結果ヒーロー） ===== */
+.type-card{
+  background:linear-gradient(150deg,#1e3018 0%,#2e4a24 50%,#3a5a30 100%);
+  border-radius:20px;
+  padding:0 0 16px;
+  margin-bottom:10px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 8px 32px rgba(30,48,24,0.35);
+}
+.type-card::after{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
+}
+.type-card-bg{
+  position:absolute;right:-16px;bottom:-16px;
+  font-size:90px;opacity:0.05;pointer-events:none;line-height:1;
+}
+.type-card-inner{
+  display:flex;flex-direction:column;
+  position:relative;z-index:1;
+}
+
+/* キャラ＋コード帯 */
+.type-hero-row{
+  display:flex;align-items:flex-end;
+  padding:16px 16px 0;
+  gap:12px;
+  min-height:120px;
+}
+.type-illust-wrap{
+  width:100px;height:110px;flex-shrink:0;
+  display:flex;align-items:flex-end;justify-content:center;
+  margin-bottom:-4px;
+}
+.type-illust-wrap svg{width:100px !important;height:110px !important;display:block;}
+.type-illust{width:100px !important;height:110px !important;flex-shrink:0;display:block;}
+
+.type-header-info{flex:1;padding-bottom:6px;}
+.type-code{font-size:11px;font-weight:800;color:rgba(255,255,255,0.4);letter-spacing:0.14em;font-family:monospace;margin-bottom:3px;}
+
+/* 希少度バッジ */
+.type-rare{font-size:10px;padding:3px 9px;border-radius:20px;font-weight:700;display:inline-block;margin-bottom:6px;}
+.rare-ultra{background:linear-gradient(135deg,rgba(255,200,40,0.3),rgba(255,160,20,0.2));color:#f5cc40;border:1px solid rgba(255,200,40,0.3);}
+.rare-high{background:rgba(200,150,255,0.2);color:#d0a0ff;border:1px solid rgba(200,150,255,0.25);}
+.rare-mid{background:rgba(100,190,255,0.2);color:#80c8f8;border:1px solid rgba(100,190,255,0.25);}
+.rare-low{background:rgba(150,230,150,0.2);color:#90d890;border:1px solid rgba(150,230,150,0.25);}
+
+.type-name{font-size:26px;font-weight:900;color:white;line-height:1.1;letter-spacing:-0.02em;}
+
+/* 軸バッジ行 */
+.type-axes{display:flex;gap:5px;flex-wrap:wrap;padding:10px 16px 0;}
+.axis-badge{font-size:10px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.75);font-weight:600;border:1px solid rgba(255,255,255,0.12);}
+
+/* 説明文 */
+.type-desc{
+  font-size:13px;color:rgba(255,255,255,0.75);
+  line-height:1.75;
+  padding:10px 16px 0;
+}
+
+/* タイプ詳細リンク */
+.type-detail-link{
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  margin:12px 16px 0;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.18);
+  color:rgba(255,255,255,0.85);
+  font-size:12px;font-weight:700;
+  padding:9px 14px;border-radius:10px;
+  text-decoration:none;
+  transition:background 0.15s;
+}
 
 /* 山カード */
-.result-subtitle{font-size:13px;color:#7a7068;margin-bottom:12px;}
-.result-card{background:white;border-radius:14px;border:1px solid #e0dbd4;margin-bottom:10px;overflow:hidden;}
+.result-subtitle{font-size:13px;color:#7a7068;margin-bottom:12px;font-weight:600;}
+.result-card{background:white;border-radius:16px;border:1px solid #e8e4dc;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+.result-card-top{border:2px solid #4a6038;box-shadow:0 4px 20px rgba(74,96,56,0.15);}
 .rc-top{display:flex;align-items:center;gap:12px;padding:14px 16px 10px;}
-.rank-badge{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;}
-.r1{background:linear-gradient(135deg,#c9a227,#f0c040);color:white;}
-.r2{background:linear-gradient(135deg,#8a8a8a,#b0b0b0);color:white;}
-.r3{background:linear-gradient(135deg,#a05a30,#c07848);color:white;}
-.rc-name{font-size:16px;font-weight:700;color:#2a2520;}
-.rc-area{font-size:11px;color:#8a8078;margin-top:1px;}
-.rc-badges{display:flex;gap:4px;flex-wrap:wrap;padding:0 16px 8px;}
-.rb{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500;}
-.rb-100{background:rgba(160,200,240,0.35);color:#1a4060;}
-.rb-pop{background:rgba(180,220,180,0.4);color:#2d5a1a;}
-.rb-day{background:rgba(200,235,210,0.8);color:#1e5a2e;}
-.rb-stay{background:rgba(250,230,190,0.8);color:#7a4800;}
-.rb-train{background:rgba(200,220,245,0.8);color:#1a4878;}
-.rc-desc{font-size:12px;color:#5a5248;line-height:1.6;padding:0 16px;margin-bottom:8px;}
-.rc-reason{font-size:11px;color:#607848;background:#f0f6ec;border-radius:8px;padding:8px 10px;margin:0 16px 10px;line-height:1.5;}
-.rc-reason::before{content:"✓ ";font-weight:700;}
-.affil-block{background:#faf8f5;border:1px solid #e8e4dc;border-radius:10px;padding:12px 14px;margin:0 16px 12px;}
-.affil-title{font-size:11px;color:#a09888;font-weight:600;margin-bottom:8px;}
-.affil-items{display:flex;flex-direction:column;gap:6px;}
-.affil-item{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#5a5248;}
-.affil-link{font-size:11px;color:#4a6038;font-weight:600;text-decoration:none;background:#e8f0e4;padding:3px 8px;border-radius:20px;white-space:nowrap;}
-.rc-link{display:block;text-align:center;padding:10px;border-top:1px solid #f0ede8;font-size:13px;font-weight:600;color:#4a6038;text-decoration:none;}
-
-/* 相性カード */
-.compat-card{background:white;border:1.5px solid #e8ddd4;border-radius:14px;padding:14px 16px;margin-bottom:12px;}
-.compat-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
-.compat-title{font-size:12px;font-weight:700;color:#a09888;}
-.compat-body{display:flex;gap:10px;align-items:flex-start;}
-.compat-partner-badge{background:linear-gradient(135deg,#4a6038,#607848);color:white;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
-.compat-msg{font-size:12px;color:#5a5248;line-height:1.7;}
-.compat-person{display:flex;flex-direction:column;align-items:center;flex-shrink:0;gap:4px;}
-.compat-person svg{width:44px;height:52px;}
-.compat-person-name{font-size:9px;color:#4a6038;font-weight:700;text-align:center;white-space:nowrap;line-height:1.2;}
-
-/* シェア */
-.share-section{margin:16px 0 8px;}
-.share-title{font-size:12px;color:#7a7068;text-align:center;margin-bottom:10px;}
-.share-btns{display:flex;gap:8px;}
-.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 8px;border-radius:10px;font-size:12px;font-weight:700;border:none;cursor:pointer;text-decoration:none;}
-.sb-x{background:#000;color:white;}
-.sb-line{background:#06C755;color:white;}
-.sb-copy{background:#e8e0d5;color:#4a6038;border:1px solid #c8c4bc;}
-.retry-btn{display:block;width:100%;padding:12px;background:white;border:1.5px solid #c8d8b8;border-radius:12px;font-size:14px;font-weight:600;color:#4a6038;cursor:pointer;margin-top:8px;text-align:center;touch-action:manipulation;}
-footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1px solid #e8e4dc;margin-top:16px;}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
-
-/* ── 結果カード強化 ─────────────────── */
-.result-card-top{border:2px solid #4a6038;box-shadow:0 4px 16px rgba(74,96,56,0.15);}
-.rc-section-label{font-size:11px;font-weight:700;color:#7a9a6a;letter-spacing:0.06em;padding:10px 16px 4px;text-transform:uppercase;}
+.rank-badge{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;flex-shrink:0;}
+.r1{background:linear-gradient(135deg,#b8861a,#e8b030);color:white;box-shadow:0 2px 8px rgba(184,134,26,0.4);}
+.r2{background:linear-gradient(135deg,#787878,#a8a8a8);color:white;}
+.r3{background:linear-gradient(135deg,#8a4820,#b86838);color:white;}
+.rc-name{font-size:17px;font-weight:800;color:#1e1c18;}
+.rc-area{font-size:11px;color:#8a8078;margin-top:2px;}
+.rc-badges{display:flex;gap:4px;flex-wrap:wrap;padding:0 16px 10px;}
+.rb{font-size:10px;padding:3px 8px;border-radius:20px;font-weight:600;}
+.rb-100{background:#deeaf8;color:#1a4070;}
+.rb-pop{background:#d8f0e0;color:#1a5030;}
+.rb-day{background:#d4f0e0;color:#1a5a30;}
+.rb-stay{background:#faecd0;color:#7a4800;}
+.rb-train{background:#d0e4f8;color:#1a4080;}
+.rc-section-label{font-size:10px;font-weight:700;color:#8aaa78;letter-spacing:0.08em;padding:8px 16px 4px;text-transform:uppercase;}
 
 /* おすすめ理由 */
-.reasons-block{padding:0 12px 10px;display:flex;flex-direction:column;gap:8px;}
-.reason-item{display:flex;align-items:flex-start;gap:10px;background:#f4f8f0;border-radius:10px;padding:10px 12px;}
+.reasons-block{padding:0 12px 10px;display:flex;flex-direction:column;gap:7px;}
+.reason-item{display:flex;align-items:flex-start;gap:10px;background:#f4f8f0;border-radius:10px;padding:10px 12px;border:1px solid #e4eede;}
 .reason-icon{font-size:20px;flex-shrink:0;line-height:1.2;}
-.reason-text{font-size:13px;font-weight:700;color:#2a3820;line-height:1.3;}
-.reason-sub{font-size:11px;color:#7a9068;margin-top:2px;line-height:1.4;}
+.reason-text{font-size:13px;font-weight:700;color:#243018;line-height:1.3;}
+.reason-sub{font-size:11px;color:#7a9a68;margin-top:2px;line-height:1.4;}
 
 /* 装備カード */
 .gears-block{padding:0 12px 10px;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-.gear-item{display:flex;align-items:center;gap:8px;background:#faf9f6;border:1px solid #e8e4dc;border-radius:8px;padding:8px 10px;}
+.gear-item{display:flex;align-items:center;gap:8px;background:#faf9f6;border:1px solid #e8e4dc;border-radius:10px;padding:9px 10px;}
 .gear-item-link{text-decoration:none;color:inherit;cursor:pointer;transition:background 0.15s;}
-.gear-item-link:hover{background:#e8e0d5;border-color:#c8d8a8;}
+.gear-item-link:hover{background:#f0ede5;border-color:#c8d8a8;}
 .gear-link-arrow{margin-left:auto;color:#4a7840;font-size:16px;font-weight:700;flex-shrink:0;}
 .gear-icon{font-size:18px;flex-shrink:0;}
 .gear-name{font-size:12px;font-weight:700;color:#3a3530;line-height:1.2;}
@@ -222,22 +248,56 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 
 /* アクセス */
 .access-row{padding:0 12px 12px;display:flex;flex-direction:column;gap:6px;}
-.access-item{display:flex;align-items:flex-start;gap:10px;padding:8px 12px;background:#f0f4f8;border-radius:8px;}
+.access-item{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;background:#f0f4f8;border-radius:10px;}
 .access-icon{font-size:18px;flex-shrink:0;}
 .access-label{font-size:10px;color:#6a8098;font-weight:600;}
 .access-val{font-size:13px;font-weight:700;color:#1a3050;margin-top:1px;}
 .access-train{font-size:12px;font-weight:600;line-height:1.4;}
 
 /* CTAボタン */
-.rc-cta{display:block;margin:0 12px 14px;text-align:center;padding:12px;border-radius:10px;font-size:14px;font-weight:700;color:#4a6038;text-decoration:none;background:#f0f4ec;border:1.5px solid #c0d0a8;}
-.rc-cta-primary{background:linear-gradient(135deg,#3a5828,#4a7038);color:white;border:none;font-size:15px;padding:14px;box-shadow:0 3px 10px rgba(58,88,40,0.3);}
+.rc-cta{display:block;margin:0 12px 14px;text-align:center;padding:12px;border-radius:12px;font-size:14px;font-weight:700;color:#4a6038;text-decoration:none;background:#f0f4ec;border:1.5px solid #c0d0a8;transition:background 0.15s;}
+.rc-cta-primary{background:linear-gradient(135deg,#304820,#4a7038);color:white;border:none;font-size:15px;padding:14px;box-shadow:0 4px 14px rgba(48,72,32,0.35);}
+
+/* 相性カード */
+.compat-card{background:white;border:1.5px solid #e8e0d8;border-radius:16px;padding:14px 16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.compat-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.compat-title{font-size:12px;font-weight:700;color:#a09888;}
+.compat-body{display:flex;gap:12px;align-items:flex-start;}
+.compat-partner-badge{background:linear-gradient(135deg,#4a6038,#607848);color:white;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.compat-msg{font-size:12px;color:#5a5248;line-height:1.75;}
+.compat-person{display:flex;flex-direction:column;align-items:center;flex-shrink:0;gap:4px;}
+.compat-person svg{width:48px;height:58px;}
+.compat-person-name{font-size:9px;color:#4a6038;font-weight:700;text-align:center;white-space:nowrap;line-height:1.2;}
+
+/* シェア */
+.share-section{background:linear-gradient(135deg,#1e3018,#2e4a24);border-radius:16px;padding:16px;margin-bottom:10px;}
+.share-title{font-size:12px;color:rgba(255,255,255,0.6);text-align:center;margin-bottom:12px;font-weight:600;}
+.share-btns{display:flex;gap:8px;}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 8px;border-radius:10px;font-size:12px;font-weight:700;border:none;cursor:pointer;text-decoration:none;transition:opacity 0.15s;}
+.sb-native{background:rgba(255,255,255,0.12);color:white;border:1px solid rgba(255,255,255,0.2);}
+.sb-x{background:#000;color:white;}
+.sb-line{background:#06C755;color:white;}
+.sb-copy{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.15);}
+
+.retry-btn{display:block;width:100%;padding:13px;background:white;border:1.5px solid #c8d8b8;border-radius:12px;font-size:14px;font-weight:700;color:#4a6038;cursor:pointer;margin-top:8px;text-align:center;touch-action:manipulation;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+
+footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1px solid #e8e4dc;margin-top:16px;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+
+/* affil */
+.affil-block{background:#faf8f5;border:1px solid #e8e4dc;border-radius:10px;padding:12px 14px;margin:0 16px 12px;}
+.affil-title{font-size:11px;color:#a09888;font-weight:600;margin-bottom:8px;}
+.affil-items{display:flex;flex-direction:column;gap:6px;}
+.affil-item{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#5a5248;}
+.affil-link{font-size:11px;color:#4a6038;font-weight:600;text-decoration:none;background:#e8f0e4;padding:3px 8px;border-radius:20px;white-space:nowrap;}
+.rc-link{display:block;text-align:center;padding:10px;border-top:1px solid #f0ede8;font-size:13px;font-weight:600;color:#4a6038;text-decoration:none;}
 
 /* 固定CTAバー */
-.sticky-cta{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #e0dbd4;padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:100;display:none;box-shadow:0 -4px 16px rgba(0,0,0,0.1);}
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #e0dbd4;padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:100;display:none;box-shadow:0 -4px 20px rgba(0,0,0,0.1);}
 .sticky-cta.visible{display:block;}
 .sticky-cta-inner{max-width:480px;margin:0 auto;display:flex;align-items:center;gap:10px;}
 .sticky-cta-name{flex:1;font-size:13px;font-weight:700;color:#3a3530;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.sticky-cta-btn{flex-shrink:0;background:linear-gradient(135deg,#3a5828,#4a7038);color:white;font-size:13px;font-weight:700;padding:10px 18px;border-radius:22px;text-decoration:none;white-space:nowrap;box-shadow:0 2px 8px rgba(58,88,40,0.3);}
+.sticky-cta-btn{flex-shrink:0;background:linear-gradient(135deg,#304820,#4a7038);color:white;font-size:13px;font-weight:700;padding:10px 18px;border-radius:22px;text-decoration:none;white-space:nowrap;box-shadow:0 2px 10px rgba(48,72,32,0.35);}
 
 /* ===== 共通ヘッダー ===== */
 .ym-header{
@@ -273,6 +333,349 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   color:white;border-radius:7px;padding:5px 7px;cursor:pointer;
   display:flex;align-items:center;flex-shrink:0;text-decoration:none;
 }
+
+/* タイプカード内のshare-topボタン */
+#share-top{
+  background:rgba(255,255,255,0.12) !important;
+  border:1px solid rgba(255,255,255,0.2) !important;
+  border-radius:10px !important;
+  margin:10px 16px 0 !important;
+  width:calc(100% - 32px) !important;
+}
+
+/* ── Phase3: 解析中演出 ── */
+.analyzing-overlay{
+  position:fixed;inset:0;background:#f0ede5;z-index:999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity 0.3s;
+}
+.analyzing-overlay.visible{opacity:1;pointer-events:all;}
+.analyzing-mountain{font-size:60px;animation:mountainPulse 1.2s ease-in-out infinite;}
+@keyframes mountainPulse{0%,100%{transform:scale(1) translateY(0);opacity:0.8;}50%{transform:scale(1.08) translateY(-6px);opacity:1;}}
+.analyzing-title{font-size:18px;font-weight:700;color:#2a3820;margin:16px 0 6px;}
+.analyzing-sub{font-size:13px;color:#8a9a78;margin-bottom:24px;}
+.analyzing-dots{display:flex;gap:6px;}
+.analyzing-dot{width:8px;height:8px;border-radius:50%;background:#4a6038;animation:dotBounce 1.2s ease-in-out infinite;}
+.analyzing-dot:nth-child(2){animation-delay:.2s;}
+.analyzing-dot:nth-child(3){animation-delay:.4s;}
+@keyframes dotBounce{0%,80%,100%{transform:scale(0.6);opacity:0.4;}40%{transform:scale(1);opacity:1;}}
+.analyzing-bar{width:200px;height:4px;background:#e0dbd4;border-radius:2px;overflow:hidden;margin-top:16px;}
+.analyzing-bar-fill{height:100%;background:linear-gradient(90deg,#4a6038,#8aaa70);border-radius:2px;width:0%;transition:width 0.1s linear;}
+
+/* ── Phase2: レーダーチャート ── */
+.radar-section{background:white;border-radius:16px;border:1px solid #e8e4dc;padding:16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+.radar-section-title{font-size:12px;font-weight:700;color:#4a6038;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.radar-section-title::before{content:'';display:block;width:3px;height:14px;background:#4a6038;border-radius:2px;}
+.radar-wrap{display:flex;justify-content:center;margin-bottom:12px;}
+.radar-scores{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.radar-score-item{display:flex;align-items:center;gap:8px;padding:6px 8px;background:#f8f6f2;border-radius:8px;}
+.radar-score-label{font-size:11px;color:#5a5248;flex:1;}
+.radar-score-bar{width:60px;height:5px;background:#e8e4dc;border-radius:3px;overflow:hidden;}
+.radar-score-fill{height:100%;background:linear-gradient(90deg,#4a6038,#8aaa70);border-radius:3px;width:0%;transition:width 1s cubic-bezier(0.4,0,0.2,1);}
+.radar-score-num{font-size:11px;font-weight:700;color:#4a6038;width:26px;text-align:right;}
+
+/* ── Phase2: SNSシェア画像 ── */
+#share-canvas{display:none;}
+.share-img-preview{width:100%;border-radius:10px;margin-bottom:10px;display:none;}
+
+/* ── Phase4: 診断結果保持バナー ── */
+.result-saved-banner{
+  background:#c8d4b8;color:#2a3820;
+  font-size:11px;font-weight:600;
+  padding:6px 12px;border-radius:8px;
+  margin-bottom:10px;text-align:center;
+  display:none;
+}
+
+
+/* ===== トップ画面リデザイン ===== */
+.intro-hero{
+  position:relative;
+  background:linear-gradient(175deg,#1a2e14 0%,#243d1c 40%,#2e5224 100%);
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:14px;
+}
+.intro-mountain-scene{
+  position:relative;
+  height:90px;
+  overflow:hidden;
+}
+.intro-mountain-svg{
+  width:100%;height:100%;
+  display:block;
+}
+.intro-sun{
+  animation:sunPulse 3s ease-in-out infinite;
+}
+@keyframes sunPulse{0%,100%{opacity:0.85;transform:scale(1);}50%{opacity:1;transform:scale(1.05);}}
+.intro-star{
+  animation:starTwinkle 2s ease-in-out infinite;
+}
+.intro-star:nth-child(2){animation-delay:.4s;}
+.intro-star:nth-child(3){animation-delay:.8s;}
+.intro-star:nth-child(4){animation-delay:1.2s;}
+.intro-star:nth-child(5){animation-delay:1.6s;}
+.intro-star:nth-child(6){animation-delay:.6s;}
+@keyframes starTwinkle{0%,100%{opacity:0.6;}50%{opacity:1;}}
+.intro-hero-content{
+  padding:2px 16px 14px;
+  position:relative;z-index:1;
+}
+.intro-logo-badge{
+  display:inline-flex;align-items:center;
+  background:rgba(255,255,255,0.12);
+  color:rgba(255,255,255,0.7);
+  font-size:10px;font-weight:600;
+  padding:4px 10px;border-radius:20px;
+  border:1px solid rgba(255,255,255,0.15);
+  margin-bottom:10px;
+  letter-spacing:.04em;
+}
+.intro-hero-title{
+  font-size:23px;font-weight:900;
+  color:white;line-height:1.2;
+  margin-bottom:8px;
+  letter-spacing:-0.02em;
+  animation:heroTitleIn 0.7s cubic-bezier(0.2,0.8,0.3,1) both;
+}
+@keyframes heroTitleIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.intro-hero-accent{
+  color:#b8e060;
+  text-shadow:0 0 20px rgba(184,224,96,0.4);
+}
+.intro-hero-sub{
+  font-size:12px;color:rgba(255,255,255,0.65);
+  line-height:1.65;
+  animation:heroTitleIn 0.7s 0.15s cubic-bezier(0.2,0.8,0.3,1) both;
+}
+
+/* 特徴バッジ */
+.intro-features{
+  display:flex;align-items:center;justify-content:center;
+  gap:8px;margin-bottom:10px;
+  padding:7px 10px;
+  background:white;border-radius:12px;
+  border:1px solid #e8e4dc;
+  animation:fadeUp 0.5s 0.2s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.intro-feature-item{display:flex;align-items:center;gap:4px;}
+.intro-feature-icon{font-size:14px;}
+.intro-feature-label{font-size:11px;font-weight:600;color:#4a6038;}
+.intro-feature-sep{color:#d0c8c0;font-size:12px;}
+
+/* タイプスクロール */
+.intro-types-new{
+  margin-bottom:16px;
+  animation:fadeUp 0.5s 0.3s ease both;
+}
+.intro-types-label{
+  font-size:10px;font-weight:600;color:#a09888;
+  margin-bottom:5px;letter-spacing:.04em;
+  text-align:center;
+}
+.intro-type-scroll{
+  display:flex;gap:6px;
+  overflow-x:auto;padding:2px 2px 6px;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.intro-type-scroll::-webkit-scrollbar{display:none;}
+.intro-type-chip{
+  flex-shrink:0;
+  background:white;
+  border:1px solid #e0dbd4;
+  border-radius:20px;
+  padding:6px 12px;
+  font-size:12px;font-weight:600;
+  color:#4a5a38;
+  white-space:nowrap;
+  transition:all 0.2s;
+}
+.intro-type-chip:hover{background:#eef5e8;border-color:#4a6038;}
+
+/* スタートボタン */
+.intro-start-wrap{
+  animation:fadeUp 0.5s 0.4s ease both;
+  text-align:center;
+}
+.start-btn-new{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;
+  background:linear-gradient(135deg,#3a5828,#5a8040);
+  color:white;
+  font-size:17px;font-weight:800;
+  padding:14px 24px;
+  border-radius:16px;border:none;cursor:pointer;
+  font-family:inherit;
+  box-shadow:0 6px 24px rgba(58,88,40,0.4), 0 2px 8px rgba(58,88,40,0.2);
+  position:relative;overflow:hidden;
+  transition:transform 0.15s, box-shadow 0.15s;
+  touch-action:manipulation;
+}
+.start-btn-new::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent);
+  pointer-events:none;
+}
+.start-btn-new:active{transform:scale(0.97);box-shadow:0 3px 12px rgba(58,88,40,0.3);}
+.start-btn-text{font-size:17px;font-weight:800;letter-spacing:.02em;}
+.start-btn-arrow{
+  font-size:20px;
+  animation:arrowBounce 1.5s ease-in-out infinite;
+}
+@keyframes arrowBounce{0%,100%{transform:translateX(0);}50%{transform:translateX(5px);}}
+.intro-start-note{
+  font-size:11px;color:#a09888;margin-top:7px;
+}
+
+/* 質問画面アニメーション強化 */
+.step.active .q-title{
+  animation:qTitleIn 0.4s cubic-bezier(0.2,0.8,0.3,1) both;
+}
+@keyframes qTitleIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.step.active .choices{
+  animation:choicesIn 0.45s 0.08s cubic-bezier(0.2,0.8,0.3,1) both;
+}
+@keyframes choicesIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.step.active .prog-wrap{
+  animation:progIn 0.3s ease both;
+}
+@keyframes progIn{from{opacity:0;}to{opacity:1;}}
+
+/* choice hover強化 */
+.choice{transition:all 0.18s cubic-bezier(0.2,0.8,0.3,1);}
+.choice:hover{
+  border-color:#607848;background:#f0f6e8;
+  transform:translateX(3px);
+  box-shadow:0 2px 12px rgba(74,96,56,0.12);
+}
+
+/* 結果カードのフェードイン */
+@keyframes resultCardIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.type-card{animation:resultCardIn 0.6s cubic-bezier(0.2,0.8,0.3,1) both;}
+.radar-section{animation:resultCardIn 0.6s 0.15s cubic-bezier(0.2,0.8,0.3,1) both;}
+#result-cards .result-card:nth-child(1){animation:resultCardIn 0.5s 0.1s ease both;}
+#result-cards .result-card:nth-child(2){animation:resultCardIn 0.5s 0.2s ease both;}
+#result-cards .result-card:nth-child(3){animation:resultCardIn 0.5s 0.3s ease both;}
+#compat-area .compat-card{animation:resultCardIn 0.5s 0.35s ease both;}
+.share-section{animation:resultCardIn 0.5s 0.4s ease both;}
+
+
+/* ===== キャラ無限スクロール ===== */
+.chara-scroll-wrap{
+  overflow:hidden;
+  width:100%;
+  margin-bottom:10px;
+  position:relative;
+  background:linear-gradient(160deg,#1e3014,#2e4a22);
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.chara-scroll-wrap::before,
+.chara-scroll-wrap::after{
+  content:'';position:absolute;top:0;bottom:0;width:40px;z-index:2;pointer-events:none;
+}
+.chara-scroll-wrap::before{left:0;background:linear-gradient(to right,#1e3014,transparent);}
+.chara-scroll-wrap::after{right:0;background:linear-gradient(to left,#1e3014,transparent);}
+.chara-scroll-track{
+  display:flex;align-items:flex-end;
+  gap:0;
+  width:max-content;
+  animation:charaScroll 28s linear infinite;
+  padding:6px 0 2px;
+}
+.chara-scroll-track:hover{animation-play-state:paused;}
+@keyframes charaScroll{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-50%);}
+}
+.chara-item{
+  display:flex;flex-direction:column;align-items:center;
+  padding:0 6px;
+  width:68px;flex-shrink:0;
+}
+.chara-item svg{
+  width:54px !important;height:66px !important;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));
+  transition:transform 0.2s;
+}
+.chara-item:hover svg{transform:translateY(-4px) scale(1.08);}
+.chara-name{
+  font-size:8px;color:rgba(255,255,255,.65);
+  text-align:center;margin-top:3px;
+  font-weight:600;line-height:1.3;
+  white-space:nowrap;
+}
+
+/* intro-hero縦幅削減 */
+.intro-mountain-scene{height:90px !important;}
+.intro-hero-content{padding:2px 16px 12px !important;}
+.intro-hero-title{font-size:22px !important;}
+.intro-hero-sub{font-size:11px !important;line-height:1.5 !important;}
+
+
+/* ===== 4×4 タイプグリッド ===== */
+.intro-type-grid-4x4{
+  margin-bottom:10px;
+  animation:fadeUp 0.5s 0.25s ease both;
+  background:linear-gradient(160deg,#1a2e12,#243a1a);
+  border-radius:14px;
+  padding:10px 10px 8px;
+}
+.itg-label{
+  font-size:10px;font-weight:600;color:rgba(255,255,255,.5);
+  text-align:center;margin-bottom:7px;letter-spacing:.03em;
+}
+.itg-grid{
+  display:grid !important;
+  grid-template-columns:repeat(4,1fr) !important;
+  gap:5px !important;
+}
+.itg-cell{
+  background:linear-gradient(160deg,#1e3014,#2a4020) !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+  border-radius:10px;
+  padding:6px 3px 5px;
+  text-align:center;
+  transition:all 0.18s;
+  cursor:default;
+  display:block !important;
+  width:auto !important;
+  overflow:hidden;
+}
+.itg-cell svg{display:block;margin:0 auto 2px;}
+.itg-cell:hover{
+  background:linear-gradient(160deg,#263d1a,#365428);
+  border-color:rgba(255,255,255,.2);
+  transform:translateY(-2px);
+  box-shadow:0 3px 10px rgba(0,0,0,.25);
+}
+.itg-cell-cta{
+  background:linear-gradient(135deg,#4a7038,#6a9848);
+  border-color:rgba(255,255,255,.25);
+  animation:ctaPulse 2.5s ease-in-out infinite;
+}
+.itg-cell-cta .itg-name{color:rgba(255,255,255,.95);}
+.itg-cell-cta .itg-emoji{filter:brightness(1.2);}
+@keyframes ctaPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(74,96,56,0);}
+  50%{box-shadow:0 0 0 4px rgba(74,96,56,0.2);}
+}
+.itg-emoji{font-size:20px;display:block;margin-bottom:3px;}
+.itg-name{font-size:8px;color:rgba(255,255,255,.8);line-height:1.35;font-weight:500;}
+
+/* 月アニメ除去 */
+.intro-sun{animation:none !important;}
+
+/* スクロールトラック不要になったので非表示 */
+.chara-scroll-wrap{display:none;}
+
+
+.itg-svg-wrap{display:flex;align-items:center;justify-content:center;height:52px;margin-bottom:2px;}
+.itg-svg-wrap svg{width:40px !important;height:50px !important;}
+.itg-q-mark{font-size:24px;font-weight:900;color:rgba(255,255,255,.9);height:52px;display:flex;align-items:center;justify-content:center;}
+
 </style>
 </head>
 <body>
@@ -287,147 +690,277 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 
 <!-- 導入 -->
 <div id="intro" class="step active">
-  <div style="text-align:center;padding:20px 0 12px;">
-    <div style="font-size:44px;margin-bottom:10px;">🗻</div>
-    <h2 style="font-size:20px;font-weight:700;color:#2a2520;margin-bottom:8px;">あなたの山タイプを診断</h2>
-    <p style="font-size:13px;color:#7a7068;line-height:1.7;margin-bottom:4px;">「山頂で何をする？」「雨が降ったら？」<br>行動パターンから<strong>16タイプ</strong>で診断します</p>
+
+  <!-- ヒーロー上部 -->
+  <div class="intro-hero">
+    <div class="intro-mountain-scene">
+      <svg class="intro-mountain-svg" viewBox="0 0 360 90" preserveAspectRatio="xMidYMax meet">
+        <polygon points="0,90 60,45 120,62 180,28 240,52 300,34 360,56 360,90" fill="#2a4020" opacity="0.35"/>
+        <polygon points="0,90 30,68 90,40 150,57 210,31 270,48 330,37 360,45 360,90" fill="#3a5830" opacity="0.55"/>
+        <polygon points="0,90 50,80 100,62 160,74 220,54 280,68 340,57 360,65 360,90" fill="#4a6838" opacity="0.8"/>
+        <polygon points="210,31 222,45 198,45" fill="white" opacity="0.7"/>
+        <polygon points="90,40 100,52 80,52" fill="white" opacity="0.5"/>
+        <circle cx="40" cy="18" r="1.2" fill="white" opacity="0.6" class="intro-star"/>
+        <circle cx="100" cy="10" r="1" fill="white" opacity="0.8" class="intro-star"/>
+        <circle cx="160" cy="16" r="1.5" fill="white" opacity="0.5" class="intro-star"/>
+        <circle cx="240" cy="8" r="1" fill="white" opacity="0.7" class="intro-star"/>
+        <circle cx="310" cy="14" r="1.2" fill="white" opacity="0.6" class="intro-star"/>
+      </svg>
+    </div>
+    <div class="intro-hero-content">
+      <div class="intro-logo-badge">Yamatch 登山タイプ診断</div>
+      <h1 class="intro-hero-title">あなたは<br><span class="intro-hero-accent">どの山タイプ</span>？</h1>
+      <p class="intro-hero-sub">12の質問で、あなただけの登山スタイルを16タイプから診断します</p>
+    </div>
   </div>
-  <div class="intro-badge-row">
-    <span class="intro-badge">🆓 完全無料</span>
-    <span class="intro-badge">⏱ 約1分</span>
-    <span class="intro-badge">🎯 16タイプ</span>
-    <span class="intro-badge">📤 シェアで盛り上がる</span>
+
+  <!-- 4×4 タイプグリッド -->
+  <div class="intro-type-grid-4x4" id="intro-type-grid">
+    <div class="itg-label">診断できる16タイプ — あなたはどれ？</div>
+    <div class="itg-grid">
+      <div class="itg-cell"><span class="itg-emoji">⛰</span><div class="itg-name">孤高の<br>登山家</div></div>
+      <div class="itg-cell"><span class="itg-emoji">🔍</span><div class="itg-name">ルート<br>ファインダー</div></div>
+      <div class="itg-cell"><span class="itg-emoji">📸</span><div class="itg-name">展望<br>ハンター</div></div>
+      <div class="itg-cell"><span class="itg-emoji">🎉</span><div class="itg-name">お祭り<br>登山家</div></div>
+      <div class="itg-cell"><span class="itg-emoji">🌲</span><div class="itg-name">森の<br>放浪者</div></div>
+      <div class="itg-cell"><span class="itg-emoji">🧘</span><div class="itg-name">瞑想<br>ハイカー</div></div>
+      <div class="itg-cell"><span class="itg-emoji">🗺</span><div class="itg-name">山岳<br>研究家</div></div>
+      <div class="itg-cell"><span class="itg-emoji">🌸</span><div class="itg-name">山<br>ピクニック派</div></div>
+      <div class="itg-cell"><span class="itg-emoji">🏔</span><div class="itg-name">山岳<br>探検家</div></div>
+      <div class="itg-cell"><span class="itg-emoji">💪</span><div class="itg-name">ワイルド<br>ハイカー</div></div>
+      <div class="itg-cell"><span class="itg-emoji">🌅</span><div class="itg-name">山<br>リゾーター</div></div>
+      <div class="itg-cell"><span class="itg-emoji">🗻</span><div class="itg-name">深山の<br>求道者</div></div>
+      <div class="itg-cell"><span class="itg-emoji">🤫</span><div class="itg-name">隠れ<br>登山家</div></div>
+      <div class="itg-cell"><span class="itg-emoji">🚶</span><div class="itg-name">サイレント<br>クライマー</div></div>
+      <div class="itg-cell"><span class="itg-emoji">🌍</span><div class="itg-name">山<br>旅人</div></div>
+      <div class="itg-cell itg-cell-cta"><span class="itg-emoji">❓</span><div class="itg-name">あなたは<br>どれ？</div></div>
+    </div>
   </div>
-  <div class="intro-types" id="intro-type-grid"></div>
-  <button class="start-btn" onclick="startQuiz()"><span>診断スタート</span><span>▶</span></div>
+
+  <!-- 特徴バッジ -->
+  <div class="intro-features">
+    <div class="intro-feature-item"><span class="intro-feature-icon">⏱</span><span class="intro-feature-label">約2分</span></div>
+    <div class="intro-feature-sep">|</div>
+    <div class="intro-feature-item"><span class="intro-feature-icon">🎯</span><span class="intro-feature-label">16タイプ</span></div>
+    <div class="intro-feature-sep">|</div>
+    <div class="intro-feature-item"><span class="intro-feature-icon">🆓</span><span class="intro-feature-label">完全無料</span></div>
+    <div class="intro-feature-sep">|</div>
+    <div class="intro-feature-item"><span class="intro-feature-icon">📤</span><span class="intro-feature-label">シェアOK</span></div>
+  </div>
+
+  <!-- スタートボタン -->
+  <div class="intro-start-wrap">
+    <button class="start-btn-new" onclick="startQuiz()">
+      <span class="start-btn-text">診断スタート</span>
+      <span class="start-btn-arrow">→</span>
+    </button>
+    <p class="intro-start-note">登録不要・無料で診断できます</p>
+  </div>
+
 </div>
 
-<!-- Q1: 山頂でまずやることは？ →軸1(A/V) -->
+<!-- Q1: 山での行動スタイル →軸1(A/V) -->
 <div id="q1" class="step">
   <div class="prog-wrap">
-    <div class="prog-top"><span>質問 1 / 9</span><span>11%</span></div>
-    <div class="prog-bar"><div class="prog-fill" style="width:11%"></div></div>
+    <div class="prog-top">
+      <button class="back-q-btn" onclick="goBack()">← 戻る</button>
+      <span class="prog-pct">8%</span>
+      <span class="prog-remain">残り12問</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" style="width:8%"></div></div>
+    <div class="prog-axes"><span class="prog-axes-label">軸</span><div class="axis-dot" id="ax1"></div><div class="axis-dot" id="ax2"></div><div class="axis-dot" id="ax3"></div><div class="axis-dot" id="ax4"></div></div>
   </div>
   <div class="q-title"><span class="q-emoji">🏔</span>山頂に着いたら、まず何をする？</div>
   <div class="choices">
     <div class="choice" data-key="a1" data-val="A"><span class="ch-icon">📸</span><div><div class="ch-main">すぐ写真を撮りまくる</div><div class="ch-sub">証拠を残さないと！</div></div><span class="ch-axis ch-a">行動派</span></div>
-    <div class="choice" data-key="a1" data-val="V"><span class="ch-icon">👀</span><div><div class="ch-main">景色をぼーっと眺める</div><div class="ch-sub">しばらくこのままでいたい</div></div><span class="ch-axis ch-v">観察派</span></div>
-    <div class="choice" data-key="a1" data-val="A"><span class="ch-icon">🗺</span><div><div class="ch-main">地図で次のルートを確認</div><div class="ch-sub">次の山が気になる</div></div><span class="ch-axis ch-a">行動派</span></div>
-    <div class="choice" data-key="a1" data-val="V"><span class="ch-icon">🏅</span><div><div class="ch-main">達成感にひたる</div><div class="ch-sub">この瞬間を味わいたい</div></div><span class="ch-axis ch-v">観察派</span></div>
+    <div class="choice" data-key="a1" data-val="V"><span class="ch-icon">👀</span><div><div class="ch-main">しばらく景色を眺める</div><div class="ch-sub">この瞬間を目に焼き付けたい</div></div><span class="ch-axis ch-v">観察派</span></div>
+    <div class="choice" data-key="a1" data-val="A"><span class="ch-icon">🍙</span><div><div class="ch-main">お弁当を広げて食べる</div><div class="ch-sub">山頂メシが最高のご褒美</div></div><span class="ch-axis ch-a">行動派</span></div>
   </div>
 </div>
 
-<!-- Q2: ルート選び →軸1(A/V) -->
+<!-- Q2: ルート選択 →軸1(A/V) -->
 <div id="q2" class="step">
   <div class="prog-wrap">
-    <div class="prog-top"><span>質問 2 / 9</span><span>22%</span></div>
-    <div class="prog-bar"><div class="prog-fill" style="width:22%"></div></div>
+    <div class="prog-top">
+      <button class="back-q-btn" onclick="goBack()">← 戻る</button>
+      <span class="prog-pct">17%</span>
+      <span class="prog-remain">残り11問</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" style="width:17%"></div></div>
+    <div class="prog-axes"><span class="prog-axes-label">軸</span><div class="axis-dot done" id="ax1"></div><div class="axis-dot" id="ax2"></div><div class="axis-dot" id="ax3"></div><div class="axis-dot" id="ax4"></div></div>
   </div>
   <div class="q-title"><span class="q-emoji">🧭</span>登山ルートを選ぶとき、何を優先する？</div>
   <div class="choices">
     <div class="choice" data-key="a2" data-val="A"><span class="ch-icon">💪</span><div><div class="ch-main">体力的にきつめのルート</div><div class="ch-sub">達成感が大きい方がいい</div></div><span class="ch-axis ch-a">行動派</span></div>
-    <div class="choice" data-key="a2" data-val="V"><span class="ch-icon">🌸</span><div><div class="ch-main">景色・花・自然が豊かなルート</div><div class="ch-sub">歩きながら楽しみたい</div></div><span class="ch-axis ch-v">観察派</span></div>
-    <div class="choice" data-key="a2" data-val="A"><span class="ch-icon">🧗</span><div><div class="ch-main">バリエーション・岩場があるルート</div><div class="ch-sub">スリルがほしい</div></div><span class="ch-axis ch-a">行動派</span></div>
-    <div class="choice" data-key="a2" data-val="V"><span class="ch-icon">🌿</span><div><div class="ch-main">歩きやすく静かなルート</div><div class="ch-sub">ゆっくり自分のペースで</div></div><span class="ch-axis ch-v">観察派</span></div>
+    <div class="choice" data-key="a2" data-val="V"><span class="ch-icon">🌸</span><div><div class="ch-main">景色がきれいなルート</div><div class="ch-sub">見どころが多い方がいい</div></div><span class="ch-axis ch-v">観察派</span></div>
+    <div class="choice" data-key="a2" data-val="V"><span class="ch-icon">🦋</span><div><div class="ch-main">動植物が観察できるルート</div><div class="ch-sub">自然観察が楽しい</div></div><span class="ch-axis ch-v">観察派</span></div>
   </div>
 </div>
 
-<!-- Q3: 一番の楽しさ →軸2(C/H) -->
+<!-- Q3: 下山後の行動 →軸1(A/V) 3問目 -->
 <div id="q3" class="step">
   <div class="prog-wrap">
-    <div class="prog-top"><span>質問 3 / 9</span><span>33%</span></div>
+    <div class="prog-top">
+      <button class="back-q-btn" onclick="goBack()">← 戻る</button>
+      <span class="prog-pct">25%</span>
+      <span class="prog-remain">残り10問</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" style="width:25%"></div></div>
+    <div class="prog-axes"><span class="prog-axes-label">軸</span><div class="axis-dot done" id="ax1"></div><div class="axis-dot" id="ax2"></div><div class="axis-dot" id="ax3"></div><div class="axis-dot" id="ax4"></div></div>
+  </div>
+  <div class="q-title"><span class="q-emoji">🚶</span>下山後、真っ先にやりたいことは？</div>
+  <div class="choices">
+    <div class="choice" data-key="a3" data-val="A"><span class="ch-icon">🍺</span><div><div class="ch-main">打ち上げ・温泉で盛り上がる</div><div class="ch-sub">登山の後はこれが最高</div></div><span class="ch-axis ch-a">行動派</span></div>
+    <div class="choice" data-key="a3" data-val="V"><span class="ch-icon">📔</span><div><div class="ch-main">記録をつけたり余韻に浸る</div><div class="ch-sub">じっくり振り返りたい</div></div><span class="ch-axis ch-v">観察派</span></div>
+    <div class="choice" data-key="a3" data-val="A"><span class="ch-icon">📱</span><div><div class="ch-main">SNSにすぐアップする</div><div class="ch-sub">みんなに見せたい！</div></div><span class="ch-axis ch-a">行動派</span></div>
+  </div>
+</div>
+
+<!-- Q4: 楽しい瞬間 →軸2(C/H) -->
+<div id="q4" class="step">
+  <div class="prog-wrap">
+    <div class="prog-top">
+      <button class="back-q-btn" onclick="goBack()">← 戻る</button>
+      <span class="prog-pct">33%</span>
+      <span class="prog-remain">残り9問</span>
+    </div>
     <div class="prog-bar"><div class="prog-fill" style="width:33%"></div></div>
+    <div class="prog-axes"><span class="prog-axes-label">軸</span><div class="axis-dot done" id="ax1"></div><div class="axis-dot done" id="ax2"></div><div class="axis-dot" id="ax3"></div><div class="axis-dot" id="ax4"></div></div>
   </div>
   <div class="q-title"><span class="q-emoji">🎯</span>登山で「一番楽しい」と感じる瞬間は？</div>
   <div class="choices">
-    <div class="choice" data-key="a3" data-val="C"><span class="ch-icon">🏆</span><div><div class="ch-main">山頂に立った瞬間の達成感</div><div class="ch-sub">やりきった！という感覚が好き</div></div><span class="ch-axis ch-c">挑戦派</span></div>
-    <div class="choice" data-key="a3" data-val="H"><span class="ch-icon">🌿</span><div><div class="ch-main">歩きながら自然に没入する瞬間</div><div class="ch-sub">頭が空っぽになる感じ</div></div><span class="ch-axis ch-h">癒し派</span></div>
-    <div class="choice" data-key="a3" data-val="C"><span class="ch-icon">🔥</span><div><div class="ch-main">自分の限界を超えた時</div><div class="ch-sub">あと一歩が踏み出せた時</div></div><span class="ch-axis ch-c">挑戦派</span></div>
-    <div class="choice" data-key="a3" data-val="H"><span class="ch-icon">☕</span><div><div class="ch-main">山小屋でほっと一息つく時</div><div class="ch-sub">ご飯・温かい飲み物が最高</div></div><span class="ch-axis ch-h">癒し派</span></div>
+    <div class="choice" data-key="a4" data-val="C"><span class="ch-icon">🏆</span><div><div class="ch-main">山頂に立った瞬間の達成感</div><div class="ch-sub">やりきった！という感覚が好き</div></div><span class="ch-axis ch-c">挑戦派</span></div>
+    <div class="choice" data-key="a4" data-val="H"><span class="ch-icon">🌿</span><div><div class="ch-main">歩いている途中の自然との一体感</div><div class="ch-sub">過程そのものが好き</div></div><span class="ch-axis ch-h">癒し派</span></div>
+    <div class="choice" data-key="a4" data-val="H"><span class="ch-icon">🌅</span><div><div class="ch-main">早朝の静かな時間・モルゲンロート</div><div class="ch-sub">特別な瞬間を独り占め</div></div><span class="ch-axis ch-h">癒し派</span></div>
   </div>
 </div>
 
-<!-- Q4: 雨が降ってきたら →軸2(C/H) -->
-<div id="q4" class="step">
+<!-- Q5: 山の雰囲気 →軸2(C/H) -->
+<div id="q5" class="step">
   <div class="prog-wrap">
-    <div class="prog-top"><span>質問 4 / 9</span><span>44%</span></div>
-    <div class="prog-bar"><div class="prog-fill" style="width:44%"></div></div>
+    <div class="prog-top">
+      <button class="back-q-btn" onclick="goBack()">← 戻る</button>
+      <span class="prog-pct">42%</span>
+      <span class="prog-remain">残り8問</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" style="width:42%"></div></div>
+    <div class="prog-axes"><span class="prog-axes-label">軸</span><div class="axis-dot done" id="ax1"></div><div class="axis-dot done" id="ax2"></div><div class="axis-dot" id="ax3"></div><div class="axis-dot" id="ax4"></div></div>
   </div>
   <div class="q-title"><span class="q-emoji">🌿</span>好きな山の雰囲気は？</div>
   <div class="choices">
-    <div class="choice" data-key="a4" data-val="C"><span class="ch-icon">⛰</span><div><div class="ch-main">岩場・急登・稜線歩き</div><div class="ch-sub">ダイナミックな地形が好き</div></div><span class="ch-axis ch-c">挑戦派</span></div>
-    <div class="choice" data-key="a4" data-val="H"><span class="ch-icon">🌲</span><div><div class="ch-main">樹林帯・花・湿原</div><div class="ch-sub">自然に包まれたい</div></div><span class="ch-axis ch-h">癒し派</span></div>
-    <div class="choice" data-key="a4" data-val="C"><span class="ch-icon">🗻</span><div><div class="ch-main">高山・アルプス・展望</div><div class="ch-sub">スケールの大きな山が好き</div></div><span class="ch-axis ch-c">挑戦派</span></div>
-    <div class="choice" data-key="a4" data-val="H"><span class="ch-icon">🍃</span><div><div class="ch-main">里山・低山・のんびり</div><div class="ch-sub">穏やかな山歩きが好き</div></div><span class="ch-axis ch-h">癒し派</span></div>
+    <div class="choice" data-key="a5" data-val="C"><span class="ch-icon">⛰</span><div><div class="ch-main">岩場・急登・稜線歩き</div><div class="ch-sub">ダイナミックな地形が好き</div></div><span class="ch-axis ch-c">挑戦派</span></div>
+    <div class="choice" data-key="a5" data-val="H"><span class="ch-icon">🌲</span><div><div class="ch-main">静かな森・緑に包まれた道</div><div class="ch-sub">穏やかな自然が好き</div></div><span class="ch-axis ch-h">癒し派</span></div>
+    <div class="choice" data-key="a5" data-val="C"><span class="ch-icon">🌋</span><div><div class="ch-main">火山・高山・雪渓のある山</div><div class="ch-sub">非日常感が最高</div></div><span class="ch-axis ch-c">挑戦派</span></div>
   </div>
 </div>
 
-<!-- Q5: 前日の過ごし方 →軸3(P/F) -->
-<div id="q5" class="step">
+<!-- Q6: 前日の夜 →軸3(P/F) -->
+<div id="q6" class="step">
   <div class="prog-wrap">
-    <div class="prog-top"><span>質問 5 / 9</span><span>56%</span></div>
-    <div class="prog-bar"><div class="prog-fill" style="width:56%"></div></div>
+    <div class="prog-top">
+      <button class="back-q-btn" onclick="goBack()">← 戻る</button>
+      <span class="prog-pct">50%</span>
+      <span class="prog-remain">残り7問</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" style="width:50%"></div></div>
+    <div class="prog-axes"><span class="prog-axes-label">軸</span><div class="axis-dot done" id="ax1"></div><div class="axis-dot done" id="ax2"></div><div class="axis-dot done" id="ax3"></div><div class="axis-dot" id="ax4"></div></div>
   </div>
   <div class="q-title"><span class="q-emoji">🌙</span>登山前日の夜、何してる？</div>
   <div class="choices">
-    <div class="choice" data-key="a5" data-val="P"><span class="ch-icon">🗺</span><div><div class="ch-main">地図・コースタイムを再確認</div><div class="ch-sub">念には念を</div></div><span class="ch-axis ch-p">計画派</span></div>
-    <div class="choice" data-key="a5" data-val="F"><span class="ch-icon">😴</span><div><div class="ch-main">とくに何もせず早めに寝る</div><div class="ch-sub">なんとかなるでしょ</div></div><span class="ch-axis ch-f">自由派</span></div>
-    <div class="choice" data-key="a5" data-val="P"><span class="ch-icon">🎒</span><div><div class="ch-main">装備を全部並べてチェック</div><div class="ch-sub">忘れ物ゼロが目標</div></div><span class="ch-axis ch-p">計画派</span></div>
-    <div class="choice" data-key="a5" data-val="F"><span class="ch-icon">🍵</span><div><div class="ch-main">ざっくり荷造りして飲む</div><div class="ch-sub">明日楽しみで眠れない</div></div><span class="ch-axis ch-f">自由派</span></div>
+    <div class="choice" data-key="a6" data-val="P"><span class="ch-icon">🗺</span><div><div class="ch-main">地図・コースタイムを再確認</div><div class="ch-sub">念には念を</div></div><span class="ch-axis ch-p">計画派</span></div>
+    <div class="choice" data-key="a6" data-val="F"><span class="ch-icon">😴</span><div><div class="ch-main">なんとなくゆるく準備</div><div class="ch-sub">当日の気分次第でいい</div></div><span class="ch-axis ch-f">自由派</span></div>
+    <div class="choice" data-key="a6" data-val="P"><span class="ch-icon">🎒</span><div><div class="ch-main">装備を丁寧にパッキング</div><div class="ch-sub">準備が楽しみのひとつ</div></div><span class="ch-axis ch-p">計画派</span></div>
   </div>
 </div>
 
-<!-- Q6: 山小屋に着いたら →軸3(P/F) -->
-<div id="q6" class="step">
+<!-- Q7: 山小屋・計画 →軸3(P/F) -->
+<div id="q7" class="step">
   <div class="prog-wrap">
-    <div class="prog-top"><span>質問 6 / 9</span><span>67%</span></div>
-    <div class="prog-bar"><div class="prog-fill" style="width:67%"></div></div>
+    <div class="prog-top">
+      <button class="back-q-btn" onclick="goBack()">← 戻る</button>
+      <span class="prog-pct">58%</span>
+      <span class="prog-remain">残り6問</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" style="width:58%"></div></div>
+    <div class="prog-axes"><span class="prog-axes-label">軸</span><div class="axis-dot done" id="ax1"></div><div class="axis-dot done" id="ax2"></div><div class="axis-dot done" id="ax3"></div><div class="axis-dot" id="ax4"></div></div>
   </div>
   <div class="q-title"><span class="q-emoji">🏠</span>山小屋に着いたら、まず何をする？</div>
   <div class="choices">
-    <div class="choice" data-key="a6" data-val="P"><span class="ch-icon">🗓</span><div><div class="ch-main">翌日の天気とルートを確認</div><div class="ch-sub">明日の計画を立てたい</div></div><span class="ch-axis ch-p">計画派</span></div>
-    <div class="choice" data-key="a6" data-val="F"><span class="ch-icon">🍺</span><div><div class="ch-main">とりあえずビールを注文</div><div class="ch-sub">計画は後回し！</div></div><span class="ch-axis ch-f">自由派</span></div>
-    <div class="choice" data-key="a6" data-val="P"><span class="ch-icon">📒</span><div><div class="ch-main">山行記録をつける</div><div class="ch-sub">記録しないと忘れちゃう</div></div><span class="ch-axis ch-p">計画派</span></div>
-    <div class="choice" data-key="a6" data-val="F"><span class="ch-icon">🌅</span><div><div class="ch-main">外に出て景色を眺める</div><div class="ch-sub">この瞬間を楽しみたい</div></div><span class="ch-axis ch-f">自由派</span></div>
+    <div class="choice" data-key="a7" data-val="P"><span class="ch-icon">🗓</span><div><div class="ch-main">翌日の天気とルートを確認</div><div class="ch-sub">明日の計画を立てたい</div></div><span class="ch-axis ch-p">計画派</span></div>
+    <div class="choice" data-key="a7" data-val="F"><span class="ch-icon">🍺</span><div><div class="ch-main">まずビールで乾杯</div><div class="ch-sub">明日は明日の風が吹く</div></div><span class="ch-axis ch-f">自由派</span></div>
+    <div class="choice" data-key="a7" data-val="F"><span class="ch-icon">⭐</span><div><div class="ch-main">星空を眺めながらぼんやりする</div><div class="ch-sub">山小屋の夜が好き</div></div><span class="ch-axis ch-f">自由派</span></div>
   </div>
 </div>
 
-<!-- Q7: 理想の登山スタイル →軸4(S/L) -->
-<div id="q7" class="step">
+<!-- Q8: 理想の登山スタイル →軸4(S/L) -->
+<div id="q8" class="step">
   <div class="prog-wrap">
-    <div class="prog-top"><span>質問 7 / 9</span><span>78%</span></div>
-    <div class="prog-bar"><div class="prog-fill" style="width:78%"></div></div>
+    <div class="prog-top">
+      <button class="back-q-btn" onclick="goBack()">← 戻る</button>
+      <span class="prog-pct">67%</span>
+      <span class="prog-remain">残り5問</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" style="width:67%"></div></div>
+    <div class="prog-axes"><span class="prog-axes-label">軸</span><div class="axis-dot done" id="ax1"></div><div class="axis-dot done" id="ax2"></div><div class="axis-dot done" id="ax3"></div><div class="axis-dot done" id="ax4"></div></div>
   </div>
   <div class="q-title"><span class="q-emoji">👥</span>理想の登山スタイルは？</div>
   <div class="choices">
-    <div class="choice" data-key="a7" data-val="S"><span class="ch-icon">🙌</span><div><div class="ch-main">仲間と賑やかに登る</div><div class="ch-sub">みんなで盛り上がりたい</div></div><span class="ch-axis ch-s">仲間派</span></div>
-    <div class="choice" data-key="a7" data-val="L"><span class="ch-icon">🧍</span><div><div class="ch-main">一人でマイペースに登る</div><div class="ch-sub">自分のリズムが大事</div></div><span class="ch-axis ch-l">ソロ派</span></div>
-    <div class="choice" data-key="a7" data-val="S"><span class="ch-icon">👫</span><div><div class="ch-main">少人数のパートナーと</div><div class="ch-sub">信頼できる人と深く楽しむ</div></div><span class="ch-axis ch-s">仲間派</span></div>
-    <div class="choice" data-key="a7" data-val="L"><span class="ch-icon">🌙</span><div><div class="ch-main">誰もいない静かな山へ</div><div class="ch-sub">孤独な山が好き</div></div><span class="ch-axis ch-l">ソロ派</span></div>
+    <div class="choice" data-key="a8" data-val="S"><span class="ch-icon">🙌</span><div><div class="ch-main">仲間と賑やかに登る</div><div class="ch-sub">みんなで盛り上がりたい</div></div><span class="ch-axis ch-s">仲間派</span></div>
+    <div class="choice" data-key="a8" data-val="L"><span class="ch-icon">🧍</span><div><div class="ch-main">一人でマイペースに登る</div><div class="ch-sub">自分のリズムが大事</div></div><span class="ch-axis ch-l">ソロ派</span></div>
+    <div class="choice" data-key="a8" data-val="S"><span class="ch-icon">👫</span><div><div class="ch-main">2〜3人の少人数グループ</div><div class="ch-sub">ちょうどいい距離感がいい</div></div><span class="ch-axis ch-s">仲間派</span></div>
   </div>
 </div>
 
-<!-- Q8: 体力・どのくらいの山 -->
-<div id="q8" class="step">
+<!-- Q9: 休憩中の行動 →軸4(S/L) 2問目 -->
+<div id="q9" class="step">
   <div class="prog-wrap">
-    <div class="prog-top"><span>質問 8 / 9</span><span>89%</span></div>
-    <div class="prog-bar"><div class="prog-fill" style="width:89%"></div></div>
+    <div class="prog-top">
+      <button class="back-q-btn" onclick="goBack()">← 戻る</button>
+      <span class="prog-pct">75%</span>
+      <span class="prog-remain">残り4問</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" style="width:75%"></div></div>
+    <div class="prog-axes"><span class="prog-axes-label">軸</span><div class="axis-dot done" id="ax1"></div><div class="axis-dot done" id="ax2"></div><div class="axis-dot done" id="ax3"></div><div class="axis-dot done" id="ax4"></div></div>
+  </div>
+  <div class="q-title"><span class="q-emoji">☕</span>山頂で休憩中、他の登山者が来たら？</div>
+  <div class="choices">
+    <div class="choice" data-key="a9" data-val="S"><span class="ch-icon">💬</span><div><div class="ch-main">自然と話しかけてしまう</div><div class="ch-sub">山での出会いは楽しい</div></div><span class="ch-axis ch-s">仲間派</span></div>
+    <div class="choice" data-key="a9" data-val="L"><span class="ch-icon">🎧</span><div><div class="ch-main">自分の世界に集中する</div><div class="ch-sub">静かな時間を大切にしたい</div></div><span class="ch-axis ch-l">ソロ派</span></div>
+    <div class="choice" data-key="a9" data-val="S"><span class="ch-icon">📸</span><div><div class="ch-main">写真を一緒に撮ってもらう</div><div class="ch-sub">せっかくだから記念に</div></div><span class="ch-axis ch-s">仲間派</span></div>
+  </div>
+</div>
+
+<!-- Q10: 体力レベル -->
+<div id="q10" class="step">
+  <div class="prog-wrap">
+    <div class="prog-top">
+      <button class="back-q-btn" onclick="goBack()">← 戻る</button>
+      <span class="prog-pct">83%</span>
+      <span class="prog-remain">残り3問</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" style="width:83%"></div></div>
+    <div class="prog-axes"><span class="prog-axes-label">軸</span><div class="axis-dot done" id="ax1"></div><div class="axis-dot done" id="ax2"></div><div class="axis-dot done" id="ax3"></div><div class="axis-dot done" id="ax4"></div></div>
   </div>
   <div class="q-title"><span class="q-emoji">💪</span>どのくらいの山に行きたい？</div>
   <div class="choices">
     <div class="choice" data-key="coeff" data-val="14"><span class="ch-icon">🌱</span><div><div class="ch-main">ゆるハイク・整備された道</div><div class="ch-sub">ケーブルカーもOK</div></div></div>
     <div class="choice" data-key="coeff" data-val="22"><span class="ch-icon">👟</span><div><div class="ch-main">3〜4時間の初心者向け</div><div class="ch-sub">普通に歩ける</div></div></div>
     <div class="choice" data-key="coeff" data-val="35"><span class="ch-icon">🥾</span><div><div class="ch-main">5〜7時間の中級コース</div><div class="ch-sub">ある程度の体力あり</div></div></div>
-    <div class="choice" data-key="coeff" data-val="60"><span class="ch-icon">⛰</span><div><div class="ch-main">急登・岩場もある上級コース</div><div class="ch-sub">体力・技術に自信あり</div></div></div>
-    <div class="choice" data-key="coeff" data-val="999"><span class="ch-icon">🏔</span><div><div class="ch-main">どんな山でも</div><div class="ch-sub">限界を超えに行く</div></div></div>
+    <div class="choice" data-key="coeff" data-val="60"><span class="ch-icon">⛏</span><div><div class="ch-main">8時間以上の上級コース</div><div class="ch-sub">ハードな山が好き</div></div></div>
+    <div class="choice" data-key="coeff" data-val="999"><span class="ch-icon">🗻</span><div><div class="ch-main">体力に自信あり・なんでも</div><div class="ch-sub">限界を超えたい</div></div></div>
   </div>
 </div>
 
-<!-- Q9: 出発地 -->
-<div id="q9" class="step">
+<!-- Q11: 出発地 -->
+<div id="q11" class="step">
   <div class="prog-wrap">
-    <div class="prog-top"><span>質問 9 / 9</span><span>100%</span></div>
-    <div class="prog-bar"><div class="prog-fill" style="width:100%"></div></div>
+    <div class="prog-top">
+      <button class="back-q-btn" onclick="goBack()">← 戻る</button>
+      <span class="prog-pct">92%</span>
+      <span class="prog-remain">残り2問</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" style="width:92%"></div></div>
+    <div class="prog-axes"><span class="prog-axes-label">軸</span><div class="axis-dot done" id="ax1"></div><div class="axis-dot done" id="ax2"></div><div class="axis-dot done" id="ax3"></div><div class="axis-dot done" id="ax4"></div></div>
   </div>
   <div class="q-title"><span class="q-emoji">🚉</span>出発地はどこ？</div>
   <div class="choices">
@@ -437,9 +970,40 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
 </div>
 
+<!-- Q12: 最終確認 -->
+<div id="q12" class="step">
+  <div class="prog-wrap">
+    <div class="prog-top">
+      <button class="back-q-btn" onclick="goBack()">← 戻る</button>
+      <span class="prog-pct">100%</span>
+      <span class="prog-remain">最後の質問！</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" style="width:100%"></div></div>
+    <div class="prog-axes"><span class="prog-axes-label">軸</span><div class="axis-dot done" id="ax1"></div><div class="axis-dot done" id="ax2"></div><div class="axis-dot done" id="ax3"></div><div class="axis-dot done" id="ax4"></div></div>
+  </div>
+  <div class="q-title"><span class="q-emoji">🌄</span>理想の山の風景といえば？</div>
+  <div class="choices">
+    <div class="choice" data-key="finalvibe" data-val="ridge"><span class="ch-icon">🏔</span><div><div class="ch-main">広大な稜線・360度の展望</div><div class="ch-sub">果てしない空の下を歩きたい</div></div></div>
+    <div class="choice" data-key="finalvibe" data-val="forest"><span class="ch-icon">🌲</span><div><div class="ch-main">緑あふれる深い森・清流</div><div class="ch-sub">自然に包まれて癒されたい</div></div></div>
+    <div class="choice" data-key="finalvibe" data-val="view"><span class="ch-icon">🌅</span><div><div class="ch-main">雲海・絶景ポイント</div><div class="ch-sub">感動的な景色が見たい</div></div></div>
+    <div class="choice" data-key="finalvibe" data-val="rock"><span class="ch-icon">🪨</span><div><div class="ch-main">岩稜・クサリ場・急峻な地形</div><div class="ch-sub">スリルがある山が好き</div></div></div>
+  </div>
+</div>
+
 <!-- 結果 -->
 <div id="result" class="step">
+  <div id="result-saved-banner" class="result-saved-banner"></div>
   <div id="result-type-card"></div>
+  <div id="radar-section" class="radar-section">
+    <div class="radar-section-title">あなたの登山スタイル診断</div>
+    <div class="radar-wrap"></div>
+    <div class="radar-scores">
+      <div class="radar-score-item"><span class="radar-score-label">⚡ 行動力</span><div class="radar-score-bar"><div class="radar-score-fill"></div></div><span class="radar-score-num">0</span></div>
+      <div class="radar-score-item"><span class="radar-score-label">🏔 挑戦心</span><div class="radar-score-bar"><div class="radar-score-fill"></div></div><span class="radar-score-num">0</span></div>
+      <div class="radar-score-item"><span class="radar-score-label">📋 計画性</span><div class="radar-score-bar"><div class="radar-score-fill"></div></div><span class="radar-score-num">0</span></div>
+      <div class="radar-score-item"><span class="radar-score-label">👥 社交性</span><div class="radar-score-bar"><div class="radar-score-fill"></div></div><span class="radar-score-num">0</span></div>
+    </div>
+  </div>
   <p class="result-subtitle" id="result-subtitle"></p>
   <button id="share-top" onclick="window._shareNative&&window._shareNative()" style="display:none;width:100%;margin-bottom:12px;background:#4a5e4a;color:white;border:none;border-radius:10px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>この結果をシェア</button>
   <div id="result-cards"></div>
@@ -462,6 +1026,17 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
     <div class="sticky-cta-name" id="sticky-cta-name">おすすめの山を見る</div>
     <a href="#" class="sticky-cta-btn" id="sticky-cta-link">この山、行ってみる →</a>
   </div>
+</div>
+<div id="analyzing-overlay" class="analyzing-overlay">
+  <div class="analyzing-mountain">🗻</div>
+  <div class="analyzing-title">あなたのタイプを分析中...</div>
+  <div class="analyzing-sub">行動パターンを解析中...</div>
+  <div class="analyzing-dots">
+    <div class="analyzing-dot"></div>
+    <div class="analyzing-dot"></div>
+    <div class="analyzing-dot"></div>
+  </div>
+  <div class="analyzing-bar"><div class="analyzing-bar-fill"></div></div>
 </div>
 <footer>
   <p>Yamatch — 出発地から登る山を探せる登山サーチ</p>
@@ -497,7 +1072,7 @@ const TYPES = {
     strengths:['瞬発力と推進力が高い','仲間を楽しませるムードメーカー','体力はだいたい足りる'],
     weaknesses:['計画不足でヒヤリとすることがある','装備が毎回ギリギリ'],
     bestSeason:'秋（10月）紅葉×急登',style:'勢い先行型冒険家'},
-  ACFL:{emoji:'🗺',name:'バリエーター',
+  ACFL:{emoji:'🗺',name:'ルートファインダー',
     desc:'一般登山道に飽きて、地形図とコンパスで自分だけのルートを歩くタイプ。藪漕ぎも渡渉もいとわない。「道がないところが本当の山」が信条。完全ソロが基本。',
     rare:2.8,axes:['行動派','挑戦派','自由派','ソロ派'],repMountains:['鋸岳','荒沢岳','笊ヶ岳'],
     compat:{type:'VHPS',msg:'「山リゾーター」と行くと、快適な山小屋の夜を初めて経験するかも。野宿派のあなたも「これはアリ」と感じるはず。'},
@@ -529,7 +1104,7 @@ const TYPES = {
     strengths:['場を盛り上げる天才','初心者を楽しませるのが得意','下山後の計画が完璧'],
     weaknesses:['ハードな山への準備が後回しになりがち','雨でも「行こう！」と言いがち'],
     bestSeason:'春（4〜5月）桜と新緑',style:'エンジョイ系ソーシャル型'},
-  AHFL:{emoji:'🎞',name:'フォトウォーカー',
+  AHFL:{emoji:'🎞',name:'気まぐれ山人',
     desc:'決まったルートも目標もなく、気持ちのいい道を気の向くままに歩く。写真は撮るけどSNSにはあまり上げない。山の時間が自分の時間。誰にも邪魔されたくないひとり時間派。',
     rare:7.8,axes:['行動派','癒し派','自由派','ソロ派'],repMountains:['三ツ峠山','茅ヶ岳','日向山'],
     compat:{type:'ACPS',msg:'「山岳探検家」が計画してくれた難峰ルートに便乗すれば、あなたのカメラが普段たどり着けない絶景を捉えられる。'},
@@ -548,7 +1123,7 @@ const TYPES = {
   VCPL:{emoji:'🏮',name:'深山の求道者',
     desc:'人の来ない奥深い山で静寂だけを味わいに行く。ガイドブックに載っていない山ほど魅力を感じる。誰も踏み込まない季節・ルートを好む、計画緻密な完全ソロ派。',
     rare:3.4,axes:['観察派','挑戦派','計画派','ソロ派'],repMountains:['和名倉山','荒沢岳','飯豊山'],
-    compat:{type:'AHFL',msg:'「フォトウォーカー」があなたの隣で静かに歩いてくれると、言葉のいらない完璧な山行になる。'},
+    compat:{type:'AHFL',msg:'「気まぐれ山人」があなたの隣で静かに歩いてくれると、言葉のいらない完璧な山行になる。'},
     affilLevel:'ultra',
     strengths:['マイナーな名山の知識が豊富','孤独に強く自己完結できる','自然への観察が深い'],
     weaknesses:['ルートが難しすぎて遭難リスクが上がる','山仲間を作りにくい'],
@@ -572,7 +1147,7 @@ const TYPES = {
   VHPS:{emoji:'🏕',name:'山リゾーター',
     desc:'快適な山小屋・美味しい山ごはん・絶景の朝焼けをセットで楽しむのが理想。計画は念入りで宿の予約も食事も完璧に準備する。仲間と「また来ようね」と言い合う山が好き。',
     rare:11.2,axes:['観察派','癒し派','計画派','仲間派'],repMountains:['燕岳','蝶ヶ岳','北横岳'],
-    compat:{type:'ACFL',msg:'「バリエーター」の予定外の提案を受け入れると、完璧な計画に「予想外の感動」が加わってさらに豊かになる。'},
+    compat:{type:'ACFL',msg:'「ルートファインダー」の予定外の提案を受け入れると、完璧な計画に「予想外の感動」が加わってさらに豊かになる。'},
     affilLevel:'low',
     strengths:['山小屋・テント場の情報収集が得意','快適な環境を整えるプロ','仲間を飽きさせない計画力'],
     weaknesses:['天候悪化でルーティンが崩れるとつらい','荷物が多くなりがち'],
@@ -621,7 +1196,7 @@ function getAffilItems(m){
 
 const answers={};
 let current=0;
-const TOTAL=9;
+const TOTAL=12;
 // 4軸スコア: A>0=Action, V<0=View / C>0=Challenge, H<0 / P>0=Plan, F<0 / S>0=Social, L<0
 const axisScore={av:0,ch:0,pf:0,sl:0};
 
@@ -646,27 +1221,193 @@ function show(id){
   if(id==='intro') buildIntroGrid();
 }
 function buildIntroGrid(){
-  const TYPE_ORDER = ['ACPS','ACPL','ACFS','ACFL','AHPS','AHPL','AHFS','AHFL','VCPS','VCPL','VCFS','VCFL','VHPS','VHPL','VHFS','VHFL'];
-  const grid = document.getElementById('intro-type-grid');
+  var TYPE_ORDER=['ACPS','ACPL','ACFS','ACFL','AHPS','AHPL','AHFS','AHFL','VCPS','VCPL','VCFS','VCFL','VHPS','VHPL','VHFS','VHFL'];
+  var NAMES={'ACPS':'山岳探検家','ACPL':'孤高の登山家','ACFS':'ワイルドハイカー','ACFL':'ルートファインダー','AHPS':'展望ハンター','AHPL':'サイレントクライマー','AHFS':'お祭り登山家','AHFL':'気まぐれ山人','VCPS':'山岳研究家','VCPL':'深山の求道者','VCFS':'山旅人','VCFL':'隠れ登山家','VHPS':'山リゾーター','VHPL':'瞑想ハイカー','VHFS':'山ピクニック派','VHFL':'森の放浪者'};
+  var grid=document.getElementById('intro-type-grid');
   if(!grid) return;
-  grid.innerHTML = TYPE_ORDER.map(code => {
-    const t = TYPES[code];
-    const svg = MINI_SVGS[code] || '';
-    return '<div class="intro-type-item"><div class="intro-type-illust">'+svg+'</div><div class="intro-type-name">'+t.name+'</div></div>';
-  }).join('');
+  var html='<div class="itg-label">診断できる16タイプ — あなたはどれ？</div><div class="itg-grid">';
+  TYPE_ORDER.forEach(function(code){
+    var svgRaw=MINI_SVGS[code]||'';
+    var svg=svgRaw.replace('viewBox="0 0 44 56"','viewBox="0 0 44 56" width="38" height="48"').replace(/width="[^"]*" height="[^"]*" fill/,'width="38" height="48" fill');
+    html+='<div class="itg-cell">'+svg+'<div class="itg-name">'+NAMES[code]+'</div></div>';
+  });
+  html+='<div class="itg-cell itg-cell-cta"><div class="itg-q-mark">？</div><div class="itg-name">あなたは<br>どれ？</div></div>';
+  html+='</div>';
+  grid.innerHTML=html;
 }
+
 function startQuiz(){current=1;show('q'+current);}
 
 function answer(key,val){
   answers[key]=val;
   // 軸スコア更新
-  if(key==='a1'||key==='a2') axisScore.av += val==='A'?1:-1;
-  if(key==='a3'||key==='a4') axisScore.ch += val==='C'?1:-1;
-  if(key==='a5'||key==='a6') axisScore.pf += val==='P'?1:-1;
-  if(key==='a7')              axisScore.sl += val==='S'?1:-1;
+  if(key==='a1'||key==='a2'||key==='a3') axisScore.av += val==='A'?1:-1;
+  if(key==='a4'||key==='a5') axisScore.ch += val==='C'?1:-1;
+  if(key==='a6'||key==='a7') axisScore.pf += val==='P'?1:-1;
+  if(key==='a8'||key==='a9') axisScore.sl += val==='S'?1:-1;
+  // Phase3: アニメーション
+  var choiceEl = document.querySelector('.choice[data-key="'+key+'"][data-val="'+val+'"]');
+  if(choiceEl){ choiceEl.classList.add('selected'); }
   current++;
-  if(current<=TOTAL) show('q'+current);
-  else showResult();
+  if(current<=TOTAL) setTimeout(function(){ show('q'+current); },280);
+  else { setTimeout(showAnalyzing, 280); }
+}
+
+function goBack(){
+  if(current<=1){ show('intro'); current=0; return; }
+  current--;
+  // 直前の回答を取り消してaxisScoreを巻き戻す
+  var prevKey='a'+current;
+  var prevVal=answers[prevKey];
+  if(prevVal){
+    if(current<=3) axisScore.av += prevVal==='A'?-1:1;
+    else if(current<=5) axisScore.ch += prevVal==='C'?-1:1;
+    else if(current<=7) axisScore.pf += prevVal==='P'?-1:1;
+    else if(current<=9) axisScore.sl += prevVal==='S'?-1:1;
+    delete answers[prevKey];
+  }
+  show('q'+current);
+}
+
+function showAnalyzing(){
+  var overlay=document.getElementById('analyzing-overlay');
+  if(!overlay) return showResult();
+  overlay.classList.add('visible');
+  var fill=overlay.querySelector('.analyzing-bar-fill');
+  var pct=0;
+  var msgs=['あなたの行動パターンを解析中...','山との相性を計算中...','ベストマッチの山を探索中...','タイプを確定中...'];
+  var msgEl=overlay.querySelector('.analyzing-sub');
+  var mi=0;
+  var iv=setInterval(function(){
+    pct+=2;
+    if(fill) fill.style.width=pct+'%';
+    if(pct%25===0 && mi<msgs.length){ if(msgEl) msgEl.textContent=msgs[mi]; mi++; }
+    if(pct>=100){
+      clearInterval(iv);
+      setTimeout(function(){
+        overlay.classList.remove('visible');
+        showResult();
+        // Phase2: レーダーチャート描画（アニメ付き）
+        setTimeout(renderRadar, 400);
+        // Phase4: localStorage保存
+        saveResult();
+      }, 400);
+    }
+  }, 30);
+}
+
+function renderRadar(){
+  // axisScoreを0〜100に変換後、合計200〜300に正規化
+  var toScore=function(v,maxQ){ return Math.min(100,Math.max(15, Math.round(50+v/maxQ*50))); };
+  var raw=[
+    toScore(axisScore.av,3),
+    toScore(axisScore.ch,2),
+    toScore(axisScore.pf,2),
+    toScore(axisScore.sl,2)
+  ];
+  // 合計を200〜300に正規化（最小値15を保持）
+  var rawTotal=raw[0]+raw[1]+raw[2]+raw[3];
+  var vals=raw.slice();
+  if(rawTotal<200){
+    var diff=200-rawTotal;
+    for(var i=0;i<4;i++) vals[i]=Math.min(100,Math.round(raw[i]+diff*raw[i]/rawTotal));
+  } else if(rawTotal>300){
+    var diff=rawTotal-300;
+    for(var i=0;i<4;i++) vals[i]=Math.max(15,Math.round(raw[i]-diff*raw[i]/rawTotal));
+  }
+  var labels=['行動力','挑戦心','計画性','社交性'];
+  var section=document.getElementById('radar-section');
+  if(!section) return;
+
+  // 5角形レーダー（4軸を5頂点で表現：上・右上・右下・左下・左上、5本目=1本目と同じ軸）
+  // → シンプルに4軸を斜め配置（45度回転）でラベルが被らないようにする
+  // viewBox広めに取ってラベル余白確保
+  // viewBoxを広くとってラベルが絶対に切れないようにする
+  var W=260, H=260, cx=130, cy=130, r=72;
+  var angles=[-Math.PI/2, 0, Math.PI/2, Math.PI]; // 上,右,下,左
+  // labels対応: 行動力=上,挑戦心=右,計画性=下,社交性=左
+
+  var pts=[];
+  for(var i=0;i<4;i++){
+    var ratio=vals[i]/100;
+    pts.push([cx+Math.cos(angles[i])*r*ratio, cy+Math.sin(angles[i])*r*ratio]);
+  }
+  var bgPts=[];
+  for(var i=0;i<4;i++){
+    bgPts.push([cx+Math.cos(angles[i])*r, cy+Math.sin(angles[i])*r]);
+  }
+
+  var toPath=function(ps){ return ps.map(function(p,i){ return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1); }).join(' ')+'Z'; };
+
+  // グリッド同心形（25%, 50%, 75%, 100%）
+  var gridHtml='';
+  [0.25,0.5,0.75,1.0].forEach(function(ratio){
+    var gp=[];
+    for(var i=0;i<4;i++) gp.push([cx+Math.cos(angles[i])*r*ratio, cy+Math.sin(angles[i])*r*ratio]);
+    gridHtml += '<polygon points="'+gp.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' ')+'" fill="none" stroke="#ece8e0" stroke-width="1"/>';
+  });
+
+  // 軸線
+  var axisLines='';
+  for(var i=0;i<4;i++){
+    axisLines += '<line x1="'+cx+'" y1="'+cy+'" x2="'+bgPts[i][0].toFixed(1)+'" y2="'+bgPts[i][1].toFixed(1)+'" stroke="#e0dbd4" stroke-width="1.5"/>';
+  }
+
+  // ラベル（各軸の外側、スコア数値付き）
+  var labelTags='';
+  var labelOffset=22;
+  var anchors=['middle','start','middle','end']; // 上,右,下,左
+  var labelPos=[
+    [cx+Math.cos(angles[0])*(r+labelOffset), cy+Math.sin(angles[0])*(r+labelOffset)],
+    [cx+Math.cos(angles[1])*(r+labelOffset), cy+Math.sin(angles[1])*(r+labelOffset)],
+    [cx+Math.cos(angles[2])*(r+labelOffset), cy+Math.sin(angles[2])*(r+labelOffset)],
+    [cx+Math.cos(angles[3])*(r+labelOffset), cy+Math.sin(angles[3])*(r+labelOffset)]
+  ];
+  // y補正: 上(i=0)は-12, 下(i=2)は+4, 左右はそのまま
+  var yOffsets=[-16, 0, 18, 0];
+  for(var i=0;i<4;i++){
+    var lx=labelPos[i][0].toFixed(1);
+    var ly1=(labelPos[i][1]+yOffsets[i]-2).toFixed(1);
+    var ly2=(labelPos[i][1]+yOffsets[i]+12).toFixed(1);
+    labelTags += '<text x="'+lx+'" y="'+ly1+'" text-anchor="'+anchors[i]+'" font-size="10" font-weight="600" fill="#5a7048" font-family="sans-serif">'+labels[i]+'</text>';
+    labelTags += '<text x="'+lx+'" y="'+ly2+'" text-anchor="'+anchors[i]+'" font-size="11" font-weight="700" fill="#4a6038" font-family="sans-serif">'+vals[i]+'</text>';
+  }
+
+  var svgHtml = '<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'" style="max-width:100%;">'
+    + gridHtml + axisLines
+    + '<path d="'+toPath(pts)+'" fill="rgba(74,96,56,0.18)" stroke="#4a6038" stroke-width="2.5" stroke-linejoin="round"/>'
+    + labelTags
+    + '</svg>';
+
+  var wrap=section.querySelector('.radar-wrap');
+  if(wrap) wrap.innerHTML=svgHtml;
+
+  // バースコア（アニメーション付き）
+  var scoreItems=section.querySelectorAll('.radar-score-fill');
+  var scoreNums=section.querySelectorAll('.radar-score-num');
+  for(var i=0;i<4;i++){
+    (function(idx,v){
+      setTimeout(function(){
+        if(scoreItems[idx]) scoreItems[idx].style.width=v+'%';
+        if(scoreNums[idx]) scoreNums[idx].textContent=v;
+      },100+idx*80);
+    })(i,vals[i]);
+  }
+}
+
+function saveResult(){
+  var tc=getTypeCode();
+  var saved={type:tc,name:TYPES[tc]?TYPES[tc].name:'',date:new Date().toISOString(),scores:{av:axisScore.av,ch:axisScore.ch,pf:axisScore.pf,sl:axisScore.sl}};
+  try{ localStorage.setItem('yamatch_result', JSON.stringify(saved)); } catch(e){}
+}
+
+function loadSavedResult(){
+  try{
+    var saved=JSON.parse(localStorage.getItem('yamatch_result'));
+    if(!saved) return;
+    var banner=document.getElementById('result-saved-banner');
+    if(banner){ banner.style.display='block'; banner.textContent='前回の診断: '+saved.name+' ('+saved.type+')  もう一度診断する場合はそのままお進みください'; }
+  } catch(e){}
 }
 
 function restart(){
@@ -839,22 +1580,18 @@ function showResult(){
     '<div class="type-card">'+
     '<div class="type-card-bg">'+type.emoji+'</div>'+
     '<div class="type-card-inner">'+
+    '<div class="type-hero-row">'+
     personSvg+
-    '<div class="type-info">'+
+    '<div class="type-header-info">'+
     '<div class="type-code">'+typeCode+'型</div>'+
     '<div class="type-name">'+type.name+'</div>'+
-    '<div class="type-desc" style="font-size:12px;margin-top:6px;">'+type.desc+'</div>'+
-
-    '<div class="type-meta" style="margin-top:8px;">'+
     '<span class="type-rare '+rareClass+'">'+rareLabel+' · '+type.rare+'%</span>'+
-    (type.style ? '<span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);">'+type.style+'</span>' : '')+
     '</div>'+
-    '<div class="type-axes" style="margin-top:6px;">'+axesHtml+'</div>'+
-    '<div style="margin-top:12px;">'+
-    '<a href="/type/'+TYPE_SLUGS[typeCode]+'/" style="display:block;text-align:center;background:rgba(255,255,255,0.15);color:white;font-size:12px;font-weight:700;padding:8px;border-radius:10px;text-decoration:none;border:1px solid rgba(255,255,255,0.3);">'+
+    '</div>'+
+    '<div class="type-axes">'+axesHtml+'</div>'+
+    '<div class="type-desc">'+type.desc+'</div>'+
+    '<a href="/type/'+TYPE_SLUGS[typeCode]+'/" class="type-detail-link">'+
     'このタイプの詳細ページを見る →'+'</a>'+
-    '</div>'+
-    '</div>'+
     '</div>'+
     '</div>';
 
@@ -977,6 +1714,27 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     });
 });
+
+function buildCharaTrack(){
+  var track=document.getElementById('chara-track');
+  if(!track) return;
+  var order=['ACPS','ACPL','ACFS','ACFL','AHPS','AHPL','AHFS','AHFL','VCPS','VCPL','VCFS','VCFL','VHPS','VHPL','VHFS','VHFL'];
+  var names={'ACPS':'山岳探検家','ACPL':'孤高の登山家','ACFS':'ワイルドハイカー','ACFL':'ルートファインダー','AHPS':'展望ハンター','AHPL':'サイレントクライマー','AHFS':'お祭り登山家','AHFL':'気まぐれ山人','VCPS':'山岳研究家','VCPL':'深山の求道者','VCFS':'山旅人','VCFL':'隠れ登山家','VHPS':'山リゾーター','VHPL':'瞑想ハイカー','VHFS':'山ピクニック派','VHFL':'森の放浪者'};
+  var html='';
+  for(var loop=0;loop<2;loop++){
+    order.forEach(function(code){
+      var svg=MINI_SVGS[code]||'';
+      svg=svg.replace(/width="[^"]*"/,'width="54"').replace(/height="[^"]*"/,'height="66"');
+      html+='<div class="chara-item">'+svg+'<div class="chara-name">'+names[code]+'</div></div>';
+    });
+  }
+  track.innerHTML=html;
+}
+document.addEventListener('DOMContentLoaded',function(){
+  buildCharaTrack();
+  loadSavedResult();
+});
+
 </script>
 
 <nav style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:768px;background:white;border-top:1px solid #e8e4dc;display:flex;z-index:100;box-shadow:0 -2px 12px rgba(0,0,0,0.08);padding-bottom:env(safe-area-inset-bottom,0px);"><a href="/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#a09888;gap:3px;"><span style="color:#a09888;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span style="font-size:10px;font-weight:500;font-family:sans-serif;">ホーム</span></a><a href="/recommend/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#4e6535;gap:3px;"><span style="color:#4e6535;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="12,3 14,10 12,12 10,10" fill="currentColor" stroke="none"/><polygon points="12,21 10,14 12,12 14,14" fill="currentColor" opacity="0.5" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="white" stroke="none"/></svg></span><span style="font-size:10px;font-weight:700;font-family:sans-serif;">診断</span></a><a href="/articles/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#a09888;gap:3px;"><span style="color:#a09888;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span><span style="font-size:10px;font-weight:500;font-family:sans-serif;">記事</span></a><a href="/mypage/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#a09888;gap:3px;"><span style="color:#a09888;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span style="font-size:10px;font-weight:500;font-family:sans-serif;">マイページ</span></a></nav>
