@@ -29,6 +29,40 @@
 <style>*{box-sizing:border-box;}body{margin:0;padding:0;-webkit-text-size-adjust:100%;}::-webkit-scrollbar{height:4px;}::-webkit-scrollbar-thumb{background:#ccc8c0;border-radius:4px;}button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
 /* ボトムナビ分の余白 */
 #root > div { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+/* ── アニメーション追加 ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes arrowBounce {
+  0%,100% { transform: translateX(0); }
+  50%      { transform: translateX(4px); }
+}
+@keyframes pingDot {
+  0%   { transform: scale(1);   opacity: 1; }
+  75%  { transform: scale(2);   opacity: 0; }
+  100% { transform: scale(2);   opacity: 0; }
+}
+@keyframes starPop {
+  0%   { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--dx),var(--dy)) scale(0); opacity: 0; }
+}
+@keyframes slideUnderline {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes barGrow {
+  from { width: 0 !important; }
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -653,7 +687,9 @@ function App() {
   const [driveTimeFilter, setDriveTimeFilter] = useState(() => ssGet("ym_drivetime", null)); // null | 180 | 360
   const [courseFilter, setCourseFilter]     = useState(() => ssGet("ym_course", []));         // 複数選択
   const [cramponsFilter, setCramponsFilter] = useState(() => ssGet("ym_crampons", "すべて")); // "すべて"|"アイゼン不要"|"6本以内でOK"
-  const [lineFilter, setLineFilter]         = useState(() => ssGet("ym_line", [])); // 複数選択
+  const [lineFilter, setLineFilter]         = useState(() => ssGet("ym_line", [])); // 複数選
+  const [difficultyFilter, setDifficultyFilter] = useState(() => ssGet("ym_difficulty", [])); // []|["初級"]|["中級"]|["上級"] 複数選可
+  const [elevationFilter, setElevationFilter]   = useState(() => ssGet("ym_elevation", null)); // null|1000|1500|2000|2500|3000択
   const [filterMonth, setFilterMonth]       = useState(() => ssGet("ym_month", new Date().getMonth() + 1)); // 1-12
   const [viewMode, setViewMode]             = useState(() => ssGet("ym_viewmode", "list"));
   const [filterOpen, setFilterOpen] = useState(false);
@@ -668,6 +704,25 @@ function App() {
     setStarredMountains(prev => {
       var next = prev.includes(id) ? prev.filter(function(x){ return x !== id; }) : prev.concat([id]);
       lsSet("ym_starred", next);
+      // 追加時のみパーティクル発射
+      if(!prev.includes(id)){
+        var btn = document.querySelector('[data-star="'+id+'"]');
+        if(btn){
+          var rect = btn.getBoundingClientRect();
+          var cx = rect.left + rect.width/2, cy = rect.top + rect.height/2;
+          var angles = [0,60,120,180,240,300];
+          angles.forEach(function(a){
+            var p = document.createElement('div');
+            var rad = a * Math.PI / 180;
+            var dist = 18 + Math.random()*10;
+            p.style.cssText = 'position:fixed;left:'+cx+'px;top:'+cy+'px;width:7px;height:7px;pointer-events:none;z-index:9999;font-size:8px;line-height:1;transform-origin:center center;--dx:'+(Math.cos(rad)*dist)+'px;--dy:'+(Math.sin(rad)*dist)+'px;animation:starPop 0.5s ease forwards;';
+            p.textContent = '★';
+            p.style.color = '#f0c030';
+            document.body.appendChild(p);
+            setTimeout(function(){ p.remove(); }, 520);
+          });
+        }
+      }
       return next;
     });
   };
@@ -714,7 +769,19 @@ function App() {
         || (cramponsFilter === "アイゼン不要" && canClimbNoGear(m, activeMonth))
         || (cramponsFilter === "6本以内でOK" && canClimb6Crampons(m, activeMonth));
       const matchLine = lineFilter.length === 0 || (m.lines && m.lines.some(function(l){ return lineFilter.includes(l); }));
-      return matchSearch && matchArea && matchCat && matchDayTrip && matchTrainOnly && matchDriveTime && matchCourse && matchCrampons && matchLine;
+      // 難易度フィルター（初級=初級+初〜中級、中級=初〜中+中級+中〜上、上級=中〜上+上級）
+      const DIFF_MAP = {"初級":["初級","初〜中級"],"中級":["初〜中級","中級","中〜上級"],"上級":["中〜上級","上級"]};
+      const matchDifficulty = difficultyFilter.length === 0 || difficultyFilter.some(function(d){
+        return DIFF_MAP[d] && DIFF_MAP[d].indexOf(m.difficulty) >= 0;
+      });
+      // 標高フィルター（elevationFilter=下限値、それ以上500m幅、3000〜は上限なし）
+      var elev = m.elevation || 0;
+      var matchElevation = elevationFilter === null || elevationFilter === undefined || (
+        elevationFilter === 0    ? elev < 1000 :
+        elevationFilter === 3000 ? elev >= 3000 :
+        elev >= elevationFilter && elev < elevationFilter + 500
+      );
+      return matchSearch && matchArea && matchCat && matchDayTrip && matchTrainOnly && matchDriveTime && matchCourse && matchCrampons && matchLine && matchDifficulty && matchElevation;
     });
     if (sort === "おすすめ順") list = list.slice().sort(function(a, b) {
       const scoreM = m => {
@@ -789,7 +856,7 @@ function App() {
       {showMenu && (
         <div style={{position:"fixed",inset:0,zIndex:200,display:"flex"}} onClick={() => setShowMenu(false)}>
           <div style={{position:"absolute",inset:0,background:"rgba(0,0,0,0.35)"}}></div>
-          <div style={{position:"absolute",top:0,right:0,width:"260px",height:"100%",background:"white",boxShadow:"-4px 0 24px rgba(0,0,0,0.18)",display:"flex",flexDirection:"column"}} onClick={e => e.stopPropagation()}>
+          <div style={{position:"absolute",top:0,right:0,width:"260px",height:"100%",background:"white",boxShadow:"-4px 0 24px rgba(0,0,0,0.18)",display:"flex",flexDirection:"column",animation:"slideInRight 0.28s cubic-bezier(0.22,1,0.36,1) both"}} onClick={e => e.stopPropagation()}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"16px 18px 14px",borderBottom:"1px solid #e8e4dc"}}>
               <div style={{display:"flex",alignItems:"center",gap:"7px"}}>
                 <svg width="20" height="20" viewBox="0 0 36 36"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
@@ -847,9 +914,12 @@ function App() {
           <div style={{display:"inline-flex",flexDirection:"column",alignItems:"stretch",gap:"4px"}}>
             {/* ①検索バー＋登山時期 */}
             <div style={{display:"flex",gap:"6px",alignItems:"center"}}>
-              <div style={{flex:1,background:"rgba(255,255,255,0.93)",borderRadius:"8px",height:"30px",display:"flex",alignItems:"center",padding:"0 10px",gap:"6px"}}>
+              <div style={{flex:1,background:"rgba(255,255,255,0.93)",borderRadius:"8px",height:"30px",display:"flex",alignItems:"center",padding:"0 10px",gap:"6px",transition:"box-shadow 0.2s ease, background 0.2s ease"}}>
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4e6535" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input type="text" placeholder="山の名前で検索" value={search} onChange={e => setSearch(e.target.value)} style={{flex:1,border:"none",outline:"none",fontSize:"13px",color:"#3a3530",background:"transparent",minWidth:0}}/>
+                <input type="text" placeholder="山の名前で検索" value={search} onChange={e => setSearch(e.target.value)}
+                onFocus={e => { e.currentTarget.parentNode.style.boxShadow="0 0 0 2px rgba(78,101,53,0.4)"; e.currentTarget.parentNode.style.background="rgba(255,255,255,0.98)"; }}
+                onBlur={e => { e.currentTarget.parentNode.style.boxShadow="none"; e.currentTarget.parentNode.style.background="rgba(255,255,255,0.93)"; }}
+                style={{flex:1,border:"none",outline:"none",fontSize:"13px",color:"#3a3530",background:"transparent",minWidth:0}}/>
               </div>
               <div style={{background:"rgba(255,255,255,0.93)",borderRadius:"8px",height:"30px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"0 8px",flexShrink:0}}>
                 <div style={{fontSize:"7px",color:"#9a9088",lineHeight:1}}>登山時期</div>
@@ -863,11 +933,17 @@ function App() {
             </div>
             {/* ②絞り込み＋リセット */}
             <div style={{display:"flex",gap:"4px"}}>
-              <button onClick={() => setFilterOpen(!filterOpen)} style={{flex:1,background:"rgba(255,255,255,0.88)",borderRadius:"8px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"none",cursor:"pointer"}}>
+              <button onClick={() => setFilterOpen(!filterOpen)}
+  onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
+  onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform="scale(1)";},150)}
+  style={{flex:1,background:"rgba(255,255,255,0.88)",borderRadius:"8px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"none",cursor:"pointer",transition:"transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4a5a48" strokeWidth="2.5" strokeLinecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
                 <span style={{fontSize:"11px",color:"#4a5a48",fontWeight:"600"}}>条件で検索</span>
               </button>
-              <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); }} style={{flex:1,background:"rgba(255,255,255,0.88)",borderRadius:"8px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"none",cursor:"pointer"}}>
+              <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter(null); }}
+  onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
+  onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform="scale(1)";},150)}
+  style={{flex:1,background:"rgba(255,255,255,0.88)",borderRadius:"8px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"none",cursor:"pointer",transition:"transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4a5a48" strokeWidth="2.5" strokeLinecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.1"/></svg>
                 <span style={{fontSize:"11px",color:"#4a5a48",fontWeight:"600"}}>リセット</span>
               </button>
@@ -877,7 +953,14 @@ function App() {
         {/* ③出発地タブ */}
         <div style={{position:"relative",zIndex:2,display:"flex",gap:"4px",padding:"8px 16px 8px",maxWidth:"768px",margin:"0 auto"}}>
           {["大船","新宿","横浜","大宮"].map(d => (
-            <button key={d} onClick={() => setDeparture(d)} style={{flex:1,textAlign:"center",fontSize:"13px",padding:"7px 0",borderRadius:"8px",fontWeight:"600",cursor:"pointer",transition:"all 0.15s",border:"none",background:departure===d?"#4e6535":"rgba(255,255,255,0.78)",color:departure===d?"white":"#5a5248"}}>{d}</button>
+            <button key={d} onClick={() => setDeparture(d)} style={{flex:1,textAlign:"center",fontSize:"13px",padding:"7px 0",borderRadius:"8px",fontWeight:"600",cursor:"pointer",border:"none",background:departure===d?"#4e6535":"rgba(255,255,255,0.78)",color:departure===d?"white":"#5a5248",
+              transition:"background 0.2s ease, color 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease",
+              boxShadow:departure===d?"0 2px 8px rgba(78,101,53,0.35)":"none",
+              transform:departure===d?"scale(1.04)":"scale(1)"
+            }}
+            onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
+            onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform=departure===d?"scale(1.04)":"scale(1)";},150)}
+            >{d}</button>
           ))}
         </div>
       </header>
@@ -885,7 +968,11 @@ function App() {
       <main className="max-w-3xl mx-auto p-4">
 
         {/* 診断バナー */}
-        <a href="/recommend/" style={{display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"10px",padding:"5px 10px",marginBottom:"7px",textDecoration:"none",cursor:"pointer"}}>
+        <a href="/recommend/" style={{display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"10px",padding:"5px 10px",marginBottom:"7px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease, box-shadow 0.18s ease"}}
+          onMouseEnter={e => { e.currentTarget.style.transform="translateY(-1px)"; e.currentTarget.style.boxShadow="0 3px 10px rgba(74,112,53,0.18)"; }}
+          onMouseLeave={e => { e.currentTarget.style.transform="translateY(0)"; e.currentTarget.style.boxShadow="none"; }}
+          onTouchStart={e => { e.currentTarget.style.transform="scale(0.98)"; }}
+          onTouchEnd={e => { setTimeout(()=>{ if(e.currentTarget) e.currentTarget.style.transform="scale(1)"; },180); }}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3a5030" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
             <circle cx="12" cy="12" r="10"/>
             <polygon points="12,3 14,10 12,12 10,10" fill="#3a5030" stroke="none"/>
@@ -895,9 +982,15 @@ function App() {
           <div style={{flex:1}}>
             <div style={{fontSize:"8.5px",fontWeight:"700",color:"#5a6848",letterSpacing:"0.06em",marginBottom:"1px"}}>登山タイプ診断</div>
             <div style={{fontSize:"13px",fontWeight:"700",color:"#2a3020",lineHeight:1.25}}>16タイプ診断・あなたはどのタイプ？</div>
-            <div style={{fontSize:"9px",color:"#5a6848",marginTop:"1px"}}>9問・約1分・完全無料・山の提案つき</div>
+            <div style={{fontSize:"9px",color:"#5a6848",marginTop:"1px"}}>12問・約2分・完全無料・山の提案つき</div>
           </div>
-          <span style={{fontSize:"20px",color:"#3a5030",fontWeight:"300",lineHeight:1}}>›</span>
+          <div style={{display:"flex",alignItems:"center",gap:"4px"}}>
+            <span style={{position:"relative",display:"inline-block",width:"8px",height:"8px"}}>
+              <span style={{position:"absolute",inset:0,borderRadius:"50%",background:"#4e6535",opacity:0.7,animation:"pingDot 1.6s ease-out infinite"}}></span>
+              <span style={{position:"absolute",inset:"1px",borderRadius:"50%",background:"#4e6535"}}></span>
+            </span>
+            <span style={{fontSize:"20px",color:"#3a5030",fontWeight:"300",lineHeight:1,animation:"arrowBounce 1.4s ease-in-out infinite"}}>›</span>
+          </div>
         </a>
 
 
@@ -908,7 +1001,7 @@ function App() {
             {/* 半透明背景 */}
             <div style={{position:"absolute",inset:0,background:"rgba(0,0,0,0.45)"}}></div>
             {/* パネル */}
-            <div style={{position:"relative",marginTop:"auto",background:"white",borderRadius:"20px 20px 0 0",maxHeight:"80vh",overflowY:"auto",WebkitOverflowScrolling:"touch"}} onClick={e => e.stopPropagation()}>
+            <div style={{position:"relative",marginTop:"auto",background:"white",borderRadius:"20px 20px 0 0",maxHeight:"80vh",overflowY:"auto",WebkitOverflowScrolling:"touch",animation:"slideUp 0.3s cubic-bezier(0.22,1,0.36,1) both"}} onClick={e => e.stopPropagation()}>
               {/* ハンドル */}
               <div style={{display:"flex",justifyContent:"center",padding:"10px 0 0"}}>
                 <div style={{width:"36px",height:"4px",background:"#ddd8d0",borderRadius:"2px"}}></div>
@@ -918,9 +1011,9 @@ function App() {
                 <div style={{display:"flex",alignItems:"center",gap:"6px",fontSize:"14px",fontWeight:"700",color:"#3a3530"}}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3a3530" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
                   絞り込み
-                  {[dayTripOnly,trainOnly,categoryFilter!=="すべて",area!=="すべて",!!driveTimeFilter,courseFilter.length>0,cramponsFilter!=="すべて",lineFilter.length>0].filter(Boolean).length > 0 && (
+                  {[dayTripOnly,trainOnly,categoryFilter!=="すべて",area!=="すべて",!!driveTimeFilter,courseFilter.length>0,cramponsFilter!=="すべて",lineFilter.length>0,difficultyFilter.length>0,!!elevationFilter].filter(Boolean).length > 0 && (
                     <span style={{background:"#4e6535",color:"white",fontSize:"11px",padding:"1px 7px",borderRadius:"10px"}}>
-                      {[dayTripOnly,trainOnly,categoryFilter!=="すべて",area!=="すべて",!!driveTimeFilter,courseFilter.length>0,cramponsFilter!=="すべて",lineFilter.length>0].filter(Boolean).length}
+                      {[dayTripOnly,trainOnly,categoryFilter!=="すべて",area!=="すべて",!!driveTimeFilter,courseFilter.length>0,cramponsFilter!=="すべて",lineFilter.length>0,difficultyFilter.length>0,!!elevationFilter].filter(Boolean).length}
                     </span>
                   )}
                 </div>
@@ -979,6 +1072,54 @@ function App() {
                   ))}
                 </div>
 
+                {/* 難易度 */}
+                <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", alignItems: "center" }}>
+                  <span style={{ fontSize: "11px", color: "#a09888" }}>⛰️</span>
+                  {["初級","中級","上級"].map(d => {
+                    const active = difficultyFilter.includes(d);
+                    const colors = {
+                      "初級": { on: "#e8f0e4", off: "#f5f2ef", text: "#4a6840", border: "#b8d0b0" },
+                      "中級": { on: "#f0ece0", off: "#f5f2ef", text: "#7a6030", border: "#d0c090" },
+                      "上級": { on: "#f0e0e0", off: "#f5f2ef", text: "#7a3838", border: "#d0a0a0" },
+                    };
+                    const c = colors[d];
+                    return (
+                      <button key={d}
+                        onClick={() => {
+                          var next = active ? difficultyFilter.filter(function(x){ return x !== d; }) : difficultyFilter.concat([d]);
+                          setDifficultyFilter(next);
+                          ssSet("ym_difficulty", next);
+                        }}
+                        style={{padding:"4px 12px",borderRadius:"20px",border:"0.5px solid "+(active?c.border:"#ddd8d0"),background:active?c.on:c.off,color:active?c.text:"#7a7068",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"all 0.15s"}}>
+                        {d}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* 標高 */}
+                <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
+                  <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content", alignItems: "center" }}>
+                    <span style={{ fontSize: "11px", color: "#a09888", flexShrink: 0 }}>↕️</span>
+                    {[
+                      { label: "〜1000m",    val: 0    },
+                      { label: "1000〜1500m", val: 1000 },
+                      { label: "1500〜2000m", val: 1500 },
+                      { label: "2000〜2500m", val: 2000 },
+                      { label: "2500〜3000m", val: 2500 },
+                      { label: "3000m〜",     val: 3000 },
+                    ].map(o => (
+                      <button key={o.val}
+                        onClick={() => {
+                          var next = elevationFilter === o.val ? null : o.val;
+                          setElevationFilter(next);
+                          ssSet("ym_elevation", next);
+                        }}
+                        style={chip(elevationFilter === o.val)}>{o.label}</button>
+                    ))}
+                  </div>
+                </div>
+
                 {/* 路線フィルター: 2行×横スクロール */}
                 <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px", minWidth: "max-content" }}>
@@ -1015,7 +1156,7 @@ function App() {
               </div>
               {/* 固定フッター：適用ボタン */}
               <div style={{position:"sticky",bottom:0,background:"white",borderTop:"1px solid #e8e4dc",padding:"12px 16px",display:"flex",gap:"8px"}}>
-                <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); }} style={{flex:1,padding:"10px",borderRadius:"10px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
+                <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter(null); }} style={{flex:1,padding:"10px",borderRadius:"10px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
                 <button onClick={() => setFilterOpen(false)} style={{flex:2,padding:"10px",borderRadius:"10px",border:"none",background:"#4e6535",fontSize:"13px",color:"white",fontWeight:"700",cursor:"pointer"}}>この条件で絞り込む（{filtered.length}件）</button>
               </div>
             </div>
@@ -1024,7 +1165,7 @@ function App() {
 
           {/* 件数＋並び替え▾＋一覧/地図 */}
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:"7px"}}>
-            <span style={{fontSize:"11px",color:"#7a7068"}}>見つかった山 {filtered.length}件</span>
+            <span key={filtered.length} style={{fontSize:"11px",color:"#7a7068",display:"inline-block",animation:"fadeInUp 0.25s ease both"}}>見つかった山 {filtered.length}件</span>
             <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
               <div style={{position:"relative"}}>
                 <select value={sort} onChange={e => { setSort(e.target.value); ssSet("ym_sort",e.target.value) }} style={{appearance:"none",WebkitAppearance:"none",background:"white",border:"0.5px solid #ddd8d0",borderRadius:"14px",height:"26px",padding:"0 24px 0 9px",fontSize:"10px",color:"#4a5a48",fontWeight:"600",cursor:"pointer",outline:"none"}}>
@@ -1034,7 +1175,7 @@ function App() {
               </div>
               <div style={{display:"flex",gap:"3px"}}>
                 {["list","map"].map(mode => (
-                  <button key={mode} onClick={() => setViewMode(mode)} style={{fontSize:"10px",padding:"0 9px",borderRadius:"14px",border:viewMode===mode?"none":"0.5px solid #ddd8d0",background:viewMode===mode?"#4e6535":"white",color:viewMode===mode?"white":"#5a5248",fontWeight:"600",cursor:"pointer",height:"26px",display:"flex",alignItems:"center"}}>
+                  <button key={mode} onClick={() => setViewMode(mode)} style={{fontSize:"10px",padding:"0 9px",borderRadius:"14px",border:viewMode===mode?"none":"0.5px solid #ddd8d0",background:viewMode===mode?"#4e6535":"white",color:viewMode===mode?"white":"#5a5248",fontWeight:"600",cursor:"pointer",height:"26px",display:"flex",alignItems:"center",transition:"background 0.2s ease, color 0.2s ease, transform 0.15s ease",transform:viewMode===mode?"scale(1.05)":"scale(1)"}}>
                     {mode==="list"?"一覧":"地図"}
                   </button>
                 ))}
@@ -1046,7 +1187,7 @@ function App() {
           {viewMode === "list" ? (
             <>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "8px" }}>
-                {filtered.map(m => {
+                {filtered.map((m, cardIdx) => {
                   const dayTrip = isDayTrip(m);
                   const catStyle = m.category && CATEGORY_STYLE[m.category];
                   const is100 = m.category === "百名山";
@@ -1084,17 +1225,21 @@ function App() {
                         padding: "11px 10px 9px",
                         textDecoration: "none", color: "inherit",
                         display: "flex", flexDirection: "column", gap: "3px",
-                        transition: "opacity 0.12s",
+                        transition: "opacity 0.12s, transform 0.15s cubic-bezier(0.34,1.56,0.64,1)",
+                        animation: `fadeInUp 0.35s ease both`,
+                        animationDelay: `${Math.min(cardIdx * 0.04, 0.5)}s`,
                       }}
-                      onMouseEnter={e => e.currentTarget.style.opacity = "0.85"}
-                      onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
+                      onMouseEnter={e => { e.currentTarget.style.opacity = "0.9"; e.currentTarget.style.transform = "translateY(-2px) scale(1.01)"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.1)"; }}
+                      onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.boxShadow = "none"; }}
+                      onTouchStart={e => { e.currentTarget.style.transform = "scale(0.97)"; }}
+                      onTouchEnd={e => { setTimeout(() => { if(e.currentTarget) e.currentTarget.style.transform = "scale(1)"; }, 200); }}>
                       {/* 星ボタン */}
-                      <button onClick={e => { e.preventDefault(); e.stopPropagation(); toggleStar(m.id); }}
+                      <button data-star={m.id} onClick={e => { e.preventDefault(); e.stopPropagation(); toggleStar(m.id); }}
                         style={{position:"absolute",top:"6px",right:"6px",width:"20px",height:"20px",display:"flex",alignItems:"center",justifyContent:"center",background:"none",border:"none",cursor:"pointer",zIndex:2,transition:"transform 0.2s cubic-bezier(0.34,1.56,0.64,1)",padding:0}}
                         onMouseDown={e => e.currentTarget.style.transform="scale(1.7)"}
                         onMouseUp={e => setTimeout(()=>e.currentTarget.style.transform="scale(1)",280)}
-                        onTouchStart={e => e.currentTarget.style.transform="scale(1.7)"}
-                        onTouchEnd={e => setTimeout(()=>e.currentTarget.style.transform="scale(1)",280)}
+                        onTouchStart={e => { e.stopPropagation(); e.currentTarget.style.transform="scale(1.7)"; }}
+                        onTouchEnd={e => { e.stopPropagation(); setTimeout(()=>{ if(e.currentTarget) e.currentTarget.style.transform="scale(1)"; },280); }}
                       >
                         {starredMountains.includes(m.id)
                           ? <svg width="13" height="13" viewBox="0 0 24 24" fill="#f0c030" stroke="#d4a020" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1125,7 +1270,7 @@ function App() {
                       </div>
                       {/* アクセス時間バー */}
                       <div style={{height:"3px",background:"rgba(0,0,0,0.08)",borderRadius:"2px",marginBottom:"5px",overflow:"hidden",position:"relative",zIndex:1}}>
-                        <div style={{width:barPct+"%",height:"100%",background:barColor,borderRadius:"2px"}}></div>
+                        <div style={{width:barPct+"%",height:"100%",background:barColor,borderRadius:"2px",transition:"width 0.7s cubic-bezier(0.22,1,0.36,1)",animation:"barGrow 0.7s cubic-bezier(0.22,1,0.36,1) both"}}></div>
                       </div>
                       {/* バッジ群 */}
                       <div style={{ display: "flex", gap: "3px", flexWrap: "wrap", position: "relative", zIndex: 1 }}>
