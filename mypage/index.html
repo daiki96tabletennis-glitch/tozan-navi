@@ -12,7 +12,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 .header-inner{display:flex;align-items:center;gap:10px;max-width:480px;margin:0 auto}
 .back-btn{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;padding:6px 10px;font-size:12px;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:4px}
 .header-title{font-size:17px;font-weight:700;color:white;flex:1}
-.tabs{display:flex;background:white;border-bottom:1px solid #e0dbd4;position:sticky;top:0;z-index:10}
+.tabs{display:flex;background:white;border-bottom:1px solid #e0dbd4;position:sticky;top:var(--header-h,62px);z-index:10}
 .tab{flex:1;padding:12px 4px;text-align:center;font-size:12px;font-weight:600;color:#8a8078;cursor:pointer;border-bottom:2px solid transparent}
 .tab.active{color:#4a5e4a;border-bottom-color:#4a5e4a}
 .main{max-width:480px;margin:0 auto;padding:16px}
@@ -36,7 +36,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 /* 追加ボタン */
 .add-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:11px;background:#f0f5ec;border:2px dashed #c8ddb0;border-radius:10px;font-size:13px;font-weight:700;color:#4a5e4a;cursor:pointer;margin-bottom:12px}
 /* モーダル */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;overflow-y:auto}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:300;overflow-y:auto}
 .modal-overlay.open{display:block}
 .modal{background:#f0ede5;max-width:480px;margin:0 auto;min-height:100vh;padding:0 0 40px}
 .modal-header{background:linear-gradient(155deg,#243d20,#344f2c);padding:14px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10}
@@ -154,9 +154,15 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 
   <!-- お気に入り -->
   <div class="section" id="tab-favorites">
-    <div class="stat-row">
-      <div class="stat-box"><div class="stat-num" id="fav-count">0</div><div class="stat-label">お気に入り</div></div>
-      <div class="stat-box"><div class="stat-num" id="climbed-count">0</div><div class="stat-label">登頂数</div></div>
+    <div style="display:flex;gap:10px;margin-bottom:16px">
+      <div style="flex:1;background:white;border-radius:12px;border:1px solid #e0dbd4;padding:14px;text-align:center">
+        <div style="font-size:26px;font-weight:800;color:#4e6535" id="fav-count">0</div>
+        <div style="font-size:11px;color:#8a8078;margin-top:2px">⭐ お気に入り</div>
+      </div>
+      <div style="flex:1;background:white;border-radius:12px;border:1px solid #e0dbd4;padding:14px;text-align:center">
+        <div style="font-size:26px;font-weight:800;color:#4e6535" id="climbed-count">0</div>
+        <div style="font-size:11px;color:#8a8078;margin-top:2px">🚩 登頂数</div>
+      </div>
     </div>
     <div class="card">
       <div class="card-header">⭐ お気に入りの山</div>
@@ -166,13 +172,32 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 
   <!-- 登頂記録 -->
   <div class="section" id="tab-climbed">
-    <button class="add-btn" onclick="openAddClimbed()">＋ 登頂記録を手動追加</button>
+    <button class="add-btn" onclick="openAddClimbed()" style="border-style:dashed;margin-bottom:12px">＋ 記録を手動追加（山カード以外の山など）</button>
     <div class="card">
       <div class="card-header">🚩 登った山</div>
       <div class="card-body" id="climbed-list"></div>
     </div>
   </div>
 
+</div>
+
+<!-- 登頂記録編集モーダル -->
+<div class="modal-overlay" id="edit-climbed-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeEditClimbed()">✕</button>
+      <div class="modal-title">登頂記録を編集</div>
+      <button class="modal-save" onclick="saveEditClimbed()">保存</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="ec-key">
+      <div style="font-size:15px;font-weight:700;color:#2a2520;margin-bottom:16px;padding:0 2px" id="ec-name"></div>
+      <div class="form-card">
+        <div class="field"><label>登頂日</label><input type="date" id="ec-date"></div>
+        <div class="field"><label>メモ</label><textarea id="ec-memo" rows="3" placeholder="天気、コース、感想など..." style="width:100%;border:1px solid #ddd8d0;border-radius:8px;padding:9px 12px;font-size:13px;background:white;resize:none;font-family:inherit"></textarea></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- 登山計画フォーム -->
@@ -438,17 +463,46 @@ function renderFavorites() {
   document.getElementById('fav-count').textContent = favs.length;
   document.getElementById('climbed-count').textContent = Object.keys(climbs).length;
   var el = document.getElementById('fav-list');
-  if (favs.length===0){ el.innerHTML='<div class="empty">お気に入りの山がありません<br><small>山カードの ☆ で追加できます</small></div>'; return; }
+  if (favs.length===0){
+    el.innerHTML='<div class="empty" style="padding:32px 0;text-align:center"><div style="font-size:32px;margin-bottom:8px">⭐</div>お気に入りの山がありません<br><small style="color:#b0a898;margin-top:6px;display:block">山カードの ☆ で追加できます</small></div>';
+    return;
+  }
   fetchNames(function(nameMap){
-    var html = '';
-    favs.forEach(function(id){
-      var name = nameMap[id]||id;
-      html += '<div class="list-item">';
-      html += '<div><div class="list-item-name"><a href="/mountains/'+id+'/" style="color:#3a3530;text-decoration:none">'+esc(name)+'</a></div></div>';
-      html += '<button class="del-btn" onclick="removeFav(\''+id+'\')">削除</button>';
+    fetchMountainData(function(mtns){
+      var mtnMap = {};
+      mtns.forEach(function(m){ mtnMap[m.id]=m; });
+      var html = '<div style="display:flex;flex-direction:column;gap:8px">';
+      favs.forEach(function(id){
+        var m = mtnMap[id];
+        var name = m ? m.name : (nameMap[id]||id);
+        var isClimbed = !!climbs[id];
+        var elev = m ? m.elevation : null;
+        var diff = m ? m.difficulty : null;
+        var driveMin = m ? (m.driveOfuna||m.driveShinjuku||m.driveYokohama||null) : null;
+        html += '<div style="background:white;border-radius:12px;border:1px solid #e0dbd4;padding:11px 12px;position:relative">';
+        // 登頂済みバッジ
+        if(isClimbed){
+          var cd = climbs[id] ? (climbs[id].date||'') : '';
+          html += '<span style="position:absolute;top:10px;right:44px;font-size:9px;font-weight:600;color:#4a6838;background:#eaf3e0;border:0.5px solid #b8d8a0;border-radius:4px;padding:1px 5px">🚩 登頂済</span>';
+        }
+        // 削除ボタン
+        html += '<button onclick="removeFav(\''+id+'\')" style="position:absolute;top:8px;right:8px;background:none;border:none;color:#c0b8a8;font-size:16px;cursor:pointer;padding:2px 4px;line-height:1">×</button>';
+        // 山名
+        html += '<a href="/mountains/'+id+'/" style="display:block;font-size:14px;font-weight:700;color:#2a2520;text-decoration:none;margin-bottom:6px;padding-right:80px">'+esc(name)+'</a>';
+        // スペック行
+        html += '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">';
+        if(elev) html += '<span style="font-size:11px;color:#6a6058;background:#f5f2ef;border-radius:4px;padding:2px 7px">⛰ '+elev.toLocaleString()+'m</span>';
+        if(diff){
+          var dc={'初級':'#4a8040','初〜中級':'#5a7040','中級':'#7a7030','中〜上級':'#8a5030','上級':'#8a3030'};
+          html += '<span style="font-size:11px;color:white;background:'+(dc[diff]||'#7a7030')+';border-radius:4px;padding:2px 7px">'+diff+'</span>';
+        }
+        if(driveMin) html += '<span style="font-size:11px;color:#6a6058;background:#f5f2ef;border-radius:4px;padding:2px 7px">🚗 '+driveMin+'分</span>';
+        html += '</div>';
+        html += '</div>';
+      });
       html += '</div>';
+      el.innerHTML = html;
     });
-    el.innerHTML = html;
   });
 }
 
@@ -480,30 +534,41 @@ function renderClimbed() {
   });
   document.getElementById('climbed-count').textContent = keys.length;
   var el = document.getElementById('climbed-list');
-  if (keys.length===0){ el.innerHTML='<div class="empty">登頂記録がありません<br><small>山カードの 🚩 ボタンで記録できます</small></div>'; return; }
+  if (keys.length===0){
+    el.innerHTML='<div class="empty" style="padding:32px 0;text-align:center"><div style="font-size:32px;margin-bottom:8px">🚩</div>登頂記録がありません<br><small style="color:#b0a898;margin-top:6px;display:block">山カードの 🏳️ ボタンで記録できます</small></div>';
+    return;
+  }
   fetchNames(function(nameMap){
-    var html = '';
+    var html = '<div style="display:flex;flex-direction:column;gap:8px">';
     keys.forEach(function(k){
       var c = climbs[k];
       var name = c.type==='manual' ? c.name : (nameMap[k]||k);
       var date = c.date ? new Date(c.date.replace(/\//g,'-')).toLocaleDateString('ja-JP',{year:'numeric',month:'long',day:'numeric'}) : '';
-      html += '<div class="list-item">';
+      html += '<div style="background:white;border-radius:12px;border:1px solid #e0dbd4;padding:11px 12px">';
+      html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">';
       html += '<div style="flex:1">';
-      html += '<div class="list-item-name">';
-      if (c.type==='site') html += '<a href="/mountains/'+k+'/" style="color:#3a3530;text-decoration:none">'+esc(name)+'</a>';
-      else html += esc(name);
-      if (c.type==='manual') html += ' <span style="font-size:10px;color:#8a8078;background:#f0ede5;padding:1px 5px;border-radius:4px">手動</span>';
+      if (c.type==='site'){
+        html += '<a href="/mountains/'+k+'/" style="font-size:14px;font-weight:700;color:#2a2520;text-decoration:none;display:block;margin-bottom:4px">'+esc(name)+'</a>';
+      } else {
+        html += '<div style="font-size:14px;font-weight:700;color:#2a2520;margin-bottom:4px">'+esc(name)+' <span style="font-size:10px;color:#8a8078;background:#f0ede5;padding:1px 5px;border-radius:4px">手動</span></div>';
+      }
+      if (date) html += '<div style="font-size:11px;color:#6a6058;margin-bottom:2px">📅 '+date+'</div>';
+      if (c.area) html += '<div style="font-size:11px;color:#6a6058;margin-bottom:2px">📍 '+esc(c.area)+'</div>';
+      if (c.memo) html += '<div style="font-size:11px;color:#6a6058;white-space:pre-wrap;margin-top:4px;padding:6px 8px;background:#f8f6f2;border-radius:6px">'+esc(c.memo)+'</div>';
       html += '</div>';
-      if (date) html += '<div class="list-item-sub">'+date+'</div>';
-      if (c.area) html += '<div class="list-item-sub">📍 '+esc(c.area)+'</div>';
-      if (c.memo) html += '<div class="list-item-sub" style="white-space:pre-wrap">'+esc(c.memo)+'</div>';
+      html += '<div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0">';
+      var cJson = JSON.stringify(c).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+      html += '<button onclick="openEditClimbed(\''+k+'\','+cJson+')" style="padding:4px 10px;border-radius:6px;border:1px solid #c8ddb0;background:#f0f5ec;color:#4a6838;font-size:11px;font-weight:600;cursor:pointer">✏️</button>';
+      html += '<button onclick="removeClimbed(\''+k+'\')" style="padding:4px 10px;border-radius:6px;border:1px solid #e0c0c0;background:#fdf0f0;color:#c05050;font-size:11px;font-weight:600;cursor:pointer">🗑</button>';
       html += '</div>';
-      html += '<button class="del-btn" onclick="removeClimbed(\''+k+'\')">削除</button>';
+      html += '</div>';
       html += '</div>';
     });
+    html += '</div>';
     el.innerHTML = html;
   });
 }
+
 
 function removeClimbed(key) {
   if (!confirm('この登頂記録を削除しますか？')) return;
@@ -586,6 +651,38 @@ function fetchNames(cb){
   cb(_nameMap);
 }
 
+function openEditClimbed(key, c) {
+  document.getElementById('ec-key').value = key;
+  var name = c.type==='manual' ? c.name : (_nameMap[key]||key);
+  document.getElementById('ec-name').textContent = name;
+  document.getElementById('ec-date').value = c.date || new Date().toISOString().slice(0,10);
+  document.getElementById('ec-memo').value = c.memo || '';
+  document.getElementById('edit-climbed-modal').classList.add('open');
+}
+function closeEditClimbed() {
+  document.getElementById('edit-climbed-modal').classList.remove('open');
+}
+function saveEditClimbed() {
+  var key = document.getElementById('ec-key').value;
+  var date = document.getElementById('ec-date').value;
+  var memo = document.getElementById('ec-memo').value.trim();
+  try {
+    if (key.startsWith('__extra_')) {
+      var idx = parseInt(key.replace('__extra_',''));
+      var extra = JSON.parse(localStorage.getItem(CLM_EX_KEY)||'[]');
+      if(extra[idx]) { extra[idx].date = date; extra[idx].memo = memo; }
+      localStorage.setItem(CLM_EX_KEY, JSON.stringify(extra));
+    } else {
+      var arr = JSON.parse(localStorage.getItem(CLM_KEY)||'[]');
+      var found = false;
+      arr = arr.map(function(e){ if(e[0]===key){ found=true; return [e[0],date,memo]; } return e; });
+      if(!found) arr.push([key,date,memo]);
+      localStorage.setItem(CLM_KEY, JSON.stringify(arr));
+    }
+  } catch(e2) {}
+  closeEditClimbed();
+  renderClimbed();
+}
 function esc(s){
   if(!s)return'';
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -595,5 +692,15 @@ init();
 </script>
 <nav style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:768px;background:white;border-top:1px solid #e8e4dc;display:flex;z-index:100;box-shadow:0 -2px 12px rgba(0,0,0,0.08);padding-bottom:env(safe-area-inset-bottom,0px);"><a href="/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#a09888;gap:3px;"><span style="color:#a09888;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span style="font-size:10px;font-weight:500;font-family:sans-serif;">ホーム</span></a><a href="/recommend/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#a09888;gap:3px;"><span style="color:#a09888;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="12,3 14,10 12,12 10,10" fill="currentColor" stroke="none"/><polygon points="12,21 10,14 12,12 14,14" fill="currentColor" opacity="0.5" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="white" stroke="none"/></svg></span><span style="font-size:10px;font-weight:500;font-family:sans-serif;">診断</span></a><a href="/articles/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#a09888;gap:3px;"><span style="color:#a09888;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span><span style="font-size:10px;font-weight:500;font-family:sans-serif;">記事</span></a><a href="/mypage/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#4e6535;gap:3px;"><span style="color:#4e6535;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span style="font-size:10px;font-weight:700;font-family:sans-serif;">マイページ</span></a></nav>
 <div style="height:64px;"></div>
+<script>
+(function(){
+  function setHeaderH(){
+    var h=document.querySelector('.ym-header');
+    if(h) document.documentElement.style.setProperty('--header-h',h.offsetHeight+'px');
+  }
+  document.addEventListener('DOMContentLoaded',setHeaderH);
+  window.addEventListener('resize',setHeaderH);
+})();
+</script>
 </body>
 </html>
