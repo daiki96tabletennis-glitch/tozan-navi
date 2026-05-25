@@ -2002,6 +2002,27 @@ document.addEventListener('DOMContentLoaded', function(){
 function show(id){
   document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  // 表示切替時に全choiceのselectedをクリア（前の回答の残留防止）
+  document.querySelectorAll('.choice.selected').forEach(function(el){ el.classList.remove('selected'); });
+  // 今の問題に既に回答があれば復元
+  if(id && id.match(/^q(\d+)$/)){
+    var qNum = parseInt(id.slice(1));
+    var savedVal = answers['a'+qNum];
+    if(savedVal !== undefined){
+      var el = document.querySelector('.choice[data-key="a'+qNum+'"][data-val="'+savedVal+'"]');
+      if(el) el.classList.add('selected');
+    }
+    // finalvibe等の特殊キーも対応
+    var specialKeys = {q10:'a10',q11:'a11',q12:'finalvibe'};
+    if(specialKeys[id]){
+      var sk = specialKeys[id];
+      var sv = answers[sk];
+      if(sv !== undefined){
+        var sel = document.querySelector('.choice[data-key="'+sk+'"][data-val="'+sv+'"]');
+        if(sel) sel.classList.add('selected');
+      }
+    }
+  }
   window.scrollTo({top:0,behavior:'smooth'});
   if(id==='intro') buildIntroGrid();
 }
@@ -2032,7 +2053,8 @@ function answer(key,val){
   if(key==='a4'||key==='a5') axisScore.ch += val==='C'?1:-1;
   if(key==='a6'||key==='a7') axisScore.pf += val==='P'?1:-1;
   if(key==='a8'||key==='a9') axisScore.sl += val==='S'?1:-1;
-  // Phase3: アニメーション
+  // Phase3: アニメーション（同問題の既存選択をクリアしてから選択）
+  document.querySelectorAll('.choice[data-key="'+key+'"]').forEach(function(el){ el.classList.remove('selected'); });
   var choiceEl = document.querySelector('.choice[data-key="'+key+'"][data-val="'+val+'"]');
   if(choiceEl){ choiceEl.classList.add('selected'); }
   current++;
@@ -2435,6 +2457,14 @@ function showResult(){
   // シェア
   const shareText='登山タイプ診断の結果\n私は「'+type.name+'」（'+typeCode+'型）でした！\n診断者の'+type.rare+'%の'+RARE_LABELS[type.affilLevel]+'\nあなたも試してみよう→';
   const shareUrlWithType='https://tozan-navi.com/recommend/'+typeCode+'/';
+  // OGP meta tagを動的更新（シェア時に正しいタイプの画像・URLが使われるよう）
+  var ogImg = 'https://tozan-navi.com/ogp/type-'+typeCode.toLowerCase()+'.png';
+  var metaTags = document.querySelectorAll('meta[property="og:image"],meta[name="twitter:image"]');
+  metaTags.forEach(function(m){ m.setAttribute('content', ogImg); });
+  var ogUrl = document.querySelector('meta[property="og:url"]');
+  if(ogUrl) ogUrl.setAttribute('content', shareUrlWithType);
+  var ogTitle = document.querySelector('meta[property="og:title"]');
+  if(ogTitle) ogTitle.setAttribute('content', '私は「'+type.name+'」型の登山者です | Yamatch');
   document.getElementById('share-x').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText)+'&url='+encodeURIComponent(shareUrlWithType);
   document.getElementById('share-line').href='https://line.me/R/msg/text/?'+encodeURIComponent(shareText+'\n'+shareUrlWithType);
   window._shareNative=function(){

@@ -742,9 +742,9 @@ function App() {
     ssSet("ym_line", lineFilter);
     ssSet("ym_month", filterMonth);
     ssSet("ym_viewmode", viewMode);
-  }, [search, sort, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, viewMode]);
+  }, [search, sort, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, viewMode, difficultyFilter, elevationFilter]);
   const getMountainUrl = (id) => {
-    const special = { mizugatake: "mizugaki" };
+    const special = { mizugatake: "mizugaki", akagi: "akagisan" };
     return "/mountains/" + (special[id] || id) + "/";
   };
 
@@ -997,7 +997,7 @@ function App() {
 
         {/* 絞り込みオーバーレイ */}
         {filterOpen && (
-          <div style={{position:"fixed",inset:0,zIndex:150,display:"flex",flexDirection:"column"}} onClick={() => setFilterOpen(false)}>
+          <div style={{position:"fixed",inset:0,zIndex:500,display:"flex",flexDirection:"column"}} onClick={() => setFilterOpen(false)}>
             {/* 半透明背景 */}
             <div style={{position:"absolute",inset:0,background:"rgba(0,0,0,0.45)"}}></div>
             {/* パネル */}
