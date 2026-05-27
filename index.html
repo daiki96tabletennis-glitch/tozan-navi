@@ -830,7 +830,7 @@ function App() {
     else if (sort === "標高順") list = list.slice().sort(function(a, b){ return b.elevation - a.elevation; });
     else if (sort === "体力度順") list = list.slice().sort(function(a, b){ return (Array.isArray(b.courseCoefficient) ? b.courseCoefficient[1] : 0) - (Array.isArray(a.courseCoefficient) ? a.courseCoefficient[1] : 0); });
     return list;
-  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure, lineFilter]);
+  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure, lineFilter, difficultyFilter, elevationFilter]);
 
   if (selected) {
     const mountain = mountains.find(m => m.id === selected);
@@ -1104,22 +1104,16 @@ function App() {
                 {/* 難易度 */}
                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", alignItems: "center" }}>
                   <span style={{ fontSize: "11px", color: "#a09888" }}>⛰️</span>
-                  {["初級","中級","上級"].map(d => {
-                    const active = difficultyFilter.includes(d);
-                    const colors = {
-                      "初級": { on: "#e8f0e4", off: "#f5f2ef", text: "#4a6840", border: "#b8d0b0" },
-                      "中級": { on: "#f0ece0", off: "#f5f2ef", text: "#7a6030", border: "#d0c090" },
-                      "上級": { on: "#f0e0e0", off: "#f5f2ef", text: "#7a3838", border: "#d0a0a0" },
-                    };
-                    const c = colors[d];
+                  {["初級","中級","上級"].map(function(d){
+                    var active = difficultyFilter.includes(d);
                     return (
                       <button key={d}
-                        onClick={() => {
+                        onClick={function(){
                           var next = active ? difficultyFilter.filter(function(x){ return x !== d; }) : difficultyFilter.concat([d]);
                           setDifficultyFilter(next);
                           ssSet("ym_difficulty", next);
                         }}
-                        style={{padding:"4px 12px",borderRadius:"20px",border:"0.5px solid "+(active?c.border:"#ddd8d0"),background:active?c.on:c.off,color:active?c.text:"#7a7068",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"all 0.15s"}}>
+                        style={chip(active)}>
                         {d}
                       </button>
                     );
@@ -1144,7 +1138,7 @@ function App() {
                           setElevationFilter(next);
                           ssSet("ym_elevation", next);
                         }}
-                        style={chip(elevationFilter === o.val)}>{o.label}</button>
+                        style={chip(elevationFilter===o.val)}>{o.label}</button>
                     ))}
                   </div>
                 </div>
