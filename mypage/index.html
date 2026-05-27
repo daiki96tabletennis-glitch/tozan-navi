@@ -464,46 +464,50 @@ function renderFavorites() {
   document.getElementById('climbed-count').textContent = Object.keys(climbs).length;
   var el = document.getElementById('fav-list');
   if (favs.length===0){
-    el.innerHTML='<div class="empty" style="padding:32px 0;text-align:center"><div style="font-size:32px;margin-bottom:8px">⭐</div>お気に入りの山がありません<br><small style="color:#b0a898;margin-top:6px;display:block">山カードの ☆ で追加できます</small></div>';
+    el.innerHTML='<div style="padding:32px 0;text-align:center"><div style="font-size:32px;margin-bottom:8px">⭐</div>お気に入りの山がありません<br><small style="color:#b0a898;margin-top:6px;display:block">山カードの ☆ で追加できます</small></div>';
     return;
   }
-  fetchNames(function(nameMap){
-    fetchMountainData(function(mtns){
-      var mtnMap = {};
-      mtns.forEach(function(m){ mtnMap[m.id]=m; });
-      var html = '<div style="display:flex;flex-direction:column;gap:8px">';
-      favs.forEach(function(id){
-        var m = mtnMap[id];
-        var name = m ? m.name : (nameMap[id]||id);
-        var isClimbed = !!climbs[id];
-        var elev = m ? m.elevation : null;
-        var diff = m ? m.difficulty : null;
-        var driveMin = m ? (m.driveOfuna||m.driveShinjuku||m.driveYokohama||null) : null;
-        html += '<div style="background:white;border-radius:12px;border:1px solid #e0dbd4;padding:11px 12px;position:relative">';
-        // 登頂済みバッジ
-        if(isClimbed){
-          var cd = climbs[id] ? (climbs[id].date||'') : '';
-          html += '<span style="position:absolute;top:10px;right:44px;font-size:9px;font-weight:600;color:#4a6838;background:#eaf3e0;border:0.5px solid #b8d8a0;border-radius:4px;padding:1px 5px">🚩 登頂済</span>';
-        }
-        // 削除ボタン
-        html += '<button onclick="removeFav(\''+id+'\')" style="position:absolute;top:8px;right:8px;background:none;border:none;color:#c0b8a8;font-size:16px;cursor:pointer;padding:2px 4px;line-height:1">×</button>';
-        // 山名
-        html += '<a href="/mountains/'+id+'/" style="display:block;font-size:14px;font-weight:700;color:#2a2520;text-decoration:none;margin-bottom:6px;padding-right:80px">'+esc(name)+'</a>';
-        // スペック行
+  // mountains.jsonをfetchして詳細表示、失敗したら名前のみ表示
+  function renderWithData(mtnMap){
+    var html = '<div style="display:flex;flex-direction:column;gap:8px">';
+    favs.forEach(function(id){
+      var m = mtnMap ? mtnMap[id] : null;
+      var name = m ? m.name : (_nameMap[id]||id);
+      var isClimbed = !!climbs[id];
+      var elev = m ? m.elevation : null;
+      var diff = m ? m.difficulty : null;
+      var driveMin = m ? (m.driveOfuna||m.driveShinjuku||m.driveYokohama||null) : null;
+      html += '<div style="background:white;border-radius:12px;border:1px solid #e0dbd4;padding:11px 12px;position:relative">';
+      if(isClimbed) html += '<span style="position:absolute;top:10px;right:44px;font-size:9px;font-weight:600;color:#4a6838;background:#eaf3e0;border:0.5px solid #b8d8a0;border-radius:4px;padding:1px 5px">🚩 登頂済</span>';
+      html += '<button onclick="removeFav(\'' + id + '\')" style="position:absolute;top:8px;right:8px;background:none;border:none;color:#c0b8a8;font-size:16px;cursor:pointer;padding:2px 4px;line-height:1">×</button>';
+      html += '<a href="/mountains/' + id + '/" style="display:block;font-size:14px;font-weight:700;color:#2a2520;text-decoration:none;margin-bottom:6px;padding-right:80px">' + esc(name) + '</a>';
+      if(elev||diff||driveMin){
         html += '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">';
-        if(elev) html += '<span style="font-size:11px;color:#6a6058;background:#f5f2ef;border-radius:4px;padding:2px 7px">⛰ '+elev.toLocaleString()+'m</span>';
+        if(elev) html += '<span style="font-size:11px;color:#6a6058;background:#f5f2ef;border-radius:4px;padding:2px 7px">⛰ ' + elev.toLocaleString() + 'm</span>';
         if(diff){
           var dc={'初級':'#4a8040','初〜中級':'#5a7040','中級':'#7a7030','中〜上級':'#8a5030','上級':'#8a3030'};
-          html += '<span style="font-size:11px;color:white;background:'+(dc[diff]||'#7a7030')+';border-radius:4px;padding:2px 7px">'+diff+'</span>';
+          html += '<span style="font-size:11px;color:white;background:' + (dc[diff]||'#7a7030') + ';border-radius:4px;padding:2px 7px">' + diff + '</span>';
         }
-        if(driveMin) html += '<span style="font-size:11px;color:#6a6058;background:#f5f2ef;border-radius:4px;padding:2px 7px">🚗 '+driveMin+'分</span>';
+        if(driveMin) html += '<span style="font-size:11px;color:#6a6058;background:#f5f2ef;border-radius:4px;padding:2px 7px">🚗 ' + driveMin + '分</span>';
         html += '</div>';
-        html += '</div>';
-      });
+      }
       html += '</div>';
-      el.innerHTML = html;
     });
-  });
+    html += '</div>';
+    el.innerHTML = html;
+  }
+  // まず_nameMapで即時描画（空白を防ぐ）
+  renderWithData(null);
+  // 次にfetchでスペック情報を補完
+  fetch('/data/mountains.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var mtnMap={};
+      data.forEach(function(m){ mtnMap[m.id]=m; });
+      window._mtnDataCache=mtnMap;
+      renderWithData(mtnMap);
+    })
+    .catch(function(){});
 }
 
 function removeFav(id) {
@@ -518,7 +522,7 @@ function getClimbs(){
   var base={};
   try{
     var arr = JSON.parse(localStorage.getItem(CLM_KEY)||'[]');
-    arr.forEach(function(e){base[e[0]]={type:'site',name:null,date:e[1],area:'',memo:''};});
+    arr.forEach(function(e){base[e[0]]={type:'site',name:null,date:e[1],area:'',memo:e[2]||''};});
   }catch{}
   try{
     var extra = JSON.parse(localStorage.getItem(CLM_EX_KEY)||'[]');
@@ -649,6 +653,13 @@ function removeShopLink(i){ var l=[]; document.querySelectorAll('.shop-input').f
 var _nameMap={"tanzawa": "丹沢山", "fuji": "富士山", "tsukuba": "筑波山", "kumotori": "雲取山", "amagi": "天城山", "okutama": "大菩薩嶺", "ryokami": "両神山", "kobushigatake": "甲武信ヶ岳", "mizugaki": "瑞牆山", "akagi": "赤城山", "kinpusan": "金峰山", "houou": "鳳凰山", "nantaisan": "男体山", "kitadake": "北岳", "yatsugatake": "八ヶ岳（赤岳）", "keirisan": "蓼科山", "kirigamine": "霧ヶ峰", "asama": "浅間山", "tanigawa": "谷川岳", "nasu": "那須岳", "shirane_nikko": "四阿山", "nikko_shirane": "日光白根山", "takeson": "武尊山", "komagatake": "甲斐駒ヶ岳", "senjogatake": "仙丈ヶ岳", "shirouma": "白馬岳", "norikura": "乗鞍岳", "tateyama": "立山", "tsurugi": "剱岳", "yari": "槍ヶ岳", "hotaka": "奥穂高岳", "myoko": "妙高山", "makihata": "巻機山", "iide": "飯豊山", "shibutsu": "至仏山", "aizu_koma": "会津駒ヶ岳", "shirane_gunma": "草津白根山", "bandai": "磐梯山", "hiuchigatake": "燧ヶ岳", "takao": "高尾山", "oyama": "大山（丹沢）", "tonosaki": "塔ノ岳", "hirugata": "蛭ヶ岳", "jinba": "陣馬山", "mitsuToge": "三ツ峠山", "kintoki": "金時山", "kayagatake": "茅ヶ岳", "kentoku": "乾徳山", "hinata": "日向山", "bonori": "棒ノ折山", "otake": "大岳山", "jonengatake": "常念岳", "yakedake": "焼岳", "kashimayari": "鹿島槍ヶ岳", "koganzan": "小金沢山", "arafune": "荒船山", "asamamakurayama": "浅間隠山", "kazahariyama": "御座山", "iwasugesan": "岩菅山", "iizunasan": "飯縄山", "kurohimesan": "黒姫山", "kenashiyama": "毛無山", "shirasunayama": "白砂山", "nanaitsurasan": "七面山", "arasawadake": "荒沢岳", "nakawarayama": "和名倉山", "yarigatake2": "笊ヶ岳", "gakedake": "餓鬼岳", "arikayama": "有明山", "keizandake": "経ヶ岳", "adatara": "安達太良山", "azuma": "西吾妻山", "echigokoma": "越後駒ヶ岳", "hiragadake": "平ヶ岳", "naeba": "苗場山", "amakazari": "雨飾山", "hiuchi": "火打山", "takatsuma": "高妻山", "kasagatake": "笠ヶ岳", "ontakesan": "御嶽山", "goryudake": "五竜岳", "sukai": "皇海山", "kisokoma": "木曽駒ヶ岳", "utsukushigahara": "美ヶ原", "karamatsu": "唐松岳", "utsugi": "空木岳", "enasan": "恵那山", "shiomidake": "塩見岳", "arakawadake": "荒川岳", "akaisidake": "赤石岳", "hijiridade": "聖岳", "terkari": "光岳", "yakushidake": "薬師岳", "kurobegorodam": "黒部五郎岳", "ainodake": "間ノ岳", "noutori": "農鳥岳", "hakusan": "白山", "zaosan": "蔵王山", "karisaka": "雁坂嶺", "nokogiriyama": "鋸岳", "minamikomagatake": "南駒ヶ岳", "chogatake": "蝶ヶ岳", "otenshoudake": "大天井岳", "harinokidake": "針ノ木岳", "eboshidake_kita": "烏帽子岳（北ア）", "noguchigoro": "野口五郎岳", "nokogiriyama_chiba": "鋸山", "mitakesan": "御岳山", "takamizusanzan": "高水三山", "tenzandake": "天覧山・多峯主山", "hiwadayama": "日和田山"};
 function fetchNames(cb){
   cb(_nameMap);
+}
+function fetchMountainData(cb){
+  if(window._mtnDataCache){ cb(window._mtnDataCache); return; }
+  fetch('/data/mountains.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){ window._mtnDataCache=data; cb(data); })
+    .catch(function(){ cb([]); });
 }
 
 function openEditClimbed(key, c) {
