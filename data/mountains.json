@@ -1297,11 +1297,11 @@
     "coeffMin": 10,
     "coeffMax": 20,
     "daytrip": true,
-    "trainAccess": false,
-    "driveOfuna": 170,
+    "trainAccess": true,
+    "driveOfuna": 175,
     "driveShinjuku": 140,
-    "driveYokohama": 170,
-    "driveOmiya": 125,
+    "driveYokohama": 165,
+    "driveOmiya": 120,
     "description": "上毛三山の一つ。カルデラ湖（大沼）を擁する成層火山。展望が良い。",
     "yamapUrl": "https://yamap.com/mountains/21",
     "busLinks": [],
@@ -1423,11 +1423,18 @@
         "elevation": "+390m"
       }
     ],
-    "driveTime": 170,
+    "driveTime": 140,
     "driveTimeShinjuku": 140,
-    "driveTimeYokohama": 170,
-    "driveTimeOmiya": 125,
-    "lines": []
+    "driveTimeYokohama": 165,
+    "driveTimeOmiya": 120,
+    "lines": [
+      "東武伊勢崎線"
+    ],
+    "nearestStation": "前橋駅",
+    "trainLine": "東武伊勢崎線・両毛線",
+    "trainTimeShinjuku": 150,
+    "trainInfo": "新宿→高崎（新幹線約50分）→前橋（両毛線約15分）→バス約75分（土日直通）",
+    "busUrl": "https://kan-etsu.net/publics/index/42/"
   },
   {
     "id": "kinpusan",
@@ -16945,54 +16952,6 @@
     "busUrl": "",
     "lines": [
       "京王線"
-    ]
-  },
-  {
-    "id": "akagisan",
-    "name": "赤城山",
-    "kana": "あかぎさん",
-    "elevation": 1828,
-    "area": "群馬県",
-    "category": "百名山",
-    "difficulty": "初〜中級",
-    "coeffMin": 14,
-    "coeffMax": 22,
-    "daytrip": true,
-    "trainAccess": true,
-    "driveTime": 140,
-    "driveOfuna": 175,
-    "driveShinjuku": 140,
-    "driveYokohama": 165,
-    "driveOmiya": 120,
-    "driveTimeShinjuku": 140,
-    "driveTimeYokohama": 165,
-    "driveTimeOmiya": 120,
-    "driveDistance": 130,
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月",
-    "lat": 36.5516,
-    "lng": 139.1833,
-    "gmapUrl": "https://google.com/maps/search/あかぎ広場前/@36.5516,139.1833,16z",
-    "amapUrl": "https://maps.apple.com/?ll=36.5516,139.1833&q=あかぎ広場前",
-    "nearestStation": "前橋駅",
-    "trainLine": "東武伊勢崎線・両毛線",
-    "trainTimeShinjuku": 150,
-    "trainInfo": "新宿→高崎（新幹線約50分）→前橋（両毛線約15分）→バス約75分（土日直通）",
-    "routes": [
-      {
-        "name": "黒檜山・駒ヶ岳周回",
-        "time": "3時間30分",
-        "distance": 6.0
-      },
-      {
-        "name": "地蔵岳ピストン",
-        "time": "2時間",
-        "distance": 4.0
-      }
-    ],
-    "busUrl": "https://kan-etsu.net/publics/index/42/",
-    "lines": [
-      "東武伊勢崎線"
     ]
   },
   {

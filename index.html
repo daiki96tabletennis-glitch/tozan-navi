@@ -773,7 +773,7 @@ function App() {
     ssSet("ym_viewmode", viewMode);
   }, [search, sort, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, viewMode, difficultyFilter, elevationFilter]);
   const getMountainUrl = (id) => {
-    const special = { mizugatake: "mizugaki", akagi: "akagisan" };
+    const special = { mizugatake: "mizugaki" };
     return "/mountains/" + (special[id] || id) + "/";
   };
 
