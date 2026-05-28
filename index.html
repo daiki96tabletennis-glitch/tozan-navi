@@ -1302,7 +1302,7 @@ function App() {
                         {m.regulated && <span style={{ color: "#e67700", marginRight: "3px" }}>⚠️</span>}{m.name}
                       </div>
                       {/* エリア */}
-                      <div style={{ fontSize: "10px", color: "#8a8078", position: "relative", zIndex: 1 }}>{m.area}</div>
+                      <div style={{ fontSize: "10px", color: "#8a8078", position: "relative", zIndex: 1 }}>{(function(a){ return /長野県/.test(a) ? a : a.replace(/^(東京都|北海道|.+?[都道府県]).*/, "$1"); })(m.area)}</div>
                       {/* 標高・時間 */}
                       <div style={{ display: "flex", gap: "5px", alignItems: "center", fontSize: "11px", color: "#6a6058", position: "relative", zIndex: 1, marginBottom: "2px" }}>
                         <span>{m.elevation.toLocaleString()}m</span>
