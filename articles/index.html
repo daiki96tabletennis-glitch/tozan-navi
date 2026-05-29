@@ -2,273 +2,354 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<title>登山ガイド記事一覧 | Yamatch</title>
-<meta name="description" content="Yamatchの登山ガイド記事一覧。コース定数・アクセス・アイゼン情報など、登山に役立つ情報をまとめています。">
-<link rel="canonical" href="https://tozan-navi.com/articles/">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>登山ガイド記事一覧 - Yamatch</title>
+<meta name="description" content="コース定数・アクセス・アイゼン情報など、登山に役立つ記事をまとめています。">
+<meta property="og:title" content="登山ガイド記事一覧 - Yamatch">
+<meta property="og:description" content="コース定数・アクセス・アイゼン情報など、登山に役立つ記事をまとめています。">
+<meta property="og:image" content="https://tozan-navi.com/ogp.png">
+<meta property="og:url" content="https://tozan-navi.com/articles/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/manifest.json">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;background:#e8e0d5;color:#3a3530;line-height:1.8;font-size:15px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;background:#f0ede5;color:#3a3530;line-height:1.6;font-size:15px}
 a{color:inherit;text-decoration:none}
-/* header style moved to ym-header */
-.header-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:8px}
-.back-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;border-radius:8px;padding:4px 9px;font-size:11px;text-decoration:none;white-space:nowrap}
-.hero{background:linear-gradient(160deg,#1e2e1e 0%,#3a4e3a 50%,#4a6a4a 100%);padding:40px 20px 36px}
-.hero-inner{max-width:760px;margin:0 auto}
-.hero h1{font-size:clamp(20px,5vw,30px);font-weight:bold;color:white;margin-bottom:10px}
-.hero p{color:#c0d4c0;font-size:14px}
-main{max-width:760px;margin:0 auto;padding:24px 16px 48px}
-.article-grid{display:flex;flex-direction:column;gap:16px}
-.article-card{background:white;border-radius:14px;border:1px solid #ddd8d0;overflow:hidden;display:flex;flex-direction:column}
-.article-card-body{padding:20px 22px;flex:1}
-.article-tag{display:inline-block;background:#f0f5ec;color:#4a6038;font-size:11px;font-weight:bold;padding:3px 10px;border-radius:20px;margin-bottom:10px}
-.article-title{font-size:17px;font-weight:bold;color:#2a3530;margin-bottom:8px;line-height:1.4}
-.article-desc{font-size:13px;color:#6a6058;line-height:1.7;margin-bottom:14px}
-.article-meta-row{display:flex;gap:8px;flex-wrap:wrap}
-.article-meta-pill{background:#f5f3ef;color:#8a8078;font-size:11px;padding:2px 8px;border-radius:10px}
-.article-link-btn{display:flex;align-items:center;justify-content:space-between;padding:12px 22px;background:#f5f3ef;border-top:1px solid #eee8e0;font-size:13px;font-weight:600;color:#4a6038}
-.article-link-btn:hover{background:#eef0ea}
-.cta-section{background:linear-gradient(135deg,#2a3e2a,#3a5a3a);border-radius:16px;padding:28px 24px;text-align:center;margin-top:32px}
-.cta-section h2{color:white;font-size:18px;margin-bottom:10px}
-.cta-section p{color:#b0d0b0;font-size:14px;margin-bottom:20px}
-.cta-btn{display:inline-block;background:white;color:#2a3e2a;font-weight:bold;font-size:15px;padding:14px 32px;border-radius:30px}
 
-/* ===== 共通ヘッダー ===== */
-.ym-header{
-  background:linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%);
-  position:relative;overflow:hidden;
-  padding:10px 16px 12px;
-  position:sticky;top:0;z-index:200;
+/* ── ヘッダー ── */
+.ym-header{background:linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%);position:sticky;top:0;z-index:200;padding:10px 16px 12px;overflow:hidden}
+.ym-header::before{content:"";position:absolute;bottom:0;left:0;width:100%;height:52px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 52' preserveAspectRatio='xMidYMax slice'%3E%3Cpath d='M0 52 L0 36 L70 22 L130 30 L190 12 L250 24 L310 6 L370 18 L430 4 L490 16 L550 6 L610 18 L670 8 L730 20 L790 10 L850 22 L910 12 L970 24 L1030 14 L1090 26 L1150 16 L1210 28 L1270 18 L1330 30 L1400 20 L1400 52 Z' fill='white' opacity='0.04'/%3E%3C/svg%3E") no-repeat bottom/cover;pointer-events:none}
+.ym-header-inner{max-width:768px;margin:0 auto;display:flex;align-items:center;gap:10px;position:relative;z-index:1}
+.ym-header-wordmark{font-family:Georgia,serif;font-size:27px;font-weight:700;color:white;line-height:1;flex:1}
+.ym-header-pagetitle{font-size:11px;color:rgba(255,255,255,.55);font-weight:500}
+.ym-header-share{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:white;border-radius:7px;padding:5px 7px;cursor:pointer;display:flex;align-items:center;flex-shrink:0}
+
+/* ── ヒーロー ── */
+.hero{background:linear-gradient(155deg,#1e2e1e 0%,#2e4428 55%,#3a5832 100%);padding:18px 20px 0;overflow:hidden;position:relative}
+.hero-inner{max-width:760px;margin:0 auto;display:flex;align-items:flex-end;gap:12px;position:relative;z-index:1}
+.hero-text{padding-bottom:14px;flex:1}
+.hero h1{font-size:17px;font-weight:700;color:white;margin-bottom:3px;letter-spacing:-.01em}
+.hero p{color:rgba(255,255,255,.5);font-size:11px;line-height:1.5}
+.hero-illust{flex-shrink:0;align-self:flex-end}
+
+/* ── メイン ── */
+main{max-width:760px;margin:0 auto;padding:16px 14px 48px}
+
+/* ── 記事カード（全体リンク・背景SVG方式） ── */
+.article-grid{display:flex;flex-direction:column;gap:10px}
+
+.article-card{
+  display:block;
+  border-radius:14px;
+  overflow:hidden;
+  position:relative;
+  transition:transform .15s cubic-bezier(.34,1.56,.64,1),box-shadow .15s;
+  -webkit-tap-highlight-color:rgba(0,0,0,.06);
 }
-.ym-header::before{
-  content:"";position:absolute;bottom:0;left:0;width:100%;height:52px;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 52' preserveAspectRatio='xMidYMax slice'%3E%3Cpath d='M0 52 L0 36 L70 22 L130 30 L190 12 L250 24 L310 6 L370 18 L430 4 L490 16 L550 6 L610 18 L670 8 L730 20 L790 10 L850 22 L910 12 L970 24 L1030 14 L1090 26 L1150 16 L1210 28 L1270 18 L1330 30 L1400 20 L1400 52 Z' fill='white' opacity='0.04'/%3E%3Cpath d='M0 52 L0 42 L90 32 L160 38 L230 24 L300 34 L370 18 L440 28 L510 14 L580 26 L650 12 L720 24 L790 10 L860 22 L930 8 L1000 20 L1070 6 L1140 18 L1210 4 L1280 16 L1350 6 L1400 12 L1400 52 Z' fill='white' opacity='0.06'/%3E%3C/svg%3E") no-repeat bottom/cover;
-  pointer-events:none;
-}
-.ym-header-inner{
-  max-width:768px;margin:0 auto;
-  display:flex;align-items:center;gap:10px;
+.article-card:active{transform:scale(.98)}
+
+/* カード内レイアウト */
+.card-content{
   position:relative;z-index:1;
+  padding:14px 16px 13px;
+  display:flex;flex-direction:column;gap:5px;
 }
-.ym-header-logo{
-  display:flex;align-items:center;gap:8px;
-  text-decoration:none;flex:1;min-width:0;
+/* 背景SVGコンテナ */
+.card-bg-svg{
+  position:absolute;
+  right:0;bottom:0;
+  width:120px;height:100%;
+  pointer-events:none;
+  z-index:0;
 }
-.ym-header-wordmark{
-  font-family:Georgia,serif;font-size:27px;font-weight:700;
-  color:white;line-height:1;margin:0;
-}
-.ym-header-pagetitle{
-  font-size:12px;color:rgba(255,255,255,0.6);
-  font-weight:500;margin-top:2px;
-}
-.ym-header-share{
-  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
-  color:white;border-radius:7px;padding:5px 7px;cursor:pointer;
-  display:flex;align-items:center;flex-shrink:0;text-decoration:none;
-}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.card-tag{font-size:10px;font-weight:700;padding:2px 9px;border-radius:20px;letter-spacing:.04em;flex-shrink:0}
+.card-arrow{font-size:16px;font-weight:300;opacity:.6;flex-shrink:0;transition:transform .15s}
+.article-card:hover .card-arrow{transform:translateX(3px)}
+.card-title{font-size:14px;font-weight:700;line-height:1.4;padding-right:80px}
+.card-pills{display:flex;gap:5px;flex-wrap:wrap}
+.card-pill{font-size:10px;font-weight:500;padding:2px 7px;border-radius:6px}
+
+/* ── まとめ記事 ── */
+.matome-section{margin-top:22px}
+.matome-head{font-size:11px;font-weight:700;color:#8a8078;letter-spacing:.08em;margin-bottom:10px;padding-left:1px}
+.matome-group{margin-bottom:12px}
+.matome-label{font-size:11px;font-weight:700;color:#6a6058;display:flex;align-items:center;gap:5px;margin-bottom:6px}
+.matome-label::before{content:"";width:3px;height:11px;border-radius:2px;display:inline-block}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:baseline;gap:3px;padding:6px 11px;border-radius:9px;font-size:12px;font-weight:600;border:1px solid;transition:transform .12s,box-shadow .12s;line-height:1}
+.chip:active{transform:scale(.96)}
+.chip sub{font-size:9px;opacity:.6;font-weight:500}
+.chip-r{background:#eef5e8;color:#3a5828;border-color:#b8d4a0}
+.chip-s{background:#e8f0f8;color:#2a4878;border-color:#a8c0e0}
+.chip-a{background:#fdf0e4;color:#8a4820;border-color:#e0c098}
+.chip-t{background:#f2eafa;color:#5a2880;border-color:#c8a8e0}
+
+/* ── CTA ── */
+.cta{background:linear-gradient(135deg,#2a3e2a,#3a5a3a);border-radius:14px;padding:20px 18px;text-align:center;margin-top:22px}
+.cta h2{color:white;font-size:15px;margin-bottom:5px;font-weight:700}
+.cta p{color:rgba(255,255,255,.55);font-size:11px;margin-bottom:14px}
+.cta a{display:inline-block;background:white;color:#2a3e2a;font-weight:700;font-size:12px;padding:10px 22px;border-radius:22px}
+
+/* ── 底ナビ ── */
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:768px;background:white;border-top:1px solid #e8e4dc;display:flex;z-index:100;box-shadow:0 -2px 12px rgba(0,0,0,.08);padding-bottom:env(safe-area-inset-bottom,0px)}
+.bottom-nav a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;color:#a09888;gap:3px;font-size:10px;font-weight:500}
+.bottom-nav a.active{color:#4e6535;font-weight:700}
 </style>
 </head>
 <body>
+
 <header class="ym-header">
   <div class="ym-header-inner">
-    <div style="flex:1;font-size:16px;font-weight:700;color:white;">登山ガイド記事</div>
-    <button class="ym-header-share" onclick="if(navigator.share){navigator.share({title:'Yamatch',url:location.href});}else{navigator.clipboard.writeText(location.href).then(function(){alert('URLをコピーしました');});}" aria-label="シェア"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg></button>
+    <div class="ym-header-wordmark">Yamatch</div>
+    <span class="ym-header-pagetitle">記事一覧</span>
+    <button class="ym-header-share" onclick="if(navigator.share){navigator.share({title:'Yamatch',url:location.href});}else{navigator.clipboard.writeText(location.href).then(function(){alert('URLをコピーしました');});}" aria-label="シェア">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>
+    </button>
   </div>
 </header>
 
+<!-- ヒーロー（コンパクト横型） -->
 <div class="hero">
   <div class="hero-inner">
-    <h1>📚 登山ガイド記事一覧</h1>
-    <p>コース定数・アクセス・アイゼン情報など、登山に役立つ記事をまとめています。</p>
+    <div class="hero-text">
+      <h1>📚 登山ガイド記事一覧</h1>
+      <p>アクセス・コース定数・アイゼン情報など<br>登山に役立つ記事をまとめています</p>
+    </div>
+    <div class="hero-illust">
+      <svg viewBox="0 0 140 72" width="140" height="72" fill="none" aria-hidden="true">
+        <circle cx="110" cy="12" r="1.1" fill="rgba(255,255,255,.5)"/>
+        <circle cx="65" cy="7" r="1.3" fill="rgba(255,255,255,.55)"/>
+        <circle cx="30" cy="15" r=".9" fill="rgba(255,255,255,.4)"/>
+        <circle cx="125" cy="22" r=".8" fill="rgba(255,255,255,.35)"/>
+        <polygon points="0,72 0,46 22,28 45,42 72,16 98,36 120,22 140,30 140,72" fill="rgba(255,255,255,.07)"/>
+        <polygon points="0,72 0,56 18,46 40,54 62,36 88,50 108,36 130,46 140,42 140,72" fill="rgba(255,255,255,.11)"/>
+        <polygon points="0,72 0,64 16,58 36,64 56,50 78,60 100,46 122,58 140,52 140,72" fill="rgba(255,255,255,.17)"/>
+        <g transform="translate(71,15)" fill="rgba(255,255,255,.82)">
+          <circle cx="0" cy="-7" r="2.5"/>
+          <rect x="-1.2" y="-5.5" width="2.5" height="5.5" rx="1.2"/>
+          <rect x="1.5" y="-6" width="3.2" height="5" rx="1.2" fill="rgba(255,255,255,.45)"/>
+          <line x1="-.8" y1="0" x2="-2.2" y2="5" stroke="rgba(255,255,255,.82)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1=".8" y1="0" x2="2" y2="5" stroke="rgba(255,255,255,.82)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="-2.8" y1="-3.5" x2="-5" y2="4" stroke="rgba(255,255,255,.6)" stroke-width="1.2" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
   </div>
 </div>
 
 <main>
-  <div class="article-grid">
+<div class="article-grid">
 
-    <div class="article-card">
-      <div class="article-card-body">
-        <span class="article-tag">アクセス</span>
-        <div class="article-title">東京から3時間以内で行ける日帰り登山5選</div>
-        <div class="article-desc">出発地からのアクセス時間を考慮して厳選。高尾山・大山・筑波山・陣馬山・金時山のコース定数・難易度・おすすめ理由を比較して紹介。</div>
-        <div class="article-meta-row">
-          <span class="article-meta-pill">📍 関東発</span>
-          <span class="article-meta-pill">🚗 3時間以内</span>
-          <span class="article-meta-pill">🌅 日帰り</span>
-        </div>
-      </div>
-      <a href="/articles/tokyo-daytrip-5/" class="article-link-btn">
-        <span>記事を読む</span>
-        <span>→</span>
-      </a>
+<!-- ① 日帰り5選 — オレンジ系 -->
+<a href="/articles/tokyo-daytrip-5/" class="article-card" style="background:linear-gradient(135deg,#fffaf2 0%,#fff0d8 100%);border:1px solid #f0d8a8;">
+  <!-- 背景SVG：時計＋山シルエット -->
+  <svg class="card-bg-svg" viewBox="0 0 120 80" fill="none" aria-hidden="true">
+    <polygon points="120,80 50,80 80,35 110,55 120,48" fill="#f5a623" opacity=".07"/>
+    <circle cx="95" cy="28" r="22" stroke="#f5a623" stroke-width="1.5" fill="none" opacity=".13"/>
+    <line x1="95" y1="28" x2="95" y2="14" stroke="#f5a623" stroke-width="2" stroke-linecap="round" opacity=".18"/>
+    <line x1="95" y1="28" x2="104" y2="32" stroke="#f5a623" stroke-width="2" stroke-linecap="round" opacity=".18"/>
+    <circle cx="95" cy="28" r="2" fill="#f5a623" opacity=".18"/>
+  </svg>
+  <div class="card-content">
+    <div class="card-top">
+      <span class="card-tag" style="background:#fde8c0;color:#9a5a10;">アクセス</span>
+      <span class="card-arrow" style="color:#c07820;">›</span>
     </div>
-
-    <div class="article-card">
-      <div class="article-card-body">
-        <span class="article-tag">百名山</span>
-        <div class="article-title">関東発・日帰りで登れる百名山10選</div>
-        <div class="article-desc">大船・新宿・横浜から日帰りできる百名山を厳選紹介。コース定数・難易度・おすすめシーズンを解説。</div>
-        <div class="article-meta-row">
-          <span class="article-meta-pill">🏔 百名山</span>
-          <span class="article-meta-pill">📍 関東発</span>
-          <span class="article-meta-pill">🌅 日帰り</span>
-        </div>
-      </div>
-      <a href="/articles/kanto-day-trip-100/" class="article-link-btn">
-        <span>記事を読む</span>
-        <span>→</span>
-      </a>
+    <div class="card-title" style="color:#2a2010;">東京から3時間以内で行ける日帰り登山5選</div>
+    <div class="card-pills">
+      <span class="card-pill" style="background:#fde8c0;color:#9a5a10;">🚗 3時間以内</span>
+      <span class="card-pill" style="background:#fde8c0;color:#9a5a10;">🌅 日帰り</span>
     </div>
-
-    <div class="article-card">
-      <div class="article-card-body">
-        <span class="article-tag">コース定数</span>
-        <div class="article-title">コース定数30前後のおすすめ登山（関東）</div>
-        <div class="article-desc">「そろそろ楽な登山じゃ物足りない」そんな人向け。谷川岳・瑞牆山・両神山・那須岳・武尊山を厳選紹介。達成感と眺望が両立できる山ばかりです。</div>
-        <div class="article-meta-row">
-          <span class="article-meta-pill">📊 コース定数25〜35</span>
-          <span class="article-meta-pill">📍 関東発</span>
-        </div>
-      </div>
-      <a href="/articles/coeff-30/" class="article-link-btn">
-        <span>記事を読む</span>
-        <span>→</span>
-      </a>
-    </div>
-
-    <div class="article-card">
-      <div class="article-card-body">
-        <span class="article-tag">冬山</span>
-        <div class="article-title">アイゼン不要で冬に登れる山（関東）5選</div>
-        <div class="article-desc">「冬山は危険」は思い込み。高尾山・鋸山・大山・御岳山・陣馬山。厳冬期でもアイゼンなしで楽しめる関東の山を5つ厳選。</div>
-        <div class="article-meta-row">
-          <span class="article-meta-pill">❄️ 冬季</span>
-          <span class="article-meta-pill">✅ アイゼン不要</span>
-          <span class="article-meta-pill">📍 関東</span>
-        </div>
-      </div>
-      <a href="/articles/winter-no-crampons/" class="article-link-btn">
-        <span>記事を読む</span>
-        <span>→</span>
-      </a>
-    </div>
-
-    <div class="article-card">
-      <div class="article-card-body">
-        <span class="article-tag">電車アクセス</span>
-        <div class="article-title">電車で行けるおすすめ登山10選</div>
-        <div class="article-desc">車なしでも登れる！首都圏から電車でアクセスできる人気の山を厳選。初心者向けから中級者向けまで幅広く紹介。</div>
-        <div class="article-meta-row">
-          <span class="article-meta-pill">🚃 電車OK</span>
-          <span class="article-meta-pill">📍 関東発</span>
-        </div>
-      </div>
-      <a href="/articles/train-access-mountains/" class="article-link-btn">
-        <span>記事を読む</span>
-        <span>→</span>
-      </a>
-    </div>
-
   </div>
+</a>
 
-
-  <div style="margin-top:32px">
-    <h2 style="font-size:17px;font-weight:bold;color:#2a3530;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #d0c8c0;">🚃 路線・テーマ別まとめ記事</h2>
-
-    <div style="background:white;border-radius:12px;border:1px solid #ddd8d0;overflow:hidden;margin-bottom:10px;">
-      <div style="padding:6px 14px;background:#f0f5ec;font-size:11px;font-weight:bold;color:#4a6038;">路線別</div>
-      <a href="/search/seibu-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">西武線で行ける登山5選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/odakyu-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">小田急線で行ける登山8選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/jr-chuo-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">中央線で行ける登山9選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/jr-shonan-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">横浜・大船から電車で行ける登山8選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/keiou-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">京王線で行ける登山5選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/tobu-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">東武線で行ける登山5選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/shinano-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">特急しなの・北陸新幹線で行ける登山6選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/jr-tohoku-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">東北新幹線で行ける登山3選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/jr-joetsu-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">上越新幹線・上越線で行ける登山4選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/jr-uchibo-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">内房線で行ける登山3選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
+<!-- ② 百名山10選 — ブルー系 -->
+<a href="/articles/kanto-day-trip-100/" class="article-card" style="background:linear-gradient(135deg,#f4f8ff 0%,#e0ecfc 100%);border:1px solid #b0cef0;">
+  <!-- 背景SVG：山3つ＋バッジ -->
+  <svg class="card-bg-svg" viewBox="0 0 120 80" fill="none" aria-hidden="true">
+    <polygon points="30,80 65,28 100,80" fill="#3a6aaa" opacity=".07"/>
+    <polygon points="60,80 88,42 116,80" fill="#3a6aaa" opacity=".05"/>
+    <polygon points="5,80 28,45 51,80" fill="#3a6aaa" opacity=".05"/>
+    <circle cx="95" cy="22" r="14" fill="#3a6aaa" opacity=".1"/>
+    <text x="95" y="27" text-anchor="middle" font-size="11" font-weight="900" fill="#3a6aaa" opacity=".22" font-family="sans-serif">100</text>
+  </svg>
+  <div class="card-content">
+    <div class="card-top">
+      <span class="card-tag" style="background:#d0e4f8;color:#1e3878;">百名山</span>
+      <span class="card-arrow" style="color:#2a5090;">›</span>
     </div>
-
-    <div style="background:white;border-radius:12px;border:1px solid #ddd8d0;overflow:hidden;margin-bottom:10px;">
-      <div style="padding:6px 14px;background:#f0f5ec;font-size:11px;font-weight:bold;color:#4a6038;">駅別まとめ</div>
-      <a href="/search/takao-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">高尾駅から登れる山4選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/hanno-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">飯能駅から登れる山3選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/shibusawa-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">渋沢駅から登れる山3選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/echigoyuzawa-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">越後湯沢駅から登れる山4選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
+    <div class="card-title" style="color:#101828;">関東発・日帰りで登れる百名山10選</div>
+    <div class="card-pills">
+      <span class="card-pill" style="background:#d0e4f8;color:#1e3878;">🏔 百名山</span>
+      <span class="card-pill" style="background:#d0e4f8;color:#1e3878;">📍 関東発</span>
     </div>
+  </div>
+</a>
 
-    <div style="background:white;border-radius:12px;border:1px solid #ddd8d0;overflow:hidden;margin-bottom:10px;">
-      <div style="padding:6px 14px;background:#f0f5ec;font-size:11px;font-weight:bold;color:#4a6038;">エリア別まとめ</div>
-      <a href="/search/okutama-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">奥多摩 登山おすすめ4選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/tanzawa-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">丹沢 登山おすすめ5選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/takao-jinba-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">高尾・陣馬 登山おすすめ5選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/okubusuma-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">奥武蔵 登山おすすめ5選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/hakone-hiking/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">箱根 登山おすすめ3選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
+<!-- ③ コース定数30 — グリーン系 -->
+<a href="/articles/coeff-30/" class="article-card" style="background:linear-gradient(135deg,#f2f8ee 0%,#e0f0d4 100%);border:1px solid #a8d090;">
+  <!-- 背景SVG：バーチャート -->
+  <svg class="card-bg-svg" viewBox="0 0 120 80" fill="none" aria-hidden="true">
+    <rect x="62" y="50" width="10" height="30" rx="2" fill="#4e8040" opacity=".1"/>
+    <rect x="76" y="36" width="10" height="44" rx="2" fill="#4e8040" opacity=".1"/>
+    <rect x="90" y="24" width="10" height="56" rx="2" fill="#4e8040" opacity=".13"/>
+    <rect x="104" y="32" width="10" height="48" rx="2" fill="#4e8040" opacity=".1"/>
+    <polyline points="62,55 76,41 90,29 104,37" stroke="#4e8040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".2"/>
+  </svg>
+  <div class="card-content">
+    <div class="card-top">
+      <span class="card-tag" style="background:#cce8b8;color:#2a5018;">コース定数</span>
+      <span class="card-arrow" style="color:#3a6030;">›</span>
     </div>
+    <div class="card-title" style="color:#142010;">コース定数30前後のおすすめ登山（関東）</div>
+    <div class="card-pills">
+      <span class="card-pill" style="background:#cce8b8;color:#2a5018;">📊 定数25〜35</span>
+      <span class="card-pill" style="background:#cce8b8;color:#2a5018;">📍 関東発</span>
+    </div>
+  </div>
+</a>
 
-    <div style="background:white;border-radius:12px;border:1px solid #ddd8d0;overflow:hidden;margin-bottom:10px;">
-      <div style="padding:6px 14px;background:#f0f5ec;font-size:11px;font-weight:bold;color:#4a6038;">テーマ別</div>
-      <a href="/search/train-daytrip/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">電車で行ける日帰り登山43選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/hyakunen-beginner/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">初心者が登れる百名山30選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/shinjuku-daytrip/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #f0ede8;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">新宿から日帰りで行ける山59選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
-      <a href="/search/ofuna-daytrip/" style="display:flex;justify-content:space-between;align-items:center;padding:13px 16px;color:#2a3530;">
-        <span style="font-size:14px;font-weight:600;">大船・横浜から日帰りで行ける山58選</span><span style="color:#4a6038;font-weight:600;">→</span>
-      </a>
+<!-- ④ 冬山アイゼン不要 — スカイブルー系 -->
+<a href="/articles/winter-no-crampons/" class="article-card" style="background:linear-gradient(135deg,#f0f8ff 0%,#daeef8 100%);border:1px solid #90c8e8;">
+  <!-- 背景SVG：雪の結晶＋山 -->
+  <svg class="card-bg-svg" viewBox="0 0 120 80" fill="none" aria-hidden="true">
+    <polygon points="120,80 55,80 88,30 120,52" fill="#2a88b8" opacity=".07"/>
+    <polygon points="88,30 80,44 96,44" fill="white" opacity=".5"/>
+    <g transform="translate(70,24)" stroke="#2a88b8" stroke-width="1.2" stroke-linecap="round" opacity=".2">
+      <line x1="0" y1="-10" x2="0" y2="10"/>
+      <line x1="-10" y1="0" x2="10" y2="0"/>
+      <line x1="-7" y1="-7" x2="7" y2="7"/>
+      <line x1="7" y1="-7" x2="-7" y2="7"/>
+      <circle cx="0" cy="-10" r="2" fill="#2a88b8" stroke="none" opacity=".25"/>
+      <circle cx="0" cy="10" r="2" fill="#2a88b8" stroke="none" opacity=".25"/>
+      <circle cx="-10" cy="0" r="2" fill="#2a88b8" stroke="none" opacity=".25"/>
+      <circle cx="10" cy="0" r="2" fill="#2a88b8" stroke="none" opacity=".25"/>
+    </g>
+    <circle cx="100" cy="18" r="10" fill="#2a88b8" opacity=".12"/>
+    <polyline points="95,18 98,22 106,13" stroke="#2a88b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".3"/>
+  </svg>
+  <div class="card-content">
+    <div class="card-top">
+      <span class="card-tag" style="background:#c0e4f4;color:#0e4868;">冬山</span>
+      <span class="card-arrow" style="color:#1a6898;">›</span>
+    </div>
+    <div class="card-title" style="color:#0a2030;">アイゼン不要で冬に登れる山（関東）5選</div>
+    <div class="card-pills">
+      <span class="card-pill" style="background:#c0e4f4;color:#0e4868;">❄️ 冬季</span>
+      <span class="card-pill" style="background:#c0e4f4;color:#0e4868;">✅ アイゼン不要</span>
+    </div>
+  </div>
+</a>
+
+<!-- ⑤ 電車アクセス — パープル系 -->
+<a href="/articles/train-access-mountains/" class="article-card" style="background:linear-gradient(135deg,#f8f2ff 0%,#ecdff8 100%);border:1px solid #c8a8e8;">
+  <!-- 背景SVG：電車＋山 -->
+  <svg class="card-bg-svg" viewBox="0 0 120 80" fill="none" aria-hidden="true">
+    <polygon points="120,80 70,80 95,42 120,56" fill="#8850b8" opacity=".07"/>
+    <rect x="52" y="46" width="32" height="20" rx="5" fill="#8850b8" opacity=".1"/>
+    <rect x="56" y="50" width="10" height="7" rx="1.5" fill="#8850b8" opacity=".15"/>
+    <rect x="70" y="50" width="10" height="7" rx="1.5" fill="#8850b8" opacity=".15"/>
+    <circle cx="59" cy="66" r="3.5" fill="#8850b8" opacity=".12"/>
+    <circle cx="75" cy="66" r="3.5" fill="#8850b8" opacity=".12"/>
+    <line x1="46" y1="70" x2="110" y2="70" stroke="#8850b8" stroke-width="1.5" opacity=".12"/>
+  </svg>
+  <div class="card-content">
+    <div class="card-top">
+      <span class="card-tag" style="background:#e0c8f8;color:#48188a;">電車アクセス</span>
+      <span class="card-arrow" style="color:#6830a0;">›</span>
+    </div>
+    <div class="card-title" style="color:#1a0830;">電車で行けるおすすめ登山10選</div>
+    <div class="card-pills">
+      <span class="card-pill" style="background:#e0c8f8;color:#48188a;">🚃 電車OK</span>
+      <span class="card-pill" style="background:#e0c8f8;color:#48188a;">📍 関東発</span>
+    </div>
+  </div>
+</a>
+
+</div><!-- /article-grid -->
+
+<!-- まとめ記事 -->
+<div class="matome-section">
+  <div class="matome-head">SPECIAL INDEX</div>
+
+  <div class="matome-group">
+    <div class="matome-label" style="--c:#3a5828"><span style="width:3px;height:11px;border-radius:2px;background:#4e8040;display:inline-block"></span>路線別</div>
+    <div class="chips">
+      <a href="/search/seibu-hiking/"      class="chip chip-r">西武線<sub>5選</sub></a>
+      <a href="/search/odakyu-hiking/"     class="chip chip-r">小田急線<sub>8選</sub></a>
+      <a href="/search/jr-chuo-hiking/"    class="chip chip-r">中央線<sub>9選</sub></a>
+      <a href="/search/jr-shonan-hiking/"  class="chip chip-r">横浜・大船<sub>8選</sub></a>
+      <a href="/search/keiou-hiking/"      class="chip chip-r">京王線<sub>5選</sub></a>
+      <a href="/search/tobu-hiking/"       class="chip chip-r">東武線<sub>5選</sub></a>
+      <a href="/search/shinano-hiking/"    class="chip chip-r">特急しなの<sub>6選</sub></a>
+      <a href="/search/jr-tohoku-hiking/"  class="chip chip-r">東北新幹線<sub>3選</sub></a>
+      <a href="/search/jr-joetsu-hiking/"  class="chip chip-r">上越新幹線<sub>4選</sub></a>
+      <a href="/search/jr-uchibo-hiking/"  class="chip chip-r">内房線<sub>3選</sub></a>
     </div>
   </div>
 
-  <div class="cta-section">
-    <h2>自分に合った山を探してみよう</h2>
-    <p>出発地・コース定数・アイゼン要否・日帰り可否など、細かい条件で絞り込めます。</p>
-    <a href="/" class="cta-btn">👉 出発地・コース定数から登山を探す（Yamatch）</a>
+  <div class="matome-group">
+    <div class="matome-label"><span style="width:3px;height:11px;border-radius:2px;background:#3a5898;display:inline-block"></span>駅別</div>
+    <div class="chips">
+      <a href="/search/takao-hiking/"        class="chip chip-s">高尾駅<sub>4選</sub></a>
+      <a href="/search/hanno-hiking/"        class="chip chip-s">飯能駅<sub>3選</sub></a>
+      <a href="/search/shibusawa-hiking/"    class="chip chip-s">渋沢駅<sub>3選</sub></a>
+      <a href="/search/echigoyuzawa-hiking/" class="chip chip-s">越後湯沢<sub>4選</sub></a>
+    </div>
   </div>
+
+  <div class="matome-group">
+    <div class="matome-label"><span style="width:3px;height:11px;border-radius:2px;background:#a05828;display:inline-block"></span>エリア別</div>
+    <div class="chips">
+      <a href="/search/okutama-hiking/"     class="chip chip-a">奥多摩<sub>4選</sub></a>
+      <a href="/search/tanzawa-hiking/"     class="chip chip-a">丹沢<sub>5選</sub></a>
+      <a href="/search/takao-jinba-hiking/" class="chip chip-a">高尾・陣馬<sub>5選</sub></a>
+      <a href="/search/okubusuma-hiking/"   class="chip chip-a">奥武蔵<sub>5選</sub></a>
+      <a href="/search/hakone-hiking/"      class="chip chip-a">箱根<sub>3選</sub></a>
+    </div>
+  </div>
+
+  <div class="matome-group">
+    <div class="matome-label"><span style="width:3px;height:11px;border-radius:2px;background:#6830a0;display:inline-block"></span>テーマ別</div>
+    <div class="chips">
+      <a href="/search/train-daytrip/"     class="chip chip-t">電車で日帰り<sub>43選</sub></a>
+      <a href="/search/hyakunen-beginner/" class="chip chip-t">初心者百名山<sub>30選</sub></a>
+      <a href="/search/shinjuku-daytrip/"  class="chip chip-t">新宿発<sub>59選</sub></a>
+      <a href="/search/ofuna-daytrip/"     class="chip chip-t">大船・横浜発<sub>58選</sub></a>
+    </div>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>自分に合った山を探してみよう</h2>
+  <p>出発地・コース定数・アイゼン要否など細かい条件で絞り込めます</p>
+  <a href="/">👉 Yamatchで山を探す</a>
+</div>
+
 </main>
-<nav style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:768px;background:white;border-top:1px solid #e8e4dc;display:flex;z-index:100;box-shadow:0 -2px 12px rgba(0,0,0,0.08);padding-bottom:env(safe-area-inset-bottom,0px);"><a href="/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#a09888;gap:3px;"><span style="color:#a09888"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span style="font-size:10px;font-weight:500;font-family:sans-serif;">ホーム</span></a><a href="/recommend/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#a09888;gap:3px;"><span style="color:#a09888"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="12,3 14,10 12,12 10,10" fill="currentColor" stroke="none"/><polygon points="12,21 10,14 12,12 14,14" fill="currentColor" opacity="0.5" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="white" stroke="none"/></svg></span><span style="font-size:10px;font-weight:500;font-family:sans-serif;">診断</span></a><a href="/articles/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#4e6535;gap:3px;"><span style="color:#4e6535"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span><span style="font-size:10px;font-weight:700;font-family:sans-serif;">記事</span></a><a href="/mypage/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#a09888;gap:3px;"><span style="color:#a09888"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span style="font-size:10px;font-weight:500;font-family:sans-serif;">マイページ</span></a></nav><div style="height:64px;"></div>
+
+<nav class="bottom-nav">
+  <a href="/">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>ホーム</span>
+  </a>
+  <a href="/recommend/">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="12 2 14 10 12 12 10 10" fill="currentColor" stroke="none"/><polygon points="12 22 10 14 12 12 14 14" fill="currentColor" opacity=".5" stroke="none"/></svg>
+    <span>診断</span>
+  </a>
+  <a href="/articles/" class="active">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    <span>記事</span>
+  </a>
+  <a href="/mypage/">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span>マイページ</span>
+  </a>
+</nav>
+<div style="height:64px"></div>
+
 </body>
 </html>
