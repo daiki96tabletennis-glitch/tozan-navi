@@ -16,53 +16,47 @@
 <meta name="twitter:image" content="https://tozan-navi.com/ogp/type-ahfl.png">
 <link rel="canonical" href="https://tozan-navi.com/recommend/AHFL/">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:#f0ede5;font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;color:#2a2520;min-height:100vh;}
-.header{background:linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-.header-logo{color:white;font-size:15px;font-weight:700;text-decoration:none;}
-.header-nav{display:flex;gap:10px;}
-.header-nav a{color:rgba(255,255,255,.8);font-size:11px;text-decoration:none;}
-.hero{background:linear-gradient(160deg,#1e3814,#2e5028);padding:24px 16px 0;text-align:center;position:relative;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;opacity:.08;}
-.code-badge{display:inline-block;background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-size:10px;font-weight:600;letter-spacing:.1em;padding:3px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.15);margin-bottom:8px;font-family:monospace;}
-.rare-badge{display:inline-block;background:#4a6038;color:white;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-left:6px;}
-.hero-name{font-size:26px;font-weight:900;color:white;margin-bottom:4px;letter-spacing:-.02em;}
-.hero-emoji{font-size:28px;margin-bottom:6px;display:block;}
-.hero-pct{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:16px;}
-.chara-wrap{display:flex;justify-content:center;align-items:flex-end;}
-.main{max-width:480px;margin:0 auto;padding:16px;display:flex;flex-direction:column;gap:14px;}
-.card{background:white;border-radius:14px;border:1px solid #e0dbd4;padding:16px;}
-.card-title{font-size:12px;font-weight:700;color:#4e6535;margin-bottom:10px;letter-spacing:.04em;display:flex;align-items:center;gap:6px;}
-.card-title::before{content:'';display:inline-block;width:3px;height:14px;background:#4e6535;border-radius:2px;}
-.desc{font-size:13px;line-height:1.75;color:#3a3530;}
-.axes{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
-.axis-tag{font-size:11px;font-weight:600;color:white;background:#4e6535;border-radius:20px;padding:3px 10px;}
-.sw-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.sw-box{padding:12px;border-radius:10px;}
-.sw-box.strength{background:#eef5e8;border:1px solid #c8ddb0;}
-.sw-box.weakness{background:#fdf5f0;border:1px solid #e8c8b0;}
-.sw-label{font-size:10px;font-weight:700;margin-bottom:6px;}
-.sw-box.strength .sw-label{color:#4a6838;}
-.sw-box.weakness .sw-label{color:#8a5030;}
-.sw-box ul{list-style:none;padding:0;}
-.sw-box li{font-size:11px;line-height:1.6;color:#3a3530;padding-left:12px;position:relative;}
-.sw-box li::before{content:'•';position:absolute;left:2px;}
-.mt-tags{display:flex;flex-wrap:wrap;gap:6px;}
-.mt-tag{font-size:12px;font-weight:600;background:#f0ede5;border:1px solid #d8d0c8;border-radius:8px;padding:4px 10px;color:#3a3530;}
-.season-tag{display:inline-block;font-size:12px;font-weight:600;color:#5a7030;background:#eef5e0;border:1px solid #c0d890;border-radius:8px;padding:5px 12px;}
-.compat-row{display:flex;gap:12px;align-items:flex-start;}
-.compat-chara{flex-shrink:0;text-align:center;}
-.compat-chara-name{font-size:10px;font-weight:700;color:#4a6038;margin-top:4px;}
-.compat-msg{font-size:12px;line-height:1.7;color:#3a3530;flex:1;}
-.cta{background:linear-gradient(135deg,#3a5828,#5a8040);border-radius:14px;padding:20px 16px;text-align:center;color:white;}
-.cta-text{font-size:13px;opacity:.8;margin-bottom:12px;}
-.cta-btn{display:inline-block;background:white;color:#3a5828;font-size:14px;font-weight:800;padding:12px 28px;border-radius:10px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.15);}
-.share-row{display:flex;gap:8px;}
-.share-btn{flex:1;padding:11px;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;text-align:center;transition:opacity .15s;}
-.share-btn:hover{opacity:.85;}
-.share-x{background:#000;color:white;}
-.share-line{background:#00b900;color:white;}
-footer{text-align:center;padding:20px 16px 40px;font-size:11px;color:#a09888;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f0ede5;font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;color:#2a2520;min-height:100vh}
+.header{background:linear-gradient(155deg,#243d20,#344f2c,#3e5e36);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.header-logo{color:white;font-size:15px;font-weight:700;text-decoration:none}
+.header-nav{display:flex;gap:10px}
+.header-nav a{color:rgba(255,255,255,.8);font-size:11px;text-decoration:none}
+.hero{background:linear-gradient(160deg,#1e3814,#2e5028);padding:24px 16px 0;text-align:center;position:relative;overflow:hidden}
+.code-badge{display:inline-block;background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-size:10px;font-weight:600;letter-spacing:.1em;padding:3px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.15);margin-bottom:8px;font-family:monospace}
+.rare-badge{display:inline-block;background:#4a6038;color:white;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-left:6px}
+.hero-name{font-size:26px;font-weight:900;color:white;margin-bottom:4px;letter-spacing:-.02em}
+.hero-pct{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:16px}
+.chara-wrap{display:flex;justify-content:center;align-items:flex-end;overflow:hidden}
+.main{max-width:480px;margin:0 auto;padding:16px;display:flex;flex-direction:column;gap:14px}
+.card{background:white;border-radius:14px;border:1px solid #e0dbd4;padding:16px}
+.card-title{font-size:12px;font-weight:700;color:#4e6535;margin-bottom:10px;letter-spacing:.04em;display:flex;align-items:center;gap:6px}
+.card-title::before{content:'';display:inline-block;width:3px;height:14px;background:#4e6535;border-radius:2px}
+.desc{font-size:13px;line-height:1.75;color:#3a3530}
+.sw-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sw-box{padding:12px;border-radius:10px}
+.sw-box.strength{background:#eef5e8;border:1px solid #c8ddb0}
+.sw-box.weakness{background:#fdf5f0;border:1px solid #e8c8b0}
+.sw-label{font-size:10px;font-weight:700;margin-bottom:6px}
+.sw-box.strength .sw-label{color:#4a6838}
+.sw-box.weakness .sw-label{color:#8a5030}
+.sw-box ul{list-style:none;padding:0}
+.sw-box li{font-size:11px;line-height:1.6;color:#3a3530;padding-left:12px;position:relative}
+.sw-box li::before{content:'•';position:absolute;left:2px}
+.mt-tags{display:flex;flex-wrap:wrap;gap:6px}
+.mt-tag{font-size:12px;font-weight:600;background:#f0ede5;border:1px solid #d8d0c8;border-radius:8px;padding:4px 10px;color:#3a3530}
+.season-tag{display:inline-block;font-size:12px;font-weight:600;color:#5a7030;background:#eef5e0;border:1px solid #c0d890;border-radius:8px;padding:5px 12px}
+.compat-row{display:flex;gap:12px;align-items:flex-start}
+.compat-chara{flex-shrink:0;text-align:center}
+.compat-chara-name{font-size:10px;font-weight:700;color:#4a6038;margin-top:4px}
+.compat-msg{font-size:12px;line-height:1.7;color:#3a3530;flex:1}
+.share-row{display:flex;gap:8px}
+.share-btn{flex:1;padding:11px;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;text-align:center}
+.share-x{background:#000;color:white}
+.share-line{background:#00b900;color:white}
+.cta{background:linear-gradient(135deg,#3a5828,#5a8040);border-radius:14px;padding:20px 16px;text-align:center;color:white}
+.cta-btn{display:inline-block;background:white;color:#3a5828;font-size:14px;font-weight:800;padding:12px 28px;border-radius:10px;text-decoration:none}
+footer{text-align:center;padding:20px 16px 40px;font-size:11px;color:#a09888}
 </style>
 </head>
 <body>
@@ -73,107 +67,89 @@ footer{text-align:center;padding:20px 16px 40px;font-size:11px;color:#a09888;}
     <a href="/recommend/">診断TOPへ</a>
   </nav>
 </header>
-
 <div class="hero">
   <div class="code-badge">AHFL型<span class="rare-badge">標準タイプ</span></div>
   <div class="hero-name">気まぐれ山人</div>
   <div class="hero-pct">診断者の 7.8% がこのタイプ</div>
-  <div class="chara-wrap"><svg viewBox="0 0 56 92" width="120" height="184" fill="none"><rect x="31" y="30" width="120" height="184" rx="5.46" fill="#c89050"/>
-<rect x="32" y="31" width="120" height="184" rx="4.96" fill="#d8a060"/>
-<rect x="33" y="46" width="120" height="184" rx="1.5" fill="#c89050"/>
-<rect x="33" y="40" width="120" height="184" rx="2.5" fill="#c89050" stroke="#d8a060" stroke-width=".7"/><path d="M20 37 Q18.32 44.2 16 52" stroke="#f5c090" stroke-width="120" stroke-linecap="round" fill="none"/>
+  <div class="chara-wrap"><svg viewBox="0 0 56 92" width="120" height="184" fill="none"><rect x="31" y="30" width="13" height="20" rx="5.46" fill="#c89050"/>
+<rect x="32" y="31" width="11" height="15" rx="4.96" fill="#d8a060"/>
+<rect x="33" y="46" width="9" height="3" rx="1.5" fill="#c89050"/>
+<rect x="33" y="40" width="9" height="5" rx="2.5" fill="#c89050" stroke="#d8a060" stroke-width=".7"/><path d="M20 37 Q18.32 44.2 16 52" stroke="#f5c090" stroke-width="6" stroke-linecap="round" fill="none"/>
 <circle cx="16" cy="52" r="3" fill="#f5c090"/>
-<path d="M20 37 Q18.32 44.2 17.4 46.75" stroke="#a0b870" stroke-width="120" stroke-linecap="round" fill="none"/><path d="M36 37 Q38.52 42.28 42 48" stroke="#f5c090" stroke-width="120" stroke-linecap="round" fill="none"/>
+<path d="M20 37 Q18.32 44.2 17.4 46.75" stroke="#a0b870" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M36 37 Q38.52 42.28 42 48" stroke="#f5c090" stroke-width="6" stroke-linecap="round" fill="none"/>
 <circle cx="42" cy="48" r="3" fill="#f5c090"/>
-<path d="M36 37 Q38.52 42.28 39.9 44.15" stroke="#a0b870" stroke-width="120" stroke-linecap="round" fill="none"/><rect x="20" y="31" width="120" height="184" rx="2.5" fill="#a0b870"/><line x1="28" y1="31" x2="28" y2="51" stroke="#90a860" stroke-width="120" stroke-dasharray="2,2"/><rect x="21.5" y="34.5" width="5.5" height="3.5" rx="1" fill="#88a058"/><line x1="19.5" y1="51" x2="36.5" y2="51" stroke="#90a860" stroke-width="1.3"/><rect x="20" y="51" width="120" height="5.5" rx="1.5" fill="#5868a0"/>
-<rect x="20" y="52" width="7.5" height="184" rx="3.5" fill="#5868a0"/>
-<rect x="28.5" y="52" width="7.5" height="184" rx="3.5" fill="#5868a0"/>
+<path d="M36 37 Q38.52 42.28 39.9 44.15" stroke="#a0b870" stroke-width="9" stroke-linecap="round" fill="none"/><rect x="20" y="31" width="16" height="20" rx="2.5" fill="#a0b870"/><line x1="28" y1="31" x2="28" y2="51" stroke="#90a860" stroke-width="1" stroke-dasharray="2,2"/><rect x="21.5" y="34.5" width="5.5" height="3.5" rx="1" fill="#88a058"/><line x1="19.5" y1="51" x2="36.5" y2="51" stroke="#90a860" stroke-width="1.3"/><rect x="20" y="51" width="16" height="5.5" rx="1.5" fill="#5868a0"/>
+<rect x="20" y="52" width="7.5" height="21" rx="3.5" fill="#5868a0"/>
+<rect x="28.5" y="52" width="7.5" height="21" rx="3.5" fill="#5868a0"/>
 <line x1="28" y1="51" x2="28" y2="57" stroke="rgba(0,0,0,.15)" stroke-width=".9"/><path d="M15 72 Q21 70 27.5 72 Q27.5 77 15 77Z" fill="#c09070" stroke="#a07050" stroke-width=".9"/>
 <path d="M15 72 Q21 68.5 27.5 72" fill="#a07050"/>
 <path d="M29.5 72 Q35 70 42.5 72 Q42.5 77 29.5 77Z" fill="#c09070" stroke="#a07050" stroke-width=".9"/>
-<path d="M29.5 72 Q35 68.5 42.5 72" fill="#a07050"/><rect x="20" y="61" width="7.5" height="184" rx="3.5" fill="#5868a0" transform="rotate(8 20 61)"/><rect x="23.5" y="26" width="120" height="5.5" rx="2.8" fill="#f5c090"/><ellipse cx="19" cy="17" rx="1.5" ry="2" fill="#f5c090" opacity=".8"/>
+<path d="M29.5 72 Q35 68.5 42.5 72" fill="#a07050"/><rect x="20" y="61" width="7.5" height="11" rx="3.5" fill="#5868a0" transform="rotate(8 20 61)"/><rect x="23.5" y="26" width="9" height="5.5" rx="2.8" fill="#f5c090"/><ellipse cx="19" cy="17" rx="1.5" ry="2" fill="#f5c090" opacity=".8"/>
 <ellipse cx="37" cy="17" rx="1.5" ry="2" fill="#f5c090" opacity=".8"/>
 <circle cx="28" cy="16" r="11" fill="#f5c090"/><path d="M17 15 Q17 3 28 3 Q39 3 39 15" fill="#4a3018"/><path d="M23 14 Q25.5 12.5 27.5 14" fill="none" stroke="#7a5030" stroke-width="1.5" stroke-linecap="round"/>
 <path d="M28.5 14 Q30.5 12.5 33 14" fill="none" stroke="#7a5030" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="24.5" cy="17.5" rx="2" ry="2.2" fill="#2a1808"/>
 <ellipse cx="31.5" cy="17.5" rx="2" ry="2.2" fill="#2a1808"/>
 <circle cx="25.3" cy="16.7" r=".7" fill="white"/>
-<circle cx="32.3" cy="16.7" r=".7" fill="white"/><ellipse cx="28" cy="20" rx="1" ry=".65" fill="#d4a060" opacity=".5"/><path d="M23 23 Q28 27 33 23" fill="none" stroke="#b08060" stroke-width="120" stroke-linecap="round"/><path d="M17 9 Q17 2 28 2 Q39 2 39 9" fill="#6a8050"/><path d="M17 9 Q28 12.5 39 9 L39.5 11 Q28 15 16.5 11Z" fill="#587040"/><circle cx="28" cy="3.5" r="1.3" fill="#587040"/><ellipse cx="24" cy="5.5" rx="4.5" ry="2.2" fill="white" opacity=".14" transform="rotate(-15 24 5.5)"/><path d="M30" y="28 Q34 33 36 39" fill="none" stroke="#7a6858" stroke-width="1.4" stroke-dasharray="2,2"/>
-<rect x="36" y="40" width="120" height="7.5" rx="2" fill="#2a2828"/>
+<circle cx="32.3" cy="16.7" r=".7" fill="white"/><ellipse cx="28" cy="20" rx="1" ry=".65" fill="#d4a060" opacity=".5"/><path d="M23 23 Q28 27 33 23" fill="none" stroke="#b08060" stroke-width="2" stroke-linecap="round"/><path d="M17 9 Q17 2 28 2 Q39 2 39 9" fill="#6a8050"/><path d="M17 9 Q28 12.5 39 9 L39.5 11 Q28 15 16.5 11Z" fill="#587040"/><circle cx="28" cy="3.5" r="1.3" fill="#587040"/><ellipse cx="24" cy="5.5" rx="4.5" ry="2.2" fill="white" opacity=".14" transform="rotate(-15 24 5.5)"/><path d="M30" y="28 Q34 33 36 39" fill="none" stroke="#7a6858" stroke-width="1.4" stroke-dasharray="2,2"/>
+<rect x="36" y="40" width="10" height="7.5" rx="2" fill="#2a2828"/>
 <circle cx="41" cy="43.5" r="2.8" fill="#1a1818" stroke="#505060" stroke-width=".9"/>
 <circle cx="41" cy="43.5" r="1.7" fill="#304080" opacity=".7"/>
-<rect x="37.5" y="37.5" width="120" height="184" rx="1" fill="#3a3838"/></svg></div>
+<rect x="37.5" y="37.5" width="5" height="3" rx="1" fill="#3a3838"/></svg></div>
 </div>
-
 <div class="main">
-
   <div class="card">
     <div class="card-title">どんなタイプ？</div>
     <p class="desc">決まったルートも目標もなく、気持ちのいい道を気の向くままに歩く。写真は撮るけどSNSにはあまり上げない。山の時間が自分の時間。誰にも邪魔されたくないひとり時間派。</p>
-    <div class="axes"></div>
   </div>
-
   <div class="card">
     <div class="card-title">強み・弱み</div>
     <div class="sw-grid">
-      <div class="sw-box strength">
-        <div class="sw-label">💪 強み</div>
-        <ul><li>感性が豊かで写真センスがある</li><li>疲れたら休む判断が自然にできる</li><li>山に「正解」を求めない</li></ul>
-      </div>
-      <div class="sw-box weakness">
-        <div class="sw-label">😅 弱み</div>
-        <ul><li>ルートを外れて迷うことがある</li><li>時間管理がおおざっぱ</li></ul>
-      </div>
+      <div class="sw-box strength"><div class="sw-label">💪 強み</div><ul><li>感性が豊かで写真センスがある</li><li>疲れたら休む判断が自然にできる</li><li>山に「正解」を求めない</li></ul></div>
+      <div class="sw-box weakness"><div class="sw-label">😅 弱み</div><ul><li>ルートを外れて迷うことがある</li><li>時間管理がおおざっぱ</li></ul></div>
     </div>
   </div>
-
   <div class="card">
     <div class="card-title">おすすめの山</div>
     <div class="mt-tags"><span class="mt-tag">三ツ峠山</span><span class="mt-tag">茅ヶ岳</span><span class="mt-tag">日向山</span></div>
   </div>
-
   <div class="card">
     <div class="card-title">ベストシーズン</div>
     <span class="season-tag">📅 秋（10〜11月）紅葉</span>
   </div>
-
   <div class="card">
     <div class="card-title">相性の良い登山仲間</div>
     <div class="compat-row">
-      <div class="compat-chara">
-        <svg viewBox="0 0 56 92" width="72" height="110" fill="none"><rect x="31" y="30" width="72" height="110" rx="6.3" fill="#4a5868"/>
-<rect x="32" y="31" width="72" height="110" rx="5.8" fill="#3a4858"/>
-<rect x="33" y="50" width="72" height="110" rx="1.5" fill="#4a5868"/>
-<rect x="33" y="44" width="72" height="110" rx="2.5" fill="#4a5868" stroke="#3a4858" stroke-width=".7"/><path d="M31 33 Q29 40 29 48" fill="none" stroke="#4a5868" stroke-width="2.2"/><path d="M20 37 Q14.54 49 7 62" stroke="#f5d090" stroke-width="72" stroke-linecap="round" fill="none"/>
+      <div class="compat-chara"><svg viewBox="0 0 56 92" width="72" height="110" fill="none"><rect x="31" y="30" width="15" height="24" rx="6.3" fill="#4a5868"/>
+<rect x="32" y="31" width="13" height="19" rx="5.8" fill="#3a4858"/>
+<rect x="33" y="50" width="11" height="3" rx="1.5" fill="#4a5868"/>
+<rect x="33" y="44" width="11" height="5" rx="2.5" fill="#4a5868" stroke="#3a4858" stroke-width=".7"/><path d="M31 33 Q29 40 29 48" fill="none" stroke="#4a5868" stroke-width="2.2"/><path d="M20 37 Q14.54 49 7 62" stroke="#f5d090" stroke-width="6" stroke-linecap="round" fill="none"/>
 <circle cx="7" cy="62" r="3" fill="#f5d090"/>
-<path d="M20 37 Q14.54 49 11.549999999999999 53.25" stroke="#d04818" stroke-width="72" stroke-linecap="round" fill="none"/><path d="M36 37 Q37.68 43.24 40 50" stroke="#f5d090" stroke-width="72" stroke-linecap="round" fill="none"/>
+<path d="M20 37 Q14.54 49 11.549999999999999 53.25" stroke="#d04818" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M36 37 Q37.68 43.24 40 50" stroke="#f5d090" stroke-width="6" stroke-linecap="round" fill="none"/>
 <circle cx="40" cy="50" r="3" fill="#f5d090"/>
-<path d="M36 37 Q37.68 43.24 38.6 45.45" stroke="#d04818" stroke-width="72" stroke-linecap="round" fill="none"/><rect x="20" y="31" width="72" height="110" rx="2.5" fill="#d04818"/><line x1="28" y1="31" x2="28" y2="51" stroke="#c03808" stroke-width="72" stroke-dasharray="2,2"/><rect x="21.5" y="34.5" width="5.5" height="3.5" rx="1" fill="#b03000"/><line x1="19.5" y1="51" x2="36.5" y2="51" stroke="#c03808" stroke-width="1.3"/><path d="M22 40 Q28 38 34 40" fill="none" stroke="#c0a030" stroke-width="1.5"/><path d="M24 40 L24 47 M32 40 L32 47" stroke="#c0a030" stroke-width="1.1"/><rect x="29" y="35" width="5.5" height="3.5" rx="1" fill="#b03000"/><rect x="20" y="51" width="72" height="5.5" rx="1.5" fill="#282018"/>
-<rect x="20" y="52" width="7.5" height="110" rx="3.5" fill="#282018"/>
-<rect x="28.5" y="52" width="7.5" height="110" rx="3.5" fill="#282018"/>
+<path d="M36 37 Q37.68 43.24 38.6 45.45" stroke="#d04818" stroke-width="9" stroke-linecap="round" fill="none"/><rect x="20" y="31" width="16" height="20" rx="2.5" fill="#d04818"/><line x1="28" y1="31" x2="28" y2="51" stroke="#c03808" stroke-width="1" stroke-dasharray="2,2"/><rect x="21.5" y="34.5" width="5.5" height="3.5" rx="1" fill="#b03000"/><line x1="19.5" y1="51" x2="36.5" y2="51" stroke="#c03808" stroke-width="1.3"/><path d="M22 40 Q28 38 34 40" fill="none" stroke="#c0a030" stroke-width="1.5"/><path d="M24 40 L24 47 M32 40 L32 47" stroke="#c0a030" stroke-width="1.1"/><rect x="29" y="35" width="5.5" height="3.5" rx="1" fill="#b03000"/><rect x="20" y="51" width="16" height="5.5" rx="1.5" fill="#282018"/>
+<rect x="20" y="52" width="7.5" height="21" rx="3.5" fill="#282018"/>
+<rect x="28.5" y="52" width="7.5" height="21" rx="3.5" fill="#282018"/>
 <line x1="28" y1="51" x2="28" y2="57" stroke="rgba(0,0,0,.15)" stroke-width=".9"/><rect x="20" y="69" width="7.5" height="3.5" rx="2" fill="#1a1410"/>
 <rect x="28.5" y="69" width="7.5" height="3.5" rx="2" fill="#1a1410"/><path d="M15 72 Q21 70 27.5 72 Q27.5 77 15 77Z" fill="#c8a870" stroke="#a08050" stroke-width=".9"/>
 <path d="M15 72 Q21 68.5 27.5 72" fill="#a08050"/>
 <path d="M29.5 72 Q35 70 42.5 72 Q42.5 77 29.5 77Z" fill="#c8a870" stroke="#a08050" stroke-width=".9"/>
-<path d="M29.5 72 Q35 68.5 42.5 72" fill="#a08050"/><rect x="23.5" y="26" width="72" height="5.5" rx="2.8" fill="#f5d090"/><ellipse cx="19" cy="17" rx="1.5" ry="2" fill="#f5d090" opacity=".8"/>
+<path d="M29.5 72 Q35 68.5 42.5 72" fill="#a08050"/><rect x="23.5" y="26" width="9" height="5.5" rx="2.8" fill="#f5d090"/><ellipse cx="19" cy="17" rx="1.5" ry="2" fill="#f5d090" opacity=".8"/>
 <ellipse cx="37" cy="17" rx="1.5" ry="2" fill="#f5d090" opacity=".8"/>
 <circle cx="28" cy="16" r="11" fill="#f5d090"/><path d="M17 15 Q17 3 28 3 Q39 3 39 15" fill="#3a2010"/><path d="M23 14 Q25.5 12.5 27.5 14" fill="none" stroke="#7a5030" stroke-width="1.5" stroke-linecap="round"/>
 <path d="M28.5 14 Q30.5 12.5 33 14" fill="none" stroke="#7a5030" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="24.5" cy="17.5" rx="2" ry="2.2" fill="#2a1808"/>
 <ellipse cx="31.5" cy="17.5" rx="2" ry="2.2" fill="#2a1808"/>
 <circle cx="25.3" cy="16.7" r=".7" fill="white"/>
-<circle cx="32.3" cy="16.7" r=".7" fill="white"/><ellipse cx="28" cy="20" rx="1" ry=".65" fill="#d4a060" opacity=".5"/><path d="M23 23 Q28 27 33 23" fill="none" stroke="#b08060" stroke-width="72" stroke-linecap="round"/><path d="M17 10 Q17 1 28 1 Q39 1 39 10" fill="#c82010"/>
+<circle cx="32.3" cy="16.7" r=".7" fill="white"/><ellipse cx="28" cy="20" rx="1" ry=".65" fill="#d4a060" opacity=".5"/><path d="M23 23 Q28 27 33 23" fill="none" stroke="#b08060" stroke-width="2" stroke-linecap="round"/><path d="M17 10 Q17 1 28 1 Q39 1 39 10" fill="#c82010"/>
 <path d="M17 10 Q28 11.5 39 10 L39 12 Q28 13.5 17 12Z" fill="#a01808"/>
-<rect x="19" y="11" width="72" height="110" rx="1.5" fill="#a01808"/>
-<ellipse cx="24" cy="4" rx="4.5" ry="2.2" fill="white" opacity=".2" transform="rotate(-15 24 4)"/><rect x="20.5" y="6" width="6.5" height="110" rx="2" fill="#e8a020" opacity=".88"/>
-<rect x="29" y="6" width="6.5" height="110" rx="2" fill="#e8a020" opacity=".88"/>
+<rect x="19" y="11" width="18" height="3" rx="1.5" fill="#a01808"/>
+<ellipse cx="24" cy="4" rx="4.5" ry="2.2" fill="white" opacity=".2" transform="rotate(-15 24 4)"/><rect x="20.5" y="6" width="6.5" height="4" rx="2" fill="#e8a020" opacity=".88"/>
+<rect x="29" y="6" width="6.5" height="4" rx="2" fill="#e8a020" opacity=".88"/>
 <line x1="27" y1="8" x2="29" y2="8" stroke="#c08818" stroke-width="1.1"/><line x1="7" y1="62" x2="3" y2="86" stroke="#b0b8c0" stroke-width="2.2" stroke-linecap="round"/>
 <ellipse cx="3" cy="86" rx="2.2" ry="1" fill="#909898"/>
-<rect x="5.5" y="60" width="3.5" height="110" rx="1.8" fill="#d0d8e0"/></svg>
-        <div class="compat-chara-name">🏔 山岳探検家</div>
-      </div>
+<rect x="5.5" y="60" width="3.5" height="5" rx="1.8" fill="#d0d8e0"/></svg><div class="compat-chara-name">🏔 山岳探検家</div></div>
       <p class="compat-msg">「山岳探検家」が計画してくれた難峰ルートに便乗すれば、あなたのカメラが普段たどり着けない絶景を捉えられる。</p>
     </div>
   </div>
-
   <div class="card">
     <div class="card-title">シェアする</div>
     <div class="share-row">
@@ -181,16 +157,11 @@ footer{text-align:center;padding:20px 16px 40px;font-size:11px;color:#a09888;}
       <a href="https://line.me/R/msg/text/?気まぐれ山人型の登山者でした！%0aYamatch登山タイプ診断%0ahttps://tozan-navi.com/recommend/AHFL/" target="_blank" class="share-btn share-line">LINE</a>
     </div>
   </div>
-
   <div class="cta">
-    <p class="cta-text">あなたも診断してみませんか？</p>
+    <p style="font-size:13px;opacity:.8;margin-bottom:12px">あなたも診断してみませんか？</p>
     <a href="/recommend/" class="cta-btn">🧭 登山タイプ診断を始める</a>
   </div>
-
 </div>
-
-<footer>
-  <a href="/" style="color:#a09888">Yamatch</a> — あなたにぴったりの山を探そう
-</footer>
+<footer><a href="/" style="color:#a09888">Yamatch</a> — あなたにぴったりの山を探そう</footer>
 </body>
 </html>
