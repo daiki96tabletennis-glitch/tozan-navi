@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>登山タイプ診断 | あなたの山スタイルを16タイプで診断 - Yamatch</title>
+<meta name="description" content="山頂で何をする？雨が降ったら？9つの行動パターンの質問であなたの登山タイプを16種類から診断。おすすめの山も提案します。完全無料。">
+<meta property="og:title" content="登山タイプ診断 | 16タイプで診断 - Yamatch">
+<meta property="og:description" content="あなたは「孤高の登山家」？「山ピクニック派」？9問の行動診断で山スタイルを16タイプから判定。">
+<meta property="og:image" content="https://tozan-navi.com/ogp/recommend-top.png">
+<meta property="og:url" content="https://tozan-navi.com/recommend/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tozan-navi.com/ogp/recommend-top.png">
+<link rel="canonical" href="https://tozan-navi.com/recommend/">
+<link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="manifest" href="/manifest.json">
+<script>
+(function(){
+  const type = new URLSearchParams(location.search).get('type');
+  const ogpMap = {ACPS:'acps',ACPL:'acpl',ACFS:'acfs',ACFL:'acfl',AHPS:'ahps',AHPL:'ahpl',AHFS:'ahfs',AHFL:'ahfl',VCPS:'vcps',VCPL:'vcpl',VCFS:'vcfs',VCFL:'vcfl',VHPS:'vhps',VHPL:'vhpl',VHFS:'vhfs',VHFL:'vhfl'};
+  const names16 = {ACPS:'山岳探検家',ACPL:'孤高の登山家',ACFS:'ワイルドハイカー',ACFL:'バリエーター',AHPS:'展望ハンター',AHPL:'サイレントクライマー',AHFS:'お祭り登山家',AHFL:'フォトウォーカー',VCPS:'山岳研究家',VCPL:'深山の求道者',VCFS:'山旅人',VCFL:'隠れ登山家',VHPS:'山リゾーター',VHPL:'瞑想ハイカー',VHFS:'山ピクニック派',VHFL:'森の放浪者'};
+  if(type && ogpMap[type]){
+    const img = 'https://tozan-navi.com/ogp/type-'+ogpMap[type]+'.png';
+    document.querySelector('meta[property="og:image"]').content = img;
+    document.querySelector('meta[name="twitter:image"]').content = img;
+    if(names16[type]) document.querySelector('meta[property="og:title"]').content = '私は「'+names16[type]+'」でした！ - Yamatch登山タイプ診断';
+  }
+})();
+</script>
+
+<script>
+const MINI_SVGS = {
+  'ACPS': `<svg viewBox="0 0 44 56" fill="none"><path d="M16 17 Q16 8 22 8 Q28 8 28 17" fill="#e03020"/><rect x="15" y="16" width="16" height="3" rx="1.5" fill="#c02010"/><circle cx="22" cy="22" r="7" fill="#f0d080"/><circle cx="20" cy="21" r="1" fill="#3a2810"/><circle cx="24" cy="21" r="1" fill="#3a2810"/><path d="M20 28 Q20 33 20 38" stroke="#3a5a80" stroke-width="6" stroke-linecap="round" fill="none"/><rect x="24" y="28" width="7" height="9" rx="2" fill="#507090"/><line x1="20" y1="30" x2="10" y2="24" stroke="#f0d080" stroke-width="3" stroke-linecap="round"/><line x1="22" y1="30" x2="30" y2="25" stroke="#f0d080" stroke-width="3" stroke-linecap="round"/><path d="M30 25 Q35 30 32 37" fill="none" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="20" y1="38" x2="16" y2="48" stroke="#2a3848" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="38" x2="24" y2="48" stroke="#2a3848" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'ACPL': `<svg viewBox="0 0 44 56" fill="none"><path d="M14 17 Q14 8 22 8 Q30 8 30 17" fill="#203858"/><rect x="13" y="16" width="18" height="3" rx="1.5" fill="#1a3050"/><rect x="29" y="16" width="6" height="2" rx="1" fill="#1a3050"/><circle cx="22" cy="23" r="7" fill="#f0d080"/><circle cx="20" cy="22" r="1" fill="#3a2810"/><circle cx="24" cy="22" r="1" fill="#3a2810"/><path d="M20 30 Q20 35 20 40" stroke="#2a4060" stroke-width="7" stroke-linecap="round" fill="none"/><line x1="18" y1="33" x2="7" y2="41" stroke="#9090a8" stroke-width="2.5" stroke-linecap="round"/><line x1="24" y1="33" x2="35" y2="40" stroke="#9090a8" stroke-width="2.5" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#1a2838" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#1a2838" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'ACFS': `<svg viewBox="0 0 44 56" fill="none"><circle cx="22" cy="22" r="7" fill="#f0c880"/><path d="M15 19 Q17 12 22 12 Q27 12 29 19 L28 20 Q24 16 20 16 Q16 16 15 20Z" fill="#e03830"/><path d="M19 21 Q21 19 23 21" fill="none" stroke="#3a2010" stroke-width="1.5" stroke-linecap="round"/><path d="M18 24 Q22 28 26 24" fill="none" stroke="#c08060" stroke-width="1.5" stroke-linecap="round"/><path d="M20 29 Q20 34 20 40" stroke="#8a3020" stroke-width="7" stroke-linecap="round" fill="none"/><line x1="18" y1="31" x2="5" y2="25" stroke="#f0c880" stroke-width="3" stroke-linecap="round"/><line x1="24" y1="31" x2="37" y2="25" stroke="#f0c880" stroke-width="3" stroke-linecap="round"/><text x="2" y="23" font-size="7" fill="rgba(255,200,50,0.9)" font-weight="bold">YO!</text><line x1="20" y1="40" x2="14" y2="50" stroke="#2a2020" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="27" y2="49" stroke="#2a2020" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'ACFL': `<svg viewBox="0 0 44 56" fill="none"><ellipse cx="22" cy="15" rx="11" ry="3.5" fill="#1a3050"/><rect x="17" y="10" width="10" height="7" rx="2" fill="#2a4060"/><circle cx="22" cy="23" r="7" fill="#e8c070"/><circle cx="20" cy="22" r="1" fill="#2a1808"/><circle cx="24" cy="22" r="1" fill="#2a1808"/><path d="M19 26 Q22 28 25 26" fill="none" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/><path d="M20 30 Q20 35 20 40" stroke="#304860" stroke-width="7" stroke-linecap="round" fill="none"/><rect x="26" y="27" width="13" height="9" rx="2" fill="#f5f0e0" stroke="#c0b080" stroke-width="1"/><line x1="28" y1="30" x2="37" y2="30" stroke="#a08060" stroke-width="1"/><line x1="28" y1="33" x2="36" y2="33" stroke="#a08060" stroke-width="1"/><circle cx="7" cy="33" r="4" fill="#f0e0c0" stroke="#806040" stroke-width="1.5"/><line x1="7" y1="33" x2="7" y2="29" stroke="#e03020" stroke-width="1.5" stroke-linecap="round"/><line x1="11" y1="35" x2="14" y2="32" stroke="#604020" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="31" x2="26" y2="30" stroke="#e8c070" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#1a2838" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#1a2838" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'AHPS': `<svg viewBox="0 0 44 56" fill="none"><path d="M15 17 Q15 9 22 9 Q29 9 29 17" fill="#2a5090"/><rect x="14" y="16" width="16" height="3" rx="1.5" fill="#1a4080"/><circle cx="22" cy="23" r="7" fill="#f5c8a0"/><circle cx="20" cy="22" r="1" fill="#2a1808"/><path d="M24 21 Q26 22 27 21" fill="none" stroke="#2a1808" stroke-width="1.5" stroke-linecap="round"/><path d="M19 25 Q22 28 25 25" fill="none" stroke="#c08060" stroke-width="1.5" stroke-linecap="round"/><path d="M20 30 Q20 35 20 40" stroke="#5080c0" stroke-width="7" stroke-linecap="round" fill="none"/><rect x="24" y="26" width="16" height="11" rx="2" fill="#2a2828"/><circle cx="32" cy="31" r="4" fill="#1a1818" stroke="#606060" stroke-width="1"/><circle cx="32" cy="31" r="2.5" fill="#3050a0" opacity="0.7"/><rect x="26" y="23" width="5" height="3.5" rx="1" fill="#3a3838"/><line x1="20" y1="32" x2="24" y2="28" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="18" y1="33" x2="10" y2="37" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#1a2838" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#1a2838" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'AHPL': `<svg viewBox="0 0 44 56" fill="none"><ellipse cx="22" cy="15" rx="12" ry="4" fill="#5a4030"/><rect x="17" y="10" width="10" height="8" rx="2.5" fill="#6a5040"/><circle cx="22" cy="24" r="7" fill="#f0d080"/><rect x="16" y="21" width="7" height="5" rx="1.5" fill="#2a3040"/><circle cx="19" cy="24" r="3" fill="#1a2030" stroke="#405060" stroke-width="1"/><circle cx="19" cy="24" r="1.8" fill="#304060" opacity="0.7"/><rect x="23" y="21" width="7" height="5" rx="1.5" fill="#2a3040"/><circle cx="27" cy="24" r="3" fill="#1a2030" stroke="#405060" stroke-width="1"/><circle cx="27" cy="24" r="1.8" fill="#304060" opacity="0.7"/><path d="M20 31 Q20 36 20 42" stroke="#486848" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M20 31 Q20 36 20 42" stroke="#486848" stroke-width="7" stroke-linecap="round" fill="none"/><line x1="18" y1="33" x2="8" y2="29" stroke="#f0d080" stroke-width="3" stroke-linecap="round"/><line x1="24" y1="33" x2="34" y2="29" stroke="#f0d080" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="42" x2="16" y2="52" stroke="#2a3828" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="42" x2="24" y2="52" stroke="#2a3828" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'AHFS': `<svg viewBox="0 0 44 56" fill="none"><path d="M14 17 Q14 9 22 9 Q30 9 30 17" fill="#f08030"/><rect x="13" y="16" width="18" height="3" rx="1.5" fill="#e07020"/><rect x="29" y="16" width="6" height="2" rx="1" fill="#e07020"/><circle cx="22" cy="23" r="7" fill="#f5c8a0"/><path d="M18 21 Q20 19 22 21" fill="none" stroke="#3a2810" stroke-width="1.5" stroke-linecap="round"/><path d="M22 21 Q24 19 26 21" fill="none" stroke="#3a2810" stroke-width="1.5" stroke-linecap="round"/><path d="M18 25 Q22 29 26 25" fill="none" stroke="#c08060" stroke-width="1.8" stroke-linecap="round"/><path d="M20 30 Q20 35 20 40" stroke="#50a070" stroke-width="8" stroke-linecap="round" fill="none"/><line x1="18" y1="32" x2="5" y2="25" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="24" y1="32" x2="30" y2="37" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><text x="2" y="23" font-size="7" fill="rgba(255,200,50,0.9)" font-weight="bold">YO!</text><line x1="20" y1="40" x2="14" y2="50" stroke="#2a4030" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="27" y2="49" stroke="#2a4030" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'AHFL': `<svg viewBox="0 0 44 56" fill="none"><circle cx="22" cy="11" r="4.5" fill="#2a1810"/><circle cx="17" cy="13" r="4" fill="#2a1810"/><circle cx="27" cy="13" r="4" fill="#2a1810"/><circle cx="22" cy="23" r="7" fill="#f5c0a0"/><circle cx="20" cy="22" r="1" fill="#2a1808"/><circle cx="24" cy="22" r="1" fill="#2a1808"/><path d="M19 26 Q22 29 25 26" fill="none" stroke="#c08060" stroke-width="1.5" stroke-linecap="round"/><path d="M20 30 Q20 35 20 40" stroke="#d07090" stroke-width="7" stroke-linecap="round" fill="none"/><rect x="27" y="25" width="10" height="14" rx="2" fill="#1a1828"/><rect x="28" y="26" width="8" height="10" rx="1.5" fill="#3050a0" opacity="0.8"/><line x1="20" y1="32" x2="27" y2="28" stroke="#f5c0a0" stroke-width="3" stroke-linecap="round"/><line x1="18" y1="33" x2="10" y2="38" stroke="#f5c0a0" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#303850" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#303850" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'VCPS': `<svg viewBox="0 0 44 56" fill="none"><ellipse cx="22" cy="15" rx="11" ry="3.5" fill="#4a3020"/><rect x="17" y="10" width="10" height="7" rx="2" fill="#5a4030"/><circle cx="22" cy="23" r="7" fill="#f0d080"/><rect x="15" y="21" width="6" height="4.5" rx="1.5" fill="none" stroke="#604820" stroke-width="1.5"/><rect x="23" y="21" width="6" height="4.5" rx="1.5" fill="none" stroke="#604820" stroke-width="1.5"/><line x1="21" y1="23.5" x2="23" y2="23.5" stroke="#604820" stroke-width="1.5"/><circle cx="18" cy="23.5" r="1" fill="#3a2810"/><circle cx="26" cy="23.5" r="1" fill="#3a2810"/><path d="M20 30 Q20 35 20 40" stroke="#5a7040" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="8" cy="33" r="6" fill="none" stroke="#806040" stroke-width="1.8"/><circle cx="8" cy="33" r="4" fill="rgba(200,230,255,0.4)" stroke="#a08060" stroke-width="1"/><line x1="13" y1="38" x2="16" y2="43" stroke="#604020" stroke-width="2.5" stroke-linecap="round"/><rect x="27" y="27" width="11" height="14" rx="2" fill="#8a4030"/><line x1="32" y1="27" x2="32" y2="41" stroke="#6a3020" stroke-width="1"/><line x1="18" y1="32" x2="12" y2="32" stroke="#f0d080" stroke-width="3" stroke-linecap="round"/><line x1="24" y1="32" x2="27" y2="30" stroke="#f0d080" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#2a3828" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#2a3828" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'VCPL': `<svg viewBox="0 0 44 56" fill="none"><path d="M14 18 Q14 9 22 9 Q30 9 30 18 Q30 12 22 11 Q14 12 14 18Z" fill="#181820"/><rect x="13" y="17" width="18" height="3.5" rx="0" fill="#101018"/><circle cx="22" cy="24" r="7" fill="#d8b870"/><line x1="19" y1="22" x2="22" y2="22" stroke="#3a2810" stroke-width="1.5" stroke-linecap="round"/><line x1="22" y1="22" x2="25" y2="22" stroke="#3a2810" stroke-width="1.5" stroke-linecap="round"/><line x1="19" y1="26" x2="25" y2="26" stroke="#8a6040" stroke-width="1.2" stroke-linecap="round"/><path d="M21 31 Q20 37 19 44" stroke="#1a1820" stroke-width="8" stroke-linecap="round" fill="none"/><path d="M13 35 Q10 42 13 48 Q16 52 20 51" fill="none" stroke="#8a4020" stroke-width="2"/><circle cx="10" cy="38" r="1.8" fill="#c06030"/><circle cx="10" cy="43" r="1.8" fill="#c06030"/><circle cx="13" cy="48" r="1.8" fill="#c06030"/><line x1="30" y1="30" x2="34" y2="52" stroke="#7a5030" stroke-width="3" stroke-linecap="round"/><line x1="24" y1="33" x2="30" y2="31" stroke="#d8b870" stroke-width="3.5" stroke-linecap="round"/><line x1="19" y1="44" x2="16" y2="52" stroke="#101018" stroke-width="3" stroke-linecap="round"/><line x1="19" y1="44" x2="23" y2="52" stroke="#101018" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'VCFS': `<svg viewBox="0 0 44 56" fill="none"><circle cx="13" cy="17" r="6" fill="#f5c8a0"/><path d="M7 16 Q7 10 13 10 Q19 10 19 16" fill="#4a3020"/><circle cx="11" cy="16" r="1" fill="#2a1808"/><circle cx="15" cy="16" r="1" fill="#2a1808"/><path d="M10 19 Q13 22 16 19" fill="none" stroke="#c08060" stroke-width="1.2" stroke-linecap="round"/><path d="M12 23 Q12 28 11 34" stroke="#5080c0" stroke-width="6" stroke-linecap="round" fill="none"/><line x1="11" y1="25" x2="18" y2="23" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="10" y1="26" x2="4" y2="31" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="11" y1="34" x2="8" y2="42" stroke="#2a3848" stroke-width="3" stroke-linecap="round"/><line x1="11" y1="34" x2="14" y2="42" stroke="#2a3848" stroke-width="3" stroke-linecap="round"/><circle cx="31" cy="17" r="6" fill="#f0b090"/><path d="M25 16 Q25 10 31 10 Q37 10 37 16" fill="#2a1810"/><circle cx="29" cy="16" r="1" fill="#2a1808"/><circle cx="33" cy="16" r="1" fill="#2a1808"/><path d="M28 19 Q31 22 34 19" fill="none" stroke="#c08060" stroke-width="1.2" stroke-linecap="round"/><path d="M31 23 Q31 28 31 34" stroke="#c05060" stroke-width="6" stroke-linecap="round" fill="none"/><line x1="31" y1="25" x2="24" y2="23" stroke="#f0b090" stroke-width="3" stroke-linecap="round"/><line x1="32" y1="26" x2="38" y2="31" stroke="#f0b090" stroke-width="3" stroke-linecap="round"/><line x1="31" y1="34" x2="28" y2="42" stroke="#2a3848" stroke-width="3" stroke-linecap="round"/><line x1="31" y1="34" x2="34" y2="42" stroke="#2a3848" stroke-width="3" stroke-linecap="round"/><line x1="19" y1="23" x2="25" y2="23" stroke="#f0b090" stroke-width="3" stroke-linecap="round"/><ellipse cx="22" cy="10" rx="6" ry="5" fill="rgba(255,255,255,0.2)"/><text x="22" y="13" text-anchor="middle" font-size="6" fill="white">♪</text></svg>`,
+  'VCFL': `<svg viewBox="0 0 44 56" fill="none"><ellipse cx="22" cy="15" rx="11" ry="3.5" fill="#486040"/><rect x="17" y="10" width="10" height="7" rx="2" fill="#587050"/><circle cx="22" cy="23" r="7" fill="#e8c060"/><circle cx="20" cy="22" r="1" fill="#2a1808"/><circle cx="24" cy="22" r="1" fill="#2a1808"/><path d="M20 26 Q22 28 24 26" fill="none" stroke="#a08040" stroke-width="1.2" stroke-linecap="round"/><path d="M20 30 Q20 35 20 40" stroke="#486848" stroke-width="7" stroke-linecap="round" fill="none"/><rect x="25" y="26" width="13" height="18" rx="2.5" fill="#608060"/><rect x="27" y="28" width="9" height="7" rx="1.5" fill="#507050"/><rect x="27" y="36" width="4" height="5" rx="1" fill="#405840"/><rect x="33" y="36" width="4" height="5" rx="1" fill="#405840"/><line x1="18" y1="33" x2="8" y2="37" stroke="#e8c060" stroke-width="3" stroke-linecap="round"/><line x1="8" y1="37" x2="5" y2="48" stroke="#a09060" stroke-width="2.5" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#2a3828" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#2a3828" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'VHPS': `<svg viewBox="0 0 44 56" fill="none"><circle cx="22" cy="22" r="7" fill="#f5c0a0"/><path d="M15 20 Q16 12 22 12 Q28 12 29 20 Q28 15 22 14 Q16 15 15 20Z" fill="#2a1810"/><rect x="15" y="20" width="14" height="3" rx="1.5" fill="#1a1010"/><rect x="15" y="20" width="7" height="4.5" rx="1.5" fill="#1a1818" opacity="0.85"/><rect x="23" y="20" width="7" height="4.5" rx="1.5" fill="#1a1818" opacity="0.85"/><path d="M19 26 Q22 29 25 26" fill="none" stroke="#c08060" stroke-width="1.5" stroke-linecap="round"/><path d="M20 29 Q20 34 20 40" stroke="#6890c0" stroke-width="7" stroke-linecap="round" fill="none"/><rect x="4" y="24" width="10" height="14" rx="2" fill="#1a1828"/><rect x="5" y="25" width="8" height="10" rx="1.5" fill="#3060b0" opacity="0.8"/><rect x="8" y="35" width="2" height="2" rx="0.5" fill="#404048"/><line x1="18" y1="32" x2="10" y2="28" stroke="#f5c0a0" stroke-width="3" stroke-linecap="round"/><line x1="24" y1="32" x2="30" y2="37" stroke="#f5c0a0" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#303848" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#303848" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'VHPL': `<svg viewBox="0 0 44 56" fill="none"><ellipse cx="22" cy="15" rx="12" ry="4" fill="#8a6040"/><rect x="17" y="10" width="10" height="8" rx="2.5" fill="#9a7050"/><circle cx="22" cy="24" r="7" fill="#f0d080"/><path d="M18 22 Q20 20 22 22" fill="none" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><path d="M22 22 Q24 20 26 22" fill="none" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><path d="M19 27 Q22 30 25 27" fill="none" stroke="#a08060" stroke-width="1.5" stroke-linecap="round"/><path d="M20 31 Q20 36 20 42" stroke="#6a9060" stroke-width="8" stroke-linecap="round" fill="none"/><line x1="18" y1="33" x2="5" y2="32" stroke="#f0d080" stroke-width="3.5" stroke-linecap="round"/><line x1="24" y1="33" x2="37" y2="32" stroke="#f0d080" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="5" cy="32" rx="4" ry="3" fill="#f0d080"/><ellipse cx="37" cy="32" rx="4" ry="3" fill="#f0d080"/><line x1="20" y1="42" x2="16" y2="52" stroke="#3a4830" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="42" x2="24" y2="52" stroke="#3a4830" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'VHFS': `<svg viewBox="0 0 44 56" fill="none"><circle cx="12" cy="15" r="6" fill="#f5c8a0"/><path d="M6 14 Q6 8 12 8 Q18 8 18 14" fill="#f08030"/><circle cx="10" cy="14" r="1" fill="#2a1808"/><circle cx="14" cy="14" r="1" fill="#2a1808"/><path d="M9 17 Q12 20 15 17" fill="none" stroke="#c08060" stroke-width="1.2" stroke-linecap="round"/><path d="M11 21 Q10 26 9 32" stroke="#50a070" stroke-width="6" stroke-linecap="round" fill="none"/><circle cx="32" cy="15" r="6" fill="#f0b090"/><path d="M26 14 Q26 8 32 8 Q38 8 38 14" fill="#2a1810"/><circle cx="30" cy="14" r="1" fill="#2a1808"/><circle cx="34" cy="14" r="1" fill="#2a1808"/><path d="M29 17 Q32 20 35 17" fill="none" stroke="#c08060" stroke-width="1.2" stroke-linecap="round"/><path d="M32 21 Q32 26 32 32" stroke="#c05060" stroke-width="6" stroke-linecap="round" fill="none"/><rect x="14" y="23" width="16" height="11" rx="3" fill="#f5f0e0" stroke="#d0c080" stroke-width="1.5"/><circle cx="20" cy="29" r="2.5" fill="rgba(255,150,100,0.6)"/><circle cx="28" cy="29" r="2.5" fill="rgba(100,200,100,0.6)"/><polygon points="22,34 18,42 26,42" fill="white" stroke="#c0b080" stroke-width="1.2"/><line x1="11" y1="24" x2="15" y2="27" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="9" y1="25" x2="5" y2="32" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="32" y1="24" x2="29" y2="27" stroke="#f0b090" stroke-width="3" stroke-linecap="round"/><line x1="34" y1="25" x2="38" y2="30" stroke="#f0b090" stroke-width="3" stroke-linecap="round"/></svg>`,
+  'VHFL': `<svg viewBox="0 0 44 56" fill="none"><rect x="28" y="7" width="5" height="38" rx="2.5" fill="#7a5030"/><ellipse cx="30" cy="8" rx="10" ry="11" fill="#3a6030" opacity="0.6"/><ellipse cx="24" cy="11" rx="8" ry="9" fill="#4a7040" opacity="0.5"/><circle cx="17" cy="22" r="7" fill="#f5c8a0"/><ellipse cx="17" cy="16" rx="10" ry="3.5" fill="#8a6040"/><rect x="13" y="12" width="8" height="7" rx="2.5" fill="#9a7050"/><path d="M13 21 Q15 20 17 21" fill="none" stroke="#3a2810" stroke-width="1.8" stroke-linecap="round"/><path d="M17 21 Q19 20 21 21" fill="none" stroke="#3a2810" stroke-width="1.8" stroke-linecap="round"/><path d="M14 25 Q17 28 20 25" fill="none" stroke="#a08060" stroke-width="1.5" stroke-linecap="round"/><path d="M15 29 Q18 33 22 36" stroke="#50a070" stroke-width="7" stroke-linecap="round" fill="none"/><line x1="14" y1="31" x2="4" y2="36" stroke="#f5c8a0" stroke-width="3.5" stroke-linecap="round"/><circle cx="3" cy="36" r="4" fill="rgba(255,160,190,0.75)"/><circle cx="3" cy="36" r="2" fill="rgba(255,230,80,0.95)"/><line x1="0" y1="35" x2="3" y2="36" stroke="rgba(255,130,170,0.9)" stroke-width="1.5"/><line x1="3" y1="32" x2="3" y2="36" stroke="rgba(255,130,170,0.9)" stroke-width="1.5"/><line x1="6" y1="35" x2="3" y2="36" stroke="rgba(255,130,170,0.9)" stroke-width="1.5"/><line x1="20" y1="30" x2="26" y2="28" stroke="#f5c8a0" stroke-width="3.5" stroke-linecap="round"/><line x1="22" y1="36" x2="18" y2="46" stroke="#2a4030" stroke-width="3.5" stroke-linecap="round"/><line x1="22" y1="36" x2="27" y2="45" stroke="#2a4030" stroke-width="3.5" stroke-linecap="round"/></svg>`
+};
+const PERSON_SVGS = {
+  'ACPS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><path d="M30 34 Q30 18 45 18 Q60 18 60 34" fill="#e03020"/><rect x="29" y="33" width="32" height="5" rx="2.5" fill="#c02010"/><circle cx="45" cy="44" r="12" fill="#f0d080"/><circle cx="41" cy="43" r="1.8" fill="#3a2810"/><circle cx="49" cy="43" r="1.8" fill="#3a2810"/><path d="M38 56 Q36 66 35 78" stroke="#3a5a80" stroke-width="11" stroke-linecap="round" fill="none"/><rect x="48" y="55" width="12" height="18" rx="4" fill="#507090"/><line x1="38" y1="60" x2="20" y2="46" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><line x1="44" y1="59" x2="62" y2="48" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><path d="M62 48 Q72 60 66 75" fill="none" stroke="#f0c040" stroke-width="3" stroke-linecap="round"/><line x1="35" y1="78" x2="28" y2="96" stroke="#2a3848" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="78" x2="44" y2="96" stroke="#2a3848" stroke-width="6" stroke-linecap="round"/><rect x="22" y="93" width="14" height="7" rx="3" fill="#1a2838"/><rect x="38" y="93" width="14" height="7" rx="3" fill="#1a2838"/></svg>`,
+  'ACPL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><path d="M29 34 Q29 18 45 18 Q61 18 61 34" fill="#203858"/><rect x="28" y="32" width="34" height="5" rx="2.5" fill="#1a3050"/><rect x="58" y="32" width="12" height="3" rx="1.5" fill="#1a3050"/><circle cx="45" cy="44" r="12" fill="#f0d080"/><circle cx="41" cy="43" r="1.8" fill="#3a2810"/><circle cx="49" cy="43" r="1.8" fill="#3a2810"/><line x1="41" y1="47" x2="49" y2="47" stroke="#8a6040" stroke-width="1.5" stroke-linecap="round"/><path d="M42 56 Q40 66 40 78" stroke="#2a4060" stroke-width="12" stroke-linecap="round" fill="none"/><line x1="36" y1="62" x2="14" y2="82" stroke="#9090a8" stroke-width="4" stroke-linecap="round"/><line x1="50" y1="62" x2="70" y2="80" stroke="#9090a8" stroke-width="4" stroke-linecap="round"/><line x1="14" y1="82" x2="8" y2="92" stroke="#7080a0" stroke-width="3" stroke-linecap="round"/><line x1="70" y1="80" x2="76" y2="90" stroke="#7080a0" stroke-width="3" stroke-linecap="round"/><line x1="40" y1="78" x2="32" y2="96" stroke="#1a2838" stroke-width="6" stroke-linecap="round"/><line x1="40" y1="78" x2="48" y2="96" stroke="#1a2838" stroke-width="6" stroke-linecap="round"/><rect x="26" y="93" width="14" height="7" rx="3" fill="#1a2838"/><rect x="42" y="93" width="14" height="7" rx="3" fill="#1a2838"/></svg>`,
+  'ACFS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><circle cx="45" cy="42" r="12" fill="#f0c880"/><path d="M32 38 Q34 26 45 26 Q56 26 58 38 L56 40 Q48 33 42 33 Q36 33 34 40Z" fill="#e03830"/><path d="M34 38 Q36 36 38 38" fill="none" stroke="#c02818" stroke-width="1.5"/><path d="M37 50 Q41 42 45 40 Q49 42 53 50" fill="none" stroke="#c08060" stroke-width="2" stroke-linecap="round"/><circle cx="41" cy="41" r="1.8" fill="rgba(0,0,0,0)"/><path d="M39 40 Q41 38 43 40" fill="none" stroke="#3a2010" stroke-width="2" stroke-linecap="round"/><path d="M47 40 Q49 38 51 40" fill="none" stroke="#3a2010" stroke-width="2" stroke-linecap="round"/><path d="M42 54 Q42 64 42 76" stroke="#8a3020" stroke-width="12" stroke-linecap="round" fill="none"/><line x1="36" y1="58" x2="10" y2="48" stroke="#f0c880" stroke-width="6" stroke-linecap="round"/><line x1="48" y1="58" x2="74" y2="48" stroke="#f0c880" stroke-width="6" stroke-linecap="round"/><text x="6" y="44" font-size="10" fill="rgba(255,200,50,0.95)" font-weight="bold">YO!</text><line x1="42" y1="76" x2="30" y2="96" stroke="#2a2020" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="54" y2="94" stroke="#2a2020" stroke-width="6" stroke-linecap="round"/><rect x="24" y="93" width="14" height="7" rx="3" fill="#1a1818"/><rect x="48" y="91" width="14" height="7" rx="3" fill="#1a1818"/></svg>`,
+  'ACFL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><ellipse cx="45" cy="30" rx="20" ry="6" fill="#1a3050"/><rect x="35" y="20" width="20" height="14" rx="3" fill="#2a4060"/><circle cx="45" cy="44" r="12" fill="#e8c070"/><circle cx="41" cy="43" r="1.8" fill="#2a1808"/><circle cx="49" cy="43" r="1.8" fill="#2a1808"/><path d="M40 49 Q45 53 50 49" fill="none" stroke="#8a6020" stroke-width="2" stroke-linecap="round"/><path d="M36 48 Q36 46 38 46 Q40 46 40 49" fill="#9a7030" opacity="0.6"/><path d="M42 56 Q42 66 42 76" stroke="#304860" stroke-width="12" stroke-linecap="round" fill="none"/><rect x="50" y="52" width="24" height="18" rx="3" fill="#f5f0e0" stroke="#c0b080" stroke-width="1.5"/><line x1="54" y1="59" x2="70" y2="59" stroke="#a08060" stroke-width="1.5"/><line x1="54" y1="63" x2="68" y2="63" stroke="#a08060" stroke-width="1.2"/><line x1="60" y1="52" x2="60" y2="70" stroke="#a08060" stroke-width="1"/><line x1="66" y1="52" x2="66" y2="70" stroke="#a08060" stroke-width="1"/><line x1="36" y1="60" x2="50" y2="58" stroke="#e8c070" stroke-width="5" stroke-linecap="round"/><circle cx="18" cy="64" r="8" fill="#f0e0c0" stroke="#806040" stroke-width="2"/><line x1="18" y1="64" x2="18" y2="57" stroke="#e03020" stroke-width="2" stroke-linecap="round"/><line x1="15" y1="64" x2="23" y2="67" stroke="#1a2838" stroke-width="1.5"/><line x1="22" y1="60" x2="14" y2="62" stroke="#1a2838" stroke-width="1.5"/><line x1="32" y1="62" x2="20" y2="64" stroke="#e8c070" stroke-width="5" stroke-linecap="round"/><line x1="42" y1="76" x2="36" y2="96" stroke="#1a2838" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="48" y2="96" stroke="#1a2838" stroke-width="6" stroke-linecap="round"/></svg>`,
+  'AHPS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><path d="M30 34 Q30 20 45 20 Q60 20 60 34" fill="#2a5090"/><rect x="29" y="32" width="32" height="5" rx="2.5" fill="#1a4080"/><circle cx="45" cy="44" r="12" fill="#f5c8a0"/><circle cx="41" cy="43" r="1.8" fill="#2a1808"/><path d="M47 42 Q50 43 52 42" fill="none" stroke="#2a1808" stroke-width="2" stroke-linecap="round"/><path d="M40 49 Q45 53 50 49" fill="none" stroke="#c08060" stroke-width="2" stroke-linecap="round"/><path d="M42 56 Q42 66 42 76" stroke="#5080c0" stroke-width="12" stroke-linecap="round" fill="none"/><rect x="48" y="50" width="30" height="20" rx="4" fill="#2a2828"/><circle cx="63" cy="60" r="7" fill="#1a1818" stroke="#606060" stroke-width="1.5"/><circle cx="63" cy="60" r="4.5" fill="#3050a0" opacity="0.7"/><circle cx="63" cy="60" r="2" fill="#506090" opacity="0.5"/><rect x="52" y="45" width="9" height="6" rx="1.5" fill="#3a3838"/><line x1="78" y1="52" x2="84" y2="48" stroke="rgba(255,255,80,0.8)" stroke-width="2.5" stroke-linecap="round"/><line x1="42" y1="60" x2="48" y2="54" stroke="#f5c8a0" stroke-width="6" stroke-linecap="round"/><line x1="38" y1="62" x2="22" y2="70" stroke="#f5c8a0" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="36" y2="96" stroke="#1a2838" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="48" y2="96" stroke="#1a2838" stroke-width="6" stroke-linecap="round"/><rect x="30" y="93" width="14" height="7" rx="3" fill="#1a2838"/><rect x="42" y="93" width="14" height="7" rx="3" fill="#1a2838"/></svg>`,
+  'AHPL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><ellipse cx="45" cy="30" rx="22" ry="7" fill="#5a4030"/><rect x="35" y="20" width="20" height="14" rx="4" fill="#6a5040"/><circle cx="45" cy="46" r="12" fill="#f0d080"/><rect x="32" y="41" width="13" height="9" rx="3" fill="#2a3040"/><circle cx="38" cy="46" r="5" fill="#1a2030" stroke="#405060" stroke-width="1.5"/><circle cx="38" cy="46" r="3" fill="#304060" opacity="0.7"/><rect x="47" y="41" width="13" height="9" rx="3" fill="#2a3040"/><circle cx="53" cy="46" r="5" fill="#1a2030" stroke="#405060" stroke-width="1.5"/><circle cx="53" cy="46" r="3" fill="#304060" opacity="0.7"/><line x1="45" y1="43" x2="47" y2="43" stroke="#2a3040" stroke-width="2"/><path d="M42 58 Q42 68 42 78" stroke="#486848" stroke-width="12" stroke-linecap="round" fill="none"/><line x1="38" y1="62" x2="24" y2="55" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><line x1="48" y1="62" x2="62" y2="55" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="78" x2="35" y2="97" stroke="#2a3828" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="78" x2="50" y2="97" stroke="#2a3828" stroke-width="6" stroke-linecap="round"/><rect x="29" y="94" width="14" height="7" rx="3" fill="#1a2818"/><rect x="44" y="94" width="14" height="7" rx="3" fill="#1a2818"/></svg>`,
+  'AHFS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><path d="M30 34 Q30 20 45 20 Q60 20 60 34" fill="#f08030"/><rect x="29" y="32" width="32" height="4" rx="2" fill="#e07020"/><rect x="58" y="32" width="12" height="3" rx="1.5" fill="#e07020"/><circle cx="45" cy="44" r="12" fill="#f5c8a0"/><path d="M39 42 Q41 40 43 42" fill="none" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><path d="M47 42 Q49 40 51 42" fill="none" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><path d="M38 49 Q45 55 52 49" fill="none" stroke="#c08060" stroke-width="2.5" stroke-linecap="round"/><path d="M42 56 Q42 66 42 76" stroke="#50a070" stroke-width="14" stroke-linecap="round" fill="none"/><line x1="36" y1="60" x2="10" y2="44" stroke="#f5c8a0" stroke-width="6" stroke-linecap="round"/><line x1="48" y1="60" x2="60" y2="70" stroke="#f5c8a0" stroke-width="6" stroke-linecap="round"/><text x="4" y="42" font-size="12" fill="rgba(255,200,50,0.95)" font-weight="bold">YO!</text><line x1="42" y1="76" x2="30" y2="94" stroke="#2a4030" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="56" y2="92" stroke="#2a4030" stroke-width="6" stroke-linecap="round"/><rect x="24" y="91" width="14" height="7" rx="3" fill="#1a2820"/><rect x="50" y="89" width="14" height="7" rx="3" fill="#1a2820"/></svg>`,
+  'AHFL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><circle cx="45" cy="22" r="8" fill="#2a1810"/><circle cx="36" cy="24" r="7" fill="#2a1810"/><circle cx="54" cy="24" r="7" fill="#2a1810"/><circle cx="45" cy="44" r="12" fill="#f5c0a0"/><circle cx="41" cy="43" r="1.8" fill="#2a1808"/><circle cx="49" cy="43" r="1.8" fill="#2a1808"/><path d="M40 49 Q45 53 50 49" fill="none" stroke="#c08060" stroke-width="2" stroke-linecap="round"/><path d="M42 56 Q42 66 42 76" stroke="#d07090" stroke-width="12" stroke-linecap="round" fill="none"/><rect x="52" y="48" width="16" height="24" rx="3" fill="#1a1828"/><rect x="53" y="49" width="14" height="18" rx="2" fill="#3050a0" opacity="0.8"/><rect x="58" y="68" width="4" height="3" rx="1" fill="#404048"/><line x1="42" y1="58" x2="52" y2="52" stroke="#f5c0a0" stroke-width="6" stroke-linecap="round"/><line x1="38" y1="62" x2="22" y2="72" stroke="#f5c0a0" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="35" y2="96" stroke="#303850" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="50" y2="96" stroke="#303850" stroke-width="6" stroke-linecap="round"/></svg>`,
+  'VCPS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><ellipse cx="45" cy="30" rx="22" ry="6" fill="#4a3020"/><rect x="33" y="20" width="24" height="14" rx="3" fill="#5a4030"/><circle cx="45" cy="44" r="12" fill="#f0d080"/><rect x="32" y="41" width="11" height="8" rx="2" fill="none" stroke="#604820" stroke-width="2"/><rect x="47" y="41" width="11" height="8" rx="2" fill="none" stroke="#604820" stroke-width="2"/><line x1="43" y1="45" x2="47" y2="45" stroke="#604820" stroke-width="2"/><line x1="32" y1="45" x2="26" y2="44" stroke="#604820" stroke-width="2"/><line x1="58" y1="45" x2="64" y2="44" stroke="#604820" stroke-width="2"/><circle cx="37" cy="45" r="1.8" fill="#3a2810"/><circle cx="52" cy="45" r="1.8" fill="#3a2810"/><path d="M42 56 Q42 66 42 76" stroke="#5a7040" stroke-width="12" stroke-linecap="round" fill="none"/><circle cx="18" cy="62" r="11" fill="none" stroke="#806040" stroke-width="2.5"/><circle cx="18" cy="62" r="7" fill="rgba(200,230,255,0.4)" stroke="#a08060" stroke-width="1.5"/><line x1="26" y1="70" x2="32" y2="78" stroke="#604020" stroke-width="3.5" stroke-linecap="round"/><rect x="52" y="52" width="20" height="26" rx="3" fill="#8a4030"/><line x1="62" y1="52" x2="62" y2="78" stroke="#6a3020" stroke-width="1.5"/><line x1="54" y1="60" x2="70" y2="60" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="54" y1="65" x2="70" y2="65" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="36" y1="60" x2="22" y2="60" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><line x1="48" y1="60" x2="52" y2="58" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="36" y2="96" stroke="#2a3828" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="48" y2="96" stroke="#2a3828" stroke-width="6" stroke-linecap="round"/></svg>`,
+  'VCPL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><path d="M28 36 Q28 18 45 18 Q62 18 62 36 Q62 28 45 24 Q28 28 28 36Z" fill="#181820"/><rect x="27" y="34" width="36" height="6" rx="0" fill="#101018"/><circle cx="45" cy="46" r="12" fill="#d8b870"/><line x1="40" y1="44" x2="44" y2="44" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><line x1="46" y1="44" x2="50" y2="44" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><line x1="40" y1="49" x2="50" y2="49" stroke="#8a6040" stroke-width="1.8" stroke-linecap="round"/><path d="M44 58 Q42 68 40 80" stroke="#1a1820" stroke-width="14" stroke-linecap="round" fill="none"/><path d="M26 64 Q22 76 28 86 Q34 96 44 93" fill="none" stroke="#8a4020" stroke-width="3"/><circle cx="22" cy="68" r="3" fill="#c06030"/><circle cx="22" cy="76" r="3" fill="#c06030"/><circle cx="26" cy="84" r="3" fill="#c06030"/><circle cx="34" cy="90" r="3" fill="#c06030"/><line x1="60" y1="56" x2="68" y2="100" stroke="#7a5030" stroke-width="4" stroke-linecap="round"/><line x1="48" y1="62" x2="60" y2="58" stroke="#d8b870" stroke-width="6" stroke-linecap="round"/><line x1="40" y1="80" x2="34" y2="100" stroke="#101018" stroke-width="6" stroke-linecap="round"/><line x1="40" y1="80" x2="48" y2="98" stroke="#101018" stroke-width="6" stroke-linecap="round"/></svg>`,
+  'VCFS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><circle cx="26" cy="34" r="10" fill="#f5c8a0"/><path d="M16 33 Q16 22 26 22 Q36 22 36 33" fill="#4a3020"/><circle cx="23" cy="33" r="1.5" fill="#2a1808"/><circle cx="29" cy="33" r="1.5" fill="#2a1808"/><path d="M22 37 Q26 41 30 37" fill="none" stroke="#c08060" stroke-width="1.8" stroke-linecap="round"/><path d="M24 45 Q23 55 22 66" stroke="#5080c0" stroke-width="10" stroke-linecap="round" fill="none"/><line x1="22" y1="50" x2="36" y2="46" stroke="#f5c8a0" stroke-width="5" stroke-linecap="round"/><line x1="20" y1="52" x2="8" y2="62" stroke="#f5c8a0" stroke-width="5" stroke-linecap="round"/><line x1="22" y1="66" x2="16" y2="82" stroke="#2a3848" stroke-width="5" stroke-linecap="round"/><line x1="22" y1="66" x2="28" y2="82" stroke="#2a3848" stroke-width="5" stroke-linecap="round"/><circle cx="64" cy="34" r="10" fill="#f0b090"/><path d="M54 33 Q54 22 64 22 Q74 22 74 33" fill="#2a1810"/><circle cx="61" cy="33" r="1.5" fill="#2a1808"/><circle cx="67" cy="33" r="1.5" fill="#2a1808"/><path d="M60 37 Q64 41 68 37" fill="none" stroke="#c08060" stroke-width="1.8" stroke-linecap="round"/><path d="M64 45 Q64 55 64 66" stroke="#c05060" stroke-width="10" stroke-linecap="round" fill="none"/><line x1="64" y1="50" x2="50" y2="46" stroke="#f0b090" stroke-width="5" stroke-linecap="round"/><line x1="66" y1="52" x2="78" y2="62" stroke="#f0b090" stroke-width="5" stroke-linecap="round"/><line x1="64" y1="66" x2="58" y2="82" stroke="#2a3848" stroke-width="5" stroke-linecap="round"/><line x1="64" y1="66" x2="70" y2="82" stroke="#2a3848" stroke-width="5" stroke-linecap="round"/><line x1="36" y1="46" x2="50" y2="46" stroke="#f0b090" stroke-width="5" stroke-linecap="round"/><ellipse cx="45" cy="22" rx="10" ry="8" fill="rgba(255,255,255,0.2)"/><text x="45" y="26" text-anchor="middle" font-size="9" fill="white">♪</text></svg>`,
+  'VCFL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><ellipse cx="45" cy="30" rx="20" ry="6" fill="#486040"/><rect x="35" y="20" width="20" height="13" rx="3" fill="#587050"/><circle cx="45" cy="44" r="12" fill="#e8c060"/><circle cx="41" cy="43" r="1.8" fill="#2a1808"/><circle cx="49" cy="43" r="1.8" fill="#2a1808"/><path d="M42 49 Q45 51 48 49" fill="none" stroke="#a08040" stroke-width="1.5" stroke-linecap="round"/><path d="M42 56 Q42 66 42 76" stroke="#486848" stroke-width="12" stroke-linecap="round" fill="none"/><rect x="48" y="52" width="22" height="30" rx="4" fill="#608060"/><rect x="50" y="54" width="18" height="12" rx="2" fill="#507050"/><rect x="50" y="68" width="8" height="8" rx="1.5" fill="#405840"/><rect x="60" y="68" width="8" height="8" rx="1.5" fill="#405840"/><line x1="48" y1="54" x2="42" y2="57" stroke="#405840" stroke-width="2"/><line x1="48" y1="66" x2="42" y2="68" stroke="#405840" stroke-width="2"/><line x1="36" y1="62" x2="16" y2="72" stroke="#e8c060" stroke-width="6" stroke-linecap="round"/><line x1="16" y1="72" x2="10" y2="94" stroke="#a09060" stroke-width="3.5" stroke-linecap="round"/><line x1="42" y1="76" x2="36" y2="96" stroke="#2a3828" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="48" y2="96" stroke="#2a3828" stroke-width="6" stroke-linecap="round"/></svg>`,
+  'VHPS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><circle cx="45" cy="42" r="12" fill="#f5c0a0"/><path d="M32 38 Q34 26 45 26 Q56 26 58 38 Q56 30 45 28 Q34 30 32 38Z" fill="#2a1810"/><rect x="32" y="40" width="26" height="5" rx="2" fill="#1a1010"/><rect x="31" y="40" width="12" height="7" rx="2" fill="#1a1818" opacity="0.85"/><rect x="47" y="40" width="12" height="7" rx="2" fill="#1a1818" opacity="0.85"/><line x1="43" y1="43" x2="47" y2="43" stroke="#1a1818" stroke-width="2"/><path d="M40 49 Q45 53 50 49" fill="none" stroke="#c08060" stroke-width="2" stroke-linecap="round"/><path d="M42 56 Q42 66 42 76" stroke="#6890c0" stroke-width="13" stroke-linecap="round" fill="none"/><rect x="10" y="44" width="16" height="24" rx="3" fill="#1a1828"/><rect x="11" y="45" width="14" height="18" rx="2" fill="#3060b0" opacity="0.8"/><rect x="16" y="64" width="4" height="3" rx="1" fill="#404048"/><line x1="36" y1="60" x2="22" y2="52" stroke="#f5c0a0" stroke-width="6" stroke-linecap="round"/><line x1="48" y1="60" x2="60" y2="68" stroke="#f5c0a0" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="36" y2="96" stroke="#303848" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="48" y2="96" stroke="#303848" stroke-width="6" stroke-linecap="round"/><rect x="30" y="93" width="14" height="7" rx="3" fill="#202838"/><rect x="44" y="93" width="14" height="7" rx="3" fill="#202838"/></svg>`,
+  'VHPL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><ellipse cx="45" cy="31" rx="22" ry="7" fill="#8a6040"/><rect x="33" y="20" width="24" height="15" rx="4" fill="#9a7050"/><circle cx="45" cy="46" r="12" fill="#f0d080"/><path d="M38 44 Q41 42 44 44" fill="none" stroke="#3a2810" stroke-width="2.2" stroke-linecap="round"/><path d="M46 44 Q49 42 52 44" fill="none" stroke="#3a2810" stroke-width="2.2" stroke-linecap="round"/><path d="M40 50 Q45 54 50 50" fill="none" stroke="#a08060" stroke-width="1.8" stroke-linecap="round"/><path d="M42 58 Q42 68 42 78" stroke="#6a9060" stroke-width="13" stroke-linecap="round" fill="none"/><line x1="36" y1="62" x2="10" y2="60" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><line x1="48" y1="62" x2="74" y2="60" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><ellipse cx="10" cy="60" rx="7" ry="5" fill="#f0d080"/><ellipse cx="74" cy="60" rx="7" ry="5" fill="#f0d080"/><line x1="42" y1="78" x2="36" y2="97" stroke="#3a4830" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="78" x2="48" y2="97" stroke="#3a4830" stroke-width="6" stroke-linecap="round"/><rect x="30" y="94" width="14" height="7" rx="3" fill="#2a3820"/><rect x="44" y="94" width="14" height="7" rx="3" fill="#2a3820"/></svg>`,
+  'VHFS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><circle cx="24" cy="30" r="10" fill="#f5c8a0"/><path d="M14 29 Q14 18 24 18 Q34 18 34 29" fill="#f08030"/><circle cx="21" cy="29" r="1.5" fill="#2a1808"/><circle cx="27" cy="29" r="1.5" fill="#2a1808"/><path d="M20 33 Q24 37 28 33" fill="none" stroke="#c08060" stroke-width="1.8" stroke-linecap="round"/><path d="M22 40 Q21 50 20 60" stroke="#50a070" stroke-width="10" stroke-linecap="round" fill="none"/><circle cx="66" cy="30" r="10" fill="#f0b090"/><path d="M56 29 Q56 18 66 18 Q76 18 76 29" fill="#2a1810"/><circle cx="63" cy="29" r="1.5" fill="#2a1808"/><circle cx="69" cy="29" r="1.5" fill="#2a1808"/><path d="M62 33 Q66 37 70 33" fill="none" stroke="#c08060" stroke-width="1.8" stroke-linecap="round"/><path d="M66 40 Q66 50 66 60" stroke="#c05060" stroke-width="10" stroke-linecap="round" fill="none"/><rect x="28" y="46" width="34" height="20" rx="4" fill="#f5f0e0" stroke="#d0c080" stroke-width="2"/><line x1="45" y1="46" x2="45" y2="66" stroke="#d0c080" stroke-width="1.5"/><circle cx="36" cy="56" rx="4" ry="4" fill="rgba(255,150,100,0.6)"/><circle cx="55" cy="56" rx="4" ry="4" fill="rgba(100,200,100,0.6)"/><line x1="32" y1="56" x2="28" y2="50" stroke="#d0c080" stroke-width="1"/><line x1="59" y1="56" x2="62" y2="50" stroke="#d0c080" stroke-width="1"/><polygon points="45,68 38,82 52,82" fill="white" stroke="#c0b080" stroke-width="1.5"/><rect x="39" y="78" width="12" height="4" rx="1.5" fill="#1a1808" opacity="0.5"/><line x1="22" y1="45" x2="30" y2="52" stroke="#f5c8a0" stroke-width="5" stroke-linecap="round"/><line x1="18" y1="46" x2="10" y2="58" stroke="#f5c8a0" stroke-width="5" stroke-linecap="round"/><line x1="64" y1="45" x2="60" y2="52" stroke="#f0b090" stroke-width="5" stroke-linecap="round"/><line x1="68" y1="46" x2="76" y2="56" stroke="#f0b090" stroke-width="5" stroke-linecap="round"/><line x1="20" y1="60" x2="16" y2="78" stroke="#2a4030" stroke-width="5" stroke-linecap="round"/><line x1="20" y1="60" x2="26" y2="78" stroke="#2a4030" stroke-width="5" stroke-linecap="round"/><line x1="66" y1="60" x2="60" y2="78" stroke="#2a3848" stroke-width="5" stroke-linecap="round"/><line x1="66" y1="60" x2="72" y2="78" stroke="#2a3848" stroke-width="5" stroke-linecap="round"/></svg>`,
+  'VHFL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><rect x="56" y="14" width="8" height="72" rx="4" fill="#7a5030"/><ellipse cx="60" cy="14" rx="16" ry="18" fill="#3a6030" opacity="0.65"/><ellipse cx="50" cy="20" rx="13" ry="15" fill="#4a7040" opacity="0.55"/><ellipse cx="68" cy="20" rx="13" ry="15" fill="#3a6030" opacity="0.55"/><circle cx="34" cy="40" r="12" fill="#f5c8a0"/><ellipse cx="34" cy="31" rx="17" ry="6" fill="#8a6040"/><rect x="26" y="24" width="16" height="11" rx="4" fill="#9a7050"/><path d="M28 39 Q31 38 34 39" fill="none" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><path d="M34 39 Q37 38 40 39" fill="none" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><path d="M29 44 Q34 48 39 44" fill="none" stroke="#a08060" stroke-width="2" stroke-linecap="round"/><path d="M32 52 Q38 58 44 62" stroke="#50a070" stroke-width="12" stroke-linecap="round" fill="none"/><line x1="30" y1="56" x2="10" y2="66" stroke="#f5c8a0" stroke-width="6" stroke-linecap="round"/><circle cx="8" cy="66" r="6" fill="rgba(255,160,190,0.75)"/><circle cx="8" cy="66" r="3.5" fill="rgba(255,230,80,0.95)"/><line x1="2" y1="65" x2="8" y2="66" stroke="rgba(255,130,170,0.9)" stroke-width="2"/><line x1="8" y1="60" x2="8" y2="66" stroke="rgba(255,130,170,0.9)" stroke-width="2"/><line x1="14" y1="65" x2="8" y2="66" stroke="rgba(255,130,170,0.9)" stroke-width="2"/><line x1="8" y1="72" x2="8" y2="66" stroke="rgba(100,180,80,0.9)" stroke-width="2"/><line x1="38" y1="55" x2="52" y2="52" stroke="#f5c8a0" stroke-width="6" stroke-linecap="round"/><line x1="44" y1="62" x2="38" y2="80" stroke="#2a4030" stroke-width="6" stroke-linecap="round"/><line x1="44" y1="62" x2="52" y2="78" stroke="#2a4030" stroke-width="6" stroke-linecap="round"/></svg>`
+};
+
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TMTVVTEEGF');</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"登山タイプ診断 - Yamatch","description":"9問の行動診断で登山タイプを16種類から判定。おすすめの山も提案。","url":"https://tozan-navi.com/recommend/","applicationCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;background:#e8e0d5;color:#3a3530;min-height:100vh;-webkit-text-size-adjust:100%;}
+/* header style moved to ym-header */
+.header-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:8px;position:relative;z-index:1;}
+.header-title{color:white;font-family:Georgia,serif;font-size:19px;font-weight:bold;}
+.header-sub{color:rgba(255,255,255,0.5);font-size:10px;margin-top:1px;}
+.back-btn,.header-btn{color:rgba(255,255,255,0.7);font-size:12px;white-space:nowrap;text-decoration:none;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:8px;padding:4px 9px;}
+main{max-width:480px;margin:0 auto;padding:16px;}
+.step{display:none;}
+.step.active{display:block;animation:fadeIn 0.28s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* プログレス */
+.prog-wrap{margin-bottom:18px;}
+.prog-top{display:flex;justify-content:space-between;font-size:11px;color:#a09888;margin-bottom:6px;}
+.prog-bar{height:5px;background:#e0dbd4;border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,#4a6038,#8aaa70);border-radius:3px;transition:width 0.4s ease;}
+.prog-axes{display:flex;gap:6px;margin-top:6px;}
+.axis-dot{width:8px;height:8px;border-radius:50%;background:#e0dbd4;transition:background 0.3s;}
+.axis-dot.done{background:#607848;}
+
+/* 質問 */
+.q-title{font-size:16px;font-weight:700;color:#2a2520;margin-bottom:6px;line-height:1.5;}
+.q-emoji{font-size:22px;display:block;margin-bottom:6px;}
+.q-axis{font-size:10px;color:#a09888;font-weight:600;letter-spacing:0.06em;margin-bottom:14px;}
+.choices{display:flex;flex-direction:column;gap:8px;}
+.choice{display:flex;align-items:center;gap:12px;background:white;border:1.5px solid #e0dbd4;border-radius:12px;padding:12px 14px;cursor:pointer;transition:all 0.15s;position:relative;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:rgba(0,0,0,0.1);}
+.choice:hover{border-color:#607848;background:#f5f8f2;}
+.choice:active{transform:scale(0.98);}
+.ch-icon{font-size:20px;flex-shrink:0;width:28px;text-align:center;}
+.ch-main{font-size:13px;font-weight:600;color:#2a2520;}
+.ch-sub{font-size:11px;color:#8a8078;margin-top:2px;}
+.ch-axis{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:9px;font-weight:700;padding:2px 6px;border-radius:10px;opacity:0.55;}
+.ch-a{background:#e0f0e8;color:#3a6838;}
+.ch-v{background:#e0e8f4;color:#384868;}
+.ch-c{background:#f4e0e0;color:#683838;}
+.ch-h{background:#f4f0e0;color:#686038;}
+.ch-p{background:#e8e0f4;color:#483868;}
+.ch-f{background:#f4e8e0;color:#684838;}
+.ch-s{background:#e0f4f0;color:#386848;}
+.ch-l{background:#f0e0f4;color:#684868;}
+
+/* 導入 */
+.intro-wrap{padding:16px 0;}
+.intro-badge-row{display:flex;justify-content:center;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
+.intro-badge{font-size:11px;padding:4px 10px;border-radius:20px;background:#e8f0e4;color:#4a6038;font-weight:600;}
+.intro-types{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:18px;}
+.intro-type-item{background:white;border-radius:10px;padding:8px 6px;text-align:center;border:1px solid #e8e4dc;}
+.intro-type-emoji{font-size:18px;}
+.intro-type-illust{width:38px;height:46px;margin:0 auto;display:block;}
+.intro-type-name{font-size:9px;color:#7a7068;margin-top:3px;line-height:1.3;}
+.start-btn{touch-action:manipulation;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:linear-gradient(135deg,#4a6038,#607848);color:white;font-size:15px;font-weight:700;padding:15px;border-radius:14px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(74,96,56,0.3);}
+
+/* 結果 */
+.type-card{background:linear-gradient(145deg,#2a4020,#3a5830);border-radius:16px;padding:14px 14px 12px;margin-bottom:14px;position:relative;overflow:hidden;}
+.type-card-inner{display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;z-index:1;text-align:center;}
+.type-illust-wrap{width:72px;height:90px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.type-illust-wrap svg{width:72px !important;height:90px !important;display:block;}
+.type-illust{width:72px !important;height:90px !important;flex-shrink:0;display:block;}
+.type-info{width:100%;}
+.type-card-bg{position:absolute;right:-10px;bottom:-10px;font-size:60px;opacity:0.06;pointer-events:none;}
+.type-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.type-code{font-size:12px;font-weight:800;color:rgba(255,255,255,0.5);letter-spacing:0.1em;font-family:monospace;}
+.type-emoji{font-size:32px;}
+.type-name{font-size:22px;font-weight:800;color:white;line-height:1.2;}
+.type-desc{font-size:13px;color:rgba(255,255,255,0.78);line-height:1.7;margin-bottom:14px;}
+.type-meta{display:flex;gap:8px;flex-wrap:wrap;}
+.type-rare{font-size:11px;padding:4px 10px;border-radius:20px;font-weight:700;}
+.rare-ultra{background:rgba(255,215,0,0.25);color:#f0d060;}
+.rare-high{background:rgba(200,160,255,0.25);color:#c8a0f0;}
+.rare-mid{background:rgba(100,200,255,0.25);color:#80c8f0;}
+.rare-low{background:rgba(200,255,200,0.25);color:#80d080;}
+.type-axes{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;}
+.axis-badge{font-size:10px;padding:3px 8px;border-radius:20px;background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);font-weight:600;}
+
+/* 山カード */
+.result-subtitle{font-size:13px;color:#7a7068;margin-bottom:12px;}
+.result-card{background:white;border-radius:14px;border:1px solid #e0dbd4;margin-bottom:10px;overflow:hidden;}
+.rc-top{display:flex;align-items:center;gap:12px;padding:14px 16px 10px;}
+.rank-badge{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;}
+.r1{background:linear-gradient(135deg,#c9a227,#f0c040);color:white;}
+.r2{background:linear-gradient(135deg,#8a8a8a,#b0b0b0);color:white;}
+.r3{background:linear-gradient(135deg,#a05a30,#c07848);color:white;}
+.rc-name{font-size:16px;font-weight:700;color:#2a2520;}
+.rc-area{font-size:11px;color:#8a8078;margin-top:1px;}
+.rc-badges{display:flex;gap:4px;flex-wrap:wrap;padding:0 16px 8px;}
+.rb{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500;}
+.rb-100{background:rgba(160,200,240,0.35);color:#1a4060;}
+.rb-pop{background:rgba(180,220,180,0.4);color:#2d5a1a;}
+.rb-day{background:rgba(200,235,210,0.8);color:#1e5a2e;}
+.rb-stay{background:rgba(250,230,190,0.8);color:#7a4800;}
+.rb-train{background:rgba(200,220,245,0.8);color:#1a4878;}
+.rc-desc{font-size:12px;color:#5a5248;line-height:1.6;padding:0 16px;margin-bottom:8px;}
+.rc-reason{font-size:11px;color:#607848;background:#f0f6ec;border-radius:8px;padding:8px 10px;margin:0 16px 10px;line-height:1.5;}
+.rc-reason::before{content:"✓ ";font-weight:700;}
+.affil-block{background:#faf8f5;border:1px solid #e8e4dc;border-radius:10px;padding:12px 14px;margin:0 16px 12px;}
+.affil-title{font-size:11px;color:#a09888;font-weight:600;margin-bottom:8px;}
+.affil-items{display:flex;flex-direction:column;gap:6px;}
+.affil-item{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#5a5248;}
+.affil-link{font-size:11px;color:#4a6038;font-weight:600;text-decoration:none;background:#e8f0e4;padding:3px 8px;border-radius:20px;white-space:nowrap;}
+.rc-link{display:block;text-align:center;padding:10px;border-top:1px solid #f0ede8;font-size:13px;font-weight:600;color:#4a6038;text-decoration:none;}
+
+/* 相性カード */
+.compat-card{background:white;border:1.5px solid #e8ddd4;border-radius:14px;padding:14px 16px;margin-bottom:12px;}
+.compat-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.compat-title{font-size:12px;font-weight:700;color:#a09888;}
+.compat-body{display:flex;gap:10px;align-items:flex-start;}
+.compat-partner-badge{background:linear-gradient(135deg,#4a6038,#607848);color:white;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.compat-msg{font-size:12px;color:#5a5248;line-height:1.7;}
+.compat-person{display:flex;flex-direction:column;align-items:center;flex-shrink:0;gap:4px;}
+.compat-person svg{width:44px;height:52px;}
+.compat-person-name{font-size:9px;color:#4a6038;font-weight:700;text-align:center;white-space:nowrap;line-height:1.2;}
+
+/* シェア */
+.share-section{margin:16px 0 8px;}
+.share-title{font-size:12px;color:#7a7068;text-align:center;margin-bottom:10px;}
+.share-btns{display:flex;gap:8px;}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 8px;border-radius:10px;font-size:12px;font-weight:700;border:none;cursor:pointer;text-decoration:none;}
+.sb-x{background:#000;color:white;}
+.sb-line{background:#06C755;color:white;}
+.sb-copy{background:#e8e0d5;color:#4a6038;border:1px solid #c8c4bc;}
+.retry-btn{display:block;width:100%;padding:12px;background:white;border:1.5px solid #c8d8b8;border-radius:12px;font-size:14px;font-weight:600;color:#4a6038;cursor:pointer;margin-top:8px;text-align:center;touch-action:manipulation;}
+footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1px solid #e8e4dc;margin-top:16px;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+
+/* ── 結果カード強化 ─────────────────── */
+.result-card-top{border:2px solid #4a6038;box-shadow:0 4px 16px rgba(74,96,56,0.15);}
+.rc-section-label{font-size:11px;font-weight:700;color:#7a9a6a;letter-spacing:0.06em;padding:10px 16px 4px;text-transform:uppercase;}
+
+/* おすすめ理由 */
+.reasons-block{padding:0 12px 10px;display:flex;flex-direction:column;gap:8px;}
+.reason-item{display:flex;align-items:flex-start;gap:10px;background:#f4f8f0;border-radius:10px;padding:10px 12px;}
+.reason-icon{font-size:20px;flex-shrink:0;line-height:1.2;}
+.reason-text{font-size:13px;font-weight:700;color:#2a3820;line-height:1.3;}
+.reason-sub{font-size:11px;color:#7a9068;margin-top:2px;line-height:1.4;}
+
+/* 装備カード */
+.gears-block{padding:0 12px 10px;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.gear-item{display:flex;align-items:center;gap:8px;background:#faf9f6;border:1px solid #e8e4dc;border-radius:8px;padding:8px 10px;}
+.gear-item-link{text-decoration:none;color:inherit;cursor:pointer;transition:background 0.15s;}
+.gear-item-link:hover{background:#e8e0d5;border-color:#c8d8a8;}
+.gear-link-arrow{margin-left:auto;color:#4a7840;font-size:16px;font-weight:700;flex-shrink:0;}
+.gear-icon{font-size:18px;flex-shrink:0;}
+.gear-name{font-size:12px;font-weight:700;color:#3a3530;line-height:1.2;}
+.gear-note{font-size:10px;color:#9a9088;margin-top:2px;line-height:1.3;}
+
+/* アクセス */
+.access-row{padding:0 12px 12px;display:flex;flex-direction:column;gap:6px;}
+.access-item{display:flex;align-items:flex-start;gap:10px;padding:8px 12px;background:#f0f4f8;border-radius:8px;}
+.access-icon{font-size:18px;flex-shrink:0;}
+.access-label{font-size:10px;color:#6a8098;font-weight:600;}
+.access-val{font-size:13px;font-weight:700;color:#1a3050;margin-top:1px;}
+.access-train{font-size:12px;font-weight:600;line-height:1.4;}
+
+/* CTAボタン */
+.rc-cta{display:block;margin:0 12px 14px;text-align:center;padding:12px;border-radius:10px;font-size:14px;font-weight:700;color:#4a6038;text-decoration:none;background:#f0f4ec;border:1.5px solid #c0d0a8;}
+.rc-cta-primary{background:linear-gradient(135deg,#3a5828,#4a7038);color:white;border:none;font-size:15px;padding:14px;box-shadow:0 3px 10px rgba(58,88,40,0.3);}
+
+/* 固定CTAバー */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #e0dbd4;padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:100;display:none;box-shadow:0 -4px 16px rgba(0,0,0,0.1);}
+.sticky-cta.visible{display:block;}
+.sticky-cta-inner{max-width:480px;margin:0 auto;display:flex;align-items:center;gap:10px;}
+.sticky-cta-name{flex:1;font-size:13px;font-weight:700;color:#3a3530;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sticky-cta-btn{flex-shrink:0;background:linear-gradient(135deg,#3a5828,#4a7038);color:white;font-size:13px;font-weight:700;padding:10px 18px;border-radius:22px;text-decoration:none;white-space:nowrap;box-shadow:0 2px 8px rgba(58,88,40,0.3);}
+
+/* ===== 共通ヘッダー ===== */
+.ym-header{
+  background:linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%);
+  position:relative;overflow:hidden;
+  padding:10px 16px 12px;
+  position:sticky;top:0;z-index:200;
+}
+.ym-header::before{
+  content:"";position:absolute;bottom:0;left:0;width:100%;height:52px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 52' preserveAspectRatio='xMidYMax slice'%3E%3Cpath d='M0 52 L0 36 L70 22 L130 30 L190 12 L250 24 L310 6 L370 18 L430 4 L490 16 L550 6 L610 18 L670 8 L730 20 L790 10 L850 22 L910 12 L970 24 L1030 14 L1090 26 L1150 16 L1210 28 L1270 18 L1330 30 L1400 20 L1400 52 Z' fill='white' opacity='0.04'/%3E%3Cpath d='M0 52 L0 42 L90 32 L160 38 L230 24 L300 34 L370 18 L440 28 L510 14 L580 26 L650 12 L720 24 L790 10 L860 22 L930 8 L1000 20 L1070 6 L1140 18 L1210 4 L1280 16 L1350 6 L1400 12 L1400 52 Z' fill='white' opacity='0.06'/%3E%3C/svg%3E") no-repeat bottom/cover;
+  pointer-events:none;
+}
+.ym-header-inner{
+  max-width:768px;margin:0 auto;
+  display:flex;align-items:center;gap:10px;
+  position:relative;z-index:1;
+}
+.ym-header-logo{
+  display:flex;align-items:center;gap:8px;
+  text-decoration:none;flex:1;min-width:0;
+}
+.ym-header-wordmark{
+  font-family:Georgia,serif;font-size:27px;font-weight:700;
+  color:white;line-height:1;margin:0;
+}
+.ym-header-pagetitle{
+  font-size:12px;color:rgba(255,255,255,0.6);
+  font-weight:500;margin-top:2px;
+}
+.ym-header-share{
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
+  color:white;border-radius:7px;padding:5px 7px;cursor:pointer;
+  display:flex;align-items:center;flex-shrink:0;text-decoration:none;
+}
+</style>
+</head>
+<body>
+<header class="ym-header">
+  <div class="ym-header-inner">
+    <div style="flex:1;font-size:16px;font-weight:700;color:white;">登山タイプ診断</div>
+    <button class="ym-header-share" onclick="if(navigator.share){navigator.share({title:'Yamatch',url:location.href});}else{navigator.clipboard.writeText(location.href).then(function(){alert('URLをコピーしました');});}" aria-label="シェア"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg></button>
+  </div>
+</header>
+<div class="sr-only"><h1>登山タイプ診断 - 16タイプで山スタイルを診断</h1><p>山頂で何をする？雨が降ったら？9問の行動パターン診断であなたの登山タイプを16種類から判定。おすすめの山も提案。完全無料。</p></div>
+<main>
+
+<!-- 導入 -->
+<div id="intro" class="step active">
+  <div style="text-align:center;padding:20px 0 12px;">
+    <div style="font-size:44px;margin-bottom:10px;">🗻</div>
+    <h2 style="font-size:20px;font-weight:700;color:#2a2520;margin-bottom:8px;">あなたの山タイプを診断</h2>
+    <p style="font-size:13px;color:#7a7068;line-height:1.7;margin-bottom:4px;">「山頂で何をする？」「雨が降ったら？」<br>行動パターンから<strong>16タイプ</strong>で診断します</p>
+  </div>
+  <div class="intro-badge-row">
+    <span class="intro-badge">🆓 完全無料</span>
+    <span class="intro-badge">⏱ 約1分</span>
+    <span class="intro-badge">🎯 16タイプ</span>
+    <span class="intro-badge">📤 シェアで盛り上がる</span>
+  </div>
+  <div class="intro-types" id="intro-type-grid"></div>
+  <button class="start-btn" onclick="startQuiz()"><span>診断スタート</span><span>▶</span></div>
+</div>
+
+<!-- Q1: 山頂でまずやることは？ →軸1(A/V) -->
+<div id="q1" class="step">
+  <div class="prog-wrap">
+    <div class="prog-top"><span>質問 1 / 9</span><span>11%</span></div>
+    <div class="prog-bar"><div class="prog-fill" style="width:11%"></div></div>
+  </div>
+  <div class="q-title"><span class="q-emoji">🏔</span>山頂に着いたら、まず何をする？</div>
+  <div class="choices">
+    <div class="choice" data-key="a1" data-val="A"><span class="ch-icon">📸</span><div><div class="ch-main">すぐ写真を撮りまくる</div><div class="ch-sub">証拠を残さないと！</div></div><span class="ch-axis ch-a">行動派</span></div>
+    <div class="choice" data-key="a1" data-val="V"><span class="ch-icon">👀</span><div><div class="ch-main">景色をぼーっと眺める</div><div class="ch-sub">しばらくこのままでいたい</div></div><span class="ch-axis ch-v">観察派</span></div>
+    <div class="choice" data-key="a1" data-val="A"><span class="ch-icon">🗺</span><div><div class="ch-main">地図で次のルートを確認</div><div class="ch-sub">次の山が気になる</div></div><span class="ch-axis ch-a">行動派</span></div>
+    <div class="choice" data-key="a1" data-val="V"><span class="ch-icon">🏅</span><div><div class="ch-main">達成感にひたる</div><div class="ch-sub">この瞬間を味わいたい</div></div><span class="ch-axis ch-v">観察派</span></div>
+  </div>
+</div>
+
+<!-- Q2: ルート選び →軸1(A/V) -->
+<div id="q2" class="step">
+  <div class="prog-wrap">
+    <div class="prog-top"><span>質問 2 / 9</span><span>22%</span></div>
+    <div class="prog-bar"><div class="prog-fill" style="width:22%"></div></div>
+  </div>
+  <div class="q-title"><span class="q-emoji">🧭</span>登山ルートを選ぶとき、何を優先する？</div>
+  <div class="choices">
+    <div class="choice" data-key="a2" data-val="A"><span class="ch-icon">💪</span><div><div class="ch-main">体力的にきつめのルート</div><div class="ch-sub">達成感が大きい方がいい</div></div><span class="ch-axis ch-a">行動派</span></div>
+    <div class="choice" data-key="a2" data-val="V"><span class="ch-icon">🌸</span><div><div class="ch-main">景色・花・自然が豊かなルート</div><div class="ch-sub">歩きながら楽しみたい</div></div><span class="ch-axis ch-v">観察派</span></div>
+    <div class="choice" data-key="a2" data-val="A"><span class="ch-icon">🧗</span><div><div class="ch-main">バリエーション・岩場があるルート</div><div class="ch-sub">スリルがほしい</div></div><span class="ch-axis ch-a">行動派</span></div>
+    <div class="choice" data-key="a2" data-val="V"><span class="ch-icon">🌿</span><div><div class="ch-main">歩きやすく静かなルート</div><div class="ch-sub">ゆっくり自分のペースで</div></div><span class="ch-axis ch-v">観察派</span></div>
+  </div>
+</div>
+
+<!-- Q3: 一番の楽しさ →軸2(C/H) -->
+<div id="q3" class="step">
+  <div class="prog-wrap">
+    <div class="prog-top"><span>質問 3 / 9</span><span>33%</span></div>
+    <div class="prog-bar"><div class="prog-fill" style="width:33%"></div></div>
+  </div>
+  <div class="q-title"><span class="q-emoji">🎯</span>登山で「一番楽しい」と感じる瞬間は？</div>
+  <div class="choices">
+    <div class="choice" data-key="a3" data-val="C"><span class="ch-icon">🏆</span><div><div class="ch-main">山頂に立った瞬間の達成感</div><div class="ch-sub">やりきった！という感覚が好き</div></div><span class="ch-axis ch-c">挑戦派</span></div>
+    <div class="choice" data-key="a3" data-val="H"><span class="ch-icon">🌿</span><div><div class="ch-main">歩きながら自然に没入する瞬間</div><div class="ch-sub">頭が空っぽになる感じ</div></div><span class="ch-axis ch-h">癒し派</span></div>
+    <div class="choice" data-key="a3" data-val="C"><span class="ch-icon">🔥</span><div><div class="ch-main">自分の限界を超えた時</div><div class="ch-sub">あと一歩が踏み出せた時</div></div><span class="ch-axis ch-c">挑戦派</span></div>
+    <div class="choice" data-key="a3" data-val="H"><span class="ch-icon">☕</span><div><div class="ch-main">山小屋でほっと一息つく時</div><div class="ch-sub">ご飯・温かい飲み物が最高</div></div><span class="ch-axis ch-h">癒し派</span></div>
+  </div>
+</div>
+
+<!-- Q4: 雨が降ってきたら →軸2(C/H) -->
+<div id="q4" class="step">
+  <div class="prog-wrap">
+    <div class="prog-top"><span>質問 4 / 9</span><span>44%</span></div>
+    <div class="prog-bar"><div class="prog-fill" style="width:44%"></div></div>
+  </div>
+  <div class="q-title"><span class="q-emoji">🌿</span>好きな山の雰囲気は？</div>
+  <div class="choices">
+    <div class="choice" data-key="a4" data-val="C"><span class="ch-icon">⛰</span><div><div class="ch-main">岩場・急登・稜線歩き</div><div class="ch-sub">ダイナミックな地形が好き</div></div><span class="ch-axis ch-c">挑戦派</span></div>
+    <div class="choice" data-key="a4" data-val="H"><span class="ch-icon">🌲</span><div><div class="ch-main">樹林帯・花・湿原</div><div class="ch-sub">自然に包まれたい</div></div><span class="ch-axis ch-h">癒し派</span></div>
+    <div class="choice" data-key="a4" data-val="C"><span class="ch-icon">🗻</span><div><div class="ch-main">高山・アルプス・展望</div><div class="ch-sub">スケールの大きな山が好き</div></div><span class="ch-axis ch-c">挑戦派</span></div>
+    <div class="choice" data-key="a4" data-val="H"><span class="ch-icon">🍃</span><div><div class="ch-main">里山・低山・のんびり</div><div class="ch-sub">穏やかな山歩きが好き</div></div><span class="ch-axis ch-h">癒し派</span></div>
+  </div>
+</div>
+
+<!-- Q5: 前日の過ごし方 →軸3(P/F) -->
+<div id="q5" class="step">
+  <div class="prog-wrap">
+    <div class="prog-top"><span>質問 5 / 9</span><span>56%</span></div>
+    <div class="prog-bar"><div class="prog-fill" style="width:56%"></div></div>
+  </div>
+  <div class="q-title"><span class="q-emoji">🌙</span>登山前日の夜、何してる？</div>
+  <div class="choices">
+    <div class="choice" data-key="a5" data-val="P"><span class="ch-icon">🗺</span><div><div class="ch-main">地図・コースタイムを再確認</div><div class="ch-sub">念には念を</div></div><span class="ch-axis ch-p">計画派</span></div>
+    <div class="choice" data-key="a5" data-val="F"><span class="ch-icon">😴</span><div><div class="ch-main">とくに何もせず早めに寝る</div><div class="ch-sub">なんとかなるでしょ</div></div><span class="ch-axis ch-f">自由派</span></div>
+    <div class="choice" data-key="a5" data-val="P"><span class="ch-icon">🎒</span><div><div class="ch-main">装備を全部並べてチェック</div><div class="ch-sub">忘れ物ゼロが目標</div></div><span class="ch-axis ch-p">計画派</span></div>
+    <div class="choice" data-key="a5" data-val="F"><span class="ch-icon">🍵</span><div><div class="ch-main">ざっくり荷造りして飲む</div><div class="ch-sub">明日楽しみで眠れない</div></div><span class="ch-axis ch-f">自由派</span></div>
+  </div>
+</div>
+
+<!-- Q6: 山小屋に着いたら →軸3(P/F) -->
+<div id="q6" class="step">
+  <div class="prog-wrap">
+    <div class="prog-top"><span>質問 6 / 9</span><span>67%</span></div>
+    <div class="prog-bar"><div class="prog-fill" style="width:67%"></div></div>
+  </div>
+  <div class="q-title"><span class="q-emoji">🏠</span>山小屋に着いたら、まず何をする？</div>
+  <div class="choices">
+    <div class="choice" data-key="a6" data-val="P"><span class="ch-icon">🗓</span><div><div class="ch-main">翌日の天気とルートを確認</div><div class="ch-sub">明日の計画を立てたい</div></div><span class="ch-axis ch-p">計画派</span></div>
+    <div class="choice" data-key="a6" data-val="F"><span class="ch-icon">🍺</span><div><div class="ch-main">とりあえずビールを注文</div><div class="ch-sub">計画は後回し！</div></div><span class="ch-axis ch-f">自由派</span></div>
+    <div class="choice" data-key="a6" data-val="P"><span class="ch-icon">📒</span><div><div class="ch-main">山行記録をつける</div><div class="ch-sub">記録しないと忘れちゃう</div></div><span class="ch-axis ch-p">計画派</span></div>
+    <div class="choice" data-key="a6" data-val="F"><span class="ch-icon">🌅</span><div><div class="ch-main">外に出て景色を眺める</div><div class="ch-sub">この瞬間を楽しみたい</div></div><span class="ch-axis ch-f">自由派</span></div>
+  </div>
+</div>
+
+<!-- Q7: 理想の登山スタイル →軸4(S/L) -->
+<div id="q7" class="step">
+  <div class="prog-wrap">
+    <div class="prog-top"><span>質問 7 / 9</span><span>78%</span></div>
+    <div class="prog-bar"><div class="prog-fill" style="width:78%"></div></div>
+  </div>
+  <div class="q-title"><span class="q-emoji">👥</span>理想の登山スタイルは？</div>
+  <div class="choices">
+    <div class="choice" data-key="a7" data-val="S"><span class="ch-icon">🙌</span><div><div class="ch-main">仲間と賑やかに登る</div><div class="ch-sub">みんなで盛り上がりたい</div></div><span class="ch-axis ch-s">仲間派</span></div>
+    <div class="choice" data-key="a7" data-val="L"><span class="ch-icon">🧍</span><div><div class="ch-main">一人でマイペースに登る</div><div class="ch-sub">自分のリズムが大事</div></div><span class="ch-axis ch-l">ソロ派</span></div>
+    <div class="choice" data-key="a7" data-val="S"><span class="ch-icon">👫</span><div><div class="ch-main">少人数のパートナーと</div><div class="ch-sub">信頼できる人と深く楽しむ</div></div><span class="ch-axis ch-s">仲間派</span></div>
+    <div class="choice" data-key="a7" data-val="L"><span class="ch-icon">🌙</span><div><div class="ch-main">誰もいない静かな山へ</div><div class="ch-sub">孤独な山が好き</div></div><span class="ch-axis ch-l">ソロ派</span></div>
+  </div>
+</div>
+
+<!-- Q8: 体力・どのくらいの山 -->
+<div id="q8" class="step">
+  <div class="prog-wrap">
+    <div class="prog-top"><span>質問 8 / 9</span><span>89%</span></div>
+    <div class="prog-bar"><div class="prog-fill" style="width:89%"></div></div>
+  </div>
+  <div class="q-title"><span class="q-emoji">💪</span>どのくらいの山に行きたい？</div>
+  <div class="choices">
+    <div class="choice" data-key="coeff" data-val="14"><span class="ch-icon">🌱</span><div><div class="ch-main">ゆるハイク・整備された道</div><div class="ch-sub">ケーブルカーもOK</div></div></div>
+    <div class="choice" data-key="coeff" data-val="22"><span class="ch-icon">👟</span><div><div class="ch-main">3〜4時間の初心者向け</div><div class="ch-sub">普通に歩ける</div></div></div>
+    <div class="choice" data-key="coeff" data-val="35"><span class="ch-icon">🥾</span><div><div class="ch-main">5〜7時間の中級コース</div><div class="ch-sub">ある程度の体力あり</div></div></div>
+    <div class="choice" data-key="coeff" data-val="60"><span class="ch-icon">⛰</span><div><div class="ch-main">急登・岩場もある上級コース</div><div class="ch-sub">体力・技術に自信あり</div></div></div>
+    <div class="choice" data-key="coeff" data-val="999"><span class="ch-icon">🏔</span><div><div class="ch-main">どんな山でも</div><div class="ch-sub">限界を超えに行く</div></div></div>
+  </div>
+</div>
+
+<!-- Q9: 出発地 -->
+<div id="q9" class="step">
+  <div class="prog-wrap">
+    <div class="prog-top"><span>質問 9 / 9</span><span>100%</span></div>
+    <div class="prog-bar"><div class="prog-fill" style="width:100%"></div></div>
+  </div>
+  <div class="q-title"><span class="q-emoji">🚉</span>出発地はどこ？</div>
+  <div class="choices">
+    <div class="choice" data-key="dep" data-val="ofuna"><span class="ch-icon">🚃</span><div><div class="ch-main">大船・横浜方面</div><div class="ch-sub">神奈川県東部</div></div></div>
+    <div class="choice" data-key="dep" data-val="shinjuku"><span class="ch-icon">🚃</span><div><div class="ch-main">新宿・渋谷方面</div><div class="ch-sub">東京都心</div></div></div>
+    <div class="choice" data-key="dep" data-val="omiya"><span class="ch-icon">🚃</span><div><div class="ch-main">大宮・浦和方面</div><div class="ch-sub">埼玉県</div></div></div>
+  </div>
+</div>
+
+<!-- 結果 -->
+<div id="result" class="step">
+  <div id="result-type-card"></div>
+  <p class="result-subtitle" id="result-subtitle"></p>
+  <button id="share-top" onclick="window._shareNative&&window._shareNative()" style="display:none;width:100%;margin-bottom:12px;background:#4a5e4a;color:white;border:none;border-radius:10px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>この結果をシェア</button>
+  <div id="result-cards"></div>
+  <div id="compat-area"></div>
+  <div class="share-section">
+    <div class="share-title">📤 友達にも診断してもらおう</div>
+      <button class="share-btn sb-native" onclick="window._shareNative&&window._shareNative()" style="background:#4a5e4a;color:white;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg> シェア</button>
+    <div class="share-btns">
+      <a id="share-x" href="#" target="_blank" class="share-btn sb-x">𝕏 Xでシェア</a>
+      <a id="share-line" href="#" target="_blank" class="share-btn sb-line">💬 LINE</a>
+      <button class="share-btn sb-copy" onclick="copyResult()">🔗 URLコピー</div>
+    </div>
+  </div>
+  <button class="retry-btn" onclick="restart()">↺ もう一度診断する</div>
+</div>
+
+</main>
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-cta-inner">
+    <div class="sticky-cta-name" id="sticky-cta-name">おすすめの山を見る</div>
+    <a href="#" class="sticky-cta-btn" id="sticky-cta-link">この山、行ってみる →</a>
+  </div>
+</div>
+<footer>
+  <p>Yamatch — 出発地から登る山を探せる登山サーチ</p>
+  <p style="margin-top:6px;"><a href="/terms/" style="color:#7a9a7a;">利用規約</a><span style="margin:0 8px;opacity:0.4;">|</span><a href="/privacy/" style="color:#7a9a7a;">プライバシーポリシー</a><span style="margin:0 8px;opacity:0.4;">|</span><a href="/about/" style="color:#7a9a7a;">運営者</a></p>
+  <p style="margin-top:8px;opacity:0.6;">© 2026 Yamatch. All rights reserved.</p>
+</footer>
+
+<script>
+const MOUNTAINS = [{"id": "tanzawa", "name": "丹沢山", "area": "神奈川県", "elevation": 1567, "category": "百名山", "difficulty": "中級", "coeffMax": 59, "coeffMin": 28, "daytrip": true, "trainAccess": false, "driveOfuna": 70, "driveShinjuku": 75, "driveYokohama": 75, "driveOmiya": 105, "description": "神奈川県最高峰エリア。ブナの原生林が美しく、四季を通じて楽しめる。", "vibes": ["forest"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "fuji", "name": "富士山", "area": "静岡県", "elevation": 3776, "category": "百名山", "difficulty": "中級", "coeffMax": 58, "coeffMin": 31, "daytrip": false, "trainAccess": false, "driveOfuna": 120, "driveShinjuku": 145, "driveYokohama": 135, "driveOmiya": 175, "description": "日本最高峰。富士宮ルートは最短距離で山頂を目指せる人気ルート。", "vibes": ["forest"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "tsukuba", "name": "筑波山", "area": "茨城県", "elevation": 877, "category": "百名山", "difficulty": "初級", "coeffMax": 17, "coeffMin": 8, "daytrip": true, "trainAccess": false, "driveOfuna": 120, "driveShinjuku": 150, "driveYokohama": 120, "driveOmiya": 85, "description": "百名山最低峰。ケーブルカー・ロープウェイあり。山頂からは関東平野を一望。", "vibes": ["accessible"], "types": ["collector", "casual", "easy"], "seasonOk": ["spring", "summer", "fall", "winter"]}, {"id": "kumotori", "name": "雲取山", "area": "東京都・埼玉県", "elevation": 2017, "category": "百名山", "difficulty": "中級", "coeffMax": 54, "coeffMin": 43, "daytrip": true, "trainAccess": true, "driveOfuna": 130, "driveShinjuku": 130, "driveYokohama": 120, "driveOmiya": 110, "description": "東京都最高峰。奥多摩を代表する名峰で、ブナ林の縦走路が美しい。", "vibes": ["forest", "ridge"], "types": ["challenge", "collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "amagi", "name": "天城山", "area": "静岡県", "elevation": 1406, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 20, "coeffMin": 12, "daytrip": true, "trainAccess": false, "driveOfuna": 150, "driveShinjuku": 185, "driveYokohama": 145, "driveOmiya": 195, "description": "伊豆半島の最高峰。シャクナゲの群生地として有名。川端康成の小説の舞台。", "vibes": ["forest"], "types": ["collector", "casual", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "okutama", "name": "大菩薩嶺", "area": "山梨県", "elevation": 2057, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 30, "coeffMin": 10, "daytrip": true, "trainAccess": true, "driveOfuna": 150, "driveShinjuku": 130, "driveYokohama": 140, "driveOmiya": 135, "description": "草原状の稜線から富士山や南アルプスの展望が開ける。アクセスが良く人気。", "vibes": ["highland", "view", "ridge"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "ryokami", "name": "両神山", "area": "埼玉県", "elevation": 1723, "category": "百名山", "difficulty": "中級", "coeffMax": 33, "coeffMin": 18, "daytrip": true, "trainAccess": false, "driveOfuna": 150, "driveShinjuku": 125, "driveYokohama": 150, "driveOmiya": 125, "description": "鋸状の岩峰が連なる個性的な山容。クサリ場が多く登り応えがある。", "vibes": ["rock"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "kobushigatake", "name": "甲武信ヶ岳", "area": "山梨県", "elevation": 2475, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 38, "coeffMin": 22, "daytrip": true, "trainAccess": false, "driveOfuna": 150, "driveShinjuku": 135, "driveYokohama": 170, "driveOmiya": 175, "description": "甲州・武州・信州の3県の境に位置。千曲川・荒川・笛吹川の源流の山。", "vibes": ["forest"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "mizugaki", "name": "瑞牆山", "area": "山梨県", "elevation": 2230, "category": "百名山", "difficulty": "中級", "coeffMax": 45, "coeffMin": 21, "daytrip": true, "trainAccess": false, "driveOfuna": 150, "driveShinjuku": 135, "driveYokohama": 160, "driveOmiya": 165, "description": "奇岩・巨石が林立する個性的な山容。花崗岩の岩峰がそびえ立つ。", "vibes": ["rock"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "akagi", "name": "赤城山", "area": "群馬県", "elevation": 1828, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 20, "coeffMin": 10, "daytrip": true, "trainAccess": false, "driveOfuna": 170, "driveShinjuku": 140, "driveYokohama": 170, "driveOmiya": 125, "description": "上毛三山の一つ。カルデラ湖（大沼）を擁する成層火山。展望が良い。", "vibes": ["volcano", "view"], "types": ["collector", "casual", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "kinpusan", "name": "金峰山", "area": "山梨県", "elevation": 2599, "category": "百名山", "difficulty": "中級", "coeffMax": 45, "coeffMin": 21, "daytrip": true, "trainAccess": false, "driveOfuna": 180, "driveShinjuku": 160, "driveYokohama": 175, "driveOmiya": 180, "description": "奥秩父の盟主。山頂に五丈石という奇岩がそびえ、展望も抜群。", "vibes": ["rock", "view"], "types": ["adventure", "collector", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "houou", "name": "鳳凰山", "area": "山梨県", "elevation": 2841, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 48, "coeffMin": 33, "daytrip": false, "trainAccess": false, "driveOfuna": 180, "driveShinjuku": 160, "driveYokohama": 190, "driveOmiya": 185, "description": "南アルプス北部の山。地蔵岳のオベリスクが特徴的。白砂の稜線が美しい。", "vibes": ["ridge"], "types": ["adventure", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "nantaisan", "name": "男体山", "area": "栃木県", "elevation": 2486, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 22, "coeffMin": 14, "daytrip": true, "trainAccess": true, "driveOfuna": 180, "driveShinjuku": 160, "driveYokohama": 175, "driveOmiya": 130, "description": "日光の象徴。中禅寺湖の西に聳える円錐形の火山。山頂から中禅寺湖の絶景。", "vibes": ["volcano", "view"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "kitadake", "name": "北岳", "area": "山梨県", "elevation": 3193, "category": "百名山", "difficulty": "上級", "coeffMax": 54, "coeffMin": 38, "daytrip": false, "trainAccess": false, "driveOfuna": 190, "driveShinjuku": 180, "driveYokohama": 200, "driveOmiya": 195, "description": "日本第2位の高峰。南アルプスの盟主で、高山植物の宝庫。", "vibes": ["forest"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "yatsugatake", "name": "八ヶ岳（赤岳）", "area": "山梨県・長野県南部", "elevation": 2899, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 42, "coeffMin": 26, "daytrip": false, "trainAccess": false, "driveOfuna": 200, "driveShinjuku": 160, "driveYokohama": 165, "driveOmiya": 205, "description": "八ヶ岳連峰の最高峰。岩稜帯が続くダイナミックなルート。", "vibes": ["rock"], "types": ["adventure", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "keirisan", "name": "蓼科山", "area": "長野県南部", "elevation": 2531, "category": "百名山", "difficulty": "中級", "coeffMax": 89, "coeffMin": 65, "daytrip": true, "trainAccess": true, "driveOfuna": 200, "driveShinjuku": 175, "driveYokohama": 205, "driveOmiya": 200, "description": "八ヶ岳連峰北端の独立峰。山頂は広大な岩原で、360度の大展望。", "vibes": ["rock", "view"], "types": ["adventure", "challenge", "collector", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "kirigamine", "name": "霧ヶ峰", "area": "長野県南部", "elevation": 1925, "category": "百名山", "difficulty": "初級", "coeffMax": 18, "coeffMin": 10, "daytrip": true, "trainAccess": true, "driveOfuna": 200, "driveShinjuku": 170, "driveYokohama": 190, "driveOmiya": 215, "description": "高原のなだらかな地形が広がる。ニッコウキスゲの群生で有名。", "vibes": ["highland"], "types": ["collector", "casual", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "asama", "name": "浅間山", "area": "長野県南部", "elevation": 2568, "category": "百名山", "difficulty": "中級", "coeffMax": 35, "coeffMin": 27, "daytrip": true, "trainAccess": false, "driveOfuna": 180, "driveShinjuku": 165, "driveYokohama": 170, "driveOmiya": 165, "description": "日本最大級の活火山。噴火活動のため入山規制あり。事前確認必須。", "vibes": ["volcano"], "types": ["adventure", "collector", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "tanigawa", "name": "谷川岳", "area": "群馬県", "elevation": 1977, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 42, "coeffMin": 18, "daytrip": true, "trainAccess": true, "driveOfuna": 180, "driveShinjuku": 150, "driveYokohama": 185, "driveOmiya": 135, "description": "魔の山とも称される難峰。双耳峰（トマの耳・オキの耳）が特徴。", "vibes": ["forest"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "nasu", "name": "那須岳", "area": "栃木県", "elevation": 1915, "category": "百名山", "difficulty": "中級", "coeffMax": 30, "coeffMin": 15, "daytrip": true, "trainAccess": true, "driveOfuna": 230, "driveShinjuku": 210, "driveYokohama": 220, "driveOmiya": 160, "description": "栃木県の名峰。活火山で荒涼とした火山景観が広がる。", "vibes": ["volcano"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "shirane_nikko", "name": "四阿山", "area": "群馬県", "elevation": 2354, "category": "百名山", "difficulty": "中級", "coeffMax": 30, "coeffMin": 24, "daytrip": true, "trainAccess": false, "driveOfuna": 220, "driveShinjuku": 175, "driveYokohama": 200, "driveOmiya": 140, "description": "上信国境の雄峰。なだらかな山容で、高山植物が豊富。", "vibes": ["highland"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "nikko_shirane", "name": "日光白根山", "area": "栃木県", "elevation": 2578, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 31, "coeffMin": 21, "daytrip": true, "trainAccess": false, "driveOfuna": 220, "driveShinjuku": 185, "driveYokohama": 200, "driveOmiya": 140, "description": "関東以北の最高峰。コバルトブルーの五色沼が山頂付近に広がる。", "vibes": ["forest"], "types": ["adventure", "collector", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "takeson", "name": "武尊山", "area": "群馬県", "elevation": 2158, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 38, "coeffMin": 29, "daytrip": true, "trainAccess": false, "driveOfuna": 220, "driveShinjuku": 185, "driveYokohama": 240, "driveOmiya": 205, "description": "上州武尊山とも呼ばれる。日本武尊の伝説が残る上毛三山の一つ。", "vibes": ["forest"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "komagatake", "name": "甲斐駒ヶ岳", "area": "山梨県", "elevation": 2967, "category": "百名山", "difficulty": "上級", "coeffMax": 62, "coeffMin": 38, "daytrip": true, "trainAccess": false, "driveOfuna": 220, "driveShinjuku": 175, "driveYokohama": 225, "driveOmiya": 265, "description": "白い花崗岩の山頂が印象的。黒戸尾根は日本三大急登の一つ。", "vibes": ["rock", "ridge"], "types": ["adventure", "challenge", "collector", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "senjogatake", "name": "仙丈ヶ岳", "area": "山梨県", "elevation": 3033, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 45, "coeffMin": 32, "daytrip": true, "trainAccess": false, "driveOfuna": 220, "driveShinjuku": 185, "driveYokohama": 235, "driveOmiya": 275, "description": "南アルプスの女王。カール地形が美しく、高山植物が豊富。", "vibes": ["forest"], "types": ["adventure", "collector", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "shirouma", "name": "白馬岳", "area": "長野県北部", "elevation": 2932, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 55, "coeffMin": 35, "daytrip": true, "trainAccess": true, "driveOfuna": 250, "driveShinjuku": 275, "driveYokohama": 265, "driveOmiya": 255, "description": "北アルプス屈指の高山植物の宝庫。大雪渓は夏でも残雪がある。", "vibes": ["forest"], "types": ["adventure", "challenge", "collector", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "norikura", "name": "乗鞍岳", "area": "長野県北部", "elevation": 3026, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 18, "coeffMin": 8, "daytrip": true, "trainAccess": false, "driveOfuna": 260, "driveShinjuku": 270, "driveYokohama": 240, "driveOmiya": 265, "description": "バスで2700mの畳平まで行けるため、初心者でも3000m峰に登れる。", "vibes": ["accessible"], "types": ["adventure", "collector", "casual", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "tateyama", "name": "立山", "area": "富山県", "elevation": 3015, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 35, "coeffMin": 22, "daytrip": true, "trainAccess": true, "driveOfuna": 355, "driveShinjuku": 340, "driveYokohama": 350, "driveOmiya": 345, "description": "富山県を代表する霊峰。室堂から比較的容易に登れ、眺望が素晴らしい。", "vibes": ["view"], "types": ["adventure", "collector", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "tsurugi", "name": "剱岳", "area": "富山県", "elevation": 2999, "category": "百名山", "difficulty": "上級", "coeffMax": 65, "coeffMin": 42, "daytrip": false, "trainAccess": true, "driveOfuna": 360, "driveShinjuku": 345, "driveYokohama": 350, "driveOmiya": 345, "description": "日本最難関の百名山。クサリ場・岩場の連続で技術と体力が必要。", "vibes": ["rock"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "yari", "name": "槍ヶ岳", "area": "長野県北部", "elevation": 3180, "category": "百名山", "difficulty": "上級", "coeffMax": 85, "coeffMin": 55, "daytrip": false, "trainAccess": false, "driveOfuna": 340, "driveShinjuku": 330, "driveYokohama": 280, "driveOmiya": 275, "description": "北アルプスの象徴。鋭く尖った穂先は日本の山のシンボル。", "vibes": ["forest"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "hotaka", "name": "奥穂高岳", "area": "長野県北部", "elevation": 3190, "category": "百名山", "difficulty": "上級", "coeffMax": 80, "coeffMin": 50, "daytrip": false, "trainAccess": false, "driveOfuna": 335, "driveShinjuku": 325, "driveYokohama": 280, "driveOmiya": 275, "description": "日本第3位の高峰。北アルプス最高峰で、岩稜帯が連続する難峰。", "vibes": ["rock"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "myoko", "name": "妙高山", "area": "新潟県", "elevation": 2454, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 30, "coeffMin": 18, "daytrip": false, "trainAccess": true, "driveOfuna": 255, "driveShinjuku": 240, "driveYokohama": 240, "driveOmiya": 220, "description": "越後富士の異名を持つ新潟の名峰。スカイケーブル利用ルートも人気。火打山とのセット登山も定番。", "vibes": ["forest"], "types": ["collector"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "makihata", "name": "巻機山", "area": "新潟県", "elevation": 1967, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 34, "coeffMin": 22, "daytrip": true, "trainAccess": true, "driveOfuna": 220, "driveShinjuku": 205, "driveYokohama": 205, "driveOmiya": 185, "description": "越後の名峰。山頂付近は広大な湿原が広がり、池塘が点在する。", "vibes": ["wetland"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "iide", "name": "飯豊山", "area": "福島県", "elevation": 2105, "category": "百名山", "difficulty": "上級", "coeffMax": 90, "coeffMin": 65, "daytrip": false, "trainAccess": false, "driveOfuna": 310, "driveShinjuku": 270, "driveYokohama": 310, "driveOmiya": 270, "description": "東北の秘峰。アプローチが長く体力を要する。高山植物の宝庫。", "vibes": ["forest"], "types": ["challenge", "collector"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "shibutsu", "name": "至仏山", "area": "群馬県", "elevation": 2228, "category": "百名山", "difficulty": "中級", "coeffMax": 28, "coeffMin": 18, "daytrip": true, "trainAccess": false, "driveOfuna": 240, "driveShinjuku": 185, "driveYokohama": 250, "driveOmiya": 220, "description": "尾瀬を代表する山。蛇紋岩の山で固有種の高山植物が多い。", "vibes": ["rock"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "aizu_koma", "name": "会津駒ヶ岳", "area": "福島県", "elevation": 2133, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 34, "coeffMin": 20, "daytrip": true, "trainAccess": false, "driveOfuna": 295, "driveShinjuku": 265, "driveYokohama": 270, "driveOmiya": 240, "description": "湿原と池塘が広がる稜線が美しい。東北南部の名峰。", "vibes": ["wetland", "ridge"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "shirane_gunma", "name": "草津白根山", "area": "群馬県", "elevation": 2160, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 16, "coeffMin": 8, "daytrip": true, "trainAccess": true, "driveOfuna": 200, "driveShinjuku": 165, "driveYokohama": 185, "driveOmiya": 155, "description": "活火山で入山規制あり。湯釜は鮮やかなコバルトブルーの火口湖。", "vibes": ["volcano"], "types": ["collector", "casual", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "bandai", "name": "磐梯山", "area": "福島県", "elevation": 1816, "category": "百名山", "difficulty": "中級", "coeffMax": 28, "coeffMin": 16, "daytrip": true, "trainAccess": true, "driveOfuna": 265, "driveShinjuku": 240, "driveYokohama": 290, "driveOmiya": 250, "description": "福島のシンボル。磐梯朝日国立公園の主峰。猪苗代湖を見下ろす。", "vibes": ["forest"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "hiuchigatake", "name": "燧ヶ岳", "area": "福島県", "elevation": 2356, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 30, "coeffMin": 18, "daytrip": true, "trainAccess": false, "driveOfuna": 295, "driveShinjuku": 265, "driveYokohama": 190, "driveOmiya": 130, "description": "東北最高峰。双耳峰の雄姿と尾瀬の自然が魅力。", "vibes": ["forest"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "takao", "name": "高尾山", "area": "東京都", "elevation": 599, "category": "人気の山", "difficulty": "初級", "coeffMax": 51, "coeffMin": 8, "daytrip": true, "trainAccess": true, "driveOfuna": 50, "driveShinjuku": 50, "driveYokohama": 55, "driveOmiya": 70, "description": "年間300万人が訪れる世界屈指の登山者数を誇る山。ケーブルカー・リフトあり。紅葉の名所。", "vibes": ["accessible"], "types": ["casual", "easy"], "seasonOk": ["spring", "summer", "fall", "winter"]}, {"id": "oyama", "name": "大山（丹沢）", "area": "神奈川県", "elevation": 1252, "category": "人気の山", "difficulty": "初〜中級", "coeffMax": 46, "coeffMin": 12, "daytrip": true, "trainAccess": true, "driveOfuna": 45, "driveShinjuku": 55, "driveYokohama": 55, "driveOmiya": 90, "description": "丹沢の霊峰。ケーブルカーあり。山頂からの展望と紅葉が名高い信仰の山。", "vibes": ["view", "accessible"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "tonosaki", "name": "塔ノ岳", "area": "神奈川県", "elevation": 1491, "category": "人気の山", "difficulty": "中級", "coeffMax": 59, "coeffMin": 23, "daytrip": true, "trainAccess": true, "driveOfuna": 50, "driveShinjuku": 60, "driveYokohama": 50, "driveOmiya": 90, "description": "丹沢の要。大倉尾根（バカ尾根）は急登で有名。山頂から富士山〜相模湾の大展望。", "vibes": ["view", "ridge"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "hirugata", "name": "蛭ヶ岳", "area": "神奈川県", "elevation": 1673, "category": "人気の山", "difficulty": "中〜上級", "coeffMax": 59, "coeffMin": 38, "daytrip": false, "trainAccess": true, "driveOfuna": 50, "driveShinjuku": 60, "driveYokohama": 50, "driveOmiya": 90, "description": "丹沢最高峰。神奈川県最高点。稜線からの眺望は抜群で、富士山・南アルプスが一望。", "vibes": ["view", "ridge"], "types": ["casual"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "jinba", "name": "陣馬山", "area": "東京都", "elevation": 857, "category": "人気の山", "difficulty": "初〜中級", "coeffMax": 81, "coeffMin": 3, "daytrip": true, "trainAccess": true, "driveOfuna": 75, "driveShinjuku": 70, "driveYokohama": 70, "driveOmiya": 85, "description": "山頂に白馬のモニュメント。高尾〜陣馬縦走コースのゴール。茶屋が充実。", "vibes": ["ridge"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall", "winter"]}, {"id": "mitsuToge", "name": "三ツ峠山", "area": "山梨県", "elevation": 1785, "category": "二百名山", "difficulty": "初〜中級", "coeffMax": 93, "coeffMin": 12, "daytrip": true, "trainAccess": false, "driveOfuna": 120, "driveShinjuku": 105, "driveYokohama": 120, "driveOmiya": 130, "description": "富士山の最高の展望台。左右対称に見える富士山の姿は絶品。南面にロッククライミングエリアも。", "vibes": ["view"], "types": ["casual", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "kintoki", "name": "金時山", "area": "静岡県", "elevation": 1212, "category": "人気の山", "difficulty": "初〜中級", "coeffMax": 96, "coeffMin": 8, "daytrip": true, "trainAccess": false, "driveOfuna": 65, "driveShinjuku": 80, "driveYokohama": 70, "driveOmiya": 110, "description": "箱根の名峰。坂田金時（金太郎）伝説の山。山頂から富士山が大きく見える。茶屋あり。", "vibes": ["forest"], "types": ["casual", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "kayagatake", "name": "茅ヶ岳", "area": "山梨県", "elevation": 1704, "category": "二百名山", "difficulty": "初〜中級", "coeffMax": 25, "coeffMin": 16, "daytrip": true, "trainAccess": false, "driveOfuna": 130, "driveShinjuku": 130, "driveYokohama": 120, "driveOmiya": 160, "description": "「ニセ八ヶ岳」の異名を持つ。百名山の著者・深田久弥の終焉の地。山頂から八ヶ岳〜富士山の大展望。", "vibes": ["view"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "kentoku", "name": "乾徳山", "area": "山梨県", "elevation": 2031, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 28, "coeffMin": 22, "daytrip": true, "trainAccess": true, "driveOfuna": 140, "driveShinjuku": 130, "driveYokohama": 130, "driveOmiya": 170, "description": "奥秩父の名峰。山頂直下に巨大な岩壁があり、クサリ場が続くスリリングな登山が楽しめる。", "vibes": ["rock"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "hinata", "name": "日向山", "area": "山梨県", "elevation": 1660, "category": "人気の山", "difficulty": "初〜中級", "coeffMax": 16, "coeffMin": 12, "daytrip": true, "trainAccess": false, "driveOfuna": 160, "driveShinjuku": 145, "driveYokohama": 150, "driveOmiya": 190, "description": "山頂が花崗岩の白砂のビーチ状になる奇景が人気。甲斐駒ヶ岳の眺望も絶景。", "vibes": ["rock", "view"], "types": ["casual", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "bonori", "name": "棒ノ折山", "area": "東京都・埼玉県", "elevation": 969, "category": "人気の山", "difficulty": "初〜中級", "coeffMax": 51, "coeffMin": 12, "daytrip": true, "trainAccess": true, "driveOfuna": 100, "driveShinjuku": 85, "driveYokohama": 100, "driveOmiya": 90, "description": "沢沿いのゴルジュを通る変化に富んだルートが人気。山頂は関東平野の大展望。", "vibes": ["view"], "types": ["casual", "easy"], "seasonOk": ["spring", "summer", "fall", "winter"]}, {"id": "otake", "name": "大岳山", "area": "東京都", "elevation": 1266, "category": "人気の山", "difficulty": "初〜中級", "coeffMax": 132, "coeffMin": 15, "daytrip": true, "trainAccess": true, "driveOfuna": 85, "driveShinjuku": 80, "driveYokohama": 90, "driveOmiya": 100, "description": "奥多摩の名峰。苔むすロックガーデンと山頂からの富士山の眺望が人気。", "vibes": ["view"], "types": ["casual", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "jonengatake", "name": "常念岳", "area": "長野県北部", "elevation": 2857, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 45, "coeffMin": 32, "daytrip": false, "trainAccess": false, "driveOfuna": 290, "driveShinjuku": 255, "driveYokohama": 265, "driveOmiya": 260, "description": "北アルプスのパノラマ台。山頂から槍・穂高の絶景が広がる。北アルプス入門の山。", "vibes": ["view"], "types": ["adventure", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "yakedake", "name": "焼岳", "area": "長野県北部", "elevation": 2455, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 24, "coeffMin": 14, "daytrip": true, "trainAccess": false, "driveOfuna": 280, "driveShinjuku": 285, "driveYokohama": 260, "driveOmiya": 255, "description": "北アルプス唯一の活火山。山頂付近の噴気と硫黄の景観が迫力満点。", "vibes": ["volcano"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "kashimayari", "name": "鹿島槍ヶ岳", "area": "富山県", "elevation": 2889, "category": "百名山", "difficulty": "上級", "coeffMax": 65, "coeffMin": 45, "daytrip": false, "trainAccess": true, "driveOfuna": 290, "driveShinjuku": 285, "driveYokohama": 260, "driveOmiya": 255, "description": "北アルプス後立山連峰の主峰。南北に双耳峰をもつ優美な山容。吊尾根が特徴的。", "vibes": ["ridge"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "koganzan", "name": "小金沢山", "area": "山梨県", "elevation": 2014, "category": "二百名山", "difficulty": "初〜中級", "coeffMax": 28, "coeffMin": 20, "daytrip": true, "trainAccess": true, "driveOfuna": 150, "driveShinjuku": 130, "driveYokohama": 140, "driveOmiya": 180, "description": "大菩薩連嶺の一峰。富士山と南アルプスを望む開けた稜線歩きが魅力。", "vibes": ["ridge"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "arafune", "name": "荒船山", "area": "群馬県", "elevation": 1423, "category": "二百名山", "difficulty": "初級", "coeffMax": 20, "coeffMin": 14, "daytrip": true, "trainAccess": false, "driveOfuna": 155, "driveShinjuku": 120, "driveYokohama": 165, "driveOmiya": 165, "description": "航空母艦のような平らな山頂部が特徴的。艫岩からの断崖絶壁の眺望が圧巻。", "vibes": ["rock", "view"], "types": ["casual", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "asamamakurayama", "name": "浅間隠山", "area": "群馬県", "elevation": 1757, "category": "二百名山", "difficulty": "初〜中級", "coeffMax": 28, "coeffMin": 11, "daytrip": true, "trainAccess": false, "driveOfuna": 175, "driveShinjuku": 145, "driveYokohama": 185, "driveOmiya": 185, "description": "浅間山を隠すように立つことが名の由来。山頂からは浅間山・草津白根山の大展望。", "vibes": ["view"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "kazahariyama", "name": "御座山", "area": "長野県南部", "elevation": 2112, "category": "二百名山", "difficulty": "初〜中級", "coeffMax": 24, "coeffMin": 18, "daytrip": true, "trainAccess": false, "driveOfuna": 160, "driveShinjuku": 165, "driveYokohama": 155, "driveOmiya": 190, "description": "奥秩父の南端に位置する静かな山。展望台からの八ヶ岳・南アルプスの眺めが美しい。", "vibes": ["view"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "iwasugesan", "name": "岩菅山", "area": "長野県北部", "elevation": 2295, "category": "二百名山", "difficulty": "中級", "coeffMax": 26, "coeffMin": 20, "daytrip": true, "trainAccess": true, "driveOfuna": 195, "driveShinjuku": 195, "driveYokohama": 190, "driveOmiya": 225, "description": "志賀高原の最高峰。北アルプスや北信五岳など360度の大展望が楽しめる。", "vibes": ["rock", "highland", "view"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "iizunasan", "name": "飯縄山", "area": "長野県北部", "elevation": 1917, "category": "二百名山", "difficulty": "初〜中級", "coeffMax": 20, "coeffMin": 14, "daytrip": true, "trainAccess": true, "driveOfuna": 215, "driveShinjuku": 215, "driveYokohama": 210, "driveOmiya": 245, "description": "長野市の北西にそびえる修験道の山。北アルプスや善光寺平の眺望が広がる。", "vibes": ["view"], "types": ["casual", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "kurohimesan", "name": "黒姫山", "area": "長野県北部", "elevation": 2053, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 30, "coeffMin": 24, "daytrip": true, "trainAccess": true, "driveOfuna": 225, "driveShinjuku": 220, "driveYokohama": 220, "driveOmiya": 255, "description": "北信五岳のひとつ。静かな樹林帯と山頂からの妙高・戸隠連峰の眺めが魅力。", "vibes": ["forest"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "kenashiyama", "name": "毛無山", "area": "山梨県", "elevation": 1964, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 28, "coeffMin": 20, "daytrip": true, "trainAccess": false, "driveOfuna": 145, "driveShinjuku": 145, "driveYokohama": 135, "driveOmiya": 175, "description": "富士山の展望台として名高い。朝霧高原からの急登が続くが山頂からの富士山の眺めは絶景。", "vibes": ["highland", "view"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "shirasunayama", "name": "白砂山", "area": "群馬県", "elevation": 2140, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 30, "coeffMin": 24, "daytrip": true, "trainAccess": false, "driveOfuna": 210, "driveShinjuku": 205, "driveYokohama": 220, "driveOmiya": 220, "description": "野反湖を起点とするアクセスのよい奥志賀の山。高山植物が豊富で秋の草紅葉が美しい。", "vibes": ["forest"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "nanaitsurasan", "name": "七面山", "area": "山梨県", "elevation": 1989, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 34, "coeffMin": 26, "daytrip": true, "trainAccess": true, "driveOfuna": 155, "driveShinjuku": 175, "driveYokohama": 145, "driveOmiya": 185, "description": "日蓮宗の霊山。急登の参道を登ると富士山の展望台・敬慎院が迎える。信仰登山の山。", "vibes": ["view"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "arasawadake", "name": "荒沢岳", "area": "新潟県", "elevation": 1969, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 38, "coeffMin": 30, "daytrip": true, "trainAccess": false, "driveOfuna": 300, "driveShinjuku": 285, "driveYokohama": 315, "driveOmiya": 310, "description": "奥只見の秘峰。前グラの岩場が核心部で鎖場が続く。越後三山の展望が素晴らしい。", "vibes": ["rock", "view"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "nakawarayama", "name": "和名倉山", "area": "埼玉県", "elevation": 2036, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 42, "coeffMin": 34, "daytrip": true, "trainAccess": false, "driveOfuna": 155, "driveShinjuku": 135, "driveYokohama": 150, "driveOmiya": 170, "description": "奥秩父最深部の静かな山。長大なアプローチを経た頂上には深山の静寂が漂う。", "vibes": ["forest"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "yarigatake2", "name": "笊ヶ岳", "area": "山梨県", "elevation": 2629, "category": "二百名山", "difficulty": "上級", "coeffMax": 55, "coeffMin": 42, "daytrip": false, "trainAccess": false, "driveOfuna": 155, "driveShinjuku": 195, "driveYokohama": 145, "driveOmiya": 185, "description": "南アルプス深部の難峰。標高差2000m超の急登が続く上級者向けの山。頂上から富士山が大きく見える。", "vibes": ["forest"], "types": ["adventure", "challenge"], "seasonOk": ["summer", "fall"]}, {"id": "gakedake", "name": "餓鬼岳", "area": "長野県北部", "elevation": 2647, "category": "二百名山", "difficulty": "上級", "coeffMax": 60, "coeffMin": 50, "daytrip": false, "trainAccess": false, "driveOfuna": 270, "driveShinjuku": 260, "driveYokohama": 265, "driveOmiya": 300, "description": "北アルプスの展望台。安曇野側から急登をこなした先に広がる大展望が素晴らしい。", "vibes": ["view"], "types": ["adventure", "challenge"], "seasonOk": ["summer", "fall"]}, {"id": "arikayama", "name": "有明山", "area": "長野県北部", "elevation": 2268, "category": "二百名山", "difficulty": "中〜上級", "coeffMax": 36, "coeffMin": 28, "daytrip": true, "trainAccess": false, "driveOfuna": 255, "driveShinjuku": 250, "driveYokohama": 250, "driveOmiya": 285, "description": "安曇野のシンボル「安曇富士」とも呼ばれる美しい山容。山頂からの北アルプスの眺めが壮観。", "vibes": ["forest"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "keizandake", "name": "経ヶ岳", "area": "長野県南部", "elevation": 2296, "category": "二百名山", "difficulty": "中級", "coeffMax": 32, "coeffMin": 26, "daytrip": true, "trainAccess": false, "driveOfuna": 240, "driveShinjuku": 230, "driveYokohama": 235, "driveOmiya": 270, "description": "中央アルプス北端の静かな山。深い原生林と山頂からの南・北アルプスの展望が魅力。", "vibes": ["forest", "view"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "adatara", "name": "安達太良山", "area": "福島県", "elevation": 1700, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 28, "coeffMin": 16, "daytrip": true, "trainAccess": true, "driveOfuna": 285, "driveShinjuku": 265, "driveYokohama": 275, "driveOmiya": 240, "description": "「ほんとの空」で知られる高村光太郎の詩の舞台。ゴンドラで気軽に登れる人気の福島の名山。", "vibes": ["forest"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "azuma", "name": "西吾妻山", "area": "福島県", "elevation": 2035, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 30, "coeffMin": 16, "daytrip": true, "trainAccess": false, "driveOfuna": 300, "driveShinjuku": 280, "driveYokohama": 290, "driveOmiya": 255, "description": "磐梯吾妻スカイラインで浄土平まで車で行ける。一切経山の魔女の瞳（五色沼）は絶景。", "vibes": ["view"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "echigokoma", "name": "越後駒ヶ岳", "area": "新潟県", "elevation": 2003, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 36, "coeffMin": 24, "daytrip": true, "trainAccess": false, "driveOfuna": 300, "driveShinjuku": 285, "driveYokohama": 250, "driveOmiya": 230, "description": "越後三山の主峰。稜線からの眺望が素晴らしい。枝折峠からの雲海も絶景。", "vibes": ["view", "ridge"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "hiragadake", "name": "平ヶ岳", "area": "新潟県", "elevation": 2141, "category": "百名山", "difficulty": "上級", "coeffMax": 55, "coeffMin": 50, "daytrip": true, "trainAccess": false, "driveOfuna": 340, "driveShinjuku": 325, "driveYokohama": 230, "driveOmiya": 220, "description": "深田久弥が「孤高の山」と呼んだ秘峰。長大なアプローチが必要な難関百名山の一つ。", "vibes": ["forest"], "types": ["challenge", "collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "naeba", "name": "苗場山", "area": "新潟県", "elevation": 2145, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 40, "coeffMin": 28, "daytrip": true, "trainAccess": true, "driveOfuna": 195, "driveShinjuku": 175, "driveYokohama": 185, "driveOmiya": 150, "description": "山頂に広大な高層湿原が広がる独特の山。池塘が点在する別天地のような山頂台地。", "vibes": ["wetland"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "amakazari", "name": "雨飾山", "area": "長野県北部", "elevation": 1963, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 28, "coeffMin": 18, "daytrip": true, "trainAccess": false, "driveOfuna": 310, "driveShinjuku": 295, "driveYokohama": 280, "driveOmiya": 295, "description": "北アルプス最北端の名峰。笹平の笹原と双耳峰の山容が美しい。紅葉の名所。", "vibes": ["forest"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "hiuchi", "name": "火打山", "area": "新潟県", "elevation": 2462, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 32, "coeffMin": 20, "daytrip": false, "trainAccess": true, "driveOfuna": 270, "driveShinjuku": 255, "driveYokohama": 270, "driveOmiya": 250, "description": "妙高山と並ぶ頸城山塊の名峰。山頂付近の天狗の庭は高層湿原の絶景。高山植物が豊富。", "vibes": ["wetland", "view"], "types": ["collector"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "takatsuma", "name": "高妻山", "area": "長野県北部", "elevation": 2353, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 42, "coeffMin": 35, "daytrip": false, "trainAccess": false, "driveOfuna": 240, "driveShinjuku": 225, "driveYokohama": 195, "driveOmiya": 165, "description": "戸隠連峰の最高峰。修験道の山として長い歴史を持つ。急登が続く本格登山コース。", "vibes": ["forest"], "types": ["collector"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "kasagatake", "name": "笠ヶ岳", "area": "長野県北部", "elevation": 2898, "category": "百名山", "difficulty": "上級", "coeffMax": 78, "coeffMin": 52, "daytrip": false, "trainAccess": false, "driveOfuna": 345, "driveShinjuku": 335, "driveYokohama": 330, "driveOmiya": 350, "description": "日本百名山の中でも「きつい山」として知られる笠新道。稜線からの槍・穂高の眺望は圧巻。", "vibes": ["view", "ridge"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "ontakesan", "name": "御嶽山", "area": "長野県南部", "elevation": 3067, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 32, "coeffMin": 18, "daytrip": true, "trainAccess": false, "driveOfuna": 290, "driveShinjuku": 290, "driveYokohama": 275, "driveOmiya": 300, "description": "独立峰の霊峰。2014年噴火で現在も入山規制あり。規制区域・最新情報の確認必須。", "vibes": ["volcano"], "types": ["adventure", "collector", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "goryudake", "name": "五竜岳", "area": "長野県北部", "elevation": 2814, "category": "百名山", "difficulty": "上級", "coeffMax": 65, "coeffMin": 45, "daytrip": false, "trainAccess": true, "driveOfuna": 285, "driveShinjuku": 280, "driveYokohama": 260, "driveOmiya": 280, "description": "後立山連峰の主峰。山頂から剱岳・立山・白馬岳の眺望が圧巻。唐松岳との縦走が人気。", "vibes": ["view", "ridge"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "sukai", "name": "皇海山", "area": "群馬県", "elevation": 2144, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 50, "coeffMin": 45, "daytrip": true, "trainAccess": false, "driveOfuna": 230, "driveShinjuku": 185, "driveYokohama": 265, "driveOmiya": 295, "description": "上州と下野の国境に位置する深山。クラシックルートは林道が長く秘境感がある。", "vibes": ["forest"], "types": ["challenge", "collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "kisokoma", "name": "木曽駒ヶ岳", "area": "長野県南部", "elevation": 2956, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 25, "coeffMin": 15, "daytrip": true, "trainAccess": true, "driveOfuna": 230, "driveShinjuku": 210, "driveYokohama": 230, "driveOmiya": 225, "description": "ロープウェイで標高2,612mの千畳敷カールまで一気にアクセス。初心者でも本格的な高山の雰囲気を楽しめる中央アルプスの主峰。夏の千畳敷カールは高山植物の宝庫。", "vibes": ["accessible"], "types": ["adventure", "collector", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "utsukushigahara", "name": "美ヶ原", "area": "長野県中部", "elevation": 2034, "category": "百名山", "difficulty": "初級", "coeffMax": 14, "coeffMin": 6, "daytrip": true, "trainAccess": false, "driveOfuna": 195, "driveShinjuku": 175, "driveYokohama": 185, "driveOmiya": 210, "description": "日本最大規模の高原状の山。山頂付近まで車道が通じており、広大な草原と牛の放牧が広がる。王ヶ頭からはアルプス全山の大パノラマ。", "vibes": ["highland", "view"], "types": ["collector", "casual", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "karamatsu", "name": "唐松岳", "area": "長野県北部", "elevation": 2696, "category": "二百名山", "difficulty": "中級", "coeffMax": 27, "coeffMin": 14, "daytrip": true, "trainAccess": true, "driveOfuna": 270, "driveShinjuku": 255, "driveYokohama": 265, "driveOmiya": 300, "description": "ゴンドラとリフトで1830mまで上がれる北アルプス入門の名峰。八方尾根から望む白馬三山と剱岳の展望が圧巻。稜線上の唐松山荘は人気の山小屋。", "vibes": ["view", "ridge"], "types": ["adventure", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "utsugi", "name": "空木岳", "area": "長野県南部", "elevation": 2864, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 70, "coeffMin": 55, "daytrip": false, "trainAccess": false, "driveOfuna": 255, "driveShinjuku": 235, "driveYokohama": 230, "driveOmiya": 225, "description": "中央アルプス南部の盟主。長い池山尾根からの日帰りは健脚向け。木曽駒からの縦走でセットで登られることも多い。山頂からの御嶽・南アルプスの眺望が素晴らしい。", "vibes": ["view", "ridge"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "enasan", "name": "恵那山", "area": "長野県南部", "elevation": 2191, "category": "百名山", "difficulty": "中級", "coeffMax": 41, "coeffMin": 24, "daytrip": true, "trainAccess": false, "driveOfuna": 270, "driveShinjuku": 250, "driveYokohama": 230, "driveOmiya": 270, "description": "木曽山脈南端、中央アルプスの最南峰。深い森に覆われた山頂部は展望がないが、古くから信仰を集めた山。中央道を使えば大船から比較的アクセスしやすい。", "vibes": ["forest", "view"], "types": ["collector", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "shiomidake", "name": "塩見岳", "area": "長野県南部", "elevation": 3052, "category": "百名山", "difficulty": "上級", "coeffMax": 75, "coeffMin": 55, "daytrip": false, "trainAccess": false, "driveOfuna": 270, "driveShinjuku": 250, "driveYokohama": 255, "driveOmiya": 295, "description": "南アルプス中央部に位置する3000m超の峰。アクセスに時間がかかる分、静かな山行が楽しめる。山頂直下の岩場が核心部。日本最高所の峠・三伏峠（2580m）が拠点。", "vibes": ["rock"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "arakawadake", "name": "荒川岳", "area": "静岡県", "elevation": 3141, "category": "百名山", "difficulty": "上級", "coeffMax": 95, "coeffMin": 65, "daytrip": false, "trainAccess": false, "driveOfuna": 330, "driveShinjuku": 310, "driveYokohama": 255, "driveOmiya": 295, "description": "南アルプス深部の3000m峰。前岳・中岳・悪沢岳（東岳）の総称。椹島まで一般車両進入不可のため、ほぼ必然的に1泊以上の山行になる。", "vibes": ["forest"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "akaisidake", "name": "赤石岳", "area": "静岡県", "elevation": 3121, "category": "百名山", "difficulty": "上級", "coeffMax": 90, "coeffMin": 60, "daytrip": false, "trainAccess": false, "driveOfuna": 330, "driveShinjuku": 310, "driveYokohama": 275, "driveOmiya": 265, "description": "南アルプスの盟主とも呼ばれる3000m峰。荒川岳とのセット縦走が定番。赤石小屋からの山頂眺望は圧巻。南アルプスらしい大きなカールが特徴。", "vibes": ["view", "ridge"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "hijiridade", "name": "聖岳", "area": "静岡県", "elevation": 3013, "category": "百名山", "difficulty": "上級", "coeffMax": 85, "coeffMin": 60, "daytrip": false, "trainAccess": false, "driveOfuna": 340, "driveShinjuku": 320, "driveYokohama": 275, "driveOmiya": 315, "description": "南アルプス最南部の3000m峰。最南の3000m峰として知られる。深い森を抜けてたどり着く山頂からの展望は格別。光岳とのセット縦走も人気。", "vibes": ["forest", "view", "ridge"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "terkari", "name": "光岳", "area": "静岡県", "elevation": 2591, "category": "百名山", "difficulty": "上級", "coeffMax": 95, "coeffMin": 75, "daytrip": false, "trainAccess": false, "driveOfuna": 360, "driveShinjuku": 340, "driveYokohama": 290, "driveOmiya": 310, "description": "百名山の最南部に位置する山。光石という白い岩が山名の由来。アクセスが非常に長く、百名山の中でも特に大変な山として知られる。聖岳とのセット縦走が一般的。", "vibes": ["rock", "ridge"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "yakushidake", "name": "薬師岳", "area": "富山県", "elevation": 2926, "category": "百名山", "difficulty": "中〜上級", "coeffMax": 75, "coeffMin": 50, "daytrip": false, "trainAccess": false, "driveOfuna": 370, "driveShinjuku": 355, "driveYokohama": 355, "driveOmiya": 390, "description": "北アルプス南部の大きな山。有峰湖を抱く折立からのルートが一般的。広大なカールと日本最大級の高山植物群落が見どころ。太郎平小屋から望む夕暮れが絶景。", "vibes": ["view"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "kurobegorodam", "name": "黒部五郎岳", "area": "富山県", "elevation": 2840, "category": "百名山", "difficulty": "上級", "coeffMax": 90, "coeffMin": 65, "daytrip": false, "trainAccess": false, "driveOfuna": 390, "driveShinjuku": 375, "driveYokohama": 350, "driveOmiya": 365, "description": "北アルプス奥部の秘峰。巨大なカール（五郎カール）が圧巻で、高山植物の宝庫。折立からの日帰りは距離が長く1泊が一般的。鷲羽・水晶とのセット縦走が人気。", "vibes": ["ridge"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "ainodake", "name": "間ノ岳", "area": "山梨県", "elevation": 3190, "category": "百名山", "difficulty": "上級", "coeffMax": 75, "coeffMin": 55, "daytrip": false, "trainAccess": false, "driveOfuna": 195, "driveShinjuku": 185, "driveYokohama": 220, "driveOmiya": 260, "description": "日本第3位の高峰（奥穂高岳と同高）。北岳から続く白峰三山縦走の中間点。広大な山頂からは南アルプス全山と富士山を一望。北岳とセットで1泊が一般的。", "vibes": ["ridge"], "types": ["adventure", "challenge", "collector"], "seasonOk": ["summer", "fall"]}, {"id": "noutori", "name": "農鳥岳", "area": "山梨県", "elevation": 3026, "category": "人気の山", "difficulty": "上級", "coeffMax": 76, "coeffMin": 52, "daytrip": false, "trainAccess": false, "driveOfuna": 195, "driveShinjuku": 185, "driveYokohama": 185, "driveOmiya": 225, "description": "白峰三山の最南端。残雪期に山腹に現れる農鳥（田植えを知らせる雪形）が名の由来。北岳・間ノ岳と合わせた白峰三山縦走の締めくくり。奈良田への下山が一般的。", "vibes": ["ridge"], "types": ["adventure", "challenge"], "seasonOk": ["summer", "fall"]}, {"id": "hakusan", "name": "白山", "area": "石川県", "elevation": 2702, "category": "百名山", "difficulty": "中級", "coeffMax": 55, "coeffMin": 40, "daytrip": true, "trainAccess": false, "driveOfuna": 345, "driveShinjuku": 330, "driveYokohama": 325, "driveOmiya": 355, "description": "富士山・立山と並ぶ日本三霊山のひとつ。高山植物の宝庫で、クロユリの群生が有名。北陸自動車道経由で大船から約6時間。山頂の白山比咩神社奥宮が信仰の中心。", "vibes": ["forest"], "types": ["adventure", "challenge", "collector", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "zaosan", "name": "蔵王山", "area": "宮城県・山形県", "elevation": 1841, "category": "百名山", "difficulty": "初〜中級", "coeffMax": 16, "coeffMin": 6, "daytrip": true, "trainAccess": false, "driveOfuna": 360, "driveShinjuku": 340, "driveYokohama": 365, "driveOmiya": 315, "description": "東北を代表する火山。エコーラインで標高1600mまで車で上がれ、御釜（火口湖）の神秘的な青い水面が名物。冬の樹氷（スノーモンスター）でも知られる。東北道経由で大船から約6時間。", "vibes": ["volcano"], "types": ["collector", "casual", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "karisaka", "name": "雁坂嶺", "area": "奥秩父", "elevation": 2289, "category": "二百名山", "difficulty": "中級", "coeffMax": 52, "coeffMin": 32, "daytrip": true, "trainAccess": false, "driveOfuna": 160, "driveShinjuku": 145, "driveYokohama": 150, "driveOmiya": 155, "description": "奥秩父主脈の一峰で、雁坂峠（日本三大峠のひとつ）のすぐ北に位置する。深い奥秩父の雰囲気が漂う静かな山。雁坂トンネルを使えばアクセスしやすい。", "vibes": ["forest"], "types": ["challenge", "easy"], "seasonOk": ["spring", "summer", "fall"]}, {"id": "nokogiriyama", "name": "鋸岳", "area": "山梨県", "elevation": 2685, "category": "二百名山", "difficulty": "上級", "coeffMax": 60, "coeffMin": 45, "daytrip": false, "trainAccess": false, "driveOfuna": 230, "driveShinjuku": 210, "driveYokohama": 230, "driveOmiya": 255, "description": "南アルプス北端の鋸状稜線が特徴的な難峰。甲斐駒ヶ岳の北西に位置し、第一高点への角兵衛沢ルートは崩壊地・鎖場があり上級者向け。南アルプス北部随一のバリエーションルート。", "vibes": ["rock", "ridge"], "types": ["adventure", "challenge"], "seasonOk": ["summer", "fall"]}, {"id": "minamikomagatake", "name": "南駒ヶ岳", "area": "長野県南部", "elevation": 2841, "category": "二百名山", "difficulty": "上級", "coeffMax": 52, "coeffMin": 42, "daytrip": false, "trainAccess": true, "driveOfuna": 270, "driveShinjuku": 250, "driveYokohama": 270, "driveOmiya": 295, "description": "中央アルプスの空木岳南に連なる二百名山。山頂からは360度の大展望が広がり、摺鉢窪カールが美しい。空木岳との縦走コースが人気。ロープウェイ利用で千畳敷からのアクセスも可能。", "vibes": ["view", "ridge", "accessible"], "types": ["adventure", "challenge"], "seasonOk": ["summer", "fall"]}, {"id": "chogatake", "name": "蝶ヶ岳", "area": "長野県", "elevation": 2677, "category": "二百名山", "difficulty": "中級", "coeffMax": 40, "coeffMin": 28, "daytrip": true, "trainAccess": false, "driveOfuna": 300, "driveShinjuku": 280, "driveYokohama": 300, "driveOmiya": 325, "description": "常念山脈南端の山で、穂高・槍ヶ岳の絶好の展望台。稜線から望む穂高連峰の眺めは北アルプス随一。上高地または三股からのアクセスで、常念岳との縦走も人気。", "vibes": ["view", "ridge"], "types": ["adventure", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "otenshoudake", "name": "大天井岳", "area": "長野県", "elevation": 2922, "category": "二百名山", "difficulty": "上級", "coeffMax": 56, "coeffMin": 42, "daytrip": false, "trainAccess": false, "driveOfuna": 320, "driveShinjuku": 300, "driveYokohama": 320, "driveOmiya": 345, "description": "常念山脈の最高峰で北アルプス表銀座縦走路の要衝。合戦尾根〜燕岳を経由するコースは北アルプス三大急登のひとつ。山頂からは360度の展望で槍・穂高が間近に見える。", "vibes": ["view", "ridge"], "types": ["adventure", "challenge"], "seasonOk": ["summer", "fall"]}, {"id": "harinokidake", "name": "針ノ木岳", "area": "富山県", "elevation": 2821, "category": "二百名山", "difficulty": "中級", "coeffMax": 38, "coeffMin": 28, "daytrip": true, "trainAccess": true, "driveOfuna": 330, "driveShinjuku": 315, "driveYokohama": 330, "driveOmiya": 355, "description": "後立山連峰南端、日本三大雪渓のひとつ針ノ木大雪渓で知られる山。扇沢から雪渓を登るルートは爽快。隣の蓮華岳とのセット登山が定番。", "vibes": ["forest"], "types": ["adventure", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "eboshidake_kita", "name": "烏帽子岳（北ア）", "area": "富山県", "elevation": 2628, "category": "二百名山", "difficulty": "上級", "coeffMax": 50, "coeffMin": 38, "daytrip": false, "trainAccess": false, "driveOfuna": 355, "driveShinjuku": 340, "driveYokohama": 355, "driveOmiya": 380, "description": "裏銀座縦走路の入口に立つ山。ブナ立尾根は北アルプス三大急登のひとつ。コマクサの群生地として名高く、稜線からの展望も抜群。野口五郎岳への縦走が人気。", "vibes": ["forest", "view", "ridge"], "types": ["adventure", "challenge"], "seasonOk": ["summer", "fall"]}, {"id": "noguchigoro", "name": "野口五郎岳", "area": "富山県", "elevation": 2924, "category": "二百名山", "difficulty": "上級", "coeffMax": 58, "coeffMin": 44, "daytrip": true, "trainAccess": false, "driveOfuna": 355, "driveShinjuku": 340, "driveYokohama": 355, "driveOmiya": 380, "description": "裏銀座縦走路中央に位置する北アルプスの静かな名峰。丸みを帯びた山容と花崗岩の白い砂礫地が印象的。水晶岳・鷲羽岳への縦走拠点で、野口五郎小屋からの夕景が美しい。", "vibes": ["rock", "ridge"], "types": ["adventure", "challenge", "easy"], "seasonOk": ["summer", "fall"]}, {"id": "nokogiriyama_chiba", "name": "鋸山", "area": "千葉県", "elevation": 329, "category": "人気の山", "difficulty": "初級", "coeffMax": 10, "coeffMin": 6, "daytrip": true, "trainAccess": true, "driveOfuna": 75, "driveShinjuku": 90, "driveYokohama": 70, "driveOmiya": 120, "description": "千葉県最南部の低山。巨大な石切り場跡と日本一の大仏、海を見渡す絶壁「地獄のぞき」が名物。ロープウェイでも登れる。", "vibes": ["view", "historic"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall", "winter"]}, {"id": "mitakesan", "name": "御岳山", "area": "東京都", "elevation": 929, "category": "人気の山", "difficulty": "初級", "coeffMax": 14, "coeffMin": 8, "daytrip": true, "trainAccess": true, "driveOfuna": 100, "driveShinjuku": 75, "driveYokohama": 95, "driveOmiya": 100, "description": "奥多摩の霊山。武蔵御嶽神社が山頂に鎮座し、ケーブルカーでも登れる。ロックガーデンの渓谷美が人気で、犬連れ登山者にも人気が高い。", "vibes": ["forest", "historic"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall", "winter"]}, {"id": "takamizusanzan", "name": "高水三山", "area": "東京都", "elevation": 793, "category": "人気の山", "difficulty": "初〜中級", "coeffMax": 20, "coeffMin": 16, "daytrip": true, "trainAccess": true, "driveOfuna": 110, "driveShinjuku": 85, "driveYokohama": 105, "driveOmiya": 110, "description": "高水山・岩茸石山・惣岳山の3山を縦走する奥多摩入門コース。駅から駅への縦走が楽しめ、岩茸石山からは奥多摩の山々を一望できる。", "vibes": ["forest", "view"], "types": ["easy"], "seasonOk": ["spring", "fall"]}, {"id": "tenzandake", "name": "天覧山・多峯主山", "area": "埼玉県", "elevation": 304, "category": "人気の山", "difficulty": "初級", "coeffMax": 8, "coeffMin": 5, "daytrip": true, "trainAccess": true, "driveOfuna": 100, "driveShinjuku": 65, "driveYokohama": 95, "driveOmiya": 60, "description": "飯能市街に隣接する超入門の低山。天覧山からは飯能市街と奥武蔵の山並みが一望できる。ファミリーや登山デビューに最適。", "vibes": ["view", "forest"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall", "winter"]}, {"id": "hiwadayama", "name": "日和田山", "area": "埼玉県", "elevation": 305, "category": "人気の山", "difficulty": "初級", "coeffMax": 7, "coeffMin": 4, "daytrip": true, "trainAccess": true, "driveOfuna": 110, "driveShinjuku": 75, "driveYokohama": 105, "driveOmiya": 65, "description": "埼玉県日高市の低山。高麗駅から徒歩15分と電車登山のアクセス最高峰。岩場の練習ゲレンデがあり、クライミング入門にも使われる。巾着田の彼岸花シーズンも人気。", "vibes": ["view", "forest"], "types": ["easy"], "seasonOk": ["spring", "summer", "fall", "winter"]}];
+
+const TYPES = {
+  ACPS:{emoji:'🏔',name:'山岳探検家',
+    desc:'百名山をリストで管理し、仲間と攻略計画を立てるのが好きなタイプ。岩稜帯や急登も「難しいほど燃える」と感じる。山小屋で翌日のルートを詰める時間が至福。',
+    rare:4.2,axes:['行動派','挑戦派','計画派','仲間派'],repMountains:['槍ヶ岳','剱岳','穂高岳'],
+    compat:{type:'VHFL',msg:'「森の放浪者」と行くと、あなたの綿密な計画に「なんとかなるっしょ」のノリが加わって、想定外の展開も楽しめる最高のバランスになる。'},
+    affilLevel:'ultra',
+    strengths:['ルート計画が得意','体力・技術ともに高い','チームを引っ張るリーダー気質'],
+    weaknesses:['予定変更にストレスを感じやすい','休憩を忘れて突っ走りがち'],
+    bestSeason:'夏（7〜8月）アルプス岩稜',style:'百名山コレクター型'},
+  ACPL:{emoji:'⛰',name:'孤高の登山家',
+    desc:'誰も行かない難峰に一人で黙々と挑む求道者。前日は装備チェックを3回、当日は夜明け前スタート。山でのおしゃべりは最小限、山行記録だけが積み重なっていく。',
+    rare:3.1,axes:['行動派','挑戦派','計画派','ソロ派'],repMountains:['飯豊山','平ヶ岳','光岳'],
+    compat:{type:'AHFS',msg:'「お祭り登山家」と行くと、あなたの完璧な計画の中に予期せぬ笑いが混入してくる。それが案外、山の楽しさを広げてくれる。'},
+    affilLevel:'ultra',
+    strengths:['自己管理と計画が完璧','難コースでも動じない精神力','山のデータ収集が趣味'],
+    weaknesses:['他のペースに合わせるのが苦手','感動を共有しにくい'],
+    bestSeason:'残雪期（5〜6月）静かな北東北',style:'記録更新型ソロ登山家'},
+  ACFS:{emoji:'🧗',name:'ワイルドハイカー',
+    desc:'「とりあえず行こう！」が口癖。前日の思いつきで難しい山に向かうことも。仲間を巻き込むのが得意で体力任せのパワー型。登りながら次の山の話をしている。',
+    rare:8.5,axes:['行動派','挑戦派','自由派','仲間派'],repMountains:['谷川岳','両神山','乾徳山'],
+    compat:{type:'VCPS',msg:'「山岳研究家」と行くと、あなたが勢いで踏み込んだ場所の意外な背景を解説してくれて、登山がぐっと深くなる。'},
+    affilLevel:'high',
+    strengths:['瞬発力と推進力が高い','仲間を楽しませるムードメーカー','体力はだいたい足りる'],
+    weaknesses:['計画不足でヒヤリとすることがある','装備が毎回ギリギリ'],
+    bestSeason:'秋（10月）紅葉×急登',style:'勢い先行型冒険家'},
+  ACFL:{emoji:'🗺',name:'バリエーター',
+    desc:'一般登山道に飽きて、地形図とコンパスで自分だけのルートを歩くタイプ。藪漕ぎも渡渉もいとわない。「道がないところが本当の山」が信条。完全ソロが基本。',
+    rare:2.8,axes:['行動派','挑戦派','自由派','ソロ派'],repMountains:['鋸岳','荒沢岳','笊ヶ岳'],
+    compat:{type:'VHPS',msg:'「山リゾーター」と行くと、快適な山小屋の夜を初めて経験するかも。野宿派のあなたも「これはアリ」と感じるはず。'},
+    affilLevel:'ultra',
+    strengths:['読図・ルーファイの達人','未踏域への探求心','サバイバル能力が高い'],
+    weaknesses:['安全マージンが人より少ない','なぜそのルートか説明しにくい'],
+    bestSeason:'晩夏（8〜9月）残雪のない時期',style:'バリエーション探求型'},
+  AHPS:{emoji:'📸',name:'展望ハンター',
+    desc:'「今日の天気は？」が山を決める最大の基準。快晴の山頂で仲間と絶景を共有することが目的。カメラ機材は充実していて、いい写真のためなら早起きも辞さない。',
+    rare:9.3,axes:['行動派','癒し派','計画派','仲間派'],repMountains:['富士山','立山','木曽駒ヶ岳'],
+    compat:{type:'VCFL',msg:'「隠れ登山家」が知っているマイナーな絶景ポイントを教えてもらえると、あなたのカメラに一生ものの一枚が生まれる。'},
+    affilLevel:'high',
+    strengths:['天気読みと計画が得意','写真スキルが高い','山頂までの全行程を楽しめる'],
+    weaknesses:['曇りだとテンションが落ちる','写真タイムで他のメンバーを待たせがち'],
+    bestSeason:'冬晴れ（12〜2月）雪山×青空',style:'天気ハンター型'},
+  AHPL:{emoji:'🌄',name:'サイレントクライマー',
+    desc:'山頂に着いたら、誰とも話さずただ景色を眺める。前日に地図を読み込んで当日は計画通り静かに歩く。人の少ない平日登山が好き。感動は自分の中だけに留める派。',
+    rare:6.7,axes:['行動派','癒し派','計画派','ソロ派'],repMountains:['大菩薩嶺','霧ヶ峰','美ヶ原'],
+    compat:{type:'ACFS',msg:'「ワイルドハイカー」と行くと、いつもの静かな山行に想定外の展開が加わって、新しい自分を発見するかも。'},
+    affilLevel:'mid',
+    strengths:['マイペースで安定した登山スタイル','準備が丁寧','山の変化への感受性が高い'],
+    weaknesses:['仲間と歩くペース合わせが疲れる','感動を言語化するのが苦手'],
+    bestSeason:'早春（3〜4月）静かな稜線',style:'静観型ソロ登山家'},
+  AHFS:{emoji:'🎉',name:'お祭り登山家',
+    desc:'登山の目的は「仲間と楽しむこと」。山頂よりも道中のにぎやかさと下山後の温泉・ごはんがメイン。初心者を誘って一緒に登るのも大好きな週末登山の主役。',
+    rare:12.4,axes:['行動派','癒し派','自由派','仲間派'],repMountains:['高尾山','金時山','筑波山'],
+    compat:{type:'VCPL',msg:'「深山の求道者」に渋い山に連れて行ってもらうと、にぎやかなあなたがその静寂に初めて気づいて、登山の幅が一気に広がる。'},
+    affilLevel:'low',
+    strengths:['場を盛り上げる天才','初心者を楽しませるのが得意','下山後の計画が完璧'],
+    weaknesses:['ハードな山への準備が後回しになりがち','雨でも「行こう！」と言いがち'],
+    bestSeason:'春（4〜5月）桜と新緑',style:'エンジョイ系ソーシャル型'},
+  AHFL:{emoji:'🎞',name:'フォトウォーカー',
+    desc:'決まったルートも目標もなく、気持ちのいい道を気の向くままに歩く。写真は撮るけどSNSにはあまり上げない。山の時間が自分の時間。誰にも邪魔されたくないひとり時間派。',
+    rare:7.8,axes:['行動派','癒し派','自由派','ソロ派'],repMountains:['三ツ峠山','茅ヶ岳','日向山'],
+    compat:{type:'ACPS',msg:'「山岳探検家」が計画してくれた難峰ルートに便乗すれば、あなたのカメラが普段たどり着けない絶景を捉えられる。'},
+    affilLevel:'mid',
+    strengths:['感性が豊かで写真センスがある','疲れたら休む判断が自然にできる','山に「正解」を求めない'],
+    weaknesses:['ルートを外れて迷うことがある','時間管理がおおざっぱ'],
+    bestSeason:'秋（10〜11月）紅葉',style:'感性型ひとり山歩き'},
+  VCPS:{emoji:'📚',name:'山岳研究家',
+    desc:'登る前に植生・地質・信仰・歴史を調べ尽くす。山頂より「この石灰岩の成因は…」に興味が向く。仲間に解説しながら歩くのが最大の楽しみで、山は「学びの場」。',
+    rare:5.2,axes:['観察派','挑戦派','計画派','仲間派'],repMountains:['白山','至仏山','会津駒ヶ岳'],
+    compat:{type:'AHFS',msg:'「お祭り登山家」グループに混じると、あなたの知識が喜ばれる場面が続出。「それ知らなかった！」の声が一番の報酬。'},
+    affilLevel:'high',
+    strengths:['山の知識量が圧倒的','下調べで全員の安全を底上げできる','観察眼が鋭い'],
+    weaknesses:['解説が長くなって歩みが遅れる','他の人が興味を持たないと少し寂しい'],
+    bestSeason:'初夏（6〜7月）高山植物の季節',style:'フィールドスタディ型'},
+  VCPL:{emoji:'🏮',name:'深山の求道者',
+    desc:'人の来ない奥深い山で静寂だけを味わいに行く。ガイドブックに載っていない山ほど魅力を感じる。誰も踏み込まない季節・ルートを好む、計画緻密な完全ソロ派。',
+    rare:3.4,axes:['観察派','挑戦派','計画派','ソロ派'],repMountains:['和名倉山','荒沢岳','飯豊山'],
+    compat:{type:'AHFL',msg:'「フォトウォーカー」があなたの隣で静かに歩いてくれると、言葉のいらない完璧な山行になる。'},
+    affilLevel:'ultra',
+    strengths:['マイナーな名山の知識が豊富','孤独に強く自己完結できる','自然への観察が深い'],
+    weaknesses:['ルートが難しすぎて遭難リスクが上がる','山仲間を作りにくい'],
+    bestSeason:'晩秋（11月）誰もいない静かな山',style:'奥地探訪型求道者'},
+  VCFS:{emoji:'🚶',name:'山旅人',
+    desc:'目的地を決めずに仲間と「面白そう」な山へ向かう。道中の出会いや偶然の景色こそが醍醐味。計画は緩め、会話は弾む。山は「旅の舞台」だと思っている自由人。',
+    rare:10.1,axes:['観察派','挑戦派','自由派','仲間派'],repMountains:['八ヶ岳','那須岳','巻機山'],
+    compat:{type:'AHPL',msg:'「サイレントクライマー」と歩くと、あなたが見落としていた景色や音に気づかせてくれて、旅がより豊かになる。'},
+    affilLevel:'mid',
+    strengths:['どんな山でも楽しめる柔軟性','予想外の展開を楽しめる','仲間の雰囲気を読める'],
+    weaknesses:['計画がガバガバになることがある','誰かが主導しないとルートが迷走する'],
+    bestSeason:'夏〜秋（8〜10月）縦走旅',style:'のんびり縦走旅人型'},
+  VCFL:{emoji:'🌲',name:'隠れ登山家',
+    desc:'静かな山で誰にも邪魔されずに自分のペースで歩くソロ登山者。難しい山も好きだが人気の百名山よりマイナーな名山に惹かれる。登山記録はこっそりつけている。',
+    rare:5.8,axes:['観察派','挑戦派','自由派','ソロ派'],repMountains:['和名倉山','笠取山','鷹ノ巣山'],
+    compat:{type:'AHPS',msg:'「展望ハンター」をあなたが知っている秘密スポットに案内すると、自分の山の楽しみ方が誰かに伝わる初めての経験になる。'},
+    affilLevel:'high',
+    strengths:['知られざる名山の発掘が得意','自分のペースを守れる','山を深く味わえる'],
+    weaknesses:['情報共有が少なくて孤立しがち','初心者と行くと物足りなくなる'],
+    bestSeason:'平日の秋山（10月）人が少ない山',style:'隠れた名山開拓型'},
+  VHPS:{emoji:'🏕',name:'山リゾーター',
+    desc:'快適な山小屋・美味しい山ごはん・絶景の朝焼けをセットで楽しむのが理想。計画は念入りで宿の予約も食事も完璧に準備する。仲間と「また来ようね」と言い合う山が好き。',
+    rare:11.2,axes:['観察派','癒し派','計画派','仲間派'],repMountains:['燕岳','蝶ヶ岳','北横岳'],
+    compat:{type:'ACFL',msg:'「バリエーター」の予定外の提案を受け入れると、完璧な計画に「予想外の感動」が加わってさらに豊かになる。'},
+    affilLevel:'low',
+    strengths:['山小屋・テント場の情報収集が得意','快適な環境を整えるプロ','仲間を飽きさせない計画力'],
+    weaknesses:['天候悪化でルーティンが崩れるとつらい','荷物が多くなりがち'],
+    bestSeason:'夏（7〜8月）燕岳・表銀座',style:'高山リゾート型'},
+  VHPL:{emoji:'🧘',name:'瞑想ハイカー',
+    desc:'山に行く目的は「頭と心をリセットすること」。静かなルートを一人で歩きながら日常の思考を整理する。山頂より静かな樹林帯を歩いている時間に一番価値を感じる。',
+    rare:8.9,axes:['観察派','癒し派','計画派','ソロ派'],repMountains:['雲取山','大菩薩嶺','瑞牆山'],
+    compat:{type:'ACFS',msg:'「ワイルドハイカー」の「とりあえず行こう！」に乗っかると、計画なしの山が意外とリフレッシュになることを発見できる。'},
+    affilLevel:'mid',
+    strengths:['自然の中での感受性が高い','焦らず心の余裕がある','一人時間を最大限に活かせる'],
+    weaknesses:['天気が悪いと行く気が出ない','単独行動が増えて記録が残りにくい'],
+    bestSeason:'初夏（5〜6月）新緑の森',style:'心のリセット型'},
+  VHFS:{emoji:'🌸',name:'山ピクニック派',
+    desc:'花が咲いたら高尾山、紅葉なら奥多摩、雪があったら丹沢。自然のイベントに合わせて仲間を誘う。難易度より「今日の気候・景色が気持ちいいか」が最優先。',
+    rare:13.6,axes:['観察派','癒し派','自由派','仲間派'],repMountains:['高尾山','大山','三ツ峠山'],
+    compat:{type:'VCPL',msg:'「深山の求道者」が知っている人知れぬ花スポットに案内してもらえると、あなたのピクニックが格段にレベルアップする。'},
+    affilLevel:'low',
+    strengths:['季節感を大切にする感性','初心者を楽しませる雰囲気作りが上手','誰でも歓迎する懐の広さ'],
+    weaknesses:['山のスキルアップが後回しになりがち','難しい山への挑戦動機が少ない'],
+    bestSeason:'春（4〜5月）花の山',style:'季節イベント型'},
+  VHFL:{emoji:'🌿',name:'森の放浪者',
+    desc:'目的地もゴールも決めずに気持ちのいい森の中をひたすら歩く。道標よりも光や音、苔や木の根の感触が好き。地図より感覚で動く、山の中だけで生きている時間が最高。',
+    rare:6.3,axes:['観察派','癒し派','自由派','ソロ派'],repMountains:['陣馬山','御岳山','高尾山'],
+    compat:{type:'ACPS',msg:'「山岳探検家」の計画力を借りると、あなたの森歩きに「遠い名山」への到達感が加わって、新しい達成感を体験できる。'},
+    affilLevel:'mid',
+    strengths:['五感で山を感じる豊かさ','疲れ知らずで長時間歩ける','山を「遊び場」として使いこなす'],
+    weaknesses:['ルートの逸脱リスクがある','時間の感覚が薄れて下山が遅くなる'],
+    bestSeason:'初夏（5〜6月）緑が濃くなる森',style:'自然没入型'},
+};
+
+
+
+const TYPE_SLUGS = {'ACPS':'mountain-explorer','ACPL':'solitary-climber','ACFS':'wild-hiker','ACFL':'variation-seeker','AHPS':'view-hunter','AHPL':'silent-climber','AHFS':'party-hiker','AHFL':'photo-walker','VCPS':'mountain-researcher','VCPL':'deep-mountain-seeker','VCFS':'mountain-traveler','VCFL':'hidden-hiker','VHPS':'mountain-resort','VHPL':'meditation-hiker','VHFS':'mountain-picnic','VHFL':'forest-wanderer'};
+const RARE_LABELS  = {ultra:'超希少タイプ',high:'レアタイプ',mid:'標準タイプ',low:'ポピュラータイプ'};
+const RARE_CLASSES = {ultra:'rare-ultra',high:'rare-high',mid:'rare-mid',low:'rare-low'};
+
+const SEASON_MAP = {1:'winter',2:'winter',3:'spring',4:'spring',5:'spring',6:'summer',7:'summer',8:'summer',9:'fall',10:'fall',11:'fall',12:'winter'};
+const CURRENT_SEASON = SEASON_MAP[new Date().getMonth()+1];
+
+function getAffilItems(m){
+  const c = m.coeffMax||20;
+  if(c>=50) return [{label:'登山靴（上級向け）',link:'https://www.amazon.co.jp/s?k=登山靴+ゴアテックス'},{label:'ヘルメット',link:'https://www.amazon.co.jp/s?k=登山+ヘルメット'}];
+  if(c>=30) return [{label:'トレッキングシューズ',link:'https://www.amazon.co.jp/s?k=トレッキングシューズ'},{label:'トレッキングポール',link:'https://www.amazon.co.jp/s?k=トレッキングポール'}];
+  return [{label:'ハイキングシューズ',link:'https://www.amazon.co.jp/s?k=ハイキングシューズ'},{label:'デイパック 20L',link:'https://www.amazon.co.jp/s?k=デイパック+登山+20L'}];
+}
+
+const answers={};
+let current=0;
+const TOTAL=9;
+// 4軸スコア: A>0=Action, V<0=View / C>0=Challenge, H<0 / P>0=Plan, F<0 / S>0=Social, L<0
+const axisScore={av:0,ch:0,pf:0,sl:0};
+
+// choice要素のタップイベント（iOS対応）
+document.addEventListener('DOMContentLoaded', function(){
+  // iOS Safari二重発火を完全防止
+  var _lock = false;
+  function fireAnswer(key, val) {
+    if (_lock) return;
+    if (!key || val === null || val === undefined) return;
+    _lock = true;
+    answer(key, isNaN(val) ? val : Number(val));
+    setTimeout(function(){ _lock = false; }, 800);
+  }
+  document.querySelectorAll('.choice').forEach(function(el){
+    var _sy = 0;
+    el.addEventListener('touchstart', function(e){
+      _sy = e.touches[0].clientY;
+    }, {passive: true});
+    el.addEventListener('touchend', function(e){
+      if (Math.abs(e.changedTouches[0].clientY - _sy) > 8) return;
+      e.preventDefault();
+      fireAnswer(el.getAttribute('data-key'), el.getAttribute('data-val'));
+    }, {passive: false});
+    el.addEventListener('click', function(e){
+      if (e.sourceCapabilities && e.sourceCapabilities.firesTouchEvents) return;
+      fireAnswer(el.getAttribute('data-key'), el.getAttribute('data-val'));
+    });
+  });
+});
+
+function show(id){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='intro') buildIntroGrid();
+}
+function buildIntroGrid(){
+  const TYPE_ORDER = ['ACPS','ACPL','ACFS','ACFL','AHPS','AHPL','AHFS','AHFL','VCPS','VCPL','VCFS','VCFL','VHPS','VHPL','VHFS','VHFL'];
+  const grid = document.getElementById('intro-type-grid');
+  if(!grid) return;
+  grid.innerHTML = TYPE_ORDER.map(code => {
+    const t = TYPES[code];
+    const svg = MINI_SVGS[code] || '';
+    return '<div class="intro-type-item"><div class="intro-type-illust">'+svg+'</div><div class="intro-type-name">'+t.name+'</div></div>';
+  }).join('');
+}
+function startQuiz(){current=1;show('q'+current);}
+
+function answer(key,val){
+  answers[key]=val;
+  // 軸スコア更新
+  if(key==='a1'||key==='a2') axisScore.av += val==='A'?1:-1;
+  if(key==='a3'||key==='a4') axisScore.ch += val==='C'?1:-1;
+  if(key==='a5'||key==='a6') axisScore.pf += val==='P'?1:-1;
+  if(key==='a7')              axisScore.sl += val==='S'?1:-1;
+  current++;
+  if(current<=TOTAL) show('q'+current);
+  else showResult();
+}
+
+function restart(){
+  if(window._hideStickyOnRestart) window._hideStickyOnRestart();
+  Object.keys(answers).forEach(k=>delete answers[k]);
+  axisScore.av=axisScore.ch=axisScore.pf=axisScore.sl=0;
+  current=0;
+  show('intro');
+}
+
+function getTypeCode(){
+  const a=axisScore.av>=0?'A':'V';
+  const c=axisScore.ch>=0?'C':'H';
+  const p=axisScore.pf>=0?'P':'F';
+  const s=axisScore.sl>=0?'S':'L';
+  return a+c+p+s;
+}
+
+function getDrive(m){
+  const map={ofuna:'driveOfuna',shinjuku:'driveShinjuku',yokohama:'driveYokohama',omiya:'driveOmiya'};
+  return m[map[answers.dep||'ofuna']]||999;
+}
+function fmtTime(mins){
+  if(!mins||mins===999)return'—';
+  const h=Math.floor(mins/60),m=mins%60;
+  return m?h+'時間'+m+'分':h+'時間';
+}
+
+function getGearList(m){
+  var coeff=m.coeffMax||20;
+  var gl=m.gearLinks||[];
+  var glMap={};
+  gl.forEach(function(g){ glMap[g.id]=g; });
+  function gear(id,icon,name,note){
+    var g=glMap[id]||{};
+    return {icon:icon,name:g.affiliateName||name,note:note,url:g.affiliateUrl||''};
+  }
+  var base=[
+    gear('boots','👟','登山靴','トレイルシューズ以上推奨'),
+    gear('rain','🧥','レインウェア','山の天気は急変します'),
+    gear('pack','🎒','ザック',coeff<=20?'15〜20L程度':'25〜30L程度'),
+    gear('water','💧','水・行動食','1L以上＋補給食を持参'),
+  ];
+  if(coeff>=30) base.push(gear('gaiter','🧦','ゲイター（スパッツ）','急登・泥道・雪道の足首を保護'));
+  if(coeff>=45) base.push(gear('pole','🦯','ストック（トレッキングポール）','急登・下りの膝保護に'));
+  var crampon=m.calLegend&&m.calLegend.some(function(l){return l.indexOf('アイゼン')>-1&&l.indexOf('不要')===-1;});
+  if(crampon) base.push(gear('crampon','❄️','軽アイゼン','冬季・積雪期に必要'));
+  return base;
+}
+function getReasons(m,depLabel,driveMin){
+  var r=[];
+  if(m.daytrip) r.push({icon:'🌅',text:'日帰りで楽しめる',sub:'日帰りOKなコース設定'});
+  else r.push({icon:'🏕',text:'山小屋泊でゆったり',sub:'宿泊でしか見られない景色がある'});
+  if(m.trainAccess) r.push({icon:'🚃',text:'電車・バスで行ける',sub:'公共交通機関でアクセス可能'});
+  else r.push({icon:'🚗',text:depLabel+'から'+fmtTime(driveMin),sub:'車でスムーズにアクセス可能'});
+  var coeff=m.coeffMax||20;
+  if(coeff<=22) r.push({icon:'🌱',text:'初心者でも安心のルート',sub:'整備されていて歩きやすい'});
+  else if(coeff>=50) r.push({icon:'🏔',text:'やりがいのある本格コース',sub:'達成感は最高クラス'});
+  else r.push({icon:'⚖️',text:'難易度と景色のバランスが良い',sub:'中級者に最適なコース'});
+  return r.slice(0,3);
+}
+
+function scoreMount(m,typeCode){
+  let score=0;
+  const drive=getDrive(m);
+  const coeffLimit=answers.coeff||999;
+  const v=m.vibes||[];
+  const a=typeCode[0],c=typeCode[1],p=typeCode[2],s=typeCode[3];
+
+  // ── 距離スコア（出発地との近さ）──
+  // 近い山ほど高スコアだが、遠征好きタイプは減衰を抑える
+  const distDecay = (a==='A'&&c==='C') ? 4 : 3;
+  score += Math.max(0, (360-drive)/distDecay);
+
+  // ── 体力マッチ（コース定数）──
+  if(coeffLimit<999){
+    const ratio=(m.coeffMax||20)/coeffLimit;
+    if(ratio>=0.75&&ratio<=1.05)  score+=45; // ピッタリ
+    else if(ratio>=0.55&&ratio<0.75) score+=25;
+    else if(ratio>=1.05&&ratio<=1.25) score+=15; // 少しきつめ
+    else if(ratio<0.4)            score+=5;
+    // 超過ペナルティ（きつすぎる）
+    if(m.coeffMax>coeffLimit) score-=Math.min(60,(m.coeffMax-coeffLimit)*2);
+  }
+
+  // ── 軸A：アクティブ(A) vs ヴィジュアル(V) ──
+  if(a==='A'){
+    if(v.includes('rock'))    score+=35; // 岩場・バリエーション
+    if(v.includes('ridge'))   score+=30; // 稜線歩き
+    if(v.includes('view'))    score+=22; // 眺望
+    if(v.includes('volcano')) score+=18; // 火山
+    if(m.types&&m.types.includes('adventure'))  score+=25;
+    if(m.types&&m.types.includes('challenge'))  score+=20;
+  } else { // V
+    if(v.includes('forest'))   score+=38; // 樹林帯・癒し
+    if(v.includes('wetland'))  score+=30; // 湿原・お花畑
+    if(v.includes('highland')) score+=25; // 高原
+    if(v.includes('view'))     score+=20; // 景色（V派にも有効）
+    if(v.includes('historic')) score+=15; // 歴史・寺社
+    if(m.types&&m.types.includes('casual'))     score+=20;
+    if(m.types&&m.types.includes('easy'))       score+=15;
+  }
+
+  // ── 軸C：チャレンジ(C) vs ヒーリング(H) ──
+  if(c==='C'){
+    if(m.coeffMax>=40)  score+=30;
+    else if(m.coeffMax>=28) score+=18;
+    if(v.includes('rock'))    score+=20;
+    if(v.includes('ridge'))   score+=18;
+    if(m.types&&m.types.includes('challenge')) score+=20;
+    if(m.category==='百名山') score+=12; // 百名山制覇志向
+  } else { // H
+    if(m.coeffMax<=20)  score+=30;
+    else if(m.coeffMax<=30) score+=15;
+    if(v.includes('forest'))  score+=20;
+    if(v.includes('wetland')) score+=18;
+    if(v.includes('highland'))score+=15;
+    if(m.daytrip)             score+=12; // 気軽に行きたい
+    if(m.types&&m.types.includes('easy')) score+=18;
+  }
+
+  // ── 軸P：プランナー(P) vs フリー(F) ──
+  if(p==='P'){
+    if(m.category==='百名山') score+=25; // 目標がはっきりしている
+    if(m.category==='二百名山') score+=15;
+    if(v.includes('ridge'))   score+=12; // 縦走計画好き
+    if(m.types&&m.types.includes('collector')) score+=20;
+  } else { // F
+    if(m.types&&m.types.includes('casual'))   score+=15;
+    if(v.includes('accessible'))              score+=12; // アクセス良く気軽
+    score+=8; // F派は分散させる
+  }
+
+  // ── 軸S：ソロ(S) vs ソーシャル(L) ──
+  if(s==='S'){
+    if(m.trainAccess)    score+=18; // 電車で一人でも行きやすい
+    if(m.daytrip)        score+=12;
+    if(!v.includes('accessible')) score+=8; // 人が少なそうな山に加点
+  } else { // L
+    if(v.includes('accessible')) score+=15; // 友人を連れて行きやすい
+    if(m.trainAccess)             score+=12;
+    if(m.daytrip)                 score+=10;
+    if(m.types&&m.types.includes('casual')) score+=15;
+    if(!m.daytrip&&m.coeffMax>=30) score+=8; // 山小屋で語り合う
+  }
+
+  // ── ベーススコア ──
+  if(m.daytrip)             score+=6;
+  if(m.trainAccess)         score+=5;
+  if(m.category==='百名山') score+=8;
+
+  return score;
+}
+
+function showResult(){
+  const typeCode=getTypeCode();
+  const type=TYPES[typeCode]||TYPES['VHFS'];
+  const depLabel={ofuna:'大船・横浜',shinjuku:'新宿・渋谷',omiya:'大宮・浦和'}[answers.dep]||'大船・横浜';
+
+  // スコアリング
+  const scored=MOUNTAINS.map(m=>{const sc=scoreMount(m,typeCode);const dr=getDrive(m);return Object.assign({},m,{score:sc,drive:dr});}).sort((a,b)=>b.score-a.score);
+  const top3=scored.slice(0,3);
+
+  // タイプカード
+  const rareLabel=RARE_LABELS[type.affilLevel];
+  const rareClass=RARE_CLASSES[type.affilLevel];
+  const axesHtml=type.axes.map(a=>'<span class="axis-badge">'+a+'</span>').join('');
+  const personSvg = PERSON_SVGS[typeCode] || '';
+  document.getElementById('result-type-card').innerHTML=
+    '<div class="type-card">'+
+    '<div class="type-card-bg">'+type.emoji+'</div>'+
+    '<div class="type-card-inner">'+
+    personSvg+
+    '<div class="type-info">'+
+    '<div class="type-code">'+typeCode+'型</div>'+
+    '<div class="type-name">'+type.name+'</div>'+
+    '<div class="type-desc" style="font-size:12px;margin-top:6px;">'+type.desc+'</div>'+
+
+    '<div class="type-meta" style="margin-top:8px;">'+
+    '<span class="type-rare '+rareClass+'">'+rareLabel+' · '+type.rare+'%</span>'+
+    (type.style ? '<span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);">'+type.style+'</span>' : '')+
+    '</div>'+
+    '<div class="type-axes" style="margin-top:6px;">'+axesHtml+'</div>'+
+    '<div style="margin-top:12px;">'+
+    '<a href="/type/'+TYPE_SLUGS[typeCode]+'/" style="display:block;text-align:center;background:rgba(255,255,255,0.15);color:white;font-size:12px;font-weight:700;padding:8px;border-radius:10px;text-decoration:none;border:1px solid rgba(255,255,255,0.3);">'+
+    'このタイプの詳細ページを見る →'+'</a>'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
+    '</div>';
+
+  document.getElementById('result-subtitle').textContent=depLabel+'発 · '+type.name+'におすすめの山';
+
+  document.getElementById('result-cards').innerHTML=top3.map((m,i)=>{
+    const catClass=m.category==='百名山'?'rb-100':'rb-pop';
+    const dayBadge=m.daytrip?'<span class="rb rb-day">🌅 日帰り可</span>':'<span class="rb rb-stay">🏕 宿泊推奨</span>';
+    const trainBadge=m.trainAccess?'<span class="rb rb-train">🚃 電車OK</span>':'';
+    const ranks=['r1','r2','r3'];
+    const reasons=getReasons(m, depLabel, m.drive);
+    const gears=getGearList(m);
+    const reasonsHtml=reasons.map(r=>
+      '<div class="reason-item"><span class="reason-icon">'+r.icon+'</span><div><div class="reason-text">'+r.text+'</div><div class="reason-sub">'+r.sub+'</div></div></div>'
+    ).join('');
+    const gearsHtml=gears.map(function(g){
+      var inner='<span class="gear-icon">'+g.icon+'</span><div><div class="gear-name">'+g.name+'</div><div class="gear-note">'+g.note+'</div></div>';
+      if(g.url) return '<a href="'+g.url+'" target="_blank" rel="noopener" class="gear-item gear-item-link">'+inner+'<span class="gear-link-arrow">›</span></a>';
+      return '<div class="gear-item">'+inner+'</div>';
+    }).join('');
+    const accessHtml='<div class="access-row">'+
+      '<div class="access-item"><span class="access-icon">🚗</span><div class="access-label">'+depLabel+'から</div><div class="access-val">'+fmtTime(m.drive)+'</div></div>'+
+      (m.trainAccess?'<div class="access-item"><span class="access-icon">🚃</span><div class="access-label">電車・バス</div><div class="access-val access-train">'+(typeof m.trainAccess==='string'?m.trainAccess:'公共交通機関でアクセス可')+'</div></div>':'')+'</div>';
+    const isFirst=(i===0);
+    return '<div class="result-card'+(isFirst?' result-card-top':'')+'">'+
+      '<div class="rc-top"><div class="rank-badge '+ranks[i]+'">'+(i+1)+'</div><div style="flex:1"><div class="rc-name">'+m.name+'</div><div class="rc-area">'+m.area+' · '+(m.elevation||0).toLocaleString()+'m</div></div></div>'+
+      '<div class="rc-badges"><span class="rb '+catClass+'">'+m.category+'</span>'+dayBadge+trainBadge+'</div>'+
+      '<div class="rc-section-label">📍 あなたにおすすめの理由</div>'+
+      '<div class="reasons-block">'+reasonsHtml+'</div>'+
+      '<div class="rc-section-label">🎒 必要な装備</div>'+
+      '<div class="gears-block">'+gearsHtml+'</div>'+
+      '<div class="rc-section-label">🚌 アクセス</div>'+
+      accessHtml+
+      '<a href="/mountains/'+m.id+'/" class="rc-cta'+(isFirst?' rc-cta-primary':'')+'">'+
+        (i===0?'この山、行ってみる →':i===1?'この山も見てみる →':'こっちも気になる →')+'</a>'+
+    '</div>';
+  }).join('');
+
+  // 相性カード
+  const compat=type.compat;
+  const compatType=compat?TYPES[compat.type]:null;
+  if(compatType){
+    const compatSvg = MINI_SVGS[compat.type] || '';
+    document.getElementById('compat-area').innerHTML=
+      '<div class="compat-card">'+
+      '<div class="compat-header"><span style="font-size:18px;">🤝</span><span class="compat-title">相性の良い登山仲間</span></div>'+
+      '<div class="compat-body">'+
+      '<div class="compat-person">'+compatSvg+'<div class="compat-person-name">'+compatType.name+'</div></div>'+
+      '<span class="compat-msg">'+compat.msg+'</span>'+
+      '</div>'+
+      '</div>';
+  }
+
+  // シェア
+  const shareText='登山タイプ診断の結果\n私は「'+type.name+'」（'+typeCode+'型）でした！\n診断者の'+type.rare+'%の'+RARE_LABELS[type.affilLevel]+'\nあなたも試してみよう→';
+  const shareUrlWithType='https://tozan-navi.com/recommend/'+typeCode+'/';
+  document.getElementById('share-x').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText)+'&url='+encodeURIComponent(shareUrlWithType);
+  document.getElementById('share-line').href='https://line.me/R/msg/text/?'+encodeURIComponent(shareText+'\n'+shareUrlWithType);
+  window._shareNative=function(){
+    if(navigator.share){ navigator.share({title:'私は「'+type.name+'」でした！ - Yamatch登山タイプ診断',url:shareUrlWithType}); }
+    else{ navigator.clipboard.writeText(shareUrlWithType).then(()=>alert('URLをコピーしました')); }
+  };
+  var topShareBtn=document.getElementById('share-top');
+  if(topShareBtn) topShareBtn.style.display='flex';
+
+
+  // 固定CTAバー制御
+  const top1 = top3[0];
+  if(top1){
+    document.getElementById('sticky-cta-name').textContent = top1.name;
+    document.getElementById('sticky-cta-link').href = '/mountains/'+top1.id+'/';
+    document.getElementById('sticky-cta-link').textContent = 'この山、行ってみる →';
+  }
+  // スクロールで表示
+  setTimeout(function(){
+    document.getElementById('sticky-cta').classList.add('visible');
+  }, 800);
+  // result非表示時は隠す
+  window._hideStickyOnRestart = function(){
+    document.getElementById('sticky-cta').classList.remove('visible');
+  };
+  show('result');
+}
+
+function copyResult(){
+  navigator.clipboard.writeText('https://tozan-navi.com/recommend/')
+    .then(()=>alert('URLをコピーしました！友達にシェアしてね🗻'));
+}
+// JSONから最新データを読み込んでからグリッドを構築
+document.addEventListener('DOMContentLoaded', function(){
+  fetch('/data/mountains.json')
+    .then(function(r){ return r.json(); })
+    .then(function(jsonData){
+      jsonData.forEach(function(jmt){
+        var idx = MOUNTAINS.findIndex(function(m){ return m.id === jmt.id; });
+        if(idx < 0) return;
+        var m = MOUNTAINS[idx];
+        if(jmt.driveOfuna) m.driveOfuna = jmt.driveOfuna;
+        if(jmt.driveShinjuku) m.driveShinjuku = jmt.driveShinjuku;
+        if(jmt.driveYokohama) m.driveYokohama = jmt.driveYokohama;
+        if(jmt.driveOmiya) m.driveOmiya = jmt.driveOmiya;
+        if(jmt.coeffMin) m.coeffMin = jmt.coeffMin;
+        if(jmt.coeffMax) m.coeffMax = jmt.coeffMax;
+        if(jmt.calLegend) m.calLegend = jmt.calLegend;
+        if(jmt.seasonCalendar) m.seasonCalendar = jmt.seasonCalendar;
+        if(jmt.gearLinks) m.gearLinks = jmt.gearLinks;
+      });
+    })
+    .catch(function(){})
+    .finally(function(){
+      buildIntroGrid();
+      // ?type=XXX でアクセスした場合は診断結果も表示
+      var typeParam = new URLSearchParams(location.search).get('type');
+      if(typeParam){
+        // answersを設定してshowResultを呼ぶ
+        setTimeout(function(){
+          if(typeof showResultByType === 'function') showResultByType(typeParam);
+          else if(typeof showResult === 'function') showResult();
+        }, 100);
+      }
+    });
+});
+</script>
+
+<nav style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:768px;background:white;border-top:1px solid #e8e4dc;display:flex;z-index:100;box-shadow:0 -2px 12px rgba(0,0,0,0.08);padding-bottom:env(safe-area-inset-bottom,0px);"><a href="/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#a09888;gap:3px;"><span style="color:#a09888;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span style="font-size:10px;font-weight:500;font-family:sans-serif;">ホーム</span></a><a href="/recommend/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#4e6535;gap:3px;"><span style="color:#4e6535;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="12,3 14,10 12,12 10,10" fill="currentColor" stroke="none"/><polygon points="12,21 10,14 12,12 14,14" fill="currentColor" opacity="0.5" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="white" stroke="none"/></svg></span><span style="font-size:10px;font-weight:700;font-family:sans-serif;">診断</span></a><a href="/articles/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#a09888;gap:3px;"><span style="color:#a09888;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span><span style="font-size:10px;font-weight:500;font-family:sans-serif;">記事</span></a><a href="/mypage/" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;text-decoration:none;color:#a09888;gap:3px;"><span style="color:#a09888;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span style="font-size:10px;font-weight:500;font-family:sans-serif;">マイページ</span></a></nav>
+<div style="height:64px;"></div>
+</body>
+</html>
