@@ -923,6 +923,8 @@ function App() {
             <h1 style={{fontFamily:"Georgia,serif",fontSize:"20px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
           </div>
           <div style={{display:"flex",gap:"5px"}}>
+            {/* 使い方ボタン */}
+            <a href="/howto/" style={{height:"34px",borderRadius:"8px",background:"rgba(255,255,255,0.14)",border:"0.5px solid rgba(255,255,255,0.25)",display:"flex",alignItems:"center",justifyContent:"center",textDecoration:"none",padding:"0 10px",fontSize:"12px",fontWeight:"600",color:"white",whiteSpace:"nowrap"}}>使い方</a>
             <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{width:"34px",height:"34px",borderRadius:"8px",background:"rgba(255,255,255,0.14)",border:"0.5px solid rgba(255,255,255,0.25)",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-3"/></svg>
             </button>
