@@ -1987,37 +1987,28 @@ const axisScore={av:0,ch:0,pf:0,sl:0};
 
 // choice要素のタップイベント（iOS対応）
 document.addEventListener('DOMContentLoaded', function(){
-  // 二重発火防止: グローバルロックで確実にブロック
-  var _answerLock = false;
-  function fireAnswer(key, val) {
-    if (_answerLock) return;
-    if (!key || !val) return;
-    _answerLock = true;
-    var parsed = isNaN(val) ? val : Number(val);
-    answer(key, parsed);
-    setTimeout(function(){ _answerLock = false; }, 600);
-  }
+  // 二重発火防止: touchend で処理し、直後のclickをブロック
   document.querySelectorAll('.choice').forEach(function(el){
-    // touchstart: スクロール判定用の座標記録のみ
-    var _startY = 0;
-    el.addEventListener('touchstart', function(e){
-      _startY = e.touches[0].clientY;
-    }, {passive: true});
-    // touchend: スクロールでない場合のみ処理
+    var _touched = false;
     el.addEventListener('touchend', function(e){
-      var dy = Math.abs(e.changedTouches[0].clientY - _startY);
-      if (dy > 8) return; // 縦スクロールはスキップ
-      e.preventDefault();
+      e.preventDefault(); // clickの二重発火を防ぐ
+      _touched = true;
       var key = el.getAttribute('data-key');
       var val = el.getAttribute('data-val');
-      fireAnswer(key, val);
+      if(key && val){
+        var parsed = isNaN(val) ? val : Number(val);
+        answer(key, parsed);
+      }
+      setTimeout(function(){ _touched = false; }, 500);
     }, {passive: false});
-    // click: タッチデバイス以外（マウス）用
     el.addEventListener('click', function(e){
-      if (e.sourceCapabilities && e.sourceCapabilities.firesTouchEvents) return;
+      if(_touched){ _touched = false; return; } // touchendで処理済みならスキップ
       var key = el.getAttribute('data-key');
       var val = el.getAttribute('data-val');
-      fireAnswer(key, val);
+      if(key && val){
+        var parsed = isNaN(val) ? val : Number(val);
+        answer(key, parsed);
+      }
     });
   });
 });
