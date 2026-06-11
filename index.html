@@ -1442,12 +1442,7 @@ function App() {
                       >
                         <span style={{fontSize:"12px"}}>{climbedMap[m.id] ? "🚩" : "🏳️"}</span>
                       </button>
-                      {/* 登頂済みバッジ */}
-                      {climbedMap[m.id] && (
-                        <span style={{position:"absolute",bottom:"7px",left:"8px",fontSize:"9px",fontWeight:"600",color:"#4a6838",background:"#eaf3e0",border:"0.5px solid #b8d8a0",borderRadius:"4px",padding:"1px 5px",zIndex:2}}>
-                          🚩 {climbedMap[m.id].date ? new Date(climbedMap[m.id].date).toLocaleDateString("ja-JP",{month:"numeric",day:"numeric"}) : "登頂済"}
-                        </span>
-                      )}
+                      {/* 登頂済みバッジ（削除：右上の🚩アイコンのみで表示）*/}
                       {/* 背景SVG山シルエット */}
                       <svg style={{
                         position: "absolute", right: "-8px", bottom: "-4px",
@@ -1458,18 +1453,10 @@ function App() {
                         <polygon points="75,20 100,55 50,55"/>
                         <polygon points="25,30 55,55 0,55"/>
                       </svg>
-                      {/* 相性度バッジ */}
-                      {(function(){ var af = calcAffinity(m); return af ? (
-                        <div style={{display:"flex",alignItems:"center",gap:"3px",marginBottom:"1px",position:"relative",zIndex:1}}>
-                          <div style={{height:"4px",flex:1,background:"rgba(0,0,0,0.08)",borderRadius:"2px",overflow:"hidden"}}>
-                            <div style={{height:"100%",width:af+"%",background:af>=80?"#4e8535":af>=65?"#7a9a50":"#a8b888",borderRadius:"2px",transition:"width 0.6s ease"}}></div>
-                          </div>
-                          <span style={{fontSize:"9px",fontWeight:"700",color:af>=80?"#3a6828":af>=65?"#5a7838":"#7a8860",whiteSpace:"nowrap"}}>相性{af}%</span>
-                        </div>
-                      ) : null; })()}
                       {/* 山名 */}
-                      <div style={{ fontSize: "14px", fontWeight: "700", color: "#1e1a16", position: "relative", zIndex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", paddingRight: "18px" }}>
+                      <div style={{ fontSize: "14px", fontWeight: "700", color: "#1e1a16", position: "relative", zIndex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", paddingRight: "18px", display:"flex", alignItems:"center", gap:"4px" }}>
                         {m.regulated && <span style={{ color: "#e67700", marginRight: "3px" }}>⚠️</span>}{m.name}
+                        {(function(){ var af = calcAffinity(m); return af ? <span style={{fontSize:"9px",fontWeight:"700",color:af>=80?"#3a6828":af>=65?"#5a7838":"#8a9870",flexShrink:0,marginLeft:"2px"}}>♡{af}%</span> : null; })()}
                       </div>
                       {/* エリア */}
                       <div style={{ fontSize: "10px", color: "#8a8078", position: "relative", zIndex: 1 }}>{(function(a){ return /長野県/.test(a) ? a : a.replace(/^(東京都|北海道|.+?[都道府県]).*/, "$1"); })(m.area)}</div>
