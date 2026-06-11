@@ -13,6 +13,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;background:#f0ede5;color:#3a3530;line-height:1.6;font-size:15px}
@@ -38,54 +39,54 @@ a{color:inherit;text-decoration:none}
 main{max-width:760px;margin:0 auto;padding:16px 14px 48px}
 
 /* ── 記事カード（全体リンク・背景SVG方式） ── */
-.article-grid{display:flex;flex-direction:column;gap:10px}
-
-.article-card{
-  display:block;
-  border-radius:14px;
-  overflow:hidden;
-  position:relative;
-  transition:transform .15s cubic-bezier(.34,1.56,.64,1),box-shadow .15s;
-  -webkit-tap-highlight-color:rgba(0,0,0,.06);
-}
-.article-card:active{transform:scale(.98)}
-
-/* カード内レイアウト */
-.card-content{
-  position:relative;z-index:1;
-  padding:14px 16px 13px;
-  display:flex;flex-direction:column;gap:5px;
-}
-/* 背景SVGコンテナ */
-.card-bg-svg{
-  position:absolute;
-  right:0;bottom:0;
-  width:120px;height:100%;
-  pointer-events:none;
-  z-index:0;
-}
-.card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.card-tag{font-size:10px;font-weight:700;padding:2px 9px;border-radius:20px;letter-spacing:.04em;flex-shrink:0}
-.card-arrow{font-size:16px;font-weight:300;opacity:.6;flex-shrink:0;transition:transform .15s}
-.article-card:hover .card-arrow{transform:translateX(3px)}
-.card-title{font-size:14px;font-weight:700;line-height:1.4;padding-right:80px}
-.card-pills{display:flex;gap:5px;flex-wrap:wrap}
-.card-pill{font-size:10px;font-weight:500;padding:2px 7px;border-radius:6px}
+/* ── バナーカード ── */
+.banner-card{margin:0 0 12px;border-radius:16px;overflow:visible;cursor:pointer;-webkit-tap-highlight-color:transparent;position:relative;}
+.banner{position:relative;height:96px;border-radius:16px;overflow:hidden;transition:transform .18s cubic-bezier(.34,1.4,.64,1);box-shadow:0 3px 16px rgba(0,0,0,0.14);}
+.banner-card:active .banner{transform:scale(0.965);}
+.banner-bg{position:absolute;inset:0;}
+.banner-fog{position:absolute;inset:0;background:linear-gradient(105deg,rgba(255,255,255,0.2) 0%,transparent 50%);}
+.banner-body{position:absolute;inset:0;z-index:4;padding:12px 14px 11px;display:flex;flex-direction:column;justify-content:flex-end;}
+.banner-eyebrow{font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:4px;display:flex;align-items:center;gap:5px;}
+.banner-eyebrow-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.banner-title{font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;font-size:14px;font-weight:900;line-height:1.2;margin-bottom:6px;letter-spacing:-0.02em;}
+.banner-pills{display:flex;gap:5px;flex-wrap:wrap;}
+.banner-pill{font-size:9px;font-weight:600;padding:3px 9px;border-radius:20px;letter-spacing:0.02em;}
+.banner-indicator{position:absolute;top:10px;right:10px;z-index:5;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .3s cubic-bezier(.34,1.4,.64,1);}
+.banner-card.open .banner-indicator{transform:rotate(90deg);}
+.banner-badge{position:absolute;top:10px;right:44px;z-index:5;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:0.04em;}
+.banner-expand{max-height:0;overflow:hidden;transition:max-height .42s cubic-bezier(0.4,0,0.2,1),opacity .3s ease .05s;opacity:0;background:white;border-radius:0 0 16px 16px;margin:0 2px;box-shadow:0 8px 20px rgba(0,0,0,0.08);}
+.banner-card.open .banner-expand{max-height:700px;opacity:1;}
+.expand-inner{padding:16px 16px 20px;}
+.expand-lead{font-size:12px;color:#7a6e65;line-height:1.8;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #f0ece5;}
+.expand-list{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.expand-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;text-decoration:none;color:inherit;background:#faf8f5;border:1px solid #ede8e0;transition:background .12s;}
+.expand-item:active{background:#f0ede5;}
+.expand-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:white;flex-shrink:0;}
+.expand-item-body{flex:1;}
+.expand-item-name{font-size:13px;font-weight:700;color:#2a2218;}
+.expand-item-sub{font-size:10px;color:#9a8e82;margin-top:2px;line-height:1.5;}
+.expand-chevron{font-size:16px;color:#c0b8a8;flex-shrink:0;font-weight:300;}
+.expand-cta{display:block;width:100%;padding:12px;border:none;border-radius:12px;font-size:13px;font-weight:800;text-align:center;cursor:pointer;text-decoration:none;letter-spacing:0.02em;transition:opacity .15s;}
+.expand-cta:active{opacity:0.85;}
 
 /* ── まとめ記事 ── */
-.matome-section{margin-top:22px}
-.matome-head{font-size:11px;font-weight:700;color:#8a8078;letter-spacing:.08em;margin-bottom:10px;padding-left:1px}
-.matome-group{margin-bottom:12px}
-.matome-label{font-size:11px;font-weight:700;color:#6a6058;display:flex;align-items:center;gap:5px;margin-bottom:6px}
-.matome-label::before{content:"";width:3px;height:11px;border-radius:2px;display:inline-block}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{display:inline-flex;align-items:baseline;gap:3px;padding:6px 11px;border-radius:9px;font-size:12px;font-weight:600;border:1px solid;transition:transform .12s,box-shadow .12s;line-height:1}
-.chip:active{transform:scale(.96)}
-.chip sub{font-size:9px;opacity:.6;font-weight:500}
-.chip-r{background:#eef5e8;color:#3a5828;border-color:#b8d4a0}
-.chip-s{background:#e8f0f8;color:#2a4878;border-color:#a8c0e0}
-.chip-a{background:#fdf0e4;color:#8a4820;border-color:#e0c098}
-.chip-t{background:#f2eafa;color:#5a2880;border-color:#c8a8e0}
+.matome-section{margin-top:26px}
+.matome-head{font-size:10px;font-weight:700;color:#9a8e82;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;padding-left:1px;display:flex;align-items:center;gap:8px}
+.matome-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#d8d0c4,transparent)}
+.matome-group{margin-bottom:10px;border-radius:14px;overflow:hidden;}
+/* グループヘッダー（淡いバナー） */
+.matome-banner{position:relative;height:46px;border-radius:14px 14px 0 0;overflow:hidden;display:flex;align-items:center;padding:0 16px;}
+.matome-banner-title{position:relative;z-index:2;font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;font-size:13px;font-weight:900;color:white;letter-spacing:0.02em;}
+.matome-banner-count{position:relative;z-index:2;margin-left:auto;font-size:10px;font-weight:600;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.18);border:0.5px solid rgba(255,255,255,0.25);border-radius:20px;padding:2px 9px;}
+/* チップエリア */
+.chips{display:flex;flex-wrap:wrap;gap:6px;background:white;padding:12px 14px 14px;border-radius:0 0 14px 14px;border:1px solid #ede8e0;border-top:none;}
+.chip{display:inline-flex;align-items:baseline;gap:3px;padding:7px 12px;border-radius:20px;font-size:12px;font-weight:600;transition:transform .12s;line-height:1;text-decoration:none;}
+.chip:active{transform:scale(.95)}
+.chip sub{font-size:9px;opacity:.55;font-weight:500;bottom:0}
+.chip-r{background:#eef3e8;color:#46603a}
+.chip-s{background:#eaeff7;color:#3a4e78}
+.chip-a{background:#f5ede4;color:#7a5230}
+.chip-t{background:#efeaf6;color:#5a4080}
 
 /* ── CTA ── */
 .cta{background:linear-gradient(135deg,#2a3e2a,#3a5a3a);border-radius:14px;padding:20px 18px;text-align:center;margin-top:22px}
@@ -133,142 +134,329 @@ main{max-width:760px;margin:0 auto;padding:16px 14px 48px}
 </div>
 
 <main>
-<div class="article-grid">
+<div id="article-banners">
 
-<!-- ① 日帰り5選 — オレンジ系 -->
-<a href="/articles/tokyo-daytrip-5/" class="article-card" style="background:linear-gradient(135deg,#fffaf2 0%,#fff0d8 100%);border:1px solid #f0d8a8;">
-  <!-- 背景SVG：時計＋山シルエット -->
-  <svg class="card-bg-svg" viewBox="0 0 120 80" fill="none" aria-hidden="true">
-    <polygon points="120,80 50,80 80,35 110,55 120,48" fill="#f5a623" opacity=".07"/>
-    <circle cx="95" cy="28" r="22" stroke="#f5a623" stroke-width="1.5" fill="none" opacity=".13"/>
-    <line x1="95" y1="28" x2="95" y2="14" stroke="#f5a623" stroke-width="2" stroke-linecap="round" opacity=".18"/>
-    <line x1="95" y1="28" x2="104" y2="32" stroke="#f5a623" stroke-width="2" stroke-linecap="round" opacity=".18"/>
-    <circle cx="95" cy="28" r="2" fill="#f5a623" opacity=".18"/>
-  </svg>
-  <div class="card-content">
-    <div class="card-top">
-      <span class="card-tag" style="background:#fde8c0;color:#9a5a10;">アクセス</span>
-      <span class="card-arrow" style="color:#c07820;">›</span>
+<!-- ① 日帰り5選 スモーキーアンバー×等高線 -->
+<div class="banner-card" onclick="toggleBanner(this)">
+  <div class="banner">
+    <div class="banner-bg" style="background:linear-gradient(128deg,#e8d5b4 0%,#d4b88a 40%,#c4a070 70%,#b08858 100%);"></div>
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 96" preserveAspectRatio="xMidYMid slice" fill="none">
+      <ellipse cx="310" cy="62" rx="85" ry="42" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      <ellipse cx="310" cy="62" rx="65" ry="30" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <ellipse cx="310" cy="62" rx="46" ry="20" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+      <ellipse cx="310" cy="62" rx="29" ry="11" stroke="rgba(255,255,255,0.13)" stroke-width="1"/>
+      <ellipse cx="310" cy="62" rx="13" ry="5" stroke="rgba(255,255,255,0.16)" stroke-width="1.2"/>
+      <path d="M160,96 L220,44 L260,62 L290,36 L330,54 L360,44 L360,96Z" fill="rgba(160,100,40,0.14)"/>
+      <path d="M270,0 L360,0 L360,96 L310,96" fill="rgba(255,240,200,0.07)"/>
+      <g stroke="rgba(255,255,255,0.2)" stroke-width="0.8" stroke-linecap="round">
+        <line x1="180" y1="96" x2="174" y2="82"/><line x1="180" y1="96" x2="186" y2="84"/>
+        <line x1="193" y1="96" x2="187" y2="80"/><line x1="193" y1="96" x2="199" y2="82"/>
+        <line x1="206" y1="96" x2="200" y2="84"/><line x1="206" y1="96" x2="212" y2="86"/>
+      </g>
+      <g stroke="rgba(255,255,255,0.28)" stroke-width="1" stroke-linecap="round">
+        <line x1="244" y1="54" x2="250" y2="54"/><line x1="247" y1="51" x2="247" y2="57"/>
+      </g>
+    </svg>
+    <div class="banner-fog"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(80,50,20,0.58) 0%,rgba(100,65,25,0.28) 52%,transparent 100%);"></div>
+    <div class="banner-body">
+      <div class="banner-eyebrow"><span class="banner-eyebrow-dot" style="background:#e8c878;"></span><span style="color:rgba(240,220,170,0.9);">日帰り特集</span></div>
+      <div class="banner-title" style="color:white;">東京から3時間以内 日帰り登山 5選</div>
+      <div class="banner-pills">
+        <span class="banner-pill" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.25);">🚗 アクセス重視</span>
+        <span class="banner-pill" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.25);">初〜中級</span>
+      </div>
     </div>
-    <div class="card-title" style="color:#2a2010;">東京から3時間以内で行ける日帰り登山5選</div>
-    <div class="card-pills">
-      <span class="card-pill" style="background:#fde8c0;color:#9a5a10;">🚗 3時間以内</span>
-      <span class="card-pill" style="background:#fde8c0;color:#9a5a10;">🌅 日帰り</span>
+    <div class="banner-badge" style="background:rgba(255,255,255,0.18);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.28);backdrop-filter:blur(6px);">5 山</div>
+    <div class="banner-indicator" style="background:rgba(255,255,255,0.18);border:0.5px solid rgba(255,255,255,0.28);backdrop-filter:blur(6px);">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
   </div>
-</a>
-
-<!-- ② 百名山10選 — ブルー系 -->
-<a href="/articles/kanto-day-trip-100/" class="article-card" style="background:linear-gradient(135deg,#f4f8ff 0%,#e0ecfc 100%);border:1px solid #b0cef0;">
-  <!-- 背景SVG：山3つ＋バッジ -->
-  <svg class="card-bg-svg" viewBox="0 0 120 80" fill="none" aria-hidden="true">
-    <polygon points="30,80 65,28 100,80" fill="#3a6aaa" opacity=".07"/>
-    <polygon points="60,80 88,42 116,80" fill="#3a6aaa" opacity=".05"/>
-    <polygon points="5,80 28,45 51,80" fill="#3a6aaa" opacity=".05"/>
-    <circle cx="95" cy="22" r="14" fill="#3a6aaa" opacity=".1"/>
-    <text x="95" y="27" text-anchor="middle" font-size="11" font-weight="900" fill="#3a6aaa" opacity=".22" font-family="sans-serif">100</text>
-  </svg>
-  <div class="card-content">
-    <div class="card-top">
-      <span class="card-tag" style="background:#d0e4f8;color:#1e3878;">百名山</span>
-      <span class="card-arrow" style="color:#2a5090;">›</span>
-    </div>
-    <div class="card-title" style="color:#101828;">関東発・日帰りで登れる百名山10選</div>
-    <div class="card-pills">
-      <span class="card-pill" style="background:#d0e4f8;color:#1e3878;">🏔 百名山</span>
-      <span class="card-pill" style="background:#d0e4f8;color:#1e3878;">📍 関東発</span>
+  <div class="banner-expand">
+    <div class="expand-inner">
+      <p class="expand-lead">電車・車どちらでもアクセスしやすく、週末の日帰り登山にぴったりな5座を厳選しました。</p>
+      <div class="expand-list">
+        <a href="/mountains/takao/" class="expand-item"><div class="expand-num" style="background:#b08858;">1</div><div class="expand-item-body"><div class="expand-item-name">高尾山</div><div class="expand-item-sub">東京都 · 599m · 🚃 新宿から50分</div></div><div class="expand-chevron">›</div></a>
+        <a href="/mountains/oyama/" class="expand-item"><div class="expand-num" style="background:#c4a070;">2</div><div class="expand-item-body"><div class="expand-item-name">大山（丹沢）</div><div class="expand-item-sub">神奈川県 · 1,252m · 🚃 電車OK</div></div><div class="expand-chevron">›</div></a>
+        <a href="/mountains/nokogiriyama_chiba/" class="expand-item"><div class="expand-num" style="background:#d4b88a;">3</div><div class="expand-item-body"><div class="expand-item-name">鋸山</div><div class="expand-item-sub">千葉県 · 329m · 初級 · コース定数10</div></div><div class="expand-chevron">›</div></a>
+      </div>
+      <a href="/articles/tokyo-daytrip-5/" class="expand-cta" style="background:linear-gradient(120deg,#b08858,#d4b88a);color:white;">記事をすべて読む →</a>
     </div>
   </div>
-</a>
+</div>
 
-<!-- ③ コース定数30 — グリーン系 -->
-<a href="/articles/coeff-30/" class="article-card" style="background:linear-gradient(135deg,#f2f8ee 0%,#e0f0d4 100%);border:1px solid #a8d090;">
-  <!-- 背景SVG：バーチャート -->
-  <svg class="card-bg-svg" viewBox="0 0 120 80" fill="none" aria-hidden="true">
-    <rect x="62" y="50" width="10" height="30" rx="2" fill="#4e8040" opacity=".1"/>
-    <rect x="76" y="36" width="10" height="44" rx="2" fill="#4e8040" opacity=".1"/>
-    <rect x="90" y="24" width="10" height="56" rx="2" fill="#4e8040" opacity=".13"/>
-    <rect x="104" y="32" width="10" height="48" rx="2" fill="#4e8040" opacity=".1"/>
-    <polyline points="62,55 76,41 90,29 104,37" stroke="#4e8040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".2"/>
-  </svg>
-  <div class="card-content">
-    <div class="card-top">
-      <span class="card-tag" style="background:#cce8b8;color:#2a5018;">コース定数</span>
-      <span class="card-arrow" style="color:#3a6030;">›</span>
+<!-- ② 百名山10選 ダスティインディゴ×星図 -->
+<div class="banner-card" onclick="toggleBanner(this)">
+  <div class="banner">
+    <div class="banner-bg" style="background:linear-gradient(128deg,#8898b8 0%,#6878a8 40%,#506098 70%,#3a4e88 100%);"></div>
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 96" preserveAspectRatio="xMidYMid slice" fill="none">
+      <ellipse cx="300" cy="56" rx="90" ry="42" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <ellipse cx="300" cy="56" rx="68" ry="30" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+      <ellipse cx="300" cy="56" rx="48" ry="20" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <ellipse cx="300" cy="56" rx="30" ry="12" stroke="rgba(255,255,255,0.13)" stroke-width="1"/>
+      <ellipse cx="300" cy="56" rx="13" ry="5" stroke="rgba(255,255,255,0.17)" stroke-width="1.2"/>
+      <g stroke="rgba(255,255,255,0.2)" stroke-width="0.7">
+        <line x1="210" y1="18" x2="235" y2="30"/><line x1="235" y1="30" x2="258" y2="22"/>
+        <line x1="258" y1="22" x2="280" y2="36"/><line x1="235" y1="30" x2="248" y2="44"/>
+      </g>
+      <circle cx="210" cy="18" r="2.2" fill="rgba(255,255,255,0.8)"/>
+      <circle cx="235" cy="30" r="1.8" fill="rgba(255,255,255,0.7)"/>
+      <circle cx="258" cy="22" r="2.5" fill="rgba(255,255,255,0.9)"/>
+      <circle cx="280" cy="36" r="1.5" fill="rgba(255,255,255,0.65)"/>
+      <circle cx="248" cy="44" r="1.8" fill="rgba(255,255,255,0.7)"/>
+      <circle cx="225" cy="10" r="1.2" fill="rgba(255,255,255,0.5)"/>
+      <circle cx="268" cy="12" r="1" fill="rgba(255,255,255,0.45)"/>
+      <circle cx="295" cy="18" r="1.4" fill="rgba(255,255,255,0.55)"/>
+      <path d="M180,96 L240,40 L270,58 L300,28 L335,50 L360,40 L360,96Z" fill="rgba(40,50,100,0.22)"/>
+      <g stroke="rgba(255,255,255,0.32)" stroke-width="1" stroke-linecap="round"><line x1="300" y1="20" x2="305" y2="20"/><line x1="302.5" y1="17.5" x2="302.5" y2="22.5"/></g>
+      <g stroke="rgba(255,225,120,0.3)" stroke-width="1" fill="none" transform="translate(330,72)">
+        <path d="M-10,-10 Q-12,-7 -12,-2 Q-12,5 0,8 Q12,5 12,-2 Q12,-7 10,-10Z"/>
+        <line x1="-4" y1="8" x2="-4" y2="12"/><line x1="4" y1="8" x2="4" y2="12"/>
+        <line x1="-6" y1="12" x2="6" y2="12"/>
+      </g>
+    </svg>
+    <div class="banner-fog"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(25,32,70,0.6) 0%,rgba(35,45,90,0.28) 52%,transparent 100%);"></div>
+    <div class="banner-body">
+      <div class="banner-eyebrow"><span class="banner-eyebrow-dot" style="background:#c8d8f8;"></span><span style="color:rgba(200,220,255,0.85);">百名山</span></div>
+      <div class="banner-title" style="color:white;">関東発・日帰りで登れる百名山 10選</div>
+      <div class="banner-pills">
+        <span class="banner-pill" style="background:rgba(255,255,255,0.14);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.22);">🗺 関東発</span>
+        <span class="banner-pill" style="background:rgba(255,255,255,0.14);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.22);">初〜上級</span>
+      </div>
     </div>
-    <div class="card-title" style="color:#142010;">コース定数30前後のおすすめ登山（関東）</div>
-    <div class="card-pills">
-      <span class="card-pill" style="background:#cce8b8;color:#2a5018;">📊 定数25〜35</span>
-      <span class="card-pill" style="background:#cce8b8;color:#2a5018;">📍 関東発</span>
+    <div class="banner-badge" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.25);backdrop-filter:blur(6px);">10 山</div>
+    <div class="banner-indicator" style="background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.25);backdrop-filter:blur(6px);">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
   </div>
-</a>
-
-<!-- ④ 冬山アイゼン不要 — スカイブルー系 -->
-<a href="/articles/winter-no-crampons/" class="article-card" style="background:linear-gradient(135deg,#f0f8ff 0%,#daeef8 100%);border:1px solid #90c8e8;">
-  <!-- 背景SVG：雪の結晶＋山 -->
-  <svg class="card-bg-svg" viewBox="0 0 120 80" fill="none" aria-hidden="true">
-    <polygon points="120,80 55,80 88,30 120,52" fill="#2a88b8" opacity=".07"/>
-    <polygon points="88,30 80,44 96,44" fill="white" opacity=".5"/>
-    <g transform="translate(70,24)" stroke="#2a88b8" stroke-width="1.2" stroke-linecap="round" opacity=".2">
-      <line x1="0" y1="-10" x2="0" y2="10"/>
-      <line x1="-10" y1="0" x2="10" y2="0"/>
-      <line x1="-7" y1="-7" x2="7" y2="7"/>
-      <line x1="7" y1="-7" x2="-7" y2="7"/>
-      <circle cx="0" cy="-10" r="2" fill="#2a88b8" stroke="none" opacity=".25"/>
-      <circle cx="0" cy="10" r="2" fill="#2a88b8" stroke="none" opacity=".25"/>
-      <circle cx="-10" cy="0" r="2" fill="#2a88b8" stroke="none" opacity=".25"/>
-      <circle cx="10" cy="0" r="2" fill="#2a88b8" stroke="none" opacity=".25"/>
-    </g>
-    <circle cx="100" cy="18" r="10" fill="#2a88b8" opacity=".12"/>
-    <polyline points="95,18 98,22 106,13" stroke="#2a88b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".3"/>
-  </svg>
-  <div class="card-content">
-    <div class="card-top">
-      <span class="card-tag" style="background:#c0e4f4;color:#0e4868;">冬山</span>
-      <span class="card-arrow" style="color:#1a6898;">›</span>
-    </div>
-    <div class="card-title" style="color:#0a2030;">アイゼン不要で冬に登れる山（関東）5選</div>
-    <div class="card-pills">
-      <span class="card-pill" style="background:#c0e4f4;color:#0e4868;">❄️ 冬季</span>
-      <span class="card-pill" style="background:#c0e4f4;color:#0e4868;">✅ アイゼン不要</span>
+  <div class="banner-expand">
+    <div class="expand-inner">
+      <p class="expand-lead">日帰り圏内の百名山を難易度別に厳選。初めての百名山にも、ステップアップにもなる10座です。</p>
+      <div class="expand-list">
+        <a href="/mountains/tsukuba/" class="expand-item"><div class="expand-num" style="background:#506098;">1</div><div class="expand-item-body"><div class="expand-item-name">筑波山</div><div class="expand-item-sub">茨城県 · 877m · 初級 · ケーブルカーあり</div></div><div class="expand-chevron">›</div></a>
+        <a href="/mountains/akagi/" class="expand-item"><div class="expand-num" style="background:#6878a8;">2</div><div class="expand-item-body"><div class="expand-item-name">赤城山</div><div class="expand-item-sub">群馬県 · 1,828m · 初〜中級</div></div><div class="expand-chevron">›</div></a>
+        <a href="/mountains/daibosatsu/" class="expand-item"><div class="expand-num" style="background:#8898b8;">3</div><div class="expand-item-body"><div class="expand-item-name">大菩薩嶺</div><div class="expand-item-sub">山梨県 · 2,057m · 初〜中級 · 電車OK</div></div><div class="expand-chevron">›</div></a>
+      </div>
+      <a href="/articles/kanto-day-trip-100/" class="expand-cta" style="background:linear-gradient(120deg,#3a4e88,#8898b8);color:white;">記事をすべて読む →</a>
     </div>
   </div>
-</a>
+</div>
 
-<!-- ⑤ 電車アクセス — パープル系 -->
-<a href="/articles/train-access-mountains/" class="article-card" style="background:linear-gradient(135deg,#f8f2ff 0%,#ecdff8 100%);border:1px solid #c8a8e8;">
-  <!-- 背景SVG：電車＋山 -->
-  <svg class="card-bg-svg" viewBox="0 0 120 80" fill="none" aria-hidden="true">
-    <polygon points="120,80 70,80 95,42 120,56" fill="#8850b8" opacity=".07"/>
-    <rect x="52" y="46" width="32" height="20" rx="5" fill="#8850b8" opacity=".1"/>
-    <rect x="56" y="50" width="10" height="7" rx="1.5" fill="#8850b8" opacity=".15"/>
-    <rect x="70" y="50" width="10" height="7" rx="1.5" fill="#8850b8" opacity=".15"/>
-    <circle cx="59" cy="66" r="3.5" fill="#8850b8" opacity=".12"/>
-    <circle cx="75" cy="66" r="3.5" fill="#8850b8" opacity=".12"/>
-    <line x1="46" y1="70" x2="110" y2="70" stroke="#8850b8" stroke-width="1.5" opacity=".12"/>
-  </svg>
-  <div class="card-content">
-    <div class="card-top">
-      <span class="card-tag" style="background:#e0c8f8;color:#48188a;">電車アクセス</span>
-      <span class="card-arrow" style="color:#6830a0;">›</span>
+<!-- ③ コース定数30 ミューテッドセージ×地形図 -->
+<div class="banner-card" onclick="toggleBanner(this)">
+  <div class="banner">
+    <div class="banner-bg" style="background:linear-gradient(128deg,#a8c0a0 0%,#8aaa82 40%,#6e9268 70%,#567858 100%);"></div>
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 96" preserveAspectRatio="xMidYMid slice" fill="none">
+      <ellipse cx="295" cy="58" rx="80" ry="38" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <ellipse cx="295" cy="58" rx="60" ry="27" stroke="rgba(255,255,255,0.13)" stroke-width="1"/>
+      <ellipse cx="295" cy="58" rx="42" ry="18" stroke="rgba(255,255,255,0.13)" stroke-width="1"/>
+      <ellipse cx="295" cy="58" rx="26" ry="10" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <ellipse cx="295" cy="58" rx="12" ry="5" stroke="rgba(255,255,255,0.19)" stroke-width="1.2"/>
+      <ellipse cx="190" cy="82" rx="35" ry="14" stroke="rgba(255,255,255,0.09)" stroke-width="0.8"/>
+      <ellipse cx="190" cy="82" rx="22" ry="8" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+      <g opacity="0.28">
+        <path d="M0,80 Q80,68 160,74 Q220,80 280,66" stroke="white" stroke-width="2" fill="none"/>
+        <line x1="20" y1="77" x2="22" y2="83" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <line x1="40" y1="74" x2="42" y2="80" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <line x1="60" y1="72" x2="62" y2="78" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <line x1="80" y1="71" x2="82" y2="77" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <line x1="100" y1="71" x2="102" y2="77" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <line x1="120" y1="72" x2="122" y2="78" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <line x1="140" y1="73" x2="142" y2="79" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <line x1="160" y1="75" x2="162" y2="81" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <line x1="180" y1="77" x2="182" y2="83" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <line x1="200" y1="78" x2="202" y2="84" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <line x1="220" y1="78" x2="222" y2="84" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <line x1="240" y1="76" x2="242" y2="82" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <line x1="260" y1="72" x2="262" y2="78" stroke="white" stroke-width="1" stroke-linecap="round"/>
+      </g>
+      <g fill="rgba(255,255,255,0.16)">
+        <circle cx="210" cy="18" r="5"/><circle cx="222" cy="16" r="4"/>
+        <circle cx="216" cy="12" r="3.5"/><circle cx="234" cy="20" r="5"/>
+        <circle cx="228" cy="26" r="4"/>
+      </g>
+    </svg>
+    <div class="banner-fog"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(30,55,28,0.58) 0%,rgba(40,70,35,0.25) 52%,transparent 100%);"></div>
+    <div class="banner-body">
+      <div class="banner-eyebrow"><span class="banner-eyebrow-dot" style="background:#c8e8c0;"></span><span style="color:rgba(200,235,190,0.88);">コース定数</span></div>
+      <div class="banner-title" style="color:white;">コース定数30前後のおすすめ登山（関東）</div>
+      <div class="banner-pills">
+        <span class="banner-pill" style="background:rgba(255,255,255,0.14);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.22);">📊 定数25〜35</span>
+        <span class="banner-pill" style="background:rgba(255,255,255,0.14);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.22);">中〜中上級</span>
+      </div>
     </div>
-    <div class="card-title" style="color:#1a0830;">電車で行けるおすすめ登山10選</div>
-    <div class="card-pills">
-      <span class="card-pill" style="background:#e0c8f8;color:#48188a;">🚃 電車OK</span>
-      <span class="card-pill" style="background:#e0c8f8;color:#48188a;">📍 関東発</span>
+    <div class="banner-badge" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.25);backdrop-filter:blur(6px);">関東</div>
+    <div class="banner-indicator" style="background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.25);backdrop-filter:blur(6px);">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
   </div>
-</a>
+  <div class="banner-expand">
+    <div class="expand-inner">
+      <p class="expand-lead">体力が付いてきたら挑戦したい、コース定数25〜35の山を厳選。登り応えと達成感のバランスが絶妙な山ばかりです。</p>
+      <div class="expand-list">
+        <a href="/mountains/tanzawa/" class="expand-item"><div class="expand-num" style="background:#567858;">1</div><div class="expand-item-body"><div class="expand-item-name">丹沢山</div><div class="expand-item-sub">神奈川県 · 1,567m · 定数30 · 百名山</div></div><div class="expand-chevron">›</div></a>
+        <a href="/mountains/kumotori/" class="expand-item"><div class="expand-num" style="background:#6e9268;">2</div><div class="expand-item-body"><div class="expand-item-name">雲取山</div><div class="expand-item-sub">東京都 · 2,017m · 定数32 · 百名山</div></div><div class="expand-chevron">›</div></a>
+        <a href="/mountains/mitsumine/" class="expand-item"><div class="expand-num" style="background:#8aaa82;">3</div><div class="expand-item-body"><div class="expand-item-name">甲武信ヶ岳</div><div class="expand-item-sub">山梨・長野・埼玉 · 2,475m · 定数35</div></div><div class="expand-chevron">›</div></a>
+      </div>
+      <a href="/articles/coeff-30/" class="expand-cta" style="background:linear-gradient(120deg,#567858,#a8c0a0);color:white;">記事をすべて読む →</a>
+    </div>
+  </div>
+</div>
 
-</div><!-- /article-grid -->
+<!-- ④ 冬山アイゼン不要 パウダーラベンダー×霜 -->
+<div class="banner-card" onclick="toggleBanner(this)">
+  <div class="banner">
+    <div class="banner-bg" style="background:linear-gradient(128deg,#c0c8e0 0%,#a8b4d0 40%,#9098c0 70%,#7880b0 100%);"></div>
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 96" preserveAspectRatio="xMidYMid slice" fill="none">
+      <ellipse cx="305" cy="54" rx="82" ry="40" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+      <ellipse cx="305" cy="54" rx="62" ry="28" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+      <ellipse cx="305" cy="54" rx="43" ry="18" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <ellipse cx="305" cy="54" rx="27" ry="10" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+      <ellipse cx="305" cy="54" rx="12" ry="5" stroke="rgba(255,255,255,0.21)" stroke-width="1.2"/>
+      <path d="M170,96 L235,36 L262,52 L292,26 L325,44 L360,34 L360,96Z" fill="rgba(200,210,240,0.14)"/>
+      <path d="M270,52 L292,26 L314,48" fill="rgba(255,255,255,0.18)"/>
+      <path d="M262,52 L292,26 L322,44" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+      <g stroke="rgba(255,255,255,0.38)" stroke-width="0.9" stroke-linecap="round">
+        <line x1="195" y1="18" x2="195" y2="26"/><line x1="189" y1="20" x2="201" y2="24"/><line x1="189" y1="24" x2="201" y2="20"/>
+        <circle cx="195" cy="22" r="1.5" fill="rgba(255,255,255,0.5)" stroke="none"/>
+        <circle cx="195" cy="17" r="1" fill="rgba(255,255,255,0.45)" stroke="none"/>
+        <circle cx="195" cy="27" r="1" fill="rgba(255,255,255,0.45)" stroke="none"/>
+        <circle cx="188" cy="19.5" r="1" fill="rgba(255,255,255,0.45)" stroke="none"/>
+        <circle cx="202" cy="24.5" r="1" fill="rgba(255,255,255,0.45)" stroke="none"/>
+        <circle cx="202" cy="19.5" r="1" fill="rgba(255,255,255,0.45)" stroke="none"/>
+        <circle cx="188" cy="24.5" r="1" fill="rgba(255,255,255,0.45)" stroke="none"/>
+      </g>
+      <g stroke="rgba(255,255,255,0.28)" stroke-width="0.7" stroke-linecap="round">
+        <line x1="225" y1="10" x2="225" y2="16"/><line x1="222" y1="11.5" x2="228" y2="14.5"/><line x1="222" y1="14.5" x2="228" y2="11.5"/>
+      </g>
+      <g stroke="rgba(255,255,255,0.26)" stroke-width="0.7" stroke-linecap="round">
+        <line x1="250" y1="18" x2="250" y2="24"/><line x1="247" y1="19.5" x2="253" y2="22.5"/><line x1="247" y1="22.5" x2="253" y2="19.5"/>
+      </g>
+      <circle cx="215" cy="34" r="1.5" fill="rgba(255,255,255,0.32)"/>
+      <circle cx="232" cy="28" r="1.2" fill="rgba(255,255,255,0.28)"/>
+      <circle cx="244" cy="38" r="1.8" fill="rgba(255,255,255,0.35)"/>
+      <circle cx="260" cy="22" r="1" fill="rgba(255,255,255,0.28)"/>
+    </svg>
+    <div class="banner-fog"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(40,45,90,0.55) 0%,rgba(55,60,110,0.25) 52%,transparent 100%);"></div>
+    <div class="banner-body">
+      <div class="banner-eyebrow"><span class="banner-eyebrow-dot" style="background:#dce4f8;"></span><span style="color:rgba(220,228,250,0.85);">冬山ガイド</span></div>
+      <div class="banner-title" style="color:white;">アイゼン不要で冬に登れる山 5選</div>
+      <div class="banner-pills">
+        <span class="banner-pill" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.25);">🥾 初心者OK</span>
+        <span class="banner-pill" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.25);">12〜2月</span>
+      </div>
+    </div>
+    <div class="banner-badge" style="background:rgba(255,255,255,0.18);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.28);backdrop-filter:blur(6px);">5 山</div>
+    <div class="banner-indicator" style="background:rgba(255,255,255,0.18);border:0.5px solid rgba(255,255,255,0.28);backdrop-filter:blur(6px);">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+  </div>
+  <div class="banner-expand">
+    <div class="expand-inner">
+      <p class="expand-lead">冬でもアイゼンなしで安全に登れる山を紹介。防寒さえすれば初心者でも楽しめます。</p>
+      <div class="expand-list">
+        <a href="/mountains/takao/" class="expand-item"><div class="expand-num" style="background:#7880b0;">1</div><div class="expand-item-body"><div class="expand-item-name">高尾山</div><div class="expand-item-sub">東京都 · 年中登山可 · 整備道完備</div></div><div class="expand-chevron">›</div></a>
+        <a href="/mountains/mitakesan/" class="expand-item"><div class="expand-num" style="background:#9098c0;">2</div><div class="expand-item-body"><div class="expand-item-name">御岳山</div><div class="expand-item-sub">東京都 · ケーブルカーあり</div></div><div class="expand-chevron">›</div></a>
+        <a href="/mountains/hiwadayama/" class="expand-item"><div class="expand-num" style="background:#a8b4d0;">3</div><div class="expand-item-body"><div class="expand-item-name">日和田山</div><div class="expand-item-sub">埼玉県 · 305m · 初級 · 雪が少なめ</div></div><div class="expand-chevron">›</div></a>
+      </div>
+      <a href="/articles/winter-no-crampons/" class="expand-cta" style="background:linear-gradient(120deg,#7880b0,#c0c8e0);color:white;">記事をすべて読む →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 電車アクセス ミューテッドセージ×鉄道 -->
+<div class="banner-card" onclick="toggleBanner(this)">
+  <div class="banner">
+    <div class="banner-bg" style="background:linear-gradient(128deg,#b0c8a8 0%,#90b088 40%,#72987a 70%,#587a62 100%);"></div>
+    <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 96" preserveAspectRatio="xMidYMid slice" fill="none">
+      <ellipse cx="295" cy="56" rx="80" ry="38" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+      <ellipse cx="295" cy="56" rx="60" ry="27" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <ellipse cx="295" cy="56" rx="42" ry="17" stroke="rgba(255,255,255,0.13)" stroke-width="1"/>
+      <ellipse cx="295" cy="56" rx="26" ry="10" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+      <ellipse cx="295" cy="56" rx="12" ry="4" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"/>
+      <g opacity="0.25">
+        <path d="M0,78 Q80,62 160,70 Q220,76 280,62" stroke="white" stroke-width="2.2" fill="none"/>
+        <line x1="18" y1="74" x2="20" y2="82" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="36" y1="70" x2="38" y2="78" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="54" y1="67" x2="56" y2="75" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="72" y1="65" x2="74" y2="73" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="90" y1="65" x2="92" y2="73" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="108" y1="66" x2="110" y2="74" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="126" y1="68" x2="128" y2="76" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="144" y1="70" x2="146" y2="78" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="162" y1="72" x2="164" y2="80" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="180" y1="73" x2="182" y2="81" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="198" y1="74" x2="200" y2="82" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="216" y1="73" x2="218" y2="81" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="234" y1="70" x2="236" y2="78" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="252" y1="66" x2="254" y2="74" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="270" y1="63" x2="272" y2="71" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+      </g>
+      <g fill="rgba(255,255,255,0.15)">
+        <circle cx="218" cy="18" r="5.5"/><circle cx="230" cy="15" r="4.5"/>
+        <circle cx="224" cy="10" r="4"/><circle cx="242" cy="20" r="5.5"/>
+        <circle cx="236" cy="26" r="4.5"/>
+      </g>
+    </svg>
+    <div class="banner-fog"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(28,52,26,0.58) 0%,rgba(38,68,34,0.25) 52%,transparent 100%);"></div>
+    <div class="banner-body">
+      <div class="banner-eyebrow"><span class="banner-eyebrow-dot" style="background:#c0e0b8;"></span><span style="color:rgba(192,224,184,0.88);">電車アクセス</span></div>
+      <div class="banner-title" style="color:white;">電車で行けるおすすめ登山 10選</div>
+      <div class="banner-pills">
+        <span class="banner-pill" style="background:rgba(255,255,255,0.14);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.22);">🚃 車なしOK</span>
+        <span class="banner-pill" style="background:rgba(255,255,255,0.14);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.22);">初〜中級</span>
+      </div>
+    </div>
+    <div class="banner-badge" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.25);backdrop-filter:blur(6px);">10 山</div>
+    <div class="banner-indicator" style="background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.25);backdrop-filter:blur(6px);">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+  </div>
+  <div class="banner-expand">
+    <div class="expand-inner">
+      <p class="expand-lead">マイカーなしで気軽に行ける登山スポットを厳選。最寄り駅からのバス情報も詳しく紹介します。</p>
+      <div class="expand-list">
+        <a href="/mountains/takao/" class="expand-item"><div class="expand-num" style="background:#587a62;">1</div><div class="expand-item-body"><div class="expand-item-name">高尾山</div><div class="expand-item-sub">🚃 京王線 高尾山口駅から徒歩すぐ</div></div><div class="expand-chevron">›</div></a>
+        <a href="/mountains/mitakesan/" class="expand-item"><div class="expand-num" style="background:#72987a;">2</div><div class="expand-item-body"><div class="expand-item-name">御岳山</div><div class="expand-item-sub">🚃 JR青梅線 御嶽駅からバス+ケーブルカー</div></div><div class="expand-chevron">›</div></a>
+        <a href="/mountains/hiwadayama/" class="expand-item"><div class="expand-num" style="background:#90b088;">3</div><div class="expand-item-body"><div class="expand-item-name">日和田山</div><div class="expand-item-sub">🚃 西武池袋線 高麗駅から徒歩15分</div></div><div class="expand-chevron">›</div></a>
+      </div>
+      <a href="/articles/train-access-mountains/" class="expand-cta" style="background:linear-gradient(120deg,#587a62,#b0c8a8);color:white;">記事をすべて読む →</a>
+    </div>
+  </div>
+</div>
+
+</div><!-- /article-banners -->
+
+<script>
+function toggleBanner(card) {
+  var isOpen = card.classList.contains('open');
+  document.querySelectorAll('.banner-card.open').forEach(function(c){ c.classList.remove('open'); });
+  if (!isOpen) card.classList.add('open');
+}
+</script>
 
 <!-- まとめ記事 -->
 <div class="matome-section">
-  <div class="matome-head">SPECIAL INDEX</div>
+  <div class="matome-head">特集インデックス</div>
 
+  <!-- 路線別 -->
   <div class="matome-group">
-    <div class="matome-label" style="--c:#3a5828"><span style="width:3px;height:11px;border-radius:2px;background:#4e8040;display:inline-block"></span>路線別</div>
+    <div class="matome-banner">
+      <div class="banner-bg" style="background:linear-gradient(128deg,#a8c0a0 0%,#7e9c76 60%,#587a62 100%);"></div>
+      <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 46" preserveAspectRatio="xMidYMid slice" fill="none">
+        <ellipse cx="320" cy="26" rx="70" ry="24" stroke="rgba(255,255,255,0.13)" stroke-width="1"/>
+        <ellipse cx="320" cy="26" rx="48" ry="15" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <ellipse cx="320" cy="26" rx="26" ry="8" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+        <g opacity="0.2"><path d="M0,36 Q90,28 180,32 Q270,36 360,28" stroke="white" stroke-width="2" fill="none"/></g>
+      </svg>
+      <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(30,52,28,0.5) 0%,transparent 70%);"></div>
+      <span class="matome-banner-title">🚃 路線別で探す</span>
+      <span class="matome-banner-count">10 路線</span>
+    </div>
     <div class="chips">
       <a href="/search/seibu-hiking/"      class="chip chip-r">西武線<sub>5選</sub></a>
       <a href="/search/odakyu-hiking/"     class="chip chip-r">小田急線<sub>8選</sub></a>
@@ -283,8 +471,22 @@ main{max-width:760px;margin:0 auto;padding:16px 14px 48px}
     </div>
   </div>
 
+  <!-- 駅別 -->
   <div class="matome-group">
-    <div class="matome-label"><span style="width:3px;height:11px;border-radius:2px;background:#3a5898;display:inline-block"></span>駅別</div>
+    <div class="matome-banner">
+      <div class="banner-bg" style="background:linear-gradient(128deg,#8898b8 0%,#5e6ea0 60%,#3a4e88 100%);"></div>
+      <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 46" preserveAspectRatio="xMidYMid slice" fill="none">
+        <ellipse cx="320" cy="24" rx="70" ry="24" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <ellipse cx="320" cy="24" rx="48" ry="15" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+        <ellipse cx="320" cy="24" rx="26" ry="8" stroke="rgba(255,255,255,0.13)" stroke-width="1"/>
+        <circle cx="250" cy="14" r="1.5" fill="rgba(255,255,255,0.6)"/>
+        <circle cx="280" cy="10" r="1.2" fill="rgba(255,255,255,0.5)"/>
+        <circle cx="265" cy="20" r="1" fill="rgba(255,255,255,0.45)"/>
+      </svg>
+      <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(25,32,70,0.5) 0%,transparent 70%);"></div>
+      <span class="matome-banner-title">🚉 駅から探す</span>
+      <span class="matome-banner-count">4 駅</span>
+    </div>
     <div class="chips">
       <a href="/search/takao-hiking/"        class="chip chip-s">高尾駅<sub>4選</sub></a>
       <a href="/search/hanno-hiking/"        class="chip chip-s">飯能駅<sub>3選</sub></a>
@@ -293,8 +495,20 @@ main{max-width:760px;margin:0 auto;padding:16px 14px 48px}
     </div>
   </div>
 
+  <!-- エリア別 -->
   <div class="matome-group">
-    <div class="matome-label"><span style="width:3px;height:11px;border-radius:2px;background:#a05828;display:inline-block"></span>エリア別</div>
+    <div class="matome-banner">
+      <div class="banner-bg" style="background:linear-gradient(128deg,#d4b88a 0%,#c09860 60%,#a87c48 100%);"></div>
+      <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 46" preserveAspectRatio="xMidYMid slice" fill="none">
+        <ellipse cx="320" cy="26" rx="70" ry="24" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <ellipse cx="320" cy="26" rx="48" ry="15" stroke="rgba(255,255,255,0.13)" stroke-width="1"/>
+        <ellipse cx="320" cy="26" rx="26" ry="8" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <path d="M210,46 L250,18 L280,30 L310,12 L340,24 L360,18 L360,46Z" fill="rgba(150,95,40,0.18)"/>
+      </svg>
+      <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(80,52,20,0.5) 0%,transparent 70%);"></div>
+      <span class="matome-banner-title">🗺 エリアで探す</span>
+      <span class="matome-banner-count">5 エリア</span>
+    </div>
     <div class="chips">
       <a href="/search/okutama-hiking/"     class="chip chip-a">奥多摩<sub>4選</sub></a>
       <a href="/search/tanzawa-hiking/"     class="chip chip-a">丹沢<sub>5選</sub></a>
@@ -304,8 +518,22 @@ main{max-width:760px;margin:0 auto;padding:16px 14px 48px}
     </div>
   </div>
 
+  <!-- テーマ別 -->
   <div class="matome-group">
-    <div class="matome-label"><span style="width:3px;height:11px;border-radius:2px;background:#6830a0;display:inline-block"></span>テーマ別</div>
+    <div class="matome-banner">
+      <div class="banner-bg" style="background:linear-gradient(128deg,#b0a0c8 0%,#9078b0 60%,#705898 100%);"></div>
+      <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 360 46" preserveAspectRatio="xMidYMid slice" fill="none">
+        <ellipse cx="320" cy="24" rx="70" ry="24" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+        <ellipse cx="320" cy="24" rx="48" ry="15" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <ellipse cx="320" cy="24" rx="26" ry="8" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+        <g stroke="rgba(255,255,255,0.3)" stroke-width="0.8" stroke-linecap="round">
+          <line x1="255" y1="12" x2="255" y2="20"/><line x1="251" y1="14" x2="259" y2="18"/><line x1="251" y1="18" x2="259" y2="14"/>
+        </g>
+      </svg>
+      <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(50,35,75,0.5) 0%,transparent 70%);"></div>
+      <span class="matome-banner-title">✨ テーマで探す</span>
+      <span class="matome-banner-count">4 特集</span>
+    </div>
     <div class="chips">
       <a href="/search/train-daytrip/"     class="chip chip-t">電車で日帰り<sub>43選</sub></a>
       <a href="/search/hyakunen-beginner/" class="chip chip-t">初心者百名山<sub>30選</sub></a>
