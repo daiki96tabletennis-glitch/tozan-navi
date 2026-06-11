@@ -101,6 +101,40 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
 .type-nudge-title{font-size:13px;font-weight:700;color:#2a3020;}
 .type-nudge-arrow{font-size:22px;color:#4e6535;font-weight:300;}
 
+
+/* 持ち物・注意コンテンツ */
+.info-section{margin-top:20px;}
+.info-toggle{width:100%;background:white;border:1.5px solid #d0c8c0;border-radius:12px;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:14px;font-weight:700;color:#2a2520;transition:transform .12s ease;}
+.info-toggle:active{transform:scale(0.98);}
+.info-toggle-icon{font-size:20px;margin-right:10px;}
+.info-toggle-arrow{font-size:18px;color:#8a7a6a;transition:transform .25s ease;flex-shrink:0;}
+.info-toggle.open .info-toggle-arrow{transform:rotate(90deg);}
+.info-body{display:none;background:white;border:1.5px solid #d0c8c0;border-top:none;border-radius:0 0 12px 12px;padding:0 16px 16px;}
+.info-body.open{display:block;}
+
+/* 持ち物リスト */
+.gear-group{margin-top:14px;}
+.gear-group-title{font-size:11px;font-weight:700;color:#8a7a6a;letter-spacing:0.08em;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #f0ede5;}
+.gear-items{display:flex;flex-direction:column;gap:6px;}
+.gear-item-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f8f6f2;}
+.gear-item-row:last-child{border-bottom:none;}
+.gear-item-emoji{font-size:22px;flex-shrink:0;width:30px;text-align:center;margin-top:1px;}
+.gear-item-body{flex:1;}
+.gear-item-name{font-size:13px;font-weight:700;color:#2a2520;}
+.gear-item-note{font-size:11px;color:#6a6058;margin-top:2px;line-height:1.5;}
+.gear-tag{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:10px;margin-left:5px;vertical-align:middle;}
+.gear-tag-must{background:#fde8e8;color:#b03030;}
+.gear-tag-easy{background:#e8f4e0;color:#3a6030;}
+
+/* 注意事項 */
+.tip-list{margin-top:14px;display:flex;flex-direction:column;gap:10px;}
+.tip-item{display:flex;gap:10px;padding:10px 12px;border-radius:10px;background:#faf9f6;border-left:3px solid #4e6535;}
+.tip-item-icon{font-size:20px;flex-shrink:0;}
+.tip-item-body{flex:1;}
+.tip-item-title{font-size:13px;font-weight:700;color:#2a2520;margin-bottom:3px;}
+.tip-item-text{font-size:12px;color:#5a5048;line-height:1.6;}
+.tip-item.warn{border-left-color:#d48020;background:#fdf8f0;}
+
 /* 戻るボタン */
 .back-row{display:flex;align-items:center;margin-bottom:16px;}
 .back-btn-q{background:none;border:none;color:#8a7a6a;font-size:13px;cursor:pointer;padding:0;display:flex;align-items:center;gap:4px;}
@@ -157,6 +191,8 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
       <div class="result-count" id="result-count"></div>
     </div>
     <div class="result-cards" id="result-cards"></div>
+    <div id="gear-section" class="info-section"></div>
+    <div id="tips-section" class="info-section"></div>
     <button class="retry-btn" onclick="resetQuiz()">↺ もう一度診断する</button>
     <a class="type-nudge" href="/recommend/">
       <div class="type-nudge-text">
@@ -399,6 +435,122 @@ function buildReason(m){
   return reasons.slice(0, 3);
 }
 
+// ===== 持ち物データ =====
+var GEAR_MUST = [
+  { emoji: '👟', name: '歩きやすい靴', note: 'スニーカーでもOKだが、底がしっかりしたものを。ローカットのトレッキングシューズが理想。', tag: 'must' },
+  { emoji: '🎒', name: 'リュック（15〜25L）', note: '両手が自由になるものを。デイパックやハイキング用で十分。', tag: 'must' },
+  { emoji: '💧', name: '飲み物（水・お茶）', note: '1時間の歩行で500ml目安。多めに持つほど安心。', tag: 'must' },
+  { emoji: '🍙', name: '行動食・お弁当', note: 'おにぎり・パン・チョコなど。山頂で食べる楽しみも大事。', tag: 'must' },
+  { emoji: '🧥', name: '上に羽織るもの', note: '山頂は麓より5〜10℃低い。薄手のウインドブレーカーを1枚ポーチに。', tag: 'must' },
+  { emoji: '🩹', name: '絆創膏・常備薬', note: '靴ずれや小さな擦り傷に。100均の救急セットで十分。', tag: 'must' }
+];
+
+var GEAR_TRAIN = [
+  { emoji: '📱', name: 'スマホの充電（モバイルバッテリー）', note: '地図アプリや緊急連絡に必須。出発前に100%充電し、モバイルバッテリーがあると安心。', tag: 'easy' },
+  { emoji: '🗺', name: '山と高原地図アプリ（無料版でOK）', note: 'YAMAPやヤマレコは電波なしでも使える。事前にルートをダウンロードしておこう。', tag: 'easy' }
+];
+
+var GEAR_CAR = [
+  { emoji: '🚗', name: '駐車場・登山口を事前確認', note: '登山口の駐車場は満車になることも。週末は早朝出発が基本。', tag: 'easy' },
+  { emoji: '👕', name: '着替え（下山後用）', note: '車なら荷物を置いていける。汗で冷えないよう着替えを車内に。', tag: 'easy' }
+];
+
+var GEAR_LOW = [
+  { emoji: '🩺', name: '無理しない計画を立てる', note: 'コース定数10以下の山からスタートがおすすめ。「物足りないくらい」がちょうどいい。', tag: 'easy' }
+];
+
+var GEAR_RAIN = [
+  { emoji: '🌂', name: 'レインウェア（折りたたみ）', note: '山の天気は変わりやすい。ポンチョより上下セパレートが動きやすくて安全。', tag: 'must' }
+];
+
+// ===== 注意事項データ =====
+var TIPS_COMMON = [
+  { icon: '⏰', title: '下山時間から逆算して出発する', text: '日没前に下山完了を目標に。「山頂に着いたら折り返す」ではなく、出発前に「○時には下山開始」と決めておく。', warn: false },
+  { icon: '📡', title: '行き先を誰かに伝えておく', text: 'LINEで「〇〇山に行ってくる、夕方には帰る」と一言伝えるだけでOK。万が一のときに助けを呼びやすくなる。', warn: false },
+  { icon: '🌤', title: '当日朝に天気を再確認する', text: '山専用の天気予報（てんきとくらす・SCW）を使う。平地が晴れでも山頂付近は雷雨になることがある。', warn: true }
+];
+
+var TIPS_LOW = [
+  { icon: '🦵', title: '下りで膝が笑う前に休憩する', text: '初心者が疲れるのは登りより下り。「まだ歩ける」と思ったタイミングで休憩するのがコツ。', warn: false },
+  { icon: '👟', title: '靴ひもは登り前・下り前に締め直す', text: '登りと下りでは足の動きが違う。特に下りは爪先が靴の先端に当たりやすく、放置すると痛みや事故の原因に。', warn: true }
+];
+
+var TIPS_VIEW = [
+  { icon: '🌬', title: '山頂は風が強くて寒い', text: '見晴らしのいい山頂ほど風が強い。汗が冷えないよう、山頂についたらすぐに羽織りものを着ること。', warn: false }
+];
+
+var TIPS_TRAIN = [
+  { icon: '🚌', title: '帰りのバス・電車を事前に調べておく', text: '山奥のバスは本数が少なく最終が早いことも。行きだけでなく帰りの時刻表も必ず確認。', warn: true }
+];
+
+var TIPS_HIGH = [
+  { icon: '🏔', title: 'ペース配分は「ゆっくり×長く」が正解', text: '山では「遅いと感じるくらい」のペースが疲れにくい。登り始めの最初30分は特にゆっくり歩くと後半が楽になる。', warn: false }
+];
+
+function buildGearSection(){
+  var groups = [];
+  groups.push({ title: '必ず持っていくもの', items: GEAR_MUST.concat(GEAR_RAIN) });
+
+  var extra = [];
+  if(answers.transport === 'train') extra = extra.concat(GEAR_TRAIN);
+  if(answers.transport === 'car')   extra = extra.concat(GEAR_CAR);
+  if(answers.fitness === 'low')     extra = extra.concat(GEAR_LOW);
+  if(extra.length > 0) groups.push({ title: 'あなたへの追加アドバイス', items: extra });
+
+  var html = '<button class="info-toggle" onclick="toggleInfo(this)">';
+  html += '<span><span class="info-toggle-icon">🎒</span>持ち物チェックリスト</span>';
+  html += '<span class="info-toggle-arrow">›</span></button>';
+  html += '<div class="info-body">';
+  groups.forEach(function(g){
+    html += '<div class="gear-group"><div class="gear-group-title">' + g.title + '</div><div class="gear-items">';
+    g.items.forEach(function(item){
+      var tagHtml = item.tag === 'must'
+        ? '<span class="gear-tag gear-tag-must">必須</span>'
+        : '<span class="gear-tag gear-tag-easy">あると安心</span>';
+      html += '<div class="gear-item-row">';
+      html += '<div class="gear-item-emoji">' + item.emoji + '</div>';
+      html += '<div class="gear-item-body">';
+      html += '<div class="gear-item-name">' + item.name + tagHtml + '</div>';
+      html += '<div class="gear-item-note">' + item.note + '</div>';
+      html += '</div></div>';
+    });
+    html += '</div></div>';
+  });
+  html += '</div>';
+  return html;
+}
+
+function buildTipsSection(){
+  var tips = TIPS_COMMON.slice();
+  if(answers.fitness === 'low' || answers.fitness === 'mid') tips = tips.concat(TIPS_LOW);
+  if(answers.vibe === 'view' || answers.vibe === 'highland') tips = tips.concat(TIPS_VIEW);
+  if(answers.transport === 'train') tips = tips.concat(TIPS_TRAIN);
+  if(answers.fitness === 'high') tips = tips.concat(TIPS_HIGH);
+
+  var html = '<button class="info-toggle" onclick="toggleInfo(this)">';
+  html += '<span><span class="info-toggle-icon">⚠️</span>初心者が知っておくべきこと</span>';
+  html += '<span class="info-toggle-arrow">›</span></button>';
+  html += '<div class="info-body">';
+  html += '<div class="tip-list">';
+  tips.forEach(function(tip){
+    html += '<div class="tip-item' + (tip.warn ? ' warn' : '') + '">';
+    html += '<div class="tip-item-icon">' + tip.icon + '</div>';
+    html += '<div class="tip-item-body">';
+    html += '<div class="tip-item-title">' + tip.title + '</div>';
+    html += '<div class="tip-item-text">' + tip.text + '</div>';
+    html += '</div></div>';
+  });
+  html += '</div></div>';
+  return html;
+}
+
+function toggleInfo(btn){
+  btn.classList.toggle('open');
+  var body = btn.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+
 function showResult(){
   var scored = mountainsData.map(function(m){
     return { m: m, score: scoreMount(m) };
@@ -422,6 +574,8 @@ function showResult(){
     document.getElementById('result-headline').textContent = '条件に合う山が見つかりませんでした';
     document.getElementById('result-count').textContent = '';
     show('step-result');
+    document.getElementById('gear-section').innerHTML = buildGearSection();
+    document.getElementById('tips-section').innerHTML = buildTipsSection();
     return;
   }
 
@@ -455,6 +609,8 @@ function showResult(){
 
   document.getElementById('result-cards').innerHTML = html;
   show('step-result');
+  document.getElementById('gear-section').innerHTML = buildGearSection();
+  document.getElementById('tips-section').innerHTML = buildTipsSection();
   window.scrollTo(0, 0);
 }
 
