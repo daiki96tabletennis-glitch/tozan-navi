@@ -30,42 +30,748 @@
 </script>
 
 <script>
-const MINI_SVGS = {
-  'ACPS': `<svg viewBox="0 0 44 56" fill="none"><path d="M16 17 Q16 8 22 8 Q28 8 28 17" fill="#e03020"/><rect x="15" y="16" width="16" height="3" rx="1.5" fill="#c02010"/><circle cx="22" cy="22" r="7" fill="#f0d080"/><circle cx="20" cy="21" r="1" fill="#3a2810"/><circle cx="24" cy="21" r="1" fill="#3a2810"/><path d="M20 28 Q20 33 20 38" stroke="#3a5a80" stroke-width="6" stroke-linecap="round" fill="none"/><rect x="24" y="28" width="7" height="9" rx="2" fill="#507090"/><line x1="20" y1="30" x2="10" y2="24" stroke="#f0d080" stroke-width="3" stroke-linecap="round"/><line x1="22" y1="30" x2="30" y2="25" stroke="#f0d080" stroke-width="3" stroke-linecap="round"/><path d="M30 25 Q35 30 32 37" fill="none" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="20" y1="38" x2="16" y2="48" stroke="#2a3848" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="38" x2="24" y2="48" stroke="#2a3848" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'ACPL': `<svg viewBox="0 0 44 56" fill="none"><path d="M14 17 Q14 8 22 8 Q30 8 30 17" fill="#203858"/><rect x="13" y="16" width="18" height="3" rx="1.5" fill="#1a3050"/><rect x="29" y="16" width="6" height="2" rx="1" fill="#1a3050"/><circle cx="22" cy="23" r="7" fill="#f0d080"/><circle cx="20" cy="22" r="1" fill="#3a2810"/><circle cx="24" cy="22" r="1" fill="#3a2810"/><path d="M20 30 Q20 35 20 40" stroke="#2a4060" stroke-width="7" stroke-linecap="round" fill="none"/><line x1="18" y1="33" x2="7" y2="41" stroke="#9090a8" stroke-width="2.5" stroke-linecap="round"/><line x1="24" y1="33" x2="35" y2="40" stroke="#9090a8" stroke-width="2.5" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#1a2838" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#1a2838" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'ACFS': `<svg viewBox="0 0 44 56" fill="none"><circle cx="22" cy="22" r="7" fill="#f0c880"/><path d="M15 19 Q17 12 22 12 Q27 12 29 19 L28 20 Q24 16 20 16 Q16 16 15 20Z" fill="#e03830"/><path d="M19 21 Q21 19 23 21" fill="none" stroke="#3a2010" stroke-width="1.5" stroke-linecap="round"/><path d="M18 24 Q22 28 26 24" fill="none" stroke="#c08060" stroke-width="1.5" stroke-linecap="round"/><path d="M20 29 Q20 34 20 40" stroke="#8a3020" stroke-width="7" stroke-linecap="round" fill="none"/><line x1="18" y1="31" x2="5" y2="25" stroke="#f0c880" stroke-width="3" stroke-linecap="round"/><line x1="24" y1="31" x2="37" y2="25" stroke="#f0c880" stroke-width="3" stroke-linecap="round"/><text x="2" y="23" font-size="7" fill="rgba(255,200,50,0.9)" font-weight="bold">YO!</text><line x1="20" y1="40" x2="14" y2="50" stroke="#2a2020" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="27" y2="49" stroke="#2a2020" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'ACFL': `<svg viewBox="0 0 44 56" fill="none"><ellipse cx="22" cy="15" rx="11" ry="3.5" fill="#1a3050"/><rect x="17" y="10" width="10" height="7" rx="2" fill="#2a4060"/><circle cx="22" cy="23" r="7" fill="#e8c070"/><circle cx="20" cy="22" r="1" fill="#2a1808"/><circle cx="24" cy="22" r="1" fill="#2a1808"/><path d="M19 26 Q22 28 25 26" fill="none" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/><path d="M20 30 Q20 35 20 40" stroke="#304860" stroke-width="7" stroke-linecap="round" fill="none"/><rect x="26" y="27" width="13" height="9" rx="2" fill="#f5f0e0" stroke="#c0b080" stroke-width="1"/><line x1="28" y1="30" x2="37" y2="30" stroke="#a08060" stroke-width="1"/><line x1="28" y1="33" x2="36" y2="33" stroke="#a08060" stroke-width="1"/><circle cx="7" cy="33" r="4" fill="#f0e0c0" stroke="#806040" stroke-width="1.5"/><line x1="7" y1="33" x2="7" y2="29" stroke="#e03020" stroke-width="1.5" stroke-linecap="round"/><line x1="11" y1="35" x2="14" y2="32" stroke="#604020" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="31" x2="26" y2="30" stroke="#e8c070" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#1a2838" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#1a2838" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'AHPS': `<svg viewBox="0 0 44 56" fill="none"><path d="M15 17 Q15 9 22 9 Q29 9 29 17" fill="#2a5090"/><rect x="14" y="16" width="16" height="3" rx="1.5" fill="#1a4080"/><circle cx="22" cy="23" r="7" fill="#f5c8a0"/><circle cx="20" cy="22" r="1" fill="#2a1808"/><path d="M24 21 Q26 22 27 21" fill="none" stroke="#2a1808" stroke-width="1.5" stroke-linecap="round"/><path d="M19 25 Q22 28 25 25" fill="none" stroke="#c08060" stroke-width="1.5" stroke-linecap="round"/><path d="M20 30 Q20 35 20 40" stroke="#5080c0" stroke-width="7" stroke-linecap="round" fill="none"/><rect x="24" y="26" width="16" height="11" rx="2" fill="#2a2828"/><circle cx="32" cy="31" r="4" fill="#1a1818" stroke="#606060" stroke-width="1"/><circle cx="32" cy="31" r="2.5" fill="#3050a0" opacity="0.7"/><rect x="26" y="23" width="5" height="3.5" rx="1" fill="#3a3838"/><line x1="20" y1="32" x2="24" y2="28" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="18" y1="33" x2="10" y2="37" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#1a2838" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#1a2838" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'AHPL': `<svg viewBox="0 0 44 56" fill="none"><ellipse cx="22" cy="15" rx="12" ry="4" fill="#5a4030"/><rect x="17" y="10" width="10" height="8" rx="2.5" fill="#6a5040"/><circle cx="22" cy="24" r="7" fill="#f0d080"/><rect x="16" y="21" width="7" height="5" rx="1.5" fill="#2a3040"/><circle cx="19" cy="24" r="3" fill="#1a2030" stroke="#405060" stroke-width="1"/><circle cx="19" cy="24" r="1.8" fill="#304060" opacity="0.7"/><rect x="23" y="21" width="7" height="5" rx="1.5" fill="#2a3040"/><circle cx="27" cy="24" r="3" fill="#1a2030" stroke="#405060" stroke-width="1"/><circle cx="27" cy="24" r="1.8" fill="#304060" opacity="0.7"/><path d="M20 31 Q20 36 20 42" stroke="#486848" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M20 31 Q20 36 20 42" stroke="#486848" stroke-width="7" stroke-linecap="round" fill="none"/><line x1="18" y1="33" x2="8" y2="29" stroke="#f0d080" stroke-width="3" stroke-linecap="round"/><line x1="24" y1="33" x2="34" y2="29" stroke="#f0d080" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="42" x2="16" y2="52" stroke="#2a3828" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="42" x2="24" y2="52" stroke="#2a3828" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'AHFS': `<svg viewBox="0 0 44 56" fill="none"><path d="M14 17 Q14 9 22 9 Q30 9 30 17" fill="#f08030"/><rect x="13" y="16" width="18" height="3" rx="1.5" fill="#e07020"/><rect x="29" y="16" width="6" height="2" rx="1" fill="#e07020"/><circle cx="22" cy="23" r="7" fill="#f5c8a0"/><path d="M18 21 Q20 19 22 21" fill="none" stroke="#3a2810" stroke-width="1.5" stroke-linecap="round"/><path d="M22 21 Q24 19 26 21" fill="none" stroke="#3a2810" stroke-width="1.5" stroke-linecap="round"/><path d="M18 25 Q22 29 26 25" fill="none" stroke="#c08060" stroke-width="1.8" stroke-linecap="round"/><path d="M20 30 Q20 35 20 40" stroke="#50a070" stroke-width="8" stroke-linecap="round" fill="none"/><line x1="18" y1="32" x2="5" y2="25" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="24" y1="32" x2="30" y2="37" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><text x="2" y="23" font-size="7" fill="rgba(255,200,50,0.9)" font-weight="bold">YO!</text><line x1="20" y1="40" x2="14" y2="50" stroke="#2a4030" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="27" y2="49" stroke="#2a4030" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'AHFL': `<svg viewBox="0 0 44 56" fill="none"><circle cx="22" cy="11" r="4.5" fill="#2a1810"/><circle cx="17" cy="13" r="4" fill="#2a1810"/><circle cx="27" cy="13" r="4" fill="#2a1810"/><circle cx="22" cy="23" r="7" fill="#f5c0a0"/><circle cx="20" cy="22" r="1" fill="#2a1808"/><circle cx="24" cy="22" r="1" fill="#2a1808"/><path d="M19 26 Q22 29 25 26" fill="none" stroke="#c08060" stroke-width="1.5" stroke-linecap="round"/><path d="M20 30 Q20 35 20 40" stroke="#d07090" stroke-width="7" stroke-linecap="round" fill="none"/><rect x="27" y="25" width="10" height="14" rx="2" fill="#1a1828"/><rect x="28" y="26" width="8" height="10" rx="1.5" fill="#3050a0" opacity="0.8"/><line x1="20" y1="32" x2="27" y2="28" stroke="#f5c0a0" stroke-width="3" stroke-linecap="round"/><line x1="18" y1="33" x2="10" y2="38" stroke="#f5c0a0" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#303850" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#303850" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'VCPS': `<svg viewBox="0 0 44 56" fill="none"><ellipse cx="22" cy="15" rx="11" ry="3.5" fill="#4a3020"/><rect x="17" y="10" width="10" height="7" rx="2" fill="#5a4030"/><circle cx="22" cy="23" r="7" fill="#f0d080"/><rect x="15" y="21" width="6" height="4.5" rx="1.5" fill="none" stroke="#604820" stroke-width="1.5"/><rect x="23" y="21" width="6" height="4.5" rx="1.5" fill="none" stroke="#604820" stroke-width="1.5"/><line x1="21" y1="23.5" x2="23" y2="23.5" stroke="#604820" stroke-width="1.5"/><circle cx="18" cy="23.5" r="1" fill="#3a2810"/><circle cx="26" cy="23.5" r="1" fill="#3a2810"/><path d="M20 30 Q20 35 20 40" stroke="#5a7040" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="8" cy="33" r="6" fill="none" stroke="#806040" stroke-width="1.8"/><circle cx="8" cy="33" r="4" fill="rgba(200,230,255,0.4)" stroke="#a08060" stroke-width="1"/><line x1="13" y1="38" x2="16" y2="43" stroke="#604020" stroke-width="2.5" stroke-linecap="round"/><rect x="27" y="27" width="11" height="14" rx="2" fill="#8a4030"/><line x1="32" y1="27" x2="32" y2="41" stroke="#6a3020" stroke-width="1"/><line x1="18" y1="32" x2="12" y2="32" stroke="#f0d080" stroke-width="3" stroke-linecap="round"/><line x1="24" y1="32" x2="27" y2="30" stroke="#f0d080" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#2a3828" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#2a3828" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'VCPL': `<svg viewBox="0 0 44 56" fill="none"><path d="M14 18 Q14 9 22 9 Q30 9 30 18 Q30 12 22 11 Q14 12 14 18Z" fill="#181820"/><rect x="13" y="17" width="18" height="3.5" rx="0" fill="#101018"/><circle cx="22" cy="24" r="7" fill="#d8b870"/><line x1="19" y1="22" x2="22" y2="22" stroke="#3a2810" stroke-width="1.5" stroke-linecap="round"/><line x1="22" y1="22" x2="25" y2="22" stroke="#3a2810" stroke-width="1.5" stroke-linecap="round"/><line x1="19" y1="26" x2="25" y2="26" stroke="#8a6040" stroke-width="1.2" stroke-linecap="round"/><path d="M21 31 Q20 37 19 44" stroke="#1a1820" stroke-width="8" stroke-linecap="round" fill="none"/><path d="M13 35 Q10 42 13 48 Q16 52 20 51" fill="none" stroke="#8a4020" stroke-width="2"/><circle cx="10" cy="38" r="1.8" fill="#c06030"/><circle cx="10" cy="43" r="1.8" fill="#c06030"/><circle cx="13" cy="48" r="1.8" fill="#c06030"/><line x1="30" y1="30" x2="34" y2="52" stroke="#7a5030" stroke-width="3" stroke-linecap="round"/><line x1="24" y1="33" x2="30" y2="31" stroke="#d8b870" stroke-width="3.5" stroke-linecap="round"/><line x1="19" y1="44" x2="16" y2="52" stroke="#101018" stroke-width="3" stroke-linecap="round"/><line x1="19" y1="44" x2="23" y2="52" stroke="#101018" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'VCFS': `<svg viewBox="0 0 44 56" fill="none"><circle cx="13" cy="17" r="6" fill="#f5c8a0"/><path d="M7 16 Q7 10 13 10 Q19 10 19 16" fill="#4a3020"/><circle cx="11" cy="16" r="1" fill="#2a1808"/><circle cx="15" cy="16" r="1" fill="#2a1808"/><path d="M10 19 Q13 22 16 19" fill="none" stroke="#c08060" stroke-width="1.2" stroke-linecap="round"/><path d="M12 23 Q12 28 11 34" stroke="#5080c0" stroke-width="6" stroke-linecap="round" fill="none"/><line x1="11" y1="25" x2="18" y2="23" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="10" y1="26" x2="4" y2="31" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="11" y1="34" x2="8" y2="42" stroke="#2a3848" stroke-width="3" stroke-linecap="round"/><line x1="11" y1="34" x2="14" y2="42" stroke="#2a3848" stroke-width="3" stroke-linecap="round"/><circle cx="31" cy="17" r="6" fill="#f0b090"/><path d="M25 16 Q25 10 31 10 Q37 10 37 16" fill="#2a1810"/><circle cx="29" cy="16" r="1" fill="#2a1808"/><circle cx="33" cy="16" r="1" fill="#2a1808"/><path d="M28 19 Q31 22 34 19" fill="none" stroke="#c08060" stroke-width="1.2" stroke-linecap="round"/><path d="M31 23 Q31 28 31 34" stroke="#c05060" stroke-width="6" stroke-linecap="round" fill="none"/><line x1="31" y1="25" x2="24" y2="23" stroke="#f0b090" stroke-width="3" stroke-linecap="round"/><line x1="32" y1="26" x2="38" y2="31" stroke="#f0b090" stroke-width="3" stroke-linecap="round"/><line x1="31" y1="34" x2="28" y2="42" stroke="#2a3848" stroke-width="3" stroke-linecap="round"/><line x1="31" y1="34" x2="34" y2="42" stroke="#2a3848" stroke-width="3" stroke-linecap="round"/><line x1="19" y1="23" x2="25" y2="23" stroke="#f0b090" stroke-width="3" stroke-linecap="round"/><ellipse cx="22" cy="10" rx="6" ry="5" fill="rgba(255,255,255,0.2)"/><text x="22" y="13" text-anchor="middle" font-size="6" fill="white">♪</text></svg>`,
-  'VCFL': `<svg viewBox="0 0 44 56" fill="none"><ellipse cx="22" cy="15" rx="11" ry="3.5" fill="#486040"/><rect x="17" y="10" width="10" height="7" rx="2" fill="#587050"/><circle cx="22" cy="23" r="7" fill="#e8c060"/><circle cx="20" cy="22" r="1" fill="#2a1808"/><circle cx="24" cy="22" r="1" fill="#2a1808"/><path d="M20 26 Q22 28 24 26" fill="none" stroke="#a08040" stroke-width="1.2" stroke-linecap="round"/><path d="M20 30 Q20 35 20 40" stroke="#486848" stroke-width="7" stroke-linecap="round" fill="none"/><rect x="25" y="26" width="13" height="18" rx="2.5" fill="#608060"/><rect x="27" y="28" width="9" height="7" rx="1.5" fill="#507050"/><rect x="27" y="36" width="4" height="5" rx="1" fill="#405840"/><rect x="33" y="36" width="4" height="5" rx="1" fill="#405840"/><line x1="18" y1="33" x2="8" y2="37" stroke="#e8c060" stroke-width="3" stroke-linecap="round"/><line x1="8" y1="37" x2="5" y2="48" stroke="#a09060" stroke-width="2.5" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#2a3828" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#2a3828" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'VHPS': `<svg viewBox="0 0 44 56" fill="none"><circle cx="22" cy="22" r="7" fill="#f5c0a0"/><path d="M15 20 Q16 12 22 12 Q28 12 29 20 Q28 15 22 14 Q16 15 15 20Z" fill="#2a1810"/><rect x="15" y="20" width="14" height="3" rx="1.5" fill="#1a1010"/><rect x="15" y="20" width="7" height="4.5" rx="1.5" fill="#1a1818" opacity="0.85"/><rect x="23" y="20" width="7" height="4.5" rx="1.5" fill="#1a1818" opacity="0.85"/><path d="M19 26 Q22 29 25 26" fill="none" stroke="#c08060" stroke-width="1.5" stroke-linecap="round"/><path d="M20 29 Q20 34 20 40" stroke="#6890c0" stroke-width="7" stroke-linecap="round" fill="none"/><rect x="4" y="24" width="10" height="14" rx="2" fill="#1a1828"/><rect x="5" y="25" width="8" height="10" rx="1.5" fill="#3060b0" opacity="0.8"/><rect x="8" y="35" width="2" height="2" rx="0.5" fill="#404048"/><line x1="18" y1="32" x2="10" y2="28" stroke="#f5c0a0" stroke-width="3" stroke-linecap="round"/><line x1="24" y1="32" x2="30" y2="37" stroke="#f5c0a0" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="16" y2="50" stroke="#303848" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="24" y2="50" stroke="#303848" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'VHPL': `<svg viewBox="0 0 44 56" fill="none"><ellipse cx="22" cy="15" rx="12" ry="4" fill="#8a6040"/><rect x="17" y="10" width="10" height="8" rx="2.5" fill="#9a7050"/><circle cx="22" cy="24" r="7" fill="#f0d080"/><path d="M18 22 Q20 20 22 22" fill="none" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><path d="M22 22 Q24 20 26 22" fill="none" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><path d="M19 27 Q22 30 25 27" fill="none" stroke="#a08060" stroke-width="1.5" stroke-linecap="round"/><path d="M20 31 Q20 36 20 42" stroke="#6a9060" stroke-width="8" stroke-linecap="round" fill="none"/><line x1="18" y1="33" x2="5" y2="32" stroke="#f0d080" stroke-width="3.5" stroke-linecap="round"/><line x1="24" y1="33" x2="37" y2="32" stroke="#f0d080" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="5" cy="32" rx="4" ry="3" fill="#f0d080"/><ellipse cx="37" cy="32" rx="4" ry="3" fill="#f0d080"/><line x1="20" y1="42" x2="16" y2="52" stroke="#3a4830" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="42" x2="24" y2="52" stroke="#3a4830" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'VHFS': `<svg viewBox="0 0 44 56" fill="none"><circle cx="12" cy="15" r="6" fill="#f5c8a0"/><path d="M6 14 Q6 8 12 8 Q18 8 18 14" fill="#f08030"/><circle cx="10" cy="14" r="1" fill="#2a1808"/><circle cx="14" cy="14" r="1" fill="#2a1808"/><path d="M9 17 Q12 20 15 17" fill="none" stroke="#c08060" stroke-width="1.2" stroke-linecap="round"/><path d="M11 21 Q10 26 9 32" stroke="#50a070" stroke-width="6" stroke-linecap="round" fill="none"/><circle cx="32" cy="15" r="6" fill="#f0b090"/><path d="M26 14 Q26 8 32 8 Q38 8 38 14" fill="#2a1810"/><circle cx="30" cy="14" r="1" fill="#2a1808"/><circle cx="34" cy="14" r="1" fill="#2a1808"/><path d="M29 17 Q32 20 35 17" fill="none" stroke="#c08060" stroke-width="1.2" stroke-linecap="round"/><path d="M32 21 Q32 26 32 32" stroke="#c05060" stroke-width="6" stroke-linecap="round" fill="none"/><rect x="14" y="23" width="16" height="11" rx="3" fill="#f5f0e0" stroke="#d0c080" stroke-width="1.5"/><circle cx="20" cy="29" r="2.5" fill="rgba(255,150,100,0.6)"/><circle cx="28" cy="29" r="2.5" fill="rgba(100,200,100,0.6)"/><polygon points="22,34 18,42 26,42" fill="white" stroke="#c0b080" stroke-width="1.2"/><line x1="11" y1="24" x2="15" y2="27" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="9" y1="25" x2="5" y2="32" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round"/><line x1="32" y1="24" x2="29" y2="27" stroke="#f0b090" stroke-width="3" stroke-linecap="round"/><line x1="34" y1="25" x2="38" y2="30" stroke="#f0b090" stroke-width="3" stroke-linecap="round"/></svg>`,
-  'VHFL': `<svg viewBox="0 0 44 56" fill="none"><rect x="28" y="7" width="5" height="38" rx="2.5" fill="#7a5030"/><ellipse cx="30" cy="8" rx="10" ry="11" fill="#3a6030" opacity="0.6"/><ellipse cx="24" cy="11" rx="8" ry="9" fill="#4a7040" opacity="0.5"/><circle cx="17" cy="22" r="7" fill="#f5c8a0"/><ellipse cx="17" cy="16" rx="10" ry="3.5" fill="#8a6040"/><rect x="13" y="12" width="8" height="7" rx="2.5" fill="#9a7050"/><path d="M13 21 Q15 20 17 21" fill="none" stroke="#3a2810" stroke-width="1.8" stroke-linecap="round"/><path d="M17 21 Q19 20 21 21" fill="none" stroke="#3a2810" stroke-width="1.8" stroke-linecap="round"/><path d="M14 25 Q17 28 20 25" fill="none" stroke="#a08060" stroke-width="1.5" stroke-linecap="round"/><path d="M15 29 Q18 33 22 36" stroke="#50a070" stroke-width="7" stroke-linecap="round" fill="none"/><line x1="14" y1="31" x2="4" y2="36" stroke="#f5c8a0" stroke-width="3.5" stroke-linecap="round"/><circle cx="3" cy="36" r="4" fill="rgba(255,160,190,0.75)"/><circle cx="3" cy="36" r="2" fill="rgba(255,230,80,0.95)"/><line x1="0" y1="35" x2="3" y2="36" stroke="rgba(255,130,170,0.9)" stroke-width="1.5"/><line x1="3" y1="32" x2="3" y2="36" stroke="rgba(255,130,170,0.9)" stroke-width="1.5"/><line x1="6" y1="35" x2="3" y2="36" stroke="rgba(255,130,170,0.9)" stroke-width="1.5"/><line x1="20" y1="30" x2="26" y2="28" stroke="#f5c8a0" stroke-width="3.5" stroke-linecap="round"/><line x1="22" y1="36" x2="18" y2="46" stroke="#2a4030" stroke-width="3.5" stroke-linecap="round"/><line x1="22" y1="36" x2="27" y2="45" stroke="#2a4030" stroke-width="3.5" stroke-linecap="round"/></svg>`
-};
-const PERSON_SVGS = {
-  'ACPS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><path d="M30 34 Q30 18 45 18 Q60 18 60 34" fill="#e03020"/><rect x="29" y="33" width="32" height="5" rx="2.5" fill="#c02010"/><circle cx="45" cy="44" r="12" fill="#f0d080"/><circle cx="41" cy="43" r="1.8" fill="#3a2810"/><circle cx="49" cy="43" r="1.8" fill="#3a2810"/><path d="M38 56 Q36 66 35 78" stroke="#3a5a80" stroke-width="11" stroke-linecap="round" fill="none"/><rect x="48" y="55" width="12" height="18" rx="4" fill="#507090"/><line x1="38" y1="60" x2="20" y2="46" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><line x1="44" y1="59" x2="62" y2="48" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><path d="M62 48 Q72 60 66 75" fill="none" stroke="#f0c040" stroke-width="3" stroke-linecap="round"/><line x1="35" y1="78" x2="28" y2="96" stroke="#2a3848" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="78" x2="44" y2="96" stroke="#2a3848" stroke-width="6" stroke-linecap="round"/><rect x="22" y="93" width="14" height="7" rx="3" fill="#1a2838"/><rect x="38" y="93" width="14" height="7" rx="3" fill="#1a2838"/></svg>`,
-  'ACPL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><path d="M29 34 Q29 18 45 18 Q61 18 61 34" fill="#203858"/><rect x="28" y="32" width="34" height="5" rx="2.5" fill="#1a3050"/><rect x="58" y="32" width="12" height="3" rx="1.5" fill="#1a3050"/><circle cx="45" cy="44" r="12" fill="#f0d080"/><circle cx="41" cy="43" r="1.8" fill="#3a2810"/><circle cx="49" cy="43" r="1.8" fill="#3a2810"/><line x1="41" y1="47" x2="49" y2="47" stroke="#8a6040" stroke-width="1.5" stroke-linecap="round"/><path d="M42 56 Q40 66 40 78" stroke="#2a4060" stroke-width="12" stroke-linecap="round" fill="none"/><line x1="36" y1="62" x2="14" y2="82" stroke="#9090a8" stroke-width="4" stroke-linecap="round"/><line x1="50" y1="62" x2="70" y2="80" stroke="#9090a8" stroke-width="4" stroke-linecap="round"/><line x1="14" y1="82" x2="8" y2="92" stroke="#7080a0" stroke-width="3" stroke-linecap="round"/><line x1="70" y1="80" x2="76" y2="90" stroke="#7080a0" stroke-width="3" stroke-linecap="round"/><line x1="40" y1="78" x2="32" y2="96" stroke="#1a2838" stroke-width="6" stroke-linecap="round"/><line x1="40" y1="78" x2="48" y2="96" stroke="#1a2838" stroke-width="6" stroke-linecap="round"/><rect x="26" y="93" width="14" height="7" rx="3" fill="#1a2838"/><rect x="42" y="93" width="14" height="7" rx="3" fill="#1a2838"/></svg>`,
-  'ACFS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><circle cx="45" cy="42" r="12" fill="#f0c880"/><path d="M32 38 Q34 26 45 26 Q56 26 58 38 L56 40 Q48 33 42 33 Q36 33 34 40Z" fill="#e03830"/><path d="M34 38 Q36 36 38 38" fill="none" stroke="#c02818" stroke-width="1.5"/><path d="M37 50 Q41 42 45 40 Q49 42 53 50" fill="none" stroke="#c08060" stroke-width="2" stroke-linecap="round"/><circle cx="41" cy="41" r="1.8" fill="rgba(0,0,0,0)"/><path d="M39 40 Q41 38 43 40" fill="none" stroke="#3a2010" stroke-width="2" stroke-linecap="round"/><path d="M47 40 Q49 38 51 40" fill="none" stroke="#3a2010" stroke-width="2" stroke-linecap="round"/><path d="M42 54 Q42 64 42 76" stroke="#8a3020" stroke-width="12" stroke-linecap="round" fill="none"/><line x1="36" y1="58" x2="10" y2="48" stroke="#f0c880" stroke-width="6" stroke-linecap="round"/><line x1="48" y1="58" x2="74" y2="48" stroke="#f0c880" stroke-width="6" stroke-linecap="round"/><text x="6" y="44" font-size="10" fill="rgba(255,200,50,0.95)" font-weight="bold">YO!</text><line x1="42" y1="76" x2="30" y2="96" stroke="#2a2020" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="54" y2="94" stroke="#2a2020" stroke-width="6" stroke-linecap="round"/><rect x="24" y="93" width="14" height="7" rx="3" fill="#1a1818"/><rect x="48" y="91" width="14" height="7" rx="3" fill="#1a1818"/></svg>`,
-  'ACFL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><ellipse cx="45" cy="30" rx="20" ry="6" fill="#1a3050"/><rect x="35" y="20" width="20" height="14" rx="3" fill="#2a4060"/><circle cx="45" cy="44" r="12" fill="#e8c070"/><circle cx="41" cy="43" r="1.8" fill="#2a1808"/><circle cx="49" cy="43" r="1.8" fill="#2a1808"/><path d="M40 49 Q45 53 50 49" fill="none" stroke="#8a6020" stroke-width="2" stroke-linecap="round"/><path d="M36 48 Q36 46 38 46 Q40 46 40 49" fill="#9a7030" opacity="0.6"/><path d="M42 56 Q42 66 42 76" stroke="#304860" stroke-width="12" stroke-linecap="round" fill="none"/><rect x="50" y="52" width="24" height="18" rx="3" fill="#f5f0e0" stroke="#c0b080" stroke-width="1.5"/><line x1="54" y1="59" x2="70" y2="59" stroke="#a08060" stroke-width="1.5"/><line x1="54" y1="63" x2="68" y2="63" stroke="#a08060" stroke-width="1.2"/><line x1="60" y1="52" x2="60" y2="70" stroke="#a08060" stroke-width="1"/><line x1="66" y1="52" x2="66" y2="70" stroke="#a08060" stroke-width="1"/><line x1="36" y1="60" x2="50" y2="58" stroke="#e8c070" stroke-width="5" stroke-linecap="round"/><circle cx="18" cy="64" r="8" fill="#f0e0c0" stroke="#806040" stroke-width="2"/><line x1="18" y1="64" x2="18" y2="57" stroke="#e03020" stroke-width="2" stroke-linecap="round"/><line x1="15" y1="64" x2="23" y2="67" stroke="#1a2838" stroke-width="1.5"/><line x1="22" y1="60" x2="14" y2="62" stroke="#1a2838" stroke-width="1.5"/><line x1="32" y1="62" x2="20" y2="64" stroke="#e8c070" stroke-width="5" stroke-linecap="round"/><line x1="42" y1="76" x2="36" y2="96" stroke="#1a2838" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="48" y2="96" stroke="#1a2838" stroke-width="6" stroke-linecap="round"/></svg>`,
-  'AHPS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><path d="M30 34 Q30 20 45 20 Q60 20 60 34" fill="#2a5090"/><rect x="29" y="32" width="32" height="5" rx="2.5" fill="#1a4080"/><circle cx="45" cy="44" r="12" fill="#f5c8a0"/><circle cx="41" cy="43" r="1.8" fill="#2a1808"/><path d="M47 42 Q50 43 52 42" fill="none" stroke="#2a1808" stroke-width="2" stroke-linecap="round"/><path d="M40 49 Q45 53 50 49" fill="none" stroke="#c08060" stroke-width="2" stroke-linecap="round"/><path d="M42 56 Q42 66 42 76" stroke="#5080c0" stroke-width="12" stroke-linecap="round" fill="none"/><rect x="48" y="50" width="30" height="20" rx="4" fill="#2a2828"/><circle cx="63" cy="60" r="7" fill="#1a1818" stroke="#606060" stroke-width="1.5"/><circle cx="63" cy="60" r="4.5" fill="#3050a0" opacity="0.7"/><circle cx="63" cy="60" r="2" fill="#506090" opacity="0.5"/><rect x="52" y="45" width="9" height="6" rx="1.5" fill="#3a3838"/><line x1="78" y1="52" x2="84" y2="48" stroke="rgba(255,255,80,0.8)" stroke-width="2.5" stroke-linecap="round"/><line x1="42" y1="60" x2="48" y2="54" stroke="#f5c8a0" stroke-width="6" stroke-linecap="round"/><line x1="38" y1="62" x2="22" y2="70" stroke="#f5c8a0" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="36" y2="96" stroke="#1a2838" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="48" y2="96" stroke="#1a2838" stroke-width="6" stroke-linecap="round"/><rect x="30" y="93" width="14" height="7" rx="3" fill="#1a2838"/><rect x="42" y="93" width="14" height="7" rx="3" fill="#1a2838"/></svg>`,
-  'AHPL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><ellipse cx="45" cy="30" rx="22" ry="7" fill="#5a4030"/><rect x="35" y="20" width="20" height="14" rx="4" fill="#6a5040"/><circle cx="45" cy="46" r="12" fill="#f0d080"/><rect x="32" y="41" width="13" height="9" rx="3" fill="#2a3040"/><circle cx="38" cy="46" r="5" fill="#1a2030" stroke="#405060" stroke-width="1.5"/><circle cx="38" cy="46" r="3" fill="#304060" opacity="0.7"/><rect x="47" y="41" width="13" height="9" rx="3" fill="#2a3040"/><circle cx="53" cy="46" r="5" fill="#1a2030" stroke="#405060" stroke-width="1.5"/><circle cx="53" cy="46" r="3" fill="#304060" opacity="0.7"/><line x1="45" y1="43" x2="47" y2="43" stroke="#2a3040" stroke-width="2"/><path d="M42 58 Q42 68 42 78" stroke="#486848" stroke-width="12" stroke-linecap="round" fill="none"/><line x1="38" y1="62" x2="24" y2="55" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><line x1="48" y1="62" x2="62" y2="55" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="78" x2="35" y2="97" stroke="#2a3828" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="78" x2="50" y2="97" stroke="#2a3828" stroke-width="6" stroke-linecap="round"/><rect x="29" y="94" width="14" height="7" rx="3" fill="#1a2818"/><rect x="44" y="94" width="14" height="7" rx="3" fill="#1a2818"/></svg>`,
-  'AHFS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><path d="M30 34 Q30 20 45 20 Q60 20 60 34" fill="#f08030"/><rect x="29" y="32" width="32" height="4" rx="2" fill="#e07020"/><rect x="58" y="32" width="12" height="3" rx="1.5" fill="#e07020"/><circle cx="45" cy="44" r="12" fill="#f5c8a0"/><path d="M39 42 Q41 40 43 42" fill="none" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><path d="M47 42 Q49 40 51 42" fill="none" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><path d="M38 49 Q45 55 52 49" fill="none" stroke="#c08060" stroke-width="2.5" stroke-linecap="round"/><path d="M42 56 Q42 66 42 76" stroke="#50a070" stroke-width="14" stroke-linecap="round" fill="none"/><line x1="36" y1="60" x2="10" y2="44" stroke="#f5c8a0" stroke-width="6" stroke-linecap="round"/><line x1="48" y1="60" x2="60" y2="70" stroke="#f5c8a0" stroke-width="6" stroke-linecap="round"/><text x="4" y="42" font-size="12" fill="rgba(255,200,50,0.95)" font-weight="bold">YO!</text><line x1="42" y1="76" x2="30" y2="94" stroke="#2a4030" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="56" y2="92" stroke="#2a4030" stroke-width="6" stroke-linecap="round"/><rect x="24" y="91" width="14" height="7" rx="3" fill="#1a2820"/><rect x="50" y="89" width="14" height="7" rx="3" fill="#1a2820"/></svg>`,
-  'AHFL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><circle cx="45" cy="22" r="8" fill="#2a1810"/><circle cx="36" cy="24" r="7" fill="#2a1810"/><circle cx="54" cy="24" r="7" fill="#2a1810"/><circle cx="45" cy="44" r="12" fill="#f5c0a0"/><circle cx="41" cy="43" r="1.8" fill="#2a1808"/><circle cx="49" cy="43" r="1.8" fill="#2a1808"/><path d="M40 49 Q45 53 50 49" fill="none" stroke="#c08060" stroke-width="2" stroke-linecap="round"/><path d="M42 56 Q42 66 42 76" stroke="#d07090" stroke-width="12" stroke-linecap="round" fill="none"/><rect x="52" y="48" width="16" height="24" rx="3" fill="#1a1828"/><rect x="53" y="49" width="14" height="18" rx="2" fill="#3050a0" opacity="0.8"/><rect x="58" y="68" width="4" height="3" rx="1" fill="#404048"/><line x1="42" y1="58" x2="52" y2="52" stroke="#f5c0a0" stroke-width="6" stroke-linecap="round"/><line x1="38" y1="62" x2="22" y2="72" stroke="#f5c0a0" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="35" y2="96" stroke="#303850" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="50" y2="96" stroke="#303850" stroke-width="6" stroke-linecap="round"/></svg>`,
-  'VCPS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><ellipse cx="45" cy="30" rx="22" ry="6" fill="#4a3020"/><rect x="33" y="20" width="24" height="14" rx="3" fill="#5a4030"/><circle cx="45" cy="44" r="12" fill="#f0d080"/><rect x="32" y="41" width="11" height="8" rx="2" fill="none" stroke="#604820" stroke-width="2"/><rect x="47" y="41" width="11" height="8" rx="2" fill="none" stroke="#604820" stroke-width="2"/><line x1="43" y1="45" x2="47" y2="45" stroke="#604820" stroke-width="2"/><line x1="32" y1="45" x2="26" y2="44" stroke="#604820" stroke-width="2"/><line x1="58" y1="45" x2="64" y2="44" stroke="#604820" stroke-width="2"/><circle cx="37" cy="45" r="1.8" fill="#3a2810"/><circle cx="52" cy="45" r="1.8" fill="#3a2810"/><path d="M42 56 Q42 66 42 76" stroke="#5a7040" stroke-width="12" stroke-linecap="round" fill="none"/><circle cx="18" cy="62" r="11" fill="none" stroke="#806040" stroke-width="2.5"/><circle cx="18" cy="62" r="7" fill="rgba(200,230,255,0.4)" stroke="#a08060" stroke-width="1.5"/><line x1="26" y1="70" x2="32" y2="78" stroke="#604020" stroke-width="3.5" stroke-linecap="round"/><rect x="52" y="52" width="20" height="26" rx="3" fill="#8a4030"/><line x1="62" y1="52" x2="62" y2="78" stroke="#6a3020" stroke-width="1.5"/><line x1="54" y1="60" x2="70" y2="60" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="54" y1="65" x2="70" y2="65" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="36" y1="60" x2="22" y2="60" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><line x1="48" y1="60" x2="52" y2="58" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="36" y2="96" stroke="#2a3828" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="48" y2="96" stroke="#2a3828" stroke-width="6" stroke-linecap="round"/></svg>`,
-  'VCPL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><path d="M28 36 Q28 18 45 18 Q62 18 62 36 Q62 28 45 24 Q28 28 28 36Z" fill="#181820"/><rect x="27" y="34" width="36" height="6" rx="0" fill="#101018"/><circle cx="45" cy="46" r="12" fill="#d8b870"/><line x1="40" y1="44" x2="44" y2="44" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><line x1="46" y1="44" x2="50" y2="44" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><line x1="40" y1="49" x2="50" y2="49" stroke="#8a6040" stroke-width="1.8" stroke-linecap="round"/><path d="M44 58 Q42 68 40 80" stroke="#1a1820" stroke-width="14" stroke-linecap="round" fill="none"/><path d="M26 64 Q22 76 28 86 Q34 96 44 93" fill="none" stroke="#8a4020" stroke-width="3"/><circle cx="22" cy="68" r="3" fill="#c06030"/><circle cx="22" cy="76" r="3" fill="#c06030"/><circle cx="26" cy="84" r="3" fill="#c06030"/><circle cx="34" cy="90" r="3" fill="#c06030"/><line x1="60" y1="56" x2="68" y2="100" stroke="#7a5030" stroke-width="4" stroke-linecap="round"/><line x1="48" y1="62" x2="60" y2="58" stroke="#d8b870" stroke-width="6" stroke-linecap="round"/><line x1="40" y1="80" x2="34" y2="100" stroke="#101018" stroke-width="6" stroke-linecap="round"/><line x1="40" y1="80" x2="48" y2="98" stroke="#101018" stroke-width="6" stroke-linecap="round"/></svg>`,
-  'VCFS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><circle cx="26" cy="34" r="10" fill="#f5c8a0"/><path d="M16 33 Q16 22 26 22 Q36 22 36 33" fill="#4a3020"/><circle cx="23" cy="33" r="1.5" fill="#2a1808"/><circle cx="29" cy="33" r="1.5" fill="#2a1808"/><path d="M22 37 Q26 41 30 37" fill="none" stroke="#c08060" stroke-width="1.8" stroke-linecap="round"/><path d="M24 45 Q23 55 22 66" stroke="#5080c0" stroke-width="10" stroke-linecap="round" fill="none"/><line x1="22" y1="50" x2="36" y2="46" stroke="#f5c8a0" stroke-width="5" stroke-linecap="round"/><line x1="20" y1="52" x2="8" y2="62" stroke="#f5c8a0" stroke-width="5" stroke-linecap="round"/><line x1="22" y1="66" x2="16" y2="82" stroke="#2a3848" stroke-width="5" stroke-linecap="round"/><line x1="22" y1="66" x2="28" y2="82" stroke="#2a3848" stroke-width="5" stroke-linecap="round"/><circle cx="64" cy="34" r="10" fill="#f0b090"/><path d="M54 33 Q54 22 64 22 Q74 22 74 33" fill="#2a1810"/><circle cx="61" cy="33" r="1.5" fill="#2a1808"/><circle cx="67" cy="33" r="1.5" fill="#2a1808"/><path d="M60 37 Q64 41 68 37" fill="none" stroke="#c08060" stroke-width="1.8" stroke-linecap="round"/><path d="M64 45 Q64 55 64 66" stroke="#c05060" stroke-width="10" stroke-linecap="round" fill="none"/><line x1="64" y1="50" x2="50" y2="46" stroke="#f0b090" stroke-width="5" stroke-linecap="round"/><line x1="66" y1="52" x2="78" y2="62" stroke="#f0b090" stroke-width="5" stroke-linecap="round"/><line x1="64" y1="66" x2="58" y2="82" stroke="#2a3848" stroke-width="5" stroke-linecap="round"/><line x1="64" y1="66" x2="70" y2="82" stroke="#2a3848" stroke-width="5" stroke-linecap="round"/><line x1="36" y1="46" x2="50" y2="46" stroke="#f0b090" stroke-width="5" stroke-linecap="round"/><ellipse cx="45" cy="22" rx="10" ry="8" fill="rgba(255,255,255,0.2)"/><text x="45" y="26" text-anchor="middle" font-size="9" fill="white">♪</text></svg>`,
-  'VCFL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><ellipse cx="45" cy="30" rx="20" ry="6" fill="#486040"/><rect x="35" y="20" width="20" height="13" rx="3" fill="#587050"/><circle cx="45" cy="44" r="12" fill="#e8c060"/><circle cx="41" cy="43" r="1.8" fill="#2a1808"/><circle cx="49" cy="43" r="1.8" fill="#2a1808"/><path d="M42 49 Q45 51 48 49" fill="none" stroke="#a08040" stroke-width="1.5" stroke-linecap="round"/><path d="M42 56 Q42 66 42 76" stroke="#486848" stroke-width="12" stroke-linecap="round" fill="none"/><rect x="48" y="52" width="22" height="30" rx="4" fill="#608060"/><rect x="50" y="54" width="18" height="12" rx="2" fill="#507050"/><rect x="50" y="68" width="8" height="8" rx="1.5" fill="#405840"/><rect x="60" y="68" width="8" height="8" rx="1.5" fill="#405840"/><line x1="48" y1="54" x2="42" y2="57" stroke="#405840" stroke-width="2"/><line x1="48" y1="66" x2="42" y2="68" stroke="#405840" stroke-width="2"/><line x1="36" y1="62" x2="16" y2="72" stroke="#e8c060" stroke-width="6" stroke-linecap="round"/><line x1="16" y1="72" x2="10" y2="94" stroke="#a09060" stroke-width="3.5" stroke-linecap="round"/><line x1="42" y1="76" x2="36" y2="96" stroke="#2a3828" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="48" y2="96" stroke="#2a3828" stroke-width="6" stroke-linecap="round"/></svg>`,
-  'VHPS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><circle cx="45" cy="42" r="12" fill="#f5c0a0"/><path d="M32 38 Q34 26 45 26 Q56 26 58 38 Q56 30 45 28 Q34 30 32 38Z" fill="#2a1810"/><rect x="32" y="40" width="26" height="5" rx="2" fill="#1a1010"/><rect x="31" y="40" width="12" height="7" rx="2" fill="#1a1818" opacity="0.85"/><rect x="47" y="40" width="12" height="7" rx="2" fill="#1a1818" opacity="0.85"/><line x1="43" y1="43" x2="47" y2="43" stroke="#1a1818" stroke-width="2"/><path d="M40 49 Q45 53 50 49" fill="none" stroke="#c08060" stroke-width="2" stroke-linecap="round"/><path d="M42 56 Q42 66 42 76" stroke="#6890c0" stroke-width="13" stroke-linecap="round" fill="none"/><rect x="10" y="44" width="16" height="24" rx="3" fill="#1a1828"/><rect x="11" y="45" width="14" height="18" rx="2" fill="#3060b0" opacity="0.8"/><rect x="16" y="64" width="4" height="3" rx="1" fill="#404048"/><line x1="36" y1="60" x2="22" y2="52" stroke="#f5c0a0" stroke-width="6" stroke-linecap="round"/><line x1="48" y1="60" x2="60" y2="68" stroke="#f5c0a0" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="36" y2="96" stroke="#303848" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="76" x2="48" y2="96" stroke="#303848" stroke-width="6" stroke-linecap="round"/><rect x="30" y="93" width="14" height="7" rx="3" fill="#202838"/><rect x="44" y="93" width="14" height="7" rx="3" fill="#202838"/></svg>`,
-  'VHPL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><ellipse cx="45" cy="31" rx="22" ry="7" fill="#8a6040"/><rect x="33" y="20" width="24" height="15" rx="4" fill="#9a7050"/><circle cx="45" cy="46" r="12" fill="#f0d080"/><path d="M38 44 Q41 42 44 44" fill="none" stroke="#3a2810" stroke-width="2.2" stroke-linecap="round"/><path d="M46 44 Q49 42 52 44" fill="none" stroke="#3a2810" stroke-width="2.2" stroke-linecap="round"/><path d="M40 50 Q45 54 50 50" fill="none" stroke="#a08060" stroke-width="1.8" stroke-linecap="round"/><path d="M42 58 Q42 68 42 78" stroke="#6a9060" stroke-width="13" stroke-linecap="round" fill="none"/><line x1="36" y1="62" x2="10" y2="60" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><line x1="48" y1="62" x2="74" y2="60" stroke="#f0d080" stroke-width="6" stroke-linecap="round"/><ellipse cx="10" cy="60" rx="7" ry="5" fill="#f0d080"/><ellipse cx="74" cy="60" rx="7" ry="5" fill="#f0d080"/><line x1="42" y1="78" x2="36" y2="97" stroke="#3a4830" stroke-width="6" stroke-linecap="round"/><line x1="42" y1="78" x2="48" y2="97" stroke="#3a4830" stroke-width="6" stroke-linecap="round"/><rect x="30" y="94" width="14" height="7" rx="3" fill="#2a3820"/><rect x="44" y="94" width="14" height="7" rx="3" fill="#2a3820"/></svg>`,
-  'VHFS': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><circle cx="24" cy="30" r="10" fill="#f5c8a0"/><path d="M14 29 Q14 18 24 18 Q34 18 34 29" fill="#f08030"/><circle cx="21" cy="29" r="1.5" fill="#2a1808"/><circle cx="27" cy="29" r="1.5" fill="#2a1808"/><path d="M20 33 Q24 37 28 33" fill="none" stroke="#c08060" stroke-width="1.8" stroke-linecap="round"/><path d="M22 40 Q21 50 20 60" stroke="#50a070" stroke-width="10" stroke-linecap="round" fill="none"/><circle cx="66" cy="30" r="10" fill="#f0b090"/><path d="M56 29 Q56 18 66 18 Q76 18 76 29" fill="#2a1810"/><circle cx="63" cy="29" r="1.5" fill="#2a1808"/><circle cx="69" cy="29" r="1.5" fill="#2a1808"/><path d="M62 33 Q66 37 70 33" fill="none" stroke="#c08060" stroke-width="1.8" stroke-linecap="round"/><path d="M66 40 Q66 50 66 60" stroke="#c05060" stroke-width="10" stroke-linecap="round" fill="none"/><rect x="28" y="46" width="34" height="20" rx="4" fill="#f5f0e0" stroke="#d0c080" stroke-width="2"/><line x1="45" y1="46" x2="45" y2="66" stroke="#d0c080" stroke-width="1.5"/><circle cx="36" cy="56" rx="4" ry="4" fill="rgba(255,150,100,0.6)"/><circle cx="55" cy="56" rx="4" ry="4" fill="rgba(100,200,100,0.6)"/><line x1="32" y1="56" x2="28" y2="50" stroke="#d0c080" stroke-width="1"/><line x1="59" y1="56" x2="62" y2="50" stroke="#d0c080" stroke-width="1"/><polygon points="45,68 38,82 52,82" fill="white" stroke="#c0b080" stroke-width="1.5"/><rect x="39" y="78" width="12" height="4" rx="1.5" fill="#1a1808" opacity="0.5"/><line x1="22" y1="45" x2="30" y2="52" stroke="#f5c8a0" stroke-width="5" stroke-linecap="round"/><line x1="18" y1="46" x2="10" y2="58" stroke="#f5c8a0" stroke-width="5" stroke-linecap="round"/><line x1="64" y1="45" x2="60" y2="52" stroke="#f0b090" stroke-width="5" stroke-linecap="round"/><line x1="68" y1="46" x2="76" y2="56" stroke="#f0b090" stroke-width="5" stroke-linecap="round"/><line x1="20" y1="60" x2="16" y2="78" stroke="#2a4030" stroke-width="5" stroke-linecap="round"/><line x1="20" y1="60" x2="26" y2="78" stroke="#2a4030" stroke-width="5" stroke-linecap="round"/><line x1="66" y1="60" x2="60" y2="78" stroke="#2a3848" stroke-width="5" stroke-linecap="round"/><line x1="66" y1="60" x2="72" y2="78" stroke="#2a3848" stroke-width="5" stroke-linecap="round"/></svg>`,
-  'VHFL': `<svg viewBox="0 0 90 110" width="64" height="80" fill="none"><rect x="56" y="14" width="8" height="72" rx="4" fill="#7a5030"/><ellipse cx="60" cy="14" rx="16" ry="18" fill="#3a6030" opacity="0.65"/><ellipse cx="50" cy="20" rx="13" ry="15" fill="#4a7040" opacity="0.55"/><ellipse cx="68" cy="20" rx="13" ry="15" fill="#3a6030" opacity="0.55"/><circle cx="34" cy="40" r="12" fill="#f5c8a0"/><ellipse cx="34" cy="31" rx="17" ry="6" fill="#8a6040"/><rect x="26" y="24" width="16" height="11" rx="4" fill="#9a7050"/><path d="M28 39 Q31 38 34 39" fill="none" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><path d="M34 39 Q37 38 40 39" fill="none" stroke="#3a2810" stroke-width="2" stroke-linecap="round"/><path d="M29 44 Q34 48 39 44" fill="none" stroke="#a08060" stroke-width="2" stroke-linecap="round"/><path d="M32 52 Q38 58 44 62" stroke="#50a070" stroke-width="12" stroke-linecap="round" fill="none"/><line x1="30" y1="56" x2="10" y2="66" stroke="#f5c8a0" stroke-width="6" stroke-linecap="round"/><circle cx="8" cy="66" r="6" fill="rgba(255,160,190,0.75)"/><circle cx="8" cy="66" r="3.5" fill="rgba(255,230,80,0.95)"/><line x1="2" y1="65" x2="8" y2="66" stroke="rgba(255,130,170,0.9)" stroke-width="2"/><line x1="8" y1="60" x2="8" y2="66" stroke="rgba(255,130,170,0.9)" stroke-width="2"/><line x1="14" y1="65" x2="8" y2="66" stroke="rgba(255,130,170,0.9)" stroke-width="2"/><line x1="8" y1="72" x2="8" y2="66" stroke="rgba(100,180,80,0.9)" stroke-width="2"/><line x1="38" y1="55" x2="52" y2="52" stroke="#f5c8a0" stroke-width="6" stroke-linecap="round"/><line x1="44" y1="62" x2="38" y2="80" stroke="#2a4030" stroke-width="6" stroke-linecap="round"/><line x1="44" y1="62" x2="52" y2="78" stroke="#2a4030" stroke-width="6" stroke-linecap="round"/></svg>`
-};
+
+// 各キャラを個別SVGで完全手書き — 共通関数最小限
+// viewBox="0 0 56 92"
+
+function svgWrap(inner){
+  return `<svg viewBox="0 0 56 92" width="52" height="84" fill="none">${inner}</svg>`;
+}
+
+// 共通パーツ
+function pack(x,y,c1,c2,w,h){
+  w=w||14; h=h||22;
+  var rx=w*.42;
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${c1}"/>
+<rect x="${x+1}" y="${y+1}" width="${w-2}" height="${h-5}" rx="${rx-.5}" fill="${c2}"/>
+<rect x="${x+2}" y="${y+h-4}" width="${w-4}" height="3" rx="1.5" fill="${c1}"/>
+<rect x="${x+2}" y="${y+h-10}" width="${w-4}" height="5" rx="2.5" fill="${c1}" stroke="${c2}" stroke-width=".7"/>`;
+}
+function shoes(cx,sy,c1,c2){
+  return `<path d="M${cx-13} ${sy} Q${cx-7} ${sy-2} ${cx-.5} ${sy} Q${cx-.5} ${sy+5} ${cx-13} ${sy+5}Z" fill="${c1}" stroke="${c2}" stroke-width=".9"/>
+<path d="M${cx-13} ${sy} Q${cx-7} ${sy-3.5} ${cx-.5} ${sy}" fill="${c2}"/>
+<path d="M${cx+1.5} ${sy} Q${cx+7} ${sy-2} ${cx+14.5} ${sy} Q${cx+14.5} ${sy+5} ${cx+1.5} ${sy+5}Z" fill="${c1}" stroke="${c2}" stroke-width=".9"/>
+<path d="M${cx+1.5} ${sy} Q${cx+7} ${sy-3.5} ${cx+14.5} ${sy}" fill="${c2}"/>`;
+}
+function pants(cx,py,ph,col,cuff){
+  var s=`<rect x="${cx-8}" y="${py}" width="16" height="5.5" rx="1.5" fill="${col}"/>
+<rect x="${cx-8}" y="${py+1}" width="7.5" height="${ph}" rx="3.5" fill="${col}"/>
+<rect x="${cx+.5}" y="${py+1}" width="7.5" height="${ph}" rx="3.5" fill="${col}"/>
+<line x1="${cx}" y1="${py}" x2="${cx}" y2="${py+6}" stroke="rgba(0,0,0,.15)" stroke-width=".9"/>`;
+  if(cuff) s+=`<rect x="${cx-8}" y="${py+ph-3}" width="7.5" height="3.5" rx="2" fill="${cuff}"/>
+<rect x="${cx+.5}" y="${py+ph-3}" width="7.5" height="3.5" rx="2" fill="${cuff}"/>`;
+  return s;
+}
+function torso(cx,jy,jh,col,zip,pkt){
+  var s=`<rect x="${cx-8}" y="${jy}" width="16" height="${jh}" rx="2.5" fill="${col}"/>`;
+  if(zip) s+=`<line x1="${cx}" y1="${jy}" x2="${cx}" y2="${jy+jh}" stroke="${zip}" stroke-width="1" stroke-dasharray="2,2"/>`;
+  if(pkt) s+=`<rect x="${cx-6.5}" y="${jy+3.5}" width="5.5" height="3.5" rx="1" fill="${pkt}"/>`;
+  s+=`<line x1="${cx-8.5}" y1="${jy+jh}" x2="${cx+8.5}" y2="${jy+jh}" stroke="${zip||pkt||'rgba(0,0,0,.22)'}" stroke-width="1.3"/>`;
+  return s;
+}
+function neck(cx,y,skin){ return `<rect x="${cx-4.5}" y="${y}" width="9" height="5.5" rx="2.8" fill="${skin}"/>`; }
+function face(cx,cy,r,skin){
+  return `<ellipse cx="${cx-r+2}" cy="${cy+1}" rx="1.5" ry="2" fill="${skin}" opacity=".8"/>
+<ellipse cx="${cx+r-2}" cy="${cy+1}" rx="1.5" ry="2" fill="${skin}" opacity=".8"/>
+<circle cx="${cx}" cy="${cy}" r="${r}" fill="${skin}"/>`;
+}
+function eyeOpen(cx,cy){
+  return `<ellipse cx="${cx-3.5}" cy="${cy+1.5}" rx="2" ry="2.2" fill="#2a1808"/>
+<ellipse cx="${cx+3.5}" cy="${cy+1.5}" rx="2" ry="2.2" fill="#2a1808"/>
+<circle cx="${cx-2.7}" cy="${cy+.7}" r=".7" fill="white"/>
+<circle cx="${cx+4.3}" cy="${cy+.7}" r=".7" fill="white"/>`;
+}
+function eyeSmile(cx,cy){
+  return `<path d="M${cx-6} ${cy+1.5} Q${cx-3.5} ${cy-.5} ${cx-.5} ${cy+1.5}" fill="none" stroke="#3a2010" stroke-width="2.3" stroke-linecap="round"/>
+<path d="M${cx+.5} ${cy+1.5} Q${cx+3.5} ${cy-.5} ${cx+6} ${cy+1.5}" fill="none" stroke="#3a2010" stroke-width="2.3" stroke-linecap="round"/>`;
+}
+function eyeHalf(cx,cy){
+  return `<ellipse cx="${cx-3.5}" cy="${cy+2}" rx="2" ry="1.3" fill="#2a1808"/>
+<ellipse cx="${cx+3.5}" cy="${cy+2}" rx="2" ry="1.3" fill="#2a1808"/>
+<path d="M${cx-5.5} ${cy+1} Q${cx-3.5} ${cy-.2} ${cx-1.5} ${cy+1}" fill="none" stroke="#2a1808" stroke-width="1.3"/>
+<path d="M${cx+1.5} ${cy+1} Q${cx+3.5} ${cy-.2} ${cx+5.5} ${cy+1}" fill="none" stroke="#2a1808" stroke-width="1.3"/>`;
+}
+function eyeClose(cx,cy){
+  return `<path d="M${cx-5.5} ${cy+2} Q${cx-3.5} ${cy+4} ${cx-1.5} ${cy+2}" fill="none" stroke="#3a2010" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M${cx+1.5} ${cy+2} Q${cx+3.5} ${cy+4} ${cx+5.5} ${cy+2}" fill="none" stroke="#3a2010" stroke-width="1.5" stroke-linecap="round"/>`;
+}
+function eyeSharp(cx,cy){
+  return `<ellipse cx="${cx-3.5}" cy="${cy+1.5}" rx="2" ry="1.6" fill="#1a0808"/>
+<ellipse cx="${cx+3.5}" cy="${cy+1.5}" rx="2" ry="1.6" fill="#1a0808"/>
+<circle cx="${cx-2.7}" cy="${cy+.9}" r=".6" fill="white"/>
+<circle cx="${cx+4.3}" cy="${cy+.9}" r=".6" fill="white"/>`;
+}
+function brow(cx,cy){ return `<path d="M${cx-5} ${cy-2} Q${cx-2.5} ${cy-3.5} ${cx-.5} ${cy-2}" fill="none" stroke="#7a5030" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M${cx+.5} ${cy-2} Q${cx+2.5} ${cy-3.5} ${cx+5} ${cy-2}" fill="none" stroke="#7a5030" stroke-width="1.5" stroke-linecap="round"/>`;}
+function browAngry(cx,cy){ return `<path d="M${cx-5.5} ${cy-2} Q${cx-2.5} ${cy-5} ${cx-.5} ${cy-3}" fill="none" stroke="#4a2808" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M${cx+.5} ${cy-3} Q${cx+2.5} ${cy-5} ${cx+5.5} ${cy-2}" fill="none" stroke="#4a2808" stroke-width="1.8" stroke-linecap="round"/>`;}
+function mouthBig(cx,cy){ return `<path d="M${cx-6} ${cy+7} Q${cx} ${cy+11.5} ${cx+6} ${cy+7}" fill="none" stroke="#c07860" stroke-width="2.4" stroke-linecap="round"/>`; }
+function mouthMid(cx,cy){ return `<path d="M${cx-5} ${cy+7} Q${cx} ${cy+11} ${cx+5} ${cy+7}" fill="none" stroke="#b08060" stroke-width="2" stroke-linecap="round"/>`; }
+function mouthQuiet(cx,cy){ return `<path d="M${cx-3.5} ${cy+7.5} Q${cx} ${cy+10} ${cx+3.5} ${cy+7.5}" fill="none" stroke="#a07848" stroke-width="1.8" stroke-linecap="round"/>`; }
+function mouthStern(cx,cy){ return `<line x1="${cx-3}" y1="${cy+8.5}" x2="${cx+3}" y2="${cy+8.5}" stroke="#8a6040" stroke-width="1.8" stroke-linecap="round"/>`; }
+function cheek(cx,cy){ return `<ellipse cx="${cx-7}" cy="${cy+5.5}" rx="3" ry="1.9" fill="#f09080" opacity=".42"/>
+<ellipse cx="${cx+7}" cy="${cy+5.5}" rx="3" ry="1.9" fill="#f09080" opacity=".42"/>`; }
+function nose(cx,cy){ return `<ellipse cx="${cx}" cy="${cy+4}" rx="1" ry=".65" fill="#d4a060" opacity=".5"/>`; }
+function beard(cx,cy,col){ return `<path d="M${cx-5} ${cy+7} Q${cx} ${cy+9} ${cx+5} ${cy+7}" fill="none" stroke="${col}" stroke-width="1.5" opacity=".55"/>`; }
+function mustache(cx,cy,col){ return `<path d="M${cx-4.5} ${cy+5.5} Q${cx-1.5} ${cy+7.5} ${cx} ${cy+6.5} Q${cx+1.5} ${cy+7.5} ${cx+4.5} ${cy+5.5}" fill="${col}" opacity=".65"/>`; }
+function glass(cx,cy){
+  return `<circle cx="${cx-3.5}" cy="${cy+1.5}" r="3.5" fill="none" stroke="#303848" stroke-width="1.5"/>
+<circle cx="${cx+3.5}" cy="${cy+1.5}" r="3.5" fill="none" stroke="#303848" stroke-width="1.5"/>
+<line x1="${cx-.5}" y1="${cy+1.5}" x2="${cx+.5}" y2="${cy+1.5}" stroke="#303848" stroke-width="1.3"/>
+<line x1="${cx-11.5}" y1="${cy+2}" x2="${cx-7}" y2="${cy+1.5}" stroke="#303848" stroke-width="1.3"/>
+<line x1="${cx+7}" y1="${cy+1.5}" x2="${cx+11.5}" y2="${cy+2}" stroke="#303848" stroke-width="1.3"/>`;
+}
+function sung(cx,cy){
+  return `<rect x="${cx-8.5}" y="${cy+.5}" width="7.5" height="5" rx="2.5" fill="#1a1828" opacity=".93"/>
+<rect x="${cx+1}" y="${cy+.5}" width="7.5" height="5" rx="2.5" fill="#1a1828" opacity=".93"/>
+<line x1="${cx-1}" y1="${cy+3}" x2="${cx+1}" y2="${cy+3}" stroke="#404038" stroke-width="1.4"/>
+<line x1="${cx-11}" y1="${cy+3.5}" x2="${cx-8.5}" y2="${cy+3}" stroke="#404038" stroke-width="1.3"/>
+<line x1="${cx+8.5}" y1="${cy+3}" x2="${cx+11}" y2="${cy+3.5}" stroke="#404038" stroke-width="1.3"/>`;
+}
+function goggle(cx,cy){
+  return `<rect x="${cx-8}" y="${cy-.5}" width="7}" height="4.5" rx="2.2" fill="#e8a020" opacity=".88"/>
+<rect x="${cx+1}" y="${cy-.5}" width="7" height="4.5" rx="2.2" fill="#e8a020" opacity=".88"/>
+<line x1="${cx-1}" y1="${cy+1.7}" x2="${cx+1}" y2="${cy+1.7}" stroke="#c08818" stroke-width="1.1"/>
+<ellipse cx="${cx-4.5}" cy="${cy+.8}" rx="2.8" ry="1.2" fill="white" opacity=".22"/>`;
+}
+function capHat(cx,top,c1,c2,back){
+  var s=`<path d="M${cx-11} ${top+6} Q${cx-11} ${top-1} ${cx} ${top-1} Q${cx+11} ${top-1} ${cx+11} ${top+6}" fill="${c1}"/>`;
+  if(back) s+=`<path d="M${cx+9} ${top+4} Q${cx+17} ${top+3} ${cx+18} ${top+7} Q${cx+17} ${top+9.5} ${cx+9} ${top+8}Z" fill="${c2}"/>`;
+  else s+=`<path d="M${cx-11} ${top+6} Q${cx} ${top+9.5} ${cx+11} ${top+6} L${cx+11.5} ${top+8} Q${cx} ${top+12} ${cx-11.5} ${top+8}Z" fill="${c2}"/>`;
+  s+=`<circle cx="${cx}" cy="${top+.5}" r="1.3" fill="${c2}"/>`;
+  s+=`<ellipse cx="${cx-4}" cy="${top+2.5}" rx="4.5" ry="2.2" fill="white" opacity=".14" transform="rotate(-15 ${cx-4} ${top+2.5})"/>`;
+  return s;
+}
+function beanieHat(cx,top,c1,c2){
+  return `<ellipse cx="${cx}" cy="${top+6}" rx="11.5" ry="9" fill="${c1}"/>
+<rect x="${cx-11}" y="${top+9.5}" width="22" height="4" rx="2" fill="${c2}"/>
+<ellipse cx="${cx}" cy="${top+1.5}" rx="8" ry="6" fill="${c1}"/>
+<ellipse cx="${cx}" cy="${top-2}" rx="5.5" ry="4" fill="${c2}" opacity=".75"/>
+<circle cx="${cx}" cy="${top-4}" r="2.3" fill="white" opacity=".88"/>
+<ellipse cx="${cx-4}" cy="${top+3}" rx="4.5" ry="2.2" fill="white" opacity=".17" transform="rotate(-15 ${cx-4} ${top+3})"/>`;
+}
+function strawHat(cx,top,c1,c2){
+  return `<path d="M${cx-12} ${top+6} Q${cx-11} ${top-1} ${cx} ${top-1} Q${cx+11} ${top-1} ${cx+12} ${top+6}" fill="${c1}"/>
+<path d="M${cx-13} ${top+6} Q${cx} ${top+9} ${cx+13} ${top+6} L${cx+14.5} ${top+8.5} Q${cx} ${top+13} ${cx-14.5} ${top+8.5}Z" fill="${c2}"/>
+<path d="M${cx-10} ${top+3.5} Q${cx} ${top+5.5} ${cx+10} ${top+3.5}" fill="none" stroke="${c2}" stroke-width=".9" opacity=".5"/>
+<path d="M${cx-8} ${top+1.5} Q${cx} ${top+3} ${cx+8} ${top+1.5}" fill="none" stroke="${c2}" stroke-width=".9" opacity=".45"/>
+<ellipse cx="${cx-4}" cy="${top+2}" rx="4.5" ry="2" fill="white" opacity=".13" transform="rotate(-15 ${cx-4} ${top+2})"/>`;
+}
+function helmetHat(cx,top,c1,c2){
+  return `<path d="M${cx-11} ${top+7} Q${cx-11} ${top-2} ${cx} ${top-2} Q${cx+11} ${top-2} ${cx+11} ${top+7}" fill="${c1}"/>
+<path d="M${cx-11} ${top+7} Q${cx} ${top+8.5} ${cx+11} ${top+7} L${cx+11} ${top+9} Q${cx} ${top+10.5} ${cx-11} ${top+9}Z" fill="${c2}"/>
+<rect x="${cx-9}" y="${top+8}" width="18" height="3" rx="1.5" fill="${c2}"/>
+<ellipse cx="${cx-4}" cy="${top+1}" rx="4.5" ry="2.2" fill="white" opacity=".2" transform="rotate(-15 ${cx-4} ${top+1})"/>`;
+}
+function hairShort(cx,cy,r,col){
+  return `<path d="M${cx-r} ${cy-1} Q${cx-r} ${cy-r-2} ${cx} ${cy-r-2} Q${cx+r} ${cy-r-2} ${cx+r} ${cy-1}" fill="${col}"/>`;
+}
+function hairPony(cx,cy,r,col){
+  return `<path d="M${cx-r} ${cy-1} Q${cx-r} ${cy-r-2} ${cx} ${cy-r-2} Q${cx+r} ${cy-r-2} ${cx+r} ${cy-1}" fill="${col}"/>
+<path d="M${cx+r-1} ${cy+1} Q${cx+r+5} ${cy+3} ${cx+r+4} ${cy+12} Q${cx+r+3} ${cy+17} ${cx+r} ${cy+16}" fill="${col}"/>`;
+}
+function hairBuzz(cx,cy,r,col){ // ショート・ツンツン
+  return `<path d="M${cx-r} ${cy-1} Q${cx-r} ${cy-r-2} ${cx} ${cy-r-2} Q${cx+r} ${cy-r-2} ${cx+r} ${cy-1}" fill="${col}"/>
+<line x1="${cx-4}" y1="${cy-r-2}" x2="${cx-5}" y2="${cy-r-6}" stroke="${col}" stroke-width="2" stroke-linecap="round"/>
+<line x1="${cx}" y1="${cy-r-2}" x2="${cx}" y2="${cy-r-6}" stroke="${col}" stroke-width="2" stroke-linecap="round"/>
+<line x1="${cx+4}" y1="${cy-r-2}" x2="${cx+5}" y2="${cy-r-6}" stroke="${col}" stroke-width="2" stroke-linecap="round"/>`;
+}
+// fleece横線
+function fleece(cx,jy,col){
+  var s='';
+  for(var i=0;i<5;i++) s+=`<path d="M${cx-7} ${jy+2.5+i*3.5} Q${cx} ${jy+2+i*3.5} ${cx+7} ${jy+2.5+i*3.5}" fill="none" stroke="${col}" stroke-width=".85" opacity=".55"/>`;
+  return s;
+}
+// アーム（後ろ描き）
+function arm(sx,sy,hx,hy,slv,skin){
+  var mx=sx+(hx-sx)*.42, my=sy+(hy-sy)*.48;
+  var ex=sx+(hx-sx)*.65, ey=sy+(hy-sy)*.65;
+  return `<path d="M${sx} ${sy} Q${mx} ${my} ${hx} ${hy}" stroke="${skin}" stroke-width="6" stroke-linecap="round" fill="none"/>
+<circle cx="${hx}" cy="${hy}" r="3" fill="${skin}"/>
+<path d="M${sx} ${sy} Q${mx} ${my} ${ex} ${ey}" stroke="${slv}" stroke-width="9" stroke-linecap="round" fill="none"/>`;
+}
+
+// ── 16体個別定義 ──────────────────────────
+
+function charACPS(){
+  var cx=28,cy=16,r=11,skin='#f5d090',jy=31,py=51,sy=72;
+  var s='';
+  // ザック大型
+  s+=pack(31,30,'#4a5868','#3a4858',15,24);
+  s+=`<path d="M31 33 Q29 40 29 48" fill="none" stroke="#4a5868" stroke-width="2.2"/>`;
+  // 左腕:ポール下げ
+  s+=arm(20,37,7,62,'#d04818',skin);
+  // 右腕:腰に添える
+  s+=arm(36,37,40,50,'#d04818',skin);
+  // 上着（レインジャケット赤、ハードシェル感）
+  s+=torso(cx,jy,20,'#d04818','#c03808','#b03000');
+  // ハーネス
+  s+=`<path d="M${cx-6} ${jy+9} Q${cx} ${jy+7} ${cx+6} ${jy+9}" fill="none" stroke="#c0a030" stroke-width="1.5"/>`;
+  s+=`<path d="M${cx-4} ${jy+9} L${cx-4} ${jy+16} M${cx+4} ${jy+9} L${cx+4} ${jy+16}" stroke="#c0a030" stroke-width="1.1"/>`;
+  // 胸ポケット×2
+  s+=`<rect x="${cx+1}" y="${jy+4}" width="5.5" height="3.5" rx="1" fill="#b03000"/>`;
+  // パンツ（黒）
+  s+=pants(cx,py,21,'#282018','#1a1410');
+  s+=shoes(cx,sy,'#c8a870','#a08050');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairShort(cx,cy,r,'#3a2010');
+  s+=brow(cx,cy);
+  s+=eyeOpen(cx,cy);
+  s+=nose(cx,cy);
+  s+=mouthMid(cx,cy);
+  // ヘルメット赤
+  s+=helmetHat(cx,cy-r-2,'#c82010','#a01808');
+  // ゴーグル（ヘルメット上）
+  s+=`<rect x="${cx-7.5}" y="${cy-r+1}" width="6.5" height="4" rx="2" fill="#e8a020" opacity=".88"/>
+<rect x="${cx+1}" y="${cy-r+1}" width="6.5" height="4" rx="2" fill="#e8a020" opacity=".88"/>
+<line x1="${cx-1}" y1="${cy-r+3}" x2="${cx+1}" y2="${cy-r+3}" stroke="#c08818" stroke-width="1.1"/>`;
+  // ポール（アイテム最前面）
+  s+=`<line x1="7" y1="62" x2="3" y2="86" stroke="#b0b8c0" stroke-width="2.2" stroke-linecap="round"/>
+<ellipse cx="3" cy="86" rx="2.2" ry="1" fill="#909898"/>
+<rect x="5.5" y="60" width="3.5" height="5" rx="1.8" fill="#d0d8e0"/>`;
+  return svgWrap(s);
+}
+
+function charACPL(){
+  // 孤高・オールブラック・険しい目・ひげ・ピッケル斜め
+  var cx=28,cy=16,r=11,skin='#e8b870',jy=31,py=51,sy=72;
+  var s='';
+  s+=pack(31,30,'#3a3848','#2a2838',14,24);
+  s+=`<path d="M31 33 Q29 40 29 48" fill="none" stroke="#3a3848" stroke-width="2"/>`;
+  // 左腕:下げ
+  s+=arm(20,37,8,56,'#1e2030',skin);
+  // 右腕:ピッケル横持ち上げ
+  s+=arm(36,37,44,32,'#1e2030',skin);
+  s+=torso(cx,jy,20,'#1e2030','#2a2a3a','#181828');
+  // ハーネス
+  s+=`<path d="M${cx-6} ${jy+9} Q${cx} ${jy+7} ${cx+6} ${jy+9}" fill="none" stroke="#c0a030" stroke-width="1.5"/>`;
+  s+=`<path d="M${cx-4} ${jy+9} L${cx-4} ${jy+16} M${cx+4} ${jy+9} L${cx+4} ${jy+16}" stroke="#c0a030" stroke-width="1.1"/>`;
+  s+=pants(cx,py,21,'#1a1a28');
+  s+=shoes(cx,sy,'#888090','#685870');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairShort(cx,cy,r,'#181818');
+  s+=browAngry(cx,cy);
+  s+=eyeSharp(cx,cy);
+  s+=nose(cx,cy);
+  s+=mouthStern(cx,cy);
+  s+=beard(cx,cy,'#4a3818');
+  s+=capHat(cx,cy-r-2,'#1e2030','#141828');
+  // ピッケル（最前面・斜め構え）
+  s+=`<line x1="44" y1="32" x2="20" y2="80" stroke="#8090a8" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M40 28 Q44 26 52 30" fill="none" stroke="#9aa0b8" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M20 80 L18 86" stroke="#9aa0b8" stroke-width="2" stroke-linecap="round"/>`;
+  return svgWrap(s);
+}
+
+function charACFS(){
+  // ワイルド・日焼け超濃い・後ろ前キャップ・バンザイ・YO!
+  var cx=28,cy=16,r=11,skin='#c87838',jy=31,py=51,sy=72;
+  var s='';
+  s+=pack(31,30,'#7888b0','#6878a0',13,20);
+  s+=`<path d="M31 33 Q29 38 29 45" fill="none" stroke="#7888b0" stroke-width="2"/>`;
+  // 両腕バンザイ
+  s+=arm(20,37,5,24,'#d83020',skin);
+  s+=arm(36,37,51,24,'#d83020',skin);
+  s+=torso(cx,jy,20,'#d83020','#c02010',null);
+  // Tシャツ感: Vネック
+  s+=`<path d="M${cx-4} ${jy} L${cx} ${jy+5} L${cx+4} ${jy}" fill="none" stroke="#b01808" stroke-width="1.2"/>`;
+  s+=pants(cx,py,21,'#4a5870');
+  s+=shoes(cx,sy,'#b0a878','#8a8258');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairBuzz(cx,cy,r,'#2a1008');
+  s+=brow(cx,cy);
+  s+=eyeSmile(cx,cy);
+  s+=nose(cx,cy);
+  s+=mouthBig(cx,cy);
+  s+=cheek(cx,cy);
+  // キャップ後ろ前
+  s+=capHat(cx,cy-r-2,'#e03020','#c02010',true);
+  // YO!吹き出し（最前面）
+  s+=`<rect x="2" y="5" width="15" height="11" rx="3" fill="rgba(255,220,50,.95)"/>
+<path d="M4 16 L2 20" stroke="rgba(255,220,50,.95)" stroke-width="2"/>
+<text x="4" y="14" font-size="7" fill="#8a4010" font-weight="900" font-family="sans-serif">YO!</text>`;
+  // 拳（バンザイ手先）
+  s+=`<rect x="2" y="20" width="6" height="5" rx="2.5" fill="${skin}"/>
+<rect x="48" y="20" width="6" height="5" rx="2.5" fill="${skin}"/>`;
+  return svgWrap(s);
+}
+
+function charACFL(){
+  // ルートファインダー・前傾・地形図を広げてのぞき込む
+  var cx=28,cy=16,r=11,skin='#e8c070',jy=31,py=51,sy=72;
+  var s='';
+  s+=pack(32,30,'#7a8070','#6a7060',13,20);
+  // 両腕を前に伸ばし地図を広げる
+  s+=arm(20,37,8,46,'#607040',skin);
+  s+=arm(36,37,48,46,'#607040',skin);
+  s+=torso(cx,jy,20,'#607040','#506030','#485828');
+  s+=pants(cx,py,21,'#484030');
+  s+=shoes(cx,sy,'#8a9858','#6a7838');
+  s+=neck(cx,jy-5,skin);
+  // 顔を少し下に傾ける（前傾）
+  s+=face(cx,cy+2,r,skin);
+  s+=hairShort(cx,cy+2,r,'#3a2010');
+  s+=beard(cx,cy+2,'#7a5828');
+  s+=brow(cx,cy+2);
+  s+=eyeHalf(cx,cy+2); // 地図に集中
+  s+=nose(cx,cy+2);
+  s+=mouthQuiet(cx,cy+2);
+  s+=capHat(cx,cy-r,'#3a2810','#2a1808');
+  // コンパス（腰に）
+  s+=`<circle cx="40" cy="48" r="4" fill="#f0e8d0" stroke="#908060" stroke-width="1.3"/>
+<line x1="40" y1="44.5" x2="40" y2="48" stroke="#e03020" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="40" y1="48" x2="40" y2="51.5" stroke="#2a2828" stroke-width="1.5" stroke-linecap="round"/>`;
+  // 地形図（最前面・両手で広げる）
+  s+=`<rect x="5" y="38" width="22" height="16" rx="2" fill="#f5f0e2" stroke="#c0b080" stroke-width="1.3"/>
+<ellipse cx="16" cy="46" rx="6" ry="4.5" fill="none" stroke="#a09060" stroke-width=".9"/>
+<ellipse cx="16" cy="46" rx="3.5" ry="2.5" fill="none" stroke="#a09060" stroke-width=".9"/>
+<ellipse cx="16" cy="46" rx="1.5" ry="1" fill="#c0a040" opacity=".5"/>
+<line x1="7" y1="41" x2="25" y2="41" stroke="#b0a070" stroke-width=".7"/>
+<line x1="7" y1="51" x2="25" y2="51" stroke="#b0a070" stroke-width=".7"/>`;
+  return svgWrap(s);
+}
+
+function charAHPS(){
+  // 展望ハンター・カメラを目に当てて構える・片目つぶる
+  var cx=28,cy=16,r=11,skin='#f5c8a0',jy=31,py=51,sy=72;
+  var s='';
+  s+=pack(31,30,'#607090','#506080',13,21);
+  // 左腕:下げ 右腕:カメラ目に当てる
+  s+=arm(20,37,8,55,'#4070b8',skin);
+  s+=arm(36,37,42,20,'#4070b8',skin);
+  s+=torso(cx,jy,20,'#4070b8','#3060a8','#3060a8');
+  s+=pants(cx,py,21,'#484858');
+  s+=shoes(cx,sy,'#c8a870','#a08050');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairShort(cx,cy,r,'#3a2010');
+  s+=brow(cx,cy);
+  // 片目つぶる（右目ウィンク）
+  s+=eyeOpen(cx,cy);
+  // ウィンク上書き（右目閉じ）
+  s+=`<path d="M${cx+1.5} ${cy+2} Q${cx+3.5} ${cy+4} ${cx+5.5} ${cy+2}" fill="none" stroke="#3a2010" stroke-width="1.5" stroke-linecap="round"/>`;
+  s+=nose(cx,cy);
+  s+=mouthMid(cx,cy);
+  s+=cheek(cx,cy);
+  s+=capHat(cx,cy-r-2,'#2a5090','#1a4080');
+  // カメラ（目に当てる・最前面）
+  s+=`<rect x="34" y="9" width="16" height="12" rx="2.5" fill="#2a2828"/>
+<circle cx="42" cy="15" r="4" fill="#1a1818" stroke="#505060" stroke-width="1.1"/>
+<circle cx="42" cy="15" r="2.5" fill="#304080" opacity=".7"/>
+<circle cx="42.8" cy="14.2" r=".75" fill="white" opacity=".55"/>
+<rect x="36" y="6.5" width="6" height="4" rx="1.2" fill="#3a3838"/>
+<rect x="34" y="11" width="3" height="7" rx="1.2" fill="#3a3838"/>`;
+  return svgWrap(s);
+}
+
+function charAHPL(){
+  // サイレントクライマー・手を額にかざして遠方を見つめる
+  var cx=28,cy=16,r=11,skin='#f0c888',jy=31,py=51,sy=72;
+  var s='';
+  s+=pack(31,30,'#6a6878','#5a5868',13,21);
+  // 左腕:下げ 右腕:額にかざす（水平上げ）
+  s+=arm(20,37,8,55,'#686878',skin);
+  s+=arm(36,37,46,22,'#686878',skin);
+  s+=torso(cx,jy,20,'#686878','#585868','#505060');
+  s+=pants(cx,py,21,'#3a3848');
+  s+=shoes(cx,sy,'#a07848','#7a5830');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairShort(cx,cy,r,'#2a1808');
+  s+=brow(cx,cy);
+  s+=eyeHalf(cx,cy); // 遠くを細めて見る
+  s+=nose(cx,cy);
+  s+=mouthQuiet(cx,cy);
+  s+=beanieHat(cx,cy-r-3,'#606878','#505868');
+  // 額に手をかざす（最前面）
+  s+=`<rect x="38" y="18" width="11" height="4.5" rx="2.2" fill="${skin}"/>`;
+  return svgWrap(s);
+}
+
+function charAHFS(){
+  // お祭り登山家・大口・タオル首・両手ガッツ
+  var cx=28,cy=16,r=11,skin='#f5c8a0',jy=31,py=51,sy=72;
+  var s='';
+  s+=pack(31,30,'#608090','#507080',13,20);
+  // 両腕ガッツ上げ
+  s+=arm(20,37,6,24,'#e8a020',skin);
+  s+=arm(36,37,50,24,'#e8a020',skin);
+  s+=torso(cx,jy,20,'#e8a020','#d09010',null);
+  s+=fleece(cx,jy,'#d09010');
+  // タオル（首にかけ体の前に垂らす）
+  s+=`<rect x="${cx-3}" y="${jy-4}" width="6" height="16" rx="3" fill="#f0f0f0" opacity=".9"/>
+<line x1="${cx-2}" y1="${jy-4}" x2="${cx-2}" y2="${jy+12}" stroke="#d0d0d0" stroke-width=".8"/>
+<line x1="${cx+2}" y1="${jy-4}" x2="${cx+2}" y2="${jy+12}" stroke="#d0d0d0" stroke-width=".8"/>`;
+  s+=pants(cx,py,21,'#3a6030');
+  s+=shoes(cx,sy,'#b0a878','#8a8258');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairShort(cx,cy,r,'#3a2010');
+  s+=brow(cx,cy);
+  s+=eyeSmile(cx,cy);
+  s+=nose(cx,cy);
+  // 大口開け笑い
+  s+=`<path d="M${cx-6.5} ${cy+7} Q${cx} ${cy+13} ${cx+6.5} ${cy+7}" fill="#e07050"/>
+<rect x="${cx-4.5}" y="${cy+8}" width="9" height="3.5" rx=".8" fill="white" opacity=".9"/>`;
+  s+=cheek(cx,cy);
+  s+=capHat(cx,cy-r-2,'#f0a020','#e09010');
+  // ガッツポーズ拳（最前面）
+  s+=`<rect x="3" y="19" width="6.5" height="6" rx="3" fill="${skin}"/>
+<rect x="46.5" y="19" width="6.5" height="6" rx="3" fill="${skin}"/>`;
+  return svgWrap(s);
+}
+
+function charAHFL(){
+  // 気まぐれ山人・片手ポケット・のんびり歩き・小カメラ
+  var cx=28,cy=16,r=11,skin='#f5c090',jy=31,py=51,sy=72;
+  var s='';
+  s+=pack(31,30,'#c89050','#d8a060',13,20);
+  // 左腕:ポケット（斜め下）右腕:カメラぶら下げ
+  s+=arm(20,37,16,52,'#a0b870',skin);
+  s+=arm(36,37,42,48,'#a0b870',skin);
+  s+=torso(cx,jy,20,'#a0b870','#90a860','#88a058');
+  s+=pants(cx,py,21,'#5868a0');
+  s+=shoes(cx,sy,'#c09070','#a07050');
+  // 歩きポーズ（片足前に出す）- パンツ上書き
+  s+=`<rect x="${cx-8}" y="${py+10}" width="7.5" height="11" rx="3.5" fill="#5868a0" transform="rotate(8 ${cx-8} ${py+10})"/>`;
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairShort(cx,cy,r,'#4a3018');
+  s+=brow(cx,cy);
+  s+=eyeOpen(cx,cy);
+  s+=nose(cx,cy);
+  s+=mouthMid(cx,cy);
+  s+=capHat(cx,cy-r-2,'#6a8050','#587040');
+  // 小カメラ（首からストラップ）
+  s+=`<path d="M${cx+2}" y="${jy-3} Q${cx+6} ${jy+2} ${cx+8} ${jy+8}" fill="none" stroke="#7a6858" stroke-width="1.4" stroke-dasharray="2,2"/>
+<rect x="36" y="40" width="10" height="7.5" rx="2" fill="#2a2828"/>
+<circle cx="41" cy="43.5" r="2.8" fill="#1a1818" stroke="#505060" stroke-width=".9"/>
+<circle cx="41" cy="43.5" r="1.7" fill="#304080" opacity=".7"/>
+<rect x="37.5" y="37.5" width="5" height="3" rx="1" fill="#3a3838"/>`;
+  return svgWrap(s);
+}
+
+function charVCPS(){
+  // 山岳研究家・丸メガネ・ルーペで地面観察・前かがみ
+  var cx=28,cy=17,r=11,skin='#f0d090',jy=33,py=53,sy=74;
+  var s='';
+  // 体を前かがみに（全体を少し下にずらし顔を傾ける）
+  s+=pack(32,32,'#4a7828','#5a8838',13,21);
+  // 左腕:ルーペ下向き 右腕:図鑑持つ
+  s+=arm(20,39,5,56,'#2a3858',skin);
+  s+=arm(36,39,46,48,'#2a3858',skin);
+  s+=torso(cx,jy,20,'#2a3858','#1e2848','#1e2848');
+  s+=pants(cx,py,21,'#6a7850');
+  s+=shoes(cx,sy,'#8a9858','#6a7838');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairShort(cx,cy,r,'#2a1808');
+  s+=brow(cx,cy);
+  s+=eyeOpen(cx,cy);
+  s+=nose(cx,cy);
+  s+=mouthMid(cx,cy);
+  // 丸メガネ（大きめ）
+  s+=glass(cx,cy);
+  s+=capHat(cx,cy-r-2,'#1e2e48','#182838');
+  // ルーペ（左手、地面向き・最前面）
+  s+=`<circle cx="8" cy="60" r="7" fill="none" stroke="#909098" stroke-width="2.2"/>
+<circle cx="8" cy="60" r="4.5" fill="#a0c0d8" opacity=".2"/>
+<line x1="13.5" y1="65" x2="18" y2="70" stroke="#909098" stroke-width="2.2" stroke-linecap="round"/>`;
+  // 図鑑（右手）
+  s+=`<rect x="40" y="42" width="12" height="15" rx="2" fill="#4a7828"/>
+<rect x="41" y="43" width="10" height="10" rx="1.5" fill="#3a6018"/>
+<line x1="43" y1="46" x2="50" y2="46" stroke="#80b850" stroke-width="1"/>
+<line x1="43" y1="48.5" x2="50" y2="48.5" stroke="#80b850" stroke-width="1"/>
+<line x1="43" y1="51" x2="48" y2="51" stroke="#80b850" stroke-width="1"/>`;
+  return svgWrap(s);
+}
+
+function charVCPL(){
+  // 深山の求道者・合掌・目閉じ・黒装束
+  var cx=28,cy=16,r=11,skin='#d0a860',jy=31,py=51,sy=72;
+  var s='';
+  s+=pack(31,30,'#3a4050','#2a3040',13,22);
+  // 両腕前に合掌
+  s+=arm(20,37,24,54,'#181820',skin);
+  s+=arm(36,37,32,54,'#181820',skin);
+  s+=torso(cx,jy,20,'#181820','#101018',null);
+  // 黒装束の紐
+  s+=`<line x1="${cx}" y1="${jy}" x2="${cx}" y2="${jy+20}" stroke="#2a2a38" stroke-width="1.5"/>`;
+  s+=pants(cx,py,21,'#1a1a28');
+  s+=shoes(cx,sy,'#888090','#606070');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairShort(cx,cy,r,'#181818');
+  s+=brow(cx,cy);
+  s+=eyeClose(cx,cy); // 目を閉じて合掌
+  s+=nose(cx,cy);
+  s+=mouthQuiet(cx,cy);
+  s+=beard(cx,cy,'#5a4020');
+  s+=mustache(cx,cy,'#5a4020');
+  s+=capHat(cx,cy-r-2,'#181820','#101018');
+  // 合掌（最前面）
+  s+=`<rect x="24" y="51" width="9" height="6" rx="3" fill="${skin}"/>
+<line x1="28.5" y1="51" x2="28.5" y2="57" stroke="rgba(0,0,0,.2)" stroke-width=".8"/>`;
+  // 数珠
+  s+=`<path d="M22 53 Q28.5 56 35 53" fill="none" stroke="#8a5820" stroke-width="1.3" stroke-dasharray="2,1.5"/>`;
+  return svgWrap(s);
+}
+
+function charVCFS(){
+  // 山旅人・大ザック・手を大きく振る・テラコッタ
+  var cx=28,cy=16,r=11,skin='#f0c888',jy=31,py=51,sy=72;
+  var s='';
+  // 大型ザック
+  s+=pack(31,28,'#7098b0','#80a8c0',16,27);
+  s+=`<path d="M31 31 Q29 38 29 48" fill="none" stroke="#7098b0" stroke-width="2.2"/>`;
+  // 左腕:大きく振る（高く上げ） 右腕:自然
+  s+=arm(20,37,4,26,'#c06040',skin);
+  s+=arm(36,37,40,54,'#c06040',skin);
+  s+=torso(cx,jy,20,'#c06040','#b05030','#a04020');
+  s+=pants(cx,py,21,'#3a4868');
+  s+=shoes(cx,sy,'#c8a870','#a08050');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairShort(cx,cy,r,'#4a3018');
+  s+=brow(cx,cy);
+  s+=eyeSmile(cx,cy);
+  s+=nose(cx,cy);
+  s+=mouthBig(cx,cy);
+  s+=cheek(cx,cy);
+  s+=capHat(cx,cy-r-2,'#8a6040','#7a5030');
+  // 振る手（最前面）
+  s+=`<rect x="1" y="21" width="7" height="6" rx="3" fill="${skin}"/>`;
+  return svgWrap(s);
+}
+
+function charVCFL(){
+  // 隠れ登山家・手帳にこっそりメモ・内向き
+  var cx=28,cy=16,r=11,skin='#e8c060',jy=31,py=51,sy=72;
+  var s='';
+  s+=pack(31,30,'#507058','#608068',13,21);
+  // 左腕:手帳を抱える 右腕:ペンを持つ
+  s+=arm(20,37,12,50,'#487040',skin);
+  s+=arm(36,37,38,46,'#487040',skin);
+  s+=torso(cx,jy,20,'#487040','#386030','#346028');
+  s+=pants(cx,py,21,'#3a4830');
+  s+=shoes(cx,sy,'#8a9858','#6a7838');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairShort(cx,cy,r,'#3a2810');
+  s+=brow(cx,cy);
+  s+=eyeOpen(cx,cy);
+  s+=nose(cx,cy);
+  s+=mouthQuiet(cx,cy);
+  s+=capHat(cx,cy-r-2,'#486040','#384e30');
+  // 手帳＋ペン（最前面）
+  s+=`<rect x="8" y="44" width="11" height="15" rx="1.5" fill="#4a7828" stroke="#3a6018" stroke-width="1"/>
+<rect x="9" y="45" width="9" height="10" rx="1" fill="#3a6018"/>
+<line x1="11" y1="48" x2="17" y2="48" stroke="#80b850" stroke-width=".9"/>
+<line x1="11" y1="50.5" x2="17" y2="50.5" stroke="#80b850" stroke-width=".9"/>
+<line x1="11" y1="53" x2="15" y2="53" stroke="#80b850" stroke-width=".9"/>`;
+  // ペン
+  s+=`<line x1="37" y1="44" x2="37" y2="56" stroke="#f0f0f0" stroke-width="1.5" stroke-linecap="round"/>
+<rect x="36" y="44" width="2" height="3" rx=".5" fill="#e03020"/>`;
+  return svgWrap(s);
+}
+
+function charVHPS(){
+  // 山リゾーター・サングラス・コーヒー片手ドヤ
+  var cx=28,cy=16,r=11,skin='#f5c090',jy=31,py=51,sy=72;
+  var s='';
+  s+=pack(31,30,'#7090b0','#80a0c0',13,21);
+  // 左腕:腰 右腕:コーヒー掲げる
+  s+=arm(20,37,14,50,'#c0a030',skin);
+  s+=arm(36,37,44,34,'#c0a030',skin);
+  s+=torso(cx,jy,20,'#c0a030','#b09020',null);
+  s+=fleece(cx,jy,'#b09020');
+  s+=pants(cx,py,21,'#786840');
+  s+=shoes(cx,sy,'#c09070','#a07050');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairShort(cx,cy,r,'#3a2010');
+  s+=brow(cx,cy);
+  s+=eyeOpen(cx,cy);
+  s+=nose(cx,cy);
+  s+=mouthMid(cx,cy);
+  s+=sung(cx,cy); // サングラス
+  s+=strawHat(cx,cy-r-2,'#c8a840','#b09030');
+  // コーヒー掲げ（最前面）
+  s+=`<rect x="38" y="26" width="10" height="9" rx="2.5" fill="#faf5ea" stroke="#d0c090" stroke-width="1.4"/>
+<path d="M48 27.5 Q52 27.5 52 31 Q52 34.5 48 34.5" fill="none" stroke="#d0c090" stroke-width="1.4"/>
+<path d="M41 26 Q42 23 41.5 20.5" fill="none" stroke="#c0b0a0" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+<path d="M45 26 Q46 23 45.5 20" fill="none" stroke="#c0b0a0" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>`;
+  return svgWrap(s);
+}
+
+function charVHPL(){
+  // 瞑想ハイカー・目閉じ・両腕水平広げ・麦わら・無の境地
+  var cx=28,cy=16,r=11,skin='#f0d080',jy=31,py=51,sy=72;
+  var s='';
+  s+=pack(31,30,'#90a878','#a0b888',13,21);
+  // 両腕水平に大きく広げる
+  s+=arm(20,37,2,36,'#88b870',skin);
+  s+=arm(36,37,54,36,'#88b870',skin);
+  s+=torso(cx,jy,20,'#88b870','#78a860',null);
+  s+=fleece(cx,jy,'#78a860');
+  s+=pants(cx,py,21,'#b0a880');
+  s+=shoes(cx,sy,'#b0a878','#8a8258');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairShort(cx,cy,r,'#4a3818');
+  s+=brow(cx,cy);
+  s+=eyeClose(cx,cy); // 目を閉じて瞑想
+  s+=nose(cx,cy);
+  s+=mouthQuiet(cx,cy);
+  s+=strawHat(cx,cy-r-2,'#c8a840','#b09030');
+  // 両手広げ（最前面・掌を上に向ける）
+  s+=`<ellipse cx="2" cy="36" rx="4" ry="2.5" fill="${skin}"/>
+<ellipse cx="54" cy="36" rx="4" ry="2.5" fill="${skin}"/>`;
+  return svgWrap(s);
+}
+
+function charVHFS(){
+  // 山ピクニック派・お弁当掲げ・ニコニコ・カラフル
+  var cx=28,cy=16,r=11,skin='#f5c8a0',jy=31,py=51,sy=72;
+  var s='';
+  s+=pack(31,30,'#a09878','#b0a888',13,21);
+  // 左腕:お弁当掲げる 右腕:添える
+  s+=arm(20,37,10,32,'#f090a8',skin);
+  s+=arm(36,37,38,52,'#f090a8',skin);
+  s+=torso(cx,jy,20,'#f090a8','#e07898',null);
+  // ボタン前立て
+  s+=`<circle cx="${cx}" cy="${jy+5}" r="1.2" fill="#d06888"/>
+<circle cx="${cx}" cy="${jy+10}" r="1.2" fill="#d06888"/>
+<circle cx="${cx}" cy="${jy+15}" r="1.2" fill="#d06888"/>`;
+  s+=pants(cx,py,21,'#7a8870');
+  s+=shoes(cx,sy,'#c09070','#a07050');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairPony(cx,cy,r,'#5a3010');
+  s+=brow(cx,cy);
+  s+=eyeSmile(cx,cy);
+  s+=nose(cx,cy);
+  s+=mouthBig(cx,cy);
+  s+=cheek(cx,cy);
+  s+=capHat(cx,cy-r-2,'#e07898','#d06888');
+  // 花飾り
+  s+=`<circle cx="${cx+9}" cy="${cy-r}" r="3.2" fill="#f8d8e8"/>
+<circle cx="${cx+9}" cy="${cy-r}" r="2" fill="#f8a8c0"/>`;
+  // お弁当（掲げ・最前面）
+  s+=`<rect x="5" y="23" width="16" height="12" rx="2.5" fill="#f5f0e0" stroke="#d0c080" stroke-width="1.4"/>
+<line x1="5" y1="29" x2="21" y2="29" stroke="#d0c080" stroke-width="1"/>
+<circle cx="10" cy="26" r="2.2" fill="rgba(255,120,80,.7)"/>
+<circle cx="15" cy="26" r="2.2" fill="rgba(80,180,80,.7)"/>
+<circle cx="10" cy="32.5" r="2.2" fill="rgba(255,200,60,.7)"/>
+<circle cx="15" cy="32.5" r="2.2" fill="rgba(100,160,255,.7)"/>`;
+  return svgWrap(s);
+}
+
+function charVHFL(){
+  // 森の放浪者・花を観察・しゃがみ気味・ナチュラル
+  var cx=28,cy=18,r=11,skin='#f5c8a0',jy=33,py=53,sy=72;
+  var s='';
+  s+=pack(31,32,'#8a9870','#9aa880',13,20);
+  // 左腕:花を持ち上げ観察 右腕:地面につく
+  s+=arm(20,39,10,46,'#488040',skin);
+  s+=arm(36,39,42,58,'#488040',skin);
+  s+=torso(cx,jy,20,'#488040','#387030','#306028');
+  s+=pants(cx,py,19,'#4a6038');
+  // しゃがみ感：足を曲げる
+  s+=`<rect x="${cx+1}" y="${py+10}" width="7.5" height="9" rx="3.5" fill="#4a6038" transform="rotate(25 ${cx+1} ${py+10})"/>`;
+  s+=shoes(cx,sy,'#c87848','#a05830');
+  s+=neck(cx,jy-5,skin);
+  s+=face(cx,cy,r,skin);
+  s+=hairPony(cx,cy,r,'#4a3018');
+  s+=brow(cx,cy);
+  s+=eyeOpen(cx,cy);
+  s+=nose(cx,cy);
+  s+=mouthMid(cx,cy);
+  // 麦わら+葉飾り
+  s+=strawHat(cx,cy-r-2,'#6a8040','#587030');
+  s+=`<ellipse cx="${cx-8}" cy="${cy-r-2}" rx="5" ry="2.8" fill="#50a038" opacity=".88" transform="rotate(-25 ${cx-8} ${cy-r-2})"/>`;
+  s+=`<circle cx="${cx-9}" cy="${cy-r-5}" r="1.8" fill="#c04828"/>`;
+  // 花（観察中・最前面）
+  s+=`<line x1="10" y1="46" x2="9" y2="58" stroke="#50a838" stroke-width="2" stroke-linecap="round"/>
+<circle cx="9" cy="42" r="6.5" fill="#f8e0f0"/>
+<circle cx="9" cy="42" r="4" fill="#f8a8c8"/>
+<circle cx="9" cy="42" r="1.8" fill="#f8e830"/>
+<line x1="4" y1="41.5" x2="9" y2="42" stroke="#f0a0c0" stroke-width="1.8"/>
+<line x1="9" y1="37" x2="9" y2="42" stroke="#f0a0c0" stroke-width="1.8"/>
+<line x1="14" y1="41.5" x2="9" y2="42" stroke="#f0a0c0" stroke-width="1.8"/>
+<line x1="6.5" y1="38.5" x2="9" y2="42" stroke="#f0a0c0" stroke-width="1.8"/>
+<line x1="11.5" y1="38.5" x2="9" y2="42" stroke="#f0a0c0" stroke-width="1.8"/>`;
+  return svgWrap(s);
+}
+
+var CHARS=[
+  {code:'ACPS',name:'山岳探検家',fn:charACPS},
+  {code:'ACPL',name:'孤高の登山家',fn:charACPL},
+  {code:'ACFS',name:'ワイルドハイカー',fn:charACFS},
+  {code:'ACFL',name:'ルートファインダー',fn:charACFL},
+  {code:'AHPS',name:'展望ハンター',fn:charAHPS},
+  {code:'AHPL',name:'サイレントクライマー',fn:charAHPL},
+  {code:'AHFS',name:'お祭り登山家',fn:charAHFS},
+  {code:'AHFL',name:'気まぐれ山人',fn:charAHFL},
+  {code:'VCPS',name:'山岳研究家',fn:charVCPS},
+  {code:'VCPL',name:'深山の求道者',fn:charVCPL},
+  {code:'VCFS',name:'山旅人',fn:charVCFS},
+  {code:'VCFL',name:'隠れ登山家',fn:charVCFL},
+  {code:'VHPS',name:'山リゾーター',fn:charVHPS},
+  {code:'VHPL',name:'瞑想ハイカー',fn:charVHPL},
+  {code:'VHFS',name:'山ピクニック派',fn:charVHFS},
+  {code:'VHFL',name:'森の放浪者',fn:charVHFL},
+];
+
+var g=document.getElementById('g');
+CHARS.forEach(function(c){
+  var div=document.createElement('div');
+  div.className='cell';
+  div.innerHTML=c.fn()+
+    `<div class="name">${c.name}</div><div class="code">${c.code}</div>`;
+  g.appendChild(div);
+});
+
+
+const MINI_SVGS = {};
+MINI_SVGS['ACPS'] = charACPS().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['ACPL'] = charACPL().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['ACFS'] = charACFS().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['ACFL'] = charACFL().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['AHPS'] = charAHPS().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['AHPL'] = charAHPL().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['AHFS'] = charAHFS().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['AHFL'] = charAHFL().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['VCPS'] = charVCPS().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['VCPL'] = charVCPL().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['VCFS'] = charVCFS().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['VCFL'] = charVCFL().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['VHPS'] = charVHPS().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['VHPL'] = charVHPL().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['VHFS'] = charVHFS().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+MINI_SVGS['VHFL'] = charVHFL().replace(/width="\d+"/, 'width="44"').replace(/height="\d+"/, 'height="72"');
+
+const PERSON_SVGS = {};
+PERSON_SVGS['ACPS'] = charACPS().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['ACPL'] = charACPL().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['ACFS'] = charACFS().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['ACFL'] = charACFL().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['AHPS'] = charAHPS().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['AHPL'] = charAHPL().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['AHFS'] = charAHFS().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['AHFL'] = charAHFL().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['VCPS'] = charVCPS().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['VCPL'] = charVCPL().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['VCFS'] = charVCFS().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['VCFL'] = charVCFL().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['VHPS'] = charVHPS().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['VHPL'] = charVHPL().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['VHFS'] = charVHFS().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+PERSON_SVGS['VHFL'] = charVHFL().replace(/width="\d+"/, 'width="80"').replace(/height="\d+"/, 'height="124"');
+
 
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -627,7 +1333,6 @@ const axisScore={av:0,ch:0,pf:0,sl:0};
 
 // choice要素のタップイベント（iOS対応）
 document.addEventListener('DOMContentLoaded', function(){
-  // iOS Safari二重発火を完全防止
   var _lock = false;
   function fireAnswer(key, val) {
     if (_lock) return;
