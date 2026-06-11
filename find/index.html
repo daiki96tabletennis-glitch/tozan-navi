@@ -27,7 +27,7 @@ button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
 .ym-header-title{flex:1;font-size:16px;font-weight:700;color:white;}
 
 /* メイン */
-main{max-width:680px;margin:0 auto;padding:0 0 80px;}
+main{max-width:680px;margin:0 auto;padding:0 0 120px;}
 
 /* ステップ */
 .step{display:none;}
@@ -235,6 +235,7 @@ fetch('/data/mountains.json')
 function startQuiz(){
   answers = {};
   currentQ = 0;
+  _transitioning = false;
   show('step-q');
   renderQ();
 }
@@ -257,7 +258,7 @@ function renderQ(){
   var html = '';
   q.choices.forEach(function(c){
     var sel = answers[q.id] === c.value ? ' selected' : '';
-    html += '<button class="choice' + sel + '" onclick="selectChoice(\'' + q.id + '\',\'' + c.value + '\')">';
+    html += '<button class="choice' + sel + '" data-val="' + c.value + '" onclick="selectChoice(\'' + q.id + '\',\'' + c.value + '\')">';
     html += '<div class="choice-icon">' + c.icon + '</div>';
     html += '<div><div class="choice-label">' + c.label + '</div><div class="choice-sub">' + c.sub + '</div></div>';
     html += '</button>';
@@ -266,21 +267,35 @@ function renderQ(){
   window.scrollTo(0, 0);
 }
 
+var _transitioning = false;
 function selectChoice(qid, val){
+  if(_transitioning) return;
+  _transitioning = true;
   answers[qid] = val;
 
-  var btns = document.querySelectorAll('.choice');
-  var q = QUESTIONS[currentQ];
-  q.choices.forEach(function(c, i){
-    if(btns[i]) btns[i].classList.toggle('selected', c.value === val);
+  document.querySelectorAll('#choices .choice').forEach(function(btn){
+    btn.classList.toggle('selected', btn.getAttribute('data-val') === val);
   });
 
   setTimeout(function(){
+    _transitioning = false;
     if(currentQ < QUESTIONS.length - 1){
       currentQ++;
       renderQ();
     } else {
-      showResult();
+      if(mountainsData.length === 0){
+        // fetchがまだ終わっていない場合は待機
+        var waiting = document.getElementById('choices');
+        if(waiting) waiting.innerHTML = '<div style="text-align:center;padding:24px;color:#8a7a6a;">データを読み込み中...</div>';
+        var check = setInterval(function(){
+          if(mountainsData.length > 0){
+            clearInterval(check);
+            showResult();
+          }
+        }, 100);
+      } else {
+        showResult();
+      }
     }
   }, 220);
 }
