@@ -726,14 +726,7 @@ var CHARS=[
   {code:'VHFL',name:'森の放浪者',fn:charVHFL},
 ];
 
-var g=document.getElementById('g');
-CHARS.forEach(function(c){
-  var div=document.createElement('div');
-  div.className='cell';
-  div.innerHTML=c.fn()+
-    `<div class="name">${c.name}</div><div class="code">${c.code}</div>`;
-  g.appendChild(div);
-});
+
 
 
 const MINI_SVGS = {};
@@ -979,6 +972,32 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   color:white;border-radius:7px;padding:5px 7px;cursor:pointer;
   display:flex;align-items:center;flex-shrink:0;text-decoration:none;
 }
+
+/* ── intro ヒーローカード ── */
+.intro-hero{background:#2a3e2a;border-radius:14px;overflow:hidden;margin-bottom:12px}
+.intro-hero-body{padding:16px 18px 20px;background:linear-gradient(180deg,#2a3e2a,#1e3020)}
+.intro-hero-tag{display:inline-block;background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+.intro-hero-title{font-size:28px;font-weight:900;color:white;line-height:1.2;margin-bottom:8px}
+.intro-hero-hl{color:#90d060}
+.intro-hero-desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6}
+/* 16タイプグリッドラッパー */
+.intro-grid-wrap{background:white;border-radius:14px;padding:12px 10px;margin-bottom:0}
+.intro-grid-label{font-size:11px;color:#8a8078;text-align:center;margin-bottom:10px;font-weight:600}
+.intro-type-you{cursor:pointer;background:#eef5e8;border:2px dashed #4e6535 !important;color:#4e6535}
+.intro-type-you .intro-type-name{font-weight:700;color:#4e6535}
+
+.choice.selected{background:#eef5e8;border-color:#4e6535;transform:scale(0.98);transition:transform 0.15s ease;}
+
+/* ── レーダーチャート ── */
+.radar-section{background:white;border-radius:13px;border:1px solid #e0dbd4;padding:16px 14px;margin-bottom:12px}
+.radar-section-title{font-size:13px;font-weight:700;color:#2a2520;margin-bottom:10px;text-align:center}
+.radar-wrap{display:flex;justify-content:center;margin-bottom:10px}
+.radar-scores{display:flex;flex-direction:column;gap:7px}
+.radar-score-item{display:flex;align-items:center;gap:8px}
+.radar-score-label{font-size:11px;color:#5a5048;min-width:70px;font-weight:600}
+.radar-score-bar{flex:1;height:7px;background:#f0ede5;border-radius:4px;overflow:hidden}
+.radar-score-fill{height:100%;width:0;background:linear-gradient(90deg,#6a8a50,#4e6535);border-radius:4px;transition:width 0.7s cubic-bezier(.2,.8,.3,1)}
+.radar-score-num{font-size:11px;font-weight:700;color:#4e6535;min-width:26px;text-align:right}
 </style>
 </head>
 <body>
@@ -993,19 +1012,48 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 
 <!-- 導入 -->
 <div id="intro" class="step active">
-  <div style="text-align:center;padding:20px 0 12px;">
-    <div style="font-size:44px;margin-bottom:10px;">🗻</div>
-    <h2 style="font-size:20px;font-weight:700;color:#2a2520;margin-bottom:8px;">あなたの山タイプを診断</h2>
-    <p style="font-size:13px;color:#7a7068;line-height:1.7;margin-bottom:4px;">「山頂で何をする？」「雨が降ったら？」<br>行動パターンから<strong>16タイプ</strong>で診断します</p>
+  <!-- ヒーローカード -->
+  <div class="intro-hero">
+    <svg viewBox="0 0 360 120" width="100%" style="display:block;margin-bottom:-4px" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a2e1a"/>
+          <stop offset="100%" stop-color="#2e4a2e"/>
+        </linearGradient>
+      </defs>
+      <rect width="360" height="120" fill="url(#skyg)"/>
+      <!-- 星 -->
+      <circle cx="40" cy="18" r="1.2" fill="white" opacity="0.6"/>
+      <circle cx="90" cy="10" r="0.8" fill="white" opacity="0.5"/>
+      <circle cx="160" cy="14" r="1" fill="white" opacity="0.4"/>
+      <circle cx="230" cy="8" r="1.2" fill="white" opacity="0.6"/>
+      <circle cx="300" cy="16" r="0.9" fill="white" opacity="0.5"/>
+      <circle cx="340" cy="10" r="0.8" fill="white" opacity="0.4"/>
+      <!-- 後景の山（薄め） -->
+      <polygon points="60,90 130,40 200,90" fill="#243824" opacity="0.8"/>
+      <polygon points="170,90 250,48 330,90" fill="#243824" opacity="0.8"/>
+      <!-- 前景の山（濃い） -->
+      <polygon points="0,90 80,50 160,90" fill="#1e2e1e"/>
+      <polygon points="140,90 230,44 320,90" fill="#1e2e1e"/>
+      <polygon points="260,90 340,60 400,90" fill="#1e2e1e"/>
+      <!-- 地面 -->
+      <rect y="88" width="360" height="32" fill="#1e2e1e"/>
+    </svg>
+    <div class="intro-hero-body">
+      <div class="intro-hero-tag">Yamatch 登山タイプ診断</div>
+      <h2 class="intro-hero-title">あなたは<br><span class="intro-hero-hl">どの山タイプ</span>？</h2>
+      <p class="intro-hero-desc">12の質問で、あなただけの登山スタイルを16タイプから診断します</p>
+    </div>
   </div>
-  <div class="intro-badge-row">
-    <span class="intro-badge">🆓 完全無料</span>
-    <span class="intro-badge">⏱ 約1分</span>
-    <span class="intro-badge">🎯 16タイプ</span>
-    <span class="intro-badge">📤 シェアで盛り上がる</span>
+  <!-- 16タイプグリッド -->
+  <div class="intro-grid-wrap">
+    <div class="intro-grid-label">診断できる16タイプ ー あなたはどれ？</div>
+    <div class="intro-types" id="intro-type-grid"></div>
   </div>
-  <div class="intro-types" id="intro-type-grid"></div>
-  <button class="start-btn" onclick="startQuiz()"><span>診断スタート</span><span>▶</span></div>
+  <!-- スタートボタン -->
+  <div style="padding:16px 16px 8px">
+    <button class="start-btn" onclick="startQuiz()"><span>診断スタート</span><span style="font-size:16px">▶</span></button>
+  </div>
 </div>
 
 <!-- Q1: 山頂でまずやることは？ →軸1(A/V) -->
@@ -1146,6 +1194,16 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 <!-- 結果 -->
 <div id="result" class="step">
   <div id="result-type-card"></div>
+  <div id="radar-section" class="radar-section">
+    <div class="radar-section-title">📊 あなたの登山スタイル診断</div>
+    <div class="radar-wrap" id="radar-wrap"></div>
+    <div class="radar-scores">
+      <div class="radar-score-item"><span class="radar-score-label">⚡ 行動力</span><div class="radar-score-bar"><div class="radar-score-fill"></div></div><span class="radar-score-num">0</span></div>
+      <div class="radar-score-item"><span class="radar-score-label">🏔 挑戦心</span><div class="radar-score-bar"><div class="radar-score-fill"></div></div><span class="radar-score-num">0</span></div>
+      <div class="radar-score-item"><span class="radar-score-label">📋 計画性</span><div class="radar-score-bar"><div class="radar-score-fill"></div></div><span class="radar-score-num">0</span></div>
+      <div class="radar-score-item"><span class="radar-score-label">👥 社交性</span><div class="radar-score-bar"><div class="radar-score-fill"></div></div><span class="radar-score-num">0</span></div>
+    </div>
+  </div>
   <p class="result-subtitle" id="result-subtitle"></p>
   <button id="share-top" onclick="window._shareNative&&window._shareNative()" style="display:none;width:100%;margin-bottom:12px;background:#4a5e4a;color:white;border:none;border-radius:10px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>この結果をシェア</button>
   <div id="result-cards"></div>
@@ -1334,12 +1392,17 @@ const axisScore={av:0,ch:0,pf:0,sl:0};
 // choice要素のタップイベント（iOS対応）
 document.addEventListener('DOMContentLoaded', function(){
   var _lock = false;
-  function fireAnswer(key, val) {
+  function fireAnswer(key, val, el) {
     if (_lock) return;
     if (!key || val === null || val === undefined) return;
     _lock = true;
+    // 選択済みハイライト
+    if(el){
+      document.querySelectorAll('.choice').forEach(function(c){ c.classList.remove('selected'); });
+      el.classList.add('selected');
+    }
     answer(key, isNaN(val) ? val : Number(val));
-    setTimeout(function(){ _lock = false; }, 800);
+    setTimeout(function(){ _lock = false; }, 1000);
   }
   document.querySelectorAll('.choice').forEach(function(el){
     var _sy = 0;
@@ -1349,17 +1412,18 @@ document.addEventListener('DOMContentLoaded', function(){
     el.addEventListener('touchend', function(e){
       if (Math.abs(e.changedTouches[0].clientY - _sy) > 8) return;
       e.preventDefault();
-      fireAnswer(el.getAttribute('data-key'), el.getAttribute('data-val'));
+      fireAnswer(el.getAttribute('data-key'), el.getAttribute('data-val'), el);
     }, {passive: false});
     el.addEventListener('click', function(e){
       if (e.sourceCapabilities && e.sourceCapabilities.firesTouchEvents) return;
-      fireAnswer(el.getAttribute('data-key'), el.getAttribute('data-val'));
+      fireAnswer(el.getAttribute('data-key'), el.getAttribute('data-val'), el);
     });
   });
 });
 
 function show(id){
   document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.choice.selected').forEach(c=>c.classList.remove('selected'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
   if(id==='intro') buildIntroGrid();
@@ -1368,11 +1432,14 @@ function buildIntroGrid(){
   const TYPE_ORDER = ['ACPS','ACPL','ACFS','ACFL','AHPS','AHPL','AHFS','AHFL','VCPS','VCPL','VCFS','VCFL','VHPS','VHPL','VHFS','VHFL'];
   const grid = document.getElementById('intro-type-grid');
   if(!grid) return;
-  grid.innerHTML = TYPE_ORDER.map(code => {
-    const t = TYPES[code];
-    const svg = MINI_SVGS[code] || '';
+  var html = TYPE_ORDER.map(function(code){
+    var t = TYPES[code];
+    var svg = MINI_SVGS[code] || '';
     return '<div class="intro-type-item"><div class="intro-type-illust">'+svg+'</div><div class="intro-type-name">'+t.name+'</div></div>';
   }).join('');
+  // 「あなたはどれ？」セル
+  html += '<div class="intro-type-item intro-type-you" onclick="startQuiz()"><div class="intro-type-illust" style="font-size:28px;line-height:60px">?</div><div class="intro-type-name">あなたは<br>どれ？</div></div>';
+  grid.innerHTML = html;
 }
 function startQuiz(){current=1;show('q'+current);}
 
@@ -1384,8 +1451,11 @@ function answer(key,val){
   if(key==='a5'||key==='a6') axisScore.pf += val==='P'?1:-1;
   if(key==='a7')              axisScore.sl += val==='S'?1:-1;
   current++;
-  if(current<=TOTAL) show('q'+current);
-  else showResult();
+  // 選択肢のハイライトを見せてから遷移（350ms待つ）
+  setTimeout(function(){
+    if(current<=TOTAL) show('q'+current);
+    else showResult();
+  }, 350);
 }
 
 function restart(){
@@ -1540,6 +1610,74 @@ function scoreMount(m,typeCode){
   return score;
 }
 
+
+function renderRadar(){
+  // axisScoreを0〜100に変換（中央=50）
+  var toScore = function(v, maxQ){ return Math.min(100, Math.max(10, Math.round(50 + v / maxQ * 50))); };
+  var vals = [
+    toScore(axisScore.av, 2),  // 行動力 AV軸:2問
+    toScore(axisScore.ch, 2),  // 挑戦心 CH軸:2問
+    toScore(axisScore.pf, 2),  // 計画性 PF軸:2問
+    toScore(axisScore.sl, 1)   // 社交性 SL軸:1問
+  ];
+
+  // 4軸レーダー（ダイヤ型・45度配置）SVG生成
+  var cx = 90, cy = 80, R = 62;
+  // 軸方向: 上(行動力)・右(挑戦心)・下(計画性)・左(社交性)
+  var dirs = [[0,-1],[1,0],[0,1],[-1,0]];
+  var gridLevels = [0.33, 0.66, 1.0];
+  var svg = '<svg viewBox="0 0 180 160" width="200" height="178" fill="none">';
+
+  // グリッド（同心ダイヤ）
+  for(var g=0; g<gridLevels.length; g++){
+    var r = R * gridLevels[g];
+    var pts = dirs.map(function(d){ return (cx + d[0]*r) + ',' + (cy + d[1]*r); }).join(' ');
+    svg += '<polygon points="' + pts + '" fill="none" stroke="#e0dbd4" stroke-width="1"/>';
+  }
+  // 軸線
+  for(var a=0; a<4; a++){
+    svg += '<line x1="' + cx + '" y1="' + cy + '" x2="' + (cx + dirs[a][0]*R) + '" y2="' + (cy + dirs[a][1]*R) + '" stroke="#e8e4dc" stroke-width="1"/>';
+  }
+  // スコアの多角形
+  var scorePts = vals.map(function(v, i){
+    var r = R * v / 100;
+    return (cx + dirs[i][0]*r) + ',' + (cy + dirs[i][1]*r);
+  }).join(' ');
+  svg += '<polygon points="' + scorePts + '" fill="rgba(78,101,53,0.25)" stroke="#4e6535" stroke-width="2" stroke-linejoin="round"/>';
+  // 頂点ドット
+  vals.forEach(function(v, i){
+    var r = R * v / 100;
+    svg += '<circle cx="' + (cx + dirs[i][0]*r) + '" cy="' + (cy + dirs[i][1]*r) + '" r="3.5" fill="#4e6535"/>';
+  });
+  // ラベル
+  var labels = ['行動力','挑戦心','計画性','社交性'];
+  var labelPos = [
+    [cx, cy - R - 8],
+    [cx + R + 24, cy + 4],
+    [cx, cy + R + 16],
+    [cx - R - 24, cy + 4]
+  ];
+  labels.forEach(function(lb, i){
+    svg += '<text x="' + labelPos[i][0] + '" y="' + labelPos[i][1] + '" font-size="10" font-weight="600" fill="#5a5048" text-anchor="middle" font-family="sans-serif">' + lb + '</text>';
+  });
+  svg += '</svg>';
+
+  var wrap = document.getElementById('radar-wrap');
+  if(wrap) wrap.innerHTML = svg;
+
+  // スコアバーをアニメーション付きで更新
+  var fills = document.querySelectorAll('.radar-score-fill');
+  var nums  = document.querySelectorAll('.radar-score-num');
+  for(var i=0; i<4; i++){
+    (function(idx, v){
+      setTimeout(function(){
+        if(fills[idx]) fills[idx].style.width = v + '%';
+        if(nums[idx])  nums[idx].textContent = v;
+      }, 200 + idx * 100);
+    })(i, vals[i]);
+  }
+}
+
 function showResult(){
   const typeCode=getTypeCode();
   const type=TYPES[typeCode]||TYPES['VHFS'];
@@ -1656,6 +1794,7 @@ function showResult(){
     document.getElementById('sticky-cta').classList.remove('visible');
   };
   show('result');
+  renderRadar();
 }
 
 function copyResult(){
