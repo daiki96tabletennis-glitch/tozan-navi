@@ -1308,9 +1308,9 @@ function App() {
           {/* 足あと横スクロール */}
           {history.length > 0 && (function(){
             var histMounts = [];
-            history.forEach(function(id){
-              var m = mountains.find(function(x){ return x.id === id; });
-              if (m) histMounts.push(m);
+            history.forEach(function(hid){
+              var hm = mountains.find(function(x){ return x.id === hid; });
+              if (hm) histMounts.push(hm);
             });
             if (histMounts.length === 0) return null;
             return (
@@ -1318,15 +1318,23 @@ function App() {
                 <div style={{fontSize:"10px",fontWeight:"700",color:"#8a7a6a",letterSpacing:"0.06em",marginBottom:"6px",display:"flex",alignItems:"center",gap:"5px"}}>
                   <span>👣</span>最近見た山
                 </div>
-                <div style={{display:"flex",gap:"7px",overflowX:"auto",WebkitOverflowScrolling:"touch",paddingBottom:"4px"}}>
-                  {histMounts.map(function(m){
-                    var is100 = m.category === "百名山";
+                <div style={{display:"flex",gap:"6px",overflowX:"auto",WebkitOverflowScrolling:"touch",paddingBottom:"4px",marginLeft:"-16px",marginRight:"-16px",paddingLeft:"16px",paddingRight:"16px"}}>
+                  {histMounts.map(function(hm){
+                    var is100 = hm.category === "百名山";
+                    var bgColor = is100 ? "#eef4e8" : "#e8f0fa";
+                    var borderColor = is100 ? "#b0cc90" : "#a8c4e0";
+                    var textColor = is100 ? "#3a5828" : "#2a4870";
                     return (
-                      <a key={m.id} href={"/mountains/"+m.id+"/"} onClick={function(){ addHistory(m); }}
-                        style={{flexShrink:0,display:"flex",flexDirection:"column",alignItems:"flex-start",background:is100?"#f0eefd":"white",border:"1px solid "+(is100?"#c8c0e8":"#e0dbd4"),borderRadius:"10px",padding:"8px 10px",textDecoration:"none",color:"inherit",minWidth:"90px",maxWidth:"110px"}}>
-                        <div style={{fontSize:"12px",fontWeight:"700",color:"#1e1a16",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis",width:"100%"}}>{m.name}</div>
-                        <div style={{fontSize:"10px",color:"#8a7a6a",marginTop:"2px"}}>{m.elevation.toLocaleString()}m</div>
-                        <div style={{fontSize:"9px",color:is100?"#6a60a8":"#6a7a50",marginTop:"3px",fontWeight:"600"}}>{m.difficulty}</div>
+                      <a key={hm.id} href={"/mountains/"+hm.id+"/"}
+                        onClick={function(){
+                          try {
+                            var prev2 = JSON.parse(localStorage.getItem("ym_history") || "[]");
+                            var next2 = [hm.id].concat(prev2.filter(function(i){ return i !== hm.id; })).slice(0, 20);
+                            localStorage.setItem("ym_history", JSON.stringify(next2));
+                          } catch(ex2) {}
+                        }}
+                        style={{flexShrink:0,display:"inline-flex",alignItems:"center",background:bgColor,border:"1px solid "+borderColor,borderRadius:"20px",padding:"5px 12px",textDecoration:"none",whiteSpace:"nowrap"}}>
+                        <span style={{fontSize:"12px",fontWeight:"700",color:textColor}}>{hm.name}</span>
                       </a>
                     );
                   })}
@@ -1416,7 +1424,13 @@ function App() {
                       onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.boxShadow = "none"; }}
                       onTouchStart={e => { e.currentTarget.style.transform = "scale(0.97)"; }}
                       onTouchEnd={e => { setTimeout(() => { if(e.currentTarget) e.currentTarget.style.transform = "scale(1)"; }, 200); }}
-                      onClick={() => addHistory(m)}>
+                      onClick={(e) => {
+                        try {
+                          var prev = JSON.parse(localStorage.getItem("ym_history") || "[]");
+                          var next = [m.id].concat(prev.filter(function(id){ return id !== m.id; })).slice(0, 20);
+                          localStorage.setItem("ym_history", JSON.stringify(next));
+                        } catch(ex) {}
+                      }}>
                       {/* 星ボタン */}
                       <button data-star={m.id} onClick={e => { e.preventDefault(); e.stopPropagation(); toggleStar(m.id); }}
                         style={{position:"absolute",top:"6px",right:"6px",width:"20px",height:"20px",display:"flex",alignItems:"center",justifyContent:"center",background:"none",border:"none",cursor:"pointer",zIndex:2,transition:"transform 0.2s cubic-bezier(0.34,1.56,0.64,1)",padding:0}}
