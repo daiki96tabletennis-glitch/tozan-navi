@@ -708,6 +708,7 @@ function App() {
   const [filterMonth, setFilterMonth]       = useState(() => ssGet("ym_month", new Date().getMonth() + 1)); // 1-12
   const [viewMode, setViewMode]             = useState(() => ssGet("ym_viewmode", "list"));
   const [filterOpen, setFilterOpen] = useState(false);
+  const [vibeFilter, setVibeFilter] = useState("");
   const [quickOpen, setQuickOpen] = useState(false);
   const [matrixOpen, setMatrixOpen] = useState(false);
   const [showBoard, setShowBoard] = useState(false);
@@ -715,6 +716,21 @@ function App() {
   const [boardInitMountain, setBoardInitMountain] = useState("");
   const [selected, setSelected] = useState(null);
   const [starredMountains, setStarredMountains] = useState(() => lsGet("ym_starred", []));
+  // 診断結果（相性度計算用）
+  const typeResult = React.useMemo(function() {
+    try { return JSON.parse(localStorage.getItem("ym_type_result") || "null"); } catch(e) { return null; }
+  }, []);
+  // 足あと
+  const [history, setHistory] = useState(function() {
+    try { return JSON.parse(localStorage.getItem("ym_history") || "[]"); } catch(e) { return []; }
+  });
+  const addHistory = React.useCallback(function(m) {
+    setHistory(function(prev) {
+      var next = [m.id].concat(prev.filter(function(id){ return id !== m.id; })).slice(0, 20);
+      try { localStorage.setItem("ym_history", JSON.stringify(next)); } catch(e) {}
+      return next;
+    });
+  }, []);
   // 登頂記録state（ym_climbedをMapとして保持: {id: {date,memo}} ）
   const [climbedMap, setClimbedMap] = useState(() => {
     try {
@@ -744,6 +760,30 @@ function App() {
       return next;
     });
   };
+  // 相性度計算（0-100）
+  const calcAffinity = React.useCallback(function(m) {
+    if (!typeResult) return null;
+    var tc = typeResult.typeCode || '';
+    var score = 50; // ベース
+    var a = tc[0], c = tc[1], p = tc[2], s = tc[3];
+    var vibes = m.vibes || [];
+    var types = m.types || [];
+    // A/V軸: 冒険志向 vs 定番志向
+    if (a === 'A') { if (types.indexOf('adventure') > -1) score += 15; if (types.indexOf('challenge') > -1) score += 10; }
+    if (a === 'V') { if (types.indexOf('easy') > -1) score += 15; if (types.indexOf('casual') > -1) score += 10; }
+    // C/H軸: 山頂重視 vs 眺望重視
+    if (c === 'C') { if (vibes.indexOf('rock') > -1 || vibes.indexOf('alpine') > -1) score += 12; }
+    if (c === 'H') { if (vibes.indexOf('view') > -1 || vibes.indexOf('highland') > -1) score += 12; }
+    // P/F軸: 計画派 vs 自由派
+    if (p === 'P') { if (types.indexOf('collector') > -1) score += 8; }
+    if (p === 'F') { if (vibes.indexOf('forest') > -1 || vibes.indexOf('river') > -1) score += 8; }
+    // S/L軸: 短時間 vs 長時間
+    var coeff = m.coeffMax || 0;
+    if (s === 'S' && coeff <= 25) score += 10;
+    if (s === 'L' && coeff >= 30) score += 10;
+    return Math.min(99, Math.max(30, score));
+  }, [typeResult]);
+
   const toggleStar = (id) => {
     setStarredMountains(prev => {
       var next = prev.includes(id) ? prev.filter(function(x){ return x !== id; }) : prev.concat([id]);
@@ -787,7 +827,7 @@ function App() {
     ssSet("ym_line", lineFilter);
     ssSet("ym_month", filterMonth);
     ssSet("ym_viewmode", viewMode);
-  }, [search, sort, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, viewMode, difficultyFilter, elevationFilter]);
+  }, [search, sort, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, viewMode, difficultyFilter, elevationFilter, vibeFilter]);
   const getMountainUrl = (id) => {
     const special = { mizugatake: "mizugaki" };
     return "/mountains/" + (special[id] || id) + "/";
@@ -798,6 +838,7 @@ function App() {
 
   const filtered = useMemo(() => {
     let list = mountains.filter(m => {
+      var matchVibe = !vibeFilter || (m.vibes || []).indexOf(vibeFilter) > -1;
       const matchSearch = !search || m.name.includes(search) || m.kana.includes(search);
       const matchArea = area === "すべて" || m.area.includes(area);
       const matchCat = categoryFilter === "すべて" || m.category === categoryFilter;
@@ -826,7 +867,7 @@ function App() {
         elevationFilter === 3000 ? elev >= 3000 :
         elev >= elevationFilter && elev < elevationFilter + 500
       );
-      return matchSearch && matchArea && matchCat && matchDayTrip && matchTrainOnly && matchDriveTime && matchCourse && matchCrampons && matchLine && matchDifficulty && matchElevation;
+      return matchVibe && matchSearch && matchArea && matchCat && matchDayTrip && matchTrainOnly && matchDriveTime && matchCourse && matchCrampons && matchLine && matchDifficulty && matchElevation;
     });
     if (sort === "おすすめ順") list = list.slice().sort(function(a, b) {
       const scoreM = m => {
@@ -846,7 +887,7 @@ function App() {
     else if (sort === "標高順") list = list.slice().sort(function(a, b){ return b.elevation - a.elevation; });
     else if (sort === "体力度順") list = list.slice().sort(function(a, b){ return (Array.isArray(b.courseCoefficient) ? b.courseCoefficient[1] : 0) - (Array.isArray(a.courseCoefficient) ? a.courseCoefficient[1] : 0); });
     return list;
-  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure, lineFilter, difficultyFilter, elevationFilter]);
+  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure, lineFilter, difficultyFilter, elevationFilter, vibeFilter]);
 
   if (selected) {
     const mountain = mountains.find(m => m.id === selected);
@@ -1210,9 +1251,104 @@ function App() {
           </div>
         )}
 
+          {/* vibeタグ横スクロール */}
+          <div style={{overflowX:"auto",WebkitOverflowScrolling:"touch",marginBottom:"8px",marginLeft:"-16px",marginRight:"-16px",paddingLeft:"16px",paddingRight:"16px"}}>
+            <div style={{display:"flex",gap:"6px",paddingBottom:"2px"}}>
+              {(function(){ var active = vibeFilter === "view"; return (
+                <button key="view" onClick={function(){ setVibeFilter(active ? "" : "view"); }}
+                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
+                  <span>🏔</span><span>絶景</span>
+                </button>
+              ); })()}
+              {(function(){ var active = vibeFilter === "forest"; return (
+                <button key="forest" onClick={function(){ setVibeFilter(active ? "" : "forest"); }}
+                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
+                  <span>🌿</span><span>森歩き</span>
+                </button>
+              ); })()}
+              {(function(){ var active = vibeFilter === "rock"; return (
+                <button key="rock" onClick={function(){ setVibeFilter(active ? "" : "rock"); }}
+                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
+                  <span>🪨</span><span>岩場</span>
+                </button>
+              ); })()}
+              {(function(){ var active = vibeFilter === "highland"; return (
+                <button key="highland" onClick={function(){ setVibeFilter(active ? "" : "highland"); }}
+                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
+                  <span>🌾</span><span>高原</span>
+                </button>
+              ); })()}
+              {(function(){ var active = vibeFilter === "accessible"; return (
+                <button key="accessible" onClick={function(){ setVibeFilter(active ? "" : "accessible"); }}
+                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
+                  <span>✅</span><span>お手軽</span>
+                </button>
+              ); })()}
+              {(function(){ var active = vibeFilter === "volcano"; return (
+                <button key="volcano" onClick={function(){ setVibeFilter(active ? "" : "volcano"); }}
+                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
+                  <span>🌋</span><span>火山</span>
+                </button>
+              ); })()}
+              {(function(){ var active = vibeFilter === "wetland"; return (
+                <button key="wetland" onClick={function(){ setVibeFilter(active ? "" : "wetland"); }}
+                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
+                  <span>💧</span><span>湿原</span>
+                </button>
+              ); })()}
+              {(function(){ var active = vibeFilter === "historic"; return (
+                <button key="historic" onClick={function(){ setVibeFilter(active ? "" : "historic"); }}
+                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
+                  <span>🏘</span><span>歴史</span>
+                </button>
+              ); })()}
+            </div>
+          </div>
+
+          {/* 足あと横スクロール */}
+          {history.length > 0 && (function(){
+            var histMounts = [];
+            history.forEach(function(id){
+              var m = mountains.find(function(x){ return x.id === id; });
+              if (m) histMounts.push(m);
+            });
+            if (histMounts.length === 0) return null;
+            return (
+              <div style={{marginBottom:"10px"}}>
+                <div style={{fontSize:"10px",fontWeight:"700",color:"#8a7a6a",letterSpacing:"0.06em",marginBottom:"6px",display:"flex",alignItems:"center",gap:"5px"}}>
+                  <span>👣</span>最近見た山
+                </div>
+                <div style={{display:"flex",gap:"7px",overflowX:"auto",WebkitOverflowScrolling:"touch",paddingBottom:"4px"}}>
+                  {histMounts.map(function(m){
+                    var is100 = m.category === "百名山";
+                    return (
+                      <a key={m.id} href={"/mountains/"+m.id+"/"} onClick={function(){ addHistory(m); }}
+                        style={{flexShrink:0,display:"flex",flexDirection:"column",alignItems:"flex-start",background:is100?"#f0eefd":"white",border:"1px solid "+(is100?"#c8c0e8":"#e0dbd4"),borderRadius:"10px",padding:"8px 10px",textDecoration:"none",color:"inherit",minWidth:"90px",maxWidth:"110px"}}>
+                        <div style={{fontSize:"12px",fontWeight:"700",color:"#1e1a16",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis",width:"100%"}}>{m.name}</div>
+                        <div style={{fontSize:"10px",color:"#8a7a6a",marginTop:"2px"}}>{m.elevation.toLocaleString()}m</div>
+                        <div style={{fontSize:"9px",color:is100?"#6a60a8":"#6a7a50",marginTop:"3px",fontWeight:"600"}}>{m.difficulty}</div>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })()}
+
           {/* 件数＋並び替え▾＋一覧/地図 */}
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:"7px"}}>
-            <span key={filtered.length} style={{fontSize:"11px",color:"#7a7068",display:"inline-block",animation:"fadeInUp 0.25s ease both"}}>見つかった山 {filtered.length}件</span>
+            <div style={{display:"flex",alignItems:"center",gap:"5px"}}>
+              <span key={filtered.length} style={{fontSize:"11px",color:"#7a7068",display:"inline-block",animation:"fadeInUp 0.25s ease both"}}>見つかった山 {filtered.length}件</span>
+              {vibeFilter && (function(){
+                var labels = {"view":"絶景","forest":"森歩き","rock":"岩場","highland":"高原","accessible":"お手軽","volcano":"火山","wetland":"湿原","historic":"歴史"};
+                return (
+                  <button onClick={function(){ setVibeFilter(""); }}
+                    style={{fontSize:"10px",padding:"2px 7px",borderRadius:"10px",background:"#4e6535",color:"white",border:"none",cursor:"pointer",display:"flex",alignItems:"center",gap:"3px"}}>
+                    {labels[vibeFilter] || vibeFilter} ✕
+                  </button>
+                );
+              })()}
+            </div>
             <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
               <div style={{position:"relative"}}>
                 <select value={sort} onChange={e => { setSort(e.target.value); ssSet("ym_sort",e.target.value) }} style={{appearance:"none",WebkitAppearance:"none",background:"white",border:"0.5px solid #ddd8d0",borderRadius:"14px",height:"26px",padding:"0 24px 0 9px",fontSize:"10px",color:"#4a5a48",fontWeight:"600",cursor:"pointer",outline:"none"}}>
@@ -1279,7 +1415,8 @@ function App() {
                       onMouseEnter={e => { e.currentTarget.style.opacity = "0.9"; e.currentTarget.style.transform = "translateY(-2px) scale(1.01)"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.1)"; }}
                       onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.boxShadow = "none"; }}
                       onTouchStart={e => { e.currentTarget.style.transform = "scale(0.97)"; }}
-                      onTouchEnd={e => { setTimeout(() => { if(e.currentTarget) e.currentTarget.style.transform = "scale(1)"; }, 200); }}>
+                      onTouchEnd={e => { setTimeout(() => { if(e.currentTarget) e.currentTarget.style.transform = "scale(1)"; }, 200); }}
+                      onClick={() => addHistory(m)}>
                       {/* 星ボタン */}
                       <button data-star={m.id} onClick={e => { e.preventDefault(); e.stopPropagation(); toggleStar(m.id); }}
                         style={{position:"absolute",top:"6px",right:"6px",width:"20px",height:"20px",display:"flex",alignItems:"center",justifyContent:"center",background:"none",border:"none",cursor:"pointer",zIndex:2,transition:"transform 0.2s cubic-bezier(0.34,1.56,0.64,1)",padding:0}}
@@ -1321,6 +1458,15 @@ function App() {
                         <polygon points="75,20 100,55 50,55"/>
                         <polygon points="25,30 55,55 0,55"/>
                       </svg>
+                      {/* 相性度バッジ */}
+                      {(function(){ var af = calcAffinity(m); return af ? (
+                        <div style={{display:"flex",alignItems:"center",gap:"3px",marginBottom:"1px",position:"relative",zIndex:1}}>
+                          <div style={{height:"4px",flex:1,background:"rgba(0,0,0,0.08)",borderRadius:"2px",overflow:"hidden"}}>
+                            <div style={{height:"100%",width:af+"%",background:af>=80?"#4e8535":af>=65?"#7a9a50":"#a8b888",borderRadius:"2px",transition:"width 0.6s ease"}}></div>
+                          </div>
+                          <span style={{fontSize:"9px",fontWeight:"700",color:af>=80?"#3a6828":af>=65?"#5a7838":"#7a8860",whiteSpace:"nowrap"}}>相性{af}%</span>
+                        </div>
+                      ) : null; })()}
                       {/* 山名 */}
                       <div style={{ fontSize: "14px", fontWeight: "700", color: "#1e1a16", position: "relative", zIndex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", paddingRight: "18px" }}>
                         {m.regulated && <span style={{ color: "#e67700", marginRight: "3px" }}>⚠️</span>}{m.name}

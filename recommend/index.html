@@ -1798,6 +1798,15 @@ function showResult(){
   };
   show('result');
   renderRadar();
+  // 診断結果をホームページ向けにlocalStorageに保存
+  try {
+    localStorage.setItem('ym_type_result', JSON.stringify({
+      typeCode: typeCode,
+      typeName: type.name,
+      axes: type.axes || [],
+      savedAt: Date.now()
+    }));
+  } catch(e) {}
 }
 
 
