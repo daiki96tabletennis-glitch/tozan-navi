@@ -999,6 +999,8 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 .radar-score-fill{height:100%;width:0;background:linear-gradient(90deg,#6a8a50,#4e6535);border-radius:4px;transition:width 0.7s cubic-bezier(.2,.8,.3,1)}
 .radar-score-num{font-size:11px;font-weight:700;color:#4e6535;min-width:26px;text-align:right}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<style>h1,h2,h3,.ym-logo,.type-name,.mountain-name,.sec-title{font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;}</style>
 </head>
 <body>
 <header class="ym-header">
@@ -1206,6 +1208,7 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
   <p class="result-subtitle" id="result-subtitle"></p>
   <button id="share-top" onclick="window._shareNative&&window._shareNative()" style="display:none;width:100%;margin-bottom:12px;background:#4a5e4a;color:white;border:none;border-radius:10px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>この結果をシェア</button>
+  <button onclick="generateShareImage()" style="width:100%;margin-bottom:12px;background:#2a5020;color:white;border:none;border-radius:10px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">&#128248; &#30011;&#20687;&#12434;&#20445;&#23384;&#12375;&#12390;&#12471;&#12455;&#12450;</button>
   <div id="result-cards"></div>
   <div id="compat-area"></div>
   <div class="share-section">
@@ -1795,6 +1798,77 @@ function showResult(){
   };
   show('result');
   renderRadar();
+}
+
+
+function generateShareImage(){
+  var typeCode = getTypeCode();
+  var type = TYPES[typeCode] || TYPES['VHFS'];
+  var rareLabel = RARE_LABELS[type.affilLevel] || '';
+  var canvas = document.createElement('canvas');
+  canvas.width = 1080;
+  canvas.height = 1080;
+  var ctx = canvas.getContext('2d');
+  var grad = ctx.createLinearGradient(0, 0, 0, 1080);
+  grad.addColorStop(0, '#1e3a1a');
+  grad.addColorStop(1, '#2a5020');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, 1080, 1080);
+  ctx.fillStyle = 'rgba(200,212,184,0.3)';
+  ctx.fillRect(0, 0, 1080, 6);
+  ctx.fillStyle = 'rgba(200,212,184,0.7)';
+  ctx.font = '32px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('\u26F0 Yamatch \u767b\u5c71\u30bf\u30a4\u30d7\u8a3a\u65ad', 540, 80);
+  ctx.fillStyle = 'rgba(255,255,255,0.6)';
+  ctx.font = '48px sans-serif';
+  ctx.fillText('\u3042\u306a\u305f\u306f', 540, 180);
+  ctx.fillStyle = '#a8e070';
+  ctx.font = 'bold 88px sans-serif';
+  ctx.fillText(type.name, 540, 296);
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.font = '36px sans-serif';
+  ctx.fillText(typeCode + '\u578b', 540, 356);
+  ctx.fillStyle = 'rgba(255,220,80,0.9)';
+  ctx.font = 'bold 40px sans-serif';
+  ctx.fillText(rareLabel + ' \u00b7 \u8a3a\u65ad\u8005\u306e ' + type.rare + '%', 540, 430);
+  var svgSrc = PERSON_SVGS[typeCode] || '';
+  svgSrc = svgSrc.replace(/width="80"/, 'width="320"').replace(/height="124"/, 'height="496"');
+  var svgBlob = new Blob([svgSrc], {type: 'image/svg+xml'});
+  var svgUrl = URL.createObjectURL(svgBlob);
+  var img = new Image();
+  img.onload = function() {
+    ctx.drawImage(img, 380, 460, 320, 400);
+    URL.revokeObjectURL(svgUrl);
+    ctx.fillStyle = 'rgba(255,255,255,0.75)';
+    ctx.font = '30px sans-serif';
+    var desc = type.desc || '';
+    var maxWidth = 900;
+    var chars = desc.split('');
+    var line = '';
+    var lineY = 896;
+    var lineH = 44;
+    for (var i = 0; i < chars.length; i++) {
+      var testLine = line + chars[i];
+      if (ctx.measureText(testLine).width > maxWidth && line !== '') {
+        ctx.fillText(line, 540, lineY);
+        line = chars[i];
+        lineY += lineH;
+      } else {
+        line = testLine;
+      }
+    }
+    if (line) ctx.fillText(line, 540, lineY);
+    ctx.fillStyle = 'rgba(255,255,255,0.4)';
+    ctx.font = '28px sans-serif';
+    ctx.fillText('tozan-navi.com/recommend/', 540, 1040);
+    var a = document.createElement('a');
+    a.download = 'yamatch-' + typeCode + '.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  };
+  img.onerror = function() { URL.revokeObjectURL(svgUrl); };
+  img.src = svgUrl;
 }
 
 function copyResult(){

@@ -92,6 +92,17 @@
 #root:not(:empty) ~ #app-skeleton,
 #root:not(:empty) + * #app-skeleton{display:none;}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<style>h1,h2,h3,.ym-logo,.type-name,.mountain-name,.sec-title{font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;}</style>
+<style>
+/* タップ沈み込み */
+.card,.choice,.start-btn,.gear-btn,button{transition:transform .12s ease;}
+.card:active,.choice:active,.start-btn:active,.gear-btn:active,button:active{transform:scale(0.97);}
+/* ☆バウンス */
+@keyframes ym-pop{0%{transform:scale(1);}40%{transform:scale(1.5);}100%{transform:scale(1);}}
+.star-active-anim{animation:ym-pop .3s ease;}
+</style>
+
 </head><body>
 <div id="app-skeleton">
   <div class="sk-header">
@@ -736,6 +747,7 @@ function App() {
       // 追加時のみパーティクル発射
       if(!prev.includes(id)){
         var btn = document.querySelector('[data-star="'+id+'"]');
+        if(btn){ btn.classList.add('star-active-anim'); setTimeout(function(){ btn.classList.remove('star-active-anim'); }, 350); }
         if(btn){
           var rect = btn.getBoundingClientRect();
           var cx = rect.left + rect.width/2, cy = rect.top + rect.height/2;
