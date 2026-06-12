@@ -724,10 +724,28 @@ function App() {
   const [history, setHistory] = useState(function() {
     try { return JSON.parse(localStorage.getItem("ym_history") || "[]"); } catch(e) { return []; }
   });
+  // 足あと表示ON/OFF設定（デフォルトON）
+  const [historyEnabled, setHistoryEnabled] = useState(function() {
+    try { return localStorage.getItem("ym_history_enabled") !== "false"; } catch(e) { return true; }
+  });
   const addHistory = React.useCallback(function(m) {
+    // 表示OFFのときは記録もしない
+    try { if (localStorage.getItem("ym_history_enabled") === "false") return; } catch(e) {}
     setHistory(function(prev) {
       var next = [m.id].concat(prev.filter(function(id){ return id !== m.id; })).slice(0, 20);
       try { localStorage.setItem("ym_history", JSON.stringify(next)); } catch(e) {}
+      return next;
+    });
+  }, []);
+  const clearHistory = React.useCallback(function() {
+    setHistory([]);
+    try { localStorage.removeItem("ym_history"); } catch(e) {}
+  }, []);
+  const toggleHistoryEnabled = React.useCallback(function() {
+    setHistoryEnabled(function(prev) {
+      var next = !prev;
+      try { localStorage.setItem("ym_history_enabled", next ? "true" : "false"); } catch(e) {}
+      if (!next) { setHistory([]); try { localStorage.removeItem("ym_history"); } catch(e) {} }
       return next;
     });
   }, []);
@@ -1306,7 +1324,7 @@ function App() {
           </div>
 
           {/* 足あと横スクロール */}
-          {history.length > 0 && (function(){
+          {historyEnabled && history.length > 0 && (function(){
             var histMounts = [];
             history.forEach(function(hid){
               var hm = mountains.find(function(x){ return x.id === hid; });
@@ -1315,8 +1333,20 @@ function App() {
             if (histMounts.length === 0) return null;
             return (
               <div style={{marginBottom:"10px"}}>
-                <div style={{fontSize:"10px",fontWeight:"700",color:"#8a7a6a",letterSpacing:"0.06em",marginBottom:"6px",display:"flex",alignItems:"center",gap:"5px"}}>
-                  <span>👣</span>最近見た山
+                <div style={{marginBottom:"6px",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+                  <div style={{fontSize:"10px",fontWeight:"700",color:"#8a7a6a",letterSpacing:"0.06em",display:"flex",alignItems:"center",gap:"5px"}}>
+                    <span>👣</span>最近見た山
+                  </div>
+                  <div style={{display:"flex",gap:"4px"}}>
+                    <button onClick={clearHistory}
+                      style={{fontSize:"10px",fontWeight:"600",color:"#8a7a6a",background:"none",border:"1px solid #d8d0c4",borderRadius:"12px",padding:"2px 9px",cursor:"pointer"}}>
+                      リセット
+                    </button>
+                    <button onClick={toggleHistoryEnabled}
+                      style={{fontSize:"10px",fontWeight:"600",color:"#8a7a6a",background:"none",border:"1px solid #d8d0c4",borderRadius:"12px",padding:"2px 9px",cursor:"pointer"}}>
+                      非表示
+                    </button>
+                  </div>
                 </div>
                 <div style={{display:"flex",gap:"6px",overflowX:"auto",WebkitOverflowScrolling:"touch",paddingBottom:"4px",marginLeft:"-16px",marginRight:"-16px",paddingLeft:"16px",paddingRight:"16px"}}>
                   {histMounts.map(function(hm){
@@ -1342,6 +1372,16 @@ function App() {
               </div>
             );
           })()}
+
+          {/* 足あと非表示時の再表示リンク */}
+          {!historyEnabled && (
+            <div style={{marginBottom:"10px",textAlign:"right"}}>
+              <button onClick={toggleHistoryEnabled}
+                style={{fontSize:"10px",fontWeight:"600",color:"#8a7a6a",background:"none",border:"1px solid #d8d0c4",borderRadius:"12px",padding:"3px 10px",cursor:"pointer"}}>
+                👣 足あとを表示する
+              </button>
+            </div>
+          )}
 
           {/* 件数＋並び替え▾＋一覧/地図 */}
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:"7px"}}>
@@ -1426,6 +1466,7 @@ function App() {
                       onTouchEnd={e => { setTimeout(() => { if(e.currentTarget) e.currentTarget.style.transform = "scale(1)"; }, 200); }}
                       onClick={(e) => {
                         try {
+                          if (localStorage.getItem("ym_history_enabled") === "false") return;
                           var prev = JSON.parse(localStorage.getItem("ym_history") || "[]");
                           var next = [m.id].concat(prev.filter(function(id){ return id !== m.id; })).slice(0, 20);
                           localStorage.setItem("ym_history", JSON.stringify(next));
