@@ -18387,9 +18387,6 @@
     "trainAccess": "鳥沢駅→徒歩約30分→穴路峠登山口（JR中央本線）",
     "trailhead": "穴路峠登山口（鳥沢駅から徒歩）",
     "driveShinjuku": 70,
-    "driveOfuna": 70,
-    "driveYokohama": 75,
-    "driveOmiya": 100,
     "driveTimeShinjuku": 70,
     "trainTimeShinjuku": 55,
     "nearestStation": "鳥沢駅",
@@ -18426,7 +18423,10 @@
         "elevGain": 700
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E5%80%89%E5%B2%B3%E5%B1%B1登山口/@35.5617,138.9847,15z"
+    "gmapUrl": "https://google.com/maps/search/%E5%80%89%E5%B2%B3%E5%B1%B1登山口/@35.5617,138.9847,15z",
+    "driveTime": 70,
+    "driveTimeYokohama": 75,
+    "driveTimeOmiya": 100
   },
   {
     "id": "sasakogarigaburiyama",
@@ -18442,9 +18442,6 @@
     "trainAccess": "笹子駅→徒歩5分→登山口（JR中央本線）",
     "trailhead": "笹子峠登山口（笹子駅から徒歩）",
     "driveShinjuku": 90,
-    "driveOfuna": 90,
-    "driveYokohama": 95,
-    "driveOmiya": 120,
     "driveTimeShinjuku": 90,
     "trainTimeShinjuku": 65,
     "nearestStation": "笹子駅",
@@ -18481,7 +18478,10 @@
         "elevGain": 580
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E7%AC%B9%E5%AD%90%E9%9B%81%E3%83%B6%E8%85%B9%E6%91%BA%E5%B1%B1登山口/@35.6119,138.8531,15z"
+    "gmapUrl": "https://google.com/maps/search/%E7%AC%B9%E5%AD%90%E9%9B%81%E3%83%B6%E8%85%B9%E6%91%BA%E5%B1%B1登山口/@35.6119,138.8531,15z",
+    "driveTime": 90,
+    "driveTimeYokohama": 95,
+    "driveTimeOmiya": 120
   },
   {
     "id": "shodosan_namatate",
@@ -18497,9 +18497,6 @@
     "trainAccess": "上野原駅→富士急バス→井戸バス停（約25分）→徒歩",
     "trailhead": "井戸バス停（三国山ルート）",
     "driveShinjuku": 70,
-    "driveOfuna": 80,
-    "driveYokohama": 80,
-    "driveOmiya": 110,
     "driveTimeShinjuku": 70,
     "trainTimeShinjuku": 70,
     "nearestStation": "上野原駅",
@@ -18536,7 +18533,10 @@
         "elevGain": 650
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E7%94%9F%E8%97%A4%E5%B1%B1登山口/@35.6194,139.0803,15z"
+    "gmapUrl": "https://google.com/maps/search/%E7%94%9F%E8%97%A4%E5%B1%B1登山口/@35.6194,139.0803,15z",
+    "driveTime": 80,
+    "driveTimeYokohama": 80,
+    "driveTimeOmiya": 110
   },
   {
     "id": "kukiyama",
@@ -18552,9 +18552,6 @@
     "trainAccess": "禾生駅→徒歩約30分→登山口（富士急行線）",
     "trailhead": "禾生駅ルート登山口",
     "driveShinjuku": 80,
-    "driveOfuna": 85,
-    "driveYokohama": 90,
-    "driveOmiya": 115,
     "driveTimeShinjuku": 80,
     "trainTimeShinjuku": 75,
     "nearestStation": "禾生駅",
@@ -18591,7 +18588,10 @@
         "elevGain": 650
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E4%B9%9D%E9%AC%BC%E5%B1%B1登山口/@35.5758,138.9592,15z"
+    "gmapUrl": "https://google.com/maps/search/%E4%B9%9D%E9%AC%BC%E5%B1%B1登山口/@35.5758,138.9592,15z",
+    "driveTime": 85,
+    "driveTimeYokohama": 90,
+    "driveTimeOmiya": 115
   },
   {
     "id": "mitosaan",
@@ -18607,9 +18607,6 @@
     "trainAccess": "武蔵五日市駅→都民の森行バス→都民の森（約50分・季節）",
     "trailhead": "都民の森（三頭大滝コース）",
     "driveShinjuku": 75,
-    "driveOfuna": 90,
-    "driveYokohama": 90,
-    "driveOmiya": 110,
     "driveTimeShinjuku": 75,
     "trainTimeShinjuku": 90,
     "nearestStation": "武蔵五日市駅",
@@ -18647,7 +18644,10 @@
         "elevGain": 650
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E4%B8%89%E9%A0%AD%E5%B1%B1登山口/@35.7533,139.0028,15z"
+    "gmapUrl": "https://google.com/maps/search/%E4%B8%89%E9%A0%AD%E5%B1%B1登山口/@35.7533,139.0028,15z",
+    "driveTime": 90,
+    "driveTimeYokohama": 90,
+    "driveTimeOmiya": 110
   },
   {
     "id": "honitayama",
@@ -18663,9 +18663,6 @@
     "trainAccess": "奥多摩駅→徒歩30分→花折戸尾根登山口（JR青梅線）",
     "trailhead": "花折戸尾根登山口（奥多摩駅から徒歩）",
     "driveShinjuku": 80,
-    "driveOfuna": 105,
-    "driveYokohama": 100,
-    "driveOmiya": 115,
     "driveTimeShinjuku": 80,
     "trainTimeShinjuku": 100,
     "nearestStation": "奥多摩駅",
@@ -18702,7 +18699,10 @@
         "elevGain": 900
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E6%9C%AC%E4%BB%81%E7%94%B0%E5%B1%B1登山口/@35.8017,139.0883,15z"
+    "gmapUrl": "https://google.com/maps/search/%E6%9C%AC%E4%BB%81%E7%94%B0%E5%B1%B1登山口/@35.8017,139.0883,15z",
+    "driveTime": 105,
+    "driveTimeYokohama": 100,
+    "driveTimeOmiya": 115
   },
   {
     "id": "hinodesaan",
@@ -18718,9 +18718,6 @@
     "trainAccess": "御嶽駅→バス→御岳登山口→御岳山経由（JR青梅線）",
     "trailhead": "御岳山（ケーブルカー利用可）→日の出山",
     "driveShinjuku": 65,
-    "driveOfuna": 90,
-    "driveYokohama": 85,
-    "driveOmiya": 100,
     "driveTimeShinjuku": 65,
     "trainTimeShinjuku": 75,
     "nearestStation": "御嶽駅",
@@ -18759,7 +18756,10 @@
         "elevGain": 400
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E6%97%A5%E3%81%AE%E5%87%BA%E5%B1%B1登山口/@35.7794,139.2083,15z"
+    "gmapUrl": "https://google.com/maps/search/%E6%97%A5%E3%81%AE%E5%87%BA%E5%B1%B1登山口/@35.7794,139.2083,15z",
+    "driveTime": 90,
+    "driveTimeYokohama": 85,
+    "driveTimeOmiya": 100
   },
   {
     "id": "sengenrei",
@@ -18775,9 +18775,6 @@
     "trainAccess": "武蔵五日市駅→西東京バス→払沢の滝入口（約25分）",
     "trailhead": "払沢の滝入口（浅間尾根登山口）",
     "driveShinjuku": 65,
-    "driveOfuna": 85,
-    "driveYokohama": 85,
-    "driveOmiya": 105,
     "driveTimeShinjuku": 65,
     "trainTimeShinjuku": 80,
     "nearestStation": "武蔵五日市駅",
@@ -18814,7 +18811,10 @@
         "elevGain": 600
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E6%B5%85%E9%96%93%E5%B6%BA登山口/@35.7417,139.0886,15z"
+    "gmapUrl": "https://google.com/maps/search/%E6%B5%85%E9%96%93%E5%B6%BA登山口/@35.7417,139.0886,15z",
+    "driveTime": 85,
+    "driveTimeYokohama": 85,
+    "driveTimeOmiya": 105
   },
   {
     "id": "futagoyama_okumusa",
@@ -18830,9 +18830,6 @@
     "trainAccess": "芦ヶ久保駅→徒歩15分→登山口（西武秩父線）",
     "trailhead": "芦ヶ久保駅ルート登山口（徒歩15分）",
     "driveShinjuku": 80,
-    "driveOfuna": 110,
-    "driveYokohama": 110,
-    "driveOmiya": 80,
     "driveTimeShinjuku": 80,
     "trainTimeShinjuku": 75,
     "nearestStation": "芦ヶ久保駅",
@@ -18869,7 +18866,10 @@
         "elevGain": 650
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E4%BA%8C%E5%AD%90%E5%B1%B1%EF%BC%88%E5%A5%A5%E6%AD%A6%E8%94%B5%EF%BC%89登山口/@35.9753,139.1036,15z"
+    "gmapUrl": "https://google.com/maps/search/%E4%BA%8C%E5%AD%90%E5%B1%B1%EF%BC%88%E5%A5%A5%E6%AD%A6%E8%94%B5%EF%BC%89登山口/@35.9753,139.1036,15z",
+    "driveTime": 110,
+    "driveTimeYokohama": 110,
+    "driveTimeOmiya": 80
   },
   {
     "id": "juunigadake",
@@ -18885,9 +18885,6 @@
     "trainAccess": "河口湖駅→富士急バス→文化洞トンネルバス停（約10分）",
     "trailhead": "文化洞トンネル（毛無山〜十二ヶ岳ルート）",
     "driveShinjuku": 100,
-    "driveOfuna": 105,
-    "driveYokohama": 105,
-    "driveOmiya": 135,
     "driveTimeShinjuku": 100,
     "trainTimeShinjuku": 80,
     "nearestStation": "河口湖駅",
@@ -18924,7 +18921,10 @@
         "elevGain": 900
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E5%8D%81%E4%BA%8C%E3%83%B6%E5%B2%B3登山口/@35.5147,138.7661,15z"
+    "gmapUrl": "https://google.com/maps/search/%E5%8D%81%E4%BA%8C%E3%83%B6%E5%B2%B3登山口/@35.5147,138.7661,15z",
+    "driveTime": 105,
+    "driveTimeYokohama": 105,
+    "driveTimeOmiya": 135
   },
   {
     "id": "ishiwariyama",
@@ -18940,9 +18940,6 @@
     "trainAccess": "富士急行河口湖駅→バス→山中湖平野バス停（約30分）",
     "trailhead": "石割神社登山口（平野バス停から徒歩15分）",
     "driveShinjuku": 95,
-    "driveOfuna": 100,
-    "driveYokohama": 100,
-    "driveOmiya": 130,
     "driveTimeShinjuku": 95,
     "trainTimeShinjuku": 90,
     "nearestStation": "河口湖駅",
@@ -18979,7 +18976,10 @@
         "elevGain": 450
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E7%9F%B3%E5%89%B2%E5%B1%B1登山口/@35.4603,138.8756,15z"
+    "gmapUrl": "https://google.com/maps/search/%E7%9F%B3%E5%89%B2%E5%B1%B1登山口/@35.4603,138.8756,15z",
+    "driveTime": 100,
+    "driveTimeYokohama": 100,
+    "driveTimeOmiya": 130
   },
   {
     "id": "azumayama_ninomiya",
@@ -18995,9 +18995,6 @@
     "trainAccess": "二宮駅→徒歩5分→吾妻山公園入口（JR東海道本線）",
     "trailhead": "吾妻山公園入口（二宮駅から徒歩）",
     "driveShinjuku": 65,
-    "driveOfuna": 25,
-    "driveYokohama": 40,
-    "driveOmiya": 100,
     "driveTimeShinjuku": 65,
     "trainTimeShinjuku": 55,
     "nearestStation": "二宮駅",
@@ -19033,7 +19030,10 @@
         "elevGain": 140
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E5%90%BE%E5%A6%BB%E5%B1%B1%EF%BC%88%E4%BA%8C%E5%AE%AE%EF%BC%89登山口/@35.3006,139.2589,15z"
+    "gmapUrl": "https://google.com/maps/search/%E5%90%BE%E5%A6%BB%E5%B1%B1%EF%BC%88%E4%BA%8C%E5%AE%AE%EF%BC%89登山口/@35.3006,139.2589,15z",
+    "driveTime": 25,
+    "driveTimeYokohama": 40,
+    "driveTimeOmiya": 100
   },
   {
     "id": "hodosan",
@@ -19049,9 +19049,6 @@
     "trainAccess": "長瀞駅→徒歩30分（秩父鉄道）またはロープウェイ利用",
     "trailhead": "宝登山神社（長瀞駅から徒歩）",
     "driveShinjuku": 85,
-    "driveOfuna": 120,
-    "driveYokohama": 115,
-    "driveOmiya": 65,
     "driveTimeShinjuku": 85,
     "trainTimeShinjuku": 90,
     "nearestStation": "長瀞駅",
@@ -19088,7 +19085,10 @@
         "elevGain": 300
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E5%AE%9D%E7%99%BB%E5%B1%B1登山口/@36.1017,139.1158,15z"
+    "gmapUrl": "https://google.com/maps/search/%E5%AE%9D%E7%99%BB%E5%B1%B1登山口/@36.1017,139.1158,15z",
+    "driveTime": 120,
+    "driveTimeYokohama": 115,
+    "driveTimeOmiya": 65
   },
   {
     "id": "hafuzan_chichibu",
@@ -19104,9 +19104,6 @@
     "trainAccess": "皆野駅→徒歩（秩父鉄道）→風戸登山口",
     "trailhead": "風戸登山口（皆野駅から徒歩40分）",
     "driveShinjuku": 100,
-    "driveOfuna": 130,
-    "driveYokohama": 125,
-    "driveOmiya": 80,
     "driveTimeShinjuku": 100,
     "trainTimeShinjuku": 100,
     "nearestStation": "皆野駅",
@@ -19144,7 +19141,10 @@
         "elevGain": 450
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E7%A0%B4%E9%A2%A8%E5%B1%B1%EF%BC%88%E7%A7%A9%E7%88%B6%EF%BC%89登山口/@36.0694,139.1283,15z"
+    "gmapUrl": "https://google.com/maps/search/%E7%A0%B4%E9%A2%A8%E5%B1%B1%EF%BC%88%E7%A7%A9%E7%88%B6%EF%BC%89登山口/@36.0694,139.1283,15z",
+    "driveTime": 130,
+    "driveTimeYokohama": 125,
+    "driveTimeOmiya": 80
   },
   {
     "id": "ranzan_saitama",
@@ -19160,9 +19160,6 @@
     "trainAccess": "武蔵嵐山駅→徒歩20分→嵐山渓谷バーベキュー場入口（東武東上線）",
     "trailhead": "嵐山渓谷入口（武蔵嵐山駅から徒歩）",
     "driveShinjuku": 75,
-    "driveOfuna": 115,
-    "driveYokohama": 105,
-    "driveOmiya": 45,
     "driveTimeShinjuku": 75,
     "trainTimeShinjuku": 70,
     "nearestStation": "武蔵嵐山駅",
@@ -19199,7 +19196,10 @@
         "elevGain": 150
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E5%B5%90%E5%B1%B1%EF%BC%88%E5%9F%BC%E7%8E%89%EF%BC%89登山口/@36.0417,139.3208,15z"
+    "gmapUrl": "https://google.com/maps/search/%E5%B5%90%E5%B1%B1%EF%BC%88%E5%9F%BC%E7%8E%89%EF%BC%89登山口/@36.0417,139.3208,15z",
+    "driveTime": 115,
+    "driveTimeYokohama": 105,
+    "driveTimeOmiya": 45
   },
   {
     "id": "kogashiyama",
@@ -19215,9 +19215,6 @@
     "trainAccess": "JR宇都宮駅→関東バス→古賀志山登山口（約35分）",
     "trailhead": "古賀志山登山口（森林公園）",
     "driveShinjuku": 130,
-    "driveOfuna": 175,
-    "driveYokohama": 165,
-    "driveOmiya": 90,
     "driveTimeShinjuku": 130,
     "trainTimeShinjuku": 110,
     "nearestStation": "宇都宮駅",
@@ -19254,6 +19251,9 @@
         "elevGain": 500
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/%E5%8F%A4%E8%B3%80%E5%BF%97%E5%B1%B1登山口/@36.6111,139.9206,15z"
+    "gmapUrl": "https://google.com/maps/search/%E5%8F%A4%E8%B3%80%E5%BF%97%E5%B1%B1登山口/@36.6111,139.9206,15z",
+    "driveTime": 175,
+    "driveTimeYokohama": 165,
+    "driveTimeOmiya": 90
   }
 ]
