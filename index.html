@@ -745,7 +745,6 @@ function App() {
     setHistoryEnabled(function(prev) {
       var next = !prev;
       try { localStorage.setItem("ym_history_enabled", next ? "true" : "false"); } catch(e) {}
-      if (!next) { setHistory([]); try { localStorage.removeItem("ym_history"); } catch(e) {} }
       return next;
     });
   }, []);
@@ -1272,54 +1271,25 @@ function App() {
           {/* vibeタグ横スクロール */}
           <div style={{overflowX:"auto",WebkitOverflowScrolling:"touch",marginBottom:"8px",marginLeft:"-16px",marginRight:"-16px",paddingLeft:"16px",paddingRight:"16px"}}>
             <div style={{display:"flex",gap:"6px",paddingBottom:"2px"}}>
-              {(function(){ var active = vibeFilter === "view"; return (
-                <button key="view" onClick={function(){ setVibeFilter(active ? "" : "view"); }}
-                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
-                  <span>🏔</span><span>絶景</span>
-                </button>
-              ); })()}
-              {(function(){ var active = vibeFilter === "forest"; return (
-                <button key="forest" onClick={function(){ setVibeFilter(active ? "" : "forest"); }}
-                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
-                  <span>🌿</span><span>森歩き</span>
-                </button>
-              ); })()}
-              {(function(){ var active = vibeFilter === "rock"; return (
-                <button key="rock" onClick={function(){ setVibeFilter(active ? "" : "rock"); }}
-                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
-                  <span>🪨</span><span>岩場</span>
-                </button>
-              ); })()}
-              {(function(){ var active = vibeFilter === "highland"; return (
-                <button key="highland" onClick={function(){ setVibeFilter(active ? "" : "highland"); }}
-                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
-                  <span>🌾</span><span>高原</span>
-                </button>
-              ); })()}
-              {(function(){ var active = vibeFilter === "accessible"; return (
-                <button key="accessible" onClick={function(){ setVibeFilter(active ? "" : "accessible"); }}
-                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
-                  <span>✅</span><span>お手軽</span>
-                </button>
-              ); })()}
-              {(function(){ var active = vibeFilter === "volcano"; return (
-                <button key="volcano" onClick={function(){ setVibeFilter(active ? "" : "volcano"); }}
-                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
-                  <span>🌋</span><span>火山</span>
-                </button>
-              ); })()}
-              {(function(){ var active = vibeFilter === "wetland"; return (
-                <button key="wetland" onClick={function(){ setVibeFilter(active ? "" : "wetland"); }}
-                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
-                  <span>💧</span><span>湿原</span>
-                </button>
-              ); })()}
-              {(function(){ var active = vibeFilter === "historic"; return (
-                <button key="historic" onClick={function(){ setVibeFilter(active ? "" : "historic"); }}
-                  style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
-                  <span>🏘</span><span>歴史</span>
-                </button>
-              ); })()}
+              {[
+                {key:"",          emoji:"",   label:"すべて"},
+                {key:"view",      emoji:"🏔", label:"絶景"},
+                {key:"forest",    emoji:"🌲", label:"森歩き"},
+                {key:"rock",      emoji:"🧗", label:"岩場"},
+                {key:"highland",  emoji:"🏞️", label:"高原"},
+                {key:"accessible",emoji:"🚡", label:"お手軽"},
+                {key:"volcano",   emoji:"🌋", label:"火山"},
+                {key:"wetland",   emoji:"🪷", label:"湿原"},
+                {key:"historic",  emoji:"⛩️", label:"歴史"},
+              ].map(function(tag){
+                var active = vibeFilter === tag.key;
+                return (
+                  <button key={tag.key || "all"} onClick={function(){ setVibeFilter(tag.key); }}
+                    style={{flexShrink:0,display:"flex",alignItems:"center",gap:"4px",padding:"5px 11px",borderRadius:"20px",border:active?"none":"1px solid #d8d0c8",background:active?"#4e6535":"white",color:active?"white":"#4a4538",fontSize:"12px",fontWeight:active?"700":"500",cursor:"pointer",transition:"background 0.15s,color 0.15s,transform 0.12s",transform:active?"scale(1.05)":"scale(1)",whiteSpace:"nowrap"}}>
+                    {tag.emoji && <span>{tag.emoji}</span>}<span>{tag.label}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -1351,9 +1321,9 @@ function App() {
                 <div style={{display:"flex",gap:"6px",overflowX:"auto",WebkitOverflowScrolling:"touch",paddingBottom:"4px",marginLeft:"-16px",marginRight:"-16px",paddingLeft:"16px",paddingRight:"16px"}}>
                   {histMounts.map(function(hm){
                     var is100 = hm.category === "百名山";
-                    var bgColor = is100 ? "#eef4e8" : "#e8f0fa";
-                    var borderColor = is100 ? "#b0cc90" : "#a8c4e0";
-                    var textColor = is100 ? "#3a5828" : "#2a4870";
+                    var bgColor = is100 ? "#e8f0fa" : "#eef4e8";
+                    var borderColor = is100 ? "#a8c4e0" : "#b0cc90";
+                    var textColor = is100 ? "#1a4a80" : "#2a5010";
                     return (
                       <a key={hm.id} href={"/mountains/"+hm.id+"/"}
                         onClick={function(){
