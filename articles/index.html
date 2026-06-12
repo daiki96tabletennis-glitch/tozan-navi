@@ -136,6 +136,17 @@ main{max-width:760px;margin:0 auto;padding:16px 14px 48px}
 <main>
 <div id="article-banners">
 
+<!-- 初心者ガイド -->
+<a href="/guide/gear-checklist/" style="display:block;text-decoration:none;margin:0 0 12px;border-radius:16px;overflow:hidden;position:relative;background:linear-gradient(130deg,#3a5830 0%,#4e6535 55%,#6a8048 100%);padding:14px 16px;-webkit-tap-highlight-color:transparent;">
+  <svg style="position:absolute;right:-6px;bottom:-10px;opacity:0.13;" width="120" height="90" viewBox="0 0 120 90" fill="none"><rect x="40" y="20" width="50" height="60" rx="8" fill="white"/><path d="M50 20 Q65 0 80 20" stroke="white" stroke-width="4" fill="none"/></svg>
+  <div style="position:relative;z-index:1;">
+    <div style="font-size:9px;font-weight:700;color:rgba(200,235,180,0.9);letter-spacing:0.08em;margin-bottom:4px;">🎒 はじめての登山ガイド</div>
+    <div style="font-size:16px;font-weight:900;color:white;line-height:1.3;margin-bottom:3px;">登山の持ち物リスト【初心者向け】</div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.8);">日帰りハイキングに必要な装備が一目でわかる</div>
+  </div>
+  <div style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:22px;color:rgba(255,255,255,0.5);font-weight:300;z-index:1;">›</div>
+</a>
+
 <!-- ① 日帰り5選 スモーキーアンバー×等高線 -->
 <div class="banner-card" onclick="toggleBanner(this)">
   <div class="banner">
@@ -485,13 +496,16 @@ function toggleBanner(card) {
       </svg>
       <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(25,32,70,0.5) 0%,transparent 70%);"></div>
       <span class="matome-banner-title">🚉 駅から探す</span>
-      <span class="matome-banner-count">4 駅</span>
+      <span class="matome-banner-count">7 駅</span>
     </div>
     <div class="chips">
-      <a href="/search/takao-hiking/"        class="chip chip-s">高尾駅<sub>4選</sub></a>
-      <a href="/search/hanno-hiking/"        class="chip chip-s">飯能駅<sub>3選</sub></a>
-      <a href="/search/shibusawa-hiking/"    class="chip chip-s">渋沢駅<sub>3選</sub></a>
-      <a href="/search/echigoyuzawa-hiking/" class="chip chip-s">越後湯沢<sub>4選</sub></a>
+      <a href="/search/takao-hiking/"            class="chip chip-s">高尾駅<sub>4選</sub></a>
+      <a href="/search/okutama-station-hiking/"  class="chip chip-s">奥多摩駅<sub>5選</sub></a>
+      <a href="/search/enzan-hiking/"            class="chip chip-s">塩山駅<sub>2選</sub></a>
+      <a href="/search/hanno-hiking/"            class="chip chip-s">飯能駅<sub>3選</sub></a>
+      <a href="/search/shibusawa-hiking/"        class="chip chip-s">渋沢駅<sub>3選</sub></a>
+      <a href="/search/iwai-hiking/"             class="chip chip-s">岩井駅<sub>2選</sub></a>
+      <a href="/search/echigoyuzawa-hiking/"     class="chip chip-s">越後湯沢<sub>4選</sub></a>
     </div>
   </div>
 

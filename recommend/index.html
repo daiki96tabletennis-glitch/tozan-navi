@@ -1775,7 +1775,7 @@ function showResult(){
 
   // シェア
   const shareText='登山タイプ診断の結果\n私は「'+type.name+'」（'+typeCode+'型）でした！\n診断者の'+type.rare+'%の'+RARE_LABELS[type.affilLevel]+'\nあなたも試してみよう→';
-  const shareUrlWithType='https://tozan-navi.com/recommend/'+typeCode+'/';
+  const shareUrlWithType='https://tozan-navi.com/recommend/?type='+typeCode;
   document.getElementById('share-x').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText)+'&url='+encodeURIComponent(shareUrlWithType);
   document.getElementById('share-line').href='https://line.me/R/msg/text/?'+encodeURIComponent(shareText+'\n'+shareUrlWithType);
   window._shareNative=function(){
