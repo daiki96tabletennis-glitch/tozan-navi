@@ -17977,7 +17977,10 @@
         "elevGain": 620
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/石老山登山口/@35.5983,139.1536,15z"
+    "gmapUrl": "https://google.com/maps/search/石老山登山口/@35.5983,139.1536,15z",
+    "driveTime": 55,
+    "driveTimeYokohama": 65,
+    "driveTimeOmiya": 90
   },
   {
     "id": "iwadonoyama",
@@ -18034,7 +18037,10 @@
         "elevGain": 550
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/岩殿山登山口/@35.6071,138.9327,15z"
+    "gmapUrl": "https://google.com/maps/search/岩殿山登山口/@35.6071,138.9327,15z",
+    "driveTime": 100,
+    "driveTimeYokohama": 95,
+    "driveTimeOmiya": 110
   },
   {
     "id": "maruyama_okubusuma",
@@ -18090,7 +18096,10 @@
         "elevGain": 620
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/丸山登山口奥武蔵/@35.9867,139.0531,15z"
+    "gmapUrl": "https://google.com/maps/search/丸山登山口奥武蔵/@35.9867,139.0531,15z",
+    "driveTime": 120,
+    "driveTimeYokohama": 120,
+    "driveTimeOmiya": 70
   },
   {
     "id": "ohnoyama",
@@ -18146,7 +18155,10 @@
         "elevGain": 660
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/大野山登山口/@35.3944,138.9597,15z"
+    "gmapUrl": "https://google.com/maps/search/大野山登山口/@35.3944,138.9597,15z",
+    "driveTime": 80,
+    "driveTimeYokohama": 75,
+    "driveTimeOmiya": 120
   },
   {
     "id": "momakurasan",
@@ -18202,7 +18214,10 @@
         "elevGain": 680
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/百蔵山登山口/@35.6273,138.9869,15z"
+    "gmapUrl": "https://google.com/maps/search/百蔵山登山口/@35.6273,138.9869,15z",
+    "driveTime": 110,
+    "driveTimeYokohama": 105,
+    "driveTimeOmiya": 115
   },
   {
     "id": "ogiyama",
@@ -18259,7 +18274,10 @@
         "elevGain": 820
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/扇山登山口/@35.6478,138.9742,15z"
+    "gmapUrl": "https://google.com/maps/search/扇山登山口/@35.6478,138.9742,15z",
+    "driveTime": 105,
+    "driveTimeYokohama": 100,
+    "driveTimeOmiya": 115
   },
   {
     "id": "makuyama",
@@ -18315,7 +18333,10 @@
         "elevGain": 480
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/幕山公園/@35.1508,139.0814,15z"
+    "gmapUrl": "https://google.com/maps/search/幕山公園/@35.1508,139.0814,15z",
+    "driveTime": 65,
+    "driveTimeYokohama": 65,
+    "driveTimeOmiya": 130
   },
   {
     "id": "taiheizan",
@@ -18371,7 +18392,10 @@
         "elevGain": 400
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/太平山神社/@36.3657,139.7006,15z"
+    "gmapUrl": "https://google.com/maps/search/太平山神社/@36.3657,139.7006,15z",
+    "driveTime": 145,
+    "driveTimeYokohama": 145,
+    "driveTimeOmiya": 55
   },
   {
     "id": "kuratakeyama",
@@ -18426,7 +18450,10 @@
     "gmapUrl": "https://google.com/maps/search/%E5%80%89%E5%B2%B3%E5%B1%B1登山口/@35.5617,138.9847,15z",
     "driveTime": 70,
     "driveTimeYokohama": 75,
-    "driveTimeOmiya": 100
+    "driveTimeOmiya": 100,
+    "driveOfuna": 70,
+    "driveYokohama": 75,
+    "driveOmiya": 100
   },
   {
     "id": "sasakogarigaburiyama",
@@ -18481,7 +18508,10 @@
     "gmapUrl": "https://google.com/maps/search/%E7%AC%B9%E5%AD%90%E9%9B%81%E3%83%B6%E8%85%B9%E6%91%BA%E5%B1%B1登山口/@35.6119,138.8531,15z",
     "driveTime": 90,
     "driveTimeYokohama": 95,
-    "driveTimeOmiya": 120
+    "driveTimeOmiya": 120,
+    "driveOfuna": 90,
+    "driveYokohama": 95,
+    "driveOmiya": 120
   },
   {
     "id": "shodosan_namatate",
@@ -18536,7 +18566,10 @@
     "gmapUrl": "https://google.com/maps/search/%E7%94%9F%E8%97%A4%E5%B1%B1登山口/@35.6194,139.0803,15z",
     "driveTime": 80,
     "driveTimeYokohama": 80,
-    "driveTimeOmiya": 110
+    "driveTimeOmiya": 110,
+    "driveOfuna": 80,
+    "driveYokohama": 80,
+    "driveOmiya": 110
   },
   {
     "id": "kukiyama",
@@ -18591,7 +18624,10 @@
     "gmapUrl": "https://google.com/maps/search/%E4%B9%9D%E9%AC%BC%E5%B1%B1登山口/@35.5758,138.9592,15z",
     "driveTime": 85,
     "driveTimeYokohama": 90,
-    "driveTimeOmiya": 115
+    "driveTimeOmiya": 115,
+    "driveOfuna": 85,
+    "driveYokohama": 90,
+    "driveOmiya": 115
   },
   {
     "id": "mitosaan",
@@ -18647,7 +18683,10 @@
     "gmapUrl": "https://google.com/maps/search/%E4%B8%89%E9%A0%AD%E5%B1%B1登山口/@35.7533,139.0028,15z",
     "driveTime": 90,
     "driveTimeYokohama": 90,
-    "driveTimeOmiya": 110
+    "driveTimeOmiya": 110,
+    "driveOfuna": 90,
+    "driveYokohama": 90,
+    "driveOmiya": 110
   },
   {
     "id": "honitayama",
@@ -18702,7 +18741,10 @@
     "gmapUrl": "https://google.com/maps/search/%E6%9C%AC%E4%BB%81%E7%94%B0%E5%B1%B1登山口/@35.8017,139.0883,15z",
     "driveTime": 105,
     "driveTimeYokohama": 100,
-    "driveTimeOmiya": 115
+    "driveTimeOmiya": 115,
+    "driveOfuna": 105,
+    "driveYokohama": 100,
+    "driveOmiya": 115
   },
   {
     "id": "hinodesaan",
@@ -18759,7 +18801,10 @@
     "gmapUrl": "https://google.com/maps/search/%E6%97%A5%E3%81%AE%E5%87%BA%E5%B1%B1登山口/@35.7794,139.2083,15z",
     "driveTime": 90,
     "driveTimeYokohama": 85,
-    "driveTimeOmiya": 100
+    "driveTimeOmiya": 100,
+    "driveOfuna": 90,
+    "driveYokohama": 85,
+    "driveOmiya": 100
   },
   {
     "id": "sengenrei",
@@ -18814,7 +18859,10 @@
     "gmapUrl": "https://google.com/maps/search/%E6%B5%85%E9%96%93%E5%B6%BA登山口/@35.7417,139.0886,15z",
     "driveTime": 85,
     "driveTimeYokohama": 85,
-    "driveTimeOmiya": 105
+    "driveTimeOmiya": 105,
+    "driveOfuna": 85,
+    "driveYokohama": 85,
+    "driveOmiya": 105
   },
   {
     "id": "futagoyama_okumusa",
@@ -18869,7 +18917,10 @@
     "gmapUrl": "https://google.com/maps/search/%E4%BA%8C%E5%AD%90%E5%B1%B1%EF%BC%88%E5%A5%A5%E6%AD%A6%E8%94%B5%EF%BC%89登山口/@35.9753,139.1036,15z",
     "driveTime": 110,
     "driveTimeYokohama": 110,
-    "driveTimeOmiya": 80
+    "driveTimeOmiya": 80,
+    "driveOfuna": 110,
+    "driveYokohama": 110,
+    "driveOmiya": 80
   },
   {
     "id": "juunigadake",
@@ -18924,7 +18975,10 @@
     "gmapUrl": "https://google.com/maps/search/%E5%8D%81%E4%BA%8C%E3%83%B6%E5%B2%B3登山口/@35.5147,138.7661,15z",
     "driveTime": 105,
     "driveTimeYokohama": 105,
-    "driveTimeOmiya": 135
+    "driveTimeOmiya": 135,
+    "driveOfuna": 105,
+    "driveYokohama": 105,
+    "driveOmiya": 135
   },
   {
     "id": "ishiwariyama",
@@ -18979,7 +19033,10 @@
     "gmapUrl": "https://google.com/maps/search/%E7%9F%B3%E5%89%B2%E5%B1%B1登山口/@35.4603,138.8756,15z",
     "driveTime": 100,
     "driveTimeYokohama": 100,
-    "driveTimeOmiya": 130
+    "driveTimeOmiya": 130,
+    "driveOfuna": 100,
+    "driveYokohama": 100,
+    "driveOmiya": 130
   },
   {
     "id": "azumayama_ninomiya",
@@ -19033,7 +19090,10 @@
     "gmapUrl": "https://google.com/maps/search/%E5%90%BE%E5%A6%BB%E5%B1%B1%EF%BC%88%E4%BA%8C%E5%AE%AE%EF%BC%89登山口/@35.3006,139.2589,15z",
     "driveTime": 25,
     "driveTimeYokohama": 40,
-    "driveTimeOmiya": 100
+    "driveTimeOmiya": 100,
+    "driveOfuna": 25,
+    "driveYokohama": 40,
+    "driveOmiya": 100
   },
   {
     "id": "hodosan",
@@ -19088,7 +19148,10 @@
     "gmapUrl": "https://google.com/maps/search/%E5%AE%9D%E7%99%BB%E5%B1%B1登山口/@36.1017,139.1158,15z",
     "driveTime": 120,
     "driveTimeYokohama": 115,
-    "driveTimeOmiya": 65
+    "driveTimeOmiya": 65,
+    "driveOfuna": 120,
+    "driveYokohama": 115,
+    "driveOmiya": 65
   },
   {
     "id": "hafuzan_chichibu",
@@ -19144,7 +19207,10 @@
     "gmapUrl": "https://google.com/maps/search/%E7%A0%B4%E9%A2%A8%E5%B1%B1%EF%BC%88%E7%A7%A9%E7%88%B6%EF%BC%89登山口/@36.0694,139.1283,15z",
     "driveTime": 130,
     "driveTimeYokohama": 125,
-    "driveTimeOmiya": 80
+    "driveTimeOmiya": 80,
+    "driveOfuna": 130,
+    "driveYokohama": 125,
+    "driveOmiya": 80
   },
   {
     "id": "ranzan_saitama",
@@ -19199,7 +19265,10 @@
     "gmapUrl": "https://google.com/maps/search/%E5%B5%90%E5%B1%B1%EF%BC%88%E5%9F%BC%E7%8E%89%EF%BC%89登山口/@36.0417,139.3208,15z",
     "driveTime": 115,
     "driveTimeYokohama": 105,
-    "driveTimeOmiya": 45
+    "driveTimeOmiya": 45,
+    "driveOfuna": 115,
+    "driveYokohama": 105,
+    "driveOmiya": 45
   },
   {
     "id": "kogashiyama",
@@ -19254,6 +19323,9 @@
     "gmapUrl": "https://google.com/maps/search/%E5%8F%A4%E8%B3%80%E5%BF%97%E5%B1%B1登山口/@36.6111,139.9206,15z",
     "driveTime": 175,
     "driveTimeYokohama": 165,
-    "driveTimeOmiya": 90
+    "driveTimeOmiya": 90,
+    "driveOfuna": 175,
+    "driveYokohama": 165,
+    "driveOmiya": 90
   }
 ]
