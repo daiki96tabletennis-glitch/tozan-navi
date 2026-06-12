@@ -9,7 +9,7 @@
     "coeffMin": 28,
     "coeffMax": 59,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "渋沢駅→大倉バス停（神奈川中央交通15分）→塔ノ岳経由縦走",
     "driveOfuna": 70,
     "driveShinjuku": 75,
     "driveYokohama": 75,
@@ -149,7 +149,7 @@
     "coeffMin": 31,
     "coeffMax": 58,
     "daytrip": false,
-    "trainAccess": false,
+    "trainAccess": "富士急行線河口湖駅→バス55分→富士山五合目（夏季）またはバスタ新宿→高速バス直通",
     "driveOfuna": 120,
     "driveShinjuku": 145,
     "driveYokohama": 135,
@@ -883,7 +883,7 @@
     "coeffMin": 18,
     "coeffMax": 33,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "西武秩父駅→小鹿野町営バス→薬師の湯→日向大谷口（通年1日5本）",
     "driveOfuna": 150,
     "driveShinjuku": 125,
     "driveYokohama": 150,
@@ -1017,7 +1017,7 @@
     "coeffMin": 22,
     "coeffMax": 38,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "塩山駅→甲州市民バス→道の駅みとみ（西沢渓谷入口）→徒歩（行程長）",
     "driveOfuna": 150,
     "driveShinjuku": 135,
     "driveYokohama": 170,
@@ -1157,7 +1157,7 @@
     "coeffMin": 21,
     "coeffMax": 45,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "韮崎駅→山梨交通バス→瑞牆山荘（夏季・約1時間20分）",
     "driveOfuna": 150,
     "driveShinjuku": 135,
     "driveYokohama": 160,
@@ -1587,7 +1587,7 @@
     "coeffMin": 33,
     "coeffMax": 48,
     "daytrip": false,
-    "trainAccess": false,
+    "trainAccess": "甲府駅→山梨交通バス→夜叉神峠口（約45分）",
     "driveOfuna": 180,
     "driveShinjuku": 160,
     "driveYokohama": 190,
@@ -1877,7 +1877,7 @@
     "coeffMin": 38,
     "coeffMax": 54,
     "daytrip": false,
-    "trainAccess": false,
+    "trainAccess": "甲府駅→山梨交通バス→広河原（夏季・約1時間50分）",
     "driveOfuna": 190,
     "driveShinjuku": 180,
     "driveYokohama": 200,
@@ -2023,7 +2023,7 @@
     "coeffMin": 26,
     "coeffMax": 42,
     "daytrip": false,
-    "trainAccess": false,
+    "trainAccess": "茅野駅→アルピコ交通バス→美濃戸口（夏季・約35分）",
     "driveOfuna": 200,
     "driveShinjuku": 160,
     "driveYokohama": 165,
@@ -2467,7 +2467,7 @@
     "coeffMin": 27,
     "coeffMax": 35,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "小諸駅→JRバス関東→高峰高原ホテル前（通年・1日2便・約50分）",
     "driveOfuna": 180,
     "driveShinjuku": 165,
     "driveYokohama": 170,
@@ -2917,7 +2917,7 @@
     "coeffMin": 24,
     "coeffMax": 30,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "上田駅→上田バス→菅平高原ダボス（通年・約55分）",
     "driveOfuna": 220,
     "driveShinjuku": 175,
     "driveYokohama": 200,
@@ -3057,7 +3057,7 @@
     "coeffMin": 21,
     "coeffMax": 31,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "沼田駅→関越交通バス→鎌田→丸沼高原ロープウェイ（夏季）",
     "driveOfuna": 220,
     "driveShinjuku": 185,
     "driveYokohama": 200,
@@ -3197,7 +3197,7 @@
     "coeffMin": 29,
     "coeffMax": 38,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "沼田駅→川場スキー場送迎バス→川場スキー場（季節・予約制）",
     "driveOfuna": 220,
     "driveShinjuku": 185,
     "driveYokohama": 240,
@@ -3337,7 +3337,7 @@
     "coeffMin": 38,
     "coeffMax": 62,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "甲府駅→広河原→南アルプス市営バス→北沢峠（夏季）または伊那市駅→仙流荘→林道バス",
     "driveOfuna": 220,
     "driveShinjuku": 175,
     "driveYokohama": 225,
@@ -3479,7 +3479,7 @@
     "coeffMin": 32,
     "coeffMax": 45,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "甲府駅→広河原→南アルプス市営バス→北沢峠（夏季）",
     "driveOfuna": 220,
     "driveShinjuku": 185,
     "driveYokohama": 235,
@@ -4226,7 +4226,7 @@
     "coeffMin": 55,
     "coeffMax": 85,
     "daytrip": false,
-    "trainAccess": false,
+    "trainAccess": "松本駅→松本電鉄新島々駅→アルピコバス→上高地バスターミナル（季節）",
     "driveOfuna": 340,
     "driveShinjuku": 330,
     "driveYokohama": 280,
@@ -4372,7 +4372,7 @@
     "coeffMin": 50,
     "coeffMax": 80,
     "daytrip": false,
-    "trainAccess": false,
+    "trainAccess": "松本駅→松本電鉄新島々駅→アルピコバス→上高地バスターミナル（季節）",
     "driveOfuna": 335,
     "driveShinjuku": 325,
     "driveYokohama": 280,
@@ -4819,7 +4819,7 @@
     "coeffMin": 65,
     "coeffMax": 90,
     "daytrip": false,
-    "trainAccess": false,
+    "trainAccess": "米沢駅→バス→小国→川入登山口（季節）",
     "driveOfuna": 310,
     "driveShinjuku": 270,
     "driveYokohama": 310,
@@ -4959,7 +4959,7 @@
     "coeffMin": 18,
     "coeffMax": 28,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "上毛高原駅→関越交通バス→尾瀬戸倉（夏季）→鳩待峠シャトルバス",
     "driveOfuna": 240,
     "driveShinjuku": 185,
     "driveYokohama": 250,
@@ -5106,7 +5106,7 @@
     "coeffMin": 20,
     "coeffMax": 34,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "会津高原尾瀬口駅→会津バス→滝沢登山口（夏季）",
     "driveOfuna": 295,
     "driveShinjuku": 265,
     "driveYokohama": 270,
@@ -6441,7 +6441,7 @@
     "coeffMin": 12,
     "coeffMax": 93,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "JR中央本線三つ峠駅→徒歩（約90分）または富士急河口湖駅→バス→三つ峠登山口",
     "driveOfuna": 120,
     "driveShinjuku": 105,
     "driveYokohama": 120,
@@ -7587,7 +7587,7 @@
     "coeffMin": 14,
     "coeffMax": 24,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "松本駅→松本電鉄新島々駅→アルピコバス→中の湯バス停（季節）",
     "driveOfuna": 280,
     "driveShinjuku": 285,
     "driveYokohama": 260,
@@ -8882,7 +8882,7 @@
     "coeffMin": 20,
     "coeffMax": 28,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "富士宮駅→富士急静岡バス→朝霧高原（毛無山登山口）",
     "driveOfuna": 145,
     "driveShinjuku": 145,
     "driveYokohama": 135,
@@ -9017,7 +9017,7 @@
     "coeffMin": 24,
     "coeffMax": 30,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "長野原草津口駅→草津温泉バス→野反湖（関越交通・夏季）",
     "driveOfuna": 210,
     "driveShinjuku": 205,
     "driveYokohama": 220,
@@ -9824,7 +9824,7 @@
     "coeffMin": 28,
     "coeffMax": 36,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "穂高駅→大糸観光バス→中房温泉（夏季）",
     "driveOfuna": 255,
     "driveShinjuku": 250,
     "driveYokohama": 250,
@@ -11103,7 +11103,7 @@
     "coeffMin": 35,
     "coeffMax": 42,
     "daytrip": false,
-    "trainAccess": false,
+    "trainAccess": "長野駅→アルピコ交通バス→戸隠キャンプ場（約1時間）",
     "driveOfuna": 240,
     "driveShinjuku": 225,
     "driveYokohama": 195,
@@ -11377,7 +11377,7 @@
     "coeffMin": 18,
     "coeffMax": 32,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "木曽福島駅→王滝村営バス→田の原（夏季土日祝・約1時間15分）",
     "driveOfuna": 290,
     "driveShinjuku": 290,
     "driveYokohama": 275,
@@ -11951,7 +11951,7 @@
     "coeffMin": 6,
     "coeffMax": 14,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "松本駅→アルピコ交通バス→美ヶ原高原（夏季）",
     "driveOfuna": 195,
     "driveShinjuku": 175,
     "driveYokohama": 185,
@@ -12243,7 +12243,7 @@
     "coeffMin": 55,
     "coeffMax": 70,
     "daytrip": false,
-    "trainAccess": false,
+    "trainAccess": "駒ヶ根駅→路線バス→菅の台バスセンター→徒歩で空木岳登山口",
     "driveOfuna": 255,
     "driveShinjuku": 235,
     "driveYokohama": 230,
@@ -13497,7 +13497,7 @@
     "coeffMin": 55,
     "coeffMax": 75,
     "daytrip": false,
-    "trainAccess": false,
+    "trainAccess": "甲府駅→広河原→南アルプス市営バス→北沢峠（夏季、北岳と同ルート経由縦走）",
     "driveOfuna": 195,
     "driveShinjuku": 185,
     "driveYokohama": 220,
@@ -13637,7 +13637,7 @@
     "coeffMin": 52,
     "coeffMax": 76,
     "daytrip": false,
-    "trainAccess": false,
+    "trainAccess": "甲府駅→広河原（夏季、北岳と同ルート経由縦走）",
     "driveOfuna": 195,
     "driveShinjuku": 185,
     "driveYokohama": 185,
@@ -14057,7 +14057,7 @@
     "coeffMin": 32,
     "coeffMax": 52,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "塩山駅→甲州市民バス→道の駅みとみ（西沢渓谷入口）→徒歩",
     "driveOfuna": 160,
     "driveShinjuku": 145,
     "driveYokohama": 150,
@@ -14476,7 +14476,7 @@
     "coeffMin": 28,
     "coeffMax": 40,
     "daytrip": true,
-    "trainAccess": false,
+    "trainAccess": "松本駅→松本電鉄新島々駅→アルピコバス→上高地バスターミナル（季節）",
     "driveOfuna": 300,
     "driveShinjuku": 280,
     "driveYokohama": 300,
@@ -14616,7 +14616,7 @@
     "coeffMin": 42,
     "coeffMax": 56,
     "daytrip": false,
-    "trainAccess": false,
+    "trainAccess": "穂高駅→大糸観光バス→中房温泉→燕岳経由縦走（夏季）",
     "driveOfuna": 320,
     "driveShinjuku": 300,
     "driveYokohama": 320,
@@ -17922,5 +17922,1338 @@
         "elevation": "+1300m"
       }
     ]
+  },
+  {
+    "id": "ishirousan",
+    "name": "石老山",
+    "kana": "せきろうさん",
+    "area": "神奈川県",
+    "elevation": 702,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 16,
+    "coeffMax": 22,
+    "daytrip": true,
+    "trainAccess": "相模湖駅→神奈川中央交通バス約7分→石老山入口バス停",
+    "trailhead": "石老山入口（顕鏡寺ルート）",
+    "driveShinjuku": 65,
+    "driveOfuna": 55,
+    "driveYokohama": 65,
+    "driveOmiya": 90,
+    "driveTimeShinjuku": 65,
+    "trainTimeShinjuku": 55,
+    "nearestStation": "相模湖駅",
+    "trainLine": "JR中央本線",
+    "trainInfo": "新宿→相模湖駅（中央本線特快50分）→バス7分→石老山入口",
+    "description": "相模湖の南岸に位置する神奈川の人気低山。奇岩・巨岩が連続する顕鏡寺参道が見どころで、山頂から相模湖と富士山の展望が広がる。巨石に囲まれた古刹・顕鏡寺から登る岩岩ルートが魅力で、下山後にさがみ湖温泉うるりへ直行できる。",
+    "vibes": [
+      "forest",
+      "rock",
+      "view"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年（夏はヒル注意）",
+    "lat": 35.5983,
+    "lng": 139.1536,
+    "address": "神奈川県相模原市緑区",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=相模湖駅&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "顕鏡寺コース（周回）",
+        "time": "3時間30分",
+        "distance": "7.5km",
+        "elevGain": 620
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/石老山登山口/@35.5983,139.1536,15z"
+  },
+  {
+    "id": "iwadonoyama",
+    "name": "岩殿山",
+    "kana": "いわどのやま",
+    "area": "山梨県",
+    "elevation": 634,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 12,
+    "coeffMax": 18,
+    "daytrip": true,
+    "trainAccess": "大月駅から徒歩15〜20分（JR中央本線）",
+    "trailhead": "畑倉登山口（大月駅徒歩15分）",
+    "driveShinjuku": 90,
+    "driveOfuna": 100,
+    "driveYokohama": 95,
+    "driveOmiya": 110,
+    "driveTimeShinjuku": 90,
+    "trainTimeShinjuku": 75,
+    "nearestStation": "大月駅",
+    "trainLine": "JR中央本線",
+    "trainInfo": "新宿→大月駅（中央線特急あずさ約60分 or 特快約80分）→徒歩15分",
+    "description": "スカイツリーと同じ高さ634mの山梨の名峰。大月駅から歩いて登れる駅近登山の代表格。山頂からの富士山展望は「秀麗富嶽十二景」に選定。稚児落としへの縦走コースは鎖場・岩場があり変化に富む。戦国時代の山城跡でもある歴史の山。",
+    "vibes": [
+      "view",
+      "rock",
+      "historic"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall",
+      "winter"
+    ],
+    "season": "通年",
+    "lat": 35.6071,
+    "lng": 138.9327,
+    "address": "山梨県大月市賑岡町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=大月駅&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "大月駅〜岩殿山〜稚児落し周回",
+        "time": "4時間",
+        "distance": "8km",
+        "elevGain": 550
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/岩殿山登山口/@35.6071,138.9327,15z"
+  },
+  {
+    "id": "maruyama_okubusuma",
+    "name": "丸山（奥武蔵）",
+    "kana": "まるやま",
+    "area": "埼玉県",
+    "elevation": 960,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 12,
+    "coeffMax": 18,
+    "daytrip": true,
+    "trainAccess": "芦ヶ久保駅→徒歩30分→登山口（西武秩父線）",
+    "trailhead": "芦ヶ久保駅（徒歩30分）",
+    "driveShinjuku": 90,
+    "driveOfuna": 120,
+    "driveYokohama": 120,
+    "driveOmiya": 70,
+    "driveTimeShinjuku": 90,
+    "trainTimeShinjuku": 80,
+    "nearestStation": "芦ヶ久保駅",
+    "trainLine": "西武秩父線",
+    "trainInfo": "池袋→飯能→芦ヶ久保駅（西武池袋・秩父線約80分）→徒歩30分",
+    "description": "奥武蔵の展望台として知られる円形の山頂が特徴。山頂からの眺望は奥武蔵随一で、武甲山・両神山・赤城山・富士山が一望できる展望デッキがある。芦ヶ久保駅から歩ける好アクセスで、県民の森を通る散策路は整備状態も良好。道の駅芦ヶ久保での果物狩りと組み合わせるのが人気。",
+    "vibes": [
+      "view",
+      "forest",
+      "highland"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年",
+    "lat": 35.9867,
+    "lng": 139.0531,
+    "address": "埼玉県秩父郡横瀬町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=芦ヶ久保駅&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "芦ヶ久保駅〜丸山周回",
+        "time": "3時間",
+        "distance": "7km",
+        "elevGain": 620
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/丸山登山口奥武蔵/@35.9867,139.0531,15z"
+  },
+  {
+    "id": "ohnoyama",
+    "name": "大野山",
+    "kana": "おおのやま",
+    "area": "神奈川県",
+    "elevation": 723,
+    "category": "人気の山",
+    "difficulty": "初級",
+    "coeffMin": 10,
+    "coeffMax": 16,
+    "daytrip": true,
+    "trainAccess": "山北駅→徒歩90分→登山口（JR御殿場線）",
+    "trailhead": "山北駅（徒歩90分）",
+    "driveShinjuku": 85,
+    "driveOfuna": 80,
+    "driveYokohama": 75,
+    "driveOmiya": 120,
+    "driveTimeShinjuku": 85,
+    "trainTimeShinjuku": 80,
+    "nearestStation": "山北駅",
+    "trainLine": "JR御殿場線",
+    "trainInfo": "新宿→松田→山北駅（小田急＋御殿場線約70分）→徒歩90分",
+    "description": "丹沢西端に位置する牧歌的な山。山頂付近はほぼ全面が草原で、遮るものがない富士山・丹沢山塊・箱根連山の大パノラマが広がる。山北駅から駅まで全コース歩ける駅ハイが楽しめ、JR山北駅周辺の山北さくら公園の桜（春）も見もの。",
+    "vibes": [
+      "view",
+      "highland"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall",
+      "winter"
+    ],
+    "season": "通年",
+    "lat": 35.3944,
+    "lng": 138.9597,
+    "address": "神奈川県足柄上郡山北町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=山北駅&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "山北駅〜大野山〜山北駅",
+        "time": "4時間30分",
+        "distance": "10km",
+        "elevGain": 660
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/大野山登山口/@35.3944,138.9597,15z"
+  },
+  {
+    "id": "momakurasan",
+    "name": "百蔵山",
+    "kana": "ももくらさん",
+    "area": "山梨県",
+    "elevation": 1003,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 14,
+    "coeffMax": 20,
+    "daytrip": true,
+    "trainAccess": "猿橋駅→徒歩50分→登山口（JR中央本線）",
+    "trailhead": "猿橋駅（徒歩50分）",
+    "driveShinjuku": 95,
+    "driveOfuna": 110,
+    "driveYokohama": 105,
+    "driveOmiya": 115,
+    "driveTimeShinjuku": 95,
+    "trainTimeShinjuku": 80,
+    "nearestStation": "猿橋駅",
+    "trainLine": "JR中央本線",
+    "trainInfo": "新宿→猿橋駅（中央線特快約80分）→徒歩50分",
+    "description": "秀麗富嶽十二景の一座。猿橋駅から歩いてアクセスできる中央線沿線の人気低山で、山頂からの富士山と大菩薩嶺の眺めが一押し。隣の扇山と縦走するコースが定番で、変化に富んだ尾根歩きが楽しめる。猿橋（日本三奇橋）観光と組み合わせると◎。",
+    "vibes": [
+      "view",
+      "forest"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall",
+      "winter"
+    ],
+    "season": "通年",
+    "lat": 35.6273,
+    "lng": 138.9869,
+    "address": "山梨県大月市猿橋町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=猿橋駅&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "猿橋駅〜百蔵山〜猿橋駅",
+        "time": "4時間",
+        "distance": "9km",
+        "elevGain": 680
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/百蔵山登山口/@35.6273,138.9869,15z"
+  },
+  {
+    "id": "ogiyama",
+    "name": "扇山",
+    "kana": "おうぎやま",
+    "area": "山梨県",
+    "elevation": 1138,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 16,
+    "coeffMax": 22,
+    "daytrip": true,
+    "trainAccess": "鳥沢駅→徒歩50分→登山口（JR中央本線）",
+    "trailhead": "鳥沢駅（徒歩50分）",
+    "driveShinjuku": 90,
+    "driveOfuna": 105,
+    "driveYokohama": 100,
+    "driveOmiya": 115,
+    "driveTimeShinjuku": 90,
+    "trainTimeShinjuku": 75,
+    "nearestStation": "鳥沢駅",
+    "trainLine": "JR中央本線",
+    "trainInfo": "新宿→鳥沢駅（中央線特快約75分）→徒歩50分",
+    "description": "中央線から眺める扇を広げたような山容が名前の由来。山頂は広々とした草原で、富士山の大展望が広がる秀麗富嶽十二景のひとつ。鳥沢駅から直接歩ける好アクセスで、隣の百蔵山との縦走コースも人気。稜線歩きは気持ちよく、中央線沿線の定番ルート。",
+    "vibes": [
+      "view",
+      "forest",
+      "highland"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall",
+      "winter"
+    ],
+    "season": "通年",
+    "lat": 35.6478,
+    "lng": 138.9742,
+    "address": "山梨県大月市七保町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=鳥沢駅&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "鳥沢駅〜扇山〜大月駅縦走",
+        "time": "5時間",
+        "distance": "11km",
+        "elevGain": 820
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/扇山登山口/@35.6478,138.9742,15z"
+  },
+  {
+    "id": "makuyama",
+    "name": "幕山",
+    "kana": "まくやま",
+    "area": "神奈川県",
+    "elevation": 626,
+    "category": "人気の山",
+    "difficulty": "初級",
+    "coeffMin": 10,
+    "coeffMax": 14,
+    "daytrip": true,
+    "trainAccess": "湯河原駅→箱根登山バス→幕山公園（バス10分）",
+    "trailhead": "幕山公園",
+    "driveShinjuku": 90,
+    "driveOfuna": 65,
+    "driveYokohama": 65,
+    "driveOmiya": 130,
+    "driveTimeShinjuku": 90,
+    "trainTimeShinjuku": 85,
+    "nearestStation": "湯河原駅",
+    "trainLine": "JR東海道本線",
+    "trainInfo": "新宿→湯河原駅（JR東海道線・踊り子号 or 特快約80分）→バス10分→幕山公園",
+    "description": "湘南の海と富士山を見渡せる湯河原の人気低山。2〜3月の梅まつり（約4,000本の梅）は神奈川県随一の梅の名所として知られる。断崖の岩壁はロッククライミングのゲレンデとしても有名。下山後の湯河原温泉が最大の楽しみ。",
+    "vibes": [
+      "view",
+      "forest"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall",
+      "winter"
+    ],
+    "season": "通年",
+    "lat": 35.1508,
+    "lng": 139.0814,
+    "address": "神奈川県足柄下郡湯河原町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=湯河原駅&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "幕山公園〜幕山〜南郷山周回",
+        "time": "3時間",
+        "distance": "6.5km",
+        "elevGain": 480
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/幕山公園/@35.1508,139.0814,15z"
+  },
+  {
+    "id": "taiheizan",
+    "name": "太平山（栃木）",
+    "kana": "おおひらさん",
+    "area": "栃木県",
+    "elevation": 341,
+    "category": "人気の山",
+    "difficulty": "初級",
+    "coeffMin": 6,
+    "coeffMax": 12,
+    "daytrip": true,
+    "trainAccess": "JR両毛線・東武日光線栃木駅→徒歩30分→謙信平（登山口）",
+    "trailhead": "栃木市太平山謙信平",
+    "driveShinjuku": 110,
+    "driveOfuna": 145,
+    "driveYokohama": 145,
+    "driveOmiya": 55,
+    "driveTimeShinjuku": 110,
+    "trainTimeShinjuku": 90,
+    "nearestStation": "栃木駅",
+    "trainLine": "JR両毛線・東武日光線",
+    "trainInfo": "新宿→小山→栃木駅（JR湘南新宿ライン＋両毛線約90分）→徒歩30分〜謙信平",
+    "description": "「栃木の高尾山」として地元に愛される低山。ツツジ・紫陽花・桜の名所で四季を通じて花が楽しめる。太平山神社・謙信平の展望台・石段参道が見どころで、下山後の大平山名物「みたらし団子・玉子焼き・焼き鳥」が登山者に人気。栃木駅から歩いてアクセスできる。",
+    "vibes": [
+      "view",
+      "forest",
+      "historic"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年",
+    "lat": 36.3657,
+    "lng": 139.7006,
+    "address": "栃木県栃木市平井町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=栃木駅&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "栃木駅〜太平山〜晃石山縦走",
+        "time": "3時間30分",
+        "distance": "9km",
+        "elevGain": 400
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/太平山神社/@36.3657,139.7006,15z"
+  },
+  {
+    "id": "kuratakeyama",
+    "name": "倉岳山",
+    "kana": "くらたけやま",
+    "area": "神奈川県",
+    "elevation": 990,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 15,
+    "coeffMax": 22,
+    "daytrip": true,
+    "trainAccess": "鳥沢駅→徒歩約30分→穴路峠登山口（JR中央本線）",
+    "trailhead": "穴路峠登山口（鳥沢駅から徒歩）",
+    "driveShinjuku": 70,
+    "driveOfuna": 70,
+    "driveYokohama": 75,
+    "driveOmiya": 100,
+    "driveTimeShinjuku": 70,
+    "trainTimeShinjuku": 55,
+    "nearestStation": "鳥沢駅",
+    "trainLine": "JR中央本線",
+    "trainInfo": "新宿→鳥沢駅（中央本線特快45分）→徒歩30分→登山口",
+    "description": "JR鳥沢駅から徒歩でアクセスできる中央線沿いの低山。山頂からは富士山と道志の山々の展望が広がる。隣の高畑山との縦走も人気で、梁川駅へ下山できるコースが充実している。",
+    "vibes": [
+      "view",
+      "forest"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年（積雪注意）",
+    "lat": 35.5617,
+    "lng": 138.9847,
+    "address": "神奈川県相模原市緑区",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E9%B3%A5%E6%B2%A2%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "穴路峠コース（鳥沢駅起点）",
+        "time": "3時間30分",
+        "distance": "8.0km",
+        "elevGain": 700
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E5%80%89%E5%B2%B3%E5%B1%B1登山口/@35.5617,138.9847,15z"
+  },
+  {
+    "id": "sasakogarigaburiyama",
+    "name": "笹子雁ヶ腹摺山",
+    "kana": "ささごがんがはらすりやま",
+    "area": "山梨県",
+    "elevation": 1357,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 14,
+    "coeffMax": 20,
+    "daytrip": true,
+    "trainAccess": "笹子駅→徒歩5分→登山口（JR中央本線）",
+    "trailhead": "笹子峠登山口（笹子駅から徒歩）",
+    "driveShinjuku": 90,
+    "driveOfuna": 90,
+    "driveYokohama": 95,
+    "driveOmiya": 120,
+    "driveTimeShinjuku": 90,
+    "trainTimeShinjuku": 65,
+    "nearestStation": "笹子駅",
+    "trainLine": "JR中央本線",
+    "trainInfo": "新宿→笹子駅（中央本線特快約1時間）→徒歩5分→登山口",
+    "description": "JR笹子駅から徒歩5分で登山口に入れる中央線沿いの名峰。富士山の素晴らしい展望台として知られ、かつての富士見スポットとして「雁ヶ腹摺山」の名を持つ。静かな山域で登山者が少なく穴場的存在。",
+    "vibes": [
+      "view",
+      "forest"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年（冬は積雪注意）",
+    "lat": 35.6119,
+    "lng": 138.8531,
+    "address": "山梨県大月市",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E7%AC%B9%E5%AD%90%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "笹子峠コース",
+        "time": "2時間30分",
+        "distance": "5.5km",
+        "elevGain": 580
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E7%AC%B9%E5%AD%90%E9%9B%81%E3%83%B6%E8%85%B9%E6%91%BA%E5%B1%B1登山口/@35.6119,138.8531,15z"
+  },
+  {
+    "id": "shodosan_namatate",
+    "name": "生藤山",
+    "kana": "しょうとうさん",
+    "area": "東京都・神奈川県",
+    "elevation": 990,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 16,
+    "coeffMax": 24,
+    "daytrip": true,
+    "trainAccess": "上野原駅→富士急バス→井戸バス停（約25分）→徒歩",
+    "trailhead": "井戸バス停（三国山ルート）",
+    "driveShinjuku": 70,
+    "driveOfuna": 80,
+    "driveYokohama": 80,
+    "driveOmiya": 110,
+    "driveTimeShinjuku": 70,
+    "trainTimeShinjuku": 70,
+    "nearestStation": "上野原駅",
+    "trainLine": "JR中央本線",
+    "trainInfo": "新宿→上野原駅（中央本線特快55分）→バス25分→井戸バス停",
+    "description": "東京・神奈川・山梨の境に位置する静かな山。春の三国山のカタクリ群落が有名で、連行峰・陣馬山への縦走路が美しい。上野原駅からバスでアクセスでき、下山後の温泉も充実。",
+    "vibes": [
+      "forest",
+      "view"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年（夏はヒル注意）",
+    "lat": 35.6194,
+    "lng": 139.0803,
+    "address": "東京都西多摩郡檜原村",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E4%B8%8A%E9%87%8E%E5%8E%9F%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "井戸コース（周回）",
+        "time": "4時間",
+        "distance": "9.0km",
+        "elevGain": 650
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E7%94%9F%E8%97%A4%E5%B1%B1登山口/@35.6194,139.0803,15z"
+  },
+  {
+    "id": "kukiyama",
+    "name": "九鬼山",
+    "kana": "くきやま",
+    "area": "山梨県",
+    "elevation": 970,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 14,
+    "coeffMax": 20,
+    "daytrip": true,
+    "trainAccess": "禾生駅→徒歩約30分→登山口（富士急行線）",
+    "trailhead": "禾生駅ルート登山口",
+    "driveShinjuku": 80,
+    "driveOfuna": 85,
+    "driveYokohama": 90,
+    "driveOmiya": 115,
+    "driveTimeShinjuku": 80,
+    "trainTimeShinjuku": 75,
+    "nearestStation": "禾生駅",
+    "trainLine": "富士急行線",
+    "trainInfo": "新宿→大月→禾生駅（富士急行約1時間10分）→徒歩30分→登山口",
+    "description": "富士急行の禾生駅から登れる山梨の低山。山頂からは富士山と御正体山の展望が広がる。杉山新道・天狗岩コースなど変化に富んだルートが揃い、猿橋駅や田野倉駅への縦走も楽しめる。",
+    "vibes": [
+      "view",
+      "forest"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年",
+    "lat": 35.5758,
+    "lng": 138.9592,
+    "address": "山梨県都留市",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E7%A6%BE%E7%94%9F%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "禾生駅コース（周回）",
+        "time": "3時間30分",
+        "distance": "7.5km",
+        "elevGain": 650
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E4%B9%9D%E9%AC%BC%E5%B1%B1登山口/@35.5758,138.9592,15z"
+  },
+  {
+    "id": "mitosaan",
+    "name": "三頭山",
+    "kana": "みとさん",
+    "area": "東京都",
+    "elevation": 1531,
+    "category": "人気の山",
+    "difficulty": "中級",
+    "coeffMin": 18,
+    "coeffMax": 30,
+    "daytrip": true,
+    "trainAccess": "武蔵五日市駅→都民の森行バス→都民の森（約50分・季節）",
+    "trailhead": "都民の森（三頭大滝コース）",
+    "driveShinjuku": 75,
+    "driveOfuna": 90,
+    "driveYokohama": 90,
+    "driveOmiya": 110,
+    "driveTimeShinjuku": 75,
+    "trainTimeShinjuku": 90,
+    "nearestStation": "武蔵五日市駅",
+    "trainLine": "JR五日市線",
+    "trainInfo": "新宿→拝島→武蔵五日市駅（JR五日市線約1時間10分）→バス約50分→都民の森",
+    "description": "奥多摩三山のひとつで、東京都檜原村に位置する。東・中央・西の三峰からなる山頂部が特徴で、都民の森からのブナ林の遊歩道コースは初心者でも歩きやすい。三頭大滝は必見。",
+    "vibes": [
+      "forest",
+      "view"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "season": "4月〜11月（都民の森バス季節運行）",
+    "lat": 35.7533,
+    "lng": 139.0028,
+    "address": "東京都西多摩郡檜原村",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E6%AD%A6%E8%94%B5%E4%BA%94%E6%97%A5%E5%B8%82%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "都民の森コース（周回）",
+        "time": "3時間30分",
+        "distance": "8.5km",
+        "elevGain": 650
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E4%B8%89%E9%A0%AD%E5%B1%B1登山口/@35.7533,139.0028,15z"
+  },
+  {
+    "id": "honitayama",
+    "name": "本仁田山",
+    "kana": "ほにたやま",
+    "area": "東京都",
+    "elevation": 1224,
+    "category": "人気の山",
+    "difficulty": "中級",
+    "coeffMin": 20,
+    "coeffMax": 28,
+    "daytrip": true,
+    "trainAccess": "奥多摩駅→徒歩30分→花折戸尾根登山口（JR青梅線）",
+    "trailhead": "花折戸尾根登山口（奥多摩駅から徒歩）",
+    "driveShinjuku": 80,
+    "driveOfuna": 105,
+    "driveYokohama": 100,
+    "driveOmiya": 115,
+    "driveTimeShinjuku": 80,
+    "trainTimeShinjuku": 100,
+    "nearestStation": "奥多摩駅",
+    "trainLine": "JR青梅線",
+    "trainInfo": "新宿→立川→奥多摩駅（JR青梅線約1時間40分）→徒歩30分→登山口",
+    "description": "奥多摩駅から歩いてアクセスできる奥多摩の山。急登が続く花折戸尾根からチクマ山・大休場尾根への縦走が人気。川苔山との縦走コースで奥多摩駅に戻るループも楽しめる。",
+    "vibes": [
+      "forest",
+      "view"
+    ],
+    "types": [
+      "regular"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年（積雪注意）",
+    "lat": 35.8017,
+    "lng": 139.0883,
+    "address": "東京都西多摩郡奥多摩町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E5%A5%A5%E5%A4%9A%E6%91%A9%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "花折戸尾根コース",
+        "time": "4時間",
+        "distance": "8.0km",
+        "elevGain": 900
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E6%9C%AC%E4%BB%81%E7%94%B0%E5%B1%B1登山口/@35.8017,139.0883,15z"
+  },
+  {
+    "id": "hinodesaan",
+    "name": "日の出山",
+    "kana": "ひのでさん",
+    "area": "東京都",
+    "elevation": 902,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 10,
+    "coeffMax": 18,
+    "daytrip": true,
+    "trainAccess": "御嶽駅→バス→御岳登山口→御岳山経由（JR青梅線）",
+    "trailhead": "御岳山（ケーブルカー利用可）→日の出山",
+    "driveShinjuku": 65,
+    "driveOfuna": 90,
+    "driveYokohama": 85,
+    "driveOmiya": 100,
+    "driveTimeShinjuku": 65,
+    "trainTimeShinjuku": 75,
+    "nearestStation": "御嶽駅",
+    "trainLine": "JR青梅線",
+    "trainInfo": "新宿→立川→御嶽駅（JR青梅線約1時間10分）→バス10分→ケーブルカー→御岳山経由",
+    "description": "御岳山から縦走できる標高902mの展望の山。元旦の初日の出スポットとして都内から多くの登山者が訪れる。つるつる温泉（武蔵五日市駅へ）への下山ルートが人気で、温泉セット登山の定番コース。",
+    "vibes": [
+      "view",
+      "historic"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "season": "通年",
+    "lat": 35.7794,
+    "lng": 139.2083,
+    "address": "東京都西多摩郡日の出町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E5%BE%A1%E5%B6%BD%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "御岳山〜日の出山〜つるつる温泉",
+        "time": "3時間",
+        "distance": "7.0km",
+        "elevGain": 400
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E6%97%A5%E3%81%AE%E5%87%BA%E5%B1%B1登山口/@35.7794,139.2083,15z"
+  },
+  {
+    "id": "sengenrei",
+    "name": "浅間嶺",
+    "kana": "せんげんれい",
+    "area": "東京都",
+    "elevation": 903,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 12,
+    "coeffMax": 18,
+    "daytrip": true,
+    "trainAccess": "武蔵五日市駅→西東京バス→払沢の滝入口（約25分）",
+    "trailhead": "払沢の滝入口（浅間尾根登山口）",
+    "driveShinjuku": 65,
+    "driveOfuna": 85,
+    "driveYokohama": 85,
+    "driveOmiya": 105,
+    "driveTimeShinjuku": 65,
+    "trainTimeShinjuku": 80,
+    "nearestStation": "武蔵五日市駅",
+    "trainLine": "JR五日市線",
+    "trainInfo": "新宿→拝島→武蔵五日市駅（JR五日市線約1時間）→バス25分→払沢の滝入口",
+    "description": "武蔵五日市からバスでアクセスできる奥多摩の入門的な尾根歩き。展望台からは富士山・奥多摩の山並みが一望でき、穏やかな浅間尾根歩きが気持ちいい。払沢の滝（日本の滝百選）とセットで楽しめる。",
+    "vibes": [
+      "forest",
+      "view"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年（夏はヒル注意）",
+    "lat": 35.7417,
+    "lng": 139.0886,
+    "address": "東京都西多摩郡檜原村",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E6%AD%A6%E8%94%B5%E4%BA%94%E6%97%A5%E5%B8%82%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "払沢の滝〜浅間嶺〜数馬",
+        "time": "3時間30分",
+        "distance": "8.0km",
+        "elevGain": 600
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E6%B5%85%E9%96%93%E5%B6%BA登山口/@35.7417,139.0886,15z"
+  },
+  {
+    "id": "futagoyama_okumusa",
+    "name": "二子山（奥武蔵）",
+    "kana": "ふたごやまおくむさし",
+    "area": "埼玉県",
+    "elevation": 883,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 12,
+    "coeffMax": 18,
+    "daytrip": true,
+    "trainAccess": "芦ヶ久保駅→徒歩15分→登山口（西武秩父線）",
+    "trailhead": "芦ヶ久保駅ルート登山口（徒歩15分）",
+    "driveShinjuku": 80,
+    "driveOfuna": 110,
+    "driveYokohama": 110,
+    "driveOmiya": 80,
+    "driveTimeShinjuku": 80,
+    "trainTimeShinjuku": 75,
+    "nearestStation": "芦ヶ久保駅",
+    "trainLine": "西武秩父線",
+    "trainInfo": "池袋→芦ヶ久保駅（西武秩父線特急レッドアロー約1時間10分）→徒歩15分",
+    "description": "西武秩父線の芦ヶ久保駅からすぐ登れる奥武蔵の双耳峰。雌岳・雄岳の2つの峰からなり、岩稜の登り応えが楽しめる。丸山・武川岳への縦走路として登山口に使われることも多い。",
+    "vibes": [
+      "rock",
+      "view"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年",
+    "lat": 35.9753,
+    "lng": 139.1036,
+    "address": "埼玉県横瀬町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E8%8A%A6%E3%83%B6%E4%B9%85%E4%BF%9D%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "芦ヶ久保駅周回コース",
+        "time": "3時間",
+        "distance": "6.5km",
+        "elevGain": 650
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E4%BA%8C%E5%AD%90%E5%B1%B1%EF%BC%88%E5%A5%A5%E6%AD%A6%E8%94%B5%EF%BC%89登山口/@35.9753,139.1036,15z"
+  },
+  {
+    "id": "juunigadake",
+    "name": "十二ヶ岳",
+    "kana": "じゅうにがたけ",
+    "area": "山梨県",
+    "elevation": 1683,
+    "category": "人気の山",
+    "difficulty": "中〜上級",
+    "coeffMin": 20,
+    "coeffMax": 28,
+    "daytrip": true,
+    "trainAccess": "河口湖駅→富士急バス→文化洞トンネルバス停（約10分）",
+    "trailhead": "文化洞トンネル（毛無山〜十二ヶ岳ルート）",
+    "driveShinjuku": 100,
+    "driveOfuna": 105,
+    "driveYokohama": 105,
+    "driveOmiya": 135,
+    "driveTimeShinjuku": 100,
+    "trainTimeShinjuku": 80,
+    "nearestStation": "河口湖駅",
+    "trainLine": "富士急行線",
+    "trainInfo": "新宿→大月→河口湖駅（富士急行約1時間30分）→バス10分→文化洞トンネル",
+    "description": "富士五湖エリアの西湖越しに富士山を望む展望の名峰。一から十二まで12の峰を越えていく岩稜縦走で、鎖場・吊橋・ロープが連続するスリリングなコース。西湖の絶景が随所に広がる。",
+    "vibes": [
+      "view",
+      "rock"
+    ],
+    "types": [
+      "regular"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年（冬は積雪・凍結注意）",
+    "lat": 35.5147,
+    "lng": 138.7661,
+    "address": "山梨県南都留郡富士河口湖町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E6%B2%B3%E5%8F%A3%E6%B9%96%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "文化洞トンネル〜十二ヶ岳〜節刀ヶ岳",
+        "time": "4時間30分",
+        "distance": "9.0km",
+        "elevGain": 900
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E5%8D%81%E4%BA%8C%E3%83%B6%E5%B2%B3登山口/@35.5147,138.7661,15z"
+  },
+  {
+    "id": "ishiwariyama",
+    "name": "石割山",
+    "kana": "いしわりやま",
+    "area": "山梨県",
+    "elevation": 1413,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 10,
+    "coeffMax": 16,
+    "daytrip": true,
+    "trainAccess": "富士急行河口湖駅→バス→山中湖平野バス停（約30分）",
+    "trailhead": "石割神社登山口（平野バス停から徒歩15分）",
+    "driveShinjuku": 95,
+    "driveOfuna": 100,
+    "driveYokohama": 100,
+    "driveOmiya": 130,
+    "driveTimeShinjuku": 95,
+    "trainTimeShinjuku": 90,
+    "nearestStation": "河口湖駅",
+    "trainLine": "富士急行線",
+    "trainInfo": "新宿→大月→河口湖駅（富士急行約1時間30分）→バス30分→山中湖平野",
+    "description": "山中湖畔から富士山を一望できる人気の山。石割神社の御神体・巨岩「石割の岩」を間をすり抜けるユニークな体験が人気。山頂からの富士山と山中湖の絶景は格別。",
+    "vibes": [
+      "view",
+      "historic"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年（冬は積雪注意）",
+    "lat": 35.4603,
+    "lng": 138.8756,
+    "address": "山梨県山中湖村",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E6%B2%B3%E5%8F%A3%E6%B9%96%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "石割神社〜石割山〜平尾山周回",
+        "time": "2時間30分",
+        "distance": "5.5km",
+        "elevGain": 450
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E7%9F%B3%E5%89%B2%E5%B1%B1登山口/@35.4603,138.8756,15z"
+  },
+  {
+    "id": "azumayama_ninomiya",
+    "name": "吾妻山（二宮）",
+    "kana": "あずまやまにのみや",
+    "area": "神奈川県",
+    "elevation": 136,
+    "category": "人気の山",
+    "difficulty": "初級",
+    "coeffMin": 2,
+    "coeffMax": 5,
+    "daytrip": true,
+    "trainAccess": "二宮駅→徒歩5分→吾妻山公園入口（JR東海道本線）",
+    "trailhead": "吾妻山公園入口（二宮駅から徒歩）",
+    "driveShinjuku": 65,
+    "driveOfuna": 25,
+    "driveYokohama": 40,
+    "driveOmiya": 100,
+    "driveTimeShinjuku": 65,
+    "trainTimeShinjuku": 55,
+    "nearestStation": "二宮駅",
+    "trainLine": "JR東海道本線",
+    "trainInfo": "新宿→二宮駅（東海道線約55分）→徒歩5分→吾妻山公園入口",
+    "description": "JR二宮駅から徒歩5分で山頂まで行ける超手軽な湘南の名山。標高わずか136mながら、1〜2月の菜の花と富士山・相模湾の絶景は圧巻。子ども連れやハイキング入門に最適。",
+    "vibes": [
+      "view"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "winter"
+    ],
+    "season": "通年（菜の花は1〜2月が見頃）",
+    "lat": 35.3006,
+    "lng": 139.2589,
+    "address": "神奈川県二宮町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E4%BA%8C%E5%AE%AE%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "吾妻山公園周回",
+        "time": "1時間",
+        "distance": "2.5km",
+        "elevGain": 140
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E5%90%BE%E5%A6%BB%E5%B1%B1%EF%BC%88%E4%BA%8C%E5%AE%AE%EF%BC%89登山口/@35.3006,139.2589,15z"
+  },
+  {
+    "id": "hodosan",
+    "name": "宝登山",
+    "kana": "ほどさん",
+    "area": "埼玉県",
+    "elevation": 497,
+    "category": "人気の山",
+    "difficulty": "初級",
+    "coeffMin": 4,
+    "coeffMax": 8,
+    "daytrip": true,
+    "trainAccess": "長瀞駅→徒歩30分（秩父鉄道）またはロープウェイ利用",
+    "trailhead": "宝登山神社（長瀞駅から徒歩）",
+    "driveShinjuku": 85,
+    "driveOfuna": 120,
+    "driveYokohama": 115,
+    "driveOmiya": 65,
+    "driveTimeShinjuku": 85,
+    "trainTimeShinjuku": 90,
+    "nearestStation": "長瀞駅",
+    "trainLine": "秩父鉄道",
+    "trainInfo": "池袋→西武秩父→御花畑→長瀞駅（秩父鉄道約1時間40分）→徒歩30分",
+    "description": "秩父鉄道の長瀞駅から徒歩でアクセスできる埼玉の低山。ロウバイ（1〜2月）・梅（2〜3月）・ミツバツツジ（4月）と花の名所として有名。山頂のロープウェイ駅から秩父の山並みが一望できる。",
+    "vibes": [
+      "view",
+      "historic"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "winter"
+    ],
+    "season": "通年（花の季節は1〜4月）",
+    "lat": 36.1017,
+    "lng": 139.1158,
+    "address": "埼玉県長瀞町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E9%95%B7%E7%80%9E%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "宝登山神社〜山頂周回",
+        "time": "1時間30分",
+        "distance": "3.5km",
+        "elevGain": 300
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E5%AE%9D%E7%99%BB%E5%B1%B1登山口/@36.1017,139.1158,15z"
+  },
+  {
+    "id": "hafuzan_chichibu",
+    "name": "破風山（秩父）",
+    "kana": "はふさんちちぶ",
+    "area": "埼玉県",
+    "elevation": 627,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 10,
+    "coeffMax": 15,
+    "daytrip": true,
+    "trainAccess": "皆野駅→徒歩（秩父鉄道）→風戸登山口",
+    "trailhead": "風戸登山口（皆野駅から徒歩40分）",
+    "driveShinjuku": 100,
+    "driveOfuna": 130,
+    "driveYokohama": 125,
+    "driveOmiya": 80,
+    "driveTimeShinjuku": 100,
+    "trainTimeShinjuku": 100,
+    "nearestStation": "皆野駅",
+    "trainLine": "秩父鉄道",
+    "trainInfo": "池袋→西武秩父→御花畑→皆野駅（秩父鉄道約1時間50分）→徒歩",
+    "description": "秩父鉄道の皆野駅から歩いてアクセスできる低山。展望の良い岩場の山頂と、アカヤシオ（春）の群落が人気。水潜寺（日本百番観音の最終礼所）への参拝路でもある。",
+    "vibes": [
+      "view",
+      "rock",
+      "historic"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年",
+    "lat": 36.0694,
+    "lng": 139.1283,
+    "address": "埼玉県皆野町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E7%9A%86%E9%87%8E%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "風戸〜破風山〜水潜寺周回",
+        "time": "3時間",
+        "distance": "7.0km",
+        "elevGain": 450
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E7%A0%B4%E9%A2%A8%E5%B1%B1%EF%BC%88%E7%A7%A9%E7%88%B6%EF%BC%89登山口/@36.0694,139.1283,15z"
+  },
+  {
+    "id": "ranzan_saitama",
+    "name": "嵐山（埼玉）",
+    "kana": "らんざんさいたま",
+    "area": "埼玉県",
+    "elevation": 197,
+    "category": "人気の山",
+    "difficulty": "初級",
+    "coeffMin": 3,
+    "coeffMax": 6,
+    "daytrip": true,
+    "trainAccess": "武蔵嵐山駅→徒歩20分→嵐山渓谷バーベキュー場入口（東武東上線）",
+    "trailhead": "嵐山渓谷入口（武蔵嵐山駅から徒歩）",
+    "driveShinjuku": 75,
+    "driveOfuna": 115,
+    "driveYokohama": 105,
+    "driveOmiya": 45,
+    "driveTimeShinjuku": 75,
+    "trainTimeShinjuku": 70,
+    "nearestStation": "武蔵嵐山駅",
+    "trainLine": "東武東上線",
+    "trainInfo": "池袋→武蔵嵐山駅（東武東上線急行約55分）→徒歩20分→嵐山渓谷",
+    "description": "東武東上線からアクセスできる埼玉の低山・渓谷ハイキングスポット。都名勝の嵐山渓谷は「関東の嵐山」と呼ばれ、岩畳と渓流が美しい。ファミリーハイクや紅葉シーズンに人気。",
+    "vibes": [
+      "forest",
+      "historic"
+    ],
+    "types": [
+      "easy"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年（紅葉は11月が見頃）",
+    "lat": 36.0417,
+    "lng": 139.3208,
+    "address": "埼玉県嵐山町",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E6%AD%A6%E8%94%B5%E5%B5%90%E5%B1%B1%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "嵐山渓谷ハイキングコース",
+        "time": "2時間",
+        "distance": "5.0km",
+        "elevGain": 150
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E5%B5%90%E5%B1%B1%EF%BC%88%E5%9F%BC%E7%8E%89%EF%BC%89登山口/@36.0417,139.3208,15z"
+  },
+  {
+    "id": "kogashiyama",
+    "name": "古賀志山",
+    "kana": "こがしやま",
+    "area": "栃木県",
+    "elevation": 583,
+    "category": "人気の山",
+    "difficulty": "初〜中級",
+    "coeffMin": 10,
+    "coeffMax": 16,
+    "daytrip": true,
+    "trainAccess": "JR宇都宮駅→関東バス→古賀志山登山口（約35分）",
+    "trailhead": "古賀志山登山口（森林公園）",
+    "driveShinjuku": 130,
+    "driveOfuna": 175,
+    "driveYokohama": 165,
+    "driveOmiya": 90,
+    "driveTimeShinjuku": 130,
+    "trainTimeShinjuku": 110,
+    "nearestStation": "宇都宮駅",
+    "trainLine": "JR東北本線",
+    "trainInfo": "上野→宇都宮駅（宇都宮線約1時間30分）→バス35分→古賀志山登山口",
+    "description": "宇都宮市民に愛される里山。南壁の垂直な岩壁はクライミングの名所で、バリエーションルートが豊富。中尾根コースは岩場・ロープのあるスリリングな縦走で人気。山頂から日光連山・筑波山が一望できる。",
+    "vibes": [
+      "rock",
+      "view"
+    ],
+    "types": [
+      "regular"
+    ],
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "season": "通年",
+    "lat": 36.6111,
+    "lng": 139.9206,
+    "address": "栃木県宇都宮市",
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "warnBanner": null,
+    "nearby": [],
+    "gearLinks": [],
+    "routes": [
+      {
+        "name": "中尾根コース（周回）",
+        "time": "3時間",
+        "distance": "7.0km",
+        "elevGain": 500
+      }
+    ],
+    "gmapUrl": "https://google.com/maps/search/%E5%8F%A4%E8%B3%80%E5%BF%97%E5%B1%B1登山口/@36.6111,139.9206,15z"
   }
 ]
