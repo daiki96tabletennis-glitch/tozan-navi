@@ -591,96 +591,31 @@ function getClimbs(){
   return base;
 }
 
-function renderClimbed() {
-  var climbs = getClimbs();
-  var keys = Object.keys(climbs).sort(function(a,b){
-    return (climbs[b].date||'').localeCompare(climbs[a].date||'');
-  });
-  document.getElementById('climbed-count').textContent = keys.length;
-  var el = document.getElementById('climbed-list');
-  if (keys.length===0){
-    el.innerHTML='<div class="empty" style="padding:32px 0;text-align:center"><div style="font-size:32px;margin-bottom:8px">🚩</div>登頂記録がありません<br><small style="color:#b0a898;margin-top:6px;display:block">山カードの 🏳️ ボタンで記録できます</small></div>';
-    return;
-  }
-  fetchMountainData(function(mtnMap){
-    var mtnMapById = {};
-    if (Array.isArray(mtnMap)) { mtnMap.forEach(function(m){ mtnMapById[m.id]=m; }); }
-    else { mtnMapById = mtnMap; }
-    renderCollectionBanner(keys, mtnMapById);
-  });
-  fetchNames(function(nameMap){
-    var html = '<div style="display:flex;flex-direction:column;gap:8px">';
-    keys.forEach(function(k){
-      var c = climbs[k];
-      var name = c.type==='manual' ? c.name : (nameMap[k]||k);
-      var date = c.date ? new Date(c.date.replace(/\//g,'-')).toLocaleDateString('ja-JP',{year:'numeric',month:'long',day:'numeric'}) : '';
-      html += '<div style="background:white;border-radius:12px;border:1px solid #e0dbd4;padding:11px 12px">';
-      html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">';
-      html += '<div style="flex:1">';
-      if (c.type==='site'){
-        html += '<a href="/mountains/'+k+'/" style="font-size:14px;font-weight:700;color:#2a2520;text-decoration:none;display:block;margin-bottom:4px">'+esc(name)+'</a>';
-      } else {
-        html += '<div style="font-size:14px;font-weight:700;color:#2a2520;margin-bottom:4px">'+esc(name)+' <span style="font-size:10px;color:#8a8078;background:#f0ede5;padding:1px 5px;border-radius:4px">手動</span></div>';
-      }
-      if (date) html += '<div style="font-size:11px;color:#6a6058;margin-bottom:2px">📅 '+date+'</div>';
-      if (c.area) html += '<div style="font-size:11px;color:#6a6058;margin-bottom:2px">📍 '+esc(c.area)+'</div>';
-      if (c.memo) html += '<div style="font-size:11px;color:#6a6058;white-space:pre-wrap;margin-top:4px;padding:6px 8px;background:#f8f6f2;border-radius:6px">'+esc(c.memo)+'</div>';
-      html += '</div>';
-      html += '<div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0">';
-      html += '<button onclick="editClimbedById(this)" data-k="'+esc(k)+'" style="padding:4px 10px;border-radius:6px;border:1px solid #c8ddb0;background:#f0f5ec;color:#4a6838;font-size:11px;font-weight:600;cursor:pointer">✏️</button>';
-      html += '<button onclick="removeClimbed(\''+k+'\')" style="padding:4px 10px;border-radius:6px;border:1px solid #e0c0c0;background:#fdf0f0;color:#c05050;font-size:11px;font-weight:600;cursor:pointer">🗑</button>';
-      html += '</div>';
-      html += '</div>';
-      html += '</div>';
-    });
-    html += '</div>';
-    el.innerHTML = html;
-  });
-}
+/* 旧renderClimbed削除済 */
 
 
 
-// ===== コレクションバナー =====
-var _TITLES = [
-  { min: 0,  label: '\u{1F331} 登山見習い' },
-  { min: 3,  label: '\u{1F97E} 山歩き入門' },
-  { min: 10, label: '\u26F0 健脚ハイカー' },
-  { min: 20, label: '\u{1F3D4} 山の使い手' },
-  { min: 50, label: '\u{1F451} 山の主' }
-];
-function renderCollectionBanner(keys, mtnMap) {
-  var total = keys.length;
-  var hyaku = 0;
-  if (mtnMap) {
-    keys.forEach(function(k) {
-      if (mtnMap[k] && mtnMap[k].hyakunen) hyaku++;
-    });
-  }
-  var banner = document.getElementById('collection-banner');
-  if (!banner) return;
-  if (total === 0) { banner.style.display = 'none'; return; }
-  banner.style.display = 'block';
-  document.getElementById('coll-headline').textContent = '\u26F0 登頂 ' + total + '座 ／ うち百名山 ' + hyaku + '座';
-  var pct = Math.min(100, Math.round(total / 100 * 100));
-  document.getElementById('coll-bar').style.width = pct + '%';
-  document.getElementById('coll-bar-label').textContent = total + '/100';
-  var titleLabel = _TITLES[0].label;
-  for (var ti = _TITLES.length - 1; ti >= 0; ti--) {
-    if (total >= _TITLES[ti].min) { titleLabel = _TITLES[ti].label; break; }
-  }
-  document.getElementById('coll-title').textContent = '称号: ' + titleLabel;
-}
-
-
-function showClimbCelebrate() {
+// ===== バッジ獲得オーバーレイ（v2）=====
+function showClimbCelebrate(id, name, area) {
   var climbs = getClimbs();
   var count = Object.keys(climbs).length;
+  // バッジSVGを生成してオーバーレイに表示
   var ov = document.getElementById('climbed-celebrate');
-  var cc = document.getElementById('celebrate-count');
   if (!ov) return;
-  cc.textContent = count + '座目';
+  var cfg = getBadgeCfg(id||'_default', area||'');
+  var svgHtml = makeBadgeSVG(name||'登頂！', cfg, 120, id||'_default');
+  ov.innerHTML =
+    '<div style="font-size:11px;font-weight:800;color:#a8d860;letter-spacing:0.12em;margin-bottom:8px">🏅 バッジ獲得！</div>'
+    +'<div style="width:120px;height:120px;margin:0 auto 12px;filter:drop-shadow(0 6px 16px rgba(0,0,0,0.4))">' + svgHtml + '</div>'
+    +'<div style="font-size:20px;font-weight:900;margin-bottom:4px;font-family:'Zen Kaku Gothic New',sans-serif">' + esc(name||'登頂！') + '</div>'
+    +'<div style="font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:10px">' + count + '座目のバッジ</div>'
+    +'<div style="font-size:22px;letter-spacing:4px">⭐⭐⭐</div>';
   ov.style.display = 'block';
-  setTimeout(function() { ov.style.display = 'none'; }, 800);
+  ov.style.background = 'rgba(20,45,15,0.94)';
+  ov.style.borderRadius = '20px';
+  ov.style.padding = '24px 28px';
+  ov.style.textAlign = 'center';
+  setTimeout(function() { ov.style.display = 'none'; }, 2200);
 }
 
 function removeClimbed(key) {
@@ -721,7 +656,9 @@ function saveManualClimbed(){
     extra.push({name:name, date:document.getElementById('mc-date').value, dateEnd:document.getElementById('mc-date-end').value, area:document.getElementById('mc-area').value.trim(), memo:document.getElementById('mc-memo').value.trim()});
     localStorage.setItem(CLM_EX_KEY, JSON.stringify(extra));
   }catch{}
-  showClimbCelebrate();
+  var mcName = document.getElementById('mc-name').value.trim();
+  var mcArea = document.getElementById('mc-area').value.trim();
+  showClimbCelebrate('__manual__', mcName, mcArea);
   closeAddClimbed(); renderClimbed(); renderFavorites();
 }
 
@@ -999,27 +936,7 @@ function makeBadgeSVG(name, cfg, size, id) {
     +'</svg>';
 }
 
-function renderCollectionBanner(keys, mtnMap) {
-  var total = keys.length;
-  var hyaku = 0;
-  if (mtnMap) keys.forEach(function(k){ if(mtnMap[k]&&mtnMap[k].category==='百名山') hyaku++; });
-  var banner = document.getElementById('collection-banner');
-  if (!banner) return;
-  if (total===0) { banner.style.display='none'; return; }
-  banner.style.display='block';
-  var big=document.getElementById('climbed-count-big'); if(big) big.textContent=total;
-  var hd=document.getElementById('coll-hyaku-disp'); if(hd) hd.textContent='百名山 '+hyaku+'座';
-  var bl=document.getElementById('coll-bar-label'); if(bl) bl.textContent='百名山 '+hyaku+'/100';
-  var bar=document.getElementById('coll-bar'); if(bar) bar.style.width=Math.min(100,Math.round(hyaku/100*100))+'%';
-  var t=_TITLES2[0];
-  for(var i=_TITLES2.length-1;i>=0;i--){ if(total>=_TITLES2[i].min){t=_TITLES2[i];break;} }
-  var te=document.getElementById('coll-title'); if(te) te.textContent='称号: '+t.label;
-  var ne=document.getElementById('coll-next'); if(ne) ne.textContent=t.next?'あと '+(t.next-total)+'座で次の称号':'🎉 最高称号達成！';
-}
-
-// ===== バッジ詳細モーダル制御 =====
-var _currentBadgeKey = null;
-
+/* 旧renderCollectionBanner削除済 */
 function openBadgeDetail(name, area, elev, date, memo, cfg, key) {
   _currentBadgeKey = key || null;
   var m = document.getElementById('badge-detail-modal');
