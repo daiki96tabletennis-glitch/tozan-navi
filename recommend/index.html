@@ -425,7 +425,7 @@ function charAHFS(){
 }
 
 function charAHFL(){
-  // 気まぐれ山人・片手ポケット・のんびり歩き・小カメラ
+  // フォトウォーカー・片手ポケット・のんびり歩き・小カメラ
   var cx=28,cy=16,r=11,skin='#f5c090',jy=31,py=51,sy=72;
   var s='';
   s+=pack(31,30,'#c89050','#d8a060',13,20);
@@ -711,11 +711,11 @@ var CHARS=[
   {code:'ACPS',name:'山岳探検家',fn:charACPS},
   {code:'ACPL',name:'孤高の登山家',fn:charACPL},
   {code:'ACFS',name:'ワイルドハイカー',fn:charACFS},
-  {code:'ACFL',name:'ルートファインダー',fn:charACFL},
+  {code:'ACFL',name:'バリエーター',fn:charACFL},
   {code:'AHPS',name:'展望ハンター',fn:charAHPS},
   {code:'AHPL',name:'サイレントクライマー',fn:charAHPL},
   {code:'AHFS',name:'お祭り登山家',fn:charAHFS},
-  {code:'AHFL',name:'気まぐれ山人',fn:charAHFL},
+  {code:'AHFL',name:'フォトウォーカー',fn:charAHFL},
   {code:'VCPS',name:'山岳研究家',fn:charVCPS},
   {code:'VCPL',name:'深山の求道者',fn:charVCPL},
   {code:'VCFS',name:'山旅人',fn:charVCFS},
@@ -782,8 +782,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;bac
 .back-btn,.header-btn{color:rgba(255,255,255,0.7);font-size:12px;white-space:nowrap;text-decoration:none;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:8px;padding:4px 9px;}
 main{max-width:480px;margin:0 auto;padding:16px;}
 .step{display:none;}
-.step.active{display:block;animation:fadeIn 0.28s ease;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+/* animations moved to new block */
 
 /* プログレス */
 .prog-wrap{margin-bottom:18px;}
@@ -998,9 +997,77 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 .radar-score-bar{flex:1;height:7px;background:#f0ede5;border-radius:4px;overflow:hidden}
 .radar-score-fill{height:100%;width:0;background:linear-gradient(90deg,#6a8a50,#4e6535);border-radius:4px;transition:width 0.7s cubic-bezier(.2,.8,.3,1)}
 .radar-score-num{font-size:11px;font-weight:700;color:#4e6535;min-width:26px;text-align:right}
+
+/* ===== アニメーション追加 ===== */
+/* 1. ステップ遷移：スライド（左→右） */
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-32px)}to{opacity:1;transform:translateX(0)}}
+.step.active{display:block;animation:slideInRight 0.3s cubic-bezier(0.22,0.61,0.36,1);}
+.step.active.going-back{animation:slideInLeft 0.3s cubic-bezier(0.22,0.61,0.36,1);}
+
+/* 2. リップルエフェクト */
+.ripple{position:absolute;border-radius:50%;background:rgba(78,101,53,0.18);transform:scale(0);animation:rippleAnim 0.5s linear;pointer-events:none;}
+@keyframes rippleAnim{to{transform:scale(4);opacity:0;}}
+
+/* 3. キャラクターSVG登場アニメ */
+@keyframes charBounceIn{
+  0%{opacity:0;transform:translateY(-24px) scale(0.8);}
+  60%{opacity:1;transform:translateY(6px) scale(1.05);}
+  80%{transform:translateY(-3px) scale(0.98);}
+  100%{opacity:1;transform:translateY(0) scale(1);}
+}
+.person-svg-wrap{animation:charBounceIn 0.55s cubic-bezier(0.22,0.61,0.36,1) both;}
+
+/* 4. 山カード順番登場 */
+@keyframes cardSlideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.result-card{opacity:0;animation:cardSlideUp 0.4s ease forwards;}
+.result-card:nth-child(1){animation-delay:0.05s;}
+.result-card:nth-child(2){animation-delay:0.18s;}
+.result-card:nth-child(3){animation-delay:0.31s;}
+
+/* 5. プログレスバーぬるっと */
+.prog-fill{transition:width 0.45s cubic-bezier(0.4,0,0.2,1);}
+
+/* 6. ローディング演出 */
+#loading-overlay{position:fixed;inset:0;background:#f0ede5;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity 0.4s ease;}
+#loading-overlay.hidden{opacity:0;pointer-events:none;}
+.loading-mountains{display:flex;gap:6px;align-items:flex-end;height:48px;}
+.loading-bar{width:10px;border-radius:4px 4px 0 0;background:#4e6535;animation:loadingPulse 0.9s ease-in-out infinite;}
+.loading-bar:nth-child(1){height:24px;animation-delay:0s;}
+.loading-bar:nth-child(2){height:40px;animation-delay:0.15s;}
+.loading-bar:nth-child(3){height:32px;animation-delay:0.3s;}
+.loading-bar:nth-child(4){height:48px;animation-delay:0.45s;}
+.loading-bar:nth-child(5){height:28px;animation-delay:0.6s;}
+@keyframes loadingPulse{0%,100%{opacity:0.35;transform:scaleY(0.7);}50%{opacity:1;transform:scaleY(1);}}
+.loading-text{font-size:14px;font-weight:700;color:#4e6535;letter-spacing:0.05em;}
+
+/* ===== UI修正 ===== */
+/* 2. 軸ラベル非表示 */
+.ch-axis{display:none;}
+
+/* 3. Q8選択肢4択化（5番目を非表示）→JSで制御 */
+
+/* 4. 結果カードに標高・電車バッジ追加用 */
+.rc-meta-row{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 4px;align-items:center;}
+.rc-elev{font-size:11px;font-weight:700;color:#5a5248;background:#f0ede5;border-radius:8px;padding:2px 8px;}
+.rc-drive-tag{font-size:11px;font-weight:700;color:#4e6535;background:#eef5e8;border-radius:8px;padding:2px 8px;}
+
+/* 6. share-top非表示（末尾のshare-sectionに統一） */
+#share-top{display:none !important;}
 </style>
 </head>
 <body>
+<div id="loading-overlay" class="hidden">
+  <div class="loading-mountains">
+    <div class="loading-bar"></div>
+    <div class="loading-bar"></div>
+    <div class="loading-bar"></div>
+    <div class="loading-bar"></div>
+    <div class="loading-bar"></div>
+  </div>
+  <div class="loading-text">診断中...</div>
+</div>
 <header class="ym-header">
   <div class="ym-header-inner">
     <div style="flex:1;font-size:16px;font-weight:700;color:white;">登山タイプ診断</div>
@@ -1171,7 +1238,6 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
     <div class="choice" data-key="coeff" data-val="22"><span class="ch-icon">👟</span><div><div class="ch-main">3〜4時間の初心者向け</div><div class="ch-sub">普通に歩ける</div></div></div>
     <div class="choice" data-key="coeff" data-val="35"><span class="ch-icon">🥾</span><div><div class="ch-main">5〜7時間の中級コース</div><div class="ch-sub">ある程度の体力あり</div></div></div>
     <div class="choice" data-key="coeff" data-val="60"><span class="ch-icon">⛰</span><div><div class="ch-main">急登・岩場もある上級コース</div><div class="ch-sub">体力・技術に自信あり</div></div></div>
-    <div class="choice" data-key="coeff" data-val="999"><span class="ch-icon">🏔</span><div><div class="ch-main">どんな山でも</div><div class="ch-sub">限界を超えに行く</div></div></div>
   </div>
 </div>
 
@@ -1398,6 +1464,16 @@ document.addEventListener('DOMContentLoaded', function(){
     if(el){
       document.querySelectorAll('.choice').forEach(function(c){ c.classList.remove('selected'); });
       el.classList.add('selected');
+      // リップルエフェクト
+      var ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      var rect = el.getBoundingClientRect();
+      var size = Math.max(rect.width, rect.height);
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (rect.width/2 - size/2) + 'px';
+      ripple.style.top = (rect.height/2 - size/2) + 'px';
+      el.appendChild(ripple);
+      setTimeout(function(){ if(ripple.parentNode) ripple.parentNode.removeChild(ripple); }, 600);
     }
     answer(key, isNaN(val) ? val : Number(val));
     setTimeout(function(){ _lock = false; }, 1000);
@@ -1419,10 +1495,22 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 });
 
+var _prevStepId = null;
 function show(id){
-  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.choice.selected').forEach(c=>c.classList.remove('selected'));
-  document.getElementById(id).classList.add('active');
+  var steps = document.querySelectorAll('.step');
+  steps.forEach(function(s){ s.classList.remove('active','going-back'); });
+  document.querySelectorAll('.choice.selected').forEach(function(c){ c.classList.remove('selected'); });
+  var el = document.getElementById(id);
+  // 戻る方向判定（introまたは前のQ）
+  var isGoingBack = (id === 'intro');
+  if(_prevStepId && id !== 'result'){
+    var prevNum = parseInt(_prevStepId.replace('q',''));
+    var curNum = parseInt(id.replace('q',''));
+    if(!isNaN(prevNum) && !isNaN(curNum) && curNum < prevNum) isGoingBack = true;
+  }
+  if(isGoingBack) el.classList.add('going-back');
+  el.classList.add('active');
+  _prevStepId = id;
   window.scrollTo({top:0,behavior:'smooth'});
   if(id==='intro') buildIntroGrid();
 }
@@ -1687,6 +1775,16 @@ function renderRadar(){
 }
 
 function showResult(){
+  // ローディング演出（1.2秒）
+  var overlay = document.getElementById('loading-overlay');
+  if(overlay){ overlay.classList.remove('hidden'); }
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){ _doShowResult(); }, 1200);
+}
+function _doShowResult(){
+  var overlay = document.getElementById('loading-overlay');
+  if(overlay){ overlay.classList.add('hidden'); }
+  document.body.style.overflow = '';
   const typeCode=getTypeCode();
   const type=TYPES[typeCode]||TYPES['VHFS'];
   const depLabel={ofuna:'大船・横浜',shinjuku:'新宿・渋谷',omiya:'大宮・浦和'}[answers.dep]||'大船・横浜';
@@ -1704,7 +1802,7 @@ function showResult(){
     '<div class="type-card">'+
     '<div class="type-card-bg">'+type.emoji+'</div>'+
     '<div class="type-card-inner">'+
-    personSvg+
+    '<div class="person-svg-wrap">'+personSvg+'</div>'+
     '<div class="type-info">'+
     '<div class="type-code">'+typeCode+'型</div>'+
     '<div class="type-name">'+type.name+'</div>'+
@@ -1745,7 +1843,12 @@ function showResult(){
       (m.trainAccess?'<div class="access-item"><span class="access-icon">🚃</span><div class="access-label">電車・バス</div><div class="access-val access-train">'+(typeof m.trainAccess==='string'?m.trainAccess:'公共交通機関でアクセス可')+'</div></div>':'')+'</div>';
     const isFirst=(i===0);
     return '<div class="result-card'+(isFirst?' result-card-top':'')+'">'+
-      '<div class="rc-top"><div class="rank-badge '+ranks[i]+'">'+(i+1)+'</div><div style="flex:1"><div class="rc-name">'+m.name+'</div><div class="rc-area">'+m.area+' · '+(m.elevation||0).toLocaleString()+'m</div></div></div>'+
+      '<div class="rc-top"><div class="rank-badge '+ranks[i]+'">'+(i+1)+'</div><div style="flex:1"><div class="rc-name">'+m.name+'</div><div class="rc-area">'+m.area+'</div></div></div>'+
+      '<div class="rc-meta-row">'+
+      '<span class="rc-elev">🏔 '+((m.elevation||0).toLocaleString())+'m</span>'+
+      '<span class="rc-drive-tag">🚗 '+depLabel+'から '+fmtTime(m.drive)+'</span>'+
+      (m.trainAccess ? '<span class="rc-drive-tag">🚃 電車OK</span>' : '')+
+      '</div>'+
       '<div class="rc-badges"><span class="rb '+catClass+'">'+m.category+'</span>'+dayBadge+trainBadge+'</div>'+
       '<div class="rc-section-label">📍 あなたにおすすめの理由</div>'+
       '<div class="reasons-block">'+reasonsHtml+'</div>'+
