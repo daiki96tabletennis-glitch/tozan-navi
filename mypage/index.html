@@ -1162,6 +1162,12 @@ function toggleBadgeStack(el) {
 }
 
 
+
+var _TITLES2 = [
+  {min:0,label:'🌱 登山見習い',next:3},{min:3,label:'🥾 山歩き入門',next:10},
+  {min:10,label:'⛰ 健脚ハイカー',next:20},{min:20,label:'🏔 山の使い手',next:50},
+  {min:50,label:'👑 山の主',next:100},{min:100,label:'🦅 百名山制覇',next:null},
+];
 function renderCollectionBanner(keys, climbs, mtnMap) {
   var total = 0;
   keys.forEach(function(k){ total += (climbs&&climbs[k])?climbs[k].length:1; });
