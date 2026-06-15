@@ -36,7 +36,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 /* 追加ボタン */
 .add-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:11px;background:#f0f5ec;border:2px dashed #c8ddb0;border-radius:10px;font-size:13px;font-weight:700;color:#4a5e4a;cursor:pointer;margin-bottom:12px}
 /* モーダル */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:300;overflow-y:auto}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:400;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .modal-overlay.open{display:block}
 .modal{background:#f0ede5;max-width:480px;margin:0 auto;min-height:100vh;padding:0 0 40px}
 .modal-header{background:linear-gradient(155deg,#243d20,#344f2c);padding:14px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10}
@@ -698,7 +698,8 @@ function saveManualClimbed(){
     var matched = null;
     if (Array.isArray(mtnData)) {
       mtnData.forEach(function(m){
-        if (m.name === name || m.name.replace(/（[^）]*）/g,'') === name) {
+        var mn = m.name.replace(/（[^）]*）/g,'');
+        if (m.name === name || mn === name || mn === name.replace(/（[^）]*）/g,'')) {
           matched = m;
         }
       });
@@ -999,15 +1000,15 @@ function makeBadgeSVG(name, date, id, c, size){
     +' fill="'+c.txt+'" paint-order="stroke" stroke="rgba(255,255,255,0.95)" stroke-width="3.5" stroke-linejoin="round">'+name+'</text>';
 
   // YAMATCH（下部よりやや上）
-  var yamatchHtml='<text x="'+cx+'" y="'+(cy+rContent*0.65)+'" text-anchor="middle" dominant-baseline="middle"'
+  var yamatchHtml='<text x="'+cx+'" y="'+(cy+rContent*0.58)+'" text-anchor="middle" dominant-baseline="middle"'
     +' font-family="\'Playfair Display\',Georgia,serif" font-weight="700" font-size="'+(size*0.075)+'" letter-spacing="2"'
     +' fill="'+c.acc+'" opacity="0.6">YAMATCH</text>';
 
   // 日付（最下部）
   var dateHtml=date
-    ?'<text x="'+cx+'" y="'+(cy+rContent*0.86)+'" text-anchor="middle" dominant-baseline="middle"'
-      +' font-family="\'Playfair Display\',Georgia,serif" font-size="'+(size*0.072)+'" letter-spacing="1"'
-      +' fill="'+c.txt+'" opacity="0.55">'+date+'</text>'
+    ?'<text x="'+cx+'" y="'+(cy+rContent*0.90)+'" text-anchor="middle" dominant-baseline="middle"'
+      +' font-family="\'Playfair Display\',Georgia,serif" font-size="'+(size*0.105)+'" font-weight="700" letter-spacing="1"'
+      +' fill="white" paint-order="stroke" stroke="rgba(0,0,0,0.4)" stroke-width="2" opacity="0.95">'+date+'</text>'
     :'';
 
   return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" xmlns="http://www.w3.org/2000/svg">'
