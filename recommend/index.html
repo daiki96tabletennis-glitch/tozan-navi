@@ -602,7 +602,7 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 <header class="ym-header">
   <div class="ym-header-inner">
     <div style="flex:1;font-size:16px;font-weight:700;color:white;">登山タイプ診断</div>
-    <button class="ym-header-share" onclick="if(navigator.share){navigator.share({title:'Yamatch',url:location.href});}else{navigator.clipboard.writeText(location.href).then(function(){alert('URLをコピーしました');});}" aria-label="シェア"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg></button>
+    
   </div>
 </header>
 <div class="sr-only"><h1>登山タイプ診断 - 16タイプで山スタイルを診断</h1><p>山頂で何をする？雨が降ったら？9問の行動パターン診断であなたの登山タイプを16種類から判定。おすすめの山も提案。完全無料。</p></div>
@@ -1409,7 +1409,7 @@ function _doShowResult(){
 
   // シェア
   const shareText='登山タイプ診断の結果\n私は「'+type.name+'」（'+typeCode+'型）でした！\n診断者の'+type.rare+'%の'+RARE_LABELS[type.affilLevel]+'\nあなたも試してみよう→';
-  const shareUrlWithType='https://tozan-navi.com/recommend/?type='+typeCode;
+  const shareUrlWithType='https://tozan-navi.com/recommend/'+typeCode+'/';
   document.getElementById('share-x').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText)+'&url='+encodeURIComponent(shareUrlWithType);
   document.getElementById('share-line').href='https://line.me/R/msg/text/?'+encodeURIComponent(shareText+'\n'+shareUrlWithType);
   window._shareNative=function(){
