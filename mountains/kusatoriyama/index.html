@@ -150,6 +150,60 @@ main{max-width:680px;margin:0 auto;padding:12px}
     <svg width="20" height="20" viewBox="0 0 36 36" fill="white"><polygon points="18,4 34,30 2,30"/><polygon points="18,10 30,30 6,30" fill="rgba(255,255,255,0.6)"/></svg>
     YAMAPで詳細を見る
   </a>
+
+  <!-- 登頂記録ボタン -->
+  <button id="climbed-btn" onclick="toggleClimbed()" style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:white;color:#4a6038;font-weight:700;font-size:15px;padding:15px;border-radius:12px;border:2px solid #c8d8b8;margin-bottom:12px;cursor:pointer;-webkit-tap-highlight-color:transparent;">
+    <span id="climbed-icon">🏳</span>
+    <span id="climbed-label">登頂記録に追加</span>
+  </button>
+  <script>
+  (function(){
+    var MTN_ID = 'kusatoriyama';
+    var CLM_KEY = 'ym_climbed';
+    function getArr(){ try{ return JSON.parse(localStorage.getItem(CLM_KEY)||'[]'); }catch(e){ return []; } }
+    function isClimbed(){ return getArr().some(function(e){ return e[0]===MTN_ID; }); }
+    function updateBtn(){
+      var btn = document.getElementById('climbed-btn');
+      var icon = document.getElementById('climbed-icon');
+      var label = document.getElementById('climbed-label');
+      if (!btn) return;
+      if (isClimbed()){
+        btn.style.background='#eef5e8';
+        btn.style.borderColor='#4e6535';
+        btn.style.color='#2a4820';
+        icon.textContent='🚩';
+        label.textContent='登頂済み（タップで解除）';
+      } else {
+        btn.style.background='white';
+        btn.style.borderColor='#c8d8b8';
+        btn.style.color='#4a6038';
+        icon.textContent='🏳';
+        label.textContent='登頂記録に追加';
+      }
+    }
+    window.toggleClimbed = function(){
+      var arr = getArr();
+      if (isClimbed()){
+        if (!confirm('登頂記録を解除しますか？')) return;
+        arr = arr.filter(function(e){ return e[0]!==MTN_ID; });
+        localStorage.setItem(CLM_KEY, JSON.stringify(arr));
+      } else {
+        var today = new Date().toISOString().slice(0,10);
+        arr.push([MTN_ID, today, '']);
+        localStorage.setItem(CLM_KEY, JSON.stringify(arr));
+        // お祝い表示
+        var cel = document.createElement('div');
+        cel.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(20,45,15,0.92);color:white;border-radius:16px;padding:20px 32px;text-align:center;z-index:9999;font-family:sans-serif';
+        cel.innerHTML='<div style="font-size:36px;margin-bottom:6px">🚩</div><div style="font-size:16px;font-weight:800">登頂記録に追加しました！</div><div style="font-size:12px;margin-top:4px;opacity:0.7">マイページで確認できます</div>';
+        document.body.appendChild(cel);
+        setTimeout(function(){ cel.remove(); }, 1800);
+      }
+      updateBtn();
+    };
+    updateBtn();
+  })();
+  </script>
+
 <div class="card"><h2>&#10067; よくある質問</h2><div class="faq-item"><h3 class="faq-q">草戸山は初心者でも登れますか？</h3><div class="faq-a"><p>初級の山です。コース定数8〜12で、高尾山口駅から往復約2時間30分。登山デビューに最適なコースです。</p></div></div><div class="faq-item"><h3 class="faq-q">草戸山のアクセス方法を教えてください。</h3><div class="faq-a"><p>京王線高尾山口駅から徒歩約15分で登山口にアクセスできます。バスは不要です。</p></div></div><div class="faq-item"><h3 class="faq-q">草戸山から橋本駅に抜けることはできますか？</h3><div class="faq-a"><p>南高尾山稜コースを経由して橋本駅まで縦走できます。所要時間は約4時間、距離は約12kmです。</p></div></div></div>
 <div class="rw"><div class="rh">&#9981; 近隣のおすすめ山</div><div class="rg"><a href="/mountains/takao/" class="rc"><div class="rn">高尾山</div><div class="rb"><span class="rbc">初級</span><span class="rbd">定数8〜51</span></div><div class="rt"><span class="rs" id="nearby-time-takao" data-ofuna="50" data-shinjuku="50" data-yokohama="60" data-omiya="75">50分</span> <span class="rs" id="nearby-label-takao">新宿から</span></div></a><a href="/mountains/kobotokeshiroyama/" class="rc"><div class="rn">小仏城山</div><div class="rb"><span class="rbc">初〜中級</span><span class="rbd">定数13〜27</span></div><div class="rt"><span class="rs" id="nearby-time-kobotokeshiroyama" data-ofuna="65" data-shinjuku="65" data-yokohama="75" data-omiya="90">65分</span> <span class="rs" id="nearby-label-kobotokeshiroyama">新宿から</span></div></a></div></div>
 <div class="related-links-card"><div class="related-links-title">&#128218; 関連するまとめ記事</div><a href="/search/keio-hiking/" class="related-link-item"><div class="related-link-main">→ 京王線で行ける登山5選</div><div class="related-link-sub">高尾山・小仏城山・景信山など</div></a><a href="/search/shinjuku-daytrip/" class="related-link-item"><div class="related-link-main">→ 新宿から日帰りで行ける山</div><div class="related-link-sub">高尾山・景信山など</div></a></div>

@@ -150,6 +150,60 @@ main{max-width:680px;margin:0 auto;padding:12px}
     <svg width="20" height="20" viewBox="0 0 36 36" fill="white"><polygon points="18,4 34,30 2,30"/><polygon points="18,10 30,30 6,30" fill="rgba(255,255,255,0.6)"/></svg>
     YAMAPで詳細を見る
   </a>
+
+  <!-- 登頂記録ボタン -->
+  <button id="climbed-btn" onclick="toggleClimbed()" style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:white;color:#4a6038;font-weight:700;font-size:15px;padding:15px;border-radius:12px;border:2px solid #c8d8b8;margin-bottom:12px;cursor:pointer;-webkit-tap-highlight-color:transparent;">
+    <span id="climbed-icon">🏳</span>
+    <span id="climbed-label">登頂記録に追加</span>
+  </button>
+  <script>
+  (function(){
+    var MTN_ID = 'nakimushiyama';
+    var CLM_KEY = 'ym_climbed';
+    function getArr(){ try{ return JSON.parse(localStorage.getItem(CLM_KEY)||'[]'); }catch(e){ return []; } }
+    function isClimbed(){ return getArr().some(function(e){ return e[0]===MTN_ID; }); }
+    function updateBtn(){
+      var btn = document.getElementById('climbed-btn');
+      var icon = document.getElementById('climbed-icon');
+      var label = document.getElementById('climbed-label');
+      if (!btn) return;
+      if (isClimbed()){
+        btn.style.background='#eef5e8';
+        btn.style.borderColor='#4e6535';
+        btn.style.color='#2a4820';
+        icon.textContent='🚩';
+        label.textContent='登頂済み（タップで解除）';
+      } else {
+        btn.style.background='white';
+        btn.style.borderColor='#c8d8b8';
+        btn.style.color='#4a6038';
+        icon.textContent='🏳';
+        label.textContent='登頂記録に追加';
+      }
+    }
+    window.toggleClimbed = function(){
+      var arr = getArr();
+      if (isClimbed()){
+        if (!confirm('登頂記録を解除しますか？')) return;
+        arr = arr.filter(function(e){ return e[0]!==MTN_ID; });
+        localStorage.setItem(CLM_KEY, JSON.stringify(arr));
+      } else {
+        var today = new Date().toISOString().slice(0,10);
+        arr.push([MTN_ID, today, '']);
+        localStorage.setItem(CLM_KEY, JSON.stringify(arr));
+        // お祝い表示
+        var cel = document.createElement('div');
+        cel.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(20,45,15,0.92);color:white;border-radius:16px;padding:20px 32px;text-align:center;z-index:9999;font-family:sans-serif';
+        cel.innerHTML='<div style="font-size:36px;margin-bottom:6px">🚩</div><div style="font-size:16px;font-weight:800">登頂記録に追加しました！</div><div style="font-size:12px;margin-top:4px;opacity:0.7">マイページで確認できます</div>';
+        document.body.appendChild(cel);
+        setTimeout(function(){ cel.remove(); }, 1800);
+      }
+      updateBtn();
+    };
+    updateBtn();
+  })();
+  </script>
+
 <div class="card"><h2>&#10067; よくある質問</h2><div class="faq-item"><h3 class="faq-q">鳴虫山は初心者でも登れますか？</h3><div class="faq-a"><p>はい。コース定数15〜20の初〜中級向けです。木の根が多い箇所もありますが整備されており、東武日光駅から徒歩でアクセスできる日帰り登山に最適です。</p></div></div><div class="faq-item"><h3 class="faq-q">鳴虫山へのアクセス方法を教えてください。</h3><div class="faq-a"><p>東武特急スペーシアで東武日光駅へ（北千住から約2時間）。駅から徒歩約20分で登山口です。バス不要でアクセスできます。</p></div></div><div class="faq-item"><h3 class="faq-q">鳴虫山の下山後に観光できますか？</h3><div class="faq-a"><p>憾満ヶ淵に下山するコースなら清流沿いのお地蔵様の景観を楽しめます。東武日光駅周辺には日光東照宮など観光スポットが充実しています。</p></div></div></div>
 <div class="rw"><div class="rh">&#9981; 近隣のおすすめ山</div><div class="rg"><a href="/mountains/ontake/" class="rc"><div class="rn">男体山</div><div class="rb"><span class="rbc">中〜上級</span><span class="rbd">定数28〜35</span></div><div class="rt"><span class="rs" id="nearby-time-ontake" data-ofuna="165" data-shinjuku="130" data-yokohama="155" data-omiya="110">130分</span> <span class="rs" id="nearby-label-ontake">新宿から</span></div></a><a href="/mountains/nasu/" class="rc"><div class="rn">那須岳</div><div class="rb"><span class="rbc">中級</span><span class="rbd">定数14〜22</span></div><div class="rt"><span class="rs" id="nearby-time-nasu" data-ofuna="145" data-shinjuku="100" data-yokohama="135" data-omiya="90">100分</span> <span class="rs" id="nearby-label-nasu">新宿から</span></div></a></div></div>
 <div class="related-links-card"><div class="related-links-title">&#128218; 関連するまとめ記事</div><a href="/search/tobu-hiking/" class="related-link-item"><div class="related-link-main">→ 東武線で行ける登山5選</div><div class="related-link-sub">男体山・赤城山・燧ヶ岳など</div></a><a href="/search/jr-tohoku-hiking/" class="related-link-item"><div class="related-link-main">→ 東北新幹線で行ける登山</div><div class="related-link-sub">那須岳など</div></a></div>

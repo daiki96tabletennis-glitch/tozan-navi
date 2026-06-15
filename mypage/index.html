@@ -151,6 +151,9 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 .badge-svg-wrap.new-badge{animation:badgePop 0.5s cubic-bezier(0.22,0.61,0.36,1) both;}
 .badge-name{font-size:10px;font-weight:700;color:#3a3530;text-align:center;line-height:1.3;max-width:88px;word-break:break-all;}
 .badge-date{font-size:9px;color:#a09888;text-align:center;}
+.badge-stack-detail{scrollbar-width:none;}
+.badge-stack-detail::-webkit-scrollbar{display:none;}
+.badge-item{min-width:0;}
 #badge-detail-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:500;align-items:center;justify-content:center;}
 #badge-detail-modal.open{display:flex;}
 @keyframes bdCardUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
@@ -326,6 +329,19 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
         <div class="field"><label>登頂日（終了）<span style="font-size:10px;color:#a09888;font-weight:400">　日帰りは空白でOK</span></label><input type="date" id="mc-date-end"></div>
         <div class="field"><label>エリア</label><input type="text" id="mc-area" placeholder="例：東京都・埼玉県"></div>
         <div class="field"><label>備考</label><textarea id="mc-memo" placeholder="天気、同行者、感想など"></textarea></div>
+        <div class="field">
+          <label>カテゴリ</label>
+          <div style="display:flex;gap:12px;margin-top:6px;">
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:14px;font-weight:600;">
+              <input type="checkbox" id="mc-hyaku" style="width:18px;height:18px;accent-color:#b88a10;">
+              <span style="color:#b88a10;">🥇 百名山</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:14px;font-weight:600;">
+              <input type="checkbox" id="mc-nihyaku" style="width:18px;height:18px;accent-color:#707070;">
+              <span style="color:#707070;">🥈 二百名山</span>
+            </label>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -578,16 +594,24 @@ function removeFav(id) {
 
 // ===== 登頂記録 =====
 function getClimbs(){
-  // ym_climbedはMap形式[id,date]の配列、ym_climbed_extraは手動追加
+  // グループ化形式: {id: [{type,date,memo,area,category,uid},...], ...}
   var base={};
   try{
     var arr = JSON.parse(localStorage.getItem(CLM_KEY)||'[]');
-    arr.forEach(function(e){base[e[0]]={type:'site',name:null,date:e[1],area:'',memo:e[2]||''};});
-  }catch{}
+    arr.forEach(function(e,i){
+      var id=e[0];
+      if(!base[id]) base[id]=[];
+      base[id].push({type:'site',name:null,date:e[1],area:'',memo:e[2]||'',category:'',uid:'s_'+i});
+    });
+  }catch(ex){}
   try{
     var extra = JSON.parse(localStorage.getItem(CLM_EX_KEY)||'[]');
-    extra.forEach(function(e,i){base['__extra_'+i]={type:'manual',name:e.name,date:e.date,area:e.area,memo:e.memo};});
-  }catch{}
+    extra.forEach(function(e,i){
+      var id='__extra_'+i;
+      if(!base[id]) base[id]=[];
+      base[id].push({type:'manual',name:e.name,date:e.date,area:e.area,memo:e.memo,category:e.category||'',uid:'e_'+i});
+    });
+  }catch(ex){}
   return base;
 }
 
@@ -596,14 +620,14 @@ function getClimbs(){
 
 
 // ===== バッジ獲得オーバーレイ（v2）=====
-function showClimbCelebrate(id, name, area) {
+function showClimbCelebrate(id, name, area, category) {
   var climbs = getClimbs();
   var count = Object.keys(climbs).length;
   // バッジSVGを生成してオーバーレイに表示
   var ov = document.getElementById('climbed-celebrate');
   if (!ov) return;
-  var cfg = getBadgeCfg(id||'_default', area||'');
-  var svgHtml = makeBadgeSVG(name||'登頂！', cfg, 120, id||'_default');
+  var cfg = getColor(id||'_default', area||'', category||'');
+  var svgHtml = makeBadgeSVG(name||'登頂！', '', id||'_default', cfg, 120);
   ov.innerHTML =
     '<div style="font-size:11px;font-weight:800;color:#a8d860;letter-spacing:0.12em;margin-bottom:8px">🏅 バッジ獲得！</div>'
     +'<div style="width:120px;height:120px;margin:0 auto 12px;filter:drop-shadow(0 6px 16px rgba(0,0,0,0.4))">' + svgHtml + '</div>'
@@ -618,48 +642,86 @@ function showClimbCelebrate(id, name, area) {
   setTimeout(function() { ov.style.display = 'none'; }, 2200);
 }
 
-function removeClimbed(key) {
+function removeClimbed(key, uid) {
   if (!confirm('この登頂記録を削除しますか？')) return;
   if (key.startsWith('__extra_')) {
-    // 手動追加分
     var idx = parseInt(key.replace('__extra_',''));
     try{
       var extra = JSON.parse(localStorage.getItem(CLM_EX_KEY)||'[]');
-      extra.splice(idx,1);
+      extra.splice(idx, 1);
       localStorage.setItem(CLM_EX_KEY, JSON.stringify(extra));
-    }catch{}
+    }catch(ex){}
   } else {
-    // サイト内の記録
     try{
       var arr = JSON.parse(localStorage.getItem(CLM_KEY)||'[]');
-      arr = arr.filter(function(e){return e[0]!==key;});
+      if (uid) {
+        // uid指定: 特定エントリのみ削除
+        var uidIdx = parseInt(uid.replace('s_',''));
+        arr.splice(uidIdx, 1);
+      } else {
+        // id全削除
+        arr = arr.filter(function(e){ return e[0]!==key; });
+      }
       localStorage.setItem(CLM_KEY, JSON.stringify(arr));
-    }catch{}
+    }catch(ex){}
   }
   renderClimbed(); renderFavorites();
 }
 
-// ===== 手動登頂追加 =====
 function openAddClimbed(){
   document.getElementById('mc-name').value='';
   document.getElementById('mc-date').value=new Date().toISOString().slice(0,10);
   document.getElementById('mc-area').value='';
   document.getElementById('mc-memo').value='';
+  document.getElementById('mc-hyaku').checked=false;
+  document.getElementById('mc-nihyaku').checked=false;
   document.getElementById('add-climbed-modal').classList.add('open');
 }
 function closeAddClimbed(){ document.getElementById('add-climbed-modal').classList.remove('open'); }
 function saveManualClimbed(){
   var name = document.getElementById('mc-name').value.trim();
+  var date = document.getElementById('mc-date').value;
+  var dateEnd = document.getElementById('mc-date-end').value;
+  var area = document.getElementById('mc-area').value.trim();
+  var memo = document.getElementById('mc-memo').value.trim();
+  var isHyaku = document.getElementById('mc-hyaku').checked;
+  var isNihyaku = document.getElementById('mc-nihyaku').checked;
+  var category = isHyaku ? '百名山' : (isNihyaku ? '二百名山' : '');
   if (!name){ alert('山名を入力してください'); return; }
-  try{
-    var extra = JSON.parse(localStorage.getItem(CLM_EX_KEY)||'[]');
-    extra.push({name:name, date:document.getElementById('mc-date').value, dateEnd:document.getElementById('mc-date-end').value, area:document.getElementById('mc-area').value.trim(), memo:document.getElementById('mc-memo').value.trim()});
-    localStorage.setItem(CLM_EX_KEY, JSON.stringify(extra));
-  }catch{}
-  var mcName = document.getElementById('mc-name').value.trim();
-  var mcArea = document.getElementById('mc-area').value.trim();
-  showClimbCelebrate('__manual__', mcName, mcArea);
-  closeAddClimbed(); renderClimbed(); renderFavorites();
+
+  // サイト内の山名と一致するか検索してsite扱いにする
+  fetchMountainData(function(mtnData) {
+    var matched = null;
+    if (Array.isArray(mtnData)) {
+      mtnData.forEach(function(m){
+        if (m.name === name || m.name.replace(/（[^）]*）/g,'') === name) {
+          matched = m;
+        }
+      });
+    }
+
+    if (matched) {
+      // サイト内の山として登録（ym_climbedに追加）
+      try {
+        var arr = JSON.parse(localStorage.getItem(CLM_KEY)||'[]');
+        arr.push([matched.id, date, memo]);
+        localStorage.setItem(CLM_KEY, JSON.stringify(arr));
+      } catch(e) {}
+      showClimbCelebrate(matched.id, matched.name, matched.area);
+    } else {
+      // 手動追加（ym_climbed_extra）- categoryも保存
+      try {
+        var extra = JSON.parse(localStorage.getItem(CLM_EX_KEY)||'[]');
+        extra.push({name:name, date:date, dateEnd:dateEnd, area:area, memo:memo, category:category});
+        localStorage.setItem(CLM_EX_KEY, JSON.stringify(extra));
+      } catch(e) {}
+      showClimbCelebrate('__manual__', name, area, category);
+    }
+
+    closeAddClimbed();
+    renderClimbed();
+    renderFavorites();
+  });
 }
 
 // ===== 持ち物 =====
@@ -768,245 +830,267 @@ function esc(s){
 })();
 
 
-// ===== v2 山シルエットプロファイル =====
-var MOUNTAIN_PROFILES = {
-  fuji:     {line:'5,62 18,48 28,38 36,32 50,14 64,32 72,38 82,48 95,62', snow:'38,34 50,14 62,34 56,30 50,22 44,30', snowOpacity:0.85},
-  yari:     {line:'5,62 20,55 34,50 44,42 49,22 50,12 51,22 56,42 66,50 80,55 95,62'},
-  tanigawa: {line:'5,62 15,55 28,48 36,38 40,30 44,38 50,32 56,28 60,36 66,42 74,50 85,55 95,62'},
-  tsurugi:  {line:'5,62 12,55 20,50 26,44 30,50 35,42 40,36 44,42 48,30 50,16 52,30 56,42 60,36 65,42 70,50 76,44 82,52 88,56 95,62'},
-  tsukuba:  {line:'5,62 15,55 25,48 34,40 38,34 42,40 48,36 52,30 56,36 62,42 70,50 82,55 95,62'},
-  takao:    {line:'5,62 18,52 30,44 42,38 50,28 58,38 70,44 82,52 95,62'},
-  kumotori: {line:'5,62 15,52 28,44 38,36 44,32 50,30 56,32 62,36 72,44 85,52 95,62'},
-  oyama:    {line:'5,62 12,50 20,38 28,28 35,22 42,30 50,36 62,42 75,50 85,55 95,62'},
-  kitadake: {line:'5,62 14,52 24,44 32,38 38,32 44,26 48,20 50,16 52,20 56,26 62,32 68,38 76,44 86,52 95,62', snow:'44,26 50,16 56,26 54,22 50,18 46,22', snowOpacity:0.7},
-  hotaka:   {line:'5,62 12,55 20,48 28,42 34,36 38,42 42,34 46,26 50,18 54,26 58,34 62,40 66,36 72,44 80,50 88,56 95,62'},
-  nantaisan:{line:'5,62 15,54 26,46 34,38 40,30 46,22 50,16 54,22 60,30 66,38 74,46 85,54 95,62'},
-  nasu:     {line:'5,62 12,56 20,50 28,44 34,40 38,46 44,38 48,30 52,24 56,32 60,26 64,34 70,42 78,48 86,54 95,62'},
-  bonori:   {line:'5,62 16,54 28,46 38,38 44,32 50,26 54,32 60,40 70,48 82,54 95,62'},
-  kintoki:  {line:'5,62 10,54 16,44 22,34 28,24 34,18 40,26 48,36 58,44 70,50 82,55 95,62'},
-  otake:    {line:'5,62 15,54 26,46 36,40 42,34 46,40 50,32 53,26 56,32 60,38 68,44 78,50 88,56 95,62'},
-  tanzawa:  {line:'5,62 12,54 22,46 32,40 40,34 46,28 50,22 54,28 60,34 68,40 78,46 88,54 95,62'},
-  kirigamine:{line:'5,58 15,52 28,46 40,42 50,40 60,42 72,46 85,52 95,58'},
-  keirisan: {line:'5,62 14,54 24,46 34,40 42,34 48,30 50,28 52,30 58,34 66,40 76,46 86,54 95,62'},
-  kentoku:  {line:'5,62 14,54 24,46 34,38 40,32 44,38 48,30 50,20 52,30 56,36 62,40 70,46 80,52 90,58 95,62'},
-  tonosaki: {line:'5,62 10,56 16,50 22,44 28,38 34,32 40,26 46,20 50,16 56,24 64,34 72,44 80,52 88,58 95,62'},
-  takamizusanzan:{line:'5,62 12,55 20,48 28,40 32,34 36,40 42,34 46,28 50,34 56,28 60,22 64,30 70,38 78,46 86,54 95,62'},
-  hiwadayama:{line:'5,62 18,54 30,46 40,40 48,34 52,30 56,34 64,40 74,48 86,54 95,62'},
-  izugatake:{line:'5,62 14,54 24,46 34,38 40,30 46,24 50,18 54,24 60,30 68,38 78,46 88,54 95,62'},
-  kobotokeshiroyama:{line:'5,62 16,54 28,46 38,40 46,34 50,30 54,34 62,40 72,46 84,54 95,62'},
-  jinba:    {line:'5,62 14,54 24,46 34,40 42,34 48,30 50,28 52,30 58,36 66,42 76,48 86,54 95,62'},
-  mitosaan: {line:'5,62 14,54 24,46 32,40 38,34 42,38 46,30 48,24 50,20 52,24 56,32 62,38 70,44 80,50 90,56 95,62'},
-  kawanoriyama:{line:'5,62 14,54 24,46 34,38 42,32 48,26 52,22 56,28 62,34 70,42 80,50 90,56 95,62'},
-  nokogiriyama_chiba:{line:'5,62 14,56 22,50 28,44 32,48 36,40 40,46 44,38 48,30 50,24 52,30 56,38 60,44 64,40 68,46 72,50 78,54 86,58 95,62'},
-  mitakesan:{line:'5,62 16,54 26,46 36,38 44,30 50,22 56,30 64,38 74,46 84,54 95,62'},
-  takamizusanzan:{line:'5,62 12,55 20,48 28,40 32,34 36,40 42,34 46,28 50,34 56,28 60,22 64,30 70,38 78,46 86,54 95,62'},
-  adatara:  {line:'5,62 14,54 24,46 34,38 42,32 48,28 52,24 56,28 62,34 70,42 80,50 90,56 95,62'},
-  bandai:   {line:'5,62 12,54 22,46 32,38 38,32 44,26 48,22 52,26 58,32 64,38 72,46 82,54 92,60 95,62'},
-  yakedake: {line:'5,62 14,54 22,46 30,38 36,32 40,38 44,30 48,24 50,18 52,24 56,32 62,38 70,46 80,54 90,58 95,62'},
-  kisokoma: {line:'5,62 12,54 22,46 32,38 40,30 46,24 50,18 54,24 60,30 68,38 78,46 88,54 95,62'},
-  _default: {line:'5,62 18,50 30,40 42,32 50,22 58,32 70,40 82,50 95,62'},
+// ===== バッジ描画関数（八角形水彩デザイン） =====
+var PROFILES = {
+  fuji:     {line:'8,66 20,52 30,42 38,35 50,12 62,35 70,42 80,52 92,66', snow:'40,37 50,12 60,37 56,28 50,18 44,28'},
+  yari:     {line:'8,66 22,58 36,52 46,44 49,24 50,12 51,24 54,44 64,52 78,58 92,66'},
+  tanigawa: {line:'8,66 18,58 30,50 38,40 42,32 46,40 50,34 54,28 58,36 64,42 74,52 84,58 92,66'},
+  tsurugi:  {line:'8,66 14,58 22,52 28,46 32,52 37,44 42,38 46,44 49,30 50,14 51,30 54,44 58,38 63,44 68,52 74,46 80,54 88,58 92,66'},
+  takao:    {line:'8,66 20,54 32,46 44,40 50,28 56,40 68,46 80,54 92,66'},
+  kumotori: {line:'8,66 18,54 30,46 40,38 46,34 50,30 54,34 60,38 70,46 82,54 92,66'},
+  oyama:    {line:'8,66 14,52 22,40 30,30 37,22 44,30 52,36 64,44 76,52 86,58 92,66'},
+  tsukuba:  {line:'8,66 18,58 28,50 36,42 40,36 44,42 50,36 56,30 60,36 66,44 74,52 84,58 92,66'},
+  nantaisan:{line:'8,66 18,56 28,48 36,40 42,32 48,24 50,16 52,24 58,32 64,40 72,48 82,56 92,66'},
+  kintoki:  {line:'8,66 12,56 18,46 24,36 30,26 36,18 42,26 50,36 60,44 72,52 82,58 92,66'},
+  tonosaki: {line:'8,66 12,58 18,52 24,46 30,40 36,34 42,28 48,22 50,16 56,24 64,34 72,44 80,52 88,58 92,66'},
+  bonori:   {line:'8,66 18,56 30,48 40,40 48,34 52,30 56,34 62,40 72,48 82,56 92,66'},
+  _default: {line:'8,66 20,52 32,42 44,34 50,22 56,34 68,42 80,52 92,66'},
 };
 
-// ===== v2 バッジ配色 =====
-var BADGE_CONFIGS = {
-  fuji:     {bg1:'#d8eeff',bg2:'#90c0f0',mt1:'#e8f4ff',mt2:'#c0d8f0',rim:'#2860a8'},
-  takao:    {bg1:'#d8f0cc',bg2:'#88c878',mt1:'#3a6020',mt2:'#5a8840',rim:'#226018'},
-  tanigawa: {bg1:'#d0e4f8',bg2:'#88aae0',mt1:'#283880',mt2:'#485898',rim:'#182870'},
-  tsurugi:  {bg1:'#d8dce8',bg2:'#909ab8',mt1:'#282838',mt2:'#484858',rim:'#181828'},
-  tsukuba:  {bg1:'#e8d8f8',bg2:'#b888e0',mt1:'#502870',mt2:'#704898',rim:'#381860'},
-  kumotori: {bg1:'#d0dce8',bg2:'#7898b8',mt1:'#283848',mt2:'#486878',rim:'#182838'},
-  oyama:    {bg1:'#e8d8c8',bg2:'#c09878',mt1:'#604830',mt2:'#907060',rim:'#403020'},
-  kitadake: {bg1:'#c8d8e8',bg2:'#6888b0',mt1:'#182840',mt2:'#384860',rim:'#081828'},
-  hotaka:   {bg1:'#c8d4e8',bg2:'#6880a8',mt1:'#182038',mt2:'#383858',rim:'#081028'},
-  nantaisan:{bg1:'#f0d8d0',bg2:'#d09080',mt1:'#702020',mt2:'#984040',rim:'#481010'},
-  nasu:     {bg1:'#f0ddd8',bg2:'#d09888',mt1:'#603028',mt2:'#885050',rim:'#402018'},
-  bonori:   {bg1:'#d8e8d0',bg2:'#88b880',mt1:'#284828',mt2:'#486848',rim:'#183018'},
-  kintoki:  {bg1:'#f0e0d0',bg2:'#d0a880',mt1:'#704028',mt2:'#986050',rim:'#503018'},
-  otake:    {bg1:'#d0dce0',bg2:'#7898a0',mt1:'#203038',mt2:'#405060',rim:'#102028'},
-  tanzawa:  {bg1:'#c8dcc8',bg2:'#689068',mt1:'#184018',mt2:'#386838',rim:'#083008'},
-  kirigamine:{bg1:'#d8eee8',bg2:'#80c0b0',mt1:'#184838',mt2:'#387060',rim:'#083828'},
-  keirisan: {bg1:'#d8d8e8',bg2:'#9898c8',mt1:'#283068',mt2:'#485088',rim:'#182060'},
-  kentoku:  {bg1:'#d8d0e0',bg2:'#9880b0',mt1:'#382858',mt2:'#584878',rim:'#281848'},
-  tonosaki: {bg1:'#c8d8c8',bg2:'#689070',mt1:'#184020',mt2:'#386840',rim:'#083010'},
-  takamizusanzan:{bg1:'#d0d8e0',bg2:'#7890a0',mt1:'#203038',mt2:'#485868',rim:'#102028'},
-  yari:     {bg1:'#c8d4e0',bg2:'#6884a8',mt1:'#182840',mt2:'#384860',rim:'#081830'},
-  hiwadayama:{bg1:'#d8ead8',bg2:'#88b888',mt1:'#285028',mt2:'#487048',rim:'#183818'},
-  izugatake:{bg1:'#e0dcd0',bg2:'#b0a880',mt1:'#504828',mt2:'#706848',rim:'#302810'},
-  jinba:    {bg1:'#e8e4d8',bg2:'#c0b888',mt1:'#584828',mt2:'#786848',rim:'#383018'},
-  mitosaan: {bg1:'#d4e0d4',bg2:'#80a880',mt1:'#204020',mt2:'#406040',rim:'#103010'},
-  kawanoriyama:{bg1:'#d0dce0',bg2:'#7898a8',mt1:'#203848',mt2:'#406068',rim:'#102838'},
-  nokogiriyama_chiba:{bg1:'#e8e0d0',bg2:'#c0b080',mt1:'#504020',mt2:'#706040',rim:'#302810'},
-  mitakesan:{bg1:'#d8e4d0',bg2:'#88b078',mt1:'#284018',mt2:'#486038',rim:'#183008'},
-  adatara:  {bg1:'#dce8d4',bg2:'#8cb880',mt1:'#284820',mt2:'#486840',rim:'#183010'},
-  bandai:   {bg1:'#d8e0f0',bg2:'#88a0d0',mt1:'#283060',mt2:'#485080',rim:'#182050'},
-  yakedake: {bg1:'#f0e8d8',bg2:'#d0b888',mt1:'#604820',mt2:'#887040',rim:'#403010'},
-  kisokoma: {bg1:'#d8e0e8',bg2:'#889oc0',mt1:'#283850',mt2:'#486070',rim:'#182840'},
-  _tokyo:   {bg1:'#d8f0d8',bg2:'#88c888',mt1:'#285028',mt2:'#487048',rim:'#183818'},
-  _kanagawa:{bg1:'#d0e8f8',bg2:'#80b8e0',mt1:'#183860',mt2:'#386080',rim:'#082848'},
-  _saitama: {bg1:'#e8e4d0',bg2:'#c0b880',mt1:'#585020',mt2:'#787040',rim:'#383010'},
-  _yamanashi:{bg1:'#e0d8f0',bg2:'#a890d8',mt1:'#382858',mt2:'#584878',rim:'#281848'},
-  _nagano:  {bg1:'#c8d8f0',bg2:'#6890c8',mt1:'#182850',mt2:'#384870',rim:'#082040'},
-  _gunma:   {bg1:'#e8e0d0',bg2:'#c0a880',mt1:'#585030',mt2:'#787050',rim:'#383820'},
-  _tochigi: {bg1:'#f0d8e8',bg2:'#d090b8',mt1:'#682040',mt2:'#885860',rim:'#481030'},
-  _fukushima:{bg1:'#dce8d4',bg2:'#8cb880',mt1:'#284820',mt2:'#486840',rim:'#183010'},
-  _niigata: {bg1:'#d0e8f0',bg2:'#78b8c8',mt1:'#184850',mt2:'#387070',rim:'#083840'},
-  _shizuoka:{bg1:'#d0e8e0',bg2:'#78b8a0',mt1:'#184838',mt2:'#386858',rim:'#083028'},
-  _chiba:   {bg1:'#e8e0d0',bg2:'#c0b080',mt1:'#504020',mt2:'#706040',rim:'#302810'},
-  _default: {bg1:'#d8e8d8',bg2:'#88b888',mt1:'#284828',mt2:'#486848',rim:'#183018'},
+// アースカラー統一（青系・緑系・茶系・赤系・グレー系のみ）
+var COLORS = {
+  fuji:      {sky1:'#cce4f8',sky2:'#a4c4e4',mt:'#d8eaf8',acc:'#4880c0',txt:'#2a5080', rim:'#3a5878'},
+  yari:      {sky1:'#d0d8e4',sky2:'#b0bcd0',mt:'#c0ccd8',acc:'#486080',txt:'#283850', rim:'#344060'},
+  tanigawa:  {sky1:'#c8d4e8',sky2:'#a4b4d0',mt:'#b4c0d8',acc:'#3858a0',txt:'#243068', rim:'#2a3870'},
+  tsurugi:   {sky1:'#ccccd8',sky2:'#acacb8',mt:'#bcbcc8',acc:'#505060',txt:'#282830', rim:'#383840'},
+  takao:     {sky1:'#c4e4c4',sky2:'#98c898',mt:'#78b478',acc:'#306830',txt:'#183818', rim:'#245028'},
+  kumotori:  {sky1:'#c8d4e4',sky2:'#a4b4d0',mt:'#98aec8',acc:'#304888',txt:'#182858', rim:'#203268'},
+  oyama:     {sky1:'#ddd0c0',sky2:'#c4b0a0',mt:'#b49080',acc:'#785040',txt:'#402820', rim:'#583828'},
+  tsukuba:   {sky1:'#d0cce0',sky2:'#b8b0d0',mt:'#a8a4c8',acc:'#504888',txt:'#302858', rim:'#383068'},
+  nantaisan: {sky1:'#e8d4d0',sky2:'#d0b4ac',mt:'#c09090',acc:'#904040',txt:'#481818', rim:'#682828'},
+  kintoki:   {sky1:'#e8d8c0',sky2:'#d4bc9c',mt:'#c09870',acc:'#906030',txt:'#482810', rim:'#684018'},
+  tonosaki:  {sky1:'#c4dcd0',sky2:'#9cc4b4',mt:'#78a890',acc:'#286050',txt:'#183830', rim:'#1e4838'},
+  bonori:    {sky1:'#cce0c8',sky2:'#a4c4a0',mt:'#84ac80',acc:'#306030',txt:'#183018', rim:'#224820'},
+  _tokyo:    {sky1:'#c4e4c4',sky2:'#98c898',mt:'#78b478',acc:'#306830',txt:'#183818', rim:'#245028'},
+  _kanagawa: {sky1:'#c4dce8',sky2:'#98c0d8',mt:'#74a8c8',acc:'#285888',txt:'#183858', rim:'#1e4068'},
+  _saitama:  {sky1:'#e0d8c4',sky2:'#c8c0a0',mt:'#b0a070',acc:'#706030',txt:'#382818', rim:'#504020'},
+  _yamanashi:{sky1:'#d0d0e0',sky2:'#b4b4cc',mt:'#9898c0',acc:'#484880',txt:'#282858', rim:'#303060'},
+  _nagano:   {sky1:'#c8d0e4',sky2:'#a4b0d4',mt:'#7888c0',acc:'#284098',txt:'#182060', rim:'#1e2878'},
+  _gunma:    {sky1:'#e0d8c4',sky2:'#ccb89c',mt:'#b89870',acc:'#806040',txt:'#402818', rim:'#604028'},
+  _tochigi:  {sky1:'#e4d0d4',sky2:'#d0b0b4',mt:'#c09098',acc:'#904858',txt:'#481828', rim:'#683038'},
+  _fukushima:{sky1:'#c8dcc8',sky2:'#a0c0a0',mt:'#78a478',acc:'#306030',txt:'#183018', rim:'#224820'},
+  _niigata:  {sky1:'#c4d8e4',sky2:'#98b8d0',mt:'#7498bc',acc:'#285880',txt:'#183858', rim:'#1e3860'},
+  _shizuoka: {sky1:'#c4e0d4',sky2:'#98c8b0',mt:'#68a88c',acc:'#246858',txt:'#143828', rim:'#1c5040'},
+  _default:  {sky1:'#ccd8d4',sky2:'#a4c0b8',mt:'#80a898',acc:'#306058',txt:'#183028', rim:'#224840'},
 };
 
-function getBadgeCfg(id, area) {
-  if (BADGE_CONFIGS[id]) return BADGE_CONFIGS[id];
-  var a = area||'';
-  if(a.indexOf('東京')>-1) return BADGE_CONFIGS._tokyo;
-  if(a.indexOf('神奈川')>-1) return BADGE_CONFIGS._kanagawa;
-  if(a.indexOf('埼玉')>-1) return BADGE_CONFIGS._saitama;
-  if(a.indexOf('山梨')>-1) return BADGE_CONFIGS._yamanashi;
-  if(a.indexOf('長野')>-1) return BADGE_CONFIGS._nagano;
-  if(a.indexOf('群馬')>-1) return BADGE_CONFIGS._gunma;
-  if(a.indexOf('栃木')>-1) return BADGE_CONFIGS._tochigi;
-  if(a.indexOf('福島')>-1) return BADGE_CONFIGS._fukushima;
-  if(a.indexOf('新潟')>-1) return BADGE_CONFIGS._niigata;
-  if(a.indexOf('静岡')>-1) return BADGE_CONFIGS._shizuoka;
-  if(a.indexOf('千葉')>-1) return BADGE_CONFIGS._chiba;
-  return BADGE_CONFIGS._default;
+function getColor(id, area, category){
+  var base = COLORS[id] ? COLORS[id] : (function(){
+    var a=area||'', k='_default';
+    if(a.indexOf('東京')>-1)k='_tokyo';
+    else if(a.indexOf('神奈川')>-1)k='_kanagawa';
+    else if(a.indexOf('埼玉')>-1)k='_saitama';
+    else if(a.indexOf('山梨')>-1)k='_yamanashi';
+    else if(a.indexOf('長野')>-1)k='_nagano';
+    else if(a.indexOf('群馬')>-1)k='_gunma';
+    else if(a.indexOf('栃木')>-1)k='_tochigi';
+    else if(a.indexOf('福島')>-1)k='_fukushima';
+    else if(a.indexOf('新潟')>-1)k='_niigata';
+    else if(a.indexOf('静岡')>-1)k='_shizuoka';
+    return COLORS[k]||COLORS._default;
+  })();
+  var c = Object.assign({}, base);
+  // 通常はダークグレーリム
+  c.rimMain = '#3a3a3a';
+  c.rimSub  = '#1a1a1a';
+  if(category==='百名山'){
+    c.rimMain='#a07818'; c.rimSub='#c89830';
+    c.centerLabel='百名山'; c.centerColor='#7a5810';
+  } else if(category==='二百名山'){
+    c.rimMain='#787878'; c.rimSub='#b0b0b0';
+    c.centerLabel='二百名山'; c.centerColor='#383838';
+  }
+  return c;
 }
 
-function getMtProfile(id) {
-  return MOUNTAIN_PROFILES[id] || MOUNTAIN_PROFILES._default;
+function getProfile(id){ return PROFILES[id]||PROFILES._default; }
+
+function octPoints(cx,cy,r){
+  var pts=[];
+  for(var i=0;i<8;i++){
+    var a=(i*45-22.5)*Math.PI/180;
+    pts.push((cx+r*Math.cos(a)).toFixed(2)+','+(cy+r*Math.sin(a)).toFixed(2));
+  }
+  return pts.join(' ');
 }
 
-// ===== v2 SVG生成 =====
-function makeBadgeSVG(name, cfg, size, id) {
-  size = size||88;
-  var profile = getMtProfile(id||'_default');
+function makeBadgeSVG(name, date, id, c, size){
+  size=size||96;
   var cx=size/2, cy=size/2;
-  var r=size*.46, ri=size*.41;
-  var scale=size/100, offsetY=size*0.08;
+  // リム太さ0.8倍（前回比）
+  var rOuter  = size*0.47;
+  var rRimIn  = size*0.435;  // リム内側（太さ = rOuter-rRimIn ≒ size*0.035 → 0.8倍）
+  var rBlack  = size*0.418;  // 黒細枠
+  var rContent= size*0.405;
 
-  function scPts(pts) {
-    return pts.split(' ').map(function(p){
-      var xy=p.split(',');
-      return (parseFloat(xy[0])*scale).toFixed(1)+','+(parseFloat(xy[1])*scale+offsetY).toFixed(1);
-    }).join(' ');
-  }
+  var profile=getProfile(id);
+  var scale=size/100, oy=size*0.04;
 
-  var scaledLine = scPts(profile.line);
-  var pts = profile.line.split(' ');
-  var firstX = (parseFloat(pts[0].split(',')[0])*scale).toFixed(1);
-  var lastX  = (parseFloat(pts[pts.length-1].split(',')[0])*scale).toFixed(1);
-  var btmY   = (size*0.72).toFixed(1);
-  var mtPath = scaledLine+' '+lastX+','+btmY+' '+firstX+','+btmY;
+  function sc(pts){ return pts.split(' ').map(function(p){
+    var xy=p.split(',');
+    return (parseFloat(xy[0])*scale).toFixed(1)+','+(parseFloat(xy[1])*scale+oy).toFixed(1);
+  }).join(' '); }
 
-  var snowHTML = '';
-  if (profile.snow) {
-    snowHTML = '<polygon points="'+scPts(profile.snow)+'" fill="white" opacity="'+(profile.snowOpacity||0.7)+'"/>';
-  }
+  var line=sc(profile.line);
+  var pts=profile.line.split(' ');
+  var x0=(parseFloat(pts[0].split(',')[0])*scale).toFixed(1);
+  var xN=(parseFloat(pts[pts.length-1].split(',')[0])*scale).toFixed(1);
+  var yB=(size*0.76).toFixed(1);
+  var mtPoly=line+' '+xN+','+yB+' '+x0+','+yB;
+  var snowPoly=profile.snow?sc(profile.snow):null;
 
-  var fs = size*(name.length>6?(name.length>8?.075:.088):.105);
-  var gid='g'+Math.random().toString(36).slice(2,8);
-  var mgid='m'+Math.random().toString(36).slice(2,8);
+  var did='b'+Math.random().toString(36).slice(2,7);
+  var fs=size*(name.length>6?(name.length>8?.070:.084):.098);
+
+  var octOuter  =octPoints(cx,cy,rOuter);
+  var octRimIn  =octPoints(cx,cy,rRimIn);
+  var octBlack  =octPoints(cx,cy,rBlack);
+  var octContent=octPoints(cx,cy,rContent);
+
+  var defs='<defs>'
+    +'<radialGradient id="'+did+'sky" cx="50%" cy="28%" r="72%">'
+    +'<stop offset="0%" stop-color="'+c.sky1+'"/>'
+    +'<stop offset="100%" stop-color="'+c.sky2+'"/>'
+    +'</radialGradient>'
+    +'<linearGradient id="'+did+'mt" x1="0.1" y1="0" x2="0.9" y2="1">'
+    +'<stop offset="0%" stop-color="'+c.mt+'" stop-opacity="0.95"/>'
+    +'<stop offset="100%" stop-color="'+c.acc+'" stop-opacity="0.82"/>'
+    +'</linearGradient>'
+    +'<linearGradient id="'+did+'haze" x1="0" y1="0" x2="0" y2="1">'
+    +'<stop offset="55%" stop-color="'+c.sky2+'" stop-opacity="0"/>'
+    +'<stop offset="100%" stop-color="'+c.sky2+'" stop-opacity="0.5"/>'
+    +'</linearGradient>'
+    +'<clipPath id="'+did+'clip"><polygon points="'+octContent+'"/></clipPath>'
+    +'<filter id="'+did+'soft"><feGaussianBlur stdDeviation="0.8"/></filter>'
+    +'</defs>';
+
+  // リム：外側（濃い色）→ 内側（やや明るい）→ 黒細枠
+  var rimHtml
+    ='<polygon points="'+octOuter+'" fill="'+c.rimMain+'"/>'
+    +'<polygon points="'+octRimIn+'" fill="'+c.sky1+'" opacity="0.15"/>'
+    +'<polygon points="'+octBlack+'" fill="none" stroke="#111" stroke-width="'+(size*0.013)+'"/>';
+
+  var bgHtml='<polygon points="'+octContent+'" fill="url(#'+did+'sky)"/>';
+
+  var mtHtml='<g clip-path="url(#'+did+'clip)">'
+    +'<polygon points="'+mtPoly+'" fill="'+c.acc+'" opacity="0.12" filter="url(#'+did+'soft)" transform="translate(0,'+(size*0.016)+')"\/>'
+    +'<polygon points="'+mtPoly+'" fill="url(#'+did+'mt)"/>'
+    +'<polyline points="'+line+'" fill="none" stroke="white" stroke-width="'+(size*0.013)+'" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round"/>'
+    +(snowPoly?'<polygon points="'+snowPoly+'" fill="white" opacity="0.85" filter="url(#'+did+'soft)"/>':'')
+    +'<rect x="0" y="'+(cy)+'" width="'+size+'" height="'+(size*0.35)+'" fill="url(#'+did+'haze)"/>'
+    +'</g>';
+
+  var treeHtml='';
+
+  // 百名山・二百名山ラベル（中央）
+  var labelHtml=c.centerLabel
+    ?'<text x="'+cx+'" y="'+(cy+rContent*0.28)+'" text-anchor="middle" dominant-baseline="middle"'
+      +' font-family="\'Noto Serif JP\',serif" font-weight="700" font-size="'+(size*0.09)+'"'
+      +' fill="'+c.centerColor+'" paint-order="stroke" stroke="rgba(255,255,255,0.9)" stroke-width="2.5">'+c.centerLabel+'</text>'
+    :'';
+
+  // 山名（上部）
+  var nameHtml='<text x="'+cx+'" y="'+(cy-rContent*0.68)+'" text-anchor="middle" dominant-baseline="middle"'
+    +' font-family="\'Noto Serif JP\',serif" font-weight="900" font-size="'+fs+'"'
+    +' fill="'+c.txt+'" paint-order="stroke" stroke="rgba(255,255,255,0.95)" stroke-width="3.5" stroke-linejoin="round">'+name+'</text>';
+
+  // YAMATCH（下部よりやや上）
+  var yamatchHtml='<text x="'+cx+'" y="'+(cy+rContent*0.65)+'" text-anchor="middle" dominant-baseline="middle"'
+    +' font-family="\'Playfair Display\',Georgia,serif" font-weight="700" font-size="'+(size*0.075)+'" letter-spacing="2"'
+    +' fill="'+c.acc+'" opacity="0.6">YAMATCH</text>';
+
+  // 日付（最下部）
+  var dateHtml=date
+    ?'<text x="'+cx+'" y="'+(cy+rContent*0.86)+'" text-anchor="middle" dominant-baseline="middle"'
+      +' font-family="\'Playfair Display\',Georgia,serif" font-size="'+(size*0.072)+'" letter-spacing="1"'
+      +' fill="'+c.txt+'" opacity="0.55">'+date+'</text>'
+    :'';
 
   return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" xmlns="http://www.w3.org/2000/svg">'
-    +'<defs>'
-    +'<radialGradient id="'+gid+'bg" cx="50%" cy="35%" r="65%">'
-    +'<stop offset="0%" stop-color="'+cfg.bg1+'"/><stop offset="100%" stop-color="'+cfg.bg2+'"/>'
-    +'</radialGradient>'
-    +'<linearGradient id="'+mgid+'" x1="0" y1="0" x2="0.3" y2="1">'
-    +'<stop offset="0%" stop-color="'+(cfg.mt2||cfg.mt1)+'"/><stop offset="100%" stop-color="'+cfg.mt1+'"/>'
-    +'</linearGradient>'
-    +'<clipPath id="'+gid+'clip"><circle cx="'+cx+'" cy="'+cy+'" r="'+(ri*.93)+'"/></clipPath>'
-    +'</defs>'
-    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+cfg.rim+'"/>'
-    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(r*.9)+'" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="'+(size*.018)+'"/>'
-    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(ri*.96)+'" fill="url(#'+gid+'bg)"/>'
-    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(ri*.96)+'" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="'+(size*.016)+'"/>'
-    +'<g clip-path="url(#'+gid+'clip)">'
-    +'<polygon points="'+mtPath+'" fill="url(#'+mgid+')"/>'
-    +'<polyline points="'+scaledLine+'" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="'+(size*.016)+'" stroke-linejoin="round"/>'
-    +snowHTML
-    +'<ellipse cx="'+cx+'" cy="'+(size*.72)+'" rx="'+(size*.32)+'" ry="'+(size*.04)+'" fill="rgba(0,0,0,0.12)"/>'
-    +'</g>'
-    +'<rect x="'+(cx-ri*.87)+'" y="'+(cy-ri*.95)+'" width="'+(ri*1.74)+'" height="'+(size*.21)+'" rx="'+(size*.035)+'" fill="rgba(0,0,0,0.28)"/>'
-    +'<text x="'+cx+'" y="'+(cy-ri*.68)+'" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-weight="900" font-size="'+fs+'" fill="white" paint-order="stroke" stroke="rgba(0,0,0,0.4)" stroke-width="1.2">'+name+'</text>'
-    +'<rect x="'+(cx-ri*.87)+'" y="'+(cy+ri*.66)+'" width="'+(ri*1.74)+'" height="'+(size*.2)+'" rx="'+(size*.035)+'" fill="rgba(0,0,0,0.22)"/>'
-    +'<text x="'+cx+'" y="'+(cy+ri*.87)+'" text-anchor="middle" dominant-baseline="middle" font-family="Georgia,serif" font-weight="700" font-size="'+(size*.088)+'" fill="rgba(255,255,255,0.82)" letter-spacing="1.5">YAMATCH</text>'
-    +'<ellipse cx="'+(cx-size*.08)+'" cy="'+(cy-size*.22)+'" rx="'+(size*.15)+'" ry="'+(size*.07)+'" fill="rgba(255,255,255,0.13)" transform="rotate(-30,'+(cx-size*.08)+','+(cy-size*.22)+')"/>'
-    +'</svg>';
-}
-
-/* 旧renderCollectionBanner削除済 */
-function openBadgeDetail(name, area, elev, date, memo, cfg, key) {
-  _currentBadgeKey = key || null;
-  var m = document.getElementById('badge-detail-modal');
-  document.getElementById('badge-detail-svg').innerHTML = makeBadgeSVG(name, cfg, 120, key);
-  document.getElementById('badge-detail-name').textContent = name;
-  document.getElementById('badge-detail-sub').textContent = (area||'')+(elev?' · '+Number(elev).toLocaleString()+'m':'');
-  document.getElementById('badge-detail-date').textContent = date ? '📅 '+date : '';
-  var me = document.getElementById('badge-detail-memo');
-  if (memo) { me.textContent=memo; me.style.display='block'; } else { me.style.display='none'; }
-  m.classList.add('open');
-}
-function closeBadgeDetail() { document.getElementById('badge-detail-modal').classList.remove('open'); }
-function badgeEdit() {
-  if (!_currentBadgeKey) return;
-  closeBadgeDetail();
-  var climbs = getClimbs();
-  var c = climbs[_currentBadgeKey];
-  if (!c) return;
-  openEditClimbed(_currentBadgeKey, c);
-}
-function badgeDelete() {
-  if (!_currentBadgeKey) return;
-  closeBadgeDetail();
-  removeClimbed(_currentBadgeKey);
-}
-function handleBadgeClick(el) {
-  openBadgeDetail(
-    el.getAttribute('data-name'),
-    el.getAttribute('data-area'),
-    el.getAttribute('data-elev'),
-    el.getAttribute('data-date'),
-    el.getAttribute('data-memo'),
-    JSON.parse(el.getAttribute('data-cfg')||'{}'),
-    el.getAttribute('data-key')
-  );
+    +defs+rimHtml+bgHtml+mtHtml+treeHtml+labelHtml+nameHtml+yamatchHtml+dateHtml+'</svg>';
 }
 
 // ===== バッジグリッド描画 =====
 function renderClimbed() {
   var climbs = getClimbs();
-  var keys = Object.keys(climbs).sort(function(a,b){
-    return (climbs[b].date||'').localeCompare(climbs[a].date||'');
+  var ids = Object.keys(climbs).sort(function(a,b){
+    var aDate = climbs[a][0]?climbs[a][0].date:'';
+    var bDate = climbs[b][0]?climbs[b][0].date:'';
+    return bDate.localeCompare(aDate);
   });
-  document.getElementById('climbed-count').textContent = keys.length;
+  var totalCount = 0;
+  ids.forEach(function(id){ totalCount += climbs[id].length; });
+  document.getElementById('climbed-count').textContent = totalCount;
+
   var el = document.getElementById('climbed-list');
-  if (keys.length === 0) {
+  if (ids.length === 0) {
     el.innerHTML = '<div style="padding:40px 0;text-align:center"><div style="font-size:48px;margin-bottom:10px">🏅</div><div style="font-weight:700;font-size:14px;color:#5a5248;margin-bottom:6px">まだバッジがありません</div><div style="font-size:12px;color:#a09888">山カードの 🏳 で最初のバッジを獲得！</div></div>';
     return;
   }
+
   fetchMountainData(function(mtnData) {
     var mtnMap = {};
     if (Array.isArray(mtnData)) { mtnData.forEach(function(m){ mtnMap[m.id]=m; }); }
-    renderCollectionBanner(keys, mtnMap);
+    renderCollectionBanner(ids, climbs, mtnMap);
     fetchNames(function(nameMap) {
       var html = '<div class="badge-grid">';
-      keys.forEach(function(k, i) {
-        var c = climbs[k];
-        var mt = mtnMap[k];
-        var name = c.type==='manual' ? c.name : (nameMap[k]||k);
-        var area = c.area||(mt?mt.area:'');
+      ids.forEach(function(id) {
+        var entries = climbs[id];
+        var first = entries[0];
+        var mt = mtnMap[id];
+        var name = first.type==='manual' ? first.name : (nameMap[id]||id);
+        var area = first.area||(mt?mt.area:'');
         var elev = mt?mt.elevation:'';
-        var cfg = getBadgeCfg(k, area);
-        var dateShort = c.date?c.date.slice(0,7).replace(/-/g,'/'):'';
-        var dateLong = c.date?new Date(c.date.replace(/\//g,'-')).toLocaleDateString('ja-JP',{year:'numeric',month:'short',day:'numeric'}):'';
-        var svgHtml = makeBadgeSVG(name, cfg, 88, k);
-        var attrs = ' data-key="'+esc(k)+'" data-name="'+esc(name)+'" data-area="'+esc(area)+'" data-elev="'+(elev||'')+'" data-date="'+esc(dateLong)+'" data-memo="'+esc(c.memo||'')+'" data-cfg="'+esc(JSON.stringify(cfg))+'"';
-        html += '<div class="badge-item"'+attrs+' onclick="handleBadgeClick(this)">'
-          +'<div class="badge-svg-wrap'+(i<6?' new-badge':'')+'">' + svgHtml + '</div>'
-          +'<div class="badge-name">'+esc(name)+'</div>'
-          +'<div class="badge-date">'+dateShort+'</div>'
-          +'</div>';
+        var cfg = getColor(id, area, mt ? mt.category : (first.category||''));
+        var count = entries.length;
+        var svgHtml = makeBadgeSVG(name, cfg, 88, id);
+
+        // 重なりバッジのstack表示
+        if (count > 1) {
+          // 複数枚：重ねて表示、タップで展開
+          var stackId = 'stack_' + id.replace(/[^a-zA-Z0-9]/g,'_');
+          var stackHtml = '<div class="badge-stack" id="' + stackId + '" onclick="toggleBadgeStack(this)" style="position:relative;width:88px;height:88px;cursor:pointer;">';
+          // 最大3枚まで影を表示
+          var showShadows = Math.min(count-1, 2);
+          for (var s = showShadows; s >= 1; s--) {
+            stackHtml += '<div style="position:absolute;top:' + (s*4) + 'px;left:' + (s*3) + 'px;width:88px;height:88px;opacity:' + (0.5-s*0.1) + ';filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));">' + svgHtml + '</div>';
+          }
+          stackHtml += '<div style="position:relative;width:88px;height:88px;filter:drop-shadow(0 3px 8px rgba(0,0,0,0.25));">' + svgHtml + '</div>';
+          // バッジ枚数バッジ
+          stackHtml += '<div style="position:absolute;top:-4px;right:-4px;background:#4e6535;color:white;font-size:10px;font-weight:800;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid white;">' + count + '</div>';
+          stackHtml += '</div>';
+
+          // 展開時リスト（非表示）
+          var detailHtml = '<div class="badge-stack-detail" id="' + stackId + '_detail" style="display:none;flex-direction:row;gap:8px;overflow-x:auto;padding:4px 2px;">';
+          entries.forEach(function(entry, ei) {
+            var dateShort = entry.date?entry.date.slice(0,7).replace(/-/g,'/'):'';
+            var dateLong = entry.date?new Date(entry.date.replace(/\//g,'-')).toLocaleDateString('ja-JP',{year:'numeric',month:'short',day:'numeric'}):'';
+            var attrs = ' data-key="' + esc(id) + '" data-uid="' + esc(entry.uid) + '" data-name="' + esc(name) + '" data-area="' + esc(area) + '" data-elev="' + (elev||'') + '" data-date="' + esc(dateLong) + '" data-memo="' + esc(entry.memo||'') + '" data-cfg="' + esc(JSON.stringify(cfg)) + '"';
+            detailHtml += '<div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;">';
+            detailHtml += '<div class="badge-svg-wrap"' + attrs + ' onclick="event.stopPropagation();handleBadgeClick(this)" style="width:72px;height:72px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.2));cursor:pointer;">' + makeBadgeSVG(name, cfg, 72, id) + '</div>';
+            detailHtml += '<div style="font-size:9px;color:#a09888;">' + dateShort + '</div>';
+            detailHtml += '</div>';
+          });
+          detailHtml += '</div>';
+
+          html += '<div class="badge-item">';
+          html += stackHtml + detailHtml;
+          html += '<div class="badge-name">' + esc(name) + '</div>';
+          html += '<div class="badge-date">' + (first.date?first.date.slice(0,7).replace(/-/g,'/'):'') + '（' + count + '回）</div>';
+          html += '</div>';
+
+        } else {
+          // 1枚：通常表示
+          var c = first;
+          var dateShort = c.date?c.date.slice(0,7).replace(/-/g,'/'):'';
+          var dateLong = c.date?new Date(c.date.replace(/\//g,'-')).toLocaleDateString('ja-JP',{year:'numeric',month:'short',day:'numeric'}):'';
+          var attrs = ' data-key="' + esc(id) + '" data-uid="' + esc(c.uid||'') + '" data-name="' + esc(name) + '" data-area="' + esc(area) + '" data-elev="' + (elev||'') + '" data-date="' + esc(dateLong) + '" data-memo="' + esc(c.memo||'') + '" data-cfg="' + esc(JSON.stringify(cfg)) + '"';
+          html += '<div class="badge-item">';
+          html += '<div class="badge-svg-wrap new-badge"' + attrs + ' onclick="handleBadgeClick(this)">' + svgHtml + '</div>';
+          html += '<div class="badge-name">' + esc(name) + '</div>';
+          html += '<div class="badge-date">' + dateShort + '</div>';
+          html += '</div>';
+        }
       });
       html += '</div>';
       el.innerHTML = html;
@@ -1014,14 +1098,22 @@ function renderClimbed() {
   });
 }
 
-// ===== コレクションバナー =====
-var _TITLES2 = [
-  {min:0,label:'🌱 登山見習い',next:3},{min:3,label:'🥾 山歩き入門',next:10},
-  {min:10,label:'⛰ 健脚ハイカー',next:20},{min:20,label:'🏔 山の使い手',next:50},
-  {min:50,label:'👑 山の主',next:100},{min:100,label:'🦅 百名山制覇',next:null},
-];
-function renderCollectionBanner(keys, mtnMap) {
-  var total = keys.length;
+function toggleBadgeStack(el) {
+  var detail = document.getElementById(el.id + '_detail');
+  if (!detail) return;
+  if (detail.style.display === 'none') {
+    detail.style.display = 'flex';
+    el.style.marginBottom = '4px';
+  } else {
+    detail.style.display = 'none';
+    el.style.marginBottom = '';
+  }
+}
+
+
+function renderCollectionBanner(keys, climbs, mtnMap) {
+  var total = 0;
+  keys.forEach(function(k){ total += (climbs&&climbs[k])?climbs[k].length:1; });
   var hyaku = 0;
   if (mtnMap) keys.forEach(function(k){ if(mtnMap[k]&&mtnMap[k].category==='百名山') hyaku++; });
   var banner = document.getElementById('collection-banner');
