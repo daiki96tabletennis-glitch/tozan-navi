@@ -1093,6 +1093,7 @@ function renderClimbed() {
         var elev = mt?mt.elevation:'';
         var cfg = getColor(id, area, mt ? mt.category : (first.category||''));
         var count = entries.length;
+        var dateShort = first.date?first.date.slice(0,7).replace(/-/g,'/'):'';
         var svgHtml = makeBadgeSVG(name, dateShort, id, cfg, 88);
 
         // 重なりバッジのstack表示
