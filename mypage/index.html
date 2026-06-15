@@ -1010,6 +1010,56 @@ function makeBadgeSVG(name, date, id, c, size){
     +defs+rimHtml+bgHtml+mtHtml+treeHtml+labelHtml+nameHtml+yamatchHtml+dateHtml+'</svg>';
 }
 
+
+// ===== バッジ詳細モーダル制御 =====
+var _currentBadgeKey = null;
+var _currentBadgeUid = null;
+
+function openBadgeDetail(name, area, elev, date, memo, cfg, key, uid) {
+  _currentBadgeKey = key || null;
+  _currentBadgeUid = uid || null;
+  var m = document.getElementById('badge-detail-modal');
+  var cat = cfg && cfg.centerLabel ? cfg.centerLabel : '';
+  var c = getColor(key||'_default', area||'', cat);
+  document.getElementById('badge-detail-svg').innerHTML = makeBadgeSVG(name, date||'', key||'_default', c, 120);
+  document.getElementById('badge-detail-name').textContent = name;
+  document.getElementById('badge-detail-sub').textContent = (area||'')+(elev?' · '+Number(elev).toLocaleString()+'m':'');
+  document.getElementById('badge-detail-date').textContent = date ? '📅 '+date : '';
+  var me = document.getElementById('badge-detail-memo');
+  if (memo) { me.textContent=memo; me.style.display='block'; } else { me.style.display='none'; }
+  m.classList.add('open');
+}
+function closeBadgeDetail() { document.getElementById('badge-detail-modal').classList.remove('open'); }
+function badgeEdit() {
+  if (!_currentBadgeKey) return;
+  closeBadgeDetail();
+  var climbs = getClimbs();
+  var entries = climbs[_currentBadgeKey];
+  if (!entries || !entries.length) return;
+  openEditClimbed(_currentBadgeKey, entries[0]);
+}
+function badgeDelete() {
+  if (!_currentBadgeKey) return;
+  closeBadgeDetail();
+  removeClimbed(_currentBadgeKey, _currentBadgeUid);
+}
+function handleBadgeClick(el) {
+  var key  = el.getAttribute('data-key');
+  var area = el.getAttribute('data-area');
+  var cat  = el.getAttribute('data-cat')||'';
+  var c    = getColor(key||'_default', area||'', cat);
+  openBadgeDetail(
+    el.getAttribute('data-name'),
+    area,
+    el.getAttribute('data-elev'),
+    el.getAttribute('data-date'),
+    el.getAttribute('data-memo'),
+    c,
+    key,
+    el.getAttribute('data-uid')
+  );
+}
+
 // ===== バッジグリッド描画 =====
 function renderClimbed() {
   var climbs = getClimbs();
@@ -1043,7 +1093,7 @@ function renderClimbed() {
         var elev = mt?mt.elevation:'';
         var cfg = getColor(id, area, mt ? mt.category : (first.category||''));
         var count = entries.length;
-        var svgHtml = makeBadgeSVG(name, cfg, 88, id);
+        var svgHtml = makeBadgeSVG(name, dateShort, id, cfg, 88);
 
         // 重なりバッジのstack表示
         if (count > 1) {
@@ -1065,9 +1115,9 @@ function renderClimbed() {
           entries.forEach(function(entry, ei) {
             var dateShort = entry.date?entry.date.slice(0,7).replace(/-/g,'/'):'';
             var dateLong = entry.date?new Date(entry.date.replace(/\//g,'-')).toLocaleDateString('ja-JP',{year:'numeric',month:'short',day:'numeric'}):'';
-            var attrs = ' data-key="' + esc(id) + '" data-uid="' + esc(entry.uid) + '" data-name="' + esc(name) + '" data-area="' + esc(area) + '" data-elev="' + (elev||'') + '" data-date="' + esc(dateLong) + '" data-memo="' + esc(entry.memo||'') + '" data-cfg="' + esc(JSON.stringify(cfg)) + '"';
+            var attrs = ' data-key="' + esc(id) + '" data-uid="' + esc(entry.uid) + '" data-name="' + esc(name) + '" data-area="' + esc(area) + '" data-elev="' + (elev||'') + '" data-date="' + esc(dateLong) + '" data-memo="' + esc(entry.memo||'') + '"';
             detailHtml += '<div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;">';
-            detailHtml += '<div class="badge-svg-wrap"' + attrs + ' onclick="event.stopPropagation();handleBadgeClick(this)" style="width:72px;height:72px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.2));cursor:pointer;">' + makeBadgeSVG(name, cfg, 72, id) + '</div>';
+            detailHtml += '<div class="badge-svg-wrap"' + attrs + ' onclick="event.stopPropagation();handleBadgeClick(this)" style="width:72px;height:72px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.2));cursor:pointer;">' + makeBadgeSVG(name, dateShort, id, cfg, 72) + '</div>';
             detailHtml += '<div style="font-size:9px;color:#a09888;">' + dateShort + '</div>';
             detailHtml += '</div>';
           });
@@ -1084,7 +1134,7 @@ function renderClimbed() {
           var c = first;
           var dateShort = c.date?c.date.slice(0,7).replace(/-/g,'/'):'';
           var dateLong = c.date?new Date(c.date.replace(/\//g,'-')).toLocaleDateString('ja-JP',{year:'numeric',month:'short',day:'numeric'}):'';
-          var attrs = ' data-key="' + esc(id) + '" data-uid="' + esc(c.uid||'') + '" data-name="' + esc(name) + '" data-area="' + esc(area) + '" data-elev="' + (elev||'') + '" data-date="' + esc(dateLong) + '" data-memo="' + esc(c.memo||'') + '" data-cfg="' + esc(JSON.stringify(cfg)) + '"';
+          var attrs = ' data-key="' + esc(id) + '" data-uid="' + esc(c.uid||'') + '" data-name="' + esc(name) + '" data-area="' + esc(area) + '" data-elev="' + (elev||'') + '" data-date="' + esc(dateLong) + '" data-memo="' + esc(c.memo||'') + '"';
           html += '<div class="badge-item">';
           html += '<div class="badge-svg-wrap new-badge"' + attrs + ' onclick="handleBadgeClick(this)">' + svgHtml + '</div>';
           html += '<div class="badge-name">' + esc(name) + '</div>';
