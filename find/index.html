@@ -138,6 +138,45 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
 /* 戻るボタン */
 .back-row{display:flex;align-items:center;margin-bottom:16px;}
 .back-btn-q{background:none;border:none;color:#8a7a6a;font-size:13px;cursor:pointer;padding:0;display:flex;align-items:center;gap:4px;}
+
+/* ===== アニメーション ===== */
+@keyframes slideInRight{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes rippleAnim{to{transform:scale(4);opacity:0;}}
+@keyframes loadPulse{0%,100%{opacity:0.3;transform:scaleY(0.65);}50%{opacity:1;transform:scaleY(1);}}
+@keyframes resultCardIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* ステップアニメ */
+#step-q.animating{animation:slideInRight 0.28s cubic-bezier(0.22,0.61,0.36,1);}
+#step-q.animating-back{animation:slideInLeft 0.28s cubic-bezier(0.22,0.61,0.36,1);}
+#step-result .result-card{opacity:0;animation:resultCardIn 0.38s ease forwards;}
+#step-result .result-card:nth-child(1){animation-delay:0.05s;}
+#step-result .result-card:nth-child(2){animation-delay:0.18s;}
+#step-result .result-card:nth-child(3){animation-delay:0.31s;}
+
+/* リップル */
+.ripple{position:absolute;border-radius:50%;background:rgba(74,96,56,0.15);transform:scale(0);animation:rippleAnim 0.5s linear;pointer-events:none;}
+.choice{position:relative;overflow:hidden;}
+
+/* 選択済み選択肢 */
+.choice.selected{border-color:#4e6535 !important;background:#eef5e8 !important;}
+.choice.selected::after{content:"✓";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;font-weight:900;color:#4e6535;}
+
+/* ローディングオーバーレイ */
+#find-loading{position:fixed;inset:0;background:#f0ede5;z-index:9999;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;}
+#find-loading.active{display:flex;}
+.fl-bars{display:flex;gap:7px;align-items:flex-end;height:52px;}
+.fl-bar{width:11px;border-radius:5px 5px 0 0;background:#4e6535;animation:loadPulse 0.9s ease-in-out infinite;}
+.fl-bar:nth-child(1){height:26px;animation-delay:0s;}
+.fl-bar:nth-child(2){height:44px;animation-delay:0.15s;}
+.fl-bar:nth-child(3){height:34px;animation-delay:0.3s;}
+.fl-bar:nth-child(4){height:52px;animation-delay:0.45s;}
+.fl-bar:nth-child(5){height:30px;animation-delay:0.6s;}
+.fl-txt{font-size:14px;font-weight:700;color:#4e6535;letter-spacing:0.04em;}
+
+/* 選択肢のホバーリフト */
+.choice:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,0.09);border-color:#a8c898 !important;}
 </style>
 </head>
 <body>
@@ -150,6 +189,13 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
 <main>
 
 <!-- イントロ -->
+<div id="find-loading">
+  <div class="fl-bars">
+    <div class="fl-bar"></div><div class="fl-bar"></div><div class="fl-bar"></div>
+    <div class="fl-bar"></div><div class="fl-bar"></div>
+  </div>
+  <div class="fl-txt">あなたにぴったりの山を探しています...</div>
+</div>
 <div id="step-intro" class="step active">
   <div class="intro-hero">
     <div class="intro-hero-icon">🗻</div>
@@ -281,6 +327,10 @@ function goBack(){
     show('step-intro');
   } else {
     currentQ--;
+    var stepQ = document.getElementById('step-q');
+    stepQ.classList.remove('animating','animating-back');
+    void stepQ.offsetWidth;
+    stepQ.classList.add('animating-back');
     renderQ();
   }
 }
@@ -294,7 +344,7 @@ function renderQ(){
   var html = '';
   q.choices.forEach(function(c){
     var sel = answers[q.id] === c.value ? ' selected' : '';
-    html += '<button class="choice' + sel + '" data-val="' + c.value + '" onclick="selectChoice(\'' + q.id + '\',\'' + c.value + '\')">';
+    html += '<button class="choice' + sel + '" data-val="' + c.value + '" onclick="selectChoice(\'' + q.id + '\',\'' + c.value + '\',this)">';
     html += '<div class="choice-icon">' + c.icon + '</div>';
     html += '<div><div class="choice-label">' + c.label + '</div><div class="choice-sub">' + c.sub + '</div></div>';
     html += '</button>';
@@ -304,19 +354,37 @@ function renderQ(){
 }
 
 var _transitioning = false;
-function selectChoice(qid, val){
+function selectChoice(qid, val, evtEl){
   if(_transitioning) return;
   _transitioning = true;
   answers[qid] = val;
+
+  // リップルエフェクト
+  if(evtEl){
+    var rpl = document.createElement('span');
+    rpl.className = 'ripple';
+    var rc = evtEl.getBoundingClientRect();
+    var sz = Math.max(rc.width, rc.height);
+    rpl.style.width = rpl.style.height = sz + 'px';
+    rpl.style.left = (rc.width/2 - sz/2) + 'px';
+    rpl.style.top  = (rc.height/2 - sz/2) + 'px';
+    evtEl.appendChild(rpl);
+    setTimeout(function(){ if(rpl.parentNode) rpl.parentNode.removeChild(rpl); }, 600);
+  }
 
   document.querySelectorAll('#choices .choice').forEach(function(btn){
     btn.classList.toggle('selected', btn.getAttribute('data-val') === val);
   });
 
+  // 次の質問へスライド
   setTimeout(function(){
     _transitioning = false;
     if(currentQ < QUESTIONS.length - 1){
       currentQ++;
+      var stepQ = document.getElementById('step-q');
+      stepQ.classList.remove('animating','animating-back');
+      void stepQ.offsetWidth;
+      stepQ.classList.add('animating');
       renderQ();
     } else {
       if(mountainsData.length === 0){
@@ -381,20 +449,29 @@ function scoreMount(m){
   if(drive > timeLimit) return -1;
   score += Math.max(0, 200 - drive) / 5;
 
-  // 雰囲気マッチ
+  // 雰囲気マッチ（精度向上版）
   var vibes = m.vibes || [];
   var vibeMatch = {
-    view:     ['view','ridge','alpine'],
-    forest:   ['forest','river','historic','historical'],
-    easy:     ['accessible'],
-    highland: ['highland','wetland','flower']
+    view:     ['view','ridge','alpine','rock','volcano'],
+    forest:   ['forest','historic','wetland'],
+    easy:     ['accessible','view','forest'],
+    highland: ['highland','wetland']
   };
   var targets = vibeMatch[answers.vibe] || [];
-  var matched = false;
-  targets.forEach(function(v){ if(vibes.indexOf(v) > -1) matched = true; });
-  if(matched) score += 40;
-  // accessible は常にプラス
-  if(vibes.indexOf('accessible') > -1) score += 10;
+  var matchCount = 0;
+  targets.forEach(function(v){ if(vibes.indexOf(v) > -1) matchCount++; });
+  score += matchCount * 25;
+  // 雰囲気が全く合わない山はペナルティ
+  if(matchCount === 0 && answers.vibe === 'view' && vibes.indexOf('forest') > -1 && vibes.length === 1) score -= 15;
+  // accessible は常にプラス（誰でも行きやすい）
+  if(vibes.indexOf('accessible') > -1) score += 12;
+
+  // 季節マッチ（現在の月から判定）
+  var mon = new Date().getMonth();
+  var season = mon<=1||mon===11 ? 'winter' : mon<=4 ? 'spring' : mon<=7 ? 'summer' : 'fall';
+  var seasonOk = m.seasonOk || [];
+  if(seasonOk.indexOf(season) > -1) score += 12;
+  else score -= 10; // 今シーズン向きでない山はペナルティ
 
   return score;
 }
@@ -552,6 +629,14 @@ function toggleInfo(btn){
 
 
 function showResult(){
+  var ov=document.getElementById('find-loading');
+  if(ov){ov.classList.add('active');document.body.style.overflow='hidden';}
+  setTimeout(function(){_doShowResult();},1300);
+}
+function _doShowResult(){
+  var ov=document.getElementById('find-loading');
+  if(ov){ov.classList.remove('active');document.body.style.overflow='';}
+
   var scored = mountainsData.map(function(m){
     return { m: m, score: scoreMount(m) };
   }).filter(function(x){ return x.score > 0; })
