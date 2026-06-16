@@ -210,74 +210,74 @@ function arm(sx,sy,hx,hy,slv,skin){
 // ── 16体個別定義 ──────────────────────────
 
 const MINI_SVGS = {
-  'ACPS': '<img src="images/otter_explorer_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'ACPL': '<img src="images/otter_solitary_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'ACFS': '<img src="images/otter_wild_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'ACFL': '<img src="images/otter_variator_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'AHPS': '<img src="images/otter_viewhunter_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'AHPL': '<img src="images/otter_silent_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'AHFS': '<img src="images/otter_party_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'AHFL': '<img src="images/otter_photowalker_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'VCPS': '<img src="images/otter_researcher_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'VCPL': '<img src="images/otter_deepseeker_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'VCFS': '<img src="images/otter_traveler_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'VCFL': '<img src="images/otter_hidden_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'VHPS': '<img src="images/otter_resort_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'VHPL': '<img src="images/otter_meditation_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'VHFS': '<img src="images/otter_picnic_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
-  'VHFL': '<img src="images/otter_wanderer_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'ACPS': '<img src="/recommend/images/otter_explorer_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'ACPL': '<img src="/recommend/images/otter_solitary_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'ACFS': '<img src="/recommend/images/otter_wild_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'ACFL': '<img src="/recommend/images/otter_variator_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'AHPS': '<img src="/recommend/images/otter_viewhunter_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'AHPL': '<img src="/recommend/images/otter_silent_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'AHFS': '<img src="/recommend/images/otter_party_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'AHFL': '<img src="/recommend/images/otter_photowalker_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'VCPS': '<img src="/recommend/images/otter_researcher_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'VCPL': '<img src="/recommend/images/otter_deepseeker_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'VCFS': '<img src="/recommend/images/otter_traveler_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'VCFL': '<img src="/recommend/images/otter_hidden_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'VHPS': '<img src="/recommend/images/otter_resort_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'VHPL': '<img src="/recommend/images/otter_meditation_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'VHFS': '<img src="/recommend/images/otter_picnic_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
+  'VHFL': '<img src="/recommend/images/otter_wanderer_v2.png" style="width:32px;height:auto;display:block;margin:0 auto;" fetchpriority="high" decoding="async" />',
 };
-MINI_SVGS['ACPS'] = '<img src="images/otter_explorer_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['ACPL'] = '<img src="images/otter_solitary_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['ACFS'] = '<img src="images/otter_wild_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['ACFL'] = '<img src="images/otter_variator_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['AHPS'] = '<img src="images/otter_viewhunter_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['AHPL'] = '<img src="images/otter_silent_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['AHFS'] = '<img src="images/otter_party_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['AHFL'] = '<img src="images/otter_photowalker_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['VCPS'] = '<img src="images/otter_researcher_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['VCPL'] = '<img src="images/otter_deepseeker_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['VCFS'] = '<img src="images/otter_traveler_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['VCFL'] = '<img src="images/otter_hidden_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['VHPS'] = '<img src="images/otter_resort_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['VHPL'] = '<img src="images/otter_meditation_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['VHFS'] = '<img src="images/otter_picnic_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-MINI_SVGS['VHFL'] = '<img src="images/otter_wanderer_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['ACPS'] = '<img src="/recommend/images/otter_explorer_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['ACPL'] = '<img src="/recommend/images/otter_solitary_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['ACFS'] = '<img src="/recommend/images/otter_wild_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['ACFL'] = '<img src="/recommend/images/otter_variator_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['AHPS'] = '<img src="/recommend/images/otter_viewhunter_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['AHPL'] = '<img src="/recommend/images/otter_silent_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['AHFS'] = '<img src="/recommend/images/otter_party_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['AHFL'] = '<img src="/recommend/images/otter_photowalker_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['VCPS'] = '<img src="/recommend/images/otter_researcher_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['VCPL'] = '<img src="/recommend/images/otter_deepseeker_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['VCFS'] = '<img src="/recommend/images/otter_traveler_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['VCFL'] = '<img src="/recommend/images/otter_hidden_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['VHPS'] = '<img src="/recommend/images/otter_resort_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['VHPL'] = '<img src="/recommend/images/otter_meditation_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['VHFS'] = '<img src="/recommend/images/otter_picnic_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+MINI_SVGS['VHFL'] = '<img src="/recommend/images/otter_wanderer_v2.png" style="width:52px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
 
 const PERSON_SVGS = {
-  'ACPS': '<img src="images/otter_explorer_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'ACPL': '<img src="images/otter_solitary_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'ACFS': '<img src="images/otter_wild_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'ACFL': '<img src="images/otter_variator_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'AHPS': '<img src="images/otter_viewhunter_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'AHPL': '<img src="images/otter_silent_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'AHFS': '<img src="images/otter_party_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'AHFL': '<img src="images/otter_photowalker_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'VCPS': '<img src="images/otter_researcher_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'VCPL': '<img src="images/otter_deepseeker_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'VCFS': '<img src="images/otter_traveler_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'VCFL': '<img src="images/otter_hidden_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'VHPS': '<img src="images/otter_resort_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'VHPL': '<img src="images/otter_meditation_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'VHFS': '<img src="images/otter_picnic_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
-  'VHFL': '<img src="images/otter_wanderer_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'ACPS': '<img src="/recommend/images/otter_explorer_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'ACPL': '<img src="/recommend/images/otter_solitary_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'ACFS': '<img src="/recommend/images/otter_wild_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'ACFL': '<img src="/recommend/images/otter_variator_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'AHPS': '<img src="/recommend/images/otter_viewhunter_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'AHPL': '<img src="/recommend/images/otter_silent_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'AHFS': '<img src="/recommend/images/otter_party_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'AHFL': '<img src="/recommend/images/otter_photowalker_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'VCPS': '<img src="/recommend/images/otter_researcher_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'VCPL': '<img src="/recommend/images/otter_deepseeker_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'VCFS': '<img src="/recommend/images/otter_traveler_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'VCFL': '<img src="/recommend/images/otter_hidden_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'VHPS': '<img src="/recommend/images/otter_resort_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'VHPL': '<img src="/recommend/images/otter_meditation_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'VHFS': '<img src="/recommend/images/otter_picnic_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
+  'VHFL': '<img src="/recommend/images/otter_wanderer_v2.png" style="width:140px;height:auto;display:block;margin:0 auto;object-fit:contain;" />',
 };
-PERSON_SVGS['ACPS'] = '<img src="images/otter_explorer_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['ACPL'] = '<img src="images/otter_solitary_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['ACFS'] = '<img src="images/otter_wild_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['ACFL'] = '<img src="images/otter_variator_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['AHPS'] = '<img src="images/otter_viewhunter_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['AHPL'] = '<img src="images/otter_silent_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['AHFS'] = '<img src="images/otter_party_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['AHFL'] = '<img src="images/otter_photowalker_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['VCPS'] = '<img src="images/otter_researcher_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['VCPL'] = '<img src="images/otter_deepseeker_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['VCFS'] = '<img src="images/otter_traveler_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['VCFL'] = '<img src="images/otter_hidden_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['VHPS'] = '<img src="images/otter_resort_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['VHPL'] = '<img src="images/otter_meditation_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['VHFS'] = '<img src="images/otter_picnic_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
-PERSON_SVGS['VHFL'] = '<img src="images/otter_wanderer_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['ACPS'] = '<img src="/recommend/images/otter_explorer_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['ACPL'] = '<img src="/recommend/images/otter_solitary_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['ACFS'] = '<img src="/recommend/images/otter_wild_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['ACFL'] = '<img src="/recommend/images/otter_variator_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['AHPS'] = '<img src="/recommend/images/otter_viewhunter_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['AHPL'] = '<img src="/recommend/images/otter_silent_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['AHFS'] = '<img src="/recommend/images/otter_party_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['AHFL'] = '<img src="/recommend/images/otter_photowalker_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['VCPS'] = '<img src="/recommend/images/otter_researcher_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['VCPL'] = '<img src="/recommend/images/otter_deepseeker_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['VCFS'] = '<img src="/recommend/images/otter_traveler_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['VCFL'] = '<img src="/recommend/images/otter_hidden_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['VHPS'] = '<img src="/recommend/images/otter_resort_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['VHPL'] = '<img src="/recommend/images/otter_meditation_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['VHFS'] = '<img src="/recommend/images/otter_picnic_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
+PERSON_SVGS['VHFL'] = '<img src="/recommend/images/otter_wanderer_v2.png" style="width:120px;height:auto;display:block;margin:0 auto;object-fit:contain;" fetchpriority="high" decoding="async" />';
 
 
 </script>
