@@ -6,26 +6,88 @@
 <title>登山タイプ一覧｜16タイプの登山スタイル診断 - Yamatch</title>
 <meta name="description" content="Yamatchの登山タイプ診断16種類を一覧で紹介。山岳探検家・森の放浪者・山ピクニック派など、あなたに合う登山スタイルを見つけよう。">
 <link rel="canonical" href="https://tozan-navi.com/type/">
+<meta property="og:title" content="登山タイプ一覧｜16タイプの登山スタイル診断 - Yamatch">
+<meta property="og:description" content="あなたはどの山タイプ？登山タイプ診断・全16タイプを一覧で紹介。">
+<meta property="og:image" content="https://tozan-navi.com/ogp/recommend-top.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tozan-navi.com/ogp/recommend-top.png">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;background:#e8e0d5;color:#3a3530;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;background:#eaf2e3;color:#2a3820;}
+
 header{background:linear-gradient(135deg,#4a6038,#607848);padding:14px 16px;}
-.hi{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:10px;}
+.hi{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:10px;}
 .hl{color:white;font-size:18px;font-weight:800;text-decoration:none;}
-main{max-width:680px;margin:0 auto;padding:16px;}
-.ph{background:white;border-radius:14px;padding:18px;margin-bottom:16px;border:1px solid #e0dbd4;}
-h1{font-size:20px;font-weight:800;color:#2a3820;margin-bottom:6px;}
-.pl{font-size:13px;color:#5a5248;line-height:1.7;margin-bottom:12px;}
-.cta{display:inline-block;background:linear-gradient(135deg,#3a5828,#4a7038);color:white;font-size:14px;font-weight:700;padding:11px 24px;border-radius:22px;text-decoration:none;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:16px;}
-.tc{background:white;border-radius:14px;padding:16px 12px;border:1px solid #e0dbd4;text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;transition:all 0.2s ease;}
-.tc:hover{border-color:#4a6038;background:#f8fbf5;transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08);}
-.te{display:flex;align-items:center;justify-content:center;width:80px;height:80px;margin:0 auto 8px;flex-shrink:0;}
-.tn{font-size:14px;font-weight:700;color:#2a3820;}
-.td{font-size:11px;color:#7a7068;margin-top:3px;line-height:1.4;}
-.tr{font-size:10px;font-weight:600;margin-top:5px;}
-footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1px solid #e8e4dc;}
-footer a{color:#7a9a7a;}
+
+.hero{
+  background:linear-gradient(150deg,#eaf2e3 0%,#dceacb 45%,#cfe3ba 100%);
+  padding:36px 20px 32px;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.04) 41%, rgba(255,255,255,0.04) 43%, transparent 44%),
+    linear-gradient(115deg, transparent 60%, rgba(255,255,255,0.03) 61%, rgba(255,255,255,0.03) 63%, transparent 64%);
+}
+.hero-inner{position:relative;max-width:720px;margin:0 auto;}
+.eyebrow{font-size:11px;font-weight:700;color:#4a7038;letter-spacing:0.12em;margin-bottom:10px;}
+.hero h1{font-size:26px;font-weight:900;color:#2a3820;line-height:1.25;margin-bottom:10px;white-space:nowrap;}
+.hero p{font-size:14px;color:#5a6850;line-height:1.7;margin-bottom:20px;max-width:480px;margin-left:auto;margin-right:auto;}
+.badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:22px;}
+.badge{font-size:11px;font-weight:600;background:rgba(74,96,56,0.10);color:#3a5828;border-radius:20px;padding:5px 12px;border:0.5px solid rgba(74,96,56,0.22);}
+.cta{display:inline-block;background:linear-gradient(135deg,#3a5828,#4a7038);color:#fff;font-size:15px;font-weight:800;padding:13px 32px;border-radius:26px;text-decoration:none;box-shadow:0 6px 18px rgba(58,88,40,0.25);}
+
+main{max-width:480px;margin:0 auto;padding:24px 10px 8px;}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:20px;}
+.tc{
+  background:#fff;
+  border:1px solid rgba(74,96,56,0.14);
+  border-radius:10px;
+  padding:8px 2px 8px;
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  transition:all 0.2s ease;
+}
+.tc:hover{background:#f6faf2;border-color:rgba(74,96,56,0.3);transform:translateY(-2px);box-shadow:0 4px 10px rgba(58,88,40,0.1);}
+.te{display:flex;align-items:center;justify-content:center;width:42px;height:42px;margin:0 auto 5px;flex-shrink:0;}
+.te img{width:100%;height:100%;object-fit:contain;}
+.tn{font-size:9px;font-weight:700;color:#2a3820;line-height:1.3;}
+
+@media (max-width:380px){
+  .hero h1{font-size:22px;}
+  main{padding:24px 6px 8px;}
+  .grid{gap:5px;}
+  .tc{padding:6px 2px 7px;}
+  .te{width:36px;height:36px;}
+  .tn{font-size:8px;}
+}
+
+.bottom-cta{
+  text-align:center;
+  padding:8px 16px 36px;
+}
+.bottom-cta a{
+  display:inline-block;
+  background:linear-gradient(135deg,#3a5828,#4a7038);
+  color:white;
+  font-size:15px;
+  font-weight:800;
+  padding:14px 36px;
+  border-radius:26px;
+  text-decoration:none;
+  box-shadow:0 6px 18px rgba(0,0,0,0.2);
+}
+
+footer{text-align:center;padding:20px;font-size:12px;color:#7a8a6c;border-top:1px solid rgba(74,96,56,0.12);background:#eaf2e3;}
+footer a{color:#4a7038;}
 </style>
 </head>
 <body>
@@ -34,111 +96,94 @@ footer a{color:#7a9a7a;}
     <svg width="22" height="22" viewBox="0 0 36 36" style="vertical-align:middle;margin-right:6px"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>Yamatch
   </a>
 </div></header>
-<main>
-<div class="ph">
-  <h1>登山タイプ一覧｜16タイプの登山スタイル</h1>
-  <p class="pl">あなたの登山スタイルは16タイプのどれ？9問の診断で自分に合う山を提案します。</p>
-  <a href="/recommend/" class="cta">無料で診断する →</a>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">🦦 登山タイプ診断・全16タイプ</div>
+    <h1>あなたはどの山タイプ？</h1>
+    <p>山頂で何をする？雨が降ったら？行動パターン診断であなたの登山タイプを16種類から判定。おすすめの山も提案します。</p>
+    <div class="badges">
+      <span class="badge">⏱ 12問・約2分</span>
+      <span class="badge">🏔 16タイプ判定</span>
+      <span class="badge">無料</span>
+    </div>
+    <a href="/recommend/" class="cta">無料で診断する →</a>
+  </div>
 </div>
+
+<main>
 <div class="grid">
   <a href="/type/mountain-explorer/" class="tc">
-    <div class="te"><img src="../../recommend/images/otter_explorer_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_explorer_v2.png" alt="山岳探検家" loading="lazy"></div>
     <div class="tn">山岳探検家</div>
-    <div class="td">山を攻略する戦略家。きつい山ほど燃える計画派。</div>
-    <div class="tr" style="color:#c9a020;">超希少タイプ · ACPS型</div>
   </a>
   <a href="/type/solitary-climber/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_solitary_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_solitary_v2.png" alt="孤高の登山家" loading="lazy"></div>
     <div class="tn">孤高の登山家</div>
-    <div class="td">一人で難峰に挑む本格派ソロ登山者。</div>
-    <div class="tr" style="color:#c9a020;">超希少タイプ · ACPL型</div>
   </a>
   <a href="/type/wild-hiker/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_wild_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_wild_v2.png" alt="ワイルドハイカー" loading="lazy"></div>
     <div class="tn">ワイルドハイカー</div>
-    <div class="td">計画より勢い。感性で山を選ぶ冒険者。</div>
-    <div class="tr" style="color:#4090c0;">標準タイプ · ACFS型</div>
   </a>
   <a href="/type/variation-seeker/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_variator_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_variator_v2.png" alt="バリエーター" loading="lazy"></div>
     <div class="tn">バリエーター</div>
-    <div class="td">誰も歩かないルートを地図とコンパスで開拓。</div>
-    <div class="tr" style="color:#c9a020;">超希少タイプ · ACFL型</div>
   </a>
   <a href="/type/view-hunter/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_viewhunter_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_viewhunter_v2.png" alt="展望ハンター" loading="lazy"></div>
     <div class="tn">展望ハンター</div>
-    <div class="td">絶景を求めて計画を立てるカメラ派。</div>
-    <div class="tr" style="color:#4090c0;">標準タイプ · AHPS型</div>
   </a>
   <a href="/type/silent-climber/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_silent_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_silent_v2.png" alt="サイレントクライマー" loading="lazy"></div>
     <div class="tn">サイレントクライマー</div>
-    <div class="td">山頂の景色を一人静かに噛みしめる。</div>
-    <div class="tr" style="color:#9060c0;">レアタイプ · AHPL型</div>
   </a>
   <a href="/type/party-hiker/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_party_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_party_v2.png" alt="お祭り登山家" loading="lazy"></div>
     <div class="tn">お祭り登山家</div>
-    <div class="td">みんなで登って下山後は温泉グルメ。</div>
-    <div class="tr" style="color:#40a040;">ポピュラータイプ · AHFS型</div>
   </a>
   <a href="/type/photo-walker/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_photowalker_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_photowalker_v2.png" alt="フォトウォーカー" loading="lazy"></div>
     <div class="tn">フォトウォーカー</div>
-    <div class="td">スマホ片手に道中の景色を撮り歩く。</div>
-    <div class="tr" style="color:#9060c0;">レアタイプ · AHFL型</div>
   </a>
   <a href="/type/mountain-researcher/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_researcher_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_researcher_v2.png" alt="山岳研究家" loading="lazy"></div>
     <div class="tn">山岳研究家</div>
-    <div class="td">山の植生・歴史まで調べ尽くす知識派。</div>
-    <div class="tr" style="color:#9060c0;">レアタイプ · VCPS型</div>
   </a>
   <a href="/type/deep-mountain-seeker/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_deepseeker_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_deepseeker_v2.png" alt="深山の求道者" loading="lazy"></div>
     <div class="tn">深山の求道者</div>
-    <div class="td">修験道・霊山を巡る精神的登山者。</div>
-    <div class="tr" style="color:#c9a020;">超希少タイプ · VCPL型</div>
   </a>
   <a href="/type/mountain-traveler/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_traveler_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_traveler_v2.png" alt="山旅人" loading="lazy"></div>
     <div class="tn">山旅人</div>
-    <div class="td">目的地より旅の過程を楽しむ自由派。</div>
-    <div class="tr" style="color:#40a040;">ポピュラータイプ · VCFS型</div>
   </a>
   <a href="/type/hidden-hiker/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_hidden_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_hidden_v2.png" alt="隠れ登山家" loading="lazy"></div>
     <div class="tn">隠れ登山家</div>
-    <div class="td">静かな山でひっそりと楽しむ渋い派。</div>
-    <div class="tr" style="color:#9060c0;">レアタイプ · VCFL型</div>
   </a>
   <a href="/type/mountain-resort/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_resort_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_resort_v2.png" alt="山リゾーター" loading="lazy"></div>
     <div class="tn">山リゾーター</div>
-    <div class="td">山小屋・温泉・絶景の計画的リゾート登山。</div>
-    <div class="tr" style="color:#40a040;">ポピュラータイプ · VHPS型</div>
   </a>
   <a href="/type/meditation-hiker/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_meditation_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_meditation_v2.png" alt="瞑想ハイカー" loading="lazy"></div>
     <div class="tn">瞑想ハイカー</div>
-    <div class="td">山に入ると無になれる静かな癒し系。</div>
-    <div class="tr" style="color:#9060c0;">レアタイプ · VHPL型</div>
   </a>
   <a href="/type/mountain-picnic/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_picnic_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_picnic_v2.png" alt="山ピクニック派" loading="lazy"></div>
     <div class="tn">山ピクニック派</div>
-    <div class="td">山頂でお弁当が最大の目的。</div>
-    <div class="tr" style="color:#40a040;">ポピュラータイプ · VHFS型</div>
   </a>
   <a href="/type/forest-wanderer/" class="tc">
-    <div class="te" style="display:flex;justify-content:center;margin-bottom:8px;"><img src="../../recommend/images/otter_wanderer_v2.png" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="te"><img src="../../recommend/images/otter_wanderer_v2.png" alt="森の放浪者" loading="lazy"></div>
     <div class="tn">森の放浪者</div>
-    <div class="td">森をひとりぶらぶら。最も自由な登山スタイル。</div>
-    <div class="tr" style="color:#9060c0;">レアタイプ · VHFL型</div>
   </a>
 </div>
 </main>
+
+<div class="bottom-cta">
+  <a href="/recommend/">無料で診断する →</a>
+</div>
+
 <footer>
   <p>Yamatch — 出発地から登る山を探せる登山サーチ</p>
   <p style="margin-top:6px;"><a href="/terms/">利用規約</a> | <a href="/privacy/">プライバシーポリシー</a> | <a href="/recommend/">診断する</a></p>
