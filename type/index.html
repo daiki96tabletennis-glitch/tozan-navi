@@ -9,6 +9,8 @@
 <meta property="og:title" content="登山タイプ一覧｜16タイプの登山スタイル診断 - Yamatch">
 <meta property="og:description" content="あなたはどの山タイプ？登山タイプ診断・全16タイプを一覧で紹介。">
 <meta property="og:image" content="https://tozan-navi.com/ogp/recommend-top.png">
+<meta property="og:url" content="https://tozan-navi.com/type/">
+<meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://tozan-navi.com/ogp/recommend-top.png">
 <style>
@@ -41,6 +43,10 @@ header{background:linear-gradient(135deg,#4a6038,#607848);padding:14px 16px;}
 .badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:22px;}
 .badge{font-size:11px;font-weight:600;background:rgba(74,96,56,0.10);color:#3a5828;border-radius:20px;padding:5px 12px;border:0.5px solid rgba(74,96,56,0.22);}
 .cta{display:inline-block;background:linear-gradient(135deg,#3a5828,#4a7038);color:#fff;font-size:15px;font-weight:800;padding:13px 32px;border-radius:26px;text-decoration:none;box-shadow:0 6px 18px rgba(58,88,40,0.25);}
+.share-btn{display:inline-block;background:transparent;color:#4a7038;font-size:13px;font-weight:700;padding:9px 20px;border-radius:20px;border:1.5px solid rgba(74,96,56,0.3);cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;}
+.share-btn:active{background:rgba(74,96,56,0.08);}
+.share-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(10px);background:#2a3820;color:#fff;font-size:13px;font-weight:600;padding:10px 20px;border-radius:24px;box-shadow:0 6px 16px rgba(0,0,0,0.25);opacity:0;pointer-events:none;transition:opacity 0.25s ease, transform 0.25s ease;z-index:200;}
+.share-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
 main{max-width:480px;margin:0 auto;padding:24px 10px 8px;}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:20px;}
@@ -107,7 +113,10 @@ footer a{color:#4a7038;}
       <span class="badge">🏔 16タイプ判定</span>
       <span class="badge">無料</span>
     </div>
-    <a href="/recommend/" class="cta">無料で診断する →</a>
+    <a href="/recommend/?start=1" class="cta">無料で診断する →</a>
+    <div style="margin-top:14px;">
+      <button id="share-btn" class="share-btn" type="button">⤴ このページをシェア</button>
+    </div>
   </div>
 </div>
 
@@ -181,11 +190,43 @@ footer a{color:#4a7038;}
 </main>
 
 <div class="bottom-cta">
-  <a href="/recommend/">無料で診断する →</a>
+  <a href="/recommend/?start=1">無料で診断する →</a>
 </div>
 
 <footer>
   <p>Yamatch — 出発地から登る山を探せる登山サーチ</p>
   <p style="margin-top:6px;"><a href="/terms/">利用規約</a> | <a href="/privacy/">プライバシーポリシー</a> | <a href="/recommend/">診断する</a></p>
 </footer>
+<div id="share-toast" class="share-toast"></div>
+<script>
+(function(){
+  var btn = document.getElementById('share-btn');
+  if(!btn) return;
+  var toast = document.getElementById('share-toast');
+  var shareUrl = 'https://tozan-navi.com/type/';
+  var shareTitle = 'あなたはどの山タイプ？ - Yamatch登山タイプ診断';
+  var shareText = '登山タイプ診断・全16タイプ。あなたはどの山タイプ？';
+
+  function showToast(msg){
+    if(!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(function(){ toast.classList.remove('show'); }, 2200);
+  }
+
+  btn.addEventListener('click', function(){
+    if(navigator.share){
+      navigator.share({ title: shareTitle, text: shareText, url: shareUrl }).catch(function(){});
+    } else if(navigator.clipboard){
+      navigator.clipboard.writeText(shareUrl).then(function(){
+        showToast('URLをコピーしました！');
+      }).catch(function(){
+        showToast('コピーに失敗しました');
+      });
+    } else {
+      showToast('共有に対応していません');
+    }
+  });
+})();
+</script>
 </body></html>
