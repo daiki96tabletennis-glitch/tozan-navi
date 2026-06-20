@@ -1782,6 +1782,14 @@ document.addEventListener('DOMContentLoaded', function(){
           if(typeof showResultByType === 'function') showResultByType(typeParam);
           else if(typeof showResult === 'function') showResult();
         }, 100);
+      } else {
+        // ?start=1 でアクセスした場合は質問画面から開始
+        var startParam = new URLSearchParams(location.search).get('start');
+        if(startParam){
+          setTimeout(function(){
+            if(typeof startQuiz === 'function') startQuiz();
+          }, 100);
+        }
       }
     });
 });
