@@ -220,6 +220,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <button class="dep-btn-m" onclick="changeDep('新宿')">新宿駅</button>
     <button class="dep-btn-m" onclick="changeDep('横浜')">横浜駅</button>
     <button class="dep-btn-m" onclick="changeDep('大宮')">大宮駅</button>
+    <button class="dep-btn-m" onclick="changeDep('立川')">立川駅</button>
   </div>
 </header>
 <main>
@@ -253,7 +254,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   <div class="card"><h2>🚗 車でのアクセス時間</h2><div class="ag-a" id="access-grid"><div class="ai-a" data-dep="大船駅" data-min="105"><div class="ai-a-dep">大船駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:29%"></div></div><div class="ai-a-val">1時間45分</div></div>
 <div class="ai-a" data-dep="横浜駅" data-min="105"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:29%"></div></div><div class="ai-a-val">1時間45分</div></div>
 <div class="ai-a" data-dep="新宿駅" data-min="95"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:26%"></div></div><div class="ai-a-val">1時間35分</div></div>
-<div class="ai-a" data-dep="大宮駅" data-min="135"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:38%"></div></div><div class="ai-a-val">2時間15分</div></div></div></div>
+<div class="ai-a" data-dep="大宮駅" data-min="135"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:38%"></div></div><div class="ai-a-val">2時間15分</div></div>
+<div class="ai-a" data-dep="立川駅" data-min="108"><div class="ai-a-dep">立川駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:30%"></div></div><div class="ai-a-val">1時間48分</div></div></div></div>
 
   <div class="card"><h2>🅿️ 登山口・駐車場</h2>
     <div class="info-rows">
@@ -401,7 +403,7 @@ function applyDep(){
 var initDep=sessionStorage.getItem('ym_departure')||'大船';
 updateDepButtons(initDep); applyDep();
 (function(){
-  var MID= + mid + ;
+  var MID='mitsuToge';
   fetch('/data/mountains.json').then(function(r){return r.json();}).then(function(data){
     var mt=data.find(function(m){return m.id===MID;});
     if(!mt) return;
@@ -415,7 +417,7 @@ updateDepButtons(initDep); applyDep();
     return h+'時間'+mn+'分';
   }
   function applyMountainData(mt){
-    var depMap={'大船駅':'driveOfuna','横浜駅':'driveYokohama','新宿駅':'driveShinjuku','大宮駅':'driveOmiya'};
+    var depMap={'大船駅':'driveOfuna','横浜駅':'driveYokohama','新宿駅':'driveShinjuku','大宮駅':'driveOmiya','立川駅':'driveTachikawa'};
     document.querySelectorAll('#access-grid .ai-a').forEach(function(el){
       var key=depMap[el.dataset.dep];
       if(!key||!mt[key]) return;
@@ -425,7 +427,7 @@ updateDepButtons(initDep); applyDep();
     });
     var raw=sessionStorage.getItem('ym_departure');
     var dep=raw?(raw.startsWith('"')?JSON.parse(raw):raw):'大船';
-    var dk={'大船':'driveOfuna','新宿':'driveShinjuku','横浜':'driveYokohama','大宮':'driveOmiya'};
+    var dk={'大船':'driveOfuna','新宿':'driveShinjuku','横浜':'driveYokohama','大宮':'driveOmiya','立川':'driveTachikawa'};
     var heroTime=document.getElementById('hero-time');
     var heroLabel=document.getElementById('hero-dep-label');
     if(heroTime&&mt[dk[dep]]) heroTime.textContent=mt[dk[dep]];

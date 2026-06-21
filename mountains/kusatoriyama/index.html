@@ -133,7 +133,8 @@ main{max-width:680px;margin:0 auto;padding:12px}
 <body>
 <header>
 <div class="header-inner"><a href="/" style="display:flex;align-items:center;gap:8px;text-decoration:none;flex:1;min-width:0;"><svg width="26" height="26" viewBox="0 0 36 36" style="flex-shrink:0"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg><div class="header-title">Yamatch</div></a><a href="/about/" class="header-btn">運営者</a><a href="/" class="back-btn">← 一覧に戻る</a></div>
-<div class="dep-row" id="dep-row"><button class="dep-btn-m" onclick="changeDep('大船')">大船駅</button><button class="dep-btn-m" onclick="changeDep('新宿')">新宿駅</button><button class="dep-btn-m" onclick="changeDep('横浜')">横浜駅</button><button class="dep-btn-m" onclick="changeDep('大宮')">大宮駅</button></div>
+<div class="dep-row" id="dep-row"><button class="dep-btn-m" onclick="changeDep('大船')">大船駅</button><button class="dep-btn-m" onclick="changeDep('新宿')">新宿駅</button><button class="dep-btn-m" onclick="changeDep('横浜')">横浜駅</button><button class="dep-btn-m" onclick="changeDep('大宮')">大宮駅</button>
+    <button class="dep-btn-m" onclick="changeDep('立川')">立川駅</button></div>
 </header>
 <main>
 <div class="hero-new" style="background:linear-gradient(160deg,#2a3828 0%,#3a4838 40%,#4a5848 100%)">
@@ -145,6 +146,15 @@ main{max-width:680px;margin:0 auto;padding:12px}
 <div class="stats-row"><div class="stat-card"><div class="stat-val">365</div><div class="stat-unit">m</div><div class="stat-label">標高</div></div><div class="stat-card"><div class="stat-val">8〜12</div><div class="stat-unit">コース定数</div><div class="stat-label">体力度</div></div><div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">55</div><div class="stat-unit">分〜</div><div class="stat-label" id="hero-dep-label">新宿から</div></div></div>
 </div>
 <div class="rec-card"><div class="rec-card-title">&#10003; こんな人におすすめ</div><div class="rec-list"><div class="rec-item"><span><strong>登山デビューの人</strong>——コース定数8〜12・整備されたコース</span></div><div class="rec-item"><span><strong>混雑を避けたい人</strong>——高尾山より人が少なく静かな山歩き</span></div><div class="rec-item"><span><strong>縦走を楽しみたい人</strong>——橋本駅まで南高尾山稜を縦走</span></div><div class="rec-item"><span><strong>電車で手軽に行きたい人</strong>——高尾山口駅から徒歩でバス不要</span></div></div></div>
+<div class="card"><h2>🚗 車でのアクセス時間</h2>
+    <div class="ag-a" id="access-grid">
+<div class="ai-a" data-dep="大船駅" data-min="70"><div class="ai-a-dep">大船駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:19%"></div></div><div class="ai-a-val">1時間10分</div></div>
+<div class="ai-a" data-dep="横浜駅" data-min="60"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:17%"></div></div><div class="ai-a-val">1時間</div></div>
+<div class="ai-a" data-dep="新宿駅" data-min="55"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:15%"></div></div><div class="ai-a-val">55分</div></div>
+<div class="ai-a" data-dep="大宮駅" data-min="80"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:22%"></div></div><div class="ai-a-val">1時間20分</div></div>
+<div class="ai-a" data-dep="立川駅" data-min="35"><div class="ai-a-dep">立川駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:10%"></div></div><div class="ai-a-val">35分</div></div>
+    </div>
+  </div>
 <div class="card"><h2>&#128221; 山の紹介</h2><p class="intro-text">高尾山口駅から徒歩でアクセスできる穴場の低山。東京都と神奈川県の都県境稜線に位置し、南高尾山稜コースの一部として人気。標高365mと低山ながら、高尾山周辺の山並みや相模湖を望む眺望スポットがある。コース定数8〜12の初級向けで、高尾山口→橋本駅へ抜ける縦走コースが人気。混雑しやすい高尾山に比べて静かな山歩きが楽しめる。</p></div>
 <div class="card"><div class="ts-section"><div class="ts-header"><div class="ts-title">&#128643; 電車・バスでのアクセス</div><span class="ts-badge ts-badge-year">✅ 年中運行</span></div><div class="ts-line-name">京王線</div><div class="ts-route"><div class="ts-step"><div class="ts-node"><span class="ts-station">新宿駅</span></div></div><div class="ts-step"><div class="ts-node"><span class="ts-station">高尾山口駅</span></div><div class="ts-arrow"><span class="ts-method">京王線</span><span class="ts-duration"> 約50分</span></div></div><div class="ts-step"><div class="ts-node-last"><span class="ts-station">草戸山 登山口</span></div></div><div class="ts-summary"><span>新宿から約55分（予測乗換時間を含む）</span><span>片道約690円</span></div></div><div class="ts-note">高尾山口駅を出て四辻方面へ。登山口まで整備された道が続きます。縦走の場合、橋本駅（JR横浜線・京王相模原線）へ下山できます。</div><div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=%E6%96%B0%E5%AE%BF&to=%E9%AB%98%E5%B0%BE%E5%B1%B1%E5%8F%A3%E9%A7%85&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo">🗓 乗換案内で検索</a></div></div></div>
 <div class="card"><h2>&#128197; シーズンカレンダー</h2><div class="calendar"><div class="cal-m"><div class="cal-l">1</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">2</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">3</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">4</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">5</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">6</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">7</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">8</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">9</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">10</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">11</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">12</div><div class="cal-b s-ok"></div></div></div><div class="cal-legend">🟢 アイゼン不要（通年）</div></div>
@@ -289,7 +299,7 @@ function updateDepButtons(dep){
 function applyDep(){
   var raw = sessionStorage.getItem("ym_departure");
   var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : "新宿";
-  var depMap = {"大船":"ofuna","新宿":"shinjuku","横浜":"yokohama","大宮":"omiya"};
+  var depMap = {"大船":"ofuna","新宿":"shinjuku","横浜":"yokohama","大宮":"omiya","立川":"tachikawa"};
   var key = depMap[dep] || "shinjuku";
   var heroTime = document.getElementById("hero-time");
   var heroLabel = document.getElementById("hero-dep-label");

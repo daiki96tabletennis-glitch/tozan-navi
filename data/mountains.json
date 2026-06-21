@@ -137,7 +137,9 @@
     "driveTimeShinjuku": 75,
     "driveTimeYokohama": 75,
     "driveTimeOmiya": 105,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 70,
+    "driveTachikawa": 70
   },
   {
     "id": "fuji",
@@ -283,7 +285,9 @@
     "driveTimeShinjuku": 145,
     "driveTimeYokohama": 135,
     "driveTimeOmiya": 175,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 110,
+    "driveTachikawa": 110
   },
   {
     "id": "tsukuba",
@@ -428,7 +432,9 @@
     "driveTimeShinjuku": 150,
     "driveTimeYokohama": 120,
     "driveTimeOmiya": 85,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 190,
+    "driveTachikawa": 190
   },
   {
     "id": "kumotori",
@@ -580,7 +586,9 @@
     "trainInfo": "新宿→奥多摩駅（青梅線約90分）→バス約20分",
     "lines": [
       "JR青梅線"
-    ]
+    ],
+    "driveTimeTachikawa": 100,
+    "driveTachikawa": 100
   },
   {
     "id": "amagi",
@@ -720,7 +728,9 @@
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 145,
     "driveTimeOmiya": 195,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 195,
+    "driveTachikawa": 195
   },
   {
     "id": "okutama",
@@ -871,7 +881,9 @@
     "trainInfo": "新宿→塩山駅（中央線特急約80分）→バス約30分",
     "lines": [
       "JR中央線"
-    ]
+    ],
+    "driveTimeTachikawa": 100,
+    "driveTachikawa": 100
   },
   {
     "id": "ryokami",
@@ -1005,7 +1017,9 @@
     "driveTimeShinjuku": 125,
     "driveTimeYokohama": 150,
     "driveTimeOmiya": 125,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 110,
+    "driveTachikawa": 110
   },
   {
     "id": "kobushigatake",
@@ -1145,7 +1159,9 @@
     "driveTimeShinjuku": 135,
     "driveTimeYokohama": 170,
     "driveTimeOmiya": 175,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 115,
+    "driveTachikawa": 115
   },
   {
     "id": "mizugaki",
@@ -1285,7 +1301,9 @@
     "driveTimeShinjuku": 135,
     "driveTimeYokohama": 160,
     "driveTimeOmiya": 165,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 110,
+    "driveTachikawa": 110
   },
   {
     "id": "akagi",
@@ -1434,7 +1452,9 @@
     "trainLine": "東武伊勢崎線・両毛線",
     "trainTimeShinjuku": 150,
     "trainInfo": "新宿→高崎（新幹線約50分）→前橋（両毛線約15分）→バス約75分（土日直通）",
-    "busUrl": "https://kan-etsu.net/publics/index/42/"
+    "busUrl": "https://kan-etsu.net/publics/index/42/",
+    "driveTimeTachikawa": 140,
+    "driveTachikawa": 140
   },
   {
     "id": "kinpusan",
@@ -1575,7 +1595,9 @@
     "driveTimeShinjuku": 160,
     "driveTimeYokohama": 175,
     "driveTimeOmiya": 180,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 130,
+    "driveTachikawa": 130
   },
   {
     "id": "houou",
@@ -1714,7 +1736,9 @@
     "driveTimeShinjuku": 160,
     "driveTimeYokohama": 190,
     "driveTimeOmiya": 185,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 145,
+    "driveTachikawa": 145
   },
   {
     "id": "nantaisan",
@@ -1865,7 +1889,9 @@
     "trainInfo": "新宿→東武日光駅（特急約130分）→バス約10分",
     "lines": [
       "東武日光線"
-    ]
+    ],
+    "driveTimeTachikawa": 160,
+    "driveTachikawa": 160
   },
   {
     "id": "kitadake",
@@ -2011,7 +2037,9 @@
     "driveTimeShinjuku": 180,
     "driveTimeYokohama": 200,
     "driveTimeOmiya": 195,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 160,
+    "driveTachikawa": 160
   },
   {
     "id": "yatsugatake",
@@ -2150,7 +2178,9 @@
     "driveTimeShinjuku": 160,
     "driveTimeYokohama": 165,
     "driveTimeOmiya": 205,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 130,
+    "driveTachikawa": 130
   },
   {
     "id": "keirisan",
@@ -2303,7 +2333,9 @@
     "lines": [
       "JR中央線",
       "北陸新幹線・特急しなの"
-    ]
+    ],
+    "driveTimeTachikawa": 140,
+    "driveTachikawa": 140
   },
   {
     "id": "kirigamine",
@@ -2455,7 +2487,9 @@
     "lines": [
       "JR中央線",
       "北陸新幹線・特急しなの"
-    ]
+    ],
+    "driveTimeTachikawa": 135,
+    "driveTachikawa": 135
   },
   {
     "id": "asama",
@@ -2601,7 +2635,9 @@
     "driveTimeShinjuku": 165,
     "driveTimeYokohama": 170,
     "driveTimeOmiya": 165,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 150,
+    "driveTachikawa": 150
   },
   {
     "id": "tanigawa",
@@ -2749,7 +2785,9 @@
     "trainInfo": "新宿→土合駅（上越線約115分）徒歩→ロープウェイ",
     "lines": [
       "JR上越線・上越新幹線"
-    ]
+    ],
+    "driveTimeTachikawa": 160,
+    "driveTachikawa": 160
   },
   {
     "id": "nasu",
@@ -2905,7 +2943,9 @@
     "trainInfo": "新宿→那須塩原駅（新幹線約70分）→バス約30分",
     "lines": [
       "JR東北新幹線"
-    ]
+    ],
+    "driveTimeTachikawa": 210,
+    "driveTachikawa": 210
   },
   {
     "id": "shirane_nikko",
@@ -3045,7 +3085,9 @@
     "driveTimeShinjuku": 175,
     "driveTimeYokohama": 200,
     "driveTimeOmiya": 140,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 185,
+    "driveTachikawa": 185
   },
   {
     "id": "nikko_shirane",
@@ -3185,7 +3227,9 @@
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 200,
     "driveTimeOmiya": 140,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 185,
+    "driveTachikawa": 185
   },
   {
     "id": "takeson",
@@ -3325,7 +3369,9 @@
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 240,
     "driveTimeOmiya": 205,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 195,
+    "driveTachikawa": 195
   },
   {
     "id": "komagatake",
@@ -3467,7 +3513,9 @@
     "driveTimeShinjuku": 175,
     "driveTimeYokohama": 225,
     "driveTimeOmiya": 265,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 160,
+    "driveTachikawa": 160
   },
   {
     "id": "senjogatake",
@@ -3613,7 +3661,9 @@
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 235,
     "driveTimeOmiya": 275,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 165,
+    "driveTachikawa": 165
   },
   {
     "id": "shirouma",
@@ -3764,7 +3814,9 @@
     "trainInfo": "新宿→松本（特急約150分）→白馬（大糸線約45分）→バス約30分",
     "lines": [
       "特急あずさ・大糸線"
-    ]
+    ],
+    "driveTimeTachikawa": 260,
+    "driveTachikawa": 260
   },
   {
     "id": "norikura",
@@ -3912,7 +3964,9 @@
     "driveTimeShinjuku": 270,
     "driveTimeYokohama": 240,
     "driveTimeOmiya": 265,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 255,
+    "driveTachikawa": 255
   },
   {
     "id": "tateyama",
@@ -4066,7 +4120,9 @@
     "trainLine": "富山地方鉄道",
     "trainTimeShinjuku": 210,
     "trainInfo": "新宿→富山（新幹線約130分）→立山（地鉄約60分）→ケーブル＋高原バス",
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 325,
+    "driveTachikawa": 325
   },
   {
     "id": "tsurugi",
@@ -4214,7 +4270,9 @@
     "trainLine": "富山地方鉄道",
     "trainTimeShinjuku": 240,
     "trainInfo": "新宿→富山（新幹線約130分）→立山（地鉄約60分）→ケーブル＋高原バス＋徒歩",
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 330,
+    "driveTachikawa": 330
   },
   {
     "id": "yari",
@@ -4360,7 +4418,9 @@
     "driveTimeShinjuku": 330,
     "driveTimeYokohama": 280,
     "driveTimeOmiya": 275,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 315,
+    "driveTachikawa": 315
   },
   {
     "id": "hotaka",
@@ -4506,7 +4566,9 @@
     "driveTimeShinjuku": 325,
     "driveTimeYokohama": 280,
     "driveTimeOmiya": 275,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 310,
+    "driveTachikawa": 310
   },
   {
     "id": "myoko",
@@ -4656,7 +4718,9 @@
     "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約20分",
     "lines": [
       "北陸新幹線・特急しなの"
-    ]
+    ],
+    "driveTimeTachikawa": 240,
+    "driveTachikawa": 240
   },
   {
     "id": "makihata",
@@ -4807,7 +4871,9 @@
     "trainInfo": "新宿→越後湯沢（新幹線約80分）→六日町（上越線約15分）→タクシー約30分",
     "lines": [
       "JR上越線・上越新幹線"
-    ]
+    ],
+    "driveTimeTachikawa": 205,
+    "driveTachikawa": 205
   },
   {
     "id": "iide",
@@ -4947,7 +5013,9 @@
     "driveTimeShinjuku": 270,
     "driveTimeYokohama": 310,
     "driveTimeOmiya": 270,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 270,
+    "driveTachikawa": 270
   },
   {
     "id": "shibutsu",
@@ -5094,7 +5162,9 @@
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 250,
     "driveTimeOmiya": 220,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 195,
+    "driveTachikawa": 195
   },
   {
     "id": "aizu_koma",
@@ -5236,7 +5306,9 @@
     "driveTimeShinjuku": 265,
     "driveTimeYokohama": 270,
     "driveTimeOmiya": 240,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 265,
+    "driveTachikawa": 265
   },
   {
     "id": "shirane_gunma",
@@ -5391,7 +5463,9 @@
     "trainLine": "JR吾妻線",
     "trainTimeShinjuku": 150,
     "trainInfo": "新宿→長野原草津口（吾妻線約120分）→バス約30分",
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 175,
+    "driveTachikawa": 175
   },
   {
     "id": "bandai",
@@ -5541,7 +5615,9 @@
     "trainInfo": "新宿→郡山（新幹線約70分）→猪苗代（磐越西線約35分）→バス",
     "lines": [
       "JR東北新幹線"
-    ]
+    ],
+    "driveTimeTachikawa": 240,
+    "driveTachikawa": 240
   },
   {
     "id": "hiuchigatake",
@@ -5688,7 +5764,9 @@
     ],
     "trainLine": "会津鉄道・野岩鉄道",
     "nearestStation": "会津高原尾瀬口駅",
-    "trainInfo": "浅草→（東武鉄道・野岩鉄道・会津鉄道）→会津高原尾瀬口駅（約3時間）→バス約80分で沼山峠"
+    "trainInfo": "浅草→（東武鉄道・野岩鉄道・会津鉄道）→会津高原尾瀬口駅（約3時間）→バス約80分で沼山峠",
+    "driveTimeTachikawa": 265,
+    "driveTachikawa": 265
   },
   {
     "id": "takao",
@@ -5845,7 +5923,9 @@
     "trainInfo": "新宿→高尾山口駅（京王線約50分）徒歩5分",
     "lines": [
       "京王線"
-    ]
+    ],
+    "driveTimeTachikawa": 25,
+    "driveTachikawa": 25
   },
   {
     "id": "oyama",
@@ -5994,7 +6074,9 @@
     "trainInfo": "新宿→伊勢原駅（小田急約60分）→バス約15分",
     "lines": [
       "小田急線"
-    ]
+    ],
+    "driveTimeTachikawa": 50,
+    "driveTachikawa": 50
   },
   {
     "id": "tonosaki",
@@ -6138,7 +6220,9 @@
     "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約25分",
     "lines": [
       "小田急線"
-    ]
+    ],
+    "driveTimeTachikawa": 55,
+    "driveTachikawa": 55
   },
   {
     "id": "hirugata",
@@ -6281,7 +6365,9 @@
     "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約30分",
     "lines": [
       "小田急線"
-    ]
+    ],
+    "driveTimeTachikawa": 60,
+    "driveTachikawa": 60
   },
   {
     "id": "jinba",
@@ -6431,7 +6517,9 @@
     "lines": [
       "JR中央線",
       "京王線"
-    ]
+    ],
+    "driveTimeTachikawa": 35,
+    "driveTachikawa": 35
   },
   {
     "id": "mitsuToge",
@@ -6565,7 +6653,9 @@
     "driveTimeShinjuku": 105,
     "driveTimeYokohama": 120,
     "driveTimeOmiya": 130,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 80,
+    "driveTachikawa": 80
   },
   {
     "id": "kintoki",
@@ -6716,7 +6806,9 @@
     "trainInfo": "新宿→箱根湯本（小田急約80分）→バス約20分",
     "lines": [
       "小田急線"
-    ]
+    ],
+    "driveTimeTachikawa": 85,
+    "driveTachikawa": 85
   },
   {
     "id": "kayagatake",
@@ -6855,7 +6947,9 @@
     "driveTimeShinjuku": 130,
     "driveTimeYokohama": 120,
     "driveTimeOmiya": 160,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 105,
+    "driveTachikawa": 105
   },
   {
     "id": "kentoku",
@@ -7004,7 +7098,9 @@
     "trainInfo": "新宿→塩山駅（中央線特急約80分）→バス約40分",
     "lines": [
       "JR中央線"
-    ]
+    ],
+    "driveTimeTachikawa": 105,
+    "driveTachikawa": 105
   },
   {
     "id": "hinata",
@@ -7144,7 +7240,9 @@
     "driveTimeShinjuku": 145,
     "driveTimeYokohama": 150,
     "driveTimeOmiya": 190,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 130,
+    "driveTachikawa": 130
   },
   {
     "id": "bonori",
@@ -7294,7 +7392,9 @@
     "trainInfo": "池袋→飯能駅（西武池袋線約55分）→バス約35分",
     "lines": [
       "西武池袋線"
-    ]
+    ],
+    "driveTimeTachikawa": 60,
+    "driveTachikawa": 60
   },
   {
     "id": "otake",
@@ -7437,7 +7537,9 @@
     "trainInfo": "新宿→御嶽駅（青梅線約75分）→バス約25分",
     "lines": [
       "JR青梅線"
-    ]
+    ],
+    "driveTimeTachikawa": 50,
+    "driveTachikawa": 50
   },
   {
     "id": "jonengatake",
@@ -7577,7 +7679,9 @@
     "driveTimeShinjuku": 255,
     "driveTimeYokohama": 265,
     "driveTimeOmiya": 260,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 240,
+    "driveTachikawa": 240
   },
   {
     "id": "yakedake",
@@ -7723,7 +7827,9 @@
     "driveTimeShinjuku": 285,
     "driveTimeYokohama": 260,
     "driveTimeOmiya": 255,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 270,
+    "driveTachikawa": 270
   },
   {
     "id": "kashimayari",
@@ -7873,7 +7979,9 @@
     "trainInfo": "新宿→松本（特急約150分）→信濃大町（大糸線約30分）→バス約55分＋徒歩",
     "lines": [
       "特急あずさ・大糸線"
-    ]
+    ],
+    "driveTimeTachikawa": 260,
+    "driveTachikawa": 260
   },
   {
     "id": "koganzan",
@@ -8022,7 +8130,9 @@
     "trainInfo": "新宿→塩山駅（中央線特急約80分）→バス約30分",
     "lines": [
       "JR中央線"
-    ]
+    ],
+    "driveTimeTachikawa": 105,
+    "driveTachikawa": 105
   },
   {
     "id": "arafune",
@@ -8163,7 +8273,9 @@
     "driveTimeShinjuku": 120,
     "driveTimeYokohama": 165,
     "driveTimeOmiya": 165,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 110,
+    "driveTachikawa": 110
   },
   {
     "id": "asamamakurayama",
@@ -8296,7 +8408,9 @@
     "driveTimeShinjuku": 145,
     "driveTimeYokohama": 185,
     "driveTimeOmiya": 185,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 145,
+    "driveTachikawa": 145
   },
   {
     "id": "kazahariyama",
@@ -8429,7 +8543,9 @@
     "driveTimeShinjuku": 165,
     "driveTimeYokohama": 155,
     "driveTimeOmiya": 190,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 150,
+    "driveTachikawa": 150
   },
   {
     "id": "iwasugesan",
@@ -8578,7 +8694,9 @@
     "trainLine": "長野電鉄",
     "trainTimeShinjuku": 145,
     "trainInfo": "新宿→長野（新幹線約90分）→湯田中（長野電鉄約40分）→バス約15分",
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 185,
+    "driveTachikawa": 185
   },
   {
     "id": "iizunasan",
@@ -8722,7 +8840,9 @@
     "trainInfo": "新宿→長野駅（新幹線約90分）→バス約30分",
     "lines": [
       "北陸新幹線・特急しなの"
-    ]
+    ],
+    "driveTimeTachikawa": 205,
+    "driveTachikawa": 205
   },
   {
     "id": "kurohimesan",
@@ -8872,7 +8992,9 @@
     "trainInfo": "新宿→長野（新幹線約90分）→黒姫（信越本線約25分）→バス",
     "lines": [
       "北陸新幹線・特急しなの"
-    ]
+    ],
+    "driveTimeTachikawa": 210,
+    "driveTachikawa": 210
   },
   {
     "id": "kenashiyama",
@@ -9007,7 +9129,9 @@
     "driveTimeShinjuku": 145,
     "driveTimeYokohama": 135,
     "driveTimeOmiya": 175,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 140,
+    "driveTachikawa": 140
   },
   {
     "id": "shirasunayama",
@@ -9140,7 +9264,9 @@
     "driveTimeShinjuku": 205,
     "driveTimeYokohama": 220,
     "driveTimeOmiya": 220,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 215,
+    "driveTachikawa": 215
   },
   {
     "id": "nanaitsurasan",
@@ -9281,7 +9407,9 @@
     "trainLine": "JR身延線",
     "trainTimeShinjuku": 150,
     "trainInfo": "新宿→身延駅（新幹線＋身延線約130分）→バス約20分",
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 165,
+    "driveTachikawa": 165
   },
   {
     "id": "arasawadake",
@@ -9415,7 +9543,9 @@
     "driveTimeShinjuku": 285,
     "driveTimeYokohama": 315,
     "driveTimeOmiya": 310,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 285,
+    "driveTachikawa": 285
   },
   {
     "id": "nakawarayama",
@@ -9548,7 +9678,9 @@
     "driveTimeShinjuku": 135,
     "driveTimeYokohama": 150,
     "driveTimeOmiya": 170,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 115,
+    "driveTachikawa": 115
   },
   {
     "id": "yarigatake2",
@@ -9681,7 +9813,9 @@
     "driveTimeShinjuku": 195,
     "driveTimeYokohama": 145,
     "driveTimeOmiya": 185,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 185,
+    "driveTachikawa": 185
   },
   {
     "id": "gakedake",
@@ -9814,7 +9948,9 @@
     "driveTimeShinjuku": 260,
     "driveTimeYokohama": 265,
     "driveTimeOmiya": 300,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 245,
+    "driveTachikawa": 245
   },
   {
     "id": "arikayama",
@@ -9947,7 +10083,9 @@
     "driveTimeShinjuku": 250,
     "driveTimeYokohama": 250,
     "driveTimeOmiya": 285,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 240,
+    "driveTachikawa": 240
   },
   {
     "id": "keizandake",
@@ -10081,7 +10219,9 @@
     "driveTimeShinjuku": 230,
     "driveTimeYokohama": 235,
     "driveTimeOmiya": 270,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 195,
+    "driveTachikawa": 195
   },
   {
     "id": "adatara",
@@ -10231,7 +10371,9 @@
     "trainInfo": "新宿→郡山（新幹線約70分）→二本松（東北本線約20分）→バス約40分",
     "lines": [
       "JR東北新幹線"
-    ]
+    ],
+    "driveTimeTachikawa": 265,
+    "driveTachikawa": 265
   },
   {
     "id": "azuma",
@@ -10371,7 +10513,9 @@
     "driveTimeShinjuku": 280,
     "driveTimeYokohama": 290,
     "driveTimeOmiya": 255,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 280,
+    "driveTachikawa": 280
   },
   {
     "id": "echigokoma",
@@ -10517,7 +10661,9 @@
     ],
     "trainLine": "JR上越線・上越新幹線",
     "nearestStation": "小出駅",
-    "trainInfo": "新宿→越後湯沢（上越新幹線約70分）→小出駅（上越線約30分）→バス約40分"
+    "trainInfo": "新宿→越後湯沢（上越新幹線約70分）→小出駅（上越線約30分）→バス約40分",
+    "driveTimeTachikawa": 285,
+    "driveTachikawa": 285
   },
   {
     "id": "hiragadake",
@@ -10658,7 +10804,9 @@
     "driveTimeShinjuku": 325,
     "driveTimeYokohama": 230,
     "driveTimeOmiya": 220,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 325,
+    "driveTachikawa": 325
   },
   {
     "id": "naeba",
@@ -10807,7 +10955,9 @@
     "trainLine": "JR上越新幹線",
     "trainTimeShinjuku": 120,
     "trainInfo": "新宿→越後湯沢（新幹線約80分）→バス約40分",
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 175,
+    "driveTachikawa": 175
   },
   {
     "id": "amakazari",
@@ -10948,7 +11098,9 @@
     "driveTimeShinjuku": 295,
     "driveTimeYokohama": 280,
     "driveTimeOmiya": 295,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 280,
+    "driveTachikawa": 280
   },
   {
     "id": "hiuchi",
@@ -11093,7 +11245,9 @@
     "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約40分",
     "lines": [
       "北陸新幹線・特急しなの"
-    ]
+    ],
+    "driveTimeTachikawa": 255,
+    "driveTachikawa": 255
   },
   {
     "id": "takatsuma",
@@ -11232,7 +11386,9 @@
     "driveTimeShinjuku": 225,
     "driveTimeYokohama": 195,
     "driveTimeOmiya": 165,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 215,
+    "driveTachikawa": 215
   },
   {
     "id": "kasagatake",
@@ -11367,7 +11523,9 @@
     "driveTimeShinjuku": 335,
     "driveTimeYokohama": 330,
     "driveTimeOmiya": 350,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 320,
+    "driveTachikawa": 320
   },
   {
     "id": "ontakesan",
@@ -11507,7 +11665,9 @@
     "driveTimeShinjuku": 290,
     "driveTimeYokohama": 275,
     "driveTimeOmiya": 300,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 245,
+    "driveTachikawa": 245
   },
   {
     "id": "goryudake",
@@ -11652,7 +11812,9 @@
     "trainInfo": "新宿→松本（特急約150分）→神城（大糸線約50分）→バス＋ゴンドラ",
     "lines": [
       "特急あずさ・大糸線"
-    ]
+    ],
+    "driveTimeTachikawa": 265,
+    "driveTachikawa": 265
   },
   {
     "id": "sukai",
@@ -11787,7 +11949,9 @@
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 265,
     "driveTimeOmiya": 295,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 195,
+    "driveTachikawa": 195
   },
   {
     "id": "kisokoma",
@@ -11941,7 +12105,9 @@
     "trainLine": "JR飯田線",
     "trainTimeShinjuku": 160,
     "trainInfo": "新宿→駒ヶ根（特急約155分）→バス→ロープウェイ",
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 180,
+    "driveTachikawa": 180
   },
   {
     "id": "utsukushigahara",
@@ -12083,7 +12249,9 @@
     "driveTimeShinjuku": 175,
     "driveTimeYokohama": 185,
     "driveTimeOmiya": 210,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 140,
+    "driveTachikawa": 140
   },
   {
     "id": "karamatsu",
@@ -12233,7 +12401,9 @@
     "trainInfo": "新宿→松本（特急約150分）→白馬（大糸線約45分）→バス＋ゴンドラ",
     "lines": [
       "特急あずさ・大糸線"
-    ]
+    ],
+    "driveTimeTachikawa": 240,
+    "driveTachikawa": 240
   },
   {
     "id": "utsugi",
@@ -12368,7 +12538,9 @@
     "driveTimeShinjuku": 235,
     "driveTimeYokohama": 230,
     "driveTimeOmiya": 225,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 200,
+    "driveTachikawa": 200
   },
   {
     "id": "enasan",
@@ -12509,7 +12681,9 @@
     "driveTimeShinjuku": 250,
     "driveTimeYokohama": 230,
     "driveTimeOmiya": 270,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 210,
+    "driveTachikawa": 210
   },
   {
     "id": "shiomidake",
@@ -12649,7 +12823,9 @@
     "driveTimeShinjuku": 250,
     "driveTimeYokohama": 255,
     "driveTimeOmiya": 295,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 210,
+    "driveTachikawa": 210
   },
   {
     "id": "arakawadake",
@@ -12789,7 +12965,9 @@
     "driveTimeShinjuku": 310,
     "driveTimeYokohama": 255,
     "driveTimeOmiya": 295,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 280,
+    "driveTachikawa": 280
   },
   {
     "id": "akaisidake",
@@ -12936,7 +13114,9 @@
     "driveTimeShinjuku": 310,
     "driveTimeYokohama": 275,
     "driveTimeOmiya": 265,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 280,
+    "driveTachikawa": 280
   },
   {
     "id": "hijiridade",
@@ -13078,7 +13258,9 @@
     "driveTimeShinjuku": 320,
     "driveTimeYokohama": 275,
     "driveTimeOmiya": 315,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 290,
+    "driveTachikawa": 290
   },
   {
     "id": "terkari",
@@ -13213,7 +13395,9 @@
     "driveTimeShinjuku": 340,
     "driveTimeYokohama": 290,
     "driveTimeOmiya": 310,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 305,
+    "driveTachikawa": 305
   },
   {
     "id": "yakushidake",
@@ -13353,7 +13537,9 @@
     "driveTimeShinjuku": 355,
     "driveTimeYokohama": 355,
     "driveTimeOmiya": 390,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 325,
+    "driveTachikawa": 325
   },
   {
     "id": "kurobegorodam",
@@ -13487,7 +13673,9 @@
     "driveTimeShinjuku": 375,
     "driveTimeYokohama": 350,
     "driveTimeOmiya": 365,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 345,
+    "driveTachikawa": 345
   },
   {
     "id": "ainodake",
@@ -13627,7 +13815,9 @@
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 220,
     "driveTimeOmiya": 260,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 165,
+    "driveTachikawa": 165
   },
   {
     "id": "noutori",
@@ -13759,7 +13949,9 @@
     "driveTimeShinjuku": 185,
     "driveTimeYokohama": 185,
     "driveTimeOmiya": 225,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 165,
+    "driveTachikawa": 165
   },
   {
     "id": "hakusan",
@@ -13906,7 +14098,9 @@
     "driveTimeShinjuku": 330,
     "driveTimeYokohama": 325,
     "driveTimeOmiya": 355,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 315,
+    "driveTachikawa": 315
   },
   {
     "id": "zaosan",
@@ -14047,7 +14241,9 @@
     "driveTimeShinjuku": 340,
     "driveTimeYokohama": 365,
     "driveTimeOmiya": 315,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 340,
+    "driveTachikawa": 340
   },
   {
     "id": "karisaka",
@@ -14187,7 +14383,9 @@
     "driveTimeShinjuku": 145,
     "driveTimeYokohama": 150,
     "driveTimeOmiya": 155,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 140,
+    "driveTachikawa": 140
   },
   {
     "id": "nokogiriyama",
@@ -14323,7 +14521,9 @@
     "driveTimeOmiya": 255,
     "lines": [
       "JR内房線"
-    ]
+    ],
+    "driveTimeTachikawa": 200,
+    "driveTachikawa": 200
   },
   {
     "id": "minamikomagatake",
@@ -14466,7 +14666,9 @@
     "trainLine": "JR飯田線",
     "trainTimeShinjuku": 175,
     "trainInfo": "新宿→駒ヶ根（特急約155分）→バス→ロープウェイ＋徒歩",
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 210,
+    "driveTachikawa": 210
   },
   {
     "id": "chogatake",
@@ -14606,7 +14808,9 @@
     "driveTimeShinjuku": 280,
     "driveTimeYokohama": 300,
     "driveTimeOmiya": 325,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 265,
+    "driveTachikawa": 265
   },
   {
     "id": "otenshoudake",
@@ -14740,7 +14944,9 @@
     "driveTimeShinjuku": 300,
     "driveTimeYokohama": 320,
     "driveTimeOmiya": 345,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 270,
+    "driveTachikawa": 270
   },
   {
     "id": "harinokidake",
@@ -14889,7 +15095,9 @@
     "trainInfo": "新宿→松本（特急約150分）→信濃大町（大糸線約30分）→バス約55分",
     "lines": [
       "特急あずさ・大糸線"
-    ]
+    ],
+    "driveTimeTachikawa": 290,
+    "driveTachikawa": 290
   },
   {
     "id": "eboshidake_kita",
@@ -15024,7 +15232,9 @@
     "driveTimeShinjuku": 340,
     "driveTimeYokohama": 355,
     "driveTimeOmiya": 380,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 315,
+    "driveTachikawa": 315
   },
   {
     "id": "noguchigoro",
@@ -15159,7 +15369,9 @@
     "driveTimeShinjuku": 340,
     "driveTimeYokohama": 355,
     "driveTimeOmiya": 380,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 315,
+    "driveTachikawa": 315
   },
   {
     "id": "nokogiriyama_chiba",
@@ -15302,7 +15514,9 @@
     "trainInfo": "新宿→君津（総武線快速約60分）→浜金谷（内房線約35分）徒歩",
     "lines": [
       "JR内房線"
-    ]
+    ],
+    "driveTimeTachikawa": 105,
+    "driveTachikawa": 105
   },
   {
     "id": "mitakesan",
@@ -15447,7 +15661,9 @@
     "trainInfo": "新宿→御嶽駅（青梅線約75分）→バス→ケーブルカー",
     "lines": [
       "JR青梅線"
-    ]
+    ],
+    "driveTimeTachikawa": 50,
+    "driveTachikawa": 50
   },
   {
     "id": "takamizusanzan",
@@ -15589,7 +15805,9 @@
     "trainInfo": "新宿→軍畑駅（青梅線約75分）徒歩10分",
     "lines": [
       "JR青梅線"
-    ]
+    ],
+    "driveTimeTachikawa": 55,
+    "driveTachikawa": 55
   },
   {
     "id": "tenzandake",
@@ -15734,7 +15952,9 @@
     "trainInfo": "池袋→飯能駅（西武池袋線約55分）徒歩20分",
     "lines": [
       "西武池袋線"
-    ]
+    ],
+    "driveTimeTachikawa": 50,
+    "driveTachikawa": 50
   },
   {
     "id": "hiwadayama",
@@ -15877,7 +16097,9 @@
     "trainInfo": "池袋→高麗駅（西武池袋線約55分）徒歩15分",
     "lines": [
       "西武池袋線"
-    ]
+    ],
+    "driveTimeTachikawa": 60,
+    "driveTachikawa": 60
   },
   {
     "id": "mizugatake",
@@ -15942,7 +16164,9 @@
     "driveTimeShinjuku": 150,
     "driveTimeYokohama": 150,
     "driveTimeOmiya": 190,
-    "lines": []
+    "lines": [],
+    "driveTimeTachikawa": 120,
+    "driveTachikawa": 120
   },
   {
     "id": "izugatake",
@@ -16074,7 +16298,9 @@
     "trainInfo": "池袋→正丸駅（西武秩父線約70分）徒歩10分",
     "lines": [
       "西武秩父線"
-    ]
+    ],
+    "driveTimeTachikawa": 60,
+    "driveTachikawa": 60
   },
   {
     "id": "bukosan",
@@ -16206,7 +16432,9 @@
     "trainInfo": "池袋→西武秩父駅（西武秩父線約80分）→タクシー",
     "lines": [
       "西武秩父線"
-    ]
+    ],
+    "driveTimeTachikawa": 95,
+    "driveTachikawa": 95
   },
   {
     "id": "nabewari",
@@ -16343,7 +16571,9 @@
     "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約30分",
     "lines": [
       "小田急線"
-    ]
+    ],
+    "driveTimeTachikawa": 75,
+    "driveTachikawa": 75
   },
   {
     "id": "sannotou",
@@ -16480,7 +16710,9 @@
     "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約25分",
     "lines": [
       "小田急線"
-    ]
+    ],
+    "driveTimeTachikawa": 75,
+    "driveTachikawa": 75
   },
   {
     "id": "koubousan",
@@ -16599,7 +16831,9 @@
     "trainInfo": "新宿→鶴巻温泉駅（小田急約55分）徒歩15分",
     "lines": [
       "小田急線"
-    ]
+    ],
+    "driveTimeTachikawa": 70,
+    "driveTachikawa": 70
   },
   {
     "id": "kagenobusan",
@@ -16730,7 +16964,9 @@
     "lines": [
       "JR中央線",
       "京王線"
-    ]
+    ],
+    "driveTimeTachikawa": 30,
+    "driveTachikawa": 30
   },
   {
     "id": "takagawayama",
@@ -16858,7 +17094,9 @@
     "trainInfo": "新宿→初狩駅（中央線約75分）徒歩すぐ",
     "lines": [
       "JR中央線"
-    ]
+    ],
+    "driveTimeTachikawa": 60,
+    "driveTachikawa": 60
   },
   {
     "id": "kobotokeshiroyama",
@@ -16906,7 +17144,9 @@
     "busUrl": "https://transfer.navitime.biz/keio-bus/pc/diagram/BusDiagram?stationCd=00003793&updown=0",
     "lines": [
       "京王線"
-    ]
+    ],
+    "driveTimeTachikawa": 30,
+    "driveTachikawa": 30
   },
   {
     "id": "kusatoriyama",
@@ -16954,7 +17194,9 @@
     "busUrl": "",
     "lines": [
       "京王線"
-    ]
+    ],
+    "driveTimeTachikawa": 35,
+    "driveTachikawa": 35
   },
   {
     "id": "nakimushiyama",
@@ -16997,7 +17239,9 @@
     "busUrl": "https://www.tobu-bus.com/pc/area/nikko.html",
     "lines": [
       "東武日光線"
-    ]
+    ],
+    "driveTimeTachikawa": 130,
+    "driveTachikawa": 130
   },
   {
     "id": "tairappyo",
@@ -17135,7 +17379,9 @@
         "distance": "10.5km",
         "elevation": "+900m"
       }
-    ]
+    ],
+    "driveTimeTachikawa": 155,
+    "driveTachikawa": 155
   },
   {
     "id": "tomisan",
@@ -17255,7 +17501,9 @@
         "distance": "8.5km",
         "elevation": "+450m"
       }
-    ]
+    ],
+    "driveTimeTachikawa": 125,
+    "driveTachikawa": 125
   },
   {
     "id": "iyogatake",
@@ -17393,7 +17641,9 @@
         "distance": "10.0km",
         "elevation": "+550m"
       }
-    ]
+    ],
+    "driveTimeTachikawa": 125,
+    "driveTachikawa": 125
   },
   {
     "id": "myojingatake",
@@ -17523,7 +17773,9 @@
         "distance": "11.0km",
         "elevation": "+900m"
       }
-    ]
+    ],
+    "driveTimeTachikawa": 95,
+    "driveTachikawa": 95
   },
   {
     "id": "yaguradake",
@@ -17647,7 +17899,9 @@
         "distance": "7.0km",
         "elevation": "+600m"
       }
-    ]
+    ],
+    "driveTimeTachikawa": 90,
+    "driveTachikawa": 90
   },
   {
     "id": "kawanoriyama",
@@ -17785,7 +18039,9 @@
         "distance": "11.0km",
         "elevation": "+1150m"
       }
-    ]
+    ],
+    "driveTimeTachikawa": 75,
+    "driveTachikawa": 75
   },
   {
     "id": "takanosuyama",
@@ -17923,7 +18179,9 @@
         "distance": "16.0km",
         "elevation": "+1300m"
       }
-    ]
+    ],
+    "driveTimeTachikawa": 75,
+    "driveTachikawa": 75
   },
   {
     "id": "ishirousan",
@@ -17998,7 +18256,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 50,
+    "driveTachikawa": 50
   },
   {
     "id": "iwadonoyama",
@@ -18074,7 +18334,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 55,
+    "driveTachikawa": 55
   },
   {
     "id": "maruyama_okubusuma",
@@ -18149,7 +18411,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 65,
+    "driveTachikawa": 65
   },
   {
     "id": "ohnoyama",
@@ -18224,7 +18488,9 @@
       "s-ok"
     ],
     "amapUrl": "https://maps.apple.com/?ll=35.3944,138.9597&q=%E5%A4%A7%E9%87%8E%E5%B1%B1%E7%99%BB%E5%B1%B1%E5%8F%A3",
-    "yamapUrl": "https://yamap.com/mountains/811"
+    "yamapUrl": "https://yamap.com/mountains/811",
+    "driveTimeTachikawa": 85,
+    "driveTachikawa": 85
   },
   {
     "id": "momakurasan",
@@ -18283,7 +18549,9 @@
     "gmapUrl": "https://google.com/maps/search/百蔵山登山口/@35.6273,138.9869,15z",
     "driveTime": 110,
     "driveTimeYokohama": 105,
-    "driveTimeOmiya": 115
+    "driveTimeOmiya": 115,
+    "driveTimeTachikawa": 55,
+    "driveTachikawa": 55
   },
   {
     "id": "ogiyama",
@@ -18343,7 +18611,9 @@
     "gmapUrl": "https://google.com/maps/search/扇山登山口/@35.6478,138.9742,15z",
     "driveTime": 105,
     "driveTimeYokohama": 100,
-    "driveTimeOmiya": 115
+    "driveTimeOmiya": 115,
+    "driveTimeTachikawa": 60,
+    "driveTachikawa": 60
   },
   {
     "id": "makuyama",
@@ -18418,7 +18688,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 85,
+    "driveTachikawa": 85
   },
   {
     "id": "taiheizan",
@@ -18493,7 +18765,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 115,
+    "driveTachikawa": 115
   },
   {
     "id": "kuratakeyama",
@@ -18567,7 +18841,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 50,
+    "driveTachikawa": 50
   },
   {
     "id": "sasakogarigaburiyama",
@@ -18641,7 +18917,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 60,
+    "driveTachikawa": 60
   },
   {
     "id": "shodosan_namatate",
@@ -18715,7 +18993,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 50,
+    "driveTachikawa": 50
   },
   {
     "id": "kukiyama",
@@ -18789,7 +19069,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 50,
+    "driveTachikawa": 50
   },
   {
     "id": "mitosaan",
@@ -18864,7 +19146,9 @@
       "s-ok",
       "s-ok",
       "s-gear"
-    ]
+    ],
+    "driveTimeTachikawa": 55,
+    "driveTachikawa": 55
   },
   {
     "id": "honitayama",
@@ -18938,7 +19222,9 @@
       "s-ok",
       "s-ok",
       "s-gear"
-    ]
+    ],
+    "driveTimeTachikawa": 60,
+    "driveTachikawa": 60
   },
   {
     "id": "hinodesaan",
@@ -19014,7 +19300,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 40,
+    "driveTachikawa": 40
   },
   {
     "id": "sengenrei",
@@ -19088,7 +19376,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 40,
+    "driveTachikawa": 40
   },
   {
     "id": "futagoyama_okumusa",
@@ -19162,7 +19452,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 55,
+    "driveTachikawa": 55
   },
   {
     "id": "juunigadake",
@@ -19236,7 +19528,9 @@
       "s-ok",
       "s-ok",
       "s-gear"
-    ]
+    ],
+    "driveTimeTachikawa": 75,
+    "driveTachikawa": 75
   },
   {
     "id": "ishiwariyama",
@@ -19310,7 +19604,9 @@
       "s-ok",
       "s-ok",
       "s-gear"
-    ]
+    ],
+    "driveTimeTachikawa": 70,
+    "driveTachikawa": 70
   },
   {
     "id": "azumayama_ninomiya",
@@ -19383,7 +19679,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 70,
+    "driveTachikawa": 70
   },
   {
     "id": "hodosan",
@@ -19457,7 +19755,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 70,
+    "driveTachikawa": 70
   },
   {
     "id": "hafuzan_chichibu",
@@ -19531,7 +19831,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 85,
+    "driveTachikawa": 85
   },
   {
     "id": "ranzan_saitama",
@@ -19604,7 +19906,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 60,
+    "driveTachikawa": 60
   },
   {
     "id": "kogashiyama",
@@ -19678,7 +19982,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 135,
+    "driveTachikawa": 135
   },
   {
     "id": "mitsutoge",
@@ -19751,7 +20057,9 @@
       "s-ok",
       "s-ok",
       "s-gear"
-    ]
+    ],
+    "driveTimeTachikawa": 70,
+    "driveTachikawa": 70
   },
   {
     "id": "kamakura_alps",
@@ -19825,7 +20133,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 60,
+    "driveTachikawa": 60
   },
   {
     "id": "okusuyama",
@@ -19899,7 +20209,9 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 70,
+    "driveTachikawa": 70
   },
   {
     "id": "kannokura",
@@ -19972,6 +20284,8 @@
       "s-ok",
       "s-ok",
       "s-ok"
-    ]
+    ],
+    "driveTimeTachikawa": 60,
+    "driveTachikawa": 60
   }
 ]

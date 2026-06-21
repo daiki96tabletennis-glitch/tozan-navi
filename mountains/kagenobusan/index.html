@@ -149,6 +149,7 @@ main{max-width:680px;margin:0 auto;padding:12px}
     <button class="dep-btn-m" onclick="changeDep('新宿')">新宿駅</button>
     <button class="dep-btn-m" onclick="changeDep('横浜')">横浜駅</button>
     <button class="dep-btn-m" onclick="changeDep('大宮')">大宮駅</button>
+    <button class="dep-btn-m" onclick="changeDep('立川')">立川駅</button>
   </div>
 </header>
 <main>
@@ -218,6 +219,7 @@ main{max-width:680px;margin:0 auto;padding:12px}
       <div class="ai-a" data-dep="横浜駅" data-min="55"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:15%"></div></div><div class="ai-a-val">55分</div></div>
       <div class="ai-a" data-dep="新宿駅" data-min="60"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:17%"></div></div><div class="ai-a-val">1時間</div></div>
       <div class="ai-a" data-dep="大宮駅" data-min="90"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:25%"></div></div><div class="ai-a-val">1時間30分</div></div>
+<div class="ai-a" data-dep="立川駅" data-min="72"><div class="ai-a-dep">立川駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:20%"></div></div><div class="ai-a-val">1時間12分</div></div>
     </div>
   </div>
 
@@ -483,7 +485,7 @@ function updateDepButtons(dep){
 function applyDep(){
   var raw = sessionStorage.getItem('ym_departure');
   var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
-  var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya'};
+  var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya','立川':'tachikawa'};
   var heroMinMap = {'ofuna':'55','shinjuku':'60','yokohama':'55','omiya':'90'};
   var key = depMap[dep] || 'ofuna';
   var heroTime = document.getElementById('hero-time');

@@ -334,7 +334,13 @@ function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
           🚗 {departure}駅からのアクセス
         </h3>
         <div className="grid grid-cols-2 gap-4 bg-gray-50 rounded-lg p-3">
-          <div><p className="text-xs text-gray-500">所要時間</p><p className="font-bold text-lg">{formatDriveTime(departure === "新宿" && mountain.driveTimeShinjuku ? mountain.driveTimeShinjuku : mountain.driveTime)}</p></div>
+          <div><p className="text-xs text-gray-500">所要時間</p><p className="font-bold text-lg">{formatDriveTime(
+            departure === "新宿" && mountain.driveTimeShinjuku ? mountain.driveTimeShinjuku :
+            departure === "横浜" && mountain.driveTimeYokohama ? mountain.driveTimeYokohama :
+            departure === "大宮" && mountain.driveTimeOmiya ? mountain.driveTimeOmiya :
+            departure === "立川" && mountain.driveTimeTachikawa ? mountain.driveTimeTachikawa :
+            mountain.driveTime
+          )}</p></div>
           <div><p className="text-xs text-gray-500">距離</p><p className="font-bold text-lg">{mountain.driveDistance}km</p></div>
         </div>
       </div>
@@ -688,12 +694,13 @@ function App() {
   const [search, setSearch]               = useState(() => ssGet("ym_search", ""));
   const [sort, setSort]                   = useState(() => ssGet("ym_sort", "近い順"));
   const [area, setArea]                   = useState(() => ssGet("ym_area", "すべて"));
-  const [departure, setDeparture]         = useState(() => ssGet("ym_departure", "大船")); // "大船" | "新宿" | "横浜" | "大宮"
+  const [departure, setDeparture]         = useState(() => ssGet("ym_departure", "大船")); // "大船" | "新宿" | "横浜" | "大宮" | "立川"
 
   const getDriveTime = (m) => {
     if (departure === "新宿" && m.driveTimeShinjuku) return m.driveTimeShinjuku;
     if (departure === "横浜" && m.driveTimeYokohama) return m.driveTimeYokohama;
     if (departure === "大宮" && m.driveTimeOmiya) return m.driveTimeOmiya;
+    if (departure === "立川" && m.driveTimeTachikawa) return m.driveTimeTachikawa;
     return m.driveTime;
   };
   const [categoryFilter, setCategoryFilter] = useState(() => ssGet("ym_category", "すべて"));
@@ -935,9 +942,9 @@ function App() {
             {/* 出発地タブ */}
             <div style={{position:"relative",zIndex:1}}>
               <div style={{display:"flex",background:"rgba(0,0,0,0.18)",borderRadius:"10px",padding:"3px",marginBottom:"14px"}}>
-                {["大船","新宿","横浜","大宮"].map(d => (
+                {["大船","新宿","横浜","大宮","立川"].map(d => (
                   <button key={d} onClick={() => setDeparture(d)}
-                    style={{flex:1,textAlign:"center",fontSize:"12px",color:departure===d?"#2d4a28":"rgba(255,255,255,0.42)",background:departure===d?"white":"transparent",padding:"6px 4px",borderRadius:"7px",fontWeight:departure===d?"700":"500",border:"none",cursor:"pointer",transition:"all 0.15s"}}>
+                    style={{flex:1,textAlign:"center",fontSize:"11px",color:departure===d?"#2d4a28":"rgba(255,255,255,0.42)",background:departure===d?"white":"transparent",padding:"6px 2px",borderRadius:"7px",fontWeight:departure===d?"700":"500",border:"none",cursor:"pointer",transition:"all 0.15s"}}>
                     {d}駅
                   </button>
                 ))}
@@ -1058,8 +1065,8 @@ function App() {
         </div>
         {/* ③出発地タブ */}
         <div style={{position:"relative",zIndex:2,display:"flex",gap:"4px",padding:"8px 16px 8px",maxWidth:"768px",margin:"0 auto"}}>
-          {["大船","新宿","横浜","大宮"].map(d => (
-            <button key={d} onClick={() => setDeparture(d)} style={{flex:1,textAlign:"center",fontSize:"13px",padding:"7px 0",borderRadius:"8px",fontWeight:"600",cursor:"pointer",border:"none",background:departure===d?"#4e6535":"rgba(255,255,255,0.78)",color:departure===d?"white":"#5a5248",
+          {["大船","新宿","横浜","大宮","立川"].map(d => (
+            <button key={d} onClick={() => setDeparture(d)} style={{flex:1,textAlign:"center",fontSize:"12px",padding:"7px 0",borderRadius:"8px",fontWeight:"600",cursor:"pointer",border:"none",background:departure===d?"#4e6535":"rgba(255,255,255,0.78)",color:departure===d?"white":"#5a5248",
               transition:"background 0.2s ease, color 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease",
               boxShadow:departure===d?"0 2px 8px rgba(78,101,53,0.35)":"none",
               transform:departure===d?"scale(1.04)":"scale(1)"

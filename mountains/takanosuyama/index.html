@@ -219,6 +219,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <button class="dep-btn-m" onclick="changeDep('新宿')">新宿駅</button>
     <button class="dep-btn-m" onclick="changeDep('横浜')">横浜駅</button>
     <button class="dep-btn-m" onclick="changeDep('大宮')">大宮駅</button>
+    <button class="dep-btn-m" onclick="changeDep('立川')">立川駅</button>
   </div>
 </header>
 <main>
@@ -257,7 +258,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   <div class="card"><h2>🚗 車でのアクセス時間</h2><div class="ag-a" id="access-grid"><div class="ai-a" data-dep="大船駅" data-min="120"><div class="ai-a-dep">大船駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:33%"></div></div><div class="ai-a-val">2時間</div></div>
 <div class="ai-a" data-dep="横浜駅" data-min="115"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:31%"></div></div><div class="ai-a-val">1時間55分</div></div>
 <div class="ai-a" data-dep="新宿駅" data-min="100"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:27%"></div></div><div class="ai-a-val">1時間40分</div></div>
-<div class="ai-a" data-dep="大宮駅" data-min="120"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:33%"></div></div><div class="ai-a-val">2時間</div></div></div></div>
+<div class="ai-a" data-dep="大宮駅" data-min="120"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:33%"></div></div><div class="ai-a-val">2時間</div></div>
+<div class="ai-a" data-dep="立川駅" data-min="96"><div class="ai-a-dep">立川駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:27%"></div></div><div class="ai-a-val">1時間36分</div></div></div></div>
   <div class="card"><h2>🅿️ 登山口・駐車場</h2>
     <div class="info-rows">
       <div class="info-row"><span class="info-label">登山口</span><span class="info-val">東日原バス停（東京都奥多摩町日原）</span></div>
@@ -362,7 +364,7 @@ function copyUrl(){navigator.clipboard.writeText(location.href).then(function(){
 function applyDep(){
   var raw=sessionStorage.getItem('ym_departure');
   var dep=raw?(raw.startsWith('"')?JSON.parse(raw):raw):'大船';
-  var depMap={'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya'};
+  var depMap={'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya','立川':'tachikawa'};
   var key=depMap[dep]||'ofuna';
   var heroMinMap={'ofuna':'120','shinjuku':'100','yokohama':'115','omiya':'120'};
   var heroTime=document.getElementById('hero-time');

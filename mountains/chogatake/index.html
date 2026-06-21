@@ -201,6 +201,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <button class="dep-btn-m" onclick="changeDep('新宿')">新宿駅</button>
     <button class="dep-btn-m" onclick="changeDep('横浜')">横浜駅</button>
     <button class="dep-btn-m" onclick="changeDep('大宮')">大宮駅</button>
+    <button class="dep-btn-m" onclick="changeDep('立川')">立川駅</button>
   </div>
 </header>
 <main>
@@ -244,6 +245,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <div class="ai-a" data-dep="横浜駅" data-min="300"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:83%"></div></div><div class="ai-a-val">5時間</div></div>
 <div class="ai-a" data-dep="新宿駅" data-min="280"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:77%"></div></div><div class="ai-a-val">4時間40分</div></div>
 <div class="ai-a" data-dep="大宮駅" data-min="325"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:90%"></div></div><div class="ai-a-val">5時間25分</div></div>
+<div class="ai-a" data-dep="立川駅" data-min="260"><div class="ai-a-dep">立川駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:72%"></div></div><div class="ai-a-val">4時間20分</div></div>
     </div>
   </div>
 
@@ -426,7 +428,7 @@ function updateDepButtons(dep){
 }
 function applyDep(){
   var raw = sessionStorage.getItem('ym_departure'); var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
-  var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya'};
+  var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya','立川':'tachikawa'};
   var timeMap = {'ofuna':'5時間','shinjuku':'4時間40分','yokohama':'5時間','omiya':'5時間25分'};
   var heroMinMap = {'ofuna':'300','shinjuku':'280','yokohama':'300','omiya':'325'};
   var key = depMap[dep] || 'ofuna';
@@ -490,7 +492,7 @@ applyDep();
     });
 
     // 2. 車アクセス時間バー（値だけ更新・表示はapplyDepに任せる）
-    var depMap = {'大船駅':'driveOfuna','横浜駅':'driveYokohama','新宿駅':'driveShinjuku','大宮駅':'driveOmiya'};
+    var depMap = {'大船駅':'driveOfuna','横浜駅':'driveYokohama','新宿駅':'driveShinjuku','大宮駅':'driveOmiya','立川駅':'driveTachikawa'};
     document.querySelectorAll('#access-grid .ai-a').forEach(function(el){
       var dep = el.dataset.dep;
       var key = depMap[dep];
@@ -506,7 +508,7 @@ applyDep();
     // 3. ヒーロー時間を直接更新
     var raw = sessionStorage.getItem('ym_departure');
     var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
-    var dk = {'大船':'driveOfuna','新宿':'driveShinjuku','横浜':'driveYokohama','大宮':'driveOmiya'};
+    var dk = {'大船':'driveOfuna','新宿':'driveShinjuku','横浜':'driveYokohama','大宮':'driveOmiya','立川':'driveTachikawa'};
     var heroTime = document.getElementById('hero-time');
     var heroLabel = document.getElementById('hero-dep-label');
     if(heroTime && mt[dk[dep]]) heroTime.textContent = mt[dk[dep]];
