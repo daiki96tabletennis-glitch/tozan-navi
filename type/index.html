@@ -8,11 +8,18 @@
 <link rel="canonical" href="https://tozan-navi.com/type/">
 <meta property="og:title" content="登山タイプ一覧｜16タイプの登山スタイル診断 - Yamatch">
 <meta property="og:description" content="あなたはどの山タイプ？登山タイプ診断・全16タイプを一覧で紹介。">
-<meta property="og:image" content="https://tozan-navi.com/ogp/recommend-top.png">
+<meta property="og:image" content="https://tozan-navi.com/ogp/recommend-top.jpg">
+<meta property="og:image:secure_url" content="https://tozan-navi.com/ogp/recommend-top.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:url" content="https://tozan-navi.com/type/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Yamatch">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://tozan-navi.com/ogp/recommend-top.png">
+<meta name="twitter:title" content="登山タイプ一覧｜16タイプの登山スタイル診断 - Yamatch">
+<meta name="twitter:description" content="あなたはどの山タイプ？登山タイプ診断・全16タイプを一覧で紹介。">
+<meta name="twitter:image" content="https://tozan-navi.com/ogp/recommend-top.jpg">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;background:#eaf2e3;color:#2a3820;}
@@ -37,14 +44,14 @@ header{background:linear-gradient(135deg,#4a6038,#607848);padding:14px 16px;}
     linear-gradient(115deg, transparent 60%, rgba(255,255,255,0.03) 61%, rgba(255,255,255,0.03) 63%, transparent 64%);
 }
 .hero-inner{position:relative;max-width:720px;margin:0 auto;}
-.eyebrow{font-size:11px;font-weight:700;color:#4a7038;letter-spacing:0.12em;margin-bottom:10px;}
+.eyebrow{font-size:11px;font-weight:700;color:#4a7038;letter-spacing:0.12em;margin-bottom:10px;position:relative;}
+.share-icon-btn{position:absolute;right:0;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:white;border:1.5px solid rgba(74,96,56,0.35);color:#4a7038;cursor:pointer;padding:0;flex-shrink:0;-webkit-tap-highlight-color:transparent;box-shadow:0 2px 6px rgba(0,0,0,0.06);}
+.share-icon-btn:active{background:rgba(74,96,56,0.08);}
 .hero h1{font-size:26px;font-weight:900;color:#2a3820;line-height:1.25;margin-bottom:10px;white-space:nowrap;}
 .hero p{font-size:14px;color:#5a6850;line-height:1.7;margin-bottom:20px;max-width:480px;margin-left:auto;margin-right:auto;}
 .badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:22px;}
 .badge{font-size:11px;font-weight:600;background:rgba(74,96,56,0.10);color:#3a5828;border-radius:20px;padding:5px 12px;border:0.5px solid rgba(74,96,56,0.22);}
 .cta{display:inline-block;background:linear-gradient(135deg,#3a5828,#4a7038);color:#fff;font-size:15px;font-weight:800;padding:13px 32px;border-radius:26px;text-decoration:none;box-shadow:0 6px 18px rgba(58,88,40,0.25);}
-.share-btn{display:inline-block;background:transparent;color:#4a7038;font-size:13px;font-weight:700;padding:9px 20px;border-radius:20px;border:1.5px solid rgba(74,96,56,0.3);cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;}
-.share-btn:active{background:rgba(74,96,56,0.08);}
 .share-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(10px);background:#2a3820;color:#fff;font-size:13px;font-weight:600;padding:10px 20px;border-radius:24px;box-shadow:0 6px 16px rgba(0,0,0,0.25);opacity:0;pointer-events:none;transition:opacity 0.25s ease, transform 0.25s ease;z-index:200;}
 .share-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
@@ -104,7 +111,12 @@ footer a{color:#4a7038;}
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="eyebrow">🦦 登山タイプ診断・全16タイプ</div>
+    <div class="eyebrow">
+      🧭 登山タイプ診断・全16タイプ
+      <button id="share-btn" class="share-icon-btn" type="button" aria-label="このページをシェア">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v13"/><path d="M8 6l4-4 4 4"/><rect x="4" y="11" width="16" height="10" rx="2"/></svg>
+      </button>
+    </div>
     <h1>あなたはどの山タイプ？</h1>
     <p>山頂で何をする？雨が降ったら？行動パターン診断であなたの登山タイプを16種類から判定。おすすめの山も提案します。</p>
     <div class="badges">
@@ -112,10 +124,7 @@ footer a{color:#4a7038;}
       <span class="badge">🏔 16タイプ判定</span>
       <span class="badge">無料</span>
     </div>
-    <a href="/recommend/?start=1" class="cta">無料で診断する →</a>
-    <div style="margin-top:14px;">
-      <button id="share-btn" class="share-btn" type="button">⤴ このページをシェア</button>
-    </div>
+    <a href="/recommend/?start=1" class="cta">診断する →</a>
   </div>
 </div>
 
@@ -189,7 +198,7 @@ footer a{color:#4a7038;}
 </main>
 
 <div class="bottom-cta">
-  <a href="/recommend/?start=1">無料で診断する →</a>
+  <a href="/recommend/?start=1">診断する →</a>
 </div>
 
 <footer>
