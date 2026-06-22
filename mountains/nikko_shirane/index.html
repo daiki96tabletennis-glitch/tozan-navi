@@ -244,7 +244,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <div class="ai-a" data-dep="横浜駅" data-min="200"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:55%"></div></div><div class="ai-a-val">3時間20分</div></div>
 <div class="ai-a" data-dep="新宿駅" data-min="185"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:51%"></div></div><div class="ai-a-val">3時間5分</div></div>
 <div class="ai-a" data-dep="大宮駅" data-min="140"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:38%"></div></div><div class="ai-a-val">2時間20分</div></div>
-<div class="ai-a" data-dep="立川駅" data-min="112"><div class="ai-a-dep">立川駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:31%"></div></div><div class="ai-a-val">1時間52分</div></div>
+<div class="ai-a" data-dep="立川駅" data-min="185"><div class="ai-a-dep">立川駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:51%"></div></div><div class="ai-a-val">3時間5分</div></div>
     </div>
   </div>
 
@@ -378,7 +378,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   </div>
 </div>
 
-<div class="rw"><p class="rh">⛰ 近くて似た山</p><div class="rg"><a href="/mountains/nikko_nantai/" class="rc"><div class="rn">燧ヶ岳</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数18〜30</span></div><div class="rt" id="nearby-time-nikko_nantai" data-ofuna="4時間55分" data-shinjuku="4時間25分" data-yokohama="3時間10分" data-omiya="2時間10分">4時間55分<span class="rs" id="nearby-label-nikko_nantai">大船から</span></div></div></a>
+<div class="rw"><p class="rh">⛰ 近くて似た山</p><div class="rg"><a href="/mountains/hiuchigatake/" class="rc"><div class="rn">燧ヶ岳</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数18〜30</span></div><div class="rt" id="nearby-time-hiuchigatake" data-ofuna="4時間55分" data-shinjuku="4時間25分" data-yokohama="3時間10分" data-omiya="2時間10分">4時間55分<span class="rs" id="nearby-label-hiuchigatake">大船から</span></div></div></a>
 <a href="/mountains/ontake/" class="rc"><div class="rn">男体山</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数14〜22</span></div><div class="rt" id="nearby-time-ontake" data-ofuna="3時間" data-shinjuku="2時間40分" data-yokohama="2時間55分" data-omiya="2時間10分">3時間<span class="rs" id="nearby-label-ontake">大船から</span></div></div></a>
 </div></div>
 
@@ -448,7 +448,7 @@ function applyDep(){
     el.querySelector('.ai-a-val').style.color = sel ? '#3a5a28' : '#3a3530';
     el.querySelector('.ai-a-val').style.fontWeight = sel ? '700' : '600';
   });
-  ['nikko_nantai','ontake'].forEach(function(id){
+  ['hiuchigatake','ontake'].forEach(function(id){
     var timeEl = document.getElementById('nearby-time-'+id);
     var labelEl = document.getElementById('nearby-label-'+id);
     if(timeEl && labelEl){
