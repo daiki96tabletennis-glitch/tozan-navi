@@ -189,6 +189,29 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .warn-text{font-size:12px;line-height:1.6;color:#5a5248;}
 .warn-link{display:inline-block;margin-top:5px;font-size:11px;font-weight:600;color:#1d4ed8;text-decoration:underline;text-underline-offset:2px;}
 
+.ts-section{background:white;border-radius:12px;border:1.5px solid #c8dff0;padding:14px 16px;margin-bottom:0;}
+.ts-header{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.ts-title{font-size:14px;font-weight:700;color:#1a4a70;}
+.ts-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;}
+.ts-badge-seasonal{background:#fff3cd;color:#856404;}
+.ts-badge-year{background:#d4edda;color:#155724;}
+.ts-line-name{font-size:11px;color:#6a8098;margin-bottom:10px;}
+.ts-route{display:flex;flex-direction:column;gap:0;}
+.ts-step{display:flex;flex-direction:column;}
+.ts-node{padding:4px 12px;background:#eef4fb;border-radius:8px;border-left:3px solid #4a7898;margin-bottom:2px;}
+.ts-node-last{border-left-color:#2a7a38;background:#eef6ee;}
+.ts-station{font-size:13px;font-weight:700;color:#1a3050;}
+.ts-arrow{padding:4px 16px;margin-bottom:2px;}
+.ts-method{font-size:12px;color:#4a6888;}
+.ts-duration{font-weight:700;color:#2a5070;margin-left:4px;}
+.ts-summary{display:flex;gap:14px;font-size:12px;font-weight:700;color:#1a4a70;background:#eef6f0;border-radius:6px;padding:6px 10px;margin-top:6px;flex-wrap:wrap}
+.ts-summary span{display:inline-flex;align-items:center;gap:3px}
+.ts-summary-note{font-size:11px;color:#8a7050;width:100%;margin-top:2px}
+.ts-note{font-size:12px;color:#7a6048;background:#fdf8ee;border-radius:6px;padding:6px 10px;margin-top:8px;line-height:1.6;}
+.ts-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
+.ts-link{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
+.ts-link-yahoo{background:#deeaf4;color:#1a4a70;}
+.ts-link-bus{background:#c8dff0;color:#1a4070;}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -268,7 +291,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
       <div class="ts-title">🚃 電車・バスでのアクセス</div>
       <span class="ts-badge" style="background:#fde8d8;color:#8a5010;">⚠️ 夏季限定・本数僅少</span>
     </div>
-    <div class="ts-line-name">上越新幹線・関越交通バス</div>
+    <div class="ts-line-name">上越新幹線・関越交通「鎌田線」・「尾瀬戸倉～鳩待峠乗合バス」</div>
     <div class="ts-route">
       <div class="ts-step">
         <div class="ts-node">
@@ -282,19 +305,19 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
           <div class="ts-station">上毛高原駅</div>
         </div>
         <div class="ts-arrow">
-          <span class="ts-method">🚌 関越交通バス　<span class="ts-duration">約50分</span></span>
+          <span class="ts-method">🚌 関越交通「鎌田線」　<span class="ts-duration">約50分</span></span>
         </div>
       </div><div class="ts-step">
         <div class="ts-node">
           <div class="ts-station">尾瀬戸倉</div>
         </div>
         <div class="ts-arrow">
-          <span class="ts-method">🚌 乗合バス・乗合タクシー　<span class="ts-duration">約35分</span></span>
+          <span class="ts-method">🚌 「尾瀬戸倉～鳩待峠乗合バス」　<span class="ts-duration">約25〜30分</span></span>
         </div>
       </div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">鳩待峠</div></div></div>
     <div class="ts-summary"><span>新宿から約3時間（予測乗換時間を含む）</span><span>片道約8,900円</span><div class="ts-summary-note">※マイカー規制中は戸倉で乗合バスに乗換必須。夏季は新宿発の直通高速バス「尾瀬号」も利用可</div></div></div>
     <div class="ts-note">💡 鳩待峠から至仏山往復は約6時間。植生保護のため登山ルートが規制されている時期があるため事前確認を</div>
-    <div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=上毛高原駅&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo">🗓 乗換案内で検索</a></div>
+    <div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=上毛高原駅&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo">🗓 乗換案内で検索</a><a href="https://kan-etsu.net/pages/43/" target="_blank" rel="noopener" class="ts-link ts-link-bus">🚌 鳩待峠乗合バス 時刻表</a></div>
   </div>
   </div>
 
