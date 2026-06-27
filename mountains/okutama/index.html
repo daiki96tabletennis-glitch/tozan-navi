@@ -495,7 +495,7 @@ function applyDep(){
   var raw = sessionStorage.getItem('ym_departure'); var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
   var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya','立川':'tachikawa'};
   var timeMap = {'ofuna':'2時間30分','shinjuku':'2時間10分','yokohama':'2時間20分','omiya':'2時間15分'};
-  var heroMinMap = {'ofuna':'150','shinjuku':'130','yokohama':'140','omiya':'135'};
+  var heroMinMap = {'ofuna':'150','shinjuku':'130','yokohama':'140','omiya':'135','tachikawa':'100'};
   var key = depMap[dep] || 'ofuna';
   var label = dep + 'から';
   var heroTime = document.getElementById('hero-time');

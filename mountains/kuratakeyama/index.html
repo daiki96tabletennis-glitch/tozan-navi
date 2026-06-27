@@ -390,6 +390,11 @@ function applyDep(){
   var dep=raw?(raw.startsWith('"')?JSON.parse(raw):raw):'大船';
   var heroLabel=document.getElementById('hero-dep-label');
   if(heroLabel) heroLabel.textContent=dep+'から';
+  if(window.__mtCache){
+    var __dk={'大船':'driveOfuna','新宿':'driveShinjuku','横浜':'driveYokohama','大宮':'driveOmiya','立川':'driveTachikawa'};
+    var __heroTime=document.getElementById('hero-time');
+    if(__heroTime&&window.__mtCache[__dk[dep]]) __heroTime.textContent=window.__mtCache[__dk[dep]];
+  }
   document.querySelectorAll('#access-grid .ai-a').forEach(function(el){
     var sel=el.dataset.dep===dep+'駅';
     el.querySelector('.ai-a-dep').style.fontWeight=sel?'700':'400';
@@ -417,6 +422,7 @@ updateDepButtons(initDep); applyDep();
     return h+'時間'+mn+'分';
   }
   function applyMountainData(mt){
+    window.__mtCache=mt;
     var depMap={'大船駅':'driveOfuna','横浜駅':'driveYokohama','新宿駅':'driveShinjuku','大宮駅':'driveOmiya','立川駅':'driveTachikawa'};
     document.querySelectorAll('#access-grid .ai-a').forEach(function(el){
       var key=depMap[el.dataset.dep];
