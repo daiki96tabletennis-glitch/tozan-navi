@@ -6522,142 +6522,6 @@
     "driveTachikawa": 35
   },
   {
-    "id": "mitsuToge",
-    "name": "三ツ峠山",
-    "area": "山梨県",
-    "elevation": 1785,
-    "category": "二百名山",
-    "difficulty": "初〜中級",
-    "coeffMin": 12,
-    "coeffMax": 93,
-    "daytrip": true,
-    "trainAccess": null,
-    "driveOfuna": 120,
-    "driveShinjuku": 105,
-    "driveYokohama": 120,
-    "driveOmiya": 130,
-    "description": "富士山の最高の展望台。左右対称に見える富士山の姿は絶品。南面にロッククライミングエリアも。",
-    "yamapUrl": "https://yamap.com/mountains/92",
-    "busLinks": [],
-    "warnBanner": null,
-    "nearby": [],
-    "vibes": [
-      "view"
-    ],
-    "types": [
-      "casual",
-      "easy"
-    ],
-    "seasonOk": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-gear"
-    ],
-    "calLegend": [
-      "アイゼン不要",
-      "6本アイゼンで可"
-    ],
-    "trailhead": "三ツ峠登山口",
-    "parking": "三ツ峠登山口駐車場（約30台・無料）",
-    "address": "山梨県都留市中津桂",
-    "gmapUrl": "https://google.com/maps/search/三ツ峠登山口/@35.5283,138.7681,16z",
-    "amapUrl": "https://maps.apple.com/?ll=35.5283,138.7681&q=三ツ峠登山口",
-    "busScheduleLinks": [],
-    "gearLinks": [
-      {
-        "id": "boots",
-        "icon": "👟",
-        "name": "登山靴",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      },
-      {
-        "id": "rain",
-        "icon": "🧥",
-        "name": "レインウェア",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      },
-      {
-        "id": "pack",
-        "icon": "🎒",
-        "name": "ザック",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      },
-      {
-        "id": "water",
-        "icon": "💧",
-        "name": "水・行動食",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      },
-      {
-        "id": "gaiter",
-        "icon": "🧦",
-        "name": "ゲイター",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      },
-      {
-        "id": "pole",
-        "icon": "🦯",
-        "name": "ストック",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      },
-      {
-        "id": "crampon",
-        "icon": "❄️",
-        "name": "軽アイゼン",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      }
-    ],
-    "lat": 35.5283,
-    "lng": 138.7681,
-    "kana": "みつとうげさん",
-    "driveDistance": 85,
-    "trailheadAddress": "山梨県都留市中津桂",
-    "season": "通年（冬季アイゼン推奨）",
-    "courseCoefficientRange": "12〜93",
-    "courseCoefficient": [
-      12,
-      93
-    ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月",
-    "routes": [
-      {
-        "name": "三ツ峠登山口〜三ツ峠山（往復）",
-        "time": "3時間",
-        "distance": "5.0km",
-        "elevation": "+650m"
-      }
-    ],
-    "driveTime": 120,
-    "driveTimeShinjuku": 105,
-    "driveTimeYokohama": 120,
-    "driveTimeOmiya": 130,
-    "lines": [],
-    "driveTimeTachikawa": 80,
-    "driveTachikawa": 80
-  },
-  {
     "id": "kintoki",
     "name": "金時山",
     "area": "静岡県",
@@ -7834,7 +7698,7 @@
   {
     "id": "kashimayari",
     "name": "鹿島槍ヶ岳",
-    "area": "富山県",
+    "area": "富山県・長野県",
     "elevation": 2889,
     "category": "百名山",
     "difficulty": "上級",
@@ -18504,7 +18368,7 @@
     "coeffMax": 20,
     "daytrip": true,
     "trainAccess": null,
-    "trailhead": "猿橋駅（徒歩50分）",
+    "trailhead": "大月市営総合グラウンド（猿橋駅から徒歩約30分）",
     "driveShinjuku": 95,
     "driveOfuna": 110,
     "driveYokohama": 105,
@@ -18513,7 +18377,7 @@
     "trainTimeShinjuku": 80,
     "nearestStation": "猿橋駅",
     "trainLine": "JR中央本線",
-    "trainInfo": "新宿→猿橋駅（中央線特快約80分）→徒歩50分",
+    "trainInfo": "新宿→猿橋駅（中央線特快約80分）→徒歩30分（市営グラウンドまで）",
     "description": "秀麗富嶽十二景の一座。猿橋駅から歩いてアクセスできる中央線沿線の人気低山で、山頂からの富士山と大菩薩嶺の眺めが一押し。隣の扇山と縦走するコースが定番で、変化に富んだ尾根歩きが楽しめる。猿橋（日本三奇橋）観光と組み合わせると◎。",
     "vibes": [
       "view",
@@ -18551,7 +18415,8 @@
     "driveTimeYokohama": 105,
     "driveTimeOmiya": 115,
     "driveTimeTachikawa": 55,
-    "driveTachikawa": 55
+    "driveTachikawa": 55,
+    "parking": "大月市営総合グラウンド駐車場（約100台・無料）"
   },
   {
     "id": "ogiyama",
@@ -18565,7 +18430,7 @@
     "coeffMax": 22,
     "daytrip": true,
     "trainAccess": null,
-    "trailhead": "鳥沢駅（徒歩50分）",
+    "trailhead": "梨ノ木平登山口（鳥沢駅から徒歩約60分、季節運行バスあり）",
     "driveShinjuku": 90,
     "driveOfuna": 105,
     "driveYokohama": 100,
@@ -18574,7 +18439,7 @@
     "trainTimeShinjuku": 75,
     "nearestStation": "鳥沢駅",
     "trainLine": "JR中央本線",
-    "trainInfo": "新宿→鳥沢駅（中央線特快約75分）→徒歩50分",
+    "trainInfo": "新宿→鳥沢駅（中央線特快約75分）→徒歩60分（梨ノ木平登山口まで）",
     "description": "中央線から眺める扇を広げたような山容が名前の由来。山頂は広々とした草原で、富士山の大展望が広がる秀麗富嶽十二景のひとつ。鳥沢駅から直接歩ける好アクセスで、隣の百蔵山との縦走コースも人気。稜線歩きは気持ちよく、中央線沿線の定番ルート。",
     "vibes": [
       "view",
@@ -18608,12 +18473,13 @@
         "elevGain": 820
       }
     ],
-    "gmapUrl": "https://google.com/maps/search/扇山登山口/@35.6478,138.9742,15z",
+    "gmapUrl": "https://google.com/maps/search/梨ノ木平駐車場/@35.6478,138.9742,15z",
     "driveTime": 105,
     "driveTimeYokohama": 100,
     "driveTimeOmiya": 115,
     "driveTimeTachikawa": 60,
-    "driveTachikawa": 60
+    "driveTachikawa": 60,
+    "parking": "梨ノ木平駐車場（約5〜8台・無料）"
   },
   {
     "id": "makuyama",
@@ -19992,7 +19858,7 @@
     "kana": "みつとうげやま",
     "area": "山梨県",
     "elevation": 1785,
-    "category": "人気の山",
+    "category": "二百名山",
     "difficulty": "初〜中級",
     "coeffMin": 12,
     "coeffMax": 18,
@@ -20041,8 +19907,58 @@
     ],
     "warnBanner": null,
     "nearby": [],
-    "gearLinks": [],
-    "yamapUrl": "https://yamap.com/mountains/15998",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "gaiter",
+        "icon": "🧦",
+        "name": "ゲイター",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "crampon",
+        "icon": "❄️",
+        "name": "軽アイゼン",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "yamapUrl": "https://yamap.com/mountains/92",
     "amapUrl": "https://maps.apple.com/?ll=35.5283,138.7631&q=%E4%B8%89%E3%81%A4%E5%B3%A0%E7%99%BB%E5%B1%B1%E5%8F%A3%EF%BC%88%E6%B2%B3%E5%8F%A3%E6%B9%96%E9%A7%85%E3%83%90%E3%82%B915%E5%88%86%EF%BC%89",
     "seasonCalendar": [
       "s-gear",
