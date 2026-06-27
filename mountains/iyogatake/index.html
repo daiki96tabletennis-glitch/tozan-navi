@@ -166,7 +166,7 @@ main{max-width:680px;margin:0 auto;padding:12px}
     <div class="stats-row">
       <div class="stat-card"><div class="stat-val">336</div><div class="stat-unit">m</div><div class="stat-label">標高</div></div>
       <div class="stat-card"><div class="stat-val">5〜8</div><div class="stat-unit">コース定数</div><div class="stat-label">体力度</div></div>
-      <div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">120</div><div class="stat-unit">分〜</div><div class="stat-label" id="hero-dep-label">大船から</div></div>
+      <div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">90</div><div class="stat-unit">分〜</div><div class="stat-label" id="hero-dep-label">大船から</div></div>
     </div>
   </div>
 
@@ -200,9 +200,9 @@ main{max-width:680px;margin:0 auto;padding:12px}
   <div class="card"><h2>🚗 車でのアクセス時間</h2>
     <div class="ag-a" id="access-grid">
       <div class="ai-a" data-dep="大船駅" data-min="90"><div class="ai-a-dep">大船駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:25%"></div></div><div class="ai-a-val">1時間30分</div></div>
-      <div class="ai-a" data-dep="横浜駅" data-min="75"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:21%"></div></div><div class="ai-a-val">1時間15分</div></div>
-      <div class="ai-a" data-dep="新宿駅" data-min="95"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:26%"></div></div><div class="ai-a-val">1時間35分</div></div>
-      <div class="ai-a" data-dep="大宮駅" data-min="95"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:26%"></div></div><div class="ai-a-val">1時間35分</div></div>
+      <div class="ai-a" data-dep="横浜駅" data-min="95"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:26%"></div></div><div class="ai-a-val">1時間35分</div></div>
+      <div class="ai-a" data-dep="新宿駅" data-min="110"><div class="ai-a-dep">新宿駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:31%"></div></div><div class="ai-a-val">1時間50分</div></div>
+      <div class="ai-a" data-dep="大宮駅" data-min="155"><div class="ai-a-dep">大宮駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:43%"></div></div><div class="ai-a-val">2時間35分</div></div>
 <div class="ai-a" data-dep="立川駅" data-min="125"><div class="ai-a-dep">立川駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:35%"></div></div><div class="ai-a-val">2時間5分</div></div>
     </div>
   </div>
@@ -438,7 +438,7 @@ function applyDep(){
   var raw = sessionStorage.getItem('ym_departure');
   var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
   var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya','立川':'tachikawa'};
-  var heroMinMap = {'ofuna':'120','shinjuku':'120','yokohama':'110','omiya':'160'};
+  var heroMinMap = {'ofuna':'90','shinjuku':'110','yokohama':'95','omiya':'155'};
   var key = depMap[dep] || 'ofuna';
   var heroTime = document.getElementById('hero-time');
   var heroLabel = document.getElementById('hero-dep-label');
