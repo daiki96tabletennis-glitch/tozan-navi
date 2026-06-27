@@ -1,0 +1,22 @@
+{
+  "name": "Yamatch",
+  "short_name": "Yamatch",
+  "description": "出発地から登る山を探せる登山サーチサービス。",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#e8e0d5",
+  "theme_color": "#4a6038",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
