@@ -165,7 +165,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 .badge-detail-memo{font-size:12px;color:#5a5248;background:white;border-radius:10px;padding:8px 10px;margin-top:8px;text-align:left;white-space:pre-wrap;max-height:80px;overflow-y:auto;}
 .badge-detail-close{margin-top:14px;width:100%;padding:11px;background:#4e6535;color:white;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Serif+JP:wght@700;900&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 <style>h1,h2,h3,.ym-logo,.type-name,.mountain-name,.sec-title{font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;}</style>
 <style>
 .card,.choice,.start-btn,.gear-btn,button{transition:transform .12s ease;}
@@ -182,6 +182,25 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
     <button class="ym-header-share" onclick="if(navigator.share){navigator.share({title:'Yamatch',url:location.href});}else{navigator.clipboard.writeText(location.href).then(function(){alert('URLをコピーしました');});}" aria-label="シェア"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg></button>
   </div>
 </header>
+<div id="profile-card" style="background:linear-gradient(160deg,#4e6535 0%,#5e7545 100%);border-radius:16px;padding:16px 18px;margin:12px 16px 4px;color:white;">
+  <div style="display:flex;gap:8px;">
+    <div style="flex:1;text-align:center;">
+      <div style="font-size:24px;font-weight:800;" id="profile-climbed-count">0</div>
+      <div style="font-size:10.5px;opacity:0.78;margin-top:1px;">🚩 登った山</div>
+    </div>
+    <div style="flex:1;text-align:center;border-left:1px solid rgba(255,255,255,0.22);border-right:1px solid rgba(255,255,255,0.22);">
+      <div style="font-size:24px;font-weight:800;" id="profile-fav-count">0</div>
+      <div style="font-size:10.5px;opacity:0.78;margin-top:1px;">⭐ 気になる山</div>
+    </div>
+    <div style="flex:1;text-align:center;">
+      <div style="font-size:13px;font-weight:700;line-height:1.3;padding-top:3px;" id="profile-type">診断する</div>
+      <div style="font-size:10.5px;opacity:0.78;margin-top:1px;">好きな山タイプ</div>
+    </div>
+  </div>
+  <div id="profile-next-row" style="display:none;font-size:12px;background:rgba(255,255,255,0.14);border-radius:8px;padding:9px 12px;margin-top:12px;">
+    🎯 次に行きたい山：<a id="profile-next-link" href="#" style="color:white;font-weight:700;text-decoration:underline;">-</a>
+  </div>
+</div>
 <div class="tabs">
   <div class="tab active" onclick="switchTab('plans')">📋 登山計画</div>
   <div class="tab" onclick="switchTab('favorites')">⭐ 気になる山</div>
@@ -203,7 +222,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
       </div>
       <div style="flex:1;background:white;border-radius:12px;border:1px solid #e0dbd4;padding:14px;text-align:center">
         <div style="font-size:26px;font-weight:800;color:#4e6535" id="climbed-count">0</div>
-        <div style="font-size:11px;color:#8a8078;margin-top:2px">🚩 登頂数</div>
+        <div style="font-size:11px;color:#8a8078;margin-top:2px">🚩 登った数</div>
       </div>
     </div>
     <div class="card">
@@ -218,7 +237,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
       <div class="coll-title-row">
         <div>
           <div><span class="coll-count" id="climbed-count-big">0</span><span class="coll-count-unit">座</span></div>
-          <div class="coll-label">登頂バッジ</div>
+          <div class="coll-label">山バッジ</div>
         </div>
         <div style="text-align:right">
           <div class="coll-hyaku" id="coll-hyaku-disp">百名山 0座</div>
@@ -250,7 +269,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
       <input type="hidden" id="ec-key">
       <div style="font-size:15px;font-weight:700;color:#2a2520;margin-bottom:16px;padding:0 2px" id="ec-name"></div>
       <div class="form-card">
-        <div class="field"><label>登頂日</label><input type="date" id="ec-date"></div>
+        <div class="field"><label>登った日</label><input type="date" id="ec-date"></div>
         <div class="field"><label>メモ</label><textarea id="ec-memo" rows="3" placeholder="天気、コース、感想など..." style="width:100%;border:1px solid #ddd8d0;border-radius:8px;padding:9px 12px;font-size:13px;background:white;resize:none;font-family:inherit"></textarea></div>
       </div>
     </div>
@@ -325,8 +344,8 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
     <div class="modal-body">
       <div class="form-card">
         <div class="field"><label>山名 <span style="color:#e05050">*</span></label><input type="text" id="mc-name" placeholder="例：雲取山"></div>
-        <div class="field"><label>登頂日（開始）</label><input type="date" id="mc-date"></div>
-        <div class="field"><label>登頂日（終了）<span style="font-size:10px;color:#a09888;font-weight:400">　日帰りは空白でOK</span></label><input type="date" id="mc-date-end"></div>
+        <div class="field"><label>登った日（開始）</label><input type="date" id="mc-date"></div>
+        <div class="field"><label>登った日（終了）<span style="font-size:10px;color:#a09888;font-weight:400">　日帰りは空白でOK</span></label><input type="date" id="mc-date-end"></div>
         <div class="field"><label>エリア</label><input type="text" id="mc-area" placeholder="例：東京都・埼玉県"></div>
         <div class="field"><label>備考</label><textarea id="mc-memo" placeholder="天気、同行者、感想など"></textarea></div>
         <div class="field">
@@ -346,10 +365,10 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
     </div>
   </div>
 </div>
-<!-- 登頂お祝いオーバーレイ -->
+<!-- 登った記録お祝いオーバーレイ -->
 <div id="climbed-celebrate" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(30,60,20,0.92);color:white;border-radius:16px;padding:24px 36px;text-align:center;z-index:9999;pointer-events:none">
   <div style="font-size:40px;margin-bottom:6px">🎉</div>
-  <div style="font-size:18px;font-weight:800">登頂！</div>
+  <div style="font-size:18px;font-weight:800">登った！</div>
   <div id="celebrate-count" style="font-size:14px;margin-top:4px;color:#c8d4b8"></div>
 </div>
 
@@ -383,10 +402,45 @@ function init() {
   renderPlans();
   renderFavorites();
   renderClimbed();
+  updateProfileCard();
   // URLパラメータでタブ切替
   var hash = location.hash.replace('#','');
   if (hash === 'favorites') switchTab('favorites');
   else if (hash === 'climbed') switchTab('climbed');
+}
+
+function updateProfileCard() {
+  var favs = getFavs();
+  var climbs = getClimbs();
+  document.getElementById('profile-climbed-count').textContent = Object.keys(climbs).length;
+  document.getElementById('profile-fav-count').textContent = favs.length;
+
+  var typeEl = document.getElementById('profile-type');
+  try {
+    var tr = JSON.parse(localStorage.getItem('ym_type_result')||'null');
+    if (tr && tr.typeName) {
+      typeEl.textContent = tr.typeName;
+      typeEl.parentElement.style.cursor = 'pointer';
+      typeEl.parentElement.onclick = function(){ location.href='/recommend/'; };
+    } else {
+      typeEl.textContent = '診断する';
+      typeEl.parentElement.style.cursor = 'pointer';
+      typeEl.parentElement.onclick = function(){ location.href='/recommend/'; };
+    }
+  } catch(e) {}
+
+  var nextRow = document.getElementById('profile-next-row');
+  if (favs.length > 0) {
+    var nextId = favs[0];
+    fetchNames(function(nameMap){
+      var nextLink = document.getElementById('profile-next-link');
+      nextLink.textContent = nameMap[nextId] || nextId;
+      nextLink.href = '/mountains/'+nextId+'/';
+      nextRow.style.display = 'block';
+    });
+  } else {
+    nextRow.style.display = 'none';
+  }
 }
 
 // ===== タブ =====
@@ -554,7 +608,7 @@ function renderFavorites() {
       var diff = m ? m.difficulty : null;
       var driveMin = m ? (m.driveOfuna||m.driveShinjuku||m.driveYokohama||null) : null;
       html += '<div style="background:white;border-radius:12px;border:1px solid #e0dbd4;padding:11px 12px;position:relative">';
-      if(isClimbed) html += '<span style="position:absolute;top:10px;right:44px;font-size:9px;font-weight:600;color:#4a6838;background:#eaf3e0;border:0.5px solid #b8d8a0;border-radius:4px;padding:1px 5px">🚩 登頂済</span>';
+      if(isClimbed) html += '<span style="position:absolute;top:10px;right:44px;font-size:9px;font-weight:600;color:#4a6838;background:#eaf3e0;border:0.5px solid #b8d8a0;border-radius:4px;padding:1px 5px">🚩 登った</span>';
       html += '<button onclick="removeFav(\'' + id + '\')" style="position:absolute;top:8px;right:8px;background:none;border:none;color:#c0b8a8;font-size:16px;cursor:pointer;padding:2px 4px;line-height:1">×</button>';
       html += '<a href="/mountains/' + id + '/" style="display:block;font-size:14px;font-weight:700;color:#2a2520;text-decoration:none;margin-bottom:6px;padding-right:80px">' + esc(name) + '</a>';
       if(elev||diff||driveMin){
@@ -588,7 +642,7 @@ function renderFavorites() {
 
 function removeFav(id) {
   var favs = getFavs().filter(function(f){return f!==id;});
-  saveFavs(favs); renderFavorites();
+  saveFavs(favs); renderFavorites(); updateProfileCard();
   // トップ画面のfavoritesと同期（同一localStorage）
 }
 
@@ -627,11 +681,11 @@ function showClimbCelebrate(id, name, area, category, elevation) {
   var ov = document.getElementById('climbed-celebrate');
   if (!ov) return;
   var cfg = getColor(id||'_default', area||'', category||'');
-  var svgHtml = makeBadgeSVG(name||'登頂！', '', id||'_default', cfg, 120, area||'', elevation||'');
+  var svgHtml = makeBadgeSVG(name||'登った！', '', id||'_default', cfg, 120, area||'', elevation||'');
   ov.innerHTML =
     '<div style="font-size:11px;font-weight:800;color:#a8d860;letter-spacing:0.12em;margin-bottom:8px">🏅 バッジ獲得！</div>'
     +'<div style="width:120px;height:120px;margin:0 auto 12px;filter:drop-shadow(0 6px 16px rgba(0,0,0,0.4))">' + svgHtml + '</div>'
-    +'<div style="font-size:20px;font-weight:900;margin-bottom:4px;font-family:sans-serif">' + esc(name||'登頂！') + '</div>'
+    +'<div style="font-size:20px;font-weight:900;margin-bottom:4px;font-family:sans-serif">' + esc(name||'登った！') + '</div>'
     +'<div style="font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:10px">' + count + '座目のバッジ</div>'
     +'<div style="font-size:22px;letter-spacing:4px">⭐⭐⭐</div>';
   ov.style.display = 'block';
@@ -665,7 +719,7 @@ function removeClimbed(key, uid) {
       localStorage.setItem(CLM_KEY, JSON.stringify(arr));
     }catch(ex){}
   }
-  renderClimbed(); renderFavorites();
+  renderClimbed(); renderFavorites(); updateProfileCard();
 }
 
 function openAddClimbed(){
@@ -726,6 +780,7 @@ function saveManualClimbed(){
     closeAddClimbed();
     renderClimbed();
     renderFavorites();
+    updateProfileCard();
   });
 }
 
@@ -815,6 +870,7 @@ function saveEditClimbed() {
   } catch(e2) {}
   closeEditClimbed();
   renderClimbed();
+  updateProfileCard();
 }
 function esc(s){
   if(!s)return'';
@@ -1046,10 +1102,153 @@ function makeBadgeSVG(name, date, id, c, size, area, elevation){
     +defs+borderHtml+bgHtml+mtHtml+labelHtml+nameHtml+metaHtml+dateHtml+'</svg>';
 }
 
+// ===== シェアカード生成（Instagramストーリー用・縦長） =====
+function roundRectPath(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+}
+
+function buildShareCanvas(cb){
+  var d = _currentBadgeData;
+  if(!d){ cb(null); return; }
+  var W=1080, H=1920;
+  var canvas = document.createElement('canvas');
+  canvas.width=W; canvas.height=H;
+  var ctx = canvas.getContext('2d');
+
+  var grad = ctx.createLinearGradient(0,0,0,H);
+  grad.addColorStop(0, d.c.sky1);
+  grad.addColorStop(1, d.c.sky2);
+  ctx.fillStyle=grad;
+  ctx.fillRect(0,0,W,H);
+
+  var profile = getProfile(d.key);
+  function mapPt(p){
+    var xy=p.split(',');
+    return [parseFloat(xy[0])/100*W, H*0.42+parseFloat(xy[1])/100*H*0.62];
+  }
+  var pts = profile.line.split(' ').map(mapPt);
+  ctx.beginPath();
+  ctx.moveTo(pts[0][0], H);
+  pts.forEach(function(p){ ctx.lineTo(p[0],p[1]); });
+  ctx.lineTo(pts[pts.length-1][0], H);
+  ctx.closePath();
+  var mtGrad = ctx.createLinearGradient(0,H*0.42,0,H);
+  mtGrad.addColorStop(0, d.c.mt);
+  mtGrad.addColorStop(1, d.c.acc);
+  ctx.fillStyle=mtGrad;
+  ctx.fill();
+
+  if(profile.snow){
+    var snowPts = profile.snow.split(' ').map(mapPt);
+    ctx.beginPath();
+    ctx.moveTo(snowPts[0][0], snowPts[0][1]);
+    snowPts.slice(1).forEach(function(p){ ctx.lineTo(p[0],p[1]); });
+    ctx.closePath();
+    ctx.fillStyle='rgba(255,255,255,0.85)';
+    ctx.fill();
+  }
+
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function(){
+    // カテゴリタブ
+    if(d.c.centerLabel){
+      var tabW=280, tabH=92;
+      ctx.fillStyle=d.c.rimMain;
+      roundRectPath(ctx, W-70-tabW, 130, tabW, tabH, tabH/2);
+      ctx.fill();
+      ctx.fillStyle=d.c.centerColor;
+      ctx.font='700 46px "Noto Serif JP", serif';
+      ctx.textAlign='center';
+      ctx.textBaseline='middle';
+      ctx.fillText(d.c.centerLabel, W-70-tabW/2, 130+tabH/2+4);
+    }
+
+    ctx.textAlign='left';
+    ctx.textBaseline='alphabetic';
+    ctx.fillStyle=d.c.txt;
+    ctx.font='900 90px "Noto Serif JP", serif';
+    ctx.fillText(d.name, 70, 270);
+
+    var meta=[d.area, d.elev?(Number(d.elev).toLocaleString()+'m'):''].filter(Boolean).join(' / ');
+    if(meta){
+      ctx.font='700 42px "Noto Serif JP", serif';
+      ctx.globalAlpha=0.85;
+      ctx.fillText(meta, 70, 335);
+      ctx.globalAlpha=1;
+    }
+
+    if(d.date){
+      ctx.font='500 36px "Playfair Display", Georgia, serif';
+      ctx.globalAlpha=0.55;
+      ctx.fillText(d.date, 70, 390);
+      ctx.globalAlpha=1;
+    }
+
+    ctx.textAlign='center';
+    ctx.font='700 32px "Playfair Display", Georgia, serif';
+    ctx.globalAlpha=0.6;
+    ctx.fillStyle='#ffffff';
+    ctx.fillText('YAMATCH', W/2, H-55);
+    ctx.globalAlpha=1;
+
+    cb(canvas);
+  });
+}
+
+function openShareCard(){
+  var modal=document.getElementById('share-card-modal');
+  var loading=document.getElementById('share-card-loading');
+  var img=document.getElementById('share-card-img');
+  var dlBtn=document.getElementById('share-card-dl-btn');
+  var shareBtn=document.getElementById('share-card-native-btn');
+  loading.style.display='block'; img.style.display='none';
+  dlBtn.style.display='none'; shareBtn.style.display='none';
+  modal.style.display='flex';
+  buildShareCanvas(function(canvas){
+    if(!canvas){ closeShareCard(); return; }
+    canvas.toBlob(function(blob){
+      _shareCardBlob=blob;
+      img.src=URL.createObjectURL(blob);
+      loading.style.display='none';
+      img.style.display='block';
+      dlBtn.style.display='block';
+      if(navigator.share) shareBtn.style.display='block';
+    }, 'image/png');
+  });
+}
+
+function closeShareCard(){
+  document.getElementById('share-card-modal').style.display='none';
+}
+
+function downloadShareCard(){
+  if(!_shareCardBlob) return;
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(_shareCardBlob);
+  a.download=((_currentBadgeData&&_currentBadgeData.name)||'yamatch')+'_share.png';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+function nativeShareCard(){
+  if(!_shareCardBlob || !navigator.share){ downloadShareCard(); return; }
+  var file=new File([_shareCardBlob], ((_currentBadgeData&&_currentBadgeData.name)||'yamatch')+'.png', {type:'image/png'});
+  if(navigator.canShare && !navigator.canShare({files:[file]})){ downloadShareCard(); return; }
+  navigator.share({files:[file], title:((_currentBadgeData&&_currentBadgeData.name)||'')+' / YAMATCH'}).catch(function(){});
+}
+
 
 // ===== バッジ詳細モーダル制御 =====
 var _currentBadgeKey = null;
 var _currentBadgeUid = null;
+var _currentBadgeData = null;
+var _shareCardBlob = null;
 
 function openBadgeDetail(name, area, elev, date, memo, cfg, key, uid) {
   _currentBadgeKey = key || null;
@@ -1057,6 +1256,7 @@ function openBadgeDetail(name, area, elev, date, memo, cfg, key, uid) {
   var m = document.getElementById('badge-detail-modal');
   var cat = cfg && cfg.centerLabel ? cfg.centerLabel : '';
   var c = getColor(key||'_default', area||'', cat);
+  _currentBadgeData = {name:name, area:area||'', elev:elev||'', date:date||'', c:c, key:key||'_default'};
   document.getElementById('badge-detail-svg').innerHTML = makeBadgeSVG(name, date||'', key||'_default', c, 120, area||'', elev||'');
   document.getElementById('badge-detail-name').textContent = name;
   document.getElementById('badge-detail-sub').textContent = (area||'')+(elev?' · '+Number(elev).toLocaleString()+'m':'');
@@ -1232,11 +1432,23 @@ init();
     <div class="badge-detail-sub" id="badge-detail-sub"></div>
     <div class="badge-detail-date" id="badge-detail-date"></div>
     <div class="badge-detail-memo" id="badge-detail-memo" style="display:none"></div>
-    <div style="display:flex;gap:8px;margin-top:14px;">
+    <button onclick="openShareCard()" style="width:100%;margin-top:14px;padding:13px;background:#4e6535;border:none;border-radius:12px;font-size:14px;font-weight:700;color:white;cursor:pointer;">📤 シェアカードを作る</button>
+    <div style="display:flex;gap:8px;margin-top:8px;">
       <button onclick="badgeEdit()" style="flex:1;padding:11px;background:#f0f5ec;border:1.5px solid #c8ddb0;border-radius:12px;font-size:13px;font-weight:700;color:#4a6838;cursor:pointer;">✏️ 編集</button>
       <button onclick="badgeDelete()" style="flex:1;padding:11px;background:#fff0f0;border:1.5px solid #f0c0c0;border-radius:12px;font-size:13px;font-weight:700;color:#c05050;cursor:pointer;">🗑 削除</button>
     </div>
     <button class="badge-detail-close" onclick="closeBadgeDetail()" style="margin-top:8px;">閉じる</button>
+  </div>
+</div>
+
+<!-- シェアカードモーダル -->
+<div id="share-card-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:600;align-items:center;justify-content:center;">
+  <div style="background:#f0ede5;border-radius:20px;padding:18px;width:280px;text-align:center;">
+    <div id="share-card-loading" style="padding:60px 0;font-size:13px;color:#7a7068;">作成中…</div>
+    <img id="share-card-img" style="display:none;width:100%;border-radius:12px;margin-bottom:14px;" />
+    <button id="share-card-native-btn" onclick="nativeShareCard()" style="display:none;width:100%;padding:13px;background:#4e6535;border:none;border-radius:12px;font-size:14px;font-weight:700;color:white;cursor:pointer;margin-bottom:8px;">📤 シェアする</button>
+    <button id="share-card-dl-btn" onclick="downloadShareCard()" style="display:none;width:100%;padding:13px;background:white;border:1.5px solid #ccc8c0;border-radius:12px;font-size:14px;font-weight:700;color:#3a3530;cursor:pointer;margin-bottom:8px;">📥 画像を保存</button>
+    <button onclick="closeShareCard()" style="width:100%;padding:11px;background:transparent;border:none;font-size:13px;color:#a09888;cursor:pointer;">閉じる</button>
   </div>
 </div>
 </body>
