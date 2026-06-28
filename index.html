@@ -1504,7 +1504,7 @@ function App() {
                       <div style={{ display: "flex", gap: "5px", alignItems: "center", fontSize: "11px", fontFamily: "Outfit,sans-serif", letterSpacing: "-0.01em", fontWeight: "500", color: "#6a6058", position: "relative", zIndex: 1, marginBottom: "2px" }}>
                         <span>{(function(){
                           return (m.elevation.toLocaleString()+"m").split(/([\d,]+)/).map(function(p,i){
-                            return /^[\d,]+$/.test(p) ? <span key={i} style={{fontSize:"14px"}}>{p}</span> : <span key={i}>{p}</span>;
+                            return /^[\d,]+$/.test(p) ? <span key={i} style={{fontSize:"16px",fontWeight:"700"}}>{p}</span> : <span key={i} style={{fontSize:"10px"}}>{p}</span>;
                           });
                         })()}</span>
                         <span style={{ color: "#c8c0b8" }}>·</span>
@@ -1519,7 +1519,7 @@ function App() {
                           </svg>
                           {(function(){
                             return formatDriveTime(getDriveTime(m)).split(/([\d,]+)/).map(function(p,i){
-                              return /^[\d,]+$/.test(p) ? <span key={i} style={{fontSize:"14px"}}>{p}</span> : <span key={i}>{p}</span>;
+                              return /^[\d,]+$/.test(p) ? <span key={i} style={{fontSize:"16px",fontWeight:"700"}}>{p}</span> : <span key={i} style={{fontSize:"10px"}}>{p}</span>;
                             });
                           })()}
                         </span>
