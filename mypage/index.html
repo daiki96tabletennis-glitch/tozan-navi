@@ -184,8 +184,8 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 </header>
 <div class="tabs">
   <div class="tab active" onclick="switchTab('plans')">📋 登山計画</div>
-  <div class="tab" onclick="switchTab('favorites')">⭐ お気に入り</div>
-  <div class="tab" onclick="switchTab('climbed')">🚩 登頂記録</div>
+  <div class="tab" onclick="switchTab('favorites')">⭐ 気になる山</div>
+  <div class="tab" onclick="switchTab('climbed')">🚩 登った記録</div>
 </div>
 <div class="main">
 
@@ -194,12 +194,12 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
     <div id="plans-list"></div>
   </div>
 
-  <!-- お気に入り -->
+  <!-- 気になる山 -->
   <div class="section" id="tab-favorites">
     <div style="display:flex;gap:10px;margin-bottom:16px">
       <div style="flex:1;background:white;border-radius:12px;border:1px solid #e0dbd4;padding:14px;text-align:center">
         <div style="font-size:26px;font-weight:800;color:#4e6535" id="fav-count">0</div>
-        <div style="font-size:11px;color:#8a8078;margin-top:2px">⭐ お気に入り</div>
+        <div style="font-size:11px;color:#8a8078;margin-top:2px">⭐ 気になる山</div>
       </div>
       <div style="flex:1;background:white;border-radius:12px;border:1px solid #e0dbd4;padding:14px;text-align:center">
         <div style="font-size:26px;font-weight:800;color:#4e6535" id="climbed-count">0</div>
@@ -207,12 +207,12 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
       </div>
     </div>
     <div class="card">
-      <div class="card-header">⭐ お気に入りの山</div>
+      <div class="card-header">⭐ 気になる山</div>
       <div class="card-body" id="fav-list"></div>
     </div>
   </div>
 
-  <!-- 登頂記録 -->
+  <!-- 登った記録 -->
   <div class="section" id="tab-climbed">
     <div id="collection-banner" style="display:none">
       <div class="coll-title-row">
@@ -238,12 +238,12 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 
 </div>
 
-<!-- 登頂記録編集モーダル -->
+<!-- 登った記録編集モーダル -->
 <div class="modal-overlay" id="edit-climbed-modal">
   <div class="modal">
     <div class="modal-header">
       <button class="modal-close" onclick="closeEditClimbed()">✕</button>
-      <div class="modal-title">登頂記録を編集</div>
+      <div class="modal-title">登った記録を編集</div>
       <button class="modal-save" onclick="saveEditClimbed()">保存</button>
     </div>
     <div class="modal-body">
@@ -314,12 +314,12 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
   </div>
 </div>
 
-<!-- 手動登頂記録追加モーダル -->
+<!-- 手動登った記録追加モーダル -->
 <div class="modal-overlay" id="add-climbed-modal">
   <div class="modal">
     <div class="modal-header">
       <button class="modal-close" onclick="closeAddClimbed()">✕</button>
-      <div class="modal-title">登頂記録を追加</div>
+      <div class="modal-title">登った記録を追加</div>
       <button class="modal-save" onclick="saveManualClimbed()">追加</button>
     </div>
     <div class="modal-body">
@@ -529,7 +529,7 @@ function toggleDetailCheck(pi,ii,val) {
 
 function dr(label,val){ return '<div class="detail-row"><div class="detail-label">'+label+'</div><div class="detail-val">'+val+'</div></div>'; }
 
-// ===== お気に入り =====
+// ===== 気になる山 =====
 function getFavs(){ try{return JSON.parse(localStorage.getItem(FAV_KEY)||'[]');}catch{return[];} }
 function saveFavs(f){ localStorage.setItem(FAV_KEY, JSON.stringify(f)); }
 
@@ -540,7 +540,7 @@ function renderFavorites() {
   document.getElementById('climbed-count').textContent = Object.keys(climbs).length;
   var el = document.getElementById('fav-list');
   if (favs.length===0){
-    el.innerHTML='<div style="padding:32px 0;text-align:center"><div style="font-size:32px;margin-bottom:8px">⭐</div>お気に入りの山がありません<br><small style="color:#b0a898;margin-top:6px;display:block">山カードの ☆ で追加できます</small></div>';
+    el.innerHTML='<div style="padding:32px 0;text-align:center"><div style="font-size:32px;margin-bottom:8px">⭐</div>気になる山がありません<br><small style="color:#b0a898;margin-top:6px;display:block">山カードの ☆ で追加できます</small></div>';
     return;
   }
   // mountains.jsonをfetchして詳細表示、失敗したら名前のみ表示
@@ -592,7 +592,7 @@ function removeFav(id) {
   // トップ画面のfavoritesと同期（同一localStorage）
 }
 
-// ===== 登頂記録 =====
+// ===== 登った記録 =====
 function getClimbs(){
   // グループ化形式: {id: [{type,date,memo,area,category,uid},...], ...}
   var base={};
@@ -643,7 +643,7 @@ function showClimbCelebrate(id, name, area, category, elevation) {
 }
 
 function removeClimbed(key, uid) {
-  if (!confirm('この登頂記録を削除しますか？')) return;
+  if (!confirm('この登った記録を削除しますか？')) return;
   if (key.startsWith('__extra_')) {
     var idx = parseInt(key.replace('__extra_',''));
     try{
