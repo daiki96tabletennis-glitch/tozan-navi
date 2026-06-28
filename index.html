@@ -1531,16 +1531,22 @@ function App() {
                           {dayTrip ? "日帰り" : "宿泊"}
                         </span>
                         {m.trainAccess && (
-                          <span style={{ fontSize: "10px", padding: "2px 6px", borderRadius: "20px", fontWeight: "500", background: "rgba(200,220,245,0.8)", color: "#1a4878", display:"inline-flex", alignItems:"center", gap:"3px" }}>
+                          <span style={{ fontSize: "10px", padding: "2px 6px", borderRadius: "20px", fontWeight: "500", background: "rgba(200,220,245,0.8)", color: "#1a4878", display:"inline-flex", alignItems:"center", gap:"2px" }}>
                             <svg width="16" height="16" viewBox="0 0 24 24" style={{flexShrink:0}}>
-                              <rect x="7" y="2" width="10" height="18" rx="5" fill="currentColor"/>
-                              <rect x="7" y="8" width="10" height="3.5" fill="rgba(200,220,245,0.95)"/>
+                              <path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/>
+                              <rect x="4" y="9.5" width="3" height="3" fill="rgba(200,220,245,0.95)"/>
+                              <rect x="9" y="9.5" width="3" height="3" fill="rgba(200,220,245,0.95)"/>
+                              <circle cx="6" cy="19" r="1.6" fill="currentColor"/>
+                              <circle cx="16" cy="19" r="1.6" fill="currentColor"/>
                             </svg>
                             {(typeof m.trainAccess === "string" && (m.trainAccess.includes("バス") || m.trainAccess.includes("ケーブル"))) && (
                               <svg width="16" height="16" viewBox="0 0 24 24" style={{flexShrink:0}}>
-                                <rect x="1" y="6" width="22" height="9" rx="2.5" fill="currentColor"/>
-                                <circle cx="6" cy="18" r="3" fill="currentColor"/>
-                                <circle cx="18" cy="18" r="3" fill="currentColor"/>
+                                <rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/>
+                                <rect x="3.5" y="9" width="4" height="4" fill="rgba(200,220,245,0.95)"/>
+                                <rect x="9" y="9" width="4" height="4" fill="rgba(200,220,245,0.95)"/>
+                                <rect x="15" y="9" width="5" height="4" fill="rgba(200,220,245,0.95)"/>
+                                <circle cx="6" cy="19" r="2.3" fill="currentColor"/>
+                                <circle cx="17" cy="19" r="2.3" fill="currentColor"/>
                               </svg>
                             )}
                           </span>
