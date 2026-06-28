@@ -27,6 +27,7 @@
 <!-- Leaflet は地図表示時に動的ロード -->
 
 <style>*{box-sizing:border-box;}body{margin:0;padding:0;-webkit-text-size-adjust:100%;}::-webkit-scrollbar{height:4px;}::-webkit-scrollbar-thumb{background:#ccc8c0;border-radius:4px;}button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+#ym-hero-search::placeholder{color:rgba(255,255,255,0.65);}
 /* ボトムナビ分の余白 */
 #root > div { padding-bottom: env(safe-area-inset-bottom, 0px); }
 
@@ -946,8 +947,8 @@ function App() {
                 {["大船","新宿","横浜","大宮","立川"].map(d => (
                   <button key={d} onClick={() => setDeparture(d)}
                     style={{flex:1,textAlign:"center",fontSize:"11px",fontWeight:departure===d?"700":"600",cursor:"pointer",background:"transparent",
-                    border:departure===d?"1px solid #4d9c3a":"1px solid rgba(255,255,255,0.85)",
-                    color:departure===d?"#4d9c3a":"white",padding:"6px 2px",borderRadius:"5px",transition:"all 0.15s"}}>
+                    border:departure===d?"2px solid white":"1px solid rgba(255,255,255,0.85)",
+                    color:"white",padding:"6px 2px",borderRadius:"5px",transition:"all 0.15s"}}>
                     {d}駅
                   </button>
                 ))}
@@ -1030,17 +1031,17 @@ function App() {
           <div style={{display:"inline-flex",flexDirection:"column",alignItems:"stretch",gap:"4px"}}>
             {/* ①検索バー＋登山時期 */}
             <div style={{display:"flex",gap:"6px",alignItems:"center"}}>
-              <div style={{flex:1,background:"rgba(255,255,255,0.93)",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",padding:"0 10px",gap:"6px",transition:"box-shadow 0.2s ease, background 0.2s ease"}}>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4e6535" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input type="text" placeholder="山の名前で検索" value={search} onChange={e => setSearch(e.target.value)}
-                onFocus={e => { e.currentTarget.parentNode.style.boxShadow="0 0 0 2px rgba(78,101,53,0.4)"; e.currentTarget.parentNode.style.background="rgba(255,255,255,0.98)"; }}
-                onBlur={e => { e.currentTarget.parentNode.style.boxShadow="none"; e.currentTarget.parentNode.style.background="rgba(255,255,255,0.93)"; }}
-                style={{flex:1,border:"none",outline:"none",fontSize:"13px",color:"#3a3530",background:"transparent",minWidth:0}}/>
+              <div style={{flex:1,background:"transparent",border:"1px solid rgba(255,255,255,0.85)",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",padding:"0 10px",gap:"6px",transition:"box-shadow 0.2s ease, border-color 0.2s ease"}}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input id="ym-hero-search" type="text" placeholder="山の名前で検索" value={search} onChange={e => setSearch(e.target.value)}
+                onFocus={e => { e.currentTarget.parentNode.style.boxShadow="0 0 0 2px rgba(255,255,255,0.4)"; e.currentTarget.parentNode.style.borderColor="white"; }}
+                onBlur={e => { e.currentTarget.parentNode.style.boxShadow="none"; e.currentTarget.parentNode.style.borderColor="rgba(255,255,255,0.85)"; }}
+                style={{flex:1,border:"none",outline:"none",fontSize:"13px",color:"white",background:"transparent",minWidth:0}}/>
               </div>
-              <div style={{background:"rgba(255,255,255,0.93)",borderRadius:"5px",height:"30px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"0 8px",flexShrink:0}}>
-                <div style={{fontSize:"7px",color:"#9a9088",lineHeight:1}}>登山時期</div>
+              <div style={{background:"transparent",border:"1px solid rgba(255,255,255,0.85)",borderRadius:"5px",height:"30px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"0 8px",flexShrink:0}}>
+                <div style={{fontSize:"7px",color:"rgba(255,255,255,0.75)",lineHeight:1}}>登山時期</div>
                 <div style={{display:"flex",alignItems:"center",gap:"1px"}}>
-                  <select value={filterMonth} onChange={e => { var v=Number(e.target.value); setFilterMonth(v); ssSet("ym_month",v) }} style={{appearance:"none",WebkitAppearance:"none",border:"none",background:"transparent",fontSize:"12px",color:"#3a3530",fontWeight:"600",outline:"none",cursor:"pointer",padding:0}}>
+                  <select value={filterMonth} onChange={e => { var v=Number(e.target.value); setFilterMonth(v); ssSet("ym_month",v) }} style={{appearance:"none",WebkitAppearance:"none",border:"none",background:"transparent",fontSize:"12px",color:"white",fontWeight:"600",outline:"none",cursor:"pointer",padding:0}}>
                     {[1,2,3,4,5,6,7,8,9,10,11,12].map(m => (<option key={m} value={m}>{m}月</option>))}
                   </select>
                   <span style={{fontSize:"6px",color:"#8a8078",pointerEvents:"none"}}>▾</span>
@@ -1052,20 +1053,20 @@ function App() {
               <button onClick={() => setFilterOpen(!filterOpen)}
   onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
   onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform="scale(1)";},150)}
-  style={{flex:1,background:activeFilterCount>0?"#4e6535":"rgba(255,255,255,0.88)",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"none",cursor:"pointer",transition:"background 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
+  style={{flex:1,background:"transparent",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:activeFilterCount>0?"2px solid white":"1px solid rgba(255,255,255,0.85)",cursor:"pointer",transition:"all 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
                 {activeFilterCount>0 ? (
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                 ) : (
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4a5a48" strokeWidth="2.5" strokeLinecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
                 )}
-                <span style={{fontSize:"11px",color:activeFilterCount>0?"white":"#4a5a48",fontWeight:"600"}}>{activeFilterCount>0 ? "絞り込み中（"+activeFilterCount+"）" : "条件で検索"}</span>
+                <span style={{fontSize:"11px",color:"white",fontWeight:activeFilterCount>0?"800":"600"}}>{activeFilterCount>0 ? "絞り込み中（"+activeFilterCount+"）" : "条件で検索"}</span>
               </button>
               <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter(null); }}
   onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
   onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform="scale(1)";},150)}
-  style={{flex:1,background:"rgba(255,255,255,0.88)",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"none",cursor:"pointer",transition:"transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4a5a48" strokeWidth="2.5" strokeLinecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.1"/></svg>
-                <span style={{fontSize:"11px",color:"#4a5a48",fontWeight:"600"}}>リセット</span>
+  style={{flex:1,background:"transparent",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"1px solid rgba(255,255,255,0.85)",cursor:"pointer",transition:"transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.1"/></svg>
+                <span style={{fontSize:"11px",color:"white",fontWeight:"600"}}>リセット</span>
               </button>
             </div>
           </div>
@@ -1073,10 +1074,10 @@ function App() {
         {/* ③出発地タブ */}
         <div style={{position:"relative",zIndex:2,display:"flex",gap:"4px",padding:"8px 16px 8px",maxWidth:"768px",margin:"0 auto"}}>
           {["大船","新宿","横浜","大宮","立川"].map(d => (
-            <button key={d} onClick={() => setDeparture(d)} style={{flex:1,textAlign:"center",fontSize:"12px",padding:"7px 0",borderRadius:"5px",fontWeight:"700",cursor:"pointer",background:"transparent",
-              border:departure===d?"1px solid #4d9c3a":"1px solid rgba(255,255,255,0.85)",
-              color:departure===d?"#4d9c3a":"white",
-              transition:"border-color 0.2s ease, color 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1)",
+            <button key={d} onClick={() => setDeparture(d)} style={{flex:1,textAlign:"center",fontSize:departure===d?"13.5px":"12px",padding:"7px 0",borderRadius:"5px",fontWeight:"700",cursor:"pointer",background:"transparent",
+              border:departure===d?"2px solid white":"1px solid rgba(255,255,255,0.85)",
+              color:"white",
+              transition:"border-width 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1)",
               transform:departure===d?"scale(1.04)":"scale(1)"
             }}
             onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
