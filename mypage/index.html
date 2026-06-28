@@ -193,8 +193,9 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
       <div style="font-size:10.5px;opacity:0.78;margin-top:1px;">⭐ 気になる山</div>
     </div>
     <div style="flex:1;text-align:center;">
-      <div style="font-size:13px;font-weight:700;line-height:1.3;padding-top:3px;" id="profile-type">診断する</div>
-      <div style="font-size:10.5px;opacity:0.78;margin-top:1px;">好きな山タイプ</div>
+      <img id="profile-type-img" style="display:none;width:30px;height:30px;border-radius:50%;margin:0 auto 3px;object-fit:cover;border:1.5px solid rgba(255,255,255,0.45);background:rgba(255,255,255,0.15);" />
+      <div style="font-size:13px;font-weight:700;line-height:1.3;" id="profile-type">診断する</div>
+      <div style="font-size:10.5px;opacity:0.78;margin-top:1px;">あなたの登山タイプ</div>
     </div>
   </div>
   <div id="profile-next-row" style="display:none;font-size:12px;background:rgba(255,255,255,0.14);border-radius:8px;padding:9px 12px;margin-top:12px;">
@@ -215,16 +216,6 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 
   <!-- 気になる山 -->
   <div class="section" id="tab-favorites">
-    <div style="display:flex;gap:10px;margin-bottom:16px">
-      <div style="flex:1;background:white;border-radius:12px;border:1px solid #e0dbd4;padding:14px;text-align:center">
-        <div style="font-size:26px;font-weight:800;color:#4e6535" id="fav-count">0</div>
-        <div style="font-size:11px;color:#8a8078;margin-top:2px">⭐ 気になる山</div>
-      </div>
-      <div style="flex:1;background:white;border-radius:12px;border:1px solid #e0dbd4;padding:14px;text-align:center">
-        <div style="font-size:26px;font-weight:800;color:#4e6535" id="climbed-count">0</div>
-        <div style="font-size:11px;color:#8a8078;margin-top:2px">🚩 登った数</div>
-      </div>
-    </div>
     <div class="card">
       <div class="card-header">⭐ 気になる山</div>
       <div class="card-body" id="fav-list"></div>
@@ -418,14 +409,18 @@ function updateProfileCard() {
   document.getElementById('profile-fav-count').textContent = favs.length;
 
   var typeEl = document.getElementById('profile-type');
+  var typeImg = document.getElementById('profile-type-img');
   try {
     var tr = JSON.parse(localStorage.getItem('ym_type_result')||'null');
-    if (tr && tr.typeName) {
+    if (tr && tr.typeName && tr.typeCode) {
       typeEl.textContent = tr.typeName;
+      typeImg.src = '/ogp/thumb/'+tr.typeCode.toLowerCase()+'.png';
+      typeImg.style.display = 'inline-block';
       typeEl.parentElement.style.cursor = 'pointer';
       typeEl.parentElement.onclick = function(){ location.href='/recommend/'; };
     } else {
       typeEl.textContent = '診断する';
+      typeImg.style.display = 'none';
       typeEl.parentElement.style.cursor = 'pointer';
       typeEl.parentElement.onclick = function(){ location.href='/recommend/'; };
     }
@@ -592,8 +587,6 @@ function saveFavs(f){ localStorage.setItem(FAV_KEY, JSON.stringify(f)); }
 function renderFavorites() {
   var favs = getFavs();
   var climbs = getClimbs();
-  document.getElementById('fav-count').textContent = favs.length;
-  document.getElementById('climbed-count').textContent = Object.keys(climbs).length;
   var el = document.getElementById('fav-list');
   if (favs.length===0){
     el.innerHTML='<div style="padding:32px 0;text-align:center"><div style="font-size:32px;margin-bottom:8px">⭐</div>気になる山がありません<br><small style="color:#b0a898;margin-top:6px;display:block">山カードの ☆ で追加できます</small></div>';
@@ -609,7 +602,10 @@ function renderFavorites() {
       var elev = m ? m.elevation : null;
       var diff = m ? m.difficulty : null;
       var driveMin = m ? (m.driveOfuna||m.driveShinjuku||m.driveYokohama||null) : null;
-      html += '<div style="background:white;border-radius:12px;border:1px solid #e0dbd4;padding:11px 12px;position:relative">';
+      var isHyaku = m && m.category === '百名山';
+      var cardBg = isHyaku ? 'linear-gradient(145deg,#eef2f7 0%,#e2eaf3 100%)' : 'linear-gradient(145deg,#f0f5ec 0%,#e4edd8 100%)';
+      var cardBorder = isHyaku ? '#d0dcea' : '#cfdcc0';
+      html += '<div style="background:' + cardBg + ';border-radius:12px;border:1.5px solid ' + cardBorder + ';padding:11px 12px;position:relative">';
       if(isClimbed) html += '<span style="position:absolute;top:10px;right:44px;font-size:9px;font-weight:600;color:#4a6838;background:#eaf3e0;border:0.5px solid #b8d8a0;border-radius:4px;padding:1px 5px">🚩 登った</span>';
       html += '<button onclick="removeFav(\'' + id + '\')" style="position:absolute;top:8px;right:8px;background:none;border:none;color:#c0b8a8;font-size:16px;cursor:pointer;padding:2px 4px;line-height:1">×</button>';
       html += '<a href="/mountains/' + id + '/" style="display:block;font-size:14px;font-weight:700;color:#2a2520;text-decoration:none;margin-bottom:6px;padding-right:80px">' + esc(name) + '</a>';
@@ -1369,7 +1365,6 @@ function renderClimbed() {
   });
   var totalCount = 0;
   ids.forEach(function(id){ totalCount += climbs[id].length; });
-  document.getElementById('climbed-count').textContent = totalCount;
 
   var el = document.getElementById('climbed-list');
   if (ids.length === 0) {
