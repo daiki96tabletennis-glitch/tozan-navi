@@ -270,6 +270,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
       <div style="font-size:15px;font-weight:700;color:#2a2520;margin-bottom:16px;padding:0 2px" id="ec-name"></div>
       <div class="form-card">
         <div class="field"><label>登った日</label><input type="date" id="ec-date"></div>
+        <div class="field"><label>👕 今日の山コーデ</label><input type="text" id="ec-outfit" placeholder="例：ユニクロ防風パーカー、靴は新しいトレラン用" style="width:100%;border:1px solid #ddd8d0;border-radius:8px;padding:9px 12px;font-size:13px;background:white;font-family:inherit;box-sizing:border-box"></div>
         <div class="field"><label>メモ</label><textarea id="ec-memo" rows="3" placeholder="天気、コース、感想など..." style="width:100%;border:1px solid #ddd8d0;border-radius:8px;padding:9px 12px;font-size:13px;background:white;resize:none;font-family:inherit"></textarea></div>
       </div>
     </div>
@@ -347,6 +348,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
         <div class="field"><label>登った日（開始）</label><input type="date" id="mc-date"></div>
         <div class="field"><label>登った日（終了）<span style="font-size:10px;color:#a09888;font-weight:400">　日帰りは空白でOK</span></label><input type="date" id="mc-date-end"></div>
         <div class="field"><label>エリア</label><input type="text" id="mc-area" placeholder="例：東京都・埼玉県"></div>
+        <div class="field"><label>👕 今日の山コーデ</label><input type="text" id="mc-outfit" placeholder="例：ユニクロ防風パーカー、靴は新しいトレラン用" style="width:100%;border:1px solid #ddd8d0;border-radius:8px;padding:9px 12px;font-size:13px;background:white;font-family:inherit;box-sizing:border-box"></div>
         <div class="field"><label>備考</label><textarea id="mc-memo" placeholder="天気、同行者、感想など"></textarea></div>
         <div class="field">
           <label>カテゴリ</label>
@@ -621,6 +623,14 @@ function renderFavorites() {
         if(driveMin) html += '<span style="font-size:11px;color:#6a6058;background:#f5f2ef;border-radius:4px;padding:2px 7px">🚗 ' + driveMin + '分</span>';
         html += '</div>';
       }
+      var tags = computeTags(m, false);
+      if(tags.length){
+        html += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px">';
+        tags.forEach(function(t){
+          html += '<span style="font-size:10.5px;color:#a85a7a;background:#fbeaf0;border-radius:10px;padding:2px 9px;font-weight:600">' + t + '</span>';
+        });
+        html += '</div>';
+      }
       html += '</div>';
     });
     html += '</div>';
@@ -655,7 +665,7 @@ function getClimbs(){
     arr.forEach(function(e,i){
       var id=e[0];
       if(!base[id]) base[id]=[];
-      base[id].push({type:'site',name:null,date:e[1],area:'',memo:e[2]||'',category:'',uid:'s_'+i});
+      base[id].push({type:'site',name:null,date:e[1],area:'',memo:e[2]||'',outfit:e[3]||'',category:'',uid:'s_'+i});
     });
   }catch(ex){}
   try{
@@ -663,7 +673,7 @@ function getClimbs(){
     extra.forEach(function(e,i){
       var id='__extra_'+i;
       if(!base[id]) base[id]=[];
-      base[id].push({type:'manual',name:e.name,date:e.date,area:e.area,memo:e.memo,category:e.category||'',uid:'e_'+i});
+      base[id].push({type:'manual',name:e.name,date:e.date,area:e.area,memo:e.memo,outfit:e.outfit||'',category:e.category||'',uid:'e_'+i});
     });
   }catch(ex){}
   return base;
@@ -726,6 +736,7 @@ function openAddClimbed(){
   document.getElementById('mc-name').value='';
   document.getElementById('mc-date').value=new Date().toISOString().slice(0,10);
   document.getElementById('mc-area').value='';
+  document.getElementById('mc-outfit').value='';
   document.getElementById('mc-memo').value='';
   document.getElementById('mc-hyaku').checked=false;
   document.getElementById('mc-nihyaku').checked=false;
@@ -741,6 +752,7 @@ function saveManualClimbed(){
   var date = document.getElementById('mc-date').value;
   var dateEnd = document.getElementById('mc-date-end').value;
   var area = document.getElementById('mc-area').value.trim();
+  var outfit = document.getElementById('mc-outfit').value.trim();
   var memo = document.getElementById('mc-memo').value.trim();
   var isHyaku = document.getElementById('mc-hyaku').checked;
   var isNihyaku = document.getElementById('mc-nihyaku').checked;
@@ -763,7 +775,7 @@ function saveManualClimbed(){
       // サイト内の山として登録（ym_climbedに追加）
       try {
         var arr = JSON.parse(localStorage.getItem(CLM_KEY)||'[]');
-        arr.push([matched.id, date, memo]);
+        arr.push([matched.id, date, memo, outfit]);
         localStorage.setItem(CLM_KEY, JSON.stringify(arr));
       } catch(e) {}
       showClimbCelebrate(matched.id, matched.name, matched.area, matched.category, matched.elevation);
@@ -771,7 +783,7 @@ function saveManualClimbed(){
       // 手動追加（ym_climbed_extra）- categoryも保存
       try {
         var extra = JSON.parse(localStorage.getItem(CLM_EX_KEY)||'[]');
-        extra.push({name:name, date:date, dateEnd:dateEnd, area:area, memo:memo, category:category});
+        extra.push({name:name, date:date, dateEnd:dateEnd, area:area, memo:memo, outfit:outfit, category:category});
         localStorage.setItem(CLM_EX_KEY, JSON.stringify(extra));
       } catch(e) {}
       showClimbCelebrate('__manual__', name, area, category);
@@ -844,6 +856,7 @@ function openEditClimbed(key, c) {
   var name = c.type==='manual' ? c.name : (_nameMap[key]||key);
   document.getElementById('ec-name').textContent = name;
   document.getElementById('ec-date').value = c.date || new Date().toISOString().slice(0,10);
+  document.getElementById('ec-outfit').value = c.outfit || '';
   document.getElementById('ec-memo').value = c.memo || '';
   document.getElementById('edit-climbed-modal').classList.add('open');
 }
@@ -853,18 +866,19 @@ function closeEditClimbed() {
 function saveEditClimbed() {
   var key = document.getElementById('ec-key').value;
   var date = document.getElementById('ec-date').value;
+  var outfit = document.getElementById('ec-outfit').value.trim();
   var memo = document.getElementById('ec-memo').value.trim();
   try {
     if (key.startsWith('__extra_')) {
       var idx = parseInt(key.replace('__extra_',''));
       var extra = JSON.parse(localStorage.getItem(CLM_EX_KEY)||'[]');
-      if(extra[idx]) { extra[idx].date = date; extra[idx].memo = memo; }
+      if(extra[idx]) { extra[idx].date = date; extra[idx].memo = memo; extra[idx].outfit = outfit; }
       localStorage.setItem(CLM_EX_KEY, JSON.stringify(extra));
     } else {
       var arr = JSON.parse(localStorage.getItem(CLM_KEY)||'[]');
       var found = false;
-      arr = arr.map(function(e){ if(e[0]===key){ found=true; return [e[0],date,memo]; } return e; });
-      if(!found) arr.push([key,date,memo]);
+      arr = arr.map(function(e){ if(e[0]===key){ found=true; return [e[0],date,memo,outfit]; } return e; });
+      if(!found) arr.push([key,date,memo,outfit]);
       localStorage.setItem(CLM_KEY, JSON.stringify(arr));
     }
   } catch(e2) {}
@@ -1189,6 +1203,30 @@ function buildShareCanvas(cb){
       ctx.globalAlpha=1;
     }
 
+    if(d.outfit){
+      ctx.font='700 38px "Noto Serif JP", serif';
+      ctx.fillStyle=d.c.txt;
+      ctx.fillText('👕 '+d.outfit, 70, 460, W-140);
+    }
+
+    if(d.tags && d.tags.length){
+      var tagX=70, tagY=520;
+      ctx.font='600 30px "Noto Serif JP", serif';
+      d.tags.forEach(function(tag){
+        var tw=ctx.measureText(tag).width+36;
+        if(tagX+tw>W-70){ tagX=70; tagY+=64; }
+        ctx.fillStyle='rgba(255,255,255,0.55)';
+        roundRectPath(ctx, tagX, tagY, tw, 50, 25);
+        ctx.fill();
+        ctx.fillStyle=d.c.txt;
+        ctx.textAlign='left';
+        ctx.textBaseline='middle';
+        ctx.fillText(tag, tagX+18, tagY+27);
+        tagX += tw+10;
+      });
+      ctx.textBaseline='alphabetic';
+    }
+
     ctx.textAlign='center';
     ctx.font='700 32px "Playfair Display", Georgia, serif';
     ctx.globalAlpha=0.6;
@@ -1250,19 +1288,43 @@ var _currentBadgeUid = null;
 var _currentBadgeData = null;
 var _shareCardBlob = null;
 
-function openBadgeDetail(name, area, elev, date, memo, cfg, key, uid) {
+function computeTags(mt, hasOutfit){
+  var tags = [];
+  if (!mt) return tags;
+  if (mt.trainAccess) tags.push('#電車で行ける');
+  if (mt.difficulty && (mt.difficulty==='初級' || mt.difficulty==='初〜中級')) tags.push('#初心者OK');
+  if (mt.category==='百名山') tags.push('#百名山');
+  if (mt.daytrip) tags.push('#日帰りOK');
+  if (mt.description && mt.description.indexOf('富士山')>-1) tags.push('#富士山ビュー');
+  if (hasOutfit) tags.push('#山コーデ');
+  return tags;
+}
+
+function openBadgeDetail(name, area, elev, date, memo, cfg, key, uid, outfit) {
   _currentBadgeKey = key || null;
   _currentBadgeUid = uid || null;
   var m = document.getElementById('badge-detail-modal');
   var cat = cfg && cfg.centerLabel ? cfg.centerLabel : '';
   var c = getColor(key||'_default', area||'', cat);
-  _currentBadgeData = {name:name, area:area||'', elev:elev||'', date:date||'', c:c, key:key||'_default'};
+  _currentBadgeData = {name:name, area:area||'', elev:elev||'', date:date||'', outfit:outfit||'', c:c, key:key||'_default', tags:[]};
   document.getElementById('badge-detail-svg').innerHTML = makeBadgeSVG(name, date||'', key||'_default', c, 120, area||'', elev||'');
   document.getElementById('badge-detail-name').textContent = name;
   document.getElementById('badge-detail-sub').textContent = (area||'')+(elev?' · '+Number(elev).toLocaleString()+'m':'');
   document.getElementById('badge-detail-date').textContent = date ? '📅 '+date : '';
+  var oe = document.getElementById('badge-detail-outfit');
+  if (outfit) { oe.textContent = '👕 '+outfit; oe.style.display='block'; } else { oe.style.display='none'; }
   var me = document.getElementById('badge-detail-memo');
   if (memo) { me.textContent=memo; me.style.display='block'; } else { me.style.display='none'; }
+  var tagsEl = document.getElementById('badge-detail-tags');
+  tagsEl.innerHTML='';
+  fetchMountainData(function(mtnData){
+    var mt = Array.isArray(mtnData) ? mtnData.filter(function(x){return x.id===key;})[0] : null;
+    var tags = computeTags(mt, !!outfit);
+    if (_currentBadgeData) _currentBadgeData.tags = tags;
+    tagsEl.innerHTML = tags.map(function(t){
+      return '<span style="font-size:11px;background:#eef2e8;color:#4a5e3a;border-radius:10px;padding:3px 9px;">'+t+'</span>';
+    }).join('');
+  });
   m.classList.add('open');
 }
 function closeBadgeDetail() { document.getElementById('badge-detail-modal').classList.remove('open'); }
@@ -1292,7 +1354,8 @@ function handleBadgeClick(el) {
     el.getAttribute('data-memo'),
     c,
     key,
-    el.getAttribute('data-uid')
+    el.getAttribute('data-uid'),
+    el.getAttribute('data-outfit')
   );
 }
 
@@ -1352,7 +1415,7 @@ function renderClimbed() {
           entries.forEach(function(entry, ei) {
             var dateShort = entry.date?entry.date.slice(0,7).replace(/-/g,'/'):'';
             var dateLong = entry.date?new Date(entry.date.replace(/\//g,'-')).toLocaleDateString('ja-JP',{year:'numeric',month:'short',day:'numeric'}):'';
-            var attrs = ' data-key="' + esc(id) + '" data-uid="' + esc(entry.uid) + '" data-name="' + esc(name) + '" data-area="' + esc(area) + '" data-elev="' + (elev||'') + '" data-date="' + esc(dateLong) + '" data-memo="' + esc(entry.memo||'') + '"';
+            var attrs = ' data-key="' + esc(id) + '" data-uid="' + esc(entry.uid) + '" data-name="' + esc(name) + '" data-area="' + esc(area) + '" data-elev="' + (elev||'') + '" data-date="' + esc(dateLong) + '" data-memo="' + esc(entry.memo||'') + '" data-outfit="' + esc(entry.outfit||'') + '"';
             detailHtml += '<div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;">';
             detailHtml += '<div class="badge-svg-wrap"' + attrs + ' onclick="event.stopPropagation();handleBadgeClick(this)" style="width:88px;height:88px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.2));cursor:pointer;">' + makeBadgeSVG(name, dateShort, id, cfg, 88, area, elev) + '</div>';
             detailHtml += '<div style="font-size:9px;color:#a09888;">' + dateShort + '</div>';
@@ -1370,7 +1433,7 @@ function renderClimbed() {
           var c = first;
           var dateShort = c.date?c.date.slice(0,7).replace(/-/g,'/'):'';
           var dateLong = c.date?new Date(c.date.replace(/\//g,'-')).toLocaleDateString('ja-JP',{year:'numeric',month:'short',day:'numeric'}):'';
-          var attrs = ' data-key="' + esc(id) + '" data-uid="' + esc(c.uid||'') + '" data-name="' + esc(name) + '" data-area="' + esc(area) + '" data-elev="' + (elev||'') + '" data-date="' + esc(dateLong) + '" data-memo="' + esc(c.memo||'') + '"';
+          var attrs = ' data-key="' + esc(id) + '" data-uid="' + esc(c.uid||'') + '" data-name="' + esc(name) + '" data-area="' + esc(area) + '" data-elev="' + (elev||'') + '" data-date="' + esc(dateLong) + '" data-memo="' + esc(c.memo||'') + '" data-outfit="' + esc(c.outfit||'') + '"';
           html += '<div class="badge-item">';
           html += '<div class="badge-svg-wrap new-badge"' + attrs + ' onclick="handleBadgeClick(this)">' + svgHtml + '</div>';
 
@@ -1431,7 +1494,9 @@ init();
     <div class="badge-detail-name" id="badge-detail-name"></div>
     <div class="badge-detail-sub" id="badge-detail-sub"></div>
     <div class="badge-detail-date" id="badge-detail-date"></div>
+    <div class="badge-detail-memo" id="badge-detail-outfit" style="display:none;background:#f0f5ec;border:1px solid #cfdcc0;"></div>
     <div class="badge-detail-memo" id="badge-detail-memo" style="display:none"></div>
+    <div id="badge-detail-tags" style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:10px;"></div>
     <button onclick="openShareCard()" style="width:100%;margin-top:14px;padding:13px;background:#4e6535;border:none;border-radius:12px;font-size:14px;font-weight:700;color:white;cursor:pointer;">📤 シェアカードを作る</button>
     <div style="display:flex;gap:8px;margin-top:8px;">
       <button onclick="badgeEdit()" style="flex:1;padding:11px;background:#f0f5ec;border:1.5px solid #c8ddb0;border-radius:12px;font-size:13px;font-weight:700;color:#4a6838;cursor:pointer;">✏️ 編集</button>
