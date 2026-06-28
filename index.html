@@ -1501,8 +1501,12 @@ function App() {
                       {/* エリア */}
                       <div style={{ fontSize: "10px", color: "#8a8078", position: "relative", zIndex: 1 }}>{(function(a){ return /長野県/.test(a) ? a : a.replace(/^(東京都|北海道|.+?[都道府県]).*/, "$1"); })(m.area)}</div>
                       {/* 標高・時間 */}
-                      <div style={{ display: "flex", gap: "5px", alignItems: "center", fontSize: "14px", fontFamily: "Outfit,sans-serif", letterSpacing: "-0.01em", fontWeight: "500", color: "#6a6058", position: "relative", zIndex: 1, marginBottom: "2px" }}>
-                        <span>{m.elevation.toLocaleString()}m</span>
+                      <div style={{ display: "flex", gap: "5px", alignItems: "center", fontSize: "11px", fontFamily: "Outfit,sans-serif", letterSpacing: "-0.01em", fontWeight: "500", color: "#6a6058", position: "relative", zIndex: 1, marginBottom: "2px" }}>
+                        <span>{(function(){
+                          return (m.elevation.toLocaleString()+"m").split(/([\d,]+)/).map(function(p,i){
+                            return /^[\d,]+$/.test(p) ? <span key={i} style={{fontSize:"14px"}}>{p}</span> : <span key={i}>{p}</span>;
+                          });
+                        })()}</span>
                         <span style={{ color: "#c8c0b8" }}>·</span>
                         <span style={{display:"inline-flex",alignItems:"center",gap:"4px"}}>
                           <svg width="16" height="16" viewBox="0 0 24 24" style={{flexShrink:0}}>
@@ -1513,7 +1517,11 @@ function App() {
                             <circle cx="7" cy="18" r="2" fill="currentColor"/>
                             <circle cx="17" cy="18" r="2" fill="currentColor"/>
                           </svg>
-                          {formatDriveTime(getDriveTime(m))}
+                          {(function(){
+                            return formatDriveTime(getDriveTime(m)).split(/([\d,]+)/).map(function(p,i){
+                              return /^[\d,]+$/.test(p) ? <span key={i} style={{fontSize:"14px"}}>{p}</span> : <span key={i}>{p}</span>;
+                            });
+                          })()}
                         </span>
                       </div>
                       {/* アクセス時間バー */}
@@ -1536,8 +1544,7 @@ function App() {
                               <path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/>
                               <rect x="4" y="9.5" width="3" height="3" fill="rgba(200,220,245,0.95)"/>
                               <rect x="9" y="9.5" width="3" height="3" fill="rgba(200,220,245,0.95)"/>
-                              <circle cx="6" cy="19" r="1.6" fill="currentColor"/>
-                              <circle cx="16" cy="19" r="1.6" fill="currentColor"/>
+                              <line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
                             </svg>
                             {(typeof m.trainAccess === "string" && (m.trainAccess.includes("バス") || m.trainAccess.includes("ケーブル"))) && (
                               <svg width="16" height="16" viewBox="0 0 24 24" style={{flexShrink:0}}>
