@@ -947,7 +947,7 @@ function App() {
                 {["大船","新宿","横浜","大宮","立川"].map(d => (
                   <button key={d} onClick={() => setDeparture(d)}
                     style={{flex:1,textAlign:"center",fontSize:"11px",fontWeight:departure===d?"700":"600",cursor:"pointer",background:"transparent",
-                    border:departure===d?"2px solid white":"1px solid rgba(255,255,255,0.85)",
+                    border:departure===d?"2px solid white":"1px solid rgba(255,255,255,0.4)",
                     color:"white",padding:"6px 2px",borderRadius:"5px",transition:"all 0.15s"}}>
                     {d}駅
                   </button>
@@ -1010,11 +1010,11 @@ function App() {
           </div>
           <div style={{display:"flex",gap:"5px"}}>
             {/* 使い方ボタン */}
-            <a href="/howto/" style={{height:"34px",borderRadius:"5px",background:"transparent",border:"1px solid rgba(255,255,255,0.85)",display:"flex",alignItems:"center",justifyContent:"center",textDecoration:"none",padding:"0 10px",fontSize:"12px",fontWeight:"600",color:"white",whiteSpace:"nowrap"}}>使い方</a>
-            <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{width:"34px",height:"34px",borderRadius:"5px",background:"transparent",border:"1px solid rgba(255,255,255,0.85)",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}>
+            <a href="/howto/" style={{height:"34px",borderRadius:"5px",background:"transparent",border:"none",display:"flex",alignItems:"center",justifyContent:"center",textDecoration:"none",padding:"0 10px",fontSize:"12px",fontWeight:"600",color:"white",whiteSpace:"nowrap"}}>使い方</a>
+            <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{width:"34px",height:"34px",borderRadius:"5px",background:"transparent",border:"none",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-3"/></svg>
             </button>
-            <button onClick={() => setShowMenu(true)} style={{width:"34px",height:"34px",borderRadius:"5px",background:"transparent",border:"1px solid rgba(255,255,255,0.85)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"3px",cursor:"pointer"}}>
+            <button onClick={() => setShowMenu(true)} style={{width:"34px",height:"34px",borderRadius:"5px",background:"transparent",border:"none",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"3px",cursor:"pointer"}}>
               <div style={{width:"14px",height:"1.5px",background:"white",borderRadius:"1px"}}></div>
               <div style={{width:"14px",height:"1.5px",background:"white",borderRadius:"1px"}}></div>
               <div style={{width:"14px",height:"1.5px",background:"white",borderRadius:"1px"}}></div>
@@ -1075,7 +1075,7 @@ function App() {
         <div style={{position:"relative",zIndex:2,display:"flex",gap:"4px",padding:"8px 16px 8px",maxWidth:"768px",margin:"0 auto"}}>
           {["大船","新宿","横浜","大宮","立川"].map(d => (
             <button key={d} onClick={() => setDeparture(d)} style={{flex:1,textAlign:"center",fontSize:departure===d?"13.5px":"12px",padding:"7px 0",borderRadius:"5px",fontWeight:"700",cursor:"pointer",background:"transparent",
-              border:departure===d?"2px solid white":"1px solid rgba(255,255,255,0.85)",
+              border:departure===d?"2px solid white":"1px solid rgba(255,255,255,0.4)",
               color:"white",
               transition:"border-width 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1)",
               transform:departure===d?"scale(1.04)":"scale(1)"
@@ -1504,7 +1504,7 @@ function App() {
                         <span>{m.elevation.toLocaleString()}m</span>
                         <span style={{ color: "#c8c0b8" }}>·</span>
                         <span style={{display:"inline-flex",alignItems:"center",gap:"4px"}}>
-                          <svg width="13" height="13" viewBox="0 0 24 24" style={{flexShrink:0}}>
+                          <svg width="16" height="16" viewBox="0 0 24 24" style={{flexShrink:0}}>
                             <path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/>
                             <rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/>
                             <rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/>
@@ -1531,22 +1531,15 @@ function App() {
                         </span>
                         {m.trainAccess && (
                           <span style={{ fontSize: "10px", padding: "2px 6px", borderRadius: "20px", fontWeight: "500", background: "rgba(200,220,245,0.8)", color: "#1a4878", display:"inline-flex", alignItems:"center", gap:"3px" }}>
-                            <svg width="13" height="13" viewBox="0 0 24 24" style={{flexShrink:0}}>
-                              <rect x="3" y="4" width="14" height="13" rx="3" fill="currentColor"/>
-                              <rect x="5" y="6.5" width="3" height="3" rx="0.5" fill="rgba(200,220,245,0.95)"/>
-                              <rect x="9" y="6.5" width="3" height="3" rx="0.5" fill="rgba(200,220,245,0.95)"/>
-                              <rect x="13" y="6.5" width="3" height="3" rx="0.5" fill="rgba(200,220,245,0.95)"/>
-                              <rect x="4" y="17" width="4" height="2" rx="1" fill="currentColor"/>
-                              <rect x="12" y="17" width="4" height="2" rx="1" fill="currentColor"/>
+                            <svg width="16" height="16" viewBox="0 0 24 24" style={{flexShrink:0}}>
+                              <rect x="7" y="2" width="10" height="18" rx="5" fill="currentColor"/>
+                              <rect x="7" y="8" width="10" height="3.5" fill="rgba(200,220,245,0.95)"/>
                             </svg>
                             {(typeof m.trainAccess === "string" && (m.trainAccess.includes("バス") || m.trainAccess.includes("ケーブル"))) && (
-                              <svg width="13" height="13" viewBox="0 0 24 24" style={{flexShrink:0}}>
-                                <rect x="1" y="6" width="22" height="9" rx="3" fill="currentColor"/>
-                                <rect x="3" y="8" width="3.5" height="4" rx="0.5" fill="rgba(200,220,245,0.95)"/>
-                                <rect x="7.5" y="8" width="3.5" height="4" rx="0.5" fill="rgba(200,220,245,0.95)"/>
-                                <rect x="14" y="8" width="6" height="4" rx="0.5" fill="rgba(200,220,245,0.95)"/>
-                                <circle cx="6.5" cy="18" r="2.2" fill="currentColor"/>
-                                <circle cx="17.5" cy="18" r="2.2" fill="currentColor"/>
+                              <svg width="16" height="16" viewBox="0 0 24 24" style={{flexShrink:0}}>
+                                <rect x="1" y="6" width="22" height="9" rx="2.5" fill="currentColor"/>
+                                <circle cx="6" cy="18" r="3" fill="currentColor"/>
+                                <circle cx="18" cy="18" r="3" fill="currentColor"/>
                               </svg>
                             )}
                           </span>
