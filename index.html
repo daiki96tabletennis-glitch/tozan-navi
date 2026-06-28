@@ -929,7 +929,7 @@ function App() {
             <div style={{display:"flex",alignItems:"center",gap:"9px",marginBottom:"16px",position:"relative",zIndex:1}}>
               <svg width="24" height="24" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
               <div style={{flex:1}}>
-                <h1 style={{fontFamily:"Outfit,sans-serif",fontSize:"21px",fontWeight:"700",letterSpacing:"0.06em",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
+                <h1 style={{fontFamily:"Georgia,serif",fontSize:"23px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
                 
               </div>
               <a href="/about/" style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"5px",padding:"4px 9px",fontSize:"10px",textDecoration:"none",flexShrink:0}}>運営者</a>
@@ -946,8 +946,8 @@ function App() {
                 {["大船","新宿","横浜","大宮","立川"].map(d => (
                   <button key={d} onClick={() => setDeparture(d)}
                     style={{flex:1,textAlign:"center",fontSize:"11px",fontWeight:departure===d?"700":"600",cursor:"pointer",background:"transparent",
-                    border:departure===d?"1px solid #c9b878":"1px solid rgba(255,255,255,0.85)",
-                    color:departure===d?"#c9b878":"white",padding:"6px 2px",borderRadius:"5px",transition:"all 0.15s"}}>
+                    border:departure===d?"1px solid #4d9c3a":"1px solid rgba(255,255,255,0.85)",
+                    color:departure===d?"#4d9c3a":"white",padding:"6px 2px",borderRadius:"5px",transition:"all 0.15s"}}>
                     {d}駅
                   </button>
                 ))}
@@ -1005,7 +1005,7 @@ function App() {
         <div style={{position:"relative",zIndex:2,display:"flex",justifyContent:"space-between",alignItems:"center",padding:"10px 16px 0",background:"linear-gradient(180deg,rgba(0,0,0,0.3) 0%,transparent 100%)",maxWidth:"768px",margin:"0 auto"}}>
           <div style={{display:"flex",alignItems:"center",gap:"6px"}}>
             <svg width="24" height="24" viewBox="0 0 36 36"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
-            <h1 style={{fontFamily:"Outfit,sans-serif",fontSize:"18px",fontWeight:"700",letterSpacing:"0.06em",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
+            <h1 style={{fontFamily:"Georgia,serif",fontSize:"20px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
           </div>
           <div style={{display:"flex",gap:"5px"}}>
             {/* 使い方ボタン */}
@@ -1074,8 +1074,8 @@ function App() {
         <div style={{position:"relative",zIndex:2,display:"flex",gap:"4px",padding:"8px 16px 8px",maxWidth:"768px",margin:"0 auto"}}>
           {["大船","新宿","横浜","大宮","立川"].map(d => (
             <button key={d} onClick={() => setDeparture(d)} style={{flex:1,textAlign:"center",fontSize:"12px",padding:"7px 0",borderRadius:"5px",fontWeight:"700",cursor:"pointer",background:"transparent",
-              border:departure===d?"1px solid #c9b878":"1px solid rgba(255,255,255,0.85)",
-              color:departure===d?"#c9b878":"white",
+              border:departure===d?"1px solid #4d9c3a":"1px solid rgba(255,255,255,0.85)",
+              color:departure===d?"#4d9c3a":"white",
               transition:"border-color 0.2s ease, color 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1)",
               transform:departure===d?"scale(1.04)":"scale(1)"
             }}
