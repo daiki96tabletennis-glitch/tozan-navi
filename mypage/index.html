@@ -620,14 +620,14 @@ function getClimbs(){
 
 
 // ===== バッジ獲得オーバーレイ（v2）=====
-function showClimbCelebrate(id, name, area, category) {
+function showClimbCelebrate(id, name, area, category, elevation) {
   var climbs = getClimbs();
   var count = Object.keys(climbs).length;
   // バッジSVGを生成してオーバーレイに表示
   var ov = document.getElementById('climbed-celebrate');
   if (!ov) return;
   var cfg = getColor(id||'_default', area||'', category||'');
-  var svgHtml = makeBadgeSVG(name||'登頂！', '', id||'_default', cfg, 120);
+  var svgHtml = makeBadgeSVG(name||'登頂！', '', id||'_default', cfg, 120, area||'', elevation||'');
   ov.innerHTML =
     '<div style="font-size:11px;font-weight:800;color:#a8d860;letter-spacing:0.12em;margin-bottom:8px">🏅 バッジ獲得！</div>'
     +'<div style="width:120px;height:120px;margin:0 auto 12px;filter:drop-shadow(0 6px 16px rgba(0,0,0,0.4))">' + svgHtml + '</div>'
@@ -712,7 +712,7 @@ function saveManualClimbed(){
         arr.push([matched.id, date, memo]);
         localStorage.setItem(CLM_KEY, JSON.stringify(arr));
       } catch(e) {}
-      showClimbCelebrate(matched.id, matched.name, matched.area);
+      showClimbCelebrate(matched.id, matched.name, matched.area, matched.category, matched.elevation);
     } else {
       // 手動追加（ym_climbed_extra）- categoryも保存
       try {
@@ -938,15 +938,15 @@ function getColor(id, area, category){
     return COLORS[k]||COLORS._default;
   })();
   var c = Object.assign({}, base);
-  // 通常はダークグレーリム
-  c.rimMain = '#3a3a3a';
-  c.rimSub  = '#1a1a1a';
   if(category==='百名山'){
-    c.rimMain='#a07818'; c.rimSub='#c89830';
-    c.centerLabel='百名山'; c.centerColor='#7a5810';
+    c.rimMain='#c89020'; c.rimSub='#e8b840';
+    c.centerLabel='百名山'; c.centerColor='#ffffff';
   } else if(category==='二百名山'){
-    c.rimMain='#787878'; c.rimSub='#b0b0b0';
-    c.centerLabel='二百名山'; c.centerColor='#383838';
+    c.rimMain='#909090'; c.rimSub='#c0c0c0';
+    c.centerLabel='二百名山'; c.centerColor='#ffffff';
+  } else {
+    c.rimMain='#5a8038'; c.rimSub='#7aa858';
+    c.centerLabel='人気の山'; c.centerColor='#ffffff';
   }
   return c;
 }
@@ -962,41 +962,35 @@ function octPoints(cx,cy,r){
   return pts.join(' ');
 }
 
-function makeBadgeSVG(name, date, id, c, size){
+function makeBadgeSVG(name, date, id, c, size, area, elevation){
   size=size||96;
   var cx=size/2, cy=size/2;
-  // リム太さ0.8倍（前回比）
-  var rOuter  = size*0.47;
-  var rRimIn  = size*0.435;  // リム内側（太さ = rOuter-rRimIn ≒ size*0.035 → 0.8倍）
-  var rBlack  = size*0.418;  // 黒細枠
-  var rContent= size*0.405;
+  var border = size*0.062;          // 白フチの太さ
+  var outerR = size*0.20;           // 外側の角丸
+  var innerR = size*0.135;          // 内側コンテンツの角丸
+  var contX = border, contY = border, contW = size-border*2, contH = size-border*2;
 
   var profile=getProfile(id);
-  var scale=size/100, oy=size*0.04;
+  var scale=size/100, oy=size*0.10;
 
   function sc(pts){ return pts.split(' ').map(function(p){
     var xy=p.split(',');
-    return (parseFloat(xy[0])*scale).toFixed(1)+','+(parseFloat(xy[1])*scale+oy).toFixed(1);
+    return (parseFloat(xy[0])*scale).toFixed(1)+','+(parseFloat(xy[1])*scale*0.62+oy).toFixed(1);
   }).join(' '); }
 
   var line=sc(profile.line);
   var pts=profile.line.split(' ');
   var x0=(parseFloat(pts[0].split(',')[0])*scale).toFixed(1);
   var xN=(parseFloat(pts[pts.length-1].split(',')[0])*scale).toFixed(1);
-  var yB=(size*0.76).toFixed(1);
+  var yB=(size*0.66).toFixed(1);
   var mtPoly=line+' '+xN+','+yB+' '+x0+','+yB;
   var snowPoly=profile.snow?sc(profile.snow):null;
 
   var did='b'+Math.random().toString(36).slice(2,7);
-  var fs=size*(name.length>6?(name.length>8?.070:.084):.098);
-
-  var octOuter  =octPoints(cx,cy,rOuter);
-  var octRimIn  =octPoints(cx,cy,rRimIn);
-  var octBlack  =octPoints(cx,cy,rBlack);
-  var octContent=octPoints(cx,cy,rContent);
+  var fs=size*(name.length>6?(name.length>8?.088:.100):.115);
 
   var defs='<defs>'
-    +'<radialGradient id="'+did+'sky" cx="50%" cy="28%" r="72%">'
+    +'<radialGradient id="'+did+'sky" cx="50%" cy="22%" r="78%">'
     +'<stop offset="0%" stop-color="'+c.sky1+'"/>'
     +'<stop offset="100%" stop-color="'+c.sky2+'"/>'
     +'</radialGradient>'
@@ -1004,58 +998,52 @@ function makeBadgeSVG(name, date, id, c, size){
     +'<stop offset="0%" stop-color="'+c.mt+'" stop-opacity="0.95"/>'
     +'<stop offset="100%" stop-color="'+c.acc+'" stop-opacity="0.82"/>'
     +'</linearGradient>'
-    +'<linearGradient id="'+did+'haze" x1="0" y1="0" x2="0" y2="1">'
-    +'<stop offset="55%" stop-color="'+c.sky2+'" stop-opacity="0"/>'
-    +'<stop offset="100%" stop-color="'+c.sky2+'" stop-opacity="0.5"/>'
-    +'</linearGradient>'
-    +'<clipPath id="'+did+'clip"><polygon points="'+octContent+'"/></clipPath>'
+    +'<clipPath id="'+did+'clip"><rect x="'+contX+'" y="'+contY+'" width="'+contW+'" height="'+contH+'" rx="'+innerR+'"/></clipPath>'
     +'<filter id="'+did+'soft"><feGaussianBlur stdDeviation="0.8"/></filter>'
     +'</defs>';
 
-  // リム：外側（濃い色）→ 内側（やや明るい）→ 黒細枠
-  var rimHtml
-    ='<polygon points="'+octOuter+'" fill="'+c.rimMain+'"/>'
-    +'<polygon points="'+octRimIn+'" fill="'+c.sky1+'" opacity="0.15"/>'
-    +'<polygon points="'+octBlack+'" fill="none" stroke="#111" stroke-width="'+(size*0.013)+'"/>';
+  var borderHtml='<rect x="0" y="0" width="'+size+'" height="'+size+'" rx="'+outerR+'" fill="#ffffff"/>';
 
-  var bgHtml='<polygon points="'+octContent+'" fill="url(#'+did+'sky)"/>';
+  var bgHtml='<rect x="'+contX+'" y="'+contY+'" width="'+contW+'" height="'+contH+'" rx="'+innerR+'" fill="url(#'+did+'sky)"/>';
 
   var mtHtml='<g clip-path="url(#'+did+'clip)">'
-    +'<polygon points="'+mtPoly+'" fill="'+c.acc+'" opacity="0.12" filter="url(#'+did+'soft)" transform="translate(0,'+(size*0.016)+')"\/>'
     +'<polygon points="'+mtPoly+'" fill="url(#'+did+'mt)"/>'
-    +'<polyline points="'+line+'" fill="none" stroke="white" stroke-width="'+(size*0.013)+'" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round"/>'
+    +'<polyline points="'+line+'" fill="none" stroke="white" stroke-width="'+(size*0.012)+'" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round"/>'
     +(snowPoly?'<polygon points="'+snowPoly+'" fill="white" opacity="0.85" filter="url(#'+did+'soft)"/>':'')
-    +'<rect x="0" y="'+(cy)+'" width="'+size+'" height="'+(size*0.35)+'" fill="url(#'+did+'haze)"/>'
-    +'</g>';
+    +'</g>'
+    +'<rect x="'+contX+'" y="'+contY+'" width="'+contW+'" height="'+contH+'" rx="'+innerR+'" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>';
 
-  var treeHtml='';
-
-  // 百名山・二百名山ラベル（中央）
+  // カテゴリラベル（右上の丸タブ）
+  var tabW=size*0.40, tabH=size*0.135, tabX=size-border-tabW-size*0.03, tabY=border+size*0.035;
   var labelHtml=c.centerLabel
-    ?'<text x="'+cx+'" y="'+(cy+rContent*0.28)+'" text-anchor="middle" dominant-baseline="middle"'
-      +' font-family="\'Noto Serif JP\',serif" font-weight="700" font-size="'+(size*0.09)+'"'
-      +' fill="'+c.centerColor+'" paint-order="stroke" stroke="rgba(255,255,255,0.9)" stroke-width="2.5">'+c.centerLabel+'</text>'
+    ?'<rect x="'+tabX+'" y="'+tabY+'" width="'+tabW+'" height="'+tabH+'" rx="'+(tabH/2)+'" fill="'+c.rimMain+'"/>'
+      +'<text x="'+(tabX+tabW/2)+'" y="'+(tabY+tabH/2+size*0.005)+'" text-anchor="middle" dominant-baseline="middle"'
+      +' font-family="\'Noto Serif JP\',serif" font-weight="700" font-size="'+(size*0.072)+'"'
+      +' fill="'+c.centerColor+'">'+c.centerLabel+'</text>'
     :'';
 
   // 山名（上部）
-  var nameHtml='<text x="'+cx+'" y="'+(cy-rContent*0.68)+'" text-anchor="middle" dominant-baseline="middle"'
+  var nameHtml='<text x="'+(contX+contW*0.06)+'" y="'+(contY+size*0.155)+'" text-anchor="start" dominant-baseline="middle"'
     +' font-family="\'Noto Serif JP\',serif" font-weight="900" font-size="'+fs+'"'
-    +' fill="'+c.txt+'" paint-order="stroke" stroke="rgba(255,255,255,0.95)" stroke-width="3.5" stroke-linejoin="round">'+name+'</text>';
+    +' fill="'+c.txt+'" paint-order="stroke" stroke="rgba(255,255,255,0.92)" stroke-width="3" stroke-linejoin="round">'+name+'</text>';
 
-  // YAMATCH（下部よりやや上）
-  var yamatchHtml='<text x="'+cx+'" y="'+(cy+rContent*0.58)+'" text-anchor="middle" dominant-baseline="middle"'
-    +' font-family="\'Playfair Display\',Georgia,serif" font-weight="700" font-size="'+(size*0.075)+'" letter-spacing="2"'
-    +' fill="'+c.acc+'" opacity="0.6">YAMATCH</text>';
+  // エリア・標高（シルエット下）
+  var metaStr=[area,elevation?(elevation+'m'):''].filter(Boolean).join(' / ');
+  var metaHtml=metaStr
+    ?'<text x="'+(contX+contW*0.06)+'" y="'+(contY+contH*0.855)+'" text-anchor="start" dominant-baseline="middle"'
+      +' font-family="\'Noto Serif JP\',serif" font-size="'+(size*0.072)+'" font-weight="700"'
+      +' fill="'+c.txt+'" opacity="0.85">'+metaStr+'</text>'
+    :'';
 
-  // 日付（最下部）
+  // 日付（最下部・控えめ）
   var dateHtml=date
-    ?'<text x="'+cx+'" y="'+(cy+rContent*0.90)+'" text-anchor="middle" dominant-baseline="middle"'
-      +' font-family="\'Playfair Display\',Georgia,serif" font-size="'+(size*0.105)+'" font-weight="700" letter-spacing="1"'
-      +' fill="white" paint-order="stroke" stroke="rgba(0,0,0,0.4)" stroke-width="2" opacity="0.95">'+date+'</text>'
+    ?'<text x="'+(contX+contW*0.06)+'" y="'+(contY+contH*0.955)+'" text-anchor="start" dominant-baseline="middle"'
+      +' font-family="\'Playfair Display\',Georgia,serif" font-size="'+(size*0.062)+'" font-weight="500" letter-spacing="0.5"'
+      +' fill="'+c.txt+'" opacity="0.55">'+date+'</text>'
     :'';
 
   return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" xmlns="http://www.w3.org/2000/svg">'
-    +defs+rimHtml+bgHtml+mtHtml+treeHtml+labelHtml+nameHtml+yamatchHtml+dateHtml+'</svg>';
+    +defs+borderHtml+bgHtml+mtHtml+labelHtml+nameHtml+metaHtml+dateHtml+'</svg>';
 }
 
 
@@ -1069,7 +1057,7 @@ function openBadgeDetail(name, area, elev, date, memo, cfg, key, uid) {
   var m = document.getElementById('badge-detail-modal');
   var cat = cfg && cfg.centerLabel ? cfg.centerLabel : '';
   var c = getColor(key||'_default', area||'', cat);
-  document.getElementById('badge-detail-svg').innerHTML = makeBadgeSVG(name, date||'', key||'_default', c, 120);
+  document.getElementById('badge-detail-svg').innerHTML = makeBadgeSVG(name, date||'', key||'_default', c, 120, area||'', elev||'');
   document.getElementById('badge-detail-name').textContent = name;
   document.getElementById('badge-detail-sub').textContent = (area||'')+(elev?' · '+Number(elev).toLocaleString()+'m':'');
   document.getElementById('badge-detail-date').textContent = date ? '📅 '+date : '';
@@ -1142,7 +1130,7 @@ function renderClimbed() {
         var cfg = getColor(id, area, mt ? mt.category : (first.category||''));
         var count = entries.length;
         var dateShort = first.date?first.date.slice(0,7).replace(/-/g,'/'):'';
-        var svgHtml = makeBadgeSVG(name, dateShort, id, cfg, 110);
+        var svgHtml = makeBadgeSVG(name, dateShort, id, cfg, 110, area, elev);
 
         // 重なりバッジのstack表示
         if (count > 1) {
@@ -1166,7 +1154,7 @@ function renderClimbed() {
             var dateLong = entry.date?new Date(entry.date.replace(/\//g,'-')).toLocaleDateString('ja-JP',{year:'numeric',month:'short',day:'numeric'}):'';
             var attrs = ' data-key="' + esc(id) + '" data-uid="' + esc(entry.uid) + '" data-name="' + esc(name) + '" data-area="' + esc(area) + '" data-elev="' + (elev||'') + '" data-date="' + esc(dateLong) + '" data-memo="' + esc(entry.memo||'') + '"';
             detailHtml += '<div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;">';
-            detailHtml += '<div class="badge-svg-wrap"' + attrs + ' onclick="event.stopPropagation();handleBadgeClick(this)" style="width:88px;height:88px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.2));cursor:pointer;">' + makeBadgeSVG(name, dateShort, id, cfg, 88) + '</div>';
+            detailHtml += '<div class="badge-svg-wrap"' + attrs + ' onclick="event.stopPropagation();handleBadgeClick(this)" style="width:88px;height:88px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.2));cursor:pointer;">' + makeBadgeSVG(name, dateShort, id, cfg, 88, area, elev) + '</div>';
             detailHtml += '<div style="font-size:9px;color:#a09888;">' + dateShort + '</div>';
             detailHtml += '</div>';
           });
