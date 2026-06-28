@@ -96,7 +96,7 @@
 #root:not(:empty) ~ #app-skeleton,
 #root:not(:empty) + * #app-skeleton{display:none;}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>h1,h2,h3,.ym-logo,.type-name,.mountain-name,.sec-title{font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;}</style>
 <style>
 /* タップ沈み込み */
@@ -298,7 +298,7 @@ function CourseMeter({ range }) {
 function GearBadge({ mountain, month }) {
   const noGear = canClimbNoGear(mountain, month);
   const sixOk  = canClimb6Crampons(mountain, month);
-  const gearSt = { display: "inline-flex", alignItems: "center", gap: "4px", borderRadius: "8px", padding: "3px 9px", fontSize: "12px", fontWeight: 700 };
+  const gearSt = { display: "inline-flex", alignItems: "center", gap: "4px", borderRadius: "5px", padding: "3px 9px", fontSize: "12px", fontWeight: 700 };
   if (noGear) return <span style={Object.assign({}, gearSt, { background: "#e6f0e8", color: "#2d6040" })}>アイゼン不要</span>;
   if (sixOk)  return <span style={Object.assign({}, gearSt, { background: "#f5f0e0", color: "#7a5a20" })}>6本で可</span>;
   return             <span style={Object.assign({}, gearSt, { background: "#f5e8e8", color: "#8a3030" })}>12本必要</span>;
@@ -546,7 +546,7 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
 
   return (
     <div style={{ position: "fixed", inset: 0, zIndex: 1100, background: "rgba(0,0,0,0.45)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
-      <div style={{ background: "#faf8f5", borderRadius: "16px", width: "100%", maxWidth: "640px", maxHeight: "90vh", display: "flex", flexDirection: "column", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
+      <div style={{ background: "#faf8f5", borderRadius: "5px", width: "100%", maxWidth: "640px", maxHeight: "90vh", display: "flex", flexDirection: "column", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
         {/* ヘッダー */}
         <div style={{ padding: "20px 24px 16px", borderBottom: "1px solid #ddd8d0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div>
@@ -560,7 +560,7 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
 
         <div style={{ flex: 1, overflowY: "auto", padding: "20px 24px" }}>
           {/* 投稿フォーム */}
-          <div style={{ background: "#fff", border: "1px solid #ddd8d0", borderRadius: "12px", padding: "18px", marginBottom: "24px" }}>
+          <div style={{ background: "#fff", border: "1px solid #ddd8d0", borderRadius: "5px", padding: "18px", marginBottom: "24px" }}>
             <h3 style={{ margin: "0 0 14px", fontSize: "14px", fontWeight: 700, color: "#4a5e4a" }}>✏️ 書き込む</h3>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "10px" }}>
@@ -570,7 +570,7 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
                   value={form.mountain}
                   onChange={function(e){ setForm(function(f){ return Object.assign({}, f, { mountain: e.target.value }); }); }}
                   placeholder="例：安達太良山"
-                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
+                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "5px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
                 />
               </div>
               <div>
@@ -578,7 +578,7 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
                 <select
                   value={form.category}
                   onChange={function(e){ setForm(function(f){ return Object.assign({}, f, { category: e.target.value }); }); }}
-                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none" }}
+                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "5px", fontSize: "13px", background: "#faf8f5", outline: "none" }}
                 >
                   {FEEDBACK_CATEGORIES.map(c => <option key={c}>{c}</option>)}
                 </select>
@@ -595,7 +595,7 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
                 onChange={function(e){ setForm(function(f){ return Object.assign({}, f, { body: e.target.value }); }); }}
                 placeholder="例：コース定数が違います。奥岳周回の正しい値は○○です。"
                 rows={4}
-                style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", resize: "vertical", boxSizing: "border-box", fontFamily: "inherit" }}
+                style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "5px", fontSize: "13px", background: "#faf8f5", outline: "none", resize: "vertical", boxSizing: "border-box", fontFamily: "inherit" }}
               />
             </div>
 
@@ -606,13 +606,13 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
                   value={form.name}
                   onChange={function(e){ setForm(function(f){ return Object.assign({}, f, { name: e.target.value }); }); }}
                   placeholder="匿名"
-                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "7px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
+                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd8d0", borderRadius: "5px", fontSize: "13px", background: "#faf8f5", outline: "none", boxSizing: "border-box" }}
                 />
               </div>
               <button
                 onClick={handleSubmit}
                 disabled={submitting || !form.body.trim()}
-                style={{ padding: "8px 20px", background: submitting || !form.body.trim() ? "#c0bab0" : "#4a5e4a", color: "#fff", border: "none", borderRadius: "7px", fontSize: "13px", fontWeight: 700, cursor: submitting || !form.body.trim() ? "not-allowed" : "pointer", whiteSpace: "nowrap" }}
+                style={{ padding: "8px 20px", background: submitting || !form.body.trim() ? "#c0bab0" : "#4a5e4a", color: "#fff", border: "none", borderRadius: "5px", fontSize: "13px", fontWeight: 700, cursor: submitting || !form.body.trim() ? "not-allowed" : "pointer", whiteSpace: "nowrap" }}
               >
                 {submitting ? "送信中…" : "投稿する"}
               </button>
@@ -639,9 +639,9 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
               {posts.map(post => {
                 const cc = CATEGORY_COLOR[post.category] || CATEGORY_COLOR["その他"];
                 return (
-                  <div key={post.id} style={{ background: "#fff", border: "1px solid #ddd8d0", borderRadius: "10px", padding: "14px 16px" }}>
+                  <div key={post.id} style={{ background: "#fff", border: "1px solid #ddd8d0", borderRadius: "5px", padding: "14px 16px" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px", flexWrap: "wrap" }}>
-                      <span style={{ fontSize: "11px", fontWeight: 700, padding: "2px 8px", borderRadius: "10px", background: cc.bg, color: cc.color, border: `1px solid ${cc.border}` }}>
+                      <span style={{ fontSize: "11px", fontWeight: 700, padding: "2px 8px", borderRadius: "5px", background: cc.bg, color: cc.color, border: `1px solid ${cc.border}` }}>
                         {post.category}
                       </span>
                       {post.mountain !== "（山名未指定）" && (
@@ -929,11 +929,11 @@ function App() {
             <div style={{display:"flex",alignItems:"center",gap:"9px",marginBottom:"16px",position:"relative",zIndex:1}}>
               <svg width="24" height="24" viewBox="0 0 36 36" style={{flexShrink:0}}><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
               <div style={{flex:1}}>
-                <h1 style={{fontFamily:"Georgia,serif",fontSize:"23px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
+                <h1 style={{fontFamily:"Outfit,sans-serif",fontSize:"21px",fontWeight:"700",letterSpacing:"0.06em",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
                 
               </div>
-              <a href="/about/" style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",textDecoration:"none",flexShrink:0}}>運営者</a>
-              <button onClick={() => setShowBoard(true)} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"7px",padding:"4px 9px",fontSize:"10px",cursor:"pointer",flexShrink:0}}>提案</button>
+              <a href="/about/" style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"5px",padding:"4px 9px",fontSize:"10px",textDecoration:"none",flexShrink:0}}>運営者</a>
+              <button onClick={() => setShowBoard(true)} style={{background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"white",borderRadius:"5px",padding:"4px 9px",fontSize:"10px",cursor:"pointer",flexShrink:0}}>提案</button>
             </div>
             {/* キャッチコピー */}
             <div style={{position:"relative",zIndex:1,marginBottom:"14px"}}>
@@ -942,10 +942,12 @@ function App() {
             </div>
             {/* 出発地タブ */}
             <div style={{position:"relative",zIndex:1}}>
-              <div style={{display:"flex",background:"rgba(0,0,0,0.18)",borderRadius:"10px",padding:"3px",marginBottom:"14px"}}>
+              <div style={{display:"flex",background:"rgba(0,0,0,0.18)",borderRadius:"5px",padding:"3px",marginBottom:"14px"}}>
                 {["大船","新宿","横浜","大宮","立川"].map(d => (
                   <button key={d} onClick={() => setDeparture(d)}
-                    style={{flex:1,textAlign:"center",fontSize:"11px",color:departure===d?"#2d4a28":"rgba(255,255,255,0.42)",background:departure===d?"white":"transparent",padding:"6px 2px",borderRadius:"7px",fontWeight:departure===d?"700":"500",border:"none",cursor:"pointer",transition:"all 0.15s"}}>
+                    style={{flex:1,textAlign:"center",fontSize:"11px",fontWeight:departure===d?"700":"600",cursor:"pointer",background:"transparent",
+                    border:departure===d?"1px solid #c9b878":"1px solid rgba(255,255,255,0.85)",
+                    color:departure===d?"#c9b878":"white",padding:"6px 2px",borderRadius:"5px",transition:"all 0.15s"}}>
                     {d}駅
                   </button>
                 ))}
@@ -1003,15 +1005,15 @@ function App() {
         <div style={{position:"relative",zIndex:2,display:"flex",justifyContent:"space-between",alignItems:"center",padding:"10px 16px 0",background:"linear-gradient(180deg,rgba(0,0,0,0.3) 0%,transparent 100%)",maxWidth:"768px",margin:"0 auto"}}>
           <div style={{display:"flex",alignItems:"center",gap:"6px"}}>
             <svg width="24" height="24" viewBox="0 0 36 36"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
-            <h1 style={{fontFamily:"Georgia,serif",fontSize:"20px",fontWeight:"700",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
+            <h1 style={{fontFamily:"Outfit,sans-serif",fontSize:"18px",fontWeight:"700",letterSpacing:"0.06em",color:"white",lineHeight:1,margin:0}}>Yamatch</h1>
           </div>
           <div style={{display:"flex",gap:"5px"}}>
             {/* 使い方ボタン */}
-            <a href="/howto/" style={{height:"34px",borderRadius:"8px",background:"rgba(255,255,255,0.14)",border:"0.5px solid rgba(255,255,255,0.25)",display:"flex",alignItems:"center",justifyContent:"center",textDecoration:"none",padding:"0 10px",fontSize:"12px",fontWeight:"600",color:"white",whiteSpace:"nowrap"}}>使い方</a>
-            <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{width:"34px",height:"34px",borderRadius:"8px",background:"rgba(255,255,255,0.14)",border:"0.5px solid rgba(255,255,255,0.25)",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}>
+            <a href="/howto/" style={{height:"34px",borderRadius:"5px",background:"rgba(255,255,255,0.14)",border:"0.5px solid rgba(255,255,255,0.25)",display:"flex",alignItems:"center",justifyContent:"center",textDecoration:"none",padding:"0 10px",fontSize:"12px",fontWeight:"600",color:"white",whiteSpace:"nowrap"}}>使い方</a>
+            <button onClick={() => { if(navigator.share){ navigator.share({title:"Yamatch",url:location.href}); } else { navigator.clipboard.writeText(location.href).then(()=>alert("URLをコピーしました")); } }} style={{width:"34px",height:"34px",borderRadius:"5px",background:"rgba(255,255,255,0.14)",border:"0.5px solid rgba(255,255,255,0.25)",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-3"/></svg>
             </button>
-            <button onClick={() => setShowMenu(true)} style={{width:"34px",height:"34px",borderRadius:"8px",background:"rgba(255,255,255,0.14)",border:"0.5px solid rgba(255,255,255,0.25)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"3px",cursor:"pointer"}}>
+            <button onClick={() => setShowMenu(true)} style={{width:"34px",height:"34px",borderRadius:"5px",background:"rgba(255,255,255,0.14)",border:"0.5px solid rgba(255,255,255,0.25)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"3px",cursor:"pointer"}}>
               <div style={{width:"14px",height:"1.5px",background:"white",borderRadius:"1px"}}></div>
               <div style={{width:"14px",height:"1.5px",background:"white",borderRadius:"1px"}}></div>
               <div style={{width:"14px",height:"1.5px",background:"white",borderRadius:"1px"}}></div>
@@ -1028,14 +1030,14 @@ function App() {
           <div style={{display:"inline-flex",flexDirection:"column",alignItems:"stretch",gap:"4px"}}>
             {/* ①検索バー＋登山時期 */}
             <div style={{display:"flex",gap:"6px",alignItems:"center"}}>
-              <div style={{flex:1,background:"rgba(255,255,255,0.93)",borderRadius:"8px",height:"30px",display:"flex",alignItems:"center",padding:"0 10px",gap:"6px",transition:"box-shadow 0.2s ease, background 0.2s ease"}}>
+              <div style={{flex:1,background:"rgba(255,255,255,0.93)",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",padding:"0 10px",gap:"6px",transition:"box-shadow 0.2s ease, background 0.2s ease"}}>
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4e6535" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 <input type="text" placeholder="山の名前で検索" value={search} onChange={e => setSearch(e.target.value)}
                 onFocus={e => { e.currentTarget.parentNode.style.boxShadow="0 0 0 2px rgba(78,101,53,0.4)"; e.currentTarget.parentNode.style.background="rgba(255,255,255,0.98)"; }}
                 onBlur={e => { e.currentTarget.parentNode.style.boxShadow="none"; e.currentTarget.parentNode.style.background="rgba(255,255,255,0.93)"; }}
                 style={{flex:1,border:"none",outline:"none",fontSize:"13px",color:"#3a3530",background:"transparent",minWidth:0}}/>
               </div>
-              <div style={{background:"rgba(255,255,255,0.93)",borderRadius:"8px",height:"30px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"0 8px",flexShrink:0}}>
+              <div style={{background:"rgba(255,255,255,0.93)",borderRadius:"5px",height:"30px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"0 8px",flexShrink:0}}>
                 <div style={{fontSize:"7px",color:"#9a9088",lineHeight:1}}>登山時期</div>
                 <div style={{display:"flex",alignItems:"center",gap:"1px"}}>
                   <select value={filterMonth} onChange={e => { var v=Number(e.target.value); setFilterMonth(v); ssSet("ym_month",v) }} style={{appearance:"none",WebkitAppearance:"none",border:"none",background:"transparent",fontSize:"12px",color:"#3a3530",fontWeight:"600",outline:"none",cursor:"pointer",padding:0}}>
@@ -1050,7 +1052,7 @@ function App() {
               <button onClick={() => setFilterOpen(!filterOpen)}
   onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
   onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform="scale(1)";},150)}
-  style={{flex:1,background:activeFilterCount>0?"#4e6535":"rgba(255,255,255,0.88)",borderRadius:"8px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"none",cursor:"pointer",transition:"background 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
+  style={{flex:1,background:activeFilterCount>0?"#4e6535":"rgba(255,255,255,0.88)",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"none",cursor:"pointer",transition:"background 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
                 {activeFilterCount>0 ? (
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                 ) : (
@@ -1061,7 +1063,7 @@ function App() {
               <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter(null); }}
   onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
   onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform="scale(1)";},150)}
-  style={{flex:1,background:"rgba(255,255,255,0.88)",borderRadius:"8px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"none",cursor:"pointer",transition:"transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
+  style={{flex:1,background:"rgba(255,255,255,0.88)",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"none",cursor:"pointer",transition:"transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4a5a48" strokeWidth="2.5" strokeLinecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.1"/></svg>
                 <span style={{fontSize:"11px",color:"#4a5a48",fontWeight:"600"}}>リセット</span>
               </button>
@@ -1071,9 +1073,10 @@ function App() {
         {/* ③出発地タブ */}
         <div style={{position:"relative",zIndex:2,display:"flex",gap:"4px",padding:"8px 16px 8px",maxWidth:"768px",margin:"0 auto"}}>
           {["大船","新宿","横浜","大宮","立川"].map(d => (
-            <button key={d} onClick={() => setDeparture(d)} style={{flex:1,textAlign:"center",fontSize:"12px",padding:"7px 0",borderRadius:"8px",fontWeight:"600",cursor:"pointer",border:"none",background:departure===d?"#4e6535":"rgba(255,255,255,0.78)",color:departure===d?"white":"#5a5248",
-              transition:"background 0.2s ease, color 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease",
-              boxShadow:departure===d?"0 2px 8px rgba(78,101,53,0.35)":"none",
+            <button key={d} onClick={() => setDeparture(d)} style={{flex:1,textAlign:"center",fontSize:"12px",padding:"7px 0",borderRadius:"5px",fontWeight:"700",cursor:"pointer",background:"transparent",
+              border:departure===d?"1px solid #c9b878":"1px solid rgba(255,255,255,0.85)",
+              color:departure===d?"#c9b878":"white",
+              transition:"border-color 0.2s ease, color 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1)",
               transform:departure===d?"scale(1.04)":"scale(1)"
             }}
             onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
@@ -1087,7 +1090,7 @@ function App() {
 
         {/* 診断バナー */}
         <div style={{display:"flex",gap:"7px",marginBottom:"7px"}}>
-          <a href="/find/" style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"10px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
+          <a href="/find/" style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"5px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
             onTouchStart={e => { e.currentTarget.style.transform="scale(0.97)"; }}
             onTouchEnd={e => { setTimeout(()=>{ if(e.currentTarget) e.currentTarget.style.transform="scale(1)"; },180); }}>
             <span style={{fontSize:"20px",flexShrink:0}}>🗻</span>
@@ -1097,7 +1100,7 @@ function App() {
             </div>
             <span style={{fontSize:"16px",color:"#3a5030",fontWeight:"300"}}>›</span>
           </a>
-          <a href="/recommend/" style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"10px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
+          <a href="/recommend/" style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"5px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
             onTouchStart={e => { e.currentTarget.style.transform="scale(0.97)"; }}
             onTouchEnd={e => { setTimeout(()=>{ if(e.currentTarget) e.currentTarget.style.transform="scale(1)"; },180); }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3a5030" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
@@ -1133,7 +1136,7 @@ function App() {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3a3530" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
                   絞り込み
                   {activeFilterCount > 0 && (
-                    <span style={{background:"#4e6535",color:"white",fontSize:"11px",padding:"1px 7px",borderRadius:"10px"}}>
+                    <span style={{background:"#4e6535",color:"white",fontSize:"11px",padding:"1px 7px",borderRadius:"5px"}}>
                       {activeFilterCount}
                     </span>
                   )}
@@ -1271,8 +1274,8 @@ function App() {
               </div>
               {/* 固定フッター：適用ボタン */}
               <div style={{position:"sticky",bottom:0,background:"white",borderTop:"1px solid #e8e4dc",padding:"12px 16px",display:"flex",gap:"8px"}}>
-                <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter(null); }} style={{flex:1,padding:"10px",borderRadius:"10px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
-                <button onClick={() => setFilterOpen(false)} style={{flex:2,padding:"10px",borderRadius:"10px",border:"none",background:"#4e6535",fontSize:"13px",color:"white",fontWeight:"700",cursor:"pointer"}}>この条件で絞り込む（{filtered.length}件）</button>
+                <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter(null); }} style={{flex:1,padding:"10px",borderRadius:"5px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
+                <button onClick={() => setFilterOpen(false)} style={{flex:2,padding:"10px",borderRadius:"5px",border:"none",background:"#4e6535",fontSize:"13px",color:"white",fontWeight:"700",cursor:"pointer"}}>この条件で絞り込む（{filtered.length}件）</button>
               </div>
             </div>
           </div>
@@ -1319,11 +1322,11 @@ function App() {
                   </div>
                   <div style={{display:"flex",gap:"4px"}}>
                     <button onClick={clearHistory}
-                      style={{fontSize:"10px",fontWeight:"600",color:"#8a7a6a",background:"none",border:"1px solid #d8d0c4",borderRadius:"12px",padding:"2px 9px",cursor:"pointer"}}>
+                      style={{fontSize:"10px",fontWeight:"600",color:"#8a7a6a",background:"none",border:"1px solid #d8d0c4",borderRadius:"5px",padding:"2px 9px",cursor:"pointer"}}>
                       リセット
                     </button>
                     <button onClick={toggleHistoryEnabled}
-                      style={{fontSize:"10px",fontWeight:"600",color:"#8a7a6a",background:"none",border:"1px solid #d8d0c4",borderRadius:"12px",padding:"2px 9px",cursor:"pointer"}}>
+                      style={{fontSize:"10px",fontWeight:"600",color:"#8a7a6a",background:"none",border:"1px solid #d8d0c4",borderRadius:"5px",padding:"2px 9px",cursor:"pointer"}}>
                       非表示
                     </button>
                   </div>
@@ -1357,7 +1360,7 @@ function App() {
           {!historyEnabled && (
             <div style={{marginBottom:"10px",textAlign:"right"}}>
               <button onClick={toggleHistoryEnabled}
-                style={{fontSize:"10px",fontWeight:"600",color:"#8a7a6a",background:"none",border:"1px solid #d8d0c4",borderRadius:"12px",padding:"3px 10px",cursor:"pointer"}}>
+                style={{fontSize:"10px",fontWeight:"600",color:"#8a7a6a",background:"none",border:"1px solid #d8d0c4",borderRadius:"5px",padding:"3px 10px",cursor:"pointer"}}>
                 👣 足あとを表示する
               </button>
             </div>
@@ -1366,12 +1369,12 @@ function App() {
           {/* 件数＋並び替え▾＋一覧/地図 */}
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:"7px"}}>
             <div style={{display:"flex",alignItems:"center",gap:"5px"}}>
-              <span key={filtered.length} style={{fontSize:"11px",color:"#7a7068",display:"inline-block",animation:"fadeInUp 0.25s ease both"}}>見つかった山 {filtered.length}件</span>
+              <span key={filtered.length} style={{fontSize:"11px",color:"#7a7068",display:"inline-block",animation:"fadeInUp 0.25s ease both"}}>見つかった山 <span style={{fontFamily:"Outfit,sans-serif",fontSize:"13px",fontWeight:"700",color:"#41551f"}}>{filtered.length}</span>件</span>
               {vibeFilter && (function(){
                 var labels = {"view":"絶景","forest":"森歩き","rock":"岩場","highland":"高原","accessible":"お手軽","volcano":"火山","wetland":"湿原","historic":"歴史"};
                 return (
                   <button onClick={function(){ setVibeFilter(""); }}
-                    style={{fontSize:"10px",padding:"2px 7px",borderRadius:"10px",background:"#4e6535",color:"white",border:"none",cursor:"pointer",display:"flex",alignItems:"center",gap:"3px"}}>
+                    style={{fontSize:"10px",padding:"2px 7px",borderRadius:"5px",background:"#4e6535",color:"white",border:"none",cursor:"pointer",display:"flex",alignItems:"center",gap:"3px"}}>
                     {labels[vibeFilter] || vibeFilter} ✕
                   </button>
                 );
@@ -1379,14 +1382,14 @@ function App() {
             </div>
             <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
               <div style={{position:"relative"}}>
-                <select value={sort} onChange={e => { setSort(e.target.value); ssSet("ym_sort",e.target.value) }} style={{appearance:"none",WebkitAppearance:"none",background:"white",border:"0.5px solid #ddd8d0",borderRadius:"14px",height:"26px",padding:"0 24px 0 9px",fontSize:"10px",color:"#4a5a48",fontWeight:"600",cursor:"pointer",outline:"none"}}>
+                <select value={sort} onChange={e => { setSort(e.target.value); ssSet("ym_sort",e.target.value) }} style={{appearance:"none",WebkitAppearance:"none",background:"white",border:"0.5px solid #ddd8d0",borderRadius:"5px",height:"26px",padding:"0 24px 0 9px",fontSize:"10px",color:"#4a5a48",fontWeight:"600",cursor:"pointer",outline:"none"}}>
                   {["おすすめ順","近い順","標高順","体力度順"].map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
                 <span style={{position:"absolute",right:"7px",top:"50%",transform:"translateY(-50%)",fontSize:"8px",color:"#a09888",pointerEvents:"none"}}>▾</span>
               </div>
               <div style={{display:"flex",gap:"3px"}}>
                 {["list","map"].map(mode => (
-                  <button key={mode} onClick={() => setViewMode(mode)} style={{fontSize:"10px",padding:"0 9px",borderRadius:"14px",border:viewMode===mode?"none":"0.5px solid #ddd8d0",background:viewMode===mode?"#4e6535":"white",color:viewMode===mode?"white":"#5a5248",fontWeight:"600",cursor:"pointer",height:"26px",display:"flex",alignItems:"center",transition:"background 0.2s ease, color 0.2s ease, transform 0.15s ease",transform:viewMode===mode?"scale(1.05)":"scale(1)"}}>
+                  <button key={mode} onClick={() => setViewMode(mode)} style={{fontSize:"10px",padding:"0 9px",borderRadius:"5px",border:viewMode===mode?"none":"0.5px solid #ddd8d0",background:viewMode===mode?"#4e6535":"white",color:viewMode===mode?"white":"#5a5248",fontWeight:"600",cursor:"pointer",height:"26px",display:"flex",alignItems:"center",transition:"background 0.2s ease, color 0.2s ease, transform 0.15s ease",transform:viewMode===mode?"scale(1.05)":"scale(1)"}}>
                     {mode==="list"?"一覧":"地図"}
                   </button>
                 ))}
@@ -1431,7 +1434,7 @@ function App() {
                     <a key={m.id} href={getMountainUrl(m.id)}
                       style={{
                         position: "relative", overflow: "hidden",
-                        borderRadius: "12px", border: `1px solid ${cardBorder}`,
+                        borderRadius: "5px", border: `1px solid ${cardBorder}`,
                         background: cardBg,
                         padding: "11px 10px 9px",
                         textDecoration: "none", color: "inherit",
@@ -1496,7 +1499,7 @@ function App() {
                       {/* エリア */}
                       <div style={{ fontSize: "10px", color: "#8a8078", position: "relative", zIndex: 1 }}>{(function(a){ return /長野県/.test(a) ? a : a.replace(/^(東京都|北海道|.+?[都道府県]).*/, "$1"); })(m.area)}</div>
                       {/* 標高・時間 */}
-                      <div style={{ display: "flex", gap: "5px", alignItems: "center", fontSize: "11px", color: "#6a6058", position: "relative", zIndex: 1, marginBottom: "2px" }}>
+                      <div style={{ display: "flex", gap: "5px", alignItems: "center", fontSize: "11px", fontFamily: "Outfit,sans-serif", letterSpacing: "-0.01em", fontWeight: "500", color: "#6a6058", position: "relative", zIndex: 1, marginBottom: "2px" }}>
                         <span>{m.elevation.toLocaleString()}m</span>
                         <span style={{ color: "#c8c0b8" }}>·</span>
                         <span>🚗 {formatDriveTime(getDriveTime(m))}</span>
@@ -1550,14 +1553,14 @@ function App() {
               <button onClick={() => setClimbModal(null)} style={{background:"none",border:"none",fontSize:"18px",cursor:"pointer",color:"#8a8078",padding:"4px"}}>✕</button>
               <div style={{fontWeight:"700",fontSize:"15px",color:"#2a2520"}}>🚩 {climbModal.name}</div>
               <button onClick={() => { saveClimb(climbModal.id, climbModal.name, climbModal.date, climbModal.memo); }}
-                style={{background:"#4e6535",color:"white",border:"none",borderRadius:"8px",padding:"6px 14px",fontWeight:"700",fontSize:"13px",cursor:"pointer"}}>保存</button>
+                style={{background:"#4e6535",color:"white",border:"none",borderRadius:"5px",padding:"6px 14px",fontWeight:"700",fontSize:"13px",cursor:"pointer"}}>保存</button>
             </div>
             <div style={{display:"flex",flexDirection:"column",gap:"12px"}}>
               <div>
                 <div style={{fontSize:"11px",fontWeight:"600",color:"#6a6058",marginBottom:"4px"}}>登頂日</div>
                 <input type="date" value={climbModal.date}
                   onChange={e => setClimbModal(prev => Object.assign({},prev,{date:e.target.value}))}
-                  style={{width:"100%",border:"1px solid #ddd8d0",borderRadius:"8px",padding:"9px 12px",fontSize:"14px",background:"white",outline:"none"}}/>
+                  style={{width:"100%",border:"1px solid #ddd8d0",borderRadius:"5px",padding:"9px 12px",fontSize:"14px",background:"white",outline:"none"}}/>
               </div>
               <div>
                 <div style={{fontSize:"11px",fontWeight:"600",color:"#6a6058",marginBottom:"4px"}}>メモ（任意）</div>
@@ -1565,11 +1568,11 @@ function App() {
                   onChange={e => setClimbModal(prev => Object.assign({},prev,{memo:e.target.value}))}
                   placeholder="天気、コース、感想など..."
                   rows={3}
-                  style={{width:"100%",border:"1px solid #ddd8d0",borderRadius:"8px",padding:"9px 12px",fontSize:"13px",background:"white",outline:"none",resize:"none",fontFamily:"inherit"}}/>
+                  style={{width:"100%",border:"1px solid #ddd8d0",borderRadius:"5px",padding:"9px 12px",fontSize:"13px",background:"white",outline:"none",resize:"none",fontFamily:"inherit"}}/>
               </div>
               {climbedMap[climbModal.id] && (
                 <button onClick={() => { if(window.confirm("登った記録を削除しますか？")) removeClimb(climbModal.id); }}
-                  style={{background:"none",border:"1px solid #e0a0a0",borderRadius:"8px",padding:"8px",color:"#c05050",fontSize:"12px",fontWeight:"600",cursor:"pointer"}}>
+                  style={{background:"none",border:"1px solid #e0a0a0",borderRadius:"5px",padding:"8px",color:"#c05050",fontSize:"12px",fontWeight:"600",cursor:"pointer"}}>
                   この記録を削除
                 </button>
               )}
