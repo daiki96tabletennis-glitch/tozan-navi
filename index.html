@@ -1469,6 +1469,8 @@ function App() {
                           : <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#c0b8a8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                         }
                       </button>
+                      {/* 相性% */}
+                      {(function(){ var af = calcAffinity(m); return af ? <span style={{position:"absolute",top:"30px",right:"28px",fontSize:"10px",fontWeight:"700",color:af>=80?"#3a6828":af>=65?"#5a7838":"#8a9870",zIndex:2}}>♡{af}%</span> : null; })()}
                       {/* 登頂ボタン */}
                       <button onClick={e => { e.preventDefault(); e.stopPropagation();
                           var c = climbedMap[m.id];
@@ -1493,14 +1495,13 @@ function App() {
                         <polygon points="25,30 55,55 0,55"/>
                       </svg>
                       {/* 山名 */}
-                      <div style={{ fontSize: "14px", fontWeight: "700", color: "#1e1a16", position: "relative", zIndex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", paddingRight: "18px", display:"flex", alignItems:"center", gap:"4px" }}>
+                      <div style={{ fontSize: "18px", fontWeight: "700", color: "#1e1a16", position: "relative", zIndex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", paddingRight: "18px", display:"flex", alignItems:"center", gap:"4px" }}>
                         {m.regulated && <span style={{ color: "#e67700", marginRight: "3px" }}>⚠️</span>}{m.name}
-                        {(function(){ var af = calcAffinity(m); return af ? <span style={{fontSize:"9px",fontWeight:"700",color:af>=80?"#3a6828":af>=65?"#5a7838":"#8a9870",flexShrink:0,marginLeft:"2px"}}>♡{af}%</span> : null; })()}
                       </div>
                       {/* エリア */}
                       <div style={{ fontSize: "10px", color: "#8a8078", position: "relative", zIndex: 1 }}>{(function(a){ return /長野県/.test(a) ? a : a.replace(/^(東京都|北海道|.+?[都道府県]).*/, "$1"); })(m.area)}</div>
                       {/* 標高・時間 */}
-                      <div style={{ display: "flex", gap: "5px", alignItems: "center", fontSize: "11px", fontFamily: "Outfit,sans-serif", letterSpacing: "-0.01em", fontWeight: "500", color: "#6a6058", position: "relative", zIndex: 1, marginBottom: "2px" }}>
+                      <div style={{ display: "flex", gap: "5px", alignItems: "center", fontSize: "14px", fontFamily: "Outfit,sans-serif", letterSpacing: "-0.01em", fontWeight: "500", color: "#6a6058", position: "relative", zIndex: 1, marginBottom: "2px" }}>
                         <span>{m.elevation.toLocaleString()}m</span>
                         <span style={{ color: "#c8c0b8" }}>·</span>
                         <span style={{display:"inline-flex",alignItems:"center",gap:"4px"}}>
