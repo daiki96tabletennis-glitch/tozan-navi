@@ -1362,7 +1362,7 @@ function App() {
             <div style={{marginBottom:"10px",textAlign:"right"}}>
               <button onClick={toggleHistoryEnabled}
                 style={{fontSize:"10px",fontWeight:"600",color:"#8a7a6a",background:"none",border:"1px solid #d8d0c4",borderRadius:"5px",padding:"3px 10px",cursor:"pointer"}}>
-                👣 足あとを表示する
+                最近見た山を表示
               </button>
             </div>
           )}
@@ -1470,13 +1470,13 @@ function App() {
                         }
                       </button>
                       {/* 相性% */}
-                      {(function(){ var af = calcAffinity(m); return af ? <span style={{position:"absolute",top:"30px",right:"28px",fontSize:"10px",fontWeight:"700",color:af>=80?"#3a6828":af>=65?"#5a7838":"#8a9870",zIndex:2}}>♡{af}%</span> : null; })()}
+                      {(function(){ var af = calcAffinity(m); return af ? <span style={{position:"absolute",top:"36px",right:"28px",fontSize:"10px",fontWeight:"700",color:af>=80?"#3a6828":af>=65?"#5a7838":"#8a9870",zIndex:2}}>♡{af}%</span> : null; })()}
                       {/* 登頂ボタン */}
                       <button onClick={e => { e.preventDefault(); e.stopPropagation();
                           var c = climbedMap[m.id];
                           setClimbModal({id: m.id, name: m.name, date: c ? c.date : new Date().toISOString().slice(0,10), memo: c ? c.memo : ""});
                         }}
-                        style={{position:"absolute",top:"28px",right:"6px",width:"20px",height:"20px",display:"flex",alignItems:"center",justifyContent:"center",background:"none",border:"none",cursor:"pointer",zIndex:2,padding:0,opacity: climbedMap[m.id] ? 1 : 0.4, transition:"opacity 0.2s,transform 0.15s"}}
+                        style={{position:"absolute",top:"34px",right:"6px",width:"20px",height:"20px",display:"flex",alignItems:"center",justifyContent:"center",background:"none",border:"none",cursor:"pointer",zIndex:2,padding:0,opacity: climbedMap[m.id] ? 1 : 0.4, transition:"opacity 0.2s,transform 0.15s"}}
                         onTouchStart={e => e.stopPropagation()}
                         onTouchEnd={e => e.stopPropagation()}
                         title="登った記録"
@@ -1519,7 +1519,7 @@ function App() {
                           </svg>
                           {(function(){
                             return formatDriveTime(getDriveTime(m)).split(/([\d,]+)/).map(function(p,i){
-                              return /^[\d,]+$/.test(p) ? <span key={i} style={{fontSize:"16px",fontWeight:"700"}}>{p}</span> : <span key={i} style={{fontSize:"10px"}}>{p}</span>;
+                              return /^[\d,]+$/.test(p) ? <span key={i} style={{fontSize:"16px",fontWeight:"700"}}>{p}</span> : <span key={i} style={{fontSize:"9px"}}>{p}</span>;
                             });
                           })()}
                         </span>
