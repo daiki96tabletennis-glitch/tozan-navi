@@ -410,8 +410,8 @@ main{max-width:680px;margin:0 auto;padding:18px}
 .gear-reason{font-size:11px;color:#6a6058;line-height:1.6;margin-bottom:8px}
 .gear-links{display:flex;gap:6px}
 .gear-btn{flex:1;display:block;text-align:center;padding:7px 4px;border-radius:8px;font-size:11px;font-weight:700;text-decoration:none}
-.gear-amazon{background:#FF9900;color:white}
-.gear-rakuten{background:#BF0000;color:white}
+.gear-amazon{background:white;color:#1a1a16;border:1.5px solid #1a1a16}
+.gear-rakuten{background:white;color:#1a1a16;border:1.5px solid #1a1a16}
 .gear-note{font-size:10px;color:#a09888;margin-top:12px;line-height:1.5}
 </style>
 
@@ -478,7 +478,8 @@ function applyDep(){
     }
   });
 }
-var initDep = sessionStorage.getItem('ym_departure') || '大船';
+var __initRaw = sessionStorage.getItem('ym_departure');
+var initDep = __initRaw ? (__initRaw.indexOf('"') === 0 ? JSON.parse(__initRaw) : __initRaw) : '大船';
 updateDepButtons(initDep);
 applyDep();
 

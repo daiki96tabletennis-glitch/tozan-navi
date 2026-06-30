@@ -420,7 +420,8 @@ function applyDep(){
     el.querySelector('.ai-a-val').style.fontWeight=sel?'700':'600';
   });
 }
-var initDep=sessionStorage.getItem('ym_departure')||'大船';
+var __initRaw = sessionStorage.getItem('ym_departure');
+var initDep = __initRaw ? (__initRaw.indexOf('"') === 0 ? JSON.parse(__initRaw) : __initRaw) : '大船';
 updateDepButtons(initDep); applyDep();
 (function(){
   var MID='ishirousan';
@@ -451,7 +452,12 @@ updateDepButtons(initDep); applyDep();
     var dk={'大船':'driveOfuna','新宿':'driveShinjuku','横浜':'driveYokohama','大宮':'driveOmiya','立川':'driveTachikawa'};
     var heroTime=document.getElementById('hero-time');
     var heroLabel=document.getElementById('hero-dep-label');
-    if(heroTime&&mt[dk[dep]]) heroTime.textContent=mt[dk[dep]];
+    if(heroTime&&mt[dk[dep]]){
+      var __hf2=ymFormatHeroTime(mt[dk[dep]]);
+      heroTime.textContent=__hf2.v;
+      var heroUnit=document.getElementById('hero-unit');
+      if(heroUnit) heroUnit.textContent=__hf2.u;
+    }
     if(heroLabel) heroLabel.textContent=dep+'から';
     if(mt.yamapUrl){document.querySelectorAll('a.yamap-btn').forEach(function(a){a.href=mt.yamapUrl;});}
     document.querySelectorAll('.info-row').forEach(function(row){

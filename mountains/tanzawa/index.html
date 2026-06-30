@@ -641,7 +641,8 @@ function applyDep(){
     }
   });
 }
-var initDep = sessionStorage.getItem('ym_departure') || '大船';
+var __initRaw = sessionStorage.getItem('ym_departure');
+var initDep = __initRaw ? (__initRaw.indexOf('"') === 0 ? JSON.parse(__initRaw) : __initRaw) : '大船';
 updateDepButtons(initDep);
 applyDep();
 
