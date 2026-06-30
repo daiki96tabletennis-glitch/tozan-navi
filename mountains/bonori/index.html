@@ -251,7 +251,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <div class="stats-row">
       <div class="stat-card"><div class="stat-val">969</div><div class="stat-unit">m</div><div class="stat-label">標高</div></div>
       <div class="stat-card"><div class="stat-val">12〜51</div><div class="stat-unit">コース定数</div><div class="stat-label">体力度：低め</div></div>
-      <div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">100</div><div class="stat-unit">分〜</div><div class="stat-label" id="hero-dep-label">大船から</div></div>
+      <div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">1.7</div><div class="stat-unit" id="hero-unit">時間〜</div><div class="stat-label" id="hero-dep-label">大船から</div></div>
     </div>
   </div>
 
@@ -480,6 +480,7 @@ function shareNative(){
 function copyUrl(){
   navigator.clipboard.writeText(location.href).then(()=>alert('URLをコピーしました'));
 }
+function ymFormatHeroTime(raw){var totalMin;if(typeof raw==='number'){totalMin=raw;}else{var s=String(raw);var hMatch=s.match(/(\d+)\s*時間/);var mMatch=s.match(/(\d+)\s*分/);if(hMatch||mMatch){var h=hMatch?parseInt(hMatch[1],10):0;var m=mMatch?parseInt(mMatch[1],10):0;totalMin=h*60+m;}else{var n=s.match(/\d+/);totalMin=n?parseInt(n[0],10):0;}}if(totalMin<60){return {v:String(totalMin),u:'分〜'};}var hrs=totalMin/60;var hrsStr=hrs.toFixed(1);if(hrsStr.slice(-2)==='.0'){hrsStr=hrsStr.slice(0,-2);}return {v:hrsStr,u:'時間〜'};}
 function changeDep(dep){
   sessionStorage.setItem('ym_departure', dep);
   updateDepButtons(dep);
@@ -498,8 +499,11 @@ function applyDep(){
   var key = depMap[dep] || 'ofuna';
   var label = dep + 'から';
   var heroTime = document.getElementById('hero-time');
+  var heroUnit = document.getElementById('hero-unit');
   var heroLabel = document.getElementById('hero-dep-label');
-  if(heroTime) heroTime.textContent = heroMinMap[key] || '—';
+  var __hf = ymFormatHeroTime(parseInt(heroMinMap[key],10) || 0);
+  if(heroTime) heroTime.textContent = __hf.v;
+  if(heroUnit) heroUnit.textContent = __hf.u;
   if(heroLabel) heroLabel.textContent = label;
   document.querySelectorAll('#access-grid .ai-a').forEach(function(el){
     var sel = el.dataset.dep === dep + '駅';
