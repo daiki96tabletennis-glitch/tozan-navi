@@ -594,8 +594,13 @@ applyDep();
     var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
     var dk = {'大船':'driveOfuna','新宿':'driveShinjuku','横浜':'driveYokohama','大宮':'driveOmiya','立川':'driveTachikawa'};
     var heroTime = document.getElementById('hero-time');
+    var heroUnit = document.getElementById('hero-unit');
     var heroLabel = document.getElementById('hero-dep-label');
-    if(heroTime && mt[dk[dep]]) heroTime.textContent = mt[dk[dep]];
+    if(heroTime && mt[dk[dep]]){
+      var __mthf = ymFormatHeroTime(mt[dk[dep]]);
+      heroTime.textContent = __mthf.v;
+      if(heroUnit) heroUnit.textContent = __mthf.u;
+    }
     if(heroLabel) heroLabel.textContent = dep + 'から';
 
     // 4. YAMAPリンク

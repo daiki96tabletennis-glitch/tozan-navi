@@ -14,29 +14,29 @@
 <meta name="google-site-verification" content="dJ2byH9b8xF8S5lqAyWV-DqRwPGLEjWXs_-Un9oXGHs" />
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;background:#e8e0d5;color:#3a3530;font-size:15px;line-height:1.6}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;background:#f7f6f2;color:#3a3530;font-size:15px;line-height:1.6}
 a{color:inherit;text-decoration:none}
-header{background:linear-gradient(135deg,#4a6038 0%,#607848 100%);padding:12px 16px}
+header{background:#3a4f28;padding:12px 16px}
 .header-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:8px}
 .header-title{color:white;font-size:18px;font-weight:800}
-.back-btn{color:rgba(255,255,255,0.7);font-size:12px;white-space:nowrap}
+.back-btn{color:white;font-size:12px;white-space:nowrap;border:1px solid rgba(255,255,255,0.7);border-radius:5px;padding:4px 10px;}
 .header-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;border-radius:8px;padding:4px 9px;font-size:11px;white-space:nowrap}
-main{max-width:680px;margin:0 auto;padding:12px}
-.card{background:white;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #ddd8d0}
-.card h2{font-size:14px;font-weight:bold;color:#4a5e4a;margin-bottom:12px}
-.hero-new{position:relative;overflow:hidden;padding:20px 16px 16px;border-radius:14px;margin-bottom:14px}
-.hero-bg-svg{position:absolute;bottom:0;right:-10px;width:200px;height:120px;opacity:0.10;pointer-events:none}
-.mountain-name{font-size:28px;font-weight:800;color:white;line-height:1.1}
-.mountain-kana{font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px}
-.mountain-area{font-size:12px;color:rgba(255,255,255,0.75);margin-top:4px}
+main{max-width:680px;margin:0 auto;padding:18px}
+.card{background:transparent;border-radius:0;padding:24px 0;margin-bottom:0;border:none;border-bottom:1px solid #ccc7ba}
+.card h2{font-size:14px;font-weight:bold;color:#1a1a16;margin-bottom:12px}
+.hero-new{position:relative;overflow:hidden;background:#c2d4dc;border:1px solid #9cb8c4;padding:20px 16px 16px;border-radius:14px;margin-bottom:14px}
+.hero-bg-svg{position:absolute;bottom:0;right:-10px;width:200px;height:120px;pointer-events:none}
+.mountain-name{font-size:28px;font-weight:700;color:#1a1a16;line-height:1.1}
+.mountain-kana{font-size:11px;color:#4a5a40;margin-top:3px;letter-spacing:0.08em}
+.mountain-area{font-size:12px;color:#3a4a30;margin-top:4px}
 .hero-badges{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
-.cat-badge-new{background:rgba(255,255,255,0.2);color:white;font-size:10px;padding:2px 8px;border-radius:20px;font-weight:500}
-.diff-badge-new{background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);font-size:10px;padding:2px 8px;border-radius:20px;font-weight:500;border:1px solid rgba(255,255,255,0.3)}
+.cat-badge-new{background:transparent;color:#1a1a16;font-size:10px;padding:2px 9px;border-radius:3px;font-weight:600;border:1px solid rgba(26,26,22,0.55)}
+.diff-badge-new{background:transparent;color:#1a1a16;font-size:10px;padding:2px 9px;border-radius:3px;font-weight:500;border:1px solid rgba(26,26,22,0.4)}
 .stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:14px}
-.stat-card{background:rgba(255,255,255,0.15);border-radius:10px;padding:8px 6px;text-align:center}
-.stat-val{font-size:18px;font-weight:800;color:white;line-height:1}
-.stat-unit{font-size:9px;color:rgba(255,255,255,0.65);margin-top:1px}
-.stat-label{font-size:9px;color:rgba(255,255,255,0.55);margin-top:3px}
+.stat-card{background:rgba(255,255,255,0.4);border-radius:6px;padding:10px 6px;text-align:center}
+.stat-val{font-family:"Outfit",sans-serif;font-size:27px;font-weight:800;color:#1a1a16;line-height:1;letter-spacing:-0.02em}
+.stat-unit{font-family:"Outfit",sans-serif;font-size:11px;color:#33332e;margin-top:3px;letter-spacing:0.05em;text-transform:uppercase;font-weight:600}
+.stat-label{font-size:10px;color:#403f3a;margin-top:3px;letter-spacing:0.06em;font-weight:500}
 .intro-text{font-size:13px;color:#5a5050;line-height:1.7}
 .ag-a{display:flex;flex-direction:column;gap:5px}
 .ai-a{display:flex;align-items:center;gap:8px;padding:4px 0}
@@ -53,11 +53,11 @@ main{max-width:680px;margin:0 auto;padding:12px}
 .calendar{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;margin-bottom:8px}
 .cal-m{text-align:center}
 .cal-l{font-size:8px;color:#a09888;margin-bottom:3px;font-weight:500}
-.cal-b{height:28px;border-radius:4px}
-.s-ok{background:#4a7840}.s-gear{background:#d4a830}
+.cal-b{height:26px;border-radius:2px}
+.s-ok{background:#9cb088}.s-gear{background:#d4c19a}
 .cal-legend{display:flex;gap:10px;flex-wrap:wrap}
 .leg{display:flex;align-items:center;gap:4px;font-size:10px;color:#6a6058}
-.leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.leg-dot{width:8px;height:8px;border-radius:1.5px;flex-shrink:0}
 .route-list-c{display:flex;flex-direction:column}
 .rl-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid #f0ede8}
 .rl-item:last-child{border-bottom:none}
@@ -66,51 +66,63 @@ main{max-width:680px;margin:0 auto;padding:12px}
 .rl-name{font-size:13px;font-weight:600;color:#2a2520;margin-bottom:4px}
 .rl-chips{display:flex;gap:4px;flex-wrap:wrap}
 .rl-chip{font-size:10px;padding:2px 7px;border-radius:20px;background:#f0f5ec;color:#4a6038;font-weight:500}
-.yamap-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#4a5e4a;color:white;font-weight:bold;font-size:15px;padding:16px;border-radius:12px;margin-bottom:12px}
-.rec-card{background:white;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #ddd8d0}
-.rec-card-title{font-size:13px;font-weight:700;color:#4a5e4a;margin-bottom:10px}
+.yamap-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:white;color:#5a6048;font-weight:600;font-size:14px;padding:15px;border-radius:4px;margin-bottom:12px;border:1.5px solid #1a1a16}
+.rec-card{background:transparent;border-radius:0;padding:24px 0;margin-bottom:0;border:none;border-bottom:1px solid #ccc7ba}
+.rec-card-title{font-size:11px;font-weight:700;color:#8a8278;margin-bottom:10px;display:flex;align-items:baseline;gap:7px;letter-spacing:0.02em}
+.rec-card-title .eyebrow{font-family:"Outfit",sans-serif;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#4a5e4a}
+.rec-check{flex-shrink:0;margin-top:3px;width:13px;height:13px;color:#5a7848}
 .rec-list{display:flex;flex-direction:column;gap:7px}
 .rec-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#3a3530;line-height:1.5}
 .faq-item{padding:12px 0;border-bottom:1px solid #f0ede8}
 .faq-item:last-child{border-bottom:none;padding-bottom:0}
-.faq-q{font-size:14px;font-weight:700;color:#2a3820;margin-bottom:6px;line-height:1.5}
+.faq-q{font-size:14px;font-weight:700;color:#1a1a16;margin-bottom:6px;line-height:1.5;}
 .faq-q::before{content:"Q. ";color:#4a7838}
 .faq-a p{font-size:13px;color:#5a5248;line-height:1.8;padding-left:18px}
-.ts-section{background:white;border-radius:12px;border:1.5px solid #c8dff0;padding:14px 16px;margin-bottom:0}
+.ts-section{background:transparent;border-radius:0;border:none;padding:0;margin-bottom:0;}
 .ts-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.ts-title{font-size:14px;font-weight:700;color:#1a4a70}
+.ts-title{font-size:14px;font-weight:700;color:#1a1a16;}
 .ts-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px}
 .ts-badge-year{background:#d4edda;color:#155724}
 .ts-line-name{font-size:11px;color:#6a8098;margin-bottom:10px}
 .ts-route{display:flex;flex-direction:column;gap:0}
-.ts-step{display:flex;flex-direction:column}
-.ts-node{padding:4px 12px;background:#eef4fb;border-radius:8px;border-left:3px solid #4a7898;margin-bottom:2px}
-.ts-node-last{border-left-color:#2a7a38;background:#eef6ee}
-.ts-station{font-size:13px;font-weight:700;color:#1a3050}
-.ts-arrow{padding:4px 16px;margin-bottom:2px}
-.ts-method{font-size:12px;color:#4a6888}
-.ts-duration{font-weight:700;color:#2a5070;margin-left:4px}
-.ts-note{font-size:12px;color:#7a6048;background:#fdf8ee;border-radius:6px;padding:6px 10px;margin-top:8px;line-height:1.6}
+.ts-step{display:flex;flex-direction:column;position:relative;padding-left:16px;}
+.ts-node::before{content:"";position:absolute;left:-16px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:#9a958a;}
+.ts-node{position:relative;padding:3px 0;margin-bottom:2px;}
+.ts-node-last::before{background:#4e6535;}
+.ts-node-last{border-left:none;background:transparent;}
+.ts-station{font-size:13px;font-weight:700;color:#1e1a16;}
+.ts-arrow::before{content:"";position:absolute;left:-13px;top:-3px;bottom:-3px;width:1px;background:#ddd9cf;}
+.ts-arrow{position:relative;padding:5px 0;margin-bottom:2px;}
+.ts-method{font-family:"Outfit",sans-serif;font-size:11px;color:#3a3a36;letter-spacing:0.01em;}
+.ts-duration{font-weight:700;color:#1a1a16;margin-left:4px;}
+.ts-note{font-size:12px;color:#3a3a36;background:#fdf8ee;border-radius:6px;padding:6px 10px;margin-top:8px;line-height:1.6;}
 .ts-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .ts-link{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
-.ts-link-yahoo{background:#deeaf4;color:#1a4a70}
-.ts-link-bus{background:#c8dff0;color:#1a4070}
-.rw{background:#fff;border-radius:12px;padding:14px;border:1px solid #ddd8d0;margin-bottom:12px}
+.ts-link-yahoo{background:#deeaf4;color:#1a1a16;}
+.ts-link-bus{background:#c8dff0;color:#1a1a16;}
+.rw{background:transparent;border-radius:0;padding:24px 0;border:none;border-bottom:1px solid #ccc7ba;margin-bottom:0}
 .rh{font-size:13px;font-weight:700;color:#4a5e4a;margin:0 0 10px}
 .rg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.rc{display:flex;flex-direction:column;gap:5px;background:#f5f3ef;border:1px solid #e8e4dc;border-radius:10px;padding:10px;text-decoration:none;color:inherit}
+.rc{display:flex;flex-direction:column;gap:5px;border-radius:10px;padding:10px;text-decoration:none;color:inherit;transition:filter .15s}
+.rc:hover{filter:brightness(0.97)}
+.rc-blue{background:linear-gradient(145deg,#eef2f7 0%,#e2eaf3 100%);border:1px solid #d0dcea}
+.rc-green{background:linear-gradient(145deg,#f0f5ec 0%,#e4edd8 100%);border:1px solid #cfdcc0}
+.rc-blue{background:linear-gradient(145deg,#eef2f7 0%,#e2eaf3 100%);border:1px solid #d0dcea}
+.rc-green{background:linear-gradient(145deg,#f0f5ec 0%,#e4edd8 100%);border:1px solid #cfdcc0}
+.rc-blue{background:linear-gradient(145deg,#eef2f7 0%,#e2eaf3 100%);border:1px solid #d0dcea}
+.rc-green{background:linear-gradient(145deg,#f0f5ec 0%,#e4edd8 100%);border:1px solid #cfdcc0}
 .rn{font-size:13px;font-weight:700;color:#3a3530}
 .rb{display:flex;gap:4px;flex-wrap:wrap}
 .rbd,.rbc{font-size:10px;font-weight:600;padding:2px 6px;border-radius:8px;white-space:nowrap}
 .rbc{background:#eef0e8;color:#4a5e4a}
 .rt{font-size:13px;font-weight:700;color:#4a5e4a;margin-top:2px}
 .rs{font-size:10px;color:#a09888;font-weight:normal;margin-left:3px}
-.related-links-card{background:white;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #ddd8d0}
-.related-links-title{font-size:11px;font-weight:700;color:#7a9a6a;letter-spacing:0.06em;margin-bottom:10px}
+.related-links-card{background:transparent;border-radius:0;padding:24px 0;margin-bottom:0;border:none;border-bottom:1px solid #ccc7ba}
+.related-links-title{font-size:11px;font-weight:700;color:#1a1a16;letter-spacing:0.06em;margin-bottom:10px}
 .related-link-item{display:flex;flex-direction:column;gap:2px;padding:8px 0;border-bottom:1px solid #f0ede8;text-decoration:none;color:inherit}
 .related-link-item:last-child{border-bottom:none;padding-bottom:0}
-.related-link-main{font-size:13px;font-weight:600;color:#3a5a28;display:flex;align-items:center;gap:5px}
-.related-link-sub{font-size:11px;color:#a09888;padding-left:18px}
+.related-link-main{font-size:14px;font-weight:600;color:#2c4a1e;display:flex;align-items:center;gap:5px}
+.related-link-sub{font-size:11px;color:#5a5a52;padding-left:18px}
 .note{background:#faf8f5;border:1px solid #ddd8d0;border-radius:10px;padding:12px;font-size:12px;color:#7a7068;margin-bottom:16px}
 .share-section{margin:16px 0;display:flex;gap:8px}
 .share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 8px;border-radius:10px;font-size:13px;font-weight:bold;border:none;cursor:pointer;text-decoration:none}
@@ -118,32 +130,34 @@ main{max-width:680px;margin:0 auto;padding:12px}
 .share-btn-line{background:#06C755;color:white}
 .share-btn-x{background:#000;color:white}
 .share-btn-copy{background:#e8e0d5;color:#4a6038;border:1px solid #c8c4bc}
-.dep-row{display:flex;gap:0;padding:0 12px 10px;max-width:680px;margin:0 auto}
-.dep-btn-m{padding:4px 12px;font-size:13px;border:none;background:transparent;color:rgba(255,255,255,0.4);font-weight:400;cursor:pointer}
-.dep-btn-m.active{color:white;font-weight:700}
+.dep-row{display:flex;gap:5px;padding:6px 12px 10px;max-width:680px;margin:0 auto;}
+.dep-btn-m{padding:5px 8px;font-size:12.5px;border:1px solid rgba(255,255,255,0.6);border-radius:5px;background:transparent;color:rgba(255,255,255,0.75);font-weight:500;cursor:pointer;white-space:nowrap;}
+.dep-btn-m.active{color:white;font-weight:700;border:1.5px solid white;}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"赤城山は初心者でも登れますか？","acceptedAnswer":{"@type":"Answer","text":"はい。黒檜山・駒ヶ岳の周回コースはコース定数14〜22で初〜中級向け。危険な岩場や鎖場もなく整備されたコースです。"}},{"@type":"Question","name":"赤城山へのアクセス方法を教えてください。","acceptedAnswer":{"@type":"Answer","text":"前橋駅から関越交通バスで約75分（土日は直通、平日は富士見温泉で乗換）。新宿からは上越新幹線で高崎→JR両毛線で前橋まで約65分です。"}},{"@type":"Question","name":"赤城山の登山シーズンはいつですか？","acceptedAnswer":{"@type":"Answer","text":"4〜11月がおすすめです。10月の紅葉が美しい。12〜3月は積雪・凍結があるため軽アイゼンが必要です。"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Yamatch","item":"https://tozan-navi.com/"},{"@type":"ListItem","position":3,"name":"赤城山","item":"https://tozan-navi.com/mountains/akagi/"}]}</script>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>h1,h2,h3,.ym-logo,.type-name,.mountain-name,.sec-title,.header-title{font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;}</style>
 </head>
 <body>
 <header>
-<div class="header-inner"><a href="/" style="display:flex;align-items:center;gap:8px;text-decoration:none;flex:1;min-width:0;"><svg width="26" height="26" viewBox="0 0 36 36" style="flex-shrink:0"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg><div class="header-title">Yamatch</div></a><a href="/about/" class="header-btn">運営者</a><a href="/" class="back-btn">← 一覧に戻る</a></div>
+<div class="header-inner"><a href="/" style="display:flex;align-items:center;gap:6px;text-decoration:none;flex:1;min-width:0;"><svg width="24" height="24" viewBox="0 0 36 36" style="flex-shrink:0"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
+      <div class="header-title" style="color:white;font-size:20px;font-weight:700;font-family:Georgia,serif;line-height:1;">Yamatch</div>
+    </a><a href="/" class="back-btn">← 一覧に戻る</a></div>
 <div class="dep-row" id="dep-row"><button class="dep-btn-m" onclick="changeDep('大船')">大船駅</button><button class="dep-btn-m" onclick="changeDep('新宿')">新宿駅</button><button class="dep-btn-m" onclick="changeDep('横浜')">横浜駅</button><button class="dep-btn-m" onclick="changeDep('大宮')">大宮駅</button>
     <button class="dep-btn-m" onclick="changeDep('立川')">立川駅</button></div>
 </header>
 <main>
-<div class="hero-new" style="background:linear-gradient(160deg,#1a2838 0%,#2a3848 40%,#3a4858 100%)">
-<svg class="hero-bg-svg" viewBox="0 0 100 60" fill="white"><polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/><polygon points="20,28 50,55 0,55"/></svg>
+<div class="hero-new">
+<svg class="hero-bg-svg" viewBox="0 0 100 60" fill="#2a5010" style="opacity:0.04"><polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/><polygon points="20,28 50,55 0,55"/></svg>
 <h1 class="mountain-name">赤城山</h1>
 <div class="mountain-kana">あかぎさん</div>
 <div class="mountain-area">&#128205; 群馬県</div>
 <div class="hero-badges"><span class="cat-badge-new">百名山</span><span class="diff-badge-new">初〜中級</span></div>
-<div class="stats-row"><div class="stat-card"><div class="stat-val">1828</div><div class="stat-unit">m</div><div class="stat-label">標高</div></div><div class="stat-card"><div class="stat-val">14〜22</div><div class="stat-unit">コース定数</div><div class="stat-label">体力度</div></div><div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">150</div><div class="stat-unit">分〜</div><div class="stat-label" id="hero-dep-label">新宿から</div></div></div>
+<div class="stats-row"><div class="stat-card"><div class="stat-val">1828</div><div class="stat-unit">m</div><div class="stat-label">標高</div></div><div class="stat-card"><div class="stat-val">14〜22</div><div class="stat-unit">コース定数</div><div class="stat-label">体力度</div></div><div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">2.5</div><div class="stat-unit" id="hero-unit">時間〜</div><div class="stat-label" id="hero-dep-label">新宿から</div></div></div>
 </div>
-<div class="rec-card"><div class="rec-card-title">&#10003; こんな人におすすめ</div><div class="rec-list"><div class="rec-item"><span><strong>百名山を制覇したい人</strong>——関東から日帰りで登れる百名山</span></div><div class="rec-item"><span><strong>湖と山の絶景を楽しみたい人</strong>——大沼・小沼を見下ろす展望</span></div><div class="rec-item"><span><strong>初心者で百名山に挑戦したい人</strong>——コース定数14〜22で難所なし</span></div><div class="rec-item"><span><strong>紅葉登山を楽しみたい人</strong>——10月の紅葉シーズンは特に美しい</span></div></div></div>
-<div class="card"><h2>🚗 車でのアクセス時間</h2>
+<div class="rec-card"><div class="rec-card-title"><span class="eyebrow">Vibes</span><span>こんな気分の人に</span></div><div class="rec-list"><div class="rec-item"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>百名山を制覇したい人</strong>——関東から日帰りで登れる百名山</span></div><div class="rec-item"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>湖と山の絶景を楽しみたい人</strong>——大沼・小沼を見下ろす展望</span></div><div class="rec-item"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>初心者で百名山に挑戦したい人</strong>——コース定数14〜22で難所なし</span></div><div class="rec-item"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>紅葉登山を楽しみたい人</strong>——10月の紅葉シーズンは特に美しい</span></div></div></div>
+<div class="card"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="7" cy="18" r="2" fill="currentColor"/><circle cx="17" cy="18" r="2" fill="currentColor"/></svg>車でのアクセス時間</h2>
     <div class="ag-a" id="access-grid">
 <div class="ai-a" data-dep="大船駅" data-min="170"><div class="ai-a-dep">大船駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:47%"></div></div><div class="ai-a-val">2時間50分</div></div>
 <div class="ai-a" data-dep="横浜駅" data-min="170"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:47%"></div></div><div class="ai-a-val">2時間50分</div></div>
@@ -153,17 +167,17 @@ main{max-width:680px;margin:0 auto;padding:12px}
     </div>
   </div>
 <div class="card"><h2>&#128221; 山の紹介</h2><p class="intro-text">上毛三山の一つで日本百名山。カルデラ湖の大沼を囲む最高峰・黒檜山（1,828m）をはじめ、地蔵岳・駒ヶ岳など複数のピークを持つ。前橋駅からバスで約75分（土日は直通）でアクセス可能で、関東甲信越の百名山の中では比較的交通アクセスが良い。春の新緑・秋の紅葉・冬のワカサギ釣りと四季を通じて楽しめる。</p></div>
-<div class="card"><div class="ts-section"><div class="ts-header"><div class="ts-title">&#128643; 電車・バスでのアクセス</div><span class="ts-badge ts-badge-warn">⚠ 土日直通バス</span></div><div class="ts-line-name">上越新幹線・JR両毛線・関越交通バス</div><div class="ts-route"><div class="ts-step"><div class="ts-node"><span class="ts-station">新宿駅</span></div></div><div class="ts-step"><div class="ts-node"><span class="ts-station">高崎駅</span></div><div class="ts-arrow"><span class="ts-method">上越新幹線</span><span class="ts-duration"> 約50分</span></div></div><div class="ts-step"><div class="ts-node"><span class="ts-station">前橋駅</span></div><div class="ts-arrow"><span class="ts-method">JR両毛線</span><span class="ts-duration"> 約15分</span></div></div><div class="ts-step"><div class="ts-node-last"><span class="ts-station">あかぎ広場前</span></div></div></div><div class="ts-summary"><span>新宿から約2時間半（乗換時間を含む）</span><span>片道約7,500円</span></div><div class="ts-note">土日祝は前橋駅から赤城山直通バスが運行（約75分）。平日は富士見温泉で乗換が必要。バス時刻は関越交通公式サイトで確認してください。</div><div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=%E6%96%B0%E5%AE%BF&to=%E5%89%8D%E6%A9%8B%E9%A7%85&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo">🗓 乗換案内で検索</a><a href="https://kan-etsu.net/publics/index/42/" target="_blank" rel="noopener" class="ts-link ts-link-bus">🚌 バス時刻表</a></div></div></div>
-<div class="card"><h2>&#128197; シーズンカレンダー</h2><div class="calendar"><div class="cal-m"><div class="cal-l">1</div><div class="cal-b s-gear"></div></div><div class="cal-m"><div class="cal-l">2</div><div class="cal-b s-gear"></div></div><div class="cal-m"><div class="cal-l">3</div><div class="cal-b s-gear"></div></div><div class="cal-m"><div class="cal-l">4</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">5</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">6</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">7</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">8</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">9</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">10</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">11</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">12</div><div class="cal-b s-gear"></div></div></div><div class="cal-legend">🟢 アイゼン不要（4〜11月） 🟡 軽アイゼン推奨（12〜3月）</div></div>
+<div style="padding:24px 0;border-bottom:1px solid #ccc7ba"><div class="ts-section"><div class="ts-header"><div class="ts-title">&#128643; 電車・バスでのアクセス</div><span class="ts-badge ts-badge-warn"><svg width="13" height="13" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L22 20 H2 Z"/><line x1="12" y1="9" x2="12" y2="14"/><line x1="12" y1="17" x2="12" y2="17.1"/></svg>土日直通バス</span></div><div class="ts-line-name">上越新幹線・JR両毛線・関越交通バス</div><div class="ts-route"><div class="ts-step"><div class="ts-node"><span class="ts-station">新宿駅</span></div></div><div class="ts-step"><div class="ts-node"><span class="ts-station">高崎駅</span></div><div class="ts-arrow"><span class="ts-method">上越新幹線</span><span class="ts-duration"> 約50分</span></div></div><div class="ts-step"><div class="ts-node"><span class="ts-station">前橋駅</span></div><div class="ts-arrow"><span class="ts-method">JR両毛線</span><span class="ts-duration"> 約15分</span></div></div><div class="ts-step"><div class="ts-node-last"><span class="ts-station">あかぎ広場前</span></div></div></div><div class="ts-summary"><span>新宿から約2時間半（乗換時間を含む）</span><span>片道約7,500円</span></div><div class="ts-note">土日祝は前橋駅から赤城山直通バスが運行（約75分）。平日は富士見温泉で乗換が必要。バス時刻は関越交通公式サイトで確認してください。</div><div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=%E6%96%B0%E5%AE%BF&to=%E5%89%8D%E6%A9%8B%E9%A7%85&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>乗換案内で検索</a><a href="https://kan-etsu.net/publics/index/42/" target="_blank" rel="noopener" class="ts-link ts-link-bus"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>バス時刻表</a></div></div></div>
+<div class="card"><h2>&#128197; シーズンカレンダー</h2><div class="calendar"><div class="cal-m"><div class="cal-l">1</div><div class="cal-b s-gear"></div></div><div class="cal-m"><div class="cal-l">2</div><div class="cal-b s-gear"></div></div><div class="cal-m"><div class="cal-l">3</div><div class="cal-b s-gear"></div></div><div class="cal-m"><div class="cal-l">4</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">5</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">6</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">7</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">8</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">9</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">10</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">11</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">12</div><div class="cal-b s-gear"></div></div></div><div class="cal-legend">アイゼン不要（4〜11月） 軽アイゼン推奨（12〜3月）</div></div>
 <div class="card"><h2>&#128094; 代表的な登山ルート</h2><div class="route-list-c"><div class="rl-item"><div class="rl-num">1</div><div class="rl-content"><div class="rl-name">黒檜山・駒ヶ岳 周回コース（定番）</div><div class="rl-chips"><span class="rl-chip">約3時間30分</span><span class="rl-chip">距離 6.0km</span><span class="rl-chip">↑ +580m</span></div></div></div><div class="rl-item"><div class="rl-num">2</div><div class="rl-content"><div class="rl-name">地蔵岳ピストン</div><div class="rl-chips"><span class="rl-chip">約2時間</span><span class="rl-chip">距離 4.0km</span><span class="rl-chip">↑ +240m</span></div></div></div><div class="rl-item"><div class="rl-num">3</div><div class="rl-content"><div class="rl-name">長七郎山〜小地蔵岳 周回</div><div class="rl-chips"><span class="rl-chip">約2時間30分</span><span class="rl-chip">距離 5.0km</span><span class="rl-chip">↑ +300m</span></div></div></div></div></div>
 <a href="https://yamap.com/mountains/21" target="_blank" rel="noopener noreferrer" class="yamap-btn">
-    <svg width="20" height="20" viewBox="0 0 36 36" fill="white"><polygon points="18,4 34,30 2,30"/><polygon points="18,10 30,30 6,30" fill="rgba(255,255,255,0.6)"/></svg>
+    <svg width="18" height="18" viewBox="0 0 36 36" fill="#5a6048"><polygon points="18,4 34,30 2,30"/><polygon points="18,10 30,30 6,30" fill="#8a9070"/></svg>
     YAMAPで詳細を見る
   </a>
 
   <!-- 登頂記録ボタン -->
-  <button id="climbed-btn" onclick="toggleClimbed()" style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:white;color:#4a6038;font-weight:700;font-size:15px;padding:15px;border-radius:12px;border:2px solid #c8d8b8;margin-bottom:12px;cursor:pointer;-webkit-tap-highlight-color:transparent;">
-    <span id="climbed-icon">🏳</span>
+  <button id="climbed-btn" onclick="toggleClimbed()" style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:white;color:#4a6038;font-weight:700;font-size:15px;padding:15px;border-radius:4px;border:1.5px solid #1a1a16;margin-bottom:12px;cursor:pointer;-webkit-tap-highlight-color:transparent;">
+    <svg id="climbed-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4a1 1 0 0 1 1-1h11l-2 5 2 5H6"/></svg>
     <span id="climbed-label">登頂記録に追加</span>
   </button>
   <script>
@@ -181,13 +195,13 @@ main{max-width:680px;margin:0 auto;padding:12px}
         btn.style.background='#eef5e8';
         btn.style.borderColor='#4e6535';
         btn.style.color='#2a4820';
-        icon.textContent='🚩';
+        icon.innerHTML='<path d="M4 21V4a1 1 0 0 1 1-1h11l-2 5 2 5H6" fill="currentColor"/>';
         label.textContent='登頂済み（タップで解除）';
       } else {
         btn.style.background='white';
-        btn.style.borderColor='#c8d8b8';
+        btn.style.borderColor='#1a1a16';
         btn.style.color='#4a6038';
-        icon.textContent='🏳';
+        icon.innerHTML='<path d="M4 21V4a1 1 0 0 1 1-1h11l-2 5 2 5H6"/>';
         label.textContent='登頂記録に追加';
       }
     }
@@ -204,7 +218,7 @@ main{max-width:680px;margin:0 auto;padding:12px}
         // お祝い表示
         var cel = document.createElement('div');
         cel.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(20,45,15,0.92);color:white;border-radius:16px;padding:20px 32px;text-align:center;z-index:9999;font-family:sans-serif';
-        cel.innerHTML='<div style="font-size:36px;margin-bottom:6px">🚩</div><div style="font-size:16px;font-weight:800">登頂記録に追加しました！</div><div style="font-size:12px;margin-top:4px;opacity:0.7">マイページで確認できます</div>';
+        cel.innerHTML='<div style="margin-bottom:6px"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4a1 1 0 0 1 1-1h11l-2 5 2 5H6"/></svg></div><div style="font-size:16px;font-weight:800">登頂記録に追加しました！</div><div style="font-size:12px;margin-top:4px;opacity:0.7">マイページで確認できます</div>';
         document.body.appendChild(cel);
         setTimeout(function(){ cel.remove(); }, 1800);
       }
@@ -215,13 +229,14 @@ main{max-width:680px;margin:0 auto;padding:12px}
   </script>
 
 <div class="card"><h2>&#10067; よくある質問</h2><div class="faq-item"><h3 class="faq-q">赤城山は初心者でも登れますか？</h3><div class="faq-a"><p>はい。黒檜山・駒ヶ岳の周回コースはコース定数14〜22で初〜中級向け。危険な岩場や鎖場もなく整備されたコースです。</p></div></div><div class="faq-item"><h3 class="faq-q">赤城山へのアクセス方法を教えてください。</h3><div class="faq-a"><p>前橋駅から関越交通バスで約75分（土日は直通、平日は富士見温泉で乗換）。新宿からは上越新幹線で高崎→JR両毛線で前橋まで約65分です。</p></div></div><div class="faq-item"><h3 class="faq-q">赤城山の登山シーズンはいつですか？</h3><div class="faq-a"><p>4〜11月がおすすめです。10月の紅葉が美しい。12〜3月は積雪・凍結があるため軽アイゼンが必要です。</p></div></div></div>
-<div class="rw"><div class="rh">&#9981; 近隣のおすすめ山</div><div class="rg"><a href="/mountains/tanigawa/" class="rc"><div class="rn">谷川岳</div><div class="rb"><span class="rbc">中〜上級</span><span class="rbd">定数25〜40</span></div><div class="rt"><span class="rs" id="nearby-time-tanigawa" data-ofuna="165" data-shinjuku="120" data-yokohama="155" data-omiya="100">120分</span> <span class="rs" id="nearby-label-tanigawa">新宿から</span></div></a><a href="/mountains/shirane_gunma/" class="rc"><div class="rn">草津白根山</div><div class="rb"><span class="rbc">初〜中級</span><span class="rbd">定数10〜18</span></div><div class="rt"><span class="rs" id="nearby-time-shirane_gunma" data-ofuna="195" data-shinjuku="150" data-yokohama="185" data-omiya="130">150分</span> <span class="rs" id="nearby-label-shirane_gunma">新宿から</span></div></a></div></div>
 <div class="related-links-card"><div class="related-links-title">&#128218; 関連するまとめ記事</div><a href="/search/tobu-hiking/" class="related-link-item"><div class="related-link-main">→ 東武線で行ける登山5選</div><div class="related-link-sub">男体山・鳴虫山・燧ヶ岳など</div></a><a href="/articles/kanto-day-trip-100/" class="related-link-item"><div class="related-link-main">→ 関東発・百名山10選</div><div class="related-link-sub">赤城山・大菩薩嶺など</div></a></div>
-<div class="share-section" id="share-fallback"><a href="https://line.me/R/msg/text/?赤城山%0Ahttps://tozan-navi.com/mountains/akagi/" target="_blank" class="share-btn share-btn-line">LINE</a><a href="https://twitter.com/intent/tweet?text=赤城山&url=https://tozan-navi.com/mountains/akagi/" target="_blank" class="share-btn share-btn-x">X</a></div>
+<div class="rw"><div class="rh">&#9981; 近隣のおすすめ山</div><div class="rg"><a href="/mountains/tanigawa/" class="rc rc-blue"><div class="rn">谷川岳</div><div class="rb"><span class="rbc">中〜上級</span><span class="rbd">定数25〜40</span></div><div class="rt"><span class="rs" id="nearby-time-tanigawa" data-ofuna="165" data-shinjuku="120" data-yokohama="155" data-omiya="100">120分</span> <span class="rs" id="nearby-label-tanigawa">新宿から</span></div></a><a href="/mountains/shirane_gunma/" class="rc rc-blue"><div class="rn">草津白根山</div><div class="rb"><span class="rbc">初〜中級</span><span class="rbd">定数10〜18</span></div><div class="rt"><span class="rs" id="nearby-time-shirane_gunma" data-ofuna="195" data-shinjuku="150" data-yokohama="185" data-omiya="130">150分</span> <span class="rs" id="nearby-label-shirane_gunma">新宿から</span></div></a></div></div>
+
+  <div class="share-section" id="share-fallback"><a href="https://line.me/R/msg/text/?赤城山%0Ahttps://tozan-navi.com/mountains/akagi/" target="_blank" class="share-btn share-btn-line">LINE</a><a href="https://twitter.com/intent/tweet?text=赤城山&url=https://tozan-navi.com/mountains/akagi/" target="_blank" class="share-btn share-btn-x">X</a></div>
 
 <!-- 装備・持ち物セクション -->
 <section class="gear-section">
-  <h2 class="gear-title">🎒 この山に必要な装備・持ち物</h2>
+  <h2 class="gear-title"><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7V5a4 4 0 0 1 8 0v2"/><path d="M6 7h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/><rect x="9" y="11" width="6" height="4" rx="1"/></svg>この山に必要な装備・持ち物</h2>
   <p class="gear-lead">標高差があるコースです。足首をサポートするシューズと基本装備を揃えましょう。</p>
   <div class="gear-list">
     <div class="gear-item">
@@ -284,8 +299,8 @@ main{max-width:680px;margin:0 auto;padding:12px}
 .gear-reason{font-size:11px;color:#6a6058;line-height:1.6;margin-bottom:8px}
 .gear-links{display:flex;gap:6px}
 .gear-btn{flex:1;display:block;text-align:center;padding:7px 4px;border-radius:8px;font-size:11px;font-weight:700;text-decoration:none}
-.gear-amazon{background:#FF9900;color:white}
-.gear-rakuten{background:#BF0000;color:white}
+.gear-amazon{background:white;color:#1a1a16;border:1.5px solid #1a1a16}
+.gear-rakuten{background:white;color:#1a1a16;border:1.5px solid #1a1a16}
 .gear-note{font-size:10px;color:#a09888;margin-top:12px;line-height:1.5}
 </style>
 
@@ -294,6 +309,7 @@ main{max-width:680px;margin:0 auto;padding:12px}
 var MID = "akagi";
 var heroMinMap = {"ofuna":"175","shinjuku":"150","yokohama":"165","omiya":"120","tachikawa":"185"};
 var nearbyIds = ['tanigawa','shirane_gunma'];
+function ymFormatHeroTime(raw){var totalMin;if(typeof raw==='number'){totalMin=raw;}else{var s=String(raw);var hMatch=s.match(/(\d+)\s*時間/);var mMatch=s.match(/(\d+)\s*分/);if(hMatch||mMatch){var h=hMatch?parseInt(hMatch[1],10):0;var m=mMatch?parseInt(mMatch[1],10):0;totalMin=h*60+m;}else{var n=s.match(/\d+/);totalMin=n?parseInt(n[0],10):0;}}if(totalMin<60){return {v:String(totalMin),u:'分〜'};}var hrs=totalMin/60;var hrsStr=hrs.toFixed(1);if(hrsStr.slice(-2)==='.0'){hrsStr=hrsStr.slice(0,-2);}return {v:hrsStr,u:'時間〜'};}
 function changeDep(dep){
   sessionStorage.setItem("ym_departure", dep);
   updateDepButtons(dep);
@@ -308,10 +324,13 @@ function applyDep(){
   var raw = sessionStorage.getItem("ym_departure");
   var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : "新宿";
   var depMap = {"大船":"ofuna","新宿":"shinjuku","横浜":"yokohama","大宮":"omiya","立川":"tachikawa"};
-  var key = depMap[dep] || "shinjuku";
-  var heroTime = document.getElementById("hero-time");
-  var heroLabel = document.getElementById("hero-dep-label");
-  if(heroTime) heroTime.textContent = heroMinMap[key] || "—";
+  var key = depMap[dep] || 'ofuna';
+  var heroTime = document.getElementById('hero-time');
+  var heroUnit = document.getElementById('hero-unit');
+  var heroLabel = document.getElementById('hero-dep-label');
+  var __hf = ymFormatHeroTime(parseInt(heroMinMap[key],10) || 0);
+  if(heroTime) heroTime.textContent = __hf.v;
+  if(heroUnit) heroUnit.textContent = __hf.u;
   if(heroLabel) heroLabel.textContent = dep + "から";
   nearbyIds.forEach(function(id){
     var timeEl = document.getElementById("nearby-time-"+id);
@@ -323,7 +342,7 @@ function applyDep(){
     }
   });
 }
-var initDep = sessionStorage.getItem("ym_departure") || "新宿";
+var initDep = sessionStorage.getItem("ym_departure") || '大船';
 updateDepButtons(initDep);
 applyDep();
 </script>
