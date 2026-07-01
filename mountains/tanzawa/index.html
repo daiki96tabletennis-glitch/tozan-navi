@@ -345,7 +345,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
       <div class="cal-m"><div class="cal-l">12</div><div class="cal-b s-gear"></div></div>
     </div>
     <div class="cal-legend">
-      <div class="leg"><div class="leg-dot" style="background:#9cb088"></div>アイゼン不要（5〜11月）</div>
+       <div class="leg"><div class="leg-dot" style="background:#9cb088"></div>アイゼン不要</div>
+<div class="leg"><div class="leg-dot" style="background:#d4c19a"></div>6本アイゼンで可</div>
       <div class="leg"><div class="leg-dot" style="background:#d4c19a"></div>6本アイゼンで可（12〜4月）</div>
     </div>
   </div>
@@ -697,8 +698,13 @@ applyDep();
     var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
     var dk = {'大船':'driveOfuna','新宿':'driveShinjuku','横浜':'driveYokohama','大宮':'driveOmiya','立川':'driveTachikawa'};
     var heroTime = document.getElementById('hero-time');
+    var heroUnit = document.getElementById('hero-unit');
     var heroLabel = document.getElementById('hero-dep-label');
-    if(heroTime && mt[dk[dep]]) heroTime.textContent = mt[dk[dep]];
+    if(heroTime && mt[dk[dep]]){
+      var __mthf = ymFormatHeroTime(mt[dk[dep]]);
+      heroTime.textContent = __mthf.v;
+      if(heroUnit) heroUnit.textContent = __mthf.u;
+    }
     if(heroLabel) heroLabel.textContent = dep + 'から';
 
     // 4. YAMAPリンク
