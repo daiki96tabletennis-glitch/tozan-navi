@@ -373,6 +373,16 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 function shareNative(){if(navigator.share){navigator.share({title:'鷹ノ巣山の登山情報',url:location.href});}else{document.getElementById('share-fallback').style.display='flex';}}
 function copyUrl(){navigator.clipboard.writeText(location.href).then(function(){alert('URLをコピーしました')});}
 function ymFormatHeroTime(raw){var totalMin;if(typeof raw==='number'){totalMin=raw;}else{var s=String(raw);var hMatch=s.match(/(\d+)\s*時間/);var mMatch=s.match(/(\d+)\s*分/);if(hMatch||mMatch){var h=hMatch?parseInt(hMatch[1],10):0;var m=mMatch?parseInt(mMatch[1],10):0;totalMin=h*60+m;}else{var n=s.match(/\d+/);totalMin=n?parseInt(n[0],10):0;}}if(totalMin<60){return {v:String(totalMin),u:'分〜'};}var hrs=totalMin/60;var hrsStr=hrs.toFixed(1);if(hrsStr.slice(-2)==='.0'){hrsStr=hrsStr.slice(0,-2);}return {v:hrsStr,u:'時間〜'};}
+function changeDep(dep){
+  sessionStorage.setItem('ym_departure', dep);
+  updateDepButtons(dep);
+  applyDep();
+}
+function updateDepButtons(dep){
+  document.querySelectorAll('.dep-btn-m').forEach(function(b){
+    b.classList.toggle('active', b.textContent === dep + '駅');
+  });
+}
 function applyDep(){
   var raw=sessionStorage.getItem('ym_departure');
   var dep=raw?(raw.startsWith('"')?JSON.parse(raw):raw):'大船';
