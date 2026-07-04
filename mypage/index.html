@@ -165,7 +165,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 .badge-detail-memo{font-size:12px;color:#5a5248;background:white;border-radius:10px;padding:8px 10px;margin-top:8px;text-align:left;white-space:pre-wrap;max-height:80px;overflow-y:auto;}
 .badge-detail-close{margin-top:14px;width:100%;padding:11px;background:#4e6535;color:white;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Serif+JP:wght@700;900&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Serif+JP:wght@700;900&family=Playfair+Display:wght@500;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
 <style>h1,h2,h3,.ym-logo,.type-name,.mountain-name,.sec-title{font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;}</style>
 <style>
 .card,.choice,.start-btn,.gear-btn,button{transition:transform .12s ease;}
@@ -182,25 +182,51 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
     <button class="ym-header-share" onclick="if(navigator.share){navigator.share({title:'Yamatch',url:location.href});}else{navigator.clipboard.writeText(location.href).then(function(){alert('URLをコピーしました');});}" aria-label="シェア"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg></button>
   </div>
 </header>
-<div id="profile-card" style="background:linear-gradient(160deg,#4e6535 0%,#5e7545 100%);border-radius:16px;padding:16px 18px;margin:12px 16px 4px;color:white;">
-  <div style="display:flex;gap:8px;">
-    <div style="flex:1;text-align:center;">
-      <div style="font-size:24px;font-weight:800;" id="profile-climbed-count">0</div>
-      <div style="font-size:10.5px;opacity:0.78;margin-top:1px;">🚩 登った山</div>
-    </div>
-    <div style="flex:1;text-align:center;border-left:1px solid rgba(255,255,255,0.22);border-right:1px solid rgba(255,255,255,0.22);">
-      <div style="font-size:24px;font-weight:800;" id="profile-fav-count">0</div>
-      <div style="font-size:10.5px;opacity:0.78;margin-top:1px;">⭐ 気になる山</div>
-    </div>
-    <div style="flex:1;text-align:center;">
-      <img id="profile-type-img" style="display:none;width:30px;height:30px;border-radius:50%;margin:0 auto 3px;object-fit:cover;border:1.5px solid rgba(255,255,255,0.45);background:rgba(255,255,255,0.15);" />
-      <div style="font-size:13px;font-weight:700;line-height:1.3;" id="profile-type">診断する</div>
-      <div style="font-size:10.5px;opacity:0.78;margin-top:1px;">あなたの登山タイプ</div>
-    </div>
+<div id="profile-head" style="display:flex;align-items:center;gap:16px;padding:22px 20px 2px;">
+  <div id="profile-avatar" style="width:60px;height:60px;border-radius:50%;background:#e9e5da;border:2.5px dashed #cfc8ba;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
+    <img id="profile-type-img" alt="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+    <svg id="profile-avatar-blank" width="32" height="39" viewBox="0 0 100 120" style="color:#7a8a68;">
+      <path d="M78,92 Q97,87 91,66 Q90,79 77,83 Z" fill="currentColor"/>
+      <path d="M50,112 C23,112 12,89 17,66 C20,47 33,33 50,33 C67,33 80,47 83,66 C88,89 77,112 50,112 Z" fill="currentColor"/>
+      <circle cx="50" cy="29" r="22" fill="currentColor"/>
+      <circle cx="32" cy="14" r="7.5" fill="currentColor"/>
+      <circle cx="68" cy="14" r="7.5" fill="currentColor"/>
+      <ellipse cx="50" cy="37" rx="9" ry="6" fill="currentColor"/>
+    </svg>
   </div>
-  <div id="profile-next-row" style="display:none;font-size:12px;background:rgba(255,255,255,0.14);border-radius:8px;padding:9px 12px;margin-top:12px;">
-    🎯 次に行きたい山：<a id="profile-next-link" href="#" style="color:white;font-weight:700;text-decoration:underline;">-</a>
+  <div style="flex:1;min-width:0;">
+    <div id="profile-type" style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:18px;color:#93897c;letter-spacing:-0.01em;line-height:1.35;">まだ診断していません</div>
+    <a id="profile-type-chip" href="/recommend/" style="display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid #4e6535;color:#4e6535;font-size:11px;font-weight:700;border-radius:999px;padding:4px 12px;margin-top:7px;text-decoration:none;">診断してみる →</a>
   </div>
+</div>
+
+<div id="profile-stats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:18px 20px 4px;">
+  <div style="background:#fff;border-radius:16px;padding:15px 4px 12px;text-align:center;box-shadow:0 1px 1px rgba(26,22,14,0.03),0 2px 5px rgba(26,22,14,0.05);">
+    <div id="profile-climbed-count" style="font-family:'Outfit',sans-serif;font-weight:700;font-size:23px;letter-spacing:-0.03em;color:#1a1a16;line-height:1;">0</div>
+    <div style="font-size:9px;color:#93897c;font-weight:700;margin-top:5px;letter-spacing:0.05em;">登頂</div>
+  </div>
+  <div style="background:#fff;border-radius:16px;padding:15px 4px 12px;text-align:center;box-shadow:0 1px 1px rgba(26,22,14,0.03),0 2px 5px rgba(26,22,14,0.05);">
+    <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:23px;letter-spacing:-0.03em;color:#1a1a16;line-height:1;"><span id="profile-hyaku-count">0</span><span style="font-size:12px;color:#93897c;">/100</span></div>
+    <div style="font-size:9px;color:#93897c;font-weight:700;margin-top:5px;letter-spacing:0.05em;">百名山</div>
+  </div>
+  <div style="background:#fff;border-radius:16px;padding:15px 4px 12px;text-align:center;box-shadow:0 1px 1px rgba(26,22,14,0.03),0 2px 5px rgba(26,22,14,0.05);">
+    <div id="profile-year-count" style="font-family:'Outfit',sans-serif;font-weight:700;font-size:23px;letter-spacing:-0.03em;color:#1a1a16;line-height:1;">0</div>
+    <div style="font-size:9px;color:#93897c;font-weight:700;margin-top:5px;letter-spacing:0.05em;">今年の登頂</div>
+  </div>
+</div>
+
+<div style="background:#fff;border-radius:18px;margin:12px 20px 4px;padding:16px 18px 15px;box-shadow:0 1px 2px rgba(26,22,14,0.04),0 10px 28px -8px rgba(26,22,14,0.14);">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px;">
+    <b style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:13px;color:#1a1a16;">百名山への道</b>
+    <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;color:#1a1a16;"><span id="profile-hyaku-count2">0</span><small style="font-size:10px;color:#93897c;font-weight:600;"> / 100 座</small></span>
+  </div>
+  <div style="height:8px;background:#eae5da;border-radius:99px;overflow:hidden;">
+    <div id="profile-hyaku-bar" style="width:0%;height:100%;background:linear-gradient(90deg,#4e6535,#6e8a4a);border-radius:99px;"></div>
+  </div>
+</div>
+
+<div id="profile-next-row" style="display:none;font-size:12px;background:#fff;border-radius:14px;padding:11px 16px;margin:10px 20px 2px;box-shadow:0 1px 1px rgba(26,22,14,0.03),0 2px 5px rgba(26,22,14,0.05);color:#3a3530;">
+  🎯 次に行きたい山：<a id="profile-next-link" href="#" style="color:#4e6535;font-weight:700;text-decoration:underline;">-</a>
 </div>
 <div class="tabs">
   <div class="tab active" onclick="switchTab('plans')">📋 登山計画</div>
@@ -406,23 +432,59 @@ function updateProfileCard() {
   var favs = getFavs();
   var climbs = getClimbs();
   document.getElementById('profile-climbed-count').textContent = Object.keys(climbs).length;
-  document.getElementById('profile-fav-count').textContent = favs.length;
+
+  // 今年の登頂回数(全記録の日付から算出)
+  var yearStr = String(new Date().getFullYear());
+  var yearCount = 0;
+  Object.keys(climbs).forEach(function(id){
+    climbs[id].forEach(function(e){
+      if (e.date && String(e.date).indexOf(yearStr) === 0) yearCount++;
+    });
+  });
+  document.getElementById('profile-year-count').textContent = yearCount;
+
+  // 百名山の登頂数(mountains.jsonのcategoryと突合)
+  fetch('/data/mountains.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var hyakuIds = {};
+      data.forEach(function(m){ if (m.category === '百名山') hyakuIds[m.id] = true; });
+      var n = 0;
+      Object.keys(climbs).forEach(function(id){ if (hyakuIds[id]) n++; });
+      document.getElementById('profile-hyaku-count').textContent = n;
+      document.getElementById('profile-hyaku-count2').textContent = n;
+      document.getElementById('profile-hyaku-bar').style.width = Math.min(100, n) + '%';
+    })
+    .catch(function(){});
 
   var typeEl = document.getElementById('profile-type');
   var typeImg = document.getElementById('profile-type-img');
+  var typeBlank = document.getElementById('profile-avatar-blank');
+  var typeChip = document.getElementById('profile-type-chip');
+  var avatarWrap = document.getElementById('profile-avatar');
   try {
     var tr = JSON.parse(localStorage.getItem('ym_type_result')||'null');
     if (tr && tr.typeName && tr.typeCode) {
       typeEl.textContent = tr.typeName;
+      typeEl.style.color = '#1a1a16';
       typeImg.src = '/ogp/thumb/'+tr.typeCode.toLowerCase()+'.png';
-      typeImg.style.display = 'inline-block';
-      typeEl.parentElement.style.cursor = 'pointer';
-      typeEl.parentElement.onclick = function(){ location.href='/recommend/'; };
+      typeImg.style.display = 'block';
+      typeBlank.style.display = 'none';
+      avatarWrap.style.border = '2.5px solid #fff';
+      avatarWrap.style.background = 'linear-gradient(150deg,#c8d4b8,#dfe8d2)';
+      avatarWrap.style.boxShadow = '0 1px 1px rgba(26,22,14,0.03),0 2px 5px rgba(26,22,14,0.05)';
+      typeChip.textContent = '結果をもう一度見る →';
+      typeChip.href = '/recommend/?type=' + tr.typeCode;
     } else {
-      typeEl.textContent = '診断する';
+      typeEl.textContent = 'まだ診断していません';
+      typeEl.style.color = '#93897c';
       typeImg.style.display = 'none';
-      typeEl.parentElement.style.cursor = 'pointer';
-      typeEl.parentElement.onclick = function(){ location.href='/recommend/'; };
+      typeBlank.style.display = 'block';
+      avatarWrap.style.border = '2.5px dashed #cfc8ba';
+      avatarWrap.style.background = '#e9e5da';
+      avatarWrap.style.boxShadow = 'none';
+      typeChip.textContent = '診断してみる →';
+      typeChip.href = '/recommend/';
     }
   } catch(e) {}
 
