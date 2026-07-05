@@ -723,7 +723,7 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [boardInitMountain, setBoardInitMountain] = useState("");
   const [selected, setSelected] = useState(null);
-  const [starredMountains, setStarredMountains] = useState(() => lsGet("ym_starred", []));
+  const [starredMountains, setStarredMountains] = useState(() => lsGet("ym_favorites", []));
   // 診断結果（相性度計算用）
   const typeResult = React.useMemo(function() {
     try { return JSON.parse(localStorage.getItem("ym_type_result") || "null"); } catch(e) { return null; }
@@ -812,7 +812,7 @@ function App() {
   const toggleStar = (id) => {
     setStarredMountains(prev => {
       var next = prev.includes(id) ? prev.filter(function(x){ return x !== id; }) : prev.concat([id]);
-      lsSet("ym_starred", next);
+      lsSet("ym_favorites", next);
       // 追加時のみパーティクル発射
       if(!prev.includes(id)){
         var btn = document.querySelector('[data-star="'+id+'"]');
