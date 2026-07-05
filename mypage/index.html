@@ -99,15 +99,10 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 
 /* ===== 共通ヘッダー ===== */
 .ym-header{
-  background:linear-gradient(155deg,#243d20 0%,#344f2c 55%,#3e5e36 100%);
-  position:relative;overflow:hidden;
-  padding:10px 16px 12px;
+  background:#4e6535;
+  position:relative;
+  padding:12px 16px 13px;
   position:sticky;top:0;z-index:200;
-}
-.ym-header::before{
-  content:"";position:absolute;bottom:0;left:0;width:100%;height:52px;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 52' preserveAspectRatio='xMidYMax slice'%3E%3Cpath d='M0 52 L0 36 L70 22 L130 30 L190 12 L250 24 L310 6 L370 18 L430 4 L490 16 L550 6 L610 18 L670 8 L730 20 L790 10 L850 22 L910 12 L970 24 L1030 14 L1090 26 L1150 16 L1210 28 L1270 18 L1330 30 L1400 20 L1400 52 Z' fill='white' opacity='0.04'/%3E%3Cpath d='M0 52 L0 42 L90 32 L160 38 L230 24 L300 34 L370 18 L440 28 L510 14 L580 26 L650 12 L720 24 L790 10 L860 22 L930 8 L1000 20 L1070 6 L1140 18 L1210 4 L1280 16 L1350 6 L1400 12 L1400 52 Z' fill='white' opacity='0.06'/%3E%3C/svg%3E") no-repeat bottom/cover;
-  pointer-events:none;
 }
 .ym-header-inner{
   max-width:768px;margin:0 auto;
@@ -183,9 +178,9 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
   </div>
 </header>
 <div id="profile-head" style="display:flex;align-items:center;gap:16px;padding:22px 20px 2px;">
-  <div id="profile-avatar" style="width:60px;height:60px;border-radius:50%;background:#e9e5da;border:2.5px dashed #cfc8ba;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
+  <div id="profile-avatar" style="width:88px;height:88px;border-radius:50%;background:#e9e5da;border:2.5px dashed #cfc8ba;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
     <img id="profile-type-img" alt="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:50%;" />
-    <svg id="profile-avatar-blank" width="32" height="39" viewBox="0 0 100 120" style="color:#7a8a68;">
+    <svg id="profile-avatar-blank" width="46" height="55" viewBox="0 0 100 120" style="color:#7a8a68;">
       <path d="M78,92 Q97,87 91,66 Q90,79 77,83 Z" fill="currentColor"/>
       <path d="M50,112 C23,112 12,89 17,66 C20,47 33,33 50,33 C67,33 80,47 83,66 C88,89 77,112 50,112 Z" fill="currentColor"/>
       <circle cx="50" cy="29" r="22" fill="currentColor"/>
@@ -215,19 +210,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
   </div>
 </div>
 
-<div style="background:#fff;border-radius:18px;margin:12px 20px 4px;padding:16px 18px 15px;box-shadow:0 1px 2px rgba(26,22,14,0.04),0 10px 28px -8px rgba(26,22,14,0.14);">
-  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px;">
-    <b style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:13px;color:#1a1a16;">百名山への道</b>
-    <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;color:#1a1a16;"><span id="profile-hyaku-count2">0</span><small style="font-size:10px;color:#93897c;font-weight:600;"> / 100 座</small></span>
-  </div>
-  <div style="height:8px;background:#eae5da;border-radius:99px;overflow:hidden;">
-    <div id="profile-hyaku-bar" style="width:0%;height:100%;background:linear-gradient(90deg,#4e6535,#6e8a4a);border-radius:99px;"></div>
-  </div>
-</div>
 
-<div id="profile-next-row" style="display:none;font-size:12px;background:#fff;border-radius:14px;padding:11px 16px;margin:10px 20px 2px;box-shadow:0 1px 1px rgba(26,22,14,0.03),0 2px 5px rgba(26,22,14,0.05);color:#3a3530;">
-  🎯 次に行きたい山：<a id="profile-next-link" href="#" style="color:#4e6535;font-weight:700;text-decoration:underline;">-</a>
-</div>
 <div class="tabs">
   <div class="tab active" onclick="switchTab('plans')">📋 登山計画</div>
   <div class="tab" onclick="switchTab('favorites')">⭐ 気になる山</div>
@@ -452,8 +435,6 @@ function updateProfileCard() {
       var n = 0;
       Object.keys(climbs).forEach(function(id){ if (hyakuIds[id]) n++; });
       document.getElementById('profile-hyaku-count').textContent = n;
-      document.getElementById('profile-hyaku-count2').textContent = n;
-      document.getElementById('profile-hyaku-bar').style.width = Math.min(100, n) + '%';
     })
     .catch(function(){});
 
@@ -488,18 +469,6 @@ function updateProfileCard() {
     }
   } catch(e) {}
 
-  var nextRow = document.getElementById('profile-next-row');
-  if (favs.length > 0) {
-    var nextId = favs[0];
-    fetchNames(function(nameMap){
-      var nextLink = document.getElementById('profile-next-link');
-      nextLink.textContent = nameMap[nextId] || nextId;
-      nextLink.href = '/mountains/'+nextId+'/';
-      nextRow.style.display = 'block';
-    });
-  } else {
-    nextRow.style.display = 'none';
-  }
 }
 
 // ===== タブ =====
@@ -1024,57 +993,28 @@ var PROFILES = {
 };
 
 // アースカラー統一（青系・緑系・茶系・赤系・グレー系のみ）
-var COLORS = {
-  fuji:      {sky1:'#cce4f8',sky2:'#a4c4e4',mt:'#d8eaf8',acc:'#4880c0',txt:'#2a5080', rim:'#3a5878'},
-  yari:      {sky1:'#d0d8e4',sky2:'#b0bcd0',mt:'#c0ccd8',acc:'#486080',txt:'#283850', rim:'#344060'},
-  tanigawa:  {sky1:'#c8d4e8',sky2:'#a4b4d0',mt:'#b4c0d8',acc:'#3858a0',txt:'#243068', rim:'#2a3870'},
-  tsurugi:   {sky1:'#ccccd8',sky2:'#acacb8',mt:'#bcbcc8',acc:'#505060',txt:'#282830', rim:'#383840'},
-  takao:     {sky1:'#c4e4c4',sky2:'#98c898',mt:'#78b478',acc:'#306830',txt:'#183818', rim:'#245028'},
-  kumotori:  {sky1:'#c8d4e4',sky2:'#a4b4d0',mt:'#98aec8',acc:'#304888',txt:'#182858', rim:'#203268'},
-  oyama:     {sky1:'#ddd0c0',sky2:'#c4b0a0',mt:'#b49080',acc:'#785040',txt:'#402820', rim:'#583828'},
-  tsukuba:   {sky1:'#d0cce0',sky2:'#b8b0d0',mt:'#a8a4c8',acc:'#504888',txt:'#302858', rim:'#383068'},
-  nantaisan: {sky1:'#e8d4d0',sky2:'#d0b4ac',mt:'#c09090',acc:'#904040',txt:'#481818', rim:'#682828'},
-  kintoki:   {sky1:'#e8d8c0',sky2:'#d4bc9c',mt:'#c09870',acc:'#906030',txt:'#482810', rim:'#684018'},
-  tonosaki:  {sky1:'#c4dcd0',sky2:'#9cc4b4',mt:'#78a890',acc:'#286050',txt:'#183830', rim:'#1e4838'},
-  bonori:    {sky1:'#cce0c8',sky2:'#a4c4a0',mt:'#84ac80',acc:'#306030',txt:'#183018', rim:'#224820'},
-  _tokyo:    {sky1:'#c4e4c4',sky2:'#98c898',mt:'#78b478',acc:'#306830',txt:'#183818', rim:'#245028'},
-  _kanagawa: {sky1:'#c4dce8',sky2:'#98c0d8',mt:'#74a8c8',acc:'#285888',txt:'#183858', rim:'#1e4068'},
-  _saitama:  {sky1:'#e0d8c4',sky2:'#c8c0a0',mt:'#b0a070',acc:'#706030',txt:'#382818', rim:'#504020'},
-  _yamanashi:{sky1:'#d0d0e0',sky2:'#b4b4cc',mt:'#9898c0',acc:'#484880',txt:'#282858', rim:'#303060'},
-  _nagano:   {sky1:'#c8d0e4',sky2:'#a4b0d4',mt:'#7888c0',acc:'#284098',txt:'#182060', rim:'#1e2878'},
-  _gunma:    {sky1:'#e0d8c4',sky2:'#ccb89c',mt:'#b89870',acc:'#806040',txt:'#402818', rim:'#604028'},
-  _tochigi:  {sky1:'#e4d0d4',sky2:'#d0b0b4',mt:'#c09098',acc:'#904858',txt:'#481828', rim:'#683038'},
-  _fukushima:{sky1:'#c8dcc8',sky2:'#a0c0a0',mt:'#78a478',acc:'#306030',txt:'#183018', rim:'#224820'},
-  _niigata:  {sky1:'#c4d8e4',sky2:'#98b8d0',mt:'#7498bc',acc:'#285880',txt:'#183858', rim:'#1e3860'},
-  _shizuoka: {sky1:'#c4e0d4',sky2:'#98c8b0',mt:'#68a88c',acc:'#246858',txt:'#143828', rim:'#1c5040'},
-  _default:  {sky1:'#ccd8d4',sky2:'#a4c0b8',mt:'#80a898',acc:'#306058',txt:'#183028', rim:'#224840'},
-};
+var BADGE_PALETTES = [
+  // ベージュ
+  {sky1:'#f1eadb', sky2:'#e2d4b8', mt:'#cdbb96', acc:'#9a8258', txt:'#574733'},
+  // 淡い緑（黄緑系）
+  {sky1:'#edf2da', sky2:'#dbe7ba', mt:'#b9cf8b', acc:'#7d9a48', txt:'#45571f'},
+  // 淡い緑（濃い緑系）
+  {sky1:'#e3ebe0', sky2:'#cbdcc6', mt:'#9cbb95', acc:'#5d7f56', txt:'#2f4529'},
+  // 茶色
+  {sky1:'#ede2d6', sky2:'#dcc8b3', mt:'#b99270', acc:'#8a6544', txt:'#4c3521'}
+];
 
 function getColor(id, area, category){
-  var base = COLORS[id] ? COLORS[id] : (function(){
-    var a=area||'', k='_default';
-    if(a.indexOf('東京')>-1)k='_tokyo';
-    else if(a.indexOf('神奈川')>-1)k='_kanagawa';
-    else if(a.indexOf('埼玉')>-1)k='_saitama';
-    else if(a.indexOf('山梨')>-1)k='_yamanashi';
-    else if(a.indexOf('長野')>-1)k='_nagano';
-    else if(a.indexOf('群馬')>-1)k='_gunma';
-    else if(a.indexOf('栃木')>-1)k='_tochigi';
-    else if(a.indexOf('福島')>-1)k='_fukushima';
-    else if(a.indexOf('新潟')>-1)k='_niigata';
-    else if(a.indexOf('静岡')>-1)k='_shizuoka';
-    return COLORS[k]||COLORS._default;
-  })();
-  var c = Object.assign({}, base);
+  var s = String(id||'') + String(area||'');
+  var h = 0;
+  for (var i = 0; i < s.length; i++){ h = ((h * 31) + s.charCodeAt(i)) >>> 0; }
+  var c = Object.assign({}, BADGE_PALETTES[h % 4]);
   if(category==='百名山'){
     c.rimMain='#c89020'; c.rimSub='#e8b840';
     c.centerLabel='百名山'; c.centerColor='#ffffff';
-  } else if(category==='二百名山'){
-    c.rimMain='#909090'; c.rimSub='#c0c0c0';
-    c.centerLabel='二百名山'; c.centerColor='#ffffff';
   } else {
-    c.rimMain='#5a8038'; c.rimSub='#7aa858';
-    c.centerLabel='人気の山'; c.centerColor='#ffffff';
+    c.rimMain=c.acc; c.rimSub=c.acc;
+    c.centerLabel=''; c.centerColor='#ffffff';
   }
   return c;
 }
@@ -1146,27 +1086,27 @@ function makeBadgeSVG(name, date, id, c, size, area, elevation){
   var labelHtml=c.centerLabel
     ?'<rect x="'+tabX+'" y="'+tabY+'" width="'+tabW+'" height="'+tabH+'" rx="'+(tabH/2)+'" fill="'+c.rimMain+'"/>'
       +'<text x="'+(tabX+tabW/2)+'" y="'+(tabY+tabH/2+size*0.005)+'" text-anchor="middle" dominant-baseline="middle"'
-      +' font-family="\'Noto Serif JP\',serif" font-weight="700" font-size="'+(size*0.072)+'"'
+      +' font-family="\'Zen Kaku Gothic New\',sans-serif" font-weight="700" font-size="'+(size*0.072)+'" letter-spacing="0.3"'
       +' fill="'+c.centerColor+'">'+c.centerLabel+'</text>'
     :'';
 
   // 山名（上部）
   var nameHtml='<text x="'+(contX+contW*0.06)+'" y="'+(contY+size*0.155)+'" text-anchor="start" dominant-baseline="middle"'
-    +' font-family="\'Noto Serif JP\',serif" font-weight="900" font-size="'+fs+'"'
+    +' font-family="\'Zen Kaku Gothic New\',sans-serif" font-weight="900" font-size="'+fs+'" letter-spacing="-0.2"'
     +' fill="'+c.txt+'" paint-order="stroke" stroke="rgba(255,255,255,0.92)" stroke-width="3" stroke-linejoin="round">'+name+'</text>';
 
   // エリア・標高（シルエット下）
   var metaStr=[area,elevation?(elevation+'m'):''].filter(Boolean).join(' / ');
   var metaHtml=metaStr
     ?'<text x="'+(contX+contW*0.06)+'" y="'+(contY+contH*0.855)+'" text-anchor="start" dominant-baseline="middle"'
-      +' font-family="\'Noto Serif JP\',serif" font-size="'+(size*0.072)+'" font-weight="700"'
+      +' font-family="\'Outfit\',\'Zen Kaku Gothic New\',sans-serif" font-size="'+(size*0.070)+'" font-weight="700" letter-spacing="0.2"'
       +' fill="'+c.txt+'" opacity="0.85">'+metaStr+'</text>'
     :'';
 
   // 日付（最下部・控えめ）
   var dateHtml=date
     ?'<text x="'+(contX+contW*0.06)+'" y="'+(contY+contH*0.955)+'" text-anchor="start" dominant-baseline="middle"'
-      +' font-family="\'Playfair Display\',Georgia,serif" font-size="'+(size*0.062)+'" font-weight="500" letter-spacing="0.5"'
+      +' font-family="\'Outfit\',sans-serif" font-size="'+(size*0.062)+'" font-weight="700" letter-spacing="0.6"'
       +' fill="'+c.txt+'" opacity="0.55">'+date+'</text>'
     :'';
 
