@@ -54,7 +54,9 @@
     "address": "神奈川県秦野市堀山下",
     "gmapUrl": "https://google.com/maps/search/大倉駐車場/@35.4479,139.1583,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.4479,139.1583&q=大倉駐車場",
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.navitime.co.jp/bus/diagram/timelist?departure=00127899&arrival=00127910&line=00030052"
+    ],
     "gearLinks": [
       {
         "id": "boots",
@@ -203,7 +205,9 @@
     "address": "静岡県富士宮市粟倉地先",
     "gmapUrl": "https://google.com/maps/search/富士宮口五合目/@35.3606,138.7274,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.3606,138.7274&q=富士宮口五合目",
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.fujikyubus.co.jp/mycar/timetablefares/"
+    ],
     "gearLinks": [
       {
         "id": "boots",
@@ -646,7 +650,9 @@
     "address": "静岡県伊豆市菅引",
     "gmapUrl": "https://google.com/maps/search/天城高原ゴルフ場/@34.8589,138.9664,16z",
     "amapUrl": "https://maps.apple.com/?ll=34.8589,138.9664&q=天城高原ゴルフ場",
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.navitime.co.jp/bus/diagram/timelist?departure=00307097&arrival=00307402&line=00055624"
+    ],
     "gearLinks": [
       {
         "id": "boots",
@@ -2103,7 +2109,9 @@
     "address": "長野県茅野市泉野",
     "gmapUrl": "https://google.com/maps/search/美濃戸口/@35.9706,138.3711,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.9706,138.3711&q=美濃戸口",
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.alpico.co.jp/traffic/local/suwa/"
+    ],
     "gearLinks": [
       {
         "id": "boots",
@@ -3157,7 +3165,9 @@
     "address": "群馬県利根郡片品村東小川",
     "gmapUrl": "https://google.com/maps/search/丸沼高原ロープウェイ/@36.7976,139.3673,16z",
     "amapUrl": "https://maps.apple.com/?ll=36.7976,139.3673&q=丸沼高原ロープウェイ",
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://kan-etsu.net/pages/43/"
+    ],
     "gearLinks": [
       {
         "id": "boots",
@@ -5198,7 +5208,7 @@
     "coeffMin": 20,
     "coeffMax": 34,
     "daytrip": true,
-    "trainAccess": "新宿駅→会津高原尾瀬口駅→会津バス→滝沢登山口（夏季）",
+    "trainAccess": "新宿駅→会津田島駅→会津バス→滝沢登山口（夏季）",
     "driveOfuna": 295,
     "driveShinjuku": 265,
     "driveYokohama": 270,
@@ -5231,8 +5241,8 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
+      "s-hard",
       "s-hard"
     ],
     "calLegend": [
@@ -5245,7 +5255,9 @@
     "address": "福島県南会津郡檜枝岐村",
     "gmapUrl": "https://google.com/maps/search/登山口（滝沢登山口）/@37.2242,139.3619,16z",
     "amapUrl": "https://maps.apple.com/?ll=37.2242,139.3619&q=登山口（滝沢登山口）",
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.aizubus.com/rosen/jikokuhyou"
+    ],
     "gearLinks": [
       {
         "id": "boots",
@@ -5308,8 +5320,8 @@
       20,
       34
     ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "5月〜6月・11月",
+    "seasonNoGear": "7月〜9月",
+    "season6Crampons": "5月〜6月・10月",
     "routes": [
       {
         "name": "滝沢登山口〜山頂往復",
@@ -6009,7 +6021,7 @@
     "gmapUrl": "https://google.com/maps/search/大山ケーブル駅/@35.4394,139.2254,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.4394,139.2254&q=大山ケーブル駅",
     "busScheduleLinks": [
-      "https://www.kanachu.co.jp/dia/diagram/start=CS000097_1&noriba=0"
+      "https://www.navitime.co.jp/bus/diagram/timelist?departure=00128127&arrival=00128162&line=00029675"
     ],
     "gearLinks": [
       {
@@ -6161,7 +6173,7 @@
     "gmapUrl": "https://google.com/maps/search/大倉（バス停）/@35.4576,139.1511,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.4576,139.1511&q=大倉（バス停）",
     "busScheduleLinks": [
-      "https://www.kanachu.co.jp/dia/diagram/start=CS000519_1&noriba=0"
+      "https://www.navitime.co.jp/bus/diagram/timelist?departure=00127899&arrival=00127910&line=00030052"
     ],
     "gearLinks": [
       {
@@ -6307,7 +6319,7 @@
     "gmapUrl": "https://google.com/maps/search/大倉+or+姫次/@35.4932,139.1597,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.4932,139.1597&q=大倉 or 姫次",
     "busScheduleLinks": [
-      "https://www.kanachu.co.jp/dia/diagram/start=CS000519_1&noriba=0"
+      "https://www.navitime.co.jp/bus/diagram/timelist?departure=00127899&arrival=00127910&line=00030052"
     ],
     "gearLinks": [
       {
@@ -6452,7 +6464,7 @@
     "gmapUrl": "https://google.com/maps/search/陣馬登山口（和田）/@35.6484,139.1693,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.6484,139.1693&q=陣馬登山口（和田）",
     "busScheduleLinks": [
-      "https://www.kanachu.co.jp/dia/diagram/start=CS000411_1&noriba=0"
+      "https://transfer.navitime.biz/bus-navi/pc/transfer/DepArrTimeList?snode=00020348&gnode=00042341"
     ],
     "gearLinks": [
       {
@@ -6606,7 +6618,7 @@
     "gmapUrl": "https://google.com/maps/search/金時登山口/@35.2514,139.0019,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.2514,139.0019&q=金時登山口",
     "busScheduleLinks": [
-      "https://www.hakonenavi.jp/hakone-tozanbus/"
+      "https://www.hakone-tozanbus.co.jp/"
     ],
     "gearLinks": [
       {
@@ -8947,7 +8959,9 @@
     "address": "静岡県富士宮市麓",
     "gmapUrl": "https://google.com/maps/search/毛無山登山口（朝霧高原）/@35.4536,138.5008,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.4536,138.5008&q=毛無山登山口（朝霧高原）",
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.navitime.co.jp/bus/diagram/timelist?departure=00026166&arrival=00304895&line=00055346"
+    ],
     "gearLinks": [
       {
         "id": "boots",
@@ -10334,7 +10348,9 @@
     "address": "福島県福島市土湯温泉",
     "gmapUrl": "https://google.com/maps/search/浄土平/@37.7293,140.2486,16z",
     "amapUrl": "https://maps.apple.com/?ll=37.7293,140.2486&q=浄土平",
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.yamakobus.jp/busroute5/yzs1/"
+    ],
     "gearLinks": [
       {
         "id": "boots",
@@ -12375,7 +12391,9 @@
     "address": "長野県駒ヶ根市赤穂",
     "gmapUrl": "https://google.com/maps/search/駒ヶ根高原（池山林道終点）/@35.6472,137.7967,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.6472,137.7967&q=駒ヶ根高原（池山林道終点）",
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.chuo-alps.com/access/bus/"
+    ],
     "gearLinks": [
       {
         "id": "boots",
@@ -14228,7 +14246,9 @@
     "address": "山梨県山梨市三富川浦",
     "gmapUrl": "https://google.com/maps/search/道の駅みとみ（雁坂トンネル料金所付近）/@35.9139,138.7031,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.9139,138.7031&q=道の駅みとみ（雁坂トンネル料金所付近）",
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.city.yamanashi.yamanashi.jp/site/city-bus/9090.html"
+    ],
     "gearLinks": [
       {
         "id": "boots",
@@ -17197,7 +17217,7 @@
       "https://www.minamiechigo.co.jp/"
     ],
     "busScheduleLinks": [
-      "https://www.minamiechigo.co.jp/"
+      "https://www.minamiechigo.co.jp/rosen/"
     ],
     "warnBanner": null,
     "nearby": [],
@@ -17857,7 +17877,7 @@
       "https://www.nishitokyo.co.jp/"
     ],
     "busScheduleLinks": [
-      "https://www.nishitokyo.co.jp/"
+      "https://www.nisitokyobus.co.jp/rosen/noriba/okutama.html"
     ],
     "warnBanner": null,
     "nearby": [],
@@ -17997,7 +18017,7 @@
       "https://www.nishitokyo.co.jp/"
     ],
     "busScheduleLinks": [
-      "https://www.nishitokyo.co.jp/"
+      "https://www.nisitokyobus.co.jp/rosen/noriba/okutama.html"
     ],
     "warnBanner": null,
     "nearby": [],
@@ -18145,7 +18165,9 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=新宿&to=相模湖駅&type=1"
     ],
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.navitime.co.jp/bus/diagram/timelist?departure=00128918&arrival=00128910&line=00029910"
+    ],
     "warnBanner": null,
     "nearby": [],
     "gearLinks": [],
@@ -18389,7 +18411,9 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=%E6%96%B0%E5%AE%BF&to=%E5%B1%B1%E5%8C%97%E9%A7%85&type=1"
     ],
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.town.yamakita.kanagawa.jp/0000003012.html"
+    ],
     "warnBanner": null,
     "nearby": [],
     "gearLinks": [],
@@ -18631,7 +18655,9 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=新宿&to=湯河原駅&type=1"
     ],
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.hakone-tozanbus.co.jp/"
+    ],
     "warnBanner": null,
     "nearby": [],
     "gearLinks": [],
@@ -18949,7 +18975,9 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E4%B8%8A%E9%87%8E%E5%8E%9F%E9%A7%85&type=1"
     ],
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.fujikyubus.co.jp/regular/"
+    ],
     "warnBanner": null,
     "nearby": [],
     "gearLinks": [],
@@ -19274,7 +19302,9 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E5%BE%A1%E5%B6%BD%E9%A7%85&type=1"
     ],
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.nisitokyobus.co.jp/rosen/noriba/okutama.html"
+    ],
     "warnBanner": null,
     "nearby": [],
     "gearLinks": [],
@@ -19354,7 +19384,9 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E6%AD%A6%E8%94%B5%E4%BA%94%E6%97%A5%E5%B8%82%E9%A7%85&type=1"
     ],
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.nisitokyobus.co.jp/rosen/pocket.html"
+    ],
     "warnBanner": null,
     "nearby": [],
     "gearLinks": [],
@@ -19514,7 +19546,9 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E6%B2%B3%E5%8F%A3%E6%B9%96%E9%A7%85&type=1"
     ],
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.fujikyubus.co.jp/regular/"
+    ],
     "warnBanner": null,
     "nearby": [],
     "gearLinks": [],
@@ -19595,7 +19629,9 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E6%B2%B3%E5%8F%A3%E6%B9%96%E9%A7%85&type=1"
     ],
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.fujikyubus.co.jp/regular/"
+    ],
     "warnBanner": null,
     "nearby": [],
     "gearLinks": [],
@@ -19994,7 +20030,9 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A7%85&type=1"
     ],
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.kantobus.co.jp/route/"
+    ],
     "warnBanner": null,
     "nearby": [],
     "gearLinks": [],
@@ -20076,7 +20114,9 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E6%B2%B3%E5%8F%A3%E6%B9%96%E9%A7%85&type=1"
     ],
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.fujikyubus.co.jp/regular/"
+    ],
     "gmapUrl": "https://www.google.com/maps/search/%E4%B8%89%E3%81%A4%E5%B3%A0%E7%99%BB%E5%B1%B1%E5%8F%A3%EF%BC%88%E6%B2%B3%E5%8F%A3%E6%B9%96%E9%A7%85%E3%83%90%E3%82%B915%E5%88%86%EF%BC%89/@35.5283,138.7631,15z",
     "vibes": [
       "view",
@@ -20286,7 +20326,9 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E9%80%97%E5%AD%90%E9%A7%85&type=1"
     ],
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://timetablenavi.keikyu-bus.co.jp/dia/timetable/web/51395/"
+    ],
     "gmapUrl": "https://www.google.com/maps/search/%E5%A4%A7%E6%A5%A0%E5%B1%B1%E7%99%BB%E5%B1%B1%E5%8F%A3%EF%BC%88%E9%80%97%E5%AD%90%E9%A7%85%E3%83%90%E3%82%B920%E5%88%86%EF%BC%89/@35.2503,139.6397,15z",
     "vibes": [
       "view",
@@ -20366,7 +20408,9 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=新宿&to=%E5%B0%8F%E5%B7%9D%E7%94%BA%E9%A7%85&type=1"
     ],
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.navitime.co.jp/bus/diagram/timelist?departure=00062010&arrival=00062063&line=00017851"
+    ],
     "gmapUrl": "https://www.google.com/maps/search/%E5%AE%98%E3%83%8E%E5%80%89%E5%B1%B1%E7%99%BB%E5%B1%B1%E5%8F%A3%EF%BC%88%E3%83%91%E3%83%88%E3%83%AA%E3%82%A2%E3%81%8A%E3%81%8C%E3%82%8F%E3%81%8B%E3%82%89%E5%BE%92%E6%AD%A920%E5%88%86%EF%BC%89/@36.0578,139.2614,15z",
     "vibes": [
       "view",
