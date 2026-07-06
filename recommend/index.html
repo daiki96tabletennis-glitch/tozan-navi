@@ -602,8 +602,8 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 .sw-items{display:flex;flex-direction:column;gap:6px;}
 .sw-item{font-size:12px;color:#3a3028;display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
 .sw-item-icon{flex-shrink:0;font-size:13px;margin-top:1px;}
-#banner-type-preview > div{padding:2px !important;}
-#banner-type-preview img{width:18px !important;}
+#banner-type-preview > div{padding:4px !important;}
+#banner-type-preview img{width:42px !important;}
 </style>
 <script>
 
@@ -665,7 +665,7 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   <div style="padding:4px 16px 8px;">
     <a href="/type/" style="display:block;border-radius:16px;overflow:hidden;position:relative;-webkit-tap-highlight-color:transparent;text-decoration:none;box-shadow:0 1px 2px rgba(26,22,14,0.04),0 10px 28px -8px rgba(26,22,14,0.14);">
       <img src="/recommend/images/type-banner-bg.jpg" alt="登山タイプ診断・16タイプ。あなたはどの山タイプ？12問・自分のスタイルを知ろう。約2分・無料" style="width:100%;display:block;">
-      <div id="banner-type-preview" style="position:absolute;left:49%;top:24%;width:39%;display:flex;flex-wrap:wrap;"></div>
+      <div id="banner-type-preview" style="position:absolute;left:44%;top:20%;width:53%;display:flex;flex-wrap:wrap;"></div>
     </a>
   </div>
   <!-- 山選び診断バナー -->
@@ -1745,7 +1745,7 @@ document.addEventListener('DOMContentLoaded', function(){
       (function() {
         var preview = document.getElementById('banner-type-preview');
         if (!preview) return;
-        var allCodes = Object.keys(MINI_SVGS);
+        var allCodes = Object.keys(MINI_SVGS).slice(0, 8);
         // シャッフルして先頭6体を表示
         var html = '';
         allCodes.forEach(function(code) {
