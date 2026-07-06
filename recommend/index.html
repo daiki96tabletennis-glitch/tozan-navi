@@ -602,6 +602,8 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 .sw-items{display:flex;flex-direction:column;gap:6px;}
 .sw-item{font-size:12px;color:#3a3028;display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
 .sw-item-icon{flex-shrink:0;font-size:13px;margin-top:1px;}
+#banner-type-preview > div{padding:2px !important;}
+#banner-type-preview img{width:18px !important;}
 </style>
 <script>
 
@@ -661,22 +663,9 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   <div id="prev-result-banner" style="display:none;padding:0 16px 10px;"></div>
   <!-- タイプ診断バナー -->
   <div style="padding:4px 16px 8px;">
-    <a href="/type/" style="display:block;background:linear-gradient(130deg,#2a3e2a 0%,#3a5830 50%,#4e6535 100%);border-radius:16px;padding:16px 18px;cursor:pointer;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent;text-decoration:none;">
-      <svg style="position:absolute;right:-6px;bottom:-6px;opacity:0.13;" width="140" height="110" viewBox="0 0 140 110" fill="none">
-        <polygon points="70,110 105,25 140,70 140,110" fill="white"/>
-        <polygon points="95,110 120,45 140,75 140,110" fill="white"/>
-        <polygon points="35,110 65,35 95,110" fill="white"/>
-        <polygon points="0,110 28,55 56,110" fill="white"/>
-      </svg>
-      <div id="banner-type-preview" style="display:flex;gap:3px;margin-bottom:10px;min-height:48px;flex-wrap:nowrap;"></div>
-      <div style="font-size:10px;font-weight:700;color:rgba(180,240,140,0.85);letter-spacing:0.08em;margin-bottom:4px;">&#x1F9ED; 登山タイプ診断 · 16タイプ</div>
-      <div style="font-size:18px;font-weight:900;color:white;line-height:1.25;margin-bottom:6px;">あなたはどの山タイプ？<br><span style="font-size:13px;font-weight:600;opacity:0.8;">12問・自分のスタイルを知ろう</span></div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;">
-        <span style="font-size:10px;font-weight:600;background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:20px;padding:3px 9px;border:0.5px solid rgba(255,255,255,0.25);">&#x23F1; 12問・約2分</span>
-        <span style="font-size:10px;font-weight:600;background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:20px;padding:3px 9px;border:0.5px solid rgba(255,255,255,0.25);">&#x1F3D4; 16タイプ判定</span>
-        <span style="font-size:10px;font-weight:600;background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:20px;padding:3px 9px;border:0.5px solid rgba(255,255,255,0.25);">無料</span>
-      </div>
-      <div style="position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:26px;color:rgba(255,255,255,0.5);font-weight:300;">&#8250;</div>
+    <a href="/type/" style="display:block;border-radius:16px;overflow:hidden;position:relative;-webkit-tap-highlight-color:transparent;text-decoration:none;box-shadow:0 1px 2px rgba(26,22,14,0.04),0 10px 28px -8px rgba(26,22,14,0.14);">
+      <img src="/recommend/images/type-banner-bg.jpg" alt="登山タイプ診断・16タイプ。あなたはどの山タイプ？12問・自分のスタイルを知ろう。約2分・無料" style="width:100%;display:block;">
+      <div id="banner-type-preview" style="position:absolute;left:49%;top:24%;width:39%;display:flex;flex-wrap:wrap;"></div>
     </a>
   </div>
   <!-- 山選び診断バナー -->
@@ -762,8 +751,8 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 <!-- Q5: 前日の過ごし方 →軸3(P/F) -->
 <div id="q5" class="step">
   <div class="prog-wrap">
-    <div class="prog-top"><span>質問 5 / 9</span><span>56%</span></div>
-    <div class="prog-bar"><div class="prog-fill" style="width:56%"></div></div>
+    <div class="prog-top"><span>質問 5 / 12</span><span>42%</span></div>
+    <div class="prog-bar"><div class="prog-fill" style="width:42%"></div></div>
   </div>
   <div class="q-title"><span class="q-emoji">🌙</span>登山前日の夜、何してる？</div>
   <div class="choices">
@@ -777,8 +766,8 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 <!-- Q6: 山小屋に着いたら →軸3(P/F) -->
 <div id="q6" class="step">
   <div class="prog-wrap">
-    <div class="prog-top"><span>質問 6 / 9</span><span>67%</span></div>
-    <div class="prog-bar"><div class="prog-fill" style="width:67%"></div></div>
+    <div class="prog-top"><span>質問 6 / 12</span><span>50%</span></div>
+    <div class="prog-bar"><div class="prog-fill" style="width:50%"></div></div>
   </div>
   <div class="q-title"><span class="q-emoji">🏠</span>山小屋に着いたら、まず何をする？</div>
   <div class="choices">
@@ -804,8 +793,6 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
 </div>
 
-<!-- Q8: 体力・どのくらいの山 -->
-
 <!-- Q8: SL軸2問目 -->
 <div id="q8" class="step">
   <div class="prog-wrap">
@@ -821,7 +808,7 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
 </div>
 
-<!-- Q9: AV軸3問目 -->
+<!-- Q9: 電子機器の使い方 →軸1(A/V)3問目 -->
 <div id="q9" class="step">
   <div class="prog-wrap">
     <div class="prog-top"><span>質問 9 / 12</span><span>75%</span></div>
@@ -836,7 +823,22 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
 </div>
 
-<!-- Q11: CH軸3問目 -->
+<!-- Q10: 体力・どのくらいの山に行きたいか -->
+<div id="q10" class="step">
+  <div class="prog-wrap">
+    <div class="prog-top"><span>質問 10 / 12</span><span>83%</span></div>
+    <div class="prog-bar"><div class="prog-fill" style="width:83%"></div></div>
+  </div>
+  <div class="q-title"><span class="q-emoji">💪</span>どのくらいの山に行きたい？</div>
+  <div class="choices">
+    <div class="choice" data-key="coeff" data-val="14"><span class="ch-icon">🌱</span><div><div class="ch-main">ゆるハイク・整備された道</div><div class="ch-sub">ケーブルカーもOK</div></div></div>
+    <div class="choice" data-key="coeff" data-val="22"><span class="ch-icon">👟</span><div><div class="ch-main">3〜4時間の初心者向け</div><div class="ch-sub">普通に歩ける</div></div></div>
+    <div class="choice" data-key="coeff" data-val="35"><span class="ch-icon">🥾</span><div><div class="ch-main">5〜7時間の中級コース</div><div class="ch-sub">ある程度の体力あり</div></div></div>
+    <div class="choice" data-key="coeff" data-val="60"><span class="ch-icon">⛰</span><div><div class="ch-main">急登・岩場もある上級コース</div><div class="ch-sub">体力・技術に自信あり</div></div></div>
+  </div>
+</div>
+
+<!-- Q11: 次に登りたい山のイメージ →軸2(C/H)3問目 -->
 <div id="q11" class="step">
   <div class="prog-wrap">
     <div class="prog-top"><span>質問 11 / 12</span><span>92%</span></div>
@@ -851,21 +853,7 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
 </div>
 
-<div id="q10" class="step">
-  <div class="prog-wrap">
-    <div class="prog-top"><span>質問 11 / 12</span><span>92%</span></div>
-    <div class="prog-bar"><div class="prog-fill" style="width:92%"></div></div>
-  </div>
-  <div class="q-title"><span class="q-emoji">💪</span>どのくらいの山に行きたい？</div>
-  <div class="choices">
-    <div class="choice" data-key="coeff" data-val="14"><span class="ch-icon">🌱</span><div><div class="ch-main">ゆるハイク・整備された道</div><div class="ch-sub">ケーブルカーもOK</div></div></div>
-    <div class="choice" data-key="coeff" data-val="22"><span class="ch-icon">👟</span><div><div class="ch-main">3〜4時間の初心者向け</div><div class="ch-sub">普通に歩ける</div></div></div>
-    <div class="choice" data-key="coeff" data-val="35"><span class="ch-icon">🥾</span><div><div class="ch-main">5〜7時間の中級コース</div><div class="ch-sub">ある程度の体力あり</div></div></div>
-    <div class="choice" data-key="coeff" data-val="60"><span class="ch-icon">⛰</span><div><div class="ch-main">急登・岩場もある上級コース</div><div class="ch-sub">体力・技術に自信あり</div></div></div>
-  </div>
-</div>
-
-<!-- Q9: 出発地 -->
+<!-- Q12: 出発地 -->
 <div id="q12" class="step">
   <div class="prog-wrap">
     <div class="prog-top"><span>質問 12 / 12</span><span>100%</span></div>
