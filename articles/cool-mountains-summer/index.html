@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://tozan-navi.com/articles/cool-mountains-summer/">
 <meta property="og:site_name" content="Yamatch">
 <link rel="canonical" href="https://tozan-navi.com/articles/cool-mountains-summer/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"夏でも涼しい！日帰り登山6選","description":"暑い夏でも涼しく歩ける日帰り登山スポットを6つ厳選。沢沿い・ブナ林・標高1000m超えで涼を感じられる山を紹介。","author":{"@type":"Person","name":"Yamatch編集部"},"publisher":{"@type":"Organization","name":"Yamatch","url":"https://tozan-navi.com"},"dateModified":"2026-06-21","url":"https://tozan-navi.com/articles/cool-mountains-summer/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"夏でも涼しい！日帰り登山6選","description":"暑い夏でも涼しく歩ける日帰り登山スポットを6つ厳選。沢沿い・ブナ林・標高1000m超えで涼を感じられる山を紹介。","author":{"@type":"Person","name":"Yamatch編集部"},"publisher":{"@type":"Organization","name":"Yamatch","url":"https://tozan-navi.com"},"dateModified":"2026-07-09","url":"https://tozan-navi.com/articles/cool-mountains-summer/"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"夏でも涼しい！日帰り登山6選","numberOfItems":6,"itemListElement":[{"@type":"ListItem","position":1,"name":"日和田山","url":"https://tozan-navi.com/mountains/hiwadayama/"},{"@type":"ListItem","position":2,"name":"大山（丹沢）","url":"https://tozan-navi.com/mountains/oyama/"},{"@type":"ListItem","position":3,"name":"本仁田山","url":"https://tozan-navi.com/mountains/honitayama/"},{"@type":"ListItem","position":4,"name":"川苔山","url":"https://tozan-navi.com/mountains/kawanoriyama/"},{"@type":"ListItem","position":5,"name":"三頭山","url":"https://tozan-navi.com/mountains/mitosaan/"},{"@type":"ListItem","position":6,"name":"天城山","url":"https://tozan-navi.com/mountains/amagi/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"夏に涼しく登山できる山の条件は？","acceptedAnswer":{"@type":"Answer","text":"標高1000m以上、沢沿いや滝のあるコース、ブナなどの樹林帯で直射日光を避けられることの3条件がポイントです。標高が100m上がると気温は約0.6度下がるため、1000m級の山では平地より5〜6度涼しく感じられます。"}},{"@type":"Question","name":"初夏に登山するメリットは？","acceptedAnswer":{"@type":"Answer","text":"梅雨入り前は晴天率が高く、新緑が最も美しい季節です。気温も真夏ほど上がらず、虫や紫外線の影響も本格化する前なので、登山初心者にも歩きやすい時期です。"}},{"@type":"Question","name":"電車で行ける涼しい登山スポットはどこ？","acceptedAnswer":{"@type":"Answer","text":"日和田山（西武線で約1時間）、大山（小田急線＋バスで約1時間40分）、本仁田山・川苔山（JR青梅線で約1時間40分〜2時間10分）などが、新宿から電車で日帰りアクセス可能な涼しい山です。"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Yamatch","item":"https://tozan-navi.com/"},{"@type":"ListItem","position":2,"name":"登山ガイド記事","item":"https://tozan-navi.com/articles/"},{"@type":"ListItem","position":3,"name":"夏でも涼しい！日帰り登山6選","item":"https://tozan-navi.com/articles/cool-mountains-summer/"}]}</script>
@@ -62,6 +62,23 @@ h2{font-size:clamp(17px,4vw,22px);font-weight:bold;color:#1c4038;margin:36px 0 1
 .other-articles-title{font-size:13px;font-weight:bold;color:#4a7868;margin-bottom:12px}
 .other-article-link{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eef4f0;font-size:14px;color:#333530}
 .other-article-link:last-child{border-bottom:none;color:#1c4a40;font-weight:600}
+
+/* ===== Z世代UI強化パック(2026-07-09追加) ===== */
+.mountain-card,.mountain-section{transition:transform .15s ease,box-shadow .15s ease}
+.mountain-card:active,.mountain-section:active{transform:scale(0.99)}
+.detail-link,.detail-btn{display:inline-flex;align-items:center;gap:6px;background:#e8734a!important;color:#fff!important;font-weight:bold;padding:11px 20px;border-radius:24px;margin-top:6px;transition:transform .15s ease,background .15s ease;border:none}
+.detail-link:active,.detail-btn:active{transform:scale(0.96);background:#d4623c!important}
+.updated-pill{background:rgba(255,255,255,0.14);color:#d8e8d0}
+.float-bar{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border-top:1px solid #e0dcd2;z-index:60}
+.float-btn{display:flex;align-items:center;gap:6px;background:#fff;border:1px solid #ddd8d0;border-radius:24px;padding:9px 18px;font-size:13px;font-weight:bold;color:#3a3530;cursor:pointer;transition:transform .12s ease,background .12s ease}
+.float-btn:active{transform:scale(0.95)}
+.float-btn.primary{background:#e8734a;color:#fff;border-color:#e8734a}
+.float-btn.saved{background:#f5e8e0;color:#c0503a;border-color:#e8b8a0}
+.scroll-top-btn{position:fixed;right:16px;bottom:78px;width:46px;height:46px;border-radius:50%;background:#4a6038;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 14px rgba(0,0,0,0.22);opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:59;border:none;cursor:pointer}
+.scroll-top-btn.show{opacity:1;pointer-events:auto}
+.scroll-top-btn:active{transform:scale(0.9)}
+body{padding-bottom:80px}
+@media (min-width:600px){.float-bar{max-width:420px;left:50%;transform:translateX(-50%);border-radius:28px 28px 0 0;bottom:0}}
 </style>
 </head>
 <body>
@@ -73,12 +90,12 @@ h2{font-size:clamp(17px,4vw,22px);font-weight:bold;color:#1c4038;margin:36px 0 1
     <a href="/" class="back-btn">← トップへ</a>
   </div>
 </header>
-<div class="article-hero">
+<a id="top"></a><div class="article-hero">
   <div class="hero-inner">
     <div class="article-label">登山ガイド</div>
     <h1 class="article-title">夏でも涼しい！<br>日帰り登山6選</h1>
     <p class="article-desc">新緑と沢の涼を楽しめる、電車で行ける関東近郊の山を厳選。初夏の新緑シーズンから盛夏まで使えるガイドです。</p>
-    <div class="article-meta">
+    <div class="article-meta"><span class="meta-pill updated-pill">🗓 最終更新: 2026-07-09</span>
       <span class="meta-pill">🌲 涼しい山</span>
       <span class="meta-pill">🚃 電車で行ける</span>
       <span class="meta-pill">🌅 日帰り</span>
@@ -202,8 +219,69 @@ h2{font-size:clamp(17px,4vw,22px);font-weight:bold;color:#1c4038;margin:36px 0 1
 <div class="other-articles">
   <div class="other-articles-title">こちらの記事もおすすめ</div>
   <a href="/articles/tokyo-daytrip-5/" class="other-article-link"><span>東京から3時間以内で行ける日帰り登山5選</span><span>→</span></a>
+  <a href="/articles/kanto-day-trip-100/" class="other-article-link"><span>関東発・日帰りで登れる百名山10選</span><span>→</span></a>
+  <a href="/articles/train-access-mountains/" class="other-article-link"><span>新宿発・電車・バスで行ける登山10選</span><span>→</span></a>
   <a href="/articles/" class="other-article-link"><span>記事一覧を見る</span><span>→</span></a>
 </div>
 </main>
+
+<div class="float-bar">
+  <button class="float-btn" id="shareBtn" type="button">🔗 シェア</button>
+  <button class="float-btn primary" id="saveBtn" type="button">🤍 保存</button>
+  <a class="float-btn" href="#top">↑ トップ</a>
+</div>
+<button class="scroll-top-btn" id="scrollTopBtn" type="button" aria-label="ページ上部へ戻る">↑</button>
+<script>
+(function(){
+  var SLUG = 'cool-mountains-summer';
+  var KEY = 'yamatch_saved_' + SLUG;
+  var saveBtn = document.getElementById('saveBtn');
+  var shareBtn = document.getElementById('shareBtn');
+  var scrollBtn = document.getElementById('scrollTopBtn');
+
+  function refreshSaveState(){
+    var saved = localStorage.getItem(KEY) === '1';
+    if(saved){
+      saveBtn.textContent = '💚 保存済み';
+      saveBtn.classList.add('saved');
+      saveBtn.classList.remove('primary');
+    } else {
+      saveBtn.textContent = '🤍 保存';
+      saveBtn.classList.remove('saved');
+      saveBtn.classList.add('primary');
+    }
+  }
+  if(saveBtn){
+    refreshSaveState();
+    saveBtn.addEventListener('click', function(){
+      var saved = localStorage.getItem(KEY) === '1';
+      if(saved){ localStorage.removeItem(KEY); } else { localStorage.setItem(KEY, '1'); }
+      refreshSaveState();
+    });
+  }
+  if(shareBtn){
+    shareBtn.addEventListener('click', function(){
+      var shareData = { title: document.title, url: location.href };
+      if(navigator.share){
+        navigator.share(shareData).catch(function(){});
+      } else if(navigator.clipboard){
+        navigator.clipboard.writeText(location.href).then(function(){
+          shareBtn.textContent = '✅ コピーしました';
+          setTimeout(function(){ shareBtn.textContent = '🔗 シェア'; }, 1800);
+        });
+      }
+    });
+  }
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 500){ scrollBtn.classList.add('show'); }
+    else { scrollBtn.classList.remove('show'); }
+  });
+  if(scrollBtn){
+    scrollBtn.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+})();
+</script>
 </body>
 </html>
