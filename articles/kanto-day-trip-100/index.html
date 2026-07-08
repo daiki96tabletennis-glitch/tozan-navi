@@ -21,7 +21,7 @@
 body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif; background: #f0ede5; color: #3a3530; line-height: 1.8; font-size: 15px; }
 a { color: inherit; text-decoration: none; }
 
-header { background: linear-gradient(135deg, #4a6038 0%, #607848 100%); padding: 14px 20px; }
+header{background:#3a4f28;padding:12px 16px}
 .header-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 8px; }
 .header-title { color: white; font-family: Georgia, serif; font-size: 19px; font-weight: bold; letter-spacing: 0.02em; }
 .header-sub { color: rgba(255,255,255,0.5); font-size: 10px; margin-top: 1px; }
@@ -32,13 +32,13 @@ header { background: linear-gradient(135deg, #4a6038 0%, #607848 100%); padding:
 .back-link { color: #b8c8b8; font-size: 12px; }
 .back-link:hover { color: white; }
 
-.article-hero { background: linear-gradient(160deg, #1e2e1e 0%, #3a4e3a 50%, #4a6a4a 100%); padding: 44px 20px 40px; }
+.article-hero{background:#f7f6f2;border-bottom:1px solid #e5ded0;padding:44px 20px 40px}
 .hero-inner { max-width: 760px; margin: 0 auto; }
-.article-label { display: inline-block; background: rgba(255,255,255,0.18); color: #c8e0c8; font-size: 11px; font-weight: bold; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; letter-spacing: 0.08em; }
-h1.article-title { font-size: clamp(22px, 5.5vw, 34px); font-weight: bold; color: white; line-height: 1.3; margin-bottom: 14px; }
-.article-desc { color: #c0d4c0; font-size: 14px; line-height: 1.7; max-width: 540px; }
+.article-label{display:inline-block;background:#e8e4dc;color:#5a4e3a;font-size:11px;font-weight:bold;padding:4px 12px;border-radius:20px;margin-bottom:14px;letter-spacing:0.08em}
+h1.article-title{font-size:clamp(22px,5.5vw,34px);font-weight:bold;color:#1a1a16;line-height:1.3;margin-bottom:14px}
+.article-desc{color:#5a5850;font-size:14px;line-height:1.7;max-width:540px}
 .article-meta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
-.meta-pill { background: rgba(255,255,255,0.12); color: #b0c8b0; font-size: 12px; padding: 4px 12px; border-radius: 20px; }
+.meta-pill{background:#ece8de;color:#4a5840;font-size:12px;padding:4px 12px;border-radius:20px}
 
 main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
 
@@ -111,7 +111,7 @@ footer { text-align: center; padding: 28px 16px; font-size: 12px; color: #a09888
 .mountain-card:active,.mountain-section:active{transform:scale(0.99)}
 .detail-link,.detail-btn{display:inline-flex;align-items:center;gap:6px;background:#e8734a!important;color:#fff!important;font-weight:bold;padding:11px 20px;border-radius:24px;margin-top:6px;transition:transform .15s ease,background .15s ease;border:none}
 .detail-link:active,.detail-btn:active{transform:scale(0.96);background:#d4623c!important}
-.updated-pill{background:rgba(255,255,255,0.14);color:#d8e8d0}
+.updated-pill{background:#e8e0cc;color:#6a5628}
 .float-bar{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border-top:1px solid #e0dcd2;z-index:60}
 .float-btn{display:flex;align-items:center;gap:6px;background:#fff;border:1px solid #ddd8d0;border-radius:24px;padding:9px 18px;font-size:13px;font-weight:bold;color:#3a3530;cursor:pointer;transition:transform .12s ease,background .12s ease}
 .float-btn:active{transform:scale(0.95)}
@@ -122,6 +122,11 @@ footer { text-align: center; padding: 28px 16px; font-size: 12px; color: #a09888
 .scroll-top-btn:active{transform:scale(0.9)}
 body{padding-bottom:80px}
 @media (min-width:600px){.float-bar{max-width:420px;left:50%;transform:translateX(-50%);border-radius:28px 28px 0 0;bottom:0}}
+
+/* ===== 箇条書き見どころリスト(可読性改善 2026-07-09) ===== */
+.highlight-list{list-style:none;padding:0;margin:2px 0 4px}
+.highlight-list li{padding:7px 0;font-size:14.5px;line-height:1.6;color:#4a4540;border-bottom:1px dashed #e5e0d8}
+.highlight-list li:last-child{border-bottom:none}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -266,14 +271,7 @@ body{padding-bottom:80px}
       <div class="meta-chip">📅 通年</div>
     </div>
 
-    <div class="mountain-body">
-      
-<p>筑波山は、関東平野にぽつんと佇む独立峰。標高877mと百名山の中では最も低い山ですが、「西の富士、東の筑波」と並び称されるほど関東を代表する名峰です。</p>
-<p>最大の魅力は<strong>アクセスのよさと多様なルート</strong>。ロープウェイやケーブルカーを使えば山頂直下まで一気に上がれるので、体力に自信がない方でも頂上の眺望を楽しめます。もちろん自分の足で登ることも可能で、御幸ヶ原コースや白雲橋コースなど複数のルートから選べます。</p>
-<p>山頂は「男体山」と「女体山」のふたつのピークに分かれており、どちらからも関東平野を一望する大パノラマが待っています。晴れた日には富士山や東京スカイツリーまで見渡せることも。春は梅・桜、秋は紅葉と、四季を通じて楽しめる懐の深さも魅力です。</p>
-<p><strong>百名山デビューの一座として、これ以上ない山</strong>だと思います。登山後はつくば市内の飲食店でゆっくりするのもおすすめです。</p>
-
-    </div>
+    <div class="mountain-body"><p>関東平野にぽつんと佇む独立峰、筑波山。標高877mと百名山最低峰ながら「西の富士、東の筑波」と並び称される名峰です。</p><ul class="highlight-list"><li>🚡 ロープウェイ・ケーブルカーで山頂直下まで上がれ、体力に自信がなくても楽しめる</li><li>⛰ 「男体山」「女体山」ふたつの頂から関東平野を一望、富士山やスカイツリーも</li><li>🌸 春は梅・桜、秋は紅葉と四季を通じて楽しめる</li><li>🍜 百名山デビューに最適、下山後はつくば市内でのんびりも</li></ul></div>
 
     <div class="best-season">
       <span class="best-label">🌸 おすすめの時期</span>
@@ -311,14 +309,7 @@ body{padding-bottom:80px}
       <div class="meta-chip">📅 5月〜11月</div>
     </div>
 
-    <div class="mountain-body">
-      
-<p>赤城山は群馬県のシンボルともいえる火山。最高峰の黒檜山（くろびさん・1828m）を中心に、大沼・小沼というカルデラ湖を抱えた個性的な山容が特徴です。</p>
-<p>黒檜山の山頂からは<strong>上州の山並みと関東平野を一望</strong>できます。特に「展望台」と呼ばれるスポットからの眺めは格別で、空気の澄んだ晴天時には富士山や日光連山まで見渡せます。</p>
-<p>コースは黒檜山登山口から駒ヶ岳を周回するルートが定番。急登もありますが、距離はさほど長くなく3〜4時間で周回できます。湖畔の散策と組み合わせて半日〜1日で楽しむのがおすすめのプランです。</p>
-<p>冬は樹氷が美しく、アイゼンを使った雪山ハイクも楽しめます。<strong>四季それぞれの顔を持つ、何度訪れても飽きない山</strong>です。</p>
-
-    </div>
+    <div class="mountain-body"><p>群馬県のシンボルともいえる火山、赤城山。最高峰の黒檜山(1828m)を中心に、大沼・小沼のカルデラ湖を抱えた個性的な山容です。</p><ul class="highlight-list"><li>🗻 「展望台」からの眺めは格別、晴天時は富士山や日光連山まで見渡せる</li><li>🥾 黒檜山登山口から駒ヶ岳を周回するのが定番、3〜4時間で歩ける</li><li>❄️ 冬は樹氷が美しく、アイゼンでの雪山ハイクも楽しめる</li></ul></div>
 
     <div class="best-season">
       <span class="best-label">🌸 おすすめの時期</span>
@@ -356,14 +347,7 @@ body{padding-bottom:80px}
       <div class="meta-chip">📅 5月〜11月</div>
     </div>
 
-    <div class="mountain-body">
-      
-<p>「2000m超の百名山に日帰りで登りたい」という方に真っ先に勧めたい山が大菩薩嶺です。上日川峠（1585m）まで車で上がれるため、実際に歩く標高差は500m足らず。<strong>体力的なハードルが非常に低いのに、景色は一流</strong>というコスパ抜群の山です。</p>
-<p>圧巻なのは大菩薩峠から稜線を歩くときの景色。右手に南アルプスの白い峰々、正面に富士山という絶景が広がります。稜線上は遮るものがなく開放的で、晴れた日は本当に気持ちがいい。</p>
-<p>中里介山の長編小説『大菩薩峠』の舞台としても有名で、峠には介山荘という山小屋もあります。山旅の雰囲気を味わいながらのんびり歩けるのも魅力のひとつ。</p>
-<p>紅葉シーズンの10月は特に人気で駐車場が混雑することも。<strong>早朝出発がおすすめ</strong>です。</p>
-
-    </div>
+    <div class="mountain-body"><p>上日川峠(1585m)まで車で上がれ、歩く標高差は500m足らずの大菩薩嶺。「2000m超の百名山に日帰りで」という願いを叶えるコスパ抜群の山です。</p><ul class="highlight-list"><li>🗻 大菩薩峠からの稜線歩きは南アルプス・富士山の絶景が広がる</li><li>📖 中里介山の小説『大菩薩峠』の舞台、峠には介山荘という山小屋も</li><li>🍁 紅葉シーズンの10月は駐車場が混雑、早朝出発がおすすめ</li></ul></div>
 
     <div class="best-season">
       <span class="best-label">🌸 おすすめの時期</span>
@@ -401,14 +385,7 @@ body{padding-bottom:80px}
       <div class="meta-chip">📅 通年</div>
     </div>
 
-    <div class="mountain-body">
-      
-<p>丹沢山は、新宿から最短で行ける百名山のひとつ。神奈川県最高峰エリアに位置し、都市近郊でありながらブナの原生林や豊かな生態系が残る本格的な山域です。</p>
-<p>丹沢といえば塔ノ岳が有名ですが、百名山の頂は塔ノ岳のさらに奥にある丹沢山。塩水橋からのルートは静かで、ブナ林の中を歩く気持ちよさが格別です。山頂には<strong>みやま山荘</strong>があり、テラスから丹沢主脈の稜線を一望できます。</p>
-<p>標高差は約1100mとしっかりあり、体力が試されるルートです。ただしその分、<strong>登り応えと達成感は抜群</strong>。「近くて本格的」を求める登山者に愛される理由がよく分かります。</p>
-<p>春はヤマビルに注意が必要ですが、冬から春（12〜4月）はヤマビルが少なく積雪の丹沢も楽しめます。近場でトレーニングを積みたい人にも最適な山です。</p>
-
-    </div>
+    <div class="mountain-body"><p>新宿から最短で行ける百名山のひとつ、丹沢山。都市近郊ながらブナ原生林が残る本格的な山域です。</p><ul class="highlight-list"><li>🌲 塩水橋ルートは静かで、ブナ林の中を歩く気持ちよさが格別</li><li>🏠 山頂のみやま山荘テラスから丹沢主脈の稜線を一望</li><li>🥾 標高差約1100mとしっかりした登り応え</li><li>📅 冬から春(12〜4月)はヤマビルが少なくおすすめ</li></ul></div>
 
     <div class="best-season">
       <span class="best-label">🌸 おすすめの時期</span>
@@ -446,14 +423,7 @@ body{padding-bottom:80px}
       <div class="meta-chip">📅 通年</div>
     </div>
 
-    <div class="mountain-body">
-      
-<p>「東京都にある唯一の百名山」というキャッチフレーズで知られる雲取山。都内から日帰りできる2000m超の山として、多くの登山者に親しまれています。</p>
-<p>鴨沢ルートは奥多摩の森の中を歩く気持ちのいいコース。七ツ石山を経由して雲取山荘へ至るルートは、急登が少なく歩きやすいことで知られています。山頂からは<strong>富士山・南アルプス・奥秩父の山並みが一望</strong>でき、「これが東京都！？」と驚くほどの大展望です。</p>
-<p>日帰りだとコースタイムは10〜11時間とかなりのロングコース。体力に余裕があれば雲取山荘に一泊して翌朝のご来光を狙うのが最高です。日帰りの場合は<strong>早朝4〜5時出発</strong>を推奨します。</p>
-<p>小説『鬼滅の刃』の主人公・炭治郎の出身地として有名になり、近年は若い登山者も増えています。</p>
-
-    </div>
+    <div class="mountain-body"><p>「東京都にある唯一の百名山」として親しまれる雲取山。都内から日帰りできる2000m超峰です。</p><ul class="highlight-list"><li>🌲 鴨沢ルートは奥多摩の森を歩く気持ちいいコース、急登が少なく歩きやすい</li><li>🗻 山頂から富士山・南アルプス・奥秩父の大展望</li><li>⏰ 日帰りは10〜11時間のロングコース、早朝4〜5時出発推奨</li><li>🏠 体力に余裕があれば雲取山荘に一泊してご来光を</li></ul></div>
 
     <div class="best-season">
       <span class="best-label">🌸 おすすめの時期</span>
@@ -491,14 +461,7 @@ body{padding-bottom:80px}
       <div class="meta-chip">📅 5月〜11月</div>
     </div>
 
-    <div class="mountain-body">
-      
-<p>瑞牆山は百名山の中でも特に「見た目のインパクト」が強い山。麓から見上げると花崗岩の巨大な岩塔が林立する独特の山容が目に飛び込んできます。その景観は他の百名山とは一線を画し、<strong>まるで別の惑星にいるような感覚</strong>を味わえます。</p>
-<p>登山道も面白く、奥深い森の中に突如現れる巨岩をくぐり抜けながら登っていきます。岩場も多いため、足元を楽しみながら歩けるルートです。山頂からは金峰山や八ヶ岳、富士山が見渡せる大展望が広がります。</p>
-<p>瑞牆山荘からのルートは距離もさほど長くなく、<strong>4〜5時間で往復できる</strong>コスパの高さも魅力。体力的に余裕があれば隣の金峰山（百名山）と1泊2日で両方登るのも定番のスタイルです。</p>
-<p>クライマーにも人気のエリアで、岩場では本格的なクライミングも楽しめます。</p>
-
-    </div>
+    <div class="mountain-body"><p>花崗岩の巨大な岩塔が林立する、百名山随一の「見た目のインパクト」を持つ瑞牆山。</p><ul class="highlight-list"><li>🪨 巨岩をくぐり抜けながら登る面白いルート、山頂から金峰山・八ヶ岳・富士山</li><li>⏰ 瑞牆山荘からは4〜5時間で往復できるコスパの高さも魅力</li><li>🧗 クライマーにも人気のエリア、本格的なクライミングも楽しめる</li><li>🏔 隣の金峰山と1泊2日で両方登るのも定番</li></ul></div>
 
     <div class="best-season">
       <span class="best-label">🌸 おすすめの時期</span>
@@ -536,14 +499,7 @@ body{padding-bottom:80px}
       <div class="meta-chip">📅 4月〜11月</div>
     </div>
 
-    <div class="mountain-body">
-      
-<p>両神山は奥秩父に位置する、ギザギザとした鋭い稜線が特徴的な山です。遠くからでもひと目でそれと分かる個性的な山容は、関東の山の中でも際立っています。</p>
-<p>日向大谷口ルートは両神神社への参道を歩くルートで、山岳信仰の歴史を感じながら登れます。清流沿いの道や急な尾根道を経て山頂へ。山頂の眺望は木々に遮られる部分もありますが、<strong>稜線の岩場からは奥秩父の山並みが一望</strong>できます。</p>
-<p>山頂直下は鎖場もあり、スリルある岩場歩きを楽しめます。「百名山の中でも難しめ」と言われますが、ゆっくり慎重に歩けば中級者には問題なく登れます。難易度より達成感が大きい山です。</p>
-<p>5月上旬には山頂付近でシャクナゲが咲き誇り、<strong>ピンクの花と険しい岩稜のコントラスト</strong>が絶景。花の季節に訪れるのが特におすすめです。</p>
-
-    </div>
+    <div class="mountain-body"><p>ギザギザとした鋭い稜線が特徴の奥秩父の名峰、両神山。遠くからでもひと目で分かる個性的な山容です。</p><ul class="highlight-list"><li>⛩ 日向大谷口ルートは両神神社への参道、山岳信仰の歴史を感じられる</li><li>⛓ 山頂直下は鎖場もあるスリルある岩場歩き</li><li>🌸 5月上旬はシャクナゲが咲き誇り、岩稜とのコントラストが絶景</li></ul></div>
 
     <div class="best-season">
       <span class="best-label">🌸 おすすめの時期</span>
@@ -581,14 +537,7 @@ body{padding-bottom:80px}
       <div class="meta-chip">📅 7月〜10月</div>
     </div>
 
-    <div class="mountain-body">
-      
-<p>谷川岳は「魔の山」という異名を持つほど険しい山として知られています。しかしロープウェイを使えば天神平（1319m）まで一気にアクセスでき、そこから山頂まで往復4〜5時間の日帰り登山が可能です。</p>
-<p>山頂は「トマの耳」と「オキの耳」のふたつのピークからなる双耳峰。晴れた日の山頂からの展望は圧巻で、<strong>上越国境の山並みと眼下に広がる雲海</strong>は忘れられない景色になるはずです。</p>
-<p>稜線上の眺めも素晴らしく、国境稜線を歩く開放感は他の山では味わえません。天神尾根は登山道が整備されていますが、岩場や鎖場もあるため、ある程度の登山経験があると安心です。</p>
-<p>秋の紅葉シーズンは特に人気。<strong>10月初旬〜中旬の紅葉の時期</strong>はロープウェイも大変混雑するため、早朝の始発便を狙うのがベストです。</p>
-
-    </div>
+    <div class="mountain-body"><p>「魔の山」の異名を持つ険しい山、谷川岳。ロープウェイを使えば天神平(1319m)まで一気にアクセスでき、往復4〜5時間の日帰りが可能です。</p><ul class="highlight-list"><li>🗻 双耳峰トマの耳・オキの耳から上越国境の大パノラマ</li><li>🌄 稜線を歩く開放感は他の山では味わえない</li><li>🍁 10月初旬〜中旬の紅葉シーズンは大変混雑、早朝の始発便がおすすめ</li></ul></div>
 
     <div class="best-season">
       <span class="best-label">🌸 おすすめの時期</span>
@@ -626,14 +575,7 @@ body{padding-bottom:80px}
       <div class="meta-chip">📅 6月〜10月</div>
     </div>
 
-    <div class="mountain-body">
-      
-<p>甲武信ヶ岳は、甲斐（山梨）・武蔵（埼玉）・信濃（長野）の三国の境に立つ奥秩父の盟主です。千曲川（信濃川）・荒川・笛吹川という三つの大河の源流を持つ、水の山でもあります。</p>
-<p>毛木平からのルートは比較的歩きやすく、千曲川源流沿いを遡る渓谷歩きが魅力的。<strong>源流の最初の一滴が湧き出る場所</strong>に立ち寄ることができ、山旅の特別な体験になります。</p>
-<p>山頂は展望が開けており、金峰山・国師ヶ岳・八ヶ岳・富士山など奥秩父・南アルプス方面の眺めが素晴らしい。静かな奥秩父の山並みを独り占めできる感覚は、メジャーな山では味わえないものがあります。</p>
-<p>登山口へのアクセスはやや不便ですが、<strong>「山深さ」を感じたい人</strong>には強くおすすめしたい一座。百名山を重ねてきた頃に登ると、その良さがより分かる山です。</p>
-
-    </div>
+    <div class="mountain-body"><p>甲斐・武蔵・信濃の三国境に立つ奥秩父の盟主、甲武信ヶ岳。千曲川・荒川・笛吹川、三つの大河の源流を持つ水の山です。</p><ul class="highlight-list"><li>💧 毛木平ルートは千曲川源流沿いを遡る渓谷歩きが魅力</li><li>🗻 山頂からは金峰山・国師ヶ岳・八ヶ岳・富士山の大展望</li><li>🥾 アクセスはやや不便だが、「山深さ」を感じたい人におすすめ</li></ul></div>
 
     <div class="best-season">
       <span class="best-label">🌸 おすすめの時期</span>
@@ -671,14 +613,7 @@ body{padding-bottom:80px}
       <div class="meta-chip">📅 6月〜10月</div>
     </div>
 
-    <div class="mountain-body">
-      
-<p>金峰山は奥秩父を代表する2599mの高峰。しかし日本最高所の車道峠・大弛峠（2360m）まで車でアクセスできるため、実際の標高差はわずか240m。<strong>2500m超の山頂に比較的楽に立てる</strong>のが最大の特徴です。</p>
-<p>山頂のシンボルは高さ15mにも及ぶ「五丈岩」という巨大な岩塔。この岩は山頂からの展望と合わせて圧倒的なインパクトがあります。山頂からは富士山・南アルプス・八ヶ岳・北アルプスまで見渡せる<strong>360度の大パノラマ</strong>が広がります。</p>
-<p>大弛峠は舗装状態が悪い林道を走るため、車高の低い車は要注意。また開通期間が限られており（例年6月上旬〜11月中旬）、シーズン外は閉鎖されます。</p>
-<p>瑞牆山とセットで1泊2日の縦走を楽しむ人も多く、富士見平小屋を拠点にした奥秩父周回は最高の山旅になります。<strong>「なるべく楽に高い山に登りたい」という欲張りな願いを叶えてくれる山</strong>です。</p>
-
-    </div>
+    <div class="mountain-body"><p>標高2599mの奥秩父の高峰、金峰山。日本最高所の車道峠・大弛峠(2360m)まで車で上がれ、実際の標高差はわずか240mです。</p><ul class="highlight-list"><li>🪨 山頂のシンボル「五丈岩」は高さ15mの巨大な岩塔</li><li>🗻 富士山・南アルプス・八ヶ岳・北アルプスの360度大パノラマ</li><li>🚗 大弛峠は林道の舗装が悪く車高の低い車は要注意、開通は6月上旬〜11月中旬</li><li>🏔 瑞牆山とセットで1泊2日の縦走も人気</li></ul></div>
 
     <div class="best-season">
       <span class="best-label">🌸 おすすめの時期</span>
