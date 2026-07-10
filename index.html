@@ -1752,8 +1752,6 @@ fetch('/data/mountains.json')
 
   // PC等、対象外の環境ではトリガー自体を出さない
   if (!isIOS && !isAndroid) return;
-  // 既にこのセッションで閉じていたら出さない(頻度を抑える)
-  if (localStorage.getItem('a2hs_dismissed') === '1') return;
 
   var STEPS_IOS = [
     {
@@ -1901,7 +1899,6 @@ fetch('/data/mountains.json')
     }
     function close(){
       overlay.classList.remove('show');
-      localStorage.setItem('a2hs_dismissed', '1');
     }
 
     banner.addEventListener('click', open);
