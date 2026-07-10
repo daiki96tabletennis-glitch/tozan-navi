@@ -1718,7 +1718,7 @@ function App() {
         ].map(item => (
           <a key={item.label} href={item.href} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"8px 4px 10px",textDecoration:"none",color:item.active?"#4e6535":"#a09888",gap:"3px"}}>
             <span style={{color:item.active?"#4e6535":"#a09888"}}>{item.icon}</span>
-            <span style={{fontSize:"10px",fontWeight:item.active?"700":"500"}}>{item.label}</span>
+            <span style={{fontSize:"10px",fontWeight:item.active?"700":"500",fontFamily:"-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif"}}>{item.label}</span>
           </a>
         ))}
       </nav>
