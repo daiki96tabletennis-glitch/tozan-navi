@@ -221,6 +221,23 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .gear-amazon{background:#4a6038;color:#fff!important}
 .gear-rakuten{background:#eef2e6;color:#3a4f28!important}.gear-title svg,.gear-cat-name svg{vertical-align:-2px;margin-right:5px}
 .gear-note{font-size:10px;color:#8a8278;margin-top:12px;line-height:1.6}
+/* 天気ウィジェット */
+.weather-current{display:flex;align-items:center;gap:14px;padding:6px 0 14px}
+.weather-icon-big{font-size:40px;line-height:1}
+.weather-temp-big{font-size:30px;font-weight:800;color:#1a1a16}
+.weather-temp-big span{font-size:14px;font-weight:500;color:#8a8078;margin-left:1px}
+.weather-desc-text{font-size:12px;color:#6a6058;margin-top:2px}
+.weather-meta{display:flex;gap:12px;margin-top:4px}
+.weather-meta-item{font-size:11px;color:#8a8078}
+.weather-days-grid{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.weather-day-card{flex:0 0 auto;width:66px;background:#f8f6f2;border-radius:8px;padding:8px 4px;text-align:center}
+.weather-day-label{font-size:10px;color:#a09888;font-weight:600}
+.weather-day-icon{font-size:22px;margin:5px 0 3px}
+.weather-day-temps{font-size:12px;font-weight:700;color:#3a3530}
+.weather-day-temps .lo{color:#8a8078;font-weight:500;margin-left:3px}
+.weather-day-pop{font-size:10px;color:#4a7098;margin-top:3px}
+.weather-loading,.weather-error{font-size:12px;color:#a09888;padding:16px 0;text-align:center}
+.weather-credit{font-size:9px;color:#c0bcb0;text-align:right;margin-top:8px}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -271,6 +288,118 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
       <div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">1.8</div><div class="stat-unit" id="hero-unit">時間〜</div><div class="stat-label" id="hero-dep-label">大船から</div></div>
     </div>
   </div>
+
+  <!-- 天気ウィジェット -->
+  <div class="card" id="weather-card">
+    <h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.4-2A5 5 0 0 0 6 19h11.5z"/></svg>山の天気（直近7日間）</h2>
+    <div id="weather-content" class="weather-loading">天気情報を取得中...</div>
+  </div>
+  <script>
+  (function(){
+    var MID = 'hiwadayama';
+    var CACHE_KEY = 'ym_weather_' + MID;
+    var CACHE_TTL = 60 * 60 * 1000;
+
+    var WMAP = {
+      0:['☀️','快晴'],1:['🌤️','晴れ'],2:['⛅','くもり時々晴れ'],3:['☁️','くもり'],
+      45:['🌫️','霧'],48:['🌫️','霧氷'],
+      51:['🌦️','霧雨'],53:['🌦️','霧雨'],55:['🌦️','霧雨'],
+      56:['🌧️','着氷性の霧雨'],57:['🌧️','着氷性の霧雨'],
+      61:['🌧️','弱い雨'],63:['🌧️','雨'],65:['🌧️','強い雨'],
+      66:['🌧️','着氷性の雨'],67:['🌧️','着氷性の雨'],
+      71:['🌨️','弱い雪'],73:['🌨️','雪'],75:['❄️','強い雪'],77:['❄️','霧雪'],
+      80:['🌦️','にわか雨'],81:['🌦️','にわか雨'],82:['⛈️','激しいにわか雨'],
+      85:['🌨️','にわか雪'],86:['🌨️','にわか雪'],
+      95:['⛈️','雷雨'],96:['⛈️','雷雨（雹あり）'],99:['⛈️','雷雨（雹あり）']
+    };
+    function wInfo(code){
+      return WMAP[code] || ['☀️','—'];
+    }
+    var WD = ['日','月','火','水','木','金','土'];
+    function dayLabel(dateStr, i){
+      if(i===0) return '今日';
+      if(i===1) return '明日';
+      var parts = dateStr.split('-');
+      var y = parseInt(parts[0],10), m = parseInt(parts[1],10), d = parseInt(parts[2],10);
+      var wd = new Date(Date.UTC(y, m-1, d)).getUTCDay();
+      return m + '/' + d + '(' + WD[wd] + ')';
+    }
+    function showError(){
+      var el = document.getElementById('weather-content');
+      if(el){ el.className = 'weather-error'; el.textContent = '天気情報を取得できませんでした'; }
+    }
+    function render(json){
+      var el = document.getElementById('weather-content');
+      if(!el) return;
+      if(!json || !json.current || !json.daily){ showError(); return; }
+      var cur = json.current;
+      var info = wInfo(cur.weather_code);
+      var html = '';
+      html += '<div class="weather-current">';
+      html += '<div class="weather-icon-big">' + info[0] + '</div>';
+      html += '<div><div class="weather-temp-big">' + Math.round(cur.temperature_2m) + '<span>℃</span></div>';
+      html += '<div class="weather-desc-text">' + info[1] + '</div>';
+      html += '<div class="weather-meta"><span class="weather-meta-item">💨 ' + Math.round(cur.wind_speed_10m) + 'm/s</span></div>';
+      html += '</div></div>';
+      html += '<div class="weather-days-grid">';
+      var days = json.daily.time;
+      for(var i=0; i<days.length && i<7; i++){
+        var dinfo = wInfo(json.daily.weather_code[i]);
+        var hi = Math.round(json.daily.temperature_2m_max[i]);
+        var lo = Math.round(json.daily.temperature_2m_min[i]);
+        var pop = json.daily.precipitation_probability_max[i];
+        html += '<div class="weather-day-card">';
+        html += '<div class="weather-day-label">' + dayLabel(days[i], i) + '</div>';
+        html += '<div class="weather-day-icon">' + dinfo[0] + '</div>';
+        html += '<div class="weather-day-temps">' + hi + '<span class="lo">/' + lo + '</span></div>';
+        html += '<div class="weather-day-pop">☔ ' + (pop != null ? pop : '—') + '%</div>';
+        html += '</div>';
+      }
+      html += '</div>';
+      html += '<div class="weather-credit">Weather data by Open-Meteo.com（参考値・実際の山頂と異なる場合があります）</div>';
+      el.innerHTML = html;
+    }
+    function loadFromCache(){
+      try{
+        var raw = sessionStorage.getItem(CACHE_KEY);
+        if(!raw) return null;
+        var obj = JSON.parse(raw);
+        if(!obj || !obj.ts || (Date.now() - obj.ts) > CACHE_TTL) return null;
+        return obj.data;
+      }catch(e){ return null; }
+    }
+    function saveToCache(data){
+      try{ sessionStorage.setItem(CACHE_KEY, JSON.stringify({ts:Date.now(), data:data})); }catch(e){}
+    }
+    function fetchWeather(lat, lng, elevation){
+      var url = 'https://api.open-meteo.com/v1/forecast'
+        + '?latitude=' + lat
+        + '&longitude=' + lng
+        + '&elevation=' + elevation
+        + '&current=temperature_2m,weather_code,wind_speed_10m,precipitation'
+        + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'
+        + '&timezone=Asia%2FTokyo&forecast_days=7';
+      fetch(url)
+        .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.json(); })
+        .then(function(data){ saveToCache(data); render(data); })
+        .catch(showError);
+    }
+
+    var cached = loadFromCache();
+    if(cached){
+      render(cached);
+    } else {
+      fetch('/data/mountains.json')
+        .then(function(r){ return r.json(); })
+        .then(function(list){
+          var mt = list.find(function(m){ return m.id === MID; });
+          if(!mt || !mt.lat || !mt.lng){ showError(); return; }
+          fetchWeather(mt.lat, mt.lng, mt.elevation || 0);
+        })
+        .catch(showError);
+    }
+  })();
+  </script>
 
   <!-- ① こんな人におすすめ -->
   <div class="rec-card">
