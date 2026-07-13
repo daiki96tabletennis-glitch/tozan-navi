@@ -409,67 +409,86 @@ function getDriveTime(m){
   return m.driveOfuna || m.driveTime || 999;
 }
 
+function normVibes(vibes){
+  return (vibes || []).map(function(v){
+    if(v === 'historical' || v === 'history') return 'historic';
+    return v;
+  });
+}
+
 function scoreMount(m){
   var score = 0;
 
   // 日帰り必須
   if(!m.daytrip) return -1;
 
-  // 難易度フィルター
-  var diffOk = { '初級':3,'初〜中級':2,'中級':1 };
-  var diffScore = diffOk[m.difficulty] || 0;
-  if(answers.fitness === 'low'  && diffScore < 2) return -1;
-  if(answers.fitness === 'mid'  && diffScore < 1) return -1;
-  score += diffScore * 20;
+  // 標準日帰りルートのコース定数を基準にする（coeffMaxはロングルート含みのため）
+  var coeff = m.coeffMin || m.coeffMax || 0;
+  var diff = m.difficulty;
 
-  // 体力×coeffMax
-  var coeff = m.coeffMax || 0;
-  if(answers.fitness === 'low'  && coeff > 15) return -1;
-  if(answers.fitness === 'mid'  && coeff > 25) return -1;
-  if(answers.fitness === 'high' && coeff > 35) return -1;
-  score += Math.max(0, 20 - coeff) * 2;
-
-  // 交通手段
-  if(answers.transport === 'train'){
-    if(!m.trainAccess) return -1;
-    score += 30;
+  // --- 体力フィット：理想レンジに近いほど高得点（最大40点） ---
+  // 「楽なほど良い」ではなく「体力に合うほど良い」
+  var ranges = { low: [4, 10, 14], mid: [12, 22, 30], high: [20, 38, 50] };
+  var r = ranges[answers.fitness] || ranges.mid;
+  var lo = r[0], hi = r[1], cap = r[2];
+  if(coeff > cap) return -1;
+  if(coeff >= lo && coeff <= hi){
+    score += 40;
+  } else if(coeff < lo){
+    score += Math.max(0, 40 - (lo - coeff) * 4);
+  } else {
+    score += Math.max(0, 40 - (coeff - hi) * 5);
   }
 
-  // 移動時間
+  // --- 難易度マッチ：体力レベルに合う難易度ほど高得点（最大30点） ---
+  var diffMatch = {
+    low:  { '初級':30, '初〜中級':12 },
+    mid:  { '初〜中級':30, '中級':22, '初級':10 },
+    high: { '中級':30, '中〜上級':22, '初〜中級':18, '初級':2 }
+  };
+  var dm = diffMatch[answers.fitness] || diffMatch.mid;
+  var dscore = dm[diff];
+  if(dscore === undefined) return -1;
+  score += dscore;
+
+  // --- 交通手段 ---
+  if(answers.transport === 'train'){
+    if(!m.trainAccess) return -1;
+  }
+
+  // --- 移動時間 ---
   var drive = getDriveTime(m);
   var timeLimit = 999;
   if(answers.time === 'near')   timeLimit = 120;
   if(answers.time === 'middle') timeLimit = 180;
-  if(answers.transport === 'train'){
-    // 電車の場合はdriveTimeで判定しない
-    timeLimit = 999;
+  if(answers.transport === 'train' && timeLimit < 999){
+    // 電車は所要時間データがないため、車の時間×1.4を距離の代理として使う
+    timeLimit = Math.round(timeLimit * 1.4);
   }
   if(drive > timeLimit) return -1;
-  score += Math.max(0, 200 - drive) / 5;
+  score += Math.max(0, 180 - drive) / 9; // 最大20点
 
-  // 雰囲気マッチ（精度向上版）
-  var vibes = m.vibes || [];
+  // --- 雰囲気マッチ（最大50点） ---
+  var vibes = normVibes(m.vibes);
   var vibeMatch = {
     view:     ['view','ridge','alpine','rock','volcano'],
-    forest:   ['forest','historic','wetland'],
+    forest:   ['forest','historic','wetland','flower','river'],
     easy:     ['accessible','view','forest'],
     highland: ['highland','wetland']
   };
   var targets = vibeMatch[answers.vibe] || [];
   var matchCount = 0;
   targets.forEach(function(v){ if(vibes.indexOf(v) > -1) matchCount++; });
-  score += matchCount * 25;
-  // 雰囲気が全く合わない山はペナルティ
-  if(matchCount === 0 && answers.vibe === 'view' && vibes.indexOf('forest') > -1 && vibes.length === 1) score -= 15;
-  // accessible は常にプラス（誰でも行きやすい）
-  if(vibes.indexOf('accessible') > -1) score += 12;
+  score += Math.min(matchCount, 2) * 25;
+  if(answers.vibe === 'easy' && vibes.indexOf('accessible') > -1) score += 15;
+  if(matchCount === 0) score -= 20; // 希望の雰囲気と全く合わない山は減点
 
-  // 季節マッチ（現在の月から判定）
+  // --- 季節マッチ（現在の月から判定） ---
   var mon = new Date().getMonth();
   var season = mon<=1||mon===11 ? 'winter' : mon<=4 ? 'spring' : mon<=7 ? 'summer' : 'fall';
   var seasonOk = m.seasonOk || [];
   if(seasonOk.indexOf(season) > -1) score += 12;
-  else score -= 10; // 今シーズン向きでない山はペナルティ
+  else score -= 25; // シーズン外の山（冬の雪山等）は強めに除外方向へ
 
   return score;
 }
@@ -648,7 +667,25 @@ function _doShowResult(){
   document.getElementById('result-headline').textContent = depLabel + '発・' + fitLabel + '登れる山';
   document.getElementById('result-count').textContent = '条件に合う山：' + scored.length + '件中、上位3件を表示';
 
-  var top3 = scored.slice(0, 3);
+  // TOP1は最高スコアで固定、2・3位は上位プール（1位から30点以内、最低でも上位8件）から抽選
+  // 同じ回答でも「もう一度診断する」で違う山に出会える
+  function pickTop3(list){
+    if(list.length <= 3) return list;
+    var top1 = list[0];
+    var best = top1.score;
+    var pool = list.slice(1).filter(function(x){ return x.score >= best - 30; });
+    if(pool.length < 7) pool = list.slice(1, 8);
+    // Fisher-Yatesで2件抽選
+    var arr = pool.slice();
+    for(var i = arr.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+    }
+    var picks = arr.slice(0, 2);
+    picks.sort(function(a, b){ return b.score - a.score; });
+    return [top1].concat(picks);
+  }
+  var top3 = pickTop3(scored);
   var rankClass = ['r1','r2','r3'];
 
   if(top3.length === 0){
