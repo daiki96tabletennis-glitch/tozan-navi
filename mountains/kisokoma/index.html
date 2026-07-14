@@ -240,6 +240,34 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .gear-amazon{background:#4a6038;color:#fff!important}
 .gear-rakuten{background:#eef2e6;color:#3a4f28!important}.gear-title svg,.gear-cat-name svg{vertical-align:-2px;margin-right:5px}
 .gear-note{font-size:10px;color:#8a8278;margin-top:12px;line-height:1.6}
+.weather-condition-badge{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;padding:5px 12px;border-radius:20px;margin-bottom:10px}
+#weather-card h2{margin-bottom:2px}
+.cond-lvl0{background:#e3f0d9;color:#3a6b1f}
+.cond-lvl1{background:#fbeecb;color:#8a6414}
+.cond-lvl2{background:#fadada;color:#a3271f}
+.wind-dot{display:inline-block;width:7px;height:7px;border-radius:50%}
+.wind-green{background:#4caf50}
+.wind-yellow{background:#e0a827}
+.wind-red{background:#d9534f}
+.weather-days-grid{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.weather-day-card{flex:0 0 auto;width:66px;background:#f8f6f2;border-radius:8px;padding:8px 4px;text-align:center}
+.weather-day-card.is-today{background:#eef2e6;border:1px solid #cfdcc0;cursor:pointer}
+.weather-day-label{font-size:10px;color:#a09888;font-weight:600}
+.weather-day-icon{font-size:22px;margin:5px 0 3px}
+.weather-day-temps{font-size:12px;font-weight:700;color:#3a3530}
+.weather-day-temps .lo{color:#8a8078;font-weight:500;margin-left:3px}
+.weather-day-pop{font-size:10px;color:#4a7098;margin-top:3px}
+.weather-day-tap-hint{font-size:8px;color:#7a9060;margin-top:4px;font-weight:600}
+.weather-hourly-panel{display:none;gap:8px;margin-top:10px;padding:10px 8px;background:#f8f6f2;border-radius:10px}
+.weather-hourly-panel.open{display:flex}
+.weather-hourly-slot{flex:1;text-align:center}
+.weather-hourly-time{font-size:9px;color:#a09888;font-weight:600;margin-bottom:4px}
+.weather-hourly-icon{font-size:22px}
+.weather-hourly-temp{font-size:14px;font-weight:800;color:#1a1a16;margin-top:2px}
+.weather-hourly-sub{font-size:9px;color:#8a8078;margin-top:2px;display:flex;align-items:center;justify-content:center;gap:3px}
+.weather-loading,.weather-error{font-size:12px;color:#a09888;padding:16px 0;text-align:center}
+.weather-disclaimer{font-size:10.5px;color:#7a7268;margin-top:12px;line-height:1.6;border-top:1px solid #ece8e0;padding-top:8px}
+.weather-credit{font-size:9px;color:#c0bcb0;text-align:right;margin-top:6px}
 .gear-cards-scroll{display:flex;gap:12px;overflow-x:scroll;scrollbar-width:thin;scrollbar-color:#b8b0a0 #ece8dc;padding-bottom:10px;margin:0 -18px;padding-left:18px;padding-right:18px}.gear-cards-scroll::-webkit-scrollbar{height:6px}.gear-cards-scroll::-webkit-scrollbar-track{background:#ece8dc;border-radius:3px}.gear-cards-scroll::-webkit-scrollbar-thumb{background:#b8b0a0;border-radius:3px}.gear-card-v2{flex:0 0 auto;width:200px;background:#fff;border:1px solid #e4e0d4;border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;box-shadow:0 2px 6px rgba(60,50,30,0.06)}.gear-card-head{display:flex;align-items:center;gap:9px;margin-bottom:10px}.gear-card-icon{flex-shrink:0;display:flex}.gear-card-icon svg{width:24px;height:24px}.gear-card-title{font-size:14px;font-weight:800;color:#1a1a16}.gear-card-desc{font-size:12px;color:#6a6058;line-height:1.6;margin-bottom:12px;flex:1}.gear-card-product{font-size:12.5px;font-weight:700;color:#3a5a28;text-decoration:underline;text-decoration-color:#b8cca0;text-underline-offset:2px;margin-bottom:8px}.gear-card-sublinks{display:flex;gap:6px;align-items:center;font-size:11px}.gear-card-sublinks a{color:#8a8078;text-decoration:underline;text-decoration-color:#d8d2c4}.gear-card-sublinks span{color:#c0bcae}
 .gear-card-head{display:flex;align-items:center;gap:9px;margin-bottom:10px}.gear-card-icon{flex-shrink:0;display:flex}.gear-card-icon svg{width:24px;height:24px}.gear-card-title{font-size:14px;font-weight:800;color:#1a1a16}
 /* ▼ アプリ感アニメーション（2026-07-13追加） */
@@ -287,8 +315,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   </div>
 </header>
 <main>
-  <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="sec-train">電車・バス</button><button type="button" class="bookmark-tab" data-target="sec-car">車アクセス時間</button><button type="button" class="bookmark-tab" data-target="sec-parking">登山口・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
-  <div class="mountain-updated">最終更新: 2026-07-13</div>
+  <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="weather-card">天気</button><button type="button" class="bookmark-tab" data-target="sec-train">電車・バス</button><button type="button" class="bookmark-tab" data-target="sec-car">車アクセス時間</button><button type="button" class="bookmark-tab" data-target="sec-parking">登山口・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
+  <div class="mountain-updated">最終更新: 2026-07-14</div>
   <div class="hero-new">
     <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="#2a5010" style="opacity:0.04">
       <polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/><polygon points="20,28 50,55 0,55"/>
@@ -330,6 +358,185 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   </div>
 
   <div class="card"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>山の紹介</h2><p class="intro-text">ロープウェイで標高2,612mの千畳敷カールまで一気にアクセス。初心者でも本格的な高山の雰囲気を楽しめる中央アルプスの主峰。夏の千畳敷カールは高山植物の宝庫。初〜中級レベルでコース定数15〜25、日帰りでの登山が可能。代表コース（千畳敷〜乗越浄土〜木曽駒ヶ岳往復）は所要4時間/4.0km/標高差+350m。公共交通機関でのアクセス可（駒ヶ根駅→バス25分→菅の台バスセンター）。</p></div>
+
+  <div class="card" id="weather-card">
+    <h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.4-2A5 5 0 0 0 6 19h11.5z"/></svg>山周辺の天気（直近10日間）</h2>
+    <div id="weather-content" class="weather-loading">天気情報を取得中...</div>
+  </div>
+  <script>
+  (function(){
+    var MID = 'kisokoma';
+    var CACHE_KEY = 'ym_weather_' + MID;
+    var CACHE_TTL = 60 * 60 * 1000;
+
+    var WMAP = {
+      0:['☀️','快晴'],1:['🌤️','晴れ'],2:['⛅','くもり時々晴れ'],3:['☁️','くもり'],
+      45:['🌫️','霧'],48:['🌫️','霧氷'],
+      51:['🌦️','霧雨'],53:['🌦️','霧雨'],55:['🌦️','霧雨'],
+      56:['🌧️','着氷性の霧雨'],57:['🌧️','着氷性の霧雨'],
+      61:['🌧️','弱い雨'],63:['🌧️','雨'],65:['🌧️','強い雨'],
+      66:['🌧️','着氷性の雨'],67:['🌧️','着氷性の雨'],
+      71:['🌨️','弱い雪'],73:['🌨️','雪'],75:['❄️','強い雪'],77:['❄️','霧雪'],
+      80:['🌦️','にわか雨'],81:['🌦️','にわか雨'],82:['⛈️','激しいにわか雨'],
+      85:['🌨️','にわか雪'],86:['🌨️','にわか雪'],
+      95:['⛈️','雷雨'],96:['⛈️','雷雨（雹あり）'],99:['⛈️','雷雨（雹あり）']
+    };
+    function wInfo(code){
+      return WMAP[code] || ['☀️','—'];
+    }
+    var WD = ['日','月','火','水','木','金','土'];
+    function dayLabel(dateStr, i){
+      if(i===0) return '今日';
+      if(i===1) return '明日';
+      var parts = dateStr.split('-');
+      var y = parseInt(parts[0],10), m = parseInt(parts[1],10), d = parseInt(parts[2],10);
+      var wd = new Date(Date.UTC(y, m-1, d)).getUTCDay();
+      return m + '/' + d + '(' + WD[wd] + ')';
+    }
+    function windColor(speed){
+      if(speed >= 10) return 'wind-red';
+      if(speed >= 5) return 'wind-yellow';
+      return 'wind-green';
+    }
+    var COND = [
+      {cls:'cond-lvl0', label:'🟢 今日の登山コンディション：良好'},
+      {cls:'cond-lvl1', label:'🟡 今日の登山コンディション：注意'},
+      {cls:'cond-lvl2', label:'🔴 今日の登山コンディション：非推奨'}
+    ];
+    var WCODE_LEVEL2 = [95,96,99,65,67,75,82];
+    var WCODE_LEVEL1 = [45,48,51,53,55,56,57,61,63,66,71,73,77,80,81,85,86];
+    function judgeCondition(weatherCode, windSpeed, popPercent){
+      var level = 0;
+      if(WCODE_LEVEL2.indexOf(weatherCode) >= 0) level = 2;
+      else if(WCODE_LEVEL1.indexOf(weatherCode) >= 0) level = Math.max(level, 1);
+      if(windSpeed >= 11) level = 2;
+      else if(windSpeed >= 6) level = Math.max(level, 1);
+      if(popPercent >= 65) level = 2;
+      else if(popPercent >= 35) level = Math.max(level, 1);
+      return level;
+    }
+    function showError(){
+      var el = document.getElementById('weather-content');
+      if(el){ el.className = 'weather-error'; el.textContent = '天気情報を取得できませんでした'; }
+    }
+    function hourLabel(timeStr){
+      var hh = timeStr.substring(11,13);
+      return parseInt(hh,10) + '時';
+    }
+    function buildHourlyPanel(json){
+      if(!json.hourly || !json.hourly.time || !json.current || !json.current.time) return '';
+      var curHourStr = json.current.time.substring(0,13) + ':00';
+      var idx = json.hourly.time.indexOf(curHourStr);
+      if(idx === -1) return '';
+      var offsets = [0, 3, 6];
+      var labels = ['現在', '3時間後', '6時間後'];
+      var html = '<div class="weather-hourly-panel" id="weather-hourly-panel">';
+      for(var k=0; k<offsets.length; k++){
+        var idx2 = idx + offsets[k];
+        if(idx2 >= json.hourly.time.length) continue;
+        var t = json.hourly.time[idx2];
+        var hinfo = wInfo(json.hourly.weather_code[idx2]);
+        var htemp = Math.round(json.hourly.temperature_2m[idx2]);
+        var hpop = json.hourly.precipitation_probability[idx2];
+        var hwind = Math.round(json.hourly.wind_speed_10m[idx2]);
+        var hwc = windColor(json.hourly.wind_speed_10m[idx2]);
+        html += '<div class="weather-hourly-slot">';
+        html += '<div class="weather-hourly-time">' + labels[k] + '（' + hourLabel(t) + '）</div>';
+        html += '<div class="weather-hourly-icon">' + hinfo[0] + '</div>';
+        html += '<div class="weather-hourly-temp">' + htemp + '℃</div>';
+        html += '<div class="weather-hourly-sub">☔ ' + (hpop != null ? hpop : '—') + '%</div>';
+        html += '<div class="weather-hourly-sub"><span class="wind-dot ' + hwc + '"></span> ' + hwind + 'm/s</div>';
+        html += '</div>';
+      }
+      html += '</div>';
+      return html;
+    }
+    function render(json){
+      var el = document.getElementById('weather-content');
+      if(!el) return;
+      if(!json || !json.current || !json.daily){ showError(); return; }
+      var cur = json.current;
+      var todayPop = json.daily.precipitation_probability_max[0];
+      var condLevel = judgeCondition(cur.weather_code, cur.wind_speed_10m, todayPop);
+      var cond = COND[condLevel];
+      var html = '';
+      html += '<div class="weather-condition-badge ' + cond.cls + '">' + cond.label + '</div>';
+      html += '<div class="weather-days-grid">';
+      var days = json.daily.time;
+      for(var i=0; i<days.length && i<10; i++){
+        var dinfo = wInfo(json.daily.weather_code[i]);
+        var hi = Math.round(json.daily.temperature_2m_max[i]);
+        var lo = Math.round(json.daily.temperature_2m_min[i]);
+        var pop = json.daily.precipitation_probability_max[i];
+        var isToday = (i === 0);
+        html += '<div class="weather-day-card' + (isToday ? ' is-today' : '') + '"' + (isToday ? ' id="weather-today-card"' : '') + '>';
+        html += '<div class="weather-day-label">' + dayLabel(days[i], i) + '</div>';
+        html += '<div class="weather-day-icon">' + dinfo[0] + '</div>';
+        html += '<div class="weather-day-temps">' + hi + '<span class="lo">/' + lo + '</span></div>';
+        html += '<div class="weather-day-pop">☔ ' + (pop != null ? pop : '—') + '%</div>';
+        if(isToday){
+          html += '<div class="weather-day-tap-hint">▼ タップで時間帯別</div>';
+        }
+        html += '</div>';
+      }
+      html += '</div>';
+      html += buildHourlyPanel(json);
+      html += '<div class="weather-disclaimer">⚠️ この予報は山周辺の参考値です。実際の山頂の天候とは異なる場合があります。</div>';
+      html += '<div class="weather-credit">Weather data by Open-Meteo.com</div>';
+      el.innerHTML = html;
+      var todayCard = document.getElementById('weather-today-card');
+      var panel = document.getElementById('weather-hourly-panel');
+      if(todayCard && panel){
+        todayCard.addEventListener('click', function(){
+          panel.classList.toggle('open');
+        });
+      }
+    }
+    function loadFromCache(){
+      try{
+        var raw = sessionStorage.getItem(CACHE_KEY);
+        if(!raw) return null;
+        var obj = JSON.parse(raw);
+        if(!obj || !obj.ts || (Date.now() - obj.ts) > CACHE_TTL) return null;
+        return obj.data;
+      }catch(e){ return null; }
+    }
+    function saveToCache(data){
+      try{ sessionStorage.setItem(CACHE_KEY, JSON.stringify({ts:Date.now(), data:data})); }catch(e){}
+    }
+    function fetchWeather(lat, lng, elevation){
+      var url = 'https://api.open-meteo.com/v1/forecast'
+        + '?latitude=' + lat
+        + '&longitude=' + lng
+        + '&elevation=' + elevation
+        + '&current=temperature_2m,weather_code,wind_speed_10m,precipitation'
+        + '&hourly=temperature_2m,weather_code,precipitation_probability,wind_speed_10m'
+        + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max'
+        + '&timezone=Asia%2FTokyo&forecast_days=10';
+      fetch(url)
+        .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.json(); })
+        .then(function(data){ saveToCache(data); render(data); })
+        .catch(showError);
+    }
+
+    var cached = loadFromCache();
+    if(cached){
+      render(cached);
+    } else {
+      fetch('/data/mountains.json')
+        .then(function(r){ return r.json(); })
+        .then(function(list){
+          var mt = list.find(function(m){ return m.id === MID; });
+          if(!mt || !mt.lat || !mt.lng){ showError(); return; }
+          fetchWeather(mt.lat, mt.lng, mt.elevation || 0);
+        })
+        .catch(showError);
+    }
+  })();
+  </script>
+
+
+  
 
   <div style="padding:24px 0;border-bottom:1px solid #ccc7ba" id="sec-train">
   <div class="ts-section">

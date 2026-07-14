@@ -483,7 +483,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   </div>
 </div>
 
-<div class="rw"><p class="rh"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 L9 9 L13 15 L16 11 L21 20 Z"/></svg>近くて似た山</p><div class="rg"><a href="/mountains/shirane_nikko/" class="rc rc-blue"><div class="rn">四阿山</div><div class="rb"><span class="rbd" style="background:#f8f0e0;color:#7a6020">中級</span><span class="rbc">定数24〜30</span></div><div class="rt" id="nearby-time-shirane_nikko" data-ofuna="3時間40分" data-shinjuku="2時間55分" data-yokohama="3時間20分" data-omiya="2時間20分">3時間40分<span class="rs" id="nearby-label-shirane_nikko">大船から</span></div></div></a>
+<div class="rw"><p class="rh"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 L9 9 L13 15 L16 11 L21 20 Z"/></svg>近くて似た山</p><div class="rg"><a href="/mountains/azumayasan/" class="rc rc-blue"><div class="rn">四阿山</div><div class="rb"><span class="rbd" style="background:#f8f0e0;color:#7a6020">中級</span><span class="rbc">定数24〜30</span></div><div class="rt" id="nearby-time-azumayasan" data-ofuna="3時間40分" data-shinjuku="2時間55分" data-yokohama="3時間20分" data-omiya="2時間20分">3時間40分<span class="rs" id="nearby-label-azumayasan">大船から</span></div></div></a>
 <a href="/mountains/shirasunayama/" class="rc rc-green"><div class="rn">白砂山</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数24〜30</span></div><div class="rt" id="nearby-time-shirasunayama" data-ofuna="3時間30分" data-shinjuku="3時間25分" data-yokohama="3時間40分" data-omiya="3時間40分">3時間30分<span class="rs" id="nearby-label-shirasunayama">大船から</span></div></div></a>
 </div></div>
 
@@ -554,7 +554,7 @@ function applyDep(){
     el.querySelector('.ai-a-val').style.color = sel ? '#3a5a28' : '#3a3530';
     el.querySelector('.ai-a-val').style.fontWeight = sel ? '700' : '600';
   });
-  ['shirane_nikko','shirasunayama'].forEach(function(id){
+  ['azumayasan','shirasunayama'].forEach(function(id){
     var timeEl = document.getElementById('nearby-time-'+id);
     var labelEl = document.getElementById('nearby-label-'+id);
     if(timeEl && labelEl){
