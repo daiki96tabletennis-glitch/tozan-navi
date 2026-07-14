@@ -753,5 +753,31 @@ applyDep();
   });
 })();
 </script>
+
+<script>
+(function(){
+  if (typeof applyDep !== 'function') return;
+  var NEARBY = ['bonori','tenzandake'];
+  var orig = applyDep;
+  applyDep = function(){
+    orig();
+    var raw = sessionStorage.getItem('ym_departure');
+    var dep = raw ? (raw.indexOf('"')===0 ? JSON.parse(raw) : raw) : '大船';
+    var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya'};
+    var key = depMap[dep];
+    if(!key) return;
+    var label = dep + 'から';
+    NEARBY.forEach(function(id){
+      var timeEl = document.getElementById('nearby-time-'+id);
+      var labelEl = document.getElementById('nearby-label-'+id);
+      if(timeEl && labelEl){
+        var t = timeEl.dataset[key];
+        if(t){ timeEl.childNodes[0].textContent = t; labelEl.textContent = label; }
+      }
+    });
+  };
+  applyDep();
+})();
+</script>
 </body>
 </html>
