@@ -636,6 +636,9 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   }catch(e){}
 })();
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Zen+Maru+Gothic:wght@700;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="loading-overlay" class="hidden">
@@ -899,6 +902,8 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   <div class="share-section">
     <div class="share-title">📤 友達にも診断してもらおう</div>
       <button class="share-btn sb-native" onclick="window._shareNative&&window._shareNative()" style="background:#4a5e4a;color:white;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg> シェア</button>
+      <button id="share-image-btn" class="share-btn sb-image" onclick="generateShareImage()" style="background:white;color:#4a5e4a;border:1.5px solid #c8ddb0;width:100%;margin-top:8px;">📸 シェア画像を保存（正方形）</button>
+      <button id="share-story-btn" class="share-btn sb-image" onclick="generateShareImage('story')" style="background:white;color:#4a5e4a;border:1.5px solid #c8ddb0;width:100%;margin-top:8px;">📱 ストーリー用を保存（縦長）</button>
     <div class="share-btns">
       <a id="share-x" href="#" target="_blank" class="share-btn sb-x">𝕏 Xでシェア</a>
       <a id="share-line" href="#" target="_blank" class="share-btn sb-line">💬 LINE</a>
@@ -1587,6 +1592,284 @@ function _doShowResult(){
     if(navigator.share){ navigator.share({title:'私は「'+type.name+'」でした！ - Yamatch登山タイプ診断',url:shareUrlWithType}); }
     else{ navigator.clipboard.writeText(shareUrlWithType).then(()=>alert('URLをコピーしました')); }
   };
+
+  // ===== Canvas シェア画像生成（1080×1080） =====
+  function roundRectYm(ctx,x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.arcTo(x+w,y,x+w,y+h,r);
+    ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r);
+    ctx.arcTo(x,y,x+w,y,r);
+    ctx.closePath();
+  }
+  // タイプ別「あるある」コピー（シェアの核）
+  var SHARE_COPY={
+    ACPS:'百名山、全部塗りつぶしたい',
+    ACPL:'ソロ登山の何が悪い',
+    ACFS:'予定は現地で決める派',
+    ACFL:'同じルート、2回は登らない',
+    AHPS:'絶景のためなら早起きできる',
+    AHPL:'山では話しかけないで',
+    AHFS:'山頂で乾杯するために登ってる',
+    AHFL:'シャッター切りすぎて進まない',
+    VCPS:'地形図見てるだけで楽しい',
+    VCPL:'人のいない山ほど行きたくなる',
+    VCFS:'下山後の温泉までが登山',
+    VCFL:'バズってない山が好き',
+    VHPS:'登るより山ごはんが本体',
+    VHPL:'森を歩くと頭がリセットされる',
+    VHFS:'頂上より途中の芝生が目的地',
+    VHFL:'気づいたら予定と違う道にいる'
+  };
+  window.generateShareImage=function(mode){
+    mode = mode==='story' ? 'story' : 'square';
+    var btnId = mode==='story' ? 'share-story-btn' : 'share-image-btn';
+    var btn=document.getElementById(btnId);
+    var btnOrig = btn ? btn.textContent : '';
+    if(btn){ btn.disabled=true; btn.textContent='画像を生成中...'; }
+
+    var typeCode=getTypeCode();
+    var type=TYPES[typeCode]||TYPES['VHFS'];
+    var av=axisScore.av, ch=axisScore.ch, pf=axisScore.pf, sl=axisScore.sl;
+    var action=av+ch, calm=-av-ch, social=pf+sl, solo=-pf-sl;
+    var maxScore=Math.max(action,calm,social,solo);
+    var bgKey='calm';
+    if(maxScore===action) bgKey='action';
+    else if(maxScore===social) bgKey='social';
+    else if(maxScore===solo) bgKey='solo';
+    var bgSrc='/recommend/images/share-bg-'+bgKey+'.png';
+
+    var RARE_COLORS={
+      ultra:{marker:'rgba(244,204,88,0.5)', pill1:'#f0c040', pill2:'#cc9010', pillText:'#3a2800', spark:true},
+      high: {marker:'rgba(240,168,104,0.45)',pill1:'#e88838', pill2:'#c05e10', pillText:'#ffffff', spark:false},
+      mid:  {marker:'rgba(168,208,120,0.45)',pill1:'#7aa848', pill2:'#547c28', pillText:'#ffffff', spark:false},
+      low:  {marker:'rgba(140,188,224,0.45)',pill1:'#5a90c0', pill2:'#38689a', pillText:'#ffffff', spark:false}
+    };
+    var rc=RARE_COLORS[type.affilLevel]||RARE_COLORS.mid;
+    var copyText=SHARE_COPY[typeCode]||'';
+    var compatName='';
+    if(type.compat && type.compat.type && TYPES[type.compat.type]){
+      compatName=TYPES[type.compat.type].name;
+    }
+    var rareLabel=(typeof RARE_LABELS!=='undefined'&&RARE_LABELS[type.affilLevel])||'';
+
+    var W=1080, H= mode==='story' ? 1920 : 1080;
+    var canvas=document.createElement('canvas');
+    canvas.width=W; canvas.height=H;
+    var ctx=canvas.getContext('2d');
+
+    function fitFont(text,weight,family,startSize,maxW,minSize){
+      var size=startSize;
+      ctx.font=weight+' '+size+'px "'+family+'",sans-serif';
+      while(ctx.measureText(text).width>maxW && size>minSize){
+        size-=3;
+        ctx.font=weight+' '+size+'px "'+family+'",sans-serif';
+      }
+      return size;
+    }
+
+    // カード内の行配置(cardYからの相対オフセット):
+    //  タイプ名 +104 / コード +146 / コピー +216 / ピル +254..320 / 相性 +338..390 / 締め行 +424
+    function drawStickerCard(cardY,cardH){
+      var cardX=64, cardW=W-128;
+      ctx.save();
+      ctx.translate(W/2, cardY+cardH/2);
+      ctx.rotate(-0.02);
+      ctx.translate(-W/2, -(cardY+cardH/2));
+      ctx.save();
+      ctx.shadowColor='rgba(40,30,10,0.22)';
+      ctx.shadowBlur=34;
+      ctx.shadowOffsetY=10;
+      roundRectYm(ctx,cardX,cardY,cardW,cardH,34);
+      ctx.fillStyle='#fffdf8';
+      ctx.fill();
+      ctx.restore();
+
+      ctx.textAlign='center';
+      var cx=W/2;
+
+      // --- タイプ名(マーカーハイライト) ---
+      var nameY=cardY+104;
+      var nameSize=fitFont(type.name,'900','Zen Kaku Gothic New',86,cardW-120,46);
+      var nameW=ctx.measureText(type.name).width;
+      ctx.fillStyle=rc.marker;
+      roundRectYm(ctx,cx-nameW/2-16,nameY-nameSize*0.62,nameW+32,nameSize*0.74,10);
+      ctx.fill();
+      ctx.fillStyle='#241f18';
+      ctx.font='900 '+nameSize+'px "Zen Kaku Gothic New",sans-serif';
+      ctx.fillText(type.name,cx,nameY);
+
+      ctx.font='800 26px "Outfit",sans-serif';
+      ctx.fillStyle='#b0a690';
+      ctx.fillText(typeCode,cx,cardY+146);
+
+      // --- あるあるコピー ---
+      var copySize=fitFont('「'+copyText+'」','900','Zen Maru Gothic',38,cardW-100,26);
+      ctx.fillStyle='#3a342c';
+      ctx.font='900 '+copySize+'px "Zen Maru Gothic",sans-serif';
+      ctx.fillText('「'+copyText+'」',cx,cardY+216);
+
+      // --- レア度ピル ---
+      var pillText=rareLabel+' · 上位'+type.rare+'%';
+      ctx.font='800 32px "Zen Kaku Gothic New",sans-serif';
+      var pillW=ctx.measureText(pillText).width+76;
+      var pillH=66, pillY=cardY+254;
+      var pillX=cx-pillW/2;
+      ctx.save();
+      ctx.shadowColor=rc.pill1;
+      ctx.shadowBlur=26;
+      roundRectYm(ctx,pillX,pillY,pillW,pillH,33);
+      var pgrad=ctx.createLinearGradient(pillX,pillY,pillX,pillY+pillH);
+      pgrad.addColorStop(0,rc.pill1);
+      pgrad.addColorStop(1,rc.pill2);
+      ctx.fillStyle=pgrad;
+      ctx.fill();
+      ctx.restore();
+      ctx.fillStyle=rc.pillText;
+      ctx.fillText(pillText,cx,pillY+45);
+      if(rc.spark){
+        ctx.font='400 30px sans-serif';
+        ctx.fillStyle='#f0c040';
+        ctx.fillText('✦',pillX-30,pillY+22);
+        ctx.fillText('✦',pillX+pillW+30,pillY+52);
+        ctx.font='400 20px sans-serif';
+        ctx.fillText('✦',pillX-14,pillY+58);
+      }
+
+      // --- 相性タイプ ---
+      if(compatName){
+        var compatText='相性◎ '+compatName;
+        ctx.font='700 27px "Zen Maru Gothic",sans-serif';
+        var ctW=ctx.measureText(compatText).width+56;
+        var ctH=52, ctY=cardY+338;
+        roundRectYm(ctx,cx-ctW/2,ctY,ctW,ctH,26);
+        ctx.strokeStyle='#c8c0ac';
+        ctx.lineWidth=2.5;
+        ctx.stroke();
+        ctx.fillStyle='#5a5244';
+        ctx.fillText(compatText,cx,ctY+36);
+      }
+
+      // --- 締め行(CTA+URLを1行に) ---
+      ctx.font='700 24px "Zen Maru Gothic",sans-serif';
+      ctx.fillStyle='#8a8270';
+      ctx.fillText('あなたはどのタイプ？ → tozan-navi.com/recommend/',cx,cardY+424);
+
+      ctx.restore();
+    }
+
+    function drawHeader(y){
+      ctx.textAlign='center';
+      var t1='YAMATCH';
+      var t2='登山タイプ診断';
+      ctx.save();
+      ctx.translate(W/2,y);
+      ctx.rotate(0.018);
+      ctx.font='800 30px "Outfit",sans-serif';
+      var w1=ctx.measureText(t1).width;
+      ctx.font='800 27px "Zen Maru Gothic",sans-serif';
+      var w2=ctx.measureText(t2).width;
+      var totalW=w1+w2+70;
+      roundRectYm(ctx,-totalW/2,-34,totalW,62,31);
+      ctx.fillStyle='rgba(255,253,248,0.94)';
+      ctx.save();
+      ctx.shadowColor='rgba(40,30,10,0.2)';
+      ctx.shadowBlur=18;
+      ctx.shadowOffsetY=5;
+      ctx.fill();
+      ctx.restore();
+      ctx.fillStyle='#2e4020';
+      ctx.font='800 30px "Outfit",sans-serif';
+      ctx.textAlign='left';
+      ctx.fillText(t1,-totalW/2+28,9);
+      ctx.fillStyle='#5a5244';
+      ctx.font='800 27px "Zen Maru Gothic",sans-serif';
+      ctx.fillText(t2,-totalW/2+28+w1+16,9);
+      ctx.restore();
+      ctx.textAlign='center';
+    }
+
+    function drawAll(bgImg,charImg){
+      if(mode==='square'){
+        if(bgImg) ctx.drawImage(bgImg,0,0,1080,1080);
+        else { ctx.fillStyle='#e8ecdc'; ctx.fillRect(0,0,W,H); }
+        drawHeader(92);
+        var charBottom=618;
+        if(charImg){
+          var size=420;
+          ctx.save();
+          ctx.beginPath();
+          ctx.ellipse(W/2,charBottom-6,100,16,0,0,Math.PI*2);
+          ctx.fillStyle='rgba(30,25,15,0.15)';
+          ctx.fill();
+          ctx.restore();
+          ctx.drawImage(charImg,W/2-size/2,charBottom-size,size,size);
+        }
+        // カードは下端まで伸ばして端で切る(ステッカーが貼り出た見た目)
+        drawStickerCard(636,470);
+      } else {
+        ctx.fillStyle='#f2efe6';
+        ctx.fillRect(0,0,W,H);
+        if(bgImg) ctx.drawImage(bgImg,0,120,1080,1080);
+        var seam=ctx.createLinearGradient(0,1080,0,1200);
+        seam.addColorStop(0,'rgba(242,239,230,0)');
+        seam.addColorStop(1,'rgba(242,239,230,1)');
+        ctx.fillStyle=seam;
+        ctx.fillRect(0,1080,W,120);
+        drawHeader(300);
+        var charBottom2=1178;
+        if(charImg){
+          var size2=470;
+          ctx.save();
+          ctx.beginPath();
+          ctx.ellipse(W/2,charBottom2-6,110,17,0,0,Math.PI*2);
+          ctx.fillStyle='rgba(30,25,15,0.15)';
+          ctx.fill();
+          ctx.restore();
+          ctx.drawImage(charImg,W/2-size2/2,charBottom2-size2,size2,size2);
+        }
+        drawStickerCard(1196,452);
+      }
+
+      var a=document.createElement('a');
+      a.download='yamatch-'+typeCode+(mode==='story'?'-story':'')+'.png';
+      a.href=canvas.toDataURL('image/png');
+      a.click();
+      if(btn){ btn.disabled=false; btn.textContent=btnOrig; }
+    }
+
+    function loadImg(src){
+      return new Promise(function(resolve){
+        var img=new Image();
+        img.onload=function(){ resolve(img); };
+        img.onerror=function(){ resolve(null); };
+        img.src=src;
+      });
+    }
+
+    var personHtml=(typeof PERSON_SVGS!=='undefined'&&PERSON_SVGS[typeCode])||'';
+    var srcMatch=/src="([^"]+)"/.exec(personHtml);
+    var charSrc=srcMatch?srcMatch[1]:null;
+
+    var fontsReady = (document.fonts && document.fonts.load)
+      ? Promise.all([
+          document.fonts.load('900 86px "Zen Kaku Gothic New"'),
+          document.fonts.load('800 32px "Zen Kaku Gothic New"'),
+          document.fonts.load('900 38px "Zen Maru Gothic"'),
+          document.fonts.load('700 27px "Zen Maru Gothic"'),
+          document.fonts.load('700 24px "Zen Maru Gothic"'),
+          document.fonts.load('800 30px "Outfit"')
+        ]).catch(function(){})
+      : Promise.resolve();
+
+    fontsReady.then(function(){
+      return Promise.all([loadImg(bgSrc), charSrc?loadImg(charSrc):Promise.resolve(null)]);
+    }).then(function(imgs){
+      drawAll(imgs[0], imgs[1]);
+    });
+  };
+
   var topShareBtn=document.getElementById('share-top');
   if(topShareBtn) topShareBtn.style.display='flex';
 

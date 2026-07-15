@@ -226,7 +226,7 @@ main{max-width:680px;margin:0 auto;padding:18px}
 </header>
 <main>
   <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="weather-card">天気</button><button type="button" class="bookmark-tab" data-target="sec-train">電車・バス</button><button type="button" class="bookmark-tab" data-target="sec-car">車アクセス時間</button><button type="button" class="bookmark-tab" data-target="sec-parking">登山口・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
-  <div class="mountain-updated">最終更新: 2026-07-13</div>
+  <div class="mountain-updated">最終更新: 2026-07-14</div>
   <div class="hero-new">
     <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="#2a5010" style="opacity:0.04">
       <polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/><polygon points="20,28 50,55 0,55"/>
@@ -307,10 +307,10 @@ main{max-width:680px;margin:0 auto;padding:18px}
       var level = 0;
       if(WCODE_LEVEL2.indexOf(weatherCode) >= 0) level = 2;
       else if(WCODE_LEVEL1.indexOf(weatherCode) >= 0) level = Math.max(level, 1);
-      if(windSpeed >= 10) level = 2;
-      else if(windSpeed >= 5) level = Math.max(level, 1);
-      if(popPercent >= 50) level = 2;
-      else if(popPercent >= 20) level = Math.max(level, 1);
+      if(windSpeed >= 11) level = 2;
+      else if(windSpeed >= 6) level = Math.max(level, 1);
+      if(popPercent >= 65) level = 2;
+      else if(popPercent >= 35) level = Math.max(level, 1);
       return level;
     }
     function showError(){
@@ -410,7 +410,7 @@ main{max-width:680px;margin:0 auto;padding:18px}
         + '&current=temperature_2m,weather_code,wind_speed_10m,precipitation'
         + '&hourly=temperature_2m,weather_code,precipitation_probability,wind_speed_10m'
         + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max'
-        + '&timezone=Asia%2FTokyo&forecast_days=10';
+        + '&timezone=Asia%2FTokyo&forecast_days=10&models=jma_seamless';
       fetch(url)
         .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.json(); })
         .then(function(data){ saveToCache(data); render(data); })
