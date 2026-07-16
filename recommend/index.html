@@ -865,6 +865,8 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>
     この結果をシェアする
   </button>
+  <button id="share-image-btn" class="share-btn sb-image" onclick="generateShareImage()" style="background:white;color:#4a5e4a;border:1.5px solid #c8ddb0;width:100%;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.06);">📸 シェア画像を保存（正方形）</button>
+  <button id="share-story-btn" class="share-btn sb-image" onclick="generateShareImage('story')" style="background:white;color:#4a5e4a;border:1.5px solid #c8ddb0;width:100%;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.06);">📱 ストーリー用を保存（縦長）</button>
   <div id="radar-section" class="radar-section">
     <div class="radar-section-title">📊 あなたの登山スタイル診断</div>
     <div class="radar-wrap" id="radar-wrap"></div>
@@ -902,8 +904,6 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   <div class="share-section">
     <div class="share-title">📤 友達にも診断してもらおう</div>
       <button class="share-btn sb-native" onclick="window._shareNative&&window._shareNative()" style="background:#4a5e4a;color:white;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg> シェア</button>
-      <button id="share-image-btn" class="share-btn sb-image" onclick="generateShareImage()" style="background:white;color:#4a5e4a;border:1.5px solid #c8ddb0;width:100%;margin-top:8px;">📸 シェア画像を保存（正方形）</button>
-      <button id="share-story-btn" class="share-btn sb-image" onclick="generateShareImage('story')" style="background:white;color:#4a5e4a;border:1.5px solid #c8ddb0;width:100%;margin-top:8px;">📱 ストーリー用を保存（縦長）</button>
     <div class="share-btns">
       <a id="share-x" href="#" target="_blank" class="share-btn sb-x">𝕏 Xでシェア</a>
       <a id="share-line" href="#" target="_blank" class="share-btn sb-line">💬 LINE</a>
@@ -1751,10 +1751,44 @@ function _doShowResult(){
         ctx.fillText(compatText,cx,ctY+36);
       }
 
-      // --- 締め行(CTA+URLを1行に) ---
-      ctx.font='700 24px "Zen Maru Gothic",sans-serif';
+      // --- 締め行: 検索バー風UI ---
+      ctx.font='700 22px "Zen Maru Gothic",sans-serif';
       ctx.fillStyle='#8a8270';
-      ctx.fillText('あなたはどのタイプ？ → tozan-navi.com/recommend/',cx,cardY+424);
+      ctx.fillText('あなたはどのタイプ？',cx,cardY+400);
+
+      var sbText='Yamatch 登山タイプ診断';
+      ctx.font='500 24px "Outfit",sans-serif';
+      var sbTextW=ctx.measureText(sbText).width;
+      var sbW=Math.min(sbTextW+96,cardW-80), sbH=46;
+      var sbX=cx-sbW/2, sbY=cardY+412;
+      ctx.save();
+      ctx.shadowColor='rgba(0,0,0,0.12)';
+      ctx.shadowBlur=10;
+      roundRectYm(ctx,sbX,sbY,sbW,sbH,sbH/2);
+      ctx.fillStyle='#ffffff';
+      ctx.fill();
+      ctx.restore();
+      roundRectYm(ctx,sbX,sbY,sbW,sbH,sbH/2);
+      ctx.strokeStyle='#dcd8cc';
+      ctx.lineWidth=1.5;
+      ctx.stroke();
+      // 虫眼鏡アイコン
+      var micx=sbX+28, micy=sbY+sbH/2;
+      ctx.beginPath();
+      ctx.arc(micx-2,micy-2,7,0,Math.PI*2);
+      ctx.strokeStyle='#8a8a8a';
+      ctx.lineWidth=2.3;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(micx+3,micy+3);
+      ctx.lineTo(micx+9,micy+9);
+      ctx.lineCap='round';
+      ctx.stroke();
+      ctx.textAlign='left';
+      ctx.font='500 24px "Outfit",sans-serif';
+      ctx.fillStyle='#3a3632';
+      ctx.fillText(sbText,sbX+48,sbY+sbH/2+8);
+      ctx.textAlign='center';
 
       ctx.restore();
     }
@@ -1795,19 +1829,24 @@ function _doShowResult(){
         if(bgImg) ctx.drawImage(bgImg,0,0,1080,1080);
         else { ctx.fillStyle='#e8ecdc'; ctx.fillRect(0,0,W,H); }
         drawHeader(92);
-        var charBottom=618;
+        var charBottom=560;
         if(charImg){
-          var size=420;
+          var size=440;
+          var bb=tightBBox(charImg);
+          var scale=Math.max(size/bb.w, size/bb.h);
+          var dw=bb.w*scale, dh=bb.h*scale;
           ctx.save();
           ctx.beginPath();
-          ctx.ellipse(W/2,charBottom-6,100,16,0,0,Math.PI*2);
-          ctx.fillStyle='rgba(30,25,15,0.15)';
+          ctx.ellipse(W/2,charBottom-4,dw*0.22,dw*0.055,0,0,Math.PI*2);
+          ctx.fillStyle='rgba(30,25,15,0.18)';
+          ctx.filter='blur(3px)';
           ctx.fill();
+          ctx.filter='none';
           ctx.restore();
-          ctx.drawImage(charImg,W/2-size/2,charBottom-size,size,size);
+          ctx.drawImage(charImg,bb.x,bb.y,bb.w,bb.h,W/2-dw/2,charBottom-dh,dw,dh);
         }
         // カードは下端まで伸ばして端で切る(ステッカーが貼り出た見た目)
-        drawStickerCard(636,470);
+        drawStickerCard(612,458);
       } else {
         ctx.fillStyle='#f2efe6';
         ctx.fillRect(0,0,W,H);
@@ -1820,14 +1859,19 @@ function _doShowResult(){
         drawHeader(300);
         var charBottom2=1178;
         if(charImg){
-          var size2=470;
+          var size2=510;
+          var bb2=tightBBox(charImg);
+          var scale2=Math.max(size2/bb2.w, size2/bb2.h);
+          var dw2=bb2.w*scale2, dh2=bb2.h*scale2;
           ctx.save();
           ctx.beginPath();
-          ctx.ellipse(W/2,charBottom2-6,110,17,0,0,Math.PI*2);
-          ctx.fillStyle='rgba(30,25,15,0.15)';
+          ctx.ellipse(W/2,charBottom2-4,dw2*0.22,dw2*0.055,0,0,Math.PI*2);
+          ctx.fillStyle='rgba(30,25,15,0.18)';
+          ctx.filter='blur(3px)';
           ctx.fill();
+          ctx.filter='none';
           ctx.restore();
-          ctx.drawImage(charImg,W/2-size2/2,charBottom2-size2,size2,size2);
+          ctx.drawImage(charImg,bb2.x,bb2.y,bb2.w,bb2.h,W/2-dw2/2,charBottom2-dh2,dw2,dh2);
         }
         drawStickerCard(1196,452);
       }
@@ -1868,6 +1912,34 @@ function _doShowResult(){
         img.onerror=function(){ resolve(null); };
         img.src=src;
       });
+    }
+
+    // キャラ画像の透明な余白を検出し、実体だけの矩形を返す(自然な設置感のため)
+    function tightBBox(img){
+      var c=document.createElement('canvas');
+      c.width=img.width; c.height=img.height;
+      var cx=c.getContext('2d');
+      cx.drawImage(img,0,0);
+      var data;
+      try{ data=cx.getImageData(0,0,c.width,c.height).data; }
+      catch(e){ return {x:0,y:0,w:img.width,h:img.height}; }
+      var minX=c.width,minY=c.height,maxX=0,maxY=0,found=false;
+      var step=4; // 軽量化のため間引きスキャン
+      for(var y=0;y<c.height;y+=step){
+        for(var x=0;x<c.width;x+=step){
+          var a=data[(y*c.width+x)*4+3];
+          if(a>10){
+            found=true;
+            if(x<minX)minX=x; if(x>maxX)maxX=x;
+            if(y<minY)minY=y; if(y>maxY)maxY=y;
+          }
+        }
+      }
+      if(!found) return {x:0,y:0,w:img.width,h:img.height};
+      var pad=step*2;
+      minX=Math.max(0,minX-pad); minY=Math.max(0,minY-pad);
+      maxX=Math.min(c.width,maxX+pad); maxY=Math.min(c.height,maxY+pad);
+      return {x:minX,y:minY,w:maxX-minX,h:maxY-minY};
     }
 
     var personHtml=(typeof PERSON_SVGS!=='undefined'&&PERSON_SVGS[typeCode])||'';
