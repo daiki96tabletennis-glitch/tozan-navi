@@ -1700,21 +1700,15 @@ function _doShowResult(){
       ctx.font='900 '+nameSize+'px "Zen Kaku Gothic New",sans-serif';
       ctx.fillText(type.name,cx,nameY);
 
-      ctx.font='800 26px "Outfit",sans-serif';
+      ctx.font='800 40px "Outfit",sans-serif';
       ctx.fillStyle='#b0a690';
-      ctx.fillText(typeCode,cx,cardY+146);
-
-      // --- あるあるコピー ---
-      var copySize=fitFont('「'+copyText+'」','900','Zen Maru Gothic',38,cardW-100,26);
-      ctx.fillStyle='#3a342c';
-      ctx.font='900 '+copySize+'px "Zen Maru Gothic",sans-serif';
-      ctx.fillText('「'+copyText+'」',cx,cardY+216);
+      ctx.fillText(typeCode,cx,cardY+156);
 
       // --- レア度ピル ---
       var pillText=rareLabel+' · 上位'+type.rare+'%';
       ctx.font='800 32px "Zen Kaku Gothic New",sans-serif';
       var pillW=ctx.measureText(pillText).width+76;
-      var pillH=66, pillY=cardY+254;
+      var pillH=66, pillY=cardY+210;
       var pillX=cx-pillW/2;
       ctx.save();
       ctx.shadowColor=rc.pill1;
@@ -1742,7 +1736,7 @@ function _doShowResult(){
         var compatText='相性◎ '+compatName;
         ctx.font='700 27px "Zen Maru Gothic",sans-serif';
         var ctW=ctx.measureText(compatText).width+56;
-        var ctH=52, ctY=cardY+338;
+        var ctH=52, ctY=cardY+294;
         roundRectYm(ctx,cx-ctW/2,ctY,ctW,ctH,26);
         ctx.strokeStyle='#c8c0ac';
         ctx.lineWidth=2.5;
@@ -1751,16 +1745,25 @@ function _doShowResult(){
         ctx.fillText(compatText,cx,ctY+36);
       }
 
-      // --- 締め行: 検索バー風UI ---
-      ctx.font='700 22px "Zen Maru Gothic",sans-serif';
-      ctx.fillStyle='#8a8270';
-      ctx.fillText('あなたはどのタイプ？',cx,cardY+400);
-
+      // --- 締め行: 「あなたはどのタイプ？」+検索バーを横並びで同じ行に ---
       var sbText='Yamatch 登山タイプ診断';
+      var captionText='あなたはどのタイプ？';
       ctx.font='500 24px "Outfit",sans-serif';
       var sbTextW=ctx.measureText(sbText).width;
-      var sbW=Math.min(sbTextW+96,cardW-80), sbH=46;
-      var sbX=cx-sbW/2, sbY=cardY+412;
+      var sbW=Math.min(sbTextW+80,cardW-260), sbH=46;
+      ctx.font='700 22px "Zen Maru Gothic",sans-serif';
+      var capW=ctx.measureText(captionText).width;
+      var rowY=cardY+372;
+      var gap=14;
+      var totalW=capW+gap+sbW;
+      var rowLeft=cx-totalW/2;
+      var sbX=rowLeft+capW+gap, sbY=rowY-sbH/2;
+
+      ctx.textAlign='left';
+      ctx.fillStyle='#8a8270';
+      ctx.fillText(captionText,rowLeft,rowY+8);
+      ctx.textAlign='center';
+
       ctx.save();
       ctx.shadowColor='rgba(0,0,0,0.12)';
       ctx.shadowBlur=10;
@@ -1829,11 +1832,11 @@ function _doShowResult(){
         if(bgImg) ctx.drawImage(bgImg,0,0,1080,1080);
         else { ctx.fillStyle='#e8ecdc'; ctx.fillRect(0,0,W,H); }
         drawHeader(92);
-        var charBottom=560;
+        var charBottom=545;
         if(charImg){
-          var size=440;
+          var size=440, maxH=430;
           var bb=tightBBox(charImg);
-          var scale=Math.max(size/bb.w, size/bb.h);
+          var scale=Math.min(size/bb.w, maxH/bb.h);
           var dw=bb.w*scale, dh=bb.h*scale;
           ctx.save();
           ctx.beginPath();
@@ -1846,7 +1849,7 @@ function _doShowResult(){
           ctx.drawImage(charImg,bb.x,bb.y,bb.w,bb.h,W/2-dw/2,charBottom-dh,dw,dh);
         }
         // カードは下端まで伸ばして端で切る(ステッカーが貼り出た見た目)
-        drawStickerCard(612,458);
+        drawStickerCard(600,440);
       } else {
         ctx.fillStyle='#f2efe6';
         ctx.fillRect(0,0,W,H);
@@ -1859,9 +1862,9 @@ function _doShowResult(){
         drawHeader(300);
         var charBottom2=1178;
         if(charImg){
-          var size2=510;
+          var size2=510, maxH2=780;
           var bb2=tightBBox(charImg);
-          var scale2=Math.max(size2/bb2.w, size2/bb2.h);
+          var scale2=Math.min(size2/bb2.w, maxH2/bb2.h);
           var dw2=bb2.w*scale2, dh2=bb2.h*scale2;
           ctx.save();
           ctx.beginPath();
@@ -1873,7 +1876,7 @@ function _doShowResult(){
           ctx.restore();
           ctx.drawImage(charImg,bb2.x,bb2.y,bb2.w,bb2.h,W/2-dw2/2,charBottom2-dh2,dw2,dh2);
         }
-        drawStickerCard(1196,452);
+        drawStickerCard(1220,440);
       }
 
       var fileName='yamatch-'+typeCode+(mode==='story'?'-story':'')+'.png';
