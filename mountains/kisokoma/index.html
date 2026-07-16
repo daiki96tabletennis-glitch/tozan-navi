@@ -512,7 +512,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
         + '&current=temperature_2m,weather_code,wind_speed_10m,precipitation'
         + '&hourly=temperature_2m,weather_code,precipitation_probability,wind_speed_10m'
         + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max'
-        + '&timezone=Asia%2FTokyo&forecast_days=10&models=jma_seamless';
+        + '&timezone=Asia%2FTokyo&forecast_days=10';
       fetch(url)
         .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.json(); })
         .then(function(data){ saveToCache(data); render(data); })

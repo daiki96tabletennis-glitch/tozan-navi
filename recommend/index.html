@@ -1832,11 +1832,33 @@ function _doShowResult(){
         drawStickerCard(1196,452);
       }
 
-      var a=document.createElement('a');
-      a.download='yamatch-'+typeCode+(mode==='story'?'-story':'')+'.png';
-      a.href=canvas.toDataURL('image/png');
-      a.click();
-      if(btn){ btn.disabled=false; btn.textContent=btnOrig; }
+      var fileName='yamatch-'+typeCode+(mode==='story'?'-story':'')+'.png';
+      canvas.toBlob(function(blob){
+        if(!blob){
+          if(btn){ btn.disabled=false; btn.textContent=btnOrig; }
+          return;
+        }
+        var file=new File([blob], fileName, {type:'image/png'});
+        // スマホ(iOS/Android): 共有シートから「写真に保存」できるようにする
+        if(navigator.canShare && navigator.canShare({files:[file]})){
+          navigator.share({files:[file], title:'YAMATCH 登山タイプ診断'}).catch(function(){});
+          if(btn){ btn.disabled=false; btn.textContent=btnOrig; }
+          return;
+        }
+        var blobUrl=URL.createObjectURL(blob);
+        var isMobile=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if(isMobile){
+          // 共有APIが無い場合は新規タブで開き、長押し保存してもらう
+          window.open(blobUrl,'_blank');
+        } else {
+          var a=document.createElement('a');
+          a.download=fileName;
+          a.href=blobUrl;
+          a.click();
+        }
+        setTimeout(function(){ URL.revokeObjectURL(blobUrl); }, 30000);
+        if(btn){ btn.disabled=false; btn.textContent=btnOrig; }
+      }, 'image/png');
     }
 
     function loadImg(src){
