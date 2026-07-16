@@ -1689,26 +1689,36 @@ function _doShowResult(){
       ctx.textAlign='center';
       var cx=W/2;
 
-      // --- タイプ名(マーカーハイライト) ---
-      var nameY=cardY+104;
-      var nameSize=fitFont(type.name,'900','Zen Kaku Gothic New',86,cardW-120,46);
+      // --- タイプ名+コード(横並び、マーカーハイライト) ---
+      var nameY=cardY+78;
+      var nameSize=fitFont(type.name,'900','Zen Kaku Gothic New',64,cardW-220,36);
+      ctx.font='900 '+nameSize+'px "Zen Kaku Gothic New",sans-serif';
       var nameW=ctx.measureText(type.name).width;
+      ctx.font='800 41px "Outfit",sans-serif';
+      var codeW=ctx.measureText(typeCode).width;
+      var gapNC=16;
+      var groupW=nameW+gapNC+codeW;
+      var groupLeft=cx-groupW/2;
+
       ctx.fillStyle=rc.marker;
-      roundRectYm(ctx,cx-nameW/2-16,nameY-nameSize*0.62,nameW+32,nameSize*0.74,10);
+      roundRectYm(ctx,groupLeft-14,nameY-nameSize*0.62,nameW+28,nameSize*0.74,10);
       ctx.fill();
+
+      ctx.textAlign='left';
       ctx.fillStyle='#241f18';
       ctx.font='900 '+nameSize+'px "Zen Kaku Gothic New",sans-serif';
-      ctx.fillText(type.name,cx,nameY);
+      ctx.fillText(type.name,groupLeft,nameY);
 
-      ctx.font='800 40px "Outfit",sans-serif';
       ctx.fillStyle='#b0a690';
-      ctx.fillText(typeCode,cx,cardY+156);
+      ctx.font='800 41px "Outfit",sans-serif';
+      ctx.fillText(typeCode,groupLeft+nameW+gapNC,nameY);
+      ctx.textAlign='center';
 
       // --- レア度ピル ---
       var pillText=rareLabel+' · 上位'+type.rare+'%';
       ctx.font='800 32px "Zen Kaku Gothic New",sans-serif';
       var pillW=ctx.measureText(pillText).width+76;
-      var pillH=66, pillY=cardY+210;
+      var pillH=60, pillY=cardY+124;
       var pillX=cx-pillW/2;
       ctx.save();
       ctx.shadowColor=rc.pill1;
@@ -1721,7 +1731,7 @@ function _doShowResult(){
       ctx.fill();
       ctx.restore();
       ctx.fillStyle=rc.pillText;
-      ctx.fillText(pillText,cx,pillY+45);
+      ctx.fillText(pillText,cx,pillY+41);
       if(rc.spark){
         ctx.font='400 30px sans-serif';
         ctx.fillStyle='#f0c040';
@@ -1736,13 +1746,13 @@ function _doShowResult(){
         var compatText='相性◎ '+compatName;
         ctx.font='700 27px "Zen Maru Gothic",sans-serif';
         var ctW=ctx.measureText(compatText).width+56;
-        var ctH=52, ctY=cardY+294;
+        var ctH=48, ctY=cardY+200;
         roundRectYm(ctx,cx-ctW/2,ctY,ctW,ctH,26);
         ctx.strokeStyle='#c8c0ac';
         ctx.lineWidth=2.5;
         ctx.stroke();
         ctx.fillStyle='#5a5244';
-        ctx.fillText(compatText,cx,ctY+36);
+        ctx.fillText(compatText,cx,ctY+33);
       }
 
       // --- 締め行: 「あなたはどのタイプ？」+検索バーを横並びで同じ行に ---
@@ -1753,7 +1763,7 @@ function _doShowResult(){
       var sbW=Math.min(sbTextW+80,cardW-260), sbH=46;
       ctx.font='700 22px "Zen Maru Gothic",sans-serif';
       var capW=ctx.measureText(captionText).width;
-      var rowY=cardY+372;
+      var rowY=cardY+268;
       var gap=14;
       var totalW=capW+gap+sbW;
       var rowLeft=cx-totalW/2;
@@ -1832,7 +1842,7 @@ function _doShowResult(){
         if(bgImg) ctx.drawImage(bgImg,0,0,1080,1080);
         else { ctx.fillStyle='#e8ecdc'; ctx.fillRect(0,0,W,H); }
         drawHeader(92);
-        var charBottom=545;
+        var charBottom=745;
         if(charImg){
           var size=440, maxH=430;
           var bb=tightBBox(charImg);
@@ -1849,7 +1859,7 @@ function _doShowResult(){
           ctx.drawImage(charImg,bb.x,bb.y,bb.w,bb.h,W/2-dw/2,charBottom-dh,dw,dh);
         }
         // カードは下端まで伸ばして端で切る(ステッカーが貼り出た見た目)
-        drawStickerCard(600,440);
+        drawStickerCard(770,300);
       } else {
         ctx.fillStyle='#f2efe6';
         ctx.fillRect(0,0,W,H);
@@ -1860,7 +1870,7 @@ function _doShowResult(){
         ctx.fillStyle=seam;
         ctx.fillRect(0,1080,W,120);
         drawHeader(300);
-        var charBottom2=1178;
+        var charBottom2=1050;
         if(charImg){
           var size2=510, maxH2=780;
           var bb2=tightBBox(charImg);
@@ -1876,7 +1886,7 @@ function _doShowResult(){
           ctx.restore();
           ctx.drawImage(charImg,bb2.x,bb2.y,bb2.w,bb2.h,W/2-dw2/2,charBottom2-dh2,dw2,dh2);
         }
-        drawStickerCard(1220,440);
+        drawStickerCard(1080,300);
       }
 
       var fileName='yamatch-'+typeCode+(mode==='story'?'-story':'')+'.png';
