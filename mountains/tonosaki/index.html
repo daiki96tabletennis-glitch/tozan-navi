@@ -80,7 +80,17 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 /* ③ 新ヒーロー */
 .hero-new{position:relative;overflow:hidden;background:#d0dcc0;border:1px solid #a0b482;padding:20px 16px 16px;border-radius:14px;margin-bottom:14px}
 .hero-bg-svg{position:absolute;bottom:0;right:-10px;width:200px;height:120px;pointer-events:none}
-.hero-top{margin-bottom:14px}
+.hero-top{margin-bottom:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.hero-photo{position:relative;width:184px;height:104px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.7);flex-shrink:0;background:#8a9a7a}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
+.hero-photo img.hp-active{opacity:1}
+.hero-photo-dots{position:absolute;bottom:6px;left:0;right:0;display:flex;justify-content:center;gap:4px}
+.hero-photo-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.4)}
+.hero-photo-dot.hp-active{background:rgba(255,255,255,0.9)}
+.hero-photo-ctrl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);opacity:0;pointer-events:none;transition:opacity .25s ease;cursor:pointer}
+.hero-photo-ctrl.hp-show{opacity:1;pointer-events:auto;background:rgba(0,0,0,0.28)}
+.hero-photo-ctrl-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;border:none;padding:0}
+.hero-photo-ctrl-btn svg{width:16px;height:16px;color:#1a1a16;display:block}
 .mountain-name{font-size:28px;font-weight:700;color:#1a1a16;line-height:1.1}
 .mountain-kana{font-size:11px;color:#4a5a40;margin-top:3px;letter-spacing:0.08em}
 .mountain-area{font-size:12px;color:#3a4a30;margin-top:4px}
@@ -257,7 +267,11 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .weather-day-icon{font-size:22px;margin:5px 0 3px}
 .weather-day-temps{font-size:12px;font-weight:700;color:#3a3530}
 .weather-day-temps .lo{color:#8a8078;font-weight:500;margin-left:3px}
-.weather-day-pop{font-size:10px;color:#4a7098;margin-top:3px}
+.weather-day-pop{font-size:10px;color:#4a7098;margin-top:3px;display:flex;align-items:center;justify-content:center;gap:2px}
+.wp-badge{display:inline-flex;position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.wp-tooltip{position:absolute;bottom:135%;left:50%;transform:translateX(-50%);background:#1a1a16;color:white;font-size:10px;padding:4px 7px;border-radius:5px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s ease;z-index:5}
+.wp-tooltip.wp-show{opacity:1}
+.wp-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:#1a1a16}
 .weather-day-tap-hint{font-size:8px;color:#7a9060;margin-top:4px;font-weight:600}
 .weather-hourly-panel{display:none;gap:8px;margin-top:10px;padding:10px 8px;background:#f8f6f2;border-radius:10px}
 .weather-hourly-panel.open{display:flex}
@@ -267,8 +281,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .weather-hourly-temp{font-size:14px;font-weight:800;color:#1a1a16;margin-top:2px}
 .weather-hourly-sub{font-size:9px;color:#8a8078;margin-top:2px;display:flex;align-items:center;justify-content:center;gap:3px}
 .weather-loading,.weather-error{font-size:12px;color:#a09888;padding:16px 0;text-align:center}
-.weather-disclaimer{font-size:10.5px;color:#7a7268;margin-top:12px;line-height:1.6;border-top:1px solid #ece8e0;padding-top:8px}
-.weather-credit{font-size:9px;color:#c0bcb0;text-align:right;margin-top:6px}
+.weather-disclaimer{font-size:10px;color:#7a7268;margin-top:8px;line-height:1.5;border-top:1px solid #ece8e0;padding-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.weather-credit{font-size:9px;color:#c0bcb0;text-align:right;margin-top:4px}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -399,6 +413,24 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
       var hh = timeStr.substring(11,13);
       return parseInt(hh,10) + '時';
     }
+    function dayTimePeak(json, dateStr){
+      if(!json.hourly || !json.hourly.time || !json.hourly.precipitation_probability) return null;
+      var sum = 0, cnt = 0, peakVal = -1, peakHour = null;
+      for(var i=0; i<json.hourly.time.length; i++){
+        var t = json.hourly.time[i];
+        if(t.substring(0,10) !== dateStr) continue;
+        var hh = parseInt(t.substring(11,13), 10);
+        if(hh >= 7 && hh <= 18){
+          var v = json.hourly.precipitation_probability[i];
+          if(v != null){
+            sum += v; cnt++;
+            if(v > peakVal){ peakVal = v; peakHour = hh; }
+          }
+        }
+      }
+      if(cnt === 0) return null;
+      return { avg: Math.round(sum / cnt), peakVal: peakVal, peakHour: peakHour };
+    }
     function buildHourlyPanel(json){
       if(!json.hourly || !json.hourly.time || !json.current || !json.current.time) return '';
       var curHourStr = json.current.time.substring(0,13) + ':00';
@@ -432,7 +464,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
       if(!el) return;
       if(!json || !json.current || !json.daily){ showError(); return; }
       var cur = json.current;
-      var todayPop = json.daily.precipitation_probability_max[0];
+      var todayPeak = dayTimePeak(json, json.daily.time[0]);
+      var todayPop = todayPeak ? todayPeak.avg : json.daily.precipitation_probability_max[0];
       var condLevel = judgeCondition(cur.weather_code, cur.wind_speed_10m, todayPop);
       var cond = COND[condLevel];
       var html = '';
@@ -443,13 +476,26 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
         var dinfo = wInfo(json.daily.weather_code[i]);
         var hi = Math.round(json.daily.temperature_2m_max[i]);
         var lo = Math.round(json.daily.temperature_2m_min[i]);
-        var pop = json.daily.precipitation_probability_max[i];
         var isToday = (i === 0);
+        var peak = dayTimePeak(json, days[i]);
+        var pop = peak ? peak.avg : null;
+        if(pop == null) pop = json.daily.precipitation_probability_max[i];
+        var showBadge = false;
+        if(peak){
+          showBadge = isToday ? ((peak.peakVal - peak.avg) >= 25) : (peak.peakVal >= 70);
+        }
         html += '<div class="weather-day-card' + (isToday ? ' is-today' : '') + '"' + (isToday ? ' id="weather-today-card"' : '') + '>';
         html += '<div class="weather-day-label">' + dayLabel(days[i], i) + '</div>';
         html += '<div class="weather-day-icon">' + dinfo[0] + '</div>';
         html += '<div class="weather-day-temps">' + hi + '<span class="lo">/' + lo + '</span></div>';
-        html += '<div class="weather-day-pop">☔ ' + (pop != null ? pop : '—') + '%</div>';
+        html += '<div class="weather-day-pop">☔ ' + (pop != null ? pop : '—') + '%';
+        if(showBadge){
+          html += '<span class="wp-badge">'
+            + '<svg width="11" height="11" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#c06a1e"/><rect x="10.7" y="6" width="2.6" height="8" rx="1.3" fill="white"/><circle cx="12" cy="17" r="1.4" fill="white"/></svg>'
+            + '<span class="wp-tooltip">' + peak.peakHour + '時頃、一時的に大雨の可能性あり</span>'
+            + '</span>';
+        }
+        html += '</div>';
         if(isToday){
           html += '<div class="weather-day-tap-hint">▼ タップで時間帯別</div>';
         }
@@ -457,7 +503,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
       }
       html += '</div>';
       html += buildHourlyPanel(json);
-      html += '<div class="weather-disclaimer">⚠️ この予報は山周辺の参考値です。実際の山頂の天候とは異なる場合があります。</div>';
+      html += '<div class="weather-disclaimer">⚠️ 山周辺の参考値。山頂の天候とは異なる場合があります</div>';
       html += '<div class="weather-credit">Weather data by Open-Meteo.com</div>';
       el.innerHTML = html;
       var todayCard = document.getElementById('weather-today-card');
@@ -466,6 +512,26 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
         todayCard.addEventListener('click', function(){
           panel.classList.toggle('open');
         });
+      }
+      var grid = document.querySelector('.weather-days-grid');
+      if(grid){
+        function hideAllTips(){
+          grid.querySelectorAll('.wp-tooltip.wp-show').forEach(function(t){ t.classList.remove('wp-show'); });
+        }
+        grid.addEventListener('pointerdown', function(e){
+          var badge = e.target.closest('.wp-badge');
+          if(!badge) return;
+          e.stopPropagation();
+          hideAllTips();
+          var tip = badge.querySelector('.wp-tooltip');
+          if(tip) tip.classList.add('wp-show');
+        });
+        grid.addEventListener('pointerup', function(e){
+          if(e.target.closest('.wp-badge')) e.stopPropagation();
+          hideAllTips();
+        });
+        grid.addEventListener('pointercancel', hideAllTips);
+        grid.addEventListener('pointerleave', hideAllTips, true);
       }
     }
     function loadFromCache(){
@@ -794,7 +860,87 @@ applyDep();
     return h+'時間'+mn+'分';
   }
 
+  function renderHeroPhotos(mt){
+    if(!mt.photos || !mt.photos.length) return;
+    var heroTop = document.querySelector('.hero-top');
+    if(!heroTop || heroTop.querySelector('.hero-photo')) return;
+    var box = document.createElement('div');
+    box.className = 'hero-photo';
+    mt.photos.forEach(function(src, i){
+      var img = document.createElement('img');
+      img.src = src;
+      img.alt = mt.name || '';
+      img.loading = 'lazy';
+      if(i === 0) img.className = 'hp-active';
+      box.appendChild(img);
+    });
+    if(mt.photos.length > 1){
+      var dots = document.createElement('div');
+      dots.className = 'hero-photo-dots';
+      mt.photos.forEach(function(_, i){
+        var d = document.createElement('div');
+        d.className = 'hero-photo-dot' + (i === 0 ? ' hp-active' : '');
+        dots.appendChild(d);
+      });
+      box.appendChild(dots);
+    }
+    heroTop.appendChild(box);
+    if(mt.photos.length > 1){
+      var imgs = box.querySelectorAll('img');
+      var dotEls = box.querySelectorAll('.hero-photo-dot');
+      var idx = 0;
+      var paused = false;
+      var timerId = setInterval(advance, 3500);
+      function advance(){
+        imgs[idx].classList.remove('hp-active');
+        if(dotEls[idx]) dotEls[idx].classList.remove('hp-active');
+        idx = (idx + 1) % imgs.length;
+        imgs[idx].classList.add('hp-active');
+        if(dotEls[idx]) dotEls[idx].classList.add('hp-active');
+      }
+      var PAUSE_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+      var PLAY_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5 L19 12 L8 19 Z"/></svg>';
+      var ctrl = document.createElement('div');
+      ctrl.className = 'hero-photo-ctrl';
+      var ctrlBtn = document.createElement('button');
+      ctrlBtn.className = 'hero-photo-ctrl-btn';
+      ctrlBtn.type = 'button';
+      ctrlBtn.setAttribute('aria-label', '一時停止');
+      ctrlBtn.innerHTML = PAUSE_ICON;
+      ctrl.appendChild(ctrlBtn);
+      box.appendChild(ctrl);
+
+      var hideTimerId = null;
+      function showCtrl(){
+        ctrl.classList.add('hp-show');
+        if(hideTimerId) clearTimeout(hideTimerId);
+        hideTimerId = setTimeout(function(){ ctrl.classList.remove('hp-show'); }, 5000);
+      }
+      box.addEventListener('click', function(e){
+        if(e.target === ctrlBtn || ctrlBtn.contains(e.target)) return;
+        showCtrl();
+      });
+      ctrlBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        paused = !paused;
+        if(paused){
+          clearInterval(timerId);
+          ctrlBtn.innerHTML = PLAY_ICON;
+          ctrlBtn.setAttribute('aria-label', '再生');
+        } else {
+          timerId = setInterval(advance, 3500);
+          ctrlBtn.innerHTML = PAUSE_ICON;
+          ctrlBtn.setAttribute('aria-label', '一時停止');
+        }
+        showCtrl();
+      });
+    }
+  }
+
   function applyMountainData(mt){
+    // 0. 写真カルーセル
+    renderHeroPhotos(mt);
+
     // 1. コース定数（ヒーローカード）
     var statCards = document.querySelectorAll('.stat-card');
     statCards.forEach(function(card){

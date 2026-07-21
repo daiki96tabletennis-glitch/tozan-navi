@@ -255,6 +255,15 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
       </div>
     </div>
 
+    <!-- 山の写真 -->
+    <div class="section-card">
+      <div class="section-title">📷 山の写真（複数可・ヒーローカードに自動スクロール表示）</div>
+      <div class="field">
+        <input type="file" id="f-photo-input" accept="image/*" multiple onchange="handlePhotoFiles(this.files)">
+      </div>
+      <div id="photo-preview-grid" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px"></div>
+    </div>
+
     <!-- YAMAPリンク -->
     <div class="section-card">
       <div class="section-title">🗻 YAMAPリンク</div>
@@ -644,7 +653,10 @@ function openEdit(id) {
 
   // 電車バスルート
   renderTrainRoutes(currentMountain.trainRoutes || []);
-  
+
+  // 写真
+  loadPhotoState(currentMountain);
+
   // パネル切り替え
   document.getElementById('list-panel').classList.add('hidden');
   document.getElementById('edit-panel').classList.add('active');
@@ -780,6 +792,56 @@ function getFormData() {
   };
 }
 
+// ===== 写真管理 =====
+var photoState = []; // {type:'existing', url} または {type:'new', file, dataUrl, filename}
+
+function loadPhotoState(mt) {
+  photoState = (mt.photos || []).map(function(url) {
+    return { type: 'existing', url: url };
+  });
+  renderPhotoPreviews();
+}
+
+function handlePhotoFiles(fileList) {
+  var files = Array.from(fileList);
+  var remaining = files.length;
+  files.forEach(function(file) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      photoState.push({
+        type: 'new',
+        file: file,
+        dataUrl: e.target.result,
+        filename: file.name.replace(/[^a-zA-Z0-9_.-]/g, '_')
+      });
+      renderPhotoPreviews();
+      markChanged();
+    };
+    reader.readAsDataURL(file);
+  });
+  document.getElementById('f-photo-input').value = '';
+}
+
+function removePhoto(idx) {
+  photoState.splice(idx, 1);
+  renderPhotoPreviews();
+  markChanged();
+}
+
+function renderPhotoPreviews() {
+  var grid = document.getElementById('photo-preview-grid');
+  if (!grid) return;
+  grid.innerHTML = photoState.map(function(p, i) {
+    var src = p.type === 'existing' ? p.url : p.dataUrl;
+    var badge = p.type === 'new' ? '<span style="position:absolute;top:2px;left:2px;background:#4e6535;color:white;font-size:9px;padding:1px 5px;border-radius:3px">新規</span>' : '';
+    return '<div style="position:relative;width:90px;height:90px;border-radius:8px;overflow:hidden;border:1px solid #ddd">' +
+      '<img src="' + src + '" style="width:100%;height:100%;object-fit:cover">' +
+      badge +
+      '<button onclick="removePhoto(' + i + ')" style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.6);color:white;border:none;border-radius:50%;width:20px;height:20px;font-size:12px;cursor:pointer;line-height:1">×</button>' +
+      '</div>';
+  }).join('');
+}
+
 // ===== GitHub トークン管理 =====
 function saveToken() {
   var token = document.getElementById('gh-token-input').value.trim();
@@ -825,6 +887,43 @@ async function pushToGitHub() {
     if (changes.length > 0) recordChange(currentMountain.id, currentMountain.name, changes);
     var idx = allMountains.findIndex(function(m) { return m.id === currentMountain.id; });
     if (idx >= 0) Object.assign(allMountains[idx], formData);
+
+    // 写真アップロード（新規分のみGitHubにPUTし、photos配列を確定）
+    var newPhotos = photoState.filter(function(p) { return p.type === 'new'; });
+    if (newPhotos.length > 0) {
+      statusEl.className = 'gh-push-status pushing';
+      statusEl.textContent = '⏳ 写真をアップロード中...';
+      for (var pi = 0; pi < newPhotos.length; pi++) {
+        var p = newPhotos[pi];
+        var imgPath = 'images/mountains/' + currentMountain.id + '/' + Date.now() + '_' + p.filename;
+        var imgApiBase = 'https://api.github.com/repos/daiki96tabletennis-glitch/tozan-navi/contents/' + imgPath;
+        var base64Data = p.dataUrl.split(',')[1];
+        var imgPutRes = await fetch(imgApiBase, {
+          method: 'PUT',
+          headers: {
+            'Authorization': 'token ' + token,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: '[admin] ' + currentMountain.id + ' の写真を追加',
+            content: base64Data
+          })
+        });
+        if (!imgPutRes.ok) {
+          var imgErrJson = await imgPutRes.json();
+          throw new Error('写真アップロード失敗: ' + (imgErrJson.message || imgPutRes.status));
+        }
+        p.type = 'existing';
+        p.url = '/' + imgPath;
+      }
+      var finalPhotos = photoState.map(function(p) { return p.url; });
+      allMountains[idx].photos = finalPhotos;
+      renderPhotoPreviews();
+    } else if (photoState.length !== (currentMountain.photos || []).length) {
+      // 削除のみの場合もphotos配列を反映
+      allMountains[idx].photos = photoState.map(function(p) { return p.url; });
+    }
   }
 
   var content = JSON.stringify(allMountains, null, 2);
