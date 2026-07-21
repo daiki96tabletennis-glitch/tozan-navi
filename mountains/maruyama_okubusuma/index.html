@@ -559,7 +559,9 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
         .then(function(list){
           var mt = list.find(function(m){ return m.id === MID; });
           if(!mt || !mt.lat || !mt.lng){ showError(); return; }
-          fetchWeather(mt.lat, mt.lng, mt.elevation || 0);
+          var wLat = (mt.weatherLat != null) ? mt.weatherLat : mt.lat;
+          var wLng = (mt.weatherLng != null) ? mt.weatherLng : mt.lng;
+          fetchWeather(wLat, wLng, mt.elevation || 0);
         })
         .catch(showError);
     }
