@@ -1,0 +1,30 @@
+[
+  {
+    "id": "ul-backpack",
+    "title": "ULバックパック",
+    "eyebrow": "COLLECTION",
+    "description": "軽量性を最優先に設計された、海外ブランドのウルトラライト（UL）バックパックをまとめました。",
+    "filter": { "categoryId": "backpack", "brandTag": "UL向け" }
+  },
+  {
+    "id": "korea-brands",
+    "title": "韓国登山ブランド",
+    "eyebrow": "COLLECTION",
+    "description": "韓国発の注目登山・アウトドアブランドと、その代表的な商品をまとめました。",
+    "filter": { "brandCountry": "韓国" }
+  },
+  {
+    "id": "30l-backpack",
+    "title": "30Lバックパック",
+    "eyebrow": "COLLECTION",
+    "description": "日帰りから小屋泊1泊まで使える、容量30L前後のバックパックをまとめました。",
+    "filter": { "categoryId": "backpack", "capacityMin": 28, "capacityMax": 32 }
+  },
+  {
+    "id": "light-rainwear",
+    "title": "軽量レインウェア",
+    "eyebrow": "COLLECTION",
+    "description": "重量300g以下、行動中も快適な軽量レインウェア・シェルジャケットをまとめました。",
+    "filter": { "categoryId": "rainwear", "weightMax": 300 }
+  }
+]
