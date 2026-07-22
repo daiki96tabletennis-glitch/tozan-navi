@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>通知設定 | Yamatch管理画面</title>
+<link rel="manifest" href="/manifest.json">
+<style>
+  body{font-family:-apple-system,sans-serif;max-width:480px;margin:20px auto;padding:0 16px;background:#f7f6f2;color:#3a3530}
+  h1{font-size:18px}
+  p{font-size:13px;color:#6a6058;line-height:1.7}
+  .card{background:white;border-radius:12px;padding:16px;margin-bottom:14px;border:1px solid #ddd8d0}
+  button{background:#4e6535;color:white;border:none;padding:12px 20px;border-radius:8px;font-size:14px;cursor:pointer;width:100%;margin-top:8px}
+  button:disabled{background:#aaa}
+  .status{font-size:13px;margin-top:10px;padding:8px 12px;border-radius:8px}
+  .ok{background:#d4edda;color:#155724}
+  .err{background:#f8d7da;color:#721c24}
+  .info{background:#e8f0f8;color:#2a5070}
+  .gh-token-input{width:100%;padding:8px 12px;border-radius:8px;border:1px solid #b0d0a0;font-size:12px;font-family:monospace;box-sizing:border-box;margin-bottom:8px}
+  code{background:#f0ede5;padding:2px 5px;border-radius:4px;font-size:12px}
+</style>
+</head>
+<body>
+<h1>🔔 通知設定</h1>
+<p>このページを開いた端末に、毎日のX投稿案をプッシュ通知で届けます。<br>
+<b>iPhoneの場合：</b>まずSafariでこのページを「ホーム画面に追加」してから、ホーム画面のアイコンで開いて設定してください（Safariのタブのままだと通知が届きません）。</p>
+
+<div class="card">
+  <div id="perm-status" class="status info">状態を確認中...</div>
+  <input type="password" class="gh-token-input" id="gh-token-input" placeholder="GitHub Personal Access Token (ghp_...)">
+  <button id="subscribeBtn" onclick="subscribe()">この端末に通知を設定する</button>
+  <button id="testBtn" onclick="sendTest()" style="background:#7a9a6a">テスト通知を送る</button>
+</div>
+
+<div class="card">
+  <p style="margin:0"><b>仕組み：</b>GitHub Actionsが毎日20:00 JSTに投稿案を作成し、ここで登録した端末にプッシュ通知します。通知をタップすると下書きページが開くので、そこからコピーしてX（旧Twitter）に貼り付けて投稿してください。</p>
+</div>
+
+<script>
+var VAPID_PUBLIC_KEY = 'BPD6MQXa9h6h90ZVJ4TyiOGOQZS65WQ3NbkJb68Qixvl_4Y-lKDw5-fHF7N7T4m7oX3GCJpHkPrJORruUUDJtuc';
+var GH_OWNER = 'daiki96tabletennis-glitch';
+var GH_REPO = 'tozan-navi';
+var SUB_PATH = 'data/push_subscription.json';
+
+var statusEl = document.getElementById('perm-status');
+var tokenInput = document.getElementById('gh-token-input');
+
+tokenInput.value = localStorage.getItem('ym_gh_token') || '';
+tokenInput.addEventListener('input', function(){
+  localStorage.setItem('ym_gh_token', tokenInput.value.trim());
+});
+
+function urlBase64ToUint8Array(base64String) {
+  var padding = '='.repeat((4 - base64String.length % 4) % 4);
+  var base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+  var rawData = atob(base64);
+  var outputArray = new Uint8Array(rawData.length);
+  for (var i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}
+
+function setStatus(msg, cls) {
+  statusEl.textContent = msg;
+  statusEl.className = 'status ' + cls;
+}
+
+async function checkSupport() {
+  if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+    setStatus('この環境はプッシュ通知に対応していません。iPhoneの場合はホーム画面に追加してから開いてください。', 'err');
+    document.getElementById('subscribeBtn').disabled = true;
+    document.getElementById('testBtn').disabled = true;
+    return false;
+  }
+  if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone) {
+    setStatus('ホーム画面アプリとして開いています。「通知を設定する」を押してください。', 'info');
+  } else if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+    setStatus('iPhoneのSafariで開いています。通知を受け取るには、まず共有ボタン→「ホーム画面に追加」をしてから、ホーム画面のアイコンで開き直してください。', 'err');
+  } else {
+    setStatus('準備OK。「通知を設定する」を押してください。', 'info');
+  }
+  return true;
+}
+
+async function subscribe() {
+  if (!(await checkSupport())) return;
+  var token = tokenInput.value.trim();
+  if (!token) {
+    setStatus('GitHubトークンを入力してください（購読情報を保存するために必要です）', 'err');
+    return;
+  }
+  try {
+    var reg = await navigator.serviceWorker.register('/sw.js');
+    await navigator.serviceWorker.ready;
+
+    var permission = await Notification.requestPermission();
+    if (permission !== 'granted') {
+      setStatus('通知が許可されませんでした。ブラウザの設定から通知を許可してください。', 'err');
+      return;
+    }
+
+    var sub = await reg.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+    });
+
+    setStatus('購読情報を保存中...', 'info');
+
+    var subJson = JSON.stringify(sub.toJSON(), null, 2);
+    var apiBase = 'https://api.github.com/repos/' + GH_OWNER + '/' + GH_REPO + '/contents/' + SUB_PATH;
+
+    var existingSha = null;
+    try {
+      var getRes = await fetch(apiBase, { headers: { 'Authorization': 'token ' + token } });
+      if (getRes.ok) {
+        var getJson = await getRes.json();
+        existingSha = getJson.sha;
+      }
+    } catch (e) {}
+
+    var body = {
+      message: '[notify-setup] プッシュ通知の購読情報を更新',
+      content: btoa(unescape(encodeURIComponent(subJson)))
+    };
+    if (existingSha) body.sha = existingSha;
+
+    var putRes = await fetch(apiBase, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'token ' + token,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+
+    if (!putRes.ok) {
+      var errJson = await putRes.json();
+      throw new Error(errJson.message || ('HTTP ' + putRes.status));
+    }
+
+    setStatus('✅ 設定完了！毎日20:00頃に通知が届きます。', 'ok');
+  } catch (err) {
+    setStatus('エラー: ' + err.message, 'err');
+  }
+}
+
+async function sendTest() {
+  var reg = await navigator.serviceWorker.getRegistration();
+  if (reg) {
+    reg.showNotification('Yamatch テスト通知', {
+      body: 'この通知が見えていれば設定は正常です。',
+      icon: '/icon-192.png'
+    });
+  } else {
+    setStatus('先に「通知を設定する」を実行してください。', 'err');
+  }
+}
+
+checkSupport();
+</script>
+</body>
+</html>

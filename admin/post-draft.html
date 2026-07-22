@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日のX投稿案 | Yamatch管理画面</title>
+<style>
+  body{font-family:-apple-system,sans-serif;max-width:480px;margin:20px auto;padding:0 16px;background:#f7f6f2;color:#3a3530}
+  h1{font-size:18px}
+  .meta{font-size:12px;color:#8a8278;margin-bottom:10px}
+  .draft-box{background:white;border:1px solid #ddd8d0;border-radius:12px;padding:16px;white-space:pre-wrap;font-size:15px;line-height:1.7;margin-bottom:12px}
+  .charcount{font-size:12px;color:#8a8278;text-align:right;margin-bottom:14px}
+  .charcount.over{color:#c0392b;font-weight:700}
+  button{background:#4e6535;color:white;border:none;padding:12px 20px;border-radius:8px;font-size:14px;cursor:pointer;width:100%;margin-bottom:10px}
+  a.x-btn{display:block;text-align:center;background:#000;color:white;padding:12px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700;margin-bottom:10px}
+  .loading{text-align:center;color:#8a8278;padding:40px 0}
+</style>
+</head>
+<body>
+<h1>📝 今日のX投稿案</h1>
+<div id="content" class="loading">読み込み中...</div>
+
+<script>
+async function load() {
+  try {
+    const res = await fetch('/data/post_draft.json?t=' + Date.now());
+    if (!res.ok) throw new Error('下書きが見つかりません');
+    const draft = await res.json();
+    const isOver = draft.text.length > 140;
+    document.getElementById('content').outerHTML = `
+      <div class="meta">${draft.date} 生成 ／ テンプレート: ${draft.templateType}</div>
+      <div class="draft-box" id="draftText">${draft.text.replace(/</g,'&lt;')}</div>
+      <div class="charcount ${isOver ? 'over':''}">${draft.text.length}文字${isOver ? '（140文字超過に注意）':''}</div>
+      <button onclick="copyText()">📋 テキストをコピー</button>
+      <a class="x-btn" href="https://x.com/intent/post?text=${encodeURIComponent(draft.text)}" target="_blank" rel="noopener">𝕏 投稿画面を開く（@Yamatch_tozan）</a>
+    `;
+  } catch (e) {
+    document.getElementById('content').textContent = 'エラー: ' + e.message;
+  }
+}
+
+function copyText() {
+  const text = document.getElementById('draftText').textContent;
+  navigator.clipboard.writeText(text).then(() => alert('コピーしました'));
+}
+
+load();
+</script>
+</body>
+</html>
