@@ -28,6 +28,36 @@ gear_feature/
 新しい山と紐付けたい場合は `gear-brands.json` の `relatedMountainIds` に山IDを追加するだけで、
 「おすすめの山」セクションと `mountain-gear-links.json` の両方に自動反映されます。
 
+## ブランド・商品を拡充（今回追加）
+「CAYL価格帯で買いやすい・日本語サイトがある海外ブランド」という基準で3ブランドを追加しました。
+
+| ブランド | 国 | 価格帯 | 日本公式サイト |
+|---|---|---|---|
+| Cotopaxi | アメリカ | 1.3〜2万円台 | cotopaxi.jp |
+| POLER | アメリカ | 1.3〜1.6万円台 | polerstuff.jp |
+| Fjällräven | スウェーデン | 1.3万円前後〜 | fjallraven.jp |
+
+いずれも実売価格・実在商品を検索で確認したうえでデータ化しています（Amazon/楽天の実リンクは
+既存5ブランドと同様、確認できたものにのみ設定。今回の3ブランドは公式サイトへのリンクのみ）。
+
+商品も既存5ブランド分に1点ずつ追加し、10商品→22商品、5ブランド→8ブランドに拡充しました。
+- CAYL: Juheul（Mari Roll Topの発展形）
+- Pa'lante: V2（現行フラッグシップ）
+- Hyperlite: Windrider 40（もう1つの定番モデル）
+- Klättermusen: Gjalp 18L Backpack
+- NORRØNA: lofoten Gore-Tex Jacket
+
+ブランド数・商品数が増えたことで、`/gear/collections/ul-backpack/`や`/gear/category/backpack/`
+などのフィルター結果も自動的に増えています（コード変更不要、JSONに追加するだけで反映される
+設計になっているため）。sitemap.xmlにも新規3ブランドページを追加済みです。
+
+## SEO対応（今回追加）
+- `sitemap.xml`にギア関連15ページを追加（`/gear/category/shoes/`は準備中コンテンツのため意図的に除外）
+- 全ページに`BreadcrumbList`構造化データを追加
+- ブランド詳細ページに`Brand`構造化データを追加（創業年・国・概要）
+- カテゴリ・コレクションページに`ItemList`構造化データを追加（掲載商品を検索エンジンに明示）
+- `/gear/category/shoes/`（準備中プレースホルダー）に`noindex,follow`を設定し、薄いコンテンツとしてインデックスされるのを防止。商品が揃ったらこの制御は自動的に外れます（`gear-categories.json`の`status`を`active`に変更してスクリプト再実行するだけ）
+
 ## 画像・購入リンクについて（今回追加）
 FBを受けて、5ブランドを「イラストのみ」と「実商品購入リンク付き」に分けました。
 

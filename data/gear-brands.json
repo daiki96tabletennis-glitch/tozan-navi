@@ -35,7 +35,9 @@
       "tsukuba",
       "kirigamine",
       "okutama"
-    ]
+    ],
+    "accentColor": "#3f5233",
+    "monogram": "C"
   },
   {
     "id": "palante",
@@ -71,7 +73,9 @@
       "yari",
       "kitadake",
       "senjogatake"
-    ]
+    ],
+    "accentColor": "#c1502e",
+    "monogram": "P"
   },
   {
     "id": "hyperlite",
@@ -109,7 +113,9 @@
       "yatsugatake",
       "shirouma",
       "tsurugi"
-    ]
+    ],
+    "accentColor": "#425563",
+    "monogram": "HMG"
   },
   {
     "id": "klattermusen",
@@ -146,7 +152,9 @@
       "tanigawa",
       "nantaisan",
       "asama"
-    ]
+    ],
+    "accentColor": "#5b4636",
+    "monogram": "K"
   },
   {
     "id": "norrona",
@@ -183,6 +191,122 @@
       "hiuchi",
       "kinpusan",
       "houou"
+    ],
+    "accentColor": "#26415c",
+    "monogram": "N"
+  },
+  {
+    "id": "cotopaxi",
+    "name": "Cotopaxi",
+    "nameKana": "コトパクシ",
+    "country": "アメリカ",
+    "countryFlag": "🇺🇸",
+    "founded": 2014,
+    "founder": "デイビス・スミス",
+    "categories": [
+      "バックパック",
+      "アクセサリー"
+    ],
+    "tags": [
+      "サステナブル",
+      "カラフル",
+      "買いやすい"
+    ],
+    "description": "2014年、デイビス・スミス氏がアメリカ・ユタ州ソルトレイクシティで創業。廃材や余剰生地を組み合わせて作る「Del Día」コレクションは、1つとして同じ配色が存在しない一点物のバッグとして人気を集めている。売上の一部を貧困対策プログラムに還元する「Gear for Good」を掲げ、サステナビリティと社会貢献をものづくりの中心に据えている。日本公式サイトがあり、CAYLやPa'lanteに比べて価格・購入のしやすさの面で入門しやすいブランド。",
+    "features": [
+      "廃材使用のDel Díaコレクションは1点ごとに配色が異なる一点物",
+      "売上の一部を貧困対策プログラムに寄付する「Gear for Good」",
+      "ビビッドな配色で、山でも街でも目を引くデザイン"
+    ],
+    "recommendedFor": [
+      "初めての海外ブランドギア",
+      "写真映えするデザインが欲しい人",
+      "日帰りハイクからタウンユースまで"
+    ],
+    "officialUrl": "https://cotopaxi.jp",
+    "japanAvailability": "日本公式サイト（cotopaxi.jp）で購入可能",
+    "accentColor": "#d9622b",
+    "monogram": "CO",
+    "relatedMountainIds": [
+      "takao",
+      "tsukuba",
+      "jinba"
+    ]
+  },
+  {
+    "id": "poler",
+    "name": "POLER",
+    "nameKana": "ポーラー",
+    "country": "アメリカ",
+    "countryFlag": "🇺🇸",
+    "founded": 2010,
+    "founder": null,
+    "categories": [
+      "バックパック",
+      "アクセサリー"
+    ],
+    "tags": [
+      "買いやすい",
+      "カジュアル",
+      "キャンプカルチャー"
+    ],
+    "description": "2010年、アメリカ・オレゴン州ポートランドで創業。サーフィン・スケートボード・スノーボードといったアクションスポーツのカルチャーと、伝統的なアウトドアアクティビティを融合させた「#CampVibes」を掲げるブランド。遊び心のあるディテールとロードトリップ的な自由な世界観が特徴で、登山ガチ勢というよりは、アウトドアをカジュアルに楽しみたい層から支持されている。日本公式サイトがあり、CAYL同様の価格帯で購入しやすい。",
+    "features": [
+      "サーフ・スケート・スノーボードカルチャーとキャンプを融合した独自の世界観",
+      "ブタ鼻ストラップなど遊び心のあるディテール",
+      "1万円台から購入できる価格帯の手に取りやすさ"
+    ],
+    "recommendedFor": [
+      "カジュアルにアウトドアを楽しみたい人",
+      "初めての海外ブランドギア",
+      "デイリーユース兼用バッグ"
+    ],
+    "officialUrl": "https://polerstuff.jp",
+    "japanAvailability": "日本公式サイト（polerstuff.jp）で購入可能",
+    "accentColor": "#5a6b47",
+    "monogram": "PL",
+    "relatedMountainIds": [
+      "takao",
+      "jinba",
+      "oyama"
+    ]
+  },
+  {
+    "id": "fjallraven",
+    "name": "Fjällräven",
+    "nameKana": "フェールラーベン",
+    "country": "スウェーデン",
+    "countryFlag": "🇸🇪",
+    "founded": 1960,
+    "founder": "オッケ・ノルディン",
+    "categories": [
+      "バックパック",
+      "ウェア"
+    ],
+    "tags": [
+      "買いやすい",
+      "定番",
+      "北欧デザイン"
+    ],
+    "description": "1960年、スウェーデンでオッケ・ノルディン氏が創業した国民的アウトドアブランド。軽量で丈夫なフレーム付きザックを世界で初めて開発し、その後のバックパッカーブームの礎を作った。1978年に発売された「Kanken」は北極ギツネのロゴとともに世界中で愛されるロングセラーとなっている。日本でも広く知られた存在だが、実は本格的なトレッキングギア「Abisko」シリーズも展開しており、山にも街にも使えるオールラウンドな1本として選びやすい。",
+    "features": [
+      "堅牢で軽量なG-1000素材など独自素材によるものづくり",
+      "Kankenに代表されるタイムレスなデザインで長く使える",
+      "日本での知名度・購入しやすさは海外ブランドの中でも随一"
+    ],
+    "recommendedFor": [
+      "初めての海外ブランドギア",
+      "タウンユースと兼用したい人",
+      "山小屋泊・軽めのトレッキング"
+    ],
+    "officialUrl": "https://fjallraven.jp",
+    "japanAvailability": "日本公式サイト（fjallraven.jp）・全国の直営店/取扱店で購入可能",
+    "accentColor": "#8b3a2f",
+    "monogram": "FR",
+    "relatedMountainIds": [
+      "takao",
+      "oyama",
+      "tonosaki"
     ]
   }
 ]

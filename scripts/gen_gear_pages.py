@@ -228,8 +228,27 @@ def esc(s):
     return "" if s is None else str(s)
 
 
-def page_shell(title, description, canonical_path, back_href, header_label, body_html):
+def breadcrumb_jsonld(items):
+    # items: list of (name, url_or_None). Last item usually has url_or_None=None (current page).
+    entries = []
+    for i, (name, path) in enumerate(items, start=1):
+        entry = {"@type": "ListItem", "position": i, "name": name}
+        if path:
+            entry["item"] = "https://tozan-navi.com" + path
+        entries.append(entry)
+    data = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": entries}
+    return json.dumps(data, ensure_ascii=False)
+
+
+def page_shell(title, description, canonical_path, back_href, header_label, body_html,
+                breadcrumbs=None, extra_jsonld=None, noindex=False):
     url = "https://tozan-navi.com" + canonical_path
+    robots_tag = '<meta name="robots" content="noindex,follow">\n' if noindex else ""
+    jsonld_blocks = ""
+    if breadcrumbs:
+        jsonld_blocks += '<script type="application/ld+json">' + breadcrumb_jsonld(breadcrumbs) + '</script>\n'
+    if extra_jsonld:
+        jsonld_blocks += '<script type="application/ld+json">' + json.dumps(extra_jsonld, ensure_ascii=False) + '</script>\n'
     return """<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -237,7 +256,7 @@ def page_shell(title, description, canonical_path, back_href, header_label, body
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>""" + esc(title) + """</title>
 <meta name="description" content=\"""" + esc(description) + """\">
-<meta property="og:title" content=\"""" + esc(title) + """\">
+""" + robots_tag + """<meta property="og:title" content=\"""" + esc(title) + """\">
 <meta property="og:description" content=\"""" + esc(description) + """\">
 <meta property="og:image" content="https://tozan-navi.com/ogp.png">
 <meta property="og:url" content=\"""" + url + """\">
@@ -248,7 +267,7 @@ def page_shell(title, description, canonical_path, back_href, header_label, body
 <link rel="manifest" href="/manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
 <style>""" + STYLE + """</style>
-</head>
+""" + jsonld_blocks + """</head>
 <body>
 <header>
   <div class="header-inner">
@@ -422,7 +441,8 @@ def gen_hub():
     html = page_shell(
         "登山ギアを探す｜海外注目ブランドの登山用品データベース - Yamatch",
         "CAYL、Pa'lante、Hyperlite Mountain Gearなど海外の登山用品ブランドをカテゴリ・条件から探せます。",
-        "/gear/", "/", "GEAR", body
+        "/gear/", "/", "GEAR", body,
+        breadcrumbs=[("ホーム", "/"), ("ギア", None)]
     )
     write("gear/index.html", html)
 
@@ -441,7 +461,8 @@ def gen_brand_list():
     html = page_shell(
         "登山ギアブランド一覧｜海外の注目ULブランドまとめ - Yamatch",
         "CAYL、Pa'lante、Hyperlite Mountain Gear、Klättermusen、NORRØNAなど海外の登山用品ブランドをまとめて紹介。",
-        "/gear/brands/", "/gear/", "BRANDS", body
+        "/gear/brands/", "/gear/", "BRANDS", body,
+        breadcrumbs=[("ホーム", "/"), ("ギア", "/gear/"), ("ブランド一覧", None)]
     )
     write("gear/brands/index.html", html)
 
@@ -512,7 +533,20 @@ def gen_brand_pages():
 """
         title = brand["name"] + "（" + brand.get("nameKana", "") + "）とは｜ブランド紹介・代表商品 - Yamatch"
         description = brand["name"] + "の特徴、創業国・創業年、代表商品の容量・重量・価格帯、日本での購入可否をまとめました。"
-        html = page_shell(title, description, "/gear/brands/" + brand["id"] + "/", "/gear/brands/", "BRAND", body)
+        org_schema = {
+            "@context": "https://schema.org",
+            "@type": "Brand",
+            "name": brand["name"],
+            "description": brand.get("description", ""),
+            "url": brand.get("officialUrl", ""),
+            "foundingDate": str(brand.get("founded", "")),
+            "slogan": brand.get("nameKana", ""),
+        }
+        html = page_shell(
+            title, description, "/gear/brands/" + brand["id"] + "/", "/gear/brands/", "BRAND", body,
+            breadcrumbs=[("ホーム", "/"), ("ギア", "/gear/"), ("ブランド一覧", "/gear/brands/"), (brand["name"], None)],
+            extra_jsonld=org_schema
+        )
         write("gear/brands/" + brand["id"] + "/index.html", html)
 
 
@@ -544,7 +578,28 @@ def gen_category_pages():
 """
         title = c["name"] + "｜海外ブランドの登山用品を探す - Yamatch"
         description = c["description"]
-        html = page_shell(title, description, "/gear/category/" + c["id"] + "/", "/gear/", "CATEGORY", body)
+        item_list_schema = None
+        if c["status"] != "coming_soon" and matched:
+            item_list_schema = {
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "name": c["name"],
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": i + 1,
+                        "name": it["name"],
+                        "url": "https://tozan-navi.com/gear/brands/" + it["brandId"] + "/",
+                    }
+                    for i, it in enumerate(matched)
+                ],
+            }
+        html = page_shell(
+            title, description, "/gear/category/" + c["id"] + "/", "/gear/", "CATEGORY", body,
+            breadcrumbs=[("ホーム", "/"), ("ギア", "/gear/"), (c["name"], None)],
+            extra_jsonld=item_list_schema,
+            noindex=(c["status"] == "coming_soon")
+        )
         write("gear/category/" + c["id"] + "/index.html", html)
 
 
@@ -599,7 +654,27 @@ def gen_collection_pages():
 <div class="other-links" style="margin-top:20px"><a href="/gear/">← ギアトップへ戻る</a></div>
 """
         title = col["title"] + "｜Yamatch ギアデータベース"
-        html = page_shell(title, col["description"], "/gear/collections/" + col["id"] + "/", "/gear/", "COLLECTION", body)
+        item_list_schema = None
+        if matched:
+            item_list_schema = {
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "name": col["title"],
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": i + 1,
+                        "name": it["name"],
+                        "url": "https://tozan-navi.com/gear/brands/" + it["brandId"] + "/",
+                    }
+                    for i, it in enumerate(matched)
+                ],
+            }
+        html = page_shell(
+            title, col["description"], "/gear/collections/" + col["id"] + "/", "/gear/", "COLLECTION", body,
+            breadcrumbs=[("ホーム", "/"), ("ギア", "/gear/"), (col["title"], None)],
+            extra_jsonld=item_list_schema
+        )
         write("gear/collections/" + col["id"] + "/index.html", html)
 
 
