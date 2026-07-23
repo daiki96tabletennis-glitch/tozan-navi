@@ -47,6 +47,12 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 .tile-desc{font-size:10.5px;color:var(--hai);margin-top:4px;line-height:1.5}
 .tile-soon{font-size:9.5px;color:#fff;background:var(--hai);border-radius:999px;padding:2px 8px;display:inline-block;margin-top:8px;font-weight:700}
 
+.brand-badge{position:relative;display:inline-block;border-radius:11px;flex-shrink:0;box-shadow:0 3px 8px -2px rgba(0,0,0,.25)}
+
+.item-visual{width:100%;aspect-ratio:16/9;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.item-visual-icon{display:flex}
+.item-visual-icon svg{display:block}
+
 .brand-card{display:block;background:#fff;border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
 .brand-card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .brand-flag{font-size:20px;line-height:1}
@@ -96,6 +102,12 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 
 .empty-note{background:#fff;border-radius:16px;padding:20px 18px;text-align:center;font-size:12.5px;color:var(--hai);box-shadow:var(--shadow-sm)}
 
+.item-visual-photo{background:#f0ede5;overflow:hidden}
+.item-visual-photo img{width:100%;height:100%;object-fit:contain}
+.item-purchase-links{font-size:12.5px;font-weight:700;color:var(--sugi);margin-top:8px}
+.item-purchase-links a{text-decoration:underline;text-decoration-color:var(--wakaba);text-underline-offset:2px}
+.item-purchase-note{font-size:10px;color:var(--hai);margin-top:6px;line-height:1.6}
+
 .official-cta{background:var(--sugi);border-radius:20px;padding:26px 22px;text-align:center;margin-top:26px;box-shadow:var(--shadow)}
 .official-cta p{color:rgba(255,255,255,.75);font-size:12px;margin-bottom:16px;line-height:1.7}
 .official-cta a{display:inline-block;background:#fff;color:var(--sugi);font-weight:700;font-size:13px;padding:11px 26px;border-radius:999px}
@@ -123,11 +135,10 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 <main>
 
 <div class="brand-hero">
-  <div class="brand-hero-top">
-    <span class="brand-flag">🇸🇪</span>
+  <div class="brand-hero-top"><span class="brand-badge" style="width:52px;height:52px;background:#4e6535"><svg width="21" height="21" viewBox="0 0 24 24" style="position:absolute;top:5px;left:50%;transform:translateX(-50%);opacity:.55"><polygon points="12,3 21,20 3,20" fill="#fff"/></svg><span style="position:absolute;bottom:5px;left:0;right:0;text-align:center;font-size:13px;font-weight:900;color:#fff;letter-spacing:.02em;font-family:'Zen Kaku Gothic New',sans-serif">K</span></span>
     <div>
       <div class="brand-name">Klättermusen</div>
-      <div class="brand-kana">クレッタルムーセン</div>
+      <div class="brand-kana">🇸🇪 クレッタルムーセン</div>
     </div>
   </div>
   <div class="brand-meta-line">スウェーデン・1984年創業・ピーター・アスカルブ・ウェア・バックパック</div>
@@ -150,7 +161,7 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 </div>
 
 <div class="secline"><span class="pg-eyebrow">PRODUCTS — 代表商品</span></div>
-<div class="item-card"><div class="item-name">Bure Backpack 20L</div><span class="item-cat">バックパック</span><div class="item-specs"><span><b>容量</b> 20L</span><span><b>重量</b> 600g</span><span><b>価格帯</b> 3.1〜3.3万円</span></div><div class="item-desc">素材：60% Econyl再生ポリアミド、40%ポリアミド<br>防水性：撥水（完全防水ではない）<br>おすすめ用途：日帰り・クライミングアプローチ</div><ul class="item-feature-list"><li>デイリーマウンテニアリング向けのシンプルなデイパック</li><li>ヘルメットやカラビナを掛けられるループウェビングを装備</li><li>全製品にリサイクルポリアミドを採用するサステナブル素材</li></ul><div class="item-avail">日本での購入：日本正規代理店あり。直営店・セレクトショップで購入可能</div><a class="item-link" href="https://www.klattermusen.com" target="_blank" rel="nofollow noopener">ブランド公式サイトで見る →</a></div><div class="item-card"><div class="item-name">Mithril Jacket</div><span class="item-cat">ウェア</span><div class="item-specs"><span><b>価格帯</b> 5万円台〜</span></div><div class="item-desc">素材：ハードシェル系素材（モデルにより異なる）<br>防水性：防水（ハードシェル）<br>おすすめ用途：厳冬期・悪天候時の縦走</div><ul class="item-feature-list"><li>斜めに走るフロントジップなど北欧デザインらしい個性的なディテール</li><li>過酷な環境を想定した堅牢な作り</li></ul><div class="item-avail">日本での購入：日本正規代理店あり。直営店・セレクトショップで購入可能</div><a class="item-link" href="https://www.klattermusen.com" target="_blank" rel="nofollow noopener">ブランド公式サイトで見る →</a></div><div class="secline"><span class="pg-eyebrow">MOUNTAINS — このブランドが似合う山</span></div><p class="sec-desc">Klättermusenのテイストと相性がよい山をピックアップしました。</p><a href="/mountains/tanigawa/" class="mtn-card"><div><div class="mtn-name">谷川岳</div><div class="mtn-meta">群馬県・1977m・百名山</div></div><div class="mtn-chevron">›</div></a><a href="/mountains/nantaisan/" class="mtn-card"><div><div class="mtn-name">男体山</div><div class="mtn-meta">栃木県・2486m・百名山</div></div><div class="mtn-chevron">›</div></a><a href="/mountains/asama/" class="mtn-card"><div><div class="mtn-name">浅間山</div><div class="mtn-meta">長野県南部・2568m・百名山</div></div><div class="mtn-chevron">›</div></a>
+<div class="item-card"><div class="item-visual" style="background:linear-gradient(160deg,#4e653522,#4e65350d)"><span class="item-visual-icon" style="color:#4e6535"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M8 9V6.5a4 4 0 0 1 8 0V9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="6" y="9" width="12" height="12.5" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 13h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 9v3.2M15 9v3.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div><div class="item-name">Bure Backpack 20L</div><span class="item-cat">バックパック</span><div class="item-specs"><span><b>容量</b> 20L</span><span><b>重量</b> 600g</span><span><b>価格帯</b> 3.1〜3.3万円</span></div><div class="item-desc">素材：60% Econyl再生ポリアミド、40%ポリアミド<br>防水性：撥水（完全防水ではない）<br>おすすめ用途：日帰り・クライミングアプローチ</div><ul class="item-feature-list"><li>デイリーマウンテニアリング向けのシンプルなデイパック</li><li>ヘルメットやカラビナを掛けられるループウェビングを装備</li><li>全製品にリサイクルポリアミドを採用するサステナブル素材</li></ul><div class="item-avail">日本での購入：日本正規代理店あり。直営店・セレクトショップで購入可能</div><a class="item-link" href="https://www.klattermusen.com" target="_blank" rel="nofollow noopener">ブランド公式サイトで見る →</a><div class="item-purchase-links"><a href="https://www.amazon.co.jp/dp/B07L65KS91?tag=amazonafdaiki-22" target="_blank" rel="nofollow noopener sponsored">Amazonで見る</a></div><div class="item-purchase-note">※価格・在庫は変動します。最新情報は各リンク先でご確認ください。当サイトはAmazonアソシエイト・楽天アフィリエイトを利用しています。</div></div><div class="item-card"><div class="item-visual" style="background:linear-gradient(160deg,#4e653522,#4e65350d)"><span class="item-visual-icon" style="color:#4e6535"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M9 3.5l3 2 3-2 3 3-2 2v13.5H8V8.5l-2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.5 15h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span></div><div class="item-name">Mithril Jacket</div><span class="item-cat">ウェア</span><div class="item-specs"><span><b>価格帯</b> 3.4〜3.6万円</span></div><div class="item-desc">素材：ハードシェル系素材（モデルにより異なる）<br>防水性：防水（ハードシェル）<br>おすすめ用途：厳冬期・悪天候時の縦走</div><ul class="item-feature-list"><li>斜めに走るフロントジップなど北欧デザインらしい個性的なディテール</li><li>過酷な環境を想定した堅牢な作り</li></ul><div class="item-avail">日本での購入：日本正規代理店あり。直営店・セレクトショップで購入可能</div><a class="item-link" href="https://www.klattermusen.com" target="_blank" rel="nofollow noopener">ブランド公式サイトで見る →</a><div class="item-purchase-links"><a href="https://www.amazon.co.jp/dp/B00CC8OPK4?tag=amazonafdaiki-22" target="_blank" rel="nofollow noopener sponsored">Amazonで見る</a>　/　<a href="https://item.rakuten.co.jp/j-pia/klatter-10630m/" target="_blank" rel="nofollow noopener sponsored">楽天市場で見る</a></div><div class="item-purchase-note">※価格・在庫は変動します。最新情報は各リンク先でご確認ください。当サイトはAmazonアソシエイト・楽天アフィリエイトを利用しています。</div></div><div class="secline"><span class="pg-eyebrow">MOUNTAINS — このブランドが似合う山</span></div><p class="sec-desc">Klättermusenのテイストと相性がよい山をピックアップしました。</p><a href="/mountains/tanigawa/" class="mtn-card"><div><div class="mtn-name">谷川岳</div><div class="mtn-meta">群馬県・1977m・百名山</div></div><div class="mtn-chevron">›</div></a><a href="/mountains/nantaisan/" class="mtn-card"><div><div class="mtn-name">男体山</div><div class="mtn-meta">栃木県・2486m・百名山</div></div><div class="mtn-chevron">›</div></a><a href="/mountains/asama/" class="mtn-card"><div><div class="mtn-name">浅間山</div><div class="mtn-meta">長野県南部・2568m・百名山</div></div><div class="mtn-chevron">›</div></a>
 
 <div class="official-cta">
   <p>価格・在庫・最新モデルは公式サイトでご確認ください</p>

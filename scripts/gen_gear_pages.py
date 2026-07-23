@@ -19,9 +19,9 @@ import json
 import os
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-BASE = os.path.dirname(SCRIPT_DIR)          # リポジトリのルート(scriptsの1つ上)
+BASE = os.path.dirname(SCRIPT_DIR)
 DATA_DIR = os.path.join(BASE, "data")
-OUT = BASE                                   # 生成物はリポジトリ直下に書き出す
+OUT = BASE
 
 
 def load(name):
@@ -36,6 +36,74 @@ COLLECTIONS = load("gear-collections.json")
 MOUNTAINS = load("mountains-lookup.json")
 
 BRAND_BY_ID = {b["id"]: b for b in BRANDS}
+
+# ---- オリジナルSVGアイコン(実物の写真・ロゴは使わず自作の線画で代替) ----
+CATEGORY_ICON_PATHS = {
+    "backpack": """<path d="M8 9V6.5a4 4 0 0 1 8 0V9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="6" y="9" width="12" height="12.5" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 13h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 9v3.2M15 9v3.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>""",
+    "rainwear": """<path d="M9 3.5l3 2 3-2 3 3-2 2v13.5H8V8.5l-2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 5.5v3.3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9.5 12h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>""",
+    "apparel": """<path d="M9 3.5l3 2 3-2 3 3-2 2v13.5H8V8.5l-2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.5 15h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>""",
+    "shoes": """<path d="M4 18.5c0-2 1.4-3.2 3-4l4.5-2.8c1-.6 1.5-.5 2.3.2l2 1.8c.7.6 1.4.8 2.4.8H20v3.6a1.4 1.4 0 0 1-1.4 1.4H5.4A1.4 1.4 0 0 1 4 18.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12.2V9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>""",
+    "accessory": """<path d="M8 10.5V9a4 4 0 0 1 8 0v1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M6.5 10.5h11l-1 10a2 2 0 0 1-2 1.8h-5a2 2 0 0 1-2-1.8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>""",
+}
+
+
+def render_category_icon(category_id, size=22):
+    path = CATEGORY_ICON_PATHS.get(category_id, CATEGORY_ICON_PATHS["accessory"])
+    return '<svg width="' + str(size) + '" height="' + str(size) + '" viewBox="0 0 24 24">' + path + '</svg>'
+
+
+def render_logo_badge(brand, size=40):
+    color = brand.get("accentColor", "#4e6535")
+    mono = brand.get("monogram", brand["name"][0])
+    font_size = 13 if len(mono) <= 2 else 9
+    return (
+        '<span class="brand-badge" style="width:' + str(size) + 'px;height:' + str(size) + 'px;background:' + color + '">'
+        '<svg width="' + str(int(size * 0.42)) + '" height="' + str(int(size * 0.42)) + '" viewBox="0 0 24 24" style="position:absolute;top:5px;left:50%;transform:translateX(-50%);opacity:.55">'
+        '<polygon points="12,3 21,20 3,20" fill="#fff"/></svg>'
+        '<span style="position:absolute;bottom:5px;left:0;right:0;text-align:center;font-size:' + str(font_size) + 'px;font-weight:900;color:#fff;letter-spacing:.02em;font-family:\'Zen Kaku Gothic New\',sans-serif">' + esc(mono) + '</span>'
+        '</span>'
+    )
+
+
+def render_item_visual(item):
+    brand = BRAND_BY_ID.get(item["brandId"], {})
+    color = brand.get("accentColor", "#4e6535")
+    images = item.get("images") or []
+    if images:
+        return (
+            '<div class="item-visual item-visual-photo">'
+            '<img src="' + esc(images[0]) + '" alt="' + esc(item["name"]) + '" loading="lazy">'
+            '</div>'
+        )
+    icon = render_category_icon(item.get("categoryId", "accessory"), size=34)
+    return (
+        '<div class="item-visual" style="background:linear-gradient(160deg,' + color + '22,' + color + '0d)">'
+        '<span class="item-visual-icon" style="color:' + color + '">' + icon + '</span>'
+        '</div>'
+    )
+
+
+AMAZON_TAG = "amazonafdaiki-22"
+
+
+def render_purchase_links(item):
+    links = []
+    asin = item.get("amazonAsin")
+    if asin:
+        url = "https://www.amazon.co.jp/dp/" + asin + "?tag=" + AMAZON_TAG
+        links.append('<a href="' + url + '" target="_blank" rel="nofollow noopener sponsored">Amazonで見る</a>')
+    rakuten_url = item.get("rakutenUrl")
+    if rakuten_url:
+        links.append('<a href="' + esc(rakuten_url) + '" target="_blank" rel="nofollow noopener sponsored">楽天市場で見る</a>')
+    if not links:
+        return ""
+    note = ""
+    if rakuten_url and not asin:
+        pass
+    return (
+        '<div class="item-purchase-links">' + "　/　".join(links) + '</div>'
+        '<div class="item-purchase-note">※価格・在庫は変動します。最新情報は各リンク先でご確認ください。当サイトはAmazonアソシエイト・楽天アフィリエイトを利用しています。</div>'
+    )
 
 STYLE = """
 *{box-sizing:border-box;margin:0;padding:0}
@@ -68,6 +136,12 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 .tile-name{font-size:13.5px;font-weight:800;color:var(--sumi)}
 .tile-desc{font-size:10.5px;color:var(--hai);margin-top:4px;line-height:1.5}
 .tile-soon{font-size:9.5px;color:#fff;background:var(--hai);border-radius:999px;padding:2px 8px;display:inline-block;margin-top:8px;font-weight:700}
+
+.brand-badge{position:relative;display:inline-block;border-radius:11px;flex-shrink:0;box-shadow:0 3px 8px -2px rgba(0,0,0,.25)}
+
+.item-visual{width:100%;aspect-ratio:16/9;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.item-visual-icon{display:flex}
+.item-visual-icon svg{display:block}
 
 .brand-card{display:block;background:#fff;border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
 .brand-card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
@@ -117,6 +191,12 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 .mtn-chevron{color:var(--sugi);font-size:14px;font-weight:700}
 
 .empty-note{background:#fff;border-radius:16px;padding:20px 18px;text-align:center;font-size:12.5px;color:var(--hai);box-shadow:var(--shadow-sm)}
+
+.item-visual-photo{background:#f0ede5;overflow:hidden}
+.item-visual-photo img{width:100%;height:100%;object-fit:contain}
+.item-purchase-links{font-size:12.5px;font-weight:700;color:var(--sugi);margin-top:8px}
+.item-purchase-links a{text-decoration:underline;text-decoration-color:var(--wakaba);text-underline-offset:2px}
+.item-purchase-note{font-size:10px;color:var(--hai);margin-top:6px;line-height:1.6}
 
 .official-cta{background:var(--sugi);border-radius:20px;padding:26px 22px;text-align:center;margin-top:26px;box-shadow:var(--shadow)}
 .official-cta p{color:rgba(255,255,255,.75);font-size:12px;margin-bottom:16px;line-height:1.7}
@@ -231,12 +311,15 @@ def render_item_card(item, show_brand_link=True):
     if item.get("officialUrl"):
         link_html = '<a class="item-link" href="' + esc(item["officialUrl"]) + '" target="_blank" rel="nofollow noopener">ブランド公式サイトで見る →</a>'
 
+    purchase_html = render_purchase_links(item)
+
     brand_link_html = ""
     if show_brand_link and brand:
         brand_link_html = '<a class="item-brand-link" href="/gear/brands/' + brand["id"] + '/">' + esc(brand["name"]) + '</a><br>'
 
     return (
         '<div class="item-card">'
+        + render_item_visual(item)
         + brand_link_html
         + '<div class="item-name">' + esc(item["name"]) + '</div>'
         '<span class="item-cat">' + esc(item.get("category", "")) + '</span>'
@@ -245,6 +328,7 @@ def render_item_card(item, show_brand_link=True):
         + features_html
         + avail_html
         + link_html
+        + purchase_html
         + '</div>'
     )
 
@@ -253,9 +337,9 @@ def render_brand_card(b):
     tags_html = "".join(['<span class="brand-tag">' + esc(t) + '</span>' for t in b.get("tags", [])])
     return (
         '<a href="/gear/brands/' + b["id"] + '/" class="brand-card">'
-        '<div class="brand-card-head"><span class="brand-flag">' + esc(b.get("countryFlag")) + '</span>'
+        '<div class="brand-card-head">' + render_logo_badge(b, size=44) + ''
         '<div><div class="brand-name">' + esc(b["name"]) + '</div>'
-        '<div class="brand-kana">' + esc(b.get("nameKana", "")) + '・' + esc(b.get("country", "")) + '・' + esc(b.get("founded", "")) + '年創業</div></div></div>'
+        '<div class="brand-kana">' + esc(b.get("countryFlag")) + ' ' + esc(b.get("nameKana", "")) + '・' + esc(b.get("country", "")) + '・' + esc(b.get("founded", "")) + '年創業</div></div></div>'
         '<div class="brand-desc">' + esc(b.get("description", ""))[:80] + '…</div>'
         '<div class="brand-tags">' + tags_html + '</div>'
         '<div class="brand-chevron-row">ブランドを見る ›</div>'
@@ -391,11 +475,10 @@ def gen_brand_pages():
 
         body = """
 <div class="brand-hero">
-  <div class="brand-hero-top">
-    <span class="brand-flag">""" + esc(brand.get("countryFlag")) + """</span>
+  <div class="brand-hero-top">""" + render_logo_badge(brand, size=52) + """
     <div>
       <div class="brand-name">""" + esc(brand["name"]) + """</div>
-      <div class="brand-kana">""" + esc(brand.get("nameKana", "")) + """</div>
+      <div class="brand-kana">""" + esc(brand.get("countryFlag")) + """ """ + esc(brand.get("nameKana", "")) + """</div>
     </div>
   </div>
   <div class="brand-meta-line">""" + esc(brand.get("country")) + """・""" + esc(brand.get("founded")) + """年創業""" + founder_str + """・""" + esc(categories_str) + """</div>
