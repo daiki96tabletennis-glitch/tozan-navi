@@ -83,11 +83,30 @@ def render_item_visual(item):
     )
 
 
+def render_instagram_embed(brand):
+    url = brand.get("instagramUrl")
+    if not url:
+        return ""
+    return (
+        '<div class="secline"><span class="pg-eyebrow">SNS — 公式Instagram</span></div>'
+        '<div class="ig-embed-wrap">'
+        '<blockquote class="instagram-media" data-instgrm-permalink="' + esc(url) + '" '
+        'data-instgrm-version="14" style="width:100%; margin:0;">'
+        '<a href="' + esc(url) + '" target="_blank" rel="nofollow noopener">'
+        + esc(brand["name"]) + 'の投稿をInstagramで見る</a>'
+        '</blockquote>'
+        '</div>'
+    )
+
+
 AMAZON_TAG = "amazonafdaiki-22"
 
 
 def render_purchase_links(item):
     links = []
+    japan_url = item.get("japanUrl")
+    if japan_url:
+        links.append('<a href="' + esc(japan_url) + '" target="_blank" rel="nofollow noopener">日本正規代理店で見る</a>')
     asin = item.get("amazonAsin")
     if asin:
         url = "https://www.amazon.co.jp/dp/" + asin + "?tag=" + AMAZON_TAG
@@ -98,12 +117,11 @@ def render_purchase_links(item):
     if not links:
         return ""
     note = ""
-    if rakuten_url and not asin:
-        pass
-    return (
-        '<div class="item-purchase-links">' + "　/　".join(links) + '</div>'
-        '<div class="item-purchase-note">※価格・在庫は変動します。最新情報は各リンク先でご確認ください。当サイトはAmazonアソシエイト・楽天アフィリエイトを利用しています。</div>'
-    )
+    if asin or rakuten_url:
+        note = '<div class="item-purchase-note">※価格・在庫は変動します。最新情報は各リンク先でご確認ください。当サイトはAmazonアソシエイト・楽天アフィリエイトを利用しています。</div>'
+    else:
+        note = '<div class="item-purchase-note">※価格・在庫は変動します。最新情報は各リンク先でご確認ください。</div>'
+    return '<div class="item-purchase-links">' + "　/　".join(links) + '</div>' + note
 
 STYLE = """
 *{box-sizing:border-box;margin:0;padding:0}
@@ -123,6 +141,7 @@ header{background:var(--miyama);padding:12px 16px}
 main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 
 .pgtitle{padding:8px 0 6px}
+.gear-hero-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:20px;margin-top:10px;box-shadow:var(--shadow);display:block}
 .pg-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--sugi)}
 .pgtitle h1{font-weight:900;font-size:24px;color:var(--sumi);margin-top:8px;letter-spacing:-.01em;line-height:1.3}
 .pgtitle p{font-size:12.5px;color:var(--hai);margin-top:8px;line-height:1.7}
@@ -198,6 +217,9 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 .item-purchase-links a{text-decoration:underline;text-decoration-color:var(--wakaba);text-underline-offset:2px}
 .item-purchase-note{font-size:10px;color:var(--hai);margin-top:6px;line-height:1.6}
 
+.ig-embed-wrap{display:flex;justify-content:center;overflow:hidden;border-radius:16px}
+.ig-embed-wrap iframe{border-radius:16px !important}
+
 .official-cta{background:var(--sugi);border-radius:20px;padding:26px 22px;text-align:center;margin-top:26px;box-shadow:var(--shadow)}
 .official-cta p{color:rgba(255,255,255,.75);font-size:12px;margin-bottom:16px;line-height:1.7}
 .official-cta a{display:inline-block;background:#fff;color:var(--sugi);font-weight:700;font-size:13px;padding:11px 26px;border-radius:999px}
@@ -241,8 +263,9 @@ def breadcrumb_jsonld(items):
 
 
 def page_shell(title, description, canonical_path, back_href, header_label, body_html,
-                breadcrumbs=None, extra_jsonld=None, noindex=False):
+                breadcrumbs=None, extra_jsonld=None, noindex=False, og_image=None):
     url = "https://tozan-navi.com" + canonical_path
+    og_image_url = og_image or "https://tozan-navi.com/ogp.png"
     robots_tag = '<meta name="robots" content="noindex,follow">\n' if noindex else ""
     jsonld_blocks = ""
     if breadcrumbs:
@@ -258,7 +281,7 @@ def page_shell(title, description, canonical_path, back_href, header_label, body
 <meta name="description" content=\"""" + esc(description) + """\">
 """ + robots_tag + """<meta property="og:title" content=\"""" + esc(title) + """\">
 <meta property="og:description" content=\"""" + esc(description) + """\">
-<meta property="og:image" content="https://tozan-navi.com/ogp.png">
+<meta property="og:image" content=\"""" + og_image_url + """\">
 <meta property="og:url" content=\"""" + url + """\">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -416,6 +439,8 @@ def gen_hub():
   <p>日本ではまだ情報が少ない、海外の注目登山ブランドとその商品をまとめました。カテゴリ・条件から探せます。</p>
 </div>
 
+<img src="/images/gear/gear-hero.jpg" alt="山を背景に並べられた登山用バックパック・レインウェア・調理器具などの登山装備一式" class="gear-hero-img" loading="eager">
+
 <div class="intro-note">
   <b>このページについて：</b>「日本で一番、登山用品を探しやすいデータベース」を目指して育てているコーナーです。まずは海外ブランド5つ・代表商品から。少しずつ拡充していきます。
 </div>
@@ -442,7 +467,8 @@ def gen_hub():
         "登山ギアを探す｜海外注目ブランドの登山用品データベース - Yamatch",
         "CAYL、Pa'lante、Hyperlite Mountain Gearなど海外の登山用品ブランドをカテゴリ・条件から探せます。",
         "/gear/", "/", "GEAR", body,
-        breadcrumbs=[("ホーム", "/"), ("ギア", None)]
+        breadcrumbs=[("ホーム", "/"), ("ギア", None)],
+        og_image="https://tozan-navi.com/images/gear/gear-hero.jpg"
     )
     write("gear/index.html", html)
 
@@ -522,14 +548,16 @@ def gen_brand_pages():
 </div>
 
 <div class="secline"><span class="pg-eyebrow">PRODUCTS — 代表商品</span></div>
-""" + items_html + mountains_section + """
+""" + items_html + mountains_section + render_instagram_embed(brand) + """
 
 <div class="official-cta">
   <p>価格・在庫・最新モデルは公式サイトでご確認ください</p>
   <a href=\"""" + esc(brand.get("officialUrl")) + """\" target="_blank" rel="nofollow noopener">""" + esc(brand["name"]) + """ 公式サイトへ →</a>
+""" + ('<p style="margin-top:14px">日本からは<a href="' + esc(brand.get("japanUrl", "")) + '" target="_blank" rel="nofollow noopener" style="color:#fff;text-decoration:underline">日本正規代理店サイト</a>からも購入できます</p>' if brand.get("japanUrl") else "") + """
 </div>
 
 <div class="other-links">他のブランドも見る：""" + other_links + """</div>
+""" + ('<script async src="//www.instagram.com/embed.js"></script>' if brand.get("instagramUrl") else "") + """
 """
         title = brand["name"] + "（" + brand.get("nameKana", "") + "）とは｜ブランド紹介・代表商品 - Yamatch"
         description = brand["name"] + "の特徴、創業国・創業年、代表商品の容量・重量・価格帯、日本での購入可否をまとめました。"
