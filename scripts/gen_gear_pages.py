@@ -41,8 +41,8 @@ BRAND_BY_ID = {b["id"]: b for b in BRANDS}
 CATEGORY_ICON_PATHS = {
     "backpack": """<path d="M8.5 8.2C8.5 5 10 2.6 12 2.6s3.5 2.4 3.5 5.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="5.5" y="8.2" width="13" height="13.2" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="8.7" y="13" width="6.6" height="5.2" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M9 8.2v2.4M15 8.2v2.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>""",
     "rainwear": """<path d="M9 3.5l3 2 3-2 3 3-2 2v13.5H8V8.5l-2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 5.5v3.3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9.5 12h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>""",
-    "apparel": """<path d="M9 3.8L6 6.5l2 2.3 1-1.1V20h6V7.7l1 1.1 2-2.3-3-2.7c0 1.5-1.3 2.6-3 2.6s-3-1.1-3-2.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>""",
-    "shoes": """<path d="M4.5 20v-2.7c0-1 .6-1.9 1.6-2.3l4.3-1.8c.8-.3 1.7-.1 2.3.5l2 2c.9.9 2.2 1.4 3.5 1.4v1.4a1.5 1.5 0 0 1-1.5 1.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6.7 14.8V8.2A1.4 1.4 0 0 1 8.1 6.8h.8a1.4 1.4 0 0 1 1.4 1.4V12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 10l3 1M7 12l3 1" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>""",
+    "apparel": """<path d="M9 3L4.5 7l2 4l2.5-2.5V11h6V8.5l2.5 2.5l2-4L15 3c0 1.3-1.3 2.2-3 2.2S9 4.3 9 3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.7 13.3h6.6v8.7h-2.6v-6h-1.4v6H8.7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>""",
+    "shoes": """<path d="M4 19.6v-2.8c0-1.7 1-3.2 2.6-3.8L7 4.3A1.3 1.3 0 0 1 8.3 3h1.9A1.3 1.3 0 0 1 11.5 4.3v11.4c1.1.3 2 1 2.6 2 .6.2 1.1.7 1.1 1.4v.5c0 1.1-.9 2-2 2H5.2c-.7 0-1.2-.5-1.2-1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.2 7h2.3M8.2 9.8h2.3M8.2 12.6h2.3" stroke="currentColor" stroke-width="1" stroke-linecap="round"/><path d="M4 19.6h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>""",
     "accessory": """<path d="M8 10.5V9a4 4 0 0 1 8 0v1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M6.5 10.5h11l-1 10a2 2 0 0 1-2 1.8h-5a2 2 0 0 1-2-1.8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>""",
     "cap": """<path d="M4.5 14.5c0-4.4 3.4-8 7.5-8s7.5 3.6 7.5 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M4.5 14.5h11.5c2.8 0 5 .7 6.5 1.6-1.5 1-3.8 1.6-6.6 1.6H8c-2 0-3.5-1.4-3.5-3.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 6.5v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>""",
     "pole": """<path d="M8 4.5l9 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M6 6.2l3.6-2.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="14.3" cy="15.2" rx="2.6" ry="1" fill="none" stroke="currentColor" stroke-width="1.3" transform="rotate(28 14.3 15.2)"/><path d="M16.2 18.3l1 1.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>""",
@@ -83,19 +83,24 @@ def render_item_visual(item):
     )
 
 
+IG_ICON_SVG = """<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>"""
+
+
 def render_instagram_embed(brand):
     url = brand.get("instagramUrl")
     if not url:
         return ""
+    color = brand.get("accentColor", "#4e6535")
     return (
         '<div class="secline"><span class="pg-eyebrow">SNS — 公式Instagram</span></div>'
-        '<div class="ig-embed-wrap">'
-        '<blockquote class="instagram-media" data-instgrm-permalink="' + esc(url) + '" '
-        'data-instgrm-version="14" style="width:100%; margin:0;">'
-        '<a href="' + esc(url) + '" target="_blank" rel="nofollow noopener">'
-        + esc(brand["name"]) + 'の投稿をInstagramで見る</a>'
-        '</blockquote>'
-        '</div>'
+        '<a href="' + esc(url) + '" target="_blank" rel="nofollow noopener" class="ig-link-card">'
+        '<span class="ig-link-icon" style="background:' + color + '">' + IG_ICON_SVG + '</span>'
+        '<span class="ig-link-text">'
+        '<span class="ig-link-title">' + esc(brand["name"]) + '</span>'
+        '<span class="ig-link-sub">最新の投稿をInstagramで見る</span>'
+        '</span>'
+        '<span class="ig-link-arrow">→</span>'
+        '</a>'
     )
 
 
@@ -224,8 +229,12 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 .item-purchase-links a{text-decoration:underline;text-decoration-color:var(--wakaba);text-underline-offset:2px}
 .item-purchase-note{font-size:10px;color:var(--hai);margin-top:6px;line-height:1.6}
 
-.ig-embed-wrap{display:flex;justify-content:center;overflow:hidden;border-radius:16px}
-.ig-embed-wrap iframe{border-radius:16px !important}
+.ig-link-card{display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:14px 16px;box-shadow:var(--shadow-sm)}
+.ig-link-icon{flex-shrink:0;width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff}
+.ig-link-text{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+.ig-link-title{font-size:13.5px;font-weight:800;color:var(--sumi)}
+.ig-link-sub{font-size:11.5px;color:var(--hai)}
+.ig-link-arrow{flex-shrink:0;color:var(--sugi);font-weight:700;font-size:16px}
 
 .official-cta{background:var(--sugi);border-radius:20px;padding:26px 22px;text-align:center;margin-top:26px;box-shadow:var(--shadow)}
 .official-cta p{color:rgba(255,255,255,.75);font-size:12px;margin-bottom:16px;line-height:1.7}
@@ -597,7 +606,6 @@ def gen_brand_pages():
 </div>
 
 <div class="other-links">他のブランドも見る：""" + other_links + """</div>
-""" + ('<script async src="//www.instagram.com/embed.js"></script>' if brand.get("instagramUrl") else "") + """
 """
         title = brand["name"] + "（" + brand.get("nameKana", "") + "）とは｜ブランド紹介・代表商品 - Yamatch"
         description = brand["name"] + "の特徴、創業国・創業年、代表商品の容量・重量・価格帯、日本での購入可否をまとめました。"
