@@ -50,16 +50,17 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 
 .tile-icon-badge{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:var(--wakaba);margin-bottom:10px}
 .tile-icon-svg{display:flex;color:var(--sugi)}
-.tile-icon-svg svg{display:block}
+.tile-icon-svg svg,.tile-icon-svg img{display:block}
 .tile-name{font-size:13.5px;font-weight:800;color:var(--sumi)}
 .tile-desc{font-size:10.5px;color:var(--hai);margin-top:4px;line-height:1.5}
 .tile-soon{font-size:9.5px;color:#fff;background:var(--hai);border-radius:999px;padding:2px 8px;display:inline-block;margin-top:8px;font-weight:700}
 
 .brand-badge{position:relative;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0;box-shadow:0 2px 6px -2px rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.5)}
 
-.item-visual{width:100%;aspect-ratio:16/9;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.item-visual{width:100%;aspect-ratio:3.2/1;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.item-visual-badge{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 .item-visual-icon{display:flex}
-.item-visual-icon svg{display:block}
+.item-visual-icon svg,.item-visual-icon img{display:block}
 
 .brand-card{display:block;background:#fff;border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
 .brand-card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
@@ -110,7 +111,7 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 
 .empty-note{background:#fff;border-radius:16px;padding:20px 18px;text-align:center;font-size:12.5px;color:var(--hai);box-shadow:var(--shadow-sm)}
 
-.item-visual-photo{background:#f0ede5;overflow:hidden}
+.item-visual-photo{aspect-ratio:4/3;background:#f0ede5;overflow:hidden}
 .item-visual-photo img{width:100%;height:100%;object-fit:contain}
 .item-purchase-links{font-size:12.5px;font-weight:700;color:var(--sugi);margin-top:8px}
 .item-purchase-links a{text-decoration:underline;text-decoration-color:var(--wakaba);text-underline-offset:2px}
@@ -179,12 +180,11 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 </div>
 
 <div class="secline"><span class="pg-eyebrow">PRODUCTS — 代表商品</span></div>
-<div class="item-card"><div class="item-visual" style="background:linear-gradient(160deg,#2d4a3e22,#2d4a3e0d)"><span class="item-visual-icon" style="color:#2d4a3e"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M4 19.6v-2.8c0-1.7 1-3.2 2.6-3.8L7 4.3A1.3 1.3 0 0 1 8.3 3h1.9A1.3 1.3 0 0 1 11.5 4.3v11.4c1.1.3 2 1 2.6 2 .6.2 1.1.7 1.1 1.4v.5c0 1.1-.9 2-2 2H5.2c-.7 0-1.2-.5-1.2-1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.2 7h2.3M8.2 9.8h2.3M8.2 12.6h2.3" stroke="currentColor" stroke-width="1" stroke-linecap="round"/><path d="M4 19.6h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></div><div class="item-name">Renegade GT MID</div><span class="item-cat">シューズ</span><div class="item-specs"><span><b>価格帯</b> 3.3〜4.8万円（モデルにより異なる）</span></div><div class="item-desc">素材：ヌバックレザー、GORE-TEXメンブレン、Vibramソール<br>防水性：防水（GORE-TEX）<br>おすすめ用途：日帰り・縦走・観光からハイキングまで</div><ul class="item-feature-list"><li>LOWAを代表する世界的ベストセラーモデル</li><li>ヌバックレザーとクッション素材による柔らかな履き心地。足首をサポートするミッドカット</li></ul><div class="item-avail">日本での購入：日本正規代理店（イワタニ・プリムス）で購入可能</div><a class="item-link" href="https://www.iwatani-primus.co.jp/products/lowa/" target="_blank" rel="nofollow noopener">ブランド公式サイトで見る →</a></div><div class="secline"><span class="pg-eyebrow">MOUNTAINS — このブランドが似合う山</span></div><p class="sec-desc">LOWAのテイストと相性がよい山をピックアップしました。</p><a href="/mountains/tanigawa/" class="mtn-card"><div><div class="mtn-name">谷川岳</div><div class="mtn-meta">群馬県・1977m・百名山</div></div><div class="mtn-chevron">›</div></a><a href="/mountains/asama/" class="mtn-card"><div><div class="mtn-name">浅間山</div><div class="mtn-meta">長野県南部・2568m・百名山</div></div><div class="mtn-chevron">›</div></a><a href="/mountains/kirigamine/" class="mtn-card"><div><div class="mtn-name">霧ヶ峰</div><div class="mtn-meta">長野県南部・1925m・百名山</div></div><div class="mtn-chevron">›</div></a>
+<div class="item-card"><div class="item-visual" style="background:linear-gradient(160deg,#2d4a3e1a,#2d4a3e08)"><span class="item-visual-badge" style="background:#2d4a3e26"><span class="item-visual-icon" style="color:#2d4a3e"><img src="/images/icons/shoes.png" width="24" height="24" alt="" style="object-fit:contain"></span></span></div><div class="item-name">Renegade GT MID</div><span class="item-cat">シューズ</span><div class="item-specs"><span><b>価格帯</b> 3.3〜4.8万円（モデルにより異なる）</span></div><div class="item-desc">素材：ヌバックレザー、GORE-TEXメンブレン、Vibramソール<br>防水性：防水（GORE-TEX）<br>おすすめ用途：日帰り・縦走・観光からハイキングまで</div><ul class="item-feature-list"><li>LOWAを代表する世界的ベストセラーモデル</li><li>ヌバックレザーとクッション素材による柔らかな履き心地。足首をサポートするミッドカット</li></ul><div class="item-avail">日本での購入：日本正規代理店（イワタニ・プリムス）で購入可能</div><a class="item-link" href="https://www.iwatani-primus.co.jp/products/lowa/" target="_blank" rel="nofollow noopener">ブランド公式サイトで見る →</a></div><div class="secline"><span class="pg-eyebrow">MOUNTAINS — このブランドが似合う山</span></div><p class="sec-desc">LOWAのテイストと相性がよい山をピックアップしました。</p><a href="/mountains/tanigawa/" class="mtn-card"><div><div class="mtn-name">谷川岳</div><div class="mtn-meta">群馬県・1977m・百名山</div></div><div class="mtn-chevron">›</div></a><a href="/mountains/asama/" class="mtn-card"><div><div class="mtn-name">浅間山</div><div class="mtn-meta">長野県南部・2568m・百名山</div></div><div class="mtn-chevron">›</div></a><a href="/mountains/kirigamine/" class="mtn-card"><div><div class="mtn-name">霧ヶ峰</div><div class="mtn-meta">長野県南部・1925m・百名山</div></div><div class="mtn-chevron">›</div></a>
 
 <div class="official-cta">
   <p>価格・在庫・最新モデルは公式サイトでご確認ください</p>
-  <a href="https://www.iwatani-primus.co.jp/products/lowa/" target="_blank" rel="nofollow noopener">LOWA 公式サイトへ →</a>
-
+<a href="https://www.iwatani-primus.co.jp/products/lowa/" target="_blank" rel="nofollow noopener">LOWA 公式サイトへ →</a>
 </div>
 
 <div class="other-links">他のブランドも見る：<a href="/gear/brands/cayl/">CAYL</a>、<a href="/gear/brands/palante/">Pa'lante Packs</a>、<a href="/gear/brands/hyperlite/">Hyperlite Mountain Gear</a>、<a href="/gear/brands/klattermusen/">Klättermusen</a>、<a href="/gear/brands/norrona/">NORRØNA</a>、<a href="/gear/brands/cotopaxi/">Cotopaxi</a>、<a href="/gear/brands/fjallraven/">Fjällräven</a>、<a href="/gear/brands/houdini/">Houdini</a>、<a href="/gear/brands/rab/">Rab</a>、<a href="/gear/brands/blackyak/">BLACKYAK</a>、<a href="/gear/brands/merrell/">Merrell</a>、<a href="/gear/brands/aku/">AKU</a></div>
