@@ -43,12 +43,19 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 
 .tile-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px}
 .tile{background:#fff;border-radius:16px;padding:16px 14px;box-shadow:var(--shadow-sm)}
-.tile-icon{font-size:22px;margin-bottom:8px}
+.gear-type-strip{display:flex;justify-content:space-between;gap:6px;margin:18px 0 4px;padding:16px 10px;background:#fff;border-radius:16px;box-shadow:var(--shadow-sm)}
+.gear-strip-item{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
+.gear-strip-icon{width:40px;height:40px;border-radius:50%;background:var(--washi);display:flex;align-items:center;justify-content:center;color:var(--sugi)}
+.gear-strip-label{font-size:9.5px;color:var(--hai);font-weight:700;white-space:nowrap}
+
+.tile-icon-badge{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:var(--wakaba);margin-bottom:10px}
+.tile-icon-svg{display:flex;color:var(--sugi)}
+.tile-icon-svg svg{display:block}
 .tile-name{font-size:13.5px;font-weight:800;color:var(--sumi)}
 .tile-desc{font-size:10.5px;color:var(--hai);margin-top:4px;line-height:1.5}
 .tile-soon{font-size:9.5px;color:#fff;background:var(--hai);border-radius:999px;padding:2px 8px;display:inline-block;margin-top:8px;font-weight:700}
 
-.brand-badge{position:relative;display:inline-block;border-radius:11px;flex-shrink:0;box-shadow:0 3px 8px -2px rgba(0,0,0,.25)}
+.brand-badge{position:relative;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0;box-shadow:0 2px 6px -2px rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.5)}
 
 .item-visual{width:100%;aspect-ratio:16/9;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
 .item-visual-icon{display:flex}
@@ -140,8 +147,9 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 </header>
 <main>
 
+
 <div class="brand-hero">
-  <div class="brand-hero-top"><span class="brand-badge" style="width:52px;height:52px;background:#26415c"><svg width="21" height="21" viewBox="0 0 24 24" style="position:absolute;top:5px;left:50%;transform:translateX(-50%);opacity:.55"><polygon points="12,3 21,20 3,20" fill="#fff"/></svg><span style="position:absolute;bottom:5px;left:0;right:0;text-align:center;font-size:13px;font-weight:900;color:#fff;letter-spacing:.02em;font-family:'Zen Kaku Gothic New',sans-serif">N</span></span>
+  <div class="brand-hero-top"><span class="brand-badge" style="width:52px;height:52px;background:#26415c"><span style="font-size:20px;font-weight:800;color:#fff;letter-spacing:.03em;font-family:'Zen Kaku Gothic New',sans-serif">N</span></span>
     <div>
       <div class="brand-name">NORRØNA</div>
       <div class="brand-kana">🇳🇴 ノローナ</div>
@@ -175,7 +183,7 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 
 </div>
 
-<div class="other-links">他のブランドも見る：<a href="/gear/brands/cayl/">CAYL</a>、<a href="/gear/brands/palante/">Pa'lante Packs</a>、<a href="/gear/brands/hyperlite/">Hyperlite Mountain Gear</a>、<a href="/gear/brands/klattermusen/">Klättermusen</a>、<a href="/gear/brands/cotopaxi/">Cotopaxi</a>、<a href="/gear/brands/poler/">POLER</a>、<a href="/gear/brands/fjallraven/">Fjällräven</a></div>
+<div class="other-links">他のブランドも見る：<a href="/gear/brands/cayl/">CAYL</a>、<a href="/gear/brands/palante/">Pa'lante Packs</a>、<a href="/gear/brands/hyperlite/">Hyperlite Mountain Gear</a>、<a href="/gear/brands/klattermusen/">Klättermusen</a>、<a href="/gear/brands/cotopaxi/">Cotopaxi</a>、<a href="/gear/brands/fjallraven/">Fjällräven</a>、<a href="/gear/brands/houdini/">Houdini</a>、<a href="/gear/brands/rab/">Rab</a>、<a href="/gear/brands/blackyak/">BLACKYAK</a>、<a href="/gear/brands/merrell/">Merrell</a>、<a href="/gear/brands/aku/">AKU</a>、<a href="/gear/brands/lowa/">LOWA</a></div>
 <script async src="//www.instagram.com/embed.js"></script>
 
 </main>

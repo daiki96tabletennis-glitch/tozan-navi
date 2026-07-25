@@ -43,12 +43,19 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 
 .tile-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px}
 .tile{background:#fff;border-radius:16px;padding:16px 14px;box-shadow:var(--shadow-sm)}
-.tile-icon{font-size:22px;margin-bottom:8px}
+.gear-type-strip{display:flex;justify-content:space-between;gap:6px;margin:18px 0 4px;padding:16px 10px;background:#fff;border-radius:16px;box-shadow:var(--shadow-sm)}
+.gear-strip-item{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
+.gear-strip-icon{width:40px;height:40px;border-radius:50%;background:var(--washi);display:flex;align-items:center;justify-content:center;color:var(--sugi)}
+.gear-strip-label{font-size:9.5px;color:var(--hai);font-weight:700;white-space:nowrap}
+
+.tile-icon-badge{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:var(--wakaba);margin-bottom:10px}
+.tile-icon-svg{display:flex;color:var(--sugi)}
+.tile-icon-svg svg{display:block}
 .tile-name{font-size:13.5px;font-weight:800;color:var(--sumi)}
 .tile-desc{font-size:10.5px;color:var(--hai);margin-top:4px;line-height:1.5}
 .tile-soon{font-size:9.5px;color:#fff;background:var(--hai);border-radius:999px;padding:2px 8px;display:inline-block;margin-top:8px;font-weight:700}
 
-.brand-badge{position:relative;display:inline-block;border-radius:11px;flex-shrink:0;box-shadow:0 3px 8px -2px rgba(0,0,0,.25)}
+.brand-badge{position:relative;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0;box-shadow:0 2px 6px -2px rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.5)}
 
 .item-visual{width:100%;aspect-ratio:16/9;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
 .item-visual-icon{display:flex}

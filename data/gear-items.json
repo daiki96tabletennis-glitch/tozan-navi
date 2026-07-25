@@ -489,59 +489,6 @@
     "images": []
   },
   {
-    "id": "poler-rambler-pack-m",
-    "brandId": "poler",
-    "name": "RAMBLER PACK M",
-    "category": "バックパック",
-    "categoryId": "backpack",
-    "capacityL": null,
-    "capacityRange": "約20L",
-    "weightG": null,
-    "priceJPY": 14300,
-    "priceRange": "約1.4万円",
-    "materials": [
-      "ポリエステル100%"
-    ],
-    "waterproof": "撥水（完全防水ではない）",
-    "purposes": [
-      "日帰り",
-      "タウンユース"
-    ],
-    "features": [
-      "定番デイパックにPOLERらしいギミックを加えたモデル",
-      "ブタ鼻ストラップなど遊び心のあるディテール"
-    ],
-    "japanAvailability": "日本公式サイト（polerstuff.jp）で購入可能",
-    "officialUrl": "https://polerstuff.jp",
-    "images": []
-  },
-  {
-    "id": "poler-classic-rucksack",
-    "brandId": "poler",
-    "name": "CLASSIC RUCKSACK",
-    "category": "バックパック",
-    "categoryId": "backpack",
-    "capacityL": 33,
-    "weightG": null,
-    "priceJPY": null,
-    "priceRange": "1.3〜1.6万円台",
-    "materials": [
-      "600Dポリエステル"
-    ],
-    "waterproof": "撥水（完全防水ではない）",
-    "purposes": [
-      "日帰り",
-      "1泊キャンプ"
-    ],
-    "features": [
-      "オールドアウトドアシーンからインスパイアされた定番モデル",
-      "着脱可能なサイドポーチでギアの外付けにも対応"
-    ],
-    "japanAvailability": "日本公式サイト（polerstuff.jp）で購入可能",
-    "officialUrl": "https://polerstuff.jp",
-    "images": []
-  },
-  {
     "id": "fjallraven-kanken-16",
     "brandId": "fjallraven",
     "name": "Kanken",
@@ -591,6 +538,270 @@
     ],
     "japanAvailability": "日本公式サイト（fjallraven.jp）・全国の取扱店で購入可能",
     "officialUrl": "https://fjallraven.jp",
+    "images": []
+  },
+  {
+    "id": "houdini-power-houdi",
+    "brandId": "houdini",
+    "name": "Power Houdi",
+    "category": "ウェア",
+    "categoryId": "apparel",
+    "capacityL": null,
+    "weightG": 478,
+    "priceJPY": null,
+    "priceRange": "2.6〜2.9万円",
+    "materials": [
+      "Polartec Power Stretch Pro（57%ポリエステル、33%ポリアミド、10%エラスタン）"
+    ],
+    "waterproof": "非防水（ミッドレイヤー用フリース）",
+    "purposes": [
+      "日帰り",
+      "縦走",
+      "山小屋・テント泊の防寒着"
+    ],
+    "features": [
+      "Houdiniを代表する定番フリース。本国スウェーデンでは山岳ガイドにも愛用者多数",
+      "伸縮性の高いPolartec Power Stretch Pro素材で薄手ダウン並みの暖かさ"
+    ],
+    "japanAvailability": "日本正規代理店（FULLMARKS等）で購入可能",
+    "officialUrl": "https://www.houdinisportswear.com",
+    "images": []
+  },
+  {
+    "id": "houdini-daybreak-jacket",
+    "brandId": "houdini",
+    "name": "Daybreak Jacket",
+    "category": "ウェア",
+    "categoryId": "apparel",
+    "capacityL": null,
+    "weightG": 435,
+    "priceJPY": 28600,
+    "priceRange": "2.8万円台",
+    "materials": [
+      "Prime Ripstop（62%ポリエステル、38%リサイクルポリエステル）"
+    ],
+    "waterproof": "耐久撥水（DWR加工、完全防水ではない）",
+    "purposes": [
+      "日帰り",
+      "縦走",
+      "トレッキング〜日常使いまで"
+    ],
+    "features": [
+      "伸縮性と防風性を両立するPrime Ripstop生地を使用したウィンドシェル",
+      "マットな質感でカーゴ調の風合い。ダブルジップフロント"
+    ],
+    "japanAvailability": "日本正規代理店（FULLMARKS等）で購入可能",
+    "officialUrl": "https://www.houdinisportswear.com",
+    "images": []
+  },
+  {
+    "id": "rab-downpour-jacket",
+    "brandId": "rab",
+    "name": "Downpour Jacket",
+    "category": "レインウェア",
+    "categoryId": "rainwear",
+    "capacityL": null,
+    "weightG": 377,
+    "priceJPY": 22000,
+    "priceRange": "2.2万円",
+    "materials": [
+      "Pertex Shield 2.5レイヤー（リサイクル素材）"
+    ],
+    "waterproof": "防水（耐水圧20,000mm／透湿20,000g/m²/24h）",
+    "purposes": [
+      "日帰り",
+      "縦走"
+    ],
+    "features": [
+      "Rabの定番レインシェル。二重ストームガードとピットジップで快適性を確保",
+      "日常から山まで幅広く使える万能なバランスのシェル"
+    ],
+    "japanAvailability": "日本正規サイト（rab-equipment.jp）で購入可能",
+    "officialUrl": "https://rab-equipment.jp/products/downpour-jacket",
+    "images": []
+  },
+  {
+    "id": "rab-nitron-25",
+    "brandId": "rab",
+    "name": "Nitron 25",
+    "category": "バックパック",
+    "categoryId": "backpack",
+    "capacityL": 25,
+    "weightG": 640,
+    "priceJPY": 19800,
+    "priceRange": "2.0万円",
+    "materials": [
+      "100D ROBIC®ナイロンリップストップ（HydroShieldコーティング）"
+    ],
+    "waterproof": "撥水コーティング（完全防水ではない）",
+    "purposes": [
+      "日帰り",
+      "スピード重視の山行"
+    ],
+    "features": [
+      "ベストスタイルのハーネスで身体に密着し、動きながらでも小物にアクセスしやすい",
+      "フラスク収納ポケットやダブルチェストストラップなど、ファストハイク向けの機能を凝縮"
+    ],
+    "japanAvailability": "日本正規サイト（rab-equipment.jp）で購入可能",
+    "officialUrl": "https://rab-equipment.jp/products/nitron-25",
+    "images": []
+  },
+  {
+    "id": "blackyak-public-climbing-goretex",
+    "brandId": "blackyak",
+    "name": "Public Climbing 2L Gore-Tex WSP Jacket",
+    "category": "レインウェア",
+    "categoryId": "rainwear",
+    "capacityL": null,
+    "weightG": null,
+    "priceJPY": null,
+    "priceRange": "2.7〜3万円程度（個人輸入代行経由の参考価格）",
+    "materials": [
+      "GORE-TEX 2レイヤー"
+    ],
+    "waterproof": "防水（GORE-TEX）",
+    "purposes": [
+      "縦走",
+      "厳冬期"
+    ],
+    "features": [
+      "本格的なクライミング・登山シーンを想定したGORE-TEX 2Lシェル",
+      "BLACKYAKの技術志向を象徴するテクニカルライン"
+    ],
+    "japanAvailability": "BUYMA等の個人輸入代行サービス経由での購入が中心",
+    "officialUrl": "https://global.blackyak.com/en",
+    "images": []
+  },
+  {
+    "id": "blackyak-zero-spot-down",
+    "brandId": "blackyak",
+    "name": "ZERO SPOT MID DOWN JACKET",
+    "category": "ウェア",
+    "categoryId": "apparel",
+    "capacityL": null,
+    "weightG": null,
+    "priceJPY": null,
+    "priceRange": "2万円台後半程度（個人輸入代行経由の参考価格）",
+    "materials": [
+      "ダウン（フード一体型）"
+    ],
+    "waterproof": "非防水（ダウン中綿ジャケット）",
+    "purposes": [
+      "厳冬期",
+      "山小屋・行動中の防寒着"
+    ],
+    "features": [
+      "ミッドレイヤーとしても使えるダウンジャケット",
+      "フード一体型で厳冬期の防寒力を確保"
+    ],
+    "japanAvailability": "BUYMA等の個人輸入代行サービス経由での購入が中心",
+    "officialUrl": "https://global.blackyak.com/en",
+    "images": []
+  },
+  {
+    "id": "merrell-moab3-mid-gtx",
+    "brandId": "merrell",
+    "name": "MOAB 3 MID GORE-TEX",
+    "category": "シューズ",
+    "categoryId": "shoes",
+    "capacityL": null,
+    "weightG": 460,
+    "priceJPY": 25300,
+    "priceRange": "2.5万円",
+    "materials": [
+      "撥水ピッグスキンレザー＆メッシュアッパー、GORE-TEXメンブレン、Vibram TC5+アウトソール"
+    ],
+    "waterproof": "防水（GORE-TEX）",
+    "purposes": [
+      "日帰り",
+      "小屋泊",
+      "縦走"
+    ],
+    "features": [
+      "2007年発売以降、世界累計2,800万人以上が履くMOABシリーズのミッドカットモデル",
+      "ベローズタンで土・小石・水の侵入を防止。100%リサイクル素材のシューレース・ウェビングを採用"
+    ],
+    "japanAvailability": "日本公式サイト（merrell.jp）・直営店で購入可能",
+    "officialUrl": "https://merrell.jp/products/mens_moab-3-mid-gore-tex",
+    "images": []
+  },
+  {
+    "id": "merrell-moab3-gtx-low",
+    "brandId": "merrell",
+    "name": "MOAB 3 GORE-TEX",
+    "category": "シューズ",
+    "categoryId": "shoes",
+    "capacityL": null,
+    "weightG": 390,
+    "priceJPY": null,
+    "priceRange": "2万円台",
+    "materials": [
+      "撥水ピッグスキンレザー＆メッシュアッパー、GORE-TEXメンブレン、Vibram TC5+アウトソール"
+    ],
+    "waterproof": "防水（GORE-TEX）",
+    "purposes": [
+      "日帰り",
+      "タウンユース"
+    ],
+    "features": [
+      "MOAB 3のローカットモデル。軽さと機動性を重視する日帰りハイクに",
+      "ミドルワイズで日本人の足にも合わせやすい"
+    ],
+    "japanAvailability": "日本公式サイト（merrell.jp）・直営店で購入可能",
+    "officialUrl": "https://merrell.jp/products/mens_moab-3-gore-tex",
+    "images": []
+  },
+  {
+    "id": "aku-trekker-lite-3-gtx",
+    "brandId": "aku",
+    "name": "Trekker Lite III GTX",
+    "category": "シューズ",
+    "categoryId": "shoes",
+    "capacityL": null,
+    "weightG": 640,
+    "priceJPY": null,
+    "priceRange": "3.0〜3.3万円",
+    "materials": [
+      "スエードレザー＋AKU独自のAir8000ファブリック、GORE-TEX Performance Comfort、Vibram Curcumaソール"
+    ],
+    "waterproof": "防水（GORE-TEX）",
+    "purposes": [
+      "日帰り",
+      "縦走"
+    ],
+    "features": [
+      "Trekker Liteシリーズ第3世代。堅牢さと軽さを両立したミッドカットモデル",
+      "通気性に優れたAir8000素材で蒸れにくく、幅広ワイドモデルも選択可能"
+    ],
+    "japanAvailability": "日本正規代理店（石井スポーツ）で購入可能",
+    "officialUrl": "https://www.aku.com",
+    "images": []
+  },
+  {
+    "id": "lowa-renegade-gt-mid",
+    "brandId": "lowa",
+    "name": "Renegade GT MID",
+    "category": "シューズ",
+    "categoryId": "shoes",
+    "capacityL": null,
+    "weightG": null,
+    "priceJPY": null,
+    "priceRange": "3.3〜4.8万円（モデルにより異なる）",
+    "materials": [
+      "ヌバックレザー、GORE-TEXメンブレン、Vibramソール"
+    ],
+    "waterproof": "防水（GORE-TEX）",
+    "purposes": [
+      "日帰り",
+      "縦走",
+      "観光からハイキングまで"
+    ],
+    "features": [
+      "LOWAを代表する世界的ベストセラーモデル",
+      "ヌバックレザーとクッション素材による柔らかな履き心地。足首をサポートするミッドカット"
+    ],
+    "japanAvailability": "日本正規代理店（イワタニ・プリムス）で購入可能",
+    "officialUrl": "https://www.iwatani-primus.co.jp/products/lowa/",
     "images": []
   }
 ]

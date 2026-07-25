@@ -39,11 +39,13 @@ BRAND_BY_ID = {b["id"]: b for b in BRANDS}
 
 # ---- オリジナルSVGアイコン(実物の写真・ロゴは使わず自作の線画で代替) ----
 CATEGORY_ICON_PATHS = {
-    "backpack": """<path d="M8 9V6.5a4 4 0 0 1 8 0V9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="6" y="9" width="12" height="12.5" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 13h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 9v3.2M15 9v3.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>""",
+    "backpack": """<path d="M8.5 8.2C8.5 5 10 2.6 12 2.6s3.5 2.4 3.5 5.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="5.5" y="8.2" width="13" height="13.2" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="8.7" y="13" width="6.6" height="5.2" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M9 8.2v2.4M15 8.2v2.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>""",
     "rainwear": """<path d="M9 3.5l3 2 3-2 3 3-2 2v13.5H8V8.5l-2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 5.5v3.3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9.5 12h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>""",
-    "apparel": """<path d="M9 3.5l3 2 3-2 3 3-2 2v13.5H8V8.5l-2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.5 15h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>""",
-    "shoes": """<path d="M4 18.5c0-2 1.4-3.2 3-4l4.5-2.8c1-.6 1.5-.5 2.3.2l2 1.8c.7.6 1.4.8 2.4.8H20v3.6a1.4 1.4 0 0 1-1.4 1.4H5.4A1.4 1.4 0 0 1 4 18.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12.2V9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>""",
+    "apparel": """<path d="M9 3.8L6 6.5l2 2.3 1-1.1V20h6V7.7l1 1.1 2-2.3-3-2.7c0 1.5-1.3 2.6-3 2.6s-3-1.1-3-2.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>""",
+    "shoes": """<path d="M4.5 20v-2.7c0-1 .6-1.9 1.6-2.3l4.3-1.8c.8-.3 1.7-.1 2.3.5l2 2c.9.9 2.2 1.4 3.5 1.4v1.4a1.5 1.5 0 0 1-1.5 1.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6.7 14.8V8.2A1.4 1.4 0 0 1 8.1 6.8h.8a1.4 1.4 0 0 1 1.4 1.4V12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 10l3 1M7 12l3 1" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>""",
     "accessory": """<path d="M8 10.5V9a4 4 0 0 1 8 0v1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M6.5 10.5h11l-1 10a2 2 0 0 1-2 1.8h-5a2 2 0 0 1-2-1.8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>""",
+    "cap": """<path d="M4.5 14.5c0-4.4 3.4-8 7.5-8s7.5 3.6 7.5 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M4.5 14.5h11.5c2.8 0 5 .7 6.5 1.6-1.5 1-3.8 1.6-6.6 1.6H8c-2 0-3.5-1.4-3.5-3.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 6.5v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>""",
+    "pole": """<path d="M8 4.5l9 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M6 6.2l3.6-2.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="14.3" cy="15.2" rx="2.6" ry="1" fill="none" stroke="currentColor" stroke-width="1.3" transform="rotate(28 14.3 15.2)"/><path d="M16.2 18.3l1 1.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>""",
 }
 
 
@@ -55,12 +57,10 @@ def render_category_icon(category_id, size=22):
 def render_logo_badge(brand, size=40):
     color = brand.get("accentColor", "#4e6535")
     mono = brand.get("monogram", brand["name"][0])
-    font_size = 13 if len(mono) <= 2 else 9
+    font_size = int(size * (0.40 if len(mono) <= 2 else 0.30))
     return (
         '<span class="brand-badge" style="width:' + str(size) + 'px;height:' + str(size) + 'px;background:' + color + '">'
-        '<svg width="' + str(int(size * 0.42)) + '" height="' + str(int(size * 0.42)) + '" viewBox="0 0 24 24" style="position:absolute;top:5px;left:50%;transform:translateX(-50%);opacity:.55">'
-        '<polygon points="12,3 21,20 3,20" fill="#fff"/></svg>'
-        '<span style="position:absolute;bottom:5px;left:0;right:0;text-align:center;font-size:' + str(font_size) + 'px;font-weight:900;color:#fff;letter-spacing:.02em;font-family:\'Zen Kaku Gothic New\',sans-serif">' + esc(mono) + '</span>'
+        '<span style="font-size:' + str(font_size) + 'px;font-weight:800;color:#fff;letter-spacing:.03em;font-family:\'Zen Kaku Gothic New\',sans-serif">' + esc(mono) + '</span>'
         '</span>'
     )
 
@@ -151,12 +151,19 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 
 .tile-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px}
 .tile{background:#fff;border-radius:16px;padding:16px 14px;box-shadow:var(--shadow-sm)}
-.tile-icon{font-size:22px;margin-bottom:8px}
+.gear-type-strip{display:flex;justify-content:space-between;gap:6px;margin:18px 0 4px;padding:16px 10px;background:#fff;border-radius:16px;box-shadow:var(--shadow-sm)}
+.gear-strip-item{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
+.gear-strip-icon{width:40px;height:40px;border-radius:50%;background:var(--washi);display:flex;align-items:center;justify-content:center;color:var(--sugi)}
+.gear-strip-label{font-size:9.5px;color:var(--hai);font-weight:700;white-space:nowrap}
+
+.tile-icon-badge{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:var(--wakaba);margin-bottom:10px}
+.tile-icon-svg{display:flex;color:var(--sugi)}
+.tile-icon-svg svg{display:block}
 .tile-name{font-size:13.5px;font-weight:800;color:var(--sumi)}
 .tile-desc{font-size:10.5px;color:var(--hai);margin-top:4px;line-height:1.5}
 .tile-soon{font-size:9.5px;color:#fff;background:var(--hai);border-radius:999px;padding:2px 8px;display:inline-block;margin-top:8px;font-weight:700}
 
-.brand-badge{position:relative;display:inline-block;border-radius:11px;flex-shrink:0;box-shadow:0 3px 8px -2px rgba(0,0,0,.25)}
+.brand-badge{position:relative;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0;box-shadow:0 2px 6px -2px rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.5)}
 
 .item-visual{width:100%;aspect-ratio:16/9;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
 .item-visual-icon{display:flex}
@@ -405,20 +412,46 @@ def render_mountain_card(mid):
 
 # ---------- 1. ハブページ /gear/ ----------
 
+def render_tile_icon_badge(category_id):
+    icon = render_category_icon(category_id, size=26)
+    return '<span class="tile-icon-badge"><span class="tile-icon-svg">' + icon + '</span></span>'
+
+
+GEAR_TYPE_STRIP = [
+    ("apparel", "ウェア"),
+    ("shoes", "シューズ"),
+    ("backpack", "バックパック"),
+    ("cap", "キャップ"),
+    ("pole", "ポール"),
+]
+
+
+def render_gear_type_strip():
+    items = ""
+    for cid, label in GEAR_TYPE_STRIP:
+        icon = render_category_icon(cid, size=24)
+        items += (
+            '<div class="gear-strip-item">'
+            '<span class="gear-strip-icon">' + icon + '</span>'
+            '<span class="gear-strip-label">' + label + '</span>'
+            '</div>'
+        )
+    return '<div class="gear-type-strip">' + items + '</div>'
+
+
 def gen_hub():
     tiles = ""
     for c in CATEGORIES[:3]:  # バックパック/レインウェア/シューズ を主要タイルに
         if c["status"] == "coming_soon":
             tiles += (
-                '<div class="tile"><div class="tile-icon">' + c["icon"] + '</div>'
+                '<div class="tile">' + render_tile_icon_badge(c["id"]) +
                 '<div class="tile-name">' + esc(c["name"]) + '</div>'
                 '<div class="tile-desc">' + esc(c["description"]) + '</div>'
                 '<span class="tile-soon">近日公開</span></div>'
             )
         else:
             tiles += (
-                '<a href="/gear/category/' + c["id"] + '/" class="tile">'
-                '<div class="tile-icon">' + c["icon"] + '</div>'
+                '<a href="/gear/category/' + c["id"] + '/" class="tile">' + render_tile_icon_badge(c["id"]) +
                 '<div class="tile-name">' + esc(c["name"]) + '</div>'
                 '<div class="tile-desc">' + esc(c["description"]) + '</div>'
                 '</a>'
@@ -440,6 +473,8 @@ def gen_hub():
 </div>
 
 <img src="/images/gear/gear-hero.jpg" alt="山を背景に並べられた登山用バックパック・レインウェア・調理器具などの登山装備一式" class="gear-hero-img" loading="eager">
+
+""" + render_gear_type_strip() + """
 
 <div class="intro-note">
   <b>このページについて：</b>「日本で一番、登山用品を探しやすいデータベース」を目指して育てているコーナーです。まずは海外ブランド5つ・代表商品から。少しずつ拡充していきます。
@@ -520,7 +555,12 @@ def gen_brand_pages():
         founder = brand.get("founder")
         founder_str = ("・" + founder) if founder else ""
 
+        hero_img_html = ""
+        if brand.get("heroImage"):
+            hero_img_html = '<img src="' + esc(brand["heroImage"]) + '" alt="' + esc(brand["name"]) + 'のギアを山の稜線に置いたイメージカット" class="gear-hero-img" loading="eager" style="margin-bottom:18px">'
+
         body = """
+""" + hero_img_html + """
 <div class="brand-hero">
   <div class="brand-hero-top">""" + render_logo_badge(brand, size=52) + """
     <div>
@@ -573,7 +613,8 @@ def gen_brand_pages():
         html = page_shell(
             title, description, "/gear/brands/" + brand["id"] + "/", "/gear/brands/", "BRAND", body,
             breadcrumbs=[("ホーム", "/"), ("ギア", "/gear/"), ("ブランド一覧", "/gear/brands/"), (brand["name"], None)],
-            extra_jsonld=org_schema
+            extra_jsonld=org_schema,
+            og_image=("https://tozan-navi.com" + brand["heroImage"]) if brand.get("heroImage") else None
         )
         write("gear/brands/" + brand["id"] + "/index.html", html)
 
@@ -595,12 +636,16 @@ def gen_category_pages():
         else:
             matched = [i for i in ITEMS if i.get("categoryId") == c["id"]]
             items_html = "".join([render_item_card(i) for i in matched]) if matched else '<div class="empty-note">現在このカテゴリの商品を準備中です。</div>'
+            hero_html = ""
+            if c.get("heroImage"):
+                hero_html = '<img src="' + esc(c["heroImage"]) + '" alt="' + esc(c["name"]) + 'を身につけて山の稜線で休憩する登山者たち" class="gear-hero-img" loading="eager">'
             body = """
 <div class="pgtitle">
   <span class="pg-eyebrow">GEAR / CATEGORY</span>
   <h1>""" + esc(c["name"]) + """</h1>
   <p>""" + esc(c["description"]) + """</p>
 </div>
+""" + hero_html + """
 """ + items_html + """
 <div class="other-links" style="margin-top:20px"><a href="/gear/">← ギアトップへ戻る</a> ｜ <a href="/gear/brands/">ブランド一覧へ</a></div>
 """
@@ -626,7 +671,8 @@ def gen_category_pages():
             title, description, "/gear/category/" + c["id"] + "/", "/gear/", "CATEGORY", body,
             breadcrumbs=[("ホーム", "/"), ("ギア", "/gear/"), (c["name"], None)],
             extra_jsonld=item_list_schema,
-            noindex=(c["status"] == "coming_soon")
+            noindex=(c["status"] == "coming_soon"),
+            og_image=("https://tozan-navi.com" + c["heroImage"]) if c.get("heroImage") else None
         )
         write("gear/category/" + c["id"] + "/index.html", html)
 

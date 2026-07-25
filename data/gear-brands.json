@@ -38,7 +38,8 @@
     ],
     "accentColor": "#3f5233",
     "monogram": "C",
-    "instagramUrl": "https://www.instagram.com/cayl_official/p/DKjjQtdP9oL/"
+    "instagramUrl": "https://www.instagram.com/cayl_official/p/DKjjQtdP9oL/",
+    "heroImage": "/images/gear/cayl-hero.jpg"
   },
   {
     "id": "palante",
@@ -119,7 +120,8 @@
     ],
     "accentColor": "#425563",
     "monogram": "HMG",
-    "instagramUrl": "https://www.instagram.com/hyperlite_mountain_gear/p/CzypQUFMG82/"
+    "instagramUrl": "https://www.instagram.com/hyperlite_mountain_gear/p/CzypQUFMG82/",
+    "heroImage": "/images/gear/hyperlite-hero.jpg"
   },
   {
     "id": "klattermusen",
@@ -238,46 +240,8 @@
       "tsukuba",
       "jinba"
     ],
-    "instagramUrl": "https://www.instagram.com/cotopaxi/p/CWT4OBhPRc6/"
-  },
-  {
-    "id": "poler",
-    "name": "POLER",
-    "nameKana": "ポーラー",
-    "country": "アメリカ",
-    "countryFlag": "🇺🇸",
-    "founded": 2010,
-    "founder": null,
-    "categories": [
-      "バックパック",
-      "アクセサリー"
-    ],
-    "tags": [
-      "買いやすい",
-      "カジュアル",
-      "キャンプカルチャー"
-    ],
-    "description": "2010年、アメリカ・オレゴン州ポートランドで創業。サーフィン・スケートボード・スノーボードといったアクションスポーツのカルチャーと、伝統的なアウトドアアクティビティを融合させた「#CampVibes」を掲げるブランド。遊び心のあるディテールとロードトリップ的な自由な世界観が特徴で、登山ガチ勢というよりは、アウトドアをカジュアルに楽しみたい層から支持されている。日本公式サイトがあり、CAYL同様の価格帯で購入しやすい。",
-    "features": [
-      "サーフ・スケート・スノーボードカルチャーとキャンプを融合した独自の世界観",
-      "ブタ鼻ストラップなど遊び心のあるディテール",
-      "1万円台から購入できる価格帯の手に取りやすさ"
-    ],
-    "recommendedFor": [
-      "カジュアルにアウトドアを楽しみたい人",
-      "初めての海外ブランドギア",
-      "デイリーユース兼用バッグ"
-    ],
-    "officialUrl": "https://polerstuff.jp",
-    "japanAvailability": "日本公式サイト（polerstuff.jp）で購入可能",
-    "accentColor": "#5a6b47",
-    "monogram": "PL",
-    "relatedMountainIds": [
-      "takao",
-      "jinba",
-      "oyama"
-    ],
-    "instagramUrl": "https://www.instagram.com/polerstuff/p/DCsp8UGPBRH/"
+    "instagramUrl": "https://www.instagram.com/cotopaxi/p/CWT4OBhPRc6/",
+    "heroImage": "/images/gear/cotopaxi-hero.jpg"
   },
   {
     "id": "fjallraven",
@@ -316,6 +280,238 @@
       "oyama",
       "tonosaki"
     ],
-    "instagramUrl": "https://www.instagram.com/fjallravenofficial/p/C1FOXynu4Lq/"
+    "instagramUrl": "https://www.instagram.com/fjallravenofficial/p/C1FOXynu4Lq/",
+    "heroImage": "/images/gear/fjallraven-hero.jpg"
+  },
+  {
+    "id": "houdini",
+    "name": "Houdini",
+    "nameKana": "フーディニ",
+    "country": "スウェーデン",
+    "countryFlag": "🇸🇪",
+    "founded": 1993,
+    "founder": null,
+    "categories": [
+      "ウェア"
+    ],
+    "tags": [
+      "サステナブル",
+      "買いやすい",
+      "フリースのパイオニア"
+    ],
+    "description": "1993年、スウェーデンで創業。フリース素材のアンダーウェア開発のパイオニアとして知られ、山岳ガイドからクライマー、トレイルランナーまで幅広い層に愛用されている。「CORE COMFORT（最高の着心地）」を製品哲学の中心に据え、価格や素材で妥協せず、着る人のパフォーマンスを最大化するウェアを追求している。全製品がリサイクル・サステナブル素材にこだわっており、YAMAP STOREでも取り扱いがあるなど、日本の登山コミュニティでの信頼度も高い。",
+    "features": [
+      "Polartec Power Stretch Proなど高機能フリース素材のパイオニア的存在",
+      "全製品でサステナブル・リサイクル素材にこだわる環境配慮設計",
+      "山岳ガイドから日常使いまで、着心地を最優先にしたシルエット"
+    ],
+    "recommendedFor": [
+      "中間着（ミッドレイヤー）を探している人",
+      "日帰り〜縦走まで通年で使えるウェア",
+      "サステナビリティを重視する人"
+    ],
+    "officialUrl": "https://www.houdinisportswear.com",
+    "japanAvailability": "日本正規代理店あり（FULLMARKS等）。YAMAP STORE・全国のアウトドアショップでも購入可能",
+    "accentColor": "#3d5a6c",
+    "monogram": "HO",
+    "relatedMountainIds": [
+      "nasu",
+      "azumayasan",
+      "keirisan"
+    ],
+    "instagramUrl": "https://www.instagram.com/houdinisportswear/p/C1gu5iugJve/"
+  },
+  {
+    "id": "rab",
+    "name": "Rab",
+    "nameKana": "ラブ",
+    "country": "イギリス",
+    "countryFlag": "🇬🇧",
+    "founded": 1981,
+    "founder": "Rab Carrington",
+    "categories": [
+      "バックパック",
+      "レインウェア",
+      "ウェア"
+    ],
+    "tags": [
+      "買いやすい",
+      "老舗",
+      "登山家発"
+    ],
+    "description": "1981年、イギリス・シェフィールドで登山家のラブ・キャリントン氏が、自身の愛称「Rab」を冠したブランドとして寝袋の製作からスタート。彼が手作りした寝袋は地元の登山家コミュニティで瞬く間に評判となり、そこから今日のブランドへと発展した。「登山家により登山家のために」を貫き、過度な装飾を避けて実際にフィールドで機能するデザイン・素材だけを採用する姿勢が最大の特徴。日本正規サイトがあり、価格帯も1.4万円台〜と幅広く選びやすい。",
+    "features": [
+      "登山家自身が創業した「登山家による登山家のためのギア」という哲学",
+      "過度な機能を足さず、実際にフィールドで機能するものだけを採用するシンプル志向",
+      "寝袋・ダウン・レインウェア・バックパックまで一通り揃うオールラウンド性"
+    ],
+    "recommendedFor": [
+      "日帰り〜縦走まで幅広く使えるレインウェア",
+      "軽量デイパックを探している人",
+      "老舗ブランドの安心感を求める人"
+    ],
+    "officialUrl": "https://rab-equipment.jp",
+    "japanAvailability": "日本正規サイト（rab-equipment.jp）あり。ヨドバシ.com・全国のアウトドアショップでも購入可能",
+    "accentColor": "#7a1f2b",
+    "monogram": "RB",
+    "relatedMountainIds": [
+      "kobushigatake",
+      "komagatake",
+      "senjogatake"
+    ],
+    "instagramUrl": "https://www.instagram.com/rab.jp/p/C3Cosr-vw41/"
+  },
+  {
+    "id": "blackyak",
+    "name": "BLACKYAK",
+    "nameKana": "ブラックヤク",
+    "country": "韓国",
+    "countryFlag": "🇰🇷",
+    "founded": 1973,
+    "founder": null,
+    "categories": [
+      "ウェア",
+      "バックパック"
+    ],
+    "tags": [
+      "本格志向",
+      "遠征実績",
+      "韓国登山ブランド"
+    ],
+    "description": "韓国を代表する本格登山ブランドで、8000m峰への遠征隊のサポートなど「Designed by Mountaineers」を掲げる実績豊富なメーカー。韓国国内では東大門の登山用品街を中心に絶大な支持を集め、ゴアテックスシェルやダウンウェアなど本格的な高所登山装備までカバーする層の厚さが特徴。CAYLのようなミニマルライフスタイル系とは異なり、より技術・機能面を重視したガチ系ブランドとして位置付けられる。",
+    "features": [
+      "8000m峰遠征隊のサポート実績を持つ本格的な高所登山装備",
+      "GORE-TEX・ダウンなど技術素材を積極的に採用",
+      "韓国国内の東大門登山用品街を中心に絶大な支持を集める老舗"
+    ],
+    "recommendedFor": [
+      "本格的な高所・厳冬期装備を探している人",
+      "GORE-TEXシェルジャケットが欲しい人",
+      "韓国登山ブランドをもっと知りたい人"
+    ],
+    "officialUrl": "https://global.blackyak.com/en",
+    "japanAvailability": "公式の日本語通販サイトはなく、BUYMA等の個人輸入代行サービス経由での購入が中心",
+    "accentColor": "#1a1a1a",
+    "monogram": "BY",
+    "relatedMountainIds": [
+      "kitadake",
+      "yari",
+      "tsurugi"
+    ],
+    "instagramUrl": "https://www.instagram.com/p/DWOJxB0E8Ni/"
+  },
+  {
+    "id": "merrell",
+    "name": "Merrell",
+    "nameKana": "メレル",
+    "country": "アメリカ",
+    "countryFlag": "🇺🇸",
+    "founded": 1981,
+    "founder": null,
+    "categories": [
+      "シューズ"
+    ],
+    "tags": [
+      "買いやすい",
+      "定番",
+      "ハイキングシューズの代名詞"
+    ],
+    "description": "1981年、アメリカで創業したハイキングシューズの代名詞的ブランド。2007年に発売された「MOAB」シリーズは世界累計2,800万人以上に履かれているアイコンモデルで、日本でも登山靴の入門としてまず名前が挙がる定番の存在。日本公式サイトがあり、直営店やABC-MART等の靴専門店でも幅広く購入できる。CAYLやHoudiniのようなミニマルライフスタイル系とは異なり、純粋に「歩くための機能」を追求してきたシューズ専業ブランドとしての厚みがある。",
+    "features": [
+      "2007年発売のMOABシリーズは世界累計2,800万人以上が履くハイキングシューズのアイコン",
+      "GORE-TEXメンブレンとVibramアウトソールの組み合わせによる高い信頼性",
+      "日本人の足型に合わせたワイドワイズ展開など細やかなラインナップ"
+    ],
+    "recommendedFor": [
+      "初めての本格ハイキングシューズ",
+      "日帰り〜小屋泊まで幅広く使える靴",
+      "サイズ・幅の選択肢を重視する人"
+    ],
+    "officialUrl": "https://merrell.jp",
+    "japanAvailability": "日本公式サイト（merrell.jp）・直営店・ABC-MART等の靴専門店で購入可能",
+    "accentColor": "#4a5d3a",
+    "monogram": "ME",
+    "relatedMountainIds": [
+      "takao",
+      "tsukuba",
+      "oyama"
+    ],
+    "heroImage": "/images/gear/merrell-hero.jpg",
+    "instagramUrl": "https://www.instagram.com/merrell_japan/p/DBqed8kBExp/"
+  },
+  {
+    "id": "aku",
+    "name": "AKU",
+    "nameKana": "アク",
+    "country": "イタリア",
+    "countryFlag": "🇮🇹",
+    "founded": 1968,
+    "founder": null,
+    "categories": [
+      "シューズ"
+    ],
+    "tags": [
+      "本格志向",
+      "老舗",
+      "ゴアテックス先駆者"
+    ],
+    "description": "イタリア・モンテベッルーナ発の登山靴ブランド。防水透湿性素材ゴアテックスをいち早くシューズに取り入れたことで知られ、イタリア近辺の山や渓谷、氷河、モンブランなどの環境で実際にテストを重ねた上で製品化される。日本正規代理店は石井スポーツで、1990年代前半から30年以上続くパートナーシップ。単なる仕入れ販売ではなく、日本のユーザーの声がイタリア本社の商品改善にフィードバックされる関係が続いている。",
+    "features": [
+      "ゴアテックスをいち早く採用した先進的な防水透湿技術",
+      "職人が一足ずつ仕上げ、プロの登山家が実地でテストしてから発売",
+      "石井スポーツとの長年のパートナーシップで日本人の足に合うワイドモデルも展開"
+    ],
+    "recommendedFor": [
+      "本格的な縦走・重登山靴を探している人",
+      "イタリアンデザインの洗練さを求める人",
+      "ゴアテックスの信頼性を重視する人"
+    ],
+    "officialUrl": "https://www.aku.com",
+    "japanAvailability": "日本正規代理店（石井スポーツ）あり。公式WEBショップ・楽天市場・Amazonでも購入可能",
+    "accentColor": "#5c4a3a",
+    "monogram": "AK",
+    "relatedMountainIds": [
+      "nantaisan",
+      "houou",
+      "nikko_shirane"
+    ]
+  },
+  {
+    "id": "lowa",
+    "name": "LOWA",
+    "nameKana": "ローバー",
+    "country": "ドイツ",
+    "countryFlag": "🇩🇪",
+    "founded": 1923,
+    "founder": "ローレンツ・バーグナー",
+    "categories": [
+      "シューズ"
+    ],
+    "tags": [
+      "本格志向",
+      "老舗",
+      "登山靴の代名詞"
+    ],
+    "description": "1923年、ドイツ・バイエルン地方の小さな町イェッツェンドルフで、靴職人の息子ローレンツ・バーグナーが創業。ブランド名「LOWA」は創業者名「Lorenz Wagner」に由来する。2023年に創業100周年を迎えた老舗で、ヨーロッパ各国の軍・法執行機関からも信頼される堅牢な靴づくりに定評がある。「Renegade」シリーズは世界的なベストセラーで、登山靴の定番として名前が挙がることも多い。日本正規代理店はイワタニ・プリムス。",
+    "features": [
+      "QUALITY・FIT & COMFORT・INNOVATIONを掲げ、創業以来ヨーロッパでの一貫した素材調達・製造にこだわる",
+      "軍・法執行機関にも信頼される堅牢性と、クライマー・山岳ガイドの声を反映した快適性を両立",
+      "日本人を含むアジア人の足型に合わせたワイドラスト（WXL）モデルも展開"
+    ],
+    "recommendedFor": [
+      "登山靴の定番・王道モデルを探している人",
+      "長く使える1足を求める人",
+      "縦走から日帰りまで幅広く使いたい人"
+    ],
+    "officialUrl": "https://www.iwatani-primus.co.jp/products/lowa/",
+    "japanAvailability": "日本正規代理店（イワタニ・プリムス）あり。全国のアウトドアショップ・楽天市場等でも購入可能",
+    "accentColor": "#2d4a3e",
+    "monogram": "LO",
+    "relatedMountainIds": [
+      "tanigawa",
+      "asama",
+      "kirigamine"
+    ],
+    "heroImage": "/images/gear/lowa-hero.jpg"
   }
 ]
