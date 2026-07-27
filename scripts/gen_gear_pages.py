@@ -49,7 +49,17 @@ CATEGORY_ICON_PATHS = {
 }
 
 
+CATEGORY_ICON_IMAGES = {
+    "shoes": "/images/icons/shoes.png",
+    "backpack": "/images/icons/backpack.png",
+    "apparel": "/images/icons/apparel.png",
+}
+
+
 def render_category_icon(category_id, size=22):
+    if category_id in CATEGORY_ICON_IMAGES:
+        src = CATEGORY_ICON_IMAGES[category_id]
+        return '<img src="' + src + '" width="' + str(size) + '" height="' + str(size) + '" alt="" style="object-fit:contain">'
     path = CATEGORY_ICON_PATHS.get(category_id, CATEGORY_ICON_PATHS["accessory"])
     return '<svg width="' + str(size) + '" height="' + str(size) + '" viewBox="0 0 24 24">' + path + '</svg>'
 
@@ -75,10 +85,12 @@ def render_item_visual(item):
             '<img src="' + esc(images[0]) + '" alt="' + esc(item["name"]) + '" loading="lazy">'
             '</div>'
         )
-    icon = render_category_icon(item.get("categoryId", "accessory"), size=34)
+    icon = render_category_icon(item.get("categoryId", "accessory"), size=24)
     return (
-        '<div class="item-visual" style="background:linear-gradient(160deg,' + color + '22,' + color + '0d)">'
+        '<div class="item-visual" style="background:linear-gradient(160deg,' + color + '1a,' + color + '08)">'
+        '<span class="item-visual-badge" style="background:' + color + '26">'
         '<span class="item-visual-icon" style="color:' + color + '">' + icon + '</span>'
+        '</span>'
         '</div>'
     )
 
@@ -111,7 +123,8 @@ def render_purchase_links(item):
     links = []
     japan_url = item.get("japanUrl")
     if japan_url:
-        links.append('<a href="' + esc(japan_url) + '" target="_blank" rel="nofollow noopener">日本正規代理店で見る</a>')
+        label = item.get("japanUrlLabel", "日本正規代理店で見る")
+        links.append('<a href="' + esc(japan_url) + '" target="_blank" rel="nofollow noopener">' + esc(label) + '</a>')
     asin = item.get("amazonAsin")
     if asin:
         url = "https://www.amazon.co.jp/dp/" + asin + "?tag=" + AMAZON_TAG
@@ -163,16 +176,17 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 
 .tile-icon-badge{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:var(--wakaba);margin-bottom:10px}
 .tile-icon-svg{display:flex;color:var(--sugi)}
-.tile-icon-svg svg{display:block}
+.tile-icon-svg svg,.tile-icon-svg img{display:block}
 .tile-name{font-size:13.5px;font-weight:800;color:var(--sumi)}
 .tile-desc{font-size:10.5px;color:var(--hai);margin-top:4px;line-height:1.5}
 .tile-soon{font-size:9.5px;color:#fff;background:var(--hai);border-radius:999px;padding:2px 8px;display:inline-block;margin-top:8px;font-weight:700}
 
 .brand-badge{position:relative;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0;box-shadow:0 2px 6px -2px rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.5)}
 
-.item-visual{width:100%;aspect-ratio:16/9;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.item-visual{width:100%;aspect-ratio:3.2/1;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.item-visual-badge{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 .item-visual-icon{display:flex}
-.item-visual-icon svg{display:block}
+.item-visual-icon svg,.item-visual-icon img{display:block}
 
 .brand-card{display:block;background:#fff;border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
 .brand-card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
@@ -223,7 +237,7 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 
 .empty-note{background:#fff;border-radius:16px;padding:20px 18px;text-align:center;font-size:12.5px;color:var(--hai);box-shadow:var(--shadow-sm)}
 
-.item-visual-photo{background:#f0ede5;overflow:hidden}
+.item-visual-photo{aspect-ratio:4/3;background:#f0ede5;overflow:hidden}
 .item-visual-photo img{width:100%;height:100%;object-fit:contain}
 .item-purchase-links{font-size:12.5px;font-weight:700;color:var(--sugi);margin-top:8px}
 .item-purchase-links a{text-decoration:underline;text-decoration-color:var(--wakaba);text-underline-offset:2px}
@@ -601,8 +615,12 @@ def gen_brand_pages():
 
 <div class="official-cta">
   <p>価格・在庫・最新モデルは公式サイトでご確認ください</p>
-  <a href=\"""" + esc(brand.get("officialUrl")) + """\" target="_blank" rel="nofollow noopener">""" + esc(brand["name"]) + """ 公式サイトへ →</a>
-""" + ('<p style="margin-top:14px">日本からは<a href="' + esc(brand.get("japanUrl", "")) + '" target="_blank" rel="nofollow noopener" style="color:#fff;text-decoration:underline">日本正規代理店サイト</a>からも購入できます</p>' if brand.get("japanUrl") else "") + """
+""" + (
+    '<a href="' + esc(brand.get("japanUrl")) + '" target="_blank" rel="nofollow noopener">' + esc(brand.get("japanUrlLabel") or (brand["name"] + " 日本公式サイトへ →")) + '</a>'
+    '<p style="margin-top:14px"><a href="' + esc(brand.get("officialUrl")) + '" target="_blank" rel="nofollow noopener" style="color:#fff;text-decoration:underline">海外本国サイトはこちら</a></p>'
+    if brand.get("japanUrl") else
+    '<a href="' + esc(brand.get("officialUrl")) + '" target="_blank" rel="nofollow noopener">' + esc(brand["name"]) + ' 公式サイトへ →</a>'
+) + """
 </div>
 
 <div class="other-links">他のブランドも見る：""" + other_links + """</div>

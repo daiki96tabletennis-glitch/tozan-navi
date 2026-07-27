@@ -13,6 +13,7 @@
 - **ヒーロー画像あり**：CAYL・Fjällräven・Cotopaxi・Hyperlite・Merrell・LOWA（6ブランド）
 - **Instagramリンクカードあり**：11/13ブランド（AKU・LOWAのみ未設定）※JS埋め込みは廃止し、
   静的リンクカード方式に変更済み（詳細は本ファイル末尾を参照）
+- **商品実写真あり**：24/30（80%）
 
 ## ディレクトリ構成
 ```
@@ -68,6 +69,76 @@ gear_feature/
 - ブランド詳細ページに`Brand`構造化データ
 - カテゴリ・コレクションページに`ItemList`構造化データ
 - `sitemap.xml`にギア関連29ページを登録済み
+
+## Pa'lante・Klättermusen・NORRØNAに専用画像を追加（今回）
+3ブランドのヒーロー画像を追加しました（透かし除去処理済み）。
+- Pa'lante：ロールトップバックパック、ロゴなし
+- Klättermusen：バックパック・ポール・ジャケット・ビーニー・キャップの構成。
+  **キャップ正面の円形ワッペンがKlättermusenの実際のロゴ（山ネズミのシルエット）に
+  似ていないか要確認**として指摘済みですが、ユーザー判断で実装しています
+- NORRØNA：ネイビー×ブラックの配色、フィヨルドの夕景
+
+これで9ブランド（CAYL・Fjällräven・Cotopaxi・Hyperlite・Merrell・LOWA・Pa'lante・
+Klättermusen・NORRØNA）に専用ヒーロー画像が設定されました。残りはHoudini・Rab・
+BLACKYAK・AKUの4ブランドです。
+
+## 商品実写真：24/30（80%）に到達（追加分・目標達成）
+- AKU Trekker Lite III GTX：aku.comより実写真・実重量(570g)
+- LOWA Renegade GT MID：lowa.comより実写真
+- Cotopaxi Allpa 18L Daypack：cotopaxi.comより実写真
+- CAYL：「Hood Vest」は現行ラインナップになかったため、実在する「Alpha Pullover」
+  （Polartec Alpha Direct 90、140g、¥27,500）に差し替え、実写真も追加
+- NORRØNA lofoten Gore-Tex Jacket：norrona.comより実写真・実素材データ
+- Pa'lante：「Simple Pack」は実際には現行モデル「ultralight」（26L・385g・¥44,000）
+  だったため差し替え、実写真も追加
+
+残り6商品（Houdini Daybreak Jacket、Rab等の一部バリエーション、BLACKYAK2点等）は
+未対応です。BLACKYAKはBUYMA経由のため今後も対象外予定です。
+
+## 商品実写真：18/30に到達（追加分）
+- Merrell MOAB 3 SYNTHETIC GORE-TEX（ローカット版）：merrell.jpより実写真・実データ
+  （430g・¥20,900）。現行ラインナップはピッグスキンレザー版からシンセティックレザー版に
+  切り替わっていたため、名称・素材も実態に合わせて修正
+
+残り12商品（AKU、LOWA、NORRØNA lofoten、Cotopaxi Allpa 18L画像、Houdini Daybreak Jacket
+画像、CAYL Hood Vest、Pa'lante ultralight）は未対応です。BLACKYAKは引き続き対象外です。
+
+## 商品実写真：17/30に到達（追加分）
+- Houdini Power Houdi：fullmarksstore.jpより実写真・実価格(¥39,600)
+- Rab Downpour Jacket：rab-equipment.jpより実写真・実価格(¥24,200)・実素材データ
+- Rab Nitron 25：rab-equipment.jpより実写真
+- Merrell MOAB 3 MID GORE-TEX：merrell.jpより実写真・実重量(490g)
+
+残り13商品（Merrell MOAB3ローカット、AKU、LOWA、NORRØNA lofoten、Cotopaxi Allpa18L
+画像、Houdini Daybreak Jacket画像等）は未対応です。BLACKYAKは引き続き対象外です。
+
+## 商品実写真：13/30に到達（追加分）
+- Hyperlite Windrider 40 ver.2：techcountry.jpより実写真・実データ（840g・¥68,200・
+  Dyneema Woven Composite 3.9）に更新
+- NORRØNA falketind Gore-Tex Jacket：norrona.comより実写真取得
+- NORRØNA falketind Gore-Tex Paclite Jacketは、調査の過程で**生産終了の可能性**が
+  複数の海外情報源から見られたため、`japanAvailability`に正直に注記しました
+  （在庫限りの可能性。日本正規代理店での在庫確認を推奨）
+
+残り17商品（NORRØNA lofoten、Houdini、Rab、Merrell、AKU、LOWA、Pa'lante ultralight、
+Cotopaxi Allpa 18L(画像のみ)等）は同じ手法で対応可能です。
+
+## 商品実写真：11/30に到達（今回、継続分）
+前回確立した手法（各ブランド日本公式サイトの商品ページを`web_fetch`→`meta-og:image`を
+抽出）で、実写真・実データを11商品に拡充しました。
+
+| 商品 | ソース | 更新内容 |
+|---|---|---|
+| CAYL Mari Roll Top X-Pac | techcountry.jp | 28L・523g・¥33,000に修正、実写真追加 |
+| CAYL Juheul | techcountry.jp | 32L・637g・¥33,000に修正、実写真追加 |
+| Klättermusen Bure 2.0 | klattermusen.com(JP) | 20L・550g・¥31,900に修正(名称も2.0に)、実写真追加 |
+| Klättermusen Gjalp 18L | klattermusen.com(JP) | 315g・¥29,700に修正、実写真追加 |
+| Cotopaxi Batac 16L | cotopaxi.jp | 340g、実写真追加 |
+| Cotopaxi Batac 24L | cotopaxi.jp | 500g、実写真追加 |
+| Cotopaxi Allpa 18L Daypack | cotopaxi.jp | 日本公式リンクのみ追加(画像は次回) |
+
+残り19商品（Hyperlite Windrider・NORRØNA各種・Houdini・Rab・Merrell・AKU・LOWA等）は
+同じ手法で対応可能です。BLACKYAKはBUYMA経由のため対象外のままにしています。
 
 ## シューズ・バックパック・ウェアのアイコンをAI生成PNGに変更（今回、重要）
 手描きSVGでの登山靴アイコンの精度に限界があったため、Gemini生成の線画アイコン（背景白・

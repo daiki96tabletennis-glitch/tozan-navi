@@ -5,13 +5,14 @@
     "name": "Mari Roll Top",
     "category": "バックパック",
     "categoryId": "backpack",
-    "capacityL": 30,
-    "capacityRange": "27〜32L",
-    "weightG": 520,
-    "priceJPY": 27000,
-    "priceRange": "2.6〜2.9万円",
+    "capacityL": 28,
+    "capacityRange": "約26〜30L",
+    "weightG": 523,
+    "priceJPY": 33000,
+    "priceRange": "3.3万円",
     "materials": [
-      "CAYL B-GRID FABRIC（Nylon Robic 210D + 400D UHMWPE、PUコーティング）"
+      "X-PAC VX07",
+      "CAYL GRID 210D（Nylon Robic 210D + 400D UHMWPE、PUコーティング）"
     ],
     "waterproof": "撥水コーティング（完全防水ではない）",
     "purposes": [
@@ -24,35 +25,42 @@
     ],
     "japanAvailability": "国内セレクトショップで購入可能",
     "officialUrl": "https://cayl.co.kr",
-    "images": [],
-    "japanUrl": "https://www.techcountry.jp/c/brand/cayl"
+    "images": [
+      "https://techcountry.itembox.cloud/product/025/000000002536/000000002536-01.jpg?size=l&w=ODAw&t=20260520164948"
+    ],
+    "japanUrl": "https://www.techcountry.jp/c/brand/cayl/cyl017",
+    "japanUrlLabel": "TECH COUNTRYで見る"
   },
   {
     "id": "cayl-hood-vest",
     "brandId": "cayl",
-    "name": "Hood Vest",
+    "name": "Alpha Pullover",
     "category": "ウェア",
     "categoryId": "apparel",
     "capacityL": null,
-    "weightG": null,
-    "priceJPY": null,
-    "priceRange": "1.5〜2万円台",
+    "weightG": 140,
+    "priceJPY": 27500,
+    "priceRange": "2.75万円",
     "materials": [
-      "ナイロン/ポリエステル混紡（モデルにより異なる）"
+      "ポリエステル100%（Polartec Alpha Direct 90）"
     ],
-    "waterproof": "撥水",
+    "waterproof": "非防水（通気性重視の中間着）",
     "purposes": [
       "日帰り",
-      "タウンユース"
+      "行動中の中間着",
+      "テント泊のインナー"
     ],
     "features": [
-      "軽量な中間着として、街着にも寄せられるミニマルなシルエット",
-      "登山とデイリーユースをつなぐCAYLらしいアイテム"
+      "保温と通気のバランスを追求したプルオーバー。行動中に着たまま動きやすい",
+      "秋〜春の標高2,000〜3,000mクラスの登山や、風の強い稜線歩きに対応"
     ],
     "japanAvailability": "国内セレクトショップで購入可能",
     "officialUrl": "https://cayl.co.kr",
-    "images": [],
-    "japanUrl": "https://www.techcountry.jp/c/brand/cayl"
+    "images": [
+      "https://techcountry.itembox.cloud/product/053/000000005395/000000005395-01.jpg?size=l&w=ODAw&t=20251013150005"
+    ],
+    "japanUrl": "https://www.techcountry.jp/c/brand/cayl/cyl340",
+    "japanUrlLabel": "TECH COUNTRYで見る"
   },
   {
     "id": "palante-joey",
@@ -89,8 +97,8 @@
     "name": "ultralight",
     "category": "バックパック",
     "categoryId": "backpack",
-    "capacityL": 25,
-    "weightG": null,
+    "capacityL": 26,
+    "weightG": 385,
     "priceJPY": 44000,
     "priceRange": "4.4万円",
     "materials": [
@@ -107,7 +115,9 @@
     ],
     "japanAvailability": "日本正規代理店（palantepacks.jp）で購入可能",
     "officialUrl": "https://palantepacks.com/products/ultralight",
-    "images": [],
+    "images": [
+      "https://palantepacks.jp/cdn/shop/products/01_e5cdfdc1-3915-4fed-b9a4-c8ecdaa25348.jpg?v=1670222571"
+    ],
     "japanUrl": "https://palantepacks.jp/products/ultralight"
   },
   {
@@ -174,13 +184,13 @@
   {
     "id": "klattermusen-bure-20",
     "brandId": "klattermusen",
-    "name": "Bure Backpack 20L",
+    "name": "Bure 2.0 Backpack 20L",
     "category": "バックパック",
     "categoryId": "backpack",
     "capacityL": 20,
-    "weightG": 600,
-    "priceJPY": 31500,
-    "priceRange": "3.1〜3.3万円",
+    "weightG": 550,
+    "priceJPY": 31900,
+    "priceRange": "3.19万円",
     "materials": [
       "60% Econyl再生ポリアミド、40%ポリアミド"
     ],
@@ -198,8 +208,11 @@
     "officialUrl": "https://www.klattermusen.com",
     "amazonAsin": "B07L65KS91",
     "rakutenUrl": null,
-    "images": [],
-    "japanUrl": "https://klattermusen.jp/"
+    "images": [
+      "https://klattermusen.centracdn.net/client/dynamic/images/803_a8d77a37e3-10167_230_001-full.jpg"
+    ],
+    "japanUrl": "https://www.klattermusen.com/en-jp/backpacks/all-backpacks/10167-bure-2-0-backpack-20l-burnt-russet/",
+    "japanUrlLabel": "Klättermusen公式(JP)で見る"
   },
   {
     "id": "klattermusen-mithril-jacket",
@@ -257,7 +270,7 @@
       "クライミングヘルメット対応のストームフード",
       "通年で使える軽量防水シェル"
     ],
-    "japanAvailability": "日本正規代理店あり。直営店・セレクトショップで購入可能",
+    "japanAvailability": "生産終了の可能性あり(在庫限り)。日本正規代理店・セレクトショップで在庫確認を推奨",
     "officialUrl": "https://www.norrona.com",
     "amazonAsin": "B09Y4CF4NG",
     "rakutenUrl": "https://item.rakuten.co.jp/canpanera/n07246/",
@@ -275,7 +288,7 @@
     "priceJPY": null,
     "priceRange": "4万円台〜",
     "materials": [
-      "GORE-TEX 3層、30Dリサイクルナイロン"
+      "GORE-TEX 3層(30D ePEメンブレン、リサイクルナイロン)、101g/m2"
     ],
     "waterproof": "防水（GORE-TEX 3層）",
     "purposes": [
@@ -291,8 +304,11 @@
     "officialUrl": "https://www.norrona.com",
     "amazonAsin": "B0DKDR916F",
     "rakutenUrl": "https://item.rakuten.co.jp/ams-doing/1804-17-5502/",
-    "images": [],
-    "japanUrl": "https://www.norrona.jp/"
+    "images": [
+      "https://res-2.cloudinary.com/norrona/image/upload/b_rgb:fcfcfc,c_pad,d_imgmissing.jpg,f_auto,fl_progressive.lossy,h_288,q_auto,w_210/v1/Auto/1834-24-5564-packshot-f.jpg"
+    ],
+    "japanUrl": "https://www.norrona.com/en-GB/products/falketind/falketind-gore-tex-jacket-men/",
+    "japanUrlLabel": "Norrøna公式で見る"
   },
   {
     "id": "cayl-juheul",
@@ -302,9 +318,9 @@
     "categoryId": "backpack",
     "capacityL": 30,
     "capacityRange": "28L(SM)/32L(ML)",
-    "weightG": null,
-    "priceJPY": null,
-    "priceRange": "2.5〜3万円台",
+    "weightG": 637,
+    "priceJPY": 33000,
+    "priceRange": "3.3万円",
     "materials": [
       "CAYL独自開発 GRID FABRIC"
     ],
@@ -319,8 +335,11 @@
     ],
     "japanAvailability": "国内セレクトショップで購入可能",
     "officialUrl": "https://cayl.co.kr",
-    "images": [],
-    "japanUrl": "https://www.techcountry.jp/c/brand/cayl"
+    "images": [
+      "https://techcountry.itembox.cloud/product/033/000000003310/000000003310-01.jpg?size=l&w=ODAw&t=20230907094935"
+    ],
+    "japanUrl": "https://www.techcountry.jp/c/brand/cayl/cyl043",
+    "japanUrlLabel": "TECH COUNTRYで見る"
   },
   {
     "id": "palante-v2",
@@ -355,15 +374,15 @@
   {
     "id": "hyperlite-windrider-40",
     "brandId": "hyperlite",
-    "name": "Windrider 40",
+    "name": "Windrider 40 ver.2",
     "category": "バックパック",
     "categoryId": "backpack",
     "capacityL": 40,
-    "weightG": 798,
-    "priceJPY": 64900,
-    "priceRange": "約6.5万円",
+    "weightG": 840,
+    "priceJPY": 68200,
+    "priceRange": "6.82万円",
     "materials": [
-      "Dyneema Composite Hybrid（DCH）"
+      "Dyneema® Woven Composite 3.9"
     ],
     "waterproof": "生地自体が高い防水性（縫い目はシームテープ処理）",
     "purposes": [
@@ -376,8 +395,12 @@
     ],
     "japanAvailability": "国内正規代理店・セレクトショップで購入可能",
     "officialUrl": "https://www.hyperlitemountaingear.com",
-    "images": [],
-    "japanUrl": "https://www.techcountry.jp/c/brand/hyperlitemountaingear"
+    "images": [
+      "https://techcountry.itembox.cloud/product/052/000000005237/000000005237-01.jpg?size=l&w=ODAw&t=20260217183702"
+    ],
+    "japanUrl": "https://www.techcountry.jp/c/brand/hyperlitemountaingear/hlg123",
+    "capacityRange": "40L+11.5L(外部)",
+    "japanUrlLabel": "TECH COUNTRYで見る"
   },
   {
     "id": "klattermusen-gjalp-18",
@@ -386,9 +409,9 @@
     "category": "バックパック",
     "categoryId": "backpack",
     "capacityL": 18,
-    "weightG": null,
-    "priceJPY": 30800,
-    "priceRange": "約3.1万円",
+    "weightG": 315,
+    "priceJPY": 29700,
+    "priceRange": "2.97万円",
     "materials": [
       "リサイクルポリアミド"
     ],
@@ -403,8 +426,11 @@
     ],
     "japanAvailability": "日本正規代理店あり。直営店・セレクトショップで購入可能",
     "officialUrl": "https://www.klattermusen.com",
-    "images": [],
-    "japanUrl": "https://klattermusen.jp/"
+    "images": [
+      "https://klattermusen.centracdn.net/client/dynamic/images/659_hs_g44LGWn5o857mcNgXBbsjg_40456U21_Gjalp_Backpack_18L_Olive_001-full.jpg"
+    ],
+    "japanUrl": "https://www.klattermusen.com/en-jp/40456u21-gjalp-backpack-18l-olive/",
+    "japanUrlLabel": "Klättermusen公式(JP)で見る"
   },
   {
     "id": "norrona-lofoten-gtx-jacket",
@@ -417,7 +443,7 @@
     "priceJPY": 74800,
     "priceRange": "約7.5万円",
     "materials": [
-      "GORE-TEX 3層、40Dリサイクルナイロン"
+      "GORE-TEX 3層(40D ePEメンブレン、リサイクルポリエステル)、165g/m2"
     ],
     "waterproof": "防水（GORE-TEX 3層）",
     "purposes": [
@@ -431,8 +457,11 @@
     ],
     "japanAvailability": "日本正規代理店あり。直営店・セレクトショップで購入可能",
     "officialUrl": "https://www.norrona.com",
-    "images": [],
-    "japanUrl": "https://www.norrona.jp/"
+    "images": [
+      "https://res-1.cloudinary.com/norrona/image/upload/b_rgb:fcfcfc,c_pad,d_imgmissing.jpg,f_auto,fl_progressive.lossy,h_288,q_auto,w_210/v1/Auto/1021-24-7718-packshot-f.jpg"
+    ],
+    "japanUrl": null,
+    "japanUrlLabel": null
   },
   {
     "id": "cotopaxi-batac-16",
@@ -441,7 +470,7 @@
     "category": "バックパック",
     "categoryId": "backpack",
     "capacityL": 16,
-    "weightG": null,
+    "weightG": 340,
     "priceJPY": 14300,
     "priceRange": "1.3〜1.4万円",
     "materials": [
@@ -458,7 +487,11 @@
     ],
     "japanAvailability": "日本公式サイト（cotopaxi.jp）で購入可能",
     "officialUrl": "https://cotopaxi.jp",
-    "images": []
+    "images": [
+      "https://cotopaxi.jp/cdn/shop/products/5042505_03_1024x1024.jpg?v=1629976130"
+    ],
+    "japanUrl": "https://cotopaxi.jp/products/batac-16l-backpack-del-dia",
+    "japanUrlLabel": "Cotopaxi公式(JP)で見る"
   },
   {
     "id": "cotopaxi-batac-24",
@@ -467,7 +500,7 @@
     "category": "バックパック",
     "categoryId": "backpack",
     "capacityL": 24,
-    "weightG": null,
+    "weightG": 500,
     "priceJPY": 17600,
     "priceRange": "1.7〜1.8万円",
     "materials": [
@@ -484,7 +517,11 @@
     ],
     "japanAvailability": "日本公式サイト（cotopaxi.jp）で購入可能",
     "officialUrl": "https://cotopaxi.jp",
-    "images": []
+    "images": [
+      "https://cotopaxi.jp/cdn/shop/products/5042506_03_1024x1024.jpg?v=1629976207"
+    ],
+    "japanUrl": "https://cotopaxi.jp/products/batac-24l-backpack-del-dia",
+    "japanUrlLabel": "Cotopaxi公式(JP)で見る"
   },
   {
     "id": "cotopaxi-allpa-18-daypack",
@@ -510,7 +547,11 @@
     ],
     "japanAvailability": "日本公式サイト（cotopaxi.jp）で購入可能",
     "officialUrl": "https://cotopaxi.jp",
-    "images": []
+    "images": [
+      "https://www.cotopaxi.com/cdn/shop/files/1200x1200png-S26UAllpa18LDaypack-DelDia_A2_9da38372-45b4-444f-8072-92d19609acdd_1200x630.png?v=1769209838"
+    ],
+    "japanUrl": "https://cotopaxi.jp/products/allpa-18l-daypack-del-dia",
+    "japanUrlLabel": "Cotopaxi公式(JP)で見る"
   },
   {
     "id": "fjallraven-kanken-16",
@@ -572,8 +613,8 @@
     "categoryId": "apparel",
     "capacityL": null,
     "weightG": 478,
-    "priceJPY": null,
-    "priceRange": "2.6〜2.9万円",
+    "priceJPY": 39600,
+    "priceRange": "3.96万円",
     "materials": [
       "Polartec Power Stretch Pro（57%ポリエステル、33%ポリアミド、10%エラスタン）"
     ],
@@ -589,8 +630,11 @@
     ],
     "japanAvailability": "日本正規代理店（FULLMARKS等）で購入可能",
     "officialUrl": "https://www.houdinisportswear.com",
-    "images": [],
-    "japanUrl": "https://www.fullmarksstore.jp/category/HOUDINI/"
+    "images": [
+      "https://www.fullmarksstore.jp/client_info/FULLMARKS/itemimage/71302259841/225984_703_model_f_navy.jpg"
+    ],
+    "japanUrl": "https://www.fullmarksstore.jp/item/71302259841.html",
+    "japanUrlLabel": "FULLMARKSで見る"
   },
   {
     "id": "houdini-daybreak-jacket",
@@ -628,10 +672,10 @@
     "categoryId": "rainwear",
     "capacityL": null,
     "weightG": 377,
-    "priceJPY": 22000,
-    "priceRange": "2.2万円",
+    "priceJPY": 24200,
+    "priceRange": "2.42万円",
     "materials": [
-      "Pertex Shield 2.5レイヤー（リサイクル素材）"
+      "Pertex® Shield 2.5レイヤー 50Dポリエステル(リサイクル)、フルオロカーボンフリーDWR"
     ],
     "waterproof": "防水（耐水圧20,000mm／透湿20,000g/m²/24h）",
     "purposes": [
@@ -644,7 +688,11 @@
     ],
     "japanAvailability": "日本正規サイト（rab-equipment.jp）で購入可能",
     "officialUrl": "https://rab-equipment.jp/products/downpour-jacket",
-    "images": []
+    "images": [
+      "https://rab-equipment.jp/cdn/shop/files/Downpour_Jacket_Black_QWI_06_BLK.jpg?v=1770872567"
+    ],
+    "japanUrl": "https://rab-equipment.jp/products/downpour-jacket",
+    "japanUrlLabel": "Rab公式(JP)で見る"
   },
   {
     "id": "rab-nitron-25",
@@ -670,7 +718,11 @@
     ],
     "japanAvailability": "日本正規サイト（rab-equipment.jp）で購入可能",
     "officialUrl": "https://rab-equipment.jp/products/nitron-25",
-    "images": []
+    "images": [
+      "https://rab-equipment.jp/cdn/shop/files/Nitron_25_Anthracite_QAP_69_ANT.jpg?v=1770261274"
+    ],
+    "japanUrl": "https://rab-equipment.jp/products/nitron-25",
+    "japanUrlLabel": "Rab公式(JP)で見る"
   },
   {
     "id": "blackyak-public-climbing-goretex",
@@ -735,7 +787,7 @@
     "category": "シューズ",
     "categoryId": "shoes",
     "capacityL": null,
-    "weightG": 460,
+    "weightG": 490,
     "priceJPY": 25300,
     "priceRange": "2.5万円",
     "materials": [
@@ -753,20 +805,22 @@
     ],
     "japanAvailability": "日本公式サイト（merrell.jp）・直営店で購入可能",
     "officialUrl": "https://merrell.jp/products/mens_moab-3-mid-gore-tex",
-    "images": []
+    "images": [
+      "https://merrell.jp/cdn/shop/files/WALNUT_1.jpg?v=1735204450"
+    ]
   },
   {
     "id": "merrell-moab3-gtx-low",
     "brandId": "merrell",
-    "name": "MOAB 3 GORE-TEX",
+    "name": "MOAB 3 SYNTHETIC GORE-TEX",
     "category": "シューズ",
     "categoryId": "shoes",
     "capacityL": null,
-    "weightG": 390,
-    "priceJPY": null,
-    "priceRange": "2万円台",
+    "weightG": 430,
+    "priceJPY": 20900,
+    "priceRange": "2.09万円",
     "materials": [
-      "撥水ピッグスキンレザー＆メッシュアッパー、GORE-TEXメンブレン、Vibram TC5+アウトソール"
+      "シンセティックレザー＆メッシュアッパー、GORE-TEXメンブレン、Vibram TC5+アウトソール"
     ],
     "waterproof": "防水（GORE-TEX）",
     "purposes": [
@@ -779,7 +833,11 @@
     ],
     "japanAvailability": "日本公式サイト（merrell.jp）・直営店で購入可能",
     "officialUrl": "https://merrell.jp/products/mens_moab-3-gore-tex",
-    "images": []
+    "images": [
+      "https://merrell.jp/cdn/shop/files/EARTHEN_1.jpg?v=1769736055"
+    ],
+    "japanUrl": "https://merrell.jp/products/mens_moab-3-synthetic-gore-tex",
+    "japanUrlLabel": "MERRELL公式(JP)で見る"
   },
   {
     "id": "aku-trekker-lite-3-gtx",
@@ -788,11 +846,11 @@
     "category": "シューズ",
     "categoryId": "shoes",
     "capacityL": null,
-    "weightG": 640,
+    "weightG": 570,
     "priceJPY": null,
     "priceRange": "3.0〜3.3万円",
     "materials": [
-      "スエードレザー＋AKU独自のAir8000ファブリック、GORE-TEX Performance Comfort、Vibram Curcumaソール"
+      "スエード＋AIR8000＋溶着PUフィルム アッパー、GORE-TEX Performance Comfortライニング、Vibram Curcumaアウトソール"
     ],
     "waterproof": "防水（GORE-TEX）",
     "purposes": [
@@ -805,7 +863,9 @@
     ],
     "japanAvailability": "日本正規代理店（石井スポーツ）で購入可能",
     "officialUrl": "https://www.aku.com",
-    "images": [],
+    "images": [
+      "https://www.aku.com/cdn/shop/files/977_628_TrekkerLiteIIIGTX_Antracite-Ruggine-0_8327bbfb-8eb9-41b0-ac3c-2971a74a1317.jpg?v=1772532964"
+    ],
     "japanUrl": "https://www.ishii-sports.com/item/aku/"
   },
   {
@@ -819,7 +879,7 @@
     "priceJPY": null,
     "priceRange": "3.3〜4.8万円（モデルにより異なる）",
     "materials": [
-      "ヌバックレザー、GORE-TEXメンブレン、Vibramソール"
+      "高品質レザーアッパー、GORE-TEXライニング、Vibramアウトソール"
     ],
     "waterproof": "防水（GORE-TEX）",
     "purposes": [
@@ -833,6 +893,8 @@
     ],
     "japanAvailability": "日本正規代理店（イワタニ・プリムス）で購入可能",
     "officialUrl": "https://www.iwatani-primus.co.jp/products/lowa/",
-    "images": []
+    "images": [
+      "https://d3c2yqbxx52o4l.cloudfront.net/catalog/product/thumbnail/c6d3d67674a6c26a030147fc0883f77a4320c79c07bcb1bc2b47ac69/image/1042730/1232x750/101/95/3/1/311945_0442_renegade_gtx_mid.jpg"
+    ]
   }
 ]

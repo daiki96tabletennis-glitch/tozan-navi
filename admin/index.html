@@ -802,22 +802,63 @@ function loadPhotoState(mt) {
   renderPhotoPreviews();
 }
 
-function handlePhotoFiles(fileList) {
-  var files = Array.from(fileList);
-  var remaining = files.length;
-  files.forEach(function(file) {
+function resizeImageFile(file, maxDim, quality) {
+  return new Promise(function(resolve, reject) {
     var reader = new FileReader();
     reader.onload = function(e) {
+      var img = new Image();
+      img.onload = function() {
+        var w = img.width, h = img.height;
+        if (w > maxDim || h > maxDim) {
+          if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; }
+          else { w = Math.round(w * maxDim / h); h = maxDim; }
+        }
+        var canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = function() { reject(new Error('画像の読み込みに失敗しました: ' + file.name)); };
+      img.src = e.target.result;
+    };
+    reader.onerror = function() { reject(new Error('ファイルの読み込みに失敗しました: ' + file.name)); };
+    reader.readAsDataURL(file);
+  });
+}
+
+function handlePhotoFiles(fileList) {
+  var files = Array.from(fileList);
+  files.forEach(function(file) {
+    // 最大辺1600px・JPEG品質0.82に圧縮してからphotoStateへ格納
+    // (GitHub Contents APIは1ファイルあたり約1MBまでのため、スマホ写真をそのまま送るとここで失敗する)
+    resizeImageFile(file, 1600, 0.82).then(function(dataUrl) {
+      var approxBytes = Math.round(dataUrl.length * 0.75);
+      if (approxBytes > 950000) {
+        // それでも大きい場合はさらに圧縮
+        return resizeImageFile(file, 1200, 0.75).then(function(smallerDataUrl) {
+          photoState.push({
+            type: 'new',
+            file: file,
+            dataUrl: smallerDataUrl,
+            filename: file.name.replace(/[^a-zA-Z0-9_.-]/g, '_').replace(/\.(heic|heif|png)$/i, '.jpg')
+          });
+          renderPhotoPreviews();
+          markChanged();
+        });
+      }
       photoState.push({
         type: 'new',
         file: file,
-        dataUrl: e.target.result,
-        filename: file.name.replace(/[^a-zA-Z0-9_.-]/g, '_')
+        dataUrl: dataUrl,
+        filename: file.name.replace(/[^a-zA-Z0-9_.-]/g, '_').replace(/\.(heic|heif|png)$/i, '.jpg')
       });
       renderPhotoPreviews();
       markChanged();
-    };
-    reader.readAsDataURL(file);
+    }).catch(function(err) {
+      alert('写真の処理に失敗しました（' + file.name + '）: ' + err.message);
+    });
   });
   document.getElementById('f-photo-input').value = '';
 }
@@ -880,63 +921,64 @@ async function pushToGitHub() {
     return;
   }
 
-  // 現在の編集内容をallMountainsに反映
-  if (currentMountain) {
-    var formData = getFormData();
-    var changes = buildChanges(currentMountain, formData);
-    if (changes.length > 0) recordChange(currentMountain.id, currentMountain.name, changes);
-    var idx = allMountains.findIndex(function(m) { return m.id === currentMountain.id; });
-    if (idx >= 0) Object.assign(allMountains[idx], formData);
-
-    // 写真アップロード（新規分のみGitHubにPUTし、photos配列を確定）
-    var newPhotos = photoState.filter(function(p) { return p.type === 'new'; });
-    if (newPhotos.length > 0) {
-      statusEl.className = 'gh-push-status pushing';
-      statusEl.textContent = '⏳ 写真をアップロード中...';
-      for (var pi = 0; pi < newPhotos.length; pi++) {
-        var p = newPhotos[pi];
-        var imgPath = 'images/mountains/' + currentMountain.id + '/' + Date.now() + '_' + p.filename;
-        var imgApiBase = 'https://api.github.com/repos/daiki96tabletennis-glitch/tozan-navi/contents/' + imgPath;
-        var base64Data = p.dataUrl.split(',')[1];
-        var imgPutRes = await fetch(imgApiBase, {
-          method: 'PUT',
-          headers: {
-            'Authorization': 'token ' + token,
-            'Accept': 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            message: '[admin] ' + currentMountain.id + ' の写真を追加',
-            content: base64Data
-          })
-        });
-        if (!imgPutRes.ok) {
-          var imgErrJson = await imgPutRes.json();
-          throw new Error('写真アップロード失敗: ' + (imgErrJson.message || imgPutRes.status));
-        }
-        p.type = 'existing';
-        p.url = '/' + imgPath;
-      }
-      var finalPhotos = photoState.map(function(p) { return p.url; });
-      allMountains[idx].photos = finalPhotos;
-      renderPhotoPreviews();
-    } else if (photoState.length !== (currentMountain.photos || []).length) {
-      // 削除のみの場合もphotos配列を反映
-      allMountains[idx].photos = photoState.map(function(p) { return p.url; });
-    }
-  }
-
-  var content = JSON.stringify(allMountains, null, 2);
-  var owner = 'daiki96tabletennis-glitch';
-  var repo = 'tozan-navi';
-  var path = 'data/mountains.json';
-  var apiBase = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + path;
-
   btn.disabled = true;
   statusEl.className = 'gh-push-status pushing';
-  statusEl.textContent = '⏳ GitHubに接続中...';
+  statusEl.textContent = '⏳ 準備中...';
 
   try {
+    // 現在の編集内容をallMountainsに反映
+    if (currentMountain) {
+      var formData = getFormData();
+      var changes = buildChanges(currentMountain, formData);
+      if (changes.length > 0) recordChange(currentMountain.id, currentMountain.name, changes);
+      var idx = allMountains.findIndex(function(m) { return m.id === currentMountain.id; });
+      if (idx >= 0) Object.assign(allMountains[idx], formData);
+
+      // 写真アップロード（新規分のみGitHubにPUTし、photos配列を確定）
+      var newPhotos = photoState.filter(function(p) { return p.type === 'new'; });
+      if (newPhotos.length > 0) {
+        for (var pi = 0; pi < newPhotos.length; pi++) {
+          var p = newPhotos[pi];
+          statusEl.textContent = '⏳ 写真をアップロード中... (' + (pi + 1) + '/' + newPhotos.length + ')';
+          var imgPath = 'images/mountains/' + currentMountain.id + '/' + Date.now() + '_' + p.filename;
+          var imgApiBase = 'https://api.github.com/repos/daiki96tabletennis-glitch/tozan-navi/contents/' + imgPath;
+          var base64Data = p.dataUrl.split(',')[1];
+          var imgPutRes = await fetch(imgApiBase, {
+            method: 'PUT',
+            headers: {
+              'Authorization': 'token ' + token,
+              'Accept': 'application/vnd.github.v3+json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              message: '[admin] ' + currentMountain.id + ' の写真を追加',
+              content: base64Data
+            })
+          });
+          if (!imgPutRes.ok) {
+            var imgErrJson = await imgPutRes.json().catch(function() { return {}; });
+            throw new Error('写真アップロード失敗（' + p.filename + '）: ' + (imgErrJson.message || imgPutRes.status));
+          }
+          p.type = 'existing';
+          p.url = '/' + imgPath;
+        }
+        var finalPhotos = photoState.map(function(p) { return p.url; });
+        allMountains[idx].photos = finalPhotos;
+        renderPhotoPreviews();
+      } else if (photoState.length !== (currentMountain.photos || []).length) {
+        // 削除のみの場合もphotos配列を反映
+        allMountains[idx].photos = photoState.map(function(p) { return p.url; });
+      }
+    }
+
+    var content = JSON.stringify(allMountains, null, 2);
+    var owner = 'daiki96tabletennis-glitch';
+    var repo = 'tozan-navi';
+    var path = 'data/mountains.json';
+    var apiBase = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + path;
+
+    statusEl.textContent = '⏳ GitHubに接続中...';
+
     // 現在のSHAを取得
     var getRes = await fetch(apiBase, {
       headers: {
