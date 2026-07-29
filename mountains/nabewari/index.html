@@ -142,6 +142,11 @@ main{max-width:680px;margin:0 auto;padding:18px}
 .dep-row{display:flex;gap:5px;padding:6px 12px 10px;max-width:680px;margin:0 auto;}
 .dep-btn-m{padding:5px 8px;font-size:12.5px;border:1px solid rgba(255,255,255,0.6);border-radius:5px;background:transparent;color:rgba(255,255,255,0.75);font-weight:500;cursor:pointer;white-space:nowrap;}
 .dep-btn-m.active{color:white;font-weight:700;border:1.5px solid white;}
+/* 電車発駅トグル(ts-summary内) */
+.ts-dep-toggle{display:flex;gap:5px;width:100%;margin-bottom:4px;}
+.ts-dep-btn{padding:3px 10px;font-size:11px;border:1px solid #ccc7ba;border-radius:12px;background:transparent;color:#8a8078;font-weight:600;cursor:pointer;}
+.ts-dep-btn.active{background:#4a6038;color:white;border-color:#4a6038;}
+
 
 .gear-section{background:transparent;border-radius:0;padding:24px 0;margin-bottom:0;border:none;border-bottom:1px solid #ccc7ba}
 .gear-title{font-size:11px;font-weight:700;color:#1a1a16;letter-spacing:0.06em;margin-bottom:14px}
@@ -508,7 +513,7 @@ main{max-width:680px;margin:0 auto;padding:18px}
         <span class="ts-badge ts-badge-year"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>年中運行</span>
       </div>
       <div class="ts-line-name">小田急小田原線・神奈川中央交通「渋02 大倉行」</div>
-      <div class="ts-route"><div class="ts-step"><div class="ts-node"><div class="ts-station">新宿駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>小田急小田原線　急行　<span class="ts-duration">約65分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">渋沢駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>神奈中バス「渋02 大倉行」　<span class="ts-duration">約15分</span></span></div></div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">大倉バス停</div></div></div><div class="ts-summary"><span>新宿から約1時間45分（予測乗換時間を含む）</span><span>片道約960円</span><div class="ts-summary-note">※バスは約30分間隔で運行</div></div></div>
+      <div class="ts-route"><div class="ts-step"><div class="ts-node"><div class="ts-station">新宿駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>小田急小田原線　急行　<span class="ts-duration">約65分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">渋沢駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>神奈中バス「渋02 大倉行」　<span class="ts-duration">約15分</span></span></div></div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">大倉バス停</div></div></div><div class="ts-summary"><div class="ts-dep-toggle"><button type="button" class="ts-dep-btn active" data-key="shinjuku" onclick="changeDepTrain('shinjuku')">新宿発</button><button type="button" class="ts-dep-btn" data-key="omiya" onclick="changeDepTrain('omiya')">大宮発</button></div><span class="ts-time-val" data-shinjuku="約1時間45分" data-omiya="約2時間15分">約1時間45分</span><span class="ts-fare-val" data-shinjuku="片道約960円" data-omiya="片道約1,488円">片道約960円</span><div class="ts-summary-note">※バスは約30分間隔で運行</div></div></div>
       <div class="ts-note">💡 大倉バス停から鍋割山への登山道は複数あり。後沢乗越経由が一般的。</div>
       <div class="ts-links">
         <a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=渋沢駅&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>乗換案内で検索</a>
@@ -689,6 +694,23 @@ function updateDepButtons(dep){
     b.classList.toggle('active', b.textContent === dep + '駅');
   });
 }
+function changeDepTrain(key){
+  sessionStorage.setItem('ym_departure_train', key);
+  document.querySelectorAll('.ts-dep-btn').forEach(function(b){
+    b.classList.toggle('active', b.dataset.key === key);
+  });
+  document.querySelectorAll('.ts-time-val').forEach(function(el){
+    if(el.dataset[key]) el.textContent = el.dataset[key];
+  });
+  document.querySelectorAll('.ts-fare-val').forEach(function(el){
+    if(el.dataset[key]) el.textContent = el.dataset[key];
+  });
+}
+function applyDepTrain(){
+  var key = sessionStorage.getItem('ym_departure_train') || 'shinjuku';
+  changeDepTrain(key);
+}
+
 function applyDep(){
   var raw = sessionStorage.getItem('ym_departure'); var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
   var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya','立川':'tachikawa'};
@@ -725,6 +747,7 @@ var __initRaw = sessionStorage.getItem('ym_departure');
 var initDep = __initRaw ? (__initRaw.indexOf('"') === 0 ? JSON.parse(__initRaw) : __initRaw) : '大船';
 updateDepButtons(initDep);
 applyDep();
+applyDepTrain();
 
 (function(){
   var MID = 'nabewari';

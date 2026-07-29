@@ -156,6 +156,11 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .dep-row{display:flex;gap:5px;padding:6px 12px 10px;max-width:680px;margin:0 auto;}
 .dep-btn-m{padding:5px 8px;font-size:12.5px;border:1px solid rgba(255,255,255,0.6);border-radius:5px;background:transparent;color:rgba(255,255,255,0.75);font-weight:500;cursor:pointer;white-space:nowrap;}
 .dep-btn-m.active{color:white;font-weight:700;border:1.5px solid white;}
+/* 電車発駅トグル(ts-summary内) */
+.ts-dep-toggle{display:flex;gap:5px;width:100%;margin-bottom:4px;}
+.ts-dep-btn{padding:3px 10px;font-size:11px;border:1px solid #ccc7ba;border-radius:12px;background:transparent;color:#8a8078;font-weight:600;cursor:pointer;}
+.ts-dep-btn.active{background:#4a6038;color:white;border-color:#4a6038;}
+
 
 
 .route-list-c{display:flex;flex-direction:column;}
@@ -552,7 +557,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 
   <div class="card"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>山の紹介</h2><p class="intro-text">戸隠連峰の最高峰。修験道の山として長い歴史を持つ。急登が続く本格登山コース。中〜上級レベルでコース定数35〜42、山小屋泊が一般的。代表コース（戸隠〜弥勒尾根〜高妻山往復）は所要9時間/14.0km/標高差+1400m。</p></div>
 
-  <div class="card" id="sec-train"><div class="ts-section"><div class="ts-header"><div class="ts-title">電車・バスでのアクセス</div><span class="ts-badge ts-badge-seasonal">⚠️ 季節運行あり</span></div><div class="ts-route"><div class="ts-step"><div class="ts-node"><div class="ts-station">新宿駅</div></div><div class="ts-arrow"><span class="ts-method">JR北陸新幹線（東京駅乗換）&nbsp;<span class="ts-duration">約115分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">長野駅</div></div><div class="ts-arrow"><span class="ts-method">アルピコ交通バス「戸隠線」&nbsp;<span class="ts-duration">約30分</span></span></div></div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">飯綱登山口</div></div></div></div><div class="ts-summary"><span>新宿から約2時間25分（予測乗換時間を含む）</span><span>片道約8,760円</span></div><div class="ts-note">戸隠線は通年運行、1日9便程度</div><div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=長野駅&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo">乗換案内で検索</a></div></div></div>
+  <div class="card" id="sec-train"><div class="ts-section"><div class="ts-header"><div class="ts-title">電車・バスでのアクセス</div><span class="ts-badge ts-badge-seasonal">⚠️ 季節運行あり</span></div><div class="ts-route"><div class="ts-step"><div class="ts-node"><div class="ts-station">新宿駅</div></div><div class="ts-arrow"><span class="ts-method">JR北陸新幹線（東京駅乗換）&nbsp;<span class="ts-duration">約115分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">長野駅</div></div><div class="ts-arrow"><span class="ts-method">アルピコ交通バス「戸隠線」&nbsp;<span class="ts-duration">約30分</span></span></div></div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">飯綱登山口</div></div></div></div><div class="ts-summary"><div class="ts-dep-toggle"><button type="button" class="ts-dep-btn active" data-key="shinjuku" onclick="changeDepTrain('shinjuku')">新宿発</button><button type="button" class="ts-dep-btn" data-key="omiya" onclick="changeDepTrain('omiya')">大宮発</button></div><span class="ts-time-val" data-shinjuku="約2時間25分" data-omiya="約1時間52分">約2時間25分</span><span class="ts-fare-val" data-shinjuku="片道約8,760円" data-omiya="片道約6,160円">片道約8,760円</span></div><div class="ts-note">戸隠線は通年運行、1日9便程度</div><div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=長野駅&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo">乗換案内で検索</a></div></div></div>
   <div class="card" id="sec-car"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="7" cy="18" r="2" fill="currentColor"/><circle cx="17" cy="18" r="2" fill="currentColor"/></svg>車でのアクセス時間</h2>
     <div class="ag-a" id="access-grid">
 <div class="ai-a" data-dep="大船駅" data-min="265"><div class="ai-a-dep">大船駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:74%"></div></div><div class="ai-a-val">4時間25分</div></div>
@@ -747,6 +752,23 @@ function updateDepButtons(dep){
     b.classList.toggle('active', b.textContent === dep + '駅');
   });
 }
+function changeDepTrain(key){
+  sessionStorage.setItem('ym_departure_train', key);
+  document.querySelectorAll('.ts-dep-btn').forEach(function(b){
+    b.classList.toggle('active', b.dataset.key === key);
+  });
+  document.querySelectorAll('.ts-time-val').forEach(function(el){
+    if(el.dataset[key]) el.textContent = el.dataset[key];
+  });
+  document.querySelectorAll('.ts-fare-val').forEach(function(el){
+    if(el.dataset[key]) el.textContent = el.dataset[key];
+  });
+}
+function applyDepTrain(){
+  var key = sessionStorage.getItem('ym_departure_train') || 'shinjuku';
+  changeDepTrain(key);
+}
+
 function applyDep(){
   var raw = sessionStorage.getItem('ym_departure'); var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
   var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya','立川':'tachikawa'};
@@ -782,6 +804,7 @@ function applyDep(){
 var initDep = sessionStorage.getItem('ym_departure') || '大船';
 updateDepButtons(initDep);
 applyDep();
+applyDepTrain();
 
 
 // === JSONから動的データを反映 ===

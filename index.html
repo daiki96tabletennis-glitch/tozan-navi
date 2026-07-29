@@ -437,7 +437,7 @@ function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
           <div className="flex gap-2"><span className="text-gray-500 shrink-0" style={{ minWidth: "56px" }}>駐車場</span><span>{mountain.parking}</span></div>
           {mountain.trainAccess && typeof mountain.trainAccess === "string" && (
             <div className="flex gap-4 items-start mt-1 rounded-lg p-2" style={{ background: "#eef4fb" }}>
-              <span className="text-base">🚃</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" style={{flexShrink:0}}><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>
               <span className="text-sm" style={{ color: "#1a4a70" }}>{mountain.trainAccess}</span>
             </div>
           )}
@@ -1258,7 +1258,7 @@ function App() {
                 <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
                   <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content" }}>
                     <button onClick={() => setDayTripOnly(!dayTripOnly)} style={chip(dayTripOnly)}>🌅 日帰り</button>
-                    <button onClick={() => setTrainOnly(!trainOnly)} style={chip(trainOnly)}>🚃 電車OK</button>
+                    <button onClick={() => setTrainOnly(!trainOnly)} style={chip(trainOnly)}><svg width="12" height="12" viewBox="0 0 24 24" style={{verticalAlign:"-2px",marginRight:"2px"}}><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg> 電車OK</button>
                   </div>
                 </div>
 
@@ -1285,7 +1285,7 @@ function App() {
                 {/* 3.5行目: 移動時間(電車・新宿発のみ) */}
                 <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
                   <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content", alignItems: "center" }}>
-                    <span style={{ fontSize: "11px", color: "#a09888", flexShrink: 0 }}>🚃新宿から</span>
+                    <span style={{ fontSize: "11px", color: "#a09888", flexShrink: 0, display:"inline-flex", alignItems:"center", gap:"3px" }}><svg width="12" height="12" viewBox="0 0 24 24"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>新宿から</span>
                     {TRAIN_OPTIONS.map(o => (
                       <button key={o.val} onClick={() => setTrainTimeFilter(trainTimeFilter === o.val ? null : o.val)} style={chip(trainTimeFilter === o.val)}>{o.label}</button>
                     ))}
@@ -1370,12 +1370,12 @@ function App() {
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px", minWidth: "max-content" }}>
                     <div style={{ display: "flex", gap: "6px" }}>
                       {LINES_ROW1.map(l => (
-                        <button key={l} onClick={() => { var active = lineFilter.includes(l); setLineFilter(active ? lineFilter.filter(function(x){ return x !== l; }) : lineFilter.concat([l])); }} style={chip(lineFilter.includes(l))}>🚃 {l}</button>
+                        <button key={l} onClick={() => { var active = lineFilter.includes(l); setLineFilter(active ? lineFilter.filter(function(x){ return x !== l; }) : lineFilter.concat([l])); }} style={chip(lineFilter.includes(l))}><svg width="12" height="12" viewBox="0 0 24 24" style={{verticalAlign:"-2px",marginRight:"2px"}}><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg> {l}</button>
                       ))}
                     </div>
                     <div style={{ display: "flex", gap: "6px" }}>
                       {LINES_ROW2.map(l => (
-                        <button key={l} onClick={() => { var active = lineFilter.includes(l); setLineFilter(active ? lineFilter.filter(function(x){ return x !== l; }) : lineFilter.concat([l])); }} style={chip(lineFilter.includes(l))}>🚃 {l}</button>
+                        <button key={l} onClick={() => { var active = lineFilter.includes(l); setLineFilter(active ? lineFilter.filter(function(x){ return x !== l; }) : lineFilter.concat([l])); }} style={chip(lineFilter.includes(l))}><svg width="12" height="12" viewBox="0 0 24 24" style={{verticalAlign:"-2px",marginRight:"2px"}}><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg> {l}</button>
                       ))}
                     </div>
                   </div>
@@ -1653,36 +1653,23 @@ function App() {
                             })()}
                           </span>
                         )}
-                        {!isTrainMode && typeof m.trainTimeShinjuku === "number" && (
-                          <React.Fragment>
-                            <span style={{ color: "#c8c0b8" }}>·</span>
-                            <span style={{display:"inline-flex",alignItems:"center",gap:"3px",color:"#5a6858"}} title="新宿駅からの電車・バス所要時間">
-                              <span style={{fontSize:"12px"}}>🚃</span>
-                              <span style={{fontSize:"12px",fontWeight:"700"}}>{formatDriveTime(m.trainTimeShinjuku)}</span>
-                              {typeof m.fareShinjuku === "number" && (
-                                <span style={{fontSize:"10px",color:"#8a8078"}}>（¥{m.fareShinjuku.toLocaleString()}）</span>
-                              )}
-                            </span>
-                          </React.Fragment>
-                        )}
                         {isTrainMode && (
                           typeof m.trainTimeShinjuku === "number" ? (
-                            <span style={{display:"inline-flex",alignItems:"center",gap:"4px"}} title="新宿駅からの電車・バス所要時間">
-                              <span style={{fontSize:"16px"}}>🚃</span>
-                              {(function(){
-                                return formatDriveTime(m.trainTimeShinjuku).split(/([\d,]+)/).map(function(p,i){
-                                  return /^[\d,]+$/.test(p) ? <span key={i} style={{fontSize:"16px",fontWeight:"700"}}>{p}</span> : <span key={i} style={{fontSize:"9px"}}>{p}</span>;
-                                });
-                              })()}
-                              {typeof m.fareShinjuku === "number" && (
-                                <span style={{fontSize:"11px",color:"#8a8078",fontWeight:"600"}}>（¥{m.fareShinjuku.toLocaleString()}）</span>
-                              )}
+                            <span style={{display:"inline-flex",alignItems:"center",gap:"4px",whiteSpace:"nowrap"}} title="新宿駅からの電車・バス所要時間">
+                              <svg width="15" height="15" viewBox="0 0 24 24" style={{flexShrink:0}}><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>
+                              <span style={{fontSize:"15px",fontWeight:"700"}}>{formatDriveTime(m.trainTimeShinjuku)}</span>
                             </span>
                           ) : (
                             <span style={{fontSize:"11px",color:"#a09888"}}>電車アクセス情報なし</span>
                           )
                         )}
                       </div>
+                      {/* 運賃(電車モード時のみ、別行で表示して見切れを防ぐ) */}
+                      {isTrainMode && typeof m.fareShinjuku === "number" && (
+                        <div style={{fontSize:"11px",color:"#8a8078",fontWeight:"600",position:"relative",zIndex:1,marginBottom:"2px",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>
+                          片道約¥{m.fareShinjuku.toLocaleString()}
+                        </div>
+                      )}
                       {/* アクセス時間バー */}
                       <div style={{height:"3px",background:"rgba(0,0,0,0.08)",borderRadius:"2px",marginBottom:"5px",overflow:"hidden",position:"relative",zIndex:1}}>
                         <div style={{width:barPct+"%",height:"100%",background:barColor,borderRadius:"2px",transition:"width 0.7s cubic-bezier(0.22,1,0.36,1)",animation:"barGrow 0.7s cubic-bezier(0.22,1,0.36,1) both"}}></div>

@@ -158,6 +158,11 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .dep-row{display:flex;gap:5px;padding:6px 12px 10px;max-width:680px;margin:0 auto;}
 .dep-btn-m{padding:5px 8px;font-size:12.5px;border:1px solid rgba(255,255,255,0.6);border-radius:5px;background:transparent;color:rgba(255,255,255,0.75);font-weight:500;cursor:pointer;white-space:nowrap;}
 .dep-btn-m.active{color:white;font-weight:700;border:1.5px solid white;}
+/* 電車発駅トグル(ts-summary内) */
+.ts-dep-toggle{display:flex;gap:5px;width:100%;margin-bottom:4px;}
+.ts-dep-btn{padding:3px 10px;font-size:11px;border:1px solid #ccc7ba;border-radius:12px;background:transparent;color:#8a8078;font-weight:600;cursor:pointer;}
+.ts-dep-btn.active{background:#4a6038;color:white;border-color:#4a6038;}
+
 
 
 .route-list-c{display:flex;flex-direction:column;}
@@ -298,7 +303,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   </div>
 </header>
 <main>
-  <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="sec-train">電車・バス</button><button type="button" class="bookmark-tab" data-target="sec-car">車アクセス時間</button><button type="button" class="bookmark-tab" data-target="sec-parking">登山口・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
+  <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="sec-car">車アクセス時間</button><button type="button" class="bookmark-tab" data-target="sec-parking">登山口・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
   <div class="mountain-updated">最終更新: 2026-07-22</div>
   <div class="hero-new">
     <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="#2a5010" style="opacity:0.04">
@@ -358,13 +363,12 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
           <span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>高速バス直通　<span class="ts-duration">約2時間35分</span></span>
         </div>
       </div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">富士山五合目</div></div></div>
-    <div class="ts-summary"><span>新宿から約2時間35分（予測乗換時間を含む）</span><span>片道約3,500円</span><div class="ts-summary-note">※直通バスは4月下旬〜8月頃の季節運行。それ以外は河口湖駅・富士山駅で路線バスに乗換</div></div></div>
+    <div class="ts-summary"><div class="ts-dep-toggle"><button type="button" class="ts-dep-btn active" data-key="shinjuku" onclick="changeDepTrain('shinjuku')">新宿発</button><button type="button" class="ts-dep-btn" data-key="omiya" onclick="changeDepTrain('omiya')">大宮発</button></div><span class="ts-time-val" data-shinjuku="約2時間35分" data-omiya="約3時間20分">約2時間35分</span><span class="ts-fare-val" data-shinjuku="片道約3,500円" data-omiya="片道約6,228円">片道約3,500円</span><div class="ts-summary-note">※直通バスは4月下旬〜8月頃の季節運行。それ以外は河口湖駅・富士山駅で路線バスに乗換</div></div></div>
     <div class="ts-note">💡 マイカー規制中は登山口へ直接行けないため、シーズン中は登山バスかこの直通バスの利用が前提</div>
     <div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=富士山駅&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>乗換案内で検索</a><a href="https://www.fujikyubus.co.jp/mycar/timetablefares/" target="_blank" rel="noopener" class="ts-link ts-link-bus"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>バス時刻表</a></div>
   </div>
   </div>
 
-  <div class="card" id="sec-train"><div class="ts-section"><div class="ts-header"><div class="ts-title">電車・バスでのアクセス</div><span class="ts-badge ts-badge-seasonal">⚠️ 夏季限定（マイカー規制）</span></div><div class="ts-line-name">富士急行線・富士急バス「富士スバルライン五合目線」</div><div class="ts-route"><div class="ts-step"><div class="ts-node"><div class="ts-station">新宿駅</div></div><div class="ts-arrow"><span class="ts-method">JR中央線→富士急行線&nbsp;<span class="ts-duration">約115分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">河口湖駅</div></div><div class="ts-arrow"><span class="ts-method">富士急バス「富士スバルライン五合目線」&nbsp;<span class="ts-duration">約55分</span></span></div></div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">富士山五合目</div></div></div></div><div class="ts-summary"><span>新宿から約2時間50分（予測乗換時間を含む）</span><span>片道約5,700円</span></div><div class="ts-note">💡 バスタ新宿からの高速バス直通（約2時間35分）も利用可能。夏季シーズンはマイカー規制のためバス利用が必須</div><div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=河口湖駅&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo">乗換案内で検索</a><a href="https://bus.fujikyu.co.jp/rosen/detail/id/14" target="_blank" rel="noopener" class="ts-link ts-link-bus">バス時刻表</a></div></div></div>
   <div class="card" id="sec-car"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="7" cy="18" r="2" fill="currentColor"/><circle cx="17" cy="18" r="2" fill="currentColor"/></svg>車でのアクセス時間</h2>
     <div class="ag-a" id="access-grid">
 <div class="ai-a" data-dep="大船駅" data-min="120"><div class="ai-a-dep">大船駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:33%"></div></div><div class="ai-a-val">2時間</div></div>
@@ -559,6 +563,23 @@ function updateDepButtons(dep){
     b.classList.toggle('active', b.textContent === dep + '駅');
   });
 }
+function changeDepTrain(key){
+  sessionStorage.setItem('ym_departure_train', key);
+  document.querySelectorAll('.ts-dep-btn').forEach(function(b){
+    b.classList.toggle('active', b.dataset.key === key);
+  });
+  document.querySelectorAll('.ts-time-val').forEach(function(el){
+    if(el.dataset[key]) el.textContent = el.dataset[key];
+  });
+  document.querySelectorAll('.ts-fare-val').forEach(function(el){
+    if(el.dataset[key]) el.textContent = el.dataset[key];
+  });
+}
+function applyDepTrain(){
+  var key = sessionStorage.getItem('ym_departure_train') || 'shinjuku';
+  changeDepTrain(key);
+}
+
 function applyDep(){
   var raw = sessionStorage.getItem('ym_departure'); var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
   var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya','立川':'tachikawa'};
@@ -595,6 +616,7 @@ var __initRaw = sessionStorage.getItem('ym_departure');
 var initDep = __initRaw ? (__initRaw.indexOf('"') === 0 ? JSON.parse(__initRaw) : __initRaw) : '大船';
 updateDepButtons(initDep);
 applyDep();
+applyDepTrain();
 
 
 // === JSONから動的データを反映 ===

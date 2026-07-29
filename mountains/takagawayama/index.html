@@ -139,6 +139,11 @@ main{max-width:680px;margin:0 auto;padding:18px}
 .dep-row{display:flex;gap:5px;padding:6px 12px 10px;max-width:680px;margin:0 auto;}
 .dep-btn-m{padding:5px 8px;font-size:12.5px;border:1px solid rgba(255,255,255,0.6);border-radius:5px;background:transparent;color:rgba(255,255,255,0.75);font-weight:500;cursor:pointer;white-space:nowrap;}
 .dep-btn-m.active{color:white;font-weight:700;border:1.5px solid white;}
+/* 電車発駅トグル(ts-summary内) */
+.ts-dep-toggle{display:flex;gap:5px;width:100%;margin-bottom:4px;}
+.ts-dep-btn{padding:3px 10px;font-size:11px;border:1px solid #ccc7ba;border-radius:12px;background:transparent;color:#8a8078;font-weight:600;cursor:pointer;}
+.ts-dep-btn.active{background:#4a6038;color:white;border-color:#4a6038;}
+
 
 .gear-section{background:transparent;border-radius:0;padding:24px 0;margin-bottom:0;border:none;border-bottom:1px solid #ccc7ba}
 .gear-title{font-size:11px;font-weight:700;color:#1a1a16;letter-spacing:0.06em;margin-bottom:14px}
@@ -250,7 +255,7 @@ main{max-width:680px;margin:0 auto;padding:18px}
           <div class="ts-arrow"><span class="ts-method"><svg width="13" height="13" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="12" cy="4" r="2.4" fill="currentColor" stroke="none"/><path d="M12 7 L12 13 M12 13 L8 17 M12 13 L16 16 M12 9 L7 12 M12 9 L17 8"/></svg>徒歩　<span class="ts-duration">約10分で登山口</span></span></div>
         </div>
         <div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">高川山登山口</div></div></div>
-      <div class="ts-summary"><span>新宿から約1時間20分（予測乗換時間を含む）</span><span>片道約1,000円</span></div></div>
+      <div class="ts-summary"><div class="ts-dep-toggle"><button type="button" class="ts-dep-btn active" data-key="shinjuku" onclick="changeDepTrain('shinjuku')">新宿発</button><button type="button" class="ts-dep-btn" data-key="omiya" onclick="changeDepTrain('omiya')">大宮発</button></div><span class="ts-time-val" data-shinjuku="約1時間20分" data-omiya="約1時間50分">約1時間20分</span><span class="ts-fare-val" data-shinjuku="片道約1,000円" data-omiya="片道約1,528円">片道約1,000円</span></div></div>
       <div class="ts-note">💡 初狩駅スタート→高川山→大月駅ゴールの縦走が人気。帰りの電車の本数が多い大月駅に下山するのがおすすめ。</div>
       <div class="ts-links">
         <a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=初狩駅&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>乗換案内で検索</a>
@@ -431,6 +436,23 @@ function updateDepButtons(dep){
     b.classList.toggle('active',b.textContent===dep+'駅');
   });
 }
+function changeDepTrain(key){
+  sessionStorage.setItem('ym_departure_train', key);
+  document.querySelectorAll('.ts-dep-btn').forEach(function(b){
+    b.classList.toggle('active', b.dataset.key === key);
+  });
+  document.querySelectorAll('.ts-time-val').forEach(function(el){
+    if(el.dataset[key]) el.textContent = el.dataset[key];
+  });
+  document.querySelectorAll('.ts-fare-val').forEach(function(el){
+    if(el.dataset[key]) el.textContent = el.dataset[key];
+  });
+}
+function applyDepTrain(){
+  var key = sessionStorage.getItem('ym_departure_train') || 'shinjuku';
+  changeDepTrain(key);
+}
+
 function applyDep(){
   var raw=sessionStorage.getItem('ym_departure');
   var dep=raw?(raw.startsWith('"')?JSON.parse(raw):raw):'大船';
@@ -466,6 +488,7 @@ var __initRaw = sessionStorage.getItem('ym_departure');
 var initDep = __initRaw ? (__initRaw.indexOf('"') === 0 ? JSON.parse(__initRaw) : __initRaw) : '大船';
 updateDepButtons(initDep);
 applyDep();
+applyDepTrain();
 </script>
 <script>
 (function(){

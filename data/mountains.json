@@ -321,7 +321,10 @@
   "nearestStation": "渋沢駅",
   "trainLine": "小田急小田原線",
   "fareShinjuku": 942,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 115,
+  "fareOmiya": 1470,
+  "transfersOmiya": 2
  },
  {
   "id": "fuji",
@@ -671,7 +674,10 @@
   "_gatewayVerified": false,
   "trainTimeShinjuku": 170,
   "fareShinjuku": 5700,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 200,
+  "fareOmiya": 6228,
+  "transfersOmiya": 3
  },
  {
   "id": "tsukuba",
@@ -876,7 +882,10 @@
   "nearestStation": "つくば駅",
   "trainLine": "つくばエクスプレス",
   "fareShinjuku": 1280,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 150,
+  "fareOmiya": 1808,
+  "transfersOmiya": 2
  },
  {
   "id": "kumotori",
@@ -1225,7 +1234,10 @@
   "weatherLat": 35.791737,
   "weatherLng": 138.91777,
   "fareShinjuku": 1710,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 185,
+  "fareOmiya": 2238,
+  "transfersOmiya": 2
  },
  {
   "id": "amagi",
@@ -1425,7 +1437,10 @@
   "trainLine": "JR伊東線",
   "trainTimeShinjuku": 155,
   "fareShinjuku": 3400,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 185,
+  "fareOmiya": 3928,
+  "transfersOmiya": 2
  },
  {
   "id": "okutama",
@@ -1693,7 +1708,7 @@
   "driveTimeYokohama": 140,
   "driveTimeOmiya": 135,
   "nearestStation": "甲斐大和駅",
-  "trainLine": "JR中央線",
+  "trainLine": "JR中央本線",
   "trainTimeShinjuku": 120,
   "trainInfo": "新宿→塩山駅（中央線特急約80分）→バス約30分",
   "lines": [
@@ -1703,8 +1718,11 @@
   "driveTachikawa": 100,
   "weatherLat": 35.731625,
   "weatherLng": 138.82402,
-  "fareShinjuku": 2750,
-  "transfersShinjuku": 1
+  "fareShinjuku": 3200,
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 133,
+  "fareOmiya": 3110,
+  "transfersOmiya": 2
  },
  {
   "id": "ryokami",
@@ -2022,8 +2040,13 @@
   "trainTimeShinjuku": 160,
   "nearestStation": "西武秩父駅",
   "trainLine": "西武秩父線",
-  "fareShinjuku": 1396,
-  "transfersShinjuku": 2
+  "fareShinjuku": 2590,
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 142,
+  "fareOmiya": 1898,
+  "transfersOmiya": 3,
+  "trainLineOmiya": "JR埼京線・西武池袋線特急ちちぶ（池袋乗換）",
+  "trainAccessOmiyaNote": "西武秩父駅から日向大谷口へのバス「小鹿野町営バス・日向大谷/三峰口線」は1日7本程度（6:48/8:18/9:16/11:12/14:28/16:41/17:58発）。11:12発の次は14:28発まで3時間以上間隔が空くため、必ず事前に時刻表を確認すること。"
  },
  {
   "id": "kobushigatake",
@@ -2355,7 +2378,10 @@
   "_gatewayVerified": false,
   "trainTimeShinjuku": 85,
   "fareShinjuku": 3560,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 115,
+  "fareOmiya": 4088,
+  "transfersOmiya": 1
  },
  {
   "id": "mizugaki",
@@ -2676,7 +2702,10 @@
   "_gatewayVerified": false,
   "trainTimeShinjuku": 97,
   "fareShinjuku": 4220,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 127,
+  "fareOmiya": 4748,
+  "transfersOmiya": 1
  },
  {
   "id": "akagi",
@@ -2955,7 +2984,10 @@
   "weatherLat": 36.517929,
   "weatherLng": 139.12822,
   "fareShinjuku": 5810,
-  "transfersShinjuku": 3
+  "transfersShinjuku": 3,
+  "trainTimeOmiya": 177,
+  "fareOmiya": 3488,
+  "transfersOmiya": 2
  },
  {
   "id": "kinpusan",
@@ -3628,7 +3660,10 @@
   "trainLine": "JR中央本線",
   "trainTimeShinjuku": 200,
   "fareShinjuku": 5600,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 230,
+  "fareOmiya": 6128,
+  "transfersOmiya": 2
  },
  {
   "id": "nantaisan",
@@ -3956,8 +3991,11 @@
   "driveTachikawa": 175,
   "weatherLat": 36.7584,
   "weatherLng": 139.59666,
-  "fareShinjuku": 2300,
-  "transfersShinjuku": 1
+  "fareShinjuku": 6070,
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 180,
+  "fareOmiya": 6598,
+  "transfersOmiya": 2
  },
  {
   "id": "kitadake",
@@ -4305,7 +4343,10 @@
   "_gatewayVerified": false,
   "trainTimeShinjuku": 200,
   "fareShinjuku": 5600,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 230,
+  "fareOmiya": 6128,
+  "transfersOmiya": 2
  },
  {
   "id": "yatsugatake",
@@ -4629,7 +4670,10 @@
   "trainLine": "JR中央本線",
   "trainTimeShinjuku": 170,
   "fareShinjuku": 7500,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 200,
+  "fareOmiya": 8028,
+  "transfersOmiya": 2
  },
  {
   "id": "keirisan",
@@ -4641,7 +4685,7 @@
   "coeffMin": 65,
   "coeffMax": 89,
   "daytrip": true,
-  "trainAccess": "新宿駅→茅野駅→バス約30分→竜源橋（土日・季節）",
+  "trainAccess": "新宿駅→JR特急あずさ約2時間→茅野駅→アルピコ交通「蓼科高原ラウンドバス」約60分→蓼科山登山口（女神茶屋）",
   "driveOfuna": 200,
   "driveShinjuku": 175,
   "driveYokohama": 205,
@@ -4979,8 +5023,11 @@
   "driveTachikawa": 140,
   "weatherLat": 36.068783,
   "weatherLng": 138.272293,
-  "fareShinjuku": 3700,
-  "transfersShinjuku": 1
+  "fareShinjuku": 7350,
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 210,
+  "fareOmiya": 7878,
+  "transfersOmiya": 2
  },
  {
   "id": "kirigamine",
@@ -5259,7 +5306,10 @@
   "weatherLat": 36.020393,
   "weatherLng": 138.130936,
   "fareShinjuku": 8500,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 230,
+  "fareOmiya": 9028,
+  "transfersOmiya": 2
  },
  {
   "id": "asama",
@@ -5587,7 +5637,10 @@
   "_gatewayVerified": false,
   "trainTimeShinjuku": 205,
   "fareShinjuku": 2700,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 82,
+  "fareOmiya": 5225,
+  "transfersOmiya": 1
  },
  {
   "id": "tanigawa",
@@ -5923,7 +5976,10 @@
   "weatherLat": 36.786,
   "weatherLng": 138.946,
   "fareShinjuku": 8590,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 145,
+  "fareOmiya": 8062,
+  "transfersOmiya": 1
  },
  {
   "id": "nasu",
@@ -6246,7 +6302,10 @@
   "weatherLat": 37.01976,
   "weatherLng": 140.121017,
   "fareShinjuku": 6730,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 78,
+  "fareOmiya": 6290,
+  "transfersOmiya": 1
  },
  {
   "id": "azumayasan",
@@ -6885,7 +6944,10 @@
   "nearestStation": "沼田駅",
   "trainLine": "JR上越線",
   "fareShinjuku": 7900,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 130,
+  "fareOmiya": 7372,
+  "transfersOmiya": 1
  },
  {
   "id": "takeson",
@@ -7545,7 +7607,10 @@
   "_gatewayVerified": false,
   "trainTimeShinjuku": 250,
   "fareShinjuku": 8600,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 280,
+  "fareOmiya": 9128,
+  "transfersOmiya": 3
  },
  {
   "id": "senjogatake",
@@ -7893,7 +7958,10 @@
   "_gatewayVerified": false,
   "trainTimeShinjuku": 250,
   "fareShinjuku": 8600,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 280,
+  "fareOmiya": 9128,
+  "transfersOmiya": 3
  },
  {
   "id": "shirouma",
@@ -8242,7 +8310,10 @@
   "weatherLat": 36.7,
   "weatherLng": 137.789,
   "fareShinjuku": 7780,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 275,
+  "fareOmiya": 8308,
+  "transfersOmiya": 2
  },
  {
   "id": "norikura",
@@ -8534,7 +8605,10 @@
   "trainLine": "松本電鉄上高地線",
   "trainTimeShinjuku": 300,
   "fareShinjuku": 9200,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 330,
+  "fareOmiya": 9728,
+  "transfersOmiya": 3
  },
  {
   "id": "tateyama",
@@ -8826,7 +8900,10 @@
   "driveTimeTachikawa": 325,
   "driveTachikawa": 325,
   "fareShinjuku": 18000,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 241,
+  "fareOmiya": 13720,
+  "transfersOmiya": 2
  },
  {
   "id": "tsurugi",
@@ -9172,7 +9249,10 @@
   "driveTimeTachikawa": 330,
   "driveTachikawa": 330,
   "fareShinjuku": 18000,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 251,
+  "fareOmiya": 13720,
+  "transfersOmiya": 2
  },
  {
   "id": "yari",
@@ -9522,8 +9602,11 @@
   "nearestStation": "松本駅",
   "trainLine": "JR中央本線・上高地線",
   "trainTimeShinjuku": 195,
-  "fareShinjuku": 6500,
-  "transfersShinjuku": 0
+  "fareShinjuku": 6620,
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 225,
+  "fareOmiya": 7148,
+  "transfersOmiya": 1
  },
  {
   "id": "hotaka",
@@ -9873,8 +9956,11 @@
   "nearestStation": "松本駅",
   "trainLine": "JR中央本線・上高地線",
   "trainTimeShinjuku": 195,
-  "fareShinjuku": 6500,
-  "transfersShinjuku": 0
+  "fareShinjuku": 6620,
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 225,
+  "fareOmiya": 7148,
+  "transfersOmiya": 1
  },
  {
   "id": "myoko",
@@ -10209,7 +10295,10 @@
   "driveTimeTachikawa": 315,
   "driveTachikawa": 315,
   "fareShinjuku": 9100,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 133,
+  "fareOmiya": 8830,
+  "transfersOmiya": 1
  },
  {
   "id": "makihata",
@@ -10545,7 +10634,10 @@
   "driveTimeTachikawa": 280,
   "driveTachikawa": 280,
   "fareShinjuku": 7400,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 78,
+  "fareOmiya": 6160,
+  "transfersOmiya": 1
  },
  {
   "id": "iide",
@@ -10886,7 +10978,9 @@
   "trainTimeShinjuku": 270,
   "fareShinjuku": 8370,
   "transfersShinjuku": 2,
-  "_fareEstimated": true
+  "trainTimeOmiya": 193,
+  "fareOmiya": 8030,
+  "transfersOmiya": 2
  },
  {
   "id": "shibutsu",
@@ -11217,7 +11311,10 @@
   "nearestStation": "上毛高原駅",
   "trainLine": "上越新幹線",
   "fareShinjuku": 7890,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 175,
+  "fareOmiya": 7450,
+  "transfersOmiya": 2
  },
  {
   "id": "aizu_koma",
@@ -11539,7 +11636,10 @@
   "trainLine": "会津鉄道",
   "trainTimeShinjuku": 250,
   "fareShinjuku": 6000,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 245,
+  "fareOmiya": 6610,
+  "transfersOmiya": 1
  },
  {
   "id": "shirane_gunma",
@@ -11842,7 +11942,10 @@
   "weatherLat": 36.627369,
   "weatherLng": 138.57579,
   "fareShinjuku": 6200,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 155,
+  "fareOmiya": 5672,
+  "transfersOmiya": 1
  },
  {
   "id": "bandai",
@@ -12168,7 +12271,10 @@
   "driveTimeTachikawa": 275,
   "driveTachikawa": 275,
   "fareShinjuku": 9700,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 150,
+  "fareOmiya": 9172,
+  "transfersOmiya": 2
  },
  {
   "id": "hiuchigatake",
@@ -12495,7 +12601,9 @@
   "trainTimeShinjuku": 300,
   "fareShinjuku": 7870,
   "transfersShinjuku": 1,
-  "_fareEstimated": true
+  "trainTimeOmiya": 295,
+  "fareOmiya": 8480,
+  "transfersOmiya": 2
  },
  {
   "id": "takao",
@@ -12709,7 +12817,10 @@
   "weatherLat": 35.63234418,
   "weatherLng": 139.26996565,
   "fareShinjuku": 390,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 80,
+  "fareOmiya": 918,
+  "transfersOmiya": 1
  },
  {
   "id": "oyama",
@@ -12925,7 +13036,10 @@
   "weatherLat": 35.42717,
   "weatherLng": 139.246063,
   "fareShinjuku": 980,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 130,
+  "fareOmiya": 1508,
+  "transfersOmiya": 2
  },
  {
   "id": "tonosaki",
@@ -13246,7 +13360,10 @@
   "weatherLat": 35.4046916,
   "weatherLng": 139.1690889,
   "fareShinjuku": 942,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 115,
+  "fareOmiya": 1470,
+  "transfersOmiya": 2
  },
  {
   "id": "hirugata",
@@ -13587,7 +13704,10 @@
   "weatherLat": 35.4046916,
   "weatherLng": 139.1690889,
   "fareShinjuku": 942,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 115,
+  "fareOmiya": 1470,
+  "transfersOmiya": 2
  },
  {
   "id": "jinba",
@@ -13794,7 +13914,10 @@
   "weatherLat": 35.667179,
   "weatherLng": 139.201767,
   "fareShinjuku": 1250,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 104,
+  "fareOmiya": 1778,
+  "transfersOmiya": 1
  },
  {
   "id": "kintoki",
@@ -14070,7 +14193,10 @@
   "driveTimeTachikawa": 85,
   "driveTachikawa": 85,
   "fareShinjuku": 1770,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 190,
+  "fareOmiya": 2298,
+  "transfersOmiya": 2
  },
  {
   "id": "kayagatake",
@@ -14658,8 +14784,8 @@
   "driveTimeShinjuku": 130,
   "driveTimeYokohama": 130,
   "driveTimeOmiya": 170,
-  "nearestStation": "塩山駅",
-  "trainLine": "JR中央線",
+  "nearestStation": "山梨市駅",
+  "trainLine": "JR中央本線",
   "trainTimeShinjuku": 120,
   "trainInfo": "新宿→塩山駅（中央線特急約80分）→バス約40分",
   "lines": [
@@ -14667,8 +14793,11 @@
   ],
   "driveTimeTachikawa": 105,
   "driveTachikawa": 105,
-  "fareShinjuku": 1950,
-  "transfersShinjuku": 1
+  "fareShinjuku": 4300,
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 150,
+  "fareOmiya": 4828,
+  "transfersOmiya": 2
  },
  {
   "id": "hinata",
@@ -15151,7 +15280,10 @@
   "weatherLat": 35.892537,
   "weatherLng": 139.17665568,
   "fareShinjuku": 690,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 101,
+  "fareOmiya": 1597,
+  "transfersOmiya": 1
  },
  {
   "id": "otake",
@@ -15361,7 +15493,10 @@
   "weatherLat": 35.796011,
   "weatherLng": 139.161231,
   "fareShinjuku": 1290,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 103,
+  "fareOmiya": 1221,
+  "transfersOmiya": 2
  },
  {
   "id": "jonengatake",
@@ -16028,8 +16163,11 @@
   "nearestStation": "松本駅",
   "trainLine": "JR中央本線・上高地線",
   "trainTimeShinjuku": 195,
-  "fareShinjuku": 6500,
-  "transfersShinjuku": 0
+  "fareShinjuku": 6620,
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 225,
+  "fareOmiya": 7148,
+  "transfersOmiya": 1
  },
  {
   "id": "kashimayari",
@@ -16377,7 +16515,10 @@
   "weatherLat": 36.573,
   "weatherLng": 137.789,
   "fareShinjuku": 9000,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 210,
+  "fareOmiya": 9528,
+  "transfersOmiya": 2
  },
  {
   "id": "koganzan",
@@ -16641,8 +16782,8 @@
   "driveTimeShinjuku": 130,
   "driveTimeYokohama": 140,
   "driveTimeOmiya": 180,
-  "nearestStation": "塩山駅",
-  "trainLine": "JR中央線",
+  "nearestStation": "甲斐大和駅",
+  "trainLine": "JR中央本線",
   "trainTimeShinjuku": 120,
   "trainInfo": "新宿→塩山駅（中央線特急約80分）→バス約30分",
   "lines": [
@@ -16650,8 +16791,11 @@
   ],
   "driveTimeTachikawa": 100,
   "driveTachikawa": 100,
-  "fareShinjuku": 2750,
-  "transfersShinjuku": 1
+  "fareShinjuku": 3200,
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 133,
+  "fareOmiya": 3110,
+  "transfersOmiya": 2
  },
  {
   "id": "arafune",
@@ -17787,7 +17931,10 @@
   "driveTimeTachikawa": 200,
   "driveTachikawa": 200,
   "fareShinjuku": 8800,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 150,
+  "fareOmiya": 8272,
+  "transfersOmiya": 2
  },
  {
   "id": "iizunasan",
@@ -18066,7 +18213,10 @@
   "driveTimeTachikawa": 220,
   "driveTachikawa": 220,
   "fareShinjuku": 8760,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 112,
+  "fareOmiya": 6860,
+  "transfersOmiya": 1
  },
  {
   "id": "kurohimesan",
@@ -18401,7 +18551,10 @@
   "driveTimeTachikawa": 290,
   "driveTachikawa": 290,
   "fareShinjuku": 9000,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 110,
+  "fareOmiya": 8472,
+  "transfersOmiya": 1
  },
  {
   "id": "kenashiyama",
@@ -18716,7 +18869,10 @@
   "trainLine": "JR身延線",
   "trainTimeShinjuku": 174,
   "fareShinjuku": 3330,
-  "transfersShinjuku": 3
+  "transfersShinjuku": 3,
+  "trainTimeOmiya": 204,
+  "fareOmiya": 3858,
+  "transfersOmiya": 4
  },
  {
   "id": "shirasunayama",
@@ -19339,7 +19495,10 @@
   "driveTimeTachikawa": 165,
   "driveTachikawa": 165,
   "fareShinjuku": 3600,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 265,
+  "fareOmiya": 4128,
+  "transfersOmiya": 3
  },
  {
   "id": "arasawadake",
@@ -20992,7 +21151,10 @@
   "trainLine": "JR大糸線",
   "trainTimeShinjuku": 240,
   "fareShinjuku": 8400,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 270,
+  "fareOmiya": 8928,
+  "transfersOmiya": 2
  },
  {
   "id": "keizandake",
@@ -21588,7 +21750,10 @@
   "driveTimeTachikawa": 305,
   "driveTachikawa": 305,
   "fareShinjuku": 7950,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 110,
+  "fareOmiya": 7422,
+  "transfersOmiya": 1
  },
  {
   "id": "azuma",
@@ -21869,7 +22034,10 @@
   "trainLine": "JR奥羽本線",
   "trainTimeShinjuku": 180,
   "fareShinjuku": 8000,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 150,
+  "fareOmiya": 7472,
+  "transfersOmiya": 1
  },
  {
   "id": "echigokoma",
@@ -22192,7 +22360,10 @@
   "driveTachikawa": 370,
   "trainTimeShinjuku": 270,
   "fareShinjuku": 7700,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 240,
+  "fareOmiya": 7172,
+  "transfersOmiya": 2
  },
  {
   "id": "hiragadake",
@@ -22865,7 +23036,10 @@
   "driveTimeTachikawa": 255,
   "driveTachikawa": 255,
   "fareShinjuku": 9800,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 89,
+  "fareOmiya": 9020,
+  "transfersOmiya": 1
  },
  {
   "id": "amakazari",
@@ -23513,7 +23687,10 @@
   "driveTimeTachikawa": 335,
   "driveTachikawa": 335,
   "fareShinjuku": 9200,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 133,
+  "fareOmiya": 8830,
+  "transfersOmiya": 1
  },
  {
   "id": "takatsuma",
@@ -23864,7 +24041,10 @@
   "_gatewayVerified": false,
   "trainTimeShinjuku": 145,
   "fareShinjuku": 8060,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 112,
+  "fareOmiya": 6160,
+  "transfersOmiya": 1
  },
  {
   "id": "kasagatake",
@@ -24519,7 +24699,10 @@
   "_gatewayVerified": false,
   "trainTimeShinjuku": 210,
   "fareShinjuku": 10880,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 240,
+  "fareOmiya": 11408,
+  "transfersOmiya": 3
  },
  {
   "id": "goryudake",
@@ -24862,7 +25045,10 @@
   "weatherLat": 36.699,
   "weatherLng": 137.822,
   "fareShinjuku": 8400,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 250,
+  "fareOmiya": 8928,
+  "transfersOmiya": 3
  },
  {
   "id": "sukai",
@@ -25485,7 +25671,10 @@
   "weatherLat": 35.73613,
   "weatherLng": 137.86673,
   "fareShinjuku": 8400,
-  "transfersShinjuku": 3
+  "transfersShinjuku": 3,
+  "trainTimeOmiya": 310,
+  "fareOmiya": 8928,
+  "transfersOmiya": 4
  },
  {
   "id": "utsukushigahara",
@@ -25761,7 +25950,10 @@
   "trainLine": "JR中央本線",
   "trainTimeShinjuku": 250,
   "fareShinjuku": 8000,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 280,
+  "fareOmiya": 8528,
+  "transfersOmiya": 2
  },
  {
   "id": "karamatsu",
@@ -26087,7 +26279,10 @@
   "driveTimeTachikawa": 265,
   "driveTachikawa": 265,
   "fareShinjuku": 7780,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 265,
+  "fareOmiya": 8308,
+  "transfersOmiya": 2
  },
  {
   "id": "utsugi",
@@ -26425,7 +26620,10 @@
   "trainLine": "JR飯田線",
   "trainTimeShinjuku": 233,
   "fareShinjuku": 4200,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 263,
+  "fareOmiya": 4728,
+  "transfersOmiya": 1
  },
  {
   "id": "enasan",
@@ -29438,7 +29636,10 @@
   "_gatewayVerified": false,
   "trainTimeShinjuku": 200,
   "fareShinjuku": 5600,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 230,
+  "fareOmiya": 6128,
+  "transfersOmiya": 2
  },
  {
   "id": "noutori",
@@ -29771,7 +29972,10 @@
   "_gatewayVerified": false,
   "trainTimeShinjuku": 200,
   "fareShinjuku": 5600,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 230,
+  "fareOmiya": 6128,
+  "transfersOmiya": 2
  },
  {
   "id": "hakusan",
@@ -30395,7 +30599,10 @@
   "_gatewayVerified": false,
   "trainTimeShinjuku": 195,
   "fareShinjuku": 6970,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 165,
+  "fareOmiya": 6442,
+  "transfersOmiya": 1
  },
  {
   "id": "karisaka",
@@ -30748,7 +30955,10 @@
   "nearestStation": "塩山駅",
   "trainLine": "JR中央線",
   "fareShinjuku": 3400,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 190,
+  "fareOmiya": 3928,
+  "transfersOmiya": 2
  },
  {
   "id": "nokogiriyama",
@@ -31084,7 +31294,10 @@
   "_gatewayVerified": false,
   "trainTimeShinjuku": 200,
   "fareShinjuku": 5600,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 230,
+  "fareOmiya": 6128,
+  "transfersOmiya": 2
  },
  {
   "id": "minamikomagatake",
@@ -31423,7 +31636,10 @@
   "driveTimeTachikawa": 210,
   "driveTachikawa": 210,
   "fareShinjuku": 5780,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 263,
+  "fareOmiya": 6308,
+  "transfersOmiya": 2
  },
  {
   "id": "chogatake",
@@ -31745,8 +31961,11 @@
   "nearestStation": "松本駅",
   "trainLine": "JR中央本線・上高地線",
   "trainTimeShinjuku": 195,
-  "fareShinjuku": 6500,
-  "transfersShinjuku": 0
+  "fareShinjuku": 6620,
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 225,
+  "fareOmiya": 7148,
+  "transfersOmiya": 1
  },
  {
   "id": "otenshoudake",
@@ -32083,7 +32302,10 @@
   "trainLine": "JR大糸線",
   "trainTimeShinjuku": 240,
   "fareShinjuku": 8400,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 270,
+  "fareOmiya": 8928,
+  "transfersOmiya": 2
  },
  {
   "id": "harinokidake",
@@ -32408,7 +32630,10 @@
   "driveTimeTachikawa": 290,
   "driveTachikawa": 290,
   "fareShinjuku": 9000,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 210,
+  "fareOmiya": 9528,
+  "transfersOmiya": 2
  },
  {
   "id": "eboshidake_kita",
@@ -33268,7 +33493,10 @@
   "driveTimeTachikawa": 105,
   "driveTachikawa": 105,
   "fareShinjuku": 900,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 145,
+  "fareOmiya": 1428,
+  "transfersOmiya": 1
  },
  {
   "id": "mitakesan",
@@ -33480,7 +33708,10 @@
   "weatherLat": 35.796011,
   "weatherLng": 139.161231,
   "fareShinjuku": 1290,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 103,
+  "fareOmiya": 1221,
+  "transfersOmiya": 2
  },
  {
   "id": "takamizusanzan",
@@ -33759,7 +33990,10 @@
   "weatherLat": 35.796011,
   "weatherLng": 139.161231,
   "fareShinjuku": 1050,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 120,
+  "fareOmiya": 1578,
+  "transfersOmiya": 2
  },
  {
   "id": "tenzandake",
@@ -33961,7 +34195,10 @@
   "weatherLat": 35.85107357,
   "weatherLng": 139.31914724,
   "fareShinjuku": 690,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 71,
+  "fareOmiya": 1597,
+  "transfersOmiya": 1
  },
  {
   "id": "hiwadayama",
@@ -34161,7 +34398,10 @@
   "weatherLat": 35.89377838515796,
   "weatherLng": 139.30475233046212,
   "fareShinjuku": 690,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 95,
+  "fareOmiya": 1218,
+  "transfersOmiya": 2
  },
  {
   "id": "izugatake",
@@ -34374,7 +34614,10 @@
   "weatherLat": 35.93836843,
   "weatherLng": 139.18135275,
   "fareShinjuku": 850,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 110,
+  "fareOmiya": 1378,
+  "transfersOmiya": 2
  },
  {
   "id": "bukosan",
@@ -34686,8 +34929,12 @@
   "driveTachikawa": 95,
   "weatherLat": 35.96867,
   "weatherLng": 139.10759,
-  "fareShinjuku": 1396,
-  "transfersShinjuku": 2
+  "fareShinjuku": 1890,
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 110,
+  "fareOmiya": 1198,
+  "transfersOmiya": 2,
+  "trainLineOmiya": "JR川越線・八高線・西武池袋線各停（新宿・池袋いずれも経由しない短絡ルート）"
  },
  {
   "id": "nabewari",
@@ -35015,7 +35262,10 @@
   "weatherLat": 35.4046916,
   "weatherLng": 139.1690889,
   "fareShinjuku": 960,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 135,
+  "fareOmiya": 1488,
+  "transfersOmiya": 2
  },
  {
   "id": "sannotou",
@@ -35303,7 +35553,10 @@
   "weatherLat": 35.4046916,
   "weatherLng": 139.1690889,
   "fareShinjuku": 960,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 135,
+  "fareOmiya": 1488,
+  "transfersOmiya": 2
  },
  {
   "id": "koubousan",
@@ -35517,7 +35770,10 @@
   "weatherLat": 35.38113938,
   "weatherLng": 139.27782486,
   "fareShinjuku": 600,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 100,
+  "fareOmiya": 1128,
+  "transfersOmiya": 1
  },
  {
   "id": "kagenobusan",
@@ -35726,7 +35982,10 @@
   "weatherLat": 35.64202682,
   "weatherLng": 139.28278087,
   "fareShinjuku": 710,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 110,
+  "fareOmiya": 1238,
+  "transfersOmiya": 2
  },
  {
   "id": "takagawayama",
@@ -35930,7 +36189,10 @@
   "driveTimeTachikawa": 60,
   "driveTachikawa": 60,
   "fareShinjuku": 1000,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 110,
+  "fareOmiya": 1528,
+  "transfersOmiya": 1
  },
  {
   "id": "kobotokeshiroyama",
@@ -36119,7 +36381,10 @@
   "weatherLat": 35.64202682,
   "weatherLng": 139.28278087,
   "fareShinjuku": 710,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 110,
+  "fareOmiya": 1238,
+  "transfersOmiya": 2
  },
  {
   "id": "kusatoriyama",
@@ -36299,7 +36564,10 @@
   "weatherLat": 35.63234418,
   "weatherLng": 139.26996565,
   "fareShinjuku": 390,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 85,
+  "fareOmiya": 918,
+  "transfersOmiya": 1
  },
  {
   "id": "nakimushiyama",
@@ -36548,8 +36816,11 @@
   ],
   "busScheduleLinks": [],
   "yamapUrl": "https://yamap.com/mountains/16965",
-  "fareShinjuku": 1080,
-  "transfersShinjuku": 0
+  "fareShinjuku": 6070,
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 160,
+  "fareOmiya": 6598,
+  "transfersOmiya": 1
  },
  {
   "id": "tairappyo",
@@ -36886,7 +37157,10 @@
   "driveTimeTachikawa": 235,
   "driveTachikawa": 235,
   "fareShinjuku": 6700,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 59,
+  "fareOmiya": 5920,
+  "transfersOmiya": 1
  },
  {
   "id": "tomisan",
@@ -37082,7 +37356,10 @@
   "driveTimeTachikawa": 125,
   "driveTachikawa": 125,
   "fareShinjuku": 3000,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 150,
+  "fareOmiya": 3528,
+  "transfersOmiya": 2
  },
  {
   "id": "iyogatake",
@@ -37289,7 +37566,10 @@
   "driveTimeTachikawa": 125,
   "driveTachikawa": 125,
   "fareShinjuku": 3000,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 150,
+  "fareOmiya": 3528,
+  "transfersOmiya": 2
  },
  {
   "id": "myojingatake",
@@ -37495,7 +37775,10 @@
   "driveTimeTachikawa": 95,
   "driveTachikawa": 95,
   "fareShinjuku": 1770,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 190,
+  "fareOmiya": 2298,
+  "transfersOmiya": 2
  },
  {
   "id": "yaguradake",
@@ -37695,7 +37978,10 @@
   "driveTimeTachikawa": 90,
   "driveTachikawa": 90,
   "fareShinjuku": 1710,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 187,
+  "fareOmiya": 2238,
+  "transfersOmiya": 2
  },
  {
   "id": "kawanoriyama",
@@ -37984,7 +38270,10 @@
   "weatherLat": 35.817978,
   "weatherLng": 139.165619,
   "fareShinjuku": 1610,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 160,
+  "fareOmiya": 2138,
+  "transfersOmiya": 2
  },
  {
   "id": "takanosuyama",
@@ -38313,7 +38602,10 @@
   "weatherLat": 35.858006,
   "weatherLng": 139.013916,
   "fareShinjuku": 1610,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 160,
+  "fareOmiya": 2138,
+  "transfersOmiya": 2
  },
  {
   "id": "ishirousan",
@@ -38506,7 +38798,10 @@
   ],
   "seasonNoGear": "通年",
   "fareShinjuku": 1280,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 102,
+  "fareOmiya": 1808,
+  "transfersOmiya": 1
  },
  {
   "id": "iwadonoyama",
@@ -38698,7 +38993,10 @@
   ],
   "seasonNoGear": "通年",
   "fareShinjuku": 1340,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 120,
+  "fareOmiya": 1868,
+  "transfersOmiya": 1
  },
  {
   "id": "maruyama_okubusuma",
@@ -38892,7 +39190,10 @@
   "weatherLat": 35.96867,
   "weatherLng": 139.10759,
   "fareShinjuku": 850,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 114,
+  "fareOmiya": 1255,
+  "transfersOmiya": 2
  },
  {
   "id": "ohnoyama",
@@ -39085,7 +39386,10 @@
   ],
   "seasonNoGear": "通年",
   "fareShinjuku": 1190,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 170,
+  "fareOmiya": 1718,
+  "transfersOmiya": 3
  },
  {
   "id": "momakurasan",
@@ -39276,7 +39580,10 @@
   "seasonNoGear": "通年",
   "yamapUrl": "https://yamap.com/mountains/19994",
   "fareShinjuku": 1170,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 140,
+  "fareOmiya": 1698,
+  "transfersOmiya": 1
  },
  {
   "id": "ogiyama",
@@ -39468,7 +39775,10 @@
   "seasonNoGear": "通年",
   "yamapUrl": "https://yamap.com/mountains/16203",
   "fareShinjuku": 1170,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 165,
+  "fareOmiya": 1698,
+  "transfersOmiya": 1
  },
  {
   "id": "makuyama",
@@ -39658,7 +39968,10 @@
   "parking": "幕山公園駐車場（無料※梅の宴期間は有料）",
   "seasonNoGear": "通年",
   "fareShinjuku": 3390,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 148,
+  "fareOmiya": 3918,
+  "transfersOmiya": 2
  },
  {
   "id": "taiheizan",
@@ -39846,7 +40159,10 @@
   "parking": "謙信平駐車場（無料）",
   "seasonNoGear": "通年",
   "fareShinjuku": 3100,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 140,
+  "fareOmiya": 3628,
+  "transfersOmiya": 2
  },
  {
   "id": "kuratakeyama",
@@ -40036,7 +40352,10 @@
   ],
   "seasonNoGear": "通年",
   "fareShinjuku": 1170,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 120,
+  "fareOmiya": 1698,
+  "transfersOmiya": 1
  },
  {
   "id": "sasakogarigaburiyama",
@@ -40226,7 +40545,10 @@
   ],
   "seasonNoGear": "通年",
   "fareShinjuku": 1310,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 105,
+  "fareOmiya": 1838,
+  "transfersOmiya": 1
  },
  {
   "id": "shodosan_namatate",
@@ -40418,7 +40740,10 @@
   ],
   "seasonNoGear": "通年",
   "fareShinjuku": 1450,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 125,
+  "fareOmiya": 1978,
+  "transfersOmiya": 1
  },
  {
   "id": "kukiyama",
@@ -40608,7 +40933,10 @@
   ],
   "seasonNoGear": "通年",
   "fareShinjuku": 1600,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 135,
+  "fareOmiya": 2128,
+  "transfersOmiya": 2
  },
  {
   "id": "mitosaan",
@@ -40924,7 +41252,10 @@
   "weatherLat": 35.721516,
   "weatherLng": 139.053253,
   "fareShinjuku": 902,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 160,
+  "fareOmiya": 1430,
+  "transfersOmiya": 3
  },
  {
   "id": "honitayama",
@@ -41237,7 +41568,10 @@
   "weatherLat": 35.809544,
   "weatherLng": 139.096222,
   "fareShinjuku": 1221,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 130,
+  "fareOmiya": 1749,
+  "transfersOmiya": 2
  },
  {
   "id": "hinodesaan",
@@ -41443,7 +41777,10 @@
   "weatherLat": 35.742134,
   "weatherLng": 139.257446,
   "fareShinjuku": 1290,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 103,
+  "fareOmiya": 1221,
+  "transfersOmiya": 2
  },
  {
   "id": "sengenrei",
@@ -41647,7 +41984,10 @@
   "weatherLat": 35.726822,
   "weatherLng": 139.14888,
   "fareShinjuku": 902,
-  "transfersShinjuku": 2
+  "transfersShinjuku": 2,
+  "trainTimeOmiya": 110,
+  "fareOmiya": 1430,
+  "transfersOmiya": 3
  },
  {
   "id": "futagoyama_okumusa",
@@ -41840,7 +42180,10 @@
   "weatherLat": 35.96867,
   "weatherLng": 139.10759,
   "fareShinjuku": 850,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 109,
+  "fareOmiya": 1255,
+  "transfersOmiya": 2
  },
  {
   "id": "juunigadake",
@@ -42142,8 +42485,11 @@
    "JR中央線"
   ],
   "seasonNoGear": "3月〜11月",
-  "fareShinjuku": 4130,
-  "transfersShinjuku": 1
+  "fareShinjuku": 4440,
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 168,
+  "fareOmiya": 3038,
+  "transfersOmiya": 2
  },
  {
   "id": "ishiwariyama",
@@ -42405,8 +42751,11 @@
    "JR中央線"
   ],
   "seasonNoGear": "3月〜11月",
-  "fareShinjuku": 3250,
-  "transfersShinjuku": 1
+  "fareShinjuku": 4590,
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 188,
+  "fareOmiya": 3188,
+  "transfersOmiya": 2
  },
  {
   "id": "azumayama_ninomiya",
@@ -42592,7 +42941,10 @@
   "parking": "専用駐車場なし（二宮駅から徒歩）",
   "seasonNoGear": "通年",
   "fareShinjuku": 1408,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 80,
+  "fareOmiya": 1936,
+  "transfersOmiya": 2
  },
  {
   "id": "hodosan",
@@ -42785,7 +43137,10 @@
   "weatherLat": 36.114746,
   "weatherLng": 139.109802,
   "fareShinjuku": 950,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 120,
+  "fareOmiya": 1478,
+  "transfersOmiya": 2
  },
  {
   "id": "hafuzan_chichibu",
@@ -42978,7 +43333,10 @@
   "weatherLat": 36.070805,
   "weatherLng": 139.098816,
   "fareShinjuku": 1050,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 130,
+  "fareOmiya": 1578,
+  "transfersOmiya": 2
  },
  {
   "id": "ranzan_saitama",
@@ -43166,7 +43524,10 @@
   "weatherLat": 36.056549,
   "weatherLng": 139.320633,
   "fareShinjuku": 780,
-  "transfersShinjuku": 0
+  "transfersShinjuku": 0,
+  "trainTimeOmiya": 115,
+  "fareOmiya": 1308,
+  "transfersOmiya": 1
  },
  {
   "id": "kogashiyama",
@@ -43355,7 +43716,10 @@
   "parking": "宇都宮市森林公園駐車場（無料）",
   "seasonNoGear": "通年",
   "fareShinjuku": 2480,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 155,
+  "fareOmiya": 3008,
+  "transfersOmiya": 2
  },
  {
   "id": "mitsutoge",
@@ -43616,8 +43980,11 @@
    "JR中央線"
   ],
   "seasonNoGear": "3月〜11月",
-  "fareShinjuku": 4130,
-  "transfersShinjuku": 1
+  "fareShinjuku": 4510,
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 173,
+  "fareOmiya": 3108,
+  "transfersOmiya": 2
  },
  {
   "id": "kamakura_alps",
@@ -43804,7 +44171,10 @@
   "parking": "専用駐車場なし（北鎌倉駅から徒歩）",
   "seasonNoGear": "通年",
   "fareShinjuku": 1034,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 95,
+  "fareOmiya": 1562,
+  "transfersOmiya": 2
  },
  {
   "id": "okusuyama",
@@ -43993,7 +44363,10 @@
   "parking": "専用駐車場なし（バス利用が便利）",
   "seasonNoGear": "通年",
   "fareShinjuku": 2100,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 145,
+  "fareOmiya": 2628,
+  "transfersOmiya": 2
  },
  {
   "id": "kannokura",
@@ -44183,7 +44556,10 @@
   "weatherLat": 36.056667,
   "weatherLng": 139.261948,
   "fareShinjuku": 950,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 130,
+  "fareOmiya": 1478,
+  "transfersOmiya": 2
  },
  {
   "id": "gozenyama",
@@ -44507,6 +44883,9 @@
    "https://www.nisitokyobus.co.jp/rosen/noriba/okutama.html"
   ],
   "fareShinjuku": 1221,
-  "transfersShinjuku": 1
+  "transfersShinjuku": 1,
+  "trainTimeOmiya": 140,
+  "fareOmiya": 1749,
+  "transfersOmiya": 2
  }
 ]

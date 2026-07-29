@@ -151,6 +151,11 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .dep-row{display:flex;gap:0;padding:0 12px 10px;max-width:680px;margin:0 auto;}
 .dep-btn-m{padding:4px 12px;font-size:13px;border:none;background:transparent;color:rgba(255,255,255,0.4);font-weight:400;cursor:pointer;}
 .dep-btn-m.active{color:white;font-weight:700;}
+/* 電車発駅トグル(ts-summary内) */
+.ts-dep-toggle{display:flex;gap:5px;width:100%;margin-bottom:4px;}
+.ts-dep-btn{padding:3px 10px;font-size:11px;border:1px solid #ccc7ba;border-radius:12px;background:transparent;color:#8a8078;font-weight:600;cursor:pointer;}
+.ts-dep-btn.active{background:#4a6038;color:white;border-color:#4a6038;}
+
 
 
 .route-list-c{display:flex;flex-direction:column;}
@@ -349,7 +354,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
           <span class="ts-method">🚌 高速バス直通　<span class="ts-duration">約3時間15分</span></span>
         </div>
       </div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">上高地バスターミナル</div></div></div>
-    <div class="ts-summary"><span>新宿から約3時間15分（予測乗換時間を含む）</span><span>片道約6,500円</span><div class="ts-summary-note">※特急あずさ＋松本電鉄＋路線バス経由でもアクセス可（約4時間・約9,250円）</div></div></div>
+    <div class="ts-summary"><div class="ts-dep-toggle"><button type="button" class="ts-dep-btn active" data-key="shinjuku" onclick="changeDepTrain('shinjuku')">新宿発</button><button type="button" class="ts-dep-btn" data-key="omiya" onclick="changeDepTrain('omiya')">大宮発</button></div><span class="ts-time-val" data-shinjuku="約3時間15分" data-omiya="約3時間45分">約3時間15分</span><span class="ts-fare-val" data-shinjuku="片道約6,500円" data-omiya="片道約7,148円">片道約6,500円</span><div class="ts-summary-note">※特急あずさ＋松本電鉄＋路線バス経由でもアクセス可（約4時間・約9,250円）</div></div></div>
     <div class="ts-note">💡 上高地は通年マイカー規制。直通高速バスが最も分かりやすいアクセス手段</div>
     <div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=松本駅&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo">🗓 乗換案内で検索</a><a href="https://www.alpico.co.jp/traffic/sawayaka/route/kamikochi/shinjuku/" target="_blank" rel="noopener" class="ts-link ts-link-bus">🚌 さわやか信州号 時刻表・予約</a></div>
   </div>
@@ -548,6 +553,23 @@ function updateDepButtons(dep){
     b.classList.toggle('active', b.textContent === dep + '駅');
   });
 }
+function changeDepTrain(key){
+  sessionStorage.setItem('ym_departure_train', key);
+  document.querySelectorAll('.ts-dep-btn').forEach(function(b){
+    b.classList.toggle('active', b.dataset.key === key);
+  });
+  document.querySelectorAll('.ts-time-val').forEach(function(el){
+    if(el.dataset[key]) el.textContent = el.dataset[key];
+  });
+  document.querySelectorAll('.ts-fare-val').forEach(function(el){
+    if(el.dataset[key]) el.textContent = el.dataset[key];
+  });
+}
+function applyDepTrain(){
+  var key = sessionStorage.getItem('ym_departure_train') || 'shinjuku';
+  changeDepTrain(key);
+}
+
 function applyDep(){
   var raw = sessionStorage.getItem('ym_departure'); var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
   var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya','立川':'tachikawa'};
@@ -580,6 +602,7 @@ function applyDep(){
 var initDep = sessionStorage.getItem('ym_departure') || '大船';
 updateDepButtons(initDep);
 applyDep();
+applyDepTrain();
 
 
 // === JSONから動的データを反映 ===
