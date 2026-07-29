@@ -746,6 +746,8 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
 
 // フィルターチップのスタイル（App外定数）
 const DRIVE_OPTIONS   = [{ label: "3時間以内", val: 180 }, { label: "4時間以内", val: 240 }, { label: "6時間以内", val: 360 }];
+const TRAIN_OPTIONS   = [{ label: "1時間以内", val: 60 }, { label: "2時間以内", val: 120 }, { label: "3時間以内", val: 180 }];
+const FARE_OPTIONS    = [{ label: "¥1,500以下", val: 1500 }, { label: "¥3,000以下", val: 3000 }, { label: "¥5,000以下", val: 5000 }];
 const COURSE_OPTIONS  = ["〜15", "16〜20", "21〜25", "26〜"];
 const CRAMPONS_OPTIONS = ["アイゼン不要", "6本以内でOK"];
 const FILTER_SEP = { width: "1px", background: "#e0dbd4", flexShrink: 0, alignSelf: "stretch", margin: "0 2px" };
@@ -774,7 +776,7 @@ function chipSort(active) {
 
 function App() {
   const [search, setSearch]               = useState(() => ssGet("ym_search", ""));
-  const [sort, setSort]                   = useState(() => ssGet("ym_sort", "近い順"));
+  const [sort, setSort]                   = useState(() => ssGet("ym_sort", "近い順（車）"));
   const [area, setArea]                   = useState(() => ssGet("ym_area", "すべて"));
   const [departure, setDeparture]         = useState(() => ssGet("ym_departure", "大船")); // "大船" | "新宿" | "横浜" | "大宮" | "立川"
 
@@ -785,10 +787,15 @@ function App() {
     if (departure === "立川" && m.driveTimeTachikawa) return m.driveTimeTachikawa;
     return m.driveTime;
   };
+  // 電車アクセス(現状は新宿発のみ対応)。データが無い山はInfinity扱いでソート末尾・フィルタ対象外にする
+  const getTrainTime = (m) => (typeof m.trainTimeShinjuku === "number" ? m.trainTimeShinjuku : Infinity);
+  const getFare = (m) => (typeof m.fareShinjuku === "number" ? m.fareShinjuku : Infinity);
   const [categoryFilter, setCategoryFilter] = useState(() => ssGet("ym_category", "すべて"));
   const [dayTripOnly, setDayTripOnly]       = useState(() => ssGet("ym_daytrip", false));
   const [trainOnly, setTrainOnly]           = useState(() => ssGet("ym_train", false));
   const [driveTimeFilter, setDriveTimeFilter] = useState(() => ssGet("ym_drivetime", null)); // null | 180 | 360
+  const [trainTimeFilter, setTrainTimeFilter] = useState(() => ssGet("ym_traintime", null)); // null | 90 | 180 | 300 (新宿発)
+  const [fareFilter, setFareFilter]         = useState(() => ssGet("ym_fare", null)); // null | 1000 | 3000 | 5000 (新宿発)
   const [courseFilter, setCourseFilter]     = useState(() => ssGet("ym_course", []));         // 複数選択
   const [cramponsFilter, setCramponsFilter] = useState(() => ssGet("ym_crampons", "すべて")); // "すべて"|"アイゼン不要"|"6本以内でOK"
   const [lineFilter, setLineFilter]         = useState(() => ssGet("ym_line", [])); // 複数選
@@ -928,12 +935,14 @@ function App() {
     ssSet("ym_daytrip", dayTripOnly);
     ssSet("ym_train", trainOnly);
     ssSet("ym_drivetime", driveTimeFilter);
+    ssSet("ym_traintime", trainTimeFilter);
+    ssSet("ym_fare", fareFilter);
     ssSet("ym_course", courseFilter);
     ssSet("ym_crampons", cramponsFilter);
     ssSet("ym_line", lineFilter);
     ssSet("ym_month", filterMonth);
     ssSet("ym_viewmode", viewMode);
-  }, [search, sort, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, viewMode, difficultyFilter, elevationFilter, vibeFilter]);
+  }, [search, sort, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, trainTimeFilter, fareFilter, courseFilter, cramponsFilter, filterMonth, viewMode, difficultyFilter, elevationFilter, vibeFilter]);
   const getMountainUrl = (id) => {
     const special = {};
     return "/mountains/" + (special[id] || id) + "/";
@@ -941,7 +950,13 @@ function App() {
 
   const currentMonth = new Date().getMonth() + 1;
   const activeMonth = typeof filterMonth === "number" ? filterMonth : currentMonth;
-  const activeFilterCount = [dayTripOnly,trainOnly,categoryFilter!=="すべて",area!=="すべて",!!driveTimeFilter,courseFilter.length>0,cramponsFilter!=="すべて",lineFilter.length>0,difficultyFilter.length>0,!!elevationFilter].filter(Boolean).length;
+  const activeFilterCount = [dayTripOnly,trainOnly,categoryFilter!=="すべて",area!=="すべて",!!driveTimeFilter,!!trainTimeFilter,!!fareFilter,courseFilter.length>0,cramponsFilter!=="すべて",lineFilter.length>0,difficultyFilter.length>0,!!elevationFilter].filter(Boolean).length;
+  // 電車のソート・絞り込みを使っている間は、カード表示も電車をメインにする
+  const isTrainMode = sort.indexOf("電車・バス") >= 0 || !!trainTimeFilter || !!fareFilter;
+  // 電車モードに入ったら出発地を自動的に新宿へ（電車データは現状新宿発のみ対応のため）
+  useEffect(() => {
+    if (isTrainMode && departure !== "新宿") setDeparture("新宿");
+  }, [isTrainMode]);
 
   const filtered = useMemo(() => {
     let list = mountains.filter(m => {
@@ -952,6 +967,8 @@ function App() {
       const matchDayTrip = !dayTripOnly || isDayTrip(m);
       const matchTrainOnly = !trainOnly || !!m.trainAccess;
       const matchDriveTime = (!driveTimeFilter || getDriveTime(m) <= driveTimeFilter) && getDriveTime(m) <= 360;
+      const matchTrainTime = !trainTimeFilter || getTrainTime(m) <= trainTimeFilter;
+      const matchFare = !fareFilter || getFare(m) <= fareFilter;
       const [cMin, cMax] = Array.isArray(m.courseCoefficient) ? m.courseCoefficient : [0, 0];
       const matchCourse = courseFilter.length === 0
         || (courseFilter.includes("〜15") && cMin <= 15)
@@ -974,7 +991,7 @@ function App() {
         elevationFilter === 3000 ? elev >= 3000 :
         elev >= elevationFilter && elev < elevationFilter + 500
       );
-      return matchVibe && matchSearch && matchArea && matchCat && matchDayTrip && matchTrainOnly && matchDriveTime && matchCourse && matchCrampons && matchLine && matchDifficulty && matchElevation;
+      return matchVibe && matchSearch && matchArea && matchCat && matchDayTrip && matchTrainOnly && matchDriveTime && matchTrainTime && matchFare && matchCourse && matchCrampons && matchLine && matchDifficulty && matchElevation;
     });
     if (sort === "おすすめ順") list = list.slice().sort(function(a, b) {
       const scoreM = m => {
@@ -990,11 +1007,13 @@ function App() {
       };
       return scoreM(b) - scoreM(a);
     });
-    else if (sort === "近い順") list = list.slice().sort(function(a, b){ return getDriveTime(a) - getDriveTime(b); });
+    else if (sort === "近い順（車）") list = list.slice().sort(function(a, b){ return getDriveTime(a) - getDriveTime(b); });
+    else if (sort === "近い順（電車・バス）") list = list.slice().sort(function(a, b){ return getTrainTime(a) - getTrainTime(b); });
+    else if (sort === "安い順（電車・バス）") list = list.slice().sort(function(a, b){ return getFare(a) - getFare(b); });
     else if (sort === "標高順") list = list.slice().sort(function(a, b){ return b.elevation - a.elevation; });
     else if (sort === "体力度順") list = list.slice().sort(function(a, b){ return (Array.isArray(b.courseCoefficient) ? b.courseCoefficient[1] : 0) - (Array.isArray(a.courseCoefficient) ? a.courseCoefficient[1] : 0); });
     return list;
-  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, courseFilter, cramponsFilter, filterMonth, departure, lineFilter, difficultyFilter, elevationFilter, vibeFilter]);
+  }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, trainTimeFilter, fareFilter, courseFilter, cramponsFilter, filterMonth, departure, lineFilter, difficultyFilter, elevationFilter, vibeFilter]);
 
   if (selected) {
     const mountain = mountains.find(m => m.id === selected);
@@ -1144,7 +1163,7 @@ function App() {
                 )}
                 <span style={{fontSize:"11px",color:"white",fontWeight:activeFilterCount>0?"800":"600"}}>{activeFilterCount>0 ? "絞り込み中（"+activeFilterCount+"）" : "条件で検索"}</span>
               </button>
-              <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter(null); }}
+              <button onClick={() => { setSearch(""); setSort("近い順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter(null); }}
   onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
   onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform="scale(1)";},150)}
   style={{flex:1,background:"transparent",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"1px solid rgba(255,255,255,0.85)",cursor:"pointer",transition:"transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
@@ -1156,17 +1175,21 @@ function App() {
         </div>
         {/* ③出発地タブ */}
         <div style={{position:"relative",zIndex:2,display:"flex",gap:"4px",padding:"8px 16px 8px",maxWidth:"768px",margin:"0 auto"}}>
-          {["大船","新宿","横浜","大宮","立川"].map(d => (
-            <button key={d} onClick={() => setDeparture(d)} style={{flex:1,textAlign:"center",fontSize:departure===d?"13.5px":"12px",padding:"7px 0",borderRadius:"5px",fontWeight:"700",cursor:"pointer",background:"transparent",
+          {["大船","新宿","横浜","大宮","立川"].map(d => {
+            const disabled = isTrainMode && d !== "新宿";
+            return (
+            <button key={d} onClick={() => { if (!disabled) setDeparture(d); }} disabled={disabled} style={{flex:1,textAlign:"center",fontSize:departure===d?"13.5px":"12px",padding:"7px 0",borderRadius:"5px",fontWeight:"700",cursor:disabled?"not-allowed":"pointer",background:"transparent",
               border:departure===d?"2px solid white":"1px solid rgba(255,255,255,0.4)",
-              color:"white",
-              transition:"border-width 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1)",
+              color:disabled?"rgba(255,255,255,0.35)":"white",
+              opacity:disabled?0.45:1,
+              transition:"border-width 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease",
               transform:departure===d?"scale(1.04)":"scale(1)"
             }}
-            onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
-            onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform=departure===d?"scale(1.04)":"scale(1)";},150)}
+            onTouchStart={e=>{ if(!disabled) e.currentTarget.style.transform="scale(0.95)"; }}
+            onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget && !disabled)e.currentTarget.style.transform=departure===d?"scale(1.04)":"scale(1)";},150)}
             >{d}</button>
-          ))}
+            );
+          })}
         </div>
       </header>
 
@@ -1249,12 +1272,32 @@ function App() {
                   })}
                 </div>
 
-                {/* 3行目: 移動時間 */}
+                {/* 3行目: 移動時間(車) */}
                 <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
                   <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content", alignItems: "center" }}>
                     <span style={{ fontSize: "11px", color: "#a09888", flexShrink: 0 }}>🚗</span>
                     {DRIVE_OPTIONS.map(o => (
                       <button key={o.val} onClick={() => setDriveTimeFilter(driveTimeFilter === o.val ? null : o.val)} style={chip(driveTimeFilter === o.val)}>{o.label}</button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 3.5行目: 移動時間(電車・新宿発のみ) */}
+                <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
+                  <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content", alignItems: "center" }}>
+                    <span style={{ fontSize: "11px", color: "#a09888", flexShrink: 0 }}>🚃新宿から</span>
+                    {TRAIN_OPTIONS.map(o => (
+                      <button key={o.val} onClick={() => setTrainTimeFilter(trainTimeFilter === o.val ? null : o.val)} style={chip(trainTimeFilter === o.val)}>{o.label}</button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 3.6行目: 運賃(新宿発のみ) */}
+                <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
+                  <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content", alignItems: "center" }}>
+                    <span style={{ fontSize: "11px", color: "#a09888", flexShrink: 0 }}>💴運賃</span>
+                    {FARE_OPTIONS.map(o => (
+                      <button key={o.val} onClick={() => setFareFilter(fareFilter === o.val ? null : o.val)} style={chip(fareFilter === o.val)}>{o.label}</button>
                     ))}
                   </div>
                 </div>
@@ -1358,7 +1401,7 @@ function App() {
               </div>
               {/* 固定フッター：適用ボタン */}
               <div style={{position:"sticky",bottom:0,background:"white",borderTop:"1px solid #e8e4dc",padding:"12px 16px",display:"flex",gap:"8px"}}>
-                <button onClick={() => { setSearch(""); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter(null); }} style={{flex:1,padding:"10px",borderRadius:"5px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
+                <button onClick={() => { setSearch(""); setSort("近い順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter(null); }} style={{flex:1,padding:"10px",borderRadius:"5px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
                 <button onClick={() => setFilterOpen(false)} style={{flex:2,padding:"10px",borderRadius:"5px",border:"none",background:"#4e6535",fontSize:"13px",color:"white",fontWeight:"700",cursor:"pointer"}}>この条件で絞り込む（{filtered.length}件）</button>
               </div>
             </div>
@@ -1467,7 +1510,7 @@ function App() {
             <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
               <div style={{position:"relative"}}>
                 <select value={sort} onChange={e => { setSort(e.target.value); ssSet("ym_sort",e.target.value) }} style={{appearance:"none",WebkitAppearance:"none",background:"white",border:"0.5px solid #ddd8d0",borderRadius:"5px",height:"26px",padding:"0 24px 0 9px",fontSize:"10px",color:"#4a5a48",fontWeight:"600",cursor:"pointer",outline:"none"}}>
-                  {["おすすめ順","近い順","標高順","体力度順"].map(s => <option key={s} value={s}>{s}</option>)}
+                  {["おすすめ順","近い順（車）","近い順（電車・バス）","安い順（電車・バス）","標高順","体力度順"].map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
                 <span style={{position:"absolute",right:"7px",top:"50%",transform:"translateY(-50%)",fontSize:"8px",color:"#a09888",pointerEvents:"none"}}>▾</span>
               </div>
@@ -1504,8 +1547,10 @@ function App() {
                   const diffBg    = isHard ? "#f0e0e0" : isMid ? "#f0ece0" : "#e8f0e4";
                   const diffColor = isHard ? "#7a3838" : isMid ? "#7a6030" : "#4a6840";
                   const driveMin = getDriveTime(m);
-                  const barPct = Math.min(Math.round(driveMin / 360 * 100), 100);
-                  const barColor = driveMin >= 240 ? "linear-gradient(90deg,#c05030,#e07050)" : driveMin >= 120 ? "linear-gradient(90deg,#7a8830,#9aaa50)" : "linear-gradient(90deg,#4a6038,#607848)";
+                  const barBasisMin = isTrainMode ? (typeof m.trainTimeShinjuku === "number" ? m.trainTimeShinjuku : 0) : driveMin;
+                  const barBasisMax = isTrainMode ? 300 : 360;
+                  const barPct = Math.min(Math.round(barBasisMin / barBasisMax * 100), 100);
+                  const barColor = barBasisMin >= (isTrainMode ? 200 : 240) ? "linear-gradient(90deg,#c05030,#e07050)" : barBasisMin >= (isTrainMode ? 100 : 120) ? "linear-gradient(90deg,#7a8830,#9aaa50)" : "linear-gradient(90deg,#4a6038,#607848)";
 
                   // アイゼンバッジ（選択月）
                   const noGear = canClimbNoGear(m, activeMonth);
@@ -1591,21 +1636,52 @@ function App() {
                           });
                         })()}</span>
                         <span style={{ color: "#c8c0b8" }}>·</span>
-                        <span style={{display:"inline-flex",alignItems:"center",gap:"4px"}}>
-                          <svg width="16" height="16" viewBox="0 0 24 24" style={{flexShrink:0}}>
-                            <path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/>
-                            <rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/>
-                            <rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/>
-                            <rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/>
-                            <circle cx="7" cy="18" r="2" fill="currentColor"/>
-                            <circle cx="17" cy="18" r="2" fill="currentColor"/>
-                          </svg>
-                          {(function(){
-                            return formatDriveTime(getDriveTime(m)).split(/([\d,]+)/).map(function(p,i){
-                              return /^[\d,]+$/.test(p) ? <span key={i} style={{fontSize:"16px",fontWeight:"700"}}>{p}</span> : <span key={i} style={{fontSize:"9px"}}>{p}</span>;
-                            });
-                          })()}
-                        </span>
+                        {!isTrainMode && (
+                          <span style={{display:"inline-flex",alignItems:"center",gap:"4px"}}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" style={{flexShrink:0}}>
+                              <path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/>
+                              <rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/>
+                              <rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/>
+                              <rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/>
+                              <circle cx="7" cy="18" r="2" fill="currentColor"/>
+                              <circle cx="17" cy="18" r="2" fill="currentColor"/>
+                            </svg>
+                            {(function(){
+                              return formatDriveTime(getDriveTime(m)).split(/([\d,]+)/).map(function(p,i){
+                                return /^[\d,]+$/.test(p) ? <span key={i} style={{fontSize:"16px",fontWeight:"700"}}>{p}</span> : <span key={i} style={{fontSize:"9px"}}>{p}</span>;
+                              });
+                            })()}
+                          </span>
+                        )}
+                        {!isTrainMode && typeof m.trainTimeShinjuku === "number" && (
+                          <React.Fragment>
+                            <span style={{ color: "#c8c0b8" }}>·</span>
+                            <span style={{display:"inline-flex",alignItems:"center",gap:"3px",color:"#5a6858"}} title="新宿駅からの電車・バス所要時間">
+                              <span style={{fontSize:"12px"}}>🚃</span>
+                              <span style={{fontSize:"12px",fontWeight:"700"}}>{formatDriveTime(m.trainTimeShinjuku)}</span>
+                              {typeof m.fareShinjuku === "number" && (
+                                <span style={{fontSize:"10px",color:"#8a8078"}}>（¥{m.fareShinjuku.toLocaleString()}）</span>
+                              )}
+                            </span>
+                          </React.Fragment>
+                        )}
+                        {isTrainMode && (
+                          typeof m.trainTimeShinjuku === "number" ? (
+                            <span style={{display:"inline-flex",alignItems:"center",gap:"4px"}} title="新宿駅からの電車・バス所要時間">
+                              <span style={{fontSize:"16px"}}>🚃</span>
+                              {(function(){
+                                return formatDriveTime(m.trainTimeShinjuku).split(/([\d,]+)/).map(function(p,i){
+                                  return /^[\d,]+$/.test(p) ? <span key={i} style={{fontSize:"16px",fontWeight:"700"}}>{p}</span> : <span key={i} style={{fontSize:"9px"}}>{p}</span>;
+                                });
+                              })()}
+                              {typeof m.fareShinjuku === "number" && (
+                                <span style={{fontSize:"11px",color:"#8a8078",fontWeight:"600"}}>（¥{m.fareShinjuku.toLocaleString()}）</span>
+                              )}
+                            </span>
+                          ) : (
+                            <span style={{fontSize:"11px",color:"#a09888"}}>電車アクセス情報なし</span>
+                          )
+                        )}
                       </div>
                       {/* アクセス時間バー */}
                       <div style={{height:"3px",background:"rgba(0,0,0,0.08)",borderRadius:"2px",marginBottom:"5px",overflow:"hidden",position:"relative",zIndex:1}}>
