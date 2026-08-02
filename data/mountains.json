@@ -9,7 +9,7 @@
   "coeffMin": 28,
   "coeffMax": 59,
   "daytrip": true,
-  "trainAccess": "新宿駅→渋沢駅→バス約15分→大倉バス停→徒歩で塔ノ岳経由縦走（小田急小田原線）",
+  "trainAccess": "新宿駅→小田急小田原線約1時間10分→渋沢駅→バス約15分→大倉バス停→徒歩で塔ノ岳経由縦走（小田急小田原線）",
   "driveOfuna": 70,
   "driveShinjuku": 75,
   "driveYokohama": 75,
@@ -324,7 +324,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 115,
   "fareOmiya": 1470,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→小田急小田原線約1時間10分→渋沢駅→バス約15分→大倉バス停→徒歩で塔ノ岳経由縦走（小田急小田原線）",
+  "trainTimeYokohama": 73,
+  "fareYokohama": 898,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→小田急・相鉄直通(約58分)→渋沢駅→神奈川中央交通バス約15分→大倉"
  },
  {
   "id": "fuji",
@@ -336,7 +341,7 @@
   "coeffMin": 31,
   "coeffMax": 58,
   "daytrip": false,
-  "trainAccess": "新宿駅→バスタ新宿→高速バス直通→富士山五合目（夏季・約2時間）または新宿駅→大月駅→富士急行→河口湖駅→バス約55分→富士山五合目",
+  "trainAccess": "新宿駅→JR特急富士回遊約115分→河口湖駅→富士急バス約55分→富士山五合目",
   "driveOfuna": 120,
   "driveShinjuku": 145,
   "driveYokohama": 135,
@@ -677,7 +682,12 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 200,
   "fareOmiya": 6228,
-  "transfersOmiya": 3
+  "transfersOmiya": 3,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急富士回遊約115分→河口湖駅→富士急バス約55分→富士山五合目",
+  "trainTimeYokohama": 204,
+  "fareYokohama": 6316,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急富士回遊約115分→河口湖駅→富士急バス約55分→富士山五合目"
  },
  {
   "id": "tsukuba",
@@ -689,7 +699,7 @@
   "coeffMin": 8,
   "coeffMax": 17,
   "daytrip": true,
-  "trainAccess": "新宿駅→つくばエクスプレス→つくば駅→シャトルバス約40分→筑波山神社入口",
+  "trainAccess": "新宿駅→つくばエクスプレス約1時間20分→つくば駅→シャトルバス約40分→筑波山神社入口",
   "driveOfuna": 120,
   "driveShinjuku": 150,
   "driveYokohama": 120,
@@ -885,7 +895,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 150,
   "fareOmiya": 1808,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→つくばエクスプレス約1時間20分→つくば駅→シャトルバス約40分→筑波山神社入口",
+  "trainTimeYokohama": 154,
+  "fareYokohama": 1896,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→つくばエクスプレス約1時間20分→つくば駅→シャトルバス約40分→筑波山神社入口"
  },
  {
   "id": "kumotori",
@@ -897,7 +912,7 @@
   "coeffMin": 43,
   "coeffMax": 54,
   "daytrip": true,
-  "trainAccess": "新宿駅→奥多摩駅→バス約15分→鴨沢バス停",
+  "trainAccess": "新宿駅→JR中央線・青梅線約1時間35分→奥多摩駅→バス約15分→鴨沢バス停",
   "driveOfuna": 130,
   "driveShinjuku": 130,
   "driveYokohama": 120,
@@ -1237,7 +1252,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 185,
   "fareOmiya": 2238,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR青梅線約2時間20分→奥多摩駅→バス約15分→鴨沢バス停",
+  "trainTimeYokohama": 163,
+  "fareYokohama": 1742,
+  "transfersYokohama": 1,
+  "_fareEstimatedYokohama": true,
+  "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約40分)→奥多摩駅"
  },
  {
   "id": "amagi",
@@ -1249,7 +1270,7 @@
   "coeffMin": 12,
   "coeffMax": 20,
   "daytrip": true,
-  "trainAccess": "新宿駅→熱海駅→伊東線→伊東駅→東海バス約55分→天城縦走登山口",
+  "trainAccess": "新宿駅→JR東海道線・特急踊り子約100分→熱海駅→JR伊東線約25分→伊東駅→東海バス約55分→天城縦走登山口",
   "driveOfuna": 150,
   "driveShinjuku": 185,
   "driveYokohama": 145,
@@ -1435,12 +1456,18 @@
   "driveTachikawa": 195,
   "nearestStation": "伊東駅",
   "trainLine": "JR伊東線",
-  "trainTimeShinjuku": 155,
+  "trainTimeShinjuku": 190,
   "fareShinjuku": 3400,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 185,
+  "trainTimeOmiya": 220,
   "fareOmiya": 3928,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR東海道線・特急踊り子約100分→熱海駅→JR伊東線約25分→伊東駅→東海バス約55分→天城縦走登山口",
+  "trainTimeYokohama": 150,
+  "fareYokohama": 3300,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR東海道線(約70分)→熱海駅→JR伊東線(約25分)→伊東駅→東海バス約55分→天城縦走登山口",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "okutama",
@@ -1452,7 +1479,7 @@
   "coeffMin": 10,
   "coeffMax": 30,
   "daytrip": true,
-  "trainAccess": "新宿駅→甲斐大和駅→栄和交通バス約40分→上日川峠（土日祝中心）",
+  "trainAccess": "新宿駅→JR特急かいじ約1時間35分→甲斐大和駅→栄和交通バス約40分→上日川峠（土日祝中心）",
   "driveOfuna": 150,
   "driveShinjuku": 130,
   "driveYokohama": 140,
@@ -1718,11 +1745,16 @@
   "driveTachikawa": 100,
   "weatherLat": 35.731625,
   "weatherLng": 138.82402,
-  "fareShinjuku": 3200,
+  "fareShinjuku": 2582,
   "transfersShinjuku": 1,
   "trainTimeOmiya": 133,
   "fareOmiya": 3110,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約1時間3分→甲斐大和駅→栄和交通バス約40分→上日川峠（土日祝中心）",
+  "trainTimeYokohama": 154,
+  "fareYokohama": 3198,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約1時間20分→甲斐大和駅→栄和交通バス約40分→上日川峠（土日祝中心）"
  },
  {
   "id": "ryokami",
@@ -1734,7 +1766,7 @@
   "coeffMin": 18,
   "coeffMax": 33,
   "daytrip": true,
-  "trainAccess": "新宿駅→飯能駅→西武秩父駅→小鹿野町営バス→薬師の湯→日向大谷口（通年）",
+  "trainAccess": "新宿駅→西武池袋線特急ちちぶ約100分→西武秩父駅→小鹿野町営バス約60分→日向大谷口（通年）",
   "driveOfuna": 150,
   "driveShinjuku": 125,
   "driveYokohama": 150,
@@ -2046,7 +2078,12 @@
   "fareOmiya": 1898,
   "transfersOmiya": 3,
   "trainLineOmiya": "JR埼京線・西武池袋線特急ちちぶ（池袋乗換）",
-  "trainAccessOmiyaNote": "西武秩父駅から日向大谷口へのバス「小鹿野町営バス・日向大谷/三峰口線」は1日7本程度（6:48/8:18/9:16/11:12/14:28/16:41/17:58発）。11:12発の次は14:28発まで3時間以上間隔が空くため、必ず事前に時刻表を確認すること。"
+  "trainAccessOmiyaNote": "西武秩父駅から日向大谷口へのバス「小鹿野町営バス・日向大谷/三峰口線」は1日7本程度（6:48/8:18/9:16/11:12/14:28/16:41/17:58発）。11:12発の次は14:28発まで3時間以上間隔が空くため、必ず事前に時刻表を確認すること。",
+  "trainAccessOmiya": "大宮駅→JR川越線・八高線・西武池袋線各停(約110分)→西武秩父駅→小鹿野町営バス「日向大谷・三峰口線」約32分→日向大谷口（バスは1日7本程度、本数少なめ）",
+  "trainTimeYokohama": 194,
+  "fareYokohama": 3206,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→西武池袋線特急ちちぶ約100分→西武秩父駅→小鹿野町営バス約60分→日向大谷口（通年）"
  },
  {
   "id": "kobushigatake",
@@ -2058,7 +2095,7 @@
   "coeffMin": 22,
   "coeffMax": 38,
   "daytrip": true,
-  "trainAccess": null,
+  "trainAccess": "新宿駅→JR特急かいじ(約85分)→塩山駅→バス・タクシーで毛木平方面へ",
   "driveOfuna": 150,
   "driveShinjuku": 135,
   "driveYokohama": 170,
@@ -2381,7 +2418,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 115,
   "fareOmiya": 4088,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急かいじ(約85分)→塩山駅",
+  "trainTimeYokohama": 119,
+  "fareYokohama": 4176,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急かいじ(約85分)→塩山駅"
  },
  {
   "id": "mizugaki",
@@ -2393,7 +2435,7 @@
   "coeffMin": 21,
   "coeffMax": 45,
   "daytrip": true,
-  "trainAccess": null,
+  "trainAccess": "新宿駅→JR特急あずさ直通(約97分)→韮崎駅→バス・タクシーでみずがき山荘へ",
   "driveOfuna": 150,
   "driveShinjuku": 135,
   "driveYokohama": 160,
@@ -2705,7 +2747,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 127,
   "fareOmiya": 4748,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ直通(約97分)→韮崎駅",
+  "trainTimeYokohama": 131,
+  "fareYokohama": 4836,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ直通(約97分)→韮崎駅"
  },
  {
   "id": "akagi",
@@ -2717,7 +2764,7 @@
   "coeffMin": 10,
   "coeffMax": 20,
   "daytrip": true,
-  "trainAccess": "新宿駅→JR湘南新宿ライン→大宮駅→上越新幹線あさま→高崎駅→JR両毛線→前橋駅→関越交通バス「48A あかぎ広場前行」約81分→あかぎ広場前（2025年4月より赤城山ビジターセンター建替え工事のため、あかぎ広場前が終点）",
+  "trainAccess": "新宿駅→JR湘南新宿ライン→大宮駅→上越新幹線あさま→高崎駅→JR両毛線約1時間59分→前橋駅→関越交通バス「48A あかぎ広場前行」約81分→あかぎ広場前（2025年4月より赤城山ビジターセンター建替え工事のため、あかぎ広場前が終点）",
   "driveOfuna": 170,
   "driveShinjuku": 140,
   "driveYokohama": 165,
@@ -2987,7 +3034,13 @@
   "transfersShinjuku": 3,
   "trainTimeOmiya": 177,
   "fareOmiya": 3488,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR高崎線在来線(約81分、乗換なし)→高崎駅→JR両毛線約15分→前橋駅→関越交通バス「48A あかぎ広場前行」約81分→あかぎ広場前",
+  "trainTimeYokohama": 216,
+  "fareYokohama": 3800,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→JR高崎線(約60分)→高崎駅→JR両毛線約15分→前橋駅→関越交通バス「48A あかぎ広場前行」約81分→あかぎ広場前",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "kinpusan",
@@ -3328,7 +3381,7 @@
   "coeffMin": 33,
   "coeffMax": 48,
   "daytrip": false,
-  "trainAccess": "新宿駅→甲府駅→山梨交通バス約45分→夜叉神峠口",
+  "trainAccess": "新宿駅→JR特急かいじ約1時間30分→甲府駅→山梨交通バス約45分→夜叉神峠口",
   "driveOfuna": 180,
   "driveShinjuku": 160,
   "driveYokohama": 190,
@@ -3663,7 +3716,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 230,
   "fareOmiya": 6128,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約2時間35分→甲府駅→山梨交通バス約45分→夜叉神峠口",
+  "trainTimeYokohama": 234,
+  "fareYokohama": 6216,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約2時間35分→甲府駅→山梨交通バス約45分→夜叉神峠口"
  },
  {
   "id": "nantaisan",
@@ -3675,7 +3733,7 @@
   "coeffMin": 14,
   "coeffMax": 22,
   "daytrip": true,
-  "trainAccess": "新宿駅→東武日光駅→バス約20分→二荒山神社",
+  "trainAccess": "新宿駅→東武特急スペーシア約1時間57分→東武日光駅→バス約20分→二荒山神社",
   "driveOfuna": 180,
   "driveShinjuku": 160,
   "driveYokohama": 175,
@@ -3982,7 +4040,7 @@
   "driveTimeOmiya": 130,
   "nearestStation": "東武日光駅",
   "trainLine": "東武日光線",
-  "trainTimeShinjuku": 150,
+  "trainTimeShinjuku": 183,
   "trainInfo": "新宿→東武日光駅（特急約130分）→バス約10分",
   "lines": [
    "東武日光線"
@@ -3991,11 +4049,17 @@
   "driveTachikawa": 175,
   "weatherLat": 36.7584,
   "weatherLng": 139.59666,
-  "fareShinjuku": 6070,
+  "fareShinjuku": 7220,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 180,
-  "fareOmiya": 6598,
-  "transfersOmiya": 2
+  "trainTimeOmiya": 213,
+  "fareOmiya": 7748,
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→東武日光線約2時間43分→東武日光駅→バス約20分→二荒山神社",
+  "trainTimeYokohama": 233,
+  "fareYokohama": 7750,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約50分)→北千住駅→東武特急スペーシア日光(約110分)→東武日光駅→バス約20分→二荒山神社",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "kitadake",
@@ -4346,7 +4410,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 230,
   "fareOmiya": 6128,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ・かいじ約2時間→甲府駅→山梨交通「広河原線」約1時間→広河原（南アルプスマイカー規制のためバス必須・利用者協力金300円別途）",
+  "trainTimeYokohama": 234,
+  "fareYokohama": 6216,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ・かいじ約2時間→甲府駅→山梨交通「広河原線」約1時間→広河原（南アルプスマイカー規制のためバス必須・利用者協力金300円別途）"
  },
  {
   "id": "yatsugatake",
@@ -4358,7 +4427,7 @@
   "coeffMin": 26,
   "coeffMax": 42,
   "daytrip": false,
-  "trainAccess": "新宿駅→茅野駅→アルピコ交通バス約35分→美濃戸口（夏季）",
+  "trainAccess": "新宿駅→JR特急あずさ約2時間10分→茅野駅→アルピコ交通バス約35分→美濃戸口（夏季）",
   "driveOfuna": 200,
   "driveShinjuku": 160,
   "driveYokohama": 165,
@@ -4673,7 +4742,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 200,
   "fareOmiya": 8028,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約2時間15分→茅野駅→アルピコ交通バス約35分→美濃戸口（夏季）",
+  "trainTimeYokohama": 204,
+  "fareYokohama": 8116,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約2時間15分→茅野駅→アルピコ交通バス約35分→美濃戸口（夏季）"
  },
  {
   "id": "keirisan",
@@ -5027,7 +5101,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 210,
   "fareOmiya": 7878,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ約2時間→茅野駅→アルピコ交通「蓼科高原ラウンドバス」約60分→蓼科山登山口（女神茶屋）",
+  "trainTimeYokohama": 214,
+  "fareYokohama": 7966,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ約2時間→茅野駅→アルピコ交通「蓼科高原ラウンドバス」約60分→蓼科山登山口（女神茶屋）"
  },
  {
   "id": "kirigamine",
@@ -5039,7 +5118,7 @@
   "coeffMin": 10,
   "coeffMax": 18,
   "daytrip": true,
-  "trainAccess": "新宿駅→茅野駅→バス約30分→霧ヶ峰（季節）",
+  "trainAccess": "新宿駅→JR特急あずさ約2時間10分→茅野駅→バス約30分→霧ヶ峰（季節）",
   "driveOfuna": 200,
   "driveShinjuku": 170,
   "driveYokohama": 190,
@@ -5309,7 +5388,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 230,
   "fareOmiya": 9028,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約2時間50分→茅野駅→バス約30分→霧ヶ峰（季節）",
+  "trainTimeYokohama": 234,
+  "fareYokohama": 9116,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央線約2時間50分→茅野駅→バス約30分→霧ヶ峰（季節）"
  },
  {
   "id": "asama",
@@ -5638,9 +5722,15 @@
   "trainTimeShinjuku": 205,
   "fareShinjuku": 2700,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 82,
+  "trainTimeOmiya": 72,
   "fareOmiya": 5225,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→北陸新幹線あさま(約50分)→佐久平駅→しなの鉄道(約22分)→小諸駅（前掛山：2026年5月23日に噴火警戒レベル1へ引き下げ、約3年ぶりに登山道が解放）",
+  "trainTimeYokohama": 142,
+  "fareYokohama": 6000,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→北陸新幹線あさま(約50分)→佐久平駅→しなの鉄道(約22分)→小諸駅",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "tanigawa",
@@ -5652,7 +5742,7 @@
   "coeffMin": 18,
   "coeffMax": 42,
   "daytrip": true,
-  "trainAccess": "新宿駅→JR湘南新宿ライン快速→大宮駅→上越新幹線とき→越後湯沢駅→JR上越線→土合駅→徒歩約20分（地下ホームから地上まで）→谷川岳ロープウェイ乗り場→ロープウェイ約15分→天神平駅",
+  "trainAccess": "新宿駅→JR湘南新宿ライン快速→大宮駅→上越新幹線とき→越後湯沢駅→JR上越線約2時間5分→土合駅→徒歩約20分（地下ホームから地上まで）→谷川岳ロープウェイ乗り場→ロープウェイ約15分→天神平駅",
   "driveOfuna": 205,
   "driveShinjuku": 150,
   "driveYokohama": 185,
@@ -5979,7 +6069,13 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 145,
   "fareOmiya": 8062,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→上越新幹線とき(約49分)→越後湯沢駅→JR上越線約25分→土合駅→徒歩約20分→谷川岳ロープウェイ乗り場→ロープウェイ約15分→天神平駅",
+  "trainTimeYokohama": 175,
+  "fareYokohama": 9000,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→上越新幹線とき(約49分)→越後湯沢駅→JR上越線約25分→土合駅→徒歩約20分→谷川岳ロープウェイ乗り場→ロープウェイ約15分→天神平駅",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "nasu",
@@ -5991,7 +6087,7 @@
   "coeffMin": 15,
   "coeffMax": 30,
   "daytrip": true,
-  "trainAccess": "新宿駅→那須塩原駅→バス約30分→峠の茶屋入口",
+  "trainAccess": "新宿駅→東北新幹線なすの約1時間30分→那須塩原駅→バス約30分→峠の茶屋入口",
   "driveOfuna": 230,
   "driveShinjuku": 210,
   "driveYokohama": 220,
@@ -6305,7 +6401,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 78,
   "fareOmiya": 6290,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→東北新幹線なすの(約48分)→那須塩原駅→バス約30分→峠の茶屋登山口",
+  "trainTimeYokohama": 148,
+  "fareYokohama": 6900,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→東北新幹線なすの(約48分)→那須塩原駅→バス約30分→峠の茶屋入口",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "azumayasan",
@@ -6633,7 +6735,7 @@
   "coeffMin": 21,
   "coeffMax": 31,
   "daytrip": true,
-  "trainAccess": "新宿駅→JR湘南新宿ライン→大宮駅→上越新幹線とき→高崎駅→JR上越線→沼田駅→関越交通バス「鎌田線」→鎌田→乗継→日光白根山ロープウエイ（丸沼高原）",
+  "trainAccess": "新宿駅→JR湘南新宿ライン→大宮駅→上越新幹線とき→高崎駅→JR上越線約2時間15分→沼田駅→関越交通バス「鎌田線」→鎌田→乗継→日光白根山ロープウエイ（丸沼高原）",
   "driveOfuna": 220,
   "driveShinjuku": 185,
   "driveYokohama": 200,
@@ -6947,7 +7049,13 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 130,
   "fareOmiya": 7372,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→上越新幹線とき→高崎駅→JR上越線約2時間10分→沼田駅→関越交通バス「鎌田線」→鎌田→乗継→日光白根山ロープウエイ（丸沼高原）",
+  "trainTimeYokohama": 190,
+  "fareYokohama": 8300,
+  "transfersYokohama": 4,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→上越新幹線とき→高崎駅→JR上越線約2時間10分→沼田駅→関越交通バス「鎌田線」→鎌田→乗継→日光白根山ロープウエイ（丸沼高原）",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "takeson",
@@ -7610,7 +7718,12 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 280,
   "fareOmiya": 9128,
-  "transfersOmiya": 3
+  "transfersOmiya": 3,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ約2時間10分→茅野駅→JRバス関東「南アルプスジオライナー」約65分→戸台パーク→南アルプス林道バス「クイーンライン」約55分→北沢峠（季節運行・金土日祝中心）",
+  "trainTimeYokohama": 284,
+  "fareYokohama": 9216,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ約2時間10分→茅野駅→JRバス関東「南アルプスジオライナー」約65分→戸台パーク→南アルプス林道バス「クイーンライン」約55分→北沢峠（季節運行・金土日祝中心）"
  },
  {
   "id": "senjogatake",
@@ -7961,7 +8074,12 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 280,
   "fareOmiya": 9128,
-  "transfersOmiya": 3
+  "transfersOmiya": 3,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ約2時間10分→茅野駅→JRバス関東「南アルプスジオライナー」約65分→戸台パーク→南アルプス林道バス「クイーンライン」約55分→北沢峠（季節運行・金土日祝中心）",
+  "trainTimeYokohama": 284,
+  "fareYokohama": 9216,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ約2時間10分→茅野駅→JRバス関東「南アルプスジオライナー」約65分→戸台パーク→南アルプス林道バス「クイーンライン」約55分→北沢峠（季節運行・金土日祝中心）"
  },
  {
   "id": "shirouma",
@@ -7973,7 +8091,7 @@
   "coeffMin": 35,
   "coeffMax": 55,
   "daytrip": true,
-  "trainAccess": "新宿駅→白馬駅→バス約25分→猿倉（季節）",
+  "trainAccess": "新宿駅→JR特急あずさ約3時間40分→白馬駅→バス約25分→猿倉（季節）",
   "driveOfuna": 260,
   "driveShinjuku": 275,
   "driveYokohama": 265,
@@ -8313,7 +8431,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 275,
   "fareOmiya": 8308,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→特急あずさ・大糸線約3時間40分→白馬駅→バス約25分→猿倉（季節）",
+  "trainTimeYokohama": 279,
+  "fareYokohama": 8396,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→特急あずさ・大糸線約3時間40分→白馬駅→バス約25分→猿倉（季節）"
  },
  {
   "id": "norikura",
@@ -8325,7 +8448,7 @@
   "coeffMin": 8,
   "coeffMax": 18,
   "daytrip": true,
-  "trainAccess": "新宿駅→松本駅→新島々駅→バス→畳平（マイカー規制でバス利用・夏季）",
+  "trainAccess": "新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→バス約90分→畳平（マイカー規制でバス利用・夏季）",
   "driveOfuna": 270,
   "driveShinjuku": 270,
   "driveYokohama": 240,
@@ -8608,7 +8731,12 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 330,
   "fareOmiya": 9728,
-  "transfersOmiya": 3
+  "transfersOmiya": 3,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→バス約90分→畳平（マイカー規制でバス利用・夏季）",
+  "trainTimeYokohama": 334,
+  "fareYokohama": 9816,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→バス約90分→畳平（マイカー規制でバス利用・夏季）"
  },
  {
   "id": "tateyama",
@@ -8620,7 +8748,7 @@
   "coeffMin": 22,
   "coeffMax": 35,
   "daytrip": true,
-  "trainAccess": "新宿駅→富山駅→立山駅→ケーブルカー・高原バス→室堂（季節運行）",
+  "trainAccess": "新宿駅→北陸新幹線（東京駅乗換）約143分→富山駅→富山地方鉄道約67分→立山駅→ケーブルカー・高原バス約50分→室堂（季節運行）",
   "driveOfuna": 355,
   "driveShinjuku": 340,
   "driveYokohama": 350,
@@ -8902,8 +9030,14 @@
   "fareShinjuku": 18000,
   "transfersShinjuku": 2,
   "trainTimeOmiya": 241,
-  "fareOmiya": 13720,
-  "transfersOmiya": 2
+  "fareOmiya": 16910,
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→北陸新幹線かがやき(約124分)→富山駅→富山地方鉄道(約67分)→立山駅",
+  "trainTimeYokohama": 245,
+  "fareYokohama": 17690,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR東海道線(約18分)→東京駅→北陸新幹線かがやき(約135分)→富山駅→富山地方鉄道(約67分)→立山駅→ケーブルカー・高原バス→室堂（季節運行）",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "tsurugi",
@@ -8915,7 +9049,7 @@
   "coeffMin": 42,
   "coeffMax": 65,
   "daytrip": false,
-  "trainAccess": "新宿駅→富山駅→立山駅→ケーブルカー・高原バス→室堂（季節運行）",
+  "trainAccess": "新宿駅→北陸新幹線（東京駅乗換）約143分→富山駅→富山地方鉄道約67分→立山駅→ケーブルカー・高原バス約60分→室堂（季節運行）",
   "driveOfuna": 360,
   "driveShinjuku": 345,
   "driveYokohama": 350,
@@ -9251,8 +9385,14 @@
   "fareShinjuku": 18000,
   "transfersShinjuku": 2,
   "trainTimeOmiya": 251,
-  "fareOmiya": 13720,
-  "transfersOmiya": 2
+  "fareOmiya": 16910,
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→北陸新幹線かがやき(約124分)→富山駅→富山地方鉄道(約67分)→立山駅→さらに登山口へ",
+  "trainTimeYokohama": 255,
+  "fareYokohama": 17690,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR東海道線(約18分)→東京駅→北陸新幹線かがやき(約135分)→富山駅→富山地方鉄道(約67分)→立山駅→さらに登山口へ",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "yari",
@@ -9264,7 +9404,7 @@
   "coeffMin": 55,
   "coeffMax": 85,
   "daytrip": false,
-  "trainAccess": "新宿駅→松本駅→新島々駅→アルピコバス→上高地バスターミナル（季節）",
+  "trainAccess": "新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→アルピコバス約65分→上高地バスターミナル（季節）",
   "driveOfuna": 340,
   "driveShinjuku": 330,
   "driveYokohama": 280,
@@ -9601,12 +9741,17 @@
   "weatherLng": 137.66094,
   "nearestStation": "松本駅",
   "trainLine": "JR中央本線・上高地線",
-  "trainTimeShinjuku": 195,
+  "trainTimeShinjuku": 255,
   "fareShinjuku": 6620,
   "transfersShinjuku": 0,
-  "trainTimeOmiya": 225,
+  "trainTimeOmiya": 285,
   "fareOmiya": 7148,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→アルピコバス約65分→上高地バスターミナル（季節）",
+  "trainTimeYokohama": 289,
+  "fareYokohama": 7236,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→アルピコバス約65分→上高地バスターミナル（季節）"
  },
  {
   "id": "hotaka",
@@ -9618,7 +9763,7 @@
   "coeffMin": 50,
   "coeffMax": 80,
   "daytrip": false,
-  "trainAccess": "新宿駅→松本駅→新島々駅→アルピコバス→上高地バスターミナル（季節）",
+  "trainAccess": "新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→アルピコバス約65分→上高地バスターミナル（季節）",
   "driveOfuna": 335,
   "driveShinjuku": 325,
   "driveYokohama": 280,
@@ -9955,12 +10100,17 @@
   "weatherLng": 137.66094,
   "nearestStation": "松本駅",
   "trainLine": "JR中央本線・上高地線",
-  "trainTimeShinjuku": 195,
+  "trainTimeShinjuku": 255,
   "fareShinjuku": 6620,
   "transfersShinjuku": 0,
-  "trainTimeOmiya": 225,
+  "trainTimeOmiya": 285,
   "fareOmiya": 7148,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→アルピコバス約65分→上高地バスターミナル（季節）",
+  "trainTimeYokohama": 289,
+  "fareYokohama": 7236,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→アルピコバス約65分→上高地バスターミナル（季節）"
  },
  {
   "id": "myoko",
@@ -9972,7 +10122,7 @@
   "coeffMin": 18,
   "coeffMax": 30,
   "daytrip": false,
-  "trainAccess": "新宿駅→上越妙高駅→バス→妙高高原駅→バス約30分→燕温泉",
+  "trainAccess": "新宿駅→北陸新幹線はくたか（東京駅乗換）約2時間→上越妙高駅→えちごトキめき鉄道約33分→妙高高原駅→バス約30分→燕温泉",
   "driveOfuna": 275,
   "driveShinjuku": 240,
   "driveYokohama": 240,
@@ -10287,7 +10437,7 @@
   "driveTimeOmiya": 220,
   "nearestStation": "妙高高原駅",
   "trainLine": "えちごトキめき鉄道",
-  "trainTimeShinjuku": 160,
+  "trainTimeShinjuku": 183,
   "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約20分",
   "lines": [
    "北陸新幹線・特急しなの"
@@ -10298,7 +10448,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 133,
   "fareOmiya": 8830,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→北陸新幹線はくたか(約100分)→上越妙高駅→えちごトキめき鉄道(約33分)→妙高高原駅",
+  "trainTimeYokohama": 225,
+  "fareYokohama": 10300,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→北陸新幹線はくたか(約100分)→上越妙高駅→えちごトキめき鉄道(約33分)→妙高高原駅→バス約30分→燕温泉",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "makihata",
@@ -10310,7 +10466,7 @@
   "coeffMin": 22,
   "coeffMax": 34,
   "daytrip": true,
-  "trainAccess": "新宿駅→越後湯沢駅→六日町駅→オンデマンド交通「MOSS」→清水（桜坂駐車場）",
+  "trainAccess": "新宿駅→上越新幹線とき（東京駅乗換）約100分→越後湯沢駅→JR上越線約20分→六日町駅→オンデマンド交通「MOSS」約40分→清水（桜坂駐車場）",
   "driveOfuna": 245,
   "driveShinjuku": 205,
   "driveYokohama": 205,
@@ -10637,7 +10793,13 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 78,
   "fareOmiya": 6160,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→上越新幹線とき(約55分、越後湯沢の先まで延長)→浦佐駅→JR上越線約10分→六日町駅",
+  "trainTimeYokohama": 204,
+  "fareYokohama": 7000,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→上越新幹線とき（東京駅乗換）約100分→越後湯沢駅→JR上越線約20分→六日町駅→オンデマンド交通「MOSS」約40分→清水（桜坂駐車場）",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "iide",
@@ -10980,7 +11142,13 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 193,
   "fareOmiya": 8030,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→東北新幹線やまびこ(約52分)→郡山駅→JR磐越西線快速(約65分)→会津若松駅→JR磐越西線(約37分)→山都駅→会津バス「飯豊登山アクセスバス」（夏季限定・1日2便のみ）",
+  "trainTimeYokohama": 275,
+  "fareYokohama": 8500,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR東海道線(約18分)→東京駅→東北新幹線やまびこ(約80分)→郡山駅→JR磐越西線(約100分)→山都駅→会津バス「飯豊登山アクセスバス」約45分（夏季限定・1日2便のみ）→川入バス停",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "shibutsu",
@@ -10992,7 +11160,7 @@
   "coeffMin": 18,
   "coeffMax": 28,
   "daytrip": true,
-  "trainAccess": "新宿駅→JR湘南新宿ライン→大宮駅→上越新幹線とき→上毛高原駅→関越交通バス・乗合タクシー約2時間6分→鳩待峠（夏季のみ運行）",
+  "trainAccess": "新宿駅→JR湘南新宿ライン→大宮駅→上越新幹線とき約1時間22分→上毛高原駅→関越交通バス・乗合タクシー約2時間6分→鳩待峠（夏季のみ運行）",
   "driveOfuna": 265,
   "driveShinjuku": 185,
   "driveYokohama": 250,
@@ -11314,7 +11482,13 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 175,
   "fareOmiya": 7450,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→上越新幹線とき(約49分)→上毛高原駅→関越交通バス・乗合タクシー約2時間6分→鳩待峠（夏季のみ運行）",
+  "trainTimeYokohama": 235,
+  "fareYokohama": 8400,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→上越新幹線とき(約49分)→上毛高原駅→関越交通バス・乗合タクシー約2時間6分→鳩待峠（夏季のみ運行）",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "aizu_koma",
@@ -11326,7 +11500,7 @@
   "coeffMin": 20,
   "coeffMax": 34,
   "daytrip": true,
-  "trainAccess": "新宿駅→会津田島駅→会津バス→滝沢登山口（夏季）",
+  "trainAccess": "新宿駅→東武特急リバティ会津約3時間→会津田島駅→会津バス→滝沢登山口（夏季）",
   "driveOfuna": 295,
   "driveShinjuku": 265,
   "driveYokohama": 270,
@@ -11639,7 +11813,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 245,
   "fareOmiya": 6610,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR埼京線・東武アーバンパークライン急行→春日部駅→東武特急リバティ会津(約175分)約1時間10分→会津田島駅→会津バス",
+  "trainTimeYokohama": 315,
+  "fareYokohama": 7200,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約50分)→北千住駅→東武特急リバティ会津(約195分)→会津田島駅→会津バス→滝沢登山口（夏季）",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "shirane_gunma",
@@ -11651,7 +11831,7 @@
   "coeffMin": 8,
   "coeffMax": 16,
   "daytrip": true,
-  "trainAccess": "新宿駅→JR吾妻線（新幹線+在来線経由）約2.5時間→長野原草津口駅→JRバス関東「長野原草津口－草津温泉線」約25分→草津温泉（噴火警戒レベル1・2026年5月15日時点。湯釜火口から概ね500m範囲は火山灰等に注意、最新情報は気象庁・草津町HPで要確認）",
+  "trainAccess": "新宿駅→北陸新幹線+JR吾妻線（大宮乗換）約2時間40分→長野原草津口駅→JRバス関東約25分→草津温泉（噴火警戒レベル1・2026年5月15日時点。湯釜火口から概ね500m範囲は火山灰等に注意）",
   "driveOfuna": 225,
   "driveShinjuku": 165,
   "driveYokohama": 185,
@@ -11945,7 +12125,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 155,
   "fareOmiya": 5672,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→北陸新幹線あさま(約82分)約48分→長野原草津口駅→JRバス関東約25分→草津温泉",
+  "trainTimeYokohama": 185,
+  "fareYokohama": 6600,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→北陸新幹線あさま(約82分)→長野原草津口駅→JRバス関東約25分→草津温泉",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "bandai",
@@ -11957,7 +12143,7 @@
   "coeffMin": 16,
   "coeffMax": 28,
   "daytrip": true,
-  "trainAccess": "新宿駅→郡山駅→猪苗代駅→路線バス約30分→八方台登山口（夏〜秋の季節運行）",
+  "trainAccess": "新宿駅→東北新幹線やまびこ（東京駅乗換）約100分→郡山駅→JR磐越西線約50分→猪苗代駅→路線バス約30分→八方台登山口（夏〜秋の季節運行）",
   "driveOfuna": 265,
   "driveShinjuku": 240,
   "driveYokohama": 290,
@@ -12274,7 +12460,13 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 150,
   "fareOmiya": 9172,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→東北新幹線やまびこ(約150分)→猪苗代駅",
+  "trainTimeYokohama": 220,
+  "fareYokohama": 9700,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→東北新幹線やまびこ（東京駅乗換）約100分→郡山駅→JR磐越西線約50分→猪苗代駅→路線バス約30分→八方台登山口（夏〜秋の季節運行）",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "hiuchigatake",
@@ -12598,12 +12790,18 @@
   "trainInfo": "浅草→（東武鉄道・野岩鉄道・会津鉄道）→会津高原尾瀬口駅（約3時間）→バス約80分で沼山峠",
   "driveTimeTachikawa": 305,
   "driveTachikawa": 305,
-  "trainTimeShinjuku": 300,
+  "trainTimeShinjuku": 340,
   "fareShinjuku": 7870,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 295,
+  "trainTimeOmiya": 335,
   "fareOmiya": 8480,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR埼京線・東武アーバンパークライン急行→春日部駅→東武特急リバティ会津(約175分)→会津田島駅→会津バス「檜枝岐線」約2時間→御池",
+  "trainTimeYokohama": 365,
+  "fareYokohama": 9000,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約50分)→北千住駅→東武特急リバティ会津(約195分)→会津田島駅→会津バス「檜枝岐線」約2時間→御池",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "takao",
@@ -12615,7 +12813,7 @@
   "coeffMin": 8,
   "coeffMax": 51,
   "daytrip": true,
-  "trainAccess": "新宿駅→高尾山口駅→徒歩約5分→登山口",
+  "trainAccess": "新宿駅→京王線約50分→高尾山口駅→徒歩約5分→登山口",
   "driveOfuna": 50,
   "driveShinjuku": 50,
   "driveYokohama": 55,
@@ -12820,7 +13018,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 80,
   "fareOmiya": 918,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→京王線約45分→高尾山口駅→徒歩約5分→登山口",
+  "trainTimeYokohama": 71,
+  "fareYokohama": 953,
+  "transfersYokohama": 0,
+  "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線・京王線(約8分)→高尾山口駅"
  },
  {
   "id": "oyama",
@@ -12832,7 +13035,7 @@
   "coeffMin": 12,
   "coeffMax": 46,
   "daytrip": true,
-  "trainAccess": "新宿駅→伊勢原駅→バス約25分→大山ケーブル駅",
+  "trainAccess": "新宿駅→小田急線約1時間15分→伊勢原駅→バス約25分→大山ケーブル駅",
   "driveOfuna": 45,
   "driveShinjuku": 55,
   "driveYokohama": 55,
@@ -13039,7 +13242,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 130,
   "fareOmiya": 1508,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→小田急線約1時間15分→伊勢原駅→バス約25分→大山ケーブル駅",
+  "trainTimeYokohama": 80,
+  "fareYokohama": 1023,
+  "transfersYokohama": 1,
+  "_fareEstimatedYokohama": true,
+  "trainAccessYokohama": "横浜駅→JR東海道線(約35分)約45分→伊勢原駅→バス"
  },
  {
   "id": "tonosaki",
@@ -13051,7 +13260,7 @@
   "coeffMin": 23,
   "coeffMax": 59,
   "daytrip": true,
-  "trainAccess": "新宿駅→渋沢駅→バス約15分→大倉バス停",
+  "trainAccess": "新宿駅→小田急小田原線約1時間10分→渋沢駅→バス約15分→大倉バス停",
   "driveOfuna": 50,
   "driveShinjuku": 60,
   "driveYokohama": 50,
@@ -13363,7 +13572,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 115,
   "fareOmiya": 1470,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→小田急線約1時間10分→渋沢駅→バス約15分→大倉バス停",
+  "trainTimeYokohama": 73,
+  "fareYokohama": 898,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→小田急・相鉄直通(約58分)→渋沢駅→神奈川中央交通バス約15分→大倉"
  },
  {
   "id": "hirugata",
@@ -13375,7 +13589,7 @@
   "coeffMin": 38,
   "coeffMax": 59,
   "daytrip": false,
-  "trainAccess": "新宿駅→渋沢駅→バス約15分→大倉バス停",
+  "trainAccess": "新宿駅→小田急小田原線約1時間10分→渋沢駅→バス約15分→大倉バス停",
   "driveOfuna": 50,
   "driveShinjuku": 60,
   "driveYokohama": 50,
@@ -13707,7 +13921,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 115,
   "fareOmiya": 1470,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→小田急線約1時間10分→渋沢駅→バス約15分→大倉バス停",
+  "trainTimeYokohama": 73,
+  "fareYokohama": 898,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→小田急・相鉄直通(約58分)→渋沢駅→神奈川中央交通バス約15分→大倉"
  },
  {
   "id": "jinba",
@@ -13719,7 +13938,7 @@
   "coeffMin": 3,
   "coeffMax": 81,
   "daytrip": true,
-  "trainAccess": "新宿駅→JR中央線→藤野駅→神奈川中央交通バス「野08」約4分→陣馬登山口（⚠️2026年6月改正で大幅減便、土日祝は全便運休・平日朝のみ運行。週末は高尾駅から徒歩・バス約37分でのアクセスが現実的）",
+  "trainAccess": "新宿駅→JR中央線約33分→藤野駅→神奈川中央交通バス「野08」約4分→陣馬登山口（⚠️2026年6月改正で大幅減便、土日祝は全便運休・平日朝のみ運行。週末は高尾駅から徒歩・バス約37分でのアクセスが現実的）",
   "driveOfuna": 75,
   "driveShinjuku": 70,
   "driveYokohama": 70,
@@ -13917,7 +14136,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 104,
   "fareOmiya": 1778,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約33分→藤野駅→神奈川中央交通バス「野08」約4分→陣馬登山口（⚠️2026年6月改正で大幅減便、土日祝は全便運休・平日朝のみ運行。週末は高尾駅から徒歩・バス約37分でのアクセスが現実的）",
+  "trainTimeYokohama": 108,
+  "fareYokohama": 1866,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央線約33分→藤野駅→神奈川中央交通バス「野08」約4分→陣馬登山口（⚠️2026年6月改正で大幅減便、土日祝は全便運休・平日朝のみ運行。週末は高尾駅から徒歩・バス約37分でのアクセスが現実的）"
  },
  {
   "id": "kintoki",
@@ -13929,7 +14153,7 @@
   "coeffMin": 7,
   "coeffMax": 16,
   "daytrip": true,
-  "trainAccess": "新宿駅→箱根湯本駅→箱根登山バス→金時神社入口（またはバスタ新宿→高速バス直通）",
+  "trainAccess": "新宿駅→小田急ロマンスカー約90分→箱根湯本駅→箱根登山バス約40分→金時神社入口（またはバスタ新宿→高速バス直通）",
   "driveOfuna": 65,
   "driveShinjuku": 80,
   "driveYokohama": 70,
@@ -14196,7 +14420,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 190,
   "fareOmiya": 2298,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→小田急ロマンスカー約90分→箱根湯本駅→箱根登山バス約40分→金時神社入口",
+  "trainTimeYokohama": 120,
+  "fareYokohama": 2386,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR東海道線・小田急線約80分→箱根湯本駅→箱根登山バス約40分→金時神社入口"
  },
  {
   "id": "kayagatake",
@@ -14482,7 +14711,7 @@
   "coeffMin": 22,
   "coeffMax": 28,
   "daytrip": true,
-  "trainAccess": "新宿駅→山梨市駅→バス約30分→乾徳山登山口（季節）",
+  "trainAccess": "新宿駅→JR特急かいじ約1時間30分→山梨市駅→バス約30分→乾徳山登山口（季節）",
   "driveOfuna": 140,
   "driveShinjuku": 130,
   "driveYokohama": 130,
@@ -14797,7 +15026,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 150,
   "fareOmiya": 4828,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約1時間30分→山梨市駅→バス約30分→乾徳山登山口（季節）",
+  "trainTimeYokohama": 154,
+  "fareYokohama": 4916,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約1時間30分→山梨市駅→バス約30分→乾徳山登山口（季節）"
  },
  {
   "id": "hinata",
@@ -15075,7 +15309,7 @@
   "coeffMin": 12,
   "coeffMax": 51,
   "daytrip": true,
-  "trainAccess": "新宿駅→飯能駅→バス約25分→河又名栗湖入口",
+  "trainAccess": "新宿駅→西武池袋線約1時間→飯能駅→バス約25分→河又名栗湖入口",
   "driveOfuna": 100,
   "driveShinjuku": 85,
   "driveYokohama": 100,
@@ -15279,11 +15513,16 @@
   "driveTachikawa": 60,
   "weatherLat": 35.892537,
   "weatherLng": 139.17665568,
-  "fareShinjuku": 690,
+  "fareShinjuku": 1320,
   "transfersShinjuku": 1,
   "trainTimeOmiya": 101,
-  "fareOmiya": 1597,
-  "transfersOmiya": 1
+  "fareOmiya": 2227,
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR埼京線→池袋駅→西武池袋線特急ちちぶ(約71分)約30分→飯能駅→バス",
+  "trainTimeYokohama": 124,
+  "fareYokohama": 1936,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→西武池袋線約1時間5分→飯能駅→バス約25分→河又名栗湖入口"
  },
  {
   "id": "otake",
@@ -15295,7 +15534,7 @@
   "coeffMin": 9,
   "coeffMax": 18,
   "daytrip": true,
-  "trainAccess": "新宿駅→御嶽駅→バス約20分→御岳登山口",
+  "trainAccess": "新宿駅→JR中央線・青梅線約1時間20分→御嶽駅→バス約20分→御岳登山口",
   "driveOfuna": 85,
   "driveShinjuku": 80,
   "driveYokohama": 90,
@@ -15496,7 +15735,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 103,
   "fareOmiya": 1221,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR埼京線・武蔵野線・中央線経由(約103分)→御嶽駅→バス・ケーブルカー",
+  "trainTimeYokohama": 83,
+  "fareYokohama": 1103,
+  "transfersYokohama": 1,
+  "_fareEstimatedYokohama": true,
+  "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約20分)→御嶽駅"
  },
  {
   "id": "jonengatake",
@@ -15845,7 +16090,7 @@
   "coeffMin": 14,
   "coeffMax": 24,
   "daytrip": true,
-  "trainAccess": "新宿駅→松本駅→新島々駅→アルピコバス→中の湯バス停（季節）",
+  "trainAccess": "新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→アルピコバス約55分→中の湯バス停（季節）",
   "driveOfuna": 280,
   "driveShinjuku": 285,
   "driveYokohama": 260,
@@ -16162,12 +16407,17 @@
   "weatherLng": 137.616,
   "nearestStation": "松本駅",
   "trainLine": "JR中央本線・上高地線",
-  "trainTimeShinjuku": 195,
+  "trainTimeShinjuku": 245,
   "fareShinjuku": 6620,
   "transfersShinjuku": 0,
-  "trainTimeOmiya": 225,
+  "trainTimeOmiya": 275,
   "fareOmiya": 7148,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→アルピコバス約55分→中の湯バス停（季節）",
+  "trainTimeYokohama": 279,
+  "fareYokohama": 7236,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→アルピコバス約55分→中の湯バス停（季節）"
  },
  {
   "id": "kashimayari",
@@ -16179,7 +16429,7 @@
   "coeffMin": 45,
   "coeffMax": 65,
   "daytrip": false,
-  "trainAccess": "新宿駅→信濃大町駅→バス約30分→扇沢（季節）",
+  "trainAccess": "新宿駅→JR特急あずさ約3時間15分→信濃大町駅→バス約30分→扇沢（季節）",
   "driveOfuna": 290,
   "driveShinjuku": 285,
   "driveYokohama": 260,
@@ -16505,7 +16755,7 @@
   "driveTimeOmiya": 255,
   "trainLine": "特急あずさ・大糸線",
   "nearestStation": "信濃大町駅",
-  "trainTimeShinjuku": 180,
+  "trainTimeShinjuku": 225,
   "trainInfo": "新宿→松本（特急約150分）→信濃大町（大糸線約30分）→バス約55分＋徒歩",
   "lines": [
    "特急あずさ・大糸線"
@@ -16516,9 +16766,14 @@
   "weatherLng": 137.789,
   "fareShinjuku": 9000,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 210,
+  "trainTimeOmiya": 255,
   "fareOmiya": 9528,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→特急あずさ・大糸線約2時間30分→信濃大町駅→バス約30分→扇沢（季節）",
+  "trainTimeYokohama": 259,
+  "fareYokohama": 9616,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→特急あずさ・大糸線約2時間30分→信濃大町駅→バス約30分→扇沢（季節）"
  },
  {
   "id": "koganzan",
@@ -16530,7 +16785,7 @@
   "coeffMin": 20,
   "coeffMax": 28,
   "daytrip": true,
-  "trainAccess": "新宿駅→甲斐大和駅→栄和交通バス約40分→上日川峠（土日祝中心）",
+  "trainAccess": "新宿駅→JR特急かいじ約1時間35分→甲斐大和駅→栄和交通バス約40分→上日川峠（土日祝中心）",
   "driveOfuna": 150,
   "driveShinjuku": 130,
   "driveYokohama": 140,
@@ -16791,11 +17046,16 @@
   ],
   "driveTimeTachikawa": 100,
   "driveTachikawa": 100,
-  "fareShinjuku": 3200,
+  "fareShinjuku": 2582,
   "transfersShinjuku": 1,
   "trainTimeOmiya": 133,
   "fareOmiya": 3110,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約1時間3分→甲斐大和駅→栄和交通バス約40分→上日川峠（土日祝中心）",
+  "trainTimeYokohama": 154,
+  "fareYokohama": 3198,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約1時間20分→甲斐大和駅→栄和交通バス約40分→上日川峠（土日祝中心）"
  },
  {
   "id": "arafune",
@@ -17606,7 +17866,7 @@
   "coeffMin": 20,
   "coeffMax": 26,
   "daytrip": true,
-  "trainAccess": "新宿駅→長野駅→湯田中駅→バス約25分→聖平入口（季節）",
+  "trainAccess": "新宿駅→北陸新幹線あさま（東京駅乗換）約115分→長野駅→長野電鉄約45分→湯田中駅→バス約25分→聖平入口（季節）",
   "driveOfuna": 210,
   "driveShinjuku": 195,
   "driveYokohama": 190,
@@ -17934,7 +18194,13 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 150,
   "fareOmiya": 8272,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→北陸新幹線あさま(約82分)→長野駅→長野電鉄(約45分)→湯田中駅→バス約25分→聖平入口（季節運行）",
+  "trainTimeYokohama": 230,
+  "fareYokohama": 9200,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→北陸新幹線あさま（東京駅乗換）約115分→長野駅→長野電鉄約45分→湯田中駅→バス約25分→聖平入口（季節）",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "iizunasan",
@@ -17946,7 +18212,7 @@
   "coeffMin": 14,
   "coeffMax": 20,
   "daytrip": true,
-  "trainAccess": "新宿駅→長野駅→バス約30分→一ノ鳥居苑地",
+  "trainAccess": "新宿駅→北陸新幹線あさま約1時間55分→長野駅→バス約30分→一ノ鳥居苑地",
   "driveOfuna": 230,
   "driveShinjuku": 215,
   "driveYokohama": 210,
@@ -18216,7 +18482,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 112,
   "fareOmiya": 6860,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→北陸新幹線あさま(約82分)→長野駅→バス約30分→一ノ鳥居苑地",
+  "trainTimeYokohama": 172,
+  "fareYokohama": 7800,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→北陸新幹線あさま(約82分)→長野駅→バス約30分→一ノ鳥居苑地",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "kurohimesan",
@@ -18228,7 +18500,7 @@
   "coeffMin": 24,
   "coeffMax": 30,
   "daytrip": true,
-  "trainAccess": "新宿駅→長野駅→信越本線→黒姫駅→バス約20分→古池登山口（季節）",
+  "trainAccess": "新宿駅→北陸新幹線あさま（東京駅乗換）約115分→長野駅→しなの鉄道北しなの線約28分→黒姫駅→バス約20分→古池登山口（季節）",
   "driveOfuna": 250,
   "driveShinjuku": 220,
   "driveYokohama": 220,
@@ -18543,7 +18815,7 @@
   "driveTimeOmiya": 255,
   "nearestStation": "黒姫駅",
   "trainLine": "JR信越本線",
-  "trainTimeShinjuku": 140,
+  "trainTimeShinjuku": 173,
   "trainInfo": "新宿→長野（新幹線約90分）→黒姫（信越本線約25分）→バス",
   "lines": [
    "北陸新幹線・特急しなの"
@@ -18552,9 +18824,15 @@
   "driveTachikawa": 290,
   "fareShinjuku": 9000,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 110,
+  "trainTimeOmiya": 130,
   "fareOmiya": 8472,
-  "transfersOmiya": 1
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→北陸新幹線あさま(約82分)→長野駅→しなの鉄道北しなの線(約28分)→黒姫駅→バス約20分→古池登山口（季節運行）",
+  "trainTimeYokohama": 190,
+  "fareYokohama": 9400,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→北陸新幹線あさま（東京駅乗換）約115分→長野駅→しなの鉄道北しなの線約28分→黒姫駅→バス約20分→古池登山口（季節）",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "kenashiyama",
@@ -18566,7 +18844,7 @@
   "coeffMin": 20,
   "coeffMax": 28,
   "daytrip": true,
-  "trainAccess": "新宿駅→富士宮駅→富士急静岡バス→朝霧高原（毛無山登山口）",
+  "trainAccess": "新宿駅→JR東海道線・身延線約142分→富士宮駅→富士急静岡バス約32分→朝霧高原（毛無山登山口）",
   "driveOfuna": 145,
   "driveShinjuku": 145,
   "driveYokohama": 135,
@@ -18872,7 +19150,12 @@
   "transfersShinjuku": 3,
   "trainTimeOmiya": 204,
   "fareOmiya": 3858,
-  "transfersOmiya": 4
+  "transfersOmiya": 4,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR東海道線・身延線約142分→富士宮駅→富士急静岡バス約32分→朝霧高原（毛無山登山口）",
+  "trainTimeYokohama": 208,
+  "fareYokohama": 3946,
+  "transfersYokohama": 4,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR東海道線・身延線約142分→富士宮駅→富士急静岡バス約32分→朝霧高原（毛無山登山口）"
  },
  {
   "id": "shirasunayama",
@@ -19201,7 +19484,7 @@
   "coeffMin": 26,
   "coeffMax": 34,
   "daytrip": true,
-  "trainAccess": "新宿駅→身延駅→バス約20分→羽衣登山口（季節）",
+  "trainAccess": "新宿駅→JR身延線約3時間35分→身延駅→バス約20分→羽衣登山口（季節）",
   "driveOfuna": 155,
   "driveShinjuku": 175,
   "driveYokohama": 145,
@@ -19498,7 +19781,12 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 265,
   "fareOmiya": 4128,
-  "transfersOmiya": 3
+  "transfersOmiya": 3,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR身延線約3時間35分→身延駅→バス約20分→羽衣登山口（季節）",
+  "trainTimeYokohama": 269,
+  "fareYokohama": 4216,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR身延線約3時間35分→身延駅→バス約20分→羽衣登山口（季節）"
  },
  {
   "id": "arasawadake",
@@ -20847,7 +21135,7 @@
   "coeffMin": 28,
   "coeffMax": 36,
   "daytrip": true,
-  "trainAccess": "新宿駅→穂高駅→大糸観光バス→中房温泉（夏季）",
+  "trainAccess": "新宿駅→JR特急あずさ約2時間45分→穂高駅→大糸観光バス→中房温泉（夏季）",
   "driveOfuna": 255,
   "driveShinjuku": 250,
   "driveYokohama": 250,
@@ -21154,7 +21442,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 270,
   "fareOmiya": 8928,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR大糸線約4時間→穂高駅→大糸観光バス→中房温泉（夏季）",
+  "trainTimeYokohama": 274,
+  "fareYokohama": 9016,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR大糸線約4時間→穂高駅→大糸観光バス→中房温泉（夏季）"
  },
  {
   "id": "keizandake",
@@ -21476,7 +21769,7 @@
   "coeffMin": 16,
   "coeffMax": 28,
   "daytrip": true,
-  "trainAccess": "新宿駅→二本松駅→バス約30分→岳温泉（季節）",
+  "trainAccess": "新宿駅→JR東北本線約1時間50分→二本松駅→バス約30分→岳温泉（季節）",
   "driveOfuna": 285,
   "driveShinjuku": 265,
   "driveYokohama": 275,
@@ -21753,7 +22046,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 110,
   "fareOmiya": 7422,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→東北新幹線やまびこ(約110分)→二本松駅",
+  "trainTimeYokohama": 180,
+  "fareYokohama": 8000,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→東北新幹線やまびこ(約80分)→二本松駅→バス約30分→岳温泉（季節）",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "azuma",
@@ -21765,7 +22064,7 @@
   "coeffMin": 16,
   "coeffMax": 30,
   "daytrip": true,
-  "trainAccess": "新宿駅→米沢駅→山交バス約40分→白布温泉→天元台ロープウェイ",
+  "trainAccess": "新宿駅→JR奥羽本線約2時間20分→米沢駅→山交バス約40分→白布温泉→天元台ロープウェイ",
   "driveOfuna": 300,
   "driveShinjuku": 280,
   "driveYokohama": 290,
@@ -22037,7 +22336,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 150,
   "fareOmiya": 7472,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→山形新幹線つばさ(約150分)→米沢駅",
+  "trainTimeYokohama": 250,
+  "fareYokohama": 8000,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→山形新幹線つばさ(約150分)→米沢駅→山交バス約40分→白布温泉→天元台ロープウェイ",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "echigokoma",
@@ -22363,7 +22668,13 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 240,
   "fareOmiya": 7172,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→上越新幹線とき(約210分相当、浦佐経由)約30分→小出駅",
+  "trainTimeYokohama": 300,
+  "fareYokohama": 8200,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→上越新幹線とき(約100分)→越後湯沢駅→JR上越線約30分→小出駅→南越後交通バス約1時間5分→枝折峠登山口（夏季1日1便）",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "hiragadake",
@@ -22712,7 +23023,7 @@
   "coeffMin": 28,
   "coeffMax": 40,
   "daytrip": true,
-  "trainAccess": "新宿駅→越後湯沢駅→タクシー約25〜45分→和田小屋（路線バスなし）",
+  "trainAccess": "新宿駅→上越新幹線とき約1時間40分→越後湯沢駅→タクシー約25〜45分→和田小屋（路線バスなし）",
   "driveOfuna": 220,
   "driveShinjuku": 175,
   "driveYokohama": 185,
@@ -23039,7 +23350,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 89,
   "fareOmiya": 9020,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→上越新幹線とき直通(約49分)→越後湯沢駅→バス約40分→苗場山方面",
+  "trainTimeYokohama": 149,
+  "fareYokohama": 9600,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→上越新幹線とき直通(約49分)→越後湯沢駅→タクシー約25〜45分→和田小屋（路線バスなし）",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "amakazari",
@@ -23369,7 +23686,7 @@
   "coeffMin": 20,
   "coeffMax": 32,
   "daytrip": false,
-  "trainAccess": "新宿駅→上越妙高駅→バス→妙高高原駅→バス約30分→笹ヶ峰（季節）",
+  "trainAccess": "新宿駅→北陸新幹線はくたか（東京駅乗換）約2時間→上越妙高駅→えちごトキめき鉄道約33分→妙高高原駅",
   "driveOfuna": 290,
   "driveShinjuku": 255,
   "driveYokohama": 270,
@@ -23679,7 +23996,7 @@
   "driveTimeOmiya": 250,
   "nearestStation": "妙高高原駅",
   "trainLine": "えちごトキめき鉄道",
-  "trainTimeShinjuku": 160,
+  "trainTimeShinjuku": 153,
   "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約40分",
   "lines": [
    "北陸新幹線・特急しなの"
@@ -23690,7 +24007,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 133,
   "fareOmiya": 8830,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→北陸新幹線はくたか(約100分)→上越妙高駅→えちごトキめき鉄道(約33分)→妙高高原駅",
+  "trainTimeYokohama": 195,
+  "fareYokohama": 9800,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→北陸新幹線はくたか(約100分)→上越妙高駅→えちごトキめき鉄道(約33分)→妙高高原駅",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "takatsuma",
@@ -23702,7 +24025,7 @@
   "coeffMin": 35,
   "coeffMax": 42,
   "daytrip": false,
-  "trainAccess": null,
+  "trainAccess": "新宿駅→北陸新幹線あさま（東京駅乗換）約115分→長野駅→アルピコ交通バス「戸隠線」約30分→飯綱登山口",
   "driveOfuna": 265,
   "driveShinjuku": 225,
   "driveYokohama": 250,
@@ -24044,7 +24367,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 112,
   "fareOmiya": 6160,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→北陸新幹線あさま(約82分)→長野駅→アルピコ交通バス「戸隠線」約30分→飯綱登山口",
+  "trainTimeYokohama": 172,
+  "fareYokohama": 7100,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→北陸新幹線あさま(約82分)→長野駅→アルピコ交通バス「戸隠線」約30分→飯綱登山口",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "kasagatake",
@@ -24389,7 +24718,7 @@
   "coeffMin": 18,
   "coeffMax": 32,
   "daytrip": true,
-  "trainAccess": null,
+  "trainAccess": "新宿駅→JR特急あずさ+特急しなの（松本乗換）約210分→木曽福島駅→バス・タクシーで田の原方面へ（季節運行）",
   "driveOfuna": 290,
   "driveShinjuku": 290,
   "driveYokohama": 275,
@@ -24702,7 +25031,12 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 240,
   "fareOmiya": 11408,
-  "transfersOmiya": 3
+  "transfersOmiya": 3,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ+特急しなの(松本乗換、約210分)→木曽福島駅",
+  "trainTimeYokohama": 244,
+  "fareYokohama": 11496,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ+特急しなの(松本乗換、約210分)→木曽福島駅"
  },
  {
   "id": "goryudake",
@@ -24714,7 +25048,7 @@
   "coeffMin": 45,
   "coeffMax": 65,
   "daytrip": false,
-  "trainAccess": "新宿駅→神城駅→徒歩約10分→エスカルプラザ（テレキャビン乗り場）",
+  "trainAccess": "新宿駅→特急あずさ・大糸線約3時間30分→神城駅→徒歩約10分→エスカルプラザ（テレキャビン乗り場）",
   "driveOfuna": 290,
   "driveShinjuku": 280,
   "driveYokohama": 260,
@@ -25048,7 +25382,12 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 250,
   "fareOmiya": 8928,
-  "transfersOmiya": 3
+  "transfersOmiya": 3,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→特急あずさ・大糸線約3時間30分→神城駅→徒歩約10分→エスカルプラザ（テレキャビン乗り場）",
+  "trainTimeYokohama": 254,
+  "fareYokohama": 9016,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→特急あずさ・大糸線約3時間30分→神城駅→徒歩約10分→エスカルプラザ（テレキャビン乗り場）"
  },
  {
   "id": "sukai",
@@ -25391,7 +25730,7 @@
   "coeffMin": 15,
   "coeffMax": 25,
   "daytrip": true,
-  "trainAccess": "新宿駅→駒ヶ根駅→バス約25分→菅の台バスセンター→路線バス→しらび平→ロープウェイ",
+  "trainAccess": "新宿駅→高速バス約3時間40分→駒ヶ根駅→バス約25分→菅の台バスセンター→路線バス→しらび平→ロープウェイ",
   "driveOfuna": 230,
   "driveShinjuku": 210,
   "driveYokohama": 230,
@@ -25674,7 +26013,12 @@
   "transfersShinjuku": 3,
   "trainTimeOmiya": 310,
   "fareOmiya": 8928,
-  "transfersOmiya": 4
+  "transfersOmiya": 4,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR飯田線約4時間15分→駒ヶ根駅→バス約25分→菅の台バスセンター→路線バス→しらび平→ロープウェイ",
+  "trainTimeYokohama": 314,
+  "fareYokohama": 9016,
+  "transfersYokohama": 4,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR飯田線約4時間15分→駒ヶ根駅→バス約25分→菅の台バスセンター→路線バス→しらび平→ロープウェイ"
  },
  {
   "id": "utsukushigahara",
@@ -25686,7 +26030,7 @@
   "coeffMin": 6,
   "coeffMax": 14,
   "daytrip": true,
-  "trainAccess": "新宿駅→松本駅→アルピコ交通バス→美ヶ原高原（夏季）",
+  "trainAccess": "新宿駅→JR特急あずさ約2時間30分→松本駅→アルピコ交通バス約100分→美ヶ原高原（夏季）",
   "driveOfuna": 195,
   "driveShinjuku": 175,
   "driveYokohama": 185,
@@ -25953,7 +26297,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 280,
   "fareOmiya": 8528,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約4時間10分→松本駅→アルピコ交通バス→美ヶ原高原（夏季）",
+  "trainTimeYokohama": 284,
+  "fareYokohama": 8616,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約4時間10分→松本駅→アルピコ交通バス→美ヶ原高原（夏季）"
  },
  {
   "id": "karamatsu",
@@ -25965,7 +26314,7 @@
   "coeffMin": 14,
   "coeffMax": 27,
   "daytrip": true,
-  "trainAccess": "新宿駅→白馬駅→バス約15分→八方バスターミナル",
+  "trainAccess": "新宿駅→JR特急あずさ約3時間40分→白馬駅→バス約15分→八方バスターミナル",
   "driveOfuna": 280,
   "driveShinjuku": 255,
   "driveYokohama": 265,
@@ -26282,7 +26631,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 265,
   "fareOmiya": 8308,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→特急あずさ・大糸線約3時間40分→白馬駅→バス約15分→八方バスターミナル",
+  "trainTimeYokohama": 269,
+  "fareYokohama": 8396,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→特急あずさ・大糸線約3時間40分→白馬駅→バス約15分→八方バスターミナル"
  },
  {
   "id": "utsugi",
@@ -26294,7 +26648,7 @@
   "coeffMin": 55,
   "coeffMax": 70,
   "daytrip": false,
-  "trainAccess": "新宿駅→駒ヶ根駅→路線バス→菅の台バスセンター→徒歩で空木岳登山口",
+  "trainAccess": "新宿駅→高速バス約3時間40分→駒ヶ根駅→路線バス→菅の台バスセンター→徒歩で空木岳登山口",
   "driveOfuna": 255,
   "driveShinjuku": 235,
   "driveYokohama": 230,
@@ -26623,7 +26977,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 263,
   "fareOmiya": 4728,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR飯田線約3時間53分→駒ヶ根駅→路線バス→菅の台バスセンター→徒歩で空木岳登山口",
+  "trainTimeYokohama": 267,
+  "fareYokohama": 4816,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR飯田線約3時間53分→駒ヶ根駅→路線バス→菅の台バスセンター→徒歩で空木岳登山口"
  },
  {
   "id": "enasan",
@@ -29639,7 +29998,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 230,
   "fareOmiya": 6128,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ・かいじ約2時間→甲府駅→山梨交通「広河原線」約1時間→広河原（南アルプスマイカー規制のためバス必須・利用者協力金300円別途）",
+  "trainTimeYokohama": 234,
+  "fareYokohama": 6216,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ・かいじ約2時間→甲府駅→山梨交通「広河原線」約1時間→広河原（南アルプスマイカー規制のためバス必須・利用者協力金300円別途）"
  },
  {
   "id": "noutori",
@@ -29975,7 +30339,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 230,
   "fareOmiya": 6128,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ・かいじ約2時間→甲府駅→山梨交通「広河原線」約1時間→広河原（南アルプスマイカー規制のためバス必須・利用者協力金300円別途）",
+  "trainTimeYokohama": 234,
+  "fareYokohama": 6216,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ・かいじ約2時間→甲府駅→山梨交通「広河原線」約1時間→広河原（南アルプスマイカー規制のためバス必須・利用者協力金300円別途）"
  },
  {
   "id": "hakusan",
@@ -30600,9 +30969,15 @@
   "trainTimeShinjuku": 195,
   "fareShinjuku": 6970,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 165,
+  "trainTimeOmiya": 180,
   "fareOmiya": 6442,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→山形新幹線つばさ(約140分)→山形駅→山交バス約40分→蔵王温泉",
+  "trainTimeYokohama": 210,
+  "fareYokohama": 7500,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR東海道線(約18分)→東京駅→JR山形新幹線つばさ(約140分)→山形駅→山交バス約40分→蔵王温泉バスターミナル",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "karisaka",
@@ -30614,7 +30989,7 @@
   "coeffMin": 32,
   "coeffMax": 52,
   "daytrip": true,
-  "trainAccess": "新宿駅→塩山駅→甲州市民バス→道の駅みとみ（西沢渓谷入口）→徒歩",
+  "trainAccess": "新宿駅→JR特急かいじ約1時間25分→塩山駅→甲州市民バス→道の駅みとみ（西沢渓谷入口）→徒歩",
   "driveOfuna": 160,
   "driveShinjuku": 145,
   "driveYokohama": 150,
@@ -30958,7 +31333,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 190,
   "fareOmiya": 3928,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約2時間40分→塩山駅→甲州市民バス→道の駅みとみ（西沢渓谷入口）→徒歩",
+  "trainTimeYokohama": 194,
+  "fareYokohama": 4016,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央線約2時間40分→塩山駅→甲州市民バス→道の駅みとみ（西沢渓谷入口）→徒歩"
  },
  {
   "id": "nokogiriyama",
@@ -31297,7 +31677,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 230,
   "fareOmiya": 6128,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ・かいじ約2時間→甲府駅→山梨交通「広河原線」約1時間→広河原（南アルプスマイカー規制のためバス必須・利用者協力金300円別途）",
+  "trainTimeYokohama": 234,
+  "fareYokohama": 6216,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ・かいじ約2時間→甲府駅→山梨交通「広河原線」約1時間→広河原（南アルプスマイカー規制のためバス必須・利用者協力金300円別途）"
  },
  {
   "id": "minamikomagatake",
@@ -31309,7 +31694,7 @@
   "coeffMin": 42,
   "coeffMax": 52,
   "daytrip": false,
-  "trainAccess": "新宿駅→駒ヶ根駅→バス約25分→菅の台バスセンター",
+  "trainAccess": "新宿駅→高速バス約3時間40分→駒ヶ根駅→バス約25分→菅の台バスセンター",
   "driveOfuna": 270,
   "driveShinjuku": 250,
   "driveYokohama": 270,
@@ -31639,7 +32024,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 263,
   "fareOmiya": 6308,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR飯田線約3時間28分→駒ヶ根駅→バス約25分→菅の台バスセンター",
+  "trainTimeYokohama": 267,
+  "fareYokohama": 6396,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR飯田線約3時間28分→駒ヶ根駅→バス約25分→菅の台バスセンター"
  },
  {
   "id": "chogatake",
@@ -31651,7 +32041,7 @@
   "coeffMin": 28,
   "coeffMax": 40,
   "daytrip": true,
-  "trainAccess": "新宿駅→松本駅→新島々駅→アルピコバス→上高地バスターミナル（季節）",
+  "trainAccess": "新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→アルピコバス約65分→上高地バスターミナル（季節）",
   "driveOfuna": 300,
   "driveShinjuku": 280,
   "driveYokohama": 300,
@@ -31960,12 +32350,17 @@
   "driveTachikawa": 265,
   "nearestStation": "松本駅",
   "trainLine": "JR中央本線・上高地線",
-  "trainTimeShinjuku": 195,
+  "trainTimeShinjuku": 255,
   "fareShinjuku": 6620,
   "transfersShinjuku": 0,
-  "trainTimeOmiya": 225,
+  "trainTimeOmiya": 285,
   "fareOmiya": 7148,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→アルピコバス約65分→上高地バスターミナル（季節）",
+  "trainTimeYokohama": 289,
+  "fareYokohama": 7236,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ約150分→松本駅→松本電鉄上高地線約30分→新島々駅→アルピコバス約65分→上高地バスターミナル（季節）"
  },
  {
   "id": "otenshoudake",
@@ -31977,7 +32372,7 @@
   "coeffMin": 42,
   "coeffMax": 56,
   "daytrip": false,
-  "trainAccess": "新宿駅→穂高駅→大糸観光バス→中房温泉→燕岳経由縦走（夏季）",
+  "trainAccess": "新宿駅→JR特急あずさ約2時間45分→穂高駅→大糸観光バス→中房温泉→燕岳経由縦走（夏季）",
   "driveOfuna": 320,
   "driveShinjuku": 300,
   "driveYokohama": 320,
@@ -32305,7 +32700,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 270,
   "fareOmiya": 8928,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR大糸線約4時間→穂高駅→大糸観光バス→中房温泉→燕岳経由縦走（夏季）",
+  "trainTimeYokohama": 274,
+  "fareYokohama": 9016,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR大糸線約4時間→穂高駅→大糸観光バス→中房温泉→燕岳経由縦走（夏季）"
  },
  {
   "id": "harinokidake",
@@ -32317,7 +32717,7 @@
   "coeffMin": 28,
   "coeffMax": 38,
   "daytrip": true,
-  "trainAccess": "新宿駅→信濃大町駅→バス約30分→扇沢（季節）",
+  "trainAccess": "新宿駅→JR特急あずさ約3時間15分→信濃大町駅→バス約30分→扇沢（季節）",
   "driveOfuna": 330,
   "driveShinjuku": 315,
   "driveYokohama": 330,
@@ -32622,7 +33022,7 @@
   "driveTimeOmiya": 355,
   "trainLine": "特急あずさ・大糸線",
   "nearestStation": "信濃大町駅",
-  "trainTimeShinjuku": 180,
+  "trainTimeShinjuku": 225,
   "trainInfo": "新宿→松本（特急約150分）→信濃大町（大糸線約30分）→バス約55分",
   "lines": [
    "特急あずさ・大糸線"
@@ -32631,9 +33031,14 @@
   "driveTachikawa": 290,
   "fareShinjuku": 9000,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 210,
+  "trainTimeOmiya": 255,
   "fareOmiya": 9528,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→特急あずさ・大糸線約2時間30分→信濃大町駅→バス約30分→扇沢（季節）",
+  "trainTimeYokohama": 259,
+  "fareYokohama": 9616,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→特急あずさ・大糸線約2時間30分→信濃大町駅→バス約30分→扇沢（季節）"
  },
  {
   "id": "eboshidake_kita",
@@ -33307,7 +33712,7 @@
   "coeffMin": 6,
   "coeffMax": 10,
   "daytrip": true,
-  "trainAccess": "新宿駅→浜金谷駅→徒歩約15分→鋸山登山口",
+  "trainAccess": "新宿駅→JR内房線約1時間40分→浜金谷駅→徒歩約15分→鋸山登山口",
   "driveOfuna": 75,
   "driveShinjuku": 90,
   "driveYokohama": 70,
@@ -33496,7 +33901,13 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 145,
   "fareOmiya": 1428,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR内房線約1時間40分→浜金谷駅→徒歩約15分→鋸山登山口",
+  "trainTimeYokohama": 125,
+  "fareYokohama": 1700,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR内房線(君津・木更津経由、約110分)→浜金谷駅→徒歩約15分→鋸山登山口",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "mitakesan",
@@ -33508,7 +33919,7 @@
   "coeffMin": 8,
   "coeffMax": 14,
   "daytrip": true,
-  "trainAccess": "新宿駅→御嶽駅→バス約10分→ケーブル下→ケーブルカー約6分→御岳山",
+  "trainAccess": "新宿駅→JR中央線・青梅線約1時間20分→御嶽駅→バス約10分→ケーブル下→ケーブルカー約6分→御岳山",
   "driveOfuna": 100,
   "driveShinjuku": 75,
   "driveYokohama": 95,
@@ -33711,7 +34122,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 103,
   "fareOmiya": 1221,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR埼京線・武蔵野線・中央線経由(約103分)→御嶽駅→バス・ケーブルカー",
+  "trainTimeYokohama": 83,
+  "fareYokohama": 1103,
+  "transfersYokohama": 1,
+  "_fareEstimatedYokohama": true,
+  "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約20分)→御嶽駅"
  },
  {
   "id": "takamizusanzan",
@@ -33723,7 +34140,7 @@
   "coeffMin": 16,
   "coeffMax": 20,
   "daytrip": true,
-  "trainAccess": "新宿駅→軍畑駅→徒歩→登山口",
+  "trainAccess": "新宿駅→JR青梅線約1時間30分→軍畑駅→徒歩→登山口",
   "driveOfuna": 110,
   "driveShinjuku": 85,
   "driveYokohama": 105,
@@ -33993,7 +34410,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 120,
   "fareOmiya": 1578,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR青梅線約1時間30分→軍畑駅→徒歩→登山口",
+  "trainTimeYokohama": 124,
+  "fareYokohama": 1666,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR青梅線約1時間30分→軍畑駅→徒歩→登山口"
  },
  {
   "id": "tenzandake",
@@ -34005,7 +34427,7 @@
   "coeffMin": 5,
   "coeffMax": 8,
   "daytrip": true,
-  "trainAccess": "新宿駅→飯能駅→徒歩約20分→天覧山登山口",
+  "trainAccess": "新宿駅→西武池袋線約1時間→飯能駅→徒歩約20分→天覧山登山口",
   "driveOfuna": 100,
   "driveShinjuku": 65,
   "driveYokohama": 95,
@@ -34185,7 +34607,7 @@
   "driveTimeOmiya": 60,
   "nearestStation": "飯能駅",
   "trainLine": "西武池袋線",
-  "trainTimeShinjuku": 60,
+  "trainTimeShinjuku": 80,
   "trainInfo": "池袋→飯能駅（西武池袋線約55分）徒歩20分",
   "lines": [
    "西武池袋線"
@@ -34196,9 +34618,14 @@
   "weatherLng": 139.31914724,
   "fareShinjuku": 690,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 71,
+  "trainTimeOmiya": 91,
   "fareOmiya": 1597,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR埼京線→池袋駅→西武池袋線特急ちちぶ(約71分)→飯能駅",
+  "trainTimeYokohama": 114,
+  "fareYokohama": 1306,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→西武池袋線約40分→飯能駅→徒歩約20分→天覧山登山口"
  },
  {
   "id": "hiwadayama",
@@ -34210,7 +34637,7 @@
   "coeffMin": 4,
   "coeffMax": 7,
   "daytrip": true,
-  "trainAccess": "新宿駅→高麗駅→徒歩約15分→日和田山登山口",
+  "trainAccess": "新宿駅→西武池袋線約50分→高麗駅→徒歩約15分→日和田山登山口",
   "driveOfuna": 110,
   "driveShinjuku": 75,
   "driveYokohama": 105,
@@ -34401,7 +34828,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 95,
   "fareOmiya": 1218,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→西武池袋線約50分→高麗駅→徒歩約15分→日和田山登山口",
+  "trainTimeYokohama": 99,
+  "fareYokohama": 1306,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→西武池袋線約50分→高麗駅→徒歩約15分→日和田山登山口"
  },
  {
   "id": "izugatake",
@@ -34413,7 +34845,7 @@
   "coeffMin": 16,
   "coeffMax": 28,
   "daytrip": true,
-  "trainAccess": "新宿駅→正丸駅→徒歩約10分→伊豆ヶ岳登山口",
+  "trainAccess": "新宿駅→西武秩父線約1時間10分→正丸駅→徒歩約10分→伊豆ヶ岳登山口",
   "driveShinjuku": 85,
   "driveOfuna": 85,
   "driveYokohama": 110,
@@ -34617,7 +35049,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 110,
   "fareOmiya": 1378,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→西武秩父線約1時間10分→正丸駅→徒歩約10分→伊豆ヶ岳登山口",
+  "trainTimeYokohama": 114,
+  "fareYokohama": 1466,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→西武秩父線約1時間10分→正丸駅→徒歩約10分→伊豆ヶ岳登山口"
  },
  {
   "id": "bukosan",
@@ -34629,7 +35066,7 @@
   "coeffMin": 22,
   "coeffMax": 28,
   "daytrip": true,
-  "trainAccess": "新宿駅→池袋駅（山手線）→西武秩父線特急ちちぶ約80分→西武秩父駅",
+  "trainAccess": "新宿駅→JR山手線約8分→池袋駅→西武秩父線特急ちちぶ約80分→西武秩父駅",
   "driveShinjuku": 110,
   "driveOfuna": 110,
   "driveYokohama": 130,
@@ -34934,7 +35371,12 @@
   "trainTimeOmiya": 110,
   "fareOmiya": 1198,
   "transfersOmiya": 2,
-  "trainLineOmiya": "JR川越線・八高線・西武池袋線各停（新宿・池袋いずれも経由しない短絡ルート）"
+  "trainLineOmiya": "JR川越線・八高線・西武池袋線各停（新宿・池袋いずれも経由しない短絡ルート）",
+  "trainAccessOmiya": "大宮駅→JR川越線・八高線・西武池袋線各停(約110分、新宿・池袋いずれも経由しない短絡ルート)→西武秩父駅",
+  "trainTimeYokohama": 134,
+  "fareYokohama": 2506,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR山手線約8分→池袋駅→西武秩父線特急ちちぶ約80分→西武秩父駅"
  },
  {
   "id": "nabewari",
@@ -34946,7 +35388,7 @@
   "coeffMin": 30,
   "coeffMax": 41,
   "daytrip": true,
-  "trainAccess": "新宿駅→渋沢駅→バス約15分→大倉バス停",
+  "trainAccess": "新宿駅→小田急小田原線約1時間10分→渋沢駅→バス約15分→大倉バス停",
   "driveShinjuku": 80,
   "driveOfuna": 80,
   "driveYokohama": 65,
@@ -35265,7 +35707,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 135,
   "fareOmiya": 1488,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→小田急線約1時間30分→渋沢駅→バス約15分→大倉バス停",
+  "trainTimeYokohama": 93,
+  "fareYokohama": 916,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→小田急・相鉄直通(約58分)→渋沢駅→バス約30分→大倉"
  },
  {
   "id": "sannotou",
@@ -35277,7 +35724,7 @@
   "coeffMin": 18,
   "coeffMax": 28,
   "daytrip": true,
-  "trainAccess": "新宿駅→渋沢駅→バス約15分→大倉バス停",
+  "trainAccess": "新宿駅→小田急小田原線約1時間10分→渋沢駅→バス約15分→大倉バス停",
   "driveShinjuku": 80,
   "driveOfuna": 80,
   "driveYokohama": 65,
@@ -35556,7 +36003,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 135,
   "fareOmiya": 1488,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→小田急線約1時間30分→渋沢駅→バス約15分→大倉バス停",
+  "trainTimeYokohama": 93,
+  "fareYokohama": 916,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→小田急・相鉄直通(約58分)→渋沢駅→バス約30分→大倉"
  },
  {
   "id": "koubousan",
@@ -35568,7 +36020,7 @@
   "coeffMin": 3,
   "coeffMax": 6,
   "daytrip": true,
-  "trainAccess": "新宿駅→鶴巻温泉駅または秦野駅→徒歩→弘法山登山口",
+  "trainAccess": "新宿駅→小田急線約1時間10分→鶴巻温泉駅または秦野駅→徒歩→弘法山登山口",
   "driveShinjuku": 75,
   "driveOfuna": 75,
   "driveYokohama": 55,
@@ -35773,7 +36225,13 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 100,
   "fareOmiya": 1128,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→小田急線約1時間10分→鶴巻温泉駅または秦野駅→徒歩→弘法山登山口",
+  "trainTimeYokohama": 42,
+  "fareYokohama": 600,
+  "transfersYokohama": 1,
+  "_fareEstimatedYokohama": true,
+  "trainAccessYokohama": "横浜駅→JR東海道線・小田急線(約32分)約10分→鶴巻温泉駅→徒歩"
  },
  {
   "id": "kagenobusan",
@@ -35785,7 +36243,7 @@
   "coeffMin": 19,
   "coeffMax": 32,
   "daytrip": true,
-  "trainAccess": "新宿駅→高尾駅→京王バス約21分→小仏バス停",
+  "trainAccess": "新宿駅→JR中央線約1時間→高尾駅→京王バス約21分→小仏バス停",
   "driveShinjuku": 60,
   "driveOfuna": 60,
   "driveYokohama": 55,
@@ -35985,7 +36443,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 110,
   "fareOmiya": 1238,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約59分→高尾駅→京王バス約21分→小仏バス停",
+  "trainTimeYokohama": 68,
+  "fareYokohama": 903,
+  "transfersYokohama": 0,
+  "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線(約5分)→高尾駅"
  },
  {
   "id": "takagawayama",
@@ -35997,7 +36460,7 @@
   "coeffMin": 14,
   "coeffMax": 15,
   "daytrip": true,
-  "trainAccess": "新宿駅→初狩駅→徒歩→高川山登山口",
+  "trainAccess": "新宿駅→JR中央線約1時間20分→初狩駅→徒歩→高川山登山口",
   "driveShinjuku": 90,
   "driveOfuna": 90,
   "driveYokohama": 95,
@@ -36192,7 +36655,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 110,
   "fareOmiya": 1528,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約1時間20分→初狩駅→徒歩→高川山登山口",
+  "trainTimeYokohama": 114,
+  "fareYokohama": 1616,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央線約1時間20分→初狩駅→徒歩→高川山登山口"
  },
  {
   "id": "kobotokeshiroyama",
@@ -36205,7 +36673,7 @@
   "coeffMin": 13,
   "coeffMax": 27,
   "daytrip": true,
-  "trainAccess": "新宿駅→高尾駅→バス→小仏バス停→徒歩",
+  "trainAccess": "新宿駅→JR中央線約1時間→高尾駅→バス→小仏バス停→徒歩",
   "driveTime": 55,
   "driveOfuna": 55,
   "driveShinjuku": 55,
@@ -36384,7 +36852,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 110,
   "fareOmiya": 1238,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約1時間20分→高尾駅→バス→小仏バス停→徒歩",
+  "trainTimeYokohama": 68,
+  "fareYokohama": 903,
+  "transfersYokohama": 0,
+  "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線(約5分)→高尾駅"
  },
  {
   "id": "kusatoriyama",
@@ -36397,7 +36870,7 @@
   "coeffMin": 8,
   "coeffMax": 12,
   "daytrip": true,
-  "trainAccess": "新宿駅→高尾山口駅→徒歩→草戸山登山口",
+  "trainAccess": "新宿駅→京王線約50分→高尾山口駅→徒歩→草戸山登山口",
   "driveTime": 55,
   "driveOfuna": 55,
   "driveShinjuku": 55,
@@ -36567,7 +37040,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 85,
   "fareOmiya": 918,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→京王線約55分→高尾山口駅→徒歩→草戸山登山口",
+  "trainTimeYokohama": 71,
+  "fareYokohama": 953,
+  "transfersYokohama": 0,
+  "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線・京王線(約8分)→高尾山口駅"
  },
  {
   "id": "nakimushiyama",
@@ -36580,7 +37058,7 @@
   "coeffMin": 15,
   "coeffMax": 20,
   "daytrip": true,
-  "trainAccess": "新宿駅→東武日光駅→徒歩約10分→鳴虫山登山口",
+  "trainAccess": "新宿駅→東武特急スペーシア約1時間57分→東武日光駅→徒歩約10分→鳴虫山登山口",
   "driveTime": 130,
   "driveOfuna": 130,
   "driveShinjuku": 130,
@@ -36820,7 +37298,13 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 160,
   "fareOmiya": 6598,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→東武日光線約2時間→東武日光駅→徒歩約10分→鳴虫山登山口",
+  "trainTimeYokohama": 170,
+  "fareYokohama": 6600,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約50分)→北千住駅→東武特急スペーシア日光(約110分)→東武日光駅→徒歩約10分→鳴虫山登山口",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "tairappyo",
@@ -36833,7 +37317,7 @@
   "coeffMin": 22,
   "coeffMax": 28,
   "daytrip": true,
-  "trainAccess": "新宿駅→越後湯沢駅→バス→平標登山口（季節）",
+  "trainAccess": "新宿駅→上越新幹線とき約1時間40分→越後湯沢駅→バス→平標登山口（季節）",
   "trainLine": "JR上越線・上越新幹線",
   "nearestStation": "越後湯沢駅",
   "trainTimeShinjuku": 110,
@@ -37160,7 +37644,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 59,
   "fareOmiya": 5920,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→上越新幹線とき直通(約49分)→越後湯沢駅→南越後観光バス約10分→平標登山口バス停",
+  "trainTimeYokohama": 119,
+  "fareYokohama": 6500,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→上越新幹線とき直通(約49分)→越後湯沢駅→南越後観光バス約10分→平標登山口バス停",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "tomisan",
@@ -37173,7 +37663,7 @@
   "coeffMin": 7,
   "coeffMax": 9,
   "daytrip": true,
-  "trainAccess": "新宿駅→岩井駅→徒歩約30分→福満寺（富山登山口）",
+  "trainAccess": "新宿駅→JR内房線約1時間30分→岩井駅→徒歩約30分→福満寺（富山登山口）",
   "trainLine": "JR内房線",
   "nearestStation": "岩井駅",
   "trainTimeShinjuku": 120,
@@ -37359,7 +37849,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 150,
   "fareOmiya": 3528,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR内房線約1時間30分→岩井駅→徒歩約30分→福満寺（富山登山口）",
+  "trainTimeYokohama": 145,
+  "fareYokohama": 1800,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR内房線(君津・木更津経由、約115分)→岩井駅→徒歩約30分→福満寺（富山登山口）",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "iyogatake",
@@ -37372,7 +37868,7 @@
   "coeffMin": 5,
   "coeffMax": 8,
   "daytrip": true,
-  "trainAccess": "新宿駅→岩井駅→市営バス→天神郷バス停→徒歩",
+  "trainAccess": "新宿駅→JR内房線約2時間→岩井駅→市営バス→天神郷バス停→徒歩",
   "trainLine": "JR内房線",
   "nearestStation": "岩井駅",
   "trainTimeShinjuku": 120,
@@ -37565,11 +38061,17 @@
   ],
   "driveTimeTachikawa": 125,
   "driveTachikawa": 125,
-  "fareShinjuku": 3000,
+  "fareShinjuku": 3200,
   "transfersShinjuku": 1,
   "trainTimeOmiya": 150,
-  "fareOmiya": 3528,
-  "transfersOmiya": 2
+  "fareOmiya": 3728,
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR内房線約2時間→岩井駅→市営バス→天神郷バス停→徒歩",
+  "trainTimeYokohama": 145,
+  "fareYokohama": 2000,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR内房線(君津・木更津経由、約115分)約30分→岩井駅→市営バス→天神郷バス停→徒歩",
+  "_fareEstimatedYokohama": true
  },
  {
   "id": "myojingatake",
@@ -37582,7 +38084,7 @@
   "coeffMin": 16,
   "coeffMax": 24,
   "daytrip": true,
-  "trainAccess": "新宿駅→小田原駅→バス→宮城野→明神ヶ岳登山口",
+  "trainAccess": "新宿駅→小田急ロマンスカー約90分→箱根湯本駅→箱根登山バス約40分→明神ヶ岳登山口",
   "trainLine": "小田急線",
   "nearestStation": "箱根登山鉄道 宮城野駅",
   "trainTimeShinjuku": 160,
@@ -37778,7 +38280,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 190,
   "fareOmiya": 2298,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→小田急ロマンスカー約90分→箱根湯本駅→箱根登山バス約40分→明神ヶ岳登山口",
+  "trainTimeYokohama": 120,
+  "fareYokohama": 2386,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR東海道線・小田急線約80分→箱根湯本駅→箱根登山バス約40分→明神ヶ岳登山口"
  },
  {
   "id": "yaguradake",
@@ -37791,7 +38298,7 @@
   "coeffMin": 12,
   "coeffMax": 18,
   "daytrip": true,
-  "trainAccess": "新宿駅→小田原駅→大雄山駅→バス→地蔵堂バス停→徒歩",
+  "trainAccess": "新宿駅→JR東海道線約80分→小田原駅→伊豆箱根鉄道大雄山線約20分→大雄山駅→バス約17分→地蔵堂バス停→徒歩約20分",
   "trainLine": "小田急線",
   "nearestStation": "大雄山駅",
   "trainTimeShinjuku": 157,
@@ -37981,7 +38488,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 187,
   "fareOmiya": 2238,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR東海道線約80分→小田原駅→伊豆箱根鉄道大雄山線約20分→大雄山駅→バス約17分→地蔵堂バス停→徒歩約20分",
+  "trainTimeYokohama": 104,
+  "fareYokohama": 2010,
+  "transfersYokohama": 2,
+  "_fareEstimatedYokohama": true,
+  "trainAccessYokohama": "横浜駅→JR東海道線(約55分)→小田原駅→伊豆箱根鉄道大雄山線約49分→大雄山駅→バス"
  },
  {
   "id": "kawanoriyama",
@@ -37994,7 +38507,7 @@
   "coeffMin": 20,
   "coeffMax": 30,
   "daytrip": true,
-  "trainAccess": "新宿駅→奥多摩駅→バス約15分→川乗橋バス停",
+  "trainAccess": "新宿駅→JR中央線・青梅線約1時間35分→奥多摩駅→バス約15分→川乗橋バス停",
   "trainLine": "JR青梅線",
   "nearestStation": "奥多摩駅",
   "trainTimeShinjuku": 130,
@@ -38273,7 +38786,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 160,
   "fareOmiya": 2138,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR青梅線約1時間55分→奥多摩駅→バス約15分→川乗橋バス停",
+  "trainTimeYokohama": 138,
+  "fareYokohama": 1642,
+  "transfersYokohama": 1,
+  "_fareEstimatedYokohama": true,
+  "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約40分)→奥多摩駅"
  },
  {
   "id": "takanosuyama",
@@ -38286,7 +38805,7 @@
   "coeffMin": 24,
   "coeffMax": 36,
   "daytrip": true,
-  "trainAccess": "新宿駅→奥多摩駅→バス→東日原バス停→徒歩",
+  "trainAccess": "新宿駅→JR中央線・青梅線約1時間35分→奥多摩駅→バス→東日原バス停→徒歩",
   "trainLine": "JR青梅線",
   "nearestStation": "奥多摩駅",
   "trainTimeShinjuku": 130,
@@ -38605,7 +39124,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 160,
   "fareOmiya": 2138,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR青梅線約2時間10分→奥多摩駅→バス→東日原バス停→徒歩",
+  "trainTimeYokohama": 138,
+  "fareYokohama": 1642,
+  "transfersYokohama": 1,
+  "_fareEstimatedYokohama": true,
+  "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約40分)→奥多摩駅"
  },
  {
   "id": "ishirousan",
@@ -38618,7 +39143,7 @@
   "coeffMin": 16,
   "coeffMax": 22,
   "daytrip": true,
-  "trainAccess": "新宿駅→相模湖駅→神奈川中央交通バス約7分→石老山入口バス停",
+  "trainAccess": "新宿駅→JR中央本線約1時間5分→相模湖駅→神奈川中央交通バス約7分→石老山入口バス停",
   "trailhead": "石老山入口（顕鏡寺ルート）",
   "driveShinjuku": 65,
   "driveOfuna": 55,
@@ -38801,7 +39326,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 102,
   "fareOmiya": 1808,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約1時間5分→相模湖駅→神奈川中央交通バス約7分→石老山入口バス停",
+  "trainTimeYokohama": 106,
+  "fareYokohama": 1896,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約1時間5分→相模湖駅→神奈川中央交通バス約7分→石老山入口バス停"
  },
  {
   "id": "iwadonoyama",
@@ -38814,7 +39344,7 @@
   "coeffMin": 12,
   "coeffMax": 18,
   "daytrip": true,
-  "trainAccess": "新宿駅→大月駅→徒歩約15〜20分→岩殿山登山口",
+  "trainAccess": "新宿駅→JR中央本線約1時間30分→大月駅→徒歩約15〜20分→岩殿山登山口",
   "trailhead": "畑倉登山口（大月駅徒歩15分）",
   "driveShinjuku": 90,
   "driveOfuna": 100,
@@ -38996,7 +39526,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 120,
   "fareOmiya": 1868,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約1時間30分→大月駅→徒歩約15〜20分→岩殿山登山口",
+  "trainTimeYokohama": 124,
+  "fareYokohama": 1956,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約1時間30分→大月駅→徒歩約15〜20分→岩殿山登山口"
  },
  {
   "id": "maruyama_okubusuma",
@@ -39009,7 +39544,7 @@
   "coeffMin": 12,
   "coeffMax": 18,
   "daytrip": true,
-  "trainAccess": "新宿駅→飯能駅→芦ヶ久保駅→徒歩約30分→丸山登山口",
+  "trainAccess": "新宿駅→西武池袋線約60分→飯能駅→西武秩父線約20分→芦ヶ久保駅→徒歩約30分→丸山登山口",
   "trailhead": "芦ヶ久保駅（徒歩30分）",
   "driveShinjuku": 90,
   "driveOfuna": 120,
@@ -39191,9 +39726,14 @@
   "weatherLng": 139.10759,
   "fareShinjuku": 850,
   "transfersShinjuku": 0,
-  "trainTimeOmiya": 114,
+  "trainTimeOmiya": 150,
   "fareOmiya": 1255,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→西武池袋線約60分→飯能駅→西武秩父線約20分→芦ヶ久保駅→徒歩約30分→丸山登山口",
+  "trainTimeYokohama": 144,
+  "fareYokohama": 1466,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→西武池袋線約60分→飯能駅→西武秩父線約20分→芦ヶ久保駅→徒歩約30分→丸山登山口"
  },
  {
   "id": "ohnoyama",
@@ -39206,7 +39746,7 @@
   "coeffMin": 10,
   "coeffMax": 16,
   "daytrip": true,
-  "trainAccess": "新宿駅→松田駅→山北駅→バス約10分→共和バス停→徒歩約30分",
+  "trainAccess": "新宿駅→小田急線約70分→松田駅→JR御殿場線約10分→山北駅→バス約10分→共和バス停→徒歩約30分",
   "trailhead": "共和バス停（山北駅バス約10分）から徒歩30分",
   "driveShinjuku": 85,
   "driveOfuna": 80,
@@ -39389,7 +39929,13 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 170,
   "fareOmiya": 1718,
-  "transfersOmiya": 3
+  "transfersOmiya": 3,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→小田急線約70分→松田駅→JR御殿場線約10分→山北駅→バス約10分→共和バス停→徒歩約30分",
+  "trainTimeYokohama": 150,
+  "fareYokohama": 1650,
+  "transfersYokohama": 2,
+  "_fareEstimatedYokohama": true,
+  "trainAccessYokohama": "横浜駅→JR東海道線(約55分)→小田原駅→JR御殿場線約1時間35分→山北駅→バス"
  },
  {
   "id": "momakurasan",
@@ -39402,7 +39948,7 @@
   "coeffMin": 14,
   "coeffMax": 20,
   "daytrip": true,
-  "trainAccess": "新宿駅→猿橋駅→徒歩約30分→大月市営総合グラウンド（百蔵山登山口）",
+  "trainAccess": "新宿駅→JR中央本線約1時間20分→猿橋駅→徒歩約30分→大月市営総合グラウンド（百蔵山登山口）",
   "trailhead": "大月市営総合グラウンド（猿橋駅から徒歩約30分）",
   "driveShinjuku": 95,
   "driveOfuna": 110,
@@ -39583,7 +40129,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 140,
   "fareOmiya": 1698,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約1時間20分→猿橋駅→徒歩約30分→大月市営総合グラウンド（百蔵山登山口）",
+  "trainTimeYokohama": 144,
+  "fareYokohama": 1786,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約1時間20分→猿橋駅→徒歩約30分→大月市営総合グラウンド（百蔵山登山口）"
  },
  {
   "id": "ogiyama",
@@ -39596,7 +40147,7 @@
   "coeffMin": 16,
   "coeffMax": 22,
   "daytrip": true,
-  "trainAccess": "新宿駅→鳥沢駅→徒歩約60分→梨ノ木平登山口",
+  "trainAccess": "新宿駅→JR中央線約1時間15分→鳥沢駅→徒歩約60分→梨ノ木平登山口",
   "trailhead": "梨ノ木平登山口（鳥沢駅から徒歩約60分、季節運行バスあり）",
   "driveShinjuku": 90,
   "driveOfuna": 105,
@@ -39778,7 +40329,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 165,
   "fareOmiya": 1698,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約1時間15分→鳥沢駅→徒歩約60分→梨ノ木平登山口",
+  "trainTimeYokohama": 169,
+  "fareYokohama": 1786,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約1時間15分→鳥沢駅→徒歩約60分→梨ノ木平登山口"
  },
  {
   "id": "makuyama",
@@ -39791,7 +40347,7 @@
   "coeffMin": 10,
   "coeffMax": 14,
   "daytrip": true,
-  "trainAccess": "新宿駅→湯河原駅→箱根登山バス約10分→幕山公園",
+  "trainAccess": "新宿駅→JR東海道本線約1時間48分→湯河原駅→箱根登山バス約10分→幕山公園",
   "trailhead": "幕山公園",
   "driveShinjuku": 90,
   "driveOfuna": 65,
@@ -39971,7 +40527,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 148,
   "fareOmiya": 3918,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR東海道本線約1時間48分→湯河原駅→箱根登山バス約10分→幕山公園",
+  "trainTimeYokohama": 106,
+  "fareYokohama": 1880,
+  "transfersYokohama": 1,
+  "_fareEstimatedYokohama": true,
+  "trainAccessYokohama": "横浜駅→JR東海道線(約70分)約36分→湯河原駅→バス"
  },
  {
   "id": "taiheizan",
@@ -39984,7 +40546,7 @@
   "coeffMin": 6,
   "coeffMax": 12,
   "daytrip": true,
-  "trainAccess": "新宿駅→JR湘南新宿ライン→小山駅→両毛線→栃木駅→徒歩約30分→謙信平",
+  "trainAccess": "新宿駅→JR湘南新宿ライン→小山駅→両毛線約1時間20分→栃木駅→徒歩約30分→謙信平",
   "trailhead": "栃木市太平山謙信平",
   "driveShinjuku": 110,
   "driveOfuna": 145,
@@ -40162,7 +40724,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 140,
   "fareOmiya": 3628,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR湘南新宿ライン→小山駅→両毛線約1時間20分→栃木駅→徒歩約30分→謙信平",
+  "trainTimeYokohama": 144,
+  "fareYokohama": 3716,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR湘南新宿ライン→小山駅→両毛線約1時間20分→栃木駅→徒歩約30分→謙信平"
  },
  {
   "id": "kuratakeyama",
@@ -40175,7 +40742,7 @@
   "coeffMin": 15,
   "coeffMax": 22,
   "daytrip": true,
-  "trainAccess": "新宿駅→鳥沢駅→徒歩約30分→穴路峠登山口",
+  "trainAccess": "新宿駅→JR中央線約1時間15分→鳥沢駅→徒歩約30分→穴路峠登山口",
   "trailhead": "穴路峠登山口（鳥沢駅から徒歩）",
   "driveShinjuku": 70,
   "driveTimeShinjuku": 70,
@@ -40355,7 +40922,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 120,
   "fareOmiya": 1698,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約1時間→鳥沢駅→徒歩約30分→穴路峠登山口",
+  "trainTimeYokohama": 124,
+  "fareYokohama": 1786,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約1時間→鳥沢駅→徒歩約30分→穴路峠登山口"
  },
  {
   "id": "sasakogarigaburiyama",
@@ -40368,7 +40940,7 @@
   "coeffMin": 14,
   "coeffMax": 20,
   "daytrip": true,
-  "trainAccess": "新宿駅→笹子駅→徒歩約5分→笹子雁ヶ腹摺山登山口",
+  "trainAccess": "新宿駅→JR中央本線約1時間10分→笹子駅→徒歩約5分→笹子雁ヶ腹摺山登山口",
   "trailhead": "笹子峠登山口（笹子駅から徒歩）",
   "driveShinjuku": 90,
   "driveTimeShinjuku": 90,
@@ -40548,7 +41120,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 105,
   "fareOmiya": 1838,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約1時間10分→笹子駅→徒歩約5分→笹子雁ヶ腹摺山登山口",
+  "trainTimeYokohama": 109,
+  "fareYokohama": 1926,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約1時間10分→笹子駅→徒歩約5分→笹子雁ヶ腹摺山登山口"
  },
  {
   "id": "shodosan_namatate",
@@ -40561,7 +41138,7 @@
   "coeffMin": 16,
   "coeffMax": 24,
   "daytrip": true,
-  "trainAccess": "新宿駅→上野原駅→富士急バス約25分→井戸バス停→徒歩",
+  "trainAccess": "新宿駅→JR中央本線約1時間10分→上野原駅→富士急バス約25分→井戸バス停→徒歩",
   "trailhead": "井戸バス停（三国山ルート）",
   "driveShinjuku": 70,
   "driveTimeShinjuku": 70,
@@ -40743,7 +41320,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 125,
   "fareOmiya": 1978,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約1時間10分→上野原駅→富士急バス約25分→井戸バス停→徒歩",
+  "trainTimeYokohama": 129,
+  "fareYokohama": 2066,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約1時間10分→上野原駅→富士急バス約25分→井戸バス停→徒歩"
  },
  {
   "id": "kukiyama",
@@ -40756,7 +41338,7 @@
   "coeffMin": 14,
   "coeffMax": 20,
   "daytrip": true,
-  "trainAccess": "新宿駅→大月駅→禾生駅→徒歩約30分→九鬼山登山口",
+  "trainAccess": "新宿駅→JR中央線約70分→大月駅→富士急行線約15分→禾生駅→徒歩約30分→九鬼山登山口",
   "trailhead": "禾生駅ルート登山口",
   "driveShinjuku": 80,
   "driveTimeShinjuku": 80,
@@ -40936,7 +41518,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 135,
   "fareOmiya": 2128,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約70分→大月駅→富士急行線約15分→禾生駅→徒歩約30分→九鬼山登山口",
+  "trainTimeYokohama": 139,
+  "fareYokohama": 2216,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央線約70分→大月駅→富士急行線約15分→禾生駅→徒歩約30分→九鬼山登山口"
  },
  {
   "id": "mitosaan",
@@ -40949,7 +41536,7 @@
   "coeffMin": 18,
   "coeffMax": 30,
   "daytrip": true,
-  "trainAccess": "新宿駅→武蔵五日市駅→西東京バス「数馬行」約60分→数馬→都民の森連絡バス約10分→都民の森",
+  "trainAccess": "新宿駅→JR中央線・五日市線約1時間8分→武蔵五日市駅→西東京バス「数馬行」約60分→数馬→都民の森連絡バス約10分→都民の森",
   "trailhead": "都民の森（三頭大滝コース）",
   "driveShinjuku": 75,
   "driveTimeShinjuku": 75,
@@ -41255,7 +41842,12 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 160,
   "fareOmiya": 1430,
-  "transfersOmiya": 3
+  "transfersOmiya": 3,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR五日市線約1時間→武蔵五日市駅→西東京バス「数馬行」約60分→数馬→都民の森連絡バス約10分→都民の森",
+  "trainTimeYokohama": 164,
+  "fareYokohama": 1518,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR五日市線約1時間→武蔵五日市駅→西東京バス「数馬行」約60分→数馬→都民の森連絡バス約10分→都民の森"
  },
  {
   "id": "honitayama",
@@ -41268,11 +41860,11 @@
   "coeffMin": 20,
   "coeffMax": 28,
   "daytrip": true,
-  "trainAccess": "新宿駅→奥多摩駅→徒歩約30分→花折戸尾根登山口",
+  "trainAccess": "新宿駅→JR中央線・青梅線約1時間35分→奥多摩駅→徒歩約30分→花折戸尾根登山口",
   "trailhead": "花折戸尾根登山口（奥多摩駅から徒歩）",
   "driveShinjuku": 80,
   "driveTimeShinjuku": 80,
-  "trainTimeShinjuku": 100,
+  "trainTimeShinjuku": 125,
   "nearestStation": "奥多摩駅",
   "trainLine": "JR青梅線",
   "trainInfo": "新宿→立川→奥多摩駅（JR青梅線約1時間40分）→徒歩30分→登山口",
@@ -41569,9 +42161,14 @@
   "weatherLng": 139.096222,
   "fareShinjuku": 1221,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 130,
+  "trainTimeOmiya": 155,
   "fareOmiya": 1749,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR青梅線約1時間10分→奥多摩駅→徒歩約30分→花折戸尾根登山口",
+  "trainTimeYokohama": 133,
+  "fareYokohama": 1253,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR青梅線約44分→奥多摩駅→徒歩約30分→花折戸尾根登山口"
  },
  {
   "id": "hinodesaan",
@@ -41584,7 +42181,7 @@
   "coeffMin": 10,
   "coeffMax": 18,
   "daytrip": true,
-  "trainAccess": "新宿駅→御嶽駅→バス→御岳登山口→御岳山経由",
+  "trainAccess": "新宿駅→JR中央線・青梅線約1時間20分→御嶽駅→バス→御岳登山口→御岳山経由",
   "trailhead": "御岳山（ケーブルカー利用可）→日の出山",
   "driveShinjuku": 65,
   "driveTimeShinjuku": 65,
@@ -41780,7 +42377,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 103,
   "fareOmiya": 1221,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR埼京線・武蔵野線・中央線経由(約103分)→御嶽駅→バス・ケーブルカー",
+  "trainTimeYokohama": 83,
+  "fareYokohama": 1103,
+  "transfersYokohama": 1,
+  "_fareEstimatedYokohama": true,
+  "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約20分)→御嶽駅"
  },
  {
   "id": "sengenrei",
@@ -41793,7 +42396,7 @@
   "coeffMin": 12,
   "coeffMax": 18,
   "daytrip": true,
-  "trainAccess": "新宿駅→武蔵五日市駅→西東京バス約25分→払沢の滝入口",
+  "trainAccess": "新宿駅→JR中央線・五日市線約1時間8分→武蔵五日市駅→西東京バス約25分→払沢の滝入口",
   "trailhead": "払沢の滝入口（浅間尾根登山口）",
   "driveShinjuku": 65,
   "driveTimeShinjuku": 65,
@@ -41987,7 +42590,12 @@
   "transfersShinjuku": 2,
   "trainTimeOmiya": 110,
   "fareOmiya": 1430,
-  "transfersOmiya": 3
+  "transfersOmiya": 3,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR五日市線約55分→武蔵五日市駅→西東京バス約25分→払沢の滝入口",
+  "trainTimeYokohama": 114,
+  "fareYokohama": 1518,
+  "transfersYokohama": 3,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR五日市線約55分→武蔵五日市駅→西東京バス約25分→払沢の滝入口"
  },
  {
   "id": "futagoyama_okumusa",
@@ -42000,7 +42608,7 @@
   "coeffMin": 12,
   "coeffMax": 18,
   "daytrip": true,
-  "trainAccess": "新宿駅→飯能駅→芦ヶ久保駅→徒歩約15分→二子山登山口",
+  "trainAccess": "新宿駅→西武池袋線約60分→飯能駅→西武秩父線約20分→芦ヶ久保駅→徒歩約15分→二子山登山口",
   "trailhead": "芦ヶ久保駅ルート登山口（徒歩15分）",
   "driveShinjuku": 80,
   "driveTimeShinjuku": 80,
@@ -42181,9 +42789,14 @@
   "weatherLng": 139.10759,
   "fareShinjuku": 850,
   "transfersShinjuku": 0,
-  "trainTimeOmiya": 109,
+  "trainTimeOmiya": 135,
   "fareOmiya": 1255,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→西武池袋線約60分→飯能駅→西武秩父線約20分→芦ヶ久保駅→徒歩約15分→二子山登山口",
+  "trainTimeYokohama": 129,
+  "fareYokohama": 1466,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→西武池袋線約60分→飯能駅→西武秩父線約20分→芦ヶ久保駅→徒歩約15分→二子山登山口"
  },
  {
   "id": "juunigadake",
@@ -42196,7 +42809,7 @@
   "coeffMin": 20,
   "coeffMax": 28,
   "daytrip": true,
-  "trainAccess": "新宿駅→大月駅→河口湖駅→富士急バス約10分→文化洞トンネルバス停",
+  "trainAccess": "新宿駅→JR中央線約70分→大月駅→富士急行線約50分→河口湖駅→富士急バス約10分→文化洞トンネルバス停",
   "trailhead": "文化洞トンネル（毛無山〜十二ヶ岳ルート）",
   "driveShinjuku": 100,
   "driveTimeShinjuku": 100,
@@ -42487,9 +43100,14 @@
   "seasonNoGear": "3月〜11月",
   "fareShinjuku": 4440,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 168,
-  "fareOmiya": 3038,
-  "transfersOmiya": 2
+  "trainTimeOmiya": 155,
+  "fareOmiya": 4968,
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約70分→大月駅→富士急行線約50分→河口湖駅→富士急バス約10分→文化洞トンネルバス停",
+  "trainTimeYokohama": 159,
+  "fareYokohama": 5056,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央線約70分→大月駅→富士急行線約50分→河口湖駅→富士急バス約10分→文化洞トンネルバス停"
  },
  {
   "id": "ishiwariyama",
@@ -42502,7 +43120,7 @@
   "coeffMin": 10,
   "coeffMax": 16,
   "daytrip": true,
-  "trainAccess": "新宿駅→大月駅→河口湖駅→バス約30分→山中湖平野バス停",
+  "trainAccess": "新宿駅→JR中央線約70分→大月駅→富士急行線約50分→河口湖駅→バス約30分→山中湖平野バス停",
   "trailhead": "石割神社登山口（平野バス停から徒歩15分）",
   "driveShinjuku": 95,
   "driveTimeShinjuku": 95,
@@ -42753,9 +43371,14 @@
   "seasonNoGear": "3月〜11月",
   "fareShinjuku": 4590,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 188,
-  "fareOmiya": 3188,
-  "transfersOmiya": 2
+  "trainTimeOmiya": 175,
+  "fareOmiya": 5118,
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約70分→大月駅→富士急行線約50分→河口湖駅→バス約30分→山中湖平野バス停",
+  "trainTimeYokohama": 179,
+  "fareYokohama": 5206,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央線約70分→大月駅→富士急行線約50分→河口湖駅→バス約30分→山中湖平野バス停"
  },
  {
   "id": "azumayama_ninomiya",
@@ -42768,7 +43391,7 @@
   "coeffMin": 2,
   "coeffMax": 5,
   "daytrip": true,
-  "trainAccess": "新宿駅→二宮駅→徒歩約5分→吾妻山公園入口",
+  "trainAccess": "新宿駅→JR東海道本線約45分→二宮駅→徒歩約5分→吾妻山公園入口",
   "trailhead": "吾妻山公園入口（二宮駅から徒歩）",
   "driveShinjuku": 65,
   "driveTimeShinjuku": 65,
@@ -42944,7 +43567,13 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 80,
   "fareOmiya": 1936,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR東海道本線約45分→二宮駅→徒歩約5分→吾妻山公園入口",
+  "trainTimeYokohama": 53,
+  "fareYokohama": 950,
+  "transfersYokohama": 1,
+  "_fareEstimatedYokohama": true,
+  "trainAccessYokohama": "横浜駅→JR東海道線(約48分)→二宮駅→徒歩"
  },
  {
   "id": "hodosan",
@@ -42957,11 +43586,11 @@
   "coeffMin": 4,
   "coeffMax": 8,
   "daytrip": true,
-  "trainAccess": "新宿駅→飯能駅→長瀞駅→徒歩約30分またはロープウェイ→宝登山",
+  "trainAccess": "新宿駅→西武池袋線約60分→飯能駅→西武秩父線約60分→西武秩父駅→秩父鉄道約15分→長瀞駅→徒歩約30分またはロープウェイ→宝登山",
   "trailhead": "宝登山神社（長瀞駅から徒歩）",
   "driveShinjuku": 85,
   "driveTimeShinjuku": 85,
-  "trainTimeShinjuku": 90,
+  "trainTimeShinjuku": 175,
   "nearestStation": "長瀞駅",
   "trainLine": "秩父鉄道",
   "trainInfo": "池袋→西武秩父→御花畑→長瀞駅（秩父鉄道約1時間40分）→徒歩30分",
@@ -43138,9 +43767,14 @@
   "weatherLng": 139.109802,
   "fareShinjuku": 950,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 120,
+  "trainTimeOmiya": 205,
   "fareOmiya": 1478,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→西武池袋線約60分→飯能駅→西武秩父線約60分→西武秩父駅→秩父鉄道約15分→長瀞駅→徒歩約30分またはロープウェイ→宝登山",
+  "trainTimeYokohama": 209,
+  "fareYokohama": 1566,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→西武池袋線約60分→飯能駅→西武秩父線約60分→西武秩父駅→秩父鉄道約15分→長瀞駅→徒歩約30分またはロープウェイ→宝登山"
  },
  {
   "id": "hafuzan_chichibu",
@@ -43153,11 +43787,11 @@
   "coeffMin": 10,
   "coeffMax": 15,
   "daytrip": true,
-  "trainAccess": "新宿駅→飯能駅→皆野駅→徒歩→風戸登山口",
+  "trainAccess": "新宿駅→西武池袋線約60分→飯能駅→西武秩父線約60分→西武秩父駅→秩父鉄道約20分→皆野駅→徒歩→風戸登山口",
   "trailhead": "風戸登山口（皆野駅から徒歩40分）",
   "driveShinjuku": 100,
   "driveTimeShinjuku": 100,
-  "trainTimeShinjuku": 100,
+  "trainTimeShinjuku": 150,
   "nearestStation": "皆野駅",
   "trainLine": "秩父鉄道",
   "trainInfo": "池袋→西武秩父→御花畑→皆野駅（秩父鉄道約1時間50分）→徒歩",
@@ -43334,9 +43968,14 @@
   "weatherLng": 139.098816,
   "fareShinjuku": 1050,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 130,
+  "trainTimeOmiya": 180,
   "fareOmiya": 1578,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→西武池袋線約60分→飯能駅→西武秩父線約60分→西武秩父駅→秩父鉄道約20分→皆野駅→徒歩→風戸登山口",
+  "trainTimeYokohama": 184,
+  "fareYokohama": 1666,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→西武池袋線約60分→飯能駅→西武秩父線約60分→西武秩父駅→秩父鉄道約20分→皆野駅→徒歩→風戸登山口"
  },
  {
   "id": "ranzan_saitama",
@@ -43349,7 +43988,7 @@
   "coeffMin": 3,
   "coeffMax": 6,
   "daytrip": true,
-  "trainAccess": "新宿駅→武蔵嵐山駅→徒歩約20分→嵐山渓谷入口",
+  "trainAccess": "新宿駅→東武東上線約1時間5分→武蔵嵐山駅→徒歩約20分→嵐山渓谷入口",
   "trailhead": "嵐山渓谷入口（武蔵嵐山駅から徒歩）",
   "driveShinjuku": 75,
   "driveTimeShinjuku": 75,
@@ -43527,7 +44166,12 @@
   "transfersShinjuku": 0,
   "trainTimeOmiya": 115,
   "fareOmiya": 1308,
-  "transfersOmiya": 1
+  "transfersOmiya": 1,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→東武東上線約1時間5分→武蔵嵐山駅→徒歩約20分→嵐山渓谷入口",
+  "trainTimeYokohama": 119,
+  "fareYokohama": 1396,
+  "transfersYokohama": 1,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→東武東上線約1時間5分→武蔵嵐山駅→徒歩約20分→嵐山渓谷入口"
  },
  {
   "id": "kogashiyama",
@@ -43540,7 +44184,7 @@
   "coeffMin": 10,
   "coeffMax": 16,
   "daytrip": true,
-  "trainAccess": "新宿駅→宇都宮駅→関東バス約35分→古賀志山登山口",
+  "trainAccess": "新宿駅→JR東北本線約1時間30分→宇都宮駅→関東バス約35分→古賀志山登山口",
   "trailhead": "古賀志山登山口（森林公園）",
   "driveShinjuku": 130,
   "driveTimeShinjuku": 130,
@@ -43719,7 +44363,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 155,
   "fareOmiya": 3008,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR東北本線約1時間30分→宇都宮駅→関東バス約35分→古賀志山登山口",
+  "trainTimeYokohama": 159,
+  "fareYokohama": 3096,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR東北本線約1時間30分→宇都宮駅→関東バス約35分→古賀志山登山口"
  },
  {
   "id": "mitsutoge",
@@ -43732,7 +44381,7 @@
   "coeffMin": 12,
   "coeffMax": 18,
   "daytrip": true,
-  "trainAccess": "新宿駅→大月駅→河口湖駅→富士急バス約15分→三つ峠登山口バス停",
+  "trainAccess": "新宿駅→JR中央線約70分→大月駅→富士急行線約45分→三つ峠駅→富士急バス約15分→三つ峠登山口バス停",
   "trainLine": "富士急行線",
   "nearestStation": "河口湖駅",
   "trainTimeShinjuku": 130,
@@ -43982,9 +44631,14 @@
   "seasonNoGear": "3月〜11月",
   "fareShinjuku": 4510,
   "transfersShinjuku": 1,
-  "trainTimeOmiya": 173,
-  "fareOmiya": 3108,
-  "transfersOmiya": 2
+  "trainTimeOmiya": 160,
+  "fareOmiya": 5038,
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約70分→大月駅→富士急行線約45分→三つ峠駅→富士急バス約15分→三つ峠登山口バス停",
+  "trainTimeYokohama": 164,
+  "fareYokohama": 5126,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央線約70分→大月駅→富士急行線約45分→三つ峠駅→富士急バス約15分→三つ峠登山口バス停"
  },
  {
   "id": "kamakura_alps",
@@ -43997,7 +44651,7 @@
   "coeffMin": 4,
   "coeffMax": 8,
   "daytrip": true,
-  "trainAccess": "新宿駅→北鎌倉駅→徒歩約10分→天園ハイキングコース入口",
+  "trainAccess": "新宿駅→JR横須賀線約55分→北鎌倉駅→徒歩約10分→天園ハイキングコース入口",
   "trainLine": "JR横須賀線",
   "nearestStation": "北鎌倉駅",
   "trainTimeShinjuku": 65,
@@ -44174,7 +44828,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 95,
   "fareOmiya": 1562,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR横須賀線約55分→北鎌倉駅→徒歩約10分→天園ハイキングコース入口",
+  "trainTimeYokohama": 33,
+  "fareYokohama": 380,
+  "transfersYokohama": 0,
+  "trainAccessYokohama": "横浜駅→JR横須賀線(約23分)→北鎌倉駅→徒歩約10分→天園ハイキングコース入口"
  },
  {
   "id": "okusuyama",
@@ -44187,7 +44846,7 @@
   "coeffMin": 5,
   "coeffMax": 9,
   "daytrip": true,
-  "trainAccess": "新宿駅→逗子駅→バス約20分→阿部倉温泉バス停→徒歩約30分→大楠山登山口",
+  "trainAccess": "新宿駅→JR横須賀線約1時間5分→逗子駅→バス約20分→阿部倉温泉バス停→徒歩約30分→大楠山登山口",
   "trainLine": "JR横須賀線",
   "nearestStation": "逗子駅",
   "trainTimeShinjuku": 115,
@@ -44366,7 +45025,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 145,
   "fareOmiya": 2628,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR横須賀線約1時間5分→逗子駅→バス約20分→阿部倉温泉バス停→徒歩約30分→大楠山登山口",
+  "trainTimeYokohama": 83,
+  "fareYokohama": 760,
+  "transfersYokohama": 0,
+  "trainAccessYokohama": "横浜駅→JR横須賀線(約33分)約30分→逗子駅→バス約20分→大楠山登山口"
  },
  {
   "id": "kannokura",
@@ -44379,7 +45043,7 @@
   "coeffMin": 5,
   "coeffMax": 9,
   "daytrip": true,
-  "trainAccess": "新宿駅→小川町駅→バス→パトリアおがわ→徒歩約20分→官ノ倉山登山口",
+  "trainAccess": "新宿駅→東武東上線約1時間20分→小川町駅→バス→パトリアおがわ→徒歩約20分→官ノ倉山登山口",
   "trainLine": "東武東上線",
   "nearestStation": "小川町駅",
   "trainTimeShinjuku": 100,
@@ -44559,7 +45223,12 @@
   "transfersShinjuku": 1,
   "trainTimeOmiya": 130,
   "fareOmiya": 1478,
-  "transfersOmiya": 2
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→東武東上線約1時間20分→小川町駅→バス→パトリアおがわ→徒歩約20分→官ノ倉山登山口",
+  "trainTimeYokohama": 134,
+  "fareYokohama": 1566,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→東武東上線約1時間20分→小川町駅→バス→パトリアおがわ→徒歩約20分→官ノ倉山登山口"
  },
  {
   "id": "gozenyama",
@@ -44571,7 +45240,7 @@
   "coeffMin": 24,
   "coeffMax": 34,
   "daytrip": true,
-  "trainAccess": "新宿駅→奥多摩駅→西東京バス「奥04 奥多摩湖行」約15分→奥多摩湖バス停",
+  "trainAccess": "新宿駅→JR中央線・青梅線約1時間35分→奥多摩駅→西東京バス「奥04 奥多摩湖行」約15分→奥多摩湖バス停",
   "nearestStation": "奥多摩駅",
   "trainLine": "JR青梅線",
   "trainTimeShinjuku": 110,
@@ -44882,10 +45551,15 @@
   "busScheduleLinks": [
    "https://www.nisitokyobus.co.jp/rosen/noriba/okutama.html"
   ],
-  "fareShinjuku": 1221,
+  "fareShinjuku": 1571,
   "transfersShinjuku": 1,
   "trainTimeOmiya": 140,
-  "fareOmiya": 1749,
-  "transfersOmiya": 2
+  "fareOmiya": 2099,
+  "transfersOmiya": 2,
+  "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR青梅線約1時間35分→奥多摩駅→西東京バス「奥04 奥多摩湖行」約15分→奥多摩湖バス停",
+  "trainTimeYokohama": 118,
+  "fareYokohama": 1603,
+  "transfersYokohama": 2,
+  "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR青梅線約1時間9分→奥多摩駅→西東京バス「奥04 奥多摩湖行」約15分→奥多摩湖バス停"
  }
 ]

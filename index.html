@@ -777,7 +777,7 @@ function chipSort(active) {
 function App() {
   const [search, setSearch]               = useState(() => ssGet("ym_search", ""));
   const [sort, setSort]                   = useState(() => ssGet("ym_sort", "近い順（車）"));
-  const [area, setArea]                   = useState(() => ssGet("ym_area", "すべて"));
+  const [area, setArea]                   = useState(() => ssGet("ym_area", []));
   const [departure, setDeparture]         = useState(() => ssGet("ym_departure", "大船")); // "大船" | "新宿" | "横浜" | "大宮" | "立川"
 
   const getDriveTime = (m) => {
@@ -788,8 +788,16 @@ function App() {
     return m.driveTime;
   };
   // 電車アクセス(現状は新宿発のみ対応)。データが無い山はInfinity扱いでソート末尾・フィルタ対象外にする
-  const getTrainTime = (m) => (typeof m.trainTimeShinjuku === "number" ? m.trainTimeShinjuku : Infinity);
-  const getFare = (m) => (typeof m.fareShinjuku === "number" ? m.fareShinjuku : Infinity);
+  const getTrainTime = (m) => {
+    if (departure === "大宮") return (typeof m.trainTimeOmiya === "number" ? m.trainTimeOmiya : Infinity);
+    if (departure === "横浜") return (typeof m.trainTimeYokohama === "number" ? m.trainTimeYokohama : Infinity);
+    return (typeof m.trainTimeShinjuku === "number" ? m.trainTimeShinjuku : Infinity);
+  };
+  const getFare = (m) => {
+    if (departure === "大宮") return (typeof m.fareOmiya === "number" ? m.fareOmiya : Infinity);
+    if (departure === "横浜") return (typeof m.fareYokohama === "number" ? m.fareYokohama : Infinity);
+    return (typeof m.fareShinjuku === "number" ? m.fareShinjuku : Infinity);
+  };
   const [categoryFilter, setCategoryFilter] = useState(() => ssGet("ym_category", "すべて"));
   const [dayTripOnly, setDayTripOnly]       = useState(() => ssGet("ym_daytrip", false));
   const [trainOnly, setTrainOnly]           = useState(() => ssGet("ym_train", false));
@@ -800,7 +808,7 @@ function App() {
   const [cramponsFilter, setCramponsFilter] = useState(() => ssGet("ym_crampons", "すべて")); // "すべて"|"アイゼン不要"|"6本以内でOK"
   const [lineFilter, setLineFilter]         = useState(() => ssGet("ym_line", [])); // 複数選
   const [difficultyFilter, setDifficultyFilter] = useState(() => ssGet("ym_difficulty", [])); // []|["初級"]|["中級"]|["上級"] 複数選可
-  const [elevationFilter, setElevationFilter]   = useState(() => ssGet("ym_elevation", null)); // null|1000|1500|2000|2500|3000択
+  const [elevationFilter, setElevationFilter]   = useState(() => ssGet("ym_elevation", [])); // 複数選択可: [0,1000,1500,2000,2500,3000]の配列
   const [filterMonth, setFilterMonth]       = useState(() => ssGet("ym_month", new Date().getMonth() + 1)); // 1-12
   const [viewMode, setViewMode]             = useState(() => ssGet("ym_viewmode", "list"));
   const [filterOpen, setFilterOpen] = useState(false);
@@ -950,19 +958,19 @@ function App() {
 
   const currentMonth = new Date().getMonth() + 1;
   const activeMonth = typeof filterMonth === "number" ? filterMonth : currentMonth;
-  const activeFilterCount = [dayTripOnly,trainOnly,categoryFilter!=="すべて",area!=="すべて",!!driveTimeFilter,!!trainTimeFilter,!!fareFilter,courseFilter.length>0,cramponsFilter!=="すべて",lineFilter.length>0,difficultyFilter.length>0,!!elevationFilter].filter(Boolean).length;
+  const activeFilterCount = [dayTripOnly,trainOnly,categoryFilter!=="すべて",area.length>0,!!driveTimeFilter,!!trainTimeFilter,!!fareFilter,courseFilter.length>0,cramponsFilter!=="すべて",lineFilter.length>0,difficultyFilter.length>0,elevationFilter.length>0].filter(Boolean).length;
   // 電車のソート・絞り込みを使っている間は、カード表示も電車をメインにする
   const isTrainMode = sort.indexOf("電車・バス") >= 0 || !!trainTimeFilter || !!fareFilter;
   // 電車モードに入ったら出発地を自動的に新宿へ（電車データは現状新宿発のみ対応のため）
   useEffect(() => {
-    if (isTrainMode && departure !== "新宿") setDeparture("新宿");
+    if (isTrainMode && departure !== "新宿" && departure !== "大宮" && departure !== "横浜") setDeparture("新宿");
   }, [isTrainMode]);
 
   const filtered = useMemo(() => {
     let list = mountains.filter(m => {
       var matchVibe = !vibeFilter || (m.vibes || []).indexOf(vibeFilter) > -1;
       const matchSearch = !search || m.name.includes(search) || m.kana.includes(search);
-      const matchArea = area === "すべて" || m.area.includes(area);
+      const matchArea = area.length === 0 || area.some(a => m.area.includes(a));
       const matchCat = categoryFilter === "すべて" || m.category === categoryFilter;
       const matchDayTrip = !dayTripOnly || isDayTrip(m);
       const matchTrainOnly = !trainOnly || !!m.trainAccess;
@@ -984,13 +992,13 @@ function App() {
       const matchDifficulty = difficultyFilter.length === 0 || difficultyFilter.some(function(d){
         return DIFF_MAP[d] && DIFF_MAP[d].indexOf(m.difficulty) >= 0;
       });
-      // 標高フィルター（elevationFilter=下限値、それ以上500m幅、3000〜は上限なし）
+      // 標高フィルター（elevationFilter=選択された下限値の配列、それぞれ500m幅、3000〜は上限なし）
       var elev = m.elevation || 0;
-      var matchElevation = elevationFilter === null || elevationFilter === undefined || (
-        elevationFilter === 0    ? elev < 1000 :
-        elevationFilter === 3000 ? elev >= 3000 :
-        elev >= elevationFilter && elev < elevationFilter + 500
-      );
+      var matchElevation = elevationFilter.length === 0 || elevationFilter.some(function(ev){
+        return ev === 0 ? elev < 1000 :
+               ev === 3000 ? elev >= 3000 :
+               (elev >= ev && elev < ev + 500);
+      });
       return matchVibe && matchSearch && matchArea && matchCat && matchDayTrip && matchTrainOnly && matchDriveTime && matchTrainTime && matchFare && matchCourse && matchCrampons && matchLine && matchDifficulty && matchElevation;
     });
     if (sort === "おすすめ順") list = list.slice().sort(function(a, b) {
@@ -1080,20 +1088,26 @@ function App() {
             </div>
             <div style={{flex:1,overflowY:"auto"}}>
               {[
-                {label:"🏠 ホーム",href:"/"},
-                {label:"🗻 山選び診断",href:"/find/"},
-                {label:"🧭 登山タイプ診断",href:"/recommend/"},
-                {label:"🎒 登山ギアを探す",href:"/gear/"},
-                {label:"📖 記事一覧",href:"/articles/"},
-                {label:"👤 マイページ",href:"/mypage/"},
-                {label:"ℹ️ 運営者について",href:"/about/"},
-                {label:"📜 利用規約",href:"/terms/"},
-                {label:"🔒 プライバシーポリシー",href:"/privacy/"},
+                {label:"ホーム",href:"/",icon:<path d="M4 11 L12 4 L20 11 V20 H4 Z M9 20 V13 H15 V20"/>},
+                {label:"山選び診断",href:"/find/",icon:<path d="M3 19 L9 9 L13 15 L16 11 L21 19 Z"/>},
+                {label:"登山タイプ診断",href:"/recommend/",icon:<g><circle cx="12" cy="12" r="9"/><polygon points="12,6 14,12 12,14 10,12" fill="currentColor" stroke="none"/></g>},
+                {label:"登山ギアを探す",href:"/gear/",icon:<path d="M7 8 V6 a2 2 0 0 1 2-2 h6 a2 2 0 0 1 2 2 V8 M5 8 H19 L18 20 H6 Z"/>},
+                {label:"記事一覧",href:"/articles/",icon:<g><rect x="4" y="4" width="16" height="16" rx="1.5"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></g>},
+                {label:"マイページ",href:"/mypage/",icon:<g><circle cx="12" cy="8" r="3.5"/><path d="M5 20 a7 7 0 0 1 14 0"/></g>},
+                {label:"運営者について",href:"/about/",icon:<g><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.5" r="0.6" fill="currentColor"/></g>},
+                {label:"利用規約",href:"/terms/",icon:<g><path d="M7 3 H15 L19 7 V21 H7 Z"/><path d="M15 3 V7 H19"/></g>},
+                {label:"プライバシーポリシー",href:"/privacy/",icon:<g><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11 V8 a4 4 0 0 1 8 0 v3"/></g>},
               ].map(item => (
-                <a key={item.label} href={item.href} style={{display:"flex",alignItems:"center",padding:"15px 20px",fontSize:"14px",color:"#3a3530",textDecoration:"none",borderBottom:"1px solid #f0ede5",fontWeight:"500"}}>{item.label}</a>
+                <a key={item.label} href={item.href} style={{display:"flex",alignItems:"center",gap:"11px",padding:"15px 20px",fontSize:"14px",color:"#3a3530",textDecoration:"none",borderBottom:"1px solid #f0ede5",fontWeight:"500"}}>
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7a7068" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>{item.icon}</svg>
+                  {item.label}
+                </a>
               ))}
-              <a href="https://forms.gle/qsXvFTcj6H1TM7ra7" target="_blank" rel="noopener" style={{display:"flex",alignItems:"center",padding:"15px 20px",fontSize:"14px",color:"#3a3530",textDecoration:"none",borderBottom:"1px solid #f0ede5",fontWeight:"500"}}>💬 改善提案・情報修正</a>
-              <a href="https://x.com/Yamatch_tozan" target="_blank" rel="noopener" style={{display:"flex",alignItems:"center",padding:"15px 20px",fontSize:"14px",color:"#3a3530",textDecoration:"none",borderBottom:"1px solid #f0ede5",fontWeight:"500"}}>𝕏 最新情報をフォロー</a>
+              <a href="https://forms.gle/qsXvFTcj6H1TM7ra7" target="_blank" rel="noopener" style={{display:"flex",alignItems:"center",gap:"11px",padding:"15px 20px",fontSize:"14px",color:"#3a3530",textDecoration:"none",borderBottom:"1px solid #f0ede5",fontWeight:"500"}}>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7a7068" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><path d="M4 5 H20 V16 H9 L4 20 Z"/></svg>
+                改善提案・情報修正
+              </a>
+              <a href="https://x.com/Yamatch_tozan" target="_blank" rel="noopener" style={{display:"flex",alignItems:"center",gap:"11px",padding:"15px 20px",fontSize:"14px",color:"#3a3530",textDecoration:"none",borderBottom:"1px solid #f0ede5",fontWeight:"500"}}>𝕏 最新情報をフォロー</a>
             </div>
           </div>
         </div>
@@ -1163,7 +1177,7 @@ function App() {
                 )}
                 <span style={{fontSize:"11px",color:"white",fontWeight:activeFilterCount>0?"800":"600"}}>{activeFilterCount>0 ? "絞り込み中（"+activeFilterCount+"）" : "条件で検索"}</span>
               </button>
-              <button onClick={() => { setSearch(""); setSort("近い順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter(null); }}
+              <button onClick={() => { setSearch(""); setSort("近い順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea([]); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter([]); }}
   onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
   onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform="scale(1)";},150)}
   style={{flex:1,background:"transparent",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"1px solid rgba(255,255,255,0.85)",cursor:"pointer",transition:"transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
@@ -1176,7 +1190,7 @@ function App() {
         {/* ③出発地タブ */}
         <div style={{position:"relative",zIndex:2,display:"flex",gap:"4px",padding:"8px 16px 8px",maxWidth:"768px",margin:"0 auto"}}>
           {["大船","新宿","横浜","大宮","立川"].map(d => {
-            const disabled = isTrainMode && d !== "新宿";
+            const disabled = isTrainMode && d !== "新宿" && d !== "大宮" && d !== "横浜";
             return (
             <button key={d} onClick={() => { if (!disabled) setDeparture(d); }} disabled={disabled} style={{flex:1,textAlign:"center",fontSize:departure===d?"13.5px":"12px",padding:"7px 0",borderRadius:"5px",fontWeight:"700",cursor:disabled?"not-allowed":"pointer",background:"transparent",
               border:departure===d?"2px solid white":"1px solid rgba(255,255,255,0.4)",
@@ -1197,17 +1211,20 @@ function App() {
 
         {/* 診断バナー */}
         <div style={{display:"flex",gap:"7px",marginBottom:"7px"}}>
-          <a href="/find/" style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"5px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
+          <a href="/find/" style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
             onTouchStart={e => { e.currentTarget.style.transform="scale(0.97)"; }}
             onTouchEnd={e => { setTimeout(()=>{ if(e.currentTarget) e.currentTarget.style.transform="scale(1)"; },180); }}>
-            <span style={{fontSize:"20px",flexShrink:0}}>🗻</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3a5030" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
+              <path d="M3 19 L9 9 L13 15 L16 11 L21 19 Z"/>
+              <path d="M9 9 L11 12" stroke="#3a5030"/>
+            </svg>
             <div style={{flex:1,minWidth:0}}>
               <div style={{fontSize:"13px",fontWeight:"800",color:"#2a3020",lineHeight:1.25}}>山選び診断</div>
               <div style={{fontSize:"9.5px",color:"#5a6848",marginTop:"2px",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>5問・1分でわかる</div>
             </div>
             <span style={{fontSize:"16px",color:"#3a5030",fontWeight:"300"}}>›</span>
           </a>
-          <a href="/recommend/" style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"5px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
+          <a href="/recommend/" style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
             onTouchStart={e => { e.currentTarget.style.transform="scale(0.97)"; }}
             onTouchEnd={e => { setTimeout(()=>{ if(e.currentTarget) e.currentTarget.style.transform="scale(1)"; },180); }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3a5030" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
@@ -1257,8 +1274,8 @@ function App() {
                 {/* 1行目: 日帰り・電車 + 並び替え */}
                 <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
                   <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content" }}>
-                    <button onClick={() => setDayTripOnly(!dayTripOnly)} style={chip(dayTripOnly)}>🌅 日帰り</button>
-                    <button onClick={() => setTrainOnly(!trainOnly)} style={chip(trainOnly)}><svg width="12" height="12" viewBox="0 0 24 24" style={{verticalAlign:"-2px",marginRight:"2px"}}><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg> 電車OK</button>
+                    <button onClick={() => setDayTripOnly(!dayTripOnly)} style={chip(dayTripOnly)}><svg width="12" height="12" viewBox="0 0 24 24" style={{verticalAlign:"-2px",marginRight:"2px"}} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>日帰り</button>
+                    <button onClick={() => setTrainOnly(!trainOnly)} style={chip(trainOnly)}><svg width="14" height="14" viewBox="0 0 24 24" style={{verticalAlign:"-3px",marginRight:"3px"}}><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg> 電車OK</button>
                   </div>
                 </div>
 
@@ -1275,7 +1292,7 @@ function App() {
                 {/* 3行目: 移動時間(車) */}
                 <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
                   <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content", alignItems: "center" }}>
-                    <span style={{ fontSize: "11px", color: "#a09888", flexShrink: 0 }}>🚗</span>
+                    <span style={{ fontSize: "13px", color: "#4a443c", fontWeight:"700", flexShrink: 0, display:"inline-flex", alignItems:"center", gap:"4px" }}><svg width="17" height="17" viewBox="0 0 24 24"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="7" cy="18" r="2" fill="currentColor"/><circle cx="17" cy="18" r="2" fill="currentColor"/></svg>車</span>
                     {DRIVE_OPTIONS.map(o => (
                       <button key={o.val} onClick={() => setDriveTimeFilter(driveTimeFilter === o.val ? null : o.val)} style={chip(driveTimeFilter === o.val)}>{o.label}</button>
                     ))}
@@ -1285,7 +1302,7 @@ function App() {
                 {/* 3.5行目: 移動時間(電車・新宿発のみ) */}
                 <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
                   <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content", alignItems: "center" }}>
-                    <span style={{ fontSize: "11px", color: "#a09888", flexShrink: 0, display:"inline-flex", alignItems:"center", gap:"3px" }}><svg width="12" height="12" viewBox="0 0 24 24"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>新宿から</span>
+                    <span style={{ fontSize: "13px", color: "#4a443c", fontWeight:"700", flexShrink: 0, display:"inline-flex", alignItems:"center", gap:"4px" }}><svg width="17" height="17" viewBox="0 0 24 24"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>{(departure==="新宿"||departure==="大宮"||departure==="横浜")?departure:"新宿"}から</span>
                     {TRAIN_OPTIONS.map(o => (
                       <button key={o.val} onClick={() => setTrainTimeFilter(trainTimeFilter === o.val ? null : o.val)} style={chip(trainTimeFilter === o.val)}>{o.label}</button>
                     ))}
@@ -1295,7 +1312,7 @@ function App() {
                 {/* 3.6行目: 運賃(新宿発のみ) */}
                 <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
                   <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content", alignItems: "center" }}>
-                    <span style={{ fontSize: "11px", color: "#a09888", flexShrink: 0 }}>💴運賃</span>
+                    <span style={{ fontSize: "13px", color: "#4a443c", fontWeight:"700", flexShrink: 0, display:"inline-flex", alignItems:"center", gap:"4px" }}><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M7 5 L12 13 L17 5 M12 13 L12 20 M8.5 15 L15.5 15 M8.5 18 L15.5 18"/></svg>運賃</span>
                     {FARE_OPTIONS.map(o => (
                       <button key={o.val} onClick={() => setFareFilter(fareFilter === o.val ? null : o.val)} style={chip(fareFilter === o.val)}>{o.label}</button>
                     ))}
@@ -1305,7 +1322,7 @@ function App() {
                 {/* 4行目: 体力度（コース定数） */}
                 <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
                   <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content", alignItems: "center" }}>
-                    <span style={{ fontSize: "11px", color: "#a09888", flexShrink: 0 }}>💪</span>
+                    <span style={{ fontSize: "13px", color: "#4a443c", fontWeight:"700", flexShrink: 0, display:"inline-flex", alignItems:"center", gap:"4px" }}><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M4 18 L4 12 M9 18 L9 8 M14 18 L14 5 M19 18 L19 10"/></svg>体力度</span>
                     {COURSE_OPTIONS.map(o => {
                       const active = courseFilter.includes(o);
                       return (
@@ -1317,7 +1334,7 @@ function App() {
 
                 {/* 5行目: アイゼン */}
                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", alignItems: "center" }}>
-                  <span style={{ fontSize: "11px", color: "#a09888" }}>🥾</span>
+                  <span style={{ fontSize: "13px", color: "#4a443c", fontWeight:"700", display:"inline-flex", alignItems:"center", gap:"4px" }}><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M5 16 Q5 9 10 9 L15 9 Q19 9 19 13 L19 16 Z"/><path d="M4 19 L6 16 M8 19 L9.5 16 M12 19 L13.5 16 M16 19 L17.5 16"/></svg>アイゼン</span>
                   {CRAMPONS_OPTIONS.map(o => (
                     <button key={o} onClick={() => setCramponsFilter(cramponsFilter === o ? "すべて" : o)} style={chip(cramponsFilter === o)}>{o}</button>
                   ))}
@@ -1325,7 +1342,7 @@ function App() {
 
                 {/* 難易度 */}
                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", alignItems: "center" }}>
-                  <span style={{ fontSize: "11px", color: "#a09888" }}>⛰️</span>
+                  <span style={{ fontSize: "13px", color: "#4a443c", fontWeight:"700", display:"inline-flex", alignItems:"center", gap:"4px" }}><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 19 L9 9 L13 15 L16 11 L21 19 Z"/></svg>難易度</span>
                   {["初級","中級","上級"].map(function(d){
                     var active = difficultyFilter.includes(d);
                     return (
@@ -1345,7 +1362,7 @@ function App() {
                 {/* 標高 */}
                 <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}>
                   <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content", alignItems: "center" }}>
-                    <span style={{ fontSize: "11px", color: "#a09888", flexShrink: 0 }}>↕️</span>
+                    <span style={{ fontSize: "13px", color: "#4a443c", fontWeight:"700", flexShrink: 0, display:"inline-flex", alignItems:"center", gap:"4px" }}><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3 L12 21 M8 7 L12 3 L16 7 M8 17 L12 21 L16 17"/></svg>標高</span>
                     {[
                       { label: "〜1000m",    val: 0    },
                       { label: "1000〜1500m", val: 1000 },
@@ -1356,11 +1373,11 @@ function App() {
                     ].map(o => (
                       <button key={o.val}
                         onClick={() => {
-                          var next = elevationFilter === o.val ? null : o.val;
+                          var next = elevationFilter.includes(o.val) ? elevationFilter.filter(function(x){ return x !== o.val; }) : elevationFilter.concat([o.val]);
                           setElevationFilter(next);
                           ssSet("ym_elevation", next);
                         }}
-                        style={chip(elevationFilter===o.val)}>{o.label}</button>
+                        style={chip(elevationFilter.includes(o.val))}>{o.label}</button>
                     ))}
                   </div>
                 </div>
@@ -1370,12 +1387,12 @@ function App() {
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px", minWidth: "max-content" }}>
                     <div style={{ display: "flex", gap: "6px" }}>
                       {LINES_ROW1.map(l => (
-                        <button key={l} onClick={() => { var active = lineFilter.includes(l); setLineFilter(active ? lineFilter.filter(function(x){ return x !== l; }) : lineFilter.concat([l])); }} style={chip(lineFilter.includes(l))}><svg width="12" height="12" viewBox="0 0 24 24" style={{verticalAlign:"-2px",marginRight:"2px"}}><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg> {l}</button>
+                        <button key={l} onClick={() => { var active = lineFilter.includes(l); setLineFilter(active ? lineFilter.filter(function(x){ return x !== l; }) : lineFilter.concat([l])); }} style={chip(lineFilter.includes(l))}><svg width="14" height="14" viewBox="0 0 24 24" style={{verticalAlign:"-3px",marginRight:"3px"}}><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg> {l}</button>
                       ))}
                     </div>
                     <div style={{ display: "flex", gap: "6px" }}>
                       {LINES_ROW2.map(l => (
-                        <button key={l} onClick={() => { var active = lineFilter.includes(l); setLineFilter(active ? lineFilter.filter(function(x){ return x !== l; }) : lineFilter.concat([l])); }} style={chip(lineFilter.includes(l))}><svg width="12" height="12" viewBox="0 0 24 24" style={{verticalAlign:"-2px",marginRight:"2px"}}><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg> {l}</button>
+                        <button key={l} onClick={() => { var active = lineFilter.includes(l); setLineFilter(active ? lineFilter.filter(function(x){ return x !== l; }) : lineFilter.concat([l])); }} style={chip(lineFilter.includes(l))}><svg width="14" height="14" viewBox="0 0 24 24" style={{verticalAlign:"-3px",marginRight:"3px"}}><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg> {l}</button>
                       ))}
                     </div>
                   </div>
@@ -1386,12 +1403,12 @@ function App() {
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px", minWidth: "max-content" }}>
                     <div style={{ display: "flex", gap: "6px" }}>
                       {AREAS_ROW1.map(a => (
-                        <button key={a} onClick={() => setArea(area === a ? "すべて" : a)} style={chip(area === a)}>{a}</button>
+                        <button key={a} onClick={() => setArea(area.includes(a) ? area.filter(function(x){ return x !== a; }) : area.concat([a]))} style={chip(area.includes(a))}>{a}</button>
                       ))}
                     </div>
                     <div style={{ display: "flex", gap: "6px" }}>
                       {AREAS_ROW2.map(a => (
-                        <button key={a} onClick={() => setArea(area === a ? "すべて" : a)} style={chip(area === a)}>{a}</button>
+                        <button key={a} onClick={() => setArea(area.includes(a) ? area.filter(function(x){ return x !== a; }) : area.concat([a]))} style={chip(area.includes(a))}>{a}</button>
                       ))}
                     </div>
                   </div>
@@ -1401,7 +1418,7 @@ function App() {
               </div>
               {/* 固定フッター：適用ボタン */}
               <div style={{position:"sticky",bottom:0,background:"white",borderTop:"1px solid #e8e4dc",padding:"12px 16px",display:"flex",gap:"8px"}}>
-                <button onClick={() => { setSearch(""); setSort("近い順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea("すべて"); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter(null); }} style={{flex:1,padding:"10px",borderRadius:"5px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
+                <button onClick={() => { setSearch(""); setSort("近い順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea([]); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter([]); }} style={{flex:1,padding:"10px",borderRadius:"5px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
                 <button onClick={() => setFilterOpen(false)} style={{flex:2,padding:"10px",borderRadius:"5px",border:"none",background:"#4e6535",fontSize:"13px",color:"white",fontWeight:"700",cursor:"pointer"}}>この条件で絞り込む（{filtered.length}件）</button>
               </div>
             </div>
@@ -1445,7 +1462,7 @@ function App() {
               <div style={{marginBottom:"10px"}}>
                 <div style={{marginBottom:"6px",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
                   <div style={{fontSize:"10px",fontWeight:"700",color:"#8a7a6a",letterSpacing:"0.06em",display:"flex",alignItems:"center",gap:"5px"}}>
-                    <span>👣</span>最近見た山
+                    <span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="9" cy="7" rx="2.2" ry="3"/><ellipse cx="16" cy="12" rx="2.2" ry="3"/><ellipse cx="9" cy="17" rx="2.2" ry="3"/></svg></span>最近見た山
                   </div>
                   <div style={{display:"flex",gap:"4px"}}>
                     <button onClick={clearHistory}
@@ -1547,7 +1564,7 @@ function App() {
                   const diffBg    = isHard ? "#f0e0e0" : isMid ? "#f0ece0" : "#e8f0e4";
                   const diffColor = isHard ? "#7a3838" : isMid ? "#7a6030" : "#4a6840";
                   const driveMin = getDriveTime(m);
-                  const barBasisMin = isTrainMode ? (typeof m.trainTimeShinjuku === "number" ? m.trainTimeShinjuku : 0) : driveMin;
+                  const barBasisMin = isTrainMode ? (getTrainTime(m) !== Infinity ? getTrainTime(m) : 0) : driveMin;
                   const barBasisMax = isTrainMode ? 300 : 360;
                   const barPct = Math.min(Math.round(barBasisMin / barBasisMax * 100), 100);
                   const barColor = barBasisMin >= (isTrainMode ? 200 : 240) ? "linear-gradient(90deg,#c05030,#e07050)" : barBasisMin >= (isTrainMode ? 100 : 120) ? "linear-gradient(90deg,#7a8830,#9aaa50)" : "linear-gradient(90deg,#4a6038,#607848)";
@@ -1609,7 +1626,11 @@ function App() {
                         onTouchEnd={e => e.stopPropagation()}
                         title="登った記録"
                       >
-                        <span style={{fontSize:"12px"}}>{climbedMap[m.id] ? "🚩" : "🏳️"}</span>
+                        <span style={{fontSize:"12px"}}>{climbedMap[m.id] ? (
+                          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M6 3v18M6 4h12l-3 4 3 4H6" fill="#c05030" stroke="#c05030" strokeWidth="1" strokeLinejoin="round"/></svg>
+                        ) : (
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"><path d="M6 3v18M6 4h12l-3 4 3 4H6"/></svg>
+                        )}</span>
                       </button>
                       {/* 登頂済みバッジ（削除：右上の🚩アイコンのみで表示）*/}
                       {/* 背景SVG山シルエット */}
@@ -1654,10 +1675,10 @@ function App() {
                           </span>
                         )}
                         {isTrainMode && (
-                          typeof m.trainTimeShinjuku === "number" ? (
-                            <span style={{display:"inline-flex",alignItems:"center",gap:"4px",whiteSpace:"nowrap"}} title="新宿駅からの電車・バス所要時間">
+                          getTrainTime(m) !== Infinity ? (
+                            <span style={{display:"inline-flex",alignItems:"center",gap:"4px",whiteSpace:"nowrap"}} title={"" + departure + "駅からの電車・バス所要時間"}>
                               <svg width="15" height="15" viewBox="0 0 24 24" style={{flexShrink:0}}><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>
-                              <span style={{fontSize:"15px",fontWeight:"700"}}>{formatDriveTime(m.trainTimeShinjuku)}</span>
+                              <span style={{fontSize:"15px",fontWeight:"700"}}>{formatDriveTime(getTrainTime(m))}</span>
                             </span>
                           ) : (
                             <span style={{fontSize:"11px",color:"#a09888"}}>電車アクセス情報なし</span>
@@ -1665,9 +1686,9 @@ function App() {
                         )}
                       </div>
                       {/* 運賃(電車モード時のみ、別行で表示して見切れを防ぐ) */}
-                      {isTrainMode && typeof m.fareShinjuku === "number" && (
+                      {isTrainMode && getFare(m) !== Infinity && (
                         <div style={{fontSize:"11px",color:"#8a8078",fontWeight:"600",position:"relative",zIndex:1,marginBottom:"2px",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>
-                          片道約¥{m.fareShinjuku.toLocaleString()}
+                          片道約¥{getFare(m).toLocaleString()}
                         </div>
                       )}
                       {/* アクセス時間バー */}
@@ -1860,7 +1881,7 @@ fetch('/data/mountains.json')
   var STEPS_ANDROID = [
     {
       num: '1', title: 'メニュー（︙）をタップ',
-      mock: '<div class="a2hs-mock-bar">🔒 &nbsp;yamatch (このサイト)</div>' +
+      mock: '<div class="a2hs-mock-bar"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="5" y="11" width="14" height="9" rx="1.5" fill="currentColor"/><path d="M8 11 V8 a4 4 0 0 1 8 0 v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>yamatch (このサイト)</div>' +
             '<div class="a2hs-mock-toolbar">' +
               '<div class="a2hs-mock-icon">◀</div>' +
               '<div class="a2hs-mock-icon">▶</div>' +
@@ -1871,15 +1892,15 @@ fetch('/data/mountains.json')
     {
       num: '2', title: '「アプリをインストール」をタップ',
       mock: '<div class="a2hs-mock-list">' +
-              '<div class="a2hs-mock-row">☆ &nbsp;ブックマークに追加</div>' +
-              '<div class="a2hs-mock-row hi">📲 &nbsp;アプリをインストール</div>' +
+              '<div class="a2hs-mock-row"><svg width="13" height="13" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 3 H18 V21 L12 17 L6 21 Z"/></svg>ブックマークに追加</div>' +
+              '<div class="a2hs-mock-row hi"><svg width="13" height="13" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="10" y1="19" x2="14" y2="19"/><path d="M12 9 L12 14 M9 12 L12 15 L15 12" stroke-width="1.6"/></svg>アプリをインストール</div>' +
             '</div>',
       desc: 'メニューの中から「アプリをインストール」または「ホーム画面に追加」を選びます。'
     },
     {
       num: '3', title: '「インストール」をタップ',
       mock: '<div class="a2hs-mock-appcard">' +
-              '<div class="a2hs-mock-appicon">⛰️</div>' +
+              '<div class="a2hs-mock-appicon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19 L9 9 L13 15 L16 11 L21 19 Z"/></svg></div>' +
               '<div><div class="a2hs-mock-appname">Yamatch</div><div class="a2hs-mock-appurl">tozan-navi.com</div></div>' +
               '<div class="a2hs-mock-addbtn">追加</div>' +
             '</div>',
@@ -1894,7 +1915,7 @@ fetch('/data/mountains.json')
     var banner = document.createElement('div');
     banner.className = 'a2hs-banner';
     banner.innerHTML =
-      '<span class="a2hs-banner-icon">📲</span>' +
+      '<span class="a2hs-banner-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3a5030" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="10" y1="19" x2="14" y2="19"/><path d="M12 8 L12 13 M9 11 L12 14 L15 11" stroke-width="1.6"/></svg></span>' +
       '<div class="a2hs-banner-text">' +
         '<div class="a2hs-banner-title">Yamatchをアプリのように使う</div>' +
         '<div class="a2hs-banner-sub">ホーム画面に追加でサクサク起動</div>' +
