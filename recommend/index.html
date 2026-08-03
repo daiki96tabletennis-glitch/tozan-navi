@@ -2076,6 +2076,7 @@ function _doShowResult(){
     document.getElementById('sticky-cta').classList.remove('visible');
   };
   show('result');
+  if (typeof gtag === "function") gtag('event', 'diagnosis_complete', { diagnosis_type: 'recommend', result_type: typeCode });
   renderRadar();
   try {
     localStorage.setItem('ym_type_result', JSON.stringify({
