@@ -807,12 +807,12 @@ function App() {
     const seasonalOnly = typeof m.trainAccess === "string" && /季節|夏季|運行期間|季節運行/.test(m.trainAccess) && typeof m.trainAccess === "string" && !/直行/.test(m.trainAccess);
     const hasMycarRestriction = !!m.warnBanner;
     if (hasMycarRestriction || t > 240 || transfers >= 3) {
-      return { key: "plan", label: "要計画", icon: "⚠️", bg: "#f5ece0", color: "#8a5a20" };
+      return { key: "plan", label: "要計画", bg: "#f5ece0", color: "#8a5a20" };
     }
     if (t <= 150 && transfers <= 1 && !seasonalOnly) {
-      return { key: "easy", label: "良好", icon: "🟢", bg: "#e4f0e4", color: "#2a6828" };
+      return { key: "easy", label: "良好", bg: "#e4f0e4", color: "#2a6828" };
     }
-    return { key: "normal", label: "ふつう", icon: "🟡", bg: "#f5f0e0", color: "#8a7020" };
+    return { key: "normal", label: "ふつう", bg: "#f5f0e0", color: "#8a7020" };
   };
   const [categoryFilter, setCategoryFilter] = useState(() => ssGet("ym_category", "すべて"));
   const [dayTripOnly, setDayTripOnly]       = useState(() => ssGet("ym_daytrip", false));
@@ -1196,7 +1196,7 @@ function App() {
                 )}
                 <span style={{fontSize:"11px",color:"white",fontWeight:activeFilterCount>0?"800":"600"}}>{activeFilterCount>0 ? "絞り込み中（"+activeFilterCount+"）" : "条件で検索"}</span>
               </button>
-              <button onClick={() => { setSearch(""); setSort("所要時間順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea([]); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter([]); }}
+              <button onClick={() => { setSearch(""); setSort("所要時間順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea([]); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter([]); setAccessTierFilter(null); }}
   onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
   onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform="scale(1)";},150)}
   style={{flex:1,background:"transparent",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"1px solid rgba(255,255,255,0.85)",cursor:"pointer",transition:"transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
@@ -1343,11 +1343,18 @@ function App() {
                   <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap", minWidth: "max-content", alignItems: "center" }}>
                     <span style={{ fontSize: "13px", color: "#4a443c", fontWeight:"700", flexShrink: 0 }}>アクセス難易度</span>
                     {[
-                      { val: "easy", label: "🟢 良好" },
-                      { val: "normal", label: "🟡 ふつう" },
-                      { val: "plan", label: "⚠️ 要計画" },
+                      { val: "easy", label: "良好", color: "#2a6828", shape: "circle" },
+                      { val: "normal", label: "ふつう", color: "#8a7020", shape: "square" },
+                      { val: "plan", label: "要計画", color: "#8a5a20", shape: "triangle" },
                     ].map(o => (
-                      <button key={o.val} onClick={() => setAccessTierFilter(accessTierFilter === o.val ? null : o.val)} style={chip(accessTierFilter === o.val)}>{o.label}</button>
+                      <button key={o.val} onClick={() => setAccessTierFilter(accessTierFilter === o.val ? null : o.val)} style={{...chip(accessTierFilter === o.val), display: "inline-flex", alignItems: "center", gap: "4px"}}>
+                        <svg width="8" height="8" viewBox="0 0 8 8" style={{ flexShrink: 0 }}>
+                          {o.shape === "circle" && <circle cx="4" cy="4" r="4" fill={accessTierFilter === o.val ? "white" : o.color} />}
+                          {o.shape === "square" && <rect x="0.5" y="0.5" width="7" height="7" rx="1.5" fill={accessTierFilter === o.val ? "white" : o.color} />}
+                          {o.shape === "triangle" && <polygon points="4,0 8,7.5 0,7.5" fill={accessTierFilter === o.val ? "white" : o.color} />}
+                        </svg>
+                        {o.label}
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -1460,7 +1467,7 @@ function App() {
               </div>
               {/* 固定フッター：適用ボタン */}
               <div style={{position:"sticky",bottom:0,background:"white",borderTop:"1px solid #e8e4dc",padding:"12px 16px",display:"flex",gap:"8px"}}>
-                <button onClick={() => { setSearch(""); setSort("所要時間順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea([]); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter([]); }} style={{flex:1,padding:"10px",borderRadius:"5px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
+                <button onClick={() => { setSearch(""); setSort("所要時間順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea([]); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter([]); setAccessTierFilter(null); }} style={{flex:1,padding:"10px",borderRadius:"5px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
                 <button onClick={() => setFilterOpen(false)} style={{flex:2,padding:"10px",borderRadius:"5px",border:"none",background:"#4e6535",fontSize:"13px",color:"white",fontWeight:"700",cursor:"pointer"}}>この条件で絞り込む（{filtered.length}件）</button>
               </div>
             </div>
@@ -1767,15 +1774,20 @@ function App() {
                             )}
                           </span>
                         )}
-                        <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "600", background: diffBg, color: diffColor }}>
+                        <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "8px", fontWeight: "600", background: diffBg, color: diffColor }}>
                           {diffLabel}
                         </span>
-                        <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "500", background: cramponBg, color: cramponColor }}>
+                        <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "8px", fontWeight: "500", background: cramponBg, color: cramponColor }}>
                           {cramponLabel}
                         </span>
                         {isTrainMode && (function(){ var tier = getAccessTier(m); return tier ? (
-                          <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "20px", fontWeight: "600", background: tier.bg, color: tier.color }}>
-                            {tier.icon} アクセス{tier.label}
+                          <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "8px", fontWeight: "600", background: tier.bg, color: tier.color, display: "inline-flex", alignItems: "center", gap: "3px" }}>
+                            <svg width="8" height="8" viewBox="0 0 8 8" style={{ flexShrink: 0 }}>
+                              {tier.key === "easy" && <circle cx="4" cy="4" r="4" fill={tier.color} />}
+                              {tier.key === "normal" && <rect x="0.5" y="0.5" width="7" height="7" rx="1.5" fill={tier.color} />}
+                              {tier.key === "plan" && <polygon points="4,0 8,7.5 0,7.5" fill={tier.color} />}
+                            </svg>
+                            アクセス{tier.label}
                           </span>
                         ) : null; })()}
                       </div>

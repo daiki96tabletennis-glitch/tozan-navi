@@ -329,7 +329,7 @@
     "trainTimeYokohama": 73,
     "fareYokohama": 898,
     "transfersYokohama": 2,
-    "trainAccessYokohama": "横浜駅→小田急・相鉄直通(約58分)→渋沢駅→神奈川中央交通バス約15分→大倉"
+    "trainAccessYokohama": "横浜駅→小田急・相鉄直通(約58分)→渋沢駅→神奈川中央交通バス約15分→大倉→徒歩で塔ノ岳経由縦走（小田急小田原線）"
   },
   {
     "id": "fuji",
@@ -1258,7 +1258,7 @@
     "fareYokohama": 1742,
     "transfersYokohama": 1,
     "_fareEstimatedYokohama": true,
-    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約40分)→奥多摩駅"
+    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約40分)→奥多摩駅→バス約15分→鴨沢バス停"
   },
   {
     "id": "amagi",
@@ -2419,11 +2419,11 @@
     "trainTimeOmiya": 115,
     "fareOmiya": 4088,
     "transfersOmiya": 1,
-    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急かいじ(約85分)→塩山駅",
+    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急かいじ(約85分)→塩山駅→バス・タクシーで毛木平方面へ",
     "trainTimeYokohama": 119,
     "fareYokohama": 4176,
     "transfersYokohama": 1,
-    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急かいじ(約85分)→塩山駅"
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急かいじ(約85分)→塩山駅→バス・タクシーで毛木平方面へ"
   },
   {
     "id": "mizugaki",
@@ -2748,11 +2748,11 @@
     "trainTimeOmiya": 127,
     "fareOmiya": 4748,
     "transfersOmiya": 1,
-    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ直通(約97分)→韮崎駅",
+    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ直通(約97分)→韮崎駅→バス・タクシーでみずがき山荘へ",
     "trainTimeYokohama": 131,
     "fareYokohama": 4836,
     "transfersYokohama": 1,
-    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ直通(約97分)→韮崎駅"
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ直通(約97分)→韮崎駅→バス・タクシーでみずがき山荘へ"
   },
   {
     "id": "akagi",
@@ -3035,11 +3035,11 @@
     "trainTimeOmiya": 177,
     "fareOmiya": 3488,
     "transfersOmiya": 2,
-    "trainAccessOmiya": "大宮駅→JR高崎線在来線(約81分、乗換なし)→高崎駅→JR両毛線約15分→前橋駅→関越交通バス「48A あかぎ広場前行」約81分→あかぎ広場前",
+    "trainAccessOmiya": "大宮駅→JR高崎線在来線(約81分、乗換なし)→高崎駅→JR両毛線約15分→前橋駅→関越交通バス「48A あかぎ広場前行」約81分→あかぎ広場前（2025年4月より赤城山ビジターセンター建替え工事のため、あかぎ広場前が終点）",
     "trainTimeYokohama": 216,
     "fareYokohama": 3800,
     "transfersYokohama": 3,
-    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→JR高崎線(約60分)→高崎駅→JR両毛線約15分→前橋駅→関越交通バス「48A あかぎ広場前行」約81分→あかぎ広場前",
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン直通(約60分)→大宮駅→JR高崎線(約60分)→高崎駅→JR両毛線約15分→前橋駅→関越交通バス「48A あかぎ広場前行」約81分→あかぎ広場前（2025年4月より赤城山ビジターセンター建替え工事のため、あかぎ広場前が終点）",
     "_fareEstimatedYokohama": true
   },
   {
@@ -5731,7 +5731,7 @@
     "trainTimeYokohama": 121,
     "fareYokohama": 5725,
     "transfersYokohama": 2,
-    "trainAccessYokohama": "横浜駅→JR東海道線(約18分)→東京駅→北陸新幹線あさま(約74分)→佐久平駅→しなの鉄道(約22分)→小諸駅"
+    "trainAccessYokohama": "横浜駅→JR東海道線(約18分)→東京駅→北陸新幹線あさま(約74分)→佐久平駅→しなの鉄道(約22分)→小諸駅（前掛山：2026年5月23日に噴火警戒レベル1へ引き下げ、約3年ぶりに登山道が解放）"
   },
   {
     "id": "tanigawa",
@@ -9114,7 +9114,7 @@
     "trainTimeOmiya": 241,
     "fareOmiya": 16910,
     "transfersOmiya": 2,
-    "trainAccessOmiya": "大宮駅→北陸新幹線かがやき(約124分)→富山駅→富山地方鉄道(約67分)→立山駅",
+    "trainAccessOmiya": "大宮駅→北陸新幹線かがやき(約124分)→富山駅→富山地方鉄道(約67分)→立山駅→ケーブルカー・高原バス約50分→室堂（季節運行）",
     "trainTimeYokohama": 245,
     "fareYokohama": 17690,
     "transfersYokohama": 3,
@@ -10579,7 +10579,7 @@
     "trainTimeOmiya": 133,
     "fareOmiya": 8830,
     "transfersOmiya": 1,
-    "trainAccessOmiya": "大宮駅→北陸新幹線はくたか(約100分)→上越妙高駅→えちごトキめき鉄道(約33分)→妙高高原駅",
+    "trainAccessOmiya": "大宮駅→北陸新幹線はくたか(約100分)→上越妙高駅→えちごトキめき鉄道(約33分)→妙高高原駅→バス約30分→燕温泉",
     "trainTimeYokohama": 182,
     "fareYokohama": 9330,
     "transfersYokohama": 2,
@@ -10923,7 +10923,7 @@
     "trainTimeOmiya": 78,
     "fareOmiya": 6160,
     "transfersOmiya": 1,
-    "trainAccessOmiya": "大宮駅→上越新幹線とき(約55分、越後湯沢の先まで延長)→浦佐駅→JR上越線約10分→六日町駅",
+    "trainAccessOmiya": "大宮駅→上越新幹線とき(約55分、越後湯沢の先まで延長)→浦佐駅→JR上越線約10分→六日町駅→オンデマンド交通「MOSS」約40分→清水（桜坂駐車場）",
     "trainTimeYokohama": 127,
     "fareYokohama": 6660,
     "transfersYokohama": 2,
@@ -11275,7 +11275,7 @@
     "trainTimeYokohama": 275,
     "fareYokohama": 8500,
     "transfersYokohama": 3,
-    "trainAccessYokohama": "横浜駅→JR東海道線(約18分)→東京駅→東北新幹線やまびこ(約80分)→郡山駅→JR磐越西線(約100分)→山都駅→会津バス「飯豊登山アクセスバス」約45分（夏季限定・1日2便のみ）→川入バス停"
+    "trainAccessYokohama": "横浜駅→JR東海道線(約18分)→東京駅→東北新幹線やまびこ(約80分)→郡山駅→JR磐越西線(約100分)→山都駅→会津バス「飯豊登山アクセスバス」約45分（夏季限定・1日2便のみ）→川入バス停→徒歩約30分→御沢野営場（登山口）"
   },
   {
     "id": "shibutsu",
@@ -11973,7 +11973,7 @@
     "trainTimeOmiya": 245,
     "fareOmiya": 6610,
     "transfersOmiya": 1,
-    "trainAccessOmiya": "大宮駅→JR埼京線・東武アーバンパークライン急行→春日部駅→東武特急リバティ会津(約175分)約1時間10分→会津田島駅→会津バス",
+    "trainAccessOmiya": "大宮駅→JR埼京線・東武アーバンパークライン急行→春日部駅→東武特急リバティ会津約1時間10分→会津田島駅→会津バス→滝沢登山口（夏季）",
     "trainTimeYokohama": 315,
     "fareYokohama": 7200,
     "transfersYokohama": 3,
@@ -12285,11 +12285,11 @@
     "trainTimeOmiya": 155,
     "fareOmiya": 5672,
     "transfersOmiya": 1,
-    "trainAccessOmiya": "大宮駅→北陸新幹線あさま(約82分)→長野原草津口駅→JRバス関東約25分→草津温泉",
+    "trainAccessOmiya": "大宮駅→北陸新幹線あさま(約82分)→長野原草津口駅→JRバス関東約25分→草津温泉（噴火警戒レベル1・2026年5月15日時点。湯釜火口から概ね500m範囲は火山灰等に注意）",
     "trainTimeYokohama": 204,
     "fareYokohama": 6172,
     "transfersYokohama": 2,
-    "trainAccessYokohama": "横浜駅→JR東海道線(約18分)→東京駅→北陸新幹線あさま(約106分)→長野原草津口駅→JRバス関東約25分→草津温泉"
+    "trainAccessYokohama": "横浜駅→JR東海道線(約18分)→東京駅→北陸新幹線あさま(約106分)→長野原草津口駅→JRバス関東約25分→草津温泉（噴火警戒レベル1・2026年5月15日時点。湯釜火口から概ね500m範囲は火山灰等に注意）"
   },
   {
     "id": "bandai",
@@ -12619,7 +12619,7 @@
     "trainTimeOmiya": 150,
     "fareOmiya": 9172,
     "transfersOmiya": 2,
-    "trainAccessOmiya": "大宮駅→東北新幹線やまびこ(約150分)→猪苗代駅",
+    "trainAccessOmiya": "大宮駅→東北新幹線やまびこ(約150分)→猪苗代駅→路線バス約30分→八方台登山口（夏〜秋の季節運行）",
     "trainTimeYokohama": 208,
     "fareYokohama": 9672,
     "transfersYokohama": 3,
@@ -12953,11 +12953,11 @@
     "trainTimeOmiya": 335,
     "fareOmiya": 8480,
     "transfersOmiya": 2,
-    "trainAccessOmiya": "大宮駅→JR埼京線・東武アーバンパークライン急行→春日部駅→東武特急リバティ会津(約175分)→会津田島駅→会津バス「檜枝岐線」約2時間→御池",
+    "trainAccessOmiya": "大宮駅→JR埼京線・東武アーバンパークライン急行→春日部駅→東武特急リバティ会津(約175分)→会津田島駅→会津バス「檜枝岐線」約2時間→御池（2024年10月より会津高原尾瀬口駅発着は廃線、会津田島駅発着に変更。到着が従来より約40分遅くなっている点に注意）",
     "trainTimeYokohama": 365,
     "fareYokohama": 9000,
     "transfersYokohama": 3,
-    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約50分)→北千住駅→東武特急リバティ会津(約195分)→会津田島駅→会津バス「檜枝岐線」約2時間→御池",
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約50分)→北千住駅→東武特急リバティ会津(約195分)→会津田島駅→会津バス「檜枝岐線」約2時間→御池（2024年10月より会津高原尾瀬口駅発着は廃線、会津田島駅発着に変更。到着が従来より約40分遅くなっている点に注意）",
     "_fareEstimatedYokohama": true
   },
   {
@@ -13180,7 +13180,7 @@
     "trainTimeYokohama": 71,
     "fareYokohama": 953,
     "transfersYokohama": 0,
-    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線・京王線(約8分)→高尾山口駅"
+    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線・京王線(約8分)→高尾山口駅→徒歩約5分→登山口"
   },
   {
     "id": "oyama",
@@ -15898,7 +15898,7 @@
     "fareYokohama": 1103,
     "transfersYokohama": 1,
     "_fareEstimatedYokohama": true,
-    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約20分)→御嶽駅"
+    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約20分)→御嶽駅→バス約20分→御岳登山口"
   },
   {
     "id": "jonengatake",
@@ -22201,7 +22201,7 @@
     "trainTimeOmiya": 110,
     "fareOmiya": 7422,
     "transfersOmiya": 1,
-    "trainAccessOmiya": "大宮駅→東北新幹線やまびこ(約110分)→二本松駅",
+    "trainAccessOmiya": "大宮駅→東北新幹線やまびこ(約110分)→二本松駅→バス約30分→岳温泉（季節）",
     "trainTimeYokohama": 159,
     "fareYokohama": 7922,
     "transfersYokohama": 2,
@@ -22490,7 +22490,7 @@
     "trainTimeOmiya": 150,
     "fareOmiya": 7472,
     "transfersOmiya": 1,
-    "trainAccessOmiya": "大宮駅→山形新幹線つばさ(約150分)→米沢駅",
+    "trainAccessOmiya": "大宮駅→山形新幹線つばさ(約150分)→米沢駅→山交バス約40分→白布温泉→天元台ロープウェイ",
     "trainTimeYokohama": 199,
     "fareYokohama": 7972,
     "transfersYokohama": 2,
@@ -22821,7 +22821,7 @@
     "trainTimeOmiya": 240,
     "fareOmiya": 7172,
     "transfersOmiya": 2,
-    "trainAccessOmiya": "大宮駅→上越新幹線とき(約210分相当、浦佐経由)約30分→小出駅",
+    "trainAccessOmiya": "大宮駅→上越新幹線とき（浦佐経由）約55分→浦佐駅→JR上越線約30分→小出駅→南越後交通バス約1時間5分→枝折峠登山口（バスは夏季6月下旬〜10月頃の1日1便のみ）",
     "trainTimeYokohama": 300,
     "fareYokohama": 8200,
     "transfersYokohama": 3,
@@ -25182,11 +25182,11 @@
     "trainTimeOmiya": 240,
     "fareOmiya": 11408,
     "transfersOmiya": 3,
-    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ+特急しなの(松本乗換、約210分)→木曽福島駅",
+    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR特急あずさ+特急しなの(松本乗換、約210分)→木曽福島駅→バス・タクシーで田の原方面へ（季節運行）",
     "trainTimeYokohama": 244,
     "fareYokohama": 11496,
     "transfersYokohama": 3,
-    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ+特急しなの(松本乗換、約210分)→木曽福島駅"
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR特急あずさ+特急しなの(松本乗換、約210分)→木曽福島駅→バス・タクシーで田の原方面へ（季節運行）"
   },
   {
     "id": "goryudake",
@@ -34311,7 +34311,7 @@
     "fareYokohama": 1103,
     "transfersYokohama": 1,
     "_fareEstimatedYokohama": true,
-    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約20分)→御嶽駅"
+    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約20分)→御嶽駅→バス約10分→ケーブル下→ケーブルカー約6分→御岳山"
   },
   {
     "id": "takamizusanzan",
@@ -34804,7 +34804,7 @@
     "trainTimeOmiya": 91,
     "fareOmiya": 1597,
     "transfersOmiya": 1,
-    "trainAccessOmiya": "大宮駅→JR埼京線→池袋駅→西武池袋線特急ちちぶ(約71分)→飯能駅",
+    "trainAccessOmiya": "大宮駅→JR埼京線→池袋駅→西武池袋線特急ちちぶ(約71分)→飯能駅→徒歩約20分→天覧山登山口",
     "trainTimeYokohama": 114,
     "fareYokohama": 1306,
     "transfersYokohama": 2,
@@ -36420,7 +36420,7 @@
     "fareYokohama": 600,
     "transfersYokohama": 1,
     "_fareEstimatedYokohama": true,
-    "trainAccessYokohama": "横浜駅→相鉄本線(約26分)→海老名駅→小田急線(約8分)→鶴巻温泉駅→徒歩"
+    "trainAccessYokohama": "横浜駅→相鉄本線(約26分)→海老名駅→小田急線(約8分)→鶴巻温泉駅→徒歩→徒歩→弘法山登山口"
   },
   {
     "id": "kagenobusan",
@@ -36637,7 +36637,7 @@
     "trainTimeYokohama": 68,
     "fareYokohama": 903,
     "transfersYokohama": 0,
-    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線(約5分)→高尾駅"
+    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線(約5分)→高尾駅→京王バス約21分→小仏バス停"
   },
   {
     "id": "takagawayama",
@@ -37046,7 +37046,7 @@
     "trainTimeYokohama": 68,
     "fareYokohama": 903,
     "transfersYokohama": 0,
-    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線(約5分)→高尾駅"
+    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線(約5分)→高尾駅→バス→小仏バス停→徒歩"
   },
   {
     "id": "kusatoriyama",
@@ -37234,7 +37234,7 @@
     "trainTimeYokohama": 71,
     "fareYokohama": 953,
     "transfersYokohama": 0,
-    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線・京王線(約8分)→高尾山口駅"
+    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線・京王線(約8分)→高尾山口駅→徒歩→草戸山登山口"
   },
   {
     "id": "nakimushiyama",
@@ -38682,7 +38682,7 @@
     "fareYokohama": 2010,
     "transfersYokohama": 2,
     "_fareEstimatedYokohama": true,
-    "trainAccessYokohama": "横浜駅→JR東海道線(約55分)→小田原駅→伊豆箱根鉄道大雄山線約49分→大雄山駅→バス"
+    "trainAccessYokohama": "横浜駅→JR東海道線(約55分)→小田原駅→伊豆箱根鉄道大雄山線約49分→大雄山駅→バス約17分→地蔵堂バス停→徒歩約20分"
   },
   {
     "id": "kawanoriyama",
@@ -38980,7 +38980,7 @@
     "fareYokohama": 1642,
     "transfersYokohama": 1,
     "_fareEstimatedYokohama": true,
-    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約40分)→奥多摩駅"
+    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約40分)→奥多摩駅→バス約15分→川乗橋バス停"
   },
   {
     "id": "takanosuyama",
@@ -39318,7 +39318,7 @@
     "fareYokohama": 1642,
     "transfersYokohama": 1,
     "_fareEstimatedYokohama": true,
-    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約40分)→奥多摩駅"
+    "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約40分)→奥多摩駅→バス→東日原バス停→徒歩"
   },
   {
     "id": "ishirousan",
@@ -40123,7 +40123,7 @@
     "fareYokohama": 1650,
     "transfersYokohama": 2,
     "_fareEstimatedYokohama": true,
-    "trainAccessYokohama": "横浜駅→JR東海道線(約55分)→小田原駅→JR御殿場線約1時間35分→山北駅→バス"
+    "trainAccessYokohama": "横浜駅→JR東海道線(約55分)→小田原駅→JR御殿場線約1時間35分→山北駅→バス約10分→共和バス停→徒歩約30分"
   },
   {
     "id": "momakurasan",
@@ -43762,7 +43762,7 @@
     "fareYokohama": 950,
     "transfersYokohama": 1,
     "_fareEstimatedYokohama": true,
-    "trainAccessYokohama": "横浜駅→JR東海道線(約48分)→二宮駅→徒歩"
+    "trainAccessYokohama": "横浜駅→JR東海道線(約48分)→二宮駅→徒歩→徒歩約5分→吾妻山公園入口"
   },
   {
     "id": "hodosan",
