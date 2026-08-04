@@ -777,6 +777,7 @@ function chipSort(active) {
 function App() {
   const [search, setSearch]               = useState(() => ssGet("ym_search", ""));
   const [sort, setSort]                   = useState(() => ssGet("ym_sort", "所要時間順（車）"));
+  const [transportMode, setTransportMode] = useState(() => ssGet("ym_transportmode", "car")); // "car" | "train" -- カード表示（車/電車）専用。並び替え(sort)とは独立
   const [area, setArea]                   = useState(() => ssGet("ym_area", []));
   const [departure, setDeparture]         = useState(() => ssGet("ym_departure", "大船")); // "大船" | "新宿" | "横浜" | "大宮" | "立川"
 
@@ -954,6 +955,7 @@ function App() {
   useEffect(() => {
     ssSet("ym_search", search);
     ssSet("ym_sort", sort);
+    ssSet("ym_transportmode", transportMode);
     ssSet("ym_area", area);
     ssSet("ym_departure", departure);
     ssSet("ym_category", categoryFilter);
@@ -968,7 +970,7 @@ function App() {
     ssSet("ym_line", lineFilter);
     ssSet("ym_month", filterMonth);
     ssSet("ym_viewmode", viewMode);
-  }, [search, sort, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, trainTimeFilter, fareFilter, courseFilter, cramponsFilter, filterMonth, viewMode, difficultyFilter, elevationFilter, vibeFilter, accessTierFilter]);
+  }, [search, sort, transportMode, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, trainTimeFilter, fareFilter, courseFilter, cramponsFilter, filterMonth, viewMode, difficultyFilter, elevationFilter, vibeFilter, accessTierFilter]);
   const getMountainUrl = (id) => {
     const special = {};
     return "/mountains/" + (special[id] || id) + "/";
@@ -977,8 +979,30 @@ function App() {
   const currentMonth = new Date().getMonth() + 1;
   const activeMonth = typeof filterMonth === "number" ? filterMonth : currentMonth;
   const activeFilterCount = [dayTripOnly,trainOnly,categoryFilter!=="すべて",area.length>0,!!driveTimeFilter,!!trainTimeFilter,!!fareFilter,courseFilter.length>0,cramponsFilter!=="すべて",lineFilter.length>0,difficultyFilter.length>0,elevationFilter.length>0,!!accessTierFilter].filter(Boolean).length;
-  // 電車のソート・絞り込みを使っている間は、カード表示も電車をメインにする
-  const isTrainMode = sort.indexOf("電車・バス") >= 0 || !!trainTimeFilter || !!fareFilter || !!accessTierFilter;
+  // カード表示（車/電車）は transportMode で管理。おすすめ順・標高順・体力度順などどのソートでも切替可能
+  const isTrainMode = transportMode === "train";
+  // 「所要時間順（車/電車）」ソートを選んだときは、表示モードも連動させる
+  useEffect(() => {
+    if (sort === "所要時間順（電車・バス）") setTransportMode("train");
+    else if (sort === "所要時間順（車）") setTransportMode("car");
+  }, [sort]);
+  // 電車系の絞り込み（所要時間・運賃・アクセス難易度）を使ったら電車表示に、車の所要時間絞り込みを使ったら車表示に
+  useEffect(() => {
+    if (trainTimeFilter || fareFilter || accessTierFilter) setTransportMode("train");
+  }, [trainTimeFilter, fareFilter, accessTierFilter]);
+  useEffect(() => {
+    if (driveTimeFilter) setTransportMode("car");
+  }, [driveTimeFilter]);
+  // モードを切り替えたら、逆モード専用の絞り込みは自動でリセット（表示に出ない条件が残らないように）
+  useEffect(() => {
+    if (transportMode === "car") {
+      if (trainTimeFilter) setTrainTimeFilter(null);
+      if (fareFilter) setFareFilter(null);
+      if (accessTierFilter) setAccessTierFilter(null);
+    } else {
+      if (driveTimeFilter) setDriveTimeFilter(null);
+    }
+  }, [transportMode]);
   // 電車モードに入ったら出発地を自動的に新宿へ（電車データは現状新宿発のみ対応のため）
   useEffect(() => {
     if (isTrainMode && departure !== "新宿" && departure !== "大宮" && departure !== "横浜") setDeparture("新宿");
@@ -1196,7 +1220,7 @@ function App() {
                 )}
                 <span style={{fontSize:"11px",color:"white",fontWeight:activeFilterCount>0?"800":"600"}}>{activeFilterCount>0 ? "絞り込み中（"+activeFilterCount+"）" : "条件で検索"}</span>
               </button>
-              <button onClick={() => { setSearch(""); setSort("所要時間順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea([]); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter([]); setAccessTierFilter(null); }}
+              <button onClick={() => { setSearch(""); setSort("所要時間順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea([]); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter([]); setAccessTierFilter(null); setTransportMode("car"); }}
   onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
   onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform="scale(1)";},150)}
   style={{flex:1,background:"transparent",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"1px solid rgba(255,255,255,0.85)",cursor:"pointer",transition:"transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
@@ -1207,22 +1231,35 @@ function App() {
           </div>
         </div>
         {/* ③出発地タブ */}
-        <div style={{position:"relative",zIndex:2,display:"flex",gap:"4px",padding:"8px 16px 8px",maxWidth:"768px",margin:"0 auto"}}>
-          {["大船","新宿","横浜","大宮","立川"].map(d => {
-            const disabled = isTrainMode && d !== "新宿" && d !== "大宮" && d !== "横浜";
+        <div style={{position:"relative",zIndex:2,display:"flex",gap:"6px",alignItems:"stretch",padding:"8px 16px 8px",maxWidth:"768px",margin:"0 auto"}}>
+          <button
+            onClick={() => setTransportMode(isTrainMode ? "car" : "train")}
+            aria-label={isTrainMode ? "電車モード（タップで車に切替）" : "車モード（タップで電車に切替）"}
+            style={{flexShrink:0,width:"42px",display:"flex",alignItems:"center",justifyContent:"center",
+              borderRadius:"5px",border:"1px solid rgba(255,255,255,0.6)",background:"rgba(255,255,255,0.15)",
+              fontSize:"16px",cursor:"pointer",transition:"transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}
+            onTouchStart={e=>e.currentTarget.style.transform="scale(0.9)"}
+            onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform="scale(1)";},150)}
+          >{isTrainMode ? (
+              <svg width="28" height="28" viewBox="0 0 24 24" style={{color:"white"}}><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="black"/><rect x="9" y="9.5" width="3" height="3" fill="black"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>
+            ) : (
+              <svg width="28" height="28" viewBox="0 0 24 24" style={{color:"white"}}><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="#3a3a3a"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="#3a3a3a"/><circle cx="7" cy="18" r="2" fill="currentColor"/><circle cx="17" cy="18" r="2" fill="currentColor"/></svg>
+            )}</button>
+          <div style={{flex:1,display:"flex",gap:"4px"}}>
+          {(isTrainMode ? ["新宿","横浜","大宮"] : ["大船","新宿","横浜","大宮","立川"]).map(d => {
             return (
-            <button key={d} onClick={() => { if (!disabled) setDeparture(d); }} disabled={disabled} style={{flex:1,textAlign:"center",fontSize:departure===d?"13.5px":"12px",padding:"7px 0",borderRadius:"5px",fontWeight:"700",cursor:disabled?"not-allowed":"pointer",background:"transparent",
+            <button key={d} onClick={() => setDeparture(d)} style={{flex:1,textAlign:"center",fontSize:departure===d?"13.5px":"12px",padding:"7px 0",borderRadius:"5px",fontWeight:"700",cursor:"pointer",background:"transparent",
               border:departure===d?"2px solid white":"1px solid rgba(255,255,255,0.4)",
-              color:disabled?"rgba(255,255,255,0.35)":"white",
-              opacity:disabled?0.45:1,
-              transition:"border-width 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease",
+              color:"white",
+              transition:"border-width 0.2s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1)",
               transform:departure===d?"scale(1.04)":"scale(1)"
             }}
-            onTouchStart={e=>{ if(!disabled) e.currentTarget.style.transform="scale(0.95)"; }}
-            onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget && !disabled)e.currentTarget.style.transform=departure===d?"scale(1.04)":"scale(1)";},150)}
+            onTouchStart={e=>{ e.currentTarget.style.transform="scale(0.95)"; }}
+            onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform=departure===d?"scale(1.04)":"scale(1)";},150)}
             >{d}</button>
             );
           })}
+          </div>
         </div>
       </header>
 
@@ -1230,7 +1267,7 @@ function App() {
 
         {/* 診断バナー */}
         <div style={{display:"flex",gap:"7px",marginBottom:"7px"}}>
-          <a href="/find/" style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
+          <a href="/find/" onClick={() => { if (typeof gtag === "function") gtag('event', 'diagnosis_entry_click', { diagnosis_type: 'find' }); }} style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
             onTouchStart={e => { e.currentTarget.style.transform="scale(0.97)"; }}
             onTouchEnd={e => { setTimeout(()=>{ if(e.currentTarget) e.currentTarget.style.transform="scale(1)"; },180); }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3a5030" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
@@ -1243,7 +1280,7 @@ function App() {
             </div>
             <span style={{fontSize:"16px",color:"#3a5030",fontWeight:"300"}}>›</span>
           </a>
-          <a href="/recommend/" style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
+          <a href="/recommend/" onClick={() => { if (typeof gtag === "function") gtag('event', 'diagnosis_entry_click', { diagnosis_type: 'recommend' }); }} style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
             onTouchStart={e => { e.currentTarget.style.transform="scale(0.97)"; }}
             onTouchEnd={e => { setTimeout(()=>{ if(e.currentTarget) e.currentTarget.style.transform="scale(1)"; },180); }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3a5030" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
@@ -1467,7 +1504,7 @@ function App() {
               </div>
               {/* 固定フッター：適用ボタン */}
               <div style={{position:"sticky",bottom:0,background:"white",borderTop:"1px solid #e8e4dc",padding:"12px 16px",display:"flex",gap:"8px"}}>
-                <button onClick={() => { setSearch(""); setSort("所要時間順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea([]); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter([]); setAccessTierFilter(null); }} style={{flex:1,padding:"10px",borderRadius:"5px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
+                <button onClick={() => { setSearch(""); setSort("所要時間順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea([]); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter([]); setAccessTierFilter(null); setTransportMode("car"); }} style={{flex:1,padding:"10px",borderRadius:"5px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
                 <button onClick={() => setFilterOpen(false)} style={{flex:2,padding:"10px",borderRadius:"5px",border:"none",background:"#4e6535",fontSize:"13px",color:"white",fontWeight:"700",cursor:"pointer"}}>この条件で絞り込む（{filtered.length}件）</button>
               </div>
             </div>
@@ -1627,6 +1664,7 @@ function App() {
 
                   return (
                     <a key={m.id} href={getMountainUrl(m.id)}
+                      onClick={() => { if (typeof gtag === "function") gtag('event', 'mountain_card_click', { mountain_id: m.id, mountain_name: m.name }); }}
                       style={{
                         position: "relative", overflow: "hidden",
                         borderRadius: "5px", border: `1px solid ${cardBorder}`,
