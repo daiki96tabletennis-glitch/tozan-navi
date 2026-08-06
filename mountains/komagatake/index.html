@@ -174,9 +174,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .rl-chip{font-size:10px;padding:2px 7px;border-radius:20px;background:#eaf1e0;color:#4e6535;font-weight:500;}
 .rl-chip-coef{background:#eaf1e0;color:#4e6535;}
 
-.faq-item{padding:12px 0;border-bottom:1px solid #f0ede8;}
 .faq-item:last-child{border-bottom:none;padding-bottom:0;}
-.faq-q{font-size:14px;font-weight:700;color:#1a1a16;margin-bottom:6px;line-height:1.5;}
 .faq-q::before{content:"Q. ";color:#4e6535;}
 .faq-a p{font-size:13px;color:#5a5248;line-height:1.8;padding-left:18px;}
 
@@ -303,6 +301,43 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .ts-link{font-size:12px;font-weight:600;padding:5px 12px;border-radius:8px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
 .ts-link-yahoo{background:#deeaf4;color:#1a1a16;}
 .ts-link-bus{background:#c8dff0;color:#1a1a16;}
+
+/* FAQ アコーディオン */
+.faq-item{padding:0;border-bottom:1px solid #eae5dc;}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;font-weight:700;color:#1a1a16;
+  margin:0;padding:13px 26px 13px 0;line-height:1.55;cursor:pointer;position:relative;
+  -webkit-tap-highlight-color:transparent;}
+.faq-q::before{content:"Q";flex-shrink:0;width:20px;height:20px;border-radius:5px;
+  background:#4e6535;color:#fff;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.faq-q::after{content:"";position:absolute;right:6px;top:20px;width:7px;height:7px;
+  border-right:2px solid #9a958a;border-bottom:2px solid #9a958a;
+  transform:rotate(45deg);transition:transform .22s ease;}
+.faq-item.open .faq-q::after{transform:rotate(-135deg);}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease;}
+.faq-item.open .faq-a{grid-template-rows:1fr;}
+.faq-a>div{overflow:hidden;}
+.faq-a p{margin:0;padding:0 4px 14px 29px;font-size:12.5px;line-height:1.85;color:#4a443c;
+  border-left:2px solid #eaf1e0;margin-left:9px;}
+
+/* 難易度セクション */
+.dl-card{margin-top:-10px;padding-top:14px;padding-bottom:18px;border-top:none;}
+.dl-head{display:flex;align-items:baseline;gap:8px;margin-bottom:7px;flex-wrap:wrap;}
+.dl-label{font-size:12px;color:#8a8578;font-weight:600;}
+.dl-value{font-size:17px;font-weight:800;color:#4e6535;}
+.dl-score{font-size:11px;color:#8a8578;margin-left:auto;font-weight:600;}
+.dl-bar{display:flex;gap:3px;margin-bottom:4px;}
+.dl-seg{flex:1;height:8px;border-radius:2px;background:#e8e4dc;}
+.dl-seg.on{background:linear-gradient(90deg,#7a9a5a,#4e6535);}
+.dl-seg.on.warn{background:linear-gradient(90deg,#d9a441,#c07020);}
+.dl-seg.on.hard{background:linear-gradient(90deg,#d97a5a,#b04a28);}
+.dl-scale{display:flex;justify-content:space-between;font-size:10px;color:#a09888;margin:0 0 8px;}
+.dl-reasons{list-style:none;padding:0;margin:0;}
+.dl-reasons li{position:relative;padding:2px 0 2px 18px;font-size:12.5px;line-height:1.6;color:#3a3a36;}
+.dl-reasons li::before{content:"";position:absolute;left:3px;top:9px;width:5px;height:5px;border-radius:50%;background:#4e6535;}
+.dl-reasons li.minus::before{background:#c07020;}
+.dl-note{font-size:11.5px;color:#8a8578;line-height:1.6;margin:0;}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -310,7 +345,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "甲斐駒ヶ岳は初心者でも登れますか？難易度とコース定数を解説", "acceptedAnswer": {"@type": "Answer", "text": "甲斐駒ヶ岳の難易度は上級、コース定数38〜62です。黒戸尾根は日本三大急登の一つで、標高差2400m・往復14時間という国内屈指のロングコース。梯子や鎖場も多く、体力・経験ともに求められます。"}}, {"@type": "Question", "name": "甲斐駒ヶ岳の所要時間は？日帰りできますか？", "acceptedAnswer": {"@type": "Answer", "text": "甲斐駒ヶ岳は日帰り登山が可能です。コース定数38〜62を参考に体力に合ったプランを選んでください。"}}, {"@type": "Question", "name": "甲斐駒ヶ岳へのアクセス方法は？新宿・横浜からの行き方", "acceptedAnswer": {"@type": "Answer", "text": "コース定数38〜62の上級レベルで、日帰りが可能。上級レベルのため、ある程度の体力・経験が必要です。装備は登山靴・レインウェア・水を必ず持参してください。"}}, {"@type": "Question", "name": "甲斐駒ヶ岳の登山シーズンはいつですか？おすすめの時期", "acceptedAnswer": {"@type": "Answer", "text": "5月〜11月が登りやすいシーズンです。冬季は積雪・凍結に注意が必要です。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "甲斐駒ヶ岳は初心者でも登れますか？難易度とコース定数を解説", "acceptedAnswer": {"@type": "Answer", "text": "甲斐駒ヶ岳の難易度は上級（10段階中10）、コース定数45〜65です。ただしルートで大きく変わり、黒戸尾根は標高差2,200m・登り9時間30分の日本三大急登。一方、北沢峠からなら標高差1,000m弱で日帰りも可能です。"}}, {"@type": "Question", "name": "甲斐駒ヶ岳の所要時間は？日帰りできますか？", "acceptedAnswer": {"@type": "Answer", "text": "甲斐駒ヶ岳は日帰り登山が可能です。コース定数38〜62を参考に体力に合ったプランを選んでください。"}}, {"@type": "Question", "name": "甲斐駒ヶ岳へのアクセス方法は？新宿・横浜からの行き方", "acceptedAnswer": {"@type": "Answer", "text": "コース定数38〜62の上級レベルで、日帰りが可能。上級レベルのため、ある程度の体力・経験が必要です。装備は登山靴・レインウェア・水を必ず持参してください。"}}, {"@type": "Question", "name": "甲斐駒ヶ岳の登山シーズンはいつですか？おすすめの時期", "acceptedAnswer": {"@type": "Answer", "text": "5月〜11月が登りやすいシーズンです。冬季は積雪・凍結に注意が必要です。"}}]}</script>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>h1,h2,h3,.ym-logo,.type-name,.mountain-name,.sec-title,.header-title{font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;}</style>
 </head>
@@ -350,7 +385,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </div>
     <div class="stats-row">
       <div class="stat-card"><div class="stat-val">2,967</div><div class="stat-unit">m</div><div class="stat-label">標高</div></div>
-      <div class="stat-card"><div class="stat-val">38〜62</div><div class="stat-unit">コース定数</div><div class="stat-label">体力度：高め</div></div>
+      <div class="stat-card"><div class="stat-val">38〜62</div><div class="stat-unit">コース定数</div><div class="stat-label">難易度：上級</div></div>
       <div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">3.7</div><div class="stat-unit" id="hero-unit">時間〜</div><div class="stat-label" id="hero-dep-label">大船から</div></div>
     </div>
   </div>
@@ -596,6 +631,25 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 
   <div class="card"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>山の紹介</h2><p class="intro-text">白い花崗岩の山頂が印象的。黒戸尾根は日本三大急登の一つ。上級レベルでコース定数38〜62、日帰りでの登山が可能。代表コース（黒戸尾根ルート（往復））は所要14時間/18.6km/標高差+2400m。</p></div>
 
+  <div class="card dl-card">
+  <h2 style="font-size:15px;font-weight:700;color:#2a3820;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid #eaf1e0;"><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 L9 8 L13 15 L16 11 L21 20 Z"/></svg>難易度</h2>
+  <div class="dl-head">
+    <span class="dl-label">難易度</span>
+    <span class="dl-value">上級</span>
+    <span class="dl-score">10段階中 10</span>
+  </div>
+  <div class="dl-bar"><div class="dl-seg on hard"></div><div class="dl-seg on hard"></div><div class="dl-seg on hard"></div><div class="dl-seg on hard"></div><div class="dl-seg on hard"></div><div class="dl-seg on hard"></div><div class="dl-seg on hard"></div><div class="dl-seg on hard"></div><div class="dl-seg on hard"></div><div class="dl-seg on hard"></div></div>
+  <div class="dl-scale"><span>やさしい</span><span>難しい</span></div>
+  <ul class="dl-reasons">
+    <li class="minus">黒戸尾根は標高差2,200m・登り9時間30分。深田久弥が「日本アルプスで一番つらい」と評した道</li>
+    <li class="minus">黒戸尾根の5〜7合目が核心部。高度感のある梯子と鎖場が連続する</li>
+    <li class="minus">七丈小屋泊のピストンでも2日目は登り600m＋下り2,200mで、難所を下ることになる</li>
+    <li>北沢峠からの双児山・駒津峰ルートなら難易度は大きく下がり、多くの登山者はこちら</li>
+    <li>六方石から先は直登ルートを避け、トラバースルート（巻道）を選べる</li>
+  </ul>
+</div>
+
+
   <!-- 規制・注意バナー -->
   <div class="warn-banner warn-banner-yellow">
     <div class="warn-icon">⚠️</div>
@@ -745,25 +799,25 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   <div class="faq-item">
     <h2 class="faq-q">甲斐駒ヶ岳は初心者でも登れますか？難易度とコース定数を解説</h2>
     <div class="faq-a">
-      <p>甲斐駒ヶ岳の難易度は上級、コース定数38〜62です。黒戸尾根は日本三大急登の一つで、標高差2400m・往復14時間という国内屈指のロングコース。梯子や鎖場も多く、体力・経験ともに求められます。</p>
+      <div><p>甲斐駒ヶ岳の難易度は上級（10段階中10）、コース定数45〜65です。ただしルートで大きく変わり、黒戸尾根は標高差2,200m・登り9時間30分の日本三大急登。一方、北沢峠からなら標高差1,000m弱で日帰りも可能です。</p></div>
     </div>
   </div>
   <div class="faq-item">
     <h2 class="faq-q">甲斐駒ヶ岳の所要時間は？日帰りできますか？</h2>
     <div class="faq-a">
-      <p>甲斐駒ヶ岳は日帰り登山が可能です。コース定数38〜62を参考に体力に合ったプランを選んでください。</p>
+      <div><p>甲斐駒ヶ岳は日帰り登山が可能です。コース定数38〜62を参考に体力に合ったプランを選んでください。</p></div>
     </div>
   </div>
   <div class="faq-item">
     <h2 class="faq-q">甲斐駒ヶ岳へのアクセス方法は？新宿・横浜からの行き方</h2>
     <div class="faq-a">
-      <p>新宿駅からは電車・バスを乗り継いで約4時間10分（運賃約8,600円）、茅野駅が最寄りです。横浜からは約4時間44分（運賃約9,216円）が目安です。車の場合は都心から約3時間40分が目安です。</p>
+      <div><p>新宿駅からは電車・バスを乗り継いで約4時間10分（運賃約8,600円）、茅野駅が最寄りです。横浜からは約4時間44分（運賃約9,216円）が目安です。車の場合は都心から約3時間40分が目安です。</p></div>
     </div>
   </div>
   <div class="faq-item">
     <h2 class="faq-q">甲斐駒ヶ岳の登山シーズンはいつですか？おすすめの時期</h2>
     <div class="faq-a">
-      <p>甲斐駒ヶ岳の登山シーズンは7月〜9月が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。</p>
+      <div><p>甲斐駒ヶ岳の登山シーズンは7月〜9月が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。</p></div>
     </div>
   </div>
 </div>
@@ -1125,6 +1179,22 @@ applyDepTrain();
       var id = tab.getAttribute('data-target');
       var el = document.getElementById(id);
       if(el) el.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.faq-item').forEach(function(item,i){
+    var q=item.querySelector('.faq-q');
+    if(!q) return;
+    if(i===0) item.classList.add('open');
+    q.setAttribute('role','button');
+    q.setAttribute('tabindex','0');
+    function t(){ item.classList.toggle('open'); }
+    q.addEventListener('click',t);
+    q.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); t(); }
     });
   });
 })();

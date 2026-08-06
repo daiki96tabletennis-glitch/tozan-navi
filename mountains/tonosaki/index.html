@@ -171,9 +171,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .rl-chip{font-size:10px;padding:2px 7px;border-radius:20px;background:#eaf1e0;color:#4e6535;font-weight:500;}
 .rl-chip-coef{background:#eaf1e0;color:#4e6535;}
 
-.faq-item{padding:12px 0;border-bottom:1px solid #f0ede8;}
 .faq-item:last-child{border-bottom:none;padding-bottom:0;}
-.faq-q{font-size:14px;font-weight:700;color:#1a1a16;margin-bottom:6px;line-height:1.5;}
 .faq-q::before{content:"Q. ";color:#4e6535;}
 .faq-a p{font-size:13px;color:#5a5248;line-height:1.8;padding-left:18px;}
 
@@ -288,6 +286,43 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .weather-loading,.weather-error{font-size:12px;color:#a09888;padding:16px 0;text-align:center}
 .weather-disclaimer{font-size:10px;color:#7a7268;margin-top:8px;line-height:1.5;border-top:1px solid #ece8e0;padding-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .weather-credit{font-size:9px;color:#c0bcb0;text-align:right;margin-top:4px}
+
+/* FAQ アコーディオン */
+.faq-item{padding:0;border-bottom:1px solid #eae5dc;}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;font-weight:700;color:#1a1a16;
+  margin:0;padding:13px 26px 13px 0;line-height:1.55;cursor:pointer;position:relative;
+  -webkit-tap-highlight-color:transparent;}
+.faq-q::before{content:"Q";flex-shrink:0;width:20px;height:20px;border-radius:5px;
+  background:#4e6535;color:#fff;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.faq-q::after{content:"";position:absolute;right:6px;top:20px;width:7px;height:7px;
+  border-right:2px solid #9a958a;border-bottom:2px solid #9a958a;
+  transform:rotate(45deg);transition:transform .22s ease;}
+.faq-item.open .faq-q::after{transform:rotate(-135deg);}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease;}
+.faq-item.open .faq-a{grid-template-rows:1fr;}
+.faq-a>div{overflow:hidden;}
+.faq-a p{margin:0;padding:0 4px 14px 29px;font-size:12.5px;line-height:1.85;color:#4a443c;
+  border-left:2px solid #eaf1e0;margin-left:9px;}
+
+/* 難易度セクション */
+.dl-card{margin-top:-10px;padding-top:14px;padding-bottom:18px;border-top:none;}
+.dl-head{display:flex;align-items:baseline;gap:8px;margin-bottom:7px;flex-wrap:wrap;}
+.dl-label{font-size:12px;color:#8a8578;font-weight:600;}
+.dl-value{font-size:17px;font-weight:800;color:#4e6535;}
+.dl-score{font-size:11px;color:#8a8578;margin-left:auto;font-weight:600;}
+.dl-bar{display:flex;gap:3px;margin-bottom:4px;}
+.dl-seg{flex:1;height:8px;border-radius:2px;background:#e8e4dc;}
+.dl-seg.on{background:linear-gradient(90deg,#7a9a5a,#4e6535);}
+.dl-seg.on.warn{background:linear-gradient(90deg,#d9a441,#c07020);}
+.dl-seg.on.hard{background:linear-gradient(90deg,#d97a5a,#b04a28);}
+.dl-scale{display:flex;justify-content:space-between;font-size:10px;color:#a09888;margin:0 0 8px;}
+.dl-reasons{list-style:none;padding:0;margin:0;}
+.dl-reasons li{position:relative;padding:2px 0 2px 18px;font-size:12.5px;line-height:1.6;color:#3a3a36;}
+.dl-reasons li::before{content:"";position:absolute;left:3px;top:9px;width:5px;height:5px;border-radius:50%;background:#4e6535;}
+.dl-reasons li.minus::before{background:#c07020;}
+.dl-note{font-size:11.5px;color:#8a8578;line-height:1.6;margin:0;}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -335,7 +370,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </div>
     <div class="stats-row">
       <div class="stat-card"><div class="stat-val">1,491</div><div class="stat-unit">M</div><div class="stat-label">標高</div></div>
-      <div class="stat-card"><div class="stat-val">23-59</div><div class="stat-unit">中程度</div><div class="stat-label">コース定数</div></div>
+      <div class="stat-card"><div class="stat-val">23-59</div><div class="stat-unit">中程度</div><div class="stat-label">難易度：中級</div></div>
       <div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">50</div><div class="stat-unit">分〜</div><div class="stat-label" id="hero-dep-label">大船から</div></div>
     </div>
   </div>
@@ -353,6 +388,19 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   </div>
 
   <div class="card"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>山の紹介</h2><p class="intro-text">丹沢の要。大倉尾根（バカ尾根）は急登で有名。山頂から富士山〜相模湾の大展望。中級レベルでコース定数23〜59、日帰りでの登山が可能。代表コース（大倉尾根ルート（往復））は所要5時間/14.0km/標高差+1200m。公共交通機関でのアクセス可（渋沢駅→バス15分→大倉）。</p></div>
+
+  <div class="card dl-card">
+  <h2 style="font-size:15px;font-weight:700;color:#2a3820;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid #eaf1e0;"><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 L9 8 L13 15 L16 11 L21 20 Z"/></svg>難易度</h2>
+  <div class="dl-head">
+    <span class="dl-label">難易度</span>
+    <span class="dl-value">中級</span>
+    <span class="dl-score">10段階中 6</span>
+  </div>
+  <div class="dl-bar"><div class="dl-seg on"></div><div class="dl-seg on"></div><div class="dl-seg on"></div><div class="dl-seg on"></div><div class="dl-seg on"></div><div class="dl-seg on"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div></div>
+  <div class="dl-scale"><span>やさしい</span><span>難しい</span></div>
+  <p class="dl-note">塔ノ岳は中級レベル（コース定数23〜59）。代表コースの大倉尾根ルート（往復）は5時間・14.0km・標高差+1200m。</p>
+</div>
+
   <!-- 天気ウィジェット -->
   <div class="card" id="weather-card">
     <h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.4-2A5 5 0 0 0 6 19h11.5z"/></svg>山周辺の天気（直近10日間）</h2>
@@ -720,25 +768,25 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   <div class="faq-item">
     <h2 class="faq-q">塔ノ岳は初心者でも登れますか？難易度とコース定数を解説</h2>
     <div class="faq-a">
-      <p>塔ノ岳の難易度は中級、コース定数23〜59です。大倉尾根は通称「バカ尾根」と呼ばれる単調な急登が続き、標高差1200mを一気に登ります。危険な岩場は少ないですが、体力勝負のロングコースです。</p>
+      <div><p>塔ノ岳の難易度は中級、コース定数23〜59です。大倉尾根は通称「バカ尾根」と呼ばれる単調な急登が続き、標高差1200mを一気に登ります。危険な岩場は少ないですが、体力勝負のロングコースです。</p></div>
     </div>
   </div>
   <div class="faq-item">
     <h2 class="faq-q">塔ノ岳の所要時間は？日帰りできますか？</h2>
     <div class="faq-a">
-      <p>塔ノ岳は日帰り登山が可能です。コース定数23〜59を参考に体力に合ったプランを選んでください。</p>
+      <div><p>塔ノ岳は日帰り登山が可能です。コース定数23〜59を参考に体力に合ったプランを選んでください。</p></div>
     </div>
   </div>
   <div class="faq-item">
     <h2 class="faq-q">塔ノ岳へのアクセス方法は？新宿・横浜からの行き方</h2>
     <div class="faq-a">
-      <p>新宿駅からは電車・バスを乗り継いで約1時間25分（運賃約942円）、渋沢駅が最寄りです。横浜からは約1時間13分（運賃約898円）が目安です。車の場合は都心から約50分が目安です。</p>
+      <div><p>新宿駅からは電車・バスを乗り継いで約1時間25分（運賃約942円）、渋沢駅が最寄りです。横浜からは約1時間13分（運賃約898円）が目安です。車の場合は都心から約50分が目安です。</p></div>
     </div>
   </div>
   <div class="faq-item">
     <h2 class="faq-q">塔ノ岳の登山シーズンはいつですか？おすすめの時期</h2>
     <div class="faq-a">
-      <p>塔ノ岳の登山シーズンは通年が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。</p>
+      <div><p>塔ノ岳の登山シーズンは通年が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。</p></div>
     </div>
   </div>
 </div>
@@ -1144,6 +1192,22 @@ applyDepTrain();
       var id = tab.getAttribute('data-target');
       var el = document.getElementById(id);
       if(el) el.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.faq-item').forEach(function(item,i){
+    var q=item.querySelector('.faq-q');
+    if(!q) return;
+    if(i===0) item.classList.add('open');
+    q.setAttribute('role','button');
+    q.setAttribute('tabindex','0');
+    function t(){ item.classList.toggle('open'); }
+    q.addEventListener('click',t);
+    q.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); t(); }
     });
   });
 })();

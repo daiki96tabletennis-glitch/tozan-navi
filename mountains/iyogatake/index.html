@@ -76,9 +76,7 @@ main{max-width:680px;margin:0 auto;padding:18px}
 .rec-check{flex-shrink:0;margin-top:3px;width:13px;height:13px;color:#6a8055}
 .rec-list{display:flex;flex-direction:column;gap:7px}
 .rec-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#3a3530;line-height:1.5}
-.faq-item{padding:12px 0;border-bottom:1px solid #f0ede8}
 .faq-item:last-child{border-bottom:none;padding-bottom:0}
-.faq-q{font-size:14px;font-weight:700;color:#1a1a16;margin-bottom:6px;line-height:1.5;}
 .faq-q::before{content:"Q. ";color:#4e6535}
 .faq-a p{font-size:13px;color:#5a5248;line-height:1.8;padding-left:18px}
 .ts-section{background:transparent;border-radius:0;border:none;padding:0;margin-bottom:0;}
@@ -177,6 +175,43 @@ main{max-width:680px;margin:0 auto;padding:18px}
 .bookmark-tabs{display:flex;gap:4px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;padding:2px 2px 0;border-bottom:1.5px solid #d4d0c4;margin:-11px 0 3px}
 .bookmark-tab{flex:0 0 auto;display:inline-flex;align-items:center;background:transparent;border:1px solid #d4d0c4;border-bottom:none;color:#1a1a16;font-size:12px;font-weight:700;padding:7px 9px 8px;margin-bottom:-1.5px;border-radius:8px 8px 0 0;white-space:nowrap;cursor:pointer;font-family:inherit;transition:transform .13s ease,background .15s ease}
 .bookmark-tab:active{transform:scale(0.94);background:#eeece4}
+
+/* FAQ アコーディオン */
+.faq-item{padding:0;border-bottom:1px solid #eae5dc;}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;font-weight:700;color:#1a1a16;
+  margin:0;padding:13px 26px 13px 0;line-height:1.55;cursor:pointer;position:relative;
+  -webkit-tap-highlight-color:transparent;}
+.faq-q::before{content:"Q";flex-shrink:0;width:20px;height:20px;border-radius:5px;
+  background:#4e6535;color:#fff;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.faq-q::after{content:"";position:absolute;right:6px;top:20px;width:7px;height:7px;
+  border-right:2px solid #9a958a;border-bottom:2px solid #9a958a;
+  transform:rotate(45deg);transition:transform .22s ease;}
+.faq-item.open .faq-q::after{transform:rotate(-135deg);}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease;}
+.faq-item.open .faq-a{grid-template-rows:1fr;}
+.faq-a>div{overflow:hidden;}
+.faq-a p{margin:0;padding:0 4px 14px 29px;font-size:12.5px;line-height:1.85;color:#4a443c;
+  border-left:2px solid #eaf1e0;margin-left:9px;}
+
+/* 難易度セクション */
+.dl-card{margin-top:-10px;padding-top:14px;padding-bottom:18px;border-top:none;}
+.dl-head{display:flex;align-items:baseline;gap:8px;margin-bottom:7px;flex-wrap:wrap;}
+.dl-label{font-size:12px;color:#8a8578;font-weight:600;}
+.dl-value{font-size:17px;font-weight:800;color:#4e6535;}
+.dl-score{font-size:11px;color:#8a8578;margin-left:auto;font-weight:600;}
+.dl-bar{display:flex;gap:3px;margin-bottom:4px;}
+.dl-seg{flex:1;height:8px;border-radius:2px;background:#e8e4dc;}
+.dl-seg.on{background:linear-gradient(90deg,#7a9a5a,#4e6535);}
+.dl-seg.on.warn{background:linear-gradient(90deg,#d9a441,#c07020);}
+.dl-seg.on.hard{background:linear-gradient(90deg,#d97a5a,#b04a28);}
+.dl-scale{display:flex;justify-content:space-between;font-size:10px;color:#a09888;margin:0 0 8px;}
+.dl-reasons{list-style:none;padding:0;margin:0;}
+.dl-reasons li{position:relative;padding:2px 0 2px 18px;font-size:12.5px;line-height:1.6;color:#3a3a36;}
+.dl-reasons li::before{content:"";position:absolute;left:3px;top:9px;width:5px;height:5px;border-radius:50%;background:#4e6535;}
+.dl-reasons li.minus::before{background:#c07020;}
+.dl-note{font-size:11.5px;color:#8a8578;line-height:1.6;margin:0;}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
 <link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
@@ -217,7 +252,7 @@ main{max-width:680px;margin:0 auto;padding:18px}
     </div>
     <div class="stats-row">
       <div class="stat-card"><div class="stat-val">336</div><div class="stat-unit">m</div><div class="stat-label">標高</div></div>
-      <div class="stat-card"><div class="stat-val">5〜8</div><div class="stat-unit">コース定数</div><div class="stat-label">体力度</div></div>
+      <div class="stat-card"><div class="stat-val">5〜8</div><div class="stat-unit">コース定数</div><div class="stat-label">難易度：初〜中級</div></div>
       <div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">1.5</div><div class="stat-unit" id="hero-unit">時間〜</div><div class="stat-label" id="hero-dep-label">大船から</div></div>
     </div>
   </div>
@@ -228,6 +263,19 @@ main{max-width:680px;margin:0 auto;padding:18px}
   </div>
 
   <div class="card"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>山の紹介</h2><p class="intro-text">千葉県内で唯一「岳」がつく山として知られる房総のマッターホルン。標高336mながら山頂の岩壁から見た鋭峰ぶりが迫力満点。南峰と北峰からなり、北峰直下に設けられた鎖場が最大の見どころ。急傾斜だが足場はしっかりしており、慎重に登れば初心者でも通過できる。山頂からは東京湾・三浦半島・富山などのパノラマが広がる。通年登山が可能で、伊予ヶ岳→富山（とみさん）の縦走コースが定番の楽しみ方。</p></div>
+
+  <div class="card dl-card">
+  <h2 style="font-size:15px;font-weight:700;color:#2a3820;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid #eaf1e0;"><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 L9 8 L13 15 L16 11 L21 20 Z"/></svg>難易度</h2>
+  <div class="dl-head">
+    <span class="dl-label">難易度</span>
+    <span class="dl-value">初〜中級</span>
+    <span class="dl-score">10段階中 4</span>
+  </div>
+  <div class="dl-bar"><div class="dl-seg on"></div><div class="dl-seg on"></div><div class="dl-seg on"></div><div class="dl-seg on"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div></div>
+  <div class="dl-scale"><span>やさしい</span><span>難しい</span></div>
+  <p class="dl-note">伊予ヶ岳は初〜中級レベル（コース定数5〜8）。代表コースの平群天神社往復（北峰）は1時間30分・3.2km・標高差+290m。</p>
+</div>
+
 
   <div style="padding:24px 0;border-bottom:1px solid #ccc7ba" id="sec-train">
     <div class="ts-section">
@@ -352,9 +400,9 @@ main{max-width:680px;margin:0 auto;padding:18px}
 
   <div class="card">
     <h2 style="font-size:15px;font-weight:700;color:#2a3820;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #eaf1e0;"><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.5 2.5 0 1 1 3.7 2.2c-.8.5-1.2 1-1.2 2"/><line x1="12" y1="17" x2="12" y2="17.1"/></svg>よくある質問</h2>
-    <div class="faq-item"><h2 class="faq-q">伊予ヶ岳の難易度とコース定数は？</h2><div class="faq-a"><p>難易度は初〜中級、コース定数5〜8です。往復コースで約1時間30分と手軽ですが、北峰直下に急傾斜の鎖場があります。グローブを持参すると安心です。</p></div></div>
-<div class="faq-item"><h2 class="faq-q">伊予ヶ岳へのアクセス方法は？</h2><div class="faq-a"><p>JR内房線の岩井駅から南房総市営バス（トミー号）で約15分、天神郷バス停下車。徒歩5分で平群天神社（登山口）です。新宿から約2時間でアクセスできます。</p></div></div>
-<div class="faq-item"><h2 class="faq-q">伊予ヶ岳の鎖場は初心者でも大丈夫ですか？</h2><div class="faq-a"><p>北峰直下の鎖場は急峻ですが足場はしっかりしており、慎重に登れば初心者でも通過可能です。グローブがあると安心。南峰には鎖場がなく、不安な方は南峰のみのコースも選択できます。</p></div></div>
+    <div class="faq-item"><h2 class="faq-q">伊予ヶ岳の難易度とコース定数は？</h2><div class="faq-a"><div><p>難易度は初〜中級、コース定数5〜8です。往復コースで約1時間30分と手軽ですが、北峰直下に急傾斜の鎖場があります。グローブを持参すると安心です。</p></div></div></div>
+<div class="faq-item"><h2 class="faq-q">伊予ヶ岳へのアクセス方法は？</h2><div class="faq-a"><div><p>JR内房線の岩井駅から南房総市営バス（トミー号）で約15分、天神郷バス停下車。徒歩5分で平群天神社（登山口）です。新宿から約2時間でアクセスできます。</p></div></div></div>
+<div class="faq-item"><h2 class="faq-q">伊予ヶ岳の鎖場は初心者でも大丈夫ですか？</h2><div class="faq-a"><div><p>北峰直下の鎖場は急峻ですが足場はしっかりしており、慎重に登れば初心者でも通過可能です。グローブがあると安心。南峰には鎖場がなく、不安な方は南峰のみのコースも選択できます。</p></div></div></div>
 
   </div>
 
@@ -554,6 +602,22 @@ applyDepTrain();
       var id = tab.getAttribute('data-target');
       var el = document.getElementById(id);
       if(el) el.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.faq-item').forEach(function(item,i){
+    var q=item.querySelector('.faq-q');
+    if(!q) return;
+    if(i===0) item.classList.add('open');
+    q.setAttribute('role','button');
+    q.setAttribute('tabindex','0');
+    function t(){ item.classList.toggle('open'); }
+    q.addEventListener('click',t);
+    q.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); t(); }
     });
   });
 })();

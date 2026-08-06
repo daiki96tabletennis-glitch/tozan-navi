@@ -162,9 +162,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .rl-chip{font-size:10px;padding:2px 7px;border-radius:20px;background:#eaf1e0;color:#4e6535;font-weight:500;}
 .rl-chip-coef{background:#eaf1e0;color:#4e6535;}
 
-.faq-item{padding:12px 0;border-bottom:1px solid #f0ede8;}
 .faq-item:last-child{border-bottom:none;padding-bottom:0;}
-.faq-q{font-size:14px;font-weight:700;color:#1a1a16;margin-bottom:6px;line-height:1.5;}
 .faq-q::before{content:"Q. ";color:#4e6535;}
 .faq-a p{font-size:13px;color:#5a5248;line-height:1.8;padding-left:18px;}
 
@@ -245,6 +243,43 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .bookmark-tabs{display:flex;gap:4px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;padding:2px 2px 0;border-bottom:1.5px solid #d4d0c4;margin:-11px 0 3px}
 .bookmark-tab{flex:0 0 auto;display:inline-flex;align-items:center;background:transparent;border:1px solid #d4d0c4;border-bottom:none;color:#1a1a16;font-size:12px;font-weight:700;padding:7px 9px 8px;margin-bottom:-1.5px;border-radius:8px 8px 0 0;white-space:nowrap;cursor:pointer;font-family:inherit;transition:transform .13s ease,background .15s ease}
 .bookmark-tab:active{transform:scale(0.94);background:#eeece4}
+
+/* FAQ アコーディオン */
+.faq-item{padding:0;border-bottom:1px solid #eae5dc;}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;font-weight:700;color:#1a1a16;
+  margin:0;padding:13px 26px 13px 0;line-height:1.55;cursor:pointer;position:relative;
+  -webkit-tap-highlight-color:transparent;}
+.faq-q::before{content:"Q";flex-shrink:0;width:20px;height:20px;border-radius:5px;
+  background:#4e6535;color:#fff;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.faq-q::after{content:"";position:absolute;right:6px;top:20px;width:7px;height:7px;
+  border-right:2px solid #9a958a;border-bottom:2px solid #9a958a;
+  transform:rotate(45deg);transition:transform .22s ease;}
+.faq-item.open .faq-q::after{transform:rotate(-135deg);}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease;}
+.faq-item.open .faq-a{grid-template-rows:1fr;}
+.faq-a>div{overflow:hidden;}
+.faq-a p{margin:0;padding:0 4px 14px 29px;font-size:12.5px;line-height:1.85;color:#4a443c;
+  border-left:2px solid #eaf1e0;margin-left:9px;}
+
+/* 難易度セクション */
+.dl-card{margin-top:-10px;padding-top:14px;padding-bottom:18px;border-top:none;}
+.dl-head{display:flex;align-items:baseline;gap:8px;margin-bottom:7px;flex-wrap:wrap;}
+.dl-label{font-size:12px;color:#8a8578;font-weight:600;}
+.dl-value{font-size:17px;font-weight:800;color:#4e6535;}
+.dl-score{font-size:11px;color:#8a8578;margin-left:auto;font-weight:600;}
+.dl-bar{display:flex;gap:3px;margin-bottom:4px;}
+.dl-seg{flex:1;height:8px;border-radius:2px;background:#e8e4dc;}
+.dl-seg.on{background:linear-gradient(90deg,#7a9a5a,#4e6535);}
+.dl-seg.on.warn{background:linear-gradient(90deg,#d9a441,#c07020);}
+.dl-seg.on.hard{background:linear-gradient(90deg,#d97a5a,#b04a28);}
+.dl-scale{display:flex;justify-content:space-between;font-size:10px;color:#a09888;margin:0 0 8px;}
+.dl-reasons{list-style:none;padding:0;margin:0;}
+.dl-reasons li{position:relative;padding:2px 0 2px 18px;font-size:12.5px;line-height:1.6;color:#3a3a36;}
+.dl-reasons li::before{content:"";position:absolute;left:3px;top:9px;width:5px;height:5px;border-radius:50%;background:#4e6535;}
+.dl-reasons li.minus::before{background:#c07020;}
+.dl-note{font-size:11.5px;color:#8a8578;line-height:1.6;margin:0;}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TMTVVTEEGF');</script>
@@ -290,7 +325,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </div></div>
     <div class="stats-row">
       <div class="stat-card"><div class="stat-val">702</div><div class="stat-unit">m</div><div class="stat-label">標高</div></div>
-      <div class="stat-card"><div class="stat-val">16〜22</div><div class="stat-unit">コース定数</div><div class="stat-label">体力度</div></div>
+      <div class="stat-card"><div class="stat-val">16〜22</div><div class="stat-unit">コース定数</div><div class="stat-label">難易度：初〜中級</div></div>
       <div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">55</div><div class="stat-unit" id="hero-unit">分〜</div><div class="stat-label" id="hero-dep-label">大船から</div></div>
     </div>
   </div>
@@ -303,6 +338,19 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   </div>
 
   <div class="card"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>山の紹介</h2><p class="intro-text">相模湖の南岸に位置する神奈川の人気低山。奇岩・巨岩が連続する顕鏡寺参道が見どころで、山頂から相模湖と富士山の展望が広がる。巨石に囲まれた古刹・顕鏡寺から登る岩岩ルートが魅力で、下山後にさがみ湖温泉うるりへ直行できる。</p></div>
+
+  <div class="card dl-card">
+  <h2 style="font-size:15px;font-weight:700;color:#2a3820;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid #eaf1e0;"><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 L9 8 L13 15 L16 11 L21 20 Z"/></svg>難易度</h2>
+  <div class="dl-head">
+    <span class="dl-label">難易度</span>
+    <span class="dl-value">初〜中級</span>
+    <span class="dl-score">10段階中 4</span>
+  </div>
+  <div class="dl-bar"><div class="dl-seg on"></div><div class="dl-seg on"></div><div class="dl-seg on"></div><div class="dl-seg on"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div></div>
+  <div class="dl-scale"><span>やさしい</span><span>難しい</span></div>
+  <p class="dl-note">石老山は初〜中級レベル（コース定数16〜22）。代表コースの顕鏡寺コース（周回）は3時間30分・7.5km・標高差+620m。</p>
+</div>
+
   <div style="padding:24px 0;border-bottom:1px solid #ccc7ba" id="sec-train"><div class="ts-section"><div class="ts-header"><div class="ts-title"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>電車・バスでのアクセス</div><span class="ts-badge ts-badge-year"><svg width="11" height="11" viewBox="0 0 24 24" style="vertical-align:-1.5px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>年中運行</span></div><div class="ts-line-name">JR中央本線</div><div class="ts-route ts-route-shinjuku"><div class="ts-step"><div class="ts-node"><div class="ts-station">新宿駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>JR中央本線　<span class="ts-duration">約1時間5分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">相模湖駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>神奈川中央交通バス　<span class="ts-duration">約7分</span></span></div></div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">石老山入口バス停</div></div></div></div><div class="ts-route ts-route-omiya" style="display:none"><div class="ts-step"><div class="ts-node"><div class="ts-station">大宮駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>JR湘南新宿ライン　<span class="ts-duration">約30分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">新宿駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>JR中央本線　<span class="ts-duration">約1時間5分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">相模湖駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>神奈川中央交通バス　<span class="ts-duration">約7分</span></span></div></div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">石老山入口バス停</div></div></div></div><div class="ts-route ts-route-yokohama" style="display:none"><div class="ts-step"><div class="ts-node"><div class="ts-station">横浜駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>JR湘南新宿ライン　<span class="ts-duration">約34分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">新宿駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>JR中央本線　<span class="ts-duration">約1時間5分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">相模湖駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>神奈川中央交通バス　<span class="ts-duration">約7分</span></span></div></div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">石老山入口バス停</div></div></div></div><div class="ts-summary"><div class="ts-dep-toggle"><button type="button" class="ts-dep-btn active" data-key="shinjuku" onclick="changeDepTrain('shinjuku')">新宿発</button><button type="button" class="ts-dep-btn" data-key="omiya" onclick="changeDepTrain('omiya')">大宮発</button><button type="button" class="ts-dep-btn" data-key="yokohama" onclick="changeDepTrain('yokohama')">横浜発</button></div><span class="ts-time-val" data-shinjuku="約1時間12分" data-omiya="約1時間42分" data-yokohama="約1時間46分">約1時間12分</span><span class="ts-fare-val" data-shinjuku="片道約1,280円" data-omiya="片道約1,808円" data-yokohama="片道約1,896円">片道約1,280円</span></div><div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=相模湖駅&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>乗換案内で検索</a><a href="https://www.navitime.co.jp/bus/diagram/timelist?departure=00128918&arrival=00128910&line=00029910" target="_blank" rel="noopener" class="ts-link ts-link-bus"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>バス時刻表</a></div></div></div>
   <div class="card" id="sec-car"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="7" cy="18" r="2" fill="currentColor"/><circle cx="17" cy="18" r="2" fill="currentColor"/></svg>車でのアクセス時間</h2><div class="ag-a" id="access-grid"><div class="ai-a" data-dep="大船駅" data-min="55"><div class="ai-a-dep">大船駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:15%"></div></div><div class="ai-a-val">55分</div></div>
 <div class="ai-a" data-dep="横浜駅" data-min="65"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:18%"></div></div><div class="ai-a-val">1時間5分</div></div>
@@ -400,7 +448,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 
   <div class="card">
     <h2 style="font-size:15px;font-weight:700;color:#1a1a16;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #eaf1e0;"><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.5 2.5 0 1 1 3.7 2.2c-.8.5-1.2 1-1.2 2"/><line x1="12" y1="17" x2="12" y2="17.1"/></svg>よくある質問</h2>
-<div class="faq-item"><div class="faq-q">石老山は初心者でも登れますか？難易度とコース定数を解説</div><div class="faq-a"><p>石老山の難易度は初〜中級、コース定数16〜22です。代表的な顕鏡寺コース（周回）は3時間30分・7.5km・標高差+620mが目安。日帰り登山が可能です。登山靴・レインウェア・水は必携です。</p></div></div><div class="faq-item"><div class="faq-q">石老山の所要時間は？日帰りできますか？</div><div class="faq-a"><p>石老山は日帰り登山が可能です。コース定数16〜22を参考に体力に合ったプランを選んでください。</p></div></div><div class="faq-item"><div class="faq-q">石老山へのアクセス方法は？新宿・横浜からの行き方</div><div class="faq-a"><p>新宿駅→相模湖駅→神奈川中央交通バス約7分→石老山入口バス停</p></div></div><div class="faq-item"><div class="faq-q">石老山の登山シーズンはいつですか？おすすめの時期</div><div class="faq-a"><p>通年（夏はヒル注意）が登りやすいシーズンです。</p></div></div>
+<div class="faq-item"><div class="faq-q">石老山は初心者でも登れますか？難易度とコース定数を解説</div><div class="faq-a"><div><p>石老山の難易度は初〜中級、コース定数16〜22です。代表的な顕鏡寺コース（周回）は3時間30分・7.5km・標高差+620mが目安。日帰り登山が可能です。登山靴・レインウェア・水は必携です。</p></div></div></div><div class="faq-item"><div class="faq-q">石老山の所要時間は？日帰りできますか？</div><div class="faq-a"><div><p>石老山は日帰り登山が可能です。コース定数16〜22を参考に体力に合ったプランを選んでください。</p></div></div></div><div class="faq-item"><div class="faq-q">石老山へのアクセス方法は？新宿・横浜からの行き方</div><div class="faq-a"><div><p>新宿駅→相模湖駅→神奈川中央交通バス約7分→石老山入口バス停</p></div></div></div><div class="faq-item"><div class="faq-q">石老山の登山シーズンはいつですか？おすすめの時期</div><div class="faq-a"><div><p>通年（夏はヒル注意）が登りやすいシーズンです。</p></div></div></div>
   </div>
 
   <div class="rw"><p class="rh"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 L9 9 L13 15 L16 11 L21 20 Z"/></svg>近くて似た山</p><div class="rg"><a href="/mountains/jinba/" class="rc rc-blue"><div class="rn">陣馬山</div><div class="rb"><span class="rbd" style="background:#edf4e8;color:#3a5a3a">初〜中級</span><span class="rbc">定数3〜81</span></div><div class="rt" id="nearby-time-jinba" data-ofuna="1時間15分" data-shinjuku="1時間10分" data-yokohama="1時間10分" data-omiya="1時間25分">1時間15分<span class="rs" id="nearby-label-jinba">大船から</span></div></a>
@@ -642,6 +690,22 @@ applyDepTrain();
     });
   };
   applyDep();
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.faq-item').forEach(function(item,i){
+    var q=item.querySelector('.faq-q');
+    if(!q) return;
+    if(i===0) item.classList.add('open');
+    q.setAttribute('role','button');
+    q.setAttribute('tabindex','0');
+    function t(){ item.classList.toggle('open'); }
+    q.addEventListener('click',t);
+    q.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); t(); }
+    });
+  });
 })();
 </script>
 </body>
