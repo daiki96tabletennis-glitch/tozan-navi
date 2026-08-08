@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Yamatch 管理画面</title>
-<meta name="robots" content="noindex, nofollow">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;background:#e8e0d5;color:#3a3530;font-size:14px;}
@@ -15,6 +14,8 @@ header{background:linear-gradient(135deg,#4a6038,#607848);padding:12px 16px;posi
 .header-title{color:white;font-size:16px;font-weight:800;}
 .header-badge{background:rgba(255,255,255,0.2);color:white;font-size:10px;padding:2px 8px;border-radius:10px;}
 .header-back{color:rgba(255,255,255,0.7);font-size:12px;margin-left:auto;}
+.header-image-tool{background:white;color:#36502a;font-size:12px;font-weight:700;padding:7px 10px;border-radius:8px;text-decoration:none;white-space:nowrap;}
+.header-image-tool:hover{background:#eef4e8;}
 
 main{max-width:680px;margin:0 auto;padding:12px;}
 
@@ -168,6 +169,7 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
     <svg width="22" height="22" viewBox="0 0 36 36"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
     <div class="header-title">Yamatch 管理画面</div>
     <span class="header-badge">⚙️ Admin</span>
+    <a href="/admin/images/" class="header-image-tool">📷 山画像を管理</a>
     <a href="/" class="header-back">← サイトへ戻る</a>
   </div>
 </header>
@@ -253,15 +255,6 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
           <input type="number" id="f-ccmax" min="0" max="200" oninput="markChanged()">
         </div>
       </div>
-    </div>
-
-    <!-- 山の写真 -->
-    <div class="section-card">
-      <div class="section-title">📷 山の写真（複数可・ヒーローカードに自動スクロール表示）</div>
-      <div class="field">
-        <input type="file" id="f-photo-input" accept="image/*" multiple onchange="handlePhotoFiles(this.files)">
-      </div>
-      <div id="photo-preview-grid" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px"></div>
     </div>
 
     <!-- YAMAPリンク -->
@@ -653,10 +646,7 @@ function openEdit(id) {
 
   // 電車バスルート
   renderTrainRoutes(currentMountain.trainRoutes || []);
-
-  // 写真
-  loadPhotoState(currentMountain);
-
+  
   // パネル切り替え
   document.getElementById('list-panel').classList.add('hidden');
   document.getElementById('edit-panel').classList.add('active');
@@ -792,97 +782,6 @@ function getFormData() {
   };
 }
 
-// ===== 写真管理 =====
-var photoState = []; // {type:'existing', url} または {type:'new', file, dataUrl, filename}
-
-function loadPhotoState(mt) {
-  photoState = (mt.photos || []).map(function(url) {
-    return { type: 'existing', url: url };
-  });
-  renderPhotoPreviews();
-}
-
-function resizeImageFile(file, maxDim, quality) {
-  return new Promise(function(resolve, reject) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      var img = new Image();
-      img.onload = function() {
-        var w = img.width, h = img.height;
-        if (w > maxDim || h > maxDim) {
-          if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; }
-          else { w = Math.round(w * maxDim / h); h = maxDim; }
-        }
-        var canvas = document.createElement('canvas');
-        canvas.width = w;
-        canvas.height = h;
-        var ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0, w, h);
-        resolve(canvas.toDataURL('image/jpeg', quality));
-      };
-      img.onerror = function() { reject(new Error('画像の読み込みに失敗しました: ' + file.name)); };
-      img.src = e.target.result;
-    };
-    reader.onerror = function() { reject(new Error('ファイルの読み込みに失敗しました: ' + file.name)); };
-    reader.readAsDataURL(file);
-  });
-}
-
-function handlePhotoFiles(fileList) {
-  var files = Array.from(fileList);
-  files.forEach(function(file) {
-    // 最大辺1600px・JPEG品質0.82に圧縮してからphotoStateへ格納
-    // (GitHub Contents APIは1ファイルあたり約1MBまでのため、スマホ写真をそのまま送るとここで失敗する)
-    resizeImageFile(file, 1600, 0.82).then(function(dataUrl) {
-      var approxBytes = Math.round(dataUrl.length * 0.75);
-      if (approxBytes > 950000) {
-        // それでも大きい場合はさらに圧縮
-        return resizeImageFile(file, 1200, 0.75).then(function(smallerDataUrl) {
-          photoState.push({
-            type: 'new',
-            file: file,
-            dataUrl: smallerDataUrl,
-            filename: file.name.replace(/[^a-zA-Z0-9_.-]/g, '_').replace(/\.(heic|heif|png)$/i, '.jpg')
-          });
-          renderPhotoPreviews();
-          markChanged();
-        });
-      }
-      photoState.push({
-        type: 'new',
-        file: file,
-        dataUrl: dataUrl,
-        filename: file.name.replace(/[^a-zA-Z0-9_.-]/g, '_').replace(/\.(heic|heif|png)$/i, '.jpg')
-      });
-      renderPhotoPreviews();
-      markChanged();
-    }).catch(function(err) {
-      alert('写真の処理に失敗しました（' + file.name + '）: ' + err.message);
-    });
-  });
-  document.getElementById('f-photo-input').value = '';
-}
-
-function removePhoto(idx) {
-  photoState.splice(idx, 1);
-  renderPhotoPreviews();
-  markChanged();
-}
-
-function renderPhotoPreviews() {
-  var grid = document.getElementById('photo-preview-grid');
-  if (!grid) return;
-  grid.innerHTML = photoState.map(function(p, i) {
-    var src = p.type === 'existing' ? p.url : p.dataUrl;
-    var badge = p.type === 'new' ? '<span style="position:absolute;top:2px;left:2px;background:#4e6535;color:white;font-size:9px;padding:1px 5px;border-radius:3px">新規</span>' : '';
-    return '<div style="position:relative;width:90px;height:90px;border-radius:8px;overflow:hidden;border:1px solid #ddd">' +
-      '<img src="' + src + '" style="width:100%;height:100%;object-fit:cover">' +
-      badge +
-      '<button onclick="removePhoto(' + i + ')" style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.6);color:white;border:none;border-radius:50%;width:20px;height:20px;font-size:12px;cursor:pointer;line-height:1">×</button>' +
-      '</div>';
-  }).join('');
-}
-
 // ===== GitHub トークン管理 =====
 function saveToken() {
   var token = document.getElementById('gh-token-input').value.trim();
@@ -921,64 +820,26 @@ async function pushToGitHub() {
     return;
   }
 
+  // 現在の編集内容をallMountainsに反映
+  if (currentMountain) {
+    var formData = getFormData();
+    var changes = buildChanges(currentMountain, formData);
+    if (changes.length > 0) recordChange(currentMountain.id, currentMountain.name, changes);
+    var idx = allMountains.findIndex(function(m) { return m.id === currentMountain.id; });
+    if (idx >= 0) Object.assign(allMountains[idx], formData);
+  }
+
+  var content = JSON.stringify(allMountains, null, 2);
+  var owner = 'daiki96tabletennis-glitch';
+  var repo = 'tozan-navi';
+  var path = 'data/mountains.json';
+  var apiBase = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + path;
+
   btn.disabled = true;
   statusEl.className = 'gh-push-status pushing';
-  statusEl.textContent = '⏳ 準備中...';
+  statusEl.textContent = '⏳ GitHubに接続中...';
 
   try {
-    // 現在の編集内容をallMountainsに反映
-    if (currentMountain) {
-      var formData = getFormData();
-      var changes = buildChanges(currentMountain, formData);
-      if (changes.length > 0) recordChange(currentMountain.id, currentMountain.name, changes);
-      var idx = allMountains.findIndex(function(m) { return m.id === currentMountain.id; });
-      if (idx >= 0) Object.assign(allMountains[idx], formData);
-
-      // 写真アップロード（新規分のみGitHubにPUTし、photos配列を確定）
-      var newPhotos = photoState.filter(function(p) { return p.type === 'new'; });
-      if (newPhotos.length > 0) {
-        for (var pi = 0; pi < newPhotos.length; pi++) {
-          var p = newPhotos[pi];
-          statusEl.textContent = '⏳ 写真をアップロード中... (' + (pi + 1) + '/' + newPhotos.length + ')';
-          var imgPath = 'images/mountains/' + currentMountain.id + '/' + Date.now() + '_' + p.filename;
-          var imgApiBase = 'https://api.github.com/repos/daiki96tabletennis-glitch/tozan-navi/contents/' + imgPath;
-          var base64Data = p.dataUrl.split(',')[1];
-          var imgPutRes = await fetch(imgApiBase, {
-            method: 'PUT',
-            headers: {
-              'Authorization': 'token ' + token,
-              'Accept': 'application/vnd.github.v3+json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              message: '[admin] ' + currentMountain.id + ' の写真を追加',
-              content: base64Data
-            })
-          });
-          if (!imgPutRes.ok) {
-            var imgErrJson = await imgPutRes.json().catch(function() { return {}; });
-            throw new Error('写真アップロード失敗（' + p.filename + '）: ' + (imgErrJson.message || imgPutRes.status));
-          }
-          p.type = 'existing';
-          p.url = '/' + imgPath;
-        }
-        var finalPhotos = photoState.map(function(p) { return p.url; });
-        allMountains[idx].photos = finalPhotos;
-        renderPhotoPreviews();
-      } else if (photoState.length !== (currentMountain.photos || []).length) {
-        // 削除のみの場合もphotos配列を反映
-        allMountains[idx].photos = photoState.map(function(p) { return p.url; });
-      }
-    }
-
-    var content = JSON.stringify(allMountains, null, 2);
-    var owner = 'daiki96tabletennis-glitch';
-    var repo = 'tozan-navi';
-    var path = 'data/mountains.json';
-    var apiBase = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + path;
-
-    statusEl.textContent = '⏳ GitHubに接続中...';
-
     // 現在のSHAを取得
     var getRes = await fetch(apiBase, {
       headers: {
