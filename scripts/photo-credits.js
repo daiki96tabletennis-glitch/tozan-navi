@@ -1,11 +1,1 @@
-(function(){
-  var match=location.pathname.match(/^\/mountains\/([^/]+)/); if(!match) return;
-  fetch('/data/image-credits.json').then(function(r){return r.ok?r.json():{};}).then(function(all){
-    var photos=all[match[1]]; if(!photos||!photos.length) return;
-    var box=document.createElement('details'); box.className='photo-credits';
-    box.innerHTML='<summary>写真クレジット</summary>';
-    var list=document.createElement('ul');
-    photos.forEach(function(p){var item=document.createElement('li'); var author=document.createElement('span'); author.textContent=p.author||'作者不明'; item.appendChild(author); item.appendChild(document.createTextNode(' / ')); var license=document.createElement('a'); license.textContent=p.license||'ライセンス不明'; license.href=p.licenseUrl||p.commonsPageUrl; license.target='_blank'; license.rel='noopener'; item.appendChild(license); item.appendChild(document.createTextNode(' / ')); var source=document.createElement('a'); source.textContent='Wikimedia Commons'; source.href=p.commonsPageUrl; source.target='_blank'; source.rel='noopener'; item.appendChild(source); list.appendChild(item);});
-    box.appendChild(list); (document.querySelector('.hero-new')||document.querySelector('main')||document.body).after(box);
-  }).catch(function(){});
-})();
+(function(){var m=location.pathname.match(/^\/mountains\/([^/]+)/);if(!m)return;fetch('/data/image-credits.json').then(function(r){return r.ok?r.json():{}}).then(function(all){var ps=all[m[1]];if(!ps||!ps.length)return;var d=document.createElement('details');d.style.cssText='max-width:680px;margin:12px auto;padding:10px 14px;background:#f7f6f2;border-radius:8px;font-size:12px';d.innerHTML='<summary>写真クレジット</summary>';var ul=document.createElement('ul');ps.forEach(function(p){var li=document.createElement('li');li.textContent=(p.author||'作者不明')+' / ';var a=document.createElement('a');a.textContent=p.license||'ライセンス不明';a.href=p.licenseUrl||p.commonsPageUrl;a.target='_blank';li.appendChild(a);li.appendChild(document.createTextNode(' / '));var c=document.createElement('a');c.textContent='Wikimedia Commons';c.href=p.commonsPageUrl;c.target='_blank';li.appendChild(c);ul.appendChild(li)});d.appendChild(ul);(document.querySelector('.hero-new')||document.querySelector('main')||document.body).after(d)})})();
