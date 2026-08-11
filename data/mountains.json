@@ -1107,7 +1107,11 @@
     "trainTimeYokohama": 203,
     "trainTimeOmiya": 156,
     "trainInfo": "新宿→池袋（JR埼京線・約9分/170円）→西武秩父（特急ちちぶ・約100分/1,686円）→日向大谷口（小鹿野町営バス約60分・薬師の湯乗継/500円）",
-    "trainTimeShinjuku": 174
+    "trainTimeShinjuku": 174,
+    "photos": [
+      "/images/mountains/ryokami/image-20260811130750427-4vyxt.jpg",
+      "/images/mountains/ryokami/image-20260811130753312-n8ug9.jpg"
+    ]
   },
   {
     "id": "kobushigatake",
@@ -17920,7 +17924,7 @@
       {
         "name": "高尾山口→高尾山→小仏城山縦走",
         "time": "4時間",
-        "distance": 9.0
+        "distance": 9
       }
     ],
     "busUrl": "https://transfer.navitime.biz/keio-bus/pc/diagram/BusDiagram?stationCd=00003793&updown=0",
@@ -17975,12 +17979,12 @@
       {
         "name": "高尾山口→草戸山→橋本駅縦走",
         "time": "3時間30分",
-        "distance": 11.0
+        "distance": 11
       },
       {
         "name": "高尾山口→草戸山ピストン",
         "time": "2時間30分",
-        "distance": 7.0
+        "distance": 7
       }
     ],
     "busUrl": "",
@@ -18739,7 +18743,7 @@
       }
     ],
     "lat": 35.3,
-    "lng": 139.0,
+    "lng": 139,
     "season": "通年",
     "courseCoefficientRange": "12〜18",
     "courseCoefficient": [
