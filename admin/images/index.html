@@ -33,6 +33,7 @@
         <li>最後に「この山の変更をGitHubへ反映」を押します。</li>
       </ol>
       <p class="small">Commons画像は、商用利用可能なライセンスと必要情報を自動確認します。条件を満たさない写真は採用できません。</p>
+      <p class="small">同じ写真は、Commonsの元画像IDと画像内容の両方で重複確認します。既存の重複がある場合は「重複を整理」が表示されます。</p>
       <p class="small">スマートフォンから使う場合は、そのスマートフォンで通常の管理者画面を開き、GitHubトークンを一度保存してください。</p>
     </section>
 
@@ -53,8 +54,12 @@
           <h2>採用画像と表示順</h2>
           <p class="small">「公開中」は現在サイトにある写真です。削除・並べ替えはGitHubへ反映するまで確定しません。</p>
         </div>
-        <button id="reset" class="secondary compact" type="button">変更を元に戻す</button>
+        <div class="heading-actions">
+          <button id="dedupe" class="warning-button compact" type="button" hidden>重複を整理</button>
+          <button id="reset" class="secondary compact" type="button">変更を元に戻す</button>
+        </div>
       </div>
+      <div id="duplicate-notice" aria-live="polite"></div>
       <div id="selected" class="selected-grid">
         <span class="small">山データを読み込み中…</span>
       </div>

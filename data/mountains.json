@@ -9586,11 +9586,7 @@
     "transfersOmiya": 4,
     "trainTimeYokohama": 208,
     "trainTimeOmiya": 204,
-    "trainTimeShinjuku": 174,
-    "photos": [
-      "/images/mountains/kenashiyama/image-20260811122139855-35wvf.jpg",
-      "/images/mountains/kenashiyama/image-20260811122142509-si9gq.jpg"
-    ]
+    "trainTimeShinjuku": 174
   },
   {
     "id": "shirasunayama",
@@ -17852,11 +17848,7 @@
     "transfersYokohama": 1,
     "transfersOmiya": 1,
     "trainTimeYokohama": 114,
-    "trainTimeOmiya": 110,
-    "photos": [
-      "/images/mountains/takagawayama/image-20260811121246176-yvsyz.jpg",
-      "/images/mountains/takagawayama/image-20260811121248807-9trff.jpg"
-    ]
+    "trainTimeOmiya": 110
   },
   {
     "id": "kobotokeshiroyama",
@@ -20140,11 +20132,7 @@
     "transfersYokohama": 3,
     "transfersOmiya": 3,
     "trainTimeYokohama": 164,
-    "trainTimeOmiya": 160,
-    "photos": [
-      "/images/mountains/mitosaan/image-20260811122309604-73i1r.jpg",
-      "/images/mountains/mitosaan/image-20260811122312657-71sa8.jpg"
-    ]
+    "trainTimeOmiya": 160
   },
   {
     "id": "honitayama",
@@ -21483,5 +21471,188 @@
     "transfersOmiya": 2,
     "trainTimeYokohama": 143,
     "trainTimeOmiya": 126
+  },
+  {
+    "id": "azumayasan",
+    "name": "四阿山",
+    "kana": "あずまやさん",
+    "area": "群馬県・長野県",
+    "elevation": 2354,
+    "category": "百名山",
+    "difficulty": "中級",
+    "coeffMin": 24,
+    "coeffMax": 30,
+    "daytrip": true,
+    "trainAccess": null,
+    "driveOfuna": 245,
+    "driveShinjuku": 210,
+    "driveYokohama": 245,
+    "driveOmiya": 165,
+    "driveTachikawa": 270,
+    "description": "上信国境の雄峰。なだらかな山容で、高山植物が豊富。中級レベルでコース定数24〜30、日帰りでの登山が可能。代表コース（菅平高原ルート往復）は所要5時間30分/10.0km/標高差+900m。",
+    "yamapUrl": "https://yamap.com/mountains/51",
+    "trailhead": "菅平高原牧場",
+    "trailheadAddress": "長野県上田市菅平高原",
+    "parking": "菅平牧場駐車場（約50台・500円）",
+    "lat": 36.5384217,
+    "lng": 138.3723333,
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [],
+    "types": [],
+    "seasonOk": [
+      "summer",
+      "fall"
+    ],
+    "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-gear",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear",
+      "s-gear",
+      "s-hard"
+    ],
+    "calLegend": [
+      "アイゼン不要",
+      "6本アイゼンで可",
+      "12本アイゼン必要"
+    ],
+    "seasonNoGear": "6月〜9月",
+    "season6Crampons": "5月・10月〜11月",
+    "routes": [
+      {
+        "name": "菅平高原ルート（往復）",
+        "time": "5時間30分",
+        "distance": "10.0km",
+        "elevGain": "+900m"
+      },
+      {
+        "name": "根子岳〜四阿山縦走",
+        "time": "6時間",
+        "distance": "11.0km",
+        "elevGain": "+950m",
+        "waypoints": "根子岳 → 四阿山"
+      }
+    ],
+    "driveTime": 245,
+    "driveTimeShinjuku": 210,
+    "driveTimeYokohama": 245,
+    "driveTimeOmiya": 165,
+    "driveTimeTachikawa": 270,
+    "courseCoefficient": [
+      24,
+      30
+    ],
+    "courseCoefficientRange": "24〜30",
+    "season": "6月〜9月が登りやすいシーズン",
+    "address": "長野県上田市菅平高原",
+    "gmapUrl": "https://www.google.com/maps/search/?api=1&query=36.5384217%2C138.3723333&query_place_id=ChIJS9rp6e6UHWARP17t2EmjGuY",
+    "amapUrl": "https://maps.apple.com/?ll=36.5384217,138.3723333&q=%E8%8F%85%E5%B9%B3%E9%AB%98%E5%8E%9F%E7%89%A7%E5%A0%B4",
+    "nearestStation": null,
+    "lines": [],
+    "driveDistance": null
+  },
+  {
+    "id": "gozenyama",
+    "name": "御前山",
+    "kana": "ごぜんやま",
+    "area": "東京都",
+    "elevation": 1405,
+    "category": "人気の山",
+    "difficulty": "中級",
+    "coeffMin": 24,
+    "coeffMax": 34,
+    "daytrip": true,
+    "trainAccess": "新宿駅→JR中央線・青梅線→奥多摩駅→西東京バス「奥04 奥多摩湖行」→奥多摩湖バス停",
+    "trainLine": "JR中央線・青梅線・西東京バス「奥04 奥多摩湖行」",
+    "trainInfo": "新宿→奥多摩（JR中央線・青梅線・約1時間35分）→奥多摩湖バス停（西東京バス約15分）",
+    "trainTimeShinjuku": 110,
+    "trainTimeYokohama": 118,
+    "trainTimeOmiya": 140,
+    "fareShinjuku": 1571,
+    "fareYokohama": 1603,
+    "fareOmiya": 2099,
+    "driveOfuna": 90,
+    "driveShinjuku": 80,
+    "driveYokohama": 90,
+    "driveOmiya": 100,
+    "driveTachikawa": 55,
+    "description": "大岳山・三頭山とともに「奥多摩三山」に数えられる一峰（1,405m）。奥多摩湖の南岸にどっしりと構え、遠くから見た山容の美しさで知られる。田中澄江の著書「花の百名山」に春のカタクリの名所として紹介されており、4月下旬〜5月上旬は花目当ての登山者で賑わう。展望はあまり良くないが、序盤からの急登には登りごたえがある。奥多摩駅からバス一本でアクセスできる利便性の高さも魅力。",
+    "yamapUrl": "https://yamap.com/mountains/31",
+    "trailhead": "奥多摩湖バス停",
+    "trailheadAddress": "東京都西多摩郡奥多摩町原",
+    "parking": "小河内ダム駐車場（無料）",
+    "warnBanner": null,
+    "nearby": [],
+    "vibes": [],
+    "types": [],
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "routes": [
+      {
+        "name": "奥多摩湖→サス沢山→惣岳山→山頂→境橋（縦走）",
+        "time": "5時間25分",
+        "distance": "9.6km",
+        "elevGain": "+1230m"
+      },
+      {
+        "name": "奥多摩湖→惣岳山→山頂→鋸山→奥多摩駅（縦走）",
+        "time": "7時間",
+        "distance": "11.9km",
+        "elevGain": "+1490m"
+      }
+    ],
+    "driveTime": 90,
+    "driveTimeShinjuku": 80,
+    "driveTimeYokohama": 90,
+    "driveTimeOmiya": 100,
+    "driveTimeTachikawa": 55,
+    "courseCoefficient": [
+      24,
+      34
+    ],
+    "courseCoefficientRange": "24〜34",
+    "seasonNoGear": "4月〜11月",
+    "season6Crampons": "12月〜3月",
+    "season": "通年（4月下旬〜5月上旬のカタクリが見頃）",
+    "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear"
+    ],
+    "calLegend": [
+      "アイゼン不要",
+      "6本アイゼンで可"
+    ],
+    "address": "東京都西多摩郡奥多摩町原",
+    "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%A5%A5%E5%A4%9A%E6%91%A9%E6%B9%96%E3%83%90%E3%82%B9%E5%81%9C",
+    "nearestStation": "奥多摩駅",
+    "lines": [
+      "JR青梅線"
+    ],
+    "driveDistance": null,
+    "lat": 35.7905,
+    "lng": 139.0538,
+    "transfersShinjuku": 1,
+    "transfersYokohama": 2,
+    "transfersOmiya": 2
   }
 ]

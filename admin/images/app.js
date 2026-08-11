@@ -18,6 +18,7 @@
     drafts: {},
     originalPaths: {},
     ownFiles: {},
+    hashScans: {},
     lastApiRequestAt: 0
   };
 
@@ -166,6 +167,60 @@
     };
   }
 
+  function normalizeIdentity(value) {
+    let text = String(value || '');
+    try { text = decodeURIComponent(text); } catch (_) { /* 既にデコード済み */ }
+    return text.normalize('NFKC').replace(/^File:/i, '').replace(/[_\s]+/g, ' ').trim().toLowerCase();
+  }
+
+  function commonsIdentity(item) {
+    if (item.sourceId && String(item.sourceId).startsWith('commons:')) return String(item.sourceId);
+    const pageUrl = String(item.commonsPageUrl || item.sourcePageUrl || '');
+    const isCommons = item.source === 'wikimedia_commons' || /commons\.wikimedia\.org/i.test(pageUrl);
+    if (!isCommons) return '';
+    let title = item.fileName || '';
+    if (pageUrl) {
+      try {
+        const decodedPath = decodeURIComponent(new URL(pageUrl).pathname);
+        const match = decodedPath.match(/\/wiki\/(?:File:)?(.+)$/i);
+        if (match && match[1]) title = match[1];
+      } catch (_) { /* fileNameへフォールバック */ }
+    }
+    const normalized = normalizeIdentity(title);
+    return normalized ? 'commons:' + normalized : '';
+  }
+
+  function imageIdentityKeys(item) {
+    const keys = [];
+    const sourceKey = commonsIdentity(item);
+    if (sourceKey) keys.push(sourceKey);
+    if (item.contentHash) keys.push('sha256:' + String(item.contentHash).toLowerCase());
+    return keys;
+  }
+
+  function sameImage(first, second) {
+    const firstKeys = new Set(imageIdentityKeys(first));
+    return imageIdentityKeys(second).some((key) => firstKeys.has(key));
+  }
+
+  function duplicateAnalysis(items) {
+    const seen = new Map();
+    const extras = new Set();
+    const matches = [];
+    items.forEach((item, index) => {
+      const keys = imageIdentityKeys(item);
+      const originalIndex = keys.map((key) => seen.get(key)).find((value) => value !== undefined);
+      if (originalIndex !== undefined) {
+        extras.add(index);
+        matches.push({ originalIndex, duplicateIndex: index });
+      }
+      keys.forEach((key) => {
+        if (!seen.has(key)) seen.set(key, originalIndex !== undefined ? originalIndex : index);
+      });
+    });
+    return { extras, matches };
+  }
+
   function scoreCandidate(item, mountain, englishName) {
     let score = item.method === 'wikidata_p18' ? 50 : 0;
     const ja = String(mountain.name || '').toLowerCase();
@@ -209,6 +264,7 @@
       coordinate: pageCoordinate ? { lat: Number(pageCoordinate.lat), lng: Number(pageCoordinate.lon) } : null,
       method,
       source: 'wikimedia_commons',
+      sourceId: 'commons:' + normalizeIdentity(title),
       acquiredAt: new Date().toISOString(),
       status: 'pending'
     };
@@ -423,9 +479,18 @@
 
   function updateControls() {
     const hasMountain = Boolean(currentMountain());
+    const analysis = hasMountain ? duplicateAnalysis(ensureDraft(state.currentId)) : { extras: new Set() };
+    const duplicateCount = analysis.extras.size;
     $('find').disabled = !hasMountain;
-    $('publish').disabled = !hasMountain || !hasChanges(state.currentId);
+    $('publish').disabled = !hasMountain || !hasChanges(state.currentId) || duplicateCount > 0;
     $('reset').disabled = !hasMountain || !hasChanges(state.currentId);
+    $('dedupe').hidden = duplicateCount === 0;
+    $('dedupe').disabled = duplicateCount === 0;
+    if (duplicateCount) {
+      setStatus('同じ写真が' + duplicateCount + '枚重複しています。「重複を整理」を押すと、先頭の1枚だけを残します。', 'warn', 'duplicate-notice');
+    } else {
+      setStatus('', 'ok', 'duplicate-notice');
+    }
     const mountain = currentMountain();
     if (mountain) {
       const published = photoCount(mountain);
@@ -457,7 +522,7 @@
 
     state.candidates.forEach((item) => {
       const check = evaluateLicense(item);
-      const added = draft.some((selected) => selected.source === item.source && selected.fileName === item.fileName);
+      const added = draft.some((selected) => sameImage(selected, item));
       const pageUrl = safeUrl(item.commonsPageUrl);
       const imageUrl = safeUrl(item.thumbnailUrl);
       const card = document.createElement('article');
@@ -492,7 +557,10 @@
       return;
     }
     const draft = ensureDraft(state.currentId);
-    if (draft.some((selected) => selected.source === item.source && selected.fileName === item.fileName)) return;
+    if (draft.some((selected) => sameImage(selected, item))) {
+      setStatus('この写真はすでに採用画像に入っています。同じ元画像は重複登録できません。', 'warn');
+      return;
+    }
     draft.push(Object.assign({}, item, {
       id: 'candidate:' + item.fileName + ':' + Date.now(),
       status: 'pending',
@@ -514,6 +582,7 @@
       return;
     }
     const draft = ensureDraft(mountain.id);
+    const duplicates = duplicateAnalysis(draft);
     if (!draft.length) {
       container.innerHTML = '<div class="empty-state">採用画像はありません。下の候補または自分の写真から追加できます。</div>';
       updateControls();
@@ -524,11 +593,13 @@
       const card = document.createElement('article');
       const sourceLabel = item.source === 'own' ? '自前写真' : item.status === 'published' ? '公開中' : 'Commonsから追加';
       const sourceClass = item.source === 'own' ? 'own' : item.status === 'published' ? 'published' : 'ok';
-      card.className = 'selected-card' + (index === 0 ? ' is-main' : '');
+      const isDuplicate = duplicates.extras.has(index);
+      card.className = 'selected-card' + (index === 0 ? ' is-main' : '') + (isDuplicate ? ' is-duplicate' : '');
       card.innerHTML =
         '<img src="' + esc(safeUrl(item.thumbnailUrl || item.localPath)) + '" alt="' + esc(item.fileName || '') + '">' +
         '<div class="order-label">' + (index === 0 ? '1枚目・メイン画像' : (index + 1) + '枚目') + '</div>' +
-        '<div class="badges"><span class="badge ' + sourceClass + '">' + sourceLabel + '</span></div>' +
+        '<div class="badges"><span class="badge ' + sourceClass + '">' + sourceLabel + '</span>' +
+          (isDuplicate ? '<span class="badge warn">同じ写真・重複</span>' : '') + '</div>' +
         '<div class="filename">' + esc(item.fileName || item.localPath || '') + '</div>' +
         '<div class="order-buttons">' +
           '<button class="move-up" type="button" ' + (index === 0 ? 'disabled' : '') + '>← 前へ</button>' +
@@ -570,6 +641,24 @@
     setStatus('1枚を削除予定にしました。確定するにはGitHubへ反映してください。', 'warn', 'publish-status');
   }
 
+  function dedupeCurrentDraft() {
+    const draft = ensureDraft(state.currentId);
+    const analysis = duplicateAnalysis(draft);
+    if (!analysis.extras.size) return;
+    if (!window.confirm('同じ写真を先頭の1枚だけ残し、重複分を削除予定にしますか？\nGitHubへ反映するまでサイトは変更されません。')) return;
+    [...analysis.extras].sort((a, b) => b - a).forEach((index) => {
+      const item = draft[index];
+      draft.splice(index, 1);
+      if (item && item.ownFileKey && state.ownFiles[item.ownFileKey]) {
+        URL.revokeObjectURL(item.previewUrl || item.thumbnailUrl);
+        delete state.ownFiles[item.ownFileKey];
+      }
+    });
+    renderSelected();
+    renderCandidates();
+    setStatus('重複写真を整理しました。確定するにはGitHubへ反映してください。', 'warn', 'publish-status');
+  }
+
   function resetCurrentDraft() {
     const id = state.currentId;
     if (!id || !hasChanges(id)) return;
@@ -582,10 +671,38 @@
     });
     delete state.drafts[id];
     delete state.originalPaths[id];
+    delete state.hashScans[id];
     ensureDraft(id);
     renderSelected();
     renderCandidates();
+    scanCurrentImageHashes(id);
     setStatus('変更を元に戻しました。', 'ok', 'publish-status');
+  }
+
+  async function sha256Blob(blob) {
+    if (!window.crypto || !window.crypto.subtle) throw new Error('このブラウザでは写真の重複確認を利用できません。ブラウザを最新版に更新してください。');
+    const digest = await window.crypto.subtle.digest('SHA-256', await blob.arrayBuffer());
+    return Array.from(new Uint8Array(digest)).map((value) => value.toString(16).padStart(2, '0')).join('');
+  }
+
+  async function scanCurrentImageHashes(id) {
+    if (!id) return;
+    if (state.hashScans[id]) return state.hashScans[id];
+    state.hashScans[id] = (async () => {
+      const draft = ensureDraft(id);
+      for (const item of draft) {
+        if (item.contentHash || item.status !== 'published' || !item.localPath) continue;
+        try {
+          const response = await fetch(item.localPath, { cache: 'force-cache' });
+          if (!response.ok) continue;
+          item.contentHash = await sha256Blob(await response.blob());
+        } catch (_) {
+          /* 取得できない既存画像はCommons元画像IDで重複判定を継続 */
+        }
+      }
+      if (String(state.currentId) === String(id)) renderSelected();
+    })();
+    return state.hashScans[id];
   }
 
   function loadImage(file) {
@@ -646,6 +763,11 @@
     for (const file of files) {
       try {
         const converted = await resizeOwnPhoto(file);
+        const contentHash = await sha256Blob(converted.blob);
+        if (draft.some((item) => sameImage(item, { contentHash }))) {
+          errors.push(file.name + 'はすでに採用画像に入っている同じ写真です。');
+          continue;
+        }
         const key = 'own-' + Date.now() + '-' + Math.random().toString(16).slice(2);
         const preview = URL.createObjectURL(converted.blob);
         state.ownFiles[key] = converted.blob;
@@ -665,6 +787,7 @@
           width: converted.width,
           height: converted.height,
           mimeType: 'image/jpeg',
+          contentHash,
           selectedAt: new Date().toISOString(),
           modifications: '最大2400pxのJPEGにリサイズ'
         });
@@ -810,6 +933,8 @@
       commonsPageUrl: item.commonsPageUrl || null,
       sourcePageUrl: item.commonsPageUrl || item.sourcePageUrl || null,
       source: item.source,
+      sourceId: commonsIdentity(item) || null,
+      contentHash: item.contentHash || null,
       licenseVerification: item.source === 'own' ? 'own_photo' : (item.licenseVerification || 'automatic_metadata_check'),
       licenseVerifiedAt: item.licenseVerifiedAt || new Date().toISOString(),
       selectedAt: item.selectedAt || new Date().toISOString(),
@@ -846,6 +971,10 @@
     const draft = ensureDraft(mountain.id);
     const warnings = [];
     try {
+      await scanCurrentImageHashes(mountain.id);
+      if (duplicateAnalysis(draft).extras.size) {
+        throw new Error('同じ写真が重複しています。先に「重複を整理」を押してください。');
+      }
       setStatus('GitHub上の最新データを確認しています…', 'ok', 'publish-status');
       const mountainText = await getRepoText('data/mountains.json', token, false);
       const creditText = await getRepoText('data/image-credits.json', token, true);
@@ -871,14 +1000,31 @@
         }
       }
 
-      setStatus('新しい画像をGitHubへ保存しています…', 'ok', 'publish-status');
+      if (duplicateAnalysis(draft).extras.size) {
+        throw new Error('同じCommons元画像が重複しています。先に「重複を整理」を押してください。');
+      }
+
+      setStatus('追加画像の内容が重複していないか確認しています…', 'ok', 'publish-status');
+      const preparedUploads = [];
       for (let index = 0; index < draft.length; index += 1) {
         const item = draft[index];
         if (item.status !== 'pending') continue;
         const blob = item.source === 'own'
           ? state.ownFiles[item.ownFileKey]
           : await downloadCommonsImage(item);
+        item.contentHash = item.contentHash || await sha256Blob(blob);
         const binary = await blobBase64(blob);
+        preparedUploads.push({ item, binary });
+      }
+      if (duplicateAnalysis(draft).extras.size) {
+        renderSelected();
+        throw new Error('画像内容が同じ写真を検出しました。「重複を整理」を押してから反映してください。');
+      }
+
+      setStatus('新しい画像をGitHubへ保存しています…', 'ok', 'publish-status');
+      for (const prepared of preparedUploads) {
+        const item = prepared.item;
+        const binary = prepared.binary;
         const path = makeImagePath(mountain.id, binary.extension);
         await putRepoFile(path, binary.content, '[images] ' + mountain.name + 'の写真を追加', token);
         item.localPath = '/' + path;
@@ -966,6 +1112,7 @@
       ensureDraft(state.currentId);
       renderSelected();
       renderCandidates();
+      scanCurrentImageHashes(state.currentId);
       $('find').disabled = false;
       setStatus('', 'ok', 'load-status');
     } catch (error) {
@@ -983,9 +1130,11 @@
     ensureDraft(state.currentId);
     renderSelected();
     renderCandidates();
+    scanCurrentImageHashes(state.currentId);
   });
   $('find').addEventListener('click', () => getCandidates($('find').textContent.includes('再取得')));
   $('add-own').addEventListener('click', addOwnPhotos);
+  $('dedupe').addEventListener('click', dedupeCurrentDraft);
   $('reset').addEventListener('click', resetCurrentDraft);
   $('publish').addEventListener('click', publishChanges);
   $('own-author').value = localStorage.getItem('ym_own_photo_author') || '';
