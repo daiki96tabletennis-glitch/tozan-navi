@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TMTVVTEEGF');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Myページ - Yamatch</title>
@@ -995,14 +992,13 @@ var PROFILES = {
   _default: {line:'8,66 20,52 32,42 44,34 50,22 56,34 68,42 80,52 92,66'},
 };
 
-// 登山コーデと一緒にシェアしたくなる、朝焼け・夕暮れ・森をイメージした配色
+// 森林・朝霧・岩肌・高山の空を基調にした登山サイト向けパレット
 var BADGE_PALETTES = [
-  {sky1:'#ffd9b4', sky2:'#f27b70', mt:'#725268', acc:'#3d2949', txt:'#452b43', sun:'#fff0b3', rim:'#b83f61'}, // sunrise coral
-  {sky1:'#d7c6ff', sky2:'#7c6bc6', mt:'#4f487c', acc:'#292748', txt:'#302849', sun:'#fff1bd', rim:'#5c479a'}, // dusk violet
-  {sky1:'#b8e7df', sky2:'#4ea6a1', mt:'#276c69', acc:'#16484c', txt:'#173c46', sun:'#fff3bd', rim:'#257a77'}, // lake teal
-  {sky1:'#f7dea2', sky2:'#dc8a58', mt:'#8d4e45', acc:'#56313b', txt:'#4a2d36', sun:'#fff5c8', rim:'#b45c47'}, // amber trail
-  {sky1:'#d7ebbb', sky2:'#75ac73', mt:'#3d745b', acc:'#1f4b48', txt:'#25453e', sun:'#fff3ba', rim:'#3d7c62'}, // forest green
-  {sky1:'#cce0f6', sky2:'#688ac8', mt:'#4b5c98', acc:'#2d365e', txt:'#303c64', sun:'#fff4c2', rim:'#4f67ae'}  // blue ridge
+  {sky1:'#f3f0df',sky2:'#a9c1ac',far:'#75937d',mt:'#3f6956',acc:'#193e35',txt:'#183b32',sun:'#f1d49a',rim:'#315848'},
+  {sky1:'#edf4f1',sky2:'#9fc2c0',far:'#71999a',mt:'#407274',acc:'#1e474c',txt:'#173f45',sun:'#f2dca8',rim:'#34656a'},
+  {sky1:'#f5ead7',sky2:'#d4ad85',far:'#a2846d',mt:'#716052',acc:'#403a34',txt:'#3d352f',sun:'#f0c77f',rim:'#6b5542'},
+  {sky1:'#f0efdc',sky2:'#aab991',far:'#7f966d',mt:'#526f4d',acc:'#294937',txt:'#294437',sun:'#ead79b',rim:'#496342'},
+  {sky1:'#eef3f2',sky2:'#aabec6',far:'#788f99',mt:'#4e6d78',acc:'#273f49',txt:'#263e47',sun:'#efd59b',rim:'#455e68'}
 ];
 
 function getColor(id, area, category){
@@ -1033,11 +1029,10 @@ function octPoints(cx,cy,r){
 
 function makeBadgeSVG(name, date, id, c, size, area, elevation){
   size=size||96;
-  var cx=size/2, cy=size/2;
-  var border = size*0.062;          // 白フチの太さ
-  var outerR = size*0.20;           // 外側の角丸
-  var innerR = size*0.135;          // 内側コンテンツの角丸
-  var contX = border, contY = border, contW = size-border*2, contH = size-border*2;
+  var cx=size/2;
+  var border=size*0.055;
+  var contX=border, contY=border, contW=size-border*2, contH=size-border*2;
+  var outerR=size*0.235, innerR=size*0.185;
 
   var profile=getProfile(id);
   var scale=size/100, oy=size*0.10;
@@ -1056,75 +1051,69 @@ function makeBadgeSVG(name, date, id, c, size, area, elevation){
   var snowPoly=profile.snow?sc(profile.snow):null;
 
   var did='b'+Math.random().toString(36).slice(2,7);
-  var fs=size*(name.length>6?(name.length>8?.088:.100):.115);
+  var nameFs=size*(name.length>8?.080:name.length>6?.090:.108);
+
+  // 長い地域表記は先頭の都道府県だけにして、必ず安全領域に収める。
+  var areaText=String(area||'');
+  var prefMatch=areaText.match(/北海道|東京都|京都府|大阪府|.{2,3}県/);
+  if(prefMatch) areaText=prefMatch[0];
+  if(areaText.length>5) areaText=areaText.slice(0,5);
+  var metaStr=[areaText,elevation?(Number(elevation).toLocaleString()+'m'):''].filter(Boolean).join('  ·  ');
+  var metaFs=size*(metaStr.length>15?.056:.062);
 
   var defs='<defs>'
-    +'<radialGradient id="'+did+'sky" cx="50%" cy="16%" r="92%">'
+    +'<linearGradient id="'+did+'sky" x1="0" y1="0" x2="0" y2="1">'
     +'<stop offset="0%" stop-color="'+c.sky1+'"/>'
     +'<stop offset="100%" stop-color="'+c.sky2+'"/>'
-    +'</radialGradient>'
-    +'<linearGradient id="'+did+'mt" x1="0.1" y1="0" x2="0.9" y2="1">'
-    +'<stop offset="0%" stop-color="'+c.mt+'" stop-opacity="0.95"/>'
-    +'<stop offset="100%" stop-color="'+c.acc+'" stop-opacity="0.82"/>'
     +'</linearGradient>'
-    +'<clipPath id="'+did+'clip"><circle cx="'+cx+'" cy="'+cy+'" r="'+(size*0.415)+'"/></clipPath>'
+    +'<linearGradient id="'+did+'far" x1="0" y1="0" x2="0" y2="1">'
+    +'<stop offset="0%" stop-color="'+c.far+'" stop-opacity="0.70"/>'
+    +'<stop offset="100%" stop-color="'+c.far+'" stop-opacity="0.92"/>'
+    +'</linearGradient>'
+    +'<linearGradient id="'+did+'mt" x1="0.1" y1="0" x2="0.9" y2="1">'
+    +'<stop offset="0%" stop-color="'+c.mt+'"/>'
+    +'<stop offset="100%" stop-color="'+c.acc+'"/>'
+    +'</linearGradient>'
+    +'<clipPath id="'+did+'clip"><rect x="'+contX+'" y="'+contY+'" width="'+contW+'" height="'+contH+'" rx="'+innerR+'"/></clipPath>'
     +'<filter id="'+did+'soft"><feGaussianBlur stdDeviation="0.8"/></filter>'
-    +'<filter id="'+did+'glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="1.5"/></filter>'
     +'</defs>';
 
-  // 二重の縁と細い点線で、服や写真に重ねても映えるステッカー風の質感にする。
-  var borderHtml='<circle cx="'+cx+'" cy="'+cy+'" r="'+(size*0.49)+'" fill="#fffaf0"/>'
-    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(size*0.468)+'" fill="none" stroke="'+c.rimMain+'" stroke-width="'+(size*0.044)+'"/>'
-    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(size*0.432)+'" fill="none" stroke="rgba(255,255,255,0.88)" stroke-width="'+(size*0.012)+'"/>'
-    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(size*0.445)+'" fill="none" stroke="rgba(255,255,255,0.68)" stroke-width="'+(size*0.007)+'" stroke-dasharray="'+(size*0.018)+' '+(size*0.026)+'"/>';
+  var borderHtml='<rect x="0" y="0" width="'+size+'" height="'+size+'" rx="'+outerR+'" fill="#fbf8ef"/>'
+    +'<rect x="'+(size*0.018)+'" y="'+(size*0.018)+'" width="'+(size*0.964)+'" height="'+(size*0.964)+'" rx="'+(outerR-size*0.012)+'" fill="none" stroke="'+c.rimMain+'" stroke-width="'+(size*0.018)+'"/>';
 
-  var bgHtml='<circle cx="'+cx+'" cy="'+cy+'" r="'+(size*0.415)+'" fill="url(#'+did+'sky)"/>';
+  var bgHtml='<rect x="'+contX+'" y="'+contY+'" width="'+contW+'" height="'+contH+'" rx="'+innerR+'" fill="url(#'+did+'sky)"/>';
 
   var mtHtml='<g clip-path="url(#'+did+'clip)">'
-    +'<circle cx="'+(size*0.72)+'" cy="'+(size*0.33)+'" r="'+(size*0.105)+'" fill="'+c.sun+'" opacity="0.92" filter="url(#'+did+'glow)"/>'
-    +'<circle cx="'+(size*0.72)+'" cy="'+(size*0.33)+'" r="'+(size*0.075)+'" fill="'+c.sun+'" opacity="0.95"/>'
-    +'<circle cx="'+(size*0.27)+'" cy="'+(size*0.28)+'" r="'+(size*0.012)+'" fill="#fff" opacity="0.75"/>'
-    +'<circle cx="'+(size*0.36)+'" cy="'+(size*0.22)+'" r="'+(size*0.008)+'" fill="#fff" opacity="0.7"/>'
-    +'<path d="M'+(size*0.19)+' '+(size*0.47)+' Q '+(size*0.36)+' '+(size*0.39)+' '+(size*0.51)+' '+(size*0.46)+' T '+(size*0.83)+' '+(size*0.43)+'" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="'+(size*0.014)+'" stroke-linecap="round"/>'
+    +'<circle cx="'+(size*0.73)+'" cy="'+(size*0.27)+'" r="'+(size*0.075)+'" fill="'+c.sun+'" opacity="0.90"/>'
+    +'<polygon points="'+(size*0.05)+','+(size*0.61)+' '+(size*0.05)+','+(size*0.49)+' '+(size*0.24)+','+(size*0.35)+' '+(size*0.40)+','+(size*0.48)+' '+(size*0.58)+','+(size*0.31)+' '+(size*0.76)+','+(size*0.47)+' '+(size*0.95)+','+(size*0.34)+' '+(size*0.95)+','+(size*0.61)+'" fill="url(#'+did+'far)"/>'
     +'<polygon points="'+mtPoly+'" fill="url(#'+did+'mt)"/>'
-    +'<polyline points="'+line+'" fill="none" stroke="white" stroke-width="'+(size*0.016)+'" stroke-opacity="0.65" stroke-linejoin="round" stroke-linecap="round"/>'
+    +'<polyline points="'+line+'" fill="none" stroke="white" stroke-width="'+(size*0.012)+'" stroke-opacity="0.58" stroke-linejoin="round" stroke-linecap="round"/>'
     +(snowPoly?'<polygon points="'+snowPoly+'" fill="white" opacity="0.85" filter="url(#'+did+'soft)"/>':'')
-    +'</g>';
+    +'<rect x="'+contX+'" y="'+(size*0.585)+'" width="'+contW+'" height="'+(size*0.36)+'" fill="rgba(22,42,35,0.88)"/>'
+    +'</g>'
+    +'<rect x="'+contX+'" y="'+contY+'" width="'+contW+'" height="'+contH+'" rx="'+innerR+'" fill="none" stroke="rgba(18,45,37,0.18)" stroke-width="1"/>';
 
-  // カテゴリラベル（右上の丸タブ）
-  var tabW=size*0.36, tabH=size*0.13, tabX=cx-tabW/2, tabY=size*0.13;
+  // 上部の小さなラベル。百名山だけゴールドにする。
+  var tabText=c.centerLabel||'SUMMIT LOG';
+  var tabW=c.centerLabel?size*0.34:size*0.38, tabH=size*0.12, tabX=size*0.11, tabY=size*0.105;
   var labelHtml=c.centerLabel
     ?'<rect x="'+tabX+'" y="'+tabY+'" width="'+tabW+'" height="'+tabH+'" rx="'+(tabH/2)+'" fill="'+c.rimMain+'"/>'
-      +'<text x="'+(tabX+tabW/2)+'" y="'+(tabY+tabH/2+size*0.005)+'" text-anchor="middle" dominant-baseline="middle"'
-      +' font-family="\'Zen Kaku Gothic New\',sans-serif" font-weight="700" font-size="'+(size*0.072)+'" letter-spacing="0.3"'
-      +' fill="'+c.centerColor+'">'+c.centerLabel+'</text>'
-    :'';
+    :'<rect x="'+tabX+'" y="'+tabY+'" width="'+tabW+'" height="'+tabH+'" rx="'+(tabH/2)+'" fill="rgba(255,255,255,0.76)"/>';
+  labelHtml+='<text x="'+(tabX+tabW/2)+'" y="'+(tabY+tabH/2+size*0.002)+'" text-anchor="middle" dominant-baseline="middle" font-family="\'Outfit\',\'Zen Kaku Gothic New\',sans-serif" font-weight="700" font-size="'+(size*0.057)+'" letter-spacing="0.7" fill="'+(c.centerLabel?'#fff':c.txt)+'">'+tabText+'</text>';
 
-  // 山名は下部のリボンに。小さくても読みやすく、コレクション感を出す。
-  var ribbonY=size*0.63, ribbonH=size*0.18, ribbonX=size*0.14, ribbonW=size*0.72;
-  var nameHtml='<rect x="'+ribbonX+'" y="'+ribbonY+'" width="'+ribbonW+'" height="'+ribbonH+'" rx="'+(ribbonH/2)+'" fill="rgba(24,29,42,0.78)"/>'
-    +'<rect x="'+(ribbonX+size*0.009)+'" y="'+(ribbonY+size*0.009)+'" width="'+(ribbonW-size*0.018)+'" height="'+(ribbonH-size*0.018)+'" rx="'+(ribbonH/2)+'" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="'+(size*0.006)+'"/>'
-    +'<text x="'+cx+'" y="'+(ribbonY+ribbonH*0.55)+'" text-anchor="middle" dominant-baseline="middle"'
-    +' font-family="\'Zen Kaku Gothic New\',sans-serif" font-weight="900" font-size="'+(fs*0.9)+'" letter-spacing="-0.2"'
-    +' fill="#fffdf8">'+name+'</text>';
-
-  // エリア・標高（シルエット下）
-  var metaStr=[area,elevation?(elevation+'m'):''].filter(Boolean).join(' / ');
-  var metaHtml=metaStr
-    ?'<text x="'+cx+'" y="'+(size*0.88)+'" text-anchor="middle" dominant-baseline="middle"'
-      +' font-family="\'Outfit\',\'Zen Kaku Gothic New\',sans-serif" font-size="'+(size*0.070)+'" font-weight="700" letter-spacing="0.2"'
-      +' fill="'+c.txt+'" opacity="0.85">'+metaStr+'</text>'
-    :'';
-
-  // 日付（最下部・控えめ）
   var dateHtml=date
-    ?'<text x="'+cx+'" y="'+(size*0.955)+'" text-anchor="middle" dominant-baseline="middle"'
-      +' font-family="\'Outfit\',sans-serif" font-size="'+(size*0.062)+'" font-weight="700" letter-spacing="0.6"'
-      +' fill="'+c.txt+'" opacity="0.55">'+date+'</text>'
+    ?'<text x="'+(size*0.88)+'" y="'+(size*0.165)+'" text-anchor="end" dominant-baseline="middle" font-family="\'Outfit\',sans-serif" font-size="'+(size*0.058)+'" font-weight="700" letter-spacing="0.4" fill="'+c.txt+'" opacity="0.78">'+date.replace(/\//g,'.')+'</text>'
     :'';
+
+  // 山名・地域・標高は濃色パネル内の安全領域に固定。
+  var nameHtml='<text x="'+cx+'" y="'+(size*0.705)+'" text-anchor="middle" dominant-baseline="middle" font-family="\'Zen Kaku Gothic New\',sans-serif" font-weight="900" font-size="'+nameFs+'" letter-spacing="-0.2" fill="#fffdf7">'+name+'</text>';
+  var metaHtml=metaStr
+    ?'<text x="'+cx+'" y="'+(size*0.815)+'" text-anchor="middle" dominant-baseline="middle" font-family="\'Outfit\',\'Zen Kaku Gothic New\',sans-serif" font-size="'+metaFs+'" font-weight="700" letter-spacing="0.35" fill="rgba(255,255,255,0.74)">'+metaStr+'</text>'
+    :'';
+  var markHtml='<path d="M'+(size*0.44)+' '+(size*0.885)+' h'+(size*0.12)+'" stroke="'+c.sun+'" stroke-width="'+(size*0.014)+'" stroke-linecap="round"/>';
 
   return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" xmlns="http://www.w3.org/2000/svg">'
-    +defs+borderHtml+bgHtml+mtHtml+labelHtml+nameHtml+metaHtml+dateHtml+'</svg>';
+    +defs+borderHtml+bgHtml+mtHtml+labelHtml+dateHtml+nameHtml+metaHtml+markHtml+'</svg>';
 }
 
 // ===== シェアカード生成（Instagramストーリー用・縦長） =====
