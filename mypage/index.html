@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TMTVVTEEGF');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Myページ - Yamatch</title>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-TMTVVTEEGF');
-</script>
 <meta name="robots" content="noindex">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -1074,23 +1069,24 @@ function makeBadgeSVG(name, date, id, c, size, area, elevation){
     +'<stop offset="0%" stop-color="'+c.mt+'" stop-opacity="0.95"/>'
     +'<stop offset="100%" stop-color="'+c.acc+'" stop-opacity="0.82"/>'
     +'</linearGradient>'
-    +'<clipPath id="'+did+'clip"><rect x="'+contX+'" y="'+contY+'" width="'+contW+'" height="'+contH+'" rx="'+innerR+'"/></clipPath>'
+    +'<clipPath id="'+did+'clip"><circle cx="'+cx+'" cy="'+cy+'" r="'+(size*0.415)+'"/></clipPath>'
     +'<filter id="'+did+'soft"><feGaussianBlur stdDeviation="0.8"/></filter>'
     +'</defs>';
 
-  var borderHtml='<rect x="0" y="0" width="'+size+'" height="'+size+'" rx="'+outerR+'" fill="#ffffff"/>';
+  var borderHtml='<circle cx="'+cx+'" cy="'+cy+'" r="'+(size*0.48)+'" fill="#fffaf0"/>'
+    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(size*0.455)+'" fill="none" stroke="'+c.rimMain+'" stroke-width="'+(size*0.035)+'"/>'
+    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(size*0.425)+'" fill="none" stroke="rgba(255,255,255,0.72)" stroke-width="'+(size*0.012)+'"/>';
 
-  var bgHtml='<rect x="'+contX+'" y="'+contY+'" width="'+contW+'" height="'+contH+'" rx="'+innerR+'" fill="url(#'+did+'sky)"/>';
+  var bgHtml='<circle cx="'+cx+'" cy="'+cy+'" r="'+(size*0.415)+'" fill="url(#'+did+'sky)"/>';
 
   var mtHtml='<g clip-path="url(#'+did+'clip)">'
     +'<polygon points="'+mtPoly+'" fill="url(#'+did+'mt)"/>'
     +'<polyline points="'+line+'" fill="none" stroke="white" stroke-width="'+(size*0.012)+'" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round"/>'
     +(snowPoly?'<polygon points="'+snowPoly+'" fill="white" opacity="0.85" filter="url(#'+did+'soft)"/>':'')
-    +'</g>'
-    +'<rect x="'+contX+'" y="'+contY+'" width="'+contW+'" height="'+contH+'" rx="'+innerR+'" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>';
+    +'</g>';
 
   // カテゴリラベル（右上の丸タブ）
-  var tabW=size*0.40, tabH=size*0.135, tabX=size-border-tabW-size*0.03, tabY=border+size*0.035;
+  var tabW=size*0.36, tabH=size*0.13, tabX=cx-tabW/2, tabY=size*0.13;
   var labelHtml=c.centerLabel
     ?'<rect x="'+tabX+'" y="'+tabY+'" width="'+tabW+'" height="'+tabH+'" rx="'+(tabH/2)+'" fill="'+c.rimMain+'"/>'
       +'<text x="'+(tabX+tabW/2)+'" y="'+(tabY+tabH/2+size*0.005)+'" text-anchor="middle" dominant-baseline="middle"'
@@ -1098,22 +1094,24 @@ function makeBadgeSVG(name, date, id, c, size, area, elevation){
       +' fill="'+c.centerColor+'">'+c.centerLabel+'</text>'
     :'';
 
-  // 山名（上部）
-  var nameHtml='<text x="'+(contX+contW*0.06)+'" y="'+(contY+size*0.155)+'" text-anchor="start" dominant-baseline="middle"'
-    +' font-family="\'Zen Kaku Gothic New\',sans-serif" font-weight="900" font-size="'+fs+'" letter-spacing="-0.2"'
-    +' fill="'+c.txt+'" paint-order="stroke" stroke="rgba(255,255,255,0.92)" stroke-width="3" stroke-linejoin="round">'+name+'</text>';
+  // 山名は下部のリボンに。小さくても読みやすく、コレクション感を出す。
+  var ribbonY=size*0.64, ribbonH=size*0.18, ribbonX=size*0.14, ribbonW=size*0.72;
+  var nameHtml='<rect x="'+ribbonX+'" y="'+ribbonY+'" width="'+ribbonW+'" height="'+ribbonH+'" rx="'+(ribbonH/2)+'" fill="rgba(27,48,31,0.78)"/>'
+    +'<text x="'+cx+'" y="'+(ribbonY+ribbonH*0.55)+'" text-anchor="middle" dominant-baseline="middle"'
+    +' font-family="\'Zen Kaku Gothic New\',sans-serif" font-weight="900" font-size="'+(fs*0.9)+'" letter-spacing="-0.2"'
+    +' fill="#fffdf8">'+name+'</text>';
 
   // エリア・標高（シルエット下）
   var metaStr=[area,elevation?(elevation+'m'):''].filter(Boolean).join(' / ');
   var metaHtml=metaStr
-    ?'<text x="'+(contX+contW*0.06)+'" y="'+(contY+contH*0.855)+'" text-anchor="start" dominant-baseline="middle"'
+    ?'<text x="'+cx+'" y="'+(size*0.88)+'" text-anchor="middle" dominant-baseline="middle"'
       +' font-family="\'Outfit\',\'Zen Kaku Gothic New\',sans-serif" font-size="'+(size*0.070)+'" font-weight="700" letter-spacing="0.2"'
       +' fill="'+c.txt+'" opacity="0.85">'+metaStr+'</text>'
     :'';
 
   // 日付（最下部・控えめ）
   var dateHtml=date
-    ?'<text x="'+(contX+contW*0.06)+'" y="'+(contY+contH*0.955)+'" text-anchor="start" dominant-baseline="middle"'
+    ?'<text x="'+cx+'" y="'+(size*0.955)+'" text-anchor="middle" dominant-baseline="middle"'
       +' font-family="\'Outfit\',sans-serif" font-size="'+(size*0.062)+'" font-weight="700" letter-spacing="0.6"'
       +' fill="'+c.txt+'" opacity="0.55">'+date+'</text>'
     :'';
