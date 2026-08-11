@@ -313,7 +313,8 @@
     "transfersYokohama": 3,
     "transfersOmiya": 3,
     "trainTimeYokohama": 204,
-    "trainTimeOmiya": 200
+    "trainTimeOmiya": 200,
+    "trainTimeShinjuku": 170
   },
   {
     "id": "tsukuba",
@@ -470,7 +471,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 154,
-    "trainTimeOmiya": 150
+    "trainTimeOmiya": 150,
+    "trainTimeShinjuku": 120
   },
   {
     "id": "kumotori",
@@ -790,7 +792,8 @@
     "transfersOmiya": 2,
     "trainTimeYokohama": 150,
     "trainTimeOmiya": 220,
-    "trainInfo": "新宿→伊東（特急踊り子・約100分/3,890円）→天城縦走登山口（東海バス約55分/1,340円）"
+    "trainInfo": "新宿→伊東（特急踊り子・約100分/3,890円）→天城縦走登山口（東海バス約55分/1,340円）",
+    "trainTimeShinjuku": 190
   },
   {
     "id": "okutama",
@@ -1103,7 +1106,8 @@
     "transfersOmiya": 3,
     "trainTimeYokohama": 203,
     "trainTimeOmiya": 156,
-    "trainInfo": "新宿→池袋（JR埼京線・約9分/170円）→西武秩父（特急ちちぶ・約100分/1,686円）→日向大谷口（小鹿野町営バス約60分・薬師の湯乗継/500円）"
+    "trainInfo": "新宿→池袋（JR埼京線・約9分/170円）→西武秩父（特急ちちぶ・約100分/1,686円）→日向大谷口（小鹿野町営バス約60分・薬師の湯乗継/500円）",
+    "trainTimeShinjuku": 174
   },
   {
     "id": "kobushigatake",
@@ -1256,7 +1260,8 @@
     "transfersOmiya": 1,
     "trainTimeYokohama": 319,
     "trainTimeOmiya": 315,
-    "trainInfo": "新宿→小淵沢（特急あずさ・約1時間52分/5,430円）→信濃川上（JR小海線・約1時間/約950円）→梓山（川上村営バス約25分/550円）→毛木平（徒歩約1時間）"
+    "trainInfo": "新宿→小淵沢（特急あずさ・約1時間52分/5,430円）→信濃川上（JR小海線・約1時間/約950円）→梓山（川上村営バス約25分/550円）→毛木平（徒歩約1時間）",
+    "trainTimeShinjuku": 280
   },
   {
     "id": "mizugaki",
@@ -1409,7 +1414,8 @@
     "transfersOmiya": 1,
     "trainTimeYokohama": 236,
     "trainTimeOmiya": 232,
-    "trainInfo": "新宿→韮崎（特急あずさ・約1時間35分/4,330円）→みずがき山荘（山梨峡北交通「韮崎瑞牆線」約1時間15分・季節運行/2,500円）"
+    "trainInfo": "新宿→韮崎（特急あずさ・約1時間35分/4,330円）→みずがき山荘（山梨峡北交通「韮崎瑞牆線」約1時間15分・季節運行/2,500円）",
+    "trainTimeShinjuku": 197
   },
   {
     "id": "akagi",
@@ -1867,7 +1873,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 234,
-    "trainTimeOmiya": 230
+    "trainTimeOmiya": 230,
+    "trainTimeShinjuku": 200
   },
   {
     "id": "nantaisan",
@@ -2188,7 +2195,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 294,
-    "trainTimeOmiya": 290
+    "trainTimeOmiya": 290,
+    "trainTimeShinjuku": 260
   },
   {
     "id": "yatsugatake",
@@ -2342,7 +2350,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 204,
-    "trainTimeOmiya": 200
+    "trainTimeOmiya": 200,
+    "trainTimeShinjuku": 170
   },
   {
     "id": "keirisan",
@@ -2832,7 +2841,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 1,
     "trainTimeYokohama": 168,
-    "trainTimeOmiya": 126
+    "trainTimeOmiya": 126,
+    "trainTimeShinjuku": 219
   },
   {
     "id": "tanigawa",
@@ -3457,7 +3467,8 @@
     "transfersYokohama": 4,
     "transfersOmiya": 3,
     "trainTimeYokohama": 250,
-    "trainTimeOmiya": 190
+    "trainTimeOmiya": 190,
+    "trainTimeShinjuku": 225
   },
   {
     "id": "takeson",
@@ -3753,7 +3764,8 @@
     "transfersYokohama": 3,
     "transfersOmiya": 3,
     "trainTimeYokohama": 284,
-    "trainTimeOmiya": 280
+    "trainTimeOmiya": 280,
+    "trainTimeShinjuku": 250
   },
   {
     "id": "senjogatake",
@@ -3911,7 +3923,8 @@
     "transfersYokohama": 3,
     "transfersOmiya": 3,
     "trainTimeYokohama": 284,
-    "trainTimeOmiya": 280
+    "trainTimeOmiya": 280,
+    "trainTimeShinjuku": 250
   },
   {
     "id": "shirouma",
@@ -4237,7 +4250,8 @@
     "transfersYokohama": 3,
     "transfersOmiya": 3,
     "trainTimeYokohama": 334,
-    "trainTimeOmiya": 330
+    "trainTimeOmiya": 330,
+    "trainTimeShinjuku": 300
   },
   {
     "id": "tateyama",
@@ -4727,7 +4741,8 @@
     "transfersYokohama": 1,
     "transfersOmiya": 1,
     "trainTimeYokohama": 289,
-    "trainTimeOmiya": 285
+    "trainTimeOmiya": 285,
+    "trainTimeShinjuku": 255
   },
   {
     "id": "hotaka",
@@ -4885,7 +4900,8 @@
     "transfersYokohama": 1,
     "transfersOmiya": 1,
     "trainTimeYokohama": 289,
-    "trainTimeOmiya": 285
+    "trainTimeOmiya": 285,
+    "trainTimeShinjuku": 255
   },
   {
     "id": "myoko",
@@ -5362,7 +5378,8 @@
     "transfersYokohama": 3,
     "transfersOmiya": 2,
     "trainTimeYokohama": 275,
-    "trainTimeOmiya": 193
+    "trainTimeOmiya": 193,
+    "trainTimeShinjuku": 270
   },
   {
     "id": "shibutsu",
@@ -5521,7 +5538,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 235,
-    "trainTimeOmiya": 175
+    "trainTimeOmiya": 175,
+    "trainTimeShinjuku": 208
   },
   {
     "id": "aizu_koma",
@@ -5675,7 +5693,8 @@
     "transfersYokohama": 3,
     "transfersOmiya": 1,
     "trainTimeYokohama": 315,
-    "trainTimeOmiya": 250
+    "trainTimeOmiya": 250,
+    "trainTimeShinjuku": 250
   },
   {
     "id": "shirane_gunma",
@@ -6163,7 +6182,8 @@
     "transfersYokohama": 3,
     "transfersOmiya": 2,
     "trainTimeYokohama": 365,
-    "trainTimeOmiya": 335
+    "trainTimeOmiya": 335,
+    "trainTimeShinjuku": 340
   },
   {
     "id": "takao",
@@ -8193,7 +8213,8 @@
     "transfersYokohama": 1,
     "transfersOmiya": 1,
     "trainTimeYokohama": 279,
-    "trainTimeOmiya": 275
+    "trainTimeOmiya": 275,
+    "trainTimeShinjuku": 245
   },
   {
     "id": "kashimayari",
@@ -9555,7 +9576,8 @@
     "transfersYokohama": 4,
     "transfersOmiya": 4,
     "trainTimeYokohama": 208,
-    "trainTimeOmiya": 204
+    "trainTimeOmiya": 204,
+    "trainTimeShinjuku": 174
   },
   {
     "id": "shirasunayama",
@@ -10529,7 +10551,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 274,
-    "trainTimeOmiya": 270
+    "trainTimeOmiya": 270,
+    "trainTimeShinjuku": 240
   },
   {
     "id": "keizandake",
@@ -10979,7 +11002,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 1,
     "trainTimeYokohama": 199,
-    "trainTimeOmiya": 150
+    "trainTimeOmiya": 150,
+    "trainTimeShinjuku": 180
   },
   {
     "id": "echigokoma",
@@ -11137,7 +11161,8 @@
     "transfersYokohama": 3,
     "transfersOmiya": 2,
     "trainTimeYokohama": 210,
-    "trainTimeOmiya": 150
+    "trainTimeOmiya": 150,
+    "trainTimeShinjuku": 240
   },
   {
     "id": "hiragadake",
@@ -11892,7 +11917,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 1,
     "trainTimeYokohama": 214,
-    "trainTimeOmiya": 196
+    "trainTimeOmiya": 196,
+    "trainTimeShinjuku": 205
   },
   {
     "id": "kasagatake",
@@ -12181,7 +12207,8 @@
     "transfersYokohama": 3,
     "transfersOmiya": 3,
     "trainTimeYokohama": 384,
-    "trainTimeOmiya": 380
+    "trainTimeOmiya": 380,
+    "trainTimeShinjuku": 330
   },
   {
     "id": "goryudake",
@@ -12795,7 +12822,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 284,
-    "trainTimeOmiya": 280
+    "trainTimeOmiya": 280,
+    "trainTimeShinjuku": 250
   },
   {
     "id": "karamatsu",
@@ -13104,7 +13132,8 @@
     "transfersYokohama": 1,
     "transfersOmiya": 1,
     "trainTimeYokohama": 267,
-    "trainTimeOmiya": 263
+    "trainTimeOmiya": 263,
+    "trainTimeShinjuku": 233
   },
   {
     "id": "enasan",
@@ -14391,7 +14420,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 294,
-    "trainTimeOmiya": 290
+    "trainTimeOmiya": 290,
+    "trainTimeShinjuku": 260
   },
   {
     "id": "noutori",
@@ -14535,7 +14565,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 234,
-    "trainTimeOmiya": 230
+    "trainTimeOmiya": 230,
+    "trainTimeShinjuku": 200
   },
   {
     "id": "hakusan",
@@ -14837,7 +14868,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 1,
     "trainTimeYokohama": 210,
-    "trainTimeOmiya": 180
+    "trainTimeOmiya": 180,
+    "trainTimeShinjuku": 195
   },
   {
     "id": "karisaka",
@@ -14989,7 +15021,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 194,
-    "trainTimeOmiya": 190
+    "trainTimeOmiya": 190,
+    "trainTimeShinjuku": 160
   },
   {
     "id": "nokogiriyama",
@@ -15137,7 +15170,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 234,
-    "trainTimeOmiya": 230
+    "trainTimeOmiya": 230,
+    "trainTimeShinjuku": 200
   },
   {
     "id": "minamikomagatake",
@@ -15444,7 +15478,8 @@
     "transfersYokohama": 1,
     "transfersOmiya": 1,
     "trainTimeYokohama": 289,
-    "trainTimeOmiya": 285
+    "trainTimeOmiya": 285,
+    "trainTimeShinjuku": 255
   },
   {
     "id": "otenshoudake",
@@ -15590,7 +15625,8 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 329,
-    "trainTimeOmiya": 325
+    "trainTimeOmiya": 325,
+    "trainTimeShinjuku": 295
   },
   {
     "id": "harinokidake",
