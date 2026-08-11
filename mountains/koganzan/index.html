@@ -95,6 +95,38 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .hero-photo-ctrl.hp-show{opacity:1;pointer-events:auto;background:rgba(0,0,0,0.28)}
 .hero-photo-ctrl-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;border:none;padding:0}
 .hero-photo-ctrl-btn svg{width:16px;height:16px;color:#1a1a16;display:block}
+.hero-new.hp-mode{padding:0;background:none;border:none;overflow:hidden}
+.hero-new.hp-mode .hero-bg-svg{display:none}
+.hero-bg-img{position:relative;height:270px;overflow:hidden;background:#6a8055}
+.hero-bg-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease;cursor:pointer}
+.hero-bg-img img.hp-active{opacity:1}
+.hero-bg-scrim{position:absolute;left:0;right:0;bottom:0;height:72%;background:linear-gradient(to top, rgba(8,14,6,.82), rgba(8,14,6,0));pointer-events:none}
+.hero-new.hp-mode .hero-top{position:absolute;left:16px;right:16px;bottom:98px;margin:0;display:block;z-index:2;pointer-events:none}
+.hero-new.hp-mode .hero-top .mountain-name{color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.35)}
+.hero-new.hp-mode .hero-top .mountain-kana{color:#e8ece4}
+.hero-new.hp-mode .hero-top .mountain-area{color:#e8ece4}
+.hero-new.hp-mode .cat-badge-new,.hero-new.hp-mode .diff-badge-new{background:rgba(255,255,255,.92);border:none;color:#1a1a16}
+.hero-new.hp-mode .stats-row{position:absolute;left:16px;right:16px;bottom:14px;margin:0;z-index:2;pointer-events:none}
+.hero-new.hp-mode .stats-row .stat-card{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3)}
+.hero-new.hp-mode .stats-row .stat-val,.hero-new.hp-mode .stats-row .stat-unit{color:#fff}
+.hero-new.hp-mode .stats-row .stat-label{color:rgba(255,255,255,.8)}
+.hero-bg-dots{position:absolute;top:14px;right:16px;display:flex;gap:4px;z-index:3}
+.hero-bg-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5)}
+.hero-bg-dot.hp-active{background:#fff}
+.hero-bg-expand{position:absolute;top:14px;left:16px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.38);display:flex;align-items:center;justify-content:center;border:none;padding:0;cursor:pointer;z-index:3}
+.hero-bg-expand svg{width:14px;height:14px;display:block}
+.hero-lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s ease}
+.hero-lightbox.hp-open{opacity:1;pointer-events:auto}
+.hero-lightbox img{max-width:92vw;max-height:78vh;object-fit:contain;border-radius:8px}
+.hero-lightbox-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.15);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.hero-lightbox-close svg{width:18px;height:18px;color:#fff;display:block}
+.hero-lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.hero-lightbox-nav svg{width:20px;height:20px;color:#fff;display:block}
+.hero-lightbox-prev{left:12px}
+.hero-lightbox-next{right:12px}
+.hero-lightbox-dots{position:absolute;bottom:22px;left:0;right:0;display:flex;justify-content:center;gap:6px}
+.hero-lightbox-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4)}
+.hero-lightbox-dot.hp-active{background:#fff}
 .mountain-name{font-size:28px;font-weight:700;color:#1a1a16;line-height:1.1}
 .mountain-kana{font-size:11px;color:#4a5a40;margin-top:3px;letter-spacing:0.08em}
 .mountain-area{font-size:12px;color:#3a4a30;margin-top:4px}
@@ -662,35 +694,52 @@ applyDepTrain();
 
   function renderHeroPhotos(mt){
     if(!mt.photos || !mt.photos.length) return;
+    var heroNew = document.querySelector('.hero-new');
     var heroTop = document.querySelector('.hero-top');
-    if(!heroTop || heroTop.querySelector('.hero-photo')) return;
-    var box = document.createElement('div');
-    box.className = 'hero-photo';
+    var statsRow = document.querySelector('.stats-row');
+    if(!heroNew || !heroTop || heroNew.querySelector('.hero-bg-img')) return;
+    heroNew.classList.add('hp-mode');
+
+    var imgBox = document.createElement('div');
+    imgBox.className = 'hero-bg-img';
     mt.photos.forEach(function(src, i){
       var img = document.createElement('img');
       img.src = src;
       img.alt = mt.name || '';
       img.loading = 'lazy';
       if(i === 0) img.className = 'hp-active';
-      box.appendChild(img);
+      imgBox.appendChild(img);
     });
+    var scrim = document.createElement('div');
+    scrim.className = 'hero-bg-scrim';
+    imgBox.appendChild(scrim);
+    heroNew.insertBefore(imgBox, heroNew.firstChild);
+
+    var expandBtn = document.createElement('button');
+    expandBtn.type = 'button';
+    expandBtn.className = 'hero-bg-expand';
+    expandBtn.setAttribute('aria-label', '写真を拡大表示');
+    expandBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>';
+    imgBox.appendChild(expandBtn);
+
+    var dots = null;
     if(mt.photos.length > 1){
-      var dots = document.createElement('div');
-      dots.className = 'hero-photo-dots';
+      dots = document.createElement('div');
+      dots.className = 'hero-bg-dots';
       mt.photos.forEach(function(_, i){
         var d = document.createElement('div');
-        d.className = 'hero-photo-dot' + (i === 0 ? ' hp-active' : '');
+        d.className = 'hero-bg-dot' + (i === 0 ? ' hp-active' : '');
         dots.appendChild(d);
       });
-      box.appendChild(dots);
+      imgBox.appendChild(dots);
     }
-    heroTop.appendChild(box);
+
+    var idx = 0;
+    var timerId = null;
     if(mt.photos.length > 1){
-      var imgs = box.querySelectorAll('img');
-      var dotEls = box.querySelectorAll('.hero-photo-dot');
-      var idx = 0;
-      var paused = false;
-      var timerId = setInterval(advance, 3500);
+      var imgs = imgBox.querySelectorAll('img');
+      var dotEls = imgBox.querySelectorAll('.hero-bg-dot');
+      timerId = setInterval(advance, 4500);
       function advance(){
         imgs[idx].classList.remove('hp-active');
         if(dotEls[idx]) dotEls[idx].classList.remove('hp-active');
@@ -698,45 +747,67 @@ applyDepTrain();
         imgs[idx].classList.add('hp-active');
         if(dotEls[idx]) dotEls[idx].classList.add('hp-active');
       }
-      var PAUSE_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
-      var PLAY_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5 L19 12 L8 19 Z"/></svg>';
-      var ctrl = document.createElement('div');
-      ctrl.className = 'hero-photo-ctrl';
-      var ctrlBtn = document.createElement('button');
-      ctrlBtn.className = 'hero-photo-ctrl-btn';
-      ctrlBtn.type = 'button';
-      ctrlBtn.setAttribute('aria-label', '一時停止');
-      ctrlBtn.innerHTML = PAUSE_ICON;
-      ctrl.appendChild(ctrlBtn);
-      box.appendChild(ctrl);
-
-      var hideTimerId = null;
-      function showCtrl(){
-        ctrl.classList.add('hp-show');
-        if(hideTimerId) clearTimeout(hideTimerId);
-        hideTimerId = setTimeout(function(){ ctrl.classList.remove('hp-show'); }, 5000);
-      }
-      box.addEventListener('click', function(e){
-        if(e.target === ctrlBtn || ctrlBtn.contains(e.target)) return;
-        showCtrl();
-      });
-      ctrlBtn.addEventListener('click', function(e){
-        e.stopPropagation();
-        paused = !paused;
-        if(paused){
-          clearInterval(timerId);
-          ctrlBtn.innerHTML = PLAY_ICON;
-          ctrlBtn.setAttribute('aria-label', '再生');
-        } else {
-          timerId = setInterval(advance, 3500);
-          ctrlBtn.innerHTML = PAUSE_ICON;
-          ctrlBtn.setAttribute('aria-label', '一時停止');
-        }
-        showCtrl();
-      });
     }
-  }
 
+    function openLightbox(startIdx){
+      if(timerId) clearInterval(timerId);
+      var lb = document.createElement('div');
+      lb.className = 'hero-lightbox';
+      var lbImg = document.createElement('img');
+      lb.appendChild(lbImg);
+      var closeBtn = document.createElement('button');
+      closeBtn.type = 'button';
+      closeBtn.className = 'hero-lightbox-close';
+      closeBtn.setAttribute('aria-label', '閉じる');
+      closeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+      lb.appendChild(closeBtn);
+      var lbIdx = startIdx || 0;
+      function render(){ lbImg.src = mt.photos[lbIdx]; lbImg.alt = mt.name || ''; }
+      if(mt.photos.length > 1){
+        var prevBtn = document.createElement('button');
+        prevBtn.type = 'button';
+        prevBtn.className = 'hero-lightbox-nav hero-lightbox-prev';
+        prevBtn.setAttribute('aria-label', '前の写真');
+        prevBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>';
+        var nextBtn = document.createElement('button');
+        nextBtn.type = 'button';
+        nextBtn.className = 'hero-lightbox-nav hero-lightbox-next';
+        nextBtn.setAttribute('aria-label', '次の写真');
+        nextBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
+        var lbDots = document.createElement('div');
+        lbDots.className = 'hero-lightbox-dots';
+        mt.photos.forEach(function(_, i){
+          var d = document.createElement('div');
+          d.className = 'hero-lightbox-dot' + (i === lbIdx ? ' hp-active' : '');
+          lbDots.appendChild(d);
+        });
+        function updateDots(){
+          lbDots.querySelectorAll('.hero-lightbox-dot').forEach(function(d, i){
+            d.classList.toggle('hp-active', i === lbIdx);
+          });
+        }
+        prevBtn.addEventListener('click', function(e){ e.stopPropagation(); lbIdx = (lbIdx - 1 + mt.photos.length) % mt.photos.length; render(); updateDots(); });
+        nextBtn.addEventListener('click', function(e){ e.stopPropagation(); lbIdx = (lbIdx + 1) % mt.photos.length; render(); updateDots(); });
+        lb.appendChild(prevBtn);
+        lb.appendChild(nextBtn);
+        lb.appendChild(lbDots);
+      }
+      render();
+      document.body.appendChild(lb);
+      requestAnimationFrame(function(){ lb.classList.add('hp-open'); });
+      function close(){
+        lb.classList.remove('hp-open');
+        setTimeout(function(){ lb.remove(); }, 200);
+        document.removeEventListener('keydown', onKey);
+      }
+      function onKey(e){ if(e.key === 'Escape') close(); }
+      document.addEventListener('keydown', onKey);
+      closeBtn.addEventListener('click', close);
+      lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+    }
+
+    imgBox.addEventListener('click', function(){ openLightbox(idx); });
+  }
   function applyMountainData(mt){
     // 0. 写真カルーセル
     renderHeroPhotos(mt);
