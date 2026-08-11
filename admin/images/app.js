@@ -863,20 +863,36 @@
     return file ? decodeBase64(file.content) : null;
   }
 
-  async function putRepoFile(path, content, message, token) {
-    const existing = await getRepoFile(path, token, true);
-    const body = { message, content };
-    if (existing && existing.sha) body.sha = existing.sha;
-    const response = await fetch(githubUrl(path), {
-      method: 'PUT',
-      headers: Object.assign({}, githubHeaders(token), { 'Content-Type': 'application/json' }),
-      body: JSON.stringify(body)
-    });
-    if (!response.ok) {
-      const detail = await response.json().catch(() => ({}));
-      throw new Error(path + 'の保存に失敗しました（' + response.status + '）' + (detail.message ? ': ' + detail.message : ''));
+  async function putRepoFile(path, content, message, token, attempt) {
+    attempt = attempt || 1;
+    const MAX_ATTEMPTS = 3;
+    try {
+      const existing = await getRepoFile(path, token, true);
+      const body = { message, content };
+      if (existing && existing.sha) body.sha = existing.sha;
+      const response = await fetch(githubUrl(path), {
+        method: 'PUT',
+        headers: Object.assign({}, githubHeaders(token), { 'Content-Type': 'application/json' }),
+        body: JSON.stringify(body)
+      });
+      if (!response.ok) {
+        const detail = await response.json().catch(() => ({}));
+        const retryable = response.status >= 500 || response.status === 429 || response.status === 0;
+        if (retryable && attempt < MAX_ATTEMPTS) {
+          await wait(800 * attempt);
+          return putRepoFile(path, content, message, token, attempt + 1);
+        }
+        throw new Error(path + 'の保存に失敗しました（' + response.status + '）' + (detail.message ? ': ' + detail.message : ''));
+      }
+      return response.json();
+    } catch (error) {
+      if (error instanceof TypeError && attempt < MAX_ATTEMPTS) {
+        // ネットワーク断・タイムアウトなど(fetch自体が例外を投げるケース)は再試行する
+        await wait(800 * attempt);
+        return putRepoFile(path, content, message, token, attempt + 1);
+      }
+      throw error;
     }
-    return response.json();
   }
 
   async function deleteRepoFile(path, message, token) {
@@ -1038,9 +1054,10 @@
       remoteMountain.photos = finalPaths;
       remoteCredits[mountain.id] = draft.map(creditFromItem);
 
-      setStatus('山データと写真クレジットを更新しています…', 'ok', 'publish-status');
-      await putRepoFile('data/image-credits.json', encodeBase64(JSON.stringify(remoteCredits, null, 2)), '[images] ' + mountain.name + 'の写真クレジットを更新', token);
+      setStatus('山データを更新しています…', 'ok', 'publish-status');
       await putRepoFile('data/mountains.json', encodeBase64(JSON.stringify(remoteMountains, null, 2)), '[images] ' + mountain.name + 'の画像順を更新', token);
+      setStatus('写真クレジットを更新しています…', 'ok', 'publish-status');
+      await putRepoFile('data/image-credits.json', encodeBase64(JSON.stringify(remoteCredits, null, 2)), '[images] ' + mountain.name + 'の写真クレジットを更新', token);
       try {
         await ensureCreditScriptTag(mountain.id, token);
       } catch (error) {
@@ -1082,7 +1099,7 @@
         + (warnings.length ? '\n画像データの反映は完了しましたが、次を確認してください：\n' + warnings.join('\n') : '');
       setStatus(finalMessage, warnings.length ? 'warn' : 'ok', 'publish-status');
     } catch (error) {
-      setStatus('反映に失敗しました。\n' + error.message, 'err', 'publish-status');
+      setStatus('反映に失敗しました。\n' + error.message + '\n\n※画像ファイル自体は保存済みの可能性があります。もう一度「この山の変更をGitHubへ反映」を押してください（写真の選び直しは不要です）。', 'err', 'publish-status');
     } finally {
       $('mountain').disabled = false;
       updateControls();
