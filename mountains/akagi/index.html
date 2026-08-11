@@ -35,6 +35,51 @@ main{max-width:680px;margin:0 auto;padding:18px}
 .card h2{font-size:14px;font-weight:bold;color:#1a1a16;margin-bottom:12px}
 .gear-section h2{font-size:14px;font-weight:bold;color:#1a1a16;margin-bottom:12px}
 .hero-new{position:relative;overflow:hidden;background:#c2d4dc;border:1px solid #9cb8c4;padding:20px 16px 16px;border-radius:14px;margin-bottom:14px}
+.hero-photo{position:relative;width:184px;height:104px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.7);flex-shrink:0;background:#6a8055}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
+.hero-photo img.hp-active{opacity:1}
+.hero-photo-dots{position:absolute;bottom:6px;left:0;right:0;display:flex;justify-content:center;gap:4px}
+.hero-photo-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.4)}
+.hero-photo-dot.hp-active{background:rgba(255,255,255,0.9)}
+.hero-photo-ctrl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);opacity:0;pointer-events:none;transition:opacity .25s ease;cursor:pointer}
+.hero-photo-ctrl.hp-show{opacity:1;pointer-events:auto;background:rgba(0,0,0,0.28)}
+.hero-photo-ctrl-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;border:none;padding:0}
+.hero-photo-ctrl-btn svg{width:16px;height:16px;color:#1a1a16;display:block}
+.hero-new.hp-mode{padding:0;background:none;border:none;overflow:hidden}
+.hero-new.hp-mode .hero-bg-svg{display:none}
+.hero-bg-img{position:relative;height:270px;overflow:hidden;background:#6a8055}
+@media (min-width: 640px){
+  .hero-bg-img{height:400px}
+}
+.hero-bg-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease;cursor:pointer}
+.hero-bg-img img.hp-active{opacity:1}
+.hero-bg-scrim{position:absolute;left:0;right:0;bottom:0;height:72%;background:linear-gradient(to top, rgba(8,14,6,.82), rgba(8,14,6,0));pointer-events:none}
+.hero-new.hp-mode .hero-top{position:absolute;left:16px;right:16px;bottom:118px;margin:0;display:block;z-index:2;pointer-events:none}
+.hero-new.hp-mode .hero-top .mountain-name{color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.35)}
+.hero-new.hp-mode .hero-top .mountain-kana{color:#e8ece4}
+.hero-new.hp-mode .hero-top .mountain-area{color:#e8ece4}
+.hero-new.hp-mode .cat-badge-new,.hero-new.hp-mode .diff-badge-new{background:rgba(255,255,255,.92);border:none;color:#1a1a16}
+.hero-new.hp-mode .stats-row{position:absolute;left:16px;right:16px;bottom:14px;margin:0;z-index:2;pointer-events:none}
+.hero-new.hp-mode .stats-row .stat-card{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3)}
+.hero-new.hp-mode .stats-row .stat-val,.hero-new.hp-mode .stats-row .stat-unit{color:#fff}
+.hero-new.hp-mode .stats-row .stat-label{color:rgba(255,255,255,.8)}
+.hero-bg-dots{position:absolute;top:14px;right:16px;display:flex;gap:4px;z-index:3}
+.hero-bg-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5)}
+.hero-bg-dot.hp-active{background:#fff}
+.hero-bg-expand{position:absolute;top:14px;left:16px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.38);display:flex;align-items:center;justify-content:center;border:none;padding:0;cursor:pointer;z-index:3}
+.hero-bg-expand svg{width:14px;height:14px;display:block}
+.hero-lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s ease}
+.hero-lightbox.hp-open{opacity:1;pointer-events:auto}
+.hero-lightbox img{max-width:92vw;max-height:78vh;object-fit:contain;border-radius:8px}
+.hero-lightbox-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.15);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.hero-lightbox-close svg{width:18px;height:18px;color:#fff;display:block}
+.hero-lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.hero-lightbox-nav svg{width:20px;height:20px;color:#fff;display:block}
+.hero-lightbox-prev{left:12px}
+.hero-lightbox-next{right:12px}
+.hero-lightbox-dots{position:absolute;bottom:22px;left:0;right:0;display:flex;justify-content:center;gap:6px}
+.hero-lightbox-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4)}
+.hero-lightbox-dot.hp-active{background:#fff}
 .hero-bg-svg{position:absolute;bottom:0;right:-10px;width:200px;height:120px;pointer-events:none}
 .mountain-name{font-size:28px;font-weight:700;color:#1a1a16;line-height:1.1}
 .mountain-kana{font-size:11px;color:#4a5a40;margin-top:3px;letter-spacing:0.08em}
@@ -270,10 +315,10 @@ main{max-width:680px;margin:0 auto;padding:18px}
   <div class="mountain-updated">最終更新: 2026-08-11</div>
   <div class="hero-new">
 <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="#2a5010" style="opacity:0.04"><polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/><polygon points="20,28 50,55 0,55"/></svg>
-<h1 class="mountain-name">赤城山</h1>
+<div class="hero-top"><h1 class="mountain-name">赤城山</h1>
 <div class="mountain-kana">あかぎさん</div>
 <div class="mountain-area">&#128205; 群馬県</div>
-<div class="hero-badges"><span class="cat-badge-new">百名山</span><span class="diff-badge-new">初〜中級</span></div>
+<div class="hero-badges"><span class="cat-badge-new">百名山</span><span class="diff-badge-new">初〜中級</span></div></div>
 <div class="stats-row"><div class="stat-card"><div class="stat-val">1828</div><div class="stat-unit">m</div><div class="stat-label">標高</div></div><div class="stat-card"><div class="stat-val">14〜22</div><div class="stat-unit">コース定数</div><div class="stat-label">難易度：初〜中級</div></div><div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">2.8</div><div class="stat-unit" id="hero-unit">時間〜</div><div class="stat-label" id="hero-dep-label">新宿から</div></div></div>
 </div>
 <div class="rec-card"><div class="rec-card-title"><span class="eyebrow">Vibes</span><span>こんな気分の人に</span></div><div class="rec-list"><div class="rec-item"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>百名山を制覇したい人</strong>——関東から日帰りで登れる百名山</span></div><div class="rec-item"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>湖と山の絶景を楽しみたい人</strong>——大沼・小沼を見下ろす展望</span></div><div class="rec-item"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>初心者で百名山に挑戦したい人</strong>——コース定数14〜22で難所なし</span></div><div class="rec-item"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>紅葉登山を楽しみたい人</strong>——10月の紅葉シーズンは特に美しい</span></div></div></div>
@@ -762,6 +807,126 @@ applyDepTrain();
     });
   });
 })();
+</script>
+
+<script>
+function renderHeroPhotos(mt){
+    if(!mt.photos || !mt.photos.length) return;
+    var heroNew = document.querySelector('.hero-new');
+    var heroTop = document.querySelector('.hero-top');
+    var statsRow = document.querySelector('.stats-row');
+    if(!heroNew || !heroTop || heroNew.querySelector('.hero-bg-img')) return;
+    heroNew.classList.add('hp-mode');
+
+    var imgBox = document.createElement('div');
+    imgBox.className = 'hero-bg-img';
+    mt.photos.forEach(function(src, i){
+      var img = document.createElement('img');
+      img.src = src;
+      img.alt = mt.name || '';
+      img.loading = 'lazy';
+      if(i === 0) img.className = 'hp-active';
+      imgBox.appendChild(img);
+    });
+    var scrim = document.createElement('div');
+    scrim.className = 'hero-bg-scrim';
+    imgBox.appendChild(scrim);
+    heroNew.insertBefore(imgBox, heroNew.firstChild);
+
+    var expandBtn = document.createElement('button');
+    expandBtn.type = 'button';
+    expandBtn.className = 'hero-bg-expand';
+    expandBtn.setAttribute('aria-label', '写真を拡大表示');
+    expandBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>';
+    imgBox.appendChild(expandBtn);
+
+    var dots = null;
+    if(mt.photos.length > 1){
+      dots = document.createElement('div');
+      dots.className = 'hero-bg-dots';
+      mt.photos.forEach(function(_, i){
+        var d = document.createElement('div');
+        d.className = 'hero-bg-dot' + (i === 0 ? ' hp-active' : '');
+        dots.appendChild(d);
+      });
+      imgBox.appendChild(dots);
+    }
+
+    var idx = 0;
+    var timerId = null;
+    if(mt.photos.length > 1){
+      var imgs = imgBox.querySelectorAll('img');
+      var dotEls = imgBox.querySelectorAll('.hero-bg-dot');
+      timerId = setInterval(advance, 4500);
+      function advance(){
+        imgs[idx].classList.remove('hp-active');
+        if(dotEls[idx]) dotEls[idx].classList.remove('hp-active');
+        idx = (idx + 1) % imgs.length;
+        imgs[idx].classList.add('hp-active');
+        if(dotEls[idx]) dotEls[idx].classList.add('hp-active');
+      }
+    }
+
+    function openLightbox(startIdx){
+      if(timerId) clearInterval(timerId);
+      var lb = document.createElement('div');
+      lb.className = 'hero-lightbox';
+      var lbImg = document.createElement('img');
+      lb.appendChild(lbImg);
+      var closeBtn = document.createElement('button');
+      closeBtn.type = 'button';
+      closeBtn.className = 'hero-lightbox-close';
+      closeBtn.setAttribute('aria-label', '閉じる');
+      closeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+      lb.appendChild(closeBtn);
+      var lbIdx = startIdx || 0;
+      function render(){ lbImg.src = mt.photos[lbIdx]; lbImg.alt = mt.name || ''; }
+      if(mt.photos.length > 1){
+        var prevBtn = document.createElement('button');
+        prevBtn.type = 'button';
+        prevBtn.className = 'hero-lightbox-nav hero-lightbox-prev';
+        prevBtn.setAttribute('aria-label', '前の写真');
+        prevBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>';
+        var nextBtn = document.createElement('button');
+        nextBtn.type = 'button';
+        nextBtn.className = 'hero-lightbox-nav hero-lightbox-next';
+        nextBtn.setAttribute('aria-label', '次の写真');
+        nextBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
+        var lbDots = document.createElement('div');
+        lbDots.className = 'hero-lightbox-dots';
+        mt.photos.forEach(function(_, i){
+          var d = document.createElement('div');
+          d.className = 'hero-lightbox-dot' + (i === lbIdx ? ' hp-active' : '');
+          lbDots.appendChild(d);
+        });
+        function updateDots(){
+          lbDots.querySelectorAll('.hero-lightbox-dot').forEach(function(d, i){
+            d.classList.toggle('hp-active', i === lbIdx);
+          });
+        }
+        prevBtn.addEventListener('click', function(e){ e.stopPropagation(); lbIdx = (lbIdx - 1 + mt.photos.length) % mt.photos.length; render(); updateDots(); });
+        nextBtn.addEventListener('click', function(e){ e.stopPropagation(); lbIdx = (lbIdx + 1) % mt.photos.length; render(); updateDots(); });
+        lb.appendChild(prevBtn);
+        lb.appendChild(nextBtn);
+        lb.appendChild(lbDots);
+      }
+      render();
+      document.body.appendChild(lb);
+      requestAnimationFrame(function(){ lb.classList.add('hp-open'); });
+      function close(){
+        lb.classList.remove('hp-open');
+        setTimeout(function(){ lb.remove(); }, 200);
+        document.removeEventListener('keydown', onKey);
+      }
+      function onKey(e){ if(e.key === 'Escape') close(); }
+      document.addEventListener('keydown', onKey);
+      closeBtn.addEventListener('click', close);
+      lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+    }
+
+    imgBox.addEventListener('click', function(){ openLightbox(idx); });
+  }
+fetch('/data/mountains.json').then(function(r){return r.json();}).then(function(list){var mt=list.find(function(m){return m.id==='akagi';});if(mt) renderHeroPhotos(mt);}).catch(function(){});
 </script>
 </body>
 </html>
