@@ -1,31 +1,101 @@
-<!doctype html><html lang="ja"><head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TMTVVTEEGF');</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>山画像管理 | Yamatch Admin</title><style>
-*{box-sizing:border-box}body{margin:0;background:#f5f3ee;color:#302d28;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif}header{background:linear-gradient(135deg,#4a6038,#607848);padding:13px 16px;color:#fff}.bar,main{max-width:1100px;margin:auto}.bar{display:flex;gap:14px;align-items:center}.bar a{color:#fff;text-decoration:none;margin-left:auto;font-size:13px}main{padding:22px 16px}h1{font-size:24px;margin:0 0 6px}h2{font-size:17px;margin:0 0 10px}.note,.panel{background:#fff;border:1px solid #ded8ce;border-radius:10px;padding:16px;margin:14px 0}.note{border-left:5px solid #4a6038}.steps{margin:8px 0;padding-left:22px;line-height:1.8}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row select{flex:1;min-width:240px;padding:10px;border:1px solid #cfc7bb;border-radius:7px;font:inherit}button{background:#4a6038;color:#fff;border:0;border-radius:7px;padding:10px 14px;font:inherit;font-weight:700;cursor:pointer}button:disabled{opacity:.5}.secondary{background:#fff;color:#435d36;border:1px solid #92ad80}.status{padding:10px;border-radius:7px;margin-top:10px;white-space:pre-wrap}.ok{background:#e5f3e1}.err{background:#fde7e5}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}.card{background:#fff;border:1px solid #ded8ce;border-radius:10px;overflow:hidden}.card img{width:100%;height:150px;object-fit:cover;background:#ddd}.card div{padding:10px}.card p{font-size:12px;margin:5px 0;overflow-wrap:anywhere}.badge{font-size:11px;background:#e8f0e0;border-radius:10px;padding:3px 7px}.selected{border:2px solid #4a6038}.selected-list{display:flex;gap:10px;overflow-x:auto}.selected-item{min-width:180px;background:#f7fbf5;padding:8px;border-radius:7px}.selected-item img{width:180px;height:95px;object-fit:cover}.small{font-size:12px;color:#665f56}.danger{background:#9b382d}@media(max-width:600px){main{padding:16px 12px}}
-</style></head><body><header><div class="bar"><strong>Yamatch 管理画面｜山画像管理</strong><a href="/admin/">← 管理画面へ戻る</a></div></header><main>
-<section class="note"><strong>使い方</strong><ol class="steps"><li>山を選び「画像候補を取得」を押します。</li><li>候補を確認して「採用画像に追加」を押します（複数可）。</li><li>「GitHubへ反映」を押すと、画像・山データ・クレジット情報がGitHubに保存されます。</li></ol><span class="small">GitHub反映には、通常の管理画面で保存したGitHubトークンが必要です。</span></section>
-<section class="panel"><h1>山の画像候補を探す</h1><div class="row"><select id="mountain"><option>山データを読み込み中…</option></select><button id="find">画像候補を取得</button></div><div id="status"></div></section>
-<section class="panel"><h2 id="candidate-title">画像候補</h2><div id="candidates" class="grid"></div></section>
-<section class="panel"><h2>現在サイトに表示されている画像</h2><div id="published" class="selected-list"><span class="small">山データを読み込み中…</span></div></section>
-<section class="panel"><h2>自分で撮影した写真を追加</h2><div class="row"><input id="own-files" type="file" accept="image/jpeg,image/png,image/webp" multiple><input id="own-author" placeholder="撮影者名（例：山田太郎）"></div><p class="small">山を選択してから写真を選び、「自前写真を採用画像に追加」を押します。写真はGitHubへ反映するまでこのブラウザ内だけにあります。</p><button id="add-own" class="secondary">自前写真を採用画像に追加</button></section><section class="panel"><h2>採用画像</h2><div id="selected" class="selected-list"><span class="small">まだ採用画像はありません。</span></div><div class="row" style="margin-top:14px"><button id="publish">採用画像をGitHubへ反映</button><button id="clear" class="secondary">この山の選択を取り消す</button></div><div id="publish-status"></div></section>
-</main><script>
-const OWNER='daiki96tabletennis-glitch', REPO='tozan-navi', API='https://commons.wikimedia.org/w/api.php';let mountains=[],choices={},current=null,candidateItems=[],ownFiles={};
-const $=id=>document.getElementById(id);function setStatus(text,type='ok',target='status'){let e=$(target);e.textContent=text;e.className='status '+type}
-function clean(html){return (html||'').replace(/<[^>]*>/g,'').trim()} function coordinate(m){let x=(m.gmapUrl||'').match(/@(-?[\d.]+),(-?[\d.]+)/);return x?{lat:x[1],lng:x[2]}:null}
-async function api(url,p){let q=new URLSearchParams({...p,format:'json',origin:'*'});let r=await fetch(url+'?'+q);if(!r.ok)throw Error('APIエラー '+r.status);return r.json()}
-function candidate(page,method){let ii=(page.imageinfo||[{}])[0], meta=ii.extmetadata||{},title=page.title||'';return {fileName:title.replace(/^File:/,''),thumbnailUrl:ii.thumburl||ii.url,imageUrl:ii.url,commonsPageUrl:'https://commons.wikimedia.org/wiki/'+encodeURIComponent(title.replace(/ /g,'_')),author:clean(meta.Artist&&meta.Artist.value)||'author_unknown',license:clean(meta.LicenseShortName&&meta.LicenseShortName.value)||'license_unknown',licenseUrl:clean(meta.LicenseUrl&&meta.LicenseUrl.value)||null,width:ii.width,height:ii.height,method,score:(method==='wikidata_p18'?50:0)+(ii.width>=1200?10:0)+(ii.width>ii.height?10:0)}}
-async function files(params,method){let data=await api(API,{action:'query',formatversion:2,prop:'imageinfo',iiprop:'url|size|mime|extmetadata',iiurlwidth:960,...params});return (data.query&&data.query.pages||[]).filter(p=>p.imageinfo).map(p=>candidate(p,method))}
-async function getCandidates(){current=mountains.find(m=>m.id===$('mountain').value);if(!current)return; $('find').disabled=true;setStatus('Wikidata / Wikimedia Commons を検索しています…');try{let all=[],en='';let wd=await api('https://www.wikidata.org/w/api.php',{action:'wbsearchentities',search:current.name,language:'ja',limit:5});let hit=(wd.search||[])[0];if(hit){let entities=await api('https://www.wikidata.org/w/api.php',{action:'wbgetentities',ids:hit.id,props:'labels|claims',languages:'ja|en'});let e=entities.entities[hit.id],p18=e.claims&&e.claims.P18&&e.claims.P18[0];en=e.labels&&e.labels.en&&e.labels.en.value||'';if(p18){let f=p18.mainsnak.datavalue.value;all.push(...await files({titles:'File:'+f},'wikidata_p18'))}}all.push(...await files({generator:'search',gsrsearch:current.name,gsrnamespace:6,gsrlimit:10},'commons_name'));if(en)all.push(...await files({generator:'search',gsrsearch:en,gsrnamespace:6,gsrlimit:8},'commons_english_name'));let c=coordinate(current);if(c)all.push(...await files({generator:'geosearch',ggsnamespace:6,ggscoord:c.lat+'|'+c.lng,ggsradius:5000,ggslimit:8},'commons_geosearch'));let unique={};all.forEach(x=>{if(x.imageUrl&&(!unique[x.fileName]||x.method==='wikidata_p18'))unique[x.fileName]=x});let result=Object.values(unique).map(x=>{let text=(x.fileName+' '+x.method).toLowerCase();if(text.includes(current.name.toLowerCase()))x.score+=25;if(/summit|mountain|peak|山/.test(text))x.score+=8;if(/shrine|station|train|map|神社|駅|地図/.test(text))x.score-=18;return x}).sort((a,b)=>b.score-a.score);candidateItems=result;renderCandidates(result);setStatus(result.length+'件の候補を取得しました。');}catch(e){setStatus('取得に失敗しました: '+e.message,'err')}finally{$('find').disabled=false}}
-function renderCandidates(items){$('candidate-title').textContent=(current?current.name+' の画像候補':'画像候補');$('candidates').innerHTML='';items.forEach(x=>{let added=(choices[current.id]||[]).some(y=>y.fileName===x.fileName),el=document.createElement('article');el.className='card '+(added?'selected':'');el.innerHTML=`<img src="${x.thumbnailUrl}" alt=""><div><span class="badge">${x.score}点 / ${x.method}</span><p>${x.fileName}</p><p>作者：${x.author}</p><p>ライセンス：${x.license}</p><a class="small" href="${x.commonsPageUrl}" target="_blank" rel="noopener">Commonsで確認</a><p><button ${x.license==='license_unknown'||added?'disabled':''}>${added?'採用済み':x.license==='license_unknown'?'ライセンス要確認':'採用画像に追加'}</button></p></div>`;el.querySelector('button').onclick=()=>add(x);$('candidates').append(el)})}
-function add(x){let list=choices[current.id]||[];if(!list.some(y=>y.fileName===x.fileName)){list.push({...x,mountainId:current.id,mountainName:current.name,source:'wikimedia_commons',selectedAt:new Date().toISOString()});choices[current.id]=list;localStorage.setItem('ym_image_selections_v1',JSON.stringify(choices))}renderSelected();renderCandidates(candidateItems)}
-function addOwnPhotos(){if(!current)return setStatus('先に山を選択してください。','err','publish-status');let files=[...$('own-files').files];if(!files.length)return setStatus('写真ファイルを選択してください。','err','publish-status');let list=choices[current.id]||[],author=$('own-author').value.trim()||'YAMATCH';files.forEach(file=>{let key='own-'+Date.now()+'-'+Math.random().toString(16).slice(2),url=URL.createObjectURL(file);ownFiles[key]=file;list.push({fileName:file.name,thumbnailUrl:url,imageUrl:url,author,license:'自前写真',licenseUrl:null,commonsPageUrl:null,source:'own',ownFileKey:key,mountainId:current.id,mountainName:current.name,selectedAt:new Date().toISOString()})});choices[current.id]=list;renderSelected();$('own-files').value='';setStatus(files.length+'枚の自前写真を採用一覧に追加しました。GitHubへ反映するまでこの画面を閉じないでください。','ok','publish-status')}
-function renderPublished(){let photos=current&&current.photos||[];$('published').innerHTML='';if(!photos.length){$('published').innerHTML='<span class="small">現在、サイトに登録済みの画像はありません。</span>';return}photos.forEach((src,i)=>{let e=document.createElement('div');e.className='selected-item';e.innerHTML=`<img src="${src}" alt=""><strong>公開済み ${i+1}枚目</strong><span class="small">${src}</span>`;$('published').append(e)})}
-function renderSelected(){let list=current&&choices[current.id]||[];$('selected').innerHTML='';if(!list.length){$('selected').innerHTML='<span class="small">まだ採用画像はありません。</span>';return}list.forEach((x,i)=>{let e=document.createElement('div');e.className='selected-item';e.innerHTML=`<img src="${x.thumbnailUrl}" alt=""><div>${i===0?'メイン画像':'ギャラリー画像'}</div><div class="small">${x.fileName}</div><button class="danger">削除</button>`;e.querySelector('button').onclick=()=>{choices[current.id].splice(i,1);localStorage.setItem('ym_image_selections_v1',JSON.stringify(choices));renderSelected()};$('selected').append(e)})}
-function b64(text){return btoa(unescape(encodeURIComponent(text)))}async function blobB64(blob){let a=await blob.arrayBuffer(),s='';new Uint8Array(a).forEach(v=>s+=String.fromCharCode(v));return {content:btoa(s),ext:blob.type==='image/png'?'.png':blob.type==='image/webp'?'.webp':'.jpg'}}async function fileB64(url){let r=await fetch(url);if(!r.ok)throw Error('画像取得 '+r.status);return blobB64(await r.blob())}
-const CREDIT_SCRIPT="(function(){var m=location.pathname.match(/^\\/mountains\\/([^/]+)/);if(!m)return;fetch('/data/image-credits.json').then(function(r){return r.ok?r.json():{}}).then(function(all){var ps=all[m[1]];if(!ps||!ps.length)return;var d=document.createElement('details');d.style.cssText='max-width:680px;margin:12px auto;padding:10px 14px;background:#f7f6f2;border-radius:8px;font-size:12px';d.innerHTML='<summary>写真クレジット</summary>';var ul=document.createElement('ul');ps.forEach(function(p){var li=document.createElement('li');li.textContent=(p.author||'作者不明')+' / ';var a=document.createElement('a');a.textContent=p.license||'ライセンス不明';a.href=p.licenseUrl||p.commonsPageUrl;a.target='_blank';li.appendChild(a);li.appendChild(document.createTextNode(' / '));var c=document.createElement('a');c.textContent='Wikimedia Commons';c.href=p.commonsPageUrl;c.target='_blank';li.appendChild(c);ul.appendChild(li)});d.appendChild(ul);(document.querySelector('.hero-new')||document.querySelector('main')||document.body).after(d)})})();";
-async function put(path,content,message){let token=localStorage.getItem('ym_gh_token');if(!token)throw Error('通常の管理画面でGitHubトークンを保存してください。');let url=`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`,res=await fetch(url,{headers:{Authorization:'token '+token,Accept:'application/vnd.github.v3+json'}}),sha=res.ok?(await res.json()).sha:null;if(!res.ok&&res.status!==404)throw Error(path+' の取得に失敗');let save=await fetch(url,{method:'PUT',headers:{Authorization:'token '+token,Accept:'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify({message,content,sha})});if(!save.ok)throw Error(path+' の保存に失敗: '+(await save.json()).message)}
-async function getText(path){let token=localStorage.getItem('ym_gh_token'),url=`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`,r=await fetch(url,{headers:{Authorization:'token '+token,Accept:'application/vnd.github.v3+json'}});if(!r.ok)throw Error(path+' の取得に失敗');let x=await r.json();return decodeURIComponent(escape(atob((x.content||'').replace(/\n/g,''))))}
-async function publish(){let selected=Object.values(choices).flat();if(!selected.length)return setStatus('採用画像を追加してから実行してください。','err','publish-status');$('publish').disabled=true;try{setStatus('画像をGitHubへ保存しています…','ok','publish-status');let data=await (await fetch('/data/mountains.json')).json(),credit={};try{let r=await fetch('/data/image-credits.json');if(r.ok)credit=await r.json()}catch(e){}for(let i=0;i<selected.length;i++){let x=selected[i],n=(credit[x.mountainId]||[]).length+1,bin=x.source==='own'?(ownFiles[x.ownFileKey]?await blobB64(ownFiles[x.ownFileKey]):null):await fileB64(x.thumbnailUrl);if(!bin)throw Error(x.fileName+' はページを開き直したため再選択が必要です。');let path=`images/mountains/${x.mountainId}/${String(n).padStart(2,'0')}${bin.ext}`;await put(path,bin.content,'[images] '+x.mountainName);let m=data.find(z=>z.id===x.mountainId);if(m){m.photos=m.photos||[];if(!m.photos.includes('/'+path))m.photos.push('/'+path)}(credit[x.mountainId]||=[]).push({fileName:x.fileName,localPath:'/'+path,author:x.author,license:x.license,licenseUrl:x.licenseUrl,commonsPageUrl:x.commonsPageUrl,source:x.source})}await put('data/mountains.json',b64(JSON.stringify(data,null,2)),'[images] 山画像を更新');await put('data/image-credits.json',b64(JSON.stringify(credit,null,2)),'[images] 写真クレジットを更新');await put('scripts/photo-credits.js',b64(CREDIT_SCRIPT),'[images] 写真クレジット表示を追加');for(let id of Object.keys(credit)){let pagePath='mountains/'+id+'/index.html',html=await getText(pagePath),tag='<scr'+'ipt defer src="/scripts/photo-credits.js"></scr'+'ipt>';if(!html.includes(tag))await put(pagePath,b64(html.replace('</head>',tag+'\n</head>')),'[images] 写真クレジットを追加')}setStatus('GitHubへ反映しました。公開サイトへの反映には1〜2分かかります。','ok','publish-status')}catch(e){setStatus('反映に失敗しました: '+e.message,'err','publish-status')}finally{$('publish').disabled=false}}
-fetch('/data/mountains.json').then(r=>r.json()).then(x=>{mountains=x;$('mountain').innerHTML=x.map(m=>`<option value="${m.id}">${m.name}</option>`).join('');current=x[0];renderSelected();renderPublished()}).catch(e=>setStatus('山データの読み込みに失敗しました: '+e.message,'err'));try{choices=JSON.parse(localStorage.getItem('ym_image_selections_v1')||'{}')}catch(e){}$('find').onclick=getCandidates;$('add-own').onclick=addOwnPhotos;$('mountain').onchange=()=>{current=mountains.find(m=>m.id===$('mountain').value);candidateItems=[];$('candidates').innerHTML='';renderSelected();renderPublished()};$('clear').onclick=()=>{if(current){delete choices[current.id];localStorage.setItem('ym_image_selections_v1',JSON.stringify(choices));renderSelected()}};$('publish').onclick=publish;
-</script></body></html>
+<!doctype html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TMTVVTEEGF');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>山画像管理 | Yamatch Admin</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <strong>Yamatch 管理画面｜山画像管理</strong>
+      <a href="/admin/">← 管理画面へ戻る</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="note">
+      <h1>山の写真を管理する</h1>
+      <ol class="steps">
+        <li>山を選びます。山名の横に、現在サイトで採用中の枚数が表示されます。</li>
+        <li>Commonsの候補、または自分の写真を追加します。</li>
+        <li>矢印ボタンで表示順を決めます。1枚目がメイン写真です。</li>
+        <li>最後に「この山の変更をGitHubへ反映」を押します。</li>
+      </ol>
+      <p class="small">Commons画像は、商用利用可能なライセンスと必要情報を自動確認します。条件を満たさない写真は採用できません。</p>
+      <p class="small">スマートフォンから使う場合は、そのスマートフォンで通常の管理者画面を開き、GitHubトークンを一度保存してください。</p>
+    </section>
+
+    <section class="panel mountain-picker">
+      <div>
+        <label for="mountain">写真を管理する山</label>
+        <select id="mountain" disabled>
+          <option>山データを読み込み中…</option>
+        </select>
+      </div>
+      <div id="mountain-summary" class="mountain-summary" aria-live="polite"></div>
+      <div id="load-status" aria-live="polite"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <h2>採用画像と表示順</h2>
+          <p class="small">「公開中」は現在サイトにある写真です。削除・並べ替えはGitHubへ反映するまで確定しません。</p>
+        </div>
+        <button id="reset" class="secondary compact" type="button">変更を元に戻す</button>
+      </div>
+      <div id="selected" class="selected-grid">
+        <span class="small">山データを読み込み中…</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>自分で撮影した写真を追加</h2>
+      <p class="small">スマートフォン・パソコンの写真を選べます。大きな写真は、サイト表示に適したJPEGへ自動調整します。</p>
+      <div class="upload-area">
+        <label class="file-button" for="own-files">写真ライブラリから選ぶ</label>
+        <input id="own-files" type="file" accept="image/*" multiple>
+        <label class="file-button secondary-file" for="camera-file">カメラで撮影する</label>
+        <input id="camera-file" type="file" accept="image/*" capture="environment">
+        <label class="author-field">撮影者名
+          <input id="own-author" autocomplete="name" placeholder="例：藤田 大樹">
+        </label>
+        <button id="add-own" class="secondary" type="button">選んだ自前写真を追加</button>
+      </div>
+      <div id="own-status" aria-live="polite"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <h2 id="candidate-title">Wikimedia Commonsから探す</h2>
+          <p class="small">Wikidata代表画像、山名、英語名、山頂付近の順で候補を集めます。</p>
+        </div>
+        <button id="find" type="button" disabled>画像候補を取得</button>
+      </div>
+      <div id="status" aria-live="polite"></div>
+      <div id="candidates" class="candidate-grid"></div>
+    </section>
+
+    <section class="panel publish-panel">
+      <div>
+        <h2>変更をサイトへ反映</h2>
+        <p class="small">追加・削除・並べ替えを確認してから押してください。反映後、公開サイトの更新には通常1〜2分かかります。</p>
+      </div>
+      <button id="publish" type="button" disabled>この山の変更をGitHubへ反映</button>
+      <div id="publish-status" aria-live="polite"></div>
+    </section>
+  </main>
+</body>
+</html>
