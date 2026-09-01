@@ -17,21 +17,21 @@
 <style>
 
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;background:#e8e0d5;color:#3a3530;font-size:15px;line-height:1.6}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;background:#f7f6f2;color:#3a3530;font-size:15px;line-height:1.6}
 a{color:inherit;text-decoration:none}
-header{background:linear-gradient(135deg,#4a6038 0%,#607848 100%);padding:12px 16px}
+header{background:#3a4f28;padding:12px 16px}
 .header-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:8px}
 .header-title{color:white;font-family:Georgia,serif;font-size:19px;font-weight:bold}
 .header-sub{color:rgba(255,255,255,0.5);font-size:10px;margin-top:1px}
-.back-btn{color:rgba(255,255,255,0.7);font-size:12px;white-space:nowrap}
+.back-btn{color:white;font-size:12px;white-space:nowrap;border:1px solid rgba(255,255,255,0.7);border-radius:5px;padding:4px 10px;}
 .header-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;border-radius:8px;padding:4px 9px;font-size:11px;white-space:nowrap}
-main{max-width:680px;margin:0 auto;padding:12px}
-.hero{background:#4a5e4a;border-radius:14px;overflow:hidden;margin-bottom:16px}
+main{max-width:680px;margin:0 auto;padding:18px}
+.hero{background:#4e6535;border-radius:14px;overflow:hidden;margin-bottom:16px}
 .hero-body{padding:20px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.mountain-name{font-size:26px;font-weight:bold;color:white;line-height:1.2}
+.mountain-name{font-size:28px;font-weight:700;color:#1a1a16;line-height:1.1}
 .mountain-name-kana{font-size:13px;font-weight:400;color:rgba(255,255,255,0.65);margin-left:8px;letter-spacing:0.04em;}
-.mountain-kana{color:#b8c8b8;font-size:12px;margin-top:4px}
-.mountain-area{color:#c8d8c8;font-size:13px;margin-top:2px}
+.mountain-kana{font-size:11px;color:#4a5a40;margin-top:3px;letter-spacing:0.08em}
+.mountain-area{font-size:12px;color:#3a4a30;margin-top:4px}
 .mountain-updated{font-size:10px;color:#1a1a16;text-align:right;margin:0 2px 5px;letter-spacing:0.02em}
 .category-badge{display:inline-block;background:#e8e4dc;color:#5a4e3a;font-size:11px;font-weight:bold;padding:2px 8px;border-radius:10px;margin-top:8px}
 .elevation{font-size:28px;font-weight:bold;color:white;text-align:right}
@@ -39,6 +39,7 @@ main{max-width:680px;margin:0 auto;padding:12px}
 .difficulty-badge{font-size:11px;padding:3px 10px;border-radius:20px;display:inline-block;margin-top:4px;background:#f0ede0;color:#7a6020;font-weight:bold}
 .card{background:white;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #ddd8d0}
 .card h2{font-size:14px;font-weight:bold;color:#4a5e4a;margin-bottom:12px}
+.gear-section h2{font-size:14px;font-weight:bold;color:#1a1a16;margin-bottom:12px}
 .access-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;background:#f5f3ef;border-radius:8px;padding:12px}
 .access-item .label{font-size:11px;color:#a09888}
 .access-item .value{font-size:20px;font-weight:bold;color:#3a3530}
@@ -46,25 +47,27 @@ main{max-width:680px;margin:0 auto;padding:12px}
 .info-label{color:#a09888;min-width:52px;flex-shrink:0;font-size:13px}
 .route-card{background:#f5f3ef;border-radius:8px;padding:12px;margin-bottom:8px}
 .route-title{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:14px;font-weight:600}
-.route-num{background:#4a5e4a;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:bold;flex-shrink:0}
+.route-num{background:#4e6535;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:bold;flex-shrink:0}
 .route-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
 .route-stats .label{font-size:11px;color:#a09888;display:block}
 .route-stats .value{font-size:13px;font-weight:bold;color:#3a3530}
 .course-num{font-size:32px;font-weight:bold;color:#3a3530}
 .gear-section p{font-size:13px;margin-bottom:4px}
-.yamap-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#4a5e4a;color:white;font-weight:bold;font-size:15px;padding:16px;border-radius:12px;margin-bottom:12px}
+.yamap-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:white;color:#4e6535;font-weight:600;font-size:14px;padding:15px;border-radius:4px;margin-bottom:12px;border:1.5px solid #1a1a16}
 .note{background:#faf8f5;border:1px solid #ddd8d0;border-radius:10px;padding:12px;font-size:12px;color:#7a7068;margin-bottom:16px}
 
-.rw{background:#fff;border-radius:12px;padding:14px;border:1px solid #ddd8d0;margin-bottom:12px}
-.rh{font-size:13px;font-weight:700;color:#4a5e4a;margin:0 0 10px}
+.rw{background:transparent;border-radius:0;padding:24px 0;border:none;border-bottom:1px solid #ccc7ba;margin-bottom:0}
+.rh{font-size:13px;font-weight:700;color:#4e6535;margin:0 0 10px}
 .rg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .rc{display:flex;flex-direction:column;gap:5px;background:#f5f3ef;border:1px solid #e8e4dc;border-radius:10px;padding:10px;text-decoration:none;color:inherit;transition:background .15s}
 .rc:hover{background:#ede9e3}
+.rc-blue{background:linear-gradient(145deg,#eef2f7 0%,#e2eaf3 100%);border:1px solid #d0dcea}
+.rc-green{background:linear-gradient(145deg,#eaf1e0 0%,#eaf1e0 100%);border:1px solid #c8d4b8}
 .rn{font-size:13px;font-weight:700;color:#3a3530}
 .rb{display:flex;gap:4px;flex-wrap:wrap}
 .rbd,.rbc{font-size:10px;font-weight:600;padding:2px 6px;border-radius:8px;white-space:nowrap}
-.rbc{background:#eef0e8;color:#4a5e4a}
-.rt{font-size:13px;font-weight:700;color:#4a5e4a;margin-top:2px}
+.rbc{background:#eaf1e0;color:#4e6535}
+.rt{font-size:13px;font-weight:700;color:#4e6535;margin-top:2px}
 .rs{font-size:10px;color:#a09888;font-weight:normal;margin-left:3px}
 
 footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
@@ -74,11 +77,11 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .share-btn-native{background:#607848;color:white}
 .share-btn-line{background:#06C755;color:white}
 .share-btn-x{background:#000;color:white}
-.share-btn-copy{background:#e8e0d5;color:#4a6038;border:1px solid #c8c4bc}
+.share-btn-copy{background:#e8e0d5;color:#4e6535;border:1px solid #c8c4bc}
 
 /* ③ 新ヒーロー */
-.hero-new{position:relative;overflow:hidden;background:linear-gradient(160deg,#2a4868 0%,#3a5878 40%,#486888 100%);padding:20px 16px 16px;border-radius:14px;margin-bottom:14px}
-.hero-bg-svg{position:absolute;bottom:0;right:-10px;width:200px;height:120px;opacity:0.10;pointer-events:none}
+.hero-new{position:relative;overflow:hidden;background:#d0dcc0;border:1px solid #a0b482;padding:20px 16px 16px;border-radius:14px;margin-bottom:14px}
+.hero-bg-svg{position:absolute;bottom:0;right:-10px;width:200px;height:120px;pointer-events:none}
 .hero-top{margin-bottom:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .hero-photo{position:relative;width:184px;height:104px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.7);flex-shrink:0;background:#6a8055}
 .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
@@ -125,97 +128,126 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .hero-lightbox-dots{position:absolute;bottom:22px;left:0;right:0;display:flex;justify-content:center;gap:6px}
 .hero-lightbox-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4)}
 .hero-lightbox-dot.hp-active{background:#fff}
-.mountain-name{font-size:28px;font-weight:800;color:white;line-height:1.1}
-.mountain-kana{font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px}
-.mountain-area{font-size:12px;color:rgba(255,255,255,0.75);margin-top:4px}
+.mountain-name{font-size:28px;font-weight:700;color:#1a1a16;line-height:1.1}
+.mountain-kana{font-size:11px;color:#4a5a40;margin-top:3px;letter-spacing:0.08em}
+.mountain-area{font-size:12px;color:#3a4a30;margin-top:4px}
 .hero-badges{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
-.cat-badge-new{background:rgba(255,255,255,0.2);color:white;font-size:10px;padding:2px 8px;border-radius:20px;font-weight:500}
-.diff-badge-new{background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);font-size:10px;padding:2px 8px;border-radius:20px;font-weight:500;border:1px solid rgba(255,255,255,0.3)}
+.cat-badge-new{background:transparent;color:#1a1a16;font-size:10px;padding:2px 9px;border-radius:3px;font-weight:600;border:1px solid rgba(26,26,22,0.55)}
+.diff-badge-new{background:transparent;color:#1a1a16;font-size:10px;padding:2px 9px;border-radius:3px;font-weight:500;border:1px solid rgba(26,26,22,0.4)}
 .stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
-.stat-card{background:rgba(255,255,255,0.15);border-radius:10px;padding:8px 6px;text-align:center}
-.stat-val{font-size:18px;font-weight:800;color:white;line-height:1}
-.stat-unit{font-size:9px;color:rgba(255,255,255,0.65);margin-top:1px}
-.stat-label{font-size:9px;color:rgba(255,255,255,0.55);margin-top:3px}
+.stat-card{background:rgba(255,255,255,0.4);border-radius:6px;padding:10px 6px;text-align:center}
+.stat-val{font-family:"Outfit",sans-serif;font-size:27px;font-weight:800;color:#1a1a16;line-height:1;letter-spacing:-0.02em}
+.stat-unit{font-family:"Outfit",sans-serif;font-size:11px;color:#33332e;margin-top:3px;letter-spacing:0.05em;text-transform:uppercase;font-weight:600}
+.stat-label{font-size:10px;color:#403f3a;margin-top:3px;letter-spacing:0.06em;font-weight:500}
 /* 一言紹介 */
 .intro-text{font-size:13px;color:#5a5050;line-height:1.7}
 /* アクセス */
 .access-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .access-item{background:#f8f6f2;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center}
-.access-item .label{font-size:11px;color:#8a8078}
-.access-item .value{font-size:13px;font-weight:600;color:#3a3530}
+.access-item .label{font-size:11px;color:#a09888}
+.access-item .value{font-size:20px;font-weight:bold;color:#3a3530}
 /* 登山口 */
 .info-rows{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
-.info-row{display:flex;gap:8px;font-size:12px}
-.info-label{color:#a09888;flex-shrink:0;width:48px}
+.info-row{display:flex;gap:10px;margin-bottom:8px}
+.info-label{color:#a09888;min-width:52px;flex-shrink:0;font-size:13px}
 .info-val{color:#3a3530;line-height:1.6}
 .map-btns{display:flex;gap:6px;flex-wrap:wrap}
-.map-btn-link{display:inline-flex;align-items:center;gap:4px;background:#f0f5ec;color:#4a6038;font-size:11px;padding:5px 12px;border-radius:20px;border:1px solid #c8d8b8;font-weight:500}
+.map-btn-link{display:inline-flex;align-items:center;gap:4px;background:#eaf1e0;color:#4e6535;font-size:11px;padding:5px 12px;border-radius:8px;border:1px solid #c8d4b8;font-weight:500}
 /* ④ シーズンカレンダー */
 .calendar{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;margin-bottom:8px}
 .cal-m{text-align:center}
 .cal-l{font-size:8px;color:#a09888;margin-bottom:3px;font-weight:500}
-.cal-b{height:28px;border-radius:4px}
-.s-ok{background:#9cb088}
+.cal-b{height:26px;border-radius:2px}
+.s-ok{background:#c8d4b8}
 .s-gear{background:#d4c19a}
 .s-hard{background:#b08868}
 .cal-legend{display:flex;gap:10px;flex-wrap:wrap}
 .leg{display:flex;align-items:center;gap:4px;font-size:10px;color:#6a6058}
-.leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.leg-dot{width:8px;height:8px;border-radius:1.5px;flex-shrink:0}
 /* ルート */
 .route-card{background:#f8f6f2;border-radius:10px;padding:10px 12px;margin-bottom:8px}
-.route-title{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.route-num{width:20px;height:20px;background:#4a6038;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.route-title{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:14px;font-weight:600}
+.route-num{background:#4e6535;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:bold;flex-shrink:0}
 .route-name{font-size:13px;font-weight:600;color:#2a2520}
-.route-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.route-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
 .rs-item{text-align:center}
 .rs-label{font-size:9px;color:#a09888}
 .rs-val{font-size:12px;font-weight:600;color:#3a3530;margin-top:1px}
 /* 共有 */
 .share-section{text-align:center;margin-bottom:8px}
-.share-btn{background:#4a5e4a;color:white;border:none;padding:12px 28px;border-radius:24px;font-size:14px;font-weight:600;cursor:pointer;width:100%}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 8px;border-radius:10px;font-size:13px;font-weight:bold;border:none;cursor:pointer;text-decoration:none}
 .share-fallback{display:flex;gap:8px;justify-content:center;margin-bottom:12px}
-.share-btn-sub{display:flex;align-items:center;gap:5px;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid #ddd8d0;background:white;color:#5a5248;cursor:pointer;text-decoration:none}
+.share-btn-sub{display:flex;align-items:center;gap:5px;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:500;border:1px solid #ddd8d0;background:white;color:#5a5248;cursor:pointer;text-decoration:none}
 
 .ag-a{display:flex;flex-direction:column;gap:5px;}
 .ai-a{display:flex;align-items:center;gap:8px;padding:4px 0;}
 .ai-a-dep{font-size:11px;color:#5a5248;width:44px;flex-shrink:0;white-space:nowrap;}
 .ai-a-bar-wrap{flex:1;height:6px;background:#e8e0d5;border-radius:3px;overflow:hidden;}
-.ai-a-bar{height:100%;background:linear-gradient(90deg,#607848,#8aaa70);border-radius:3px;transition:width 0.3s;}
+.ai-a-bar{height:100%;background:linear-gradient(90deg,#607848,#c8d4b8);border-radius:3px;transition:width 0.3s;}
 .ai-a-val{font-size:11px;font-weight:600;color:#3a3530;width:56px;text-align:right;flex-shrink:0;white-space:nowrap;}
 
 .dep-row{display:flex;gap:0;padding:0 12px 10px;max-width:680px;margin:0 auto;}
 .dep-btn-m{padding:4px 12px;font-size:13px;border:none;background:transparent;color:rgba(255,255,255,0.4);font-weight:400;cursor:pointer;}
 .dep-btn-m.active{color:white;font-weight:700;}
+/* 電車発駅トグル(ts-summary内) */
+.ts-section{background:transparent;border-radius:0;border:none;padding:0;margin-bottom:0;}
+.ts-header{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.ts-title{font-size:14px;font-weight:700;color:#1a1a16;}
+.ts-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;}
+.ts-badge-seasonal{background:#fff3cd;color:#856404;}
+.ts-badge-year{background:#eaf1e0;color:#155724;}
+.ts-line-name{font-size:11px;color:#6a8098;margin-bottom:10px;}
+.ts-route{display:flex;flex-direction:column;gap:0;}
+.ts-step{display:flex;flex-direction:column;position:relative;padding-left:16px;}
+.ts-node::before{content:"";position:absolute;left:-16px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:#9a958a;}
+.ts-node{position:relative;padding:3px 0;margin-bottom:2px;}
+.ts-node-last::before{background:#4e6535;}
+.ts-node-last{border-left:none;background:transparent;}
+.ts-station{font-size:13px;font-weight:700;color:#1e1a16;}
+.ts-arrow::before{content:"";position:absolute;left:-13px;top:-3px;bottom:-3px;width:1px;background:#ddd9cf;}
+.ts-arrow{position:relative;padding:5px 0;margin-bottom:2px;}
+.ts-method{font-family:"Outfit",sans-serif;font-size:11px;color:#3a3a36;letter-spacing:0.01em;}
+.ts-duration{font-weight:700;color:#1a1a16;margin-left:4px;}
+.ts-summary{display:flex;gap:14px;font-family:"Outfit",sans-serif;font-size:12px;font-weight:700;color:#2a2520;border-top:none;padding-top:8px;margin-top:8px;flex-wrap:wrap}
+.ts-summary span{display:inline-flex;align-items:center;gap:3px}
+.ts-summary-note{font-size:11px;color:#4a4a44;width:100%;margin-top:2px;font-weight:400;font-family:-apple-system,sans-serif;}
+.ts-note{font-size:12px;color:#3a3a36;background:#fdf8ee;border-radius:6px;padding:6px 10px;margin-top:8px;line-height:1.6;}
+.ts-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
+.ts-link{font-size:12px;font-weight:600;padding:5px 12px;border-radius:8px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
+.ts-link-yahoo{background:#deeaf4;color:#1a1a16;}
+.ts-link-bus{background:#c8dff0;color:#1a1a16;}
 
 
 .route-list-c{display:flex;flex-direction:column;}
 .rl-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid #f0ede8;}
 .rl-item:last-child{border-bottom:none;}
-.rl-num{width:22px;height:22px;background:linear-gradient(135deg,#4a6038,#607848);color:white;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.rl-num{width:22px;height:22px;background:linear-gradient(135deg,#4e6535,#607848);color:white;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;}
 .rl-content{flex:1;}
 .rl-name{font-size:13px;font-weight:600;color:#2a2520;margin-bottom:4px;}
-.rl-waypoints{font-size:11px;color:#6a8060;margin-bottom:5px;line-height:1.5;}
+.rl-waypoints{font-size:11px;color:#6a8055;margin-bottom:5px;line-height:1.5;}
 .rl-chips{display:flex;gap:4px;flex-wrap:wrap;}
-.rl-chip{font-size:10px;padding:2px 7px;border-radius:20px;background:#f0f5ec;color:#4a6038;font-weight:500;}
-.rl-chip-coef{background:#e8f0e4;color:#3a6030;}
+.rl-chip{font-size:10px;padding:2px 7px;border-radius:20px;background:#eaf1e0;color:#4e6535;font-weight:500;}
+.rl-chip-coef{background:#eaf1e0;color:#4e6535;}
 
 .faq-item:last-child{border-bottom:none;padding-bottom:0;}
-.faq-q::before{content:"Q. ";color:#4a7838;}
+.faq-q::before{content:"Q. ";color:#4e6535;}
 .faq-a p{font-size:13px;color:#5a5248;line-height:1.8;padding-left:18px;}
 
 /* ① おすすめユーザーカード */
 .rec-card{background:white;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #ddd8d0}
 .rec-card-title{font-size:13px;font-weight:700;color:#4a5e4a;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.rec-card-title .eyebrow{font-family:"Outfit",sans-serif;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#4e6535}
+.rec-check{flex-shrink:0;margin-top:3px;width:13px;height:13px;color:#6a8055}
 .rec-list{display:flex;flex-direction:column;gap:7px}
 .rec-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#3a3530;line-height:1.5}
 
 /* ④ まとめリンク改善 */
-.related-links-card{background:white;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #ddd8d0}
-.related-links-title{font-size:11px;font-weight:700;color:#7a9a6a;letter-spacing:0.06em;margin-bottom:10px}
+.related-links-card{background:transparent;border-radius:0;padding:24px 0;margin-bottom:0;border:none;border-bottom:1px solid #ccc7ba}
+.related-links-title{font-size:11px;font-weight:700;color:#1a1a16;letter-spacing:0.06em;margin-bottom:10px}
 .related-link-item{display:flex;flex-direction:column;gap:2px;padding:8px 0;border-bottom:1px solid #f0ede8;text-decoration:none;color:inherit}
 .related-link-item:last-child{border-bottom:none;padding-bottom:0}
-.related-link-main{font-size:13px;font-weight:600;color:#3a5a28;display:flex;align-items:center;gap:5px}
-.related-link-sub{font-size:11px;color:#a09888;padding-left:18px}
+.related-link-main{font-size:14px;font-weight:600;color:#2c4a1e;display:flex;align-items:center;gap:5px}
+.related-link-sub{font-size:11px;color:#5a5a52;padding-left:18px}
 
 .rc-desc{font-size:11px;color:#7a7068;line-height:1.5;margin-top:2px}
 
@@ -226,13 +258,13 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .gear-cat-name{font-size:13px;font-weight:700;color:#3a3530;margin-bottom:8px}
 .gear-items{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
 .gear-item{flex:0 0 auto;width:148px;border:1px solid #ddd8d0;border-radius:10px;padding:10px;background:#fafaf7}
-.gear-item-badge{font-size:9px;font-weight:700;color:#4a6038;background:#eef2e6;padding:2px 7px;border-radius:10px;display:inline-block;margin-bottom:6px}
+.gear-item-badge{font-size:9px;font-weight:700;color:#4e6535;background:#eaf1e0;padding:2px 7px;border-radius:10px;display:inline-block;margin-bottom:6px}
 .gear-item-name{font-size:12px;font-weight:600;color:#1a1a16;line-height:1.4;min-height:32px}
 .gear-item-price{font-size:11px;color:#8a8278;margin:4px 0 8px}
 .gear-item-links{display:flex;gap:4px}
 .gear-item-links a{flex:1;text-align:center;font-size:10px;font-weight:700;padding:7px 4px;border-radius:5px;text-decoration:none}
-.gear-amazon{background:#4a6038;color:#fff!important}
-.gear-rakuten{background:#eef2e6;color:#3a4f28!important}.gear-title svg,.gear-cat-name svg{vertical-align:-2px;margin-right:5px}
+.gear-amazon{background:#4e6535;color:#fff!important}
+.gear-rakuten{background:#eaf1e0;color:#3a4f28!important}.gear-title svg,.gear-cat-name svg{vertical-align:-2px;margin-right:5px}
 .gear-note{font-size:10px;color:#8a8278;margin-top:12px;line-height:1.6}
 .gear-cards-scroll{display:flex;gap:12px;overflow-x:scroll;scrollbar-width:thin;scrollbar-color:#b8b0a0 #ece8dc;padding-bottom:10px;margin:0 -18px;padding-left:18px;padding-right:18px}.gear-cards-scroll::-webkit-scrollbar{height:6px}.gear-cards-scroll::-webkit-scrollbar-track{background:#ece8dc;border-radius:3px}.gear-cards-scroll::-webkit-scrollbar-thumb{background:#b8b0a0;border-radius:3px}.gear-card-v2{flex:0 0 auto;width:200px;background:#fff;border:1px solid #e4e0d4;border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;box-shadow:0 2px 6px rgba(60,50,30,0.06)}.gear-card-head{display:flex;align-items:center;gap:9px;margin-bottom:10px}.gear-card-icon{flex-shrink:0;display:flex}.gear-card-icon svg{width:24px;height:24px}.gear-card-title{font-size:14px;font-weight:800;color:#1a1a16}.gear-card-desc{font-size:12px;color:#6a6058;line-height:1.6;margin-bottom:12px;flex:1}.gear-card-product{font-size:12.5px;font-weight:700;color:#3a5a28;text-decoration:underline;text-decoration-color:#b8cca0;text-underline-offset:2px;margin-bottom:8px}.gear-card-sublinks{display:flex;gap:6px;align-items:center;font-size:11px}.gear-card-sublinks a{color:#8a8078;text-decoration:underline;text-decoration-color:#d8d2c4}.gear-card-sublinks span{color:#c0bcae}
 .gear-card-head{display:flex;align-items:center;gap:9px;margin-bottom:10px}.gear-card-icon{flex-shrink:0;display:flex}.gear-card-icon svg{width:24px;height:24px}.gear-card-title{font-size:14px;font-weight:800;color:#1a1a16}
@@ -244,7 +276,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 #climbed-btn,.weather-day-card.is-today,.gear-card-product,.gear-card-sublinks a,.related-link-item,.map-btn-link,.yamap-btn,.share-btn,.share-btn-sub,.dep-btn-m,.back-btn,.ts-link{transition:transform .13s ease}
 #climbed-btn:active,.weather-day-card.is-today:active,.gear-card-product:active,.gear-card-sublinks a:active,.related-link-item:active,.map-btn-link:active,.yamap-btn:active,.share-btn:active,.share-btn-sub:active,.dep-btn-m:active,.back-btn:active,.ts-link:active{transform:scale(0.95)}
 @keyframes celPop{0%{transform:translate(-50%,-50%) scale(0.82);opacity:0}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}
-.stat-counting .stat-val{color:#3a7a24;transition:color .2s}
+.stat-counting .stat-val{color:#4e6535;transition:color .2s}
 .bookmark-tabs{display:flex;gap:4px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;padding:2px 2px 0;border-bottom:1.5px solid #d4d0c4;margin:-11px 0 3px}
 .bookmark-tab{flex:0 0 auto;display:inline-flex;align-items:center;background:transparent;border:1px solid #d4d0c4;border-bottom:none;color:#1a1a16;font-size:12px;font-weight:700;padding:7px 9px 8px;margin-bottom:-1.5px;border-radius:8px 8px 0 0;white-space:nowrap;cursor:pointer;font-family:inherit;transition:transform .13s ease,background .15s ease}
 .bookmark-tab:active{transform:scale(0.94);background:#eeece4}
@@ -303,7 +335,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "野口五郎岳は初心者でも登れますか？難易度とコース定数を解説", "acceptedAnswer": {"@type": "Answer", "text": "野口五郎岳の難易度は上級、コース定数44〜58です。日帰り可能。登山靴・レインウェア・水を必ず持参してください。"}}, {"@type": "Question", "name": "野口五郎岳の所要時間は？日帰りできますか？", "acceptedAnswer": {"@type": "Answer", "text": "野口五郎岳は日帰り登山が可能です。コース定数44〜58を参考に体力に合ったプランを選んでください。"}}, {"@type": "Question", "name": "野口五郎岳へのアクセス方法は？新宿・横浜からの行き方", "acceptedAnswer": {"@type": "Answer", "text": "コース定数44〜58の上級レベルで、日帰りが可能。上級レベルのため、ある程度の体力・経験が必要です。装備は登山靴・レインウェア・水を必ず持参してください。"}}, {"@type": "Question", "name": "野口五郎岳の登山シーズンはいつですか？おすすめの時期", "acceptedAnswer": {"@type": "Answer", "text": "5月〜11月が登りやすいシーズンです。冬季は積雪・凍結に注意が必要です。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "野口五郎岳は初心者でも登れますか？難易度とコース定数を解説", "acceptedAnswer": {"@type": "Answer", "text": "野口五郎岳の難易度は上級、コース定数44〜58です。日帰り可能。登山靴・レインウェア・水を必ず持参してください。"}}, {"@type": "Question", "name": "野口五郎岳の所要時間は？日帰りできますか？", "acceptedAnswer": {"@type": "Answer", "text": "野口五郎岳は日帰り登山が可能です。コース定数44〜58を参考に体力に合ったプランを選んでください。"}}, {"@type": "Question", "name": "野口五郎岳へのアクセス方法は？新宿・横浜からの行き方", "acceptedAnswer": {"@type": "Answer", "text": "登山口の高瀬ダム（ブナ立尾根登山口）までは公共交通機関の直通ルートがなく、マイカーでのアクセスが基本です。新宿からは車で約5時間40分が目安です。"}}, {"@type": "Question", "name": "野口五郎岳の登山シーズンはいつですか？おすすめの時期", "acceptedAnswer": {"@type": "Answer", "text": "5月〜11月が登りやすいシーズンです。冬季は積雪・凍結に注意が必要です。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Yamatch","item":"https://tozan-navi.com/"},{"@type":"ListItem","position":2,"name":"野口五郎岳","item":"https://tozan-navi.com/mountains/noguchigoro/"}]}</script>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>h1,h2,h3,.ym-logo,.type-name,.mountain-name,.sec-title,.header-title{font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;}</style>
 </head>
@@ -328,7 +361,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 </header>
 <main>
   <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="sec-car">車アクセス時間</button><button type="button" class="bookmark-tab" data-target="sec-parking">登山口・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
-  <div class="mountain-updated">最終更新: 2026-08-11</div>
+  <div class="mountain-updated">最終更新: 2026-08-31</div>
   <div class="hero-new" style="background:linear-gradient(160deg,#2a4830 0%,#3a5840 40%,#486850 100%)">
     <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="white">
       <polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/><polygon points="20,28 50,55 0,55"/>
@@ -353,11 +386,11 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 
   <!-- ① こんな人におすすめ -->
   <div class="rec-card">
-    <div class="rec-card-title">✅ こんな人におすすめ</div>
+    <div class="rec-card-title"><span class="eyebrow">Vibes</span><span>こんな気分の人に</span></div>
     <div class="rec-list">
-      <div class="rec-item"><span><strong>体力・技術に自信がある人</strong>——コース定数44〜58の上級レベル</span></div>
-      <div class="rec-item"><span><strong>日帰り登山がしたい人</strong>——新宿から車5時間40分、日帰り可能</span></div>
-      <div class="rec-item"><span><strong>縦走・ロングトレイルを楽しみたい人</strong>——複数の山をつなぐ縦走コースあり</span></div>
+      <div class="rec-item"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>体力・技術に自信がある人</strong>——コース定数44〜58の上級レベル</span></div>
+      <div class="rec-item"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>日帰り登山がしたい人</strong>——新宿から車5時間40分、日帰り可能</span></div>
+      <div class="rec-item"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>縦走・ロングトレイルを楽しみたい人</strong>——複数の山をつなぐ縦走コースあり</span></div>
     </div>
   </div>
 
@@ -508,7 +541,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   <div class="faq-item">
     <h2 class="faq-q">野口五郎岳へのアクセス方法は？新宿・横浜からの行き方</h2>
     <div class="faq-a">
-      <div><p>コース定数44〜58の上級レベルで、日帰りが可能。上級レベルのため、ある程度の体力・経験が必要です。装備は登山靴・レインウェア・水を必ず持参してください。</p></div>
+      <div><p>登山口の高瀬ダム（ブナ立尾根登山口）までは公共交通機関の直通ルートがなく、マイカーでのアクセスが基本です。新宿からは車で約5時間40分が目安です。</p></div>
     </div>
   </div>
   <div class="faq-item">

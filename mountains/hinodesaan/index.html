@@ -323,7 +323,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"日の出山は初心者でも登れますか？","acceptedAnswer":{"@type":"Answer","text":"日の出山の難易度は初〜中級、コース定数10〜18です。"}},{"@type":"Question","name":"日の出山の所要時間は？日帰りできますか？","acceptedAnswer":{"@type":"Answer","text":"日の出山は日帰り登山が可能です。"}},{"@type":"Question","name":"日の出山へのアクセス方法は？新宿・横浜からの行き方","acceptedAnswer":{"@type":"Answer","text":"新宿駅→御嶽駅→バス→御岳登山口→御岳山経由"}},{"@type":"Question","name":"日の出山の登山シーズンはいつですか？","acceptedAnswer":{"@type":"Answer","text":"通年が登りやすいシーズンです。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"日の出山は初心者でも登れますか？","acceptedAnswer":{"@type":"Answer","text":"日の出山の難易度は初〜中級、コース定数10〜18です。代表的な御岳山〜日の出山〜つるつる温泉は3時間・7.0km・標高差+400mが目安。日帰り登山が可能です。登山靴・レインウェア・水は必携です。"}},{"@type":"Question","name":"日の出山の所要時間は？日帰りできますか？","acceptedAnswer":{"@type":"Answer","text":"日の出山は日帰り登山が可能です。コース定数10〜18を参考に体力に合ったプランを選んでください。"}},{"@type":"Question","name":"日の出山へのアクセス方法は？新宿・横浜からの行き方","acceptedAnswer":{"@type":"Answer","text":"新宿駅→御嶽駅→バス→御岳登山口→御岳山経由"}},{"@type":"Question","name":"日の出山の登山シーズンはいつですか？","acceptedAnswer":{"@type":"Answer","text":"通年が登りやすいシーズンです。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Yamatch","item":"https://tozan-navi.com/"},{"@type":"ListItem","position":2,"name":"日の出山","item":"https://tozan-navi.com/mountains/hinodesaan/"}]}</script>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>h1,h2,h3,.ym-logo,.type-name,.mountain-name,.sec-title,.header-title{font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;}</style>
 </head>
@@ -345,7 +346,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 </header>
 <main>
   <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="weather-card">天気</button><button type="button" class="bookmark-tab" data-target="sec-train">電車・バス</button><button type="button" class="bookmark-tab" data-target="sec-car">車アクセス時間</button><button type="button" class="bookmark-tab" data-target="sec-parking">登山口・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
-  <div class="mountain-updated">最終更新: 2026-08-11</div>
+  <div class="mountain-updated">最終更新: 2026-08-31</div>
   <div class="hero-new">
     <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="#2a5010" style="opacity:0.04">
       <polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/><polygon points="20,28 50,55 0,55"/>
@@ -362,7 +363,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <div class="stats-row">
       <div class="stat-card"><div class="stat-val">902</div><div class="stat-unit">m</div><div class="stat-label">標高</div></div>
       <div class="stat-card"><div class="stat-val">10〜18</div><div class="stat-unit">コース定数</div><div class="stat-label">難易度：初〜中級</div></div>
-      <div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">90</div><div class="stat-unit">分〜</div><div class="stat-label" id="hero-dep-label">大船から</div></div>
+      <div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">1.5</div><div class="stat-unit" id="hero-unit">時間〜</div><div class="stat-label" id="hero-dep-label">大船から</div></div>
     </div>
   </div>
 
@@ -747,6 +748,7 @@ function shareNative(){gtag('event','share_click',{method:'native'});
 function copyUrl(){gtag('event','share_click',{method:'copy_url'});
   navigator.clipboard.writeText(location.href).then(function(){ alert('URLをコピーしました'); });
 }
+function ymFormatHeroTime(raw){var totalMin;if(typeof raw==='number'){totalMin=raw;}else{var s=String(raw);var hMatch=s.match(/(\d+)\s*時間/);var mMatch=s.match(/(\d+)\s*分/);if(hMatch||mMatch){var h=hMatch?parseInt(hMatch[1],10):0;var m=mMatch?parseInt(mMatch[1],10):0;totalMin=h*60+m;}else{var n=s.match(/\d+/);totalMin=n?parseInt(n[0],10):0;}}if(totalMin<60){return {v:String(totalMin),u:'分〜'};}var hrs=totalMin/60;var hrsStr=hrs.toFixed(1);if(hrsStr.slice(-2)==='.0'){hrsStr=hrsStr.slice(0,-2);}return {v:hrsStr,u:'時間〜'};}
 function changeDep(dep){
   sessionStorage.setItem('ym_departure',dep); updateDepButtons(dep); applyDep();
 }
@@ -785,7 +787,8 @@ function applyDep(){
   if(window.__mtCache){
     var __dk={'大船':'driveOfuna','新宿':'driveShinjuku','横浜':'driveYokohama','大宮':'driveOmiya','立川':'driveTachikawa'};
     var __heroTime=document.getElementById('hero-time');
-    if(__heroTime&&window.__mtCache[__dk[dep]]) __heroTime.textContent=window.__mtCache[__dk[dep]];
+    var __heroUnit=document.getElementById('hero-unit');
+    if(__heroTime&&window.__mtCache[__dk[dep]]){var __hf=ymFormatHeroTime(window.__mtCache[__dk[dep]]);__heroTime.textContent=__hf.v;if(__heroUnit) __heroUnit.textContent=__hf.u;}
   }
   document.querySelectorAll('#access-grid .ai-a').forEach(function(el){
     var sel=el.dataset.dep===dep+'駅';
@@ -829,7 +832,7 @@ applyDepTrain();
     var dk={'大船':'driveOfuna','新宿':'driveShinjuku','横浜':'driveYokohama','大宮':'driveOmiya','立川':'driveTachikawa'};
     var heroTime=document.getElementById('hero-time');
     var heroLabel=document.getElementById('hero-dep-label');
-    if(heroTime&&mt[dk[dep]]) heroTime.textContent=mt[dk[dep]];
+    if(heroTime&&mt[dk[dep]]){var __hf2=ymFormatHeroTime(mt[dk[dep]]);heroTime.textContent=__hf2.v;var heroUnit=document.getElementById('hero-unit');if(heroUnit) heroUnit.textContent=__hf2.u;}
     if(heroLabel) heroLabel.textContent=dep+'から';
     if(mt.yamapUrl){document.querySelectorAll('a.yamap-btn').forEach(function(a){a.href=mt.yamapUrl;});}
     document.querySelectorAll('.info-row').forEach(function(row){
