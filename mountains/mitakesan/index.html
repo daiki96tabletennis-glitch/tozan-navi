@@ -360,6 +360,69 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .dl-reasons li::before{content:"";position:absolute;left:3px;top:9px;width:5px;height:5px;border-radius:50%;background:#4e6535;}
 .dl-reasons li.minus::before{background:#c07020;}
 .dl-note{font-size:11.5px;color:#8a8578;line-height:1.6;margin:0;}
+/* 近くて似た山：常時表示スティッキーバー */
+.nearby-sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#c8d4b8;
+  border-top:2px solid #4e6535;
+  display:flex;flex-direction:column;
+  transform:translateY(100%);transition:transform .25s ease;
+  box-shadow:0 -2px 10px rgba(0,0,0,0.12);}
+.nearby-sticky.visible{transform:translateY(0);}
+.nearby-sticky-heading{width:100%;background:#4e6535;color:white;
+  font-size:10px;font-weight:700;padding:4px 12px;letter-spacing:0.04em;box-sizing:border-box;}
+.nearby-sticky-row{display:flex;align-items:stretch;}
+.nearby-sticky-item{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:2px;
+  padding:9px 12px;color:#1a1a16;text-decoration:none;}
+.nearby-sticky-item:first-child{border-right:1px solid #9cb488;}
+.nearby-sticky-name{font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  display:flex;align-items:center;gap:4px;}
+.nearby-sticky-name .arrow{font-size:12px;opacity:0.7;flex-shrink:0;color:#4e6535;}
+.nearby-sticky-sub{font-size:10.5px;color:#3a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+/* FAQ アコーディオン */
+.faq-item{padding:0;border-bottom:1px solid #eae5dc;}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;font-weight:700;color:#1a1a16;
+  margin:0;padding:13px 26px 13px 0;line-height:1.55;cursor:pointer;position:relative;
+  -webkit-tap-highlight-color:transparent;}
+.faq-q::before{content:"Q";flex-shrink:0;width:20px;height:20px;border-radius:5px;
+  background:#4e6535;color:#fff;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.faq-q::after{content:"";position:absolute;right:6px;top:20px;width:7px;height:7px;
+  border-right:2px solid #9a958a;border-bottom:2px solid #9a958a;
+  transform:rotate(45deg);transition:transform .22s ease;}
+.faq-item.open .faq-q::after{transform:rotate(-135deg);}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease;}
+.faq-item.open .faq-a{grid-template-rows:1fr;}
+.faq-a>div{overflow:hidden;}
+.faq-a p{margin:0;padding:0 4px 14px 29px;font-size:12.5px;line-height:1.85;color:#4a443c;
+  border-left:2px solid #eaf1e0;margin-left:9px;}
+
+/* 難易度セクション */
+.dl-card{margin-top:-10px;padding-top:14px;padding-bottom:18px;border-top:none;}
+.dl-head{display:flex;align-items:baseline;gap:8px;margin-bottom:7px;flex-wrap:wrap;}
+.dl-label{font-size:12px;color:#8a8578;font-weight:600;}
+.dl-value{font-size:17px;font-weight:800;color:#4e6535;}
+.dl-score{font-size:11px;color:#8a8578;margin-left:auto;font-weight:600;}
+.dl-bar{display:flex;gap:3px;margin-bottom:4px;}
+.dl-seg{flex:1;height:8px;border-radius:2px;background:#e8e4dc;}
+.dl-seg.on{background:linear-gradient(90deg,#7a9a5a,#4e6535);}
+.dl-seg.on.warn{background:linear-gradient(90deg,#d9a441,#c07020);}
+.dl-seg.on.hard{background:linear-gradient(90deg,#d97a5a,#b04a28);}
+.dl-scale{display:flex;justify-content:space-between;font-size:10px;color:#a09888;margin:0 0 8px;}
+.dl-reasons{list-style:none;padding:0;margin:0;}
+.dl-reasons li{position:relative;padding:2px 0 2px 18px;font-size:12.5px;line-height:1.6;color:#3a3a36;}
+.dl-reasons li::before{content:"";position:absolute;left:3px;top:9px;width:5px;height:5px;border-radius:50%;background:#4e6535;}
+.dl-reasons li.minus::before{background:#c07020;}
+.dl-note{font-size:11.5px;color:#8a8578;line-height:1.6;margin:0;}
+/* 近くて似た山：常時表示スティッキーバー */
+.nearby-sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#4e6535;color:white;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:11px 16px;text-decoration:none;
+  transform:translateY(100%);transition:transform .25s ease;
+  box-shadow:0 -2px 10px rgba(0,0,0,0.12);}
+.nearby-sticky.visible{transform:translateY(0);}
+.nearby-sticky-label{font-size:10px;opacity:0.8;display:block;margin-bottom:1px;}
+.nearby-sticky-name{font-size:14px;font-weight:700;}
+.nearby-sticky-arrow{font-size:16px;flex-shrink:0;}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -373,7 +436,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "御岳山は初心者でも登れますか？難易度とコース定数を解説", "acceptedAnswer": {"@type": "Answer", "text": "御岳山の難易度は初級、コース定数14〜14です。代表的な御嶽駅〜山頂往復は3時間・5.5km・標高差+440mが目安。日帰り登山が可能です。登山靴・レインウェア・水は必携です。"}}, {"@type": "Question", "name": "御岳山の所要時間は？日帰りできますか？", "acceptedAnswer": {"@type": "Answer", "text": "御岳山は日帰り登山が可能です。コース定数14〜14を参考に体力に合ったプランを選んでください。"}}, {"@type": "Question", "name": "御岳山へのアクセス方法は？新宿・横浜からの行き方", "acceptedAnswer": {"@type": "Answer", "text": "新宿駅からは電車・バスを乗り継いで約1時間30分（運賃約1,290円）、御嶽駅が最寄りです。横浜からは約1時間23分（運賃約1,103円）が目安です。車の場合は都心から約1時間40分が目安です。"}}, {"@type": "Question", "name": "御岳山の登山シーズンはいつですか？おすすめの時期", "acceptedAnswer": {"@type": "Answer", "text": "御岳山の登山シーズンは通年が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "御岳山は初心者でも登れますか？難易度とコース定数を解説", "acceptedAnswer": {"@type": "Answer", "text": "御岳山の難易度は初級、コース定数14〜14です。登山初心者でも安心して挑戦できます。代表的な御嶽駅〜山頂往復は3時間・5.5km・標高差+440mが目安。日帰り登山が可能です。登山靴・レインウェア・水は必携です。"}}, {"@type": "Question", "name": "御岳山の所要時間は？日帰りできますか？", "acceptedAnswer": {"@type": "Answer", "text": "御岳山は日帰り登山が可能です。コース定数14〜14を参考に体力に合ったプランを選んでください。"}}, {"@type": "Question", "name": "御岳山へのアクセス方法は？新宿・横浜からの行き方", "acceptedAnswer": {"@type": "Answer", "text": "新宿駅からは電車・バスを乗り継いで約1時間30分（運賃約1,290円）、御嶽駅が最寄りです。横浜からは約1時間23分（運賃約1,103円）が目安です。車の場合は都心から約1時間40分が目安です。"}}, {"@type": "Question", "name": "御岳山の登山シーズンはいつですか？おすすめの時期", "acceptedAnswer": {"@type": "Answer", "text": "御岳山の登山シーズンは通年が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Yamatch","item":"https://tozan-navi.com/"},{"@type":"ListItem","position":2,"name":"御岳山","item":"https://tozan-navi.com/mountains/mitakesan/"}]}</script>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>h1,h2,h3,.ym-logo,.type-name,.mountain-name,.sec-title,.header-title{font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;}</style>
@@ -396,7 +459,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 </header>
 <main>
   <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="weather-card">天気</button><button type="button" class="bookmark-tab" data-target="sec-train">電車・バス</button><button type="button" class="bookmark-tab" data-target="sec-car">車アクセス時間</button><button type="button" class="bookmark-tab" data-target="sec-parking">登山口・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
-  <div class="mountain-updated">最終更新: 2026-09-03</div>
+  <div class="mountain-updated">最終更新: 2026-09-04</div>
   <div class="hero-new">
     <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="#2a5010" style="opacity:0.04">
       <polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/><polygon points="20,28 50,55 0,55"/>
@@ -442,7 +505,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   </div>
   <div class="dl-bar"><div class="dl-seg on"></div><div class="dl-seg on"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div><div class="dl-seg"></div></div>
   <div class="dl-scale"><span>やさしい</span><span>難しい</span></div>
-  <p class="dl-note">御岳山は初級レベル（コース定数14〜14）。代表コースの御嶽駅〜山頂往復は3時間・5.5km・標高差+440m。</p>
+  <p class="dl-note">御岳山は初級レベル（コース定数14〜14）。代表コースの御嶽駅〜山頂往復は3時間・5.5km・標高差+440m。登山初心者でも安心して挑戦できます。</p>
 </div>
 
   <!-- 天気ウィジェット -->
@@ -1321,5 +1384,139 @@ applyDepTrain();
   });
 })();
 </script>
+<div class="nearby-sticky" id="nearby-sticky-bar" style="display:none">
+  <div class="nearby-sticky-heading">近くて似た山</div>
+  <div class="nearby-sticky-row" id="nearby-sticky-items"></div>
+</div>
+<script>
+(function(){
+  var cards = document.querySelectorAll('.rg .rc');
+  if(!cards.length) return;
+  var bar = document.getElementById('nearby-sticky-bar');
+  var itemsBox = document.getElementById('nearby-sticky-items');
+
+  var picks = [];
+  for(var i=0; i<cards.length && picks.length<2; i++){
+    var card = cards[i];
+    var nameSrc = card.querySelector('.rn');
+    if(!nameSrc) continue;
+    var diffSrc = card.querySelector('.rbd');
+    var coefSrc = card.querySelector('.rbc');
+    var href = card.getAttribute('href');
+    var idMatch = href.match(/\/mountains\/([a-z0-9_]+)\//);
+    picks.push({
+      href: href,
+      id: idMatch ? idMatch[1] : null,
+      name: nameSrc.textContent,
+      diff: diffSrc ? diffSrc.textContent : '',
+      coef: coefSrc ? coefSrc.textContent : '',
+      area: ''
+    });
+  }
+  if(!picks.length) return;
+
+  function render(){
+    itemsBox.innerHTML = '';
+    picks.forEach(function(p){
+      var subParts = [];
+      if(p.diff) subParts.push(p.diff);
+      if(p.coef) subParts.push(p.coef);
+      if(p.area) subParts.push(p.area);
+
+      var a = document.createElement('a');
+      a.className = 'nearby-sticky-item';
+      a.href = p.href;
+
+      var nameEl = document.createElement('div');
+      nameEl.className = 'nearby-sticky-name';
+      var nameText = document.createElement('span');
+      nameText.style.overflow = 'hidden';
+      nameText.style.textOverflow = 'ellipsis';
+      nameText.style.whiteSpace = 'nowrap';
+      nameText.textContent = p.name;
+      var arrowEl = document.createElement('span');
+      arrowEl.className = 'arrow';
+      arrowEl.textContent = '→';
+      nameEl.appendChild(nameText);
+      nameEl.appendChild(arrowEl);
+      a.appendChild(nameEl);
+
+      if(subParts.length){
+        var subEl = document.createElement('div');
+        subEl.className = 'nearby-sticky-sub';
+        subEl.textContent = subParts.join('・');
+        a.appendChild(subEl);
+      }
+      itemsBox.appendChild(a);
+    });
+  }
+  render();
+
+  // 地域情報をmountains.jsonから取得して追加
+  fetch('/data/mountains.json').then(function(r){ return r.json(); }).then(function(list){
+    picks.forEach(function(p){
+      var mt = list.find(function(m){ return m.id === p.id; });
+      if(mt && mt.area) p.area = mt.area;
+    });
+    render();
+  }).catch(function(){});
+
+  var heroSection = document.querySelector('.hero-new');
+  var relSection = document.querySelector('.rw');
+  var shown = false;
+  function checkVisibility(){
+    var pastHero = heroSection ? (heroSection.getBoundingClientRect().bottom < 0) : true;
+    var pastSection = relSection ? (relSection.getBoundingClientRect().top < window.innerHeight * 0.85) : false;
+    var shouldShow = pastHero && !pastSection;
+    if(shouldShow && !shown){ bar.style.display='flex'; requestAnimationFrame(function(){bar.classList.add('visible');}); shown = true; }
+    else if(!shouldShow && shown){ bar.classList.remove('visible'); shown = false; }
+  }
+  checkVisibility();
+  window.addEventListener('scroll', checkVisibility, {passive:true});
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.faq-item').forEach(function(item,i){
+    var q=item.querySelector('.faq-q');
+    if(!q) return;
+    if(i===0) item.classList.add('open');
+    q.setAttribute('role','button');
+    q.setAttribute('tabindex','0');
+    function t(){ item.classList.toggle('open'); }
+    q.addEventListener('click',t);
+    q.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); t(); }
+    });
+  });
+})();
+</script>
+<a href="#" class="nearby-sticky" id="nearby-sticky-bar" style="display:none">
+  <span><span class="nearby-sticky-label">近くて似た山</span><span class="nearby-sticky-name" id="nearby-sticky-name"></span></span>
+  <span class="nearby-sticky-arrow">→</span>
+</a>
+<script>
+(function(){
+  var firstCard = document.querySelector('.rg .rc');
+  if(!firstCard) return;
+  var bar = document.getElementById('nearby-sticky-bar');
+  var nameEl = document.getElementById('nearby-sticky-name');
+  var nameSrc = firstCard.querySelector('.rn');
+  if(!nameSrc) return;
+  bar.href = firstCard.getAttribute('href');
+  nameEl.textContent = nameSrc.textContent;
+  var relSection = document.querySelector('.rw');
+  var shown = false;
+  window.addEventListener('scroll', function(){
+    var scrollY = window.scrollY || document.documentElement.scrollTop;
+    var pastThreshold = scrollY > 700;
+    var pastSection = relSection ? (relSection.getBoundingClientRect().top < window.innerHeight * 0.3) : false;
+    var shouldShow = pastThreshold && !pastSection;
+    if(shouldShow && !shown){ bar.style.display='flex'; requestAnimationFrame(function(){bar.classList.add('visible');}); shown = true; }
+    else if(!shouldShow && shown){ bar.classList.remove('visible'); shown = false; }
+  }, {passive:true});
+})();
+</script>
+
 </body>
 </html>
