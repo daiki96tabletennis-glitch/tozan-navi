@@ -295,7 +295,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
         <div class="field"><label>集合時間</label><input type="time" id="f-time"></div>
       </div>
       <div class="form-card">
-        <div class="form-card-title">🔗 リンク集</div>
+        <div class="form-card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> リンク集</div>
         <div class="field"><label>YAMAPルート</label><input type="url" id="f-yamap" placeholder="https://yamap.com/..."></div>
         <div class="field"><label>宿・テント場</label><input type="url" id="f-lodge" placeholder="https://..."></div>
         <div class="field"><label>温泉・お風呂</label><input type="url" id="f-onsen" placeholder="https://..."></div>
@@ -498,7 +498,7 @@ function renderPlans() {
       var total = (p.items||[]).length;
       html += '<div class="plan-card"><div class="plan-top">';
       html += '<div class="plan-name">'+(p.mountain||'山名未設定')+'</div>';
-      html += '<div class="plan-date">📅 '+dateStr+(p.place?'　📍 '+p.place:'')+'</div>';
+      html += '<div class="plan-date"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> '+dateStr+(p.place?'　📍 '+p.place:'')+'</div>';
       html += '</div><div class="plan-body">';
       if (total>0) {
         html += '<div style="font-size:12px;color:#7a7068;margin-bottom:6px">持ち物 '+checked+'/'+total+'</div>';
@@ -584,7 +584,7 @@ function openPlanDetail(index) {
   html += '</div></div>';
   var hasLinks = p.yamap||p.lodge||p.onsen||(p.shops&&p.shops.length>0);
   if (hasLinks) {
-    html += '<div class="card" style="margin-bottom:10px"><div class="card-header">🔗 リンク集</div><div class="card-body">';
+    html += '<div class="card" style="margin-bottom:10px"><div class="card-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> リンク集</div><div class="card-body">';
     if(p.yamap) html+=dr('YAMAPルート','<a href="'+esc(p.yamap)+'" target="_blank">ルートを開く →</a>');
     if(p.lodge) html+=dr('宿','<a href="'+esc(p.lodge)+'" target="_blank">開く →</a>');
     if(p.onsen) html+=dr('温泉','<a href="'+esc(p.onsen)+'" target="_blank">開く →</a>');
@@ -642,12 +642,12 @@ function renderFavorites() {
       html += '<a href="/mountains/' + id + '/" style="display:block;font-size:14px;font-weight:700;color:#2a2520;text-decoration:none;margin-bottom:6px;padding-right:80px">' + esc(name) + '</a>';
       if(elev||diff||driveMin){
         html += '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">';
-        if(elev) html += '<span style="font-size:11px;color:#6a6058;background:#f5f2ef;border-radius:4px;padding:2px 7px">⛰ ' + elev.toLocaleString() + 'm</span>';
+        if(elev) html += '<span style="font-size:11px;color:#6a6058;background:#f5f2ef;border-radius:4px;padding:2px 7px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg> ' + elev.toLocaleString() + 'm</span>';
         if(diff){
           var dc={'初級':'#4a8040','初〜中級':'#5a7040','中級':'#7a7030','中〜上級':'#8a5030','上級':'#8a3030'};
           html += '<span style="font-size:11px;color:white;background:' + (dc[diff]||'#7a7030') + ';border-radius:4px;padding:2px 7px">' + diff + '</span>';
         }
-        if(driveMin) html += '<span style="font-size:11px;color:#6a6058;background:#f5f2ef;border-radius:4px;padding:2px 7px">🚗 ' + driveMin + '分</span>';
+        if(driveMin) html += '<span style="font-size:11px;color:#6a6058;background:#f5f2ef;border-radius:4px;padding:2px 7px"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg> ' + driveMin + '分</span>';
         html += '</div>';
       }
       var tags = computeTags(m, false);
@@ -1308,7 +1308,7 @@ function openBadgeDetail(name, area, elev, date, memo, cfg, key, uid, outfit) {
   document.getElementById('badge-detail-svg').innerHTML = makeBadgeSVG(name, date||'', key||'_default', c, 120, area||'', elev||'');
   document.getElementById('badge-detail-name').textContent = name;
   document.getElementById('badge-detail-sub').textContent = (area||'')+(elev?' · '+Number(elev).toLocaleString()+'m':'');
-  document.getElementById('badge-detail-date').textContent = date ? '📅 '+date : '';
+  document.getElementById('badge-detail-date').textContent = date ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> '+date : '';
   var oe = document.getElementById('badge-detail-outfit');
   if (outfit) { oe.textContent = '👕 '+outfit; oe.style.display='block'; } else { oe.style.display='none'; }
   var me = document.getElementById('badge-detail-memo');
@@ -1459,7 +1459,7 @@ function toggleBadgeStack(el) {
 
 var _TITLES2 = [
   {min:0,label:'🌱 登山見習い',next:3},{min:3,label:'🥾 山歩き入門',next:10},
-  {min:10,label:'⛰ 健脚ハイカー',next:20},{min:20,label:'🏔 山の使い手',next:50},
+  {min:10,label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg> 健脚ハイカー',next:20},{min:20,label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg> 山の使い手',next:50},
   {min:50,label:'👑 山の主',next:100},{min:100,label:'🦅 百名山制覇',next:null},
 ];
 function renderCollectionBanner(keys, climbs, mtnMap) {

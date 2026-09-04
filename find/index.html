@@ -208,7 +208,7 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
     <div class="intro-hero-title">どの山に行けばいい？<br>かんたんに見つかる</div>
     <div class="intro-hero-sub">5問に答えるだけで、あなたにぴったりの山を提案</div>
     <div class="intro-tags">
-      <span class="intro-tag">🚃 電車でも行ける</span>
+      <span class="intro-tag"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 電車でも行ける</span>
       <span class="intro-tag">🥾 初心者OK</span>
       <span class="intro-tag">⏱ 約1分</span>
       <span class="intro-tag">💰 無料</span>
@@ -264,8 +264,8 @@ var QUESTIONS = [
     text: '山へはどうやって行きますか？',
     sub: '当日の交通手段を選んでください',
     choices: [
-      { value: 'train', icon: '🚃', label: '電車・バスだけで行きたい', sub: '車を持っていない、または運転しない' },
-      { value: 'car',   icon: '🚗', label: '車で行ける', sub: 'レンタカーや家族の車も含む' }
+      { value: 'train', icon: '<svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>', label: '電車・バスだけで行きたい', sub: '車を持っていない、または運転しない' },
+      { value: 'car',   icon: '<svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg>', label: '車で行ける', sub: 'レンタカーや家族の車も含む' }
     ]
   },
   {
@@ -283,7 +283,7 @@ var QUESTIONS = [
     text: '山でどんな景色や体験をしたいですか？',
     sub: '一番ピンとくるものを選んでください',
     choices: [
-      { value: 'view',    icon: '🏔', label: '山頂から絶景を見たい', sub: '広い眺望・空に近い感覚' },
+      { value: 'view',    icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>', label: '山頂から絶景を見たい', sub: '広い眺望・空に近い感覚' },
       { value: 'forest',  icon: '🌿', label: '森の中をゆっくり歩きたい', sub: '緑・木漏れ日・静かな道' },
       { value: 'easy',    icon: '😊', label: 'とにかく気軽に登りたい', sub: '難しいことより達成感重視' },
       { value: 'highland',icon: '🌾', label: '高原・湿原など広い景色', sub: '草原・池・のびのびした風景' }
@@ -296,7 +296,7 @@ var QUESTIONS = [
     choices: [
       { value: 'near',   icon: '⚡', label: '1〜2時間以内', sub: 'できるだけ近場がいい' },
       { value: 'middle', icon: '🕐', label: '2〜3時間くらいなら', sub: '少し遠くても行きたい山があれば' },
-      { value: 'far',    icon: '🗺', label: '時間はあまり気にしない', sub: '4時間以上でもOK' }
+      { value: 'far',    icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>', label: '時間はあまり気にしない', sub: '4時間以上でもOK' }
     ]
   },
   {
@@ -508,9 +508,9 @@ function buildReason(m){
   var drive = getDriveTime(m);
 
   if(answers.transport === 'train' && m.trainAccess){
-    reasons.push('🚃 電車・バスでアクセス可（' + m.trainAccess.slice(0,30) + (m.trainAccess.length>30?'…':'') + '）');
+    reasons.push('<svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 電車・バスでアクセス可（' + m.trainAccess.slice(0,30) + (m.trainAccess.length>30?'…':'') + '）');
   } else if(answers.transport === 'car') {
-    reasons.push('🚗 ' + depLabel + 'から約' + drive + '分でアクセス');
+    reasons.push('<svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg> ' + depLabel + 'から約' + drive + '分でアクセス');
   }
 
   var diffMap = {'初級':'初心者でも安心','初〜中級':'初心者〜中級者向け','中級':'慣れてきた人向け'};
@@ -549,11 +549,11 @@ var GEAR_MUST = [
 
 var GEAR_TRAIN = [
   { emoji: '📱', name: 'スマホの充電（モバイルバッテリー）', note: '地図アプリや緊急連絡に必須。出発前に100%充電し、モバイルバッテリーがあると安心。', tag: 'easy' },
-  { emoji: '🗺', name: '山と高原地図アプリ（無料版でOK）', note: 'YAMAPやヤマレコは電波なしでも使える。事前にルートをダウンロードしておこう。', tag: 'easy' }
+  { emoji: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>', name: '山と高原地図アプリ（無料版でOK）', note: 'YAMAPやヤマレコは電波なしでも使える。事前にルートをダウンロードしておこう。', tag: 'easy' }
 ];
 
 var GEAR_CAR = [
-  { emoji: '🚗', name: '駐車場・登山口を事前確認', note: '登山口の駐車場は満車になることも。週末は早朝出発が基本。', tag: 'easy' },
+  { emoji: '<svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg>', name: '駐車場・登山口を事前確認', note: '登山口の駐車場は満車になることも。週末は早朝出発が基本。', tag: 'easy' },
   { emoji: '👕', name: '着替え（下山後用）', note: '車なら荷物を置いていける。汗で冷えないよう着替えを車内に。', tag: 'easy' }
 ];
 
@@ -586,7 +586,7 @@ var TIPS_TRAIN = [
 ];
 
 var TIPS_HIGH = [
-  { icon: '🏔', title: 'ペース配分は「ゆっくり×長く」が正解', text: '山では「遅いと感じるくらい」のペースが疲れにくい。登り始めの最初30分は特にゆっくり歩くと後半が楽になる。', warn: false }
+  { icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>', title: 'ペース配分は「ゆっくり×長く」が正解', text: '山では「遅いと感じるくらい」のペースが疲れにくい。登り始めの最初30分は特にゆっくり歩くと後半が楽になる。', warn: false }
 ];
 
 function buildGearSection(){
@@ -713,7 +713,7 @@ function _doShowResult(){
     var m = item.m;
     var reasons = buildReason(m);
     var drive = getDriveTime(m);
-    var driveStr = drive < 999 ? '🚗 ' + drive + '分' : '';
+    var driveStr = drive < 999 ? '<svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg> ' + drive + '分' : '';
     var is100 = m.category === '百名山';
 
     html += '<div class="rc">';
@@ -723,7 +723,7 @@ function _doShowResult(){
     html += '</div>';
     html += '<div class="rc-badges">';
     html += '<span class="rb rb-diff">' + esc(m.difficulty||'') + '</span>';
-    if(m.trainAccess) html += '<span class="rb rb-train">🚃 電車OK</span>';
+    if(m.trainAccess) html += '<span class="rb rb-train"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 電車OK</span>';
     if(driveStr && answers.transport === 'car') html += '<span class="rb rb-drive">' + driveStr + '</span>';
     if(is100) html += '<span class="rb rb-100">🏆 百名山</span>';
     html += '</div>';
