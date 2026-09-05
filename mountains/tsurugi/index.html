@@ -219,13 +219,16 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .ts-badge-year{background:#eaf1e0;color:#155724;}
 .ts-line-name{font-size:11px;color:#6a8098;margin-bottom:10px;}
 .ts-route{display:flex;flex-direction:column;gap:0;}
-.ts-step{display:flex;flex-direction:column;}
-.ts-node{padding:4px 12px;background:#eef4fb;border-radius:8px;border-left:3px solid #4a7898;margin-bottom:2px;}
-.ts-node-last{border-left-color:#2a7a38;background:#eef6ee;}
-.ts-station{font-size:13px;font-weight:700;color:#1a3050;}
-.ts-arrow{padding:4px 16px;margin-bottom:2px;}
-.ts-method{font-size:12px;color:#4a6888;}
-.ts-duration{font-weight:700;color:#2a5070;margin-left:4px;}
+.ts-step{display:flex;flex-direction:column;position:relative;padding-left:16px;}
+.ts-node::before{content:"";position:absolute;left:-16px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:#9a958a;}
+.ts-node{position:relative;padding:3px 0;margin-bottom:2px;}
+.ts-node-last::before{background:#4e6535;}
+.ts-node-last{border-left:none;background:transparent;}
+.ts-station{font-size:13px;font-weight:700;color:#1e1a16;}
+.ts-arrow::before{content:"";position:absolute;left:-13px;top:-3px;bottom:-3px;width:1px;background:#ddd9cf;}
+.ts-arrow{position:relative;padding:5px 0;margin-bottom:2px;}
+.ts-method{font-family:"Outfit",sans-serif;font-size:11px;color:#3a3a36;letter-spacing:0.01em;}
+.ts-duration{font-weight:700;color:#1a1a16;margin-left:4px;}
 .ts-summary{display:flex;gap:14px;font-size:12px;font-weight:700;color:#1a4a70;background:#eef6f0;border-radius:6px;padding:6px 10px;margin-top:6px;flex-wrap:wrap}
 .ts-summary span{display:inline-flex;align-items:center;gap:3px}
 .ts-summary-note{font-size:11px;color:#8a7050;width:100%;margin-top:2px}
@@ -431,7 +434,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 </header>
 <main>
   <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="sec-train">電車・バス</button><button type="button" class="bookmark-tab" data-target="sec-car">車アクセス時間</button><button type="button" class="bookmark-tab" data-target="sec-parking">登山口・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
-  <div class="mountain-updated">最終更新: 2026-09-04</div>
+  <div class="mountain-updated">最終更新: 2026-09-05</div>
   <div class="hero-new">
     <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="#2a5010" style="opacity:0.04">
       <polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/><polygon points="20,28 50,55 0,55"/>
