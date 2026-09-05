@@ -646,22 +646,7 @@ applyDepTrain();
   window.addEventListener('scroll', checkVisibility, {passive:true});
 })();
 </script>
-<script>
-(function(){
-  document.querySelectorAll('.faq-item').forEach(function(item,i){
-    var q=item.querySelector('.faq-q');
-    if(!q) return;
-    if(i===0) item.classList.add('open');
-    q.setAttribute('role','button');
-    q.setAttribute('tabindex','0');
-    function t(){ item.classList.toggle('open'); }
-    q.addEventListener('click',t);
-    q.addEventListener('keydown',function(e){
-      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); t(); }
-    });
-  });
-})();
-</script>
+
 <a href="#" class="nearby-sticky" id="nearby-sticky-bar" style="display:none">
   <span><span class="nearby-sticky-label">近くて似た山</span><span class="nearby-sticky-name" id="nearby-sticky-name"></span></span>
   <span class="nearby-sticky-arrow">→</span>

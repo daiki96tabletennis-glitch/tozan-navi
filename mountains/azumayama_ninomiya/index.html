@@ -497,7 +497,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <div class="related-links-title"><svg width="15" height="15" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><rect x="9" y="2.5" width="6" height="3" rx="1"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/></svg>関連するまとめ</div>
     <a href="/search/shinjuku-daytrip/" class="related-link-item"><span class="related-link-main"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 L9 9 L13 15 L16 11 L21 20 Z"/></svg>新宿から日帰りで行ける山一覧</span><span class="related-link-sub">新宿発・吾妻山と難易度・時間を比較できる</span></a>
     <a href="/search/train-daytrip/" class="related-link-item"><span class="related-link-main"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>電車で行ける日帰り登山一覧</span><span class="related-link-sub">車なしOK・駅近の山だけを集めたリスト</span></a>
-    <a href="/find/" class="related-link-item"><span class="related-link-main">🗻 山選び診断で行ける山を探す</span><span class="related-link-sub">体力・交通手段から初心者向けの山をすぐ見つける</span></a>
+    <a href="/find/" class="related-link-item"><span class="related-link-main"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg> 山選び診断で行ける山を探す</span><span class="related-link-sub">体力・交通手段から初心者向けの山をすぐ見つける</span></a>
     <a href="/recommend/" class="related-link-item"><span class="related-link-main"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="12,3 14,10 12,12 10,10" fill="currentColor" stroke="none"/><polygon points="12,21 10,14 12,12 14,14" fill="currentColor" opacity="0.5" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="white" stroke="none"/></svg>登山タイプ診断で自分に合う山を探す</span><span class="related-link-sub">16タイプから「あなた向けの山」を提案</span></a>
   </div>
 
@@ -844,22 +844,7 @@ applyDepTrain();
   window.addEventListener('scroll', checkVisibility, {passive:true});
 })();
 </script>
-<script>
-(function(){
-  document.querySelectorAll('.faq-item').forEach(function(item,i){
-    var q=item.querySelector('.faq-q');
-    if(!q) return;
-    if(i===0) item.classList.add('open');
-    q.setAttribute('role','button');
-    q.setAttribute('tabindex','0');
-    function t(){ item.classList.toggle('open'); }
-    q.addEventListener('click',t);
-    q.addEventListener('keydown',function(e){
-      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); t(); }
-    });
-  });
-})();
-</script>
+
 <a href="#" class="nearby-sticky" id="nearby-sticky-bar" style="display:none">
   <span><span class="nearby-sticky-label">近くて似た山</span><span class="nearby-sticky-name" id="nearby-sticky-name"></span></span>
   <span class="nearby-sticky-arrow">→</span>

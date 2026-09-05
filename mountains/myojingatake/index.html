@@ -926,22 +926,7 @@ fetch('/data/mountains.json').then(function(r){return r.json();}).then(function(
   window.addEventListener('scroll', checkVisibility, {passive:true});
 })();
 </script>
-<script>
-(function(){
-  document.querySelectorAll('.faq-item').forEach(function(item,i){
-    var q=item.querySelector('.faq-q');
-    if(!q) return;
-    if(i===0) item.classList.add('open');
-    q.setAttribute('role','button');
-    q.setAttribute('tabindex','0');
-    function t(){ item.classList.toggle('open'); }
-    q.addEventListener('click',t);
-    q.addEventListener('keydown',function(e){
-      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); t(); }
-    });
-  });
-})();
-</script>
+
 
 <script>
 function renderHeroPhotos(mt){

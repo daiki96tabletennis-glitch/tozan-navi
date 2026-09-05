@@ -303,7 +303,7 @@ function MapView({ mountains, onSelect }) {
 
       const icon = L.divIcon({
         className: "",
-        html: `<div style="width:30px;height:30px;border-radius:50%;background:${color};border:2.5px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;cursor:pointer;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg></div>`,
+        html: `<div style="width:30px;height:30px;border-radius:50%;background:${color};border:2.5px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;cursor:pointer;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg></div>`,
         iconSize: [30, 30],
         iconAnchor: [15, 15],
         popupAnchor: [0, -18],
@@ -314,7 +314,7 @@ function MapView({ mountains, onSelect }) {
         <div style="min-width:170px;font-family:sans-serif;padding:2px;">
           <div style="font-weight:bold;font-size:14px;margin-bottom:4px;">${mountain.name}</div>
           <div style="font-size:12px;color:#555;">${mountain.elevation.toLocaleString()}m ・ ${mountain.area}</div>
-          <div style="font-size:11px;color:#777;margin-top:3px;"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg> ${formatDriveTime(mountain.driveTime)}</div>
+          <div style="font-size:11px;color:#777;margin-top:3px;"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg> ${formatDriveTime(mountain.driveTime)}</div>
           <div style="font-size:11px;margin-top:3px;font-weight:600;color:${dayTrip ? "#15803d" : "#b45309"};">${dayTrip ? "🌅 日帰り可" : "🏕 宿泊推奨"}</div>
           <button id="btn-${mountain.id}" style="margin-top:8px;width:100%;padding:7px;background:#1a3d2b;color:white;border:none;border-radius:7px;font-size:12px;cursor:pointer;font-weight:bold;">詳細を見る →</button>
         </div>
@@ -333,7 +333,7 @@ function MapView({ mountains, onSelect }) {
     <div style={{ position: "relative" }}>
       {!mapReady && (
         <div style={{ height: 460, borderRadius: 12, background: "#e8f0e9", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 8 }}>
-          <div style={{ fontSize: 32 }}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>️</div>
+          <div style={{ fontSize: 32 }}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>️</div>
           <div style={{ color: "#555", fontSize: 14 }}>地図を読み込み中...</div>
         </div>
       )}
@@ -413,7 +413,7 @@ function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
 
       <div className="mt-4 rounded-xl p-4">
         <h3 className="font-semibold text-gray-700 flex items-center gap-2 mb-3">
-          <svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg> {departure}駅からのアクセス
+          <svg width="12" height="12" viewBox="0 0 24 24"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg> {departure}駅からのアクセス
         </h3>
         <div className="grid grid-cols-2 gap-4 bg-gray-50 rounded-lg p-3">
           <div><p className="text-xs text-gray-500">所要時間</p><p className="font-bold text-lg">{formatDriveTime(
@@ -502,7 +502,7 @@ function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
         <a href={mountain.yamapUrl} target="_blank" rel="noopener noreferrer"
           className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl text-white font-bold text-sm"
           style={{ backgroundColor: "#4a5e4a" }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> YAMAPで詳細を見る ↗
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> YAMAPで詳細を見る ↗
         </a>
         <button
           onClick={() => onReport(mountain.name)}
@@ -701,7 +701,7 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
             </div>
 
             {error && <p style={{ margin: "8px 0 0", fontSize: "12px", color: "#b04040" }}>⚠️ {error}</p>}
-            {success && <p style={{ margin: "8px 0 0", fontSize: "12px", color: "#3a7a3a" }}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M20 6 9 17l-5-5"/></svg> 投稿しました！ありがとうございます。</p>}
+            {success && <p style={{ margin: "8px 0 0", fontSize: "12px", color: "#3a7a3a" }}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 投稿しました！ありがとうございます。</p>}
             <p style={{ margin: "10px 0 0", fontSize: "11px", color: "#a09888" }}>※ 書き込みはすべてのユーザーに表示されます</p>
           </div>
 
@@ -727,7 +727,7 @@ function FeedbackBoard({ onClose, initMountain = "" }) {
                         {post.category}
                       </span>
                       {post.mountain !== "（山名未指定）" && (
-                        <span style={{ fontSize: "12px", fontWeight: 700, color: "#4a5e4a" }}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg> {post.mountain}</span>
+                        <span style={{ fontSize: "12px", fontWeight: 700, color: "#4a5e4a" }}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg> {post.mountain}</span>
                       )}
                       <span style={{ marginLeft: "auto", fontSize: "11px", color: "#a09888" }}>{post.name} · {post.date}</span>
                     </div>
@@ -1978,7 +1978,7 @@ fetch('/data/mountains.json')
   var STEPS_ANDROID = [
     {
       num: '1', title: 'メニュー（︙）をタップ',
-      mock: '<div class="a2hs-mock-bar"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="5" y="11" width="14" height="9" rx="1.5" fill="currentColor"/><path d="M8 11 V8 a4 4 0 0 1 8 0 v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>yamatch (このサイト)</div>' +
+      mock: '<div class="a2hs-mock-bar"><svg width="12" height="12" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="1.5" fill="currentColor"/><path d="M8 11 V8 a4 4 0 0 1 8 0 v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>yamatch (このサイト)</div>' +
             '<div class="a2hs-mock-toolbar">' +
               '<div class="a2hs-mock-icon">◀</div>' +
               '<div class="a2hs-mock-icon">▶</div>' +

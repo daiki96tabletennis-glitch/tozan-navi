@@ -522,9 +522,9 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
       return 'wind-green';
     }
     var COND = [
-      {cls:'cond-lvl0', label:'🟢 今日の登山コンディション：良好'},
-      {cls:'cond-lvl1', label:'🟡 今日の登山コンディション：注意'},
-      {cls:'cond-lvl2', label:'🔴 今日の登山コンディション：非推奨'}
+      {cls:'cond-lvl0', label:'<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2d8a3e;margin-right:4px;vertical-align:1px"></span> 今日の登山コンディション：良好'},
+      {cls:'cond-lvl1', label:'<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4a830;margin-right:4px;vertical-align:1px"></span> 今日の登山コンディション：注意'},
+      {cls:'cond-lvl2', label:'<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#c0503a;margin-right:4px;vertical-align:1px"></span> 今日の登山コンディション：非推奨'}
     ];
     var WCODE_LEVEL2 = [95,96,99,65,67,75,82];
     var WCODE_LEVEL1 = [45,48,51,53,55,56,57,61,63,66,71,73,77,80,81,85,86];
@@ -1389,22 +1389,7 @@ applyDepTrain();
   window.addEventListener('scroll', checkVisibility, {passive:true});
 })();
 </script>
-<script>
-(function(){
-  document.querySelectorAll('.faq-item').forEach(function(item,i){
-    var q=item.querySelector('.faq-q');
-    if(!q) return;
-    if(i===0) item.classList.add('open');
-    q.setAttribute('role','button');
-    q.setAttribute('tabindex','0');
-    function t(){ item.classList.toggle('open'); }
-    q.addEventListener('click',t);
-    q.addEventListener('keydown',function(e){
-      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); t(); }
-    });
-  });
-})();
-</script>
+
 <a href="#" class="nearby-sticky" id="nearby-sticky-bar" style="display:none">
   <span><span class="nearby-sticky-label">近くて似た山</span><span class="nearby-sticky-name" id="nearby-sticky-name"></span></span>
   <span class="nearby-sticky-arrow">→</span>
