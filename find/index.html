@@ -127,7 +127,7 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
 
 /* 注意事項 */
 .tip-list{margin-top:14px;display:flex;flex-direction:column;gap:10px;}
-.tip-item{display:flex;gap:10px;padding:10px 12px;border-radius:10px;background:#faf9f6;border-left:3px solid #4e6535;}
+.tip-item{display:flex;gap:10px;padding:10px 12px;border-radius:10px;background:#faf9f6;}
 .tip-item-icon{font-size:20px;flex-shrink:0;}
 .tip-item-body{flex:1;}
 .tip-item-title{font-size:13px;font-weight:700;color:#2a2520;margin-bottom:3px;}
@@ -508,9 +508,9 @@ function buildReason(m){
   var drive = getDriveTime(m);
 
   if(answers.transport === 'train' && m.trainAccess){
-    reasons.push('<svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 電車・バスでアクセス可（' + m.trainAccess.slice(0,30) + (m.trainAccess.length>30?'…':'') + '）');
+    reasons.push('🚃 電車・バスでアクセス可（' + m.trainAccess.slice(0,30) + (m.trainAccess.length>30?'…':'') + '）');
   } else if(answers.transport === 'car') {
-    reasons.push('<svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg> ' + depLabel + 'から約' + drive + '分でアクセス');
+    reasons.push('🚗 ' + depLabel + 'から約' + drive + '分でアクセス');
   }
 
   var diffMap = {'初級':'初心者でも安心','初〜中級':'初心者〜中級者向け','中級':'慣れてきた人向け'};
