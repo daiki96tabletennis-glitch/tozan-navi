@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://tozan-navi.com/articles/train-access-mountains/">
 <meta property="og:site_name" content="Yamatch">
 <link rel="canonical" href="https://tozan-navi.com/articles/train-access-mountains/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"新宿発・電車・バスで行ける登山10選｜アクセス完全ガイド【2026年版】","description":"新宿から電車・バスだけで行ける登山10選。高尾山・大山・塔ノ岳・陣馬山・棒ノ折山など各山の所要時間・乗り換え情報・コース定数を完全網羅。","author":{"@type":"Person","name":"Yamatch編集部"},"publisher":{"@type":"Organization","name":"Yamatch","url":"https://tozan-navi.com"},"dateModified":"2026-07-09","url":"https://tozan-navi.com/articles/train-access-mountains/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"新宿発・電車・バスで行ける登山10選｜アクセス完全ガイド【2026年版】","description":"新宿から電車・バスだけで行ける登山10選。高尾山・大山・塔ノ岳・陣馬山・棒ノ折山など各山の所要時間・乗り換え情報・コース定数を完全網羅。","author":{"@type":"Person","name":"Yamatch編集部"},"publisher":{"@type":"Organization","name":"Yamatch","url":"https://tozan-navi.com"},"dateModified":"2026-09-07","url":"https://tozan-navi.com/articles/train-access-mountains/"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"新宿から電車だけで行ける登山スポットはどこですか？","acceptedAnswer":{"@type":"Answer","text":"高尾山（京王線約50分・バス不要）・陣馬山（中央線＋バス約1時間40分）・大山（小田急線＋バス約1時間30分）・奥多摩の山々（JR青梅線）など10座を紹介しています。"}},{"@type":"Question","name":"新宿から登山口まで何時間かかりますか？","acceptedAnswer":{"@type":"Answer","text":"高尾山は約50分、陣馬山・大山は約1時間30分〜1時間40分、塔ノ岳・棒ノ折山は約1時間30分〜2時間が目安です。バスの時刻によって変わるため事前確認をおすすめします。"}},{"@type":"Question","name":"電車登山で初心者に向いている山はどれですか？","acceptedAnswer":{"@type":"Answer","text":"高尾山（コース定数14）と大山（コース定数12〜16）が初心者に最適です。整備されたコース・豊富な標識・山頂の売店があり安心して楽しめます。"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Yamatch","item":"https://tozan-navi.com/"},{"@type":"ListItem","position":2,"name":"登山ガイド記事","item":"https://tozan-navi.com/articles/"},{"@type":"ListItem","position":3,"name":"新宿発・電車・バスで行ける登山10選","item":"https://tozan-navi.com/articles/train-access-mountains/"}]}</script>
 <style>
@@ -106,6 +106,14 @@ body{padding-bottom:80px}
 .highlight-list{list-style:none;padding:0;margin:2px 0 4px}
 .highlight-list li{padding:7px 0;font-size:14.5px;line-height:1.6;color:#4a4540;border-bottom:1px dashed #e5e0d8}
 .highlight-list li:last-child{border-bottom:none}
+
+.mountain-photo{width:100%;max-height:280px;object-fit:cover;display:block;border-radius:10px;margin:10px 0}
+.mountain-photo-carousel{position:relative;width:100%;height:220px;border-radius:10px;overflow:hidden;margin:10px 0}
+.mountain-photo-carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+.mountain-photo-carousel img.mpc-active{opacity:1}
+.mountain-photo-dots{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:5px;z-index:2}
+.mountain-photo-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.5);transition:background .3s}
+.mountain-photo-dot.mpc-active{background:#fff}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -224,7 +232,7 @@ body{padding-bottom:80px}
   </div>
 
   
-  <section class="mountain-section" id="mountain-1">
+  <section class="mountain-section" id="mountain-1" data-mountain-id="takao">
     <div class="section-header">
       <div class="rank-num">#1</div>
       <div style="flex:1;min-width:0">
@@ -257,7 +265,7 @@ body{padding-bottom:80px}
     </a>
   </section>
   <div style="height:16px"></div>
-  <section class="mountain-section" id="mountain-2">
+  <section class="mountain-section" id="mountain-2" data-mountain-id="oyama">
     <div class="section-header">
       <div class="rank-num">#2</div>
       <div style="flex:1;min-width:0">
@@ -290,7 +298,7 @@ body{padding-bottom:80px}
     </a>
   </section>
   <div style="height:16px"></div>
-  <section class="mountain-section" id="mountain-3">
+  <section class="mountain-section" id="mountain-3" data-mountain-id="tonosaki">
     <div class="section-header">
       <div class="rank-num">#3</div>
       <div style="flex:1;min-width:0">
@@ -323,7 +331,7 @@ body{padding-bottom:80px}
     </a>
   </section>
   <div style="height:16px"></div>
-  <section class="mountain-section" id="mountain-4">
+  <section class="mountain-section" id="mountain-4" data-mountain-id="jinba">
     <div class="section-header">
       <div class="rank-num">#4</div>
       <div style="flex:1;min-width:0">
@@ -356,7 +364,7 @@ body{padding-bottom:80px}
     </a>
   </section>
   <div style="height:16px"></div>
-  <section class="mountain-section" id="mountain-5">
+  <section class="mountain-section" id="mountain-5" data-mountain-id="bonori">
     <div class="section-header">
       <div class="rank-num">#5</div>
       <div style="flex:1;min-width:0">
@@ -389,7 +397,7 @@ body{padding-bottom:80px}
     </a>
   </section>
   <div style="height:16px"></div>
-  <section class="mountain-section" id="mountain-6">
+  <section class="mountain-section" id="mountain-6" data-mountain-id="otake">
     <div class="section-header">
       <div class="rank-num">#6</div>
       <div style="flex:1;min-width:0">
@@ -422,7 +430,7 @@ body{padding-bottom:80px}
     </a>
   </section>
   <div style="height:16px"></div>
-  <section class="mountain-section" id="mountain-7">
+  <section class="mountain-section" id="mountain-7" data-mountain-id="kumotori">
     <div class="section-header">
       <div class="rank-num">#7</div>
       <div style="flex:1;min-width:0">
@@ -455,7 +463,7 @@ body{padding-bottom:80px}
     </a>
   </section>
   <div style="height:16px"></div>
-  <section class="mountain-section" id="mountain-8">
+  <section class="mountain-section" id="mountain-8" data-mountain-id="tanigawa">
     <div class="section-header">
       <div class="rank-num">#8</div>
       <div style="flex:1;min-width:0">
@@ -488,7 +496,7 @@ body{padding-bottom:80px}
     </a>
   </section>
   <div style="height:16px"></div>
-  <section class="mountain-section" id="mountain-9">
+  <section class="mountain-section" id="mountain-9" data-mountain-id="nantaisan">
     <div class="section-header">
       <div class="rank-num">#9</div>
       <div style="flex:1;min-width:0">
@@ -521,7 +529,7 @@ body{padding-bottom:80px}
     </a>
   </section>
   <div style="height:16px"></div>
-  <section class="mountain-section" id="mountain-10">
+  <section class="mountain-section" id="mountain-10" data-mountain-id="kisokoma">
     <div class="section-header">
       <div class="rank-num">#10</div>
       <div style="flex:1;min-width:0">
@@ -730,6 +738,70 @@ document.addEventListener('DOMContentLoaded', function(){
       window.scrollTo({top:0, behavior:'smooth'});
     });
   }
+})();
+</script>
+<script>
+(function(){
+  fetch('/data/mountains.json').then(function(r){ return r.json(); }).then(function(mountains){
+    var byId = {};
+    mountains.forEach(function(m){ byId[m.id] = m; });
+    document.querySelectorAll('.mountain-section[data-mountain-id]').forEach(function(section){
+      var mid = section.getAttribute('data-mountain-id');
+      var m = byId[mid];
+      if(!m || !m.photos || !m.photos.length) return;
+      var header = section.querySelector('.section-header');
+      if(!header) return;
+      var existingImg = section.querySelector('.mountain-photo');
+      var existingCarousel = section.querySelector('.mountain-photo-carousel');
+
+      if(m.photos.length === 1){
+        if(existingCarousel) existingCarousel.remove();
+        if(existingImg){
+          if(existingImg.getAttribute('src') !== m.photos[0]) existingImg.setAttribute('src', m.photos[0]);
+        } else {
+          var img = document.createElement('img');
+          img.src = m.photos[0];
+          img.className = 'mountain-photo';
+          img.alt = m.name || '';
+          img.loading = 'lazy';
+          header.insertAdjacentElement('afterend', img);
+        }
+      } else {
+        if(existingImg) existingImg.remove();
+        if(existingCarousel) existingCarousel.remove();
+        var wrap = document.createElement('div');
+        wrap.className = 'mountain-photo-carousel';
+        m.photos.forEach(function(src, i){
+          var img = document.createElement('img');
+          img.src = src;
+          img.alt = m.name || '';
+          img.loading = i === 0 ? 'eager' : 'lazy';
+          if(i === 0) img.className = 'mpc-active';
+          wrap.appendChild(img);
+        });
+        var dots = document.createElement('div');
+        dots.className = 'mountain-photo-dots';
+        m.photos.forEach(function(_, i){
+          var dot = document.createElement('div');
+          dot.className = 'mountain-photo-dot' + (i === 0 ? ' mpc-active' : '');
+          dots.appendChild(dot);
+        });
+        wrap.appendChild(dots);
+        header.insertAdjacentElement('afterend', wrap);
+
+        var imgs = wrap.querySelectorAll('img');
+        var dotEls = dots.querySelectorAll('.mountain-photo-dot');
+        var idx = 0;
+        setInterval(function(){
+          imgs[idx].classList.remove('mpc-active');
+          dotEls[idx].classList.remove('mpc-active');
+          idx = (idx + 1) % imgs.length;
+          imgs[idx].classList.add('mpc-active');
+          dotEls[idx].classList.add('mpc-active');
+        }, 4500);
+      }
+    });
+  }).catch(function(){});
 })();
 </script>
 </body>

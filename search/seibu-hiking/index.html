@@ -17,7 +17,7 @@
 <meta property="og:description" content="池袋から乗り換えなしで行ける奥武蔵のハイキングを5コース紹介。武甲山・棒ノ嶺・伊豆ヶ岳など、駅から歩ける山も。コース定数・難易度・所要時間つきで初心者でも選びやすい。">
 <meta property="og:url" content="https://tozan-navi.com/search/seibu-hiking/">
 <link rel="canonical" href="https://tozan-navi.com/search/seibu-hiking/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"西武線の日帰り登山・ハイキング5選｜武甲山・棒ノ嶺など奥武蔵の山","description":"西武線で行ける奥武蔵の日帰りハイキング5選。武甲山・棒ノ嶺・伊豆ヶ岳など池袋から直通でアクセスできる山を紹介。","author":{"@type":"Organization","name":"Yamatch"},"publisher":{"@type":"Organization","name":"Yamatch","url":"https://tozan-navi.com"},"datePublished":"2025-10-01","dateModified":"2026-06-12","url":"https://tozan-navi.com/search/seibu-hiking/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"西武線の日帰り登山・ハイキング5選｜武甲山・棒ノ嶺など奥武蔵の山","description":"西武線で行ける奥武蔵の日帰りハイキング5選。武甲山・棒ノ嶺・伊豆ヶ岳など池袋から直通でアクセスできる山を紹介。","author":{"@type":"Organization","name":"Yamatch"},"publisher":{"@type":"Organization","name":"Yamatch","url":"https://tozan-navi.com"},"datePublished":"2025-10-01","dateModified":"2026-09-07","url":"https://tozan-navi.com/search/seibu-hiking/"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Yamatch","item":"https://tozan-navi.com/"},{"@type":"ListItem","position":2,"name":"西武線で行ける登山5選","item":"https://tozan-navi.com/search/seibu-hiking/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"西武線で行ける登山5選","itemListElement":[{"@type":"ListItem","position":1,"name":"天覧山・多峯主山","url":"https://tozan-navi.com/mountains/tenzandake/"},{"@type":"ListItem","position":2,"name":"日和田山","url":"https://tozan-navi.com/mountains/hiwadayama/"},{"@type":"ListItem","position":3,"name":"棒ノ折山","url":"https://tozan-navi.com/mountains/bonori/"},{"@type":"ListItem","position":4,"name":"伊豆ヶ岳","url":"https://tozan-navi.com/mountains/izugatake/"},{"@type":"ListItem","position":5,"name":"武甲山","url":"https://tozan-navi.com/mountains/bukosan/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"西武線で行ける登山スポットはどこですか？","acceptedAnswer":{"@type":"Answer","text":"天覧山・多峯主山（飯能駅徒歩）・日和田山（高麗駅徒歩）・棒ノ折山（飯能駅バス）・伊豆ヶ岳（正丸駅徒歩）・武甲山（西武秩父駅タクシー）の5選。池袋から特急で最短40分でアクセスできます。"}},{"@type":"Question","name":"西武線で行ける初心者向けの登山は？","acceptedAnswer":{"@type":"Answer","text":"天覧山・多峯主山（コース定数5〜8）と日和田山（コース定数4〜10）が初心者に最適。飯能駅・高麗駅から徒歩でアクセスでき、整備されたコースで安全に楽しめます。"}},{"@type":"Question","name":"西武秩父線で行ける登山はどこですか？","acceptedAnswer":{"@type":"Answer","text":"正丸駅から伊豆ヶ岳（徒歩10分）、西武秩父駅からタクシーで武甲山にアクセスできます。下山後は西武秩父駅の「祭の湯」で温泉も楽しめます。"}}]}</script>
@@ -39,7 +39,14 @@ h1{font-size:22px;font-weight:800;line-height:1.3;margin-bottom:12px;}
 .page-count{font-size:12px;color:#9a9088;margin-top:10px;}
 .related-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
 .rs-tag{font-size:12px;padding:5px 12px;background:white;border:1px solid #d0c8c0;border-radius:20px;color:#4a4040;text-decoration:none;}
-.mountain-card{background:white;border-radius:14px;border:1px solid #e0dbd4;margin-bottom:10px;padding:14px;display:flex;gap:12px;}
+.mountain-card{background:white;border-radius:14px;border:1px solid #e0dbd4;margin-bottom:10px;padding:14px;display:flex;flex-wrap:wrap;gap:12px;}
+.mc-photo{width:100%;height:140px;object-fit:cover;border-radius:10px;display:block;order:-1}
+.mc-photo-carousel{position:relative;width:100%;height:140px;border-radius:10px;overflow:hidden;order:-1}
+.mc-photo-carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+.mc-photo-carousel img.mpc-active{opacity:1}
+.mc-photo-dots{position:absolute;left:0;right:0;bottom:6px;display:flex;justify-content:center;gap:5px;z-index:2}
+.mc-photo-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.5);transition:background .3s}
+.mc-photo-dot.mpc-active{background:#fff}
 .mc-rank{font-size:20px;font-weight:900;color:#c0b090;min-width:30px;text-align:center;padding-top:2px;}
 .mc-body{flex:1;min-width:0;}
 .mc-head{margin-bottom:6px;}
@@ -114,11 +121,11 @@ footer a{color:#7a9a7a;}
   </div>
 
 
-<div class="route-section-header" style="margin:28px 0 12px;padding:10px 16px;background:#e8f0e0;border-left:4px solid #4e6535;border-radius:6px;">
+<div class="route-section-header" style="margin:28px 0 12px;padding:10px 16px;background:#e8f0e0;border-radius:6px;">
   <h2 style="margin:0;font-size:16px;font-weight:bold;color:#2d4a1e;"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 西武池袋線で行ける山（池袋から40〜60分）</h2>
   <p style="margin:4px 0 0;font-size:13px;color:#4e6535;">天覧山・日和田山 — 初心者・ファミリーに最適な入門コース</p>
 </div>
-  <div class="mountain-card">
+  <div class="mountain-card" data-mountain-id="tenzandake">
     <div class="mc-rank">#1</div>
     <div class="mc-body">
       <div class="mc-head">
@@ -140,7 +147,7 @@ footer a{color:#7a9a7a;}
     </div>
   </div>
 
-  <div class="mountain-card">
+  <div class="mountain-card" data-mountain-id="hiwadayama">
     <div class="mc-rank">#2</div>
     <div class="mc-body">
       <div class="mc-head">
@@ -163,11 +170,11 @@ footer a{color:#7a9a7a;}
   </div>
 
 
-<div class="route-section-header" style="margin:28px 0 12px;padding:10px 16px;background:#e8f0e0;border-left:4px solid #4e6535;border-radius:6px;">
+<div class="route-section-header" style="margin:28px 0 12px;padding:10px 16px;background:#e8f0e0;border-radius:6px;">
   <h2 style="margin:0;font-size:16px;font-weight:bold;color:#2d4a1e;"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 西武秩父線で行ける山（池袋から60〜90分）</h2>
   <p style="margin:4px 0 0;font-size:13px;color:#4e6535;">棒ノ折山・伊豆ヶ岳・武甲山 — 本格登山からハイキングまで</p>
 </div>
-  <div class="mountain-card">
+  <div class="mountain-card" data-mountain-id="bonori">
     <div class="mc-rank">#3</div>
     <div class="mc-body">
       <div class="mc-head">
@@ -189,7 +196,7 @@ footer a{color:#7a9a7a;}
     </div>
   </div>
 
-  <div class="mountain-card">
+  <div class="mountain-card" data-mountain-id="izugatake">
     <div class="mc-rank">#4</div>
     <div class="mc-body">
       <div class="mc-head">
@@ -212,7 +219,7 @@ footer a{color:#7a9a7a;}
     </div>
   </div>
 
-  <div class="mountain-card">
+  <div class="mountain-card" data-mountain-id="bukosan">
     <div class="mc-rank">#5</div>
     <div class="mc-body">
       <div class="mc-head">
@@ -270,5 +277,67 @@ footer a{color:#7a9a7a;}
   <p style="margin-top:6px;"><a href="/terms/">利用規約</a> | <a href="/privacy/">プライバシーポリシー</a></p>
   <p style="margin-top:8px;opacity:0.6;">© 2026 Yamatch. All rights reserved.</p>
 </footer>
+<script>
+(function(){
+  fetch('/data/mountains.json').then(function(r){ return r.json(); }).then(function(mountains){
+    var byId = {};
+    mountains.forEach(function(m){ byId[m.id] = m; });
+    document.querySelectorAll('.mountain-card[data-mountain-id]').forEach(function(card){
+      var mid = card.getAttribute('data-mountain-id');
+      var m = byId[mid];
+      if(!m || !m.photos || !m.photos.length) return;
+      var existingImg = card.querySelector('.mc-photo');
+      var existingCarousel = card.querySelector('.mc-photo-carousel');
+
+      if(m.photos.length === 1){
+        if(existingCarousel) existingCarousel.remove();
+        if(existingImg){
+          if(existingImg.getAttribute('src') !== m.photos[0]) existingImg.setAttribute('src', m.photos[0]);
+        } else {
+          var img = document.createElement('img');
+          img.src = m.photos[0];
+          img.className = 'mc-photo';
+          img.alt = m.name || '';
+          img.loading = 'lazy';
+          card.insertBefore(img, card.firstChild);
+        }
+      } else {
+        if(existingImg) existingImg.remove();
+        if(existingCarousel) existingCarousel.remove();
+        var wrap = document.createElement('div');
+        wrap.className = 'mc-photo-carousel';
+        m.photos.forEach(function(src, i){
+          var img = document.createElement('img');
+          img.src = src;
+          img.alt = m.name || '';
+          img.loading = i === 0 ? 'eager' : 'lazy';
+          if(i === 0) img.className = 'mpc-active';
+          wrap.appendChild(img);
+        });
+        var dots = document.createElement('div');
+        dots.className = 'mc-photo-dots';
+        m.photos.forEach(function(_, i){
+          var dot = document.createElement('div');
+          dot.className = 'mc-photo-dot' + (i === 0 ? ' mpc-active' : '');
+          dots.appendChild(dot);
+        });
+        wrap.appendChild(dots);
+        card.insertBefore(wrap, card.firstChild);
+
+        var imgs = wrap.querySelectorAll('img');
+        var dotEls = dots.querySelectorAll('.mc-photo-dot');
+        var idx = 0;
+        setInterval(function(){
+          imgs[idx].classList.remove('mpc-active');
+          dotEls[idx].classList.remove('mpc-active');
+          idx = (idx + 1) % imgs.length;
+          imgs[idx].classList.add('mpc-active');
+          dotEls[idx].classList.add('mpc-active');
+        }, 4500);
+      }
+    });
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>

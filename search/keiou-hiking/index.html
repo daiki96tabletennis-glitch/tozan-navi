@@ -19,7 +19,7 @@
 <meta property="og:url" content="https://tozan-navi.com/search/keiou-hiking/">
 <meta property="og:site_name" content="Yamatch">
 <link rel="canonical" href="https://tozan-navi.com/search/keiou-hiking/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"京王線で行ける登山5選【2026年版】","description":"京王線で行ける登山5選。高尾山・草戸山・小仏城山・景信山・陣馬山を新宿からの所要時間・コース定数・難易度付きで紹介。","author":{"@type":"Person","name":"Yamatch編集部"},"publisher":{"@type":"Organization","name":"Yamatch","url":"https://tozan-navi.com"},"dateModified":"2026-06-12","url":"https://tozan-navi.com/search/keiou-hiking/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"京王線で行ける登山5選【2026年版】","description":"京王線で行ける登山5選。高尾山・草戸山・小仏城山・景信山・陣馬山を新宿からの所要時間・コース定数・難易度付きで紹介。","author":{"@type":"Person","name":"Yamatch編集部"},"publisher":{"@type":"Organization","name":"Yamatch","url":"https://tozan-navi.com"},"dateModified":"2026-09-07","url":"https://tozan-navi.com/search/keiou-hiking/"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"京王線で行ける登山5選","numberOfItems":5,"itemListElement":[{"@type":"ListItem","position":1,"name":"高尾山","url":"https://tozan-navi.com/mountains/takao/"},{"@type":"ListItem","position":2,"name":"草戸山","url":"https://tozan-navi.com/mountains/kusatoriyama/"},{"@type":"ListItem","position":3,"name":"小仏城山","url":"https://tozan-navi.com/mountains/kobotokeshiroyama/"},{"@type":"ListItem","position":4,"name":"景信山","url":"https://tozan-navi.com/mountains/kagenobusan/"},{"@type":"ListItem","position":5,"name":"陣馬山","url":"https://tozan-navi.com/mountains/jinba/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"京王線で行ける登山スポットはどこですか？","acceptedAnswer":{"@type":"Answer","text":"高尾山口駅が起点となる山が中心です。高尾山（高尾山口駅から徒歩5分）・草戸山（高尾山口駅から徒歩すぐ）・小仏城山（高尾山口→高尾山縦走または高尾駅からバス）・景信山（高尾駅からバス約25分）・陣馬山（高尾駅→藤野駅経由）が主な候補です。"}},{"@type":"Question","name":"新宿から京王線で高尾山口まで何分かかりますか？","acceptedAnswer":{"@type":"Answer","text":"新宿駅から京王線特急で約43〜50分、高尾山口駅に到着します。そこから徒歩5分でケーブルカー乗り場に到着できます。"}},{"@type":"Question","name":"京王線で行ける初心者向けの山は？","acceptedAnswer":{"@type":"Answer","text":"高尾山（コース定数8〜51）と草戸山（コース定数8〜12）が初心者に最適です。どちらも高尾山口駅から歩いてアクセスできます。"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Yamatch","item":"https://tozan-navi.com/"},{"@type":"ListItem","position":2,"name":"京王線で行ける登山5選","item":"https://tozan-navi.com/search/keiou-hiking/"}]}</script>
@@ -42,7 +42,14 @@ h1{font-size:22px;font-weight:800;line-height:1.3;color:#1a3050;margin-bottom:12
 .section-header{margin:20px 0 10px;padding:10px 16px;background:#e8f0e0;border-radius:6px;}
 .section-header h2{font-size:15px;font-weight:bold;color:#2d4a1e;margin:0;}
 .section-header p{font-size:12px;color:#4e6535;margin:4px 0 0;}
-.mountain-card{background:white;border-radius:14px;border:1px solid #e0dbd4;margin-bottom:10px;padding:14px;display:flex;gap:12px;}
+.mountain-card{background:white;border-radius:14px;border:1px solid #e0dbd4;margin-bottom:10px;padding:14px;display:flex;flex-wrap:wrap;gap:12px;}
+.mc-photo{width:100%;height:140px;object-fit:cover;border-radius:10px;display:block;order:-1}
+.mc-photo-carousel{position:relative;width:100%;height:140px;border-radius:10px;overflow:hidden;order:-1}
+.mc-photo-carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+.mc-photo-carousel img.mpc-active{opacity:1}
+.mc-photo-dots{position:absolute;left:0;right:0;bottom:6px;display:flex;justify-content:center;gap:5px;z-index:2}
+.mc-photo-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.5);transition:background .3s}
+.mc-photo-dot.mpc-active{background:#fff}
 .mc-rank{font-size:20px;font-weight:900;color:#c0b090;min-width:30px;text-align:center;padding-top:2px;}
 .mc-body{flex:1;min-width:0;}
 .mc-head{margin-bottom:6px;}
@@ -115,7 +122,7 @@ footer a{color:#7a9a7a;}</style>
     <p>高尾山口駅から徒歩でアクセス可能。登山デビューに最適。</p>
   </div>
 
-  <div class="mountain-card">
+  <div class="mountain-card" data-mountain-id="takao">
     <div class="mc-rank">#1</div>
     <div class="mc-body">
       <div class="mc-head">
@@ -130,13 +137,13 @@ footer a{color:#7a9a7a;}</style>
       </div>
       <div class="mc-train"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 新宿→高尾山口駅（京王線約50分）→徒歩5分でケーブルカー乗り場</div>
       
-      <div style="font-size:12px;line-height:1.8;color:#4a4540;margin:8px 0;padding:8px 10px;background:#f8f6f2;border-radius:8px;border-left:3px solid #4e6535;">高尾山は年間300万人以上が訪れる日本一人気の山。6号路（沢沿い）・1号路（舗装路）・稲荷山コースなど多彩なルートがあり、ケーブルカー利用なら往復2時間以内も可能。山頂からは富士山や丹沢の眺望が楽しめます。秋は紅葉、春は桜と年中楽しめます。</div>
+      <div style="font-size:12px;line-height:1.8;color:#4a4540;margin:8px 0;padding:8px 10px;background:#f8f6f2;border-radius:8px;">高尾山は年間300万人以上が訪れる日本一人気の山。6号路（沢沿い）・1号路（舗装路）・稲荷山コースなど多彩なルートがあり、ケーブルカー利用なら往復2時間以内も可能。山頂からは富士山や丹沢の眺望が楽しめます。秋は紅葉、春は桜と年中楽しめます。</div>
       <div style="font-size:11px;color:#4e6535;font-weight:600;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M20 6 9 17l-5-5"/></svg> 初めて登山する方・子供連れ・体力に自信がない方に最適。</div>
       <a href="/mountains/takao/" class="mc-link">アクセス詳細を見る →</a>
     </div>
   </div>
 
-  <div class="mountain-card">
+  <div class="mountain-card" data-mountain-id="kusatoriyama">
     <div class="mc-rank">#2</div>
     <div class="mc-body">
       <div class="mc-head">
@@ -151,7 +158,7 @@ footer a{color:#7a9a7a;}</style>
       </div>
       <div class="mc-train"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 新宿→高尾山口駅（京王線約50分）→徒歩すぐ。高尾山口→橋本駅縦走も人気。</div>
       
-      <div style="font-size:12px;line-height:1.8;color:#4a4540;margin:8px 0;padding:8px 10px;background:#f8f6f2;border-radius:8px;border-left:3px solid #4e6535;">草戸山（364m）は高尾山の隣に位置しながら人が少なく静かな山歩きが楽しめる穴場スポット。高尾山口駅から登山口まで徒歩すぐで、城山湖周回コースは4〜5時間で歩けます。</div>
+      <div style="font-size:12px;line-height:1.8;color:#4a4540;margin:8px 0;padding:8px 10px;background:#f8f6f2;border-radius:8px;">草戸山（364m）は高尾山の隣に位置しながら人が少なく静かな山歩きが楽しめる穴場スポット。高尾山口駅から登山口まで徒歩すぐで、城山湖周回コースは4〜5時間で歩けます。</div>
       <div style="font-size:11px;color:#4e6535;font-weight:600;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M20 6 9 17l-5-5"/></svg> 高尾山の混雑を避けたい方・静かな山歩きを好む方におすすめ。</div>
       <a href="/mountains/kusatoriyama/" class="mc-link">アクセス詳細を見る →</a>
     </div>
@@ -162,7 +169,7 @@ footer a{color:#7a9a7a;}</style>
     <p>高尾山から縦走、または小仏バス停が起点。茶屋ありで安心。</p>
   </div>
 
-  <div class="mountain-card">
+  <div class="mountain-card" data-mountain-id="kobotokeshiroyama">
     <div class="mc-rank">#3</div>
     <div class="mc-body">
       <div class="mc-head">
@@ -177,13 +184,13 @@ footer a{color:#7a9a7a;}</style>
       </div>
       <div class="mc-train"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 高尾駅→京王バス「小仏行」約25分→小仏バス停 または 高尾山口→高尾山縦走（約4時間）</div>
       
-      <div style="font-size:12px;line-height:1.8;color:#4a4540;margin:8px 0;padding:8px 10px;background:#f8f6f2;border-radius:8px;border-left:3px solid #4e6535;">小仏城山（670m）は山頂の茶屋のなめこ汁・天ぷらそばが名物。富士山・丹沢の眺望が開けた広い山頂が特徴で、高尾山から縦走で2〜3時間で到達できます。週末は多くのハイカーで賑わいます。</div>
+      <div style="font-size:12px;line-height:1.8;color:#4a4540;margin:8px 0;padding:8px 10px;background:#f8f6f2;border-radius:8px;">小仏城山（670m）は山頂の茶屋のなめこ汁・天ぷらそばが名物。富士山・丹沢の眺望が開けた広い山頂が特徴で、高尾山から縦走で2〜3時間で到達できます。週末は多くのハイカーで賑わいます。</div>
       <div style="font-size:11px;color:#4e6535;font-weight:600;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M20 6 9 17l-5-5"/></svg> 高尾山に慣れた中級者・縦走デビューしたい方・山頂で食事を楽しみたい方に。</div>
       <a href="/mountains/kobotokeshiroyama/" class="mc-link">アクセス詳細を見る →</a>
     </div>
   </div>
 
-  <div class="mountain-card">
+  <div class="mountain-card" data-mountain-id="kagenobusan">
     <div class="mc-rank">#4</div>
     <div class="mc-body">
       <div class="mc-head">
@@ -198,7 +205,7 @@ footer a{color:#7a9a7a;}</style>
       </div>
       <div class="mc-train"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 高尾駅→京王バス「小仏行」約25分→小仏バス停→登山口徒歩すぐ</div>
       
-      <div style="font-size:12px;line-height:1.8;color:#4a4540;margin:8px 0;padding:8px 10px;background:#f8f6f2;border-radius:8px;border-left:3px solid #4e6535;">景信山（727m）は関東平野と東京スカイツリーまで見渡せる抜群の眺望が魅力。山頂には茶屋が2軒あり、たっぷり休憩できます。高尾山からの縦走コースの中間点にあたり、体力に応じてここで下山も可能。</div>
+      <div style="font-size:12px;line-height:1.8;color:#4a4540;margin:8px 0;padding:8px 10px;background:#f8f6f2;border-radius:8px;">景信山（727m）は関東平野と東京スカイツリーまで見渡せる抜群の眺望が魅力。山頂には茶屋が2軒あり、たっぷり休憩できます。高尾山からの縦走コースの中間点にあたり、体力に応じてここで下山も可能。</div>
       <div style="font-size:11px;color:#4e6535;font-weight:600;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M20 6 9 17l-5-5"/></svg> 絶景を楽しみたい中級者・奥高尾縦走の中間地点として利用する方に。</div>
       <a href="/mountains/kagenobusan/" class="mc-link">アクセス詳細を見る →</a>
     </div>
@@ -209,7 +216,7 @@ footer a{color:#7a9a7a;}</style>
     <p>陣馬山まで全22km。高尾山口発の縦走コースのゴール地点。</p>
   </div>
 
-  <div class="mountain-card">
+  <div class="mountain-card" data-mountain-id="jinba">
     <div class="mc-rank">#5</div>
     <div class="mc-body">
       <div class="mc-head">
@@ -224,7 +231,7 @@ footer a{color:#7a9a7a;}</style>
       </div>
       <div class="mc-train"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 高尾駅→藤野駅（JR中央線1駅）→バス約20分→陣馬登山口 または 高尾山口から縦走約22km</div>
       
-      <div style="font-size:12px;line-height:1.8;color:#4a4540;margin:8px 0;padding:8px 10px;background:#f8f6f2;border-radius:8px;border-left:3px solid #4e6535;">陣馬山（857m）は山頂の白馬の像で有名な奥高尾縦走路のゴール地点。高尾山口から全山縦走すると約18km・7〜8時間の本格的なルート。陣馬山からJR藤野駅へ下山すれば都心への帰りも便利。</div>
+      <div style="font-size:12px;line-height:1.8;color:#4a4540;margin:8px 0;padding:8px 10px;background:#f8f6f2;border-radius:8px;">陣馬山（857m）は山頂の白馬の像で有名な奥高尾縦走路のゴール地点。高尾山口から全山縦走すると約18km・7〜8時間の本格的なルート。陣馬山からJR藤野駅へ下山すれば都心への帰りも便利。</div>
       <div style="font-size:11px;color:#4e6535;font-weight:600;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M20 6 9 17l-5-5"/></svg> 奥高尾縦走に挑戦したい健脚者・縦走達成感を味わいたい方に最適。</div>
       <a href="/mountains/jinba/" class="mc-link">アクセス詳細を見る →</a>
     </div>
@@ -274,5 +281,67 @@ footer a{color:#7a9a7a;}</style>
   <p style="margin-top:6px;"><a href="/terms/">利用規約</a> | <a href="/privacy/">プライバシーポリシー</a></p>
   <p style="margin-top:8px;opacity:0.6;">© 2026 Yamatch. All rights reserved.</p>
 </footer>
+<script>
+(function(){
+  fetch('/data/mountains.json').then(function(r){ return r.json(); }).then(function(mountains){
+    var byId = {};
+    mountains.forEach(function(m){ byId[m.id] = m; });
+    document.querySelectorAll('.mountain-card[data-mountain-id]').forEach(function(card){
+      var mid = card.getAttribute('data-mountain-id');
+      var m = byId[mid];
+      if(!m || !m.photos || !m.photos.length) return;
+      var existingImg = card.querySelector('.mc-photo');
+      var existingCarousel = card.querySelector('.mc-photo-carousel');
+
+      if(m.photos.length === 1){
+        if(existingCarousel) existingCarousel.remove();
+        if(existingImg){
+          if(existingImg.getAttribute('src') !== m.photos[0]) existingImg.setAttribute('src', m.photos[0]);
+        } else {
+          var img = document.createElement('img');
+          img.src = m.photos[0];
+          img.className = 'mc-photo';
+          img.alt = m.name || '';
+          img.loading = 'lazy';
+          card.insertBefore(img, card.firstChild);
+        }
+      } else {
+        if(existingImg) existingImg.remove();
+        if(existingCarousel) existingCarousel.remove();
+        var wrap = document.createElement('div');
+        wrap.className = 'mc-photo-carousel';
+        m.photos.forEach(function(src, i){
+          var img = document.createElement('img');
+          img.src = src;
+          img.alt = m.name || '';
+          img.loading = i === 0 ? 'eager' : 'lazy';
+          if(i === 0) img.className = 'mpc-active';
+          wrap.appendChild(img);
+        });
+        var dots = document.createElement('div');
+        dots.className = 'mc-photo-dots';
+        m.photos.forEach(function(_, i){
+          var dot = document.createElement('div');
+          dot.className = 'mc-photo-dot' + (i === 0 ? ' mpc-active' : '');
+          dots.appendChild(dot);
+        });
+        wrap.appendChild(dots);
+        card.insertBefore(wrap, card.firstChild);
+
+        var imgs = wrap.querySelectorAll('img');
+        var dotEls = dots.querySelectorAll('.mc-photo-dot');
+        var idx = 0;
+        setInterval(function(){
+          imgs[idx].classList.remove('mpc-active');
+          dotEls[idx].classList.remove('mpc-active');
+          idx = (idx + 1) % imgs.length;
+          imgs[idx].classList.add('mpc-active');
+          dotEls[idx].classList.add('mpc-active');
+        }, 4500);
+      }
+    });
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>
