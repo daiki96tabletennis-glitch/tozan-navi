@@ -1055,8 +1055,8 @@ applyDepTrain();
       var img = document.createElement('img');
       img.src = src;
       img.alt = mt.name || '';
-      img.loading = 'lazy';
-      if(i === 0) img.className = 'hp-active';
+      if(i === 0){ img.loading = 'eager'; img.fetchPriority = 'high'; img.className = 'hp-active'; }
+      else { img.loading = 'lazy'; }
       imgBox.appendChild(img);
     });
     var scrim = document.createElement('div');

@@ -43,6 +43,13 @@ h2{font-size:clamp(17px,4vw,22px);font-weight:bold;color:#1c4038;margin:36px 0 1
 .mountain-card-title{font-size:18px;font-weight:bold;color:white}
 .mountain-card-sub{font-size:12px;color:rgba(255,255,255,0.7);margin-top:3px}
 .mountain-card-body{padding:16px 20px}
+.mountain-photo{width:100%;max-height:280px;object-fit:cover;display:block}
+.mountain-photo-carousel{position:relative;width:100%;height:220px;overflow:hidden}
+.mountain-photo-carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+.mountain-photo-carousel img.mpc-active{opacity:1}
+.mountain-photo-dots{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:5px;z-index:2}
+.mountain-photo-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.5);transition:background .3s}
+.mountain-photo-dot.mpc-active{background:#fff}
 .info-row{display:flex;gap:8px;margin-bottom:8px;font-size:14px;align-items:flex-start}
 .info-label{font-weight:bold;color:#4a7868;min-width:90px;flex-shrink:0}
 .info-val{color:#333530;flex:1}
@@ -124,7 +131,7 @@ body{padding-bottom:80px}
 <h2>おすすめ6山</h2>
 
 <div class="mountain-card">
-  <div class="mountain-card-header">
+  <div class="mountain-card-header" data-mountain-id="hiwadayama">
     <div class="mountain-card-title">① 日和田山</div>
     <div class="mountain-card-sub">埼玉県・標高305m</div>
   </div>
@@ -138,7 +145,7 @@ body{padding-bottom:80px}
 </div>
 
 <div class="mountain-card">
-  <div class="mountain-card-header">
+  <div class="mountain-card-header" data-mountain-id="oyama">
     <div class="mountain-card-title">② 大山（丹沢）</div>
     <div class="mountain-card-sub">神奈川県・標高1,252m</div>
   </div>
@@ -152,7 +159,7 @@ body{padding-bottom:80px}
 </div>
 
 <div class="mountain-card">
-  <div class="mountain-card-header">
+  <div class="mountain-card-header" data-mountain-id="honitayama">
     <div class="mountain-card-title">③ 本仁田山</div>
     <div class="mountain-card-sub">東京都・標高1,224m</div>
   </div>
@@ -166,7 +173,7 @@ body{padding-bottom:80px}
 </div>
 
 <div class="mountain-card">
-  <div class="mountain-card-header">
+  <div class="mountain-card-header" data-mountain-id="kawanoriyama">
     <div class="mountain-card-title">④ 川苔山</div>
     <div class="mountain-card-sub">東京都奥多摩町・標高1,363m</div>
   </div>
@@ -180,7 +187,7 @@ body{padding-bottom:80px}
 </div>
 
 <div class="mountain-card">
-  <div class="mountain-card-header">
+  <div class="mountain-card-header" data-mountain-id="mitosaan">
     <div class="mountain-card-title">⑤ 三頭山</div>
     <div class="mountain-card-sub">東京都・標高1,531m</div>
   </div>
@@ -195,7 +202,7 @@ body{padding-bottom:80px}
 </div>
 
 <div class="mountain-card">
-  <div class="mountain-card-header">
+  <div class="mountain-card-header" data-mountain-id="amagi">
     <div class="mountain-card-title">⑥ 天城山</div>
     <div class="mountain-card-sub">静岡県・標高1,406m</div>
   </div>
@@ -287,6 +294,70 @@ body{padding-bottom:80px}
       window.scrollTo({top:0, behavior:'smooth'});
     });
   }
+})();
+</script>
+<script>
+(function(){
+  fetch('/data/mountains.json').then(function(r){ return r.json(); }).then(function(mountains){
+    var byId = {};
+    mountains.forEach(function(m){ byId[m.id] = m; });
+    document.querySelectorAll('[data-mountain-id]').forEach(function(header){
+      var mid = header.getAttribute('data-mountain-id');
+      var m = byId[mid];
+      if(!m || !m.photos || !m.photos.length) return;
+      var card = header.closest('.mountain-card');
+      if(!card) return;
+      var existingImg = card.querySelector('.mountain-photo');
+      var existingCarousel = card.querySelector('.mountain-photo-carousel');
+
+      if(m.photos.length === 1){
+        if(existingCarousel) existingCarousel.remove();
+        if(existingImg){
+          if(existingImg.getAttribute('src') !== m.photos[0]) existingImg.setAttribute('src', m.photos[0]);
+        } else {
+          var img = document.createElement('img');
+          img.src = m.photos[0];
+          img.className = 'mountain-photo';
+          img.alt = m.name || '';
+          img.loading = 'lazy';
+          header.insertAdjacentElement('afterend', img);
+        }
+      } else {
+        if(existingImg) existingImg.remove();
+        if(existingCarousel) existingCarousel.remove();
+        var wrap = document.createElement('div');
+        wrap.className = 'mountain-photo-carousel';
+        m.photos.forEach(function(src, i){
+          var img = document.createElement('img');
+          img.src = src;
+          img.alt = m.name || '';
+          img.loading = i === 0 ? 'eager' : 'lazy';
+          if(i === 0) img.className = 'mpc-active';
+          wrap.appendChild(img);
+        });
+        var dots = document.createElement('div');
+        dots.className = 'mountain-photo-dots';
+        m.photos.forEach(function(_, i){
+          var dot = document.createElement('div');
+          dot.className = 'mountain-photo-dot' + (i === 0 ? ' mpc-active' : '');
+          dots.appendChild(dot);
+        });
+        wrap.appendChild(dots);
+        header.insertAdjacentElement('afterend', wrap);
+
+        var imgs = wrap.querySelectorAll('img');
+        var dotEls = dots.querySelectorAll('.mountain-photo-dot');
+        var idx = 0;
+        setInterval(function(){
+          imgs[idx].classList.remove('mpc-active');
+          dotEls[idx].classList.remove('mpc-active');
+          idx = (idx + 1) % imgs.length;
+          imgs[idx].classList.add('mpc-active');
+          dotEls[idx].classList.add('mpc-active');
+        }, 4500);
+      }
+    });
+  }).catch(function(){});
 })();
 </script>
 </body>
