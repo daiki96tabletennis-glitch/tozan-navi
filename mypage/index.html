@@ -127,7 +127,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
   display:flex;align-items:center;flex-shrink:0;text-decoration:none;
 }
 
-/* ===== 山バッジ ===== */
+/* ===== 登頂記念バッジ ===== */
 #collection-banner{background:linear-gradient(135deg,#243d20,#3a5a30);border-radius:14px;padding:14px 16px;margin-bottom:14px;color:white;}
 .coll-title-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
 .coll-count{font-size:28px;font-weight:900;color:white;line-height:1;}
@@ -138,10 +138,11 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 .coll-next{font-size:11px;color:rgba(255,255,255,0.7);margin-top:3px;}
 .coll-bar-wrap{background:rgba(255,255,255,0.15);border-radius:6px;height:8px;margin-top:8px;overflow:hidden;}
 .coll-bar-fill{height:100%;background:linear-gradient(90deg,#a8d860,#c8f880);border-radius:6px;transition:width 0.8s ease;}
-.badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:4px 0 8px;}
+.badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 10px;padding:8px 0 10px;}
 .badge-item{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
 .badge-item:active .badge-svg-wrap{transform:scale(0.93);}
-.badge-svg-wrap{width:110px;height:110px;position:relative;transition:transform 0.15s ease;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.2));}
+.badge-svg-wrap{width:110px;height:110px;position:relative;transition:transform .18s ease,filter .18s ease;filter:drop-shadow(0 5px 7px rgba(36,30,20,.28));}
+.badge-svg-wrap:hover{transform:translateY(-2px);filter:drop-shadow(0 8px 10px rgba(36,30,20,.30));}
 @keyframes badgePop{0%{transform:scale(0.5) rotate(-15deg);opacity:0;}70%{transform:scale(1.12) rotate(3deg);}100%{transform:scale(1) rotate(0deg);opacity:1;}}
 .badge-svg-wrap.new-badge{animation:badgePop 0.5s cubic-bezier(0.22,0.61,0.36,1) both;}
 .badge-name{display:none;}
@@ -1112,6 +1113,114 @@ function makeBadgeSVG(name, date, id, c, size, area, elevation){
 
   return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" xmlns="http://www.w3.org/2000/svg">'
     +defs+borderHtml+bgHtml+mtHtml+labelHtml+dateHtml+nameHtml+metaHtml+markHtml+'</svg>';
+}
+
+// 金属プレス＋七宝焼きをイメージした登頂記念バッジ。
+// 既存の呼び出し仕様を保ったまま、表示だけを本格的な丸型ピンバッジへ差し替える。
+function detailedMountainProfile(profile,id,size){
+  var src=profile.line.split(' ').map(function(p){
+    var xy=p.split(','); return {x:parseFloat(xy[0]),y:parseFloat(xy[1])};
+  });
+  var seed=0, key=String(id||'_default');
+  for(var k=0;k<key.length;k++) seed=(seed*33+key.charCodeAt(k))>>>0;
+  function noise(n){
+    var x=Math.sin((seed+n*977)*12.9898)*43758.5453;
+    return (x-Math.floor(x))-.5;
+  }
+  var out=[];
+  src.forEach(function(a,i){
+    if(i===src.length-1){ out.push(a); return; }
+    var b=src[i+1];
+    out.push(a);
+    var dx=b.x-a.x;
+    // 長い尾根には小ピークや岩角を足し、元の山固有シルエットは崩さない。
+    var steps=Math.max(1,Math.min(4,Math.round(Math.abs(dx)/4)));
+    for(var s=1;s<steps;s++){
+      var t=s/steps;
+      var rough=(Math.min(a.y,b.y)<34?1.8:1.15)*noise(i*7+s);
+      out.push({x:a.x+dx*t,y:a.y+(b.y-a.y)*t+rough});
+    }
+  });
+  var points=out.map(function(p){
+    return {x:p.x*size/100,y:p.y*size/100*.56+size*.12};
+  });
+  var peak=points.reduce(function(best,p){return p.y<best.y?p:best;},points[0]);
+  var left=points[Math.max(1,Math.floor(points.length*.22))];
+  var right=points[Math.min(points.length-2,Math.floor(points.length*.78))];
+  return {
+    points:points,
+    line:points.map(function(p){return p.x.toFixed(1)+','+p.y.toFixed(1);}).join(' '),
+    peak:peak,left:left,right:right
+  };
+}
+
+function makeBadgeSVG(name, date, id, c, size, area, elevation){
+  size=size||96;
+  var profile=getProfile(id);
+  var scale=size/100;
+  var uid='pin'+Math.random().toString(36).slice(2,8);
+  var isHyaku=!!c.centerLabel;
+  var metalDark=isHyaku?'#80531a':'#574c3c';
+  var metalMid=isHyaku?'#d7a23a':'#b9a98d';
+  var metalLight=isHyaku?'#fff0a6':'#f2ead8';
+  var nameText=String(name||'');
+  var nameFs=size*(nameText.length>8?.073:nameText.length>6?.082:.096);
+  var areaText=String(area||'');
+  var pref=areaText.match(/北海道|東京都|京都府|大阪府|.{2,3}県/);
+  if(pref) areaText=pref[0];
+  if(areaText.length>5) areaText=areaText.slice(0,5);
+  var meta=[areaText,elevation?(Number(elevation).toLocaleString()+'m'):''].filter(Boolean).join(' · ');
+  var detailed=detailedMountainProfile(profile,id,size);
+  var pts=detailed.line;
+  var raw=profile.line.split(' ');
+  var x0=(parseFloat(raw[0].split(',')[0])*scale).toFixed(1);
+  var xN=(parseFloat(raw[raw.length-1].split(',')[0])*scale).toFixed(1);
+  var base=(size*.66).toFixed(1);
+  var mountain=pts+' '+xN+','+base+' '+x0+','+base;
+  var ridgeLeft='M'+detailed.peak.x.toFixed(1)+' '+detailed.peak.y.toFixed(1)
+    +' Q'+(detailed.peak.x-size*.07).toFixed(1)+' '+(detailed.peak.y+size*.16).toFixed(1)
+    +' '+detailed.left.x.toFixed(1)+' '+Math.min(detailed.left.y+size*.14,size*.64).toFixed(1);
+  var ridgeRight='M'+detailed.peak.x.toFixed(1)+' '+detailed.peak.y.toFixed(1)
+    +' Q'+(detailed.peak.x+size*.10).toFixed(1)+' '+(detailed.peak.y+size*.11).toFixed(1)
+    +' '+detailed.right.x.toFixed(1)+' '+Math.min(detailed.right.y+size*.12,size*.64).toFixed(1);
+  var snow=profile.snow?profile.snow.split(' ').map(function(p){
+    var xy=p.split(',');
+    return (parseFloat(xy[0])*scale).toFixed(1)+','+(parseFloat(xy[1])*scale*.56+size*.12).toFixed(1);
+  }).join(' '):'';
+  var dateText=String(date||'').replace(/\//g,'.');
+
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="'+nameText+' 登頂記念バッジ">'
+    +'<defs>'
+    +'<radialGradient id="'+uid+'metal" cx="34%" cy="24%" r="78%"><stop offset="0" stop-color="'+metalLight+'"/><stop offset=".28" stop-color="'+metalMid+'"/><stop offset=".62" stop-color="'+metalDark+'"/><stop offset=".82" stop-color="'+metalLight+'"/><stop offset="1" stop-color="'+metalDark+'"/></radialGradient>'
+    +'<linearGradient id="'+uid+'sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="'+c.sky1+'"/><stop offset="1" stop-color="'+c.sky2+'"/></linearGradient>'
+    +'<linearGradient id="'+uid+'mount" x1="0" y1="0" x2="1" y2="1"><stop stop-color="'+c.mt+'"/><stop offset="1" stop-color="'+c.acc+'"/></linearGradient>'
+    +'<filter id="'+uid+'grain"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="2" seed="7" result="n"/><feComposite in="n" in2="SourceGraphic" operator="in" result="t"/><feBlend in="SourceGraphic" in2="t" mode="soft-light"/></filter>'
+    +'<filter id="'+uid+'inset"><feGaussianBlur stdDeviation=".55" result="b"/><feSpecularLighting in="b" surfaceScale="2" specularConstant=".65" specularExponent="18" lighting-color="#fff" result="s"><fePointLight x="18" y="12" z="35"/></feSpecularLighting><feComposite in="s" in2="SourceGraphic" operator="in" result="si"/><feComposite in="SourceGraphic" in2="si" operator="arithmetic" k1="1" k2="1" k3="0" k4="0"/></filter>'
+    +'<clipPath id="'+uid+'face"><circle cx="'+size*.5+'" cy="'+size*.5+'" r="'+size*.405+'"/></clipPath>'
+    +'</defs>'
+    +'<circle cx="'+size*.5+'" cy="'+size*.5+'" r="'+size*.49+'" fill="url(#'+uid+'metal)" stroke="'+metalDark+'" stroke-width="'+size*.018+'"/>'
+    +'<circle cx="'+size*.5+'" cy="'+size*.5+'" r="'+size*.445+'" fill="none" stroke="'+metalLight+'" stroke-width="'+size*.018+'" opacity=".9"/>'
+    +'<circle cx="'+size*.5+'" cy="'+size*.5+'" r="'+size*.414+'" fill="'+metalDark+'"/>'
+    +'<g clip-path="url(#'+uid+'face)" filter="url(#'+uid+'inset)">'
+    +'<rect x="'+size*.09+'" y="'+size*.09+'" width="'+size*.82+'" height="'+size*.82+'" fill="url(#'+uid+'sky)"/>'
+    +'<circle cx="'+size*.72+'" cy="'+size*.29+'" r="'+size*.085+'" fill="'+c.sun+'" opacity=".94"/>'
+    +'<polygon points="'+size*.06+','+size*.61+' '+size*.22+','+size*.43+' '+size*.38+','+size*.54+' '+size*.58+','+size*.36+' '+size*.79+','+size*.53+' '+size*.96+','+size*.40+' '+size*.96+','+size*.68+' '+size*.06+','+size*.68+'" fill="'+c.far+'" opacity=".72"/>'
+    +'<polygon points="'+mountain+'" fill="url(#'+uid+'mount)" stroke="'+metalDark+'" stroke-width="'+size*.012+'" stroke-linejoin="round"/>'
+    +'<path d="'+ridgeLeft+'" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="'+size*.011+'" stroke-linecap="round"/>'
+    +'<path d="'+ridgeRight+'" fill="none" stroke="rgba(15,35,30,.38)" stroke-width="'+size*.014+'" stroke-linecap="round"/>'
+    +'<path d="M'+detailed.left.x.toFixed(1)+' '+Math.min(detailed.left.y+size*.14,size*.64).toFixed(1)+' Q'+size*.38+' '+size*.56+' '+size*.46+' '+size*.64+' M'+detailed.right.x.toFixed(1)+' '+Math.min(detailed.right.y+size*.12,size*.64).toFixed(1)+' Q'+size*.68+' '+size*.55+' '+size*.75+' '+size*.64+'" fill="none" stroke="rgba(238,242,225,.18)" stroke-width="'+size*.008+'"/>'
+    +(snow?'<polygon points="'+snow+'" fill="#f7f3e8" opacity=".92"/>':'')
+    +'<rect x="'+size*.08+'" y="'+size*.625+'" width="'+size*.84+'" height="'+size*.30+'" fill="'+c.acc+'" opacity=".96"/>'
+    +'<rect x="'+size*.08+'" y="'+size*.625+'" width="'+size*.84+'" height="'+size*.30+'" fill="#fff" opacity=".035" filter="url(#'+uid+'grain)"/>'
+    +'</g>'
+    +'<path d="M'+size*.19+' '+size*.66+' H'+size*.81+'" stroke="'+metalMid+'" stroke-width="'+size*.012+'" opacity=".85"/>'
+    +(isHyaku?'<path d="M'+size*.25+' '+size*.17+' Q'+size*.5+' '+size*.10+' '+size*.75+' '+size*.17+' L'+size*.70+' '+size*.27+' Q'+size*.5+' '+size*.22+' '+size*.30+' '+size*.27+' Z" fill="'+metalDark+'" stroke="'+metalLight+'" stroke-width="'+size*.009+'"/><text x="'+size*.5+'" y="'+size*.205+'" text-anchor="middle" dominant-baseline="middle" font-family="\'Zen Kaku Gothic New\',sans-serif" font-size="'+size*.056+'" font-weight="900" letter-spacing="1" fill="'+metalLight+'">日本百名山</text>':'')
+    +'<text x="'+size*.5+'" y="'+size*.735+'" text-anchor="middle" dominant-baseline="middle" font-family="\'Noto Serif JP\',\'Zen Kaku Gothic New\',serif" font-size="'+nameFs+'" font-weight="900" letter-spacing=".2" fill="#fffaf0" stroke="'+c.acc+'" stroke-width="'+size*.006+'" paint-order="stroke">'+nameText+'</text>'
+    +(meta?'<text x="'+size*.5+'" y="'+size*.815+'" text-anchor="middle" dominant-baseline="middle" font-family="\'Outfit\',\'Zen Kaku Gothic New\',sans-serif" font-size="'+size*.052+'" font-weight="700" letter-spacing=".45" fill="'+metalLight+'">'+meta+'</text>':'')
+    +(dateText?'<text x="'+size*.5+'" y="'+size*.875+'" text-anchor="middle" dominant-baseline="middle" font-family="\'Outfit\',sans-serif" font-size="'+size*.047+'" font-weight="700" letter-spacing=".65" fill="#eee6d5" opacity=".9">SUMMIT · '+dateText+'</text>':'')
+    +'<circle cx="'+size*.5+'" cy="'+size*.5+'" r="'+size*.405+'" fill="none" stroke="'+metalMid+'" stroke-width="'+size*.012+'"/>'
+    +'<path d="M'+size*.18+' '+size*.24+' A'+size*.38+' '+size*.38+' 0 0 1 '+size*.48+' '+size*.12+'" fill="none" stroke="#fff" stroke-width="'+size*.016+'" stroke-linecap="round" opacity=".38"/>'
+    +'</svg>';
 }
 
 // ===== シェアカード生成（Instagramストーリー用・縦長） =====
