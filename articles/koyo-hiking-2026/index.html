@@ -661,10 +661,10 @@ function gearRakutenLink(keyword){
 function gearRenderIcon(catKey, strokeColor){
   var iconType = window.GEAR_ICONS[catKey];
   if(iconType === 'img'){
-    return '<img src="/images/icons/' + catKey + '.webp" width="24" height="24" alt="" loading="lazy">';
+    return '<img src="/images/icons/' + catKey + '.webp" width="36" height="36" alt="" loading="lazy">';
   }
   var path = iconType || window.GEAR_ICONS['bottle'];
-  return '<svg viewBox="0 0 24 24" fill="none" stroke="' + strokeColor + '" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + path + '</svg>';
+  return '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="' + strokeColor + '" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + path + '</svg>';
 }
 function gearRenderCard(c, mid, position){
   var catKey = c.c.replace('_next','');
