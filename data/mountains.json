@@ -46,8 +46,8 @@
       "s-gear"
     ],
     "calLegend": [
-      "アイゼン不要（5〜11月）",
-      "6本アイゼンで可（12〜4月）"
+      "アイゼン不要",
+      "6本アイゼンで可"
     ],
     "trailhead": "大倉（秦野戸川公園）",
     "parking": "大倉駐車場（約150台・平日100〜500円・土日200〜800円・トイレあり）",
@@ -201,16 +201,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "富士宮口五合目",
@@ -525,7 +526,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
+      "s-gear",
       "s-gear"
     ],
     "calLegend": [
@@ -634,9 +635,9 @@
     "photos": [
       "/images/mountains/kumotori/01.jpg"
     ],
-    "fareShinjuku": 1710,
-    "fareYokohama": 1742,
-    "fareOmiya": 2238,
+    "fareShinjuku": 1981,
+    "fareYokohama": 2013,
+    "fareOmiya": 2509,
     "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約40分)→奥多摩駅→西東京バス約15分→鴨沢バス停",
     "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR青梅線約2時間20分→奥多摩駅→西東京バス約15分→鴨沢バス停",
     "transfersShinjuku": 1,
@@ -840,21 +841,22 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok"
+      "s-gear",
+      "s-gear"
     ],
     "calLegend": [
-      "アイゼン不要"
+      "アイゼン不要",
+      "6本アイゼンで可"
     ],
     "trailhead": "上日川峠",
     "parking": "上日川峠駐車場（約100台・無料）",
@@ -1012,7 +1014,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
+      "s-gear",
       "s-gear"
     ],
     "calLegend": [
@@ -1154,22 +1156,23 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
       "s-gear",
-      "s-gear",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "毛木平",
     "parking": "毛木平駐車場（約80台・無料）",
@@ -1317,13 +1320,13 @@
       "s-gear",
       "s-gear",
       "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
+      "s-gear",
+      "s-gear",
       "s-gear"
     ],
     "calLegend": [
@@ -1473,13 +1476,13 @@
       "s-gear",
       "s-gear",
       "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
+      "s-gear",
       "s-gear"
     ],
     "calLegend": [
@@ -1632,22 +1635,23 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
       "s-gear",
-      "s-gear",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "大弛峠",
     "parking": "大弛峠駐車場（約40台・無料）",
@@ -1739,11 +1743,7 @@
     "driveTimeOmiya": 180,
     "lines": [],
     "driveTimeTachikawa": 130,
-    "driveTachikawa": 130,
-    "photos": [
-      "/images/mountains/kinpusan/image-20260907142540222-lnyvl.jpg",
-      "/images/mountains/kinpusan/image-20260907142545917-42f7s.jpg"
-    ]
+    "driveTachikawa": 130
   },
   {
     "id": "houou",
@@ -1781,17 +1781,18 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "夜叉神峠登山口",
@@ -1934,22 +1935,23 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
       "s-gear",
-      "s-gear",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "二荒山神社",
     "parking": "二荒山神社駐車場（約100台・500円）",
@@ -2105,16 +2107,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "広河原",
@@ -2253,22 +2256,23 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
       "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "美濃戸口",
     "parking": "美濃戸口駐車場（約50台・1000円）",
@@ -2414,22 +2418,23 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
       "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "竜源橋",
     "parking": "竜源橋駐車場（約30台・無料）",
@@ -2588,7 +2593,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
+      "s-gear",
       "s-gear"
     ],
     "calLegend": [
@@ -2752,17 +2757,18 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "車坂峠",
@@ -2904,10 +2910,10 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
@@ -2915,11 +2921,12 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "谷川岳ロープウェイ土合口駅",
     "parking": "谷川岳ベースプラザ（約600台・600円〜）",
@@ -3083,7 +3090,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
+      "s-gear",
       "s-gear"
     ],
     "calLegend": [
@@ -3198,12 +3205,7 @@
     "transfersYokohama": 2,
     "transfersOmiya": 1,
     "trainTimeYokohama": 127,
-    "trainTimeOmiya": 78,
-    "photos": [
-      "/images/mountains/nasu/image-20260907142051656-bdjm6.jpg",
-      "/images/mountains/nasu/image-20260907142055091-r088c.jpg",
-      "/images/mountains/nasu/image-20260907142058061-9bpws.jpg"
-    ]
+    "trainTimeOmiya": 78
   },
   {
     "id": "shirane_nikko",
@@ -3380,22 +3382,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "丸沼高原ロープウェイ",
     "parking": "丸沼高原スキー場駐車場（約500台・無料）",
@@ -3533,9 +3536,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -3544,11 +3547,12 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "川場スキー場",
     "parking": "川場スキー場駐車場（約500台・無料）",
@@ -3686,16 +3690,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "広河原（バス）",
@@ -3850,16 +3855,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "北沢峠",
@@ -4011,16 +4017,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "猿倉",
@@ -4180,12 +4187,12 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-hard",
       "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
       "s-gear",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
       "s-hard",
       "s-hard"
     ],
@@ -4349,16 +4356,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "室堂",
@@ -4512,16 +4520,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "室堂",
@@ -4676,16 +4685,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "上高地",
@@ -4839,16 +4849,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "上高地",
@@ -5001,8 +5012,8 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
+      "s-hard",
       "s-hard"
     ],
     "calLegend": [
@@ -5331,16 +5342,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "川入",
@@ -5494,8 +5506,8 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
+      "s-hard",
       "s-hard"
     ],
     "calLegend": [
@@ -5649,8 +5661,8 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
+      "s-hard",
       "s-hard"
     ],
     "calLegend": [
@@ -5807,17 +5819,18 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "草津温泉",
@@ -5963,22 +5976,23 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
       "s-gear",
-      "s-gear",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "八方台",
     "parking": "八方台駐車場（約100台・無料）",
@@ -6129,22 +6143,23 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
       "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "御池",
     "parking": "御池駐車場（約600台・1000円）",
@@ -6747,11 +6762,7 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 73,
-    "trainTimeOmiya": 115,
-    "photos": [
-      "/images/mountains/tonosaki/image-20260907142229164-w4zxc.jpg",
-      "/images/mountains/tonosaki/image-20260907142231550-uxg6c.jpg"
-    ]
+    "trainTimeOmiya": 115
   },
   {
     "id": "hirugata",
@@ -6788,6 +6799,10 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -6795,14 +6810,11 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok"
+      "s-gear"
     ],
     "calLegend": [
-      "アイゼン不要"
+      "アイゼン不要",
+      "6本アイゼンで可"
     ],
     "trailhead": "大倉 or 姫次",
     "parking": "大倉駐車場（約80台・500円）",
@@ -7059,9 +7071,9 @@
     ],
     "driveTimeTachikawa": 35,
     "driveTachikawa": 35,
-    "fareShinjuku": 1250,
-    "fareYokohama": 1866,
-    "fareOmiya": 1778,
+    "fareShinjuku": 1200,
+    "fareYokohama": 1816,
+    "fareOmiya": 1728,
     "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央線約33分→藤野駅→神奈川中央交通バス「野08」約4分→陣馬登山口",
     "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約33分→藤野駅→神奈川中央交通バス「野08」約4分→陣馬登山口",
     "transfersShinjuku": 0,
@@ -7228,9 +7240,9 @@
     ],
     "driveTimeTachikawa": 85,
     "driveTachikawa": 85,
-    "fareShinjuku": 1770,
-    "fareYokohama": 2386,
-    "fareOmiya": 2298,
+    "fareShinjuku": 3420,
+    "fareYokohama": 4036,
+    "fareOmiya": 3948,
     "trainAccessYokohama": "横浜駅→JR東海道線・小田急線約80分→箱根湯本駅→箱根登山バス約40分→金時神社入口",
     "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→小田急ロマンスカー約90分→箱根湯本駅→箱根登山バス約40分→金時神社入口",
     "transfersShinjuku": 1,
@@ -7423,14 +7435,14 @@
       "s-gear",
       "s-gear",
       "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
+      "s-gear",
       "s-gear"
     ],
     "calLegend": [
@@ -7581,6 +7593,9 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -7589,13 +7604,11 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok"
+      "s-gear"
     ],
     "calLegend": [
-      "アイゼン不要"
+      "アイゼン不要",
+      "6本アイゼンで可"
     ],
     "trailhead": "矢立石登山口",
     "parking": "矢立石駐車場（約30台・無料）",
@@ -7840,9 +7853,9 @@
     ],
     "driveTimeTachikawa": 60,
     "driveTachikawa": 60,
-    "fareShinjuku": 1320,
-    "fareYokohama": 1936,
-    "fareOmiya": 2227,
+    "fareShinjuku": 1143,
+    "fareYokohama": 1759,
+    "fareOmiya": 2050,
     "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約48分→池袋駅→西武池袋線約1時間5分→飯能駅→国際興業バス約25分→河又名栗湖入口",
     "trainAccessOmiya": "大宮駅→JR埼京線・西武池袋線(約76分)→飯能駅→国際興業バス約25分→河又名栗湖入口",
     "transfersShinjuku": 1,
@@ -7995,9 +8008,9 @@
     ],
     "driveTimeTachikawa": 50,
     "driveTachikawa": 50,
-    "fareShinjuku": 1290,
-    "fareYokohama": 1103,
-    "fareOmiya": 1221,
+    "fareShinjuku": 1374,
+    "fareYokohama": 1187,
+    "fareOmiya": 1305,
     "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約20分)→御嶽駅→西東京バス約20分→御岳登山口",
     "trainAccessOmiya": "大宮駅→JR埼京線・武蔵野線・中央線経由(約103分)→御嶽駅→西東京バス約20分→御岳登山口",
     "transfersShinjuku": 1,
@@ -8191,17 +8204,18 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "中の湯温泉",
@@ -8347,16 +8361,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "扇沢",
@@ -8507,13 +8522,13 @@
       "s-gear",
       "s-gear",
       "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
+      "s-gear",
+      "s-gear",
       "s-gear"
     ],
     "calLegend": [
@@ -8940,10 +8955,10 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -8951,11 +8966,12 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "栗生登山口",
     "parking": "栗生登山口駐車場（約20台・無料）",
@@ -9079,22 +9095,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "聖平登山口",
     "parking": "聖平登山口駐車場（約30台・無料）",
@@ -9249,7 +9266,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
+      "s-gear",
       "s-gear"
     ],
     "calLegend": [
@@ -9394,18 +9411,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
       "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -9555,18 +9572,18 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-gear"
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
@@ -9706,9 +9723,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -9717,11 +9734,12 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "野反湖",
     "parking": "野反湖駐車場（約50台・無料）",
@@ -9846,14 +9864,14 @@
       "s-gear",
       "s-gear",
       "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
+      "s-gear",
       "s-gear"
     ],
     "calLegend": [
@@ -9995,9 +10013,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -10006,11 +10024,12 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "前山登山口（銀山平）",
     "parking": "銀山平駐車場（約50台・無料）",
@@ -10130,10 +10149,10 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -10141,11 +10160,12 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "三ノ瀬登山口",
     "parking": "三ノ瀬駐車場（約20台・無料）",
@@ -10270,16 +10290,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "老平登山口",
@@ -10405,16 +10426,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "白沢登山口",
@@ -10535,22 +10557,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-gear",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "有明荘",
     "parking": "有明荘駐車場（約50台・無料）",
@@ -10682,22 +10705,23 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-ok",
-      "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-gear",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "仲仙寺",
     "parking": "仲仙寺駐車場（約30台・無料）",
@@ -10820,22 +10844,23 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
       "s-gear",
-      "s-gear",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "奥岳登山口",
     "parking": "あだたら高原スキー場駐車場（約500台・無料）",
@@ -10980,9 +11005,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -10991,11 +11016,12 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "浄土平",
     "parking": "浄土平駐車場（約700台・500円）",
@@ -11134,9 +11160,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -11145,11 +11171,12 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "枝折峠",
     "parking": "枝折峠駐車場（約30台・無料）",
@@ -11298,16 +11325,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "鷹ノ巣登山口",
@@ -11446,8 +11474,8 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
+      "s-hard",
       "s-hard"
     ],
     "calLegend": [
@@ -11609,7 +11637,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
+      "s-gear",
       "s-gear",
       "s-hard"
     ],
@@ -11754,8 +11782,8 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
+      "s-hard",
       "s-hard"
     ],
     "calLegend": [
@@ -11899,22 +11927,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "戸隠キャンプ場",
     "parking": "戸隠キャンプ場駐車場（有料）",
@@ -12058,16 +12087,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "新穂高温泉",
@@ -12200,16 +12230,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "王滝口（田の原）",
@@ -12350,16 +12381,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "白馬五竜テレキャビン",
@@ -12500,22 +12532,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-gear",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "銀山平（クラシックルート）",
     "parking": "銀山平駐車場（約50台・無料）※群馬側林道は廃道・クラシックルート起点",
@@ -12649,16 +12682,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "菅の台バスセンター（マイカー規制）",
@@ -12924,7 +12958,11 @@
     "trainTimeOmiya": 280,
     "trainTimeShinjuku": 250,
     "photos": [
-      "/images/mountains/utsukushigahara/04.jpg"
+      "/images/mountains/utsukushigahara/01.jpg",
+      "/images/mountains/utsukushigahara/02.jpg",
+      "/images/mountains/utsukushigahara/03.jpg",
+      "/images/mountains/utsukushigahara/04.jpg",
+      "/images/mountains/utsukushigahara/05.jpg"
     ]
   },
   {
@@ -12967,16 +13005,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "八方尾根（ゴンドラ・リフト利用）",
@@ -13123,22 +13162,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "駒ヶ根高原（池山林道終点）",
     "parking": "池山林道終点駐車場（約20台・無料）",
@@ -13271,22 +13311,23 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
       "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "神坂峠",
     "parking": "神坂峠駐車場（約30台・無料）",
@@ -13413,22 +13454,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "鳥倉林道ゲート",
     "parking": "鳥倉林道ゲート手前駐車場（約50台・無料）",
@@ -13566,16 +13608,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "椹島ロッジ",
@@ -13709,16 +13752,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "椹島ロッジ",
@@ -13859,16 +13903,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "便ヶ島（易老渡付近）",
@@ -13991,22 +14036,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "易老渡",
     "parking": "易老渡手前駐車場（約30台・無料）",
@@ -14127,22 +14173,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "折立",
     "parking": "折立駐車場（約250台・無料）",
@@ -14272,22 +14319,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "折立または新穂高",
     "parking": "折立駐車場（約250台・無料）",
@@ -14419,16 +14467,17 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-hard",
+      "s-gear",
       "s-hard",
       "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
+      "6本アイゼンで可",
       "12本アイゼン必要"
     ],
     "trailhead": "広河原",
@@ -14560,21 +14609,23 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok"
+      "s-gear",
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
-      "アイゼン不要"
+      "アイゼン不要",
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "広河原",
     "parking": "芦安駐車場（約400台・無料）※バス乗換",
@@ -14713,22 +14764,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "別当出合",
     "parking": "別当出合駐車場（約100台・無料）※夏季はシャトルバス",
@@ -14861,9 +14913,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -14872,11 +14924,12 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "刈田岳（蔵王エコーライン）",
     "parking": "刈田岳山頂駐車場（約200台・無料）",
@@ -15014,22 +15067,23 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
       "s-gear",
       "s-gear",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "道の駅みとみ（雁坂トンネル料金所付近）",
     "parking": "道の駅みとみ駐車場（無料）",
@@ -15167,22 +15221,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "戸台口（仙流荘）",
     "parking": "仙流荘前駐車場（無料）",
@@ -15319,22 +15374,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "菅の台バスセンター",
     "parking": "菅の台バスセンター駐車場（有料・500円/日）",
@@ -15471,22 +15527,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "上高地バスターミナル",
     "parking": "沢渡駐車場（有料・700円/日）＋バス",
@@ -15624,22 +15681,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "中房温泉登山口",
     "parking": "有明荘駐車場（有料・1000円/日）",
@@ -15772,22 +15830,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "扇沢",
     "parking": "扇沢市営駐車場（無料）",
@@ -15933,22 +15992,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "高瀬ダム（ブナ立尾根登山口）",
     "parking": "七倉駐車場（無料）＋タクシー",
@@ -16070,22 +16130,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard",
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "6本アイゼンで可"
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "高瀬ダム（ブナ立尾根登山口）",
     "parking": "七倉駐車場（無料）＋タクシー",
@@ -16474,9 +16535,9 @@
     ],
     "driveTimeTachikawa": 50,
     "driveTachikawa": 50,
-    "fareShinjuku": 1290,
-    "fareYokohama": 1103,
-    "fareOmiya": 1221,
+    "fareShinjuku": 1974,
+    "fareYokohama": 2590,
+    "fareOmiya": 2502,
     "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約20分)→御嶽駅→西東京バス約10分→ケーブル下→ケーブルカー約6分→御岳山",
     "trainAccessOmiya": "大宮駅→JR埼京線・武蔵野線・中央線経由(約103分)→御嶽駅→西東京バス約10分→ケーブル下→ケーブルカー約6分→御岳山",
     "transfersShinjuku": 1,
@@ -16636,9 +16697,9 @@
     ],
     "driveTimeTachikawa": 55,
     "driveTachikawa": 55,
-    "fareShinjuku": 1050,
-    "fareYokohama": 1666,
-    "fareOmiya": 1578,
+    "fareShinjuku": 883,
+    "fareYokohama": 1499,
+    "fareOmiya": 1411,
     "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR青梅線約1時間30分→軍畑駅→徒歩→登山口",
     "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR青梅線約1時間30分→軍畑駅→徒歩→登山口",
     "transfersShinjuku": 1,
@@ -17150,8 +17211,8 @@
       "s-gear"
     ],
     "calLegend": [
-      "登山可（3〜11月）",
-      "積雪注意（12〜2月）"
+      "アイゼン不要",
+      "6本アイゼンで可"
     ],
     "trailhead": "一ノ鳥居登山口",
     "parking": "一ノ鳥居登山口駐車場（無料・台数限定）",
@@ -17297,8 +17358,8 @@
       "s-gear"
     ],
     "calLegend": [
-      "登山可（4〜11月）",
-      "軽アイゼン推奨（12〜3月）"
+      "アイゼン不要",
+      "6本アイゼンで可"
     ],
     "trailhead": "大倉バス停（後沢乗越ルート）",
     "parking": "大倉駐車場（約150台・平日100〜500円・土日200〜800円）",
@@ -17449,8 +17510,8 @@
       "s-gear"
     ],
     "calLegend": [
-      "登山可（4〜11月）",
-      "軽アイゼン推奨（12〜3月）"
+      "アイゼン不要",
+      "6本アイゼンで可"
     ],
     "trailhead": "大倉バス停（二俣ルート）",
     "parking": "大倉駐車場（約150台・平日100〜500円・土日200〜800円）",
@@ -17811,9 +17872,9 @@
     ],
     "driveTimeTachikawa": 30,
     "driveTachikawa": 30,
-    "fareShinjuku": 710,
-    "fareYokohama": 903,
-    "fareOmiya": 1238,
+    "fareShinjuku": 995,
+    "fareYokohama": 1188,
+    "fareOmiya": 1523,
     "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線(約5分)→高尾駅→京王バス約21分→小仏バス停",
     "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約59分→高尾駅→京王バス約21分→小仏バス停",
     "transfersShinjuku": 1,
@@ -18020,9 +18081,9 @@
     ],
     "driveTimeTachikawa": 30,
     "driveTachikawa": 30,
-    "fareShinjuku": 710,
-    "fareYokohama": 903,
-    "fareOmiya": 1238,
+    "fareShinjuku": 995,
+    "fareYokohama": 1188,
+    "fareOmiya": 1523,
     "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR中央線(約5分)→高尾駅→バス→小仏バス停→徒歩",
     "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約1時間20分→高尾駅→バス→小仏バス停→徒歩",
     "transfersShinjuku": 1,
@@ -18033,6 +18094,20 @@
     "photos": [
       "/images/mountains/kobotokeshiroyama/image-20260811235550701-ktaw3.jpg",
       "/images/mountains/kobotokeshiroyama/image-20260811235553152-o9gdj.jpg"
+    ],
+    "seasonCalendar": [
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
     ]
   },
   {
@@ -18093,7 +18168,21 @@
     "transfersYokohama": 0,
     "transfersOmiya": 1,
     "trainTimeYokohama": 71,
-    "trainTimeOmiya": 85
+    "trainTimeOmiya": 85,
+    "seasonCalendar": [
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
+    ]
   },
   {
     "id": "nakimushiyama",
@@ -18148,7 +18237,25 @@
     "transfersYokohama": 1,
     "transfersOmiya": 1,
     "trainTimeYokohama": 170,
-    "trainTimeOmiya": 145
+    "trainTimeOmiya": 145,
+    "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear"
+    ],
+    "calLegend": [
+      "アイゼン不要",
+      "6本アイゼンで可"
+    ]
   },
   {
     "id": "tairappyo",
@@ -18216,9 +18323,9 @@
       "s-hard"
     ],
     "calLegend": [
-      "アイゼン不要（6〜10月）",
-      "6本アイゼンで可（5月・11月）",
-      "入山困難（12〜4月）"
+      "アイゼン不要",
+      "6本アイゼンで可",
+      "12本アイゼン必要"
     ],
     "trailhead": "平標登山口駐車場",
     "trailheadAddress": "新潟県南魚沼郡湯沢町三国",
@@ -18931,8 +19038,8 @@
       "s-gear"
     ],
     "calLegend": [
-      "アイゼン不要（4〜11月）",
-      "6本アイゼンで可（12〜3月）"
+      "アイゼン不要",
+      "6本アイゼンで可"
     ],
     "trailhead": "川乗橋バス停（東京都奥多摩町川井）",
     "trailheadAddress": "東京都奥多摩町川井",
@@ -19003,9 +19110,9 @@
     ],
     "driveTimeTachikawa": 75,
     "driveTachikawa": 75,
-    "fareShinjuku": 1610,
-    "fareYokohama": 1642,
-    "fareOmiya": 2138,
+    "fareShinjuku": 1531,
+    "fareYokohama": 1563,
+    "fareOmiya": 2059,
     "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約40分)→奥多摩駅→西東京バス約15分→川乗橋バス停",
     "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR青梅線約1時間55分→奥多摩駅→西東京バス約15分→川乗橋バス停",
     "transfersShinjuku": 1,
@@ -19081,8 +19188,8 @@
       "s-gear"
     ],
     "calLegend": [
-      "アイゼン不要（4〜11月）",
-      "6本アイゼンで可（12〜3月）"
+      "アイゼン不要",
+      "6本アイゼンで可"
     ],
     "trailhead": "東日原バス停（東京都奥多摩町日原）",
     "trailheadAddress": "東京都奥多摩町日原",
@@ -19153,9 +19260,9 @@
     ],
     "driveTimeTachikawa": 75,
     "driveTachikawa": 75,
-    "fareShinjuku": 1610,
-    "fareYokohama": 1642,
-    "fareOmiya": 2138,
+    "fareShinjuku": 1751,
+    "fareYokohama": 1783,
+    "fareOmiya": 2279,
     "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約40分)→奥多摩駅→西東京バス約25分→東日原バス停→徒歩",
     "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR青梅線約2時間10分→奥多摩駅→西東京バス約25分→東日原バス停→徒歩",
     "transfersShinjuku": 1,
@@ -19587,7 +19694,21 @@
     "transfersYokohama": 1,
     "transfersOmiya": 1,
     "trainTimeYokohama": 144,
-    "trainTimeOmiya": 140
+    "trainTimeOmiya": 140,
+    "seasonCalendar": [
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
+    ]
   },
   {
     "id": "ogiyama",
@@ -19660,7 +19781,21 @@
     "transfersYokohama": 1,
     "transfersOmiya": 1,
     "trainTimeYokohama": 169,
-    "trainTimeOmiya": 165
+    "trainTimeOmiya": 165,
+    "seasonCalendar": [
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
+    ]
   },
   {
     "id": "makuyama",
@@ -20083,9 +20218,9 @@
     ],
     "driveTimeTachikawa": 50,
     "driveTachikawa": 50,
-    "fareShinjuku": 1450,
-    "fareYokohama": 2066,
-    "fareOmiya": 1978,
+    "fareShinjuku": 1504,
+    "fareYokohama": 2120,
+    "fareOmiya": 2032,
     "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央本線約1時間10分→上野原駅→富士急バス約25分→井戸バス停→徒歩",
     "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央本線約1時間10分→上野原駅→富士急バス約25分→井戸バス停→徒歩",
     "transfersShinjuku": 0,
@@ -20256,9 +20391,9 @@
     ],
     "driveTimeTachikawa": 55,
     "driveTachikawa": 55,
-    "fareShinjuku": 902,
-    "fareYokohama": 1518,
-    "fareOmiya": 1430,
+    "fareShinjuku": 2022,
+    "fareYokohama": 2638,
+    "fareOmiya": 2550,
     "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR五日市線約1時間→武蔵五日市駅→西東京バス「数馬行」約60分→数馬→都民の森連絡バス約10分→都民の森",
     "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR五日市線約1時間→武蔵五日市駅→西東京バス「数馬行」約60分→数馬→都民の森連絡バス約10分→都民の森",
     "transfersShinjuku": 2,
@@ -20269,6 +20404,10 @@
     "photos": [
       "/images/mountains/mitosaan/image-20260811122309604-73i1r.jpg",
       "/images/mountains/mitosaan/image-20260811122312657-71sa8.jpg"
+    ],
+    "calLegend": [
+      "アイゼン不要",
+      "6本アイゼンで可"
     ]
   },
   {
@@ -20355,7 +20494,11 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 133,
-    "trainTimeOmiya": 155
+    "trainTimeOmiya": 155,
+    "calLegend": [
+      "アイゼン不要",
+      "6本アイゼンで可"
+    ]
   },
   {
     "id": "hinodesaan",
@@ -20434,9 +20577,9 @@
     ],
     "driveTimeTachikawa": 40,
     "driveTachikawa": 40,
-    "fareShinjuku": 2100,
-    "fareYokohama": 1913,
-    "fareOmiya": 2031,
+    "fareShinjuku": 1974,
+    "fareYokohama": 1787,
+    "fareOmiya": 1905,
     "trainAccessYokohama": "横浜駅→JR横浜線(約63分)→八王子駅→JR青梅線(約20分)→御嶽駅→西東京バス約10分→ケーブル下（滝本駅）→御岳山ケーブルカー約6分→御岳山（日の出山へは登山道で約1時間）",
     "trainAccessOmiya": "大宮駅→JR埼京線・武蔵野線・中央線経由(約103分)→御嶽駅→西東京バス約10分→ケーブル下（滝本駅）→御岳山ケーブルカー約6分→御岳山（日の出山へは登山道で約1時間）",
     "transfersShinjuku": 2,
@@ -20520,9 +20663,9 @@
     ],
     "driveTimeTachikawa": 40,
     "driveTachikawa": 40,
-    "fareShinjuku": 902,
-    "fareYokohama": 1518,
-    "fareOmiya": 1430,
+    "fareShinjuku": 1432,
+    "fareYokohama": 2048,
+    "fareOmiya": 1960,
     "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR五日市線約55分→武蔵五日市駅→西東京バス約25分→払沢の滝入口",
     "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR五日市線約55分→武蔵五日市駅→西東京バス約25分→払沢の滝入口",
     "transfersShinjuku": 2,
@@ -20704,6 +20847,10 @@
     "trainTimeOmiya": 155,
     "photos": [
       "/images/mountains/juunigadake/image-20260811133514134-iik4h.jpg"
+    ],
+    "calLegend": [
+      "アイゼン不要",
+      "6本アイゼンで可"
     ]
   },
   {
@@ -20790,7 +20937,11 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 179,
-    "trainTimeOmiya": 175
+    "trainTimeOmiya": 175,
+    "calLegend": [
+      "アイゼン不要",
+      "6本アイゼンで可"
+    ]
   },
   {
     "id": "azumayama_ninomiya",
@@ -21357,6 +21508,10 @@
     "photos": [
       "/images/mountains/mitsutoge/image-20260811132812052-j5sf1.jpg",
       "/images/mountains/mitsutoge/image-20260811132814535-v2yqx.jpg"
+    ],
+    "calLegend": [
+      "アイゼン不要",
+      "6本アイゼンで可"
     ]
   },
   {
@@ -21719,9 +21874,9 @@
     "trainTimeShinjuku": 110,
     "trainTimeYokohama": 118,
     "trainTimeOmiya": 140,
-    "fareShinjuku": 1571,
-    "fareYokohama": 1603,
-    "fareOmiya": 2099,
+    "fareShinjuku": 1651,
+    "fareYokohama": 1683,
+    "fareOmiya": 2179,
     "driveOfuna": 90,
     "driveShinjuku": 80,
     "driveYokohama": 90,
