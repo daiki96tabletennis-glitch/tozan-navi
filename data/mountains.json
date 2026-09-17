@@ -3568,148 +3568,6 @@
     ]
   },
   {
-    "id": "shirane_nikko",
-    "name": "四阿山",
-    "area": "群馬県",
-    "elevation": 2354,
-    "category": "百名山",
-    "difficulty": "中級",
-    "coeffMin": 24,
-    "coeffMax": 30,
-    "daytrip": true,
-    "trainAccess": null,
-    "driveOfuna": 245,
-    "driveShinjuku": 175,
-    "driveYokohama": 200,
-    "driveOmiya": 140,
-    "description": "上信国境の雄峰。なだらかな山容で、高山植物が豊富。",
-    "yamapUrl": "https://yamap.com/mountains/51",
-    "busLinks": [],
-    "warnBanner": null,
-    "nearby": [],
-    "vibes": [
-      "highland"
-    ],
-    "types": [
-      "collector",
-      "easy"
-    ],
-    "seasonOk": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-gear",
-      "s-gear"
-    ],
-    "calLegend": [
-      "アイゼン不要",
-      "6本アイゼンで可"
-    ],
-    "trailhead": "菅平高原牧場",
-    "parking": "菅平牧場駐車場（約50台・500円）",
-    "address": "長野県上田市菅平高原",
-    "gmapUrl": "https://google.com/maps/search/菅平高原牧場/@36.5452,138.5095,16z",
-    "amapUrl": "https://maps.apple.com/?ll=36.5452,138.5095&q=菅平高原牧場",
-    "busScheduleLinks": [],
-    "gearLinks": [
-      {
-        "id": "boots",
-        "icon": "👟",
-        "name": "登山靴",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      },
-      {
-        "id": "rain",
-        "icon": "🧥",
-        "name": "レインウェア",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      },
-      {
-        "id": "pack",
-        "icon": "🎒",
-        "name": "ザック",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      },
-      {
-        "id": "water",
-        "icon": "💧",
-        "name": "水・行動食",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      },
-      {
-        "id": "gaiter",
-        "icon": "🧦",
-        "name": "ゲイター",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      },
-      {
-        "id": "pole",
-        "icon": "🦯",
-        "name": "ストック",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      },
-      {
-        "id": "crampon",
-        "icon": "❄️",
-        "name": "軽アイゼン",
-        "affiliateUrl": "",
-        "affiliateName": ""
-      }
-    ],
-    "lat": 36.5452,
-    "lng": 138.5095,
-    "kana": "あずまやさん",
-    "driveDistance": 180,
-    "trailheadAddress": "長野県上田市菅平高原",
-    "season": "6月〜10月",
-    "courseCoefficientRange": "24〜30",
-    "courseCoefficient": [
-      24,
-      30
-    ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "11月〜5月",
-    "routes": [
-      {
-        "name": "菅平高原ルート（往復）",
-        "time": "5時間30分",
-        "distance": "10.0km",
-        "elevation": "+900m"
-      },
-      {
-        "name": "根子岳〜四阿山縦走",
-        "time": "6時間",
-        "distance": "11.0km",
-        "elevation": "+950m"
-      }
-    ],
-    "driveTime": 245,
-    "driveTimeShinjuku": 175,
-    "driveTimeYokohama": 200,
-    "driveTimeOmiya": 140,
-    "lines": [],
-    "driveTimeTachikawa": 270,
-    "driveTachikawa": 270
-  },
-  {
     "id": "nikko_shirane",
     "name": "日光白根山",
     "area": "栃木県",
@@ -7865,7 +7723,7 @@
   {
     "id": "kintoki",
     "name": "金時山",
-    "area": "静岡県",
+    "area": "神奈川県・静岡県",
     "elevation": 1212,
     "category": "人気の山",
     "difficulty": "初〜中級",
@@ -7917,7 +7775,7 @@
     ],
     "trailhead": "金時登山口（乙女峠）",
     "parking": "乙女峠駐車場（約20台・無料）",
-    "address": "神奈川県南足柄市矢倉沢",
+    "address": "静岡県駿東郡小山町",
     "gmapUrl": "https://google.com/maps/search/金時登山口/@35.2514,139.0019,16z",
     "amapUrl": "https://maps.apple.com/?ll=35.2514,139.0019&q=金時登山口",
     "busScheduleLinks": [
@@ -14432,11 +14290,7 @@
     "trainTimeOmiya": 280,
     "trainTimeShinjuku": 250,
     "photos": [
-      "/images/mountains/utsukushigahara/01.jpg",
-      "/images/mountains/utsukushigahara/02.jpg",
-      "/images/mountains/utsukushigahara/03.jpg",
-      "/images/mountains/utsukushigahara/04.jpg",
-      "/images/mountains/utsukushigahara/05.jpg"
+      "/images/mountains/utsukushigahara/04.jpg"
     ],
     "faq": [
       {
@@ -20207,7 +20061,10 @@
         "question": "小仏城山へのアクセス方法を教えてください。",
         "answer": "JR中央線高尾駅（北口）から京王バス「小仏行」で終点下車。バス停から登山口まで徒歩約5分、山頂まで約30分です。"
       }
-    ]
+    ],
+    "description": "高尾山と陣馬山の間に位置する奥高尾縦走路の要衝。標高670mで2軒の茶屋（城山茶屋・春美茶屋）があり、名物のなめこ汁やかき氷が楽しめる。山頂からは富士山と高尾山を同時に望める絶景スポット。",
+    "trailhead": "小仏バス停",
+    "season": "通年"
   },
   {
     "id": "kusatoriyama",
@@ -20296,7 +20153,10 @@
         "question": "草戸山から橋本駅に抜けることはできますか？",
         "answer": "南高尾山稜コースを経由して橋本駅まで縦走できます。所要時間は約4時間、距離は約12kmです。"
       }
-    ]
+    ],
+    "description": "高尾山口駅から徒歩でアクセスできる穴場の低山。東京都と神奈川県の都県境稜線に位置し、南高尾山稜コースの一部として人気。標高365mと低山ながら、高尾山周辺の山並みや相模湖を望む眺望スポットがある。",
+    "trailhead": "高尾山口駅",
+    "season": "通年"
   },
   {
     "id": "nakimushiyama",
@@ -20384,7 +20244,10 @@
         "question": "鳴虫山の下山後に観光できますか？",
         "answer": "憾満ヶ淵に下山するコースなら清流沿いのお地蔵様の景観を楽しめます。東武日光駅周辺には日光東照宮など観光スポットが充実しています。"
       }
-    ]
+    ],
+    "description": "東武日光駅から徒歩約20分で登山口にアクセスできる日光の隠れた名山。標高1,103mながら山頂からは日光の山々と関東平野の展望が広がる。憾満ヶ淵（かんまんがふち）に下山する周回コースが人気で、清流と並ぶ約70体のお地蔵様の情景は独特の美しさ。春のカタクリ・ミツバツツジも見どころ。",
+    "trailhead": "鳴虫山登山口（東武日光駅から徒歩約20分）",
+    "season": "通年（冬季は積雪注意）"
   },
   {
     "id": "tairappyo",

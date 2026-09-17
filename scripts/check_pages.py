@@ -243,7 +243,7 @@ def check_json_html_mismatch(mountains, root=None):
             issues.append({'id': mid, 'field': 'courseCoefficientRange', 'json': ccr,
                             'problem': f'コース定数{ccr}の表記がHTML中に見つからない'})
 
-        # 運賃：本文の権威データ（ts-fare-val data-*属性）と一致するか
+        # 運賃：本文の権威データ（ts-fare-val data-*属性）がJSONの運賃3種と一致するか（3種とも検査する）
         for dep, field in (('shinjuku', 'fareShinjuku'), ('yokohama', 'fareYokohama'), ('omiya', 'fareOmiya')):
             fare = m.get(field)
             if not fare:
@@ -253,8 +253,11 @@ def check_json_html_mismatch(mountains, root=None):
                 html_fare = int(attr_m.group(1).replace(',', ''))
                 if html_fare != fare:
                     issues.append({'id': mid, 'field': field, 'json': fare, 'html': html_fare,
-                                    'problem': 'アクセス表の運賃がJSONと不一致'})
-            break  # このループはfareShinjuku存在確認だけで十分（属性チェックは3種とも上でカバー済み）
+                                    'problem': 'アクセス表の運賃(ts-fare-val)がJSONと不一致'})
+
+        # 注: trainTimeShinjuku/Yokohama/Omiya は、どの山ページのHTML/JSからも参照されていない
+        # 孤立フィールドであることが判明した（ts-time-valとの連動関係が元から存在しない）ため、
+        # 所要時間の同期チェックは見送っている。運用ガイド(README.md)の既知課題に記載。
 
         # FAQPage JSON-LD内の「アクセス方法」回答文にある運賃額が、JSONの運賃3種と食い違っていないか
         # （駐車場代・ロープウェイ代等の無関係な金額を拾わないよう、FAQPageのアクセス関連の回答文だけに絞る）
