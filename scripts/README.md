@@ -1,53 +1,82 @@
 # YAMATCH 保守スクリプト運用ガイド
 
-`mountains.json` を唯一の正本とし、以下のスクリプトで各種HTMLへ反映する。
-**山データ（地域・標高・難易度・コース定数・運賃・アクセス・FAQ等）は
-`mountains/`配下や`search/`配下のHTMLへ直接手入力しない。** 必ず
-`data/mountains.json`を編集し、対応する同期スクリプトを実行すること。
+`data/mountains.json`（＋`data/gear-data.json`）を唯一の正本とし、
+`gen_mountain_pages.py`が`mountains/<id>/index.html`を毎回フル再生成する。
+**山固有情報（地域・標高・難易度・コース定数・運賃・アクセス・FAQ・警告バナー等）
+は`mountains/`配下のHTMLへ直接手入力しない。** 必ず`data/mountains.json`
+（必要に応じ`data/gear-data.json`）を編集し、`gen_mountain_pages.py`を実行すること。
+
+2026-09-18のリファクタリングにより、旧来の「共通部分だけをHTMLへパッチする」
+複数スクリプト（`sync_mountain_assets.py`/`gen_mountain_engine.py`/
+`sync_mountain_faq.py`）は廃止し、`scripts/deprecated/`へ移動した。
+これらが担っていた処理はすべて`gen_mountain_pages.py`のページ全体再生成に
+統合されている。**通常運用でこれらを実行する必要はない。**
 
 ## データの正本と役割分担
 
 | ファイル | 役割 |
 |---|---|
-| `data/mountains.json` | 山そのものの正本（地域・標高・難易度・コース定数・運賃・アクセス・FAQ等） |
-| `assets/css/mountain.css` | 全山共通CSS（山ごとの個別差分だけがHTML内に残る） |
-| `assets/js/mountain.js` | 全山共通JS（標高カウントアップ・FAQ開閉・nearbyバー等、山固有データを持たない部分） |
-| `assets/js/mountain-engine.js` | 全山共通エンジンJS（`window.YM_MOUNTAIN_INIT`で山固有値を受け取る） |
-| 検索ページ内の掲載山ID・並び順・intro・FAQ・カード紹介文 | 各`search/<slug>/index.html`に直接記述（現時点ではJSON化されていない。将来`search-pages.json`として切り出す余地あり） |
+| `data/mountains.json` | 山の正本データ（地域・標高・難易度・コース定数・運賃・アクセス・FAQ・警告バナー・編集文章の一部等） |
+| `data/gear-data.json` | 月別ギア推奨データ（`data-gear-variants`属性の構造化版） |
+| `assets/css/mountain.css` | 全山共通CSS（外部参照） |
+| `assets/js/mountain.js` | 全山共通JS（外部参照） |
+| `assets/js/mountain-engine.js` | 全山共通エンジンJS（`window.YM_MOUNTAIN_INIT`で山固有値を受け取る、外部参照） |
+| `scripts/_base_mountain_style.css` | 生成ページに埋め込む共通インラインCSS（156山のstyle和集合） |
+| `scripts/_weather_widget_block.html` | 天気ウィジェットの共通HTML/JSテンプレート（`__MID__`をID置換） |
+| `scripts/_hero_photo_script.html` | ヒーロー写真カルーセル機能の共通スクリプト（対象8山のみ、`__MID__`をID置換） |
+| 検索ページ内の掲載山ID・並び順・intro・FAQ・カード紹介文 | 各`search/<slug>/index.html`に直接記述（未JSON化、対象外） |
+
+### mountains.json内の「編集文章として保持」フィールド（オパーク扱い）
+
+以下は数式・条件分岐では安全に再現できないと判断し、既存HTMLから**抽出した
+文字列をそのまま出力する**（生成時にHTMLとして解釈・再構築しない）フィールド。
+中身を変える場合はHTMLではなくこのJSONフィールドを直接編集する。
+
+`vibesHtml` / `introHtml` / `dlNoteHtml` / `dlReasonsHtml` / `trainAccessHtml` /
+`relatedLinksHtml` / `mapBtnsHtml` / `routeCautionHtml`（2山のみ）/
+`metaTitle` / `metaDescription` / `ogTitle` / `ogDescription`
+
+### 山ごとに現状のUI差異を保存しているフラグ（統一しなかったもの）
+
+以下は「どちらかが正解」と断定できない実デザイン差分だったため、多数決で
+強制統一せず、現状のページ表示をそのまま維持するフラグとして`mountains.json`
+に保存した。
+
+- `climbedBtnStyle`（`"flat"` 111山 / `"rounded"` 45山）：登頂記録ボタンの
+  角丸・枠線色・アイコン（SVG or 絵文字）が2系統存在。`rounded`側は
+  プロジェクト設計色`#c8d4b8`を使っており最新デザインの可能性があるため、
+  どちらかへ統一するかはユーザー判断待ち。
+- `weatherBeforeIntro`（true 28山 / false 46山、天気ウィジェット搭載74山中）：
+  天気カードを「こんな人におすすめ」の直後（山紹介・難易度カードより前）に
+  置くか、通常位置（難易度カードの後）に置くか。中〜上級/上級山に`true`が
+  多い傾向はあるが完全な相関ではないため個別フラグとして保存。
 
 ## 山データを更新したときにやること
 
 ```bash
-# 1. data/mountains.json を編集する
+# 1. data/mountains.json（必要なら data/gear-data.json）を編集する
 
-# 2. 変更した山のFAQ・エンジン初期値・検索ページ表示を同期する
-python3 scripts/sync_mountain_faq.py <山id>          # faqフィールドを編集した場合
-python3 scripts/gen_mountain_engine.py <山id>        # driveOfuna等の車アクセス時間を編集した場合
-python3 scripts/sync_search_pages.py --all           # 地域・標高・難易度・コース定数を編集した場合
-                                                       # （どの検索ページに載っているか事前に把握しなくても
-                                                       #   全ページ走査して差分があるものだけ書き換える）
+# 2. 該当ページを再生成する
+python3 scripts/gen_mountain_pages.py --id <山id>
+# まとめて全山再生成する場合
+python3 scripts/gen_mountain_pages.py --all
+# 内容に差分がある場合のみ書き換わる（同一なら無変更）
 
 # 3. 公開前チェックを実行する
 python3 scripts/check_pages.py
 
-# 4. 実ブラウザでの見た目確認（Playwright等）を行ってからデプロイする
+# 4. 実ブラウザ（Playwright等）で見た目・挙動を確認してからデプロイする
 ```
-
-いずれのスクリプトも**既に正本と一致していれば自動でスキップ**するため、
-「とりあえず`--all`を通す」運用で問題ない（差分がないページは書き換えない）。
 
 ## 新しい山ページを追加したときにやること
 
 ```bash
 # 1. data/mountains.json に新しいエントリを追加する
-# 2. mountains/<新id>/index.html を作成する（既存の近いページをコピーして
-#    name/id/データを差し替えるのが手早い）
-# 3. 共通アセット・共通エンジンへ寄せる
-python3 scripts/sync_mountain_assets.py <新id>
-python3 scripts/gen_mountain_engine.py <新id>
-python3 scripts/sync_mountain_faq.py <新id>
-
-# 4. 公開前チェック
+#    （必要な必須フィールドが欠けていると gen_mountain_pages.py が
+#     GenError で停止し、途中生成物で既存HTMLを壊すことはない）
+# 2. 生成する
+python3 scripts/gen_mountain_pages.py --id <新id>
+# 3. 公開前チェック
 python3 scripts/check_pages.py
 ```
 
@@ -55,60 +84,39 @@ python3 scripts/check_pages.py
 
 | スクリプト | 役割 | べき等性 |
 |---|---|---|
+| `gen_mountain_pages.py` | `data/mountains.json`等の正本から`mountains/<id>/index.html`をフル再生成する。単一山指定・全山一括の両対応。生成失敗時は`.tmp`書き込み→比較→`os.replace`で、既存HTMLを壊れた状態で上書きしない。必須データ欠損時は`GenError`で停止 | 済（内容が同一なら無変更） |
 | `check_pages.py` | 画像/リンク切れ・必須データ欠損・title系欠損/重複・JSON-HTML不一致・交通情報欠損を検査する。実装のみで壊れず、何度実行してもよい | - |
-| `sync_mountain_assets.py` | 山ページの共通CSS/JSを`assets/css/mountain.css`・`assets/js/mountain.js`参照に統一する | 済（既に統一済みならスキップ） |
-| `gen_mountain_engine.py` | 山ページの個別エンジンJSを`assets/js/mountain-engine.js` + `YM_MOUNTAIN_INIT`に統一する | 済 |
-| `sync_mountain_faq.py` | `mountains.json`の`faq`をFAQPage JSON-LD・可視FAQへ反映する | 済 |
-| `sync_search_pages.py` | 検索ページの山カードスタッツ・本文中のコース定数言及を`mountains.json`基準に同期する | 済 |
+| `sync_search_pages.py` | 検索ページの山カードスタッツ・本文中のコース定数言及を`mountains.json`基準に同期する（山個別ページの生成方式移行後も、検索ページ側は別スコープのため継続使用） | 済 |
+| `deprecated/sync_mountain_assets.py` | **廃止**。旧：共通CSS/JS参照への統一パッチ。`gen_mountain_pages.py`が生成時から統一済みの参照を出力するため不要 | - |
+| `deprecated/gen_mountain_engine.py` | **廃止**。旧：エンジンJSの`mountain-engine.js`+`YM_MOUNTAIN_INIT`への統一パッチ。`gen_mountain_pages.py`が生成時から出力するため不要 | - |
+| `deprecated/sync_mountain_faq.py` | **廃止**。旧：`faq`フィールドからFAQPage JSON-LD・可視FAQへの同期パッチ。`gen_mountain_pages.py`が生成時から出力するため不要 | - |
 
-## 既知の残課題（このスクリプト群の対象外）
+## 例外ページ（`gen_mountain_pages.py`の対象外）
+
+- **`tanzawa`**：`EXCLUDED_IDS`で除外。`@graph`/`TouristAttraction`型の
+  旧JSON-LD構造・旧HTMLコメント・share-section統合等、他155山と根本的に
+  異なる`<head>`/セクション構成を持つ唯一のページ（156山中1山のみ該当を
+  `grep`で確認済み）。自動生成に含めると構造を破壊するため、既存HTMLを
+  そのまま保持している。移行するかは別途判断が必要。
+- **`daibosatsurei` / `nikko_nantai` / `shirane_nikko` / `takao-hiking`**：
+  `EXCLUDED_DIRS`。`mountains.json`に対応エントリが存在しない非正規ページ
+  （`mountains/`配下には存在するが156山のマスタ対象外）。ノータッチ。
+
+## 既知の残課題（今回のスコープ外・要フォローアップ）
 
 - **6山12件の電車アクセス欠損**（`kinpusan`/`kayagatake`/`hinata`/`nakawarayama`/
   `yarigatake2`/`gozenyama`の`trainAccessYokohama`/`trainAccessOmiya`）：
-  全山とも`fareYokohama`/`fareOmiya`（運賃）は算出済みだが、経路の説明文だけが
-  未執筆。奥多摩方面等で経路パターンが類似する他山と比較検証したが、新宿駅ー
-  各方面間の所要時間表記が山ごとに一貫しておらず、裏取りなしに合成すると誤情報に
-  なるリスクが高いため、今回は補完していない。個別の時刻表確認が必要な既知課題
-  として残す（`check_pages.py`のカテゴリ3で継続して検出される想定）。
-- **`trainTimeShinjuku`/`trainTimeYokohama`/`trainTimeOmiya`フィールド**：
-  当初「どこからも参照されない孤立フィールド」と報告したが誤りで、実際には
-  `index.html`（トップページ）の出発駅切り替え（新宿・横浜・大宮）による
-  並び替え・フィルタ・「アクセス難易度ティア」判定で使用されている。削除不可。
-  個別ページの`ts-time-val`（所要時間表示）との間に見られた差異が、意味的な違い
-  （電車のみの時間 vs バス・徒歩を含む総所要時間）によるものか、単純なdriftか
-  は未調査。`check_pages.py`への同期チェック追加は、影響範囲の精査が済むまで
-  見送る。
-- **`mountains.json`の`courseCoefficient`配列フィールド**：当初「`coeffMin`/
-  `coeffMax`と重複し無参照」と報告したが誤りで、実際には`index.html`内の
-  ソート・★評価・`CourseMeter`/`CourseBadge`コンポーネント等8箇所で使用されて
-  いる。`coeffMin`/`coeffMax`とは全156山で完全一致しdrift実績はないため実害は
-  ないが、削除するには本番トップページ（React/JSX）8箇所の書き換えが必要で
-  リスクに対して優先度が低いと判断し、今回は変更しない。
-- **検索ページのintro文・FAQ・カード紹介文**：現状`search/`配下のHTMLに直接
-  記述されたままで、JSON化（`search-pages.json`）はまだ行っていない。将来的に
-  一元化する場合は掲載山ID・並び順の抽出ロジックから設計する必要がある。
-- **12種類あるCSSテンプレート差分**：検索ページのCSS/レイアウトは意図的に
-  現状維持している（データ面の一元化のみ実施）。見た目の統一は別タスク。
-- **`mountains.json`の`courseCoefficient`配列フィールド**：`coeffMin`/`coeffMax`と
-  完全に重複しており、どのHTML/スクリプトからも参照されていない。削除しても実害は
-  ないが今回のスコープ外のため未対応。
-
-## 変更履歴（判明した不具合と対応）
-
-- 画像切れ2件を修正：`articles/coeff-10`の美ヶ原写真参照（`01.jpg`は実在せず、
-  正式にライセンス確認済みの`04.jpg`のみ実在。`mountains.json`の`photos`配列も
-  5件中4件が存在しない状態だったため、実在する1件のみに整理）。`gear/index.html`
-  の`shoes.png`参照（正しいファイル名は`shoe.webp`、単数形・webp）。
-- `mountains.json`の必須データ欠損21件を全件確認・分類。3山
-  （`kobotokeshiroyama`/`kusatoriyama`/`nakimushiyama`）の`description`/
-  `season`/`trailhead`は、該当ページのHTML本文・`seasonNoGear`等に既に実在する
-  内容を抽出して補完（新規作成ではない）。残り6山12件（電車アクセス欠損）は
-  裏取りできる情報が無く、上記の既知課題として保留。
-- `check_pages.py`の運賃チェックに`break`の配置ミスがあり、新宿発の値を確認した
-  時点でループを抜けてしまい、横浜発・大宮発の不一致が実質検査されていなかった。
-  修正済み（3方面とも検査する）。この修正により`tanzawa`/`tanigawa`/`nasu`/
-  `bandai`/`shirane_gunma`の運賃不一致（計9件）を新たに発見し、`mountains.json`
-  基準に修正済み。
-- 29山（`kannokura`等）でFAQの質問見出しが`<h2 class="faq-q">`ではなく
-  `<div class="faq-q">`になっており、可視FAQブロックとして認識できず
-  `sync_mountain_faq.py`が同期をスキップしていた。全て`<h2>`に統一し解消済み。
+  従来から既知の欠損。裏取りできる情報がなく未補完。
+- **`azuma`/`mitakesan`の交通情報チェック新規検出**：`check_pages.py`の
+  「`ts-fare-val`/`ts-time-val`クラスがHTMLに実在するか」チェックで、この2山の
+  `trainAccessHtml`（既存HTMLから抽出した編集文章そのまま）が旧式マークアップ
+  （該当クラスを含まない形式）であることが判明。今回のリファクタリングで
+  新たに生じた問題ではなく、抽出元の既存HTML自体が元々この形式だったことを
+  移行前後のバイト同一性検証で確認済み。表示自体は問題なく行われるため
+  機能面の実害はないが、`check_pages.py`のこのチェック観点からは要フォロー。
+- **山ページUI差異の統一保留2件**：上記「山ごとに現状のUI差異を保存している
+  フラグ」の`climbedBtnStyle`・`weatherBeforeIntro`。どちらか一方の見た目へ
+  統一するかはユーザーの意思決定が必要なため、今回は現状維持（フラグで
+  個別再現）とした。
+- **検索ページのintro文・FAQ・カード紹介文**：`search/`配下に直書きのまま。
+  JSON化は未着手。

@@ -63,27 +63,19 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 /* アクセス */
 .access-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .access-item{background:#f8f6f2;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center}
-.access-item .label{font-size:11px;color:#8a8078}
-.access-item .value{font-size:13px;font-weight:600;color:#3a3530}
 /* 登山口 */
 .info-rows{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
-.info-row{display:flex;gap:8px;font-size:12px}
-.info-label{color:#a09888;flex-shrink:0;width:48px}
 /* ④ シーズンカレンダー */
 .calendar{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;margin-bottom:8px}
 .s-hard{background:#b08868}
 /* ルート */
 .route-card{background:#f8f6f2;border-radius:10px;padding:10px 12px;margin-bottom:8px}
-.route-title{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.route-num{width:20px;height:20px;background:#4e6535;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
 .route-name{font-size:13px;font-weight:600;color:#2a2520}
-.route-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
 .rs-item{text-align:center}
 .rs-label{font-size:9px;color:#a09888}
 .rs-val{font-size:12px;font-weight:600;color:#3a3530;margin-top:1px}
 /* 共有 */
 .share-section{text-align:center;margin-bottom:8px}
-.share-btn{background:#4e6535;color:white;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;width:100%}
 .share-fallback{display:flex;gap:8px;justify-content:center;margin-bottom:12px}
 .share-btn-sub{display:flex;align-items:center;gap:5px;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:500;border:1px solid #ddd8d0;background:white;color:#5a5248;cursor:pointer;text-decoration:none}
 .ag-a{display:flex;flex-direction:column;gap:5px;}
@@ -119,6 +111,9 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .ts-route{display:flex;flex-direction:column;gap:0;}
 .ts-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
 .ts-link{font-size:12px;font-weight:600;padding:5px 12px;border-radius:8px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
+.gear-inline-link{color:#3a5a28;font-weight:700;text-decoration:underline;text-decoration-color:#c8d4b8;text-underline-offset:2px}
+.gear-inline-sub{color:#6a8055;font-size:12px;text-decoration:underline;text-decoration-color:#eaf1e0}
+/* 天気ウィジェット */
 .weather-condition-badge{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;padding:5px 12px;border-radius:8px;margin-bottom:10px}
 #weather-card h2{margin-bottom:2px}
 .cond-lvl0{background:#eaf1e0;color:#4e6535}
@@ -148,11 +143,96 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .weather-hourly-icon{font-size:22px}
 .weather-hourly-temp{font-size:14px;font-weight:800;color:#1a1a16;margin-top:2px}
 .weather-hourly-sub{font-size:9px;color:#8a8078;margin-top:2px;display:flex;align-items:center;justify-content:center;gap:3px}
+.weather-loading,.weather-error{font-size:12px;color:#a09888;padding:16px 0;text-align:center}
 .weather-disclaimer{font-size:10px;color:#7a7268;margin-top:8px;line-height:1.5;border-top:1px solid #ece8e0;padding-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .weather-credit{font-size:9px;color:#c0bcb0;text-align:right;margin-top:4px}
-.weather-loading,.weather-error{font-size:12px;color:#a09888;padding:16px 0;text-align:center}
-/* 近くて似た山：常時表示スティッキーバー */
-</style>
+/* 規制・注意バナー */
+.warn-banner{border-radius:10px;padding:12px 14px;margin-bottom:12px;display:flex;gap:10px;align-items:flex-start;}
+.warn-banner-red{background:#fef2f2;border:1.5px solid #fca5a5;}
+.warn-banner-yellow{background:#fffbeb;border:1.5px solid #fcd34d;}
+.warn-banner-blue{background:#eff6ff;border:1.5px solid #93c5fd;}
+.warn-icon{font-size:20px;flex-shrink:0;line-height:1.3;}
+.warn-body{}
+.warn-title{font-size:13px;font-weight:700;margin-bottom:3px;}
+.warn-title-red{color:#dc2626;}
+.warn-title-yellow{color:#d97706;}
+.warn-title-blue{color:#1d4ed8;}
+.warn-text{font-size:12px;line-height:1.6;color:#5a5248;}
+.warn-link{display:inline-block;margin-top:5px;font-size:11px;font-weight:600;color:#1d4ed8;text-decoration:underline;text-underline-offset:2px;}
+.mountain-name{font-size:26px;font-weight:bold;color:white;line-height:1.2}
+.mountain-kana{color:#b8c8b8;font-size:12px;margin-top:4px}
+.mountain-area{color:#c8d8c8;font-size:13px;margin-top:2px}
+.hero-bg-svg{position:absolute;bottom:0;right:-10px;width:200px;height:120px;opacity:0.04;pointer-events:none}
+.cal-l{font-family:"Outfit",sans-serif;font-size:8px;color:#a09888;margin-bottom:3px;font-weight:500}
+.ts-arrow::before{content:"";position:absolute;left:-13px;top:-3px;bottom:-3px;width:1px;background:#d4cfc2;}
+.ts-duration{font-weight:600;color:#7a8a70;}
+.weather-condition-badge{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;padding:5px 12px;border-radius:8px;margin-bottom:10px}
+.ts-step{display:flex;flex-direction:column;}
+.ts-station{font-size:13px;font-weight:700;color:#1a1a16;margin-left:12px;}
+.ts-arrow{margin-left:12px;padding:4px 0 4px 8px;border-left:1.5px dotted #c8c4bc;}
+.ts-method{font-size:12px;color:#5a5650;display:inline-flex;align-items:center;}
+.ts-summary{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.ts-summary-note{width:100%;font-size:11px;color:#8a8578;margin-top:2px;font-weight:400;font-family:-apple-system,sans-serif;}
+.dl-reasons li::before{content:"";position:absolute;left:3px;top:9px;width:5px;height:5px;
+  border-radius:50%;background:#4e6535;}
+.hero-new{position:relative;overflow:hidden;background:#c2d4dc;border:1px solid #9cb8c4;padding:20px 16px 16px;border-radius:14px;margin-bottom:14px}
+.intro-text{font-size:13px;color:#5a5050;line-height:1.7}
+.info-rows{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.calendar{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;margin-bottom:8px}
+.rec-card{background:transparent;border-radius:0;padding:24px 0;margin-bottom:0;border:none;border-bottom:1px solid #ccc7ba}
+.ts-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.related-links-card{background:transparent;border-radius:0;padding:24px 0;margin-bottom:0;border:none;border-bottom:1px solid #ccc7ba}
+.rh{font-size:13px;font-weight:700;color:#4a5e4a;margin:0 0 10px}
+.rc-green{background:linear-gradient(145deg,#f0f5ec 0%,#e4edd8 100%);border:1px solid #cfdcc0}
+.rbc{background:#eef0e8;color:#4a5e4a}
+.rt{font-size:13px;font-weight:700;color:#4a5e4a;margin-top:2px}
+.share-btn-copy{background:#e8e0d5;color:#4a6038;border:1px solid #c8c4bc}
+.map-btn-link{display:inline-flex;align-items:center;gap:4px;background:#f0f5ec;color:#4a6038;font-size:11px;padding:5px 12px;border-radius:20px;border:1px solid #c8d8b8;font-weight:500}
+.s-ok{background:#9cb088}
+.rec-card-title .eyebrow{font-family:"Outfit",sans-serif;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#4a5e4a}
+.rec-check{flex-shrink:0;margin-top:3px;width:13px;height:13px;color:#5a7848}
+.gear-item-badge{font-size:9px;font-weight:700;color:#4a6038;background:#eef2e6;padding:2px 7px;border-radius:10px;display:inline-block;margin-bottom:6px}
+.gear-amazon{background:#4a6038;color:#fff!important}
+.gear-rakuten{background:#eef2e6;color:#3a4f28!important}
+.gear-card-product{font-size:12.5px;font-weight:700;color:#3a5a28;text-decoration:underline;text-decoration-color:#b8cca0;text-underline-offset:2px;margin-bottom:8px}
+.stat-counting .stat-val{color:#3a7a24;transition:color .2s}
+.card h2{font-size:14px;font-weight:bold;color:#4e6535;margin-bottom:12px}
+.rc{display:flex;flex-direction:column;gap:5px;background:#f5f3ef;border:1px solid #e8e4dc;border-radius:10px;padding:10px;text-decoration:none;color:inherit;transition:background .15s}
+.rc:hover{background:#ede9e3}
+.dep-btn-m{padding:4px 12px;font-size:13px;border:none;background:transparent;color:rgba(255,255,255,0.4);font-weight:400;cursor:pointer;}
+.dep-btn-m.active{color:white;font-weight:700;}
+.ts-title{font-size:14px;font-weight:700;color:#1a4a70;}
+.ts-note{font-size:12px;color:#7a6048;background:#fdf8ee;border-radius:6px;padding:6px 10px;margin-top:8px;line-height:1.6;}
+.ts-link-yahoo{background:#deeaf4;color:#1a4a70;}
+.ts-link-bus{background:#c8dff0;color:#1a4070;}
+.rec-card-title{font-size:13px;font-weight:700;color:#4e6535;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+/* ヒーロー */
+.hero-new{position:relative;overflow:hidden;background:#d0dcc0;border:1px solid #a0b482;padding:20px 16px 16px;border-radius:14px;margin-bottom:14px}
+/* カード共通 */
+.card{background:transparent;border-radius:0;padding:24px 0;margin-bottom:0;border:none;border-bottom:1px solid #ccc7ba}
+/* アクセスバー */
+.ag-a{display:flex;flex-direction:column;gap:5px}
+/* 出発ボタン */
+.dep-row{display:flex;gap:5px;padding:6px 12px 10px;max-width:680px;margin:0 auto;}
+/* シーズン */
+.calendar{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;margin-bottom:8px}
+/* ルート */
+.route-list-c{display:flex;flex-direction:column}
+/* YAMAP */
+.yamap-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:white;color:#4e6535;font-weight:600;font-size:14px;padding:15px;border-radius:4px;margin-bottom:12px;border:1.5px solid #1a1a16}
+/* FAQ */
+.faq-item:last-child{border-bottom:none;padding-bottom:0}
+/* ③ 似た山 */
+.rw{background:transparent;border-radius:0;padding:24px 0;border:none;border-bottom:1px solid #ccc7ba;margin-bottom:0}
+/* 電車アクセス */
+.ts-section{background:transparent;border-radius:0;border:none;padding:0;margin-bottom:0;}
+/* シェア */
+.share-section{text-align:center;margin-bottom:8px}
+/* 電車発駅トグル(ts-summary内) */
+.ts-section{background:transparent;border-radius:0;border:none;padding:0;margin-bottom:0;}
+/* ① おすすめユーザーカード */
+.ts-section{background:transparent;border-radius:0;border:none;padding:0;margin-bottom:0;}
+.ts-summary span{display:inline-flex;align-items:center;gap:3px;}</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
 <script>
@@ -448,8 +528,9 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     }
   })();
   </script>
-  
 
+
+  
   <div class="card"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>山の紹介</h2><p class="intro-text">関東以北の最高峰。コバルトブルーの五色沼が山頂付近に広がる。中〜上級レベルでコース定数21〜31、日帰りでの登山が可能。代表コース（ロープウェイ〜山頂往復）は所要5時間/9.0km/標高差+750m。</p></div>
 
   <div class="card dl-card">
@@ -464,8 +545,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   <p class="dl-note">日光白根山は中〜上級レベル（コース定数21〜31）。代表コースのロープウェイ〜山頂往復は5時間・9.0km・標高差+750m。初心者には難しく、経験が必要です。</p>
 </div>
 
-
-  <div style="padding:24px 0;border-bottom:1px solid #ccc7ba" id="sec-train">
+  <div class="card" id="sec-train">
   <div class="ts-section">
     <div class="ts-header">
       <div class="ts-title"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>電車・バスでのアクセス</div>
@@ -476,9 +556,9 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     <div class="ts-note">💡 沼田駅から丸沼高原へは関越交通バスを鎌田で乗り継ぐ必要があり、本数が限られる。ロープウェイの運行期間（例年6月〜10月）も併せて事前確認を。</div>
     <div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=新宿&to=沼田駅&type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>乗換案内で検索</a><a href="https://kan-etsu.net/pages/43/" target="_blank" rel="noopener" class="ts-link ts-link-bus"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>バス時刻表</a></div>
   </div>
-  </div>
+</div>
 
-  <div class="card" id="sec-car"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="7" cy="18" r="2" fill="currentColor"/><circle cx="17" cy="18" r="2" fill="currentColor"/></svg>車でのアクセス時間</h2>
+  <div class="card" id="sec-car"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg>車でのアクセス時間</h2>
     <div class="ag-a" id="access-grid">
 <div class="ai-a" data-dep="大船駅" data-min="220"><div class="ai-a-dep">大船駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:61%"></div></div><div class="ai-a-val">3時間40分</div></div>
 <div class="ai-a" data-dep="横浜駅" data-min="220"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:61%"></div></div><div class="ai-a-val">3時間40分</div></div>
@@ -487,11 +567,6 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <div class="ai-a" data-dep="立川駅" data-min="205"><div class="ai-a-dep">立川駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:57%"></div></div><div class="ai-a-val">3時間25分</div></div>
     </div>
   </div>
-
-  
-  
-
-  
 
   <div class="card" id="sec-parking"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 16V8h3.5a2.5 2.5 0 0 1 0 5H9" stroke-linecap="round" stroke-linejoin="round"/></svg>登山口・駐車場</h2>
 <div class="info-rows">
@@ -503,12 +578,10 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <a href="https://maps.apple.com/?ll=36.814633,139.3300313&q=%E4%B8%B8%E6%B2%BC%E9%AB%98%E5%8E%9F%E3%83%AD%E3%83%BC%E3%83%97%E3%82%A6%E3%82%A7%E3%82%A4" target="_blank" class="map-btn-link">Apple Maps</a>
 </div>
 </div>
-<div class="card" id="sec-season"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>シーズンカレンダー</h2>
+  <div class="card" id="sec-season"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>シーズンカレンダー</h2>
     <div class="calendar"><div class="cal-m"><div class="cal-l">1</div><div class="cal-b s-hard"></div></div><div class="cal-m"><div class="cal-l">2</div><div class="cal-b s-hard"></div></div><div class="cal-m"><div class="cal-l">3</div><div class="cal-b s-hard"></div></div><div class="cal-m"><div class="cal-l">4</div><div class="cal-b s-gear"></div></div><div class="cal-m"><div class="cal-l">5</div><div class="cal-b s-gear"></div></div><div class="cal-m"><div class="cal-l">6</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">7</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">8</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">9</div><div class="cal-b s-ok"></div></div><div class="cal-m"><div class="cal-l">10</div><div class="cal-b s-gear"></div></div><div class="cal-m"><div class="cal-l">11</div><div class="cal-b s-hard"></div></div><div class="cal-m"><div class="cal-l">12</div><div class="cal-b s-hard"></div></div></div>
     <div class="cal-legend">
-  <div class="leg"><div class="leg-dot" style="background:#c8d4b8"></div>アイゼン不要</div>
-  <div class="leg"><div class="leg-dot" style="background:#d4c19a"></div>6本アイゼンで可</div>
-  <div class="leg"><div class="leg-dot" style="background:#b08868"></div>12本アイゼン必要</div>
+  <div class="leg"><div class="leg-dot" style="background:#c8d4b8"></div>アイゼン不要</div><div class="leg"><div class="leg-dot" style="background:#d4c19a"></div>6本アイゼンで可</div><div class="leg"><div class="leg-dot" style="background:#b08868"></div>12本アイゼン必要</div>
 </div>
   </div>
 
@@ -571,9 +644,6 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     updateBtn();
   })();
   </script>
-
-
-  
 <div class="gear-section" id="sec-gear"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6"/><path d="M4 13h16v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 5V3h6v2"/></svg>日光白根山を登るための装備</h2><div class="gear-cards-scroll" data-gear-mid="nikko_shirane" data-gear-variants="{&quot;[{\&quot;c\&quot;: \&quot;shoe\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;スカルパ マンタテックGTX\&quot;, \&quot;r\&quot;: \&quot;本格的な積雪期です。アイゼン対応の冬季ブーツに切り替えましょう。\&quot;}, {\&quot;c\&quot;: \&quot;rain\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;ミレー ティフォン50000\&quot;, \&quot;r\&quot;: \&quot;山の天気は平地より変わりやすく、標高2578mでも急な雨はあります。コンパクトなレインウェアは常備しておきたいところです。\&quot;}, {\&quot;c\&quot;: \&quot;crampon\&quot;, \&quot;i\&quot;: \&quot;推奨\&quot;, \&quot;p\&quot;: \&quot;グリベル G12 ニュークラシック\&quot;, \&quot;r\&quot;: \&quot;本格的な積雪期です。12本アイゼンが必要です。事前に最新の積雪・凍結情報を確認してください。\&quot;}, {\&quot;c\&quot;: \&quot;down\&quot;, \&quot;i\&quot;: \&quot;推奨\&quot;, \&quot;p\&quot;: \&quot;ノースフェイス インナーダウン\&quot;, \&quot;r\&quot;: \&quot;休憩時や行動中の防寒に。標高が高いほど朝晩の冷え込みが早まります。\&quot;}]&quot;: [1, 2, 12], &quot;[{\&quot;c\&quot;: \&quot;shoe\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;スカルパ マンタテックGTX\&quot;, \&quot;r\&quot;: \&quot;本格的な積雪期です。アイゼン対応の冬季ブーツに切り替えましょう。\&quot;}, {\&quot;c\&quot;: \&quot;rain\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;ミレー ティフォン50000\&quot;, \&quot;r\&quot;: \&quot;山の天気は平地より変わりやすく、標高2578mでも急な雨はあります。コンパクトなレインウェアは常備しておきたいところです。\&quot;}, {\&quot;c\&quot;: \&quot;crampon\&quot;, \&quot;i\&quot;: \&quot;推奨\&quot;, \&quot;p\&quot;: \&quot;グリベル G12 ニュークラシック\&quot;, \&quot;r\&quot;: \&quot;本格的な積雪期です。12本アイゼンが必要です。事前に最新の積雪・凍結情報を確認してください。\&quot;}, {\&quot;c\&quot;: \&quot;crampon_next\&quot;, \&quot;i\&quot;: \&quot;推奨\&quot;, \&quot;p\&quot;: \&quot;エバニュー 6本爪アイゼン(来月分)\&quot;, \&quot;r\&quot;: \&quot;来月から凍結・残雪の時期に入ります。軽アイゼンの準備がおすすめです。\&quot;}, {\&quot;c\&quot;: \&quot;down\&quot;, \&quot;i\&quot;: \&quot;条件次第\&quot;, \&quot;p\&quot;: \&quot;ノースフェイス インナーダウン\&quot;, \&quot;r\&quot;: \&quot;休憩時や行動中の防寒に。標高が高いほど朝晩の冷え込みが早まります。\&quot;}, {\&quot;c\&quot;: \&quot;pole\&quot;, \&quot;i\&quot;: \&quot;あると便利\&quot;, \&quot;p\&quot;: \&quot;ブラックダイヤモンド トレイル\&quot;, \&quot;r\&quot;: \&quot;累積標高差+1100mと大きめ。ポールがあるとひざへの負担がかなり変わります。\&quot;}]&quot;: [3], &quot;[{\&quot;c\&quot;: \&quot;shoe\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;スポルティバ トランゴ トレック GTX\&quot;, \&quot;r\&quot;: \&quot;距離・標高差が大きく長時間に及ぶコース。疲労が蓄積しても足への負担を抑えられる、サポート力の高い登山靴が安心です。（標高2500m以上、高山特有の気象変化に注意）\&quot;}, {\&quot;c\&quot;: \&quot;rain\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;ミレー ティフォン50000\&quot;, \&quot;r\&quot;: \&quot;山の天気は平地より変わりやすく、標高2578mでも急な雨はあります。コンパクトなレインウェアは常備しておきたいところです。\&quot;}, {\&quot;c\&quot;: \&quot;crampon\&quot;, \&quot;i\&quot;: \&quot;推奨\&quot;, \&quot;p\&quot;: \&quot;エバニュー 6本爪アイゼン\&quot;, \&quot;r\&quot;: \&quot;凍結・残雪が見られる時期です。軽アイゼン（6本爪）があると滑りにくく安心です。事前に最新の積雪・凍結情報を確認してください。\&quot;}, {\&quot;c\&quot;: \&quot;down\&quot;, \&quot;i\&quot;: \&quot;あると便利\&quot;, \&quot;p\&quot;: \&quot;ノースフェイス インナーダウン\&quot;, \&quot;r\&quot;: \&quot;休憩時や行動中の防寒に。標高が高いほど朝晩の冷え込みが早まります。\&quot;}]&quot;: [4, 5], &quot;[{\&quot;c\&quot;: \&quot;shoe\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;スポルティバ トランゴ トレック GTX\&quot;, \&quot;r\&quot;: \&quot;距離・標高差が大きく長時間に及ぶコース。疲労が蓄積しても足への負担を抑えられる、サポート力の高い登山靴が安心です。（標高2500m以上、高山特有の気象変化に注意）\&quot;}, {\&quot;c\&quot;: \&quot;rain\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;ミレー ティフォン50000\&quot;, \&quot;r\&quot;: \&quot;山の天気は平地より変わりやすく、標高2578mでも急な雨はあります。コンパクトなレインウェアは常備しておきたいところです。\&quot;}, {\&quot;c\&quot;: \&quot;down\&quot;, \&quot;i\&quot;: \&quot;あると便利\&quot;, \&quot;p\&quot;: \&quot;ノースフェイス インナーダウン\&quot;, \&quot;r\&quot;: \&quot;休憩時や行動中の防寒に。標高が高いほど朝晩の冷え込みが早まります。\&quot;}, {\&quot;c\&quot;: \&quot;pole\&quot;, \&quot;i\&quot;: \&quot;あると便利\&quot;, \&quot;p\&quot;: \&quot;ブラックダイヤモンド トレイル\&quot;, \&quot;r\&quot;: \&quot;累積標高差+1100mと大きめ。ポールがあるとひざへの負担がかなり変わります。\&quot;}]&quot;: [6], &quot;[{\&quot;c\&quot;: \&quot;shoe\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;スポルティバ トランゴ トレック GTX\&quot;, \&quot;r\&quot;: \&quot;距離・標高差が大きく長時間に及ぶコース。疲労が蓄積しても足への負担を抑えられる、サポート力の高い登山靴が安心です。（標高2500m以上、高山特有の気象変化に注意）\&quot;}, {\&quot;c\&quot;: \&quot;rain\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;ミレー ティフォン50000\&quot;, \&quot;r\&quot;: \&quot;山の天気は平地より変わりやすく、標高2578mでも急な雨はあります。コンパクトなレインウェアは常備しておきたいところです。\&quot;}, {\&quot;c\&quot;: \&quot;pole\&quot;, \&quot;i\&quot;: \&quot;あると便利\&quot;, \&quot;p\&quot;: \&quot;ブラックダイヤモンド トレイル\&quot;, \&quot;r\&quot;: \&quot;累積標高差+1100mと大きめ。ポールがあるとひざへの負担がかなり変わります。\&quot;}, {\&quot;c\&quot;: \&quot;bottle\&quot;, \&quot;i\&quot;: \&quot;あると便利\&quot;, \&quot;p\&quot;: \&quot;サーモス 山専ボトル\&quot;, \&quot;r\&quot;: \&quot;長時間行動や標高の高さで、温かい飲み物が恋しくなる場面があります。\&quot;}]&quot;: [7, 8], &quot;[{\&quot;c\&quot;: \&quot;shoe\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;スポルティバ トランゴ トレック GTX\&quot;, \&quot;r\&quot;: \&quot;距離・標高差が大きく長時間に及ぶコース。疲労が蓄積しても足への負担を抑えられる、サポート力の高い登山靴が安心です。（標高2500m以上、高山特有の気象変化に注意）\&quot;}, {\&quot;c\&quot;: \&quot;rain\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;ミレー ティフォン50000\&quot;, \&quot;r\&quot;: \&quot;山の天気は平地より変わりやすく、標高2578mでも急な雨はあります。コンパクトなレインウェアは常備しておきたいところです。\&quot;}, {\&quot;c\&quot;: \&quot;crampon_next\&quot;, \&quot;i\&quot;: \&quot;推奨\&quot;, \&quot;p\&quot;: \&quot;エバニュー 6本爪アイゼン(来月分)\&quot;, \&quot;r\&quot;: \&quot;来月から凍結・残雪の時期に入ります。軽アイゼンの準備がおすすめです。\&quot;}, {\&quot;c\&quot;: \&quot;down\&quot;, \&quot;i\&quot;: \&quot;あると便利\&quot;, \&quot;p\&quot;: \&quot;ノースフェイス インナーダウン\&quot;, \&quot;r\&quot;: \&quot;休憩時や行動中の防寒に。標高が高いほど朝晩の冷え込みが早まります。\&quot;}, {\&quot;c\&quot;: \&quot;pole\&quot;, \&quot;i\&quot;: \&quot;あると便利\&quot;, \&quot;p\&quot;: \&quot;ブラックダイヤモンド トレイル\&quot;, \&quot;r\&quot;: \&quot;累積標高差+1100mと大きめ。ポールがあるとひざへの負担がかなり変わります。\&quot;}, {\&quot;c\&quot;: \&quot;bottle\&quot;, \&quot;i\&quot;: \&quot;あると便利\&quot;, \&quot;p\&quot;: \&quot;サーモス 山専ボトル\&quot;, \&quot;r\&quot;: \&quot;長時間行動や標高の高さで、温かい飲み物が恋しくなる場面があります。\&quot;}]&quot;: [9], &quot;[{\&quot;c\&quot;: \&quot;shoe\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;スポルティバ トランゴ トレック GTX\&quot;, \&quot;r\&quot;: \&quot;距離・標高差が大きく長時間に及ぶコース。疲労が蓄積しても足への負担を抑えられる、サポート力の高い登山靴が安心です。（標高2500m以上、高山特有の気象変化に注意）\&quot;}, {\&quot;c\&quot;: \&quot;rain\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;ミレー ティフォン50000\&quot;, \&quot;r\&quot;: \&quot;山の天気は平地より変わりやすく、標高2578mでも急な雨はあります。コンパクトなレインウェアは常備しておきたいところです。\&quot;}, {\&quot;c\&quot;: \&quot;crampon\&quot;, \&quot;i\&quot;: \&quot;推奨\&quot;, \&quot;p\&quot;: \&quot;エバニュー 6本爪アイゼン\&quot;, \&quot;r\&quot;: \&quot;凍結・残雪が見られる時期です。軽アイゼン（6本爪）があると滑りにくく安心です。事前に最新の積雪・凍結情報を確認してください。\&quot;}, {\&quot;c\&quot;: \&quot;crampon_next\&quot;, \&quot;i\&quot;: \&quot;推奨\&quot;, \&quot;p\&quot;: \&quot;グリベル G12 ニュークラシック(来月分)\&quot;, \&quot;r\&quot;: \&quot;来月から本格的な積雪期に入ります。12本アイゼンの準備がおすすめです。\&quot;}, {\&quot;c\&quot;: \&quot;down\&quot;, \&quot;i\&quot;: \&quot;あると便利\&quot;, \&quot;p\&quot;: \&quot;ノースフェイス インナーダウン\&quot;, \&quot;r\&quot;: \&quot;休憩時や行動中の防寒に。標高が高いほど朝晩の冷え込みが早まります。\&quot;}, {\&quot;c\&quot;: \&quot;pole\&quot;, \&quot;i\&quot;: \&quot;あると便利\&quot;, \&quot;p\&quot;: \&quot;ブラックダイヤモンド トレイル\&quot;, \&quot;r\&quot;: \&quot;累積標高差+1100mと大きめ。ポールがあるとひざへの負担がかなり変わります。\&quot;}]&quot;: [10], &quot;[{\&quot;c\&quot;: \&quot;shoe\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;スカルパ マンタテックGTX\&quot;, \&quot;r\&quot;: \&quot;本格的な積雪期です。アイゼン対応の冬季ブーツに切り替えましょう。\&quot;}, {\&quot;c\&quot;: \&quot;rain\&quot;, \&quot;i\&quot;: \&quot;必須\&quot;, \&quot;p\&quot;: \&quot;ミレー ティフォン50000\&quot;, \&quot;r\&quot;: \&quot;山の天気は平地より変わりやすく、標高2578mでも急な雨はあります。コンパクトなレインウェアは常備しておきたいところです。\&quot;}, {\&quot;c\&quot;: \&quot;crampon\&quot;, \&quot;i\&quot;: \&quot;推奨\&quot;, \&quot;p\&quot;: \&quot;グリベル G12 ニュークラシック\&quot;, \&quot;r\&quot;: \&quot;本格的な積雪期です。12本アイゼンが必要です。事前に最新の積雪・凍結情報を確認してください。\&quot;}, {\&quot;c\&quot;: \&quot;down\&quot;, \&quot;i\&quot;: \&quot;条件次第\&quot;, \&quot;p\&quot;: \&quot;ノースフェイス インナーダウン\&quot;, \&quot;r\&quot;: \&quot;休憩時や行動中の防寒に。標高が高いほど朝晩の冷え込みが早まります。\&quot;}]&quot;: [11]}"></div><div class="gear-note">※価格・在庫は変動します。最新情報は各リンク先でご確認ください。当サイトはAmazonアソシエイト・楽天アフィリエイトを利用しています。</div></div><div class="related-links-card">
   <div class="related-links-title"><svg width="15" height="15" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><rect x="9" y="2.5" width="6" height="3" rx="1"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/></svg>関連するまとめ</div>
     <a href="/search/shinjuku-daytrip/" class="related-link-item">
@@ -593,9 +663,10 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
       <span class="related-link-sub">体力・好み・出発地から「あなた向けの山」をAIが提案</span>
     </a>
 </div>
+
 <div class="card">
   <h2 style="font-size:15px;font-weight:700;color:#2a3820;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #eaf1e0;"><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.5 2.5 0 1 1 3.7 2.2c-.8.5-1.2 1-1.2 2"/><line x1="12" y1="17" x2="12" y2="17.1"/></svg>よくある質問</h2>
-    <div class="faq-item">
+<div class="faq-item">
     <h2 class="faq-q">日光白根山は初心者でも登れますか？難易度とコース定数を解説</h2>
     <div class="faq-a">
       <div><p>日光白根山の難易度は中〜上級、コース定数21〜31です。初心者には難しく、経験が必要です。代表的なロープウェイ〜山頂往復は5時間・9.0km・標高差+750mが目安。菅沼ルート（往復）（7時間）という選び方もできます。日帰り登山が可能です。登山靴・レインウェア・水は必携です。</p></div>
@@ -621,12 +692,12 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   </div>
 </div>
 
-<div class="rw"><p class="rh"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 L9 9 L13 15 L16 11 L21 20 Z"/></svg>近くて似た山</p><div class="rg"><a href="/mountains/hiuchigatake/" class="rc rc-blue"><div class="rn">燧ヶ岳</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数18〜30</span></div><div class="rt" id="nearby-time-hiuchigatake" data-ofuna="4時間55分" data-shinjuku="4時間25分" data-yokohama="3時間10分" data-omiya="2時間10分">4時間55分<span class="rs" id="nearby-label-hiuchigatake">大船から</span></div></a>
-<a href="/mountains/nantaisan/" class="rc rc-blue"><div class="rn">男体山</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数14〜22</span></div><div class="rt" id="nearby-time-nantaisan" data-ofuna="3時間" data-shinjuku="2時間40分" data-yokohama="2時間55分" data-omiya="2時間10分">3時間<span class="rs" id="nearby-label-nantaisan">大船から</span></div></a>
+<div class="rw"><p class="rh"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 L9 9 L13 15 L16 11 L21 20 Z"/></svg>近くて似た山</p><div class="rg"><a href="/mountains/hiuchigatake/" class="rc rc-blue"><div class="rn">燧ヶ岳</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数27〜38</span></div><div class="rt" id="nearby-time-hiuchigatake" data-ofuna="4時間55分" data-shinjuku="4時間55分" data-yokohama="4時間55分" data-omiya="4時間10分">4時間55分<span class="rs" id="nearby-label-hiuchigatake">大船から</span></div></a>
+<a href="/mountains/nantaisan/" class="rc rc-blue"><div class="rn">男体山</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数21〜27</span></div><div class="rt" id="nearby-time-nantaisan" data-ofuna="3時間" data-shinjuku="2時間50分" data-yokohama="3時間" data-omiya="2時間25分">3時間<span class="rs" id="nearby-label-nantaisan">大船から</span></div></a>
 </div></div>
 
   <div class="note">
-    <strong><svg width="13" height="13" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L22 20 H2 Z"/><line x1="12" y1="9" x2="12" y2="14"/><line x1="12" y1="17" x2="12" y2="17.1"/></svg>ご注意</strong><br>
+    <strong>⚠ ご注意</strong><br>
     所要時間は高速道路利用時の目安です。交通状況や季節により大きく変動します。登山前は必ず最新の道路状況・登山道情報・天気予報をご確認ください。
   </div>
 
@@ -659,9 +730,9 @@ var YM_MOUNTAIN_INIT = {
   "name": "日光白根山",
   "heroMinMap": {
     "ofuna": "220",
-    "shinjuku": "185",
-    "yokohama": "200",
-    "omiya": "140",
+    "shinjuku": "210",
+    "yokohama": "220",
+    "omiya": "175",
     "tachikawa": "205"
   },
   "nearbyIds": [
