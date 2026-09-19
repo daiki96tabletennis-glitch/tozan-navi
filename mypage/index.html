@@ -1459,7 +1459,7 @@ function openBadgeDetail(name, area, elev, date, memo, cfg, key, uid, outfit) {
   document.getElementById('badge-detail-svg').innerHTML = makeBadgeSVG(name, date||'', key||'_default', c, 120, area||'', elev||'');
   document.getElementById('badge-detail-name').textContent = name;
   document.getElementById('badge-detail-sub').textContent = (area||'')+(elev?' · '+Number(elev).toLocaleString()+'m':'');
-  document.getElementById('badge-detail-date').textContent = date ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> '+date : '';
+  document.getElementById('badge-detail-date').innerHTML = date ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> '+esc(date) : '';
   var oe = document.getElementById('badge-detail-outfit');
   if (outfit) { oe.textContent = '👕 '+outfit; oe.style.display='block'; } else { oe.style.display='none'; }
   var me = document.getElementById('badge-detail-memo');
