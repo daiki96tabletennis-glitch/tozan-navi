@@ -2157,7 +2157,9 @@
     "ogTitle": "金峰山 登山｜中級・定数21〜45【百名山】| Yamatch",
     "ogDescription": "金峰山の難易度は中級、経験があると安心。山梨県、新宿から車で約2時間40分、コース定数21〜45、日帰り可能。奥秩父の盟主。山頂に五丈石という奇岩がそびえ、展望も抜群。",
     "climbedBtnStyle": "flat",
-    "weatherBeforeIntro": true
+    "weatherBeforeIntro": true,
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→新宿駅→JR特急かいじ約1時間23分→塩山駅→栄和交通バス「焼山峠・大弛峠線」約1時間25分→大弛峠",
+    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン約30分→新宿駅→JR特急かいじ約1時間23分→塩山駅→栄和交通バス「焼山峠・大弛峠線」約1時間25分→大弛峠"
   },
   {
     "id": "houou",
@@ -8952,7 +8954,9 @@
     "hasHeroPhotoScript": false,
     "ogTitle": "茅ヶ岳 登山｜初〜中級・日帰り可・山梨県【二百名山】| Yamatch",
     "ogDescription": "茅ヶ岳の難易度は初〜中級、登山初心者でも挑戦しやすい。山梨県、新宿から車で約2時間10分、コース定数16〜25、日帰り可能。「ニセ八ヶ岳」の異名を持つ。二百名山の著者・深田久弥の終焉の地。",
-    "climbedBtnStyle": "flat"
+    "climbedBtnStyle": "flat",
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→新宿駅→JR特急あずさ約1時間45分→韮崎駅→山梨峡北交通バス「韮崎深田公園線」約25分→深田記念公園",
+    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン約30分→新宿駅→JR特急あずさ約1時間45分→韮崎駅→山梨峡北交通バス「韮崎深田公園線」約25分→深田記念公園"
   },
   {
     "id": "kentoku",
@@ -9331,7 +9335,9 @@
     "hasHeroPhotoScript": false,
     "ogTitle": "日向山 登山｜初中級・定数17〜24| Yamatch",
     "ogDescription": "日向山の難易度は初〜中級、登山初心者でも挑戦しやすい。山梨県、新宿から車で約2時間25分、コース定数17〜24、日帰り可能。山頂が花崗岩の白砂のビーチ状になる奇景が人気。甲斐駒ヶ岳の眺望も絶景。",
-    "climbedBtnStyle": "flat"
+    "climbedBtnStyle": "flat",
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→新宿駅→JR特急あずさ約1時間55分→小淵沢駅→タクシー約20分→尾白川渓谷駐車場",
+    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン約30分→新宿駅→JR特急あずさ約1時間55分→小淵沢駅→タクシー約20分→尾白川渓谷駐車場"
   },
   {
     "id": "bonori",
@@ -12518,7 +12524,9 @@
     "ogTitle": "和名倉山 登山｜中上級・定数34〜42| Yamatch",
     "ogDescription": "和名倉山の難易度は中〜上級、初心者にはやや厳しい。埼玉県、新宿から車で約2時間15分、コース定数34〜42、日帰り可能。奥秩父最深部の静かな山。長大なアプローチを経た頂上には深山の静寂が漂う。",
     "climbedBtnStyle": "flat",
-    "weatherBeforeIntro": false
+    "weatherBeforeIntro": false,
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン他約2時間15分→三峰口駅→西武観光バス「三峯神社線」約40分→秩父湖バス停",
+    "trainAccessOmiya": "大宮駅→JR八高線他約2時間10分→三峰口駅→西武観光バス「三峯神社線」約40分→秩父湖バス停"
   },
   {
     "id": "yarigatake2",
@@ -12695,7 +12703,9 @@
     "hasHeroPhotoScript": false,
     "ogTitle": "笊ヶ岳 登山｜上級・定数58〜58【二百名山】| Yamatch",
     "ogDescription": "笊ヶ岳の難易度は上級、初心者には不向き。山梨県、新宿から車で約3時間15分、コース定数58〜58、宿泊推奨。南アルプス深部の難峰。標高差2000m超の急登が続く上級者向けの山。",
-    "climbedBtnStyle": "flat"
+    "climbedBtnStyle": "flat",
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→新宿駅→JR特急かいじ約1時間27分→甲府駅→JR特急ふじかわ約53分→身延駅→早川町乗合バス約40分→大島バス停→予約制乗合タクシー約20分→老平登山口",
+    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン約30分→新宿駅→JR特急かいじ約1時間27分→甲府駅→JR特急ふじかわ約53分→身延駅→早川町乗合バス約40分→大島バス停→予約制乗合タクシー約20分→老平登山口"
   },
   {
     "id": "gakedake",
@@ -27624,6 +27634,8 @@
     "hasHeroPhotoScript": true,
     "ogTitle": "御前山 登山｜中級・奥多摩三山・東京都 | Yamatch",
     "climbedBtnStyle": "flat",
-    "weatherBeforeIntro": false
+    "weatherBeforeIntro": false,
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→新宿駅→JR青梅線約1時間9分→奥多摩駅→西東京バス「奥04 奥多摩湖行」約15分→奥多摩湖バス停",
+    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン約30分→新宿駅→JR青梅線約1時間35分→奥多摩駅→西東京バス「奥04 奥多摩湖行」約15分→奥多摩湖バス停"
   }
 ]
