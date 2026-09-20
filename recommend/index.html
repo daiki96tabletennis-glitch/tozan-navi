@@ -20,9 +20,9 @@
 <link rel="preload" as="image" href="/recommend/images/otter_meditation_v2.png">
 <link rel="preload" as="image" href="/recommend/images/otter_picnic_v2.png">
 <link rel="preload" as="image" href="/recommend/images/otter_wanderer_v2.png">
-<meta name="description" content="山頂で何をする？雨が降ったら？9つの行動パターンの質問であなたの登山タイプを16種類から診断。おすすめの山も提案します。完全無料。">
+<meta name="description" content="山頂で何をする？雨が降ったら？12問の行動パターン診断であなたの登山タイプを16種類から判定。おすすめの山も提案します。完全無料。">
 <meta property="og:title" content="登山タイプ診断 | 16タイプで診断 - Yamatch">
-<meta property="og:description" content="あなたは「孤高の登山家」？「山ピクニック派」？9問の行動診断で山スタイルを16タイプから判定。">
+<meta property="og:description" content="あなたは「孤高の登山家」？「山ピクニック派」？12問の行動診断で山スタイルを16タイプから判定。">
 <meta property="og:image" content="https://tozan-navi.com/ogp/recommend-top.jpg">
 <meta property="og:image:secure_url" content="https://tozan-navi.com/ogp/recommend-top.jpg">
 <meta property="og:image:width" content="1200">
@@ -289,7 +289,7 @@ PERSON_SVGS['VHFL'] = '<picture><source srcset=\"/recommend/images/otter_wandere
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TMTVVTEEGF');</script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"登山タイプ診断 - Yamatch","description":"9問の行動診断で登山タイプを16種類から判定。おすすめの山も提案。","url":"https://tozan-navi.com/recommend/","applicationCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"登山タイプ診断 - Yamatch","description":"12問の行動診断で登山タイプを16種類から判定。おすすめの山も提案。","url":"https://tozan-navi.com/recommend/","applicationCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}
 </script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -317,9 +317,11 @@ main{max-width:480px;margin:0 auto;padding:16px;}
 .q-emoji{font-size:22px;display:block;margin-bottom:6px;}
 .q-axis{font-size:10px;color:#a09888;font-weight:600;letter-spacing:0.06em;margin-bottom:14px;}
 .choices{display:flex;flex-direction:column;gap:8px;}
-.choice{display:flex;align-items:center;gap:12px;background:white;border:1.5px solid #e0dbd4;border-radius:12px;padding:12px 14px;cursor:pointer;transition:all 0.15s;position:relative;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:rgba(0,0,0,0.1);}
+.choice{display:flex;align-items:center;gap:12px;background:white;border:1.5px solid #e0dbd4;border-radius:12px;padding:12px 14px;cursor:pointer;transition:all 0.15s;position:relative;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:rgba(0,0,0,0.1);width:100%;text-align:left;font:inherit;color:inherit;-webkit-appearance:none;appearance:none;}
 .choice:hover{border-color:#607848;background:#f5f8f2;}
 .choice:active{transform:scale(0.98);}
+.choice:focus{outline:none;}
+.choice:focus-visible{outline:2.5px solid #4e6535;outline-offset:2px;}
 .ch-icon{font-size:20px;flex-shrink:0;width:28px;text-align:center;}
 .ch-main{font-size:13px;font-weight:600;color:#2a2520;}
 .ch-sub{font-size:11px;color:#8a8078;margin-top:2px;}
@@ -657,7 +659,7 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
     
   </div>
 </header>
-<div class="sr-only"><h1>登山タイプ診断 - 16タイプで山スタイルを診断</h1><p>山頂で何をする？雨が降ったら？9問の行動パターン診断であなたの登山タイプを16種類から判定。おすすめの山も提案。完全無料。</p></div>
+<div class="sr-only"><h1>登山タイプ診断 - 16タイプで山スタイルを診断</h1><p>山頂で何をする？雨が降ったら？12問の行動パターン診断であなたの登山タイプを16種類から判定。おすすめの山も提案。完全無料。</p></div>
 <main>
 
 <!-- 導入 -->
@@ -679,6 +681,12 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
 </div>
 
+<!-- 1問戻るボタン(質問2以降のみ表示。特定のstepに属さない共通要素なので、現在アクティブなstepの直前に常に表示される) -->
+<button id="quiz-back-btn" type="button" onclick="goBack()" aria-label="前の質問に戻る" style="display:none;align-items:center;gap:4px;background:none;border:none;color:#9a9488;font-size:12px;font-weight:600;padding:6px;margin:2px 16px 0;min-height:44px;cursor:pointer;-webkit-tap-highlight-color:transparent;">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  前の質問に戻る
+</button>
+
 <!-- Q1: 山頂でまずやることは？ →軸1(A/V) -->
 <div id="q1" class="step">
   <div class="prog-wrap">
@@ -687,10 +695,10 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
   <div class="q-title"><span class="q-emoji">⛰️</span>山頂に着いたら、まず何をする？</div>
   <div class="choices">
-    <div class="choice" data-key="a1" data-val="A"><span class="ch-icon">📸</span><div><div class="ch-main">すぐ写真を撮りまくる</div><div class="ch-sub">証拠を残さないと！</div></div><span class="ch-axis ch-a">行動派</span></div>
-    <div class="choice" data-key="a1" data-val="V"><span class="ch-icon">👀</span><div><div class="ch-main">景色をぼーっと眺める</div><div class="ch-sub">しばらくこのままでいたい</div></div><span class="ch-axis ch-v">観察派</span></div>
-    <div class="choice" data-key="a1" data-val="A"><span class="ch-icon">🗺</span><div><div class="ch-main">地図で次のルートを確認</div><div class="ch-sub">次の山が気になる</div></div><span class="ch-axis ch-a">行動派</span></div>
-    <div class="choice" data-key="a1" data-val="V"><span class="ch-icon">🏅</span><div><div class="ch-main">達成感にひたる</div><div class="ch-sub">この瞬間を味わいたい</div></div><span class="ch-axis ch-v">観察派</span></div>
+    <button type="button" class="choice" data-key="a1" data-val="A"><span class="ch-icon">📸</span><div><div class="ch-main">すぐ写真を撮りまくる</div><div class="ch-sub">証拠を残さないと！</div></div><span class="ch-axis ch-a">行動派</span></button>
+    <button type="button" class="choice" data-key="a1" data-val="V"><span class="ch-icon">👀</span><div><div class="ch-main">景色をぼーっと眺める</div><div class="ch-sub">しばらくこのままでいたい</div></div><span class="ch-axis ch-v">観察派</span></button>
+    <button type="button" class="choice" data-key="a1" data-val="A"><span class="ch-icon">🗺</span><div><div class="ch-main">地図で次のルートを確認</div><div class="ch-sub">次の山が気になる</div></div><span class="ch-axis ch-a">行動派</span></button>
+    <button type="button" class="choice" data-key="a1" data-val="V"><span class="ch-icon">🏅</span><div><div class="ch-main">達成感にひたる</div><div class="ch-sub">この瞬間を味わいたい</div></div><span class="ch-axis ch-v">観察派</span></button>
   </div>
 </div>
 
@@ -702,10 +710,10 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
   <div class="q-title"><span class="q-emoji">🧭</span>登山ルートを選ぶとき、何を優先する？</div>
   <div class="choices">
-    <div class="choice" data-key="a2" data-val="A"><span class="ch-icon">💪</span><div><div class="ch-main">体力的にきつめのルート</div><div class="ch-sub">達成感が大きい方がいい</div></div><span class="ch-axis ch-a">行動派</span></div>
-    <div class="choice" data-key="a2" data-val="V"><span class="ch-icon">🌸</span><div><div class="ch-main">景色・花・自然が豊かなルート</div><div class="ch-sub">歩きながら楽しみたい</div></div><span class="ch-axis ch-v">観察派</span></div>
-    <div class="choice" data-key="a2" data-val="A"><span class="ch-icon">🧗</span><div><div class="ch-main">バリエーション・岩場があるルート</div><div class="ch-sub">スリルがほしい</div></div><span class="ch-axis ch-a">行動派</span></div>
-    <div class="choice" data-key="a2" data-val="V"><span class="ch-icon">🌿</span><div><div class="ch-main">歩きやすく静かなルート</div><div class="ch-sub">ゆっくり自分のペースで</div></div><span class="ch-axis ch-v">観察派</span></div>
+    <button type="button" class="choice" data-key="a2" data-val="A"><span class="ch-icon">💪</span><div><div class="ch-main">体力的にきつめのルート</div><div class="ch-sub">達成感が大きい方がいい</div></div><span class="ch-axis ch-a">行動派</span></button>
+    <button type="button" class="choice" data-key="a2" data-val="V"><span class="ch-icon">🌸</span><div><div class="ch-main">景色・花・自然が豊かなルート</div><div class="ch-sub">歩きながら楽しみたい</div></div><span class="ch-axis ch-v">観察派</span></button>
+    <button type="button" class="choice" data-key="a2" data-val="A"><span class="ch-icon">🧗</span><div><div class="ch-main">バリエーション・岩場があるルート</div><div class="ch-sub">スリルがほしい</div></div><span class="ch-axis ch-a">行動派</span></button>
+    <button type="button" class="choice" data-key="a2" data-val="V"><span class="ch-icon">🌿</span><div><div class="ch-main">歩きやすく静かなルート</div><div class="ch-sub">ゆっくり自分のペースで</div></div><span class="ch-axis ch-v">観察派</span></button>
   </div>
 </div>
 
@@ -717,10 +725,10 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
   <div class="q-title"><span class="q-emoji">🎯</span>登山で「一番楽しい」と感じる瞬間は？</div>
   <div class="choices">
-    <div class="choice" data-key="a3" data-val="C"><span class="ch-icon">🏆</span><div><div class="ch-main">山頂に立った瞬間の達成感</div><div class="ch-sub">やりきった！という感覚が好き</div></div><span class="ch-axis ch-c">挑戦派</span></div>
-    <div class="choice" data-key="a3" data-val="H"><span class="ch-icon">🌿</span><div><div class="ch-main">歩きながら自然に没入する瞬間</div><div class="ch-sub">頭が空っぽになる感じ</div></div><span class="ch-axis ch-h">癒し派</span></div>
-    <div class="choice" data-key="a3" data-val="C"><span class="ch-icon">🔥</span><div><div class="ch-main">自分の限界を超えた時</div><div class="ch-sub">あと一歩が踏み出せた時</div></div><span class="ch-axis ch-c">挑戦派</span></div>
-    <div class="choice" data-key="a3" data-val="H"><span class="ch-icon">☕</span><div><div class="ch-main">山小屋でほっと一息つく時</div><div class="ch-sub">ご飯・温かい飲み物が最高</div></div><span class="ch-axis ch-h">癒し派</span></div>
+    <button type="button" class="choice" data-key="a3" data-val="C"><span class="ch-icon">🏆</span><div><div class="ch-main">山頂に立った瞬間の達成感</div><div class="ch-sub">やりきった！という感覚が好き</div></div><span class="ch-axis ch-c">挑戦派</span></button>
+    <button type="button" class="choice" data-key="a3" data-val="H"><span class="ch-icon">🌿</span><div><div class="ch-main">歩きながら自然に没入する瞬間</div><div class="ch-sub">頭が空っぽになる感じ</div></div><span class="ch-axis ch-h">癒し派</span></button>
+    <button type="button" class="choice" data-key="a3" data-val="C"><span class="ch-icon">🔥</span><div><div class="ch-main">自分の限界を超えた時</div><div class="ch-sub">あと一歩が踏み出せた時</div></div><span class="ch-axis ch-c">挑戦派</span></button>
+    <button type="button" class="choice" data-key="a3" data-val="H"><span class="ch-icon">☕</span><div><div class="ch-main">山小屋でほっと一息つく時</div><div class="ch-sub">ご飯・温かい飲み物が最高</div></div><span class="ch-axis ch-h">癒し派</span></button>
   </div>
 </div>
 
@@ -732,10 +740,10 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
   <div class="q-title"><span class="q-emoji">🌿</span>好きな山の雰囲気は？</div>
   <div class="choices">
-    <div class="choice" data-key="a4" data-val="C"><span class="ch-icon">⛰</span><div><div class="ch-main">岩場・急登・稜線歩き</div><div class="ch-sub">ダイナミックな地形が好き</div></div><span class="ch-axis ch-c">挑戦派</span></div>
-    <div class="choice" data-key="a4" data-val="H"><span class="ch-icon">🌲</span><div><div class="ch-main">樹林帯・花・湿原</div><div class="ch-sub">自然に包まれたい</div></div><span class="ch-axis ch-h">癒し派</span></div>
-    <div class="choice" data-key="a4" data-val="C"><span class="ch-icon">🗻</span><div><div class="ch-main">高山・アルプス・展望</div><div class="ch-sub">スケールの大きな山が好き</div></div><span class="ch-axis ch-c">挑戦派</span></div>
-    <div class="choice" data-key="a4" data-val="H"><span class="ch-icon">🍃</span><div><div class="ch-main">里山・低山・のんびり</div><div class="ch-sub">穏やかな山歩きが好き</div></div><span class="ch-axis ch-h">癒し派</span></div>
+    <button type="button" class="choice" data-key="a4" data-val="C"><span class="ch-icon">⛰</span><div><div class="ch-main">岩場・急登・稜線歩き</div><div class="ch-sub">ダイナミックな地形が好き</div></div><span class="ch-axis ch-c">挑戦派</span></button>
+    <button type="button" class="choice" data-key="a4" data-val="H"><span class="ch-icon">🌲</span><div><div class="ch-main">樹林帯・花・湿原</div><div class="ch-sub">自然に包まれたい</div></div><span class="ch-axis ch-h">癒し派</span></button>
+    <button type="button" class="choice" data-key="a4" data-val="C"><span class="ch-icon">🗻</span><div><div class="ch-main">高山・アルプス・展望</div><div class="ch-sub">スケールの大きな山が好き</div></div><span class="ch-axis ch-c">挑戦派</span></button>
+    <button type="button" class="choice" data-key="a4" data-val="H"><span class="ch-icon">🍃</span><div><div class="ch-main">里山・低山・のんびり</div><div class="ch-sub">穏やかな山歩きが好き</div></div><span class="ch-axis ch-h">癒し派</span></button>
   </div>
 </div>
 
@@ -747,10 +755,10 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
   <div class="q-title"><span class="q-emoji">🌙</span>登山前日の夜、何してる？</div>
   <div class="choices">
-    <div class="choice" data-key="a5" data-val="P"><span class="ch-icon">🗺</span><div><div class="ch-main">地図・コースタイムを再確認</div><div class="ch-sub">念には念を</div></div><span class="ch-axis ch-p">計画派</span></div>
-    <div class="choice" data-key="a5" data-val="F"><span class="ch-icon">😴</span><div><div class="ch-main">とくに何もせず早めに寝る</div><div class="ch-sub">なんとかなるでしょ</div></div><span class="ch-axis ch-f">自由派</span></div>
-    <div class="choice" data-key="a5" data-val="P"><span class="ch-icon">🎒</span><div><div class="ch-main">装備を全部並べてチェック</div><div class="ch-sub">忘れ物ゼロが目標</div></div><span class="ch-axis ch-p">計画派</span></div>
-    <div class="choice" data-key="a5" data-val="F"><span class="ch-icon">🍵</span><div><div class="ch-main">ざっくり荷造りして飲む</div><div class="ch-sub">明日楽しみで眠れない</div></div><span class="ch-axis ch-f">自由派</span></div>
+    <button type="button" class="choice" data-key="a5" data-val="P"><span class="ch-icon">🗺</span><div><div class="ch-main">地図・コースタイムを再確認</div><div class="ch-sub">念には念を</div></div><span class="ch-axis ch-p">計画派</span></button>
+    <button type="button" class="choice" data-key="a5" data-val="F"><span class="ch-icon">😴</span><div><div class="ch-main">とくに何もせず早めに寝る</div><div class="ch-sub">なんとかなるでしょ</div></div><span class="ch-axis ch-f">自由派</span></button>
+    <button type="button" class="choice" data-key="a5" data-val="P"><span class="ch-icon">🎒</span><div><div class="ch-main">装備を全部並べてチェック</div><div class="ch-sub">忘れ物ゼロが目標</div></div><span class="ch-axis ch-p">計画派</span></button>
+    <button type="button" class="choice" data-key="a5" data-val="F"><span class="ch-icon">🍵</span><div><div class="ch-main">ざっくり荷造りして飲む</div><div class="ch-sub">明日楽しみで眠れない</div></div><span class="ch-axis ch-f">自由派</span></button>
   </div>
 </div>
 
@@ -762,10 +770,10 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
   <div class="q-title"><span class="q-emoji">🏠</span>山小屋に着いたら、まず何をする？</div>
   <div class="choices">
-    <div class="choice" data-key="a6" data-val="P"><span class="ch-icon">🗓</span><div><div class="ch-main">翌日の天気とルートを確認</div><div class="ch-sub">明日の計画を立てたい</div></div><span class="ch-axis ch-p">計画派</span></div>
-    <div class="choice" data-key="a6" data-val="F"><span class="ch-icon">🍺</span><div><div class="ch-main">とりあえずビールを注文</div><div class="ch-sub">計画は後回し！</div></div><span class="ch-axis ch-f">自由派</span></div>
-    <div class="choice" data-key="a6" data-val="P"><span class="ch-icon">📒</span><div><div class="ch-main">山行記録をつける</div><div class="ch-sub">記録しないと忘れちゃう</div></div><span class="ch-axis ch-p">計画派</span></div>
-    <div class="choice" data-key="a6" data-val="F"><span class="ch-icon">🌅</span><div><div class="ch-main">外に出て景色を眺める</div><div class="ch-sub">この瞬間を楽しみたい</div></div><span class="ch-axis ch-f">自由派</span></div>
+    <button type="button" class="choice" data-key="a6" data-val="P"><span class="ch-icon">🗓</span><div><div class="ch-main">翌日の天気とルートを確認</div><div class="ch-sub">明日の計画を立てたい</div></div><span class="ch-axis ch-p">計画派</span></button>
+    <button type="button" class="choice" data-key="a6" data-val="F"><span class="ch-icon">🍺</span><div><div class="ch-main">とりあえずビールを注文</div><div class="ch-sub">計画は後回し！</div></div><span class="ch-axis ch-f">自由派</span></button>
+    <button type="button" class="choice" data-key="a6" data-val="P"><span class="ch-icon">📒</span><div><div class="ch-main">山行記録をつける</div><div class="ch-sub">記録しないと忘れちゃう</div></div><span class="ch-axis ch-p">計画派</span></button>
+    <button type="button" class="choice" data-key="a6" data-val="F"><span class="ch-icon">🌅</span><div><div class="ch-main">外に出て景色を眺める</div><div class="ch-sub">この瞬間を楽しみたい</div></div><span class="ch-axis ch-f">自由派</span></button>
   </div>
 </div>
 
@@ -777,10 +785,10 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
   <div class="q-title"><span class="q-emoji">👥</span>理想の登山スタイルは？</div>
   <div class="choices">
-    <div class="choice" data-key="a7" data-val="S"><span class="ch-icon">🙌</span><div><div class="ch-main">仲間と賑やかに登る</div><div class="ch-sub">みんなで盛り上がりたい</div></div><span class="ch-axis ch-s">仲間派</span></div>
-    <div class="choice" data-key="a7" data-val="L"><span class="ch-icon">🧍</span><div><div class="ch-main">一人でマイペースに登る</div><div class="ch-sub">自分のリズムが大事</div></div><span class="ch-axis ch-l">ソロ派</span></div>
-    <div class="choice" data-key="a7" data-val="S"><span class="ch-icon">👫</span><div><div class="ch-main">少人数のパートナーと</div><div class="ch-sub">信頼できる人と深く楽しむ</div></div><span class="ch-axis ch-s">仲間派</span></div>
-    <div class="choice" data-key="a7" data-val="L"><span class="ch-icon">🌙</span><div><div class="ch-main">誰もいない静かな山へ</div><div class="ch-sub">孤独な山が好き</div></div><span class="ch-axis ch-l">ソロ派</span></div>
+    <button type="button" class="choice" data-key="a7" data-val="S"><span class="ch-icon">🙌</span><div><div class="ch-main">仲間と賑やかに登る</div><div class="ch-sub">みんなで盛り上がりたい</div></div><span class="ch-axis ch-s">仲間派</span></button>
+    <button type="button" class="choice" data-key="a7" data-val="L"><span class="ch-icon">🧍</span><div><div class="ch-main">一人でマイペースに登る</div><div class="ch-sub">自分のリズムが大事</div></div><span class="ch-axis ch-l">ソロ派</span></button>
+    <button type="button" class="choice" data-key="a7" data-val="S"><span class="ch-icon">👫</span><div><div class="ch-main">少人数のパートナーと</div><div class="ch-sub">信頼できる人と深く楽しむ</div></div><span class="ch-axis ch-s">仲間派</span></button>
+    <button type="button" class="choice" data-key="a7" data-val="L"><span class="ch-icon">🌙</span><div><div class="ch-main">誰もいない静かな山へ</div><div class="ch-sub">孤独な山が好き</div></div><span class="ch-axis ch-l">ソロ派</span></button>
   </div>
 </div>
 
@@ -792,10 +800,10 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
   <div class="q-title"><span class="q-emoji">🍻</span>下山後、理想の過ごし方は？</div>
   <div class="choices">
-    <div class="choice" data-key="a8" data-val="S"><span class="ch-icon">♨️</span><div><div class="ch-main">仲間と温泉→ご飯で打ち上げ</div><div class="ch-sub">下山後が登山の醍醐味</div></div><span class="ch-axis ch-s">仲間派</span></div>
-    <div class="choice" data-key="a8" data-val="L"><span class="ch-icon">🚃</span><div><div class="ch-main">さっと着替えて一人で帰る</div><div class="ch-sub">余韻を一人で楽しみたい</div></div><span class="ch-axis ch-l">ソロ派</span></div>
-    <div class="choice" data-key="a8" data-val="S"><span class="ch-icon">📱</span><div><div class="ch-main">すぐグループLINEに写真を送る</div><div class="ch-sub">みんなと記憶を共有したい</div></div><span class="ch-axis ch-s">仲間派</span></div>
-    <div class="choice" data-key="a8" data-val="L"><span class="ch-icon">📔</span><div><div class="ch-main">一人で山行記録を書く</div><div class="ch-sub">自分だけの記録が大切</div></div><span class="ch-axis ch-l">ソロ派</span></div>
+    <button type="button" class="choice" data-key="a8" data-val="S"><span class="ch-icon">♨️</span><div><div class="ch-main">仲間と温泉→ご飯で打ち上げ</div><div class="ch-sub">下山後が登山の醍醐味</div></div><span class="ch-axis ch-s">仲間派</span></button>
+    <button type="button" class="choice" data-key="a8" data-val="L"><span class="ch-icon">🚃</span><div><div class="ch-main">さっと着替えて一人で帰る</div><div class="ch-sub">余韻を一人で楽しみたい</div></div><span class="ch-axis ch-l">ソロ派</span></button>
+    <button type="button" class="choice" data-key="a8" data-val="S"><span class="ch-icon">📱</span><div><div class="ch-main">すぐグループLINEに写真を送る</div><div class="ch-sub">みんなと記憶を共有したい</div></div><span class="ch-axis ch-s">仲間派</span></button>
+    <button type="button" class="choice" data-key="a8" data-val="L"><span class="ch-icon">📔</span><div><div class="ch-main">一人で山行記録を書く</div><div class="ch-sub">自分だけの記録が大切</div></div><span class="ch-axis ch-l">ソロ派</span></button>
   </div>
 </div>
 
@@ -807,10 +815,10 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
   <div class="q-title"><span class="q-emoji">📵</span>山でスマホをどう使う？</div>
   <div class="choices">
-    <div class="choice" data-key="a9" data-val="A"><span class="ch-icon">📸</span><div><div class="ch-main">ガンガン写真・動画を撮る</div><div class="ch-sub">コンテンツとして残したい</div></div><span class="ch-axis ch-a">行動派</span></div>
-    <div class="choice" data-key="a9" data-val="V"><span class="ch-icon">🔕</span><div><div class="ch-main">できるだけ見ない・電源オフ</div><div class="ch-sub">山では日常から離れたい</div></div><span class="ch-axis ch-v">観察派</span></div>
-    <div class="choice" data-key="a9" data-val="A"><span class="ch-icon">🗺</span><div><div class="ch-main">ルート確認・記録アプリをフル活用</div><div class="ch-sub">デジタルと登山を組み合わせる</div></div><span class="ch-axis ch-a">行動派</span></div>
-    <div class="choice" data-key="a9" data-val="V"><span class="ch-icon">🌿</span><div><div class="ch-main">緊急時だけ。あとはザックの中</div><div class="ch-sub">五感で山を感じたい</div></div><span class="ch-axis ch-v">観察派</span></div>
+    <button type="button" class="choice" data-key="a9" data-val="A"><span class="ch-icon">📸</span><div><div class="ch-main">ガンガン写真・動画を撮る</div><div class="ch-sub">コンテンツとして残したい</div></div><span class="ch-axis ch-a">行動派</span></button>
+    <button type="button" class="choice" data-key="a9" data-val="V"><span class="ch-icon">🔕</span><div><div class="ch-main">できるだけ見ない・電源オフ</div><div class="ch-sub">山では日常から離れたい</div></div><span class="ch-axis ch-v">観察派</span></button>
+    <button type="button" class="choice" data-key="a9" data-val="A"><span class="ch-icon">🗺</span><div><div class="ch-main">ルート確認・記録アプリをフル活用</div><div class="ch-sub">デジタルと登山を組み合わせる</div></div><span class="ch-axis ch-a">行動派</span></button>
+    <button type="button" class="choice" data-key="a9" data-val="V"><span class="ch-icon">🌿</span><div><div class="ch-main">緊急時だけ。あとはザックの中</div><div class="ch-sub">五感で山を感じたい</div></div><span class="ch-axis ch-v">観察派</span></button>
   </div>
 </div>
 
@@ -822,10 +830,10 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
   <div class="q-title"><span class="q-emoji">💪</span>どのくらいの山に行きたい？</div>
   <div class="choices">
-    <div class="choice" data-key="coeff" data-val="14"><span class="ch-icon">🌱</span><div><div class="ch-main">ゆるハイク・整備された道</div><div class="ch-sub">ケーブルカーもOK</div></div></div>
-    <div class="choice" data-key="coeff" data-val="22"><span class="ch-icon">👟</span><div><div class="ch-main">3〜4時間の初心者向け</div><div class="ch-sub">普通に歩ける</div></div></div>
-    <div class="choice" data-key="coeff" data-val="35"><span class="ch-icon">🥾</span><div><div class="ch-main">5〜7時間の中級コース</div><div class="ch-sub">ある程度の体力あり</div></div></div>
-    <div class="choice" data-key="coeff" data-val="60"><span class="ch-icon">⛰</span><div><div class="ch-main">急登・岩場もある上級コース</div><div class="ch-sub">体力・技術に自信あり</div></div></div>
+    <button type="button" class="choice" data-key="coeff" data-val="14"><span class="ch-icon">🌱</span><div><div class="ch-main">ゆるハイク・整備された道</div><div class="ch-sub">ケーブルカーもOK</div></div></button>
+    <button type="button" class="choice" data-key="coeff" data-val="22"><span class="ch-icon">👟</span><div><div class="ch-main">3〜4時間の初心者向け</div><div class="ch-sub">普通に歩ける</div></div></button>
+    <button type="button" class="choice" data-key="coeff" data-val="35"><span class="ch-icon">🥾</span><div><div class="ch-main">5〜7時間の中級コース</div><div class="ch-sub">ある程度の体力あり</div></div></button>
+    <button type="button" class="choice" data-key="coeff" data-val="60"><span class="ch-icon">⛰</span><div><div class="ch-main">急登・岩場もある上級コース</div><div class="ch-sub">体力・技術に自信あり</div></div></button>
   </div>
 </div>
 
@@ -837,10 +845,10 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
   <div class="q-title"><span class="q-emoji">🎯</span>次に登りたい山のイメージは？</div>
   <div class="choices">
-    <div class="choice" data-key="a10" data-val="C"><span class="ch-icon">⛰</span><div><div class="ch-main">今より難しい山に挑戦したい</div><div class="ch-sub">成長を感じたい</div></div><span class="ch-axis ch-c">挑戦派</span></div>
-    <div class="choice" data-key="a10" data-val="H"><span class="ch-icon">🌸</span><div><div class="ch-main">好きな山をまた違う季節に</div><div class="ch-sub">同じ山でも毎回新しい発見</div></div><span class="ch-axis ch-h">癒し派</span></div>
-    <div class="choice" data-key="a10" data-val="C"><span class="ch-icon">🏔</span><div><div class="ch-main">まだ行ったことない未知の山</div><div class="ch-sub">知らない場所への探求心</div></div><span class="ch-axis ch-c">挑戦派</span></div>
-    <div class="choice" data-key="a10" data-val="H"><span class="ch-icon">☕</span><div><div class="ch-main">気軽に行ける近場の山</div><div class="ch-sub">日常のリフレッシュに</div></div><span class="ch-axis ch-h">癒し派</span></div>
+    <button type="button" class="choice" data-key="a10" data-val="C"><span class="ch-icon">⛰</span><div><div class="ch-main">今より難しい山に挑戦したい</div><div class="ch-sub">成長を感じたい</div></div><span class="ch-axis ch-c">挑戦派</span></button>
+    <button type="button" class="choice" data-key="a10" data-val="H"><span class="ch-icon">🌸</span><div><div class="ch-main">好きな山をまた違う季節に</div><div class="ch-sub">同じ山でも毎回新しい発見</div></div><span class="ch-axis ch-h">癒し派</span></button>
+    <button type="button" class="choice" data-key="a10" data-val="C"><span class="ch-icon">🏔</span><div><div class="ch-main">まだ行ったことない未知の山</div><div class="ch-sub">知らない場所への探求心</div></div><span class="ch-axis ch-c">挑戦派</span></button>
+    <button type="button" class="choice" data-key="a10" data-val="H"><span class="ch-icon">☕</span><div><div class="ch-main">気軽に行ける近場の山</div><div class="ch-sub">日常のリフレッシュに</div></div><span class="ch-axis ch-h">癒し派</span></button>
   </div>
 </div>
 
@@ -852,9 +860,9 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
   <div class="q-title"><span class="q-emoji">🚉</span>出発地はどこ？</div>
   <div class="choices">
-    <div class="choice" data-key="dep" data-val="ofuna"><span class="ch-icon">🚃</span><div><div class="ch-main">大船・横浜方面</div><div class="ch-sub">神奈川県東部</div></div></div>
-    <div class="choice" data-key="dep" data-val="shinjuku"><span class="ch-icon">🚃</span><div><div class="ch-main">新宿・渋谷方面</div><div class="ch-sub">東京都心</div></div></div>
-    <div class="choice" data-key="dep" data-val="omiya"><span class="ch-icon">🚃</span><div><div class="ch-main">大宮・浦和方面</div><div class="ch-sub">埼玉県</div></div></div>
+    <button type="button" class="choice" data-key="dep" data-val="ofuna"><span class="ch-icon">🚃</span><div><div class="ch-main">大船・横浜方面</div><div class="ch-sub">神奈川県東部</div></div></button>
+    <button type="button" class="choice" data-key="dep" data-val="shinjuku"><span class="ch-icon">🚃</span><div><div class="ch-main">新宿・渋谷方面</div><div class="ch-sub">東京都心</div></div></button>
+    <button type="button" class="choice" data-key="dep" data-val="omiya"><span class="ch-icon">🚃</span><div><div class="ch-main">大宮・浦和方面</div><div class="ch-sub">埼玉県</div></div></button>
   </div>
 </div>
 
@@ -1081,6 +1089,17 @@ let current=0;
 const TOTAL=12;
 // 4軸スコア: A>0=Action, V<0=View / C>0=Challenge, H<0 / P>0=Plan, F<0 / S>0=Social, L<0
 const axisScore={av:0,ch:0,pf:0,sl:0};
+// 「1問戻る」機能用: 各質問(1-indexed、配列は0-indexed)ごとの回答履歴。
+// 戻って回答を変更しても同じ質問のスコアが重複加算されないよう、
+// 再回答時は必ずこの履歴と照合して直前の加算分を取り消してから加算し直す。
+const answerHistory=[];
+function axisDeltaFor(key,val){
+  if(key==='a1'||key==='a2'||key==='a9') return {axis:'av', d: val==='A'?1:-1};
+  if(key==='a3'||key==='a4'||key==='a10') return {axis:'ch', d: val==='C'?1:-1};
+  if(key==='a5'||key==='a6') return {axis:'pf', d: val==='P'?1:-1};
+  if(key==='a7'||key==='a8') return {axis:'sl', d: val==='S'?1:-1};
+  return null;
+}
 
 // ===== 回答分析コメント生成 =====
 function getAxisLabel(score, max, positiveLabel, negativeLabel) {
@@ -1171,7 +1190,11 @@ document.addEventListener('DOMContentLoaded', function(){
       el.appendChild(ripple);
       setTimeout(function(){ if(ripple.parentNode) ripple.parentNode.removeChild(ripple); }, 600);
     }
-    answer(key, isNaN(val) ? val : Number(val));
+    // 同じ質問内でdata-key/data-valが重複する選択肢(例: A/V/A/Vの並び)でも
+    // 「1問戻る」時に正しい選択肢だけを復元できるよう、クリックした要素のインデックスも渡す
+    var choiceIdx = -1;
+    if(el && el.parentElement){ choiceIdx = Array.prototype.indexOf.call(el.parentElement.children, el); }
+    answer(key, isNaN(val) ? val : Number(val), choiceIdx);
     setTimeout(function(){ _lock = false; }, 1000);
   }
   document.querySelectorAll('.choice').forEach(function(el){
@@ -1213,6 +1236,12 @@ function show(id){
   _prevStepId = id;
   window.scrollTo({top:0,behavior:'smooth'});
   if(id==='intro') buildIntroGrid();
+  // 「1問戻る」ボタンは質問2〜12でのみ表示(質問1・導入・結果画面では非表示)
+  var backBtn = document.getElementById('quiz-back-btn');
+  if(backBtn){
+    var qNum = (typeof id==='string' && id.charAt(0)==='q') ? parseInt(id.slice(1),10) : NaN;
+    backBtn.style.display = (!isNaN(qNum) && qNum>=2 && qNum<=TOTAL) ? 'inline-flex' : 'none';
+  }
 }
 function buildIntroGrid(){
   const TYPE_ORDER = ['ACPS','ACPL','ACFS','ACFL','AHPS','AHPL','AHFS','AHFL','VCPS','VCPL','VCFS','VCFL','VHPS','VHPL','VHFS','VHFL'];
@@ -1229,13 +1258,19 @@ function buildIntroGrid(){
 }
 function startQuiz(){current=1;show('q'+current);}
 
-function answer(key,val){
+function answer(key,val,choiceIdx){
+  var stepIdx=current; // 今回答した質問番号(1-indexed)
+  // 戻って回答を変更した場合、まず直前にこの質問で加算した分を取り消す
+  var prevEntry=answerHistory[stepIdx-1];
+  if(prevEntry){
+    var pd=axisDeltaFor(prevEntry.key,prevEntry.val);
+    if(pd) axisScore[pd.axis]-=pd.d;
+  }
   answers[key]=val;
+  answerHistory[stepIdx-1]={key:key,val:val,idx:(typeof choiceIdx==='number'?choiceIdx:-1)};
   // 軸スコア更新
-  if(key==='a1'||key==='a2'||key==='a9') axisScore.av += val==='A'?1:-1;
-  if(key==='a3'||key==='a4'||key==='a10') axisScore.ch += val==='C'?1:-1;
-  if(key==='a5'||key==='a6') axisScore.pf += val==='P'?1:-1;
-  if(key==='a7'||key==='a8') axisScore.sl += val==='S'?1:-1;
+  var nd=axisDeltaFor(key,val);
+  if(nd) axisScore[nd.axis]+=nd.d;
   current++;
   // 選択肢のハイライトを見せてから遷移（350ms待つ）
   setTimeout(function(){
@@ -1244,10 +1279,26 @@ function answer(key,val){
   }, 350);
 }
 
+function goBack(){
+  if(current<=1) return;
+  var fromQ=current;
+  current--;
+  if (typeof gtag === "function") gtag('event', 'diagnosis_back_click', { from_question: fromQ, to_question: current });
+  show('q'+current);
+  // 直前にこの質問で選んだ回答があればハイライトを復元(同一key/valの選択肢が
+  // 複数存在する質問もあるため、クリック時のインデックスで一意に特定する)
+  var entry=answerHistory[current-1];
+  if(entry && entry.idx>=0){
+    var choices=document.querySelectorAll('#q'+current+' .choice');
+    if(choices[entry.idx]) choices[entry.idx].classList.add('selected');
+  }
+}
+
 function restart(){
   if(window._hideStickyOnRestart) window._hideStickyOnRestart();
   Object.keys(answers).forEach(k=>delete answers[k]);
   axisScore.av=axisScore.ch=axisScore.pf=axisScore.sl=0;
+  answerHistory.length=0;
   current=0;
   show('intro');
 }
@@ -1268,6 +1319,44 @@ function getTypeCode(){
   const p=axisScore.pf>=0?'P':'F';
   const s=axisScore.sl>=0?'S':'L';
   return a+c+p+s;
+}
+
+// ===== 共有結果URLの完全再現用エンコード/デコード =====
+// 個人情報・回答全文は含めず、4軸スコア(-4〜3)・出発地・体力希望(コース定数)のみを
+// 16bit整数に圧縮してbase36の短い文字列にする(URLに大量の平文を埋め込まない対応)。
+// これにより共有URLを開いた相手にも、診断直後と同じ点数・出発地・おすすめ山を再現できる。
+const SHARE_DEP_ORDER=['ofuna','shinjuku','omiya'];
+const SHARE_COEFF_ORDER=[14,22,35,60];
+function encodeShareState(){
+  var av=axisScore.av, ch=axisScore.ch, pf=axisScore.pf, sl=axisScore.sl;
+  if(av<-4||av>3||ch<-4||ch>3||pf<-4||pf>3||sl<-4||sl>3) return null;
+  var depIdx=SHARE_DEP_ORDER.indexOf(answers.dep);
+  var coeffIdx=SHARE_COEFF_ORDER.indexOf(Number(answers.coeff));
+  if(depIdx<0||coeffIdx<0) return null;
+  var n=((av+4)<<13)|((ch+4)<<10)|((pf+4)<<7)|((sl+4)<<4)|(depIdx<<2)|coeffIdx;
+  return n.toString(36);
+}
+function decodeShareState(str){
+  try{
+    var n=parseInt(str,36);
+    if(isNaN(n)||n<0||n>0xFFFF) return null;
+    var av=((n>>13)&0x7)-4, ch=((n>>10)&0x7)-4, pf=((n>>7)&0x7)-4, sl=((n>>4)&0x7)-4;
+    var depIdx=(n>>2)&0x3, coeffIdx=n&0x3;
+    if(depIdx>2||coeffIdx>3) return null;
+    return {av:av,ch:ch,pf:pf,sl:sl,dep:SHARE_DEP_ORDER[depIdx],coeff:SHARE_COEFF_ORDER[coeffIdx]};
+  }catch(e){ return null; }
+}
+// 共有URL(?type=XXXX&d=...)を開いた際、d を優先して診断直後の状態を厳密に復元する。
+// d が無い/不正な場合は従来通りタイプコードからの簡易復元にフォールバックする。
+function showResultFromShareData(tc,dParam){
+  var decoded = dParam ? decodeShareState(dParam) : null;
+  if(decoded){
+    axisScore.av=decoded.av; axisScore.ch=decoded.ch; axisScore.pf=decoded.pf; axisScore.sl=decoded.sl;
+    answers.dep=decoded.dep; answers.coeff=decoded.coeff;
+    showResult();
+  } else {
+    showResultByType(tc);
+  }
 }
 
 function getDrive(m){
@@ -1514,7 +1603,7 @@ function _doShowResult(){
     '</div>'+
     '<div class="type-axes" style="margin-top:6px;">'+axesHtml+'</div>'+
     '<div style="margin-top:12px;">'+
-    '<a href="/type/'+TYPE_SLUGS[typeCode]+'/" style="display:block;text-align:center;background:rgba(255,255,255,0.15);color:white;font-size:12px;font-weight:700;padding:8px;border-radius:10px;text-decoration:none;border:1px solid rgba(255,255,255,0.3);">'+
+    '<a href="/type/'+TYPE_SLUGS[typeCode]+'/" onclick="if(typeof gtag===\'function\')gtag(\'event\',\'result_type_detail_click\',{type_code:\''+typeCode+'\'});" style="display:block;text-align:center;background:rgba(255,255,255,0.15);color:white;font-size:12px;font-weight:700;padding:8px;border-radius:10px;text-decoration:none;border:1px solid rgba(255,255,255,0.3);">'+
     'このタイプの詳細ページを見る →'+'</a>'+
     '</div>'+
     '</div>'+
@@ -1556,7 +1645,7 @@ function _doShowResult(){
       '<div class="gears-block">'+gearsHtml+'</div>'+
       '<div class="rc-section-label">🚌 アクセス</div>'+
       accessHtml+
-      '<a href="/mountains/'+m.id+'/" class="rc-cta'+(isFirst?' rc-cta-primary':'')+'">'+
+      '<a href="/mountains/'+m.id+'/" onclick="if(typeof gtag===\'function\')gtag(\'event\',\'recommended_mountain_click\',{type_code:\''+typeCode+'\',mountain_id:\''+m.id+'\',rank:'+(i+1)+'});" class="rc-cta'+(isFirst?' rc-cta-primary':'')+'">'+
         (i===0?'この山、行ってみる →':i===1?'この山も見てみる →':'こっちも気になる →')+'</a>'+
     '</div>';
   }).join('');
@@ -1585,12 +1674,37 @@ function _doShowResult(){
     + '診断者の' + type.rare + '%の' + RARE_LABELS[type.affilLevel] + '\n'
     + avLabel + ' × ' + chLabel + '\n'
     + 'あなたのタイプは？→';
-  const shareUrlWithType='https://tozan-navi.com/recommend/'+typeCode+'/';
+  // 既存の/recommend/{TYPE}/形式のURLは変更せず維持しつつ、可能であれば
+  // ?d=... を付与して診断直後の点数・出発地・体力希望を完全に再現できるようにする。
+  // エンコードに失敗した場合(想定外の値など)は従来通りタイプ代表URLへ安全にフォールバックする。
+  const shareData=encodeShareState();
+  const shareUrlWithType='https://tozan-navi.com/recommend/'+typeCode+'/'+(shareData?('?d='+shareData):'');
+  window._currentShareUrl=shareUrlWithType;
+  window._currentShareType=typeCode;
   document.getElementById('share-x').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText)+'&url='+encodeURIComponent(shareUrlWithType);
   document.getElementById('share-line').href='https://line.me/R/msg/text/?'+encodeURIComponent(shareText+'\n'+shareUrlWithType);
+  document.getElementById('share-x').onclick=function(){
+    if (typeof gtag === "function") gtag('event','share_x_click',{});
+    if (typeof gtag === "function") gtag('event','result_share_created',{type_code:typeCode, share_method:'x'});
+  };
+  document.getElementById('share-line').onclick=function(){
+    if (typeof gtag === "function") gtag('event','share_line_click',{});
+    if (typeof gtag === "function") gtag('event','result_share_created',{type_code:typeCode, share_method:'line'});
+  };
   window._shareNative=function(){
-    if(navigator.share){ navigator.share({title:'私は「'+type.name+'」でした！ - Yamatch登山タイプ診断',url:shareUrlWithType}); }
-    else{ navigator.clipboard.writeText(shareUrlWithType).then(()=>alert('URLをコピーしました')); }
+    if (typeof gtag === "function") gtag('event','share_native_click',{});
+    if(navigator.share){
+      navigator.share({title:'私は「'+type.name+'」でした！ - Yamatch登山タイプ診断',url:shareUrlWithType})
+        .then(function(){ if (typeof gtag === "function") gtag('event','result_share_created',{type_code:typeCode, share_method:'native'}); })
+        .catch(function(){});
+    } else {
+      navigator.clipboard.writeText(shareUrlWithType).then(function(){
+        alert('URLをコピーしました');
+        if (typeof gtag === "function") gtag('event','result_share_created',{type_code:typeCode, share_method:'native_copy_fallback'});
+      }).catch(function(){
+        if (typeof gtag === "function") gtag('event','result_share_create_error',{type_code:typeCode, error_type:'clipboard_failed'});
+      });
+    }
   };
 
   // ===== Canvas シェア画像生成（1080×1080） =====
@@ -1627,9 +1741,10 @@ function _doShowResult(){
     var btnId = mode==='story' ? 'share-story-btn' : 'share-image-btn';
     var btn=document.getElementById(btnId);
     var btnOrig = btn ? btn.textContent : '';
-    if(btn){ btn.disabled=true; btn.textContent='画像を生成中...'; }
+    if(btn){ if(btn.disabled) return; btn.disabled=true; btn.textContent='画像を生成中...'; }
 
     var typeCode=getTypeCode();
+    if (typeof gtag === "function") gtag('event', mode==='story'?'share_image_story_click':'share_image_square_click', {type_code:typeCode});
     var type=TYPES[typeCode]||TYPES['VHFS'];
     var av=axisScore.av, ch=axisScore.ch, pf=axisScore.pf, sl=axisScore.sl;
     var action=av+ch, calm=-av-ch, social=pf+sl, solo=-pf-sl;
@@ -1889,30 +2004,52 @@ function _doShowResult(){
         drawStickerCard(1080,300);
       }
 
+      var evtSuccess = mode==='story'?'share_image_story_success':'share_image_square_success';
+      var evtError = mode==='story'?'share_image_story_error':'share_image_square_error';
       var fileName='yamatch-'+typeCode+(mode==='story'?'-story':'')+'.png';
       canvas.toBlob(function(blob){
         if(!blob){
           if(btn){ btn.disabled=false; btn.textContent=btnOrig; }
+          if (typeof gtag === "function") gtag('event', evtError, {type_code:typeCode, error_type:'blob_failed'});
+          alert('画像の生成に失敗しました。もう一度お試しください。');
           return;
         }
         var file=new File([blob], fileName, {type:'image/png'});
         // スマホ(iOS/Android): 共有シートから「写真に保存」できるようにする
         if(navigator.canShare && navigator.canShare({files:[file]})){
-          navigator.share({files:[file], title:'YAMATCH 登山タイプ診断'}).catch(function(){});
+          navigator.share({files:[file], title:'YAMATCH 登山タイプ診断'})
+            .then(function(){ if (typeof gtag === "function") gtag('event', evtSuccess, {type_code:typeCode}); })
+            .catch(function(err){
+              // ユーザーによるキャンセルはエラー扱いしない
+              if(err && err.name==='AbortError') return;
+              if (typeof gtag === "function") gtag('event', evtError, {type_code:typeCode, error_type:'share_failed'});
+            });
           if(btn){ btn.disabled=false; btn.textContent=btnOrig; }
           return;
         }
-        var blobUrl=URL.createObjectURL(blob);
+        var blobUrl;
+        try{
+          blobUrl=URL.createObjectURL(blob);
+        }catch(e){
+          if(btn){ btn.disabled=false; btn.textContent=btnOrig; }
+          if (typeof gtag === "function") gtag('event', evtError, {type_code:typeCode, error_type:'url_create_failed'});
+          alert('画像の生成に失敗しました。もう一度お試しください。');
+          return;
+        }
         var isMobile=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         if(isMobile){
-          // 共有APIが無い場合は新規タブで開き、長押し保存してもらう
+          // 共有API(Web Share API Level 2)が使えない端末では、新規タブで画像を開き
+          // 「長押しして画像を保存」という実際に可能な操作を明確に案内する
           window.open(blobUrl,'_blank');
+          alert('画像を新しいタブで開きました。画像を長押しして「画像を保存」を選んでください。');
         } else {
           var a=document.createElement('a');
           a.download=fileName;
           a.href=blobUrl;
           a.click();
+          alert('画像を保存しました');
         }
+        if (typeof gtag === "function") gtag('event', evtSuccess, {type_code:typeCode});
         setTimeout(function(){ URL.revokeObjectURL(blobUrl); }, 30000);
         if(btn){ btn.disabled=false; btn.textContent=btnOrig; }
       }, 'image/png');
@@ -2066,6 +2203,9 @@ function _doShowResult(){
     document.getElementById('sticky-cta-name').textContent = top1.name;
     document.getElementById('sticky-cta-link').href = '/mountains/'+top1.id+'/';
     document.getElementById('sticky-cta-link').textContent = 'この山、行ってみる →';
+    document.getElementById('sticky-cta-link').onclick=function(){
+      if (typeof gtag === "function") gtag('event','recommended_mountain_click',{type_code:typeCode, mountain_id:top1.id, rank:1});
+    };
   }
   // スクロールで表示
   setTimeout(function(){
@@ -2089,8 +2229,17 @@ function _doShowResult(){
 }
 
 function copyResult(){
-  navigator.clipboard.writeText('https://tozan-navi.com/recommend/')
-    .then(()=>alert('URLをコピーしました！友達にシェアしてね🗻'));
+  // 診断結果の共有URL(タイプ固有・可能なら?d=で点数も再現できるURL)をコピーする。
+  // 診断前など未生成の場合のみ、安全なフォールバックとしてトップURLを使う。
+  var url = window._currentShareUrl || 'https://tozan-navi.com/recommend/';
+  var tc = window._currentShareType || '';
+  navigator.clipboard.writeText(url).then(function(){
+    alert('URLをコピーしました！友達にシェアしてね🗻');
+    if (typeof gtag === "function") gtag('event','share_url_copy',{});
+    if (typeof gtag === "function") gtag('event','result_share_created',{type_code:tc, share_method:'copy'});
+  }).catch(function(){
+    if (typeof gtag === "function") gtag('event','result_share_create_error',{type_code:tc, error_type:'clipboard_failed'});
+  });
 }
 // JSONから最新データを読み込んでからグリッドを構築
 document.addEventListener('DOMContentLoaded', function(){
@@ -2172,10 +2321,13 @@ document.addEventListener('DOMContentLoaded', function(){
       })();
 
       // ?type=XXX でアクセスした場合は診断結果も表示
+      // ?d=... がある場合は共有元の点数・出発地・体力希望を正確に復元する(無ければ従来のタイプコードのみの簡易復元)
       var typeParam = new URLSearchParams(location.search).get('type');
+      var dParam = new URLSearchParams(location.search).get('d');
       if(typeParam){
         setTimeout(function(){
-          if(typeof showResultByType === 'function') showResultByType(typeParam);
+          if(typeof showResultFromShareData === 'function') showResultFromShareData(typeParam, dParam);
+          else if(typeof showResultByType === 'function') showResultByType(typeParam);
           else if(typeof showResult === 'function') showResult();
         }, 100);
       }
