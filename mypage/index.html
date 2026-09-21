@@ -1422,17 +1422,14 @@ function drawPhotoBadgeShare(ctx,d,W,H,dateText,cb){
   shade.addColorStop(1,'rgba(0,0,0,.28)');
   ctx.fillStyle=shade; ctx.fillRect(0,0,W,H);
 
-  // 左上は背景を敷かず、ロゴマークとGeorgia太字のワードマークだけを置く。
+  // 右下に正式なSVGロゴとGeorgia太字のワードマークを控えめに置く。
   ctx.save();
-  ctx.shadowColor='rgba(0,0,0,.45)'; ctx.shadowBlur=12; ctx.shadowOffsetY=3;
-  ctx.fillStyle='#486b36';
-  ctx.beginPath(); ctx.moveTo(42,98); ctx.lineTo(88,28); ctx.lineTo(136,98); ctx.lineTo(117,98); ctx.lineTo(88,55); ctx.lineTo(60,98); ctx.closePath(); ctx.fill();
-  ctx.fillStyle='#8cab59';
-  ctx.beginPath(); ctx.moveTo(58,98); ctx.lineTo(88,53); ctx.lineTo(119,98); ctx.lineTo(105,98); ctx.lineTo(88,74); ctx.lineTo(73,98); ctx.closePath(); ctx.fill();
-  ctx.fillStyle='#294a2e';
-  ctx.beginPath(); ctx.moveTo(88,62); ctx.lineTo(111,98); ctx.lineTo(65,98); ctx.closePath(); ctx.fill();
+  ctx.shadowColor='rgba(0,0,0,.55)'; ctx.shadowBlur=9; ctx.shadowOffsetY=2;
+  if(_shareLogoImage&&_shareLogoImage.complete&&_shareLogoImage.naturalWidth){
+    ctx.drawImage(_shareLogoImage,790,H-102,52,52);
+  }
   ctx.fillStyle='#ffffff'; ctx.textAlign='left'; ctx.textBaseline='alphabetic';
-  ctx.font='bold 58px Georgia, serif'; ctx.fillText('Yamatch',156,91);
+  ctx.font='bold 38px Georgia, serif'; ctx.fillText('Yamatch',852,H-60);
   ctx.restore();
 
   var badgeSize=Math.round(430*_shareBadgeScale);
@@ -1451,11 +1448,11 @@ function drawPhotoBadgeShare(ctx,d,W,H,dateText,cb){
   badgeImg.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
 
-// バッジ本体と同じSVGを主役にした、SNS投稿向け4:5シェア画像。
+// バッジ本体と同じSVGを主役にした、Instagramストーリー向け9:16シェア画像。
 function buildShareCanvasV2(cb){
   var d=_currentBadgeData;
   if(!d){ cb(null); return; }
-  var W=1080,H=1350,canvas=document.createElement('canvas');
+  var W=1080,H=1920,canvas=document.createElement('canvas');
   canvas.width=W; canvas.height=H;
   var ctx=canvas.getContext('2d');
   var dateText=compactShareDate(d.date);
@@ -1472,7 +1469,7 @@ function buildShareCanvasV2(cb){
     ctx.fillStyle=glow; ctx.fillRect(0,0,W,H);
 
     // 日の出と、対象の山容を使った三層の山並み。
-    ctx.beginPath(); ctx.arc(W*.80,235,92,0,Math.PI*2); ctx.fillStyle='rgba(244,210,139,.22)'; ctx.fill();
+    ctx.beginPath(); ctx.arc(W*.80,350,108,0,Math.PI*2); ctx.fillStyle='rgba(244,210,139,.22)'; ctx.fill();
     function drawShareRidge(profile,baseY,height,fill,offset,width){
       var points=profile.line.split(' ').map(function(p){
         var xy=p.split(',');
@@ -1482,15 +1479,15 @@ function buildShareCanvasV2(cb){
       points.forEach(function(p){ctx.lineTo(p[0],p[1]);});
       ctx.lineTo(offset+width,baseY); ctx.closePath(); ctx.fillStyle=fill; ctx.fill();
     }
-    drawShareRidge(PROFILES._default,660,220,'rgba(116,145,116,.22)',-80,W+160);
-    drawShareRidge(getBadgeProfile(d.key,d.name),735,300,'rgba(35,73,59,.52)',-45,W+90);
-    drawShareRidge(getBadgeProfile(d.key,d.name),835,330,'rgba(9,31,25,.78)',-120,W+240);
+    drawShareRidge(PROFILES._default,970,260,'rgba(116,145,116,.22)',-80,W+160);
+    drawShareRidge(getBadgeProfile(d.key,d.name),1080,360,'rgba(35,73,59,.52)',-45,W+90);
+    drawShareRidge(getBadgeProfile(d.key,d.name),1230,420,'rgba(9,31,25,.78)',-120,W+240);
 
     // 等高線を思わせる控えめな背景装飾。
     ctx.strokeStyle='rgba(244,235,208,.075)'; ctx.lineWidth=3;
     for(var n=0;n<6;n++){
       ctx.beginPath();
-      var cy=230+n*190;
+      var cy=290+n*260;
       for(var x=-40;x<=W+40;x+=40){
         var y=cy+Math.sin(x*.009+n*.9)*38+Math.sin(x*.021+n)*15;
         if(x===-40) ctx.moveTo(x,y); else ctx.lineTo(x,y);
@@ -1509,11 +1506,11 @@ function buildShareCanvasV2(cb){
     ctx.textAlign='right'; ctx.font='700 25px "Noto Serif JP", serif';
     ctx.fillStyle='rgba(247,241,223,.72)'; ctx.fillText('ひとつ上の景色へ',W-72,110);
 
-    var badgeSize=560;
+    var badgeSize=650;
     var svg=makeBadgeSVG(d.name,dateText,d.key,d.c,badgeSize,d.area,d.elev);
     var badgeImg=new Image();
     badgeImg.onload=function(){
-      var bx=(W-badgeSize)/2,by=205;
+      var bx=(W-badgeSize)/2,by=270;
       ctx.save();
       ctx.shadowColor='rgba(0,0,0,.55)'; ctx.shadowBlur=46; ctx.shadowOffsetY=24;
       ctx.drawImage(badgeImg,bx,by,badgeSize,badgeSize);
@@ -1522,11 +1519,11 @@ function buildShareCanvasV2(cb){
       // 山名・県名・日付はバッジ内だけに置き、外側では体験の余韻を伝える。
       ctx.textAlign='center'; ctx.textBaseline='middle';
       ctx.fillStyle='#fff8e8'; ctx.font='900 48px "Noto Serif JP", serif';
-      ctx.fillText('最高の景色を、またひとつ。',W/2,855,W-150);
+      ctx.fillText('最高の景色を、またひとつ。',W/2,1060,W-150);
       ctx.fillStyle='rgba(231,202,139,.78)'; ctx.font='700 23px "Outfit", sans-serif';
-      ctx.letterSpacing='7px'; ctx.fillText('SUMMIT COMPLETE',W/2,910); ctx.letterSpacing='0px';
+      ctx.letterSpacing='7px'; ctx.fillText('SUMMIT COMPLETE',W/2,1120); ctx.letterSpacing='0px';
 
-      var infoY=970;
+      var infoY=1210;
       if(d.outfit){
         ctx.fillStyle='rgba(255,255,255,.09)'; roundRectPath(ctx,72,infoY,W-144,150,28); ctx.fill();
         ctx.strokeStyle='rgba(255,255,255,.12)'; ctx.lineWidth=2; roundRectPath(ctx,72,infoY,W-144,150,28); ctx.stroke();
@@ -1562,6 +1559,7 @@ function buildShareCanvasV2(cb){
 function openShareCard(){
   var modal=document.getElementById('share-card-modal');
   modal.style.display='flex';
+  if(_sharePhotoImage) showInteractivePhotoPreview();
   renderShareCardPreview();
 }
 
@@ -1571,7 +1569,7 @@ function renderShareCardPreview(quiet){
   var img=document.getElementById('share-card-img');
   var dlBtn=document.getElementById('share-card-dl-btn');
   var shareBtn=document.getElementById('share-card-native-btn');
-  if(!quiet){
+  if(!quiet&&!_sharePhotoImage){
     loading.style.display='block'; img.style.display='none';
     dlBtn.style.display='none'; shareBtn.style.display='none';
   }
@@ -1581,13 +1579,40 @@ function renderShareCardPreview(quiet){
     canvas.toBlob(function(blob){
       if(renderSeq!==_shareRenderSeq) return;
       _shareCardBlob=blob;
-      img.src=URL.createObjectURL(blob);
+      if(!_sharePhotoImage) img.src=URL.createObjectURL(blob);
       loading.style.display='none';
       img.style.display='block';
       dlBtn.style.display='block';
       if(navigator.share) shareBtn.style.display='block';
     }, 'image/png');
   });
+}
+
+function syncShareOverlay(){
+  var badge=document.getElementById('share-badge-overlay');
+  if(!badge) return;
+  badge.style.left=(_shareBadgeX*100)+'%';
+  badge.style.top=(_shareBadgeY*100)+'%';
+  badge.style.width=((430*_shareBadgeScale/1080)*100)+'%';
+  var xs=document.getElementById('share-x-slider'),ys=document.getElementById('share-y-slider'),ss=document.getElementById('share-size-slider');
+  if(xs) xs.value=Math.round(_shareBadgeX*100);
+  if(ys) ys.value=Math.round(_shareBadgeY*100);
+  if(ss) ss.value=Math.round(_shareBadgeScale*100);
+}
+
+function showInteractivePhotoPreview(photoSrc){
+  document.getElementById('share-preview-wrap').style.aspectRatio='9 / 16';
+  var img=document.getElementById('share-card-img');
+  var badge=document.getElementById('share-badge-overlay');
+  var brand=document.getElementById('share-brand-overlay');
+  img.src=photoSrc||_sharePhotoDataUrl;
+  img.style.display='block';
+  img.style.width='100%'; img.style.height='100%'; img.style.objectFit='cover'; img.style.marginBottom='0';
+  var dateText=compactShareDate(_currentBadgeData&&_currentBadgeData.date);
+  var svg=makeBadgeSVG(_currentBadgeData.name,dateText,_currentBadgeData.key,_currentBadgeData.c,430,_currentBadgeData.area,_currentBadgeData.elev);
+  badge.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+  badge.style.display='block'; brand.style.display='flex';
+  syncShareOverlay();
 }
 
 function handleSharePhoto(input){
@@ -1598,8 +1623,10 @@ function handleSharePhoto(input){
     var photo=new Image();
     photo.onload=function(){
       _sharePhotoImage=photo;
+      _sharePhotoDataUrl=reader.result;
       document.getElementById('share-photo-clear').style.display='block';
       document.getElementById('share-placement-controls').style.display='block';
+      showInteractivePhotoPreview(reader.result);
       renderShareCardPreview();
     };
     photo.src=reader.result;
@@ -1609,9 +1636,14 @@ function handleSharePhoto(input){
 
 function clearSharePhoto(){
   _sharePhotoImage=null;
+  _sharePhotoDataUrl='';
   document.getElementById('share-photo-input').value='';
   document.getElementById('share-photo-clear').style.display='none';
   document.getElementById('share-placement-controls').style.display='none';
+  document.getElementById('share-badge-overlay').style.display='none';
+  document.getElementById('share-brand-overlay').style.display='none';
+  document.getElementById('share-preview-wrap').style.aspectRatio='auto';
+  var img=document.getElementById('share-card-img'); img.style.height='auto'; img.style.objectFit=''; img.style.marginBottom='14px';
   renderShareCardPreview();
 }
 
@@ -1620,25 +1652,17 @@ function updateSharePlacement(kind,value){
   if(kind==='x') _shareBadgeX=Number(value)/100;
   if(kind==='y') _shareBadgeY=Number(value)/100;
   if(kind==='size') _shareBadgeScale=Number(value)/100;
+  syncShareOverlay();
   clearTimeout(_sharePlacementTimer);
-  _sharePlacementTimer=setTimeout(function(){renderShareCardPreview(true);},60);
+  _sharePlacementTimer=setTimeout(function(){renderShareCardPreview(true);},180);
 }
 
 var _sharePointers={};
 var _shareDragStart=null;
 var _sharePinchStart=null;
-function sharePointOnBadge(event,el){
-  var r=el.getBoundingClientRect();
-  var x=(event.clientX-r.left)/r.width,y=(event.clientY-r.top)/r.height;
-  var rx=(430*_shareBadgeScale/2)/1080;
-  var ry=(430*_shareBadgeScale/2)/1350;
-  var dx=(x-_shareBadgeX)/rx,dy=(y-_shareBadgeY)/ry;
-  return dx*dx+dy*dy<=1.35;
-}
 function shareGestureStart(event){
   if(!_sharePhotoImage) return;
   var ids=Object.keys(_sharePointers);
-  if(!ids.length&&!sharePointOnBadge(event,event.currentTarget)) return;
   event.preventDefault();
   try{event.currentTarget.setPointerCapture(event.pointerId);}catch(e){}
   _sharePointers[event.pointerId]={x:event.clientX,y:event.clientY,type:event.pointerType};
@@ -1657,25 +1681,19 @@ function shareGestureMove(event){
   event.preventDefault();
   _sharePointers[event.pointerId].x=event.clientX;
   _sharePointers[event.pointerId].y=event.clientY;
-  var ids=Object.keys(_sharePointers),el=event.currentTarget;
+  var ids=Object.keys(_sharePointers);
   if(ids.length>=2&&_sharePinchStart){
     var a=_sharePointers[ids[0]],b=_sharePointers[ids[1]];
     if(a.type==='touch'&&b.type==='touch'){
       var dist=Math.hypot(a.x-b.x,a.y-b.y);
       _shareBadgeScale=Math.max(.65,Math.min(1.4,_sharePinchStart.scale*dist/Math.max(1,_sharePinchStart.distance)));
-      var sizeSlider=document.getElementById('share-size-slider');
-      if(sizeSlider) sizeSlider.value=Math.round(_shareBadgeScale*100);
     }
   }else if(ids.length===1&&_shareDragStart){
-    var r=el.getBoundingClientRect();
+    var r=document.getElementById('share-preview-wrap').getBoundingClientRect();
     _shareBadgeX=Math.max(.04,Math.min(.96,_shareDragStart.x+(event.clientX-_shareDragStart.px)/r.width));
     _shareBadgeY=Math.max(.10,Math.min(.94,_shareDragStart.y+(event.clientY-_shareDragStart.py)/r.height));
-    var xs=document.getElementById('share-x-slider'),ys=document.getElementById('share-y-slider');
-    if(xs) xs.value=Math.round(_shareBadgeX*100);
-    if(ys) ys.value=Math.round(_shareBadgeY*100);
   }
-  clearTimeout(_sharePlacementTimer);
-  _sharePlacementTimer=setTimeout(function(){renderShareCardPreview(true);},45);
+  syncShareOverlay();
 }
 function shareGestureEnd(event){
   if(_sharePointers[event.pointerId]) delete _sharePointers[event.pointerId];
@@ -1684,7 +1702,10 @@ function shareGestureEnd(event){
   if(ids.length===1){
     var p=_sharePointers[ids[0]];
     _shareDragStart={px:p.x,py:p.y,x:_shareBadgeX,y:_shareBadgeY};
-  }else if(!ids.length){ _shareDragStart=null; }
+  }else if(!ids.length){
+    _shareDragStart=null;
+    renderShareCardPreview(true);
+  }
 }
 
 function closeShareCard(){
@@ -1715,10 +1736,13 @@ var _currentBadgeUid = null;
 var _currentBadgeData = null;
 var _shareCardBlob = null;
 var _sharePhotoImage = null;
+var _sharePhotoDataUrl = '';
 var _shareBadgeX = .50;
 var _shareBadgeY = .76;
 var _shareBadgeScale = 1;
 var _shareRenderSeq = 0;
+var _shareLogoImage = new Image();
+_shareLogoImage.src = './yamatch_logo.svg';
 
 function computeTags(mt, hasOutfit){
   var tags = [];
@@ -1939,7 +1963,7 @@ init();
 
 <!-- シェアカードモーダル -->
 <div id="share-card-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:600;align-items:center;justify-content:center;">
-  <div style="background:#f0ede5;border-radius:20px;padding:18px;width:280px;text-align:center;">
+  <div style="background:#f0ede5;border-radius:20px;padding:18px;width:280px;max-height:94vh;overflow-y:auto;text-align:center;">
     <div style="font-size:14px;font-weight:800;color:#33452d;margin-bottom:4px;">写真にバッジを重ねる</div>
     <div style="font-size:10px;color:#8a8078;line-height:1.5;margin-bottom:10px;">写真は端末内だけで処理され、アップロードされません</div>
     <input id="share-photo-input" type="file" accept="image/*" onchange="handleSharePhoto(this)" style="display:none;">
@@ -1953,7 +1977,14 @@ init();
       <label style="display:grid;grid-template-columns:30px 1fr;align-items:center;gap:7px;font-size:10px;color:#81786c;">大小<input id="share-size-slider" type="range" min="65" max="140" value="100" oninput="updateSharePlacement('size',this.value)" style="width:100%;accent-color:#4e6535;"></label>
     </div>
     <div id="share-card-loading" style="padding:60px 0;font-size:13px;color:#7a7068;">作成中…</div>
-    <img id="share-card-img" draggable="false" onpointerdown="shareGestureStart(event)" onpointermove="shareGestureMove(event)" onpointerup="shareGestureEnd(event)" onpointercancel="shareGestureEnd(event)" style="display:none;width:100%;border-radius:12px;margin-bottom:14px;touch-action:none;user-select:none;-webkit-user-drag:none;cursor:grab;" />
+    <div id="share-preview-wrap" style="position:relative;width:100%;border-radius:12px;overflow:hidden;margin-bottom:14px;line-height:0;background:#d9d5cc;">
+      <img id="share-card-img" draggable="false" style="display:none;width:100%;border-radius:12px;user-select:none;-webkit-user-drag:none;" />
+      <div id="share-brand-overlay" style="display:none;position:absolute;right:3.3%;bottom:2.8%;align-items:center;gap:3px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.60));pointer-events:none;opacity:.9;">
+        <img src="./yamatch_logo.svg" alt="" style="width:15px;height:15px;">
+        <span style="font-family:Georgia,serif;font-size:12px;line-height:1;font-weight:bold;color:white;">Yamatch</span>
+      </div>
+      <img id="share-badge-overlay" draggable="false" onpointerdown="shareGestureStart(event)" onpointermove="shareGestureMove(event)" onpointerup="shareGestureEnd(event)" onpointercancel="shareGestureEnd(event)" style="display:none;position:absolute;transform:translate(-50%,-50%);height:auto;touch-action:none;user-select:none;-webkit-user-drag:none;cursor:grab;filter:drop-shadow(0 5px 9px rgba(0,0,0,.55));will-change:left,top,width;">
+    </div>
     <button id="share-card-native-btn" onclick="nativeShareCard()" style="display:none;width:100%;padding:13px;background:#4e6535;border:none;border-radius:12px;font-size:14px;font-weight:700;color:white;cursor:pointer;margin-bottom:8px;">📤 シェアする</button>
     <button id="share-card-dl-btn" onclick="downloadShareCard()" style="display:none;width:100%;padding:13px;background:white;border:1.5px solid #ccc8c0;border-radius:12px;font-size:14px;font-weight:700;color:#3a3530;cursor:pointer;margin-bottom:8px;">📥 画像を保存</button>
     <button onclick="closeShareCard()" style="width:100%;padding:11px;background:transparent;border:none;font-size:13px;color:#a09888;cursor:pointer;">閉じる</button>
