@@ -173,23 +173,14 @@ window.GEAR_BADGE_STYLE = {
   'あると便利':'background:none;border:1px solid #4e6535;color:#4e6535',
   '条件次第':'background:none;border:1px solid #4e6535;color:#4e6535'
 };
-window.GEAR_DIRECT_ASIN = {
-  'メレル MOAB 3 ミッド GTX':'B09BP11RNG'
-};
-window.RAKUTEN_ID = '57384242.53497bb8.57384243.366083eb';
-
+// アフィリエイトURLの正本は /data/gear-affiliate.json（gear-common.js経由で取得）。
+// 山ページと診断結果(/recommend/)でURLを二重管理しないため、ここでは
+// window.YMGear のラッパー関数を呼ぶだけにしている。
 function gearAmazonLink(keyword){
-  var clean = keyword.replace('(来月分)','');
-  if(window.GEAR_DIRECT_ASIN[clean]){
-    return 'https://www.amazon.co.jp/dp/' + window.GEAR_DIRECT_ASIN[clean] + '?tag=amazonafdaiki-22';
-  }
-  return 'https://www.amazon.co.jp/s?k=' + encodeURIComponent(clean) + '&tag=amazonafdaiki-22';
+  return window.YMGear.getAffiliate(keyword).amazonUrl;
 }
 function gearRakutenLink(keyword){
-  var clean = keyword.replace('(来月分)','');
-  var searchUrl = 'https://search.rakuten.co.jp/search/mall/' + encodeURIComponent(clean) + '/';
-  var pcValue = encodeURIComponent(searchUrl);
-  return 'https://hb.afl.rakuten.co.jp/hgc/' + window.RAKUTEN_ID + '/?pc=' + pcValue + '&m=' + pcValue;
+  return window.YMGear.getAffiliate(keyword).rakutenUrl;
 }
 function gearRenderIcon(catKey, strokeColor){
   var iconType = window.GEAR_ICONS[catKey];
@@ -220,21 +211,28 @@ function gearRenderCard(c, mid, position){
 }
 
 (function(){
-  document.querySelectorAll('[data-gear-variants]').forEach(function(container){
-    var variants;
-    try { variants = JSON.parse(container.getAttribute('data-gear-variants')); } catch(e) { return; }
-    var mid = container.getAttribute('data-gear-mid');
-    var now = new Date();
-    var month = now.getMonth() + 1;
-    var cards = null;
-    for(var key in variants){
-      if(variants[key].indexOf(month) !== -1){ cards = JSON.parse(key); break; }
-    }
-    if(!cards){
-      var firstKey = Object.keys(variants)[0];
-      cards = JSON.parse(firstKey);
-    }
-    var html = cards.map(function(c, i){ return gearRenderCard(c, mid, i+1); }).join('');
-    container.innerHTML = html;
-  });
+  var containers = document.querySelectorAll('[data-gear-variants]');
+  if(!containers.length) return;
+  // アフィリエイトURLの共通マスタ（gear-affiliate.json）取得を待ってから描画する。
+  // 取得に失敗してもYMGear側のデフォルト値で継続するため、装備表示自体は壊れない。
+  window.YMGear.loadAffiliateData().then(renderAll, renderAll);
+  function renderAll(){
+    containers.forEach(function(container){
+      var variants;
+      try { variants = JSON.parse(container.getAttribute('data-gear-variants')); } catch(e) { return; }
+      var mid = container.getAttribute('data-gear-mid');
+      var now = new Date();
+      var month = now.getMonth() + 1;
+      var cards = null;
+      for(var key in variants){
+        if(variants[key].indexOf(month) !== -1){ cards = JSON.parse(key); break; }
+      }
+      if(!cards){
+        var firstKey = Object.keys(variants)[0];
+        cards = JSON.parse(firstKey);
+      }
+      var html = cards.map(function(c, i){ return gearRenderCard(c, mid, i+1); }).join('');
+      container.innerHTML = html;
+    });
+  }
 })();

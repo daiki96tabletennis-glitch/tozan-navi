@@ -35,6 +35,9 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import gen_recommend_gear  # noqa: E402  (診断用月別装備JSONの生成。gear-data.json変更時に同時更新するため)
+
 SITE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH = os.path.join(SITE_ROOT, "data", "mountains.json")
 GEAR_DATA_PATH = os.path.join(SITE_ROOT, "data", "gear-data.json")
@@ -873,6 +876,7 @@ def render_scripts(mt):
         f"{hero_photo}"
         f"{NEARBY_STICKY_SCRIPT}"
         "\n\n"
+        '<script src="../../assets/js/gear-common.js"></script>\n'
         '<script src="../../assets/js/mountain.js"></script>'
     )
 
@@ -1030,6 +1034,13 @@ def main():
             print(f"ERROR: {e}", file=sys.stderr)
 
     print(f"\n完了: 変更 {changed} / 変更なし {unchanged} / エラー {len(errors)}")
+
+    # 山ページ生成と連動して、診断用の月別軽量装備JSON（recommend-gear/*.json）も
+    # gear-data.json から再生成する（dry-runやエラー時は実行しない）。
+    if not args.dry_run and not errors:
+        written = gen_recommend_gear.generate()
+        print(f"診断用装備JSONを更新: {len(written)} ファイル")
+
     if errors:
         sys.exit(1)
 
