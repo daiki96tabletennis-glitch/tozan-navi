@@ -1095,13 +1095,6 @@ const RARE_CLASSES = {ultra:'rare-ultra',high:'rare-high',mid:'rare-mid',low:'ra
 const SEASON_MAP = {1:'winter',2:'winter',3:'spring',4:'spring',5:'spring',6:'summer',7:'summer',8:'summer',9:'fall',10:'fall',11:'fall',12:'winter'};
 const CURRENT_SEASON = SEASON_MAP[new Date().getMonth()+1];
 
-function getAffilItems(m){
-  const c = m.coeffMax||20;
-  if(c>=50) return [{label:'登山靴（上級向け）',link:'https://www.amazon.co.jp/s?k=登山靴+ゴアテックス'},{label:'ヘルメット',link:'https://www.amazon.co.jp/s?k=登山+ヘルメット'}];
-  if(c>=30) return [{label:'トレッキングシューズ',link:'https://www.amazon.co.jp/s?k=トレッキングシューズ'},{label:'トレッキングポール',link:'https://www.amazon.co.jp/s?k=トレッキングポール'}];
-  return [{label:'ハイキングシューズ',link:'https://www.amazon.co.jp/s?k=ハイキングシューズ'},{label:'デイパック 20L',link:'https://www.amazon.co.jp/s?k=デイパック+登山+20L'}];
-}
-
 const answers={};
 let current=0;
 const TOTAL=12;
