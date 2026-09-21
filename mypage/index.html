@@ -1387,17 +1387,185 @@ function buildShareCanvas(cb){
   });
 }
 
+function compactShareDate(value){
+  var s=String(value||'');
+  var m=s.match(/(\d{4})\D+(\d{1,2})\D+(\d{1,2})/);
+  if(m) return m[1]+'.'+('0'+m[2]).slice(-2)+'.'+('0'+m[3]).slice(-2);
+  m=s.match(/(\d{4})\D+(\d{1,2})/);
+  return m?m[1]+'.'+('0'+m[2]).slice(-2):s.replace(/\//g,'.');
+}
+
+function shareWrapText(ctx,text,x,y,maxWidth,lineHeight,maxLines){
+  var chars=Array.from(String(text||'')), line='', lines=[];
+  chars.forEach(function(ch){
+    var next=line+ch;
+    if(line && ctx.measureText(next).width>maxWidth){ lines.push(line); line=ch; }
+    else line=next;
+  });
+  if(line) lines.push(line);
+  lines=lines.slice(0,maxLines||2);
+  lines.forEach(function(v,i){ ctx.fillText(v,x,y+i*lineHeight); });
+  return lines.length;
+}
+
+function drawPhotoBadgeShare(ctx,d,W,H,dateText,cb){
+  var photo=_sharePhotoImage;
+  var scale=Math.max(W/photo.naturalWidth,H/photo.naturalHeight);
+  var dw=photo.naturalWidth*scale,dh=photo.naturalHeight*scale;
+  var dx=(W-dw)/2,dy=(H-dh)/2;
+  ctx.drawImage(photo,dx,dy,dw,dh);
+
+  // 写真の色を残しながら、バッジだけが読みやすくなる最小限の陰影。
+  var shade=ctx.createLinearGradient(0,0,0,H);
+  shade.addColorStop(0,'rgba(0,0,0,.08)');
+  shade.addColorStop(.48,'rgba(0,0,0,0)');
+  shade.addColorStop(1,'rgba(0,0,0,.28)');
+  ctx.fillStyle=shade; ctx.fillRect(0,0,W,H);
+
+  ctx.textAlign='left'; ctx.textBaseline='alphabetic';
+  ctx.fillStyle='rgba(255,255,255,.92)'; ctx.font='700 31px "Outfit", sans-serif';
+  ctx.shadowColor='rgba(0,0,0,.45)'; ctx.shadowBlur=12;
+  ctx.fillText('YAMATCH',46,65);
+  ctx.shadowColor='transparent'; ctx.shadowBlur=0;
+
+  var badgeSize=430;
+  var svg=makeBadgeSVG(d.name,dateText,d.key,d.c,badgeSize,d.area,d.elev);
+  var badgeImg=new Image();
+  badgeImg.onload=function(){
+    var bx=(W-badgeSize)/2,by=H-badgeSize-105;
+    ctx.save();
+    ctx.shadowColor='rgba(0,0,0,.60)'; ctx.shadowBlur=42; ctx.shadowOffsetY=20;
+    ctx.drawImage(badgeImg,bx,by,badgeSize,badgeSize);
+    ctx.restore();
+    cb(ctx.canvas);
+  };
+  badgeImg.onerror=function(){cb(null);};
+  badgeImg.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
+// バッジ本体と同じSVGを主役にした、SNS投稿向け4:5シェア画像。
+function buildShareCanvasV2(cb){
+  var d=_currentBadgeData;
+  if(!d){ cb(null); return; }
+  var W=1080,H=1350,canvas=document.createElement('canvas');
+  canvas.width=W; canvas.height=H;
+  var ctx=canvas.getContext('2d');
+  var dateText=compactShareDate(d.date);
+  var fontsReady=document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve();
+
+  fontsReady.then(function(){
+    if(_sharePhotoImage){ drawPhotoBadgeShare(ctx,d,W,H,dateText,cb); return; }
+    // 夜明け前の稜線を思わせる奥行きのある背景。
+    var bg=ctx.createLinearGradient(0,0,W,H);
+    bg.addColorStop(0,'#10251e'); bg.addColorStop(.44,d.c.acc); bg.addColorStop(1,'#07120f');
+    ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+    var glow=ctx.createRadialGradient(W*.78,H*.18,20,W*.78,H*.18,570);
+    glow.addColorStop(0,'rgba(247,199,119,.30)'); glow.addColorStop(.42,'rgba(219,170,98,.09)'); glow.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=glow; ctx.fillRect(0,0,W,H);
+
+    // 日の出と、対象の山容を使った三層の山並み。
+    ctx.beginPath(); ctx.arc(W*.80,235,92,0,Math.PI*2); ctx.fillStyle='rgba(244,210,139,.22)'; ctx.fill();
+    function drawShareRidge(profile,baseY,height,fill,offset,width){
+      var points=profile.line.split(' ').map(function(p){
+        var xy=p.split(',');
+        return [offset+parseFloat(xy[0])/100*width,baseY-(66-parseFloat(xy[1]))/54*height];
+      });
+      ctx.beginPath(); ctx.moveTo(offset,baseY);
+      points.forEach(function(p){ctx.lineTo(p[0],p[1]);});
+      ctx.lineTo(offset+width,baseY); ctx.closePath(); ctx.fillStyle=fill; ctx.fill();
+    }
+    drawShareRidge(PROFILES._default,660,220,'rgba(116,145,116,.22)',-80,W+160);
+    drawShareRidge(getBadgeProfile(d.key,d.name),735,300,'rgba(35,73,59,.52)',-45,W+90);
+    drawShareRidge(getBadgeProfile(d.key,d.name),835,330,'rgba(9,31,25,.78)',-120,W+240);
+
+    // 等高線を思わせる控えめな背景装飾。
+    ctx.strokeStyle='rgba(244,235,208,.075)'; ctx.lineWidth=3;
+    for(var n=0;n<6;n++){
+      ctx.beginPath();
+      var cy=230+n*190;
+      for(var x=-40;x<=W+40;x+=40){
+        var y=cy+Math.sin(x*.009+n*.9)*38+Math.sin(x*.021+n)*15;
+        if(x===-40) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+
+    // ポスターらしい細い金属色のフレーム。
+    ctx.strokeStyle='rgba(221,186,112,.34)'; ctx.lineWidth=2; roundRectPath(ctx,28,28,W-56,H-56,24); ctx.stroke();
+
+    ctx.textAlign='left'; ctx.textBaseline='alphabetic';
+    ctx.fillStyle='#f7f1df'; ctx.font='700 42px "Outfit", sans-serif';
+    ctx.fillText('YAMATCH',72,105);
+    ctx.fillStyle='rgba(247,241,223,.60)'; ctx.font='700 25px "Outfit", sans-serif';
+    ctx.letterSpacing='5px'; ctx.fillText('SUMMIT RECORD',72,148); ctx.letterSpacing='0px';
+    ctx.textAlign='right'; ctx.font='700 25px "Noto Serif JP", serif';
+    ctx.fillStyle='rgba(247,241,223,.72)'; ctx.fillText('ひとつ上の景色へ',W-72,110);
+
+    var badgeSize=560;
+    var svg=makeBadgeSVG(d.name,dateText,d.key,d.c,badgeSize,d.area,d.elev);
+    var badgeImg=new Image();
+    badgeImg.onload=function(){
+      var bx=(W-badgeSize)/2,by=205;
+      ctx.save();
+      ctx.shadowColor='rgba(0,0,0,.55)'; ctx.shadowBlur=46; ctx.shadowOffsetY=24;
+      ctx.drawImage(badgeImg,bx,by,badgeSize,badgeSize);
+      ctx.restore();
+
+      // 山名・県名・日付はバッジ内だけに置き、外側では体験の余韻を伝える。
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillStyle='#fff8e8'; ctx.font='900 48px "Noto Serif JP", serif';
+      ctx.fillText('最高の景色を、またひとつ。',W/2,855,W-150);
+      ctx.fillStyle='rgba(231,202,139,.78)'; ctx.font='700 23px "Outfit", sans-serif';
+      ctx.letterSpacing='7px'; ctx.fillText('SUMMIT COMPLETE',W/2,910); ctx.letterSpacing='0px';
+
+      var infoY=970;
+      if(d.outfit){
+        ctx.fillStyle='rgba(255,255,255,.09)'; roundRectPath(ctx,72,infoY,W-144,150,28); ctx.fill();
+        ctx.strokeStyle='rgba(255,255,255,.12)'; ctx.lineWidth=2; roundRectPath(ctx,72,infoY,W-144,150,28); ctx.stroke();
+        ctx.textAlign='left'; ctx.textBaseline='alphabetic';
+        ctx.fillStyle='#d9c99c'; ctx.font='800 23px "Noto Serif JP", sans-serif'; ctx.fillText('TODAY’S MOUNTAIN STYLE',112,infoY+43);
+        ctx.fillStyle='#fffaf0'; ctx.font='700 32px "Noto Serif JP", sans-serif';
+        shareWrapText(ctx,d.outfit,112,infoY+92,W-224,42,2);
+        infoY+=170;
+      }
+
+      if(d.tags&&d.tags.length){
+        ctx.textAlign='left'; ctx.textBaseline='middle'; ctx.font='700 27px "Noto Serif JP", sans-serif';
+        var tx=72,ty=infoY+10;
+        d.tags.forEach(function(tag){
+          var tw=ctx.measureText(tag).width+38;
+          if(tx+tw>W-72) return;
+          ctx.fillStyle='rgba(229,239,214,.13)'; roundRectPath(ctx,tx,ty,tw,48,24); ctx.fill();
+          ctx.fillStyle='#dce8c8'; ctx.fillText(tag,tx+19,ty+26); tx+=tw+12;
+        });
+      }
+
+      ctx.textAlign='center'; ctx.textBaseline='alphabetic';
+      ctx.fillStyle='rgba(255,250,240,.5)'; ctx.font='600 26px "Noto Serif JP", sans-serif';
+      ctx.fillText('山の記憶を、ひとつずつ。',W/2,H-48);
+      ctx.fillStyle='rgba(255,250,240,.25)'; ctx.fillRect(72,H-82,W-144,2);
+      cb(canvas);
+    };
+    badgeImg.onerror=function(){ cb(null); };
+    badgeImg.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+  });
+}
+
 function openShareCard(){
   var modal=document.getElementById('share-card-modal');
+  modal.style.display='flex';
+  renderShareCardPreview();
+}
+
+function renderShareCardPreview(){
   var loading=document.getElementById('share-card-loading');
   var img=document.getElementById('share-card-img');
   var dlBtn=document.getElementById('share-card-dl-btn');
   var shareBtn=document.getElementById('share-card-native-btn');
   loading.style.display='block'; img.style.display='none';
   dlBtn.style.display='none'; shareBtn.style.display='none';
-  modal.style.display='flex';
-  buildShareCanvas(function(canvas){
-    if(!canvas){ closeShareCard(); return; }
+  buildShareCanvasV2(function(canvas){
+    if(!canvas){ loading.textContent='画像を作成できませんでした'; return; }
     canvas.toBlob(function(blob){
       _shareCardBlob=blob;
       img.src=URL.createObjectURL(blob);
@@ -1407,6 +1575,29 @@ function openShareCard(){
       if(navigator.share) shareBtn.style.display='block';
     }, 'image/png');
   });
+}
+
+function handleSharePhoto(input){
+  var file=input.files&&input.files[0];
+  if(!file) return;
+  var reader=new FileReader();
+  reader.onload=function(){
+    var photo=new Image();
+    photo.onload=function(){
+      _sharePhotoImage=photo;
+      document.getElementById('share-photo-clear').style.display='block';
+      renderShareCardPreview();
+    };
+    photo.src=reader.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function clearSharePhoto(){
+  _sharePhotoImage=null;
+  document.getElementById('share-photo-input').value='';
+  document.getElementById('share-photo-clear').style.display='none';
+  renderShareCardPreview();
 }
 
 function closeShareCard(){
@@ -1436,6 +1627,7 @@ var _currentBadgeKey = null;
 var _currentBadgeUid = null;
 var _currentBadgeData = null;
 var _shareCardBlob = null;
+var _sharePhotoImage = null;
 
 function computeTags(mt, hasOutfit){
   var tags = [];
@@ -1657,6 +1849,11 @@ init();
 <!-- シェアカードモーダル -->
 <div id="share-card-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:600;align-items:center;justify-content:center;">
   <div style="background:#f0ede5;border-radius:20px;padding:18px;width:280px;text-align:center;">
+    <div style="font-size:14px;font-weight:800;color:#33452d;margin-bottom:4px;">写真にバッジを重ねる</div>
+    <div style="font-size:10px;color:#8a8078;line-height:1.5;margin-bottom:10px;">写真は端末内だけで処理され、アップロードされません</div>
+    <input id="share-photo-input" type="file" accept="image/*" onchange="handleSharePhoto(this)" style="display:none;">
+    <label for="share-photo-input" style="display:block;width:100%;padding:11px;background:#e5edda;border:1.5px solid #b9cba8;border-radius:11px;font-size:13px;font-weight:800;color:#405934;cursor:pointer;margin-bottom:7px;">📷 背景写真を選ぶ</label>
+    <button id="share-photo-clear" onclick="clearSharePhoto()" style="display:none;width:100%;padding:7px;background:transparent;border:none;font-size:11px;color:#8a8078;cursor:pointer;margin-bottom:3px;">写真を外してポスターに戻す</button>
     <div id="share-card-loading" style="padding:60px 0;font-size:13px;color:#7a7068;">作成中…</div>
     <img id="share-card-img" style="display:none;width:100%;border-radius:12px;margin-bottom:14px;" />
     <button id="share-card-native-btn" onclick="nativeShareCard()" style="display:none;width:100%;padding:13px;background:#4e6535;border:none;border-radius:12px;font-size:14px;font-weight:700;color:white;cursor:pointer;margin-bottom:8px;">📤 シェアする</button>
