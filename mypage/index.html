@@ -1422,17 +1422,25 @@ function drawPhotoBadgeShare(ctx,d,W,H,dateText,cb){
   shade.addColorStop(1,'rgba(0,0,0,.28)');
   ctx.fillStyle=shade; ctx.fillRect(0,0,W,H);
 
-  ctx.textAlign='left'; ctx.textBaseline='alphabetic';
-  ctx.fillStyle='rgba(255,255,255,.92)'; ctx.font='700 31px "Outfit", sans-serif';
-  ctx.shadowColor='rgba(0,0,0,.45)'; ctx.shadowBlur=12;
-  ctx.fillText('YAMATCH',46,65);
-  ctx.shadowColor='transparent'; ctx.shadowBlur=0;
+  // 左上は背景を敷かず、ロゴマークとGeorgia太字のワードマークだけを置く。
+  ctx.save();
+  ctx.shadowColor='rgba(0,0,0,.45)'; ctx.shadowBlur=12; ctx.shadowOffsetY=3;
+  ctx.fillStyle='#486b36';
+  ctx.beginPath(); ctx.moveTo(42,98); ctx.lineTo(88,28); ctx.lineTo(136,98); ctx.lineTo(117,98); ctx.lineTo(88,55); ctx.lineTo(60,98); ctx.closePath(); ctx.fill();
+  ctx.fillStyle='#8cab59';
+  ctx.beginPath(); ctx.moveTo(58,98); ctx.lineTo(88,53); ctx.lineTo(119,98); ctx.lineTo(105,98); ctx.lineTo(88,74); ctx.lineTo(73,98); ctx.closePath(); ctx.fill();
+  ctx.fillStyle='#294a2e';
+  ctx.beginPath(); ctx.moveTo(88,62); ctx.lineTo(111,98); ctx.lineTo(65,98); ctx.closePath(); ctx.fill();
+  ctx.fillStyle='#ffffff'; ctx.textAlign='left'; ctx.textBaseline='alphabetic';
+  ctx.font='bold 58px Georgia, serif'; ctx.fillText('Yamatch',156,91);
+  ctx.restore();
 
-  var badgeSize=430;
+  var badgeSize=Math.round(430*_shareBadgeScale);
   var svg=makeBadgeSVG(d.name,dateText,d.key,d.c,badgeSize,d.area,d.elev);
   var badgeImg=new Image();
   badgeImg.onload=function(){
-    var bx=(W-badgeSize)/2,by=H-badgeSize-105;
+    var bx=Math.max(20,Math.min(W-badgeSize-20,_shareBadgeX*W-badgeSize/2));
+    var by=Math.max(125,Math.min(H-badgeSize-30,_shareBadgeY*H-badgeSize/2));
     ctx.save();
     ctx.shadowColor='rgba(0,0,0,.60)'; ctx.shadowBlur=42; ctx.shadowOffsetY=20;
     ctx.drawImage(badgeImg,bx,by,badgeSize,badgeSize);
@@ -1557,16 +1565,21 @@ function openShareCard(){
   renderShareCardPreview();
 }
 
-function renderShareCardPreview(){
+function renderShareCardPreview(quiet){
+  var renderSeq=++_shareRenderSeq;
   var loading=document.getElementById('share-card-loading');
   var img=document.getElementById('share-card-img');
   var dlBtn=document.getElementById('share-card-dl-btn');
   var shareBtn=document.getElementById('share-card-native-btn');
-  loading.style.display='block'; img.style.display='none';
-  dlBtn.style.display='none'; shareBtn.style.display='none';
+  if(!quiet){
+    loading.style.display='block'; img.style.display='none';
+    dlBtn.style.display='none'; shareBtn.style.display='none';
+  }
   buildShareCanvasV2(function(canvas){
+    if(renderSeq!==_shareRenderSeq) return;
     if(!canvas){ loading.textContent='画像を作成できませんでした'; return; }
     canvas.toBlob(function(blob){
+      if(renderSeq!==_shareRenderSeq) return;
       _shareCardBlob=blob;
       img.src=URL.createObjectURL(blob);
       loading.style.display='none';
@@ -1586,6 +1599,7 @@ function handleSharePhoto(input){
     photo.onload=function(){
       _sharePhotoImage=photo;
       document.getElementById('share-photo-clear').style.display='block';
+      document.getElementById('share-placement-controls').style.display='block';
       renderShareCardPreview();
     };
     photo.src=reader.result;
@@ -1597,7 +1611,80 @@ function clearSharePhoto(){
   _sharePhotoImage=null;
   document.getElementById('share-photo-input').value='';
   document.getElementById('share-photo-clear').style.display='none';
+  document.getElementById('share-placement-controls').style.display='none';
   renderShareCardPreview();
+}
+
+var _sharePlacementTimer=null;
+function updateSharePlacement(kind,value){
+  if(kind==='x') _shareBadgeX=Number(value)/100;
+  if(kind==='y') _shareBadgeY=Number(value)/100;
+  if(kind==='size') _shareBadgeScale=Number(value)/100;
+  clearTimeout(_sharePlacementTimer);
+  _sharePlacementTimer=setTimeout(function(){renderShareCardPreview(true);},60);
+}
+
+var _sharePointers={};
+var _shareDragStart=null;
+var _sharePinchStart=null;
+function sharePointOnBadge(event,el){
+  var r=el.getBoundingClientRect();
+  var x=(event.clientX-r.left)/r.width,y=(event.clientY-r.top)/r.height;
+  var rx=(430*_shareBadgeScale/2)/1080;
+  var ry=(430*_shareBadgeScale/2)/1350;
+  var dx=(x-_shareBadgeX)/rx,dy=(y-_shareBadgeY)/ry;
+  return dx*dx+dy*dy<=1.35;
+}
+function shareGestureStart(event){
+  if(!_sharePhotoImage) return;
+  var ids=Object.keys(_sharePointers);
+  if(!ids.length&&!sharePointOnBadge(event,event.currentTarget)) return;
+  event.preventDefault();
+  try{event.currentTarget.setPointerCapture(event.pointerId);}catch(e){}
+  _sharePointers[event.pointerId]={x:event.clientX,y:event.clientY,type:event.pointerType};
+  ids=Object.keys(_sharePointers);
+  if(ids.length===1){
+    _shareDragStart={px:event.clientX,py:event.clientY,x:_shareBadgeX,y:_shareBadgeY};
+  }else if(ids.length===2){
+    var a=_sharePointers[ids[0]],b=_sharePointers[ids[1]];
+    if(a.type==='touch'&&b.type==='touch'){
+      _sharePinchStart={distance:Math.hypot(a.x-b.x,a.y-b.y),scale:_shareBadgeScale};
+    }
+  }
+}
+function shareGestureMove(event){
+  if(!_sharePointers[event.pointerId]) return;
+  event.preventDefault();
+  _sharePointers[event.pointerId].x=event.clientX;
+  _sharePointers[event.pointerId].y=event.clientY;
+  var ids=Object.keys(_sharePointers),el=event.currentTarget;
+  if(ids.length>=2&&_sharePinchStart){
+    var a=_sharePointers[ids[0]],b=_sharePointers[ids[1]];
+    if(a.type==='touch'&&b.type==='touch'){
+      var dist=Math.hypot(a.x-b.x,a.y-b.y);
+      _shareBadgeScale=Math.max(.65,Math.min(1.4,_sharePinchStart.scale*dist/Math.max(1,_sharePinchStart.distance)));
+      var sizeSlider=document.getElementById('share-size-slider');
+      if(sizeSlider) sizeSlider.value=Math.round(_shareBadgeScale*100);
+    }
+  }else if(ids.length===1&&_shareDragStart){
+    var r=el.getBoundingClientRect();
+    _shareBadgeX=Math.max(.04,Math.min(.96,_shareDragStart.x+(event.clientX-_shareDragStart.px)/r.width));
+    _shareBadgeY=Math.max(.10,Math.min(.94,_shareDragStart.y+(event.clientY-_shareDragStart.py)/r.height));
+    var xs=document.getElementById('share-x-slider'),ys=document.getElementById('share-y-slider');
+    if(xs) xs.value=Math.round(_shareBadgeX*100);
+    if(ys) ys.value=Math.round(_shareBadgeY*100);
+  }
+  clearTimeout(_sharePlacementTimer);
+  _sharePlacementTimer=setTimeout(function(){renderShareCardPreview(true);},45);
+}
+function shareGestureEnd(event){
+  if(_sharePointers[event.pointerId]) delete _sharePointers[event.pointerId];
+  _sharePinchStart=null;
+  var ids=Object.keys(_sharePointers);
+  if(ids.length===1){
+    var p=_sharePointers[ids[0]];
+    _shareDragStart={px:p.x,py:p.y,x:_shareBadgeX,y:_shareBadgeY};
+  }else if(!ids.length){ _shareDragStart=null; }
 }
 
 function closeShareCard(){
@@ -1628,6 +1715,10 @@ var _currentBadgeUid = null;
 var _currentBadgeData = null;
 var _shareCardBlob = null;
 var _sharePhotoImage = null;
+var _shareBadgeX = .50;
+var _shareBadgeY = .76;
+var _shareBadgeScale = 1;
+var _shareRenderSeq = 0;
 
 function computeTags(mt, hasOutfit){
   var tags = [];
@@ -1854,8 +1945,15 @@ init();
     <input id="share-photo-input" type="file" accept="image/*" onchange="handleSharePhoto(this)" style="display:none;">
     <label for="share-photo-input" style="display:block;width:100%;padding:11px;background:#e5edda;border:1.5px solid #b9cba8;border-radius:11px;font-size:13px;font-weight:800;color:#405934;cursor:pointer;margin-bottom:7px;">📷 背景写真を選ぶ</label>
     <button id="share-photo-clear" onclick="clearSharePhoto()" style="display:none;width:100%;padding:7px;background:transparent;border:none;font-size:11px;color:#8a8078;cursor:pointer;margin-bottom:3px;">写真を外してポスターに戻す</button>
+    <div id="share-placement-controls" style="display:none;background:white;border:1px solid #ded9cf;border-radius:11px;padding:9px 11px;margin-bottom:10px;text-align:left;">
+      <div style="font-size:10px;font-weight:800;color:#5d6557;margin-bottom:7px;">バッジの位置・大きさ</div>
+      <div style="font-size:9px;color:#8f877b;line-height:1.45;margin-bottom:7px;">バッジをドラッグして移動<br>スマホでは2本指で拡大・縮小</div>
+      <label style="display:grid;grid-template-columns:30px 1fr;align-items:center;gap:7px;font-size:10px;color:#81786c;margin-bottom:5px;">横<input id="share-x-slider" type="range" min="18" max="82" value="50" oninput="updateSharePlacement('x',this.value)" style="width:100%;accent-color:#4e6535;"></label>
+      <label style="display:grid;grid-template-columns:30px 1fr;align-items:center;gap:7px;font-size:10px;color:#81786c;margin-bottom:5px;">縦<input id="share-y-slider" type="range" min="30" max="85" value="76" oninput="updateSharePlacement('y',this.value)" style="width:100%;accent-color:#4e6535;"></label>
+      <label style="display:grid;grid-template-columns:30px 1fr;align-items:center;gap:7px;font-size:10px;color:#81786c;">大小<input id="share-size-slider" type="range" min="65" max="140" value="100" oninput="updateSharePlacement('size',this.value)" style="width:100%;accent-color:#4e6535;"></label>
+    </div>
     <div id="share-card-loading" style="padding:60px 0;font-size:13px;color:#7a7068;">作成中…</div>
-    <img id="share-card-img" style="display:none;width:100%;border-radius:12px;margin-bottom:14px;" />
+    <img id="share-card-img" draggable="false" onpointerdown="shareGestureStart(event)" onpointermove="shareGestureMove(event)" onpointerup="shareGestureEnd(event)" onpointercancel="shareGestureEnd(event)" style="display:none;width:100%;border-radius:12px;margin-bottom:14px;touch-action:none;user-select:none;-webkit-user-drag:none;cursor:grab;" />
     <button id="share-card-native-btn" onclick="nativeShareCard()" style="display:none;width:100%;padding:13px;background:#4e6535;border:none;border-radius:12px;font-size:14px;font-weight:700;color:white;cursor:pointer;margin-bottom:8px;">📤 シェアする</button>
     <button id="share-card-dl-btn" onclick="downloadShareCard()" style="display:none;width:100%;padding:13px;background:white;border:1.5px solid #ccc8c0;border-radius:12px;font-size:14px;font-weight:700;color:#3a3530;cursor:pointer;margin-bottom:8px;">📥 画像を保存</button>
     <button onclick="closeShareCard()" style="width:100%;padding:11px;background:transparent;border:none;font-size:13px;color:#a09888;cursor:pointer;">閉じる</button>
