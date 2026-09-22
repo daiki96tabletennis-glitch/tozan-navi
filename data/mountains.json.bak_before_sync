@@ -155,7 +155,7 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 79,
+    "trainTimeYokohama": 73,
     "trainTimeOmiya": 115,
     "trainTimeShinjuku": 88,
     "trainInfo": "新宿→渋沢（小田急小田原線・約1時間13分/700円）→大倉バス停（神奈川中央交通バス約15分/270円）",
@@ -739,7 +739,7 @@
     "driveTimeOmiya": 145,
     "nearestStation": "奥多摩駅",
     "trainLine": "JR青梅線",
-    "trainTimeShinjuku": 155,
+    "trainTimeShinjuku": 110,
     "trainInfo": "新宿→奥多摩駅（青梅線約90分）→バス約20分",
     "lines": [
       "JR青梅線"
@@ -947,8 +947,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 135,
-    "trainTimeOmiya": 221,
+    "trainTimeYokohama": 150,
+    "trainTimeOmiya": 220,
     "trainInfo": "新宿→伊東（特急踊り子・約100分/3,890円）→天城縦走登山口（東海バス約55分/1,340円）",
     "trainTimeShinjuku": 190,
     "photos": [
@@ -1157,8 +1157,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 155,
-    "trainTimeOmiya": 151,
+    "trainTimeYokohama": 184,
+    "trainTimeOmiya": 180,
     "faq": [
       {
         "question": "大菩薩嶺は初心者でも登れますか？難易度とコース定数を解説",
@@ -1340,8 +1340,8 @@
     "transfersShinjuku": 2,
     "transfersYokohama": 3,
     "transfersOmiya": 3,
-    "trainTimeYokohama": 222,
-    "trainTimeOmiya": 187,
+    "trainTimeYokohama": 203,
+    "trainTimeOmiya": 156,
     "trainInfo": "新宿→池袋（JR埼京線・約9分/170円）→西武秩父（特急ちちぶ・約100分/1,686円）→日向大谷口（小鹿野町営バス約60分・薬師の湯乗継/500円）",
     "trainTimeShinjuku": 174,
     "photos": [
@@ -1925,7 +1925,7 @@
     ],
     "nearestStation": "前橋駅",
     "trainLine": "東武伊勢崎線・両毛線",
-    "trainTimeShinjuku": 175,
+    "trainTimeShinjuku": 150,
     "trainInfo": "新宿→高崎（新幹線約50分）→前橋（両毛線約15分）→バス約75分（土日直通）",
     "busUrl": "https://kan-etsu.net/publics/index/42/",
     "driveTimeTachikawa": 185,
@@ -2159,9 +2159,7 @@
     "climbedBtnStyle": "flat",
     "weatherBeforeIntro": true,
     "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→新宿駅→JR特急かいじ約1時間23分→塩山駅→栄和交通バス「焼山峠・大弛峠線」約1時間25分→大弛峠",
-    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン約30分→新宿駅→JR特急かいじ約1時間23分→塩山駅→栄和交通バス「焼山峠・大弛峠線」約1時間25分→大弛峠",
-    "trainTimeYokohama": 202,
-    "trainTimeOmiya": 198
+    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン約30分→新宿駅→JR特急かいじ約1時間23分→塩山駅→栄和交通バス「焼山峠・大弛峠線」約1時間25分→大弛峠"
   },
   {
     "id": "houou",
@@ -2518,8 +2516,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 207,
-    "trainTimeOmiya": 203,
+    "trainTimeYokohama": 233,
+    "trainTimeOmiya": 178,
     "faq": [
       {
         "question": "男体山は初心者でも登れますか？難易度とコース定数を解説",
@@ -3100,7 +3098,7 @@
     "driveTimeOmiya": 200,
     "nearestStation": "茅野駅",
     "trainLine": "JR中央線",
-    "trainTimeShinjuku": 180,
+    "trainTimeShinjuku": 120,
     "trainInfo": "新宿→茅野駅（中央線特急約90分）→バス約30分",
     "lines": [
       "JR中央線",
@@ -3301,7 +3299,7 @@
     "driveTimeOmiya": 215,
     "nearestStation": "茅野駅",
     "trainLine": "JR中央線",
-    "trainTimeShinjuku": 200,
+    "trainTimeShinjuku": 120,
     "trainInfo": "新宿→茅野駅（中央線特急約90分）→バス約30分",
     "lines": [
       "JR中央線",
@@ -3516,8 +3514,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 1,
-    "trainTimeYokohama": 184,
-    "trainTimeOmiya": 113,
+    "trainTimeYokohama": 168,
+    "trainTimeOmiya": 126,
     "trainTimeShinjuku": 219,
     "trainInfo": "バスタ新宿→車坂峠（高峰高原ホテル前）直通高速バス「JRバス関東」約3時間5分/3,100円",
     "faq": [
@@ -3702,7 +3700,7 @@
     "driveTimeOmiya": 135,
     "nearestStation": "土合駅",
     "trainLine": "JR上越線",
-    "trainTimeShinjuku": 203,
+    "trainTimeShinjuku": 130,
     "trainInfo": "新宿→土合駅（上越線約115分）徒歩→ロープウェイ",
     "lines": [
       "JR上越線・上越新幹線"
@@ -4894,7 +4892,7 @@
     "driveTimeOmiya": 255,
     "trainLine": "特急あずさ・大糸線",
     "nearestStation": "白馬駅",
-    "trainTimeShinjuku": 247,
+    "trainTimeShinjuku": 175,
     "trainInfo": "新宿→白馬（直通あずさ1日1往復のみ・約3時間40分/指定席8,270円）→バス約27分（猿倉線・事前予約制/2,000円）※直通を逃すと松本で大糸線に乗換",
     "lines": [
       "特急あずさ・大糸線"
@@ -5312,7 +5310,7 @@
     "driveTimeOmiya": 345,
     "nearestStation": "立山駅",
     "trainLine": "富山地方鉄道",
-    "trainTimeShinjuku": 260,
+    "trainTimeShinjuku": 210,
     "trainInfo": "新宿→富山（新幹線約130分）→立山（地鉄約60分）→ケーブル＋高原バス",
     "lines": [],
     "driveTimeTachikawa": 325,
@@ -5519,7 +5517,7 @@
     "driveTimeOmiya": 345,
     "nearestStation": "立山駅",
     "trainLine": "富山地方鉄道",
-    "trainTimeShinjuku": 270,
+    "trainTimeShinjuku": 240,
     "trainInfo": "新宿→富山（新幹線約130分）→立山（地鉄約60分）→ケーブル＋高原バス＋徒歩",
     "lines": [],
     "driveTimeTachikawa": 330,
@@ -6125,7 +6123,7 @@
     "driveTimeOmiya": 215,
     "nearestStation": "妙高高原駅",
     "trainLine": "えちごトキめき鉄道",
-    "trainTimeShinjuku": 183,
+    "trainTimeShinjuku": 150,
     "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約20分",
     "lines": [
       "北陸新幹線・特急しなの"
@@ -6330,7 +6328,7 @@
     "driveTimeOmiya": 175,
     "nearestStation": "六日町駅",
     "trainLine": "JR上越線",
-    "trainTimeShinjuku": 180,
+    "trainTimeShinjuku": 150,
     "trainInfo": "新宿→越後湯沢（新幹線約80分）→六日町（上越線約15分）→タクシー約30分",
     "lines": [
       "JR上越線・上越新幹線"
@@ -7125,7 +7123,7 @@
     "driveTimeOmiya": 150,
     "nearestStation": "長野原草津口駅",
     "trainLine": "JR吾妻線",
-    "trainTimeShinjuku": 185,
+    "trainTimeShinjuku": 203,
     "trainInfo": "新宿→長野原草津口（吾妻線約120分）→バス約30分",
     "lines": [],
     "driveTimeTachikawa": 250,
@@ -7945,8 +7943,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 1,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 61,
-    "trainTimeOmiya": 111,
+    "trainTimeYokohama": 80,
+    "trainTimeOmiya": 130,
     "faq": [
       {
         "question": "大山（丹沢）は初心者でも登れますか？難易度とコース定数を解説",
@@ -8123,7 +8121,7 @@
     "driveTimeOmiya": 90,
     "nearestStation": "渋沢駅",
     "trainLine": "小田急線",
-    "trainTimeShinjuku": 85,
+    "trainTimeShinjuku": 90,
     "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約25分",
     "lines": [
       "小田急線"
@@ -8317,7 +8315,7 @@
     "driveTimeOmiya": 60,
     "nearestStation": "渋沢駅",
     "trainLine": "小田急線",
-    "trainTimeShinjuku": 85,
+    "trainTimeShinjuku": 95,
     "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約30分",
     "lines": [
       "小田急線"
@@ -8517,7 +8515,7 @@
     "driveTimeOmiya": 85,
     "nearestStation": "藤野駅",
     "trainLine": "JR中央線",
-    "trainTimeShinjuku": 74,
+    "trainTimeShinjuku": 75,
     "trainInfo": "新宿→藤野駅（中央線約55分）→バス約20分",
     "lines": [
       "JR中央線",
@@ -8718,7 +8716,7 @@
     "driveTimeOmiya": 110,
     "nearestStation": "仙石原バス停",
     "trainLine": "小田急線",
-    "trainTimeShinjuku": 160,
+    "trainTimeShinjuku": 100,
     "trainInfo": "新宿→箱根湯本（小田急約80分）→バス約20分",
     "lines": [
       "小田急線"
@@ -8958,9 +8956,7 @@
     "ogDescription": "茅ヶ岳の難易度は初〜中級、登山初心者でも挑戦しやすい。山梨県、新宿から車で約2時間10分、コース定数16〜25、日帰り可能。「ニセ八ヶ岳」の異名を持つ。二百名山の著者・深田久弥の終焉の地。",
     "climbedBtnStyle": "flat",
     "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→新宿駅→JR特急あずさ約1時間45分→韮崎駅→山梨峡北交通バス「韮崎深田公園線」約25分→深田記念公園",
-    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン約30分→新宿駅→JR特急あずさ約1時間45分→韮崎駅→山梨峡北交通バス「韮崎深田公園線」約25分→深田記念公園",
-    "trainTimeYokohama": 164,
-    "trainTimeOmiya": 160
+    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン約30分→新宿駅→JR特急あずさ約1時間45分→韮崎駅→山梨峡北交通バス「韮崎深田公園線」約25分→深田記念公園"
   },
   {
     "id": "kentoku",
@@ -9122,8 +9118,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 151,
-    "trainTimeOmiya": 147,
+    "trainTimeYokohama": 154,
+    "trainTimeOmiya": 150,
     "faq": [
       {
         "question": "乾徳山は初心者でも登れますか？難易度とコース定数を解説",
@@ -9341,9 +9337,7 @@
     "ogDescription": "日向山の難易度は初〜中級、登山初心者でも挑戦しやすい。山梨県、新宿から車で約2時間25分、コース定数17〜24、日帰り可能。山頂が花崗岩の白砂のビーチ状になる奇景が人気。甲斐駒ヶ岳の眺望も絶景。",
     "climbedBtnStyle": "flat",
     "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→新宿駅→JR特急あずさ約1時間55分→小淵沢駅→タクシー約20分→尾白川渓谷駐車場",
-    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン約30分→新宿駅→JR特急あずさ約1時間55分→小淵沢駅→タクシー約20分→尾白川渓谷駐車場",
-    "trainTimeYokohama": 169,
-    "trainTimeOmiya": 165
+    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン約30分→新宿駅→JR特急あずさ約1時間55分→小淵沢駅→タクシー約20分→尾白川渓谷駐車場"
   },
   {
     "id": "bonori",
@@ -9492,7 +9486,7 @@
     "driveTimeOmiya": 90,
     "nearestStation": "飯能駅",
     "trainLine": "西武池袋線",
-    "trainTimeShinjuku": 104,
+    "trainTimeShinjuku": 90,
     "trainInfo": "池袋→飯能駅（西武池袋線約55分）→バス約35分",
     "lines": [
       "西武池袋線"
@@ -9685,7 +9679,7 @@
     "driveTimeOmiya": 100,
     "nearestStation": "御嶽駅",
     "trainLine": "JR青梅線",
-    "trainTimeShinjuku": 90,
+    "trainTimeShinjuku": 100,
     "trainInfo": "新宿→御嶽駅（青梅線約75分）→バス約25分",
     "lines": [
       "JR青梅線"
@@ -10266,7 +10260,7 @@
     "driveTimeOmiya": 255,
     "trainLine": "特急あずさ・大糸線",
     "nearestStation": "信濃大町駅",
-    "trainTimeShinjuku": 225,
+    "trainTimeShinjuku": 195,
     "trainInfo": "新宿→松本（特急約150分）→信濃大町（大糸線約30分）→バス約55分＋徒歩",
     "lines": [
       "特急あずさ・大糸線"
@@ -10481,8 +10475,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 155,
-    "trainTimeOmiya": 151,
+    "trainTimeYokohama": 184,
+    "trainTimeOmiya": 180,
     "faq": [
       {
         "question": "小金沢山は初心者でも登れますか？難易度とコース定数を解説",
@@ -11189,7 +11183,7 @@
     "driveTimeOmiya": 225,
     "nearestStation": "湯田中駅",
     "trainLine": "長野電鉄",
-    "trainTimeShinjuku": 180,
+    "trainTimeShinjuku": 145,
     "trainInfo": "新宿→長野（新幹線約90分）→湯田中（長野電鉄約40分）→バス約15分",
     "lines": [],
     "driveTimeTachikawa": 200,
@@ -11380,7 +11374,7 @@
     "driveTimeOmiya": 245,
     "nearestStation": "長野駅",
     "trainLine": "JR北陸新幹線",
-    "trainTimeShinjuku": 145,
+    "trainTimeShinjuku": 120,
     "trainInfo": "新宿→長野駅（新幹線約90分）→バス約30分",
     "lines": [
       "北陸新幹線・特急しなの"
@@ -11580,7 +11574,7 @@
     "driveTimeOmiya": 190,
     "nearestStation": "黒姫駅",
     "trainLine": "JR信越本線",
-    "trainTimeShinjuku": 173,
+    "trainTimeShinjuku": 130,
     "trainInfo": "新宿→長野（新幹線約90分）→黒姫（信越本線約25分）→バス",
     "lines": [
       "北陸新幹線・特急しなの"
@@ -11779,8 +11773,8 @@
     "transfersShinjuku": 3,
     "transfersYokohama": 4,
     "transfersOmiya": 4,
-    "trainTimeYokohama": 221,
-    "trainTimeOmiya": 217,
+    "trainTimeYokohama": 208,
+    "trainTimeOmiya": 204,
     "trainTimeShinjuku": 187,
     "photos": [
       "/images/mountains/kenashiyama/image-20260811122139855-35wvf.jpg",
@@ -12146,8 +12140,8 @@
     "transfersShinjuku": 2,
     "transfersYokohama": 3,
     "transfersOmiya": 3,
-    "trainTimeYokohama": 194,
-    "trainTimeOmiya": 190,
+    "trainTimeYokohama": 269,
+    "trainTimeOmiya": 265,
     "faq": [
       {
         "question": "七面山は初心者でも登れますか？難易度とコース定数を解説",
@@ -12532,10 +12526,7 @@
     "climbedBtnStyle": "flat",
     "weatherBeforeIntro": false,
     "trainAccessYokohama": "横浜駅→JR湘南新宿ライン他約2時間15分→三峰口駅→西武観光バス「三峯神社線」約40分→秩父湖バス停",
-    "trainAccessOmiya": "大宮駅→JR八高線他約2時間10分→三峰口駅→西武観光バス「三峯神社線」約40分→秩父湖バス停",
-    "trainTimeShinjuku": 165,
-    "trainTimeYokohama": 200,
-    "trainTimeOmiya": 195
+    "trainAccessOmiya": "大宮駅→JR八高線他約2時間10分→三峰口駅→西武観光バス「三峯神社線」約40分→秩父湖バス停"
   },
   {
     "id": "yarigatake2",
@@ -12714,9 +12705,7 @@
     "ogDescription": "笊ヶ岳の難易度は上級、初心者には不向き。山梨県、新宿から車で約3時間15分、コース定数58〜58、宿泊推奨。南アルプス深部の難峰。標高差2000m超の急登が続く上級者向けの山。",
     "climbedBtnStyle": "flat",
     "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→新宿駅→JR特急かいじ約1時間27分→甲府駅→JR特急ふじかわ約53分→身延駅→早川町乗合バス約40分→大島バス停→予約制乗合タクシー約20分→老平登山口",
-    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン約30分→新宿駅→JR特急かいじ約1時間27分→甲府駅→JR特急ふじかわ約53分→身延駅→早川町乗合バス約40分→大島バス停→予約制乗合タクシー約20分→老平登山口",
-    "trainTimeYokohama": 254,
-    "trainTimeOmiya": 250
+    "trainAccessOmiya": "大宮駅→JR湘南新宿ライン約30分→新宿駅→JR特急かいじ約1時間27分→甲府駅→JR特急ふじかわ約53分→身延駅→早川町乗合バス約40分→大島バス停→予約制乗合タクシー約20分→老平登山口"
   },
   {
     "id": "gakedake",
@@ -14166,7 +14155,7 @@
     "driveTimeOmiya": 145,
     "nearestStation": "越後湯沢駅",
     "trainLine": "JR上越新幹線",
-    "trainTimeShinjuku": 163,
+    "trainTimeShinjuku": 120,
     "trainInfo": "新宿→越後湯沢（新幹線約80分）→バス約40分",
     "lines": [],
     "driveTimeTachikawa": 255,
@@ -14541,7 +14530,7 @@
     "driveTimeOmiya": 230,
     "nearestStation": "妙高高原駅",
     "trainLine": "えちごトキめき鉄道",
-    "trainTimeShinjuku": 203,
+    "trainTimeShinjuku": 150,
     "trainInfo": "新宿→上越妙高（新幹線約110分）→妙高高原（トキ鉄約15分）→バス約40分",
     "lines": [
       "北陸新幹線・特急しなの"
@@ -15295,7 +15284,7 @@
     "driveTimeOmiya": 280,
     "trainLine": "特急あずさ・大糸線",
     "nearestStation": "神城駅",
-    "trainTimeShinjuku": 220,
+    "trainTimeShinjuku": 175,
     "trainInfo": "新宿→松本（特急約150分）→神城（大糸線約50分）→バス＋ゴンドラ",
     "lines": [
       "特急あずさ・大糸線"
@@ -15678,7 +15667,7 @@
     "driveTimeOmiya": 225,
     "nearestStation": "駒ヶ根駅",
     "trainLine": "JR飯田線",
-    "trainTimeShinjuku": 280,
+    "trainTimeShinjuku": 160,
     "trainInfo": "新宿→駒ヶ根（特急約155分）→バス→ロープウェイ",
     "lines": [],
     "driveTimeTachikawa": 180,
@@ -16076,7 +16065,7 @@
     "driveTimeOmiya": 310,
     "trainLine": "特急あずさ・大糸線",
     "nearestStation": "白馬駅",
-    "trainTimeShinjuku": 235,
+    "trainTimeShinjuku": 170,
     "trainInfo": "新宿→松本（特急約150分）→白馬（大糸線約45分）→バス＋ゴンドラ",
     "lines": [
       "特急あずさ・大糸線"
@@ -19043,7 +19032,7 @@
     "driveTimeOmiya": 325,
     "nearestStation": "駒ヶ根駅",
     "trainLine": "JR飯田線",
-    "trainTimeShinjuku": 233,
+    "trainTimeShinjuku": 175,
     "trainInfo": "新宿→駒ヶ根（特急約155分）→バス→ロープウェイ＋徒歩",
     "lines": [],
     "driveTimeTachikawa": 210,
@@ -19625,7 +19614,7 @@
     "driveTimeOmiya": 365,
     "trainLine": "特急あずさ・大糸線",
     "nearestStation": "信濃大町駅",
-    "trainTimeShinjuku": 280,
+    "trainTimeShinjuku": 190,
     "trainInfo": "新宿→松本（特急約150分）→信濃大町（大糸線約30分）→バス約55分",
     "lines": [
       "特急あずさ・大糸線"
@@ -20170,7 +20159,7 @@
     "driveTimeOmiya": 120,
     "nearestStation": "浜金谷駅",
     "trainLine": "JR内房線",
-    "trainTimeShinjuku": 150,
+    "trainTimeShinjuku": 100,
     "trainInfo": "新宿→君津（総武線快速約60分）→浜金谷（内房線約35分）徒歩",
     "lines": [
       "JR内房線"
@@ -20185,8 +20174,8 @@
     "transfersShinjuku": 0,
     "transfersYokohama": 2,
     "transfersOmiya": 1,
-    "trainTimeYokohama": 150,
-    "trainTimeOmiya": 167,
+    "trainTimeYokohama": 125,
+    "trainTimeOmiya": 145,
     "faq": [
       {
         "question": "鋸山は初心者でも登れますか？難易度とコース定数を解説",
@@ -20569,7 +20558,7 @@
     "driveTimeOmiya": 110,
     "nearestStation": "軍畑駅",
     "trainLine": "JR青梅線",
-    "trainTimeShinjuku": 90,
+    "trainTimeShinjuku": 85,
     "trainInfo": "新宿→軍畑駅（青梅線約75分）徒歩10分",
     "lines": [
       "JR青梅線"
@@ -20769,7 +20758,7 @@
     "driveTimeOmiya": 60,
     "nearestStation": "飯能駅",
     "trainLine": "西武池袋線",
-    "trainTimeShinjuku": 89,
+    "trainTimeShinjuku": 60,
     "trainInfo": "池袋→飯能駅（西武池袋線約55分）徒歩20分",
     "lines": [
       "西武池袋線"
@@ -20784,8 +20773,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 1,
-    "trainTimeYokohama": 118,
-    "trainTimeOmiya": 100,
+    "trainTimeYokohama": 123,
+    "trainTimeOmiya": 105,
     "faq": [
       {
         "question": "天覧山・多峯主山は初心者でも登れますか？難易度とコース定数を解説",
@@ -20967,7 +20956,7 @@
     "driveTimeOmiya": 65,
     "nearestStation": "高麗駅",
     "trainLine": "西武池袋線",
-    "trainTimeShinjuku": 79,
+    "trainTimeShinjuku": 65,
     "trainInfo": "池袋→高麗駅（西武池袋線約55分）徒歩15分",
     "lines": [
       "西武池袋線"
@@ -21148,7 +21137,7 @@
     "driveTimeOmiya": 75,
     "nearestStation": "正丸駅",
     "trainLine": "西武秩父線",
-    "trainTimeShinjuku": 94,
+    "trainTimeShinjuku": 80,
     "trainInfo": "池袋→正丸駅（西武秩父線約70分）徒歩10分",
     "lines": [
       "西武秩父線"
@@ -21326,7 +21315,7 @@
     "driveTimeOmiya": 80,
     "nearestStation": "西武秩父駅",
     "trainLine": "西武秩父線",
-    "trainTimeShinjuku": 134,
+    "trainTimeShinjuku": 100,
     "trainInfo": "池袋→西武秩父駅（西武秩父線約80分）→タクシー",
     "lines": [
       "西武秩父線"
@@ -21509,7 +21498,7 @@
     "driveTimeOmiya": 110,
     "nearestStation": "渋沢駅",
     "trainLine": "小田急線",
-    "trainTimeShinjuku": 105,
+    "trainTimeShinjuku": 95,
     "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約30分",
     "lines": [
       "小田急線"
@@ -21694,7 +21683,7 @@
     "driveTimeOmiya": 110,
     "nearestStation": "渋沢駅",
     "trainLine": "小田急線",
-    "trainTimeShinjuku": 105,
+    "trainTimeShinjuku": 90,
     "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約25分",
     "lines": [
       "小田急線"
@@ -21858,7 +21847,7 @@
     "driveTimeOmiya": 105,
     "nearestStation": "鶴巻温泉駅",
     "trainLine": "小田急線",
-    "trainTimeShinjuku": 70,
+    "trainTimeShinjuku": 65,
     "trainInfo": "新宿→鶴巻温泉駅（小田急約55分）徒歩15分",
     "lines": [
       "小田急線"
@@ -22039,7 +22028,7 @@
     "driveTimeOmiya": 90,
     "nearestStation": "高尾駅",
     "trainLine": "JR中央線",
-    "trainTimeShinjuku": 80,
+    "trainTimeShinjuku": 65,
     "trainInfo": "新宿→高尾駅（中央線約40分）→バス約25分",
     "lines": [
       "JR中央線",
@@ -22237,8 +22226,8 @@
     "transfersShinjuku": 0,
     "transfersYokohama": 1,
     "transfersOmiya": 1,
-    "trainTimeYokohama": 134,
-    "trainTimeOmiya": 130,
+    "trainTimeYokohama": 114,
+    "trainTimeOmiya": 110,
     "photos": [
       "/images/mountains/takagawayama/image-20260811121246176-yvsyz.jpg",
       "/images/mountains/takagawayama/image-20260811121248807-9trff.jpg"
@@ -22306,7 +22295,7 @@
     "amapUrl": "https://maps.apple.com/?ll=35.6248,139.2284&q=小仏バス停",
     "nearestStation": "高尾駅",
     "trainLine": "京王線",
-    "trainTimeShinjuku": 80,
+    "trainTimeShinjuku": 65,
     "trainInfo": "新宿→高尾山口駅（京王線約50分）→高尾山縦走 または 高尾駅→バス約25分→小仏",
     "routes": [
       {
@@ -22649,7 +22638,7 @@
     "trainAccess": "新宿駅→越後湯沢駅→バス→平標登山口（季節）",
     "trainLine": "JR上越線・上越新幹線",
     "nearestStation": "越後湯沢駅",
-    "trainTimeShinjuku": 143,
+    "trainTimeShinjuku": 105,
     "trainInfo": "東京駅→越後湯沢駅（上越新幹線約70分）→平標登山口バス停（バス約35分）",
     "lines": [
       "JR上越線・上越新幹線"
@@ -22830,7 +22819,7 @@
     "trainAccess": "新宿駅→岩井駅→徒歩約30分→福満寺（富山登山口）",
     "trainLine": "JR内房線",
     "nearestStation": "岩井駅",
-    "trainTimeShinjuku": 199,
+    "trainTimeShinjuku": 120,
     "trainInfo": "新宿→（横須賀線・内房線）→岩井駅（約2時間）→徒歩約20分で登山口",
     "lines": [
       "JR内房線"
@@ -22947,8 +22936,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 224,
-    "trainTimeOmiya": 229,
+    "trainTimeYokohama": 145,
+    "trainTimeOmiya": 150,
     "faq": [
       {
         "question": "富山（とみさん）の難易度とコース定数は？",
@@ -22993,7 +22982,7 @@
     "trainAccess": "新宿駅→岩井駅→市営バス→天神郷バス停→徒歩",
     "trainLine": "JR内房線",
     "nearestStation": "岩井駅",
-    "trainTimeShinjuku": 189,
+    "trainTimeShinjuku": 120,
     "trainInfo": "新宿→（横須賀線・内房線）→岩井駅（約2時間）→バス約15分（天神郷）→徒歩5分",
     "lines": [
       "JR内房線"
@@ -23128,8 +23117,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 3,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 214,
-    "trainTimeOmiya": 219,
+    "trainTimeYokohama": 145,
+    "trainTimeOmiya": 150,
     "faq": [
       {
         "question": "伊予ヶ岳の難易度とコース定数は？",
@@ -23301,8 +23290,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 100,
-    "trainTimeOmiya": 156,
+    "trainTimeYokohama": 120,
+    "trainTimeOmiya": 190,
     "photos": [
       "/images/mountains/myojingatake/image-20260811115712197-vvnyv.jpg",
       "/images/mountains/myojingatake/image-20260811115714177-2zjo7.jpg"
@@ -23346,7 +23335,7 @@
     "trainAccess": "新宿駅→新松田駅→箱根登山バス約40分→地蔵堂バス停",
     "trainLine": "小田急線",
     "nearestStation": "大雄山駅",
-    "trainTimeShinjuku": 120,
+    "trainTimeShinjuku": 85,
     "trainInfo": "新宿→小田原（小田急約70分）→大雄山（大雄山線約15分）→バス約20分→地蔵堂",
     "lines": [
       "小田急線"
@@ -23468,7 +23457,7 @@
     "transfersYokohama": 2,
     "transfersOmiya": 2,
     "trainTimeYokohama": 104,
-    "trainTimeOmiya": 150,
+    "trainTimeOmiya": 187,
     "faq": [
       {
         "question": "矢倉岳の難易度とコース定数は？",
@@ -23508,7 +23497,7 @@
     "trainAccess": "新宿駅→奥多摩駅→バス約15分→川乗橋バス停",
     "trainLine": "JR青梅線",
     "nearestStation": "奥多摩駅",
-    "trainTimeShinjuku": 130,
+    "trainTimeShinjuku": 110,
     "trainInfo": "新宿→立川（中央線約35分）→奥多摩（青梅線約60分）→バス約10分→川乗橋バス停",
     "lines": [
       "JR青梅線"
@@ -23685,7 +23674,7 @@
     "trainAccess": "新宿駅→奥多摩駅→バス→東日原バス停→徒歩",
     "trainLine": "JR青梅線",
     "nearestStation": "奥多摩駅",
-    "trainTimeShinjuku": 130,
+    "trainTimeShinjuku": 110,
     "trainInfo": "新宿→立川（中央線約35分）→奥多摩（青梅線約60分）→バス約35分→東日原バス停",
     "lines": [
       "JR青梅線"
@@ -24064,8 +24053,8 @@
     "transfersShinjuku": 0,
     "transfersYokohama": 1,
     "transfersOmiya": 1,
-    "trainTimeYokohama": 73,
-    "trainTimeOmiya": 108,
+    "trainTimeYokohama": 124,
+    "trainTimeOmiya": 120,
     "courseCoefficientRange": "12〜18",
     "faq": [
       {
@@ -24119,7 +24108,7 @@
     "driveYokohama": 120,
     "driveOmiya": 70,
     "driveTimeShinjuku": 90,
-    "trainTimeShinjuku": 124,
+    "trainTimeShinjuku": 80,
     "nearestStation": "芦ヶ久保駅",
     "trainLine": "西武秩父線",
     "trainInfo": "池袋→飯能→芦ヶ久保駅（西武池袋・秩父線約80分）→徒歩30分",
@@ -24313,8 +24302,8 @@
     "transfersShinjuku": 2,
     "transfersYokohama": 2,
     "transfersOmiya": 3,
-    "trainTimeYokohama": 93,
-    "trainTimeOmiya": 113,
+    "trainTimeYokohama": 150,
+    "trainTimeOmiya": 170,
     "courseCoefficientRange": "10〜16",
     "faq": [
       {
@@ -24421,8 +24410,8 @@
     "transfersShinjuku": 0,
     "transfersYokohama": 1,
     "transfersOmiya": 1,
-    "trainTimeYokohama": 116,
-    "trainTimeOmiya": 112,
+    "trainTimeYokohama": 144,
+    "trainTimeOmiya": 140,
     "seasonCalendar": [
       "s-ok",
       "s-ok",
@@ -24545,8 +24534,8 @@
     "transfersShinjuku": 0,
     "transfersYokohama": 1,
     "transfersOmiya": 1,
-    "trainTimeYokohama": 80,
-    "trainTimeOmiya": 115,
+    "trainTimeYokohama": 169,
+    "trainTimeOmiya": 165,
     "seasonCalendar": [
       "s-ok",
       "s-ok",
@@ -24685,7 +24674,7 @@
     "transfersYokohama": 1,
     "transfersOmiya": 2,
     "trainTimeYokohama": 106,
-    "trainTimeOmiya": 141,
+    "trainTimeOmiya": 148,
     "courseCoefficientRange": "10〜14",
     "faq": [
       {
@@ -24739,7 +24728,7 @@
     "driveYokohama": 145,
     "driveOmiya": 55,
     "driveTimeShinjuku": 110,
-    "trainTimeShinjuku": 125,
+    "trainTimeShinjuku": 90,
     "nearestStation": "栃木駅",
     "trainLine": "JR両毛線・東武日光線",
     "trainInfo": "新宿→小山→栃木駅（JR湘南新宿ライン＋両毛線約90分）→徒歩30分〜謙信平",
@@ -24931,8 +24920,8 @@
     "transfersShinjuku": 0,
     "transfersYokohama": 1,
     "transfersOmiya": 1,
-    "trainTimeYokohama": 80,
-    "trainTimeOmiya": 115,
+    "trainTimeYokohama": 124,
+    "trainTimeOmiya": 120,
     "courseCoefficientRange": "15〜22",
     "faq": [
       {
@@ -25054,8 +25043,8 @@
     "transfersShinjuku": 0,
     "transfersYokohama": 1,
     "transfersOmiya": 1,
-    "trainTimeYokohama": 132,
-    "trainTimeOmiya": 128,
+    "trainTimeYokohama": 109,
+    "trainTimeOmiya": 105,
     "courseCoefficientRange": "14〜20",
     "faq": [
       {
@@ -25106,7 +25095,7 @@
     "trailhead": "井戸バス停（三国山ルート）",
     "driveShinjuku": 70,
     "driveTimeShinjuku": 70,
-    "trainTimeShinjuku": 95,
+    "trainTimeShinjuku": 70,
     "nearestStation": "上野原駅",
     "trainLine": "JR中央本線",
     "trainInfo": "新宿→上野原駅（中央本線特快55分）→バス25分→井戸バス停",
@@ -25300,8 +25289,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 124,
-    "trainTimeOmiya": 120,
+    "trainTimeYokohama": 139,
+    "trainTimeOmiya": 135,
     "courseCoefficientRange": "14〜20",
     "faq": [
       {
@@ -25352,7 +25341,7 @@
     "trailhead": "都民の森（三頭大滝コース）",
     "driveShinjuku": 70,
     "driveTimeShinjuku": 70,
-    "trainTimeShinjuku": 130,
+    "trainTimeShinjuku": 90,
     "nearestStation": "武蔵五日市駅",
     "trainLine": "JR五日市線",
     "trainInfo": "新宿→拝島→武蔵五日市駅（JR五日市線約1時間10分）→バス約50分→都民の森",
@@ -25485,7 +25474,7 @@
     "trailhead": "花折戸尾根登山口（奥多摩駅から徒歩）",
     "driveShinjuku": 80,
     "driveTimeShinjuku": 80,
-    "trainTimeShinjuku": 138,
+    "trainTimeShinjuku": 100,
     "nearestStation": "奥多摩駅",
     "trainLine": "JR青梅線",
     "trainInfo": "新宿→立川→奥多摩駅（JR青梅線約1時間40分）→徒歩30分→登山口",
@@ -25556,8 +25545,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 146,
-    "trainTimeOmiya": 168,
+    "trainTimeYokohama": 133,
+    "trainTimeOmiya": 155,
     "calLegend": [
       "アイゼン不要",
       "6本アイゼンで可"
@@ -25613,7 +25602,7 @@
     "trailhead": "御岳山（ケーブルカー利用可）→日の出山",
     "driveShinjuku": 65,
     "driveTimeShinjuku": 65,
-    "trainTimeShinjuku": 106,
+    "trainTimeShinjuku": 75,
     "nearestStation": "御嶽駅",
     "trainLine": "JR青梅線",
     "trainInfo": "新宿→立川→御嶽駅（JR青梅線約1時間10分）→バス10分→ケーブルカー→御岳山経由",
@@ -25863,7 +25852,7 @@
     "trailhead": "芦ヶ久保駅ルート登山口（徒歩15分）",
     "driveShinjuku": 80,
     "driveTimeShinjuku": 80,
-    "trainTimeShinjuku": 109,
+    "trainTimeShinjuku": 75,
     "nearestStation": "芦ヶ久保駅",
     "trainLine": "西武秩父線",
     "trainInfo": "池袋→芦ヶ久保駅（西武秩父線特急レッドアロー約1時間10分）→徒歩15分",
@@ -26058,8 +26047,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 232,
-    "trainTimeOmiya": 228,
+    "trainTimeYokohama": 159,
+    "trainTimeOmiya": 155,
     "photos": [
       "/images/mountains/juunigadake/image-20260811133514134-iik4h.jpg"
     ],
@@ -26188,8 +26177,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 178,
-    "trainTimeOmiya": 174,
+    "trainTimeYokohama": 179,
+    "trainTimeOmiya": 175,
     "calLegend": [
       "アイゼン不要",
       "6本アイゼンで可"
@@ -26314,8 +26303,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 1,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 97,
-    "trainTimeOmiya": 124,
+    "trainTimeYokohama": 53,
+    "trainTimeOmiya": 80,
     "courseCoefficientRange": "2〜5",
     "faq": [
       {
@@ -26366,7 +26355,7 @@
     "trailhead": "宝登山神社（長瀞駅から徒歩）",
     "driveShinjuku": 85,
     "driveTimeShinjuku": 85,
-    "trainTimeShinjuku": 189,
+    "trainTimeShinjuku": 90,
     "nearestStation": "長瀞駅",
     "trainLine": "秩父鉄道",
     "trainInfo": "池袋→西武秩父→御花畑→長瀞駅（秩父鉄道約1時間40分）→徒歩30分",
@@ -26490,7 +26479,7 @@
     "trailhead": "風戸登山口（皆野駅から徒歩40分）",
     "driveShinjuku": 100,
     "driveTimeShinjuku": 100,
-    "trainTimeShinjuku": 164,
+    "trainTimeShinjuku": 100,
     "nearestStation": "皆野駅",
     "trainLine": "秩父鉄道",
     "trainInfo": "池袋→西武秩父→御花畑→皆野駅（秩父鉄道約1時間50分）→徒歩",
@@ -26615,7 +26604,7 @@
     "trailhead": "嵐山渓谷入口（武蔵嵐山駅から徒歩）",
     "driveShinjuku": 75,
     "driveTimeShinjuku": 75,
-    "trainTimeShinjuku": 99,
+    "trainTimeShinjuku": 70,
     "nearestStation": "武蔵嵐山駅",
     "trainLine": "東武東上線",
     "trainInfo": "池袋→武蔵嵐山駅（東武東上線急行約55分）→徒歩20分→嵐山渓谷",
@@ -26810,8 +26799,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 183,
-    "trainTimeOmiya": 179,
+    "trainTimeYokohama": 159,
+    "trainTimeOmiya": 155,
     "courseCoefficientRange": "10〜16",
     "faq": [
       {
@@ -26982,8 +26971,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 2,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 224,
-    "trainTimeOmiya": 220,
+    "trainTimeYokohama": 164,
+    "trainTimeOmiya": 160,
     "photos": [
       "/images/mountains/mitsutoge/image-20260811132812052-j5sf1.jpg",
       "/images/mountains/mitsutoge/image-20260811132814535-v2yqx.jpg"
@@ -27041,7 +27030,7 @@
     "trainAccess": "新宿駅→北鎌倉駅→徒歩約10分→天園ハイキングコース入口",
     "trainLine": "JR横須賀線",
     "nearestStation": "北鎌倉駅",
-    "trainTimeShinjuku": 65,
+    "trainTimeShinjuku": 55,
     "trailhead": "天園ハイキングコース入口（北鎌倉駅徒歩10分）",
     "description": "北鎌倉駅〜鎌倉駅を結ぶ尾根歩きコース。大平山（標高159m）を最高峰に、古都の森を縫うように歩ける。寺社・展望・自然の三拍子が揃い、電車アクセスの良さは関東トップクラス。",
     "season": "通年",
@@ -27165,7 +27154,7 @@
     "trainAccess": "新宿駅→逗子駅→バス約23分→前田橋バス停→徒歩約30分→大楠山登山口",
     "trainLine": "JR横須賀線",
     "nearestStation": "逗子駅",
-    "trainTimeShinjuku": 118,
+    "trainTimeShinjuku": 60,
     "trailhead": "大楠山登山口（逗子駅バス20分）",
     "description": "三浦半島の最高峰。山頂からは相模湾・東京湾・富士山・箱根を一望できる360度の大展望が魅力。低山ながらアップダウンのある変化に富んだコースが楽しめ、逗子・葉山・衣笠の各駅からアクセス可能。",
     "season": "通年",
@@ -27237,8 +27226,8 @@
     "transfersShinjuku": 1,
     "transfersYokohama": 0,
     "transfersOmiya": 2,
-    "trainTimeYokohama": 86,
-    "trainTimeOmiya": 148,
+    "trainTimeYokohama": 83,
+    "trainTimeOmiya": 145,
     "courseCoefficientRange": "5〜9",
     "faq": [
       {
@@ -27288,7 +27277,7 @@
     "trainAccess": "新宿駅→小川町駅→バス→パトリアおがわ→徒歩約20分→官ノ倉山登山口",
     "trainLine": "東武東上線",
     "nearestStation": "小川町駅",
-    "trainTimeShinjuku": 114,
+    "trainTimeShinjuku": 80,
     "trailhead": "官ノ倉山登山口（パトリアおがわから徒歩20分）",
     "description": "東武東上線の小川町駅からバスでアクセスできる埼玉の低山。岩場のある山頂からは関東平野と奥武蔵の山並みが望める。石尊山との縦走が定番で、春の花・秋の紅葉も人気。",
     "season": "通年",

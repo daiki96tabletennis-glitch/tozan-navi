@@ -255,9 +255,29 @@ def check_json_html_mismatch(mountains, root=None):
                     issues.append({'id': mid, 'field': field, 'json': fare, 'html': html_fare,
                                     'problem': 'アクセス表の運賃(ts-fare-val)がJSONと不一致'})
 
-        # 注: trainTimeShinjuku/Yokohama/Omiya は、どの山ページのHTML/JSからも参照されていない
-        # 孤立フィールドであることが判明した（ts-time-valとの連動関係が元から存在しない）ため、
-        # 所要時間の同期チェックは見送っている。運用ガイド(README.md)の既知課題に記載。
+        # 所要時間：trainTimeShinjuku/Yokohama/Omiya は山個別ページの表示には使われないが、
+        # トップページ(index.html)のgetTrainTime()/getAccessTier()がソート・フィルター・
+        # アクセス難易度バッジ(良好/ふつも/要計画)の判定に直接使用している。
+        # 本文の権威データ(ts-time-val data-*属性)とズレると、そのままトップページの
+        # 表示・絞り込み結果が実際のアクセス時間と食い違うため、運賃と同様に同期チェックする。
+        # (2026-09-22: 84山121件のズレを検出・同期済み。以後の再発防止のためのチェック)
+        tsval_m = re.search(r'<span class="ts-time-val"([^>]*)>', html)
+        if tsval_m:
+            html_attrs = dict(re.findall(r'data-(\w+)="([^"]*)"', tsval_m.group(1)))
+            for dep, field in (('shinjuku', 'trainTimeShinjuku'), ('yokohama', 'trainTimeYokohama'), ('omiya', 'trainTimeOmiya')):
+                json_min = m.get(field)
+                if json_min is None:
+                    continue
+                html_str = html_attrs.get(dep)
+                if html_str is None:
+                    continue
+                dur_m = re.match(r'約(?:(\d+)時間)?(?:(\d+)分)?', html_str)
+                if not dur_m or (dur_m.group(1) is None and dur_m.group(2) is None):
+                    continue
+                html_min = (int(dur_m.group(1)) if dur_m.group(1) else 0) * 60 + (int(dur_m.group(2)) if dur_m.group(2) else 0)
+                if html_min != json_min:
+                    issues.append({'id': mid, 'field': field, 'json': json_min, 'html': html_min,
+                                    'problem': 'トップページの所要時間(ts-time-val)がJSONと不一致(ソート/フィルター/アクセスバッジに影響)'})
 
         # FAQPage JSON-LD内の「アクセス方法」回答文にある運賃額が、JSONの運賃3種と食い違っていないか
         # （駐車場代・ロープウェイ代等の無関係な金額を拾わないよう、FAQPageのアクセス関連の回答文だけに絞る）
