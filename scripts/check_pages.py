@@ -324,6 +324,51 @@ def check_transit_section(mountains, root=None):
     return issues
 
 
+def check_train_routes_schema(mountains):
+    """trainRoutes構造化データの整合性チェック（2026-09-23 Phase5で追加）。
+    - trainAccessHtmlとtrainRoutesの有無が食い違っていないか（Phase3移行で全131山に同時付与したはず）
+    - trainRoutes.routesの各出発地が、legsを持つなら構造的に妥当か（station必須、終点以外はmethod.icon/line必須）
+    """
+    issues = []
+    for m in mountains:
+        mid = m['id']
+        has_html = bool(m.get('trainAccessHtml'))
+        train_routes = m.get('trainRoutes')
+        has_routes = bool(train_routes)
+
+        if has_html and not has_routes:
+            issues.append({'id': mid, 'problem': 'trainAccessHtmlはあるのにtrainRoutesが無い（Phase3移行漏れの疑い）'})
+            continue
+        if has_routes and not has_html:
+            issues.append({'id': mid, 'problem': 'trainRoutesはあるのにtrainAccessHtmlが無い（想定外の組み合わせ）'})
+
+        if not train_routes:
+            continue
+
+        routes = train_routes.get('routes') or {}
+        any_legs = False
+        for dep, route in routes.items():
+            if not route:
+                continue
+            legs = route.get('legs') or []
+            if not legs:
+                continue
+            any_legs = True
+            for i, leg in enumerate(legs):
+                if not leg.get('station'):
+                    issues.append({'id': mid, 'problem': f'trainRoutes.routes.{dep}.legs[{i}]にstationが無い'})
+                is_last = (i == len(legs) - 1)
+                method = leg.get('method')
+                if not is_last:
+                    if not method:
+                        issues.append({'id': mid, 'problem': f'trainRoutes.routes.{dep}.legs[{i}]（終点以外）にmethodが無い'})
+                    elif not method.get('icon') or not method.get('line'):
+                        issues.append({'id': mid, 'problem': f'trainRoutes.routes.{dep}.legs[{i}].methodにicon/lineが欠けている'})
+        if has_html and not any_legs:
+            issues.append({'id': mid, 'problem': 'trainRoutesはあるがどの出発地にもlegsが無い（パース失敗の疑い）'})
+    return issues
+
+
 # --- レポート出力 ----------------------------------------------------------
 
 def section(title, issues, formatter):
@@ -355,6 +400,7 @@ def main():
     title_dupes = check_title_duplicates(titles)
     mismatch_issues = check_json_html_mismatch(mountains)
     transit_issues = check_transit_section(mountains)
+    train_routes_issues = check_train_routes_schema(mountains)
 
     report = []
     report.append('# YAMATCH 公開前自動チェック結果\n')
@@ -374,12 +420,15 @@ def main():
                                          if 'json' in it else '')))
     report.append(section('7. 交通情報の欠損／不整合', transit_issues,
                            lambda it: f"{it['id']}: {it['problem']}"))
+    report.append(section('8. trainRoutes構造化データの整合性', train_routes_issues,
+                           lambda it: f"{it['id']}: {it['problem']}"))
 
     text = '\n'.join(report)
     print(text)
 
     total = (len(broken_links) + len(broken_images) + len(required_field_issues)
-             + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues))
+             + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues)
+             + len(train_routes_issues))
 
     if args.json:
         with open(args.json, 'w', encoding='utf-8') as f:
@@ -391,6 +440,7 @@ def main():
                 'title_duplicates': title_dupes,
                 'json_html_mismatch': mismatch_issues,
                 'transit_issues': transit_issues,
+                'train_routes_issues': train_routes_issues,
                 'total': total,
             }, f, ensure_ascii=False, indent=2)
 

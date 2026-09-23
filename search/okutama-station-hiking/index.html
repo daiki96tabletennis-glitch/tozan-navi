@@ -185,5 +185,29 @@ footer a{color:#7a9a7a;}</style>
   <p style="margin-top:6px;"><a href="/terms/">利用規約</a> | <a href="/privacy/">プライバシーポリシー</a></p>
   <p style="margin-top:8px;opacity:0.6;">© 2026 Yamatch. All rights reserved.</p>
 </footer>
+<script>
+(function(){
+  // .mc-train内の「新宿から約◯分」表記をtrainTimeShinjukuで更新。
+  // それ以外の駅（立川・北千住・池袋・小仏バス停等）からの言及は対応データが無いためスコープ外、変更しない。
+  // 2026-09-23移行: 交通アクセスデータ構造化計画Phase4（検索ページ）。
+  var SHINJUKU_RE = /新宿から約\d+分/;
+  fetch('/data/mountains.json').then(function(r){ return r.json(); }).then(function(mountains){
+    var byId = {};
+    mountains.forEach(function(m){ byId[m.id] = m; });
+    document.querySelectorAll('.mountain-card').forEach(function(card){
+      var link = card.querySelector('a[href^="/mountains/"]');
+      if(!link) return;
+      var m = link.getAttribute('href').match(/\/mountains\/(\w+)\//);
+      if(!m) return;
+      var mt = byId[m[1]];
+      if(!mt || mt.trainTimeShinjuku === undefined || mt.trainTimeShinjuku === null) return;
+      var trainEl = card.querySelector('.mc-train');
+      if(!trainEl || !SHINJUKU_RE.test(trainEl.innerHTML)) return;
+      trainEl.innerHTML = trainEl.innerHTML.replace(SHINJUKU_RE, '新宿から約' + mt.trainTimeShinjuku + '分');
+    });
+  }).catch(function(){});
+})();
+</script>
+
 </body>
 </html>

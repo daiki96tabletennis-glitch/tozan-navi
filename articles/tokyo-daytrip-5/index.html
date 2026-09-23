@@ -415,4 +415,81 @@ function gearRenderCard(c, mid, position){
   });
 })();
 </script>
+<script>
+(function(){
+  // trainTimeShinjuku/fareShinjuku(・複数区間の場合はtrainRoutesのlegs)から
+  // 「電車」info-rowの文言を更新。元テキストの言い回しはそのまま活かし、
+  // 所要時間・運賃の数値部分のみを最新値に置き換える。
+  // 所要時間の「約◯分」表記が1箇所のみなら合計時間(trainTimeShinjuku)、
+  // 2箇所以上あれば（区間ごとの内訳表記のため）legsの各区間durationMinで順に置き換える。
+  // 2026-09-23移行: 交通アクセスデータ構造化計画Phase4。
+  function ymFormatDurationMin(min){
+    if(min === null || min === undefined) return '';
+    var h = Math.floor(min / 60), m = min % 60;
+    if(h && m) return h + '時間' + m + '分';
+    if(h) return h + '時間';
+    return m + '分';
+  }
+  function ymFormatFareYen(yen){
+    if(yen === null || yen === undefined) return null;
+    var s = String(yen);
+    var out = '';
+    for(var i = 0; i < s.length; i++){
+      if(i > 0 && (s.length - i) % 3 === 0) out += ',';
+      out += s.charAt(i);
+    }
+    return out;
+  }
+  var DURATION_RE = /約\d+時間\d+分|約\d+時間|約\d+分/g;
+  function ymUpdateInfoValText(text, mt){
+    var matches = text.match(DURATION_RE) || [];
+    var newText = text;
+    if(matches.length <= 1){
+      if(mt.trainTimeShinjuku !== null && mt.trainTimeShinjuku !== undefined){
+        newText = newText.replace(DURATION_RE, '約' + ymFormatDurationMin(mt.trainTimeShinjuku));
+      }
+    } else {
+      var legs = (mt.trainRoutes && mt.trainRoutes.routes && mt.trainRoutes.routes.shinjuku) ? mt.trainRoutes.routes.shinjuku.legs : null;
+      var idx = 0;
+      newText = newText.replace(DURATION_RE, function(m){
+        var replacement = m;
+        if(legs && legs[idx] && legs[idx].durationMin !== null && legs[idx].durationMin !== undefined){
+          replacement = '約' + ymFormatDurationMin(legs[idx].durationMin);
+        }
+        idx++;
+        return replacement;
+      });
+    }
+    if(mt.fareShinjuku !== null && mt.fareShinjuku !== undefined){
+      newText = newText.replace(/[\d,]+円/, ymFormatFareYen(mt.fareShinjuku) + '円');
+    }
+    return newText;
+  }
+  document.querySelectorAll('.mountain-card-header[data-mountain-id]').forEach(function(header){
+    var mid = header.getAttribute('data-mountain-id');
+    var card = header.closest('.mountain-card');
+    if(!card) return;
+    var rows = card.querySelectorAll('.info-row');
+    for(var i = 0; i < rows.length; i++){
+      var label = rows[i].querySelector('.info-label');
+      if(!label || label.textContent.indexOf('電車') === -1) continue;
+      var val = rows[i].querySelector('.info-val');
+      if(!val) break;
+      window.__ymPendingRows = window.__ymPendingRows || [];
+      window.__ymPendingRows.push({ mid: mid, val: val });
+      break;
+    }
+  });
+  fetch('/data/mountains.json').then(function(r){ return r.json(); }).then(function(mountains){
+    var byId = {};
+    mountains.forEach(function(m){ byId[m.id] = m; });
+    (window.__ymPendingRows || []).forEach(function(item){
+      var mt = byId[item.mid];
+      if(!mt || mt.trainTimeShinjuku === undefined || mt.trainTimeShinjuku === null) return;
+      item.val.textContent = ymUpdateInfoValText(item.val.textContent, mt);
+    });
+  }).catch(function(){});
+})();
+</script>
+
 </body></html>

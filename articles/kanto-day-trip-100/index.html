@@ -894,6 +894,59 @@ document.addEventListener('DOMContentLoaded', function(){
 })();
 </script>
 <script>
+(function(){
+  // trainRoutes(構造化データ)から「電車・バス」アクセス欄の文言を更新。
+  // 2026-09-23移行: 交通アクセスデータ構造化計画Phase4。
+  function ymFormatDurationMin(min){
+    if(min === null || min === undefined) return '';
+    var h = Math.floor(min / 60), m = min % 60;
+    if(h && m) return h + '時間' + m + '分';
+    if(h) return h + '時間';
+    return m + '分';
+  }
+  function ymTransitArrowText(route){
+    if(!route || !route.legs || route.legs.length < 2) return null;
+    var legs = route.legs;
+    var parts = [legs[0].station];
+    for(var i = 0; i < legs.length - 1; i++){
+      var leg = legs[i];
+      var nextStation = legs[i + 1].station;
+      if(!leg.method){ parts.push(nextStation); continue; }
+      var durText = (leg.durationMin === null || leg.durationMin === undefined) ? '' : '約' + ymFormatDurationMin(leg.durationMin);
+      parts.push(nextStation + '（' + leg.method.line + durText + '）');
+    }
+    return parts.join('→');
+  }
+  function ymApplyTransitAccess(section, mt){
+    if(!mt || !mt.trainRoutes || !mt.trainRoutes.routes) return;
+    var route = mt.trainRoutes.routes.shinjuku;
+    var text = ymTransitArrowText(route);
+    if(!text) return;
+    var infoBlocks = section.querySelectorAll('.access-info');
+    for(var i = 0; i < infoBlocks.length; i++){
+      var label = infoBlocks[i].querySelector('.access-label');
+      if(label && label.textContent.indexOf('電車・バス') !== -1){
+        var spans = infoBlocks[i].querySelectorAll('span');
+        var valueSpan = null;
+        for(var j = 0; j < spans.length; j++){
+          if(spans[j] !== label){ valueSpan = spans[j]; break; }
+        }
+        if(valueSpan) valueSpan.textContent = text;
+        break;
+      }
+    }
+  }
+  fetch('/data/mountains.json').then(function(r){ return r.json(); }).then(function(mountains){
+    var byId = {};
+    mountains.forEach(function(m){ byId[m.id] = m; });
+    document.querySelectorAll('.mountain-section[data-mountain-id]').forEach(function(section){
+      var mid = section.getAttribute('data-mountain-id');
+      ymApplyTransitAccess(section, byId[mid]);
+    });
+  }).catch(function(){});
+})();
+</script>
+<script>
 window.GEAR_ICONS = {
   shoe:'img',winter_shoe:'img',rain:'img',down:'img',pole:'img',crampon:'img',axe:'img',
   bottle:'<path d="M9 2h6M10 2v4l-3 3v11a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9l-3-3V2"/>',

@@ -656,6 +656,69 @@ body{padding-bottom:80px}
 </script>
 
 <script>
+// 交通所要時間の文言をmountains.jsonのtrainRoutes(構造化データ)から生成する共通関数。
+// 「トップページの表示は変わらない」構造化移行に合わせて、記事側の手書き交通時間文も
+// ここから自動生成する（数値の二重管理を解消するため。2026-09-23対応）。
+function ymFormatDurationMin(min){
+  if(min === null || min === undefined) return '';
+  var h = Math.floor(min / 60), m = min % 60;
+  if(h && m) return h + '時間' + m + '分';
+  if(h) return h + '時間';
+  return m + '分';
+}
+function ymTransitShortText(route){
+  if(!route || !route.legs || !route.legs.length) return null;
+  var first = route.legs[0];
+  if(!first.method) return null;
+  return first.station + 'から' + first.method.line + 'で約' + ymFormatDurationMin(first.durationMin);
+}
+function ymTransitFullText(route){
+  if(!route || !route.legs || !route.legs.length) return null;
+  var legs = route.legs;
+  var parts = [];
+  for(var i = 0; i < legs.length - 1; i++){
+    var leg = legs[i];
+    if(!leg.method) continue;
+    var durText = (leg.durationMin === null || leg.durationMin === undefined) ? '' : '約' + ymFormatDurationMin(leg.durationMin);
+    parts.push(leg.station + 'から' + leg.method.line + 'で' + durText);
+  }
+  if(!parts.length) return null;
+  var lastStation = legs[legs.length - 1].station;
+  return parts.join('、') + '→' + lastStation + '。';
+}
+function ymApplyTransitText(section, mt){
+  if(!mt || !mt.trainRoutes || !mt.trainRoutes.routes) return;
+  var route = mt.trainRoutes.routes.shinjuku;
+  if(!route) return;
+
+  var shortText = ymTransitShortText(route);
+  if(shortText){
+    var chips = section.querySelectorAll('.meta-chip');
+    for(var i = 0; i < chips.length; i++){
+      if(chips[i].innerHTML.indexOf('M2 7 H14 L20 11.5 V17 H2 Z') !== -1){
+        var svg = chips[i].querySelector('svg');
+        while(chips[i].firstChild){ chips[i].removeChild(chips[i].firstChild); }
+        if(svg) chips[i].appendChild(svg);
+        chips[i].appendChild(document.createTextNode(' ' + shortText));
+        break;
+      }
+    }
+  }
+
+  var fullText = ymTransitFullText(route);
+  if(fullText){
+    var infoRows = section.querySelectorAll('.info-row');
+    for(var j = 0; j < infoRows.length; j++){
+      var label = infoRows[j].querySelector('.info-label');
+      if(label && label.textContent.indexOf('アクセス') !== -1){
+        var valueSpan = infoRows[j].querySelector('span:not(.info-label)');
+        if(valueSpan) valueSpan.textContent = fullText;
+        break;
+      }
+    }
+  }
+}
+
 // JSONから最新データを読み込んでカード内の情報を更新
 document.addEventListener('DOMContentLoaded', function(){
   fetch('/data/mountains.json')
@@ -686,6 +749,12 @@ document.addEventListener('DOMContentLoaded', function(){
             }
           });
         }
+      });
+
+      // data-mountain-id属性を持つ各山セクションの交通時間文言を更新
+      document.querySelectorAll('.mountain-section[data-mountain-id]').forEach(function(section){
+        var mid = section.getAttribute('data-mountain-id');
+        ymApplyTransitText(section, mtMap[mid]);
       });
     })
     .catch(function(){});
