@@ -37,6 +37,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_recommend_gear  # noqa: E402  (診断用月別装備JSONの生成。gear-data.json変更時に同時更新するため)
+from render_transit_routes import render_ts_section  # noqa: E402  (trainRoutes構造化データからのHTML生成。2026-09-23移行)
 
 SITE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH = os.path.join(SITE_ROOT, "data", "mountains.json")
@@ -461,6 +462,16 @@ def render_weather(mt):
 
 
 def render_train_access(mt):
+    # 2026-09-23移行: trainRoutes(構造化データ)があればそちらから生成する。
+    # 合計所要時間・運賃はレグ合計からではなく既存のtrainTimeXxx/fareXxxを使う
+    # （理由はclaude/transit-data-restructure-plan.mdのPhase1検証結果を参照）。
+    # trainRoutesが無い場合（車のみ山、パース対象外）は旧来のtrainAccessHtmlに
+    # フォールバックし、既存表示を壊さない。
+    train_routes = mt.get("trainRoutes")
+    if train_routes:
+        ts = render_ts_section(train_routes, mt)
+        if ts:
+            return f'<div class="card" id="sec-train">\n  {ts}\n</div>'
     ts = mt.get("trainAccessHtml")
     if not ts:
         return ""
