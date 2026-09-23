@@ -5292,8 +5292,8 @@
    "/images/mountains/kirigamine/01.jpg"
   ],
   "fareShinjuku": 8500,
-  "fareYokohama": 9116,
-  "fareOmiya": 9028,
+  "fareYokohama": 9160,
+  "fareOmiya": 9160,
   "trainAccessYokohama": "横浜駅→JR湘南新宿ライン(約34分)→新宿駅→JR中央線約2時間50分→茅野駅→アルピコ交通「霧ヶ峰線」約30分→霧ヶ峰（季節）",
   "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR中央線約2時間50分→茅野駅→アルピコ交通「霧ヶ峰線」約30分→霧ヶ峰（季節）",
   "transfersShinjuku": 1,
@@ -5312,7 +5312,7 @@
    },
    {
     "question": "霧ヶ峰へのアクセス方法は？新宿・横浜からの行き方",
-    "answer": "新宿駅からは電車・バスを乗り継いで約3時間20分（運賃約8,500円）、茅野駅が最寄りです。横浜からは約3時間54分（運賃約9,116円）が目安です。車の場合は都心から約3時間20分が目安です。なお春〜秋の土日祝（8月は毎日運行）は、茅野駅の1駅手前「上諏訪駅」発の「霧ヶ峰線」バスも利用できます。季節運行のため運行期間外・平日は利用できません。"
+    "answer": "新宿駅からは電車・バスを乗り継いで約3時間20分（運賃約8,500円）、茅野駅が最寄りです。横浜からは約3時間54分（運賃約9,160円）が目安です。車の場合は都心から約3時間20分が目安です。なお春〜秋の土日祝（8月は毎日運行）は、茅野駅の1駅手前「上諏訪駅」発の「霧ヶ峰線」バスも利用できます。季節運行のため運行期間外・平日は利用できません。"
    },
    {
     "question": "霧ヶ峰の登山シーズンはいつですか？おすすめの時期",
@@ -5384,9 +5384,9 @@
        "station": "新宿駅",
        "method": {
         "icon": "train",
-        "line": "JR中央線"
+        "line": "JR特急あずさ"
        },
-       "durationMin": 170,
+       "durationMin": 130,
        "fareYen": null
       },
       {
@@ -5418,9 +5418,9 @@
        "station": "新宿駅",
        "method": {
         "icon": "train",
-        "line": "JR中央線"
+        "line": "JR特急あずさ"
        },
-       "durationMin": 170,
+       "durationMin": 130,
        "fareYen": null
       },
       {
@@ -18875,7 +18875,7 @@
    },
    {
     "question": "毛無山へのアクセス方法は？新宿・横浜からの行き方",
-    "answer": "新宿駅からは電車・バスを乗り継いで約2時間54分（運賃約4,400円）、富士宮駅が最寄りです。横浜からは約3時間28分（運賃約5,016円）が目安です。車の場合は都心から約2時間25分が目安です。"
+    "answer": "新宿駅からは電車・バスを乗り継いで約3時間7分（運賃約4,400円）、富士宮駅が最寄りです。横浜からは約3時間41分（運賃約5,016円）が目安です。車の場合は都心から約2時間25分が目安です。"
    },
    {
     "question": "毛無山の登山シーズンはいつですか？おすすめの時期",
@@ -24832,8 +24832,8 @@
   "transfersShinjuku": 1,
   "transfersYokohama": 2,
   "transfersOmiya": 2,
-  "trainTimeYokohama": 384,
-  "trainTimeOmiya": 380,
+  "trainTimeYokohama": 284,
+  "trainTimeOmiya": 280,
   "trainTimeShinjuku": 250,
   "photos": [
    "/images/mountains/utsukushigahara/04.jpg"
@@ -24923,7 +24923,7 @@
         "icon": "train",
         "line": "JR中央本線"
        },
-       "durationMin": 250,
+       "durationMin": 150,
        "fareYen": null
       },
       {
@@ -24957,7 +24957,7 @@
         "icon": "train",
         "line": "JR中央本線"
        },
-       "durationMin": 250,
+       "durationMin": 150,
        "fareYen": null
       },
       {
@@ -31833,7 +31833,7 @@
   "driveTimeOmiya": 65,
   "nearestStation": "高麗駅",
   "trainLine": "西武池袋線",
-  "trainTimeShinjuku": 79,
+  "trainTimeShinjuku": 74,
   "trainInfo": "池袋→高麗駅（西武池袋線約55分）徒歩15分",
   "lines": [
    "西武池袋線"
@@ -31861,7 +31861,7 @@
    },
    {
     "question": "日和田山へのアクセス方法は？新宿・横浜からの行き方",
-    "answer": "新宿駅からは電車・バスを乗り継いで約1時間5分（運賃約690円）、高麗駅が最寄りです。横浜からは約1時間39分（運賃約1,306円）が目安です。車の場合は都心から約1時間50分が目安です。"
+    "answer": "新宿駅からは電車・バスを乗り継いで約1時間14分（運賃約690円）、高麗駅が最寄りです。横浜からは約1時間53分（運賃約1,306円）が目安です。車の場合は都心から約1時間50分が目安です。"
    },
    {
     "question": "日和田山の登山シーズンはいつですか？おすすめの時期",
@@ -32732,23 +32732,23 @@
   "driveTimeOmiya": 110,
   "nearestStation": "渋沢駅",
   "trainLine": "小田急線",
-  "trainTimeShinjuku": 105,
+  "trainTimeShinjuku": 90,
   "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約30分",
   "lines": [
    "小田急線"
   ],
   "driveTimeTachikawa": 75,
   "driveTachikawa": 75,
-  "fareShinjuku": 960,
-  "fareYokohama": 916,
-  "fareOmiya": 1488,
+  "fareShinjuku": 1002,
+  "fareYokohama": 930,
+  "fareOmiya": 1530,
   "trainAccessYokohama": "横浜駅→小田急・相鉄直通(約58分)→渋沢駅→バス約30分→大倉",
   "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→小田急線約1時間30分→渋沢駅→神奈川中央交通バス約15分→大倉バス停",
   "transfersShinjuku": 1,
   "transfersYokohama": 2,
   "transfersOmiya": 2,
-  "trainTimeYokohama": 93,
-  "trainTimeOmiya": 135,
+  "trainTimeYokohama": 78,
+  "trainTimeOmiya": 120,
   "photos": [
    "/images/mountains/nabewari/image-20260811233154634-mc17i.jpg"
   ],
@@ -32808,7 +32808,7 @@
         "icon": "bus",
         "line": "神奈川中央交通バス"
        },
-       "durationMin": 15,
+       "durationMin": 20,
        "fareYen": null
       },
       {
@@ -32822,18 +32822,27 @@
        "station": "横浜駅",
        "method": {
         "icon": "train",
-        "line": "小田急・相鉄直通"
+        "line": "相鉄本線特急"
        },
-       "durationMin": 58,
+       "durationMin": 28,
+       "fareYen": null
+      },
+      {
+       "station": "海老名駅",
+       "method": {
+        "icon": "train",
+        "line": "小田急小田原線急行"
+       },
+       "durationMin": 30,
        "fareYen": null
       },
       {
        "station": "渋沢駅",
        "method": {
         "icon": "bus",
-        "line": "バス"
+        "line": "神奈川中央交通バス"
        },
-       "durationMin": 30,
+       "durationMin": 20,
        "fareYen": null
       },
       {
@@ -32858,7 +32867,7 @@
         "icon": "train",
         "line": "小田急線"
        },
-       "durationMin": 90,
+       "durationMin": 70,
        "fareYen": null
       },
       {
@@ -32867,7 +32876,7 @@
         "icon": "bus",
         "line": "神奈川中央交通バス"
        },
-       "durationMin": 15,
+       "durationMin": 20,
        "fareYen": null
       },
       {
@@ -33026,23 +33035,23 @@
   "driveTimeOmiya": 110,
   "nearestStation": "渋沢駅",
   "trainLine": "小田急線",
-  "trainTimeShinjuku": 105,
+  "trainTimeShinjuku": 90,
   "trainInfo": "新宿→渋沢駅（小田急約65分）→バス約25分",
   "lines": [
    "小田急線"
   ],
   "driveTimeTachikawa": 75,
   "driveTachikawa": 75,
-  "fareShinjuku": 960,
-  "fareYokohama": 916,
-  "fareOmiya": 1488,
+  "fareShinjuku": 1002,
+  "fareYokohama": 930,
+  "fareOmiya": 1530,
   "trainAccessYokohama": "横浜駅→小田急・相鉄直通(約58分)→渋沢駅→バス約30分→大倉",
   "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→小田急線約1時間30分→渋沢駅→神奈川中央交通バス約15分→大倉バス停",
   "transfersShinjuku": 1,
   "transfersYokohama": 2,
   "transfersOmiya": 2,
-  "trainTimeYokohama": 93,
-  "trainTimeOmiya": 135,
+  "trainTimeYokohama": 78,
+  "trainTimeOmiya": 120,
   "faq": [
    {
     "question": "三ノ塔は初心者でも登れますか？",
@@ -33099,7 +33108,7 @@
         "icon": "bus",
         "line": "神奈川中央交通バス"
        },
-       "durationMin": 15,
+       "durationMin": 20,
        "fareYen": null
       },
       {
@@ -33113,18 +33122,27 @@
        "station": "横浜駅",
        "method": {
         "icon": "train",
-        "line": "小田急・相鉄直通"
+        "line": "相鉄本線特急"
        },
-       "durationMin": 58,
+       "durationMin": 28,
+       "fareYen": null
+      },
+      {
+       "station": "海老名駅",
+       "method": {
+        "icon": "train",
+        "line": "小田急小田原線急行"
+       },
+       "durationMin": 30,
        "fareYen": null
       },
       {
        "station": "渋沢駅",
        "method": {
         "icon": "bus",
-        "line": "バス"
+        "line": "神奈川中央交通バス"
        },
-       "durationMin": 30,
+       "durationMin": 20,
        "fareYen": null
       },
       {
@@ -33149,7 +33167,7 @@
         "icon": "train",
         "line": "小田急線"
        },
-       "durationMin": 90,
+       "durationMin": 70,
        "fareYen": null
       },
       {
@@ -33158,7 +33176,7 @@
         "icon": "bus",
         "line": "神奈川中央交通バス"
        },
-       "durationMin": 15,
+       "durationMin": 20,
        "fareYen": null
       },
       {
@@ -41687,7 +41705,7 @@
   "driveTimeTachikawa": 70,
   "driveTachikawa": 70,
   "fareShinjuku": 1030,
-  "fareYokohama": 572,
+  "fareYokohama": 810,
   "fareOmiya": 1558,
   "trainAccessYokohama": "横浜駅→JR東海道線(約48分)→二宮駅→徒歩→徒歩約5分→吾妻山公園入口",
   "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR東海道本線約45分→二宮駅→徒歩約5分→吾妻山公園入口",
@@ -43354,7 +43372,7 @@
   "driveTimeTachikawa": 60,
   "driveTachikawa": 60,
   "fareShinjuku": 945,
-  "fareYokohama": 291,
+  "fareYokohama": 350,
   "fareOmiya": 1473,
   "trainAccessYokohama": "横浜駅→JR横須賀線(約23分)→北鎌倉駅→徒歩約10分→天園ハイキングコース入口",
   "trainAccessOmiya": "大宮駅→JR湘南新宿ライン(約30分)→新宿駅→JR横須賀線約55分→北鎌倉駅→徒歩約10分→天園ハイキングコース入口",
