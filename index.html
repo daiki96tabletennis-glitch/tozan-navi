@@ -1063,6 +1063,9 @@ function App() {
     else if (sort === "安い順（電車・バス）") list = list.slice().sort(function(a, b){ return getFare(a) - getFare(b); });
     else if (sort === "標高順") list = list.slice().sort(function(a, b){ return b.elevation - a.elevation; });
     else if (sort === "体力度順") list = list.slice().sort(function(a, b){ return (Array.isArray(b.courseCoefficient) ? b.courseCoefficient[1] : 0) - (Array.isArray(a.courseCoefficient) ? a.courseCoefficient[1] : 0); });
+    // 入山規制中（status.level === "restricted"）の山は、選んだ並び順に関係なく常に末尾へ（安全のため通常のおすすめ表示から外す）
+    var isRestricted = function(m){ return m.status && m.status.level === "restricted"; };
+    list = list.filter(function(m){ return !isRestricted(m); }).concat(list.filter(isRestricted));
     return list;
   }, [search, sort, area, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, trainTimeFilter, fareFilter, courseFilter, cramponsFilter, filterMonth, departure, lineFilter, difficultyFilter, elevationFilter, vibeFilter, accessTierFilter]);
 

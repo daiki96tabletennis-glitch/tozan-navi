@@ -5779,6 +5779,12 @@
           "url": "https://www.jrbuskanto.co.jp/jwp/bus_etc/timetable"
         }
       ]
+    },
+    "status": {
+      "level": "caution",
+      "summary": "噴火警戒レベル1（2026年5月22日引き下げ）で前掛山への登山規制は緩和済み。火口から半径500m圏内は引き続き規制。最新の火山情報を必ず確認。",
+      "checkedAt": "2026-09-24",
+      "sourceUrl": "https://www.komoro-tour.jp/blog/id_26055/"
     }
   },
   {
@@ -6498,6 +6504,12 @@
           "url": "https://www.kantobus.co.jp/route/"
         }
       ]
+    },
+    "status": {
+      "level": "caution",
+      "summary": "活火山。現時点で入山規制の発表はないが、気象庁の噴火警戒レベルを登山前に必ず確認すること。",
+      "checkedAt": "2026-09-24",
+      "sourceUrl": "https://www.jma.go.jp/bosai/volcano/"
     }
   },
   {
@@ -11951,6 +11963,12 @@
           "url": "https://www.navitime.co.jp/bus/diagram/timelist?departure=00026039&arrival=00415568&line=00079689"
         }
       ]
+    },
+    "status": {
+      "level": "restricted",
+      "summary": "湯釜・本白根山は火口周辺500m規制のため立入禁止（湯釜見学不可、駐車場・レストハウス利用不可）。弓池〜逢ノ峰周回は通行可能。",
+      "checkedAt": "2026-09-24",
+      "sourceUrl": "https://www.town.kusatsu.gunma.jp/www/contents/1779431376046/index.html"
     }
   },
   {
@@ -16718,6 +16736,12 @@
           "url": "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/"
         }
       ]
+    },
+    "status": {
+      "level": "caution",
+      "summary": "活火山。現時点で入山規制の発表はないが、気象庁の噴火警戒レベルを登山前に必ず確認すること。",
+      "checkedAt": "2026-09-24",
+      "sourceUrl": "https://www.jma.go.jp/bosai/volcano/"
     }
   },
   {
@@ -24811,6 +24835,12 @@
           "url": "https://ontakekotsu.com/regular"
         }
       ]
+    },
+    "status": {
+      "level": "caution",
+      "summary": "2026年7月1日〜10月14日正午は規制緩和期間中で、黒沢口・王滝口とも剣ヶ峰まで登山可能。九合目より奥宮方面・稜線の一部は通年規制継続。期間外は入山不可。",
+      "checkedAt": "2026-09-24",
+      "sourceUrl": "https://www.kankou-kiso.com/news/%E5%BE%A1%E5%B6%BD%E5%B1%B1%E7%AB%8B%E3%81%A1%E5%85%A5%E3%82%8A%E8%A6%8F%E5%88%B6%E6%83%85%E5%A0%B1%EF%BC%882026%E3%82%B7%E3%83%BC%E3%82%BA%E3%83%B3%EF%BC%89/"
     }
   },
   {
@@ -34589,7 +34619,13 @@
     "description": "正丸駅から徒歩圏内の奥武蔵を代表するハイキングコース。山頂直下に鎖場（男坂）があるが落石で通行自粛中。女坂も通行止めのため現在は中間道を利用。山頂は灌木があるが1つ南の御岳からの眺望が良い。",
     "yamapUrl": "https://yamap.com/mountains/113",
     "busLinks": [],
-    "warnBanner": "男坂（鎖場）は落石の危険があり通行自粛中。女坂も通行止めのため、現在は男坂・女坂の中間道を利用してください。",
+    "warnBanner": {
+      "type": "yellow",
+      "title": "男坂（鎖場）は通行自粛中",
+      "text": "男坂（鎖場）は落石の危険があり通行自粛中。女坂も通行止めのため、現在は男坂・女坂の中間道を利用してください。",
+      "url": null,
+      "linkText": ""
+    },
     "nearby": [
       "bonori",
       "tenzandake"
@@ -34869,6 +34905,12 @@
           "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=正丸駅&type=1"
         }
       ]
+    },
+    "status": {
+      "level": "caution",
+      "summary": "山頂直下の鎖場「男坂」は落石のため通行自粛中。女坂も通行止めのため、現在は男坂・女坂の中間道を利用すること。",
+      "checkedAt": "2026-09-24",
+      "sourceUrl": null
     }
   },
   {

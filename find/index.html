@@ -519,7 +519,7 @@ function buildReason(m){
   if(diffMap[m.difficulty]) reasons.push('🥾 難易度：' + m.difficulty + '（' + diffMap[m.difficulty] + '）');
 
   if(m.coeffMax){
-    reasons.push('⏱ 歩行時間の目安：コース定数' + (m.coeffMin||0) + '〜' + m.coeffMax);
+    reasons.push('💪 体力の目安：コース定数' + (m.coeffMin||0) + '〜' + m.coeffMax);
   }
 
   var vibeTexts = {
@@ -667,7 +667,13 @@ function _doShowResult(){
   var scored = mountainsData.map(function(m){
     return { m: m, score: scoreMount(m) };
   }).filter(function(x){ return x.score > 0; })
-    .sort(function(a, b){ return b.score - a.score; });
+    .sort(function(a, b){
+      // 入山規制中（status.level === "restricted"）の山はスコアに関係なく常に下位へ
+      var ar = a.m.status && a.m.status.level === "restricted";
+      var br = b.m.status && b.m.status.level === "restricted";
+      if(ar !== br) return ar ? 1 : -1;
+      return b.score - a.score;
+    });
 
   var dep = answers.depart || 'ofuna';
   var depLabel = dep === 'shinjuku' ? '新宿・都内' : dep === 'omiya' ? '大宮・埼玉' : '横浜・大船';

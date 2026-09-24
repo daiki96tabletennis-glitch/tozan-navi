@@ -22,7 +22,7 @@
 <link rel="preload" as="image" href="/recommend/images/otter_wanderer_v2.png">
 <meta name="description" content="山頂で何をする？雨が降ったら？9つの行動パターンの質問であなたの登山タイプを16種類から診断。おすすめの山も提案します。完全無料。">
 <meta property="og:title" content="登山タイプ診断 | 16タイプで診断 - Yamatch">
-<meta property="og:description" content="あなたは「孤高の登山家」？「山ピクニック派」？9問の行動診断で山スタイルを16タイプから判定。">
+<meta property="og:description" content="あなたは「孤高の登山家」？「山ピクニック派」？12問の行動診断で山スタイルを16タイプから判定。">
 <meta property="og:image" content="https://tozan-navi.com/ogp/recommend-top.jpg">
 <meta property="og:image:secure_url" content="https://tozan-navi.com/ogp/recommend-top.jpg">
 <meta property="og:image:width" content="1200">
@@ -289,7 +289,7 @@ PERSON_SVGS['VHFL'] = '<picture><source srcset=\"/recommend/images/otter_wandere
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TMTVVTEEGF');</script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"登山タイプ診断 - Yamatch","description":"9問の行動診断で登山タイプを16種類から判定。おすすめの山も提案。","url":"https://tozan-navi.com/recommend/","applicationCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"登山タイプ診断 - Yamatch","description":"12問の行動診断で登山タイプを16種類から判定。おすすめの山も提案。","url":"https://tozan-navi.com/recommend/","applicationCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}
 </script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -671,7 +671,7 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
     
   </div>
 </header>
-<div class="sr-only"><h1>登山タイプ診断 - 16タイプで山スタイルを診断</h1><p>山頂で何をする？雨が降ったら？9問の行動パターン診断であなたの登山タイプを16種類から判定。おすすめの山も提案。完全無料。</p></div>
+<div class="sr-only"><h1>登山タイプ診断 - 16タイプで山スタイルを診断</h1><p>山頂で何をする？雨が降ったら？12問の行動パターン診断であなたの登山タイプを16種類から判定。おすすめの山も提案。完全無料。</p></div>
 <main>
 
 <button type="button" id="q-back-btn" class="q-back-btn" onclick="goBack()" style="display:none;">← 前の質問に戻る</button>
@@ -1604,7 +1604,12 @@ function _doShowResult(opts){
   // スコアリング（安全フィルターで選択レベルを大幅に超える山を除外した上でスコアリング）
   const coeffLimitForFilter=answers.coeff||999;
   const candidateMountains=getCandidateMountains(coeffLimitForFilter);
-  const scored=candidateMountains.map(m=>{const sc=scoreMount(m,typeCode);const dr=getDrive(m);return Object.assign({},m,{score:sc,drive:dr});}).sort((a,b)=>b.score-a.score);
+  const scored=candidateMountains.map(m=>{const sc=scoreMount(m,typeCode);const dr=getDrive(m);return Object.assign({},m,{score:sc,drive:dr});}).sort((a,b)=>{
+    // 入山規制中（status.level === "restricted"）の山はスコアに関係なく常に下位へ
+    const ar=a.status&&a.status.level==='restricted', br=b.status&&b.status.level==='restricted';
+    if(ar!==br) return ar?1:-1;
+    return b.score-a.score;
+  });
   const top3=scored.slice(0,3);
 
   // タイプカード
@@ -2275,6 +2280,7 @@ document.addEventListener('DOMContentLoaded', function(){
         if(jmt.coeffMax) m.coeffMax = jmt.coeffMax;
         if(jmt.calLegend) m.calLegend = jmt.calLegend;
         if(jmt.seasonCalendar) m.seasonCalendar = jmt.seasonCalendar;
+        if(jmt.status) m.status = jmt.status;
       });
     })
     .catch(function(){})
