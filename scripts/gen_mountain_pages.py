@@ -567,6 +567,8 @@ def render_routes(mt):
             chips.append(f'<span class="rl-chip">距離&nbsp;{esc(r["distance"])}</span>')
         if r.get("elevation"):
             chips.append(f'<span class="rl-chip">↑&nbsp;{esc(r["elevation"])}</span>')
+        if r.get("coeff") is not None:
+            chips.append(f'<span class="rl-chip">定数&nbsp;{esc(r["coeff"])}</span>')
         waypoints_html = ""
         if r.get("waypoints"):
             waypoints_html = f'<div class="rl-waypoints">{esc(r["waypoints"])}</div>'
@@ -576,13 +578,18 @@ def render_routes(mt):
             f'<div class="rl-chips">{"".join(chips)}</div></div></div>'
         )
     items_html = "".join(items)
+    coeff_note = ""
+    if any(r.get("coeff") is not None for r in routes):
+        coeff_note = ('<p style="font-size:11px;color:#9a9088;margin-top:8px;line-height:1.6;">'
+                      '※ルートごとの定数は、時間・距離・累積標高差から一般式で算出した目安です'
+                      '（下りの累積標高差は登りと同じと仮定）。</p>')
     return (
         '<div class="card" id="sec-routes"><h2><svg width="16" height="16" viewBox="0 0 24 24" '
         'style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" '
         'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
         '<circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/>'
         '<path d="M5 17 C5 12 9 12 9 9 C9 6 12 6 12 9 C12 13 19 13 19 7"/></svg>'
-        f'代表的な登山ルート</h2><div class="route-list-c">{items_html}</div></div>'
+        f'代表的な登山ルート</h2><div class="route-list-c">{items_html}</div>{coeff_note}</div>'
     )
 
 
