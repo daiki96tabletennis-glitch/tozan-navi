@@ -15,6 +15,13 @@ Phase 1以降（CSS/JS外部化・テンプレ生成化）の変更が既存ペ�
   5. title 重複           インデックス対象ページ間での重複
   6. JSON と HTML の不一致  運賃・標高・コース定数がHTML本文と食い違っていないか
   7. 交通情報の欠損        trainAccessがある山にアクセス表セクションがあるか／逆に無い山に残っていないか
+  8. trainRoutes構造化データの整合性
+  9. ルートの他山コピー     routes[]が別の山と同一内容（時間・距離・標高差まで一致）になっていないか
+ 10. 所要時間の不一致      trainTimeXxx が trainRoutes の legs 合計と一致するか／trainAccess文章の所要時間が legs に存在するか
+ 11. 記事・検索ページの駅名  山カードの「〇〇駅→バス…」の駅が、その山の経路データに存在するか
+ 12. コース定数の異常値      FAQ・紹介文の「定数X〜Y」でY>100 または X>Y
+ 13. 規制中の山の掲載        status.level が restricted の山が、通常の検索ページ・記事のおすすめに載っていないか
+ 14. 特急の座席制度         あずさ・かいじ・富士回遊等の全車指定席特急に「自由席」と書いていないか
 
 使い方:
   python3 scripts/check_pages.py                    # レポートをテキスト出力
@@ -62,7 +69,8 @@ def iter_html_files(only=None):
     """サイト内の全HTMLファイルを列挙する。only指定時はそのサブディレクトリのみ。"""
     base = os.path.join(ROOT, only) if only else ROOT
     for dirpath, dirnames, filenames in os.walk(base):
-        dirnames[:] = [d for d in dirnames if not d.startswith('.') and d != '__MACOSX']
+        dirnames[:] = [d for d in dirnames if not d.startswith('.') and d != '__MACOSX'
+                       and not (dirpath == ROOT and d == 'scripts')]  # scripts/配下は部品HTML（公開ページではない）
         for fn in filenames:
             if fn.endswith('.html'):
                 yield os.path.join(dirpath, fn)
@@ -371,6 +379,188 @@ def check_train_routes_schema(mountains):
 
 # --- レポート出力 ----------------------------------------------------------
 
+# --- 9〜14: 再発防止用チェック（実際に見つかった誤りのパターン） -----------------
+
+# 同一内容のルートを複数の山が持つのが正当なもの（同じ縦走路を共有する山）
+SHARED_ROUTE_ALLOWLIST = {
+    ('椹島〜荒川岳〜赤石岳縦走（2泊）', frozenset({'arakawadake', 'akaisidake'})),
+}
+
+
+def check_route_duplicates(mountains):
+    """routes[] の (名前, 時間, 距離, 標高差) が別の山と完全一致していないか（他山からのコピー混入）。"""
+    seen = {}
+    for m in mountains:
+        for r in m.get('routes') or []:
+            key = (r.get('name'), r.get('time'), r.get('distance'), r.get('elevation'))
+            seen.setdefault(key, set()).add(m['id'])
+    issues = []
+    for key, ids in seen.items():
+        if len(ids) > 1 and (key[0], frozenset(ids)) not in SHARED_ROUTE_ALLOWLIST:
+            issues.append({'id': '/'.join(sorted(ids)),
+                           'problem': f'ルート「{key[0]}」が複数の山で完全に同一（他山からのコピー混入の疑い）'})
+    return issues
+
+
+def _minutes(text):
+    """「約1時間20分」「約35分」「約2時間」を分に変換。"""
+    out = []
+    for h, mi in re.findall(r'約(?:(\d+)時間)?(?:(\d+)分)?', text):
+        if not h and not mi:
+            continue
+        out.append((int(h) if h else 0) * 60 + (int(mi) if mi else 0))
+    return out
+
+
+def check_time_consistency(mountains):
+    issues = []
+    dep_fields = (('shinjuku', 'trainTimeShinjuku', 'trainAccess'),
+                  ('omiya', 'trainTimeOmiya', 'trainAccessOmiya'),
+                  ('yokohama', 'trainTimeYokohama', 'trainAccessYokohama'))
+    for m in mountains:
+        tr = (m.get('trainRoutes') or {}).get('routes') or {}
+        for dep, tfield, afield in dep_fields:
+            route = tr.get(dep)
+            if not route:
+                continue
+            legs = route['legs']
+            leg_mins = [l.get('durationMin') for l in legs if l.get('durationMin')]
+            total = sum(leg_mins)
+            t = m.get(tfield)
+            if t is not None and t != total:
+                issues.append({'id': m['id'], 'problem': f'{tfield}={t} が legs 合計 {total} と不一致'})
+            # 文章中の所要時間は、括弧書きの補足（乗換込みの合計など）を除き、いずれかの leg の時間と一致すること
+            text = m.get(afield) or ''
+            if not isinstance(text, str):
+                continue
+            for mins in _minutes(re.sub(r'（[^）]*）|\([^)]*\)', '', text)):
+                if mins not in leg_mins and mins != total:
+                    issues.append({'id': m['id'],
+                                   'problem': f'{afield} の「{mins}分」が trainRoutes の legs（{sorted(set(leg_mins))}）に存在しない'})
+                    break
+    return issues
+
+
+STATION_BEFORE_BUS = re.compile(r'([^\s→「」（）()<>＞>]{1,10}駅)」?(?:（[^）]*）)?→(?:[^→<]{0,25}?)バス')
+
+
+def check_article_stations(mountains):
+    """search/・articles/ の山カードにある「〇〇駅→…バス」の駅が、その山の経路データに存在するか。"""
+    stations = {}
+    for m in mountains:
+        st = set()
+        for r in ((m.get('trainRoutes') or {}).get('routes') or {}).values():
+            for l in r['legs']:
+                st.add(l['station'])
+        for f in ('trainAccess', 'trainAccessOmiya', 'trainAccessYokohama'):
+            if isinstance(m.get(f), str):
+                st |= set(re.findall(r'([^\s→「」（）()]{1,10}駅)', m[f]))
+        tr = m.get('trainRoutes') or {}
+        for f in ('note', 'summaryNote'):
+            if isinstance(tr.get(f), str):
+                st |= set(re.findall(r'([^\s→「」（）()、。]{1,10}駅)', tr[f]))
+        stations[m['id']] = st
+    issues = []
+    for sub in ('search', 'articles'):
+        base = os.path.join(ROOT, sub)
+        if not os.path.isdir(base):
+            continue
+        for slug in sorted(os.listdir(base)):
+            path = os.path.join(base, slug, 'index.html')
+            if not os.path.isfile(path):
+                continue
+            html = strip_scripts(read(path))
+            for blk in re.split(r'(?=<div class="mountain-card)', html)[1:]:
+                idm = re.search(r'data-mountain-id="([^"]+)"', blk) or re.search(r'href="/mountains/([^/"]+)/"', blk)
+                if not idm or idm.group(1) not in stations:
+                    continue
+                text = re.sub(r'<[^>]+>', ' ', blk)
+                for st in STATION_BEFORE_BUS.findall(text):
+                    if not any(st == s2 or st in s2 or s2 in st for s2 in stations[idm.group(1)]):
+                        issues.append({'id': idm.group(1),
+                                       'problem': f'{sub}/{slug}: 「{st}→…バス」の駅が経路データに無い（{sorted(stations[idm.group(1)])[:6]}…）'})
+                        break
+    return issues
+
+
+def check_coeff_anomalies(mountains):
+    issues = []
+    pat = re.compile(r'定数(\d+)〜(\d+)')
+    for m in mountains:
+        texts = [m.get('introHtml') or '', m.get('metaDescription') or '', m.get('ogDescription') or ''] + \
+                [f.get('answer') or '' for f in m.get('faq') or []]
+        for t in texts:
+            for a, b in pat.findall(re.sub(r'<[^>]+>', '', t)):
+                if int(b) > 100 or int(a) > int(b):
+                    issues.append({'id': m['id'], 'problem': f'コース定数の異常値「定数{a}〜{b}」'})
+        for r in m.get('routes') or []:
+            c = r.get('coeff')
+            if c is not None and (c < 1 or c > 120):
+                issues.append({'id': m['id'], 'problem': f'ルート「{r.get("name")}」の coeff={c} が異常'})
+    return issues
+
+
+def check_restricted_listings(mountains):
+    """規制中(restricted)の山が、通常の検索ページ・記事のおすすめに載っていないか。"""
+    restricted = [m['id'] for m in mountains if (m.get('status') or {}).get('level') == 'restricted']
+    issues = []
+    for sub in ('search', 'articles'):
+        base = os.path.join(ROOT, sub)
+        if not os.path.isdir(base):
+            continue
+        for slug in sorted(os.listdir(base)):
+            path = os.path.join(base, slug, 'index.html')
+            if not os.path.isfile(path):
+                continue
+            html = read(path)
+            blocks = re.split(r'(?=<div class="mountain-card)', html)[1:]
+            for mid in restricted:
+                if any(re.search(r'data-mountain-id="%s"|href="/mountains/%s/"' % (re.escape(mid), re.escape(mid)), b.split('<div class="mountain-card', 2)[1] if False else b[:6000]) for b in blocks):
+                    issues.append({'id': mid, 'problem': f'規制中の山が {sub}/{slug} のおすすめカードに載っている'})
+    return issues
+
+
+ASSIGNED_SEAT_TRAINS = r'(?:あずさ|かいじ|富士回遊|富士山ビュー特急|スペーシア|サフィール踊り子|踊り子|ひたち|ときわ)'
+
+
+def check_seat_terms(html_files):
+    """全車指定席の特急に「自由席」と書いていないか。"""
+    issues = []
+    pat = re.compile(ASSIGNED_SEAT_TRAINS + r'[^。<]{0,60}自由席|自由席[^。<]{0,60}' + ASSIGNED_SEAT_TRAINS)
+    for path in html_files:
+        html = strip_scripts(read(path))
+        txt = re.sub(r'<[^>]+>', '', html)
+        for mm in pat.finditer(txt):
+            ctx = txt[max(0, mm.start() - 15):mm.end() + 25]
+            if re.search(r'ありません|ではない|はない|なし|指定席のみ|全車指定席', ctx):
+                continue  # 「自由席はありません」等、正しい説明は除外
+            issues.append({'id': rel(path), 'problem': '全車指定席の特急に「自由席」の記述がある'})
+            break
+    return issues
+
+
+KNOWN_ISSUES_PATH = os.path.join(SCRIPT_DIR, 'check_known_issues.json')
+
+
+def _issue_key(it):
+    return f"{it['id']}|{it['problem']}"
+
+
+def load_known():
+    if os.path.isfile(KNOWN_ISSUES_PATH):
+        with open(KNOWN_ISSUES_PATH, encoding='utf-8') as f:
+            return json.load(f)
+    return {}
+
+
+def split_known(name, issues, known):
+    """既知の未解決（調査待ちのレガシー）と新規に分ける。新規のみ異常として数える。"""
+    k = set(known.get(name, []))
+    new = [it for it in issues if _issue_key(it) not in k]
+    old = [it for it in issues if _issue_key(it) in k]
+    return new, old
+
+
 def section(title, issues, formatter):
     lines = [f'## {title}（{len(issues)}件）']
     if not issues:
@@ -388,6 +578,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--json', metavar='PATH', help='結果をJSONでも出力するファイルパス')
     ap.add_argument('--only', choices=['mountains'], help='mountains/配下のみ検査する')
+    ap.add_argument('--update-baseline', action='store_true',
+                    help='セクション10・11の現在の指摘を「既知の未解決」として check_known_issues.json に保存する')
     args = ap.parse_args()
 
     mountains = load_mountains()
@@ -401,6 +593,21 @@ def main():
     mismatch_issues = check_json_html_mismatch(mountains)
     transit_issues = check_transit_section(mountains)
     train_routes_issues = check_train_routes_schema(mountains)
+    route_dup_issues = check_route_duplicates(mountains)
+    time_issues = check_time_consistency(mountains)
+    station_issues = check_article_stations(mountains)
+    coeff_issues = check_coeff_anomalies(mountains)
+    restricted_issues = check_restricted_listings(mountains)
+    seat_issues = check_seat_terms(html_files)
+
+    if args.update_baseline:
+        with open(KNOWN_ISSUES_PATH, 'w', encoding='utf-8') as f:
+            json.dump({'10': sorted(_issue_key(i) for i in time_issues),
+                       '11': sorted(_issue_key(i) for i in station_issues)}, f, ensure_ascii=False, indent=1)
+        print('baseline updated:', len(time_issues), len(station_issues))
+    known = load_known()
+    time_issues, time_known = split_known('10', time_issues, known)
+    station_issues, station_known = split_known('11', station_issues, known)
 
     report = []
     report.append('# YAMATCH 公開前自動チェック結果\n')
@@ -422,13 +629,22 @@ def main():
                            lambda it: f"{it['id']}: {it['problem']}"))
     report.append(section('8. trainRoutes構造化データの整合性', train_routes_issues,
                            lambda it: f"{it['id']}: {it['problem']}"))
+    fmt = lambda it: f"{it['id']}: {it['problem']}"
+    report.append(section('9. ルートの他山コピー', route_dup_issues, fmt))
+    report.append(section('10. 所要時間の不一致（legs合計・文章）', time_issues, fmt))
+    report.append(section('11. 記事・検索ページの駅名', station_issues, fmt))
+    report.append(section('12. コース定数の異常値', coeff_issues, fmt))
+    report.append(section('13. 規制中の山の掲載', restricted_issues, fmt))
+    report.append(section('14. 特急の座席制度', seat_issues, fmt))
+    report.append(f"## 参考：既知の未解決（調査待ちのレガシー。件数に含めない）\n- 10. 所要時間: {len(time_known)}件 / 11. 駅名: {len(station_known)}件（scripts/check_known_issues.json）\n")
 
     text = '\n'.join(report)
     print(text)
 
     total = (len(broken_links) + len(broken_images) + len(required_field_issues)
              + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues)
-             + len(train_routes_issues))
+             + len(train_routes_issues) + len(route_dup_issues) + len(time_issues)
+             + len(station_issues) + len(coeff_issues) + len(restricted_issues) + len(seat_issues))
 
     if args.json:
         with open(args.json, 'w', encoding='utf-8') as f:
@@ -441,6 +657,12 @@ def main():
                 'json_html_mismatch': mismatch_issues,
                 'transit_issues': transit_issues,
                 'train_routes_issues': train_routes_issues,
+                'route_duplicates': route_dup_issues,
+                'time_issues': time_issues,
+                'station_issues': station_issues,
+                'coeff_anomalies': coeff_issues,
+                'restricted_listings': restricted_issues,
+                'seat_terms': seat_issues,
                 'total': total,
             }, f, ensure_ascii=False, indent=2)
 
