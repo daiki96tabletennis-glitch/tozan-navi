@@ -45,7 +45,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 8px;border-radius:10px;font-size:13px;font-weight:bold;border:none;cursor:pointer;text-decoration:none}
 .share-btn-native{background:#607848;color:white}
 /* ③ 新ヒーロー */
-.hero-new{position:relative;overflow:hidden;background:#c2d4dc;border:1px solid #9cb8c4;padding:20px 16px 16px;border-radius:14px;margin-bottom:14px}
+.hero-new{position:relative;overflow:hidden;background:linear-gradient(145deg,#f0f5ec 0%,#e4edd8 100%);border:1px solid #cfdcc0;padding:20px 16px 16px;border-radius:14px;margin-bottom:14px}
+.hero-new.hero-100{background:linear-gradient(145deg,#eef2f7 0%,#e2eaf3 100%);border-color:#d0dcea}
 .hero-top{margin-bottom:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .hero-photo{position:relative;width:184px;height:104px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.7);flex-shrink:0;background:#6a8055}
 .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
@@ -159,9 +160,9 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .warn-title-blue{color:#1d4ed8;}
 .warn-text{font-size:12px;line-height:1.6;color:#5a5248;}
 .warn-link{display:inline-block;margin-top:5px;font-size:11px;font-weight:600;color:#1d4ed8;text-decoration:underline;text-underline-offset:2px;}
-.mountain-name{font-size:26px;font-weight:bold;color:white;line-height:1.2}
-.mountain-kana{color:#b8c8b8;font-size:12px;margin-top:4px}
-.mountain-area{color:#c8d8c8;font-size:13px;margin-top:2px}
+.mountain-name{font-size:26px;font-weight:bold;color:#1a1a16;line-height:1.2}
+.mountain-kana{color:#4a5a40;font-size:12px;margin-top:4px}
+.mountain-area{color:#1a1a16;font-size:13px;margin-top:2px}
 .hero-bg-svg{position:absolute;bottom:0;right:-10px;width:200px;height:120px;opacity:0.04;pointer-events:none}
 .cal-l{font-family:"Outfit",sans-serif;font-size:8px;color:#a09888;margin-bottom:3px;font-weight:500}
 .ts-arrow::before{content:"";position:absolute;left:-13px;top:-3px;bottom:-3px;width:1px;background:#d4cfc2;}
@@ -271,7 +272,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <main>
   <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="sec-car">車アクセス時間</button><button type="button" class="bookmark-tab" data-target="sec-parking">登山口・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
   <div class="mountain-updated">最終更新: 2026-09-12</div>
-  <div class="hero-new">
+  <div class="hero-new hero-100">
     <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="#2a5010" style="opacity:0.04">
       <polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/><polygon points="20,28 50,55 0,55"/>
     </svg>

@@ -389,7 +389,7 @@ def render_hero(mt):
     hero_time, hero_unit = fmt_hero_time(ofuna_min)
 
     return (
-        '<div class="hero-new">\n'
+        f'<div class="hero-new{" hero-100" if mt.get("category") == "百名山" else ""}">\n'
         '    <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="#2a5010" style="opacity:0.04">\n'
         '      <polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/>'
         '<polygon points="20,28 50,55 0,55"/>\n'
