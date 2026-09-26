@@ -158,7 +158,6 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .ts-summary-note{width:100%;font-size:11px;color:#8a8578;margin-top:2px;font-weight:400;font-family:-apple-system,sans-serif;}
 .dl-reasons li::before{content:"";position:absolute;left:3px;top:9px;width:5px;height:5px;
   border-radius:50%;background:#4e6535;}
-.hero-new{position:relative;overflow:hidden;background:#c2d4dc;border:1px solid #9cb8c4;padding:20px 16px 16px;border-radius:14px;margin-bottom:14px}
 .intro-text{font-size:13px;color:#5a5050;line-height:1.7}
 .info-rows{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
 .calendar{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;margin-bottom:8px}
@@ -190,7 +189,6 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .ts-link-bus{background:#c8dff0;color:#1a4070;}
 .rec-card-title{font-size:13px;font-weight:700;color:#4e6535;margin-bottom:10px;display:flex;align-items:center;gap:6px}
 /* ヒーロー */
-.hero-new{position:relative;overflow:hidden;background:#d0dcc0;border:1px solid #a0b482;padding:20px 16px 16px;border-radius:14px;margin-bottom:14px}
 /* カード共通 */
 .card{background:transparent;border-radius:0;padding:24px 0;margin-bottom:0;border:none;border-bottom:1px solid #ccc7ba}
 /* アクセスバー */
@@ -216,3 +214,6 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 /* ① おすすめユーザーカード */
 .ts-section{background:transparent;border-radius:0;border:none;padding:0;margin-bottom:0;}
 .ts-summary span{display:inline-flex;align-items:center;gap:3px;}
+.ts-note-list{margin:0;padding-left:1.3em;list-style:disc;}
+.ts-note-list li{margin:3px 0;line-height:1.6;}
+.ts-summary-note .ts-note-list{padding-left:1.2em;}

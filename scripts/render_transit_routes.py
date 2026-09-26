@@ -96,6 +96,30 @@ def render_link(link):
     return f'<a href="{href}" target="_blank" rel="noopener" class="{cls}">{icon_svg}{label}</a>'
 
 
+
+def format_note_items(text):
+    """注記の長文を「。」「※」「改行」で区切り、箇条書きの項目リストにする。先頭の💡/※は除去する。"""
+    if not text:
+        return []
+    t = str(text).replace("\r", "")
+    t = re.sub(r"\s*\n\s*", "。", t)
+    t = t.replace("💡", "").replace("※", "。")
+    items = []
+    for part in re.split(r"。", t):
+        part = part.strip(" 　")
+        if part:
+            items.append(part)
+    return items
+
+
+def render_note_list(text, css_class):
+    items = format_note_items(text)
+    if not items:
+        return ""
+    lis = "".join(f"<li>{esc(i)}</li>" for i in items)
+    return f'<div class="{css_class}"><ul class="ts-note-list">{lis}</ul></div>'
+
+
 def render_ts_section(parsed, mountain):
     """
     parsed: parse_transit_routes.parse_train_access_html() の戻り値 (badge/lineName/routes/note/summaryNote/links)
@@ -149,10 +173,7 @@ def render_ts_section(parsed, mountain):
             for d in available_deps if mountain.get(field_map[d][1]) is not None
         )
         default_fare = esc(format_fare(mountain.get(field_map[default_dep][1])))
-        summary_note_html = (
-            f'<div class="ts-summary-note">{esc(parsed["summaryNote"])}</div>'
-            if parsed.get("summaryNote") else ""
-        )
+        summary_note_html = render_note_list(parsed.get("summaryNote"), "ts-summary-note") if parsed.get("summaryNote") else ""
         summary_html = (
             '<div class="ts-summary">'
             f'<div class="ts-dep-toggle">{toggle_btns}</div>'
@@ -162,7 +183,7 @@ def render_ts_section(parsed, mountain):
             "</div>"
         )
 
-    note_html = f'<div class="ts-note">{esc(parsed["note"])}</div>' if parsed.get("note") else ""
+    note_html = render_note_list(parsed.get("note"), "ts-note") if parsed.get("note") else ""
 
     links_html = ""
     if parsed.get("links"):
