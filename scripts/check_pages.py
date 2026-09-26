@@ -427,14 +427,23 @@ def check_time_consistency(mountains):
             leg_mins = [l.get('durationMin') for l in legs if l.get('durationMin')]
             total = sum(leg_mins)
             t = m.get(tfield)
-            if t is not None and t != total:
-                issues.append({'id': m['id'], 'problem': f'{tfield}={t} が legs 合計 {total} と不一致'})
+            # 表示時間は「legs合計＋乗換待ち」が許容（乗換1回あたり最大10分＋誤差2分）。合計より短い／乗換待ちを超える余分は不整合
+            allowed = 10 * max(len(legs) - 1, 1) + 2
+            if t is not None and (t < total or t - total > allowed):
+                issues.append({'id': m['id'], 'problem': f'{tfield}={t} が legs 合計 {total} と不整合（許容: +0〜{allowed}分）'})
             # 文章中の所要時間は、括弧書きの補足（乗換込みの合計など）を除き、いずれかの leg の時間と一致すること
             text = m.get(afield) or ''
             if not isinstance(text, str):
                 continue
+            # 文章の時間は「単独のleg」または「連続するlegの合計」（乗換込みの表記）のどちらかに一致すること（±3分は丸め誤差として許容）
+            sums = set(leg_mins)
+            for i in range(len(leg_mins)):
+                acc = 0
+                for j in range(i, len(leg_mins)):
+                    acc += leg_mins[j]
+                    sums.add(acc)
             for mins in _minutes(re.sub(r'（[^）]*）|\([^)]*\)', '', text)):
-                if mins not in leg_mins and mins != total:
+                if not any(abs(mins - x) <= 3 for x in sums):
                     issues.append({'id': m['id'],
                                    'problem': f'{afield} の「{mins}分」が trainRoutes の legs（{sorted(set(leg_mins))}）に存在しない'})
                     break
@@ -474,7 +483,8 @@ def check_article_stations(mountains):
                 idm = re.search(r'data-mountain-id="([^"]+)"', blk) or re.search(r'href="/mountains/([^/"]+)/"', blk)
                 if not idm or idm.group(1) not in stations:
                     continue
-                text = re.sub(r'<[^>]+>', ' ', blk)
+                # 山カード自身のアクセス行（mc-train）だけを対象にする（カード後ろのFAQ・注記の文章は他の山の話のことがある）
+                text = ' '.join(re.sub(r'<[^>]+>', ' ', t) for t in re.findall(r'<div class="mc-train"[^>]*>(.*?)</div>', blk, re.S))
                 for st in STATION_BEFORE_BUS.findall(text):
                     if not any(st == s2 or st in s2 or s2 in st for s2 in stations[idm.group(1)]):
                         issues.append({'id': idm.group(1),
