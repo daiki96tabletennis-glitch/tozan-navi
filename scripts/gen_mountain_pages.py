@@ -53,7 +53,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 # mountains.json には存在するが、head部のJSON-LD形式（@graph/TouristAttraction）や
 # ページ構造そのものが他の155山と根本的に異なる特殊構造ページ。
 # 安全に自動生成できると確認できるまでは対象外とし、既存HTMLを保持する。
-EXCLUDED_IDS = {"tanzawa"}
+EXCLUDED_IDS = set()
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),

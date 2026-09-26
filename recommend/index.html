@@ -1386,16 +1386,33 @@ function getGearList(m){
   });
   return {items:gears,overflow:overflow,mountainId:m.id};
 }
-function getReasons(m,depLabel,driveMin){
+var REASON_LABELS={rock:'岩場・バリエーション',ridge:'稜線歩き',view:'眺望',volcano:'火山の景観',adventure:'冒険向きの山',challenge:'挑戦しがいのあるコース',forest:'樹林帯の癒し',wetland:'湿原・お花畑',highland:'高原の開放感',historic:'歴史・信仰の見どころ',casual:'気軽に楽しめる',easy:'歩きやすい入門向け',bigcoeff:'歯ごたえのある行程',lowcoeff:'負担の軽い行程',hyaku:'百名山',nihyaku:'二百名山',collector:'ピークハント向き',accessible:'アクセスの良さ',train:'電車で行ける',daytrip:'日帰りできる',hut:'山小屋泊で楽しめる',quiet:'静かに歩ける'};
+var VIBE_LABELS={view:'眺望',forest:'樹林帯',ridge:'稜線歩き',rock:'岩場',accessible:'アクセスの良さ',highland:'高原',historic:'歴史・信仰',historical:'歴史・信仰',history:'歴史・信仰',volcano:'火山景観',wetland:'湿原',alpine:'高山の雰囲気',flower:'花',river:'渓谷'};
+function getReasons(m,depLabel,driveMin,typeCode){
   var r=[];
-  if(m.daytrip) r.push({icon:'🌅',text:'日帰りで楽しめる',sub:'日帰りOKなコース設定'});
-  else r.push({icon:'🏕',text:'山小屋泊でゆったり',sub:'宿泊でしか見られない景色がある'});
-  if(m.trainAccess) r.push({icon:'🚃',text:'電車・バスで行ける',sub:'公共交通機関でアクセス可能'});
-  else r.push({icon:'🚗',text:depLabel+'から'+fmtTime(driveMin),sub:'車でスムーズにアクセス可能'});
-  var coeff=m.coeffMax||20;
-  if(coeff<=22) r.push({icon:'🌱',text:'初心者でも安心のルート',sub:'整備されていて歩きやすい'});
-  else if(coeff>=50) r.push({icon:'🏔',text:'やりがいのある本格コース',sub:'達成感は最高クラス'});
-  else r.push({icon:'⚖️',text:'難易度と景色のバランスが良い',sub:'中級者に最適なコース'});
+  var fmtT=function(x){return x<60?x+'分':fmtTime(x);};
+  var meta=[m.area,m.elevation?m.elevation.toLocaleString()+'m':'',m.category].filter(function(x){return x;}).join('・');
+  if(m.recommendReason) r.push({text:m.recommendReason,sub:meta});
+  else r.push({text:m.daytrip?'日帰りで楽しめる':'山小屋泊でゆったり',sub:meta});
+  // アクセス：出発地からの実際の時間
+  var key={shinjuku:'trainTimeShinjuku',omiya:'trainTimeOmiya'}[answers.dep];
+  var tt=key?m[key]:null;
+  var acc=[];
+  if(driveMin&&driveMin!==999) acc.push('車で'+fmtT(driveMin));
+  if(m.trainAccess&&tt) acc.push('電車・バスで約'+fmtT(tt));
+  else if(m.trainAccess) acc.push('電車・バスでも行ける');
+  if(acc.length) r.push({text:depLabel+'から'+acc.join('・'),sub:(m.daytrip?'日帰り可能':'宿泊前提の山')+(m.trainAccess?'（公共交通機関を使えます）':'（マイカー向き）')});
+  // あなたの答えとの相性：実際のスコア加点の上位項目をそのまま理由にする
+  var lim=answers.coeff||999, cmax=m.coeffMax||20, cmin=m.coeffMin||cmax;
+  var range=(cmin===cmax)?String(cmax):cmin+'〜'+cmax;
+  var det=scoreDetail(m,typeCode||'AVPS').parts;
+  var top=Object.keys(det).filter(function(k){return REASON_LABELS[k]&&det[k]>=12;}).sort(function(x,y){return det[y]-det[x];}).slice(0,2).map(function(k){return REASON_LABELS[k];});
+  var fit;
+  if(lim>=999) fit='コース定数'+range;
+  else if(cmax<=lim*0.75) fit='コース定数'+range+'。選んだ体力に余裕があります';
+  else if(cmax<=lim*1.05) fit='コース定数'+range+'。選んだ体力にちょうど良い';
+  else fit='コース定数'+range+'。選んだ体力より少し挑戦的';
+  r.push({text:top.length?'あなたのタイプに合う点：'+top.join('・'):'この山ならではの景色を楽しめる',sub:fit});
   return r.slice(0,3);
 }
 
@@ -1422,97 +1439,98 @@ function getCandidateMountains(coeffLimit){
   return candidates;
 }
 
-function scoreMount(m,typeCode){
-  let score=0;
+function scoreDetail(m,typeCode){
+  let score=0; const parts={};
+  const add=function(k,p){ score+=p; parts[k]=(parts[k]||0)+p; };
   const drive=getDrive(m);
   const coeffLimit=answers.coeff||999;
   const v=m.vibes||[];
+  const t=m.types||[];
   const a=typeCode[0],c=typeCode[1],p=typeCode[2],s=typeCode[3];
 
   // ── 距離スコア（出発地との近さ）──
-  // 近い山ほど高スコアだが、遠征好きタイプは減衰を抑える
   const distDecay = (a==='A'&&c==='C') ? 4 : 3;
-  score += Math.max(0, (360-drive)/distDecay);
+  add('dist', Math.max(0, (360-drive)/distDecay));
 
   // ── 体力マッチ（コース定数）──
   if(coeffLimit<999){
     const ratio=(m.coeffMax||20)/coeffLimit;
-    if(ratio>=0.75&&ratio<=1.05)  score+=45; // ピッタリ
-    else if(ratio>=0.55&&ratio<0.75) score+=25;
-    else if(ratio>=1.05&&ratio<=1.25) score+=15; // 少しきつめ
-    else if(ratio<0.4)            score+=5;
-    // 超過ペナルティ（きつすぎる）
-    if(m.coeffMax>coeffLimit) score-=Math.min(60,(m.coeffMax-coeffLimit)*2);
+    if(ratio>=0.75&&ratio<=1.05)  add('fit',45);
+    else if(ratio>=0.55&&ratio<0.75) add('fit',25);
+    else if(ratio>=1.05&&ratio<=1.25) add('fit',15);
+    else if(ratio<0.4)            add('fit',5);
+    if(m.coeffMax>coeffLimit) add('over',-Math.min(60,(m.coeffMax-coeffLimit)*2));
   }
 
   // ── 軸A：アクティブ(A) vs ヴィジュアル(V) ──
   if(a==='A'){
-    if(v.includes('rock'))    score+=35; // 岩場・バリエーション
-    if(v.includes('ridge'))   score+=30; // 稜線歩き
-    if(v.includes('view'))    score+=22; // 眺望
-    if(v.includes('volcano')) score+=18; // 火山
-    if(m.types&&m.types.includes('adventure'))  score+=25;
-    if(m.types&&m.types.includes('challenge'))  score+=20;
-  } else { // V
-    if(v.includes('forest'))   score+=38; // 樹林帯・癒し
-    if(v.includes('wetland'))  score+=30; // 湿原・お花畑
-    if(v.includes('highland')) score+=25; // 高原
-    if(v.includes('view'))     score+=20; // 景色（V派にも有効）
-    if(v.includes('historic')) score+=15; // 歴史・寺社
-    if(m.types&&m.types.includes('casual'))     score+=20;
-    if(m.types&&m.types.includes('easy'))       score+=15;
+    if(v.includes('rock'))    add('rock',35);
+    if(v.includes('ridge'))   add('ridge',30);
+    if(v.includes('view'))    add('view',22);
+    if(v.includes('volcano')) add('volcano',18);
+    if(t.includes('adventure'))  add('adventure',25);
+    if(t.includes('challenge'))  add('challenge',20);
+  } else {
+    if(v.includes('forest'))   add('forest',38);
+    if(v.includes('wetland'))  add('wetland',30);
+    if(v.includes('highland')) add('highland',25);
+    if(v.includes('view'))     add('view',20);
+    if(v.includes('historic')) add('historic',15);
+    if(t.includes('casual'))     add('casual',20);
+    if(t.includes('easy'))       add('easy',15);
   }
 
   // ── 軸C：チャレンジ(C) vs ヒーリング(H) ──
   if(c==='C'){
-    if(m.coeffMax>=40)  score+=30;
-    else if(m.coeffMax>=28) score+=18;
-    if(v.includes('rock'))    score+=20;
-    if(v.includes('ridge'))   score+=18;
-    if(m.types&&m.types.includes('challenge')) score+=20;
-    if(m.category==='百名山') score+=12; // 百名山制覇志向
-  } else { // H
-    if(m.coeffMax<=20)  score+=30;
-    else if(m.coeffMax<=30) score+=15;
-    if(v.includes('forest'))  score+=20;
-    if(v.includes('wetland')) score+=18;
-    if(v.includes('highland'))score+=15;
-    if(m.daytrip)             score+=12; // 気軽に行きたい
-    if(m.types&&m.types.includes('easy')) score+=18;
+    if(m.coeffMax>=40)  add('bigcoeff',30);
+    else if(m.coeffMax>=28) add('bigcoeff',18);
+    if(v.includes('rock'))    add('rock',20);
+    if(v.includes('ridge'))   add('ridge',18);
+    if(t.includes('challenge')) add('challenge',20);
+    if(m.category==='百名山') add('hyaku',12);
+  } else {
+    if(m.coeffMax<=20)  add('lowcoeff',30);
+    else if(m.coeffMax<=30) add('lowcoeff',15);
+    if(v.includes('forest'))  add('forest',20);
+    if(v.includes('wetland')) add('wetland',18);
+    if(v.includes('highland'))add('highland',15);
+    if(m.daytrip)             add('daytrip',12);
+    if(t.includes('easy')) add('easy',18);
   }
 
   // ── 軸P：プランナー(P) vs フリー(F) ──
   if(p==='P'){
-    if(m.category==='百名山') score+=25; // 目標がはっきりしている
-    if(m.category==='二百名山') score+=15;
-    if(v.includes('ridge'))   score+=12; // 縦走計画好き
-    if(m.types&&m.types.includes('collector')) score+=20;
-  } else { // F
-    if(m.types&&m.types.includes('casual'))   score+=15;
-    if(v.includes('accessible'))              score+=12; // アクセス良く気軽
-    score+=8; // F派は分散させる
+    if(m.category==='百名山') add('hyaku',25);
+    if(m.category==='二百名山') add('nihyaku',15);
+    if(v.includes('ridge'))   add('ridge',12);
+    if(t.includes('collector')) add('collector',20);
+  } else {
+    if(t.includes('casual'))   add('casual',15);
+    if(v.includes('accessible'))              add('accessible',12);
+    add('spread',8);
   }
 
   // ── 軸S：仲間派(S) vs ソロ派(L) ──
-  if(s==='L'){ // ソロ派
-    if(m.trainAccess)    score+=18; // 電車で一人でも行きやすい
-    if(m.daytrip)        score+=12;
-    if(!v.includes('accessible')) score+=8; // 人が少なそうな山に加点
-  } else { // S=仲間派
-    if(v.includes('accessible')) score+=15; // 友人を連れて行きやすい
-    if(m.trainAccess)             score+=12;
-    if(m.daytrip)                 score+=10;
-    if(m.types&&m.types.includes('casual')) score+=15;
-    if(!m.daytrip&&m.coeffMax>=30) score+=8; // 山小屋で語り合う
+  if(s==='L'){
+    if(m.trainAccess)    add('train',18);
+    if(m.daytrip)        add('daytrip',12);
+    if(!v.includes('accessible')) add('quiet',8);
+  } else {
+    if(v.includes('accessible')) add('accessible',15);
+    if(m.trainAccess)             add('train',12);
+    if(m.daytrip)                 add('daytrip',10);
+    if(t.includes('casual')) add('casual',15);
+    if(!m.daytrip&&m.coeffMax>=30) add('hut',8);
   }
 
   // ── ベーススコア ──
-  if(m.daytrip)             score+=6;
-  if(m.trainAccess)         score+=5;
-  if(m.category==='百名山') score+=8;
+  if(m.daytrip)             add('daytrip',6);
+  if(m.trainAccess)         add('train',5);
+  if(m.category==='百名山') add('hyaku',8);
 
-  return score;
+  return {score:score,parts:parts};
 }
+function scoreMount(m,typeCode){ return scoreDetail(m,typeCode).score; }
 
 
 function renderRadar(){
@@ -1653,7 +1671,7 @@ function _doShowResult(opts){
     const dayBadge=m.daytrip?'<span class="rb rb-day">日帰り</span>':'<span class="rb rb-stay">宿泊</span>';
     const trainBadge=m.trainAccess?'<span class="rb rb-train">電車OK</span>':'';
     const ranks=['r1','r2','r3'];
-    const reasons=getReasons(m, depLabel, m.drive);
+    const reasons=getReasons(m, depLabel, m.drive, typeCode);
     const gearData=getGearList(m);
     const reasonsHtml=reasons.map(r=>
       '<div class="reason-item"><div><div class="reason-text">'+r.text+'</div><div class="reason-sub">'+r.sub+'</div></div></div>'
@@ -2274,7 +2292,7 @@ document.addEventListener('DOMContentLoaded', function(){
       var jsonData = results[0];
       recommendGearData = results[1] || {};
       if(!jsonData) return;
-      var FIELDS = ['id','name','area','elevation','category','difficulty','coeffMin','coeffMax','daytrip','description','driveOfuna','driveShinjuku','driveYokohama','driveOmiya','seasonOk','trainAccess','types','vibes','calLegend','seasonCalendar','status'];
+      var FIELDS = ['id','name','area','elevation','category','difficulty','coeffMin','coeffMax','daytrip','description','driveOfuna','driveShinjuku','driveYokohama','driveOmiya','seasonOk','trainAccess','trainTimeShinjuku','trainTimeOmiya','recommendReason','types','vibes','calLegend','seasonCalendar','status'];
       jsonData.forEach(function(jmt){
         var m = {};
         FIELDS.forEach(function(k){ if(jmt[k] !== undefined) m[k] = jmt[k]; });

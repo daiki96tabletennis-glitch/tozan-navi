@@ -49,7 +49,7 @@
 - `check_pages.py` は `--id` オプション非対応。個別山の確認はサイト全体を実行してから該当IDでgrepする
 - `check_pages.py` は14セクション。9〜14（ルートの他山コピー／所要時間・legs不一致／記事の駅名／定数の異常値／規制中の山の掲載／特急の「自由席」）は過去に実際に見つかった誤りの再発防止用
 - セクション10・11のうち調査待ちのレガシーは `scripts/check_known_issues.json`（ベースライン）に登録済みで件数に含めない。新規の指摘のみ異常として数える。解消したら `python3 scripts/check_pages.py --update-baseline` でベースラインを更新する
-- アクセス表の注記（`trainRoutes.note` / `summaryNote`）は、`render_transit_routes.py` が「。」「※」で区切って箇条書き（`ul.ts-note-list`）に自動整形する。書くときは1文1項目を意識し、1文を長くしない（生成対象外の丹沢山ページは手動で同じ形式にする）
+- アクセス表の注記（`trainRoutes.note` / `summaryNote`）は、`render_transit_routes.py` が「。」「※」で区切って箇条書き（`ul.ts-note-list`）に自動整形する。書くときは1文1項目を意識し、1文を長くしない
 - 規制中の山は `status.level: "restricted"` を付ける。トップの一覧・診断では自動で末尾に回るが、検索ページ・記事の「おすすめカード」からは手動で外す（セクション13で検出）
 - `routes[]` の各ルートには `coeff`（ルート別コース定数）がある。`scripts/calc_route_coeff.py` で time/distance/elevation から再計算する（山全体の coeffMin/coeffMax は別管理）
 - 電車・バス・運賃を変更したら、管理表 `yamatch_kensho_kanri (3).xlsx`（経路・運賃・時間データ一覧／修正履歴データ管理表／検証チェックリスト／バス情報整合性チェック）も同時に更新する
