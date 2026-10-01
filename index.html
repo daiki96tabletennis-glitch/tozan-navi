@@ -224,6 +224,55 @@ function ssSet(key, val) { try { sessionStorage.setItem(key, JSON.stringify(val)
 function lsGet(key, def) { try { var v = localStorage.getItem(key); return v ? JSON.parse(v) : def; } catch { return def; } }
 function lsSet(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch {} }
 
+// ── 条件の保存（2026-10-01）──
+// 出発地・移動手段：端末に保存し、リセットボタンを押すまで維持（山ページと共通のキー）
+// 絞り込み・並び順・検索語・表示（一覧/地図）：最後の操作から1時間で自動リセット
+// 自動リセット／リセットボタンで消えた条件は「前回の条件」として1件だけ残す
+var YM_FILTER_KEY = "ym_filters_v1";
+var YM_FILTER_LAST_KEY = "ym_filters_last";
+var YM_FILTER_TTL = 60 * 60 * 1000;
+var YM_DEFAULT_DEPARTURE = "新宿";
+var YM_DEFAULT_MODE = "car";
+var YM_DEFAULT_SORT = "所要時間順（車）";
+function ymDefaultFilters() {
+  return { search: "", sort: YM_DEFAULT_SORT, area: [], category: "すべて", daytrip: false, train: false,
+    drivetime: null, traintime: null, fare: null, accesstier: null, course: [], crampons: "すべて",
+    line: [], difficulty: [], elevation: [], vibe: "", month: new Date().getMonth() + 1, viewmode: "list" };
+}
+function ymIsDefaultFilters(v) {
+  if (!v) return true;
+  var d = ymDefaultFilters();
+  return Object.keys(d).every(function(k) {
+    if (k === "viewmode") return true; // 一覧/地図の切替は条件として扱わない
+    return JSON.stringify(v[k] === undefined ? d[k] : v[k]) === JSON.stringify(d[k]);
+  });
+}
+function ymReadPref(key, def) {
+  var v = null;
+  try { v = localStorage.getItem(key); } catch (e) {}
+  if (v === null) { try { v = sessionStorage.getItem(key); } catch (e) {} }
+  if (v === null) return def;
+  if (v.charAt(0) === '"') { try { return JSON.parse(v); } catch (e) { return def; } }
+  return v;
+}
+function ymSaveLastFilters(values, departure, mode) {
+  if (ymIsDefaultFilters(values)) return;
+  lsSet(YM_FILTER_LAST_KEY, { values: values, departure: departure, mode: mode, savedAt: Date.now() });
+}
+// 読み込み時：1時間以内なら復元、超えていれば「前回の条件」に退避して初期状態から
+var YM_RESTORED = (function() {
+  var saved = lsGet(YM_FILTER_KEY, null);
+  if (!saved || !saved.values) return null;
+  if (Date.now() - (saved.savedAt || 0) < YM_FILTER_TTL) return saved.values;
+  ymSaveLastFilters(saved.values, saved.departure, saved.mode);
+  try { localStorage.removeItem(YM_FILTER_KEY); } catch (e) {}
+  return null;
+})();
+function ymInit(key) {
+  var d = ymDefaultFilters();
+  return (YM_RESTORED && YM_RESTORED[key] !== undefined) ? YM_RESTORED[key] : d[key];
+}
+
 function isDayTrip(mountain) {
   return mountain.routes.some(r => {
     const h = (r.time.match(/(\d+)時間/) || [])[1] | 0;
@@ -775,11 +824,11 @@ function chipSort(active) {
 }
 
 function App() {
-  const [search, setSearch]               = useState(() => ssGet("ym_search", ""));
-  const [sort, setSort]                   = useState(() => ssGet("ym_sort", "所要時間順（車）"));
-  const [transportMode, setTransportMode] = useState(() => ssGet("ym_transportmode", "car")); // "car" | "train" -- カード表示（車/電車）専用。並び替え(sort)とは独立
-  const [area, setArea]                   = useState(() => ssGet("ym_area", []));
-  const [departure, setDeparture]         = useState(() => ssGet("ym_departure", "大船")); // "大船" | "新宿" | "横浜" | "大宮" | "立川"
+  const [search, setSearch]               = useState(() => ymInit("search"));
+  const [sort, setSort]                   = useState(() => ymInit("sort"));
+  const [transportMode, setTransportMode] = useState(() => ymReadPref("ym_transportmode", YM_DEFAULT_MODE)); // "car" | "train" -- カード表示（車/電車）専用。並び替え(sort)とは独立
+  const [area, setArea]                   = useState(() => ymInit("area"));
+  const [departure, setDeparture]         = useState(() => ymReadPref("ym_departure", YM_DEFAULT_DEPARTURE)); // "大船" | "新宿" | "横浜" | "大宮" | "立川"
 
   const getDriveTime = (m) => {
     if (departure === "新宿" && m.driveTimeShinjuku) return m.driveTimeShinjuku;
@@ -815,22 +864,22 @@ function App() {
     }
     return { key: "normal", label: "ふつう", bg: "#f5f0e0", color: "#8a7020" };
   };
-  const [categoryFilter, setCategoryFilter] = useState(() => ssGet("ym_category", "すべて"));
-  const [dayTripOnly, setDayTripOnly]       = useState(() => ssGet("ym_daytrip", false));
-  const [trainOnly, setTrainOnly]           = useState(() => ssGet("ym_train", false));
-  const [driveTimeFilter, setDriveTimeFilter] = useState(() => ssGet("ym_drivetime", null)); // null | 180 | 360
-  const [trainTimeFilter, setTrainTimeFilter] = useState(() => ssGet("ym_traintime", null)); // null | 90 | 180 | 300 (新宿発)
-  const [fareFilter, setFareFilter]         = useState(() => ssGet("ym_fare", null)); // null | 1000 | 3000 | 5000 (新宿発)
-  const [courseFilter, setCourseFilter]     = useState(() => ssGet("ym_course", []));         // 複数選択
-  const [cramponsFilter, setCramponsFilter] = useState(() => ssGet("ym_crampons", "すべて")); // "すべて"|"アイゼン不要"|"6本以内でOK"
-  const [lineFilter, setLineFilter]         = useState(() => ssGet("ym_line", [])); // 複数選
-  const [difficultyFilter, setDifficultyFilter] = useState(() => ssGet("ym_difficulty", [])); // []|["初級"]|["中級"]|["上級"] 複数選可
-  const [elevationFilter, setElevationFilter]   = useState(() => ssGet("ym_elevation", [])); // 複数選択可: [0,1000,1500,2000,2500,3000]の配列
-  const [accessTierFilter, setAccessTierFilter] = useState(() => ssGet("ym_accesstier", null)); // null | "easy" | "normal" | "plan"
-  const [filterMonth, setFilterMonth]       = useState(() => ssGet("ym_month", new Date().getMonth() + 1)); // 1-12
-  const [viewMode, setViewMode]             = useState(() => ssGet("ym_viewmode", "list"));
+  const [categoryFilter, setCategoryFilter] = useState(() => ymInit("category"));
+  const [dayTripOnly, setDayTripOnly]       = useState(() => ymInit("daytrip"));
+  const [trainOnly, setTrainOnly]           = useState(() => ymInit("train"));
+  const [driveTimeFilter, setDriveTimeFilter] = useState(() => ymInit("drivetime")); // null | 180 | 360
+  const [trainTimeFilter, setTrainTimeFilter] = useState(() => ymInit("traintime")); // null | 90 | 180 | 300 (新宿発)
+  const [fareFilter, setFareFilter]         = useState(() => ymInit("fare")); // null | 1000 | 3000 | 5000 (新宿発)
+  const [courseFilter, setCourseFilter]     = useState(() => ymInit("course"));         // 複数選択
+  const [cramponsFilter, setCramponsFilter] = useState(() => ymInit("crampons")); // "すべて"|"アイゼン不要"|"6本以内でOK"
+  const [lineFilter, setLineFilter]         = useState(() => ymInit("line")); // 複数選
+  const [difficultyFilter, setDifficultyFilter] = useState(() => ymInit("difficulty")); // []|["初級"]|["中級"]|["上級"] 複数選可
+  const [elevationFilter, setElevationFilter]   = useState(() => ymInit("elevation")); // 複数選択可: [0,1000,1500,2000,2500,3000]の配列
+  const [accessTierFilter, setAccessTierFilter] = useState(() => ymInit("accesstier")); // null | "easy" | "normal" | "plan"
+  const [filterMonth, setFilterMonth]       = useState(() => ymInit("month")); // 1-12
+  const [viewMode, setViewMode]             = useState(() => ymInit("viewmode"));
   const [filterOpen, setFilterOpen] = useState(false);
-  const [vibeFilter, setVibeFilter] = useState("");
+  const [vibeFilter, setVibeFilter] = useState(() => ymInit("vibe"));
   const [quickOpen, setQuickOpen] = useState(false);
   const [matrixOpen, setMatrixOpen] = useState(false);
   const [showBoard, setShowBoard] = useState(false);
@@ -951,26 +1000,72 @@ function App() {
     });
   };
 
-  // フィルター条件をsessionStorageに保存（個別ページから戻ったとき復元用）
+  // 条件の保存：出発地・移動手段は端末に保存、絞り込み類は最後の操作時刻とともに保存
+  const ymCurrentFilters = () => ({ search: search, sort: sort, area: area, category: categoryFilter, daytrip: dayTripOnly, train: trainOnly,
+    drivetime: driveTimeFilter, traintime: trainTimeFilter, fare: fareFilter, accesstier: accessTierFilter, course: courseFilter,
+    crampons: cramponsFilter, line: lineFilter, difficulty: difficultyFilter, elevation: elevationFilter, vibe: vibeFilter,
+    month: filterMonth, viewmode: viewMode });
+  const ymFirstSave = useRef(true);
   useEffect(() => {
-    ssSet("ym_search", search);
-    ssSet("ym_sort", sort);
-    ssSet("ym_transportmode", transportMode);
-    ssSet("ym_area", area);
-    ssSet("ym_departure", departure);
-    ssSet("ym_category", categoryFilter);
-    ssSet("ym_daytrip", dayTripOnly);
-    ssSet("ym_train", trainOnly);
-    ssSet("ym_drivetime", driveTimeFilter);
-    ssSet("ym_traintime", trainTimeFilter);
-    ssSet("ym_fare", fareFilter);
-    ssSet("ym_accesstier", accessTierFilter);
-    ssSet("ym_course", courseFilter);
-    ssSet("ym_crampons", cramponsFilter);
-    ssSet("ym_line", lineFilter);
-    ssSet("ym_month", filterMonth);
-    ssSet("ym_viewmode", viewMode);
-  }, [search, sort, transportMode, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, trainTimeFilter, fareFilter, courseFilter, cramponsFilter, filterMonth, viewMode, difficultyFilter, elevationFilter, vibeFilter, accessTierFilter]);
+    lsSet("ym_departure", departure);
+    lsSet("ym_transportmode", transportMode);
+    if (ymFirstSave.current) { ymFirstSave.current = false; if (!YM_RESTORED) return; }
+    lsSet(YM_FILTER_KEY, { values: ymCurrentFilters(), departure: departure, mode: transportMode, savedAt: Date.now() });
+  }, [search, sort, transportMode, area, departure, categoryFilter, dayTripOnly, trainOnly, driveTimeFilter, trainTimeFilter, fareFilter, courseFilter, cramponsFilter, lineFilter, filterMonth, viewMode, difficultyFilter, elevationFilter, vibeFilter, accessTierFilter]);
+  const [lastFilters, setLastFilters] = useState(() => lsGet(YM_FILTER_LAST_KEY, null));
+  // リセットボタン：絞り込み・並び順・出発地・移動手段をすべて初期状態（新宿・車）に戻す
+  const ymResetAll = () => {
+    var cur = ymCurrentFilters();
+    if (!ymIsDefaultFilters(cur)) {
+      ymSaveLastFilters(cur, departure, transportMode);
+      setLastFilters(lsGet(YM_FILTER_LAST_KEY, null));
+    }
+    var d = ymDefaultFilters();
+    setSearch(d.search); setSort(d.sort); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter(d.category); setArea([]);
+    setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter(d.crampons);
+    setLineFilter([]); setDifficultyFilter([]); setElevationFilter([]); setAccessTierFilter(null); setVibeFilter("");
+    setFilterMonth(d.month); setViewMode("list");
+    setTransportMode(YM_DEFAULT_MODE); setDeparture(YM_DEFAULT_DEPARTURE);
+    try { localStorage.removeItem(YM_FILTER_KEY); } catch (e) {}
+  };
+  // 「前回の条件」をワンタップで反映
+  const ymApplyLast = () => {
+    if (!lastFilters || !lastFilters.values) return;
+    var v = Object.assign(ymDefaultFilters(), lastFilters.values);
+    if (lastFilters.mode) setTransportMode(lastFilters.mode);
+    if (lastFilters.departure) setDeparture(lastFilters.departure);
+    setSearch(v.search); setSort(v.sort); setArea(v.area); setCategoryFilter(v.category); setDayTripOnly(v.daytrip); setTrainOnly(v.train);
+    setDriveTimeFilter(v.drivetime); setTrainTimeFilter(v.traintime); setFareFilter(v.fare); setAccessTierFilter(v.accesstier);
+    setCourseFilter(v.course); setCramponsFilter(v.crampons); setLineFilter(v.line); setDifficultyFilter(v.difficulty);
+    setElevationFilter(v.elevation); setVibeFilter(v.vibe); setFilterMonth(v.month);
+  };
+  // 「前回の条件」の表示用ラベル
+  const ymLastLabel = (lf) => {
+    if (!lf || !lf.values) return "";
+    var v = Object.assign(ymDefaultFilters(), lf.values);
+    var parts = [];
+    if (lf.departure) parts.push(lf.departure + "発");
+    parts.push(lf.mode === "train" ? "電車" : "車");
+    if (v.sort !== YM_DEFAULT_SORT) parts.push(v.sort);
+    if (v.search) parts.push("「" + v.search + "」");
+    if (v.category !== "すべて") parts.push(v.category);
+    if (v.area.length) parts.push(v.area.join("・"));
+    if (v.daytrip) parts.push("日帰り");
+    if (v.train) parts.push("電車で行ける");
+    var findLabel = function(opts, val) { var o = (opts || []).find(function(x) { return x.val === val; }); return o ? o.label : String(val); };
+    if (v.drivetime) parts.push("車" + findLabel(DRIVE_OPTIONS, v.drivetime));
+    if (v.traintime) parts.push("電車" + findLabel(TRAIN_OPTIONS, v.traintime));
+    if (v.fare) parts.push(findLabel(FARE_OPTIONS, v.fare));
+    if (v.accesstier) parts.push("アクセス" + ({easy:"良好",normal:"ふつう",plan:"要計画"})[v.accesstier]);
+    if (v.course.length) parts.push("体力度" + v.course.join("・"));
+    if (v.difficulty.length) parts.push(v.difficulty.join("・"));
+    if (v.elevation.length) parts.push("標高" + v.elevation.map(function(e) { return e === 0 ? "〜1000m" : (e + "m〜"); }).join("・"));
+    if (v.crampons !== "すべて") parts.push(v.crampons);
+    if (v.line.length) parts.push(v.line.join("・"));
+    if (v.vibe) parts.push(({view:"絶景",forest:"森歩き",rock:"岩場",highland:"高原",accessible:"お手軽",volcano:"火山",wetland:"湿原",historic:"歴史"})[v.vibe] || v.vibe);
+    if (v.month !== new Date().getMonth() + 1) parts.push(v.month + "月");
+    return parts.join(" / ");
+  };
   const getMountainUrl = (id) => {
     const special = {};
     return "/mountains/" + (special[id] || id) + "/";
@@ -1203,7 +1298,7 @@ function App() {
               <div style={{background:"transparent",border:"1px solid rgba(255,255,255,0.85)",borderRadius:"5px",height:"30px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"0 8px",flexShrink:0}}>
                 <div style={{fontSize:"7px",color:"rgba(255,255,255,0.75)",lineHeight:1}}>登山時期</div>
                 <div style={{display:"flex",alignItems:"center",gap:"1px"}}>
-                  <select value={filterMonth} onChange={e => { var v=Number(e.target.value); setFilterMonth(v); ssSet("ym_month",v) }} style={{appearance:"none",WebkitAppearance:"none",border:"none",background:"transparent",fontSize:"12px",color:"white",fontWeight:"600",outline:"none",cursor:"pointer",padding:0}}>
+                  <select value={filterMonth} onChange={e => { var v=Number(e.target.value); setFilterMonth(v); }} style={{appearance:"none",WebkitAppearance:"none",border:"none",background:"transparent",fontSize:"12px",color:"white",fontWeight:"600",outline:"none",cursor:"pointer",padding:0}}>
                     {[1,2,3,4,5,6,7,8,9,10,11,12].map(m => (<option key={m} value={m}>{m}月</option>))}
                   </select>
                   <span style={{fontSize:"6px",color:"#8a8078",pointerEvents:"none"}}>▾</span>
@@ -1223,7 +1318,7 @@ function App() {
                 )}
                 <span style={{fontSize:"11px",color:"white",fontWeight:activeFilterCount>0?"800":"600"}}>{activeFilterCount>0 ? "絞り込み中（"+activeFilterCount+"）" : "条件で検索"}</span>
               </button>
-              <button onClick={() => { setSearch(""); setSort("所要時間順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea([]); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter([]); setAccessTierFilter(null); setTransportMode("car"); }}
+              <button onClick={ymResetAll}
   onTouchStart={e=>e.currentTarget.style.transform="scale(0.95)"}
   onTouchEnd={e=>setTimeout(()=>{if(e.currentTarget)e.currentTarget.style.transform="scale(1)";},150)}
   style={{flex:1,background:"transparent",borderRadius:"5px",height:"30px",display:"flex",alignItems:"center",justifyContent:"center",gap:"5px",border:"1px solid rgba(255,255,255,0.85)",cursor:"pointer",transition:"transform 0.15s cubic-bezier(0.34,1.56,0.64,1)"}}>
@@ -1328,6 +1423,15 @@ function App() {
               </div>
               {/* フィルターチップ */}
               <div style={{padding:"0 12px 100px"}}>
+                {lastFilters && lastFilters.values && JSON.stringify(Object.assign(ymDefaultFilters(), lastFilters.values, {viewmode:"list"})) !== JSON.stringify(Object.assign(ymCurrentFilters(), {viewmode:"list"})) && (
+                  <button onClick={ymApplyLast} style={{display:"flex",alignItems:"center",gap:"8px",width:"100%",textAlign:"left",background:"#f0f5ec",border:"1px solid #c8d4b8",borderRadius:"10px",padding:"10px 12px",margin:"0 0 12px",cursor:"pointer"}}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4e6535" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 9 9 9"/></svg>
+                    <span style={{flex:1,minWidth:0}}>
+                      <span style={{display:"block",fontSize:"11px",fontWeight:"700",color:"#4e6535"}}>前回の条件を使う</span>
+                      <span style={{display:"block",fontSize:"12px",color:"#3a3530",marginTop:"2px",lineHeight:1.5}}>{ymLastLabel(lastFilters)}</span>
+                    </span>
+                  </button>
+                )}
                 <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "14px" }}>
 
                 {/* 1行目: 日帰り・電車 + 並び替え */}
@@ -1430,7 +1534,6 @@ function App() {
                         onClick={function(){
                           var next = active ? difficultyFilter.filter(function(x){ return x !== d; }) : difficultyFilter.concat([d]);
                           setDifficultyFilter(next);
-                          ssSet("ym_difficulty", next);
                         }}
                         style={chip(active)}>
                         {d}
@@ -1455,7 +1558,6 @@ function App() {
                         onClick={() => {
                           var next = elevationFilter.includes(o.val) ? elevationFilter.filter(function(x){ return x !== o.val; }) : elevationFilter.concat([o.val]);
                           setElevationFilter(next);
-                          ssSet("ym_elevation", next);
                         }}
                         style={chip(elevationFilter.includes(o.val))}>{o.label}</button>
                     ))}
@@ -1507,7 +1609,7 @@ function App() {
               </div>
               {/* 固定フッター：適用ボタン */}
               <div style={{position:"sticky",bottom:0,background:"white",borderTop:"1px solid #e8e4dc",padding:"12px 16px",display:"flex",gap:"8px"}}>
-                <button onClick={() => { setSearch(""); setSort("所要時間順（車）"); setDayTripOnly(false); setTrainOnly(false); setCategoryFilter("すべて"); setArea([]); setDriveTimeFilter(null); setTrainTimeFilter(null); setFareFilter(null); setCourseFilter([]); setCramponsFilter("すべて"); setLineFilter([]); setDifficultyFilter([]); setElevationFilter([]); setAccessTierFilter(null); setTransportMode("car"); }} style={{flex:1,padding:"10px",borderRadius:"5px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
+                <button onClick={ymResetAll} style={{flex:1,padding:"10px",borderRadius:"5px",border:"1px solid #ddd8d0",background:"white",fontSize:"13px",color:"#5a5248",fontWeight:"600",cursor:"pointer"}}>リセット</button>
                 <button onClick={() => setFilterOpen(false)} style={{flex:2,padding:"10px",borderRadius:"5px",border:"none",background:"#4e6535",fontSize:"13px",color:"white",fontWeight:"700",cursor:"pointer"}}>この条件で絞り込む（{filtered.length}件）</button>
               </div>
             </div>
@@ -1615,7 +1717,7 @@ function App() {
             </div>
             <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
               <div style={{position:"relative"}}>
-                <select value={sort} onChange={e => { setSort(e.target.value); ssSet("ym_sort",e.target.value) }} style={{appearance:"none",WebkitAppearance:"none",background:"white",border:"0.5px solid #ddd8d0",borderRadius:"5px",height:"26px",padding:"0 24px 0 9px",fontSize:"10px",color:"#4a5a48",fontWeight:"600",cursor:"pointer",outline:"none"}}>
+                <select value={sort} onChange={e => { setSort(e.target.value); }} style={{appearance:"none",WebkitAppearance:"none",background:"white",border:"0.5px solid #ddd8d0",borderRadius:"5px",height:"26px",padding:"0 24px 0 9px",fontSize:"10px",color:"#4a5a48",fontWeight:"600",cursor:"pointer",outline:"none"}}>
                   {["おすすめ順","所要時間順（車）","所要時間順（電車・バス）","安い順（電車・バス）","標高順","体力度順"].map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
                 <span style={{position:"absolute",right:"7px",top:"50%",transform:"translateY(-50%)",fontSize:"8px",color:"#a09888",pointerEvents:"none"}}>▾</span>

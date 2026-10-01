@@ -15,8 +15,21 @@ function copyUrl(){gtag('event','share_click',{method:'copy_url'});
   navigator.clipboard.writeText(location.href).then(()=>alert('URLをコピーしました'));
 }
 function ymFormatHeroTime(raw){var totalMin;if(typeof raw==='number'){totalMin=raw;}else{var s=String(raw);var hMatch=s.match(/(\d+)\s*時間/);var mMatch=s.match(/(\d+)\s*分/);if(hMatch||mMatch){var h=hMatch?parseInt(hMatch[1],10):0;var m=mMatch?parseInt(mMatch[1],10):0;totalMin=h*60+m;}else{var n=s.match(/\d+/);totalMin=n?parseInt(n[0],10):0;}}if(totalMin<60){return {v:String(totalMin),u:'分〜'};}var hrs=totalMin/60;var hrsStr=hrs.toFixed(1);if(hrsStr.slice(-2)==='.0'){hrsStr=hrsStr.slice(0,-2);}return {v:hrsStr,u:'時間〜'};}
+// 出発地は端末に保存（トップページと共通・リセットボタンを押すまで維持）
+function ymStoreGet(key){
+  var v=null;
+  try{ v=localStorage.getItem(key); }catch(e){}
+  if(v===null){ try{ v=sessionStorage.getItem(key); }catch(e){} }
+  if(v===null) return null;
+  if(v.charAt(0)==='"'){ try{ return JSON.parse(v); }catch(e){ return null; } }
+  return v;
+}
+function ymStoreSet(key,val){
+  try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){}
+}
+function ymGetDep(){ return ymStoreGet('ym_departure') || '新宿'; }
 function changeDep(dep){
-  sessionStorage.setItem('ym_departure', dep);
+  ymStoreSet('ym_departure', dep);
   updateDepButtons(dep);
   applyDep();
 }
@@ -26,7 +39,7 @@ function updateDepButtons(dep){
   });
 }
 function changeDepTrain(key){
-  sessionStorage.setItem('ym_departure_train', key);
+  ymStoreSet('ym_departure_train', key);
   document.querySelectorAll('.ts-dep-btn').forEach(function(b){
     b.classList.toggle('active', b.dataset.key === key);
   });
@@ -43,7 +56,7 @@ function changeDepTrain(key){
   });
 }
 function applyDepTrain(){
-  var key = sessionStorage.getItem('ym_departure_train') || 'shinjuku';
+  var key = ymStoreGet('ym_departure_train') || ({'新宿':'shinjuku','大宮':'omiya','横浜':'yokohama'})[ymGetDep()] || 'shinjuku';
   changeDepTrain(key);
 }
 
@@ -51,7 +64,7 @@ function applyDep(){
   var init = window.YM_MOUNTAIN_INIT || {};
   var heroMinMap = init.heroMinMap || {};
   var nearbyIds = init.nearbyIds || [];
-  var raw = sessionStorage.getItem('ym_departure'); var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
+  var dep = ymGetDep();
   var depMap = {'大船':'ofuna','新宿':'shinjuku','横浜':'yokohama','大宮':'omiya','立川':'tachikawa'};
   var key = depMap[dep] || 'ofuna';
   var label = dep + 'から';
@@ -81,7 +94,7 @@ function applyDep(){
   });
 }
 (function(){
-  var initDep = sessionStorage.getItem('ym_departure') || '大船';
+  var initDep = ymGetDep();
   updateDepButtons(initDep);
   applyDep();
   applyDepTrain();
@@ -253,8 +266,7 @@ function applyDep(){
     });
 
     // 3. ヒーロー時間を直接更新
-    var raw = sessionStorage.getItem('ym_departure');
-    var dep = raw ? (raw.startsWith('"') ? JSON.parse(raw) : raw) : '大船';
+    var dep = ymGetDep();
     var dk = {'大船':'driveOfuna','新宿':'driveShinjuku','横浜':'driveYokohama','大宮':'driveOmiya','立川':'driveTachikawa'};
     var heroTime = document.getElementById('hero-time');
     var heroUnit = document.getElementById('hero-unit');
