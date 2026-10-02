@@ -1076,20 +1076,27 @@ function App() {
   const activeFilterCount = [dayTripOnly,trainOnly,categoryFilter!=="すべて",area.length>0,!!driveTimeFilter,!!trainTimeFilter,!!fareFilter,courseFilter.length>0,cramponsFilter!=="すべて",lineFilter.length>0,difficultyFilter.length>0,elevationFilter.length>0,!!accessTierFilter].filter(Boolean).length;
   // カード表示（車/電車）は transportMode で管理。おすすめ順・標高順・体力度順などどのソートでも切替可能
   const isTrainMode = transportMode === "train";
+  // 起動直後（保存した条件の復元時）は、下の連動処理で移動手段や絞り込みを書き換えない
+  // （以前は並び順が初期値「所要時間順（車）」のため、起動のたびに電車→車へ戻っていた）
+  const ymSyncReady = useRef(false);
   // 「所要時間順（車/電車）」ソートを選んだときは、表示モードも連動させる
   useEffect(() => {
+    if (!ymSyncReady.current) return;
     if (sort === "所要時間順（電車・バス）") setTransportMode("train");
     else if (sort === "所要時間順（車）") setTransportMode("car");
   }, [sort]);
   // 電車系の絞り込み（所要時間・運賃・アクセス難易度）を使ったら電車表示に、車の所要時間絞り込みを使ったら車表示に
   useEffect(() => {
+    if (!ymSyncReady.current) return;
     if (trainTimeFilter || fareFilter || accessTierFilter) setTransportMode("train");
   }, [trainTimeFilter, fareFilter, accessTierFilter]);
   useEffect(() => {
+    if (!ymSyncReady.current) return;
     if (driveTimeFilter) setTransportMode("car");
   }, [driveTimeFilter]);
   // モードを切り替えたら、逆モード専用の絞り込みは自動でリセット（表示に出ない条件が残らないように）
   useEffect(() => {
+    if (!ymSyncReady.current) return;
     if (transportMode === "car") {
       if (trainTimeFilter) setTrainTimeFilter(null);
       if (fareFilter) setFareFilter(null);
@@ -1102,6 +1109,8 @@ function App() {
   useEffect(() => {
     if (isTrainMode && departure !== "新宿" && departure !== "大宮" && departure !== "横浜") setDeparture("新宿");
   }, [isTrainMode]);
+  // ここまでの連動処理は初回描画後から有効にする（この effect は宣言順で最後に走る）
+  useEffect(() => { ymSyncReady.current = true; }, []);
 
   const filtered = useMemo(() => {
     let list = mountains.filter(m => {
@@ -1111,7 +1120,8 @@ function App() {
       const matchCat = categoryFilter === "すべて" || m.category === categoryFilter;
       const matchDayTrip = !dayTripOnly || isDayTrip(m);
       const matchTrainOnly = !trainOnly || !!m.trainAccess;
-      const matchDriveTime = (!driveTimeFilter || getDriveTime(m) <= driveTimeFilter) && getDriveTime(m) <= 360;
+      // 車で6時間を超える山も一覧から隠さない（以前は出発地によって最大10山が消えていた）。6時間の上限は絞り込み「6時間以内」で選べる
+      const matchDriveTime = !driveTimeFilter || getDriveTime(m) <= driveTimeFilter;
       const matchTrainTime = !trainTimeFilter || getTrainTime(m) <= trainTimeFilter;
       const matchFare = !fareFilter || getFare(m) <= fareFilter;
       const matchAccessTier = !accessTierFilter || (function(){ var tier = getAccessTier(m); return tier && tier.key === accessTierFilter; })();

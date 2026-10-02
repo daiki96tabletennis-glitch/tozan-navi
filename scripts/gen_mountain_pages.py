@@ -55,6 +55,9 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 # 安全に自動生成できると確認できるまでは対象外とし、既存HTMLを保持する。
 EXCLUDED_IDS = set()
 
+# 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
+ASSET_VER = "20261002"
+
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
     ("新宿駅", "driveShinjuku", "shinjuku"),
@@ -309,7 +312,7 @@ def render_head(mt):
         '<meta name="google-site-verification" '
         'content="dJ2byH9b8xF8S5lqAyWV-DqRwPGLEjWXs_-Un9oXGHs" />'
     )
-    parts.append('<link rel="stylesheet" href="../../assets/css/mountain.css">')
+    parts.append('<link rel="stylesheet" href="../../assets/css/mountain.css?v=' + ASSET_VER + '">')
     parts.append(f"<style>{css}</style>")
     parts.append(GTAG_BLOCK.rstrip("\n"))
     parts.append(render_jsonld(mt))
@@ -889,13 +892,13 @@ def render_scripts(mt):
         "<script>\n"
         f"var YM_MOUNTAIN_INIT = {init_json};\n"
         "</script>\n"
-        '<script src="../../assets/js/mountain-engine.js"></script>\n'
+        '<script src="../../assets/js/mountain-engine.js?v=' + ASSET_VER + '"></script>\n'
         "\n\n\n"
         f"{hero_photo}"
         f"{NEARBY_STICKY_SCRIPT}"
         "\n\n"
-        '<script src="../../assets/js/gear-common.js"></script>\n'
-        '<script src="../../assets/js/mountain.js"></script>'
+        '<script src="../../assets/js/gear-common.js?v=' + ASSET_VER + '"></script>\n'
+        '<script src="../../assets/js/mountain.js?v=' + ASSET_VER + '"></script>'
     )
 
 
