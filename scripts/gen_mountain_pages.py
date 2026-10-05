@@ -471,10 +471,13 @@ def render_train_access(mt):
     # trainRoutesが無い場合（車のみ山、パース対象外）は旧来のtrainAccessHtmlに
     # フォールバックし、既存表示を壊さない。
     train_routes = mt.get("trainRoutes")
+    caption = ""
+    if mt.get("dataModel") == "ssot-v1" and mt.get("trainAccessLabel"):
+        caption = f'<div class="ts-target">行き先：{esc(mt["trainAccessLabel"])}</div>\n  '
     if train_routes:
         ts = render_ts_section(train_routes, mt)
         if ts:
-            return f'<div class="card" id="sec-train">\n  {ts}\n</div>'
+            return f'<div class="card" id="sec-train">\n  {caption}{ts}\n</div>'
     ts = mt.get("trainAccessHtml")
     if not ts:
         return ""
@@ -513,6 +516,9 @@ def render_parking(mt):
     parking = esc(mt.get("parking") or "")
     address = esc(mt.get("address") or mt.get("trailheadAddress") or "")
     map_btns = mt.get("mapBtnsHtml") or ""
+    map_target = ""
+    if mt.get("dataModel") == "ssot-v1" and mt.get("mapTargetName"):
+        map_target = f'<div class="map-target">地図の行き先：{esc(mt["mapTargetName"])}</div>\n'
     return (
         '<div class="card" id="sec-parking"><h2><svg width="16" height="16" viewBox="0 0 24 24" '
         'style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" '
@@ -527,12 +533,79 @@ def render_parking(mt):
         f'<div class="info-row"><span class="info-label">住所</span>'
         f'<span class="info-val">{address}</span></div>\n'
         '</div>\n'
-        f'{map_btns}\n'
+        f'{map_target}{map_btns}\n'
         '</div>'
     )
 
 
+SEASON_ICON = ('<svg width="16" height="16" viewBox="0 0 24 24" '
+               'style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" '
+               'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+               '<rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/>'
+               '<line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>')
+
+
+def _md(d):
+    """2026-05-07 → 5/7"""
+    if not d:
+        return ""
+    y, m, dd = d.split("-")
+    return f"{int(m)}/{int(dd)}"
+
+
+def render_season_ssot(mt):
+    """新構造の山：登山道・公共交通・装備を別の行で表示する（運行終了と登山不可を混同しない）"""
+    ms = mt["monthlyStatus"]
+    head = "".join(f'<div class="cond-h">{i+1}</div>' for i in range(12))
+    trail_cls = {"open": "c-ok", "partial": "c-part", "closed": "c-ng"}
+    trail_txt = {"open": "○", "partial": "△", "closed": "×"}
+    tp_cls = {"ok": "c-ok", "partial": "c-part", "none": "c-ng", "unknown": "c-unk"}
+    tp_txt = {"ok": "○", "partial": "△", "none": "×", "unknown": "–"}
+    gear_cls = {"normal": "s-ok", "snow_caution": "s-gear", "winter": "s-hard"}
+    row_trail = "".join(f'<div class="cond-c {trail_cls[v]}">{trail_txt[v]}</div>' for v in ms["trail"])
+    row_tp = "".join(f'<div class="cond-c {tp_cls[v]}">{tp_txt[v]}</div>' for v in ms["transport"])
+    row_gear = "".join(
+        f'<div class="cond-c {"c-ng" if ms["trail"][i] == "closed" else gear_cls[v]}"></div>'
+        for i, v in enumerate(ms["gear"])
+    )
+    notes = []
+    for p in (mt.get("conditions") or {}).get("trailPeriods") or []:
+        notes.append(f'登山道：{_md(p.get("from"))}〜{_md(p.get("to"))} {esc(p.get("label") or "")}')
+    for r in mt.get("routes") or []:
+        st = r.get("status")
+        if st and st.get("state") == "closed":
+            notes.append(f'{esc(r.get("name") or "")}：{esc(st.get("label") or "通行止め")}')
+    op = mt.get("trainAccessOperation") or {}
+    if op.get("validFrom") or op.get("validTo"):
+        rng = f'{_md(op.get("validFrom"))}〜{_md(op.get("validTo"))}'
+        notes.append(f'公共交通（{esc(mt.get("trainAccessLabel") or "")}）：{op.get("seasonYear") or ""}年は{rng}'
+                     + (f'。{esc(op["reservation"])}' if op.get("reservation") else ""))
+    notes_html = ""
+    if notes:
+        notes_html = '<ul class="cond-notes">' + "".join(f"<li>{n}</li>" for n in notes) + "</ul>"
+    return (
+        f'<div class="card" id="sec-season"><h2>{SEASON_ICON}シーズンカレンダー</h2>\n'
+        '<div class="cond-table">'
+        f'<div class="cond-row"><div class="cond-label"></div>{head}</div>'
+        f'<div class="cond-row"><div class="cond-label">登山道</div>{row_trail}</div>'
+        f'<div class="cond-row"><div class="cond-label">公共交通</div>{row_tp}</div>'
+        f'<div class="cond-row"><div class="cond-label">装備</div>{row_gear}</div>'
+        '</div>\n'
+        '<div class="cond-legend">'
+        '<span><i class="s-ok"></i>通常の登山装備</span>'
+        '<span><i class="s-gear"></i>残雪・凍結に注意（軽アイゼン等を状況に応じて）</span>'
+        '<span><i class="s-hard"></i>積雪期（冬山装備・経験が必要）</span>'
+        '<span><i class="c-ng"></i>閉鎖・運行なし</span>'
+        '</div>\n'
+        '<p class="cond-key">○ 利用可　△ 月の一部のみ　× 閉鎖・運行なし　– 未確認</p>\n'
+        f'{notes_html}\n'
+        '  </div>'
+    )
+
+
 def render_season(mt):
+    if mt.get("dataModel") == "ssot-v1" and mt.get("monthlyStatus"):
+        return render_season_ssot(mt)
     cal = require(mt, "seasonCalendar")
     legend = mt.get("calLegend") or []
     months = "".join(
@@ -572,12 +645,23 @@ def render_routes(mt):
             chips.append(f'<span class="rl-chip">↑&nbsp;{esc(r["elevation"])}</span>')
         if r.get("coeff") is not None:
             chips.append(f'<span class="rl-chip">定数&nbsp;{esc(r["coeff"])}</span>')
+        ssot_html = ""
+        if mt.get("dataModel") == "ssot-v1":
+            th_name = (mt.get("routeTrailheads") or {}).get(r.get("id"))
+            tags = []
+            if r.get("id") == mt.get("representativeRouteId"):
+                tags.append('<span class="rl-tag rl-tag-rep">代表ルート</span>')
+            st = r.get("status")
+            if st and st.get("state") == "closed":
+                tags.append(f'<span class="rl-tag rl-tag-ng">{esc(st.get("label") or "通行止め")}</span>')
+            line = f'登山口：{esc(th_name)}' if th_name else ""
+            ssot_html = f'<div class="rl-th">{"".join(tags)}{line}</div>'
         waypoints_html = ""
         if r.get("waypoints"):
             waypoints_html = f'<div class="rl-waypoints">{esc(r["waypoints"])}</div>'
         items.append(
             f'<div class="rl-item"><div class="rl-num">{i}</div><div class="rl-content">'
-            f'<div class="rl-name">{name}</div>{waypoints_html}'
+            f'<div class="rl-name">{name}</div>{ssot_html}{waypoints_html}'
             f'<div class="rl-chips">{"".join(chips)}</div></div></div>'
         )
     items_html = "".join(items)
@@ -810,7 +894,33 @@ def render_nearby(mt, by_id):
     )
 
 
+def render_alerts(mt):
+    """新構造の山：「現在のアクセス注意」を出典・確認日つきで全件表示する"""
+    out = []
+    for a in mt.get("alerts") or []:
+        level = a.get("level", "yellow")
+        link = ""
+        if a.get("sourceUrl"):
+            link = (f'\n      <a href="{esc(a["sourceUrl"])}" target="_blank" rel="noopener" '
+                    f'class="warn-link">{esc(a.get("linkText") or "公式情報")} →</a>')
+        verified = f'<div class="warn-verified">最終確認：{esc(a.get("lastVerified") or "")}</div>' if a.get("lastVerified") else ""
+        out.append(
+            f'<div class="warn-banner warn-banner-{level}">\n'
+            '    <div class="warn-icon">⚠️</div>\n'
+            '    <div class="warn-body">\n'
+            f'      <div class="warn-kicker warn-title-{level}">現在のアクセス注意</div>\n'
+            f'      <div class="warn-title warn-title-{level}">{esc(a.get("title") or "")}</div>\n'
+            f'      <div class="warn-text">{esc(a.get("text") or "")}</div>{link}\n'
+            f'      {verified}\n'
+            '    </div>\n'
+            '  </div>'
+        )
+    return "\n  ".join(out)
+
+
 def render_warn_banner(mt):
+    if mt.get("dataModel") == "ssot-v1" and mt.get("alerts"):
+        return render_alerts(mt)
     wb = mt.get("warnBanner")
     if not isinstance(wb, dict):
         return ""

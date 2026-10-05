@@ -214,6 +214,32 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .ts-note-list{margin:0;padding-left:1.3em;list-style:disc;}
 .ts-note-list li{margin:3px 0;line-height:1.6;}
 .ts-summary-note .ts-note-list{padding-left:1.2em;}
+
+/* 新構造（ssot-v1）：登山道・公共交通・装備の3行カレンダー */
+.cond-table{display:flex;flex-direction:column;gap:3px;margin-bottom:8px}
+.cond-row{display:grid;grid-template-columns:52px repeat(12,1fr);gap:2px;align-items:center}
+.cond-label{font-size:10px;color:#6a6058;font-weight:600}
+.cond-h{font-family:"Outfit",sans-serif;font-size:8px;color:#a09888;text-align:center;font-weight:500}
+.cond-c{height:22px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700}
+.c-ok{background:#e4edd8;color:#4e6535}
+.c-part{background:#f3ead0;color:#8a6a20}
+.c-ng{background:#d9d5cf;color:#6a6058}
+.c-unk{background:#f2f0ec;color:#a09888}
+.s-closed{background:#d9d5cf}
+.cond-legend{display:flex;gap:6px 10px;flex-wrap:wrap;font-size:10px;color:#6a6058}
+.cond-legend span{display:flex;align-items:center;gap:4px}
+.cond-legend i{width:8px;height:8px;border-radius:1.5px;display:inline-block;flex-shrink:0}
+.cond-key{font-size:10px;color:#9a9088;margin-top:6px}
+.cond-notes{margin:8px 0 0;padding-left:16px;font-size:11px;color:#5a5248;line-height:1.7}
+.rl-th{font-size:11px;color:#6a6058;margin:2px 0 4px;display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.rl-tag{font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px}
+.rl-tag-rep{background:#e4edd8;color:#4e6535}
+.rl-tag-ng{background:#fde2e2;color:#b02a2a}
+.ts-target{font-size:11px;font-weight:700;color:#4e6535;margin-bottom:6px}
+.map-target{font-size:11px;color:#6a6058;margin-bottom:6px}
+.warn-kicker{font-size:10px;font-weight:700;letter-spacing:0.04em;margin-bottom:2px}
+.warn-verified{font-size:10px;color:#9a9088;margin-top:4px}
+.warn-banner + .warn-banner{margin-top:-4px}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -665,8 +691,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   </div>
 </div>
 
-<div class="rw"><p class="rh"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 L9 9 L13 15 L16 11 L21 20 Z"/></svg>近くて似た山</p><div class="rg"><a href="/mountains/hiuchigatake/" class="rc rc-blue"><div class="rn">燧ヶ岳</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数27〜38</span></div><div class="rt" id="nearby-time-hiuchigatake" data-ofuna="4時間55分" data-shinjuku="4時間55分" data-yokohama="4時間55分" data-omiya="4時間10分">4時間55分<span class="rs" id="nearby-label-hiuchigatake">大船から</span></div></a>
-<a href="/mountains/nikko_shirane/" class="rc rc-blue"><div class="rn">日光白根山</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数21〜31</span></div><div class="rt" id="nearby-time-nikko_shirane" data-ofuna="3時間40分" data-shinjuku="3時間30分" data-yokohama="3時間40分" data-omiya="2時間55分">3時間40分<span class="rs" id="nearby-label-nikko_shirane">大船から</span></div></a>
+<div class="rw"><p class="rh"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 L9 9 L13 15 L16 11 L21 20 Z"/></svg>近くて似た山</p><div class="rg"><a href="/mountains/hiuchigatake/" class="rc rc-blue"><div class="rn">燧ヶ岳</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数23〜31</span></div><div class="rt" id="nearby-time-hiuchigatake" data-ofuna="4時間55分" data-shinjuku="4時間55分" data-yokohama="4時間55分" data-omiya="4時間10分">4時間55分<span class="rs" id="nearby-label-hiuchigatake">大船から</span></div></a>
+<a href="/mountains/nikko_shirane/" class="rc rc-blue"><div class="rn">日光白根山</div><div class="rb"><span class="rbd" style="background:#fde8d8;color:#8a5010">中〜上級</span><span class="rbc">定数20〜28</span></div><div class="rt" id="nearby-time-nikko_shirane" data-ofuna="3時間40分" data-shinjuku="3時間30分" data-yokohama="3時間40分" data-omiya="2時間55分">3時間40分<span class="rs" id="nearby-label-nikko_shirane">大船から</span></div></a>
 </div></div>
 
   <div class="note">

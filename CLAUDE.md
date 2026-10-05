@@ -47,12 +47,28 @@
 - 電車アクセスが無い（マイカーのみ）山は `trainAccess: false` または `null`。ただし「本当にアクセス手段が無いか」を毎回一次情報で検証すること。trainAccess=false のまま放置されていたが実際は季節運行バス・予約制シャトル等が存在するケースが過去の検証で25山中18山発見された（サイト全体で同様の見落としがある可能性が高い）
 - FAQ「アクセス方法」の回答文には、`fareShinjuku`/`fareOmiya`/`fareYokohama` の3つの正式運賃額**のみ**を記載する。区間ごとの内訳運賃（例：バスのみの料金）を書くと、check_pages.py セクション6の運賃整合性チェックで「不一致（stray）」として検出される
 - `check_pages.py` は `--id` オプション非対応。個別山の確認はサイト全体を実行してから該当IDでgrepする
-- `check_pages.py` は14セクション。9〜14（ルートの他山コピー／所要時間・legs不一致／記事の駅名／定数の異常値／規制中の山の掲載／特急の「自由席」）は過去に実際に見つかった誤りの再発防止用
+- `check_pages.py` は15セクション（15は新構造の整合性）。9〜14（ルートの他山コピー／所要時間・legs不一致／記事の駅名／定数の異常値／規制中の山の掲載／特急の「自由席」）は過去に実際に見つかった誤りの再発防止用
 - セクション10・11のうち調査待ちのレガシーは `scripts/check_known_issues.json`（ベースライン）に登録済みで件数に含めない。新規の指摘のみ異常として数える。解消したら `python3 scripts/check_pages.py --update-baseline` でベースラインを更新する
 - アクセス表の注記（`trainRoutes.note` / `summaryNote`）は、`render_transit_routes.py` が「。」「※」で区切って箇条書き（`ul.ts-note-list`）に自動整形する。書くときは1文1項目を意識し、1文を長くしない
 - 規制中の山は `status.level: "restricted"` を付ける。トップの一覧・診断では自動で末尾に回るが、検索ページ・記事の「おすすめカード」からは手動で外す（セクション13で検出）
 - `routes[]` の各ルートには `coeff`（ルート別コース定数）がある。`scripts/calc_route_coeff.py` で time/distance/elevation から再計算する（山全体の coeffMin/coeffMax は別管理）
 - 電車・バス・運賃を変更したら、管理表 `yamatch_kensho_kanri (3).xlsx`（経路・運賃・時間データ一覧／修正履歴データ管理表／検証チェックリスト／バス情報整合性チェック）も同時に更新する
+
+## 新データ構造（ssot-v1・2026-10-05〜段階移行中）
+山 → ルート → 登山口 → アクセス → 季節条件 の順に紐付ける。`dataModel: "ssot-v1"` の山が移行済み（19山。一覧は `dataModel` で確認）。
+- 正のデータ
+  - `data/mountains.json`：`representativeRouteId` / `routes[].{id,trailheadId,accessId,coeff,status}` / `conditions`（装備の月別・登山道の閉鎖期間）/ `alerts`（現在のアクセス注意）
+  - `data/trailheads.json`：登山口・アクセス拠点（座標はここだけに持つ。`type`: trailhead / accessHub）
+  - `data/accesses.json`：電車・バス経路、運賃、運行期間（`operation.validFrom/validTo/statusType`）、`sourceUrl`、`lastVerified`。複数の山で共有する（例：北沢峠＝甲斐駒ヶ岳・仙丈ヶ岳）
+- 移行済みの山では、次の旧フィールドを**手で編集しない**。`python3 scripts/build_derived.py` が新構造から生成する：
+  `trailhead` `lat` `lng` `parking` `address` `gmapUrl` `amapUrl` `mapBtnsHtml` `trainRoutes` `trainAccessHtml` `trainAccess*` `trainTime*` `fare*` `trainInfo` `coeffMin` `coeffMax` `courseCoefficient` `courseCoefficientRange` `seasonCalendar` `calLegend` `seasonNoGear` `season6Crampons` `warnBanner`、およびFAQ（アクセス・シーズン）と本文中の「定数◯〜◯」「代表コース…」
+- 手順：新構造を編集 → `build_derived.py` → `gen_mountain_pages.py --id <id>` → `check_pages.py`（セクション15が新構造の整合性）
+- コース定数は `routes[].coeff` だけが正。山の上部表示・FAQ・metaはそこから作る
+- 「登山口（歩き始める場所）」と「アクセス拠点（駐車場・バスやロープウェイに乗る場所）」を分ける。地図ボタンの行き先は `accesses[].mapTargetId`
+- 季節は「登山道／公共交通／装備」を別々に持つ。公共交通の運行終了を登山不可として表示しない。閉鎖期間を装備区分（アイゼン等）で表現しない
+- 確認できない値は推測で埋めず `null` ＋ `needsVerification: true`。出典（`sourceUrl`）と最終確認日（`lastVerified`）を必ず残す
+- 全山の監査：`python3 scripts/audit_data.py` → `data/audit_report.csv`（P0〜P3）
+- 旧フィールドは削除しない（全山の移行と新旧比較が終わってから廃止）
 
 ## ヒーロー時間表示
 - 60分未満は分のみ（例: 55+分〜）、60分以上は小数時間（例: 100分→1.7+時間〜、末尾 `.0` は省略）

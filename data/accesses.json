@@ -1,0 +1,3456 @@
+{
+  "hatomachi-toge": {
+    "id": "hatomachi-toge",
+    "name": "鳩待峠へのアクセス（戸倉で乗換）",
+    "trailheadId": "hatomachi-toge",
+    "mapTargetId": "oze-tokura",
+    "trainRoutes": {
+      "badge": {
+        "type": null,
+        "style": "background:#fde8d8;color:#8a5010;",
+        "icon": "warn",
+        "label": "夏季限定・本数僅少"
+      },
+      "lineName": "上越新幹線・関越交通「鎌田線」・「尾瀬戸倉～鳩待峠乗合バス」",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越新幹線とき"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "上毛高原駅",
+              "method": {
+                "icon": "bus",
+                "line": "関越交通バス"
+              },
+              "durationMin": 95,
+              "fareYen": null
+            },
+            {
+              "station": "尾瀬戸倉",
+              "method": {
+                "icon": "bus",
+                "line": "乗合バス・乗合タクシー"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "鳩待峠（夏季のみ運行）"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン直通"
+              },
+              "durationMin": 60,
+              "fareYen": null
+            },
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越新幹線とき"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "上毛高原駅",
+              "method": {
+                "icon": "bus",
+                "line": "関越交通バス"
+              },
+              "durationMin": 95,
+              "fareYen": null
+            },
+            {
+              "station": "尾瀬戸倉",
+              "method": {
+                "icon": "bus",
+                "line": "乗合バス・乗合タクシー"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "鳩待峠（夏季のみ運行）"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越新幹線とき"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "上毛高原駅",
+              "method": {
+                "icon": "bus",
+                "line": "関越交通バス"
+              },
+              "durationMin": 95,
+              "fareYen": null
+            },
+            {
+              "station": "尾瀬戸倉",
+              "method": {
+                "icon": "bus",
+                "line": "乗合バス・乗合タクシー"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "鳩待峠（夏季のみ運行）"
+            }
+          ]
+        }
+      },
+      "note": "💡 上毛高原駅〜尾瀬戸倉の関越交通バスは例年5月中旬〜10月中旬の運行。戸倉〜鳩待峠は乗合バス・乗合タクシーで、マイカー規制期間中は自家用車で鳩待峠へ入れない。鳩待峠の駐車場は台数が限られるため、戸倉の駐車場利用が基本。",
+      "summaryNote": "※マイカー規制中は戸倉で乗合バスに乗換必須。夏季は新宿発の直通高速バス「尾瀬号」も利用可",
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=上毛高原駅&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "鳩待峠乗合バス 時刻表",
+          "url": "https://kan-etsu.net/pages/43/"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 10430,
+      "omiya": 8890,
+      "yokohama": 10460
+    },
+    "trainTimes": {
+      "shinjuku": 208,
+      "omiya": 175,
+      "yokohama": 235
+    },
+    "transfers": {
+      "shinjuku": 2,
+      "omiya": 2,
+      "yokohama": 2
+    },
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "car": {
+      "parking": "戸倉駐車場（約400台・1000円）※バス乗換",
+      "restriction": "鳩待峠へはマイカーで入れない。戸倉駐車場で乗合バス・乗合タクシーに乗り換える"
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": null,
+      "validTo": null,
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "戸倉〜鳩待峠の乗合バス・タクシーの2026年の運行期間は未確認"
+    },
+    "sourceUrl": null,
+    "lastVerified": "2026-10-05",
+    "needsVerification": true
+  },
+  "sarukura": {
+    "id": "sarukura",
+    "name": "猿倉へのアクセス",
+    "trailheadId": "sarukura",
+    "mapTargetId": "sarukura",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ 季節運行"
+      },
+      "lineName": "JR大糸線・アルピコ交通「猿倉線」",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 220,
+              "fareYen": null
+            },
+            {
+              "station": "白馬駅",
+              "method": {
+                "icon": "train",
+                "line": "アルピコ交通「猿倉線」（事前予約制）"
+              },
+              "durationMin": 27,
+              "fareYen": null
+            },
+            {
+              "station": "猿倉（季節）"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 34,
+              "fareYen": null
+            },
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "特急あずさ・大糸線"
+              },
+              "durationMin": 220,
+              "fareYen": null
+            },
+            {
+              "station": "白馬駅",
+              "method": {
+                "icon": "train",
+                "line": "アルピコ交通「猿倉線」（事前予約制）"
+              },
+              "durationMin": 27,
+              "fareYen": null
+            },
+            {
+              "station": "猿倉（季節）"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "特急あずさ・大糸線"
+              },
+              "durationMin": 220,
+              "fareYen": null
+            },
+            {
+              "station": "白馬駅",
+              "method": {
+                "icon": "train",
+                "line": "アルピコ交通「猿倉線」（事前予約制）"
+              },
+              "durationMin": 27,
+              "fareYen": null
+            },
+            {
+              "station": "猿倉（季節）"
+            }
+          ]
+        }
+      },
+      "note": "💡 新宿〜白馬駅を乗り換えなしで結ぶ特急あずさは1日1往復のみ（下り5号：新宿8:00発→白馬11:40着、上り38号：白馬13:43発→新宿17:26着、指定席片道8,270円）。この時間帯を逃すと松本駅で大糸線に乗り換えとなり、時間・特急料金とも余分にかかる。白馬駅〜猿倉のアルピコ交通「猿倉線」は2025年より事前予約制（発車オーライネットで乗車日1ヶ月前から・事前決済）となり、運賃は片道2,000円。運行は例年7月中旬〜10月中旬で1日4便（白馬駅発5:55/7:20/12:15/13:45、猿倉発8:02/13:00/14:30）。予約がなくても当日空席があれば乗車可能。県道白馬岳線の雨量規制により運休となる場合がある。",
+      "summaryNote": "※猿倉線は7月中旬〜10月中旬の事前予約制（発車オーライネット）。運賃片道2,000円",
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=白馬駅&type=1"
+        },
+        {
+          "type": "other",
+          "label": "猿倉線 時刻表・予約",
+          "url": "https://www.alpico.co.jp/traffic/local/hakuba/sarukura/"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 10870,
+      "omiya": 11420,
+      "yokohama": 11420
+    },
+    "trainTimes": {
+      "shinjuku": 247,
+      "omiya": 277,
+      "yokohama": 281
+    },
+    "transfers": {
+      "shinjuku": 1,
+      "omiya": 2,
+      "yokohama": 2
+    },
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=白馬駅&type=1"
+    ],
+    "busScheduleLinks": [
+      "https://www.alpico.co.jp/traffic/local/hakuba/"
+    ],
+    "car": {
+      "parking": "確認中（最新の情報は公式サイトで確認してください）",
+      "restriction": null
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": null,
+      "validTo": null,
+      "seasonYear": 2026,
+      "reservation": "運行日限定・予約制（空席があれば当日乗車可）",
+      "note": "猿倉線の2026年の運行日は公式時刻表で確認"
+    },
+    "sourceUrl": "https://www.alpico.co.jp/traffic/",
+    "lastVerified": "2026-10-05",
+    "needsVerification": true
+  },
+  "tsugaike": {
+    "id": "tsugaike",
+    "name": "栂池自然園へのアクセス（ゴンドラ・ロープウェイ）",
+    "trailheadId": "tsugaike-shizenen",
+    "mapTargetId": "tsugaike-kogen",
+    "trainRoutes": null,
+    "fares": null,
+    "trainTimes": null,
+    "transfers": null,
+    "busLinks": null,
+    "busScheduleLinks": null,
+    "car": null,
+    "operation": null,
+    "sourceUrl": null,
+    "lastVerified": "2026-10-05",
+    "needsVerification": true,
+    "note": "電車・バスの経路と運賃は未作成（要確認）"
+  },
+  "kitazawa-toge": {
+    "id": "kitazawa-toge",
+    "name": "北沢峠へのアクセス（戸台パークから林道バス）",
+    "trailheadId": "kitazawa-toge",
+    "mapTargetId": "todai-park",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ 季節運行（2026年は6/1〜11/3）"
+      },
+      "lineName": null,
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 126,
+              "fareYen": null
+            },
+            {
+              "station": "茅野駅",
+              "method": {
+                "icon": "bus",
+                "line": "JRバス関東「南アルプスジオライナー」"
+              },
+              "durationMin": 65,
+              "fareYen": null
+            },
+            {
+              "station": "戸台パーク",
+              "method": {
+                "icon": "bus",
+                "line": "南アルプス林道バス「クイーンライン」"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "北沢峠"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR京浜東北線・横浜線（八王子乗換）"
+              },
+              "durationMin": 68,
+              "fareYen": null
+            },
+            {
+              "station": "八王子駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 93,
+              "fareYen": null
+            },
+            {
+              "station": "茅野駅",
+              "method": {
+                "icon": "bus",
+                "line": "JRバス関東「南アルプスジオライナー」"
+              },
+              "durationMin": 65,
+              "fareYen": null
+            },
+            {
+              "station": "戸台パーク",
+              "method": {
+                "icon": "bus",
+                "line": "南アルプス林道バス「クイーンライン」"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "北沢峠"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR武蔵野線・中央線（立川乗換）"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "立川駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 102,
+              "fareYen": null
+            },
+            {
+              "station": "茅野駅",
+              "method": {
+                "icon": "bus",
+                "line": "JRバス関東「南アルプスジオライナー」"
+              },
+              "durationMin": 65,
+              "fareYen": null
+            },
+            {
+              "station": "戸台パーク",
+              "method": {
+                "icon": "bus",
+                "line": "南アルプス林道バス「クイーンライン」"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "北沢峠"
+            }
+          ]
+        }
+      },
+      "note": "💡 茅野駅からJRバス関東「南アルプスジオライナー」で戸台パークまで約65分・1,800円（例年7月中旬〜10月中旬の金土日祝中心）。戸台パーク〜北沢峠は南アルプス林道バス「南アルプスクイーンライン」を利用。林道バスは4月25日〜5月31日は歌宿までの運行で、北沢峠まで通しで運行するのは6月1日〜11月3日。なおバス停「仙流荘」は「戸台パーク」に名称変更され、発着場所も仙流荘前に移転している。広河原（山梨県側）からのアクセスは台風被害の復旧工事のため通行止めが継続中で、長野県側からのみアクセス可能。伊那市駅・高遠駅経由のJRバス高遠線〜長谷循環バス、竹橋発の夜行バス「毎日あるぺん号」も利用できる。",
+      "summaryNote": null,
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=茅野駅&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "バス時刻表",
+          "url": "https://www.inacity.jp/kankojoho/sangaku_alps/minamialps/minamialps_jikokuhyo.html"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 8710,
+      "omiya": 8710,
+      "yokohama": 8050
+    },
+    "trainTimes": {
+      "shinjuku": 246,
+      "omiya": 277,
+      "yokohama": 281
+    },
+    "transfers": {
+      "shinjuku": 2,
+      "omiya": 3,
+      "yokohama": 3
+    },
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "car": {
+      "parking": "戸台パーク駐車場（林道バス乗り場）",
+      "restriction": "北沢峠へは一般車両で入れない。戸台パークから南アルプス林道バスに乗り換える"
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-06-01",
+      "validTo": "2026-11-03",
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "戸台口〜北沢峠の運行期間（4/25〜5/31は歌宿まで）。山梨側の広河原〜北沢峠は災害復旧のため運行休止"
+    },
+    "sourceUrl": "https://www.inacity.jp/kankojoho/sangaku_alps/minamialps/minamialps_jikokuhyo.html",
+    "lastVerified": "2026-10-05",
+    "needsVerification": false
+  },
+  "chikuu": {
+    "id": "chikuu",
+    "name": "竹宇駒ヶ岳神社へのアクセス（黒戸尾根）",
+    "trailheadId": "chikuu-komagatake-jinja",
+    "mapTargetId": "chikuu-komagatake-jinja",
+    "trainRoutes": null,
+    "fares": null,
+    "trainTimes": null,
+    "transfers": null,
+    "busLinks": null,
+    "busScheduleLinks": null,
+    "car": null,
+    "operation": null,
+    "sourceUrl": null,
+    "lastVerified": "2026-10-05",
+    "needsVerification": true,
+    "note": "電車・バスの経路と運賃は未作成（要確認）"
+  },
+  "ichinosawa": {
+    "id": "ichinosawa",
+    "name": "一ノ沢登山口へのアクセス（林道通行止め中）",
+    "trailheadId": "ichinosawa",
+    "mapTargetId": "ichinosawa",
+    "trainRoutes": {
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR中央本線(特急あずさ)"
+              },
+              "durationMin": 170
+            },
+            {
+              "station": "穂高駅",
+              "method": {
+                "icon": "taxi",
+                "line": "タクシー"
+              },
+              "durationMin": 30
+            },
+            {
+              "station": "林道崩落箇所",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 40
+            },
+            {
+              "station": "一ノ沢登山口",
+              "method": null,
+              "durationMin": null
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR武蔵野線・中央線（立川乗換）"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "立川駅",
+              "method": {
+                "icon": "train",
+                "line": "JR中央本線(特急あずさ)"
+              },
+              "durationMin": 145,
+              "fareYen": null
+            },
+            {
+              "station": "穂高駅",
+              "method": {
+                "icon": "taxi",
+                "line": "タクシー"
+              },
+              "durationMin": 30
+            },
+            {
+              "station": "林道崩落箇所",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 40
+            },
+            {
+              "station": "一ノ沢登山口",
+              "method": null,
+              "durationMin": null
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 34
+            },
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR中央本線(特急あずさ)"
+              },
+              "durationMin": 170
+            },
+            {
+              "station": "穂高駅",
+              "method": {
+                "icon": "taxi",
+                "line": "タクシー"
+              },
+              "durationMin": 30
+            },
+            {
+              "station": "林道崩落箇所",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 40
+            },
+            {
+              "station": "一ノ沢登山口",
+              "method": null,
+              "durationMin": null
+            }
+          ]
+        }
+      },
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "warn",
+        "label": "⚠️ 要確認（林道崩落中）"
+      },
+      "lineName": "JR大糸線(穂高駅)＋タクシー＋徒歩（一ノ沢林道崩落のため区間運休中）",
+      "note": "💡 林道一ノ沢線は災害のため一般車両通行止め（復旧工事の竣工予定は2027年1月末）。穂高駅から地元タクシー（南安タクシー・安曇観光タクシー・あづみの第一交通）で通行止め箇所の手前まで行き、歩行者用通路を通って登山口まで約1.5km歩く。三股コースは季節限定の予約制タクシーで三股まで行く方法もある。",
+      "summaryNote": null,
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=穂高&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "安曇野市 登山バス・林道状況情報",
+          "url": "https://www.city.azumino.nagano.jp/soshiki/32/66871.html"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 12200,
+      "omiya": 11890,
+      "yokohama": 12200
+    },
+    "trainTimes": {
+      "shinjuku": 240,
+      "omiya": 270,
+      "yokohama": 274
+    },
+    "transfers": {
+      "shinjuku": null,
+      "omiya": null,
+      "yokohama": null
+    },
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "car": {
+      "parking": null,
+      "restriction": "林道一ノ沢線は一般車両通行止め。市内の駐車場に停め、地元タクシーで通行止め箇所の手前まで行き、歩行者用通路を通って登山口へ（約1.5km）"
+    },
+    "operation": {
+      "statusType": "temporary",
+      "mode": "restricted",
+      "validFrom": null,
+      "validTo": "2027-01-31",
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "災害復旧工事の竣工予定は令和9年（2027年）1月末"
+    },
+    "sourceUrl": "https://www.city.azumino.nagano.jp/soshiki/32/66871.html",
+    "lastVerified": "2026-10-05",
+    "needsVerification": false
+  },
+  "mitsumata": {
+    "id": "mitsumata",
+    "name": "三股登山口へのアクセス",
+    "trailheadId": "mitsumata",
+    "mapTargetId": "mitsumata",
+    "trainRoutes": null,
+    "fares": null,
+    "trainTimes": null,
+    "transfers": null,
+    "busLinks": null,
+    "busScheduleLinks": null,
+    "car": null,
+    "operation": null,
+    "sourceUrl": null,
+    "lastVerified": "2026-10-05",
+    "needsVerification": true,
+    "note": "電車・バスの経路と運賃は未作成（要確認）"
+  },
+  "minotoguchi": {
+    "id": "minotoguchi",
+    "name": "美濃戸口へのアクセス",
+    "trailheadId": "minotoguchi",
+    "mapTargetId": "minotoguchi",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ 季節運行（2026年は5/2〜10/25）"
+      },
+      "lineName": "JR特急あずさ・アルピコ交通バス",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 126,
+              "fareYen": null
+            },
+            {
+              "station": "茅野駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス"
+              },
+              "durationMin": 38,
+              "fareYen": null
+            },
+            {
+              "station": "美濃戸口"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR京浜東北線・横浜線（八王子乗換）"
+              },
+              "durationMin": 68,
+              "fareYen": null
+            },
+            {
+              "station": "八王子駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 93,
+              "fareYen": null
+            },
+            {
+              "station": "茅野駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス"
+              },
+              "durationMin": 38,
+              "fareYen": null
+            },
+            {
+              "station": "美濃戸口"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR武蔵野線・中央線（立川乗換）"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "立川駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 102,
+              "fareYen": null
+            },
+            {
+              "station": "茅野駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス"
+              },
+              "durationMin": 38,
+              "fareYen": null
+            },
+            {
+              "station": "美濃戸口"
+            }
+          ]
+        }
+      },
+      "note": "💡 茅野駅からアルピコ交通「美濃戸口線」で美濃戸口まで約38分（1,900円）。運行期間は例年5月上旬〜10月下旬で、冬期は本数が大幅に減る。美濃戸口から美濃戸（赤岳山荘）まではさらに林道を徒歩約1時間。バス車内では1,000円札以外の紙幣は両替できないため小銭の用意を。",
+      "summaryNote": null,
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=茅野駅&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "バス時刻表",
+          "url": "https://www.alpico.co.jp/traffic/local/suwa/"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 7660,
+      "omiya": 7660,
+      "yokohama": 7000
+    },
+    "trainTimes": {
+      "shinjuku": 164,
+      "omiya": 195,
+      "yokohama": 199
+    },
+    "transfers": {
+      "shinjuku": 1,
+      "omiya": 2,
+      "yokohama": 2
+    },
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "car": {
+      "parking": "美濃戸口駐車場（約50台・1000円）",
+      "restriction": null
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-05-02",
+      "validTo": "2026-10-25",
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "茅野駅〜美濃戸口線の2026年の運行期間"
+    },
+    "sourceUrl": "https://www.alpico.co.jp/traffic/local/suwa/minotoguchi/",
+    "lastVerified": "2026-10-05",
+    "needsVerification": false
+  },
+  "oze-miike": {
+    "id": "oze-miike",
+    "name": "御池へのアクセス",
+    "trailheadId": "oze-miike",
+    "mapTargetId": "oze-miike",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ 季節運行あり"
+      },
+      "lineName": "東武鬼怒川線・野岩鉄道・会津バス",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR・東武特急（北千住乗換）"
+              },
+              "durationMin": 180,
+              "fareYen": null
+            },
+            {
+              "station": "会津田島駅",
+              "method": {
+                "icon": "bus",
+                "line": "会津バス「檜枝岐線」"
+              },
+              "durationMin": 120,
+              "fareYen": null
+            },
+            {
+              "station": "御池"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "北千住駅",
+              "method": {
+                "icon": "train",
+                "line": "東武特急リバティ会津"
+              },
+              "durationMin": 195,
+              "fareYen": null
+            },
+            {
+              "station": "会津田島駅",
+              "method": {
+                "icon": "bus",
+                "line": "会津バス「檜枝岐線」"
+              },
+              "durationMin": 120,
+              "fareYen": null
+            },
+            {
+              "station": "御池"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "東武アーバンパークライン"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "春日部駅",
+              "method": {
+                "icon": "train",
+                "line": "東武特急リバティ会津"
+              },
+              "durationMin": 175,
+              "fareYen": null
+            },
+            {
+              "station": "会津田島駅",
+              "method": {
+                "icon": "bus",
+                "line": "会津バス「檜枝岐線」"
+              },
+              "durationMin": 120,
+              "fareYen": null
+            },
+            {
+              "station": "御池"
+            }
+          ]
+        }
+      },
+      "note": "💡 会津バス「檜枝岐線」は5/1〜10/31運行（冬期運休）で1日3〜4便のみ。2024年10月より路線再編で御池・沼山峠行きの発着場所が変更されているため、会津バス公式サイトで最新の時刻表・発着場所を必ず確認すること。新宿から御池まで約5時間40分かかり日帰りは困難なため、檜枝岐村での前泊が現実的。御池〜沼山峠間はシャトルバスが運行されており、尾瀬沼方面へ抜ける縦走も可能。",
+      "summaryNote": null,
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=会津田島駅&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "バス時刻表",
+          "url": "https://www.aizubus.com/"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 7870,
+      "omiya": 8480,
+      "yokohama": 9000
+    },
+    "trainTimes": {
+      "shinjuku": 300,
+      "omiya": 325,
+      "yokohama": 365
+    },
+    "transfers": {
+      "shinjuku": 1,
+      "omiya": 2,
+      "yokohama": 3
+    },
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=%E6%96%B0%E5%AE%BF&to=%E4%BC%9A%E6%B4%A5%E9%AB%98%E5%8E%9F%E5%B0%BE%E7%80%AC%E5%8F%A3%E9%A7%85&type=1"
+    ],
+    "busScheduleLinks": [],
+    "car": {
+      "parking": "御池駐車場（約600台・1000円）",
+      "restriction": "御池への道路は冬期閉鎖（2026年は4/24 14時に開通）"
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-04-24",
+      "validTo": null,
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "道路の開通日。会津バス檜枝岐線の2026年の運行期間は未確認"
+    },
+    "sourceUrl": "https://oze-fnd.or.jp/archives/197543/",
+    "lastVerified": "2026-10-05",
+    "needsVerification": true
+  },
+  "numayama-toge": {
+    "id": "numayama-toge",
+    "name": "沼山峠へのアクセス（御池からシャトルバス）",
+    "trailheadId": "numayama-toge",
+    "mapTargetId": "oze-miike",
+    "trainRoutes": null,
+    "fares": null,
+    "trainTimes": null,
+    "transfers": null,
+    "busLinks": null,
+    "busScheduleLinks": null,
+    "car": {
+      "parking": "御池駐車場（約600台・1000円）",
+      "restriction": "御池〜沼山峠は一般車両通行不可。御池駐車場からシャトルバスに乗り換える"
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-05-23",
+      "validTo": "2026-10-25",
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "御池〜沼山峠シャトルバスの2026年の運行期間"
+    },
+    "sourceUrl": "https://news.aizubus.com/entry/2026/05/15/093130",
+    "lastVerified": "2026-10-05",
+    "needsVerification": true,
+    "note": "御池までは「御池へのアクセス」と同じ。御池〜沼山峠はシャトルバス（片道900円、2026年は5/23〜10/25運行）。所要時間は未確認",
+    "viaAccessId": "oze-miike"
+  },
+  "fujinomiya-5th": {
+    "id": "fujinomiya-5th",
+    "name": "富士宮口五合目へのアクセス",
+    "trailheadId": "fujinomiya-5th",
+    "mapTargetId": "mizugatsuka",
+    "trainRoutes": null,
+    "fares": null,
+    "trainTimes": null,
+    "transfers": null,
+    "busLinks": null,
+    "busScheduleLinks": null,
+    "car": {
+      "parking": "水ヶ塚駐車場（マイカー規制期間の乗換駐車場）",
+      "restriction": "2026年は7/10 9:00〜9/10 18:00がマイカー規制。期間中は水ヶ塚駐車場からシャトルバスで富士宮口五合目へ"
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-07-10",
+      "validTo": "2026-09-10",
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "開山期間・マイカー規制期間（富士宮口）"
+    },
+    "sourceUrl": "https://www.pref.shizuoka.jp/machizukuri/doro/fujisandoro/1029179.html",
+    "lastVerified": "2026-10-05",
+    "needsVerification": true,
+    "note": "電車・バスの経路と運賃は未作成（要確認）。マイカー規制期間（2026年は7/10 9:00〜9/10 18:00）は水ヶ塚駐車場からシャトルバス（片道1,320円・往復2,400円・約40分）"
+  },
+  "subaru-5th": {
+    "id": "subaru-5th",
+    "name": "富士スバルライン五合目（吉田口）へのアクセス",
+    "trailheadId": "subaru-5th",
+    "mapTargetId": "subaru-5th",
+    "trainRoutes": {
+      "badge": {
+        "type": null,
+        "style": "background:#fde8d8;color:#8a5010;",
+        "icon": "warn",
+        "label": "夏季限定"
+      },
+      "lineName": "高速バス（富士急バス・京王バス）",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急富士回遊"
+              },
+              "durationMin": 115,
+              "fareYen": null
+            },
+            {
+              "station": "河口湖駅",
+              "method": {
+                "icon": "bus",
+                "line": "富士急バス「富士スバルライン五合目線」"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "富士スバルライン五合目（吉田口）"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 34,
+              "fareYen": null
+            },
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急富士回遊"
+              },
+              "durationMin": 115,
+              "fareYen": null
+            },
+            {
+              "station": "河口湖駅",
+              "method": {
+                "icon": "bus",
+                "line": "富士急バス「富士スバルライン五合目線」"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "富士スバルライン五合目（吉田口）"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急富士回遊"
+              },
+              "durationMin": 115,
+              "fareYen": null
+            },
+            {
+              "station": "河口湖駅",
+              "method": {
+                "icon": "bus",
+                "line": "富士急バス「富士スバルライン五合目線」"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "富士スバルライン五合目（吉田口）"
+            }
+          ]
+        }
+      },
+      "note": "💡 河口湖駅から富士スバルライン五合目（吉田口）へは富士急バスで約55分・片道1,780円（往復2,800円）。夏の開山期（例年7月〜9月上旬）は毎日12往復運行で始発は富士山駅6:20発。なお登山口フィールドにある「富士宮口五合目」は静岡県側の別ルートで、新富士駅・富士宮駅からのアクセスとなるため河口湖駅からは行けない点に注意。富士スバルラインが通行止め・四合目までの営業となる場合はバスも運休または折り返し運行になる。",
+      "summaryNote": "※直通バスは4月下旬〜8月頃の季節運行。それ以外は河口湖駅・富士山駅で路線バスに乗換",
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=富士山駅&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "バス時刻表",
+          "url": "https://www.fujikyubus.co.jp/mycar/timetablefares/"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 6200,
+      "omiya": 6390,
+      "yokohama": 6390
+    },
+    "trainTimes": {
+      "shinjuku": 170,
+      "omiya": 200,
+      "yokohama": 204
+    },
+    "transfers": {
+      "shinjuku": 2,
+      "omiya": 3,
+      "yokohama": 3
+    },
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "car": null,
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-07-01",
+      "validTo": "2026-09-10",
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "吉田ルートの2026年の開山期間"
+    },
+    "sourceUrl": "https://www.pref.yamanashi.jp/fujisan/annzenn/documents/r8fujitozan.html",
+    "lastVerified": "2026-10-05",
+    "needsVerification": true
+  },
+  "doai": {
+    "id": "doai",
+    "name": "土合駅から谷川岳ヨッホへ（JR上越線）",
+    "trailheadId": "tenjindaira",
+    "mapTargetId": "tanigawadake-joch",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ ロープウェイは季節営業（2026年は4/18〜11/15）"
+      },
+      "lineName": "JR上越新幹線・上越線",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越新幹線とき"
+              },
+              "durationMin": 23,
+              "fareYen": null
+            },
+            {
+              "station": "高崎駅",
+              "method": {
+                "icon": "train",
+                "line": "JR上越線 普通"
+              },
+              "durationMin": 65,
+              "fareYen": null
+            },
+            {
+              "station": "水上駅",
+              "method": {
+                "icon": "train",
+                "line": "JR上越線 普通"
+              },
+              "durationMin": 9,
+              "fareYen": null
+            },
+            {
+              "station": "土合駅",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩（462段の階段）"
+              },
+              "durationMin": 20,
+              "fareYen": null
+            },
+            {
+              "station": "谷川岳ヨッホ（ロープウェイ乗り場）",
+              "method": {
+                "icon": "ropeway",
+                "line": "ロープウェイ"
+              },
+              "durationMin": 15,
+              "fareYen": null
+            },
+            {
+              "station": "天神平駅"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越新幹線とき"
+              },
+              "durationMin": 23,
+              "fareYen": null
+            },
+            {
+              "station": "高崎駅",
+              "method": {
+                "icon": "train",
+                "line": "JR上越線 普通"
+              },
+              "durationMin": 65,
+              "fareYen": null
+            },
+            {
+              "station": "水上駅",
+              "method": {
+                "icon": "train",
+                "line": "JR上越線 普通"
+              },
+              "durationMin": 9,
+              "fareYen": null
+            },
+            {
+              "station": "土合駅",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩（462段の階段）"
+              },
+              "durationMin": 20,
+              "fareYen": null
+            },
+            {
+              "station": "谷川岳ヨッホ（ロープウェイ乗り場）",
+              "method": {
+                "icon": "ropeway",
+                "line": "ロープウェイ"
+              },
+              "durationMin": 15,
+              "fareYen": null
+            },
+            {
+              "station": "天神平駅"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR東海道線"
+              },
+              "durationMin": 18,
+              "fareYen": null
+            },
+            {
+              "station": "東京駅",
+              "method": {
+                "icon": "train",
+                "line": "上越新幹線とき"
+              },
+              "durationMin": 51,
+              "fareYen": null
+            },
+            {
+              "station": "高崎駅",
+              "method": {
+                "icon": "train",
+                "line": "JR上越線 普通"
+              },
+              "durationMin": 65,
+              "fareYen": null
+            },
+            {
+              "station": "水上駅",
+              "method": {
+                "icon": "train",
+                "line": "JR上越線 普通"
+              },
+              "durationMin": 9,
+              "fareYen": null
+            },
+            {
+              "station": "土合駅",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩（462段の階段）"
+              },
+              "durationMin": 20,
+              "fareYen": null
+            },
+            {
+              "station": "谷川岳ヨッホ（ロープウェイ乗り場）",
+              "method": {
+                "icon": "ropeway",
+                "line": "ロープウェイ"
+              },
+              "durationMin": 15,
+              "fareYen": null
+            },
+            {
+              "station": "天神平駅"
+            }
+          ]
+        }
+      },
+      "note": "水上駅ではなく高崎駅で上越新幹線から上越線普通列車に乗り換えるルートが運賃・時間ともに合理的（越後湯沢まで新幹線で行ってから土合方向へ戻る経路は遠回りで運賃も高くなるため非推奨）。土合駅は「日本一のモグラ駅」で、下りホームから地上まで462段の階段を約20分かけて上る必要がある。上越線は本数が少なく、乗り遅れると数時間待ちになるため時刻表の事前確認は必須。土合駅から谷川岳ヨッホ（ロープウェイ乗り場）までは徒歩約20分。ロープウェイは片道1,800円・往復3,000円で天神平まで約15分。天神平〜天神峠のリフトは往復720円。営業時間は4〜11月の平日8:00〜17:00（土日祝7:00〜17:00）。上毛高原駅・水上駅から関越交通バスでロープウェイ駅へ直行する方が本数が多く確実（上毛高原から約45分）。バス往復＋ロープウェイ往復がセットの「得々乗車券」は通常券より300〜700円お得。",
+      "summaryNote": null,
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=土合駅&type=1"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 6860,
+      "omiya": 6420,
+      "yokohama": 8160
+    },
+    "trainTimes": {
+      "shinjuku": 180,
+      "omiya": 145,
+      "yokohama": 193
+    },
+    "transfers": {
+      "shinjuku": 3,
+      "omiya": 2,
+      "yokohama": 3
+    },
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=土合駅&type=1"
+    ],
+    "busScheduleLinks": [],
+    "car": {
+      "parking": "谷川岳ベースプラザ（約600台・600円〜）",
+      "restriction": null
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-04-18",
+      "validTo": "2026-11-15",
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "谷川岳ヨッホ（ロープウェイ）の2026年グリーンシーズン営業期間（予定）"
+    },
+    "sourceUrl": null,
+    "lastVerified": "2026-10-06",
+    "needsVerification": false
+  },
+  "tanigawadake-joch": {
+    "id": "tanigawadake-joch",
+    "name": "谷川岳ヨッホ（ロープウェイ）へのアクセス（上毛高原駅からバス）",
+    "trailheadId": "tenjindaira",
+    "mapTargetId": "tanigawadake-joch",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ ロープウェイは季節営業（2026年は4/18〜11/15）"
+      },
+      "lineName": "上越新幹線・関越交通バス「水上線」",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン・上越新幹線とき（大宮乗換）"
+              },
+              "durationMin": 83,
+              "fareYen": null
+            },
+            {
+              "station": "上毛高原駅",
+              "method": {
+                "icon": "bus",
+                "line": "関越交通バス「水上線」"
+              },
+              "durationMin": 45,
+              "fareYen": null
+            },
+            {
+              "station": "谷川岳ヨッホ（ロープウェイ乗り場）",
+              "method": {
+                "icon": "ropeway",
+                "line": "ロープウェイ"
+              },
+              "durationMin": 15,
+              "fareYen": null
+            },
+            {
+              "station": "天神平駅"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越新幹線とき"
+              },
+              "durationMin": 38,
+              "fareYen": null
+            },
+            {
+              "station": "上毛高原駅",
+              "method": {
+                "icon": "bus",
+                "line": "関越交通バス「水上線」"
+              },
+              "durationMin": 45,
+              "fareYen": null
+            },
+            {
+              "station": "谷川岳ヨッホ（ロープウェイ乗り場）",
+              "method": {
+                "icon": "ropeway",
+                "line": "ロープウェイ"
+              },
+              "durationMin": 15,
+              "fareYen": null
+            },
+            {
+              "station": "天神平駅"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR上野東京ライン・上越新幹線とき（東京乗換）"
+              },
+              "durationMin": 111,
+              "fareYen": null
+            },
+            {
+              "station": "上毛高原駅",
+              "method": {
+                "icon": "bus",
+                "line": "関越交通バス「水上線」"
+              },
+              "durationMin": 45,
+              "fareYen": null
+            },
+            {
+              "station": "谷川岳ヨッホ（ロープウェイ乗り場）",
+              "method": {
+                "icon": "ropeway",
+                "line": "ロープウェイ"
+              },
+              "durationMin": 15,
+              "fareYen": null
+            },
+            {
+              "station": "天神平駅"
+            }
+          ]
+        }
+      },
+      "note": "💡 上毛高原駅から関越交通バス「水上線」で谷川岳ヨッホ（旧谷川岳ロープウェイ）まで約45分・1,600円。ロープウェイで天神平まで約15分（運賃は別途）。新幹線は自由席の料金。JR上越線の土合駅から歩く経路もある（下りホームから地上まで462段の階段、駅からロープウェイ乗り場まで徒歩約20分）。",
+      "summaryNote": "※運賃にロープウェイ代は含みません",
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=土合駅&type=1"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 6990,
+      "omiya": 6660,
+      "yokohama": 7970
+    },
+    "trainTimes": {
+      "shinjuku": 143,
+      "omiya": 98,
+      "yokohama": 171
+    },
+    "transfers": null,
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=土合駅&type=1"
+    ],
+    "busScheduleLinks": [],
+    "car": {
+      "parking": "谷川岳ベースプラザ（約600台・600円〜）",
+      "restriction": null
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-04-18",
+      "validTo": "2026-11-15",
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "谷川岳ヨッホ（ロープウェイ）の2026年グリーンシーズン営業期間（予定）"
+    },
+    "altAccessIds": [
+      "doai"
+    ],
+    "sourceUrl": "https://tanigawadake-joch.com/",
+    "lastVerified": "2026-10-06",
+    "needsVerification": false,
+    "fareSource": "Yahoo!路線情報（新宿・大宮・横浜→上毛高原：5,390/5,060/6,370円）＋関越交通バス1,600円"
+  },
+  "nishikuro": {
+    "id": "nishikuro",
+    "name": "西黒尾根登山口へのアクセス",
+    "trailheadId": "nishikuro-tozanguchi",
+    "mapTargetId": "tanigawadake-joch",
+    "trainRoutes": null,
+    "fares": null,
+    "trainTimes": null,
+    "transfers": null,
+    "busLinks": null,
+    "busScheduleLinks": null,
+    "car": {
+      "parking": "谷川岳ベースプラザ（約600台・600円〜）",
+      "restriction": null
+    },
+    "operation": null,
+    "sourceUrl": null,
+    "lastVerified": "2026-10-06",
+    "needsVerification": true,
+    "note": "谷川岳ヨッホ（ロープウェイ乗り場）までは「谷川岳ヨッホへのアクセス」と同じ。乗り場から登山口までの徒歩時間は未確認",
+    "viaAccessId": "tanigawadake-joch"
+  },
+  "senjojiki": {
+    "id": "senjojiki",
+    "name": "千畳敷へのアクセス（菅の台からバス・ロープウェイ）",
+    "trailheadId": "senjojiki",
+    "mapTargetId": "suganodai",
+    "trainRoutes": {
+      "badge": {
+        "type": "year",
+        "style": null,
+        "icon": "check",
+        "label": "通年運行（冬ダイヤ・点検運休あり）"
+      },
+      "lineName": "高速バス（新宿〜駒ヶ根線）・伊那バス「駒ヶ岳ロープウェイ線」・駒ヶ岳ロープウェイ",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "バスタ新宿",
+              "method": {
+                "icon": "bus",
+                "line": "高速バス"
+              },
+              "durationMin": 220,
+              "fareYen": null
+            },
+            {
+              "station": "駒ヶ根駅",
+              "method": {
+                "icon": "bus",
+                "line": "バス"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "菅の台バスセンター",
+              "method": {
+                "icon": "bus",
+                "line": "中央アルプス観光バス"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "しらび平",
+              "method": {
+                "icon": "ropeway",
+                "line": "ロープウェイ"
+              },
+              "durationMin": 8,
+              "fareYen": null
+            },
+            {
+              "station": "千畳敷"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 34,
+              "fareYen": null
+            },
+            {
+              "station": "バスタ新宿",
+              "method": {
+                "icon": "bus",
+                "line": "高速バス"
+              },
+              "durationMin": 220,
+              "fareYen": null
+            },
+            {
+              "station": "駒ヶ根駅",
+              "method": {
+                "icon": "bus",
+                "line": "バス"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "菅の台バスセンター",
+              "method": {
+                "icon": "bus",
+                "line": "中央アルプス観光バス"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "しらび平",
+              "method": {
+                "icon": "ropeway",
+                "line": "ロープウェイ"
+              },
+              "durationMin": 8,
+              "fareYen": null
+            },
+            {
+              "station": "千畳敷"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR埼京線"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "バスタ新宿",
+              "method": {
+                "icon": "bus",
+                "line": "高速バス"
+              },
+              "durationMin": 220,
+              "fareYen": null
+            },
+            {
+              "station": "駒ヶ根駅",
+              "method": {
+                "icon": "bus",
+                "line": "バス"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "菅の台バスセンター",
+              "method": {
+                "icon": "bus",
+                "line": "中央アルプス観光バス"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "しらび平",
+              "method": {
+                "icon": "ropeway",
+                "line": "ロープウェイ"
+              },
+              "durationMin": 8,
+              "fareYen": null
+            },
+            {
+              "station": "千畳敷"
+            }
+          ]
+        }
+      },
+      "note": "💡 菅の台バスセンター〜しらび平の路線バスとロープウェイは、繁忙期（夏休み・紅葉期）に2〜3時間待ちになることがある。早朝到着推奨。",
+      "summaryNote": "※菅の台バスセンター以降は路線バス（マイカー規制のため）＋ロープウェイの乗り継ぎが必須",
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=駒ヶ根駅&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "バス時刻表",
+          "url": "https://www.chuo-alps.com/access/bus/"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 8400,
+      "omiya": 8930,
+      "yokohama": 9020
+    },
+    "trainTimes": {
+      "shinjuku": 283,
+      "omiya": 313,
+      "yokohama": 317
+    },
+    "transfers": {
+      "shinjuku": 3,
+      "omiya": 4,
+      "yokohama": 4
+    },
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=駒ヶ根駅&type=1"
+    ],
+    "busScheduleLinks": [
+      "https://www.chuo-alps.com/access/bus/"
+    ],
+    "car": {
+      "parking": "菅の台バスセンター駐車場（約300台・800円）",
+      "restriction": "しらび平（ロープウェイ乗り場）へは一般車両で入れない。菅の台バスセンターで路線バスに乗り換える"
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "year",
+      "validFrom": null,
+      "validTo": null,
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "バス・ロープウェイは通年運行（夏ダイヤ2026/4/10〜11/30、それ以外は冬ダイヤ。点検運休あり）"
+    },
+    "sourceUrl": "https://www.chuo-alps.com/",
+    "lastVerified": "2026-10-06",
+    "needsVerification": false
+  },
+  "happo": {
+    "id": "happo",
+    "name": "八方アルペンライン（ゴンドラ・リフト）へのアクセス",
+    "trailheadId": "happoike-sanso",
+    "mapTargetId": "happo-station",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ ゴンドラ・リフトは季節営業（2026年は6/6〜11/3）"
+      },
+      "lineName": "JR大糸線・アルピコ交通「特急バス（長野－白馬線）」",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 220,
+              "fareYen": null
+            },
+            {
+              "station": "白馬駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス"
+              },
+              "durationMin": 15,
+              "fareYen": null
+            },
+            {
+              "station": "八方バスターミナル"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 34,
+              "fareYen": null
+            },
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "特急あずさ・大糸線"
+              },
+              "durationMin": 220,
+              "fareYen": null
+            },
+            {
+              "station": "白馬駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス"
+              },
+              "durationMin": 15,
+              "fareYen": null
+            },
+            {
+              "station": "八方バスターミナル"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "特急あずさ・大糸線"
+              },
+              "durationMin": 220,
+              "fareYen": null
+            },
+            {
+              "station": "白馬駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス"
+              },
+              "durationMin": 15,
+              "fareYen": null
+            },
+            {
+              "station": "八方バスターミナル"
+            }
+          ]
+        }
+      },
+      "note": "💡 新宿から白馬駅への特急あずさ直通は1日1本のみ（あずさ5号：新宿8:00発→白馬11:40着）。これを逃した場合は松本駅で大糸線に乗り換えとなる。帰りの直通も1日1本（白馬13:43発→新宿17:26着）。白馬駅〜白馬八方バスターミナルのアルピコ交通「八方線」は約8〜15分で予約不要。八方尾根ゴンドラ「アダム」＋リフト2本で八方池山荘まで上がれる（営業時間の事前確認を推奨）。",
+      "summaryNote": null,
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=白馬駅&type=1"
+        },
+        {
+          "type": "other",
+          "label": "長野－白馬線 時刻表",
+          "url": "https://www.alpico.co.jp/traffic/local/hakuba/"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 8870,
+      "omiya": 9420,
+      "yokohama": 9420
+    },
+    "trainTimes": {
+      "shinjuku": 235,
+      "omiya": 265,
+      "yokohama": 269
+    },
+    "transfers": {
+      "shinjuku": 1,
+      "omiya": 2,
+      "yokohama": 2
+    },
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=白馬駅&type=1"
+    ],
+    "busScheduleLinks": [
+      "https://www.alpico.co.jp/traffic/local/hakuba/"
+    ],
+    "car": {
+      "parking": "八方第5駐車場ほか（約1000台・無料）",
+      "restriction": null
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-06-06",
+      "validTo": "2026-11-03",
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "八方アルペンラインの2026年グリーンシーズン営業期間（5/30・5/31も営業）"
+    },
+    "sourceUrl": "https://www.happo-one.jp/news/38573/",
+    "lastVerified": "2026-10-06",
+    "needsVerification": false
+  },
+  "goryu-telecabin": {
+    "id": "goryu-telecabin",
+    "name": "白馬五竜テレキャビンへのアクセス",
+    "trailheadId": "alps-daira",
+    "mapTargetId": "escal-plaza",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ テレキャビンは季節営業（2026年は6/20〜10/18）"
+      },
+      "lineName": "JR大糸線・五竜テレキャビン（ゴンドラ）",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ・大糸線（松本乗換）"
+              },
+              "durationMin": 210,
+              "fareYen": null
+            },
+            {
+              "station": "神城駅",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 10,
+              "fareYen": null
+            },
+            {
+              "station": "エスカルプラザ（テレキャビン乗り場）"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR横浜線・特急あずさ・大糸線（八王子・松本乗換）"
+              },
+              "durationMin": 320,
+              "fareYen": null
+            },
+            {
+              "station": "神城駅",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 10,
+              "fareYen": null
+            },
+            {
+              "station": "エスカルプラザ（テレキャビン乗り場）"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR埼京線・特急あずさ・大糸線（新宿・松本乗換）"
+              },
+              "durationMin": 319,
+              "fareYen": null
+            },
+            {
+              "station": "神城駅",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 10,
+              "fareYen": null
+            },
+            {
+              "station": "エスカルプラザ（テレキャビン乗り場）"
+            }
+          ]
+        }
+      },
+      "note": "💡 神城駅からエスカルプラザまでは徒歩15分。テレキャビンで一気に標高1,515mまで上がれる",
+      "summaryNote": "※テレキャビンは6月上旬〜10月末運行。往復2,600円〜（夏季ピークは3,000円）",
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=神城駅&type=1"
+        },
+        {
+          "type": "other",
+          "label": "🚡 テレキャビン運行カレンダー",
+          "url": "https://www.alpico.co.jp/traffic/local/hakuba/"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 7940,
+      "omiya": 7940,
+      "yokohama": 7630
+    },
+    "trainTimes": {
+      "shinjuku": 220,
+      "omiya": 329,
+      "yokohama": 330
+    },
+    "transfers": {
+      "shinjuku": 2,
+      "omiya": 3,
+      "yokohama": 3
+    },
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=神城駅&type=1"
+    ],
+    "busScheduleLinks": [
+      "https://www.hakuba47.co.jp/gondola/"
+    ],
+    "car": {
+      "parking": "白馬五竜スキー場駐車場（無料）",
+      "restriction": null
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-06-20",
+      "validTo": "2026-10-18",
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "テレキャビンの2026年グリーンシーズン通常営業期間（6/6・7・13・14は先行営業）"
+    },
+    "sourceUrl": "https://www.hakubaescal.com/shokubutsuen/gondola/cal/",
+    "lastVerified": "2026-10-06",
+    "needsVerification": false
+  },
+  "sasagamine": {
+    "id": "sasagamine",
+    "name": "笹ヶ峰へのアクセス",
+    "trailheadId": "sasagamine",
+    "mapTargetId": "sasagamine",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ バスは季節運行（2026年は7/11〜10/25）"
+      },
+      "lineName": "JR北陸新幹線・しなの鉄道・頸南バス（笹ヶ峰直行便）",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン（大宮乗換込み）"
+              },
+              "durationMin": 43,
+              "fareYen": null
+            },
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "北陸新幹線かがやき"
+              },
+              "durationMin": 77,
+              "fareYen": null
+            },
+            {
+              "station": "長野駅",
+              "method": {
+                "icon": "train",
+                "line": "しなの鉄道北しなの線"
+              },
+              "durationMin": 46,
+              "fareYen": null
+            },
+            {
+              "station": "妙高高原駅",
+              "method": {
+                "icon": "bus",
+                "line": "頸南バス「笹ヶ峰直行バス」"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "笹ヶ峰"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "北陸新幹線かがやき"
+              },
+              "durationMin": 77,
+              "fareYen": null
+            },
+            {
+              "station": "長野駅",
+              "method": {
+                "icon": "train",
+                "line": "しなの鉄道北しなの線"
+              },
+              "durationMin": 46,
+              "fareYen": null
+            },
+            {
+              "station": "妙高高原駅",
+              "method": {
+                "icon": "bus",
+                "line": "頸南バス「笹ヶ峰直行バス」"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "笹ヶ峰"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR上野東京ライン（上野乗換込み）"
+              },
+              "durationMin": 60,
+              "fareYen": null
+            },
+            {
+              "station": "上野駅",
+              "method": {
+                "icon": "train",
+                "line": "北陸新幹線かがやき"
+              },
+              "durationMin": 87,
+              "fareYen": null
+            },
+            {
+              "station": "長野駅",
+              "method": {
+                "icon": "train",
+                "line": "しなの鉄道北しなの線"
+              },
+              "durationMin": 46,
+              "fareYen": null
+            },
+            {
+              "station": "妙高高原駅",
+              "method": {
+                "icon": "bus",
+                "line": "頸南バス「笹ヶ峰直行バス」"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "笹ヶ峰"
+            }
+          ]
+        }
+      },
+      "note": "💡 妙高高原駅〜笹ヶ峰の頸南バス「笹ヶ峰直行バス」は季節運行（2026年は7月11日〜10月25日）。運行日により便数が異なるため公式サイトでの確認が必須。バスの運行が終わっても登山道は歩ける（マイカーまたはタクシー）。笹ヶ峰から火打山山頂までは約4時間30分。高谷池ヒュッテでの1泊もおすすめ。",
+      "summaryNote": "※バスの運行終了後も登山道は利用できます（公共交通なし）",
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=妙高高原駅&type=1"
+        },
+        {
+          "type": "other",
+          "label": "笹ヶ峰直行便 時刻表",
+          "url": "https://myokotourism.jp/access/"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 9200,
+      "omiya": 8540,
+      "yokohama": 9680
+    },
+    "trainTimes": {
+      "shinjuku": 216,
+      "omiya": 173,
+      "yokohama": 243
+    },
+    "transfers": {
+      "shinjuku": 2,
+      "omiya": 2,
+      "yokohama": 3
+    },
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=妙高高原駅&type=1"
+    ],
+    "busScheduleLinks": [
+      "http://www.keinanbus.com/"
+    ],
+    "car": {
+      "parking": "笹ヶ峰キャンプ場駐車場（約200台・500円）",
+      "restriction": null
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-07-11",
+      "validTo": "2026-10-25",
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "笹ヶ峰直行バスの2026年の運行期間（観光サイト掲載値。頸南バスの公式時刻表では未確認。運賃も要確認）"
+    },
+    "sourceUrl": "http://niigata-kankou.or.jp/spot/detail_31014.html",
+    "lastVerified": "2026-10-06",
+    "needsVerification": true
+  },
+  "marunuma-ropeway": {
+    "id": "marunuma-ropeway",
+    "name": "丸沼高原（日光白根山ロープウェイ）へのアクセス",
+    "trailheadId": "marunuma-sancho",
+    "mapTargetId": "marunuma-kogen",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ ロープウェイは季節営業（2026年は6/4〜11/8）"
+      },
+      "lineName": "上越新幹線・関越交通バス",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越新幹線とき"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "高崎駅",
+              "method": {
+                "icon": "train",
+                "line": "JR上越線"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "沼田駅",
+              "method": {
+                "icon": "bus",
+                "line": "関越交通バス「鎌田線」"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "鎌田",
+              "method": {
+                "icon": "bus",
+                "line": "関越交通バス「湯元温泉線」"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "日光白根山ロープウエイ（丸沼高原）"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン直通"
+              },
+              "durationMin": 60,
+              "fareYen": null
+            },
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越新幹線とき"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "高崎駅",
+              "method": {
+                "icon": "train",
+                "line": "JR上越線"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "沼田駅",
+              "method": {
+                "icon": "bus",
+                "line": "関越交通バス「鎌田線」"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "鎌田",
+              "method": {
+                "icon": "bus",
+                "line": "関越交通バス「湯元温泉線」"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "日光白根山ロープウエイ（丸沼高原）"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越新幹線とき"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "高崎駅",
+              "method": {
+                "icon": "train",
+                "line": "JR上越線"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "沼田駅",
+              "method": {
+                "icon": "bus",
+                "line": "関越交通バス「鎌田線」"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "鎌田",
+              "method": {
+                "icon": "bus",
+                "line": "関越交通バス「湯元温泉線」"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "日光白根山ロープウエイ（丸沼高原）"
+            }
+          ]
+        }
+      },
+      "note": "💡 沼田駅から丸沼高原へは関越交通バスを鎌田で乗り継ぐ必要があり、本数が限られる。ロープウェイの2026年グリーンシーズン営業は6月4日〜11月8日（天候・点検で運休あり）。",
+      "summaryNote": "※バスは本数が少ないため事前に時刻確認を推奨",
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=沼田駅&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "バス時刻表",
+          "url": "https://kan-etsu.net/pages/43/"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 7380,
+      "omiya": 7050,
+      "yokohama": 7400
+    },
+    "trainTimes": {
+      "shinjuku": 225,
+      "omiya": 195,
+      "yokohama": 255
+    },
+    "transfers": {
+      "shinjuku": 4,
+      "omiya": 3,
+      "yokohama": 4
+    },
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "car": {
+      "parking": "丸沼高原スキー場駐車場（約500台・無料）",
+      "restriction": null
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-06-04",
+      "validTo": "2026-11-08",
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "ロープウェイの2026年グリーンシーズン営業期間（天候・点検で運休あり）。山の登山適期とは別"
+    },
+    "sourceUrl": "https://www.marunuma.jp/green/2399/",
+    "lastVerified": "2026-10-06",
+    "needsVerification": false
+  },
+  "suganuma": {
+    "id": "suganuma",
+    "name": "菅沼登山口へのアクセス",
+    "trailheadId": "suganuma-tozanguchi",
+    "mapTargetId": "suganuma-tozanguchi",
+    "trainRoutes": null,
+    "fares": null,
+    "trainTimes": null,
+    "transfers": null,
+    "busLinks": null,
+    "busScheduleLinks": null,
+    "car": null,
+    "operation": null,
+    "sourceUrl": null,
+    "lastVerified": "2026-10-06",
+    "needsVerification": true,
+    "note": "電車・バスの経路と運賃は未作成（要確認）"
+  },
+  "odarumi": {
+    "id": "odarumi",
+    "name": "大弛峠へのアクセス（塩山駅から予約制バス）",
+    "trailheadId": "odarumi-toge",
+    "mapTargetId": "odarumi-toge",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ 土日祝のみ・要WEB予約（2026年は5/30〜11/8）"
+      },
+      "lineName": "JR特急かいじ・栄和交通バス「焼山峠・大弛峠線」（要事前予約）",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急かいじ"
+              },
+              "durationMin": 83,
+              "fareYen": null
+            },
+            {
+              "station": "塩山駅",
+              "method": {
+                "icon": "bus",
+                "line": "栄和交通バス「焼山峠・大弛峠線」"
+              },
+              "durationMin": 85,
+              "fareYen": null
+            },
+            {
+              "station": "大弛峠"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 34,
+              "fareYen": null
+            },
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急かいじ"
+              },
+              "durationMin": 83,
+              "fareYen": null
+            },
+            {
+              "station": "塩山駅",
+              "method": {
+                "icon": "bus",
+                "line": "栄和交通バス「焼山峠・大弛峠線」"
+              },
+              "durationMin": 85,
+              "fareYen": null
+            },
+            {
+              "station": "大弛峠"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急かいじ"
+              },
+              "durationMin": 83,
+              "fareYen": null
+            },
+            {
+              "station": "塩山駅",
+              "method": {
+                "icon": "bus",
+                "line": "栄和交通バス「焼山峠・大弛峠線」"
+              },
+              "durationMin": 85,
+              "fareYen": null
+            },
+            {
+              "station": "大弛峠"
+            }
+          ]
+        }
+      },
+      "note": "💡 大弛峠は標高2,360mの日本一標高が高い車道峠。金峰山まで往復4時間程度で日帰り可能",
+      "summaryNote": "※バスはWEB予約のみ。2026年は5月30日〜11月8日の土・日・祝日に運行（塩山駅北口〜大弛峠 片道3,000円）",
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=塩山&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "バス時刻表",
+          "url": "https://eiwa-kotsu.jp/oodarumi.html"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 6670,
+      "omiya": 7000,
+      "yokohama": 7330
+    },
+    "trainTimes": {
+      "shinjuku": 168,
+      "omiya": 198,
+      "yokohama": 202
+    },
+    "transfers": {
+      "shinjuku": null,
+      "omiya": null,
+      "yokohama": null
+    },
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "car": {
+      "parking": "大弛峠駐車場（約40台・無料）",
+      "restriction": null
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-05-30",
+      "validTo": "2026-11-08",
+      "seasonYear": 2026,
+      "reservation": "土・日・祝日のみ運行。WEB予約のみ（現金払い）",
+      "note": "栄和交通の大弛峠線（ツアー形式）の2026年の運行期間。道路状況で早く終わることがある"
+    },
+    "sourceUrl": "https://eiwa-kotsu.jp/oodarumi.html",
+    "lastVerified": "2026-10-06",
+    "needsVerification": false
+  },
+  "mawarimedaira": {
+    "id": "mawarimedaira",
+    "name": "廻り目平へのアクセス",
+    "trailheadId": "mawarimedaira",
+    "mapTargetId": "mawarimedaira",
+    "trainRoutes": null,
+    "fares": null,
+    "trainTimes": null,
+    "transfers": null,
+    "busLinks": null,
+    "busScheduleLinks": null,
+    "car": null,
+    "operation": null,
+    "sourceUrl": null,
+    "lastVerified": "2026-10-06",
+    "needsVerification": true,
+    "note": "電車・バスの経路と運賃は未作成（要確認）"
+  },
+  "kamihikawa": {
+    "id": "kamihikawa",
+    "name": "上日川峠へのアクセス（甲斐大和駅からバス）",
+    "trailheadId": "kamihikawa-toge",
+    "mapTargetId": "kamihikawa-toge",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ 土日祝中心の季節運行（2026年は4/18〜12/13）"
+      },
+      "lineName": "JR中央線・栄和交通「大菩薩上日川峠線」",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急かいじ"
+              },
+              "durationMin": 58,
+              "fareYen": null
+            },
+            {
+              "station": "大月駅",
+              "method": {
+                "icon": "train",
+                "line": "JR中央本線（普通）"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "甲斐大和駅",
+              "method": {
+                "icon": "train",
+                "line": "栄和交通「大菩薩上日川峠線」"
+              },
+              "durationMin": 41,
+              "fareYen": null
+            },
+            {
+              "station": "上日川峠"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 34,
+              "fareYen": null
+            },
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急かいじ"
+              },
+              "durationMin": 58,
+              "fareYen": null
+            },
+            {
+              "station": "大月駅",
+              "method": {
+                "icon": "train",
+                "line": "JR中央本線（普通）"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "甲斐大和駅",
+              "method": {
+                "icon": "train",
+                "line": "栄和交通「大菩薩上日川峠線」"
+              },
+              "durationMin": 41,
+              "fareYen": null
+            },
+            {
+              "station": "上日川峠"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急かいじ"
+              },
+              "durationMin": 58,
+              "fareYen": null
+            },
+            {
+              "station": "大月駅",
+              "method": {
+                "icon": "train",
+                "line": "JR中央本線（普通）"
+              },
+              "durationMin": 25,
+              "fareYen": null
+            },
+            {
+              "station": "甲斐大和駅",
+              "method": {
+                "icon": "train",
+                "line": "栄和交通「大菩薩上日川峠線」"
+              },
+              "durationMin": 41,
+              "fareYen": null
+            },
+            {
+              "station": "上日川峠"
+            }
+          ]
+        }
+      },
+      "note": "💡 特急かいじ・あずさは甲斐大和駅に停車しないため、大月駅で中央本線（松本行）の普通列車への乗り換えが必要。特急利用の場合、新宿〜甲斐大和は乗車券＋特急券で約3,110円。甲斐大和駅〜上日川峠は栄和交通「大菩薩上日川峠線」で約41分・1,020円（予約不要）。運行は土日祝が基本で、時期により平日も運行。紅葉シーズンは大変混雑するため早めに並ぶこと。このバスは路線区間内なら手を挙げれば停留所以外でも乗降できるフリー乗降制。甲斐大和駅に停車する列車自体が少ないため、行き帰りとも時刻表の確認が必須。なお駅前のセブンイレブンは2024年1月に閉店しているため、食料は事前に用意を。",
+      "summaryNote": "※発着は甲斐大和駅（塩山駅ではない）。土日祝中心で平日3便・土日祝5便程度",
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=甲斐大和駅&type=1"
+        },
+        {
+          "type": "other",
+          "label": "大菩薩上日川峠線 時刻表",
+          "url": "https://eiwa-kotsu.jp/root.html"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 4130,
+      "omiya": 4130,
+      "yokohama": 4130
+    },
+    "trainTimes": {
+      "shinjuku": 124,
+      "omiya": 154,
+      "yokohama": 158
+    },
+    "transfers": {
+      "shinjuku": 1,
+      "omiya": 2,
+      "yokohama": 2
+    },
+    "busLinks": [
+      "https://transit.yahoo.co.jp/search/result?from=新宿&to=塩山駅&type=1"
+    ],
+    "busScheduleLinks": [
+      "https://yamanashikotsu.co.jp/noriai/2211daigasanline/"
+    ],
+    "car": {
+      "parking": "上日川峠駐車場（約100台・無料）",
+      "restriction": "上日川峠への道路は冬季閉鎖"
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-04-18",
+      "validTo": "2026-12-13",
+      "seasonYear": 2026,
+      "reservation": null,
+      "note": "栄和交通「大菩薩上日川峠線」の2026年の運行期間（土日祝中心・一部平日）"
+    },
+    "sourceUrl": "https://eiwa-kotsu.jp/",
+    "lastVerified": "2026-10-06",
+    "needsVerification": true
+  },
+  "saketsuishi": {
+    "id": "saketsuishi",
+    "name": "裂石（大菩薩峠登山口）へのアクセス",
+    "trailheadId": "saketsuishi",
+    "mapTargetId": "saketsuishi",
+    "trainRoutes": null,
+    "fares": null,
+    "trainTimes": null,
+    "transfers": null,
+    "busLinks": null,
+    "busScheduleLinks": null,
+    "car": null,
+    "operation": null,
+    "sourceUrl": null,
+    "lastVerified": "2026-10-06",
+    "needsVerification": true,
+    "note": "電車・バスの経路と運賃は未作成（要確認）"
+  },
+  "tatamidaira": {
+    "id": "tatamidaira",
+    "name": "畳平へのアクセス（乗鞍高原からシャトルバス）",
+    "trailheadId": "tatamidaira",
+    "mapTargetId": "norikura-kogen",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ 季節運行・予約優先制（2026年は7/1〜10/31）"
+      },
+      "lineName": "JR特急あずさ・アルピコ交通「新島々-乗鞍高原線」「乗鞍畳平シャトルバス」",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 150,
+              "fareYen": null
+            },
+            {
+              "station": "松本駅",
+              "method": {
+                "icon": "train",
+                "line": "松本電鉄上高地線"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "新島々駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス「乗鞍高原線」"
+              },
+              "durationMin": 63,
+              "fareYen": null
+            },
+            {
+              "station": "乗鞍高原観光センター",
+              "method": {
+                "icon": "bus",
+                "line": "畳平シャトルバス（予約優先制）"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "畳平"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 34,
+              "fareYen": null
+            },
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 150,
+              "fareYen": null
+            },
+            {
+              "station": "松本駅",
+              "method": {
+                "icon": "train",
+                "line": "松本電鉄上高地線"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "新島々駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス「乗鞍高原線」"
+              },
+              "durationMin": 63,
+              "fareYen": null
+            },
+            {
+              "station": "乗鞍高原観光センター",
+              "method": {
+                "icon": "bus",
+                "line": "畳平シャトルバス（予約優先制）"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "畳平"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR武蔵野線・中央線（立川乗換）"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "立川駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 125,
+              "fareYen": null
+            },
+            {
+              "station": "松本駅",
+              "method": {
+                "icon": "train",
+                "line": "松本電鉄上高地線"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "新島々駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス「乗鞍高原線」"
+              },
+              "durationMin": 63,
+              "fareYen": null
+            },
+            {
+              "station": "乗鞍高原観光センター",
+              "method": {
+                "icon": "bus",
+                "line": "畳平シャトルバス（予約優先制）"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "畳平"
+            }
+          ]
+        }
+      },
+      "note": "新島々駅〜乗鞍高原観光センターはアルピコ交通バス「乗鞍高原線」で約1時間3分（運行期間: 例年4月中旬〜11月中旬）。乗鞍高原〜畳平のシャトルバスは予約優先制（乗車日の1か月前から予約可）で約55分。空席があれば予約なしでも乗車できるが、満席の日があるため往復とも事前予約が安全。エコーライン運行期間は例年7月上旬〜10月下旬。畳平は標高2,702mで夏でも冷えるため防寒具必須。畳平から剣ヶ峰までは約1時間30分で、3,000m峰の中では最も手軽に登れる山として人気。岐阜県側（ほおのき平）からのシャトルバスも利用可能。",
+      "summaryNote": "※畳平シャトルバスは2026年は7月1日〜10月31日運行。予約優先制で、空席があれば予約なしでも乗車できます（往復とも事前予約を推奨）",
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=新島々駅&type=1"
+        },
+        {
+          "type": "other",
+          "label": "乗鞍高原線 時刻表",
+          "url": "https://www.alpico.co.jp/traffic/local/kamikochi/norikurakogen/"
+        },
+        {
+          "type": "bus",
+          "label": "バス時刻表",
+          "url": "https://www.alpico.co.jp/traffic/local/kamikochi/norikurakogen/"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 10540,
+      "omiya": 10230,
+      "yokohama": 10540
+    },
+    "trainTimes": {
+      "shinjuku": 293,
+      "omiya": 323,
+      "yokohama": 327
+    },
+    "transfers": {
+      "shinjuku": 3,
+      "omiya": 4,
+      "yokohama": 4
+    },
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "car": {
+      "parking": "乗鞍高原観光センター駐車場（長野側）／ほおのき平駐車場（岐阜側）",
+      "restriction": "畳平へは一般車両で入れない。乗鞍高原（長野側）またはほおのき平（岐阜側）でシャトルバスに乗り換える"
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-07-01",
+      "validTo": "2026-10-31",
+      "seasonYear": 2026,
+      "reservation": "予約優先制（空席があれば予約なしで乗車可）。往復とも事前予約を推奨",
+      "note": "乗鞍高原〜畳平シャトルバスの2026年の運行期間。運賃は公式の運賃表で要確認"
+    },
+    "sourceUrl": "https://www.alpico.co.jp/traffic/local/kamikochi/echoline/",
+    "lastVerified": "2026-10-06",
+    "needsVerification": true
+  },
+  "kamikochi": {
+    "id": "kamikochi",
+    "name": "上高地へのアクセス",
+    "trailheadId": "kamikochi-bt",
+    "mapTargetId": "sawando",
+    "trainRoutes": {
+      "badge": {
+        "type": "seasonal",
+        "style": null,
+        "icon": "check",
+        "label": "⚠️ 季節運行・予約優先制（2026年は4/17〜11/15）"
+      },
+      "lineName": "高速バス「さわやか信州号」",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 150,
+              "fareYen": null
+            },
+            {
+              "station": "松本駅",
+              "method": {
+                "icon": "train",
+                "line": "松本電鉄上高地線"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "新島々駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス（予約優先制）"
+              },
+              "durationMin": 65,
+              "fareYen": null
+            },
+            {
+              "station": "上高地バスターミナル"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR埼京線・武蔵野線・中央線（立川乗換）"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "立川駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 140,
+              "fareYen": null
+            },
+            {
+              "station": "松本駅",
+              "method": {
+                "icon": "train",
+                "line": "松本電鉄上高地線"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "新島々駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス（予約優先制）"
+              },
+              "durationMin": 65,
+              "fareYen": null
+            },
+            {
+              "station": "上高地バスターミナル"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR横浜線"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "八王子駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 151,
+              "fareYen": null
+            },
+            {
+              "station": "松本駅",
+              "method": {
+                "icon": "train",
+                "line": "松本電鉄上高地線"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "新島々駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス（予約優先制）"
+              },
+              "durationMin": 65,
+              "fareYen": null
+            },
+            {
+              "station": "上高地バスターミナル"
+            }
+          ]
+        }
+      },
+      "note": "💡 新島々駅〜上高地のアルピコ交通バスは約1時間。2026年は予約優先制で、往路・復路とも乗車日の1か月前から予約できる（空席があれば予約なしでも乗車可）。松本電鉄上高地線（松本〜新島々）は予約不要だが交通系ICカードは使えない。上高地は通年マイカー規制のため一般車両は入れない。バスタ新宿発の夜行「さわやか信州号」なら上高地に早朝到着でき乗り換えも不要。大宮は立川、横浜は八王子で特急あずさに乗ると安い。",
+      "summaryNote": "※松本〜新島々 710円＋新島々〜上高地 3,100円（2026年）",
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=松本駅&type=1"
+        },
+        {
+          "type": "other",
+          "label": "さわやか信州号 時刻表・予約",
+          "url": "https://www.alpico.co.jp/traffic/sawayaka/route/kamikochi/shinjuku/"
+        },
+        {
+          "type": "bus",
+          "label": "バス時刻表",
+          "url": "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/"
+        }
+      ]
+    },
+    "fares": {
+      "shinjuku": 10540,
+      "omiya": 10230,
+      "yokohama": 10230
+    },
+    "trainTimes": {
+      "shinjuku": 245,
+      "omiya": 290,
+      "yokohama": 296
+    },
+    "transfers": {
+      "shinjuku": 0,
+      "omiya": 1,
+      "yokohama": 1
+    },
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "car": {
+      "parking": "沢渡駐車場（約2000台・600円）※バス乗換",
+      "restriction": "上高地へは一般車両で入れない（通年マイカー規制）。沢渡またはあかんだな駐車場でシャトルバス・タクシーに乗り換える"
+    },
+    "operation": {
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-04-17",
+      "validTo": "2026-11-15",
+      "seasonYear": 2026,
+      "reservation": "予約優先制（往路・復路とも。乗車日の1か月前から予約可）",
+      "note": "松本〜新島々〜上高地の路線バスの2026年の運行期間"
+    },
+    "sourceUrl": "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/",
+    "lastVerified": "2026-10-06",
+    "needsVerification": false,
+    "fareSource": "JR特急あずさ 新宿〜松本6,730円（JR公式料金表）／大宮・横浜〜松本6,420円（Yahoo!路線情報）＋上高地線710円＋バス3,100円"
+  },
+  "shinhotaka": {
+    "id": "shinhotaka",
+    "name": "新穂高温泉へのアクセス",
+    "trailheadId": "shinhotaka-onsen",
+    "mapTargetId": "shinhotaka-onsen",
+    "trainRoutes": null,
+    "fares": null,
+    "trainTimes": null,
+    "transfers": null,
+    "busLinks": null,
+    "busScheduleLinks": null,
+    "car": null,
+    "operation": null,
+    "sourceUrl": null,
+    "lastVerified": "2026-10-06",
+    "needsVerification": true,
+    "note": "電車・バスの経路と運賃は未作成（要確認）。バスタ新宿から新穂高温泉行きの高速バスがある（笠ヶ岳のアクセスを参照）"
+  }
+}

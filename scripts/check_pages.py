@@ -549,6 +549,60 @@ def check_seat_terms(html_files):
     return issues
 
 
+def check_ssot(mountains):
+    """新構造（dataModel: ssot-v1）の山の整合性。
+    ルート→登山口→アクセスの紐付け、旧フィールドが新構造から生成された値と一致しているか、
+    閉鎖月に装備区分を出していないか、を確認する。運行期間の期限切れは警告（warn）として別に返す。"""
+    issues, warns = [], []
+    data_dir = os.path.join(os.path.dirname(SCRIPT_DIR), 'data')
+    try:
+        TH = json.load(open(os.path.join(data_dir, 'trailheads.json'), encoding='utf-8'))
+        AC = json.load(open(os.path.join(data_dir, 'accesses.json'), encoding='utf-8'))
+    except FileNotFoundError:
+        return issues, warns
+    import copy, datetime
+    sys.path.insert(0, SCRIPT_DIR)
+    import build_derived
+    today = datetime.date.today()
+    for m in mountains:
+        if m.get('dataModel') != 'ssot-v1':
+            continue
+        mid = m['id']
+        routes = m.get('routes') or []
+        ids = [r.get('id') for r in routes]
+        ok = True
+        if m.get('representativeRouteId') not in ids:
+            issues.append({'id': mid, 'problem': '代表ルート（representativeRouteId）がroutesに無い'}); ok = False
+        for r in routes:
+            if r.get('trailheadId') not in TH:
+                issues.append({'id': mid, 'problem': f"ルート「{r.get('name')}」の登山口ID {r.get('trailheadId')} が trailheads.json に無い"}); ok = False
+            if r.get('accessId') not in AC:
+                issues.append({'id': mid, 'problem': f"ルート「{r.get('name')}」のアクセスID {r.get('accessId')} が accesses.json に無い"}); ok = False
+            a = AC.get(r.get('accessId')) or {}
+            vt = (a.get('operation') or {}).get('validTo')
+            if vt and datetime.date.fromisoformat(vt) < today:
+                warns.append({'id': mid, 'problem': f"「{a.get('name')}」の運行期間が {vt} で終了（来季の情報で更新が必要）"})
+        if not ok:
+            continue
+        rep = [r for r in routes if r['id'] == m['representativeRouteId']][0]
+        if rep.get('coeff') is None:
+            issues.append({'id': mid, 'problem': '代表ルートにコース定数（coeff）が無い'})
+        derived = build_derived.derive(copy.deepcopy(m), TH, AC)
+        for k in ('trailhead', 'gmapUrl', 'amapUrl', 'mapBtnsHtml', 'coeffMin', 'coeffMax', 'courseCoefficientRange',
+                  'seasonCalendar', 'seasonNoGear', 'season6Crampons', 'fareShinjuku', 'fareOmiya', 'fareYokohama',
+                  'trainTimeShinjuku', 'trainTimeOmiya', 'trainTimeYokohama', 'faq', 'introHtml'):
+            if derived.get(k) != m.get(k):
+                issues.append({'id': mid, 'problem': f'{k} が新構造から生成した値と違う（scripts/build_derived.py を実行）'})
+        ms = m.get('monthlyStatus') or {}
+        for i, c in enumerate(m.get('seasonCalendar') or []):
+            if (ms.get('trail') or [None] * 12)[i] == 'closed' and c != 's-closed':
+                issues.append({'id': mid, 'problem': f'{i+1}月は登山道閉鎖なのに装備区分を表示している'})
+        coeffs = [r['coeff'] for r in routes if r.get('coeff') is not None]
+        if coeffs and (m.get('coeffMin'), m.get('coeffMax')) != (min(coeffs), max(coeffs)):
+            issues.append({'id': mid, 'problem': 'コース定数の表示がルートの値と一致しない'})
+    return issues, warns
+
+
 KNOWN_ISSUES_PATH = os.path.join(SCRIPT_DIR, 'check_known_issues.json')
 
 
@@ -609,6 +663,7 @@ def main():
     coeff_issues = check_coeff_anomalies(mountains)
     restricted_issues = check_restricted_listings(mountains)
     seat_issues = check_seat_terms(html_files)
+    ssot_issues, ssot_warns = check_ssot(mountains)
 
     if args.update_baseline:
         with open(KNOWN_ISSUES_PATH, 'w', encoding='utf-8') as f:
@@ -646,6 +701,9 @@ def main():
     report.append(section('12. コース定数の異常値', coeff_issues, fmt))
     report.append(section('13. 規制中の山の掲載', restricted_issues, fmt))
     report.append(section('14. 特急の座席制度', seat_issues, fmt))
+    report.append(section('15. 新構造（ルート→登山口→アクセス）の整合性', ssot_issues, fmt))
+    if ssot_warns:
+        report.append('## 参考：運行期間の期限切れ（来季の再確認対象。件数に含めない）\n' + '\n'.join('- ' + fmt(w) for w in ssot_warns) + '\n')
     report.append(f"## 参考：既知の未解決（調査待ちのレガシー。件数に含めない）\n- 10. 所要時間: {len(time_known)}件 / 11. 駅名: {len(station_known)}件（scripts/check_known_issues.json）\n")
 
     text = '\n'.join(report)
@@ -654,7 +712,8 @@ def main():
     total = (len(broken_links) + len(broken_images) + len(required_field_issues)
              + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues)
              + len(train_routes_issues) + len(route_dup_issues) + len(time_issues)
-             + len(station_issues) + len(coeff_issues) + len(restricted_issues) + len(seat_issues))
+             + len(station_issues) + len(coeff_issues) + len(restricted_issues) + len(seat_issues)
+             + len(ssot_issues))
 
     if args.json:
         with open(args.json, 'w', encoding='utf-8') as f:
@@ -673,6 +732,8 @@ def main():
                 'coeff_anomalies': coeff_issues,
                 'restricted_listings': restricted_issues,
                 'seat_terms': seat_issues,
+                'ssot_issues': ssot_issues,
+                'ssot_warnings': ssot_warns,
                 'total': total,
             }, f, ensure_ascii=False, indent=2)
 
