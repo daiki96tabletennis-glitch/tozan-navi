@@ -371,3 +371,27 @@ function applyDep(){
     }
   }
 })();
+
+
+// === 毎年変わる情報：期限（data-valid-to）を過ぎたら「終了」の注記を足す ===
+(function(){
+  function pad(n){ return n < 10 ? '0' + n : String(n); }
+  function run(){
+    var d = new Date();
+    var today = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+    var els = document.querySelectorAll('.ym-annual[data-valid-to], [data-annual][data-valid-to]');
+    for(var i = 0; i < els.length; i++){
+      var el = els[i];
+      var to = el.getAttribute('data-valid-to');
+      if(!to || today <= to || el.getAttribute('data-expired')) continue;
+      el.setAttribute('data-expired', '1');
+      var year = to.slice(0, 4);
+      var note = document.createElement('span');
+      note.className = 'ym-expired-note';
+      note.textContent = year + '年のこの期間は終了しました。来季の日程は、発表を確認してから更新します。';
+      var body = el.querySelector('.warn-body') || el;
+      body.appendChild(note);
+    }
+  }
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', run); } else { run(); }
+})();

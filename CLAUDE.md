@@ -70,6 +70,16 @@
 - 全山の監査：`python3 scripts/audit_data.py` → `data/audit_report.csv`（P0〜P3）
 - 旧フィールドは削除しない（全山の移行と新旧比較が終わってから廃止）
 
+## 毎年変わるデータの見張り（2026-10-06〜）
+季節バス・林道バス・マイカー規制・閉鎖期間・開山期間・災害の通行止めは、期限と出典をデータとして持たせる。
+- 新構造の山：`accesses.json` の `operation.validTo` と `sourceUrl`、`alerts[].validTo`、`conditions.trailPeriods`
+- 旧構造の山：`mountains.json` の `annualItems[]`（`kind` / `label` / `validFrom` / `validTo` / `seasonYear` / `sourceUrl` / `lastVerified` / `note`）。期間つきの項目は電車・バス欄の上に表示される。期間なし（災害の通行止めなど）は表示せず、出典の見張りだけに使う
+- 期限を過ぎると、山ページが自動で「◯年のこの期間は終了しました」と注記する（`mountain-engine.js`。`data-valid-to` 属性を見る）
+- `python3 scripts/check_annual_updates.py`：期限切れ・30日以内に期限・出典ページの変更・リンク切れ・未登録の山を一覧にする。**データは書き換えない**
+- `.github/workflows/annual-data-check.yml` が毎月1日に上を実行し、対応が必要なら Issue を作る
+- 反映は人が確認してから行う。出典ページを読んで新しい期間を入れ、`lastVerified` を更新する（自動で書き換えない）
+- 季節運行の経路を新しく書くときは、必ず `validTo` と `sourceUrl` を入れる（「例年◯月〜」の文章だけにしない）
+
 ## ヒーロー時間表示
 - 60分未満は分のみ（例: 55+分〜）、60分以上は小数時間（例: 100分→1.7+時間〜、末尾 `.0` は省略）
 - `ymFormatHeroTime(raw)` で hero-time / hero-unit を動的更新

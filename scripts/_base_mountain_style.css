@@ -223,4 +223,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .map-target{font-size:11px;color:#6a6058;margin-bottom:6px}
 .warn-kicker{font-size:10px;font-weight:700;letter-spacing:0.04em;margin-bottom:2px}
 .warn-verified{font-size:10px;color:#9a9088;margin-top:4px}
+.ts-op{font-size:12px;color:#4e6535;background:#eef2e6;border-radius:6px;padding:6px 10px;margin:0 0 8px;line-height:1.6}
+.ts-op a{color:#4e6535;text-decoration:underline}
+.ym-expired-note{display:block;font-size:11px;color:#8a5a00;background:#fff6e0;border-radius:6px;padding:5px 9px;margin-top:5px;line-height:1.6}
 .warn-banner + .warn-banner{margin-top:-4px}

@@ -56,7 +56,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261002"
+ASSET_VER = "20261006"
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
@@ -474,6 +474,7 @@ def render_train_access(mt):
     caption = ""
     if mt.get("trainAccessLabel"):
         caption = f'<div class="ts-target">行き先：{esc(mt["trainAccessLabel"])}</div>\n  '
+    caption += render_annual_items(mt)
     if train_routes:
         ts = render_ts_section(train_routes, mt)
         if ts:
@@ -545,6 +546,29 @@ SEASON_ICON = ('<svg width="16" height="16" viewBox="0 0 24 24" '
                '<line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>')
 
 
+def annual_attrs(valid_to, kind):
+    """毎年変わる情報に付ける属性。期限が無ければ何も付けない"""
+    if not valid_to:
+        return ""
+    return f' class="ym-annual" data-valid-to="{esc(valid_to)}" data-kind="{esc(kind)}"'
+
+
+def render_annual_items(mt):
+    """旧構造の山：annualItems（今年の運行期間など）を電車・バス欄の上に出す"""
+    out = []
+    for it in mt.get("annualItems") or []:
+        if not (it.get("validFrom") or it.get("validTo")):
+            continue
+        rng = f'{_md(it.get("validFrom"))}〜{_md(it.get("validTo"))}'
+        link = ""
+        if it.get("sourceUrl"):
+            link = f' <a href="{esc(it["sourceUrl"])}" target="_blank" rel="noopener">出典</a>'
+        note = f'（{esc(it["note"])}）' if it.get("note") else ""
+        out.append(f'<div{annual_attrs(it.get("validTo"), it.get("kind") or "transport").replace("ym-annual", "ym-annual ts-op")}>'
+                   f'{esc(it.get("label") or "")}：{it.get("seasonYear") or ""}年は{rng}{note}{link}</div>')
+    return "".join(out)
+
+
 def _md(d):
     """2026-05-07 → 5/7"""
     if not d:
@@ -578,11 +602,18 @@ def render_season_ssot(mt):
     op = mt.get("trainAccessOperation") or {}
     if op.get("validFrom") or op.get("validTo"):
         rng = f'{_md(op.get("validFrom"))}〜{_md(op.get("validTo"))}'
-        notes.append(f'公共交通（{esc(mt.get("trainAccessLabel") or "")}）：{op.get("seasonYear") or ""}年は{rng}'
-                     + (f'。{esc(op["reservation"])}' if op.get("reservation") else ""))
+        # 運行期間は毎年変わる。期限（data-valid-to）を過ぎたら mountain-engine.js が「終了」の注記を足す
+        notes.append((f'公共交通（{esc(mt.get("trainAccessLabel") or "")}）：{op.get("seasonYear") or ""}年は{rng}'
+                      + (f'。{esc(op["reservation"])}' if op.get("reservation") else ""), op.get("validTo")))
     notes_html = ""
     if notes:
-        notes_html = '<ul class="cond-notes">' + "".join(f"<li>{n}</li>" for n in notes) + "</ul>"
+        lis = []
+        for n in notes:
+            if isinstance(n, tuple):
+                lis.append(f'<li{annual_attrs(n[1], "transport")}>{n[0]}</li>')
+            else:
+                lis.append(f"<li>{n}</li>")
+        notes_html = '<ul class="cond-notes">' + "".join(lis) + "</ul>"
     return (
         f'<div class="card" id="sec-season"><h2>{SEASON_ICON}シーズンカレンダー</h2>\n'
         '<div class="cond-table">'
@@ -908,8 +939,11 @@ def render_alerts(mt):
             link = (f'\n      <a href="{esc(a["sourceUrl"])}" target="_blank" rel="noopener" '
                     f'class="warn-link">{esc(a.get("linkText") or "公式情報")} →</a>')
         verified = f'<div class="warn-verified">最終確認：{esc(a.get("lastVerified") or "")}</div>' if a.get("lastVerified") else ""
+        annual = ""
+        if a.get("statusType") == "annual" and a.get("validTo"):
+            annual = f' data-annual="1" data-valid-to="{esc(a["validTo"])}" data-kind="alert"'
         out.append(
-            f'<div class="warn-banner warn-banner-{level}">\n'
+            f'<div class="warn-banner warn-banner-{level}"{annual}>\n'
             '    <div class="warn-icon">⚠️</div>\n'
             '    <div class="warn-body">\n'
             f'      <div class="warn-kicker warn-title-{level}">現在のアクセス注意</div>\n'

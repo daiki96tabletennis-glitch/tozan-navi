@@ -14,7 +14,7 @@
 <meta property="og:updated_time" content="2026-03-16T00:00:00+09:00">
 <link rel="canonical" href="https://tozan-navi.com/mountains/hijiridade/">
 <meta name="google-site-verification" content="dJ2byH9b8xF8S5lqAyWV-DqRwPGLEjWXs_-Un9oXGHs" />
-<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261002">
+<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261006">
 <style>.header-title{color:white;font-family:Georgia,serif;font-size:19px;font-weight:bold}
 .header-sub{color:rgba(255,255,255,0.5);font-size:10px;margin-top:1px}
 .hero{background:#4e6535;border-radius:14px;overflow:hidden;margin-bottom:16px}
@@ -232,6 +232,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .cond-key{font-size:10px;color:#9a9088;margin-top:6px}
 .cond-notes{margin:8px 0 0;padding-left:16px;font-size:11px;color:#5a5248;line-height:1.7}
 .rl-th{font-size:11px;color:#6a6058;margin:2px 0 4px;display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.rl-access{font-size:11px;color:#6a6058;margin:0 0 5px;line-height:1.6}
 .rl-tag{font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px}
 .rl-tag-rep{background:#e4edd8;color:#4e6535}
 .rl-tag-ng{background:#fde2e2;color:#b02a2a}
@@ -239,6 +240,9 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .map-target{font-size:11px;color:#6a6058;margin-bottom:6px}
 .warn-kicker{font-size:10px;font-weight:700;letter-spacing:0.04em;margin-bottom:2px}
 .warn-verified{font-size:10px;color:#9a9088;margin-top:4px}
+.ts-op{font-size:12px;color:#4e6535;background:#eef2e6;border-radius:6px;padding:6px 10px;margin:0 0 8px;line-height:1.6}
+.ts-op a{color:#4e6535;text-decoration:underline}
+.ym-expired-note{display:block;font-size:11px;color:#8a5a00;background:#fff6e0;border-radius:6px;padding:5px 9px;margin-top:5px;line-height:1.6}
 .warn-banner + .warn-banner{margin-top:-4px}
 </style>
 <!-- Google tag (gtag.js) -->
@@ -311,9 +315,9 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   <div class="warn-banner warn-banner-yellow">
     <div class="warn-icon">⚠️</div>
     <div class="warn-body">
-      <div class="warn-title warn-title-yellow">便ヶ島へは車で入れません</div>
-      <div class="warn-text">便ヶ島登山口へ向かう林道は、2015年秋の路肩決壊から一般車の通行止めが続いています（環境省）。車は芝沢ゲートまでで、その先は林道を歩きます。便ヶ島〜西沢渡の区間は歩行者も通行止めとの情報があり（2025年時点）、2026年の状況は未確認です。出発前に飯田市の最新情報を必ず確認してください。</div>
-      <a href="https://www.env.go.jp/park/minamialps/access/index.html" target="_blank" rel="noopener" class="warn-link">環境省のアクセス情報 →</a>
+      <div class="warn-title warn-title-yellow">便ヶ島からのルートは通行止め</div>
+      <div class="warn-text">便ヶ島〜西沢渡の区間は災害復旧工事のため、当分の間通れません（遠山郷観光協会・2026年7月9日更新）。長野県側の便ヶ島から聖岳へは登れないので、静岡県側の聖沢登山口などを使ってください。一般車が入れるのは芝沢ゲートまでです。出発前に最新の状況を確認してください。</div>
+      <a href="https://tohyamago.com/archives/18" target="_blank" rel="noopener" class="warn-link">遠山郷観光協会の登山情報 →</a>
     </div>
   </div>
   <div class="card"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>山の紹介</h2><p class="intro-text">南アルプス最南部の3000m峰。最南の3000m峰として知られる。深い森を抜けてたどり着く山頂からの展望は格別。光岳とのセット縦走も人気。上級レベルでコース定数60〜85、山小屋泊が一般的。代表コース（便ヶ島〜聖岳往復（1泊））は所要18時間/22.0km/標高差+2400m。</p></div>
@@ -348,7 +352,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   <div class="card" id="sec-parking"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 16V8h3.5a2.5 2.5 0 0 1 0 5H9" stroke-linecap="round" stroke-linejoin="round"/></svg>登山口・駐車場</h2>
 <div class="info-rows">
 <div class="info-row"><span class="info-label">登山口</span><span class="info-val">便ヶ島（芝沢ゲートから徒歩）</span></div>
-<div class="info-row"><span class="info-label">駐車場</span><span class="info-val">芝沢ゲート駐車場（約30台。料金は要確認）</span></div>
+<div class="info-row"><span class="info-label">駐車場</span><span class="info-val">芝沢ゲート駐車場（約50台・利用協力金 約1,000円）</span></div>
 <div class="info-row"><span class="info-label">住所</span><span class="info-val">長野県飯田市南信濃木沢</span></div>
 </div>
 <div class="map-btns">
@@ -363,7 +367,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 </div>
   </div>
 
-  <div class="card" id="sec-routes"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/><path d="M5 17 C5 12 9 12 9 9 C9 6 12 6 12 9 C12 13 19 13 19 7"/></svg>代表的な登山ルート</h2><div class="route-list-c"><div class="rl-item"><div class="rl-num">1</div><div class="rl-content"><div class="rl-name">便ヶ島〜聖岳往復（1泊）</div><div class="rl-th">登山口：便ヶ島（長野県側）</div><div class="rl-waypoints">便ヶ島 → 聖岳往復（1泊）</div><div class="rl-chips"><span class="rl-chip">⏱&nbsp;18時間</span><span class="rl-chip">距離&nbsp;22.0km</span><span class="rl-chip">↑&nbsp;+2400m</span><span class="rl-chip">定数&nbsp;64</span></div></div></div></div><p style="font-size:11px;color:#9a9088;margin-top:8px;line-height:1.6;">※ルートごとの定数は、時間・距離・累積標高差から一般式で算出した目安です（下りの累積標高差は登りと同じと仮定）。</p></div>
+  <div class="card" id="sec-routes"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/><path d="M5 17 C5 12 9 12 9 9 C9 6 12 6 12 9 C12 13 19 13 19 7"/></svg>代表的な登山ルート</h2><div class="route-list-c"><div class="rl-item"><div class="rl-num">1</div><div class="rl-content"><div class="rl-name">便ヶ島〜聖岳往復（1泊）</div><div class="rl-th"><span class="rl-tag rl-tag-ng">通行止め（便ヶ島〜西沢渡）</span>登山口：便ヶ島（長野県側）</div><div class="rl-waypoints">便ヶ島 → 聖岳往復（1泊）</div><div class="rl-chips"><span class="rl-chip">⏱&nbsp;18時間</span><span class="rl-chip">距離&nbsp;22.0km</span><span class="rl-chip">↑&nbsp;+2400m</span><span class="rl-chip">定数&nbsp;64</span></div></div></div><div class="rl-item"><div class="rl-num">2</div><div class="rl-content"><div class="rl-name">聖沢登山口〜聖平小屋〜聖岳（往復・山小屋泊）</div><div class="rl-th">登山口：聖沢登山口（静岡県側）</div><div class="rl-access">アクセス：静岡駅から畑薙第一ダムへ行き、特種東海フォレストの送迎バス（予約制・宿泊者限定）で聖沢登山口へ。下の「電車・バスでのアクセス」と同じ経路</div><div class="rl-waypoints">聖沢登山口 → 聖沢吊橋 → 聖平小屋 → 小聖岳 → 聖岳</div><div class="rl-chips"></div></div></div></div><p style="font-size:11px;color:#9a9088;margin-top:8px;line-height:1.6;">※ルートごとの定数は、時間・距離・累積標高差から一般式で算出した目安です（下りの累積標高差は登りと同じと仮定）。</p></div>
 
   <a href="https://yamap.com/mountains/76" target="_blank" rel="noopener noreferrer" class="yamap-btn">
     <svg width="18" height="18" viewBox="0 0 36 36" fill="#4e6535"><polygon points="18,4 34,30 2,30"/><polygon points="18,10 30,30 6,30" fill="#6a8055"/></svg>
@@ -519,7 +523,7 @@ var YM_MOUNTAIN_INIT = {
   ]
 };
 </script>
-<script src="../../assets/js/mountain-engine.js?v=20261002"></script>
+<script src="../../assets/js/mountain-engine.js?v=20261006"></script>
 
 
 
@@ -557,7 +561,7 @@ var YM_MOUNTAIN_INIT = {
 </script>
 
 
-<script src="../../assets/js/gear-common.js?v=20261002"></script>
-<script src="../../assets/js/mountain.js?v=20261002"></script>
+<script src="../../assets/js/gear-common.js?v=20261006"></script>
+<script src="../../assets/js/mountain.js?v=20261006"></script>
 </body>
 </html>
