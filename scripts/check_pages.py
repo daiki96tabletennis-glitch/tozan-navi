@@ -598,7 +598,7 @@ def check_ssot(mountains):
             if (ms.get('trail') or [None] * 12)[i] == 'closed' and c != 's-closed':
                 issues.append({'id': mid, 'problem': f'{i+1}月は登山道閉鎖なのに装備区分を表示している'})
         coeffs = [r['coeff'] for r in routes if r.get('coeff') is not None]
-        if coeffs and (m.get('coeffMin'), m.get('coeffMax')) != (min(coeffs), max(coeffs)):
+        if m.get('coeffFromRoutes') and coeffs and (m.get('coeffMin'), m.get('coeffMax')) != (min(coeffs), max(coeffs)):
             issues.append({'id': mid, 'problem': 'コース定数の表示がルートの値と一致しない'})
     return issues, warns
 

@@ -111,8 +111,7 @@ def derive(mt, TH, AC):
     ac = AC.get(rep.get('accessId'))
     # 登山口・地図
     mt['trailhead'] = th['name']
-    if th.get('lat') is not None:
-        mt['lat'], mt['lng'] = th['lat'], th['lng']
+    # lat / lng は「山の位置」（トップの地図表示用）。登山口の座標では上書きしない
     target = TH[(ac or {}).get('mapTargetId') or rep['trailheadId']]
     mt['gmapUrl'], mt['amapUrl'], mt['mapBtnsHtml'] = map_urls(target)
     mt['mapTargetName'] = target['name']
@@ -156,7 +155,9 @@ def derive(mt, TH, AC):
     cls_pre = ['s-closed' if trail[i] == 'closed' else {'normal': 's-ok', 'snow_caution': 's-gear', 'winter': 's-hard'}[gear[i]] for i in range(12)]
     # コース定数：ルートの値だけを正とする
     cs = [r['coeff'] for r in routes if r.get('coeff') is not None]
-    if cs:
+    # コース定数の上部表示をルートの値から作るのは、ルートの時間・距離・累積標高差を一次情報で照合済みの山だけ
+    # （coeffFromRoutes: true）。未照合の山は従来の表示値を変えない（低く出る誤りを避けるため）
+    if cs and mt.get('coeffFromRoutes'):
         old = mt.get('courseCoefficientRange')
         lo, hi = min(cs), max(cs)
         new = str(lo) if lo == hi else f'{lo}〜{hi}'

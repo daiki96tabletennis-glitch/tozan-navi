@@ -472,7 +472,7 @@ def render_train_access(mt):
     # フォールバックし、既存表示を壊さない。
     train_routes = mt.get("trainRoutes")
     caption = ""
-    if mt.get("dataModel") == "ssot-v1" and mt.get("trainAccessLabel"):
+    if mt.get("trainAccessLabel"):
         caption = f'<div class="ts-target">行き先：{esc(mt["trainAccessLabel"])}</div>\n  '
     if train_routes:
         ts = render_ts_section(train_routes, mt)
@@ -646,16 +646,20 @@ def render_routes(mt):
         if r.get("coeff") is not None:
             chips.append(f'<span class="rl-chip">定数&nbsp;{esc(r["coeff"])}</span>')
         ssot_html = ""
-        if mt.get("dataModel") == "ssot-v1":
-            th_name = (mt.get("routeTrailheads") or {}).get(r.get("id"))
+        # 旧構造の山でも、ルートに trailheadName / status があれば表示する
+        th_name = (mt.get("routeTrailheads") or {}).get(r.get("id")) or r.get("trailheadName")
+        if mt.get("dataModel") == "ssot-v1" or th_name or r.get("status"):
             tags = []
-            if r.get("id") == mt.get("representativeRouteId"):
+            if r.get("id") and r.get("id") == mt.get("representativeRouteId"):
                 tags.append('<span class="rl-tag rl-tag-rep">代表ルート</span>')
             st = r.get("status")
             if st and st.get("state") == "closed":
                 tags.append(f'<span class="rl-tag rl-tag-ng">{esc(st.get("label") or "通行止め")}</span>')
             line = f'登山口：{esc(th_name)}' if th_name else ""
             ssot_html = f'<div class="rl-th">{"".join(tags)}{line}</div>'
+        if r.get("accessNote"):
+            caveat = "（未確認の情報を含みます）" if r.get("accessNeedsVerification") else ""
+            ssot_html += f'<div class="rl-access">アクセス：{esc(r["accessNote"])}{caveat}</div>'
         waypoints_html = ""
         if r.get("waypoints"):
             waypoints_html = f'<div class="rl-waypoints">{esc(r["waypoints"])}</div>'

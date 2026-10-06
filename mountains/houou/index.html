@@ -232,6 +232,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .cond-key{font-size:10px;color:#9a9088;margin-top:6px}
 .cond-notes{margin:8px 0 0;padding-left:16px;font-size:11px;color:#5a5248;line-height:1.7}
 .rl-th{font-size:11px;color:#6a6058;margin:2px 0 4px;display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.rl-access{font-size:11px;color:#6a6058;margin:0 0 5px;line-height:1.6}
 .rl-tag{font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px}
 .rl-tag-rep{background:#e4edd8;color:#4e6535}
 .rl-tag-ng{background:#fde2e2;color:#b02a2a}
@@ -276,7 +277,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 </header>
 <main>
   <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="weather-card">天気</button><button type="button" class="bookmark-tab" data-target="sec-train">電車・バス</button><button type="button" class="bookmark-tab" data-target="sec-car">車アクセス時間</button><button type="button" class="bookmark-tab" data-target="sec-parking">登山口・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
-  <div class="mountain-updated">最終更新: 2026-09-22</div>
+  <div class="mountain-updated">最終更新: 2026-10-06</div>
   <div class="hero-new hero-100">
     <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="#2a5010" style="opacity:0.04">
       <polygon points="50,5 95,55 5,55"/><polygon points="75,20 100,55 50,55"/><polygon points="20,28 50,55 0,55"/>
@@ -585,7 +586,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 </div>
   </div>
 
-  <div class="card" id="sec-routes"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/><path d="M5 17 C5 12 9 12 9 9 C9 6 12 6 12 9 C12 13 19 13 19 7"/></svg>代表的な登山ルート</h2><div class="route-list-c"><div class="rl-item"><div class="rl-num">1</div><div class="rl-content"><div class="rl-name">夜叉神峠ルート（往復）</div><div class="rl-chips"><span class="rl-chip">⏱&nbsp;9時間</span><span class="rl-chip">距離&nbsp;18.0km</span><span class="rl-chip">↑&nbsp;+1700m</span><span class="rl-chip">定数&nbsp;40</span></div></div></div><div class="rl-item"><div class="rl-num">2</div><div class="rl-content"><div class="rl-name">青木鉱泉ルート（周回）</div><div class="rl-chips"><span class="rl-chip">⏱&nbsp;10時間</span><span class="rl-chip">距離&nbsp;20.0km</span><span class="rl-chip">↑&nbsp;+2000m</span><span class="rl-chip">定数&nbsp;45</span></div></div></div></div><p style="font-size:11px;color:#9a9088;margin-top:8px;line-height:1.6;">※ルートごとの定数は、時間・距離・累積標高差から一般式で算出した目安です（下りの累積標高差は登りと同じと仮定）。</p></div>
+  <div class="card" id="sec-routes"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/><path d="M5 17 C5 12 9 12 9 9 C9 6 12 6 12 9 C12 13 19 13 19 7"/></svg>代表的な登山ルート</h2><div class="route-list-c"><div class="rl-item"><div class="rl-num">1</div><div class="rl-content"><div class="rl-name">夜叉神峠ルート（往復）</div><div class="rl-th">登山口：夜叉神峠登山口</div><div class="rl-chips"><span class="rl-chip">⏱&nbsp;9時間</span><span class="rl-chip">距離&nbsp;18.0km</span><span class="rl-chip">↑&nbsp;+1700m</span><span class="rl-chip">定数&nbsp;40</span></div></div></div><div class="rl-item"><div class="rl-num">2</div><div class="rl-content"><div class="rl-name">青木鉱泉ルート（周回）</div><div class="rl-th">登山口：青木鉱泉</div><div class="rl-access">アクセス：韮崎駅から茅ヶ岳観光バスの「鳳凰三山登山バス」（青木鉱泉・御座石温泉行き）。2026年は6月20日〜10月12日の土日と三連休だけで、1日2往復。完全予約制（乗車の1か月前〜2日前）で当日は乗れない。車は青木鉱泉の駐車場（1日800円）</div><div class="rl-chips"><span class="rl-chip">⏱&nbsp;10時間</span><span class="rl-chip">距離&nbsp;20.0km</span><span class="rl-chip">↑&nbsp;+2000m</span><span class="rl-chip">定数&nbsp;45</span></div></div></div></div><p style="font-size:11px;color:#9a9088;margin-top:8px;line-height:1.6;">※ルートごとの定数は、時間・距離・累積標高差から一般式で算出した目安です（下りの累積標高差は登りと同じと仮定）。</p></div>
 
   <a href="https://yamap.com/mountains/63" target="_blank" rel="noopener noreferrer" class="yamap-btn">
     <svg width="18" height="18" viewBox="0 0 36 36" fill="#4e6535"><polygon points="18,4 34,30 2,30"/><polygon points="18,10 30,30 6,30" fill="#6a8055"/></svg>
