@@ -274,7 +274,9 @@ function ymInit(key) {
 }
 
 function isDayTrip(mountain) {
-  return mountain.routes.some(r => {
+  // 時間が未登録のルート（要確認のまま載せているもの）は日帰り判定に使わない
+  return (mountain.routes || []).some(r => {
+    if (!r.time) return false;
     const h = (r.time.match(/(\d+)時間/) || [])[1] | 0;
     const m = (r.time.match(/(\d+)分/)   || [])[1] | 0;
     return h * 60 + m <= 480;
