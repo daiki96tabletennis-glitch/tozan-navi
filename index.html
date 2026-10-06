@@ -507,9 +507,9 @@ function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
                 <span className="font-medium text-sm">{r.name}</span>
               </div>
               <div className="grid grid-cols-3 gap-2 text-xs text-gray-600">
-                <div><span className="text-gray-400">コースタイム</span><br /><span className="font-semibold text-gray-800">{r.time}</span></div>
-                <div><span className="text-gray-400">距離</span><br /><span className="font-semibold text-gray-800">{r.distance}</span></div>
-                <div><span className="text-gray-400">標高差</span><br /><span className="font-semibold text-gray-800">{r.elevation}</span></div>
+                <div><span className="text-gray-400">コースタイム</span><br /><span className="font-semibold text-gray-800">{r.time || "未確認"}</span></div>
+                <div><span className="text-gray-400">距離</span><br /><span className="font-semibold text-gray-800">{r.distance || "未確認"}</span></div>
+                <div><span className="text-gray-400">標高差</span><br /><span className="font-semibold text-gray-800">{r.elevation || "未確認"}</span></div>
               </div>
             </div>
           ))}
