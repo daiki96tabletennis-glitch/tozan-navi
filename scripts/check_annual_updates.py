@@ -19,7 +19,9 @@ import argparse, datetime, hashlib, html, json, os, re, sys, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SEASONAL_RE = re.compile(r'季節|期間限定|夏季|運行期間|マイカー規制|冬期閉鎖|冬季閉鎖')
-KEYLINE_RE = re.compile(r'年|月|日|運行|運休|通行止|規制|閉鎖|開山|料金|運賃|円|予約')
+# 日付が入っていて、かつ運行・規制に関わる行だけを比べる（新着一覧や日替わりの表示で誤検知しないため）
+DATE_RE = re.compile(r'\d{1,2}月\d{1,2}日|\d{1,2}/\d{1,2}|20\d\d年|令和\s*\d+年')
+KEYLINE_RE = re.compile(r'運行|運休|通行止|規制|閉鎖|開山|閉山|営業|期間|解除')
 SOON_DAYS = 30
 
 
@@ -56,17 +58,19 @@ def collect():
                           'validTo': it.get('validTo'), 'statusType': 'annual' if it.get('validTo') else 'temporary',
                           'url': it.get('sourceUrl'), 'lastVerified': it.get('lastVerified')})
     # 季節運行の記載があるのに、期限つきの項目を持たない旧構造の山
-    missing = []
+    # missing：何も登録がない山／undated：出典だけ登録してあり、今年の期間が未確認の山
+    missing, undated = [], []
     for m in M:
-        if m.get('dataModel') == 'ssot-v1':
+        if m.get('dataModel') == 'ssot-v1' or m.get('annualNotApplicable'):
             continue
-        if any(it.get('validTo') for it in m.get('annualItems') or []):
+        its = m.get('annualItems') or []
+        if any(it.get('validTo') for it in its if it.get('kind') == 'transport'):
             continue
         tr = m.get('trainRoutes') or {}
         text = json.dumps(tr, ensure_ascii=False) + json.dumps(m.get('warnBanner') or {}, ensure_ascii=False)
         if SEASONAL_RE.search(text):
-            missing.append(m['name'])
-    return items, missing
+            (undated if any(it.get('kind') == 'transport' for it in its) else missing).append(m['name'])
+    return items, missing, undated
 
 
 def fetch_keylines(url):
@@ -85,7 +89,7 @@ def fetch_keylines(url):
     text = re.sub(r'(?is)<(script|style|noscript)\b.*?</\1>', ' ', text)
     text = re.sub(r'(?s)<[^>]+>', '\n', text)
     lines = [re.sub(r'\s+', ' ', html.unescape(l)).strip() for l in text.split('\n')]
-    keep = [l for l in lines if 4 <= len(l) <= 300 and KEYLINE_RE.search(l)]
+    keep = [l for l in lines if 6 <= len(l) <= 300 and KEYLINE_RE.search(l) and DATE_RE.search(l)]
     return '\n'.join(sorted(set(keep)))
 
 
@@ -95,7 +99,7 @@ def main():
     ap.add_argument('--state'); ap.add_argument('--out')
     a = ap.parse_args()
     today = datetime.date.fromisoformat(a.today) if a.today else datetime.date.today()
-    items, missing = collect()
+    items, missing, undated = collect()
     expired, soon = [], []
     for it in items:
         if not it['validTo']:
@@ -132,7 +136,7 @@ def main():
         return '・'.join(it['mountains']) or '—'
     out = [f'# 年次データの確認（{today.isoformat()}）', '',
            f'見張っている項目：{len(items)}件／期限切れ：{len(expired)}件／30日以内に期限：{len(soon)}件／'
-           f'出典の変更：{len(changed)}件／取得できず：{len(failed)}件／期限・出典が未登録の山：{len(missing)}山', '']
+           f'出典の変更：{len(changed)}件／取得できず：{len(failed)}件／今年の期間が未確認：{len(undated)}山／未登録：{len(missing)}山', '']
     out += ['## 出典ページの内容が変わった（来季の発表・通行止めの解除などの可能性）', '']
     out += [f'- {"、".join(sorted(set(names(i) for i in its)))}：{its[0]["label"]} — {url}' for url, its in changed] or ['- なし']
     out += ['', '## 期限が切れた（来季の情報で更新が必要）', '']
@@ -141,7 +145,9 @@ def main():
     out += [f'- {names(i)}：{i["label"]}（{i["validTo"]} まで）' for i in sorted(soon, key=lambda x: x['validTo'])] or ['- なし']
     out += ['', '## 出典ページを取得できなかった（URLの変更・リンク切れの可能性）', '']
     out += [f'- {"、".join(sorted(set(names(i) for i in its)))}：{url}（{err}）' for url, its, err in failed] or ['- なし']
-    out += ['', '## 季節運行の記載があるのに、期限と出典をデータとして持っていない山', '',
+    out += ['', '## 出典は登録済みだが、今年の運行期間が未確認の山（期限切れの自動表示が効かない）', '',
+            '、'.join(undated) or 'なし', '']
+    out += ['', '## 季節運行の記載があるのに、期限も出典も登録していない山', '',
             '、'.join(missing) or 'なし', '']
     if first:
         out += [f'※ 今回が初回の取得だった出典：{first}件（次回から変更を検知します）', '']
