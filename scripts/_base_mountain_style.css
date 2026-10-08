@@ -227,3 +227,9 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .ts-op a{color:#4e6535;text-decoration:underline}
 .ym-expired-note{display:block;font-size:11px;color:#8a5a00;background:#fff6e0;border-radius:6px;padding:5px 9px;margin-top:5px;line-height:1.6}
 .warn-banner + .warn-banner{margin-top:-4px}
+.gcal .cal-b{display:block;width:100%;border:0;padding:0;cursor:pointer;-webkit-appearance:none;appearance:none}
+.gcal .cal-split{background:linear-gradient(to bottom right,var(--ga) 0,var(--ga) 50%,var(--gb) 50%,var(--gb) 100%)}
+.gcal .cal-b.on{outline:2px solid #4e6535;outline-offset:1px}
+.cal-detail{font-size:11px;color:#4a443c;background:#f8f6f2;border-radius:4px;padding:6px 8px;margin-bottom:8px;line-height:1.6;min-height:18px}
+.cal-legend .leg small{display:block;font-size:9px;color:#9a9088;font-weight:400;margin-left:0}
+.cal-note{font-size:10px;color:#9a9088;line-height:1.6;margin:8px 0 0}

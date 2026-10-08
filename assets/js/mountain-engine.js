@@ -302,7 +302,8 @@ function applyDep(){
     });
 
     // 7. シーズンカレンダー
-    if(mt.seasonCalendar && mt.seasonCalendar.length === 12){
+    // 装備カレンダー（.gcal）はページ生成時に確定しているので、ここでは上書きしない
+    if(!document.querySelector('.gcal') && mt.seasonCalendar && mt.seasonCalendar.length === 12){
       var calBars = document.querySelectorAll('.cal-b');
       calBars.forEach(function(bar, i){
         if(i < 12) bar.className = 'cal-b ' + mt.seasonCalendar[i];
@@ -310,7 +311,7 @@ function applyDep(){
     }
 
     // 8. 凡例テキスト
-    if(mt.calLegend && mt.calLegend.length > 0){
+    if(!document.querySelector('.gcal') && mt.calLegend && mt.calLegend.length > 0){
       var legEls = document.querySelectorAll('.cal-legend .leg');
       legEls.forEach(function(el, i){
         if(mt.calLegend[i]){
@@ -392,6 +393,29 @@ function applyDep(){
       var body = el.querySelector('.warn-body') || el;
       body.appendChild(note);
     }
+  }
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', run); } else { run(); }
+})();
+
+
+// === 装備カレンダー：月をタップすると、その月の区分（月途中で変わる月は切替日）を表示する ===
+(function(){
+  function run(){
+    var cal = document.querySelector('.gcal');
+    var out = document.querySelector('.cal-detail');
+    if(!cal || !out) return;
+    var cells = cal.querySelectorAll('.cal-b');
+    function show(el){
+      for(var i = 0; i < cells.length; i++){ cells[i].classList.remove('on'); }
+      el.classList.add('on');
+      out.textContent = el.getAttribute('data-tip') || '';
+    }
+    for(var i = 0; i < cells.length; i++){
+      cells[i].addEventListener('click', function(){ show(this); });
+    }
+    // 今月を最初に表示する
+    var now = new Date().getMonth();
+    if(cells[now]) show(cells[now]);
   }
   if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', run); } else { run(); }
 })();

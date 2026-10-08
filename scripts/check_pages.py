@@ -589,7 +589,7 @@ def check_ssot(mountains):
             issues.append({'id': mid, 'problem': '代表ルートにコース定数（coeff）が無い'})
         derived = build_derived.derive(copy.deepcopy(m), TH, AC)
         for k in ('trailhead', 'gmapUrl', 'amapUrl', 'mapBtnsHtml', 'coeffMin', 'coeffMax', 'courseCoefficientRange',
-                  'seasonCalendar', 'seasonNoGear', 'season6Crampons', 'fareShinjuku', 'fareOmiya', 'fareYokohama',
+                  'seasonCalendar', 'gearCalendar', 'seasonNoGear', 'season6Crampons', 'fareShinjuku', 'fareOmiya', 'fareYokohama',
                   'trainTimeShinjuku', 'trainTimeOmiya', 'trainTimeYokohama', 'faq', 'introHtml'):
             if derived.get(k) != m.get(k):
                 issues.append({'id': mid, 'problem': f'{k} が新構造から生成した値と違う（scripts/build_derived.py を実行）'})
@@ -604,6 +604,40 @@ def check_ssot(mountains):
 
 
 KNOWN_ISSUES_PATH = os.path.join(SCRIPT_DIR, 'check_known_issues.json')
+
+
+def check_gear_calendar(mountains):
+    """装備カレンダー（4区分＋月途中の切替）：12か月そろっているか、旧フィールド・閉鎖期間と食い違っていないか"""
+    import gear_calendar
+    order = {'no_crampons': 0, 'light_crampons': 1, 'winter_gear': 2, 'closed': 3}
+    issues = []
+    for m in mountains:
+        mid = m.get('id')
+        cal = m.get('gearCalendar')
+        probs = gear_calendar.validate(cal)
+        for pr in probs:
+            issues.append({'id': mid, 'problem': '装備カレンダー：' + pr})
+        if probs:
+            continue
+        old = m.get('seasonCalendar') or []
+        for i, e in enumerate(cal):
+            keys = [e] if isinstance(e, str) else [e['before'], e['after']]
+            if i < len(old) and gear_calendar.FROM_CLS.get(old[i]) not in keys:
+                # 月途中で変わる月は、旧フィールドがどちらか一方の区分になっていればよい
+                issues.append({'id': mid, 'problem': f'{i+1}月：装備カレンダーと旧 seasonCalendar（{old[i]}）が食い違う'})
+            if isinstance(e, dict) and 'closed' not in keys and abs(order[e['before']] - order[e['after']]) > 1:
+                issues.append({'id': mid, 'problem': f'{i+1}月：月途中の切替が2段階以上離れている（要確認）'})
+        page = os.path.join(ROOT, 'mountains', mid, 'index.html')
+        if os.path.exists(page):
+            html_text = read(page)
+            if 'class="calendar gcal"' not in html_text:
+                issues.append({'id': mid, 'problem': 'ページの装備カレンダーが旧形式のまま（再生成が必要）'})
+            for i, e in enumerate(cal):
+                tip = gear_calendar.detail_text(i + 1, e)
+                if ('data-tip="' + tip + '"') not in html_text:
+                    issues.append({'id': mid, 'problem': f'{i+1}月：ページの表示がデータと違う（再生成が必要）'})
+                    break
+    return issues
 
 
 def _issue_key(it):
@@ -664,6 +698,7 @@ def main():
     restricted_issues = check_restricted_listings(mountains)
     seat_issues = check_seat_terms(html_files)
     ssot_issues, ssot_warns = check_ssot(mountains)
+    gearcal_issues = check_gear_calendar(mountains)
 
     if args.update_baseline:
         with open(KNOWN_ISSUES_PATH, 'w', encoding='utf-8') as f:
@@ -702,6 +737,7 @@ def main():
     report.append(section('13. 規制中の山の掲載', restricted_issues, fmt))
     report.append(section('14. 特急の座席制度', seat_issues, fmt))
     report.append(section('15. 新構造（ルート→登山口→アクセス）の整合性', ssot_issues, fmt))
+    report.append(section('16. 装備カレンダー（4区分・月途中の切替）', gearcal_issues, fmt))
     if ssot_warns:
         report.append('## 参考：運行期間の期限切れ（来季の再確認対象。件数に含めない）\n' + '\n'.join('- ' + fmt(w) for w in ssot_warns) + '\n')
     report.append(f"## 参考：既知の未解決（調査待ちのレガシー。件数に含めない）\n- 10. 所要時間: {len(time_known)}件 / 11. 駅名: {len(station_known)}件（scripts/check_known_issues.json）\n")
@@ -713,7 +749,7 @@ def main():
              + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues)
              + len(train_routes_issues) + len(route_dup_issues) + len(time_issues)
              + len(station_issues) + len(coeff_issues) + len(restricted_issues) + len(seat_issues)
-             + len(ssot_issues))
+             + len(ssot_issues) + len(gearcal_issues))
 
     if args.json:
         with open(args.json, 'w', encoding='utf-8') as f:

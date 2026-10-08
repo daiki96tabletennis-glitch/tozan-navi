@@ -428,13 +428,32 @@ function CourseMeter({ range }) {
   );
 }
 
+// 装備カレンダー（gearCalendar）から、その月の表示を作る。月途中で変わる月は両方を並べる
+const GEAR_VIEW = {
+  no_crampons:    { label: "アイゼン不要", bg: "#e6f0e8", color: "#2d6040", rank: 0 },
+  light_crampons: { label: "軽アイゼン等", bg: "#f5f0e0", color: "#7a5a20", rank: 1 },
+  winter_gear:    { label: "冬山装備",     bg: "#f5e8e8", color: "#8a3030", rank: 2 },
+  closed:         { label: "入山不可",     bg: "#e6e2dc", color: "#5a5248", rank: 3 }
+};
+function gearStateFor(mountain, month) {
+  const cal = mountain.gearCalendar;
+  const e = (cal && cal.length === 12) ? cal[month - 1] : null;
+  if (typeof e === "string" && GEAR_VIEW[e]) return GEAR_VIEW[e];
+  if (e && e.split && GEAR_VIEW[e.before] && GEAR_VIEW[e.after]) {
+    const a = GEAR_VIEW[e.before], b = GEAR_VIEW[e.after];
+    const strict = a.rank >= b.rank ? a : b;
+    return { label: a.label + "→" + b.label + "（" + month + "/" + e.changeDate + "〜）", bg: strict.bg, color: strict.color, rank: strict.rank };
+  }
+  // 装備カレンダーが無い場合は従来の判定
+  if (canClimbNoGear(mountain, month)) return GEAR_VIEW.no_crampons;
+  if (canClimb6Crampons(mountain, month)) return GEAR_VIEW.light_crampons;
+  return GEAR_VIEW.winter_gear;
+}
+
 function GearBadge({ mountain, month }) {
-  const noGear = canClimbNoGear(mountain, month);
-  const sixOk  = canClimb6Crampons(mountain, month);
+  const g = gearStateFor(mountain, month);
   const gearSt = { display: "inline-flex", alignItems: "center", gap: "4px", borderRadius: "5px", padding: "3px 9px", fontSize: "12px", fontWeight: 700 };
-  if (noGear) return <span style={Object.assign({}, gearSt, { background: "#e6f0e8", color: "#2d6040" })}>アイゼン不要</span>;
-  if (sixOk)  return <span style={Object.assign({}, gearSt, { background: "#f5f0e0", color: "#7a5a20" })}>6本で可</span>;
-  return             <span style={Object.assign({}, gearSt, { background: "#f5e8e8", color: "#8a3030" })}>12本必要</span>;
+  return <span style={Object.assign({}, gearSt, { background: g.bg, color: g.color })}>{g.label}</span>;
 }
 
 function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
@@ -543,7 +562,7 @@ function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
             </div>
           </div>
           <div className="px-3 py-2 text-center" style={{ background: "#f8f6f2", borderTop: "1px solid #ddd8d0", color: "#7a7068" }}>
-            アイゼン不要：{mountain.seasonNoGear || mountain.season}　6本可：{mountain.season6Crampons || "—"}
+            アイゼン不要：{mountain.seasonNoGear || mountain.season}　軽アイゼン等：{mountain.season6Crampons || "—"}
           </div>
         </div>
         <p className="text-sm text-gray-600 mt-2">{mountain.description}</p>
@@ -800,7 +819,7 @@ const DRIVE_OPTIONS   = [{ label: "3時間以内", val: 180 }, { label: "4時間
 const TRAIN_OPTIONS   = [{ label: "1.5時間以内", val: 90 }, { label: "2時間以内", val: 120 }, { label: "3時間以内", val: 180 }, { label: "4時間以内", val: 240 }];
 const FARE_OPTIONS    = [{ label: "¥1,500以下", val: 1500 }, { label: "¥3,000以下", val: 3000 }, { label: "¥5,000以下", val: 5000 }, { label: "¥8,000以下", val: 8000 }];
 const COURSE_OPTIONS  = ["〜15", "16〜20", "21〜25", "26〜"];
-const CRAMPONS_OPTIONS = ["アイゼン不要", "6本以内でOK"];
+const CRAMPONS_OPTIONS = ["アイゼン不要", "軽アイゼン等まで"];
 const FILTER_SEP = { width: "1px", background: "#e0dbd4", flexShrink: 0, alignSelf: "stretch", margin: "0 2px" };
 const AREAS_LIST = AREAS.filter(a => a !== "すべて");
 const AREAS_ROW1 = AREAS_LIST.slice(0, Math.ceil(AREAS_LIST.length / 2));
@@ -873,7 +892,7 @@ function App() {
   const [trainTimeFilter, setTrainTimeFilter] = useState(() => ymInit("traintime")); // null | 90 | 180 | 300 (新宿発)
   const [fareFilter, setFareFilter]         = useState(() => ymInit("fare")); // null | 1000 | 3000 | 5000 (新宿発)
   const [courseFilter, setCourseFilter]     = useState(() => ymInit("course"));         // 複数選択
-  const [cramponsFilter, setCramponsFilter] = useState(() => ymInit("crampons")); // "すべて"|"アイゼン不要"|"6本以内でOK"
+  const [cramponsFilter, setCramponsFilter] = useState(() => ymInit("crampons")); // "すべて"|"アイゼン不要"|"軽アイゼン等まで"
   const [lineFilter, setLineFilter]         = useState(() => ymInit("line")); // 複数選
   const [difficultyFilter, setDifficultyFilter] = useState(() => ymInit("difficulty")); // []|["初級"]|["中級"]|["上級"] 複数選可
   const [elevationFilter, setElevationFilter]   = useState(() => ymInit("elevation")); // 複数選択可: [0,1000,1500,2000,2500,3000]の配列
@@ -1135,7 +1154,7 @@ function App() {
         || (courseFilter.includes("26〜") && cMax >= 26);
       const matchCrampons = cramponsFilter === "すべて"
         || (cramponsFilter === "アイゼン不要" && canClimbNoGear(m, activeMonth))
-        || (cramponsFilter === "6本以内でOK" && canClimb6Crampons(m, activeMonth));
+        || ((cramponsFilter === "軽アイゼン等まで" || cramponsFilter === "6本以内でOK") && canClimb6Crampons(m, activeMonth)); // 旧い保存値（6本以内でOK）も同じ扱い
       const matchLine = lineFilter.length === 0 || (m.lines && m.lines.some(function(l){ return lineFilter.includes(l); }));
       // 難易度フィルター（初級=初級+初〜中級、中級=初〜中+中級+中〜上、上級=中〜上+上級）
       const DIFF_MAP = {"初級":["初級","初〜中級"],"中級":["初〜中級","中級","中〜上級"],"上級":["中〜上級","上級"]};
@@ -1773,11 +1792,10 @@ function App() {
                   const barColor = barBasisMin >= (isTrainMode ? 200 : 240) ? "linear-gradient(90deg,#c05030,#e07050)" : barBasisMin >= (isTrainMode ? 100 : 120) ? "linear-gradient(90deg,#7a8830,#9aaa50)" : "linear-gradient(90deg,#4a6038,#607848)";
 
                   // アイゼンバッジ（選択月）
-                  const noGear = canClimbNoGear(m, activeMonth);
-                  const sixOk  = canClimb6Crampons(m, activeMonth);
-                  const cramponLabel = noGear ? "アイゼン不要" : sixOk ? "6本アイゼン" : "12本アイゼン";
-                  const cramponBg    = noGear ? "#e4f0e8" : sixOk ? "#f5f0e0" : "#f0e4e4";
-                  const cramponColor = noGear ? "#2a5838" : sixOk ? "#7a5a20" : "#6a3030";
+                  const gearView = gearStateFor(m, activeMonth);
+                  const cramponLabel = gearView.label;
+                  const cramponBg    = gearView.bg;
+                  const cramponColor = gearView.color;
 
                   return (
                     <a key={m.id} href={getMountainUrl(m.id)}

@@ -16,6 +16,7 @@
 使い方: python3 scripts/build_derived.py [--check]   （--check は書き込まず差分の有無だけ返す）
 """
 import json, os, re, sys, copy, datetime, urllib.parse
+import gear_calendar
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 from render_transit_routes import render_ts_section
@@ -93,7 +94,7 @@ def monthly_status(mt, access):
     gear = list(cond.get('gearMonthly') or ['normal'] * 12)
     return trail, transport, gear
 
-LEGEND = {'s-ok': '通常の登山装備', 's-gear': '残雪・凍結に注意', 's-hard': '積雪期（冬山装備・経験が必要）', 's-closed': '登山道閉鎖'}
+LEGEND = {'s-ok': 'アイゼン不要', 's-gear': '軽アイゼン等', 's-hard': '冬山装備', 's-closed': '入山不可'}
 def ranges(months):
     if not months: return '不可'
     out, s, p = [], months[0], months[0]
@@ -208,6 +209,9 @@ def derive(mt, TH, AC):
     mt['seasonNoGear'] = ranges([i + 1 for i in range(12) if cls[i] == 's-ok'])
     mt['season6Crampons'] = ranges([i + 1 for i in range(12) if cls[i] == 's-gear'])
     mt['monthlyStatus'] = {'trail': trail, 'transport': transport, 'gear': gear}
+    # 装備カレンダー（4区分＋月途中の切替）。閉鎖期間の開始・終了が月の途中なら2色にする
+    mt['gearCalendar'] = gear_calendar.from_ssot((mt.get('conditions') or {}).get('gearMonthly') or ['normal'] * 12,
+                                                 (mt.get('conditions') or {}).get('trailPeriods'))
     # 注意表示
     al = mt.get('alerts') or []
     if al:

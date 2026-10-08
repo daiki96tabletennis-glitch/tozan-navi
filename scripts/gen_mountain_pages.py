@@ -42,6 +42,8 @@ from render_transit_routes import render_ts_section  # noqa: E402  (trainRoutes�
 SITE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH = os.path.join(SITE_ROOT, "data", "mountains.json")
 GEAR_DATA_PATH = os.path.join(SITE_ROOT, "data", "gear-data.json")
+import gear_calendar
+
 BASE_CSS_PATH = os.path.join(SITE_ROOT, "scripts", "_base_mountain_style.css")
 WEATHER_BLOCK_PATH = os.path.join(SITE_ROOT, "scripts", "_weather_widget_block.html")
 HERO_PHOTO_SCRIPT_PATH = os.path.join(SITE_ROOT, "scripts", "_hero_photo_script.html")
@@ -56,7 +58,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261006"
+ASSET_VER = "20261008"
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
@@ -577,8 +579,8 @@ def _md(d):
     return f"{int(m)}/{int(dd)}"
 
 
-def render_season_ssot(mt):
-    """新構造の山：登山道・公共交通・装備を別の行で表示する（運行終了と登山不可を混同しない）"""
+def render_season_ssot_extra(mt):
+    """新構造の山：装備カレンダーの下に出す、公共交通の月別と注記（運行終了と登山不可を混同しない）"""
     ms = mt["monthlyStatus"]
     head = "".join(f'<div class="cond-h">{i+1}</div>' for i in range(12))
     trail_cls = {"open": "c-ok", "partial": "c-part", "closed": "c-ng"}
@@ -615,49 +617,23 @@ def render_season_ssot(mt):
                 lis.append(f"<li>{n}</li>")
         notes_html = '<ul class="cond-notes">' + "".join(lis) + "</ul>"
     return (
-        f'<div class="card" id="sec-season"><h2>{SEASON_ICON}シーズンカレンダー</h2>\n'
         '<div class="cond-table">'
         f'<div class="cond-row"><div class="cond-label"></div>{head}</div>'
-        f'<div class="cond-row"><div class="cond-label">登山道</div>{row_trail}</div>'
         f'<div class="cond-row"><div class="cond-label">公共交通</div>{row_tp}</div>'
-        f'<div class="cond-row"><div class="cond-label">装備</div>{row_gear}</div>'
         '</div>\n'
-        '<div class="cond-legend">'
-        '<span><i class="s-ok"></i>通常の登山装備</span>'
-        '<span><i class="s-gear"></i>残雪・凍結に注意（軽アイゼン等を状況に応じて）</span>'
-        '<span><i class="s-hard"></i>積雪期（冬山装備・経験が必要）</span>'
-        '<span><i class="c-ng"></i>閉鎖・運行なし</span>'
-        '</div>\n'
-        '<p class="cond-key">○ 利用可　△ 月の一部のみ　× 閉鎖・運行なし　– 未確認</p>\n'
+        '<p class="cond-key">公共交通：○ 利用可　△ 月の一部のみ　× 運行なし　– 未確認</p>\n'
         f'{notes_html}\n'
-        '  </div>'
     )
 
 
 def render_season(mt):
-    if mt.get("dataModel") == "ssot-v1" and mt.get("monthlyStatus"):
-        return render_season_ssot(mt)
-    cal = require(mt, "seasonCalendar")
-    legend = mt.get("calLegend") or []
-    months = "".join(
-        f'<div class="cal-m"><div class="cal-l">{i+1}</div>'
-        f'<div class="cal-b {cal[i]}"></div></div>'
-        for i in range(12)
-    )
-    colors = ["#c8d4b8", "#d4c19a", "#b08868"]
-    legend_html = "".join(
-        f'<div class="leg"><div class="leg-dot" style="background:{colors[i]}"></div>{esc(t)}</div>'
-        for i, t in enumerate(legend[:3])
-    )
+    """装備カレンダー（4区分＋月途中の切替）。新構造の山は、その下に公共交通の行を出す"""
+    cal = require(mt, "gearCalendar")
+    body = gear_calendar.render_calendar(cal)
+    extra = render_season_ssot_extra(mt) if (mt.get("dataModel") == "ssot-v1" and mt.get("monthlyStatus")) else ""
     return (
-        '<div class="card" id="sec-season"><h2><svg width="16" height="16" viewBox="0 0 24 24" '
-        'style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" '
-        'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
-        '<rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/>'
-        '<line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>'
-        'シーズンカレンダー</h2>\n'
-        f'    <div class="calendar">{months}</div>\n'
-        f'    <div class="cal-legend">\n  {legend_html}\n</div>\n'
+        f'<div class="card" id="sec-season"><h2>{SEASON_ICON}シーズンカレンダー</h2>\n'
+        f'{body}{extra}'
         '  </div>'
     )
 
