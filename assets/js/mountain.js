@@ -231,7 +231,17 @@ function gearRenderCard(c, mid, position){
         var firstKey = Object.keys(variants)[0];
         cards = JSON.parse(firstKey);
       }
+      // 装備カレンダーで入山不可の月は、装備カードを出さずに案内だけ表示する
+      var closed = (container.getAttribute('data-gear-closed') || '').split(',');
+      var partial = (container.getAttribute('data-gear-partial') || '').split(',');
+      if(closed.indexOf(String(month)) !== -1){
+        container.innerHTML = '<p class="gear-closed-note">' + month + '月は入山できません（登山道閉鎖など）。装備の案内は、入山できる月に表示します。</p>';
+        return;
+      }
       var html = cards.map(function(c, i){ return gearRenderCard(c, mid, i+1); }).join('');
+      if(partial.indexOf(String(month)) !== -1){
+        html = '<p class="gear-closed-note">' + month + '月は入山できない期間があります。シーズンカレンダーで日付を確認してください。</p>' + html;
+      }
       container.innerHTML = html;
     });
   }

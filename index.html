@@ -562,7 +562,7 @@ function MountainDetail({ mountain, onBack, onReport, departure = "大船" }) {
             </div>
           </div>
           <div className="px-3 py-2 text-center" style={{ background: "#f8f6f2", borderTop: "1px solid #ddd8d0", color: "#7a7068" }}>
-            アイゼン不要：{mountain.seasonNoGear || mountain.season}　軽アイゼン等：{mountain.season6Crampons || "—"}
+            アイゼン不要：{mountain.gearCalendar ? gearMonthsText(mountain, 0) : (mountain.seasonNoGear || mountain.season)}　軽アイゼン等：{mountain.gearCalendar ? gearMonthsText(mountain, 1) : (mountain.season6Crampons || "—")}
           </div>
         </div>
         <p className="text-sm text-gray-600 mt-2">{mountain.description}</p>
@@ -638,13 +638,49 @@ function parseMonthRange(text) {
   return months.length > 0 ? months : [];
 }
 
+// アイゼンの絞り込みは、装備カレンダー（gearCalendar）を正とする。
+// 月の途中で変わる月は、厳しいほうの区分で判定する（入山不可を含む月は対象外）
+const GEAR_RANK = { no_crampons: 0, light_crampons: 1, winter_gear: 2, closed: 3 };
+function gearRankFor(m, month) {
+  const cal = m.gearCalendar;
+  const e = (cal && cal.length === 12) ? cal[month - 1] : null;
+  if (typeof e === "string" && GEAR_RANK[e] !== undefined) return GEAR_RANK[e];
+  if (e && e.split) return Math.max(GEAR_RANK[e.before], GEAR_RANK[e.after]);
+  return null;
+}
+function gearMonthsText(m, rank) {
+  // その区分の月を「4月〜11月」「12月〜3月」のようにまとめる（年をまたぐ範囲はつなぐ）
+  const on = [];
+  for (let i = 1; i <= 12; i++) on.push(gearRankFor(m, i) === rank);
+  if (on.every(v => v)) return "通年";
+  if (!on.some(v => v)) return "—";
+  let start = 0;
+  while (on[start] && on[(start + 11) % 12]) start = (start + 11) % 12;
+  const parts = [];
+  let i = 0;
+  while (i < 12) {
+    const a = (start + i) % 12;
+    if (!on[a]) { i++; continue; }
+    let j = i;
+    while (j + 1 < 12 && on[(start + j + 1) % 12]) j++;
+    const z = (start + j) % 12;
+    parts.push(a === z ? (a + 1) + "月" : (a + 1) + "月〜" + (z + 1) + "月");
+    i = j + 1;
+  }
+  return parts.join("・");
+}
+
 function canClimbNoGear(m, month) {
+  const rank = gearRankFor(m, month);
+  if (rank !== null) return rank === 0;
   const months = parseMonthRange(m.seasonNoGear);
   if (months === null) return true; // 通年
   return months.includes(month);
 }
 
 function canClimb6Crampons(m, month) {
+  const rank = gearRankFor(m, month);
+  if (rank !== null) return rank <= 1;
   const noGearMonths = parseMonthRange(m.seasonNoGear);
   if (noGearMonths === null) return true;
   if (noGearMonths.includes(month)) return true;

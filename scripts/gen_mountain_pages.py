@@ -58,7 +58,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261008"
+ASSET_VER = "20261008b"
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
@@ -626,6 +626,21 @@ def render_season_ssot_extra(mt):
     )
 
 
+def gear_closed_attrs(mt):
+    """装備カレンダーで入山不可の月（data-gear-closed）と、月の一部が入山不可の月（data-gear-partial）。
+    mountain.js が、入山不可の月は装備カードの代わりに案内を出す"""
+    cal = mt.get("gearCalendar") or []
+    closed = [str(i + 1) for i, e in enumerate(cal) if e == "closed"]
+    partial = [str(i + 1) for i, e in enumerate(cal)
+               if isinstance(e, dict) and "closed" in (e.get("before"), e.get("after"))]
+    out = ""
+    if closed:
+        out += f' data-gear-closed="{",".join(closed)}"'
+    if partial:
+        out += f' data-gear-partial="{",".join(partial)}"'
+    return out
+
+
 def render_season(mt):
     """装備カレンダー（4区分＋月途中の切替）。新構造の山は、その下に公共交通の行を出す"""
     cal = require(mt, "gearCalendar")
@@ -834,7 +849,7 @@ def render_gear(mt, gear_data):
         '<path d="M20 13V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6"/>'
         '<path d="M4 13h16v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/>'
         f'<path d="M9 5V3h6v2"/></svg>{name}を登るための装備</h2>'
-        f'<div class="gear-cards-scroll" data-gear-mid="{mid}" '
+        f'<div class="gear-cards-scroll" data-gear-mid="{mid}"{gear_closed_attrs(mt)} '
         f'data-gear-variants="{variants_attr}"></div>'
         f'{GEAR_NOTE}</div>'
     )

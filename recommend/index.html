@@ -1625,7 +1625,9 @@ function _doShowResult(opts){
   const candidateMountains=getCandidateMountains(coeffLimitForFilter);
   const scored=candidateMountains.map(m=>{const sc=scoreMount(m,typeCode);const dr=getDrive(m);return Object.assign({},m,{score:sc,drive:dr});}).sort((a,b)=>{
     // 入山規制中（status.level === "restricted"）の山はスコアに関係なく常に下位へ
-    const ar=a.status&&a.status.level==='restricted', br=b.status&&b.status.level==='restricted';
+    // 装備カレンダーで今月が入山不可（登山道閉鎖など）の山も同じ扱いにする
+    const ac=a.gearCalendar&&a.gearCalendar[CURRENT_GEAR_MONTH-1]==='closed', bc=b.gearCalendar&&b.gearCalendar[CURRENT_GEAR_MONTH-1]==='closed';
+    const ar=(a.status&&a.status.level==='restricted')||ac, br=(b.status&&b.status.level==='restricted')||bc;
     if(ar!==br) return ar?1:-1;
     return b.score-a.score;
   });
@@ -2292,7 +2294,7 @@ document.addEventListener('DOMContentLoaded', function(){
       var jsonData = results[0];
       recommendGearData = results[1] || {};
       if(!jsonData) return;
-      var FIELDS = ['id','name','area','elevation','category','difficulty','coeffMin','coeffMax','daytrip','description','driveOfuna','driveShinjuku','driveYokohama','driveOmiya','seasonOk','trainAccess','trainTimeShinjuku','trainTimeOmiya','recommendReason','types','vibes','calLegend','seasonCalendar','status'];
+      var FIELDS = ['id','name','area','elevation','category','difficulty','coeffMin','coeffMax','daytrip','description','driveOfuna','driveShinjuku','driveYokohama','driveOmiya','seasonOk','trainAccess','trainTimeShinjuku','trainTimeOmiya','recommendReason','types','vibes','calLegend','seasonCalendar','gearCalendar','status'];
       jsonData.forEach(function(jmt){
         var m = {};
         FIELDS.forEach(function(k){ if(jmt[k] !== undefined) m[k] = jmt[k]; });

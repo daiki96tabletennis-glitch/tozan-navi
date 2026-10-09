@@ -1571,9 +1571,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-ok",
-      "s-ok",
-      "s-ok",
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -1585,7 +1585,8 @@
       "s-ok"
     ],
     "calLegend": [
-      "アイゼン不要"
+      "アイゼン不要",
+      "軽アイゼン等"
     ],
     "trailhead": "天城高原ゴルフ場",
     "parking": "天城高原駐車場（約100台・無料）",
@@ -1649,14 +1650,14 @@
     "kana": "あまぎさん",
     "driveDistance": 115,
     "trailheadAddress": "静岡県伊豆市菅引",
-    "season": "通年",
+    "season": "通年（冬は積雪・凍結に注意）",
     "courseCoefficientRange": "12〜20",
     "courseCoefficient": [
       12,
       20
     ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし",
+    "seasonNoGear": "4月〜12月",
+    "season6Crampons": "1月〜3月",
     "routes": [
       {
         "name": "万二郎岳〜万三郎岳周回",
@@ -1714,7 +1715,7 @@
       },
       {
         "question": "天城山の登山シーズンはいつですか？おすすめの時期",
-        "answer": "天城山の登山シーズンは通年が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "天城山は通年登れます。1月〜3月は積雪や凍結があり、チェーンスパイクや6本爪アイゼンなどの軽アイゼン等が必要になることがあります。積雪・凍結の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": false,
@@ -1727,7 +1728,7 @@
     "metaTitle": "天城山 登山｜初中級・定数12〜20【百名山】| Yamatch",
     "metaDescription": "天城山の難易度は初〜中級、登山初心者でも挑戦しやすい。静岡県、新宿から車で約3時間5分、コース定数12〜20、日帰り可能。伊豆半島の最高峰。シャクナゲの群生地として有名。川端康成の小説の舞台。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-08",
     "hasHeroPhotoScript": false,
     "ogTitle": "天城山 登山｜初中級・定数12〜20【百名山】| Yamatch",
     "ogDescription": "天城山の難易度は初〜中級、登山初心者でも挑戦しやすい。静岡県、新宿から車で約3時間5分、コース定数12〜20、日帰り可能。伊豆半島の最高峰。シャクナゲの群生地として有名。川端康成の小説の舞台。",
@@ -1855,9 +1856,9 @@
       "新宿発は特急踊り子、横浜発は普通列車の経路で、額の付き方は整合。伊東駅〜天城縦走登山口のバス1,340円は注記の値で、事業者では未再確認"
     ],
     "gearCalendar": [
-      "no_crampons",
-      "no_crampons",
-      "no_crampons",
+      "light_crampons",
+      "light_crampons",
+      "light_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -4343,7 +4344,7 @@
       50,
       57
     ],
-    "seasonNoGear": "6月〜10月",
+    "seasonNoGear": "6月〜9月",
     "season6Crampons": "不可（残雪期は冬山装備が必要）",
     "routes": [
       {
@@ -4415,7 +4416,7 @@
     "metaTitle": "鳳凰山 登山｜中上級・定数50〜57【百名山】| Yamatch",
     "metaDescription": "鳳凰山の難易度は中〜上級、初心者にはやや厳しい。山梨県、新宿から車で約2時間40分、コース定数50〜57、宿泊推奨。南アルプス北部の山。地蔵岳のオベリスクが特徴的。白砂の稜線が美しい。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-07",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "鳳凰山 登山｜中上級・定数50〜57【百名山】| Yamatch",
     "ogDescription": "鳳凰山の難易度は中〜上級、初心者にはやや厳しい。山梨県、新宿から車で約2時間40分、コース定数50〜57、宿泊推奨。南アルプス北部の山。地蔵岳のオベリスクが特徴的。白砂の稜線が美しい。",
@@ -4570,7 +4571,12 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -4615,9 +4621,9 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
+      "s-closed",
+      "s-closed",
+      "s-closed",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -4626,12 +4632,13 @@
       "s-ok",
       "s-gear",
       "s-hard",
-      "s-hard"
+      "s-closed"
     ],
     "calLegend": [
       "アイゼン不要",
       "軽アイゼン等",
-      "冬山装備"
+      "冬山装備",
+      "入山不可"
     ],
     "trailhead": "二荒山神社",
     "parking": "二荒山神社駐車場（約100台・500円）",
@@ -4766,7 +4773,7 @@
       },
       {
         "question": "男体山の登山シーズンはいつですか？おすすめの時期",
-        "answer": "男体山の登山シーズンは5月〜11月が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "男体山に登れるのは開山期間の4月25日〜11月11日です（二荒山神社中宮祠で6時〜12時に受付）。期間外は閉山で、登れません。4月下旬〜5月と10月は残雪や凍結があり、軽アイゼン等が必要になることがあります。11月は積雪期に入るため冬山装備が必要です。直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": true,
@@ -4779,7 +4786,7 @@
     "metaTitle": "男体山 登山｜中上級・定数21〜27【百名山】| Yamatch",
     "metaDescription": "男体山の難易度は中〜上級、初心者にはやや厳しい。栃木県、新宿から車で約2時間40分、コース定数21〜27、日帰り可能。バスでもアクセス可。日光の象徴。中禅寺湖の西に聳える円錐形の火山。山頂から中禅寺湖の絶景。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-07",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "男体山 登山｜中上級・定数21〜27【百名山】| Yamatch",
     "ogDescription": "男体山の難易度は中〜上級、初心者にはやや厳しい。栃木県、新宿から車で約2時間40分、コース定数21〜27、日帰り可能。バスでもアクセス可。日光の象徴。中禅寺湖の西に聳える円錐形の火山。山頂から中禅寺湖の絶景。",
@@ -4904,18 +4911,40 @@
     "coordSource": "国土地理院 地名検索",
     "fareCheckedAt": "2026-10-07",
     "gearCalendar": [
-      "winter_gear",
-      "winter_gear",
-      "winter_gear",
+      "closed",
+      "closed",
+      "closed",
+      {
+        "split": true,
+        "before": "closed",
+        "after": "light_crampons",
+        "changeDate": 25
+      },
       "light_crampons",
-      "light_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
       "light_crampons",
-      "winter_gear",
-      "winter_gear"
+      {
+        "split": true,
+        "before": "winter_gear",
+        "after": "closed",
+        "changeDate": 12
+      },
+      "closed"
+    ],
+    "annualItems": [
+      {
+        "kind": "trail",
+        "label": "男体山の開山期間（二荒山神社ルート。期間外は閉山）",
+        "validFrom": "2026-04-25",
+        "validTo": "2026-11-11",
+        "seasonYear": 2026,
+        "sourceUrl": "https://www.nikko-kankou.org/spot/14",
+        "lastVerified": "2026-10-09",
+        "note": "受付は6時〜12時。登拝料 大人1,000円"
+      }
     ]
   },
   {
@@ -4969,8 +4998,8 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-hard",
       "s-gear",
-      "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
@@ -5050,7 +5079,7 @@
       38,
       54
     ],
-    "seasonNoGear": "7月〜9月",
+    "seasonNoGear": "8月〜9月",
     "season6Crampons": "不可（冬山装備が必要）",
     "routes": [
       {
@@ -5105,7 +5134,7 @@
       },
       {
         "question": "北岳の登山シーズンはいつですか？おすすめの時期",
-        "answer": "北岳の登山シーズンは7月〜9月が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "北岳の登山シーズンは7月〜9月が目安です。7月は上旬（年によっては下旬）まで残雪や雪渓があり、チェーンスパイクや6本爪アイゼンなどの軽アイゼン等が必要になることがあります。残雪の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "warnBannerLevel": "yellow",
@@ -5119,7 +5148,7 @@
     "metaTitle": "北岳 登山｜上級・定数38〜54【百名山】| Yamatch",
     "metaDescription": "北岳（3,193m）は日本第2位の高峰。肩の小屋・北岳山荘泊の1泊2日プラン、コース定数38〜54の上級、広河原までのバスアクセス、高山植物の見頃を解説。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "北岳 登山｜上級・定数38〜54【百名山】| Yamatch",
     "ogDescription": "北岳（3,193m）は日本第2位の高峰。肩の小屋・北岳山荘泊の1泊2日プラン、コース定数38〜54の上級、広河原までのバスアクセス、高山植物の見頃を解説。",
@@ -5265,11 +5294,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
+      "winter_gear",
       "light_crampons",
       "no_crampons",
       "no_crampons",
-      "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -5473,7 +5507,7 @@
     "metaTitle": "八ヶ岳（赤岳） 登山｜中上級・定数40〜42| Yamatch",
     "metaDescription": "八ヶ岳の難易度は中〜上級、初心者にはやや厳しい。山梨県・長野県南部、新宿から車で約2時間40分、コース定数40〜42、宿泊推奨。八ヶ岳連峰の最高峰。岩稜帯が続くダイナミックなルート。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-05",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "八ヶ岳（赤岳） 登山｜中上級・定数40〜42| Yamatch",
     "ogDescription": "八ヶ岳の難易度は中〜上級、初心者にはやや厳しい。山梨県・長野県南部、新宿から車で約2時間40分、コース定数40〜42、宿泊推奨。八ヶ岳連峰の最高峰。岩稜帯が続くダイナミックなルート。",
@@ -5615,7 +5649,14 @@
         "winter"
       ],
       "trailPeriods": [],
-      "gearSource": "旧シーズンカレンダーから変換（アイゼン本数の断定はやめ、3段階に読み替え）"
+      "gearSource": "旧シーズンカレンダーから変換（アイゼン本数の断定はやめ、3段階に読み替え）",
+      "gearSplits": {
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
+          "changeDate": 11
+        }
+      }
     },
     "alerts": [],
     "dataModel": "ssot-v1",
@@ -5694,7 +5735,12 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -6842,7 +6888,7 @@
       "s-hard",
       "s-hard",
       "s-gear",
-      "s-ok",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -6923,8 +6969,8 @@
       18,
       42
     ],
-    "seasonNoGear": "6月〜10月",
-    "season6Crampons": "5月・11月",
+    "seasonNoGear": "7月〜10月",
+    "season6Crampons": "5月〜6月・11月",
     "routes": [
       {
         "name": "天神尾根ルート（往復）",
@@ -6988,7 +7034,7 @@
       },
       {
         "question": "谷川岳の登山シーズンはいつですか？おすすめの時期",
-        "answer": "通常の登山装備で登りやすいのは6月〜10月が目安です。残雪や凍結の状況は年によって変わるため、直前に最新情報を確認してください。"
+        "answer": "通常の登山装備で登りやすいのは7月〜10月が目安です。残雪や凍結の状況は年によって変わるため、直前に最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": true,
@@ -7001,7 +7047,7 @@
     "metaTitle": "谷川岳 登山｜中上級・定数18〜42【百名山】| Yamatch",
     "metaDescription": "谷川岳（1,977m）はロープウェイで天神平まで上がれば初心者も挑戦できる百名山。天神尾根コースの所要時間、コース定数18〜42、東京から電車での日帰りプランを解説。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "谷川岳 登山｜中上級・定数18〜42【百名山】| Yamatch",
     "ogDescription": "谷川岳（1,977m）はロープウェイで天神平まで上がれば初心者も挑戦できる百名山。天神尾根コースの所要時間、コース定数18〜42、東京から電車での日帰りプランを解説。",
@@ -7138,7 +7184,7 @@
         "winter",
         "winter",
         "snow_caution",
-        "normal",
+        "snow_caution",
         "normal",
         "normal",
         "normal",
@@ -7147,7 +7193,7 @@
         "winter"
       ],
       "trailPeriods": [],
-      "gearSource": "旧シーズンカレンダーから変換（アイゼン本数の断定はやめ、3段階に読み替え）"
+      "gearSource": "残雪期の区分を登山記録などで見直し（2026-10-09）"
     },
     "alerts": [],
     "dataModel": "ssot-v1",
@@ -7202,7 +7248,7 @@
         "winter",
         "winter",
         "snow_caution",
-        "normal",
+        "snow_caution",
         "normal",
         "normal",
         "normal",
@@ -7222,7 +7268,7 @@
       "winter_gear",
       "winter_gear",
       "light_crampons",
-      "no_crampons",
+      "light_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -7276,10 +7322,10 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
       "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -7287,11 +7333,12 @@
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-gear"
+      "s-hard"
     ],
     "calLegend": [
       "アイゼン不要",
-      "軽アイゼン等"
+      "軽アイゼン等",
+      "冬山装備"
     ],
     "trailhead": "峠の茶屋",
     "parking": "峠の茶屋駐車場（約100台・無料）",
@@ -7363,8 +7410,8 @@
       15,
       30
     ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月",
+    "seasonNoGear": "5月〜10月",
+    "season6Crampons": "4月・11月",
     "routes": [
       {
         "name": "茶臼岳周回コース",
@@ -7421,7 +7468,7 @@
       },
       {
         "question": "那須岳の登山シーズンはいつですか？おすすめの時期",
-        "answer": "那須岳の登山シーズンは5月〜10月（活火山・規制確認要）が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "那須岳の登山シーズンは5月〜10月（活火山・規制確認要）が目安です。12月〜3月は強風と凍結が厳しく、峰の茶屋から上は12本爪アイゼン・ピッケル等の冬山装備が必要です。4月と11月は残雪や凍結があり、軽アイゼン等が必要になることがあります。直前の最新情報を確認してください。"
       }
     ],
     "warnBannerLevel": "yellow",
@@ -7435,7 +7482,7 @@
     "metaTitle": "那須岳 登山｜中級・定数15〜30【百名山】| Yamatch",
     "metaDescription": "那須岳の難易度は中級、経験があると安心。栃木県、新宿から車で約3時間30分、コース定数15〜30、日帰り可能。バスでもアクセス可。栃木県の名峰。活火山で荒涼とした火山景観が広がる。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-07",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "那須岳 登山｜中級・日帰り可・電車OK・栃木県【百名山】| Yamatch",
     "ogDescription": "那須岳の難易度は中級、経験があると安心。栃木県、新宿から車で約3時間30分、コース定数15〜30、日帰り可能。バスでもアクセス可。栃木県の名峰。活火山で荒涼とした火山景観が広がる。",
@@ -7623,10 +7670,10 @@
     ],
     "fareCheckedAt": "2026-10-07",
     "gearCalendar": [
+      "winter_gear",
+      "winter_gear",
+      "winter_gear",
       "light_crampons",
-      "light_crampons",
-      "light_crampons",
-      "light_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -7634,7 +7681,7 @@
       "no_crampons",
       "no_crampons",
       "light_crampons",
-      "light_crampons"
+      "winter_gear"
     ]
   },
   {
@@ -8538,7 +8585,7 @@
     "metaTitle": "甲斐駒ヶ岳 登山｜上級・定数38〜62| Yamatch",
     "metaDescription": "甲斐駒ヶ岳の難易度は上級、初心者には不向き。山梨県、新宿から車で約2時間55分、コース定数38〜62、日帰り可能。白い花崗岩の山頂が印象的。黒戸尾根は日本三大急登の一つ。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-05",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "甲斐駒ヶ岳 登山｜上級・日帰り可・山梨県【百名山】| Yamatch",
     "ogDescription": "甲斐駒ヶ岳の難易度は上級、初心者には不向き。山梨県、新宿から車で約2時間55分、コース定数38〜62、日帰り可能。白い花崗岩の山頂が印象的。黒戸尾根は日本三大急登の一つ。",
@@ -8707,7 +8754,14 @@
         "winter"
       ],
       "trailPeriods": [],
-      "gearSource": "旧シーズンカレンダーから変換（アイゼン本数の断定はやめ、3段階に読み替え）"
+      "gearSource": "6月は伊那市の案内（アイゼンなどの滑り止めが必要な場合あり）に合わせ軽アイゼン等（2026-10-09）",
+      "gearSplits": {
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
+          "changeDate": 11
+        }
+      }
     },
     "alerts": [
       {
@@ -8799,7 +8853,12 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -9011,7 +9070,7 @@
     "metaTitle": "仙丈ヶ岳 登山｜中上級・定数32〜45| Yamatch",
     "metaDescription": "仙丈ヶ岳（3,033m）は「南アルプスの女王」と称される百名山。コース定数32〜45、中〜上級。新宿から車で約3時間5分、日帰り可能。美しいカール地形と高山植物が魅力。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-05",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "仙丈ヶ岳 登山｜中上級・定数32〜45| Yamatch",
     "ogDescription": "仙丈ヶ岳（3,033m）は「南アルプスの女王」と称される百名山。コース定数32〜45、中〜上級。新宿から車で約3時間5分、日帰り可能。美しいカール地形と高山植物が魅力。",
@@ -9180,7 +9239,14 @@
         "winter"
       ],
       "trailPeriods": [],
-      "gearSource": "旧シーズンカレンダーから変換（アイゼン本数の断定はやめ、3段階に読み替え）"
+      "gearSource": "6月は伊那市の案内（アイゼンなどの滑り止めが必要な場合あり）に合わせ軽アイゼン等（2026-10-09）",
+      "gearSplits": {
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
+          "changeDate": 11
+        }
+      }
     },
     "alerts": [
       {
@@ -9272,7 +9338,12 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -9331,8 +9402,8 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-hard",
       "s-gear",
-      "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
@@ -9414,8 +9485,8 @@
       35,
       55
     ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "6月・10月",
+    "seasonNoGear": "8月〜9月",
+    "season6Crampons": "7月・10月",
     "routes": [
       {
         "name": "白馬大雪渓ルート（往復）",
@@ -9488,7 +9559,7 @@
       },
       {
         "question": "白馬岳の登山シーズンはいつですか？おすすめの時期",
-        "answer": "通常の登山装備で登りやすいのは7月〜9月が目安です。残雪や凍結の状況は年によって変わるため、直前に最新情報を確認してください。"
+        "answer": "通常の登山装備で登りやすいのは8月〜9月が目安です。残雪や凍結の状況は年によって変わるため、直前に最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": true,
@@ -9501,7 +9572,7 @@
     "metaTitle": "白馬岳 登山｜中上級・定数35〜55【百名山】| Yamatch",
     "metaDescription": "白馬岳（2,932m）の大雪渓ルートを徹底解説。コース定数35〜55の中〜上級で山小屋泊推奨。新宿から電車＋バスのアクセス、軽アイゼンなど必要装備、ベストシーズンまで紹介。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-05",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "白馬岳 登山｜中上級・定数35〜55【百名山】| Yamatch",
     "ogDescription": "白馬岳（2,932m）の大雪渓ルートを徹底解説。コース定数35〜55の中〜上級で山小屋泊推奨。新宿から電車＋バスのアクセス、軽アイゼンなど必要装備、ベストシーズンまで紹介。",
@@ -9640,8 +9711,8 @@
         "winter",
         "winter",
         "winter",
+        "winter",
         "snow_caution",
-        "normal",
         "normal",
         "normal",
         "snow_caution",
@@ -9649,7 +9720,14 @@
         "winter"
       ],
       "trailPeriods": [],
-      "gearSource": "旧シーズンカレンダーから変換（アイゼン本数の断定はやめ、3段階に読み替え）"
+      "gearSource": "残雪期の区分を登山記録などで見直し（2026-10-09）",
+      "gearSplits": {
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
+          "changeDate": 11
+        }
+      }
     },
     "alerts": [
       {
@@ -9703,8 +9781,8 @@
         "winter",
         "winter",
         "winter",
+        "winter",
         "snow_caution",
-        "normal",
         "normal",
         "normal",
         "snow_caution",
@@ -9736,11 +9814,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
+      "winter_gear",
       "light_crampons",
       "no_crampons",
       "no_crampons",
-      "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -9948,7 +10031,7 @@
     "metaTitle": "乗鞍岳 登山｜初〜中級・定数11【百名山】| Yamatch",
     "metaDescription": "乗鞍岳（3,026m）はバスで標高2,700mの畳平まで上がれ、初心者でも3,000m峰に登れる百名山。剣ヶ峰までの所要時間、コース定数11、服装と高山病対策を解説。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "乗鞍岳 登山｜初〜中級・定数11【百名山】| Yamatch",
     "ogDescription": "乗鞍岳（3,026m）はバスで標高2,700mの畳平まで上がれ、初心者でも3,000m峰に登れる百名山。剣ヶ峰までの所要時間、コース定数11、服装と高山病対策を解説。",
@@ -10149,7 +10232,14 @@
         "winter"
       ],
       "trailPeriods": [],
-      "gearSource": "旧シーズンカレンダーから変換（アイゼン本数の断定はやめ、3段階に読み替え）"
+      "gearSource": "6月は登山記録で軽い滑り止めで歩かれているため軽アイゼン等（2026-10-09）",
+      "gearSplits": {
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
+          "changeDate": 11
+        }
+      }
     },
     "alerts": [
       {
@@ -10255,7 +10345,12 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -10471,7 +10566,7 @@
     "metaTitle": "立山 登山｜初〜中級・定数22〜35【百名山】| Yamatch",
     "metaDescription": "立山の難易度は初〜中級、登山初心者でも挑戦しやすい。長野県北部、新宿から車で約5時間40分、コース定数22〜35、日帰り可能。バスでもアクセス可。富山県を代表する霊峰。室堂から比較的容易に登れ、眺望が素晴らしい。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-07",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "立山 登山｜初〜中級・定数22〜35【百名山】| Yamatch",
     "ogDescription": "立山の難易度は初〜中級、登山初心者でも挑戦しやすい。長野県北部、新宿から車で約5時間40分、コース定数22〜35、日帰り可能。バスでもアクセス可。富山県を代表する霊峰。室堂から比較的容易に登れ、眺望が素晴らしい。",
@@ -10652,7 +10747,12 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -10708,8 +10808,8 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-hard",
       "s-gear",
-      "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
@@ -10791,7 +10891,7 @@
       42,
       65
     ],
-    "seasonNoGear": "7月〜9月",
+    "seasonNoGear": "8月〜9月",
     "season6Crampons": "不可（冬山装備が必要・ガイド推奨）",
     "routes": [
       {
@@ -10852,7 +10952,7 @@
       },
       {
         "question": "剱岳の登山シーズンはいつですか？おすすめの時期",
-        "answer": "剱岳の登山シーズンは7月〜9月が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "剱岳の登山シーズンは7月〜9月が目安です。雪の多い年は7月下旬〜8月上旬まで別山尾根の登山道に雪が残り、アイゼンが必要になることがあります。残雪の状況は年によって変わるため、直前に富山県警察の山岳情報や山小屋の情報を確認してください。"
       }
     ],
     "warnBannerLevel": "blue",
@@ -10866,7 +10966,7 @@
     "metaTitle": "剱岳 登山｜上級・定数42〜65【百名山】| Yamatch",
     "metaDescription": "剱岳の難易度は上級、初心者には不向き。長野県北部、新宿から車で約5時間45分、コース定数42〜65、宿泊推奨。バスでもアクセス可。日本最難関の百名山。クサリ場・岩場の連続で技術と体力が必要。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-07",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "剱岳 登山｜上級・宿泊推奨・電車OK・長野県北部【百名山】| Yamatch",
     "ogDescription": "剱岳の難易度は上級、初心者には不向き。長野県北部、新宿から車で約5時間45分、コース定数42〜65、宿泊推奨。バスでもアクセス可。日本最難関の百名山。クサリ場・岩場の連続で技術と体力が必要。",
@@ -11052,11 +11152,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
+      "winter_gear",
       "light_crampons",
       "no_crampons",
       "no_crampons",
-      "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -11111,8 +11216,8 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-hard",
       "s-gear",
-      "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
@@ -11192,8 +11297,8 @@
       55,
       85
     ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "6月・10月",
+    "seasonNoGear": "8月〜9月",
+    "season6Crampons": "7月・10月",
     "routes": [
       {
         "name": "上高地〜槍沢ルート（往復）",
@@ -11255,7 +11360,7 @@
       },
       {
         "question": "槍ヶ岳の登山シーズンはいつですか？おすすめの時期",
-        "answer": "通常の登山装備で登りやすいのは7月〜9月が目安です。残雪や凍結の状況は年によって変わるため、直前に最新情報を確認してください。"
+        "answer": "通常の登山装備で登りやすいのは8月〜9月が目安です。残雪や凍結の状況は年によって変わるため、直前に最新情報を確認してください。"
       }
     ],
     "warnBannerLevel": "yellow",
@@ -11269,7 +11374,7 @@
     "metaTitle": "槍ヶ岳 登山｜上級・定数55〜85【百名山】| Yamatch",
     "metaDescription": "槍ヶ岳の難易度は上級、初心者には不向き。長野県北部、新宿から車で約5時間30分、コース定数55〜85、宿泊推奨。北アルプスの象徴。鋭く尖った穂先は日本の山のシンボル。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "槍ヶ岳 登山｜上級・定数55〜85【百名山】| Yamatch",
     "ogDescription": "槍ヶ岳の難易度は上級、初心者には不向き。長野県北部、新宿から車で約5時間30分、コース定数55〜85、宿泊推奨。北アルプスの象徴。鋭く尖った穂先は日本の山のシンボル。",
@@ -11434,8 +11539,8 @@
         "winter",
         "winter",
         "winter",
+        "winter",
         "snow_caution",
-        "normal",
         "normal",
         "normal",
         "snow_caution",
@@ -11443,7 +11548,14 @@
         "winter"
       ],
       "trailPeriods": [],
-      "gearSource": "旧シーズンカレンダーから変換（アイゼン本数の断定はやめ、3段階に読み替え）"
+      "gearSource": "6月は雪渓のため冬山装備、7月は切替日が不明のため安全側で軽アイゼン等（2026-10-09）",
+      "gearSplits": {
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
+          "changeDate": 11
+        }
+      }
     },
     "alerts": [
       {
@@ -11510,8 +11622,8 @@
         "winter",
         "winter",
         "winter",
+        "winter",
         "snow_caution",
-        "normal",
         "normal",
         "normal",
         "snow_caution",
@@ -11530,11 +11642,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
+      "winter_gear",
       "light_crampons",
       "no_crampons",
       "no_crampons",
-      "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -11589,8 +11706,8 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-hard",
       "s-gear",
-      "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
@@ -11670,8 +11787,8 @@
       50,
       80
     ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "6月・10月",
+    "seasonNoGear": "8月〜9月",
+    "season6Crampons": "7月・10月",
     "routes": [
       {
         "name": "上高地〜涸沢〜奥穂高岳",
@@ -11733,7 +11850,7 @@
       },
       {
         "question": "奥穂高岳の登山シーズンはいつですか？おすすめの時期",
-        "answer": "通常の登山装備で登りやすいのは7月〜9月が目安です。残雪や凍結の状況は年によって変わるため、直前に最新情報を確認してください。"
+        "answer": "通常の登山装備で登りやすいのは8月〜9月が目安です。残雪や凍結の状況は年によって変わるため、直前に最新情報を確認してください。"
       }
     ],
     "warnBannerLevel": "yellow",
@@ -11747,7 +11864,7 @@
     "metaTitle": "奥穂高岳 登山｜上級・定数50〜80【百名山】| Yamatch",
     "metaDescription": "奥穂高岳の難易度は上級で初心者には不向き。岩稜帯・鎖場が連続し、登山経験と体力が必須です。コース定数50〜80、山小屋泊が一般的。日本第3位・北アルプス最高峰（3190m）。新宿から車で約5時間25分。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "奥穂高岳 登山｜上級・定数50〜80【百名山】| Yamatch",
     "ogDescription": "奥穂高岳の難易度は上級で初心者には不向き。岩稜帯・鎖場が連続し、登山経験と体力が必須です。コース定数50〜80、山小屋泊が一般的。日本第3位・北アルプス最高峰（3190m）。新宿から車で約5時間25分。",
@@ -11911,8 +12028,8 @@
         "winter",
         "winter",
         "winter",
+        "winter",
         "snow_caution",
-        "normal",
         "normal",
         "normal",
         "snow_caution",
@@ -11920,7 +12037,14 @@
         "winter"
       ],
       "trailPeriods": [],
-      "gearSource": "旧シーズンカレンダーから変換（アイゼン本数の断定はやめ、3段階に読み替え）"
+      "gearSource": "6月は雪渓のため冬山装備、7月は切替日が不明のため安全側で軽アイゼン等（2026-10-09）",
+      "gearSplits": {
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
+          "changeDate": 11
+        }
+      }
     },
     "alerts": [
       {
@@ -11987,8 +12111,8 @@
         "winter",
         "winter",
         "winter",
+        "winter",
         "snow_caution",
-        "normal",
         "normal",
         "normal",
         "snow_caution",
@@ -12007,11 +12131,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
+      "winter_gear",
       "light_crampons",
       "no_crampons",
       "no_crampons",
-      "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -12062,7 +12191,7 @@
       "s-hard",
       "s-hard",
       "s-gear",
-      "s-ok",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -12145,7 +12274,7 @@
       43,
       46
     ],
-    "seasonNoGear": "6月〜10月",
+    "seasonNoGear": "7月〜9月",
     "season6Crampons": "5月・11月",
     "routes": [
       {
@@ -12215,7 +12344,7 @@
       },
       {
         "question": "妙高山の登山シーズンはいつですか？おすすめの時期",
-        "answer": "妙高山の登山シーズンは7月〜10月が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "妙高山の登山シーズンは7月〜10月が目安です。6月は登山道に雪渓が残り、軽アイゼン等が必要です。残雪の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": false,
@@ -12228,7 +12357,7 @@
     "metaTitle": "妙高山 登山｜中上級・定数43〜46【百名山】| Yamatch",
     "metaDescription": "妙高山（2,454m）は燕温泉から登る中〜上級の百名山。名物の鎖場の難易度、コース定数43〜46、関山駅からのバスアクセス、下山後の温泉、火打山との縦走プランまで解説。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-07",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "妙高山 登山｜中上級・定数43〜46【百名山】| Yamatch",
     "ogDescription": "妙高山（2,454m）は燕温泉から登る中〜上級の百名山。名物の鎖場の難易度、コース定数43〜46、関山駅からのバスアクセス、下山後の温泉、火打山との縦走プランまで解説。",
@@ -12397,7 +12526,7 @@
       "winter_gear",
       "winter_gear",
       "light_crampons",
-      "no_crampons",
+      "light_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -12842,8 +12971,8 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-hard",
       "s-gear",
-      "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
@@ -12925,7 +13054,7 @@
       65,
       90
     ],
-    "seasonNoGear": "7月〜9月",
+    "seasonNoGear": "8月〜9月",
     "season6Crampons": "不可（残雪多・上級者のみ）",
     "routes": [
       {
@@ -12983,7 +13112,7 @@
       },
       {
         "question": "飯豊山の登山シーズンはいつですか？おすすめの時期",
-        "answer": "飯豊山の登山シーズンは7月〜9月が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "飯豊山の登山シーズンは7月〜9月が目安です。豪雪地帯のため6月は雪渓が残り、12本爪アイゼン・ピッケル等の冬山装備が必要です。7月も上旬までは雪渓が残り、軽アイゼン等が必要になることがあります。残雪の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": false,
@@ -12996,7 +13125,7 @@
     "metaTitle": "飯豊山 登山｜上級・宿泊推奨・福島県【百名山】| Yamatch",
     "metaDescription": "飯豊山の難易度は上級、初心者には不向き。福島県、新宿から車で約4時間30分、コース定数65〜90、宿泊推奨。東北の秘峰。アプローチが長く体力を要する。高山植物の宝庫。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "飯豊山 登山｜上級・宿泊推奨・福島県【百名山】| Yamatch",
     "ogDescription": "飯豊山の難易度は上級、初心者には不向き。福島県、新宿から車で約4時間30分、コース定数65〜90、宿泊推奨。東北の秘峰。アプローチが長く体力を要する。高山植物の宝庫。",
@@ -13239,8 +13368,8 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
+      "winter_gear",
       "light_crampons",
-      "no_crampons",
       "no_crampons",
       "no_crampons",
       "light_crampons",
@@ -14966,8 +15095,8 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-hard",
       "s-gear",
-      "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -15048,8 +15177,8 @@
       27,
       38
     ],
-    "seasonNoGear": "6月〜9月",
-    "season6Crampons": "5月・10月",
+    "seasonNoGear": "7月〜9月",
+    "season6Crampons": "6月・10月",
     "routes": [
       {
         "name": "御池〜柴安嵓往復",
@@ -15110,7 +15239,7 @@
       },
       {
         "question": "燧ヶ岳の登山シーズンはいつですか？",
-        "answer": "通常の登山装備で登りやすいのは6月〜9月が目安です。残雪や凍結の状況は年によって変わるため、直前に最新情報を確認してください。"
+        "answer": "通常の登山装備で登りやすいのは7月〜9月が目安です。残雪や凍結の状況は年によって変わるため、直前に最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": false,
@@ -15123,7 +15252,7 @@
     "metaTitle": "燧ヶ岳 登山｜中上級・定数27〜38【百名山】| Yamatch",
     "metaDescription": "燧ヶ岳の難易度は中〜上級、初心者にはやや厳しい。福島県、新宿から車で約265分、コース定数27〜38、日帰り可能。東北最高峰。双耳峰の雄姿と尾瀬の自然が魅力。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-05",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "燧ヶ岳 登山｜中上級・定数27〜38【百名山】| Yamatch",
     "ogDescription": "燧ヶ岳（ひうちがたけ・2356m）の登山情報。コース定数27〜38、日帰り可能。",
@@ -15254,8 +15383,8 @@
         "winter",
         "winter",
         "winter",
+        "winter",
         "snow_caution",
-        "normal",
         "normal",
         "normal",
         "normal",
@@ -15264,7 +15393,7 @@
         "winter"
       ],
       "trailPeriods": [],
-      "gearSource": "旧シーズンカレンダーから変換（アイゼン本数の断定はやめ、3段階に読み替え）"
+      "gearSource": "残雪期の区分を登山記録などで見直し（2026-10-09）"
     },
     "alerts": [],
     "dataModel": "ssot-v1",
@@ -15305,8 +15434,8 @@
         "winter",
         "winter",
         "winter",
+        "winter",
         "snow_caution",
-        "normal",
         "normal",
         "normal",
         "normal",
@@ -15338,8 +15467,8 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
+      "winter_gear",
       "light_crampons",
-      "no_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -15728,6 +15857,9 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -15736,13 +15868,11 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok"
+      "s-gear"
     ],
     "calLegend": [
-      "アイゼン不要"
+      "アイゼン不要",
+      "軽アイゼン等"
     ],
     "trailhead": "大山ケーブル駅",
     "parking": "大山第1〜3駐車場（有料）",
@@ -15808,14 +15938,14 @@
     "kana": "おおやま",
     "driveDistance": 55,
     "trailheadAddress": "神奈川県伊勢原市大山",
-    "season": "通年",
+    "season": "通年（冬は積雪・凍結に注意）",
     "courseCoefficientRange": "15〜23",
     "courseCoefficient": [
       15,
       23
     ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし",
+    "seasonNoGear": "4月〜11月",
+    "season6Crampons": "12月〜3月",
     "routes": [
       {
         "name": "ケーブルカー〜大山山頂（往復）",
@@ -15877,7 +16007,7 @@
       },
       {
         "question": "大山（丹沢）の登山シーズンはいつですか？おすすめの時期",
-        "answer": "大山（丹沢）の登山シーズンは通年が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "大山（丹沢）は通年登れます。12月〜3月は積雪や凍結があり、チェーンスパイクや6本爪アイゼンなどの軽アイゼン等が必要になることがあります。積雪・凍結の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": true,
@@ -15890,7 +16020,7 @@
     "metaTitle": "大山（丹沢） 登山｜初中級・定数15〜23| Yamatch",
     "metaDescription": "大山の難易度は初〜中級、登山初心者でも挑戦しやすい。神奈川県、新宿から車で約55分、コース定数15〜23、日帰り可能。バスでもアクセス可。丹沢の霊峰。ケーブルカーあり。山頂からの展望と紅葉が名高い信仰の山。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-07",
+    "mountainUpdated": "2026-10-08",
     "hasHeroPhotoScript": false,
     "ogTitle": "大山（丹沢） 登山｜初中級・定数15〜23| Yamatch",
     "ogDescription": "大山の難易度は初〜中級、登山初心者でも挑戦しやすい。神奈川県、新宿から車で約55分、コース定数15〜23、日帰り可能。バスでもアクセス可。丹沢の霊峰。ケーブルカーあり。山頂からの展望と紅葉が名高い信仰の山。",
@@ -16019,6 +16149,9 @@
     "amapUrlLegacy": "https://maps.apple.com/?ll=35.4394,139.2254&q=大山ケーブル駅",
     "fareCheckedAt": "2026-10-07",
     "gearCalendar": [
+      "light_crampons",
+      "light_crampons",
+      "light_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -16027,10 +16160,7 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "no_crampons",
-      "no_crampons",
-      "no_crampons",
-      "no_crampons"
+      "light_crampons"
     ]
   },
   {
@@ -17088,7 +17218,7 @@
       "s-gear",
       "s-gear",
       "s-gear",
-      "s-gear",
+      "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -17172,8 +17302,8 @@
       16,
       19
     ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし",
+    "seasonNoGear": "4月〜11月",
+    "season6Crampons": "12月〜3月",
     "routes": [
       {
         "name": "乙女峠ルート（往復）",
@@ -17236,7 +17366,7 @@
       },
       {
         "question": "金時山の登山シーズンはいつですか？おすすめの時期",
-        "answer": "金時山の登山シーズンは通年が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "金時山は通年登れます。12月〜3月は積雪や凍結があり、チェーンスパイクや6本爪アイゼンなどの軽アイゼン等が必要になることがあります。積雪・凍結の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": false,
@@ -17249,7 +17379,7 @@
     "metaTitle": "金時山 登山｜初中級・定数16〜19| Yamatch",
     "metaDescription": "金時山（1,212m）は山頂からの富士山で名高い箱根の名峰。金時神社ルートの所要時間、コース定数16〜19の初〜中級、新宿から電車＋バス約1時間20分のアクセスと日帰りプランを解説。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "金時山 登山｜初中級・定数16〜19| Yamatch",
     "ogDescription": "金時山（1,212m）は山頂からの富士山で名高い箱根の名峰。金時神社ルートの所要時間、コース定数16〜19の初〜中級、新宿から電車＋バス約1時間20分のアクセスと日帰りプランを解説。",
@@ -17365,7 +17495,7 @@
       "light_crampons",
       "light_crampons",
       "light_crampons",
-      "light_crampons",
+      "no_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -18642,7 +18772,7 @@
     "metaTitle": "棒ノ折山 登山｜初中級・定数21〜26| Yamatch",
     "metaDescription": "棒ノ折山の難易度は初〜中級、登山初心者でも挑戦しやすい。東京都・埼玉県、新宿から車で約1時間25分、コース定数21〜26、日帰り可能。バスでもアクセス可。沢沿いのゴルジュを通る変化に富んだルートが人気。山頂は関東平野の大展望。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-07",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "棒ノ折山 登山｜初中級・定数21〜26| Yamatch",
     "ogDescription": "棒ノ折山の難易度は初〜中級、登山初心者でも挑戦しやすい。東京都・埼玉県、新宿から車で約1時間25分、コース定数21〜26、日帰り可能。バスでもアクセス可。沢沿いのゴルジュを通る変化に富んだルートが人気。山頂は関東平野の大展望。",
@@ -18839,6 +18969,8 @@
       "fall"
     ],
     "seasonCalendar": [
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -18848,12 +18980,11 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok"
+      "s-gear"
     ],
     "calLegend": [
-      "アイゼン不要"
+      "アイゼン不要",
+      "軽アイゼン等"
     ],
     "trailhead": "御岳山ケーブル〜御岳山",
     "parking": "滝本駅駐車場（有料）",
@@ -18919,14 +19050,14 @@
     "kana": "おおたけさん",
     "driveDistance": 70,
     "trailheadAddress": "東京都青梅市御岳山",
-    "season": "通年",
+    "season": "通年（冬は積雪・凍結に注意）",
     "courseCoefficientRange": "21〜21",
     "courseCoefficient": [
       21,
       21
     ],
-    "seasonNoGear": "通年",
-    "season6Crampons": "なし",
+    "seasonNoGear": "3月〜11月",
+    "season6Crampons": "12月〜2月",
     "routes": [
       {
         "name": "御嶽山〜大岳山（往復）",
@@ -18975,7 +19106,7 @@
       },
       {
         "question": "大岳山の登山シーズンはいつですか？おすすめの時期",
-        "answer": "大岳山の登山シーズンは通年が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "大岳山は通年登れます。12月〜2月は積雪や凍結があり、チェーンスパイクや6本爪アイゼンなどの軽アイゼン等が必要になることがあります。積雪・凍結の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": true,
@@ -18988,7 +19119,7 @@
     "metaTitle": "大岳山 登山｜初中級・定数21〜21| Yamatch",
     "metaDescription": "大岳山（1,266m）は御岳山から縦走できる奥多摩三山の一座。ケーブルカー利用の縦走ルートの所要時間、コース定数21〜21の初〜中級、新宿から電車での日帰りプランを解説。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-09-25",
+    "mountainUpdated": "2026-10-08",
     "hasHeroPhotoScript": false,
     "ogTitle": "大岳山 登山｜初中級・定数21〜21| Yamatch",
     "ogDescription": "大岳山（1,266m）は御岳山から縦走できる奥多摩三山の一座。ケーブルカー利用の縦走ルートの所要時間、コース定数21〜21の初〜中級、新宿から電車での日帰りプランを解説。",
@@ -19114,6 +19245,8 @@
     "annualNotApplicable": true,
     "fareCheckedAt": "2026-10-07",
     "gearCalendar": [
+      "light_crampons",
+      "light_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -19123,9 +19256,7 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "no_crampons",
-      "no_crampons",
-      "no_crampons"
+      "light_crampons"
     ]
   },
   {
@@ -19176,7 +19307,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -19258,7 +19389,7 @@
       45
     ],
     "seasonNoGear": "7月〜9月",
-    "season6Crampons": "6月・10月",
+    "season6Crampons": "10月",
     "routes": [
       {
         "name": "一ノ沢〜常念岳往復",
@@ -19317,7 +19448,7 @@
     "metaTitle": "常念岳 登山｜中上級・定数32〜45【百名山】| Yamatch",
     "metaDescription": "常念岳の難易度は中〜上級、初心者にはやや厳しい。長野県北部、新宿から車で約4時間15分、コース定数32〜45、宿泊推奨。北アルプスのパノラマ台。山頂から槍・穂高の絶景が広がる。北アルプス入門の山。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-05",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "常念岳 登山｜中上級・定数32〜45【百名山】| Yamatch",
     "ogDescription": "常念岳の難易度は中〜上級、初心者にはやや厳しい。長野県北部、新宿から車で約4時間15分、コース定数32〜45、宿泊推奨。北アルプスのパノラマ台。山頂から槍・穂高の絶景が広がる。北アルプス入門の山。",
@@ -19489,7 +19620,7 @@
         "winter",
         "winter",
         "winter",
-        "snow_caution",
+        "winter",
         "normal",
         "normal",
         "normal",
@@ -19498,7 +19629,14 @@
         "winter"
       ],
       "trailPeriods": [],
-      "gearSource": "旧シーズンカレンダーから変換（アイゼン本数の断定はやめ、3段階に読み替え）"
+      "gearSource": "6月は残雪期のため、安全側で冬山装備（2026-10-09）",
+      "gearSplits": {
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
+          "changeDate": 11
+        }
+      }
     },
     "alerts": [
       {
@@ -19556,7 +19694,7 @@
         "winter",
         "winter",
         "winter",
-        "snow_caution",
+        "winter",
         "normal",
         "normal",
         "normal",
@@ -19589,11 +19727,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
-      "light_crampons",
+      "winter_gear",
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -20044,7 +20187,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -20198,7 +20341,7 @@
     "metaTitle": "鹿島槍ヶ岳 登山｜上級・定数45〜65| Yamatch",
     "metaDescription": "鹿島槍ヶ岳の難易度は上級、初心者には不向き。長野県北部、新宿から車で約4時間45分、コース定数45〜65、宿泊推奨。バスでもアクセス可。北アルプス後立山連峰の主峰。南北に双耳峰をもつ優美な山容。吊尾根が特徴的。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "鹿島槍ヶ岳 登山｜上級・定数45〜65| Yamatch",
     "ogDescription": "鹿島槍ヶ岳の難易度は上級、初心者には不向き。長野県北部、新宿から車で約4時間45分、コース定数45〜65、宿泊推奨。バスでもアクセス可。北アルプス後立山連峰の主峰。南北に双耳峰をもつ優美な山容。吊尾根が特徴的。",
@@ -20348,11 +20491,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
-      "light_crampons",
+      "winter_gear",
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -22252,7 +22400,7 @@
       "s-hard",
       "s-gear",
       "s-gear",
-      "s-ok",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -22335,7 +22483,7 @@
       24,
       30
     ],
-    "seasonNoGear": "6月〜10月",
+    "seasonNoGear": "7月〜10月",
     "season6Crampons": "11月〜4月",
     "routes": [
       {
@@ -22394,7 +22542,7 @@
       },
       {
         "question": "黒姫山の登山シーズンはいつですか？おすすめの時期",
-        "answer": "黒姫山の登山シーズンは6月〜10月が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "黒姫山の登山シーズンは7月〜10月が目安です。6月は雪が残り、軽アイゼン等が必要になることがあります。残雪の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": false,
@@ -22407,7 +22555,7 @@
     "metaTitle": "黒姫山 登山｜中上級・定数24〜30| Yamatch",
     "metaDescription": "黒姫山の難易度は中〜上級、初心者にはやや厳しい。長野県北部、新宿から車で約3時間40分、コース定数24〜30、日帰り可能。バスでもアクセス可。北信五岳のひとつ。静かな樹林帯と山頂からの妙高・戸隠連峰の眺めが魅力。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "黒姫山 登山｜中上級・定数24〜30| Yamatch",
     "ogDescription": "黒姫山の難易度は中〜上級、初心者にはやや厳しい。長野県北部、新宿から車で約3時間40分、コース定数24〜30、日帰り可能。バスでもアクセス可。北信五岳のひとつ。静かな樹林帯と山頂からの妙高・戸隠連峰の眺めが魅力。",
@@ -22578,7 +22726,7 @@
       "winter_gear",
       "light_crampons",
       "light_crampons",
-      "no_crampons",
+      "light_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -23684,9 +23832,9 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
-      "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -23767,7 +23915,7 @@
       30,
       38
     ],
-    "seasonNoGear": "6月〜10月",
+    "seasonNoGear": "7月〜10月",
     "season6Crampons": "11月〜5月",
     "routes": [
       {
@@ -23801,7 +23949,7 @@
       },
       {
         "question": "荒沢岳の登山シーズンはいつですか？おすすめの時期",
-        "answer": "5月〜11月が登りやすいシーズンです。冬季は積雪・凍結に注意が必要です。"
+        "answer": "荒沢岳の登山シーズンは7月〜10月が目安です。豪雪地帯のため6月も雪が残り、軽アイゼン等が必要になることがあります。5月までは冬山装備が必要な時期です。残雪の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": false,
@@ -23813,7 +23961,7 @@
     "metaTitle": "荒沢岳 登山｜中上級・定数30〜38| Yamatch",
     "metaDescription": "荒沢岳の難易度は中〜上級、初心者にはやや厳しい。新潟県、新宿から車で約4時間45分、コース定数30〜38、日帰り可能。奥只見の秘峰。前グラの岩場が核心部で鎖場が続く。越後三山の展望が素晴らしい。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-07",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "荒沢岳 登山｜中上級・定数30〜38| Yamatch",
     "ogDescription": "荒沢岳の難易度は中〜上級、初心者にはやや厳しい。新潟県、新宿から車で約4時間45分、コース定数30〜38、日帰り可能。奥只見の秘峰。前グラの岩場が核心部で鎖場が続く。越後三山の展望が素晴らしい。",
@@ -23970,9 +24118,9 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
+      "winter_gear",
       "light_crampons",
       "light_crampons",
-      "no_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -26372,9 +26520,9 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-hard",
       "s-gear",
       "s-gear",
-      "s-ok",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -26457,7 +26605,7 @@
       40,
       45
     ],
-    "seasonNoGear": "6月〜10月",
+    "seasonNoGear": "7月〜10月",
     "season6Crampons": "11月〜5月",
     "routes": [
       {
@@ -26516,7 +26664,7 @@
       },
       {
         "question": "越後駒ヶ岳の登山シーズンはいつですか？おすすめの時期",
-        "answer": "越後駒ヶ岳の登山シーズンは6月〜10月が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "越後駒ヶ岳の登山シーズンは7月〜10月が目安です。豪雪地帯のため6月も登山道に雪渓が残り、軽アイゼン等が必要です。5月までは冬山装備が必要な時期です。残雪の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": false,
@@ -26529,7 +26677,7 @@
     "metaTitle": "越後駒ヶ岳 登山｜中上級・定数40〜45| Yamatch",
     "metaDescription": "越後駒ヶ岳の難易度は中〜上級、初心者にはやや厳しい。新潟県、新宿から車で約4時間45分、コース定数40〜45、日帰り可能。越後三山の主峰。稜線からの眺望が素晴らしい。枝折峠からの雲海も絶景。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-08",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "越後駒ヶ岳 登山｜中上級・定数40〜45| Yamatch",
     "ogDescription": "越後駒ヶ岳の難易度は中〜上級、初心者にはやや厳しい。新潟県、新宿から車で約4時間45分、コース定数40〜45、日帰り可能。越後三山の主峰。稜線からの眺望が素晴らしい。枝折峠からの雲海も絶景。",
@@ -26738,9 +26886,9 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
+      "winter_gear",
       "light_crampons",
       "light_crampons",
-      "no_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -28165,7 +28313,7 @@
       "s-hard",
       "s-gear",
       "s-gear",
-      "s-ok",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -28246,7 +28394,7 @@
       35,
       42
     ],
-    "seasonNoGear": "6月〜10月",
+    "seasonNoGear": "7月〜9月",
     "season6Crampons": "11月〜5月",
     "routes": [
       {
@@ -28301,7 +28449,7 @@
       },
       {
         "question": "高妻山の登山シーズンはいつですか？おすすめの時期",
-        "answer": "高妻山の登山シーズンは7月〜10月が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "高妻山の登山シーズンは7月〜10月が目安です。6月は山頂付近などに雪が残り、軽アイゼン等が必要になることがあります。残雪の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": true,
@@ -28314,7 +28462,7 @@
     "metaTitle": "高妻山 登山｜中上級・定数35〜42【百名山】| Yamatch",
     "metaDescription": "高妻山の難易度は中〜上級、初心者にはやや厳しい。長野県北部、新宿から車で約3時間45分、コース定数35〜42、宿泊推奨。戸隠連峰の最高峰。修験道の山として長い歴史を持つ。急登が続く本格登山コース。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-08",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "高妻山 登山｜中上級・定数35〜42【百名山】| Yamatch",
     "ogDescription": "高妻山の難易度は中〜上級、初心者にはやや厳しい。長野県北部、新宿から車で約3時間45分、コース定数35〜42、宿泊推奨。戸隠連峰の最高峰。修験道の山として長い歴史を持つ。急登が続く本格登山コース。",
@@ -28467,7 +28615,7 @@
       "winter_gear",
       "light_crampons",
       "light_crampons",
-      "no_crampons",
+      "light_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -28520,7 +28668,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -28647,7 +28795,7 @@
     "metaTitle": "笠ヶ岳 登山｜上級・定数52〜78【百名山】| Yamatch",
     "metaDescription": "笠ヶ岳の難易度は上級、初心者には不向き。長野県北部、新宿から車で約5時間35分、コース定数52〜78、宿泊推奨。日本百名山の中でも「きつい山」として知られる笠新道。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-09-27",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "笠ヶ岳 登山｜上級・定数52〜78【百名山】| Yamatch",
     "ogDescription": "笠ヶ岳の難易度は上級、初心者には不向き。長野県北部、新宿から車で約5時間35分、コース定数52〜78、宿泊推奨。日本百名山の中でも「きつい山」として知られる笠新道。",
@@ -28773,11 +28921,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
-      "light_crampons",
+      "winter_gear",
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -28827,23 +28980,23 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-hard",
-      "s-gear",
+      "s-closed",
+      "s-closed",
+      "s-closed",
+      "s-closed",
+      "s-closed",
+      "s-closed",
       "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
-      "s-hard",
-      "s-hard"
+      "s-closed",
+      "s-closed"
     ],
     "calLegend": [
       "アイゼン不要",
       "軽アイゼン等",
-      "冬山装備"
+      "入山不可"
     ],
     "trailhead": "王滝口（田の原）",
     "parking": "田の原駐車場（約300台・無料）",
@@ -28972,7 +29125,7 @@
     "metaTitle": "御嶽山 登山｜中上級・定数18〜32【百名山】| Yamatch",
     "metaDescription": "御嶽山の難易度は中〜上級、初心者にはやや厳しい。長野県南部、新宿から車で約4時間50分、コース定数18〜32、日帰り可能。独立峰の霊峰。2014年噴火で現在も入山規制あり。規制区域・最新情報の確認必須。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-08",
     "hasHeroPhotoScript": false,
     "ogTitle": "御嶽山 登山｜中上級・定数18〜32【百名山】| Yamatch",
     "ogDescription": "御嶽山の難易度は中〜上級、初心者にはやや厳しい。長野県南部、新宿から車で約4時間50分、コース定数18〜32、日帰り可能。独立峰の霊峰。2014年噴火で現在も入山規制あり。規制区域・最新情報の確認必須。",
@@ -29111,18 +29264,23 @@
     ],
     "fareCheckedAt": "2026-10-07",
     "gearCalendar": [
-      "winter_gear",
-      "winter_gear",
-      "winter_gear",
-      "winter_gear",
-      "winter_gear",
-      "light_crampons",
+      "closed",
+      "closed",
+      "closed",
+      "closed",
+      "closed",
+      "closed",
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
-      "winter_gear",
-      "winter_gear"
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "closed",
+        "changeDate": 15
+      },
+      "closed",
+      "closed"
     ]
   },
   {
@@ -29170,7 +29328,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -29254,7 +29412,7 @@
       65
     ],
     "seasonNoGear": "7月〜9月",
-    "season6Crampons": "6月・10月",
+    "season6Crampons": "10月",
     "routes": [
       {
         "name": "テレキャビン〜遠見尾根〜五竜岳（往復）",
@@ -29319,7 +29477,7 @@
     "metaTitle": "五竜岳 登山｜上級・定数45〜65【百名山】| Yamatch",
     "metaDescription": "五竜岳の難易度は上級、初心者には不向き。長野県北部、新宿から車で約4時間40分、コース定数45〜65、宿泊推奨。バスでもアクセス可。後立山連峰の主峰。山頂から剱岳・立山・白馬岳の眺望が圧巻。唐松岳との縦走が人気。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "五竜岳 登山｜上級・定数45〜65【百名山】| Yamatch",
     "ogDescription": "五竜岳の難易度は上級、初心者には不向き。長野県北部、新宿から車で約4時間40分、コース定数45〜65、宿泊推奨。バスでもアクセス可。後立山連峰の主峰。山頂から剱岳・立山・白馬岳の眺望が圧巻。唐松岳との縦走が人気。",
@@ -29434,7 +29592,7 @@
         "winter",
         "winter",
         "winter",
-        "snow_caution",
+        "winter",
         "normal",
         "normal",
         "normal",
@@ -29443,7 +29601,14 @@
         "winter"
       ],
       "trailPeriods": [],
-      "gearSource": "旧シーズンカレンダーから変換（アイゼン本数の断定はやめ、3段階に読み替え）"
+      "gearSource": "6月は残雪期のため、安全側で冬山装備（2026-10-09）",
+      "gearSplits": {
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
+          "changeDate": 11
+        }
+      }
     },
     "alerts": [],
     "dataModel": "ssot-v1",
@@ -29497,7 +29662,7 @@
         "winter",
         "winter",
         "winter",
-        "snow_caution",
+        "winter",
         "normal",
         "normal",
         "normal",
@@ -29517,11 +29682,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
-      "light_crampons",
+      "winter_gear",
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -29777,8 +29947,8 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-hard",
       "s-gear",
-      "s-ok",
       "s-ok",
       "s-ok",
       "s-gear",
@@ -29860,8 +30030,8 @@
       11,
       15
     ],
-    "seasonNoGear": "7月〜9月",
-    "season6Crampons": "6月・10月",
+    "seasonNoGear": "8月〜9月",
+    "season6Crampons": "7月・10月",
     "routes": [
       {
         "name": "千畳敷〜乗越浄土〜木曽駒ヶ岳往復",
@@ -29922,7 +30092,7 @@
       },
       {
         "question": "木曽駒ヶ岳の登山シーズンはいつですか？おすすめの時期",
-        "answer": "通常の登山装備で登りやすいのは7月〜9月が目安です。残雪や凍結の状況は年によって変わるため、直前に最新情報を確認してください。"
+        "answer": "通常の登山装備で登りやすいのは8月〜9月が目安です。残雪や凍結の状況は年によって変わるため、直前に最新情報を確認してください。"
       }
     ],
     "warnBannerLevel": "yellow",
@@ -29936,7 +30106,7 @@
     "metaTitle": "木曽駒ヶ岳 登山｜初中級・定数11〜15| Yamatch",
     "metaDescription": "木曽駒ヶ岳の難易度は初〜中級、登山初心者でも挑戦しやすい。長野県南部、新宿から車で約3時間30分、コース定数11〜15、日帰り可能。バスでもアクセス可。ロープウェイで標高2,612mの千畳敷カールまで一気にアクセス。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-08",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "木曽駒ヶ岳 登山｜初〜中級・日帰り可・電車OK・長野県南部【百名山】| Yamatch",
     "ogDescription": "木曽駒ヶ岳の難易度は初〜中級、登山初心者でも挑戦しやすい。長野県南部、新宿から車で約3時間30分、コース定数11〜15、日帰り可能。バスでもアクセス可。ロープウェイで標高2,612mの千畳敷カールまで一気にアクセス。",
@@ -30123,8 +30293,8 @@
         "winter",
         "winter",
         "winter",
+        "winter",
         "snow_caution",
-        "normal",
         "normal",
         "normal",
         "snow_caution",
@@ -30132,7 +30302,14 @@
         "winter"
       ],
       "trailPeriods": [],
-      "gearSource": "旧シーズンカレンダーから変換（アイゼン本数の断定はやめ、3段階に読み替え）"
+      "gearSource": "残雪期の区分を登山記録などで見直し（2026-10-09）",
+      "gearSplits": {
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
+          "changeDate": 11
+        }
+      }
     },
     "alerts": [
       {
@@ -30199,8 +30376,8 @@
         "winter",
         "winter",
         "winter",
+        "winter",
         "snow_caution",
-        "normal",
         "normal",
         "normal",
         "snow_caution",
@@ -30220,11 +30397,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
+      "winter_gear",
       "light_crampons",
       "no_crampons",
       "no_crampons",
-      "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -31129,7 +31311,7 @@
       55,
       70
     ],
-    "seasonNoGear": "7月〜10月",
+    "seasonNoGear": "7月〜9月",
     "season6Crampons": "11月〜6月",
     "routes": [
       {
@@ -31187,7 +31369,7 @@
     "metaTitle": "空木岳 登山｜中上級・定数55〜70【百名山】| Yamatch",
     "metaDescription": "空木岳の難易度は中〜上級。池山尾根からの日帰りは健脚向けで、初心者には厳しいコースです。コース定数55〜70、山頂からは御嶽・南アルプスの大展望。新宿から車で約3時間55分。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-08",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "空木岳 登山｜中上級・定数55〜70【百名山】| Yamatch",
     "ogDescription": "空木岳の難易度は中〜上級。池山尾根からの日帰りは健脚向けで、初心者には厳しいコースです。コース定数55〜70、山頂からは御嶽・南アルプスの大展望。新宿から車で約3時間55分。",
@@ -31332,7 +31514,12 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -31676,7 +31863,7 @@
       55,
       75
     ],
-    "seasonNoGear": "7月〜10月",
+    "seasonNoGear": "7月〜9月",
     "season6Crampons": "11月〜6月",
     "routes": [
       {
@@ -31720,7 +31907,7 @@
       },
       {
         "question": "塩見岳の登山シーズンはいつですか？おすすめの時期",
-        "answer": "5月〜11月が登りやすいシーズンです。冬季は積雪・凍結に注意が必要です。"
+        "answer": "塩見岳の登山シーズンは7月〜9月が目安です。6月は雪が残り、アイゼンなどの滑り止めが必要になることがあります（伊那市の案内）。5月までは冬山装備が必須で、10月中旬以降も積雪・凍結で冬山装備が必要になる年があります。直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": true,
@@ -31732,7 +31919,7 @@
     "metaTitle": "塩見岳 登山｜上級・定数55〜75【百名山】| Yamatch",
     "metaDescription": "塩見岳の難易度は上級、初心者には不向き。長野県南部、新宿から車で約4時間10分、コース定数55〜75、宿泊推奨。南アルプス中央部に位置する3000m超の峰。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "塩見岳 登山｜上級・定数55〜75【百名山】| Yamatch",
     "ogDescription": "塩見岳の難易度は上級、初心者には不向き。長野県南部、新宿から車で約4時間10分、コース定数55〜75、宿泊推奨。南アルプス中央部に位置する3000m超の峰。",
@@ -31898,7 +32085,12 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -31954,7 +32146,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -32082,7 +32274,7 @@
     "metaTitle": "荒川岳 登山｜上級・定数65〜95【百名山】| Yamatch",
     "metaDescription": "荒川岳の難易度は上級、初心者には不向き。静岡県北部、新宿から車で約5時間10分、コース定数65〜95、宿泊推奨。南アルプス深部の3000m峰。前岳・中岳・悪沢岳（東岳）の総称。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-09-25",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "荒川岳 登山｜上級・定数65〜95【百名山】| Yamatch",
     "ogDescription": "荒川岳の難易度は上級、初心者には不向き。静岡県北部、新宿から車で約5時間10分、コース定数65〜95、宿泊推奨。南アルプス深部の3000m峰。前岳・中岳・悪沢岳（東岳）の総称。",
@@ -32287,11 +32479,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
-      "light_crampons",
+      "winter_gear",
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -32345,7 +32542,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -32483,7 +32680,7 @@
     "metaTitle": "赤石岳 登山｜上級・定数60〜90【百名山】| Yamatch",
     "metaDescription": "赤石岳の難易度は上級、初心者には不向き。静岡県北部、新宿から車で約5時間10分、コース定数60〜90、宿泊推奨。南アルプスの盟主とも呼ばれる3000m峰。荒川岳とのセット縦走が定番。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "赤石岳 登山｜上級・定数60〜90【百名山】| Yamatch",
     "ogDescription": "赤石岳の難易度は上級、初心者には不向き。静岡県北部、新宿から車で約5時間10分、コース定数60〜90、宿泊推奨。南アルプスの盟主とも呼ばれる3000m峰。荒川岳とのセット縦走が定番。",
@@ -32688,11 +32885,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
-      "light_crampons",
+      "winter_gear",
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -32747,7 +32949,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -32890,7 +33092,7 @@
     "metaTitle": "聖岳 登山｜上級・定数60〜85【百名山】| Yamatch",
     "metaDescription": "聖岳の難易度は上級、初心者には不向き。静岡県北部、新宿から車で約5時間20分、コース定数60〜85、宿泊推奨。南アルプス最南部の3000m峰。最南の3000m峰として知られる。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-07",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "聖岳 登山｜上級・定数60〜85【百名山】| Yamatch",
     "ogDescription": "聖岳の難易度は上級、初心者には不向き。静岡県北部、新宿から車で約5時間20分、コース定数60〜85、宿泊推奨。南アルプス最南部の3000m峰。最南の3000m峰として知られる。",
@@ -33107,11 +33309,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
-      "light_crampons",
+      "winter_gear",
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -33606,7 +33813,7 @@
       50,
       75
     ],
-    "seasonNoGear": "7月〜10月",
+    "seasonNoGear": "7月〜9月",
     "season6Crampons": "11月〜6月",
     "routes": [
       {
@@ -33665,7 +33872,7 @@
     "metaTitle": "薬師岳 登山｜中上級・定数50〜75【百名山】| Yamatch",
     "metaDescription": "薬師岳の難易度は中〜上級、初心者にはやや厳しい。富山県、新宿から車で約5時間55分、コース定数50〜75、宿泊推奨。北アルプス南部の大きな山。有峰湖を抱く折立からのルートが一般的。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-07",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "薬師岳 登山｜中上級・定数50〜75【百名山】| Yamatch",
     "ogDescription": "薬師岳の難易度は中〜上級、初心者にはやや厳しい。富山県、新宿から車で約5時間55分、コース定数50〜75、宿泊推奨。北アルプス南部の大きな山。有峰湖を抱く折立からのルートが一般的。",
@@ -33828,7 +34035,12 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -33877,7 +34089,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -33958,7 +34170,7 @@
       65,
       90
     ],
-    "seasonNoGear": "7月〜10月",
+    "seasonNoGear": "7月〜9月",
     "season6Crampons": "11月〜6月",
     "routes": [
       {
@@ -34005,7 +34217,7 @@
     "metaTitle": "黒部五郎岳 登山｜上級・定数65〜90| Yamatch",
     "metaDescription": "黒部五郎岳の難易度は上級、初心者には不向き。富山県、新宿から車で約6時間15分、コース定数65〜90、宿泊推奨。北アルプス奥部の秘峰。巨大なカール（五郎カール）が圧巻で、高山植物の宝庫。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-07",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "黒部五郎岳 登山｜上級・定数65〜90| Yamatch",
     "ogDescription": "黒部五郎岳の難易度は上級、初心者には不向き。富山県、新宿から車で約6時間15分、コース定数65〜90、宿泊推奨。北アルプス奥部の秘峰。巨大なカール（五郎カール）が圧巻で、高山植物の宝庫。",
@@ -34168,11 +34380,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
-      "light_crampons",
+      "winter_gear",
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -34226,7 +34443,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -34365,7 +34582,7 @@
     "metaTitle": "間ノ岳 登山｜上級・定数55〜75【百名山】| Yamatch",
     "metaDescription": "間ノ岳の難易度は上級、初心者には不向き。山梨県、新宿から車で約3時間5分、コース定数55〜75、宿泊推奨。日本第3位の高峰（奥穂高岳と同高）。北岳から続く白峰三山縦走の中間点。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "間ノ岳 登山｜上級・定数55〜75【百名山】| Yamatch",
     "ogDescription": "間ノ岳の難易度は上級、初心者には不向き。山梨県、新宿から車で約3時間5分、コース定数55〜75、宿泊推奨。日本第3位の高峰（奥穂高岳と同高）。北岳から続く白峰三山縦走の中間点。",
@@ -34511,11 +34728,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
-      "light_crampons",
+      "winter_gear",
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -34562,7 +34784,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -34701,7 +34923,7 @@
     "metaTitle": "農鳥岳 登山｜上級・定数76〜76【人気の山】| Yamatch",
     "metaDescription": "農鳥岳の難易度は上級、初心者には不向き。山梨県、新宿から車で約3時間5分、コース定数76〜76、宿泊推奨。白峰三山の最南端。残雪期に山腹に現れる農鳥（田植えを知らせる雪形）が名の由来。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "農鳥岳 登山｜上級・定数76〜76【人気の山】| Yamatch",
     "ogDescription": "農鳥岳の難易度は上級、初心者には不向き。山梨県、新宿から車で約3時間5分、コース定数76〜76、宿泊推奨。白峰三山の最南端。残雪期に山腹に現れる農鳥（田植えを知らせる雪形）が名の由来。",
@@ -34847,11 +35069,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
-      "light_crampons",
+      "winter_gear",
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -34910,7 +35137,7 @@
       "s-hard",
       "s-hard",
       "s-gear",
-      "s-ok",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-gear",
@@ -34992,7 +35219,7 @@
       40,
       55
     ],
-    "seasonNoGear": "7月〜10月",
+    "seasonNoGear": "8月〜9月",
     "season6Crampons": "11月〜6月",
     "routes": [
       {
@@ -35041,7 +35268,7 @@
       },
       {
         "question": "白山の登山シーズンはいつですか？おすすめの時期",
-        "answer": "5月〜11月が登りやすいシーズンです。冬季は積雪・凍結に注意が必要です。"
+        "answer": "白山の登山シーズンは7月〜10月が目安です。7月も上部に雪渓が残る年があり、軽アイゼン等が必要になることがあります。6月は残雪が多く、5月までは冬山装備が必要な時期です。残雪の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "warnBannerLevel": "yellow",
@@ -35054,7 +35281,7 @@
     "metaTitle": "白山 登山｜中級・日帰り可・石川県【百名山】| Yamatch",
     "metaDescription": "白山の難易度は中級、経験があると安心。石川県、新宿から車で約5時間30分、コース定数40〜55、日帰り可能。富士山・立山と並ぶ日本三霊山のひとつ。高山植物の宝庫で、クロユリの群生が有名。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-07",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "白山 登山｜中級・日帰り可・石川県【百名山】| Yamatch",
     "ogDescription": "白山の難易度は中級、経験があると安心。石川県、新宿から車で約5時間30分、コース定数40〜55、日帰り可能。富士山・立山と並ぶ日本三霊山のひとつ。高山植物の宝庫で、クロユリの群生が有名。",
@@ -35252,7 +35479,7 @@
       "winter_gear",
       "winter_gear",
       "light_crampons",
-      "no_crampons",
+      "light_crampons",
       "no_crampons",
       "no_crampons",
       "light_crampons",
@@ -36432,7 +36659,7 @@
       42,
       52
     ],
-    "seasonNoGear": "7月〜10月",
+    "seasonNoGear": "7月〜9月",
     "season6Crampons": "11月〜6月",
     "routes": [
       {
@@ -36494,7 +36721,7 @@
     "metaTitle": "南駒ヶ岳 登山｜上級・定数42〜52| Yamatch",
     "metaDescription": "南駒ヶ岳の難易度は上級、初心者には不向き。中央アルプス、新宿から車で約4時間10分、コース定数42〜52、宿泊推奨。バスでもアクセス可。中央アルプスの空木岳南に連なる二百名山。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "南駒ヶ岳 登山｜上級・定数42〜52| Yamatch",
     "ogDescription": "南駒ヶ岳の難易度は上級、初心者には不向き。中央アルプス、新宿から車で約4時間10分、コース定数42〜52、宿泊推奨。バスでもアクセス可。中央アルプスの空木岳南に連なる二百名山。",
@@ -36664,7 +36891,12 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -37203,7 +37435,7 @@
       42,
       56
     ],
-    "seasonNoGear": "7月〜10月",
+    "seasonNoGear": "7月〜9月",
     "season6Crampons": "11月〜6月",
     "routes": [
       {
@@ -37261,7 +37493,7 @@
     "metaTitle": "大天井岳 登山｜上級・定数42〜56| Yamatch",
     "metaDescription": "大天井岳（おてんしょうだけ・2,922m）は常念山脈の最高峰で北アルプス表銀座縦走路の要衝。コース定数42〜56、上級・宿泊推奨。合戦尾根〜燕岳経由のコースを解説。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "大天井岳 登山｜上級・定数42〜56| Yamatch",
     "ogDescription": "大天井岳（おてんしょうだけ・2,922m）は常念山脈の最高峰で北アルプス表銀座縦走路の要衝。コース定数42〜56、上級・宿泊推奨。合戦尾根〜燕岳経由のコースを解説。",
@@ -37421,7 +37653,12 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -37471,9 +37708,9 @@
       "s-hard",
       "s-hard",
       "s-hard",
+      "s-hard",
       "s-gear",
-      "s-ok",
-      "s-ok",
+      "s-gear",
       "s-ok",
       "s-gear",
       "s-hard",
@@ -37554,8 +37791,8 @@
       40,
       42
     ],
-    "seasonNoGear": "7月〜10月",
-    "season6Crampons": "11月〜6月",
+    "seasonNoGear": "9月",
+    "season6Crampons": "7月〜8月・10月",
     "routes": [
       {
         "name": "扇沢〜針ノ木雪渓〜針ノ木岳往復",
@@ -37614,7 +37851,7 @@
       },
       {
         "question": "針ノ木岳の登山シーズンはいつですか？おすすめの時期",
-        "answer": "針ノ木岳の登山シーズンは7月〜10月が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "針ノ木岳の登山シーズンは7月〜10月が目安です。7月〜8月は針ノ木雪渓に雪が残り、チェーンスパイクや6本爪アイゼンなどの軽アイゼン等が必要です。6月の雪渓は、12本爪アイゼン・ピッケル等の冬山装備が必要です。残雪の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": false,
@@ -37627,7 +37864,7 @@
     "metaTitle": "針ノ木岳 登山｜中級・定数40〜42| Yamatch",
     "metaDescription": "針ノ木岳の難易度は中級、経験があると安心。北アルプス後立山、新宿から車で約5時間15分、コース定数40〜42、日帰り可能。バスでもアクセス可。後立山連峰南端、日本三大雪渓のひとつ針ノ木大雪渓で知られる山。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "針ノ木岳 登山｜中級・定数40〜42| Yamatch",
     "ogDescription": "針ノ木岳の難易度は中級、経験があると安心。北アルプス後立山、新宿から車で約5時間15分、コース定数40〜42、日帰り可能。バスでもアクセス可。後立山連峰南端、日本三大雪渓のひとつ針ノ木大雪渓で知られる山。",
@@ -37776,11 +38013,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
+      "winter_gear",
+      "light_crampons",
       "light_crampons",
       "no_crampons",
-      "no_crampons",
-      "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -38195,7 +38437,7 @@
       "s-hard",
       "s-hard",
       "s-hard",
-      "s-gear",
+      "s-hard",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -38276,7 +38518,7 @@
       44,
       58
     ],
-    "seasonNoGear": "7月〜10月",
+    "seasonNoGear": "7月〜9月",
     "season6Crampons": "11月〜6月",
     "routes": [
       {
@@ -38321,7 +38563,7 @@
     "metaTitle": "野口五郎岳 登山｜上級・定数44〜58| Yamatch",
     "metaDescription": "野口五郎岳の難易度は上級、初心者には不向き。北アルプス裏銀座、新宿から車で約5時間40分、コース定数44〜58、日帰り可能。裏銀座縦走路中央に位置する北アルプスの静かな名峰。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "野口五郎岳 登山｜上級・定数44〜58| Yamatch",
     "ogDescription": "野口五郎岳の難易度は上級、初心者には不向き。北アルプス裏銀座、新宿から車で約5時間40分、コース定数44〜58、日帰り可能。裏銀座縦走路中央に位置する北アルプスの静かな名峰。",
@@ -38507,11 +38749,16 @@
       "winter_gear",
       "winter_gear",
       "winter_gear",
-      "light_crampons",
+      "winter_gear",
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
       "winter_gear",
       "winter_gear"
     ]
@@ -39034,7 +39281,7 @@
     "metaTitle": "御岳山 登山｜初級・定数14〜14【人気の山】| Yamatch",
     "metaDescription": "御岳山（929m）はケーブルカーで初心者・家族連れも安心の奥多摩の霊山。ロックガーデン周回コースの所要時間とコース定数14〜14、武蔵御嶽神社、新宿から電車でのアクセスを解説。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-09-25",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "御岳山 登山｜初級・定数14〜14【人気の山】| Yamatch",
     "ogDescription": "御岳山（929m）はケーブルカーで初心者・家族連れも安心の奥多摩の霊山。ロックガーデン周回コースの所要時間とコース定数14〜14、武蔵御嶽神社、新宿から電車でのアクセスを解説。",
@@ -39227,10 +39474,6 @@
       "fall"
     ],
     "seasonCalendar": [
-      "s-gear",
-      "s-gear",
-      "s-gear",
-      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -39238,11 +39481,14 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-gear"
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok"
     ],
     "calLegend": [
-      "アイゼン不要",
-      "軽アイゼン等"
+      "アイゼン不要"
     ],
     "trailhead": "軍畑駅",
     "parking": "軍畑駅付近（限定）",
@@ -39375,7 +39621,7 @@
     "metaTitle": "高水三山 登山｜初中級・定数25〜25| Yamatch",
     "metaDescription": "高水三山の難易度は初〜中級、登山初心者でも挑戦しやすい。東京都、新宿から車で約1時間25分、コース定数25〜25、日帰り可能。高水山・岩茸石山・惣岳山の3山を縦走する奥多摩入門コース。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "高水三山 登山｜初中級・定数25〜25| Yamatch",
     "ogDescription": "高水三山の難易度は初〜中級、登山初心者でも挑戦しやすい。東京都、新宿から車で約1時間25分、コース定数25〜25、日帰り可能。高水山・岩茸石山・惣岳山の3山を縦走する奥多摩入門コース。",
@@ -39481,10 +39727,6 @@
     "amapUrlLegacy": "https://maps.apple.com/?ll=35.8089,139.1589&q=高水三山登山口",
     "fareCheckedAt": "2026-10-07",
     "gearCalendar": [
-      "light_crampons",
-      "light_crampons",
-      "light_crampons",
-      "light_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -39492,7 +39734,11 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "light_crampons"
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons"
     ]
   },
   {
@@ -44434,7 +44680,7 @@
     "metaTitle": "明神ヶ岳 登山｜初中級・定数25〜29| Yamatch",
     "metaDescription": "明神ヶ岳の難易度は初〜中級、登山初心者でも挑戦しやすい。神奈川県。コース定数25〜29、電車アクセス・登山口・シーズン情報付き。2026年最新版。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": true,
     "ogTitle": "明神ヶ岳 登山｜初〜中級・神奈川県 | Yamatch",
     "climbedBtnStyle": "flat",
@@ -46831,7 +47077,7 @@
     "metaTitle": "百蔵山 登山｜初中級・定数14〜20| Yamatch",
     "metaDescription": "百蔵山の難易度は初〜中級、登山初心者でも挑戦しやすい。山梨県、新宿から車で約1時間35分、コース定数14〜20、日帰り可能。秀麗富嶽十二景の一座。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-09-27",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "百蔵山 登山｜初中級・定数14〜20| Yamatch",
     "ogDescription": "百蔵山の難易度は初〜中級、登山初心者でも挑戦しやすい。山梨県、新宿から車で約1時間35分、コース定数14〜20、日帰り可能。秀麗富嶽十二景の一座。",
@@ -46955,7 +47201,9 @@
     ],
     "calLegend": [
       "アイゼン不要"
-    ]
+    ],
+    "seasonNoGear": null,
+    "season6Crampons": null
   },
   {
     "id": "ogiyama",
@@ -47076,7 +47324,7 @@
     "metaTitle": "扇山 登山｜初中級・定数16〜22【人気の山】| Yamatch",
     "metaDescription": "扇山の難易度は初〜中級、登山初心者でも挑戦しやすい。山梨県、新宿から車で約1時間30分、コース定数16〜22、日帰り可能。中央線から眺める扇を広げたような山容が名前の由来。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-09-27",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "扇山 登山｜初中級・定数16〜22【人気の山】| Yamatch",
     "ogDescription": "扇山の難易度は初〜中級、登山初心者でも挑戦しやすい。山梨県、新宿から車で約1時間30分、コース定数16〜22、日帰り可能。中央線から眺める扇を広げたような山容が名前の由来。",
@@ -47200,7 +47448,9 @@
     ],
     "calLegend": [
       "アイゼン不要"
-    ]
+    ],
+    "seasonNoGear": null,
+    "season6Crampons": null
   },
   {
     "id": "makuyama",
@@ -48016,7 +48266,7 @@
       "spring",
       "fall"
     ],
-    "season": "通年（冬は積雪注意）",
+    "season": "通年（冬は積雪・凍結に注意）",
     "lat": 35.6119,
     "lng": 138.8531,
     "address": "山梨県大月市",
@@ -48049,6 +48299,8 @@
     "yamapUrl": "https://yamap.com/mountains/14282",
     "amapUrl": "https://maps.apple.com/?ll=35.6131642,138.7801138&q=%E7%AC%B9%E5%AD%90%E5%B3%A0%E7%99%BB%E5%B1%B1%E5%8F%A3",
     "seasonCalendar": [
+      "s-gear",
+      "s-gear",
       "s-ok",
       "s-ok",
       "s-ok",
@@ -48058,9 +48310,7 @@
       "s-ok",
       "s-ok",
       "s-ok",
-      "s-ok",
-      "s-ok",
-      "s-ok"
+      "s-gear"
     ],
     "driveTimeTachikawa": 60,
     "driveTachikawa": 60,
@@ -48090,7 +48340,7 @@
       },
       {
         "question": "笹子雁ヶ腹摺山の登山シーズンはいつですか？",
-        "answer": "通年（冬は積雪注意）が登りやすいシーズンです。"
+        "answer": "笹子雁ヶ腹摺山は通年登れます。12月〜2月は積雪や凍結があり、チェーンスパイクや6本爪アイゼンなどの軽アイゼン等が必要になることがあります。積雪・凍結の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": false,
@@ -48103,7 +48353,7 @@
     "metaTitle": "笹子雁ヶ腹摺山 登山｜初中級・定数14〜20| Yamatch",
     "metaDescription": "笹子雁ヶ腹摺山の難易度は初〜中級、登山初心者でも挑戦しやすい。山梨県、新宿から車で約90分、コース定数14〜20、日帰り可能。JR笹子駅から徒歩5分で登山口に入れる中央線沿いの名峰。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-06",
+    "mountainUpdated": "2026-10-08",
     "hasHeroPhotoScript": false,
     "ogTitle": "笹子雁ヶ腹摺山 登山｜初中級・定数14〜20| Yamatch",
     "ogDescription": "笹子雁ヶ腹摺山の難易度は初〜中級、登山初心者でも挑戦しやすい。山梨県、新宿から車で約90分、コース定数14〜20、日帰り可能。JR笹子駅から徒歩5分で登山口に入れる中央線沿いの名峰。",
@@ -48213,6 +48463,8 @@
     ],
     "fareCheckedAt": "2026-10-07",
     "gearCalendar": [
+      "light_crampons",
+      "light_crampons",
       "no_crampons",
       "no_crampons",
       "no_crampons",
@@ -48222,13 +48474,14 @@
       "no_crampons",
       "no_crampons",
       "no_crampons",
-      "no_crampons",
-      "no_crampons",
-      "no_crampons"
+      "light_crampons"
     ],
     "calLegend": [
-      "アイゼン不要"
-    ]
+      "アイゼン不要",
+      "軽アイゼン等"
+    ],
+    "seasonNoGear": "3月〜11月",
+    "season6Crampons": "12月〜2月"
   },
   {
     "id": "shodosan_namatate",
@@ -49463,7 +49716,7 @@
     "metaTitle": "日の出山 登山｜初中級・定数10〜18| Yamatch",
     "metaDescription": "日の出山の難易度は初〜中級、登山初心者でも挑戦しやすい。東京都、新宿から車で約65分、コース定数10〜18、日帰り可能。御岳山から縦走できる標高902mの展望の山。元旦の初日の出スポットとして都内から多くの登山者が訪れる。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-09-25",
+    "mountainUpdated": "2026-10-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "日の出山 登山｜初中級・定数10〜18| Yamatch",
     "ogDescription": "日の出山の難易度は初〜中級、登山初心者でも挑戦しやすい。東京都、新宿から車で約65分、コース定数10〜18、日帰り可能。御岳山から縦走できる標高902mの展望の山。元旦の初日の出スポットとして都内から多くの登山者が訪れる。",
@@ -49634,7 +49887,9 @@
     ],
     "calLegend": [
       "アイゼン不要"
-    ]
+    ],
+    "seasonNoGear": null,
+    "season6Crampons": null
   },
   {
     "id": "sengenrei",

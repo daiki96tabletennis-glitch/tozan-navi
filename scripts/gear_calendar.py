@@ -29,9 +29,11 @@ def from_legacy(season_calendar):
     return [FROM_CLS[c] for c in season_calendar]
 
 
-def from_ssot(gear_monthly, trail_periods):
+def from_ssot(gear_monthly, trail_periods, gear_splits=None):
     """新構造：装備の月別（gearMonthly）と登山道の閉鎖期間（trailPeriods）→ gearCalendar。
-    閉鎖が月の途中で始まる／終わる月は split にする。月の中ほどだけ閉鎖など2色で表せない月は例外にする。"""
+    閉鎖が月の途中で始まる／終わる月は split にする。月の中ほどだけ閉鎖など2色で表せない月は例外にする。
+    gear_splits（conditions.gearSplits）：装備の区分が月の途中で変わる月。{"10": {"before": .., "after": .., "changeDate": ..}}"""
+    gear_splits = gear_splits or {}
     out = []
     for i in range(12):
         month = i + 1
@@ -48,7 +50,8 @@ def from_ssot(gear_monthly, trail_periods):
                 if a <= datetime.date(a.year, month, d) <= b:
                     closed_days.add(d)
         if not closed_days:
-            out.append(gear)
+            sp = gear_splits.get(str(month))
+            out.append({'split': True, 'before': sp['before'], 'after': sp['after'], 'changeDate': sp['changeDate']} if sp else gear)
         elif len(closed_days) >= ndays:
             out.append('closed')
         elif closed_days == set(range(1, max(closed_days) + 1)):

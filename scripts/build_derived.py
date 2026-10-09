@@ -211,7 +211,8 @@ def derive(mt, TH, AC):
     mt['monthlyStatus'] = {'trail': trail, 'transport': transport, 'gear': gear}
     # 装備カレンダー（4区分＋月途中の切替）。閉鎖期間の開始・終了が月の途中なら2色にする
     mt['gearCalendar'] = gear_calendar.from_ssot((mt.get('conditions') or {}).get('gearMonthly') or ['normal'] * 12,
-                                                 (mt.get('conditions') or {}).get('trailPeriods'))
+                                                 (mt.get('conditions') or {}).get('trailPeriods'),
+                                                 (mt.get('conditions') or {}).get('gearSplits'))
     # 注意表示
     al = mt.get('alerts') or []
     if al:
