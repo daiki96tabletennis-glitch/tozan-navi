@@ -98,18 +98,59 @@ def render_link(link):
 
 
 def format_note_items(text):
-    """注記の長文を「。」「※」「改行」で区切り、箇条書きの項目リストにする。先頭の💡/※は除去する。"""
+    """注記の長文を「。」「※」「改行」で区切り、箇条書きの項目リストにする。先頭の💡/※は除去する。
+    かっこ（（）・()・「」）の中の「。」では区切らない（文が途中で切れて閉じかっこだけ残るのを防ぐ）。"""
     if not text:
         return []
     t = str(text).replace("\r", "")
     t = re.sub(r"\s*\n\s*", "。", t)
-    t = t.replace("💡", "").replace("※", "。")
-    items = []
-    for part in re.split(r"。", t):
-        part = part.strip(" 　")
-        if part:
-            items.append(part)
+    t = t.replace("💡", "")
+    items, buf, depth = [], [], 0
+    for ch in t:
+        if ch in "（(「":
+            depth += 1
+        elif ch in "）)」":
+            depth = max(0, depth - 1)
+        if (ch == "。" and depth == 0) or ch == "※":
+            part = "".join(buf).strip(" 　")
+            if part:
+                items.append(part)
+            buf = []
+            if ch == "※":
+                depth = 0
+            continue
+        buf.append(ch)
+    part = "".join(buf).strip(" 　")
+    if part:
+        items.append(part)
     return items
+
+
+def merged_note_items(summary_note, note):
+    """運賃欄の下の注記（summaryNote）と補足（note）を1つの箇条書きにまとめる。同じ内容・片方がもう片方に含まれる項目は1つにする。"""
+    out, keys = [], []
+    for it in format_note_items(summary_note) + format_note_items(note):
+        k = re.sub(r"[\s、，・（）()「」]", "", it)
+        dup = False
+        for i, s in enumerate(keys):
+            if k == s or (len(k) > 8 and k in s):
+                dup = True
+                break
+            if len(s) > 8 and s in k:
+                out[i], keys[i] = it, k   # 詳しいほうを残す
+                dup = True
+                break
+        if not dup:
+            out.append(it)
+            keys.append(k)
+    return out
+
+
+def render_note_items(items, css_class):
+    if not items:
+        return ""
+    lis = "".join(f"<li>{esc(i)}</li>" for i in items)
+    return f'<div class="{css_class}"><ul class="ts-note-list">{lis}</ul></div>'
 
 
 def render_note_list(text, css_class):
@@ -173,17 +214,16 @@ def render_ts_section(parsed, mountain):
             for d in available_deps if mountain.get(field_map[d][1]) is not None
         )
         default_fare = esc(format_fare(mountain.get(field_map[default_dep][1])))
-        summary_note_html = render_note_list(parsed.get("summaryNote"), "ts-summary-note") if parsed.get("summaryNote") else ""
         summary_html = (
             '<div class="ts-summary">'
             f'<div class="ts-dep-toggle">{toggle_btns}</div>'
             f'<span class="ts-time-val"{time_attrs}>{default_time}</span>'
             f'<span class="ts-fare-val"{fare_attrs}>{default_fare}</span>'
-            f'{summary_note_html}'
             "</div>"
         )
 
-    note_html = render_note_list(parsed.get("note"), "ts-note") if parsed.get("note") else ""
+    # 注記は1か所にまとめて出す（以前は運賃欄の下と補足欄の2か所に分かれていた）
+    note_html = render_note_items(merged_note_items(parsed.get("summaryNote"), parsed.get("note")), "ts-note")
 
     links_html = ""
     if parsed.get("links"):
