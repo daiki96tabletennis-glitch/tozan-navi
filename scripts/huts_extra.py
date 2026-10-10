@@ -1,0 +1,137 @@
+# -*- coding: utf-8 -*-
+"""山小屋まとめ（β）：長野県のポータルに載っていない山小屋（手入力）。build_huts_from_nagano.py が読み込む。
+
+営業期間（period）の出典：山と溪谷オンライン「北アルプス山小屋リスト2026」「中央・南アルプス山小屋リスト2026」（YK_N / YK_S）。
+  雲取山周辺は各小屋の公式サイト。
+予約の開始・方法・規模は、各小屋の公式サイト・予約サイトで確認できたものだけを書く（確認できないものは None）。
+  確認に使ったページは bsrc に残す。
+mountains：サイトのルートの登山口・途中・山頂にある小屋。other：別のルート・縦走で使う小屋 [(山ID, 関係)]。
+"""
+YK_N = 'https://www.yamakei-online.com/yama-ya/detail.php?id=2535'
+YK_S = 'https://www.yamakei-online.com/yama-ya/detail.php?id=2556'
+NANPUSU = 'https://npo.ashiyasu.com/news/384/'
+TFOREST = 'https://www.t-forest.com/news/detail/102'
+SUGOROKU = 'https://www.sugorokugoya.com/reservation/'
+YT = 'https://www.yamatan.net/hut/'
+TF_START = '7/11〜9/22の宿泊分は6月15日 17:00から順次（Web。電話は6月16日から。2026年）'
+
+
+def H(name, region, src, period, url, mountains, other=None, start=None, methods=None, required=False, cap=None, bsrc=None, capsrc=None):
+    return {'name': name, 'region': region, 'sourceUrl': src, 'period': period, 'officialUrl': url, 'mountainIds': mountains,
+            'otherMountains': [{'id': i, 'relation': r} for i, r in (other or [])], 'bookingStart': start, 'bookingMethods': methods,
+            'bookingRequired': required, 'capacity': cap, 'bookingSourceUrl': bsrc, 'capacitySourceUrl': capsrc or (bsrc if cap else None)}
+
+
+EXTRA_HUTS = [
+    # ── 南アルプス（山梨県側）
+    H('長衛小屋', '南アルプス', YK_S, 'GW、6/13～11/3、年末年始（予定）', 'https://choei.ashiyasu.com/', ['komagatake', 'senjogatake'],
+      start='4月1日から（2026年）', methods=['電話'], cap=27, bsrc='https://choei.ashiyasu.com/'),
+    H('甲斐駒ヶ岳七丈小屋', '南アルプス', YK_S, '通年（冬季は公式サイト参照）', 'https://www.kaikoma.info/', ['komagatake'],
+      start='冬季の宿泊分は10月5日 13:00から（2026年）', methods=['Web', '電話'], required=True, cap=24, bsrc='https://www.kaikoma.info/2026summer'),
+    H('仙水小屋', '南アルプス', YK_S, '6/中～10/下', None, ['komagatake']),
+    H('夜叉神ヒュッテ', '南アルプス', YK_S, '4/上～11/中', 'http://yashajin-hutte.com/', ['houou']),
+    H('夜叉神峠小屋', '南アルプス', YK_S, '4/末～11/上（7/中までと9月以降は週末中心の営業）', None, ['houou']),
+    H('南御室小屋', '南アルプス', YK_S, '6/上～11/2（予定）', 'http://www.houousan.com/', ['houou'],
+      start='宿泊日の1か月前から（GW営業分は例年4月1日から）', bsrc='http://www.houousan.com/'),
+    H('薬師岳小屋', '南アルプス', YK_S, '6/上～11/2（予定）', 'http://www.houousan.com/', ['houou'],
+      start='宿泊日の1か月前から（GW営業分は例年4月1日から）', bsrc='http://www.houousan.com/'),
+    H('鳳凰小屋', '南アルプス', YK_S, 'GW、5/23～11/14（公式サイトで11/7から延長と告知。年末年始は休み）', 'http://houougoya.jp/', ['houou']),
+    H('青木鉱泉', '南アルプス', YK_S, '6/上～10/中（夏期以外は金土日の営業）', 'https://www.mountaintrad.co.jp/~aokikosen/', ['houou']),
+    H('広河原山荘', '南アルプス', YK_S, '6/26～11/3', 'http://yamanashikotsu.co.jp/hirogawarasansou/', ['kitadake', 'ainodake', 'noutori'],
+      start='4月1日 10:00から（2026年）', methods=['Web（南ぷすリザーブ）'], required=True, bsrc=NANPUSU),
+    H('白根御池小屋', '南アルプス', YK_S, '6/15～11/3', 'https://shiraneoike.ashiyasu.com/', ['kitadake'],
+      start='4月1日 10:00から（2026年）', methods=['Web（南ぷすリザーブ）'], required=True, bsrc=NANPUSU),
+    H('北岳肩の小屋', '南アルプス', YK_S, '6/26～10/25（予定）', 'https://katanokoya.com/', ['kitadake'],
+      methods=['電話のみ'], bsrc='https://katanokoya.com/'),
+    H('北岳山荘', '南アルプス', YK_S, '6/15～11/3', 'https://www.city.minami-alps.yamanashi.jp/docs/kitadake-sansou.html', ['kitadake', 'ainodake', 'noutori'],
+      start='4月1日 10:00から（2026年）', methods=['Web（南ぷすリザーブ）'], required=True, bsrc=NANPUSU),
+    H('農鳥小屋', '南アルプス', YK_S, '7/上～9/下', 'https://daimonzawa.jp/', ['noutori'],
+      start='個人は4月25日 9:30から、8人以上の団体は4月20日 9:30から（2026年）', methods=['電話', 'Web（やまたん）'], cap=30, bsrc='https://www.yamatan.net/hut/notorigoya'),
+    H('大門沢小屋', '南アルプス', YK_S, '7/1～10/14', 'https://daimonzawa.jp/', [], other=[('noutori', '奈良田へ下る大門沢のルート')],
+      start='個人は4月25日 9:30から、8名以上の団体は4月20日 9:30から（2026年）', methods=['Web（やまたん）', '電話'], required=True, cap=65, bsrc='https://daimonzawa.jp/'),
+    # ── 南アルプス南部（静岡県側）
+    H('椹島ロッヂ', '南アルプス', YK_S, '4/26～11/3', 'https://www.t-forest.com/alpsinfo/sawarajima-lodge/', ['arakawadake', 'akaisidake'],
+      start=TF_START, methods=['Web', '電話'], required=True, bsrc=TFOREST),
+    H('千枚小屋', '南アルプス', YK_S, '7/11～10/11（予定）', 'https://www.t-forest.com/alpsinfo/climber/lodgeinfo/', ['arakawadake'],
+      start=TF_START, methods=['Web', '電話'], required=True, cap=80, bsrc=TFOREST),
+    H('中岳避難小屋', '南アルプス', YK_S, '7/11～9/22（予定）', 'https://www.t-forest.com/alpsinfo/climber/lodgeinfo/', ['arakawadake'],
+      start='予約制ではなく、当日の受付', bsrc='https://www.t-forest.com/alpsinfo/climber/lodgeinfo/'),
+    H('荒川小屋', '南アルプス', YK_S, '7/11～10/11（予定）', 'https://www.t-forest.com/alpsinfo/climber/lodgeinfo/', ['arakawadake', 'akaisidake'],
+      start=TF_START, methods=['Web', '電話'], required=True, cap=50, bsrc=TFOREST),
+    H('赤石岳避難小屋', '南アルプス', YK_S, '7/11～9/22（予定）', 'https://www.t-forest.com/alpsinfo/climber/lodgeinfo/', ['akaisidake', 'arakawadake'],
+      start='予約制ではなく、当日の受付', bsrc='https://www.t-forest.com/alpsinfo/climber/lodgeinfo/'),
+    H('赤石小屋', '南アルプス', YK_S, '7/11～10/11（予定）', 'https://www.t-forest.com/alpsinfo/climber/lodgeinfo/', ['akaisidake', 'arakawadake'],
+      start=TF_START, methods=['Web', '電話'], required=True, cap=50, bsrc=TFOREST),
+    H('聖平小屋', '南アルプス', YK_S, '7/11～9/23', 'https://ikawa-kanko.com/', ['hijiridade']),
+    H('茶臼小屋', '南アルプス', YK_S, '7/11～9/23', 'https://ikawa-kanko.com/', [], other=[('terkari', '静岡県側・茶臼岳経由のルート')]),
+    # ── 北アルプス（富山県・岐阜県側ほか）
+    H('中の湯温泉旅館', '北アルプス', YK_N, '通年（冬季不定休）', 'https://www.nakanoyu-onsen.jp/', ['yakedake'],
+      start='冬期（12/19〜3/31）の宿泊分は10月12日 0:00から（Web。2026年）', methods=['Web', '電話'], bsrc='https://www.nakanoyu-onsen.jp/'),
+    H('槍平小屋', '北アルプス', YK_N, '7/10～10/12', 'https://www.yaridaira.jp/', ['yari'],
+      start='5月1日 12:00から（2026年度）', methods=['Web（やまたん）'], required=True, cap=60, bsrc='https://www.yaridaira.jp/', capsrc=YT + 'yaridairagoya'),
+    H('笠ヶ岳山荘', '北アルプス', YK_N, '7/10～10/11', 'https://kasagatake.com/', ['kasagatake'],
+      start='6月1日から', bsrc='https://kasagatake.com/'),
+    H('わさび平小屋', '北アルプス', YK_N, '7/10～10/20', 'https://www.sugorokugoya.com/wasabi/', [], other=[('kasagatake', '笠新道の登山口の先。鏡平経由のルート')],
+      start='6月10日〜16日に順次受付開始（2026年）', methods=['Web'], bsrc=SUGOROKU),
+    H('黒部五郎小舎', '北アルプス', YK_N, '7/10～10/15', 'https://www.sugorokugoya.com/kurobe/', [], other=[('kurobegorodam', '山頂の東側。三俣蓮華岳方面への縦走')],
+      start='6月10日〜16日に順次受付開始（2026年）', methods=['Web'], bsrc=SUGOROKU),
+    H('太郎平小屋', '北アルプス', YK_N, '6/6～10/18', 'https://ltaro.com/lodge/tarodaira-goya/', ['yakushidake', 'kurobegorodam'],
+      start='5月7日 9:00から（Web。電話は5月11日から。2026年）', methods=['Web', '電話'], required=True, cap=150,
+      bsrc='https://ltaro.com/news/post-406/', capsrc='https://ltaro.com/lodge/tarodaira-goya/'),
+    H('薬師岳山荘', '北アルプス', YK_N, '7/上～10/上', 'http://www.yakushidake-sansou.com/', ['yakushidake'],
+      start='5月から（山行の2か月ほど前に連絡）', methods=['電話のみ'], bsrc='https://www.yakushidake-sansou.com/2026/0205/15845/'),
+    H('ホテル立山', '北アルプス', YK_N, '4/15～11/下（宿泊は8/30まで）', 'https://h-tateyama.alpen-route.co.jp/', ['tateyama']),
+    H('立山室堂山荘', '北アルプス', YK_N, '4/15～11/23', 'http://www.murodou.co.jp/', ['tateyama', 'tsurugi'],
+      methods=['Web（やまたん）', '電話'], required=True, cap=100, bsrc='https://www.yamakei-online.com/mt_info/info_detail.php?id=37608', capsrc=YT + 'tateyamamurodosanso'),
+    H('みくりが池温泉', '北アルプス', YK_N, '4/15～11/24', 'http://www.mikuri.com/', ['tateyama']),
+    H('雷鳥荘', '北アルプス', YK_N, '4/15～11/24', 'http://www.raichoso.com/', ['tateyama']),
+    H('雷鳥沢ヒュッテ', '北アルプス', YK_N, '4/18～10/6', 'https://www.raichozawa.net/', ['tateyama', 'tsurugi'],
+      start='宿泊日の3か月前から', methods=['Web（やまたん）', '電話', 'FAX'], cap=250, bsrc='https://www.raichozawa.net/', capsrc='https://www.raichozawa.net/'),
+    H('一の越山荘', '北アルプス', YK_N, '4/25～10/17', 'http://tateyama-1nokoshi.in.coocan.jp/', ['tateyama'],
+      methods=['電話のみ'], cap=130, bsrc='http://tateyama-1nokoshi.in.coocan.jp/syukuhaku/contact.html', capsrc=YT + 'ichinokoshisanso'),
+    H('内蔵助山荘', '北アルプス', YK_N, '7/16～9/30', 'https://kuranosukesanso.jimdofree.com/', ['tateyama'],
+      start='宿泊日の2か月前から（例：7月20日泊は5月20日から）', methods=['電話'], bsrc='https://kuranosukesanso.jimdofree.com/'),
+    H('剱御前小舎', '北アルプス', YK_N, '4/28～10/18', 'https://www.tsurugigozengoya.net/', ['tsurugi'],
+      methods=['電話'], bsrc='https://www.tsurugigozengoya.net/'),
+    H('剱澤小屋', '北アルプス', YK_N, '7/中～10/上', 'https://tsurugisawagoya.com/', ['tsurugi'],
+      start='1月10日 13:00から（2026年）', methods=['Web（やまたん）', '電話'], cap=56, bsrc='https://tsurugisawagoya.com/', capsrc=YT + 'tsurugisawagoya'),
+    H('剣山荘', '北アルプス', YK_N, '7/1～10/上', 'https://www.kenzanso.com/', ['tsurugi'],
+      start='Webは2月2日 12:00から、電話は3月5日 10:00から（2026年）', methods=['Web（やまたん）', '電話'], cap=130, bsrc='https://www.yamatan.net/hut/kenzanso'),
+    H('早月小屋', '北アルプス', YK_N, '7/17～10/4（公式サイトの記載）', 'https://hayatsukikoya.com/', ['tsurugi']),
+    H('馬場島荘', '北アルプス', YK_N, '5/上～11/中、年末年始（7/22～9/23を除く水曜休）', 'https://www.town.kamiichi.toyama.jp/page/2026.html', ['tsurugi'],
+      methods=['Web（やまたんのみ。電話予約は不可）'], required=True, cap=26, bsrc=YT + 'banbazimaso'),
+    # ── 雲取山周辺（各小屋の公式サイト）
+    H('雲取山荘', '奥秩父・奥多摩', 'http://kumotorisansou.com/kumo_hp_3.htm', '通年', 'http://kumotorisansou.com/', ['kumotori'],
+      start='宿泊日の3か月前から（10名以上の団体はそれより前でも可）', methods=['電話', 'FAX'], required=True, bsrc='http://kumotorisansou.com/kumo_hp_3.htm'),
+    H('七ツ石小屋', '奥秩父・奥多摩', 'https://nanatsuishigoya.com/', '通年（365日営業）', 'https://nanatsuishigoya.com/', ['kumotori'],
+      methods=['電話（小屋泊）', 'Web（テント泊は「とっとこ」）'], bsrc='https://nanatsuishigoya.com/'),
+    H('三条の湯', '奥秩父・奥多摩', 'https://www.sanjyounoyu.com/', '通年', 'https://www.sanjyounoyu.com/', [], other=[('kumotori', '三条ダルミ経由のルート（後山林道は通行止めに注意）')]),
+    # ── 山梨の山（大菩薩・金峰・瑞牆・三ツ峠・雁坂・和名倉）。営業期間の出典は sourceUrl（公式サイト・自治体の観光サイト・山と溪谷オンラインの小屋ページ）
+    H('ロッヂ長兵衛', '奥秩父・大菩薩', 'https://www.yamakei-online.com/lodge/detail.php?id=569', '通年（12月～4月中旬は土・日曜と年末年始の営業。その他の日は要確認）', 'http://www.choubei.info/', ['okutama', 'koganzan'],
+      methods=['電話'], bsrc='http://www.choubei.info/'),
+    H('福ちゃん荘', '奥秩父・大菩薩', 'https://www.koshu-kankou.jp/map/m4945.html', '4月下旬～11月下旬（平日は不定休、土日祝は無休）。冬期は予約のみ営業', 'http://www.kcnet.ne.jp/~fukuchan/', ['okutama', 'koganzan'],
+      start='個人は宿泊の1週間前から、団体は3か月前から', bsrc='http://www.kcnet.ne.jp/~fukuchan/'),
+    H('介山荘', '奥秩父・大菩薩', 'https://www.yamakei-online.com/lodge/detail.php?id=570', '通年（平日は不定休あり、年末年始は営業）', 'http://www.kaizansou.jp/', ['okutama', 'koganzan']),
+    H('瑞牆山荘', '奥秩父・大菩薩', 'https://www.mizugaki.burari.biz/inn.html', '4月上旬～11月下旬', 'https://www.mizugaki.burari.biz/', ['mizugaki'],
+      methods=['電話'], bsrc='https://www.mizugaki.burari.biz/inn.html'),
+    H('富士見平小屋', '奥秩父・大菩薩', 'https://www.fujimidairagoya.jp/pages/2737227/page_201903311531', '3/10～11月下旬（テント場は通年）', 'https://www.fujimidairagoya.jp/', ['mizugaki'],
+      other=[('kinpusan', '瑞牆山荘側から登るルート')], methods=['電話'], cap=10, bsrc='https://www.fujimidairagoya.jp/pages/2737227/page_201903311531'),
+    H('大弛小屋', '奥秩父・大菩薩', 'https://www.yamakei-online.com/mt_info/info_detail.php?info_id=1070', '4月下旬～11月下旬（2026年は4/29から）', None, ['kinpusan'],
+      start='宿泊の2日前までに電話で予約', methods=['電話', 'FAX（2週間以上先のみ）'], required=True, cap=30, bsrc=YT + 'odarumigoya'),
+    H('金峰山荘', '奥秩父・大菩薩', 'https://mawarime-daira.com/', '4/25～11月下旬', 'https://mawarime-daira.com/', ['kinpusan'],
+      start='2月2日 10:00から（2026年度）', methods=['Web'], bsrc='https://mawarime-daira.com/'),
+    H('雁坂小屋', '奥秩父・大菩薩', 'http://karisakakoya.blogspot.com/', '4/29～11/22', 'http://karisakakoya.blogspot.com/', ['karisaka'],
+      methods=['電話'], required=True, cap=24, bsrc='http://karisakakoya.blogspot.com/'),
+    H('将監小屋', '奥秩父・大菩薩', 'https://www.yamakei-online.com/lodge/detail.php?id=531', '4月下旬～11月下旬', None, ['nakawarayama']),
+    H('四季楽園', '奥秩父・大菩薩', 'https://shikirakuen.com/', '通年', 'https://shikirakuen.com/', ['mitsutoge'],
+      methods=['Web（宿泊予約サイト）', '電話'], bsrc='https://tabi-mag.jp/yamagoya-rakuen/'),
+    H('三ツ峠山荘', '奥秩父・大菩薩', 'http://mitsutouge.net/?page_id=609', '通年（要予約）', 'http://mitsutouge.net/', ['mitsutoge'],
+      start='Webは宿泊の4日前まで', methods=['Web（やまたん）', '電話'], required=True, cap=50,
+      bsrc='https://www.yamatan.net/hut/mitsutogesanso'),
+    # ── 丹沢
+    H('尊仏山荘', '丹沢', 'https://sonbutsusanso.amebaownd.com/', '通年', 'https://sonbutsusanso.amebaownd.com/', ['tonosaki', 'tanzawa', 'hirugata'],
+      start='3か月先の末日分まで予約可（例：4月中なら7月31日分まで）。遅くとも前日までに予約', methods=['電話', 'Web（やまたん）'], required=True, cap=40,
+      bsrc=YT + 'sonbutsusanso'),
+    H('みやま山荘', '丹沢', 'https://miyamasansou.com/page-230/', '通年', 'https://miyamasansou.com/', ['tanzawa', 'hirugata']),
+    H('蛭ヶ岳山荘', '丹沢', 'https://www.yamakei-online.com/yama-ya/detail.php?id=2852', '通年', None, ['hirugata']),
+]

@@ -1,0 +1,197 @@
+{
+ "note": "山小屋の公式ページから、年ごとの値（予約の開始・営業期間）を取り出す決まり。regex は公式ページの本文（1行）に当てる。out の {n} は n番目のかっこ。year/month/day は、妥当性の確認に使うかっこの番号",
+ "recipes": [
+  {
+   "hut": "槍平小屋",
+   "field": "bookingStart",
+   "url": "https://www.yaridaira.jp/",
+   "regex": "(20\\d\\d)年度の予約受付は\\s*(\\d{1,2})/(\\d{1,2})[^0-9]{0,8}(\\d{1,2})[：:](\\d{2})\\s*より開始",
+   "out": "{2}月{3}日 {4}:{5}から（{1}年度）",
+   "year": 1,
+   "month": 2,
+   "day": 3
+  },
+  {
+   "hut": "徳沢ロッヂ",
+   "field": "bookingStart",
+   "url": "https://www.m-kamikouchi.jp/tokuzawalodge/",
+   "regex": "(２０\\d\\d|20\\d\\d)年シーズンの徳沢ロッヂの宿泊予約につきましては、(?:２０\\d\\d|20\\d\\d)年(\\d{1,2}|[０-９]{1,2})月(\\d{1,2}|[０-９]{1,2})日午前(\\d{1,2}|[０-９]{1,2})時より予約を開始",
+   "out": "{2}月{3}日 {4}:00から（{1}年）",
+   "year": 1,
+   "month": 2,
+   "day": 3
+  },
+  {
+   "hut": "県営光岳小屋",
+   "field": "bookingStart",
+   "url": "https://www.chillnn.com/1863f95fe2d74",
+   "regex": "予約受付は(\\d{1,2})月(\\d{1,2})日[^0-9]{0,6}(\\d{1,2}|[０-９]{1,2})[：:](\\d{2}|[０-９]{2})スタート",
+   "out": "{1}月{2}日 {3}:{4}から",
+   "month": 1,
+   "day": 2
+  },
+  {
+   "hut": "白根御池小屋",
+   "field": "bookingStart",
+   "url": "https://shiraneoike.ashiyasu.com/",
+   "regex": "(２０\\d\\d|20\\d\\d)年(\\d{1,2}|[０-９]{1,2})月(\\d{1,2}|[０-９]{1,2})日[^0-9０-９]{0,6}午前(\\d{1,2}|[０-９]{1,2})時予約受付開始",
+   "out": "{2}月{3}日 {4}:00から（{1}年）",
+   "year": 1,
+   "month": 2,
+   "day": 3
+  },
+  {
+   "hut": "長衛小屋",
+   "field": "bookingStart",
+   "url": "https://choei.ashiyasu.com/",
+   "regex": "(20\\d\\d)年シーズン、(\\d{1,2})/(\\d{1,2})より予約受付開始",
+   "out": "{2}月{3}日から（{1}年）",
+   "year": 1,
+   "month": 2,
+   "day": 3
+  },
+  {
+   "hut": "聖光小屋",
+   "field": "bookingStart",
+   "url": "https://seikougoya.info/",
+   "regex": "ご予約は(20\\d\\d)年(\\d{1,2})月(\\d{1,2})日から受け付けます",
+   "out": "{2}月{3}日から（{1}年）",
+   "year": 1,
+   "month": 2,
+   "day": 3
+  },
+  {
+   "hut": "笠ヶ岳山荘",
+   "field": "bookingStart",
+   "url": "https://kasagatake.com/",
+   "regex": "宿泊予約開始日\\s*(\\d{1,2})月(\\d{1,2})日",
+   "out": "{1}月{2}日から",
+   "month": 1,
+   "day": 2
+  },
+  {
+   "hut": "剣山荘",
+   "field": "bookingStart",
+   "url": "https://www.yamatan.net/hut/kenzanso",
+   "regex": "(\\d{1,2})月(\\d{1,2})日(\\d{1,2})時よりweb予約を承ります",
+   "out": "Webは{1}月{2}日 {3}:00から（電話は公式サイトで確認）",
+   "month": 1,
+   "day": 2
+  },
+  {
+   "hut": "内蔵助山荘",
+   "field": "bookingStart",
+   "url": "https://kuranosukesanso.jimdofree.com/",
+   "regex": "宿泊予定日の(\\d|[０-９])ヶ月前から受付",
+   "out": "宿泊日の{1}か月前から"
+  },
+  {
+   "hut": "三伏峠小屋",
+   "field": "bookingStart",
+   "url": "https://sanpukutouge.com/",
+   "regex": "ご宿泊日の(\\d{1,3})日前より、ネット予約",
+   "out": "宿泊日の{1}日前から（Web）"
+  },
+  {
+   "hut": "唐松岳頂上山荘",
+   "field": "bookingStart",
+   "url": "http://karamatsu.jp/",
+   "regex": "ご宿泊日の(\\d{1,3})日前からWEBでの受付",
+   "out": "宿泊日の{1}日前から（Web）"
+  },
+  {
+   "hut": "雷鳥沢ヒュッテ",
+   "field": "bookingStart",
+   "url": "https://www.raichozawa.net/",
+   "regex": "ご予約は予約日の(\\d)カ月前から",
+   "out": "宿泊日の{1}か月前から"
+  },
+  {
+   "hut": "雲取山荘",
+   "field": "bookingStart",
+   "url": "http://kumotorisansou.com/kumo_hp_3.htm",
+   "regex": "個人での予約受付は(\\d|[０-９])ヶ月前の日付からの受付",
+   "out": "宿泊日の{1}か月前から（10名以上の団体はそれより前でも可）"
+  },
+  {
+   "hut": "穂高岳山荘",
+   "field": "season",
+   "url": "https://www.hotakadakesanso.com/",
+   "regex": "(20\\d\\d)年の営業期間：(\\d{1,2})月(\\d{1,2})日〜(\\d{1,2})月(\\d{1,2})日",
+   "out": "{1}年：{2}/{3}〜{4}/{5}",
+   "year": 1,
+   "month": 2,
+   "day": 3
+  },
+  {
+   "hut": "白馬山荘",
+   "field": "season",
+   "url": "https://hakubakan.com/lodge/hakubasanso/",
+   "regex": "(20\\d\\d)年営業期間：(\\d{1,2})月(\\d{1,2})日〜(\\d{1,2})月(\\d{1,2})日",
+   "out": "{1}年：{2}/{3}〜{4}/{5}",
+   "year": 1,
+   "month": 2,
+   "day": 3
+  },
+  {
+   "hut": "白馬大池山荘",
+   "field": "season",
+   "url": "https://hakubakan.com/lodge/hakubaoikesanso/",
+   "regex": "(20\\d\\d)年営業期間：(\\d{1,2})月(\\d{1,2})日〜(\\d{1,2})月(\\d{1,2})日",
+   "out": "{1}年：{2}/{3}〜{4}/{5}",
+   "year": 1,
+   "month": 2,
+   "day": 3
+  },
+  {
+   "hut": "キレット小屋",
+   "field": "season",
+   "url": "https://hakubakan.com/lodge/kiretto/",
+   "regex": "(20\\d\\d)年営業期間：(\\d{1,2})月(\\d{1,2})日〜(\\d{1,2})月(\\d{1,2})日",
+   "out": "{1}年：{2}/{3}〜{4}/{5}",
+   "year": 1,
+   "month": 2,
+   "day": 3
+  },
+  {
+   "hut": "栂池ヒュッテ",
+   "field": "season",
+   "url": "https://hakubakan.com/lodge/tsugaikehutte/",
+   "regex": "(20\\d\\d)年営業期間：(\\d{1,2})月(\\d{1,2})日〜(\\d{1,2})月(\\d{1,2})日",
+   "out": "{1}年：{2}/{3}〜{4}/{5}",
+   "year": 1,
+   "month": 2,
+   "day": 3
+  },
+  {
+   "hut": "立山室堂山荘",
+   "field": "season",
+   "url": "http://www.murodou.co.jp/",
+   "regex": "(２０\\d\\d|20\\d\\d)年の営業は(\\d{1,2}|[０-９]{1,2})月(\\d{1,2}|[０-９]{1,2})日〜(\\d{1,2}|[０-９]{1,2})月(\\d{1,2}|[０-９]{1,2})日",
+   "out": "{1}年：{2}/{3}〜{4}/{5}",
+   "year": 1,
+   "month": 2,
+   "day": 3
+  },
+  {
+   "hut": "早月小屋",
+   "field": "season",
+   "url": "https://hayatsukikoya.com/",
+   "regex": "(20\\d\\d)年の営業は(\\d{1,2})月(\\d{1,2})日[^0-9]{0,6}～(\\d{1,2})月(\\d{1,2})日",
+   "out": "{1}年：{2}/{3}〜{4}/{5}",
+   "year": 1,
+   "month": 2,
+   "day": 3
+  },
+  {
+   "hut": "蓼科山頂ヒュッテ",
+   "field": "season",
+   "url": "http://tateshinayama.com/",
+   "regex": "(20\\d\\d)年度の営業期間は、(\\d{1,2})/(\\d{1,2})[^0-9]{0,6}の宿泊～(\\d{1,2})/(\\d{1,2})",
+   "out": "{1}年：{2}/{3}〜{4}/{5}",
+   "year": 1,
+   "month": 2,
+   "day": 3
+  }
+ ]
+}

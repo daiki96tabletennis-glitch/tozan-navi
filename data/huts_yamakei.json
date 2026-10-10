@@ -1,0 +1,810 @@
+{
+ "note": "山と溪谷オンライン「山小屋・宿泊施設」の各ページから取得した収容人数・営業期間（参考値）。scripts/update_huts.py が取り直す",
+ "checkedAt": "2026-10-10",
+ "huts": {
+  "槍ヶ岳山荘": {
+   "lodgeId": "979",
+   "capacity": 400,
+   "capacityText": null,
+   "period": "4/27～11/3"
+  },
+  "ヒュッテ大槍": {
+   "lodgeId": "981",
+   "capacity": 80,
+   "capacityText": null,
+   "period": "7/1～10/11"
+  },
+  "槍沢ロッヂ": {
+   "lodgeId": "978",
+   "capacity": 150,
+   "capacityText": null,
+   "period": "4/27～11/2"
+  },
+  "穂高岳山荘": {
+   "lodgeId": "976",
+   "capacity": 250,
+   "capacityText": null,
+   "period": "4/27～11/3"
+  },
+  "涸沢小屋": {
+   "lodgeId": "974",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "4/27～11/初"
+  },
+  "涸沢ヒュッテ": {
+   "lodgeId": "973",
+   "capacity": 180,
+   "capacityText": null,
+   "period": "4/下～11/初"
+  },
+  "横尾山荘": {
+   "lodgeId": "971",
+   "capacity": 250,
+   "capacityText": null,
+   "period": "4/27～11/3"
+  },
+  "徳沢ロッヂ": {
+   "lodgeId": "970",
+   "capacity": 70,
+   "capacityText": null,
+   "period": "4/下～11/上"
+  },
+  "氷壁の宿 徳澤園": {
+   "lodgeId": "969",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "4/27頃～11/3頃（開始日・終了日は要問合せ）"
+  },
+  "岳沢小屋": {
+   "lodgeId": "963",
+   "capacity": 60,
+   "capacityText": null,
+   "period": "4/27～11/3"
+  },
+  "焼岳小屋": {
+   "lodgeId": "962",
+   "capacity": 25,
+   "capacityText": null,
+   "period": "6/中～10/中"
+  },
+  "有明荘": {
+   "lodgeId": "924",
+   "capacity": 73,
+   "capacityText": null,
+   "period": "4/下～11/下　5・6・11月の第2火曜と7・9月の第1火曜休館"
+  },
+  "中房温泉": {
+   "lodgeId": "925",
+   "capacity": 300,
+   "capacityText": null,
+   "period": "4/末～11/末"
+  },
+  "燕山荘": {
+   "lodgeId": "926",
+   "capacity": 650,
+   "capacityText": null,
+   "period": "4/下～11/下　年末年始の約2週間（日程は年により変動）"
+  },
+  "餓鬼岳小屋": {
+   "lodgeId": "927",
+   "capacity": 60,
+   "capacityText": null,
+   "period": "7/上～10/中"
+  },
+  "大天荘": {
+   "lodgeId": "928",
+   "capacity": 150,
+   "capacityText": null,
+   "period": "6/下～11/上"
+  },
+  "大天井ヒュッテ": {
+   "lodgeId": "929",
+   "capacity": 70,
+   "capacityText": null,
+   "period": "7/1～10/9"
+  },
+  "常念小屋": {
+   "lodgeId": "931",
+   "capacity": 300,
+   "capacityText": null,
+   "period": "4/29～11/3"
+  },
+  "蝶ヶ岳ヒュッテ": {
+   "lodgeId": "932",
+   "capacity": 200,
+   "capacityText": null,
+   "period": "4/下～11/3"
+  },
+  "大滝山荘": {
+   "lodgeId": "933",
+   "capacity": 30,
+   "capacityText": null,
+   "period": "7/20～8/20"
+  },
+  "七倉山荘": {
+   "lodgeId": "937",
+   "capacity": 32,
+   "capacityText": null,
+   "period": "4/中～11/末"
+  },
+  "烏帽子小屋": {
+   "lodgeId": "940",
+   "capacity": 70,
+   "capacityText": null,
+   "period": "7/上～10/上（状況により変更あり）"
+  },
+  "野口五郎小屋": {
+   "lodgeId": "941",
+   "capacity": 50,
+   "capacityText": null,
+   "period": "7/初～9/下"
+  },
+  "栂池ヒュッテ": {
+   "lodgeId": "883",
+   "capacity": 70,
+   "capacityText": null,
+   "period": "4/下～5/上、6/上～10/下（予定）"
+  },
+  "栂池山荘": {
+   "lodgeId": "884",
+   "capacity": 70,
+   "capacityText": null,
+   "period": "6/1～10/中"
+  },
+  "白馬大池山荘": {
+   "lodgeId": "885",
+   "capacity": 150,
+   "capacityText": null,
+   "period": "7/上～10/上（予定）"
+  },
+  "猿倉荘": {
+   "lodgeId": "887",
+   "capacity": 30,
+   "capacityText": null,
+   "period": "ゴールデンウィーク　7/4～10/11"
+  },
+  "白馬山荘": {
+   "lodgeId": "890",
+   "capacity": 800,
+   "capacityText": null,
+   "period": "4/下～10/中（予定）"
+  },
+  "村営白馬岳頂上宿舎": {
+   "lodgeId": "891",
+   "capacity": 200,
+   "capacityText": null,
+   "period": "7/4～9/27"
+  },
+  "村営天狗山荘": {
+   "lodgeId": "911",
+   "capacity": 63,
+   "capacityText": null,
+   "period": "7/18～9/27"
+  },
+  "唐松岳頂上山荘": {
+   "lodgeId": "913",
+   "capacity": 350,
+   "capacityText": null,
+   "period": "ゴールデンウィーク　7/上～10/中"
+  },
+  "村営八方池山荘": {
+   "lodgeId": "912",
+   "capacity": 40,
+   "capacityText": null,
+   "period": "通年"
+  },
+  "五竜山荘": {
+   "lodgeId": "914",
+   "capacity": 250,
+   "capacityText": null,
+   "period": "6/下～10/中"
+  },
+  "冷池山荘": {
+   "lodgeId": "916",
+   "capacity": 200,
+   "capacityText": null,
+   "period": "4/下～5/上　6/中～10/中"
+  },
+  "種池山荘": {
+   "lodgeId": "917",
+   "capacity": 90,
+   "capacityText": null,
+   "period": "7/上～10/中"
+  },
+  "針ノ木小屋": {
+   "lodgeId": "921",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "未定"
+  },
+  "大沢小屋": {
+   "lodgeId": "922",
+   "capacity": 20,
+   "capacityText": null,
+   "period": "未定"
+  },
+  "肩ノ小屋": {
+   "lodgeId": "992",
+   "capacity": 200,
+   "capacityText": null,
+   "period": "6/下～9/30"
+  },
+  "位ヶ原山荘": {
+   "lodgeId": "993",
+   "capacity": 16,
+   "capacityText": null,
+   "period": "12/26～1/11　2/6～10/下"
+  },
+  "北沢峠 こもれび山荘": {
+   "lodgeId": "675",
+   "capacity": 110,
+   "capacityText": null,
+   "period": "4/25～11/3"
+  },
+  "大平山荘": {
+   "lodgeId": "674",
+   "capacity": 80,
+   "capacityText": null,
+   "period": "7/1～10/下"
+  },
+  "仙丈小屋": {
+   "lodgeId": "680",
+   "capacity": 55,
+   "capacityText": null,
+   "period": "6/14～10/下"
+  },
+  "馬の背ヒュッテ": {
+   "lodgeId": "678",
+   "capacity": null,
+   "capacityText": null,
+   "period": "7月上旬～10月中旬"
+  },
+  "塩見小屋": {
+   "lodgeId": "707",
+   "capacity": 40,
+   "capacityText": null,
+   "period": "GW、7/1～10/15"
+  },
+  "三伏峠小屋": {
+   "lodgeId": "714",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "7/上～9/下"
+  },
+  "聖光小屋": {
+   "lodgeId": "736",
+   "capacity": null,
+   "capacityText": null,
+   "period": null
+  },
+  "県営光岳小屋": {
+   "lodgeId": "739",
+   "capacity": 40,
+   "capacityText": null,
+   "period": "未定"
+  },
+  "西駒山荘": {
+   "lodgeId": "1027",
+   "capacity": 40,
+   "capacityText": null,
+   "period": "7/第2土曜～10/体育の日"
+  },
+  "駒ヶ岳頂上山荘": {
+   "lodgeId": "1030",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "7/上～10/初"
+  },
+  "宝剣山荘": {
+   "lodgeId": "1031",
+   "capacity": 120,
+   "capacityText": null,
+   "period": "4月～11/初、年末年始"
+  },
+  "天狗荘": {
+   "lodgeId": "1032",
+   "capacity": 200,
+   "capacityText": null,
+   "period": "7月～10/初（要問合せ）"
+  },
+  "木曽殿山荘": {
+   "lodgeId": "1035",
+   "capacity": 80,
+   "capacityText": null,
+   "period": "7/1～10/上"
+  },
+  "空木駒峰ヒュッテ": {
+   "lodgeId": "1036",
+   "capacity": 32,
+   "capacityText": null,
+   "period": "7/18～10/11管理人在駐(7～8月は常駐、9～10月は不在の場合あり)"
+  },
+  "越百小屋": {
+   "lodgeId": "1040",
+   "capacity": 20,
+   "capacityText": null,
+   "period": "7/1～10/体育の日（小屋主人駐在）　期間外無人"
+  },
+  "蓼科山頂ヒュッテ": {
+   "lodgeId": "799",
+   "capacity": 70,
+   "capacityText": null,
+   "period": "4/下～11/初"
+  },
+  "蓼科山荘": {
+   "lodgeId": "798",
+   "capacity": 50,
+   "capacityText": null,
+   "period": "4/下～11/上"
+  },
+  "硫黄岳山荘": {
+   "lodgeId": "766",
+   "capacity": 200,
+   "capacityText": null,
+   "period": "4/下～11/上"
+  },
+  "赤岳頂上山荘": {
+   "lodgeId": "765",
+   "capacity": 200,
+   "capacityText": null,
+   "period": "5/中～11/上　要問合せ"
+  },
+  "赤岳天望荘": {
+   "lodgeId": "764",
+   "capacity": 200,
+   "capacityText": null,
+   "period": "4/下～11/初　12/20～2/下"
+  },
+  "行者小屋": {
+   "lodgeId": "763",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "6/上～11/上　12/28～1/5"
+  },
+  "赤岳鉱泉": {
+   "lodgeId": "762",
+   "capacity": 200,
+   "capacityText": null,
+   "period": "通年"
+  },
+  "赤岳山荘": {
+   "lodgeId": "761",
+   "capacity": 80,
+   "capacityText": null,
+   "period": "通年"
+  },
+  "美濃戸山荘": {
+   "lodgeId": "759",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "4/27～10/11　年末年始"
+  },
+  "天狗温泉浅間山荘": {
+   "lodgeId": "441",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "通年"
+  },
+  "美ヶ原高原ホテル・山本小屋": {
+   "lodgeId": "813",
+   "capacity": 150,
+   "capacityText": null,
+   "period": "通年"
+  },
+  "山本小屋ふる里館": {
+   "lodgeId": "1315",
+   "capacity": 40,
+   "capacityText": null,
+   "period": "5/上～11/中　12/中～3/中"
+  },
+  "八島山荘": {
+   "lodgeId": "803",
+   "capacity": 30,
+   "capacityText": null,
+   "period": "4/下～11/上(7/中～8/中を除き雨天時休業あり)"
+  },
+  "鷲が峰ひゅって": {
+   "lodgeId": "804",
+   "capacity": null,
+   "capacityText": "2組6人",
+   "period": "通年"
+  },
+  "ヒュッテみさやま": {
+   "lodgeId": "1275",
+   "capacity": 18,
+   "capacityText": null,
+   "period": "4月末～10月　冬期は条件付きで受入れ"
+  },
+  "十文字小屋": {
+   "lodgeId": "540",
+   "capacity": 80,
+   "capacityText": null,
+   "period": "4/末～11/第4土曜、12/28～1/2"
+  },
+  "甲武信小屋": {
+   "lodgeId": "538",
+   "capacity": 150,
+   "capacityText": null,
+   "period": "4/下～11/下"
+  },
+  "金峰山小屋": {
+   "lodgeId": "543",
+   "capacity": 60,
+   "capacityText": null,
+   "period": "4/下～11/下、年末年始と1・2月の週末"
+  },
+  "七合目行場山荘": {
+   "lodgeId": "1014",
+   "capacity": 50,
+   "capacityText": null,
+   "period": "7/中～10/中（9～10月不定休あり）"
+  },
+  "女人堂（金剛堂）": {
+   "lodgeId": "1015",
+   "capacity": 80,
+   "capacityText": null,
+   "period": "7/中～10/中　年により多少変動あり"
+  },
+  "石室山荘": {
+   "lodgeId": "1016",
+   "capacity": 70,
+   "capacityText": null,
+   "period": "7/1～10/8"
+  },
+  "二ノ池山荘": {
+   "lodgeId": "1018",
+   "capacity": 70,
+   "capacityText": null,
+   "period": "6/28～10/11"
+  },
+  "二の池ヒュッテ": {
+   "lodgeId": "1021",
+   "capacity": 50,
+   "capacityText": null,
+   "period": "7/1～10/上"
+  },
+  "長衛小屋": {
+   "lodgeId": "676",
+   "capacity": 27,
+   "capacityText": null,
+   "period": "6/中～11/上（予定）"
+  },
+  "甲斐駒ヶ岳七丈小屋": {
+   "lodgeId": "683",
+   "capacity": 24,
+   "capacityText": null,
+   "period": "通年。冬期は週末中心の営業"
+  },
+  "仙水小屋": {
+   "lodgeId": "677",
+   "capacity": 30,
+   "capacityText": null,
+   "period": "6/15～11/4"
+  },
+  "夜叉神ヒュッテ": {
+   "lodgeId": "692",
+   "capacity": 30,
+   "capacityText": null,
+   "period": "4/27～11/中、年末年始"
+  },
+  "夜叉神峠小屋": {
+   "lodgeId": "691",
+   "capacity": 20,
+   "capacityText": null,
+   "period": "4/末～11/中"
+  },
+  "南御室小屋": {
+   "lodgeId": "690",
+   "capacity": 60,
+   "capacityText": null,
+   "period": "7～10月の毎日と年末年始　4/末～6月・11月は要問合せ　12/28～1/3"
+  },
+  "薬師岳小屋": {
+   "lodgeId": "689",
+   "capacity": 40,
+   "capacityText": null,
+   "period": "7～10月の毎日と年末年始　4/末～6月・11月は要問合せ　料金変更予定"
+  },
+  "鳳凰小屋": {
+   "lodgeId": "687",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "4/26～11/23（11/5～11/23は週末のみ営業）　年末年始"
+  },
+  "青木鉱泉": {
+   "lodgeId": "686",
+   "capacity": 50,
+   "capacityText": null,
+   "period": "4/27～11/中"
+  },
+  "広河原山荘": {
+   "lodgeId": "696",
+   "capacity": 32,
+   "capacityText": null,
+   "period": "6/中～11/上(予定)"
+  },
+  "白根御池小屋": {
+   "lodgeId": "698",
+   "capacity": 47,
+   "capacityText": null,
+   "period": "6/中～11/上(予定)"
+  },
+  "北岳肩の小屋": {
+   "lodgeId": "699",
+   "capacity": 150,
+   "capacityText": null,
+   "period": "6/中～11/初"
+  },
+  "北岳山荘": {
+   "lodgeId": "701",
+   "capacity": 150,
+   "capacityText": null,
+   "period": "6/中(予定)～11/上(予定)"
+  },
+  "農鳥小屋": {
+   "lodgeId": "702",
+   "capacity": 120,
+   "capacityText": null,
+   "period": "7/上～10/体育の日"
+  },
+  "大門沢小屋": {
+   "lodgeId": "703",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "7/上～10/中"
+  },
+  "千枚小屋": {
+   "lodgeId": "720",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "7/中～10/中"
+  },
+  "中岳避難小屋": {
+   "lodgeId": "717",
+   "capacity": 10,
+   "capacityText": null,
+   "period": "7/中～9/30"
+  },
+  "荒川小屋": {
+   "lodgeId": "721",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "7/中～10/上"
+  },
+  "赤石岳避難小屋": {
+   "lodgeId": "724",
+   "capacity": 20,
+   "capacityText": null,
+   "period": "7/中～9/30"
+  },
+  "赤石小屋": {
+   "lodgeId": "725",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "7/中～10/上"
+  },
+  "聖平小屋": {
+   "lodgeId": "732",
+   "capacity": 120,
+   "capacityText": null,
+   "period": "7/中～9/下"
+  },
+  "茶臼小屋": {
+   "lodgeId": "733",
+   "capacity": 60,
+   "capacityText": null,
+   "period": "7/中～9/下"
+  },
+  "中の湯温泉旅館": {
+   "lodgeId": "952",
+   "capacity": 120,
+   "capacityText": null,
+   "period": "通年"
+  },
+  "槍平小屋": {
+   "lodgeId": "983",
+   "capacity": 30,
+   "capacityText": null,
+   "period": "7/7～体育の日の宿泊まで"
+  },
+  "笠ヶ岳山荘": {
+   "lodgeId": "950",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "7/10～10/15"
+  },
+  "わさび平小屋": {
+   "lodgeId": "949",
+   "capacity": 65,
+   "capacityText": null,
+   "period": "7/10～10/20"
+  },
+  "黒部五郎小舎": {
+   "lodgeId": "946",
+   "capacity": 60,
+   "capacityText": null,
+   "period": "7/10～9/30"
+  },
+  "太郎平小屋": {
+   "lodgeId": "865",
+   "capacity": 150,
+   "capacityText": null,
+   "period": "4/28～5/8、6/1～10/25"
+  },
+  "薬師岳山荘": {
+   "lodgeId": "864",
+   "capacity": 80,
+   "capacityText": null,
+   "period": "6/中～10/中　6月の薬師岳開山祭に合わせて営業"
+  },
+  "ホテル立山": {
+   "lodgeId": "833",
+   "capacity": 260,
+   "capacityText": null,
+   "period": "4/15～11/29"
+  },
+  "立山室堂山荘": {
+   "lodgeId": "834",
+   "capacity": 150,
+   "capacityText": null,
+   "period": "4/15～11/23(予定)"
+  },
+  "みくりが池温泉": {
+   "lodgeId": "835",
+   "capacity": 120,
+   "capacityText": null,
+   "period": "4/15～11/24"
+  },
+  "雷鳥荘": {
+   "lodgeId": "837",
+   "capacity": 260,
+   "capacityText": null,
+   "period": "4/15～11/24"
+  },
+  "雷鳥沢ヒュッテ": {
+   "lodgeId": "838",
+   "capacity": 70,
+   "capacityText": null,
+   "period": "アルペンルート全線開通時～10/中"
+  },
+  "一の越山荘": {
+   "lodgeId": "839",
+   "capacity": 130,
+   "capacityText": null,
+   "period": "4/下～10/下"
+  },
+  "内蔵助山荘": {
+   "lodgeId": "841",
+   "capacity": 40,
+   "capacityText": null,
+   "period": "7/中～9/下"
+  },
+  "剱御前小舎": {
+   "lodgeId": "842",
+   "capacity": 130,
+   "capacityText": null,
+   "period": "4/下～10/下"
+  },
+  "剱澤小屋": {
+   "lodgeId": "843",
+   "capacity": 64,
+   "capacityText": null,
+   "period": "7/上～10/12（予定）"
+  },
+  "剣山荘": {
+   "lodgeId": "844",
+   "capacity": 160,
+   "capacityText": null,
+   "period": "6/下～10/上"
+  },
+  "早月小屋": {
+   "lodgeId": "845",
+   "capacity": 50,
+   "capacityText": null,
+   "period": "ゴールデンウィーク　7/13～10/14（予定）"
+  },
+  "馬場島荘": {
+   "lodgeId": "846",
+   "capacity": 15,
+   "capacityText": null,
+   "period": "4/27～11/3"
+  },
+  "雲取山荘": {
+   "lodgeId": "527",
+   "capacity": 200,
+   "capacityText": null,
+   "period": "通年"
+  },
+  "七ツ石小屋": {
+   "lodgeId": "487",
+   "capacity": 12,
+   "capacityText": null,
+   "period": "通年"
+  },
+  "三条の湯": {
+   "lodgeId": "530",
+   "capacity": 80,
+   "capacityText": null,
+   "period": "通年"
+  },
+  "ロッヂ長兵衛": {
+   "lodgeId": "569",
+   "capacity": 25,
+   "capacityText": null,
+   "period": "通年　12～4/中は土・日曜と年末年始営業、その他の日は要確認"
+  },
+  "福ちゃん荘": {
+   "lodgeId": "568",
+   "capacity": 80,
+   "capacityText": null,
+   "period": "4/初～11/末、12/28～1/4　期間外は予約のみ営業"
+  },
+  "介山荘": {
+   "lodgeId": "570",
+   "capacity": 40,
+   "capacityText": null,
+   "period": "通年（平日不定休あり　年末年始営業）"
+  },
+  "瑞牆山荘": {
+   "lodgeId": "547",
+   "capacity": 40,
+   "capacityText": null,
+   "period": "3/10～11/末の毎日､12/27～1/4、予約で12/1～3/9の土・日曜"
+  },
+  "富士見平小屋": {
+   "lodgeId": "546",
+   "capacity": 34,
+   "capacityText": null,
+   "period": "4/初～12/末　年末年始、冬期は予約次第"
+  },
+  "大弛小屋": {
+   "lodgeId": "542",
+   "capacity": 30,
+   "capacityText": null,
+   "period": "4/末～11/末"
+  },
+  "雁坂小屋": {
+   "lodgeId": "533",
+   "capacity": 29,
+   "capacityText": null,
+   "period": "4/末～11/末、年末年始（宿泊は12/31のみ）"
+  },
+  "将監小屋": {
+   "lodgeId": "531",
+   "capacity": 70,
+   "capacityText": null,
+   "period": "4/下～11/下、年末年始（要確認）"
+  },
+  "四季楽園": {
+   "lodgeId": "665",
+   "capacity": 100,
+   "capacityText": null,
+   "period": "通年"
+  },
+  "三ツ峠山荘": {
+   "lodgeId": "664",
+   "capacity": 150,
+   "capacityText": null,
+   "period": "通年"
+  },
+  "尊仏山荘": {
+   "lodgeId": "590",
+   "capacity": 80,
+   "capacityText": null,
+   "period": "通年"
+  },
+  "みやま山荘": {
+   "lodgeId": "589",
+   "capacity": 30,
+   "capacityText": null,
+   "period": "通年"
+  },
+  "蛭ヶ岳山荘": {
+   "lodgeId": "599",
+   "capacity": 45,
+   "capacityText": null,
+   "period": "通年(1～2月は積雪により休業あり)"
+  }
+ }
+}

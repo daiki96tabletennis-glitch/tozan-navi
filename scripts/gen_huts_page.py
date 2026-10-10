@@ -14,21 +14,53 @@ for h in H:
 cards = []
 for h in H:
     mts = '、'.join('<a href="/mountains/%s/">%s</a>' % (E(i), E(M[i])) for i in h['mountainIds'])
+    # 別のルート・縦走で使う山は、関係を添えて分けて出す
+    oth = '、'.join('<a href="/mountains/%s/">%s</a><span class="rel">（%s）</span>' % (E(o['id']), E(M[o['id']]), E(o['relation'])) for o in h.get('otherMountains') or [])
+    if oth:
+        mts = (mts + '<br>' if mts else '') + '<span class="rel-h">別ルート・縦走：</span>' + oth
     name = '<a href="%s" target="_blank" rel="noopener">%s</a>' % (E(h['officialUrl']), E(h['name'])) if h['officialUrl'] else E(h['name'])
-    start = E(h['bookingStart']) if h['bookingStart'] else '<span class="na">公式サイトで確認</span>'
-    meth = E('・'.join(h['bookingMethods'])) if h['bookingMethods'] else '<span class="na">公式サイトで確認</span>'
-    cap = (E(h['capacity']) + '人') if h.get('capacity') else '<span class="na">確認中</span>'
-    key = E(h['name'] + ' ' + ' '.join(M[i] for i in h['mountainIds']))
+    au = h.get('auto') or {}
+    stale = h.get('bookingStale')
+    # 公式サイト・予約サイトから自動で読み取れた値があれば、それを優先する
+    if au.get('bookingStart'):
+        h = dict(h, bookingStart=au['bookingStart']['value'], officialChanged=None)
+        stale = False
+    if au.get('capacity'):
+        h = dict(h, capacity=au['capacity']['value'])
+    start = E(h['bookingStart']) if (h['bookingStart'] and not stale) else '<span class="na">公式サイトで確認</span>'
+    meth = E('・'.join(h['bookingMethods'])) if (h['bookingMethods'] and not stale) else '<span class="na">公式サイトで確認</span>'
+    if stale:
+        start = '<span class="na">出典の記載が変わったため確認中（下の原文を見てください）</span>'
+    elif h.get('officialChanged') and h['bookingStart']:
+        start += '<br><span class="rel">公式サイトの予約の記載に変更あり（%s に検知）。最新は公式サイトで確認</span>' % E(h['officialChanged'])
+    # 規模：公式サイト・予約サイトで確認できた定員を優先。無ければ山と溪谷オンラインの山小屋情報の収容人数を参考として出す
+    ref = h.get('capacityRef')
+    ref_txt = ('%s人' % ref) if isinstance(ref, int) else (E(ref) if ref else '')
+    if h.get('capacity'):
+        cap = E(h['capacity']) + '人'
+        if isinstance(ref, int) and ref != h['capacity']:
+            cap += '<span class="rel">（公式・予約サイトの定員。山と溪谷オンラインの記載は%s）</span>' % ref_txt
+    elif ref_txt:
+        cap = ref_txt + '<span class="rel">（山と溪谷オンラインの記載。現在の定員は公式サイトで確認）</span>'
+    else:
+        cap = '<span class="na">確認中</span>'
+    raw = E(h.get('openText')) or '—'
+    if au.get('season'):
+        raw = '<span class="rel">公式・予約サイト：</span>' + E(au['season']['value']) + '<br><span class="rel">一覧の出典：</span>' + raw
+    if h.get('officialNote'):
+        raw += '<br><span class="rel">公式サイトの記載：' + E(h['officialNote']) + '</span>'
+    key = E(h['name'] + ' ' + ' '.join(M[i] for i in h['mountainIds'] + [o['id'] for o in h.get('otherMountains') or []]))
     cards.append(
         '<div class="hut" data-region="%s" data-key="%s">\n'
         '  <div class="hut-name">%s%s</div>\n'
-        '  <div class="hut-sub">%s ／ %s</div>\n'
+        '  <div class="hut-sub">%s%s</div>\n'
         '  <dl><dt>対応する山</dt><dd>%s</dd><dt>予約の開始</dt><dd>%s</dd><dt>予約方法</dt><dd>%s</dd><dt>規模</dt><dd>%s</dd>'
-        '<dt>営業期間・予約（出典の記載）</dt><dd>%s</dd><dt>電話</dt><dd>%s</dd></dl>\n'
+        '<dt>営業・予約<br>（出典の記載）</dt><dd>%s</dd><dt>電話</dt><dd>%s</dd></dl>\n'
         '</div>' % (E(h['region']), key, name, '<span class="req">予約必須</span>' if h['bookingRequired'] else '',
-                    E(h['region']), E(h['location']), mts, start, meth, cap, E(h.get('openText')) or '—', E(h.get('tel')) or '—'))
+                    E(h['region']), (' ／ ' + E(h['location'])) if h.get('location') else '', mts, start, meth, cap, raw, E(h.get('tel')) or '—'))
 chips = '<button class="chip on" data-r="">すべて</button>' + ''.join('<button class="chip" data-r="%s">%s</button>' % (E(r), E(r)) for r in regions)
-upd = max(h['sourceUpdated'] for h in H if h['sourceUpdated'])
+_u = sorted(h['sourceUpdated'] for h in H if h['sourceUpdated'])
+upd = '%d年%d月〜%d月' % (int(_u[0][:4]), int(_u[0][5:7]), int(_u[-1][5:7])) if _u[0][5:7] != _u[-1][5:7] else '%d年%d月' % (int(_u[0][:4]), int(_u[0][5:7]))
 page = '''<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -64,6 +96,7 @@ h1{font-size:22px;font-weight:800;color:#2a3820;margin-bottom:8px}
 dl{display:grid;grid-template-columns:8.5em 1fr;gap:4px 10px;font-size:13px;line-height:1.6}
 dt{color:#7a7068;font-size:11.5px;padding-top:2px}dd a{color:#4e6535}
 .na{color:#a09888;font-size:12px}
+.rel{color:#7a7068;font-size:11.5px}.rel-h{color:#7a7068;font-size:11.5px}
 #cnt{font-size:12px;color:#7a7068;margin-bottom:8px}
 </style>
 </head>
@@ -73,9 +106,10 @@ dt{color:#7a7068;font-size:11.5px;padding-top:2px}dd a{color:#4e6535}
 <h1>山小屋まとめ<span class="beta">β版</span></h1>
 <div class="lead">
 <ul>
-<li>__YEAR__年シーズンの情報です。出典は長野県「山小屋情報ポータルサイト」（__UPD__ 更新分）で、長野県内と県境の山小屋__N__軒を載せています。</li>
+<li>__YEAR__年シーズンの情報です。山小屋__N__軒を載せています。出典は、長野県「山小屋情報ポータルサイト」（__UPD__ 更新分）、山と溪谷オンライン「山小屋リスト2026」、各山小屋の公式サイトです。</li>
+<li>「対応する山」は、当サイトで紹介しているルートの登山口・途中・山頂にある小屋です。別のルートや縦走で使う小屋は「別ルート・縦走」として分けています。</li>
 <li>「予約の開始」「予約方法」は、出典に書かれているものだけを載せています。書かれていない小屋は「公式サイトで確認」としています。</li>
-<li>規模（収容人数）は確認中です。山梨・富山・静岡側の山小屋（北岳・薬師岳・赤石岳など）は、まだ載せていません。</li>
+<li>規模（収容人数）は、公式サイト・予約サイトで確認できた定員を載せています。確認できなかった小屋は、山と溪谷オンラインの山小屋情報の収容人数を参考として載せています（現在は定員を減らしている小屋があります）。富士山・尾瀬・谷川岳・上信越・東北・白山などの山小屋は、まだ載せていません。</li>
 <li>営業期間や予約の受付は変わることがあります。予約の前に、必ず各山小屋の公式サイトで確認してください。</li>
 </ul>
 </div>
@@ -83,7 +117,7 @@ dt{color:#7a7068;font-size:11.5px;padding-top:2px}dd a{color:#4e6535}
 <div class="chips">__CHIPS__</div>
 <div id="cnt"></div>
 __CARDS__
-<p class="lead" style="margin-top:12px">出典：<a href="https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya.html" target="_blank" rel="noopener">長野県 山小屋情報ポータルサイト</a></p>
+<p class="lead" style="margin-top:12px">出典：<a href="https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya.html" target="_blank" rel="noopener">長野県 山小屋情報ポータルサイト</a>／<a href="https://www.yamakei-online.com/yama-ya/detail.php?id=2535" target="_blank" rel="noopener">山と溪谷オンライン 北アルプス山小屋リスト2026</a>／<a href="https://www.yamakei-online.com/yama-ya/detail.php?id=2556" target="_blank" rel="noopener">同 中央・南アルプス山小屋リスト2026</a>／各山小屋の公式サイト</p>
 </main>
 <script>
 (function(){
