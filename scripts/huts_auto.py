@@ -92,6 +92,21 @@ def yamatan(slug):
     return out
 
 
+NEWS_RE = re.compile(r'[\U0001F539\U0001F538]\s*(.+?)（[^（）]*）の(20\d\d)年度(\S*?)シーズン（[^（）]*）を(\d+)月(\d+)日(\d+)時(?:(\d+)分)?よりご予約受付を開始')
+
+
+def yamatan_news(url):
+    """やまたんの「◯年度シーズン予約開始のお知らせ」→ [(お知らせ上の小屋名, 年, シーズン名, 月, 日, 時, 分)]
+    1軒ずつ「◯◯（山域）の2026年度シーズン（期間）を5月1日11時よりご予約受付を開始」の形で並んでいる"""
+    text = ''.join(hf.fetch_text(url) or [])
+    out = []
+    for m in NEWS_RE.finditer(text):
+        row = (m.group(1).strip(), int(m.group(2)), m.group(3), int(m.group(4)), int(m.group(5)), int(m.group(6)), int(m.group(7) or 0))
+        if row not in out:
+            out.append(row)
+    return out
+
+
 def _doy(month, day):
     return datetime.date(2001, month, day).timetuple().tm_yday
 
@@ -152,7 +167,8 @@ def run(huts, today=None, only=None, previous=None):
     only：今日見に行く小屋の名前（None なら全部）。見に行かない小屋は、previous（前回の huts.json）の自動の値を引き継ぐ"""
     today = today or datetime.date.today()
     previous = previous or {}
-    src = json.load(open(os.path.join(ROOT, 'data', 'huts_sources.json'), encoding='utf-8'))['huts']
+    src_all = json.load(open(os.path.join(ROOT, 'data', 'huts_sources.json'), encoding='utf-8'))
+    src = src_all['huts']
     recipes = json.load(open(os.path.join(ROOT, 'data', 'huts_recipes.json'), encoding='utf-8'))['recipes']
     hpath = os.path.join(ROOT, 'data', 'huts_history.json')
     hist = json.load(open(hpath, encoding='utf-8')) if os.path.exists(hpath) else {}
@@ -183,6 +199,37 @@ def run(huts, today=None, only=None, previous=None):
             h['auto']['bookingWindow'] = {'value': y['window'], 'source': url}
         if y.get('reservation_method'):
             h['auto']['bookingText'] = {'value': re.sub(r'\s+', ' ', str(y['reservation_method']))[:600], 'source': url}
+    # A2. やまたんの「シーズン予約開始のお知らせ」（Web予約の受付開始日時が小屋ごとに並ぶ）
+    news = src_all.get('yamatanNews') or {}
+    if news.get('url'):
+        rows = yamatan_news(news['url'])
+        if not rows:
+            report.append('- 予約サイトの「予約開始のお知らせ」を読めませんでした（%s）' % news['url'])
+        elif max(r[1] for r in rows) < target_year(today):
+            report.append('- 予約サイトの「予約開始のお知らせ」が %d 年度のまま。%d 年度のお知らせが出ていたら data/huts_sources.json の yamatanNews.url を差し替える'
+                          % (max(r[1] for r in rows), target_year(today)))
+        per = {}
+        for nm, year, season, mo, d, hh, mi in rows:
+            name = news['names'].get(nm)
+            if name and name in by_name and (only is None or name in only):
+                per.setdefault(name, []).append((year, season, mo, d, hh, mi))
+        for name, ents in per.items():
+            h = by_name[name]
+            year = max(e[0] for e in ents)
+            ents = sorted((e for e in ents if e[0] == year), key=lambda e: (e[2], e[3]))
+            key = h['id'] + ':bookingStartWeb'
+            prev_years = sorted(k for k in hist.get(key, {}) if int(k) < year)
+            prev = hist[key][prev_years[-1]] if prev_years else None
+            bad = check(year, ents[0][2], ents[0][3], prev, today)
+            parts = ['%s%d月%d日 %d:%02dから' % ((e[1] + 'の分は') if len(ents) > 1 and e[1] else '', e[2], e[3], e[4], e[5]) for e in ents]
+            value = '、'.join(parts) + '（%d年。Web予約）' % year
+            if bad:
+                report.append('- %s：読み取った値「%s」は採用しませんでした（%s）' % (name, value, bad))
+                continue
+            h['auto']['bookingStartWeb'] = {'value': value, 'source': news['url'], 'year': year}
+            old = hist.setdefault(key, {}).get(str(year))
+            if not old or old.get('value') != value:
+                hist[key][str(year)] = {'value': value, 'month': ents[0][2], 'day': ents[0][3], 'seenAt': today.isoformat()}
     # B. 公式ページのレシピ
     for r in recipes:
         if only is not None and r['hut'] not in only:

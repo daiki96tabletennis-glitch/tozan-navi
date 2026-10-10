@@ -14,8 +14,19 @@ NA = '<span class="na">公式サイトで確認</span>'
 
 def split_note(text):
     """「本文（補足）」→ (本文, 補足)。長い補足を小さい字に回して、要点を読みやすくする"""
-    m = re.match(r'^([^（]{2,})（(.+)）$', text or '')
-    return (m.group(1), m.group(2)) if m else (text, None)
+    # 文の最後にある括弧だけを補足にする（途中の括弧「夏山（5/25〜11/23泊）は…」で切らない）
+    text = text or ''
+    if not text.endswith('）'):
+        return (text or None, None)
+    depth = 0
+    for i in range(len(text) - 1, -1, -1):
+        if text[i] == '）':
+            depth += 1
+        elif text[i] == '（':
+            depth -= 1
+            if depth == 0:
+                return (text[:i], text[i + 1:-1]) if i >= 2 else (text, None)
+    return (text, None)
 
 
 def fact(label, main, sub=None, cls=''):
@@ -34,6 +45,12 @@ for h in H:
     stale = h.get('bookingStale')
     # 公式サイト・予約サイトから自動で読み取れた値を優先する
     start = (au.get('bookingStart') or {}).get('value') or (None if stale else h.get('bookingStart'))
+    # 予約サイトの「予約開始のお知らせ」の日時：手で確認した値が無いとき、または手の値より新しい年のときに使う
+    web = au.get('bookingStartWeb') or {}
+    if web and not (au.get('bookingStart') or {}).get('value'):
+        yrs = [int(x) for x in re.findall(r'(20\d\d)年', start or '')]
+        if not start or (yrs and max(yrs) < web.get('year', 0)):
+            start = web['value']
     # 手で確認した値が無い小屋は、予約サイトに登録されている「何日前から予約できるか」を使う
     start = start or (au.get('bookingWindow') or {}).get('value')
     none = None if stale else h.get('bookingNone')
