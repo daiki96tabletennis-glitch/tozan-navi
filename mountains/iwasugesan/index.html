@@ -14,7 +14,7 @@
 <meta property="og:updated_time" content="2026-01-01T00:00:00+09:00">
 <link rel="canonical" href="https://tozan-navi.com/mountains/iwasugesan/">
 <meta name="google-site-verification" content="dJ2byH9b8xF8S5lqAyWV-DqRwPGLEjWXs_-Un9oXGHs" />
-<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261008b">
+<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261010b">
 <style>.header-title{color:white;font-family:Georgia,serif;font-size:19px;font-weight:bold}
 .header-sub{color:rgba(255,255,255,0.5);font-size:10px;margin-top:1px}
 .hero{background:#4e6535;border-radius:14px;overflow:hidden;margin-bottom:16px}
@@ -252,6 +252,12 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .cal-note{font-size:10px;color:#9a9088;line-height:1.6;margin:8px 0 0}
 .gear-closed-note{flex:0 0 100%;font-size:12px;color:#5a5248;background:#f0ede5;border-radius:6px;padding:10px 12px;line-height:1.6;margin:0 0 8px}
 .car-note{font-size:11.5px;color:#8a8078;line-height:1.6;margin:10px 0 0}
+.volcano-note{font-size:11.5px;color:#7a7068;background:#f6f4ee;border:1px solid #e4e0d6;border-radius:8px;padding:8px 12px;margin-bottom:12px;line-height:1.6}
+.volcano-note .warn-link{white-space:nowrap}
+#volcano-status:empty{display:none}
+.hero-counts{gap:10px;align-items:center;margin-bottom:6px;font-family:Outfit,sans-serif}
+.hero-counts .hc-item{display:inline-flex;align-items:center;gap:3px;font-size:12px;color:#4a4540;background:rgba(255,255,255,0.75);border:1px solid #d8e0cc;border-radius:999px;padding:2px 8px}
+.hero-counts .hc-item b{font-weight:700}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -295,6 +301,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </svg>
     <div class="hero-top">
       <div>
+        <div class="hero-counts" id="hero-counts" data-id="iwasugesan" style="display:none"></div>
         <h1 class="mountain-name">岩菅山</h1>
         <div class="mountain-kana">いわすげやま</div>
         <div class="mountain-area">📍 長野県北部</div>
@@ -522,7 +529,7 @@ var YM_MOUNTAIN_INIT = {
   ]
 };
 </script>
-<script src="../../assets/js/mountain-engine.js?v=20261008b"></script>
+<script src="../../assets/js/mountain-engine.js?v=20261010b"></script>
 
 
 
@@ -560,7 +567,9 @@ var YM_MOUNTAIN_INIT = {
 </script>
 
 
-<script src="../../assets/js/gear-common.js?v=20261008b"></script>
-<script src="../../assets/js/mountain.js?v=20261008b"></script>
+<script src="../../assets/js/gear-common.js?v=20261010b"></script>
+<script src="../../assets/js/mountain.js?v=20261010b"></script>
+<script src="../../assets/js/counts-config.js?v=20261010b"></script>
+<script src="../../assets/js/ym-counts.js?v=20261010b"></script>
 </body>
 </html>

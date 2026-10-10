@@ -265,6 +265,7 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
 </div>
 
 </main>
+<script src="/assets/js/volcano-status.js?v=20261010a"></script>
 <script>
 var QUESTIONS = [
   {
@@ -345,7 +346,11 @@ var mountainsData = [];
 
 fetch('/data/mountains.json')
   .then(function(r){ return r.json(); })
-  .then(function(data){ mountainsData = data; })
+  .then(function(data){
+    mountainsData = data;
+    // 噴火警報が出ている山は「規制中」として診断から外す（気象庁のデータ）
+    if(window.YMVolcano) window.YMVolcano.load(function(){ window.YMVolcano.apply(mountainsData); });
+  })
   .catch(function(){});
 
 function startQuiz(){

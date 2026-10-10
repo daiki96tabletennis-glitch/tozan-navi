@@ -105,6 +105,32 @@ def yamap_name(url):
     return m.group(1) if m else title
 
 
+JMA_WARNING_URL = 'https://www.jma.go.jp/bosai/volcano/data/warning.json'
+
+
+def check_volcano():
+    """気象庁の噴火警報が出ている山（火口周辺規制以上）を返す：[(山名, 警報の名前, 発表日)]。
+    ページ側は assets/js/volcano-status.js が自動で表示するが、手書きの status・warnBanner の文は人が直す必要があるため知らせる"""
+    req = urllib.request.Request(JMA_WARNING_URL, headers={'User-Agent': 'Mozilla/5.0 (compatible; yamatch-annual-check)'})
+    data = json.loads(urllib.request.urlopen(req, timeout=30).read().decode('utf-8'))
+    cur = {}
+    for e in data:
+        for vi in e.get('volcanoInfos') or []:
+            if vi.get('type') != '噴火警報・予報（対象火山）':
+                continue
+            for it in vi.get('items') or []:
+                for ar in it.get('areas') or []:
+                    old = cur.get(ar['code'])
+                    if old is None or old[2] < e['reportDatetime']:
+                        cur[ar['code']] = (it['code'], it['name'], e['reportDatetime'])
+    out = []
+    for m in load('mountains.json'):
+        hits = [cur[c] for c in (m.get('volcanoCodes') or []) if c in cur and cur[c][0] not in ('11', '21')]
+        for code, name, dt in hits:
+            out.append((m['name'], name, dt[:10]))
+    return out
+
+
 def check_yamap():
     """[(山名, URL, 問題)] を返す"""
     import time
@@ -167,6 +193,12 @@ def main():
         if a.state:
             json.dump(state, open(a.state, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     yamap_bad = [] if a.no_fetch else check_yamap()
+    volcano = []
+    if not a.no_fetch:
+        try:
+            volcano = check_volcano()
+        except Exception as e:
+            failed.append((JMA_WARNING_URL, [{'mountains': ['火山の山'], 'label': '噴火警報'}], str(e)[:80]))
 
     def names(it):
         return '・'.join(it['mountains']) or '—'
@@ -186,6 +218,8 @@ def main():
             '、'.join(undated) or 'なし', '']
     out += ['', '## 季節運行の記載があるのに、期限も出典も登録していない山', '',
             '、'.join(missing) or 'なし', '']
+    out += ['', '## 噴火警報が出ている山（ページには自動で表示。手書きの注意文・規制の表示を見直す）', '']
+    out += [f'- {n}：{w}（{d} 発表）' for n, w, d in volcano] or ['- なし' if not a.no_fetch else '- （--no-fetch のため未確認）']
     out += ['', '## YAMAPへのリンクの誤り（ページが無い・別の山を指している）', '']
     out += [f'- {n}：{prob} — {url}' for n, url, prob in yamap_bad] or ['- なし' if not a.no_fetch else '- （--no-fetch のため未確認）']
     out += ['']
@@ -196,7 +230,7 @@ def main():
         open(a.out, 'w', encoding='utf-8').write(report)
     else:
         print(report)
-    sys.exit(1 if (expired or changed or failed or yamap_bad) else 0)
+    sys.exit(1 if (expired or changed or failed or yamap_bad or volcano) else 0)
 
 
 if __name__ == '__main__':

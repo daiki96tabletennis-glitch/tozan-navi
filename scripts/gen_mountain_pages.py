@@ -58,7 +58,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261008b"
+ASSET_VER = "20261010b"
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
@@ -401,6 +401,8 @@ def render_hero(mt):
         '    </svg>\n'
         '    <div class="hero-top">\n'
         '      <div>\n'
+        # お気に入り数・登頂数（assets/js/ym-counts.js が集計先から読んで出す。集計先が未設定のあいだは出ない）
+        f'        <div class="hero-counts" id="hero-counts" data-id="{esc(mt["id"])}" style="display:none"></div>\n'
         f'        <h1 class="mountain-name">{name}</h1>\n'
         f'        <div class="mountain-kana">{kana}</div>\n'
         f'        <div class="mountain-area">📍 {area}</div>\n'
@@ -1047,7 +1049,10 @@ def render_scripts(mt):
         f"{NEARBY_STICKY_SCRIPT}"
         "\n\n"
         '<script src="../../assets/js/gear-common.js?v=' + ASSET_VER + '"></script>\n'
-        '<script src="../../assets/js/mountain.js?v=' + ASSET_VER + '"></script>'
+        + ('<script src="../../assets/js/volcano-status.js?v=' + ASSET_VER + '"></script>\n' if mt.get("volcanoCodes") else '')
+        + '<script src="../../assets/js/mountain.js?v=' + ASSET_VER + '"></script>\n'
+        '<script src="../../assets/js/counts-config.js?v=' + ASSET_VER + '"></script>\n'
+        '<script src="../../assets/js/ym-counts.js?v=' + ASSET_VER + '"></script>'
     )
 
 
@@ -1073,6 +1078,10 @@ def generate_page(mt, by_id, gear_data):
     warn = render_warn_banner(mt)
     if warn:
         body_sections.append(f"  {warn}")
+    if mt.get("volcanoCodes"):
+        # 噴火警戒レベル：assets/js/volcano-status.js が、気象庁のデータを読んでここに出す
+        codes = ",".join(str(c) for c in mt["volcanoCodes"])
+        body_sections.append(f'  <div id="volcano-status" data-codes="{esc(codes)}"></div>')
     body_sections.append(f'  {mt.get("introHtml","")}')
     body_sections.append("")
     body_sections.append(f'  {render_dl_card(mt)}')

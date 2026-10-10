@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>山小屋まとめ（β）｜予約の開始・予約方法・営業期間 | Yamatch</title>
+<meta name="description" content="北アルプス・南アルプス・中央アルプス・八ヶ岳などの山小屋78軒の、予約の開始時期・予約方法・営業期間をまとめた一覧（β版）。対応する山のページへもリンク。">
+<meta property="og:title" content="山小屋まとめ（β）| Yamatch">
+<meta property="og:description" content="山小屋78軒の予約の開始時期・予約方法・営業期間の一覧（β版）。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tozan-navi.com/huts/">
+<link rel="canonical" href="https://tozan-navi.com/huts/">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Zen Kaku Gothic New',-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;background:#f0ede5;color:#3a3530}
+header{background:#4e6535;padding:14px 16px}
+.hi{max-width:720px;margin:0 auto;display:flex;align-items:center}
+.logo{color:#fff;font-size:20px;font-weight:800;text-decoration:none}
+.back{margin-left:auto;color:rgba(255,255,255,.85);font-size:12px;text-decoration:none;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:20px}
+main{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;font-weight:800;color:#2a3820;margin-bottom:8px}
+.beta{font-size:11px;background:#c8d4b8;color:#2a3820;border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:middle}
+.lead{font-size:13px;line-height:1.8;color:#4a4540;background:#fff;border:1px solid #e0dbd4;border-radius:12px;padding:14px;margin-bottom:12px}
+.lead li{margin-left:18px}
+#q{width:100%;padding:10px 12px;border:1px solid #d0cbc2;border-radius:10px;font-size:14px;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{border:1px solid #c8c2b8;background:#fff;border-radius:999px;padding:5px 12px;font-size:12px;cursor:pointer;color:#3a3530}
+.chip.on{background:#4e6535;color:#fff;border-color:#4e6535}
+.hut{background:#fff;border:1px solid #e0dbd4;border-radius:12px;padding:14px;margin-bottom:10px}
+.hut-name{font-size:16px;font-weight:800}.hut-name a{color:#2a3820}
+.req{font-size:10px;font-weight:700;background:#f8f0e0;color:#7a6020;border-radius:4px;padding:2px 6px;margin-left:8px}
+.hut-sub{font-size:11px;color:#8a8078;margin:3px 0 8px}
+dl{display:grid;grid-template-columns:8.5em 1fr;gap:4px 10px;font-size:13px;line-height:1.6}
+dt{color:#7a7068;font-size:11.5px;padding-top:2px}dd a{color:#4e6535}
+.na{color:#a09888;font-size:12px}
+#cnt{font-size:12px;color:#7a7068;margin-bottom:8px}
+</style>
+</head>
+<body>
+<header><div class="hi"><a href="/" class="logo">Yamatch</a><a href="/" class="back">← 山を検索する</a></div></header>
+<main>
+<h1>山小屋まとめ<span class="beta">β版</span></h1>
+<div class="lead">
+<ul>
+<li>2026年シーズンの情報です。出典は長野県「山小屋情報ポータルサイト」（2026-06-04 更新分）で、長野県内と県境の山小屋78軒を載せています。</li>
+<li>「予約の開始」「予約方法」は、出典に書かれているものだけを載せています。書かれていない小屋は「公式サイトで確認」としています。</li>
+<li>規模（収容人数）は確認中です。山梨・富山・静岡側の山小屋（北岳・薬師岳・赤石岳など）は、まだ載せていません。</li>
+<li>営業期間や予約の受付は変わることがあります。予約の前に、必ず各山小屋の公式サイトで確認してください。</li>
+</ul>
+</div>
+<input id="q" type="search" placeholder="山小屋名・山名でさがす（例：槍ヶ岳、涸沢）">
+<div class="chips"><button class="chip on" data-r="">すべて</button><button class="chip" data-r="北アルプス">北アルプス</button><button class="chip" data-r="南アルプス">南アルプス</button><button class="chip" data-r="中央アルプス">中央アルプス</button><button class="chip" data-r="八ヶ岳">八ヶ岳</button><button class="chip" data-r="その他">その他</button></div>
+<div id="cnt"></div>
+<div class="hut" data-region="北アルプス" data-key="槍ヶ岳山荘 槍ヶ岳">
+  <div class="hut-name"><a href="https://www.yarigatake.co.jp/" target="_blank" rel="noopener">槍ヶ岳山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 槍ヶ岳南直下 標高3060m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/yari/">槍ヶ岳</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から</dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/27～11/3、1か月前予約制、Web予約可</dd><dt>電話</dt><dd>0263-35-7200</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="ヒュッテ大槍 槍ヶ岳">
+  <div class="hut-name"><a href="https://www.enzanso.co.jp/hutte-ooyari" target="_blank" rel="noopener">ヒュッテ大槍</a></div>
+  <div class="hut-sub">北アルプス ／ 槍ヶ岳東方1km、雷鳥平 標高2884m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/yari/">槍ヶ岳</a></dd><dt>予約の開始</dt><dd>5月19日から（2026年）</dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/1～10/12、＊5/19から宿泊予約受付開始</dd><dt>電話</dt><dd>0263-32-1535 FAX0263-32-0898</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="殺生小屋 槍ヶ岳">
+  <div class="hut-name"><a href="https://www.yarigatake.co.jp/sesshou/" target="_blank" rel="noopener">殺生小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 槍ヶ岳頂上南東下、槍沢上部 標高2810m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/yari/">槍ヶ岳</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から</dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/6/6～10/11、1か月前予約制 ＊開始日と終了日は降雪状況次第で変更あり</dd><dt>電話</dt><dd>連絡先</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="槍沢ロッヂ 槍ヶ岳">
+  <div class="hut-name"><a href="https://www.yarigatake.co.jp/yarisawa/" target="_blank" rel="noopener">槍沢ロッヂ</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 赤沢山南方、槍沢左岸 標高1820m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/yari/">槍ヶ岳</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から</dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/27～11/3、1か月前予約制、Web予約可</dd><dt>電話</dt><dd>0263-35-7200</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="穂高岳山荘 奥穂高岳">
+  <div class="hut-name"><a href="https://www.hotakadakesanso.com/" target="_blank" rel="noopener">穂高岳山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 涸沢岳・奥穂高岳鞍部 標高2996m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/hotaka/">奥穂高岳</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から（4/27〜5/20の宿泊分は4月20日から電話のみ）</dd><dt>予約方法</dt><dd>電話</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/27～11/3、1か月前予約制 ＊4/27～5/20の宿泊予約は4/20～電話のみで予約</dd><dt>電話</dt><dd>0578-82-2150 FAX0577-36-8480</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="涸沢小屋 奥穂高岳">
+  <div class="hut-name"><a href="http://www.karasawagoya.com/" target="_blank" rel="noopener">涸沢小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 涸沢カール、北穂高岳・奥穂高岳分岐 標高2350m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/hotaka/">奥穂高岳</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から（4月25日から現地電話で受付開始）</dd><dt>予約方法</dt><dd>電話</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/27～11/3、1か月前予約制 ＊4/25～現地電話にて予約受付開始</dd><dt>電話</dt><dd>090-2204-1300 FAX050-3730-9248</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="涸沢ヒュッテ 奥穂高岳">
+  <div class="hut-name"><a href="https://www.karasawa-hyutte.com/" target="_blank" rel="noopener">涸沢ヒュッテ</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 涸沢カール中央、池ノ平 標高2300m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/hotaka/">奥穂高岳</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から</dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/27～5/10、6/1～11/3、1か月前予約制、Web予約可、5/11～5/31改修工事のため休業でテント受付のみ</dd><dt>電話</dt><dd>冬季連絡先:0263-26-3212</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="横尾山荘 槍ヶ岳 奥穂高岳 蝶ヶ岳">
+  <div class="hut-name"><a href="https://www.yokoo-sanso.co.jp/" target="_blank" rel="noopener">横尾山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 梓川・横尾谷出合本流左岸 標高1620m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/yari/">槍ヶ岳</a>、<a href="/mountains/hotaka/">奥穂高岳</a>、<a href="/mountains/chogatake/">蝶ヶ岳</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から</dd><dt>予約方法</dt><dd>Web（繁忙期は限定数のみ）</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/27～5/31、7/1～11/3 、1か月前予約制、繁忙期限定数のみWeb予約可、6/1～6/30は工事のため、宿泊及び食堂は休業。売店およびテント受付のみ営業</dd><dt>電話</dt><dd>0263-33-2225（冬期のみ）</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="徳沢ロッヂ 蝶ヶ岳">
+  <div class="hut-name"><a href="http://www.m-kamikouchi.jp/tokuzawalodge/" target="_blank" rel="noopener">徳沢ロッヂ</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 梓川・徳沢出合本流左岸、徳沢 標高1550m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/chogatake/">蝶ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd>Web（完全予約制）</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/25～11/5、Web完全予約制</dd><dt>電話</dt><dd>0263-95-2526 FAX0263-95-2527</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="氷壁の宿 徳澤園 蝶ヶ岳">
+  <div class="hut-name"><a href="https://www.tokusawaen.com/" target="_blank" rel="noopener">氷壁の宿 徳澤園</a></div>
+  <div class="hut-sub">北アルプス ／ 徳沢 標高1560m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/chogatake/">蝶ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/27～11/5ごろ、テント営業4/25～ ＊営業の開始・終了日は要問合せ</dd><dt>電話</dt><dd>0263-95-2508</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="岳沢小屋 奥穂高岳">
+  <div class="hut-name"><a href="https://www.yarigatake.co.jp/" target="_blank" rel="noopener">岳沢小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 前穂高岳直下岳沢 標高2170m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/hotaka/">奥穂高岳</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から</dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/27～11/3、１か月前予約制、Web予約可、</dd><dt>電話</dt><dd>0263-35-7200</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="焼岳小屋 焼岳">
+  <div class="hut-name"><a href="https://www.m-kamikouchi.jp/yakedake/" target="_blank" rel="noopener">焼岳小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 新中尾峠</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/yakedake/">焼岳</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から</dd><dt>予約方法</dt><dd>電話・FAX</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/6/21～10/18、１か月前予約制（電話及びFAX） ＊火山性地震の状況等により変更の可能性あり</dd><dt>電話</dt><dd>070-5087-0207 (冬期連絡先)</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="有明荘 有明山">
+  <div class="hut-name"><a href="https://www.enzanso.co.jp/ariakeso" target="_blank" rel="noopener">有明荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 穂高駅から車50分 標高1380m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/arikayama/">有明山</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/24～11/3、完全予約制 ＊休館日：5/7（木）、6/3（水）、7/1（水）、9/2（水）、10/7（水）要確認</dd><dt>電話</dt><dd>0263-32-1535 FAX0263-32-0898</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="中房温泉 大天井岳 有明山">
+  <div class="hut-name"><a href="https://nakabusa.com/" target="_blank" rel="noopener">中房温泉</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 穂高駅からバスまたは車1時間、中房温泉下車 標高1462m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/otenshoudake/">大天井岳</a>、<a href="/mountains/arikayama/">有明山</a></dd><dt>予約の開始</dt><dd>宿泊日の2か月前から</dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/28～11/23、2か月前予約制、Web予約可 ＊営業開始は中房線の道路状況次第で変更の可能性あり</dd><dt>電話</dt><dd>0263-77-1488</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="燕山荘 大天井岳">
+  <div class="hut-name"><a href="https://www.enzanso.co.jp/" target="_blank" rel="noopener">燕山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 燕岳頂上南方1km 標高2712m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/otenshoudake/">大天井岳</a></dd><dt>予約の開始</dt><dd>3月18日から（2026年）</dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/25～11/22 、3/18～完全予約制 ＊個室予約可能日は時期ごとのため、詳細は事前確認のこと</dd><dt>電話</dt><dd>0263-32-1535 FAX0263-32-0898</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="餓鬼岳小屋 餓鬼岳">
+  <div class="hut-name">餓鬼岳小屋</div>
+  <div class="hut-sub">北アルプス ／ 餓鬼岳南直下50m 標高2647m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/gakedake/">餓鬼岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>例年、7/上～10/中</dd><dt>電話</dt><dd>0261-22-2220</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="大天荘 大天井岳">
+  <div class="hut-name"><a href="https://www.enzanso.co.jp/daitenso" target="_blank" rel="noopener">大天荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 大天井岳山頂直下 標高2870m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/otenshoudake/">大天井岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/6/13～11/3、完全予約制、Web予約可</dd><dt>電話</dt><dd>0263-32-1535 FAX0263-32-0898</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="大天井ヒュッテ 大天井岳">
+  <div class="hut-name"><a href="https://www.yarigatake.co.jp/" target="_blank" rel="noopener">大天井ヒュッテ</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 大天井岳西方鞍部 標高2650m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/otenshoudake/">大天井岳</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から</dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/11～10/11、１か月前予約制</dd><dt>電話</dt><dd>0263-35-7200</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="常念小屋 常念岳">
+  <div class="hut-name"><a href="http://mt-jonen.com/" target="_blank" rel="noopener">常念小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 横通岳・常念岳鞍部、常念乗越 標高2450m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/jonengatake/">常念岳</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から</dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/25～11/3、１か月前予約制 ＊JapanAlpsにて外国人向けにWeb予約あり</dd><dt>電話</dt><dd>0263-33-9458</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="蝶ヶ岳ヒュッテ 蝶ヶ岳">
+  <div class="hut-name"><a href="https://chougatake.com/" target="_blank" rel="noopener">蝶ヶ岳ヒュッテ</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 蝶ヶ岳肩長塀山分岐 標高2677m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/chogatake/">蝶ヶ岳</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から</dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/25～11/3、１ヶ月前予約制、Web予約可 ＊6月は工事のため、宿泊人数を制限</dd><dt>電話</dt><dd>事務所（ご予約・お問い合わせ）：0263-58-2210</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="大滝山荘 蝶ヶ岳">
+  <div class="hut-name"><a href="https://chougatake.com/ootaki/" target="_blank" rel="noopener">大滝山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 大滝山北方5分 鍋冠山、徳本峠、蝶ヶ岳分岐 標高2614m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/chogatake/">蝶ヶ岳</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から</dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/20～8/31、１か月前予約制</dd><dt>電話</dt><dd>事務所（ご予約・お問い合わせ）：0263-58-2210</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="七倉山荘 烏帽子岳（北ア） 野口五郎岳">
+  <div class="hut-name"><a href="http://www.webmarunaka.com/nanakura/" target="_blank" rel="noopener">七倉山荘</a></div>
+  <div class="hut-sub">北アルプス ／ 七倉車止め地点 標高1050m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/eboshidake_kita/">烏帽子岳（北ア）</a>、<a href="/mountains/noguchigoro/">野口五郎岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>例年7月上旬～11月中旬</dd><dt>電話</dt><dd>0261-22-4006</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="烏帽子小屋 烏帽子岳（北ア）">
+  <div class="hut-name"><a href="https://www.ne.jp/asahi/eboshidake/2628/" target="_blank" rel="noopener">烏帽子小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 烏帽子岳・三ツ岳鞍部 標高2,520m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/eboshidake_kita/">烏帽子岳（北ア）</a></dd><dt>予約の開始</dt><dd>宿泊日の1か月前から</dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/11～9/30 ＊完全予約制（１か月前から）、キャンプ場予約あり、臨時休業あり</dd><dt>電話</dt><dd>0261-22-5104</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="野口五郎小屋 野口五郎岳">
+  <div class="hut-name"><a href="https://www.gorougoya.com/" target="_blank" rel="noopener">野口五郎小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 野口五郎岳直下北側 標高2867ｍ</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/noguchigoro/">野口五郎岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd>電話（Web予約は不可）</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7月中旬～9月下旬、電話完全予約制、Web予約は不可</dd><dt>電話</dt><dd>10月～6月：0261-22-5758（TEL/FAX)</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="栂池ヒュッテ 白馬岳">
+  <div class="hut-name"><a href="https://hakubakan.com/lodge/tsugaikehutte/" target="_blank" rel="noopener">栂池ヒュッテ</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 栂池自然園入口 標高1860m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/shirouma/">白馬岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/6/6～10/18、Webで宿泊予約受付、 完全予約制</dd><dt>電話</dt><dd>0261-72-2002</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="栂池山荘 白馬岳">
+  <div class="hut-name"><a href="http://www.tsugaikesansou.jp/" target="_blank" rel="noopener">栂池山荘</a></div>
+  <div class="hut-sub">北アルプス ／ 栂池自然園入口 標高1860m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/shirouma/">白馬岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/6/6～10/25、栂池自然園の開園は6/6～10/25 ＊春の大型連休中は営業なし</dd><dt>電話</dt><dd>0261-83-3113 090-7708-6341</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="白馬大池山荘 白馬岳">
+  <div class="hut-name"><a href="https://hakubakan.com/lodge/hakubaoikesanso/" target="_blank" rel="noopener">白馬大池山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 白馬大池北西畔 標高2380m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/shirouma/">白馬岳</a></dd><dt>予約の開始</dt><dd>5月20日 7:00から（2026年）</dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/6/20～10/12 、5/20（水）7：00～Webで予約受付開始、テント場も完全予約制</dd><dt>電話</dt><dd>0261-72-2002</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="猿倉荘 白馬岳">
+  <div class="hut-name"><a href="https://hakubakan.com/lodge/sarukuraso-hakubajiri/" target="_blank" rel="noopener">猿倉荘</a></div>
+  <div class="hut-sub">北アルプス ／ 白馬駅からバス30分、猿倉 標高1250m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/shirouma/">白馬岳</a></dd><dt>予約の開始</dt><dd>5月20日 7:00から（2026年）</dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/6/27～9/26、5/20（水）7：00～Webで予約受付開始 ＊状況次第で変更の可能性</dd><dt>電話</dt><dd>0261-72-2002</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="白馬山荘 白馬岳">
+  <div class="hut-name"><a href="https://hakubakan.com/lodge/hakubasanso/" target="_blank" rel="noopener">白馬山荘</a></div>
+  <div class="hut-sub">北アルプス ／ 白馬岳山頂直下 標高2832m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/shirouma/">白馬岳</a></dd><dt>予約の開始</dt><dd>夏季（6/20〜）の宿泊分は5月20日 7:00から（2026年）</dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/25～10/12 ＊夏季シーズン（6/20～）の宿泊予約：5/20（水）7：00～Webで受付開始</dd><dt>電話</dt><dd>0261-72-2002</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="村営白馬岳頂上宿舎 白馬岳">
+  <div class="hut-name"><a href="http://yamagoya.hakubakousha.com/" target="_blank" rel="noopener">村営白馬岳頂上宿舎</a></div>
+  <div class="hut-sub">北アルプス ／ 白馬岳南西下1km、大雪渓分岐 標高2730m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/shirouma/">白馬岳</a></dd><dt>予約の開始</dt><dd>5月8日 9:00から（2026年）</dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/6/27～9/27 ＊宿泊予約：5/8（金）9:00～開始</dd><dt>電話</dt><dd>0261-75-3788</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="唐松岳頂上山荘 唐松岳">
+  <div class="hut-name"><a href="http://karamatsu.jp/index.html" target="_blank" rel="noopener">唐松岳頂上山荘</a></div>
+  <div class="hut-sub">北アルプス ／ 唐松岳頂上南下鞍部 2620ｍ</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/karamatsu/">唐松岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2025/4/26～5/5、6/21～10/14</dd><dt>電話</dt><dd>090-5204-7876</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="村営八方池山荘 唐松岳">
+  <div class="hut-name"><a href="http://yamagoya.hakubakousha.com/" target="_blank" rel="noopener">村営八方池山荘</a></div>
+  <div class="hut-sub">北アルプス ／ 八方尾根第1ケルン上 標高1850m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/karamatsu/">唐松岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026年は通年営業</dd><dt>電話</dt><dd>0261-75-3788 白馬村振興公社</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="五竜山荘 五竜岳">
+  <div class="hut-name"><a href="https://hakubakan.com/lodge/goryusanso/" target="_blank" rel="noopener">五竜山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 五竜岳・白岳鞍部 標高2490m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/goryudake/">五竜岳</a></dd><dt>予約の開始</dt><dd>5月20日 7:00から（2026年）</dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/6/20～10/12 ＊5/20（水）7：00～Webで予約受付開始、テント場も完全予約制</dd><dt>電話</dt><dd>0261-72-2002</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="キレット小屋 五竜岳 鹿島槍ヶ岳">
+  <div class="hut-name"><a href="https://hakubakan.com/lodge/kiretto/" target="_blank" rel="noopener">キレット小屋</a></div>
+  <div class="hut-sub">北アルプス ／ 五竜岳・鹿島槍ヶ岳間、八峰キレット北 標高2470m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/goryudake/">五竜岳</a>、<a href="/mountains/kashimayari/">鹿島槍ヶ岳</a></dd><dt>予約の開始</dt><dd>5月20日 7:00から（2026年）</dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/6/27～9/27 ＊5/20（水）7：00～Webで予約受付開始</dd><dt>電話</dt><dd>0261-72-2002</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="冷池山荘 鹿島槍ヶ岳">
+  <div class="hut-name"><a href="https://www.kasimayari.jp/" target="_blank" rel="noopener">冷池山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 鹿島槍ヶ岳・爺ヶ岳鞍部 標高2410m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/kashimayari/">鹿島槍ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/1～10/17、完全予約制</dd><dt>電話</dt><dd>0261-22-1263</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="種池山荘 鹿島槍ヶ岳">
+  <div class="hut-name"><a href="https://www.kasimayari.jp/" target="_blank" rel="noopener">種池山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 爺ヶ岳西方下、種池畔 標高2450m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/kashimayari/">鹿島槍ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/1～10/17、完全予約制</dd><dt>電話</dt><dd>0261-22-1263</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="針ノ木小屋 針ノ木岳">
+  <div class="hut-name"><a href="http://www.harinoki.com/" target="_blank" rel="noopener">針ノ木小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 針ノ木峠 標高2536m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/harinokidake/">針ノ木岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/1～9/27 ＊完全予約制</dd><dt>電話</dt><dd>0261-22-1584 事務所</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="大沢小屋 針ノ木岳">
+  <div class="hut-name"><a href="http://www.harinoki.com/" target="_blank" rel="noopener">大沢小屋</a></div>
+  <div class="hut-sub">北アルプス ／ 籠川谷・大沢出合 標高1700m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/harinokidake/">針ノ木岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>例年：7月上旬～9月下旬</dd><dt>電話</dt><dd>0261-22-1584</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="肩ノ小屋 乗鞍岳">
+  <div class="hut-name"><a href="https://norikurakata.com/" target="_blank" rel="noopener">肩ノ小屋</a></div>
+  <div class="hut-sub">北アルプス ／ 乗鞍岳北方下、大雪渓上部 標高2800m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/norikura/">乗鞍岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>例年；7月上旬～10月上旬（変更あり）</dd><dt>電話</dt><dd>0263-93-2002</dd></dl>
+</div>
+<div class="hut" data-region="北アルプス" data-key="位ヶ原山荘 乗鞍岳">
+  <div class="hut-name"><a href="http://www.kuraigahara.jp/" target="_blank" rel="noopener">位ヶ原山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">北アルプス ／ 乗鞍岳位ヶ原 標高2350m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/norikura/">乗鞍岳</a></dd><dt>予約の開始</dt><dd>宿泊日の3か月前から</dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/2月上旬〜10月下旬、12月下旬〜2027/1月上旬、3か月前予約制、Web予約可</dd><dt>電話</dt><dd>090-9001-7362</dd></dl>
+</div>
+<div class="hut" data-region="南アルプス" data-key="北沢峠 こもれび山荘 甲斐駒ヶ岳 仙丈ヶ岳">
+  <div class="hut-name"><a href="https://www.ina-city-kankou.co.jp/yamagoya/kitazawa/" target="_blank" rel="noopener">北沢峠 こもれび山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">南アルプス ／ 南アルプス北沢峠バス停向かい 標高2,032m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/komagatake/">甲斐駒ヶ岳</a>、<a href="/mountains/senjogatake/">仙丈ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/25〜11/2 完全予約制、林道バスの運行状況に応じて変更あり、＊テント場なし</dd><dt>電話</dt><dd>0265-94-6001（伊那市観光株式会社 本社 平日9時～17時）※営業期間外</dd></dl>
+</div>
+<div class="hut" data-region="南アルプス" data-key="大平山荘 甲斐駒ヶ岳 仙丈ヶ岳">
+  <div class="hut-name"><a href="http://ohdaira.sakura.ne.jp/" target="_blank" rel="noopener">大平山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">南アルプス ／ 北沢峠より、信州側へ徒歩15分 標高1960m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/komagatake/">甲斐駒ヶ岳</a>、<a href="/mountains/senjogatake/">仙丈ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd>電話のみ</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>例年7月上旬～10月下旬 要予約（電話のみ） ＊テント場なし</dd><dt>電話</dt><dd>0265-78-3761 営業時間外</dd></dl>
+</div>
+<div class="hut" data-region="南アルプス" data-key="仙丈小屋 仙丈ヶ岳">
+  <div class="hut-name"><a href="https://www.ina-city-kankou.co.jp/yamagoya/senjo/" target="_blank" rel="noopener">仙丈小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">南アルプス ／ 仙丈ヶ岳山頂直下薮沢カール内 標高2900m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/senjogatake/">仙丈ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/6/12〜10/11 要予約、林道バスの状況に応じて延長あり、テント場なし</dd><dt>電話</dt><dd>0265-94-6001 伊那市観光（株） 本社 平日9時～17時</dd></dl>
+</div>
+<div class="hut" data-region="南アルプス" data-key="馬の背ヒュッテ 仙丈ヶ岳">
+  <div class="hut-name"><a href="https://umanose.com/" target="_blank" rel="noopener">馬の背ヒュッテ</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">南アルプス ／ 丹渓新道・薮沢ルート分岐点下、3分 標高2640m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/senjogatake/">仙丈ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd>Web（Yamatan）・電話</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/1〜10/12 完全予約制（電話も可）、テント場なし、Yamatan予約可能、テント場なし</dd><dt>電話</dt><dd>0265-78-4111（伊那市役所観光課 平日8時30分～17時） ※営業期間外</dd></dl>
+</div>
+<div class="hut" data-region="南アルプス" data-key="塩見小屋 塩見岳">
+  <div class="hut-name"><a href="https://www.ina-city-kankou.co.jp/yamagoya/shiomi/" target="_blank" rel="noopener">塩見小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">南アルプス ／ 塩見岳北西、塩見岳・天狗岩から15分 標高2760m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/shiomidake/">塩見岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/5/2~5/6、7/1～10/11 完全予約制。</dd><dt>電話</dt><dd>0265-94-6001 伊那市観光（株）（営業期間外、平日8時30分～17時30分）</dd></dl>
+</div>
+<div class="hut" data-region="南アルプス" data-key="三伏峠小屋 塩見岳">
+  <div class="hut-name"><a href="http://sanpukutouge.com/" target="_blank" rel="noopener">三伏峠小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">南アルプス ／ 三伏峠（標高2615m）手前標高2580m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/shiomidake/">塩見岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd>Web（オンライン予約）</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026年7月初旬～9月下旬 オンライン予約制、テント場：当日現地受付のみ ＊冬季中の小屋の開放はなし</dd><dt>電話</dt><dd>0265-39-3110 小屋連絡所（電話対応は7時～17時・19時～20時）</dd></dl>
+</div>
+<div class="hut" data-region="南アルプス" data-key="聖光小屋 聖岳 光岳">
+  <div class="hut-name"><a href="https://seikougoya.info/" target="_blank" rel="noopener">聖光小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">南アルプス ／ 飯田市南信濃木沢便ケ島 標高975m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/hijiridade/">聖岳</a>、<a href="/mountains/terkari/">光岳</a></dd><dt>予約の開始</dt><dd>3月20日から（2026年）</dd><dt>予約方法</dt><dd>電話（1週間前まで）</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/24〜10/12 完全予約制（1週間前までに電話連絡） 3/20～予約受付</dd><dt>電話</dt><dd>090-9353-0104 管理人</dd></dl>
+</div>
+<div class="hut" data-region="南アルプス" data-key="県営光岳小屋 光岳">
+  <div class="hut-name"><a href="https://www.chillnn.com/1863f95fe2d74" target="_blank" rel="noopener">県営光岳小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">南アルプス ／ 光岳直下 2520m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/terkari/">光岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd>Webのみ</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7月上旬～９月下旬 （予定） ＊Web予約のみ ＊営業期間の変更など要確認 ＊テント場あり</dd><dt>電話</dt><dd>0547-58-7077（静岡県川根本町役場観光交流課 予約のみ）</dd></dl>
+</div>
+<div class="hut" data-region="中央アルプス" data-key="西駒山荘 木曽駒ヶ岳">
+  <div class="hut-name"><a href="https://www.ina-city-kankou.co.jp/yamagoya/nishikoma/" target="_blank" rel="noopener">西駒山荘</a></div>
+  <div class="hut-sub">中央アルプス ／ 将棊頭山直下 標高2,685m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/kisokoma/">木曽駒ヶ岳</a></dd><dt>予約の開始</dt><dd>2月20日から（2026年・Web予約）</dd><dt>予約方法</dt><dd>Web</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/11～10/11 ＊Web予約は2/20～ 冬季開放エリアあり</dd><dt>電話</dt><dd>0265-94-6001</dd></dl>
+</div>
+<div class="hut" data-region="中央アルプス" data-key="駒ヶ岳頂上山荘 木曽駒ヶ岳">
+  <div class="hut-name"><a href="https://miyadakankou.co.jp/chojosansou" target="_blank" rel="noopener">駒ヶ岳頂上山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">中央アルプス ／ 木曽駒ヶ岳・中岳の鞍部 標高2,870ｍ</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/kisokoma/">木曽駒ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7月初旬～10初旬 要予約・要問合せ ＊幕営泊7月初旬～10月中旬</dd><dt>電話</dt><dd>090-5507-6345</dd></dl>
+</div>
+<div class="hut" data-region="中央アルプス" data-key="宝剣山荘 木曽駒ヶ岳">
+  <div class="hut-name"><a href="https://miyadakankou.co.jp/" target="_blank" rel="noopener">宝剣山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">中央アルプス ／ 宝剣岳直下 標高2,870ｍ</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/kisokoma/">木曽駒ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4月上旬～11月上旬 要予約 4月および11月以降の営業は＊要問合せ、冬季営業（年末年始は要予約） ※2023年度より宝剣山荘～天狗荘間一部敷地において幕営の設営が可能(宝剣山荘冬季開設時及びシーズン期間)/最大設営可能数約20張・完全予約制 ＊期間外は要問合せ</dd><dt>電話</dt><dd>090-5507-6345</dd></dl>
+</div>
+<div class="hut" data-region="中央アルプス" data-key="天狗荘 木曽駒ヶ岳">
+  <div class="hut-name"><a href="https://miyadakankou.co.jp/tengusou" target="_blank" rel="noopener">天狗荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">中央アルプス ／ 宝剣岳直下・宝剣山荘北50m 標高2,870m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/kisokoma/">木曽駒ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7月上旬～10月初旬 要予約・要問合せ</dd><dt>電話</dt><dd>090-5507-6345</dd></dl>
+</div>
+<div class="hut" data-region="中央アルプス" data-key="木曽殿山荘 空木岳">
+  <div class="hut-name"><a href="https://www.kisodonosansou.com/" target="_blank" rel="noopener">木曽殿山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">中央アルプス ／ 空木岳・東川岳鞍部、木曽殿越 標高2587m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/utsugi/">空木岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/1～10/11 完全予約制 テント場はなし、冬季は倉庫を避難小屋として開放（～6/19）</dd><dt>電話</dt><dd>0573-72-4380</dd></dl>
+</div>
+<div class="hut" data-region="中央アルプス" data-key="空木駒峰ヒュッテ 空木岳">
+  <div class="hut-name"><a href="http://www.komaho.net/hutte/utsugi_hutte1.html" target="_blank" rel="noopener">空木駒峰ヒュッテ</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">中央アルプス ／ 空木岳頂上直下東側100m 標高2800m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/utsugi/">空木岳</a></dd><dt>予約の開始</dt><dd>6月1日から（2026年）</dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/11～10/12 完全予約制、6/1～予約受付開始</dd><dt>電話</dt><dd>宿泊専用E-mail alpees@outlook.jp</dd></dl>
+</div>
+<div class="hut" data-region="中央アルプス" data-key="越百小屋 南駒ヶ岳">
+  <div class="hut-name">越百小屋</div>
+  <div class="hut-sub">中央アルプス ／ 越百山西1km 標高2340m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/minamikomagatake/">南駒ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026年は休業予定、要確認のこと</dd><dt>電話</dt><dd>090-7699-9337</dd></dl>
+</div>
+<div class="hut" data-region="八ヶ岳" data-key="蓼科山頂ヒュッテ 蓼科山">
+  <div class="hut-name"><a href="http://tateshinayama.com/" target="_blank" rel="noopener">蓼科山頂ヒュッテ</a></div>
+  <div class="hut-sub">八ヶ岳 ／ 蓼科山山頂 標高2531m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/keirisan/">蓼科山</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/25〜10/31 ＊12/31(木)の年越し宿泊の予約受付は10/1（木）夜8時より開始</dd><dt>電話</dt><dd>049-266-9264</dd></dl>
+</div>
+<div class="hut" data-region="八ヶ岳" data-key="蓼科山荘 蓼科山">
+  <div class="hut-name"><a href="http://www7a.biglobe.ne.jp/~g-factory/tateshinalodge/yama.html" target="_blank" rel="noopener">蓼科山荘</a></div>
+  <div class="hut-sub">八ヶ岳 ／ 蓼科山将軍平 標高2350m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/keirisan/">蓼科山</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/25～10/31、定休・不定休あり</dd><dt>電話</dt><dd>090-1553-4500</dd></dl>
+</div>
+<div class="hut" data-region="八ヶ岳" data-key="硫黄岳山荘 八ヶ岳（赤岳）">
+  <div class="hut-name"><a href="https://iodake.jp/sanso/" target="_blank" rel="noopener">硫黄岳山荘</a></div>
+  <div class="hut-sub">八ヶ岳 ／ 南八ケ岳 硫黄岳と横岳の鞍部 標高2,650ｍ</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/yatsugatake/">八ヶ岳（赤岳）</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026年4月下旬～11月上旬、冬期は休業・閉鎖</dd><dt>電話</dt><dd>0266-73-6673（予約専用：事務所）</dd></dl>
+</div>
+<div class="hut" data-region="八ヶ岳" data-key="赤岳頂上山荘 八ヶ岳（赤岳）">
+  <div class="hut-name"><a href="http://www.yatsu-honzawaonsen.com/" target="_blank" rel="noopener">赤岳頂上山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">八ヶ岳 ／ 赤岳山頂 標高2899m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/yatsugatake/">八ヶ岳（赤岳）</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/4〜10/25 要予約</dd><dt>電話</dt><dd>090-5446-1205 （～6/19予約） 本沢温泉事務所 0266-72-3260 FAX：72-3260</dd></dl>
+</div>
+<div class="hut" data-region="八ヶ岳" data-key="赤岳天望荘 八ヶ岳（赤岳）">
+  <div class="hut-name"><a href="http://www.yatsugatake.gr.jp/" target="_blank" rel="noopener">赤岳天望荘</a></div>
+  <div class="hut-sub">八ヶ岳 ／ 赤岳北方稜線 標高2722m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/yatsugatake/">八ヶ岳（赤岳）</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2025/4/24～11/3 12/24～2026/2月下旬 予約希望</dd><dt>電話</dt><dd>0266-74-2728 FAX0266-74-2755</dd></dl>
+</div>
+<div class="hut" data-region="八ヶ岳" data-key="行者小屋 八ヶ岳（赤岳）">
+  <div class="hut-name"><a href="http://userweb.alles.or.jp/akadake/" target="_blank" rel="noopener">行者小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">八ヶ岳 ／ 柳川南沢源流 標高2340m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/yatsugatake/">八ヶ岳（赤岳）</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/5/30～10/31 完全予約制、テント場は予約不要、幕営数の上限なし</dd><dt>電話</dt><dd>—</dd></dl>
+</div>
+<div class="hut" data-region="八ヶ岳" data-key="赤岳鉱泉 八ヶ岳（赤岳）">
+  <div class="hut-name"><a href="http://userweb.alles.or.jp/akadake/" target="_blank" rel="noopener">赤岳鉱泉</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">八ヶ岳 ／ 柳川北沢源流 標高2220m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/yatsugatake/">八ヶ岳（赤岳）</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>通年営業、完全予約制、テント場は予約不要、5/30～価格改定予定</dd><dt>電話</dt><dd>—</dd></dl>
+</div>
+<div class="hut" data-region="八ヶ岳" data-key="赤岳山荘 八ヶ岳（赤岳）">
+  <div class="hut-name">赤岳山荘</div>
+  <div class="hut-sub">八ヶ岳 ／ 美濃戸 標高1760m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/yatsugatake/">八ヶ岳（赤岳）</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>通年営業</dd><dt>電話</dt><dd>FAX兼用0266-74-2272</dd></dl>
+</div>
+<div class="hut" data-region="八ヶ岳" data-key="美濃戸山荘 八ヶ岳（赤岳）">
+  <div class="hut-name"><a href="http://www.yatsugatake.gr.jp/" target="_blank" rel="noopener">美濃戸山荘</a></div>
+  <div class="hut-sub">八ヶ岳 ／ 美濃戸口下車 徒歩50分、柳川南沢・北沢出合 標高1760m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/yatsugatake/">八ヶ岳（赤岳）</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2025/4/24～10/13 予約希望</dd><dt>電話</dt><dd>0266-74-2728 FAX0266-74-2755</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="天狗温泉浅間山荘 浅間山">
+  <div class="hut-name"><a href="http://www.tenguspa.com/" target="_blank" rel="noopener">天狗温泉浅間山荘</a></div>
+  <div class="hut-sub">その他 ／ 佐久平駅から小諸駅経由バス40分、浅間山登山口下車、徒歩40分、小諸駅から送迎車25分（要予約） 標高1400m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/asama/">浅間山</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>通年営業</dd><dt>電話</dt><dd>0267-22-0959</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="苗場山頂ヒュッテ－自然体験交流センター 苗場山">
+  <div class="hut-name"><a href="http://sakae-akiyamago.com/stay/4888/" target="_blank" rel="noopener">苗場山頂ヒュッテ－自然体験交流センター</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">その他 ／ 苗場山山頂 標高2145m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/naeba/">苗場山</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd>電話</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/6/1～10/25 ＊完全予約制（電話）</dd><dt>電話</dt><dd>080-7183-4024 ＊9:00～16:00予約</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="美ヶ原高原ホテル・山本小屋 美ヶ原">
+  <div class="hut-name"><a href="https://www.utsukushigahara.com/" target="_blank" rel="noopener">美ヶ原高原ホテル・山本小屋</a></div>
+  <div class="hut-sub">その他 ／ 松本駅からバス1時間35分、山本小屋下車 標高2000m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/utsukushigahara/">美ヶ原</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>通年営業</dd><dt>電話</dt><dd>0268-86-2011 FAX86-2013</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="八島山荘 霧ヶ峰">
+  <div class="hut-name"><a href="https://yashimasanso.net/" target="_blank" rel="noopener">八島山荘</a></div>
+  <div class="hut-sub">その他 ／ 下諏訪駅・上諏訪駅からバス1時間、八島高原下車 標高1650m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/kirigamine/">霧ヶ峰</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd>Web・電話</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/25～ ＊Web予約・電話予約も</dd><dt>電話</dt><dd>0266-58-5357</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="鷲が峰ひゅって 霧ヶ峰">
+  <div class="hut-name"><a href="https://nature2.jp/wasshie/" target="_blank" rel="noopener">鷲が峰ひゅって</a></div>
+  <div class="hut-sub">その他 ／ 八ヶ岳中信高原国定公園霧ヶ峰高原八島湿原 標高1660m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/kirigamine/">霧ヶ峰</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>通年営業、冬季は休業日を要確認</dd><dt>電話</dt><dd>0266-58-8088</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="ヒュッテみさやま 霧ヶ峰">
+  <div class="hut-name"><a href="https://huttemisayama.net/" target="_blank" rel="noopener">ヒュッテみさやま</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">その他 ／ 八島湿原下車 徒歩25分 標高1600m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/kirigamine/">霧ヶ峰</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026年4月末ごろ～10月末 ＊冬季の営業日は要確認 ＊完全予約制</dd><dt>電話</dt><dd>0266-75-2370</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="十文字小屋 甲武信ヶ岳">
+  <div class="hut-name"><a href="http://www.hut10monji.com/" target="_blank" rel="noopener">十文字小屋</a></div>
+  <div class="hut-sub">その他 ／ 梓山から3時間30分、十文字峠 標高2035m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/kobushigatake/">甲武信ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/29～11/23 年末年始の営業：12/28～1/3</dd><dt>電話</dt><dd>090-1031-5352（9～20時）</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="甲武信小屋 甲武信ヶ岳">
+  <div class="hut-name"><a href="https://www.kobushigoya.net/" target="_blank" rel="noopener">甲武信小屋</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">その他 ／ 甲武信ヶ岳南東200m 標高2300m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/kobushigatake/">甲武信ヶ岳</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026年4月末～11月末 ＊完全予約制</dd><dt>電話</dt><dd>050-1724-9550 予約 8:00～20:00</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="金峰山小屋 金峰山">
+  <div class="hut-name"><a href="https://www.kimpou.com/" target="_blank" rel="noopener">金峰山小屋</a></div>
+  <div class="hut-sub">その他 ／ 金峰山山頂北西400m 標高2440m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/kinpusan/">金峰山</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>例年4月下旬～11月下旬（3月～4月中旬は休休業）</dd><dt>電話</dt><dd>070-3962-0448</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="七合目行場山荘 御嶽山">
+  <div class="hut-name"><a href="http://www.ontake-7-gyouba.com/" target="_blank" rel="noopener">七合目行場山荘</a></div>
+  <div class="hut-sub">その他 ／ 黒沢口七合目 標高2180m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/ontakesan/">御嶽山</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/18～10/25 ＊夏山7月中旬～8月下旬 ＊秋山9月初旬～10月中旬</dd><dt>電話</dt><dd>090-4380-5200 予約 FAX 0264-46-2014</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="女人堂（金剛堂） 御嶽山">
+  <div class="hut-name"><a href="https://ontake-nyonindo.jimdofree.com/" target="_blank" rel="noopener">女人堂（金剛堂）</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">その他 ／ 黒沢口八合目 標高2470m 女人堂から剣が峰頂上（3,067m）まで約2時間半</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/ontakesan/">御嶽山</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/ 7/11~10/10 ＊宿泊営業は10/4まで ＊要予約</dd><dt>電話</dt><dd>090-8329-1385 FAX 0264-46-2415</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="石室山荘 御嶽山">
+  <div class="hut-name"><a href="http://www.ontake-ishimuro.com/" target="_blank" rel="noopener">石室山荘</a></div>
+  <div class="hut-sub">その他 ／ 黒沢口九合目 標高2,820m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/ontakesan/">御嶽山</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd><span class="na">公式サイトで確認</span></dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>例年は7月～10月上旬</dd><dt>電話</dt><dd>0264-46-2016（黒澤館）</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="二ノ池山荘 御嶽山">
+  <div class="hut-name"><a href="http://ninoike2905.com/" target="_blank" rel="noopener">二ノ池山荘</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">その他 ／ 御嶽山頂北東直下、二ノ池畔、９合目半・標高2,905m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/ontakesan/">御嶽山</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd>電話のみ</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/4/29～5/5、7/1～9/30 ＊営業日を確認のこと ＊完全予約制（電話のみ）</dd><dt>電話</dt><dd>090-4668-7000</dd></dl>
+</div>
+<div class="hut" data-region="その他" data-key="二の池ヒュッテ 御嶽山">
+  <div class="hut-name"><a href="https://www.ninoikehutte.com/" target="_blank" rel="noopener">二の池ヒュッテ</a><span class="req">予約必須</span></div>
+  <div class="hut-sub">その他 ／ 岐阜県下呂市小坂町落合 国有林内 剣ヶ峰より15分程度 標高 2900m</div>
+  <dl><dt>対応する山</dt><dd><a href="/mountains/ontakesan/">御嶽山</a></dd><dt>予約の開始</dt><dd><span class="na">公式サイトで確認</span></dd><dt>予約方法</dt><dd>公式LINE</dd><dt>規模</dt><dd><span class="na">確認中</span></dd><dt>営業期間・予約（出典の記載）</dt><dd>2026/7/1～10/11 ＊公式Lineより完全予約制</dd><dt>電話</dt><dd>080-2250-8008</dd></dl>
+</div>
+<p class="lead" style="margin-top:12px">出典：<a href="https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya.html" target="_blank" rel="noopener">長野県 山小屋情報ポータルサイト</a></p>
+</main>
+<script>
+(function(){
+  var q=document.getElementById('q'), region='', huts=document.querySelectorAll('.hut'), cnt=document.getElementById('cnt');
+  function apply(){
+    var k=q.value.replace(/\s+/g,''), n=0;
+    for(var i=0;i<huts.length;i++){
+      var h=huts[i], ok=(!region||h.getAttribute('data-region')===region)&&(!k||h.getAttribute('data-key').indexOf(k)>-1);
+      h.style.display=ok?'':'none'; if(ok)n++;
+    }
+    cnt.textContent=n+'軒を表示';
+  }
+  q.addEventListener('input',apply);
+  var chips=document.querySelectorAll('.chip');
+  for(var i=0;i<chips.length;i++){ chips[i].addEventListener('click',function(){ for(var j=0;j<chips.length;j++)chips[j].className='chip'; this.className='chip on'; region=this.getAttribute('data-r'); apply(); }); }
+  apply();
+})();
+</script>
+</body>
+</html>

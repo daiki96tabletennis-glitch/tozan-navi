@@ -22,6 +22,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<script src="/assets/js/volcano-status.js?v=20261010a"></script>
+<script src="/assets/js/counts-config.js?v=20261010b"></script>
+<script src="/assets/js/ym-counts.js?v=20261010b"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" media="print" onload="this.media='all'">
 <!-- Leaflet は地図表示時に動的ロード -->
@@ -1299,6 +1302,7 @@ function App() {
                 {label:"ホーム",href:"/",icon:<path d="M4 11 L12 4 L20 11 V20 H4 Z M9 20 V13 H15 V20"/>},
                 {label:"山選び診断",href:"/find/",icon:<path d="M3 19 L9 9 L13 15 L16 11 L21 19 Z"/>},
                 {label:"登山タイプ診断",href:"/recommend/",icon:<g><circle cx="12" cy="12" r="9"/><polygon points="12,6 14,12 12,14 10,12" fill="currentColor" stroke="none"/></g>},
+                {label:"山小屋まとめ（β）",href:"/huts/",icon:<path d="M3 11 L12 4 L21 11 M5 10 V20 H19 V10 M10 20 V14 H14 V20"/>},
                 {label:"登山ギアを探す",href:"/gear/",icon:<path d="M7 8 V6 a2 2 0 0 1 2-2 h6 a2 2 0 0 1 2 2 V8 M5 8 H19 L18 20 H6 Z"/>},
                 {label:"記事一覧",href:"/articles/",icon:<g><rect x="4" y="4" width="16" height="16" rx="1.5"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></g>},
                 {label:"マイページ",href:"/mypage/",icon:<g><circle cx="12" cy="8" r="3.5"/><path d="M5 20 a7 7 0 0 1 14 0"/></g>},
@@ -2094,8 +2098,11 @@ fetch('/data/mountains.json')
   .then(function(r){ return r.json(); })
   .then(function(jsonData){
     mountains = jsonData;
+    // 噴火警報が出ている山を「規制中」と同じ扱いにする（気象庁のデータ。2.5秒待っても取れなければ、そのまま表示する）
+    if(!window.YMVolcano) return;
+    return window.YMVolcano.ready(2500).then(function(){ window.YMVolcano.apply(mountains); });
   })
-  .catch(function(){ mountains = []; })
+  .catch(function(){ if(!mountains || !mountains.length) mountains = []; })
   .finally(function(){
     root.render(<App/>);
     var _sk=document.getElementById('app-skeleton');if(_sk)_sk.style.display='none';

@@ -947,6 +947,7 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 </footer>
 
 <script src="/assets/js/gear-common.js?v=20261002"></script>
+<script src="/assets/js/volcano-status.js?v=20261010a"></script>
 <script>
 // 山データは /data/mountains.json を唯一の正とする（ページ内にコピーを持たない）。読み込み後に下のPromise内で埋める。
 const MOUNTAINS = [];
@@ -2335,12 +2336,14 @@ document.addEventListener('DOMContentLoaded', function(){
       var jsonData = results[0];
       recommendGearData = results[1] || {};
       if(!jsonData) return;
-      var FIELDS = ['id','name','area','elevation','category','difficulty','coeffMin','coeffMax','daytrip','description','driveOfuna','driveShinjuku','driveYokohama','driveOmiya','seasonOk','trainAccess','trainTimeShinjuku','trainTimeOmiya','recommendReason','types','vibes','calLegend','seasonCalendar','gearCalendar','vibePoints','featurePoints','status'];
+      var FIELDS = ['id','name','area','elevation','category','difficulty','coeffMin','coeffMax','daytrip','description','driveOfuna','driveShinjuku','driveYokohama','driveOmiya','seasonOk','trainAccess','trainTimeShinjuku','trainTimeOmiya','recommendReason','types','vibes','calLegend','seasonCalendar','gearCalendar','vibePoints','featurePoints','status','volcanoCodes','volcanoScope'];
       jsonData.forEach(function(jmt){
         var m = {};
         FIELDS.forEach(function(k){ if(jmt[k] !== undefined) m[k] = jmt[k]; });
         MOUNTAINS.push(m);
       });
+      // 噴火警報が出ている山は「規制中」として結果の末尾に回す（気象庁のデータ）
+      if(window.YMVolcano) window.YMVolcano.load(function(){ window.YMVolcano.apply(MOUNTAINS); });
     })
     .catch(function(){})
     .finally(function(){

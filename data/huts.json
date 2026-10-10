@@ -1,0 +1,1637 @@
+{
+  "note": "山小屋まとめ（β）。出典は長野県 山小屋情報ポータルサイト。scripts/build_huts_from_nagano.py が作る（capacity だけ手入力）",
+  "seasonYear": 2026,
+  "huts": [
+    {
+      "id": "hut-e590d57b",
+      "name": "槍ヶ岳山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "yari"
+      ],
+      "location": "槍ヶ岳南直下 標高3060m",
+      "officialUrl": "https://www.yarigatake.co.jp/",
+      "tel": "0263-35-7200",
+      "openText": "2026/4/27～11/3、1か月前予約制、Web予約可",
+      "bookingStart": "宿泊日の1か月前から",
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-5541ffbb",
+      "name": "ヒュッテ大槍",
+      "region": "北アルプス",
+      "mountainIds": [
+        "yari"
+      ],
+      "location": "槍ヶ岳東方1km、雷鳥平 標高2884m",
+      "officialUrl": "https://www.enzanso.co.jp/hutte-ooyari",
+      "tel": "0263-32-1535 FAX0263-32-0898",
+      "openText": "2026/7/1～10/12、＊5/19から宿泊予約受付開始",
+      "bookingStart": "5月19日から（2026年）",
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-f333b6ff",
+      "name": "殺生小屋",
+      "region": "北アルプス",
+      "mountainIds": [
+        "yari"
+      ],
+      "location": "槍ヶ岳頂上南東下、槍沢上部 標高2810m",
+      "officialUrl": "https://www.yarigatake.co.jp/sesshou/",
+      "tel": "連絡先",
+      "openText": "2026/6/6～10/11、1か月前予約制 ＊開始日と終了日は降雪状況次第で変更あり",
+      "bookingStart": "宿泊日の1か月前から",
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-e29eb267",
+      "name": "槍沢ロッヂ",
+      "region": "北アルプス",
+      "mountainIds": [
+        "yari"
+      ],
+      "location": "赤沢山南方、槍沢左岸 標高1820m",
+      "officialUrl": "https://www.yarigatake.co.jp/yarisawa/",
+      "tel": "0263-35-7200",
+      "openText": "2026/4/27～11/3、1か月前予約制、Web予約可",
+      "bookingStart": "宿泊日の1か月前から",
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-f5fe13c2",
+      "name": "穂高岳山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "hotaka"
+      ],
+      "location": "涸沢岳・奥穂高岳鞍部 標高2996m",
+      "officialUrl": "https://www.hotakadakesanso.com/",
+      "tel": "0578-82-2150 FAX0577-36-8480",
+      "openText": "2026/4/27～11/3、1か月前予約制 ＊4/27～5/20の宿泊予約は4/20～電話のみで予約",
+      "bookingStart": "宿泊日の1か月前から（4/27〜5/20の宿泊分は4月20日から電話のみ）",
+      "bookingMethods": [
+        "電話"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-f16d6440",
+      "name": "涸沢小屋",
+      "region": "北アルプス",
+      "mountainIds": [
+        "hotaka"
+      ],
+      "location": "涸沢カール、北穂高岳・奥穂高岳分岐 標高2350m",
+      "officialUrl": "http://www.karasawagoya.com/",
+      "tel": "090-2204-1300 FAX050-3730-9248",
+      "openText": "2026/4/27～11/3、1か月前予約制 ＊4/25～現地電話にて予約受付開始",
+      "bookingStart": "宿泊日の1か月前から（4月25日から現地電話で受付開始）",
+      "bookingMethods": [
+        "電話"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-25ee6520",
+      "name": "涸沢ヒュッテ",
+      "region": "北アルプス",
+      "mountainIds": [
+        "hotaka"
+      ],
+      "location": "涸沢カール中央、池ノ平 標高2300m",
+      "officialUrl": "https://www.karasawa-hyutte.com/",
+      "tel": "冬季連絡先:0263-26-3212",
+      "openText": "2026/4/27～5/10、6/1～11/3、1か月前予約制、Web予約可、5/11～5/31改修工事のため休業でテント受付のみ",
+      "bookingStart": "宿泊日の1か月前から",
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-251f0dc7",
+      "name": "横尾山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "yari",
+        "hotaka",
+        "chogatake"
+      ],
+      "location": "梓川・横尾谷出合本流左岸 標高1620m",
+      "officialUrl": "https://www.yokoo-sanso.co.jp/",
+      "tel": "0263-33-2225（冬期のみ）",
+      "openText": "2026/4/27～5/31、7/1～11/3 、1か月前予約制、繁忙期限定数のみWeb予約可、6/1～6/30は工事のため、宿泊及び食堂は休業。売店およびテント受付のみ営業",
+      "bookingStart": "宿泊日の1か月前から",
+      "bookingMethods": [
+        "Web（繁忙期は限定数のみ）"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-bf39f1a9",
+      "name": "徳沢ロッヂ",
+      "region": "北アルプス",
+      "mountainIds": [
+        "chogatake"
+      ],
+      "location": "梓川・徳沢出合本流左岸、徳沢 標高1550m",
+      "officialUrl": "http://www.m-kamikouchi.jp/tokuzawalodge/",
+      "tel": "0263-95-2526 FAX0263-95-2527",
+      "openText": "2026/4/25～11/5、Web完全予約制",
+      "bookingStart": null,
+      "bookingMethods": [
+        "Web（完全予約制）"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-b3a84840",
+      "name": "氷壁の宿 徳澤園",
+      "region": "北アルプス",
+      "mountainIds": [
+        "chogatake"
+      ],
+      "location": "徳沢 標高1560m",
+      "officialUrl": "https://www.tokusawaen.com/",
+      "tel": "0263-95-2508",
+      "openText": "2026/4/27～11/5ごろ、テント営業4/25～ ＊営業の開始・終了日は要問合せ",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-acf9b4d9",
+      "name": "岳沢小屋",
+      "region": "北アルプス",
+      "mountainIds": [
+        "hotaka"
+      ],
+      "location": "前穂高岳直下岳沢 標高2170m",
+      "officialUrl": "https://www.yarigatake.co.jp/",
+      "tel": "0263-35-7200",
+      "openText": "2026/4/27～11/3、１か月前予約制、Web予約可、",
+      "bookingStart": "宿泊日の1か月前から",
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-f86aea36",
+      "name": "焼岳小屋",
+      "region": "北アルプス",
+      "mountainIds": [
+        "yakedake"
+      ],
+      "location": "新中尾峠",
+      "officialUrl": "https://www.m-kamikouchi.jp/yakedake/",
+      "tel": "070-5087-0207 (冬期連絡先)",
+      "openText": "2026/6/21～10/18、１か月前予約制（電話及びFAX） ＊火山性地震の状況等により変更の可能性あり",
+      "bookingStart": "宿泊日の1か月前から",
+      "bookingMethods": [
+        "電話",
+        "FAX"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-51c2ab0b",
+      "name": "有明荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "arikayama"
+      ],
+      "location": "穂高駅から車50分 標高1380m",
+      "officialUrl": "https://www.enzanso.co.jp/ariakeso",
+      "tel": "0263-32-1535 FAX0263-32-0898",
+      "openText": "2026/4/24～11/3、完全予約制 ＊休館日：5/7（木）、6/3（水）、7/1（水）、9/2（水）、10/7（水）要確認",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-5f893d5a",
+      "name": "中房温泉",
+      "region": "北アルプス",
+      "mountainIds": [
+        "otenshoudake",
+        "arikayama"
+      ],
+      "location": "穂高駅からバスまたは車1時間、中房温泉下車 標高1462m",
+      "officialUrl": "https://nakabusa.com/",
+      "tel": "0263-77-1488",
+      "openText": "2026/4/28～11/23、2か月前予約制、Web予約可 ＊営業開始は中房線の道路状況次第で変更の可能性あり",
+      "bookingStart": "宿泊日の2か月前から",
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-0ab94a0e",
+      "name": "燕山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "otenshoudake"
+      ],
+      "location": "燕岳頂上南方1km 標高2712m",
+      "officialUrl": "https://www.enzanso.co.jp/",
+      "tel": "0263-32-1535 FAX0263-32-0898",
+      "openText": "2026/4/25～11/22 、3/18～完全予約制 ＊個室予約可能日は時期ごとのため、詳細は事前確認のこと",
+      "bookingStart": "3月18日から（2026年）",
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-ba19e45d",
+      "name": "餓鬼岳小屋",
+      "region": "北アルプス",
+      "mountainIds": [
+        "gakedake"
+      ],
+      "location": "餓鬼岳南直下50m 標高2647m",
+      "officialUrl": null,
+      "tel": "0261-22-2220",
+      "openText": "例年、7/上～10/中",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-6bd368b4",
+      "name": "大天荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "otenshoudake"
+      ],
+      "location": "大天井岳山頂直下 標高2870m",
+      "officialUrl": "https://www.enzanso.co.jp/daitenso",
+      "tel": "0263-32-1535 FAX0263-32-0898",
+      "openText": "2026/6/13～11/3、完全予約制、Web予約可",
+      "bookingStart": null,
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-9e4995b8",
+      "name": "大天井ヒュッテ",
+      "region": "北アルプス",
+      "mountainIds": [
+        "otenshoudake"
+      ],
+      "location": "大天井岳西方鞍部 標高2650m",
+      "officialUrl": "https://www.yarigatake.co.jp/",
+      "tel": "0263-35-7200",
+      "openText": "2026/7/11～10/11、１か月前予約制",
+      "bookingStart": "宿泊日の1か月前から",
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-b059e31d",
+      "name": "常念小屋",
+      "region": "北アルプス",
+      "mountainIds": [
+        "jonengatake"
+      ],
+      "location": "横通岳・常念岳鞍部、常念乗越 標高2450m",
+      "officialUrl": "http://mt-jonen.com/",
+      "tel": "0263-33-9458",
+      "openText": "2026/4/25～11/3、１か月前予約制 ＊JapanAlpsにて外国人向けにWeb予約あり",
+      "bookingStart": "宿泊日の1か月前から",
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-697c1181",
+      "name": "蝶ヶ岳ヒュッテ",
+      "region": "北アルプス",
+      "mountainIds": [
+        "chogatake"
+      ],
+      "location": "蝶ヶ岳肩長塀山分岐 標高2677m",
+      "officialUrl": "https://chougatake.com/",
+      "tel": "事務所（ご予約・お問い合わせ）：0263-58-2210",
+      "openText": "2026/4/25～11/3、１ヶ月前予約制、Web予約可 ＊6月は工事のため、宿泊人数を制限",
+      "bookingStart": "宿泊日の1か月前から",
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-dc757ba7",
+      "name": "大滝山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "chogatake"
+      ],
+      "location": "大滝山北方5分 鍋冠山、徳本峠、蝶ヶ岳分岐 標高2614m",
+      "officialUrl": "https://chougatake.com/ootaki/",
+      "tel": "事務所（ご予約・お問い合わせ）：0263-58-2210",
+      "openText": "2026/7/20～8/31、１か月前予約制",
+      "bookingStart": "宿泊日の1か月前から",
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-91ed1526",
+      "name": "七倉山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "eboshidake_kita",
+        "noguchigoro"
+      ],
+      "location": "七倉車止め地点 標高1050m",
+      "officialUrl": "http://www.webmarunaka.com/nanakura/",
+      "tel": "0261-22-4006",
+      "openText": "例年7月上旬～11月中旬",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-abddcb35",
+      "name": "烏帽子小屋",
+      "region": "北アルプス",
+      "mountainIds": [
+        "eboshidake_kita"
+      ],
+      "location": "烏帽子岳・三ツ岳鞍部 標高2,520m",
+      "officialUrl": "https://www.ne.jp/asahi/eboshidake/2628/",
+      "tel": "0261-22-5104",
+      "openText": "2026/7/11～9/30 ＊完全予約制（１か月前から）、キャンプ場予約あり、臨時休業あり",
+      "bookingStart": "宿泊日の1か月前から",
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-8098c896",
+      "name": "野口五郎小屋",
+      "region": "北アルプス",
+      "mountainIds": [
+        "noguchigoro"
+      ],
+      "location": "野口五郎岳直下北側 標高2867ｍ",
+      "officialUrl": "https://www.gorougoya.com/",
+      "tel": "10月～6月：0261-22-5758（TEL/FAX)",
+      "openText": "2026/7月中旬～9月下旬、電話完全予約制、Web予約は不可",
+      "bookingStart": null,
+      "bookingMethods": [
+        "電話（Web予約は不可）"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-b4e48d1b",
+      "name": "栂池ヒュッテ",
+      "region": "北アルプス",
+      "mountainIds": [
+        "shirouma"
+      ],
+      "location": "栂池自然園入口 標高1860m",
+      "officialUrl": "https://hakubakan.com/lodge/tsugaikehutte/",
+      "tel": "0261-72-2002",
+      "openText": "2026/6/6～10/18、Webで宿泊予約受付、 完全予約制",
+      "bookingStart": null,
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-3127bf3b",
+      "name": "栂池山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "shirouma"
+      ],
+      "location": "栂池自然園入口 標高1860m",
+      "officialUrl": "http://www.tsugaikesansou.jp/",
+      "tel": "0261-83-3113 090-7708-6341",
+      "openText": "2026/6/6～10/25、栂池自然園の開園は6/6～10/25 ＊春の大型連休中は営業なし",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-d0aadf5d",
+      "name": "白馬大池山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "shirouma"
+      ],
+      "location": "白馬大池北西畔 標高2380m",
+      "officialUrl": "https://hakubakan.com/lodge/hakubaoikesanso/",
+      "tel": "0261-72-2002",
+      "openText": "2026/6/20～10/12 、5/20（水）7：00～Webで予約受付開始、テント場も完全予約制",
+      "bookingStart": "5月20日 7:00から（2026年）",
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-8f6f2a1c",
+      "name": "猿倉荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "shirouma"
+      ],
+      "location": "白馬駅からバス30分、猿倉 標高1250m",
+      "officialUrl": "https://hakubakan.com/lodge/sarukuraso-hakubajiri/",
+      "tel": "0261-72-2002",
+      "openText": "2026/6/27～9/26、5/20（水）7：00～Webで予約受付開始 ＊状況次第で変更の可能性",
+      "bookingStart": "5月20日 7:00から（2026年）",
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-096f4fbb",
+      "name": "白馬山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "shirouma"
+      ],
+      "location": "白馬岳山頂直下 標高2832m",
+      "officialUrl": "https://hakubakan.com/lodge/hakubasanso/",
+      "tel": "0261-72-2002",
+      "openText": "2026/4/25～10/12 ＊夏季シーズン（6/20～）の宿泊予約：5/20（水）7：00～Webで受付開始",
+      "bookingStart": "夏季（6/20〜）の宿泊分は5月20日 7:00から（2026年）",
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-3236777c",
+      "name": "村営白馬岳頂上宿舎",
+      "region": "北アルプス",
+      "mountainIds": [
+        "shirouma"
+      ],
+      "location": "白馬岳南西下1km、大雪渓分岐 標高2730m",
+      "officialUrl": "http://yamagoya.hakubakousha.com/",
+      "tel": "0261-75-3788",
+      "openText": "2026/6/27～9/27 ＊宿泊予約：5/8（金）9:00～開始",
+      "bookingStart": "5月8日 9:00から（2026年）",
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-6f04ec94",
+      "name": "唐松岳頂上山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "karamatsu"
+      ],
+      "location": "唐松岳頂上南下鞍部 2620ｍ",
+      "officialUrl": "http://karamatsu.jp/index.html",
+      "tel": "090-5204-7876",
+      "openText": "2025/4/26～5/5、6/21～10/14",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-670d5eeb",
+      "name": "村営八方池山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "karamatsu"
+      ],
+      "location": "八方尾根第1ケルン上 標高1850m",
+      "officialUrl": "http://yamagoya.hakubakousha.com/",
+      "tel": "0261-75-3788 白馬村振興公社",
+      "openText": "2026年は通年営業",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-3f91149c",
+      "name": "五竜山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "goryudake"
+      ],
+      "location": "五竜岳・白岳鞍部 標高2490m",
+      "officialUrl": "https://hakubakan.com/lodge/goryusanso/",
+      "tel": "0261-72-2002",
+      "openText": "2026/6/20～10/12 ＊5/20（水）7：00～Webで予約受付開始、テント場も完全予約制",
+      "bookingStart": "5月20日 7:00から（2026年）",
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-81c056a9",
+      "name": "キレット小屋",
+      "region": "北アルプス",
+      "mountainIds": [
+        "goryudake",
+        "kashimayari"
+      ],
+      "location": "五竜岳・鹿島槍ヶ岳間、八峰キレット北 標高2470m",
+      "officialUrl": "https://hakubakan.com/lodge/kiretto/",
+      "tel": "0261-72-2002",
+      "openText": "2026/6/27～9/27 ＊5/20（水）7：00～Webで予約受付開始",
+      "bookingStart": "5月20日 7:00から（2026年）",
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-6980deb5",
+      "name": "冷池山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "kashimayari"
+      ],
+      "location": "鹿島槍ヶ岳・爺ヶ岳鞍部 標高2410m",
+      "officialUrl": "https://www.kasimayari.jp/",
+      "tel": "0261-22-1263",
+      "openText": "2026/7/1～10/17、完全予約制",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-91a27ad5",
+      "name": "種池山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "kashimayari"
+      ],
+      "location": "爺ヶ岳西方下、種池畔 標高2450m",
+      "officialUrl": "https://www.kasimayari.jp/",
+      "tel": "0261-22-1263",
+      "openText": "2026/7/1～10/17、完全予約制",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-7d35bed9",
+      "name": "針ノ木小屋",
+      "region": "北アルプス",
+      "mountainIds": [
+        "harinokidake"
+      ],
+      "location": "針ノ木峠 標高2536m",
+      "officialUrl": "http://www.harinoki.com/",
+      "tel": "0261-22-1584 事務所",
+      "openText": "2026/7/1～9/27 ＊完全予約制",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-64c901b2",
+      "name": "大沢小屋",
+      "region": "北アルプス",
+      "mountainIds": [
+        "harinokidake"
+      ],
+      "location": "籠川谷・大沢出合 標高1700m",
+      "officialUrl": "http://www.harinoki.com/",
+      "tel": "0261-22-1584",
+      "openText": "例年：7月上旬～9月下旬",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-f6e894de",
+      "name": "肩ノ小屋",
+      "region": "北アルプス",
+      "mountainIds": [
+        "norikura"
+      ],
+      "location": "乗鞍岳北方下、大雪渓上部 標高2800m",
+      "officialUrl": "https://norikurakata.com/",
+      "tel": "0263-93-2002",
+      "openText": "例年；7月上旬～10月上旬（変更あり）",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-5a975413",
+      "name": "位ヶ原山荘",
+      "region": "北アルプス",
+      "mountainIds": [
+        "norikura"
+      ],
+      "location": "乗鞍岳位ヶ原 標高2350m",
+      "officialUrl": "http://www.kuraigahara.jp/",
+      "tel": "090-9001-7362",
+      "openText": "2026/2月上旬〜10月下旬、12月下旬〜2027/1月上旬、3か月前予約制、Web予約可",
+      "bookingStart": "宿泊日の3か月前から",
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+      "sourceUpdated": "2026-06-03",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-24d85c1b",
+      "name": "北沢峠 こもれび山荘",
+      "region": "南アルプス",
+      "mountainIds": [
+        "komagatake",
+        "senjogatake"
+      ],
+      "location": "南アルプス北沢峠バス停向かい 標高2,032m",
+      "officialUrl": "https://www.ina-city-kankou.co.jp/yamagoya/kitazawa/",
+      "tel": "0265-94-6001（伊那市観光株式会社 本社 平日9時～17時）※営業期間外",
+      "openText": "2026/4/25〜11/2 完全予約制、林道バスの運行状況に応じて変更あり、＊テント場なし",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_minamialps.html",
+      "sourceUpdated": "2026-05-27",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-d48d9e9e",
+      "name": "大平山荘",
+      "region": "南アルプス",
+      "mountainIds": [
+        "komagatake",
+        "senjogatake"
+      ],
+      "location": "北沢峠より、信州側へ徒歩15分 標高1960m",
+      "officialUrl": "http://ohdaira.sakura.ne.jp/",
+      "tel": "0265-78-3761 営業時間外",
+      "openText": "例年7月上旬～10月下旬 要予約（電話のみ） ＊テント場なし",
+      "bookingStart": null,
+      "bookingMethods": [
+        "電話のみ"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_minamialps.html",
+      "sourceUpdated": "2026-05-27",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-41904c2e",
+      "name": "仙丈小屋",
+      "region": "南アルプス",
+      "mountainIds": [
+        "senjogatake"
+      ],
+      "location": "仙丈ヶ岳山頂直下薮沢カール内 標高2900m",
+      "officialUrl": "https://www.ina-city-kankou.co.jp/yamagoya/senjo/",
+      "tel": "0265-94-6001 伊那市観光（株） 本社 平日9時～17時",
+      "openText": "2026/6/12〜10/11 要予約、林道バスの状況に応じて延長あり、テント場なし",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_minamialps.html",
+      "sourceUpdated": "2026-05-27",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-a677bc81",
+      "name": "馬の背ヒュッテ",
+      "region": "南アルプス",
+      "mountainIds": [
+        "senjogatake"
+      ],
+      "location": "丹渓新道・薮沢ルート分岐点下、3分 標高2640m",
+      "officialUrl": "https://umanose.com/",
+      "tel": "0265-78-4111（伊那市役所観光課 平日8時30分～17時） ※営業期間外",
+      "openText": "2026/7/1〜10/12 完全予約制（電話も可）、テント場なし、Yamatan予約可能、テント場なし",
+      "bookingStart": null,
+      "bookingMethods": [
+        "Web（Yamatan）",
+        "電話"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_minamialps.html",
+      "sourceUpdated": "2026-05-27",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-3d9b67ce",
+      "name": "塩見小屋",
+      "region": "南アルプス",
+      "mountainIds": [
+        "shiomidake"
+      ],
+      "location": "塩見岳北西、塩見岳・天狗岩から15分 標高2760m",
+      "officialUrl": "https://www.ina-city-kankou.co.jp/yamagoya/shiomi/",
+      "tel": "0265-94-6001 伊那市観光（株）（営業期間外、平日8時30分～17時30分）",
+      "openText": "2026/5/2~5/6、7/1～10/11 完全予約制。",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_minamialps.html",
+      "sourceUpdated": "2026-05-27",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-1401d075",
+      "name": "三伏峠小屋",
+      "region": "南アルプス",
+      "mountainIds": [
+        "shiomidake"
+      ],
+      "location": "三伏峠（標高2615m）手前標高2580m",
+      "officialUrl": "http://sanpukutouge.com/",
+      "tel": "0265-39-3110 小屋連絡所（電話対応は7時～17時・19時～20時）",
+      "openText": "2026年7月初旬～9月下旬 オンライン予約制、テント場：当日現地受付のみ ＊冬季中の小屋の開放はなし",
+      "bookingStart": null,
+      "bookingMethods": [
+        "Web（オンライン予約）"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_minamialps.html",
+      "sourceUpdated": "2026-05-27",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-cab96e1e",
+      "name": "聖光小屋",
+      "region": "南アルプス",
+      "mountainIds": [
+        "hijiridade",
+        "terkari"
+      ],
+      "location": "飯田市南信濃木沢便ケ島 標高975m",
+      "officialUrl": "https://seikougoya.info/",
+      "tel": "090-9353-0104 管理人",
+      "openText": "2026/4/24〜10/12 完全予約制（1週間前までに電話連絡） 3/20～予約受付",
+      "bookingStart": "3月20日から（2026年）",
+      "bookingMethods": [
+        "電話（1週間前まで）"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_minamialps.html",
+      "sourceUpdated": "2026-05-27",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-7b052d08",
+      "name": "県営光岳小屋",
+      "region": "南アルプス",
+      "mountainIds": [
+        "terkari"
+      ],
+      "location": "光岳直下 2520m",
+      "officialUrl": "https://www.chillnn.com/1863f95fe2d74",
+      "tel": "0547-58-7077（静岡県川根本町役場観光交流課 予約のみ）",
+      "openText": "2026/7月上旬～９月下旬 （予定） ＊Web予約のみ ＊営業期間の変更など要確認 ＊テント場あり",
+      "bookingStart": null,
+      "bookingMethods": [
+        "Webのみ"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_minamialps.html",
+      "sourceUpdated": "2026-05-27",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-ababbdbf",
+      "name": "西駒山荘",
+      "region": "中央アルプス",
+      "mountainIds": [
+        "kisokoma"
+      ],
+      "location": "将棊頭山直下 標高2,685m",
+      "officialUrl": "https://www.ina-city-kankou.co.jp/yamagoya/nishikoma/",
+      "tel": "0265-94-6001",
+      "openText": "2026/7/11～10/11 ＊Web予約は2/20～ 冬季開放エリアあり",
+      "bookingStart": "2月20日から（2026年・Web予約）",
+      "bookingMethods": [
+        "Web"
+      ],
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
+      "sourceUpdated": "2026-06-02",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-bcf76061",
+      "name": "駒ヶ岳頂上山荘",
+      "region": "中央アルプス",
+      "mountainIds": [
+        "kisokoma"
+      ],
+      "location": "木曽駒ヶ岳・中岳の鞍部 標高2,870ｍ",
+      "officialUrl": "https://miyadakankou.co.jp/chojosansou",
+      "tel": "090-5507-6345",
+      "openText": "2026/7月初旬～10初旬 要予約・要問合せ ＊幕営泊7月初旬～10月中旬",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
+      "sourceUpdated": "2026-06-02",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-f4e1b7b5",
+      "name": "宝剣山荘",
+      "region": "中央アルプス",
+      "mountainIds": [
+        "kisokoma"
+      ],
+      "location": "宝剣岳直下 標高2,870ｍ",
+      "officialUrl": "https://miyadakankou.co.jp/",
+      "tel": "090-5507-6345",
+      "openText": "2026/4月上旬～11月上旬 要予約 4月および11月以降の営業は＊要問合せ、冬季営業（年末年始は要予約） ※2023年度より宝剣山荘～天狗荘間一部敷地において幕営の設営が可能(宝剣山荘冬季開設時及びシーズン期間)/最大設営可能数約20張・完全予約制 ＊期間外は要問合せ",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
+      "sourceUpdated": "2026-06-02",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-eb43b826",
+      "name": "天狗荘",
+      "region": "中央アルプス",
+      "mountainIds": [
+        "kisokoma"
+      ],
+      "location": "宝剣岳直下・宝剣山荘北50m 標高2,870m",
+      "officialUrl": "https://miyadakankou.co.jp/tengusou",
+      "tel": "090-5507-6345",
+      "openText": "2026/7月上旬～10月初旬 要予約・要問合せ",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
+      "sourceUpdated": "2026-06-02",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-7870354b",
+      "name": "木曽殿山荘",
+      "region": "中央アルプス",
+      "mountainIds": [
+        "utsugi"
+      ],
+      "location": "空木岳・東川岳鞍部、木曽殿越 標高2587m",
+      "officialUrl": "https://www.kisodonosansou.com/",
+      "tel": "0573-72-4380",
+      "openText": "2026/7/1～10/11 完全予約制 テント場はなし、冬季は倉庫を避難小屋として開放（～6/19）",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
+      "sourceUpdated": "2026-06-02",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-a104e228",
+      "name": "空木駒峰ヒュッテ",
+      "region": "中央アルプス",
+      "mountainIds": [
+        "utsugi"
+      ],
+      "location": "空木岳頂上直下東側100m 標高2800m",
+      "officialUrl": "http://www.komaho.net/hutte/utsugi_hutte1.html",
+      "tel": "宿泊専用E-mail alpees@outlook.jp",
+      "openText": "2026/7/11～10/12 完全予約制、6/1～予約受付開始",
+      "bookingStart": "6月1日から（2026年）",
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
+      "sourceUpdated": "2026-06-02",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-91ab7fef",
+      "name": "越百小屋",
+      "region": "中央アルプス",
+      "mountainIds": [
+        "minamikomagatake"
+      ],
+      "location": "越百山西1km 標高2340m",
+      "officialUrl": null,
+      "tel": "090-7699-9337",
+      "openText": "2026年は休業予定、要確認のこと",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
+      "sourceUpdated": "2026-06-02",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-e86564b3",
+      "name": "蓼科山頂ヒュッテ",
+      "region": "八ヶ岳",
+      "mountainIds": [
+        "keirisan"
+      ],
+      "location": "蓼科山山頂 標高2531m",
+      "officialUrl": "http://tateshinayama.com/",
+      "tel": "049-266-9264",
+      "openText": "2026/4/25〜10/31 ＊12/31(木)の年越し宿泊の予約受付は10/1（木）夜8時より開始",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-10eff39f",
+      "name": "蓼科山荘",
+      "region": "八ヶ岳",
+      "mountainIds": [
+        "keirisan"
+      ],
+      "location": "蓼科山将軍平 標高2350m",
+      "officialUrl": "http://www7a.biglobe.ne.jp/~g-factory/tateshinalodge/yama.html",
+      "tel": "090-1553-4500",
+      "openText": "2026/4/25～10/31、定休・不定休あり",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-bd33a29a",
+      "name": "硫黄岳山荘",
+      "region": "八ヶ岳",
+      "mountainIds": [
+        "yatsugatake"
+      ],
+      "location": "南八ケ岳 硫黄岳と横岳の鞍部 標高2,650ｍ",
+      "officialUrl": "https://iodake.jp/sanso/",
+      "tel": "0266-73-6673（予約専用：事務所）",
+      "openText": "2026年4月下旬～11月上旬、冬期は休業・閉鎖",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-8a7f8b26",
+      "name": "赤岳頂上山荘",
+      "region": "八ヶ岳",
+      "mountainIds": [
+        "yatsugatake"
+      ],
+      "location": "赤岳山頂 標高2899m",
+      "officialUrl": "http://www.yatsu-honzawaonsen.com/",
+      "tel": "090-5446-1205 （～6/19予約） 本沢温泉事務所 0266-72-3260 FAX：72-3260",
+      "openText": "2026/7/4〜10/25 要予約",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-4c9abaf2",
+      "name": "赤岳天望荘",
+      "region": "八ヶ岳",
+      "mountainIds": [
+        "yatsugatake"
+      ],
+      "location": "赤岳北方稜線 標高2722m",
+      "officialUrl": "http://www.yatsugatake.gr.jp/",
+      "tel": "0266-74-2728 FAX0266-74-2755",
+      "openText": "2025/4/24～11/3 12/24～2026/2月下旬 予約希望",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-90585120",
+      "name": "行者小屋",
+      "region": "八ヶ岳",
+      "mountainIds": [
+        "yatsugatake"
+      ],
+      "location": "柳川南沢源流 標高2340m",
+      "officialUrl": "http://userweb.alles.or.jp/akadake/",
+      "tel": null,
+      "openText": "2026/5/30～10/31 完全予約制、テント場は予約不要、幕営数の上限なし",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-1fd8bd45",
+      "name": "赤岳鉱泉",
+      "region": "八ヶ岳",
+      "mountainIds": [
+        "yatsugatake"
+      ],
+      "location": "柳川北沢源流 標高2220m",
+      "officialUrl": "http://userweb.alles.or.jp/akadake/",
+      "tel": null,
+      "openText": "通年営業、完全予約制、テント場は予約不要、5/30～価格改定予定",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-f951fc9b",
+      "name": "赤岳山荘",
+      "region": "八ヶ岳",
+      "mountainIds": [
+        "yatsugatake"
+      ],
+      "location": "美濃戸 標高1760m",
+      "officialUrl": null,
+      "tel": "FAX兼用0266-74-2272",
+      "openText": "通年営業",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-698dab9a",
+      "name": "美濃戸山荘",
+      "region": "八ヶ岳",
+      "mountainIds": [
+        "yatsugatake"
+      ],
+      "location": "美濃戸口下車 徒歩50分、柳川南沢・北沢出合 標高1760m",
+      "officialUrl": "http://www.yatsugatake.gr.jp/",
+      "tel": "0266-74-2728 FAX0266-74-2755",
+      "openText": "2025/4/24～10/13 予約希望",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-6b20aa67",
+      "name": "天狗温泉浅間山荘",
+      "region": "その他",
+      "mountainIds": [
+        "asama"
+      ],
+      "location": "佐久平駅から小諸駅経由バス40分、浅間山登山口下車、徒歩40分、小諸駅から送迎車25分（要予約） 標高1400m",
+      "officialUrl": "http://www.tenguspa.com/",
+      "tel": "0267-22-0959",
+      "openText": "通年営業",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-8a6f8c64",
+      "name": "苗場山頂ヒュッテ－自然体験交流センター",
+      "region": "その他",
+      "mountainIds": [
+        "naeba"
+      ],
+      "location": "苗場山山頂 標高2145m",
+      "officialUrl": "http://sakae-akiyamago.com/stay/4888/",
+      "tel": "080-7183-4024 ＊9:00～16:00予約",
+      "openText": "2026/6/1～10/25 ＊完全予約制（電話）",
+      "bookingStart": null,
+      "bookingMethods": [
+        "電話"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-2972671c",
+      "name": "美ヶ原高原ホテル・山本小屋",
+      "region": "その他",
+      "mountainIds": [
+        "utsukushigahara"
+      ],
+      "location": "松本駅からバス1時間35分、山本小屋下車 標高2000m",
+      "officialUrl": "https://www.utsukushigahara.com/",
+      "tel": "0268-86-2011 FAX86-2013",
+      "openText": "通年営業",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-f29304aa",
+      "name": "八島山荘",
+      "region": "その他",
+      "mountainIds": [
+        "kirigamine"
+      ],
+      "location": "下諏訪駅・上諏訪駅からバス1時間、八島高原下車 標高1650m",
+      "officialUrl": "https://yashimasanso.net/",
+      "tel": "0266-58-5357",
+      "openText": "2026/4/25～ ＊Web予約・電話予約も",
+      "bookingStart": null,
+      "bookingMethods": [
+        "Web",
+        "電話"
+      ],
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-01137b54",
+      "name": "鷲が峰ひゅって",
+      "region": "その他",
+      "mountainIds": [
+        "kirigamine"
+      ],
+      "location": "八ヶ岳中信高原国定公園霧ヶ峰高原八島湿原 標高1660m",
+      "officialUrl": "https://nature2.jp/wasshie/",
+      "tel": "0266-58-8088",
+      "openText": "通年営業、冬季は休業日を要確認",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-0e066900",
+      "name": "ヒュッテみさやま",
+      "region": "その他",
+      "mountainIds": [
+        "kirigamine"
+      ],
+      "location": "八島湿原下車 徒歩25分 標高1600m",
+      "officialUrl": "https://huttemisayama.net/",
+      "tel": "0266-75-2370",
+      "openText": "2026年4月末ごろ～10月末 ＊冬季の営業日は要確認 ＊完全予約制",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-b38bb6cf",
+      "name": "十文字小屋",
+      "region": "その他",
+      "mountainIds": [
+        "kobushigatake"
+      ],
+      "location": "梓山から3時間30分、十文字峠 標高2035m",
+      "officialUrl": "http://www.hut10monji.com/",
+      "tel": "090-1031-5352（9～20時）",
+      "openText": "2026/4/29～11/23 年末年始の営業：12/28～1/3",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-54bfa9cf",
+      "name": "甲武信小屋",
+      "region": "その他",
+      "mountainIds": [
+        "kobushigatake"
+      ],
+      "location": "甲武信ヶ岳南東200m 標高2300m",
+      "officialUrl": "https://www.kobushigoya.net/",
+      "tel": "050-1724-9550 予約 8:00～20:00",
+      "openText": "2026年4月末～11月末 ＊完全予約制",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-7b069b75",
+      "name": "金峰山小屋",
+      "region": "その他",
+      "mountainIds": [
+        "kinpusan"
+      ],
+      "location": "金峰山山頂北西400m 標高2440m",
+      "officialUrl": "https://www.kimpou.com/",
+      "tel": "070-3962-0448",
+      "openText": "例年4月下旬～11月下旬（3月～4月中旬は休休業）",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-dcb95faa",
+      "name": "七合目行場山荘",
+      "region": "その他",
+      "mountainIds": [
+        "ontakesan"
+      ],
+      "location": "黒沢口七合目 標高2180m",
+      "officialUrl": "http://www.ontake-7-gyouba.com/",
+      "tel": "090-4380-5200 予約 FAX 0264-46-2014",
+      "openText": "2026/7/18～10/25 ＊夏山7月中旬～8月下旬 ＊秋山9月初旬～10月中旬",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-be276b8e",
+      "name": "女人堂（金剛堂）",
+      "region": "その他",
+      "mountainIds": [
+        "ontakesan"
+      ],
+      "location": "黒沢口八合目 標高2470m 女人堂から剣が峰頂上（3,067m）まで約2時間半",
+      "officialUrl": "https://ontake-nyonindo.jimdofree.com/",
+      "tel": "090-8329-1385 FAX 0264-46-2415",
+      "openText": "2026/ 7/11~10/10 ＊宿泊営業は10/4まで ＊要予約",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-f89a29c6",
+      "name": "石室山荘",
+      "region": "その他",
+      "mountainIds": [
+        "ontakesan"
+      ],
+      "location": "黒沢口九合目 標高2,820m",
+      "officialUrl": "http://www.ontake-ishimuro.com/",
+      "tel": "0264-46-2016（黒澤館）",
+      "openText": "例年は7月～10月上旬",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-5c85b374",
+      "name": "二ノ池山荘",
+      "region": "その他",
+      "mountainIds": [
+        "ontakesan"
+      ],
+      "location": "御嶽山頂北東直下、二ノ池畔、９合目半・標高2,905m",
+      "officialUrl": "http://ninoike2905.com/",
+      "tel": "090-4668-7000",
+      "openText": "2026/4/29～5/5、7/1～9/30 ＊営業日を確認のこと ＊完全予約制（電話のみ）",
+      "bookingStart": null,
+      "bookingMethods": [
+        "電話のみ"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    },
+    {
+      "id": "hut-7603f6fa",
+      "name": "二の池ヒュッテ",
+      "region": "その他",
+      "mountainIds": [
+        "ontakesan"
+      ],
+      "location": "岐阜県下呂市小坂町落合 国有林内 剣ヶ峰より15分程度 標高 2900m",
+      "officialUrl": "https://www.ninoikehutte.com/",
+      "tel": "080-2250-8008",
+      "openText": "2026/7/1～10/11 ＊公式Lineより完全予約制",
+      "bookingStart": null,
+      "bookingMethods": [
+        "公式LINE"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
+      "sourceUpdated": "2026-06-04",
+      "lastVerified": "2026-10-10"
+    }
+  ]
+}

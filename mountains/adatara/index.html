@@ -14,7 +14,7 @@
 <meta property="og:updated_time" content="2026-03-16T00:00:00+09:00">
 <link rel="canonical" href="https://tozan-navi.com/mountains/adatara/">
 <meta name="google-site-verification" content="dJ2byH9b8xF8S5lqAyWV-DqRwPGLEjWXs_-Un9oXGHs" />
-<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261008b">
+<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261010b">
 <style>.header-title{color:white;font-family:Georgia,serif;font-size:19px;font-weight:bold}
 .header-sub{color:rgba(255,255,255,0.5);font-size:10px;margin-top:1px}
 .hero{background:#4e6535;border-radius:14px;overflow:hidden;margin-bottom:16px}
@@ -252,6 +252,12 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .cal-note{font-size:10px;color:#9a9088;line-height:1.6;margin:8px 0 0}
 .gear-closed-note{flex:0 0 100%;font-size:12px;color:#5a5248;background:#f0ede5;border-radius:6px;padding:10px 12px;line-height:1.6;margin:0 0 8px}
 .car-note{font-size:11.5px;color:#8a8078;line-height:1.6;margin:10px 0 0}
+.volcano-note{font-size:11.5px;color:#7a7068;background:#f6f4ee;border:1px solid #e4e0d6;border-radius:8px;padding:8px 12px;margin-bottom:12px;line-height:1.6}
+.volcano-note .warn-link{white-space:nowrap}
+#volcano-status:empty{display:none}
+.hero-counts{gap:10px;align-items:center;margin-bottom:6px;font-family:Outfit,sans-serif}
+.hero-counts .hc-item{display:inline-flex;align-items:center;gap:3px;font-size:12px;color:#4a4540;background:rgba(255,255,255,0.75);border:1px solid #d8e0cc;border-radius:999px;padding:2px 8px}
+.hero-counts .hc-item b{font-weight:700}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -295,6 +301,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </svg>
     <div class="hero-top">
       <div>
+        <div class="hero-counts" id="hero-counts" data-id="adatara" style="display:none"></div>
         <h1 class="mountain-name">安達太良山</h1>
         <div class="mountain-kana">あだたらやま</div>
         <div class="mountain-area">📍 福島県</div>
@@ -318,6 +325,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <div class="rec-item"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>「ほんとの空」を見上げたい人</strong>——高村光太郎の『智恵子抄』に詠まれた山</span></div>
 <div class="rec-item"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>ゴンドラで稜線の近くまで上がりたい人</strong>——山頂駅の薬師岳から、なだらかな道を歩き始められる</span></div></div>
     </div>
+  <div id="volcano-status" data-codes="214"></div>
   <div class="card"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>山の紹介</h2><p class="intro-text">「ほんとの空」で知られる高村光太郎の詩の舞台。ゴンドラで気軽に登れる人気の福島の名山。初〜中級レベルでコース定数16〜28、日帰りでの登山が可能。代表コース（ゴンドラ利用〜山頂往復）は所要3時間30分/6.0km/標高差+500m。公共交通機関でのアクセス可（二本松駅→バス30分→岳温泉（季節））。</p></div>
 
   <div class="card dl-card">
@@ -526,7 +534,7 @@ var YM_MOUNTAIN_INIT = {
   ]
 };
 </script>
-<script src="../../assets/js/mountain-engine.js?v=20261008b"></script>
+<script src="../../assets/js/mountain-engine.js?v=20261010b"></script>
 
 
 
@@ -564,7 +572,10 @@ var YM_MOUNTAIN_INIT = {
 </script>
 
 
-<script src="../../assets/js/gear-common.js?v=20261008b"></script>
-<script src="../../assets/js/mountain.js?v=20261008b"></script>
+<script src="../../assets/js/gear-common.js?v=20261010b"></script>
+<script src="../../assets/js/volcano-status.js?v=20261010b"></script>
+<script src="../../assets/js/mountain.js?v=20261010b"></script>
+<script src="../../assets/js/counts-config.js?v=20261010b"></script>
+<script src="../../assets/js/ym-counts.js?v=20261010b"></script>
 </body>
 </html>
