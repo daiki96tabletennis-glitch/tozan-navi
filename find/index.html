@@ -6,7 +6,7 @@
 <title>山選び診断 | 初心者でも行ける山をかんたん検索 - Yamatch</title>
 <meta name="description" content="交通手段・体力・好みの雰囲気を選ぶだけ。初心者でもすぐ行ける山が見つかる、Yamatchの山選び診断。">
 <meta property="og:title" content="山選び診断 - Yamatch">
-<meta property="og:description" content="5問に答えるだけで、あなたにぴったりの山が見つかる。初心者向け山選び診断。">
+<meta property="og:description" content="7問に答えるだけで、行く時期と一緒に行く人に合った山が見つかる。初心者向け山選び診断。">
 <meta property="og:url" content="https://tozan-navi.com/find/">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://tozan-navi.com/find/">
@@ -82,6 +82,11 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
 .rc-reason{padding:10px 14px;border-top:1px solid #f0ede5;background:#faf9f6;}
 .rc-reason-title{font-size:10px;font-weight:700;color:#8a7a6a;letter-spacing:0.06em;margin-bottom:5px;}
 .rc-reason-text{font-size:12px;color:#4a4540;line-height:1.6;}
+.rc-reason-item{margin-bottom:7px;}
+.rc-reason-item:last-child{margin-bottom:0;}
+.rc-reason-item strong{display:block;font-size:12px;color:#2a3820;font-weight:700;}
+.rc-season{font-style:normal;font-size:10px;font-weight:700;color:#4e6535;background:#e4ecd8;border-radius:4px;padding:1px 6px;margin-left:6px;}
+.rc-reason-fit{font-size:10.5px;color:#8a8078;margin-top:8px;padding-top:7px;border-top:1px dashed #e4e0d6;line-height:1.5;}
 .rc-cta{display:block;margin:10px 14px 14px;background:#4e6535;color:white;text-decoration:none;border-radius:10px;padding:10px;text-align:center;font-size:13px;font-weight:700;}
 .rc-cta:active{transform:scale(0.97);}
 
@@ -207,7 +212,7 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
 <div id="step-intro" class="step active">
   <div class="intro-hero">
     <div class="intro-hero-title">どの山に行けばいい？<br>かんたんに見つかる</div>
-    <div class="intro-hero-sub">5問に答えるだけで、あなたにぴったりの山を提案</div>
+    <div class="intro-hero-sub">7問に答えるだけで、行く時期と一緒に行く人に合った山を提案</div>
     <div class="intro-tags">
       <span class="intro-tag"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 電車でも行ける</span>
       <span class="intro-tag">🥾 初心者OK</span>
@@ -261,6 +266,26 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
 </main>
 <script>
 var QUESTIONS = [
+  {
+    id: 'when',
+    text: 'いつごろ行く予定ですか？',
+    sub: 'その時期の雪・凍結や、花や紅葉の見ごろに合わせて選びます',
+    choices: [
+      { value: 'now',   icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>', label: '今月中', sub: '近いうちに行きたい' },
+      { value: 'next',  icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>', label: '来月', sub: '少し先の予定' },
+      { value: 'later', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>', label: '2か月くらい先', sub: 'じっくり計画したい' }
+    ]
+  },
+  {
+    id: 'who',
+    text: '誰と行きますか？',
+    sub: '一緒に行く人に合う山を選びます',
+    choices: [
+      { value: 'solo',    icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><circle cx="12" cy="7" r="3.5"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7"/></svg>', label: 'ひとりで', sub: '人の多い定番の山を優先します' },
+      { value: 'friends', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-3.5 2.5-6 6-6s6 2.5 6 6M15 14.5c3 0 5.5 2 5.5 5.5"/></svg>', label: '友人・パートナーと', sub: '茶屋や寄り道も楽しめる山を優先します' },
+      { value: 'family',  icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><circle cx="7" cy="6" r="2.5"/><circle cx="17" cy="6" r="2.5"/><circle cx="12" cy="13" r="2"/><path d="M3 20c0-4 1.5-7 4-7M21 20c0-4-1.5-7-4-7M9 21c0-2 1-3.5 3-3.5s3 1.500 3 3.5"/></svg>', label: '子ども・家族と', sub: '岩場や長い行程の山は外します' }
+    ]
+  },
   {
     id: 'transport',
     text: '山へはどうやって行きますか？',
@@ -426,11 +451,106 @@ function normVibes(vibes){
   });
 }
 
+// 選んだ気分に合う山かどうか：山のタグ（vibes）と、調べて書いた特徴（featurePoints）のタグの両方を見る
+var VIBE_MATCH = {
+  view:     ['view','ridge','alpine','rock','volcano'],
+  forest:   ['forest','historic','wetland','flower','river','quiet'],
+  easy:     ['accessible','easy','casual'],
+  highland: ['highland','wetland']
+};
+function vibeHits(m){
+  var tags = normVibes(m.vibes).slice();
+  (m.featurePoints || []).forEach(function(p){ if(tags.indexOf(p.tag) === -1) tags.push(p.tag); });
+  var n = 0;
+  (VIBE_MATCH[answers.vibe] || []).forEach(function(v){ if(tags.indexOf(v) > -1) n++; });
+  return n;
+}
+
+// 行く予定の月（0〜11）。「今月中」「来月」「2か月くらい先」から決める
+function targetMonth(){
+  var off = answers.when === 'next' ? 1 : answers.when === 'later' ? 2 : 0;
+  return (new Date().getMonth() + off) % 12;
+}
+
+// 行く月の装備区分（装備カレンダー）。月の途中で変わる月は、厳しいほうを返す
+function gearThisMonth(m){
+  var cal = m.gearCalendar;
+  if(!cal || cal.length !== 12) return null;
+  var e = cal[targetMonth()];
+  if(typeof e === 'string') return e;
+  var order = ['no_crampons','light_crampons','winter_gear','closed'];
+  return order.indexOf(e.before) > order.indexOf(e.after) ? e.before : e.after;
+}
+
+// 調べて書いた特徴のタグ一覧
+function featureTags(m){
+  var tags = [];
+  (m.featurePoints || []).forEach(function(p){ if(tags.indexOf(p.tag) === -1) tags.push(p.tag); });
+  return tags;
+}
+
+// 特徴の文に書かれた時期（「4月下旬〜5月上旬」「7〜8月」「6月」など）に、行く月が入っているか
+function pointInSeason(p, month){
+  if(['flower','season','forest','alpine','wetland','highland'].indexOf(p.tag) === -1) return false;
+  var mon = month + 1, text = String(p.text || ''), hit = false, rest = text;
+  var range = /(\d{1,2})月?[^0-9〜～、。（）]{0,4}[〜～](\d{1,2})月/g, r;
+  while((r = range.exec(text)) !== null){
+    var a = Number(r[1]), b = Number(r[2]);
+    if(a < 1 || a > 12 || b < 1 || b > 12) continue;
+    if(a <= b ? (mon >= a && mon <= b) : (mon >= a || mon <= b)) hit = true;
+    rest = rest.replace(r[0], '');
+  }
+  var single = /(\d{1,2})月(?!\d*日)/g, s1;
+  while((s1 = single.exec(rest)) !== null){
+    if(Number(s1[1]) === mon) hit = true;
+  }
+  return hit;
+}
+function hasSeasonPoint(m){
+  var month = targetMonth();
+  return (m.featurePoints || []).some(function(p){ return pointInSeason(p, month); });
+}
+
+// 電車・バスの所要時間（分）。データが無ければ null
+function getTrainTime(m){
+  var dep = answers.depart || 'ofuna';
+  var v = dep === 'shinjuku' ? m.trainTimeShinjuku : dep === 'omiya' ? m.trainTimeOmiya : m.trainTimeYokohama;
+  return (typeof v === 'number' && v > 0) ? v : null;
+}
+
 function scoreMount(m){
   var score = 0;
 
   // 日帰り必須
   if(!m.daytrip) return -1;
+  // 入山規制中の山は出さない
+  if(m.status && m.status.level === 'restricted') return -1;
+  // 今月は入山できない山・冬山装備が要る山は出さない（初心者向けの診断のため）。軽アイゼン等が要る山は、体力「低」では出さない
+  var gear = gearThisMonth(m);
+  if(gear === 'closed' || gear === 'winter_gear') return -1;
+  if(gear === 'light_crampons' && answers.fitness === 'low') return -1;
+
+  // --- 誰と行くか ---
+  var ftags = featureTags(m);
+  if(answers.who === 'family'){
+    // 子ども・家族と：やさしい山だけにし、岩場・きつい登りのある山は下げる
+    if(m.difficulty !== '初級' && m.difficulty !== '初〜中級') return -1;
+    if((m.coeffMin || m.coeffMax || 0) > 16) return -1;
+    if(gear === 'light_crampons') return -1;
+    if(ftags.indexOf('rock') > -1) score -= 12;
+    if(ftags.indexOf('challenge') > -1) score -= 12;
+    if(ftags.indexOf('easy') > -1) score += 10;
+    if(ftags.indexOf('casual') > -1) score += 10;
+  } else if(answers.who === 'solo'){
+    // ひとりで：人の少ない山は下げ、人の多い定番の山を上げる
+    if(ftags.indexOf('quiet') > -1) score -= 10;
+    if(ftags.indexOf('casual') > -1 || normVibes(m.vibes).indexOf('accessible') > -1) score += 8;
+  } else if(answers.who === 'friends'){
+    // 友人・パートナーと：茶屋・温泉・ロープウェイなど寄り道のある山を上げる
+    if(ftags.indexOf('casual') > -1) score += 10;
+  }
+  // 行く月が、花や紅葉などの見ごろに当たる山を上げる
+  if(hasSeasonPoint(m)) score += 10;
 
   // 標準日帰りルートのコース定数を基準にする（coeffMaxはロングルート含みのため）
   var coeff = m.coeffMin || m.coeffMax || 0;
@@ -471,72 +591,95 @@ function scoreMount(m){
   var timeLimit = 999;
   if(answers.time === 'near')   timeLimit = 120;
   if(answers.time === 'middle') timeLimit = 180;
-  if(answers.transport === 'train' && timeLimit < 999){
-    // 電車は所要時間データがないため、車の時間×1.4を距離の代理として使う
-    timeLimit = Math.round(timeLimit * 1.4);
+  var trainMin = answers.transport === 'train' ? getTrainTime(m) : null;
+  if(trainMin !== null){
+    // 電車・バスの所要時間で判定する（乗り換え・バスを含むので、上限は車より30分ゆるくする）
+    if(timeLimit < 999 && trainMin > timeLimit + 30) return -1;
+    score += Math.max(0, 210 - trainMin) / 10.5; // 最大20点
+  } else {
+    if(answers.transport === 'train' && timeLimit < 999){
+      // 電車の所要時間が未登録の山だけ、車の時間×1.4を代わりに使う
+      timeLimit = Math.round(timeLimit * 1.4);
+    }
+    if(drive > timeLimit) return -1;
+    score += Math.max(0, 180 - drive) / 9; // 最大20点
   }
-  if(drive > timeLimit) return -1;
-  score += Math.max(0, 180 - drive) / 9; // 最大20点
 
   // --- 雰囲気マッチ（最大50点） ---
   var vibes = normVibes(m.vibes);
-  var vibeMatch = {
-    view:     ['view','ridge','alpine','rock','volcano'],
-    forest:   ['forest','historic','wetland','flower','river'],
-    easy:     ['accessible','view','forest'],
-    highland: ['highland','wetland']
-  };
-  var targets = vibeMatch[answers.vibe] || [];
-  var matchCount = 0;
-  targets.forEach(function(v){ if(vibes.indexOf(v) > -1) matchCount++; });
+  var matchCount = vibeHits(m);
   score += Math.min(matchCount, 2) * 25;
   if(answers.vibe === 'easy' && vibes.indexOf('accessible') > -1) score += 15;
   if(matchCount === 0) score -= 20; // 希望の雰囲気と全く合わない山は減点
 
-  // --- 季節マッチ（現在の月から判定） ---
-  var mon = new Date().getMonth();
-  var season = mon<=1||mon===11 ? 'winter' : mon<=4 ? 'spring' : mon<=7 ? 'summer' : 'fall';
-  var seasonOk = m.seasonOk || [];
-  if(seasonOk.indexOf(season) > -1) score += 12;
-  else score -= 25; // シーズン外の山（冬の雪山等）は強めに除外方向へ
+  // --- 季節マッチ：今月の装備区分で判定（装備カレンダーが無い山だけ、季節の大まかな区分を使う） ---
+  if(gear === 'no_crampons'){
+    score += 12;
+  } else if(gear === 'light_crampons'){
+    score -= 15;
+  } else {
+    var mon = new Date().getMonth();
+    var season = mon<=1||mon===11 ? 'winter' : mon<=4 ? 'spring' : mon<=7 ? 'summer' : 'fall';
+    var seasonOk = m.seasonOk || [];
+    if(seasonOk.indexOf(season) > -1) score += 12;
+    else score -= 25;
+  }
 
   return score;
 }
 
+// おすすめの理由：山ごとに調べて書いた特徴（featurePoints）から、選んだ気分に合うものを先に3つ出す。
+// 行き方・難易度・体力の目安は理由に混ぜず、下の1行（buildFitNote）にまとめる。
+var REASON_TAGS = {
+  view: ['view'],
+  forest: ['forest', 'quiet', 'river'],
+  easy: ['easy', 'casual'],
+  highland: ['highland', 'wetland', 'flower']
+};
 function buildReason(m){
-  var reasons = [];
+  var want = REASON_TAGS[answers.vibe] || [];
+  var month = targetMonth();
+  var pts = (m.featurePoints || []).map(function(p, idx){
+    return { p: p, idx: idx, hit: want.indexOf(p.tag) > -1 ? 1 : 0, season: pointInSeason(p, month) ? 1 : 0 };
+  });
+  // 行く月が見ごろの特徴を先頭に、次に選んだ気分に合う特徴を出す
+  pts.sort(function(a, b){ return (b.season - a.season) || (b.hit - a.hit) || (a.idx - b.idx); });
+  var out = [], used = {};
+  pts.forEach(function(c){
+    if(out.length < 3 && !used[c.p.tag]){ used[c.p.tag] = 1; out.push(c); }
+  });
+  pts.forEach(function(c){
+    if(out.length < 3 && out.indexOf(c) === -1) out.push(c);
+  });
+  if(out.length){
+    return out.map(function(c){ return { label: c.p.label, text: c.p.text, season: c.season }; });
+  }
+  // 特徴が未登録の山は、一言紹介か紹介文の1文目を出す
+  var first = m.recommendReason || String(m.description || '').split('。')[0];
+  return first ? [{ label: '', text: first }] : [];
+}
+
+function fmtMinutes(v){
+  var h = Math.floor(v / 60), mi = v % 60;
+  if(!h) return mi + '分';
+  return mi ? h + '時間' + mi + '分' : h + '時間';
+}
+
+function buildFitNote(m){
+  var parts = [];
   var dep = answers.depart || 'ofuna';
   var depLabel = dep === 'shinjuku' ? '新宿' : dep === 'omiya' ? '大宮' : '横浜';
   var drive = getDriveTime(m);
-
   if(answers.transport === 'train' && m.trainAccess){
-    reasons.push('🚃 電車・バスでアクセス可（' + m.trainAccess.slice(0,30) + (m.trainAccess.length>30?'…':'') + '）');
-  } else if(answers.transport === 'car') {
-    reasons.push('🚗 ' + depLabel + 'から約' + drive + '分でアクセス');
+    parts.push('電車・バスで行ける');
+  } else if(answers.transport === 'car' && drive < 999){
+    parts.push(depLabel + 'から車で約' + fmtMinutes(drive));
   }
-
-  var diffMap = {'初級':'初心者でも安心','初〜中級':'初心者〜中級者向け','中級':'慣れてきた人向け'};
-  if(diffMap[m.difficulty]) reasons.push('🥾 難易度：' + m.difficulty + '（' + diffMap[m.difficulty] + '）');
-
-  if(m.coeffMax){
-    reasons.push('💪 体力の目安：コース定数' + (m.coeffMin||0) + '〜' + m.coeffMax);
-  }
-
-  var vibeTexts = {
-    view:'山頂からの眺望が良い',
-    forest:'森林浴・静かな樹林帯',
-    accessible:'観光施設や整備道が充実',
-    highland:'高原・湿原の広大な景色',
-    ridge:'尾根歩きで気持ちいい',
-    wetland:'湿原・池塘など珍しい地形'
-  };
-  (m.vibes||[]).forEach(function(v){
-    if(vibeTexts[v]) reasons.push('🌄 ' + vibeTexts[v]);
-  });
-
-  if(m.category === '百名山') reasons.push('🏆 日本百名山のひとつ');
-
-  return reasons.slice(0, 3);
+  if(m.difficulty) parts.push('難易度 ' + m.difficulty);
+  if(m.coeffMax) parts.push('コース定数 ' + (m.coeffMin || 0) + '〜' + m.coeffMax);
+  var gearLabel = { no_crampons: 'アイゼン不要', light_crampons: '軽アイゼン等が必要' }[gearThisMonth(m)];
+  if(gearLabel) parts.push((targetMonth() + 1) + '月は' + gearLabel);
+  return parts.join(' ／ ');
 }
 
 // ===== 持ち物データ =====
@@ -667,30 +810,30 @@ function _doShowResult(){
   var scored = mountainsData.map(function(m){
     return { m: m, score: scoreMount(m) };
   }).filter(function(x){ return x.score > 0; })
-    .sort(function(a, b){
-      // 入山規制中（status.level === "restricted"）の山はスコアに関係なく常に下位へ
-      var ar = a.m.status && a.m.status.level === "restricted";
-      var br = b.m.status && b.m.status.level === "restricted";
-      if(ar !== br) return ar ? 1 : -1;
-      return b.score - a.score;
-    });
+    .sort(function(a, b){ return b.score - a.score; });
+  // 選んだ気分に合う山が3つ以上あれば、合わない山は候補から外す（「高原・湿原」で岩山が出る、などを防ぐ）
+  var vibeMatched = scored.filter(function(x){ return vibeHits(x.m) > 0; });
+  if(vibeMatched.length >= 3) scored = vibeMatched;
 
   var dep = answers.depart || 'ofuna';
   var depLabel = dep === 'shinjuku' ? '新宿・都内' : dep === 'omiya' ? '大宮・埼玉' : '横浜・大船';
   var vibeLabel = {view:'絶景が楽しめる',forest:'森歩きが気持ちいい',easy:'気軽に楽しめる',highland:'高原・湿原が広がる'}[answers.vibe] || '';
   var fitLabel = {low:'ゆっくり',mid:'マイペースで',high:'しっかり'}[answers.fitness] || '';
 
-  document.getElementById('result-headline').textContent = depLabel + '発・' + fitLabel + '登れる山';
+  var whoLabel = {solo:'ひとりで', friends:'友人・パートナーと', family:'子ども・家族と'}[answers.who] || '';
+  document.getElementById('result-headline').textContent = (targetMonth() + 1) + '月・' + depLabel + '発・' + (whoLabel ? whoLabel + '、' : '') + fitLabel + '登れる山';
   document.getElementById('result-count').textContent = '条件に合う山：' + scored.length + '件中、上位3件を表示';
 
-  // TOP1は最高スコアで固定、2・3位は上位プール（1位から30点以内、最低でも上位8件）から抽選
+  // TOP1は最高スコアで固定、2・3位は上位プール（1位から30点以内。少なければ45点以内）から抽選
   // 同じ回答でも「もう一度診断する」で違う山に出会える
   function pickTop3(list){
     if(list.length <= 3) return list;
     var top1 = list[0];
     var best = top1.score;
     var pool = list.slice(1).filter(function(x){ return x.score >= best - 30; });
-    if(pool.length < 7) pool = list.slice(1, 8);
+    // 候補が少ないときも、1位から45点を超えて離れた山は混ぜない（合わない山が上位に出るのを防ぐ）
+    if(pool.length < 4) pool = list.slice(1).filter(function(x){ return x.score >= best - 45; });
+    if(pool.length < 2) pool = list.slice(1, 3);
     // Fisher-Yatesで2件抽選
     var arr = pool.slice();
     for(var i = arr.length - 1; i > 0; i--){
@@ -737,7 +880,11 @@ function _doShowResult(){
     html += '</div>';
     if(reasons.length > 0){
       html += '<div class="rc-reason"><div class="rc-reason-title">この山をおすすめする理由</div>';
-      html += '<div class="rc-reason-text">' + reasons.map(function(r){ return esc(r); }).join('<br>') + '</div>';
+      html += '<div class="rc-reason-text">' + reasons.map(function(r){
+        return '<div class="rc-reason-item">' + (r.label ? '<strong>' + esc(r.label) + (r.season ? '<em class="rc-season">' + (targetMonth() + 1) + '月が見ごろ</em>' : '') + '</strong>' : '') + '<span>' + esc(r.text) + '</span></div>';
+      }).join('') + '</div>';
+      var fitNote = buildFitNote(m);
+      if(fitNote) html += '<div class="rc-reason-fit">' + esc(fitNote) + '</div>';
       html += '</div>';
     }
     html += '<a class="rc-cta" href="/mountains/' + esc(m.id) + '/">詳しく見る →</a>';

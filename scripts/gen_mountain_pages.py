@@ -510,8 +510,18 @@ def render_car_access(mt):
         '<circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" '
         'fill="#3a3530"/></svg>車でのアクセス時間</h2>\n'
         f'    <div class="ag-a" id="access-grid">\n{rows_html}\n    </div>\n'
+        f'    <p class="car-note">{car_note(mt)}</p>\n'
         '  </div>'
     )
+
+
+def car_note(mt):
+    """車の所要時間の注記。登山口まで一般車が入れない山は、どこまでの時間かを明記する"""
+    tail = '渋滞を含まない目安です。休日や朝夕は長くなります。'
+    target = mt.get("driveTarget")
+    if target:
+        return esc(f'※{target}までの時間です。登山口へは、そこからバス・ケーブルカー・タクシーなどに乗り換えます。{tail}')
+    return esc(f'※登山口の駐車場までの時間で、{tail}')
 
 
 def render_parking(mt):

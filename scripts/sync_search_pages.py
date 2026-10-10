@@ -55,7 +55,7 @@ def find_all_mountain_cards(html):
 
 # --- curated型（山カード形式）の同期 ----------------------------------------
 
-MC_AREA_RE = re.compile(r'(<div class="mc-area">)([^<]*?)\s*\u30fb\s*([\d,]+)m(</div>)')
+MC_AREA_RE = re.compile(r'(<div class="mc-area">)([^<]*?)\s*[\u30fb\u00b7]\s*([\d,]+)m(</div>)')
 MC_CAT_RE = re.compile(r'(<span class="sb sb-cat">)([^<]*)(</span>)')
 MC_DIFF_RE = re.compile(r'(<span class="mc-label">難易度</span><span class="mc-val">)([^<]*)(</span>)')
 MC_CCR_RE = re.compile(r'(<span class="mc-label">コース定数</span><span class="mc-val">)([^<]*)(</span>)')
@@ -112,7 +112,7 @@ def sync_curated(path, by_id):
             new_elev_str = fmt_elev(new_elev) if new_elev is not None else m.group(3)
             if m.group(2) != new_area or m.group(3) != new_elev_str:
                 changes.append((mid, f'area/elevation: "{m.group(2)}・{m.group(3)}m" -> "{new_area}・{new_elev_str}m"'))
-            return m.group(1) + new_area + ' \u30fb ' + new_elev_str + 'm' + m.group(4)
+            return m.group(1) + new_area + ' \u00b7 ' + new_elev_str + 'm' + m.group(4)
         new_block = MC_AREA_RE.sub(sub_area, new_block, count=1)
 
         def sub_cat(m, mt=mt, mid=mid):

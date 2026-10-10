@@ -1441,7 +1441,7 @@ function App() {
             </svg>
             <div style={{flex:1,minWidth:0}}>
               <div style={{fontSize:"13px",fontWeight:"800",color:"#2a3020",lineHeight:1.25}}>山選び診断</div>
-              <div style={{fontSize:"9.5px",color:"#5a6848",marginTop:"2px",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>5問・1分でわかる</div>
+              <div style={{fontSize:"9.5px",color:"#5a6848",marginTop:"2px",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>7問・1分でわかる</div>
             </div>
             <span style={{fontSize:"16px",color:"#3a5030",fontWeight:"300"}}>›</span>
           </a>
@@ -1768,6 +1768,7 @@ function App() {
             </div>
           )}
 
+          {transportMode === "car" && <div style={{fontSize:"10px",color:"#9a9088",marginBottom:"5px",lineHeight:1.5}}>車の所要時間は、駐車場までの渋滞を含まない目安です。</div>}
           {/* 件数＋並び替え▾＋一覧/地図 */}
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:"7px"}}>
             <div style={{display:"flex",alignItems:"center",gap:"5px"}}>

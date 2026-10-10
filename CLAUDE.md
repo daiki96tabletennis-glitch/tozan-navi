@@ -33,6 +33,8 @@
 - 山ページ修正時は `<div class="mountain-updated">最終更新: YYYY-MM-DD</div>` を更新
 - 季節4フィールド（`seasonCalendar` / `calLegend` / `seasonNoGear` / `season6Crampons`）は必ず同期
 - 所要時間フィールドは2系統ある：`driveTime*`（トップのフィルタ用）と `drive*`（個別ページ `applyDep` 用）
+- 車の所要時間は、Googleマップの経路検索（車）の「渋滞を含まない標準の所要時間」を5分単位に丸めた値（2026-10-10 に全山を測り直し。記録は `scripts/migrations/drive_times_gmaps_2026_10.json`）。出発地は新宿駅・大宮駅・横浜駅・大船駅・立川駅、行き先は地図ボタンの座標。同じ登山口の山は同じ値にする。マイカー規制などで登山口まで一般車が入れない16山は、車を置く手前の駐車場・乗り換え地点までの時間とし、その場所を `driveTarget` に書く（芦安・戸台パーク・立山駅・沢渡・乗鞍高原観光センター・尾瀬戸倉・畑薙第一ダム・七倉）
+- 車の時間を変えたら `scripts/sync_search_hubs.py --write` を実行する（検索ページ・meta・FAQの「新宿から車で約◯」と食い違わせない）
 - 運賃は個別に公式情報で裏取りする。概算・按分は禁止。同じゲートウェイ駅の山同士で比較して欠落を検出
 - 横浜・大宮発は新宿発と経路・金額が大きく異なることが多い
 - 同じバグパターンは全ファイル横断で検索し、他の山に旧構造が残っていないか確認
@@ -47,7 +49,7 @@
 - 電車アクセスが無い（マイカーのみ）山は `trainAccess: false` または `null`。ただし「本当にアクセス手段が無いか」を毎回一次情報で検証すること。trainAccess=false のまま放置されていたが実際は季節運行バス・予約制シャトル等が存在するケースが過去の検証で25山中18山発見された（サイト全体で同様の見落としがある可能性が高い）
 - FAQ「アクセス方法」の回答文には、`fareShinjuku`/`fareOmiya`/`fareYokohama` の3つの正式運賃額**のみ**を記載する。区間ごとの内訳運賃（例：バスのみの料金）を書くと、check_pages.py セクション6の運賃整合性チェックで「不一致（stray）」として検出される
 - `check_pages.py` は `--id` オプション非対応。個別山の確認はサイト全体を実行してから該当IDでgrepする
-- `check_pages.py` は16セクション（15は新構造の整合性、16は装備カレンダー）。9〜14（ルートの他山コピー／所要時間・legs不一致／記事の駅名／定数の異常値／規制中の山の掲載／特急の「自由席」）は過去に実際に見つかった誤りの再発防止用
+- `check_pages.py` は17セクション（15は新構造の整合性、16は装備カレンダー、17は出発地別の全件一覧）。9〜14（ルートの他山コピー／所要時間・legs不一致／記事の駅名／定数の異常値／規制中の山の掲載／特急の「自由席」）は過去に実際に見つかった誤りの再発防止用
 - セクション10・11のうち調査待ちのレガシーは `scripts/check_known_issues.json`（ベースライン）に登録済みで件数に含めない。新規の指摘のみ異常として数える。解消したら `python3 scripts/check_pages.py --update-baseline` でベースラインを更新する
 - アクセス表の注記は、`summaryNote` と `note` を1つの箇条書きにまとめて表示する（同じ内容は自動で1つにする）。書くのはアクセス・予約・運行期間・運賃・前泊の要否・規制だけ。コースの説明や見どころは書かない
 - アクセス表の注記（`trainRoutes.note` / `summaryNote`）は、`render_transit_routes.py` が「。」「※」で区切って箇条書き（`ul.ts-note-list`）に自動整形する。書くときは1文1項目を意識し、1文を長くしない
@@ -112,6 +114,7 @@
 ## スクリプト（`scripts/` 配下）
 - ページ再生成：`scripts/gen_mountain_pages.py --id <id>`（全件は `--all`、書き込まず確認は `--dry-run`）
 - 検証：`scripts/check_pages.py`（0件になるまで修正を繰り返す）
+- 出発地別の全件一覧（`search/shinjuku`・`omiya`・`yokohama`・`ofuna`）：`scripts/sync_search_hubs.py --write` が車の所要時間・難易度・日帰り表示・地域・標高・並び順・件数を `mountains.json` に合わせる。難易度・日帰り・車の時間（`driveTime*` / `driveOfuna`）を変えたら実行する（ずれはセクション17で検出）。掲載する山の追加・削除は手作業
 - 電車・バスアクセスHTML生成：`scripts/render_transit_routes.py`（`render_ts_section`）
 - 装備カード：`gen_mountain_pages.py` が枠（`gear-cards-scroll`）を出力し、中身は `assets/js/mountain.js` ＋ `assets/js/gear-common.js` が `data/gear-data.json` から描画。診断用の月別JSON（`data/recommend-gear/*.json`）は `scripts/gen_recommend_gear.py` で生成（手動編集禁止）
 
