@@ -41,15 +41,19 @@
       "officialUrl": "https://www.enzanso.co.jp/hutte-ooyari",
       "tel": "0263-32-1535 FAX0263-32-0898",
       "openText": "2026/7/1～10/12、＊5/19から宿泊予約受付開始",
-      "bookingStart": "5月19日から（2026年）",
-      "bookingMethods": null,
-      "bookingRequired": false,
+      "bookingStart": "5月19日 10:00から（2026年）",
+      "bookingMethods": [
+        "Web",
+        "電話"
+      ],
+      "bookingRequired": true,
       "capacity": 96,
       "capacitySourceUrl": "https://www.enzanso.co.jp/hutte-ooyari",
       "officialNote": null,
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "https://www.enzanso.co.jp/hutte-ooyari",
       "capacityRef": 80,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=981",
       "auto": {}
@@ -67,7 +71,10 @@
       "tel": null,
       "openText": "2026/6/6～10/11、1か月前予約制 ＊開始日と終了日は降雪状況次第で変更あり",
       "bookingStart": "宿泊日の1か月前から",
-      "bookingMethods": null,
+      "bookingMethods": [
+        "Web",
+        "電話"
+      ],
       "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "https://www.yarigatake.co.jp/sesshou/",
@@ -75,6 +82,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "https://www.yarigatake.co.jp/sesshou/",
       "capacityRef": null,
       "capacityRefUrl": null,
       "auto": {}
@@ -299,8 +307,10 @@
       "officialUrl": "https://www.tokusawaen.com/",
       "tel": "0263-95-2508",
       "openText": "2026/4/27～11/5ごろ、テント営業4/25～ ＊営業の開始・終了日は要問合せ",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "bookingStart": "4/25〜7/24と10/13以降の宿泊分は1月31日 9:00から、全日程は2月1日 9:00から（2026年）",
+      "bookingMethods": [
+        "電話"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": "https://www.tokusawaen.com/",
@@ -308,6 +318,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "https://www.tokusawaen.com/",
       "capacityRef": 100,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=969",
       "auto": {}
@@ -382,8 +393,11 @@
       "officialUrl": "https://www.enzanso.co.jp/ariakeso",
       "tel": "0263-32-1535 FAX0263-32-0898",
       "openText": "2026/4/24～11/3、完全予約制 ＊休館日：5/7（木）、6/3（水）、7/1（水）、9/2（水）、10/7（水）要確認",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "bookingStart": "3月18日 10:00から（2026年）",
+      "bookingMethods": [
+        "Web",
+        "電話"
+      ],
       "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "https://www.enzanso.co.jp/ariakeso",
@@ -391,6 +405,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "https://www.enzanso.co.jp/ariakeso",
       "capacityRef": 73,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=924",
       "auto": {}
@@ -449,8 +464,11 @@
       "officialUrl": "https://www.enzanso.co.jp/",
       "tel": "0263-32-1535 FAX0263-32-0898",
       "openText": "2026/4/25～11/22 、3/18～完全予約制 ＊個室予約可能日は時期ごとのため、詳細は事前確認のこと",
-      "bookingStart": "3月18日から（2026年）",
-      "bookingMethods": null,
+      "bookingStart": "3月18日 10:00から（2026年。個室は4/1・4/7・4/21・5/12・5/26の5回に分けて受付）",
+      "bookingMethods": [
+        "Web",
+        "電話"
+      ],
       "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "https://www.enzanso.co.jp/",
@@ -458,6 +476,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "https://www.enzanso.co.jp/",
       "capacityRef": 650,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=926",
       "auto": {}
@@ -475,7 +494,9 @@
       "tel": "0261-22-2220",
       "openText": "例年、7/上～10/中",
       "bookingStart": null,
-      "bookingMethods": null,
+      "bookingMethods": [
+        "電話"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
@@ -483,6 +504,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": null,
       "capacityRef": 60,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=927",
       "auto": {}
@@ -499,9 +521,10 @@
       "officialUrl": "https://www.enzanso.co.jp/daitenso",
       "tel": "0263-32-1535 FAX0263-32-0898",
       "openText": "2026/6/13～11/3、完全予約制、Web予約可",
-      "bookingStart": "予約制（空きがあれば当日も可。開始日の記載なし）",
+      "bookingStart": "3月18日 10:00から（2026年）",
       "bookingMethods": [
-        "Web"
+        "Web",
+        "電話"
       ],
       "bookingRequired": true,
       "capacity": 150,
@@ -510,6 +533,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "https://www.enzanso.co.jp/daitenso",
       "capacityRef": 150,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=928",
       "auto": {}
@@ -529,8 +553,11 @@
       "officialUrl": "https://www.yarigatake.co.jp/",
       "tel": "0263-35-7200",
       "openText": "2026/7/11～10/11、１か月前予約制",
-      "bookingStart": "宿泊日の1か月前から",
-      "bookingMethods": null,
+      "bookingStart": "宿泊日の1か月前の朝9:00から",
+      "bookingMethods": [
+        "Web",
+        "電話"
+      ],
       "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "https://www.yarigatake.co.jp/",
@@ -538,6 +565,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "https://www.yarigatake.co.jp/",
       "capacityRef": 70,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=929",
       "auto": {}
@@ -554,8 +582,10 @@
       "officialUrl": "http://mt-jonen.com/",
       "tel": "0263-33-9458",
       "openText": "2026/4/25～11/3、１か月前予約制 ＊JapanAlpsにて外国人向けにWeb予約あり",
-      "bookingStart": "宿泊日の1か月前（前月の同じ日）から",
-      "bookingMethods": null,
+      "bookingStart": "宿泊日の1か月前（前月の同じ日）の朝8:00から",
+      "bookingMethods": [
+        "電話のみ"
+      ],
       "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "http://mt-jonen.com/",
@@ -647,7 +677,10 @@
       "tel": "0261-22-4006",
       "openText": "例年7月上旬～11月中旬",
       "bookingStart": null,
-      "bookingMethods": null,
+      "bookingMethods": [
+        "Web",
+        "電話"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": "http://www.webmarunaka.com/nanakura/",
@@ -655,6 +688,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "http://www.webmarunaka.com/nanakura/",
       "capacityRef": 32,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=937",
       "auto": {}
@@ -1563,7 +1597,10 @@
       "tel": "090-5507-6345",
       "openText": "2026/7月初旬～10初旬 要予約・要問合せ ＊幕営泊7月初旬～10月中旬",
       "bookingStart": null,
-      "bookingMethods": null,
+      "bookingMethods": [
+        "Web（公式サイト）",
+        "電話"
+      ],
       "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "https://miyadakankou.co.jp/chojosansou",
@@ -1571,6 +1608,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
       "sourceUpdated": "2026-06-02",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "https://miyadakankou.co.jp/chojosansou",
       "capacityRef": 100,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=1030",
       "auto": {}
@@ -1588,7 +1626,10 @@
       "tel": "090-5507-6345",
       "openText": "2026/4月上旬～11月上旬 要予約 4月および11月以降の営業は＊要問合せ、冬季営業（年末年始は要予約） ※2023年度より宝剣山荘～天狗荘間一部敷地において幕営の設営が可能(宝剣山荘冬季開設時及びシーズン期間)/最大設営可能数約20張・完全予約制 ＊期間外は要問合せ",
       "bookingStart": null,
-      "bookingMethods": null,
+      "bookingMethods": [
+        "Web（公式サイト）",
+        "電話"
+      ],
       "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "https://miyadakankou.co.jp/",
@@ -1596,6 +1637,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
       "sourceUpdated": "2026-06-02",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "https://miyadakankou.co.jp/",
       "capacityRef": 120,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=1031",
       "auto": {}
@@ -1613,7 +1655,10 @@
       "tel": "090-5507-6345",
       "openText": "2026/7月上旬～10月初旬 要予約・要問合せ",
       "bookingStart": null,
-      "bookingMethods": null,
+      "bookingMethods": [
+        "Web（公式サイト）",
+        "電話"
+      ],
       "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "https://miyadakankou.co.jp/tengusou",
@@ -1621,6 +1666,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
       "sourceUpdated": "2026-06-02",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "https://miyadakankou.co.jp/tengusou",
       "capacityRef": 200,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=1032",
       "auto": {}
@@ -1764,8 +1810,11 @@
       "officialUrl": "http://tateshinayama.com/",
       "tel": "049-266-9264",
       "openText": "2026/4/25〜10/31 ＊12/31(木)の年越し宿泊の予約受付は10/1（木）夜8時より開始",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "bookingStart": "宿泊の2日前まで（開始日の定めは記載なし）",
+      "bookingMethods": [
+        "Web（予約フォーム）",
+        "電話"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": "http://tateshinayama.com/",
@@ -1773,6 +1822,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
       "sourceUpdated": "2026-06-04",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "http://tateshinayama.com/",
       "capacityRef": 70,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=799",
       "auto": {
@@ -1869,7 +1919,9 @@
       "tel": "090-5446-1205 （～6/19予約） 本沢温泉事務所 0266-72-3260 FAX：72-3260",
       "openText": "2026/7/4〜10/25 要予約",
       "bookingStart": null,
-      "bookingMethods": null,
+      "bookingMethods": [
+        "電話"
+      ],
       "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "http://www.yatsu-honzawaonsen.com/",
@@ -1877,6 +1929,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
       "sourceUpdated": "2026-06-04",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "http://www.yatsu-honzawaonsen.com/",
       "capacityRef": 200,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=765",
       "auto": {}
@@ -1921,8 +1974,11 @@
       "officialUrl": "http://userweb.alles.or.jp/akadake/",
       "tel": null,
       "openText": "2026/5/30～10/31 完全予約制、テント場は予約不要、幕営数の上限なし",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "bookingStart": "夏季（5/30〜10/31泊）の分は4月1日 12:00から（2026年）",
+      "bookingMethods": [
+        "Web（予約フォーム）",
+        "電話"
+      ],
       "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "http://userweb.alles.or.jp/akadake/",
@@ -1930,6 +1986,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
       "sourceUpdated": "2026-06-04",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "http://userweb.alles.or.jp/akadake/",
       "capacityRef": 100,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=763",
       "auto": {}
@@ -1946,8 +2003,11 @@
       "officialUrl": "http://userweb.alles.or.jp/akadake/",
       "tel": null,
       "openText": "通年営業、完全予約制、テント場は予約不要、5/30～価格改定予定",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "bookingStart": "夏季（5/1〜11/30泊）の分は4月1日 12:00から（2026年）",
+      "bookingMethods": [
+        "Web（予約フォーム）",
+        "電話"
+      ],
       "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "http://userweb.alles.or.jp/akadake/",
@@ -1955,6 +2015,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
       "sourceUpdated": "2026-06-04",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "http://userweb.alles.or.jp/akadake/",
       "capacityRef": 200,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=762",
       "auto": {}
@@ -2524,8 +2585,10 @@
       "tel": null,
       "openText": "2026年の営業：6/中～10/下",
       "bookingStart": null,
-      "bookingMethods": null,
-      "bookingRequired": false,
+      "bookingMethods": [
+        "電話"
+      ],
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": null,
       "bookingSourceUrl": null,
@@ -2604,7 +2667,10 @@
       "tel": null,
       "openText": "2026年の営業：6/上～11/2 （予定）",
       "bookingStart": "宿泊日の1か月前から（GW営業分は例年4月1日から）",
-      "bookingMethods": null,
+      "bookingMethods": [
+        "電話",
+        "公式LINE"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
@@ -2630,7 +2696,10 @@
       "tel": null,
       "openText": "2026年の営業：6/上～11/2 （予定）",
       "bookingStart": "宿泊日の1か月前から（GW営業分は例年4月1日から）",
-      "bookingMethods": null,
+      "bookingMethods": [
+        "電話",
+        "公式LINE"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
@@ -3089,9 +3158,12 @@
       "officialUrl": "https://ikawa-kanko.com/",
       "tel": null,
       "openText": "2026年の営業：7/11～9/23",
-      "bookingStart": "例年6月ごろから（2027年分は未定）",
-      "bookingMethods": null,
-      "bookingRequired": false,
+      "bookingStart": "Webは7月分が6月15日、8月分が6月19日、9月分が6月23日の各17:00から（電話は約2週間後から。2026年）",
+      "bookingMethods": [
+        "Web",
+        "電話"
+      ],
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": null,
       "bookingSourceUrl": "https://ikawa-kanko.com/",
@@ -3118,9 +3190,12 @@
       "officialUrl": "https://ikawa-kanko.com/",
       "tel": null,
       "openText": "2026年の営業：7/11～9/23",
-      "bookingStart": "例年6月ごろから（2027年分は未定）",
-      "bookingMethods": null,
-      "bookingRequired": false,
+      "bookingStart": "Webは7月分が6月15日、8月分が6月19日、9月分が6月23日の各17:00から（電話は約2週間後から。2026年）",
+      "bookingMethods": [
+        "Web",
+        "電話"
+      ],
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": null,
       "bookingSourceUrl": "https://ikawa-kanko.com/",
@@ -3373,12 +3448,12 @@
       "officialUrl": "https://h-tateyama.alpen-route.co.jp/",
       "tel": null,
       "openText": "2026年の営業：4/15～11/下 （宿泊は 8/30まで）",
-      "bookingStart": null,
+      "bookingStart": "2026年度分は2025年12月1日から（宿泊事業は2026年8月31日で終了）",
       "bookingMethods": null,
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "https://h-tateyama.alpen-route.co.jp/",
       "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=2535",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -3894,7 +3969,9 @@
       "tel": null,
       "openText": "2026年の営業：通年",
       "bookingStart": null,
-      "bookingMethods": null,
+      "bookingMethods": [
+        "Web（予約サイト）"
+      ],
       "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": null,
@@ -3976,11 +4053,13 @@
       "tel": null,
       "openText": "2026年の営業：通年（平日は不定休あり、年末年始は営業）",
       "bookingStart": null,
-      "bookingMethods": null,
+      "bookingMethods": [
+        "電話のみ"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "http://www.kaizansou.jp/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=570",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -4153,8 +4232,10 @@
       "tel": null,
       "openText": "2026年の営業：4月下旬～11月下旬",
       "bookingStart": null,
-      "bookingMethods": null,
-      "bookingRequired": false,
+      "bookingMethods": [
+        "電話"
+      ],
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": null,
       "bookingSourceUrl": null,
@@ -4291,11 +4372,13 @@
       "tel": null,
       "openText": "2026年の営業：通年",
       "bookingStart": null,
-      "bookingMethods": null,
+      "bookingMethods": [
+        "電話のみ"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "https://miyamasansou.com/",
       "sourceUrl": "https://miyamasansou.com/page-230/",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -4316,11 +4399,13 @@
       "tel": null,
       "openText": "2026年の営業：通年",
       "bookingStart": null,
-      "bookingMethods": null,
+      "bookingMethods": [
+        "電話（オンライン予約は停止中）"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "http://kitatan.com/hirutop.html",
       "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=2852",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -4760,12 +4845,14 @@
       "officialUrl": "http://www.mfi.or.jp/tomoekan/",
       "tel": null,
       "openText": "例年 6/下～9/10",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "bookingStart": "5月11日から（2026年）",
+      "bookingMethods": [
+        "Webのみ"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "http://www.mfi.or.jp/tomoekan/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=652",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -4785,12 +4872,14 @@
       "officialUrl": "http://www.kamaiwakan.jpn.org/",
       "tel": null,
       "openText": "例年 6/下～9/中",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "bookingStart": "5月8日 10:00から（2026年）",
+      "bookingMethods": [
+        "Webのみ"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "http://www.kamaiwakan.jpn.org/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=653",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -4810,7 +4899,7 @@
       "officialUrl": "https://www.fuji-ichikan.jp/",
       "tel": null,
       "openText": "例年 7/1～9/初",
-      "bookingStart": "2027年分は5月中旬に開始の予定",
+      "bookingStart": "5月17日 10:00から（2026年。2027年分は5月中旬の予定）",
       "bookingMethods": [
         "Webのみ"
       ],
@@ -4837,7 +4926,7 @@
       "officialUrl": "http://toriiso.com/index.html",
       "tel": null,
       "openText": "例年 7/1～9/上（前後あり）",
-      "bookingStart": null,
+      "bookingStart": "5月11日 8:00から（2026年）",
       "bookingMethods": [
         "Web（やまたん）のみ"
       ],
@@ -4904,12 +4993,14 @@
       "officialUrl": "http://www.mfi.or.jp/w3/home0/taisikan/",
       "tel": null,
       "openText": "例年 6/下～9/上",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "bookingStart": "宿泊時期ごとに5月11日〜14日の各日 9:00から（2026年）",
+      "bookingMethods": [
+        "Webのみ"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "http://www.mfi.or.jp/w3/home0/taisikan/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=657",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -4996,7 +5087,7 @@
       "officialUrl": "https://www.ganso-muro.jp/",
       "tel": null,
       "openText": "例年 7/1～9/初",
-      "bookingStart": null,
+      "bookingStart": "5月16日 10:00から（2026年）",
       "bookingMethods": [
         "Webのみ"
       ],
@@ -5048,12 +5139,14 @@
       "officialUrl": "http://www.mfi.or.jp/tomoekan/",
       "tel": null,
       "openText": "例年 6/30～9/10ごろ",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "bookingStart": "5月11日から（2026年）",
+      "bookingMethods": [
+        "Webのみ"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "http://www.mfi.or.jp/tomoekan/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=662",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -5113,7 +5206,7 @@
       "officialUrl": "http://www.goraikoukan.jp/",
       "tel": null,
       "openText": "例年 7/1～9/10",
-      "bookingStart": null,
+      "bookingStart": "5月11日 12:00から（2026年）",
       "bookingMethods": [
         "Webのみ"
       ],
@@ -5140,12 +5233,14 @@
       "officialUrl": "http://www.kagahakusan.jp/file/murodou/murodou_shisetsu.html",
       "tel": null,
       "openText": "例年 5/1～10/15頃",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "bookingStart": "4月1日 9:00から（2026年）",
+      "bookingMethods": [
+        "電話のみ（予約センター）"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "http://www.kagahakusan.jp/file/murodou/murodou_shisetsu.html",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=1058",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -5168,12 +5263,14 @@
       "officialUrl": "http://city-hakusan.com/hakusan/naryusanso/",
       "tel": null,
       "openText": "例年 7/1～10/15",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "bookingStart": "4月1日から（受付は10月15日まで）",
+      "bookingMethods": [
+        "電話（予約センター）"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "http://city-hakusan.com/hakusan/naryusanso/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=1061",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -5197,9 +5294,12 @@
       "location": null,
       "officialUrl": "http://www.myoko.tv/kouyaike/",
       "tel": null,
-      "openText": "例年 4/中～11/初",
-      "bookingStart": "4月1日 9:00から（新年度分）",
-      "bookingMethods": null,
+      "openText": "2026年：5/1～10/25",
+      "bookingStart": "4月1日 9:00から（2026年度。5月以降は利用月の2か月前の1日 0:00から）",
+      "bookingMethods": [
+        "Web（モンベルの予約サイト）",
+        "電話（10名以上）"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
@@ -5230,7 +5330,7 @@
       "openText": "例年 7/1～10/31",
       "bookingStart": null,
       "bookingMethods": null,
-      "bookingRequired": false,
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": null,
       "bookingSourceUrl": null,
@@ -5277,13 +5377,13 @@
       "location": null,
       "officialUrl": null,
       "tel": null,
-      "openText": "例年 7/上～10/第2日曜（9・10月は要問合せ）",
+      "openText": "2026年：7/1～10/12（管理人の常駐は9/30まで。10月は週末のみ）",
       "bookingStart": null,
       "bookingMethods": [
         "電話",
         "Web（予約フォーム）"
       ],
-      "bookingRequired": false,
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": null,
       "bookingSourceUrl": null,
@@ -5370,13 +5470,13 @@
       "location": null,
       "officialUrl": "http://www.welcome-to-oze.com/yamagoya.php?Cd=0004",
       "tel": null,
-      "openText": "例年 4/下～10/下",
+      "openText": "2026年：4/17～10/24",
       "bookingStart": null,
       "bookingMethods": null,
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "http://www.welcome-to-oze.com/yamagoya.php?Cd=0004",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=311",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -5395,13 +5495,13 @@
       "location": null,
       "officialUrl": "http://www5a.biglobe.ne.jp/~ymnhnky/",
       "tel": null,
-      "openText": "例年 4/下～10/下",
+      "openText": "2026年：4/18～",
       "bookingStart": null,
       "bookingMethods": null,
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "http://www5a.biglobe.ne.jp/~ymnhnky/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=312",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -5420,9 +5520,12 @@
       "location": null,
       "officialUrl": null,
       "tel": null,
-      "openText": "例年 5/上～10/下",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "openText": "2026年：5/23～10/24",
+      "bookingStart": "3月9日から（Webは0:00、電話は8:30から。2026年）",
+      "bookingMethods": [
+        "Web",
+        "電話"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
@@ -5445,13 +5548,17 @@
       "location": null,
       "officialUrl": "https://chozogoya.com/",
       "tel": null,
-      "openText": "例年 4/下～10/下",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "openText": "2026年：4/28～10/24",
+      "bookingStart": "3月1日から（2026年）",
+      "bookingMethods": [
+        "Web",
+        "メール",
+        "電話"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "https://chozogoya.com/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=307",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -5470,13 +5577,16 @@
       "location": null,
       "officialUrl": "http://www.ozejin-yamagoya.jp/ozenuma.html",
       "tel": null,
-      "openText": "例年 5/上～10/下",
-      "bookingStart": null,
-      "bookingMethods": null,
+      "openText": "2026年：5/23～10/24",
+      "bookingStart": "3月9日から（Webは0:00、電話は8:30から。2026年）",
+      "bookingMethods": [
+        "Web",
+        "電話"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "http://www.ozejin-yamagoya.jp/ozenuma.html",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=306",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -5548,12 +5658,14 @@
       "officialUrl": "http://www.minakami-onsen.com/tanigawa.php?itemid=198",
       "tel": null,
       "openText": "例年 5/1～11/3前後（年により変動）",
-      "bookingStart": null,
-      "bookingMethods": null,
-      "bookingRequired": false,
+      "bookingStart": "3月1日から",
+      "bookingMethods": [
+        "電話"
+      ],
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "http://www.minakami-onsen.com/tanigawa.php?itemid=198",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=410",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -5572,10 +5684,12 @@
       "location": null,
       "officialUrl": null,
       "tel": null,
-      "openText": "例年 4/末～10/末",
-      "bookingStart": null,
-      "bookingMethods": null,
-      "bookingRequired": false,
+      "openText": "2026年：4/29～10/25",
+      "bookingStart": "4月1日から（令和8年度）",
+      "bookingMethods": [
+        "電話のみ"
+      ],
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": null,
       "bookingSourceUrl": null,

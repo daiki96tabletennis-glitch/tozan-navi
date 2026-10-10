@@ -210,6 +210,8 @@ def main():
                 h['bookingMethods'] = x['m']
             if x.get('r'):
                 h['bookingRequired'] = True
+            if x.get('p'):
+                h['openText'] = x['p']
             if not h.get('bookingSourceUrl'):
                 h['bookingSourceUrl'] = h.get('officialUrl')
     yk_path = os.path.join(ROOT, 'data', 'huts_yamakei.json')
