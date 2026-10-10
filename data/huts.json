@@ -209,6 +209,10 @@
           "value": "2026年4月27日〜11月3日",
           "source": "https://www.yamatan.net/hut/karasawahutte"
         },
+        "bookingWindow": {
+          "value": "Web予約は宿泊日の1か月前 8:00から",
+          "source": "https://www.yamatan.net/hut/karasawahutte"
+        },
         "bookingText": {
           "value": "🔶 ご予約について ・1回のご予約で最大４名までご予約いただけます。 → ５名以上の場合は、お電話での予約のみ受付となります（※前月同日の朝8時から受付開始）。 ・連泊される場合も、1日ずつご予約をお願いします。 （例：2泊の場合は、2回に分けて予約） ・他の方との相部屋になる可能性がございます。ご了承ください。 ・安全上の理由から、お子様のみでのご予約はお受けできません。また、３歳以下のお子様の宿泊はお断りさせて頂きます。 ・「満室」の場合、涸沢ヒュッテには泊まれません。別日程へ登山計画をご変更ください。 ・同グループで別部屋希望の方は、部屋ごとに予約をお願いします。 ・安全登山の同行者の情報は必ず入力してください。（お名前・年齢・性別） 🔶 ご予約の変更について ・チェックイン日や人数の変更は、キャンセル料が発生する場合があります。 ・WEBからの予約変更は「最大5回まで」可能です。 6回目以降の変更はできませんので、新たに予約を取り直してください。 ・WEBでの変更は「ご宿泊日の2日前まで」に限り可能です。 🔶 ご利用可能なクレジットカード VISA・Mastercard・JCB・Amex・Diners・Discover",
           "source": "https://www.yamatan.net/hut/karasawahutte"
@@ -233,7 +237,7 @@
       "officialUrl": "https://www.yokoo-sanso.co.jp/",
       "tel": "0263-33-2225（冬期のみ）",
       "openText": "2026/4/27～5/31、7/1～11/3 、1か月前予約制、繁忙期限定数のみWeb予約可、6/1～6/30は工事のため、宿泊及び食堂は休業。売店およびテント受付のみ営業",
-      "bookingStart": "宿泊日の1か月前から（電話は前月同日の朝7:00から。Webは8名まで）",
+      "bookingStart": "電話は宿泊日の1か月前（前月の同じ日）7:00から（Web（やまたん）は7/1〜10/25泊の限定数だけ、2か月前から）",
       "bookingMethods": [
         "Web（やまたん）",
         "電話"
@@ -245,6 +249,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
       "lastVerified": "2026-10-10",
+      "bookingSourceUrl": "https://www.yokoo-sanso.co.jp/",
       "capacityRef": 250,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=971",
       "auto": {
@@ -254,6 +259,10 @@
         },
         "season": {
           "value": "2026年4月26日〜11月3日の宿泊まで",
+          "source": "https://www.yamatan.net/hut/yokoosanso"
+        },
+        "bookingWindow": {
+          "value": "Web予約は宿泊日の2か月前 7:00から",
           "source": "https://www.yamatan.net/hut/yokoosanso"
         },
         "bookingText": {
@@ -446,6 +455,10 @@
           "value": "2026年4月25日〜11月23日",
           "source": "https://www.yamatan.net/hut/nakabusaonsen"
         },
+        "bookingWindow": {
+          "value": "Web予約は宿泊日の90日前 0:00から",
+          "source": "https://www.yamatan.net/hut/nakabusaonsen"
+        },
         "bookingText": {
           "value": "【ご利用可能なクレジットカード】 VISA・Mastercard・JCB・Amex・Diners・Discover 🔴Webでの予約は90日前の0時から開始します。予約の受付は7日前まで承ります。 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大３回まで 可能です。変更回数を超えてからの変更は一度キャンセルしていただき、新しいご予約を改めてお取りください。 🔴 WEBでの予約内容の変更可能期限：ご予約日の ７日まで に限り、変更を承ります。 ",
           "source": "https://www.yamatan.net/hut/nakabusaonsen"
@@ -627,6 +640,10 @@
       "auto": {
         "season": {
           "value": "2026年4月25日〜11月3日",
+          "source": "https://www.yamatan.net/hut/chogadakehutte"
+        },
+        "bookingWindow": {
+          "value": "Web予約は宿泊日の42日前 0:00から",
           "source": "https://www.yamatan.net/hut/chogadakehutte"
         },
         "bookingText": {
@@ -1291,6 +1308,10 @@
           "value": "2026年4月25日〜11月3日（林道バスの運行状況に併せて延長、短縮の可能性がございます。）",
           "source": "https://www.yamatan.net/hut/komorebisanso"
         },
+        "bookingWindow": {
+          "value": "Web予約は宿泊日の3か月前 0:00から",
+          "source": "https://www.yamatan.net/hut/komorebisanso"
+        },
         "bookingText": {
           "value": "【ご利用可能なクレジットカード】 VISA・Mastercard・JCB・Amex・Diners・Discover 🟡Yamatan予約サイト（24時間受付）又は電話（9：00～15：00）にて、ご希望宿泊日の3か月前の同日0時から宿泊日前日までご予約いただけます。 ※Yamatanに表示されている空室状況が、当山小屋の最新の空室状況です。 旅行会社様(20名様以上)又は団体（20名様以上）はホームページの予約フォームよりご予約ください。 🔴 お弁当をご予約される場合、連泊の方のお弁当は１泊目のお弁当になります。２泊目以降のお弁当は現地でご注文とお支払いをお願いします。 🔴 仮押さえでの複数日予約、他の山小屋との二重予約など、キャンセルを想定した不確定なご予約はご遠慮いただいております。 また、間違えでの小学生以下予約が複数発生しております。今一度ご確認をお願い致します。 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大１０回まで 可能です。変更回数を超えてからの変更は一度キャンセルしていただき、新しいご予約を改めてお取りください。 🔴 WEBでの予約内容の変更可能期限：ご予約日の 前日まで に限り、変更を承ります。 🔴 チェックイン日の変更、人数の減少はキャンセル規定内であればキャンセル料が発生致します。 ",
           "source": "https://www.yamatan.net/hut/komorebisanso"
@@ -1358,6 +1379,10 @@
         },
         "season": {
           "value": "2026年6月12日〜10月11日",
+          "source": "https://www.yamatan.net/hut/senjougoya"
+        },
+        "bookingWindow": {
+          "value": "Web予約は宿泊日の3か月前 0:00から",
           "source": "https://www.yamatan.net/hut/senjougoya"
         },
         "bookingText": {
@@ -1869,6 +1894,10 @@
           "value": "2026年4月25日〜10月31日",
           "source": "https://www.yamatan.net/hut/tateshinasanso"
         },
+        "bookingWindow": {
+          "value": "Web予約は宿泊日の2か月前 7:00から",
+          "source": "https://www.yamatan.net/hut/tateshinasanso"
+        },
         "bookingText": {
           "value": "■ 予約受付とキャンセル オンラインでの予約受付は ご宿泊前日の16時まで可能です。 当日キャンセルの場合は、必ずお電話でご連絡のうえ、オンライン上でキャンセル手続きをお願いいたします。 【ご利用可能なクレジットカード】 VISA・Mastercard・JCB・Amex・Diners・Discover 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大5回まで 可能です。変更回数を超えてからの変更は一度キャンセルしていただき、新しいご予約を改めてお取りください。 チェックイン日の変更、人数の減少はキャンセル規定内であればキャンセル料が発生致します。 🔴 WEBでの予約内容の変更可能期限：ご予約日の前日16時まで に限り、変更を承ります。",
           "source": "https://www.yamatan.net/hut/tateshinasanso"
@@ -1974,7 +2003,7 @@
       "officialUrl": "http://userweb.alles.or.jp/akadake/",
       "tel": null,
       "openText": "2026/5/30～10/31 完全予約制、テント場は予約不要、幕営数の上限なし",
-      "bookingStart": "夏季（5/30〜10/31泊）の分は4月1日 12:00から（2026年）",
+      "bookingStart": "夏季（5/30〜10/31泊）は4月1日 12:00から、年末年始（12/26〜1/2泊）は11月9日 12:00から（2026年）",
       "bookingMethods": [
         "Web（予約フォーム）",
         "電話"
@@ -2003,7 +2032,7 @@
       "officialUrl": "http://userweb.alles.or.jp/akadake/",
       "tel": null,
       "openText": "通年営業、完全予約制、テント場は予約不要、5/30～価格改定予定",
-      "bookingStart": "夏季（5/1〜11/30泊）の分は4月1日 12:00から（2026年）",
+      "bookingStart": "夏季（5/1〜11/30泊）は4月1日 12:00から、冬季（12/1〜4/30泊）は11月9日 12:00から（2026年）",
       "bookingMethods": [
         "Web（予約フォーム）",
         "電話"
@@ -2170,7 +2199,7 @@
       "officialUrl": "http://www.furusatokan.jp/",
       "tel": "0268-86-2311 FAX86-2312",
       "openText": "通年営業 ＊冬季の営業は要確認",
-      "bookingStart": null,
+      "bookingStart": "宿泊日のおよそ半年前から（2026年12月12日の宿泊は6月15日、2027年1月1日の宿泊は7月5日に販売開始）",
       "bookingMethods": [
         "Web",
         "電話"
@@ -2182,7 +2211,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_sonota.html",
       "sourceUpdated": "2026-06-04",
       "lastVerified": "2026-10-10",
-      "bookingSourceUrl": "http://www.furusatokan.jp/",
+      "bookingSourceUrl": "https://www.furusatokan.jp/blog/2007/",
       "capacityRef": 40,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=1315",
       "auto": {}
@@ -3045,7 +3074,7 @@
       "officialUrl": "https://www.t-forest.com/alpsinfo/climber/lodgeinfo/",
       "tel": null,
       "openText": "2026年の営業：7/11～9/22 （予定）",
-      "bookingStart": "予約制ではなく、当日の受付",
+      "bookingStart": null,
       "bookingMethods": null,
       "bookingRequired": false,
       "capacity": null,
@@ -3054,6 +3083,7 @@
       "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=2556",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
+      "bookingNone": "予約制ではありません。当日、小屋で受付します",
       "capacityRef": 10,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=717",
       "periodAuto": "7/11～9/22 （予定）",
@@ -3102,7 +3132,7 @@
       "officialUrl": "https://www.t-forest.com/alpsinfo/climber/lodgeinfo/",
       "tel": null,
       "openText": "2026年の営業：7/11～9/22 （予定）",
-      "bookingStart": "予約制ではなく、当日の受付",
+      "bookingStart": null,
       "bookingMethods": null,
       "bookingRequired": false,
       "capacity": null,
@@ -3111,6 +3141,7 @@
       "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=2556",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
+      "bookingNone": "予約制ではありません。当日、小屋で受付します",
       "capacityRef": 20,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=724",
       "periodAuto": "7/11～9/22 （予定）",
@@ -3924,15 +3955,15 @@
       "officialUrl": "https://nanatsuishigoya.com/",
       "tel": null,
       "openText": "2026年の営業：通年（365日営業）",
-      "bookingStart": null,
+      "bookingStart": "宿泊日の13週間（91日）前から（例：12月5日の宿泊は9月5日から。予約は前日15:00まで）",
       "bookingMethods": [
         "電話（小屋泊）",
         "Web（テント泊は「とっとこ」）"
       ],
-      "bookingRequired": false,
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": "https://nanatsuishigoya.com/",
+      "bookingSourceUrl": "https://nanatsuishigoya.com/%E3%81%94%E4%BA%88%E7%B4%84/",
       "sourceUrl": "https://nanatsuishigoya.com/",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -4007,6 +4038,7 @@
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=569",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
+      "bookingStartUnstated": true,
       "capacityRef": 25,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=569",
       "auto": {}
@@ -4053,9 +4085,7 @@
       "tel": null,
       "openText": "2026年の営業：通年（平日は不定休あり、年末年始は営業）",
       "bookingStart": null,
-      "bookingMethods": [
-        "電話のみ"
-      ],
+      "bookingMethods": null,
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
@@ -4063,6 +4093,7 @@
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=570",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
+      "bookingStartUnstated": true,
       "capacityRef": 40,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=570",
       "auto": {}
@@ -4286,7 +4317,7 @@
       "officialUrl": "http://mitsutouge.net/",
       "tel": null,
       "openText": "2026年の営業：通年（要予約）",
-      "bookingStart": "Webは宿泊の4日前まで",
+      "bookingStart": "Webは宿泊日の365日前から4日前まで（予約サイト「やまたん」の設定。電話でも受付）",
       "bookingMethods": [
         "Web（やまたん）",
         "電話"
@@ -4307,6 +4338,10 @@
         },
         "season": {
           "value": "通年",
+          "source": "https://www.yamatan.net/hut/mitsutogesanso"
+        },
+        "bookingWindow": {
+          "value": "Web予約は宿泊日の365日前から",
           "source": "https://www.yamatan.net/hut/mitsutogesanso"
         },
         "bookingText": {
@@ -4371,14 +4406,14 @@
       "officialUrl": "https://miyamasansou.com/",
       "tel": null,
       "openText": "2026年の営業：通年",
-      "bookingStart": null,
+      "bookingStart": "宿泊日の2か月前から（電話の受付は9:00〜19:00）",
       "bookingMethods": [
         "電話のみ"
       ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": "https://miyamasansou.com/",
+      "bookingSourceUrl": "https://miyamasansou.com/page-230/",
       "sourceUrl": "https://miyamasansou.com/page-230/",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
@@ -5188,6 +5223,10 @@
           "value": "2026年7月1日〜9月10日",
           "source": "https://www.yamatan.net/hut/munatsukiedoya"
         },
+        "bookingWindow": {
+          "value": "Web予約は宿泊日の2か月前 11:00から",
+          "source": "https://www.yamatan.net/hut/munatsukiedoya"
+        },
         "bookingText": {
           "value": "🟡 宿泊日の2ヶ月前の同日11時より予約開始いたします。予約受付は ご宿泊前日まで可能です。 🟡 当日キャンセルの場合は、必ずお電話でご連絡のうえ、オンライン上でキャンセル手続きをお願いいたします。 🟡 連泊の方はWeb予約のコメント欄に、「連泊です」とご記入ください。 🟡 複数回の登山をご計画の場合、Web予約のコメント欄に、「重複予約ではありません」とご記入ください。 🔴 ご予約時からキャンセル料が発生します。 ご予約の際は、山行計画を十分ご確認のうえお手続きください。 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大５回まで 可能です。変更回数を超えてからの変更は一度キャンセルしていただき、新しいご予約を改めてお取りください。 🔴 WEBでの予約内容の変更可能期限：ご予約日の前日まで に限り、変更を承ります。 🔴 10名様までWEB予約が可能です※旅行会社様やエージェントによる代理予約はお受けできません 🔴 11名様以上のご予約はグループに分けてお申し込みください。 🔴 お申し込みは一般予約枠のため 団体様 代理予約 エージェント様のご予約はお受けすることができません。 🔴 予約の際のコメント欄にご記入いただきましても質問いただきましても、ご希望に添うことはできません。また返信もできません。お問い合わせは電話（090-7031-3517info@fujisan-ed",
           "source": "https://www.yamatan.net/hut/munatsukiedoya"
@@ -5358,10 +5397,11 @@
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "https://yamagoya.info/mikunidake-hinangoya/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=239",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
+      "bookingNone": "避難小屋のため予約は不要です（管理人がいない時期は無人開放）",
       "capacityRef": 50,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=239",
       "auto": {}
@@ -5424,10 +5464,11 @@
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "https://yamagoya.info/iidehonzan-koya/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=241",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
+      "bookingNone": "避難小屋のため予約は不要です（協力金1人2,500円。管理人がいない時期は無人開放）",
       "capacityRef": 50,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=241",
       "auto": {}
@@ -5611,10 +5652,11 @@
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "https://www.city.uonuma.lg.jp/page/1013581.html",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=368",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
+      "bookingNone": "避難小屋のため、予約の受付はありません（宿泊は協力金1人2,000円）",
       "capacityRef": 40,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=368",
       "auto": {}
@@ -5717,10 +5759,11 @@
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "https://www.city.nikko.lg.jp/soshiki/6/1027/1/375.html",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=297",
       "sourceUpdated": null,
       "lastVerified": "2026-10-10",
+      "bookingNone": "無人の避難小屋。予約の必要はなく、無料で通年利用できます",
       "capacityRef": 40,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=297",
       "auto": {}

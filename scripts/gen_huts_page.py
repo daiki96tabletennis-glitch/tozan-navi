@@ -34,23 +34,32 @@ for h in H:
     stale = h.get('bookingStale')
     # 公式サイト・予約サイトから自動で読み取れた値を優先する
     start = (au.get('bookingStart') or {}).get('value') or (None if stale else h.get('bookingStart'))
+    # 手で確認した値が無い小屋は、予約サイトに登録されている「何日前から予約できるか」を使う
+    start = start or (au.get('bookingWindow') or {}).get('value')
+    none = None if stale else h.get('bookingNone')
     cap = (au.get('capacity') or {}).get('value') or h.get('capacity')
     methods = None if stale else h.get('bookingMethods')
     ids = h['mountainIds'] + [o['id'] for o in h.get('otherMountains') or []]
     for i in ids:
         count[i] = count.get(i, 0) + 1
     # 予約の開始
-    if start:
+    if none:
+        s_html = fact('予約の開始', '予約不要', '予約の受付がない小屋です')
+    elif start:
         a, b = split_note(start)
         s_html = fact('予約の開始', E(a), E(b))
         if h.get('officialChanged') and not au.get('bookingStart'):
             s_html = fact('予約の開始', E(a), E((b + '。' if b else '') + '公式サイトの記載に変更あり。最新は公式サイトで確認'))
     elif stale:
         s_html = fact('予約の開始', '<span class="na">確認中</span>', '出典の記載が変わりました')
+    elif h.get('bookingStartUnstated'):
+        s_html = fact('予約の開始', '<span class="na">記載なし</span>', '公式サイトに、いつから予約できるかの記載がありません。予約先で確認')
     else:
         s_html = fact('予約の開始', NA)
     # 予約方法
-    if methods:
+    if none:
+        m_html = fact('予約方法', '<span class="mt">予約なし</span>', E(none))
+    elif methods:
         tags = ''.join('<span class="mt">%s</span>' % E(split_note(x)[0]) for x in methods)
         subs = '／'.join(E(split_note(x)[1]) for x in methods if split_note(x)[1])
         m_html = fact('予約方法', tags, subs or None)

@@ -212,6 +212,16 @@ def main():
                 h['bookingRequired'] = True
             if x.get('p'):
                 h['openText'] = x['p']
+            if x.get('n'):
+                # 予約という仕組みがない小屋（避難小屋など）。予約の開始・方法は持たせない
+                h['bookingNone'] = x['n']
+                h['bookingStart'] = None
+                h['bookingMethods'] = None
+                h['bookingRequired'] = False
+            if x.get('u'):
+                h['bookingStartUnstated'] = True
+            if x.get('src'):
+                h['bookingSourceUrl'] = x['src']
             if not h.get('bookingSourceUrl'):
                 h['bookingSourceUrl'] = h.get('officialUrl')
     yk_path = os.path.join(ROOT, 'data', 'huts_yamakei.json')

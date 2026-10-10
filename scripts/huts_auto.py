@@ -78,9 +78,17 @@ def yamatan(slug):
             for v in o:
                 walk(v)
     try:
-        walk(json.loads(m.group(1)))
-    except ValueError:
+        data = json.loads(m.group(1))
+        walk(data)
+        hut = ((data.get('props') or {}).get('pageProps') or {}).get('hut') or {}
+    except (ValueError, AttributeError):
         return {}
+    # 予約できる範囲：Web予約を受け付けている小屋で、「宿泊日の◯日前／◯か月前から」が登録されているものだけ（0 は未設定）
+    num, typ = hut.get('before_reservation_num'), hut.get('beforeReservationType')
+    if (hut.get('hut_profile') or {}).get('is_reserve') and isinstance(num, int) and num > 0 and typ in ('days', 'months'):
+        tm = re.fullmatch(r'(\d\d):(\d\d):\d\d', str(hut.get('canReserveStartDateTime') or ''))
+        at = ' %d:%s' % (int(tm.group(1)), tm.group(2)) if tm and tm.group(0) != '23:59:59' else ''
+        out['window'] = 'Web予約は宿泊日の%d%s前%sから' % (num, '日' if typ == 'days' else 'か月', at)
     return out
 
 
@@ -171,6 +179,8 @@ def run(huts, today=None, only=None, previous=None):
             h['auto']['season'] = {'value': per, 'source': url}
         elif per:
             report.append('- %s：予約サイトの営業期間が古い年のまま（%s）' % (name, per))
+        if y.get('window'):
+            h['auto']['bookingWindow'] = {'value': y['window'], 'source': url}
         if y.get('reservation_method'):
             h['auto']['bookingText'] = {'value': re.sub(r'\s+', ' ', str(y['reservation_method']))[:600], 'source': url}
     # B. 公式ページのレシピ
