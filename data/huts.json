@@ -1683,6 +1683,50 @@
       "auto": {}
     },
     {
+      "id": "hut-4213b210",
+      "name": "萬岳荘",
+      "region": "中央アルプス",
+      "mountainIds": [],
+      "otherMountains": [
+        {
+          "id": "enasan",
+          "relation": "神坂峠の近く（富士見台高原）。前泊・後泊に使える"
+        }
+      ],
+      "location": "富士見台高原 標高1600m",
+      "officialUrl": "https://bangakusou.wixsite.com/home",
+      "tel": "070-2667-6618 管理人 小川さん直通",
+      "openText": "2026/4/29～11/24 事前予約制（電話かメール bangakusou@gmail.com）",
+      "bookingStart": null,
+      "bookingMethods": [
+        "電話",
+        "メール"
+      ],
+      "bookingRequired": true,
+      "capacity": null,
+      "capacitySourceUrl": "https://bangakusou.wixsite.com/home",
+      "officialNote": null,
+      "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
+      "sourceUpdated": "2026-06-02",
+      "lastVerified": "2026-10-10",
+      "capacityRef": null,
+      "capacityRefUrl": null,
+      "auto": {
+        "capacity": {
+          "value": 5,
+          "source": "https://www.yamatan.net/hut/bangakusou"
+        },
+        "season": {
+          "value": "4月下旬から11月中旬",
+          "source": "https://www.yamatan.net/hut/bangakusou"
+        },
+        "bookingText": {
+          "value": "​宿泊につきましては、小屋泊、テント泊、車中泊とも完全予約制とさせて頂きます。 なお、ご予約の受付は、下記連絡先までお願いいたします 萬岳荘管理人 原 誠一 〈携帯〉070-2667-6618 ",
+          "source": "https://www.yamatan.net/hut/bangakusou"
+        }
+      }
+    },
+    {
       "id": "hut-e86564b3",
       "name": "蓼科山頂ヒュッテ",
       "region": "八ヶ岳",
@@ -4208,6 +4252,1306 @@
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=599",
       "periodAuto": "通年",
       "auto": {}
+    },
+    {
+      "id": "hut-c551ad80",
+      "name": "宝永山荘",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 6/下～10/中",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=619",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 100,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=619",
+      "auto": {
+        "season": {
+          "value": "2026年7月1日〜9月15日",
+          "source": "https://www.yamatan.net/hut/hoeisanso"
+        },
+        "bookingText": {
+          "value": "■ ご予約について 当館は 完全予約制 となっております。 ご予約は、基本的に Yamatan からのオンライン予約をご利用ください。 ■ 予約受付とキャンセル オンラインでの予約受付は ご宿泊当日まで可能です。 当日キャンセルの場合は、必ずお電話でご連絡のうえ、オンライン上でキャンセル手続きをお願いいたします。 ■ カレンダー表示について 自動翻訳機能をONにしていると、 予約カレンダーが正しく表示されない場合があります。その際は 自動翻訳をOFFにして再表示をお試しください。 【ご利用可能なクレジットカード】 VISA・Mastercard・JCB・Amex・Diners・Discover 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大5回まで 可能です。変更回数を超えてからの変更は一度キャンセルしていただき、新しいご予約を改めてお取りください。 チェックイン日の変更、人数の減少はキャンセル規定内であればキャンセル料が発生致します。 🔴 WEBでの予約内容の変更可能期限：ご予約日の前日まで に限り、変更を承ります。",
+          "source": "https://www.yamatan.net/hut/hoeisanso"
+        }
+      }
+    },
+    {
+      "id": "hut-1ea1db8a",
+      "name": "雲海荘",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/上～10/初（変動あり）",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=618",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 70,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=618",
+      "auto": {}
+    },
+    {
+      "id": "hut-125c562e",
+      "name": "新七合目 御来光山荘",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/中～9/上",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=620",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 180,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=620",
+      "auto": {}
+    },
+    {
+      "id": "hut-c9be4d80",
+      "name": "元祖七合目 山口山荘",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/10～9/上",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=621",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 180,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=621",
+      "auto": {}
+    },
+    {
+      "id": "hut-7e73da99",
+      "name": "富士宮口八合目 池田館",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/上～8/下（残雪により開始日は前後する）",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=622",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 250,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=622",
+      "auto": {
+        "capacity": {
+          "value": 150,
+          "source": "https://www.yamatan.net/hut/ikedakan"
+        },
+        "season": {
+          "value": "2026年7月10日〜9月9日",
+          "source": "https://www.yamatan.net/hut/ikedakan"
+        },
+        "bookingText": {
+          "value": "【ご利用可能なクレジットカード】 VISA・Mastercard・JCB・Amex・Diners・Discover 🔴 グループでお越しの際は、なるべくお一人の方がまとめてお支払いください。 🔴 予約の際のコメント欄にご記入いただきましても、ご希望に添うことはできません。また返信もできません。 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大5回まで 可能です。変更回数を超えてからの変更は一度キャンセルしていただき、新しいご予約を改めてお取りください。 チェックイン日の変更、人数の減少はキャンセル規定内であればキャンセル料が発生致します。 🔴 WEBでの予約内容の変更可能期限：ご予約日の 前日まで に限り、変更を承ります。",
+          "source": "https://www.yamatan.net/hut/ikedakan"
+        }
+      }
+    },
+    {
+      "id": "hut-fdb18d4d",
+      "name": "富士宮口九合目 万年雪山荘",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/上～9/上",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=623",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 250,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=623",
+      "auto": {
+        "capacity": {
+          "value": 250,
+          "source": "https://www.yamatan.net/hut/mannenyukisanso"
+        },
+        "season": {
+          "value": "2026年7月10日~9月9日",
+          "source": "https://www.yamatan.net/hut/mannenyukisanso"
+        },
+        "bookingText": {
+          "value": "Web予約は予約日の前日まで受付しております。 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大5回まで 可能です。 チェックイン日の変更、人数の減少はキャンセル規定内であればキャンセル料が発生致します。 🔴 WEBでの予約内容の変更可能期限：ご予約日の 前日まで に限り、変更を承ります。 🔴 お問い合わせの際はお電話（090-7025-2236）でご連絡をお願い致します。 【ご利用可能なクレジットカード】 VISA・Mastercard・JCB・Amex・Diners・Discover",
+          "source": "https://www.yamatan.net/hut/mannenyukisanso"
+        }
+      }
+    },
+    {
+      "id": "hut-e1ce8b0c",
+      "name": "富士宮口九合五勺 胸突山荘",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/上～9/上",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=624",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 150,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=624",
+      "auto": {
+        "capacity": {
+          "value": 100,
+          "source": "https://www.yamatan.net/hut/munatsukisanso"
+        },
+        "season": {
+          "value": "2026年7月10日〜9月9日",
+          "source": "https://www.yamatan.net/hut/munatsukisanso"
+        },
+        "bookingText": {
+          "value": "🔴予約は前日の24時まで受け付けます。 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大３回まで 可能です。変更回数を超えてからの変更は一度キャンセルしていただき、新しいご予約を改めてお取りください。 🔴 WEBでの予約内容の変更可能期限：ご予約日の 前日まで に限り、変更を承ります。 🔴 チェックイン日の変更、人数の減少はキャンセル規定内であればキャンセル料が発生致します。 【ご利用可能なクレジットカード】 VISA・Mastercard・JCB・Amex・Diners・Discover",
+          "source": "https://www.yamatan.net/hut/munatsukisanso"
+        }
+      }
+    },
+    {
+      "id": "hut-eabcae32",
+      "name": "頂上富士館",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/上～9/上",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=625",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 150,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=625",
+      "auto": {
+        "season": {
+          "value": "2026年7月10日～9月9日",
+          "source": "https://www.yamatan.net/hut/chojofujikan"
+        },
+        "bookingText": {
+          "value": "【ご利用可能なクレジットカード】 VISA・Mastercard ※JCB・Amex・Diners・Discoverはご利用いただけません 予約は当日まで受け付けます。 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大５回まで 可能です。変更回数を超えてからの変更は一度キャンセルしていただき、新しいご予約を改めてお取りください。 🔴 WEBでの予約内容の変更可能期限：ご予約日の 前日までに限り、変更を承ります。",
+          "source": "https://www.yamatan.net/hut/chojofujikan"
+        }
+      }
+    },
+    {
+      "id": "hut-7563fbfd",
+      "name": "佐藤小屋",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 通年（夏期以外は不定期営業）",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=647",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 80,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=647",
+      "auto": {
+        "capacity": {
+          "value": 80,
+          "source": "https://www.yamatan.net/hut/satogoya"
+        },
+        "season": {
+          "value": "通年営業(冬季は完全予約)",
+          "source": "https://www.yamatan.net/hut/satogoya"
+        },
+        "bookingText": {
+          "value": "やまたんネット 電話 FAX予約(２０名以上の団体の方) (電話、ＦＡＸをご利用の方は佐藤小屋ホームページから) 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大１回まで 可能です。 🔴 WEBでの予約内容の変更可能期限：ご予約日の 前日まで に限り、変更を承ります。 以上、変更回数、期限を超えてからの変更は直接下記へお問い合わせください。 電話番号：090‐3133‐2230 メール https://mtfuji.satogoya.jp/?page_id=13 受付時間： 8時～21時 ※注意事項※ (冬季ご利用の方) 冬季の予約については1名様からの予約も可能ですが、最低宿泊人数に達しない場合は(5名以上)こちらからキャンセルまたは日程の変更メール、電話にてご連絡致します。９月１０日以降は冬季シーズンになります。(メールについては迷惑メール等に入っている可能性がありますので必ずご確認ください) 〇１２月３１日～１日は特別料金のため電話予約のみになります 予約受付 問い合わせ 電話番号：090‐3133‐2230 メール https://mtfuji.satogoya.jp/?page_id=13 受付時間： 8時～21時 【ご利用可能なクレジットカード】 VISA・Mastercard・JCB・Amex・Diners・Discover",
+          "source": "https://www.yamatan.net/hut/satogoya"
+        }
+      }
+    },
+    {
+      "id": "hut-43c67537",
+      "name": "里見平★星観荘",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 6/10～10/10",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=648",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 100,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=648",
+      "auto": {
+        "capacity": {
+          "value": 80,
+          "source": "https://www.yamatan.net/hut/seikanso"
+        },
+        "season": {
+          "value": "6月27日〜9月12日",
+          "source": "https://www.yamatan.net/hut/seikanso"
+        },
+        "bookingText": {
+          "value": "＜国内・海外からお越しの個人様＞ 「Yamatan」経由でインターネット予約をお願いいたします。 予約画面が動かないなど操作に問題がある際はサファリで開くか、Yamatan に問い合わせてください。 ＜企業様、ツアー会社様＞ ＦＡＸ、HP内お問い合わせフォームのいずれかよりよりお問い合わせください。 TEL: 0555-24-6524 FAX: 0555-24-2846 お問い合わせフォーム： https://seikanso.jp/contact/ 【ご利用可能なクレジットカード】 VISA・Mastercard・JCB・Amex・Diners・Discover 【追記（2026/07/29）】 ⚠️クレジットカードの決済タイミング⚠️ Yamatanのシステム変更により、 クレジットカードの決済タイミングが変更になりました。 詳細は以下のページをご覧ください。 ご不明点はYamatanサポートへお問い合わせください。 https://www.yamatan.net/news/n2zaz3u5b ",
+          "source": "https://www.yamatan.net/hut/seikanso"
+        }
+      }
+    },
+    {
+      "id": "hut-d08ac690",
+      "name": "花小屋",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/1～9/9",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=650",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 150,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=650",
+      "auto": {}
+    },
+    {
+      "id": "hut-b20ef375",
+      "name": "吉田口七合目 日の出館",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/1～9/中",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=651",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 150,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=651",
+      "auto": {
+        "capacity": {
+          "value": 80,
+          "source": "https://www.yamatan.net/hut/hinodekan"
+        },
+        "season": {
+          "value": "2026年7月1日〜8月31日",
+          "source": "https://www.yamatan.net/hut/hinodekan"
+        },
+        "bookingText": {
+          "value": "🔴20名様以上は、電話（0555-24-6522）またはFAX（0555-22-0396）でお願いいたします 🔴予約は前日の22時まで受け付けます。 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大３回まで 可能です。変更回数を超えてからの変更は一度キャンセルしていただき、新しいご予約を改めてお取りください。 🔴 WEBでの予約内容の変更可能期限：ご予約日の 前日の22時まで に限り、変更を承ります。",
+          "source": "https://www.yamatan.net/hut/hinodekan"
+        }
+      }
+    },
+    {
+      "id": "hut-8f70f4cb",
+      "name": "七合目トモエ館",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 6/下～9/10",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=652",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 200,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=652",
+      "auto": {}
+    },
+    {
+      "id": "hut-ee49bbbd",
+      "name": "鎌岩館",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 6/下～9/中",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=653",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 150,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=653",
+      "auto": {}
+    },
+    {
+      "id": "hut-b13ee070",
+      "name": "富士一館",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/1～9/初",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=654",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 130,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=654",
+      "auto": {}
+    },
+    {
+      "id": "hut-d13ceb54",
+      "name": "本七合目 鳥居荘",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/1～9/上（前後あり）",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=655",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 250,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=655",
+      "auto": {
+        "capacity": {
+          "value": 100,
+          "source": "https://www.yamatan.net/hut/toriiso"
+        },
+        "season": {
+          "value": "2026年6月30日～9月10日",
+          "source": "https://www.yamatan.net/hut/toriiso"
+        },
+        "bookingText": {
+          "value": "【Yamatan】経由でインターネット予約をお願いいたします。ご予約時にクレジットカード決済となります。 ※電話でのご予約は承っておりません 予約取り消しの場合「キャンセルポリシー」に基いて返金されます。 🔴予約は当日まで受け付けます。 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大２回まで 可能です。変更回数を超えてからの変更は一度キャンセルしていただき、新しいご予約を改めてお取りください。 🔴 WEBでの予約内容の変更可能期限：ご予約日の ２日前まで に限り、変更を承ります。（キャンセル規定内であればキャンセル料が発生致します） 【ご利用可能なクレジットカード】 VISA・Mastercard・JCB・Amex・Diners・Discover",
+          "source": "https://www.yamatan.net/hut/toriiso"
+        }
+      }
+    },
+    {
+      "id": "hut-c4709b24",
+      "name": "東洋館",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 6/30～9/10",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=656",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 350,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=656",
+      "auto": {}
+    },
+    {
+      "id": "hut-059521cb",
+      "name": "太子館",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 6/下～9/上",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=657",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 350,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=657",
+      "auto": {}
+    },
+    {
+      "id": "hut-03215c94",
+      "name": "蓬莱館",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/上～9/上",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=658",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 150,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=658",
+      "auto": {}
+    },
+    {
+      "id": "hut-9a96b9fc",
+      "name": "八合目 白雲荘",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 6/下～9/上",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=659",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 170,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=659",
+      "auto": {
+        "capacity": {
+          "value": 240,
+          "source": "https://www.yamatan.net/hut/fujisanhachigomehakunso"
+        },
+        "season": {
+          "value": "2026年7月1日～9月10日",
+          "source": "https://www.yamatan.net/hut/fujisanhachigomehakunso"
+        },
+        "bookingText": {
+          "value": "🔴予約は前日の21時まで受け付けます。 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大3回まで 可能です。変更回数を超えてからの変更は一度キャンセルしていただき、新しいご予約を改めてお取りください。 🔴 WEBでの予約内容の変更可能期限：ご予約日の”前日まで”に限り、変更を承ります。 【ご利用可能なクレジットカード】 VISA・Mastercard・JCB・Amex・Diners・Discover",
+          "source": "https://www.yamatan.net/hut/fujisanhachigomehakunso"
+        }
+      }
+    },
+    {
+      "id": "hut-775481ad",
+      "name": "元祖室",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/1～9/初",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=660",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 250,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=660",
+      "auto": {}
+    },
+    {
+      "id": "hut-38e7e9fb",
+      "name": "本八合目 富士山ホテル",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 6/30～9/10",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=661",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 350,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=661",
+      "auto": {}
+    },
+    {
+      "id": "hut-015f4443",
+      "name": "本八合目トモエ館",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 6/30～9/10ごろ",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=662",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 250,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=662",
+      "auto": {}
+    },
+    {
+      "id": "hut-9ac87d91",
+      "name": "本八合目 胸突江戸屋（上江戸屋）",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/1～9/10",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=639",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 180,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=639",
+      "auto": {
+        "capacity": {
+          "value": 150,
+          "source": "https://www.yamatan.net/hut/munatsukiedoya"
+        },
+        "season": {
+          "value": "2026年7月1日〜9月10日",
+          "source": "https://www.yamatan.net/hut/munatsukiedoya"
+        },
+        "bookingText": {
+          "value": "🟡 宿泊日の2ヶ月前の同日11時より予約開始いたします。予約受付は ご宿泊前日まで可能です。 🟡 当日キャンセルの場合は、必ずお電話でご連絡のうえ、オンライン上でキャンセル手続きをお願いいたします。 🟡 連泊の方はWeb予約のコメント欄に、「連泊です」とご記入ください。 🟡 複数回の登山をご計画の場合、Web予約のコメント欄に、「重複予約ではありません」とご記入ください。 🔴 ご予約時からキャンセル料が発生します。 ご予約の際は、山行計画を十分ご確認のうえお手続きください。 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大５回まで 可能です。変更回数を超えてからの変更は一度キャンセルしていただき、新しいご予約を改めてお取りください。 🔴 WEBでの予約内容の変更可能期限：ご予約日の前日まで に限り、変更を承ります。 🔴 10名様までWEB予約が可能です※旅行会社様やエージェントによる代理予約はお受けできません 🔴 11名様以上のご予約はグループに分けてお申し込みください。 🔴 お申し込みは一般予約枠のため 団体様 代理予約 エージェント様のご予約はお受けすることができません。 🔴 予約の際のコメント欄にご記入いただきましても質問いただきましても、ご希望に添うことはできません。また返信もできません。お問い合わせは電話（090-7031-3517info@fujisan-ed",
+          "source": "https://www.yamatan.net/hut/munatsukiedoya"
+        }
+      }
+    },
+    {
+      "id": "hut-1da3326a",
+      "name": "御来光館",
+      "region": "富士山",
+      "mountainIds": [
+        "fuji"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/1～9/10",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=640",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 160,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=640",
+      "auto": {}
+    },
+    {
+      "id": "hut-5d2d5a6d",
+      "name": "白山室堂",
+      "region": "白山",
+      "mountainIds": [
+        "hakusan"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 5/1～10/15頃",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=1058",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 200,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=1058",
+      "auto": {}
+    },
+    {
+      "id": "hut-635fa5bf",
+      "name": "白山南竜山荘",
+      "region": "白山",
+      "mountainIds": [],
+      "otherMountains": [
+        {
+          "id": "hakusan",
+          "relation": "南竜ヶ馬場を経由するルート"
+        }
+      ],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/1～10/15",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=1061",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 150,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=1061",
+      "auto": {}
+    },
+    {
+      "id": "hut-e2a1200a",
+      "name": "高谷池ヒュッテ",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "hiuchi"
+      ],
+      "otherMountains": [
+        {
+          "id": "myoko",
+          "relation": "火打山と合わせて登る場合"
+        }
+      ],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 4/中～11/初",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=464",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 50,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=464",
+      "auto": {}
+    },
+    {
+      "id": "hut-2b893e2f",
+      "name": "黒沢池ヒュッテ",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "myoko"
+      ],
+      "otherMountains": [
+        {
+          "id": "hiuchi",
+          "relation": "妙高山と合わせて登る場合"
+        }
+      ],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/1～10/31",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=465",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 100,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=465",
+      "auto": {}
+    },
+    {
+      "id": "hut-48d3749c",
+      "name": "三国岳避難小屋（三国小屋）",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "iide"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 通年（7～8月と9月の金・土・日・祝日は管理人在駐）",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=239",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 50,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=239",
+      "auto": {}
+    },
+    {
+      "id": "hut-385c0e05",
+      "name": "飯豊切合小屋",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "iide"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 7/上～10/第2日曜（9・10月は要問合せ）",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=240",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 80,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=240",
+      "auto": {
+        "capacity": {
+          "value": 100,
+          "source": "https://www.yamatan.net/hut/kiriawasegoya"
+        },
+        "season": {
+          "value": "7月1日〜10月9日（不定休/ 要電話確認）",
+          "source": "https://www.yamatan.net/hut/kiriawasegoya"
+        },
+        "bookingText": {
+          "value": "ご予約/ お問い合わせは、電話、または、ホームページのフォームからお問い合わせください。 （佐藤） 0241-24-2316, 090-3366-7696 （長谷川）0241-24-4756, 090-9746-0392 ※ お電話の 対応可能時間（07:00 ~ 12:00, 13:00 ~ 16:00, 17:30 ~ 19:00まで） ・ 小屋が消灯になりますので, 19：00以降のお電話はご遠慮ください。 ・ 16:50 ~ 17:30は食事提供時間になりますので, ご対応致しかねます。 ※ 常駐期間中はレスポンスが悪い場合がありますのでご了承ください。",
+          "source": "https://www.yamatan.net/hut/kiriawasegoya"
+        }
+      }
+    },
+    {
+      "id": "hut-d8db1fe6",
+      "name": "飯豊山避難小屋（本山小屋）",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "iide"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 通年（7～8月と9～10/上の金・土・日・祝日は管理人在駐）",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=241",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 50,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=241",
+      "auto": {}
+    },
+    {
+      "id": "hut-cc8bb9be",
+      "name": "LUCY尾瀬鳩待（旧 鳩待山荘）",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "shibutsu"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 4/下旬～10/下旬",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=309",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": null,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=309",
+      "auto": {}
+    },
+    {
+      "id": "hut-585d84bc",
+      "name": "至仏山荘",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "shibutsu"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 4/下～10/下",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=311",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 78,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=311",
+      "auto": {}
+    },
+    {
+      "id": "hut-c7128530",
+      "name": "山の鼻小屋",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "shibutsu"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 4/下～10/下",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=312",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 100,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=312",
+      "auto": {}
+    },
+    {
+      "id": "hut-3c7251f0",
+      "name": "尾瀬御池ロッジ",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "hiuchigatake"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 5/上～10/下",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=324",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 65,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=324",
+      "auto": {}
+    },
+    {
+      "id": "hut-310054a7",
+      "name": "長蔵小屋",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "hiuchigatake"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 4/下～10/下",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=307",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 160,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=307",
+      "auto": {}
+    },
+    {
+      "id": "hut-d3e00f11",
+      "name": "尾瀬沼ヒュッテ",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "hiuchigatake"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 5/上～10/下",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=306",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 150,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=306",
+      "auto": {}
+    },
+    {
+      "id": "hut-edc82a71",
+      "name": "駒の小屋（越後駒ヶ岳避難小屋）",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "echigokoma"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 通年（5/中～10/中は不定期に管理人在駐）",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=368",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 40,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=368",
+      "auto": {}
+    },
+    {
+      "id": "hut-b33c9ed8",
+      "name": "清四郎小屋",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "hiragadake"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 6/1～10/20",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=338",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 25,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=338",
+      "auto": {}
+    },
+    {
+      "id": "hut-f3cb81c6",
+      "name": "谷川岳肩の小屋",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "tanigawa"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 5/1～11/3前後（年により変動）",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=410",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 30,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=410",
+      "auto": {}
+    },
+    {
+      "id": "hut-0bba53e2",
+      "name": "平標山乃家",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "tairappyo"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 4/末～10/末",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=416",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 25,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=416",
+      "auto": {}
+    },
+    {
+      "id": "hut-9ff29f20",
+      "name": "庚申山荘（無人の避難小屋）",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "sukai"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 通年（無人）",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=297",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 40,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=297",
+      "auto": {}
+    },
+    {
+      "id": "hut-85820066",
+      "name": "雨飾温泉 雨飾山荘",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [],
+      "otherMountains": [
+        {
+          "id": "amakazari",
+          "relation": "新潟県側・雨飾温泉からのルート"
+        }
+      ],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "例年 5/中～11/上",
+      "bookingStart": null,
+      "bookingMethods": null,
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": null,
+      "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=461",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": 100,
+      "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=461",
+      "auto": {}
+    },
+    {
+      "id": "hut-72443e50",
+      "name": "会津駒ヶ岳 駒の小屋",
+      "region": "上信越・尾瀬・東北",
+      "mountainIds": [
+        "aizu_koma"
+      ],
+      "otherMountains": [],
+      "location": null,
+      "officialUrl": null,
+      "tel": null,
+      "openText": "予約サイトで確認",
+      "bookingStart": null,
+      "bookingMethods": [
+        "Web（やまたん）"
+      ],
+      "bookingRequired": false,
+      "capacity": null,
+      "capacitySourceUrl": null,
+      "bookingSourceUrl": "https://www.yamatan.net/hut/komanokoya",
+      "sourceUrl": "https://www.yamatan.net/hut/komanokoya",
+      "sourceUpdated": null,
+      "lastVerified": "2026-10-10",
+      "capacityRef": null,
+      "capacityRefUrl": null,
+      "auto": {
+        "capacity": {
+          "value": 14,
+          "source": "https://www.yamatan.net/hut/komanokoya"
+        },
+        "bookingText": {
+          "value": "🟢 ご宿泊を希望される方はお電話またはe-mailにてご宿泊予約をお願い申し上げます。 またご宿泊予定がないのにご宿泊予約を入れることはご遠慮ください。 代表者様フルネーム・電話番号・男女別人数・お日にちをお知らせください。 TEL 080-2024-5375 e-mail info@komanokoya.com",
+          "source": "https://www.yamatan.net/hut/komanokoya"
+        }
+      }
     }
   ]
 }

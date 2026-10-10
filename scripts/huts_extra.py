@@ -13,6 +13,7 @@ NANPUSU = 'https://npo.ashiyasu.com/news/384/'
 TFOREST = 'https://www.t-forest.com/news/detail/102'
 SUGOROKU = 'https://www.sugorokugoya.com/reservation/'
 YT = 'https://www.yamatan.net/hut/'
+YL = 'https://www.yamakei-online.com/lodge/detail.php?id='
 TF_START = '7/11〜9/22の宿泊分は6月15日 17:00から順次（Web。電話は6月16日から。2026年）'
 
 
@@ -134,4 +135,51 @@ EXTRA_HUTS = [
       bsrc=YT + 'sonbutsusanso'),
     H('みやま山荘', '丹沢', 'https://miyamasansou.com/page-230/', '通年', 'https://miyamasansou.com/', ['tanzawa', 'hirugata']),
     H('蛭ヶ岳山荘', '丹沢', 'https://www.yamakei-online.com/yama-ya/detail.php?id=2852', '通年', None, ['hirugata']),
+    # ── 富士山・白山・上信越・尾瀬・東北。営業期間は「例年」の値（山と溪谷オンラインの山小屋情報の各ページ）。今年の日程・予約は公式サイトで確認
+    # 予約サイト「やまたん」に登録のある小屋は、定員・営業期間を自動で取り直す（data/huts_sources.json）
+    H('宝永山荘', '富士山', YL + '619', '例年 6/下～10/中', None, ['fuji'], other=None),
+    H('雲海荘', '富士山', YL + '618', '例年 7/上～10/初（変動あり）', None, ['fuji'], other=None),
+    H('新七合目 御来光山荘', '富士山', YL + '620', '例年 7/中～9/上', None, ['fuji'], other=None),
+    H('元祖七合目 山口山荘', '富士山', YL + '621', '例年 7/10～9/上', None, ['fuji'], other=None),
+    H('富士宮口八合目 池田館', '富士山', YL + '622', '例年 7/上～8/下（残雪により開始日は前後する）', None, ['fuji'], other=None),
+    H('富士宮口九合目 万年雪山荘', '富士山', YL + '623', '例年 7/上～9/上', None, ['fuji'], other=None),
+    H('富士宮口九合五勺 胸突山荘', '富士山', YL + '624', '例年 7/上～9/上', None, ['fuji'], other=None),
+    H('頂上富士館', '富士山', YL + '625', '例年 7/上～9/上', None, ['fuji'], other=None),
+    H('佐藤小屋', '富士山', YL + '647', '例年 通年（夏期以外は不定期営業）', None, ['fuji'], other=None),
+    H('里見平★星観荘', '富士山', YL + '648', '例年 6/10～10/10', None, ['fuji'], other=None),
+    H('花小屋', '富士山', YL + '650', '例年 7/1～9/9', None, ['fuji'], other=None),
+    H('吉田口七合目 日の出館', '富士山', YL + '651', '例年 7/1～9/中', None, ['fuji'], other=None),
+    H('七合目トモエ館', '富士山', YL + '652', '例年 6/下～9/10', None, ['fuji'], other=None),
+    H('鎌岩館', '富士山', YL + '653', '例年 6/下～9/中', None, ['fuji'], other=None),
+    H('富士一館', '富士山', YL + '654', '例年 7/1～9/初', None, ['fuji'], other=None),
+    H('本七合目 鳥居荘', '富士山', YL + '655', '例年 7/1～9/上（前後あり）', None, ['fuji'], other=None),
+    H('東洋館', '富士山', YL + '656', '例年 6/30～9/10', None, ['fuji'], other=None),
+    H('太子館', '富士山', YL + '657', '例年 6/下～9/上', None, ['fuji'], other=None),
+    H('蓬莱館', '富士山', YL + '658', '例年 7/上～9/上', None, ['fuji'], other=None),
+    H('八合目 白雲荘', '富士山', YL + '659', '例年 6/下～9/上', None, ['fuji'], other=None),
+    H('元祖室', '富士山', YL + '660', '例年 7/1～9/初', None, ['fuji'], other=None),
+    H('本八合目 富士山ホテル', '富士山', YL + '661', '例年 6/30～9/10', None, ['fuji'], other=None),
+    H('本八合目トモエ館', '富士山', YL + '662', '例年 6/30～9/10ごろ', None, ['fuji'], other=None),
+    H('本八合目 胸突江戸屋（上江戸屋）', '富士山', YL + '639', '例年 7/1～9/10', None, ['fuji'], other=None),
+    H('御来光館', '富士山', YL + '640', '例年 7/1～9/10', None, ['fuji'], other=None),
+    H('白山室堂', '白山', YL + '1058', '例年 5/1～10/15頃', None, ['hakusan'], other=None),
+    H('白山南竜山荘', '白山', YL + '1061', '例年 7/1～10/15', None, [], other=[('hakusan', '南竜ヶ馬場を経由するルート')]),
+    H('高谷池ヒュッテ', '上信越・尾瀬・東北', YL + '464', '例年 4/中～11/初', None, ['hiuchi'], other=[('myoko', '火打山と合わせて登る場合')]),
+    H('黒沢池ヒュッテ', '上信越・尾瀬・東北', YL + '465', '例年 7/1～10/31', None, ['myoko'], other=[('hiuchi', '妙高山と合わせて登る場合')]),
+    H('三国岳避難小屋（三国小屋）', '上信越・尾瀬・東北', YL + '239', '例年 通年（7～8月と9月の金・土・日・祝日は管理人在駐）', None, ['iide'], other=None),
+    H('飯豊切合小屋', '上信越・尾瀬・東北', YL + '240', '例年 7/上～10/第2日曜（9・10月は要問合せ）', None, ['iide'], other=None),
+    H('飯豊山避難小屋（本山小屋）', '上信越・尾瀬・東北', YL + '241', '例年 通年（7～8月と9～10/上の金・土・日・祝日は管理人在駐）', None, ['iide'], other=None),
+    H('LUCY尾瀬鳩待（旧 鳩待山荘）', '上信越・尾瀬・東北', YL + '309', '例年 4/下旬～10/下旬', None, ['shibutsu'], other=None),
+    H('至仏山荘', '上信越・尾瀬・東北', YL + '311', '例年 4/下～10/下', None, ['shibutsu'], other=None),
+    H('山の鼻小屋', '上信越・尾瀬・東北', YL + '312', '例年 4/下～10/下', None, ['shibutsu'], other=None),
+    H('尾瀬御池ロッジ', '上信越・尾瀬・東北', YL + '324', '例年 5/上～10/下', None, ['hiuchigatake'], other=None),
+    H('長蔵小屋', '上信越・尾瀬・東北', YL + '307', '例年 4/下～10/下', None, ['hiuchigatake'], other=None),
+    H('尾瀬沼ヒュッテ', '上信越・尾瀬・東北', YL + '306', '例年 5/上～10/下', None, ['hiuchigatake'], other=None),
+    H('駒の小屋（越後駒ヶ岳避難小屋）', '上信越・尾瀬・東北', YL + '368', '例年 通年（5/中～10/中は不定期に管理人在駐）', None, ['echigokoma'], other=None),
+    H('清四郎小屋', '上信越・尾瀬・東北', YL + '338', '例年 6/1～10/20', None, ['hiragadake'], other=None),
+    H('谷川岳肩の小屋', '上信越・尾瀬・東北', YL + '410', '例年 5/1～11/3前後（年により変動）', None, ['tanigawa'], other=None),
+    H('平標山乃家', '上信越・尾瀬・東北', YL + '416', '例年 4/末～10/末', None, ['tairappyo'], other=None),
+    H('庚申山荘（無人の避難小屋）', '上信越・尾瀬・東北', YL + '297', '例年 通年（無人）', None, ['sukai'], other=None),
+    H('雨飾温泉 雨飾山荘', '上信越・尾瀬・東北', YL + '461', '例年 5/中～11/上', None, [], other=[('amakazari', '新潟県側・雨飾温泉からのルート')]),
+    H('会津駒ヶ岳 駒の小屋', '上信越・尾瀬・東北', YT + 'komanokoya', '予約サイトで確認', None, ['aizu_koma'], methods=['Web（やまたん）'], bsrc=YT + 'komanokoya'),
 ]

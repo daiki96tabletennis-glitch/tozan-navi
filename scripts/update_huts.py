@@ -88,7 +88,7 @@ def main():
             report.append('- 山小屋リストを取得できませんでした：%s（%s）' % (url, str(e)[:60]))
     for h in huts:
         per = (yk.get(h.get('sourceUrl')) or {}).get(h['name'])
-        if per and '公式サイト' not in (h.get('openText') or ''):
+        if per and '公式サイト' not in (h.get('openText') or '') and not (h.get('openText') or '').startswith('例年'):
             h['openText'] = '2026年の営業：' + per if '2026' in h.get('openText', '') else h['openText']
             h['periodAuto'] = per
     # 3) 予約情報を確認した公式ページの変化

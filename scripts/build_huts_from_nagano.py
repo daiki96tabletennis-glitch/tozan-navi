@@ -40,7 +40,7 @@ HUT_MOUNTAINS = {
     '苗場山頂ヒュッテ－自然体験交流センター': ['naeba'], '甲武信小屋': ['kobushigatake'], '十文字小屋': [], '金峰山小屋': ['kinpusan'],
     '二ノ池山荘': ['ontakesan'], '二の池ヒュッテ': ['ontakesan'], '女人堂（金剛堂）': [], '石室山荘': [], '七合目行場山荘': [],
     '天狗温泉浅間山荘': [], '鷲が峰ひゅって': ['kirigamine'], 'ヒュッテみさやま': ['kirigamine'], '八島山荘': ['kirigamine'],
-    '美ヶ原高原ホテル・山本小屋': ['utsukushigahara'], '山本小屋ふる里館': ['utsukushigahara'],
+    '美ヶ原高原ホテル・山本小屋': ['utsukushigahara'], '山本小屋ふる里館': ['utsukushigahara'], '萬岳荘': [],
 }
 # 別のルート・縦走で使う小屋：山小屋名 → [(山のID, どういう関係か)]
 HUT_OTHER = {
@@ -56,6 +56,7 @@ HUT_OTHER = {
     '十文字小屋': [('kobushigatake', '十文字峠経由のルート')],
     '女人堂（金剛堂）': [('ontakesan', '黒沢口のルート')], '石室山荘': [('ontakesan', '黒沢口のルート')], '七合目行場山荘': [('ontakesan', '黒沢口のルート')],
     '天狗温泉浅間山荘': [('asama', '火山館コース（前掛山方面）の登山口')],
+    '萬岳荘': [('enasan', '神坂峠の近く（富士見台高原）。前泊・後泊に使える')],
 }
 # 八ヶ岳のページにも「キレット小屋」（赤岳・権現岳の間）があるので、北アルプスのものだけを使う
 ONLY_REGION = {'キレット小屋': '北アルプス'}
@@ -111,7 +112,7 @@ HUT_BOOKING = {
     '木曽殿山荘': (None, None), '空木駒峰ヒュッテ': ('6月1日から（2026年）', None), '越百小屋': (None, None),
     '蓼科山頂ヒュッテ': (None, None), '蓼科山荘': (None, ['Web（やまたん）']), '硫黄岳山荘': (None, None), '赤岳頂上山荘': (None, None), '赤岳天望荘': (None, None),
     '行者小屋': (None, None), '赤岳鉱泉': (None, None), '赤岳山荘': (None, None), '美濃戸山荘': (None, None),
-    '天狗温泉浅間山荘': (None, None), '苗場山頂ヒュッテ－自然体験交流センター': (None, ['電話']), '美ヶ原高原ホテル・山本小屋': (None, None), '山本小屋ふる里館': (None, None),
+    '天狗温泉浅間山荘': (None, None), '苗場山頂ヒュッテ－自然体験交流センター': (None, ['電話']), '美ヶ原高原ホテル・山本小屋': (None, None), '山本小屋ふる里館': (None, None), '萬岳荘': (None, ['電話', 'メール']),
     '八島山荘': ('4/29〜5/10の宿泊分は3月29日から。5/11以降はメールフォームでも受付（宿泊の3日前〜当日は電話）', ['Web', '電話']), '鷲が峰ひゅって': ('宿泊月の前月1日 0:00から（例：7月分は6月1日）', ['Web（予約カレンダー）']), 'ヒュッテみさやま': (None, None), '十文字小屋': (None, None),
     '甲武信小屋': (None, None), '金峰山小屋': (None, None), '七合目行場山荘': (None, None), '女人堂（金剛堂）': (None, None), '石室山荘': (None, None),
     '二ノ池山荘': (None, ['電話のみ']), '二の池ヒュッテ': (None, ['公式LINE']),
@@ -188,7 +189,7 @@ def main():
         huts.append({
             'id': hid, 'name': e['name'], 'region': e['region'], 'mountainIds': e['mountainIds'], 'otherMountains': e['otherMountains'],
             'location': None, 'officialUrl': e['officialUrl'], 'tel': None,
-            'openText': '2026年の営業：' + e['period'], 'bookingStart': e['bookingStart'], 'bookingMethods': e['bookingMethods'], 'bookingRequired': e['bookingRequired'],
+            'openText': e['period'] if e['period'].startswith(('例年', '予約サイト')) else '2026年の営業：' + e['period'], 'bookingStart': e['bookingStart'], 'bookingMethods': e['bookingMethods'], 'bookingRequired': e['bookingRequired'],
             'capacity': e['capacity'], 'capacitySourceUrl': e['capacitySourceUrl'], 'bookingSourceUrl': e['bookingSourceUrl'],
             'sourceUrl': e['sourceUrl'], 'sourceUpdated': None, 'lastVerified': datetime.date.today().isoformat(),
         })
