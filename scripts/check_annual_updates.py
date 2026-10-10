@@ -6,6 +6,8 @@
   1. 期限（validTo）が切れた項目、30日以内に切れる項目を一覧にする
   2. 出典ページを取得し、前回から内容が変わったものを一覧にする（日付・運行・規制に関わる行だけを比べる）
   3. 季節運行の記載があるのに、期限と出典をデータとして持っていない山を一覧にする
+  4. 山ページのYAMAPリンク（yamapUrl）を開き、ページが無い・別の山を指しているものを一覧にする
+     （開いたページの山名が、mountains.json の yamapName と同じかを見る）
 データは書き換えない。結果を Markdown で出力するだけ（GitHub Actions が Issue にする）。
 
 使い方
@@ -93,6 +95,39 @@ def fetch_keylines(url):
     return '\n'.join(sorted(set(keep)))
 
 
+def yamap_name(url):
+    """YAMAPの山ページを開き、タイトルから山名を取り出す（例：「赤岳（山梨・2899m）| …」→ 赤岳）"""
+    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/126 Safari/537.36'})
+    text = urllib.request.urlopen(req, timeout=30).read().decode('utf-8', 'replace')
+    t = re.search(r'(?is)<title[^>]*>(.*?)</title>', text)
+    title = html.unescape(t.group(1)).split('|')[0].strip() if t else ''
+    m = re.match(r'^(.*?)（[^（）]*\d+m）$', title)
+    return m.group(1) if m else title
+
+
+def check_yamap():
+    """[(山名, URL, 問題)] を返す"""
+    import time
+    out = []
+    for m in load('mountains.json'):
+        url = m.get('yamapUrl')
+        if not url:
+            out.append((m['name'], '—', 'YAMAPリンクが未登録')); continue
+        if not re.match(r'^https://yamap\.com/mountains/\d+$', url):
+            out.append((m['name'], url, '山のページではないリンク')); continue
+        try:
+            got = yamap_name(url)
+        except Exception as e:
+            out.append((m['name'], url, 'ページを開けない（%s）' % str(e)[:60])); continue
+        want = m.get('yamapName')
+        if not want:
+            out.append((m['name'], url, 'yamapName が未登録（開いたページ：%s）' % got))
+        elif got != want:
+            out.append((m['name'], url, '別の山のページ（登録：%s／開いたページ：%s）' % (want, got)))
+        time.sleep(0.3)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--today'); ap.add_argument('--no-fetch', action='store_true')
@@ -131,12 +166,14 @@ def main():
             state[url] = h
         if a.state:
             json.dump(state, open(a.state, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    yamap_bad = [] if a.no_fetch else check_yamap()
 
     def names(it):
         return '・'.join(it['mountains']) or '—'
     out = [f'# 年次データの確認（{today.isoformat()}）', '',
            f'見張っている項目：{len(items)}件／期限切れ：{len(expired)}件／30日以内に期限：{len(soon)}件／'
-           f'出典の変更：{len(changed)}件／取得できず：{len(failed)}件／今年の期間が未確認：{len(undated)}山／未登録：{len(missing)}山', '']
+           f'出典の変更：{len(changed)}件／取得できず：{len(failed)}件／今年の期間が未確認：{len(undated)}山／未登録：{len(missing)}山／'
+           f'YAMAPリンクの誤り：{len(yamap_bad)}件', '']
     out += ['## 出典ページの内容が変わった（来季の発表・通行止めの解除などの可能性）', '']
     out += [f'- {"、".join(sorted(set(names(i) for i in its)))}：{its[0]["label"]} — {url}' for url, its in changed] or ['- なし']
     out += ['', '## 期限が切れた（来季の情報で更新が必要）', '']
@@ -149,6 +186,9 @@ def main():
             '、'.join(undated) or 'なし', '']
     out += ['', '## 季節運行の記載があるのに、期限も出典も登録していない山', '',
             '、'.join(missing) or 'なし', '']
+    out += ['', '## YAMAPへのリンクの誤り（ページが無い・別の山を指している）', '']
+    out += [f'- {n}：{prob} — {url}' for n, url, prob in yamap_bad] or ['- なし' if not a.no_fetch else '- （--no-fetch のため未確認）']
+    out += ['']
     if first:
         out += [f'※ 今回が初回の取得だった出典：{first}件（次回から変更を検知します）', '']
     report = '\n'.join(out)
@@ -156,7 +196,7 @@ def main():
         open(a.out, 'w', encoding='utf-8').write(report)
     else:
         print(report)
-    sys.exit(1 if (expired or changed or failed) else 0)
+    sys.exit(1 if (expired or changed or failed or yamap_bad) else 0)
 
 
 if __name__ == '__main__':

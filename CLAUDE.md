@@ -80,6 +80,7 @@
 - 期限を過ぎると、山ページが自動で「◯年のこの期間は終了しました」と注記する（`mountain-engine.js`。`data-valid-to` 属性を見る）
 - `python3 scripts/check_annual_updates.py`：期限切れ・30日以内に期限・出典ページの変更・リンク切れ・未登録の山を一覧にする。**データは書き換えない**
 - `.github/workflows/annual-data-check.yml` が毎月1日に上を実行し、対応が必要なら Issue を作る
+- 同じスクリプトが、山ページのYAMAPリンク（`yamapUrl`）も毎月開いて確かめる。開いたページの山名が `yamapName` と違う・ページが無い場合に一覧に出る。`yamapUrl` を変えたら `yamapName`（YAMAPのページに出る山名）も合わせて直す。山ページ以外（検索など）へのリンクは使わない
 - 反映は人が確認してから行う。出典ページを読んで新しい期間を入れ、`lastVerified` を更新する（自動で書き換えない）
 - 季節運行の経路を新しく書くときは、必ず `validTo` と `sourceUrl` を入れる（「例年◯月〜」の文章だけにしない）
 
