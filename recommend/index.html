@@ -429,6 +429,7 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 .reason-icon{font-size:20px;flex-shrink:0;line-height:1.2;}
 .reason-text{font-size:13px;font-weight:700;color:#2a3820;line-height:1.3;}
 .reason-sub{font-size:11px;color:#7a9068;margin-top:2px;line-height:1.4;}
+.reason-fit{font-size:11px;color:#7a7068;margin-top:2px;padding:0 4px;line-height:1.5;}
 
 /* 装備カード（山ページと同じgear-data.json由来。カテゴリ・必要度・具体商品を表示） */
 .gears-block{padding:0 12px 10px;display:grid;grid-template-columns:1fr;gap:6px;}
@@ -1388,32 +1389,72 @@ function getGearList(m){
 }
 var REASON_LABELS={rock:'岩場・バリエーション',ridge:'稜線歩き',view:'眺望',volcano:'火山の景観',adventure:'冒険向きの山',challenge:'挑戦しがいのあるコース',forest:'樹林帯の癒し',wetland:'湿原・お花畑',highland:'高原の開放感',historic:'歴史・信仰の見どころ',casual:'気軽に楽しめる',easy:'歩きやすい入門向け',bigcoeff:'歯ごたえのある行程',lowcoeff:'負担の軽い行程',hyaku:'百名山',nihyaku:'二百名山',collector:'ピークハント向き',accessible:'アクセスの良さ',train:'電車で行ける',daytrip:'日帰りできる',hut:'山小屋泊で楽しめる',quiet:'静かに歩ける'};
 var VIBE_LABELS={view:'眺望',forest:'樹林帯',ridge:'稜線歩き',rock:'岩場',accessible:'アクセスの良さ',highland:'高原',historic:'歴史・信仰',historical:'歴史・信仰',history:'歴史・信仰',volcano:'火山景観',wetland:'湿原',alpine:'高山の雰囲気',flower:'花',river:'渓谷'};
+// おすすめの理由は「山の特徴・魅力」で作る（難易度・所要時間・近さはカードの別の欄に出ているので理由にしない）。
+// 材料は、山ごとに手で書いてある3つ：recommendReason／紹介文（description）／山ページの「こんな気分の人に」（vibePoints）
+var FEATURE_WORDS={view:/眺望|展望|景色|絶景|一望|パノラマ|富士|見渡/,forest:/樹林|森|ブナ|原生林|苔|新緑|巨木|杉/,ridge:/稜線|縦走|尾根/,rock:/岩|鎖|クサリ|ハシゴ|はしご/,volcano:/火山|火口|噴気|溶岩/,wetland:/湿原|お花畑|高山植物|池塘|花/,highland:/高原|草原|牧場/,historic:/歴史|信仰|神社|寺|参道|霊山|修験/,adventure:/秘境|秘峰|静か|深山|奥深/,challenge:/急登|登りごたえ|登り応え|ロング|健脚/,casual:/ケーブル|ロープウェイ|リフト|温泉|茶屋|グルメ/};
+// 特徴ではなく条件（難易度・時間・交通）を言っているだけの文は、理由に使わない
+var NOT_FEATURE=/コース定数|難易度|レベル|新宿から|横浜から|大宮から|大船から|車\d|公共交通機関|アクセス可能|日帰り可能|山小屋泊推奨|デビュー|駅から|体力・技術/;
+function reasonKey(s){ return String(s||'').replace(/[\s、。・「」（）()]/g,''); }
+function tooSimilar(a,b){
+  a=reasonKey(a); b=reasonKey(b);
+  if(!a||!b) return false;
+  if(a.indexOf(b)!==-1||b.indexOf(a)!==-1) return true;
+  var hit=0,total=0;
+  for(var i=0;i<a.length-1;i++){ total++; if(b.indexOf(a.substr(i,2))!==-1) hit++; }
+  return total>0 && hit/total>=0.4;
+}
+// 個別に調べて書いた特徴（featurePoints）がある山は、それを使う。
+// あなたのタイプで加点された種類（tag）の特徴を優先し、同じ種類が続かないように3つ選ぶ
+function getFeatureReasons(m,det){
+  var pts=(m.featurePoints||[]).map(function(p,idx){ return {p:p, idx:idx, score:det[p.tag]||0}; });
+  pts.sort(function(x,y){ return (y.score-x.score)||(x.idx-y.idx); });
+  var out=[], used={};
+  pts.forEach(function(c){ if(out.length<3 && !used[c.p.tag]){ used[c.p.tag]=1; out.push(c); } });
+  pts.forEach(function(c){ if(out.length<3 && out.indexOf(c)===-1) out.push(c); });
+  return out.map(function(c){ return {text:c.p.text, sub:c.p.label}; });
+}
 function getReasons(m,depLabel,driveMin,typeCode){
+  var det=scoreDetail(m,typeCode||'AVPS').parts;
+  if(m.featurePoints && m.featurePoints.length>=3) return getFeatureReasons(m,det);
+  var matched=Object.keys(det).filter(function(k){return REASON_LABELS[k]&&det[k]>=12;}).sort(function(x,y){return det[y]-det[x];});
+  var topLabels=matched.slice(0,2).map(function(k){return REASON_LABELS[k];});
   var r=[];
-  var fmtT=function(x){return x<60?x+'分':fmtTime(x);};
-  var meta=[m.area,m.elevation?m.elevation.toLocaleString()+'m':'',m.category].filter(function(x){return x;}).join('・');
-  if(m.recommendReason) r.push({text:m.recommendReason,sub:meta});
-  else r.push({text:m.daytrip?'日帰りで楽しめる':'山小屋泊でゆったり',sub:meta});
-  // アクセス：出発地からの実際の時間
-  var key={shinjuku:'trainTimeShinjuku',omiya:'trainTimeOmiya'}[answers.dep];
-  var tt=key?m[key]:null;
-  var acc=[];
-  if(driveMin&&driveMin!==999) acc.push('車で'+fmtT(driveMin));
-  if(m.trainAccess&&tt) acc.push('電車・バスで約'+fmtT(tt));
-  else if(m.trainAccess) acc.push('電車・バスでも行ける');
-  if(acc.length) r.push({text:depLabel+'から'+acc.join('・'),sub:(m.daytrip?'日帰り可能':'宿泊前提の山')+(m.trainAccess?'（公共交通機関を使えます）':'（マイカー向き）')});
-  // あなたの答えとの相性：実際のスコア加点の上位項目をそのまま理由にする
+  var first=m.recommendReason||String(m.description||'').split('。')[0];
+  if(first) r.push({text:first,sub:topLabels.length?'あなたのタイプに合う点：'+topLabels.join('・'):''});
+  // 候補：「こんな気分の人に」と紹介文の各文
+  var cands=[];
+  (m.vibePoints||[]).forEach(function(p){
+    if(!p||!p.why) return;
+    if(NOT_FEATURE.test(p.why)||NOT_FEATURE.test(p.who||'')) return;
+    cands.push({text:p.why,sub:p.who?p.who+'に':''});
+  });
+  String(m.description||'').split('。').forEach(function(t){
+    t=t.replace(/^\s+|\s+$/g,'');
+    if(t.length<8||NOT_FEATURE.test(t)) return;
+    cands.push({text:t,sub:''});
+  });
+  // あなたのタイプで加点された特徴に触れている文を優先する
+  cands.forEach(function(c,idx){
+    var sc=0;
+    matched.forEach(function(k){ if(FEATURE_WORDS[k]&&FEATURE_WORDS[k].test(c.text+c.sub)) sc+=det[k]; });
+    c.score=sc; c.idx=idx;
+  });
+  cands.sort(function(x,y){ return (y.score-x.score)||(x.idx-y.idx); });
+  cands.forEach(function(c){
+    if(r.length>=3) return;
+    for(var i=0;i<r.length;i++){ if(tooSimilar(c.text,r[i].text)) return; }
+    r.push({text:c.text,sub:c.sub});
+  });
+  return r.slice(0,3);
+}
+// 体力との相性（コース定数）は理由とは別に、1行で添える
+function getFitNote(m){
   var lim=answers.coeff||999, cmax=m.coeffMax||20, cmin=m.coeffMin||cmax;
   var range=(cmin===cmax)?String(cmax):cmin+'〜'+cmax;
-  var det=scoreDetail(m,typeCode||'AVPS').parts;
-  var top=Object.keys(det).filter(function(k){return REASON_LABELS[k]&&det[k]>=12;}).sort(function(x,y){return det[y]-det[x];}).slice(0,2).map(function(k){return REASON_LABELS[k];});
-  var fit;
-  if(lim>=999) fit='コース定数'+range;
-  else if(cmax<=lim*0.75) fit='コース定数'+range+'。選んだ体力に余裕があります';
-  else if(cmax<=lim*1.05) fit='コース定数'+range+'。選んだ体力にちょうど良い';
-  else fit='コース定数'+range+'。選んだ体力より少し挑戦的';
-  r.push({text:top.length?'あなたのタイプに合う点：'+top.join('・'):'この山ならではの景色を楽しめる',sub:fit});
-  return r.slice(0,3);
+  if(lim>=999) return 'コース定数'+range;
+  if(cmax<=lim*0.75) return 'コース定数'+range+'。選んだ体力に余裕があります';
+  if(cmax<=lim*1.05) return 'コース定数'+range+'。選んだ体力にちょうど良い';
+  return 'コース定数'+range+'。選んだ体力より少し挑戦的';
 }
 
 // ── 安全フィルター：選択した体力・技術レベルを大幅に超える山を候補から除外 ──
@@ -1676,8 +1717,8 @@ function _doShowResult(opts){
     const reasons=getReasons(m, depLabel, m.drive, typeCode);
     const gearData=getGearList(m);
     const reasonsHtml=reasons.map(r=>
-      '<div class="reason-item"><div><div class="reason-text">'+r.text+'</div><div class="reason-sub">'+r.sub+'</div></div></div>'
-    ).join('');
+      '<div class="reason-item"><div><div class="reason-text">'+r.text+'</div>'+(r.sub?'<div class="reason-sub">'+r.sub+'</div>':'')+'</div></div>'
+    ).join('')+'<div class="reason-fit">'+getFitNote(m)+'</div>';
     const gearsHtml=(function(){
       if(!gearData.items.length){
         return '<div class="gear-item gear-unavailable">装備情報を読み込めませんでした</div>';
@@ -2294,7 +2335,7 @@ document.addEventListener('DOMContentLoaded', function(){
       var jsonData = results[0];
       recommendGearData = results[1] || {};
       if(!jsonData) return;
-      var FIELDS = ['id','name','area','elevation','category','difficulty','coeffMin','coeffMax','daytrip','description','driveOfuna','driveShinjuku','driveYokohama','driveOmiya','seasonOk','trainAccess','trainTimeShinjuku','trainTimeOmiya','recommendReason','types','vibes','calLegend','seasonCalendar','gearCalendar','status'];
+      var FIELDS = ['id','name','area','elevation','category','difficulty','coeffMin','coeffMax','daytrip','description','driveOfuna','driveShinjuku','driveYokohama','driveOmiya','seasonOk','trainAccess','trainTimeShinjuku','trainTimeOmiya','recommendReason','types','vibes','calLegend','seasonCalendar','gearCalendar','vibePoints','featurePoints','status'];
       jsonData.forEach(function(jmt){
         var m = {};
         FIELDS.forEach(function(k){ if(jmt[k] !== undefined) m[k] = jmt[k]; });
