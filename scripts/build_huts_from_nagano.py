@@ -193,6 +193,25 @@ def main():
             'capacity': e['capacity'], 'capacitySourceUrl': e['capacitySourceUrl'], 'bookingSourceUrl': e['bookingSourceUrl'],
             'sourceUrl': e['sourceUrl'], 'sourceUpdated': None, 'lastVerified': datetime.date.today().isoformat(),
         })
+    # 公式サイトを1階層たどって確認した予約の開始・方法（huts_booking_extra.py）と、公式サイトのURL（huts_official_urls.json）を当てる
+    from huts_booking_extra import BOOKING_EXTRA
+    up = os.path.join(ROOT, 'data', 'huts_official_urls.json')
+    off_urls = json.load(open(up, encoding='utf-8'))['huts'] if os.path.exists(up) else {}
+    known = set(h['name'] for h in huts)
+    assert set(BOOKING_EXTRA) <= known, set(BOOKING_EXTRA) - known
+    for h in huts:
+        if not h.get('officialUrl') and off_urls.get(h['name']):
+            h['officialUrl'] = off_urls[h['name']]
+        x = BOOKING_EXTRA.get(h['name'])
+        if x:
+            if x.get('s'):
+                h['bookingStart'] = x['s']
+            if x.get('m'):
+                h['bookingMethods'] = x['m']
+            if x.get('r'):
+                h['bookingRequired'] = True
+            if not h.get('bookingSourceUrl'):
+                h['bookingSourceUrl'] = h.get('officialUrl')
     yk_path = os.path.join(ROOT, 'data', 'huts_yamakei.json')
     yk_ref = json.load(open(yk_path, encoding='utf-8'))['huts'] if os.path.exists(yk_path) else {}
     for h in huts:
