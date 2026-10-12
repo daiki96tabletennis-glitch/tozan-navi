@@ -84,6 +84,21 @@ h1{font-size:22px;font-weight:800;color:#2a3820;margin-bottom:4px}
 .foot summary{cursor:pointer;color:#7a7068;padding:6px 0;text-align:right}
 .foot details div{padding:3px 0}.foot details b{display:inline-block;min-width:7.5em;color:#7a7068;font-weight:700;font-size:11px}
 .src{font-size:11.5px;color:#7a7068;margin-top:14px;line-height:1.8}.src a{color:#4e6535}
+.st{display:inline-flex;align-items:center;gap:5px;font-size:12px;margin-left:auto;padding:2px 9px 2px 7px;border-radius:999px;background:#f3f1ea;color:#5a544a}
+.st i{width:9px;height:9px;border-radius:50%;background:#b5b0a8;flex-shrink:0}
+.st b{font-weight:700}.st small{font-size:10.5px;color:#7a7068}
+.st-on{background:#e6f3e4;color:#22602a}.st-on i{background:#2faa3f;box-shadow:0 0 0 3px rgba(47,170,63,.22)}
+.st-soon{background:#fbf1cf;color:#7a5a00}.st-soon i{background:#e0a800;box-shadow:0 0 0 3px rgba(224,168,0,.22)}
+.st-off{background:#eeece6;color:#6a6258}
+.fts{list-style:none}.fts li{margin:0 0 4px;line-height:1.55}
+.ftg{display:inline-block;border-radius:5px;padding:0 7px;margin-right:6px;font-size:11.5px;background:#eeece6;color:#4a4540}
+.ftg-g{background:#fde9d2;color:#8a4a10}.ftg-b{background:#dceef5;color:#1f5a70}.ftg-v{background:#e6e4f5;color:#40398a}.ftg-e{background:#e9efe0;color:#2a3820}.ftg-h{background:#efe6da;color:#6a4a20}
+.pk{display:inline-block;background:#e9efe0;color:#2a3820;border-radius:5px;padding:0 7px;margin-right:6px;font-size:12.5px}
+.lg{display:inline-block;vertical-align:middle;margin-right:3px}.lg-h{width:11px;height:11px;border-radius:50%;background:#4e6535;border:2px solid #fff;box-shadow:0 0 0 1px #c8c2b8}.lg-m{color:#b4532a;font-size:13px}
+.mtlb{background:none;border:none;white-space:nowrap;font-size:12px;font-weight:700;color:#8a3d1c;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff;text-align:center;line-height:1.1}
+.mtlb span{display:block;font-size:15px;line-height:1}
+.rgh{font-size:16px;font-weight:800;color:#2a3820;margin:20px 0 10px;padding:6px 10px;background:#dfe6d3;border-radius:8px;display:flex;align-items:center}
+.rgh small{margin-left:auto;font-size:12px;font-weight:400;color:#4e6535}
 .hmap{height:340px;border-radius:12px;border:1px solid #e0dbd4;background:#e8e4dc;margin-bottom:8px;z-index:0}
 .mapnote{font-size:11.5px;color:#7a7068;margin-bottom:12px}
 .maplink{display:inline-block;font-size:12.5px;color:#4e6535;margin-bottom:14px}
@@ -111,56 +126,63 @@ footer{text-align:center;padding:20px 16px;font-size:12px;color:#a09888;border-t
 <table class="cmp"><thead><tr><th>山小屋</th><th>予約の開始</th><th>予約方法</th></tr></thead><tbody><tr><td><a href="#hut-4ee8fb57">立山室堂山荘</a></td><td>2月1日 10:00から（2026年。Web予約）</td><td>Web・電話</td></tr><tr><td><a href="#hut-7be6f1a9">雷鳥沢ヒュッテ</a></td><td>宿泊日の3か月前から</td><td>Web・電話・FAX</td></tr><tr><td><a href="#hut-ed776d46">剱御前小舎</a></td><td>公式サイトで確認</td><td>電話</td></tr><tr><td><a href="#hut-ebff67b9">剱澤小屋</a></td><td>1月10日 13:00から（2026年）</td><td>Web・電話</td></tr><tr><td><a href="#hut-f738f289">剣山荘</a></td><td>Webは2月2日 12:00から（電話は公式サイトで確認）</td><td>Web・電話</td></tr><tr><td><a href="#hut-88bbde89">早月小屋</a></td><td>公式サイトで確認</td><td>電話・メール</td></tr><tr><td><a href="#hut-3b5c14f2">馬場島荘</a></td><td>公式サイトで確認</td><td>Web</td></tr></tbody></table>
 <h2 class="sec">剱岳の山小屋マップ</h2>
 <div id="hmap" class="hmap" role="region" aria-label="山小屋の地図"></div>
-
-<script>window.YM_HUT_PTS=[{"n":"立山室堂山荘","la":36.57771,"lo":137.60093,"u":"/huts/hut-4ee8fb57/","s":"2月1日 10:00から"},{"n":"雷鳥沢ヒュッテ","la":36.58707,"lo":137.59818,"u":"/huts/hut-7be6f1a9/","s":"宿泊日の3か月前から"},{"n":"剱御前小舎","la":36.59624,"lo":137.61018,"u":"/huts/hut-ed776d46/","s":""},{"n":"剱澤小屋","la":36.60483,"lo":137.61592,"u":"/huts/hut-ebff67b9/","s":"1月10日 13:00から"},{"n":"剣山荘","la":36.60929,"lo":137.61224,"u":"/huts/hut-f738f289/","s":"Webは2月2日 12:00から"},{"n":"早月小屋","la":36.63114,"lo":137.59766,"u":"/huts/hut-88bbde89/","s":""},{"n":"馬場島荘","la":36.64724,"lo":137.554,"u":"/huts/hut-3b5c14f2/","s":""}];</script>
-<script src="/assets/js/huts-map.js?v=20261012b" defer></script>
+<p class="mapnote"><span class="lg lg-h"></span>山小屋　<span class="lg lg-m">▲</span>このサイトで紹介している山（山頂）</p>
+<script>window.YM_HUT_PTS=[{"n":"立山室堂山荘","la":36.57771,"lo":137.60093,"u":"/huts/hut-4ee8fb57/","s":"2月1日 10:00から"},{"n":"雷鳥沢ヒュッテ","la":36.58707,"lo":137.59818,"u":"/huts/hut-7be6f1a9/","s":"宿泊日の3か月前から"},{"n":"剱御前小舎","la":36.59624,"lo":137.61018,"u":"/huts/hut-ed776d46/","s":""},{"n":"剱澤小屋","la":36.60483,"lo":137.61592,"u":"/huts/hut-ebff67b9/","s":"1月10日 13:00から"},{"n":"剣山荘","la":36.60929,"lo":137.61224,"u":"/huts/hut-f738f289/","s":"Webは2月2日 12:00から"},{"n":"早月小屋","la":36.63114,"lo":137.59766,"u":"/huts/hut-88bbde89/","s":""},{"n":"馬場島荘","la":36.64724,"lo":137.554,"u":"/huts/hut-3b5c14f2/","s":""}];window.YM_MT_PTS=[{"n":"立山","la":36.57597,"lo":137.61991,"u":"/mountains/tateyama/","e":3015},{"n":"剱岳","la":36.62334,"lo":137.61716,"u":"/mountains/tsurugi/","e":2999}];</script>
+<script src="/assets/js/huts-map.js?v=20261012c" defer></script>
 <div id="list">
 <article class="hut" id="hut-4ee8fb57" data-region="北アルプス" data-m="tateyama tsurugi" data-key="立山室堂山荘 立山 剱岳">
-  <div class="hh"><h2><a href="/huts/hut-4ee8fb57/">立山室堂山荘</a></h2><span class="rg">北アルプス</span><span class="req">予約必須</span></div>
+  <div class="hh"><h2><a href="/huts/hut-4ee8fb57/">立山室堂山荘</a></h2><span class="rg">北アルプス</span><span class="req">予約必須</span><span class="st" data-season="{&quot;y&quot;:2026,&quot;r&quot;:[[4,15,15,11,23,23]]}"></span></div>
   <div class="facts"><div class="fact "><div class="fl">予約の開始</div><div class="fv">2月1日 10:00から</div><div class="fs">2026年。Web予約</div></div><div class="fact "><div class="fl">予約方法</div><div class="fv"><span class="mt">Web</span><span class="mt">電話</span></div><div class="fs">やまたん</div></div><div class="fact "><div class="fl">規模（定員）</div><div class="fv">100人</div><div class="fs">参考：以前の収容人数は150人</div></div></div>
   <div class="season"><span class="sl">営業期間</span><span class="sv">2026年：4/15〜11/23</span><span class="ss">公式・予約サイトの記載</span></div>
+  <div class="season"><span class="sl">場所</span><span class="sv"><b class="pk">登山口の近く</b>立山の山頂から直線で約1.7km</span></div>
   <div class="mrow"><span class="sl">対応する山</span><span class="mcs"><a class="mc" href="/mountains/tateyama/">立山</a><a class="mc" href="/mountains/tsurugi/">剱岳</a></span></div>
   <div class="foot"><a class="btn" href="http://www.murodou.co.jp/" target="_blank" rel="noopener">公式サイト</a><details><summary>くわしく</summary><div><b>一覧の出典の記載</b>2026年の営業：4/15～11/23</div></details></div>
 </article>
 <article class="hut" id="hut-7be6f1a9" data-region="北アルプス" data-m="tateyama tsurugi" data-key="雷鳥沢ヒュッテ 立山 剱岳">
-  <div class="hh"><h2><a href="/huts/hut-7be6f1a9/">雷鳥沢ヒュッテ</a></h2><span class="rg">北アルプス</span></div>
+  <div class="hh"><h2><a href="/huts/hut-7be6f1a9/">雷鳥沢ヒュッテ</a></h2><span class="rg">北アルプス</span><span class="st" data-season="{&quot;y&quot;:2026,&quot;r&quot;:[[4,15,15,10,12,12]]}"></span></div>
   <div class="facts"><div class="fact "><div class="fl">予約の開始</div><div class="fv">宿泊日の3か月前から</div></div><div class="fact "><div class="fl">予約方法</div><div class="fv"><span class="mt">Web</span><span class="mt">電話</span><span class="mt">FAX</span></div><div class="fs">やまたん</div></div><div class="fact "><div class="fl">規模（定員）</div><div class="fv">120人</div><div class="fs">参考：以前の収容人数は70人</div></div></div>
   <div class="season"><span class="sl">営業期間</span><span class="sv">2026年4月15日〜10月12日</span><span class="ss">公式・予約サイトの記載</span></div>
+  <div class="season"><span class="sl">場所</span><span class="sv"><b class="pk">山頂から離れた場所（登山道の途中など）</b>立山の山頂から直線で約2.3km</span></div>
   <div class="mrow"><span class="sl">対応する山</span><span class="mcs"><a class="mc" href="/mountains/tateyama/">立山</a><a class="mc" href="/mountains/tsurugi/">剱岳</a></span></div>
   <div class="foot"><a class="btn" href="https://www.raichozawa.net/" target="_blank" rel="noopener">公式サイト</a><details><summary>くわしく</summary><div><b>一覧の出典の記載</b>2026年の営業：4/18～10/6</div></details></div>
 </article>
 <article class="hut" id="hut-ed776d46" data-region="北アルプス" data-m="tsurugi" data-key="剱御前小舎 剱岳">
-  <div class="hh"><h2><a href="/huts/hut-ed776d46/">剱御前小舎</a></h2><span class="rg">北アルプス</span></div>
+  <div class="hh"><h2><a href="/huts/hut-ed776d46/">剱御前小舎</a></h2><span class="rg">北アルプス</span><span class="st" data-season="{&quot;y&quot;:2026,&quot;r&quot;:[[4,28,28,10,18,18]]}"></span></div>
   <div class="facts"><div class="fact "><div class="fl">予約の開始</div><div class="fv"><span class="na">公式サイトで確認</span></div></div><div class="fact "><div class="fl">予約方法</div><div class="fv"><span class="mt">電話</span></div></div><div class="fact "><div class="fl">規模（定員）</div><div class="fv">約130人</div><div class="fs">山と溪谷オンラインの記載。現在の定員は公式サイトで確認</div></div></div>
   <div class="season"><span class="sl">営業期間</span><span class="sv">4/28～10/18</span></div>
+  <div class="season"><span class="sl">場所</span><span class="sv"><b class="pk">山頂から離れた場所（登山道の途中など）</b>剱岳の山頂から直線で約3.1km</span></div>
   <div class="mrow"><span class="sl">対応する山</span><span class="mcs"><a class="mc" href="/mountains/tsurugi/">剱岳</a></span></div>
   <div class="foot"><a class="btn" href="https://www.tsurugigozengoya.net/" target="_blank" rel="noopener">公式サイト</a><details><summary>くわしく</summary><div><b>出典の記載</b>2026年の営業：4/28～10/18</div></details></div>
 </article>
 <article class="hut" id="hut-ebff67b9" data-region="北アルプス" data-m="tsurugi" data-key="剱澤小屋 剱岳">
-  <div class="hh"><h2><a href="/huts/hut-ebff67b9/">剱澤小屋</a></h2><span class="rg">北アルプス</span></div>
+  <div class="hh"><h2><a href="/huts/hut-ebff67b9/">剱澤小屋</a></h2><span class="rg">北アルプス</span><span class="st" data-season="{&quot;y&quot;:2026,&quot;r&quot;:[[7,10,10,10,4,4]]}"></span></div>
   <div class="facts"><div class="fact "><div class="fl">予約の開始</div><div class="fv">1月10日 13:00から</div><div class="fs">2026年</div></div><div class="fact "><div class="fl">予約方法</div><div class="fv"><span class="mt">Web</span><span class="mt">電話</span></div><div class="fs">やまたん</div></div><div class="fact "><div class="fl">規模（定員）</div><div class="fv">56人</div><div class="fs">参考：以前の収容人数は64人</div></div></div>
   <div class="season"><span class="sl">営業期間</span><span class="sv">2026/07/10〜10/04</span><span class="ss">公式・予約サイトの記載</span></div>
+  <div class="season"><span class="sl">場所</span><span class="sv"><b class="pk">山頂から離れた場所（登山道の途中など）</b>剱岳の山頂から直線で約2.1km</span></div>
   <div class="mrow"><span class="sl">対応する山</span><span class="mcs"><a class="mc" href="/mountains/tsurugi/">剱岳</a></span></div>
   <div class="foot"><a class="btn" href="https://tsurugisawagoya.com/" target="_blank" rel="noopener">公式サイト</a><details><summary>くわしく</summary><div><b>一覧の出典の記載</b>2026年の営業：7/中～10/上</div></details></div>
 </article>
 <article class="hut" id="hut-f738f289" data-region="北アルプス" data-m="tsurugi" data-key="剣山荘 剱岳">
-  <div class="hh"><h2><a href="/huts/hut-f738f289/">剣山荘</a></h2><span class="rg">北アルプス</span></div>
+  <div class="hh"><h2><a href="/huts/hut-f738f289/">剣山荘</a></h2><span class="rg">北アルプス</span><span class="st" data-season="{&quot;y&quot;:2026,&quot;r&quot;:[[7,1,1,10,4,4]]}"></span></div>
   <div class="facts"><div class="fact "><div class="fl">予約の開始</div><div class="fv">Webは2月2日 12:00から</div><div class="fs">電話は公式サイトで確認</div></div><div class="fact "><div class="fl">予約方法</div><div class="fv"><span class="mt">Web</span><span class="mt">電話</span></div><div class="fs">やまたん</div></div><div class="fact "><div class="fl">規模（定員）</div><div class="fv">130人</div><div class="fs">参考：以前の収容人数は160人</div></div></div>
   <div class="season"><span class="sl">営業期間</span><span class="sv">2026年7月1日〜10月4日</span><span class="ss">公式・予約サイトの記載</span></div>
+  <div class="season"><span class="sl">場所</span><span class="sv"><b class="pk">山頂から離れた場所（登山道の途中など）</b>剱岳の山頂から直線で約1.6km</span></div>
   <div class="mrow"><span class="sl">対応する山</span><span class="mcs"><a class="mc" href="/mountains/tsurugi/">剱岳</a></span></div>
   <div class="foot"><a class="btn" href="https://www.kenzanso.com/" target="_blank" rel="noopener">公式サイト</a><a class="btn btn2" href="https://www.yamatan.net/hut/kenzanso" target="_blank" rel="noopener">予約サイト</a><details><summary>くわしく</summary><div><b>一覧の出典の記載</b>2026年の営業：7/1～10/上</div></details></div>
 </article>
 <article class="hut" id="hut-88bbde89" data-region="北アルプス" data-m="tsurugi" data-key="早月小屋 剱岳">
-  <div class="hh"><h2><a href="/huts/hut-88bbde89/">早月小屋</a></h2><span class="rg">北アルプス</span></div>
+  <div class="hh"><h2><a href="/huts/hut-88bbde89/">早月小屋</a></h2><span class="rg">北アルプス</span><span class="st" data-season="{&quot;y&quot;:2026,&quot;r&quot;:[[7,17,17,10,4,4]]}"></span></div>
   <div class="facts"><div class="fact "><div class="fl">予約の開始</div><div class="fv"><span class="na">公式サイトで確認</span></div></div><div class="fact "><div class="fl">予約方法</div><div class="fv"><span class="mt">電話</span><span class="mt">メール</span></div></div><div class="fact "><div class="fl">規模（定員）</div><div class="fv">約50人</div><div class="fs">山と溪谷オンラインの記載。現在の定員は公式サイトで確認</div></div></div>
   <div class="season"><span class="sl">営業期間</span><span class="sv">2026年：7/17〜10/4</span><span class="ss">公式・予約サイトの記載</span></div>
+  <div class="season"><span class="sl">場所</span><span class="sv"><b class="pk">山頂から離れた場所（登山道の途中など）</b>剱岳の山頂から直線で約1.9km</span></div>
   <div class="mrow"><span class="sl">対応する山</span><span class="mcs"><a class="mc" href="/mountains/tsurugi/">剱岳</a></span></div>
   <div class="foot"><a class="btn" href="https://hayatsukikoya.com/" target="_blank" rel="noopener">公式サイト</a><details><summary>くわしく</summary><div><b>一覧の出典の記載</b>2026年の営業：7/17～10/4（公式サイトの記載）</div></details></div>
 </article>
 <article class="hut" id="hut-3b5c14f2" data-region="北アルプス" data-m="tsurugi" data-key="馬場島荘 剱岳">
-  <div class="hh"><h2><a href="/huts/hut-3b5c14f2/">馬場島荘</a></h2><span class="rg">北アルプス</span><span class="req">予約必須</span></div>
+  <div class="hh"><h2><a href="/huts/hut-3b5c14f2/">馬場島荘</a></h2><span class="rg">北アルプス</span><span class="req">予約必須</span><span class="st" data-season="{&quot;y&quot;:null,&quot;r&quot;:[[4,21,30,11,11,20]]}"></span></div>
   <div class="facts"><div class="fact "><div class="fl">予約の開始</div><div class="fv"><span class="na">公式サイトで確認</span></div></div><div class="fact "><div class="fl">予約方法</div><div class="fv"><span class="mt">Web</span></div><div class="fs">やまたんのみ。電話予約は不可</div></div><div class="fact "><div class="fl">規模（定員）</div><div class="fv">26人</div><div class="fs">参考：以前の収容人数は15人</div></div></div>
   <div class="season"><span class="sl">営業期間</span><span class="sv">夏期：4月下旬～11月中旬  　冬期：12月下旬～1月上旬</span><span class="ss">公式・予約サイトの記載</span></div>
+  <div class="season"><span class="sl">場所</span><span class="sv"><b class="pk">山頂から離れた場所（登山道の途中など）</b>剱岳の山頂から直線で約6.2km</span></div>
   <div class="mrow"><span class="sl">対応する山</span><span class="mcs"><a class="mc" href="/mountains/tsurugi/">剱岳</a></span></div>
   <div class="foot"><a class="btn" href="https://www.town.kamiichi.toyama.jp/page/2026.html" target="_blank" rel="noopener">公式サイト</a><a class="btn btn2" href="https://www.yamatan.net/hut/banbazimaso" target="_blank" rel="noopener">予約サイト</a><details><summary>くわしく</summary><div><b>一覧の出典の記載</b>2026年の営業：5/上～11/中、 年末年始 （7/22～9/23 を除く 水曜休）</div></details></div>
 </article>
@@ -174,5 +196,6 @@ footer{text-align:center;padding:20px 16px;font-size:12px;color:#a09888;border-t
 <p style="margin-top:6px"><a href="/">山を検索する</a> <span style="margin:0 8px;opacity:0.4">|</span> <a href="/huts/">山小屋まとめ</a> <span style="margin:0 8px;opacity:0.4">|</span> <a href="/terms/">利用規約</a> <span style="margin:0 8px;opacity:0.4">|</span> <a href="/privacy/">プライバシーポリシー</a> <span style="margin:0 8px;opacity:0.4">|</span> <a href="/about/">運営者</a></p>
 <p style="margin-top:8px;opacity:0.6;">© 2026 Yamatch. All rights reserved.</p>
 </footer>
+<script src="/assets/js/huts-status.js?v=20261012c"></script>
 </body>
 </html>

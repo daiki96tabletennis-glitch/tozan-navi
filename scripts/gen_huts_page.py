@@ -12,10 +12,81 @@ M = {m['id']: m for m in ML}
 H = d['huts']
 _cp = os.path.join(ROOT, 'data', 'huts_coords.json')
 COORDS = json.load(open(_cp, encoding='utf-8'))['huts'] if os.path.exists(_cp) else {}
-MAP_VER = '20261012b'
+MAP_VER = '20261012c'
+import math, sys
+sys.path.insert(0, os.path.join(ROOT, 'scripts'))
+import huts_season
+from huts_features import FEATURES
+assert set(FEATURES) <= set(h['name'] for h in H), set(FEATURES) - set(h['name'] for h in H)
+_sp = os.path.join(ROOT, 'data', 'summit_coords.json')
+SUMMITS = json.load(open(_sp, encoding='utf-8'))['mountains'] if os.path.exists(_sp) else {}
 
 
-def map_block(huts, starts, lazy=''):
+def _km(a, b, c, d2):
+    p = math.radians
+    x = math.sin(p(c - a) / 2) ** 2 + math.cos(p(a)) * math.cos(p(c)) * math.sin(p(d2 - b) / 2) ** 2
+    return 2 * 6371 * math.asin(math.sqrt(x))
+
+
+def place_text(h):
+    """山小屋のだいたいの場所を、位置データから文にする（山頂からの直線距離と、分かれば標高の差）。
+    位置の分からない小屋・山は None。距離は直線で、歩く距離ではない"""
+    c = COORDS.get(h['name'])
+    if not c:
+        return None
+    best = None
+    # ルート上の山（mountainIds）を先に見て、無ければ別ルート・縦走で使う山から、いちばん近い山頂を選ぶ
+    for ids in (h['mountainIds'], [o['id'] for o in h.get('otherMountains') or []]):
+        for i in ids:
+            s = SUMMITS.get(i)
+            if s:
+                d = _km(c['lat'], c['lng'], s['lat'], s['lng'])
+                if best is None or d < best[0]:
+                    best = (d, i)
+        if best:
+            break
+    if not best:
+        return None
+    d, i = best
+    m = M[i]
+    ele = c.get('ele')
+    if ele is None:
+        mm = re.search(r'標高\s*([\d,]{3,5})\s*m', h.get('location') or '')
+        ele = int(mm.group(1).replace(',', '')) if mm else None
+    low = (m['elevation'] - ele) if ele else None
+    dist = '%sの山頂から直線で約%s' % (m['name'], ('%dm' % (round(d * 10) * 100)) if d < 1 else ('%.1fkm' % d))
+    if d <= 0.3:
+        kind = '山頂のすぐそば'
+    elif d <= 1.5 and (low is None or low <= 400):
+        kind = '山頂の近く'
+    else:
+        # 登山口の近くかどうか：地図ボタンの行き先（gmapUrl の座標＝登山口・駐車場）から1km以内
+        g = re.search(r'query=(-?[\d.]+)%2C(-?[\d.]+)', m.get('gmapUrl') or '')
+        if g and _km(c['lat'], c['lng'], float(g.group(1)), float(g.group(2))) <= 1 and d > 1.5:
+            kind = '登山口の近く'
+        elif d > 1.5 or (low is not None and low > 400):
+            kind = '山頂から離れた場所（登山道の途中など）'
+        else:
+            kind = None
+    tail = []
+    if ele:
+        tail.append('標高約%sm' % format(ele, ','))
+    if low is not None and low >= 100:
+        tail.append('山頂より約%sm低い' % format(int(round(low, -1)), ','))
+    return (kind, dist + ('。' + '、'.join(tail) if tail else ''))
+
+
+def mt_points(huts):
+    """地図に出す山（サイトに載っている山だけ）：その小屋たちが対応している山の山頂"""
+    ids = []
+    for h in huts:
+        for i in h['mountainIds'] + [o['id'] for o in h.get('otherMountains') or []]:
+            if i in SUMMITS and i not in ids:
+                ids.append(i)
+    return [{'n': M[i]['name'], 'la': SUMMITS[i]['lat'], 'lo': SUMMITS[i]['lng'], 'u': '/mountains/%s/' % i, 'e': M[i]['elevation']} for i in ids]
+
+
+def map_block(huts, starts, lazy='', mts=True):
     """地図の枠と、ピンのデータ。位置の分かっている小屋だけ出す（分からない小屋は置かない）"""
     pts = []
     for h in huts:
@@ -30,11 +101,14 @@ def map_block(huts, starts, lazy=''):
         note = '<p class="mapnote">地図に出ていない小屋（位置を確認できていません）：%s</p>' % E('、'.join(miss))
     elif miss:
         note = '<p class="mapnote">位置を確認できた%d軒を表示しています（%d軒は地図に出ていません）。</p>' % (len(pts), len(miss))
-    return ('<div id="hmap" class="hmap"%s role="region" aria-label="山小屋の地図"></div>\n%s\n'
-            '<script>window.YM_HUT_PTS=%s;</script>\n<script src="/assets/js/huts-map.js?v=%s" defer></script>\n' % (
-                (' data-lazy="%s"' % lazy) if lazy else '', note,
-                json.dumps(pts, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/'), MAP_VER))
+    mp = mt_points(huts) if mts else []
+    legend = '<p class="mapnote"><span class="lg lg-h"></span>山小屋　<span class="lg lg-m">▲</span>このサイトで紹介している山（山頂）</p>' if mp else ''
+    dump = lambda o: json.dumps(o, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    return ('<div id="hmap" class="hmap"%s role="region" aria-label="山小屋の地図"></div>\n%s%s\n'
+            '<script>window.YM_HUT_PTS=%s;window.YM_MT_PTS=%s;</script>\n<script src="/assets/js/huts-map.js?v=%s" defer></script>\n' % (
+                (' data-lazy="%s"' % lazy) if lazy else '', legend, note, dump(pts), dump(mp), MAP_VER))
 NA = '<span class="na">公式サイトで確認</span>'
+FT_CLS = {'グルメ': 'g', '風呂・温泉': 'b', '設備': 'e', '眺め': 'v', '歴史': 'h'}
 
 
 def split_note(text):
@@ -134,8 +208,23 @@ for h in H:
     if h.get('bookingSourceUrl') and h['bookingSourceUrl'] != h.get('officialUrl') and 'yamatan.net' in h['bookingSourceUrl']:
         links.append('<a class="btn btn2" href="%s" target="_blank" rel="noopener">予約サイト</a>' % E(h['bookingSourceUrl']))
     detail = []
-    if h.get('location'):
-        detail.append('<div><b>場所</b>%s</div>' % E(h['location']))
+    sj = huts_season.parse(season or raw)
+    st_html = ('<span class="st" data-season="%s"></span>' % E(json.dumps(sj, separators=(',', ':')))) if sj else ''
+    pt = place_text(h)
+    loc = h.get('location')
+    if pt or loc:
+        p_main = (('<b class="pk">%s</b>' % E(pt[0])) if pt and pt[0] else '') + (E(pt[1]) if pt else E(loc))
+        p_sub = ('<span class="ss">出典の記載：%s</span>' % E(loc)) if (pt and loc) else ''
+        place_html = '  <div class="season"><span class="sl">場所</span><span class="sv">%s</span>%s</div>\n' % (p_main, p_sub)
+    else:
+        place_html = ''
+    # 特徴（名物の食事・風呂など）。公式サイトなどで確かめて huts_features.py に書いたものだけ
+    ft = FEATURES.get(h['name'])
+    if ft:
+        feat_html = '  <div class="season"><span class="sl">特徴</span><span class="sv"><ul class="fts">%s</ul></span></div>\n' % ''.join(
+            '<li><b class="ftg ftg-%s">%s</b>%s</li>' % (FT_CLS.get(tag, 'o'), E(tag), E(text)) for tag, text in ft['items'])
+    else:
+        feat_html = ''
     if h.get('tel'):
         detail.append('<div><b>電話</b>%s</div>' % E(h['tel']))
     if raw and season:
@@ -144,26 +233,28 @@ for h in H:
         detail.append('<div><b>出典の記載</b>%s</div>' % E(raw))
     cards.append(
         '<article class="hut" id="%s" data-region="%s" data-m="%s" data-key="%s">\n'
-        '  <div class="hh"><h2><a href="/huts/%s/">%s</a></h2><span class="rg">%s</span>%s</div>\n'
+        '  <div class="hh"><h2><a href="/huts/%s/">%s</a></h2><span class="rg">%s</span>%s%s</div>\n'
         '  <div class="facts">%s%s%s</div>\n'
         '  <div class="season"><span class="sl">営業期間</span><span class="sv">%s</span>%s</div>\n'
+        '%s%s'
         '  <div class="mrow"><span class="sl">対応する山</span><span class="mcs">%s%s</span></div>\n'
         '  <div class="foot">%s%s</div>\n'
         '</article>' % (
             E(h['id']), E(h['region']), E(' '.join(ids)), E(h['name'] + ' ' + ' '.join(M[i]['name'] for i in ids)),
-            E(h['id']), E(h['name']), E(h['region']), '<span class="req">予約必須</span>' if h['bookingRequired'] else '',
-            s_html, m_html, c_html, E(season_main), ('<span class="ss">%s</span>' % E(season_sub)) if season_sub else '',
+            E(h['id']), E(h['name']), E(h['region']), '<span class="req">予約必須</span>' if h['bookingRequired'] else '', st_html,
+            s_html, m_html, c_html, E(season_main), ('<span class="ss">%s</span>' % E(season_sub)) if season_sub else '', place_html, feat_html,
             mts, oth, ''.join(links),
             ('<details><summary>くわしく</summary>%s</details>' % ''.join(detail)) if detail else ''))
     card_of[h['id']] = cards[-1]
     info[h['id']] = {'start': None if none else start, 'none': none, 'methods': None if none else methods, 'season': season_main,
-                     'cap': cap or (ref if isinstance(ref, int) else None), 'capExact': bool(cap)}
+                     'cap': cap or (ref if isinstance(ref, int) else None), 'capExact': bool(cap), 'place': pt, 'st': st_html, 'feat': ft}
 # 「山から探す」：小屋のある山を、県・山域の順に並べる
 mt_btns = []
 for m in ML:
     if m['id'] in count:
         mt_btns.append('<a class="mb" href="/huts/%s/" data-m="%s" data-name="%s">%sの山小屋<span>%d</span></a>' % (E(m['id']), E(m['id']), E(m['name']), E(m['name']), count[m['id']]))
-chips = '<button class="chip on" data-r="">すべて</button>' + ''.join('<button class="chip" data-r="%s">%s</button>' % (E(r), E(r)) for r in regions)
+RLABEL = {'その他': '信州のその他（御嶽山・浅間山・美ヶ原ほか）'}
+chips = '<button class="chip on" data-r="">すべて</button>' + ''.join('<button class="chip" data-r="%s">%s</button>' % (E(r), E(RLABEL.get(r, r))) for r in regions)
 _u = sorted(h['sourceUpdated'] for h in H if h.get('sourceUpdated'))
 upd = '%d年%d〜%d月' % (int(_u[0][:4]), int(_u[0][5:7]), int(_u[-1][5:7])) if _u else ''
 page = '''<!DOCTYPE html>
@@ -236,6 +327,21 @@ h1{font-size:22px;font-weight:800;color:#2a3820;margin-bottom:4px}
 .foot summary{cursor:pointer;color:#7a7068;padding:6px 0;text-align:right}
 .foot details div{padding:3px 0}.foot details b{display:inline-block;min-width:7.5em;color:#7a7068;font-weight:700;font-size:11px}
 .src{font-size:11.5px;color:#7a7068;margin-top:14px;line-height:1.8}.src a{color:#4e6535}
+.st{display:inline-flex;align-items:center;gap:5px;font-size:12px;margin-left:auto;padding:2px 9px 2px 7px;border-radius:999px;background:#f3f1ea;color:#5a544a}
+.st i{width:9px;height:9px;border-radius:50%;background:#b5b0a8;flex-shrink:0}
+.st b{font-weight:700}.st small{font-size:10.5px;color:#7a7068}
+.st-on{background:#e6f3e4;color:#22602a}.st-on i{background:#2faa3f;box-shadow:0 0 0 3px rgba(47,170,63,.22)}
+.st-soon{background:#fbf1cf;color:#7a5a00}.st-soon i{background:#e0a800;box-shadow:0 0 0 3px rgba(224,168,0,.22)}
+.st-off{background:#eeece6;color:#6a6258}
+.fts{list-style:none}.fts li{margin:0 0 4px;line-height:1.55}
+.ftg{display:inline-block;border-radius:5px;padding:0 7px;margin-right:6px;font-size:11.5px;background:#eeece6;color:#4a4540}
+.ftg-g{background:#fde9d2;color:#8a4a10}.ftg-b{background:#dceef5;color:#1f5a70}.ftg-v{background:#e6e4f5;color:#40398a}.ftg-e{background:#e9efe0;color:#2a3820}.ftg-h{background:#efe6da;color:#6a4a20}
+.pk{display:inline-block;background:#e9efe0;color:#2a3820;border-radius:5px;padding:0 7px;margin-right:6px;font-size:12.5px}
+.lg{display:inline-block;vertical-align:middle;margin-right:3px}.lg-h{width:11px;height:11px;border-radius:50%;background:#4e6535;border:2px solid #fff;box-shadow:0 0 0 1px #c8c2b8}.lg-m{color:#b4532a;font-size:13px}
+.mtlb{background:none;border:none;white-space:nowrap;font-size:12px;font-weight:700;color:#8a3d1c;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff;text-align:center;line-height:1.1}
+.mtlb span{display:block;font-size:15px;line-height:1}
+.rgh{font-size:16px;font-weight:800;color:#2a3820;margin:20px 0 10px;padding:6px 10px;background:#dfe6d3;border-radius:8px;display:flex;align-items:center}
+.rgh small{margin-left:auto;font-size:12px;font-weight:400;color:#4e6535}
 .hmap{height:340px;border-radius:12px;border:1px solid #e0dbd4;background:#e8e4dc;margin-bottom:8px;z-index:0}
 .mapnote{font-size:11.5px;color:#7a7068;margin-bottom:12px}
 .maplink{display:inline-block;font-size:12.5px;color:#4e6535;margin-bottom:14px}
@@ -293,6 +399,7 @@ __FAQ__
 </dl>
 </main>
 __FOOTER__
+<script src="/assets/js/huts-status.js?v=__MAPVER__"></script>
 <script>
 (function(){
   var view='mt', region='', huts=document.querySelectorAll('.hut');
@@ -302,13 +409,16 @@ __FOOTER__
   // 以前の形式 /huts/?m=山ID は、山ごとのページへ送る
   var m0=(location.search.match(/[?&]m=([a-z0-9_]+)/)||[])[1];
   if(m0){ for(i=0;i<mbs.length;i++){ if(mbs[i].getAttribute('data-m')===m0){ location.replace('/huts/'+m0+'/'); return; } } }
+  var rghs=document.querySelectorAll('.rgh');
   function apply(){
-    var k=q.value.replace(/\\s+/g,''), n=0, h, ok;
+    var k=q.value.replace(/\\s+/g,''), n=0, h, ok, per={}, rg;
     for(i=0;i<huts.length;i++){
-      h=huts[i];
-      ok=(!region||h.getAttribute('data-region')===region)&&(!k||h.getAttribute('data-key').indexOf(k)>-1);
-      h.style.display=ok?'':'none'; if(ok)n++;
+      h=huts[i]; rg=h.getAttribute('data-region');
+      ok=(!region||rg===region)&&(!k||h.getAttribute('data-key').indexOf(k)>-1);
+      h.style.display=ok?'':'none'; if(ok){ n++; per[rg]=(per[rg]||0)+1; }
     }
+    // 地域の見出しは、その地域に表示する小屋があるときだけ出す
+    for(i=0;i<rghs.length;i++){ rg=rghs[i].getAttribute('data-region'); rghs[i].style.display=per[rg]?'':'none'; rghs[i].querySelector('small').textContent=(per[rg]||0)+'軒'; }
     list.style.display=view==='all'?'':'none';
     cnt.textContent=view==='mt'?'山を選ぶと、その山の山小屋のページを開きます':(view==='map'?'ピンをタップすると、山小屋の名前と予約の開始が出ます':n+'軒を表示');
   }
@@ -427,11 +537,19 @@ SHELL = """<!DOCTYPE html>
 %(body)s
 </main>
 %(footer)s
+<script src="/assets/js/huts-status.js?v=%(ver)s"></script>
 </body>
 </html>
 """
 
 # ---------- 一覧ページ ----------
+# 「山小屋の一覧」は地域ごとに見出しで区切る
+_g = []
+for rg in regions:
+    rc = [card_of[h['id']] for h in H if h['region'] == rg]
+    _g.append('<div class="rgh" role="heading" aria-level="2" data-region="%s" id="rg-%d">%s<small>%d軒</small></div>' % (E(rg), regions.index(rg), E(RLABEL.get(rg, rg)), len(rc)))
+    _g.extend(rc)
+grouped = '\n'.join(_g)
 n_start = sum(1 for x in info.values() if x['start'])
 # 地図の吹き出しに出す短い文（予約の開始の本文だけ）
 START_SHORT = {k: ('予約不要' if x['none'] else (split_note(x['start'])[0] if x['start'] else '')) for k, x in info.items()}
@@ -471,9 +589,9 @@ main_ld = ld(
          {'@type': 'ListItem', 'position': i + 1, 'url': BASE + '/huts/%s/' % h['id'], 'name': h['name']} for i, h in enumerate(H)]}},
     faq_ld(MAIN_FAQ))
 page = (page.replace('__N__', str(len(H))).replace('__YEAR__', str(YEAR)).replace('__UPD__', upd)
-        .replace('__HEADCOMMON__', HEADCOMMON).replace('__LD__', main_ld).replace('__FAQ__', faq_html(MAIN_FAQ)).replace('__FOOTER__', FOOTER)
+        .replace('__MAPVER__', MAP_VER).replace('__HEADCOMMON__', HEADCOMMON).replace('__LD__', main_ld).replace('__FAQ__', faq_html(MAIN_FAQ)).replace('__FOOTER__', FOOTER)
         .replace('__VERIFIED_JA__', VERIFIED_JA).replace('__VERIFIED__', VERIFIED)
-        .replace('__MAP__', map_block(H, START_SHORT, 'manual')).replace('__CHIPS__', chips).replace('__MTS__', ''.join(mt_btns)).replace('__CARDS__', '\n'.join(cards)))
+        .replace('__MAP__', map_block(H, START_SHORT, 'manual')).replace('__CHIPS__', chips).replace('__MTS__', ''.join(mt_btns)).replace('__CARDS__', grouped))
 write(os.path.join(ROOT, 'huts', 'index.html'), page)
 print('huts/index.html', len(H), '軒／山', len(mt_btns))
 
@@ -517,7 +635,7 @@ for m in ML:
         + '<p class="src">営業期間や予約の受付は変わることがあります。予約の前に、必ず各山小屋の公式サイトで確認してください。出典は<a href="/huts/">山小屋まとめ</a>のページにまとめています。</p>')
     write(os.path.join(ROOT, 'huts', mid, 'index.html'), SHELL % {
         'title': E(title), 'desc': E(desc), 'robots': 'index,follow,max-snippet:-1,max-image-preview:large', 'url': BASE + '/huts/%s/' % mid,
-        'head': HEADCOMMON, 'css': CSS, 'body': body, 'footer': FOOTER,
+        'head': HEADCOMMON, 'css': CSS, 'ver': MAP_VER, 'body': body, 'footer': FOOTER,
         'ld': ld(crumbs([('Yamatch', '/'), ('山小屋まとめ', '/huts/'), (m['name'] + 'の山小屋', '/huts/%s/' % mid)]),
                  {'@context': 'https://schema.org', '@type': 'ItemList', 'name': '%sの山小屋' % m['name'], 'numberOfItems': len(hs),
                   'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'item': lodging(h)} for i, h in enumerate(hs)]})})
@@ -589,6 +707,7 @@ for h in H:
         + '<h1>%s｜%s（%d年）</h1>\n' % (E(name), '予約不要・利用方法' if x['none'] else '予約開始日・予約方法', YEAR)
         + '<div class="fact" style="background:#e9efe0;margin-bottom:12px"><div class="fl">%s</div>%s</div>\n' % ('予約' if x['none'] else '予約はいつから？', ans)
         + '<p class="upd">最終確認：<time datetime="%s">%s</time></p>\n' % (h.get('lastVerified') or VERIFIED, VERIFIED_JA)
+        + (('<p class="lead">%sは、%s%s</p>\n' % (E(name), ('「%s」にあります。' % E(x['place'][0])) if x['place'][0] else '', E(x['place'][1]) + '。')) if x.get('place') else '')
         + '<div id="list">\n%s\n</div>\n' % own
         + (('<h2 class="sec">%sの場所</h2>\n' % E(name) + map_block([h], START_SHORT)
             + '<a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=%s,%s" target="_blank" rel="noopener">Googleマップで開く →</a>\n' % (
@@ -608,7 +727,7 @@ for h in H:
         lds.append(faq_ld(qa))
     write(os.path.join(ROOT, 'huts', h['id'], 'index.html'), SHELL % {
         'title': E(title), 'desc': E(desc), 'robots': 'noindex,follow' if thin else 'index,follow,max-snippet:-1,max-image-preview:large',
-        'url': BASE + '/huts/%s/' % h['id'], 'head': HEADCOMMON, 'css': CSS, 'body': body, 'footer': FOOTER, 'ld': ld(*lds)})
+        'url': BASE + '/huts/%s/' % h['id'], 'head': HEADCOMMON, 'css': CSS, 'ver': MAP_VER, 'body': body, 'footer': FOOTER, 'ld': ld(*lds)})
     if not thin:
         made.add(h['id'])
     else:

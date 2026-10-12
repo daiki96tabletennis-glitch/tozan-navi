@@ -5,7 +5,7 @@
         python3 scripts/build_huts_coords.py --cache F  （取得済みの JSON を使う）
 
 位置は推測で置かない。次のどちらかに当てはまる小屋だけ書く。
-  1. OpenStreetMap 上の名前（name / alt_name / old_name など）が小屋名と一致し、対応する山の登山口から20km以内に1か所だけある
+  1. OpenStreetMap 上の名前（name / alt_name / old_name など）が小屋名と一致し、対応する山（mountains.json の lat / lng）から20km以内に1か所だけある
   2. 名前の書き方が違うだけで同じ小屋だと確かめたもの（ALIAS。OpenStreetMap の要素を番号で指定）
 当てはまらない小屋は地図に出さない（ページでは一覧にだけ出る）。
 データは © OpenStreetMap contributors（ODbL）。地図を出すページに出典を表記する。
@@ -54,6 +54,11 @@ def dist(a, b, c, d):
     return 2 * 6371 * math.asin(math.sqrt(x))
 
 
+def ele(e):
+    m = re.match(r'\s*([\d.]+)', str(e['tags'].get('ele') or ''))
+    return round(float(m.group(1))) if m else None
+
+
 def main():
     if '--cache' in sys.argv:
         raw = open(sys.argv[sys.argv.index('--cache') + 1], encoding='utf-8').read()
@@ -89,7 +94,7 @@ def main():
                 none.append(name + '（ALIAS の要素が見つからない）')
                 continue
             la, lo, e = by_ref[ALIAS[name]]
-            out[name] = {'lat': round(la, 5), 'lng': round(lo, 5), 'osm': ALIAS[name], 'osmName': e['tags'].get('name'), 'match': 'alias'}
+            out[name] = {'lat': round(la, 5), 'lng': round(lo, 5), 'osm': ALIAS[name], 'osmName': e['tags'].get('name'), 'match': 'alias', 'ele': ele(e)}
             continue
         mids = h['mountainIds'] + [o['id'] for o in h.get('otherMountains') or []]
         pts = [(M[i]['lat'], M[i]['lng']) for i in mids if M[i].get('lat')]
@@ -108,7 +113,7 @@ def main():
                     cand.append((la, lo, e))
         if len(cand) == 1:
             la, lo, e = cand[0]
-            out[name] = {'lat': round(la, 5), 'lng': round(lo, 5), 'osm': '%s/%d' % (e['type'], e['id']), 'osmName': e['tags'].get('name'), 'match': 'name'}
+            out[name] = {'lat': round(la, 5), 'lng': round(lo, 5), 'osm': '%s/%d' % (e['type'], e['id']), 'osmName': e['tags'].get('name'), 'match': 'name', 'ele': ele(e)}
         elif cand:
             multi.append(name)
         else:

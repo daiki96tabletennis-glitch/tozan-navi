@@ -84,6 +84,21 @@ h1{font-size:22px;font-weight:800;color:#2a3820;margin-bottom:4px}
 .foot summary{cursor:pointer;color:#7a7068;padding:6px 0;text-align:right}
 .foot details div{padding:3px 0}.foot details b{display:inline-block;min-width:7.5em;color:#7a7068;font-weight:700;font-size:11px}
 .src{font-size:11.5px;color:#7a7068;margin-top:14px;line-height:1.8}.src a{color:#4e6535}
+.st{display:inline-flex;align-items:center;gap:5px;font-size:12px;margin-left:auto;padding:2px 9px 2px 7px;border-radius:999px;background:#f3f1ea;color:#5a544a}
+.st i{width:9px;height:9px;border-radius:50%;background:#b5b0a8;flex-shrink:0}
+.st b{font-weight:700}.st small{font-size:10.5px;color:#7a7068}
+.st-on{background:#e6f3e4;color:#22602a}.st-on i{background:#2faa3f;box-shadow:0 0 0 3px rgba(47,170,63,.22)}
+.st-soon{background:#fbf1cf;color:#7a5a00}.st-soon i{background:#e0a800;box-shadow:0 0 0 3px rgba(224,168,0,.22)}
+.st-off{background:#eeece6;color:#6a6258}
+.fts{list-style:none}.fts li{margin:0 0 4px;line-height:1.55}
+.ftg{display:inline-block;border-radius:5px;padding:0 7px;margin-right:6px;font-size:11.5px;background:#eeece6;color:#4a4540}
+.ftg-g{background:#fde9d2;color:#8a4a10}.ftg-b{background:#dceef5;color:#1f5a70}.ftg-v{background:#e6e4f5;color:#40398a}.ftg-e{background:#e9efe0;color:#2a3820}.ftg-h{background:#efe6da;color:#6a4a20}
+.pk{display:inline-block;background:#e9efe0;color:#2a3820;border-radius:5px;padding:0 7px;margin-right:6px;font-size:12.5px}
+.lg{display:inline-block;vertical-align:middle;margin-right:3px}.lg-h{width:11px;height:11px;border-radius:50%;background:#4e6535;border:2px solid #fff;box-shadow:0 0 0 1px #c8c2b8}.lg-m{color:#b4532a;font-size:13px}
+.mtlb{background:none;border:none;white-space:nowrap;font-size:12px;font-weight:700;color:#8a3d1c;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff;text-align:center;line-height:1.1}
+.mtlb span{display:block;font-size:15px;line-height:1}
+.rgh{font-size:16px;font-weight:800;color:#2a3820;margin:20px 0 10px;padding:6px 10px;background:#dfe6d3;border-radius:8px;display:flex;align-items:center}
+.rgh small{margin-left:auto;font-size:12px;font-weight:400;color:#4e6535}
 .hmap{height:340px;border-radius:12px;border:1px solid #e0dbd4;background:#e8e4dc;margin-bottom:8px;z-index:0}
 .mapnote{font-size:11.5px;color:#7a7068;margin-bottom:12px}
 .maplink{display:inline-block;font-size:12.5px;color:#4e6535;margin-bottom:14px}
@@ -111,21 +126,23 @@ footer{text-align:center;padding:20px 16px;font-size:12px;color:#a09888;border-t
 <table class="cmp"><thead><tr><th>山小屋</th><th>予約の開始</th><th>予約方法</th></tr></thead><tbody><tr><td><a href="#hut-62bc742b">瑞牆山荘</a></td><td>公式サイトで確認</td><td>電話</td></tr><tr><td><a href="#hut-e151f345">富士見平小屋</a></td><td>公式サイトで確認</td><td>電話・LINE・SMS</td></tr></tbody></table>
 <h2 class="sec">瑞牆山の山小屋マップ</h2>
 <div id="hmap" class="hmap" role="region" aria-label="山小屋の地図"></div>
-
-<script>window.YM_HUT_PTS=[{"n":"瑞牆山荘","la":35.87869,"lo":138.57823,"u":"/huts/hut-62bc742b/","s":""},{"n":"富士見平小屋","la":35.88255,"lo":138.58752,"u":"/huts/hut-e151f345/","s":""}];</script>
-<script src="/assets/js/huts-map.js?v=20261012b" defer></script>
+<p class="mapnote"><span class="lg lg-h"></span>山小屋　<span class="lg lg-m">▲</span>このサイトで紹介している山（山頂）</p>
+<script>window.YM_HUT_PTS=[{"n":"瑞牆山荘","la":35.87869,"lo":138.57823,"u":"/huts/hut-62bc742b/","s":""},{"n":"富士見平小屋","la":35.88255,"lo":138.58752,"u":"/huts/hut-e151f345/","s":""}];window.YM_MT_PTS=[{"n":"瑞牆山","la":35.89349,"lo":138.59199,"u":"/mountains/mizugaki/","e":2230},{"n":"金峰山","la":35.87166,"lo":138.62551,"u":"/mountains/kinpusan/","e":2599}];</script>
+<script src="/assets/js/huts-map.js?v=20261012c" defer></script>
 <div id="list">
 <article class="hut" id="hut-62bc742b" data-region="奥秩父・大菩薩" data-m="mizugaki" data-key="瑞牆山荘 瑞牆山">
-  <div class="hh"><h2><a href="/huts/hut-62bc742b/">瑞牆山荘</a></h2><span class="rg">奥秩父・大菩薩</span></div>
+  <div class="hh"><h2><a href="/huts/hut-62bc742b/">瑞牆山荘</a></h2><span class="rg">奥秩父・大菩薩</span><span class="st" data-season="{&quot;y&quot;:2026,&quot;r&quot;:[[4,1,10,11,21,30]]}"></span></div>
   <div class="facts"><div class="fact "><div class="fl">予約の開始</div><div class="fv"><span class="na">公式サイトで確認</span></div></div><div class="fact "><div class="fl">予約方法</div><div class="fv"><span class="mt">電話</span></div></div><div class="fact "><div class="fl">規模（定員）</div><div class="fv">約40人</div><div class="fs">山と溪谷オンラインの記載。現在の定員は公式サイトで確認</div></div></div>
   <div class="season"><span class="sl">営業期間</span><span class="sv">4月上旬～11月下旬</span></div>
+  <div class="season"><span class="sl">場所</span><span class="sv"><b class="pk">登山口の近く</b>瑞牆山の山頂から直線で約2.1km</span></div>
   <div class="mrow"><span class="sl">対応する山</span><span class="mcs"><a class="mc" href="/mountains/mizugaki/">瑞牆山</a></span></div>
   <div class="foot"><a class="btn" href="https://www.mizugaki.burari.biz/" target="_blank" rel="noopener">公式サイト</a><details><summary>くわしく</summary><div><b>出典の記載</b>2026年の営業：4月上旬～11月下旬</div></details></div>
 </article>
 <article class="hut" id="hut-e151f345" data-region="奥秩父・大菩薩" data-m="mizugaki kinpusan" data-key="富士見平小屋 瑞牆山 金峰山">
-  <div class="hh"><h2><a href="/huts/hut-e151f345/">富士見平小屋</a></h2><span class="rg">奥秩父・大菩薩</span></div>
+  <div class="hh"><h2><a href="/huts/hut-e151f345/">富士見平小屋</a></h2><span class="rg">奥秩父・大菩薩</span><span class="st" data-season="{&quot;y&quot;:2026,&quot;r&quot;:[[3,10,10,11,21,30]]}"></span></div>
   <div class="facts"><div class="fact "><div class="fl">予約の開始</div><div class="fv"><span class="na">公式サイトで確認</span></div></div><div class="fact "><div class="fl">予約方法</div><div class="fv"><span class="mt">電話</span><span class="mt">LINE</span><span class="mt">SMS</span></div></div><div class="fact "><div class="fl">規模（定員）</div><div class="fv">10人</div><div class="fs">参考：以前の収容人数は34人</div></div></div>
   <div class="season"><span class="sl">営業期間</span><span class="sv">3/10～11月下旬（テント場は通年）</span></div>
+  <div class="season"><span class="sl">場所</span><span class="sv"><b class="pk">山頂の近く</b>瑞牆山の山頂から直線で約1.3km</span></div>
   <div class="mrow"><span class="sl">対応する山</span><span class="mcs"><a class="mc" href="/mountains/mizugaki/">瑞牆山</a><a class="mc mc2" href="/mountains/kinpusan/">金峰山<small>瑞牆山荘側から登るルート</small></a></span></div>
   <div class="foot"><a class="btn" href="https://www.fujimidairagoya.jp/" target="_blank" rel="noopener">公式サイト</a><details><summary>くわしく</summary><div><b>出典の記載</b>2026年の営業：3/10～11月下旬（テント場は通年）</div></details></div>
 </article>
@@ -139,5 +156,6 @@ footer{text-align:center;padding:20px 16px;font-size:12px;color:#a09888;border-t
 <p style="margin-top:6px"><a href="/">山を検索する</a> <span style="margin:0 8px;opacity:0.4">|</span> <a href="/huts/">山小屋まとめ</a> <span style="margin:0 8px;opacity:0.4">|</span> <a href="/terms/">利用規約</a> <span style="margin:0 8px;opacity:0.4">|</span> <a href="/privacy/">プライバシーポリシー</a> <span style="margin:0 8px;opacity:0.4">|</span> <a href="/about/">運営者</a></p>
 <p style="margin-top:8px;opacity:0.6;">© 2026 Yamatch. All rights reserved.</p>
 </footer>
+<script src="/assets/js/huts-status.js?v=20261012c"></script>
 </body>
 </html>

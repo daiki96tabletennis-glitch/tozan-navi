@@ -5,6 +5,7 @@
   var JS = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
   var el = document.getElementById('hmap');
   var pts = window.YM_HUT_PTS || [];
+  var mts = window.YM_MT_PTS || [];
   var map = null, loading = false;
   if (!el || !pts.length) { return; }
 
@@ -28,8 +29,27 @@
       m.addTo(map);
       group.push([p.la, p.lo]);
     }
+    // このサイトで紹介している山（山頂）。▲と山名を出し、タップで山のページへ
+    var mtLayer = L.layerGroup(), few = pts.length <= 30;
+    for (i = 0; i < mts.length; i++) {
+      p = mts[i];
+      m = L.marker([p.la, p.lo], {
+        icon: L.divIcon({ className: 'mtlb', html: '<span>▲</span>' + esc(p.n), iconSize: [120, 30], iconAnchor: [60, 8] }),
+        keyboard: false
+      });
+      m.bindPopup('<b><a href="' + esc(p.u) + '">' + esc(p.n) + '</a></b><br><span style="font-size:12px;color:#6a6258">標高' + esc(p.e) + 'm・山のページを見る</span>');
+      m.addTo(mtLayer);
+      if (few) { group.push([p.la, p.lo]); }
+    }
     if (group.length === 1) { map.setView(group[0], 14); }
-    else { map.fitBounds(group, { padding: [24, 24], maxZoom: 14 }); }
+    else { map.fitBounds(group, { padding: [28, 28], maxZoom: 14 }); }
+    // 小屋が多い地図（一覧）では、広い範囲を見ているあいだは山名を出さない（重なって読めないため）
+    function syncMt() {
+      if (few || map.getZoom() >= 11) { if (!map.hasLayer(mtLayer)) { mtLayer.addTo(map); } }
+      else if (map.hasLayer(mtLayer)) { map.removeLayer(mtLayer); }
+    }
+    map.on('zoomend', syncMt);
+    syncMt();
     // 地図をタップしたあとだけ、ホイールで拡大できるようにする（ページのスクロールを邪魔しない）
     map.on('click', function () { map.scrollWheelZoom.enable(); });
   }

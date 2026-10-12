@@ -33,7 +33,11 @@ for m in D:
         tr = m.get('trainRoutes')
         if tr:
             dest = tr['routes']['shinjuku']['legs'][-1]['station']
-            if th and th not in dest and re.split(r'[（(]', dest)[0] not in (m.get('trailhead') or ''):
+            # 表記の違い（ロッヂ／ロッジ、バス停・駅の付け外し）と、駅から歩き出す山（経路の途中の駅が登山口）は食い違いとみなさない
+            nz = lambda x: re.sub(r'バス停|駅前|駅|ロープウェイ|\s', '', re.split(r'[（(]', x or '')[0].replace('ロッヂ', 'ロッジ'))
+            stops = [nz(l.get('station')) for l in tr['routes']['shinjuku']['legs'][-2:]]   # 終点と、その1つ手前（駅から歩く山）だけ見る
+            same = any(x and (x in nz(m.get('trailhead')) or nz(m.get('trailhead')) in x) for x in stops)
+            if th and th not in dest and re.split(r'[（(]', dest)[0] not in (m.get('trailhead') or '') and not same:
                 add(m, '', '電車ルートの終点と登山口が不一致', 'P0', f"終点:{dest} / 登山口:{m.get('trailhead')}", 'ルート別にアクセスを分ける')
             if m.get('trainInfo') and tr:
                 add(m, '', '旧い自由記述（trainInfo）が残存', 'P3', m['trainInfo'][:80], '経路データから生成に切替')
