@@ -39,6 +39,10 @@
     return ['off', '営業期間外', recur ? '今季の営業は終了（例年）' : '今季の営業は終了'];
   }
 
+  // 12か月の帯：今月に印を付ける
+  var cur = document.querySelectorAll('.mbar i[data-m="' + (today.getMonth() + 1) + '"]'), k;
+  for (k = 0; k < cur.length; k++) { cur[k].className = 'now'; }
+
   var els = document.querySelectorAll('[data-season]'), i, s, j, el;
   for (i = 0; i < els.length; i++) {
     el = els[i];

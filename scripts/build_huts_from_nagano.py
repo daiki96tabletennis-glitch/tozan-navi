@@ -196,11 +196,18 @@ def main():
     # 公式サイトを1階層たどって確認した予約の開始・方法（huts_booking_extra.py）と、公式サイトのURL（huts_official_urls.json）を当てる
     from huts_booking_extra import BOOKING_EXTRA
     up = os.path.join(ROOT, 'data', 'huts_official_urls.json')
-    off_urls = json.load(open(up, encoding='utf-8'))['huts'] if os.path.exists(up) else {}
+    _ou = json.load(open(up, encoding='utf-8')) if os.path.exists(up) else {}
+    off_urls = _ou.get('huts') or {}
+    off_over = _ou.get('override') or {}       # 出典のURLが古い・リンク切れの小屋は、確かめ直したURLで上書きする（None はリンクなし）
     known = set(h['name'] for h in huts)
     assert set(BOOKING_EXTRA) <= known, set(BOOKING_EXTRA) - known
+    assert set(off_over) <= known, set(off_over) - known
     for h in huts:
-        if not h.get('officialUrl') and off_urls.get(h['name']):
+        if h['name'] in off_over:
+            if h.get('bookingSourceUrl') == h.get('officialUrl'):
+                h['bookingSourceUrl'] = off_over[h['name']]
+            h['officialUrl'] = off_over[h['name']]
+        if not h.get('officialUrl') and off_urls.get(h['name']) and h['name'] not in off_over:
             h['officialUrl'] = off_urls[h['name']]
         x = BOOKING_EXTRA.get(h['name'])
         if x:

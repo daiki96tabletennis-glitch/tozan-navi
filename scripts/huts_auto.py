@@ -227,6 +227,8 @@ def run(huts, today=None, only=None, previous=None):
                 report.append('- %s：読み取った値「%s」は採用しませんでした（%s）' % (name, value, bad))
                 continue
             h['auto']['bookingStartWeb'] = {'value': value, 'source': news['url'], 'year': year}
+            if len(ents) == 1:      # 受付開始が1回だけの小屋は、通知用に月・日・時刻も控える
+                h['auto']['bookingStartWeb'].update({'month': ents[0][2], 'day': ents[0][3], 'time': '%d:%02d' % (ents[0][4], ents[0][5])})
             old = hist.setdefault(key, {}).get(str(year))
             if not old or old.get('value') != value:
                 hist[key][str(year)] = {'value': value, 'month': ents[0][2], 'day': ents[0][3], 'seenAt': today.isoformat()}
@@ -251,6 +253,12 @@ def run(huts, today=None, only=None, previous=None):
         num = lambda k: int(g[r[k]]) if r.get(k) else None
         year, month, day = num('year'), num('month'), num('day')
         key = h['id'] + ':' + r['field']
+        if year is None and month:
+            # 年の書かれていない文：前に読んだ月日と違っていれば、新しい年（いま見張っている年）の発表とみなす。
+            # 同じ月日なら年は付けない（去年の文が残っているだけかもしれないため）
+            last = [v for k, v in sorted(hist.get(key, {}).items()) if v.get('month')]
+            if last and (last[-1]['month'], last[-1].get('day')) != (month, day):
+                year = target_year(today)
         prev_years = sorted(k for k in hist.get(key, {}) if year is None or int(k) < year)
         prev = hist[key][prev_years[-1]] if prev_years else None
         bad = check(year, month, day, prev, today)
@@ -260,12 +268,51 @@ def run(huts, today=None, only=None, previous=None):
         if bad:
             report.append('- %s：読み取った値「%s」は採用しませんでした（%s）' % (r['hut'], value, bad))
             continue
-        h['auto'][r['field']] = {'value': value, 'source': r['url'], 'year': year}
+        h['auto'][r['field']] = {'value': value, 'source': r['url'], 'year': year, 'month': month, 'day': day}
+        if r.get('hour'):
+            h['auto'][r['field']]['time'] = '%d:%s' % (int(g[r['hour']]), g[r['minute']] if r.get('minute') else '00')
+        elif r.get('fixedTime'):
+            h['auto'][r['field']]['time'] = r['fixedTime']
         ykey = str(year or today.year)
         old = hist.setdefault(key, {}).get(ykey)
         if not old or old.get('value') != value:
             if old:
                 report.append('- %s：%s が変わりました（%s → %s）' % (r['hut'], '予約の開始' if r['field'] == 'bookingStart' else '営業期間', old.get('value'), value))
             hist[key][ykey] = {'value': value, 'month': month, 'day': day, 'seenAt': today.isoformat()}
+    # C. レシピの無い「一斉解放型」の小屋：来季の予約開始らしい文を探して、候補として報告する（自動では採用しない）
+    #    あわせて、いまの日付を履歴に入れておく（前の年の日付の前後だけ3日に1回見に行く仕組みに乗せるため）
+    import huts_rules
+    have = set(r['hut'] for r in recipes if r['field'] in ('bookingStart', 'bookingStartDate'))
+    ty = target_year(today)
+    for h in huts:
+        if h.get('bookingNone') or h['name'] in have:
+            continue
+        a = h.get('auto') or {}
+        rule = huts_rules.derive(h['name'], h.get('bookingStart'), (a.get('bookingStartWeb') or {}).get('value'), (a.get('bookingWindow') or {}).get('value'))
+        if not rule or rule.get('t') != 'fix' or not rule.get('y'):
+            continue
+        key = h['id'] + ':bookingStartDate'
+        if str(rule['y']) not in hist.get(key, {}):
+            hist.setdefault(key, {})[str(rule['y'])] = {'value': '%d月%d日から（%d年）' % (rule['m'], rule['d'], rule['y']), 'month': rule['m'], 'day': rule['d'],
+                                                         'seenAt': today.isoformat(), 'seed': True}
+        if rule['y'] >= ty or not (h.get('officialUrl') or '').strip() or (only is not None and h['name'] not in only):
+            continue
+        found = []
+        for l in page_lines(h['officialUrl'].strip()):
+            t = l.translate(ZEN)
+            if len(t) > 200 or not re.search(r'予約|受付|受け付け', t) or not re.search(r'%d|令和%d' % (ty, ty - 2018), t):
+                continue
+            for m in re.finditer(r'(?<![0-9/])(\d{1,2})\s*(?:月|/)\s*(\d{1,2})(?![0-9])', t):
+                mo, d = int(m.group(1)), int(m.group(2))
+                try:
+                    diff = abs(_doy(mo, d) - _doy(rule['m'], rule['d']))
+                except ValueError:
+                    continue
+                if min(diff, 365 - diff) <= 45 and l not in found:
+                    found.append(l)
+                    break
+        if found:
+            report.append('- %s：%d年の予約開始らしい記載が公式ページにあります（自動では反映していません。確かめて日付を入れてください。前回は%d月%d日）\n    %s\n    %s' % (
+                h['name'], ty, rule['m'], rule['d'], ' ／ '.join(x[:90] for x in found[:3]), h['officialUrl'].strip()))
     json.dump(hist, open(hpath, 'w', encoding='utf-8'), ensure_ascii=False, indent=1, sort_keys=True)
     return report

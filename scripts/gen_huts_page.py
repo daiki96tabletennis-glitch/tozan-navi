@@ -12,10 +12,11 @@ M = {m['id']: m for m in ML}
 H = d['huts']
 _cp = os.path.join(ROOT, 'data', 'huts_coords.json')
 COORDS = json.load(open(_cp, encoding='utf-8'))['huts'] if os.path.exists(_cp) else {}
-MAP_VER = '20261012c'
-import math, sys
+MAP_VER = '20261012i'
+import calendar, math, sys
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 import huts_season
+import huts_rules
 from huts_features import FEATURES
 assert set(FEATURES) <= set(h['name'] for h in H), set(FEATURES) - set(h['name'] for h in H)
 _sp = os.path.join(ROOT, 'data', 'summit_coords.json')
@@ -76,6 +77,63 @@ def place_text(h):
     return (kind, dist + ('。' + '、'.join(tail) if tail else ''))
 
 
+def hut_ele(h):
+    """山小屋の標高（OpenStreetMap の値、無ければ出典の「標高◯m」）。分からなければ None"""
+    c = COORDS.get(h['name']) or {}
+    if c.get('ele'):
+        return int(c['ele'])
+    mm = re.search(r'標高\s*([\d,]{3,5})\s*m', h.get('location') or '')
+    return int(mm.group(1).replace(',', '')) if mm else None
+
+
+def topo_hero(lat, lng, kicker, title, sub, zoom=15, pin=True):
+    """国土地理院の地形図（標準地図）を帯状に敷いたヘッダー。指定の地点が中央に来るようにタイルを並べる。JavaScript は使わない"""
+    n = 2 ** zoom
+    xf = (lng + 180.0) / 360.0 * n
+    yf = (1 - math.log(math.tan(math.radians(lat)) + 1 / math.cos(math.radians(lat))) / math.pi) / 2 * n
+    tx, ty = int(xf), int(yf)
+    px, py = (xf - tx) * 256, (yf - ty) * 256
+    imgs = []
+    for r in (-1, 0, 1):
+        for c in (-2, -1, 0, 1, 2):
+            imgs.append('<img src="https://cyberjapandata.gsi.go.jp/xyz/std/%d/%d/%d.png" alt="" width="256" height="256"%s>' % (
+                zoom, tx + c, ty + r, '' if abs(c) <= 1 and r >= 0 else ' loading="lazy"'))
+    return ('<div class="topo">\n<div class="topo-map" aria-hidden="true" style="margin-left:-%dpx;margin-top:-%dpx">%s</div>\n%s'
+            '<div class="topo-cap"><div class="topo-k">%s</div><h1>%s</h1>%s</div>\n'
+            '<a class="topo-src" href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">地理院タイル</a>\n</div>\n' % (
+                int(round(2 * 256 + px)), int(round(256 + py)) + (23 if pin else 0), ''.join(imgs), '<i class="topo-pin" aria-hidden="true"></i>\n' if pin else '',
+                kicker, title, ('<div class="topo-s">%s</div>' % sub) if sub else ''))
+
+
+def season_bar(sj):
+    """営業期間を12か月の帯にする。濃い色＝営業、薄い色＝開始・終了の時期（上旬・下旬など幅のある書き方）。期間として読めない小屋は出さない"""
+    if not sj or sj.get('closed'):
+        return ''
+    days = []                       # 月ごとに、日ごとの 0:なし 1:幅 2:営業
+    for mth in range(1, 13):
+        nd = calendar.monthrange(2001, mth)[1]
+        row = []
+        for dd in range(1, nd + 1):
+            v = 2 if sj.get('all') else 0
+            for r in sj.get('r') or []:
+                if (r[0], r[2]) <= (mth, dd) <= (r[3], r[4]):
+                    v = 2
+                elif (r[0], r[1]) <= (mth, dd) < (r[0], r[2]) or (r[3], r[4]) < (mth, dd) <= (r[3], r[5]):
+                    v = max(v, 1)
+            row.append(v)
+        days.append(row)
+    col = {0: 'transparent', 1: '#c3d0b0', 2: '#4e6535'}
+    cells = []
+    for i, row in enumerate(days):
+        stops, start = [], 0
+        for k in range(1, len(row) + 1):
+            if k == len(row) or row[k] != row[start]:
+                stops.append('%s %d%% %d%%' % (col[row[start]], round(start * 100 / len(row)), round(k * 100 / len(row))))
+                start = k
+        cells.append('<i data-m="%d" style="background:linear-gradient(90deg,%s)"><b>%d</b></i>' % (i + 1, ','.join(stops), i + 1))
+    return '<div class="mbar" role="img" aria-label="営業期間を12か月の帯で示した図">%s</div>' % ''.join(cells)
+
+
 def mt_points(huts):
     """地図に出す山（サイトに載っている山だけ）：その小屋たちが対応している山の山頂"""
     ids = []
@@ -108,6 +166,9 @@ def map_block(huts, starts, lazy='', mts=True):
             '<script>window.YM_HUT_PTS=%s;window.YM_MT_PTS=%s;</script>\n<script src="/assets/js/huts-map.js?v=%s" defer></script>\n' % (
                 (' data-lazy="%s"' % lazy) if lazy else '', legend, note, dump(pts), dump(mp), MAP_VER))
 NA = '<span class="na">公式サイトで確認</span>'
+# お気に入りの星は、トップページの山の一覧と同じ形
+FAV_BTN = ('<button type="button" class="hfav" data-fav="%s" aria-pressed="false" aria-label="お気に入りに追加"><svg width="20" height="20" viewBox="0 0 24 24" '
+           'stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button>')
 FT_CLS = {'グルメ': 'g', '風呂・温泉': 'b', '設備': 'e', '眺め': 'v', '歴史': 'h'}
 
 
@@ -147,11 +208,13 @@ for h in H:
     # 公式サイト・予約サイトから自動で読み取れた値を優先する
     start = (au.get('bookingStart') or {}).get('value') or (None if stale else h.get('bookingStart'))
     # 予約サイトの「予約開始のお知らせ」の日時：手で確認した値が無いとき、または手の値より新しい年のときに使う
-    web = au.get('bookingStartWeb') or {}
-    if web and not (au.get('bookingStart') or {}).get('value'):
-        yrs = [int(x) for x in re.findall(r'(20\d\d)年', start or '')]
-        if not start or (yrs and max(yrs) < web.get('year', 0)):
-            start = web['value']
+    # 公式ページから読めた日付（bookingStartDate）→ 予約サイトのお知らせ（bookingStartWeb）の順に見る
+    for web in (au.get('bookingStartDate') or {}, au.get('bookingStartWeb') or {}):
+        if web and not (au.get('bookingStart') or {}).get('value'):
+            yrs = [int(x) for x in re.findall(r'(20\d\d)年', start or '')]
+            if not start or (yrs and max(yrs) < (web.get('year') or 0)):
+                start = web['value']
+                break
     # 手で確認した値が無い小屋は、予約サイトに登録されている「何日前から予約できるか」を使う
     start = start or (au.get('bookingWindow') or {}).get('value')
     none = None if stale else h.get('bookingNone')
@@ -223,6 +286,8 @@ for h in H:
     if ft:
         feat_html = '  <div class="season"><span class="sl">特徴</span><span class="sv"><ul class="fts">%s</ul></span></div>\n' % ''.join(
             '<li><b class="ftg ftg-%s">%s</b>%s</li>' % (FT_CLS.get(tag, 'o'), E(tag), E(text)) for tag, text in ft['items'])
+        if ft.get('src'):
+            feat_html = feat_html.replace('</ul></span>', '</ul></span><span class="ss">出典：<a href="%s" target="_blank" rel="noopener" style="color:#4e6535">山岳雑誌の山小屋紹介記事</a>（取材時の内容）</span>' % E(ft['src']))
     else:
         feat_html = ''
     if h.get('tel'):
@@ -233,21 +298,25 @@ for h in H:
         detail.append('<div><b>出典の記載</b>%s</div>' % E(raw))
     cards.append(
         '<article class="hut" id="%s" data-region="%s" data-m="%s" data-key="%s">\n'
-        '  <div class="hh"><h2><a href="/huts/%s/">%s</a></h2><span class="rg">%s</span>%s%s</div>\n'
+        '  <div class="hh"><h2><a href="/huts/%s/">%s</a></h2>%s<span class="rg">%s</span>%s%s%s</div>\n'
         '  <div class="facts">%s%s%s</div>\n'
-        '  <div class="season"><span class="sl">営業期間</span><span class="sv">%s</span>%s</div>\n'
+        '  <div class="season"><span class="sl">営業期間</span><span class="sv">%s%s</span>%s</div>\n'
         '%s%s'
         '  <div class="mrow"><span class="sl">対応する山</span><span class="mcs">%s%s</span></div>\n'
         '  <div class="foot">%s%s</div>\n'
         '</article>' % (
             E(h['id']), E(h['region']), E(' '.join(ids)), E(h['name'] + ' ' + ' '.join(M[i]['name'] for i in ids)),
-            E(h['id']), E(h['name']), E(h['region']), '<span class="req">予約必須</span>' if h['bookingRequired'] else '', st_html,
-            s_html, m_html, c_html, E(season_main), ('<span class="ss">%s</span>' % E(season_sub)) if season_sub else '', place_html, feat_html,
+            E(h['id']), E(h['name']), ('<span class="el">%s<small>m</small></span>' % format(hut_ele(h), ',')) if hut_ele(h) else '',
+            E(h['region']), '<span class="req">予約必須</span>' if h['bookingRequired'] else '', st_html, FAV_BTN % E(h['id']),
+            s_html, m_html, c_html, E(season_main), season_bar(sj), ('<span class="ss">%s</span>' % E(season_sub)) if season_sub else '', place_html, feat_html,
             mts, oth, ''.join(links),
             ('<details><summary>くわしく</summary>%s</details>' % ''.join(detail)) if detail else ''))
     card_of[h['id']] = cards[-1]
     info[h['id']] = {'start': None if none else start, 'none': none, 'methods': None if none else methods, 'season': season_main,
-                     'cap': cap or (ref if isinstance(ref, int) else None), 'capExact': bool(cap), 'place': pt, 'st': st_html, 'feat': ft}
+                     'cap': cap or (ref if isinstance(ref, int) else None), 'capExact': bool(cap), 'place': pt, 'st': st_html, 'feat': ft,
+                     'rule': None if none else huts_rules.derive(h['name'], (au.get('bookingStart') or {}).get('value') or (None if stale else h.get('bookingStart')),
+                                                                 (au.get('bookingStartWeb') or {}).get('value'), (au.get('bookingWindow') or {}).get('value'),
+                                                                 autodates=(au.get('bookingStartDate'), au.get('bookingStartWeb'), au.get('bookingStart')))}
 # 「山から探す」：小屋のある山を、県・山域の順に並べる
 mt_btns = []
 for m in ML:
@@ -356,17 +425,89 @@ h1{font-size:22px;font-weight:800;color:#2a3820;margin-bottom:4px}
 .faq dt{font-size:14px;font-weight:700;color:#2a3820;margin-bottom:4px}.faq dd{font-size:13px;color:#3a3530}
 .rel{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
 footer{text-align:center;padding:20px 16px;font-size:12px;color:#a09888;border-top:1px solid #e8e4dc;margin-top:8px}footer a{color:#6a8055}
-@media(max-width:560px){.facts{grid-template-columns:1fr 1fr}.facts .fact:first-child{grid-column:1/-1}}
+/* ── ガイドブック風の組版：明朝の見出し、細い罫線、数字は Outfit ── */
+h1,.hh h2,.sec,.rgh{font-family:'Noto Serif JP','Hiragino Mincho ProN',serif;letter-spacing:.02em}
+.hut{border-radius:4px;border:1px solid #d9d3c8;border-top:3px solid #4e6535;padding:16px 16px 12px}
+.hh{border-bottom:1px solid #e6e1d8;padding-bottom:10px;margin-bottom:12px}
+.hh h2{font-size:19px}
+.el{font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;color:#4e6535;letter-spacing:.01em}.el small{font-size:11px;font-weight:500;margin-left:1px}
+.rg,.req{border-radius:2px}
+.facts{gap:0;border:1px solid #e6e1d8;border-radius:2px}
+.fact{background:none;border-radius:0;border-left:1px solid #e6e1d8;padding:9px 11px}.fact:first-child{border-left:none}
+.fl,.sl{font-family:'Outfit','Zen Kaku Gothic New',sans-serif;letter-spacing:.08em;color:#8a8072}
+.fv{font-size:15px}
+.sec{border-bottom:1px solid #2a3820;padding-bottom:6px;font-size:18px}
+.rgh{background:none;border-radius:0;border-bottom:2px solid #2a3820;padding:6px 2px}
+.cmp{border-radius:2px}.cmp th{font-family:'Outfit','Zen Kaku Gothic New',sans-serif;letter-spacing:.08em}
+.mb,.chip,.btn,.tab,.tabs{border-radius:3px}
+.hfav{margin-left:2px;border:none;background:none;padding:4px;cursor:pointer;line-height:0}
+.hfav svg{fill:none;stroke:#c0b8a8}.hfav[aria-pressed="true"] svg{fill:#f0c030;stroke:#d4a020}
+.st+.hfav{margin-left:2px}
+/* 12か月の帯 */
+.mbar{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;margin-top:6px;max-width:420px}
+.mbar i{display:block;height:9px;background-color:#eceae3;position:relative;margin-bottom:13px}
+.mbar b{position:absolute;left:0;right:0;top:11px;text-align:center;font:500 9.5px/1 'Outfit',sans-serif;color:#a09888;font-style:normal}
+.mbar i.now b{color:#2a3820;font-weight:700}.mbar i.now{outline:1.5px solid #2a3820;outline-offset:1px}
+/* 地形図ヘッダー */
+.topo{position:relative;height:190px;overflow:hidden;margin:-16px -16px 16px;background:#e8e4dc}
+.topo-map{position:absolute;left:50%;top:50%;width:1280px;height:768px;display:grid;grid-template-columns:repeat(5,256px);filter:saturate(.75) contrast(1.02)}
+.topo-map img{display:block;width:256px;height:256px}
+.topo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(34,44,24,0) 12%,rgba(34,44,24,.55) 48%,rgba(34,44,24,.9) 100%);pointer-events:none}
+.topo-pin{position:absolute;left:50%;top:38%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#b4532a;border:2.5px solid #fff;box-shadow:0 0 0 1.5px rgba(0,0,0,.35);z-index:1}
+.topo-cap{position:absolute;left:16px;right:16px;bottom:12px;z-index:2;color:#fff}
+.topo-cap h1{color:#fff;font-size:23px;line-height:1.3;margin:0;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.topo-k{font:700 11px/1.4 'Outfit','Zen Kaku Gothic New',sans-serif;letter-spacing:.14em;margin-bottom:4px;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.topo-s{font:700 15px/1.3 'Outfit','Zen Kaku Gothic New',sans-serif;margin-top:4px;letter-spacing:.02em}
+.topo-src{position:absolute;right:4px;top:4px;z-index:2;font-size:9.5px;color:#4a4540;background:rgba(255,255,255,.72);padding:1px 5px;border-radius:2px;text-decoration:none}
+.topo+.bc{margin-top:-6px}
+/* 予約開始のお知らせ：案内バナーと説明のポップアップ */
+.promo{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#c8d4b8;border:1px solid #a9b996;border-left:5px solid #4e6535;border-radius:4px;padding:12px 14px;margin-bottom:14px;cursor:pointer;font-family:inherit;color:#2a3820}
+.promo-i{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+.promo-i svg{width:22px;height:22px;fill:#f0c030;stroke:#8a5a10;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transform-origin:50% 2px;animation:promoBell 4s ease-in-out infinite}
+@keyframes promoBell{0%,15%,100%{transform:rotate(0)}2%{transform:rotate(-16deg)}4%{transform:rotate(14deg)}6%{transform:rotate(-12deg)}8%{transform:rotate(10deg)}10%{transform:rotate(-7deg)}12%{transform:rotate(4deg)}}
+@media (prefers-reduced-motion:reduce){.promo-i svg{animation:none}}
+.promo-t{flex:1;min-width:0}.promo-t b{display:block;font-family:'Noto Serif JP',serif;font-size:16px;line-height:1.35}.promo-t small{display:block;font-size:12px;line-height:1.5;color:#3d4a30;margin-top:2px}
+.promo-a{flex-shrink:0;font-size:12px;font-weight:700;background:#4e6535;color:#fff;border-radius:3px;padding:6px 10px}
+.hamodal{position:fixed;inset:0;z-index:9000;background:rgba(26,22,14,.55);align-items:flex-end;justify-content:center;padding:0}
+.hamodal-in{position:relative;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;background:#fff;border-radius:14px 14px 0 0;padding:22px 20px 26px;-webkit-overflow-scrolling:touch}
+.hamodal-x{position:absolute;right:8px;top:6px;width:40px;height:40px;border:none;background:none;font-size:26px;line-height:1;color:#6a6258;cursor:pointer}
+.hamodal-k{font:700 11px/1 'Outfit',sans-serif;letter-spacing:.16em;color:#4e6535;margin-bottom:6px}
+.hamodal h2{font-family:'Noto Serif JP',serif;font-size:20px;color:#2a3820;margin:0 36px 8px 0;line-height:1.4}
+.hamodal-lead{font-size:13.5px;color:#3a3530;margin-bottom:14px}
+.hamodal-steps{list-style:none;counter-reset:hs;margin:0 0 14px;border-top:1px solid #e6e1d8}
+.hamodal-steps li{counter-increment:hs;position:relative;padding:11px 0 11px 40px;border-bottom:1px solid #e6e1d8;font-size:13px;color:#4a4540;line-height:1.6}
+.hamodal-steps li:before{content:counter(hs);position:absolute;left:2px;top:11px;width:26px;height:26px;border-radius:50%;background:#4e6535;color:#fff;font:700 14px/26px 'Outfit',sans-serif;text-align:center}
+.hamodal-steps b{display:block;font-size:14px;color:#2a3820}
+.hamodal-n{display:flex;align-items:baseline;gap:6px;margin-bottom:4px}.hamodal-n b{font:700 34px/1 'Outfit',sans-serif;color:#4e6535}.hamodal-n span{font-size:13px;color:#4a4540}
+.hamodal-s{font-size:11.5px;color:#7a7068;line-height:1.6;margin:0 0 12px}
+.hamodal-d{font-size:12.5px;color:#22602a;min-height:1.2em;margin:8px 0 4px}
+.hamodal-f{border-top:1px solid #e6e1d8;padding-top:12px;margin-top:4px}.hamodal-f p{font-size:12.5px;color:#4a4540;margin-bottom:10px}.hamodal-f p b{display:block;color:#2a3820}
+.hamodal-c{display:block;width:100%;margin-top:10px;border:none;background:none;color:#7a7068;font-size:13px;padding:10px;cursor:pointer}
+@media(min-width:600px){.hamodal{align-items:center;padding:20px}.hamodal-in{border-radius:10px}}
+/* 予約開始のお知らせ */
+.ha{background:#fff;border:1px solid #d9d3c8;border-left:4px solid #4e6535;border-radius:4px;padding:14px 16px;margin-bottom:16px}
+.ha-t{font-family:'Noto Serif JP',serif;font-weight:700;font-size:16px;color:#2a3820;margin-bottom:6px}
+.ha-k{font-size:13px;font-weight:700;color:#2f2b26;margin-bottom:8px}.ha-k span{font-weight:400;font-size:12px;color:#7a7068}
+.ha-p{font-size:13px;color:#4a4540;margin-bottom:10px}
+.ha-l{display:block;font-size:11.5px;color:#7a7068;font-weight:700;margin-bottom:4px}
+.ha-in{width:100%;max-width:240px;padding:9px 10px;border:1px solid #c8c2b8;border-radius:3px;font-size:16px;background:#fff}
+.ha-out{font-size:13.5px;margin:8px 0;min-height:1.4em}.ha-out span{font-size:12px;color:#7a7068}
+.ha-btn{display:inline-block;background:#4e6535;color:#fff;border:none;border-radius:3px;padding:10px 16px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none}
+.ha-btn:disabled{background:#b5b0a8;cursor:default}.ha-btn2{background:#fff;color:#4e6535;border:1px solid #4e6535}
+.ha-demo{margin-top:14px;border-top:1px solid #e6e1d8;padding-top:12px}
+.ha-msg{font-size:12.5px;color:#22602a;margin-top:8px}
+.ha-list{margin-top:12px;border-top:1px solid #e6e1d8;padding-top:8px;font-size:12.5px;color:#4a4540}.ha-lt{font-size:11px;font-weight:700;color:#7a7068}.ha-my{color:#4e6535;font-size:12px}
+@media(max-width:560px){.facts{grid-template-columns:1fr 1fr}.facts .fact:first-child{grid-column:1/-1;border-bottom:1px solid #e6e1d8}.facts .fact:nth-child(2){border-left:none}.topo{height:170px}}
 </style>
 </head>
 <body>
 <header><div class="hi"><a href="/" class="logo">Yamatch</a><a href="/" class="back">← 山を検索する</a></div></header>
 <main>
+__HERO__
 <nav class="bc" aria-label="パンくず"><a href="/">Yamatch</a> › 山小屋まとめ</nav>
-<h1>山小屋の予約開始日・予約方法まとめ<span class="beta">β版</span></h1>
-<p class="sub">__N__軒の、予約の開始・予約方法・規模・営業期間（__YEAR__年シーズン）</p>
 <p class="lead">北アルプス・南アルプス・中央アルプス・八ヶ岳・富士山・奥秩父・丹沢・尾瀬などの山小屋について、「いつから予約できるか」「どうやって予約するか」を山小屋ごとにまとめています。登る山を選ぶと、その山で使える山小屋だけを表示します。</p>
 <p class="upd">最終確認：<time datetime="__VERIFIED__">__VERIFIED_JA__</time></p>
+__PROMO__
 <details class="about"><summary>このページの見方・出典</summary>
 <ul>
 <li>「対応する山」は、当サイトで紹介しているルートの登山口・途中・山頂にある小屋です。別のルートや縦走で使う小屋は、灰色で関係を添えています。</li>
@@ -400,6 +541,7 @@ __FAQ__
 </main>
 __FOOTER__
 <script src="/assets/js/huts-status.js?v=__MAPVER__"></script>
+<script src="/assets/js/huts-alert.js?v=__MAPVER__" defer></script>
 <script>
 (function(){
   var view='mt', region='', huts=document.querySelectorAll('.hut');
@@ -442,7 +584,10 @@ BASE = 'https://tozan-navi.com'
 YEAR = d['seasonYear']
 VERIFIED = max(h['lastVerified'] for h in H if h.get('lastVerified'))
 VERIFIED_JA = '%d年%d月%d日' % tuple(int(x) for x in VERIFIED.split('-'))
-HEADCOMMON = """<meta property="og:site_name" content="Yamatch">
+HEADCOMMON = """<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&family=Outfit:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap">
+<meta property="og:site_name" content="Yamatch">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://tozan-navi.com/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -538,11 +683,48 @@ SHELL = """<!DOCTYPE html>
 </main>
 %(footer)s
 <script src="/assets/js/huts-status.js?v=%(ver)s"></script>
+<script src="/assets/js/huts-alert.js?v=%(ver)s" defer></script>
 </body>
 </html>
 """
 
 # ---------- 一覧ページ ----------
+# 予約開始のお知らせの案内バナーと、説明のポップアップ
+_rc = {}
+for _x in info.values():
+    if _x.get('rule'):
+        _rc[_x['rule']['t']] = _rc.get(_x['rule']['t'], 0) + 1
+_rn = sum(_rc.values())
+BELL = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>'
+PROMO = ('''<button type="button" class="promo" data-ha-open aria-haspopup="dialog">
+<span class="promo-i">%(bell)s</span>
+<span class="promo-t"><b>予約開始をお知らせ</b><small>泊まりたい日を登録すると、予約が始まる1週間前・前日・当日に知らせます（%(n)d軒が対応）</small></span>
+<span class="promo-a" aria-hidden="true">くわしく</span>
+</button>
+<div id="ha-modal" class="hamodal" role="dialog" aria-modal="true" aria-labelledby="ha-modal-t" data-demo-name="槍ヶ岳山荘" style="display:none">
+<div class="hamodal-in">
+<button type="button" class="hamodal-x" data-ha-close aria-label="閉じる">×</button>
+<div class="hamodal-k">NEW</div>
+<h2 id="ha-modal-t">山小屋の予約開始をお知らせ</h2>
+<p class="hamodal-lead">人気の山小屋は、予約開始の日にすぐ埋まります。泊まりたい日を登録しておくと、予約が始まる日が近づいたときに Yamatch が知らせます。</p>
+<ol class="hamodal-steps">
+<li><b>山小屋のページで登録</b>泊まりたい日を選ぶと、その日の予約がいつ始まるかを計算します。まとめて受付が始まる山小屋は、ボタンを押すだけです。</li>
+<li><b>1週間前・前日・当日に知らせる</b>Yamatch を開いたときに、画面の上と下のバーの鈴マークで知らせます。通知を許可すると、端末の通知も出ます。</li>
+<li><b>マイページで確認</b>登録した山小屋と予約開始日、あと何日かを一覧で見られます。</li>
+</ol>
+<div class="hamodal-n"><b>%(n)d</b><span>軒が対応（掲載%(all)d軒中）</span></div>
+<p class="hamodal-s">内訳：宿泊日の何日前・何か月前に始まる山小屋 %(rel)d軒／シーズン分をまとめて受け付ける山小屋 %(fix)d軒／宿泊する時期ごとに開始日が違う山小屋 %(phase)d軒。予約開始日の決まり方が分からない山小屋は対応していません。</p>
+<button type="button" id="ha-modal-demo" class="ha-btn">お知らせの見本を見る</button>
+<p id="ha-modal-demo-s" class="hamodal-d"></p>
+<p class="hamodal-s">見本では、1週間前・前日・当日のお知らせを約3秒ずつ順に画面の上に出します（槍ヶ岳山荘の例）。</p>
+<div class="hamodal-f">
+<p><b>使うには</b>Yamatch をホーム画面に追加し、ホーム画面のアイコンから開いてください。登録はお使いの端末の中に保存され、Yamatch を開いたときにお知らせします（開いていないときには届きません）。</p>
+<a class="ha-btn ha-btn2" href="/">ホーム画面に追加する方法を見る</a>
+<button type="button" class="hamodal-c" data-ha-close>閉じる</button>
+</div>
+</div>
+</div>''' % {'bell': BELL, 'n': _rn, 'all': len(H), 'rel': _rc.get('rel', 0) + _rc.get('mon', 0), 'fix': _rc.get('fix', 0), 'phase': _rc.get('phase', 0)})
+
 # 「山小屋の一覧」は地域ごとに見出しで区切る
 _g = []
 for rg in regions:
@@ -589,7 +771,7 @@ main_ld = ld(
          {'@type': 'ListItem', 'position': i + 1, 'url': BASE + '/huts/%s/' % h['id'], 'name': h['name']} for i, h in enumerate(H)]}},
     faq_ld(MAIN_FAQ))
 page = (page.replace('__N__', str(len(H))).replace('__YEAR__', str(YEAR)).replace('__UPD__', upd)
-        .replace('__MAPVER__', MAP_VER).replace('__HEADCOMMON__', HEADCOMMON).replace('__LD__', main_ld).replace('__FAQ__', faq_html(MAIN_FAQ)).replace('__FOOTER__', FOOTER)
+        .replace('__HERO__', topo_hero(36.25, 137.75, 'MOUNTAIN HUTS %d' % YEAR, '山小屋の予約開始日・予約方法まとめ<span class="beta">β版</span>', '%d軒｜予約の開始・予約方法・規模・営業期間' % len(H), zoom=10, pin=False)).replace('__PROMO__', PROMO).replace('__MAPVER__', MAP_VER).replace('__HEADCOMMON__', HEADCOMMON).replace('__LD__', main_ld).replace('__FAQ__', faq_html(MAIN_FAQ)).replace('__FOOTER__', FOOTER)
         .replace('__VERIFIED_JA__', VERIFIED_JA).replace('__VERIFIED__', VERIFIED)
         .replace('__MAP__', map_block(H, START_SHORT, 'manual')).replace('__CHIPS__', chips).replace('__MTS__', ''.join(mt_btns)).replace('__CARDS__', grouped))
 write(os.path.join(ROOT, 'huts', 'index.html'), page)
@@ -624,8 +806,10 @@ for m in ML:
                 rel.append(i)
     rel_html = ''.join('<a class="mb" href="/huts/%s/">%sの山小屋<span>%d</span></a>' % (E(i), E(M[i]['name']), count[i]) for i in rel[:12])
     body = (
-        '<nav class="bc" aria-label="パンくず"><a href="/">Yamatch</a> › <a href="/huts/">山小屋まとめ</a> › %s</nav>\n' % E(m['name'])
-        + '<h1>%sの山小屋（%d軒）｜予約開始日・予約方法</h1>\n' % (E(m['name']), len(hs))
+        (topo_hero(SUMMITS[mid]['lat'], SUMMITS[mid]['lng'], E((m.get('area') or '') + '｜MOUNTAIN HUTS'), '%sの山小屋（%d軒）｜予約開始日・予約方法' % (E(m['name']), len(hs)),
+                   '%s %sm' % (E(m['name']), format(m['elevation'], ',')), zoom=14, pin=False) if mid in SUMMITS
+         else '<h1>%sの山小屋（%d軒）｜予約開始日・予約方法</h1>\n' % (E(m['name']), len(hs)))
+        + '<nav class="bc" aria-label="パンくず"><a href="/">Yamatch</a> › <a href="/huts/">山小屋まとめ</a> › %s</nav>\n' % E(m['name'])
         + '<p class="lead">%s予約がいつから始まるか、予約方法、定員、%d年の営業期間をまとめました。</p>\n' % (lead, YEAR)
         + '<p class="upd">最終確認：<time datetime="%s">%s</time>　<a href="/mountains/%s/" style="color:#4e6535">%sの登山情報（アクセス・コース）を見る →</a></p>\n' % (VERIFIED, VERIFIED_JA, E(mid), E(m['name']))
         + '<table class="cmp"><thead><tr><th>山小屋</th><th>予約の開始</th><th>予約方法</th></tr></thead><tbody>%s</tbody></table>\n' % ''.join(rows)
@@ -676,6 +860,10 @@ for h in H:
         parts.append('営業期間は%s。' % x['season'])
     if x['cap']:
         parts.append('定員は%s%s人。' % ('' if x['capExact'] else '約', x['cap']))
+    if x.get('feat'):
+        g1 = [t for tag, t in x['feat']['items'] if tag in ('グルメ', '名物', '風呂・温泉')]
+        if g1:
+            parts.append('%s。' % g1[0])
     desc = ''.join(parts)
     desc = desc if len(desc) <= 150 else desc[:149] + '…'
     qa = []
@@ -687,6 +875,13 @@ for h in H:
         qa.append(('%sの予約方法は？' % name, '%sで受け付けています。%s' % (mt_txt, '予約は必須です。' if h['bookingRequired'] else '')))
     if x['season'] and x['season'] != '—':
         qa.append(('%sの営業期間は？' % name, '%s（%d年シーズンの情報）。天候や残雪で変わることがあります。' % (x['season'], YEAR)))
+    if x.get('feat'):
+        gour = [t for tag, t in x['feat']['items'] if tag in ('グルメ', '名物')]
+        if gour:
+            qa.append(('%sの名物・食事は？' % name, '%s。メニューは時期によって変わることがあります。' % '。'.join(gour)))
+        rest = [t for tag, t in x['feat']['items'] if tag not in ('グルメ', '名物')]
+        if rest:
+            qa.append(('%sの設備・特徴は？' % name, '%s。' % '。'.join(rest)))
     thin = not (x['none'] or x['start'] or mt_txt)
     noindex += thin
     if x['none']:
@@ -700,15 +895,29 @@ for h in H:
         for o in sum(huts_of(i), []):
             if o['id'] != h['id'] and o not in sib:
                 sib.append(o)
+    _t = '%s｜%s（%d年）' % (E(name), '予約不要・利用方法' if x['none'] else '予約開始日・予約方法', YEAR)
+    _c = COORDS.get(name)
+    _fm = h['mountainIds'][0] if h['mountainIds'] else None
+    _sub = ('標高 %sm' % format(hut_ele(h), ',')) if hut_ele(h) else ''
+    if _c:
+        _hero = topo_hero(_c['lat'], _c['lng'], E(h['region'] + '｜' + mts_txt), _t, _sub)
+    elif _fm in SUMMITS:
+        _hero = topo_hero(SUMMITS[_fm]['lat'], SUMMITS[_fm]['lng'], E(h['region'] + '｜' + mts_txt), _t, '地図は%sの山頂付近' % E(M[_fm]['name']), zoom=14, pin=False)
+    else:
+        _hero = '<h1>%s</h1>\n' % _t
+    if x['none']:
+        alert_html = ''
+    else:
+        alert_html = '<div id="hut-alert" class="ha" data-hut="%s"></div>\n' % E(json.dumps({'id': h['id'], 'name': name, 'rule': x.get('rule')}, ensure_ascii=False, separators=(',', ':')))
     own = card_of[h['id']].replace('<h2><a href="/huts/%s/">%s</a></h2>' % (E(h['id']), E(name)), '<h2>%s</h2>' % E(name))
     body = (
-        '<nav class="bc" aria-label="パンくず"><a href="/">Yamatch</a> › <a href="/huts/">山小屋まとめ</a>%s › %s</nav>\n' % (
+        _hero + '<nav class="bc" aria-label="パンくず"><a href="/">Yamatch</a> › <a href="/huts/">山小屋まとめ</a>%s › %s</nav>\n' % (
             (' › <a href="/huts/%s/">%sの山小屋</a>' % (E(h['mountainIds'][0]), E(M[h['mountainIds'][0]]['name']))) if h['mountainIds'] else '', E(name))
-        + '<h1>%s｜%s（%d年）</h1>\n' % (E(name), '予約不要・利用方法' if x['none'] else '予約開始日・予約方法', YEAR)
         + '<div class="fact" style="background:#e9efe0;margin-bottom:12px"><div class="fl">%s</div>%s</div>\n' % ('予約' if x['none'] else '予約はいつから？', ans)
         + '<p class="upd">最終確認：<time datetime="%s">%s</time></p>\n' % (h.get('lastVerified') or VERIFIED, VERIFIED_JA)
         + (('<p class="lead">%sは、%s%s</p>\n' % (E(name), ('「%s」にあります。' % E(x['place'][0])) if x['place'][0] else '', E(x['place'][1]) + '。')) if x.get('place') else '')
         + '<div id="list">\n%s\n</div>\n' % own
+        + alert_html
         + (('<h2 class="sec">%sの場所</h2>\n' % E(name) + map_block([h], START_SHORT)
             + '<a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=%s,%s" target="_blank" rel="noopener">Googleマップで開く →</a>\n' % (
                 COORDS[name]['lat'], COORDS[name]['lng'])) if name in COORDS else '')
@@ -732,6 +941,15 @@ for h in H:
         made.add(h['id'])
     else:
         made.add('!' + h['id'])
+# 通知とお気に入り（assets/js/huts-alert.js）が読むデータ：小屋ID → 名前・山名・予約の開始の文・予約の型
+_rules = {}
+for h in H:
+    x = info[h['id']]
+    _rules[h['id']] = {'n': h['name'], 'mts': [M[i]['name'] for i in h['mountainIds']] or [M[o['id']]['name'] for o in h.get('otherMountains') or []][:2],
+                       's': '予約不要' if x['none'] else (split_note(x['start'])[0] if x['start'] else ''), 'r': x.get('rule')}
+json.dump({'note': '山小屋の予約開始のお知らせ・お気に入り用。scripts/gen_huts_page.py が作る（手で編集しない）', 'huts': _rules},
+          open(os.path.join(ROOT, 'data', 'huts_rules.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+print('通知に対応 %d 軒／%d 軒' % (sum(1 for v in _rules.values() if v['r']), len(_rules)))
 # 無くなった山・小屋のページを消す（このスクリプトが作った huts/<ID>/index.html だけ）
 keep = set(x.lstrip('!') for x in made)
 for name in os.listdir(os.path.join(ROOT, 'huts')):
