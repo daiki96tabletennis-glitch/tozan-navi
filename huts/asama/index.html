@@ -35,10 +35,10 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Zen Kaku Gothic New',-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;background:#f0ede5;color:#2f2b26;line-height:1.6}
-header{background:#4e6535;padding:14px 16px}
-.hi{max-width:760px;margin:0 auto;display:flex;align-items:center}
-.logo{color:#fff;font-size:20px;font-weight:800;text-decoration:none}
-.back{margin-left:auto;color:rgba(255,255,255,.9);font-size:12px;text-decoration:none;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:20px}
+header{background:#3a4f28;padding:12px 16px}
+.header-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:8px}
+
+.back-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;border-radius:8px;padding:4px 9px;font-size:11px;text-decoration:none;white-space:nowrap}
 main{max-width:760px;margin:0 auto;padding:16px}
 h1{font-size:22px;font-weight:800;color:#2a3820;margin-bottom:4px}
 .beta{font-size:11px;background:#c8d4b8;color:#2a3820;border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:middle}
@@ -192,7 +192,14 @@ h1,.hh h2,.sec,.rgh{font-family:'Noto Serif JP','Hiragino Mincho ProN',serif;let
 </style>
 </head>
 <body>
-<header><div class="hi"><a href="/" class="logo">Yamatch</a><a href="/huts/" class="back">← 山小屋まとめ</a></div></header>
+<header>
+  <div class="header-inner">
+    <a href="/" style="display:flex;align-items:center;gap:6px;text-decoration:none;flex:1;min-width:0;"><svg width="24" height="24" viewBox="0 0 36 36" style="flex-shrink:0"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg><div class="header-title" style="color:white;font-size:20px;font-weight:700;font-family:Georgia,serif;line-height:1;">Yamatch</div></a>
+    <span style="flex:1"></span>
+    <a href="/huts/" class="back-btn">山小屋まとめ</a>
+    <a href="/" class="back-btn">← トップへ</a>
+  </div>
+</header>
 <main>
 <div class="topo">
 <div class="topo-map" aria-hidden="true" style="margin-left:-741px;margin-top:-509px"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14493/6409.png" alt="" width="256" height="256" loading="lazy"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14494/6409.png" alt="" width="256" height="256" loading="lazy"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14495/6409.png" alt="" width="256" height="256" loading="lazy"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14496/6409.png" alt="" width="256" height="256" loading="lazy"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14497/6409.png" alt="" width="256" height="256" loading="lazy"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14493/6410.png" alt="" width="256" height="256" loading="lazy"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14494/6410.png" alt="" width="256" height="256"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14495/6410.png" alt="" width="256" height="256"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14496/6410.png" alt="" width="256" height="256"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14497/6410.png" alt="" width="256" height="256" loading="lazy"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14493/6411.png" alt="" width="256" height="256" loading="lazy"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14494/6411.png" alt="" width="256" height="256"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14495/6411.png" alt="" width="256" height="256"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14496/6411.png" alt="" width="256" height="256"><img src="https://cyberjapandata.gsi.go.jp/xyz/std/14/14497/6411.png" alt="" width="256" height="256" loading="lazy"></div>
