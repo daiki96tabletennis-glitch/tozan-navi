@@ -1,0 +1,39 @@
+# 山小屋まとめ（β）の定期更新。出典（長野県の山小屋ポータル・山と溪谷オンラインの山小屋リスト）を取り直し、
+# 営業期間などの記載が変わっていれば data/huts.json と huts/index.html を更新してコミットする。
+# 決まった手順のスクリプトだけで動く（AIは使わない）。予約の開始日・方法・規模は人が確認した値で、自動では書き換えない
+# （出典や公式ページの記載が変わった小屋は、ページ上で「確認中」に切り替わる）。
+name: 山小屋まとめの定期更新
+
+on:
+  schedule:
+    - cron: '0 21 * * *'   # 毎日 6:00（日本時間）。実際に見に行くかどうかは update_huts.py --scheduled が決める
+                           #   毎月1日＝全小屋／発表が出そうな期間の小屋＝3日に1回／一覧の出典＝4〜6月は3日に1回／それ以外の日は何もしない
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 出典を取り直して更新する
+        run: python3 scripts/update_huts.py --scheduled --out huts_report.md
+      - name: サイトのチェック
+        run: python3 scripts/check_pages.py > check_pages_report.txt 2>&1 || (tail -n 40 check_pages_report.txt; exit 1)
+      - name: 変わっていればコミットする
+        run: |
+          python3 scripts/admin_notice.py --kind huts --report huts_report.md
+          git add -A data/huts.json data/huts_history.json data/huts_rules.json huts sitemap.xml
+          if [ -f data/admin_notices.json ]; then git add data/admin_notices.json; fi
+          if git diff --cached --quiet; then echo "変化なし"; exit 0; fi
+          git config user.name "yamatch-huts-update"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -q -m "山小屋まとめを更新（出典の取り直し）"
+          git push -q
+          cat huts_report.md

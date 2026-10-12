@@ -291,7 +291,9 @@ def render_head(mt):
     og_desc = esc(mt.get("ogDescription") or mt["metaDescription"])
     mid = mt["id"]
     url = f"https://tozan-navi.com/mountains/{mid}/"
-    updated = mt.get("ogUpdatedTime") or "2026-01-01T00:00:00+09:00"
+    # 更新日は、実際にデータを直した日（mountainUpdated）。検索結果に日付が出ると、新しい情報だと伝わる
+    updated = (mt["mountainUpdated"] + "T00:00:00+09:00") if mt.get("mountainUpdated") else (mt.get("ogUpdatedTime") or "2026-01-01T00:00:00+09:00")
+    og_image = og_image_url(mt)
     css, _ = load_static_assets()
 
     parts = []
@@ -304,11 +306,13 @@ def render_head(mt):
     parts.append(f'<meta name="description" content="{desc}">')
     parts.append(f'<meta property="og:title" content="{og_title}">')
     parts.append(f'<meta property="og:description" content="{og_desc}">')
-    parts.append('<meta property="og:image" content="https://tozan-navi.com/ogp.png">')
+    parts.append(f'<meta property="og:image" content="{og_image}">')
+    parts.append('<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">')
     parts.append(f'<meta property="og:url" content="{url}">')
     parts.append('<meta property="og:type" content="article">')
     parts.append('<meta name="twitter:card" content="summary_large_image">')
     parts.append(f'<meta property="og:updated_time" content="{updated}">')
+    parts.append(f'<meta property="article:modified_time" content="{updated}">')
     parts.append(f'<link rel="canonical" href="{url}">')
     parts.append(
         '<meta name="google-site-verification" '
@@ -322,6 +326,17 @@ def render_head(mt):
     parts.append(FONT_STYLE_TAG)
     parts.append("</head>")
     return "\n".join(parts)
+
+
+def og_image_url(mt):
+    """共有・検索結果の画像：その山の写真があれば1枚目、無ければサイト共通の画像"""
+    for ph in mt.get("photos") or []:
+        src = ph.get("src") if isinstance(ph, dict) else ph
+        if isinstance(src, str) and src.startswith("/"):
+            return "https://tozan-navi.com" + src
+        if isinstance(src, str) and src.startswith("https://tozan-navi.com/"):
+            return src
+    return "https://tozan-navi.com/ogp.png"
 
 
 def render_jsonld(mt):
@@ -349,7 +364,25 @@ def render_jsonld(mt):
             {"@type": "ListItem", "position": 2, "name": name, "item": url},
         ],
     }
-    lines = []
+    # ページそのものの情報（見出し・説明・更新日）。更新日を検索エンジンに正しく伝える
+    page_obj = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": mt.get("metaTitle", name)[:110],
+        "description": mt.get("metaDescription", ""),
+        "mainEntityOfPage": url,
+        "inLanguage": "ja",
+        "image": [og_image_url(mt)],
+        "author": {"@type": "Organization", "name": "Yamatch", "url": "https://tozan-navi.com/about/"},
+        "publisher": {"@type": "Organization", "name": "Yamatch", "logo": {"@type": "ImageObject", "url": "https://tozan-navi.com/icon-512.png"}},
+    }
+    if mt.get("mountainUpdated"):
+        page_obj["dateModified"] = mt["mountainUpdated"] + "T00:00:00+09:00"
+    lines = [
+        '<script type="application/ld+json">'
+        + json.dumps(page_obj, ensure_ascii=False, separators=(",", ":"))
+        + "</script>"
+    ]
     if faq:
         lines.append(
             '<script type="application/ld+json">'
@@ -403,7 +436,8 @@ def render_hero(mt):
         '      <div>\n'
         # お気に入り数・登頂数（assets/js/ym-counts.js が集計先から読んで出す。集計先が未設定のあいだは出ない）
         f'        <div class="hero-counts" id="hero-counts" data-id="{esc(mt["id"])}" style="display:none"></div>\n'
-        f'        <h1 class="mountain-name">{name}</h1>\n'
+        # 大見出しは山名＋副題。検索結果の見出しと同じ語（登山・難易度・コース・アクセス）を入れ、見出しが書き換えられにくくする
+        f'        <h1 class="mountain-name">{name}<span class="mountain-h1-sub">登山ガイド｜難易度・コースタイム・アクセス</span></h1>\n'
         f'        <div class="mountain-kana">{kana}</div>\n'
         f'        <div class="mountain-area">📍 {area}</div>\n'
         '        <div class="hero-badges">\n'
@@ -689,8 +723,13 @@ def render_routes(mt):
             st = r.get("status")
             if st and st.get("state") == "closed":
                 tags.append(f'<span class="rl-tag rl-tag-ng">{esc(st.get("label") or "通行止め")}</span>')
+            elif st and st.get("state") == "caution" and st.get("label"):
+                # 通行止めではないが、歩く人を選ぶルート（上級者向け・登り専用・健脚向けの日帰りなど）
+                tags.append(f'<span class="rl-tag rl-tag-ng">{esc(st["label"])}</span>')
             line = f'登山口：{esc(th_name)}' if th_name else ""
             ssot_html = f'<div class="rl-th">{"".join(tags)}{line}</div>'
+        if r.get("note"):
+            ssot_html += f'<div class="rl-access">{esc(r["note"])}</div>'
         if r.get("accessNote"):
             caveat = "（未確認の情報を含みます）" if r.get("accessNeedsVerification") else ""
             ssot_html += f'<div class="rl-access">アクセス：{esc(r["accessNote"])}{caveat}</div>'

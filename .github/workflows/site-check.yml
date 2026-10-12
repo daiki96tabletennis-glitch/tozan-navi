@@ -1,0 +1,45 @@
+# サイトの整合性チェック。プッシュのたびと、週に1回、scripts/check_pages.py を実行する。
+# 異常があると失敗になり、GitHub から運営者にメールが届く。データやページは書き換えない
+# （マイページの運営者向けのお知らせ data/admin_notices.json だけを更新する）。
+name: サイトのチェック
+
+on:
+  push:
+    branches: [main, master]
+  schedule:
+    - cron: '0 0 * * 1'   # 毎週月曜 9:00（日本時間）
+  workflow_dispatch:
+
+permissions:
+  contents: write   # マイページのお知らせ（data/admin_notices.json）だけをコミットする
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: check_pages.py（17セクション）
+        run: |
+          set +e
+          python3 scripts/check_pages.py > check_pages_report.txt 2>&1
+          code=$?
+          grep "^## " check_pages_report.txt
+          echo "----"
+          grep -v "（0件）" check_pages_report.txt | head -n 200
+          echo "$code" > check_code.txt
+          exit $code
+      - name: マイページのお知らせを更新する
+        if: always()
+        run: |
+          python3 scripts/admin_notice.py --kind sitecheck --report check_pages_report.txt --code "$(cat check_code.txt)"
+          if [ ! -f data/admin_notices.json ]; then echo "お知らせなし"; exit 0; fi
+          git add data/admin_notices.json
+          if git diff --cached --quiet; then echo "お知らせの変化なし"; exit 0; fi
+          git config user.name "yamatch-admin-notice"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -q -m "運営者向けのお知らせを更新（サイトの検証）"
+          git pull -q --rebase && git push -q

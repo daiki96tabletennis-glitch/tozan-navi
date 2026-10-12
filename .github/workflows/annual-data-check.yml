@@ -1,0 +1,69 @@
+# 毎年変わるデータ（季節バス・マイカー規制・閉鎖期間など）の見張り。
+# 月に1回、期限切れと出典ページの変更を調べて Issue にまとめ、運営者にメールで知らせる。山のデータは書き換えない
+# （マイページの運営者向けのお知らせ data/admin_notices.json だけを更新する）。
+# 反映は、運営者が Claude のアプリで「月次更新して」と伝えて行う（手順は CLAUDE.md「月次更新の手順」）。
+name: 年次データの確認
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'   # 毎月1日 9:00（日本時間）
+  workflow_dispatch:
+
+permissions:
+  contents: write   # マイページのお知らせ（data/admin_notices.json）だけをコミットする
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # 前回取得した出典ページの要約（ハッシュ）。リポジトリにはコミットせず、キャッシュで持ち回る
+      - uses: actions/cache/restore@v4
+        with:
+          path: annual_state.json
+          key: annual-state-${{ github.run_id }}
+          restore-keys: annual-state-
+      - name: 確認する
+        id: check
+        run: |
+          set +e
+          python3 scripts/check_annual_updates.py --state annual_state.json --out annual_report.md
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          cat annual_report.md
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: annual_state.json
+          key: annual-state-${{ github.run_id }}
+      - name: マイページのお知らせを更新する
+        if: always()
+        run: |
+          python3 scripts/admin_notice.py --kind annual --report annual_report.md --code "${{ steps.check.outputs.code }}"
+          if [ ! -f data/admin_notices.json ]; then echo "お知らせなし"; exit 0; fi
+          git add data/admin_notices.json
+          if git diff --cached --quiet; then echo "お知らせの変化なし"; exit 0; fi
+          git config user.name "yamatch-admin-notice"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -q -m "運営者向けのお知らせを更新（年次データの確認）"
+          git pull -q --rebase && git push -q
+      - name: Issue を作る（対応が必要なときだけ）
+        if: steps.check.outputs.code == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "@${{ github.repository_owner }} 今月の確認で、対応が必要な項目が見つかりました。"
+            echo
+            echo "**次にやること**：Claude のアプリで yamatch のフォルダを開き、「月次更新して」と伝えてください。"
+            echo "出典ページを読んで更新案（変更前→変更後と根拠）を作り、確認してから反映します。"
+            echo
+            echo "- 噴火警戒レベル・天気・期限切れの注記は、ページを開いた時点で自動で切り替わります（対応不要）。"
+            echo "- 下の一覧は、人の確認が必要なものです。"
+            echo
+            cat annual_report.md
+          } > issue_body.md
+          gh issue create --title "年次データの確認 $(date +%Y-%m)" --body-file issue_body.md
