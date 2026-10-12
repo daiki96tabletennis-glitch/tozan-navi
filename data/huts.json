@@ -56,7 +56,17 @@
       "bookingSourceUrl": "https://www.enzanso.co.jp/hutte-ooyari",
       "capacityRef": 80,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=981",
-      "auto": {}
+      "auto": {
+        "bookingStartDate": {
+          "value": "5月19日から（2026年）",
+          "source": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+          "year": 2026,
+          "month": 5,
+          "day": 19,
+          "by": "pattern",
+          "line": "2026/7/1～10/12、＊5/19から宿泊予約受付開始"
+        }
+      }
     },
     {
       "id": "hut-f333b6ff",
@@ -512,7 +522,17 @@
       "bookingSourceUrl": "https://www.enzanso.co.jp/",
       "capacityRef": 650,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=926",
-      "auto": {}
+      "auto": {
+        "bookingStartDate": {
+          "value": "3月18日から（2026年）",
+          "source": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+          "year": 2026,
+          "month": 3,
+          "day": 18,
+          "by": "pattern",
+          "line": "2026/4/25～11/22 、3/18～完全予約制 ＊個室予約可能日は時期ごとのため、詳細は事前確認のこと"
+        }
+      }
     },
     {
       "id": "hut-ba19e45d",
@@ -890,6 +910,16 @@
           "year": 2026,
           "month": 6,
           "day": 20
+        },
+        "bookingStartDate": {
+          "value": "5月20日 7:00から（2026年）",
+          "source": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+          "year": 2026,
+          "month": 5,
+          "day": 20,
+          "by": "pattern",
+          "line": "2026/6/20～10/12 、5/20（水）7：00～Webで予約受付開始、テント場も完全予約制",
+          "time": "7:00"
         }
       }
     },
@@ -918,7 +948,18 @@
       "lastVerified": "2026-10-12",
       "capacityRef": 30,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=887",
-      "auto": {}
+      "auto": {
+        "bookingStartDate": {
+          "value": "5月20日 7:00から（2026年）",
+          "source": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+          "year": 2026,
+          "month": 5,
+          "day": 20,
+          "by": "pattern",
+          "line": "2026/6/27～9/26、5/20（水）7：00～Webで予約受付開始 ＊状況次第で変更の可能性",
+          "time": "7:00"
+        }
+      }
     },
     {
       "id": "hut-096f4fbb",
@@ -981,7 +1022,18 @@
       "bookingSourceUrl": "http://yamagoya.hakubakousha.com/",
       "capacityRef": 200,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=891",
-      "auto": {}
+      "auto": {
+        "bookingStartDate": {
+          "value": "5月8日 9:00から（2026年）",
+          "source": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+          "year": 2026,
+          "month": 5,
+          "day": 8,
+          "by": "pattern",
+          "line": "2026/6/27～9/27 ＊宿泊予約：5/8（金）9:00～開始",
+          "time": "9:00"
+        }
+      }
     },
     {
       "id": "hut-9955887f",
@@ -1009,7 +1061,18 @@
       "bookingSourceUrl": "http://yamagoya.hakubakousha.com/",
       "capacityRef": 63,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=911",
-      "auto": {}
+      "auto": {
+        "bookingStartDate": {
+          "value": "5月8日 9:00から（2026年）",
+          "source": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+          "year": 2026,
+          "month": 5,
+          "day": 8,
+          "by": "pattern",
+          "line": "2026/7/1～9/23 ＊宿泊予約：5/8（金）9:00～開始",
+          "time": "9:00"
+        }
+      }
     },
     {
       "id": "hut-6f04ec94",
@@ -1140,6 +1203,16 @@
           "year": 2026,
           "month": 6,
           "day": 27
+        },
+        "bookingStartDate": {
+          "value": "5月20日 7:00から（2026年）",
+          "source": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
+          "year": 2026,
+          "month": 5,
+          "day": 20,
+          "by": "pattern",
+          "line": "2026/6/27～9/27 ＊5/20（水）7：00～Webで予約受付開始",
+          "time": "7:00"
         }
       }
     },
@@ -1674,6 +1747,15 @@
           "month": 2,
           "day": 20,
           "time": "13:00"
+        },
+        "bookingStartDate": {
+          "value": "2月20日から（2026年）",
+          "source": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
+          "year": 2026,
+          "month": 2,
+          "day": 20,
+          "by": "pattern",
+          "line": "2026/7/11～10/11 ＊Web予約は2/20～ 冬季開放エリアあり"
         }
       }
     },
@@ -1819,7 +1901,17 @@
       "bookingSourceUrl": "http://www.komaho.net/hutte/utsugi_hutte1.html",
       "capacityRef": 32,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=1036",
-      "auto": {}
+      "auto": {
+        "bookingStartDate": {
+          "value": "6月1日から（2026年）",
+          "source": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
+          "year": 2026,
+          "month": 6,
+          "day": 1,
+          "by": "pattern",
+          "line": "2026/7/11～10/12 完全予約制、6/1～予約受付開始"
+        }
+      }
     },
     {
       "id": "hut-91ab7fef",
@@ -3587,7 +3679,18 @@
       "capacityRef": 150,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=865",
       "periodAuto": "6/6～10/18",
-      "auto": {}
+      "auto": {
+        "bookingStartDate": {
+          "value": "5月7日 9:00から（2026年）",
+          "source": "https://ltaro.com/news/post-406/",
+          "year": 2026,
+          "month": 5,
+          "day": 7,
+          "by": "pattern",
+          "line": "2026年の宿泊予約受付は、5月7日 午前9:00より開始予定です。",
+          "time": "9:00"
+        }
+      }
     },
     {
       "id": "hut-61bd3fd6",
@@ -4755,7 +4858,7 @@
       "officialUrl": "http://fujisan-ganso.jp/",
       "tel": null,
       "openText": "例年 7/10～9/上",
-      "bookingStart": null,
+      "bookingStart": "3月2日から（2026年。公式サイトに「開始予定」と記載）",
       "bookingMethods": [
         "Web（予約フォーム）"
       ],
@@ -4768,7 +4871,17 @@
       "lastVerified": "2026-10-12",
       "capacityRef": 180,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=621",
-      "auto": {}
+      "auto": {
+        "bookingStartDate": {
+          "value": "3月2日から（2026年）",
+          "source": "http://fujisan-ganso.jp/",
+          "year": 2026,
+          "month": 3,
+          "day": 2,
+          "by": "pattern",
+          "line": "今年の宿泊予約は、2026年3月2日(月)より開始予定です。"
+        }
+      }
     },
     {
       "id": "hut-7e73da99",

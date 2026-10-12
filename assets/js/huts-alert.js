@@ -7,6 +7,7 @@
 (function () {
   var KEY = 'ym_hut_alerts';
   var FKEY = 'ym_hut_favs';          // お気に入りの山小屋（小屋IDの配列）
+  var TKEY = 'ym_hut_trial';         // お試しのお知らせ（1件。ホームやマイページを開くと本物と同じように出る）
   var DATA = null;                   // /data/huts_rules.json の huts（小屋ID → {n:名前, mts:[山名], s:予約の開始, r:型}）
   var DAY = 86400000;
   var STAGES = [7, 1, 0];
@@ -23,6 +24,16 @@
   function save(list) {
     try { localStorage.setItem(KEY, JSON.stringify(list)); return true; } catch (e) { return false; }
   }
+  function trialGet() {
+    try {
+      var t = JSON.parse(localStorage.getItem(TKEY) || 'null');
+      if (!t || !t.name || !t.open) { return null; }
+      if (Date.now() - (t.ts || 0) > 86400000) { localStorage.removeItem(TKEY); return null; }      // 1日たったら自動で終わる
+      return t;
+    } catch (e) { return null; }
+  }
+  function trialSet(t) { try { localStorage.setItem(TKEY, JSON.stringify(t)); return true; } catch (e) { return false; } }
+  function trialClear() { try { localStorage.removeItem(TKEY); } catch (e) {} }
   function ymd(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
   function parse(s) { var p = String(s).split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
   function jp(d) { return d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日（' + '日月火水木金土'.charAt(d.getDay()) + '）'; }
@@ -95,7 +106,7 @@
     }).catch(function () {});
   }
 
-  function banner(items) {
+  function banner(items, onClose) {
     if (!items.length || document.getElementById('ym-hut-banner')) { return; }
     var el = document.createElement('div'), i, h = '';
     el.id = 'ym-hut-banner';
@@ -105,7 +116,7 @@
       h += '<div style="margin:2px 0"><b>' + esc(items[i].title) + '</b><br><a href="' + esc(items[i].url) + '" style="color:#4e6535">' + esc(items[i].body) + '</a></div>';
     }
     el.innerHTML = h + '<button type="button" aria-label="閉じる" style="position:absolute;right:6px;top:4px;border:none;background:none;font-size:20px;line-height:1;color:#7a7068;cursor:pointer;padding:6px">×</button>';
-    el.querySelector('button').addEventListener('click', function () { el.parentNode.removeChild(el); });
+    el.querySelector('button').addEventListener('click', function () { if (el.parentNode) { el.parentNode.removeChild(el); } if (onClose) { onClose(); } });
     document.body.appendChild(el);
   }
 
@@ -198,11 +209,56 @@
       items.push({ left: left, title: list[i].name + (left > 1 ? '：予約開始まであと' + left + '日' : left === 1 ? '：あした予約開始' : left === 0 ? '：きょう予約開始' : '：予約が始まっています') });
     }
     items.sort(function (a, b) { return a.left - b.left; });
+    var tr = trialGet();
+    if (tr) {
+      // お試し：本物と同じ「上に2秒だけ出るお知らせ」と鈴。マイページで見るまで、ホームを開くたびに出す
+      bell(true);
+      toast([{ left: 7, title: '【お試し】' + tr.name + '：予約開始まであと7日' }]);
+      return;
+    }
     bell(items.length > 0);
     // 1回の起動につき1度だけ出す（ページを行き来するたびに出さない）
     var seen = false;
     try { seen = sessionStorage.getItem('ym_hut_toast') === ymd(today); sessionStorage.setItem('ym_hut_toast', ymd(today)); } catch (e) {}
     if (!seen) { toast(items); }
+  }
+
+  function trialOnMyPage() {
+    var tr = trialGet(), box = document.getElementById('ym-hut-alerts');
+    if (!tr || !box) { return false; }
+    var o = parse(tr.open), ended = false;
+    trialClear();                                   // 見せた時点でお試しは終わり（次に開いたときは出ない）
+    function end() {
+      if (ended) { return; }
+      ended = true;
+      var b = document.getElementById('ym-hut-banner');
+      if (b && b.getAttribute('data-trial')) { b.parentNode.removeChild(b); }
+      var l = load();
+      renderMy(l);
+      bell(activeCount(l, DATA) > 0);
+      var n = document.createElement('div');
+      n.style.cssText = 'margin:10px 0 0;font-size:12px;color:#7a7068;text-align:center';
+      n.textContent = 'お試しのお知らせを終了しました。';
+      box.insertBefore(n, box.firstChild);
+      setTimeout(function () { if (n.parentNode) { n.parentNode.removeChild(n); } }, 4000);
+    }
+    banner([{ title: '【お試し】' + tr.name + '：予約開始まであと7日', body: jp(o) + (tr.time ? ' ' + tr.time : '') + 'から', url: '/huts/' + (tr.id || '') + (tr.id ? '/' : '') }], end);
+    var bn = document.getElementById('ym-hut-banner');
+    if (bn) { bn.setAttribute('data-trial', '1'); }
+    renderMy(load(), tr);
+    bell(true);
+    // 一覧のお試しの行を見たら（画面に入って2秒たったら）終わりにする。×で閉じても終わる
+    var row = box.querySelector('[data-trial-row]');
+    if (row && 'IntersectionObserver' in window) {
+      var timer = null, io = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { if (!timer) { timer = setTimeout(function () { io.disconnect(); setTimeout(end, 4000); }, 2000); } }
+        else if (timer) { clearTimeout(timer); timer = null; }
+      }, { threshold: 0.6 });
+      io.observe(row);
+    } else {
+      setTimeout(end, 8000);
+    }
+    return true;
   }
 
   function check(rules) {
@@ -229,6 +285,7 @@
     for (i = 0; i < show.length; i++) { notify(show[i].title, show[i].body, show[i].url); }
     renderMy(list);
     bell(activeCount(list, rules) > 0);
+    trialOnMyPage();
   }
 
  /* ---------- お気に入りの山小屋 ---------- */
@@ -276,10 +333,10 @@
   }
 
   /* ---------- マイページの一覧 ---------- */
-  function renderMy(list) {
+  function renderMy(list, trial) {
     var box = document.getElementById('ym-hut-alerts'), i, a, o, left, h;
     if (!box) { return; }
-    if (!list.length) { box.innerHTML = favHtml(); return; }
+    if (!list.length && !trial) { box.innerHTML = favHtml(); return; }
     h = favHtml() + '<div style="background:#fff;border-radius:16px;padding:14px 16px;margin:14px 0 4px;box-shadow:0 1px 1px rgba(26,22,14,.03),0 2px 5px rgba(26,22,14,.05)">'
       + '<div style="font-size:13px;font-weight:700;color:#2a3820;margin-bottom:8px">山小屋の予約開始のお知らせ</div>';
     for (i = 0; i < list.length; i++) {
@@ -293,6 +350,12 @@
         + '<div style="flex-shrink:0;text-align:right"><span style="display:inline-block;font-size:11.5px;border-radius:999px;padding:2px 9px;'
         + (left === null ? 'background:#eeece6;color:#6a6258">—' : left > 0 ? 'background:#e9efe0;color:#2a3820">あと' + left + '日' : 'background:#fbf1cf;color:#7a5a00">受付開始済み') + '</span><br>'
         + '<button type="button" data-del="' + i + '" style="border:none;background:none;color:#a09888;font-size:11.5px;padding:6px 0 0;cursor:pointer">削除</button></div></div>';
+    }
+    if (trial) {
+      h += '<div data-trial-row="1" style="display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid #f0ede5;font-size:13px;line-height:1.5">'
+        + '<div style="flex:1;min-width:0"><b style="color:#2a3820">' + esc(trial.name) + '</b><span style="font-size:10.5px;background:#eeece6;color:#6a6258;border-radius:3px;padding:0 5px;margin-left:6px">お試し</span><br>'
+        + '<span style="color:#5a544a">' + esc(jp(parse(trial.open))) + (trial.time ? ' ' + esc(trial.time) : '') + 'から</span></div>'
+        + '<div style="flex-shrink:0"><span style="display:inline-block;font-size:11.5px;border-radius:999px;padding:2px 9px;background:#e9efe0;color:#2a3820">あと7日</span></div></div>';
     }
     box.innerHTML = h + '</div>';
     var btns = box.querySelectorAll('[data-del]');
@@ -308,41 +371,117 @@
     }
   }
 
-  /* ---------- お知らせの見本：1週間前・前日・当日の3回がどう出るかを、その場で順に見せる ---------- */
+  /* ---------- お知らせの見本：ホームとマイページでどう出るかを、小さな画面の見本で順に見せる（1週間前・前日・当日） ---------- */
   var demoBusy = false;
+  function demoCss() {
+    if (document.getElementById('ym-demo-css')) { return; }
+    var st = document.createElement('style');
+    st.id = 'ym-demo-css';
+    st.textContent = '.dm{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}'
+      + '.dm-f{position:relative;border:1px solid #cfc8ba;border-radius:14px;background:#f0ede5;overflow:hidden;height:268px;font-size:10px;line-height:1.4;color:#2f2b26}'
+      + '.dm-h{background:#4e6535;color:#fff;font-weight:700;font-size:11px;padding:7px 9px}'
+      + '.dm-b{padding:8px 8px 0}.dm-l{height:7px;border-radius:3px;background:#dcd7cc;margin-bottom:6px}.dm-c{background:#fff;border-radius:8px;height:34px;margin-bottom:6px}'
+      + '.dm-nav{position:absolute;left:0;right:0;bottom:0;display:flex;background:#fff;border-top:1px solid #e8e4dc}'
+      + '.dm-nav span{flex:1;position:relative;text-align:center;font-size:8px;letter-spacing:-.03em;white-space:nowrap;color:#8a8072;padding:13px 0 5px}.dm-nav span.on{color:#4e6535;font-weight:700}'
+      + '.dm-nav i{position:absolute;left:50%;top:3px;margin-left:-5px;width:10px;height:10px;border-radius:3px;background:#cfc8ba}.dm-nav .on i{background:#4e6535}'
+      + '.dm-bell{position:absolute;left:50%;top:-1px;margin-left:3px;width:14px;height:14px;line-height:0;transform-origin:50% 2px;animation:ymBell 4s ease-in-out infinite;opacity:0;transition:opacity .2s}'
+      + '.dm-bell svg{width:14px;height:14px;fill:#f0c030;stroke:#8a5a10;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.dm-on .dm-bell{opacity:1}'
+      + '.dm-toast{position:absolute;left:6px;right:6px;top:30px;background:#2a3820;color:#fff;border-radius:7px;padding:6px 8px;font-size:9.5px;box-shadow:0 3px 10px rgba(0,0,0,.25);opacity:0;transform:translateY(-8px);transition:opacity .25s,transform .25s;z-index:2}'
+      + '.dm-toast.show{opacity:1;transform:translateY(0)}'
+      + '.dm-ban{position:absolute;left:6px;right:6px;top:30px;background:#fff;border:1px solid #c8d4b8;border-left:4px solid #4e6535;border-radius:7px;padding:6px 16px 6px 8px;font-size:9.5px;box-shadow:0 3px 10px rgba(0,0,0,.18);opacity:0;transition:opacity .25s;z-index:2}'
+      + '.dm-ban.show{opacity:1}.dm-ban b{display:block}.dm-ban u{color:#4e6535}.dm-ban em{position:absolute;right:5px;top:2px;font-style:normal;color:#7a7068;font-size:12px}'
+      + '.dm-card{background:#fff;border-radius:8px;padding:7px 8px;margin-top:62px}.dm-card h6{font-size:9.5px;margin:0 0 4px;color:#2a3820}'
+      + '.dm-row{display:flex;gap:6px;align-items:flex-start;border-top:1px solid #f0ede5;padding-top:4px}.dm-row div{flex:1;min-width:0}.dm-row b{display:block}'
+      + '.dm-badge{flex-shrink:0;border-radius:999px;padding:1px 6px;background:#e9efe0;color:#2a3820;font-size:8.5px;white-space:nowrap}.dm-badge.due{background:#fbf1cf;color:#7a5a00}'
+      + '.dm-cap{font-size:11px;color:#4a4540;margin-top:5px;line-height:1.5}.dm-cap b{color:#2a3820}'
+      + '@keyframes ymBell{0%,15%,100%{transform:rotate(0)}2%{transform:rotate(-16deg)}4%{transform:rotate(14deg)}6%{transform:rotate(-12deg)}8%{transform:rotate(10deg)}10%{transform:rotate(-7deg)}12%{transform:rotate(4deg)}}'
+      + '@media (prefers-reduced-motion:reduce){.dm-bell{animation:none}}';
+    document.head.appendChild(st);
+  }
+  var BELL_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>';
+  function demoFrames(host) {
+    var w = host.querySelector('.dm');
+    if (w) { return w; }
+    demoCss();
+    w = document.createElement('div');
+    w.className = 'dm';
+    var nav = function (on) {
+      var labels = ['ホーム', '診断', '記事', 'マイページ'], h = '', i;
+      for (i = 0; i < 4; i++) { h += '<span' + (i === on ? ' class="on"' : '') + '><i></i>' + labels[i] + (i === 3 ? '<em class="dm-bell">' + BELL_SVG + '</em>' : '') + '</span>'; }
+      return '<div class="dm-nav">' + h + '</div>';
+    };
+    w.innerHTML = '<div><div class="dm-f" data-dm="home"><div class="dm-h">Yamatch</div><div class="dm-toast"></div>'
+      + '<div class="dm-b"><div class="dm-l" style="width:70%"></div><div class="dm-c"></div><div class="dm-c"></div><div class="dm-c"></div><div class="dm-c"></div></div>' + nav(0) + '</div>'
+      + '<p class="dm-cap"><b>ホーム</b>　上に2秒だけ出て消えます。下のバーの「マイページ」に鈴が付きます。</p></div>'
+      + '<div><div class="dm-f" data-dm="my"><div class="dm-h">マイページ</div><div class="dm-ban"><b></b><u></u><em>×</em></div>'
+      + '<div class="dm-b"><div class="dm-card"><h6>山小屋の予約開始のお知らせ</h6><div class="dm-row"><div><b class="dm-n"></b><span class="dm-d"></span></div><span class="dm-badge"></span></div></div></div>' + nav(3) + '</div>'
+      + '<p class="dm-cap"><b>マイページ</b>　×で閉じるまで上に出ます。一覧で「あと◯日」を確認できます。</p></div>';
+    host.insertBefore(w, host.querySelector('[id$="demo-s"]').nextSibling);      // 説明の行のすぐ下に置く
+    return w;
+  }
   function demo(name, open, time, stay, statusEl) {
-    if (demoBusy) { return; }
+    if (demoBusy || !statusEl) { return; }
     demoBusy = true;
     var o = open || new Date(today.getTime() + 7 * DAY), steps = [7, 1, 0], k = 0;
+    var w = demoFrames(statusEl.parentNode), home = w.querySelector('[data-dm="home"]'), my = w.querySelector('[data-dm="my"]');
+    var toastEl = home.querySelector('.dm-toast'), ban = my.querySelector('.dm-ban');
     var when = function (d) { return new Date(o.getTime() - d * DAY); };
-    function say(t) { if (statusEl) { statusEl.textContent = t; } }
+    var short = function (d) { return (d.getMonth() + 1) + '月' + d.getDate() + '日'; };
+    my.querySelector('.dm-n').textContent = name;
+    my.querySelector('.dm-d').textContent = short(o) + (time ? ' ' + time : '') + 'から';
     function step() {
-      var old = document.getElementById('ym-hut-banner');
-      if (old) { old.parentNode.removeChild(old); }
+      toastEl.className = 'dm-toast';
+      ban.className = 'dm-ban';
       if (k >= steps.length) {
-        bell(activeCount(load(), DATA) > 0);
-        say('見本はここまでです。実際は、それぞれの日に Yamatch を開いたときに出ます（開かなかった日のお知らせは出ません）。');
+        statusEl.textContent = '見本はここまでです。実際は、それぞれの日に Yamatch を開いたときに出ます（開かなかった日のお知らせは出ません）。';
         demoBusy = false;
         return;
       }
-      var d = steps[k], title = '【見本】' + name + (d === 0 ? '：予約が始まります' : d === 1 ? '：あした予約開始' : '：予約開始まであと7日');
+      var d = steps[k], msg = name + (d === 0 ? '：きょう予約開始' : d === 1 ? '：あした予約開始' : '：予約開始まであと7日');
       var body = jp(o) + (time ? ' ' + time : '') + 'から' + (stay ? '（' + stay.replace(/-/g, '/') + ' 泊の分）' : '');
-      say((k + 1) + '／3　' + (d === 0 ? '当日' : d === 1 ? '前日' : '1週間前') + '（' + jp(when(d)) + '）に開いたときの表示');
-      banner([{ title: title, body: body, url: location.pathname }]);
-      bell(true);
-      if (d === 0) { notify(title, body, location.pathname); }
+      statusEl.textContent = (k + 1) + '／3　' + (d === 0 ? '当日' : d === 1 ? '前日' : '1週間前') + '（' + jp(when(d)) + '）に開いたとき';
+      home.className = 'dm-f dm-on';
+      my.className = 'dm-f dm-on';
+      setTimeout(function () {
+        toastEl.textContent = msg;
+        toastEl.className = 'dm-toast show';
+        ban.querySelector('b').textContent = msg.replace('きょう予約開始', '予約が始まります');
+        ban.querySelector('u').textContent = short(o) + (time ? ' ' + time : '') + 'から';
+        ban.className = 'dm-ban show';
+        var bd = my.querySelector('.dm-badge');
+        bd.textContent = d === 0 ? '受付開始済み' : 'あと' + d + '日';
+        bd.className = 'dm-badge' + (d === 0 ? ' due' : '');
+      }, 250);
+      setTimeout(function () { toastEl.className = 'dm-toast'; }, 2300);      // ホームのお知らせは2秒で消える
+      if (d === 0) { notify('【見本】' + msg, body, location.pathname); }
       k++;
-      setTimeout(step, 3200);
+      setTimeout(step, 3600);
     }
     step();
   }
   function demoBlock() {
-    return '<div class="ha-demo"><button type="button" id="ha-demo" class="ha-btn ha-btn2">お知らせの見本を見る</button>'
+    return '<div class="ha-demo"><button type="button" id="ha-demo" class="ha-btn ha-btn2">お知らせの見本を見る</button> '
+      + '<button type="button" id="ha-trial" class="ha-btn ha-btn2">実際の画面でお試しする</button><p id="ha-trial-s" class="ha-p" style="margin:8px 0 0;font-size:12.5px"></p>'
       + '<p id="ha-demo-s" class="ha-p" style="margin:8px 0 0;font-size:12px"></p>'
-      + '<p class="ha-p" style="margin:6px 0 0;font-size:12px;color:#7a7068">見本では、1週間前・前日・当日のお知らせを約3秒ずつ順に画面の上に出します。'
-      + '下のバーのあるページでは「マイページ」に鈴が付きます。端末の通知を許可している場合は、当日分の通知も1回送ります。</p></div>';
+      + '<p class="ha-p" style="margin:6px 0 0;font-size:12px;color:#7a7068">ホームとマイページでどう見えるかを、小さな画面の見本で、1週間前・前日・当日の順に見せます。'
+      + '端末の通知を許可している場合は、当日分の通知も1回送ります。</p></div>';
   }
-  function bindDemo(name, getCur, getStay) {
+  function trialStart(id, name, time, statusEl) {
+    var ok = trialSet({ id: id || '', name: name, open: ymd(new Date(today.getTime() + 7 * DAY)), time: time || '', ts: Date.now() });
+    try { sessionStorage.removeItem('ym_hut_toast'); } catch (e) {}
+    if (!statusEl) { return; }
+    statusEl.innerHTML = ok
+      ? 'お試しをセットしました。<a href="/" style="color:#4e6535;font-weight:700">ホーム</a> か <a href="/mypage/" style="color:#4e6535;font-weight:700">マイページ</a> を開くと、「予約開始まであと7日」のお知らせが本物と同じように出ます。マイページでお知らせを見ると、お試しは終わります（見なくても1日で消えます）。'
+      : 'この端末に保存できませんでした（プライベートブラウズでは使えません）。';
+  }
+  function bindDemo(name, getCur, getStay, id) {
+    var tb = document.getElementById('ha-trial');
+    if (tb) {
+      tb.addEventListener('click', function () {
+        var c = getCur ? getCur() : null;
+        trialStart(id, name, c ? c.time : '', document.getElementById('ha-trial-s'));
+      });
+    }
     var b = document.getElementById('ha-demo');
     if (!b) { return; }
     b.addEventListener('click', function () {
@@ -367,7 +506,7 @@
       box.innerHTML = head + kind + '<p class="ha-p">Yamatch をホーム画面に追加すると、予約開始の1週間前・前日・当日にお知らせを受け取れます。'
         + 'ホーム画面のアイコンから開いたときに、この欄で泊まりたい日を登録できます。</p>'
         + '<a class="ha-btn ha-btn2" href="/">ホーム画面に追加する方法を見る</a>' + demoBlock();
-      bindDemo(hut.name, function () { var c = compute(rule, needDate ? ymd(new Date(today.getTime() + 60 * DAY)) : null); return c.err ? null : c; }, function () { return ''; });
+      bindDemo(hut.name, function () { var c = compute(rule, needDate ? ymd(new Date(today.getTime() + 60 * DAY)) : null); return c.err ? null : c; }, function () { return ''; }, hut.id);
       return;
     }
     function mine() { var l = load(), i, out = []; for (i = 0; i < l.length; i++) { if (l[i].id === hut.id) { out.push(l[i]); } } return out; }
@@ -404,7 +543,7 @@
           btn.disabled = left <= 0;
         });
       }
-      bindDemo(hut.name, function () { return cur && !cur.err ? cur : null; }, function () { return input ? input.value : ''; });
+      bindDemo(hut.name, function () { return cur && !cur.err ? cur : null; }, function () { return input ? input.value : ''; }, hut.id);
       btn.addEventListener('click', function () {
         if (!cur || cur.err) { return; }
         var l = load(), stay = input ? input.value : '', i;
@@ -437,6 +576,12 @@
     for (i = 0; i < xs.length; i++) { xs[i].addEventListener('click', close); }
     modal.addEventListener('click', function (ev) { if (ev.target === modal) { close(); } });
     document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') { close(); } });
+    var tb = document.getElementById('ha-modal-trial');
+    if (tb) {
+      tb.addEventListener('click', function () {
+        trialStart(modal.getAttribute('data-demo-id') || '', modal.getAttribute('data-demo-name') || '山小屋', '', document.getElementById('ha-modal-trial-s'));
+      });
+    }
     var d = document.getElementById('ha-modal-demo');
     if (d) {
       d.addEventListener('click', function () {
@@ -450,7 +595,7 @@
   paintFavs();
   var list0 = load();
   renderMy(list0);
-  if (!list0.length && !(favs().length && document.getElementById('ym-hut-alerts'))) { return; }
+  if (!list0.length && !trialGet() && !(favs().length && document.getElementById('ym-hut-alerts'))) { return; }
   // 登録があるときだけ、最新の予約開始データを読んで確かめる（読めなければ、登録したときの型で確かめる）
   var done = false;
   function run(rules) { if (done) { return; } done = true; DATA = rules; check(rules); }

@@ -12,7 +12,7 @@ M = {m['id']: m for m in ML}
 H = d['huts']
 _cp = os.path.join(ROOT, 'data', 'huts_coords.json')
 COORDS = json.load(open(_cp, encoding='utf-8'))['huts'] if os.path.exists(_cp) else {}
-MAP_VER = '20261012i'
+MAP_VER = '20261012m'
 import calendar, math, sys
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 import huts_season
@@ -701,7 +701,7 @@ PROMO = ('''<button type="button" class="promo" data-ha-open aria-haspopup="dial
 <span class="promo-t"><b>予約開始をお知らせ</b><small>泊まりたい日を登録すると、予約が始まる1週間前・前日・当日に知らせます（%(n)d軒が対応）</small></span>
 <span class="promo-a" aria-hidden="true">くわしく</span>
 </button>
-<div id="ha-modal" class="hamodal" role="dialog" aria-modal="true" aria-labelledby="ha-modal-t" data-demo-name="槍ヶ岳山荘" style="display:none">
+<div id="ha-modal" class="hamodal" role="dialog" aria-modal="true" aria-labelledby="ha-modal-t" data-demo-name="槍ヶ岳山荘" data-demo-id="%(demo_id)s" style="display:none">
 <div class="hamodal-in">
 <button type="button" class="hamodal-x" data-ha-close aria-label="閉じる">×</button>
 <div class="hamodal-k">NEW</div>
@@ -716,14 +716,17 @@ PROMO = ('''<button type="button" class="promo" data-ha-open aria-haspopup="dial
 <p class="hamodal-s">内訳：宿泊日の何日前・何か月前に始まる山小屋 %(rel)d軒／シーズン分をまとめて受け付ける山小屋 %(fix)d軒／宿泊する時期ごとに開始日が違う山小屋 %(phase)d軒。予約開始日の決まり方が分からない山小屋は対応していません。</p>
 <button type="button" id="ha-modal-demo" class="ha-btn">お知らせの見本を見る</button>
 <p id="ha-modal-demo-s" class="hamodal-d"></p>
-<p class="hamodal-s">見本では、1週間前・前日・当日のお知らせを約3秒ずつ順に画面の上に出します（槍ヶ岳山荘の例）。</p>
+<button type="button" id="ha-modal-trial" class="ha-btn ha-btn2" style="margin-top:4px">実際の画面でお試しする</button>
+<p id="ha-modal-trial-s" class="hamodal-d" style="color:#3a3530"></p>
+<p class="hamodal-s">ホームとマイページでどう見えるかを、小さな画面の見本で、1週間前・前日・当日の順に見せます（槍ヶ岳山荘の例）。</p>
 <div class="hamodal-f">
 <p><b>使うには</b>Yamatch をホーム画面に追加し、ホーム画面のアイコンから開いてください。登録はお使いの端末の中に保存され、Yamatch を開いたときにお知らせします（開いていないときには届きません）。</p>
 <a class="ha-btn ha-btn2" href="/">ホーム画面に追加する方法を見る</a>
 <button type="button" class="hamodal-c" data-ha-close>閉じる</button>
 </div>
 </div>
-</div>''' % {'bell': BELL, 'n': _rn, 'all': len(H), 'rel': _rc.get('rel', 0) + _rc.get('mon', 0), 'fix': _rc.get('fix', 0), 'phase': _rc.get('phase', 0)})
+</div>''' % {'bell': BELL, 'n': _rn, 'all': len(H), 'rel': _rc.get('rel', 0) + _rc.get('mon', 0), 'fix': _rc.get('fix', 0), 'phase': _rc.get('phase', 0),
+       'demo_id': next((h['id'] for h in H if h['name'] == '槍ヶ岳山荘'), '')})
 
 # 「山小屋の一覧」は地域ごとに見出しで区切る
 _g = []

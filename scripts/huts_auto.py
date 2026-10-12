@@ -59,6 +59,37 @@ def page_lines(url):
     return lines
 
 
+LINK_DEEP = re.compile(r'予約|宿泊|ご利用|料金|案内|お知らせ|新着|ニュース|トピック|reserv|yoyaku|stay|guide|plan|syukuhaku|shukuhaku|info|price|annai|news|topics|booking', re.I)
+_deep = {}
+
+
+def page_lines_deep(url, limit=12):
+    """page_lines より広く見る版：公式ページと、そこから1階層たどった予約・案内・お知らせのページ（最大 limit 個）。
+    予約開始の書き方を型で探すとき（huts_patterns.py）に使う。お知らせの一覧から、その先の記事1本までは追わない"""
+    if url in _deep:
+        return _deep[url]
+    b = _raw(url)
+    try:
+        t = b.decode('utf-8')
+    except UnicodeDecodeError:
+        t = b.decode('cp932', 'replace')
+    host = urllib.parse.urlparse(url).netloc
+    subs = []
+    for m in re.finditer(r'<a\b[^>]*href="([^"#]+)"[^>]*>(.*?)</a>', t, flags=re.S | re.I):
+        href = urllib.parse.urljoin(url, html.unescape(m.group(1)))
+        if urllib.parse.urlparse(href).netloc != host or re.search(r'\.(pdf|jpe?g|png|gif|zip|docx?|xlsx?)$', href, re.I):
+            continue
+        if (LINK_DEEP.search(re.sub(r'<[^>]+>', '', m.group(2))) or LINK_DEEP.search(href)) and href not in subs and href.rstrip('/') != url.rstrip('/'):
+            subs.append(href)
+    lines = []
+    for u in [url] + subs[:limit]:
+        for l in hf.fetch_text(u) or []:
+            if l not in lines:
+                lines.append(l)
+    _deep[url] = lines
+    return lines
+
+
 def yamatan(slug):
     """やまたんの小屋ページ → {capacity, open_period, reservation_method}。取れなければ {}"""
     t = _raw('https://www.yamatan.net/hut/' + slug).decode('utf-8', 'replace')
@@ -279,40 +310,64 @@ def run(huts, today=None, only=None, previous=None):
             if old:
                 report.append('- %s：%s が変わりました（%s → %s）' % (r['hut'], '予約の開始' if r['field'] == 'bookingStart' else '営業期間', old.get('value'), value))
             hist[key][ykey] = {'value': value, 'month': month, 'day': day, 'seenAt': today.isoformat()}
-    # C. レシピの無い「一斉解放型」の小屋：来季の予約開始らしい文を探して、候補として報告する（自動では採用しない）
+    # C. 型で読む（huts_patterns.py）：一覧の出典の文と、公式サイトの予約・案内・お知らせのページから、予約開始の書き方を型どおりに探す。
+    #    - 前の年の日付が分かっている一斉解放型の小屋：年が今年か来年で、前の日付から45日以内の候補が1つに決まれば、自動で使う
+    #    - 予約の開始が未登録の小屋・型と食い違う小屋：自動では使わず、候補として報告する
     #    あわせて、いまの日付を履歴に入れておく（前の年の日付の前後だけ3日に1回見に行く仕組みに乗せるため）
+    import huts_patterns
     import huts_rules
     have = set(r['hut'] for r in recipes if r['field'] in ('bookingStart', 'bookingStartDate'))
-    ty = target_year(today)
+    names = [h['name'] for h in huts]
     for h in huts:
-        if h.get('bookingNone') or h['name'] in have:
+        if h.get('bookingNone'):
             continue
         a = h.get('auto') or {}
         rule = huts_rules.derive(h['name'], h.get('bookingStart'), (a.get('bookingStartWeb') or {}).get('value'), (a.get('bookingWindow') or {}).get('value'))
-        if not rule or rule.get('t') != 'fix' or not rule.get('y'):
-            continue
         key = h['id'] + ':bookingStartDate'
-        if str(rule['y']) not in hist.get(key, {}):
+        if rule and rule.get('t') == 'fix' and rule.get('y') and str(rule['y']) not in hist.get(key, {}):
             hist.setdefault(key, {})[str(rule['y'])] = {'value': '%d月%d日から（%d年）' % (rule['m'], rule['d'], rule['y']), 'month': rule['m'], 'day': rule['d'],
                                                          'seenAt': today.isoformat(), 'seed': True}
-        if rule['y'] >= ty or not (h.get('officialUrl') or '').strip() or (only is not None and h['name'] not in only):
+        if only is not None and h['name'] not in only:
             continue
-        found = []
-        for l in page_lines(h['officialUrl'].strip()):
-            t = l.translate(ZEN)
-            if len(t) > 200 or not re.search(r'予約|受付|受け付け', t) or not re.search(r'%d|令和%d' % (ty, ty - 2018), t):
+        cs = [c for c in huts_patterns.candidates(h, page_lines_deep, names) if c['score'] >= 5]
+        fix = [c for c in cs if c['t'] == 'fix' and c.get('y') in (today.year, today.year + 1)]
+        rel = [c for c in cs if c['t'] in ('rel', 'mon')]
+
+        def text(c):
+            return '%d月%d日%sから（%d年）' % (c['m'], c['d'], (' ' + c['time']) if c.get('time') else '', c['y'])
+        if rule and rule.get('t') == 'fix':
+            if h['name'] in have and a.get('bookingStartDate') or a.get('bookingStart'):
+                continue                      # 小屋ごとのレシピで読めているときは、そちらを使う
+            prev = {'month': rule['m'], 'day': rule['d'], 'value': '%d月%d日' % (rule['m'], rule['d'])}
+            ok = [c for c in fix if (not rule.get('y') or c['y'] >= rule['y']) and check(c['y'], c['m'], c['d'], prev, today) is None]
+            if not ok:
                 continue
-            for m in re.finditer(r'(?<![0-9/])(\d{1,2})\s*(?:月|/)\s*(\d{1,2})(?![0-9])', t):
-                mo, d = int(m.group(1)), int(m.group(2))
-                try:
-                    diff = abs(_doy(mo, d) - _doy(rule['m'], rule['d']))
-                except ValueError:
-                    continue
-                if min(diff, 365 - diff) <= 45 and l not in found:
-                    found.append(l)
-                    break
-        if found:
-            report.append('- %s：%d年の予約開始らしい記載が公式ページにあります（自動では反映していません。確かめて日付を入れてください。前回は%d月%d日）\n    %s\n    %s' % (
-                h['name'], ty, rule['m'], rule['d'], ' ／ '.join(x[:90] for x in found[:3]), h['officialUrl'].strip()))
+            top_y = max(c['y'] for c in ok)
+            ok = [c for c in ok if c['y'] == top_y]
+            dates = sorted(set((c['m'], c['d']) for c in ok))
+            if len(dates) > 1:
+                report.append('- %s：%d年の予約開始らしい日付が複数あり、決められませんでした（自動では反映していません）\n    %s' % (
+                    h['name'], top_y, ' ／ '.join(c['line'][:70] for c in ok[:3])))
+                continue
+            c = ok[0]
+            h['auto']['bookingStartDate'] = {'value': text(c), 'source': c.get('url') or '', 'year': c['y'], 'month': c['m'], 'day': c['d'], 'by': 'pattern', 'line': c['line'][:160]}
+            if c.get('time'):
+                h['auto']['bookingStartDate']['time'] = c['time']
+            old = hist.setdefault(key, {}).get(str(c['y']))
+            if not old or (old.get('month'), old.get('day')) != (c['m'], c['d']):
+                if not rule.get('y') or c['y'] > rule['y'] or (c['m'], c['d']) != (rule['m'], rule['d']):
+                    report.append('- %s：予約の開始を公式の記載から読み取りました → %s（前回 %d月%d日）\n    %s\n    %s' % (
+                        h['name'], text(c), rule['m'], rule['d'], c['line'][:110], c.get('url') or ''))
+                hist[key][str(c['y'])] = {'value': text(c), 'month': c['m'], 'day': c['d'], 'seenAt': today.isoformat()}
+        elif not rule:
+            found = fix[:2] + rel[:1]
+            if found:
+                report.append('- %s：予約の開始らしい記載が見つかりました（未登録の小屋。自動では反映していません。確かめて登録してください）\n%s' % (
+                    h['name'], '\n'.join('    %s｜%s' % (c['line'][:110], c.get('url') or '') for c in found)))
+        elif rule.get('t') == 'rel' and h['name'] not in huts_rules.RULES and rel and rel[0]['t'] == 'rel':
+            c = rel[0]
+            if (c['n'], c['u']) != (rule['n'], rule['u']):
+                report.append('- %s：予約の開始の決まりが、いまのデータ（%d%s前）と違う書き方で見つかりました（%d%s前）。確かめてください\n    %s｜%s' % (
+                    h['name'], rule['n'], {'m': 'か月', 'd': '日', 'w': '週間'}[rule['u']], c['n'], {'m': 'か月', 'd': '日', 'w': '週間'}[c['u']], c['line'][:110], c.get('url') or ''))
     json.dump(hist, open(hpath, 'w', encoding='utf-8'), ensure_ascii=False, indent=1, sort_keys=True)
     return report

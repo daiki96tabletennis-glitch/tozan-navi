@@ -140,3 +140,6 @@ def derive(name, text, web=None, window=None, autodates=()):      # noqa: F811
         if m and not re.fullmatch(r'20\d\d年度?|Web', m.group(1)):
             r = dict(r, note=m.group(1))
     return r
+
+# 一覧の出典（「2か月前予約制」）とWeb予約（90日前）で書き方が違うことを確かめ済み。Web予約の決まりを使う
+RULES['中房温泉'] = {'t': 'rel', 'u': 'd', 'n': 90, 'time': '0:00', 'note': 'Web予約の日程（一覧の出典の記載は「2か月前予約制」）'}
