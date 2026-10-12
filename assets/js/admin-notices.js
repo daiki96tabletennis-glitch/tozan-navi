@@ -8,6 +8,9 @@
 (function () {
   'use strict';
   var KEY_HASH = '192fcc9a44c0deceea178e0f09d9ce1c440763958a252c3fa311cf30d1f0010a';
+  // 管理画面に手順と一緒に出す合言葉（運営者の指示・2026-10-12）。管理画面は公開URLなので、これは鍵ではなく、
+  // 一般の人のマイページに運営者向けの欄をうっかり出さないための合図として使う
+  var KEY_SHOWN = 'ZemhjE80hwDH';
   var box = document.getElementById('ym-admin-notices');
   if (!box) return;
   var ALWAYS = box.getAttribute('data-always') === '1';   // 管理画面
@@ -76,7 +79,18 @@
       + '<label style="display:flex;align-items:center;gap:10px;margin:8px 0 4px;cursor:pointer">'
       + '<input type="checkbox" id="ym-admin-toggle"' + (on ? ' checked' : '') + ' style="width:20px;height:20px;accent-color:#4e6535">'
       + '<span>この端末のマイページにも、このお知らせを出す<span style="display:block;font-size:11px;color:#93897c">いまは' + (on ? '出す設定です' : '出さない設定です') + '（端末ごとの設定。ほかの端末・ほかの人には出ません）</span></span></label>'
-      + '<div style="font-size:11.5px;color:#6a6258;margin:2px 0 8px">ホーム画面に追加したアプリは、ブラウザと設定が別です。アプリのマイページに出すには、アプリの中でこの管理画面（/admin/）を開いてオンにしてください。</div>'
+      + '<div style="background:#f0ede5;border-radius:10px;padding:10px 12px;margin:6px 0 10px">'
+      + '<b style="font-size:12.5px;color:#2a3820">ホーム画面に追加したアプリでオンにする方法</b>'
+      + '<div style="font-size:11.5px;color:#6a6258;margin:2px 0 6px">アプリはブラウザと設定が別で、アドレス欄も無いので、アプリの中で次の操作をします。</div>'
+      + '<ol style="margin:0;padding-left:20px;font-size:12.5px">'
+      + '<li>アプリのマイページで「＋ 新しい計画を作る」を押す</li>'
+      + '<li>山名に <b>管理者</b> と入れて「保存」を押す（この計画は保存されません）</li>'
+      + '<li>「運営者の確認」が開くので、合言葉を入れて「確認」を押す</li>'
+      + '</ol>'
+      + '<div style="margin-top:8px;font-size:12.5px">合言葉：<code id="ym-admin-keytext" style="font-family:Menlo,Consolas,monospace;font-size:14px;background:#fff;border:1px solid #cfc8ba;border-radius:6px;padding:3px 8px;user-select:all;-webkit-user-select:all">' + esc(KEY_SHOWN) + '</code>'
+      + '<button type="button" id="ym-admin-copy" style="margin-left:8px;border:1px solid #4e6535;background:#fff;color:#4e6535;border-radius:999px;padding:4px 12px;font-size:11.5px;font-family:inherit">コピー</button></div>'
+      + '<div style="font-size:11px;color:#93897c;margin-top:6px">やめるときは、上のチェックを外すか、その端末で /mypage/?admin=off を開きます。</div>'
+      + '</div>'
       + '<button type="button" id="ym-admin-unseen" style="border:1px solid #cfc8ba;background:#fff;color:#6a6258;border-radius:999px;padding:5px 12px;font-size:11.5px;font-family:inherit"' + (sn.length ? '' : ' disabled') + '>「確認済み」を取り消す（' + sn.length + '件）</button>'
       + '</div>'
       + '<details style="border-top:1px solid #eeece6;padding:10px 0;font-size:12.5px;line-height:1.65;color:#2f2b26">'
@@ -127,6 +141,11 @@
   box.addEventListener('click', function (e) {
     var t = e.target;
     if (t && t.id === 'ym-admin-unseen') { del('ym_admin_seen'); load(); return; }
+    if (t && t.id === 'ym-admin-copy') {
+      var done = function () { t.textContent = 'コピーしました'; setTimeout(function () { t.textContent = 'コピー'; }, 1500); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(KEY_SHOWN).then(done, function () {});
+      return;
+    }
     if (!t || !t.getAttribute || !t.getAttribute('data-seen')) return;
     var sn = seen(), id = t.getAttribute('data-seen');
     if (sn.indexOf(id) < 0) sn.push(id);
@@ -141,28 +160,50 @@
     load();
   });
 
-  // ホーム画面に追加したアプリにはアドレス欄が無いので、マイページの見出し「マイページ」を続けて5回押すと合言葉を聞く。
-  // 合っていればこの端末で表示をオンにする。すでにオンなら管理画面の「お知らせ」を開く
-  function secretEntry() {
-    if (ALWAYS) return;
-    var head = document.querySelector('header.ym-header'), taps = [];
-    if (!head) return;
-    head.addEventListener('click', function (e) {
-      if (e.target && e.target.closest && e.target.closest('a,button')) return;
-      var now = Date.now();
-      taps.push(now);
-      while (taps.length && now - taps[0] > 3000) taps.shift();
-      if (taps.length < 5) return;
-      taps = [];
-      if (get('ym_admin') === '1') { location.href = '/admin/#notices'; return; }
-      var key = window.prompt('合言葉');
-      if (!key || !(window.crypto && crypto.subtle && window.TextEncoder)) return;
-      crypto.subtle.digest('SHA-256', new TextEncoder().encode(key.replace(/\s/g, ''))).then(function (h) {
-        if (hex(h) === KEY_HASH) { set('ym_admin', '1'); load(); box.scrollIntoView({ block: 'start' }); }
+  // ホーム画面に追加したアプリにはアドレス欄が無いので、アプリの中からオンにする入口を用意する：
+  // マイページの登山計画で、山名に「管理者」と入れて保存を押すと、合言葉を入れるポップアップが開く（計画は保存しない）。
+  // 合っていれば、この端末で運営者向けの表示をオンにする
+  function askKey(onDone) {
+    var old = document.getElementById('ym-admin-ask');
+    if (old) old.parentNode.removeChild(old);
+    var on = get('ym_admin') === '1';
+    var ov = document.createElement('div');
+    ov.id = 'ym-admin-ask';
+    ov.style.cssText = 'position:fixed;left:0;top:0;right:0;bottom:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:20px';
+    ov.innerHTML = '<div role="dialog" aria-modal="true" aria-label="運営者の確認" style="background:#fff;border-radius:16px;padding:18px 18px 14px;width:100%;max-width:340px;box-shadow:0 8px 30px rgba(0,0,0,.3);font-size:13.5px;line-height:1.6;color:#2f2b26">'
+      + '<b style="display:block;font-size:15px;color:#2a3820;margin-bottom:6px">運営者の確認</b>'
+      + (on ? '<div>この端末では、運営者向けの表示はすでにオンです。</div>'
+            : '<div style="margin-bottom:10px">合言葉を入れてください。</div>'
+              + '<input type="password" id="ym-admin-key" autocomplete="off" autocapitalize="off" style="width:100%;box-sizing:border-box;border:1px solid #cfc8ba;border-radius:8px;padding:10px 12px;font-size:16px;font-family:inherit">'
+              + '<div id="ym-admin-err" style="color:#a33;font-size:12px;min-height:18px;margin-top:4px"></div>')
+      + '<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">'
+      + '<button type="button" id="ym-admin-cancel" style="border:1px solid #cfc8ba;background:#fff;color:#6a6258;border-radius:999px;padding:8px 16px;font-size:13px;font-family:inherit">' + (on ? '閉じる' : 'キャンセル') + '</button>'
+      + (on ? '' : '<button type="button" id="ym-admin-ok" style="border:none;background:#4e6535;color:#fff;border-radius:999px;padding:8px 18px;font-size:13px;font-weight:700;font-family:inherit">確認</button>')
+      + '</div></div>';
+    document.body.appendChild(ov);
+    function close() { if (ov.parentNode) ov.parentNode.removeChild(ov); }
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    document.getElementById('ym-admin-cancel').onclick = close;
+    if (on) return;
+    var inp = document.getElementById('ym-admin-key'), err = document.getElementById('ym-admin-err');
+    function submit() {
+      var key = inp.value.replace(/\s/g, '');
+      if (!key) return;
+      if (!(window.crypto && crypto.subtle && window.TextEncoder)) { err.textContent = 'この端末では確認できません。'; return; }
+      crypto.subtle.digest('SHA-256', new TextEncoder().encode(key)).then(function (h) {
+        if (hex(h) !== KEY_HASH) { err.textContent = '合言葉が違います。'; inp.value = ''; inp.focus(); return; }
+        set('ym_admin', '1');
+        close();
+        if (onDone) onDone();
+        load();
+        try { box.scrollIntoView({ block: 'start' }); } catch (e) {}
       });
-    });
+    }
+    document.getElementById('ym-admin-ok').onclick = submit;
+    inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') submit(); });
+    inp.focus();
   }
-  secretEntry();
+  if (!ALWAYS) window.ymAdminAsk = askKey;
 
   window.ymAdminNoticesReload = load;
   checkKey(load);

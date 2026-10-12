@@ -551,6 +551,11 @@ function openPlanForm(index) {
 function closePlanForm(){ document.getElementById('plan-form').classList.remove('open'); }
 
 function savePlan() {
+  // 山名に「管理者」と入れて保存：計画は保存せず、運営者の確認（合言葉）を開く（assets/js/admin-notices.js）
+  if (document.getElementById('f-mountain').value.trim() === '管理者' && window.ymAdminAsk) {
+    window.ymAdminAsk(function () { closePlanForm(); });
+    return;
+  }
   var plans = getPlans();
   var shops = [];
   document.querySelectorAll('.shop-input').forEach(function(inp){if(inp.value.trim())shops.push(inp.value.trim());});
@@ -1995,6 +2000,6 @@ init();
 <script src="/assets/js/counts-config.js?v=20261010b"></script>
 <script src="/assets/js/ym-counts.js?v=20261010b"></script>
 <script src="/assets/js/huts-alert.js?v=20261012m" defer></script>
-<script src="/assets/js/admin-notices.js?v=20261012c" defer></script>
+<script src="/assets/js/admin-notices.js?v=20261012f" defer></script>
 </body>
 </html>
