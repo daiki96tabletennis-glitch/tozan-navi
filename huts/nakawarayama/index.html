@@ -28,7 +28,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Yamatch", "item": "https://tozan-navi.com/"}, {"@type": "ListItem", "position": 2, "name": "山小屋まとめ", "item": "https://tozan-navi.com/huts/"}, {"@type": "ListItem", "position": 3, "name": "和名倉山の山小屋", "item": "https://tozan-navi.com/huts/nakawarayama/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "和名倉山の山小屋", "numberOfItems": 1, "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "LodgingBusiness", "name": "将監小屋", "url": "https://tozan-navi.com/huts/hut-f2e5e7df/"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "和名倉山の山小屋", "numberOfItems": 1, "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "LodgingBusiness", "name": "将監小屋", "url": "https://tozan-navi.com/huts/hut-f2e5e7df/", "geo": {"@type": "GeoCoordinates", "latitude": 35.85687, "longitude": 138.86335}}}]}</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Zen Kaku Gothic New',-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;background:#f0ede5;color:#2f2b26;line-height:1.6}
@@ -84,6 +84,9 @@ h1{font-size:22px;font-weight:800;color:#2a3820;margin-bottom:4px}
 .foot summary{cursor:pointer;color:#7a7068;padding:6px 0;text-align:right}
 .foot details div{padding:3px 0}.foot details b{display:inline-block;min-width:7.5em;color:#7a7068;font-weight:700;font-size:11px}
 .src{font-size:11.5px;color:#7a7068;margin-top:14px;line-height:1.8}.src a{color:#4e6535}
+.hmap{height:340px;border-radius:12px;border:1px solid #e0dbd4;background:#e8e4dc;margin-bottom:8px;z-index:0}
+.mapnote{font-size:11.5px;color:#7a7068;margin-bottom:12px}
+.maplink{display:inline-block;font-size:12.5px;color:#4e6535;margin-bottom:14px}
 .bc{font-size:11.5px;color:#7a7068;margin-bottom:10px}.bc a{color:#4e6535;text-decoration:none}
 .lead{font-size:13.5px;color:#3a3530;margin-bottom:12px}
 .upd{font-size:11.5px;color:#7a7068;margin-bottom:12px}
@@ -106,6 +109,11 @@ footer{text-align:center;padding:20px 16px;font-size:12px;color:#a09888;border-t
 <p class="lead">和名倉山（埼玉県・標高2,036m）で使える山小屋は1軒です。予約がいつから始まるか、予約方法、定員、2026年の営業期間をまとめました。</p>
 <p class="upd">最終確認：<time datetime="2026-10-10">2026年10月10日</time>　<a href="/mountains/nakawarayama/" style="color:#4e6535">和名倉山の登山情報（アクセス・コース）を見る →</a></p>
 <table class="cmp"><thead><tr><th>山小屋</th><th>予約の開始</th><th>予約方法</th></tr></thead><tbody><tr><td><a href="#hut-f2e5e7df">将監小屋</a></td><td>公式サイトで確認</td><td>電話</td></tr></tbody></table>
+<h2 class="sec">和名倉山の山小屋マップ</h2>
+<div id="hmap" class="hmap" role="region" aria-label="山小屋の地図"></div>
+
+<script>window.YM_HUT_PTS=[{"n":"将監小屋","la":35.85687,"lo":138.86335,"u":"/huts/hut-f2e5e7df/","s":""}];</script>
+<script src="/assets/js/huts-map.js?v=20261012b" defer></script>
 <div id="list">
 <article class="hut" id="hut-f2e5e7df" data-region="奥秩父・大菩薩" data-m="nakawarayama" data-key="将監小屋 和名倉山">
   <div class="hh"><h2><a href="/huts/hut-f2e5e7df/">将監小屋</a></h2><span class="rg">奥秩父・大菩薩</span><span class="req">予約必須</span></div>

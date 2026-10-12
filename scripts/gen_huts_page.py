@@ -10,6 +10,30 @@ d = json.load(open(os.path.join(ROOT, 'data', 'huts.json'), encoding='utf-8'))
 ML = json.load(open(os.path.join(ROOT, 'data', 'mountains.json'), encoding='utf-8'))
 M = {m['id']: m for m in ML}
 H = d['huts']
+_cp = os.path.join(ROOT, 'data', 'huts_coords.json')
+COORDS = json.load(open(_cp, encoding='utf-8'))['huts'] if os.path.exists(_cp) else {}
+MAP_VER = '20261012b'
+
+
+def map_block(huts, starts, lazy=''):
+    """地図の枠と、ピンのデータ。位置の分かっている小屋だけ出す（分からない小屋は置かない）"""
+    pts = []
+    for h in huts:
+        c = COORDS.get(h['name'])
+        if c:
+            pts.append({'n': h['name'], 'la': c['lat'], 'lo': c['lng'], 'u': '/huts/%s/' % h['id'], 's': starts.get(h['id']) or ''})
+    if not pts:
+        return ''
+    miss = [h['name'] for h in huts if h['name'] not in COORDS]
+    note = ''
+    if miss and len(huts) <= 30:
+        note = '<p class="mapnote">地図に出ていない小屋（位置を確認できていません）：%s</p>' % E('、'.join(miss))
+    elif miss:
+        note = '<p class="mapnote">位置を確認できた%d軒を表示しています（%d軒は地図に出ていません）。</p>' % (len(pts), len(miss))
+    return ('<div id="hmap" class="hmap"%s role="region" aria-label="山小屋の地図"></div>\n%s\n'
+            '<script>window.YM_HUT_PTS=%s;</script>\n<script src="/assets/js/huts-map.js?v=%s" defer></script>\n' % (
+                (' data-lazy="%s"' % lazy) if lazy else '', note,
+                json.dumps(pts, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/'), MAP_VER))
 NA = '<span class="na">公式サイトで確認</span>'
 
 
@@ -212,6 +236,9 @@ h1{font-size:22px;font-weight:800;color:#2a3820;margin-bottom:4px}
 .foot summary{cursor:pointer;color:#7a7068;padding:6px 0;text-align:right}
 .foot details div{padding:3px 0}.foot details b{display:inline-block;min-width:7.5em;color:#7a7068;font-weight:700;font-size:11px}
 .src{font-size:11.5px;color:#7a7068;margin-top:14px;line-height:1.8}.src a{color:#4e6535}
+.hmap{height:340px;border-radius:12px;border:1px solid #e0dbd4;background:#e8e4dc;margin-bottom:8px;z-index:0}
+.mapnote{font-size:11.5px;color:#7a7068;margin-bottom:12px}
+.maplink{display:inline-block;font-size:12.5px;color:#4e6535;margin-bottom:14px}
 .bc{font-size:11.5px;color:#7a7068;margin-bottom:10px}.bc a{color:#4e6535;text-decoration:none}
 .lead{font-size:13.5px;color:#3a3530;margin-bottom:12px}
 .upd{font-size:11.5px;color:#7a7068;margin-bottom:12px}
@@ -243,10 +270,13 @@ footer{text-align:center;padding:20px 16px;font-size:12px;color:#a09888;border-t
 <li>営業期間や予約の受付は変わることがあります。予約の前に、必ず各山小屋の公式サイトで確認してください。</li>
 </ul>
 </details>
-<div class="tabs"><button class="tab on" data-v="mt">山から探す</button><button class="tab" data-v="all">山小屋の一覧</button></div>
+<div class="tabs"><button class="tab on" data-v="mt">山から探す</button><button class="tab" data-v="map">地図から探す</button><button class="tab" data-v="all">山小屋の一覧</button></div>
 <div id="v-mt">
 <input id="mq" type="search" placeholder="山名でさがす（例：槍ヶ岳）" style="width:100%;padding:11px 12px;border:1px solid #d0cbc2;border-radius:10px;font-size:15px;margin-bottom:8px;background:#fff">
 <div class="mgrid" id="mgrid">__MTS__</div>
+</div>
+<div id="v-map" style="display:none">
+__MAP__
 </div>
 <div id="v-all" style="display:none">
 <input id="q" type="search" placeholder="山小屋名・山名でさがす（例：涸沢）">
@@ -279,17 +309,18 @@ __FOOTER__
       ok=(!region||h.getAttribute('data-region')===region)&&(!k||h.getAttribute('data-key').indexOf(k)>-1);
       h.style.display=ok?'':'none'; if(ok)n++;
     }
-    list.style.display=view==='mt'?'none':'';
-    cnt.textContent=view==='mt'?'山を選ぶと、その山の山小屋のページを開きます':n+'軒を表示';
+    list.style.display=view==='all'?'':'none';
+    cnt.textContent=view==='mt'?'山を選ぶと、その山の山小屋のページを開きます':(view==='map'?'ピンをタップすると、山小屋の名前と予約の開始が出ます':n+'軒を表示');
   }
   mq.addEventListener('input',function(){ var k=mq.value.replace(/\\s+/g,''); for(var j=0;j<mbs.length;j++){ mbs[j].style.display=(!k||mbs[j].getAttribute('data-name').indexOf(k)>-1)?'':'none'; } });
   q.addEventListener('input',apply);
   var chips=document.querySelectorAll('.chip');
   for(i=0;i<chips.length;i++){ chips[i].addEventListener('click',function(){ for(var j=0;j<chips.length;j++)chips[j].className='chip'; this.className='chip on'; region=this.getAttribute('data-r'); apply(); }); }
   var tabs=document.querySelectorAll('.tab');
-  for(i=0;i<tabs.length;i++){ tabs[i].addEventListener('click',function(){ for(var j=0;j<tabs.length;j++)tabs[j].className='tab'; this.className='tab on'; view=this.getAttribute('data-v'); document.getElementById('v-mt').style.display=view==='mt'?'':'none'; document.getElementById('v-all').style.display=view==='all'?'':'none'; apply(); }); }
+  for(i=0;i<tabs.length;i++){ tabs[i].addEventListener('click',function(){ for(var j=0;j<tabs.length;j++)tabs[j].className='tab'; this.className='tab on'; view=this.getAttribute('data-v'); document.getElementById('v-mt').style.display=view==='mt'?'':'none'; document.getElementById('v-all').style.display=view==='all'?'':'none'; document.getElementById('v-map').style.display=view==='map'?'':'none'; apply(); if(view==='map'&&window.YMHutsMap){ window.YMHutsMap.show(); } }); }
   // /huts/#hut-xxxx で開いたときは、一覧に切り替えてその小屋を見せる
-  if(location.hash && document.getElementById(location.hash.slice(1))){ tabs[1].click(); document.getElementById(location.hash.slice(1)).scrollIntoView(); }
+  if(location.hash==='#map'){ tabs[1].click(); }
+  else if(location.hash && document.getElementById(location.hash.slice(1))){ tabs[2].click(); document.getElementById(location.hash.slice(1)).scrollIntoView(); }
   else { apply(); }
 })();
 </script>
@@ -341,6 +372,9 @@ def lodging(h):
         o['telephone'] = h['tel']
     if h.get('officialUrl'):
         o['sameAs'] = h['officialUrl'].strip()
+    c = COORDS.get(h['name'])
+    if c:
+        o['geo'] = {'@type': 'GeoCoordinates', 'latitude': c['lat'], 'longitude': c['lng']}
     return o
 
 
@@ -399,6 +433,8 @@ SHELL = """<!DOCTYPE html>
 
 # ---------- 一覧ページ ----------
 n_start = sum(1 for x in info.values() if x['start'])
+# 地図の吹き出しに出す短い文（予約の開始の本文だけ）
+START_SHORT = {k: ('予約不要' if x['none'] else (split_note(x['start'])[0] if x['start'] else '')) for k, x in info.items()}
 n_none = [by_id[k]['name'] for k, x in info.items() if x['none']]
 n_web = sum(1 for x in info.values() if x['methods'] and any(re.search(r'Web|LINE|ネット', m) for m in x['methods']))
 n_tel_only = sum(1 for x in info.values() if x['methods'] and all('電話' in m for m in x['methods']))
@@ -437,7 +473,7 @@ main_ld = ld(
 page = (page.replace('__N__', str(len(H))).replace('__YEAR__', str(YEAR)).replace('__UPD__', upd)
         .replace('__HEADCOMMON__', HEADCOMMON).replace('__LD__', main_ld).replace('__FAQ__', faq_html(MAIN_FAQ)).replace('__FOOTER__', FOOTER)
         .replace('__VERIFIED_JA__', VERIFIED_JA).replace('__VERIFIED__', VERIFIED)
-        .replace('__CHIPS__', chips).replace('__MTS__', ''.join(mt_btns)).replace('__CARDS__', '\n'.join(cards)))
+        .replace('__MAP__', map_block(H, START_SHORT, 'manual')).replace('__CHIPS__', chips).replace('__MTS__', ''.join(mt_btns)).replace('__CARDS__', '\n'.join(cards)))
 write(os.path.join(ROOT, 'huts', 'index.html'), page)
 print('huts/index.html', len(H), '軒／山', len(mt_btns))
 
@@ -475,6 +511,7 @@ for m in ML:
         + '<p class="lead">%s予約がいつから始まるか、予約方法、定員、%d年の営業期間をまとめました。</p>\n' % (lead, YEAR)
         + '<p class="upd">最終確認：<time datetime="%s">%s</time>　<a href="/mountains/%s/" style="color:#4e6535">%sの登山情報（アクセス・コース）を見る →</a></p>\n' % (VERIFIED, VERIFIED_JA, E(mid), E(m['name']))
         + '<table class="cmp"><thead><tr><th>山小屋</th><th>予約の開始</th><th>予約方法</th></tr></thead><tbody>%s</tbody></table>\n' % ''.join(rows)
+        + (('<h2 class="sec">%sの山小屋マップ</h2>\n' % E(m['name']) + map_block(hs, START_SHORT)) if any(h['name'] in COORDS for h in hs) else '')
         + '<div id="list">\n%s\n</div>\n' % '\n'.join(card_of[h['id']] for h in hs)
         + ('<h2 class="sec">近くの山・同じ山小屋を使う山</h2>\n<div class="rel">%s</div>\n' % rel_html if rel_html else '')
         + '<p class="src">営業期間や予約の受付は変わることがあります。予約の前に、必ず各山小屋の公式サイトで確認してください。出典は<a href="/huts/">山小屋まとめ</a>のページにまとめています。</p>')
@@ -553,6 +590,9 @@ for h in H:
         + '<div class="fact" style="background:#e9efe0;margin-bottom:12px"><div class="fl">%s</div>%s</div>\n' % ('予約' if x['none'] else '予約はいつから？', ans)
         + '<p class="upd">最終確認：<time datetime="%s">%s</time></p>\n' % (h.get('lastVerified') or VERIFIED, VERIFIED_JA)
         + '<div id="list">\n%s\n</div>\n' % own
+        + (('<h2 class="sec">%sの場所</h2>\n' % E(name) + map_block([h], START_SHORT)
+            + '<a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=%s,%s" target="_blank" rel="noopener">Googleマップで開く →</a>\n' % (
+                COORDS[name]['lat'], COORDS[name]['lng'])) if name in COORDS else '')
         + '<h2 class="sec">この山小屋を使う山</h2>\n<div class="rel">%s</div>\n' % ''.join(
             '<a class="mb" href="/huts/%s/">%sの山小屋<span>%d</span></a>' % (E(i), E(M[i]['name']), count[i])
             for i in h['mountainIds'] + [o['id'] for o in h.get('otherMountains') or []])
