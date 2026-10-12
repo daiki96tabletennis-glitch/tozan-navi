@@ -141,6 +141,29 @@
     load();
   });
 
+  // ホーム画面に追加したアプリにはアドレス欄が無いので、マイページの見出し「マイページ」を続けて5回押すと合言葉を聞く。
+  // 合っていればこの端末で表示をオンにする。すでにオンなら管理画面の「お知らせ」を開く
+  function secretEntry() {
+    if (ALWAYS) return;
+    var head = document.querySelector('header.ym-header'), taps = [];
+    if (!head) return;
+    head.addEventListener('click', function (e) {
+      if (e.target && e.target.closest && e.target.closest('a,button')) return;
+      var now = Date.now();
+      taps.push(now);
+      while (taps.length && now - taps[0] > 3000) taps.shift();
+      if (taps.length < 5) return;
+      taps = [];
+      if (get('ym_admin') === '1') { location.href = '/admin/#notices'; return; }
+      var key = window.prompt('合言葉');
+      if (!key || !(window.crypto && crypto.subtle && window.TextEncoder)) return;
+      crypto.subtle.digest('SHA-256', new TextEncoder().encode(key.replace(/\s/g, ''))).then(function (h) {
+        if (hex(h) === KEY_HASH) { set('ym_admin', '1'); load(); box.scrollIntoView({ block: 'start' }); }
+      });
+    });
+  }
+  secretEntry();
+
   window.ymAdminNoticesReload = load;
   checkKey(load);
 })();
