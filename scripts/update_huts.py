@@ -62,12 +62,14 @@ def main():
     before = {h['id']: h for h in json.load(open(HUTS, encoding='utf-8'))['huts']} if os.path.exists(HUTS) else {}
     import huts_auto
     # 見に行く頻度：毎月1日は全部。一覧の出典（長野県のポータルなど）は、更新される4〜6月だけ3日に1回。
-    # 小屋ごとの公式サイトは、発表が出そうな期間だけ3日に1回（huts_auto.due_huts）。それ以外の日は何もしない。
+    # 小屋ごとの公式サイトは、発表が出そうな期間だけ3日に1回（huts_auto.due_huts）。
+    # 何日前型の小屋は、予約開始の発表が多い時期の2か月前から週1回、決まりが変わっていないかを確かめる（huts_auto.rule_watch_huts）。
+    # それ以外の日は何もしない。
     full = (not a.scheduled) or day.day == 1
     lists_due = full or (day.month in (4, 5, 6) and day.toordinal() % 3 == 0)
     only = None
     if not full:
-        only = huts_auto.due_huts(list(before.values()), day)
+        only = huts_auto.due_huts(list(before.values()), day) | huts_auto.rule_watch_huts(list(before.values()), day)
         if not lists_due and not only:
             print('今日は見に行く対象がありません（%s）' % today)
             return

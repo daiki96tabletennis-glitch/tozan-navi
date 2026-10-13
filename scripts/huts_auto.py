@@ -167,7 +167,8 @@ def target_year(today):
 def due_huts(huts, today):
     """今日、集中して見に行く小屋の名前の集合。
     前の年に日付つきの値（例：予約の開始 5月20日）が取れている小屋は、その日の44日前〜14日後を「発表が出そうな期間」とみなし、
-    対象の年の値がまだ取れていないあいだだけ、3日に1回見に行く。それ以外は月1回（update_huts.py が毎月1日に全小屋を見る）。"""
+    対象の年の値がまだ取れていないあいだだけ、3日に1回見に行く。それ以外は月1回（update_huts.py が毎月1日に全小屋を見る）。
+    何日前型の小屋は rule_watch_huts（発表が多い時期の2か月前から週1回）。"""
     hpath = os.path.join(ROOT, 'data', 'huts_history.json')
     hist = json.load(open(hpath, encoding='utf-8')) if os.path.exists(hpath) else {}
     ty = target_year(today)
@@ -190,6 +191,53 @@ def due_huts(huts, today):
             name = by_id.get(key.split(':')[0])
             if name:
                 out.add(name)
+    return out
+
+
+def season_window(today):
+    """予約開始の発表が多い時期（何日前型の小屋の決まりが変わっていないかを確かめる期間）。
+    一斉解放型・期間区切り型の小屋の予約開始日（data/huts_rules.json）を早い順に並べ、
+    早いほうから1割目の日付の60日前（＝ふつうの予約開始の約2か月前）から、9割目の日付の14日後までを期間とする。
+    いまのデータでは、おおよそ12月上旬〜6月末。データが変われば期間も動く。(期間の始まり, 終わり) を返す。期間外なら None"""
+    path = os.path.join(ROOT, 'data', 'huts_rules.json')
+    if not os.path.exists(path):
+        return None
+    days = []
+    for v in json.load(open(path, encoding='utf-8'))['huts'].values():
+        r = v.get('r') or {}
+        if r.get('t') == 'fix':
+            days.append(_doy(r['m'], r['d']))
+        elif r.get('t') == 'phase':
+            days += [_doy(x['m'], x['d']) for x in r['p']]
+    # 秋に来季分の受付を始める小屋（10〜11月）は少数なので、春の山に合わせるために7月以降は数えない
+    days = sorted(d for d in days if d < _doy(7, 1))
+    if len(days) < 10:
+        return None
+    lo, hi = days[len(days) // 10], days[len(days) * 9 // 10]
+    for y in (today.year, today.year + 1):
+        base = datetime.date(y, 1, 1)
+        start = base + datetime.timedelta(days=lo - 1 - 60)
+        end = base + datetime.timedelta(days=hi - 1 + 14)
+        if start <= today <= end:
+            return start, end
+    return None
+
+
+def rule_watch_huts(huts, today):
+    """今日、決まりが変わっていないかを確かめに行く小屋の名前の集合。
+    予約の開始が「宿泊日の何日前・何か月前」「宿泊月の前月◯日」で決まる小屋が対象で、season_window の期間中、週1回。
+    （期間外は、毎月1日の全小屋の確認だけ）"""
+    if not season_window(today) or today.toordinal() % 7:
+        return set()
+    import huts_rules
+    out = set()
+    for h in huts:
+        if h.get('bookingNone'):
+            continue
+        a = h.get('auto') or {}
+        r = huts_rules.derive(h['name'], h.get('bookingStart'), (a.get('bookingStartWeb') or {}).get('value'), (a.get('bookingWindow') or {}).get('value'))
+        if r and r.get('t') in ('rel', 'mon'):
+            out.add(h['name'])
     return out
 
 
@@ -364,10 +412,42 @@ def run(huts, today=None, only=None, previous=None):
             if found:
                 report.append('- %s：予約の開始らしい記載が見つかりました（未登録の小屋。自動では反映していません。確かめて登録してください）\n%s' % (
                     h['name'], '\n'.join('    %s｜%s' % (c['line'][:110], c.get('url') or '') for c in found)))
-        elif rule.get('t') == 'rel' and h['name'] not in huts_rules.RULES and rel and rel[0]['t'] == 'rel':
-            c = rel[0]
-            if (c['n'], c['u']) != (rule['n'], rule['u']):
-                report.append('- %s：予約の開始の決まりが、いまのデータ（%d%s前）と違う書き方で見つかりました（%d%s前）。確かめてください\n    %s｜%s' % (
-                    h['name'], rule['n'], {'m': 'か月', 'd': '日', 'w': '週間'}[rule['u']], c['n'], {'m': 'か月', 'd': '日', 'w': '週間'}[c['u']], c['line'][:110], c.get('url') or ''))
+        elif rule.get('t') in ('rel', 'mon'):
+            # 何日前型・月ごと型：決まりが変わっていないかを確かめる。自動では書き換えず、違いを見つけたら報告する。
+            #   a) 「◯か月前」の数字がいまのデータと違う（手で書いた型の小屋は、書き方が特殊なので対象外）
+            #   b) 今年・来年の日付で「◯月◯日から予約受付」という書き方が出てきた（一斉解放に変わった可能性）
+            # 同じ記載を毎週報告しないように、報告した行は履歴に覚えておく。確かめた日も残す
+            wkey = h['id'] + ':ruleWatch'
+            w = hist.setdefault(wkey, {})
+            seen = set(w.get('reported') or [])
+            unit = {'m': 'か月', 'd': '日', 'w': '週間'}
+            notes = []
+            same = False
+            if rule['t'] == 'rel' and rel and rel[0]['t'] == 'rel':
+                c = rel[0]
+                if (c['n'], c['u']) == (rule['n'], rule['u']):
+                    same = True
+                elif h['name'] not in huts_rules.RULES:
+                    notes.append(('rel:%d%s' % (c['n'], c['u']), '決まりが、いまのデータ（%d%s前）と違う書き方で見つかりました（%d%s前）' % (
+                        rule['n'], unit[rule['u']], c['n'], unit[c['u']]), c))
+            if rule['t'] == 'mon' and rel and rel[0]['t'] == 'mon':
+                c = rel[0]
+                if (c['n'], c.get('d') or 1) == (rule['n'], rule.get('d') or 1):
+                    same = True
+                else:
+                    notes.append(('mon:%d-%d' % (c['n'], c.get('d') or 1), '決まりが、いまのデータ（%dか月前の%d日）と違う書き方で見つかりました（%dか月前の%d日）' % (
+                        rule['n'], rule.get('d') or 1, c['n'], c.get('d') or 1), c))
+            for c in fix[:1]:
+                notes.append(('fix:%d-%d-%d' % (c['y'], c['m'], c['d']), '%d年%d月%d日から予約を受け付ける、という書き方が見つかりました（いまのデータは%s。一斉解放に変わった可能性）' % (
+                    c['y'], c['m'], c['d'], '%d%s前' % (rule['n'], unit[rule['u']]) if rule['t'] == 'rel' else '宿泊月の%dか月前' % rule['n']), c))
+            for k, msg, c in notes:
+                if k in seen:
+                    continue
+                seen.add(k)
+                report.append('- %s：予約の開始の%s。自動では反映していません。確かめてください\n    %s｜%s' % (h['name'], msg, c['line'][:110], c.get('url') or ''))
+            w['checkedAt'] = today.isoformat()
+            w['result'] = 'same' if same and not notes else 'diff' if notes else 'notfound'
+            if seen:
+                w['reported'] = sorted(seen)
     json.dump(hist, open(hpath, 'w', encoding='utf-8'), ensure_ascii=False, indent=1, sort_keys=True)
     return report
