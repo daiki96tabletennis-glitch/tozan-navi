@@ -164,6 +164,24 @@
   - 見に行く頻度（`update_huts.py --scheduled`。ワークフローは毎日動き、やるかどうかをスクリプトが決める）：毎月1日に全小屋／前の年の日付から見て発表が出そうな期間（44日前〜14日後）で、対象の年の値が未取得の小屋だけ3日に1回／一覧の出典は4〜6月だけ3日に1回／それ以外の日は何もしない
   - 山と溪谷オンラインのリストは年ごとにURLが変わる。翌年版が出たら `huts_extra.py` の `YK_N` / `YK_S` を差し替える
 
+## 山小屋の予約開始：アプリの外に届く通知（プッシュ通知・準備中・2026-10-13〜）
+- 方針（運営者）：ホーム画面に追加したアプリ限定。メール・LINE は使わない。**設定が入るまでは表示も動きも変えない**
+- いまは休止中。`assets/js/huts-alert.js` の `PUSH = { db: '', key: '' }` が空のあいだ、登録も送信も何もしない
+- 仕組み
+  - 登録：アプリでお知らせを登録して通知を許可すると、`pushSync()` が「通知の宛先」と「小屋ID・泊まりたい日」を Firebase Realtime Database の `/hutPush/<宛先のSHA-256>` に預ける（同じ内容なら1日1回。登録が0件になれば消す）。名前・メールは預からない
+  - 送信：`scripts/huts_push_send.js`（`.github/workflows/huts-push.yml` が毎朝7時）。その日が1週間前（7〜2日前）・前日・当日の登録に送り、`/hutPushSent/` に記録して二重に送らない。無効な宛先（404/410）は預かった分ごと消す
+  - 予約開始日の計算はアプリと同じもの：送信スクリプトが `huts-alert.js` の `@core-start`〜`@core-end` を読み込む。**この範囲は `today` と `DAY` 以外の外の変数を使わない**（使うと送信側が壊れる）。型は `data/huts_rules.json`
+  - 読み書きの制限：`scripts/firebase_rules_huts_push.json`（Firebase のルールに書き足す。実機では未検証）
+  - 送信の失敗は、運営者向けのお知らせ（`admin_notice.py --kind push`）に出る
+- 公開するときにやること
+  1. Firebase のプロジェクトと Realtime Database を作り、ルールを書き足す
+  2. VAPID の鍵の組を作る（`npx web-push generate-vapid-keys`）。公開鍵は `PUSH.key`、秘密鍵は GitHub の Secrets だけに置く（リポジトリ・チャットに出さない）
+  3. GitHub の Secrets：`FIREBASE_DB_URL` `FIREBASE_SERVICE_ACCOUNT` `VAPID_PUBLIC_KEY` `VAPID_PRIVATE_KEY`
+  4. `PUSH.db` / `PUSH.key` を入れ、`huts-alert.js` の読み込みの版（`gen_huts_page.py` の MAP_VER・`index.html`・`mypage/index.html`）を上げて山小屋ページを作り直す
+  5. プライバシーポリシーに「通知の宛先と、登録した小屋・泊まりたい日を預かる」ことを書き足す。山小屋ページの説明文（「開いたときにお知らせ」）と見本（`demoFrames`）も実際の動きに合わせる
+  6. 管理者表示をオンにした端末で登録 → ワークフローを手動実行（テスト通知）で届くことを確かめてから公開する
+- 送る時刻は朝7時（受付開始の前に届く時刻）。GitHub の定期実行は遅れることがあるので、開始時刻ちょうどは狙わない
+
 ## 装備カレンダー（4区分・2026-10-08〜）
 - 表示の正は `gearCalendar`（12か月）。区分は `no_crampons`（アイゼン不要）/ `light_crampons`（軽アイゼン等）/ `winter_gear`（冬山装備）/ `closed`（入山不可）
 - 月の途中で変わる月だけ `{"split": true, "before": 区分, "after": 区分, "changeDate": 後の区分が始まる日}`。ページでは斜め2色になり、タップで切替日が出る

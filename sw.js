@@ -23,7 +23,7 @@ self.addEventListener('push', function (event) {
     icon: '/icon-192.png',
     badge: '/icon-192.png',
     data: { url: data.url || '/admin/post-draft.html' },
-    tag: 'yamatch-daily-post',
+    tag: data.tag || 'yamatch-daily-post',
     renotify: true,
   };
 

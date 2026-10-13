@@ -11,6 +11,11 @@
   var DATA = null;                   // /data/huts_rules.json の huts（小屋ID → {n:名前, mts:[山名], s:予約の開始, r:型}）
   var DAY = 86400000;
   var STAGES = [7, 1, 0];
+  // アプリの外に届く通知（プッシュ通知）。db と key の両方が入るまでは何もしない（表示も動きも今までと同じ）。
+  //   db  … 登録を預かる Firebase Realtime Database のアドレス（例：https://xxxx-default-rtdb.asia-southeast1.firebasedatabase.app）
+  //   key … 通知の公開鍵（VAPID の公開鍵。秘密鍵は GitHub の Secrets に置く。ここには書かない）
+  // 送るのは scripts/huts_push_send.js（.github/workflows/huts-push.yml が毎朝実行）
+  var PUSH = { db: '', key: '' };
   var now = new Date();
   var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
@@ -22,7 +27,7 @@
     try { var v = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; }
   }
   function save(list) {
-    try { localStorage.setItem(KEY, JSON.stringify(list)); return true; } catch (e) { return false; }
+    try { localStorage.setItem(KEY, JSON.stringify(list)); setTimeout(pushSync, 0); return true; } catch (e) { return false; }
   }
   function trialGet() {
     try {
@@ -34,6 +39,7 @@
   }
   function trialSet(t) { try { localStorage.setItem(TKEY, JSON.stringify(t)); return true; } catch (e) { return false; } }
   function trialClear() { try { localStorage.removeItem(TKEY); } catch (e) {} }
+  /* @core-start 送信スクリプト（scripts/huts_push_send.js）がこの範囲をそのまま読み込んで使う。today と DAY 以外の外の変数を使わない */
   function ymd(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
   function parse(s) { var p = String(s).split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
   function jp(d) { return d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日（' + '日月火水木金土'.charAt(d.getDay()) + '）'; }
@@ -78,6 +84,7 @@
     }
     return { err: 'この山小屋は通知に対応していません' };
   }
+  /* @core-end */
 
   function typeLabel(rule) {
     if (!rule) { return ''; }
@@ -97,7 +104,51 @@
     return -1;                                                // まだ先
   }
 
+  /* ---------- アプリの外に届く通知（プッシュ通知）の登録。PUSH が空のあいだは何もしない ---------- */
+  function pushReady() {
+    return !!(PUSH.db && PUSH.key && standalone && 'Notification' in window && Notification.permission === 'granted'
+      && navigator.serviceWorker && window.PushManager && window.crypto && crypto.subtle && window.fetch && window.TextEncoder);
+  }
+  function keyBytes(b64) {
+    var pad = new Array((4 - b64.length % 4) % 4 + 1).join('='), raw = atob((b64 + pad).replace(/-/g, '+').replace(/_/g, '/')), out = new Uint8Array(raw.length), i;
+    for (i = 0; i < raw.length; i++) { out[i] = raw.charCodeAt(i); }
+    return out;
+  }
+  function hexOf(buf) {
+    var b = new Uint8Array(buf), t = '', i;
+    for (i = 0; i < b.length; i++) { t += ('0' + b[i].toString(16)).slice(-2); }
+    return t;
+  }
+  // 端末の「通知の宛先」と、登録している小屋・泊まりたい日を預ける。登録が0件になったら預けた分を消す。
+  // 預け先の名前は宛先から作った文字列（ほかの人には分からない）。同じ内容なら1日1回だけ送る
+  function pushSync() {
+    if (!pushReady()) { return; }
+    var list = load(), alerts = [], i, sig;
+    for (i = 0; i < list.length && alerts.length < 20; i++) { alerts.push({ id: list[i].id, stay: list[i].stay || '' }); }
+    sig = ymd(today) + '|' + JSON.stringify(alerts);
+    try { if (localStorage.getItem('ym_hut_push') === sig) { return; } } catch (e) {}
+    navigator.serviceWorker.register('/sw.js').then(function () { return navigator.serviceWorker.ready; }).then(function (reg) {
+      return reg.pushManager.getSubscription().then(function (sub) {
+        if (sub || !alerts.length) { return sub; }
+        return reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(PUSH.key) });
+      });
+    }).then(function (sub) {
+      if (!sub) { return null; }
+      var j = sub.toJSON();
+      return crypto.subtle.digest('SHA-256', new TextEncoder().encode(j.endpoint)).then(function (h) {
+        var url = PUSH.db.replace(/\/+$/, '') + '/hutPush/' + hexOf(h) + '.json', admin = false;
+        try { admin = localStorage.getItem('ym_admin') === '1'; } catch (e) {}
+        if (!alerts.length) { return fetch(url, { method: 'DELETE' }); }
+        return fetch(url, { method: 'PUT', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ endpoint: j.endpoint, keys: j.keys, alerts: alerts, at: Date.now(), admin: admin }) });
+      });
+    }).then(function (res) {
+      if (res && res.ok) { try { localStorage.setItem('ym_hut_push', sig); } catch (e) {} }
+    }).catch(function () {});
+  }
+
   function notify(title, body, url) {
+    if (pushReady()) { return; }        // プッシュ通知が届く端末では、開いたときの端末の通知は重ねて出さない（画面上のお知らせは出す）
     if (!standalone || !('Notification' in window) || Notification.permission !== 'granted' || !navigator.serviceWorker) { return; }
     navigator.serviceWorker.register('/sw.js').then(function (reg) {
       return navigator.serviceWorker.ready.then(function () {
@@ -551,7 +602,9 @@
         l.push({ id: hut.id, name: hut.name, stay: stay, open: ymd(cur.open), time: cur.time || '', guess: !!cur.guess, rule: rule, shown: [], at: ymd(today) });
         if (!save(l)) { draw('この端末に保存できませんでした（プライベートブラウズでは使えません）。'); return; }
         var done = function (p) {
-          draw(p === 'granted' ? '登録しました。1週間前・前日・当日に、Yamatch を開いたときにお知らせします。'
+          if (p === 'granted') { pushSync(); }
+          draw(p === 'granted' ? (pushReady() ? '登録しました。1週間前・前日・当日の朝に、通知でお知らせします。'
+            : '登録しました。1週間前・前日・当日に、Yamatch を開いたときにお知らせします。')
             : '登録しました。端末の通知は許可されていないので、Yamatch を開いたときに画面の上にお知らせを出します。');
         };
         if ('Notification' in window && Notification.permission === 'default') {
@@ -598,7 +651,7 @@
   if (!list0.length && !trialGet() && !(favs().length && document.getElementById('ym-hut-alerts'))) { return; }
   // 登録があるときだけ、最新の予約開始データを読んで確かめる（読めなければ、登録したときの型で確かめる）
   var done = false;
-  function run(rules) { if (done) { return; } done = true; DATA = rules; check(rules); }
+  function run(rules) { if (done) { return; } done = true; DATA = rules; check(rules); pushSync(); }
   try {
     fetch('/data/huts_rules.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { run(j ? j.huts : null); }, function () { run(null); });
   } catch (e) { run(null); }

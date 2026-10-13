@@ -16,10 +16,11 @@ import argparse, datetime, hashlib, json, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'data', 'admin_notices.json')
-TITLE = {'annual': '毎月の年次データ確認', 'huts': '山小屋の定期更新', 'sitecheck': 'サイトの検証'}
+TITLE = {'annual': '毎月の年次データ確認', 'huts': '山小屋の定期更新', 'sitecheck': 'サイトの検証', 'push': '山小屋の予約開始の通知（送信）'}
 NEXT = {'annual': 'Claude のアプリで「月次更新して」と伝えてください。',
         'huts': '候補や変更のあった小屋を公式サイトで確かめ、Claude のアプリで反映を頼んでください。',
-        'sitecheck': 'Claude のアプリで「check_pages.py の異常を直して」と伝えてください。'}
+        'sitecheck': 'Claude のアプリで「check_pages.py の異常を直して」と伝えてください。',
+        'push': 'GitHub の実行結果を開いて失敗の内容を確かめ、Claude のアプリに伝えてください。'}
 EMPTY = re.compile(r'^(?:-\s*)?(?:なし|異常なし|変化はありませんでした|（--no-fetch のため未確認）)$')
 MAX_LINES, MAX_CHARS = 60, 240
 
@@ -99,7 +100,7 @@ def main():
     if os.environ.get('GITHUB_REPOSITORY') and os.environ.get('GITHUB_RUN_ID'):
         item['url'] = '%s/%s/actions/runs/%s' % (os.environ.get('GITHUB_SERVER_URL', 'https://github.com'),
                                                  os.environ['GITHUB_REPOSITORY'], os.environ['GITHUB_RUN_ID'])
-    order = ['annual', 'huts', 'sitecheck']
+    order = ['annual', 'huts', 'sitecheck', 'push']
     data['items'] = sorted([i for i in data['items'] if i['kind'] != a.kind] + [item], key=lambda i: order.index(i['kind']))
     data['updatedAt'] = today
     json.dump(data, open(a.out, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

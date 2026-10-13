@@ -1,0 +1,69 @@
+# 山小屋の予約開始のお知らせを、アプリの外に届く通知（プッシュ通知）で送る。
+# 毎朝7時（日本時間）に、その日が「1週間前・前日・当日」にあたる登録を探して送る。AIは使わない。
+# 必要な Secrets（1つでも無いあいだは何もしない）：
+#   FIREBASE_DB_URL / FIREBASE_SERVICE_ACCOUNT / VAPID_PUBLIC_KEY / VAPID_PRIVATE_KEY
+# 手動実行で「管理者の端末にテスト通知」を選ぶと、管理者表示をオンにした端末だけにテスト通知を送る。
+name: 山小屋の予約開始の通知
+
+on:
+  schedule:
+    - cron: '0 22 * * *'   # 毎日 7:00（日本時間）。GitHub の都合で数分〜数十分遅れることがある
+  workflow_dispatch:
+    inputs:
+      test:
+        description: '管理者の端末にテスト通知だけを送る'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # マイページのお知らせ（data/admin_notices.json）だけをコミットする
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      FIREBASE_DB_URL: ${{ secrets.FIREBASE_DB_URL }}
+      FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+      VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+    steps:
+      - name: 設定があるか確かめる
+        id: ready
+        run: |
+          if [ -n "$FIREBASE_DB_URL" ] && [ -n "$FIREBASE_SERVICE_ACCOUNT" ] && [ -n "$VAPID_PUBLIC_KEY" ] && [ -n "$VAPID_PRIVATE_KEY" ]; then
+            echo "ok=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "Secrets が未設定のため、何もしません"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.ready.outputs.ok == '1'
+      - uses: actions/setup-node@v4
+        if: steps.ready.outputs.ok == '1'
+        with:
+          node-version: '20'
+      - name: 送る
+        if: steps.ready.outputs.ok == '1'
+        id: send
+        run: |
+          npm install --no-save --no-audit --no-fund web-push@3 google-auth-library@9
+          set +e
+          if [ "${{ inputs.test }}" = "true" ]; then
+            node scripts/huts_push_send.js --test --out push_report.md
+          else
+            node scripts/huts_push_send.js --out push_report.md
+          fi
+          code=$?
+          echo "$code" > push_code.txt
+          exit $code
+      - name: マイページのお知らせを更新する（失敗があったとき・解消したとき）
+        if: always() && steps.ready.outputs.ok == '1' && inputs.test != true
+        run: |
+          python3 scripts/admin_notice.py --kind push --report push_report.md --code "$(cat push_code.txt 2>/dev/null || echo 1)"
+          if [ ! -f data/admin_notices.json ]; then echo "お知らせなし"; exit 0; fi
+          git add data/admin_notices.json
+          if git diff --cached --quiet; then echo "お知らせの変化なし"; exit 0; fi
+          git config user.name "yamatch-admin-notice"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -q -m "運営者向けのお知らせを更新（山小屋の通知）"
+          git pull -q --rebase && git push -q
