@@ -12,7 +12,7 @@ M = {m['id']: m for m in ML}
 H = d['huts']
 _cp = os.path.join(ROOT, 'data', 'huts_coords.json')
 COORDS = json.load(open(_cp, encoding='utf-8'))['huts'] if os.path.exists(_cp) else {}
-MAP_VER = '20261012m'
+MAP_VER = '20261013a'
 import calendar, math, sys
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 import huts_season
@@ -167,6 +167,8 @@ def map_block(huts, starts, lazy='', mts=True):
                 (' data-lazy="%s"' % lazy) if lazy else '', legend, note, dump(pts), dump(mp), MAP_VER))
 NA = '<span class="na">公式サイトで確認</span>'
 # お気に入りの星は、トップページの山の一覧と同じ形
+BELL_ICON = ('<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" '
+             'style="vertical-align:-2px;margin-right:4px"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>')
 FAV_BTN = ('<button type="button" class="hfav" data-fav="%s" aria-pressed="false" aria-label="お気に入りに追加"><svg width="20" height="20" viewBox="0 0 24 24" '
            'stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button>')
 FT_CLS = {'グルメ': 'g', '風呂・温泉': 'b', '設備': 'e', '眺め': 'v', '歴史': 'h'}
@@ -296,6 +298,12 @@ for h in H:
         detail.append('<div><b>一覧の出典の記載</b>%s</div>' % E(raw))
     elif raw and raw != season_main:
         detail.append('<div><b>出典の記載</b>%s</div>' % E(raw))
+    # 予約の型（お知らせに対応しているか）。対応する小屋のカードには、お知らせの登録欄への入口を出す
+    rule = None if none else huts_rules.derive(h['name'], (au.get('bookingStart') or {}).get('value') or (None if stale else h.get('bookingStart')),
+                                               (au.get('bookingStartWeb') or {}).get('value'), (au.get('bookingWindow') or {}).get('value'),
+                                               autodates=(au.get('bookingStartDate'), au.get('bookingStartWeb'), au.get('bookingStart')))
+    if rule:
+        links.insert(0, '<a class="btn btn-al" href="/huts/%s/#hut-alert">%s予約開始のお知らせ</a>' % (E(h['id']), BELL_ICON))
     cards.append(
         '<article class="hut" id="%s" data-region="%s" data-m="%s" data-key="%s">\n'
         '  <div class="hh"><h2><a href="/huts/%s/">%s</a></h2>%s<span class="rg">%s</span>%s%s%s</div>\n'
@@ -314,9 +322,7 @@ for h in H:
     card_of[h['id']] = cards[-1]
     info[h['id']] = {'start': None if none else start, 'none': none, 'methods': None if none else methods, 'season': season_main,
                      'cap': cap or (ref if isinstance(ref, int) else None), 'capExact': bool(cap), 'place': pt, 'st': st_html, 'feat': ft,
-                     'rule': None if none else huts_rules.derive(h['name'], (au.get('bookingStart') or {}).get('value') or (None if stale else h.get('bookingStart')),
-                                                                 (au.get('bookingStartWeb') or {}).get('value'), (au.get('bookingWindow') or {}).get('value'),
-                                                                 autodates=(au.get('bookingStartDate'), au.get('bookingStartWeb'), au.get('bookingStart')))}
+                     'rule': rule}
 # 「山から探す」：小屋のある山を、県・山域の順に並べる
 mt_btns = []
 for m in ML:
@@ -392,6 +398,8 @@ h1{font-size:22px;font-weight:800;color:#2a3820;margin-bottom:4px}
 .foot{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;padding-top:8px;border-top:1px solid #f0ede5}
 .btn{display:inline-block;background:#4e6535;color:#fff;border-radius:8px;padding:6px 14px;font-size:13px;font-weight:700;text-decoration:none}
 .btn2{background:#fff;color:#4e6535;border:1px solid #4e6535}
+.btn-al{background:#eef3e6;color:#2a3820;border:1px solid #4e6535}
+#hut-alert{scroll-margin-top:72px}
 .foot details{flex:1;min-width:12em;font-size:12px;color:#5a544a}
 .foot summary{cursor:pointer;color:#7a7068;padding:6px 0;text-align:right}
 .foot details div{padding:3px 0}.foot details b{display:inline-block;min-width:7.5em;color:#7a7068;font-weight:700;font-size:11px}

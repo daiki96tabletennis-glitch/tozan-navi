@@ -470,7 +470,7 @@
     host.insertBefore(w, host.querySelector('[id$="demo-s"]').nextSibling);      // 説明の行のすぐ下に置く
     return w;
   }
-  function demo(name, open, time, stay, statusEl) {
+  function demo(name, open, time, stay, statusEl, guess) {
     if (demoBusy || !statusEl) { return; }
     demoBusy = true;
     var o = open || new Date(today.getTime() + 7 * DAY), steps = [7, 1, 0], k = 0;
@@ -478,26 +478,28 @@
     var toastEl = home.querySelector('.dm-toast'), ban = my.querySelector('.dm-ban');
     var when = function (d) { return new Date(o.getTime() - d * DAY); };
     var short = function (d) { return (d.getMonth() + 1) + '月' + d.getDate() + '日'; };
+    var gs = guess ? '（昨年の日付からの目安）' : '';      // 来季の日付がまだ発表されていない小屋は、見本でも確定の日付のように見せない
     my.querySelector('.dm-n').textContent = name;
-    my.querySelector('.dm-d').textContent = short(o) + (time ? ' ' + time : '') + 'から';
+    my.querySelector('.dm-d').textContent = short(o) + (time ? ' ' + time : '') + 'から' + gs;
     function step() {
       toastEl.className = 'dm-toast';
       ban.className = 'dm-ban';
       if (k >= steps.length) {
-        statusEl.textContent = '見本はここまでです。実際は、それぞれの日に Yamatch を開いたときに出ます（開かなかった日のお知らせは出ません）。';
+        statusEl.textContent = '見本はここまでです。実際は、それぞれの日に Yamatch を開いたときに出ます（開かなかった日のお知らせは出ません）。'
+          + (guess ? 'この見本の日付は、昨年の日付からの目安です。来季の日付が発表されたら、お知らせの日付も切り替わります。' : '');
         demoBusy = false;
         return;
       }
       var d = steps[k], msg = name + (d === 0 ? '：きょう予約開始' : d === 1 ? '：あした予約開始' : '：予約開始まであと7日');
-      var body = jp(o) + (time ? ' ' + time : '') + 'から' + (stay ? '（' + stay.replace(/-/g, '/') + ' 泊の分）' : '');
-      statusEl.textContent = (k + 1) + '／3　' + (d === 0 ? '当日' : d === 1 ? '前日' : '1週間前') + '（' + jp(when(d)) + '）に開いたとき';
+      var body = (guess ? '昨年の日付からの目安です。' : '') + jp(o) + (time ? ' ' + time : '') + 'から' + (stay ? '（' + stay.replace(/-/g, '/') + ' 泊の分）' : '');
+      statusEl.textContent = (k + 1) + '／3　' + (d === 0 ? '当日' : d === 1 ? '前日' : '1週間前') + '（' + jp(when(d)) + '）に開いたとき' + (guess ? '　※日付は昨年の日付からの目安' : '');
       home.className = 'dm-f dm-on';
       my.className = 'dm-f dm-on';
       setTimeout(function () {
         toastEl.textContent = msg;
         toastEl.className = 'dm-toast show';
         ban.querySelector('b').textContent = msg.replace('きょう予約開始', '予約が始まります');
-        ban.querySelector('u').textContent = short(o) + (time ? ' ' + time : '') + 'から';
+        ban.querySelector('u').textContent = short(o) + (time ? ' ' + time : '') + 'から' + gs;
         ban.className = 'dm-ban show';
         var bd = my.querySelector('.dm-badge');
         bd.textContent = d === 0 ? '受付開始済み' : 'あと' + d + '日';
@@ -537,7 +539,7 @@
     if (!b) { return; }
     b.addEventListener('click', function () {
       var c = getCur ? getCur() : null;
-      demo(name, c && c.open ? c.open : null, c ? c.time : '', getStay ? getStay() : '', document.getElementById('ha-demo-s'));
+      demo(name, c && c.open ? c.open : null, c ? c.time : '', getStay ? getStay() : '', document.getElementById('ha-demo-s'), !!(c && c.guess));
     });
   }
 
