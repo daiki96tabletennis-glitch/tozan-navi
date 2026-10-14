@@ -479,6 +479,7 @@ def run(huts, today=None, only=None, previous=None):
     #    あわせて、いまの日付を履歴に入れておく（前の年の日付の前後だけ3日に1回見に行く仕組みに乗せるため）
     import huts_patterns
     import huts_rules
+    import huts_instagram
     have = set(r['hut'] for r in recipes if r['field'] in ('bookingStart', 'bookingStartDate'))
     names = [h['name'] for h in huts]
     for h in huts:
@@ -492,7 +493,8 @@ def run(huts, today=None, only=None, previous=None):
                                                          'seenAt': today.isoformat(), 'seed': True}
         if only is not None and h['name'] not in only:
             continue
-        cs = [c for c in huts_patterns.candidates(h, page_lines_deep, names) if c['score'] >= 5]
+        sns = huts_instagram.hut_lines(h['id'], today)          # Instagram の投稿（鍵が無いあいだは空）
+        cs = [c for c in huts_patterns.candidates(h, page_lines_deep, names, sns) if c['score'] >= 5]
         fix = [c for c in cs if c['t'] == 'fix' and c.get('y') in (today.year, today.year + 1)]
         rel = [c for c in cs if c['t'] in ('rel', 'mon')]
 
@@ -569,4 +571,7 @@ def run(huts, today=None, only=None, previous=None):
             if seen:
                 w['reported'] = sorted(seen)
     json.dump(hist, open(hpath, 'w', encoding='utf-8'), ensure_ascii=False, indent=1, sort_keys=True)
+    if huts_instagram.problems:
+        report.append('- Instagram の投稿を読めなかったアカウント：%d件（個人設定・名前の変更・鍵の期限切れなど）\n%s' % (
+            len(huts_instagram.problems), '\n'.join('    %s：%s' % p for p in huts_instagram.problems[:15])))
     return report

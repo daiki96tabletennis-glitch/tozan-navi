@@ -23,6 +23,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: 出典を取り直して更新する
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}     # Instagram の投稿を読むための鍵（未設定のあいだは読まない）
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
         run: python3 scripts/update_huts.py --scheduled --out huts_report.md
       - name: サイトのチェック
         run: python3 scripts/check_pages.py > check_pages_report.txt 2>&1 || (tail -n 40 check_pages_report.txt; exit 1)

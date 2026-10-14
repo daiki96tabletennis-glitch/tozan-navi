@@ -185,7 +185,7 @@ def pages_of(h):
     return urls
 
 
-def candidates(h, page_lines, all_names=()):
+def candidates(h, page_lines, all_names=(), extra=()):
     """その小屋の候補：一覧の出典の文（openText）→ 公式サイト・予約の案内のページ、の順に読む。
     同じサイトをグループの小屋で共有していることがあるので、ほかの小屋の名前だけが出てくる行は減点する"""
     out = []
@@ -204,6 +204,19 @@ def candidates(h, page_lines, all_names=()):
             c['url'] = u
             c['src'] = 'site'
             out.append(c)
+    # そのほかの文（Instagram の投稿など）：[(行, URL)]。読み方は公式サイトと同じ
+    if extra:
+        by_url = {}
+        for line, u in extra:
+            by_url.setdefault(u, []).append(line)
+        for u, ls in by_url.items():
+            for c in extract(ls):
+                ln = norm(c['line']).replace(' ', '')
+                if short not in ln and any(len(o) >= 4 and o in ln for o in others):
+                    c['score'] -= 3
+                c['url'] = u
+                c['src'] = 'sns'
+                out.append(c)
     out.sort(key=lambda x: -x['score'])
     return out
 

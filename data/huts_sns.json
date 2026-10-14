@@ -1,0 +1,743 @@
+{
+ "note": "山小屋の公式サイトに載っている Instagram のアカウント（2026-10-14 に公式サイトのリンクから機械的に集めたもの。scripts/huts_instagram.py が使う）。sharedWith は同じアカウントで発信しているほかの小屋。違うアカウントが混ざっていたら手で直す",
+ "checkedAt": "2026-10-14",
+ "huts": {
+  "hut-e590d57b": {
+   "name": "槍ヶ岳山荘",
+   "instagram": [
+    "yarigatake_hokari",
+    "3180_yari_staff",
+    "yarisawalodge_official",
+    "3033_minamidake",
+    "otenjo_hutte",
+    "dakesawagoya",
+    "sesshou_goya"
+   ],
+   "foundOn": "https://www.yarigatake.co.jp/",
+   "sharedWith": [
+    "大天井ヒュッテ",
+    "岳沢小屋",
+    "槍沢ロッヂ",
+    "殺生小屋"
+   ]
+  },
+  "hut-5541ffbb": {
+   "name": "ヒュッテ大槍",
+   "instagram": [
+    "enzanso_official",
+    "daitenso_official",
+    "huttenishidake_official",
+    "hutteoyari_official",
+    "ariakeso_official"
+   ],
+   "foundOn": "https://www.enzanso.co.jp/hutte-ooyari",
+   "sharedWith": [
+    "大天荘",
+    "有明荘",
+    "燕山荘"
+   ]
+  },
+  "hut-f333b6ff": {
+   "name": "殺生小屋",
+   "instagram": [
+    "yarigatake_hokari",
+    "sesshou_goya"
+   ],
+   "foundOn": "https://www.yarigatake.co.jp/sesshou/",
+   "sharedWith": [
+    "大天井ヒュッテ",
+    "岳沢小屋",
+    "槍ヶ岳山荘",
+    "槍沢ロッヂ"
+   ]
+  },
+  "hut-e29eb267": {
+   "name": "槍沢ロッヂ",
+   "instagram": [
+    "yarigatake_hokari",
+    "yarisawalodge_official"
+   ],
+   "foundOn": "https://www.yarigatake.co.jp/yarisawa/",
+   "sharedWith": [
+    "大天井ヒュッテ",
+    "岳沢小屋",
+    "槍ヶ岳山荘",
+    "殺生小屋"
+   ]
+  },
+  "hut-f5fe13c2": {
+   "name": "穂高岳山荘",
+   "instagram": [
+    "hotakadakesanso"
+   ],
+   "foundOn": "https://www.hotakadakesanso.com/"
+  },
+  "hut-25ee6520": {
+   "name": "涸沢ヒュッテ",
+   "instagram": [
+    "ghostmountain.ks"
+   ],
+   "foundOn": "https://www.karasawa-hyutte.com/"
+  },
+  "hut-251f0dc7": {
+   "name": "横尾山荘",
+   "instagram": [
+    "yokoosanso1620"
+   ],
+   "foundOn": "https://www.yokoo-sanso.co.jp/"
+  },
+  "hut-bf39f1a9": {
+   "name": "徳沢ロッヂ",
+   "instagram": [
+    "kamikochi_tokusawalodge"
+   ],
+   "foundOn": "http://www.m-kamikouchi.jp/tokuzawalodge/"
+  },
+  "hut-b3a84840": {
+   "name": "氷壁の宿 徳澤園",
+   "instagram": [
+    "tokusawaen_official"
+   ],
+   "foundOn": "https://www.tokusawaen.com/"
+  },
+  "hut-acf9b4d9": {
+   "name": "岳沢小屋",
+   "instagram": [
+    "yarigatake_hokari",
+    "3180_yari_staff",
+    "yarisawalodge_official",
+    "3033_minamidake",
+    "otenjo_hutte",
+    "dakesawagoya",
+    "sesshou_goya"
+   ],
+   "foundOn": "https://www.yarigatake.co.jp/",
+   "sharedWith": [
+    "大天井ヒュッテ",
+    "槍ヶ岳山荘",
+    "槍沢ロッヂ",
+    "殺生小屋"
+   ]
+  },
+  "hut-51c2ab0b": {
+   "name": "有明荘",
+   "instagram": [
+    "enzanso_official",
+    "daitenso_official",
+    "huttenishidake_official",
+    "hutteoyari_official",
+    "ariakeso_official"
+   ],
+   "foundOn": "https://www.enzanso.co.jp/ariakeso",
+   "sharedWith": [
+    "ヒュッテ大槍",
+    "大天荘",
+    "燕山荘"
+   ]
+  },
+  "hut-0ab94a0e": {
+   "name": "燕山荘",
+   "instagram": [
+    "enzanso_official",
+    "daitenso_official",
+    "huttenishidake_official",
+    "hutteoyari_official",
+    "ariakeso_official"
+   ],
+   "foundOn": "https://www.enzanso.co.jp/",
+   "sharedWith": [
+    "ヒュッテ大槍",
+    "大天荘",
+    "有明荘"
+   ]
+  },
+  "hut-6bd368b4": {
+   "name": "大天荘",
+   "instagram": [
+    "enzanso_official",
+    "daitenso_official",
+    "huttenishidake_official",
+    "hutteoyari_official",
+    "ariakeso_official"
+   ],
+   "foundOn": "https://www.enzanso.co.jp/daitenso",
+   "sharedWith": [
+    "ヒュッテ大槍",
+    "有明荘",
+    "燕山荘"
+   ]
+  },
+  "hut-9e4995b8": {
+   "name": "大天井ヒュッテ",
+   "instagram": [
+    "yarigatake_hokari",
+    "3180_yari_staff",
+    "yarisawalodge_official",
+    "3033_minamidake",
+    "otenjo_hutte",
+    "dakesawagoya",
+    "sesshou_goya"
+   ],
+   "foundOn": "https://www.yarigatake.co.jp/",
+   "sharedWith": [
+    "岳沢小屋",
+    "槍ヶ岳山荘",
+    "槍沢ロッヂ",
+    "殺生小屋"
+   ]
+  },
+  "hut-b059e31d": {
+   "name": "常念小屋",
+   "instagram": [
+    "jyonenkoya"
+   ],
+   "foundOn": "http://mt-jonen.com/"
+  },
+  "hut-697c1181": {
+   "name": "蝶ヶ岳ヒュッテ",
+   "instagram": [
+    "chougatake"
+   ],
+   "foundOn": "https://chougatake.com/",
+   "sharedWith": [
+    "大滝山荘"
+   ]
+  },
+  "hut-dc757ba7": {
+   "name": "大滝山荘",
+   "instagram": [
+    "chougatake"
+   ],
+   "foundOn": "https://chougatake.com/ootaki/",
+   "sharedWith": [
+    "蝶ヶ岳ヒュッテ"
+   ]
+  },
+  "hut-91ed1526": {
+   "name": "七倉山荘",
+   "instagram": [
+    "nanakurasansou"
+   ],
+   "foundOn": "http://www.webmarunaka.com/nanakura/"
+  },
+  "hut-abddcb35": {
+   "name": "烏帽子小屋",
+   "instagram": [
+    "eboshigoya"
+   ],
+   "foundOn": "https://www.ne.jp/asahi/eboshidake/2628/"
+  },
+  "hut-8098c896": {
+   "name": "野口五郎小屋",
+   "instagram": [
+    "5rougoya",
+    "trailmix_nezumi"
+   ],
+   "foundOn": "https://www.gorougoya.com/"
+  },
+  "hut-b4e48d1b": {
+   "name": "栂池ヒュッテ",
+   "instagram": [
+    "hakuba_sanso_journal"
+   ],
+   "foundOn": "https://hakubakan.com/lodge/tsugaikehutte/",
+   "sharedWith": [
+    "キレット小屋",
+    "五竜山荘",
+    "猿倉荘",
+    "白馬大池山荘",
+    "白馬山荘"
+   ]
+  },
+  "hut-3127bf3b": {
+   "name": "栂池山荘",
+   "instagram": [
+    "shizenen"
+   ],
+   "foundOn": "http://www.tsugaikesansou.jp/"
+  },
+  "hut-d0aadf5d": {
+   "name": "白馬大池山荘",
+   "instagram": [
+    "hakuba_sanso_journal",
+    "ike_ike_oooooike"
+   ],
+   "foundOn": "https://hakubakan.com/lodge/hakubaoikesanso/",
+   "sharedWith": [
+    "キレット小屋",
+    "五竜山荘",
+    "栂池ヒュッテ",
+    "猿倉荘",
+    "白馬山荘"
+   ]
+  },
+  "hut-8f6f2a1c": {
+   "name": "猿倉荘",
+   "instagram": [
+    "hakuba_sanso_journal"
+   ],
+   "foundOn": "https://hakubakan.com/lodge/sarukuraso-hakubajiri/",
+   "sharedWith": [
+    "キレット小屋",
+    "五竜山荘",
+    "栂池ヒュッテ",
+    "白馬大池山荘",
+    "白馬山荘"
+   ]
+  },
+  "hut-096f4fbb": {
+   "name": "白馬山荘",
+   "instagram": [
+    "hakuba_sanso_journal"
+   ],
+   "foundOn": "https://hakubakan.com/lodge/hakubasanso/",
+   "sharedWith": [
+    "キレット小屋",
+    "五竜山荘",
+    "栂池ヒュッテ",
+    "猿倉荘",
+    "白馬大池山荘"
+   ]
+  },
+  "hut-3f91149c": {
+   "name": "五竜山荘",
+   "instagram": [
+    "hakuba_sanso_journal",
+    "goryu_sanso"
+   ],
+   "foundOn": "https://hakubakan.com/lodge/goryusanso/",
+   "sharedWith": [
+    "キレット小屋",
+    "栂池ヒュッテ",
+    "猿倉荘",
+    "白馬大池山荘",
+    "白馬山荘"
+   ]
+  },
+  "hut-81c056a9": {
+   "name": "キレット小屋",
+   "instagram": [
+    "hakuba_sanso_journal"
+   ],
+   "foundOn": "https://hakubakan.com/lodge/kiretto/",
+   "sharedWith": [
+    "五竜山荘",
+    "栂池ヒュッテ",
+    "猿倉荘",
+    "白馬大池山荘",
+    "白馬山荘"
+   ]
+  },
+  "hut-7d35bed9": {
+   "name": "針ノ木小屋",
+   "instagram": [
+    "harinokigoya"
+   ],
+   "foundOn": "http://www.harinoki.com/",
+   "sharedWith": [
+    "大沢小屋"
+   ]
+  },
+  "hut-64c901b2": {
+   "name": "大沢小屋",
+   "instagram": [
+    "harinokigoya"
+   ],
+   "foundOn": "http://www.harinoki.com/",
+   "sharedWith": [
+    "針ノ木小屋"
+   ]
+  },
+  "hut-5a975413": {
+   "name": "位ヶ原山荘",
+   "instagram": [
+    "kuraigaharasanso"
+   ],
+   "foundOn": "http://www.kuraigahara.jp/"
+  },
+  "hut-24d85c1b": {
+   "name": "北沢峠 こもれび山荘",
+   "instagram": [
+    "senjo_goya",
+    "shiomigoya_2022",
+    "nishikomasansoh"
+   ],
+   "foundOn": "https://www.ina-city-kankou.co.jp/yamagoya/kitazawa/",
+   "sharedWith": [
+    "仙丈小屋",
+    "塩見小屋",
+    "西駒山荘"
+   ]
+  },
+  "hut-41904c2e": {
+   "name": "仙丈小屋",
+   "instagram": [
+    "senjo_goya",
+    "shiomigoya_2022",
+    "nishikomasansoh"
+   ],
+   "foundOn": "https://www.ina-city-kankou.co.jp/yamagoya/senjo/",
+   "sharedWith": [
+    "北沢峠 こもれび山荘",
+    "塩見小屋",
+    "西駒山荘"
+   ]
+  },
+  "hut-3d9b67ce": {
+   "name": "塩見小屋",
+   "instagram": [
+    "senjo_goya",
+    "shiomigoya_2022",
+    "nishikomasansoh"
+   ],
+   "foundOn": "https://www.ina-city-kankou.co.jp/yamagoya/shiomi/",
+   "sharedWith": [
+    "仙丈小屋",
+    "北沢峠 こもれび山荘",
+    "西駒山荘"
+   ]
+  },
+  "hut-1401d075": {
+   "name": "三伏峠小屋",
+   "instagram": [
+    "sanpukutoge"
+   ],
+   "foundOn": "http://sanpukutouge.com/"
+  },
+  "hut-7b052d08": {
+   "name": "県営光岳小屋",
+   "instagram": [
+    "tekatekatekari",
+    "embed.js"
+   ],
+   "foundOn": "https://www.chillnn.com/1863f95fe2d74"
+  },
+  "hut-ababbdbf": {
+   "name": "西駒山荘",
+   "instagram": [
+    "senjo_goya",
+    "shiomigoya_2022",
+    "nishikomasansoh"
+   ],
+   "foundOn": "https://www.ina-city-kankou.co.jp/yamagoya/nishikoma/",
+   "sharedWith": [
+    "仙丈小屋",
+    "北沢峠 こもれび山荘",
+    "塩見小屋"
+   ]
+  },
+  "hut-f4e1b7b5": {
+   "name": "宝剣山荘",
+   "instagram": [
+    "chua_sansou"
+   ],
+   "foundOn": "https://miyadakankou.co.jp/"
+  },
+  "hut-e86564b3": {
+   "name": "蓼科山頂ヒュッテ",
+   "instagram": [
+    "tateshina_sancho_hutte"
+   ],
+   "foundOn": "http://tateshinayama.com/"
+  },
+  "hut-10eff39f": {
+   "name": "蓼科山荘",
+   "instagram": [
+    "tateshina_futago"
+   ],
+   "foundOn": "http://www7a.biglobe.ne.jp/~g-factory/tateshinalodge/yama.html"
+  },
+  "hut-bd33a29a": {
+   "name": "硫黄岳山荘",
+   "instagram": [
+    "iodakehuts"
+   ],
+   "foundOn": "https://iodake.jp/sanso/"
+  },
+  "hut-90585120": {
+   "name": "行者小屋",
+   "instagram": [
+    "akadakekousen_gyoujyagoya"
+   ],
+   "foundOn": "https://www.akadakekousen.jp/",
+   "sharedWith": [
+    "赤岳鉱泉"
+   ]
+  },
+  "hut-1fd8bd45": {
+   "name": "赤岳鉱泉",
+   "instagram": [
+    "akadakekousen_gyoujyagoya"
+   ],
+   "foundOn": "https://www.akadakekousen.jp/",
+   "sharedWith": [
+    "行者小屋"
+   ]
+  },
+  "hut-6b20aa67": {
+   "name": "天狗温泉浅間山荘",
+   "instagram": [
+    "tenguonsen"
+   ],
+   "foundOn": "http://www.tenguspa.com/"
+  },
+  "hut-ddb1f317": {
+   "name": "山本小屋ふる里館",
+   "instagram": [
+    "furusatokan.yamamotogoya"
+   ],
+   "foundOn": "http://www.furusatokan.jp/"
+  },
+  "hut-f29304aa": {
+   "name": "八島山荘",
+   "instagram": [
+    "yasimasannsou"
+   ],
+   "foundOn": "https://yashimasanso.net/"
+  },
+  "hut-0e066900": {
+   "name": "ヒュッテみさやま",
+   "instagram": [
+    "hutte_misayama"
+   ],
+   "foundOn": "https://huttemisayama.net/"
+  },
+  "hut-b38bb6cf": {
+   "name": "十文字小屋",
+   "instagram": [
+    "jumomjikoya"
+   ],
+   "foundOn": "http://www.hut10monji.com/"
+  },
+  "hut-54bfa9cf": {
+   "name": "甲武信小屋",
+   "instagram": [
+    "kobushikoya"
+   ],
+   "foundOn": "https://www.kobushigoya.net/"
+  },
+  "hut-7b069b75": {
+   "name": "金峰山小屋",
+   "instagram": [
+    "mtkimpou"
+   ],
+   "foundOn": "https://www.kimpou.com/"
+  },
+  "hut-8731af8d": {
+   "name": "長衛小屋",
+   "instagram": [
+    "choueigoya_official"
+   ],
+   "foundOn": "https://choei.ashiyasu.com/"
+  },
+  "hut-50a3f3fd": {
+   "name": "鳳凰小屋",
+   "instagram": [
+    "houougoya"
+   ],
+   "foundOn": "http://houougoya.jp/"
+  },
+  "hut-d0e50f8a": {
+   "name": "白根御池小屋",
+   "instagram": [
+    "shiraneoike_goya_official"
+   ],
+   "foundOn": "https://shiraneoike.ashiyasu.com/"
+  },
+  "hut-9c20ab7e": {
+   "name": "北岳肩の小屋",
+   "instagram": [
+    "kitadakekatanokoya"
+   ],
+   "foundOn": "https://katanokoya.com/"
+  },
+  "hut-bb7e1024": {
+   "name": "槍平小屋",
+   "instagram": [
+    "yari_daira"
+   ],
+   "foundOn": "https://www.yaridaira.jp/"
+  },
+  "hut-17a71dde": {
+   "name": "笠ヶ岳山荘",
+   "instagram": [
+    "kasagatake2021"
+   ],
+   "foundOn": "https://kasagatake.com/"
+  },
+  "hut-2efc5250": {
+   "name": "太郎平小屋",
+   "instagram": [
+    "lodge.taro"
+   ],
+   "foundOn": "https://ltaro.com/lodge/tarodaira-goya/"
+  },
+  "hut-fbdc17e9": {
+   "name": "ホテル立山",
+   "instagram": [
+    "hotel_tateyama"
+   ],
+   "foundOn": "https://h-tateyama.alpen-route.co.jp/"
+  },
+  "hut-314a3a2f": {
+   "name": "みくりが池温泉",
+   "instagram": [
+    "mikurigaike_onsen"
+   ],
+   "foundOn": "http://www.mikuri.com/"
+  },
+  "hut-219de598": {
+   "name": "雷鳥荘",
+   "instagram": [
+    "raichoso.tateyama"
+   ],
+   "foundOn": "http://www.raichoso.com/"
+  },
+  "hut-37a4b581": {
+   "name": "内蔵助山荘",
+   "instagram": [
+    "kuranosuke_sansou"
+   ],
+   "foundOn": "https://kuranosukesanso.jimdofree.com/"
+  },
+  "hut-f738f289": {
+   "name": "剣山荘",
+   "instagram": [
+    "kenzanso"
+   ],
+   "foundOn": "https://www.kenzanso.com/"
+  },
+  "hut-88bbde89": {
+   "name": "早月小屋",
+   "instagram": [
+    "hayatsukikoya"
+   ],
+   "foundOn": "https://hayatsukikoya.com/"
+  },
+  "hut-e7281938": {
+   "name": "七ツ石小屋",
+   "instagram": [
+    "nanatsuishigoya"
+   ],
+   "foundOn": "https://nanatsuishigoya.com/"
+  },
+  "hut-5d209125": {
+   "name": "三条の湯",
+   "instagram": [
+    "sanjyounoyu"
+   ],
+   "foundOn": "https://www.sanjyounoyu.com/"
+  },
+  "hut-5e22e23b": {
+   "name": "三ツ峠山荘",
+   "instagram": [
+    "mitsutoge_sanso_"
+   ],
+   "foundOn": "http://mitsutouge.net/"
+  },
+  "hut-c9be4d80": {
+   "name": "元祖七合目 山口山荘",
+   "instagram": [
+    "gansonanagoume"
+   ],
+   "foundOn": "http://fujisan-ganso.jp/"
+  },
+  "hut-e1ce8b0c": {
+   "name": "富士宮口九合五勺 胸突山荘",
+   "instagram": [
+    "9.5mtfuji_munatsuki"
+   ],
+   "foundOn": "http://munatsuki.com/"
+  },
+  "hut-7563fbfd": {
+   "name": "佐藤小屋",
+   "instagram": [
+    "satogoya_mtfuji"
+   ],
+   "foundOn": "https://mtfuji.satogoya.jp/"
+  },
+  "hut-43c67537": {
+   "name": "里見平★星観荘",
+   "instagram": [
+    "seikanso_mt.fuji"
+   ],
+   "foundOn": "http://www.seikanso.jp/"
+  },
+  "hut-8f70f4cb": {
+   "name": "七合目トモエ館",
+   "instagram": [
+    "tomoekan"
+   ],
+   "foundOn": "https://tomoekan.com/",
+   "sharedWith": [
+    "本八合目トモエ館"
+   ]
+  },
+  "hut-ee49bbbd": {
+   "name": "鎌岩館",
+   "instagram": [
+    "kamaiwakan"
+   ],
+   "foundOn": "http://www.kamaiwakan.jpn.org/"
+  },
+  "hut-059521cb": {
+   "name": "太子館",
+   "instagram": [
+    "fujihachitaishi"
+   ],
+   "foundOn": "https://www.mfi.or.jp/~taisikan/"
+  },
+  "hut-775481ad": {
+   "name": "元祖室",
+   "instagram": [
+    "gansomuro_official"
+   ],
+   "foundOn": "https://www.ganso-muro.jp/"
+  },
+  "hut-015f4443": {
+   "name": "本八合目トモエ館",
+   "instagram": [
+    "tomoekan"
+   ],
+   "foundOn": "https://tomoekan.com/",
+   "sharedWith": [
+    "七合目トモエ館"
+   ]
+  },
+  "hut-1da3326a": {
+   "name": "御来光館",
+   "instagram": [
+    "goraikoukan_mt.fuji_3450"
+   ],
+   "foundOn": "http://www.goraikoukan.jp/"
+  },
+  "hut-e2a1200a": {
+   "name": "高谷池ヒュッテ",
+   "instagram": [
+    "myokotm"
+   ],
+   "foundOn": "http://www.myoko.tv/kouyaike/"
+  },
+  "hut-cc8bb9be": {
+   "name": "LUCY尾瀬鳩待（旧 鳩待山荘）",
+   "instagram": [
+    "lucy_ozehatomachi"
+   ],
+   "foundOn": "https://hoshinoresorts.com/ja/hotels/lucyozehatomachi/"
+  },
+  "hut-c7128530": {
+   "name": "山の鼻小屋",
+   "instagram": [
+    "oze_yamanohanagoya"
+   ],
+   "foundOn": "https://hpdsp.jp/yamanohanagoya/"
+  },
+  "hut-310054a7": {
+   "name": "長蔵小屋",
+   "instagram": [
+    "chozogoya"
+   ],
+   "foundOn": "https://chozogoya.com/"
+  }
+ }
+}
