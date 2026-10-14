@@ -552,7 +552,11 @@ def run(huts, today=None, only=None, previous=None):
                 else:
                     notes.append(('mon:%d-%d' % (c['n'], c.get('d') or 1), '決まりが、いまのデータ（%dか月前の%d日）と違う書き方で見つかりました（%dか月前の%d日）' % (
                         rule['n'], rule.get('d') or 1, c['n'], c.get('d') or 1), c))
+            # 掲載の文にすでに書いてある日付（「4/27〜5/20の宿泊分は4月20日から」のような、シーズン最初の分だけの例外）は報告しない
+            known = (h.get('bookingStart') or '').translate(ZEN)
             for c in fix[:1]:
+                if re.search(r'(?<!\d)%d月%d日|(?<![\d/])%d/%d(?!\d)' % (c['m'], c['d'], c['m'], c['d']), known):
+                    continue
                 notes.append(('fix:%d-%d-%d' % (c['y'], c['m'], c['d']), '%d年%d月%d日から予約を受け付ける、という書き方が見つかりました（いまのデータは%s。一斉解放に変わった可能性）' % (
                     c['y'], c['m'], c['d'], '%d%s前' % (rule['n'], unit[rule['u']]) if rule['t'] == 'rel' else '宿泊月の%dか月前' % rule['n']), c))
             for k, msg, c in notes:
