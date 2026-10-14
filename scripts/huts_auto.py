@@ -61,32 +61,147 @@ def page_lines(url):
 
 LINK_DEEP = re.compile(r'予約|宿泊|ご利用|料金|案内|お知らせ|新着|ニュース|トピック|reserv|yoyaku|stay|guide|plan|syukuhaku|shukuhaku|info|price|annai|news|topics|booking', re.I)
 _deep = {}
+# お知らせの一覧らしいページ（リンクの文字かアドレスで見分ける）と、その中で読みに行く記事（題に予約・受付・営業などがあるもの）
+NEWS_LIST = re.compile(r'お知らせ|新着|ニュース|トピック|ブログ|日記|news|topics|blog|whatsnew|information|/info', re.I)
+ARTICLE = re.compile(r'予約|受付|受け付け|営業|シーズン|年度|オープン|小屋開け')
+SKIP_EXT = re.compile(r'\.(pdf|jpe?g|png|gif|zip|docx?|xlsx?)$', re.I)
 
 
-def page_lines_deep(url, limit=12):
-    """page_lines より広く見る版：公式ページと、そこから1階層たどった予約・案内・お知らせのページ（最大 limit 個）。
-    予約開始の書き方を型で探すとき（huts_patterns.py）に使う。お知らせの一覧から、その先の記事1本までは追わない"""
-    if url in _deep:
-        return _deep[url]
-    b = _raw(url)
-    try:
-        t = b.decode('utf-8')
-    except UnicodeDecodeError:
-        t = b.decode('cp932', 'replace')
-    host = urllib.parse.urlparse(url).netloc
-    subs = []
-    for m in re.finditer(r'<a\b[^>]*href="([^"#]+)"[^>]*>(.*?)</a>', t, flags=re.S | re.I):
-        href = urllib.parse.urljoin(url, html.unescape(m.group(1)))
-        if urllib.parse.urlparse(href).netloc != host or re.search(r'\.(pdf|jpe?g|png|gif|zip|docx?|xlsx?)$', href, re.I):
+def _decode(b):
+    m = re.search(br'charset=["\']?([A-Za-z0-9_\-]+)', b[:3000])
+    for enc in ([m.group(1).decode('ascii', 'ignore')] if m else []) + ['utf-8', 'cp932', 'euc-jp']:
+        try:
+            return b.decode(enc)
+        except (UnicodeDecodeError, LookupError):
             continue
-        if (LINK_DEEP.search(re.sub(r'<[^>]+>', '', m.group(2))) or LINK_DEEP.search(href)) and href not in subs and href.rstrip('/') != url.rstrip('/'):
+    return b.decode('utf-8', 'replace')
+
+
+def _text_lines(fragment):
+    t = re.sub(r'(?is)<(script|style|noscript)\b.*?</\1>', ' ', fragment)
+    t = re.sub(r'(?s)<[^>]+>', '\n', t)
+    return [x for x in (re.sub(r'\s+', ' ', html.unescape(l)).strip() for l in t.split('\n')) if x]
+
+
+def _links(url, page_html, host):
+    """ページの中の、同じサイトへのリンク：[(アドレス, リンクの文字)]"""
+    out = []
+    for m in re.finditer(r'<a\b[^>]*href="([^"#]+)"[^>]*>(.*?)</a>', page_html, flags=re.S | re.I):
+        href = urllib.parse.urljoin(url, html.unescape(m.group(1)))
+        if urllib.parse.urlparse(href).netloc != host or SKIP_EXT.search(href):
+            continue
+        out.append((href, re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', m.group(2)))).strip()))
+    return out
+
+
+def feed_articles(url, top_html, today=None, limit=4):
+    """お知らせの更新情報（RSS / Atom のフィード）から、予約・営業にかかわる新しい記事を読む。
+    戻り値：[{'title', 'link', 'lines'}]。フィードが無い・読めないサイトでは []。
+    フィードは、ページの <link rel="alternate"> に書かれたものを使う。書かれていなくても WordPress のサイトなら /feed/ を試す。
+    新しい順に並んでいるので、一覧ページの作りに左右されずに、新しいお知らせを拾える。古い記事（240日より前）は読まない"""
+    today = today or datetime.date.today()
+    feeds = []
+    for m in re.finditer(r'<link\b[^>]*>', top_html, flags=re.I):
+        tag = m.group(0)
+        if re.search(r'rel=["\']alternate["\']', tag, re.I) and re.search(r'type=["\']application/(rss|atom)\+xml["\']', tag, re.I) and not re.search(r'comments', tag, re.I):
+            h = re.search(r'href=["\']([^"\']+)["\']', tag)
+            if h:
+                feeds.append(urllib.parse.urljoin(url, html.unescape(h.group(1))))
+    if not feeds and 'wp-content' in top_html:
+        feeds.append(url.rstrip('/') + '/feed/')
+    out, seen = [], set()
+    for f in feeds[:2]:
+        x = _decode(_raw(f))
+        if '<item' not in x and '<entry' not in x:
+            continue
+        for it in re.findall(r'(?is)<(?:item|entry)\b.*?</(?:item|entry)>', x):
+            def tag(names):
+                for n in names:
+                    mm = re.search(r'(?is)<%s\b[^>]*>(.*?)</%s>' % (n, n), it)
+                    if mm:
+                        v = mm.group(1).strip()
+                        cd = re.match(r'(?is)<!\[CDATA\[(.*)\]\]>$', v)
+                        return cd.group(1) if cd else html.unescape(v)
+                return ''
+            title = re.sub(r'<[^>]+>', '', tag(['title'])).strip()
+            link = tag(['link']).strip()
+            if not link:
+                mm = re.search(r'(?is)<link\b[^>]*href=["\']([^"\']+)["\']', it)
+                link = html.unescape(mm.group(1)) if mm else ''
+            if not title or not ARTICLE.search(title) or link in seen:
+                continue
+            when = tag(['pubDate', 'published', 'updated', 'dc:date'])
+            d = None
+            try:
+                import email.utils
+                d = email.utils.parsedate_to_datetime(when).date()
+            except Exception:
+                mm = re.match(r'(\d{4})-(\d{2})-(\d{2})', when or '')
+                if mm:
+                    d = datetime.date(int(mm.group(1)), int(mm.group(2)), int(mm.group(3)))
+            if d and (today - d).days > 240:
+                continue
+            body = _text_lines(tag(['content:encoded', 'content', 'description', 'summary']))
+            if sum(len(l) for l in body) < 200 and link and not SKIP_EXT.search(link):
+                body = hf.fetch_text(link) or body         # フィードが要約だけのときは、記事のページを読む
+            seen.add(link)
+            out.append({'title': title, 'link': link, 'lines': [title] + body})
+            if len(out) >= limit:
+                return out
+    return out
+
+
+def page_lines_deep(url, limit=12, follow=True, extra=6):
+    """page_lines より広く見る版：公式ページと、そこから1階層たどった予約・案内・お知らせのページ（最大 limit 個）。
+    予約開始の書き方を型で探すとき（huts_patterns.py）に使う。
+    follow=True のときは、お知らせの先の記事まで読む（合わせて最大 extra 個）：
+      1) お知らせのフィード（RSS / Atom）にある、予約・営業にかかわる新しい記事（feed_articles）
+      2) お知らせの一覧のページから、題に「予約」「受付」「営業」などがある記事へもう1階層
+    古い年の記事を拾っても、使う側の確認（年が今年か来年・前の日付から45日以内・候補が1つ）で落ちる"""
+    key = (url, follow)
+    if key in _deep:
+        return _deep[key]
+    t = _decode(_raw(url))
+    host = urllib.parse.urlparse(url).netloc
+    subs, lists = [], []
+    for href, text in _links(url, t, host):
+        if (LINK_DEEP.search(text) or LINK_DEEP.search(href)) and href not in subs and href.rstrip('/') != url.rstrip('/'):
             subs.append(href)
+            if NEWS_LIST.search(text) or NEWS_LIST.search(href):
+                lists.append(href)
+    subs = subs[:limit]
     lines = []
-    for u in [url] + subs[:limit]:
-        for l in hf.fetch_text(u) or []:
+
+    def add(ls):
+        for l in ls or []:
             if l not in lines:
                 lines.append(l)
-    _deep[url] = lines
+    for u in [url] + subs:
+        add(hf.fetch_text(u))
+    if follow:
+        got = set([url] + subs)
+        n = 0
+        for a in feed_articles(url, t):
+            if n >= extra:
+                break
+            add(a['lines'])
+            got.add(a['link'])
+            n += 1
+        ty = (str(datetime.date.today().year), str(datetime.date.today().year + 1))
+        for lu in [url] + [u for u in lists if u in subs]:
+            if n >= extra:
+                break
+            page = t if lu == url else _decode(_raw(lu))
+            arts = [(h, x) for h, x in _links(lu, page, host) if h not in got and ARTICLE.search(x) and len(x) >= 6]
+            arts.sort(key=lambda p: (0 if any(y in p[1] for y in ty) else 1, 0 if re.search(r'予約|受付', p[1]) else 1))   # 今年・来年の年が題にある記事、予約の記事を先に
+            for h, x in arts[:3]:
+                if n >= extra:
+                    break
+                got.add(h)
+                add([x])
+                add(hf.fetch_text(h))
+                n += 1
+    _deep[key] = lines
     return lines
 
 
