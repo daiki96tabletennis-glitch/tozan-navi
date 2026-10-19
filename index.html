@@ -259,10 +259,11 @@ function ymReadPref(key, def) {
   if (v.charAt(0) === '"') { try { return JSON.parse(v); } catch (e) { return def; } }
   return v;
 }
-// 「前回の条件」は絞り込みだけを残す（出発地・移動手段は、その時々の設定を優先するので含めない。運営者の指示・2026-10-19）
+// 「前回の条件」は絞り込みだけを残す（出発地・移動手段・山名の検索は、その時々の操作を優先するので含めない。運営者の指示・2026-10-19）
 function ymSaveLastFilters(values) {
-  if (ymIsDefaultFilters(values)) return;
-  lsSet(YM_FILTER_LAST_KEY, { values: values, savedAt: Date.now() });
+  var v = Object.assign({}, values, { search: "" });
+  if (ymIsDefaultFilters(v)) return;
+  lsSet(YM_FILTER_LAST_KEY, { values: v, savedAt: Date.now() });
 }
 // 読み込み時：1時間以内なら復元、超えていれば「前回の条件」に退避して初期状態から
 var YM_RESTORED = (function() {
@@ -1094,7 +1095,7 @@ function App() {
   const ymApplyLast = () => {
     if (!lastFilters || !lastFilters.values) return;
     var v = Object.assign(ymDefaultFilters(), lastFilters.values);
-    setSearch(v.search); setSort(v.sort); setArea(v.area); setCategoryFilter(v.category); setDayTripOnly(v.daytrip); setTrainOnly(v.train);
+    setSort(v.sort); setArea(v.area); setCategoryFilter(v.category); setDayTripOnly(v.daytrip); setTrainOnly(v.train);
     setDriveTimeFilter(v.drivetime); setTrainTimeFilter(v.traintime); setFareFilter(v.fare); setAccessTierFilter(v.accesstier);
     setCourseFilter(v.course); setCramponsFilter(v.crampons); setLineFilter(v.line); setDifficultyFilter(v.difficulty);
     setElevationFilter(v.elevation); setVibeFilter(v.vibe); setFilterMonth(v.month);
@@ -1105,7 +1106,6 @@ function App() {
     var v = Object.assign(ymDefaultFilters(), lf.values);
     var parts = [];
     if (v.sort !== YM_DEFAULT_SORT) parts.push(v.sort);
-    if (v.search) parts.push("「" + v.search + "」");
     if (v.category !== "すべて") parts.push(v.category);
     if (v.area.length) parts.push(v.area.join("・"));
     if (v.daytrip) parts.push("日帰り");
@@ -1492,7 +1492,7 @@ function App() {
               </div>
               {/* フィルターチップ */}
               <div style={{padding:"0 12px 100px"}}>
-                {lastFilters && lastFilters.values && JSON.stringify(Object.assign(ymDefaultFilters(), lastFilters.values, {viewmode:"list"})) !== JSON.stringify(Object.assign(ymCurrentFilters(), {viewmode:"list"})) && (
+                {lastFilters && lastFilters.values && JSON.stringify(Object.assign(ymDefaultFilters(), lastFilters.values, {viewmode:"list", search:""})) !== JSON.stringify(Object.assign(ymCurrentFilters(), {viewmode:"list", search:""})) && ymLastLabel(lastFilters) !== "" && (
                   <button onClick={ymApplyLast} style={{display:"flex",alignItems:"center",gap:"8px",width:"100%",textAlign:"left",background:"#f0f5ec",border:"1px solid #c8d4b8",borderRadius:"10px",padding:"10px 12px",margin:"0 0 12px",cursor:"pointer"}}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4e6535" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 9 9 9"/></svg>
                     <span style={{flex:1,minWidth:0}}>
