@@ -259,16 +259,17 @@ function ymReadPref(key, def) {
   if (v.charAt(0) === '"') { try { return JSON.parse(v); } catch (e) { return def; } }
   return v;
 }
-function ymSaveLastFilters(values, departure, mode) {
+// 「前回の条件」は絞り込みだけを残す（出発地・移動手段は、その時々の設定を優先するので含めない。運営者の指示・2026-10-19）
+function ymSaveLastFilters(values) {
   if (ymIsDefaultFilters(values)) return;
-  lsSet(YM_FILTER_LAST_KEY, { values: values, departure: departure, mode: mode, savedAt: Date.now() });
+  lsSet(YM_FILTER_LAST_KEY, { values: values, savedAt: Date.now() });
 }
 // 読み込み時：1時間以内なら復元、超えていれば「前回の条件」に退避して初期状態から
 var YM_RESTORED = (function() {
   var saved = lsGet(YM_FILTER_KEY, null);
   if (!saved || !saved.values) return null;
   if (Date.now() - (saved.savedAt || 0) < YM_FILTER_TTL) return saved.values;
-  ymSaveLastFilters(saved.values, saved.departure, saved.mode);
+  ymSaveLastFilters(saved.values);
   try { localStorage.removeItem(YM_FILTER_KEY); } catch (e) {}
   return null;
 })();
@@ -1078,7 +1079,7 @@ function App() {
   const ymResetAll = () => {
     var cur = ymCurrentFilters();
     if (!ymIsDefaultFilters(cur)) {
-      ymSaveLastFilters(cur, departure, transportMode);
+      ymSaveLastFilters(cur);
       setLastFilters(lsGet(YM_FILTER_LAST_KEY, null));
     }
     var d = ymDefaultFilters();
@@ -1093,8 +1094,6 @@ function App() {
   const ymApplyLast = () => {
     if (!lastFilters || !lastFilters.values) return;
     var v = Object.assign(ymDefaultFilters(), lastFilters.values);
-    if (lastFilters.mode) setTransportMode(lastFilters.mode);
-    if (lastFilters.departure) setDeparture(lastFilters.departure);
     setSearch(v.search); setSort(v.sort); setArea(v.area); setCategoryFilter(v.category); setDayTripOnly(v.daytrip); setTrainOnly(v.train);
     setDriveTimeFilter(v.drivetime); setTrainTimeFilter(v.traintime); setFareFilter(v.fare); setAccessTierFilter(v.accesstier);
     setCourseFilter(v.course); setCramponsFilter(v.crampons); setLineFilter(v.line); setDifficultyFilter(v.difficulty);
@@ -1105,8 +1104,6 @@ function App() {
     if (!lf || !lf.values) return "";
     var v = Object.assign(ymDefaultFilters(), lf.values);
     var parts = [];
-    if (lf.departure) parts.push(lf.departure + "発");
-    parts.push(lf.mode === "train" ? "電車" : "車");
     if (v.sort !== YM_DEFAULT_SORT) parts.push(v.sort);
     if (v.search) parts.push("「" + v.search + "」");
     if (v.category !== "すべて") parts.push(v.category);
