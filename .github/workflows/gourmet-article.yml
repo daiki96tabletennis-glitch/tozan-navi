@@ -1,0 +1,37 @@
+# 記事「山の茶屋・山小屋グルメ」の作り直し。管理画面（/admin/gourmet/）で写真を選ぶと
+# data/mountain_gourmet.json が GitHub に書かれるので、決まった生成スクリプトで記事を作り直してコミットする（AIは使わない）。
+name: グルメ記事の作り直し
+
+on:
+  push:
+    paths:
+      - 'data/mountain_gourmet.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gourmet-article
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 記事を作り直す
+        run: python3 scripts/gen_gourmet_article.py
+      - name: 変わっていればコミットする
+        run: |
+          git add articles/mountain-gourmet/index.html
+          if git diff --cached --quiet; then echo "変化なし"; exit 0; fi
+          git config user.name "yamatch-gourmet"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -q -m "グルメ記事を作り直し（写真の変更）"
+          git pull -q --rebase
+          git push -q

@@ -16,7 +16,7 @@
 - 手順
   1. リポジトリ側で `git status` が空なことを確かめ、`git pull`（定期実行が GitHub 側でコミットした分を取り込む）
   2. 定期実行が書き換えるファイルで、取り込んだ分が新しいものを作業フォルダへ戻す：`data/huts.json` `data/huts_history.json` `data/huts_rules.json` `huts/` `sitemap.xml`（`git diff --name-only <前回のHEAD> HEAD` で対象を出し、作業フォルダ側でも変えているファイルは中身を見比べて合わせる。丸ごと上書きしない）
-  2b. 管理画面の「山画像を管理」は GitHub に直接書く（写真のファイル・`photos`・`data/image-credits.json`）。`python3 scripts/import_repo_images.py` で、前回から増えた `[images]` のコミットの山だけ作業フォルダに取り込む（取り込まずにコピーすると写真の変更が消える。2026-08〜09 に13山で起きた）
+  2b. 管理画面の「山画像を管理」は GitHub に直接書く（写真のファイル・`photos`・`data/image-credits.json`）。`python3 scripts/import_repo_images.py` で、前回から増えた `[images]` のコミットの山だけ作業フォルダに取り込む（取り込まずにコピーすると写真の変更が消える。2026-08〜09 に13山で起きた）。管理画面の「グルメ記事の写真」（コミットの題が `[gourmet]`）の分も同じスクリプトが取り込む（`data/mountain_gourmet.json` の `image` と写真のファイル。取り込んだら記事を作り直す）
   3. 作業フォルダ → リポジトリ：`rsync -a --exclude .git --exclude .claude --exclude .DS_Store --exclude data/admin_notices.json`（`--delete` は付けない。`.github/` も渡す）
   4. `diff -rq` で一致を確かめ、変わったファイルの一覧を報告する
 - リポジトリ → 作業フォルダの丸ごとコピーはしない（手順2の対象だけ）
@@ -272,6 +272,8 @@
 - 生成スクリプトで作るページ（手で編集しない。`<!-- generated: scripts/gen_... -->` の印つき。`sync_search_pages.py` は飛ばす）
   - `search/train-daytrip/`（電車で行ける日帰り登山20選）：`scripts/gen_train_daytrip.py`。選ぶ山と帰りの最終バスは `data/train_daytrip.json`（最終バスは公式の時刻表で確かめた値だけ。出典・改正日・確認日つき。未確認は「確認中」）
   - `articles/mountain-gourmet/`（山の茶屋・山小屋グルメ）：`scripts/gen_gourmet_article.py`。中身は `data/mountain_gourmet.json`。泊まる人だけの夕食・朝食は載せない。値段・営業時間は載せない。写真は `images/articles/mountain-gourmet/<key>.jpg` を置いて `image.src` を入れる（ファイルがある項目だけ写真が出る。お店の公式サイトの写真は無断で使わない）
+    - 写真は管理画面の「グルメ記事の写真」（`/admin/gourmet/`。運営者の指示・2026-10-20）で選ぶ：お店ごとに Commons の候補を出し（商用で使えるライセンスだけ「使える」）、選んだ写真を幅1200pxの JPEG にして `images/articles/mountain-gourmet/<key>-<Commonsのページ番号>.jpg` と `image` を GitHub に直接書く。記事は `.github/workflows/gourmet-article.yml` が `gen_gourmet_article.py` で作り直す（AIは使わない）
+    - 手元で選ぶときは `python3 scripts/gourmet_commons.py all`（Wikimedia Commons から、商用で使えるライセンスの候補だけを集め、`.claude/gourmet_commons/index.html` に並べる）→ 人が見て選ぶ → `apply <key> <番号> [写真の説明]` → `gen_gourmet_article.py`。写真の下に作者・ライセンス・Commons へのリンクが出る（CC BY / BY-SA の表示の条件）。料理名や山名で見つかった写真には注意が出る（別のお店の料理を、そのお店のものとして載せない）。いつも使う検索語は項目の `commonsQueries` に書く
 - ページ再生成：`scripts/gen_mountain_pages.py --id <id>`（全件は `--all`、書き込まず確認は `--dry-run`）
 - 検証：`scripts/check_pages.py`（0件になるまで修正を繰り返す）
 - 出発地別の全件一覧（`search/shinjuku`・`omiya`・`yokohama`・`ofuna`）：`scripts/sync_search_hubs.py --write` が車の所要時間・難易度・日帰り表示・地域・標高・並び順・件数を `mountains.json` に合わせる。難易度・日帰り・車の時間（`driveTime*` / `driveOfuna`）を変えたら実行する（ずれはセクション17で検出）。掲載する山の追加・削除は手作業

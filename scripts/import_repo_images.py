@@ -8,6 +8,8 @@
   python3 scripts/import_repo_images.py --dry-run  何を取り込むかだけ表示
 
 取り込むもの：その山の photos（リポジトリの値に合わせる）、data/image-credits.json のその山の分、写真のファイル（増えたものだけ。消さない）。
+管理画面の「グルメ記事の写真」（/admin/gourmet/。コミットの題が [gourmet]）の分も取り込む：data/mountain_gourmet.json の各項目の image と、
+images/articles/mountain-gourmet/ の写真のファイル（無いものだけ）。取り込んだら記事を作り直す。
 前回どこまで取り込んだかは .claude/repo_images_sync.json（公開のコピーには含めない）。"""
 import json, os, re, shutil, subprocess, sys
 
@@ -33,13 +35,16 @@ def main():
         return
     log = git('log', '--format=%H|%s', since + '..' + head).strip()
     names = set()
+    gourmet = False
     for line in log.split('\n') if log else []:
         h, s = line.split('|', 1)
+        if s.startswith('[gourmet]'):
+            gourmet = True
         m = re.match(r'\[images\] (.+?)の(写真|画像|不要画像|写真クレジット)', s)
         if m:
             names.add(m.group(1))
     if not names:
-        print('取り込む画像の変更はありません')
+        print('取り込む山の画像の変更はありません')
     else:
         repo_m = {m['name']: m for m in json.loads(git('show', 'HEAD:data/mountains.json'))}
         repo_c = json.loads(git('show', 'HEAD:data/image-credits.json'))
@@ -70,8 +75,37 @@ def main():
             json.dump(C, open(os.path.join(ROOT, 'data', 'image-credits.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
             for i in ids:
                 subprocess.run([sys.executable, os.path.join(ROOT, 'scripts', 'gen_mountain_pages.py'), '--id', i], check=True)
+    if gourmet:
+        import_gourmet(dry)
     if not dry:
         json.dump({'commit': head}, open(STATE, 'w'))
+
+
+def import_gourmet(dry):
+    path = os.path.join(ROOT, 'data', 'mountain_gourmet.json')
+    repo = {x['key']: x for x in json.loads(git('show', 'HEAD:data/mountain_gourmet.json'))['items']}
+    d = json.load(open(path, encoding='utf-8'))
+    changed = False
+    for it in d['items']:
+        r = repo.get(it['key'])
+        if not r or r.get('image') == it.get('image'):
+            continue
+        print('グルメ記事の写真：%s %s → %s' % (it['key'], (it.get('image') or {}).get('src'), (r.get('image') or {}).get('src')))
+        it['image'] = r.get('image')
+        changed = True
+        src = (r.get('image') or {}).get('src')
+        if src:
+            a, b = os.path.join(REPO, src.lstrip('/')), os.path.join(ROOT, src.lstrip('/'))
+            if os.path.exists(a) and not os.path.exists(b):
+                print('   写真のファイルを取り込む：', os.path.basename(b))
+                if not dry:
+                    os.makedirs(os.path.dirname(b), exist_ok=True)
+                    shutil.copy2(a, b)
+    if changed and not dry:
+        json.dump(d, open(path, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+        subprocess.run([sys.executable, os.path.join(ROOT, 'scripts', 'gen_gourmet_article.py')], check=True)
+    if not changed:
+        print('グルメ記事の写真：変更なし')
 
 
 if __name__ == '__main__':

@@ -2,100 +2,364 @@
  "note": "記事「山の茶屋・山小屋グルメ」（/articles/mountain-gourmet/）の元データ。ページは scripts/gen_gourmet_article.py が作る（手で編集しない）。泊まらなくても食べられるもの（昼の軽食・喫茶・茶屋）だけを載せる。夕食・朝食など泊まる人だけのものは載せない。値段・営業時間は変わりやすいので載せず、出典（sources）と確認日（checkedAt）を残す。写真は image.src に /images/articles/mountain-gourmet/<key>.jpg のように入れる（ファイルが無いあいだは写真の枠を出さない）。credit は写真の撮影者・出典",
  "checkedAt": "2026-10-19",
  "groups": [
-  {"key": "teahouse", "title": "日帰りで寄れる低山の茶屋", "lead": "関東の低山の山頂や峠には、昔ながらの茶屋があります。営業は土日・休日が中心で、天候によって休むことも多いので、あてにしすぎず「開いていたらうれしい」くらいで計画するのがおすすめです。"},
-  {"key": "highland", "title": "ロープウェイ・バスで行ける高原の山小屋", "lead": "乗り物で高いところまで上がれる山では、山小屋の喫茶や軽食を気軽に楽しめます。"},
-  {"key": "alps", "title": "アルプスの稜線で昼ごはん", "lead": "北アルプス・南アルプスの山小屋の多くは、泊まらない登山者にも昼の軽食や喫茶を出しています。営業期間は夏〜秋が中心です。"}
+  {
+   "key": "teahouse",
+   "title": "日帰りで寄れる低山の茶屋",
+   "lead": "関東の低山の山頂や峠には、昔ながらの茶屋があります。営業は土日・休日が中心で、天候によって休むことも多いので、あてにしすぎず「開いていたらうれしい」くらいで計画するのがおすすめです。"
+  },
+  {
+   "key": "highland",
+   "title": "ロープウェイ・バスで行ける高原の山小屋",
+   "lead": "乗り物で高いところまで上がれる山では、山小屋の喫茶や軽食を気軽に楽しめます。"
+  },
+  {
+   "key": "alps",
+   "title": "アルプスの稜線で昼ごはん",
+   "lead": "北アルプス・南アルプスの山小屋の多くは、泊まらない登山者にも昼の軽食や喫茶を出しています。営業期間は夏〜秋が中心です。"
+  }
  ],
  "items": [
-  {"key": "nabewari", "group": "teahouse", "mountainId": "nabewari", "place": "鍋割山荘", "where": "鍋割山の山頂",
+  {
+   "key": "nabewari",
+   "group": "teahouse",
+   "mountainId": "nabewari",
+   "place": "鍋割山荘",
+   "where": "鍋割山の山頂",
    "food": "名物の鍋焼きうどん。土鍋で熱いまま出てきて、具がたっぷり入っている",
    "notes": "週末・休日は行列ができることがある。売り切れや休業日があるので、行く前に確かめる",
-   "sources": [{"label": "hinata", "url": "https://hinata.me/article/881856943552839349"}, {"label": "YAMA HACK", "url": "https://yamahack.com/2829"}],
-   "image": {"src": null, "alt": "鍋割山荘の鍋焼きうどん", "credit": null}},
-  {"key": "kagenobusan", "group": "teahouse", "mountainId": "kagenobusan", "place": "三角点かげ信小屋", "where": "景信山の山頂",
+   "sources": [
+    {
+     "label": "hinata",
+     "url": "https://hinata.me/article/881856943552839349"
+    },
+    {
+     "label": "YAMA HACK",
+     "url": "https://yamahack.com/2829"
+    }
+   ],
+   "image": {
+    "src": null,
+    "alt": "鍋割山荘の鍋焼きうどん",
+    "credit": null
+   },
+   "commonsQueries": [
+    "Nabewari"
+   ]
+  },
+  {
+   "key": "kagenobusan",
+   "group": "teahouse",
+   "mountainId": "kagenobusan",
+   "place": "三角点かげ信小屋",
+   "where": "景信山の山頂",
    "food": "薄い衣でパリッと揚がった山菜の天ぷら（しその天ぷらなど）と、大きななめこが入ったなめこ汁",
    "notes": "営業は土日が中心で、天候によって休むことがある",
-   "sources": [{"label": "高尾山マガジン", "url": "https://mttakaomagazine.com/blog/5130"}],
-   "image": {"src": null, "alt": "三角点かげ信小屋の天ぷら", "credit": null}},
-  {"key": "kobotokeshiroyama", "group": "teahouse", "mountainId": "kobotokeshiroyama", "place": "城山茶屋・山の茶屋 青天狗", "where": "小仏城山の山頂",
+   "sources": [
+    {
+     "label": "高尾山マガジン",
+     "url": "https://mttakaomagazine.com/blog/5130"
+    }
+   ],
+   "image": {
+    "src": null,
+    "alt": "三角点かげ信小屋の天ぷら",
+    "credit": null
+   },
+   "commonsQueries": [
+    "Mount Kagenobu",
+    "景信山"
+   ]
+  },
+  {
+   "key": "kobotokeshiroyama",
+   "group": "teahouse",
+   "mountainId": "kobotokeshiroyama",
+   "place": "城山茶屋・山の茶屋 青天狗",
+   "where": "小仏城山の山頂",
    "food": "城山茶屋のなめこ汁が人気。テーブルが多く、山の上でゆっくり食事ができる。2024年3月からは、景信山から移ってきた「山の茶屋 青天狗」も営業している",
    "notes": "高尾山と景信山のあいだにあり、縦走の休憩に寄りやすい",
-   "sources": [{"label": "YAMA HACK", "url": "https://yamahack.com/954"}, {"label": "山と溪谷オンライン（山行記録）", "url": "https://www.yamakei-online.com/cl_record/detail.php?id=294086"}],
-   "image": {"src": null, "alt": "小仏城山の茶屋", "credit": null}},
-  {"key": "jinba", "group": "teahouse", "mountainId": "jinba", "place": "陣馬山の山頂の茶屋", "where": "陣馬山の山頂（白馬の像のまわり）",
+   "sources": [
+    {
+     "label": "YAMA HACK",
+     "url": "https://yamahack.com/954"
+    },
+    {
+     "label": "山と溪谷オンライン（山行記録）",
+     "url": "https://www.yamakei-online.com/cl_record/detail.php?id=294086"
+    }
+   ],
+   "image": {
+    "src": null,
+    "alt": "小仏城山の茶屋",
+    "credit": null
+   }
+  },
+  {
+   "key": "jinba",
+   "group": "teahouse",
+   "mountainId": "jinba",
+   "place": "陣馬山の山頂の茶屋",
+   "where": "陣馬山の山頂（白馬の像のまわり）",
    "food": "山頂に茶屋が並び、うどんやそばが食べられる",
    "notes": "茶屋ごとに営業日が違い、平日は閉まっていることがある",
-   "sources": [{"label": "かながわ観光", "url": "https://kanagawa-kankou.or.jp/spot/7821"}, {"label": "YAMA HACK", "url": "https://yamahack.com/5701"}],
-   "image": {"src": null, "alt": "陣馬山の山頂の茶屋", "credit": null}},
-  {"key": "kintoki", "group": "teahouse", "mountainId": "kintoki", "place": "金時茶屋・金太郎茶屋", "where": "金時山の山頂",
+   "sources": [
+    {
+     "label": "かながわ観光",
+     "url": "https://kanagawa-kankou.or.jp/spot/7821"
+    },
+    {
+     "label": "YAMA HACK",
+     "url": "https://yamahack.com/5701"
+    }
+   ],
+   "image": {
+    "src": null,
+    "alt": "陣馬山の山頂の茶屋",
+    "credit": null
+   },
+   "commonsQueries": [
+    "Mount Jinba",
+    "陣馬山 山頂"
+   ]
+  },
+  {
+   "key": "kintoki",
+   "group": "teahouse",
+   "mountainId": "kintoki",
+   "place": "金時茶屋・金太郎茶屋",
+   "where": "金時山の山頂",
    "food": "山頂の2軒の茶屋で食事ができる。目の前に富士山を見ながら一休みできる",
    "notes": "どちらかが休みの日もある",
-   "sources": [{"label": "箱根ジオパーク", "url": "https://www.hakone-geopark.jp/area-guide/hakone2/009kintokiyama.html"}, {"label": "たびこふれ", "url": "https://tabi-mag.jp/kn0163/"}],
-   "image": {"src": null, "alt": "金時山の山頂の茶屋", "credit": null}},
-  {"key": "tonosaki", "group": "teahouse", "mountainId": "tonosaki", "place": "尊仏山荘", "where": "塔ノ岳の山頂",
+   "sources": [
+    {
+     "label": "箱根ジオパーク",
+     "url": "https://www.hakone-geopark.jp/area-guide/hakone2/009kintokiyama.html"
+    },
+    {
+     "label": "たびこふれ",
+     "url": "https://tabi-mag.jp/kn0163/"
+    }
+   ],
+   "image": {
+    "src": null,
+    "alt": "金時山の山頂の茶屋",
+    "credit": null
+   },
+   "commonsQueries": [
+    "Kintoki-yama"
+   ]
+  },
+  {
+   "key": "tonosaki",
+   "group": "teahouse",
+   "mountainId": "tonosaki",
+   "place": "尊仏山荘",
+   "where": "塔ノ岳の山頂",
    "food": "喫茶に季節限定の甘酒",
    "notes": "夕食の手作り野菜カレーは泊まる人向け。日帰りで頼めるのは喫茶のメニュー",
-   "hutId": "hut-e1f550f6", "official": "https://sonbutsusanso.amebaownd.com/",
-   "image": {"src": null, "alt": "尊仏山荘", "credit": null}},
-  {"key": "tateyama-mikuri", "group": "highland", "mountainId": "tateyama", "place": "みくりが池温泉", "where": "立山・室堂（みくりが池のほとり）",
+   "hutId": "hut-e1f550f6",
+   "official": "https://sonbutsusanso.amebaownd.com/",
+   "image": {
+    "src": null,
+    "alt": "尊仏山荘",
+    "credit": null
+   }
+  },
+  {
+   "key": "tateyama-mikuri",
+   "group": "highland",
+   "mountainId": "tateyama",
+   "place": "みくりが池温泉",
+   "where": "立山・室堂（みくりが池のほとり）",
    "food": "「喫茶みくり」のブルーベリーソフトと、えんま様のホットピザ",
    "notes": "室堂ターミナルから歩いて行ける。営業は4月中旬〜11月下旬",
-   "hutId": "hut-314a3a2f", "official": "http://www.mikuri.com/",
-   "image": {"src": null, "alt": "みくりが池温泉のブルーベリーソフト", "credit": null}},
-  {"key": "tateyama-murodo", "group": "highland", "mountainId": "tateyama", "place": "立山室堂山荘", "where": "立山・室堂",
+   "hutId": "hut-314a3a2f",
+   "official": "http://www.mikuri.com/",
+   "image": {
+    "src": null,
+    "alt": "みくりが池温泉のブルーベリーソフト",
+    "credit": null
+   }
+  },
+  {
+   "key": "tateyama-murodo",
+   "group": "highland",
+   "mountainId": "tateyama",
+   "place": "立山室堂山荘",
+   "where": "立山・室堂",
    "food": "11〜14時の軽食に、牛丼・うどん・カレー・中華丼など。生ビールもある",
    "notes": "雄山へ登る前後に寄りやすい",
-   "hutId": "hut-4ee8fb57", "official": "http://www.murodou.co.jp/",
-   "image": {"src": null, "alt": "立山室堂山荘の軽食", "credit": null}},
-  {"key": "shirouma-tsugaike", "group": "highland", "mountainId": "shirouma", "place": "栂池ヒュッテ", "where": "栂池自然園の入口（ロープウェイ終点の近く）",
+   "hutId": "hut-4ee8fb57",
+   "official": "http://www.murodou.co.jp/",
+   "image": {
+    "src": null,
+    "alt": "立山室堂山荘の軽食",
+    "credit": null
+   }
+  },
+  {
+   "key": "shirouma-tsugaike",
+   "group": "highland",
+   "mountainId": "shirouma",
+   "place": "栂池ヒュッテ",
+   "where": "栂池自然園の入口（ロープウェイ終点の近く）",
    "food": "軽食にカレー、山菜うどん、おやき、ソフトクリーム、生ビール",
    "notes": "栂池自然園の散策や、白馬大池へ向かう前後に寄れる",
-   "hutId": "hut-b4e48d1b", "official": "https://hakubakan.com/lodge/tsugaikehutte/",
-   "image": {"src": null, "alt": "栂池ヒュッテの軽食", "credit": null}},
-  {"key": "kirigamine-misayama", "group": "highland", "mountainId": "kirigamine", "place": "ヒュッテみさやま", "where": "霧ヶ峰・八島ヶ原湿原のそば",
+   "hutId": "hut-b4e48d1b",
+   "official": "https://hakubakan.com/lodge/tsugaikehutte/",
+   "image": {
+    "src": null,
+    "alt": "栂池ヒュッテの軽食",
+    "credit": null
+   }
+  },
+  {
+   "key": "kirigamine-misayama",
+   "group": "highland",
+   "mountainId": "kirigamine",
+   "place": "ヒュッテみさやま",
+   "where": "霧ヶ峰・八島ヶ原湿原のそば",
    "food": "併設の喫茶店で、ハンドドリップの珈琲と地元パン店の厚切りトースト",
    "notes": "湿原の散策のあとに寄りやすい",
-   "hutId": "hut-0e066900", "official": "https://huttemisayama.net/",
-   "image": {"src": null, "alt": "ヒュッテみさやまの珈琲とトースト", "credit": null}},
-  {"key": "ontakesan-ninoike", "group": "highland", "mountainId": "ontakesan", "place": "二ノ池山荘", "where": "御嶽山・二ノ池のほとり",
+   "hutId": "hut-0e066900",
+   "official": "https://huttemisayama.net/",
+   "image": {
+    "src": null,
+    "alt": "ヒュッテみさやまの珈琲とトースト",
+    "credit": null
+   },
+   "commonsQueries": [
+    "Hutte Misayama",
+    "八島ヶ原湿原"
+   ]
+  },
+  {
+   "key": "ontakesan-ninoike",
+   "group": "highland",
+   "mountainId": "ontakesan",
+   "place": "二ノ池山荘",
+   "where": "御嶽山・二ノ池のほとり",
    "food": "午前から17時ごろまで、喫茶と食事（カレーライス、うどんなど）",
    "notes": "営業は夏が中心（2026年は7月1日〜9月30日など）。御嶽山は山頂へ登れる期間が決まっているので、あわせて確かめる",
-   "hutId": "hut-5c85b374", "official": "http://ninoike2905.com/",
-   "image": {"src": null, "alt": "二ノ池山荘", "credit": null}},
-  {"key": "hotaka-karasawa", "group": "alps", "mountainId": "hotaka", "place": "涸沢小屋", "where": "涸沢カール",
+   "hutId": "hut-5c85b374",
+   "official": "http://ninoike2905.com/",
+   "image": {
+    "src": null,
+    "alt": "二ノ池山荘",
+    "credit": null
+   }
+  },
+  {
+   "key": "hotaka-karasawa",
+   "group": "alps",
+   "mountainId": "hotaka",
+   "place": "涸沢小屋",
+   "where": "涸沢カール",
    "food": "軽食・喫茶の売店で、カレーライス、おでん、名物のもつ煮",
    "notes": "上高地から涸沢までは片道約6時間。泊まりの山行の途中で寄る人が多い",
-   "hutId": "hut-f16d6440", "official": "http://www.karasawagoya.com/",
-   "image": {"src": null, "alt": "涸沢小屋のもつ煮", "credit": null}},
-  {"key": "hotaka-sanso", "group": "alps", "mountainId": "hotaka", "place": "穂高岳山荘", "where": "白出のコル（奥穂高岳の直下）",
+   "hutId": "hut-f16d6440",
+   "official": "http://www.karasawagoya.com/",
+   "image": {
+    "src": null,
+    "alt": "涸沢小屋のもつ煮",
+    "credit": null
+   }
+  },
+  {
+   "key": "hotaka-sanso",
+   "group": "alps",
+   "mountainId": "hotaka",
+   "place": "穂高岳山荘",
+   "where": "白出のコル（奥穂高岳の直下）",
    "food": "昼の軽食に味噌ラーメン・醤油ラーメン、特製の手作りカレーなど",
    "notes": "奥穂高岳の山頂まで約1時間の場所",
-   "hutId": "hut-f5fe13c2", "official": "https://www.hotakadakesanso.com/",
-   "image": {"src": null, "alt": "穂高岳山荘のラーメン", "credit": null}},
-  {"key": "jonen", "group": "alps", "mountainId": "jonengatake", "place": "常念小屋", "where": "常念乗越",
+   "hutId": "hut-f5fe13c2",
+   "official": "https://www.hotakadakesanso.com/",
+   "image": {
+    "src": null,
+    "alt": "穂高岳山荘のラーメン",
+    "credit": null
+   }
+  },
+  {
+   "key": "jonen",
+   "group": "alps",
+   "mountainId": "jonengatake",
+   "place": "常念小屋",
+   "where": "常念乗越",
    "food": "軽食にビーフシチューライス、カレー、ざるそば・ざるうどん。喫茶もある",
    "notes": "常念岳の山頂へ往復する前後に寄れる",
-   "hutId": "hut-b059e31d", "official": "http://mt-jonen.com/",
-   "image": {"src": null, "alt": "常念小屋の軽食", "credit": null}},
-  {"key": "kitadake-kata", "group": "alps", "mountainId": "kitadake", "place": "北岳肩の小屋", "where": "北岳の山頂の手前（肩）",
+   "hutId": "hut-b059e31d",
+   "official": "http://mt-jonen.com/",
+   "image": {
+    "src": null,
+    "alt": "常念小屋の軽食",
+    "credit": null
+   }
+  },
+  {
+   "key": "kitadake-kata",
+   "group": "alps",
+   "mountainId": "kitadake",
+   "place": "北岳肩の小屋",
+   "where": "北岳の山頂の手前（肩）",
    "food": "軽食に鍋焼きうどん、おでん、おしるこなど",
    "notes": "日本で2番目に高い山の、山頂の近くで食べられる",
-   "hutId": "hut-9c20ab7e", "official": "https://katanokoya.com/",
-   "image": {"src": null, "alt": "北岳肩の小屋の鍋焼きうどん", "credit": null}},
-  {"key": "shirouma-oike", "group": "alps", "mountainId": "shirouma", "place": "白馬大池山荘", "where": "白馬大池のほとり",
+   "hutId": "hut-9c20ab7e",
+   "official": "https://katanokoya.com/",
+   "image": {
+    "src": null,
+    "alt": "北岳肩の小屋の鍋焼きうどん",
+    "credit": null
+   }
+  },
+  {
+   "key": "shirouma-oike",
+   "group": "alps",
+   "mountainId": "shirouma",
+   "place": "白馬大池山荘",
+   "where": "白馬大池のほとり",
    "food": "軽食にカレー、キーマカレー、チャーハン、牛丼（ベジタリアン向けのメニューもある）",
    "notes": "栂池からのコースの途中にある",
-   "hutId": "hut-d0aadf5d", "official": "https://hakubakan.com/lodge/hakubaoikesanso/",
-   "image": {"src": null, "alt": "白馬大池山荘の軽食", "credit": null}},
-  {"key": "tsurugi-kenzanso", "group": "alps", "mountainId": "tsurugi", "place": "剣山荘", "where": "剱岳の一服剱の手前",
+   "hutId": "hut-d0aadf5d",
+   "official": "https://hakubakan.com/lodge/hakubaoikesanso/",
+   "image": {
+    "src": null,
+    "alt": "白馬大池山荘の軽食",
+    "credit": null
+   }
+  },
+  {
+   "key": "tsurugi-kenzanso",
+   "group": "alps",
+   "mountainId": "tsurugi",
+   "place": "剣山荘",
+   "where": "剱岳の一服剱の手前",
    "food": "ランチ（9〜15時）にカレーライス、牛丼、中華丼。生ビールと富山の地酒",
    "notes": "室堂から剱沢を越えて約3時間",
-   "hutId": "hut-f738f289", "official": "https://www.kenzanso.com/",
-   "image": {"src": null, "alt": "剣山荘のランチ", "credit": null}},
-  {"key": "yari-yaridaira", "group": "alps", "mountainId": "yari", "place": "槍平小屋", "where": "新穂高から槍ヶ岳へ向かう途中（槍平）",
+   "hutId": "hut-f738f289",
+   "official": "https://www.kenzanso.com/",
+   "image": {
+    "src": null,
+    "alt": "剣山荘のランチ",
+    "credit": null
+   }
+  },
+  {
+   "key": "yari-yaridaira",
+   "group": "alps",
+   "mountainId": "yari",
+   "place": "槍平小屋",
+   "where": "新穂高から槍ヶ岳へ向かう途中（槍平）",
    "food": "オリジナルブレンドのコーヒー（山想ブレンド・山小屋ブレンド）、軽食にざるうどん・かき氷",
    "notes": "夕食のスパイスカレーは泊まる人向け",
-   "hutId": "hut-bb7e1024", "official": "https://www.yaridaira.jp/",
-   "image": {"src": null, "alt": "槍平小屋のコーヒー", "credit": null}}
+   "hutId": "hut-bb7e1024",
+   "official": "https://www.yaridaira.jp/",
+   "image": {
+    "src": null,
+    "alt": "槍平小屋のコーヒー",
+    "credit": null
+   }
+  }
  ]
 }

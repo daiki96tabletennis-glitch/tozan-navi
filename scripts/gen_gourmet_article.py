@@ -54,6 +54,7 @@ def main():
 .gm-photo{margin:0;background:#eeeae2}
 .gm-photo img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
 .gm-photo figcaption{font-size:10.5px;color:#8a8070;padding:4px 12px}
+.gm-photo figcaption a{color:#8a8070}
 .gm-body{padding:14px 16px}
 .gm-place{font-size:17px;font-weight:800;color:#2a3820;margin:0 0 2px}
 .gm-where{font-size:12px;color:#8a8070;margin-bottom:8px}
@@ -78,8 +79,18 @@ def main():
             img = it.get('image') or {}
             photo = ''
             if img.get('src') and os.path.exists(os.path.join(ROOT, img['src'].lstrip('/'))):
+                cap = ''
+                if img.get('source') == 'wikimedia_commons':
+                    # CC BY / BY-SA は作者・ライセンス・元のページの表示が必要
+                    lic = E(img.get('license') or '')
+                    if img.get('licenseUrl'):
+                        lic = '<a href="%s" target="_blank" rel="noopener">%s</a>' % (E(img['licenseUrl']), lic)
+                    cap = '<figcaption>写真：%s（%s）／<a href="%s" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption>' % (
+                        E(img.get('credit') or '作者不明'), lic, E(img.get('pageUrl') or ''))
+                elif img.get('credit'):
+                    cap = '<figcaption>写真：%s</figcaption>' % E(img['credit'])
                 photo = ('<figure class="gm-photo"><img src="%s" alt="%s" loading="lazy">%s</figure>'
-                         % (E(img['src']), E(img.get('alt') or it['place']), ('<figcaption>写真：%s</figcaption>' % E(img['credit'])) if img.get('credit') else ''))
+                         % (E(img['src']), E(img.get('alt') or it['place']), cap))
             if it.get('hutId'):
                 h = H[it['hutId']]
                 src = ('出典：<a href="%s" target="_blank" rel="noopener">%sの公式サイト</a>（メニューは年によって変わります）。営業期間：%s（<a href="/huts/%s/">山小屋の情報</a>）'
