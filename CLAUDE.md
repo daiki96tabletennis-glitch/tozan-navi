@@ -269,6 +269,9 @@
 9. まとめ直リンク混入
 
 ## スクリプト（`scripts/` 配下）
+- 生成スクリプトで作るページ（手で編集しない。`<!-- generated: scripts/gen_... -->` の印つき。`sync_search_pages.py` は飛ばす）
+  - `search/train-daytrip/`（電車で行ける日帰り登山20選）：`scripts/gen_train_daytrip.py`。選ぶ山と帰りの最終バスは `data/train_daytrip.json`（最終バスは公式の時刻表で確かめた値だけ。出典・改正日・確認日つき。未確認は「確認中」）
+  - `articles/mountain-gourmet/`（山の茶屋・山小屋グルメ）：`scripts/gen_gourmet_article.py`。中身は `data/mountain_gourmet.json`。泊まる人だけの夕食・朝食は載せない。値段・営業時間は載せない。写真は `images/articles/mountain-gourmet/<key>.jpg` を置いて `image.src` を入れる（ファイルがある項目だけ写真が出る。お店の公式サイトの写真は無断で使わない）
 - ページ再生成：`scripts/gen_mountain_pages.py --id <id>`（全件は `--all`、書き込まず確認は `--dry-run`）
 - 検証：`scripts/check_pages.py`（0件になるまで修正を繰り返す）
 - 出発地別の全件一覧（`search/shinjuku`・`omiya`・`yokohama`・`ofuna`）：`scripts/sync_search_hubs.py --write` が車の所要時間・難易度・日帰り表示・地域・標高・並び順・件数を `mountains.json` に合わせる。難易度・日帰り・車の時間（`driveTime*` / `driveOfuna`）を変えたら実行する（ずれはセクション17で検出）。掲載する山の追加・削除は手作業
