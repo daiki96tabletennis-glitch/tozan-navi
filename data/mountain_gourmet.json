@@ -1,6 +1,6 @@
 {
- "note": "記事「山の茶屋・山小屋グルメ」（/articles/mountain-gourmet/）の元データ。ページは scripts/gen_gourmet_article.py が作る（手で編集しない）。泊まらなくても食べられるもの（昼の軽食・喫茶・茶屋）だけを載せる。夕食・朝食など泊まる人だけのものは載せない。値段・営業時間は変わりやすいので載せず、出典（sources）と確認日（checkedAt）を残す。写真は image.src に /images/articles/mountain-gourmet/<key>.jpg のように入れる（ファイルが無いあいだは写真の枠を出さない）。credit は写真の撮影者・出典",
- "checkedAt": "2026-10-19",
+ "note": "記事「山の茶屋・山小屋グルメ」（/articles/mountain-gourmet/）の元データ。ページは scripts/gen_gourmet_article.py が作る（手で編集しない）。泊まらなくても食べられるもの（昼の軽食・喫茶・茶屋）だけを載せる。夕食・朝食など泊まる人だけのものは載せない。値段・営業時間は変わりやすいので載せず、出典（sources）と確認日（checkedAt）を残す。写真は image.src に /images/articles/mountain-gourmet/<key>.jpg のように入れる（ファイルが無いあいだは写真の枠を出さない）。credit は写真の撮影者・出典 特に決まった名物が無い場所（カレー・うどんなど一般的な軽食だけ）は載せない（removedItems に理由つきで残す）",
+ "checkedAt": "2026-10-20",
  "groups": [
   {
    "key": "teahouse",
@@ -95,6 +95,108 @@
    }
   },
   {
+   "key": "tateyama-mikuri",
+   "group": "highland",
+   "mountainId": "tateyama",
+   "place": "みくりが池温泉",
+   "where": "立山・室堂（みくりが池のほとり）",
+   "food": "「喫茶みくり」のブルーベリーソフトと、えんま様のホットピザ",
+   "notes": "室堂ターミナルから歩いて行ける。営業は4月中旬〜11月下旬",
+   "hutId": "hut-314a3a2f",
+   "official": "http://www.mikuri.com/",
+   "image": {
+    "src": null,
+    "alt": "みくりが池温泉のブルーベリーソフト",
+    "credit": null
+   }
+  },
+  {
+   "key": "kirigamine-misayama",
+   "group": "highland",
+   "mountainId": "kirigamine",
+   "place": "ヒュッテみさやま",
+   "where": "霧ヶ峰・八島ヶ原湿原のそば",
+   "food": "併設の喫茶店で、ハンドドリップの珈琲と地元パン店の厚切りトースト",
+   "notes": "湿原の散策のあとに寄りやすい",
+   "hutId": "hut-0e066900",
+   "official": "https://huttemisayama.net/",
+   "image": {
+    "src": null,
+    "alt": "ヒュッテみさやまの珈琲とトースト",
+    "credit": null
+   },
+   "commonsQueries": [
+    "Hutte Misayama",
+    "八島ヶ原湿原"
+   ]
+  },
+  {
+   "key": "hotaka-karasawa",
+   "group": "alps",
+   "mountainId": "hotaka",
+   "place": "涸沢小屋",
+   "where": "涸沢カール",
+   "food": "軽食・喫茶の売店で、カレーライス、おでん、名物のもつ煮",
+   "notes": "上高地から涸沢までは片道約6時間。泊まりの山行の途中で寄る人が多い",
+   "hutId": "hut-f16d6440",
+   "official": "http://www.karasawagoya.com/",
+   "image": {
+    "src": null,
+    "alt": "涸沢小屋のもつ煮",
+    "credit": null
+   }
+  },
+  {
+   "key": "hotaka-sanso",
+   "group": "alps",
+   "mountainId": "hotaka",
+   "place": "穂高岳山荘",
+   "where": "白出のコル（奥穂高岳の直下）",
+   "food": "食堂（10時30分〜14時）の「特製手作りカレー」。期間・数量限定で「特製手作り牛すじカレー」もある。ラーメンや担々麺も食べられる",
+   "notes": "奥穂高岳の山頂まで約1時間の場所。食事を頼まなくても休憩できる",
+   "hutId": "hut-f5fe13c2",
+   "official": "https://www.hotakadakesanso.com/stay/store",
+   "image": {
+    "src": null,
+    "alt": "穂高岳山荘の特製手作りカレー",
+    "credit": null
+   }
+  },
+  {
+   "key": "yari-yaridaira",
+   "group": "alps",
+   "mountainId": "yari",
+   "place": "槍平小屋",
+   "where": "新穂高から槍ヶ岳へ向かう途中（槍平）",
+   "food": "オリジナルブレンドのコーヒー（山想ブレンド・山小屋ブレンド）、軽食にざるうどん・かき氷",
+   "notes": "夕食のスパイスカレーは泊まる人向け",
+   "hutId": "hut-bb7e1024",
+   "official": "https://www.yaridaira.jp/",
+   "image": {
+    "src": null,
+    "alt": "槍平小屋のコーヒー",
+    "credit": null
+   }
+  },
+  {
+   "key": "otensho-daiten",
+   "group": "alps",
+   "mountainId": "otenshoudake",
+   "place": "大天荘",
+   "where": "大天井岳の山頂のすぐ下",
+   "food": "昼食（10時30分〜13時45分）の「インディアン・ランチ」。カレー（キーマ・ほうれん草のグリーンカレー・スパイシーチキンの3種類から選ぶ）に、サフランライス・ナン・チャイ・デザートが付く。カレーだけの単品もある",
+   "notes": "メニューは公式サイトの2025年度のもの。燕山荘グループの山小屋",
+   "hutId": "hut-6bd368b4",
+   "official": "https://www.enzanso.co.jp/daitenso",
+   "image": {
+    "src": null,
+    "alt": "大天荘のインディアン・ランチ",
+    "credit": null
+   }
+  }
+ ],
+ "removedItems": [
+  {
    "key": "jinba",
    "group": "teahouse",
    "mountainId": "jinba",
@@ -120,7 +222,8 @@
    "commonsQueries": [
     "Mount Jinba",
     "陣馬山 山頂"
-   ]
+   ],
+   "removedReason": "特に決まった名物がない（一般的な軽食・喫茶だけ）。運営者の指示で外した（2026-10-20）"
   },
   {
    "key": "kintoki",
@@ -147,7 +250,8 @@
    },
    "commonsQueries": [
     "Kintoki-yama"
-   ]
+   ],
+   "removedReason": "特に決まった名物がない（一般的な軽食・喫茶だけ）。運営者の指示で外した（2026-10-20）"
   },
   {
    "key": "tonosaki",
@@ -163,23 +267,8 @@
     "src": null,
     "alt": "尊仏山荘",
     "credit": null
-   }
-  },
-  {
-   "key": "tateyama-mikuri",
-   "group": "highland",
-   "mountainId": "tateyama",
-   "place": "みくりが池温泉",
-   "where": "立山・室堂（みくりが池のほとり）",
-   "food": "「喫茶みくり」のブルーベリーソフトと、えんま様のホットピザ",
-   "notes": "室堂ターミナルから歩いて行ける。営業は4月中旬〜11月下旬",
-   "hutId": "hut-314a3a2f",
-   "official": "http://www.mikuri.com/",
-   "image": {
-    "src": null,
-    "alt": "みくりが池温泉のブルーベリーソフト",
-    "credit": null
-   }
+   },
+   "removedReason": "特に決まった名物がない（一般的な軽食・喫茶だけ）。運営者の指示で外した（2026-10-20）"
   },
   {
    "key": "tateyama-murodo",
@@ -195,7 +284,8 @@
     "src": null,
     "alt": "立山室堂山荘の軽食",
     "credit": null
-   }
+   },
+   "removedReason": "特に決まった名物がない（一般的な軽食・喫茶だけ）。運営者の指示で外した（2026-10-20）"
   },
   {
    "key": "shirouma-tsugaike",
@@ -211,27 +301,8 @@
     "src": null,
     "alt": "栂池ヒュッテの軽食",
     "credit": null
-   }
-  },
-  {
-   "key": "kirigamine-misayama",
-   "group": "highland",
-   "mountainId": "kirigamine",
-   "place": "ヒュッテみさやま",
-   "where": "霧ヶ峰・八島ヶ原湿原のそば",
-   "food": "併設の喫茶店で、ハンドドリップの珈琲と地元パン店の厚切りトースト",
-   "notes": "湿原の散策のあとに寄りやすい",
-   "hutId": "hut-0e066900",
-   "official": "https://huttemisayama.net/",
-   "image": {
-    "src": null,
-    "alt": "ヒュッテみさやまの珈琲とトースト",
-    "credit": null
    },
-   "commonsQueries": [
-    "Hutte Misayama",
-    "八島ヶ原湿原"
-   ]
+   "removedReason": "特に決まった名物がない（一般的な軽食・喫茶だけ）。運営者の指示で外した（2026-10-20）"
   },
   {
    "key": "ontakesan-ninoike",
@@ -247,39 +318,8 @@
     "src": null,
     "alt": "二ノ池山荘",
     "credit": null
-   }
-  },
-  {
-   "key": "hotaka-karasawa",
-   "group": "alps",
-   "mountainId": "hotaka",
-   "place": "涸沢小屋",
-   "where": "涸沢カール",
-   "food": "軽食・喫茶の売店で、カレーライス、おでん、名物のもつ煮",
-   "notes": "上高地から涸沢までは片道約6時間。泊まりの山行の途中で寄る人が多い",
-   "hutId": "hut-f16d6440",
-   "official": "http://www.karasawagoya.com/",
-   "image": {
-    "src": null,
-    "alt": "涸沢小屋のもつ煮",
-    "credit": null
-   }
-  },
-  {
-   "key": "hotaka-sanso",
-   "group": "alps",
-   "mountainId": "hotaka",
-   "place": "穂高岳山荘",
-   "where": "白出のコル（奥穂高岳の直下）",
-   "food": "昼の軽食に味噌ラーメン・醤油ラーメン、特製の手作りカレーなど",
-   "notes": "奥穂高岳の山頂まで約1時間の場所",
-   "hutId": "hut-f5fe13c2",
-   "official": "https://www.hotakadakesanso.com/",
-   "image": {
-    "src": null,
-    "alt": "穂高岳山荘のラーメン",
-    "credit": null
-   }
+   },
+   "removedReason": "特に決まった名物がない（一般的な軽食・喫茶だけ）。運営者の指示で外した（2026-10-20）"
   },
   {
    "key": "jonen",
@@ -295,7 +335,8 @@
     "src": null,
     "alt": "常念小屋の軽食",
     "credit": null
-   }
+   },
+   "removedReason": "特に決まった名物がない（一般的な軽食・喫茶だけ）。運営者の指示で外した（2026-10-20）"
   },
   {
    "key": "kitadake-kata",
@@ -311,7 +352,8 @@
     "src": null,
     "alt": "北岳肩の小屋の鍋焼きうどん",
     "credit": null
-   }
+   },
+   "removedReason": "特に決まった名物がない（一般的な軽食・喫茶だけ）。運営者の指示で外した（2026-10-20）"
   },
   {
    "key": "shirouma-oike",
@@ -327,7 +369,8 @@
     "src": null,
     "alt": "白馬大池山荘の軽食",
     "credit": null
-   }
+   },
+   "removedReason": "特に決まった名物がない（一般的な軽食・喫茶だけ）。運営者の指示で外した（2026-10-20）"
   },
   {
    "key": "tsurugi-kenzanso",
@@ -343,23 +386,8 @@
     "src": null,
     "alt": "剣山荘のランチ",
     "credit": null
-   }
-  },
-  {
-   "key": "yari-yaridaira",
-   "group": "alps",
-   "mountainId": "yari",
-   "place": "槍平小屋",
-   "where": "新穂高から槍ヶ岳へ向かう途中（槍平）",
-   "food": "オリジナルブレンドのコーヒー（山想ブレンド・山小屋ブレンド）、軽食にざるうどん・かき氷",
-   "notes": "夕食のスパイスカレーは泊まる人向け",
-   "hutId": "hut-bb7e1024",
-   "official": "https://www.yaridaira.jp/",
-   "image": {
-    "src": null,
-    "alt": "槍平小屋のコーヒー",
-    "credit": null
-   }
+   },
+   "removedReason": "特に決まった名物がない（一般的な軽食・喫茶だけ）。運営者の指示で外した（2026-10-20）"
   }
  ]
 }
