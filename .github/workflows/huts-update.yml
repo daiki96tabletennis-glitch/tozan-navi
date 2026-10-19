@@ -27,6 +27,13 @@ jobs:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}     # Instagram の投稿を読むための鍵（未設定のあいだは読まない）
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
         run: python3 scripts/update_huts.py --scheduled --out huts_report.md
+      - name: Instagram の見張り（Meta AI が書き込むスプレッドシート）を読む
+        run: |
+          set +e
+          python3 scripts/huts_meta_sheet.py --out insta_report.md
+          echo "$?" > insta_code.txt
+          python3 scripts/admin_notice.py --kind insta --report insta_report.md --code "$(cat insta_code.txt)"
+          exit 0
       - name: サイトのチェック
         run: python3 scripts/check_pages.py > check_pages_report.txt 2>&1 || (tail -n 40 check_pages_report.txt; exit 1)
       - name: 変わっていればコミットする
@@ -34,6 +41,7 @@ jobs:
           python3 scripts/admin_notice.py --kind huts --report huts_report.md
           git add -A data/huts.json data/huts_history.json data/huts_rules.json huts sitemap.xml
           if [ -f data/admin_notices.json ]; then git add data/admin_notices.json; fi
+          if [ -f data/huts_meta_seen.json ]; then git add data/huts_meta_seen.json; fi
           if git diff --cached --quiet; then echo "変化なし"; exit 0; fi
           git config user.name "yamatch-huts-update"
           git config user.email "actions@users.noreply.github.com"
