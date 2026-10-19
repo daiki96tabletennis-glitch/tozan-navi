@@ -428,3 +428,26 @@ function applyDep(){
   }
   if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', run); } else { run(); }
 })();
+
+
+// === ヒーローの数字（標高・コース定数・時間）：枠からはみ出す端末でだけ、収まるまで文字を少し縮める ===
+(function(){
+  function fit(){
+    var vals = document.querySelectorAll('.stats-row .stat-val');
+    for(var i = 0; i < vals.length; i++){
+      var v = vals[i];
+      v.style.fontSize = '';
+      var size = parseFloat(window.getComputedStyle(v).fontSize) || 27;
+      var n = 0;
+      while(v.scrollWidth > v.clientWidth + 1 && size > 15 && n < 20){
+        size -= 1; n++;
+        v.style.fontSize = size + 'px';
+      }
+    }
+  }
+  window.ymFitStatVals = fit;
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', fit); } else { fit(); }
+  window.addEventListener('resize', fit);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(fit); }
+  setTimeout(fit, 1200);       // 数字が数え上がる動きや、出発駅の切り替えのあと
+})();

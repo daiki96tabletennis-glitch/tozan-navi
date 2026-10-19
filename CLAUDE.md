@@ -16,6 +16,7 @@
 - 手順
   1. リポジトリ側で `git status` が空なことを確かめ、`git pull`（定期実行が GitHub 側でコミットした分を取り込む）
   2. 定期実行が書き換えるファイルで、取り込んだ分が新しいものを作業フォルダへ戻す：`data/huts.json` `data/huts_history.json` `data/huts_rules.json` `huts/` `sitemap.xml`（`git diff --name-only <前回のHEAD> HEAD` で対象を出し、作業フォルダ側でも変えているファイルは中身を見比べて合わせる。丸ごと上書きしない）
+  2b. 管理画面の「山画像を管理」は GitHub に直接書く（写真のファイル・`photos`・`data/image-credits.json`）。`python3 scripts/import_repo_images.py` で、前回から増えた `[images]` のコミットの山だけ作業フォルダに取り込む（取り込まずにコピーすると写真の変更が消える。2026-08〜09 に13山で起きた）
   3. 作業フォルダ → リポジトリ：`rsync -a --exclude .git --exclude .claude --exclude .DS_Store --exclude data/admin_notices.json`（`--delete` は付けない。`.github/` も渡す）
   4. `diff -rq` で一致を確かめ、変わったファイルの一覧を報告する
 - リポジトリ → 作業フォルダの丸ごとコピーはしない（手順2の対象だけ）
@@ -245,7 +246,8 @@
 - 進める順番は、`data/seo_intents.json` で「難易度」の検索が多い山から（2026-10-12 時点で40山が個別の理由つき）
 
 ## ヒーロー時間表示
-- 写真のある山のヒーロー：拡大ボタンは右上、写真の切替の点はその左。山名などの塊は、下の数字の枠の高さに合わせて位置を決める（`mountain-engine.js` の `placeTop`）。数字（`stat-val`）は折り返さず、コース定数の「50〜80」のような5文字以上は `stat-val-s` で小さくする
+- 写真のクレジット：写真のある山のページは `/scripts/photo-credits.js` を読み、`data/image-credits.json` から作者・ライセンスを出す（Wikimedia Commons の CC BY / BY-SA は表示が必須。`gen_mountain_pages.py` が写真のある山にだけ読み込みを入れる。2026-08〜10 は作り直しで消えていた）。クレジットの記録が無い写真は使わない
+- 写真のある山のヒーロー：拡大ボタンは右上、写真の切替の点はその左。山名などの塊は、下の数字の枠の高さに合わせて位置を決める（`mountain-engine.js` の `placeTop`）。数字（`stat-val`）は折り返さず、標高・コース定数・時間を同じ大きさで出す。コース定数の「〜」だけ `sv-tilde` で小さくし、それでも枠に入らない狭い端末では `ymFitStatVals`（mountain-engine.js）が入るまで少しずつ縮める
 - 60分未満は分のみ（例: 55+分〜）、60分以上は小数時間（例: 100分→1.7+時間〜、末尾 `.0` は省略）
 - `ymFormatHeroTime(raw)` で hero-time / hero-unit を動的更新
 

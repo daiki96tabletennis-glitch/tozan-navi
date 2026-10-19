@@ -67,11 +67,11 @@ main{max-width:680px;margin:0 auto;padding:18px}
 .hero-badges{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
 .cat-badge-new{background:transparent;color:#1a1a16;font-size:10px;padding:2px 9px;border-radius:3px;font-weight:600;border:1px solid rgba(26,26,22,0.55)}
 .diff-badge-new{background:transparent;color:#1a1a16;font-size:10px;padding:2px 9px;border-radius:3px;font-weight:500;border:1px solid rgba(26,26,22,0.4)}
-.stat-card{background:rgba(255,255,255,0.4);border-radius:6px;padding:10px 6px;text-align:center;min-width:0}
+.stat-card{background:rgba(255,255,255,0.4);border-radius:6px;padding:10px 3px;text-align:center;min-width:0}
 .stat-val{font-family:"Outfit",sans-serif;font-size:27px;font-weight:800;color:#1a1a16;line-height:1;letter-spacing:-0.02em;white-space:nowrap}
 @media (max-width:360px){.stat-val{font-size:24px}}
-/* コース定数の「50〜80」のように長い値は、1行に収まるよう小さくする（2行になると写真の上で山名・バッジと重なるため） */
-.stat-val.stat-val-s{font-size:min(21px,5.4vw);letter-spacing:-0.03em}
+/* コース定数の「50〜80」：数字は標高などと同じ大きさのまま、「〜」だけ小さくして枠に収める。それでも入らない狭い端末では mountain-engine.js の fitStatVals が少しだけ縮める */
+.sv-tilde{font-size:.5em;font-weight:700;margin:0;letter-spacing:0;position:relative;top:-.14em}
 .mountain-guide-line{margin:6px 4px 0;font-size:11px;color:#7a7068;letter-spacing:.03em;line-height:1.5;font-family:'Zen Kaku Gothic New',sans-serif}
 .stat-unit{font-family:"Outfit",sans-serif;font-size:11px;color:#33332e;margin-top:3px;letter-spacing:0.05em;text-transform:uppercase;font-weight:600}
 .stat-label{font-size:10px;color:#403f3a;margin-top:3px;letter-spacing:0.06em;font-weight:500}

@@ -247,7 +247,8 @@ def check_json_html_mismatch(mountains, root=None):
                             'problem': f'標高{elev}mの表記がHTML中に見つからない'})
 
         ccr = m.get('courseCoefficientRange')
-        if ccr and ccr not in html:
+        # ヒーローの数字は「〜」だけ小さくする <span class="sv-tilde">〜</span> で書いているので、その印を外して探す
+        if ccr and ccr not in html.replace('<span class="sv-tilde">〜</span>', '〜'):
             issues.append({'id': mid, 'field': 'courseCoefficientRange', 'json': ccr,
                             'problem': f'コース定数{ccr}の表記がHTML中に見つからない'})
 

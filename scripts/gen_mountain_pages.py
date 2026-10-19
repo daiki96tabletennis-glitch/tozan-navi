@@ -58,7 +58,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261019d"
+ASSET_VER = "20261019g"
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
@@ -324,6 +324,9 @@ def render_head(mt):
     parts.append(render_jsonld(mt))
     parts.append(FONTS_LINK.rstrip("\n"))
     parts.append(FONT_STYLE_TAG)
+    if mt.get("photos"):
+        # 写真のクレジット（Wikimedia Commons の CC BY / CC BY-SA は作者とライセンスの表示が必須）。2026-08 から作り直しで消えていたのを戻した
+        parts.append('<script defer src="/scripts/photo-credits.js?v=' + ASSET_VER + '"></script>')
     parts.append("</head>")
     return "\n".join(parts)
 
@@ -423,6 +426,7 @@ def render_hero(mt):
     difficulty = esc(require(mt, "difficulty"))
     elevation = require(mt, "elevation")
     coeff_range = esc(require(mt, "courseCoefficientRange"))
+    coeff_html = str(coeff_range).replace('〜', '<span class="sv-tilde">〜</span>')   # 「〜」だけ小さく（数字は標高と同じ大きさ）
     ofuna_min = mt.get("driveOfuna")
     hero_time, hero_unit = fmt_hero_time(ofuna_min)
 
@@ -449,7 +453,7 @@ def render_hero(mt):
         '    <div class="stats-row">\n'
         f'      <div class="stat-card"><div class="stat-val">{fmt_elevation(elevation)}</div>'
         '<div class="stat-unit">m</div><div class="stat-label">標高</div></div>\n'
-        f'      <div class="stat-card"><div class="stat-val{" stat-val-s" if len(str(coeff_range)) >= 5 else ""}">{coeff_range}</div>'
+        f'      <div class="stat-card"><div class="stat-val">{coeff_html}</div>'
         '<div class="stat-unit">コース定数</div>'
         f'<div class="stat-label">難易度：{difficulty}</div></div>\n'
         '      <div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">'
