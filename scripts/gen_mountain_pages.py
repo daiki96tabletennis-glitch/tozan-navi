@@ -58,7 +58,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261010b"
+ASSET_VER = "20261019d"
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
@@ -437,7 +437,7 @@ def render_hero(mt):
         # お気に入り数・登頂数（assets/js/ym-counts.js が集計先から読んで出す。集計先が未設定のあいだは出ない）
         f'        <div class="hero-counts" id="hero-counts" data-id="{esc(mt["id"])}" style="display:none"></div>\n'
         # 大見出しは山名＋副題。検索結果の見出しと同じ語（登山・難易度・コース・アクセス）を入れ、見出しが書き換えられにくくする
-        f'        <h1 class="mountain-name">{name}<span class="mountain-h1-sub">登山ガイド｜難易度・コースタイム・アクセス</span></h1>\n'
+        f'        <h1 class="mountain-name">{name}</h1>\n'
         f'        <div class="mountain-kana">{kana}</div>\n'
         f'        <div class="mountain-area">📍 {area}</div>\n'
         '        <div class="hero-badges">\n'
@@ -449,14 +449,16 @@ def render_hero(mt):
         '    <div class="stats-row">\n'
         f'      <div class="stat-card"><div class="stat-val">{fmt_elevation(elevation)}</div>'
         '<div class="stat-unit">m</div><div class="stat-label">標高</div></div>\n'
-        f'      <div class="stat-card"><div class="stat-val">{coeff_range}</div>'
+        f'      <div class="stat-card"><div class="stat-val{" stat-val-s" if len(str(coeff_range)) >= 5 else ""}">{coeff_range}</div>'
         '<div class="stat-unit">コース定数</div>'
         f'<div class="stat-label">難易度：{difficulty}</div></div>\n'
         '      <div class="stat-card" id="hero-access"><div class="stat-val" id="hero-time">'
         f'{hero_time}</div><div class="stat-unit" id="hero-unit">{hero_unit}</div>'
         '<div class="stat-label" id="hero-dep-label">大船から</div></div>\n'
         '    </div>\n'
-        '  </div>'
+        '  </div>\n'
+        # 検索結果の見出し（title）と同じ語を、ヒーローの下に小さく1行で出す（画像の上には重ねない。運営者の指示・2026-10-19）
+        f'  <p class="mountain-guide-line">{name} 登山ガイド｜難易度・コースタイム・アクセス</p>'
     )
 
 
@@ -998,7 +1000,45 @@ def render_alerts(mt):
     return "\n  ".join(out)
 
 
+def render_car_shuttle(mt):
+    """マイカー規制で駐車場からバスに乗り換える山：区間・運賃・運行期間・案内ページ（carShuttle）。規制バナーの中に入れる枠"""
+    c = mt.get("carShuttle")
+    if not isinstance(c, dict):
+        return ""
+    annual = f' data-annual="1" data-valid-to="{esc(c["validTo"])}" data-kind="shuttle"' if c.get("validTo") else ""
+    rows = f'<div class="warn-shuttle-r"><b>{esc(c["route"])}</b></div>'
+    rows += f'<div class="warn-shuttle-r">運賃：{esc(c["fare"])}</div>'
+    if c.get("period"):
+        rows += f'<div class="warn-shuttle-r">運行：{esc(c["period"])}</div>'
+    if c.get("note"):
+        rows += f'<div class="warn-shuttle-n">{esc(c["note"])}</div>'
+    link = f'<a href="{esc(c["url"])}" target="_blank" rel="noopener" class="warn-link">{esc(c.get("linkText") or "バスの案内")} →</a>' if c.get("url") else ""
+    return (f'\n      <div class="warn-shuttle"{annual}><div class="warn-shuttle-h">駐車場からのバス</div>{rows}{link}'
+            f'<div class="warn-verified">最終確認：{esc(c.get("lastVerified") or "")}</div></div>')
+
+
+def _with_shuttle(html, mt):
+    box = render_car_shuttle(mt)
+    if not box:
+        return html
+    if not html:
+        # 注意表示の無い山は、バスの案内だけの枠を出す
+        return ('<div class="warn-banner warn-banner-yellow">\n'
+                '    <div class="warn-icon">⚠️</div>\n'
+                '    <div class="warn-body">\n'
+                '      <div class="warn-title warn-title-yellow">マイカー規制：駐車場でバスに乗り換え</div>' + box + '\n'
+                '    </div>\n'
+                '  </div>')
+    end = '\n    </div>\n  </div>'
+    i = html.find(end)                      # 最初の注意表示の本文の終わりに入れる
+    return html[:i] + box + html[i:] if i >= 0 else html
+
+
 def render_warn_banner(mt):
+    return _with_shuttle(_render_warn_banner(mt), mt)
+
+
+def _render_warn_banner(mt):
     if mt.get("dataModel") == "ssot-v1" and mt.get("alerts"):
         return render_alerts(mt)
     wb = mt.get("warnBanner")

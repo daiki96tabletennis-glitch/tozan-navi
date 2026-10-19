@@ -144,6 +144,15 @@ function applyDep(){
     imgBox.appendChild(scrim);
     heroNew.insertBefore(imgBox, heroNew.firstChild);
 
+    // 山名などの塊は、下の数字の枠のすぐ上に置く。枠の高さ（文字の折り返し・端末の幅で変わる）に合わせて位置を決め、重ならないようにする
+    function placeTop(){
+      if(!statsRow || !heroTop) return;
+      heroTop.style.bottom = (statsRow.offsetHeight + 14 + 10) + 'px';
+    }
+    placeTop();
+    window.addEventListener('resize', placeTop);
+    if(document.fonts && document.fonts.ready){ document.fonts.ready.then(placeTop); }
+
     var expandBtn = document.createElement('button');
     expandBtn.type = 'button';
     expandBtn.className = 'hero-bg-expand';

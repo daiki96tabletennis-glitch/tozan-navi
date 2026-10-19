@@ -47,10 +47,10 @@ main{max-width:680px;margin:0 auto;padding:18px}
 .hero-new.hp-mode .stats-row .stat-card{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3)}
 .hero-new.hp-mode .stats-row .stat-val,.hero-new.hp-mode .stats-row .stat-unit{color:#fff}
 .hero-new.hp-mode .stats-row .stat-label{color:rgba(255,255,255,.8)}
-.hero-bg-dots{position:absolute;top:14px;right:16px;display:flex;gap:4px;z-index:3}
+.hero-bg-dots{position:absolute;top:24px;right:54px;display:flex;gap:4px;z-index:3}
 .hero-bg-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5)}
 .hero-bg-dot.hp-active{background:#fff}
-.hero-bg-expand{position:absolute;top:14px;left:16px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.38);display:flex;align-items:center;justify-content:center;border:none;padding:0;cursor:pointer;z-index:3}
+.hero-bg-expand{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.38);display:flex;align-items:center;justify-content:center;border:none;padding:0;cursor:pointer;z-index:3}
 .hero-bg-expand svg{width:14px;height:14px;display:block}
 .hero-lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s ease}
 .hero-lightbox.hp-open{opacity:1;pointer-events:auto}
@@ -67,8 +67,12 @@ main{max-width:680px;margin:0 auto;padding:18px}
 .hero-badges{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
 .cat-badge-new{background:transparent;color:#1a1a16;font-size:10px;padding:2px 9px;border-radius:3px;font-weight:600;border:1px solid rgba(26,26,22,0.55)}
 .diff-badge-new{background:transparent;color:#1a1a16;font-size:10px;padding:2px 9px;border-radius:3px;font-weight:500;border:1px solid rgba(26,26,22,0.4)}
-.stat-card{background:rgba(255,255,255,0.4);border-radius:6px;padding:10px 6px;text-align:center}
-.stat-val{font-family:"Outfit",sans-serif;font-size:27px;font-weight:800;color:#1a1a16;line-height:1;letter-spacing:-0.02em}
+.stat-card{background:rgba(255,255,255,0.4);border-radius:6px;padding:10px 6px;text-align:center;min-width:0}
+.stat-val{font-family:"Outfit",sans-serif;font-size:27px;font-weight:800;color:#1a1a16;line-height:1;letter-spacing:-0.02em;white-space:nowrap}
+@media (max-width:360px){.stat-val{font-size:24px}}
+/* コース定数の「50〜80」のように長い値は、1行に収まるよう小さくする（2行になると写真の上で山名・バッジと重なるため） */
+.stat-val.stat-val-s{font-size:min(21px,5.4vw);letter-spacing:-0.03em}
+.mountain-guide-line{margin:6px 4px 0;font-size:11px;color:#7a7068;letter-spacing:.03em;line-height:1.5;font-family:'Zen Kaku Gothic New',sans-serif}
 .stat-unit{font-family:"Outfit",sans-serif;font-size:11px;color:#33332e;margin-top:3px;letter-spacing:0.05em;text-transform:uppercase;font-weight:600}
 .stat-label{font-size:10px;color:#403f3a;margin-top:3px;letter-spacing:0.06em;font-weight:500}
 .info-val{color:#3a3530;line-height:1.6}
@@ -212,3 +216,8 @@ main{max-width:680px;margin:0 auto;padding:18px}
   display:flex;align-items:center;gap:4px;}
 .nearby-sticky-name .arrow{font-size:12px;opacity:0.7;flex-shrink:0;color:#4e6535;}
 .nearby-sticky-sub{font-size:10.5px;color:#3a4a30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* 出発駅の切り替え（5駅）：幅の狭い端末（320px）でページが横にはみ出さないよう、この行だけ横にスクロールさせる */
+.dep-row{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.dep-row::-webkit-scrollbar{display:none}
+.dep-row .dep-btn-m{flex-shrink:0}
