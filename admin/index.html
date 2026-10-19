@@ -403,127 +403,32 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
       <div id="gear-links-form"></div>
     </div>
 
-    <!-- 保存セクション -->
+    <!-- 保存セクション：GitHub へ直接書く反映ボタンは外した（2026-10-19。作業フォルダとページの作り直しを通らず、データが食い違うため） -->
     <div class="gh-section" id="copy-section" style="display:none;">
-      <div class="gh-title">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-        GitHubに自動反映
+      <div class="gh-title">変更を記録する</div>
+      <div style="font-size:11.5px;color:#5a7850;line-height:1.7;margin-bottom:8px;">この画面ではサイトのデータを直接書き換えません。「変更を記録する」を押すと「変更履歴」タブに残ります。変更履歴の「Claudeに共有する」でコピーして Claude のアプリに貼ると、公式の情報で確かめてから反映します。</div>
+      <button class="gh-push-btn" id="record-btn" onclick="recordOnly()">変更を記録する</button>
+      <div class="gh-push-status" id="record-status"></div>
+    </div>
+
+    <!-- 山画像の管理で使う GitHub トークン（写真の追加・並べ替えは /admin/images/ が GitHub に書く） -->
+    <div class="section-card" id="gh-token-area">
+      <div class="section-title">山画像の管理で使う GitHub トークン</div>
+      <div style="font-size:11px;color:#7a7068;margin-bottom:6px;line-height:1.6;">「山画像を管理」で写真を追加・並べ替えするときに使います。端末ごとに1回保存してください（ホーム画面に追加したアプリは別に保存が必要です）。</div>
+      <div class="gh-token-row">
+        <input type="password" class="gh-token-input" id="gh-token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+        <button class="gh-token-save" onclick="saveToken()">保存</button>
       </div>
-
-      <!-- トークン設定 -->
-      <div id="gh-token-area">
-        <div style="font-size:11px;color:#5a7850;margin-bottom:6px;">GitHub Personal Access Token（初回のみ入力）</div>
-        <div class="gh-token-row">
-          <input type="password" class="gh-token-input" id="gh-token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
-          <button class="gh-token-save" onclick="saveToken()">保存</button>
-        </div>
-        <div class="gh-token-status" id="gh-token-status"></div>
-      </div>
-
-      <!-- 反映ボタン -->
-      <button class="gh-push-btn" id="gh-push-btn" onclick="pushToGitHub()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 16H5a2 2 0 0 0-2 2v2h18v-2a2 2 0 0 0-2-2h-3"/></svg>
-        GitHubに反映してサイトを更新
-      </button>
-      <div class="gh-push-status" id="gh-push-status"></div>
-
-      <!-- 手動バックアップ -->
-      <button class="copy-btn" onclick="saveChanges()" style="background:#607848;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;font-size:12px;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        JSONをダウンロード（バックアップ用）
-      </button>
-      <div class="copy-success" id="copy-success" style="display:none;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M20 6 9 17l-5-5"/></svg> ダウンロードしました</div>
+      <div class="gh-token-status" id="gh-token-status"></div>
     </div>
 
     <!-- 反映手順マニュアル -->
     <div class="manual-card">
       <div class="manual-title">📖 サイトに反映する手順</div>
-
-      <div class="manual-step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <div class="step-label">上のフォームで内容を修正する</div>
-          <div class="step-desc">アクセス時間・CC・YAMAPリンクなどを編集してください。変更すると保存ボタンが表示されます。</div>
-        </div>
-      </div>
-
-      <div class="manual-step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <div class="step-label">「mountains.json をダウンロード」を押す</div>
-          <div class="step-desc">ボタンを押すと <code>mountains.json</code> がダウンロードされます。このファイルに全山のデータが入っています。</div>
-        </div>
-      </div>
-
-      <div class="manual-step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <div class="step-label">GitHubを開く</div>
-          <div class="step-desc">
-            <a href="https://github.com/daiki96tabletennis-glitch/tozan-navi" target="_blank" class="manual-link">github.com/daiki96tabletennis-glitch/tozan-navi ↗</a>
-            を開いてログインしてください。
-          </div>
-        </div>
-      </div>
-
-      <div class="manual-step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <div class="step-label"><code>data/mountains.json</code> を開く</div>
-          <div class="step-desc">リポジトリの <code>data</code> フォルダの中にある <code>mountains.json</code> を開きます。</div>
-        </div>
-      </div>
-
-      <div class="manual-step">
-        <div class="step-num">5</div>
-        <div class="step-body">
-          <div class="step-label">✏️ ボタンで編集モードにする</div>
-          <div class="step-desc">右上の鉛筆アイコン（Edit this file）をクリックします。</div>
-          <div class="step-img-wrap">
-            <div class="step-img-mock">
-              <div style="display:flex;align-items:center;gap:6px;background:#f6f8fa;border:1px solid #d0d7de;border-radius:6px;padding:4px 8px;font-size:11px;color:#24292f;width:fit-content;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                Edit this file
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="manual-step">
-        <div class="step-num">6</div>
-        <div class="step-body">
-          <div class="step-label">全テキストを選択して貼り付ける</div>
-          <div class="step-desc">
-            GitHub の編集画面で <strong>Ctrl+A（Mac: ⌘A）</strong> で全選択 → 削除 → ダウンロードした <code>mountains.json</code> の中身をコピペして上書きします。
-          </div>
-          <div class="step-img-wrap">
-            <div class="step-img-mock" style="font-size:11px;color:#5a5248;line-height:1.8;">
-              <div>① テキストエディタ（メモ帳・VSCode等）で <code>mountains.json</code> を開く</div>
-              <div>② <strong>Ctrl+A → Ctrl+C</strong> で全コピー</div>
-              <div>③ GitHubの編集画面で <strong>Ctrl+A → Ctrl+V</strong> で貼り付け</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="manual-step">
-        <div class="step-num">7</div>
-        <div class="step-body">
-          <div class="step-label">「Commit changes」で保存する</div>
-          <div class="step-desc">ページ下部の「Commit changes」ボタンを押せば完了。<strong>1〜2分で全ページに自動反映</strong>されます。</div>
-          <div class="step-img-wrap">
-            <div class="step-img-mock">
-              <div style="background:#1f883d;color:white;border-radius:6px;padding:5px 12px;font-size:11px;font-weight:600;width:fit-content;">Commit changes</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:10px 12px;margin-top:4px;font-size:11px;color:#856404;line-height:1.7;">
-        ⚠️ <strong>注意：</strong>mountains.jsonを更新しただけではサイトのHTMLファイルは変わりません。現在は管理画面での修正→JSONダウンロード→GitHubに反映後、Claudeに「最新のZIPを添付してページを再生成して」と依頼することで全ページに反映されます。
-      </div>
-
+      <div class="manual-step"><div class="step-num">1</div><div class="step-body"><div class="step-label">上のフォームで内容を直す</div><div class="step-desc">直すと「変更を記録する」が表示されます。電車・バスの経路は表示だけで、ここでは直せません。</div></div></div>
+      <div class="manual-step"><div class="step-num">2</div><div class="step-body"><div class="step-label">「変更を記録する」を押す</div><div class="step-desc">「変更履歴」タブに、変える前と変えたあとの値が残ります。この時点ではサイトは変わりません。</div></div></div>
+      <div class="manual-step"><div class="step-num">3</div><div class="step-body"><div class="step-label">「変更履歴」→「Claudeに共有する」でコピーして、Claude のアプリに貼る</div><div class="step-desc">Claude が公式の情報で確かめ、データとページを作り直して、GitHub 側のフォルダへコピーします。</div></div></div>
+      <div class="manual-step"><div class="step-num">4</div><div class="step-body"><div class="step-label">GitHub Desktop でコミットとプッシュ</div><div class="step-desc">公開のサイトに反映されます（1〜2分）。</div></div></div>
     </div>
 
   </div>
@@ -776,7 +681,8 @@ function getFormData() {
     trailhead: document.getElementById('f-trailhead').value,
     parking: document.getElementById('f-parking').value,
     address: document.getElementById('f-address').value,
-    trainRoutes: collectTrainRoutes(),
+    trainRoutes: document.getElementById('train-routes-editor').dataset.readonly === '1' ? currentMountain.trainRoutes : collectTrainRoutes(),
+    yamapUrl: document.getElementById('f-yamap').value.trim(),   // 以前は集めていなかったため、YAMAPリンクの修正が記録されず「空にした」と記録されていた
     gmapUrl: document.getElementById('f-gmap').value,
     amapUrl: document.getElementById('f-amap').value,
     seasonCalendar: [...currentSeason],
@@ -817,113 +723,45 @@ function loadToken() {
 }
 
 // ===== GitHub API でPush =====
-async function pushToGitHub() {
-  var token = localStorage.getItem('ym_gh_token');
-  var statusEl = document.getElementById('gh-push-status');
-  var btn = document.getElementById('gh-push-btn');
-
-  if (!token) {
-    statusEl.className = 'gh-push-status error';
-    statusEl.textContent = '⚠️ トークンが未設定です。上の入力欄にトークンを入力して「保存」してください。';
-    return;
-  }
-
-  // 現在の編集内容をallMountainsに反映
-  if (currentMountain) {
-    var formData = getFormData();
-    var changes = buildChanges(currentMountain, formData);
-    if (changes.length > 0) recordChange(currentMountain.id, currentMountain.name, changes);
-    var idx = allMountains.findIndex(function(m) { return m.id === currentMountain.id; });
-    if (idx >= 0) Object.assign(allMountains[idx], formData);
-  }
-
-  var content = JSON.stringify(allMountains, null, 2);
-  var owner = 'daiki96tabletennis-glitch';
-  var repo = 'tozan-navi';
-  var path = 'data/mountains.json';
-  var apiBase = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + path;
-
-  btn.disabled = true;
-  statusEl.className = 'gh-push-status pushing';
-  statusEl.textContent = '⏳ GitHubに接続中...';
-
-  try {
-    // 現在のSHAを取得
-    var getRes = await fetch(apiBase, {
-      headers: {
-        'Authorization': 'token ' + token,
-        'Accept': 'application/vnd.github.v3+json'
-      }
-    });
-    if (!getRes.ok) {
-      throw new Error('ファイル取得失敗: ' + getRes.status);
-    }
-    var getJson = await getRes.json();
-    var sha = getJson.sha;
-
-    statusEl.textContent = '⏳ mountains.json を更新中...';
-
-    // Base64エンコード（日本語対応）
-    var encoded = btoa(unescape(encodeURIComponent(content)));
-
-    // PUTリクエストでコミット
-    var putRes = await fetch(apiBase, {
-      method: 'PUT',
-      headers: {
-        'Authorization': 'token ' + token,
-        'Accept': 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: '[admin] mountains.json を更新',
-        content: encoded,
-        sha: sha
-      })
-    });
-
-    if (!putRes.ok) {
-      var errJson = await putRes.json();
-      throw new Error(errJson.message || 'PUT失敗: ' + putRes.status);
-    }
-
-    statusEl.className = 'gh-push-status success';
-    statusEl.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M20 6 9 17l-5-5"/></svg> GitHubに反映しました！1〜2分でサイトに自動反映されます。';
-    setTimeout(function() { statusEl.style.display = 'none'; }, 6000);
-
-  } catch(e) {
-    statusEl.className = 'gh-push-status error';
-    statusEl.textContent = '❌ エラー: ' + e.message;
-  } finally {
-    btn.disabled = false;
-  }
-}
-
-// ===== JSONダウンロード（バックアップ用） =====
-function saveChanges() {
+// 変更を記録するだけ（サイトのデータは書き換えない）。記録は「変更履歴」タブから Claude に渡す
+function recordOnly() {
   if (!currentMountain) return;
   var formData = getFormData();
   var changes = buildChanges(currentMountain, formData);
-  if (changes.length > 0) recordChange(currentMountain.id, currentMountain.name, changes);
+  var st = document.getElementById('record-status');
+  if (!changes.length) { st.className = 'gh-push-status error'; st.textContent = '変更がありません'; return; }
+  recordChange(currentMountain.id, currentMountain.name, changes);
   var idx = allMountains.findIndex(function(m) { return m.id === currentMountain.id; });
   if (idx >= 0) Object.assign(allMountains[idx], formData);
-
-  var blob = new Blob([JSON.stringify(allMountains, null, 2)], {type: 'application/json'});
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement('a');
-  a.href = url;
-  a.download = 'mountains.json';
-  a.click();
-  URL.revokeObjectURL(url);
-
-  var el = document.getElementById('copy-success');
-  el.style.display = 'block';
-  setTimeout(function() { el.style.display = 'none'; }, 4000);
+  currentMountain = allMountains[idx] || currentMountain;
+  st.className = 'gh-push-status success';
+  st.textContent = '記録しました（' + changes.length + '項目）。「変更履歴」タブの「Claudeに共有する」でコピーして、Claude のアプリに貼ってください。';
 }
 
 // ===== 電車バスルート編集 =====
 function renderTrainRoutes(routes) {
   var ed = document.getElementById('train-routes-editor');
   ed.innerHTML = '';
+  var addBtn = ed.parentNode.querySelector('.add-btn[onclick="addTrainRoute()"]');
+  // 2026-10 以降、電車・バスの経路は新しい形式（出発地ごとの乗り継ぎ）になり、この画面の古い編集欄では扱えない。
+  // 開けなくなっていた（routes.forEach で止まる）ので、内容を表示するだけにして、保存の対象からも外す
+  if (routes && !Array.isArray(routes)) {
+    ed.dataset.readonly = '1';
+    if (addBtn) addBtn.style.display = 'none';
+    var deps = routes.routes ? Object.keys(routes.routes) : [];
+    var lines = deps.map(function(d) {
+      var r = routes.routes[d] || {};
+      var legs = (r.legs || []).map(function(l) { return esc(l.station || ''); }).join(' → ');
+      return '<li><b>' + esc(d) + '</b>：' + (legs || '（経路なし）') + '</li>';
+    }).join('');
+    ed.innerHTML = '<div style="font-size:12px;line-height:1.7;color:#5a5248;background:#f7f6f2;border-radius:8px;padding:10px 12px">'
+      + '<div style="font-weight:700;margin-bottom:4px">' + esc(routes.lineName || '電車・バスの経路') + '</div>'
+      + (lines ? '<ul style="margin:0;padding-left:18px">' + lines + '</ul>' : '')
+      + '<div style="margin-top:6px;color:#8a8070">電車・バスの経路は新しい形式のため、ここでは表示だけです。直したいときは、Claude のアプリに内容を伝えてください（運賃・時間・乗り継ぎを公式の情報で確かめてから直します）。</div></div>';
+    return;
+  }
+  ed.dataset.readonly = '';
+  if (addBtn) addBtn.style.display = '';
   (routes || []).forEach(function(route, ri) {
     ed.appendChild(buildRouteBlock(route, ri));
   });
