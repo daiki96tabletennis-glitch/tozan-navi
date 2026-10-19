@@ -209,6 +209,8 @@ def sync_one(slug, by_id):
     path = os.path.join(ROOT, 'search', slug, 'index.html')
     if not os.path.isfile(path):
         raise RuntimeError(f'{path} が存在しない')
+    if '<!-- generated: scripts/gen_' in open(path, encoding='utf-8').read():
+        return []          # 生成スクリプトで作るページ（gen_train_daytrip.py など）。そちらで作り直す
     changes = sync_curated(path, by_id)
     if changes is None:
         changes = sync_hub(path, by_id)
