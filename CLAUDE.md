@@ -201,7 +201,7 @@
   - 読み書きの制限：`scripts/firebase_rules_huts_push.json`（Firebase のルールに書き足す。実機では未検証）
   - 送信の失敗は、運営者向けのお知らせ（`admin_notice.py --kind push`）に出る
 - 公開するときにやること
-  1. Firebase のプロジェクトと Realtime Database を作り、ルールを書き足す
+  1. Firebase のプロジェクトと Realtime Database を作り、ルールを貼る（`scripts/firebase_rules.json` がお気に入り数・登頂数の集計 `counts` と、プッシュ通知 `hutPush` / `hutPushSent` の両方の分。そのまま貼れる形）。集計は、データベースのアドレスを `assets/js/counts-config.js` の `YM_COUNTS_DB_URL` に入れるだけで動く（2026-10-20 に設定済み：プロジェクト yamatch-35abd・シンガポール。ルールも貼り済みで、1ずつ以外の書き込みと通知の宛先の読み取りが断られることを確認）
   2. VAPID の鍵の組を作る（`npx web-push generate-vapid-keys`）。公開鍵は `PUSH.key`、秘密鍵は GitHub の Secrets だけに置く（リポジトリ・チャットに出さない）
   3. GitHub の Secrets：`FIREBASE_DB_URL` `FIREBASE_SERVICE_ACCOUNT` `VAPID_PUBLIC_KEY` `VAPID_PRIVATE_KEY`
   4. `PUSH.db` / `PUSH.key` を入れ、`huts-alert.js` の読み込みの版（`gen_huts_page.py` の MAP_VER・`index.html`・`mypage/index.html`）を上げて山小屋ページを作り直す
