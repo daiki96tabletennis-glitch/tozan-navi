@@ -1,6 +1,31 @@
 {
  "items": [
   {
+   "id": "insta-2026-10-20-0f245415fc",
+   "kind": "insta",
+   "title": "山小屋の Instagram の見張り（Meta AI）",
+   "date": "2026-10-20",
+   "needsAction": true,
+   "digest": "0f245415fc",
+   "sections": [
+    {
+     "heading": "まだ確かめていない候補（URLを開いて原文を確かめ、Claude のアプリに貼って登録）",
+     "lines": [
+      "【営業期間】長蔵小屋（@chozogoya）投稿日 46314.28542：要約：ビジターセンター横売店の季節営業終了のお知らせ〔要約のみ。Meta AI の要約〕 ／ https://www.instagram.com/p/DepsK_kEysR/",
+      "【営業期間】山の鼻小屋（@oze_yamanohanagoya）投稿日 46314.30625：要約：今シーズン最終の朝を迎えた旨、気温6℃、シーズン終了の案内〔要約のみ。Meta AI の要約〕 ／ https://www.instagram.com/p/DepvklPE8xn/"
+     ]
+    },
+    {
+     "heading": "見張りの状態",
+     "lines": [
+      "Meta AI の記録が止まっています（最後の記録：日付なし）。Meta AI の毎日の確認が動いているか確かめてください"
+     ]
+    }
+   ],
+   "next": "候補の URL を開いて投稿の本文（画像なら画面の写真）を確かめ、Claude のアプリに貼ってください。原文から日付を読んで登録します。",
+   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/39345828962"
+  },
+  {
    "id": "sitecheck-2026-10-12-bd9ddaf71d",
    "kind": "sitecheck",
    "title": "サイトの検証",
@@ -12,5 +37,5 @@
    "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/38219116736"
   }
  ],
- "updatedAt": "2026-10-12"
+ "updatedAt": "2026-10-20"
 }
