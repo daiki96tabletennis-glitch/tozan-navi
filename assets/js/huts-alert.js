@@ -109,6 +109,33 @@
     return !!(PUSH.db && PUSH.key && standalone && 'Notification' in window && Notification.permission === 'granted'
       && navigator.serviceWorker && window.PushManager && window.crypto && crypto.subtle && window.fetch && window.TextEncoder);
   }
+  // 登録できない理由（管理者表示の端末のマイページに出す。届かないときの調べ用）
+  function pushWhy() {
+    if (!PUSH.db || !PUSH.key) { return '通知の設定がまだ入っていません'; }
+    if (!standalone) { return 'ホーム画面のアイコンから開いていません（Safari などのブラウザの画面では登録できません）'; }
+    if (!('Notification' in window) || !window.PushManager || !navigator.serviceWorker) { return 'この端末・OS はプッシュ通知に対応していません（iPhone は iOS 16.4 以上）'; }
+    if (Notification.permission === 'denied') { return '通知が拒否されています（iPhone の「設定」→「通知」→「Yamatch」で許可）'; }
+    if (Notification.permission !== 'granted') { return '通知がまだ許可されていません（山小屋のお知らせを登録するときに「許可」を押す）'; }
+    if (!(window.crypto && crypto.subtle && window.fetch && window.TextEncoder)) { return 'この端末は対応していません'; }
+    return '';
+  }
+  function pushState(o) {
+    try { localStorage.setItem('ym_hut_push_state', JSON.stringify(Object.assign({ at: ymd(today) }, o))); } catch (e) {}
+    var b = document.getElementById('ym-hut-alerts');
+    if (b) { renderMy(load()); }
+  }
+  function pushStatusHtml(list) {
+    var adm = false, st = null, why = pushWhy(), t;
+    try { adm = localStorage.getItem('ym_admin') === '1'; st = JSON.parse(localStorage.getItem('ym_hut_push_state') || 'null'); } catch (e) {}
+    if (!adm) { return ''; }
+    if (why) { t = '登録できていません：' + why; }
+    else if (!list.length) { t = '山小屋のお知らせが1件も登録されていないので、通知の宛先も登録していません'; }
+    else if (st && st.ok) { t = '登録済み（' + st.at + '。管理者の印' + (st.admin ? 'あり' : 'なし') + '）'; }
+    else if (st && !st.ok) { t = '登録に失敗しました：' + st.msg; }
+    else { t = '登録の処理中です（少し待ってから開き直してください）'; }
+    return '<div style="font-size:11.5px;color:#5a544a;background:#f6f3ec;border-radius:10px;padding:8px 10px;margin:10px 0 4px">'
+      + '<b style="color:#2a3820">管理者用｜プッシュ通知の状態</b><br>' + esc(t) + '</div>';
+  }
   function keyBytes(b64) {
     var pad = new Array((4 - b64.length % 4) % 4 + 1).join('='), raw = atob((b64 + pad).replace(/-/g, '+').replace(/_/g, '/')), out = new Uint8Array(raw.length), i;
     for (i = 0; i < raw.length; i++) { out[i] = raw.charCodeAt(i); }
@@ -125,7 +152,10 @@
     if (!pushReady()) { return; }
     var list = load(), alerts = [], i, sig;
     for (i = 0; i < list.length && alerts.length < 20; i++) { alerts.push({ id: list[i].id, stay: list[i].stay || '' }); }
-    sig = ymd(today) + '|' + JSON.stringify(alerts);
+    // 管理者表示を切り替えたときも送り直す（テスト通知は管理者の印がある端末にだけ届くため）
+    var adm = '';
+    try { adm = localStorage.getItem('ym_admin') === '1' ? 'a' : ''; } catch (e) {}
+    sig = ymd(today) + '|' + adm + '|' + JSON.stringify(alerts);
     try { if (localStorage.getItem('ym_hut_push') === sig) { return; } } catch (e) {}
     navigator.serviceWorker.register('/sw.js').then(function () { return navigator.serviceWorker.ready; }).then(function (reg) {
       return reg.pushManager.getSubscription().then(function (sub) {
@@ -143,8 +173,15 @@
           body: JSON.stringify({ endpoint: j.endpoint, keys: j.keys, alerts: alerts, at: Date.now(), admin: admin }) });
       });
     }).then(function (res) {
-      if (res && res.ok) { try { localStorage.setItem('ym_hut_push', sig); } catch (e) {} }
-    }).catch(function () {});
+      if (res && res.ok) {
+        try { localStorage.setItem('ym_hut_push', sig); } catch (e) {}
+        pushState({ ok: true, admin: adm === 'a' });
+      } else if (res) {
+        pushState({ ok: false, msg: 'データベースに書けませんでした（' + res.status + '）' });
+      } else {
+        pushState({ ok: false, msg: '通知の宛先を作れませんでした' });
+      }
+    }).catch(function (e) { pushState({ ok: false, msg: String((e && (e.name + ' ' + e.message)) || e).slice(0, 140) }); });
   }
 
   function notify(title, body, url) {
@@ -387,7 +424,7 @@
   function renderMy(list, trial) {
     var box = document.getElementById('ym-hut-alerts'), i, a, o, left, h;
     if (!box) { return; }
-    if (!list.length && !trial) { box.innerHTML = favHtml(); return; }
+    if (!list.length && !trial) { box.innerHTML = favHtml() + pushStatusHtml(list); return; }
     h = favHtml() + '<div style="background:#fff;border-radius:16px;padding:14px 16px;margin:14px 0 4px;box-shadow:0 1px 1px rgba(26,22,14,.03),0 2px 5px rgba(26,22,14,.05)">'
       + '<div style="font-size:13px;font-weight:700;color:#2a3820;margin-bottom:8px">山小屋の予約開始のお知らせ</div>';
     for (i = 0; i < list.length; i++) {
@@ -408,7 +445,7 @@
         + '<span style="color:#5a544a">' + esc(jp(parse(trial.open))) + (trial.time ? ' ' + esc(trial.time) : '') + 'から</span></div>'
         + '<div style="flex-shrink:0"><span style="display:inline-block;font-size:11.5px;border-radius:999px;padding:2px 9px;background:#e9efe0;color:#2a3820">あと7日</span></div></div>';
     }
-    box.innerHTML = h + '</div>';
+    box.innerHTML = h + '</div>' + pushStatusHtml(list);
     var btns = box.querySelectorAll('[data-del]');
     for (i = 0; i < btns.length; i++) {
       btns[i].addEventListener('click', function () {

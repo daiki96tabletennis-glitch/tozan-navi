@@ -12,7 +12,7 @@ M = {m['id']: m for m in ML}
 H = d['huts']
 _cp = os.path.join(ROOT, 'data', 'huts_coords.json')
 COORDS = json.load(open(_cp, encoding='utf-8'))['huts'] if os.path.exists(_cp) else {}
-MAP_VER = '20261020b'
+MAP_VER = '20261020d'
 import calendar, math, sys
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 import huts_season
