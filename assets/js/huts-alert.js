@@ -15,7 +15,7 @@
   //   db  … 登録を預かる Firebase Realtime Database のアドレス（例：https://xxxx-default-rtdb.asia-southeast1.firebasedatabase.app）
   //   key … 通知の公開鍵（VAPID の公開鍵。秘密鍵は GitHub の Secrets に置く。ここには書かない）
   // 送るのは scripts/huts_push_send.js（.github/workflows/huts-push.yml が毎朝実行）
-  var PUSH = { db: '', key: '' };
+  var PUSH = { db: 'https://yamatch-35abd-default-rtdb.asia-southeast1.firebasedatabase.app', key: 'BP8gGsHk1Qwb6I1-KBja92FmSH6pYgl1bv4J1oNV7oyk0ZWZfpYT_7tm3sIu__dST-upI2NnpmVLBhyIIeEObqI' };
   var now = new Date();
   var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
