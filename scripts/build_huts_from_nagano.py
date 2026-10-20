@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""山小屋まとめ（β）のデータ data/huts.json を、長野県「山小屋情報ポータルサイト」から作る。
+"""山小屋まとめのデータ data/huts.json を、長野県「山小屋情報ポータルサイト」から作る。
 
 出典：長野県 山小屋情報ポータルサイト（北アルプス／南アルプス／中央アルプス／八ヶ岳／その他）
       https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya.html
@@ -135,7 +135,7 @@ HUT_OFFICIAL_NOTE = {
     '常念小屋': '通常営業期間は4月27日〜11月4日',
     '苗場山頂ヒュッテ－自然体験交流センター': '営業期間は令和8年6月1日〜10月18日（予約制）',
     '二ノ池山荘': '令和8年は7月1日から10月11日まで営業',
-    '唐松岳頂上山荘': '2026年の営業は10月12日までの予定',
+    '唐松岳頂上山荘': '2026年の営業は10月12日宿泊分で終了',
 }
 
 
@@ -241,7 +241,7 @@ def main():
     missing = sorted(set(HUT_MOUNTAINS) - seen)
     ids = [h['id'] for h in huts]
     assert len(ids) == len(set(ids)), [i for i in ids if ids.count(i) > 1]
-    json.dump({'note': '山小屋まとめ（β）。長野県 山小屋情報ポータルサイト＋手入力（scripts/huts_extra.py）。scripts/build_huts_from_nagano.py が作る',
+    json.dump({'note': '山小屋まとめ。長野県 山小屋情報ポータルサイト＋手入力（scripts/huts_extra.py）。scripts/build_huts_from_nagano.py が作る',
                'seasonYear': 2026, 'huts': huts}, open(path, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
     print('山小屋', len(huts), '件／出典に見つからなかった名前:', missing)
 

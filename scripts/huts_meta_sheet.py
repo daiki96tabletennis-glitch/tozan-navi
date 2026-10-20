@@ -48,8 +48,19 @@ def read_rows(url):
 
 
 def date_of(s):
-    m = re.match(r'(\d{4})[-/](\d{1,2})[-/](\d{1,2})', s or '')
-    return datetime.date(int(m.group(1)), int(m.group(2)), int(m.group(3))) if m else None
+    m = re.match(r'(\d{4})[-/年](\d{1,2})[-/月](\d{1,2})', s or '')
+    if m:
+        return datetime.date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+    # スプレッドシートの日付の数字（1899-12-30 からの日数。例：46314.28542＝2026-10-19）。Meta AI が書くとこの形になることがある
+    m = re.match(r'^(\d{5})(\.\d+)?$', (s or '').strip())
+    if m and 40000 < int(m.group(1)) < 60000:
+        return datetime.date(1899, 12, 30) + datetime.timedelta(days=int(m.group(1)))
+    return None
+
+
+def date_txt(s):
+    d = date_of(s)
+    return d.isoformat() if d else (s or '不明')
 
 
 def main():
@@ -93,7 +104,7 @@ def main():
         acc = (r.get('アカウント') or '').lstrip('@').lower()
         huts = '・'.join(by_acc.get(acc, [])) or '（一覧に無いアカウント）'
         pend.append((0 if r['種類'] == '予約開始' else 1, '- 【%s】%s（@%s）投稿日 %s：%s〔%s。Meta AI の要約〕\n    %s' % (
-            r['種類'], huts, acc, r.get('投稿日') or '不明', (r.get('要約') or '')[:120], r.get('確度') or '確度不明', u)))
+            r['種類'], huts, acc, date_txt(r.get('投稿日')), (r.get('要約') or '')[:120], r.get('確度') or '確度不明', u)))
     json.dump(seen, open(SEEN, 'w', encoding='utf-8'), ensure_ascii=False, indent=1, sort_keys=True)
     pend.sort(key=lambda p: p[0])
     text = '# 山小屋の Instagram の見張り（Meta AI・%s）\n\n' % today

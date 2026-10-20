@@ -37,7 +37,7 @@
   "清四郎小屋": "http://www.seisirou.com/",
   "谷川岳肩の小屋": "http://www.minakami-onsen.com/tanigawa.php?itemid=198"
  },
- "overrideNote": "override：出典の一覧に載っている公式サイトのURLが古い・リンク切れ・別サイトになっている小屋の、確かめ直したURL（null はリンクを出さない）。2026-10-12 に全小屋のリンクを開いて確認",
+ "overrideNote": "2026-10-20：白山室堂は以前のページが 410 Gone（新しい公式ページは見つからない）。鎌岩館は www 付きが証明書エラー（https://kamaiwakan.jpn.org/ に移転）。至仏山荘は個別ページが 403（東京パワーテクノロジーの宿泊予約ページに至仏山荘が載っている）",
  "override": {
   "七合目トモエ館": "https://tomoekan.com/",
   "本八合目トモエ館": "https://tomoekan.com/",
@@ -46,10 +46,12 @@
   "赤岳鉱泉": "https://www.akadakekousen.jp/",
   "行者小屋": "https://www.akadakekousen.jp/",
   "赤岳頂上山荘": "https://www.yatsu-honzawaonsen.com/akadake.html",
-  "至仏山荘": "https://www.tokyo-pt.co.jp/oze/mountain-villa/shibutsu",
+  "至仏山荘": "https://www.tokyo-pt.co.jp/oze/mountain-villa/reserve.html",
   "新七合目 御来光山荘": null,
   "花小屋": null,
   "吉田口七合目 日の出館": null,
-  "谷川岳肩の小屋": null
+  "谷川岳肩の小屋": null,
+  "白山室堂": null,
+  "鎌岩館": "https://kamaiwakan.jpn.org/"
  }
 }

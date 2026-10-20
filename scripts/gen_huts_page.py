@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""山小屋まとめ（β）ページ huts/index.html を data/huts.json から作る。使い方：python3 scripts/gen_huts_page.py
+"""山小屋まとめページ huts/index.html を data/huts.json から作る。使い方：python3 scripts/gen_huts_page.py
 作るページ：一覧 /huts/、山ごと /huts/<山ID>/、山小屋ごと /huts/<小屋ID>/（予約の開始も方法も分からない小屋は noindex）。sitemap.xml の /huts/ 以下も入れ直す。
 以前の /huts/?m=山ID は、山ごとのページへ送る。"""
 import html, json, os, re
@@ -814,7 +814,7 @@ main_ld = ld(
          {'@type': 'ListItem', 'position': i + 1, 'url': BASE + '/huts/%s/' % h['id'], 'name': h['name']} for i, h in enumerate(H)]}},
     faq_ld(MAIN_FAQ))
 page = (page.replace('__N__', str(len(H))).replace('__YEAR__', str(YEAR)).replace('__UPD__', upd)
-        .replace('__HERO__', topo_hero(36.25, 137.75, 'MOUNTAIN HUTS %d' % YEAR, '山小屋の予約開始日・予約方法まとめ<span class="beta">β版</span>', '%d軒｜予約の開始・予約方法・規模・営業期間' % len(H), zoom=10, pin=False)).replace('__PROMO__', PROMO).replace('__MAPVER__', MAP_VER).replace('__HEADCOMMON__', HEADCOMMON).replace('__LD__', main_ld).replace('__FAQ__', faq_html(MAIN_FAQ)).replace('__FOOTER__', FOOTER)
+        .replace('__HERO__', topo_hero(36.25, 137.75, 'MOUNTAIN HUTS %d' % YEAR, '山小屋の予約開始日・予約方法まとめ', '%d軒｜予約の開始・予約方法・規模・営業期間' % len(H), zoom=10, pin=False)).replace('__PROMO__', PROMO).replace('__MAPVER__', MAP_VER).replace('__HEADCOMMON__', HEADCOMMON).replace('__LD__', main_ld).replace('__FAQ__', faq_html(MAIN_FAQ)).replace('__FOOTER__', FOOTER)
         .replace('__VERIFIED_JA__', VERIFIED_JA).replace('__VERIFIED__', VERIFIED)
         .replace('__MAP__', map_block(H, START_SHORT, 'manual')).replace('__CHIPS__', chips).replace('__MTS__', ''.join(mt_btns)).replace('__CARDS__', grouped))
 write(os.path.join(ROOT, 'huts', 'index.html'), page)
