@@ -68,7 +68,7 @@ def main():
             '予約の開始（ページの表示）', '予約の開始の出どころ', '予約方法', '予約必須', '定員（ページの表示）',
             'お知らせの型', 'ページの状態', '検索に出す', '出典（一覧）', '出典の更新日', '最終確認日',
             '自動で更新：営業期間・予約の区分', '自動取得：やまたん', '自動取得：公式ページのレシピ', '自動取得：型で読む',
-            '自動取得：Instagram', '定期の見張り', '自動では書き換えない', 'ページ']
+            '自動取得：Instagram', '予約開始日の監視', '定期の見張り', '手で書いた値の扱い', 'ページ']
     rows = []
     for h in H:
         au = h.get('auto') or {}
@@ -96,6 +96,26 @@ def main():
         else:
             watch = '毎月1日に公式ページを見る（変わると「変更あり」）' if h.get('officialUrl') else ''
         # gen_huts_page.py と同じ：予約不要でもなく、予約の開始（「確認中」「記載なし」は除く）も方法も無い小屋は検索に出さない
+        # 予約開始日の監視（huts_auto.py と同じ条件）：自動でページに反映／報告だけ／監視なし
+        rec = set(recipes.get(h['name'], []))
+        mon = []
+        if h.get('bookingNone'):
+            mon = ['対象外（予約不要）']
+        else:
+            if rec & {'bookingStart', 'bookingStartDate'}:
+                mon.append('自動で反映：公式ページのレシピ')
+            if h['name'] in news_names:
+                mon.append('自動で反映：やまたんの予約開始のお知らせ（手の値より新しい年のとき）')
+            if rt == 'fix' and h.get('officialUrl') and not (rec & {'bookingStart', 'bookingStartDate'}):
+                mon.append('自動で反映：型で読む（年が今年か来年・前の年の日付から45日以内・候補が1つのときだけ。それ以外は報告）')
+            if rt in ('rel', 'mon'):
+                mon.append('報告だけ：「◯か月前」の数字の変化と、一斉解放の書き方が出てきたか')
+            if rt == 'phase':
+                mon.append('報告だけ：期間区切りは自動では替えない（公式の記載が変わると「変更あり」）')
+            if not rt and h.get('officialUrl'):
+                mon.append('報告だけ：予約の開始らしい記載が見つかったら候補として報告（未登録の小屋）')
+            if not mon:
+                mon = ['監視なし（公式サイトのURLが無い）']
         thin = not (h.get('bookingNone') or start not in ('', '確認中', '記載なし') or h.get('bookingMethods'))
         state = '確認中' if h.get('bookingStale') else ('変更あり' if h.get('officialChanged') else '通常')
         ig = (sns.get(h['id']) or {}).get('instagram') or []
@@ -112,7 +132,7 @@ def main():
             auto_season, yt_txt, '・'.join(sorted(set(recipes.get(h['name'], [])))),
             'あり（公式サイトの予約・お知らせのページ）' if h.get('officialUrl') else 'なし（公式サイトのURLなし）',
             ('準備中（鍵が未設定）：' + '・'.join('@' + x for x in ig[:4]) + ('ほか' if len(ig) > 4 else '')) if ig else '',
-            watch, '予約の開始・予約方法・定員（読み取った値は「確認中」「変更あり」の表示と報告だけ）',
+            '／'.join(mon), watch, '書き換えない（予約の開始・方法・定員は人が確かめて直す）。自動で読めた値が確認を通れば、ページではそちらを優先して表示する',
             BASE + '/huts/%s/' % h['id']])
 
     wb = openpyxl.load_workbook(XLSX)
@@ -128,7 +148,7 @@ def main():
         c.font = Font(bold=True, color='FFFFFF')
         c.fill = fill
         c.alignment = Alignment(wrap_text=True, vertical='center')
-    widths = [14, 22, 12, 16, 22, 30, 14, 28, 18, 24, 28, 24, 20, 8, 16, 14, 10, 12, 30, 12, 12, 22, 26, 22, 24, 26, 32, 30, 36]
+    widths = [14, 22, 12, 16, 22, 30, 14, 28, 18, 24, 28, 24, 20, 8, 16, 14, 10, 12, 30, 12, 12, 22, 26, 22, 24, 26, 44, 32, 30, 36]
     for i, w in enumerate(widths):
         ws.column_dimensions[openpyxl.utils.get_column_letter(i + 1)].width = w
     ws.freeze_panes = 'C2'
@@ -146,7 +166,8 @@ def main():
         ['自動取得：型で読む', '小屋ごとの設定なしで、公式サイトの予約・お知らせのページから予約開始の書き方の型を読む（huts_patterns.py）。自動で使うのは条件を満たす一斉型だけ。ほかは報告に出すだけ'],
         ['自動取得：Instagram', 'Instagram の投稿を読む仕組み（huts_instagram.py）。鍵（IG_USER_ID / IG_TOKEN）が未設定のあいだは動かない'],
         ['定期の見張り', 'update_huts.py --scheduled が見に行く頻度'],
-        ['自動では書き換えない', '予約の開始・予約方法・定員は、人が公式サイトで確かめてから直す。読み取った値が変わると、ページで「確認中」「変更あり」になり、管理画面のお知らせに出る'],
+        ['予約開始日の監視', '自動で反映＝読み取った日付が確認（年が今年か来年・実在する日付・前の年から45日以内・候補が1つ）を通ると、ページの予約の開始と、予約開始のお知らせの日付が替わる（data/huts_history.json に年ごとに残る）。報告だけ＝管理画面のお知らせに出るので、人が公式サイトで確かめて直す'],
+        ['手で書いた値の扱い', '予約の開始・予約方法・定員の手で書いた値（huts_booking_extra.py など）は自動では書き換えない。出典や公式ページの記載が変わると、ページで「確認中」「変更あり」になり、管理画面のお知らせに出る'],
         ['ページの状態', '通常／確認中（出典の記載が変わった）／変更あり（公式サイトの記載が変わった）'],
         ['検索に出す', '予約の開始も方法も分からない小屋のページは noindex（検索に出さない・サイトマップに入れない）'],
     ]:
