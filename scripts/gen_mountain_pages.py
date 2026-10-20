@@ -438,8 +438,6 @@ def render_hero(mt):
         '    </svg>\n'
         '    <div class="hero-top">\n'
         '      <div>\n'
-        # お気に入り数・登頂数（assets/js/ym-counts.js が集計先から読んで出す。集計先が未設定のあいだは出ない）
-        f'        <div class="hero-counts" id="hero-counts" data-id="{esc(mt["id"])}" style="display:none"></div>\n'
         # 大見出しは山名＋副題。検索結果の見出しと同じ語（登山・難易度・コース・アクセス）を入れ、見出しが書き換えられにくくする
         f'        <h1 class="mountain-name">{name}</h1>\n'
         f'        <div class="mountain-kana">{kana}</div>\n'
@@ -1161,7 +1159,9 @@ def generate_page(mt, by_id, gear_data):
         HEADER_BLOCK.rstrip("\n"),
         "<main>",
         f'  {render_bookmark_tabs(mt)}',
-        f'  <div class="mountain-updated">最終更新: {updated}</div>',
+        # ヒーローの上の行：左にお気に入り数・登頂数（assets/js/ym-counts.js が集計先から読んで出す。枠なし。運営者の指示・2026-10-20）、右に最終更新
+        f'  <div class="hero-meta-row"><div class="hero-counts" id="hero-counts" data-id="{esc(mt["id"])}" style="display:none"></div>'
+        f'<div class="mountain-updated">最終更新: {updated}</div></div>',
         f'  {render_hero(mt)}',
         "",
         "  <!-- ① こんな人におすすめ -->",

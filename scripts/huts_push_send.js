@@ -68,7 +68,10 @@ function messages(sub, sent) {
     const key = [a.id, a.stay || '-', core.ymd(c.open), st].join('|').replace(/[.#$\[\]\/]/g, '_');
     if (sent && sent[key]) { return; }
     const left = Math.round((c.open - today) / DAY);
-    const title = hut.n + (st === 0 ? '：きょう予約開始' : st === 1 ? '：あした予約開始' : '：予約開始まであと' + left + '日');
+    // 0:00〜7:00 に受付が始まる小屋は、当日の朝7時の通知の時点で受付が始まっている（前日の通知に開始時刻を出しておく）
+    const early = c.time && /^([0-6]:|7:00)/.test(c.time);
+    const title = hut.n + (st === 0 ? (early ? '：予約の受付が始まっています' : '：きょう予約開始')
+      : st === 1 ? '：あした' + (c.time ? c.time + 'から' : '') + '予約開始' : '：予約開始まであと' + left + '日');
     const body = (c.guess ? '昨年の日付からの目安です。' : '') + core.jp(c.open) + (c.time ? ' ' + c.time : '') + 'から'
       + (a.stay ? '（' + a.stay.replace(/-/g, '/') + ' 泊の分）' : '');
     out.push({ key: key, payload: { title: title, body: body, url: '/huts/' + a.id + '/', tag: 'ym-hut-' + a.id + '-' + (a.stay || 'x') } });
@@ -107,7 +110,7 @@ async function main() {
 
   const subs = (await db('GET', '/hutPush')) || {};
   const sentAll = (await db('GET', '/hutPushSent')) || {};
-  const stat = { devices: Object.keys(subs).length, sent: 0, expired: 0, failed: 0 };
+  const stat = { devices: Object.keys(subs).length, sent: 0, expired: 0, failed: 0, trial: 0 };
   const errors = [];
   for (const id of Object.keys(subs)) {
     const sub = subs[id];
@@ -138,11 +141,28 @@ async function main() {
       }
     }
   }
+  // お試しの通知（山小屋ページ・案内の「通知をお試しする」）：毎朝の分だけ送り、送ったら（失敗しても）預かった宛先を消す。3日より古いものは送らずに消す
+  if (!TEST) {
+    const trials = (await db('GET', '/hutPushTrial')) || {};
+    for (const id of Object.keys(trials)) {
+      const t = trials[id];
+      if (t && t.endpoint && t.keys && (Date.now() - (t.at || 0)) < 3 * 86400000) {
+        try {
+          await webpush.sendNotification({ endpoint: t.endpoint, keys: t.keys }, JSON.stringify({ title: 'Yamatch：お試しの通知',
+            body: 'アプリを閉じていても、山小屋の予約開始のお知らせはこの形で届きます。', url: '/huts/', tag: 'ym-hut-trial' }), { TTL: 12 * 3600 });
+          stat.trial++;
+        } catch (e) {
+          if (e.statusCode !== 404 && e.statusCode !== 410) { stat.failed++; errors.push('- お試しの送信に失敗：' + (e.statusCode || '') + ' ' + String(e.body || e.message || '').slice(0, 80)); }
+        }
+      }
+      await db('DELETE', '/hutPushTrial/' + id);
+    }
+  }
   // 登録が消えた端末の「送った記録」を片づける
   for (const id of Object.keys(sentAll)) { if (!subs[id]) { await db('DELETE', '/hutPushSent/' + id); } }
 
   const head = '# 山小屋の予約開始の通知（' + core.ymd(today) + (TEST ? '・テスト' : '') + '）';
-  const lines = ['- 登録している端末：' + stat.devices + '台／送った通知：' + stat.sent + '件／無効になっていた宛先：' + stat.expired + '台／失敗：' + stat.failed + '件'].concat(errors.slice(0, 20));
+  const lines = ['- 登録している端末：' + stat.devices + '台／送った通知：' + stat.sent + '件／無効になっていた宛先：' + stat.expired + '台／お試し：' + stat.trial + '件／失敗：' + stat.failed + '件'].concat(errors.slice(0, 20));
   console.log(head + '\n\n' + lines.join('\n'));
   if (opt('--out')) { fs.writeFileSync(opt('--out'), head + '\n\n## 送信の失敗\n\n' + (errors.length ? errors.slice(0, 20).join('\n') : '- なし') + '\n'); }
   if (stat.failed) { process.exitCode = 1; }

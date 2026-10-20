@@ -1,6 +1,6 @@
 /* 山小屋の予約開始のお知らせ。
    - 山小屋ページの #hut-alert に設定欄を出す（ホーム画面に追加して開いているときだけ使える）
-   - どのページでも、開いたときに登録済みのお知らせを確かめ、1週間前・前日・当日に画面上部と端末の通知で知らせる
+   - どのページでも、開いたときに登録済みのお知らせを確かめ、1週間前・前日・当日に画面上部で知らせる。通知を許可した端末には、開いていなくても朝7時ごろにプッシュ通知が届く（scripts/huts_push_send.js）
    - マイページの #ym-hut-alerts に一覧を出す
    登録は端末の中（localStorage の ym_hut_alerts）に保存する。サーバーには送らない。
    予約の型（rule）は scripts/huts_rules.py が作る：rel（何日前・何か月前）/ mon（月ごと）/ fix（一斉）/ phase（期間区切り） */
@@ -522,14 +522,15 @@
       toastEl.className = 'dm-toast';
       ban.className = 'dm-ban';
       if (k >= steps.length) {
-        statusEl.textContent = '見本はここまでです。実際は、それぞれの日に Yamatch を開いたときに出ます（開かなかった日のお知らせは出ません）。'
+        statusEl.textContent = '見本はここまでです。実際は、それぞれの日の朝7時ごろにスマホの通知が届き、Yamatch を開くと画面にもこのように出ます（通知を許可していないときは、開いたときの画面だけ）。'
           + (guess ? 'この見本の日付は、昨年の日付からの目安です。来季の日付が発表されたら、お知らせの日付も切り替わります。' : '');
         demoBusy = false;
         return;
       }
-      var d = steps[k], msg = name + (d === 0 ? '：きょう予約開始' : d === 1 ? '：あした予約開始' : '：予約開始まであと7日');
+      var early = time && /^([0-6]:|7:00)/.test(time);       // 送信（huts_push_send.js）と同じ見出し
+      var d = steps[k], msg = name + (d === 0 ? (early ? '：予約の受付が始まっています' : '：きょう予約開始') : d === 1 ? '：あした' + (time ? time + 'から' : '') + '予約開始' : '：予約開始まであと7日');
       var body = (guess ? '昨年の日付からの目安です。' : '') + jp(o) + (time ? ' ' + time : '') + 'から' + (stay ? '（' + stay.replace(/-/g, '/') + ' 泊の分）' : '');
-      statusEl.textContent = (k + 1) + '／3　' + (d === 0 ? '当日' : d === 1 ? '前日' : '1週間前') + '（' + jp(when(d)) + '）に開いたとき' + (guess ? '　※日付は昨年の日付からの目安' : '');
+      statusEl.textContent = (k + 1) + '／3　' + (d === 0 ? '当日' : d === 1 ? '前日' : '1週間前') + '（' + jp(when(d)) + '）：朝7時ごろに「' + msg + '」の通知が届き、開くとこう出ます' + (guess ? '　※日付は昨年の日付からの目安' : '');
       home.className = 'dm-f dm-on';
       my.className = 'dm-f dm-on';
       setTimeout(function () {
@@ -551,10 +552,39 @@
   }
   function demoBlock() {
     return '<div class="ha-demo"><button type="button" id="ha-demo" class="ha-btn ha-btn2">お知らせの見本を見る</button> '
-      + '<button type="button" id="ha-trial" class="ha-btn ha-btn2">実際の画面でお試しする</button><p id="ha-trial-s" class="ha-p" style="margin:8px 0 0;font-size:12.5px"></p>'
+      + '<button type="button" id="ha-trial" class="ha-btn ha-btn2">実際の画面でお試しする</button> '
+      + '<button type="button" id="ha-ptrial" class="ha-btn ha-btn2">通知をお試しする</button><p id="ha-trial-s" class="ha-p" style="margin:8px 0 0;font-size:12.5px"></p>'
       + '<p id="ha-demo-s" class="ha-p" style="margin:8px 0 0;font-size:12px"></p>'
       + '<p class="ha-p" style="margin:6px 0 0;font-size:12px;color:#7a7068">ホームとマイページでどう見えるかを、小さな画面の見本で、1週間前・前日・当日の順に見せます。'
-      + '端末の通知を許可している場合は、当日分の通知も1回送ります。</p></div>';
+      + '端末の通知を許可している場合は、当日分の通知も1回送ります。「通知をお試しする」は、いますぐ端末の通知で見本を出し、次の朝7時ごろにアプリを閉じていても届く本物の通知を1回送ります。</p></div>';
+  }
+  // プッシュ通知のお試し：いますぐ端末の通知で見本を出し、次の朝7時ごろに本物の通知を1回送る（scripts/huts_push_send.js が /hutPushTrial を見て送り、送ったら消す）
+  function pushTrial(statusEl) {
+    function say(t) { if (statusEl) { statusEl.textContent = t; } }
+    if (!standalone) { say('通知のお試しは、Yamatch をホーム画面に追加し、ホーム画面のアイコンから開いたときに使えます。'); return; }
+    if (!('Notification' in window) || !navigator.serviceWorker || !window.PushManager) { say('この端末・OS はプッシュ通知に対応していません（iPhone は iOS 16.4 以上）。'); return; }
+    var go = function (p) {
+      if (p !== 'granted') { say('通知が許可されていないので、お試しできません（iPhone の「設定」→「通知」→「Yamatch」で許可）。'); return; }
+      navigator.serviceWorker.register('/sw.js').then(function () { return navigator.serviceWorker.ready; }).then(function (reg) {
+        reg.showNotification('Yamatch：お試しの通知', { body: '山小屋の予約開始のお知らせは、この形で届きます。', icon: '/icon-192.png', badge: '/icon-192.png', data: { url: '/huts/' }, tag: 'ym-hut-trial-now' });
+        if (!PUSH.db || !PUSH.key || !(window.crypto && crypto.subtle && window.TextEncoder && window.fetch)) { say('いま、お試しの通知を出しました。'); return null; }
+        return reg.pushManager.getSubscription().then(function (sub) {
+          return sub || reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(PUSH.key) });
+        }).then(function (sub) {
+          var j = sub.toJSON();
+          return crypto.subtle.digest('SHA-256', new TextEncoder().encode(j.endpoint)).then(function (h) {
+            return fetch(PUSH.db.replace(/\/+$/, '') + '/hutPushTrial/' + hexOf(h) + '.json', { method: 'PUT', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ endpoint: j.endpoint, keys: j.keys, at: Date.now() }) });
+          });
+        }).then(function (res) {
+          say(res && res.ok ? 'いま、お試しの通知を出しました。次の朝7時ごろに、アプリを閉じていても届く本物の通知が1回届きます（届いたら、預かった宛先は消します）。'
+            : 'いま、お試しの通知を出しました（次の朝の通知は予約できませんでした）。');
+        });
+      }).catch(function () { say('通知を出せませんでした。'); });
+    };
+    if (Notification.permission === 'default') {
+      try { Notification.requestPermission().then(go, function () { go('denied'); }); } catch (e) { go('denied'); }
+    } else { go(Notification.permission); }
   }
   function trialStart(id, name, time, statusEl) {
     var ok = trialSet({ id: id || '', name: name, open: ymd(new Date(today.getTime() + 7 * DAY)), time: time || '', ts: Date.now() });
@@ -565,6 +595,8 @@
       : 'この端末に保存できませんでした（プライベートブラウズでは使えません）。';
   }
   function bindDemo(name, getCur, getStay, id) {
+    var pt = document.getElementById('ha-ptrial');
+    if (pt) { pt.addEventListener('click', function () { pushTrial(document.getElementById('ha-trial-s')); }); }
     var tb = document.getElementById('ha-trial');
     if (tb) {
       tb.addEventListener('click', function () {
@@ -674,6 +706,8 @@
         trialStart(modal.getAttribute('data-demo-id') || '', modal.getAttribute('data-demo-name') || '山小屋', '', document.getElementById('ha-modal-trial-s'));
       });
     }
+    var pt = document.getElementById('ha-modal-ptrial');
+    if (pt) { pt.addEventListener('click', function () { pushTrial(document.getElementById('ha-modal-ptrial-s')); }); }
     var d = document.getElementById('ha-modal-demo');
     if (d) {
       d.addEventListener('click', function () {

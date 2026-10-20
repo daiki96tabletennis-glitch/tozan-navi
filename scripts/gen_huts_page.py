@@ -12,7 +12,7 @@ M = {m['id']: m for m in ML}
 H = d['huts']
 _cp = os.path.join(ROOT, 'data', 'huts_coords.json')
 COORDS = json.load(open(_cp, encoding='utf-8'))['huts'] if os.path.exists(_cp) else {}
-MAP_VER = '20261020d'
+MAP_VER = '20261020g'
 import calendar, math, sys
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 import huts_season
@@ -749,7 +749,7 @@ PROMO = ('''<button type="button" class="promo" data-ha-open aria-haspopup="dial
 <p class="hamodal-lead">人気の山小屋は、予約開始の日にすぐ埋まります。泊まりたい日を登録しておくと、予約が始まる日が近づいたときに Yamatch が知らせます。</p>
 <ol class="hamodal-steps">
 <li><b>山小屋のページで登録</b>泊まりたい日を選ぶと、その日の予約がいつ始まるかを計算します。まとめて受付が始まる山小屋は、ボタンを押すだけです。</li>
-<li><b>1週間前・前日・当日に知らせる</b>Yamatch を開いたときに、画面の上と下のバーの鈴マークで知らせます。通知を許可すると、端末の通知も出ます。</li>
+<li><b>1週間前・前日・当日に知らせる</b>通知を許可すると、Yamatch を開いていなくても、その日の朝7時ごろにスマホの通知で届きます。Yamatch を開いたときは、画面の上と下のバーの鈴マークでも知らせます。</li>
 <li><b>マイページで確認</b>登録した山小屋と予約開始日、あと何日かを一覧で見られます。</li>
 </ol>
 <div class="hamodal-n"><b>%(n)d</b><span>軒が対応（掲載%(all)d軒中）</span></div>
@@ -758,9 +758,11 @@ PROMO = ('''<button type="button" class="promo" data-ha-open aria-haspopup="dial
 <p id="ha-modal-demo-s" class="hamodal-d"></p>
 <button type="button" id="ha-modal-trial" class="ha-btn ha-btn2" style="margin-top:4px">実際の画面でお試しする</button>
 <p id="ha-modal-trial-s" class="hamodal-d" style="color:#3a3530"></p>
-<p class="hamodal-s">ホームとマイページでどう見えるかを、小さな画面の見本で、1週間前・前日・当日の順に見せます（槍ヶ岳山荘の例）。</p>
+<button type="button" id="ha-modal-ptrial" class="ha-btn ha-btn2" style="margin-top:4px">通知をお試しする</button>
+<p id="ha-modal-ptrial-s" class="hamodal-d" style="color:#3a3530"></p>
+<p class="hamodal-s">ホームとマイページでどう見えるかを、小さな画面の見本で、1週間前・前日・当日の順に見せます（槍ヶ岳山荘の例）。「通知をお試しする」は、いますぐスマホの通知で見本を出し、次の朝7時ごろに、アプリを閉じていても届く本物の通知を1回送ります（ホーム画面に追加して開いたときだけ）。</p>
 <div class="hamodal-f">
-<p><b>使うには</b>Yamatch をホーム画面に追加し、ホーム画面のアイコンから開いてください。登録はお使いの端末の中に保存され、Yamatch を開いたときにお知らせします（開いていないときには届きません）。</p>
+<p><b>使うには</b>Yamatch をホーム画面に追加し、ホーム画面のアイコンから開いて登録し、通知を「許可」してください。通知を許可しないときは、Yamatch を開いたときだけ画面でお知らせします。</p>
 <a class="ha-btn ha-btn2" href="/">ホーム画面に追加する方法を見る</a>
 <button type="button" class="hamodal-c" data-ha-close>閉じる</button>
 </div>
