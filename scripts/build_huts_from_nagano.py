@@ -136,6 +136,8 @@ HUT_OFFICIAL_NOTE = {
     '苗場山頂ヒュッテ－自然体験交流センター': '営業期間は令和8年6月1日〜10月18日（予約制）',
     '二ノ池山荘': '令和8年は7月1日から10月11日まで営業',
     '唐松岳頂上山荘': '2026年の営業は10月12日宿泊分で終了',
+    # 長野県のポータルに無い小屋（huts_extra.py）にも当てる。SNS の原文は運営者が開いて確かめたもの
+    '山の鼻小屋': '春の日程は2026年4月19日のお知らせ（4/19～24・5/6～20は休み）。10月19日の朝が今シーズン最後（公式 Instagram 10月19日の投稿）',
 }
 
 
@@ -209,6 +211,8 @@ def main():
             h['officialUrl'] = off_over[h['name']]
         if not h.get('officialUrl') and off_urls.get(h['name']) and h['name'] not in off_over:
             h['officialUrl'] = off_urls[h['name']]
+        if h['name'] in HUT_OFFICIAL_NOTE:
+            h['officialNote'] = HUT_OFFICIAL_NOTE[h['name']]
         x = BOOKING_EXTRA.get(h['name'])
         if x:
             if x.get('s'):
