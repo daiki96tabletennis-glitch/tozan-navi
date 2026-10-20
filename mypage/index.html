@@ -877,7 +877,7 @@ function applyTemplate(type){
 }
 function pkBuyLink(item){
   if (!item.product || !window.YMPacking) return '';
-  return '<a href="'+esc(window.YMPacking.rakuten(item.product))+'" target="_blank" rel="sponsored noopener" style="display:block;font-size:11px;color:#4e6535;margin:2px 0 0 26px">楽天で見る：'+esc(item.product)+'</a>';
+  return '<a href="'+esc(window.YMPacking.buyUrl(item.product))+'" target="_blank" rel="sponsored noopener" style="display:block;font-size:11px;color:#4e6535;margin:2px 0 0 26px">Amazonで見る：'+esc(item.product)+'</a>';
 }
 function renderChecklist(){
   var el=document.getElementById('checklist');

@@ -1,13 +1,13 @@
 /* 持ち物・服装のチェックリスト（data/packing.json）。
    山小屋の山ごとのページ（#ym-packing。data-mid / data-name / data-elev / data-gear）と、マイページの登山計画（YMPacking.build）から使う。
-   気温の数字は出さない。装備の時期は gearCalendar で決める。商品は楽天の検索リンク（gear-common.js の YMGear があればそれを使う）。
+   気温の数字は出さない。装備の時期は gearCalendar で決める。商品は Amazon の検索リンク（gear-common.js の YMGear があればそれを使う）。
    チェックは端末の中（localStorage ym_packing）だけに保存する。 */
 window.YMPacking = (function () {
   'use strict';
   var DATA = null, GEAR = null, loading = null;
   var KEY = 'ym_packing';
   var STAY_LABEL = { day: '日帰り', hut: '山小屋泊', tent: 'テント泊' };
-  var RID = '57384242.53497bb8.57384243.366083eb';
+  var TAG = 'amazonafdaiki-22';
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -20,10 +20,10 @@ window.YMPacking = (function () {
     ]).then(function (a) { DATA = a[0]; GEAR = a[1]; return DATA; });
     return loading;
   }
-  function rakuten(name) {
-    if (window.YMGear && window.YMGear.getAffiliate) return window.YMGear.getAffiliate(name).rakutenUrl;
-    var s = 'https://search.rakuten.co.jp/search/mall/' + encodeURIComponent(name) + '/';
-    return 'https://hb.afl.rakuten.co.jp/hgc/' + RID + '/?pc=' + encodeURIComponent(s) + '&m=' + encodeURIComponent(s);
+  // 商品のリンクは Amazon（運営者の指示・2026-10-20）。gear-common.js の YMGear があればそれを使う（商品ごとの ASIN 指定も効く）
+  function buyUrl(name) {
+    if (window.YMGear && window.YMGear.getAffiliate) return window.YMGear.getAffiliate(name).amazonUrl;
+    return 'https://www.amazon.co.jp/s?k=' + encodeURIComponent(name) + '&tag=' + TAG;
   }
   // その月の装備の区分（月の途中で変わる月は両方）
   function gearKinds(cal, month) {
@@ -96,7 +96,7 @@ window.YMPacking = (function () {
       return s ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + '</a>' : '';
     }).filter(Boolean);
     return '<p class="pk-src">出典：' + links.join('、') + 'をもとに、Yamatch がまとめました（' + esc(DATA.checkedAt) + '）。' +
-      '装備の時期は、この山の装備カレンダーから選んでいます。商品のリンクは楽天の検索結果です（広告）。</p>';
+      '装備の時期は、この山の装備カレンダーから選んでいます。商品のリンクは Amazon の検索結果です（広告。当サイトは Amazon アソシエイトを利用しています）。</p>';
   }
 
   function mount(el) {
@@ -129,7 +129,7 @@ window.YMPacking = (function () {
           if (on) done++;
           h += '<li' + (on ? ' class="on"' : '') + '><label><input type="checkbox" data-pk-id="' + esc(it.id) + '"' + (on ? ' checked' : '') + '><span>' + esc(it.label) +
             (it.note ? '<small>' + esc(it.note) + '</small>' : '') + '</span></label>' +
-            (it.product ? '<a class="pk-buy" href="' + esc(rakuten(it.product)) + '" target="_blank" rel="sponsored noopener">楽天で見る：' + esc(it.product) + '</a>' : '') + '</li>';
+            (it.product ? '<a class="pk-buy" href="' + esc(buyUrl(it.product)) + '" target="_blank" rel="sponsored noopener">Amazonで見る：' + esc(it.product) + '</a>' : '') + '</li>';
         });
         h += '</ul></div>';
       });
@@ -178,5 +178,5 @@ window.YMPacking = (function () {
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 
-  return { load: load, build: build, rakuten: rakuten, STAY_LABEL: STAY_LABEL };
+  return { load: load, build: build, buyUrl: buyUrl, STAY_LABEL: STAY_LABEL };
 })();

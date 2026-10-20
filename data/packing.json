@@ -1,5 +1,5 @@
 {
- "note": "山小屋泊・テント泊・日帰りの持ち物と服装のチェックリスト（assets/js/packing.js が表示する。山小屋の山ごとのページ /huts/<山ID>/#packing とマイページの登山計画）。気温の数字は出さない（運営者の指示・2026-10-20）。装備の時期（軽アイゼン等・冬山装備）は mountains.json の gearCalendar から決める。stay は day（日帰り）/ hut（山小屋泊）/ tent（テント泊）。gear は gearCalendar の区分（no_crampons / light_crampons / winter_gear）。minElev はその標高以上の山だけ。src は出典（sources の key）。product は楽天の検索リンクにする商品名。gearCat は gear-data.json の区分で、その山・その月の商品があればそちらを使う。山小屋ごとの決まり（支払い方法・寝具など）は書かない（小屋ごとに違うので、公式サイトの案内を見るように書く）",
+ "note": "山小屋泊・テント泊・日帰りの持ち物と服装のチェックリスト（assets/js/packing.js が表示する。山小屋の山ごとのページ /huts/<山ID>/#packing とマイページの登山計画）。気温の数字は出さない（運営者の指示・2026-10-20）。装備の時期（軽アイゼン等・冬山装備）は mountains.json の gearCalendar から決める。stay は day（日帰り）/ hut（山小屋泊）/ tent（テント泊）。gear は gearCalendar の区分（no_crampons / light_crampons / winter_gear）。minElev はその標高以上の山だけ。src は出典（sources の key）。product は Amazon の検索リンクにする商品名。gearCat は gear-data.json の区分で、その山・その月の商品があればそちらを使う。山小屋ごとの決まり（支払い方法・寝具など）は書かない（小屋ごとに違うので、公式サイトの案内を見るように書く）",
  "checkedAt": "2026-10-20",
  "sources": {
   "nagano": {
