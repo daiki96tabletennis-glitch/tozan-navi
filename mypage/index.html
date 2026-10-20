@@ -309,8 +309,10 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
         <div id="copy-notice" class="copy-notice">前の計画の持ち物リストをコピーしました</div>
         <div class="tmpl-btns">
           <button class="tmpl-btn active" id="tmpl-day" onclick="applyTemplate('day')">日帰り</button>
-          <button class="tmpl-btn" id="tmpl-stay" onclick="applyTemplate('stay')">宿泊</button>
+          <button class="tmpl-btn" id="tmpl-stay" onclick="applyTemplate('stay')">山小屋泊</button>
+          <button class="tmpl-btn" id="tmpl-tent" onclick="applyTemplate('tent')">テント泊</button>
         </div>
+        <div id="tmpl-note" style="font-size:11.5px;color:#8a8070;margin:2px 0 6px;line-height:1.5">山名と日程を入れてから選ぶと、その山・その月に合わせたリストになります（雪の時期の装備も入ります）。</div>
         <div class="checklist" id="checklist"></div>
         <div class="add-item-row">
           <input type="text" id="new-item-input" placeholder="持ち物を追加" onkeydown="if(event.key==='Enter')addCheckItem()">
@@ -546,6 +548,7 @@ function openPlanForm(index) {
   renderChecklist();
   document.getElementById('tmpl-day').classList.add('active');
   document.getElementById('tmpl-stay').classList.remove('active');
+  document.getElementById('tmpl-tent').classList.remove('active');
   document.getElementById('plan-form').classList.add('open');
 }
 function closePlanForm(){ document.getElementById('plan-form').classList.remove('open'); }
@@ -602,7 +605,7 @@ function openPlanDetail(index) {
   if (p.items&&p.items.length>0) {
     html += '<div class="card" style="margin-bottom:10px"><div class="card-header">🎒 持ち物</div><div class="card-body"><div class="checklist">';
     p.items.forEach(function(item,i){
-      html += '<div class="check-item'+(item.checked?' checked':'')+'"><input type="checkbox"'+(item.checked?' checked':'')+' onchange="toggleDetailCheck('+index+','+i+',this.checked)"><span class="item-label">'+esc(item.label)+'</span></div>';
+      html += '<div class="check-item'+(item.checked?' checked':'')+'"><input type="checkbox"'+(item.checked?' checked':'')+' onchange="toggleDetailCheck('+index+','+i+',this.checked)"><span class="item-label">'+esc(item.label)+'</span></div>'+pkBuyLink(item);
     });
     html += '</div></div></div>';
   }
@@ -832,17 +835,55 @@ function saveManualClimbed(){
 }
 
 // ===== 持ち物 =====
+// 持ち物のひな形：山名（サイトの山）と日程の月に合わせて data/packing.json から作る（assets/js/packing.js）。読めないときは下の固定のひな形
+var _pkMountains = null;
+function pkFindMountain(name, list){
+  name = (name||'').trim(); if(!name) return null;
+  var best = null;
+  list.forEach(function(m){
+    if (m.name === name) { best = m; return; }
+    if (best && best.name === name) return;
+    var base = m.name.replace(/（.*?）/g,'');
+    if (base === name || name.indexOf(base) >= 0 || m.name.indexOf(name) >= 0) {
+      if (!best || base.length > best.name.replace(/（.*?）/g,'').length) best = m;
+    }
+  });
+  return best;
+}
 function applyTemplate(type){
-  currentItems=(type==='stay'?TEMPLATE_STAY:TEMPLATE_DAY).map(function(s){return{label:s,checked:false};});
-  renderChecklist();
-  document.getElementById('tmpl-day').classList.toggle('active',type==='day');
-  document.getElementById('tmpl-stay').classList.toggle('active',type==='stay');
+  ['day','stay','tent'].forEach(function(t){ document.getElementById('tmpl-'+t).classList.toggle('active',type===t); });
+  var note = document.getElementById('tmpl-note');
+  function fallback(){
+    currentItems=(type==='day'?TEMPLATE_DAY:TEMPLATE_STAY).map(function(s){return{label:s,checked:false};});
+    renderChecklist();
+  }
+  if (!window.YMPacking) { fallback(); return; }
+  var mlist = _pkMountains ? Promise.resolve(_pkMountains) : fetch('/data/mountains.json').then(function(r){return r.json();}).then(function(d){ _pkMountains=d; return d; });
+  Promise.all([window.YMPacking.load(), mlist]).then(function(a){
+    var m = pkFindMountain(document.getElementById('f-mountain').value, a[1]);
+    var d = document.getElementById('f-date').value;
+    var month = d ? parseInt(d.slice(5,7),10) : null;
+    var day = d ? parseInt(d.slice(8,10),10) : null;
+    var stay = type==='stay' ? 'hut' : type;
+    var groups = window.YMPacking.build({ mid: m?m.id:null, elev: m?m.elevation:0, gear: m?m.gearCalendar:null, month: month, day: day, stay: stay });
+    currentItems = [];
+    groups.forEach(function(g){ g.items.forEach(function(it){ currentItems.push({label:it.label, checked:false, product:it.product||null}); }); });
+    var who = m ? m.name : '';
+    note.textContent = (who && month) ? who+'・'+month+'月の'+window.YMPacking.STAY_LABEL[stay]+'のリストです（雪の時期の装備は'+who+'の装備カレンダーから）。'
+      : (who ? who+'の'+window.YMPacking.STAY_LABEL[stay]+'のリストです。日程を入れると、雪の時期の装備も入ります。'
+      : '山名（サイトに載っている山）と日程を入れてから選ぶと、その山・その月に合わせたリストになります。');
+    renderChecklist();
+  }).catch(fallback);
+}
+function pkBuyLink(item){
+  if (!item.product || !window.YMPacking) return '';
+  return '<a href="'+esc(window.YMPacking.rakuten(item.product))+'" target="_blank" rel="sponsored noopener" style="display:block;font-size:11px;color:#4e6535;margin:2px 0 0 26px">楽天で見る：'+esc(item.product)+'</a>';
 }
 function renderChecklist(){
   var el=document.getElementById('checklist');
   if(!currentItems.length){el.innerHTML='';return;}
   el.innerHTML=currentItems.map(function(item,i){
-    return '<div class="check-item'+(item.checked?' checked':'')+'"><input type="checkbox"'+(item.checked?' checked':'')+' onchange="toggleCheck('+i+',this.checked)"><span class="item-label" onclick="toggleCheck('+i+',!currentItems['+i+'].checked)">'+esc(item.label)+'</span><button class="item-del" onclick="removeItem('+i+')">×</button></div>';
+    return '<div class="check-item'+(item.checked?' checked':'')+'"><input type="checkbox"'+(item.checked?' checked':'')+' onchange="toggleCheck('+i+',this.checked)"><span class="item-label" onclick="toggleCheck('+i+',!currentItems['+i+'].checked)">'+esc(item.label)+'</span><button class="item-del" onclick="removeItem('+i+')">×</button></div>'+pkBuyLink(item);
   }).join('');
 }
 function toggleCheck(i,val){
@@ -2000,6 +2041,8 @@ init();
 <script src="/assets/js/counts-config.js?v=20261010b"></script>
 <script src="/assets/js/ym-counts.js?v=20261010b"></script>
 <script src="/assets/js/huts-alert.js?v=20261013a" defer></script>
+<script src="/assets/js/gear-common.js?v=20261020a" defer></script>
+<script src="/assets/js/packing.js?v=20261020a" defer></script>
 <script src="/assets/js/admin-notices.js?v=20261016a" defer></script>
 </body>
 </html>

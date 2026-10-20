@@ -12,7 +12,7 @@ M = {m['id']: m for m in ML}
 H = d['huts']
 _cp = os.path.join(ROOT, 'data', 'huts_coords.json')
 COORDS = json.load(open(_cp, encoding='utf-8'))['huts'] if os.path.exists(_cp) else {}
-MAP_VER = '20261013a'
+MAP_VER = '20261020a'
 import calendar, math, sys
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 import huts_season
@@ -445,6 +445,24 @@ h1,.hh h2,.sec,.rgh{font-family:'Noto Serif JP','Hiragino Mincho ProN',serif;let
 .fl,.sl{font-family:'Outfit','Zen Kaku Gothic New',sans-serif;letter-spacing:.08em;color:#8a8072}
 .fv{font-size:15px}
 .sec{border-bottom:1px solid #2a3820;padding-bottom:6px;font-size:18px}
+#ym-packing{background:#fff;border:1px solid #e0dbd4;border-radius:10px;padding:12px 14px}
+.pk-ctl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px;font-size:13px;font-weight:700}
+.pk-ctl select{font-size:14px;padding:5px 8px;border:1px solid #cfc6b4;border-radius:8px;background:#fff}
+.pk-stay{display:flex;gap:4px}.pk-stay button{border:1px solid #4e6535;background:#fff;color:#4e6535;border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700}
+.pk-stay button.on{background:#4e6535;color:#fff}
+.pk-g h3{font-size:15px;margin:14px 0 4px;color:#2a3820;border-left:3px solid #4e6535;padding-left:7px}
+.pk-lead{font-size:12.5px;color:#5a5048;margin:2px 0 4px}
+.pk-g ul{list-style:none;margin:0;padding:0}.pk-g li{border-bottom:1px dashed #e6e0d6;padding:7px 0}
+.pk-g label{display:flex;gap:8px;align-items:flex-start;font-size:14px;cursor:pointer}
+.pk-g input{width:18px;height:18px;margin-top:1px;accent-color:#4e6535;flex:none}
+.pk-g small{display:block;font-size:11.5px;color:#8a8070;margin-top:1px}
+.pk-g li.on>label>span{color:#a09888;text-decoration:line-through}
+.pk-buy{display:inline-block;margin:3px 0 0 26px;font-size:11.5px;color:#4e6535}
+.pk-foot{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.pk-foot button{border:0;background:#4e6535;color:#fff;border-radius:8px;padding:8px 12px;font-size:13px;font-weight:700}
+.pk-foot .pk-sub{background:#eeeae2;color:#5a5048}.pk-n{font-size:13px;font-weight:700;color:#4e6535;flex:1}
+.pk-msg{font-size:12px;color:#4e6535;margin:4px 0 0}.pk-warn{font-size:12.5px;color:#a33;font-weight:700}
+.pk-src{font-size:11px;color:#8a8070;margin:10px 0 0;line-height:1.6}.pk-src a{color:#8a8070}
 .rgh{background:none;border-radius:0;border-bottom:2px solid #2a3820;padding:6px 2px}
 .cmp{border-radius:2px}.cmp th{font-family:'Outfit','Zen Kaku Gothic New',sans-serif;letter-spacing:.08em}
 .mb,.chip,.btn,.tab,.tabs{border-radius:3px}
@@ -801,6 +819,16 @@ page = (page.replace('__N__', str(len(H))).replace('__YEAR__', str(YEAR)).replac
 write(os.path.join(ROOT, 'huts', 'index.html'), page)
 print('huts/index.html', len(H), '軒／山', len(mt_btns))
 
+def packing_block(m):
+    """持ち物・服装のチェックリスト（assets/js/packing.js が data/packing.json から描く）"""
+    return ('<h2 class="sec" id="packing">%sの山小屋泊の持ち物・服装</h2>\n'
+            '<p class="lead">行く月と泊まり方を選ぶと、持ち物と服装のチェックリストになります。雪の残る時期・冬山の装備は、%sの装備カレンダーから選んでいます。</p>\n'
+            '<div id="ym-packing" data-mid="%s" data-name="%s" data-elev="%s" data-gear="%s">持ち物リストを読み込み中…</div>\n'
+            '<script src="/assets/js/gear-common.js?v=%s" defer></script>\n<script src="/assets/js/packing.js?v=%s" defer></script>\n') % (
+        E(m['name']), E(m['name']), E(m['id']), E(m['name']), m.get('elevation') or 0,
+        E(json.dumps(m.get('gearCalendar') or [], ensure_ascii=False, separators=(',', ':'))), MAP_VER, MAP_VER)
+
+
 # ---------- 山ごとのページ /huts/<山ID>/ ----------
 made = set()
 for m in ML:
@@ -839,6 +867,7 @@ for m in ML:
         + '<table class="cmp"><thead><tr><th>山小屋</th><th>予約の開始</th><th>予約方法</th></tr></thead><tbody>%s</tbody></table>\n' % ''.join(rows)
         + (('<h2 class="sec">%sの山小屋マップ</h2>\n' % E(m['name']) + map_block(hs, START_SHORT)) if any(h['name'] in COORDS for h in hs) else '')
         + '<div id="list">\n%s\n</div>\n' % '\n'.join(card_of[h['id']] for h in hs)
+        + packing_block(m)
         + ('<h2 class="sec">近くの山・同じ山小屋を使う山</h2>\n<div class="rel">%s</div>\n' % rel_html if rel_html else '')
         + '<p class="src">営業期間や予約の受付は変わることがあります。予約の前に、必ず各山小屋の公式サイトで確認してください。出典は<a href="/huts/">山小屋まとめ</a>のページにまとめています。</p>')
     write(os.path.join(ROOT, 'huts', mid, 'index.html'), SHELL % {
@@ -942,6 +971,7 @@ for h in H:
         + (('<p class="lead">%sは、%s%s</p>\n' % (E(name), ('「%s」にあります。' % E(x['place'][0])) if x['place'][0] else '', E(x['place'][1]) + '。')) if x.get('place') else '')
         + '<div id="list">\n%s\n</div>\n' % own
         + alert_html
+        + (('<p class="upd"><a href="/huts/%s/#packing" style="color:#4e6535">%sの山小屋泊の持ち物・服装のチェックリスト →</a></p>\n' % (E(_fm), E(M[_fm]['name']))) if _fm in made else '')
         + (('<h2 class="sec">%sの場所</h2>\n' % E(name) + map_block([h], START_SHORT)
             + '<a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=%s,%s" target="_blank" rel="noopener">Googleマップで開く →</a>\n' % (
                 COORDS[name]['lat'], COORDS[name]['lng'])) if name in COORDS else '')

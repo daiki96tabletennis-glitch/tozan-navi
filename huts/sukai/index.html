@@ -130,6 +130,24 @@ h1,.hh h2,.sec,.rgh{font-family:'Noto Serif JP','Hiragino Mincho ProN',serif;let
 .fl,.sl{font-family:'Outfit','Zen Kaku Gothic New',sans-serif;letter-spacing:.08em;color:#8a8072}
 .fv{font-size:15px}
 .sec{border-bottom:1px solid #2a3820;padding-bottom:6px;font-size:18px}
+#ym-packing{background:#fff;border:1px solid #e0dbd4;border-radius:10px;padding:12px 14px}
+.pk-ctl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px;font-size:13px;font-weight:700}
+.pk-ctl select{font-size:14px;padding:5px 8px;border:1px solid #cfc6b4;border-radius:8px;background:#fff}
+.pk-stay{display:flex;gap:4px}.pk-stay button{border:1px solid #4e6535;background:#fff;color:#4e6535;border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700}
+.pk-stay button.on{background:#4e6535;color:#fff}
+.pk-g h3{font-size:15px;margin:14px 0 4px;color:#2a3820;border-left:3px solid #4e6535;padding-left:7px}
+.pk-lead{font-size:12.5px;color:#5a5048;margin:2px 0 4px}
+.pk-g ul{list-style:none;margin:0;padding:0}.pk-g li{border-bottom:1px dashed #e6e0d6;padding:7px 0}
+.pk-g label{display:flex;gap:8px;align-items:flex-start;font-size:14px;cursor:pointer}
+.pk-g input{width:18px;height:18px;margin-top:1px;accent-color:#4e6535;flex:none}
+.pk-g small{display:block;font-size:11.5px;color:#8a8070;margin-top:1px}
+.pk-g li.on>label>span{color:#a09888;text-decoration:line-through}
+.pk-buy{display:inline-block;margin:3px 0 0 26px;font-size:11.5px;color:#4e6535}
+.pk-foot{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.pk-foot button{border:0;background:#4e6535;color:#fff;border-radius:8px;padding:8px 12px;font-size:13px;font-weight:700}
+.pk-foot .pk-sub{background:#eeeae2;color:#5a5048}.pk-n{font-size:13px;font-weight:700;color:#4e6535;flex:1}
+.pk-msg{font-size:12px;color:#4e6535;margin:4px 0 0}.pk-warn{font-size:12.5px;color:#a33;font-weight:700}
+.pk-src{font-size:11px;color:#8a8070;margin:10px 0 0;line-height:1.6}.pk-src a{color:#8a8070}
 .rgh{background:none;border-radius:0;border-bottom:2px solid #2a3820;padding:6px 2px}
 .cmp{border-radius:2px}.cmp th{font-family:'Outfit','Zen Kaku Gothic New',sans-serif;letter-spacing:.08em}
 .mb,.chip,.btn,.tab,.tabs{border-radius:3px}
@@ -216,7 +234,7 @@ h1,.hh h2,.sec,.rgh{font-family:'Noto Serif JP','Hiragino Mincho ProN',serif;let
 <div id="hmap" class="hmap" role="region" aria-label="山小屋の地図"></div>
 <p class="mapnote"><span class="lg lg-h"></span>山小屋　<span class="lg lg-m">▲</span>このサイトで紹介している山（山頂）</p>
 <script>window.YM_HUT_PTS=[{"n":"庚申山荘（無人の避難小屋）","la":36.66969,"lo":139.36808,"u":"/huts/hut-9ff29f20/","s":"予約不要"}];window.YM_MT_PTS=[{"n":"皇海山","la":36.68987,"lo":139.33698,"u":"/mountains/sukai/","e":2144}];</script>
-<script src="/assets/js/huts-map.js?v=20261013a" defer></script>
+<script src="/assets/js/huts-map.js?v=20261020a" defer></script>
 <div id="list">
 <article class="hut" id="hut-9ff29f20" data-region="上信越・尾瀬・東北" data-m="sukai" data-key="庚申山荘（無人の避難小屋） 皇海山">
   <div class="hh"><h2><a href="/huts/hut-9ff29f20/">庚申山荘（無人の避難小屋）</a></h2><span class="rg">上信越・尾瀬・東北</span><span class="st" data-season="{&quot;all&quot;:true,&quot;caveat&quot;:false}"></span><button type="button" class="hfav" data-fav="hut-9ff29f20" aria-pressed="false" aria-label="お気に入りに追加"><svg width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button></div>
@@ -227,6 +245,11 @@ h1,.hh h2,.sec,.rgh{font-family:'Noto Serif JP','Hiragino Mincho ProN',serif;let
   <div class="foot"></div>
 </article>
 </div>
+<h2 class="sec" id="packing">皇海山の山小屋泊の持ち物・服装</h2>
+<p class="lead">行く月と泊まり方を選ぶと、持ち物と服装のチェックリストになります。雪の残る時期・冬山の装備は、皇海山の装備カレンダーから選んでいます。</p>
+<div id="ym-packing" data-mid="sukai" data-name="皇海山" data-elev="2144" data-gear="[&quot;winter_gear&quot;,&quot;winter_gear&quot;,&quot;winter_gear&quot;,&quot;light_crampons&quot;,&quot;light_crampons&quot;,&quot;no_crampons&quot;,&quot;no_crampons&quot;,&quot;no_crampons&quot;,&quot;no_crampons&quot;,&quot;light_crampons&quot;,&quot;light_crampons&quot;,&quot;winter_gear&quot;]">持ち物リストを読み込み中…</div>
+<script src="/assets/js/gear-common.js?v=20261020a" defer></script>
+<script src="/assets/js/packing.js?v=20261020a" defer></script>
 <p class="src">営業期間や予約の受付は変わることがあります。予約の前に、必ず各山小屋の公式サイトで確認してください。出典は<a href="/huts/">山小屋まとめ</a>のページにまとめています。</p>
 </main>
 <footer>
@@ -234,7 +257,7 @@ h1,.hh h2,.sec,.rgh{font-family:'Noto Serif JP','Hiragino Mincho ProN',serif;let
 <p style="margin-top:6px"><a href="/">山を検索する</a> <span style="margin:0 8px;opacity:0.4">|</span> <a href="/huts/">山小屋まとめ</a> <span style="margin:0 8px;opacity:0.4">|</span> <a href="/terms/">利用規約</a> <span style="margin:0 8px;opacity:0.4">|</span> <a href="/privacy/">プライバシーポリシー</a> <span style="margin:0 8px;opacity:0.4">|</span> <a href="/about/">運営者</a></p>
 <p style="margin-top:8px;opacity:0.6;">© 2026 Yamatch. All rights reserved.</p>
 </footer>
-<script src="/assets/js/huts-status.js?v=20261013a"></script>
-<script src="/assets/js/huts-alert.js?v=20261013a" defer></script>
+<script src="/assets/js/huts-status.js?v=20261020a"></script>
+<script src="/assets/js/huts-alert.js?v=20261020a" defer></script>
 </body>
 </html>

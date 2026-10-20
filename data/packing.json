@@ -1,0 +1,341 @@
+{
+ "note": "山小屋泊・テント泊・日帰りの持ち物と服装のチェックリスト（assets/js/packing.js が表示する。山小屋の山ごとのページ /huts/<山ID>/#packing とマイページの登山計画）。気温の数字は出さない（運営者の指示・2026-10-20）。装備の時期（軽アイゼン等・冬山装備）は mountains.json の gearCalendar から決める。stay は day（日帰り）/ hut（山小屋泊）/ tent（テント泊）。gear は gearCalendar の区分（no_crampons / light_crampons / winter_gear）。minElev はその標高以上の山だけ。src は出典（sources の key）。product は楽天の検索リンクにする商品名。gearCat は gear-data.json の区分で、その山・その月の商品があればそちらを使う。山小屋ごとの決まり（支払い方法・寝具など）は書かない（小屋ごとに違うので、公式サイトの案内を見るように書く）",
+ "checkedAt": "2026-10-20",
+ "sources": {
+  "nagano": {
+   "label": "長野県「登山準備・ルール確認票」（横尾ゲート）",
+   "url": "https://www.pref.nagano.lg.jp/kankoki/documents/checklistyokooja.pdf"
+  },
+  "nagano_plan": {
+   "label": "長野県「登山計画書を届出しましょう」",
+   "url": "https://www.pref.nagano.lg.jp/kankoki/smartphone/tozankeikakusho.html"
+  }
+ },
+ "groups": [
+  {
+   "key": "prep",
+   "title": "出発前にすること",
+   "items": [
+    {
+     "id": "plan",
+     "label": "登山計画書を出す",
+     "note": "長野県の指定登山道は、登山計画書の届出が必要です",
+     "src": "nagano_plan"
+    },
+    {
+     "id": "share",
+     "label": "登山計画を家族などに伝える",
+     "src": "nagano"
+    },
+    {
+     "id": "reserve",
+     "label": "山小屋を予約する",
+     "stay": [
+      "hut"
+     ],
+     "note": "山小屋の多くは予約制です。予約の開始日はこのページの各山小屋の欄で確かめられます",
+     "src": "nagano"
+    },
+    {
+     "id": "tentsite",
+     "label": "テント場の予約・受付の方法を確かめる",
+     "stay": [
+      "tent"
+     ],
+     "src": "nagano"
+    },
+    {
+     "id": "hutinfo",
+     "label": "泊まる山小屋の案内（支払い方法・寝具・持ち物のお願い）を公式サイトで読む",
+     "stay": [
+      "hut"
+     ],
+     "note": "現金だけの小屋、インナーシーツの持参をお願いしている小屋など、山小屋ごとに違います"
+    },
+    {
+     "id": "insurance",
+     "label": "山岳保険に入る",
+     "src": "nagano"
+    },
+    {
+     "id": "condition",
+     "label": "登山道の状況（残雪・通行止め）と天気予報を確かめる",
+     "src": "nagano"
+    }
+   ]
+  },
+  {
+   "key": "wear",
+   "title": "服装（重ね着）",
+   "lead": "暑さ寒さに合わせて脱ぎ着できるよう、薄いものを重ねて着ます。",
+   "items": [
+    {
+     "id": "base",
+     "label": "汗が乾きやすい肌着（化繊・ウール）",
+     "note": "綿の肌着は汗が乾かず、体が冷えます",
+     "product": "モンベル ジオライン"
+    },
+    {
+     "id": "mid",
+     "label": "防寒着（フリース・薄手のダウン）",
+     "note": "休憩のときや、山小屋・テント場の朝晩に着ます",
+     "src": "nagano",
+     "gearCat": "down",
+     "product": "ノースフェイス インナーダウン"
+    },
+    {
+     "id": "rain",
+     "label": "雨具（上下が分かれたもの）",
+     "note": "風を防ぐ上着にもなります",
+     "src": "nagano",
+     "gearCat": "rain",
+     "product": "ミレー ティフォン50000"
+    },
+    {
+     "id": "gloves",
+     "label": "手袋",
+     "minElev": 1500,
+     "product": "モンベル シャミースグローブ"
+    },
+    {
+     "id": "hat",
+     "label": "帽子（日よけ）と、寒いときのニット帽",
+     "product": "モンベル ワッチキャップ"
+    },
+    {
+     "id": "shoes",
+     "label": "登山靴",
+     "src": "nagano",
+     "gearCat": "shoe",
+     "product": "メレル MOAB 3 ミッド GTX"
+    }
+   ]
+  },
+  {
+   "key": "base",
+   "title": "どの山でも持つもの",
+   "items": [
+    {
+     "id": "water",
+     "label": "飲み水",
+     "src": "nagano",
+     "gearCat": "bottle",
+     "product": "サーモス 山専ボトル"
+    },
+    {
+     "id": "food",
+     "label": "行動食と非常食",
+     "src": "nagano"
+    },
+    {
+     "id": "lamp",
+     "label": "ヘッドランプと予備の電池",
+     "note": "日帰りでも、下山が遅れたときに要ります",
+     "src": "nagano",
+     "product": "ブラックダイヤモンド スポット400"
+    },
+    {
+     "id": "map",
+     "label": "地図とコンパス、または登山地図のアプリ",
+     "src": "nagano"
+    },
+    {
+     "id": "phone",
+     "label": "携帯電話とモバイルバッテリー",
+     "src": "nagano",
+     "product": "Anker モバイルバッテリー 10000mAh"
+    },
+    {
+     "id": "tsuerut",
+     "label": "ツェルト（またはサバイバルシート）",
+     "src": "nagano",
+     "product": "ファイントラック ツエルト1"
+    },
+    {
+     "id": "firstaid",
+     "label": "救急用品（絆創膏・常備薬など）",
+     "src": "nagano",
+     "product": "登山 ファーストエイドキット"
+    },
+    {
+     "id": "helmet",
+     "label": "ヘルメット",
+     "note": "岩場・落石のある山で",
+     "minElev": 2500,
+     "src": "nagano",
+     "product": "ブラックダイヤモンド ハーフドーム ヘルメット"
+    },
+    {
+     "id": "pole",
+     "label": "トレッキングポール（あると便利）",
+     "gearCat": "pole",
+     "product": "ブラックダイヤモンド トレイル"
+    },
+    {
+     "id": "plancopy",
+     "label": "登山計画書の控え・保険証",
+     "src": "nagano"
+    }
+   ]
+  },
+  {
+   "key": "hut",
+   "title": "山小屋泊で足すもの",
+   "stay": [
+    "hut"
+   ],
+   "items": [
+    {
+     "id": "change",
+     "label": "着替え（肌着・靴下）",
+     "note": "汗でぬれた服のままでいると体が冷えます"
+    },
+    {
+     "id": "liner",
+     "label": "インナーシーツ",
+     "note": "持参をお願いしている山小屋があります。泊まる小屋の案内を確かめてください",
+     "product": "シートゥサミット インナーシーツ"
+    },
+    {
+     "id": "earplug",
+     "label": "耳栓",
+     "note": "相部屋で眠りやすくなります",
+     "product": "MOLDEX 耳栓"
+    },
+    {
+     "id": "cash",
+     "label": "現金",
+     "note": "支払い方法は山小屋ごとに違います"
+    },
+    {
+     "id": "wipe",
+     "label": "ウェットティッシュ・歯みがきシート"
+    },
+    {
+     "id": "trash",
+     "label": "ゴミ袋（ゴミは持ち帰る）"
+    },
+    {
+     "id": "subsack",
+     "label": "小さめのザック（あると便利）",
+     "note": "小屋に荷物を置いて山頂を往復するときに"
+    }
+   ]
+  },
+  {
+   "key": "tent",
+   "title": "テント泊で足すもの",
+   "stay": [
+    "tent"
+   ],
+   "items": [
+    {
+     "id": "tent",
+     "label": "テント",
+     "product": "アライテント エアライズ"
+    },
+    {
+     "id": "sleeping",
+     "label": "寝袋（季節に合ったもの）",
+     "product": "モンベル ダウンハガー"
+    },
+    {
+     "id": "mat",
+     "label": "マット",
+     "product": "サーマレスト Zライト"
+    },
+    {
+     "id": "stove",
+     "label": "ストーブ・燃料・ライター",
+     "product": "プリムス P-153"
+    },
+    {
+     "id": "cook",
+     "label": "食器・食料"
+    },
+    {
+     "id": "tchange",
+     "label": "着替え（肌着・靴下）"
+    },
+    {
+     "id": "ttrash",
+     "label": "ゴミ袋（ゴミは持ち帰る）"
+    },
+    {
+     "id": "tcash",
+     "label": "現金（テント場の受付）",
+     "note": "支払い方法はテント場ごとに違います"
+    }
+   ]
+  },
+  {
+   "key": "light",
+   "title": "この時期に要るもの（軽アイゼン等）",
+   "gear": [
+    "light_crampons"
+   ],
+   "items": [
+    {
+     "id": "lightcrampon",
+     "label": "軽アイゼン（チェーンスパイク・6本爪アイゼン等）",
+     "note": "登山道に雪や凍結が残る時期です",
+     "gearCat": "crampon",
+     "product": "エバニュー 6本爪アイゼン"
+    },
+    {
+     "id": "gaiter",
+     "label": "スパッツ（ゲイター）",
+     "product": "モンベル GORE-TEX スパッツ"
+    },
+    {
+     "id": "warmgloves",
+     "label": "防水の手袋と予備の手袋"
+    }
+   ]
+  },
+  {
+   "key": "winter",
+   "title": "この時期に要るもの（冬山装備）",
+   "gear": [
+    "winter_gear"
+   ],
+   "lead": "雪山の経験と技術が要る時期です。経験がなければ、この時期は登らないか、経験者と一緒に行ってください。",
+   "items": [
+    {
+     "id": "crampon12",
+     "label": "12本爪アイゼン",
+     "gearCat": "crampon",
+     "product": "グリベル G12 ニュークラシック"
+    },
+    {
+     "id": "axe",
+     "label": "ピッケル",
+     "gearCat": "axe",
+     "product": "ブラックダイヤモンド レイブンウィズグリップ"
+    },
+    {
+     "id": "winterboots",
+     "label": "冬山用の登山靴（アイゼンが付けられるもの）",
+     "gearCat": "shoe",
+     "product": "スポルティバ ネパールエボGTX"
+    },
+    {
+     "id": "wintercloth",
+     "label": "厚手の防寒着（ダウンジャケットなど）"
+    },
+    {
+     "id": "wintergloves",
+     "label": "冬用の手袋と予備"
+    },
+    {
+     "id": "balaclava",
+     "label": "目出し帽・ゴーグル"
+    },
+    {
+     "id": "wgaiter",
+     "label": "スパッツ（ゲイター）"
+    }
+   ]
+  }
+ ]
+}

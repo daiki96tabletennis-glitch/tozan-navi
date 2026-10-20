@@ -908,7 +908,21 @@ def render_gear(mt, gear_data):
         f'<path d="M9 5V3h6v2"/></svg>{name}を登るための装備</h2>'
         f'<div class="gear-cards-scroll" data-gear-mid="{mid}"{gear_closed_attrs(mt)} '
         f'data-gear-variants="{variants_attr}"></div>'
+        f'{packing_link(mt)}'
         f'{GEAR_NOTE}</div>'
+    )
+
+
+def packing_link(mt):
+    """山小屋のページ（/huts/<山ID>/）がある山だけ、山小屋泊の持ち物・服装のチェックリストへのリンクを出す"""
+    mid = mt["id"]
+    if not os.path.exists(os.path.join(SITE_ROOT, "huts", mid, "index.html")):
+        return ""
+    return (
+        f'<a class="gear-packing-link" href="/huts/{mid}/#packing" '
+        'style="display:block;margin:10px 0 2px;padding:11px 14px;background:#eef4e8;border:1px solid #c8d4b8;'
+        'border-radius:10px;color:#2a3820;font-size:14px;font-weight:700;text-decoration:none">'
+        '山小屋泊の持ち物・服装はこちら（チェックリスト） →</a>'
     )
 
 
