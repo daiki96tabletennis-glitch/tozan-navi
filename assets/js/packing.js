@@ -60,7 +60,10 @@ window.YMPacking = (function () {
         if (it.minElev && (opts.elev || 0) < it.minElev) return;
         var prod = (it.gearCat && opts.mid && opts.month && gearProduct(opts.mid, opts.month, it.gearCat)) || it.product || null;
         if (prod) prod = prod.replace(/\(来月分\)$/, '');
-        items.push({ id: g.key + '.' + it.id, label: it.label, note: it.note || '', product: prod, src: it.src || null });
+        var prods = it.products ? it.products.slice() : (prod ? [prod] : []);
+        var note = it.note || '';
+        if (it.noteHigh && (opts.elev || 0) >= 2500) note = note ? note + '。' + it.noteHigh : it.noteHigh;
+        items.push({ id: g.key + '.' + it.id, label: it.label, note: note, product: prods[0] || null, products: prods, src: it.src ? [].concat(it.src) : [], unless: it.unless || null });
       });
       var title = g.title;
       // 月の途中で装備が変わる月は、どちらの時期の分かを添える
@@ -70,7 +73,11 @@ window.YMPacking = (function () {
       }
       if (items.length) out.push({ key: g.key, title: title, lead: g.lead || '', items: items });
     });
-    return out;
+    // 同じものが二重に出ないように（unless の項目が入っていれば外す）
+    var have = {};
+    out.forEach(function (g) { g.items.forEach(function (it) { have[it.id] = 1; }); });
+    out.forEach(function (g) { g.items = g.items.filter(function (it) { return !(it.unless && have[it.unless]); }); });
+    return out.filter(function (g) { return g.items.length; });
   }
 
   function readChecks() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; } }
@@ -90,13 +97,35 @@ window.YMPacking = (function () {
 
   function srcHtml(groups) {
     var used = {};
-    groups.forEach(function (g) { g.items.forEach(function (it) { if (it.src) used[it.src] = 1; }); });
+    groups.forEach(function (g) { g.items.forEach(function (it) { (it.src || []).forEach(function (k) { used[k] = 1; }); }); });
     var links = Object.keys(used).map(function (k) {
       var s = DATA.sources[k];
-      return s ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + '</a>' : '';
+      if (!s) return '';
+      return s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + '</a>' : esc(s.label);
     }).filter(Boolean);
     return '<p class="pk-src">出典：' + links.join('、') + 'をもとに、Yamatch がまとめました（' + esc(DATA.checkedAt) + '）。' +
       '装備の時期は、この山の装備カレンダーから選んでいます。商品のリンクは Amazon の検索結果です（広告。当サイトは Amazon アソシエイトを利用しています）。</p>';
+  }
+
+  // 泊まった人の服装の例（data/packing.json の experiences）
+  function expHtml(mid, elev) {
+    var out = '';
+    var list = (DATA.experiences || []).filter(function (x) { return x.mid === mid; });
+    // 標高の高い山（2,500m以上）では、ほかの山の例も参考に出す
+    if (elev >= 2500) list = list.concat((DATA.experiences || []).filter(function (x) { return x.mid !== mid; }));
+    list.forEach(function (x) {
+      // 日付が分かるものは日付、分からないものは聞いたとおりの時期（when）
+      var when = x.when || '';
+      if (x.date) {
+        var d = x.date.split('-');
+        when = d[0] + '年' + parseInt(d[1], 10) + '月' + parseInt(d[2], 10) + '日';
+      }
+      var body = x.text ? x.text : '上は' + x.top.join('＋') + '、下は' + x.bottom.join('＋') + 'で、' + x.feel;
+      out += '<div class="pk-exp"><b>泊まった人の服装の例' + (x.mid !== mid ? '（ほかの山）' : '') + '</b>' +
+        '<span class="pk-exp-when">' + esc(when + '・' + x.place + '（' + x.who + '）') + '</span>' +
+        '<p>' + esc(x.scene) + '：' + esc(body) + '。</p></div>';
+    });
+    return out;
   }
 
   function mount(el) {
@@ -121,6 +150,7 @@ window.YMPacking = (function () {
       h += '</div></div>';
       var kinds = gearKinds(gear, state.month);
       if (kinds.indexOf('closed') >= 0) h += '<p class="pk-warn">' + state.month + '月は、登山道の閉鎖などで登れない期間があります。山ページの装備カレンダーを確かめてください。</p>';
+      h += expHtml(mid, elev);
       groups.forEach(function (g) {
         h += '<div class="pk-g"><h3>' + esc(g.title) + '</h3>' + (g.lead ? '<p class="pk-lead">' + esc(g.lead) + '</p>' : '') + '<ul>';
         g.items.forEach(function (it) {
@@ -129,7 +159,7 @@ window.YMPacking = (function () {
           if (on) done++;
           h += '<li' + (on ? ' class="on"' : '') + '><label><input type="checkbox" data-pk-id="' + esc(it.id) + '"' + (on ? ' checked' : '') + '><span>' + esc(it.label) +
             (it.note ? '<small>' + esc(it.note) + '</small>' : '') + '</span></label>' +
-            (it.product ? '<a class="pk-buy" href="' + esc(buyUrl(it.product)) + '" target="_blank" rel="sponsored noopener">Amazonで見る：' + esc(it.product) + '</a>' : '') + '</li>';
+            it.products.map(function (p) { return '<a class="pk-buy" href="' + esc(buyUrl(p)) + '" target="_blank" rel="sponsored noopener">Amazonで見る：' + esc(p) + '</a>'; }).join('') + '</li>';
         });
         h += '</ul></div>';
       });

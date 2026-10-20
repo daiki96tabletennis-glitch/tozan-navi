@@ -457,12 +457,13 @@ h1,.hh h2,.sec,.rgh{font-family:'Noto Serif JP','Hiragino Mincho ProN',serif;let
 .pk-g input{width:18px;height:18px;margin-top:1px;accent-color:#4e6535;flex:none}
 .pk-g small{display:block;font-size:11.5px;color:#8a8070;margin-top:1px}
 .pk-g li.on>label>span{color:#a09888;text-decoration:line-through}
-.pk-buy{display:inline-block;margin:3px 0 0 26px;font-size:11.5px;color:#4e6535}
+.pk-buy{display:block;margin:3px 0 0 26px;font-size:11.5px;color:#4e6535}
 .pk-foot{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
 .pk-foot button{border:0;background:#4e6535;color:#fff;border-radius:8px;padding:8px 12px;font-size:13px;font-weight:700}
 .pk-foot .pk-sub{background:#eeeae2;color:#5a5048}.pk-n{font-size:13px;font-weight:700;color:#4e6535;flex:1}
 .pk-msg{font-size:12px;color:#4e6535;margin:4px 0 0}.pk-warn{font-size:12.5px;color:#a33;font-weight:700}
 .pk-src{font-size:11px;color:#8a8070;margin:10px 0 0;line-height:1.6}.pk-src a{color:#8a8070}
+.pk-exp{background:#f6f3ec;border-left:3px solid #c8a060;border-radius:6px;padding:8px 10px;margin:10px 0 4px;font-size:13px}.pk-exp b{display:block;color:#6a4a20}.pk-exp-when{font-size:11.5px;color:#8a8070}.pk-exp p{margin:4px 0 0;line-height:1.6}
 .rgh{background:none;border-radius:0;border-bottom:2px solid #2a3820;padding:6px 2px}
 .cmp{border-radius:2px}.cmp th{font-family:'Outfit','Zen Kaku Gothic New',sans-serif;letter-spacing:.08em}
 .mb,.chip,.btn,.tab,.tabs{border-radius:3px}
