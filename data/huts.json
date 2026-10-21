@@ -1017,15 +1017,15 @@
       "openText": "2026/6/27～9/26、5/20（水）7：00～Webで予約受付開始 ＊状況次第で変更の可能性",
       "bookingStart": "5月20日 7:00から（2026年）",
       "bookingMethods": [
-        "Web"
+        "Webのみ（電話の予約枠なし）"
       ],
-      "bookingRequired": false,
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "https://hakubakan.com/lodge/sarukuraso-hakubajiri/",
       "officialNote": null,
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 30,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=887",
       "auto": {
@@ -1039,7 +1039,8 @@
           "line": "2026/6/27～9/26、5/20（水）7：00～Webで予約受付開始 ＊状況次第で変更の可能性",
           "time": "7:00"
         }
-      }
+      },
+      "bookingSourceUrl": "https://hakubakan.com/faq/"
     },
     {
       "id": "hut-096f4fbb",
@@ -1055,15 +1056,15 @@
       "openText": "2026/4/25～10/12 ＊夏季シーズン（6/20～）の宿泊予約：5/20（水）7：00～Webで受付開始",
       "bookingStart": "残雪期の宿泊分は4月1日 9:00から、夏季（6/20〜）の宿泊分は5月20日 7:00から（2026年）",
       "bookingMethods": [
-        "Web"
+        "Webのみ（電話の予約枠なし）"
       ],
-      "bookingRequired": false,
+      "bookingRequired": true,
       "capacity": 800,
       "capacitySourceUrl": "https://hakubakan.com/lodge/hakubasanso/",
       "officialNote": null,
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 800,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=890",
       "auto": {
@@ -1074,7 +1075,8 @@
           "month": 4,
           "day": 25
         }
-      }
+      },
+      "bookingSourceUrl": "https://hakubakan.com/faq/"
     },
     {
       "id": "hut-3236777c",
@@ -1186,7 +1188,7 @@
       "officialNote": "2026年の営業は10月12日宿泊分で終了",
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 350,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=913",
       "auto": {
@@ -1197,6 +1199,12 @@
           "month": null,
           "day": null
         }
+      },
+      "seasonFix": {
+        "value": "6/27～10/12",
+        "note": "夏季。公式2026年6月28日の案内「6月27日（土）より夏季の営業を開始」「10月12日（月・祝）宿泊分まで」（アーカイブで確認）。春の営業の有無は記載なし",
+        "source": "http://karamatsu.jp/index.html",
+        "checkedAt": "2026-10-21"
       }
     },
     {
@@ -1286,15 +1294,15 @@
       "openText": "2026/6/27～9/27 ＊5/20（水）7：00～Webで予約受付開始",
       "bookingStart": "5月20日 7:00から（2026年）",
       "bookingMethods": [
-        "Web"
+        "Webのみ（電話の予約枠なし）"
       ],
-      "bookingRequired": false,
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "https://hakubakan.com/lodge/kiretto/",
       "officialNote": null,
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_kitaalps.html",
       "sourceUpdated": "2026-06-03",
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": null,
       "capacityRefUrl": null,
       "auto": {
@@ -1315,7 +1323,8 @@
           "line": "2026/6/27～9/27 ＊5/20（水）7：00～Webで予約受付開始",
           "time": "7:00"
         }
-      }
+      },
+      "bookingSourceUrl": "https://hakubakan.com/faq/"
     },
     {
       "id": "hut-6980deb5",
@@ -1523,7 +1532,7 @@
       "officialNote": null,
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_minamialps.html",
       "sourceUpdated": "2026-05-27",
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 110,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=675",
       "auto": {
@@ -1543,6 +1552,12 @@
           "value": "【ご利用可能なクレジットカード】 VISA・Mastercard・JCB・Amex・Diners・Discover 🟡Yamatan予約サイト（24時間受付）又は電話（9：00～15：00）にて、ご希望宿泊日の3か月前の同日0時から宿泊日前日までご予約いただけます。 ※Yamatanに表示されている空室状況が、当山小屋の最新の空室状況です。 旅行会社様(20名様以上)又は団体（20名様以上）はホームページの予約フォームよりご予約ください。 🔴 お弁当をご予約される場合、連泊の方のお弁当は１泊目のお弁当になります。２泊目以降のお弁当は現地でご注文とお支払いをお願いします。 🔴 仮押さえでの複数日予約、他の山小屋との二重予約など、キャンセルを想定した不確定なご予約はご遠慮いただいております。 また、間違えでの小学生以下予約が複数発生しております。今一度ご確認をお願い致します。 🔴 WEBでの予約内容の変更回数の制限：予約の変更は 最大１０回まで 可能です。変更回数を超えてからの変更は一度キャンセルしていただき、新しいご予約を改めてお取りください。 🔴 WEBでの予約内容の変更可能期限：ご予約日の 前日まで に限り、変更を承ります。 🔴 チェックイン日の変更、人数の減少はキャンセル規定内であればキャンセル料が発生致します。 ",
           "source": "https://www.yamatan.net/hut/komorebisanso"
         }
+      },
+      "capacityFix": {
+        "value": 67,
+        "note": "公式の収容人数。予約サイトに登録の定員は68人",
+        "source": "https://www.ina-city-kankou.co.jp/yamagoya/kitazawa/",
+        "checkedAt": "2026-10-21"
       }
     },
     {
@@ -2236,6 +2251,12 @@
           "day": 2,
           "time": "10:00"
         }
+      },
+      "capacityFix": {
+        "value": 18,
+        "text": "大部屋18人（通常時の半数以下に減らしている）",
+        "source": "https://www.yamatan.net/hut/tateshinasanso",
+        "checkedAt": "2026-10-21"
       }
     },
     {
@@ -3156,11 +3177,17 @@
       "bookingSourceUrl": "http://www.houousan.com/",
       "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=2556",
       "sourceUpdated": null,
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 60,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=690",
       "periodAuto": "6/上～11/2 （予定）",
-      "auto": {}
+      "auto": {},
+      "seasonFix": {
+        "value": "4/29～5/6、6/上～11/2",
+        "note": "公式の2026年の案内：GW（4/29〜5/6）のあとは金・土曜の営業、常駐は6月初旬から（ヘリの荷上げ次第）。終わりは山と溪谷の一覧の記載（予定）",
+        "source": "https://www.houousan.com/",
+        "checkedAt": "2026-10-21"
+      }
     },
     {
       "id": "hut-55ef1644",
@@ -3185,11 +3212,17 @@
       "bookingSourceUrl": "http://www.houousan.com/",
       "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=2556",
       "sourceUpdated": null,
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 40,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=689",
       "periodAuto": "6/上～11/2 （予定）",
-      "auto": {}
+      "auto": {},
+      "seasonFix": {
+        "value": "4/29～5/6、6/上～11/2",
+        "note": "公式の2026年の案内：GW（4/29〜5/6）のあとは金・土曜の営業、常駐は6月初旬から（ヘリの荷上げ次第）。終わりは山と溪谷の一覧の記載（予定）",
+        "source": "https://www.houousan.com/",
+        "checkedAt": "2026-10-21"
+      }
     },
     {
       "id": "hut-50a3f3fd",
@@ -3203,17 +3236,17 @@
       "officialUrl": "http://houougoya.jp/",
       "tel": null,
       "openText": "2026年の営業：GW、5/23～11/14（公式サイトで11/7から延長と告知。年末年始は休み）",
-      "bookingStart": "4月1日から（2026年。夏の営業分・電話で受付。宿泊は完全予約制で、テント泊は指定日だけ予約制）",
+      "bookingStart": "4月1日から（2026年。夏の営業分・電話で受付。宿泊は完全予約制。テント泊は指定日だけ予約制で、8名以上のグループは日程にかかわらず予約が必要）",
       "bookingMethods": [
         "電話のみ"
       ],
       "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": "https://houougoya.jp/blog/10734/",
+      "bookingSourceUrl": "https://houougoya.jp/info/",
       "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=2556",
       "sourceUpdated": null,
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 100,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=687",
       "auto": {}
@@ -3473,7 +3506,7 @@
       "bookingSourceUrl": "https://daimonzawa.jp/",
       "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=2556",
       "sourceUpdated": null,
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 100,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=703",
       "periodAuto": "7/1～10/14",
@@ -3498,6 +3531,12 @@
           "day": 25,
           "time": "9:30"
         }
+      },
+      "capacityFix": {
+        "value": 100,
+        "note": "公式の収容人数。予約サイトに登録の定員は65人",
+        "source": "https://daimonzawa.jp/",
+        "checkedAt": "2026-10-21"
       }
     },
     {
@@ -4198,7 +4237,7 @@
       "bookingSourceUrl": "https://www.raichozawa.net/",
       "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=2535",
       "sourceUpdated": null,
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 70,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=838",
       "periodAuto": "4/18～10/6",
@@ -4230,6 +4269,12 @@
           "month": null,
           "day": null
         }
+      },
+      "capacityFix": {
+        "value": 250,
+        "note": "公式の収容人数。予約サイトに登録の定員は120人",
+        "source": "https://www.raichozawa.net/",
+        "checkedAt": "2026-10-21"
       }
     },
     {
@@ -4918,10 +4963,16 @@
       "bookingSourceUrl": null,
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=531",
       "sourceUpdated": null,
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 70,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=531",
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 70,
+        "text": "最大70人（テント50張を設営した場合を含む）",
+        "source": "https://www.koshu-kankou.jp/map/m4952.html",
+        "checkedAt": "2026-10-21"
+      }
     },
     {
       "id": "hut-87a2820f",
@@ -5274,7 +5325,7 @@
       "bookingSourceUrl": "http://www.fuji8.com/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=622",
       "sourceUpdated": null,
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 250,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=622",
       "auto": {
@@ -5298,6 +5349,12 @@
           "day": 1,
           "time": "10:00"
         }
+      },
+      "capacityFix": {
+        "value": 180,
+        "note": "公式の収容人数。予約サイトに登録の定員は150人",
+        "source": "https://www.fuji8.com/guide/",
+        "checkedAt": "2026-10-21"
       }
     },
     {
@@ -5685,6 +5742,12 @@
           "line": "2026年のご予約は、5月8日（金）午前10時より受付開始予定です。",
           "time": "10:00"
         }
+      },
+      "seasonFix": {
+        "value": "7/1～9/10",
+        "note": "公式「7月1日～営業終了日までは不休」（電話は7/1〜9/10開通）。2026年度の営業終了のお知らせは9月11日。2027年度も7月1日開始の予定",
+        "source": "https://kamaiwakan.jpn.org/",
+        "checkedAt": "2026-10-21"
       }
     },
     {
@@ -6209,11 +6272,17 @@
       "bookingSourceUrl": "http://www.myoko.tv/kouyaike/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=464",
       "sourceUpdated": null,
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 50,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=464",
       "auto": {},
-      "periodManual": true
+      "periodManual": true,
+      "capacityFix": {
+        "value": 40,
+        "text": "40人（大部屋34人・個室2室は各3人）",
+        "source": "https://booking.montbell.jp/lodging/facility.php?facility_id=16",
+        "checkedAt": "2026-10-21"
+      }
     },
     {
       "id": "hut-2b893e2f",
@@ -6594,10 +6663,16 @@
       "bookingSourceUrl": "http://www.seisirou.com/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=338",
       "sourceUpdated": null,
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 25,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=338",
-      "auto": {}
+      "auto": {},
+      "seasonFix": {
+        "value": "6/上～10/下",
+        "note": "公式「営業期間 6月上旬～10月末」。2025年は変則営業だった（公式）。営業日は電話で確認",
+        "source": "http://www.seisirou.com/",
+        "checkedAt": "2026-10-21"
+      }
     },
     {
       "id": "hut-f3cb81c6",
@@ -6698,21 +6773,30 @@
         }
       ],
       "location": null,
-      "officialUrl": null,
+      "officialUrl": "https://amakazarisanso.com/",
       "tel": null,
       "openText": "例年 5/中～11/上",
       "bookingStart": null,
-      "bookingMethods": null,
+      "bookingMethods": [
+        "Web（公式サイトの予約）",
+        "電話"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": null,
+      "bookingSourceUrl": "https://amakazarisanso.com/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=461",
       "sourceUpdated": null,
-      "lastVerified": "2026-10-14",
+      "lastVerified": "2026-10-21",
       "capacityRef": 100,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=461",
-      "auto": {}
+      "auto": {},
+      "seasonFix": {
+        "value": "5/16～11/15",
+        "note": "公式2026年5月7日のお知らせ「5月16日（土）より営業を開始」。公式の案内「冬期休業:11-16~」（2026年6月10日のアーカイブで確認）",
+        "source": "https://amakazarisanso.com/",
+        "checkedAt": "2026-10-21"
+      }
     },
     {
       "id": "hut-72443e50",

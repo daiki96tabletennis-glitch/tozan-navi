@@ -115,6 +115,29 @@ CAPACITY.update({
     '行者小屋': {'value': None, 'text': '定員を減らして完全予約制（人数の記載なし）', 'source': 'https://www.akadakekousen.jp/gyoujyagoya'},
 })
 
+# 2026-10-21 追加（前の2回で確かめられなかった指摘を、公式サイトのアーカイブ（Wayback Machine の2026年の写し）・予約サイトで再確認）
+SEASON.update({
+    '雨飾温泉 雨飾山荘': {'value': '5/16～11/15', 'note': '公式2026年5月7日のお知らせ「5月16日（土）より営業を開始」。公式の案内「冬期休業:11-16~」（2026年6月10日のアーカイブで確認）', 'source': 'https://amakazarisanso.com/'},
+    '唐松岳頂上山荘': {'value': '6/27～10/12', 'note': '夏季。公式2026年6月28日の案内「6月27日（土）より夏季の営業を開始」「10月12日（月・祝）宿泊分まで」（アーカイブで確認）。春の営業の有無は記載なし', 'source': 'http://karamatsu.jp/index.html'},
+    '清四郎小屋': {'value': '6/上～10/下', 'note': '公式「営業期間 6月上旬～10月末」。2025年は変則営業だった（公式）。営業日は電話で確認', 'source': 'http://www.seisirou.com/'},
+    '鎌岩館': {'value': '7/1～9/10', 'note': '公式「7月1日～営業終了日までは不休」（電話は7/1〜9/10開通）。2026年度の営業終了のお知らせは9月11日。2027年度も7月1日開始の予定', 'source': 'https://kamaiwakan.jpn.org/'},
+    '南御室小屋': {'value': '4/29～5/6、6/上～11/2', 'note': '公式の2026年の案内：GW（4/29〜5/6）のあとは金・土曜の営業、常駐は6月初旬から（ヘリの荷上げ次第）。終わりは山と溪谷の一覧の記載（予定）', 'source': 'https://www.houousan.com/'},
+    '薬師岳小屋': {'value': '4/29～5/6、6/上～11/2', 'note': '公式の2026年の案内：GW（4/29〜5/6）のあとは金・土曜の営業、常駐は6月初旬から（ヘリの荷上げ次第）。終わりは山と溪谷の一覧の記載（予定）', 'source': 'https://www.houousan.com/'},
+})
+CAPACITY.update({
+    '高谷池ヒュッテ': {'value': 40, 'text': '40人（大部屋34人・個室2室は各3人）', 'source': 'https://booking.montbell.jp/lodging/facility.php?facility_id=16'},
+    '将監小屋': {'value': 70, 'text': '最大70人（テント50張を設営した場合を含む）', 'source': 'https://www.koshu-kankou.jp/map/m4952.html'},
+    '大門沢小屋': {'value': 100, 'note': '公式の収容人数。予約サイトに登録の定員は65人', 'source': 'https://daimonzawa.jp/'},
+    '雷鳥沢ヒュッテ': {'value': 250, 'note': '公式の収容人数。予約サイトに登録の定員は120人', 'source': 'https://www.raichozawa.net/'},
+    '富士宮口八合目 池田館': {'value': 180, 'note': '公式の収容人数。予約サイトに登録の定員は150人', 'source': 'https://www.fuji8.com/guide/'},
+    '北沢峠 こもれび山荘': {'value': 67, 'note': '公式の収容人数。予約サイトに登録の定員は68人', 'source': 'https://www.ina-city-kankou.co.jp/yamagoya/kitazawa/'},
+    '蓼科山荘': {'value': 18, 'text': '大部屋18人（通常時の半数以下に減らしている）', 'source': 'https://www.yamatan.net/hut/tateshinasanso'},
+})
+for _n in ['雨飾温泉 雨飾山荘', '唐松岳頂上山荘', '清四郎小屋', '鎌岩館', '南御室小屋', '薬師岳小屋']:
+    SEASON[_n]['checkedAt'] = '2026-10-21'
+for _n in ['高谷池ヒュッテ', '将監小屋', '大門沢小屋', '雷鳥沢ヒュッテ', '富士宮口八合目 池田館', '北沢峠 こもれび山荘', '蓼科山荘']:
+    CAPACITY[_n]['checkedAt'] = '2026-10-21'
+
 # 2026-10-21 に確かめて足した分の確認日
 for _n in ['涸沢ヒュッテ', '五竜山荘', '二ノ池山荘', '長衛小屋', '北岳肩の小屋', '剱御前小舎', '金峰山小屋', '馬場島荘', '富士一館', '太子館', 'LUCY尾瀬鳩待（旧 鳩待山荘）', 'ロッヂ長兵衛', '栂池山荘', '萬岳荘', '蓼科山頂ヒュッテ', '七合目トモエ館', '本八合目トモエ館', '吉田口七合目 日の出館']:
     SEASON[_n]['checkedAt'] = '2026-10-21'
