@@ -96,16 +96,43 @@ CAPACITY.update({   # 2026-10-21 追加
     '県営光岳小屋': {'value': 20, 'text': '20人（小屋泊）', 'source': 'https://www.chillnn.com/1863f95fe2d74'},
 })
 
+# 2026-10-21 追加（ChatGPT の「確認不能829項目の再調査」の指摘を目印に、原文で確認）
+SEASON.update({
+    '七合目トモエ館': {'value': '7/1～9/10', 'note': '公式2026年1月3日のお知らせ「2026年の営業期間は、7月1日～9月10日の予定」', 'source': 'https://tomoekan.com/news/%e3%80%90%e9%87%8d%e8%a6%81%e3%80%91%e3%80%90important%e3%80%912024%e5%b9%b4%e3%81%ae%e5%96%b6%e6%a5%ad%e6%9c%9f%e9%96%93%e5%8f%8a%e3%81%b3%e4%ba%88%e7%b4%84%e5%8f%97%e4%bb%98%e9%96%8b%e5%a7%8b/'},
+    '本八合目トモエ館': {'value': '7/1～9/10', 'note': '公式2026年1月3日のお知らせ「2026年の営業期間は、7月1日～9月10日の予定」', 'source': 'https://tomoekan.com/news/%e3%80%90%e9%87%8d%e8%a6%81%e3%80%91%e3%80%90important%e3%80%912024%e5%b9%b4%e3%81%ae%e5%96%b6%e6%a5%ad%e6%9c%9f%e9%96%93%e5%8f%8a%e3%81%b3%e4%ba%88%e7%b4%84%e5%8f%97%e4%bb%98%e9%96%8b%e5%a7%8b/'},
+    '吉田口七合目 日の出館': {'value': '7/1～9/7', 'note': '公式サイトの記載。予約サイトでは、お知らせは7/1～9/10、上部の表示は7/1～8/31と、記載が一致しない', 'source': 'https://www.hinodekan-fujiyoshida.com/'},
+})
+CAPACITY.update({
+    '穂高岳山荘': {'value': 250, 'text': '約250人', 'note': '本年度は約210人の予約制', 'source': 'https://www.hotakadakesanso.com/about/company'},
+    '燕山荘': {'value': 650, 'note': '2020年から半分以下に制限', 'source': 'https://www.enzanso.co.jp/enzanso'},
+    '村営白馬岳頂上宿舎': {'value': 280, 'source': 'http://yamagoya.hakubakousha.com/facility/price/'},
+    '村営天狗山荘': {'value': 90, 'source': 'http://yamagoya.hakubakousha.com/facility/price/'},
+    '村営八方池山荘': {'value': 50, 'source': 'http://yamagoya.hakubakousha.com/facility/price/'},
+    '鷲が峰ひゅって': {'value': 4, 'text': '1日2組4人', 'source': 'https://nature2.jp/wasshie/'},
+    '女人堂（金剛堂）': {'value': 40, 'source': 'https://ontake-nyonindo.jimdofree.com/'},
+    '元祖七合目 山口山荘': {'value': 100, 'note': '食堂を含む', 'source': 'https://fujisan-ganso.jp/mountain-hut/index.html'},
+    '赤岳鉱泉': {'value': None, 'text': '定員を減らして完全予約制（人数の記載なし）', 'source': 'https://www.akadakekousen.jp/akadakekousen'},
+    '行者小屋': {'value': None, 'text': '定員を減らして完全予約制（人数の記載なし）', 'source': 'https://www.akadakekousen.jp/gyoujyagoya'},
+})
+
+# 2026-10-21 に確かめて足した分の確認日
+for _n in ['涸沢ヒュッテ', '五竜山荘', '二ノ池山荘', '長衛小屋', '北岳肩の小屋', '剱御前小舎', '金峰山小屋', '馬場島荘', '富士一館', '太子館', 'LUCY尾瀬鳩待（旧 鳩待山荘）', 'ロッヂ長兵衛', '栂池山荘', '萬岳荘', '蓼科山頂ヒュッテ', '七合目トモエ館', '本八合目トモエ館', '吉田口七合目 日の出館']:
+    SEASON[_n]['checkedAt'] = '2026-10-21'
+for _n in ['涸沢小屋', '常念小屋', '蝶ヶ岳ヒュッテ', '冷池山荘', '聖光小屋', '仙水小屋', '夜叉神峠小屋', '白根御池小屋', '介山荘', '頂上富士館', '白山室堂', 'ヒュッテ大槍', '大天荘', 'ロッヂ長兵衛', '県営光岳小屋']:
+    CAPACITY[_n]['checkedAt'] = '2026-10-21'
+for _n in ['穂高岳山荘', '燕山荘', '村営白馬岳頂上宿舎', '村営天狗山荘', '村営八方池山荘', '鷲が峰ひゅって', '女人堂（金剛堂）', '元祖七合目 山口山荘', '赤岳鉱泉', '行者小屋']:
+    CAPACITY[_n]['checkedAt'] = '2026-10-21'
+
 
 def apply(h):
     """data/huts.json の1軒に、確かめた値を入れる（無ければ消す）"""
     s, c = SEASON.get(h['name']), CAPACITY.get(h['name'])
     if s:
-        h['seasonFix'] = dict(s, checkedAt=CHECKED)
+        h['seasonFix'] = dict(s, checkedAt=s.get('checkedAt') or CHECKED)
     else:
         h.pop('seasonFix', None)
     if c:
-        h['capacityFix'] = dict(c, checkedAt=CHECKED)
+        h['capacityFix'] = dict(c, checkedAt=c.get('checkedAt') or CHECKED)
     else:
         h.pop('capacityFix', None)
     return h
