@@ -3,7 +3,7 @@
  "recipes": [
   {
    "hut": "槍平小屋",
-   "field": "bookingStart",
+   "field": "bookingStartDate",
    "url": "https://www.yaridaira.jp/",
    "regex": "(20\\d\\d)年度の予約受付は\\s*(\\d{1,2})/(\\d{1,2})[^0-9]{0,8}(\\d{1,2})[：:](\\d{2})\\s*より開始",
    "out": "{2}月{3}日 {4}:{5}から（{1}年度）",
@@ -42,7 +42,7 @@
   },
   {
    "hut": "長衛小屋",
-   "field": "bookingStart",
+   "field": "bookingStartDate",
    "url": "https://choei.ashiyasu.com/",
    "regex": "(20\\d\\d)年シーズン、(\\d{1,2})/(\\d{1,2})より予約受付開始",
    "out": "{2}月{3}日から（{1}年）",

@@ -197,6 +197,7 @@ def main():
         })
     # 公式サイトを1階層たどって確認した予約の開始・方法（huts_booking_extra.py）と、公式サイトのURL（huts_official_urls.json）を当てる
     from huts_booking_extra import BOOKING_EXTRA
+    import huts_checked
     up = os.path.join(ROOT, 'data', 'huts_official_urls.json')
     _ou = json.load(open(up, encoding='utf-8')) if os.path.exists(up) else {}
     off_urls = _ou.get('huts') or {}
@@ -211,6 +212,7 @@ def main():
             h['officialUrl'] = off_over[h['name']]
         if not h.get('officialUrl') and off_urls.get(h['name']) and h['name'] not in off_over:
             h['officialUrl'] = off_urls[h['name']]
+        huts_checked.apply(h)                 # 公式・自治体の案内で確かめた営業期間・定員（huts_checked.py）
         if h['name'] in HUT_OFFICIAL_NOTE:
             h['officialNote'] = HUT_OFFICIAL_NOTE[h['name']]
         x = BOOKING_EXTRA.get(h['name'])
@@ -223,6 +225,11 @@ def main():
                 h['bookingRequired'] = True
             if x.get('p'):
                 h['openText'] = x['p']
+                h['periodManual'] = True          # 公式サイトで確かめた期間。定期更新で一覧の出典の文に戻さない
+            if x.get('sClear'):
+                h['bookingStart'] = None          # 出典の文が「予約の締切」などで、予約の開始ではなかったもの
+            if x.get('t'):
+                h['tel'] = x['t']
             if x.get('n'):
                 # 予約という仕組みがない小屋（避難小屋など）。予約の開始・方法は持たせない
                 h['bookingNone'] = x['n']

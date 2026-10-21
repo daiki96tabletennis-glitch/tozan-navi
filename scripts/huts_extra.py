@@ -14,7 +14,7 @@ TFOREST = 'https://www.t-forest.com/news/detail/102'
 SUGOROKU = 'https://www.sugorokugoya.com/reservation/'
 YT = 'https://www.yamatan.net/hut/'
 YL = 'https://www.yamakei-online.com/lodge/detail.php?id='
-TF_START = '7/11〜9/22の宿泊分は6月15日 17:00から順次（Web。電話は6月16日から。2026年）'
+TF_START = '7/11〜9/22の宿泊分は、泊まる月ごとに Web で6月15日・19日・23日の17:00から、電話で6月29日・7月3日・7月8日の10:00から（2026年）'   # 6月16日は電話の問い合わせ窓口を開く日（予約の開始ではない）
 
 
 def H(name, region, src, period, url, mountains, other=None, start=None, methods=None, required=False, cap=None, bsrc=None, capsrc=None):
@@ -60,7 +60,7 @@ EXTRA_HUTS = [
     H('荒川小屋', '南アルプス', YK_S, '7/11～10/11（予定）', 'https://www.t-forest.com/alpsinfo/climber/lodgeinfo/', ['arakawadake', 'akaisidake'],
       start=TF_START, methods=['Web', '電話'], required=True, cap=50, bsrc=TFOREST),
     H('赤石岳避難小屋', '南アルプス', YK_S, '7/11～9/22（予定）', 'https://www.t-forest.com/alpsinfo/climber/lodgeinfo/', ['akaisidake', 'arakawadake'],
-      start='予約制ではなく、当日の受付', bsrc='https://www.t-forest.com/alpsinfo/climber/lodgeinfo/'),
+      start=TF_START, methods=['Web', '電話'], required=True, cap=10, bsrc=TFOREST),   # 事前の予約が必要（2026-10-20 に施設案内で確認）
     H('赤石小屋', '南アルプス', YK_S, '7/11～10/11（予定）', 'https://www.t-forest.com/alpsinfo/climber/lodgeinfo/', ['akaisidake', 'arakawadake'],
       start=TF_START, methods=['Web', '電話'], required=True, cap=50, bsrc=TFOREST),
     H('聖平小屋', '南アルプス', YK_S, '7/11～9/23', 'https://ikawa-kanko.com/', ['hijiridade']),

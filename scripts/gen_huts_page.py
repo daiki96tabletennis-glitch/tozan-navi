@@ -250,7 +250,10 @@ for h in H:
         m_html = fact('予約方法', NA)
     # 規模
     ref = h.get('capacityRef')
-    if cap:
+    cf = h.get('capacityFix')
+    if cf:
+        c_html = fact('規模（定員）', E(cf.get('text') or '%s人' % cf['value']), E((cf.get('note') + '（' if cf.get('note') else '（') + '公式・自治体の案内。確認：%s）' % cf.get('checkedAt')))
+    elif cap:
         c_html = fact('規模（定員）', '%s人' % E(cap), ('参考：以前の収容人数は%s人' % ref) if isinstance(ref, int) and ref != cap else None)
     elif isinstance(ref, int):
         c_html = fact('規模（定員）', '約%s人' % ref, '山と溪谷オンラインの記載。現在の定員は公式サイトで確認')
@@ -258,13 +261,16 @@ for h in H:
         c_html = fact('規模（定員）', E(ref), '山と溪谷オンラインの記載')
     else:
         c_html = fact('規模（定員）', '<span class="na">確認中</span>')
-    # 営業期間：公式・予約サイトの値があればそれ、無ければ出典の記載
-    season = (au.get('season') or {}).get('value')
+    # 営業期間：公式・自治体の案内で確かめた値（huts_checked.py）→ 公式・予約サイトの値 → 出典の記載
+    sf = h.get('seasonFix') or {}
+    season = sf.get('value') or (au.get('season') or {}).get('value')
     raw = h.get('openText') or ''
     season_main = season or re.sub(r'^2026年の営業：', '', raw) or '—'
-    season_sub = '公式・予約サイトの記載' if season else None
+    season_sub = ('公式・自治体の案内で確認（%s）' % sf.get('checkedAt')) if sf.get('value') else ('公式・予約サイトの記載' if season else None)
     if h.get('officialNote'):
         season_sub = '公式サイトの記載：' + h['officialNote']
+    if sf.get('note'):
+        season_sub = '%s（確認：%s）' % (sf['note'], sf.get('checkedAt'))
     mts = ''.join('<a class="mc" href="/mountains/%s/">%s</a>' % (E(i), E(M[i]['name'])) for i in h['mountainIds'])
     oth = ''.join('<a class="mc mc2" href="/mountains/%s/">%s<small>%s</small></a>' % (E(o['id']), E(M[o['id']]['name']), E(o['relation'])) for o in h.get('otherMountains') or [])
     links = []
@@ -273,7 +279,7 @@ for h in H:
     if h.get('bookingSourceUrl') and h['bookingSourceUrl'] != h.get('officialUrl') and 'yamatan.net' in h['bookingSourceUrl']:
         links.append('<a class="btn btn2" href="%s" target="_blank" rel="noopener">予約サイト</a>' % E(h['bookingSourceUrl']))
     detail = []
-    sj = huts_season.parse(season or raw)
+    sj = huts_season.parse(('%d年：%s' % (d['seasonYear'], sf['value'])) if sf.get('value') else (season or raw))
     st_html = ('<span class="st" data-season="%s"></span>' % E(json.dumps(sj, separators=(',', ':')))) if sj else ''
     pt = place_text(h)
     loc = h.get('location')

@@ -73,12 +73,14 @@ def main():
     for h in H:
         au = h.get('auto') or {}
         start, start_src = shown_start(h)
-        season = (au.get('season') or {}).get('value')
-        season_src = '自動（公式・予約サイト）' if season else '出典の記載'
+        sf = h.get('seasonFix') or {}
+        season = sf.get('value') or (au.get('season') or {}).get('value')
+        season_src = ('手入力（公式・自治体の案内で確認 %s）' % sf.get('checkedAt')) if sf.get('value') else ('自動（公式・予約サイト）' if season else '出典の記載')
         season = season or re.sub(r'^2026年の営業：', '', h.get('openText') or '') or ''
         cap = (au.get('capacity') or {}).get('value') or h.get('capacity')
         ref = h.get('capacityRef')
-        cap_txt = ('%s人' % cap) if cap else (('約%s人（山と溪谷オンライン）' % ref) if isinstance(ref, int) else (ref or ''))
+        cf = h.get('capacityFix')
+        cap_txt = (cf.get('text') or '%s人' % cf['value']) + '（公式・自治体の案内で確認）' if cf else ('%s人' % cap) if cap else (('約%s人（山と溪谷オンライン）' % ref) if isinstance(ref, int) else (ref or ''))
         su = h.get('sourceUrl') or ''
         auto_season = '自動（毎週。出典の原文）' if ('pref.nagano' in su or 'yamakei-online.com/yama-ya' in su or 'lodge/list' in su) else '手入力（自動では変わらない）'
         yt = (yamatan.get(h['name']) or {}).get('yamatan')
@@ -124,7 +126,7 @@ def main():
             '・'.join(M[i]['name'] for i in h['mountainIds'] if i in M),
             '・'.join('%s（%s）' % (M[o['id']]['name'], o.get('relation') or '') for o in h.get('otherMountains') or [] if o['id'] in M),
             (h.get('officialUrl') or '').strip(), h.get('tel') or '',
-            season, season_src, h.get('officialNote') or '',
+            season, season_src, '／'.join(x for x in (h.get('officialNote'), sf.get('note')) if x),
             start, start_src, '・'.join(h.get('bookingMethods') or []) if not h.get('bookingNone') else '予約なし',
             'はい' if h.get('bookingRequired') else '', cap_txt,
             RT.get(rt, '非対応'), state, 'いいえ（noindex）' if thin else 'はい',
