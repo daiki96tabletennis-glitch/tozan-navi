@@ -84,6 +84,27 @@
           ".validate": false
         }
       }
+    },
+    "adminDash": {
+      ".read": "auth != null && auth.uid === 'OWNER_UID_NOT_SET'",
+      "revenue": {
+        ".write": "auth != null && auth.uid === 'OWNER_UID_NOT_SET'",
+        "$ym": {
+          ".validate": "$ym.matches(/^[0-9]{4}-[0-9]{2}$/) && newData.hasChildren(['rakuten', 'amazon'])",
+          "rakuten": {
+            ".validate": "newData.isNumber() && newData.val() >= 0"
+          },
+          "amazon": {
+            ".validate": "newData.isNumber() && newData.val() >= 0"
+          },
+          "at": {
+            ".validate": "newData.isNumber()"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
     }
   }
 }

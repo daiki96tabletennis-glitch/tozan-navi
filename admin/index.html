@@ -113,6 +113,37 @@ main{max-width:680px;margin:0 auto;padding:12px;}
 .tab-bar{display:flex;gap:0;background:white;border-radius:12px;padding:4px;margin-bottom:12px;border:1px solid #ddd8d0;}
 .tab-btn{flex:1;padding:8px;border:none;background:none;border-radius:8px;font-size:13px;font-weight:600;color:#a09888;cursor:pointer;transition:all 0.15s;}
 .tab-btn.active{background:#4a5e4a;color:white;}
+/* 分析タブ */
+.an-box{background:#fff;border:1px solid #ddd8d0;border-radius:12px;padding:16px;font-size:13px;line-height:1.7;color:#3a352e}
+.an-box p{margin:6px 0}
+.an-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#7a7266;margin-bottom:6px}
+.an-btn{background:#4e6535;color:#fff;border:none;border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700;cursor:pointer}
+.an-btn-sub{background:#fff;color:#5a5248;border:1px solid #ddd8d0;padding:6px 12px;font-weight:600}
+.an-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:8px 0 12px}
+@media(min-width:720px){.an-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.an-kpi{background:#fff;border:1px solid #ddd8d0;border-radius:12px;padding:10px 12px}
+.an-kpi-l{font-size:11px;color:#7a7266}
+.an-kpi-v{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;color:#2f3a24;line-height:1.3}
+.an-kpi-d{font-size:11px;min-height:15px}
+.an-diff{font-weight:700;color:#7a7266}.an-diff.up{color:#3a6a2a}.an-diff.down{color:#b04a2e}
+.an-sub{font-size:11px;color:#8a8276}
+.an-what{font-size:12px;color:#6a6258;margin:0 0 8px;line-height:1.6}
+.an-note{font-size:12px;background:#f6f1e4;border-radius:8px;padding:8px 10px;color:#6a5a3a}
+.an-sec{background:#fff;border:1px solid #ddd8d0;border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.an-sec h3{font-size:14px;margin:0 0 4px;color:#2f3a24}
+.an-two{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-bottom:8px}
+@media(min-width:720px){.an-two{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.an-tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.an-t{width:100%;border-collapse:collapse;font-size:12px}
+.an-t th{text-align:left;font-weight:600;color:#7a7266;border-bottom:1px solid #e6e1d6;padding:5px 6px;white-space:nowrap}
+.an-t td{border-bottom:1px solid #f0ece3;padding:5px 6px;vertical-align:top}
+.an-t td:not(:first-child){white-space:nowrap}
+.an-t a{color:#3a5a28}
+.an-spark{width:100%;height:48px;display:block;background:#faf8f3;border-radius:8px}
+.an-spark-cap{display:flex;justify-content:space-between;font-size:10px;color:#a09888}
+.an-form{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.an-form input{flex:1 1 120px;min-width:0;padding:8px;border:1px solid #ddd8d0;border-radius:8px;font-size:13px}
+.an-uid{font-family:monospace;font-size:13px;background:#f6f1e4;border-radius:8px;padding:8px;word-break:break-all;margin:6px 0}
 
 /* 履歴 */
 .log-empty{text-align:center;padding:32px;color:#a09888;font-size:13px;}
@@ -184,6 +215,7 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
     <button class="tab-btn active" id="tab-list" onclick="switchTab('list')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg> 山一覧</button>
     <button class="tab-btn" id="tab-log" onclick="switchTab('log')">📝 変更履歴</button>
     <button class="tab-btn" id="tab-notices" onclick="switchTab('notices')">🔔 お知らせ</button>
+    <button class="tab-btn" id="tab-analytics" onclick="switchTab('analytics')">📊 分析</button>
   </div>
 
   <!-- 山一覧パネル -->
@@ -207,6 +239,9 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
     <div id="log-list"></div>
     <button class="log-clear-btn" onclick="clearLog()">🗑 履歴をすべて削除</button>
   </div>
+
+  <!-- 分析パネル（運営者の Google アカウントでログインしたときだけ数字を出す。assets/js/admin-analytics.js） -->
+  <div id="analytics-panel" style="display:none;"><div id="analytics-root"></div></div>
 
   <!-- お知らせパネル（定期実行の結果・マイページに出すかの設定） -->
   <div id="notices-panel" style="display:none;">
@@ -950,6 +985,9 @@ function switchTab(tab) {
   document.getElementById('tab-notices').classList.toggle('active', tab === 'notices');
   document.getElementById('notices-panel').style.display = tab === 'notices' ? 'block' : 'none';
   if(tab === 'notices' && window.ymAdminNoticesReload) window.ymAdminNoticesReload();
+  document.getElementById('tab-analytics').classList.toggle('active', tab === 'analytics');
+  document.getElementById('analytics-panel').style.display = tab === 'analytics' ? 'block' : 'none';
+  if(tab === 'analytics' && window.ymAdminAnalyticsStart) window.ymAdminAnalyticsStart();
   document.getElementById('edit-panel').classList.remove('active');
   if(tab === 'log') renderLog();
 }
@@ -1017,8 +1055,10 @@ function copyTsv() {
 </script>
 
 <script src="/assets/js/admin-notices.js?v=20261016a"></script>
+<script src="/assets/js/admin-analytics.js?v=20261021a"></script>
 <script>
 if (location.hash === '#notices') switchTab('notices');
+if (location.hash === '#analytics') switchTab('analytics');
 </script>
 </body>
 </html>

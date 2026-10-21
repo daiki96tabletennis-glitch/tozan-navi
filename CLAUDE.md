@@ -114,6 +114,18 @@
 - 電車・バスの経路（新しい形式の `trainRoutes`）はこの画面では表示だけ。保存の対象にも入れない
 - GitHub のトークンの欄は、「山画像を管理」（/admin/images/。GitHub に直接書く）のために残している
 
+## 管理画面の「分析」タブ（2026-10-21〜）
+- 収益とサイトの利用を一目で見る欄。`/admin/#analytics`。表示は `assets/js/admin-analytics.js`
+- **数字は公開の場所に置かない**（リポジトリは公開で、サイトのファイルも誰でも読めるため）。置き場所は Firebase のデータベースの `/adminDash`。読めるのは `scripts/firebase_rules.json` の `adminDash` に書いた運営者のアカウント（UID）だけ。ルールを直したら Firebase のコンソールに貼り直す（運営者）
+- ログイン：Firebase Authentication の Google ログイン。30日保ち、過ぎたらもう一度ログイン（localStorage `ym_admin_auth_at`）。権限の無いアカウントでは、そのアカウントの UID を出す（運営者ならそれをルールに登録する）。ウェブアプリの設定（`FB_WEB` の apiKey・appId。公開してよい値）が空のあいだは「設定待ち」と出すだけ
+- 数字の作り方：`scripts/admin_dashboard.py`（`.github/workflows/admin-dashboard.yml` が毎週月曜6時と手動で実行。コミットはしない。AIは使わない）。Secrets：`GOOGLE_READER_KEY`（Search Console・GA4 の読み取り用の鍵。手元では `~/.config/yamatch/google-key.json`。**作業フォルダに置かない**）・`FIREBASE_DB_URL`・`FIREBASE_SERVICE_ACCOUNT`。手元で確かめるときは `--dry-run`（`.claude/admin_dash.json` に保存）
+  - Search Console：プロパティ `https://tozan-navi.com/`。直近28日とその前の28日（2〜3日遅れ）。あと一歩の検索語（4〜15位で表示が多い。取りこぼしの大きい順）、クリック率が低いページ、伸びた・落ちた検索語とページ、ページの種類ごと
+  - GA4：プロパティ `528250629`。訪れた人・表示・くり返し来た人・端末・来た経路、ページの種類ごとの表示と楽天・Amazon のリンクのクリック（`gear_affiliate_click`）と1,000表示あたり、よく見られているのに押されていない山ページ、機能ごとの表示。Amazon・楽天別、商品別は、GA4 のカスタム定義（platform・product_name・page_type）の登録後から出る
+  - ページの種類は `GROUPS`（パスの頭）。/find/＝山選び診断、/recommend/＝登山タイプ診断、/type/＝登山タイプの結果
+  - Firebase：お気に入り・登頂の合計、山小屋のプッシュ通知の台数・件数
+- 報酬：楽天・Amazon は報酬を読む API が無いので、管理画面で月ごとに手で入れる（`/adminDash/revenue/YYYY-MM`。運営者だけが書ける）
+- 週ごとの要約は `/adminDash/history/<日付>` に積む
+
 ## 運営者向けのお知らせ（マイページ・2026-10-12〜）
 - GitHub の3つの定期実行（毎月の年次データ確認／山小屋の定期更新／サイトの検証）の結果を、運営者のスマホのマイページに出す
 - データは `data/admin_notices.json`。`scripts/admin_notice.py` が各ワークフローの中で、報告の文を見出しと箇条書きに分けてそのまま入れる（種類ごとに最新の1件。中身が前回と同じなら書き換えない。AIは使わない）

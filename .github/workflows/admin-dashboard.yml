@@ -1,0 +1,43 @@
+# 管理画面の「分析」タブの数字を作る。毎週月曜の朝と、手動実行のときに、
+# Search Console・GA4・Firebase（お気に入り数など）から集めて、Firebase のデータベース /adminDash に書く。AIは使わない。
+# 数字はリポジトリ・公開のファイルには書かない（コミットしない）。読めるのは運営者のアカウントだけ（scripts/firebase_rules.json）。
+# 必要な Secrets（1つでも無いあいだは何もしない）：
+#   GOOGLE_READER_KEY（Search Console・GA4 の読み取り用の鍵の JSON）/ FIREBASE_DB_URL / FIREBASE_SERVICE_ACCOUNT
+name: 管理画面の分析の数字を作る
+
+on:
+  schedule:
+    - cron: '0 21 * * 0'   # 毎週月曜 6:00（日本時間）
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GOOGLE_READER_KEY: ${{ secrets.GOOGLE_READER_KEY }}
+      FIREBASE_DB_URL: ${{ secrets.FIREBASE_DB_URL }}
+      FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+    steps:
+      - name: 設定があるか確かめる
+        id: ready
+        run: |
+          if [ -n "$GOOGLE_READER_KEY" ] && [ -n "$FIREBASE_DB_URL" ] && [ -n "$FIREBASE_SERVICE_ACCOUNT" ]; then
+            echo "ok=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "Secrets が未設定のため、何もしません"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.ready.outputs.ok == '1'
+      - uses: actions/setup-python@v5
+        if: steps.ready.outputs.ok == '1'
+        with:
+          python-version: '3.12'
+      - name: 集めて書く
+        if: steps.ready.outputs.ok == '1'
+        run: |
+          pip install -q google-auth requests
+          python3 scripts/admin_dashboard.py
