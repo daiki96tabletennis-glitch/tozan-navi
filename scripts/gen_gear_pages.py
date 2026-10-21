@@ -17,6 +17,7 @@ data/gear-*.json から /gear/ 以下の全ページを生成する。
 """
 import json
 import os
+from urllib.parse import quote
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(SCRIPT_DIR)
@@ -50,7 +51,7 @@ CATEGORY_ICON_PATHS = {
 
 
 CATEGORY_ICON_IMAGES = {
-    "shoes": "/images/icons/shoes.png",
+    "shoes": "/images/icons/shoe.webp",
     "backpack": "/images/icons/backpack.png",
     "apparel": "/images/icons/apparel.png",
 }
@@ -78,16 +79,20 @@ def render_logo_badge(brand, size=40):
 def render_item_visual(item):
     brand = BRAND_BY_ID.get(item["brandId"], {})
     color = brand.get("accentColor", "#4e6535")
-    images = item.get("images") or []
-    if images:
-        return (
-            '<div class="item-visual item-visual-photo">'
-            '<img src="' + esc(images[0]) + '" alt="' + esc(item["name"]) + '" loading="lazy">'
-            '</div>'
-        )
+    # 商品の写真は、楽天アフィリエイトのリンク作成ツールで作った「画像のみ」の HTML（rakutenImageHtml）を、
+    # 改変せずにそのまま載せるときだけ出す（楽天アフィリエイトのルール：HTML を改変しない・サイズを変えない・文字を足さない）。
+    # ショップ・ブランド・販売店の画像のファイルを直接読み込むことはしない（無許諾の掲載になり、アフィリエイトの規約にも反する。2026-10-21）
+    html_tag = item.get("rakutenImageHtml")
+    if html_tag:
+        return '<div class="item-visual item-visual-rakuten">' + html_tag + '</div>'
+    # 楽天ウェブサービス（API）で画像を出す商品：枠に楽天の商品番号を入れ、assets/js/gear-rakuten.js がページを開いたときに読み込む（2026-10-21）。
+    # 読めなかったときはアイコンのまま。同じ商品が楽天に無いときは似た商品（rakutenSimilar）で、画像の下に「似た商品」と出る
+    rk = ""
+    if item.get("rakutenItemCode"):
+        rk = ' data-rk-code="' + esc(item["rakutenItemCode"]) + '"' + (' data-rk-similar="1"' if item.get("rakutenSimilar") else "")
     icon = render_category_icon(item.get("categoryId", "accessory"), size=24)
     return (
-        '<div class="item-visual" style="background:linear-gradient(160deg,' + color + '1a,' + color + '08)">'
+        '<div class="item-visual"' + rk + ' style="background:linear-gradient(160deg,' + color + '1a,' + color + '08)">'
         '<span class="item-visual-badge" style="background:' + color + '26">'
         '<span class="item-visual-icon" style="color:' + color + '">' + icon + '</span>'
         '</span>'
@@ -117,6 +122,7 @@ def render_instagram_embed(brand):
 
 
 AMAZON_TAG = "amazonafdaiki-22"
+RAKUTEN_AFF_ID = "57384242.53497bb8.57384243.366083eb"   # assets/js/gear-common.js の rakutenId と同じ
 
 
 def render_purchase_links(item):
@@ -131,7 +137,9 @@ def render_purchase_links(item):
         links.append('<a href="' + url + '" target="_blank" rel="nofollow noopener sponsored">Amazonで見る</a>')
     rakuten_url = item.get("rakutenUrl")
     if rakuten_url:
-        links.append('<a href="' + esc(rakuten_url) + '" target="_blank" rel="nofollow noopener sponsored">楽天市場で見る</a>')
+        # 楽天アフィリエイトのリンク（山ページの装備カードの gear-common.js と同じ形）
+        aff = "https://hb.afl.rakuten.co.jp/hgc/" + RAKUTEN_AFF_ID + "/?pc=" + quote(rakuten_url, safe="") + "&m=" + quote(rakuten_url, safe="")
+        links.append('<a href="' + esc(aff) + '" target="_blank" rel="nofollow noopener sponsored">楽天市場で見る</a>')
     if not links:
         return ""
     note = ""
@@ -237,8 +245,10 @@ main{max-width:480px;margin:0 auto;padding:18px 20px 24px}
 
 .empty-note{background:#fff;border-radius:16px;padding:20px 18px;text-align:center;font-size:12.5px;color:var(--hai);box-shadow:var(--shadow-sm)}
 
-.item-visual-photo{aspect-ratio:4/3;background:#f0ede5;overflow:hidden}
-.item-visual-photo img{width:100%;height:100%;object-fit:contain}
+.item-visual-rakuten{aspect-ratio:auto;background:#fff;padding:8px;flex-direction:column;gap:6px}
+.item-visual-rakuten img{max-width:none}   /* 楽天のサイズのまま（変えない） */
+.item-visual-rk-cap{font-size:11px;color:#6b6b6b;text-align:center;line-height:1.4}
+.item-visual[hidden]{display:none}
 .item-purchase-links{font-size:12.5px;font-weight:700;color:var(--sugi);margin-top:8px}
 .item-purchase-links a{text-decoration:underline;text-decoration-color:var(--wakaba);text-underline-offset:2px}
 .item-purchase-note{font-size:10px;color:var(--hai);margin-top:6px;line-height:1.6}
@@ -332,6 +342,7 @@ def page_shell(title, description, canonical_path, back_href, header_label, body
 """ + body_html + """
 </main>
 """ + BOTTOM_NAV + """
+<script src="/assets/js/gear-rakuten.js?v=20261021a" defer></script>
 </body>
 </html>
 """
