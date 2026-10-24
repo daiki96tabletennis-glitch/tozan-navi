@@ -671,18 +671,57 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
         arr = arr.filter(function(e){ return e[0]!==MTN_ID; });
         localStorage.setItem(CLM_KEY, JSON.stringify(arr));
       } else {
-        var today = new Date().toISOString().slice(0,10);
-        arr.push([MTN_ID, today, '']);
-        localStorage.setItem(CLM_KEY, JSON.stringify(arr));
+        // 登頂日を選んでから記録する（以前は押した日がそのまま入り、別の日に登った山を記録できなかった。2026-10-24）
+        askDate(function(day){
+          var arr2 = getArr();
+          arr2.push([MTN_ID, day, '']);
+          localStorage.setItem(CLM_KEY, JSON.stringify(arr2));
+          celebrate();
+          updateBtn();
+        });
+        return;
+      }
+      updateBtn();
+    };
+    // 日本時間の今日（toISOString は世界標準時なので、朝0〜9時に前の日になっていた）
+    function jstToday(){
+      var d = new Date(Date.now() + 9 * 3600000);
+      return d.toISOString().slice(0,10);
+    }
+    function askDate(done){
+      var t = jstToday();
+      var bg = document.createElement('div');
+      bg.style.cssText='position:fixed;inset:0;background:rgba(20,20,16,0.45);z-index:9998;display:flex;align-items:flex-end;justify-content:center;';
+      var box = document.createElement('div');
+      box.setAttribute('role','dialog');
+      box.setAttribute('aria-label','登頂日を選ぶ');
+      box.style.cssText='background:#fff;width:100%;max-width:480px;border-radius:16px 16px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));box-sizing:border-box;font-family:inherit;';
+      box.innerHTML='<div style="font-size:15px;font-weight:800;color:#2a3520;margin-bottom:4px">登頂日を選ぶ</div>'
+        + '<div style="font-size:12px;color:#7a7266;margin-bottom:10px">登った日を選んで「記録する」を押してください。</div>'
+        + '<input type="date" id="climbed-date" max="' + t + '" value="' + t + '" style="width:100%;box-sizing:border-box;padding:12px;font-size:16px;border:1px solid #ddd8d0;border-radius:10px;margin-bottom:12px;">'
+        + '<div style="display:flex;gap:8px"><button type="button" id="climbed-cancel" style="flex:1;padding:13px;border-radius:10px;border:1px solid #ddd8d0;background:#fff;color:#5a5248;font-size:14px;font-weight:700">やめる</button>'
+        + '<button type="button" id="climbed-ok" style="flex:2;padding:13px;border-radius:10px;border:none;background:#4e6535;color:#fff;font-size:14px;font-weight:800">記録する</button></div>';
+      bg.appendChild(box);
+      document.body.appendChild(bg);
+      function close(){ if (bg.parentNode) bg.parentNode.removeChild(bg); }
+      bg.addEventListener('click', function(e){ if (e.target === bg) close(); });
+      document.getElementById('climbed-cancel').onclick = close;
+      document.getElementById('climbed-ok').onclick = function(){
+        var v = document.getElementById('climbed-date').value;
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(v)) { alert('登頂日を選んでください'); return; }
+        if (v > t) { alert('未来の日付は選べません'); return; }
+        close();
+        done(v);
+      };
+    }
+    function celebrate(){
         // お祝い表示
         var cel = document.createElement('div');
         cel.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(20,45,15,0.92);color:white;border-radius:16px;padding:20px 32px;text-align:center;z-index:9999;font-family:sans-serif;animation:celPop .35s cubic-bezier(.34,1.56,.64,1)';
         cel.innerHTML='<div style="font-size:36px;margin-bottom:6px">🚩</div><div style="font-size:16px;font-weight:800">登頂記録に追加しました！</div><div style="font-size:12px;margin-top:4px;opacity:0.7">マイページで確認できます</div>';
         document.body.appendChild(cel);
         setTimeout(function(){ cel.remove(); }, 1800);
-      }
-      updateBtn();
-    };
+    }
     updateBtn();
   })();
   </script>

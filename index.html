@@ -1880,7 +1880,7 @@ function App() {
                       {/* 登頂ボタン */}
                       <button onClick={e => { e.preventDefault(); e.stopPropagation();
                           var c = climbedMap[m.id];
-                          setClimbModal({id: m.id, name: m.name, date: c ? c.date : new Date().toISOString().slice(0,10), memo: c ? c.memo : ""});
+                          setClimbModal({id: m.id, name: m.name, date: c ? c.date : new Date(Date.now()+9*3600000).toISOString().slice(0,10), memo: c ? c.memo : ""});
                         }}
                         style={{position:"absolute",top:"34px",right:"6px",width:"20px",height:"20px",display:"flex",alignItems:"center",justifyContent:"center",background:"none",border:"none",cursor:"pointer",zIndex:2,padding:0,opacity: climbedMap[m.id] ? 1 : 0.4, transition:"opacity 0.2s,transform 0.15s"}}
                         onTouchStart={e => e.stopPropagation()}

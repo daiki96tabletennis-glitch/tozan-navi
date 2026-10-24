@@ -772,7 +772,7 @@ function removeClimbed(key, uid) {
 
 function openAddClimbed(){
   document.getElementById('mc-name').value='';
-  document.getElementById('mc-date').value=new Date().toISOString().slice(0,10);
+  document.getElementById('mc-date').value=new Date(Date.now()+9*3600000).toISOString().slice(0,10);
   document.getElementById('mc-area').value='';
   document.getElementById('mc-outfit').value='';
   document.getElementById('mc-memo').value='';
@@ -931,7 +931,7 @@ function openEditClimbed(key, c) {
   document.getElementById('ec-key').value = key;
   var name = c.type==='manual' ? c.name : (_nameMap[key]||key);
   document.getElementById('ec-name').textContent = name;
-  document.getElementById('ec-date').value = c.date || new Date().toISOString().slice(0,10);
+  document.getElementById('ec-date').value = c.date || new Date(Date.now()+9*3600000).toISOString().slice(0,10);
   document.getElementById('ec-outfit').value = c.outfit || '';
   document.getElementById('ec-memo').value = c.memo || '';
   document.getElementById('edit-climbed-modal').classList.add('open');
@@ -1863,6 +1863,43 @@ function handleBadgeClick(el) {
   );
 }
 
+// 手入力の登頂（ym_climbed_extra）のうち、山名がサイトの山と同じものを、サイトの山の登頂（ym_climbed）へ移す。
+// 手入力のときにサイトの山へ振り分ける仕組み（saveManualClimbed）ができる前の記録や、空白・かっこ書きの違いで
+// 振り分けられなかった記録が、同じ山の2つ目のバッジ（百名山などの区分なし）として出ていたため（2026-10-24。赤城山）。
+// 移したら true。日付・メモ・服装はそのまま。お気に入り数・登頂数の集計（Firebase）は増やさない
+function normClimbName(n){
+  return String(n||'').replace(/[\s\u3000]/g,'').replace(/[（(][^）)]*[）)]/g,'');
+}
+function migrateManualClimbs(mtnData){
+  if (!Array.isArray(mtnData)) return false;
+  var byName = {};
+  mtnData.forEach(function(m){
+    if (!m || !m.name) return;
+    // サイトの山名そのままで照らす。「大山（丹沢）」を「大山」でも当てると、別の地域の同名の山まで移してしまうため、
+    // かっこ書きを外すのは手入力の側だけ（「赤城山（黒檜山）」→「赤城山」）
+    var full = String(m.name).replace(/[\s\u3000]/g,'');
+    if (!byName[full]) byName[full] = m.id;
+  });
+  var extra, arr;
+  try {
+    extra = JSON.parse(localStorage.getItem(CLM_EX_KEY)||'[]');
+    arr = JSON.parse(localStorage.getItem(CLM_KEY)||'[]');
+  } catch(ex) { return false; }
+  var keep = [], moved = 0;
+  extra.forEach(function(e){
+    var raw = String((e && e.name)||'').replace(/[\s\u3000]/g,'');
+    var id = byName[raw] || byName[normClimbName(raw)];
+    if (id) { arr.push([id, e.date||'', e.memo||'', e.outfit||'']); moved++; }
+    else { keep.push(e); }
+  });
+  if (!moved) return false;
+  try {
+    localStorage.setItem(CLM_KEY, JSON.stringify(arr));
+    localStorage.setItem(CLM_EX_KEY, JSON.stringify(keep));
+  } catch(ex) { return false; }
+  return true;
+}
+
 // ===== バッジグリッド描画 =====
 function renderClimbed() {
   var climbs = getClimbs();
@@ -1881,6 +1918,8 @@ function renderClimbed() {
   }
 
   fetchMountainData(function(mtnData) {
+    // 手入力した登頂のうち、名前がサイトの山と同じものはサイトの山の記録へ移す（同じ山のバッジが2つ出ないように）
+    if (migrateManualClimbs(mtnData)) { renderClimbed(); if (typeof updateProfileCard === 'function') updateProfileCard(); return; }
     var mtnMap = {};
     if (Array.isArray(mtnData)) { mtnData.forEach(function(m){ mtnMap[m.id]=m; }); }
     renderCollectionBanner(ids, climbs, mtnMap);

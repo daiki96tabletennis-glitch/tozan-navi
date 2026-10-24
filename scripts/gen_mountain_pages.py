@@ -854,9 +854,50 @@ def render_climbed(mt):
         '        arr = arr.filter(function(e){ return e[0]!==MTN_ID; });\n'
         '        localStorage.setItem(CLM_KEY, JSON.stringify(arr));\n'
         '      } else {\n'
-        "        var today = new Date().toISOString().slice(0,10);\n"
-        "        arr.push([MTN_ID, today, '']);\n"
-        '        localStorage.setItem(CLM_KEY, JSON.stringify(arr));\n'
+        '        // 登頂日を選んでから記録する（以前は押した日がそのまま入り、別の日に登った山を記録できなかった。2026-10-24）\n'
+        '        askDate(function(day){\n'
+        '          var arr2 = getArr();\n'
+        "          arr2.push([MTN_ID, day, '']);\n"
+        '          localStorage.setItem(CLM_KEY, JSON.stringify(arr2));\n'
+        '          celebrate();\n'
+        '          updateBtn();\n'
+        '        });\n'
+        '        return;\n'
+        '      }\n'
+        '      updateBtn();\n'
+        '    };\n'
+        '    // 日本時間の今日（toISOString は世界標準時なので、朝0〜9時に前の日になっていた）\n'
+        '    function jstToday(){\n'
+        '      var d = new Date(Date.now() + 9 * 3600000);\n'
+        '      return d.toISOString().slice(0,10);\n'
+        '    }\n'
+        '    function askDate(done){\n'
+        "      var t = jstToday();\n"
+        "      var bg = document.createElement('div');\n"
+        "      bg.style.cssText='position:fixed;inset:0;background:rgba(20,20,16,0.45);z-index:9998;display:flex;align-items:flex-end;justify-content:center;';\n"
+        "      var box = document.createElement('div');\n"
+        "      box.setAttribute('role','dialog');\n"
+        "      box.setAttribute('aria-label','登頂日を選ぶ');\n"
+        "      box.style.cssText='background:#fff;width:100%;max-width:480px;border-radius:16px 16px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));box-sizing:border-box;font-family:inherit;';\n"
+        "      box.innerHTML='<div style=\"font-size:15px;font-weight:800;color:#2a3520;margin-bottom:4px\">登頂日を選ぶ</div>'\n"
+        "        + '<div style=\"font-size:12px;color:#7a7266;margin-bottom:10px\">登った日を選んで「記録する」を押してください。</div>'\n"
+        "        + '<input type=\"date\" id=\"climbed-date\" max=\"' + t + '\" value=\"' + t + '\" style=\"width:100%;box-sizing:border-box;padding:12px;font-size:16px;border:1px solid #ddd8d0;border-radius:10px;margin-bottom:12px;\">'\n"
+        "        + '<div style=\"display:flex;gap:8px\"><button type=\"button\" id=\"climbed-cancel\" style=\"flex:1;padding:13px;border-radius:10px;border:1px solid #ddd8d0;background:#fff;color:#5a5248;font-size:14px;font-weight:700\">やめる</button>'\n"
+        "        + '<button type=\"button\" id=\"climbed-ok\" style=\"flex:2;padding:13px;border-radius:10px;border:none;background:#4e6535;color:#fff;font-size:14px;font-weight:800\">記録する</button></div>';\n"
+        '      bg.appendChild(box);\n'
+        '      document.body.appendChild(bg);\n'
+        '      function close(){ if (bg.parentNode) bg.parentNode.removeChild(bg); }\n'
+        "      bg.addEventListener('click', function(e){ if (e.target === bg) close(); });\n"
+        "      document.getElementById('climbed-cancel').onclick = close;\n"
+        "      document.getElementById('climbed-ok').onclick = function(){\n"
+        "        var v = document.getElementById('climbed-date').value;\n"
+        "        if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(v)) { alert('登頂日を選んでください'); return; }\n"
+        "        if (v > t) { alert('未来の日付は選べません'); return; }\n"
+        '        close();\n'
+        '        done(v);\n'
+        '      };\n'
+        '    }\n'
+        '    function celebrate(){\n'
         '        // お祝い表示\n'
         "        var cel = document.createElement('div');\n"
         "        cel.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,"
@@ -868,9 +909,7 @@ def render_climbed(mt):
         "<div style=\"font-size:12px;margin-top:4px;opacity:0.7\">マイページで確認できます</div>';\n"
         '        document.body.appendChild(cel);\n'
         '        setTimeout(function(){ cel.remove(); }, 1800);\n'
-        '      }\n'
-        '      updateBtn();\n'
-        '    };\n'
+        '    }\n'
         '    updateBtn();\n'
         '  })();\n'
         '  </script>'
