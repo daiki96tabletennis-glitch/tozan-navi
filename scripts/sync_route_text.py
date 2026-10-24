@@ -34,7 +34,7 @@ def rep_route(m):
 
 def dayok(r):
     t = mins(r.get('time'))
-    return t is not None and t <= 510 and '泊' not in (r.get('name') or '') and (r.get('status') or {}).get('state') != 'closed'
+    return t is not None and t < 540 and '泊' not in (r.get('name') or '') and (r.get('status') or {}).get('state') != 'closed'
 
 
 def elev_txt(r):
