@@ -20,7 +20,7 @@
 <link rel="preload" as="image" href="/recommend/images/otter_meditation_v2.png">
 <link rel="preload" as="image" href="/recommend/images/otter_picnic_v2.png">
 <link rel="preload" as="image" href="/recommend/images/otter_wanderer_v2.png">
-<meta name="description" content="山頂で何をする？雨が降ったら？9つの行動パターンの質問であなたの登山タイプを16種類から診断。おすすめの山も提案します。完全無料。">
+<meta name="description" content="山頂で何をする？雨が降ったら？12問の行動パターンの質問であなたの登山タイプを16種類から診断。おすすめの山も提案します。完全無料。">
 <meta property="og:title" content="登山タイプ診断 | 16タイプで診断 - Yamatch">
 <meta property="og:description" content="あなたは「孤高の登山家」？「山ピクニック派」？12問の行動診断で山スタイルを16タイプから判定。">
 <meta property="og:image" content="https://tozan-navi.com/ogp/recommend-top.jpg">
@@ -861,17 +861,18 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   </div>
 </div>
 
-<!-- Q12: 出発地 -->
+<!-- Q12: 計画/自由（2026-10-25 に出発地の質問から変更。全国の人が答えられるように） -->
 <div id="q12" class="step">
   <div class="prog-wrap">
     <div class="prog-top"><span>質問 12 / 12</span><span>100%</span></div>
     <div class="prog-bar"><div class="prog-fill" style="width:100%"></div></div>
   </div>
-  <div class="q-title"><span class="q-emoji">🚉</span>出発地はどこ？</div>
+  <div class="q-title"><span class="q-emoji">☁️</span>週末の天気予報が微妙。どうする？</div>
   <div class="choices">
-    <div class="choice" data-key="dep" data-val="ofuna"><span class="ch-icon">🚃</span><div><div class="ch-main">大船・横浜方面</div><div class="ch-sub">神奈川県東部</div></div></div>
-    <div class="choice" data-key="dep" data-val="shinjuku"><span class="ch-icon">🚃</span><div><div class="ch-main">新宿・渋谷方面</div><div class="ch-sub">東京都心</div></div></div>
-    <div class="choice" data-key="dep" data-val="omiya"><span class="ch-icon">🚃</span><div><div class="ch-main">大宮・浦和方面</div><div class="ch-sub">埼玉県</div></div></div>
+    <div class="choice" data-key="a11" data-val="P"><span class="ch-icon">📊</span><div><div class="ch-main">いくつかの予報を見比べて決める</div><div class="ch-sub">雲の動きや風も確かめたい</div></div><span class="ch-axis ch-p">計画派</span></div>
+    <div class="choice" data-key="a11" data-val="F"><span class="ch-icon">🌤</span><div><div class="ch-main">当日の朝の空を見て決める</div><div class="ch-sub">行けそうなら行く</div></div><span class="ch-axis ch-f">自由派</span></div>
+    <div class="choice" data-key="a11" data-val="P"><span class="ch-icon">🗓</span><div><div class="ch-main">雨のときの代わりの山まで決めておく</div><div class="ch-sub">プランBがあると安心</div></div><span class="ch-axis ch-p">計画派</span></div>
+    <div class="choice" data-key="a11" data-val="F"><span class="ch-icon">🎒</span><div><div class="ch-main">降ったら降ったで、そのとき考える</div><div class="ch-sub">雨の山もきっと楽しい</div></div><span class="ch-axis ch-f">自由派</span></div>
   </div>
 </div>
 
@@ -1259,8 +1260,9 @@ function startQuiz(){current=1;show('q'+current);}
 // 4軸スコアを保存済みのanswers全件から毎回再計算する。
 // （戻るボタンで回答を変更しても、差分加算だと古い回答分のスコアが残ってしまうため、
 //  常にゼロからの再計算に統一して重複加算を防ぐ）
-// 計画性(P/F)・社交性(S/L)は各2問のうち「理想」を聞く主質問を2点、補助質問を1点として
-// 同点(0点)にならないようにしている。
+// 行動/観察・挑戦/癒し・計画/自由は各3問を1点ずつ（奇数なので同点(0点)にならない）。
+// 社交性(S/L)は2問のうち「理想」を聞く主質問を2点、補助質問を1点として同点にならないようにしている。
+// 12問目は出発地の質問だったが、2026-10-25 に計画/自由の質問(a11)に変えた（全国の人が答えられるように）。
 function recalculateAxisScores(){
   axisScore.av = 0;
   axisScore.ch = 0;
@@ -1275,8 +1277,9 @@ function recalculateAxisScores(){
   if(answers.a4) axisScore.ch += answers.a4==='C' ? 1 : -1;
   if(answers.a10) axisScore.ch += answers.a10==='C' ? 1 : -1;
 
-  if(answers.a5) axisScore.pf += answers.a5==='P' ? 2 : -2; // 主質問
-  if(answers.a6) axisScore.pf += answers.a6==='P' ? 1 : -1; // 補助質問
+  if(answers.a5) axisScore.pf += answers.a5==='P' ? 1 : -1;
+  if(answers.a6) axisScore.pf += answers.a6==='P' ? 1 : -1;
+  if(answers.a11) axisScore.pf += answers.a11==='P' ? 1 : -1;
 
   if(answers.a7) axisScore.sl += answers.a7==='S' ? 2 : -2; // 主質問
   if(answers.a8) axisScore.sl += answers.a8==='S' ? 1 : -1; // 補助質問
@@ -1484,15 +1487,12 @@ function getCandidateMountains(coeffLimit){
 function scoreDetail(m,typeCode){
   let score=0; const parts={};
   const add=function(k,p){ score+=p; parts[k]=(parts[k]||0)+p; };
-  const drive=getDrive(m);
   const coeffLimit=answers.coeff||999;
   const v=m.vibes||[];
   const t=m.types||[];
   const a=typeCode[0],c=typeCode[1],p=typeCode[2],s=typeCode[3];
 
-  // ── 距離スコア（出発地との近さ）──
-  const distDecay = (a==='A'&&c==='C') ? 4 : 3;
-  add('dist', Math.max(0, (360-drive)/distDecay));
+  // 出発地との近さの点は 2026-10-25 にやめた（おすすめの山はタイプと体力だけで選ぶ）
 
   // ── 体力マッチ（コース定数）──
   if(coeffLimit<999){
@@ -1581,7 +1581,7 @@ function renderRadar(){
   var vals = [
     toScore(axisScore.av, 3),  // 行動力 AV軸:3問
     toScore(axisScore.ch, 3),  // 挑戦心 CH軸:3問
-    toScore(axisScore.pf, 3),  // 計画性 PF軸:主質問2点+補助1点=最大3
+    toScore(axisScore.pf, 3),  // 計画性 PF軸:3問
     toScore(axisScore.sl, 3)   // 社交性 SL軸:主質問2点+補助1点=最大3
   ];
 
@@ -1708,7 +1708,7 @@ function _doShowResult(opts){
     '</div>'+
     '</div>';
 
-  document.getElementById('result-subtitle').textContent=depLabel+'発 · '+type.name+'におすすめの山';
+  document.getElementById('result-subtitle').textContent=type.name+'におすすめの山';
 
   document.getElementById('result-cards').innerHTML=top3.map((m,i)=>{
     const catClass=m.category==='百名山'?'rb-100':'rb-pop';
@@ -1743,14 +1743,14 @@ function _doShowResult(opts){
       return html;
     })();
     const accessHtml='<div class="access-row">'+
-      '<div class="access-item"><div class="access-label">'+depLabel+'から</div><div class="access-val">'+fmtTime(m.drive)+'</div></div>'+
+      '<div class="access-item"><div class="access-label">エリア</div><div class="access-val">'+(m.area||'—')+'</div></div>'+
       (m.trainAccess?'<div class="access-item"><div class="access-label">電車・バス</div><div class="access-val access-train">'+(typeof m.trainAccess==='string'?m.trainAccess:'公共交通機関でアクセス可')+'</div></div>':'')+'</div>';
     const isFirst=(i===0);
     return '<div class="result-card'+(isFirst?' result-card-top':'')+'">'+
       '<div class="rc-top"><div class="rank-badge '+ranks[i]+'">'+(i+1)+'</div><div style="flex:1"><div class="rc-name">'+m.name+'</div><div class="rc-area">'+m.area+'</div></div></div>'+
       '<div class="rc-meta-row">'+
       '<span class="rc-elev">🏔 '+((m.elevation||0).toLocaleString())+'m</span>'+
-      '<span class="rc-drive-tag">🚗 '+depLabel+'から '+fmtTime(m.drive)+'</span>'+
+      (m.difficulty ? '<span class="rc-drive-tag">'+m.difficulty+'</span>' : '')+
       (m.trainAccess ? '<span class="rc-drive-tag">🚃 電車OK</span>' : '')+
       '</div>'+
       '<div class="rc-badges"><span class="rb '+catClass+'">'+m.category+'</span>'+dayBadge+trainBadge+'</div>'+
@@ -1789,21 +1789,25 @@ function _doShowResult(opts){
     + '診断者の' + type.rare + '%の' + RARE_LABELS[type.affilLevel] + '\n'
     + avLabel + ' × ' + chLabel + '\n'
     + 'あなたのタイプは？→';
-  // 共有URLに実際の診断スコア（4軸・出発地・体力レベル）を埋め込み、
+  // 共有URLに実際の診断スコア（4軸・体力レベル）を埋め込み、
   // 別ブラウザ・別端末で開いても診断直後と同じ結果（タイプ・スコア・おすすめ山）を再現できるようにする。
   const shareParams = new URLSearchParams();
   shareParams.set('av', axisScore.av);
   shareParams.set('ch', axisScore.ch);
   shareParams.set('pf', axisScore.pf);
   shareParams.set('sl', axisScore.sl);
-  if(answers.dep) shareParams.set('dep', answers.dep);
   if(answers.coeff!=null) shareParams.set('coeff', answers.coeff);
-  const shareUrlWithType='https://tozan-navi.com/recommend/'+typeCode+'/?'+shareParams.toString();
-  document.getElementById('share-x').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText)+'&url='+encodeURIComponent(shareUrlWithType);
-  document.getElementById('share-line').href='https://line.me/R/msg/text/?'+encodeURIComponent(shareText+'\n'+shareUrlWithType);
+  // 共有のURLは、検索に出るタイプのページ（/type/◯◯/）にする。スコアつきで開くと、そのページが診断結果の画面へ切り替える
+  const TYPE_SLUG={'ACFL':'variation-seeker','ACFS':'wild-hiker','ACPL':'solitary-climber','ACPS':'mountain-explorer','AHFL':'photo-walker','AHFS':'party-hiker','AHPL':'silent-climber','AHPS':'view-hunter','VCFL':'hidden-hiker','VCFS':'mountain-traveler','VCPL':'deep-mountain-seeker','VCPS':'mountain-researcher','VHFL':'forest-wanderer','VHFS':'mountain-picnic','VHPL':'meditation-hiker','VHPS':'mountain-resort'};
+  const shareUrlWithType='https://tozan-navi.com/type/'+TYPE_SLUG[typeCode]+'/?'+shareParams.toString();
+  const diagStartUrl='https://tozan-navi.com/recommend/';
+  // 共有する文：診断の結果のURLと、その下に診断の最初の画面のURL
+  const shareFull=shareText.replace(/あなたのタイプは？→$/,'')+'\n結果を見る → '+shareUrlWithType+'\n\nあなたも診断（12問・約2分）→ '+diagStartUrl+'\n#登山タイプ診断';
+  document.getElementById('share-x').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareFull);
+  document.getElementById('share-line').href='https://line.me/R/msg/text/?'+encodeURIComponent(shareFull);
   window._shareNative=function(){
-    if(navigator.share){ navigator.share({title:'私は「'+type.name+'」でした！ - Yamatch登山タイプ診断',url:shareUrlWithType}); }
-    else{ navigator.clipboard.writeText(shareUrlWithType).then(()=>alert('URLをコピーしました')); }
+    if(navigator.share){ navigator.share({title:'私は「'+type.name+'」でした！ - Yamatch登山タイプ診断',text:shareFull}).catch(function(){}); }
+    else{ navigator.clipboard.writeText(shareFull).then(()=>alert('結果と診断のURLをコピーしました')); }
   };
 
   // ===== Canvas シェア画像生成（1080×1080） =====
