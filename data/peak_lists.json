@@ -1,0 +1,4912 @@
+{
+ "note": "全国の百名山・二百名山・三百名山・百高山の山名・都道府県・標高。マイページの登頂の手入力で、候補を出し、区分・都道府県・標高を付けるために使う。作り方と出典は CLAUDE.md の「全国の山の一覧」",
+ "checkedAt": "2026-10-24",
+ "sources": {
+  "membership": "ja.wikipedia.org の「日本百名山」「日本二百名山」「日本三百名山」「日本の山一覧 (高さ順)」（百高山＝高さ順の上位100）",
+  "elevation_prefecture": "国土地理院「日本の主な山岳標高（1003山）」2026年3月31日版 https://www.gsi.go.jp/KOKUJYOHO/MOUNTAIN/1003zan20260331.csv（src: gsi）。この一覧に無い山は Wikipedia・Wikidata の値（src: wikipedia）",
+  "prefectures": "国土地理院の一覧は山頂のある都道府県。山域が広がる県は入らない（例：槍ヶ岳＝長野県）"
+ },
+ "lists": {
+  "百名山": "深田久弥『日本百名山』（1964年）",
+  "二百名山": "深田クラブ選定（1984年）。百名山を除く100山",
+  "三百名山": "日本山岳会選定（1978年）。二百名山を除く101山",
+  "百高山": "国土地理院の標高で上位100の山頂"
+ },
+ "peaks": [
+  {
+   "name": "利尻岳",
+   "kana": "りしりだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1721,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "利尻山",
+    "利尻富士"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "羅臼岳",
+   "kana": "らうすだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1660,
+   "lists": [
+    "百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "斜里岳",
+   "kana": "しゃりだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1547,
+   "lists": [
+    "百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "阿寒岳",
+   "kana": "あかんだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1499,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "雌阿寒岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大雪山",
+   "kana": "たいせつざん",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 2291,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "ヌタプカウシペ",
+    "旭岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "トムラウシ",
+   "kana": "とむらうし",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 2141,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "トムラウシ山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "十勝岳",
+   "kana": "とかちだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 2077,
+   "lists": [
+    "百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "幌尻岳",
+   "kana": "ぽろしりだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 2052,
+   "lists": [
+    "百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "後方羊蹄山",
+   "kana": "しりべしやま",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1898,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "羊蹄山",
+    "蝦夷富士"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "岩木山",
+   "kana": "いわきさん",
+   "prefs": [
+    "青森県"
+   ],
+   "elev": 1624,
+   "lists": [
+    "百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "八甲田山",
+   "kana": "はっこうださん",
+   "prefs": [
+    "青森県"
+   ],
+   "elev": 1584,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "大岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "八幡平",
+   "kana": "はちまんたい",
+   "prefs": [
+    "岩手県"
+   ],
+   "elev": 1613,
+   "lists": [
+    "百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "岩手山",
+   "kana": "いわてさん",
+   "prefs": [
+    "岩手県"
+   ],
+   "elev": 2038,
+   "lists": [
+    "百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "早池峰",
+   "kana": "はやちね",
+   "prefs": [
+    "岩手県"
+   ],
+   "elev": 1917,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "早池峰山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "鳥海山",
+   "kana": "ちょうかいさん",
+   "prefs": [
+    "山形県"
+   ],
+   "elev": 2236,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "新山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "月山",
+   "kana": "がっさん",
+   "prefs": [
+    "山形県"
+   ],
+   "elev": 1984,
+   "lists": [
+    "百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "朝日岳",
+   "kana": "あさひだけ",
+   "prefs": [
+    "山形県"
+   ],
+   "elev": 1870,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "大朝日岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "蔵王山",
+   "kana": "ざおうさん",
+   "prefs": [
+    "山形県"
+   ],
+   "elev": 1841,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "蔵王連峰",
+    "熊野岳"
+   ],
+   "siteId": "zaosan",
+   "src": "gsi"
+  },
+  {
+   "name": "飯豊山",
+   "kana": "いいでさん",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 2105,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "iide",
+   "src": "gsi"
+  },
+  {
+   "name": "吾妻山",
+   "kana": "あづまさん",
+   "prefs": [
+    "山形県",
+    "福島県"
+   ],
+   "elev": 2035,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "西吾妻山"
+   ],
+   "siteId": "azuma",
+   "src": "gsi"
+  },
+  {
+   "name": "安達太良山",
+   "kana": "あだたらやま",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 1709,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "鉄山"
+   ],
+   "siteId": "adatara",
+   "src": "gsi"
+  },
+  {
+   "name": "磐梯山",
+   "kana": "ばんだいさん",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 1816,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "bandai",
+   "src": "gsi"
+  },
+  {
+   "name": "会津駒ヶ岳",
+   "kana": "あいづこまがだけ",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 2133,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "aizu_koma",
+   "src": "gsi"
+  },
+  {
+   "name": "那須岳",
+   "kana": "なすだけ",
+   "prefs": [
+    "栃木県"
+   ],
+   "elev": 1915,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "茶臼岳"
+   ],
+   "siteId": "nasu",
+   "src": "gsi"
+  },
+  {
+   "name": "魚沼駒ヶ岳",
+   "kana": "うおぬまこまがたけ",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 2003,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "越後駒ヶ岳"
+   ],
+   "siteId": "echigokoma",
+   "src": "gsi"
+  },
+  {
+   "name": "平ヶ岳",
+   "kana": "ひらがたけ",
+   "prefs": [
+    "群馬県",
+    "新潟県"
+   ],
+   "elev": 2141,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "hiragadake",
+   "src": "gsi"
+  },
+  {
+   "name": "巻機山",
+   "kana": "まきはたやま",
+   "prefs": [
+    "群馬県",
+    "新潟県"
+   ],
+   "elev": 1967,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "makihata",
+   "src": "gsi"
+  },
+  {
+   "name": "燧岳",
+   "kana": "ひうちだけ",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 2356,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "燧ヶ岳",
+    "柴安嵓"
+   ],
+   "siteId": "hiuchigatake",
+   "src": "gsi"
+  },
+  {
+   "name": "至仏山",
+   "kana": "しぶつさん",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 2228,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "shibutsu",
+   "src": "gsi"
+  },
+  {
+   "name": "谷川岳",
+   "kana": "たにがわだけ",
+   "prefs": [
+    "群馬県",
+    "新潟県"
+   ],
+   "elev": 1977,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "オキノ耳"
+   ],
+   "siteId": "tanigawa",
+   "src": "gsi"
+  },
+  {
+   "name": "雨飾山",
+   "kana": "あまかざりやま",
+   "prefs": [
+    "新潟県",
+    "長野県"
+   ],
+   "elev": 1963,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "amakazari",
+   "src": "gsi"
+  },
+  {
+   "name": "苗場山",
+   "kana": "なえばさん",
+   "prefs": [
+    "新潟県",
+    "長野県"
+   ],
+   "elev": 2145,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "naeba",
+   "src": "gsi"
+  },
+  {
+   "name": "妙高山",
+   "kana": "みょうこうさん",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 2454,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "myoko",
+   "src": "gsi"
+  },
+  {
+   "name": "火打山",
+   "kana": "ひうちやま",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 2462,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "hiuchi",
+   "src": "gsi"
+  },
+  {
+   "name": "高妻山",
+   "kana": "たかつまやま",
+   "prefs": [
+    "新潟県",
+    "長野県"
+   ],
+   "elev": 2353,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "takatsuma",
+   "src": "gsi"
+  },
+  {
+   "name": "男体山",
+   "kana": "なんたいさん",
+   "prefs": [
+    "栃木県"
+   ],
+   "elev": 2486,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "nantaisan",
+   "src": "gsi"
+  },
+  {
+   "name": "奥白根山",
+   "kana": "おくしらねさん",
+   "prefs": [
+    "栃木県",
+    "群馬県"
+   ],
+   "elev": 2578,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "日光白根山"
+   ],
+   "siteId": "nikko_shirane",
+   "src": "gsi"
+  },
+  {
+   "name": "皇海山",
+   "kana": "すかいさん",
+   "prefs": [
+    "栃木県",
+    "群馬県"
+   ],
+   "elev": 2144,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "sukai",
+   "src": "gsi"
+  },
+  {
+   "name": "武尊山",
+   "kana": "ほたかやま",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 2158,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "takeson",
+   "src": "gsi"
+  },
+  {
+   "name": "赤城山",
+   "kana": "あかぎやま",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 1828,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "黒檜山"
+   ],
+   "siteId": "akagi",
+   "src": "gsi"
+  },
+  {
+   "name": "草津白根山",
+   "kana": "くさつしらねさん",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 2171,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "本白根山"
+   ],
+   "siteId": "shirane_gunma",
+   "src": "gsi"
+  },
+  {
+   "name": "四阿山",
+   "kana": "あずまやさん",
+   "prefs": [
+    "群馬県",
+    "長野県"
+   ],
+   "elev": 2354,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "azumayasan",
+   "src": "gsi"
+  },
+  {
+   "name": "浅間山",
+   "kana": "あさまやま",
+   "prefs": [
+    "群馬県",
+    "長野県"
+   ],
+   "elev": 2568,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "asama",
+   "src": "gsi"
+  },
+  {
+   "name": "筑波山",
+   "kana": "つくばさん",
+   "prefs": [
+    "茨城県"
+   ],
+   "elev": 877,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "tsukuba",
+   "src": "gsi"
+  },
+  {
+   "name": "白馬岳",
+   "kana": "しろうまだけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2932,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "siteId": "shirouma",
+   "src": "gsi"
+  },
+  {
+   "name": "五竜岳",
+   "kana": "ごりゅうだけ",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2814,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "五龍岳"
+   ],
+   "siteId": "goryudake",
+   "src": "gsi"
+  },
+  {
+   "name": "鹿島槍岳",
+   "kana": "かしまやりだけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2889,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "鹿島槍ヶ岳"
+   ],
+   "siteId": "kashimayari",
+   "src": "gsi"
+  },
+  {
+   "name": "剱岳",
+   "kana": "つるぎだけ",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2999,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "siteId": "tsurugi",
+   "src": "gsi"
+  },
+  {
+   "name": "立山本峰",
+   "kana": "たてやま",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 3015,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "立山",
+    "大汝山",
+    "立山（大汝山）"
+   ],
+   "siteId": "tateyama",
+   "src": "gsi"
+  },
+  {
+   "name": "薬師岳",
+   "kana": "やくしだけ",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2926,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "siteId": "yakushidake",
+   "src": "gsi"
+  },
+  {
+   "name": "黒部五郎岳",
+   "kana": "くろべごろうだけ",
+   "prefs": [
+    "富山県",
+    "岐阜県"
+   ],
+   "elev": 2840,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "中ノ俣岳"
+   ],
+   "siteId": "kurobegorodam",
+   "src": "gsi"
+  },
+  {
+   "name": "黒岳",
+   "kana": "くろだけ",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2986,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "水晶岳",
+    "水晶岳（黒岳）"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "鷲羽岳",
+   "kana": "わしばだけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2924,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "槍ヶ岳",
+   "kana": "やりがたけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 3180,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "siteId": "yari",
+   "src": "gsi"
+  },
+  {
+   "name": "穂高岳",
+   "kana": "ほたかだけ",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 3190,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "奥穂高岳"
+   ],
+   "siteId": "hotaka",
+   "src": "gsi"
+  },
+  {
+   "name": "常念岳",
+   "kana": "じょうねんだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2857,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "siteId": "jonengatake",
+   "src": "gsi"
+  },
+  {
+   "name": "笠ヶ岳",
+   "kana": "かさがだけ",
+   "prefs": [
+    "岐阜県"
+   ],
+   "elev": 2897,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "siteId": "kasagatake",
+   "src": "gsi"
+  },
+  {
+   "name": "焼岳",
+   "kana": "やけだけ",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 2455,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "yakedake",
+   "src": "gsi"
+  },
+  {
+   "name": "乗鞍岳",
+   "kana": "のりくらだけ",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 3026,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "剣ヶ峰"
+   ],
+   "siteId": "norikura",
+   "src": "gsi"
+  },
+  {
+   "name": "御嶽山",
+   "kana": "おんたけさん",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 3067,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "剣ヶ峰"
+   ],
+   "siteId": "ontakesan",
+   "src": "gsi"
+  },
+  {
+   "name": "美ヶ原",
+   "kana": "うつくしがはら",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2034,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "王ヶ頭"
+   ],
+   "siteId": "utsukushigahara",
+   "src": "gsi"
+  },
+  {
+   "name": "霧ヶ峰",
+   "kana": "きりがみね",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 1925,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "車山"
+   ],
+   "siteId": "kirigamine",
+   "src": "gsi"
+  },
+  {
+   "name": "蓼科山",
+   "kana": "たてしなやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2531,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "keirisan",
+   "src": "gsi"
+  },
+  {
+   "name": "八ヶ岳",
+   "kana": "やつがたけ",
+   "prefs": [
+    "山梨県",
+    "長野県"
+   ],
+   "elev": 2899,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "赤岳"
+   ],
+   "siteId": "yatsugatake",
+   "src": "gsi"
+  },
+  {
+   "name": "両神山",
+   "kana": "りょうかみさん",
+   "prefs": [
+    "埼玉県"
+   ],
+   "elev": 1723,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "ryokami",
+   "src": "gsi"
+  },
+  {
+   "name": "雲取山",
+   "kana": "くもとりやま",
+   "prefs": [
+    "埼玉県",
+    "東京都"
+   ],
+   "elev": 2017,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "kumotori",
+   "src": "gsi"
+  },
+  {
+   "name": "甲武信岳",
+   "kana": "こぶしだけ",
+   "prefs": [
+    "埼玉県",
+    "山梨県",
+    "長野県"
+   ],
+   "elev": 2475,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "甲武信ヶ岳"
+   ],
+   "siteId": "kobushigatake",
+   "src": "gsi"
+  },
+  {
+   "name": "金峰山",
+   "kana": "きんぷさん",
+   "prefs": [
+    "山梨県",
+    "長野県"
+   ],
+   "elev": 2599,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "kinpusan",
+   "src": "gsi"
+  },
+  {
+   "name": "瑞牆山",
+   "kana": "みずがきやま",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 2230,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "mizugaki",
+   "src": "gsi"
+  },
+  {
+   "name": "大菩薩岳",
+   "kana": "だいぼさつだけ",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 2057,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "大菩薩嶺"
+   ],
+   "siteId": "okutama",
+   "src": "gsi"
+  },
+  {
+   "name": "丹沢山",
+   "kana": "たんざわさん",
+   "prefs": [
+    "神奈川県"
+   ],
+   "elev": 1673,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "蛭ヶ岳"
+   ],
+   "siteId": "hirugata",
+   "src": "gsi"
+  },
+  {
+   "name": "富士山",
+   "kana": "ふじさん",
+   "prefs": [
+    "山梨県",
+    "静岡県"
+   ],
+   "elev": 3776,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "剣ヶ峯"
+   ],
+   "siteId": "fuji",
+   "src": "gsi"
+  },
+  {
+   "name": "天城山",
+   "kana": "あまぎさん",
+   "prefs": [
+    "静岡県"
+   ],
+   "elev": 1405,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "万三郎岳"
+   ],
+   "siteId": "amagi",
+   "src": "gsi"
+  },
+  {
+   "name": "木曽駒ヶ岳",
+   "kana": "きそこまがたけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2956,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "siteId": "kisokoma",
+   "src": "gsi"
+  },
+  {
+   "name": "空木岳",
+   "kana": "うつぎだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2864,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "siteId": "utsugi",
+   "src": "gsi"
+  },
+  {
+   "name": "恵那山",
+   "kana": "えなさん",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 2191,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "enasan",
+   "src": "gsi"
+  },
+  {
+   "name": "甲斐駒ヶ岳",
+   "kana": "かいこまがたけ",
+   "prefs": [
+    "山梨県",
+    "長野県"
+   ],
+   "elev": 2967,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "siteId": "komagatake",
+   "src": "gsi"
+  },
+  {
+   "name": "仙丈岳",
+   "kana": "せんじょうだけ",
+   "prefs": [
+    "山梨県",
+    "長野県"
+   ],
+   "elev": 3033,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "仙丈ヶ岳"
+   ],
+   "siteId": "senjogatake",
+   "src": "gsi"
+  },
+  {
+   "name": "鳳凰山",
+   "kana": "ほうおうざん",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 2840,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "houou",
+   "src": "wikipedia"
+  },
+  {
+   "name": "北岳",
+   "kana": "きただけ",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 3193,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "siteId": "kitadake",
+   "src": "gsi"
+  },
+  {
+   "name": "間ノ岳",
+   "kana": "あいのだけ",
+   "prefs": [
+    "山梨県",
+    "静岡県"
+   ],
+   "elev": 3190,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "siteId": "ainodake",
+   "src": "gsi"
+  },
+  {
+   "name": "塩見岳",
+   "kana": "しおみだけ",
+   "prefs": [
+    "長野県",
+    "静岡県"
+   ],
+   "elev": 3052,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "siteId": "shiomidake",
+   "src": "gsi"
+  },
+  {
+   "name": "悪沢岳",
+   "kana": "わるさわだけ",
+   "prefs": [
+    "静岡県"
+   ],
+   "elev": 3141,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "荒川岳",
+    "東岳",
+    "悪沢岳（荒川東岳）",
+    "荒川東岳"
+   ],
+   "siteId": "arakawadake",
+   "src": "gsi"
+  },
+  {
+   "name": "赤石岳",
+   "kana": "あかいしだけ",
+   "prefs": [
+    "長野県",
+    "静岡県"
+   ],
+   "elev": 3121,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "siteId": "akaisidake",
+   "src": "gsi"
+  },
+  {
+   "name": "聖岳",
+   "kana": "ひじりだけ",
+   "prefs": [
+    "長野県",
+    "静岡県"
+   ],
+   "elev": 3013,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "前聖岳"
+   ],
+   "siteId": "hijiridade",
+   "src": "gsi"
+  },
+  {
+   "name": "光岳",
+   "kana": "てかりだけ",
+   "prefs": [
+    "長野県",
+    "静岡県"
+   ],
+   "elev": 2592,
+   "lists": [
+    "百名山"
+   ],
+   "siteId": "terkari",
+   "src": "gsi"
+  },
+  {
+   "name": "白山",
+   "kana": "はくさん",
+   "prefs": [
+    "石川県",
+    "岐阜県"
+   ],
+   "elev": 2702,
+   "lists": [
+    "百名山",
+    "百高山"
+   ],
+   "aliases": [
+    "御前峰",
+    "白山（御前峰）"
+   ],
+   "siteId": "hakusan",
+   "src": "gsi"
+  },
+  {
+   "name": "荒島岳",
+   "kana": "あらしまだけ",
+   "prefs": [
+    "福井県"
+   ],
+   "elev": 1523,
+   "lists": [
+    "百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "伊吹山",
+   "kana": "いぶきやま",
+   "prefs": [
+    "滋賀県"
+   ],
+   "elev": 1377,
+   "lists": [
+    "百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大台ヶ原山",
+   "kana": "おおだいがはらやま",
+   "prefs": [
+    "三重県",
+    "奈良県"
+   ],
+   "elev": 1695,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "日出ヶ岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大峰山",
+   "kana": "おおみねさん",
+   "prefs": [
+    "奈良県"
+   ],
+   "elev": 1915,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "八経ヶ岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大山",
+   "kana": "だいせん",
+   "prefs": [
+    "鳥取県"
+   ],
+   "elev": 1729,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "剣ヶ峰"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "剣山",
+   "kana": "つるぎさん",
+   "prefs": [
+    "徳島県"
+   ],
+   "elev": 1955,
+   "lists": [
+    "百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "石鎚山",
+   "kana": "いしづちさん",
+   "prefs": [
+    "愛媛県"
+   ],
+   "elev": 1982,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "天狗岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "九重山",
+   "kana": "くじゅうさん",
+   "prefs": [
+    "大分県"
+   ],
+   "elev": 1791,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "中岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "祖母山",
+   "kana": "そぼさん",
+   "prefs": [
+    "大分県",
+    "宮崎県"
+   ],
+   "elev": 1756,
+   "lists": [
+    "百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "阿蘇山",
+   "kana": "あそさん",
+   "prefs": [
+    "熊本県"
+   ],
+   "elev": 1592,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "高岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "霧島山",
+   "kana": "きりしまやま",
+   "prefs": [
+    "宮崎県",
+    "鹿児島県"
+   ],
+   "elev": 1700,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "韓国岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "開聞岳",
+   "kana": "かいもんだけ",
+   "prefs": [
+    "鹿児島県"
+   ],
+   "elev": 924,
+   "lists": [
+    "百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "宮ノ浦岳",
+   "kana": "みやのうらだけ",
+   "prefs": [
+    "鹿児島県"
+   ],
+   "elev": 1936,
+   "lists": [
+    "百名山"
+   ],
+   "aliases": [
+    "宮之浦岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "天塩岳",
+   "kana": "てしおだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1557,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "石狩岳",
+   "kana": "いしかりだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1967,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "ニペソツ山",
+   "kana": "にぺそつやま",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 2013,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "カムイエクウチカウシ山",
+   "kana": "かむいえくうちかうしやま",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1979,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "ペテガリ岳",
+   "kana": "ぺてがりだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1736,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "芦別岳",
+   "kana": "あしべつだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1726,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "夕張岳",
+   "kana": "ゆうばりだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1668,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "暑寒別岳",
+   "kana": "しょかんべつだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1491,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "樽前山",
+   "kana": "たるまえさん",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1041,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "駒ケ岳",
+   "kana": "こまがたけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1131,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "北海道駒ヶ岳",
+    "剣ヶ峯"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "白神岳",
+   "kana": "しらかみだけ",
+   "prefs": [
+    "青森県"
+   ],
+   "elev": 1235,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "姫神山",
+   "kana": "ひめかみさん",
+   "prefs": [
+    "岩手県"
+   ],
+   "elev": 1123,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "秋田駒ヶ岳",
+   "kana": "あきたこまがたけ",
+   "prefs": [
+    "秋田県"
+   ],
+   "elev": 1637,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "男女岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "和賀岳",
+   "kana": "わがだけ",
+   "prefs": [
+    "岩手県",
+    "秋田県"
+   ],
+   "elev": 1439,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "焼石岳",
+   "kana": "やけいしだけ",
+   "prefs": [
+    "岩手県"
+   ],
+   "elev": 1547,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "栗駒山",
+   "kana": "くりこまやま",
+   "prefs": [
+    "岩手県",
+    "宮城県"
+   ],
+   "elev": 1626,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "須川岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "神室山",
+   "kana": "かむろさん",
+   "prefs": [
+    "秋田県",
+    "山形県"
+   ],
+   "elev": 1365,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "森吉山",
+   "kana": "もりよしざん",
+   "prefs": [
+    "秋田県"
+   ],
+   "elev": 1454,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "以東岳",
+   "kana": "いとうだけ",
+   "prefs": [
+    "山形県",
+    "新潟県"
+   ],
+   "elev": 1772,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "船形山",
+   "kana": "ふながたやま",
+   "prefs": [
+    "宮城県",
+    "山形県"
+   ],
+   "elev": 1500,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "御所山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "朳差岳",
+   "kana": "えぶりさしだけ",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 1636,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "?差岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "二王子岳",
+   "kana": "にのうじだけ",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 1420,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "御神楽岳",
+   "kana": "みかぐらだけ",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 1386,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "守門岳",
+   "kana": "すもんだけ",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 1537,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "中ノ岳",
+   "kana": "なかのだけ",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 2085,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "八海山",
+   "kana": "はっかいさん",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 1778,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "入道岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "荒沢岳",
+   "kana": "あらさわだけ",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 1968,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "arasawadake",
+   "src": "gsi"
+  },
+  {
+   "name": "佐武流山",
+   "kana": "さぶりゅうやま",
+   "prefs": [
+    "新潟県",
+    "長野県"
+   ],
+   "elev": 2192,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "鳥甲山",
+   "kana": "とりかぶとやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2038,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "帝釈山",
+   "kana": "たいしゃくさん",
+   "prefs": [
+    "福島県",
+    "栃木県"
+   ],
+   "elev": 2060,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "会津朝日岳",
+   "kana": "あいづあさひだけ",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 1624,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "女峰山",
+   "kana": "にょほうさん",
+   "prefs": [
+    "栃木県"
+   ],
+   "elev": 2483,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "仙ノ倉山",
+   "kana": "せんのくらやま",
+   "prefs": [
+    "群馬県",
+    "新潟県"
+   ],
+   "elev": 2026,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "白砂山",
+   "kana": "しらすなやま",
+   "prefs": [
+    "群馬県",
+    "長野県"
+   ],
+   "elev": 2140,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "shirasunayama",
+   "src": "gsi"
+  },
+  {
+   "name": "岩菅山",
+   "kana": "いわすげやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2295,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "iwasugesan",
+   "src": "gsi"
+  },
+  {
+   "name": "浅間隠山",
+   "kana": "あさまかくしやま",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 1757,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "asamamakurayama",
+   "src": "gsi"
+  },
+  {
+   "name": "榛名山",
+   "kana": "はるなさん",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 1449,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "掃部ヶ岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "妙義山",
+   "kana": "みょうぎさん",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 1104,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "相馬岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "荒船山",
+   "kana": "あらふねやま",
+   "prefs": [
+    "群馬県",
+    "長野県"
+   ],
+   "elev": 1423,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "arafune",
+   "src": "gsi"
+  },
+  {
+   "name": "御座山",
+   "kana": "おぐらさん",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2112,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "kazahariyama",
+   "src": "gsi"
+  },
+  {
+   "name": "武甲山",
+   "kana": "ぶこうさん",
+   "prefs": [
+    "埼玉県"
+   ],
+   "elev": 1304,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "bukosan",
+   "src": "gsi"
+  },
+  {
+   "name": "白石山",
+   "kana": "はくせきさん",
+   "prefs": [
+    "埼玉県"
+   ],
+   "elev": 2036,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "和名倉山"
+   ],
+   "siteId": "nakawarayama",
+   "src": "gsi"
+  },
+  {
+   "name": "茅ヶ岳",
+   "kana": "かやがだけ",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 1704,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "kayagatake",
+   "src": "gsi"
+  },
+  {
+   "name": "乾徳山",
+   "kana": "けんとくさん",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 2031,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "kentoku",
+   "src": "gsi"
+  },
+  {
+   "name": "大岳山",
+   "kana": "おおだけさん",
+   "prefs": [
+    "東京都"
+   ],
+   "elev": 1266,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "otake",
+   "src": "gsi"
+  },
+  {
+   "name": "三ッ峠山",
+   "kana": "みつとうげやま",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 1785,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "三つ峠",
+    "三ツ峠山"
+   ],
+   "siteId": "mitsutoge",
+   "src": "gsi"
+  },
+  {
+   "name": "御正体山",
+   "kana": "みしょうたいやま",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 1681,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "毛無山",
+   "kana": "けなしさん",
+   "prefs": [
+    "山梨県",
+    "静岡県"
+   ],
+   "elev": 1964,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "kenashiyama",
+   "src": "gsi"
+  },
+  {
+   "name": "愛鷹山",
+   "kana": "あしたかやま",
+   "prefs": [
+    "静岡県"
+   ],
+   "elev": 1504,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "越前岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "天狗岳",
+   "kana": "てんぐだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2646,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "黒姫山",
+   "kana": "くろひめやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2053,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "kurohimesan",
+   "src": "gsi"
+  },
+  {
+   "name": "戸隠山",
+   "kana": "とがくしやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 1904,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "飯縄山",
+   "kana": "いいづなやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 1917,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "飯綱山"
+   ],
+   "siteId": "iizunasan",
+   "src": "gsi"
+  },
+  {
+   "name": "雪倉岳",
+   "kana": "ゆきくらだけ",
+   "prefs": [
+    "新潟県",
+    "富山県"
+   ],
+   "elev": 2611,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "針ノ木岳",
+   "kana": "はりのきだけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2821,
+   "lists": [
+    "二百名山",
+    "百高山"
+   ],
+   "siteId": "harinokidake",
+   "src": "gsi"
+  },
+  {
+   "name": "烏帽子岳",
+   "kana": "えぼしだけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2628,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "eboshidake_kita",
+   "src": "gsi"
+  },
+  {
+   "name": "赤牛岳",
+   "kana": "あかうしだけ",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2864,
+   "lists": [
+    "二百名山",
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "毛勝山",
+   "kana": "けかちやま",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2414,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "奥大日岳",
+   "kana": "おくだいにちだけ",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2611,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "有明山",
+   "kana": "ありあけやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2268,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "arikayama",
+   "src": "gsi"
+  },
+  {
+   "name": "餓鬼岳",
+   "kana": "がきだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2647,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "gakedake",
+   "src": "gsi"
+  },
+  {
+   "name": "燕岳",
+   "kana": "つばくろだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2763,
+   "lists": [
+    "二百名山",
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大天井岳",
+   "kana": "おてんしょうだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2922,
+   "lists": [
+    "二百名山",
+    "百高山"
+   ],
+   "siteId": "otenshoudake",
+   "src": "gsi"
+  },
+  {
+   "name": "霞沢岳",
+   "kana": "かすみざわだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2646,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "鋸岳",
+   "kana": "のこぎりだけ",
+   "prefs": [
+    "山梨県",
+    "長野県"
+   ],
+   "elev": 2685,
+   "lists": [
+    "二百名山",
+    "百高山"
+   ],
+   "siteId": "nokogiriyama",
+   "src": "gsi"
+  },
+  {
+   "name": "農鳥岳",
+   "kana": "のうとりだけ",
+   "prefs": [
+    "山梨県",
+    "静岡県"
+   ],
+   "elev": 3026,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "noutori",
+   "src": "gsi"
+  },
+  {
+   "name": "上河内岳",
+   "kana": "かみこうちだけ",
+   "prefs": [
+    "静岡県"
+   ],
+   "elev": 2803,
+   "lists": [
+    "二百名山",
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "池口岳",
+   "kana": "いけぐちだけ",
+   "prefs": [
+    "長野県",
+    "静岡県"
+   ],
+   "elev": 2392,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大無間山",
+   "kana": "だいむげんざん",
+   "prefs": [
+    "静岡県"
+   ],
+   "elev": 2330,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "櫛形山",
+   "kana": "くしがたやま",
+   "prefs": [
+    "山梨県",
+    "長野県"
+   ],
+   "elev": 2052,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "笊ヶ岳",
+   "kana": "ざるがたけ",
+   "prefs": [
+    "山梨県",
+    "静岡県"
+   ],
+   "elev": 2629,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "yarigatake2",
+   "src": "gsi"
+  },
+  {
+   "name": "七面山",
+   "kana": "しちめんざん",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 1989,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "nanaitsurasan",
+   "src": "gsi"
+  },
+  {
+   "name": "小秀山",
+   "kana": "こひでやま",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 1982,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "経ヶ岳",
+   "kana": "きょうがたけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2296,
+   "lists": [
+    "二百名山"
+   ],
+   "siteId": "keizandake",
+   "src": "gsi"
+  },
+  {
+   "name": "南駒ヶ岳",
+   "kana": "みなみこまがたけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2841,
+   "lists": [
+    "二百名山",
+    "百高山"
+   ],
+   "siteId": "minamikomagatake",
+   "src": "gsi"
+  },
+  {
+   "name": "安平路山",
+   "kana": "あんぺいじやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2363,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "金剛堂山",
+   "kana": "こんごうどうざん",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 1650,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "笈ヶ岳",
+   "kana": "おいずるがだけ",
+   "prefs": [
+    "富山県",
+    "石川県",
+    "岐阜県"
+   ],
+   "elev": 1841,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大日ヶ岳",
+   "kana": "だいにちがたけ",
+   "prefs": [
+    "岐阜県"
+   ],
+   "elev": 1709,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "位山",
+   "kana": "くらいやま",
+   "prefs": [
+    "岐阜県"
+   ],
+   "elev": 1529,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "能郷白山",
+   "kana": "のうごうはくさん",
+   "prefs": [
+    "岐阜県"
+   ],
+   "elev": 1617,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "権現山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "御在所山",
+   "kana": "ございしょやま",
+   "prefs": [
+    "三重県",
+    "滋賀県"
+   ],
+   "elev": 1212,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "御在所岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "釈迦ヶ岳",
+   "kana": "しゃかがだけ",
+   "prefs": [
+    "奈良県"
+   ],
+   "elev": 1800,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "伯母子岳",
+   "kana": "おばこだけ",
+   "prefs": [
+    "奈良県"
+   ],
+   "elev": 1344,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "金剛山",
+   "kana": "こんごうざん",
+   "prefs": [
+    "奈良県"
+   ],
+   "elev": 1125,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "武奈ヶ岳",
+   "kana": "ぶながだけ",
+   "prefs": [
+    "滋賀県"
+   ],
+   "elev": 1214,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "氷ノ山",
+   "kana": "ひょうのせん",
+   "prefs": [
+    "兵庫県",
+    "鳥取県"
+   ],
+   "elev": 1510,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "須賀ノ山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "上蒜山",
+   "kana": "かみひるぜん",
+   "prefs": [
+    "鳥取県",
+    "岡山県"
+   ],
+   "elev": 1202,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "蒜山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "三瓶山",
+   "kana": "さんべさん",
+   "prefs": [
+    "島根県"
+   ],
+   "elev": 1126,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "男三瓶山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "三嶺",
+   "kana": "みうね",
+   "prefs": [
+    "徳島県",
+    "高知県"
+   ],
+   "elev": 1894,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "東赤石山",
+   "kana": "ひがしあかいしやま",
+   "prefs": [
+    "愛媛県"
+   ],
+   "elev": 1710,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "笹ヶ峰",
+   "kana": "ささがみね",
+   "prefs": [
+    "愛媛県",
+    "高知県"
+   ],
+   "elev": 1860,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "英彦山",
+   "kana": "ひこさん",
+   "prefs": [
+    "福岡県",
+    "大分県"
+   ],
+   "elev": 1199,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "雲仙岳",
+   "kana": "うんぜんだけ",
+   "prefs": [
+    "長崎県"
+   ],
+   "elev": 1483,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "平成新山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "由布岳",
+   "kana": "ゆふだけ",
+   "prefs": [
+    "大分県"
+   ],
+   "elev": 1583,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "豊後富士"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大崩山",
+   "kana": "おおくえやま",
+   "prefs": [
+    "宮崎県"
+   ],
+   "elev": 1644,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "市房山",
+   "kana": "いちふさやま",
+   "prefs": [
+    "熊本県",
+    "宮崎県"
+   ],
+   "elev": 1720,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "尾鈴山",
+   "kana": "おすずやま",
+   "prefs": [
+    "宮崎県"
+   ],
+   "elev": 1405,
+   "lists": [
+    "二百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "高千穂峰",
+   "kana": "たかちほみね",
+   "prefs": [
+    "宮崎県"
+   ],
+   "elev": 1573,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "霧島山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "桜島",
+   "kana": "さくらじま",
+   "prefs": [
+    "鹿児島県"
+   ],
+   "elev": 1117,
+   "lists": [
+    "二百名山"
+   ],
+   "aliases": [
+    "北岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "ニセイカウシュッペ山",
+   "kana": "にせいかうしゅっぺやま",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1883,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "オプタテシケ山",
+   "kana": "おぷたてしけやま",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 2012,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "神威岳",
+   "kana": "かむいだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1600,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "余市岳",
+   "kana": "よいちだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1488,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "ニセコアンヌプリ",
+   "kana": "にせこあんぬぷり",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1308,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "狩場山",
+   "kana": "かりばやま",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1520,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大千軒岳",
+   "kana": "だいせんげんだけ",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1072,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "五葉山",
+   "kana": "ごようざん",
+   "prefs": [
+    "岩手県"
+   ],
+   "elev": 1351,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "乳頭山（烏帽子岳）",
+   "kana": "にゅうとうさんえぼしだけ",
+   "prefs": [
+    "岩手県",
+    "秋田県"
+   ],
+   "elev": 1478,
+   "lists": [
+    "三百名山"
+   ],
+   "aliases": [
+    "乳頭山",
+    "烏帽子岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "太平山",
+   "kana": "たいへいざん",
+   "prefs": [
+    "秋田県"
+   ],
+   "elev": 1170,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "摩耶山",
+   "kana": "まやさん",
+   "prefs": [
+    "山形県"
+   ],
+   "elev": 1020,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "祝瓶山",
+   "kana": "いわいがめやま",
+   "prefs": [
+    "山形県"
+   ],
+   "elev": 1417,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "泉ヶ岳",
+   "kana": "いずみがだけ",
+   "prefs": [
+    "宮城県"
+   ],
+   "elev": 1175,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "一切経山",
+   "kana": "いっさいきょうざん",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 1949,
+   "lists": [
+    "三百名山"
+   ],
+   "aliases": [
+    "東吾妻山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大滝根山",
+   "kana": "おおたきねやま",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 1192,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "八溝山",
+   "kana": "やみぞさん",
+   "prefs": [
+    "福島県",
+    "茨城県"
+   ],
+   "elev": 1022,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "二岐山",
+   "kana": "ふたまたやま",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 1544,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "wikipedia"
+  },
+  {
+   "name": "男鹿岳",
+   "kana": "おじかたけ",
+   "prefs": [
+    "福島県",
+    "栃木県"
+   ],
+   "elev": 1777,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "荒海山",
+   "kana": "あらかいざん",
+   "prefs": [
+    "福島県",
+    "栃木県"
+   ],
+   "elev": 1581,
+   "lists": [
+    "三百名山"
+   ],
+   "aliases": [
+    "太郎岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "七ヶ岳",
+   "kana": "ななつがたけ",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 1636,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "高原山",
+   "kana": "たかはらやま",
+   "prefs": [
+    "栃木県"
+   ],
+   "elev": 1795,
+   "lists": [
+    "三百名山"
+   ],
+   "aliases": [
+    "釈迦ヶ岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "太郎山",
+   "kana": "たろうさん",
+   "prefs": [
+    "栃木県"
+   ],
+   "elev": 2368,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "袈裟丸山",
+   "kana": "けさまるやま",
+   "prefs": [
+    "栃木県",
+    "群馬県"
+   ],
+   "elev": 1961,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "国師ヶ岳",
+   "kana": "こくしがたけ",
+   "prefs": [
+    "山梨県",
+    "長野県"
+   ],
+   "elev": 2592,
+   "lists": [
+    "三百名山"
+   ],
+   "aliases": [
+    "国師岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "三頭山",
+   "kana": "みとうさん",
+   "prefs": [
+    "東京都"
+   ],
+   "elev": 1531,
+   "lists": [
+    "三百名山"
+   ],
+   "siteId": "mitosaan",
+   "src": "gsi"
+  },
+  {
+   "name": "大山",
+   "kana": "おおやま",
+   "prefs": [
+    "神奈川県"
+   ],
+   "elev": 1252,
+   "lists": [
+    "三百名山"
+   ],
+   "siteId": "oyama",
+   "src": "gsi"
+  },
+  {
+   "name": "金時山",
+   "kana": "きんときざん",
+   "prefs": [
+    "神奈川県",
+    "静岡県"
+   ],
+   "elev": 1212,
+   "lists": [
+    "三百名山"
+   ],
+   "aliases": [
+    "箱根山"
+   ],
+   "siteId": "kintoki",
+   "src": "gsi"
+  },
+  {
+   "name": "箱根山",
+   "kana": "はこねやま",
+   "prefs": [
+    "神奈川県"
+   ],
+   "elev": 1438,
+   "lists": [
+    "三百名山"
+   ],
+   "aliases": [
+    "神山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "黒岳",
+   "kana": "くろだけ",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 1793,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "鉢伏山",
+   "kana": "はちぶせやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 1929,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "粟ヶ岳",
+   "kana": "あわがたけ",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 1292,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "浅草岳",
+   "kana": "あさくさだけ",
+   "prefs": [
+    "福島県",
+    "新潟県"
+   ],
+   "elev": 1585,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "金北山",
+   "kana": "きんぽくさん",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 1172,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "米山",
+   "kana": "よねやま",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 992,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "景鶴山",
+   "kana": "けいづるやま",
+   "prefs": [
+    "群馬県",
+    "新潟県"
+   ],
+   "elev": 2004,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "朝日岳",
+   "kana": "あさひだけ",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 1945,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "笠ヶ岳",
+   "kana": "かさがたけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2076,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "横手山",
+   "kana": "よこてやま",
+   "prefs": [
+    "群馬県",
+    "長野県"
+   ],
+   "elev": 2307,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "諏訪山",
+   "kana": "すわやま",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 1549,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "wikipedia"
+  },
+  {
+   "name": "斑尾山",
+   "kana": "まだらおやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 1381,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "焼山",
+   "kana": "やけやま",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 2400,
+   "lists": [
+    "三百名山"
+   ],
+   "aliases": [
+    "新潟焼山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "黒姫山",
+   "kana": "くろひめやま",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 1221,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "朝日岳",
+   "kana": "あさひだけ",
+   "prefs": [
+    "新潟県",
+    "富山県"
+   ],
+   "elev": 2418,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "唐松岳",
+   "kana": "からまつだけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2696,
+   "lists": [
+    "三百名山",
+    "百高山"
+   ],
+   "siteId": "karamatsu",
+   "src": "gsi"
+  },
+  {
+   "name": "爺ヶ岳",
+   "kana": "じいがたけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2670,
+   "lists": [
+    "三百名山",
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "蓮華岳",
+   "kana": "れんげだけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2799,
+   "lists": [
+    "三百名山",
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "野口五郎岳",
+   "kana": "のぐちごろうだけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2924,
+   "lists": [
+    "三百名山",
+    "百高山"
+   ],
+   "siteId": "noguchigoro",
+   "src": "gsi"
+  },
+  {
+   "name": "三俣蓮華岳",
+   "kana": "みつまたれんげだけ",
+   "prefs": [
+    "富山県",
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 2841,
+   "lists": [
+    "三百名山",
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "鍬崎山",
+   "kana": "くわさきやま",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2090,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "鉢盛山",
+   "kana": "はちもりやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2447,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "入笠山",
+   "kana": "にゅうがさやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 1955,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "アサヨ峰",
+   "kana": "あさよみね",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 2799,
+   "lists": [
+    "三百名山",
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "奥茶臼山",
+   "kana": "おくちゃうすやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2474,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "茶臼岳",
+   "kana": "ちゃうすだけ",
+   "prefs": [
+    "長野県",
+    "静岡県"
+   ],
+   "elev": 2604,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "黒法師岳",
+   "kana": "くろぼうしがたけ",
+   "prefs": [
+    "静岡県"
+   ],
+   "elev": 2068,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "高塚山",
+   "kana": "たかつかやま",
+   "prefs": [
+    "静岡県"
+   ],
+   "elev": 1621,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "熊伏山",
+   "kana": "くまぶしやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 1654,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "山伏",
+   "kana": "やんぶし",
+   "prefs": [
+    "山梨県",
+    "静岡県"
+   ],
+   "elev": 2013,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "奥三界岳",
+   "kana": "おくさんがいだけ",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 1811,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "越百山",
+   "kana": "こすもやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2614,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "南木曽岳",
+   "kana": "なぎそだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 1679,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "白木峰",
+   "kana": "しらきみね",
+   "prefs": [
+    "富山県",
+    "岐阜県"
+   ],
+   "elev": 1596,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "人形山",
+   "kana": "にんぎょうやま",
+   "prefs": [
+    "富山県",
+    "岐阜県"
+   ],
+   "elev": 1726,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "医王山",
+   "kana": "いおうぜん",
+   "prefs": [
+    "富山県",
+    "石川県"
+   ],
+   "elev": 939,
+   "lists": [
+    "三百名山"
+   ],
+   "aliases": [
+    "奥医王山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大門山",
+   "kana": "だいもんざん",
+   "prefs": [
+    "富山県",
+    "石川県"
+   ],
+   "elev": 1571,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大笠山",
+   "kana": "おおがさやま",
+   "prefs": [
+    "富山県",
+    "石川県"
+   ],
+   "elev": 1822,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "三方岩岳",
+   "kana": "さんぽういわだけ",
+   "prefs": [
+    "石川県",
+    "岐阜県"
+   ],
+   "elev": 1736,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "猿ヶ馬場山",
+   "kana": "さるがばんばやま",
+   "prefs": [
+    "岐阜県"
+   ],
+   "elev": 1875,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "経ヶ岳",
+   "kana": "きょうがだけ",
+   "prefs": [
+    "福井県"
+   ],
+   "elev": 1625,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "野伏ヶ岳",
+   "kana": "のぶせがだけ",
+   "prefs": [
+    "福井県",
+    "岐阜県"
+   ],
+   "elev": 1674,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "鷲ヶ岳",
+   "kana": "わしがたけ",
+   "prefs": [
+    "岐阜県"
+   ],
+   "elev": 1671,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "川上岳",
+   "kana": "かおれだけ",
+   "prefs": [
+    "岐阜県"
+   ],
+   "elev": 1625,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "冠山",
+   "kana": "かんむりやま",
+   "prefs": [
+    "福井県",
+    "岐阜県"
+   ],
+   "elev": 1256,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "藤原岳",
+   "kana": "ふじわらだけ",
+   "prefs": [
+    "三重県",
+    "滋賀県"
+   ],
+   "elev": 1144,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "wikipedia"
+  },
+  {
+   "name": "倶留尊山",
+   "kana": "くろそやま",
+   "prefs": [
+    "三重県",
+    "奈良県"
+   ],
+   "elev": 1037,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "三峰山",
+   "kana": "みうねやま",
+   "prefs": [
+    "三重県",
+    "奈良県"
+   ],
+   "elev": 1235,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "高見山",
+   "kana": "たかみやま",
+   "prefs": [
+    "三重県",
+    "奈良県"
+   ],
+   "elev": 1248,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "竜門岳",
+   "kana": "りゅうもんがだけ",
+   "prefs": [
+    "奈良県"
+   ],
+   "elev": 904,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "護摩壇山",
+   "kana": "ごまだんざん",
+   "prefs": [
+    "奈良県",
+    "和歌山県"
+   ],
+   "elev": 1372,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "葛城山",
+   "kana": "かつらぎさん",
+   "prefs": [
+    "大阪府",
+    "奈良県"
+   ],
+   "elev": 958,
+   "lists": [
+    "三百名山"
+   ],
+   "aliases": [
+    "大和葛城山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "蓬莱山",
+   "kana": "ほうらいさん",
+   "prefs": [
+    "滋賀県"
+   ],
+   "elev": 1174,
+   "lists": [
+    "三百名山"
+   ],
+   "aliases": [
+    "蓬萊山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "比叡山",
+   "kana": "ひえいざん",
+   "prefs": [
+    "滋賀県",
+    "京都府"
+   ],
+   "elev": 848,
+   "lists": [
+    "三百名山"
+   ],
+   "aliases": [
+    "大比叡"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "愛宕山",
+   "kana": "あたごやま",
+   "prefs": [
+    "京都府"
+   ],
+   "elev": 924,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "六甲山",
+   "kana": "ろっこうさん",
+   "prefs": [
+    "兵庫県"
+   ],
+   "elev": 931,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "山上ヶ岳",
+   "kana": "さんじょうがたけ",
+   "prefs": [
+    "奈良県"
+   ],
+   "elev": 1719,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "扇ノ山",
+   "kana": "おうぎのせん",
+   "prefs": [
+    "鳥取県"
+   ],
+   "elev": 1310,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "那岐山",
+   "kana": "なぎさん",
+   "prefs": [
+    "鳥取県",
+    "岡山県"
+   ],
+   "elev": 1254,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "道後山",
+   "kana": "どうごやま",
+   "prefs": [
+    "鳥取県",
+    "広島県"
+   ],
+   "elev": 1271,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "吾妻山",
+   "kana": "あづまやま",
+   "prefs": [
+    "島根県",
+    "広島県"
+   ],
+   "elev": 1238,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "wikipedia"
+  },
+  {
+   "name": "伊予富士",
+   "kana": "いよふじ",
+   "prefs": [
+    "愛媛県",
+    "高知県"
+   ],
+   "elev": 1756,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "瓶ヶ森",
+   "kana": "かめがもり",
+   "prefs": [
+    "愛媛県"
+   ],
+   "elev": 1896,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "三本杭",
+   "kana": "さんぼんぐい",
+   "prefs": [
+    "愛媛県"
+   ],
+   "elev": 1226,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "篠山",
+   "kana": "ささやま",
+   "prefs": [
+    "愛媛県",
+    "高知県"
+   ],
+   "elev": 1065,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "脊振山",
+   "kana": "せふりさん",
+   "prefs": [
+    "福岡県",
+    "佐賀県"
+   ],
+   "elev": 1054,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "多良岳",
+   "kana": "たらだけ",
+   "prefs": [
+    "佐賀県"
+   ],
+   "elev": 996,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "鶴見岳",
+   "kana": "つるみだけ",
+   "prefs": [
+    "大分県"
+   ],
+   "elev": 1375,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大船山",
+   "kana": "たいせんざん",
+   "prefs": [
+    "大分県"
+   ],
+   "elev": 1786,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "涌蓋山",
+   "kana": "わいたざん",
+   "prefs": [
+    "大分県"
+   ],
+   "elev": 1499,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "傾山",
+   "kana": "かたむきやま",
+   "prefs": [
+    "大分県"
+   ],
+   "elev": 1605,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "国見岳",
+   "kana": "くにみだけ",
+   "prefs": [
+    "熊本県",
+    "宮崎県"
+   ],
+   "elev": 1739,
+   "lists": [
+    "三百名山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "高隈山",
+   "kana": "たかくまやま",
+   "prefs": [
+    "鹿児島県"
+   ],
+   "elev": 1236,
+   "lists": [
+    "三百名山"
+   ],
+   "aliases": [
+    "高隈山地",
+    "大箆柄岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "涸沢岳",
+   "kana": "からさわだけ",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 3110,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "北穂高岳",
+   "kana": "きたほたかだけ",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 3106,
+   "lists": [
+    "百高山"
+   ],
+   "aliases": [
+    "穂高岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大喰岳",
+   "kana": "おおばみだけ",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 3101,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "前穂高岳",
+   "kana": "まえほたかだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 3090,
+   "lists": [
+    "百高山"
+   ],
+   "aliases": [
+    "穂高岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "中岳",
+   "kana": "なかだけ",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 3084,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "中岳（荒川中岳）",
+   "kana": "なかだけ",
+   "prefs": [
+    "静岡県"
+   ],
+   "elev": 3084,
+   "lists": [
+    "百高山"
+   ],
+   "aliases": [
+    "荒川岳",
+    "中岳",
+    "荒川中岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "農鳥岳（西農鳥岳）",
+   "kana": "のうとりだけ",
+   "prefs": [
+    "山梨県",
+    "静岡県"
+   ],
+   "elev": 3051,
+   "lists": [
+    "百高山"
+   ],
+   "aliases": [
+    "農鳥岳",
+    "西農鳥岳"
+   ],
+   "siteId": "noutori",
+   "src": "gsi"
+  },
+  {
+   "name": "南岳",
+   "kana": "みなみだけ",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 3033,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "西穂高岳",
+   "kana": "にしほたかだけ",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 2909,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "白馬鑓ヶ岳",
+   "kana": "はくばやりがたけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2903,
+   "lists": [
+    "百高山"
+   ],
+   "aliases": [
+    "鑓ヶ岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "広河内岳",
+   "kana": "ひろごうちだけ",
+   "prefs": [
+    "山梨県",
+    "静岡県"
+   ],
+   "elev": 2895,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "別山",
+   "kana": "べっさん",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2880,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "龍王岳",
+   "kana": "りゅうおうだけ",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2872,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "旭岳",
+   "kana": "あさひだけ",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2867,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "蝙蝠岳",
+   "kana": "こうもりだけ",
+   "prefs": [
+    "静岡県"
+   ],
+   "elev": 2865,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "真砂岳",
+   "kana": "まさごだけ",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2861,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "双六岳",
+   "kana": "すごろくだけ",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 2860,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "三ノ沢岳",
+   "kana": "さんのさわだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2847,
+   "lists": [
+    "百高山"
+   ],
+   "aliases": [
+    "三沢岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "三ツ岳",
+   "kana": "みつだけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2845,
+   "lists": [
+    "百高山"
+   ],
+   "aliases": [
+    "三ッ岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "観音岳（鳳凰山）",
+   "kana": "かんのんだけ",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 2841,
+   "lists": [
+    "百高山"
+   ],
+   "aliases": [
+    "鳳凰山"
+   ],
+   "siteId": "houou",
+   "src": "wikipedia"
+  },
+  {
+   "name": "横岳",
+   "kana": "よこだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2830,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "祖父岳",
+   "kana": "じいだけ",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2825,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大沢岳",
+   "kana": "おおさわだけ",
+   "prefs": [
+    "長野県",
+    "静岡県"
+   ],
+   "elev": 2820,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "兎岳",
+   "kana": "うさぎだけ",
+   "prefs": [
+    "長野県",
+    "静岡県"
+   ],
+   "elev": 2818,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "東天井岳",
+   "kana": "ひがしてんじょうだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2814,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "抜戸岳",
+   "kana": "ぬけどだけ",
+   "prefs": [
+    "岐阜県"
+   ],
+   "elev": 2813,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "杓子岳",
+   "kana": "しゃくしだけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2812,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "中盛丸山",
+   "kana": "なかもりまるやま",
+   "prefs": [
+    "長野県",
+    "静岡県"
+   ],
+   "elev": 2807,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "阿弥陀岳",
+   "kana": "あみだだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2805,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "小河内岳",
+   "kana": "おごうちだけ",
+   "prefs": [
+    "長野県",
+    "静岡県"
+   ],
+   "elev": 2802,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "薬師岳（鳳凰山）",
+   "kana": "やくしだけ",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 2780,
+   "lists": [
+    "百高山"
+   ],
+   "aliases": [
+    "鳳凰山"
+   ],
+   "src": "wikipedia"
+  },
+  {
+   "name": "高嶺",
+   "kana": "たかみね",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 2779,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "熊沢岳",
+   "kana": "くまざわだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2778,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "剣御前",
+   "kana": "つるぎごぜん",
+   "prefs": [
+    "富山県"
+   ],
+   "elev": 2777,
+   "lists": [
+    "百高山"
+   ],
+   "aliases": [
+    "剱御前"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "赤岩岳",
+   "kana": "あかいわだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2769,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "横通岳",
+   "kana": "よことおしだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2767,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "大籠岳",
+   "kana": "おおこもりだけ",
+   "prefs": [
+    "山梨県",
+    "静岡県"
+   ],
+   "elev": 2767,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "小蓮華山",
+   "kana": "これんげさん",
+   "prefs": [
+    "新潟県",
+    "長野県"
+   ],
+   "elev": 2766,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "地蔵岳（鳳凰山）",
+   "kana": "じぞうだけ",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 2764,
+   "lists": [
+    "百高山"
+   ],
+   "aliases": [
+    "鳳凰山",
+    "地蔵ヶ岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "硫黄岳",
+   "kana": "いおうだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2760,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "西岳",
+   "kana": "にしだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2758,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "樅沢岳",
+   "kana": "もみさわだけ",
+   "prefs": [
+    "長野県",
+    "岐阜県"
+   ],
+   "elev": 2755,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "スバリ岳",
+   "kana": "すばりだけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2752,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "駒津峰",
+   "kana": "こまつみね",
+   "prefs": [
+    "山梨県",
+    "長野県"
+   ],
+   "elev": 2752,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "仙涯嶺",
+   "kana": "せんがいれい",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2734,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "笹山",
+   "kana": "ささやま",
+   "prefs": [
+    "山梨県",
+    "静岡県"
+   ],
+   "elev": 2733,
+   "lists": [
+    "百高山"
+   ],
+   "aliases": [
+    "黒河内岳"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "将棊頭山",
+   "kana": "しょうぎがしらやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2730,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "檜尾岳",
+   "kana": "ひのきおだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2728,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "烏帽子岳",
+   "kana": "えぼしだけ",
+   "prefs": [
+    "長野県",
+    "静岡県"
+   ],
+   "elev": 2726,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "小太郎山",
+   "kana": "こたろうやま",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 2725,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "権現岳",
+   "kana": "ごんげんだけ",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 2715,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "南真砂岳",
+   "kana": "まさごだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2713,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "北荒川岳",
+   "kana": "きたあらかわだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2698,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "安倍荒倉岳",
+   "kana": "あべあらくらだけ",
+   "prefs": [
+    "長野県",
+    "静岡県"
+   ],
+   "elev": 2693,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "赤沢岳",
+   "kana": "あかさわだけ",
+   "prefs": [
+    "富山県",
+    "長野県"
+   ],
+   "elev": 2678,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "蝶ヶ岳",
+   "kana": "ちょうがたけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2677,
+   "lists": [
+    "百高山"
+   ],
+   "siteId": "chogatake",
+   "src": "gsi"
+  },
+  {
+   "name": "東川岳",
+   "kana": "ひがしかわだけ",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2671,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "赤沢山",
+   "kana": "あかさわやま",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 2670,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  },
+  {
+   "name": "新蛇抜山",
+   "kana": "しんじゃぬけやま",
+   "prefs": [
+    "長野県",
+    "静岡県"
+   ],
+   "elev": 2667,
+   "lists": [
+    "百高山"
+   ],
+   "src": "gsi"
+  }
+ ]
+}

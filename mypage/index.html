@@ -349,7 +349,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
     </div>
     <div class="modal-body">
       <div class="form-card">
-        <div class="field"><label>山名 <span style="color:#e05050">*</span></label><input type="text" id="mc-name" placeholder="例：雲取山"></div>
+        <div class="field" style="position:relative"><label>山名 <span style="color:#e05050">*</span></label><input type="text" id="mc-name" placeholder="例：雲取山" autocomplete="off" oninput="mcSuggest(this.value)"><div id="mc-suggest" style="display:none;position:absolute;left:0;right:0;top:100%;z-index:5;background:#fff;border:1px solid #ddd8d0;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.12);max-height:240px;overflow-y:auto"></div><div id="mc-peak-info" style="display:none;font-size:11.5px;color:#4e6535;margin-top:5px"></div></div>
         <div class="field"><label>登った日（開始）</label><input type="date" id="mc-date"></div>
         <div class="field"><label>登った日（終了）<span style="font-size:10px;color:#a09888;font-weight:400">　日帰りは空白でOK</span></label><input type="date" id="mc-date-end"></div>
         <div class="field"><label>エリア</label><input type="text" id="mc-area" placeholder="例：東京都・埼玉県"></div>
@@ -367,6 +367,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
               <span style="color:#707070;">🥈 二百名山</span>
             </label>
           </div>
+          <div style="font-size:11px;color:#a09888;margin-top:4px">百名山・二百名山・三百名山・百高山は、山名の候補から選ぶと自動で付きます。</div>
         </div>
       </div>
     </div>
@@ -778,6 +779,9 @@ function openAddClimbed(){
   document.getElementById('mc-memo').value='';
   document.getElementById('mc-hyaku').checked=false;
   document.getElementById('mc-nihyaku').checked=false;
+  _mcPeak=null; mcShowInfo();
+  var sg=document.getElementById('mc-suggest'); if(sg) sg.style.display='none';
+  loadPeaks(function(){});
   if(typeof hideChrome==='function') hideChrome();
   document.getElementById('add-climbed-modal').classList.add('open');
 }
@@ -797,16 +801,55 @@ function saveManualClimbed(){
   var category = isHyaku ? '百名山' : (isNihyaku ? '二百名山' : '');
   if (!name){ alert('山名を入力してください'); return; }
 
+  // 同じ名前の山が全国の一覧に複数あり、候補から選んでいないときは、都道府県を選んでもらう（2026-10-24）
+  if (!(_mcPeak && _mcPeak.name === name) && _mcNoPeak !== name) {
+    loadPeaks(function(){
+      var hits = peaksByName(name);
+      if (area && hits.length > 1) {
+        var byArea = hits.filter(function(p){ return peakInArea(p, area); });
+        if (byArea.length) hits = byArea;
+      }
+      if (hits.length > 1) {
+        chooseSameName(name, hits, function(p){
+          if (p) { _mcPeak = p; document.getElementById('mc-area').value = p.prefs.join('・'); mcShowInfo(); }
+          else { _mcNoPeak = name; }
+          saveManualClimbed();
+        });
+        return;
+      }
+      saveManualClimbedNow();
+    });
+    return;
+  }
+  saveManualClimbedNow();
+}
+function saveManualClimbedNow(){
+  var name = document.getElementById('mc-name').value.trim();
+  var date = document.getElementById('mc-date').value;
+  var dateEnd = document.getElementById('mc-date-end').value;
+  var area = document.getElementById('mc-area').value.trim();
+  var outfit = document.getElementById('mc-outfit').value.trim();
+  var memo = document.getElementById('mc-memo').value.trim();
+  var isHyaku = document.getElementById('mc-hyaku').checked;
+  var isNihyaku = document.getElementById('mc-nihyaku').checked;
+  var category = isHyaku ? '百名山' : (isNihyaku ? '二百名山' : '');
+  var noPeak = (_mcNoPeak === name);
+
   // サイト内の山名と一致するか検索してsite扱いにする
   fetchMountainData(function(mtnData) {
     var matched = null;
+    var picked = (_mcPeak && _mcPeak.name === name) ? _mcPeak : null;
     if (Array.isArray(mtnData)) {
-      mtnData.forEach(function(m){
-        var mn = m.name.replace(/（[^）]*）/g,'');
-        if (m.name === name || mn === name || mn === name.replace(/（[^）]*）/g,'')) {
-          matched = m;
-        }
-      });
+      if (picked) {
+        // 候補から選んだ山：Yamatch に載っている山（siteId）ならその山、載っていなければ手入力として記録する
+        if (picked.siteId) mtnData.forEach(function(m){ if (m.id === picked.siteId) matched = m; });
+      } else {
+        // 名前で照らす。サイトの山名のかっこ書き（「大山（丹沢）」）は外さない（鳥取県の大山などを丹沢の大山と取り違えないため）
+        var nm = name.replace(/[\s\u3000]/g,'');
+        mtnData.forEach(function(m){
+          if (m.name === nm || m.name === nm.replace(/（[^）]*）/g,'')) matched = m;
+        });
+      }
     }
 
     if (matched) {
@@ -821,12 +864,21 @@ function saveManualClimbed(){
       // 手動追加（ym_climbed_extra）- categoryも保存
       try {
         var extra = JSON.parse(localStorage.getItem(CLM_EX_KEY)||'[]');
-        extra.push({name:name, date:date, dateEnd:dateEnd, area:area, memo:memo, outfit:outfit, category:category});
+        var pk = (_mcPeak && _mcPeak.name===name) ? _mcPeak : (noPeak ? null : findPeak(name, area));
+        var rec = {name:name, date:date, dateEnd:dateEnd, area:area, memo:memo, outfit:outfit, category:category};
+        if (pk) {
+          if (!rec.area) rec.area = pk.prefs.join('・');
+          rec.elev = pk.elev;
+          rec.lists = pk.lists.slice();
+          if (!rec.category) rec.category = peakCategory(pk);
+        }
+        extra.push(rec);
         localStorage.setItem(CLM_EX_KEY, JSON.stringify(extra));
       } catch(e) {}
       showClimbCelebrate('__manual__', name, area, category);
     }
 
+    _mcNoPeak = null;
     closeAddClimbed();
     renderClimbed();
     renderFavorites();
@@ -1824,6 +1876,10 @@ function openBadgeDetail(name, area, elev, date, memo, cfg, key, uid, outfit) {
   fetchMountainData(function(mtnData){
     var mt = Array.isArray(mtnData) ? mtnData.filter(function(x){return x.id===key;})[0] : null;
     var tags = computeTags(mt, !!outfit);
+    // 全国の一覧の区分（二百名山・三百名山・百高山など）もタグに出す
+    var pk = (typeof findPeak==='function') ? findPeak(name, area) : null;
+    if (mt && pk && pk.siteId !== mt.id) pk = null;
+    if (pk) pk.lists.forEach(function(L){ if (tags.indexOf('#'+L) < 0) tags.push('#'+L); });
     if (_currentBadgeData) _currentBadgeData.tags = tags;
     tagsEl.innerHTML = tags.map(function(t){
       return '<span style="font-size:11px;background:#eef2e8;color:#4a5e3a;border-radius:10px;padding:3px 9px;">'+t+'</span>';
@@ -1861,6 +1917,110 @@ function handleBadgeClick(el) {
     el.getAttribute('data-uid'),
     el.getAttribute('data-outfit')
   );
+}
+
+// ===== 全国の百名山・二百名山・三百名山・百高山（data/peak_lists.json）=====
+// 山名・都道府県・標高（国土地理院「日本の主な山岳標高」）。手入力の登頂に、区分・都道府県・標高を付けるために使う（2026-10-24）
+var _peaks = null, _peaksWait = [], _mcPeak = null;
+function loadPeaks(cb){
+  if (_peaks) { cb(_peaks); return; }
+  _peaksWait.push(cb);
+  if (_peaksWait.length > 1) return;
+  fetch('/data/peak_lists.json').then(function(r){ return r.json(); }).then(function(d){
+    _peaks = (d && d.peaks) || [];
+  }).catch(function(){ _peaks = []; }).then(function(){
+    var w = _peaksWait; _peaksWait = [];
+    w.forEach(function(f){ f(_peaks); });
+  });
+}
+function peakNames(p){ return [p.name].concat(p.aliases||[]); }
+function peakCategory(p){
+  var order = ['百名山','二百名山','三百名山','百高山'];
+  for (var i = 0; i < order.length; i++) { if ((p.lists||[]).indexOf(order[i]) > -1) return order[i]; }
+  return '';
+}
+// 山名（＋分かれば都道府県）から一覧の山を探す。同じ名前の山が複数あって決められないときは null
+function findPeak(name, area){
+  var hits = peaksByName(name);
+  if (hits.length > 1 && area) {
+    var byArea = hits.filter(function(p){ return peakInArea(p, area); });
+    if (byArea.length) hits = byArea;
+  }
+  return hits.length === 1 ? hits[0] : null;
+}
+var _mcNoPeak = null;   // 同じ名前の選択肢で「この中に無い」を選んだ山名
+function peaksByName(name){
+  if (!_peaks || !name) return [];
+  var raw = String(name).replace(/[\s\u3000]/g,'');
+  var short = normClimbName(raw);
+  return _peaks.filter(function(p){
+    return peakNames(p).some(function(n){ var x = String(n).replace(/[\s\u3000]/g,''); return x === raw || x === short; });
+  });
+}
+function peakInArea(p, area){
+  return p.prefs.some(function(pr){ return String(area).indexOf(pr) > -1 || String(area).indexOf(pr.replace(/[都府県]$/,'')) > -1; });
+}
+// 同じ名前の山の選択肢（都道府県・標高・区分）。選んだ山、または「この中に無い」（null）を返す
+function chooseSameName(name, hits, done){
+  var bg = document.createElement('div');
+  bg.style.cssText = 'position:fixed;inset:0;background:rgba(20,20,16,0.45);z-index:10050;display:flex;align-items:flex-end;justify-content:center;';
+  var box = document.createElement('div');
+  box.setAttribute('role', 'dialog');
+  box.style.cssText = 'background:#fff;width:100%;max-width:480px;max-height:80vh;overflow-y:auto;border-radius:16px 16px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));box-sizing:border-box;';
+  var h = '<div style="font-size:15px;font-weight:800;color:#2a3520;margin-bottom:4px">「' + esc(name) + '」は' + hits.length + 'つあります</div>'
+    + '<div style="font-size:12px;color:#7a7266;margin-bottom:10px">登った山の都道府県を選んでください。</div>';
+  hits.forEach(function(p, i){
+    h += '<button type="button" data-i="' + i + '" class="sn-opt" style="display:block;width:100%;text-align:left;padding:12px;margin-bottom:8px;border:1px solid #ddd8d0;border-radius:10px;background:#fff;font-size:14px;cursor:pointer">'
+      + '<b>' + esc(p.prefs.join('・')) + '</b><span style="font-size:12px;color:#7a7266">　標高' + Number(p.elev).toLocaleString() + 'm・' + esc(p.lists.join('・')) + '</span></button>';
+  });
+  h += '<button type="button" data-i="-1" class="sn-opt" style="display:block;width:100%;text-align:left;padding:12px;margin-bottom:8px;border:1px dashed #c8c0b0;border-radius:10px;background:#faf8f3;font-size:13px;color:#5a5248;cursor:pointer">この中に無い（ほかの「' + esc(name) + '」）</button>'
+    + '<button type="button" class="sn-cancel" style="display:block;width:100%;padding:11px;border:none;background:none;color:#7a7266;font-size:13px;cursor:pointer">やめる</button>';
+  box.innerHTML = h;
+  bg.appendChild(box);
+  document.body.appendChild(bg);
+  function close(){ if (bg.parentNode) bg.parentNode.removeChild(bg); }
+  bg.addEventListener('click', function(e){ if (e.target === bg) close(); });
+  box.querySelector('.sn-cancel').onclick = close;
+  Array.prototype.forEach.call(box.querySelectorAll('.sn-opt'), function(b){
+    b.onclick = function(){ var i = Number(b.getAttribute('data-i')); close(); done(i < 0 ? null : hits[i]); };
+  });
+}
+function mcShowInfo(){
+  var el = document.getElementById('mc-peak-info');
+  if (!el) return;
+  if (!_mcPeak) { el.style.display = 'none'; el.textContent = ''; return; }
+  el.style.display = 'block';
+  el.textContent = _mcPeak.prefs.join('・') + '・標高' + Number(_mcPeak.elev).toLocaleString() + 'm・' + _mcPeak.lists.join('・') + (_mcPeak.siteId ? '（Yamatch に載っている山です）' : '');
+}
+function mcSuggest(q){
+  var box = document.getElementById('mc-suggest');
+  if (_mcPeak && _mcPeak.name !== String(q).trim()) { _mcPeak = null; mcShowInfo(); }
+  q = String(q||'').replace(/[\s\u3000]/g,'');
+  if (!box) return;
+  if (q.length < 1) { box.style.display = 'none'; return; }
+  loadPeaks(function(peaks){
+    var hit = peaks.filter(function(p){
+      return peakNames(p).some(function(n){ return String(n).indexOf(q) > -1; }) || (p.kana && p.kana.indexOf(q) === 0);
+    }).slice(0, 12);
+    if (!hit.length) { box.style.display = 'none'; return; }
+    box.innerHTML = hit.map(function(p, i){
+      return '<div class="mc-sg" data-i="' + peaks.indexOf(p) + '" style="padding:9px 12px;border-bottom:1px solid #f0ece3;cursor:pointer;font-size:13px">'
+        + '<b>' + esc(p.name) + '</b> <span style="color:#7a7266;font-size:11.5px">' + esc(p.prefs.join('・')) + '・' + Number(p.elev).toLocaleString() + 'm・' + esc(p.lists.join('・')) + '</span></div>';
+    }).join('');
+    box.style.display = 'block';
+    Array.prototype.forEach.call(box.querySelectorAll('.mc-sg'), function(row){
+      row.onclick = function(){ mcPick(peaks[Number(row.getAttribute('data-i'))]); };
+    });
+  });
+}
+function mcPick(p){
+  _mcPeak = p;
+  document.getElementById('mc-name').value = p.name;
+  document.getElementById('mc-area').value = p.prefs.join('・');
+  document.getElementById('mc-hyaku').checked = p.lists.indexOf('百名山') > -1;
+  document.getElementById('mc-nihyaku').checked = p.lists.indexOf('二百名山') > -1;
+  document.getElementById('mc-suggest').style.display = 'none';
+  mcShowInfo();
 }
 
 // 手入力の登頂（ym_climbed_extra）のうち、山名がサイトの山と同じものを、サイトの山の登頂（ym_climbed）へ移す。
@@ -1923,7 +2083,7 @@ function renderClimbed() {
     var mtnMap = {};
     if (Array.isArray(mtnData)) { mtnData.forEach(function(m){ mtnMap[m.id]=m; }); }
     renderCollectionBanner(ids, climbs, mtnMap);
-    fetchNames(function(nameMap) {
+    loadPeaks(function(){ fetchNames(function(nameMap) {
       var html = '<div class="badge-grid">';
       ids.forEach(function(id) {
         var entries = climbs[id];
@@ -1931,8 +2091,14 @@ function renderClimbed() {
         var mt = mtnMap[id];
         var name = first.type==='manual' ? first.name : (nameMap[id]||id);
         var area = first.area||(mt?mt.area:'');
-        var elev = mt?mt.elevation:'';
-        var cfg = getColor(id, area, mt ? mt.category : (first.category||''));
+        var elev = mt?mt.elevation:(first.elev||'');
+        var cat = mt ? mt.category : (first.category||'');
+        if (!mt) {
+          // 手入力の山：全国の一覧にあれば、都道府県・標高・区分を補う（前に入れた記録にも効く）
+          var pk = findPeak(name, area);
+          if (pk) { if (!area) area = pk.prefs.join('・'); if (!elev) elev = pk.elev; if (!cat) cat = peakCategory(pk); }
+        }
+        var cfg = getColor(id, area, cat);
         var count = entries.length;
         var dateShort = first.date?first.date.slice(0,7).replace(/-/g,'/'):'';
         var svgHtml = makeBadgeSVG(name, dateShort, id, cfg, 110, area, elev);
@@ -1984,7 +2150,7 @@ function renderClimbed() {
       });
       html += '</div>';
       el.innerHTML = html;
-    });
+    }); });
   });
 }
 
@@ -2011,7 +2177,15 @@ function renderCollectionBanner(keys, climbs, mtnMap) {
   var total = 0;
   keys.forEach(function(k){ total += (climbs&&climbs[k])?climbs[k].length:1; });
   var hyaku = 0;
-  if (mtnMap) keys.forEach(function(k){ if(mtnMap[k]&&mtnMap[k].category==='百名山') hyaku++; });
+  if (mtnMap) keys.forEach(function(k){
+    if (mtnMap[k]) { if (mtnMap[k].category==='百名山') hyaku++; return; }
+    // 手入力の山も、全国の一覧で百名山なら数える（同じ山はサイトの山の記録へ移してあるので二重には数えない）
+    var e = climbs && climbs[k] && climbs[k][0];
+    if (e && e.type==='manual') {
+      var pk = (typeof findPeak==='function') ? findPeak(e.name, e.area) : null;
+      if ((pk && pk.lists.indexOf('百名山')>-1) || (!pk && e.category==='百名山')) hyaku++;
+    }
+  });
   var banner = document.getElementById('collection-banner');
   if (!banner) return;
   if (total===0) { banner.style.display='none'; return; }
