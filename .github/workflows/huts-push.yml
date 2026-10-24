@@ -1,5 +1,5 @@
 # 山小屋の予約開始のお知らせを、アプリの外に届く通知（プッシュ通知）で送る。
-# 毎朝7時（日本時間）に、その日が「1週間前・前日・当日」にあたる登録を探して送る。AIは使わない。
+# 毎朝6:30〜7時ごろ（日本時間）に、その日が「1週間前・前日・当日」にあたる登録を探して送る。AIは使わない。
 # 必要な Secrets（1つでも無いあいだは何もしない）：
 #   FIREBASE_DB_URL / FIREBASE_SERVICE_ACCOUNT / VAPID_PUBLIC_KEY / VAPID_PRIVATE_KEY
 # 手動実行で「管理者の端末にテスト通知」を選ぶと、管理者表示をオンにした端末だけにテスト通知を送る。
@@ -7,13 +7,26 @@ name: 山小屋の予約開始の通知
 
 on:
   schedule:
-    - cron: '0 22 * * *'   # 毎日 7:00（日本時間）。GitHub の都合で数分〜数十分遅れることがある
+    # GitHub の定期実行は、このリポジトリでは毎日1〜2時間遅れていた（2026-10-19〜24：7:00 の予定が 8:47〜9:47 に実行）。
+    # そこで 4:47〜7:17（日本時間）に何度か起動し、6:30 より前の実行は何もしない。6:30 を過ぎた最初の実行で送る
+    # （同じお知らせは /hutPushSent の記録で2回送らない）。:00 ちょうどは混むので避ける
+    - cron: '47 19 * * *'   # 4:47
+    - cron: '17 20 * * *'   # 5:17
+    - cron: '47 20 * * *'   # 5:47
+    - cron: '17 21 * * *'   # 6:17
+    - cron: '47 21 * * *'   # 6:47
+    - cron: '17 22 * * *'   # 7:17
   workflow_dispatch:
     inputs:
       test:
         description: '管理者の端末にテスト通知だけを送る'
         type: boolean
         default: false
+
+# 遅れた実行どうしが同時に動くと、送った記録を読む前にもう一方が送り、2回届くことがある。1つずつ順に動かす
+concurrency:
+  group: huts-push
+  cancel-in-progress: false
 
 permissions:
   contents: write   # マイページのお知らせ（data/admin_notices.json）だけをコミットする
@@ -31,7 +44,10 @@ jobs:
       - name: 設定があるか確かめる
         id: ready
         run: |
-          if [ -n "$FIREBASE_DB_URL" ] && [ -n "$FIREBASE_SERVICE_ACCOUNT" ] && [ -n "$VAPID_PUBLIC_KEY" ] && [ -n "$VAPID_PRIVATE_KEY" ]; then
+          now=$(TZ=Asia/Tokyo date +%H%M)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$now" -lt 630 ]; then
+            echo "日本時間 $now：6:30 より前なので、何もしません（6:30 を過ぎた次の実行で送ります）"
+          elif [ -n "$FIREBASE_DB_URL" ] && [ -n "$FIREBASE_SERVICE_ACCOUNT" ] && [ -n "$VAPID_PUBLIC_KEY" ] && [ -n "$VAPID_PRIVATE_KEY" ]; then
             echo "ok=1" >> "$GITHUB_OUTPUT"
           else
             echo "Secrets が未設定のため、何もしません"
