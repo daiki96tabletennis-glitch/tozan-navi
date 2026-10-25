@@ -129,7 +129,7 @@
     try { adm = localStorage.getItem('ym_admin') === '1'; st = JSON.parse(localStorage.getItem('ym_hut_push_state') || 'null'); } catch (e) {}
     if (!adm) { return ''; }
     if (why) { t = '登録できていません：' + why; }
-    else if (!list.length) { t = '山小屋のお知らせが1件も登録されていないので、通知の宛先も登録していません'; }
+    else if (!list.filter(function (x) { return x.ch !== 'app'; }).length) { t = (list.length ? 'お知らせはすべて「アプリ内だけ」なので' : '山小屋のお知らせが1件も登録されていないので') + '、通知の宛先も登録していません'; }
     else if (st && st.ok) { t = '登録済み（' + st.at + '。管理者の印' + (st.admin ? 'あり' : 'なし') + '）'; }
     else if (st && !st.ok) { t = '登録に失敗しました：' + st.msg; }
     else { t = '登録の処理中です（少し待ってから開き直してください）'; }
@@ -170,7 +170,8 @@
   function pushSync() {
     if (!pushReady()) { return; }
     var list = load(), alerts = [], i, sig;
-    for (i = 0; i < list.length && alerts.length < 20; i++) { alerts.push({ id: list[i].id, stay: list[i].stay || '' }); }
+    // 「アプリ内だけ」（ch: 'app'）の登録は預けない。プッシュ通知で届けるのは、それ以外（両方。前からの登録も両方）
+    for (i = 0; i < list.length && alerts.length < 20; i++) { if (list[i].ch !== 'app') { alerts.push({ id: list[i].id, stay: list[i].stay || '' }); } }
     // 管理者表示を切り替えたときも送り直す（テスト通知は管理者の印がある端末にだけ届くため）
     var adm = '';
     try { adm = localStorage.getItem('ym_admin') === '1' ? 'a' : ''; } catch (e) {}
@@ -380,13 +381,13 @@
       if ((a.shown || []).indexOf(st) > -1) { continue; }
       title = a.name + (st === 0 ? '：予約が始まります' : st === 1 ? '：あした予約開始' : '：予約開始まであと' + Math.round((c.open - today) / DAY) + '日');
       body = (c.guess ? '昨年の日付からの目安です。' : '') + jp(c.open) + (c.time ? ' ' + c.time : '') + 'から' + (a.stay ? '（' + a.stay.replace(/-/g, '/') + ' 泊の分）' : '') + (c.guess ? '。今年の日付を公式サイトで確認してください' : '');
-      show.push({ title: title, body: body, url: '/huts/' + a.id + '/' });
+      show.push({ title: title, body: body, url: '/huts/' + a.id + '/', sys: a.ch !== 'app' });
       a.shown = (a.shown || []).concat([st]);
       changed = true;
     }
     if (changed) { save(list); }
     banner(show);
-    for (i = 0; i < show.length; i++) { notify(show[i].title, show[i].body, show[i].url); }
+    for (i = 0; i < show.length; i++) { if (show[i].sys) { notify(show[i].title, show[i].body, show[i].url); } }   // 「アプリ内だけ」は端末の通知を出さない
     renderMy(list);
     bell(activeCount(list, rules) > 0);
     trialOnMyPage();
@@ -450,7 +451,9 @@
       h += '<div style="display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid #f0ede5;font-size:13px;line-height:1.5">'
         + '<div style="flex:1;min-width:0"><a href="/huts/' + esc(a.id) + '/" style="color:#2a3820;font-weight:700;text-decoration:none">' + esc(a.name) + '</a><br>'
         + '<span style="color:#5a544a">' + (o ? esc(jp(o)) + (a.time ? ' ' + esc(a.time) : '') + 'から' + (a.guess ? '（昨年の日付からの目安）' : '') : '日付未定') + '</span>'
-        + (a.stay ? '<br><span style="font-size:11.5px;color:#7a7068">' + esc(a.stay.replace(/-/g, '/')) + ' に泊まる分</span>' : '') + '</div>'
+        + (a.stay ? '<br><span style="font-size:11.5px;color:#7a7068">' + esc(a.stay.replace(/-/g, '/')) + ' に泊まる分</span>' : '')
+        + '<br><span style="font-size:11.5px;color:#7a7068">' + (a.ch === 'app' ? 'アプリ内だけ' : 'アプリ内とプッシュ通知') + '</span>'
+        + ' <button type="button" data-ch="' + i + '" style="border:none;background:none;color:#4e6535;font-size:11.5px;font-weight:700;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px">' + (a.ch === 'app' ? 'プッシュ通知も受け取る' : 'アプリ内だけにする') + '</button></div>'
         + '<div style="flex-shrink:0;text-align:right"><span style="display:inline-block;font-size:11.5px;border-radius:999px;padding:2px 9px;'
         + (left === null ? 'background:#eeece6;color:#6a6258">—' : left > 0 ? 'background:#e9efe0;color:#2a3820">あと' + left + '日' : 'background:#fbf1cf;color:#7a5a00">受付開始済み') + '</span><br>'
         + '<button type="button" data-del="' + i + '" style="border:none;background:none;color:#a09888;font-size:11.5px;padding:6px 0 0;cursor:pointer">削除</button></div></div>';
@@ -462,6 +465,20 @@
         + '<div style="flex-shrink:0"><span style="display:inline-block;font-size:11.5px;border-radius:999px;padding:2px 9px;background:#e9efe0;color:#2a3820">あと7日</span></div></div>';
     }
     box.innerHTML = h + '</div>' + pushStatusHtml(list);
+    var chs = box.querySelectorAll('[data-ch]');
+    for (i = 0; i < chs.length; i++) {
+      chs[i].addEventListener('click', function () {
+        var l = load(), k = +this.getAttribute('data-ch');
+        if (!l[k]) { return; }
+        var toBoth = l[k].ch === 'app';
+        if (toBoth) { delete l[k].ch; } else { l[k].ch = 'app'; }
+        save(l);
+        var after = function () { pushSync(); renderMy(load()); if (window.YMHutAlertRefresh) { window.YMHutAlertRefresh(); } };
+        if (toBoth && 'Notification' in window && Notification.permission === 'default') {
+          try { Notification.requestPermission().then(after, after); } catch (e) { after(); }
+        } else { after(); }
+      });
+    }
     var btns = box.querySelectorAll('[data-del]');
     for (i = 0; i < btns.length; i++) {
       btns[i].addEventListener('click', function () {
@@ -647,6 +664,7 @@
       return;
     }
     function mine() { var l = load(), i, out = []; for (i = 0; i < l.length; i++) { if (l[i].id === hut.id) { out.push(l[i]); } } return out; }
+    var chSel = 'both';
     function draw(msg) {
       var m = mine(), i, h = head + kind;
       if (needDate) {
@@ -657,12 +675,18 @@
         h += '<div class="ha-out">次の予約開始：<b>' + esc(jp(c.open)) + (c.time ? ' ' + esc(c.time) : '') + '</b>'
           + (c.guess ? '<br><span>' + rule.y + '年の日付からの目安です。今年の日付が発表されたら、この欄とお知らせの日付が切り替わります。</span>' : '') + '</div>';
       }
+      // お知らせのしかた（運営者の指示・2026-10-26。はじめは両方）
+      h += '<span class="ha-l" style="margin-top:12px">お知らせのしかた</span>'
+        + '<label style="display:flex;gap:8px;align-items:flex-start;font-size:13px;margin-bottom:6px;cursor:pointer"><input type="radio" name="ha-ch" value="both"' + (chSel === 'app' ? '' : ' checked') + ' style="margin-top:4px;accent-color:#4e6535">'
+        + '<span><b>アプリ内とプッシュ通知</b>（おすすめ）<br><span style="font-size:12px;color:#7a7068">Yamatch を開いていなくても、1週間前・前日・当日の朝に端末の通知が届きます</span></span></label>'
+        + '<label style="display:flex;gap:8px;align-items:flex-start;font-size:13px;margin-bottom:10px;cursor:pointer"><input type="radio" name="ha-ch" value="app"' + (chSel === 'app' ? ' checked' : '') + ' style="margin-top:4px;accent-color:#4e6535">'
+        + '<span><b>アプリ内だけ</b><br><span style="font-size:12px;color:#7a7068">Yamatch を開いたときに、画面の上とマイページでお知らせします（端末の通知は出しません）</span></span></label>';
       h += '<button type="button" id="ha-save" class="ha-btn"' + (needDate ? ' disabled' : '') + '>この予約開始を知らせる</button>';
       if (msg) { h += '<p class="ha-msg">' + esc(msg) + '</p>'; }
       if (m.length) {
         h += '<div class="ha-list"><div class="ha-lt">登録済み</div>';
         for (i = 0; i < m.length; i++) {
-          h += '<div>' + (m[i].stay ? esc(m[i].stay.replace(/-/g, '/')) + ' 泊 → ' : '') + esc(jp(parse(m[i].open))) + (m[i].time ? ' ' + esc(m[i].time) : '') + 'から' + (m[i].guess ? '（目安）' : '') + '</div>';
+          h += '<div>' + (m[i].stay ? esc(m[i].stay.replace(/-/g, '/')) + ' 泊 → ' : '') + esc(jp(parse(m[i].open))) + (m[i].time ? ' ' + esc(m[i].time) : '') + 'から' + (m[i].guess ? '（目安）' : '') + (m[i].ch === 'app' ? '・アプリ内だけ' : '') + '</div>';
         }
         h += '<a href="/mypage/" class="ha-my">マイページで確認・削除</a></div>';
       }
@@ -681,12 +705,17 @@
         });
       }
       bindDemo(hut.name, function () { return cur && !cur.err ? cur : null; }, function () { return input ? input.value : ''; }, hut.id);
+      var rs = box.querySelectorAll('input[name="ha-ch"]'), ri;
+      for (ri = 0; ri < rs.length; ri++) { rs[ri].addEventListener('change', function () { if (this.checked) { chSel = this.value; } }); }
       btn.addEventListener('click', function () {
         if (!cur || cur.err) { return; }
         var l = load(), stay = input ? input.value : '', i;
-        for (i = 0; i < l.length; i++) { if (l[i].id === hut.id && (l[i].stay || '') === stay) { draw('同じ内容がすでに登録されています。'); return; } }
-        l.push({ id: hut.id, name: hut.name, stay: stay, open: ymd(cur.open), time: cur.time || '', guess: !!cur.guess, rule: rule, shown: [], at: ymd(today) });
+        for (i = 0; i < l.length; i++) { if (l[i].id === hut.id && (l[i].stay || '') === stay) { draw('同じ内容がすでに登録されています（お知らせのしかたは、マイページで切り替えられます）。'); return; } }
+        var item = { id: hut.id, name: hut.name, stay: stay, open: ymd(cur.open), time: cur.time || '', guess: !!cur.guess, rule: rule, shown: [], at: ymd(today) };
+        if (chSel === 'app') { item.ch = 'app'; }
+        l.push(item);
         if (!save(l)) { draw('この端末に保存できませんでした（プライベートブラウズでは使えません）。'); return; }
+        if (chSel === 'app') { draw('登録しました。1週間前・前日・当日に、Yamatch を開いたときに画面の上とマイページでお知らせします。'); return; }
         var done = function (p) {
           if (p === 'granted') { pushSync(); }
           draw(p === 'granted' ? (pushReady() ? '登録しました。1週間前・前日・当日の朝に、通知でお知らせします。'
