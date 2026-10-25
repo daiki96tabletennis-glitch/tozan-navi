@@ -190,64 +190,6 @@ body{padding-bottom:80px}
   <button class="share-btn share-btn-copy" onclick="navigator.clipboard.writeText(location.href);alert('URLをコピーしました')">URLをコピー</button>
 </div>
 
-<div class="float-bar">
-  <button class="float-btn" id="shareBtn" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> シェア</button>
-  <button class="float-btn primary" id="saveBtn" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg> 保存</button>
-  <a class="float-btn" href="#top">↑ トップ</a>
-</div>
-<button class="scroll-top-btn" id="scrollTopBtn" type="button" aria-label="ページ上部へ戻る">↑</button>
-<script>
-(function(){
-  var SLUG = 'coeff-40';
-  var KEY = 'yamatch_saved_' + SLUG;
-  var saveBtn = document.getElementById('saveBtn');
-  var shareBtn = document.getElementById('shareBtn');
-  var scrollBtn = document.getElementById('scrollTopBtn');
-
-  function refreshSaveState(){
-    var saved = localStorage.getItem(KEY) === '1';
-    if(saved){
-      saveBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#2d8a3e" stroke="#2d8a3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block;color:#2d8a3e"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg> 保存済み';
-      saveBtn.classList.add('saved');
-      saveBtn.classList.remove('primary');
-    } else {
-      saveBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg> 保存';
-      saveBtn.classList.remove('saved');
-      saveBtn.classList.add('primary');
-    }
-  }
-  if(saveBtn){
-    refreshSaveState();
-    saveBtn.addEventListener('click', function(){
-      var saved = localStorage.getItem(KEY) === '1';
-      if(saved){ localStorage.removeItem(KEY); } else { localStorage.setItem(KEY, '1'); }
-      refreshSaveState();
-    });
-  }
-  if(shareBtn){
-    shareBtn.addEventListener('click', function(){
-      var shareData = { title: document.title, url: location.href };
-      if(navigator.share){
-        navigator.share(shareData).catch(function(){});
-      } else if(navigator.clipboard){
-        navigator.clipboard.writeText(location.href).then(function(){
-          shareBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M20 6 9 17l-5-5"/></svg> コピーしました';
-          setTimeout(function(){ shareBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> シェア'; }, 1800);
-        });
-      }
-    });
-  }
-  window.addEventListener('scroll', function(){
-    if(window.scrollY > 500){ scrollBtn.classList.add('show'); }
-    else { scrollBtn.classList.remove('show'); }
-  });
-  if(scrollBtn){
-    scrollBtn.addEventListener('click', function(){
-      window.scrollTo({top:0, behavior:'smooth'});
-    });
-  }
-})();
-</script>
 <script>
 (function(){
   fetch('/data/mountains.json').then(function(r){ return r.json(); }).then(function(mountains){
@@ -356,4 +298,5 @@ function gearRenderCard(c, mid, position){
   });
 })();
 </script>
+<script src="/assets/js/to-top.js?v=20261025a" defer></script>
 </body></html>
