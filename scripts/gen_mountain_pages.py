@@ -1186,7 +1186,7 @@ def render_scripts(mt):
         + ('<script src="../../assets/js/volcano-status.js?v=' + ASSET_VER + '"></script>\n' if mt.get("volcanoCodes") else '')
         + '<script src="../../assets/js/mountain.js?v=' + ASSET_VER + '"></script>\n'
         '<script src="../../assets/js/counts-config.js?v=' + ASSET_VER + '"></script>\n'
-        '<script src="../../assets/js/ym-counts.js?v=' + ASSET_VER + '"></script>'
+        '<script src="../../assets/js/ym-counts.js?v=20261025a"></script>'
     )
 
 

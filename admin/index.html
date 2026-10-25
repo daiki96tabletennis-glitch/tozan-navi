@@ -193,6 +193,25 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
 .gh-push-status.pushing{background:#fff3cd;color:#856404;display:block;}
 .gh-push-status.success{background:#d4edda;color:#155724;display:block;}
 .gh-push-status.error{background:#f8d7da;color:#721c24;display:block;}
+
+/* お気に入り・登頂タブ */
+#counts-root{padding:12px 4px}
+.ac-sum{display:flex;gap:8px;margin-bottom:8px}
+.ac-sum-item{flex:1;background:#fff;border:1px solid #e2ddd2;border-radius:10px;padding:10px;text-align:center}
+.ac-sum-num{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;color:#2a3820}
+.ac-sum-label{font-size:11px;color:#6a6458}
+.ac-note{font-size:12px;color:#6a6458;line-height:1.6;margin:6px 0 10px}
+.ac-ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:13px;margin-bottom:10px}
+.ac-ctrl select{font-size:13px;padding:4px 6px;border:1px solid #d6d0c4;border-radius:6px}
+.ac-btn{font-size:12px;padding:5px 10px;border:1px solid #c8d4b8;background:#fff;border-radius:6px;color:#4e6535}
+.ac-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;font-size:13px}
+.ac-table th{background:#4e6535;color:#fff;font-weight:700;padding:7px 6px;text-align:left;font-size:12px}
+.ac-table td{padding:7px 6px;border-top:1px solid #efebe3;vertical-align:top}
+.ac-table a{color:#2c4a1e;font-weight:700;text-decoration:none}
+.ac-rank{color:#8a8478;width:28px}
+.ac-num{font-family:Outfit,sans-serif;font-weight:700;text-align:right;width:70px}
+.ac-sub{font-size:11px;color:#8a8478;margin-top:1px}
+.ac-off{font-size:11px;color:#a09888}
 </style>
 </head>
 <body>
@@ -216,6 +235,7 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
     <button class="tab-btn" id="tab-log" onclick="switchTab('log')">📝 変更履歴</button>
     <button class="tab-btn" id="tab-notices" onclick="switchTab('notices')">🔔 お知らせ</button>
     <button class="tab-btn" id="tab-analytics" onclick="switchTab('analytics')">📊 分析</button>
+    <button class="tab-btn" id="tab-counts" onclick="switchTab('counts')">⭐ お気に入り・登頂</button>
   </div>
 
   <!-- 山一覧パネル -->
@@ -242,6 +262,9 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
 
   <!-- 分析パネル（運営者の Google アカウントでログインしたときだけ数字を出す。assets/js/admin-analytics.js） -->
   <div id="analytics-panel" style="display:none;"><div id="analytics-root"></div></div>
+
+  <!-- お気に入り・登頂の山ごとの数（管理者端末の分を引く。assets/js/admin-counts.js） -->
+  <div id="counts-panel" style="display:none;"><div id="counts-root"></div></div>
 
   <!-- お知らせパネル（定期実行の結果・マイページに出すかの設定） -->
   <div id="notices-panel" style="display:none;">
@@ -988,6 +1011,9 @@ function switchTab(tab) {
   document.getElementById('tab-analytics').classList.toggle('active', tab === 'analytics');
   document.getElementById('analytics-panel').style.display = tab === 'analytics' ? 'block' : 'none';
   if(tab === 'analytics' && window.ymAdminAnalyticsStart) window.ymAdminAnalyticsStart();
+  document.getElementById('tab-counts').classList.toggle('active', tab === 'counts');
+  document.getElementById('counts-panel').style.display = tab === 'counts' ? 'block' : 'none';
+  if(tab === 'counts' && window.ymAdminCountsStart) window.ymAdminCountsStart();
   document.getElementById('edit-panel').classList.remove('active');
   if(tab === 'log') renderLog();
 }
@@ -1056,9 +1082,12 @@ function copyTsv() {
 
 <script src="/assets/js/admin-notices.js?v=20261016a"></script>
 <script src="/assets/js/admin-analytics.js?v=20261021a"></script>
+<script src="/assets/js/counts-config.js?v=20261020a"></script>
+<script src="/assets/js/admin-counts.js?v=20261025a"></script>
 <script>
 if (location.hash === '#notices') switchTab('notices');
 if (location.hash === '#analytics') switchTab('analytics');
+if (location.hash === '#counts') switchTab('counts');
 </script>
 </body>
 </html>

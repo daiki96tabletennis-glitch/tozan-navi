@@ -5,6 +5,8 @@
 //   ・初めて動いたとき：保存済みの記録がすべて +1 される（過去の分も数える）
 //   ・お気に入りや登頂記録を外したとき：-1 される
 // 集計先のアドレス（counts-config.js の YM_COUNTS_DB_URL）が空なら、何もしない。
+// 管理者表示をオンにした端末（localStorage ym_admin = '1'）は、自分が集計に加えた山の一覧を /countsAdmin/<端末の番号> に預ける。
+//   管理画面の「お気に入り・登頂」は、合計からこの分を引いて表示する（山ページの数は今までどおり管理者の分も含む）。2026-10-25
 (function(){
   var DB = String(window.YM_COUNTS_DB_URL || '').replace(/\/+$/, '');
   var SYNC_KEY = 'ym_counts_synced';
@@ -58,7 +60,8 @@
       var j = jobs.shift();
       if(!j){
         syncing = false;
-        if(pending){ pending = false; sync(); }
+        if(pending){ pending = false; sync(); return; }
+        shareAdmin();
         return;
       }
       bump(j.id, j.kind, j.d).then(function(){
@@ -102,6 +105,45 @@
   }
 
   function num(v){ return (typeof v === 'number' && v > 0) ? Math.floor(v) : 0; }
+
+  // ── 管理者端末の分（管理画面で合計から引くため） ──
+  var DEV_KEY = 'ym_counts_dev', ADMIN_SENT_KEY = 'ym_counts_admin_sent';
+  function isAdmin(){ try { return localStorage.getItem('ym_admin') === '1'; } catch(e) { return false; } }
+  function devId(){
+    var v = null;
+    try { v = localStorage.getItem(DEV_KEY); } catch(e) {}
+    if(!v || !/^[a-f0-9]{16}$/.test(v)){
+      v = '';
+      for(var i = 0; i < 16; i++) v += '0123456789abcdef'.charAt(Math.floor(Math.random() * 16));
+      try { localStorage.setItem(DEV_KEY, v); } catch(e) {}
+    }
+    return v;
+  }
+  function shareAdmin(){
+    if(!DB) return;
+    var sent = null;
+    try { sent = localStorage.getItem(ADMIN_SENT_KEY); } catch(e) {}
+    var url = DB + '/countsAdmin/' + devId() + '.json';
+    if(!isAdmin()){
+      // 管理者表示をやめた端末は、預けた分を消す
+      if(sent){
+        fetch(url, { method: 'DELETE' }).then(function(r){
+          if(r.ok){ try { localStorage.removeItem(ADMIN_SENT_KEY); } catch(e) {} }
+        }).catch(function(){});
+      }
+      return;
+    }
+    var done = read(SYNC_KEY, { fav: [], climbed: [] }) || { fav: [], climbed: [] };
+    var body = { fav: {}, climbed: {} };
+    uniq(done.fav || []).forEach(function(id){ body.fav[id] = true; });
+    uniq(done.climbed || []).forEach(function(id){ body.climbed[id] = true; });
+    var sig = JSON.stringify(body);
+    if(sig === sent) return;   // 前回と同じなら送らない
+    body.t = { '.sv': 'timestamp' };
+    fetch(url, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function(r){ if(r.ok){ try { localStorage.setItem(ADMIN_SENT_KEY, sig); } catch(e) {} } })
+      .catch(function(){});
+  }
 
   // 山ページ：<div id="hero-counts" data-id="takao"> に「★5 ⚑6」を出す
   function render(){

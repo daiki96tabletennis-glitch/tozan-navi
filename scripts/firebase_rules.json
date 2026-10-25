@@ -10,6 +10,29 @@
         }
       }
     },
+    "countsAdmin": {
+      ".read": true,
+      "$dev": {
+        ".write": true,
+        ".validate": "$dev.matches(/^[a-f0-9]{16}$/) && newData.hasChildren(['t'])",
+        "fav": {
+          "$id": {
+            ".validate": "$id.matches(/^[a-z0-9_]{1,40}$/) && newData.val() == true"
+          }
+        },
+        "climbed": {
+          "$id": {
+            ".validate": "$id.matches(/^[a-z0-9_]{1,40}$/) && newData.val() == true"
+          }
+        },
+        "t": {
+          ".validate": "newData.isNumber()"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
     "hutPush": {
       ".read": false,
       "$id": {
