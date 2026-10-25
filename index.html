@@ -1447,20 +1447,13 @@ function App() {
             </div>
             <span style={{fontSize:"16px",color:"#3a5030",fontWeight:"300"}}>›</span>
           </a>
-          <a href="/recommend/" onClick={() => { if (typeof gtag === "function") gtag('event', 'diagnosis_entry_click', { diagnosis_type: 'recommend' }); }} style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
+          <a href="/recommend/" onClick={() => { if (typeof gtag === "function") gtag('event', 'diagnosis_entry_click', { diagnosis_type: 'recommend' }); }} style={{flex:1,display:"flex",alignItems:"center",gap:"8px",backgroundColor:"#8ec3ee",backgroundImage:"url(/recommend/images/top-type-banner.jpg)",backgroundSize:"cover",backgroundPosition:"right center",backgroundRepeat:"no-repeat",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease",overflow:"hidden"}}
             onTouchStart={e => { e.currentTarget.style.transform="scale(0.97)"; }}
             onTouchEnd={e => { setTimeout(()=>{ if(e.currentTarget) e.currentTarget.style.transform="scale(1)"; },180); }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3a5030" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
-              <circle cx="12" cy="12" r="10"/>
-              <polygon points="12,3 14,10 12,12 10,10" fill="#3a5030" stroke="none"/>
-              <polygon points="12,21 10,14 12,12 14,14" fill="#8ab070" stroke="none"/>
-              <circle cx="12" cy="12" r="1.5" fill="white" stroke="none"/>
-            </svg>
             <div style={{flex:1,minWidth:0}}>
-              <div style={{fontSize:"13px",fontWeight:"800",color:"#2a3020",lineHeight:1.25}}>16タイプ診断</div>
-              <div style={{fontSize:"9.5px",color:"#5a6848",marginTop:"2px",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>12問でわかる</div>
+              <div style={{fontSize:"13px",fontWeight:"800",color:"#1f2a17",lineHeight:1.25,textShadow:"0 0 3px #fff, 0 0 6px #fff, 0 0 10px rgba(255,255,255,0.9)"}}>16タイプ診断</div>
+              <div style={{fontSize:"9.5px",color:"#2f3d24",fontWeight:"700",marginTop:"2px",whiteSpace:"nowrap",textShadow:"0 0 3px #fff, 0 0 6px #fff, 0 0 10px rgba(255,255,255,0.9)"}}>12問でわかる</div>
             </div>
-            <span style={{fontSize:"16px",color:"#3a5030",fontWeight:"300"}}>›</span>
           </a>
         </div>
 
