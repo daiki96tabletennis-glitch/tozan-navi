@@ -36,6 +36,7 @@
 #root > div { padding-bottom: env(safe-area-inset-bottom, 0px); }
 
 /* ── アニメーション追加 ── */
+@media (prefers-reduced-motion: reduce){ .ym-result-card{animation:none !important;} }
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -305,6 +306,30 @@ function formatDriveTime(min) {
   return m === 0 ? `${h}時間` : `${h}時間${m}分`;
 }
 
+
+// 件数を数えながら変える（156 → 23 のように。0.4秒）。動きを減らす設定の端末ではすぐ変える。2026-10-25
+function YmCountUp({ value }) {
+  const [shown, setShown] = useState(value);
+  const fromRef = useRef(value);
+  useEffect(() => {
+    var from = fromRef.current, to = value;
+    fromRef.current = value;
+    var reduce = false;
+    try { reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+    if (from === to || reduce || typeof requestAnimationFrame !== "function") { setShown(to); return; }
+    var start = null, raf = 0, dur = 400;
+    function step(t) {
+      if (start === null) start = t;
+      var p = Math.min(1, (t - start) / dur);
+      var e = 1 - Math.pow(1 - p, 3);
+      setShown(Math.round(from + (to - from) * e));
+      if (p < 1) raf = requestAnimationFrame(step);
+    }
+    raf = requestAnimationFrame(step);
+    return function(){ cancelAnimationFrame(raf); };
+  }, [value]);
+  return shown;
+}
 
 function MapView({ mountains, onSelect }) {
   const mapRef = useRef(null);
@@ -1777,7 +1802,7 @@ function App() {
           {/* 件数＋並び替え▾＋一覧/地図 */}
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:"7px"}}>
             <div style={{display:"flex",alignItems:"center",gap:"5px"}}>
-              <span key={filtered.length} style={{fontSize:"11px",color:"#7a7068",display:"inline-block",animation:"fadeInUp 0.25s ease both"}}>見つかった山 <span style={{fontFamily:"Outfit,sans-serif",fontSize:"13px",fontWeight:"700",color:"#41551f"}}>{filtered.length}</span>件</span>
+              <span style={{fontSize:"11px",color:"#7a7068",display:"inline-block"}}>見つかった山 <span style={{fontFamily:"Outfit,sans-serif",fontSize:"13px",fontWeight:"700",color:"#41551f"}}><YmCountUp value={filtered.length} /></span>件</span>
               {/* タグを選んだときの「件数の隣の札」は廃止（運営者の指示・2026-10-25）。外すときはタグの列の「すべて」を押す */}
             </div>
             <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
@@ -1800,7 +1825,7 @@ function App() {
           {/* 一覧 / 地図 */}
           {viewMode === "list" ? (
             <>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "8px" }}>
+              <div key={"r-" + sort + "-" + filtered.map(function(x){ return x.id; }).join(",")} style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "8px" }}>
                 {filtered.map((m, cardIdx) => {
                   const dayTrip = isDayTrip(m);
                   const catStyle = m.category && CATEGORY_STYLE[m.category];
@@ -1832,7 +1857,7 @@ function App() {
                   const cramponColor = gearView.color;
 
                   return (
-                    <a key={m.id} href={getMountainUrl(m.id)}
+                    <a key={m.id} href={getMountainUrl(m.id)} className="ym-result-card"
                       onClick={() => { if (typeof gtag === "function") gtag('event', 'mountain_card_click', { mountain_id: m.id, mountain_name: m.name }); }}
                       style={{
                         position: "relative", overflow: "hidden",
@@ -1843,7 +1868,7 @@ function App() {
                         display: "flex", flexDirection: "column", gap: "3px",
                         transition: "opacity 0.12s, transform 0.15s cubic-bezier(0.34,1.56,0.64,1)",
                         animation: `fadeInUp 0.35s ease both`,
-                        animationDelay: `${Math.min(cardIdx * 0.04, 0.5)}s`,
+                        animationDelay: `${Math.min(cardIdx * 0.035, 0.35)}s`,
                       }}
                       onMouseEnter={e => { e.currentTarget.style.opacity = "0.9"; e.currentTarget.style.transform = "translateY(-2px) scale(1.01)"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.1)"; }}
                       onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.boxShadow = "none"; }}
