@@ -967,6 +967,13 @@ function App() {
   const [filterMonth, setFilterMonth]       = useState(() => ymInit("month")); // 1-12
   const [viewMode, setViewMode]             = useState(() => ymInit("viewmode"));
   const [filterOpen, setFilterOpen] = useState(false);
+  // 絞り込みの画面を閉じたときに、結果のカードをもう一度ふわっと出す（開いているあいだに出し直しが終わってしまうため。2026-10-25）
+  const [resultAnim, setResultAnim] = useState(0);
+  const filterWasOpen = useRef(false);
+  useEffect(() => {
+    if (filterOpen) { filterWasOpen.current = true; return; }
+    if (filterWasOpen.current) { filterWasOpen.current = false; setResultAnim(function(n){ return n + 1; }); }
+  }, [filterOpen]);
   const [vibeFilter, setVibeFilter] = useState(() => ymInit("vibe"));
   const [quickOpen, setQuickOpen] = useState(false);
   const [matrixOpen, setMatrixOpen] = useState(false);
@@ -1825,7 +1832,7 @@ function App() {
           {/* 一覧 / 地図 */}
           {viewMode === "list" ? (
             <>
-              <div key={"r-" + sort + "-" + filtered.map(function(x){ return x.id; }).join(",")} style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "8px" }}>
+              <div key={"r-" + resultAnim + "-" + sort + "-" + filtered.map(function(x){ return x.id; }).join(",")} style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "8px" }}>
                 {filtered.map((m, cardIdx) => {
                   const dayTrip = isDayTrip(m);
                   const catStyle = m.category && CATEGORY_STYLE[m.category];

@@ -42,7 +42,7 @@
   const ogpMap = {ACPS:'acps',ACPL:'acpl',ACFS:'acfs',ACFL:'acfl',AHPS:'ahps',AHPL:'ahpl',AHFS:'ahfs',AHFL:'ahfl',VCPS:'vcps',VCPL:'vcpl',VCFS:'vcfs',VCFL:'vcfl',VHPS:'vhps',VHPL:'vhpl',VHFS:'vhfs',VHFL:'vhfl'};
   const names16 = {ACPS:'山岳探検家',ACPL:'孤高の登山家',ACFS:'ワイルドハイカー',ACFL:'バリエーター',AHPS:'展望ハンター',AHPL:'サイレントクライマー',AHFS:'お祭り登山家',AHFL:'フォトウォーカー',VCPS:'山岳研究家',VCPL:'深山の求道者',VCFS:'山旅人',VCFL:'隠れ登山家',VHPS:'山リゾーター',VHPL:'瞑想ハイカー',VHFS:'山ピクニック派',VHFL:'森の放浪者'};
   if(type && ogpMap[type]){
-    const img = 'https://tozan-navi.com/ogp/type-'+ogpMap[type]+'.png';
+    const img = 'https://tozan-navi.com/ogp/type-'+ogpMap[type]+'.png?v=20261025';
     document.querySelector('meta[property="og:image"]').content = img;
     document.querySelector('meta[name="twitter:image"]').content = img;
     if(names16[type]) document.querySelector('meta[property="og:title"]').content = '私は「'+names16[type]+'」でした！ - Yamatch登山タイプ診断';
