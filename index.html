@@ -1442,7 +1442,7 @@ function App() {
               <div style={{fontSize:"9.5px",color:"#2f3d24",fontWeight:"700",marginTop:"2px",whiteSpace:"nowrap",textShadow:"0 0 3px #fff, 0 0 6px #fff, 0 0 10px rgba(255,255,255,0.9)"}}>7問・1分でわかる</div>
             </div>
           </a>
-          <a href="/recommend/" onClick={() => { if (typeof gtag === "function") gtag('event', 'diagnosis_entry_click', { diagnosis_type: 'recommend' }); }} style={{flex:1,display:"flex",alignItems:"center",gap:"8px",backgroundColor:"#8ec3ee",backgroundImage:"url(/recommend/images/top-type-banner.jpg)",backgroundSize:"200% auto",backgroundPosition:"left center",backgroundRepeat:"no-repeat",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease",overflow:"hidden",position:"relative"}}
+          <a href="/recommend/?start=1" onClick={() => { if (typeof gtag === "function") gtag('event', 'diagnosis_entry_click', { diagnosis_type: 'recommend' }); }} style={{flex:1,display:"flex",alignItems:"center",gap:"8px",backgroundColor:"#8ec3ee",backgroundImage:"url(/recommend/images/top-type-banner.jpg)",backgroundSize:"200% auto",backgroundPosition:"left center",backgroundRepeat:"no-repeat",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease",overflow:"hidden",position:"relative"}}
             onTouchStart={e => { e.currentTarget.style.transform="scale(0.97)"; }}
             onTouchEnd={e => { setTimeout(()=>{ if(e.currentTarget) e.currentTarget.style.transform="scale(1)"; },180); }}>
             {/* カワウソが切れないよう、右端に絵の全体を高さに合わせて重ねる（PCでボタンが横に広がっても顔が切れない）。左は下の拡大した絵へなじませる */}
