@@ -54,7 +54,60 @@ function changeDepTrain(key){
       el.style.display = (key === k) ? '' : 'none';
     });
   });
+  ymTransitLinks(key);
 }
+// 乗換案内（Yahoo!乗換案内）のリンクを、電車・バスの出発地のボタンに合わせる（2026-10-26）。
+// 出発駅（from）を新宿・大宮・横浜に替える。行き先（to）は、その出発地の経路に行き先の駅が無いときだけ、
+// その経路で電車を降りる駅（最初にバス・ロープウェイなどに乗り換える駅）に替える（例：浅間山の大宮発・横浜発＝佐久平駅）。
+// 降りる駅が新宿（高速バスに乗り換える）なら、行き先はそのまま。元のリンクは data-base-href に残す
+var YM_TRANSIT_FROM = {shinjuku:'新宿', omiya:'大宮', yokohama:'横浜'};
+var YM_NON_RAIL = /バス|交通「|シャトル|乗合|タクシー|ロープウェイ|ケーブル|ゴンドラ|リフト|徒歩/;
+function ymCleanSt(s){ return String(s || '').replace(/[（(][^）)]*[）)]/g, '').replace(/^\s+|\s+$/g, ''); }
+function ymRailEnd(route){
+  var steps = route ? route.querySelectorAll('.ts-step') : [];
+  var names = [], end = '';
+  for(var i = 0; i < steps.length; i++){
+    var st = steps[i].querySelector('.ts-station');
+    var name = st ? st.textContent : '';
+    names.push(name);
+    var m = steps[i].querySelector('.ts-method');
+    if(!end && i > 0 && m && YM_NON_RAIL.test(m.textContent)){ end = name; }
+    if(!end && !m){ end = name; }
+  }
+  return { names: names, end: ymCleanSt(end) };
+}
+function ymTransitLinks(key){
+  var from = YM_TRANSIT_FROM[key];
+  if(!from){ return; }
+  var route = document.querySelector('.ts-route-' + key);
+  document.querySelectorAll('a.ts-link-yahoo').forEach(function(a){
+    var cur = a.getAttribute('href') || '';
+    if(cur.indexOf('transit.yahoo.co.jp') < 0){ return; }
+    // 別の処理でリンクが書き換えられていたら、それを元のリンクにする
+    if(!a.getAttribute('data-base-href') || (a._ymSet && cur !== a._ymSet)){ a.setAttribute('data-base-href', cur); }
+    var base = a.getAttribute('data-base-href');
+    var mt = base.match(/[?&]to=([^&]*)/);
+    var to = '';
+    try { to = mt ? decodeURIComponent(mt[1].replace(/\+/g, ' ')) : ''; } catch(e) { to = mt ? mt[1] : ''; }
+    var href = base.replace(/([?&]from=)[^&]*/, '$1' + encodeURIComponent(from));
+    if(key !== 'shinjuku' && route && to){
+      var info = ymRailEnd(route), want = ymCleanSt(to).replace(/駅$/, ''), found = false;
+      for(var i = 0; i < info.names.length; i++){ if(info.names[i].indexOf(want) >= 0){ found = true; break; } }
+      if(!found && info.end && info.end.indexOf('新宿') < 0){
+        href = href.replace(/([?&]to=)[^&]*/, '$1' + encodeURIComponent(info.end));
+      }
+    }
+    a.setAttribute('href', href);
+    a._ymSet = href;
+  });
+}
+document.addEventListener('click', function(e){
+  var a = e.target && e.target.closest ? e.target.closest('a.ts-link-yahoo') : null;
+  if(a){
+    var act = document.querySelector('.ts-dep-btn.active');
+    ymTransitLinks(act ? act.getAttribute('data-key') : 'shinjuku');
+  }
+}, true);
 function applyDepTrain(){
   var key = ymStoreGet('ym_departure_train') || ({'新宿':'shinjuku','大宮':'omiya','横浜':'yokohama'})[ymGetDep()] || 'shinjuku';
   changeDepTrain(key);
