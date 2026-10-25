@@ -212,6 +212,19 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
 .ac-num{font-family:Outfit,sans-serif;font-weight:700;text-align:right;width:70px}
 .ac-sub{font-size:11px;color:#8a8478;margin-top:1px}
 .ac-off{font-size:11px;color:#a09888}
+/* スマホ：見出しの行は折り返し、タブは1行で横に送る（2026-10-25） */
+@media (max-width:600px){
+  header{position:static;padding:10px 12px;}
+  .header-inner{flex-wrap:wrap;row-gap:8px;}
+  .header-title{font-size:15px;}
+  .header-back{margin-left:auto;}
+  .header-image-tool{font-size:11px;padding:6px 9px;}
+  .tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .tab-bar::-webkit-scrollbar{display:none;}
+  .tab-btn{flex:0 0 auto;white-space:nowrap;font-size:12px;padding:8px 11px;}
+  .ac-table{font-size:12px;}
+  .ac-num{width:54px;}
+}
 </style>
 </head>
 <body>
@@ -1083,7 +1096,7 @@ function copyTsv() {
 <script src="/assets/js/admin-notices.js?v=20261016a"></script>
 <script src="/assets/js/admin-analytics.js?v=20261021a"></script>
 <script src="/assets/js/counts-config.js?v=20261020a"></script>
-<script src="/assets/js/admin-counts.js?v=20261025a"></script>
+<script src="/assets/js/admin-counts.js?v=20261025b"></script>
 <script>
 if (location.hash === '#notices') switchTab('notices');
 if (location.hash === '#analytics') switchTab('analytics');

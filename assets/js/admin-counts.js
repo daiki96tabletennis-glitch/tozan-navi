@@ -104,7 +104,7 @@
     } else {
       html += '<table class="ac-table"><thead><tr><th>#</th><th>山</th><th>★ お気に入り</th><th>⚑ 登頂</th></tr></thead><tbody>';
       list.forEach(function(r, n){
-        var nm = r.onSite ? '<a href="/mountains/' + esc(r.id) + '/" target="_blank" rel="noopener">' + esc(r.name) + '</a>' : esc(r.name) + '<span class="ac-off">（掲載なし）</span>';
+        var nm = r.onSite ? '<a href="/mountains/' + esc(r.id) + '/">' + esc(r.name) + '</a>' : esc(r.name) + '<span class="ac-off">（掲載なし）</span>';
         html += '<tr><td class="ac-rank">' + (n + 1) + '</td><td>' + nm + '<div class="ac-sub">' + esc(r.area) + (r.category ? '・' + esc(r.category) : '') + '</div></td>' +
           '<td class="ac-num">' + r.fav + '</td><td class="ac-num">' + r.climbed + '</td></tr>';
       });
