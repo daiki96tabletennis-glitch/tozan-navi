@@ -1140,9 +1140,15 @@ function App() {
   // 「所要時間順（車/電車）」ソートを選んだときは、表示モードも連動させる
   useEffect(() => {
     if (!ymSyncReady.current) return;
-    if (sort === "所要時間順（電車・バス）") setTransportMode("train");
+    if (sort === "所要時間順（電車・バス）" || sort === "安い順（電車・バス）") setTransportMode("train");
     else if (sort === "所要時間順（車）") setTransportMode("car");
   }, [sort]);
+  // 逆向き：車／電車を切り替えたら、食い違う並び順だけを合わせる（おすすめ順・標高順・体力度順はそのまま）。2026-10-25
+  function ymSortForMode(mode, s) {
+    if (mode === "train" && s === "所要時間順（車）") return "所要時間順（電車・バス）";
+    if (mode === "car" && (s === "所要時間順（電車・バス）" || s === "安い順（電車・バス）")) return "所要時間順（車）";
+    return s;
+  }
   // 電車系の絞り込み（所要時間・運賃・アクセス難易度）を使ったら電車表示に、車の所要時間絞り込みを使ったら車表示に
   useEffect(() => {
     if (!ymSyncReady.current) return;
@@ -1155,6 +1161,8 @@ function App() {
   // モードを切り替えたら、逆モード専用の絞り込みは自動でリセット（表示に出ない条件が残らないように）
   useEffect(() => {
     if (!ymSyncReady.current) return;
+    var fixedSort = ymSortForMode(transportMode, sort);
+    if (fixedSort !== sort) setSort(fixedSort);
     if (transportMode === "car") {
       if (trainTimeFilter) setTrainTimeFilter(null);
       if (fareFilter) setFareFilter(null);
@@ -1168,7 +1176,12 @@ function App() {
     if (isTrainMode && departure !== "新宿" && departure !== "大宮" && departure !== "横浜") setDeparture("新宿");
   }, [isTrainMode]);
   // ここまでの連動処理は初回描画後から有効にする（この effect は宣言順で最後に走る）
-  useEffect(() => { ymSyncReady.current = true; }, []);
+  useEffect(() => {
+    // 保存した条件を戻したとき、車／電車と並び順が食い違っていたら並び順を合わせる（表示中の車／電車を優先）
+    var fixedSort = ymSortForMode(transportMode, sort);
+    if (fixedSort !== sort) setSort(fixedSort);
+    ymSyncReady.current = true;
+  }, []);
 
   const filtered = useMemo(() => {
     let list = mountains.filter(m => {
@@ -1765,15 +1778,7 @@ function App() {
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:"7px"}}>
             <div style={{display:"flex",alignItems:"center",gap:"5px"}}>
               <span key={filtered.length} style={{fontSize:"11px",color:"#7a7068",display:"inline-block",animation:"fadeInUp 0.25s ease both"}}>見つかった山 <span style={{fontFamily:"Outfit,sans-serif",fontSize:"13px",fontWeight:"700",color:"#41551f"}}>{filtered.length}</span>件</span>
-              {vibeFilter && (function(){
-                var labels = {"view":"絶景","forest":"森歩き","rock":"岩場","highland":"高原","accessible":"お手軽","volcano":"火山","wetland":"湿原","historic":"歴史"};
-                return (
-                  <button onClick={function(){ setVibeFilter(""); }}
-                    style={{fontSize:"10px",padding:"2px 7px",borderRadius:"5px",background:"#4e6535",color:"white",border:"none",cursor:"pointer",display:"flex",alignItems:"center",gap:"3px"}}>
-                    {labels[vibeFilter] || vibeFilter} ✕
-                  </button>
-                );
-              })()}
+              {/* タグを選んだときの「件数の隣の札」は廃止（運営者の指示・2026-10-25）。外すときはタグの列の「すべて」を押す */}
             </div>
             <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
               <div style={{position:"relative"}}>
