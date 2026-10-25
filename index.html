@@ -1434,23 +1434,20 @@ function App() {
 
         {/* 診断バナー */}
         <div style={{display:"flex",gap:"7px",marginBottom:"7px"}}>
-          <a href="/find/" onClick={() => { if (typeof gtag === "function") gtag('event', 'diagnosis_entry_click', { diagnosis_type: 'find' }); }} style={{flex:1,display:"flex",alignItems:"center",gap:"8px",background:"#c8d4b8",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease"}}
+          <a href="/find/" onClick={() => { if (typeof gtag === "function") gtag('event', 'diagnosis_entry_click', { diagnosis_type: 'find' }); }} style={{flex:1,display:"flex",alignItems:"center",gap:"8px",backgroundColor:"#8ec3ee",backgroundImage:"url(/recommend/images/top-find-banner.jpg)",backgroundSize:"cover",backgroundPosition:"right center",backgroundRepeat:"no-repeat",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease",overflow:"hidden"}}
             onTouchStart={e => { e.currentTarget.style.transform="scale(0.97)"; }}
             onTouchEnd={e => { setTimeout(()=>{ if(e.currentTarget) e.currentTarget.style.transform="scale(1)"; },180); }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3a5030" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
-              <path d="M3 19 L9 9 L13 15 L16 11 L21 19 Z"/>
-              <path d="M9 9 L11 12" stroke="#3a5030"/>
-            </svg>
             <div style={{flex:1,minWidth:0}}>
-              <div style={{fontSize:"13px",fontWeight:"800",color:"#2a3020",lineHeight:1.25}}>山選び診断</div>
-              <div style={{fontSize:"9.5px",color:"#5a6848",marginTop:"2px",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>7問・1分でわかる</div>
+              <div style={{fontSize:"13px",fontWeight:"800",color:"#1f2a17",lineHeight:1.25,textShadow:"0 0 3px #fff, 0 0 6px #fff, 0 0 10px rgba(255,255,255,0.9)"}}>山選び診断</div>
+              <div style={{fontSize:"9.5px",color:"#2f3d24",fontWeight:"700",marginTop:"2px",whiteSpace:"nowrap",textShadow:"0 0 3px #fff, 0 0 6px #fff, 0 0 10px rgba(255,255,255,0.9)"}}>7問・1分でわかる</div>
             </div>
-            <span style={{fontSize:"16px",color:"#3a5030",fontWeight:"300"}}>›</span>
           </a>
-          <a href="/recommend/" onClick={() => { if (typeof gtag === "function") gtag('event', 'diagnosis_entry_click', { diagnosis_type: 'recommend' }); }} style={{flex:1,display:"flex",alignItems:"center",gap:"8px",backgroundColor:"#8ec3ee",backgroundImage:"url(/recommend/images/top-type-banner.jpg)",backgroundSize:"cover",backgroundPosition:"right center",backgroundRepeat:"no-repeat",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease",overflow:"hidden"}}
+          <a href="/recommend/" onClick={() => { if (typeof gtag === "function") gtag('event', 'diagnosis_entry_click', { diagnosis_type: 'recommend' }); }} style={{flex:1,display:"flex",alignItems:"center",gap:"8px",backgroundColor:"#8ec3ee",backgroundImage:"url(/recommend/images/top-type-banner.jpg)",backgroundSize:"200% auto",backgroundPosition:"left center",backgroundRepeat:"no-repeat",border:"0.5px solid #a8b898",borderRadius:"8px",padding:"8px 10px",textDecoration:"none",cursor:"pointer",transition:"transform 0.18s ease",overflow:"hidden",position:"relative"}}
             onTouchStart={e => { e.currentTarget.style.transform="scale(0.97)"; }}
             onTouchEnd={e => { setTimeout(()=>{ if(e.currentTarget) e.currentTarget.style.transform="scale(1)"; },180); }}>
-            <div style={{flex:1,minWidth:0}}>
+            {/* カワウソが切れないよう、右端に絵の全体を高さに合わせて重ねる（PCでボタンが横に広がっても顔が切れない）。左は下の拡大した絵へなじませる */}
+            <span aria-hidden="true" style={{position:"absolute",top:0,right:0,bottom:0,height:"100%",aspectRatio:"3.6 / 1",backgroundImage:"url(/recommend/images/top-type-banner.jpg)",backgroundSize:"auto 100%",backgroundPosition:"right center",backgroundRepeat:"no-repeat",WebkitMaskImage:"linear-gradient(90deg, transparent 0%, #000 30%)",maskImage:"linear-gradient(90deg, transparent 0%, #000 30%)",pointerEvents:"none"}}></span>
+            <div style={{flex:1,minWidth:0,position:"relative",zIndex:1}}>
               <div style={{fontSize:"13px",fontWeight:"800",color:"#1f2a17",lineHeight:1.25,textShadow:"0 0 3px #fff, 0 0 6px #fff, 0 0 10px rgba(255,255,255,0.9)"}}>16タイプ診断</div>
               <div style={{fontSize:"9.5px",color:"#2f3d24",fontWeight:"700",marginTop:"2px",whiteSpace:"nowrap",textShadow:"0 0 3px #fff, 0 0 6px #fff, 0 0 10px rgba(255,255,255,0.9)"}}>12問でわかる</div>
             </div>
