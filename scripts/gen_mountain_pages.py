@@ -42,7 +42,6 @@ from render_transit_routes import render_ts_section  # noqa: E402  (trainRoutes�
 SITE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH = os.path.join(SITE_ROOT, "data", "mountains.json")
 GEAR_DATA_PATH = os.path.join(SITE_ROOT, "data", "gear-data.json")
-LODGING_PATH = os.path.join(SITE_ROOT, "data", "lodging_areas.json")  # 前泊の宿を探す場所（build_lodging_areas.py）
 import gear_calendar
 
 BASE_CSS_PATH = os.path.join(SITE_ROOT, "scripts", "_base_mountain_style.css")
@@ -588,58 +587,22 @@ def render_parking(mt):
         f'<span class="info-val">{address}</span></div>\n'
         '</div>\n'
         f'{map_target}{map_btns}\n'
+        f'{stay_link(mt)}'
         '</div>'
     )
 
 
-_LODGING = None
-
-
-def lodging_areas(mid):
-    """前泊の宿を探す場所のうち、座標の確かめられたもの"""
-    global _LODGING
-    if _LODGING is None:
-        try:
-            with open(LODGING_PATH, encoding="utf-8") as f:
-                _LODGING = json.load(f).get("mountains", {})
-        except FileNotFoundError:
-            _LODGING = {}
-    m = _LODGING.get(mid) or {}
-    return [a for a in m.get("areas", []) if a.get("lat") is not None and not a.get("needsVerification")]
-
-
-LODGING_CSS = (
-    '<style>#sec-lodging .ld-pr{font-size:10px;font-weight:700;color:#7a7365;border:1px solid #ccc7ba;border-radius:4px;'
-    'padding:0 4px;margin-left:6px;vertical-align:1px}'
-    '#sec-lodging .ld-tabs{display:flex;gap:6px;overflow-x:auto;margin:0 0 10px;padding-bottom:2px}'
-    '#sec-lodging .ld-tab{flex:0 0 auto;border:1px solid #c8d4b8;background:#fff;color:#2a3820;border-radius:18px;'
-    'padding:6px 12px;font-size:13px;font-weight:700;font-family:inherit;line-height:1.3;text-align:left;cursor:pointer}'
-    '#sec-lodging .ld-tab small{display:block;font-size:10px;font-weight:400;color:#6b6558}'
-    '#sec-lodging .ld-tab.on{background:#4e6535;border-color:#4e6535;color:#fff}'
-    '#sec-lodging .ld-tab.on small{color:#e3ead9}'
-    '#sec-lodging .ld-why{font-size:12px;color:#6b6558;margin:0 0 8px;line-height:1.6}'
-    '#sec-lodging .ld-item{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid #e2ddd1;'
-    'color:#2a2620;text-decoration:none}'
-    '#sec-lodging .ld-img{flex:0 0 72px;width:72px;height:72px;object-fit:cover;border-radius:8px;background:#e2ddd1}'
-    '#sec-lodging .ld-name{display:block;font-size:14px;font-weight:700;color:#2a3820;line-height:1.4}'
-    '#sec-lodging .ld-meta{display:block;font-size:12px;color:#6b6558;line-height:1.6;margin-top:2px}'
-    '#sec-lodging .ld-note{font-size:11px;color:#7a7365;line-height:1.6;margin:10px 0 0}'
-    '#sec-lodging .ld-credit{text-align:right;font-size:10.5px;margin:4px 0 0}</style>'
-)
-
-
-def render_lodging(mt):
-    """前泊の宿（楽天トラベル）。中身は assets/js/lodging.js がページを開いたときに読み込む。宿が無ければ欄ごと出さない"""
-    if not lodging_areas(mt["id"]):
+def stay_link(mt):
+    """前泊の宿のページ（/stay/<山ID>/。gen_stay_pages.py）へのリンク1行。ページがある山だけ"""
+    if not os.path.exists(os.path.join(SITE_ROOT, "stay", mt["id"], "index.html")):
         return ""
-    return (
-        f'<div class="card" id="sec-lodging" data-mid="{esc(mt["id"])}" hidden>{LODGING_CSS}'
-        '<h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" '
-        'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V8"/>'
-        '<path d="M3 14h18v6"/><path d="M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg>'
-        '前泊の宿<span class="ld-pr">PR</span></h2>'
-        '<div class="ld-content"></div></div>'
-    )
+    with open(os.path.join(SITE_ROOT, "data", "lodging_areas.json"), encoding="utf-8") as f:
+        areas = (json.load(f).get("mountains", {}).get(mt["id"]) or {}).get("areas", [])
+    names = "・".join(a["name"] for a in areas if a.get("rakuten"))
+    where = f"{names}の近く" if names else "乗り換える駅・駐車場の近く"
+    return (f'<a class="stay-link" href="/stay/{esc(mt["id"])}/" style="display:block;margin:12px 0 0;padding:11px 14px;'
+            'background:#eef4e8;border:1px solid #c8d4b8;border-radius:10px;color:#2a3820;font-size:14px;font-weight:700;'
+            f'text-decoration:none">前泊の宿を探す（{esc(where)}） →</a>\n')
 
 
 SEASON_ICON = ('<svg width="16" height="16" viewBox="0 0 24 24" '
@@ -1293,9 +1256,6 @@ def generate_page(mt, by_id, gear_data):
     body_sections.append(f'  {render_car_access(mt)}')
     body_sections.append("")
     body_sections.append(f'  {render_parking(mt)}')
-    lodging = render_lodging(mt)
-    if lodging:
-        body_sections.append(f'  {lodging}')
     body_sections.append(f'  {render_season(mt)}')
     body_sections.append("")
     body_sections.append(f'  {render_routes(mt)}')
@@ -1322,8 +1282,6 @@ def generate_page(mt, by_id, gear_data):
     body_sections.append(FOOTER_BLOCK.rstrip("\n"))
     body_sections.append(render_scripts(mt))
     body_sections.append('<script src="/assets/js/to-top.js?v=20261025a" defer></script>')  # 一番上へ戻るボタン（2026-10-25）
-    if lodging:
-        body_sections.append('<script src="/assets/js/lodging.js?v=20261025a" defer></script>')  # 前泊の宿（2026-10-25）
     body_sections.append("</body>")
     body_sections.append("</html>")
 

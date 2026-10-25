@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""前泊の宿を探す場所（山ページの「前泊の宿」欄）を作る。
+"""前泊の宿のページ（/stay/<山ID>/。scripts/gen_stay_pages.py）で宿を探す場所を作る。
 
 山ごとに、次の場所を mountains.json の電車・バスのデータから決める（手で選ばない）。
   - 駅：電車を降りて、登山口へのバス・ケーブルカー・タクシーに乗り換える駅（例：北岳＝甲府駅）
@@ -10,10 +10,14 @@
 照らせなかった場所は needsVerification を付け、ページには出さない（推測で座標を置かない）。
 足したい場所・外したい場所は EXTRA / SKIP に書く。
 
+楽天トラベルの「周辺のホテル・旅館」のページ（日付・空室で探せる）も場所ごとに探してリンク先にする。
+  - 駅：その駅がある都道府県（国土地理院の逆ジオコーダーで座標から）の「駅・空港周辺」の一覧で、名前が同じ駅のページ
+  - 駅以外：楽天トラベルの「スポット」から手で選んだページ（SPOT）。ページの見出しに、選んだスポットの名前があることを確かめる
+
   python3 scripts/build_lodging_areas.py            # 確認だけ（書き込まない）
   python3 scripts/build_lodging_areas.py --write    # data/lodging_areas.json に書く
 
-宿そのものは保存しない。ページを開いたときに assets/js/lodging.js が楽天トラベルの施設検索 API で探す
+宿そのものは保存しない。前泊のページを開いたときに assets/js/lodging.js が楽天トラベルの施設検索 API で探す
 （楽天ウェブサービス規約：取得した情報を保存しない）。
 """
 import json
@@ -31,8 +35,8 @@ DATA = os.path.join(ROOT, "data", "mountains.json")
 TRAILHEADS = os.path.join(ROOT, "data", "trailheads.json")
 OUT = os.path.join(ROOT, "data", "lodging_areas.json")
 
-# 出す山（まず試作。広げるときはここに足す）
-TARGET = ["kitadake", "karamatsu", "hotaka", "tateyama"]
+# 出す山（まず北岳で試作。広げるときはここに足す。唐松岳・奥穂高岳・立山は 2026-10-25 に場所を確かめ済み）
+TARGET = ["kitadake"]
 
 # 探す半径（km。楽天の上限は3.0）
 RADIUS = {"station": 1.0, "trailhead": 3.0, "parking": 3.0}
@@ -41,6 +45,18 @@ RADIUS = {"station": 1.0, "trailhead": 3.0, "parking": 3.0}
 EXTRA = {}
 # 外したい場所：{山ID: [場所の名前]}
 SKIP = {}
+# 駅以外の場所の、楽天トラベルのスポットのページ（手で選ぶ。場所の近くの宿が載っているものだけ）
+# {山ID: {場所の名前: (スポット名, URL)}}
+SPOT = {
+    "kitadake": {"芦安駐車場": ("芦安温泉郷", "https://travel.rakuten.co.jp/yado/spot/yamanashi/S19002138.html")},
+}
+# 都道府県コード → 楽天トラベルの URL の都道府県名
+PREF_SLUG = {
+    "01": "hokkaido", "02": "aomori", "03": "iwate", "04": "miyagi", "05": "akita", "06": "yamagata", "07": "fukushima",
+    "08": "ibaraki", "09": "tochigi", "10": "gunma", "11": "saitama", "12": "chiba", "13": "tokyo", "14": "kanagawa",
+    "15": "niigata", "16": "toyama", "17": "ishikawa", "18": "fukui", "19": "yamanashi", "20": "nagano", "21": "gifu",
+    "22": "shizuoka", "23": "aichi", "24": "mie", "25": "shiga", "26": "kyoto", "27": "osaka", "28": "hyogo",
+}
 
 # 乗り物の線名から、鉄道以外（バス・ケーブルカーなど）を見分ける語。
 # データの icon は当てにならない（バスに train が付いている山がある）ので線名で見る
@@ -189,6 +205,59 @@ def lookup(p, c, ths):
     return None, "名前が合う場所が見つからない（探した名前：%s）" % "・".join(alt_names(p))
 
 
+_PAGES = {}
+
+
+def get(url):
+    if url not in _PAGES:
+        try:
+            r = requests.get(url, headers=UA, timeout=20)
+            r.encoding = r.apparent_encoding if r.encoding in (None, "ISO-8859-1") else r.encoding
+            _PAGES[url] = r.text if r.ok else ""
+        except Exception:  # noqa
+            _PAGES[url] = ""
+        time.sleep(2)
+    return _PAGES[url]
+
+
+def title_of(html):
+    t = re.search(r"<title>(.*?)</title>", html, flags=re.S)
+    return re.sub(r"\s+", " ", t.group(1)).strip() if t else ""
+
+
+def pref_code(lat, lng):
+    try:
+        r = requests.get("https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress", params={"lat": lat, "lon": lng}, headers=UA, timeout=20).json()
+        time.sleep(0.5)
+        return (r.get("results") or {}).get("muniCd", "")[:2].zfill(2)
+    except Exception:  # noqa
+        return ""
+
+
+def rakuten_page(mid, row):
+    """楽天トラベルの「周辺のホテル・旅館」のページ。見つからなければ None"""
+    if row["kind"] == "station":
+        slug = PREF_SLUG.get(pref_code(row["lat"], row["lng"]))
+        if not slug:
+            return None
+        html = get("https://travel.rakuten.co.jp/yado/traffic/%s/" % slug)
+        hrefs = set(re.findall(r'<a[^>]+href="(//travel\.rakuten\.co\.jp/yado/traffic/%s/\d+\.html)"[^>]*>\s*%s\s*</a>' % (slug, re.escape(row["name"])), html))
+        if len(hrefs) != 1:
+            return None
+        url = "https:" + hrefs.pop()
+        label = row["name"]
+    else:
+        sp = SPOT.get(mid, {}).get(row["name"])
+        if not sp:
+            return None
+        label, url = sp
+    t = title_of(get(url))
+    if label not in t:
+        print("  × 楽天トラベルのページの見出しに「%s」が無い：%s" % (label, t))
+        return None
+    return {"url": url, "label": label, "title": t}
+
+
 def main():
     write = "--write" in sys.argv
     ms = json.load(open(DATA, encoding="utf-8"))
@@ -219,6 +288,10 @@ def main():
             else:
                 row["needsVerification"] = True
                 row["why"] = why
+            if geo:
+                rk = rakuten_page(mid, row)
+                if rk:
+                    row["rakuten"] = rk
             rows.append(row)
             print("%s\t%s\t%s\t%s" % (m["name"], p["kind"], p["name"], ("%.5f,%.5f %s %s" % (geo["lat"], geo["lng"], geo["source"], geo.get("matchedName"))) if geo else "× " + why))
         # 地図ボタンの行き先（車で行く人が向かう場所）。ほかの場所と1.5km以内なら入れない

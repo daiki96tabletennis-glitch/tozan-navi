@@ -251,24 +251,24 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
       <div class="coll-next" id="coll-next"></div>
       <div class="coll-bar-wrap"><div class="coll-bar-fill" id="coll-bar" style="width:0%"></div></div>
     </div>
-    <!-- 登山制覇マップ（2026-10-25〜。assets/js/seiha-map.js） -->
-    <div class="card" id="seiha-card" style="display:none">
-      <div class="card-header">🗾 登山制覇マップ</div>
-      <div class="card-body">
-        <div id="seiha-stats" style="display:flex;justify-content:space-around;text-align:center;margin-bottom:6px"></div>
-        <div id="seiha-map"></div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:12px">
-          <button type="button" onclick="seihaShareImage(false)" style="flex:1;min-width:120px;padding:10px;border-radius:10px;border:none;background:#4e6535;color:#fff;font-size:13px;font-weight:700">画像で共有</button>
-          <button type="button" onclick="seihaShareImage(true)" style="flex:1;min-width:120px;padding:10px;border-radius:10px;border:1px solid #c8d4b8;background:#fff;color:#4e6535;font-size:13px;font-weight:700">ストーリー用</button>
-          <button type="button" onclick="seihaShareLink()" style="flex:1;min-width:120px;padding:10px;border-radius:10px;border:1px solid #c8d4b8;background:#fff;color:#4e6535;font-size:13px;font-weight:700">リンクを共有</button>
-        </div>
-        <div style="font-size:11px;color:#8a7a6a;margin-top:8px;line-height:1.6">同じ県で登った山が増えるほど色が濃くなります。県境の山は、山頂のある県それぞれに数えます。リンクには県ごとの山の数だけが入ります（山の名前や日付は入りません）。</div>
-      </div>
-    </div>
     <button class="add-btn" onclick="openAddClimbed()" style="border-style:dashed;margin-bottom:12px">＋ 記録を手動追加（山カード以外の山など）</button>
     <div class="card">
       <div class="card-header">🚩 登った山</div>
       <div class="card-body" id="climbed-list"></div>
+    </div>
+    <!-- 登頂マップ（2026-10-25〜。assets/js/summit-map.js） -->
+    <div class="card" id="summit-card" style="display:none;margin-top:12px">
+      <div class="card-header" style="font-family:'Zen Kaku Gothic New',sans-serif"><svg width="18" height="18" viewBox="0 0 36 36" style="vertical-align:-3px;margin-right:4px"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>登頂マップ</div>
+      <div class="card-body">
+        <div id="summit-stats" style="display:flex;justify-content:space-around;text-align:center;margin-bottom:6px"></div>
+        <div id="summit-map"></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:12px">
+          <button type="button" onclick="summitShareImage(false)" style="flex:1;min-width:120px;padding:10px;border-radius:10px;border:none;background:#4e6535;color:#fff;font-size:13px;font-weight:700">画像で共有</button>
+          <button type="button" onclick="summitShareImage(true)" style="flex:1;min-width:120px;padding:10px;border-radius:10px;border:1px solid #c8d4b8;background:#fff;color:#4e6535;font-size:13px;font-weight:700">ストーリー用</button>
+          <button type="button" onclick="summitShareLink()" style="flex:1;min-width:120px;padding:10px;border-radius:10px;border:1px solid #c8d4b8;background:#fff;color:#4e6535;font-size:13px;font-weight:700">リンクを共有</button>
+        </div>
+        <div style="font-size:11px;color:#8a7a6a;margin-top:8px;line-height:1.6">同じ県で登った山が増えるほど色が濃くなります。県境の山は、山頂のある県それぞれに数えます。リンクには県ごとの山の数だけが入ります（山の名前や日付は入りません）。</div>
+      </div>
     </div>
   </div>
 
@@ -2098,7 +2098,7 @@ function renderClimbed() {
     if (Array.isArray(mtnData)) { mtnData.forEach(function(m){ mtnMap[m.id]=m; }); }
     renderCollectionBanner(ids, climbs, mtnMap);
     loadPeaks(function(){ fetchNames(function(nameMap) {
-      renderSeiha(ids, climbs, mtnMap, nameMap);
+      renderSummit(ids, climbs, mtnMap, nameMap);
       var html = '<div class="badge-grid">';
       ids.forEach(function(id) {
         var entries = climbs[id];
@@ -2188,13 +2188,13 @@ var _TITLES2 = [
   {min:10,label:'⛰ 健脚ハイカー',next:20},{min:20,label:'⛰ 山の使い手',next:50},
   {min:50,label:'👑 山の主',next:100},{min:100,label:'🦅 百名山制覇',next:null},
 ];
-// ===== 登山制覇マップ（2026-10-25〜）=====
-var _seiha = null;   // 最後に描いた県ごとの数と数字（共有に使う）
-function renderSeiha(ids, climbs, mtnMap, nameMap){
-  var card = document.getElementById('seiha-card');
-  if (!card || !window.YmSeihaMap) return;
+// ===== 登頂マップ（2026-10-25〜）=====
+var _summit = null;   // 最後に描いた県ごとの数と数字（共有に使う）
+function renderSummit(ids, climbs, mtnMap, nameMap){
+  var card = document.getElementById('summit-card');
+  if (!card || !window.YmSummitMap) return;
   if (!ids.length) { card.style.display = 'none'; return; }
-  var S = window.YmSeihaMap, list = [], hyaku = 0, top = null;
+  var S = window.YmSummitMap, list = [], hyaku = 0, top = null;
   ids.forEach(function(id){
     var first = climbs[id] && climbs[id][0]; if (!first) return;
     var mt = mtnMap[id], prefs = [], elev = 0, name = '', cat = '';
@@ -2214,39 +2214,39 @@ function renderSeiha(ids, climbs, mtnMap, nameMap){
   S.load(function(map){
     if (!map) return;
     var counts = S.countByPref(list, map);
-    _seiha = { counts: counts, stats: { prefs: S.prefCount(counts), mountains: list.length, hyaku: hyaku, highest: top ? top.name + '（' + Number(top.elev).toLocaleString() + 'm）' : '' } };
-    var st = _seiha.stats;
-    function box(n, l){ return '<div><div style="font-family:Outfit,sans-serif;font-size:24px;font-weight:800;color:#2a3820;line-height:1.1">' + n + '</div><div style="font-size:11px;color:#6a6458">' + l + '</div></div>'; }
-    document.getElementById('seiha-stats').innerHTML = box(st.prefs + '<span style="font-size:13px">/47</span>', '都道府県') + box(st.mountains, '登った山') + box(st.hyaku, '百名山');
-    S.render(document.getElementById('seiha-map'), counts);
+    _summit = { counts: counts, stats: { prefs: S.prefCount(counts), mountains: list.length, hyaku: hyaku, highest: top ? top.name + '（' + Number(top.elev).toLocaleString() + 'm）' : '' } };
+    var st = _summit.stats;
+    function box(n, l){ return '<div><div style="font-family:Outfit,sans-serif;font-size:24px;font-weight:700;letter-spacing:-0.03em;color:#2a3820;line-height:1.1">' + n + '</div><div style="font-size:11px;color:#6a6458">' + l + '</div></div>'; }
+    document.getElementById('summit-stats').innerHTML = box(st.prefs + '<span style="font-size:13px">/47</span>', '都道府県') + box(st.mountains, '登った山') + box(st.hyaku, '百名山');
+    S.render(document.getElementById('summit-map'), counts);
     card.style.display = 'block';
   });
 }
-function seihaLink(){
-  return 'https://tozan-navi.com/seiha/?c=' + window.YmSeihaMap.encode(_seiha.counts) + '&m=' + _seiha.stats.mountains + '&h=' + _seiha.stats.hyaku;
+function summitLink(){
+  return 'https://tozan-navi.com/summit-map/?c=' + window.YmSummitMap.encode(_summit.counts) + '&m=' + _summit.stats.mountains + '&h=' + _summit.stats.hyaku;
 }
-function seihaText(){
-  var st = _seiha.stats;
-  return '私の登山制覇マップ：' + st.prefs + '都道府県・' + st.mountains + '山' + (st.hyaku ? '（百名山' + st.hyaku + '座）' : '') + '\n地図を見る → ' + seihaLink() + '\n\nあなたも作る → https://tozan-navi.com/seiha/\n#登山制覇マップ';
+function summitText(){
+  var st = _summit.stats;
+  return '私の登頂マップ：' + st.prefs + '都道府県・' + st.mountains + '山' + (st.hyaku ? '（百名山' + st.hyaku + '座）' : '') + '\n地図を見る → ' + summitLink() + '\n\nあなたも作る → https://tozan-navi.com/summit-map/\n#登頂マップ';
 }
-function seihaShareImage(tall){
-  if (!_seiha) return;
-  window.YmSeihaMap.makeImage(_seiha.counts, _seiha.stats, tall, function(blob){
+function summitShareImage(tall){
+  if (!_summit) return;
+  window.YmSummitMap.makeImage(_summit.counts, _summit.stats, tall, function(blob){
     if (!blob) { alert('画像を作れませんでした'); return; }
     var file = null;
-    try { file = new File([blob], tall ? 'yamatch-seiha-story.png' : 'yamatch-seiha.png', { type: 'image/png' }); } catch (e) {}
+    try { file = new File([blob], tall ? 'yamatch-summit-map-story.png' : 'yamatch-summit-map.png', { type: 'image/png' }); } catch (e) {}
     if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
-      navigator.share({ files: [file], text: seihaText() }).catch(function(){});
+      navigator.share({ files: [file], text: summitText() }).catch(function(){});
       return;
     }
     var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob); a.download = tall ? 'yamatch-seiha-story.png' : 'yamatch-seiha.png';
+    a.href = URL.createObjectURL(blob); a.download = tall ? 'yamatch-summit-map-story.png' : 'yamatch-summit-map.png';
     document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
   });
 }
-function seihaShareLink(){
-  if (!_seiha) return;
-  var text = seihaText();
+function summitShareLink(){
+  if (!_summit) return;
+  var text = summitText();
   if (navigator.share) { navigator.share({ text: text }).catch(function(){}); return; }
   if (navigator.clipboard) navigator.clipboard.writeText(text).then(function(){ alert('リンクをコピーしました'); });
 }
@@ -2331,7 +2331,7 @@ init();
 </div>
 <script src="/assets/js/counts-config.js?v=20261020a"></script>
 <script src="/assets/js/ym-counts.js?v=20261025a"></script>
-<script src="/assets/js/seiha-map.js?v=20261025a"></script>
+<script src="/assets/js/summit-map.js?v=20261025c"></script>
 <script src="/assets/js/huts-alert.js?v=20261020g" defer></script>
 <script src="/assets/js/gear-common.js?v=20261020a" defer></script>
 <script src="/assets/js/packing.js?v=20261020a" defer></script>

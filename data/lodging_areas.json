@@ -13,7 +13,12 @@
      "lng": 138.569011,
      "source": "国土地理院 地名検索",
      "matchedName": "甲府駅",
-     "lastVerified": "2026-10-25"
+     "lastVerified": "2026-10-25",
+     "rakuten": {
+      "url": "https://travel.rakuten.co.jp/yado/traffic/yamanashi/00000000000000269147.html",
+      "label": "甲府駅",
+      "title": "楽天トラベル:甲府駅 周辺のホテル・旅館"
+     }
     },
     {
      "name": "広河原",
@@ -35,96 +40,12 @@
      "lng": 138.362216,
      "source": "OpenStreetMap（node/4180096095・bus_stop）",
      "matchedName": "芦安駐車場",
-     "lastVerified": "2026-10-25"
-    }
-   ]
-  },
-  "karamatsu": {
-   "name": "唐松岳",
-   "areas": [
-    {
-     "name": "白馬駅",
-     "kind": "station",
-     "via": "八方バスターミナル行きのバスなどに乗り換える駅",
-     "radiusKm": 1.0,
-     "lat": 36.696012,
-     "lng": 137.86416,
-     "source": "国土地理院 地名検索",
-     "matchedName": "白馬駅",
-     "lastVerified": "2026-10-25"
-    },
-    {
-     "name": "八方バスターミナル",
-     "kind": "trailhead",
-     "via": "電車・バスで行ける終点",
-     "radiusKm": 3.0,
-     "lat": 36.701958,
-     "lng": 137.843617,
-     "source": "国土地理院 地名検索",
-     "matchedName": "八方",
-     "lastVerified": "2026-10-25"
-    }
-   ]
-  },
-  "hotaka": {
-   "name": "奥穂高岳",
-   "areas": [
-    {
-     "name": "新島々駅",
-     "kind": "station",
-     "via": "上高地バスターミナル行きのバスなどに乗り換える駅",
-     "radiusKm": 1.0,
-     "lat": 36.18972,
-     "lng": 137.821839,
-     "source": "国土地理院 地名検索",
-     "matchedName": "新島々駅",
-     "lastVerified": "2026-10-25"
-    },
-    {
-     "name": "上高地バスターミナル",
-     "kind": "trailhead",
-     "via": "電車・バスで行ける終点",
-     "radiusKm": 3.0,
-     "needsVerification": true,
-     "why": "名前が合う場所が見つからない（探した名前：上高地バスターミナル・上高地）"
-    },
-    {
-     "name": "沢渡",
-     "kind": "parking",
-     "via": "車で行くときに車を置いて、バスなどに乗り換える場所",
-     "radiusKm": 3.0,
-     "lat": 36.164591,
-     "lng": 137.655335,
-     "source": "OpenStreetMap（node/6815197106・bus_stop）",
-     "matchedName": "さわんどバスターミナル",
-     "lastVerified": "2026-10-25"
-    }
-   ]
-  },
-  "tateyama": {
-   "name": "立山",
-   "areas": [
-    {
-     "name": "立山駅",
-     "kind": "station",
-     "via": "室堂行きのバスなどに乗り換える駅",
-     "radiusKm": 1.0,
-     "lat": 36.583366,
-     "lng": 137.446276,
-     "source": "国土地理院 地名検索",
-     "matchedName": "立山駅",
-     "lastVerified": "2026-10-25"
-    },
-    {
-     "name": "室堂",
-     "kind": "trailhead",
-     "via": "電車・バスで行ける終点",
-     "radiusKm": 3.0,
-     "lat": 36.577192,
-     "lng": 137.595794,
-     "source": "OpenStreetMap（node/10933986846・bus_station）",
-     "matchedName": "室堂",
-     "lastVerified": "2026-10-25"
+     "lastVerified": "2026-10-25",
+     "rakuten": {
+      "url": "https://travel.rakuten.co.jp/yado/spot/yamanashi/S19002138.html",
+      "label": "芦安温泉郷",
+      "title": "楽天トラベル:芦安温泉郷 周辺のホテル・旅館"
+     }
     }
    ]
   }

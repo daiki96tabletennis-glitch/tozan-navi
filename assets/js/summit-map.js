@@ -1,7 +1,7 @@
-// 登山制覇マップ（2026-10-25〜）
+// 登頂マップ（2026-10-25〜。最初の名前は「登山制覇マップ」）
 // 登った山を都道府県ごとに数え、日本地図を色分けする。同じ県で登った山が増えるほど濃くなる。
 // 地図の形は data/japan_prefs_map.json（Natural Earth・パブリックドメインを簡略化）。
-// 使う場所：マイページの「登った記録」（mypage/index.html）と、共有されたURLを開くページ（/seiha/）。
+// 使う場所：マイページの「登った記録」（mypage/index.html）と、共有されたURLを開くページ（/summit-map/）。
 (function(){
   var MAP_URL = '/data/japan_prefs_map.json?v=20261025';
   var LEVELS = [
@@ -81,22 +81,22 @@
       if (!map) { el.innerHTML = '<div style="padding:20px;text-align:center;color:#8a7a6a;font-size:13px">地図を読み込めませんでした</div>'; return; }
       var vb = map.viewBox.split(' ');
       var b = map.okinawaBox;
-      var svg = '<svg viewBox="' + map.viewBox + '" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="登山制覇マップ" style="width:100%;height:auto;display:block">';
+      var svg = '<svg viewBox="' + map.viewBox + '" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="登頂マップ" style="width:100%;height:auto;display:block">';
       svg += '<rect x="' + b[0] + '" y="' + b[1] + '" width="' + b[2] + '" height="' + b[3] + '" rx="8" fill="none" stroke="#c9c2b4" stroke-width="2"/>';
       map.prefs.forEach(function(p){
         var n = counts[p.code] || 0;
         svg += '<path d="' + p.d + '" fill="' + colorFor(n) + '" stroke="#ffffff" stroke-width="1.6" stroke-linejoin="round" data-code="' + p.code + '"><title>' + p.name + '　' + n + '山</title></path>';
       });
       svg += '</svg>';
-      var legend = '<div style="display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:8px;font-size:11px;color:#6a6458">';
+      var legend = '<div style="display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:8px;font-size:11px;font-weight:700;color:#6a6458;font-family:' + JP.replace(/"/g, "'") + '">';
       legend += '<span>登った山の数</span>';
       LEVELS.forEach(function(l){
         legend += '<span style="display:inline-flex;align-items:center;gap:3px"><span style="width:14px;height:14px;border-radius:3px;background:' + l.color + ';display:inline-block;border:1px solid rgba(0,0,0,0.06)"></span>' + l.label + '</span>';
       });
       legend += '</div>';
-      el.innerHTML = '<div class="ym-seiha-map" style="position:relative">' + svg + '<div class="ym-seiha-tip" style="display:none;position:absolute;left:50%;top:8px;transform:translateX(-50%);background:rgba(42,56,32,0.9);color:#fff;font-size:12px;font-weight:700;padding:5px 10px;border-radius:14px;pointer-events:none"></div></div>' + legend;
+      el.innerHTML = '<div class="ym-summit-map" style="position:relative">' + svg + '<div class="ym-summit-tip" style="display:none;position:absolute;left:50%;top:8px;transform:translateX(-50%);background:rgba(42,56,32,0.9);color:#fff;font-size:12px;font-weight:700;padding:5px 10px;border-radius:14px;pointer-events:none"></div></div>' + legend;
       // 県を押すと、県名と山の数を出す
-      var tip = el.querySelector('.ym-seiha-tip');
+      var tip = el.querySelector('.ym-summit-tip');
       var names = {}; map.prefs.forEach(function(p){ names[p.code] = p.name; });
       el.querySelector('svg').addEventListener('click', function(e){
         var t = e.target;
@@ -111,23 +111,62 @@
     });
   }
 
+  // サイトと同じフォント（見出し・文字＝Zen Kaku Gothic New、数字＝Outfit、ロゴ＝Georgia）
+  var JP = '"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif';
+  var NUM = 'Outfit,' + JP;
+  // canvas に描く前に、使う文字のフォントを読み込む（読み込めなくても3秒で描く）
+  function fontsReady(texts, cb){
+    var done = false;
+    function go(){ if (done) return; done = true; cb(); }
+    if (!document.fonts || !document.fonts.load) { go(); return; }
+    var all = texts.join('');
+    Promise.all([
+      document.fonts.load('900 72px "Zen Kaku Gothic New"', all),
+      document.fonts.load('700 26px "Zen Kaku Gothic New"', all),
+      document.fonts.load('700 64px Outfit', '0123456789/')
+    ]).then(go, go);
+    setTimeout(go, 3000);
+  }
+  // サイトのロゴ（山の三角3つ。ヘッダーと同じ形と色）を x, y（左上）に size の大きさで描く
+  function drawLogo(ctx, x, y, size){
+    var k = size / 36;
+    function tri(pts, color){
+      ctx.beginPath(); ctx.moveTo(x + pts[0] * k, y + pts[1] * k);
+      for (var i = 2; i < pts.length; i += 2) ctx.lineTo(x + pts[i] * k, y + pts[i + 1] * k);
+      ctx.closePath(); ctx.fillStyle = color; ctx.fill();
+    }
+    tri([18,4,34,30,2,30], '#405830'); tri([18,10,30,30,6,30], '#789858'); tri([10,30,17,17,24,30], '#2c4020');
+  }
+
   // 共有用の画像（正方形 1080 または 縦長 1080×1920）を作る
   function makeImage(counts, stats, tall, cb){
     loadMap(function(map){
       if (!map) { cb(null); return; }
+      var texts = ['登頂マップ登った山で日本を塗ろう都道府県百名山いちばん高い山：#tozan-navi.com/summit-map/', String(stats.highest || '')];
+      fontsReady(texts, function(){ drawImage(map, counts, stats, tall, cb); });
+    });
+  }
+  function drawImage(map, counts, stats, tall, cb){
+    {
       var W = 1080, H = tall ? 1920 : 1080;
       var cv = document.createElement('canvas'); cv.width = W; cv.height = H;
       var ctx = cv.getContext('2d');
       ctx.fillStyle = '#f0ede5'; ctx.fillRect(0, 0, W, H);
-      var font = '"Hiragino Sans","Zen Kaku Gothic New","Noto Sans JP",sans-serif';
+      var font = JP;
       var top = tall ? 200 : 70;
-      ctx.fillStyle = '#4e6535'; ctx.font = '700 40px ' + font; ctx.textAlign = 'center';
-      ctx.fillText('Yamatch', W / 2, top);
-      ctx.fillStyle = '#2a3820'; ctx.font = '800 72px ' + font;
-      ctx.fillText('登山制覇マップ', W / 2, top + 88);
+      // ロゴ：三角のマーク＋「Yamatch」（ヘッダーと同じ Georgia の太字）を、まとめて中央に置く
+      ctx.font = '700 44px Georgia,"Times New Roman",serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+      var lw = 50, gap = 12, tw = ctx.measureText('Yamatch').width, lx = (W - (lw + gap + tw)) / 2;
+      drawLogo(ctx, lx, top - 42, lw);
+      ctx.fillStyle = '#4e6535'; ctx.fillText('Yamatch', lx + lw + gap, top);
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#2a3820'; ctx.font = '900 72px ' + font;
+      ctx.fillText('登頂マップ', W / 2, top + 92);
+      ctx.fillStyle = '#5a6850'; ctx.font = '700 ' + (tall ? 34 : 28) + 'px ' + font;
+      ctx.fillText('登った山で日本を塗ろう', W / 2, top + (tall ? 146 : 136));
       var vb = map.viewBox.split(' ').map(Number);
       var mapW = tall ? 920 : 640, mapH = mapW * vb[3] / vb[2];
-      var mx = tall ? (W - mapW) / 2 : 70, my = top + 130;
+      var mx = tall ? (W - mapW) / 2 : 70, my = top + (tall ? 190 : 165);
       ctx.save(); ctx.translate(mx, my); ctx.scale(mapW / vb[2], mapW / vb[2]);
       var b = map.okinawaBox;
       ctx.strokeStyle = '#c9c2b4'; ctx.lineWidth = 2; ctx.strokeRect(b[0], b[1], b[2], b[3]);
@@ -144,14 +183,14 @@
         ctx.textAlign = 'left';
         var x0 = mx + mapW + 30, y0 = my + 200;
         items.forEach(function(it, i){
-          ctx.fillStyle = '#2a3820'; ctx.font = '800 64px Outfit,' + font; ctx.fillText(it[0], x0 + 20, y0 + i * 130);
+          ctx.fillStyle = '#2a3820'; ctx.font = '700 64px ' + NUM; ctx.fillText(it[0], x0 + 20, y0 + i * 130);
           ctx.fillStyle = '#6a6458'; ctx.font = '700 26px ' + font; ctx.fillText(it[1], x0 + 20, y0 + i * 130 + 38);
         });
         ctx.textAlign = 'center';
       } else {
         items.forEach(function(it, i){
           var cx = W / 2 + (i - 1) * 300;
-          ctx.fillStyle = '#2a3820'; ctx.font = '800 84px Outfit,' + font; ctx.fillText(it[0], cx, sy);
+          ctx.fillStyle = '#2a3820'; ctx.font = '700 84px ' + NUM; ctx.fillText(it[0], cx, sy);
           ctx.fillStyle = '#6a6458'; ctx.font = '700 32px ' + font; ctx.fillText(it[1], cx, sy + 50);
         });
       }
@@ -159,13 +198,13 @@
         ctx.fillStyle = '#4e6535'; ctx.font = '700 ' + (tall ? 34 : 28) + 'px ' + font; ctx.textAlign = 'center';
         ctx.fillText('いちばん高い山：' + stats.highest, W / 2, tall ? sy + 140 : H - 90);
       }
-      ctx.fillStyle = '#8a7a6a'; ctx.font = '500 ' + (tall ? 30 : 24) + 'px ' + font; ctx.textAlign = 'center';
-      ctx.fillText('#登山制覇マップ  tozan-navi.com/seiha/', W / 2, H - (tall ? 160 : 40));
+      ctx.fillStyle = '#8a7a6a'; ctx.font = '700 ' + (tall ? 30 : 24) + 'px ' + font; ctx.textAlign = 'center';
+      ctx.fillText('#登頂マップ  tozan-navi.com/summit-map/', W / 2, H - (tall ? 160 : 40));
       if (cv.toBlob) cv.toBlob(function(bl){ cb(bl); }, 'image/png'); else cb(null);
-    });
+    }
   }
 
-  window.YmSeihaMap = {
+  window.YmSummitMap = {
     LEVELS: LEVELS, load: loadMap, render: render, prefsFromText: prefsFromText,
     countByPref: countByPref, encode: encode, decode: decode, prefCount: prefCount, makeImage: makeImage
   };
