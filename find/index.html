@@ -6,7 +6,7 @@
 <title>山選び診断 | 初心者でも行ける山をかんたん検索 - Yamatch</title>
 <meta name="description" content="交通手段・体力・好みの雰囲気を選ぶだけ。初心者でもすぐ行ける山が見つかる、Yamatchの山選び診断。">
 <meta property="og:title" content="山選び診断 - Yamatch">
-<meta property="og:description" content="7問に答えるだけで、行く時期と一緒に行く人に合った山が見つかる。初心者向け山選び診断。">
+<meta property="og:description" content="9問に答えるだけで、行く時期と一緒に行く人、好きな景色や道に合った山が見つかる。初心者向け山選び診断。">
 <meta property="og:url" content="https://tozan-navi.com/find/">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://tozan-navi.com/find/">
@@ -213,11 +213,11 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
 <div id="step-intro" class="step active">
   <div class="intro-hero">
     <div class="intro-hero-title">どの山に行けばいい？<br>かんたんに見つかる</div>
-    <div class="intro-hero-sub">7問に答えるだけで、行く時期と一緒に行く人に合った山を提案</div>
+    <div class="intro-hero-sub">9問に答えるだけで、行く時期と一緒に行く人、好きな景色や道に合った山を提案</div>
     <div class="intro-tags">
       <span class="intro-tag"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 電車でも行ける</span>
       <span class="intro-tag">🥾 初心者OK</span>
-      <span class="intro-tag">⏱ 約1分</span>
+      <span class="intro-tag">⏱ 約2分</span>
       <span class="intro-tag">💰 無料</span>
     </div>
     <button class="start-btn" onclick="startQuiz()">診断スタート →</button>
@@ -316,6 +316,28 @@ var QUESTIONS = [
       { value: 'forest',  icon: '🌿', label: '森の中をゆっくり歩きたい', sub: '緑・木漏れ日・静かな道' },
       { value: 'easy',    icon: '😊', label: 'とにかく気軽に登りたい', sub: '難しいことより達成感重視' },
       { value: 'highland',icon: '🌾', label: '高原・湿原など広い景色', sub: '草原・池・のびのびした風景' }
+    ]
+  },
+  {
+    id: 'path',
+    text: 'どんな道を歩きたいですか？',
+    sub: '岩場の有無や、歩きごたえで選びます',
+    choices: [
+      { value: 'smooth', icon: '🌱', label: '歩きやすい道がいい', sub: '岩場や鎖場は避けたい' },
+      { value: 'rocky',  icon: '🧗', label: '岩場もあると楽しい', sub: '手を使って登る場所もOK' },
+      { value: 'ridge',  icon: '⛰', label: '尾根や稜線を長く歩きたい', sub: '景色の中をずっと歩きたい' },
+      { value: 'any',    icon: '🙆', label: '特にこだわらない', sub: 'おまかせで選んでほしい' }
+    ]
+  },
+  {
+    id: 'extra',
+    text: '登山のほかに楽しみたいことは？',
+    sub: '山頂のほかの楽しみに合う山を上げます',
+    choices: [
+      { value: 'food',    icon: '♨️', label: '温泉や茶屋のごはん', sub: '山頂や下山後にひと休み' },
+      { value: 'season',  icon: '🌸', label: '花や紅葉など季節の景色', sub: '行く時期の見ごろに合わせます' },
+      { value: 'history', icon: '⛩', label: '神社や歴史を感じたい', sub: '信仰の山・古い道・史跡' },
+      { value: 'quiet',   icon: '🍃', label: '人の少ない静かな山', sub: 'のんびり自分のペースで' }
     ]
   },
   {
@@ -459,8 +481,8 @@ function normVibes(vibes){
 
 // 選んだ気分に合う山かどうか：山のタグ（vibes）と、調べて書いた特徴（featurePoints）のタグの両方を見る
 var VIBE_MATCH = {
-  view:     ['view','ridge','alpine','rock','volcano'],
-  forest:   ['forest','historic','wetland','flower','river','quiet'],
+  view:     ['view','alpine'],
+  forest:   ['forest','river','quiet'],
   easy:     ['accessible','easy','casual'],
   highland: ['highland','wetland']
 };
@@ -611,6 +633,38 @@ function scoreMount(m){
     score += Math.max(0, 180 - drive) / 9; // 最大20点
   }
 
+  // --- 道の好み（2026-10-25 に追加） ---
+  var allTags = normVibes(m.vibes).slice();
+  ftags.forEach(function(t){ if(allTags.indexOf(t) === -1) allTags.push(t); });
+  var hasRock = allTags.indexOf('rock') > -1;   // 急登（challenge）は岩場に入れない
+  var hasRidge = allTags.indexOf('ridge') > -1;
+  if(answers.path === 'smooth'){
+    if(hasRock) score -= 25;
+    if(allTags.indexOf('accessible') > -1 || allTags.indexOf('easy') > -1) score += 10;
+  } else if(answers.path === 'rocky'){
+    score += hasRock ? 25 : -10;
+  } else if(answers.path === 'ridge'){
+    score += hasRidge ? 20 : -5;
+    if(allTags.indexOf('alpine') > -1) score += 5;
+  }
+
+  // --- 登山のほかの楽しみ（2026-10-25 に追加） ---
+  var fpText = (m.featurePoints || []).map(function(p){ return p.label + ' ' + p.text; }).join(' ');
+  if(answers.extra === 'food'){
+    if(/温泉|茶屋|食堂|名物|そば|うどん|売店|カフェ|ごはん|ご飯|定食|だんご|団子/.test(fpText)) score += 20;
+  } else if(answers.extra === 'season'){
+    if(hasSeasonPoint(m)) score += 20;
+    if(allTags.indexOf('flower') > -1 || allTags.indexOf('season') > -1) score += 5;
+  } else if(answers.extra === 'history'){
+    score += allTags.indexOf('historic') > -1 ? 25 : -5;
+  } else if(answers.extra === 'quiet'){
+    // 静かな山：特徴のタグ quiet か、特徴・紹介文に「静か」「人が少ない」「穴場」などと書いてある山を上げ、茶屋やロープウェイのある人の多い山は下げる
+    var quietText = fpText + ' ' + (m.description || '') + ' ' + (m.recommendReason || '');
+    if(allTags.indexOf('quiet') > -1 || /静か|人が少な|登山者が少な|登山者も少な|穴場|ひっそり|訪れる人が少|人の少な/.test(quietText)) score += 22;
+    if(allTags.indexOf('casual') > -1) score -= 12;
+    if(allTags.indexOf('accessible') > -1) score -= 6;
+  }
+
   // --- 雰囲気マッチ（最大50点） ---
   var vibes = normVibes(m.vibes);
   var matchCount = vibeHits(m);
@@ -642,8 +696,9 @@ var REASON_TAGS = {
   easy: ['easy', 'casual'],
   highland: ['highland', 'wetland', 'flower']
 };
+var REASON_EXTRA = { rocky: ['rock'], ridge: ['ridge'], food: ['casual','hut'], history: ['historic'], quiet: ['quiet'] };
 function buildReason(m){
-  var want = REASON_TAGS[answers.vibe] || [];
+  var want = (REASON_TAGS[answers.vibe] || []).concat(REASON_EXTRA[answers.path] || [], REASON_EXTRA[answers.extra] || []);
   var month = targetMonth();
   var pts = (m.featurePoints || []).map(function(p, idx){
     return { p: p, idx: idx, hit: want.indexOf(p.tag) > -1 ? 1 : 0, season: pointInSeason(p, month) ? 1 : 0 };
