@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>登山制覇マップ｜登った山で日本地図を塗ろう - Yamatch</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TMTVVTEEGF');
+</script>
+<meta name="description" content="登った山を記録すると、日本地図の都道府県が色づく登山制覇マップ。同じ県で登った山が増えるほど色が濃くなります。百名山・二百名山・三百名山など全国の山に対応。画像やリンクで共有できます（無料）。">
+<link rel="canonical" href="https://tozan-navi.com/seiha/">
+<meta property="og:title" content="登山制覇マップ｜登った山で日本地図を塗ろう - Yamatch">
+<meta property="og:description" content="登った山を記録すると、日本地図の都道府県が色づく。あなたは何都道府県を制覇した？">
+<meta property="og:image" content="https://tozan-navi.com/ogp/seiha.png?v=20261025">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://tozan-navi.com/seiha/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yamatch">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="登山制覇マップ｜登った山で日本地図を塗ろう - Yamatch">
+<meta name="twitter:description" content="登った山を記録すると、日本地図の都道府県が色づく。あなたは何都道府県を制覇した？">
+<meta name="twitter:image" content="https://tozan-navi.com/ogp/seiha.png?v=20261025">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"登山制覇マップ","url":"https://tozan-navi.com/seiha/","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"登った山を記録すると、日本地図の都道府県が色づく登山制覇マップ。"}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;background:#f0ede5;color:#2a3820;}
+header{background:#4e6535;padding:12px 16px}
+.header-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:10px}
+.header-title{color:white;font-family:Georgia,serif;font-size:19px;font-weight:bold;letter-spacing:0.02em}
+.header-title a{color:inherit;text-decoration:none}
+.header-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;border-radius:8px;padding:4px 9px;font-size:11px;text-decoration:none;white-space:nowrap}
+main{max-width:640px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:24px;font-weight:900;text-align:center;margin-bottom:6px}
+.lead{font-size:13px;color:#5a6850;line-height:1.7;text-align:center;margin-bottom:14px}
+.card{background:#fff;border:1px solid #e0dcd2;border-radius:14px;padding:14px;margin-bottom:14px}
+.stats{display:flex;justify-content:space-around;text-align:center;margin-bottom:8px}
+.stats b{display:block;font-family:Outfit,sans-serif;font-size:26px;font-weight:800;line-height:1.1}
+.stats span{font-size:11px;color:#6a6458}
+.cta{display:block;text-align:center;background:linear-gradient(135deg,#3a5828,#4a7038);color:#fff;font-size:15px;font-weight:800;padding:14px;border-radius:26px;text-decoration:none;box-shadow:0 6px 18px rgba(58,88,40,0.25);margin:6px 0 14px}
+.how{font-size:13px;line-height:1.8;color:#3a3530}
+.how li{margin-left:1.2em;margin-bottom:4px}
+.note{font-size:11px;color:#8a7a6a;line-height:1.6;margin-top:8px}
+footer{text-align:center;padding:20px;font-size:12px;color:#7a8a6c;border-top:1px solid rgba(74,96,56,0.12);background:#eaf2e3}
+footer a{color:#4e6535}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <svg width="26" height="26" viewBox="0 0 36 36" style="flex-shrink:0"><polygon points="18,4 34,30 2,30" fill="#405830"/><polygon points="18,10 30,30 6,30" fill="#789858"/><polygon points="10,30 17,17 24,30" fill="#2c4020"/></svg>
+    <div style="flex:1;min-width:0;"><div class="header-title"><a href="/">Yamatch</a></div></div>
+    <a href="/mypage/#climbed" class="header-btn">マイページへ</a>
+  </div>
+</header>
+<main>
+  <h1>登山制覇マップ</h1>
+  <p class="lead" id="seiha-lead">登った山を記録すると、日本地図の都道府県が色づきます。<br>同じ県で登った山が増えるほど、色が濃くなります。</p>
+  <div class="card">
+    <div class="stats" id="seiha-stats" style="display:none"></div>
+    <div id="seiha-map"></div>
+  </div>
+  <a href="/mypage/#climbed" class="cta" id="seiha-cta">あなたの制覇マップを作る →</a>
+  <div class="card how">
+    <b>作り方</b>
+    <ol style="margin-top:6px">
+      <li>マイページの「登った記録」で、登った山を記録する（山ページの「登頂記録に追加」からも記録できます）</li>
+      <li>記録すると、その山のある都道府県に色が付きます</li>
+      <li>「画像で共有」「リンクを共有」で、友達に見せられます</li>
+    </ol>
+    <p class="note">百名山・二百名山・三百名山・百高山など全国360山の一覧から選べます。一覧に無い山も、都道府県を選べば記録できます。県境の山は、山頂のある県それぞれに数えます。記録はお使いの端末の中に保存され、共有のリンクには県ごとの山の数だけが入ります。</p>
+  </div>
+</main>
+<footer>
+  <p>Yamatch — 出発地から登る山を探せる登山サーチ</p>
+  <p style="margin-top:6px;"><a href="/terms/">利用規約</a> | <a href="/privacy/">プライバシーポリシー</a> | <a href="/mypage/">マイページ</a></p>
+  <p style="margin-top:6px;font-size:10px;">地図：Natural Earth（パブリックドメイン）をもとに作成</p>
+</footer>
+<script src="/assets/js/seiha-map.js?v=20261025a"></script>
+<script>
+(function(){
+  var S = window.YmSeihaMap;
+  var q = new URLSearchParams(location.search);
+  var c = q.get('c');
+  var counts = c ? S.decode(c) : {};
+  var el = document.getElementById('seiha-map');
+  S.render(el, counts);
+  if (c) {
+    // 共有されたリンク：送った人の地図を出す（URLにあるのは県ごとの山の数だけ）
+    var m = parseInt(q.get('m'), 10), h = parseInt(q.get('h'), 10);
+    var prefs = S.prefCount(counts);
+    function box(n, l){ return '<div><b>' + n + '</b><span>' + l + '</span></div>'; }
+    var st = document.getElementById('seiha-stats');
+    st.innerHTML = box(prefs + '<span style="font-size:13px">/47</span>', '都道府県') + (m > 0 ? box(m, '登った山') : '') + (h > 0 ? box(h, '百名山') : '');
+    st.style.display = 'flex';
+    document.getElementById('seiha-lead').innerHTML = '友達の登山制覇マップです。<br>同じ県で登った山が多いほど、色が濃くなっています。';
+    document.getElementById('seiha-cta').textContent = 'あなたも制覇マップを作る →';
+    if (typeof gtag === 'function') gtag('event', 'seiha_shared_view', { prefs: prefs });
+  }
+  document.getElementById('seiha-cta').addEventListener('click', function(){ if (typeof gtag === 'function') gtag('event', 'seiha_cta_click', { from: c ? 'shared' : 'intro' }); });
+})();
+</script>
+<script src="/assets/js/to-top.js?v=20261025a" defer></script>
+</body>
+</html>
