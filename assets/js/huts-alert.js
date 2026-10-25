@@ -141,6 +141,25 @@
     for (i = 0; i < raw.length; i++) { out[i] = raw.charCodeAt(i); }
     return out;
   }
+  // この端末の通知の登録を、山小屋の通知の鍵（PUSH.key）で作ったものにそろえる。
+  // 管理画面の別の通知（admin/notify-setup.html）など、ほかの鍵で作った登録が残っていると、そのまま使っても届かない
+  // （送る側は山小屋の鍵で署名するため、通知の配達元に断られる）。そのときは登録をやめて作り直す。create が false なら新しくは作らない
+  function ownSub(reg, create) {
+    return reg.pushManager.getSubscription().then(function (sub) {
+      var mine = keyBytes(PUSH.key), k = sub && sub.options && sub.options.applicationServerKey, same = true, a, i;
+      if (sub && k) {
+        a = new Uint8Array(k);
+        if (a.length !== mine.length) { same = false; } else { for (i = 0; i < a.length; i++) { if (a[i] !== mine[i]) { same = false; break; } } }
+      }
+      if (sub && same) { return sub; }
+      var make = function () {
+        try { localStorage.removeItem('ym_hut_push'); } catch (e) {}   // 宛先が変わるので、預け先も送り直す
+        return reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: mine });
+      };
+      if (sub) { return sub.unsubscribe().then(make, make); }
+      return create ? make() : null;
+    });
+  }
   function hexOf(buf) {
     var b = new Uint8Array(buf), t = '', i;
     for (i = 0; i < b.length; i++) { t += ('0' + b[i].toString(16)).slice(-2); }
@@ -158,10 +177,7 @@
     sig = ymd(today) + '|' + adm + '|' + JSON.stringify(alerts);
     try { if (localStorage.getItem('ym_hut_push') === sig) { return; } } catch (e) {}
     navigator.serviceWorker.register('/sw.js').then(function () { return navigator.serviceWorker.ready; }).then(function (reg) {
-      return reg.pushManager.getSubscription().then(function (sub) {
-        if (sub || !alerts.length) { return sub; }
-        return reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(PUSH.key) });
-      });
+      return ownSub(reg, alerts.length > 0);
     }).then(function (sub) {
       if (!sub) { return null; }
       var j = sub.toJSON();
@@ -568,15 +584,14 @@
       navigator.serviceWorker.register('/sw.js').then(function () { return navigator.serviceWorker.ready; }).then(function (reg) {
         reg.showNotification('Yamatch：お試しの通知', { body: '山小屋の予約開始のお知らせは、この形で届きます。', icon: '/icon-192.png', badge: '/icon-192.png', data: { url: '/huts/' }, tag: 'ym-hut-trial-now' });
         if (!PUSH.db || !PUSH.key || !(window.crypto && crypto.subtle && window.TextEncoder && window.fetch)) { say('いま、お試しの通知を出しました。'); return null; }
-        return reg.pushManager.getSubscription().then(function (sub) {
-          return sub || reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(PUSH.key) });
-        }).then(function (sub) {
+        return ownSub(reg, true).then(function (sub) {
           var j = sub.toJSON();
           return crypto.subtle.digest('SHA-256', new TextEncoder().encode(j.endpoint)).then(function (h) {
             return fetch(PUSH.db.replace(/\/+$/, '') + '/hutPushTrial/' + hexOf(h) + '.json', { method: 'PUT', headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ endpoint: j.endpoint, keys: j.keys, at: Date.now() }) });
           });
         }).then(function (res) {
+          pushSync();
           say(res && res.ok ? 'いま、お試しの通知を出しました。次の朝7時ごろに、アプリを閉じていても届く本物の通知が1回届きます（届いたら、預かった宛先は消します）。'
             : 'いま、お試しの通知を出しました（次の朝の通知は予約できませんでした）。');
         });

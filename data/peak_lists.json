@@ -1,16 +1,18 @@
 {
- "note": "全国の百名山・二百名山・三百名山・百高山の山名・都道府県・標高。マイページの登頂の手入力で、候補を出し、区分・都道府県・標高を付けるために使う。作り方と出典は CLAUDE.md の「全国の山の一覧」",
- "checkedAt": "2026-10-24",
+ "note": "全国の百名山・二百名山・三百名山・百高山・百低山の山名・都道府県・標高。マイページの登頂の手入力で、候補を出し、区分・都道府県・標高を付けるために使う。作り方と出典は CLAUDE.md の「全国の山の一覧」",
+ "checkedAt": "2026-10-25",
  "sources": {
   "membership": "ja.wikipedia.org の「日本百名山」「日本二百名山」「日本三百名山」「日本の山一覧 (高さ順)」（百高山＝高さ順の上位100）",
   "elevation_prefecture": "国土地理院「日本の主な山岳標高（1003山）」2026年3月31日版 https://www.gsi.go.jp/KOKUJYOHO/MOUNTAIN/1003zan20260331.csv（src: gsi）。この一覧に無い山は Wikipedia・Wikidata の値（src: wikipedia）",
-  "prefectures": "国土地理院の一覧は山頂のある都道府県。山域が広がる県は入らない（例：槍ヶ岳＝長野県）"
+  "prefectures": "国土地理院の一覧は山頂のある都道府県。山域が広がる県は入らない（例：槍ヶ岳＝長野県）",
+  "low": "百低山だけの山（src: momonayama）は、山名・都道府県・標高とも上の一覧表の値。ほかの一覧にもある山は、標高・都道府県を国土地理院の値のまま使い、区分に百低山を足しただけ。読み（kana）はその一覧表に無いので付けていない"
  },
  "lists": {
   "百名山": "深田久弥『日本百名山』（1964年）",
   "二百名山": "深田クラブ選定（1984年）。百名山を除く100山",
   "三百名山": "日本山岳会選定（1978年）。二百名山を除く101山",
-  "百高山": "国土地理院の標高で上位100の山頂"
+  "百高山": "国土地理院の標高で上位100の山頂",
+  "百低山": "日本百低山（101山）。一覧は「日本百名山登山支援 全頂制覇百名山」の日本百低山 一覧表 https://www.momonayama.net/mt_list_data/low/list/list.html"
  },
  "peaks": [
   {
@@ -636,7 +638,8 @@
    ],
    "elev": 877,
    "lists": [
-    "百名山"
+    "百名山",
+    "百低山"
    ],
    "siteId": "tsukuba",
    "src": "gsi"
@@ -1089,7 +1092,8 @@
    ],
    "elev": 1405,
    "lists": [
-    "百名山"
+    "百名山",
+    "百低山"
    ],
    "aliases": [
     "万三郎岳"
@@ -1335,7 +1339,8 @@
    ],
    "elev": 1377,
    "lists": [
-    "百名山"
+    "百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -1479,7 +1484,8 @@
    ],
    "elev": 924,
    "lists": [
-    "百名山"
+    "百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -1602,7 +1608,8 @@
    ],
    "elev": 1041,
    "lists": [
-    "二百名山"
+    "二百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -1642,7 +1649,8 @@
    ],
    "elev": 1123,
    "lists": [
-    "二百名山"
+    "二百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -1970,7 +1978,8 @@
    ],
    "elev": 1449,
    "lists": [
-    "二百名山"
+    "二百名山",
+    "百低山"
    ],
    "aliases": [
     "掃部ヶ岳"
@@ -1985,7 +1994,8 @@
    ],
    "elev": 1104,
    "lists": [
-    "二百名山"
+    "二百名山",
+    "百低山"
    ],
    "aliases": [
     "相馬岳"
@@ -2001,7 +2011,8 @@
    ],
    "elev": 1423,
    "lists": [
-    "二百名山"
+    "二百名山",
+    "百低山"
    ],
    "siteId": "arafune",
    "src": "gsi"
@@ -2027,7 +2038,8 @@
    ],
    "elev": 1304,
    "lists": [
-    "二百名山"
+    "二百名山",
+    "百低山"
    ],
    "siteId": "bukosan",
    "src": "gsi"
@@ -2082,7 +2094,8 @@
    ],
    "elev": 1266,
    "lists": [
-    "二百名山"
+    "二百名山",
+    "百低山"
    ],
    "siteId": "otake",
    "src": "gsi"
@@ -2575,7 +2588,8 @@
    ],
    "elev": 1212,
    "lists": [
-    "二百名山"
+    "二百名山",
+    "百低山"
    ],
    "aliases": [
     "御在所岳"
@@ -2626,7 +2640,8 @@
    ],
    "elev": 1214,
    "lists": [
-    "二百名山"
+    "二百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -2655,7 +2670,8 @@
    ],
    "elev": 1202,
    "lists": [
-    "二百名山"
+    "二百名山",
+    "百低山"
    ],
    "aliases": [
     "蒜山"
@@ -2670,7 +2686,8 @@
    ],
    "elev": 1126,
    "lists": [
-    "二百名山"
+    "二百名山",
+    "百低山"
    ],
    "aliases": [
     "男三瓶山"
@@ -2724,7 +2741,8 @@
    ],
    "elev": 1199,
    "lists": [
-    "二百名山"
+    "二百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -2881,7 +2899,8 @@
    ],
    "elev": 1308,
    "lists": [
-    "三百名山"
+    "三百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -2946,7 +2965,8 @@
    ],
    "elev": 1170,
    "lists": [
-    "三百名山"
+    "三百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -2982,7 +3002,8 @@
    ],
    "elev": 1175,
    "lists": [
-    "三百名山"
+    "三百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -3022,7 +3043,8 @@
    ],
    "elev": 1022,
    "lists": [
-    "三百名山"
+    "三百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -3156,7 +3178,8 @@
    ],
    "elev": 1252,
    "lists": [
-    "三百名山"
+    "三百名山",
+    "百低山"
    ],
    "siteId": "oyama",
    "src": "gsi"
@@ -3170,7 +3193,8 @@
    ],
    "elev": 1212,
    "lists": [
-    "三百名山"
+    "三百名山",
+    "百低山"
    ],
    "aliases": [
     "箱根山"
@@ -3250,7 +3274,8 @@
    ],
    "elev": 1172,
    "lists": [
-    "三百名山"
+    "三百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -3262,7 +3287,8 @@
    ],
    "elev": 992,
    "lists": [
-    "三百名山"
+    "三百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -3854,7 +3880,8 @@
    ],
    "elev": 958,
    "lists": [
-    "三百名山"
+    "三百名山",
+    "百低山"
    ],
    "aliases": [
     "大和葛城山"
@@ -3885,7 +3912,8 @@
    ],
    "elev": 848,
    "lists": [
-    "三百名山"
+    "三百名山",
+    "百低山"
    ],
    "aliases": [
     "大比叡"
@@ -3900,7 +3928,8 @@
    ],
    "elev": 924,
    "lists": [
-    "三百名山"
+    "三百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -3912,7 +3941,8 @@
    ],
    "elev": 931,
    "lists": [
-    "三百名山"
+    "三百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -4062,7 +4092,8 @@
    ],
    "elev": 1375,
    "lists": [
-    "三百名山"
+    "三百名山",
+    "百低山"
    ],
    "src": "gsi"
   },
@@ -4907,6 +4938,835 @@
     "百高山"
    ],
    "src": "gsi"
+  },
+  {
+   "name": "藻岩山",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 531,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "渡島駒ヶ岳",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 1131,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "函館山",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 334,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "恵山",
+   "prefs": [
+    "北海道"
+   ],
+   "elev": 618,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "七時雨山",
+   "prefs": [
+    "岩手県"
+   ],
+   "elev": 1063,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "霊山",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 825,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "蓬田岳",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 952,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "鎌倉岳",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 967,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "猫魔ヶ岳",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 1404,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "小野岳",
+   "prefs": [
+    "福島県"
+   ],
+   "elev": 1383,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "加波山",
+   "prefs": [
+    "茨城県"
+   ],
+   "elev": 709,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "男体山",
+   "prefs": [
+    "茨城県"
+   ],
+   "elev": 654,
+   "lists": [
+    "百低山"
+   ],
+   "aliases": [
+    "奥久慈男体山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "竪破山",
+   "prefs": [
+    "茨城県"
+   ],
+   "elev": 658,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "古賀志山",
+   "prefs": [
+    "栃木県"
+   ],
+   "elev": 583,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "kogashiyama",
+   "src": "momonayama"
+  },
+  {
+   "name": "晃石山",
+   "prefs": [
+    "栃木県"
+   ],
+   "elev": 419,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "岩櫃山",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 802,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "嵩山",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 789,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "子持山",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 1296,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "鹿岳",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 1015,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "稲含山",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 1370,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "御荷鉾山",
+   "prefs": [
+    "群馬県"
+   ],
+   "elev": 1287,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "城峯山",
+   "prefs": [
+    "埼玉県"
+   ],
+   "elev": 1038,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "笠山",
+   "prefs": [
+    "埼玉県"
+   ],
+   "elev": 837,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "秩父三峰山",
+   "prefs": [
+    "埼玉県"
+   ],
+   "elev": 1329,
+   "lists": [
+    "百低山"
+   ],
+   "aliases": [
+    "妙法ヶ岳",
+    "三峰山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "棒ノ折山",
+   "prefs": [
+    "東京都",
+    "埼玉県"
+   ],
+   "elev": 969,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "bonori",
+   "src": "momonayama"
+  },
+  {
+   "name": "伊豆ヶ岳",
+   "prefs": [
+    "埼玉県"
+   ],
+   "elev": 851,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "izugatake",
+   "src": "momonayama"
+  },
+  {
+   "name": "釜伏山",
+   "prefs": [
+    "埼玉県"
+   ],
+   "elev": 582,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "御岳山",
+   "prefs": [
+    "東京都"
+   ],
+   "elev": 929,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "mitakesan",
+   "src": "momonayama"
+  },
+  {
+   "name": "御前山",
+   "prefs": [
+    "東京都"
+   ],
+   "elev": 1405,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "gozenyama",
+   "src": "momonayama"
+  },
+  {
+   "name": "川苔山",
+   "prefs": [
+    "東京都"
+   ],
+   "elev": 1363,
+   "lists": [
+    "百低山"
+   ],
+   "aliases": [
+    "川乗山"
+   ],
+   "siteId": "kawanoriyama",
+   "src": "momonayama"
+  },
+  {
+   "name": "権現山",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 1312,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "高尾山",
+   "prefs": [
+    "東京都"
+   ],
+   "elev": 599,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "takao",
+   "src": "momonayama"
+  },
+  {
+   "name": "天上山",
+   "prefs": [
+    "東京都"
+   ],
+   "elev": 572,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "乳房山",
+   "prefs": [
+    "東京都"
+   ],
+   "elev": 463,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "石老山",
+   "prefs": [
+    "神奈川県"
+   ],
+   "elev": 702,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "ishirousan",
+   "src": "momonayama"
+  },
+  {
+   "name": "高畑山",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 982,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "扇山",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 1138,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "ogiyama",
+   "src": "momonayama"
+  },
+  {
+   "name": "塔ノ岳",
+   "prefs": [
+    "神奈川県"
+   ],
+   "elev": 1491,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "tonosaki",
+   "src": "momonayama"
+  },
+  {
+   "name": "駒ヶ岳",
+   "prefs": [
+    "神奈川県"
+   ],
+   "elev": 1438,
+   "lists": [
+    "百低山"
+   ],
+   "aliases": [
+    "箱根駒ヶ岳"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "明神ヶ岳",
+   "prefs": [
+    "神奈川県"
+   ],
+   "elev": 1169,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "myojingatake",
+   "src": "momonayama"
+  },
+  {
+   "name": "鋸山",
+   "prefs": [
+    "千葉県"
+   ],
+   "elev": 329,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "nokogiriyama_chiba",
+   "src": "momonayama"
+  },
+  {
+   "name": "伊予ヶ岳",
+   "prefs": [
+    "千葉県"
+   ],
+   "elev": 336,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "iyogatake",
+   "src": "momonayama"
+  },
+  {
+   "name": "富山",
+   "prefs": [
+    "千葉県"
+   ],
+   "elev": 349,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "tomisan",
+   "src": "momonayama"
+  },
+  {
+   "name": "弥彦山",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 634,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "石割山",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 1413,
+   "lists": [
+    "百低山"
+   ],
+   "siteId": "ishiwariyama",
+   "src": "momonayama"
+  },
+  {
+   "name": "大洞山",
+   "prefs": [
+    "山梨県",
+    "静岡県"
+   ],
+   "elev": 1384,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "足和田山",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 1355,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "長者ヶ岳",
+   "prefs": [
+    "山梨県",
+    "静岡県"
+   ],
+   "elev": 1336,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "蛾ヶ岳",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 1280,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "身延山",
+   "prefs": [
+    "山梨県"
+   ],
+   "elev": 1153,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "高社山",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 1351,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "独鈷山",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 1266,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "霧訪山",
+   "prefs": [
+    "長野県"
+   ],
+   "elev": 1305,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "浜石岳",
+   "prefs": [
+    "静岡県"
+   ],
+   "elev": 707,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "竜爪山",
+   "prefs": [
+    "静岡県"
+   ],
+   "elev": 1051,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "高根山",
+   "prefs": [
+    "静岡県"
+   ],
+   "elev": 343,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "発端丈山",
+   "prefs": [
+    "静岡県"
+   ],
+   "elev": 410,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "鳳来寺山",
+   "prefs": [
+    "愛知県"
+   ],
+   "elev": 695,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "本宮山",
+   "prefs": [
+    "愛知県"
+   ],
+   "elev": 789,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "石巻山",
+   "prefs": [
+    "愛知県"
+   ],
+   "elev": 358,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "霊仙山",
+   "prefs": [
+    "滋賀県"
+   ],
+   "elev": 1094,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "二上山",
+   "prefs": [
+    "奈良県"
+   ],
+   "elev": 517,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "三輪山",
+   "prefs": [
+    "奈良県"
+   ],
+   "elev": 467,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "多武峰",
+   "prefs": [
+    "奈良県"
+   ],
+   "elev": 678,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "吉野山",
+   "prefs": [
+    "奈良県"
+   ],
+   "elev": 858,
+   "lists": [
+    "百低山"
+   ],
+   "aliases": [
+    "青根ヶ峰"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "高野山",
+   "prefs": [
+    "和歌山県"
+   ],
+   "elev": 1009,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "先山",
+   "prefs": [
+    "兵庫県"
+   ],
+   "elev": 448,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "雪彦山",
+   "prefs": [
+    "兵庫県"
+   ],
+   "elev": 915,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "弥山",
+   "prefs": [
+    "広島県"
+   ],
+   "elev": 535,
+   "lists": [
+    "百低山"
+   ],
+   "aliases": [
+    "宮島弥山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "琴平山",
+   "prefs": [
+    "香川県"
+   ],
+   "elev": 524,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "宝満山",
+   "prefs": [
+    "福岡県"
+   ],
+   "elev": 829,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
+  },
+  {
+   "name": "日本国",
+   "prefs": [
+    "新潟県"
+   ],
+   "elev": 555,
+   "lists": [
+    "百低山"
+   ],
+   "src": "momonayama"
   }
  ]
 }

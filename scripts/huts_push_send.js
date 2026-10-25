@@ -110,7 +110,7 @@ async function main() {
 
   const subs = (await db('GET', '/hutPush')) || {};
   const sentAll = (await db('GET', '/hutPushSent')) || {};
-  const stat = { devices: Object.keys(subs).length, sent: 0, expired: 0, failed: 0, trial: 0 };
+  const stat = { devices: Object.keys(subs).length, sent: 0, expired: 0, failed: 0, trial: 0, trialGone: 0 };
   const errors = [];
   for (const id of Object.keys(subs)) {
     const sub = subs[id];
@@ -152,7 +152,9 @@ async function main() {
             body: 'アプリを閉じていても、山小屋の予約開始のお知らせはこの形で届きます。', url: '/huts/', tag: 'ym-hut-trial' }), { TTL: 12 * 3600 });
           stat.trial++;
         } catch (e) {
-          if (e.statusCode !== 404 && e.statusCode !== 410) { stat.failed++; errors.push('- お試しの送信に失敗：' + (e.statusCode || '') + ' ' + String(e.body || e.message || '').slice(0, 80)); }
+          // 404・410 は宛先が無効（端末の登録が作り直された・通知を切った）。失敗には数えないが、記録には出す（黙って消すと、届かない理由が分からない）
+          if (e.statusCode === 404 || e.statusCode === 410) { stat.trialGone++; }
+          else { stat.failed++; errors.push('- お試しの送信に失敗：' + (e.statusCode || '') + ' ' + String(e.body || e.message || '').slice(0, 80)); }
         }
       }
       await db('DELETE', '/hutPushTrial/' + id);
@@ -162,7 +164,7 @@ async function main() {
   for (const id of Object.keys(sentAll)) { if (!subs[id]) { await db('DELETE', '/hutPushSent/' + id); } }
 
   const head = '# 山小屋の予約開始の通知（' + core.ymd(today) + (TEST ? '・テスト' : '') + '）';
-  const lines = ['- 登録している端末：' + stat.devices + '台／送った通知：' + stat.sent + '件／無効になっていた宛先：' + stat.expired + '台／お試し：' + stat.trial + '件／失敗：' + stat.failed + '件'].concat(errors.slice(0, 20));
+  const lines = ['- 登録している端末：' + stat.devices + '台／送った通知：' + stat.sent + '件／無効になっていた宛先：' + stat.expired + '台／お試し：' + stat.trial + '件（宛先が無効で送れなかった分：' + stat.trialGone + '件）／失敗：' + stat.failed + '件'].concat(errors.slice(0, 20));
   console.log(head + '\n\n' + lines.join('\n'));
   if (opt('--out')) { fs.writeFileSync(opt('--out'), head + '\n\n## 送信の失敗\n\n' + (errors.length ? errors.slice(0, 20).join('\n') : '- なし') + '\n'); }
   if (stat.failed) { process.exitCode = 1; }

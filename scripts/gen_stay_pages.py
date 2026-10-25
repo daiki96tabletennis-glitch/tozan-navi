@@ -22,7 +22,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 E = lambda s: html.escape(str(s if s is not None else ''), quote=True)  # noqa: E731
 BASE = 'https://tozan-navi.com'
-VER = '20261025e'
+VER = '20261025f'
 AFF_ID = '57384242.53497bb8.57384243.366083eb'
 
 ML = json.load(open(os.path.join(ROOT, 'data', 'mountains.json'), encoding='utf-8'))

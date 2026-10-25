@@ -381,7 +381,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
               <span style="color:#707070;">🥈 二百名山</span>
             </label>
           </div>
-          <div style="font-size:11px;color:#a09888;margin-top:4px">百名山・二百名山・三百名山・百高山は、山名の候補から選ぶと自動で付きます。</div>
+          <div style="font-size:11px;color:#a09888;margin-top:4px">百名山・二百名山・三百名山・百高山・百低山は、山名の候補から選ぶと自動で付きます。</div>
         </div>
       </div>
     </div>
@@ -1933,14 +1933,14 @@ function handleBadgeClick(el) {
   );
 }
 
-// ===== 全国の百名山・二百名山・三百名山・百高山（data/peak_lists.json）=====
+// ===== 全国の百名山・二百名山・三百名山・百高山・百低山（data/peak_lists.json）=====
 // 山名・都道府県・標高（国土地理院「日本の主な山岳標高」）。手入力の登頂に、区分・都道府県・標高を付けるために使う（2026-10-24）
 var _peaks = null, _peaksWait = [], _mcPeak = null;
 function loadPeaks(cb){
   if (_peaks) { cb(_peaks); return; }
   _peaksWait.push(cb);
   if (_peaksWait.length > 1) return;
-  fetch('/data/peak_lists.json').then(function(r){ return r.json(); }).then(function(d){
+  fetch('/data/peak_lists.json?v=20261025').then(function(r){ return r.json(); }).then(function(d){
     _peaks = (d && d.peaks) || [];
   }).catch(function(){ _peaks = []; }).then(function(){
     var w = _peaksWait; _peaksWait = [];
@@ -1949,7 +1949,7 @@ function loadPeaks(cb){
 }
 function peakNames(p){ return [p.name].concat(p.aliases||[]); }
 function peakCategory(p){
-  var order = ['百名山','二百名山','三百名山','百高山'];
+  var order = ['百名山','二百名山','三百名山','百高山','百低山'];
   for (var i = 0; i < order.length; i++) { if ((p.lists||[]).indexOf(order[i]) > -1) return order[i]; }
   return '';
 }
@@ -2332,7 +2332,7 @@ init();
 <script src="/assets/js/counts-config.js?v=20261020a"></script>
 <script src="/assets/js/ym-counts.js?v=20261025a"></script>
 <script src="/assets/js/summit-map.js?v=20261025c"></script>
-<script src="/assets/js/huts-alert.js?v=20261020g" defer></script>
+<script src="/assets/js/huts-alert.js?v=20261026a" defer></script>
 <script src="/assets/js/gear-common.js?v=20261020a" defer></script>
 <script src="/assets/js/packing.js?v=20261020a" defer></script>
 <script src="/assets/js/admin-notices.js?v=20261016a" defer></script>
