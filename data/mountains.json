@@ -34350,7 +34350,7 @@
     "coeffMin": 59,
     "coeffMax": 70,
     "daytrip": false,
-    "trainAccess": "バスタ新宿→濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線約5時間45分→新穂高温泉",
+    "trainAccess": "バスタ新宿→京王バス・濃飛バス「新宿〜飛騨高山線」約4時間40分→平湯温泉→濃飛バス「平湯・新穂高線」約32分→新穂高温泉",
     "driveOfuna": 260,
     "driveShinjuku": 250,
     "driveYokohama": 265,
@@ -34402,7 +34402,10 @@
     "address": "岐阜県高山市奥飛騨温泉郷",
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=36.283352%2C137.574692&query_place_id=ChIJmSb5UNBPHWARUF0-XgkrKk8",
     "amapUrl": "https://maps.apple.com/?ll=36.283352,137.574692&q=%E6%96%B0%E7%A9%82%E9%AB%98%E6%B8%A9%E6%B3%89",
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.nouhibus.co.jp/highwaybus/shinjuku/",
+      "https://www.nouhibus.co.jp/route_bus/shinhotaka-line/"
+    ],
     "gearLinks": [
       {
         "id": "boots",
@@ -34513,7 +34516,7 @@
       },
       {
         "question": "笠ヶ岳へのアクセス方法は？新宿・横浜からの行き方",
-        "answer": "笠ヶ岳(新穂高温泉登山口)へは、バスタ新宿から濃飛バス・京王バスの高速バスで約5時間45分・8,000円で直通します。大宮からは新宿乗継で約6時間15分・8,530円、横浜からは約6時間19分・8,620円が目安。全席指定・予約制（乗車1か月前から）のため早めの予約が必要です。"
+        "answer": "笠ヶ岳の登山口の新穂高温泉へは、バスタ新宿から京王バス・濃飛バスの高速バス（新宿〜飛騨高山線）で平湯温泉へ行き、濃飛バスの路線バス（平湯・新穂高線）に乗り換えます。新宿から約5時間12分、大宮からは新宿でバスに乗り約5時間42分、横浜からは約5時間46分が目安で（乗り換えの待ち時間は別）、運賃は新宿から8,910円、大宮から9,440円、横浜から9,530円です。高速バスは全席指定・予約制（乗車1か月前から）なので、早めに予約してください。"
       },
       {
         "question": "笠ヶ岳の登山シーズンはいつですか？おすすめの時期",
@@ -34527,19 +34530,19 @@
     "introHtml": "<div class=\"card\"><h2><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" style=\"vertical-align:-3px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 3h10l4 4v14H5z\"/><path d=\"M15 3v4h4\"/><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"/><line x1=\"8\" y1=\"16\" x2=\"13\" y2=\"16\"/></svg>山の紹介</h2><p class=\"intro-text\">日本百名山の中でも「きつい山」として知られる笠新道。稜線からの槍・穂高の眺望は圧巻。上級レベルでコース定数59〜70、山小屋泊が一般的。代表コース（新穂高温泉〜笠新道〜笠ヶ岳（往復・1泊2日））は所要16時間4分/20.4km/標高差+2243m。</p></div>",
     "mapBtnsHtml": "<div class=\"map-btns\"><a href=\"https://www.google.com/maps/search/?api=1&query=36.283352%2C137.574692&query_place_id=ChIJmSb5UNBPHWARUF0-XgkrKk8\" target=\"_blank\" class=\"map-btn-link\">Googleマップ</a>\n<a href=\"https://maps.apple.com/?ll=36.283352,137.574692&q=%E6%96%B0%E7%A9%82%E9%AB%98%E6%B8%A9%E6%B3%89\" target=\"_blank\" class=\"map-btn-link\">Apple Maps</a>\n</div>",
     "metaTitle": "笠ヶ岳 登山の難易度は上級｜山小屋泊・歩行16時間4分・標高差2,243m｜新宿から高速バス【百名山】｜Yamatch",
-    "metaDescription": "笠ヶ岳（標高2,898m・岐阜県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（新穂高温泉〜笠新道〜笠ヶ岳（往復・1泊2日））は16時間4分・20.4km・標高差2243m。新宿から高速バスなどで約5時間45分。山小屋泊がおすすめです。日本百名山の中でも「きつい山」として知られる笠新道。駐車場・装備・天気も掲載。",
+    "metaDescription": "笠ヶ岳（標高2,898m・岐阜県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（新穂高温泉〜笠新道〜笠ヶ岳（往復・1泊2日））は16時間4分・20.4km・標高差2243m。新宿から高速バスなどで約5時間12分。山小屋泊がおすすめです。日本百名山の中でも「きつい山」として知られる笠新道。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-10-24",
+    "mountainUpdated": "2026-10-27",
     "hasHeroPhotoScript": false,
     "ogTitle": "笠ヶ岳 登山の難易度は上級｜山小屋泊・歩行16時間4分・標高差2,243m｜新宿から高速バス【百名山】｜Yamatch",
-    "ogDescription": "笠ヶ岳（標高2,898m・岐阜県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（新穂高温泉〜笠新道〜笠ヶ岳（往復・1泊2日））は16時間4分・20.4km・標高差2243m。新宿から高速バスなどで約5時間45分。山小屋泊がおすすめです。日本百名山の中でも「きつい山」として知られる笠新道。駐車場・装備・天気も掲載。",
+    "ogDescription": "笠ヶ岳（標高2,898m・岐阜県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（新穂高温泉〜笠新道〜笠ヶ岳（往復・1泊2日））は16時間4分・20.4km・標高差2243m。新宿から高速バスなどで約5時間12分。山小屋泊がおすすめです。日本百名山の中でも「きつい山」として知られる笠新道。駐車場・装備・天気も掲載。",
     "climbedBtnStyle": "rounded",
-    "trainTimeShinjuku": 345,
-    "trainTimeOmiya": 375,
-    "trainTimeYokohama": 379,
-    "fareShinjuku": 8000,
-    "fareOmiya": 8530,
-    "fareYokohama": 8620,
+    "trainTimeShinjuku": 312,
+    "trainTimeOmiya": 342,
+    "trainTimeYokohama": 346,
+    "fareShinjuku": 8910,
+    "fareOmiya": 9440,
+    "fareYokohama": 9530,
     "trainRoutes": {
       "routes": {
         "shinjuku": {
@@ -34548,14 +34551,22 @@
               "station": "バスタ新宿",
               "method": {
                 "icon": "bus",
-                "line": "濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線"
+                "line": "京王バス・濃飛バス「新宿〜飛騨高山線」"
               },
-              "durationMin": 345
+              "durationMin": 280,
+              "fareYen": null
             },
             {
-              "station": "新穂高温泉",
-              "method": null,
-              "durationMin": null
+              "station": "平湯温泉",
+              "method": {
+                "icon": "bus",
+                "line": "濃飛バス「平湯・新穂高線」"
+              },
+              "durationMin": 32,
+              "fareYen": null
+            },
+            {
+              "station": "新穂高温泉"
             }
           ]
         },
@@ -34574,14 +34585,22 @@
               "station": "バスタ新宿",
               "method": {
                 "icon": "bus",
-                "line": "濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線"
+                "line": "京王バス・濃飛バス「新宿〜飛騨高山線」"
               },
-              "durationMin": 345
+              "durationMin": 280,
+              "fareYen": null
             },
             {
-              "station": "新穂高温泉",
-              "method": null,
-              "durationMin": null
+              "station": "平湯温泉",
+              "method": {
+                "icon": "bus",
+                "line": "濃飛バス「平湯・新穂高線」"
+              },
+              "durationMin": 32,
+              "fareYen": null
+            },
+            {
+              "station": "新穂高温泉"
             }
           ]
         },
@@ -34600,14 +34619,22 @@
               "station": "バスタ新宿",
               "method": {
                 "icon": "bus",
-                "line": "濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線"
+                "line": "京王バス・濃飛バス「新宿〜飛騨高山線」"
               },
-              "durationMin": 345
+              "durationMin": 280,
+              "fareYen": null
             },
             {
-              "station": "新穂高温泉",
-              "method": null,
-              "durationMin": null
+              "station": "平湯温泉",
+              "method": {
+                "icon": "bus",
+                "line": "濃飛バス「平湯・新穂高線」"
+              },
+              "durationMin": 32,
+              "fareYen": null
+            },
+            {
+              "station": "新穂高温泉"
             }
           ]
         }
@@ -34618,25 +34645,25 @@
         "icon": "check",
         "label": "年中運行"
       },
-      "lineName": "濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線",
-      "note": "💡 通年運行だが全席指定・要予約（乗車1か月前から、ハイウェイバスドットコムまたは電話）。バスタ新宿発着、昼行8,000円/夜行9,000円。冬季は減便の場合あり。",
+      "lineName": "京王バス・濃飛バス「新宿〜飛騨高山線」・濃飛バス「平湯・新穂高線」",
+      "note": "💡 バスタ新宿〜平湯温泉は京王バス・濃飛バスの高速バス「新宿〜飛騨高山線」で約4時間40分・8,000円（昼行）。全席指定・予約制で、乗車1か月前から予約できる。平湯温泉で濃飛バス「平湯・新穂高線」に乗り換える（新穂高温泉まで約32分・910円。ほぼ1時間に1本）。新宿から新穂高温泉まで乗り換えなしで行くバスは無い",
       "summaryNote": null,
       "links": [
         {
-          "type": "yahoo",
-          "label": "乗換案内で検索",
-          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=新穂高温泉&type=1"
+          "type": "bus",
+          "label": "京王バス・濃飛バス 新宿〜飛騨高山線（時刻表・予約）",
+          "url": "https://www.nouhibus.co.jp/highwaybus/shinjuku/"
         },
         {
           "type": "bus",
-          "label": "濃飛バス公式 新宿線 時刻表・予約",
-          "url": "https://www.nouhibus.co.jp/highwaybus/shinjuku/"
+          "label": "濃飛バス 平湯・新穂高線（時刻表・運賃）",
+          "url": "https://www.nouhibus.co.jp/route_bus/shinhotaka-line/"
         }
       ]
     },
-    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>年中運行</span></div><div class=\"ts-line-name\">濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線　<span class=\"ts-duration\">約5時間45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">新穂高温泉</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR埼京線　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線　<span class=\"ts-duration\">約5時間45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">新穂高温泉</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR湘南新宿ライン　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線　<span class=\"ts-duration\">約5時間45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">新穂高温泉</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約5時間45分\" data-omiya=\"約6時間15分\" data-yokohama=\"約6時間19分\">約5時間45分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約8,000円\" data-omiya=\"片道約8,530円\" data-yokohama=\"片道約8,620円\">片道約8,000円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>通年運行だが全席指定・要予約（乗車1か月前から、ハイウェイバスドットコムまたは電話）</li><li>バスタ新宿発着、昼行8,000円/夜行9,000円</li><li>冬季は減便の場合あり</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=新穂高温泉&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://www.nouhibus.co.jp/highwaybus/shinjuku/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス公式 新宿線 時刻表・予約</a></div></div>",
-    "trainAccessOmiya": "大宮駅→JR埼京線約30分→バスタ新宿→濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線約5時間45分→新穂高温泉",
-    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→バスタ新宿→濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線約5時間45分→新穂高温泉",
+    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>年中運行</span></div><div class=\"ts-line-name\">京王バス・濃飛バス「新宿〜飛騨高山線」・濃飛バス「平湯・新穂高線」</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>京王バス・濃飛バス「新宿〜飛騨高山線」　<span class=\"ts-duration\">約4時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">平湯温泉</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス「平湯・新穂高線」　<span class=\"ts-duration\">約32分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">新穂高温泉</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR埼京線　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>京王バス・濃飛バス「新宿〜飛騨高山線」　<span class=\"ts-duration\">約4時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">平湯温泉</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス「平湯・新穂高線」　<span class=\"ts-duration\">約32分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">新穂高温泉</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR湘南新宿ライン　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>京王バス・濃飛バス「新宿〜飛騨高山線」　<span class=\"ts-duration\">約4時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">平湯温泉</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス「平湯・新穂高線」　<span class=\"ts-duration\">約32分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">新穂高温泉</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約5時間12分\" data-omiya=\"約5時間42分\" data-yokohama=\"約5時間46分\">約5時間12分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約8,910円\" data-omiya=\"片道約9,440円\" data-yokohama=\"片道約9,530円\">片道約8,910円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>バスタ新宿〜平湯温泉は京王バス・濃飛バスの高速バス「新宿〜飛騨高山線」で約4時間40分・8,000円（昼行）</li><li>全席指定・予約制で、乗車1か月前から予約できる</li><li>平湯温泉で濃飛バス「平湯・新穂高線」に乗り換える（新穂高温泉まで約32分・910円。ほぼ1時間に1本）</li><li>新宿から新穂高温泉まで乗り換えなしで行くバスは無い</li></ul></div><div class=\"ts-links\"><a href=\"https://www.nouhibus.co.jp/highwaybus/shinjuku/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>京王バス・濃飛バス 新宿〜飛騨高山線（時刻表・予約）</a><a href=\"https://www.nouhibus.co.jp/route_bus/shinhotaka-line/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス 平湯・新穂高線（時刻表・運賃）</a></div></div>",
+    "trainAccessOmiya": "大宮駅→JR埼京線約30分→バスタ新宿→京王バス・濃飛バス「新宿〜飛騨高山線」約4時間40分→平湯温泉→濃飛バス「平湯・新穂高線」約32分→新穂高温泉",
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→バスタ新宿→京王バス・濃飛バス「新宿〜飛騨高山線」約4時間40分→平湯温泉→濃飛バス「平湯・新穂高線」約32分→新穂高温泉",
     "recommendReason": "笠新道の急登の先に、槍・穂高の眺めが圧巻",
     "gmapUrlLegacy": "https://google.com/maps/search/新穂高温泉/@36.3019,137.5614,16z",
     "amapUrlLegacy": "https://maps.apple.com/?ll=36.3019,137.5614&q=新穂高温泉",
@@ -34645,7 +34672,7 @@
       137.5614
     ],
     "coordSource": "国土地理院 地名検索",
-    "fareCheckedAt": "2026-10-07",
+    "fareCheckedAt": "2026-10-27",
     "verifyNotes": [
       "高速バスの運賃は注記の値で、事業者では未再確認。大宮・横浜発は新宿までのJR（530円・620円）を足す計算で整合"
     ],
@@ -34723,7 +34750,10 @@
     "daytripSources": [
       "https://tozan100kei.com/route/kasagatake-kasashindo.php",
       "https://yamahack.com/4748"
-    ]
+    ],
+    "transfersShinjuku": 1,
+    "transfersOmiya": 2,
+    "transfersYokohama": 2
   },
   {
     "id": "ontakesan",
@@ -44846,7 +44876,7 @@
       "冬山装備"
     ],
     "trailhead": "中房温泉登山口",
-    "parking": "有明荘駐車場（有料・1000円/日）",
+    "parking": "燕岳登山口付近の駐車場（安曇野市営第二・第三駐車場・約70台・無料）。市営第一駐車場は有料の予約制",
     "address": "長野県安曇野市穂高有明",
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=36.3893665%2C137.7477736&query_place_id=ChIJN9kpegBdHWARSw37aDcszMM",
     "amapUrl": "https://maps.apple.com/?ll=36.3893665,137.7477736&q=%E4%B8%AD%E6%88%BF%E6%B8%A9%E6%B3%89%E7%99%BB%E5%B1%B1%E5%8F%A3",
@@ -45004,7 +45034,7 @@
     "metaTitle": "大天井岳 登山の難易度は上級｜山小屋泊・歩行14時間55分・標高差2,110m｜穂高駅からバス【二百名山】｜Yamatch",
     "metaDescription": "大天井岳（標高2,922m・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（中房温泉〜合戦尾根〜燕山荘〜大天井岳（往復・1泊2日））は14時間55分・17.4km・標高差2110m。新宿から電車とバスで約3時間54分（穂高駅からバス55分）。山小屋泊がおすすめです。常念山脈の最高峰で北アルプス表銀座縦走路の要衝。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-26",
+    "mountainUpdated": "2026-10-27",
     "hasHeroPhotoScript": false,
     "ogTitle": "大天井岳 登山の難易度は上級｜山小屋泊・歩行14時間55分・標高差2,110m｜穂高駅からバス【二百名山】｜Yamatch",
     "ogDescription": "大天井岳（標高2,922m・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（中房温泉〜合戦尾根〜燕山荘〜大天井岳（往復・1泊2日））は14時間55分・17.4km・標高差2110m。新宿から電車とバスで約3時間54分（穂高駅からバス55分）。山小屋泊がおすすめです。常念山脈の最高峰で北アルプス表銀座縦走路の要衝。駐車場・装備・天気も掲載。",
@@ -45257,7 +45287,7 @@
       "sourceUrl": "https://www.city.azumino.nagano.jp/soshiki/32/66871.html"
     },
     "trailhead": "中房温泉登山口",
-    "parking": "有明荘駐車場（有料・1000円/日）",
+    "parking": "燕岳登山口付近の駐車場（安曇野市営第二・第三駐車場・約70台・無料）。市営第一駐車場は有料の予約制",
     "address": "長野県安曇野市穂高有明",
     "trailheadAddress": "長野県安曇野市穂高有明",
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=36.3893665%2C137.7477736&query_place_id=ChIJN9kpegBdHWARSw37aDcszMM",
@@ -45643,7 +45673,7 @@
     "hasHeroPhotoScript": false,
     "photos": [],
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-26",
+    "mountainUpdated": "2026-10-27",
     "vibesHtml": "<div class=\"rec-card\">\n    <div class=\"rec-card-title\"><span class=\"eyebrow\">Vibes</span><span>こんな気分の人に</span></div>\n    <div class=\"rec-list\">\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>北アルプスに初めて登る人</strong>——急登でも登山道は整備され、合戦小屋までにベンチが4つある</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>山小屋泊を楽しみたい人</strong>——燕山荘から山頂まで約40分。喫茶室でケーキを味わえる</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>白い岩と高山植物を見たい人</strong>——花崗岩の岩峯群と、7月ごろから咲くコマクサ</span></div>\n    </div>\n  </div>",
     "relatedLinksHtml": "<div class=\"related-links-card\">\n  <div class=\"related-links-title\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"3\" rx=\"1\"/><line x1=\"8\" y1=\"11\" x2=\"16\" y2=\"11\"/><line x1=\"8\" y1=\"15\" x2=\"13\" y2=\"15\"/></svg>関連するまとめ</div>\n    <a href=\"/search/shinjuku-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>新宿から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">新宿発・燕岳と難易度・時間を比較できる</span>\n    </a>\n    <a href=\"/search/ofuna-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>大船・横浜から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">神奈川発で燕岳の前後に検討したい山を比較</span>\n    </a>\n    <a href=\"/search/train-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車で行ける日帰り登山一覧</span>\n      <span class=\"related-link-sub\">車なしOK・駅近の山だけを集めたリスト</span>\n    </a>\n    <a href=\"/recommend/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"12,3 14,10 12,12 10,10\" fill=\"currentColor\" stroke=\"none\"/><polygon points=\"12,21 10,14 12,12 14,14\" fill=\"currentColor\" opacity=\"0.5\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"white\" stroke=\"none\"/></svg>登山タイプ診断で自分に合う山を探す</span>\n      <span class=\"related-link-sub\">12問・約2分。16タイプのどれかと、そのタイプに合う山がわかる</span>\n    </a>\n</div>",
     "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge\" style=\"background:#fde8d8;color:#8a5010;\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>⚠️ バス季節運行（夏季）</span></div><div class=\"ts-line-name\">JR特急あずさ・大糸線・南安タクシー定期バス</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約2時間59分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">穂高駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>南安タクシー「中房温泉行き定期バス」　<span class=\"ts-duration\">約55分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">中房温泉（夏季運行）</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR湘南新宿ライン　<span class=\"ts-duration\">約31分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約2時間59分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">穂高駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>南安タクシー「中房温泉行き定期バス」　<span class=\"ts-duration\">約55分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">中房温泉（夏季運行）</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR横浜線　<span class=\"ts-duration\">約1時間</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">八王子駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約2時間26分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">穂高駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>南安タクシー「中房温泉行き定期バス」　<span class=\"ts-duration\">約55分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">中房温泉（夏季運行）</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約3時間54分\" data-omiya=\"約4時間25分\" data-yokohama=\"約4時間21分\">約3時間54分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約8,670円\" data-omiya=\"片道約8,670円\" data-yokohama=\"片道約8,670円\">片道約8,670円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>穂高駅〜中房温泉の南安タクシー「中房温泉行き定期バス」は約55分・1,500円で、運行は4月下旬〜11月上旬の所定日のみ・1日5便程度</li><li>中房温泉へ向かう県道（中房線）は通行できる時間に規制があるので、安曇野市の最新情報を確認する</li><li>登山口は中房温泉の燕岳登山口</li><li>直通の特急あずさ（白馬行き）は1日1本だけ</li><li>ほかの列車は松本で大糸線に乗り換える</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=穂高駅&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://nan-an.co.jp/nakabusa/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>中房温泉行き定期バス 時刻表</a></div></div>",
@@ -67654,7 +67684,7 @@
         "icon": "check",
         "label": "年中運行"
       },
-      "lineName": "濃飛バス・京王バス 新宿～新穂高温泉線・新穂高ロープウェイ",
+      "lineName": "京王バス・濃飛バス「新宿〜飛騨高山線」・濃飛バス「平湯・新穂高線」・新穂高ロープウェイ",
       "routes": {
         "shinjuku": {
           "legs": [
@@ -67662,12 +67692,22 @@
               "station": "バスタ新宿",
               "method": {
                 "icon": "bus",
-                "line": "濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線"
+                "line": "京王バス・濃飛バス「新宿〜飛騨高山線」"
               },
-              "durationMin": 345
+              "durationMin": 280,
+              "fareYen": null
             },
             {
-              "station": "新穂高温泉（新穂高ロープウェイ）",
+              "station": "平湯温泉",
+              "method": {
+                "icon": "bus",
+                "line": "濃飛バス「平湯・新穂高線」"
+              },
+              "durationMin": 36,
+              "fareYen": null
+            },
+            {
+              "station": "新穂高ロープウェイ（新穂高温泉駅）",
               "method": {
                 "icon": "ropeway",
                 "line": "新穂高ロープウェイ（第1・第2）"
@@ -67695,12 +67735,22 @@
               "station": "バスタ新宿",
               "method": {
                 "icon": "bus",
-                "line": "濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線"
+                "line": "京王バス・濃飛バス「新宿〜飛騨高山線」"
               },
-              "durationMin": 345
+              "durationMin": 280,
+              "fareYen": null
             },
             {
-              "station": "新穂高温泉（新穂高ロープウェイ）",
+              "station": "平湯温泉",
+              "method": {
+                "icon": "bus",
+                "line": "濃飛バス「平湯・新穂高線」"
+              },
+              "durationMin": 36,
+              "fareYen": null
+            },
+            {
+              "station": "新穂高ロープウェイ（新穂高温泉駅）",
               "method": {
                 "icon": "ropeway",
                 "line": "新穂高ロープウェイ（第1・第2）"
@@ -67728,12 +67778,22 @@
               "station": "バスタ新宿",
               "method": {
                 "icon": "bus",
-                "line": "濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線"
+                "line": "京王バス・濃飛バス「新宿〜飛騨高山線」"
               },
-              "durationMin": 345
+              "durationMin": 280,
+              "fareYen": null
             },
             {
-              "station": "新穂高温泉（新穂高ロープウェイ）",
+              "station": "平湯温泉",
+              "method": {
+                "icon": "bus",
+                "line": "濃飛バス「平湯・新穂高線」"
+              },
+              "durationMin": 36,
+              "fareYen": null
+            },
+            {
+              "station": "新穂高ロープウェイ（新穂高温泉駅）",
               "method": {
                 "icon": "ropeway",
                 "line": "新穂高ロープウェイ（第1・第2）"
@@ -67747,13 +67807,18 @@
           ]
         }
       },
-      "note": "💡 新宿〜新穂高温泉の高速バスは全席指定・要予約（昼行8,000円）。新穂高ロープウェイは第1・第2の通しで片道2,400円・通年営業。第1は毎時00分・30分、第2は毎時15分・45分発。天候不良や定期点検で運休することがある",
+      "note": "💡 バスタ新宿〜平湯温泉は京王バス・濃飛バスの高速バス「新宿〜飛騨高山線」で約4時間40分・8,000円（昼行）。全席指定・予約制で、乗車1か月前から予約できる。平湯温泉で濃飛バス「平湯・新穂高線」に乗り換える（新穂高ロープウェイまで約36分・910円。ほぼ1時間に1本）。新宿から新穂高温泉まで乗り換えなしで行くバスは無い。新穂高ロープウェイは第1・第2の通しで片道2,400円・通年営業。第1は毎時00分・30分、第2は毎時15分・45分発。天候不良や定期点検で運休することがある",
       "summaryNote": null,
       "links": [
         {
-          "type": "yahoo",
-          "label": "乗換案内で検索",
-          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=新穂高温泉&type=1"
+          "type": "bus",
+          "label": "京王バス・濃飛バス 新宿〜飛騨高山線（時刻表・予約）",
+          "url": "https://www.nouhibus.co.jp/highwaybus/shinjuku/"
+        },
+        {
+          "type": "bus",
+          "label": "濃飛バス 平湯・新穂高線（時刻表・運賃）",
+          "url": "https://www.nouhibus.co.jp/route_bus/shinhotaka-line/"
         },
         {
           "type": "bus",
@@ -67762,20 +67827,24 @@
         }
       ]
     },
-    "trainTimeShinjuku": 367,
-    "fareShinjuku": 10400,
-    "transfersShinjuku": 1,
-    "trainTimeOmiya": 397,
-    "fareOmiya": 10930,
-    "transfersOmiya": 2,
-    "trainTimeYokohama": 401,
-    "fareYokohama": 11020,
-    "transfersYokohama": 2,
-    "trainAccess": "バスタ新宿→濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線約5時間45分→新穂高温泉（新穂高ロープウェイ）→新穂高ロープウェイ（第1・第2）約22分→西穂高口駅",
-    "trainAccessOmiya": "大宮駅→JR埼京線約30分→バスタ新宿→濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線約5時間45分→新穂高温泉（新穂高ロープウェイ）→新穂高ロープウェイ（第1・第2）約22分→西穂高口駅",
-    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→バスタ新宿→濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線約5時間45分→新穂高温泉（新穂高ロープウェイ）→新穂高ロープウェイ（第1・第2）約22分→西穂高口駅",
+    "trainTimeShinjuku": 338,
+    "fareShinjuku": 11310,
+    "transfersShinjuku": 2,
+    "trainTimeOmiya": 368,
+    "fareOmiya": 11840,
+    "transfersOmiya": 3,
+    "trainTimeYokohama": 372,
+    "fareYokohama": 11930,
+    "transfersYokohama": 3,
+    "trainAccess": "バスタ新宿→京王バス・濃飛バス「新宿〜飛騨高山線」約4時間40分→平湯温泉→濃飛バス「平湯・新穂高線」約36分→新穂高ロープウェイ（新穂高温泉駅）→新穂高ロープウェイ（第1・第2）約22分→西穂高口駅",
+    "trainAccessOmiya": "大宮駅→JR埼京線約30分→バスタ新宿→京王バス・濃飛バス「新宿〜飛騨高山線」約4時間40分→平湯温泉→濃飛バス「平湯・新穂高線」約36分→新穂高ロープウェイ（新穂高温泉駅）→新穂高ロープウェイ（第1・第2）約22分→西穂高口駅",
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→バスタ新宿→京王バス・濃飛バス「新宿〜飛騨高山線」約4時間40分→平湯温泉→濃飛バス「平湯・新穂高線」約36分→新穂高ロープウェイ（新穂高温泉駅）→新穂高ロープウェイ（第1・第2）約22分→西穂高口駅",
     "busLinks": [],
-    "busScheduleLinks": [],
+    "busScheduleLinks": [
+      "https://www.nouhibus.co.jp/highwaybus/shinjuku/",
+      "https://www.nouhibus.co.jp/route_bus/shinhotaka-line/",
+      "https://shinhotaka-ropeway.jp/price/"
+    ],
     "lines": [],
     "fareCheckedAt": "2026-10-27",
     "status": null,
@@ -67921,7 +67990,7 @@
       },
       {
         "question": "西穂高岳へのアクセス方法は？新宿・横浜からの行き方",
-        "answer": "バスタ新宿から高速バス（新宿〜新穂高温泉線・全席指定）で新穂高温泉へ行き、新穂高ロープウェイ（第1・第2の通し・約22分）で西穂高口駅へ上がります。新宿から約6時間7分、大宮からは新宿でバスに乗り約6時間37分、横浜からは約6時間41分が目安で、運賃はロープウェイ片道を含めて新宿から10,400円、大宮から10,930円、横浜から11,020円です。"
+        "answer": "バスタ新宿から京王バス・濃飛バスの高速バス（新宿〜飛騨高山線）で平湯温泉へ行き、濃飛バスの路線バス（平湯・新穂高線）で新穂高ロープウェイへ、ロープウェイ（第1・第2の通し・約22分）で西穂高口駅へ上がります。新宿から約5時間38分、大宮からは新宿でバスに乗り約6時間8分、横浜からは約6時間12分が目安で（乗り換えの待ち時間は別）、運賃はロープウェイ片道を含めて新宿から11,310円、大宮から11,840円、横浜から11,930円です。"
       },
       {
         "question": "西穂高岳の登山シーズンはいつですか？おすすめの時期",
@@ -67988,7 +68057,7 @@
     "photos": [],
     "ogUpdatedTime": null,
     "mountainUpdated": "2026-10-27",
-    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>年中運行</span></div><div class=\"ts-line-name\">濃飛バス・京王バス 新宿～新穂高温泉線・新穂高ロープウェイ</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線　<span class=\"ts-duration\">約5時間45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新穂高温泉（新穂高ロープウェイ）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ（第1・第2）　<span class=\"ts-duration\">約22分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">西穂高口駅</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR埼京線　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線　<span class=\"ts-duration\">約5時間45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新穂高温泉（新穂高ロープウェイ）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ（第1・第2）　<span class=\"ts-duration\">約22分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">西穂高口駅</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR湘南新宿ライン　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線　<span class=\"ts-duration\">約5時間45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新穂高温泉（新穂高ロープウェイ）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ（第1・第2）　<span class=\"ts-duration\">約22分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">西穂高口駅</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約6時間7分\" data-omiya=\"約6時間37分\" data-yokohama=\"約6時間41分\">約6時間7分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約10,400円\" data-omiya=\"片道約10,930円\" data-yokohama=\"片道約11,020円\">片道約10,400円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>新宿〜新穂高温泉の高速バスは全席指定・要予約（昼行8,000円）</li><li>新穂高ロープウェイは第1・第2の通しで片道2,400円・通年営業</li><li>第1は毎時00分・30分、第2は毎時15分・45分発</li><li>天候不良や定期点検で運休することがある</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=新穂高温泉&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://shinhotaka-ropeway.jp/price/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ 料金・時刻</a></div></div>",
+    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>年中運行</span></div><div class=\"ts-line-name\">京王バス・濃飛バス「新宿〜飛騨高山線」・濃飛バス「平湯・新穂高線」・新穂高ロープウェイ</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>京王バス・濃飛バス「新宿〜飛騨高山線」　<span class=\"ts-duration\">約4時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">平湯温泉</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス「平湯・新穂高線」　<span class=\"ts-duration\">約36分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新穂高ロープウェイ（新穂高温泉駅）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ（第1・第2）　<span class=\"ts-duration\">約22分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">西穂高口駅</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR埼京線　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>京王バス・濃飛バス「新宿〜飛騨高山線」　<span class=\"ts-duration\">約4時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">平湯温泉</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス「平湯・新穂高線」　<span class=\"ts-duration\">約36分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新穂高ロープウェイ（新穂高温泉駅）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ（第1・第2）　<span class=\"ts-duration\">約22分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">西穂高口駅</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR湘南新宿ライン　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>京王バス・濃飛バス「新宿〜飛騨高山線」　<span class=\"ts-duration\">約4時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">平湯温泉</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス「平湯・新穂高線」　<span class=\"ts-duration\">約36分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新穂高ロープウェイ（新穂高温泉駅）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ（第1・第2）　<span class=\"ts-duration\">約22分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">西穂高口駅</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約5時間38分\" data-omiya=\"約6時間8分\" data-yokohama=\"約6時間12分\">約5時間38分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約11,310円\" data-omiya=\"片道約11,840円\" data-yokohama=\"片道約11,930円\">片道約11,310円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>バスタ新宿〜平湯温泉は京王バス・濃飛バスの高速バス「新宿〜飛騨高山線」で約4時間40分・8,000円（昼行）</li><li>全席指定・予約制で、乗車1か月前から予約できる</li><li>平湯温泉で濃飛バス「平湯・新穂高線」に乗り換える（新穂高ロープウェイまで約36分・910円。ほぼ1時間に1本）</li><li>新宿から新穂高温泉まで乗り換えなしで行くバスは無い</li><li>新穂高ロープウェイは第1・第2の通しで片道2,400円・通年営業</li><li>第1は毎時00分・30分、第2は毎時15分・45分発</li><li>天候不良や定期点検で運休することがある</li></ul></div><div class=\"ts-links\"><a href=\"https://www.nouhibus.co.jp/highwaybus/shinjuku/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>京王バス・濃飛バス 新宿〜飛騨高山線（時刻表・予約）</a><a href=\"https://www.nouhibus.co.jp/route_bus/shinhotaka-line/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス 平湯・新穂高線（時刻表・運賃）</a><a href=\"https://shinhotaka-ropeway.jp/price/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ 料金・時刻</a></div></div>",
     "coeffMin": 17,
     "coeffMax": 37,
     "courseCoefficientRange": "17〜37",
@@ -67998,8 +68067,8 @@
     ],
     "metaTitle": "西穂高岳 登山の難易度は上級｜日帰り7時間20分・標高差962m｜新宿から高速バス｜Yamatch",
     "ogTitle": "西穂高岳 登山の難易度は上級｜日帰り7時間20分・標高差962m｜新宿から高速バス｜Yamatch",
-    "metaDescription": "西穂高岳（標高2,909m・岐阜県・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（西穂高口駅〜西穂山荘〜西穂独標〜西穂高岳（往復））は7時間20分・7.7km・標高差962m。新宿から高速バスなどで約6時間7分。日帰りできます。穂高連峰の南西にそびえる岩峰の山。駐車場・装備・天気も掲載。",
-    "ogDescription": "西穂高岳（標高2,909m・岐阜県・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（西穂高口駅〜西穂山荘〜西穂独標〜西穂高岳（往復））は7時間20分・7.7km・標高差962m。新宿から高速バスなどで約6時間7分。日帰りできます。穂高連峰の南西にそびえる岩峰の山。駐車場・装備・天気も掲載。"
+    "metaDescription": "西穂高岳（標高2,909m・岐阜県・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（西穂高口駅〜西穂山荘〜西穂独標〜西穂高岳（往復））は7時間20分・7.7km・標高差962m。新宿から高速バスなどで約5時間38分。日帰りできます。穂高連峰の南西にそびえる岩峰の山。駐車場・装備・天気も掲載。",
+    "ogDescription": "西穂高岳（標高2,909m・岐阜県・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（西穂高口駅〜西穂山荘〜西穂独標〜西穂高岳（往復））は7時間20分・7.7km・標高差962m。新宿から高速バスなどで約5時間38分。日帰りできます。穂高連峰の南西にそびえる岩峰の山。駐車場・装備・天気も掲載。"
   },
   {
     "id": "myogisan",
