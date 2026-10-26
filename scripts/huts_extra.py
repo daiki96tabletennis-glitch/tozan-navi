@@ -178,7 +178,7 @@ EXTRA_HUTS = [
     H('駒の小屋（越後駒ヶ岳避難小屋）', '上信越・尾瀬・東北', YL + '368', '例年 通年（5/中～10/中は不定期に管理人在駐）', None, ['echigokoma'], other=None),
     H('清四郎小屋', '上信越・尾瀬・東北', YL + '338', '例年 6/1～10/20', None, ['hiragadake'], other=None),
     H('谷川岳肩の小屋', '上信越・尾瀬・東北', YL + '410', '例年 5/1～11/3前後（年により変動）', None, ['tanigawa'], other=None),
-    H('平標山乃家', '上信越・尾瀬・東北', YL + '416', '例年 4/末～10/末', None, ['tairappyo'], other=None),
+    H('平標山乃家', '上信越・尾瀬・東北', YL + '416', '例年 4/末～10/末', None, ['tairappyo'], other=[('sennokurayama', '平標山の南側。仙ノ倉山へ向かう前後の宿泊に使える')]),
     H('庚申山荘（無人の避難小屋）', '上信越・尾瀬・東北', YL + '297', '例年 通年（無人）', None, ['sukai'], other=None),
     H('雨飾温泉 雨飾山荘', '上信越・尾瀬・東北', YL + '461', '例年 5/中～11/上', None, [], other=[('amakazari', '新潟県側・雨飾温泉からのルート')]),
     H('会津駒ヶ岳 駒の小屋', '上信越・尾瀬・東北', YT + 'komanokoya', '予約サイトで確認', None, ['aizu_koma'], methods=['Web（やまたん）'], bsrc=YT + 'komanokoya'),

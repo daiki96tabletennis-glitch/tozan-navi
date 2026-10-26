@@ -66275,5 +66275,2560 @@
     "yamapName": "御前山",
     "ogDescription": "御前山（標高1,405m・東京都）の難易度は中級（体力のある中級者向け）。代表コース（奥多摩湖〜サス沢山〜惣岳山〜御前山〜境橋（縦走））は6時間18分・10.7km・標高差1113m。新宿から電車とバスで約2時間6分（奥多摩駅からバス15分）。日帰りできます。大岳山・三頭山とともに「奥多摩三山」に数えられる一峰（1,405m）。駐車場・装備・天気も掲載。",
     "metaAuto": true
+  },
+  {
+    "id": "tengudake",
+    "name": "天狗岳",
+    "kana": "てんぐだけ",
+    "elevation": 2646,
+    "area": "長野県",
+    "category": "二百名山",
+    "difficulty": "中級",
+    "daytrip": true,
+    "lat": 36.01917,
+    "lng": 138.35545,
+    "yamapUrl": "https://yamap.com/mountains/1971",
+    "yamapName": "天狗岳（西天狗岳）",
+    "trailhead": "渋の湯（渋ノ湯登山口）",
+    "parking": "渋の湯の駐車場",
+    "address": "長野県茅野市北山",
+    "nearby": [
+      "yatsugatake",
+      "keirisan"
+    ],
+    "vibes": [
+      "view",
+      "forest",
+      "ridge"
+    ],
+    "types": [
+      "adventure",
+      "easy"
+    ],
+    "season": "6月〜10月",
+    "seasonOk": [
+      "summer",
+      "fall"
+    ],
+    "description": "北八ヶ岳と南八ヶ岳の境に立つ二百名山。鋭い岩峰の東天狗岳と、丸みのある西天狗岳（2,646m・最高点）が並ぶ双耳峰で、南北の八ヶ岳から南・中央アルプスまで見渡せる。奥蓼科の渋の湯や唐沢鉱泉から登り、途中の黒百合ヒュッテで休める。",
+    "recommendReason": "東西2つの頂が並ぶ北八ヶ岳の双耳峰。黒百合ヒュッテを通って登る",
+    "coordSource": "YAMAP（山頂の座標）・国土地理院／OpenStreetMap で照合",
+    "metaDescriptionManual": "天狗岳（てんぐだけ・2,646m）は東天狗岳と西天狗岳が並ぶ八ヶ岳の双耳峰。渋の湯・唐沢鉱泉からのコース・アクセス・装備を解説。",
+    "metaAuto": true,
+    "gmapUrl": "https://www.google.com/maps/search/?api=1&query=36.036108%2C138.328731",
+    "amapUrl": "https://maps.apple.com/?ll=36.036108,138.328731&q=%E6%B8%8B%E3%81%AE%E6%B9%AF",
+    "mapBtnsHtml": "<div class=\"map-btns\"><a href=\"https://www.google.com/maps/search/?api=1&query=36.036108%2C138.328731\" target=\"_blank\" class=\"map-btn-link\">Googleマップ</a>\n<a href=\"https://maps.apple.com/?ll=36.036108,138.328731&q=%E6%B8%8B%E3%81%AE%E6%B9%AF\" target=\"_blank\" class=\"map-btn-link\">Apple Maps</a>\n</div>",
+    "driveTimeShinjuku": 155,
+    "driveShinjuku": 155,
+    "driveTimeOmiya": 180,
+    "driveOmiya": 180,
+    "driveTimeYokohama": 170,
+    "driveYokohama": 170,
+    "driveOfuna": 165,
+    "driveTime": 165,
+    "driveTimeTachikawa": 145,
+    "driveTachikawa": 145,
+    "driveCheckedAt": "2026-10-27",
+    "trainRoutes": {
+      "badge": {
+        "type": null,
+        "style": "background:#fde8d8;color:#8a5010;",
+        "icon": "check",
+        "label": "⚠️ バス季節運行"
+      },
+      "lineName": "JR特急あずさ・アルピコ交通「奥蓼科渋の湯線」",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 126,
+              "fareYen": null
+            },
+            {
+              "station": "茅野駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通「奥蓼科渋の湯線」"
+              },
+              "durationMin": 52,
+              "fareYen": null
+            },
+            {
+              "station": "渋の湯（季節運行）"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR武蔵野線・中央線（立川乗換）"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "立川駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 102,
+              "fareYen": null
+            },
+            {
+              "station": "茅野駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通「奥蓼科渋の湯線」"
+              },
+              "durationMin": 52,
+              "fareYen": null
+            },
+            {
+              "station": "渋の湯（季節運行）"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR京浜東北線・横浜線（八王子乗換）"
+              },
+              "durationMin": 68,
+              "fareYen": null
+            },
+            {
+              "station": "八王子駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 93,
+              "fareYen": null
+            },
+            {
+              "station": "茅野駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通「奥蓼科渋の湯線」"
+              },
+              "durationMin": 52,
+              "fareYen": null
+            },
+            {
+              "station": "渋の湯（季節運行）"
+            }
+          ]
+        }
+      },
+      "note": "💡 茅野駅〜渋の湯はアルピコ交通「奥蓼科渋の湯線」で約52分・2,000円。2026年は5月2日〜10月25日の土日祝と8月1日〜30日だけの運行で、茅野駅発は9時40分と14時20分の1日2便。運行日以外は茅野駅からタクシーなどを使う",
+      "summaryNote": null,
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=茅野駅&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "アルピコ交通 奥蓼科渋の湯線 時刻表",
+          "url": "https://www.alpico.co.jp/traffic/local/suwa/"
+        }
+      ]
+    },
+    "trainTimeShinjuku": 178,
+    "fareShinjuku": 7760,
+    "transfersShinjuku": 1,
+    "trainTimeOmiya": 209,
+    "fareOmiya": 7760,
+    "transfersOmiya": 2,
+    "trainTimeYokohama": 213,
+    "fareYokohama": 7100,
+    "transfersYokohama": 2,
+    "trainAccess": "新宿駅→JR特急あずさ約2時間6分→茅野駅→アルピコ交通「奥蓼科渋の湯線」約52分→渋の湯（季節運行）",
+    "trainAccessOmiya": "大宮駅→JR武蔵野線・中央線（立川乗換）約55分→立川駅→JR特急あずさ約1時間42分→茅野駅→アルピコ交通「奥蓼科渋の湯線」約52分→渋の湯（季節運行）",
+    "trainAccessYokohama": "横浜駅→JR京浜東北線・横浜線（八王子乗換）約1時間8分→八王子駅→JR特急あずさ約1時間33分→茅野駅→アルピコ交通「奥蓼科渋の湯線」約52分→渋の湯（季節運行）",
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "lines": [],
+    "fareCheckedAt": "2026-10-27",
+    "annualItems": [
+      {
+        "kind": "transport",
+        "label": "茅野駅〜渋の湯のバス（奥蓼科渋の湯線）",
+        "validFrom": "2026-05-02",
+        "validTo": "2026-10-25",
+        "seasonYear": 2026,
+        "sourceUrl": "https://www.alpico.co.jp/traffic/datas/files/2026/04/02/2388a3c99697f371a9d8b22b450a7b085505b7f2.pdf",
+        "lastVerified": "2026-10-27",
+        "note": "土日祝と8月1日〜30日のみ運行"
+      }
+    ],
+    "status": null,
+    "warnBanner": null,
+    "gearCalendar": [
+      "winter_gear",
+      "winter_gear",
+      "winter_gear",
+      "winter_gear",
+      "light_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "light_crampons",
+      "winter_gear",
+      "winter_gear"
+    ],
+    "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear",
+      "s-hard",
+      "s-hard"
+    ],
+    "calLegend": [
+      "アイゼン不要",
+      "軽アイゼン等",
+      "冬山装備"
+    ],
+    "seasonNoGear": "6月〜9月",
+    "season6Crampons": "5月・10月",
+    "routes": [
+      {
+        "name": "渋の湯〜黒百合ヒュッテ〜中山峠〜東天狗岳（往復）",
+        "time": "7時間31分",
+        "distance": "9.4km",
+        "elevation": "+832m",
+        "descent": "-832m",
+        "waypoints": "渋ノ湯登山口 → 黒百合ヒュッテ → 中山峠 → … → 東天狗岳",
+        "trailheadName": "渋の湯（渋ノ湯登山口）",
+        "source": "YAMAPモデルコース（model-courses/1122）",
+        "sourceUrl": "https://yamap.com/model-courses/1122",
+        "lastVerified": "2026-10-27",
+        "coeff": 25
+      },
+      {
+        "name": "唐沢鉱泉〜西尾根〜西天狗岳〜東天狗岳〜黒百合ヒュッテ（周回）",
+        "time": "6時間53分",
+        "distance": "8.0km",
+        "elevation": "+884m",
+        "descent": "-883m",
+        "waypoints": "唐沢鉱泉登山口 → 第1展望台 → 第二展望台 → … → 東天狗岳 → 中山峠 → 黒百合ヒュッテ",
+        "trailheadName": "唐沢鉱泉",
+        "source": "YAMAPモデルコース（model-courses/1487）",
+        "sourceUrl": "https://yamap.com/model-courses/1487",
+        "lastVerified": "2026-10-27",
+        "coeff": 24
+      },
+      {
+        "name": "渋の湯〜東天狗岳〜中山〜高見石小屋（周回）",
+        "time": "9時間26分",
+        "distance": "12.0km",
+        "elevation": "+970m",
+        "descent": "-971m",
+        "waypoints": "渋ノ湯登山口 → 黒百合ヒュッテ → 中山峠 → … → 中山 → 高見石小屋",
+        "trailheadName": "渋の湯（渋ノ湯登山口）",
+        "source": "YAMAPモデルコース（model-courses/93134）",
+        "sourceUrl": "https://yamap.com/model-courses/93134",
+        "lastVerified": "2026-10-27",
+        "coeff": 31
+      }
+    ],
+    "vibePoints": [
+      {
+        "who": "八ヶ岳を初めて歩く人",
+        "why": "渋の湯から標高差約800m。途中に黒百合ヒュッテがある"
+      },
+      {
+        "who": "森と岩の両方を楽しみたい人",
+        "why": "北の針葉樹の森と、南の岩峰の景色が天狗岳を境に変わる"
+      },
+      {
+        "who": "山頂の展望を楽しみたい人",
+        "why": "南北の八ヶ岳から南・中央アルプスまで見渡せる"
+      }
+    ],
+    "featurePoints": [
+      {
+        "tag": "view",
+        "label": "山頂の大展望",
+        "text": "南・北八ヶ岳の山々のほか、天気が良ければ霧ヶ峰や南・中央アルプスまで見渡せる"
+      },
+      {
+        "tag": "ridge",
+        "label": "東西2つの頂",
+        "text": "鋭い岩峰の東天狗岳と丸みのある西天狗岳が並ぶ。三角点は西天狗岳（2,646m）"
+      },
+      {
+        "tag": "forest",
+        "label": "北八ヶ岳の森",
+        "text": "天狗岳の北は針葉樹の原生林が広がる北八ヶ岳、南は岩稜の南八ヶ岳と景色が変わる"
+      },
+      {
+        "tag": "hut",
+        "label": "黒百合ヒュッテ",
+        "text": "渋の湯からのコースの途中にある山小屋。YAMAP のモデルコースでも名物のビーフシチューが紹介されている"
+      }
+    ],
+    "featureSources": [
+      "https://yamap.com/mountains/253",
+      "https://yamap.com/mountains/1971",
+      "https://yamap.com/model-courses/1122"
+    ],
+    "featureCheckedAt": "2026-10-27",
+    "dlReasonsHtml": "<ul class=\"dl-reasons\">\n    <li class=\"minus\">東天狗岳は鋭い岩峰で、山頂付近は岩の多い道になる</li>\n    <li class=\"minus\">茅野駅から渋の湯へのバスは土日祝などの運行日だけで、1日2便</li>\n    <li>信州 山のグレーディングでは渋ノ湯・唐沢鉱泉からのコースが体力度3・技術的難易度B</li>\n    <li>渋の湯・唐沢鉱泉から標高差は800m台で、途中に黒百合ヒュッテがある</li>\n  </ul>",
+    "dlReasonsSources": [
+      "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/documents/2026_grading_list.pdf",
+      "https://yamap.com/mountains/253"
+    ],
+    "dlReasonsCheckedAt": "2026-10-27",
+    "faq": [
+      {
+        "question": "天狗岳は初心者でも登れますか？難易度とコース定数を解説",
+        "answer": "天狗岳の難易度は中級、コース定数24〜31です。天狗岳は八ヶ岳のなかでは登りやすい山で、渋の湯・唐沢鉱泉から標高差は800m台です。山頂付近の東天狗岳は岩の多い道になります。代表的な渋の湯〜黒百合ヒュッテ〜中山峠〜東天狗岳（往復）は7時間31分・9.4km・標高差+832mが目安。唐沢鉱泉〜西尾根〜西天狗岳〜東天狗岳〜黒百合ヒュッテ（周回）（6時間53分）、渋の湯〜東天狗岳〜中山〜高見石小屋（周回）（9時間26分）という選び方もできます。"
+      },
+      {
+        "question": "天狗岳の所要時間は？日帰りできますか？",
+        "answer": "はい、天狗岳は日帰りできます。いちばん短い唐沢鉱泉〜西尾根〜西天狗岳〜東天狗岳〜黒百合ヒュッテ（周回）は6時間53分（8.0km・標高差884m）。渋の湯〜黒百合ヒュッテ〜中山峠〜東天狗岳（往復）は7時間31分（9.4km・標高差832m）。渋の湯〜東天狗岳〜中山〜高見石小屋（周回）は山小屋に泊まる計画が基本です。"
+      },
+      {
+        "question": "天狗岳へのアクセス方法は？新宿・横浜からの行き方",
+        "answer": "特急あずさで茅野駅へ行き、アルピコ交通「奥蓼科渋の湯線」で渋の湯まで約52分です。新宿から約2時間58分、大宮からは立川で特急に乗り約3時間29分、横浜からは八王子で特急に乗り約3時間33分が目安で、運賃は新宿・大宮から7,760円、横浜から7,100円です（乗り換えの待ち時間は別）。バスは2026年は5月2日〜10月25日の土日祝と8月1日〜30日だけの運行です。"
+      },
+      {
+        "question": "天狗岳の登山シーズンはいつですか？おすすめの時期",
+        "answer": "天狗岳の登山シーズンは6月〜10月が目安です。冬も登る人の多い山ですが、12月〜4月は雪と凍結でアイゼンが要り、黒百合ヒュッテより上はアイゼン・ピッケルがあると安心です。残雪や凍結は年によって変わるので、直前の最新情報も確認してください。"
+      }
+    ],
+    "introHtml": "<div class=\"card\"><h2><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" style=\"vertical-align:-3px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 3h10l4 4v14H5z\"/><path d=\"M15 3v4h4\"/><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"/><line x1=\"8\" y1=\"16\" x2=\"13\" y2=\"16\"/></svg>山の紹介</h2><p class=\"intro-text\">北八ヶ岳と南八ヶ岳の境に立つ二百名山。鋭い岩峰の東天狗岳と、丸みのある西天狗岳（2,646m・最高点）が並ぶ双耳峰で、南北の八ヶ岳から南・中央アルプスまで見渡せる。奥蓼科の渋の湯や唐沢鉱泉から登り、途中の黒百合ヒュッテで休める。中級レベルでコース定数24〜31、日帰りでの登山が可能。代表コース（渋の湯〜黒百合ヒュッテ〜中山峠〜東天狗岳（往復））は所要7時間31分/9.4km/標高差+832m。</p></div>",
+    "vibesHtml": "<div class=\"rec-card\">\n    <div class=\"rec-card-title\"><span class=\"eyebrow\">Vibes</span><span>こんな気分の人に</span></div>\n    <div class=\"rec-list\">\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>八ヶ岳を初めて歩く人</strong>——渋の湯から標高差約800m。途中に黒百合ヒュッテがある</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>森と岩の両方を楽しみたい人</strong>——北の針葉樹の森と、南の岩峰の景色が天狗岳を境に変わる</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>山頂の展望を楽しみたい人</strong>——南北の八ヶ岳から南・中央アルプスまで見渡せる</span></div>\n    </div>\n  </div>",
+    "relatedLinksHtml": "<div class=\"related-links-card\">\n  <div class=\"related-links-title\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"3\" rx=\"1\"/><line x1=\"8\" y1=\"11\" x2=\"16\" y2=\"11\"/><line x1=\"8\" y1=\"15\" x2=\"13\" y2=\"15\"/></svg>関連するまとめ</div>\n    <a href=\"/search/shinjuku-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>新宿から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">新宿発・天狗岳と難易度・時間を比較できる</span>\n    </a>\n    <a href=\"/search/ofuna-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>大船・横浜から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">神奈川発で天狗岳の前後に検討したい山を比較</span>\n    </a>\n    <a href=\"/search/train-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車で行ける日帰り登山一覧</span>\n      <span class=\"related-link-sub\">車なしOK・駅近の山だけを集めたリスト</span>\n    </a>\n    <a href=\"/recommend/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"12,3 14,10 12,12 10,10\" fill=\"currentColor\" stroke=\"none\"/><polygon points=\"12,21 10,14 12,12 14,14\" fill=\"currentColor\" opacity=\"0.5\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"white\" stroke=\"none\"/></svg>登山タイプ診断で自分に合う山を探す</span>\n      <span class=\"related-link-sub\">12問・約2分。16タイプのどれかと、そのタイプに合う山がわかる</span>\n    </a>\n</div>",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "gaiter",
+        "icon": "🧦",
+        "name": "ゲイター",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "crampon",
+        "icon": "❄️",
+        "name": "軽アイゼン",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "climbedBtnStyle": "rounded",
+    "hasWeatherWidget": false,
+    "hasHeroPhotoScript": false,
+    "photos": [],
+    "ogUpdatedTime": null,
+    "mountainUpdated": "2026-10-27",
+    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge\" style=\"background:#fde8d8;color:#8a5010;\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>⚠️ バス季節運行</span></div><div class=\"ts-line-name\">JR特急あずさ・アルピコ交通「奥蓼科渋の湯線」</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約2時間6分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">茅野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通「奥蓼科渋の湯線」　<span class=\"ts-duration\">約52分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">渋の湯（季節運行）</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR武蔵野線・中央線（立川乗換）　<span class=\"ts-duration\">約55分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">立川駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約1時間42分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">茅野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通「奥蓼科渋の湯線」　<span class=\"ts-duration\">約52分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">渋の湯（季節運行）</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR京浜東北線・横浜線（八王子乗換）　<span class=\"ts-duration\">約1時間8分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">八王子駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約1時間33分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">茅野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通「奥蓼科渋の湯線」　<span class=\"ts-duration\">約52分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">渋の湯（季節運行）</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約2時間58分\" data-omiya=\"約3時間29分\" data-yokohama=\"約3時間33分\">約2時間58分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約7,760円\" data-omiya=\"片道約7,760円\" data-yokohama=\"片道約7,100円\">片道約7,760円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>茅野駅〜渋の湯はアルピコ交通「奥蓼科渋の湯線」で約52分・2,000円</li><li>2026年は5月2日〜10月25日の土日祝と8月1日〜30日だけの運行で、茅野駅発は9時40分と14時20分の1日2便</li><li>運行日以外は茅野駅からタクシーなどを使う</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=茅野駅&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://www.alpico.co.jp/traffic/local/suwa/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通 奥蓼科渋の湯線 時刻表</a></div></div>",
+    "coeffMin": 24,
+    "coeffMax": 31,
+    "courseCoefficientRange": "24〜31",
+    "courseCoefficient": [
+      24,
+      31
+    ],
+    "metaTitle": "天狗岳 登山の難易度は中級｜日帰り7時間31分・標高差832m｜茅野駅からバス52分【二百名山】｜Yamatch",
+    "ogTitle": "天狗岳 登山の難易度は中級｜日帰り7時間31分・標高差832m｜茅野駅からバス52分【二百名山】｜Yamatch",
+    "metaDescription": "天狗岳（標高2,646m・長野県）の難易度は中級（体力のある中級者向け）。代表コース（渋の湯〜黒百合ヒュッテ〜中山峠〜東天狗岳（往復））は7時間31分・9.4km・標高差832m。新宿から電車とバスで約2時間58分（茅野駅からバス52分）。日帰りできます。北八ヶ岳と南八ヶ岳の境に立つ二百名山。駐車場・装備・天気も掲載。",
+    "ogDescription": "天狗岳（標高2,646m・長野県）の難易度は中級（体力のある中級者向け）。代表コース（渋の湯〜黒百合ヒュッテ〜中山峠〜東天狗岳（往復））は7時間31分・9.4km・標高差832m。新宿から電車とバスで約2時間58分（茅野駅からバス52分）。日帰りできます。北八ヶ岳と南八ヶ岳の境に立つ二百名山。駐車場・装備・天気も掲載。"
+  },
+  {
+    "id": "kitayokodake",
+    "name": "北横岳",
+    "kana": "きたよこだけ",
+    "elevation": 2480,
+    "area": "長野県",
+    "category": "人気の山",
+    "difficulty": "初級",
+    "daytrip": true,
+    "lat": 36.08746,
+    "lng": 138.32,
+    "yamapUrl": "https://yamap.com/mountains/257",
+    "yamapName": "北横岳",
+    "trailhead": "北八ヶ岳ロープウェイ山頂駅",
+    "parking": "北八ヶ岳ロープウェイ山麓駅の駐車場",
+    "address": "長野県茅野市北山",
+    "nearby": [
+      "keirisan",
+      "tengudake"
+    ],
+    "vibes": [
+      "view",
+      "forest",
+      "accessible"
+    ],
+    "types": [
+      "easy",
+      "casual"
+    ],
+    "season": "6月〜10月（冬は雪山）",
+    "seasonOk": [
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "description": "北八ヶ岳の山。南八ヶ岳にも横岳があるので北横岳と呼ばれる。ロープウェイで標高2,200m台まで上がれて、途中に山小屋もあり、双耳峰の山頂からは蓼科山や南八ヶ岳、南・中央・北アルプスまで見渡せる。冬は雪山登山を始める人でもにぎわう。",
+    "recommendReason": "ロープウェイで上がれる北八ヶ岳の展望の山。雪山を始める人にも人気",
+    "coordSource": "YAMAP（山頂の座標）・国土地理院／OpenStreetMap で照合",
+    "metaDescriptionManual": "北横岳（きたよこだけ・2,480m）はロープウェイで登れる北八ヶ岳の山。山頂駅からのコース・アクセス・冬の装備を解説。",
+    "metaAuto": true,
+    "driveTarget": "北八ヶ岳ロープウェイ山麓駅",
+    "gmapUrl": "https://www.google.com/maps/search/?api=1&query=36.0683884%2C138.3024287",
+    "amapUrl": "https://maps.apple.com/?ll=36.0683884,138.3024287&q=%E5%8C%97%E5%85%AB%E3%83%B6%E5%B2%B3%E3%83%AD%E3%83%BC%E3%83%97%E3%82%A6%E3%82%A7%E3%82%A4%E5%B1%B1%E9%BA%93%E9%A7%85",
+    "mapBtnsHtml": "<div class=\"map-btns\"><a href=\"https://www.google.com/maps/search/?api=1&query=36.0683884%2C138.3024287\" target=\"_blank\" class=\"map-btn-link\">Googleマップ</a>\n<a href=\"https://maps.apple.com/?ll=36.0683884,138.3024287&q=%E5%8C%97%E5%85%AB%E3%83%B6%E5%B2%B3%E3%83%AD%E3%83%BC%E3%83%97%E3%82%A6%E3%82%A7%E3%82%A4%E5%B1%B1%E9%BA%93%E9%A7%85\" target=\"_blank\" class=\"map-btn-link\">Apple Maps</a>\n</div>",
+    "driveTimeShinjuku": 160,
+    "driveShinjuku": 160,
+    "driveTimeOmiya": 185,
+    "driveOmiya": 185,
+    "driveTimeYokohama": 175,
+    "driveYokohama": 175,
+    "driveOfuna": 175,
+    "driveTime": 175,
+    "driveTimeTachikawa": 155,
+    "driveTachikawa": 155,
+    "driveCheckedAt": "2026-10-27",
+    "trainRoutes": {
+      "badge": {
+        "type": "year",
+        "style": null,
+        "icon": "check",
+        "label": "年中運行"
+      },
+      "lineName": "JR特急あずさ・アルピコ交通「北八ヶ岳ロープウェイ線」・北八ヶ岳ロープウェイ",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 126,
+              "fareYen": null
+            },
+            {
+              "station": "茅野駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通「北八ヶ岳ロープウェイ線」"
+              },
+              "durationMin": 59,
+              "fareYen": null
+            },
+            {
+              "station": "北八ヶ岳ロープウェイ山麓駅",
+              "method": {
+                "icon": "ropeway",
+                "line": "北八ヶ岳ロープウェイ"
+              },
+              "durationMin": 7,
+              "fareYen": null
+            },
+            {
+              "station": "山頂駅"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR武蔵野線・中央線（立川乗換）"
+              },
+              "durationMin": 55,
+              "fareYen": null
+            },
+            {
+              "station": "立川駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 102,
+              "fareYen": null
+            },
+            {
+              "station": "茅野駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通「北八ヶ岳ロープウェイ線」"
+              },
+              "durationMin": 59,
+              "fareYen": null
+            },
+            {
+              "station": "北八ヶ岳ロープウェイ山麓駅",
+              "method": {
+                "icon": "ropeway",
+                "line": "北八ヶ岳ロープウェイ"
+              },
+              "durationMin": 7,
+              "fareYen": null
+            },
+            {
+              "station": "山頂駅"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR京浜東北線・横浜線（八王子乗換）"
+              },
+              "durationMin": 68,
+              "fareYen": null
+            },
+            {
+              "station": "八王子駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 93,
+              "fareYen": null
+            },
+            {
+              "station": "茅野駅",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通「北八ヶ岳ロープウェイ線」"
+              },
+              "durationMin": 59,
+              "fareYen": null
+            },
+            {
+              "station": "北八ヶ岳ロープウェイ山麓駅",
+              "method": {
+                "icon": "ropeway",
+                "line": "北八ヶ岳ロープウェイ"
+              },
+              "durationMin": 7,
+              "fareYen": null
+            },
+            {
+              "station": "山頂駅"
+            }
+          ]
+        }
+      },
+      "note": "💡 茅野駅〜北八ヶ岳ロープウェイはアルピコ交通「北八ヶ岳ロープウェイ線」で約45〜60分・2,000円（便によって別荘地を回る）。ロープウェイは片道1,400円・約7分。2026年11月24日〜12月18日は整備点検で運休",
+      "summaryNote": null,
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=茅野駅&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "アルピコ交通 北八ヶ岳ロープウェイ線 時刻表",
+          "url": "https://www.alpico.co.jp/traffic/local/search/result/3005/"
+        }
+      ]
+    },
+    "trainTimeShinjuku": 192,
+    "fareShinjuku": 9160,
+    "transfersShinjuku": 2,
+    "trainTimeOmiya": 223,
+    "fareOmiya": 9160,
+    "transfersOmiya": 3,
+    "trainTimeYokohama": 227,
+    "fareYokohama": 8500,
+    "transfersYokohama": 3,
+    "trainAccess": "新宿駅→JR特急あずさ約2時間6分→茅野駅→アルピコ交通「北八ヶ岳ロープウェイ線」約59分→北八ヶ岳ロープウェイ山麓駅→北八ヶ岳ロープウェイ約7分→山頂駅",
+    "trainAccessOmiya": "大宮駅→JR武蔵野線・中央線（立川乗換）約55分→立川駅→JR特急あずさ約1時間42分→茅野駅→アルピコ交通「北八ヶ岳ロープウェイ線」約59分→北八ヶ岳ロープウェイ山麓駅→北八ヶ岳ロープウェイ約7分→山頂駅",
+    "trainAccessYokohama": "横浜駅→JR京浜東北線・横浜線（八王子乗換）約1時間8分→八王子駅→JR特急あずさ約1時間33分→茅野駅→アルピコ交通「北八ヶ岳ロープウェイ線」約59分→北八ヶ岳ロープウェイ山麓駅→北八ヶ岳ロープウェイ約7分→山頂駅",
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "lines": [],
+    "fareCheckedAt": "2026-10-27",
+    "annualItems": [
+      {
+        "kind": "closure",
+        "label": "北八ヶ岳ロープウェイの運休（整備点検）",
+        "validFrom": "2026-11-24",
+        "validTo": "2026-12-18",
+        "seasonYear": 2026,
+        "sourceUrl": "https://www.kitayatu.jp/ropeway/",
+        "lastVerified": "2026-10-27",
+        "note": "この期間は山頂駅まで行けない"
+      }
+    ],
+    "status": null,
+    "warnBanner": null,
+    "gearCalendar": [
+      "winter_gear",
+      "winter_gear",
+      "winter_gear",
+      "winter_gear",
+      "light_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "light_crampons",
+      "winter_gear",
+      "winter_gear"
+    ],
+    "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear",
+      "s-hard",
+      "s-hard"
+    ],
+    "calLegend": [
+      "アイゼン不要",
+      "軽アイゼン等",
+      "冬山装備"
+    ],
+    "seasonNoGear": "6月〜9月",
+    "season6Crampons": "5月・10月",
+    "routes": [
+      {
+        "name": "北八ヶ岳ロープウェイ山頂駅〜北横岳（往復）",
+        "time": "2時間12分",
+        "distance": "3.7km",
+        "elevation": "+282m",
+        "descent": "-282m",
+        "waypoints": "八ヶ岳ロープウェイ山頂駅 → 第一休憩所 → 第二休憩所 → 北横岳ヒュッテ → 北横岳（南峰） → 北横岳（北峰）",
+        "trailheadName": "北八ヶ岳ロープウェイ山頂駅",
+        "source": "YAMAPモデルコース（model-courses/8016）",
+        "sourceUrl": "https://yamap.com/model-courses/8016",
+        "lastVerified": "2026-10-27",
+        "coeff": 8
+      },
+      {
+        "name": "山頂駅〜北横岳〜雨池峠〜縞枯山（周回）",
+        "time": "4時間44分",
+        "distance": "7.8km",
+        "elevation": "+548m",
+        "descent": "-548m",
+        "waypoints": "八ヶ岳ロープウェイ山頂駅 → 北横岳ヒュッテ → 北横岳 → … → 縞枯山荘 → 雨池峠 → 縞枯山",
+        "trailheadName": "北八ヶ岳ロープウェイ山頂駅",
+        "source": "YAMAPモデルコース（model-courses/13388）",
+        "sourceUrl": "https://yamap.com/model-courses/13388",
+        "lastVerified": "2026-10-27",
+        "coeff": 17
+      },
+      {
+        "name": "山頂駅〜北横岳〜亀甲池〜双子池〜雨池（周回）",
+        "time": "6時間23分",
+        "distance": "10.3km",
+        "elevation": "+756m",
+        "descent": "-756m",
+        "waypoints": "八ヶ岳ロープウェイ山頂駅 → 北横岳 → 亀甲池 → … → 双子池ヒュッテ → 雨池 → 雨池峠",
+        "trailheadName": "北八ヶ岳ロープウェイ山頂駅",
+        "source": "YAMAPモデルコース（model-courses/19599）",
+        "sourceUrl": "https://yamap.com/model-courses/19599",
+        "lastVerified": "2026-10-27",
+        "coeff": 23
+      }
+    ],
+    "vibePoints": [
+      {
+        "who": "体力に自信がない人",
+        "why": "ロープウェイ山頂駅から往復約2時間"
+      },
+      {
+        "who": "雪山を始めてみたい人",
+        "why": "ロープウェイが使え、途中に北横岳ヒュッテがある"
+      },
+      {
+        "who": "森と池を歩きたい人",
+        "why": "原生林と、亀甲池・双子池・雨池などの池をめぐれる"
+      }
+    ],
+    "featurePoints": [
+      {
+        "tag": "view",
+        "label": "山頂の展望",
+        "text": "双耳峰の山頂から蓼科山・南八ヶ岳、南・中央アルプス、御嶽山、北アルプス、遠く頸城山塊まで見渡せる"
+      },
+      {
+        "tag": "easy",
+        "label": "ロープウェイで上がれる",
+        "text": "北八ヶ岳ロープウェイ（約7分）で標高2,200m台の山頂駅まで上がれる"
+      },
+      {
+        "tag": "forest",
+        "label": "原生林と山上の池",
+        "text": "針葉樹の森に、亀甲池・双子池・雨池などの池が点在する"
+      },
+      {
+        "tag": "season",
+        "label": "雪山の入門",
+        "text": "冬も晴れる日が多く雪が比較的少ない八ヶ岳で、雪山を始める人にも人気"
+      }
+    ],
+    "featureSources": [
+      "https://yamap.com/mountains/257",
+      "https://www.kitayatu.jp/ropeway/"
+    ],
+    "featureCheckedAt": "2026-10-27",
+    "dlReasonsHtml": "<ul class=\"dl-reasons\">\n    <li>信州 山のグレーディングではロープウェイ山頂駅からのコースが体力度1・技術的難易度A</li>\n    <li>ロープウェイ山頂駅から往復約2時間で、途中に北横岳ヒュッテがある</li>\n    <li class=\"minus\">山頂は標高2,480m。冬は雪と凍結でアイゼンなどの雪山の装備が要る</li>\n    <li class=\"minus\">2026年11月24日〜12月18日はロープウェイが整備点検で運休する</li>\n  </ul>",
+    "dlReasonsSources": [
+      "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/documents/2026_grading_list.pdf",
+      "https://www.kitayatu.jp/ropeway/",
+      "https://yamap.com/mountains/257"
+    ],
+    "dlReasonsCheckedAt": "2026-10-27",
+    "faq": [
+      {
+        "question": "北横岳は初心者でも登れますか？難易度とコース定数を解説",
+        "answer": "北横岳の難易度は初級、コース定数8〜23です。北横岳はロープウェイ山頂駅から往復約2時間で、八ヶ岳のなかでも登りやすい山です。標高は2,480mあるので、夏でも防寒具と雨具は持っていきます。代表的な北八ヶ岳ロープウェイ山頂駅〜北横岳（往復）は2時間12分・3.7km・標高差+282mが目安。山頂駅〜北横岳〜雨池峠〜縞枯山（周回）（4時間44分）、山頂駅〜北横岳〜亀甲池〜双子池〜雨池（周回）（6時間23分）という選び方もできます。"
+      },
+      {
+        "question": "北横岳の所要時間は？日帰りできますか？",
+        "answer": "はい、北横岳は日帰りできます。いちばん短い北八ヶ岳ロープウェイ山頂駅〜北横岳（往復）は2時間12分（3.7km・標高差282m）。山頂駅〜北横岳〜雨池峠〜縞枯山（周回）は4時間44分（7.8km・標高差548m）。山頂駅〜北横岳〜亀甲池〜双子池〜雨池（周回）は6時間23分（10.3km・標高差756m）。"
+      },
+      {
+        "question": "北横岳へのアクセス方法は？新宿・横浜からの行き方",
+        "answer": "特急あずさで茅野駅へ行き、アルピコ交通「北八ヶ岳ロープウェイ線」で約45〜60分、北八ヶ岳ロープウェイ（約7分）で山頂駅へ上がります。新宿から約3時間12分、大宮からは立川で特急に乗り約3時間43分、横浜からは八王子で特急に乗り約3時間47分が目安で、運賃はロープウェイ片道を含めて新宿・大宮から9,160円、横浜から8,500円です（乗り換えの待ち時間は別）。"
+      },
+      {
+        "question": "北横岳の登山シーズンはいつですか？おすすめの時期",
+        "answer": "北横岳は雪のない6月〜10月のほか、冬の雪山登山でも人気です。12月〜4月は雪と凍結でアイゼンなどの雪山の装備が要ります。ロープウェイは2026年11月24日〜12月18日に整備点検で運休します。残雪や凍結は年によって変わるので、直前の最新情報も確認してください。"
+      }
+    ],
+    "introHtml": "<div class=\"card\"><h2><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" style=\"vertical-align:-3px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 3h10l4 4v14H5z\"/><path d=\"M15 3v4h4\"/><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"/><line x1=\"8\" y1=\"16\" x2=\"13\" y2=\"16\"/></svg>山の紹介</h2><p class=\"intro-text\">北八ヶ岳の山。南八ヶ岳にも横岳があるので北横岳と呼ばれる。ロープウェイで標高2,200m台まで上がれて、途中に山小屋もあり、双耳峰の山頂からは蓼科山や南八ヶ岳、南・中央・北アルプスまで見渡せる。冬は雪山登山を始める人でもにぎわう。初級レベルでコース定数8〜23、日帰りでの登山が可能。代表コース（北八ヶ岳ロープウェイ山頂駅〜北横岳（往復））は所要2時間12分/3.7km/標高差+282m。</p></div>",
+    "vibesHtml": "<div class=\"rec-card\">\n    <div class=\"rec-card-title\"><span class=\"eyebrow\">Vibes</span><span>こんな気分の人に</span></div>\n    <div class=\"rec-list\">\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>体力に自信がない人</strong>——ロープウェイ山頂駅から往復約2時間</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>雪山を始めてみたい人</strong>——ロープウェイが使え、途中に北横岳ヒュッテがある</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>森と池を歩きたい人</strong>——原生林と、亀甲池・双子池・雨池などの池をめぐれる</span></div>\n    </div>\n  </div>",
+    "relatedLinksHtml": "<div class=\"related-links-card\">\n  <div class=\"related-links-title\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"3\" rx=\"1\"/><line x1=\"8\" y1=\"11\" x2=\"16\" y2=\"11\"/><line x1=\"8\" y1=\"15\" x2=\"13\" y2=\"15\"/></svg>関連するまとめ</div>\n    <a href=\"/search/shinjuku-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>新宿から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">新宿発・北横岳と難易度・時間を比較できる</span>\n    </a>\n    <a href=\"/search/ofuna-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>大船・横浜から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">神奈川発で北横岳の前後に検討したい山を比較</span>\n    </a>\n    <a href=\"/search/train-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車で行ける日帰り登山一覧</span>\n      <span class=\"related-link-sub\">車なしOK・駅近の山だけを集めたリスト</span>\n    </a>\n    <a href=\"/recommend/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"12,3 14,10 12,12 10,10\" fill=\"currentColor\" stroke=\"none\"/><polygon points=\"12,21 10,14 12,12 14,14\" fill=\"currentColor\" opacity=\"0.5\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"white\" stroke=\"none\"/></svg>登山タイプ診断で自分に合う山を探す</span>\n      <span class=\"related-link-sub\">12問・約2分。16タイプのどれかと、そのタイプに合う山がわかる</span>\n    </a>\n</div>",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "gaiter",
+        "icon": "🧦",
+        "name": "ゲイター",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "crampon",
+        "icon": "❄️",
+        "name": "軽アイゼン",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "climbedBtnStyle": "rounded",
+    "hasWeatherWidget": false,
+    "hasHeroPhotoScript": false,
+    "photos": [],
+    "ogUpdatedTime": null,
+    "mountainUpdated": "2026-10-27",
+    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>年中運行</span></div><div class=\"ts-line-name\">JR特急あずさ・アルピコ交通「北八ヶ岳ロープウェイ線」・北八ヶ岳ロープウェイ</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約2時間6分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">茅野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通「北八ヶ岳ロープウェイ線」　<span class=\"ts-duration\">約59分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">北八ヶ岳ロープウェイ山麓駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>北八ヶ岳ロープウェイ　<span class=\"ts-duration\">約7分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">山頂駅</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR武蔵野線・中央線（立川乗換）　<span class=\"ts-duration\">約55分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">立川駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約1時間42分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">茅野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通「北八ヶ岳ロープウェイ線」　<span class=\"ts-duration\">約59分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">北八ヶ岳ロープウェイ山麓駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>北八ヶ岳ロープウェイ　<span class=\"ts-duration\">約7分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">山頂駅</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR京浜東北線・横浜線（八王子乗換）　<span class=\"ts-duration\">約1時間8分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">八王子駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約1時間33分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">茅野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通「北八ヶ岳ロープウェイ線」　<span class=\"ts-duration\">約59分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">北八ヶ岳ロープウェイ山麓駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>北八ヶ岳ロープウェイ　<span class=\"ts-duration\">約7分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">山頂駅</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約3時間12分\" data-omiya=\"約3時間43分\" data-yokohama=\"約3時間47分\">約3時間12分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約9,160円\" data-omiya=\"片道約9,160円\" data-yokohama=\"片道約8,500円\">片道約9,160円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>茅野駅〜北八ヶ岳ロープウェイはアルピコ交通「北八ヶ岳ロープウェイ線」で約45〜60分・2,000円（便によって別荘地を回る）</li><li>ロープウェイは片道1,400円・約7分</li><li>2026年11月24日〜12月18日は整備点検で運休</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=茅野駅&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://www.alpico.co.jp/traffic/local/search/result/3005/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通 北八ヶ岳ロープウェイ線 時刻表</a></div></div>",
+    "coeffMin": 8,
+    "coeffMax": 23,
+    "courseCoefficientRange": "8〜23",
+    "courseCoefficient": [
+      8,
+      23
+    ],
+    "metaTitle": "北横岳 登山の難易度は初級｜日帰り2時間12分・標高差282m｜茅野駅からバス｜Yamatch",
+    "ogTitle": "北横岳 登山の難易度は初級｜日帰り2時間12分・標高差282m｜茅野駅からバス｜Yamatch",
+    "metaDescription": "北横岳（標高2,480m・長野県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（北八ヶ岳ロープウェイ山頂駅〜北横岳（往復））は2時間12分・3.7km・標高差282m。新宿から電車とバスで約3時間12分（茅野駅からバス）。日帰りできます。北八ヶ岳の山。駐車場・装備・天気も掲載。",
+    "ogDescription": "北横岳（標高2,480m・長野県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（北八ヶ岳ロープウェイ山頂駅〜北横岳（往復））は2時間12分・3.7km・標高差282m。新宿から電車とバスで約3時間12分（茅野駅からバス）。日帰りできます。北八ヶ岳の山。駐車場・装備・天気も掲載。"
+  },
+  {
+    "id": "nyukasayama",
+    "name": "入笠山",
+    "kana": "にゅうかさやま",
+    "elevation": 1955,
+    "area": "長野県",
+    "category": "人気の山",
+    "difficulty": "初級",
+    "daytrip": true,
+    "lat": 35.89626,
+    "lng": 138.17168,
+    "yamapUrl": "https://yamap.com/mountains/16115",
+    "yamapName": "入笠山",
+    "trailhead": "ゴンドラ山頂駅（富士見パノラマリゾート）",
+    "parking": "富士見パノラマリゾートの駐車場（約1,300台・無料）",
+    "address": "長野県諏訪郡富士見町富士見",
+    "nearby": [
+      "kirigamine",
+      "yatsugatake"
+    ],
+    "vibes": [
+      "view",
+      "wetland",
+      "accessible"
+    ],
+    "types": [
+      "easy",
+      "casual"
+    ],
+    "season": "5月〜11月",
+    "seasonOk": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "description": "南アルプスの北の端にある山。ゴンドラで標高1,780mまで上がれて、山頂からはほぼ360度の大展望で、南・中央アルプスや八ヶ岳、富士山、北アルプスまで見える。入笠湿原や大阿原湿原があり、6月は入笠湿原にスズランが群れて咲く。",
+    "recommendReason": "ゴンドラで上がれる360度の展望の山。入笠湿原のスズランが見ごろの6月が人気",
+    "coordSource": "YAMAP（山頂の座標）・国土地理院／OpenStreetMap で照合",
+    "metaDescriptionManual": "入笠山（にゅうかさやま・1,955m）はゴンドラで上がれる360度の展望の山。入笠湿原・大阿原湿原をめぐるコース・アクセスを解説。",
+    "metaAuto": true,
+    "driveTarget": "富士見パノラマリゾート（ゴンドラ山麓駅）",
+    "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.9132161%2C138.2049304",
+    "amapUrl": "https://maps.apple.com/?ll=35.9132161,138.2049304&q=%E5%AF%8C%E5%A3%AB%E8%A6%8B%E3%83%91%E3%83%8E%E3%83%A9%E3%83%9E%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88",
+    "mapBtnsHtml": "<div class=\"map-btns\"><a href=\"https://www.google.com/maps/search/?api=1&query=35.9132161%2C138.2049304\" target=\"_blank\" class=\"map-btn-link\">Googleマップ</a>\n<a href=\"https://maps.apple.com/?ll=35.9132161,138.2049304&q=%E5%AF%8C%E5%A3%AB%E8%A6%8B%E3%83%91%E3%83%8E%E3%83%A9%E3%83%9E%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88\" target=\"_blank\" class=\"map-btn-link\">Apple Maps</a>\n</div>",
+    "driveTimeShinjuku": 130,
+    "driveShinjuku": 130,
+    "driveTimeOmiya": 155,
+    "driveOmiya": 155,
+    "driveTimeYokohama": 145,
+    "driveYokohama": 145,
+    "driveOfuna": 145,
+    "driveTime": 145,
+    "driveTimeTachikawa": 125,
+    "driveTachikawa": 125,
+    "driveCheckedAt": "2026-10-27",
+    "trainRoutes": {
+      "badge": {
+        "type": null,
+        "style": "background:#fde8d8;color:#8a5010;",
+        "icon": "check",
+        "label": "⚠️ ゴンドラ季節運行"
+      },
+      "lineName": "JR特急あずさ・富士見パノラマリゾート（シャトルバス・ゴンドラ）",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 132,
+              "fareYen": null
+            },
+            {
+              "station": "富士見駅",
+              "method": {
+                "icon": "bus",
+                "line": "富士見パノラマリゾート 無料シャトルバス"
+              },
+              "durationMin": 10,
+              "fareYen": null
+            },
+            {
+              "station": "富士見パノラマリゾート（ゴンドラ山麓駅）",
+              "method": {
+                "icon": "ropeway",
+                "line": "富士見パノラマリゾート ゴンドラ"
+              },
+              "durationMin": 15,
+              "fareYen": null
+            },
+            {
+              "station": "ゴンドラ山頂駅（季節運行）"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR埼京線・武蔵野線・中央線（立川乗換）"
+              },
+              "durationMin": 64,
+              "fareYen": null
+            },
+            {
+              "station": "立川駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 119,
+              "fareYen": null
+            },
+            {
+              "station": "富士見駅",
+              "method": {
+                "icon": "bus",
+                "line": "富士見パノラマリゾート 無料シャトルバス"
+              },
+              "durationMin": 10,
+              "fareYen": null
+            },
+            {
+              "station": "富士見パノラマリゾート（ゴンドラ山麓駅）",
+              "method": {
+                "icon": "ropeway",
+                "line": "富士見パノラマリゾート ゴンドラ"
+              },
+              "durationMin": 15,
+              "fareYen": null
+            },
+            {
+              "station": "ゴンドラ山頂駅（季節運行）"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR横浜線（八王子乗換）"
+              },
+              "durationMin": 83,
+              "fareYen": null
+            },
+            {
+              "station": "八王子駅",
+              "method": {
+                "icon": "train",
+                "line": "JR特急あずさ"
+              },
+              "durationMin": 104,
+              "fareYen": null
+            },
+            {
+              "station": "富士見駅",
+              "method": {
+                "icon": "bus",
+                "line": "富士見パノラマリゾート 無料シャトルバス"
+              },
+              "durationMin": 10,
+              "fareYen": null
+            },
+            {
+              "station": "富士見パノラマリゾート（ゴンドラ山麓駅）",
+              "method": {
+                "icon": "ropeway",
+                "line": "富士見パノラマリゾート ゴンドラ"
+              },
+              "durationMin": 15,
+              "fareYen": null
+            },
+            {
+              "station": "ゴンドラ山頂駅（季節運行）"
+            }
+          ]
+        }
+      },
+      "note": "💡 富士見駅〜富士見パノラマリゾートは無料のシャトルバス（富士見駅10時発・約10分。2026年は4月25日〜11月24日の毎日）。ゴンドラは片道2,000円・乗車約15分（目安）で、2026年のグリーンシーズンは4月25日〜11月15日・8時30分〜16時（11月は15時30分まで）。沢入登山口から歩いて登る道もある",
+      "summaryNote": null,
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=富士見(長野県)&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "富士見パノラマリゾート アクセス（シャトルバス）",
+          "url": "https://www.fujimipanorama.com/summer/access"
+        }
+      ]
+    },
+    "trainTimeShinjuku": 157,
+    "fareShinjuku": 7760,
+    "transfersShinjuku": 2,
+    "trainTimeOmiya": 208,
+    "fareOmiya": 7100,
+    "transfersOmiya": 3,
+    "trainTimeYokohama": 212,
+    "fareYokohama": 6770,
+    "transfersYokohama": 3,
+    "trainAccess": "新宿駅→JR特急あずさ約2時間12分→富士見駅→富士見パノラマリゾート 無料シャトルバス約10分→富士見パノラマリゾート（ゴンドラ山麓駅）→富士見パノラマリゾート ゴンドラ約15分→ゴンドラ山頂駅（季節運行）",
+    "trainAccessOmiya": "大宮駅→JR埼京線・武蔵野線・中央線（立川乗換）約1時間4分→立川駅→JR特急あずさ約1時間59分→富士見駅→富士見パノラマリゾート 無料シャトルバス約10分→富士見パノラマリゾート（ゴンドラ山麓駅）→富士見パノラマリゾート ゴンドラ約15分→ゴンドラ山頂駅（季節運行）",
+    "trainAccessYokohama": "横浜駅→JR横浜線（八王子乗換）約1時間23分→八王子駅→JR特急あずさ約1時間44分→富士見駅→富士見パノラマリゾート 無料シャトルバス約10分→富士見パノラマリゾート（ゴンドラ山麓駅）→富士見パノラマリゾート ゴンドラ約15分→ゴンドラ山頂駅（季節運行）",
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "lines": [],
+    "fareCheckedAt": "2026-10-27",
+    "annualItems": [
+      {
+        "kind": "transport",
+        "label": "富士見パノラマリゾートのゴンドラ（グリーンシーズン）",
+        "validFrom": "2026-04-25",
+        "validTo": "2026-11-15",
+        "seasonYear": 2026,
+        "sourceUrl": "https://www.fujimipanorama.com/summer/ticket",
+        "lastVerified": "2026-10-27",
+        "note": "8時30分〜16時（11月は15時30分まで）"
+      },
+      {
+        "kind": "transport",
+        "label": "富士見駅〜富士見パノラマリゾートの無料シャトルバス",
+        "validFrom": "2026-04-25",
+        "validTo": "2026-11-24",
+        "seasonYear": 2026,
+        "sourceUrl": "https://www.fujimipanorama.com/summer/access",
+        "lastVerified": "2026-10-27",
+        "note": "毎日運行。富士見駅10時発"
+      }
+    ],
+    "status": null,
+    "warnBanner": null,
+    "gearCalendar": [
+      "light_crampons",
+      "light_crampons",
+      "light_crampons",
+      "light_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "light_crampons",
+      "light_crampons"
+    ],
+    "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear",
+      "s-gear"
+    ],
+    "calLegend": [
+      "アイゼン不要",
+      "軽アイゼン等"
+    ],
+    "seasonNoGear": "5月〜10月",
+    "season6Crampons": "1月〜4月・11月〜12月",
+    "routes": [
+      {
+        "name": "ゴンドラ山頂駅〜入笠湿原〜入笠山（往復）",
+        "time": "2時間1分",
+        "distance": "3.9km",
+        "elevation": "+290m",
+        "descent": "-290m",
+        "waypoints": "ゴンドラ山頂駅 → 山彦荘 → 入笠湿原 → … → 入笠山 → マナスル山荘天文館",
+        "trailheadName": "ゴンドラ山頂駅（富士見パノラマリゾート）",
+        "source": "YAMAPモデルコース（model-courses/12180）",
+        "sourceUrl": "https://yamap.com/model-courses/12180",
+        "lastVerified": "2026-10-27",
+        "coeff": 8
+      },
+      {
+        "name": "ゴンドラ山頂駅〜入笠山〜大阿原湿原（往復）",
+        "time": "3時間45分",
+        "distance": "8.4km",
+        "elevation": "+398m",
+        "descent": "-399m",
+        "waypoints": "ゴンドラ山頂駅 → 山彦荘 → 入笠山 → … → 仏平峠 → 大阿原湿原",
+        "trailheadName": "ゴンドラ山頂駅（富士見パノラマリゾート）",
+        "source": "YAMAPモデルコース（model-courses/94180）",
+        "sourceUrl": "https://yamap.com/model-courses/94180",
+        "lastVerified": "2026-10-27",
+        "coeff": 13
+      },
+      {
+        "name": "沢入登山口〜入笠湿原〜入笠山（往復）",
+        "time": "3時間35分",
+        "distance": "6.5km",
+        "elevation": "+533m",
+        "descent": "-533m",
+        "waypoints": "沢入登山口 → 山彦荘 → 入笠湿原 → … → 入笠山",
+        "trailheadName": "沢入登山口",
+        "source": "YAMAPモデルコース（model-courses/9726）",
+        "sourceUrl": "https://yamap.com/model-courses/9726",
+        "lastVerified": "2026-10-27",
+        "coeff": 14
+      }
+    ],
+    "vibePoints": [
+      {
+        "who": "初めて山に登る人",
+        "why": "ゴンドラ山頂駅から往復約2時間"
+      },
+      {
+        "who": "花を見たい人",
+        "why": "6月は入笠湿原の斜面に日本スズランが群れて咲く"
+      },
+      {
+        "who": "湿原を歩きたい人",
+        "why": "入笠湿原と大阿原湿原をめぐれる"
+      }
+    ],
+    "featurePoints": [
+      {
+        "tag": "view",
+        "label": "360度の大展望",
+        "text": "山頂からほぼ360度。南・中央アルプス、八ヶ岳、富士山、遠くに北アルプスまで見える"
+      },
+      {
+        "tag": "wetland",
+        "label": "2つの湿原",
+        "text": "入笠湿原と大阿原湿原があり、湿原の植物を見られる"
+      },
+      {
+        "tag": "flower",
+        "label": "スズラン",
+        "text": "6月は入笠湿原の斜面に日本スズランの大群落が咲く。すずらん山野草公園にはドイツスズランも"
+      },
+      {
+        "tag": "easy",
+        "label": "ゴンドラで上がれる",
+        "text": "富士見パノラマリゾートのゴンドラで標高1,780mの山頂駅まで上がれる"
+      }
+    ],
+    "featureSources": [
+      "https://yamap.com/mountains/16115",
+      "https://www.fujimipanorama.com/summer/trekking"
+    ],
+    "featureCheckedAt": "2026-10-27",
+    "dlReasonsHtml": "<ul class=\"dl-reasons\">\n    <li>ゴンドラ山頂駅から山頂まで徒歩約60分、往復約2時間</li>\n    <li>山頂駅から入笠湿原まで徒歩10分。道はよく整備されている</li>\n    <li class=\"minus\">ゴンドラの運行は季節と時間が決まっていて、帰りの最終便に間に合うように歩く</li>\n  </ul>",
+    "dlReasonsSources": [
+      "https://www.fujimipanorama.com/summer/trekking",
+      "https://www.fujimipanorama.com/summer/ticket",
+      "https://yamap.com/mountains/16115"
+    ],
+    "dlReasonsCheckedAt": "2026-10-27",
+    "faq": [
+      {
+        "question": "入笠山は初心者でも登れますか？難易度とコース定数を解説",
+        "answer": "入笠山の難易度は初級、コース定数8〜14です。入笠山はゴンドラ山頂駅から往復約2時間で、初めての登山にも向いています。帰りのゴンドラの最終便（4〜10月は下り16時30分）に間に合うように歩きます。代表的なゴンドラ山頂駅〜入笠湿原〜入笠山（往復）は2時間1分・3.9km・標高差+290mが目安。ゴンドラ山頂駅〜入笠山〜大阿原湿原（往復）（3時間45分）、沢入登山口〜入笠湿原〜入笠山（往復）（3時間35分）という選び方もできます。"
+      },
+      {
+        "question": "入笠山の所要時間は？日帰りできますか？",
+        "answer": "はい、入笠山は日帰りできます。いちばん短いゴンドラ山頂駅〜入笠湿原〜入笠山（往復）は2時間1分（3.9km・標高差290m）。沢入登山口〜入笠湿原〜入笠山（往復）は3時間35分（6.5km・標高差533m）。ゴンドラ山頂駅〜入笠山〜大阿原湿原（往復）は3時間45分（8.4km・標高差398m）。"
+      },
+      {
+        "question": "入笠山へのアクセス方法は？新宿・横浜からの行き方",
+        "answer": "特急あずさで富士見駅へ行き、富士見パノラマリゾートの無料シャトルバス（約10分）とゴンドラで山頂駅へ上がります。新宿から約2時間37分、大宮からは立川で特急に乗り約3時間28分、横浜からは八王子で特急に乗り約3時間32分が目安で、運賃はゴンドラ片道を含めて新宿から7,760円、大宮から7,100円、横浜から6,770円です（乗り換えの待ち時間は別）。シャトルバスは富士見駅10時発の1便です。"
+      },
+      {
+        "question": "入笠山の登山シーズンはいつですか？おすすめの時期",
+        "answer": "入笠山はゴンドラが動く5月〜11月が登りやすい時期で、2026年のゴンドラは4月25日〜11月15日です。6月は入笠湿原のスズランが見ごろです。冬は雪が積もり、滑り止めの装備が要ります。"
+      }
+    ],
+    "introHtml": "<div class=\"card\"><h2><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" style=\"vertical-align:-3px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 3h10l4 4v14H5z\"/><path d=\"M15 3v4h4\"/><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"/><line x1=\"8\" y1=\"16\" x2=\"13\" y2=\"16\"/></svg>山の紹介</h2><p class=\"intro-text\">南アルプスの北の端にある山。ゴンドラで標高1,780mまで上がれて、山頂からはほぼ360度の大展望で、南・中央アルプスや八ヶ岳、富士山、北アルプスまで見える。入笠湿原や大阿原湿原があり、6月は入笠湿原にスズランが群れて咲く。初級レベルでコース定数8〜14、日帰りでの登山が可能。代表コース（ゴンドラ山頂駅〜入笠湿原〜入笠山（往復））は所要2時間1分/3.9km/標高差+290m。</p></div>",
+    "vibesHtml": "<div class=\"rec-card\">\n    <div class=\"rec-card-title\"><span class=\"eyebrow\">Vibes</span><span>こんな気分の人に</span></div>\n    <div class=\"rec-list\">\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>初めて山に登る人</strong>——ゴンドラ山頂駅から往復約2時間</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>花を見たい人</strong>——6月は入笠湿原の斜面に日本スズランが群れて咲く</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>湿原を歩きたい人</strong>——入笠湿原と大阿原湿原をめぐれる</span></div>\n    </div>\n  </div>",
+    "relatedLinksHtml": "<div class=\"related-links-card\">\n  <div class=\"related-links-title\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"3\" rx=\"1\"/><line x1=\"8\" y1=\"11\" x2=\"16\" y2=\"11\"/><line x1=\"8\" y1=\"15\" x2=\"13\" y2=\"15\"/></svg>関連するまとめ</div>\n    <a href=\"/search/shinjuku-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>新宿から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">新宿発・入笠山と難易度・時間を比較できる</span>\n    </a>\n    <a href=\"/search/ofuna-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>大船・横浜から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">神奈川発で入笠山の前後に検討したい山を比較</span>\n    </a>\n    <a href=\"/search/train-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車で行ける日帰り登山一覧</span>\n      <span class=\"related-link-sub\">車なしOK・駅近の山だけを集めたリスト</span>\n    </a>\n    <a href=\"/recommend/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"12,3 14,10 12,12 10,10\" fill=\"currentColor\" stroke=\"none\"/><polygon points=\"12,21 10,14 12,12 14,14\" fill=\"currentColor\" opacity=\"0.5\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"white\" stroke=\"none\"/></svg>登山タイプ診断で自分に合う山を探す</span>\n      <span class=\"related-link-sub\">12問・約2分。16タイプのどれかと、そのタイプに合う山がわかる</span>\n    </a>\n</div>",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "gaiter",
+        "icon": "🧦",
+        "name": "ゲイター",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "crampon",
+        "icon": "❄️",
+        "name": "軽アイゼン",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "climbedBtnStyle": "rounded",
+    "hasWeatherWidget": false,
+    "hasHeroPhotoScript": false,
+    "photos": [],
+    "ogUpdatedTime": null,
+    "mountainUpdated": "2026-10-27",
+    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge\" style=\"background:#fde8d8;color:#8a5010;\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>⚠️ ゴンドラ季節運行</span></div><div class=\"ts-line-name\">JR特急あずさ・富士見パノラマリゾート（シャトルバス・ゴンドラ）</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約2時間12分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">富士見駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>富士見パノラマリゾート 無料シャトルバス　<span class=\"ts-duration\">約10分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">富士見パノラマリゾート（ゴンドラ山麓駅）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>富士見パノラマリゾート ゴンドラ　<span class=\"ts-duration\">約15分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">ゴンドラ山頂駅（季節運行）</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR埼京線・武蔵野線・中央線（立川乗換）　<span class=\"ts-duration\">約1時間4分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">立川駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約1時間59分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">富士見駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>富士見パノラマリゾート 無料シャトルバス　<span class=\"ts-duration\">約10分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">富士見パノラマリゾート（ゴンドラ山麓駅）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>富士見パノラマリゾート ゴンドラ　<span class=\"ts-duration\">約15分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">ゴンドラ山頂駅（季節運行）</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR横浜線（八王子乗換）　<span class=\"ts-duration\">約1時間23分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">八王子駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約1時間44分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">富士見駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>富士見パノラマリゾート 無料シャトルバス　<span class=\"ts-duration\">約10分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">富士見パノラマリゾート（ゴンドラ山麓駅）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>富士見パノラマリゾート ゴンドラ　<span class=\"ts-duration\">約15分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">ゴンドラ山頂駅（季節運行）</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約2時間37分\" data-omiya=\"約3時間28分\" data-yokohama=\"約3時間32分\">約2時間37分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約7,760円\" data-omiya=\"片道約7,100円\" data-yokohama=\"片道約6,770円\">片道約7,760円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>富士見駅〜富士見パノラマリゾートは無料のシャトルバス（富士見駅10時発・約10分。2026年は4月25日〜11月24日の毎日）</li><li>ゴンドラは片道2,000円・乗車約15分（目安）で、2026年のグリーンシーズンは4月25日〜11月15日・8時30分〜16時（11月は15時30分まで）</li><li>沢入登山口から歩いて登る道もある</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=富士見(長野県)&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://www.fujimipanorama.com/summer/access\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>富士見パノラマリゾート アクセス（シャトルバス）</a></div></div>",
+    "coeffMin": 8,
+    "coeffMax": 14,
+    "courseCoefficientRange": "8〜14",
+    "courseCoefficient": [
+      8,
+      14
+    ],
+    "metaTitle": "入笠山 登山の難易度は初級｜日帰り2時間1分・標高差290m｜富士見駅からバス｜Yamatch",
+    "ogTitle": "入笠山 登山の難易度は初級｜日帰り2時間1分・標高差290m｜富士見駅からバス｜Yamatch",
+    "metaDescription": "入笠山（標高1,955m・長野県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（ゴンドラ山頂駅〜入笠湿原〜入笠山（往復））は2時間1分・3.9km・標高差290m。新宿から電車とバスで約2時間37分（富士見駅からバス）。日帰りできます。南アルプスの北の端にある山。駐車場・装備・天気も掲載。",
+    "ogDescription": "入笠山（標高1,955m・長野県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（ゴンドラ山頂駅〜入笠湿原〜入笠山（往復））は2時間1分・3.9km・標高差290m。新宿から電車とバスで約2時間37分（富士見駅からバス）。日帰りできます。南アルプスの北の端にある山。駐車場・装備・天気も掲載。"
+  },
+  {
+    "id": "nishihotaka",
+    "name": "西穂高岳",
+    "kana": "にしほたかだけ",
+    "elevation": 2909,
+    "area": "岐阜県・長野県",
+    "category": "人気の山",
+    "difficulty": "上級",
+    "daytrip": true,
+    "lat": 36.27899,
+    "lng": 137.62906,
+    "yamapUrl": "https://yamap.com/mountains/1409",
+    "yamapName": "西穂高岳",
+    "trailhead": "西穂高口駅（新穂高ロープウェイ）",
+    "parking": "新穂高温泉駐車場（約160台・乗用車800円／6時間）",
+    "address": "岐阜県高山市奥飛騨温泉郷神坂",
+    "nearby": [
+      "hotaka",
+      "yakedake"
+    ],
+    "vibes": [
+      "view",
+      "rock",
+      "ridge",
+      "alpine"
+    ],
+    "types": [
+      "adventure",
+      "challenge"
+    ],
+    "season": "7月〜10月",
+    "seasonOk": [
+      "summer",
+      "fall"
+    ],
+    "description": "穂高連峰の南西にそびえる岩峰の山。新穂高ロープウェイの西穂高口駅や上高地から登る人でにぎわう。西穂独標までは穂高の入門のコースだが、独標から山頂までは岩峰が連なる熟達者向きの道になる。花の百名山にも選ばれている。",
+    "recommendReason": "ロープウェイから登れる穂高の岩稜。独標までは入門、山頂までは熟達者向き",
+    "coordSource": "YAMAP（山頂の座標）・国土地理院／OpenStreetMap で照合",
+    "metaDescriptionManual": "西穂高岳（にしほたかだけ・2,909m）は新穂高ロープウェイから登れる穂高連峰の岩峰。西穂独標・山頂へのコース・アクセスを解説。",
+    "metaAuto": true,
+    "driveTarget": "新穂高温泉（新穂高ロープウェイ）",
+    "gmapUrl": "https://www.google.com/maps/search/?api=1&query=36.283352%2C137.574692&query_place_id=ChIJmSb5UNBPHWARUF0-XgkrKk8",
+    "amapUrl": "https://maps.apple.com/?ll=36.283352,137.574692&q=%E6%96%B0%E7%A9%82%E9%AB%98%E6%B8%A9%E6%B3%89",
+    "mapBtnsHtml": "<div class=\"map-btns\"><a href=\"https://www.google.com/maps/search/?api=1&query=36.283352%2C137.574692&query_place_id=ChIJmSb5UNBPHWARUF0-XgkrKk8\" target=\"_blank\" class=\"map-btn-link\">Googleマップ</a>\n<a href=\"https://maps.apple.com/?ll=36.283352,137.574692&q=%E6%96%B0%E7%A9%82%E9%AB%98%E6%B8%A9%E6%B3%89\" target=\"_blank\" class=\"map-btn-link\">Apple Maps</a>\n</div>",
+    "driveDistance": 285,
+    "driveCheckedAt": "2026-10-10",
+    "driveTimeShinjuku": 250,
+    "driveShinjuku": 250,
+    "driveTimeOmiya": 290,
+    "driveOmiya": 290,
+    "driveTimeYokohama": 265,
+    "driveYokohama": 265,
+    "driveOfuna": 260,
+    "driveTime": 260,
+    "driveTimeTachikawa": 240,
+    "driveTachikawa": 240,
+    "trainRoutes": {
+      "badge": {
+        "type": "year",
+        "style": null,
+        "icon": "check",
+        "label": "年中運行"
+      },
+      "lineName": "濃飛バス・京王バス 新宿～新穂高温泉線・新穂高ロープウェイ",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "バスタ新宿",
+              "method": {
+                "icon": "bus",
+                "line": "濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線"
+              },
+              "durationMin": 345
+            },
+            {
+              "station": "新穂高温泉（新穂高ロープウェイ）",
+              "method": {
+                "icon": "ropeway",
+                "line": "新穂高ロープウェイ（第1・第2）"
+              },
+              "durationMin": 22,
+              "fareYen": null
+            },
+            {
+              "station": "西穂高口駅"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "JR埼京線"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "バスタ新宿",
+              "method": {
+                "icon": "bus",
+                "line": "濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線"
+              },
+              "durationMin": 345
+            },
+            {
+              "station": "新穂高温泉（新穂高ロープウェイ）",
+              "method": {
+                "icon": "ropeway",
+                "line": "新穂高ロープウェイ（第1・第2）"
+              },
+              "durationMin": 22,
+              "fareYen": null
+            },
+            {
+              "station": "西穂高口駅"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 34,
+              "fareYen": null
+            },
+            {
+              "station": "バスタ新宿",
+              "method": {
+                "icon": "bus",
+                "line": "濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線"
+              },
+              "durationMin": 345
+            },
+            {
+              "station": "新穂高温泉（新穂高ロープウェイ）",
+              "method": {
+                "icon": "ropeway",
+                "line": "新穂高ロープウェイ（第1・第2）"
+              },
+              "durationMin": 22,
+              "fareYen": null
+            },
+            {
+              "station": "西穂高口駅"
+            }
+          ]
+        }
+      },
+      "note": "💡 新宿〜新穂高温泉の高速バスは全席指定・要予約（昼行8,000円）。新穂高ロープウェイは第1・第2の通しで片道2,400円・通年営業。第1は毎時00分・30分、第2は毎時15分・45分発。天候不良や定期点検で運休することがある",
+      "summaryNote": null,
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=新穂高温泉&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "新穂高ロープウェイ 料金・時刻",
+          "url": "https://shinhotaka-ropeway.jp/price/"
+        }
+      ]
+    },
+    "trainTimeShinjuku": 367,
+    "fareShinjuku": 10400,
+    "transfersShinjuku": 1,
+    "trainTimeOmiya": 397,
+    "fareOmiya": 10930,
+    "transfersOmiya": 2,
+    "trainTimeYokohama": 401,
+    "fareYokohama": 11020,
+    "transfersYokohama": 2,
+    "trainAccess": "バスタ新宿→濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線約5時間45分→新穂高温泉（新穂高ロープウェイ）→新穂高ロープウェイ（第1・第2）約22分→西穂高口駅",
+    "trainAccessOmiya": "大宮駅→JR埼京線約30分→バスタ新宿→濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線約5時間45分→新穂高温泉（新穂高ロープウェイ）→新穂高ロープウェイ（第1・第2）約22分→西穂高口駅",
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→バスタ新宿→濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線約5時間45分→新穂高温泉（新穂高ロープウェイ）→新穂高ロープウェイ（第1・第2）約22分→西穂高口駅",
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "lines": [],
+    "fareCheckedAt": "2026-10-27",
+    "status": null,
+    "warnBanner": null,
+    "gearCalendar": [
+      "winter_gear",
+      "winter_gear",
+      "winter_gear",
+      "winter_gear",
+      "winter_gear",
+      "winter_gear",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      {
+        "split": true,
+        "before": "light_crampons",
+        "after": "winter_gear",
+        "changeDate": 11
+      },
+      "winter_gear",
+      "winter_gear"
+    ],
+    "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear",
+      "s-hard",
+      "s-hard"
+    ],
+    "calLegend": [
+      "アイゼン不要",
+      "軽アイゼン等",
+      "冬山装備"
+    ],
+    "seasonNoGear": "7月〜9月",
+    "season6Crampons": "10月",
+    "routes": [
+      {
+        "name": "西穂高口駅〜西穂山荘〜西穂独標〜西穂高岳（往復）",
+        "time": "7時間20分",
+        "distance": "7.7km",
+        "elevation": "+962m",
+        "descent": "-962m",
+        "waypoints": "西穂高口駅 → 西穂山荘 → 西穂丸山 → 西穂独標 → … → ピラミッドピーク → チャンピオンピーク → 西穂高岳",
+        "trailheadName": "新穂高ロープウェイ西穂高口駅",
+        "source": "YAMAPモデルコース（model-courses/94936）",
+        "sourceUrl": "https://yamap.com/model-courses/94936",
+        "lastVerified": "2026-10-27",
+        "coeff": 26
+      },
+      {
+        "name": "西穂高口駅〜西穂山荘〜西穂独標（往復）",
+        "time": "4時間45分",
+        "distance": "6.0km",
+        "elevation": "+674m",
+        "descent": "-674m",
+        "waypoints": "西穂高口駅 → 西穂山荘 → 西穂丸山 → 西穂独標",
+        "trailheadName": "新穂高ロープウェイ西穂高口駅",
+        "source": "YAMAPモデルコース（model-courses/6696）",
+        "sourceUrl": "https://yamap.com/model-courses/6696",
+        "lastVerified": "2026-10-27",
+        "coeff": 17
+      },
+      {
+        "name": "上高地〜西穂山荘〜西穂独標〜西穂高岳（往復）",
+        "time": "10時間5分",
+        "distance": "9.8km",
+        "elevation": "+1519m",
+        "descent": "-1519m",
+        "waypoints": "上高地西穂高岳登山口 → 西穂山荘 → 西穂丸山 → 西穂独標 → … → チャンピオンピーク → 西穂高岳",
+        "trailheadName": "上高地（西穂高岳登山口）",
+        "source": "YAMAPモデルコース（model-courses/20145）",
+        "sourceUrl": "https://yamap.com/model-courses/20145",
+        "lastVerified": "2026-10-27",
+        "coeff": 37
+      }
+    ],
+    "vibePoints": [
+      {
+        "who": "岩稜歩きに挑戦したい人",
+        "why": "西穂独標から山頂まで、大小の岩峰を越えて進む"
+      },
+      {
+        "who": "北アルプスの絶景を見たい人",
+        "why": "独標から笠ヶ岳・焼岳・乗鞍岳、眼下に上高地を望む"
+      },
+      {
+        "who": "ロープウェイで高いところから登りたい人",
+        "why": "西穂高口駅（標高2,156m）から歩き始められる"
+      }
+    ],
+    "featurePoints": [
+      {
+        "tag": "view",
+        "label": "独標からの360度の展望",
+        "text": "ピラミッドピークから奥穂高岳への岩稜、笠ヶ岳・焼岳・乗鞍岳を望み、眼下に上高地が広がる"
+      },
+      {
+        "tag": "rock",
+        "label": "連なる岩峰",
+        "text": "西穂山荘から山頂まで大小の岩峰が連なる。独標の山頂直下には鎖場がある"
+      },
+      {
+        "tag": "easy",
+        "label": "ロープウェイで上がれる",
+        "text": "新穂高ロープウェイの西穂高口駅から歩き始められる"
+      },
+      {
+        "tag": "flower",
+        "label": "花の百名山",
+        "text": "花の百名山に選ばれている"
+      }
+    ],
+    "featureSources": [
+      "https://yamap.com/mountains/1409",
+      "https://yamap.com/mountains/256",
+      "https://shinhotaka-ropeway.jp/price/"
+    ],
+    "featureCheckedAt": "2026-10-27",
+    "dlReasonsHtml": "<ul class=\"dl-reasons\">\n    <li class=\"minus\">西穂独標から山頂までは岩峰が連なる熟達者向きのコースで、滑落や落石に注意が要る</li>\n    <li class=\"minus\">独標の山頂直下には鎖場がある</li>\n    <li class=\"minus\">信州 山のグレーディングでは上高地からのコースが体力度5・技術的難易度D</li>\n    <li>ロープウェイで標高2,156mの西穂高口駅まで上がれ、途中に西穂山荘がある</li>\n  </ul>",
+    "dlReasonsSources": [
+      "https://yamap.com/mountains/1409",
+      "https://yamap.com/mountains/256",
+      "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/documents/2026_grading_list.pdf"
+    ],
+    "dlReasonsCheckedAt": "2026-10-27",
+    "faq": [
+      {
+        "question": "西穂高岳は初心者でも登れますか？難易度とコース定数を解説",
+        "answer": "西穂高岳の難易度は上級、コース定数17〜37です。西穂高岳の山頂までは岩峰が連なる熟達者向きの道で、初心者には向きません。初めての人は西穂独標（2,701m）までを目標にし、岩場の経験を積んでから山頂を目指します。代表的な西穂高口駅〜西穂山荘〜西穂独標〜西穂高岳（往復）は7時間20分・7.7km・標高差+962mが目安。西穂高口駅〜西穂山荘〜西穂独標（往復）（4時間45分）、上高地〜西穂山荘〜西穂独標〜西穂高岳（往復）（10時間5分）という選び方もできます。"
+      },
+      {
+        "question": "西穂高岳の所要時間は？日帰りできますか？",
+        "answer": "はい、西穂高岳は日帰りできます。いちばん短い西穂高口駅〜西穂山荘〜西穂独標（往復）は4時間45分（6.0km・標高差674m）。西穂高口駅〜西穂山荘〜西穂独標〜西穂高岳（往復）は7時間20分（7.7km・標高差962m）。上高地〜西穂山荘〜西穂独標〜西穂高岳（往復）は山小屋に泊まる計画が基本です。"
+      },
+      {
+        "question": "西穂高岳へのアクセス方法は？新宿・横浜からの行き方",
+        "answer": "バスタ新宿から高速バス（新宿〜新穂高温泉線・全席指定）で新穂高温泉へ行き、新穂高ロープウェイ（第1・第2の通し・約22分）で西穂高口駅へ上がります。新宿から約6時間7分、大宮からは新宿でバスに乗り約6時間37分、横浜からは約6時間41分が目安で、運賃はロープウェイ片道を含めて新宿から10,400円、大宮から10,930円、横浜から11,020円です。"
+      },
+      {
+        "question": "西穂高岳の登山シーズンはいつですか？おすすめの時期",
+        "answer": "西穂高岳の登山シーズンは7月〜10月が目安です。11月〜6月は雪や凍結で冬山装備が要る時期で、岩稜では特に経験が要ります。残雪や天気は年によって変わるので、直前の最新情報も確認してください。"
+      }
+    ],
+    "introHtml": "<div class=\"card\"><h2><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" style=\"vertical-align:-3px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 3h10l4 4v14H5z\"/><path d=\"M15 3v4h4\"/><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"/><line x1=\"8\" y1=\"16\" x2=\"13\" y2=\"16\"/></svg>山の紹介</h2><p class=\"intro-text\">穂高連峰の南西にそびえる岩峰の山。新穂高ロープウェイの西穂高口駅や上高地から登る人でにぎわう。西穂独標までは穂高の入門のコースだが、独標から山頂までは岩峰が連なる熟達者向きの道になる。花の百名山にも選ばれている。上級レベルでコース定数17〜37、日帰りでの登山が可能。代表コース（西穂高口駅〜西穂山荘〜西穂独標〜西穂高岳（往復））は所要7時間20分/7.7km/標高差+962m。</p></div>",
+    "vibesHtml": "<div class=\"rec-card\">\n    <div class=\"rec-card-title\"><span class=\"eyebrow\">Vibes</span><span>こんな気分の人に</span></div>\n    <div class=\"rec-list\">\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>岩稜歩きに挑戦したい人</strong>——西穂独標から山頂まで、大小の岩峰を越えて進む</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>北アルプスの絶景を見たい人</strong>——独標から笠ヶ岳・焼岳・乗鞍岳、眼下に上高地を望む</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>ロープウェイで高いところから登りたい人</strong>——西穂高口駅（標高2,156m）から歩き始められる</span></div>\n    </div>\n  </div>",
+    "relatedLinksHtml": "<div class=\"related-links-card\">\n  <div class=\"related-links-title\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"3\" rx=\"1\"/><line x1=\"8\" y1=\"11\" x2=\"16\" y2=\"11\"/><line x1=\"8\" y1=\"15\" x2=\"13\" y2=\"15\"/></svg>関連するまとめ</div>\n    <a href=\"/search/shinjuku-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>新宿から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">新宿発・西穂高岳と難易度・時間を比較できる</span>\n    </a>\n    <a href=\"/search/ofuna-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>大船・横浜から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">神奈川発で西穂高岳の前後に検討したい山を比較</span>\n    </a>\n    <a href=\"/search/train-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車で行ける日帰り登山一覧</span>\n      <span class=\"related-link-sub\">車なしOK・駅近の山だけを集めたリスト</span>\n    </a>\n    <a href=\"/recommend/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"12,3 14,10 12,12 10,10\" fill=\"currentColor\" stroke=\"none\"/><polygon points=\"12,21 10,14 12,12 14,14\" fill=\"currentColor\" opacity=\"0.5\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"white\" stroke=\"none\"/></svg>登山タイプ診断で自分に合う山を探す</span>\n      <span class=\"related-link-sub\">12問・約2分。16タイプのどれかと、そのタイプに合う山がわかる</span>\n    </a>\n</div>",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "gaiter",
+        "icon": "🧦",
+        "name": "ゲイター",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "crampon",
+        "icon": "❄️",
+        "name": "軽アイゼン",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "climbedBtnStyle": "rounded",
+    "hasWeatherWidget": false,
+    "hasHeroPhotoScript": false,
+    "photos": [],
+    "ogUpdatedTime": null,
+    "mountainUpdated": "2026-10-27",
+    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>年中運行</span></div><div class=\"ts-line-name\">濃飛バス・京王バス 新宿～新穂高温泉線・新穂高ロープウェイ</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線　<span class=\"ts-duration\">約5時間45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新穂高温泉（新穂高ロープウェイ）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ（第1・第2）　<span class=\"ts-duration\">約22分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">西穂高口駅</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR埼京線　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線　<span class=\"ts-duration\">約5時間45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新穂高温泉（新穂高ロープウェイ）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ（第1・第2）　<span class=\"ts-duration\">約22分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">西穂高口駅</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR湘南新宿ライン　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス・京王バス 新宿～新穂高温泉・平湯温泉線　<span class=\"ts-duration\">約5時間45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新穂高温泉（新穂高ロープウェイ）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ（第1・第2）　<span class=\"ts-duration\">約22分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">西穂高口駅</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約6時間7分\" data-omiya=\"約6時間37分\" data-yokohama=\"約6時間41分\">約6時間7分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約10,400円\" data-omiya=\"片道約10,930円\" data-yokohama=\"片道約11,020円\">片道約10,400円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>新宿〜新穂高温泉の高速バスは全席指定・要予約（昼行8,000円）</li><li>新穂高ロープウェイは第1・第2の通しで片道2,400円・通年営業</li><li>第1は毎時00分・30分、第2は毎時15分・45分発</li><li>天候不良や定期点検で運休することがある</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=新穂高温泉&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://shinhotaka-ropeway.jp/price/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ 料金・時刻</a></div></div>",
+    "coeffMin": 17,
+    "coeffMax": 37,
+    "courseCoefficientRange": "17〜37",
+    "courseCoefficient": [
+      17,
+      37
+    ],
+    "metaTitle": "西穂高岳 登山の難易度は上級｜日帰り7時間20分・標高差962m｜新宿から高速バス｜Yamatch",
+    "ogTitle": "西穂高岳 登山の難易度は上級｜日帰り7時間20分・標高差962m｜新宿から高速バス｜Yamatch",
+    "metaDescription": "西穂高岳（標高2,909m・岐阜県・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（西穂高口駅〜西穂山荘〜西穂独標〜西穂高岳（往復））は7時間20分・7.7km・標高差962m。新宿から高速バスなどで約6時間7分。日帰りできます。穂高連峰の南西にそびえる岩峰の山。駐車場・装備・天気も掲載。",
+    "ogDescription": "西穂高岳（標高2,909m・岐阜県・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（西穂高口駅〜西穂山荘〜西穂独標〜西穂高岳（往復））は7時間20分・7.7km・標高差962m。新宿から高速バスなどで約6時間7分。日帰りできます。穂高連峰の南西にそびえる岩峰の山。駐車場・装備・天気も掲載。"
+  },
+  {
+    "id": "myogisan",
+    "name": "妙義山",
+    "kana": "みょうぎさん",
+    "elevation": 1104,
+    "area": "群馬県",
+    "category": "二百名山",
+    "difficulty": "上級",
+    "daytrip": true,
+    "lat": 36.29864,
+    "lng": 138.74885,
+    "yamapUrl": "https://yamap.com/mountains/470",
+    "yamapName": "妙義山（相馬岳）",
+    "trailhead": "妙義神社",
+    "parking": "道の駅みょうぎ・妙義山市営駐車場",
+    "address": "群馬県富岡市妙義町妙義",
+    "nearby": [
+      "arafune",
+      "akagi"
+    ],
+    "vibes": [
+      "rock",
+      "historic"
+    ],
+    "types": [
+      "challenge",
+      "adventure"
+    ],
+    "season": "3月〜12月",
+    "seasonOk": [
+      "spring",
+      "fall"
+    ],
+    "description": "日本三大奇景のひとつとされる群馬の岩山。白雲山・金洞山・相馬岳などの総称で、最高峰は表妙義の稜線にある相馬岳（1,103.8m）。中腹には妙義神社があり、中之嶽の石門や奇岩群は日本屈指の山岳美とされる。",
+    "recommendReason": "日本三大奇景の岩山。鎖場の続く表妙義は上級者向き、中間道は比較的歩きやすい",
+    "coordSource": "YAMAP（山頂の座標）・国土地理院／OpenStreetMap で照合",
+    "metaDescriptionManual": "妙義山（みょうぎさん・相馬岳1,104m）は日本三大奇景の岩山。妙義神社からの鎖場のコース・中間道・アクセスを解説。",
+    "metaAuto": true,
+    "gmapUrl": "https://www.google.com/maps/search/?api=1&query=36.300461%2C138.762557",
+    "amapUrl": "https://maps.apple.com/?ll=36.300461,138.762557&q=%E5%A6%99%E7%BE%A9%E7%A5%9E%E7%A4%BE",
+    "mapBtnsHtml": "<div class=\"map-btns\"><a href=\"https://www.google.com/maps/search/?api=1&query=36.300461%2C138.762557\" target=\"_blank\" class=\"map-btn-link\">Googleマップ</a>\n<a href=\"https://maps.apple.com/?ll=36.300461,138.762557&q=%E5%A6%99%E7%BE%A9%E7%A5%9E%E7%A4%BE\" target=\"_blank\" class=\"map-btn-link\">Apple Maps</a>\n</div>",
+    "driveTimeShinjuku": 110,
+    "driveShinjuku": 110,
+    "driveTimeOmiya": 100,
+    "driveOmiya": 100,
+    "driveTimeYokohama": 130,
+    "driveYokohama": 130,
+    "driveOfuna": 140,
+    "driveTime": 140,
+    "driveTimeTachikawa": 110,
+    "driveTachikawa": 110,
+    "driveCheckedAt": "2026-10-27",
+    "trainRoutes": {
+      "badge": {
+        "type": "year",
+        "style": null,
+        "icon": "check",
+        "label": "年中運行"
+      },
+      "lineName": "上越・北陸新幹線・JR信越本線・タクシー",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR湘南新宿ライン"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越・北陸新幹線"
+              },
+              "durationMin": 44,
+              "fareYen": null
+            },
+            {
+              "station": "高崎駅",
+              "method": {
+                "icon": "train",
+                "line": "JR信越本線"
+              },
+              "durationMin": 36,
+              "fareYen": null
+            },
+            {
+              "station": "松井田駅",
+              "method": {
+                "icon": "taxi",
+                "line": "タクシー"
+              },
+              "durationMin": 10,
+              "fareYen": null
+            },
+            {
+              "station": "妙義神社"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越・北陸新幹線"
+              },
+              "durationMin": 23,
+              "fareYen": null
+            },
+            {
+              "station": "高崎駅",
+              "method": {
+                "icon": "train",
+                "line": "JR信越本線"
+              },
+              "durationMin": 39,
+              "fareYen": null
+            },
+            {
+              "station": "松井田駅",
+              "method": {
+                "icon": "taxi",
+                "line": "タクシー"
+              },
+              "durationMin": 10,
+              "fareYen": null
+            },
+            {
+              "station": "妙義神社"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR上野東京ライン・宇都宮線"
+              },
+              "durationMin": 58,
+              "fareYen": null
+            },
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越・北陸新幹線"
+              },
+              "durationMin": 43,
+              "fareYen": null
+            },
+            {
+              "station": "高崎駅",
+              "method": {
+                "icon": "train",
+                "line": "JR信越本線"
+              },
+              "durationMin": 39,
+              "fareYen": null
+            },
+            {
+              "station": "松井田駅",
+              "method": {
+                "icon": "taxi",
+                "line": "タクシー"
+              },
+              "durationMin": 10,
+              "fareYen": null
+            },
+            {
+              "station": "妙義神社"
+            }
+          ]
+        }
+      },
+      "note": "💡 松井田駅から妙義神社までバスは無く、タクシーで約10分（運賃は別）。表示の運賃は大宮〜高崎の新幹線の自由席を使った場合",
+      "summaryNote": null,
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=松井田(群馬県)&type=1"
+        }
+      ]
+    },
+    "trainTimeShinjuku": 120,
+    "fareShinjuku": 4290,
+    "transfersShinjuku": 3,
+    "trainTimeOmiya": 72,
+    "fareOmiya": 3660,
+    "transfersOmiya": 2,
+    "trainTimeYokohama": 150,
+    "fareYokohama": 4620,
+    "transfersYokohama": 3,
+    "trainAccess": "新宿駅→JR湘南新宿ライン約30分→大宮駅→上越・北陸新幹線約44分→高崎駅→JR信越本線約36分→松井田駅→タクシー約10分→妙義神社",
+    "trainAccessOmiya": "大宮駅→上越・北陸新幹線約23分→高崎駅→JR信越本線約39分→松井田駅→タクシー約10分→妙義神社",
+    "trainAccessYokohama": "横浜駅→JR上野東京ライン・宇都宮線約58分→大宮駅→上越・北陸新幹線約43分→高崎駅→JR信越本線約39分→松井田駅→タクシー約10分→妙義神社",
+    "busLinks": [],
+    "busScheduleLinks": [],
+    "lines": [],
+    "fareCheckedAt": "2026-10-27",
+    "status": null,
+    "warnBanner": null,
+    "gearCalendar": [
+      "light_crampons",
+      "light_crampons",
+      "light_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "light_crampons"
+    ],
+    "seasonCalendar": [
+      "s-gear",
+      "s-gear",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear"
+    ],
+    "calLegend": [
+      "アイゼン不要",
+      "軽アイゼン等"
+    ],
+    "seasonNoGear": "4月〜11月",
+    "season6Crampons": "1月〜3月・12月",
+    "routes": [
+      {
+        "name": "妙義神社〜大の字〜大のぞき〜相馬岳〜タルワキ沢（周回）",
+        "time": "6時間25分",
+        "distance": "4.9km",
+        "elevation": "+898m",
+        "descent": "-898m",
+        "waypoints": "妙義神社 → 白雲山登山口 → 大の字 → 見晴 → 大のぞき → … → 相馬岳 → タルワキ沢のコル",
+        "trailheadName": "妙義神社",
+        "source": "YAMAPモデルコース（model-courses/1225）",
+        "sourceUrl": "https://yamap.com/model-courses/1225",
+        "lastVerified": "2026-10-27",
+        "coeff": 23
+      },
+      {
+        "name": "妙義神社〜中間道〜タルワキ沢〜相馬岳（往復）",
+        "time": "5時間38分",
+        "distance": "4.9km",
+        "elevation": "+812m",
+        "descent": "-812m",
+        "waypoints": "妙義神社 → 第二見晴 → タルワキ沢分岐 → … → タルワキ沢のコル → 相馬岳",
+        "trailheadName": "妙義神社",
+        "source": "YAMAPモデルコース（model-courses/12924）",
+        "sourceUrl": "https://yamap.com/model-courses/12924",
+        "lastVerified": "2026-10-27",
+        "coeff": 20
+      },
+      {
+        "name": "妙義神社〜相馬岳〜鷹戻し〜中之岳〜中之嶽神社（縦走）",
+        "time": "7時間22分",
+        "distance": "5.4km",
+        "elevation": "+1195m",
+        "descent": "-903m",
+        "waypoints": "妙義神社 → 大の字 → 大のぞき → 相馬岳 → … → 鷹戻し → 東岳 → 中之岳 → 中之嶽神社",
+        "trailheadName": "妙義神社",
+        "source": "YAMAPモデルコース（model-courses/20367）",
+        "sourceUrl": "https://yamap.com/model-courses/20367",
+        "lastVerified": "2026-10-27",
+        "coeff": 27
+      }
+    ],
+    "vibePoints": [
+      {
+        "who": "鎖場・岩場の経験がある人",
+        "why": "白雲山・金洞山へは険しい岩場が続く"
+      },
+      {
+        "who": "奇岩の景色を見たい人",
+        "why": "石門や大砲岩など名前の付いた岩が並ぶ"
+      },
+      {
+        "who": "神社と山をあわせて歩きたい人",
+        "why": "登山口に妙義神社があり、中之嶽神社へも下れる"
+      }
+    ],
+    "featurePoints": [
+      {
+        "tag": "rock",
+        "label": "日本三大奇景",
+        "text": "第1〜第4石門、ロウソク岩・大砲岩・筆頭岩など、名前の付いた岩が並ぶ"
+      },
+      {
+        "tag": "historic",
+        "label": "妙義神社",
+        "text": "白雲山を御神体とする妙義神社が東の中腹に立ち、登山口になっている"
+      },
+      {
+        "tag": "collector",
+        "label": "上毛三山",
+        "text": "赤城山・榛名山とあわせて上毛三山のひとつ。二百名山"
+      },
+      {
+        "tag": "easy",
+        "label": "中間道",
+        "text": "山腹をめぐる中間道は比較的アップダウンが少なく、所要時間は約3時間45分"
+      }
+    ],
+    "featureSources": [
+      "https://yamap.com/mountains/470",
+      "https://www.pref.gunma.jp/01/e2310245.html"
+    ],
+    "featureCheckedAt": "2026-10-27",
+    "dlReasonsHtml": "<ul class=\"dl-reasons\">\n    <li class=\"minus\">中間道から上の白雲山・金洞山へのコースは険しい岩場が多く大変危険で、初心者は登らないよう呼びかけられている</li>\n    <li class=\"minus\">鎖場が続き、表妙義の縦走は鷹戻しなどの難所を通る</li>\n    <li class=\"minus\">登山道でクマの目撃が多く、熊よけの鈴の携行が呼びかけられている</li>\n    <li>山腹をめぐる中間道は比較的アップダウンが少ない（約3時間45分）</li>\n  </ul>",
+    "dlReasonsSources": [
+      "https://www.pref.gunma.jp/01/e2310245.html",
+      "https://www.pref.gunma.jp/uploaded/attachment/55263.pdf",
+      "https://yamap.com/mountains/470"
+    ],
+    "dlReasonsCheckedAt": "2026-10-27",
+    "faq": [
+      {
+        "question": "妙義山は初心者でも登れますか？難易度とコース定数を解説",
+        "answer": "妙義山の難易度は上級、コース定数20〜27です。妙義山の白雲山・金洞山・相馬岳へのコースは険しい岩場と鎖場が続き、群馬県も初心者は決して登らないよう呼びかけています。初めての人は、山腹をめぐる中間道（約3時間45分）を歩くのがよいでしょう。代表的な妙義神社〜大の字〜大のぞき〜相馬岳〜タルワキ沢（周回）は6時間25分・4.9km・標高差+898mが目安。妙義神社〜中間道〜タルワキ沢〜相馬岳（往復）（5時間38分）、妙義神社〜相馬岳〜鷹戻し〜中之岳〜中之嶽神社（縦走）（7時間22分）という選び方もできます。"
+      },
+      {
+        "question": "妙義山の所要時間は？日帰りできますか？",
+        "answer": "はい、妙義山は日帰りできます。いちばん短い妙義神社〜中間道〜タルワキ沢〜相馬岳（往復）は5時間38分（4.9km・標高差812m）。妙義神社〜大の字〜大のぞき〜相馬岳〜タルワキ沢（周回）は6時間25分（4.9km・標高差898m）。妙義神社〜相馬岳〜鷹戻し〜中之岳〜中之嶽神社（縦走）は7時間22分（5.4km・標高差1195m）。"
+      },
+      {
+        "question": "妙義山へのアクセス方法は？新宿・横浜からの行き方",
+        "answer": "大宮で上越・北陸新幹線に乗り、高崎で信越本線に乗り換えて松井田駅へ行き、タクシーで妙義神社まで約10分です。新宿から約2時間、大宮から約1時間12分、横浜から約2時間30分が目安で、運賃（タクシー代は別）は新宿から4,290円、大宮から3,660円、横浜から4,620円です。松井田駅から妙義神社へのバスはありません。"
+      },
+      {
+        "question": "妙義山の登山シーズンはいつですか？おすすめの時期",
+        "answer": "妙義山は標高が低く、春と秋が登りやすい時期です。冬は鎖場や岩が凍ることがあり、滑り止めの装備と経験が要ります。2025年に山火事で通行止めになっていた中間道と白雲山・金洞山の登山道は、2025年12月27日に解除されています。"
+      }
+    ],
+    "introHtml": "<div class=\"card\"><h2><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" style=\"vertical-align:-3px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 3h10l4 4v14H5z\"/><path d=\"M15 3v4h4\"/><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"/><line x1=\"8\" y1=\"16\" x2=\"13\" y2=\"16\"/></svg>山の紹介</h2><p class=\"intro-text\">日本三大奇景のひとつとされる群馬の岩山。白雲山・金洞山・相馬岳などの総称で、最高峰は表妙義の稜線にある相馬岳（1,103.8m）。中腹には妙義神社があり、中之嶽の石門や奇岩群は日本屈指の山岳美とされる。上級レベルでコース定数20〜27、日帰りでの登山が可能。代表コース（妙義神社〜大の字〜大のぞき〜相馬岳〜タルワキ沢（周回））は所要6時間25分/4.9km/標高差+898m。</p></div>",
+    "vibesHtml": "<div class=\"rec-card\">\n    <div class=\"rec-card-title\"><span class=\"eyebrow\">Vibes</span><span>こんな気分の人に</span></div>\n    <div class=\"rec-list\">\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>鎖場・岩場の経験がある人</strong>——白雲山・金洞山へは険しい岩場が続く</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>奇岩の景色を見たい人</strong>——石門や大砲岩など名前の付いた岩が並ぶ</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>神社と山をあわせて歩きたい人</strong>——登山口に妙義神社があり、中之嶽神社へも下れる</span></div>\n    </div>\n  </div>",
+    "relatedLinksHtml": "<div class=\"related-links-card\">\n  <div class=\"related-links-title\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"3\" rx=\"1\"/><line x1=\"8\" y1=\"11\" x2=\"16\" y2=\"11\"/><line x1=\"8\" y1=\"15\" x2=\"13\" y2=\"15\"/></svg>関連するまとめ</div>\n    <a href=\"/search/shinjuku-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>新宿から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">新宿発・妙義山と難易度・時間を比較できる</span>\n    </a>\n    <a href=\"/search/ofuna-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>大船・横浜から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">神奈川発で妙義山の前後に検討したい山を比較</span>\n    </a>\n    <a href=\"/search/train-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車で行ける日帰り登山一覧</span>\n      <span class=\"related-link-sub\">車なしOK・駅近の山だけを集めたリスト</span>\n    </a>\n    <a href=\"/recommend/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"12,3 14,10 12,12 10,10\" fill=\"currentColor\" stroke=\"none\"/><polygon points=\"12,21 10,14 12,12 14,14\" fill=\"currentColor\" opacity=\"0.5\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"white\" stroke=\"none\"/></svg>登山タイプ診断で自分に合う山を探す</span>\n      <span class=\"related-link-sub\">12問・約2分。16タイプのどれかと、そのタイプに合う山がわかる</span>\n    </a>\n</div>",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "gaiter",
+        "icon": "🧦",
+        "name": "ゲイター",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "crampon",
+        "icon": "❄️",
+        "name": "軽アイゼン",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "climbedBtnStyle": "rounded",
+    "hasWeatherWidget": false,
+    "hasHeroPhotoScript": false,
+    "photos": [],
+    "ogUpdatedTime": null,
+    "mountainUpdated": "2026-10-27",
+    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>年中運行</span></div><div class=\"ts-line-name\">上越・北陸新幹線・JR信越本線・タクシー</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR湘南新宿ライン　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>上越・北陸新幹線　<span class=\"ts-duration\">約44分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">高崎駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR信越本線　<span class=\"ts-duration\">約36分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">松井田駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>タクシー　<span class=\"ts-duration\">約10分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">妙義神社</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>上越・北陸新幹線　<span class=\"ts-duration\">約23分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">高崎駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR信越本線　<span class=\"ts-duration\">約39分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">松井田駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>タクシー　<span class=\"ts-duration\">約10分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">妙義神社</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR上野東京ライン・宇都宮線　<span class=\"ts-duration\">約58分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>上越・北陸新幹線　<span class=\"ts-duration\">約43分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">高崎駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR信越本線　<span class=\"ts-duration\">約39分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">松井田駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>タクシー　<span class=\"ts-duration\">約10分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">妙義神社</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約2時間\" data-omiya=\"約1時間12分\" data-yokohama=\"約2時間30分\">約2時間</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約4,290円\" data-omiya=\"片道約3,660円\" data-yokohama=\"片道約4,620円\">片道約4,290円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>松井田駅から妙義神社までバスは無く、タクシーで約10分（運賃は別）</li><li>表示の運賃は大宮〜高崎の新幹線の自由席を使った場合</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=松井田(群馬県)&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a></div></div>",
+    "coeffMin": 20,
+    "coeffMax": 27,
+    "courseCoefficientRange": "20〜27",
+    "courseCoefficient": [
+      20,
+      27
+    ],
+    "metaTitle": "妙義山 登山の難易度は上級｜日帰り6時間25分・標高差898m｜松井田駅からタクシー【二百名山】｜Yamatch",
+    "ogTitle": "妙義山 登山の難易度は上級｜日帰り6時間25分・標高差898m｜松井田駅からタクシー【二百名山】｜Yamatch",
+    "metaDescription": "妙義山（標高1,104m・群馬県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（妙義神社〜大の字〜大のぞき〜相馬岳〜タルワキ沢（周回））は6時間25分・4.9km・標高差898m。新宿から電車で約2時間（松井田駅からタクシー）。日帰りできます。日本三大奇景のひとつとされる群馬の岩山。駐車場・装備・天気も掲載。",
+    "ogDescription": "妙義山（標高1,104m・群馬県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（妙義神社〜大の字〜大のぞき〜相馬岳〜タルワキ沢（周回））は6時間25分・4.9km・標高差898m。新宿から電車で約2時間（松井田駅からタクシー）。日帰りできます。日本三大奇景のひとつとされる群馬の岩山。駐車場・装備・天気も掲載。"
+  },
+  {
+    "id": "sennokurayama",
+    "name": "仙ノ倉山",
+    "kana": "せんのくらやま",
+    "elevation": 2026,
+    "area": "群馬県・新潟県",
+    "category": "二百名山",
+    "difficulty": "中級",
+    "daytrip": true,
+    "lat": 36.81747,
+    "lng": 138.83952,
+    "yamapUrl": "https://yamap.com/mountains/22",
+    "yamapName": "仙ノ倉山",
+    "trailhead": "平標登山口",
+    "parking": "平標登山口駐車場（約150台・有料600円）",
+    "address": "新潟県南魚沼郡湯沢町三国",
+    "nearby": [
+      "tairappyo",
+      "tanigawa"
+    ],
+    "vibes": [
+      "view",
+      "ridge",
+      "flower"
+    ],
+    "types": [
+      "adventure",
+      "collector"
+    ],
+    "season": "6月〜10月",
+    "seasonOk": [
+      "summer",
+      "fall"
+    ],
+    "description": "谷川連峰の最高峰で二百名山。西の平標山とつながるたおやかな稜線には、見渡す限りのお花畑と笹原が広がり、6月上旬〜7月上旬に高山植物が咲く。広場のような山頂からの雄大な展望も魅力。平標登山口を早朝に出れば日帰りもできる。",
+    "recommendReason": "谷川連峰の最高峰。平標山からお花畑と笹原の稜線を歩く",
+    "coordSource": "YAMAP（山頂の座標）・国土地理院／OpenStreetMap で照合",
+    "metaDescriptionManual": "仙ノ倉山（せんのくらやま・2,026m）は谷川連峰の最高峰。平標登山口から平標山を経て登るコース・アクセス・装備を解説。",
+    "metaAuto": true,
+    "gmapUrl": "https://www.google.com/maps/search/?api=1&query=36.8135964%2C138.7831797&query_place_id=ChIJH0QxH30HHmARekqkpFgVKek",
+    "amapUrl": "https://maps.apple.com/?ll=36.8135964,138.7831797&q=%E5%B9%B3%E6%A8%99%E5%B1%B1%E7%99%BB%E5%B1%B1%E5%8F%A3",
+    "mapBtnsHtml": "<div class=\"map-btns\">\n      <a href=\"https://www.google.com/maps/search/?api=1&query=36.8135964%2C138.7831797&query_place_id=ChIJH0QxH30HHmARekqkpFgVKek\" target=\"_blank\" class=\"map-btn-link\">Googleマップ</a>\n      <a href=\"https://maps.apple.com/?ll=36.8135964,138.7831797&q=%E5%B9%B3%E6%A8%99%E5%B1%B1%E7%99%BB%E5%B1%B1%E5%8F%A3\" target=\"_blank\" class=\"map-btn-link\">Apple Maps</a>\n    </div>",
+    "driveDistance": 181,
+    "driveCheckedAt": "2026-10-10",
+    "driveTimeShinjuku": 175,
+    "driveShinjuku": 175,
+    "driveTimeOmiya": 165,
+    "driveOmiya": 165,
+    "driveTimeYokohama": 200,
+    "driveYokohama": 200,
+    "driveOfuna": 195,
+    "driveTime": 195,
+    "driveTimeTachikawa": 175,
+    "driveTachikawa": 175,
+    "trainRoutes": {
+      "badge": {
+        "type": "year",
+        "style": null,
+        "icon": "check",
+        "label": "年中運行"
+      },
+      "lineName": "上越新幹線・南越後交通バス",
+      "routes": {
+        "shinjuku": {
+          "legs": [
+            {
+              "station": "新宿駅",
+              "method": {
+                "icon": "train",
+                "line": "JR埼京線・湘南新宿ライン"
+              },
+              "durationMin": 32,
+              "fareYen": null
+            },
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越新幹線とき"
+              },
+              "durationMin": 57,
+              "fareYen": null
+            },
+            {
+              "station": "越後湯沢駅",
+              "method": {
+                "icon": "bus",
+                "line": "南越後交通バス"
+              },
+              "durationMin": 35,
+              "fareYen": null
+            },
+            {
+              "station": "平標登山口バス停"
+            }
+          ]
+        },
+        "omiya": {
+          "legs": [
+            {
+              "station": "大宮駅",
+              "method": {
+                "icon": "train",
+                "line": "上越新幹線とき"
+              },
+              "durationMin": 57,
+              "fareYen": null
+            },
+            {
+              "station": "越後湯沢駅",
+              "method": {
+                "icon": "bus",
+                "line": "南越後交通バス"
+              },
+              "durationMin": 35,
+              "fareYen": null
+            },
+            {
+              "station": "平標登山口バス停"
+            }
+          ]
+        },
+        "yokohama": {
+          "legs": [
+            {
+              "station": "横浜駅",
+              "method": {
+                "icon": "train",
+                "line": "JR上野東京ライン"
+              },
+              "durationMin": 26,
+              "fareYen": null
+            },
+            {
+              "station": "東京駅",
+              "method": {
+                "icon": "train",
+                "line": "上越新幹線"
+              },
+              "durationMin": 73,
+              "fareYen": null
+            },
+            {
+              "station": "越後湯沢駅",
+              "method": {
+                "icon": "bus",
+                "line": "南越後交通バス"
+              },
+              "durationMin": 35,
+              "fareYen": null
+            },
+            {
+              "station": "平標登山口バス停"
+            }
+          ]
+        }
+      },
+      "note": "💡 新宿からは大宮で上越新幹線に乗り換えるのが速くて安い。越後湯沢駅東口1番のりば（苗場・かぐら行き）から南越後交通バス（湯沢駅〜浅貝〜西武クリスタル線）で平標登山口へ約35分・660円。通年運行で1日8便（2026年4月改正）。本数が限られるため、下山時の最終便時刻を必ず事前確認すること。",
+      "summaryNote": null,
+      "links": [
+        {
+          "type": "yahoo",
+          "label": "乗換案内で検索",
+          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=越後湯沢駅&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "南越後交通バス 時刻表",
+          "url": "https://www.minamiechigo.co.jp/"
+        }
+      ]
+    },
+    "trainTimeShinjuku": 124,
+    "fareShinjuku": 6820,
+    "transfersShinjuku": 1,
+    "trainTimeOmiya": 92,
+    "fareOmiya": 6490,
+    "transfersOmiya": 1,
+    "trainTimeYokohama": 134,
+    "fareYokohama": 7690,
+    "transfersYokohama": 2,
+    "trainAccess": "新宿駅→JR埼京線・湘南新宿ライン約32分→大宮駅→上越新幹線とき約57分→越後湯沢駅→南越後交通バス約35分→平標登山口バス停",
+    "trainAccessOmiya": "大宮駅→上越新幹線とき約57分→越後湯沢駅→南越後交通バス約35分→平標登山口バス停",
+    "trainAccessYokohama": "横浜駅→JR上野東京ライン約26分→東京駅→上越新幹線約1時間13分→越後湯沢駅→南越後交通バス約35分→平標登山口バス停",
+    "busLinks": [
+      "https://www.minamiechigo.co.jp/"
+    ],
+    "busScheduleLinks": [
+      "https://www.minamiechigo.co.jp/"
+    ],
+    "lines": [
+      "JR上越線・上越新幹線"
+    ],
+    "fareCheckedAt": "2026-10-27",
+    "annualItems": [
+      {
+        "kind": "info",
+        "label": "越後湯沢駅〜平標登山口の路線バスのダイヤ",
+        "validFrom": null,
+        "validTo": null,
+        "seasonYear": null,
+        "sourceUrl": "https://www.minamiechigo.co.jp/",
+        "lastVerified": "2026-10-06"
+      }
+    ],
+    "status": null,
+    "warnBanner": null,
+    "gearCalendar": [
+      "winter_gear",
+      "winter_gear",
+      "winter_gear",
+      "winter_gear",
+      "light_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "no_crampons",
+      "light_crampons",
+      "winter_gear"
+    ],
+    "seasonCalendar": [
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-hard",
+      "s-gear",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-ok",
+      "s-gear",
+      "s-hard"
+    ],
+    "calLegend": [
+      "アイゼン不要",
+      "軽アイゼン等",
+      "冬山装備"
+    ],
+    "seasonNoGear": "6月〜10月",
+    "season6Crampons": "5月・11月",
+    "routes": [
+      {
+        "name": "平標登山口〜松手山〜平標山〜仙ノ倉山（往復）",
+        "time": "8時間36分",
+        "distance": "11.9km",
+        "elevation": "+1366m",
+        "descent": "-1366m",
+        "waypoints": "平標登山口 → 松手山 → 平標山 → 前仙ノ倉山 → 仙ノ倉山",
+        "trailheadName": "平標登山口",
+        "source": "YAMAPモデルコース（model-courses/12351）",
+        "sourceUrl": "https://yamap.com/model-courses/12351",
+        "lastVerified": "2026-10-27",
+        "coeff": 34
+      },
+      {
+        "name": "天神平〜谷川岳〜万太郎山〜仙ノ倉山〜平標山〜平標登山口（縦走）",
+        "time": "14時間33分",
+        "distance": "19.1km",
+        "elevation": "+2197m",
+        "descent": "-2537m",
+        "waypoints": "天神尾根 → 谷川岳（トマノ耳） → オジカ沢ノ頭 → 万太郎山 → … → 仙ノ倉山 → 平標山 → 松手山 → 平標登山口",
+        "trailheadName": "谷川岳ロープウェイ天神平駅",
+        "source": "YAMAPモデルコース（model-courses/80851）",
+        "sourceUrl": "https://yamap.com/model-courses/80851",
+        "lastVerified": "2026-10-27",
+        "coeff": 55
+      }
+    ],
+    "vibePoints": [
+      {
+        "who": "稜線歩きを楽しみたい人",
+        "why": "平標山から仙ノ倉山へ、たおやかな稜線が続く"
+      },
+      {
+        "who": "高山植物を見たい人",
+        "why": "6月上旬〜7月上旬に稜線のお花畑が咲く"
+      },
+      {
+        "who": "谷川連峰を縦走したい人",
+        "why": "谷川岳から万太郎山を経て仙ノ倉山へ縦走できる（上級者向き）"
+      }
+    ],
+    "featurePoints": [
+      {
+        "tag": "flower",
+        "label": "稜線のお花畑",
+        "text": "平標山との稜線に、6月上旬〜7月上旬に高山植物が咲く。谷に残る雪渓も見える"
+      },
+      {
+        "tag": "ridge",
+        "label": "たおやかな稜線",
+        "text": "平標山から仙ノ倉山へ、お花畑と笹原の広い稜線が続く"
+      },
+      {
+        "tag": "view",
+        "label": "広い山頂の展望",
+        "text": "広場のような山頂から雄大な展望が広がる"
+      },
+      {
+        "tag": "collector",
+        "label": "谷川連峰の最高峰",
+        "text": "標高2,026m。二百名山"
+      }
+    ],
+    "featureSources": [
+      "https://yamap.com/mountains/22"
+    ],
+    "featureCheckedAt": "2026-10-27",
+    "dlReasonsHtml": "<ul class=\"dl-reasons\">\n    <li class=\"minus\">平標登山口からの往復は8時間半以上かかり、早朝の出発が要る</li>\n    <li class=\"minus\">東の谷川岳方面への縦走は岩場を通るので上級者向き</li>\n    <li>平標山との稜線は広くたおやかで、平標山乃家に泊まってゆっくり歩くこともできる</li>\n  </ul>",
+    "dlReasonsSources": [
+      "https://yamap.com/mountains/22"
+    ],
+    "dlReasonsCheckedAt": "2026-10-27",
+    "faq": [
+      {
+        "question": "仙ノ倉山は初心者でも登れますか？難易度とコース定数を解説",
+        "answer": "仙ノ倉山の難易度は中級、コース定数34〜55です。仙ノ倉山は平標山の先にある山で、平標登山口からの往復は8時間半以上かかります。道は広い稜線ですが、体力に自信がなければ平標山乃家に泊まる計画が安心です。代表的な平標登山口〜松手山〜平標山〜仙ノ倉山（往復）は8時間36分・11.9km・標高差+1366mが目安。天神平〜谷川岳〜万太郎山〜仙ノ倉山〜平標山〜平標登山口（縦走）（14時間33分）という選び方もできます。"
+      },
+      {
+        "question": "仙ノ倉山の所要時間は？日帰りできますか？",
+        "answer": "はい、仙ノ倉山は日帰りできます。平標登山口〜松手山〜平標山〜仙ノ倉山（往復）は8時間36分（11.9km・標高差1366m）。歩く時間が長いので、早朝に出発できる計画にしてください。天神平〜谷川岳〜万太郎山〜仙ノ倉山〜平標山〜平標登山口（縦走）は山小屋に泊まる計画が基本です。"
+      },
+      {
+        "question": "仙ノ倉山へのアクセス方法は？新宿・横浜からの行き方",
+        "answer": "新宿からは大宮で上越新幹線に乗り換えて越後湯沢駅へ行き、南越後交通バスで平標登山口まで約35分です。新宿から約2時間4分・6,820円、大宮から約1時間32分・6,490円、横浜から約2時間14分・7,690円が目安です（乗り換えの待ち時間は別）。バスは通年運行で1日8便です。"
+      },
+      {
+        "question": "仙ノ倉山の登山シーズンはいつですか？おすすめの時期",
+        "answer": "仙ノ倉山の登山シーズンは6月〜10月が目安で、稜線のお花畑は6月上旬〜7月上旬が見ごろです。残雪や天気は年によって変わるので、直前の最新情報も確認してください。"
+      }
+    ],
+    "introHtml": "<div class=\"card\"><h2><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" style=\"vertical-align:-3px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 3h10l4 4v14H5z\"/><path d=\"M15 3v4h4\"/><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"/><line x1=\"8\" y1=\"16\" x2=\"13\" y2=\"16\"/></svg>山の紹介</h2><p class=\"intro-text\">谷川連峰の最高峰で二百名山。西の平標山とつながるたおやかな稜線には、見渡す限りのお花畑と笹原が広がり、6月上旬〜7月上旬に高山植物が咲く。広場のような山頂からの雄大な展望も魅力。平標登山口を早朝に出れば日帰りもできる。中級レベルでコース定数34〜55、日帰りでの登山が可能。代表コース（平標登山口〜松手山〜平標山〜仙ノ倉山（往復））は所要8時間36分/11.9km/標高差+1366m。</p></div>",
+    "vibesHtml": "<div class=\"rec-card\">\n    <div class=\"rec-card-title\"><span class=\"eyebrow\">Vibes</span><span>こんな気分の人に</span></div>\n    <div class=\"rec-list\">\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>稜線歩きを楽しみたい人</strong>——平標山から仙ノ倉山へ、たおやかな稜線が続く</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>高山植物を見たい人</strong>——6月上旬〜7月上旬に稜線のお花畑が咲く</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>谷川連峰を縦走したい人</strong>——谷川岳から万太郎山を経て仙ノ倉山へ縦走できる（上級者向き）</span></div>\n    </div>\n  </div>",
+    "relatedLinksHtml": "<div class=\"related-links-card\">\n  <div class=\"related-links-title\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"3\" rx=\"1\"/><line x1=\"8\" y1=\"11\" x2=\"16\" y2=\"11\"/><line x1=\"8\" y1=\"15\" x2=\"13\" y2=\"15\"/></svg>関連するまとめ</div>\n    <a href=\"/search/shinjuku-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>新宿から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">新宿発・仙ノ倉山と難易度・時間を比較できる</span>\n    </a>\n    <a href=\"/search/ofuna-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>大船・横浜から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">神奈川発で仙ノ倉山の前後に検討したい山を比較</span>\n    </a>\n    <a href=\"/search/train-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車で行ける日帰り登山一覧</span>\n      <span class=\"related-link-sub\">車なしOK・駅近の山だけを集めたリスト</span>\n    </a>\n    <a href=\"/recommend/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"12,3 14,10 12,12 10,10\" fill=\"currentColor\" stroke=\"none\"/><polygon points=\"12,21 10,14 12,12 14,14\" fill=\"currentColor\" opacity=\"0.5\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"white\" stroke=\"none\"/></svg>登山タイプ診断で自分に合う山を探す</span>\n      <span class=\"related-link-sub\">12問・約2分。16タイプのどれかと、そのタイプに合う山がわかる</span>\n    </a>\n</div>",
+    "gearLinks": [
+      {
+        "id": "boots",
+        "icon": "👟",
+        "name": "登山靴",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "rain",
+        "icon": "🧥",
+        "name": "レインウェア",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pack",
+        "icon": "🎒",
+        "name": "ザック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "water",
+        "icon": "💧",
+        "name": "水・行動食",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "gaiter",
+        "icon": "🧦",
+        "name": "ゲイター",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "pole",
+        "icon": "🦯",
+        "name": "ストック",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      },
+      {
+        "id": "crampon",
+        "icon": "❄️",
+        "name": "軽アイゼン",
+        "affiliateUrl": "",
+        "affiliateName": ""
+      }
+    ],
+    "climbedBtnStyle": "rounded",
+    "hasWeatherWidget": false,
+    "hasHeroPhotoScript": false,
+    "photos": [],
+    "ogUpdatedTime": null,
+    "mountainUpdated": "2026-10-27",
+    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>年中運行</span></div><div class=\"ts-line-name\">上越新幹線・南越後交通バス</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR埼京線・湘南新宿ライン　<span class=\"ts-duration\">約32分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>上越新幹線とき　<span class=\"ts-duration\">約57分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">越後湯沢駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>南越後交通バス　<span class=\"ts-duration\">約35分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">平標登山口バス停</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>上越新幹線とき　<span class=\"ts-duration\">約57分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">越後湯沢駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>南越後交通バス　<span class=\"ts-duration\">約35分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">平標登山口バス停</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR上野東京ライン　<span class=\"ts-duration\">約26分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">東京駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>上越新幹線　<span class=\"ts-duration\">約1時間13分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">越後湯沢駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>南越後交通バス　<span class=\"ts-duration\">約35分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">平標登山口バス停</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約2時間4分\" data-omiya=\"約1時間32分\" data-yokohama=\"約2時間14分\">約2時間4分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約6,820円\" data-omiya=\"片道約6,490円\" data-yokohama=\"片道約7,690円\">片道約6,820円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>新宿からは大宮で上越新幹線に乗り換えるのが速くて安い</li><li>越後湯沢駅東口1番のりば（苗場・かぐら行き）から南越後交通バス（湯沢駅〜浅貝〜西武クリスタル線）で平標登山口へ約35分・660円</li><li>通年運行で1日8便（2026年4月改正）</li><li>本数が限られるため、下山時の最終便時刻を必ず事前確認すること</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=越後湯沢駅&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://www.minamiechigo.co.jp/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>南越後交通バス 時刻表</a></div></div>",
+    "coeffMin": 34,
+    "coeffMax": 55,
+    "courseCoefficientRange": "34〜55",
+    "courseCoefficient": [
+      34,
+      55
+    ],
+    "metaTitle": "仙ノ倉山 登山の難易度は中級｜健脚向け日帰り8時間36分・標高差1,366m｜越後湯沢駅からバス【二百名山】｜Yamatch",
+    "ogTitle": "仙ノ倉山 登山の難易度は中級｜健脚向け日帰り8時間36分・標高差1,366m｜越後湯沢駅からバス【二百名山】｜Yamatch",
+    "metaDescription": "仙ノ倉山（標高2,026m・群馬県・新潟県）の難易度は中級（体力のある中級者向け）。代表コース（平標登山口〜松手山〜平標山〜仙ノ倉山（往復））は8時間36分・11.9km・標高差1366m。新宿から電車とバスで約2時間4分（越後湯沢駅からバス35分）。日帰りできます。谷川連峰の最高峰で二百名山。駐車場・装備・天気も掲載。",
+    "ogDescription": "仙ノ倉山（標高2,026m・群馬県・新潟県）の難易度は中級（体力のある中級者向け）。代表コース（平標登山口〜松手山〜平標山〜仙ノ倉山（往復））は8時間36分・11.9km・標高差1366m。新宿から電車とバスで約2時間4分（越後湯沢駅からバス35分）。日帰りできます。谷川連峰の最高峰で二百名山。駐車場・装備・天気も掲載。"
   }
 ]
