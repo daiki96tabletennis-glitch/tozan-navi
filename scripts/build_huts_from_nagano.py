@@ -24,7 +24,7 @@ HUT_MOUNTAINS = {
     '穂高岳山荘': ['hotaka'], '涸沢小屋': ['hotaka'], '涸沢ヒュッテ': ['hotaka'], '岳沢小屋': [],
     '横尾山荘': ['yari', 'hotaka'], '徳沢ロッヂ': ['chogatake'], '氷壁の宿 徳澤園': ['chogatake'],
     '蝶ヶ岳ヒュッテ': ['chogatake'], '大滝山荘': [], '常念小屋': ['jonengatake'], '焼岳小屋': ['yakedake'],
-    '燕山荘': ['otenshoudake'], '大天荘': ['otenshoudake'], '大天井ヒュッテ': [], '中房温泉': ['otenshoudake', 'arikayama'], '有明荘': ['arikayama'],
+    '燕山荘': ['tsubakurodake', 'otenshoudake'], '大天荘': ['otenshoudake'], '大天井ヒュッテ': [], '中房温泉': ['tsubakurodake', 'otenshoudake', 'arikayama'], '有明荘': ['arikayama'],
     '餓鬼岳小屋': ['gakedake'], '七倉山荘': ['eboshidake_kita', 'noguchigoro'], '烏帽子小屋': ['eboshidake_kita'], '野口五郎小屋': ['noguchigoro'],
     '白馬山荘': ['shirouma'], '村営白馬岳頂上宿舎': ['shirouma'], '白馬大池山荘': ['shirouma'], '猿倉荘': ['shirouma'], '栂池山荘': ['shirouma'], '栂池ヒュッテ': ['shirouma'],
     '唐松岳頂上山荘': ['karamatsu'], '村営八方池山荘': ['karamatsu'], '村営天狗山荘': ['karamatsu'], '五竜山荘': ['goryudake'], 'キレット小屋': [],

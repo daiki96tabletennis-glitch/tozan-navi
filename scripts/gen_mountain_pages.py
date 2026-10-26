@@ -1328,7 +1328,7 @@ def generate_one(mid, by_id, gear_data, dry_run=False):
 def main():
     parser = argparse.ArgumentParser(description="mountains.json から山ページを自動生成")
     parser.add_argument("--id", help="生成する山のID（1件のみ）")
-    parser.add_argument("--all", action="store_true", help="全156山を生成")
+    parser.add_argument("--all", action="store_true", help="全山を生成")
     parser.add_argument("--dry-run", action="store_true", help="ファイルに書き込まず結果のみ確認")
     args = parser.parse_args()
 
