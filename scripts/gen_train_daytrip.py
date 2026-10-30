@@ -35,10 +35,57 @@ def legs_of(m, dep='shinjuku'):
     return r.get('legs') or []
 
 
+CFG = {}
+
+
+def course(m):
+    """記事で使うコース・電車とバスの区間（data/train_daytrip.json の courses。無ければ代表コース・全区間）"""
+    return (CFG.get('courses') or {}).get(m['id']) or {}
+
+
+def chosen_route(m):
+    c = course(m)
+    if 'route' in c:
+        return (m.get('routes') or [{}])[c['route']]
+    return rep_route(m)
+
+
+def dep_legs(m, dep='shinjuku'):
+    legs = legs_of(m, dep)
+    until = course(m).get('accessUntil')
+    if not until:
+        return legs, legs
+    for i, l in enumerate(legs):
+        if l.get('station') == until:
+            return legs, legs[:i] + [{'station': until}]
+    raise SystemExit('%s：accessUntil の駅（%s）が %s の経路にありません' % (m['id'], until, dep))
+
+
+def dep_time(m, dep='shinjuku'):
+    full, cut = dep_legs(m, dep)
+    if cut is full:
+        return m.get('trainTime' + dep.capitalize())
+    return sum(l.get('durationMin') or 0 for l in cut)
+
+
+def dep_fare(m, dep='shinjuku'):
+    full, cut = dep_legs(m, dep)
+    dropped = [l for l in full[len(cut) - 1:] if l.get('method')]
+    if cut is full or all('徒歩' in (l['method'].get('line') or '') for l in dropped):
+        return m.get('fare' + dep.capitalize())
+    return (course(m).get('fares') or {}).get(dep)
+
+
+def walk_min(t):
+    h = re.search(r'(\d+)時間', t or '')
+    mi = re.search(r'(\d+)分', t or '')
+    return (int(h.group(1)) * 60 if h else 0) + (int(mi.group(1)) if mi else 0)
+
+
 def path_text(m):
-    """新宿駅 →（京王線）→ 高尾山口駅 → … の形。最後は登山口"""
+    """新宿駅 →（京王線）→ 高尾山口駅 → … の形。最後は歩き始める場所"""
     out = []
-    legs = legs_of(m)
+    legs = dep_legs(m)[1]
     for i, l in enumerate(legs):
         st = l.get('station') or ''
         line = (l.get('method') or {}).get('line')
@@ -65,18 +112,29 @@ def last_bus_html(lb):
     if st == 'ok':
         rows = ''.join('<tr><td>%s → %s</td><td>%s</td><td>%s</td></tr>' % (E(r['from']), E(r['to']), E(r['weekday']), E(r['holiday'])) for r in lb['rows'])
         note = ('<div class="td-last-n">' + E(lb['note']) + '</div>') if lb.get('note') else ''
-        src = ('<div class="td-last-s">出典：<a href="%s" target="_blank" rel="noopener">%sの時刻表</a>（%s改正・%s確認）。ダイヤは変わることがあるので、行く前に確かめてください</div>'
-               % (E(lb['sourceUrl']), E(lb.get('operator') or '運行会社'), E(lb.get('revised') or ''), E(lb.get('checkedAt') or '')))
+        def when(rev, chk):
+            rev = rev or ''
+            if rev and not rev.endswith(('現在', '年度')):
+                rev += '改正'
+            return '（%s%s確認）' % (E(rev) + '・' if rev else '', E(chk or ''))
+        if lb.get('sources'):
+            links = '・'.join('<a href="%s" target="_blank" rel="noopener">%s</a>%s' % (E(x['url']), E(x['label']), when(x.get('revised'), x.get('checkedAt'))) for x in lb['sources'])
+        else:
+            links = '<a href="%s" target="_blank" rel="noopener">%sの時刻表</a>%s' % (E(lb['sourceUrl']), E(lb.get('operator') or '運行会社'), when(lb.get('revised'), lb.get('checkedAt')))
+        src = '<div class="td-last-s">出典：%s。ダイヤは変わることがあるので、行く前に確かめてください</div>' % links
         return ('<div class="td-last"><b>帰りの最終バス</b><table class="td-last-t"><tr><th>区間</th><th>平日</th><th>土休日</th></tr>'
                 + rows + '</table>' + note + src + '</div>')
-    return ('<div class="td-last td-last-pending"><b>帰りの最終バス</b>確認中（%s）。山ページの電車・バス欄の時刻表で確かめてください</div>' % E(lb.get('operator') or '運行会社'))
+    note = ('<div class="td-last-n">' + E(lb['note']) + '</div>') if lb.get('note') else ''
+    return ('<div class="td-last td-last-pending"><b>帰りの最終バス</b>確認中（%s）。山ページの電車・バス欄の時刻表で確かめてください%s</div>' % (E(lb.get('operator') or '運行会社'), note))
 
 
 def card(n, m, lb):
-    r = rep_route(m)
+    r = chosen_route(m)
     fp = [f for f in (m.get('featurePoints') or []) if f.get('label') and f.get('text')][:2] if m.get('featureSources') else []
-    times = ' ／ '.join('%s %s・%s' % (lab, hm(m.get('trainTime' + lab_key.capitalize())), yen(m.get('fare' + lab_key.capitalize())))
-                       for lab_key, lab in DEP if m.get('trainTime' + lab_key.capitalize()) and m.get('fare' + lab_key.capitalize()))
+    times = ' ／ '.join('%s %s・%s' % (lab, hm(dep_time(m, k)), yen(dep_fare(m, k)))
+                       for k, lab in DEP if dep_time(m, k) and dep_fare(m, k))
+    cnote = course(m).get('note')
+    fsrc = course(m).get('faresSource')
     walk = '・'.join(x for x in (E(r.get('time')), E(r.get('distance')), ('標高差' + E(r.get('elevation', '')).lstrip('+')) if r.get('elevation') else '') if x)
     feats = ''.join('<li><b>%s</b>%s</li>' % (E(f['label']), E(f['text'])) for f in fp)
     return (
@@ -86,10 +144,12 @@ def card(n, m, lb):
         + '    <h3 class="td-name"><a href="/mountains/%s/">%s</a><span class="td-sub">%s・%s・%sm</span></h3>\n' % (
             E(m['id']), E(m['name']), E(m.get('difficulty')), E(m.get('area') or ''), '{:,}'.format(int(m['elevation'])) if m.get('elevation') else '')
         + '    <div class="td-key"><div><span>新宿から電車・バス</span><b>%s</b></div><div><span>片道の運賃</span><b>%s</b></div><div><span>歩く時間</span><b>%s</b></div></div>\n' % (
-            E(hm(m.get('trainTimeShinjuku'))), E(yen(m.get('fareShinjuku'))), E(r.get('time') or '—'))
+            E(hm(dep_time(m))), E(yen(dep_fare(m))), E(r.get('time') or '—'))
         + '    <div class="td-path">%s</div>\n' % path_text(m)
+        + ('    <div class="td-other">%s</div>\n' % E(cnote) if cnote else '')
+        + ('    <div class="td-other">運賃の出典：%s</div>\n' % E(fsrc) if fsrc else '')
         + ('    <div class="td-other">%s</div>\n' % E(times) if times else '')
-        + '    <div class="td-walk">代表コース：%s（%s）</div>\n' % (E(r.get('name') or ''), walk)
+        + '    <div class="td-walk">コース：%s（%s）</div>\n' % (E(r.get('name') or ''), walk)
         + '    %s\n' % last_bus_html(lb)
         + ('    <ul class="td-feat">%s</ul>\n' % feats if feats else '')
         + '    <a href="/mountains/%s/" class="td-link">%sの詳しい情報（天気・装備・地図）→</a>\n' % (E(m['id']), E(m['name']))
@@ -100,6 +160,7 @@ def card(n, m, lb):
 def main():
     check = '--check' in sys.argv
     cfg = json.load(open(os.path.join(ROOT, 'data', 'train_daytrip.json'), encoding='utf-8'))
+    CFG.update(cfg)
     D = {m['id']: m for m in json.load(open(os.path.join(ROOT, 'data', 'mountains.json'), encoding='utf-8'))}
     sel = [i for g in cfg['groups'] for i in g['ids']]
     probs = []
@@ -113,6 +174,12 @@ def main():
             probs.append(i + '：電車の時間・運賃・乗り継ぎが無い')
         if (m.get('status') or {}).get('level') == 'restricted':
             probs.append(i + '：規制中の山')
+    for g in cfg['groups']:
+        for i in g['ids']:
+            if i in D and g.get('maxWalkMin') and walk_min(chosen_route(D[i]).get('time')) > g['maxWalkMin']:
+                probs.append('%s：歩く時間（%s）が「%s」の説明より長い' % (i, chosen_route(D[i]).get('time'), g['title']))
+            if i in D and not dep_fare(D[i]):
+                probs.append(i + '：記事のコースまでの運賃が分からない（courses の fares に書く）')
     if probs:
         print('\n'.join(probs))
         sys.exit(1)
@@ -184,10 +251,12 @@ def main():
             m = D[i]
             lb = cfg['lastBus'].get(i)
             cards.append(card(n, m, lb))
-            r = rep_route(m)
-            lbs = {'walk': '駅まで徒歩', 'ok': '平日 %s ／ 土休日 %s' % (lb['rows'][-1]['weekday'], lb['rows'][-1]['holiday']) if lb and lb.get('status') == 'ok' else ''}.get((lb or {}).get('status'), '確認中')
+            r = chosen_route(m)
+            # 一覧の欄に出す行（lastBus の indexRow。無ければ最後の行）。ケーブルカーの最終が先に来る山などで使う
+            ir = (lb or {}).get('indexRow', -1)
+            lbs = {'walk': '駅まで徒歩', 'ok': ((lb.get('indexLabel') + ' ') if lb.get('indexLabel') else '') + '平日 %s ／ 土休日 %s' % (lb['rows'][ir]['weekday'], lb['rows'][ir]['holiday']) if lb and lb.get('status') == 'ok' else ''}.get((lb or {}).get('status'), '確認中')
             idx_rows.append('<tr><td>%d</td><td><a href="#m-%s">%s</a></td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>' % (
-                n, E(i), E(m['name']), E(m.get('difficulty')), E(hm(m.get('trainTimeShinjuku'))), E(yen(m.get('fareShinjuku'))), E(r.get('time')), E(lbs)))
+                n, E(i), E(m['name']), E(m.get('difficulty')), E(hm(dep_time(m))), E(yen(dep_fare(m))), E(r.get('time')), E(lbs)))
             items.append({'@type': 'ListItem', 'position': n, 'url': 'https://tozan-navi.com/mountains/%s/' % i, 'name': m['name']})
 
     rest = []
@@ -204,16 +273,16 @@ def main():
         E(m['id']), E(m['name']), E(m.get('difficulty')), E(hm(m.get('trainTimeShinjuku'))), E(yen(m.get('fareShinjuku'))), E(rep_route(m).get('time'))) for m in rest)
 
     total = len(sel)
-    fast = sorted((D[i] for i in sel), key=lambda m: m['trainTimeShinjuku'])[:3]
-    cheap = sorted((D[i] for i in sel), key=lambda m: m['fareShinjuku'])[:3]
+    fast = sorted((D[i] for i in sel), key=lambda m: dep_time(m))[:3]
+    cheap = sorted((D[i] for i in sel), key=lambda m: dep_fare(m))[:3]
     hy = [D[i] for i in cfg['groups'][2]['ids']]
     faqs = [
         ('電車だけで行ける日帰り登山は、どこがおすすめですか？',
          'はじめてなら、新宿から近い%sがおすすめです。どれも電車・バスで2時間以内に登山口に着きます。この記事では、はじめての電車登山・しっかり歩く日帰り・電車で行く百名山の3つに分けて%d山を紹介しています。'
-         % ('・'.join('%s（%s）' % (m['name'], hm(m['trainTimeShinjuku'])) for m in fast), total)),
+         % ('・'.join('%s（%s）' % (m['name'], hm(dep_time(m))) for m in fast), total)),
         ('交通費が安いのはどの山ですか？',
          '新宿からの片道の運賃が安いのは、%sです。運賃はこの記事の各山に、新宿・大宮・横浜からの値を載せています。'
-         % '・'.join('%s（%s）' % (m['name'], yen(m['fareShinjuku'])) for m in cheap)),
+         % '・'.join('%s（%s）' % (m['name'], yen(dep_fare(m))) for m in cheap)),
         ('電車とバスで日帰りできる百名山はありますか？',
          'あります。%sは、新幹線や特急、ロープウェイを使って日帰りで登れます。新宿からの電車・バスの時間は%s〜%sです。季節運行のバスやロープウェイが多いので、運行期間を確かめてから計画してください。'
          % ('・'.join(m['name'] for m in hy), hm(min(m['trainTimeShinjuku'] for m in hy)), hm(max(m['trainTimeShinjuku'] for m in hy)))),
@@ -231,7 +300,7 @@ def main():
     ]
     title = '電車で行ける日帰り登山（関東）%d選｜新宿から何分・運賃・帰りの最終バス【%s年】 | Yamatch' % (total, cfg.get('year', '2026'))
     desc = ('電車とバスだけで行ける関東の日帰り登山を%d山。%s（%s）から%s（%s）まで、新宿・大宮・横浜からの所要時間と片道の運賃、駅から登山口までの乗り継ぎ、帰りの最終バスを山ごとに載せています。'
-            % (total, fast[0]['name'], hm(fast[0]['trainTimeShinjuku']), hy[-1]['name'], hm(hy[-1]['trainTimeShinjuku'])))
+            % (total, fast[0]['name'], hm(dep_time(fast[0])), hy[-1]['name'], hm(dep_time(hy[-1]))))
     intro = ('電車とバスだけで、関東から日帰りで登れる山を%d山に絞りました。山ごとに、<strong>新宿から登山口までの時間と片道の運賃</strong>、<strong>駅からの乗り継ぎ</strong>、<strong>帰りの最終バス</strong>を載せています。'
              '時間と運賃は、各山のページと同じデータです。最終バスは、運行会社の時刻表で確かめた山から順に載せています。' % total)
     tips = [

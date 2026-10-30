@@ -398,7 +398,7 @@
 
 ## スクリプト（`scripts/` 配下）
 - 生成スクリプトで作るページ（手で編集しない。`<!-- generated: scripts/gen_... -->` の印つき。`sync_search_pages.py` は飛ばす）
-  - `search/train-daytrip/`（電車で行ける日帰り登山20選）：`scripts/gen_train_daytrip.py`。選ぶ山と帰りの最終バスは `data/train_daytrip.json`（最終バスは公式の時刻表で確かめた値だけ。出典・改正日・確認日つき。未確認は「確認中」）
+  - `search/train-daytrip/`（電車で行ける日帰り登山20選）：`scripts/gen_train_daytrip.py`。選ぶ山と帰りの最終バスは `data/train_daytrip.json`（最終バスは公式の時刻表で確かめた値だけ。出典・改正日・確認日つき。未確認は「確認中」）。山ごとに使うコースと、電車・バスの区間をどこまで数えるか（`courses` の `route` / `accessUntil` / `fares` / `note`。2026-10-30〜。行き方の着く場所とコースの歩き始めをそろえるため）。グループの説明の歩く時間を `maxWalkMin` で見張る（超えると `--check` で止まる）。最終バスは複数の出典を `sources`（label・url・revised・checkedAt）に、一覧の欄に出す行を `indexRow` / `indexLabel` に書ける（大山はケーブルカーの最終が先に来るため）。2026-10-30 に9山を確かめた（未確認：谷川岳＝関越交通の公式サイトが証明書エラー、那須岳・安達太良山、唐松岳＝八方アルペンラインが11/3で今季終了、木曽駒ヶ岳＝中央アルプス観光の公式サイトが403）
   - `articles/mountain-gourmet/`（山の茶屋・山小屋グルメ）：`scripts/gen_gourmet_article.py`。中身は `data/mountain_gourmet.json`。泊まる人だけの夕食・朝食は載せない。値段・営業時間は載せない。写真は `images/articles/mountain-gourmet/<key>.jpg` を置いて `image.src` を入れる（ファイルがある項目だけ写真が出る。お店の公式サイトの写真は無断で使わない）
     - 写真は管理画面の「グルメ記事の写真」（`/admin/gourmet/`。運営者の指示・2026-10-20）で選ぶ：お店ごとに Commons の候補を出し（商用で使えるライセンスだけ「使える」）、選んだ写真を幅1200pxの JPEG にして `images/articles/mountain-gourmet/<key>-<Commonsのページ番号>.jpg` と `image` を GitHub に直接書く。記事は `.github/workflows/gourmet-article.yml` が `gen_gourmet_article.py` で作り直す（AIは使わない）
     - 手元で選ぶときは `python3 scripts/gourmet_commons.py all`（Wikimedia Commons から、商用で使えるライセンスの候補だけを集め、`.claude/gourmet_commons/index.html` に並べる）→ 人が見て選ぶ → `apply <key> <番号> [写真の説明]` → `gen_gourmet_article.py`。写真の下に作者・ライセンス・Commons へのリンクが出る（CC BY / BY-SA の表示の条件）。料理名や山名で見つかった写真には注意が出る（別のお店の料理を、そのお店のものとして載せない）。いつも使う検索語は項目の `commonsQueries` に書く
