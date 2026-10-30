@@ -423,7 +423,7 @@ def main():
         '<meta property="og:type" content="website">', '<meta property="og:url" content="%s">' % URL,
         '<link rel="canonical" href="%s">' % URL,
     ] + ['<script type="application/ld+json">%s</script>' % json.dumps(x, ensure_ascii=False, separators=(',', ':')) for x in ld] + [
-        style, '</head>', '<body>', MARK, header, main_html, footer, '<script src="/assets/js/to-top.js?v=20261025a" defer></script>', '<script src="/assets/js/card-photos.js?v=20261030" defer></script>', '<script src="/assets/js/card-photo-credits.js?v=20261030" defer></script>', '</body>', '</html>', ''])
+        style, '</head>', '<body>', MARK, header, main_html, footer, '<script src="/assets/js/to-top.js?v=20261025a" defer></script>', '<script src="/assets/js/card-photos.js?v=20261030" defer></script>', '<script src="/assets/js/card-photo-credits.js?v=20261031" defer></script>', '</body>', '</html>', ''])
     open(PAGE, 'w', encoding='utf-8').write(page)
     print('作りました：%d山（ほか%d山）／最終バス 確認済み %d・徒歩 %d・確認中 %d' % (
         total, len(rest), sum(1 for v in cfg['lastBus'].values() if v.get('status') == 'ok'),

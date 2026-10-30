@@ -43,7 +43,8 @@
     if(!parts.length) return;
     var d = document.createElement('div');
     d.className = 'ym-photo-credit';
-    d.style.cssText = 'order:-1;font-size:11px;line-height:1.5;color:#7a776e;margin:4px 2px 6px;word-break:break-word';
+    // 横並び（flex）のカードでも1行を丸ごと使う。使わないと本文の列が押しつぶされ、スマホで右にはみ出す（2026-10-31）
+    d.style.cssText = 'order:-1;flex:0 0 100%;width:100%;box-sizing:border-box;font-size:11px;line-height:1.5;color:#7a776e;margin:4px 0 6px;padding:0 2px;word-break:break-word';
     d.innerHTML = '写真：' + parts.join('／');
     after.insertAdjacentElement('afterend', d);
   }
