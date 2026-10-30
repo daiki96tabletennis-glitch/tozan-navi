@@ -8,10 +8,10 @@
 (function () {
   'use strict';
   var FB_WEB = {
-    apiKey: '',
+    apiKey: 'AIzaSyA9HloHMM_BE_p2uHWawcQ5tzlA-laTG7g',
     authDomain: 'yamatch-35abd.firebaseapp.com',
     projectId: 'yamatch-35abd',
-    appId: '',
+    appId: '1:450589546334:web:761531db8bfb22501e61cf',
     databaseURL: 'https://yamatch-35abd-default-rtdb.asia-southeast1.firebasedatabase.app'
   };
   var SDK = 'https://www.gstatic.com/firebasejs/10.12.2/';
