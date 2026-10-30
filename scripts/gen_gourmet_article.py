@@ -40,7 +40,7 @@ def main():
     tpl = open(TPL, encoding='utf-8').read()
     gtag = re.search(r'(?s)<!-- Google tag \(gtag\.js\) -->.*?</script>\s*<script>.*?</script>', tpl).group(0)
     style = re.search(r'(?s)<style>.*?</style>', tpl).group(0)
-    header = re.search(r'(?s)<header>.*?</header>', tpl).group(0)
+    header = re.search(r'(?s)<header\b[^>]*>.*?</header>', tpl).group(0)
     tail = re.search(r'(?s)</main>(.*)</body>', tpl).group(1).replace("'tokyo-daytrip-5'", "'%s'" % SLUG)
     tail = re.sub(r"title:'[^']*'", "title:'山の茶屋・山小屋グルメ'", tail)
     style = style.replace('</style>', '''

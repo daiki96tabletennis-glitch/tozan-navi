@@ -238,7 +238,7 @@ def main():
     # 前回このスクリプトが足した分（印から </style> まで）を外す。外さないと作り直すたびに同じ CSS が積み重なる（2026-10-30 に約10回分たまっていた）
     style = re.sub(r'(?s)\n?/\* 2026-10 作り直し：電車で行く人向けの20選 \*/.*?(?=</style>)', '', style)
     style = re.sub(r'\s*</style>$', '\n</style>', style)
-    header = re.search(r'(?s)<header>.*?</header>', old).group(0)
+    header = re.search(r'(?s)<header\b[^>]*>.*?</header>', old).group(0)
     footer = re.search(r'(?s)<footer>.*?</footer>', old).group(0)
     gtag = re.search(r'(?s)<!-- Google tag \(gtag\.js\) -->.*?</script>\s*<script>.*?</script>', old).group(0)
     extra_css = '''
