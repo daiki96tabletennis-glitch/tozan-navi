@@ -860,7 +860,17 @@
 
   async function getRepoText(path, token, allowMissing) {
     const file = await getRepoFile(path, token, allowMissing);
-    return file ? decodeBase64(file.content) : null;
+    if (!file) return null;
+    // 1MBを超えるファイル（mountains.json など）は content が空で返るので、生のまま取り直す
+    if (file.encoding === 'none' || (!file.content && file.size > 0)) {
+      const response = await fetch(githubUrl(path), {
+        headers: Object.assign({}, githubHeaders(token), { Accept: 'application/vnd.github.raw+json' }),
+        cache: 'no-store'
+      });
+      if (!response.ok) throw new Error(path + 'の取得に失敗しました（' + response.status + '）');
+      return response.text();
+    }
+    return decodeBase64(file.content);
   }
 
   async function putRepoFile(path, content, message, token, attempt) {
