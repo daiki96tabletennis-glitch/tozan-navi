@@ -105,10 +105,10 @@ def rep_route(m):
 
 def last_bus_html(lb):
     if not lb:
-        return '<div class="td-last td-last-pending"><b>帰りの最終バス</b>確認中</div>'
+        return '<div class="td-last td-last-pending"><b>🚌 帰りの最終バス</b>確認中</div>'
     st = lb.get('status')
     if st == 'walk':
-        return '<div class="td-last td-last-walk"><b>帰り</b>' + E(lb['text']) + '</div>'
+        return '<div class="td-last td-last-walk"><b>🚶 帰り</b>' + E(lb['text']) + '</div>'
     if st == 'ok':
         rows = ''.join('<tr><td>%s → %s</td><td>%s</td><td>%s</td></tr>' % (E(r['from']), E(r['to']), E(r['weekday']), E(r['holiday'])) for r in lb['rows'])
         note = ('<div class="td-last-n">' + E(lb['note']) + '</div>') if lb.get('note') else ''
@@ -122,10 +122,55 @@ def last_bus_html(lb):
         else:
             links = '<a href="%s" target="_blank" rel="noopener">%sの時刻表</a>%s' % (E(lb['sourceUrl']), E(lb.get('operator') or '運行会社'), when(lb.get('revised'), lb.get('checkedAt')))
         src = '<div class="td-last-s">出典：%s。ダイヤは変わることがあるので、行く前に確かめてください</div>' % links
-        return ('<div class="td-last"><b>帰りの最終バス</b><table class="td-last-t"><tr><th>区間</th><th>平日</th><th>土休日</th></tr>'
+        return ('<div class="td-last"><b>🚌 帰りの最終バス</b><table class="td-last-t"><tr><th>区間</th><th>平日</th><th>土休日</th></tr>'
                 + rows + '</table>' + note + src + '</div>')
     note = ('<div class="td-last-n">' + E(lb['note']) + '</div>') if lb.get('note') else ''
-    return ('<div class="td-last td-last-pending"><b>帰りの最終バス</b>確認中（%s）。山ページの電車・バス欄の時刻表で確かめてください%s</div>' % (E(lb.get('operator') or '運行会社'), note))
+    return ('<div class="td-last td-last-pending"><b>🚌 帰りの最終バス</b>確認中（%s）。山ページの電車・バス欄の時刻表で確かめてください%s</div>' % (E(lb.get('operator') or '運行会社'), note))
+
+
+def last_short(lb):
+    """一覧の欄・冒頭の3コースに出す帰りの1行（lastBus の indexRow。無ければ最後の行）。"""
+    st = (lb or {}).get('status')
+    if st == 'walk':
+        return '駅まで徒歩'
+    if st == 'ok':
+        r = lb['rows'][lb.get('indexRow', -1)]
+        return ((lb['indexLabel'] + ' ') if lb.get('indexLabel') else '') + '平日 %s ／ 土休日 %s' % (r['weekday'], r['holiday'])
+    return '確認中'
+
+
+def picks_html(cfg, D):
+    """冒頭の「迷ったらこの3コース」。数字はカードと同じデータ、ひとことは山の featurePoints の文。"""
+    out = []
+    for p in (cfg.get('picks') or {}).get('items') or []:
+        m = D[p['id']]
+        r = chosen_route(m)
+        f = next((x for x in (m.get('featurePoints') or []) if x.get('label') == p.get('feat')), None)
+        if f is None or not m.get('photos') or m['id'] not in [i for g in cfg['groups'] for i in g['ids']]:
+            sys.exit('picks: %s が記事に無いか写真が無いか、featurePoints に「%s」が無い' % (m['id'], p.get('feat')))
+        lb = cfg['lastBus'].get(m['id'])
+        img = photo_box(m, 'td-pick-img')
+        last = last_short(lb)
+        out.append(
+            '<div class="td-pick">%s<div class="td-pick-b"><div class="td-pick-l">%s</div>'
+            '<div class="td-pick-n"><a href="#m-%s">%s</a><span>%s</span></div>'
+            '<div class="td-pick-k">新宿から %s・%s ／ 歩く %s</div>'
+            '<div class="td-pick-f"><b>%s</b>%s</div>'
+            '<div class="td-pick-r">帰り：%s</div><a class="td-pick-a" href="#m-%s">乗り継ぎ・コースを見る ↓</a></div></div>' % (
+                img, E(p['label']), E(m['id']), E(m['name']), E(m.get('difficulty')),
+                E(hm(dep_time(m))), E(yen(dep_fare(m))), E(r.get('time') or '—'),
+                E(f['label']), E(f['text']), E(('最終バス ' + last) if (lb or {}).get('status') == 'ok' else last), E(m['id'])))
+    if not out:
+        return ''
+    return '  <div class="td-picks"><h2>迷ったらこの3コース</h2><div class="td-pick-g">%s</div></div>' % ''.join(out)
+
+
+def photo_box(m, cls):
+    """山ページの1枚目の写真。card-photos.js が開くたびに山ページの写真（image-credits.json）にそろえる。"""
+    ph = (m.get('photos') or [None])[0]
+    img = ('<img class="%s" src="%s" alt="%s" loading="lazy" width="600" height="360">' % (cls, E(ph), E(m['name']))) if ph else ''
+    return '<div class="td-photo" data-photo-id="%s" data-photo-alt="%s" data-photo-class="%s"%s>%s</div>' % (
+        E(m['id']), E(m['name']), cls, '' if ph else ' style="display:none"', img)
 
 
 def card(n, m, lb):
@@ -135,25 +180,27 @@ def card(n, m, lb):
                        for k, lab in DEP if dep_time(m, k) and dep_fare(m, k))
     cnote = course(m).get('note')
     fsrc = course(m).get('faresSource')
-    walk = '・'.join(x for x in (E(r.get('time')), E(r.get('distance')), ('標高差' + E(r.get('elevation', '')).lstrip('+')) if r.get('elevation') else '') if x)
+    walk = '・'.join(x for x in (E(r.get('distance')), ('標高差' + E(r.get('elevation', '')).lstrip('+')) if r.get('elevation') else '') if x)
     feats = ''.join('<li><b>%s</b>%s</li>' % (E(f['label']), E(f['text'])) for f in fp)
+    notes = ''.join('<li>%s</li>' % x for x in (
+        ('🗺️ ほかの出発地から：' + E(times)) if times else '',
+        E(cnote) if cnote else '',
+        ('運賃の出典：' + E(fsrc)) if fsrc else '') if x)
     return (
         '<article class="td-card" id="m-%s">\n' % E(m['id'])
-        + '  <div class="td-no">%d</div>\n' % n
-        + '  <div class="td-body">\n'
-        + '    <h3 class="td-name"><a href="/mountains/%s/">%s</a><span class="td-sub">%s・%s・%sm</span></h3>\n' % (
-            E(m['id']), E(m['name']), E(m.get('difficulty')), E(m.get('area') or ''), '{:,}'.format(int(m['elevation'])) if m.get('elevation') else '')
-        + '    <div class="td-key"><div><span>新宿から電車・バス</span><b>%s</b></div><div><span>片道の運賃</span><b>%s</b></div><div><span>歩く時間</span><b>%s</b></div></div>\n' % (
+        + '  <h3 class="td-name"><span class="td-no">%d</span><a href="/mountains/%s/">%s</a><span class="td-sub">%s・%s・%sm</span></h3>\n' % (
+            n, E(m['id']), E(m['name']), E(m.get('difficulty')), E(m.get('area') or ''), '{:,}'.format(int(m['elevation'])) if m.get('elevation') else '')
+        + '  %s\n' % photo_box(m, 'td-photo-img')
+        + '  <div class="td-key"><div><span>🚃 新宿から</span><b>%s</b></div><div><span>💴 片道</span><b>%s</b></div><div><span>🥾 歩く</span><b>%s</b></div></div>\n' % (
             E(hm(dep_time(m))), E(yen(dep_fare(m))), E(r.get('time') or '—'))
-        + '    <div class="td-path">%s</div>\n' % path_text(m)
-        + ('    <div class="td-other">%s</div>\n' % E(cnote) if cnote else '')
-        + ('    <div class="td-other">運賃の出典：%s</div>\n' % E(fsrc) if fsrc else '')
-        + ('    <div class="td-other">%s</div>\n' % E(times) if times else '')
-        + '    <div class="td-walk">コース：%s（%s）</div>\n' % (E(r.get('name') or ''), walk)
-        + '    %s\n' % last_bus_html(lb)
-        + ('    <ul class="td-feat">%s</ul>\n' % feats if feats else '')
-        + '    <a href="/mountains/%s/" class="td-link">%sの詳しい情報（天気・装備・地図）→</a>\n' % (E(m['id']), E(m['name']))
-        + '  </div>\n</article>'
+        + '  <div class="td-sec"><div class="td-h">🚃 行き方（新宿から）</div><div class="td-path">%s</div>%s</div>\n' % (
+            path_text(m), ('<ul class="td-notes">%s</ul>' % notes) if notes else '')
+        + '  <div class="td-sec"><div class="td-h">🥾 コース</div><div class="td-walk"><b>%s</b><span>%s%s</span></div></div>\n' % (
+            E(r.get('name') or ''), E(r.get('time') or ''), ('・' + walk) if walk else '')
+        + '  <div class="td-sec">%s</div>\n' % last_bus_html(lb)
+        + ('  <div class="td-sec"><div class="td-h">✨ 見どころ</div><ul class="td-feat">%s</ul></div>\n' % feats if feats else '')
+        + '  <a href="/mountains/%s/" class="td-link">⛰️ %sの天気・装備・地図を見る →</a>\n' % (E(m['id']), E(m['name']))
+        + '</article>'
     )
 
 
@@ -188,11 +235,33 @@ def main():
 
     old = open(PAGE, encoding='utf-8').read()
     style = re.search(r'(?s)<style>.*?</style>', old).group(0)
+    # 前回このスクリプトが足した分（印から </style> まで）を外す。外さないと作り直すたびに同じ CSS が積み重なる（2026-10-30 に約10回分たまっていた）
+    style = re.sub(r'(?s)\n?/\* 2026-10 作り直し：電車で行く人向けの20選 \*/.*?(?=</style>)', '', style)
+    style = re.sub(r'\s*</style>$', '\n</style>', style)
     header = re.search(r'(?s)<header>.*?</header>', old).group(0)
     footer = re.search(r'(?s)<footer>.*?</footer>', old).group(0)
     gtag = re.search(r'(?s)<!-- Google tag \(gtag\.js\) -->.*?</script>\s*<script>.*?</script>', old).group(0)
     extra_css = '''
 /* 2026-10 作り直し：電車で行く人向けの20選 */
+.td-picks{margin:4px 0 14px}
+.td-picks h2{font-size:17px;font-weight:800;color:#2a3820;margin:0 0 8px}
+.td-pick-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.td-pick{display:flex;flex-direction:column;background:white;border-radius:14px;border:1px solid #e0dbd4;overflow:hidden}
+.td-pick-n a{color:#2a3820;text-decoration:none}
+.td-pick-a{font-size:12px;font-weight:700;color:#4a6038;text-decoration:none;margin-top:2px}
+.td-pick-img{width:100%;height:150px;object-fit:cover;display:block}
+.td-pick .td-photo{margin:0}
+.td-pick .td-photo .ym-photo-credit{margin:5px 12px 0 !important}
+.td-pick .ym-photo-credit{order:0 !important;margin:4px 10px 0 !important;font-size:10px !important}
+.td-pick-b{padding:10px 12px 12px;display:flex;flex-direction:column;gap:5px}
+.td-pick-l{font-size:11px;font-weight:700;color:#4e6535}
+.td-pick-n{font-size:17px;font-weight:800;color:#2a3820;line-height:1.3}
+.td-pick-n span{font-size:11px;font-weight:600;color:#9a9088;margin-left:6px}
+.td-pick-k{font-size:12px;color:#1a4a70;background:#e8f2fb;border-radius:8px;padding:5px 8px}
+.td-pick-f{font-size:12px;color:#5a5248;line-height:1.6}
+.td-pick-f b{display:block;color:#2a3820;font-size:12px}
+.td-pick-r{font-size:11.5px;color:#3a5828}
+@media(max-width:680px){.td-pick-g{grid-template-columns:1fr}.td-pick-img{height:170px}}
 .td-index{background:white;border-radius:14px;border:1px solid #e0dbd4;padding:14px;margin-bottom:12px;overflow-x:auto}
 .td-index table{border-collapse:collapse;width:100%;min-width:520px;font-size:12px}
 .td-index th,.td-index td{padding:6px 6px;border-bottom:1px solid #f0ede8;text-align:left;white-space:nowrap}
@@ -200,34 +269,44 @@ def main():
 .td-index td a{color:#2a3820;font-weight:700;text-decoration:none}
 .td-gh{font-size:17px;font-weight:800;color:#2a3820;margin:22px 0 4px}
 .td-gl{font-size:13px;color:#5a5248;line-height:1.7;margin-bottom:10px}
-.td-card{background:white;border-radius:14px;border:1px solid #e0dbd4;margin-bottom:10px;padding:14px;display:flex;gap:10px}
-.td-no{font-size:18px;font-weight:900;color:#c0b090;min-width:26px;text-align:center}
-.td-body{flex:1;min-width:0}
-.td-name{font-size:16px;line-height:1.35;margin-bottom:8px}
+.td-card{background:white;border-radius:16px;border:1px solid #e0dbd4;margin-bottom:16px;padding:18px 18px 16px}
+.td-name{font-size:19px;line-height:1.4;margin-bottom:12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px}
+.td-no{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;border-radius:50%;background:#4e6535;color:#fff;font-size:14px;font-weight:800;align-self:center}
 .td-name a{color:#2a3820;text-decoration:none}
-.td-sub{display:block;font-size:11px;font-weight:400;color:#9a9088;margin-top:2px}
-.td-key{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px}
-.td-key div{background:#f6f4ef;border-radius:8px;padding:6px 8px}
-.td-key span{display:block;font-size:10px;color:#9a9088}
-.td-key b{font-size:14px;color:#2a3820}
-.td-path{font-size:12px;color:#1a4a70;background:#e8f2fb;border-radius:8px;padding:6px 9px;line-height:1.7;margin-bottom:6px}
-.td-line{font-size:10.5px;color:#4a6a88;background:#fff;border-radius:4px;padding:0 4px;margin:0 2px}
-.td-other{font-size:11px;color:#6a6258;margin-bottom:6px}
-.td-walk{font-size:12px;color:#3a5828;background:#f0f6e8;border-radius:8px;padding:6px 9px;margin-bottom:6px}
-.td-last{font-size:12px;color:#3a342c;border:1px solid #e6dcc4;background:#fffaf0;border-radius:8px;padding:7px 9px;margin-bottom:8px;line-height:1.6}
-.td-last b{display:block;font-size:11px;color:#7a5a20;margin-bottom:2px}
+.td-sub{flex-basis:100%;font-size:12px;font-weight:400;color:#8a8078}
+.td-photo{margin:0 0 14px}
+.td-photo-img{width:100%;height:220px;object-fit:cover;border-radius:12px;display:block}
+.td-photo .ym-photo-credit{order:0 !important;margin:5px 2px 0 !important;font-size:10.5px !important}
+.td-key{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.td-key div{background:#f6f4ef;border-radius:10px;padding:9px 10px}
+.td-key span{display:block;font-size:11px;color:#8a8078;margin-bottom:2px}
+.td-key b{font-size:15px;color:#2a3820}
+.td-sec{margin-bottom:16px}
+.td-h{font-size:13px;font-weight:800;color:#2a3820;margin-bottom:7px}
+.td-path{font-size:13px;color:#1a4a70;background:#e8f2fb;border-radius:10px;padding:10px 12px;line-height:1.9}
+.td-line{font-size:11px;color:#4a6a88;background:#fff;border-radius:4px;padding:1px 5px;margin:0 2px}
+.td-notes{list-style:none;margin:8px 0 0;padding:0}
+.td-notes li{font-size:12px;color:#6a6258;line-height:1.75;margin-bottom:6px;padding-left:12px;position:relative}
+.td-notes li:before{content:"";position:absolute;left:2px;top:.75em;width:4px;height:4px;border-radius:50%;background:#b8ae9e}
+.td-walk{font-size:13px;color:#3a5828;background:#f0f6e8;border-radius:10px;padding:10px 12px;line-height:1.7}
+.td-walk b{display:block;font-weight:700}
+.td-walk span{font-size:12.5px;color:#5a7048}
+.td-last{font-size:13px;color:#3a342c;border:1px solid #e6dcc4;background:#fffaf0;border-radius:10px;padding:10px 12px;line-height:1.75}
+.td-last b{display:block;font-size:13px;font-weight:800;color:#7a5a20;margin-bottom:4px}
 .td-last-walk{border-color:#cfe0c0;background:#f4f9ef}
 .td-last-walk b{color:#3a5828}
 .td-last-pending{color:#7a7068}
-.td-last-t{border-collapse:collapse;width:100%;margin:2px 0 4px}
-.td-last-t th,.td-last-t td{font-size:11.5px;padding:3px 4px;border-bottom:1px solid #f0e6d0;text-align:left}
-.td-last-t th{font-size:10px;color:#9a8a60;font-weight:600}
-.td-last-n,.td-last-s{font-size:10.5px;color:#7a7068}
+.td-last-t{border-collapse:collapse;width:100%;margin:2px 0 8px}
+.td-last-t th,.td-last-t td{font-size:12.5px;padding:7px 5px;border-bottom:1px solid #f0e6d0;text-align:left;line-height:1.6}
+.td-last-t td:nth-child(2),.td-last-t td:nth-child(3),.td-last-t th:nth-child(2),.td-last-t th:nth-child(3){white-space:nowrap;text-align:center;width:3.6em}
+.td-last-t td:nth-child(2),.td-last-t td:nth-child(3){font-weight:700;font-size:14px}
+.td-last-t th{font-size:11px;color:#9a8a60;font-weight:600}
+.td-last-n,.td-last-s{font-size:11.5px;color:#7a7068;line-height:1.75;margin-top:6px}
 .td-last-s a{color:#4a6038}
-.td-feat{list-style:none;margin:0 0 8px;padding:0}
-.td-feat li{font-size:12px;color:#5a5248;line-height:1.6;margin-bottom:3px}
-.td-feat b{color:#2a3820;margin-right:6px}
-.td-link{font-size:12px;font-weight:700;color:#4a6038;text-decoration:none}
+.td-feat{list-style:none;margin:0;padding:0}
+.td-feat li{font-size:13px;color:#5a5248;line-height:1.8;margin-bottom:10px}
+.td-feat b{display:block;color:#2a3820}
+.td-link{display:block;font-size:13px;font-weight:700;color:#4a6038;text-decoration:none;background:#f0f6e8;border-radius:10px;padding:11px 12px;text-align:center}
 .td-tips{background:white;border-radius:14px;border:1px solid #e0dbd4;padding:16px 18px;margin:16px 0}
 .td-tips h2{font-size:16px;color:#2a3820;margin-bottom:8px}
 .td-tips li{font-size:13px;color:#4a4540;line-height:1.75;margin:0 0 6px 18px}
@@ -239,7 +318,7 @@ def main():
 .td-more th{font-size:10.5px;color:#7a7068;font-weight:600}
 .td-more td a{color:#2a3820;text-decoration:none;font-weight:600}
 .faq-q{font-size:14px;font-weight:700;color:#2a3820;margin-bottom:6px;line-height:1.5}
-@media(max-width:420px){.td-key b{font-size:13px}.td-card{padding:12px 10px}}
+@media(max-width:420px){.td-card{padding:16px 14px 14px}.td-key{gap:6px}.td-key div{padding:8px 8px}.td-key b{font-size:14px}.td-photo-img{height:190px}}
 '''
     style = style.replace('</style>', extra_css + '</style>')
 
@@ -253,8 +332,7 @@ def main():
             cards.append(card(n, m, lb))
             r = chosen_route(m)
             # 一覧の欄に出す行（lastBus の indexRow。無ければ最後の行）。ケーブルカーの最終が先に来る山などで使う
-            ir = (lb or {}).get('indexRow', -1)
-            lbs = {'walk': '駅まで徒歩', 'ok': ((lb.get('indexLabel') + ' ') if lb.get('indexLabel') else '') + '平日 %s ／ 土休日 %s' % (lb['rows'][ir]['weekday'], lb['rows'][ir]['holiday']) if lb and lb.get('status') == 'ok' else ''}.get((lb or {}).get('status'), '確認中')
+            lbs = last_short(lb)
             idx_rows.append('<tr><td>%d</td><td><a href="#m-%s">%s</a></td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>' % (
                 n, E(i), E(m['name']), E(m.get('difficulty')), E(hm(dep_time(m))), E(yen(dep_fare(m))), E(r.get('time')), E(lbs)))
             items.append({'@type': 'ListItem', 'position': n, 'url': 'https://tozan-navi.com/mountains/%s/' % i, 'name': m['name']})
@@ -324,6 +402,7 @@ def main():
         '    <a href="#g-hyaku" class="rs-tag">電車で行く百名山</a>',
         '    <a href="#more" class="rs-tag">ほかの電車で行ける山</a>',
         '  </div>',
+        picks_html(cfg, D),
         '  <div class="td-index"><table><tr><th>#</th><th>山</th><th>難易度</th><th>新宿から</th><th>片道</th><th>歩く時間</th><th>帰りの最終バス</th></tr>%s</table></div>' % ''.join(idx_rows),
         '\n'.join(cards),
         '  <div class="td-tips"><h2>電車登山で困らないために</h2><ul>%s</ul></div>' % ''.join('<li>%s</li>' % E(t) for t in tips),
@@ -344,7 +423,7 @@ def main():
         '<meta property="og:type" content="website">', '<meta property="og:url" content="%s">' % URL,
         '<link rel="canonical" href="%s">' % URL,
     ] + ['<script type="application/ld+json">%s</script>' % json.dumps(x, ensure_ascii=False, separators=(',', ':')) for x in ld] + [
-        style, '</head>', '<body>', MARK, header, main_html, footer, '<script src="/assets/js/to-top.js?v=20261025a" defer></script>', '</body>', '</html>', ''])
+        style, '</head>', '<body>', MARK, header, main_html, footer, '<script src="/assets/js/to-top.js?v=20261025a" defer></script>', '<script src="/assets/js/card-photos.js?v=20261030" defer></script>', '<script src="/assets/js/card-photo-credits.js?v=20261030" defer></script>', '</body>', '</html>', ''])
     open(PAGE, 'w', encoding='utf-8').write(page)
     print('作りました：%d山（ほか%d山）／最終バス 確認済み %d・徒歩 %d・確認中 %d' % (
         total, len(rest), sum(1 for v in cfg['lastBus'].values() if v.get('status') == 'ok'),

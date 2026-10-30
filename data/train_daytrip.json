@@ -1,5 +1,25 @@
 {
   "note": "「電車で行ける日帰り登山（関東）」まとめ（/search/train-daytrip/）の選んだ山と、帰りの最終バス。ページは scripts/gen_train_daytrip.py が作る（手で編集しない）。電車の時間・運賃・コースは data/mountains.json から読む。最終バスは運行会社の公式の時刻表で確かめたものだけを書き、出典（sourceUrl）・時刻表の改正日（revised）・確認日（checkedAt）を残す。確かめていない山は status: pending（ページでは「確認中」と運行会社）。徒歩で駅に戻れる山は status: walk",
+  "picks": {
+    "note": "冒頭の「迷ったらこの3コース」。写真がある山・帰り方が確かめられた山から選ぶ。feat は山の featurePoints の label（その文をそのまま出す）",
+    "items": [
+      {
+        "id": "takao",
+        "label": "🔰 はじめての1座なら",
+        "feat": "山頂の展望"
+      },
+      {
+        "id": "jinba",
+        "label": "🚶 駅から駅へ歩くなら",
+        "feat": "360度の山頂"
+      },
+      {
+        "id": "tonosaki",
+        "label": "💪 しっかり登るなら",
+        "feat": "大倉尾根"
+      }
+    ]
+  },
   "groups": [
     {
       "key": "easy",
