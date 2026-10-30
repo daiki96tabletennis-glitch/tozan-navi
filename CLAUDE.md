@@ -92,7 +92,7 @@
 - セクション10・11のうち調査待ちのレガシーは `scripts/check_known_issues.json`（ベースライン）に登録済みで件数に含めない。新規の指摘のみ異常として数える。解消したら `python3 scripts/check_pages.py --update-baseline` でベースラインを更新する
 - アクセス表の注記は、`summaryNote` と `note` を1つの箇条書きにまとめて表示する（同じ内容は自動で1つにする）。書くのはアクセス・予約・運行期間・運賃・前泊の要否・規制だけ。コースの説明や見どころは書かない
 - アクセス表の注記（`trainRoutes.note` / `summaryNote`）は、`render_transit_routes.py` が「。」「※」で区切って箇条書き（`ul.ts-note-list`）に自動整形する。書くときは1文1項目を意識し、1文を長くしない
-- 規制中の山は `status.level: "restricted"` を付ける。トップの一覧・診断では自動で末尾に回るが、検索ページ・記事の「おすすめカード」からは手動で外す（セクション13で検出）
+- 規制中の山は `status.level: "restricted"` を付ける。トップの一覧・診断では自動で末尾に回るが、検索ページ・記事の「おすすめカード」からは手動で外す（セクション13で検出）。一時的な閉鎖でカードを残すときは、カードの中に `data-closed="山ID"` の注意（閉鎖の理由・日付・出典）を出せばセクション13で止まらない（2026-10-30 に弘法山で使った。クマの出没で秦野市が10/24から弘法山公園を閉鎖、再開未定。小田急線・湘南新宿ライン・丹沢・アイゼン不要の冬の山の4ページ。再開したら `status`・`warnBanner`・注意を外す。記録は `scripts/migrations/fix_koubousan_tenzandake_2026_10.py`）
 - `routes[]` の各ルートには `coeff`（ルート別コース定数）がある。`scripts/calc_route_coeff.py` で time/distance/elevation から再計算する（山全体の coeffMin/coeffMax は別管理）
 - 電車・バス・運賃を変更したら、管理表 `yamatch_kensho_kanri (3).xlsx`（経路・運賃・時間データ一覧／修正履歴データ管理表／検証チェックリスト／バス情報整合性チェック）も同時に更新する
 
@@ -402,6 +402,7 @@
   - `articles/mountain-gourmet/`（山の茶屋・山小屋グルメ）：`scripts/gen_gourmet_article.py`。中身は `data/mountain_gourmet.json`。泊まる人だけの夕食・朝食は載せない。値段・営業時間は載せない。写真は `images/articles/mountain-gourmet/<key>.jpg` を置いて `image.src` を入れる（ファイルがある項目だけ写真が出る。お店の公式サイトの写真は無断で使わない）
     - 写真は管理画面の「グルメ記事の写真」（`/admin/gourmet/`。運営者の指示・2026-10-20）で選ぶ：お店ごとに Commons の候補を出し（商用で使えるライセンスだけ「使える」）、選んだ写真を幅1200pxの JPEG にして `images/articles/mountain-gourmet/<key>-<Commonsのページ番号>.jpg` と `image` を GitHub に直接書く。記事は `.github/workflows/gourmet-article.yml` が `gen_gourmet_article.py` で作り直す（AIは使わない）
     - 手元で選ぶときは `python3 scripts/gourmet_commons.py all`（Wikimedia Commons から、商用で使えるライセンスの候補だけを集め、`.claude/gourmet_commons/index.html` に並べる）→ 人が見て選ぶ → `apply <key> <番号> [写真の説明]` → `gen_gourmet_article.py`。写真の下に作者・ライセンス・Commons へのリンクが出る（CC BY / BY-SA の表示の条件）。料理名や山名で見つかった写真には注意が出る（別のお店の料理を、そのお店のものとして載せない）。いつも使う検索語は項目の `commonsQueries` に書く
+  - 路線別の登山記事（`search/odakyu-hiking/` `jr-chuo-hiking/` `seibu-hiking/`。2026-10-30〜）：`scripts/gen_line_articles.py <slug>`。中身は `data/line_articles.json`（分け方・山ごとの「選ぶ理由」・使うコースの番号・よくある質問）。時間・距離・登り・定数・電車とバスの時間・運賃・閉鎖は `mountains.json` から読むので、山のデータを直したら作り直す。「選ぶ理由」は山ページの特徴（`featurePoints`）に書いてあることだけで書く。装備欄は前と同じ形（`gear-data.json`）。山のデータに無い別の行き方は `altAccess`（公式の経路検索などで確かめ、出典・確認日つき。金時山の小田原駅からのバス）。`status` が caution の山は黄色、restricted は赤の注意を出す
 - ページ再生成：`scripts/gen_mountain_pages.py --id <id>`（全件は `--all`、書き込まず確認は `--dry-run`）
 - 検証：`scripts/check_pages.py`（0件になるまで修正を繰り返す）
 - 出発地別の全件一覧（`search/shinjuku`・`omiya`・`yokohama`・`ofuna`）：`scripts/sync_search_hubs.py --write` が車の所要時間・難易度・日帰り表示・地域・標高・並び順・件数を `mountains.json` に合わせる。難易度・日帰り・車の時間（`driveTime*` / `driveOfuna`）を変えたら実行する（ずれはセクション17で検出）。掲載する山の追加・削除は手作業

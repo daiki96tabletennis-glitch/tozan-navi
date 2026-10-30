@@ -524,10 +524,13 @@ def check_restricted_listings(mountains):
             if not os.path.isfile(path):
                 continue
             html = read(path)
-            blocks = re.split(r'(?=<div class="mountain-card)', html)[1:]
+            starts = [mm.start() for mm in re.finditer(r'<div class="mountain-card"', html)]
+            cards = [html[a:(starts[i + 1] if i + 1 < len(starts) else len(html))] for i, a in enumerate(starts)]
             for mid in restricted:
-                if any(re.search(r'data-mountain-id="%s"|href="/mountains/%s/"' % (re.escape(mid), re.escape(mid)), b.split('<div class="mountain-card', 2)[1] if False else b[:6000]) for b in blocks):
-                    issues.append({'id': mid, 'problem': f'規制中の山が {sub}/{slug} のおすすめカードに載っている'})
+                pat = r'data-mountain-id="%s"|href="/mountains/%s/"' % (re.escape(mid), re.escape(mid))
+                # カードに「閉鎖中」などの注意（data-closed="山ID"）を出していれば、載せたままでよい（一時的な閉鎖のため）
+                if any(re.search(pat, c) and 'data-closed="%s"' % mid not in c for c in cards):
+                    issues.append({'id': mid, 'problem': f'規制中の山が {sub}/{slug} のおすすめカードに載っている（載せるならカードに data-closed の注意を出す）'})
     return issues
 
 

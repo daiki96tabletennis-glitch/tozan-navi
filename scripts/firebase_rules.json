@@ -109,9 +109,9 @@
       }
     },
     "adminDash": {
-      ".read": "auth != null && auth.uid === 'OWNER_UID_NOT_SET'",
+      ".read": "auth != null && auth.uid === 'xqSXVl38tfbFUv077kt09shVd2F2'",
       "revenue": {
-        ".write": "auth != null && auth.uid === 'OWNER_UID_NOT_SET'",
+        ".write": "auth != null && auth.uid === 'xqSXVl38tfbFUv077kt09shVd2F2'",
         "$ym": {
           ".validate": "$ym.matches(/^[0-9]{4}-[0-9]{2}$/) && newData.hasChildren(['rakuten', 'amazon'])",
           "rakuten": {
