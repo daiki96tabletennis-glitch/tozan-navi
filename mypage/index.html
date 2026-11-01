@@ -347,7 +347,7 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
     <div class="modal-header">
       <button class="modal-close" onclick="closePlanDetail()">✕</button>
       <div class="modal-title" id="detail-title">計画詳細</div>
-      <button class="modal-save" onclick="window.print()" style="background:rgba(255,255,255,0.2)">PDF</button>
+      <button class="modal-save" data-plan-pdf data-ready-label="保存" onclick="ymPlanPdf()" style="background:rgba(255,255,255,0.2)">PDF</button>
     </div>
     <div id="detail-body" style="padding:12px"></div>
   </div>
@@ -625,9 +625,10 @@ function openPlanDetail(index) {
     html += '</div></div></div>';
   }
   if(p.memo) html += '<div class="card" style="margin-bottom:10px"><div class="card-header">📝 メモ</div><div class="card-body" style="font-size:13px;line-height:1.7;white-space:pre-wrap">'+esc(p.memo)+'</div></div>';
-  html += '<button class="pdf-btn" onclick="window.print()">📄 PDFとして保存</button>';
+  html += '<button class="pdf-btn" data-plan-pdf onclick="ymPlanPdf()">📄 PDFとして保存</button>';
   document.getElementById('detail-body').innerHTML = html;
   document.getElementById('plan-detail').classList.add('open');
+  if (window.ymPlanPdfPreload) window.ymPlanPdfPreload();
 }
 function closePlanDetail(){ document.getElementById('plan-detail').classList.remove('open'); }
 
@@ -2344,5 +2345,6 @@ init();
 <script src="/assets/js/gear-common.js?v=20261020a" defer></script>
 <script src="/assets/js/packing.js?v=20261020a" defer></script>
 <script src="/assets/js/admin-notices.js?v=20261016a" defer></script>
+<script src="/assets/js/plan-pdf.js?v=20261101b" defer></script>
 </body>
 </html>
