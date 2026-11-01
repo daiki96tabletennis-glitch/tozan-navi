@@ -1,0 +1,47 @@
+# 記事一覧（/articles/）の並び順を、直近1週間によく読まれている順に作り直す。毎朝と手動実行のとき。AIは使わない。
+# GA4 の表示回数を読み、並び順だけを data/article_rank.json に書いてコミットする（表示回数は書かない）。
+# 記事一覧に載ってから14日間の新しい記事は上に出す。並び順が変わらない日はコミットしない。
+# 必要な Secrets：GOOGLE_READER_KEY（管理画面の分析と同じ、GA4 の読み取り用の鍵）
+name: 記事一覧の並び順を作る
+
+on:
+  schedule:
+    - cron: '23 20 * * *'   # 毎日 5:23（日本時間）。:00 ちょうどは混むので避ける
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: article-rank
+  cancel-in-progress: false
+
+jobs:
+  rank:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GOOGLE_READER_KEY: ${{ secrets.GOOGLE_READER_KEY }}
+    steps:
+      - name: 設定があるか確かめる
+        id: ready
+        run: |
+          if [ -n "$GOOGLE_READER_KEY" ]; then echo "ok=1" >> "$GITHUB_OUTPUT"; else echo "Secrets が未設定のため、何もしません"; fi
+      - uses: actions/checkout@v4
+        if: steps.ready.outputs.ok == '1'
+      - uses: actions/setup-python@v5
+        if: steps.ready.outputs.ok == '1'
+        with:
+          python-version: '3.12'
+      - name: 並び順を作ってコミットする
+        if: steps.ready.outputs.ok == '1'
+        run: |
+          pip install -q google-auth requests
+          python3 scripts/article_rank.py
+          git add data/article_rank.json
+          if git diff --cached --quiet; then echo "変化なし"; exit 0; fi
+          git config user.name "yamatch-article-rank"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -q -m "記事一覧の並び順を更新（直近1週間の表示回数）"
+          git pull -q --rebase
+          git push -q

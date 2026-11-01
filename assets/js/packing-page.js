@@ -4,7 +4,7 @@
    - 仲間と共有するとき：Firebase Realtime Database の /packLists/<20文字> に、条件・メンバーの名前とチェック・足した持ち物を預ける。
      リンク（/packing/?l=<番号>）を開いた人は同じリストを見られ、変更はすぐ全員に出る（REST の EventSource）。
      登る日の30日後に GitHub の定期実行（scripts/packlists_cleanup.js）が消す。ルールは scripts/firebase_rules.json の packLists
-   必要なもの：counts-config.js（YM_COUNTS_DB_URL）、packing.js（YMPacking）、gear-common.js（Amazon のリンク） */
+   必要なもの：counts-config.js（YM_COUNTS_DB_URL）、packing.js（YMPacking）。このリストには商品・アフィリエイトのリンクを出さない（運営者の指示・2026-11-01） */
 (function () {
   'use strict';
   var root = document.getElementById('pk-app');
@@ -140,7 +140,7 @@
       return s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + '</a>' : esc(s.label);
     }).filter(Boolean);
     return '<p class="pk-src">出典：' + (links.length ? links.join('、') + 'をもとに、' : '') + 'Yamatch がまとめました（' + esc(DATA.checkedAt || '') + '）。' +
-      '雪の時期の装備は、選んだ山の装備カレンダーから選んでいます。商品のリンクは Amazon の検索結果です（広告。当サイトは Amazon アソシエイトを利用しています）。</p>';
+      '雪の時期の装備は、選んだ山の装備カレンダーから選んでいます。</p>';
   }
 
   function formHtml() {
@@ -182,11 +182,11 @@
     if (act && act.hide) btn = '<button type="button" class="pk-mini" data-pk-hide="' + esc(act.hide) + '">外す</button>';
     if (act && act.delMine) btn = '<button type="button" class="pk-mini" data-pk-delmine="' + esc(act.delMine) + '">消す</button>';
     if (act && act.delx) btn = '<button type="button" class="pk-mini" data-pk-delx="' + esc(act.delx) + '">消す</button>';
-    return '<li' + (mine ? ' class="on"' : '') + '><label><input type="checkbox" data-pk-k="' + esc(k) + '"' + (mine ? ' checked' : '') + '>' +
+    var cls = (mine ? 'on' : '') + (btn ? ' pk-act' : '');
+    return '<li' + (cls.trim() ? ' class="' + cls.trim() + '"' : '') + '><label><input type="checkbox" data-pk-k="' + esc(k) + '"' + (mine ? ' checked' : '') + '>' +
       '<span>' + esc(label) + (note ? '<small>' + esc(note) + '</small>' : '') +
       (who.length ? '<em class="pk-who">✔ ' + esc(who.join('・')) + '</em>' : '') + '</span></label>' +
       btn +
-      (prods || []).map(function (p) { return '<a class="pk-buy" href="' + esc(window.YMPacking.buyUrl(p)) + '" target="_blank" rel="sponsored noopener">Amazonで見る：' + esc(p) + '</a>'; }).join('') +
       '</li>';
   }
 
@@ -194,11 +194,6 @@
     var gs = groups(), ck = myChecks(), xs = extras();
     var total = 0, done = 0;
     var h = formHtml();
-    if (shared && !((shared.data.members || {})[devId()])) {
-      h += '<div class="pk-card pk-join"><b>あなたの名前</b><p>仲間のリストに表示されます（ニックネームでかまいません）。</p>' +
-        '<div class="pk-row"><input type="text" maxlength="20" data-pk-name value="' + esc(lsGet(K_NAME, '')) + '" placeholder="例：たろう">' +
-        '<button type="button" class="pk-btn" data-pk-join>参加する</button></div></div>';
-    }
     var m = mountain(), p = (state.date || '').split('-');
     if (m && p.length === 3) {
       var cell = m.gear[+p[1] - 1];
@@ -215,7 +210,7 @@
         if (cu.hidden[k]) { hiddenList.push({ k: k, label: it.label }); return; }
         total++;
         if (ck[k]) done++;
-        rows += itemHtml(k, it.label, state.edit ? '' : it.note, state.edit ? null : it.products, !!ck[k], null, state.edit ? { hide: k } : null);
+        rows += itemHtml(k, it.label, state.edit ? '' : it.note, null, !!ck[k], null, state.edit ? { hide: k } : null);
       });
       if (!rows) return;
       h += '<div class="pk-g"><h2>' + esc(g.title) + '</h2>' + (g.lead && !state.edit ? '<p class="pk-lead">' + esc(g.lead) + '</p>' : '') + '<ul>' + rows + '</ul></div>';
@@ -264,7 +259,7 @@
   function setCheck(k, on) {
     if (shared) {
       var me = devId();
-      if (!(shared.data.members || {})[me]) { msg('先に名前を入れて「参加する」を押してください。'); draw(); return; }
+      if (!(shared.data.members || {})[me]) join(lsGet(K_NAME, '') || autoName(), false);
       shared.data.members[me].checks = shared.data.members[me].checks || {};
       if (on) shared.data.members[me].checks[k] = true; else delete shared.data.members[me].checks[k];
       draw();
@@ -342,8 +337,16 @@
   }
   function forget(id) { lsSet(K_LISTS, lsGet(K_LISTS, []).filter(function (x) { return x.id !== id; })); }
 
+  // 名前は聞かない（運営者の指示）。自動で「メンバー1」「メンバー2」…。付けたい人は「名前を変える」で
+  function autoName() {
+    var used = {};
+    Object.keys((shared && shared.data.members) || {}).forEach(function (id) { used[(shared.data.members[id] || {}).name] = 1; });
+    var n = 1;
+    while (used['メンバー' + n]) n++;
+    return 'メンバー' + n;
+  }
   function askName() {
-    var n = window.prompt('仲間のリストに表示する名前（ニックネームでかまいません）', lsGet(K_NAME, ''));
+    var n = window.prompt('仲間のリストに表示する名前', lsGet(K_NAME, ''));
     if (n === null) return null;
     n = n.trim().slice(0, 20);
     if (!n) return null;
@@ -352,8 +355,7 @@
   }
 
   function createShared() {
-    var name = lsGet(K_NAME, '') || askName();
-    if (!name) return;
+    var name = lsGet(K_NAME, '') || 'メンバー1';
     var id = rand(20, 'abcdefghijklmnopqrstuvwxyz0123456789');
     var base = /^\d{4}-\d{2}-\d{2}$/.test(state.date) ? new Date(state.date + 'T00:00:00+09:00').getTime() : Date.now();
     var now = Date.now();
@@ -372,10 +374,11 @@
       sendLink();
     }).catch(function () { msg('共有のリストを作れませんでした。時間をおいてもう一度試してください。'); });
   }
-  function join(name) {
+  // keep：その名前を、この端末の名前として覚えるか（「名前を変える」で付けたときだけ。自動の「メンバー◯」は覚えない）
+  function join(name, keep) {
     name = (name || '').trim().slice(0, 20);
-    if (!name) { msg('名前を入れてください。'); return; }
-    lsSet(K_NAME, name);
+    if (!name) return;
+    if (keep) lsSet(K_NAME, name);
     var me = devId(), rec = { name: name, at: Date.now() };
     shared.data.members = shared.data.members || {};
     var old = shared.data.members[me];
@@ -397,9 +400,10 @@
       state.mid = d.mid === '-' ? '' : d.mid;
       state.date = d.date === '-' ? '' : d.date;
       state.stay = d.stay;
-      if ((d.members || {})[devId()]) remember(id);
       watch(id);
-      draw();
+      // 開いた人は、名前を聞かずにそのまま参加する
+      if (!(d.members || {})[devId()]) join(lsGet(K_NAME, '') || autoName(), false);
+      else { remember(id); draw(); }
     }).catch(function () {
       root.innerHTML = '<div class="pk-card"><b>リストを読み込めませんでした</b><p>通信を確かめて、もう一度開いてください。</p></div>';
     });
@@ -429,8 +433,7 @@
     if (q('[data-pk-copy]')) q('[data-pk-copy]').addEventListener('click', function () { copyText(listText(), 'コピーしました。LINE やメモに貼り付けられます。'); });
     if (q('[data-pk-reset]')) q('[data-pk-reset]').addEventListener('click', function () { var o = localStore(); o.c = {}; saveLocal(o); draw(); });
     if (q('[data-pk-sendlink]')) q('[data-pk-sendlink]').addEventListener('click', sendLink);
-    if (q('[data-pk-join]')) q('[data-pk-join]').addEventListener('click', function () { join(q('[data-pk-name]').value); });
-    if (q('[data-pk-rename]')) q('[data-pk-rename]').addEventListener('click', function () { var n = askName(); if (n) join(n); });
+    if (q('[data-pk-rename]')) q('[data-pk-rename]').addEventListener('click', function () { var n = askName(); if (n) join(n, true); });
     if (q('[data-pk-leave]')) q('[data-pk-leave]').addEventListener('click', function () {
       unwatch(); shared = null; history.replaceState(null, '', '/packing/'); draw();
     });

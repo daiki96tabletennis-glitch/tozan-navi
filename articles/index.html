@@ -52,6 +52,7 @@ main{max-width:480px;margin:0 auto;padding:0 20px 24px}
 .quick-link-chevron{flex-shrink:0;color:#c8c0b2;font-size:18px;margin-left:auto}
 
 /* ===== 記事画像カード ===== */
+.arank-h{font-size:15px;font-weight:800;color:#2a3820;margin:22px 2px -8px}
 .acard{display:block;background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);margin:0 0 16px}
 .acard:first-of-type{margin-top:20px;box-shadow:var(--shadow-lg)}
 .acard img{display:block;width:100%;height:auto}
@@ -101,6 +102,8 @@ main{max-width:480px;margin:0 auto;padding:0 20px 24px}
   </div>
   <div class="quick-link-chevron">›</div>
 </a>
+
+<h2 class="arank-h" id="arank-h" hidden>よく読まれている順</h2>
 
 <a href="/articles/koyo-hiking-2026/" class="acard">
   <img src="/articles/images/hero_koyo.jpg" alt="紅葉登山10選｜標高順で巡る紅葉前線" loading="eager" fetchpriority="high">
@@ -224,6 +227,32 @@ main{max-width:480px;margin:0 auto;padding:0 20px 24px}
 </nav>
 <div style="height:64px"></div>
 
+<script>
+/* 記事のカードを、直近1週間によく読まれている順に並べる（data/article_rank.json。scripts/article_rank.py が毎朝作る。
+   記事一覧に載ってから14日間の新しい記事は上）。読めないときはいまの順のまま、見出しも出さない */
+(function(){
+  var h = document.getElementById('arank-h');
+  if (!h || !window.fetch) return;
+  fetch('/data/article_rank.json', { cache: 'no-cache' }).then(function(r){ return r.ok ? r.json() : null; }).then(function(d){
+    if (!d || !d.order || !d.order.length) return;
+    var cards = Array.prototype.slice.call(document.querySelectorAll('a.acard'));
+    if (!cards.length) return;
+    var parent = cards[0].parentNode;
+    var rank = {};
+    d.order.forEach(function(p, i){ rank[p] = i; });
+    cards.sort(function(a, b){
+      var ra = rank[a.getAttribute('href')], rb = rank[b.getAttribute('href')];
+      // 並び順のファイルにまだ無い記事（足したばかり）は一番上
+      if (ra === undefined) ra = -1;
+      if (rb === undefined) rb = -1;
+      return ra - rb;
+    });
+    var after = h;
+    cards.forEach(function(c){ parent.insertBefore(c, after.nextSibling); after = c; });
+    h.hidden = false;
+  }).catch(function(){});
+})();
+</script>
 <script src="/assets/js/to-top.js?v=20261025a" defer></script>
 </body>
 </html>

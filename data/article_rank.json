@@ -1,0 +1,33 @@
+{
+ "note": "記事一覧の並び順（直近7日間の表示回数の多い順。記事一覧に載ってから14日間の新しい記事は上）。scripts/article_rank.py が毎朝作る。表示回数は書かない",
+ "updated": "2026-11-01",
+ "order": [
+  "/articles/train-access-mountains/",
+  "/articles/kanto-day-trip-100/",
+  "/articles/koyo-hiking-2026/",
+  "/articles/winter-no-crampons/",
+  "/articles/coeff-30/",
+  "/articles/tokyo-daytrip-5/",
+  "/articles/coeff-40/",
+  "/articles/mountain-gourmet/",
+  "/articles/coeff-20/",
+  "/articles/coeff-50/",
+  "/articles/cool-mountains-summer/",
+  "/articles/coeff-10/"
+ ],
+ "new": [],
+ "added": {
+  "/articles/koyo-hiking-2026/": "2026-01-01",
+  "/articles/cool-mountains-summer/": "2026-01-01",
+  "/articles/kanto-day-trip-100/": "2026-01-01",
+  "/articles/train-access-mountains/": "2026-01-01",
+  "/articles/coeff-10/": "2026-01-01",
+  "/articles/coeff-20/": "2026-01-01",
+  "/articles/coeff-30/": "2026-01-01",
+  "/articles/coeff-40/": "2026-01-01",
+  "/articles/coeff-50/": "2026-01-01",
+  "/articles/tokyo-daytrip-5/": "2026-01-01",
+  "/articles/mountain-gourmet/": "2026-01-01",
+  "/articles/winter-no-crampons/": "2026-01-01"
+ }
+}
