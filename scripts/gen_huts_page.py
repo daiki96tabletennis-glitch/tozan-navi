@@ -435,6 +435,33 @@ h1{font-size:22px;font-weight:800;color:#2a3820;margin-bottom:4px}
 .cmp th,.cmp td{padding:7px 9px;border-bottom:1px solid #f0ede5;text-align:left;vertical-align:top}
 .cmp th{font-size:11px;color:#7a7068;background:#f7f5ef}.cmp td:first-child{min-width:7em}.cmp td:last-child{min-width:4.5em}.cmp a{color:#2a3820;font-weight:700}
 .sec{font-size:17px;font-weight:800;color:#2a3820;margin:22px 0 10px}
+/* 山小屋の選び方（data/huts_guides.json） */
+.gd{margin-bottom:8px}
+.gds{background:#fff;border:1px solid #e0dbd4;border-radius:4px;padding:12px 14px;margin-bottom:10px}
+.gds h3{font-size:15px;color:#2a3820;margin:0 0 6px;font-family:'Noto Serif JP',serif}
+.gds p{font-size:13px;color:#3a3530;line-height:1.75;margin:0}
+.gds ul{margin:6px 0 0;padding-left:1.2em;font-size:13px;color:#3a3530;line-height:1.7}
+.gdc{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px;background:#fff}
+.gdc th,.gdc td{padding:7px 8px;border-bottom:1px solid #eee8de;text-align:left;vertical-align:top}
+.gdc th{font-size:11px;color:#7a7068;background:#f7f5ef;font-weight:700}
+.gdc small{display:block;font-size:11px;color:#8a8070;font-weight:400}
+.gdc td:first-child,.gdc th{white-space:nowrap}
+.gdh{font-size:12px;font-weight:700;color:#7a7068;margin:12px 0 4px}
+.gdt{border-top:1px solid #e6e1d8}
+.gr{border-bottom:1px solid #e6e1d8;padding:9px 2px}
+.grh b{font-size:14px;color:#2a3820}.grh small{font-family:'Outfit',sans-serif;font-size:12px;color:#8a8070;margin-left:8px}
+.grt{display:flex;flex-wrap:wrap;gap:2px 14px;font-size:12px;color:#5a5048;margin:2px 0 6px}.grt b{color:#2a3820}
+.grs{display:flex;flex-wrap:wrap;gap:6px}
+.grs>a,.grs>.nl{display:inline-block;border:1px solid #cfd8c2;background:#f4f7ef;border-radius:3px;padding:4px 9px;font-size:13px;color:#2a3820;font-weight:700;text-decoration:none}
+.grs>.nl{background:#fff;border-color:#e0dbd4;font-weight:400;color:#6a6258}.grs>.nl a{color:#6a6258}
+.gdn{font-size:11.5px;color:#8a8070;margin:6px 0 0;line-height:1.6}.gdn a{color:#6a8055}
+.gtabs{background:#fff;border:1px solid #e0dbd4;border-radius:4px;padding:12px 12px 10px;margin-bottom:10px}
+.gtabs input{position:absolute;opacity:0;pointer-events:none}
+.gtl{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.gtl label{border:1px solid #4e6535;color:#4e6535;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:700;cursor:pointer}
+.gp{display:none}
+.gdl{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:12.5px;margin:0}
+.gdl dt{color:#7a7068;font-weight:700;white-space:nowrap}.gdl dd{margin:0;color:#3a3530;line-height:1.6}
 .faq{background:#fff;border:1px solid #e0dbd4;border-radius:10px;padding:12px 14px;margin-bottom:8px}
 .faq dt{font-size:14px;font-weight:700;color:#2a3820;margin-bottom:4px}.faq dd{font-size:13px;color:#3a3530}
 .rel{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
@@ -838,6 +865,72 @@ def packing_block(m):
         E(json.dumps(m.get('gearCalendar') or [], ensure_ascii=False, separators=(',', ':'))), MAP_VER, MAP_VER)
 
 
+# ---------- 山小屋の選び方（山小屋が多い山。data/huts_guides.json。手で書いた出典つきの内容） ----------
+GUIDES = json.load(open(os.path.join(ROOT, 'data', 'huts_guides.json'), encoding='utf-8'))
+
+
+def _dur(mi, zero='—'):
+    if mi <= 0:
+        return zero
+    h, m = divmod(int(mi), 60)
+    return ('%d時間' % h if h else '') + ('%d分' % m if m else '')
+
+
+def _span(v, zero='—'):
+    if isinstance(v, list):
+        return '%s〜%s' % (_dur(v[0], zero), _dur(v[1], zero)) if v[0] != v[1] else _dur(v[0], zero)
+    return _dur(v, zero)
+
+
+def guide_block(mid, on_page):
+    g = GUIDES.get(mid)
+    if not g:
+        return ''
+    out = ['<h2 class="sec" id="guide">%s</h2>\n<div class="gd">' % E(g['title'])]
+    trails = g['trails']
+    for i, s in enumerate(g['steps']):
+        lst = ''.join('<li>%s</li>' % E(x) for x in s.get('list') or [])
+        out.append('<div class="gds"><h3>%s</h3><p>%s</p>%s' % (E(s['h']), E(s['t']), ('<ul>%s</ul>' % lst) if lst else ''))
+        if i == 0:
+            rows = ''.join('<tr><td><b>%s</b><small>%s</small></td><td>%s<small>%sm</small></td><td>%s</td><td>%d軒</td></tr>' % (
+                E(t['name']), E(t['pref']), E(t['start']), format(t['startElev'], ','), E(t['up']),
+                len(set(h['name'] for r in t['rows'] for h in r['huts']))) for t in trails)
+            out.append('<table class="gdc"><thead><tr><th>登山道</th><th>登山口</th><th>登り</th><th>山小屋</th></tr></thead><tbody>%s</tbody></table>'
+                       '<p class="gdn">登りの時間は、公式の図の区間の時間の合計（休憩を含まない）。山小屋の数は、ほかの登山道と共通の小屋を含む</p>' % rows)
+        out.append('</div>')
+    # 登山道ごとのタブ（JavaScript なし）
+    radios = ''.join('<input type="radio" name="gt" id="gt-%s"%s>' % (E(t['id']), ' checked' if i == 0 else '') for i, t in enumerate(trails))
+    labels = ''.join('<label for="gt-%s">%s</label>' % (E(t['id']), E(t['name'].replace('ルート', ''))) for t in trails)
+    panels = []
+    missing = False
+    for t in trails:
+        trs = []
+        for r in t['rows']:
+            hs = []
+            for h in r['huts']:
+                if h.get('id') and h['id'] in on_page:
+                    hs.append('<a href="#%s">%s</a>' % (E(h['id']), E(h['name'])))
+                else:
+                    missing = True
+                    link = ('<a class="ext" href="%s" target="_blank" rel="noopener">%s</a>' % (E(h['url']), E(h['name']))) if h.get('url') else E(h['name'])
+                    hs.append('<span class="nl">%s%s※</span>' % (link, ('（%s）' % E(h['tel'])) if h.get('tel') and not h.get('url') else ''))
+            trs.append('<div class="gr"><div class="grh"><b>%s</b><small>%s</small></div><div class="grt"><span>登山口から <b>%s</b></span><span>山頂まで <b>%s</b></span></div><div class="grs">%s</div>%s</div>' % (
+                E(r['st']), E(r['elev']), _span(r['from'], '0分'), _span(r['to']), ''.join(hs),
+                ('<p class="gdn">%s</p>' % E(r['note'])) if r.get('note') else ''))
+        panels.append(
+            '<div class="gp" id="gp-%s"><dl class="gdl"><dt>登山口</dt><dd>%s（%sm）</dd><dt>登り</dt><dd>%s（山頂は%s。%s）</dd><dt>特徴</dt><dd>%s</dd><dt>泊まる例</dt><dd>%s</dd></dl>'
+            '<p class="gdh">合目ごとの山小屋（下から順）</p><div class="gdt">%s</div>%s'
+            '<p class="gdn"><a href="%s" target="_blank" rel="noopener">%sの山小屋（富士登山オフィシャルサイト）</a></p></div>' % (
+                E(t['id']), E(t['start']), format(t['startElev'], ','), E(t['up']), E(t['summit']), E(t['summitExtra']), E(t['feature']), E(t['plan']),
+                ''.join(trs), ('<p class="gdn">%s</p>' % E(t['extra'])) if t.get('extra') else '', E(t['sourceUrl']), E(t['name'])))
+    css_tabs = ''.join('#gt-%s:checked~.gtl label[for="gt-%s"]{background:#4e6535;color:#fff}#gt-%s:checked~#gp-%s{display:block}' % ((E(t['id']),) * 4) for t in trails)
+    out.append('<div class="gtabs"><style>%s</style>%s<div class="gtl">%s</div>%s</div>' % (css_tabs, radios, labels, ''.join(panels)))
+    srcs = '・'.join('<a href="%s" target="_blank" rel="noopener">%s</a>' % (E(s['url']), E(s['label'])) for s in g['sources'])
+    out.append('<p class="gdn">%s時間は休憩を含まない公式の目安で、区間の中に小屋が並ぶところは区間の両端の時間。出典：%s（%s 確認）</p></div>\n' % (
+        '※の小屋はこのページに未掲載です（名前から公式サイトへ）。' if missing else '', srcs, E(g['checkedAt'])))
+    return ''.join(out)
+
+
 # ---------- 山ごとのページ /huts/<山ID>/ ----------
 made = set()
 for m in ML:
@@ -873,6 +966,8 @@ for m in ML:
         + '<nav class="bc" aria-label="パンくず"><a href="/">Yamatch</a> › <a href="/huts/">山小屋まとめ</a> › %s</nav>\n' % E(m['name'])
         + '<p class="lead">%s予約がいつから始まるか、予約方法、定員、%d年の営業期間をまとめました。</p>\n' % (lead, YEAR)
         + '<p class="upd">最終確認：<time datetime="%s">%s</time>　<a href="/mountains/%s/" style="color:#4e6535">%sの登山情報（アクセス・コース）を見る →</a></p>\n' % (VERIFIED, VERIFIED_JA, E(mid), E(m['name']))
+        + guide_block(mid, set(h['id'] for h in hs))
+        + ('<h2 class="sec">山小屋ごとの予約の開始</h2>\n' if mid in GUIDES else '')
         + '<table class="cmp"><thead><tr><th>山小屋</th><th>予約の開始</th><th>予約方法</th></tr></thead><tbody>%s</tbody></table>\n' % ''.join(rows)
         + (('<h2 class="sec">%sの山小屋マップ</h2>\n' % E(m['name']) + map_block(hs, START_SHORT)) if any(h['name'] in COORDS for h in hs) else '')
         + '<div id="list">\n%s\n</div>\n' % '\n'.join(card_of[h['id']] for h in hs)
