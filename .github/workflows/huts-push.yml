@@ -72,6 +72,10 @@ jobs:
           code=$?
           echo "$code" > push_code.txt
           exit $code
+      - name: 期限切れの持ち物リスト（/packing/ の共有）を消す
+        if: always() && steps.ready.outputs.ok == '1' && inputs.test != true
+        continue-on-error: true
+        run: node scripts/packlists_cleanup.js
       - name: マイページのお知らせを更新する（失敗があったとき・解消したとき）
         if: always() && steps.ready.outputs.ok == '1' && inputs.test != true
         run: |

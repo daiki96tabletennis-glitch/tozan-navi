@@ -128,6 +128,72 @@
           }
         }
       }
+    },
+    "packLists": {
+      "$id": {
+        ".read": "$id.matches(/^[a-z0-9]{20}$/)",
+        ".write": "$id.matches(/^[a-z0-9]{20}$/) && !data.exists() && newData.exists()",
+        ".validate": "newData.hasChildren(['v', 'mid', 'date', 'stay', 'createdAt', 'expireAt'])",
+        "v": {
+          ".validate": "newData.val() === 1"
+        },
+        "mid": {
+          ".validate": "newData.isString() && newData.val().matches(/^([a-z0-9_]{1,40}|-)$/)"
+        },
+        "date": {
+          ".validate": "newData.isString() && newData.val().matches(/^([0-9]{4}-[0-9]{2}-[0-9]{2}|-)$/)"
+        },
+        "stay": {
+          ".validate": "newData.val() === 'day' || newData.val() === 'hut' || newData.val() === 'tent'"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber()"
+        },
+        "expireAt": {
+          ".validate": "newData.isNumber() && newData.val() <= now + 34560000000"
+        },
+        "members": {
+          "$m": {
+            ".write": "$m.matches(/^[a-f0-9]{16}$/) && data.parent().parent().exists()",
+            ".validate": "newData.hasChildren(['name', 'at'])",
+            "name": {
+              ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 20"
+            },
+            "at": {
+              ".validate": "newData.isNumber()"
+            },
+            "checks": {
+              "$k": {
+                ".validate": "$k.matches(/^[a-z0-9_]{1,60}$/) && newData.val() === true"
+              }
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "extra": {
+          "$k": {
+            ".write": "$k.matches(/^[a-z0-9]{8}$/) && data.parent().parent().exists()",
+            ".validate": "newData.hasChildren(['label', 'at'])",
+            "label": {
+              ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 40"
+            },
+            "by": {
+              ".validate": "newData.isString() && newData.val().length <= 20"
+            },
+            "at": {
+              ".validate": "newData.isNumber()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
     }
   }
 }

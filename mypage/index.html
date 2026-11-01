@@ -223,6 +223,11 @@ body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f0ede5;co
 
   <!-- 登山計画 -->
   <div class="section active" id="tab-plans">
+    <a href="/packing/" class="pk-entry" style="display:flex;align-items:center;gap:12px;background:white;border:1px solid #c8d4b8;border-radius:12px;padding:13px 14px;margin-bottom:12px;text-decoration:none;color:#3a3530">
+      <span style="font-size:24px;line-height:1">🎒</span>
+      <span style="flex:1;min-width:0"><b style="display:block;font-size:14px;color:#2a3820">持ち物チェックリスト</b><span style="display:block;font-size:12px;color:#7a7068;margin-top:2px">日帰り・山小屋泊・テント泊ごとの自分のリストで、忘れ物を防ぐ</span></span>
+      <span style="color:#4a6038;font-weight:700">›</span>
+    </a>
     <div id="plans-list"></div>
   </div>
 
@@ -624,6 +629,7 @@ function openPlanDetail(index) {
     });
     html += '</div></div></div>';
   }
+  html += '<a href="/packing/?n='+encodeURIComponent(p.mountain||'')+'&d='+encodeURIComponent(p.date||'')+'" class="pdf-btn" style="background:#fff;color:#4a5e4a;border:1px solid #c8d4b8;text-decoration:none;margin:0 0 10px">🎒 持ち物チェックリストで準備する（この山・日にちに合わせる）</a>';
   if(p.memo) html += '<div class="card" style="margin-bottom:10px"><div class="card-header">📝 メモ</div><div class="card-body" style="font-size:13px;line-height:1.7;white-space:pre-wrap">'+esc(p.memo)+'</div></div>';
   html += '<button class="pdf-btn" data-plan-pdf onclick="ymPlanPdf()">📄 PDFとして保存</button>';
   document.getElementById('detail-body').innerHTML = html;

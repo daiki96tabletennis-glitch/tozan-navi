@@ -661,6 +661,16 @@ def check_photo_credits(mountains):
     return issues
 
 
+def check_packing_mountains():
+    """持ち物チェックリスト（/packing/）が使う data/packing_mountains.json が mountains.json と食い違っていないか（build_packing_mountains.py）。"""
+    import build_packing_mountains as bpm
+    path = os.path.join(ROOT, 'data', 'packing_mountains.json')
+    old = open(path, encoding='utf-8').read() if os.path.exists(path) else ''
+    if old != bpm.text(bpm.build()):
+        return [{'id': '-', 'problem': 'data/packing_mountains.json が古い（python3 scripts/build_packing_mountains.py を実行）'}]
+    return []
+
+
 def _issue_key(it):
     return f"{it['id']}|{it['problem']}"
 
@@ -721,6 +731,7 @@ def main():
     ssot_issues, ssot_warns = check_ssot(mountains)
     gearcal_issues = check_gear_calendar(mountains)
     photo_issues = check_photo_credits(mountains)
+    packm_issues = check_packing_mountains()
     import sync_search_hubs
     hub_issues = sync_search_hubs.hub_problems(mountains)
 
@@ -764,6 +775,7 @@ def main():
     report.append(section('16. 装備カレンダー（4区分・月途中の切替）', gearcal_issues, fmt))
     report.append(section('17. 出発地別の全件一覧（所要時間・難易度・並び順）', hub_issues, fmt))
     report.append(section('18. 写真のクレジット（作者・ライセンスの記録）', photo_issues, fmt))
+    report.append(section('19. 持ち物チェックリストの山の一覧（packing_mountains.json）', packm_issues, fmt))
     if ssot_warns:
         report.append('## 参考：運行期間の期限切れ（来季の再確認対象。件数に含めない）\n' + '\n'.join('- ' + fmt(w) for w in ssot_warns) + '\n')
     report.append(f"## 参考：既知の未解決（調査待ちのレガシー。件数に含めない）\n- 10. 所要時間: {len(time_known)}件 / 11. 駅名: {len(station_known)}件（scripts/check_known_issues.json）\n")
@@ -775,7 +787,7 @@ def main():
              + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues)
              + len(train_routes_issues) + len(route_dup_issues) + len(time_issues)
              + len(station_issues) + len(coeff_issues) + len(restricted_issues) + len(seat_issues)
-             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues))
+             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues))
 
     if args.json:
         with open(args.json, 'w', encoding='utf-8') as f:
