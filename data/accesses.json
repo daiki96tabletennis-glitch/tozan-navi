@@ -300,7 +300,7 @@
           "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=白馬駅&type=1"
         },
         {
-          "type": "other",
+          "type": "bus",
           "label": "猿倉線 時刻表・予約",
           "url": "https://www.alpico.co.jp/traffic/local/hakuba/sarukura/"
         }
@@ -1651,6 +1651,11 @@
           "type": "yahoo",
           "label": "乗換案内で検索",
           "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=土合駅&type=1"
+        },
+        {
+          "type": "bus",
+          "label": "関越交通バス 水上線 時刻表（上毛高原駅〜谷川岳ヨッホ）",
+          "url": "https://kan-etsu.net/pages/20/"
         }
       ]
     },
@@ -2044,7 +2049,7 @@
           "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=白馬駅&type=1"
         },
         {
-          "type": "other",
+          "type": "bus",
           "label": "長野－白馬線 時刻表",
           "url": "https://www.alpico.co.jp/traffic/local/hakuba/"
         }
@@ -2375,7 +2380,7 @@
           "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=妙高高原駅&type=1"
         },
         {
-          "type": "other",
+          "type": "bus",
           "label": "笹ヶ峰直行便 時刻表",
           "url": "https://myokotourism.jp/access/"
         }
@@ -2967,7 +2972,7 @@
           "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=甲斐大和駅&type=1"
         },
         {
-          "type": "other",
+          "type": "bus",
           "label": "大菩薩上日川峠線 時刻表",
           "url": "https://eiwa-kotsu.jp/root.html"
         }
@@ -3200,7 +3205,7 @@
           "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=新島々駅&type=1"
         },
         {
-          "type": "other",
+          "type": "bus",
           "label": "乗鞍高原線 時刻表",
           "url": "https://www.alpico.co.jp/traffic/local/kamikochi/norikurakogen/"
         },
@@ -3389,7 +3394,7 @@
           "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=松本駅&type=1"
         },
         {
-          "type": "other",
+          "type": "bus",
           "label": "さわやか信州号 時刻表・予約",
           "url": "https://www.alpico.co.jp/traffic/sawayaka/route/kamikochi/shinjuku/"
         },
