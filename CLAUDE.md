@@ -15,7 +15,7 @@
 - 公開のコピーは毎回 Claude が行う（運営者が手でコピーしない。2026-10-12 に逆向きのコピーで作業フォルダが巻き戻った）。コミットとプッシュは運営者（GitHub Desktop）
 - 手順
   1. リポジトリ側で `git status` が空なことを確かめ、`git pull`（定期実行が GitHub 側でコミットした分を取り込む）
-  2. 定期実行が書き換えるファイルで、取り込んだ分が新しいものを作業フォルダへ戻す：`data/huts.json` `data/huts_history.json` `data/huts_rules.json` `huts/` `sitemap.xml` `data/article_rank.json`（`git diff --name-only <前回のHEAD> HEAD` で対象を出し、作業フォルダ側でも変えているファイルは中身を見比べて合わせる。丸ごと上書きしない）
+  2. 定期実行が書き換えるファイルで、取り込んだ分が新しいものを作業フォルダへ戻す：`data/huts.json` `data/huts_history.json` `data/huts_rules.json` `data/huts_meta_seen.json` `huts/` `sitemap.xml` `data/article_rank.json`（`git diff --name-only <前回のHEAD> HEAD` で対象を出し、作業フォルダ側でも変えているファイルは中身を見比べて合わせる。丸ごと上書きしない）
   2b. 管理画面の「山画像を管理」は GitHub に直接書く（写真のファイル・`photos`・`data/image-credits.json`）。`python3 scripts/import_repo_images.py` で、前回から増えた `[images]` のコミットの山だけ作業フォルダに取り込む（取り込まずにコピーすると写真の変更が消える。2026-08〜09 に13山で起きた）。管理画面の「グルメ記事の写真」（コミットの題が `[gourmet]`）の分も同じスクリプトが取り込む（`data/mountain_gourmet.json` の `image` と写真のファイル。取り込んだら記事を作り直す）
   3. 作業フォルダ → リポジトリ：`rsync -a --exclude .git --exclude .claude --exclude .DS_Store --exclude data/admin_notices.json`（`--delete` は付けない。`.github/` も渡す）
   4. `diff -rq` で一致を確かめ、変わったファイルの一覧を報告する
@@ -434,7 +434,7 @@
 - 検証：`scripts/check_pages.py`（0件になるまで修正を繰り返す）
 - 出発地別の全件一覧（`search/shinjuku`・`omiya`・`yokohama`・`ofuna`）：`scripts/sync_search_hubs.py --write` が車の所要時間・難易度・日帰り表示・地域・標高・並び順・件数を `mountains.json` に合わせる。難易度・日帰り・車の時間（`driveTime*` / `driveOfuna`）を変えたら実行する（ずれはセクション17で検出）。掲載する山の追加・削除は手作業
 - 電車・バスアクセスHTML生成：`scripts/render_transit_routes.py`（`render_ts_section`）
-- 装備カード：`gen_mountain_pages.py` が枠（`gear-cards-scroll`）を出力し、中身は `assets/js/mountain.js` ＋ `assets/js/gear-common.js` が `data/gear-data.json` から描画。診断用の月別JSON（`data/recommend-gear/*.json`）は `scripts/gen_recommend_gear.py` で生成（手動編集禁止）
+- 装備カード：`gen_mountain_pages.py` が `data/gear-data.json` の中身をページの `data-gear-variants` に埋め込み（枠は `gear-cards-scroll`）、`assets/js/mountain.js` ＋ `assets/js/gear-common.js` が描画する。**山を足すときは gear-data.json にも12か月分を足す**（2026-10-26〜31 に足した13山で抜けていて、装備欄が空だった。2026-11-02 に `scripts/migrations/add_gear_new_mountains_2026_11.py` で作った：アイゼン・冬靴・ピッケルは `gearCalendar` から、防寒・ボトル・ポールの月は装備カレンダーを借りた近くの山と同じ、熊鈴は同じ登山道の山に付いているときだけ）。靴・ポールの文の数字（距離・標高差）は代表コースの値で、コースを変えたら `scripts/migrations/fix_gear_cards_2026_11.py` で合わせ直す（2026-11-02 に127山を直した。前は10月のコース見直しの前の数字のままだった。同じスクリプトがアイゼン・来月分のアイゼンのカードも `gearCalendar` に合わせる）。直したら `gen_mountain_pages.py`・`gen_recommend_gear.py`・`gen_line_articles.py`（路線別の記事）を作り直す。診断用の月別JSON（`data/recommend-gear/*.json`）は `scripts/gen_recommend_gear.py` で生成（手動編集禁止）
 
 ## 海外登山ギアのページ（/gear/）の商品の写真（2026-10-21〜）
 - ショップ・ブランド・販売店の画像のファイルを直接読み込まない（楽天アフィリエイトのルール：「ショップページにある画像を許可を取らずに掲載する」は禁止。「アフィリエイトリンク以外の場所であっても、サイト上で権利者の許諾を得ていないコンテンツの掲載」も規約違反＝サイト全体が対象）。2026-10-21 に、楽天のショップ画像9点・販売店やブランドの画像9点（49か所）の直接の読み込みを外し、線画のアイコンにした

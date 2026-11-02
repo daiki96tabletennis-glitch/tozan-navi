@@ -1109,6 +1109,10 @@
         + (warnings.length ? '\n画像データの反映は完了しましたが、次を確認してください：\n' + warnings.join('\n') : '');
       setStatus(finalMessage, warnings.length ? 'warn' : 'ok', 'publish-status');
     } catch (error) {
+      if (/（401）/.test(error.message)) {
+        setStatus('反映に失敗しました。GitHub のトークンが使えなくなっています（期限切れ・取り消し）。\nGitHub で新しいトークンを作り、管理画面の「山画像の管理で使う GitHub トークン」に保存し直してから、もう一度押してください（写真の選び直しは不要です）。\n\n' + error.message, 'err', 'publish-status');
+        return;
+      }
       setStatus('反映に失敗しました。\n' + error.message + '\n\n※画像ファイル自体は保存済みの可能性があります。もう一度「この山の変更をGitHubへ反映」を押してください（写真の選び直しは不要です）。', 'err', 'publish-status');
     } finally {
       $('mountain').disabled = false;
