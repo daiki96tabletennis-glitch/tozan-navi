@@ -130,15 +130,23 @@
    "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/41366809330"
   },
   {
-   "id": "sitecheck-2026-10-12-bd9ddaf71d",
+   "id": "sitecheck-2026-11-02-85cf275b02",
    "kind": "sitecheck",
    "title": "サイトの検証",
-   "date": "2026-10-12",
-   "needsAction": false,
-   "digest": "bd9ddaf71d",
-   "sections": [],
-   "next": null,
-   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/38219116736"
+   "date": "2026-11-02",
+   "needsAction": true,
+   "digest": "85cf275b02",
+   "sections": [
+    {
+     "heading": "18. 写真のクレジット（作者・ライセンスの記録）（2件）",
+     "lines": [
+      "ryugatake: 写真のクレジットの記録が無い：/images/mountains/ryugatake/image-20261102133807829-lkw00.jpg",
+      "ryugatake: 写真のクレジットの記録が無い：/images/mountains/ryugatake/image-20261102133811261-z1yhi.jpg"
+     ]
+    }
+   ],
+   "next": "Claude のアプリで「check_pages.py の異常を直して」と伝えてください。",
+   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/41454708289"
   },
   {
    "id": "push-2026-10-21-bd9ddaf71d",
