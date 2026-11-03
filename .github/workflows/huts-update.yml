@@ -46,5 +46,7 @@ jobs:
           git config user.name "yamatch-huts-update"
           git config user.email "actions@users.noreply.github.com"
           git commit -q -m "山小屋まとめを更新（出典の取り直し）"
+          # ほかの定期実行が先に書き込んでいると push が断られるので、取り込んでから送る（2026-11-03）
+          git pull -q --rebase
           git push -q
           cat huts_report.md

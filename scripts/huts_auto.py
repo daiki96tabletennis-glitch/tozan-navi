@@ -292,9 +292,13 @@ def due_huts(huts, today):
     if today.toordinal() % 3:
         return out
     for key, years in hist.items():
+        # 年ごとの記録だけを見る（「<小屋ID>:ruleWatch」は年ではなく確認日と結果を持つ。
+        # 前はこれも年として読み、3日に1回の日に止まっていた。2026-11-03）
+        if not isinstance(years, dict) or key.endswith(':ruleWatch'):
+            continue
         if str(ty) in years:
             continue          # 対象の年の値は取得済み → 月1回に戻す
-        dated = [v for k, v in sorted(years.items()) if v.get('month')]
+        dated = [v for k, v in sorted(years.items()) if str(k).isdigit() and isinstance(v, dict) and v.get('month')]
         if not dated:
             continue
         last = dated[-1]
