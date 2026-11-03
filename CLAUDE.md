@@ -186,6 +186,14 @@
 - 報酬：楽天・Amazon は報酬を読む API が無いので、管理画面で月ごとに手で入れる（`/adminDash/revenue/YYYY-MM`。運営者だけが書ける）
 - 週ごとの要約は `/adminDash/history/<日付>` に積む
 
+## サイト共通の計測（GA4。2026-11-03〜）
+- GA4 のタグ（`G-TMTVVTEEGF`）のあとに `assets/js/ym-track.js` を読む（全559ページ。`gen_mountain_pages.py`・`gen_huts_page.py` は直接、`gen_train_daytrip.py`・`gen_gourmet_article.py` は切り出したタグに無ければ足す。手で作るページを足したときも入れる）
+  - `pwa_launch`：ホーム画面に追加したアプリとして開いたとき、訪問ごとに1回（ホーム追加率の目安＝この計測のある人÷訪れた人）
+  - `pwa_installed`：Android の Chrome などでインストールしたとき（iPhone は数えられない）
+- トップのホーム追加の案内：`a2hs_guide_open`（開いた）・`a2hs_guide_done`（最後の手順まで見て閉じた）
+- トップの山カード：`mountain_card_click`。前は同じカードに onClick が2つあり、閲覧履歴の処理に打ち消されて一度も送られていなかった（2026-11-03 に1つにまとめた）
+- マイページ（`/mypage/`）には GA4 のタグが無い（計測していない）
+
 ## 管理画面の「お気に入り・登頂」タブ（2026-10-25〜）
 - 山ごとのお気に入り数・登頂数を一覧にする（`/admin/#counts`。表示は `assets/js/admin-counts.js`）。並び順はお気に入り・登頂・合計の多い順と山名順。0件の山は切り替えで出す
 - 数は `/counts`（山ページと同じ集計）から、管理者端末の分を引いたもの（運営者の指示）。山ページに出す数は今までどおり管理者の分も含む

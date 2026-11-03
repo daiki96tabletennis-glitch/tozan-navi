@@ -175,6 +175,7 @@ GTAG_BLOCK = (
     "  gtag('js', new Date());\n"
     "  gtag('config', 'G-TMTVVTEEGF');\n"
     '</script>\n'
+    '<script defer src="/assets/js/ym-track.js?v=20261103"></script>\n'
     '<link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">\n'
     '<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">\n'
     '<link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">\n'

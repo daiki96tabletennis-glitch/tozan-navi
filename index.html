@@ -161,6 +161,7 @@
   gtag('js', new Date());
   gtag('config', 'G-TMTVVTEEGF');
 </script>
+<script defer src="/assets/js/ym-track.js?v=20261103"></script>
 <link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -1868,7 +1869,6 @@ function App() {
 
                   return (
                     <a key={m.id} href={getMountainUrl(m.id)} className="ym-result-card"
-                      onClick={() => { if (typeof gtag === "function") gtag('event', 'mountain_card_click', { mountain_id: m.id, mountain_name: m.name }); }}
                       style={{
                         position: "relative", overflow: "hidden",
                         borderRadius: "5px", border: `1px solid ${cardBorder}`,
@@ -1885,6 +1885,8 @@ function App() {
                       onTouchStart={e => { e.currentTarget.style.transform = "scale(0.97)"; }}
                       onTouchEnd={e => { setTimeout(() => { if(e.currentTarget) e.currentTarget.style.transform = "scale(1)"; }, 200); }}
                       onClick={(e) => {
+                        // 計測（前は同じカードに onClick が2つあり、下の履歴の処理に打ち消されて一度も送られていなかった。2026-11-03）
+                        try { if (typeof gtag === "function") gtag('event', 'mountain_card_click', { mountain_id: m.id, mountain_name: m.name, transport_type: 'beacon' }); } catch(ex) {}
                         try {
                           if (localStorage.getItem("ym_history_enabled") === "false") return;
                           var prev = JSON.parse(localStorage.getItem("ym_history") || "[]");
@@ -2292,6 +2294,7 @@ fetch('/data/mountains.json')
       current = 0;
       render();
       overlay.classList.add('show');
+      try { if (typeof gtag === 'function') gtag('event', 'a2hs_guide_open', { platform: isIOS ? 'ios' : 'android' }); } catch(e) {}
     }
     function close(){
       overlay.classList.remove('show');
@@ -2307,7 +2310,11 @@ fetch('/data/mountains.json')
     });
     nextBtn.addEventListener('click', function(){
       if (current < steps.length - 1) { current++; render(); }
-      else close();
+      else {
+        // 最後の手順まで見て「閉じる」を押した（ホーム画面に追加した人の目安）
+        try { if (typeof gtag === 'function') gtag('event', 'a2hs_guide_done', { platform: isIOS ? 'ios' : 'android' }); } catch(e) {}
+        close();
+      }
     });
     }
   }
