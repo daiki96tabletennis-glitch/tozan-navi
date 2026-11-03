@@ -147,7 +147,10 @@ def derive(mt, TH, AC):
         mt['trainAccess'] = legs_text(R['shinjuku']['legs'])
         mt['trainAccessOmiya'] = legs_text(R['omiya']['legs'])
         mt['trainAccessYokohama'] = legs_text(R['yokohama']['legs'])
-        mt['busLinks'] = tr_ac.get('busLinks'); mt['busScheduleLinks'] = tr_ac.get('busScheduleLinks')
+        # 古いリンクの項目は、電車・バス欄のリンク（trainRoutes.links）と同じにする（管理画面が表示に使う）
+        _lk = mt['trainRoutes'].get('links') or []
+        mt['busLinks'] = [l['url'] for l in _lk if l.get('type') == 'yahoo'] or None
+        mt['busScheduleLinks'] = [l['url'] for l in _lk if l.get('type') == 'bus'] or None
         mt['trainAccessHtml'] = render_ts_section(mt['trainRoutes'], mt)
     mt['trainAccessOperation'] = (tr_ac or {}).get('operation')
     mt['routeTrailheads'] = {r['id']: TH[r['trailheadId']]['name'] for r in routes if r.get('trailheadId') in TH}

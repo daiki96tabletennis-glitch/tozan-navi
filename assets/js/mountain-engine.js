@@ -387,20 +387,8 @@ function applyDep(){
       });
     }
 
-    // 9. バス時刻表リンク（JSONから更新）
-    if(mt.busScheduleLinks && mt.busScheduleLinks.length > 0){
-      var busLinkEls = document.querySelectorAll('a.ts-link-bus');
-      busLinkEls.forEach(function(a, i){
-        if(mt.busScheduleLinks[i]) a.href = mt.busScheduleLinks[i];
-      });
-    }
-    // 10. 乗換案内リンク（JSONから更新）
-    if(mt.busLinks && mt.busLinks.length > 0){
-      var yahooLinkEls = document.querySelectorAll('a.ts-link-yahoo');
-      yahooLinkEls.forEach(function(a, i){
-        if(mt.busLinks[i]) a.href = mt.busLinks[i];
-      });
-    }
+    // 9・10. バス時刻表・乗換案内のリンクは、ページを作るときに trainRoutes.links から入れたものをそのまま使う
+    // （前は古い busScheduleLinks / busLinks で上書きしていて、33山で古い・消えたリンクに変わっていた。2026-11-03）
 
     // 11. 電車バスルート（trainRoutes）を動的反映
     if(mt.trainRoutes && mt.trainRoutes.length > 0){
