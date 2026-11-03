@@ -665,7 +665,7 @@ HEADCOMMON = """<link rel="preconnect" href="https://fonts.googleapis.com">
   gtag('js', new Date());
   gtag('config', 'G-TMTVVTEEGF');
 </script>
-<script defer src="/assets/js/ym-track.js?v=20261103"></script>
+<script defer src="/assets/js/ym-track.js?v=20261103b"></script>
 <link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">

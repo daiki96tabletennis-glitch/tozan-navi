@@ -30,6 +30,7 @@ mountains/<id>/index.html を自動生成するスクリプト。
 """
 
 import argparse
+import datetime
 import json
 import os
 import re
@@ -175,7 +176,7 @@ GTAG_BLOCK = (
     "  gtag('js', new Date());\n"
     "  gtag('config', 'G-TMTVVTEEGF');\n"
     '</script>\n'
-    '<script defer src="/assets/js/ym-track.js?v=20261103"></script>\n'
+    '<script defer src="/assets/js/ym-track.js?v=20261103b"></script>\n'
     '<link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">\n'
     '<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">\n'
     '<link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">\n'
@@ -589,8 +590,80 @@ def render_parking(mt):
         '</div>\n'
         f'{map_target}{map_btns}\n'
         f'{stay_link(mt)}'
+        f'{listing_block(mt)}'
         '</div>'
     )
+
+
+# 「登山口の近く（PR）」の掲載枠（data/listings.json。2026-11-03〜）
+LISTING_KIND = {'teahouse': '茶屋・食堂', 'onsen': '日帰り温泉', 'lodging': '宿', 'shop': '登山用品・レンタル',
+                'guide': 'ガイド・登山教室', 'taxi': 'タクシー・送迎'}
+LISTING_MAX = 2
+_LISTINGS = None
+
+
+def load_listings():
+    global _LISTINGS
+    if _LISTINGS is None:
+        p = os.path.join(SITE_ROOT, 'data', 'listings.json')
+        _LISTINGS = (json.load(open(p, encoding='utf-8')).get('listings') or []) if os.path.exists(p) else []
+    return _LISTINGS
+
+
+def active_listings(mid, today=None):
+    """その山に今出す掲載（期間内・最大2件。始まりの早い順）"""
+    today = today or datetime.date.today().isoformat()
+    out = [l for l in load_listings()
+           if mid in (l.get('mountainIds') or []) and (l.get('validFrom') or '') <= today <= (l.get('validTo') or '')]
+    return sorted(out, key=lambda l: (l.get('validFrom') or '', l['id']))[:LISTING_MAX]
+
+
+def trailhead_latlng(mt):
+    m = re.search(r'query=(-?[\d.]+)(?:%2C|,)(-?[\d.]+)', mt.get('gmapUrl') or '')
+    return (float(m.group(1)), float(m.group(2))) if m else None
+
+
+def _km(a, b):
+    import math
+    r = 6371.0
+    la1, lo1, la2, lo2 = map(math.radians, (a[0], a[1], b[0], b[1]))
+    h = math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
+    return 2 * r * math.asin(math.sqrt(h))
+
+
+def listing_block(mt):
+    """登山口・駐車場の欄の下に、地元のお店の掲載（PR）と、掲載の案内への小さなリンクを出す"""
+    cards = []
+    th = trailhead_latlng(mt)
+    for l in active_listings(mt['id']):
+        where = ''
+        if th and l.get('lat') is not None and l.get('lng') is not None:
+            d = _km(th, (l['lat'], l['lng']))
+            where = '・登山口から約%skm（直線）' % (('%.1f' % d) if d < 10 else '%d' % round(d))
+        img = ''
+        if l.get('image'):
+            img = (f'<img src="{esc(l["image"])}" alt="{esc(l["name"])}" loading="lazy" width="72" height="72" '
+                   'style="width:72px;height:72px;object-fit:cover;border-radius:8px;flex:none">')
+        cards.append(
+            f'<div class="ym-listing" data-listing-id="{esc(l["id"])}" data-mountain-id="{esc(mt["id"])}" '
+            f'data-valid-to="{esc(l["validTo"])}" style="display:flex;gap:10px;margin-top:8px;padding:10px 12px;'
+            'background:#fffdf6;border:1px solid #e3d9b8;border-radius:10px">'
+            f'{img}<div style="min-width:0">'
+            '<div style="font-size:11px;color:#7a7068"><span style="display:inline-block;padding:0 5px;margin-right:5px;'
+            'border:1px solid #b9a86e;border-radius:3px;color:#7a6526;font-weight:700;font-size:10px">PR</span>'
+            f'{esc(LISTING_KIND.get(l.get("kind"), ""))}{esc(where)}</div>'
+            f'<div style="font-size:15px;font-weight:700;color:#2a3820;margin:2px 0">{esc(l["name"])}</div>'
+            f'<div style="font-size:13px;color:#3a3530;line-height:1.6">{esc(l.get("text") or "")}</div>'
+            f'<a class="ym-listing-link" href="{esc(l["url"])}" target="_blank" rel="sponsored noopener" '
+            'style="display:inline-block;margin-top:4px;font-size:13px;font-weight:700;color:#4e6535">公式サイト →</a>'
+            '</div></div>')
+    head = ''
+    if cards:
+        head = ('<div style="margin-top:14px;font-size:13px;font-weight:700;color:#5a5048">登山口の近く'
+                '<span style="font-weight:400;color:#8a8070">（PR）</span></div>')
+    return (head + ''.join(cards) +
+            '<div style="margin-top:10px;text-align:right"><a href="/listing/" '
+            'style="font-size:11px;color:#8a8070;text-decoration:underline">地元のお店の掲載について（PR枠）</a></div>\n')
 
 
 def stay_link(mt):

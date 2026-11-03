@@ -40,7 +40,7 @@ def main():
     tpl = open(TPL, encoding='utf-8').read()
     gtag = re.search(r'(?s)<!-- Google tag \(gtag\.js\) -->.*?</script>\s*<script>.*?</script>', tpl).group(0)
     if 'ym-track.js' not in gtag:  # サイト共通の計測（assets/js/ym-track.js）
-        gtag += '\n<script defer src="/assets/js/ym-track.js?v=20261103"></script>'
+        gtag += '\n<script defer src="/assets/js/ym-track.js?v=20261103b"></script>'
     style = re.search(r'(?s)<style>.*?</style>', tpl).group(0)
     header = re.search(r'(?s)<header\b[^>]*>.*?</header>', tpl).group(0)
     tail = re.search(r'(?s)</main>(.*)</body>', tpl).group(1).replace("'tokyo-daytrip-5'", "'%s'" % SLUG)

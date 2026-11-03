@@ -23,4 +23,39 @@
   window.addEventListener('appinstalled', function () {
     window.gtag('event', 'pwa_installed', { platform: platform });
   });
+
+  // 「登山口の近く（PR）」の掲載枠（山ページ。data/listings.json）
+  // - 期限（data-valid-to）を過ぎた掲載は、ページを作り直す前でも隠す
+  // - listing_view：枠が画面に半分以上入ったとき（ページごとに1回）／listing_click：公式サイトへのリンクを押したとき
+  function setupListings() {
+    var els = document.querySelectorAll('.ym-listing[data-listing-id]');
+    if (!els.length) return;
+    var d = new Date();
+    var today = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+    var live = [];
+    Array.prototype.forEach.call(els, function (el) {
+      var to = el.getAttribute('data-valid-to');
+      if (to && to < today) { el.style.display = 'none'; return; }
+      live.push(el);
+      var a = el.querySelector('a.ym-listing-link');
+      if (a) a.addEventListener('click', function () {
+        window.gtag('event', 'listing_click', {
+          listing_id: el.getAttribute('data-listing-id'), mountain_id: el.getAttribute('data-mountain-id'), transport_type: 'beacon'
+        });
+      });
+    });
+    if (!live.length || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (ents) {
+      ents.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        io.unobserve(en.target);
+        window.gtag('event', 'listing_view', {
+          listing_id: en.target.getAttribute('data-listing-id'), mountain_id: en.target.getAttribute('data-mountain-id')
+        });
+      });
+    }, { threshold: 0.5 });
+    live.forEach(function (el) { io.observe(el); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setupListings);
+  else setupListings();
 })();

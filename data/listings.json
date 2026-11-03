@@ -1,0 +1,4 @@
+{
+  "_note": "山ページの「登山口の近く（PR）」の掲載枠（2026-11-03〜）。手で書く。運営者が審査し、お店の公式サイトで住所・営業内容を確かめてから足す。gen_mountain_pages.py が山ページに出す（1山2枠まで・期間内だけ）。項目：id（英小文字・数字・-）／name／kind（teahouse 茶屋・食堂／onsen 日帰り温泉／lodging 宿／shop 登山用品・レンタル／guide ガイド・登山教室／taxi タクシー・送迎）／mountainIds／lat・lng（お店の位置。登山口からの直線距離に使う）／text（80字まで）／image（お店が権利を持つ写真。/images/listings/ に置く。無ければ null）／url（公式サイト）／plan（founding 創業パートナー／standard／top／pack）／validFrom・validTo（YYYY-MM-DD）／approvedAt／source（確かめた公式ページ）",
+  "listings": []
+}

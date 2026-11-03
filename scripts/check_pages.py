@@ -671,6 +671,69 @@ def check_packing_mountains():
     return []
 
 
+def check_listings(mountains):
+    """「登山口の近く（PR）」の掲載枠（data/listings.json・gen_mountain_pages.py）。データの書き方と、ページの PR 表示・広告リンクの印・期限。"""
+    import datetime as _dt
+    path = os.path.join(ROOT, 'data', 'listings.json')
+    if not os.path.exists(path):
+        return []
+    L = json.load(open(path, encoding='utf-8')).get('listings') or []
+    ids = {m['id'] for m in mountains}
+    kinds = {'teahouse', 'onsen', 'lodging', 'shop', 'guide', 'taxi'}
+    today = _dt.date.today().isoformat()
+    out, seen = [], set()
+    for l in L:
+        lid = l.get('id') or '?'
+        if lid in seen:
+            out.append({'id': lid, 'problem': 'id が重複'})
+        seen.add(lid)
+        for k in ('name', 'kind', 'mountainIds', 'url', 'validFrom', 'validTo', 'source'):
+            if not l.get(k):
+                out.append({'id': lid, 'problem': k + ' が無い'})
+        if l.get('kind') and l['kind'] not in kinds:
+            out.append({'id': lid, 'problem': 'kind が決まりの値でない: ' + str(l['kind'])})
+        for mid in l.get('mountainIds') or []:
+            if mid not in ids:
+                out.append({'id': lid, 'problem': '山IDが無い: ' + mid})
+        if len(l.get('text') or '') > 80:
+            out.append({'id': lid, 'problem': '紹介文が80字を超える'})
+        if l.get('url') and not str(l['url']).startswith('https://'):
+            out.append({'id': lid, 'problem': 'url が https でない'})
+        for k in ('validFrom', 'validTo'):
+            if l.get(k) and not re.match(r'^\d{4}-\d{2}-\d{2}$', l[k]):
+                out.append({'id': lid, 'problem': k + ' の形が YYYY-MM-DD でない'})
+        if l.get('image') and not os.path.exists(os.path.join(ROOT, l['image'].lstrip('/'))):
+            out.append({'id': lid, 'problem': '写真のファイルが無い: ' + l['image']})
+    # 1山2枠まで（期間内）
+    per = {}
+    for l in L:
+        if (l.get('validFrom') or '') <= today <= (l.get('validTo') or ''):
+            for mid in l.get('mountainIds') or []:
+                per.setdefault(mid, []).append(l.get('id'))
+    for mid, v in per.items():
+        if len(v) > 2:
+            out.append({'id': mid, 'problem': '期間内の掲載が2枠を超える: ' + '・'.join(v)})
+    # ページ：PR の印・広告リンクの印・期限切れ・データに無い掲載
+    known = {l.get('id'): l for l in L}
+    for mid in ids:
+        f = os.path.join(ROOT, 'mountains', mid, 'index.html')
+        if not os.path.exists(f):
+            continue
+        html = read(f)
+        for blk in re.findall(r'<div class="ym-listing"[^>]*>.*?公式サイト →</a></div></div>', html, re.S):
+            lid = (re.search(r'data-listing-id="([^"]+)"', blk) or [None, '?'])[1]
+            if '>PR</span>' not in blk:
+                out.append({'id': mid, 'problem': lid + '：PR の表示が無い'})
+            if 'rel="sponsored' not in blk:
+                out.append({'id': mid, 'problem': lid + '：リンクに rel="sponsored" が無い'})
+            l = known.get(lid)
+            if not l:
+                out.append({'id': mid, 'problem': lid + '：データに無い掲載がページに残っている（ページを作り直す）'})
+            elif (l.get('validTo') or '') < today:
+                out.append({'id': mid, 'problem': lid + '：期限切れの掲載がページに残っている（gen_mountain_pages.py --id ' + mid + '）'})
+    return out
+
+
 def _issue_key(it):
     return f"{it['id']}|{it['problem']}"
 
@@ -732,6 +795,7 @@ def main():
     gearcal_issues = check_gear_calendar(mountains)
     photo_issues = check_photo_credits(mountains)
     packm_issues = check_packing_mountains()
+    listing_issues = check_listings(mountains)
     import sync_search_hubs
     hub_issues = sync_search_hubs.hub_problems(mountains)
 
@@ -776,6 +840,7 @@ def main():
     report.append(section('17. 出発地別の全件一覧（所要時間・難易度・並び順）', hub_issues, fmt))
     report.append(section('18. 写真のクレジット（作者・ライセンスの記録）', photo_issues, fmt))
     report.append(section('19. 持ち物チェックリストの山の一覧（packing_mountains.json）', packm_issues, fmt))
+    report.append(section('20. 地元のお店の掲載枠（listings.json・PR表示）', listing_issues, fmt))
     if ssot_warns:
         report.append('## 参考：運行期間の期限切れ（来季の再確認対象。件数に含めない）\n' + '\n'.join('- ' + fmt(w) for w in ssot_warns) + '\n')
     report.append(f"## 参考：既知の未解決（調査待ちのレガシー。件数に含めない）\n- 10. 所要時間: {len(time_known)}件 / 11. 駅名: {len(station_known)}件（scripts/check_known_issues.json）\n")
@@ -787,7 +852,7 @@ def main():
              + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues)
              + len(train_routes_issues) + len(route_dup_issues) + len(time_issues)
              + len(station_issues) + len(coeff_issues) + len(restricted_issues) + len(seat_issues)
-             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues))
+             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues) + len(listing_issues))
 
     if args.json:
         with open(args.json, 'w', encoding='utf-8') as f:
