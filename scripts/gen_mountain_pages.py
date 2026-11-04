@@ -235,7 +235,7 @@ FEEDBACK_LINK_BLOCK = (
 FOOTER_BLOCK = (
     '<footer style="text-align:center;padding:20px 16px;font-size:12px;color:#a09888;'
     'border-top:1px solid #e8e4dc;margin-top:8px">\n'
-    '  <p>Yamatch — 出発地から登る山を探せる登山サーチ</p>\n'
+    '  <p>Yamatch（やまっち） — 出発地から登る山を探せる登山サーチ</p>\n'
     '  <p style="margin-top:6px">\n'
     '    <a href="/terms/" style="color:#6a8055">利用規約</a>\n'
     '    <span style="margin:0 8px;opacity:0.4">|</span>\n'
