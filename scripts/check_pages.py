@@ -671,6 +671,39 @@ def check_packing_mountains():
     return []
 
 
+def check_route_tech(mountains):
+    """コースの技術的難易度（routes[].tech。各県の「山のグレーディング」・公式の案内）。データの書き方と、山ページのラベル。"""
+    out = []
+    for m in mountains:
+        page = os.path.join(ROOT, 'mountains', m['id'], 'index.html')
+        html = open(page, encoding='utf-8').read() if os.path.exists(page) else ''
+        for i, r in enumerate(m.get('routes') or [], start=1):
+            t = r.get('tech')
+            if not t:
+                continue
+            where = 'コース%d' % i
+            g, lv = t.get('grade'), t.get('level')
+            if g not in ('A', 'B', 'C', 'D', 'E', None):
+                out.append({'id': m['id'], 'problem': where + ' grade が A〜E でない: ' + str(g)})
+            if g is None and lv not in ('hard', 'caution'):
+                out.append({'id': m['id'], 'problem': where + ' 評価の文字が無いのに level が無い'})
+            for k in ('source', 'sourceUrl', 'basis', 'lastVerified'):
+                if not t.get(k):
+                    out.append({'id': m['id'], 'problem': where + ' ' + k + ' が無い'})
+            if t.get('sourceUrl') and not str(t['sourceUrl']).startswith('https://'):
+                out.append({'id': m['id'], 'problem': where + ' sourceUrl が https でない'})
+            if g and t.get('basis') not in ('same', 'contains'):
+                out.append({'id': m['id'], 'problem': where + ' basis が same / contains でない'})
+            if g and not t.get('gradedRoute'):
+                out.append({'id': m['id'], 'problem': where + ' gradedRoute（グレーディングのルート名）が無い'})
+            show = lv or ('hard' if g in ('D', 'E') else 'caution' if g == 'C' else None)
+            if show and html:
+                name = ('岩場の難所' if show == 'hard' else '難所あり') + ('（技術%s）' % g if g else '')
+                if name not in html:
+                    out.append({'id': m['id'], 'problem': where + ' のラベル「' + name + '」がページに無い（gen_mountain_pages.py で作り直す）'})
+    return out
+
+
 def check_listings(mountains):
     """「登山口の近く（PR）」の掲載枠（data/listings.json・gen_mountain_pages.py）。データの書き方と、ページの PR 表示・広告リンクの印・期限。"""
     import datetime as _dt
@@ -796,6 +829,7 @@ def main():
     photo_issues = check_photo_credits(mountains)
     packm_issues = check_packing_mountains()
     listing_issues = check_listings(mountains)
+    tech_issues = check_route_tech(mountains)
     import sync_search_hubs
     hub_issues = sync_search_hubs.hub_problems(mountains)
 
@@ -841,6 +875,7 @@ def main():
     report.append(section('18. 写真のクレジット（作者・ライセンスの記録）', photo_issues, fmt))
     report.append(section('19. 持ち物チェックリストの山の一覧（packing_mountains.json）', packm_issues, fmt))
     report.append(section('20. 地元のお店の掲載枠（listings.json・PR表示）', listing_issues, fmt))
+    report.append(section('21. コースの技術的難易度（山のグレーディング・岩場の難所のラベル）', tech_issues, fmt))
     if ssot_warns:
         report.append('## 参考：運行期間の期限切れ（来季の再確認対象。件数に含めない）\n' + '\n'.join('- ' + fmt(w) for w in ssot_warns) + '\n')
     report.append(f"## 参考：既知の未解決（調査待ちのレガシー。件数に含めない）\n- 10. 所要時間: {len(time_known)}件 / 11. 駅名: {len(station_known)}件（scripts/check_known_issues.json）\n")
@@ -852,7 +887,7 @@ def main():
              + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues)
              + len(train_routes_issues) + len(route_dup_issues) + len(time_issues)
              + len(station_issues) + len(coeff_issues) + len(restricted_issues) + len(seat_issues)
-             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues) + len(listing_issues))
+             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues) + len(listing_issues) + len(tech_issues))
 
     if args.json:
         with open(args.json, 'w', encoding='utf-8') as f:

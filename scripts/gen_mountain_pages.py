@@ -241,6 +241,8 @@ FOOTER_BLOCK = (
     '    <span style="margin:0 8px;opacity:0.4">|</span>\n'
     '    <a href="/privacy/" style="color:#6a8055">プライバシーポリシー</a>\n'
     '    <span style="margin:0 8px;opacity:0.4">|</span>\n'
+    '    <a href="/listing/" style="color:#6a8055">お店の掲載</a>\n'
+    '    <span style="margin:0 8px;opacity:0.4">|</span>\n'
     '    <a href="/about/" style="color:#6a8055">運営者</a>\n'
     '  </p>\n'
     '  <p style="margin-top:8px;opacity:0.6;">© 2026 Yamatch. All rights reserved.</p>\n'
@@ -496,7 +498,7 @@ def render_dl_card(mt):
         '  </div>\n'
         f'  <div class="dl-bar">{segs}</div>\n'
         '  <div class="dl-scale"><span>やさしい</span><span>難しい</span></div>\n'
-        f'  {tail}\n'
+        f'  {tail}{tech_summary(mt)}\n'
         '</div>'
     )
 
@@ -791,6 +793,91 @@ def render_season(mt):
     )
 
 
+# コースの技術的な難しさ（routes[].tech。各県の「山のグレーディング」の技術的難易度。2026-11-04〜）
+# C＝難所あり、D・E＝岩場の難所。A・B はラベルを出さない。公式の案内だけのコースは tech.level を使う
+TECH_DESC = {
+    "C": "はしご・鎖場、場所により雪渓や渡渉があり、ミスをすると転落・滑落のおそれがある",
+    "D": "厳しい岩稜や不安定なガレ場、手を使う岩場がある",
+    "E": "緊張を強いられる厳しい岩稜の登り下りが続き、高度な技術と経験が要る",
+}
+TECH_STYLE = {
+    "hard": "background:#f5ded9;color:#a0392a",
+    "caution": "background:#fff;border:1px solid #d4923a;color:#a0672a",
+}
+
+
+def tech_level(t):
+    if not t:
+        return None
+    if t.get("level"):
+        return t["level"]
+    g = t.get("grade")
+    if g in ("D", "E"):
+        return "hard"
+    if g == "C":
+        return "caution"
+    return None
+
+
+def tech_label(t):
+    lv = tech_level(t)
+    if not lv:
+        return ""
+    name = "岩場の難所" if lv == "hard" else "難所あり"
+    return f'{name}（技術{t["grade"]}）' if t.get("grade") else name
+
+
+def tech_tag(t):
+    lv = tech_level(t)
+    if not lv:
+        return ""
+    return f'<span class="rl-tag" style="{TECH_STYLE[lv]}">{esc(tech_label(t))}</span>'
+
+
+def tech_line(t):
+    """コースの下に出す1行：何が難しいか・どの評価か・出典"""
+    if not tech_level(t):
+        return ""
+    src = f'<a href="{esc(t["sourceUrl"])}" target="_blank" rel="noopener" style="color:#7a7068">{esc(t["source"])}</a>'
+    if t.get("grade"):
+        what = TECH_DESC[t["grade"]]
+        if t.get("basis") == "contains":
+            body = f'このコースが通る「{esc(t["gradedRoute"])}」が技術{t["grade"]}：{what}'
+        else:
+            body = f'技術{t["grade"]}：{what}'
+        if t.get("note"):
+            body += f'（{esc(t["note"])}）'
+    else:
+        body = esc(t.get("note") or "")
+    return f'<div class="rl-access" style="color:#7a5a3a">{body}。出典：{src}</div>'
+
+
+def tech_summary(mt):
+    """難易度の欄に出す、その山のコースでいちばん難しいもの"""
+    routes = mt.get("routes") or []
+    rank = {"caution": 1, "hard": 2}
+    best = None
+    for i, r in enumerate(routes, start=1):
+        t = r.get("tech")
+        lv = tech_level(t)
+        if not lv:
+            continue
+        key = (rank[lv], t.get("grade") or "")
+        if best is None or key > best[0]:
+            best = (key, lv, t, [i])
+        elif key == best[0]:
+            best[3].append(i)
+    if not best:
+        return ""
+    _, lv, t, nums = best
+    which = "・".join(f"コース{n}" for n in nums)
+    return (
+        '<div style="margin-top:10px;padding:8px 10px;border-radius:8px;background:#faf6ee;font-size:12px;line-height:1.7;color:#4a4038">'
+        f'<span class="rl-tag" style="{TECH_STYLE[lv]};font-size:11px;font-weight:700;padding:1px 6px;border-radius:4px;margin-right:6px">{esc(tech_label(t))}</span>'
+        f'代表的な登山ルートの{which}が当てはまります（くわしくは下のコースの欄。出典：{esc(t["source"])}）</div>'
+    )
+
+
 def render_routes(mt):
     routes = require(mt, "routes")
     items = []
@@ -808,8 +895,10 @@ def render_routes(mt):
         ssot_html = ""
         # 旧構造の山でも、ルートに trailheadName / status があれば表示する
         th_name = (mt.get("routeTrailheads") or {}).get(r.get("id")) or r.get("trailheadName")
-        if mt.get("dataModel") == "ssot-v1" or th_name or r.get("status"):
+        if mt.get("dataModel") == "ssot-v1" or th_name or r.get("status") or tech_level(r.get("tech")):
             tags = []
+            if tech_level(r.get("tech")):
+                tags.append(tech_tag(r["tech"]))
             if r.get("id") and r.get("id") == mt.get("representativeRouteId"):
                 tags.append('<span class="rl-tag rl-tag-rep">代表ルート</span>')
             st = r.get("status")
@@ -820,6 +909,7 @@ def render_routes(mt):
                 tags.append(f'<span class="rl-tag rl-tag-ng">{esc(st["label"])}</span>')
             line = f'登山口：{esc(th_name)}' if th_name else ""
             ssot_html = f'<div class="rl-th">{"".join(tags)}{line}</div>'
+        ssot_html += tech_line(r.get("tech"))
         if r.get("note"):
             ssot_html += f'<div class="rl-access">{esc(r["note"])}</div>'
         if r.get("accessNote"):

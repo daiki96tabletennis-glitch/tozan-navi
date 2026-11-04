@@ -565,7 +565,15 @@
         "trailheadName": "富士宮口五合目",
         "source": "YAMAPモデルコース（model-courses/1447）",
         "sourceUrl": "https://yamap.com/model-courses/1447",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "静岡県山のグレーディング（静岡県）",
+          "sourceUrl": "https://www.pref.shizuoka.jp/kankosports/kanko/kankoseisaku/1040866/1052256.html",
+          "gradedRoute": "富士山(富士宮口)",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "yoshida",
@@ -581,7 +589,15 @@
         "trailheadName": "富士スバルライン五合目（吉田口）",
         "source": "YAMAPモデルコース（model-courses/26242）",
         "sourceUrl": "https://yamap.com/model-courses/26242",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "富士山（スバルライン五合目）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "subashiri",
@@ -597,7 +613,15 @@
         "trailheadName": "須走口五合目",
         "source": "YAMAPモデルコース（model-courses/27024）",
         "sourceUrl": "https://yamap.com/model-courses/27024",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "静岡県山のグレーディング（静岡県）",
+          "sourceUrl": "https://www.pref.shizuoka.jp/kankosports/kanko/kankoseisaku/1040866/1052256.html",
+          "gradedRoute": "富士山(須走口)",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 130,
@@ -1534,7 +1558,15 @@
         "trailheadName": "鴨沢（小袖登山口）",
         "source": "YAMAPモデルコース（model-courses/56）",
         "sourceUrl": "https://yamap.com/model-courses/56",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "雲取山（鴨沢）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "三峯神社〜白岩山〜雲取山（往復）",
@@ -1982,7 +2014,15 @@
         "trailheadName": "天城縦走登山口（天城高原）",
         "source": "YAMAPモデルコース（model-courses/21039）",
         "sourceUrl": "https://yamap.com/model-courses/21039",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "静岡県山のグレーディング（静岡県）",
+          "sourceUrl": "https://www.pref.shizuoka.jp/kankosports/kanko/kankoseisaku/1040866/1052256.html",
+          "gradedRoute": "天城山(天城高原ゴルフ場)",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "天城縦走登山口〜万二郎岳〜万三郎岳〜八丁池〜八丁池口（縦走）",
@@ -2391,7 +2431,15 @@
         "trailheadName": "上日川峠",
         "source": "YAMAPモデルコース（model-courses/209）",
         "sourceUrl": "https://yamap.com/model-courses/209",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "A",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "大菩薩嶺（ロッジ長兵衛）＜大菩薩峠・唐松尾根＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "saketsuishi-route",
@@ -2949,7 +2997,16 @@
         "trailheadName": "上落合橋登山口",
         "source": "YAMAPモデルコース（model-courses/19811）",
         "sourceUrl": "https://yamap.com/model-courses/19811",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": null,
+          "level": "caution",
+          "source": "埼玉県警察「両神山・山岳遭難ハザードマップ」",
+          "sourceUrl": "https://www.police.pref.saitama.lg.jp/documents/10285/ryoukami.pdf",
+          "basis": "official",
+          "note": "八丁尾根の岩稜帯。両神山は鎖場や急斜面での転落・滑落による遭難が多い",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 165,
@@ -3003,7 +3060,7 @@
     "metaTitle": "両神山 登山の難易度は中級｜日帰り7時間46分・標高差1,559m｜西武秩父駅からバス1時間【百名山】｜Yamatch",
     "metaDescription": "両神山（標高1,723m・埼玉県）の難易度は中級（体力のある中級者向け）。代表コース（日向大谷〜清滝小屋〜両神神社〜両神山（往復））は7時間46分・9.1km・標高差1559m。新宿から電車とバスで約2時間29分（西武秩父駅からバス1時間）。日帰りできます。鋸状の岩峰が連なる個性的な山容。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "両神山 登山の難易度は中級｜日帰り7時間46分・標高差1,559m｜西武秩父駅からバス1時間【百名山】｜Yamatch",
     "ogDescription": "両神山（標高1,723m・埼玉県）の難易度は中級（体力のある中級者向け）。代表コース（日向大谷〜清滝小屋〜両神神社〜両神山（往復））は7時間46分・9.1km・標高差1559m。新宿から電車とバスで約2時間29分（西武秩父駅からバス1時間）。日帰りできます。鋸状の岩峰が連なる個性的な山容。駐車場・装備・天気も掲載。",
@@ -3374,7 +3431,15 @@
         "trailheadName": "毛木平",
         "source": "YAMAPモデルコース（model-courses/32806）",
         "sourceUrl": "https://yamap.com/model-courses/32806",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "甲武信ヶ岳（毛木平）＜甲武信ヶ岳→十文字峠＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "西沢渓谷入口〜徳ちゃん新道〜木賊山〜甲武信ヶ岳（往復）",
@@ -3387,7 +3452,15 @@
         "trailheadName": "西沢渓谷入口",
         "source": "YAMAPモデルコース（model-courses/10623）",
         "sourceUrl": "https://yamap.com/model-courses/10623",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "甲武信ヶ岳（西沢渓谷入口）＜徳ちゃん新道＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 200,
@@ -3818,7 +3891,15 @@
         "trailheadName": "瑞牆山荘",
         "source": "YAMAPモデルコース（model-courses/7026）",
         "sourceUrl": "https://yamap.com/model-courses/7026",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "瑞牆山（瑞牆山荘）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "みずがき山自然公園〜不動滝〜瑞牆山〜富士見平小屋（周回）",
@@ -3844,7 +3925,15 @@
         "trailheadName": "瑞牆山荘",
         "source": "YAMAPモデルコース（model-courses/24973）",
         "sourceUrl": "https://yamap.com/model-courses/24973",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "瑞牆山（瑞牆山荘）・金峰山（瑞牆山荘）",
+          "basis": "contains",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 180,
@@ -3894,7 +3983,7 @@
     "metaTitle": "瑞牆山 登山の難易度は中級｜日帰り5時間37分・標高差928m｜韮崎駅からバス1時間20分【百名山】｜Yamatch",
     "metaDescription": "瑞牆山（標高2,230m・山梨県）の難易度は中級（体力のある中級者向け）。代表コース（瑞牆山荘〜富士見平小屋〜瑞牆山（往復））は5時間37分・5.4km・標高差928m。新宿から電車とバスで約2時間56分（韮崎駅からバス1時間20分）。日帰りできます。奇岩・巨石が林立する個性的な山容。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "瑞牆山 登山の難易度は中級｜日帰り5時間37分・標高差928m｜韮崎駅からバス1時間20分【百名山】｜Yamatch",
     "ogDescription": "瑞牆山（標高2,230m・山梨県）の難易度は中級（体力のある中級者向け）。代表コース（瑞牆山荘〜富士見平小屋〜瑞牆山（往復））は5時間37分・5.4km・標高差928m。新宿から電車とバスで約2時間56分（韮崎駅からバス1時間20分）。日帰りできます。奇岩・巨石が林立する個性的な山容。駐車場・装備・天気も掲載。",
@@ -4721,7 +4810,15 @@
         "trailheadName": "大弛峠",
         "source": "YAMAPモデルコース（model-courses/1448）",
         "sourceUrl": "https://yamap.com/model-courses/1448",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "A",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "金峰山（大弛峠）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "mawarimedaira-roundtrip",
@@ -4737,7 +4834,15 @@
         "trailheadName": "廻り目平（金峰山荘）",
         "source": "YAMAPモデルコース（model-courses/23213）",
         "sourceUrl": "https://yamap.com/model-courses/23213",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "金峰山（廻り目平）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "mizugaki-sanso-roundtrip",
@@ -4753,7 +4858,15 @@
         "trailheadName": "瑞牆山荘",
         "source": "YAMAPモデルコース（model-courses/207）",
         "sourceUrl": "https://yamap.com/model-courses/207",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "金峰山（瑞牆山荘）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 180,
@@ -4795,7 +4908,7 @@
     "metaTitle": "金峰山 登山の難易度は中級｜日帰り5時間13分・標高差575m｜塩山駅からバス1時間25分【百名山】｜Yamatch",
     "metaDescription": "金峰山（標高2,599m・山梨県）の難易度は中級（体力のある中級者向け）。代表コース（大弛峠〜朝日岳〜金峰山（往復））は5時間13分・8.1km・標高差575m。新宿から電車とバスで約2時間48分（塩山駅からバス1時間25分）。日帰りできます。奥秩父の盟主。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "金峰山 登山の難易度は中級｜日帰り5時間13分・標高差575m｜塩山駅からバス1時間25分【百名山】｜Yamatch",
     "ogDescription": "金峰山（標高2,599m・山梨県）の難易度は中級（体力のある中級者向け）。代表コース（大弛峠〜朝日岳〜金峰山（往復））は5時間13分・8.1km・標高差575m。新宿から電車とバスで約2時間48分（塩山駅からバス1時間25分）。日帰りできます。奥秩父の盟主。駐車場・装備・天気も掲載。",
@@ -5229,7 +5342,15 @@
         "trailheadName": "夜叉神峠登山口",
         "source": "YAMAPモデルコース（model-courses/5381）",
         "sourceUrl": "https://yamap.com/model-courses/5381",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "鳳凰山（夜叉神峠）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "青木鉱泉〜ドンドコ沢〜地蔵岳〜観音岳〜薬師岳（周回）",
@@ -5246,6 +5367,14 @@
         "status": {
           "state": "caution",
           "label": "健脚なら日帰り可"
+        },
+        "tech": {
+          "grade": "C",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "鳳凰山（青木鉱泉）＜地蔵岳・中道＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
         }
       },
       {
@@ -5309,7 +5438,7 @@
     "metaTitle": "鳳凰山 登山の難易度は中〜上級｜山小屋泊・歩行13時間8分・標高差1,937m｜甲府駅からバス【百名山】｜Yamatch",
     "metaDescription": "鳳凰山（標高2,841m・山梨県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（夜叉神峠〜南御室小屋〜薬師岳〜観音岳（往復））は13時間8分・20.8km・標高差1937m。新宿から電車とバスで約2時間55分（甲府駅からバス1時間25分）。山小屋泊がおすすめです。南アルプス北部の山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "鳳凰山 登山の難易度は中〜上級｜山小屋泊・歩行13時間8分・標高差1,937m｜甲府駅からバス【百名山】｜Yamatch",
     "ogDescription": "鳳凰山（標高2,841m・山梨県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（夜叉神峠〜南御室小屋〜薬師岳〜観音岳（往復））は13時間8分・20.8km・標高差1937m。新宿から電車とバスで約2時間55分（甲府駅からバス1時間25分）。山小屋泊がおすすめです。南アルプス北部の山。駐車場・装備・天気も掲載。",
@@ -5669,7 +5798,15 @@
         "trailheadName": "二荒山神社中宮祠（登拝門）",
         "source": "YAMAPモデルコース（model-courses/51）",
         "sourceUrl": "https://yamap.com/model-courses/51",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "B",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "男体山（中宮祠）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "梵字飯場跡〜志津峠〜男体山（往復）",
@@ -6108,7 +6245,15 @@
         "trailheadName": "広河原",
         "source": "YAMAPモデルコース（model-courses/16764）",
         "sourceUrl": "https://yamap.com/model-courses/16764",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "北岳（広河原）＜草すべり＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "広河原〜北岳〜北岳山荘〜間ノ岳（周回・1泊2日）",
@@ -6121,7 +6266,15 @@
         "trailheadName": "広河原",
         "source": "YAMAPモデルコース（model-courses/84048）",
         "sourceUrl": "https://yamap.com/model-courses/84048",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "間ノ岳（広河原）＜草すべり＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "白峰三山縦走：広河原〜北岳〜間ノ岳〜農鳥岳〜奈良田（2泊3日）",
@@ -6134,7 +6287,15 @@
         "trailheadName": "広河原",
         "source": "YAMAPモデルコース（model-courses/625）",
         "sourceUrl": "https://yamap.com/model-courses/625",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "北岳→農鳥岳（広河原・奈良田）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 140,
@@ -6185,7 +6346,7 @@
     "metaTitle": "北岳 登山の難易度は上級｜山小屋泊・歩行11時間40分・標高差1,771m｜甲府駅からバス【百名山】｜Yamatch",
     "metaDescription": "北岳（標高3,193m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（広河原〜白根御池小屋〜肩の小屋〜北岳（往復））は11時間40分・10.3km・標高差1771m。新宿から電車とバスで約3時間35分（甲府駅からバス1時間50分）。山小屋泊がおすすめです。日本第2位の高峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "北岳 登山の難易度は上級｜山小屋泊・歩行11時間40分・標高差1,771m｜甲府駅からバス【百名山】｜Yamatch",
     "ogDescription": "北岳（標高3,193m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（広河原〜白根御池小屋〜肩の小屋〜北岳（往復））は11時間40分・10.3km・標高差1771m。新宿から電車とバスで約3時間35分（甲府駅からバス1時間50分）。山小屋泊がおすすめです。日本第2位の高峰。駐車場・装備・天気も掲載。",
@@ -6570,7 +6731,15 @@
         "source": "YAMAPモデルコース（model-courses/17230）",
         "sourceUrl": "https://yamap.com/model-courses/17230",
         "lastVerified": "2026-10-24",
-        "note": "時間は美濃戸（赤岳山荘）から。美濃戸口のバス停からは林道を歩く時間が加わる（美濃戸口からの往復は2本目のコース）"
+        "note": "時間は美濃戸（赤岳山荘）から。美濃戸口のバス停からは林道を歩く時間が加わる（美濃戸口からの往復は2本目のコース）",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "赤岳（美濃戸）＜北沢・地蔵尾根＞／赤岳（美濃戸）＜南沢・文三郎＞",
+          "basis": "contains",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "minotoguchi-roundtrip",
@@ -6586,7 +6755,15 @@
         "trailheadName": "美濃戸口",
         "source": "YAMAPモデルコース（model-courses/95099）",
         "sourceUrl": "https://yamap.com/model-courses/95099",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "赤岳（美濃戸）＜北沢・地蔵尾根＞／赤岳（美濃戸）＜南沢・文三郎＞",
+          "basis": "contains",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "kitazawa-loop",
@@ -6602,7 +6779,15 @@
         "trailheadName": "美濃戸（赤岳山荘）",
         "source": "YAMAPモデルコース（model-courses/132）",
         "sourceUrl": "https://yamap.com/model-courses/132",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "赤岳・横岳・硫黄（美濃戸）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 175,
@@ -6655,7 +6840,7 @@
     "metaTitle": "八ヶ岳（赤岳） 登山の難易度は中〜上級｜健脚向け日帰り8時間43分・標高差1,256m｜茅野駅からバス【百名山】｜Yamatch",
     "metaDescription": "八ヶ岳（赤岳）（標高2,899m・山梨県・長野県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（美濃戸〜行者小屋〜地蔵尾根〜赤岳（周回））は8時間43分・10.8km・標高差1256m。新宿から電車とバスで約2時間44分（茅野駅からバス38分）。日帰りできます。八ヶ岳連峰の最高峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "八ヶ岳（赤岳） 登山の難易度は中〜上級｜健脚向け日帰り8時間43分・標高差1,256m｜茅野駅からバス【百名山】｜Yamatch",
     "ogDescription": "八ヶ岳（赤岳）（標高2,899m・山梨県・長野県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（美濃戸〜行者小屋〜地蔵尾根〜赤岳（周回））は8時間43分・10.8km・標高差1256m。新宿から電車とバスで約2時間44分（茅野駅からバス38分）。日帰りできます。八ヶ岳連峰の最高峰。駐車場・装備・天気も掲載。",
@@ -7088,7 +7273,15 @@
         "trailheadName": "蓼科山七合目登山口",
         "source": "YAMAPモデルコース（model-courses/180）",
         "sourceUrl": "https://yamap.com/model-courses/180",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "蓼科山（七合目登山口）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "すずらん峠〜幸徳平〜蓼科山（往復）",
@@ -7999,7 +8192,15 @@
         "trailheadName": "車坂峠（高峰高原）",
         "source": "YAMAPモデルコース（model-courses/34616）",
         "sourceUrl": "https://yamap.com/model-courses/34616",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "A",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "黒斑山（車坂峠）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "浅間山荘〜火山館〜賽の河原〜前掛山（往復）",
@@ -8014,7 +8215,15 @@
         "sourceUrl": "https://yamap.com/model-courses/97745",
         "lastVerified": "2026-10-24",
         "note": "前掛山へ登れるのは噴火警戒レベル1のときだけ（火口からおおむね500mまで）。登る前に気象庁と小諸市の情報を確認",
-        "noteSourceUrl": "https://www.pref.nagano.lg.jp/sakuchi/sakuchi-shokan/kanko/asamatozan.html"
+        "noteSourceUrl": "https://www.pref.nagano.lg.jp/sakuchi/sakuchi-shokan/kanko/asamatozan.html",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "前掛山（浅間登山口）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 200,
@@ -8403,7 +8612,15 @@
         "trailheadName": "天神平（ロープウェイ山頂駅）",
         "source": "YAMAPモデルコース（model-courses/196）",
         "sourceUrl": "https://yamap.com/model-courses/196",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "群馬県 登山ルート別 難易度グレーディング一覧表（群馬県・令和7年4月改定）",
+          "sourceUrl": "https://www.pref.gunma.jp/01/g3500213.html",
+          "gradedRoute": "谷川岳＜天神尾根＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "nishikuro-roundtrip",
@@ -8419,7 +8636,15 @@
         "trailheadName": "西黒尾根登山口",
         "source": "YAMAPモデルコース（model-courses/19412）",
         "sourceUrl": "https://yamap.com/model-courses/19412",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "群馬県 登山ルート別 難易度グレーディング一覧表（群馬県・令和7年4月改定）",
+          "sourceUrl": "https://www.pref.gunma.jp/01/g3500213.html",
+          "gradedRoute": "谷川岳＜西黒尾根＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "shigekura-traverse",
@@ -8435,7 +8660,15 @@
         "trailheadName": "西黒尾根登山口",
         "source": "YAMAPモデルコース（model-courses/8793）",
         "sourceUrl": "https://yamap.com/model-courses/8793",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "群馬県 登山ルート別 難易度グレーディング一覧表（群馬県・令和7年4月改定）",
+          "sourceUrl": "https://www.pref.gunma.jp/01/g3500213.html",
+          "gradedRoute": "谷川岳＜西黒尾根＞",
+          "basis": "contains",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 180,
@@ -8492,7 +8725,7 @@
     "metaTitle": "谷川岳 登山の難易度は中〜上級｜日帰り4時間49分・標高差890m｜上毛高原駅からバス【百名山】｜Yamatch",
     "metaDescription": "谷川岳（標高1,977m・群馬県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（天神平〜天神尾根〜谷川岳（往復））は4時間49分・6.5km・標高差890m。新宿から電車とバスで約2時間23分（上毛高原駅からバス）。日帰りできます。魔の山とも称される難峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "谷川岳 登山の難易度は中〜上級｜日帰り4時間49分・標高差890m｜上毛高原駅からバス【百名山】｜Yamatch",
     "ogDescription": "谷川岳（標高1,977m・群馬県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（天神平〜天神尾根〜谷川岳（往復））は4時間49分・6.5km・標高差890m。新宿から電車とバスで約2時間23分（上毛高原駅からバス）。日帰りできます。魔の山とも称される難峰。駐車場・装備・天気も掲載。",
@@ -9427,7 +9660,15 @@
         "trailheadName": "丸沼高原ロープウェイ山頂駅",
         "source": "YAMAPモデルコース（model-courses/509）",
         "sourceUrl": "https://yamap.com/model-courses/509",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "群馬県 登山ルート別 難易度グレーディング一覧表（群馬県・令和7年4月改定）",
+          "sourceUrl": "https://www.pref.gunma.jp/01/g3500213.html",
+          "gradedRoute": "日光白根山＜丸沼＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "suganuma-roundtrip",
@@ -9443,7 +9684,15 @@
         "trailheadName": "菅沼登山口",
         "source": "YAMAPモデルコース（model-courses/19641）",
         "sourceUrl": "https://yamap.com/model-courses/19641",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "群馬県 登山ルート別 難易度グレーディング一覧表（群馬県・令和7年4月改定）",
+          "sourceUrl": "https://www.pref.gunma.jp/01/g3500213.html",
+          "gradedRoute": "日光白根山＜菅沼＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "yumoto-roundtrip",
@@ -9990,7 +10239,15 @@
         "trailheadName": "武尊神社",
         "source": "YAMAPモデルコース（model-courses/202）",
         "sourceUrl": "https://yamap.com/model-courses/202",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "群馬県 登山ルート別 難易度グレーディング一覧表（群馬県・令和7年4月改定）",
+          "sourceUrl": "https://www.pref.gunma.jp/01/g3500213.html",
+          "gradedRoute": "剣ヶ峰山→武尊山",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "川場スキー場（リフト利用）〜剣ヶ峰山〜武尊山（往復）",
@@ -10061,7 +10318,7 @@
     "metaTitle": "武尊山 登山の難易度は中〜上級｜日帰り7時間17分・標高差1,292m｜新宿から車で【百名山】｜Yamatch",
     "metaDescription": "武尊山（標高2,158m・群馬県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（武尊神社〜武尊沢〜武尊山〜剣ヶ峰山（周回））は7時間17分・11.7km・標高差1292m。車は新宿から約2時間30分。日帰りできます。上州武尊山とも呼ばれる。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-02",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "武尊山 登山の難易度は中〜上級｜日帰り7時間17分・標高差1,292m｜新宿から車で【百名山】｜Yamatch",
     "ogDescription": "武尊山（標高2,158m・群馬県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（武尊神社〜武尊沢〜武尊山〜剣ヶ峰山（周回））は7時間17分・11.7km・標高差1292m。車は新宿から約2時間30分。日帰りできます。上州武尊山とも呼ばれる。駐車場・装備・天気も掲載。",
@@ -10294,7 +10551,15 @@
         "trailheadName": "北沢峠",
         "source": "YAMAPモデルコース（model-courses/93）",
         "sourceUrl": "https://yamap.com/model-courses/93",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "甲斐駒ヶ岳（北沢峠）＜仙水峠・双児山＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "kuroto-roundtrip",
@@ -10310,7 +10575,16 @@
         "trailheadName": "竹宇駒ヶ岳神社",
         "source": "YAMAPモデルコース（model-courses/9169）",
         "sourceUrl": "https://yamap.com/model-courses/9169",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "D",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "甲斐駒ヶ岳（竹宇駒ヶ岳神社）",
+          "basis": "same",
+          "lastVerified": "2026-11-04",
+          "note": "黒戸尾根"
+        }
       }
     ],
     "driveTime": 205,
@@ -10364,7 +10638,7 @@
     "metaTitle": "甲斐駒ヶ岳 登山の難易度は上級｜健脚向け日帰り8時間32分・標高差1,176m｜茅野駅からバス【百名山】｜Yamatch",
     "metaDescription": "甲斐駒ヶ岳（標高2,967m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（北沢峠〜双児山〜駒津峰〜甲斐駒ヶ岳〜仙水峠（周回））は8時間32分・8.7km・標高差1176m。新宿から電車とバスで約4時間6分（茅野駅からバス）。日帰りできます。白い花崗岩の山頂が印象的。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "甲斐駒ヶ岳 登山の難易度は上級｜健脚向け日帰り8時間32分・標高差1,176m｜茅野駅からバス【百名山】｜Yamatch",
     "ogDescription": "甲斐駒ヶ岳（標高2,967m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（北沢峠〜双児山〜駒津峰〜甲斐駒ヶ岳〜仙水峠（周回））は8時間32分・8.7km・標高差1176m。新宿から電車とバスで約4時間6分（茅野駅からバス）。日帰りできます。白い花崗岩の山頂が印象的。駐車場・装備・天気も掲載。",
@@ -10856,7 +11130,15 @@
         "trailheadName": "北沢峠",
         "source": "YAMAPモデルコース（model-courses/46）",
         "sourceUrl": "https://yamap.com/model-courses/46",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "仙丈ヶ岳（北沢峠）＜小仙丈ヶ岳＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "kashiwagi-roundtrip",
@@ -10926,7 +11208,7 @@
     "metaTitle": "仙丈ヶ岳 登山の難易度は中〜上級｜日帰り7時間35分・標高差1,124m｜茅野駅からバス【百名山】｜Yamatch",
     "metaDescription": "仙丈ヶ岳（標高3,033m・山梨県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（北沢峠〜小仙丈ヶ岳〜仙丈ヶ岳〜藪沢（周回））は7時間35分・8.9km・標高差1124m。新宿から電車とバスで約4時間6分（茅野駅からバス）。日帰りできます。南アルプスの女王。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "仙丈ヶ岳 登山の難易度は中〜上級｜日帰り7時間35分・標高差1,124m｜茅野駅からバス【百名山】｜Yamatch",
     "ogDescription": "仙丈ヶ岳（標高3,033m・山梨県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（北沢峠〜小仙丈ヶ岳〜仙丈ヶ岳〜藪沢（周回））は7時間35分・8.9km・標高差1124m。新宿から電車とバスで約4時間6分（茅野駅からバス）。日帰りできます。南アルプスの女王。駐車場・装備・天気も掲載。",
@@ -11420,7 +11702,15 @@
         "trailheadName": "栂池自然園",
         "source": "YAMAPモデルコース（model-courses/24993）",
         "sourceUrl": "https://yamap.com/model-courses/24993",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "白馬岳（栂池）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "daisekkei-roundtrip",
@@ -11445,6 +11735,15 @@
           "statusType": "temporary",
           "sourceUrl": "https://hakubakan.com/hut/trail260826/",
           "lastVerified": "2026-10-05"
+        },
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "白馬岳（猿倉）",
+          "basis": "same",
+          "lastVerified": "2026-11-04",
+          "note": "大雪渓"
         }
       },
       {
@@ -11518,7 +11817,7 @@
     "metaTitle": "白馬岳登山は日帰りできる？山小屋泊が基本（歩行14時間7分）・難易度中〜上級｜白馬駅からバス【百名山】｜Yamatch",
     "metaDescription": "白馬岳（標高2,932m・長野県北部）は山小屋泊が基本です（歩行14時間7分・難易度中〜上級）。代表コース（栂池自然園〜白馬大池〜小蓮華山〜白馬岳（往復・1泊2日））は14時間7分・18.6km・標高差1717m。新宿から電車とバスで約4時間7分（白馬駅からバス27分）。北アルプス屈指の高山植物の宝庫。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "白馬岳登山は日帰りできる？山小屋泊が基本（歩行14時間7分）・難易度中〜上級｜白馬駅からバス【百名山】｜Yamatch",
     "ogDescription": "白馬岳（標高2,932m・長野県北部）は山小屋泊が基本です（歩行14時間7分・難易度中〜上級）。代表コース（栂池自然園〜白馬大池〜小蓮華山〜白馬岳（往復・1泊2日））は14時間7分・18.6km・標高差1717m。新宿から電車とバスで約4時間7分（白馬駅からバス27分）。北アルプス屈指の高山植物の宝庫。駐車場・装備・天気も掲載。",
@@ -11981,7 +12280,15 @@
         "trailheadName": "畳平",
         "source": "YAMAPモデルコース（model-courses/177）",
         "sourceUrl": "https://yamap.com/model-courses/177",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "乗鞍岳（畳平）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "sanbondaki-roundtrip",
@@ -12624,7 +12931,15 @@
         "trailheadName": "室堂",
         "source": "YAMAPモデルコース（model-courses/36343）",
         "sourceUrl": "https://yamap.com/model-courses/36343",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "雄山→別山（室堂ターミナル）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 360,
@@ -13082,7 +13397,16 @@
         "trailheadName": "室堂",
         "source": "YAMAPモデルコース（model-courses/36334）",
         "sourceUrl": "https://yamap.com/model-courses/36334",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "E",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "剱岳（室堂ターミナル）＜別山尾根＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04",
+          "note": "カニのタテバイ・ヨコバイ"
+        }
       },
       {
         "name": "馬場島〜早月尾根〜剱岳（往復・山小屋泊）",
@@ -13095,7 +13419,15 @@
         "trailheadName": "馬場島",
         "source": "YAMAPモデルコース（model-courses/9792）",
         "sourceUrl": "https://yamap.com/model-courses/9792",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "E",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "剱岳（馬場島）＜早月尾根＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "室堂〜一ノ越〜立山〜別山〜前剱〜剱岳〜雷鳥沢（周回・山小屋泊）",
@@ -13108,7 +13440,15 @@
         "trailheadName": "室堂",
         "source": "YAMAPモデルコース（model-courses/36350）",
         "sourceUrl": "https://yamap.com/model-courses/36350",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "E",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "剱岳（室堂ターミナル）＜別山尾根＞",
+          "basis": "contains",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 360,
@@ -13161,7 +13501,7 @@
     "metaTitle": "剱岳 登山の難易度は上級｜山小屋泊・歩行13時間47分・標高差1,871m｜立山駅からバス【百名山】｜Yamatch",
     "metaDescription": "剱岳（標高2,999m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（室堂〜雷鳥沢〜剱沢〜前剱〜剱岳（往復・山小屋泊））は13時間47分・14.4km・標高差1871m。新宿から電車とバスで約4時間25分（立山駅からバス1時間）。山小屋泊がおすすめです。日本最難関の百名山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "剱岳 登山の難易度は上級｜山小屋泊・歩行13時間47分・標高差1,871m｜立山駅からバス【百名山】｜Yamatch",
     "ogDescription": "剱岳（標高2,999m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（室堂〜雷鳥沢〜剱沢〜前剱〜剱岳（往復・山小屋泊））は13時間47分・14.4km・標高差1871m。新宿から電車とバスで約4時間25分（立山駅からバス1時間）。山小屋泊がおすすめです。日本最難関の百名山。駐車場・装備・天気も掲載。",
@@ -13571,7 +13911,15 @@
         "trailheadName": "上高地バスターミナル",
         "source": "YAMAPモデルコース（model-courses/25438）",
         "sourceUrl": "https://yamap.com/model-courses/25438",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "槍ヶ岳（上高地）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "hidazawa-roundtrip",
@@ -13587,7 +13935,15 @@
         "trailheadName": "新穂高温泉",
         "source": "YAMAPモデルコース（model-courses/24846）",
         "sourceUrl": "https://yamap.com/model-courses/24846",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "槍ヶ岳（新穂高）＜飛騨乗越＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "omote-ginza",
@@ -13603,7 +13959,15 @@
         "trailheadName": "中房温泉（燕岳登山口）",
         "source": "YAMAPモデルコース（model-courses/25416）",
         "sourceUrl": "https://yamap.com/model-courses/25416",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "表銀座（中房温泉・上高地）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 220,
@@ -13657,7 +14021,7 @@
     "metaTitle": "槍ヶ岳 登山の難易度は上級｜山小屋泊・歩行18時間35分・標高差2,213m｜新島々駅からバス【百名山】｜Yamatch",
     "metaDescription": "槍ヶ岳（標高3,180m・長野県北部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（上高地〜槍沢〜槍ヶ岳（往復・2泊3日））は18時間35分・38.4km・標高差2213m。新宿から電車とバスで約4時間5分（新島々駅からバス1時間5分）。山小屋泊がおすすめです。北アルプスの象徴。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "槍ヶ岳 登山の難易度は上級｜山小屋泊・歩行18時間35分・標高差2,213m｜新島々駅からバス【百名山】｜Yamatch",
     "ogDescription": "槍ヶ岳（標高3,180m・長野県北部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（上高地〜槍沢〜槍ヶ岳（往復・2泊3日））は18時間35分・38.4km・標高差2213m。新宿から電車とバスで約4時間5分（新島々駅からバス1時間5分）。山小屋泊がおすすめです。北アルプスの象徴。駐車場・装備・天気も掲載。",
@@ -14162,7 +14526,15 @@
         "trailheadName": "上高地バスターミナル",
         "source": "YAMAPモデルコース（model-courses/100879）",
         "sourceUrl": "https://yamap.com/model-courses/100879",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "奥穂高岳（上高地）＜涸沢＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "dakesawa-loop",
@@ -14182,6 +14554,14 @@
         "status": {
           "state": "caution",
           "label": "上級者向け（重太郎新道・吊尾根）"
+        },
+        "tech": {
+          "grade": "D",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "前穂高岳（上高地）＜重太郎新道＞",
+          "basis": "contains",
+          "lastVerified": "2026-11-04"
         }
       },
       {
@@ -14202,6 +14582,15 @@
         "status": {
           "state": "caution",
           "label": "国内屈指の難路（ジャンダルム）"
+        },
+        "tech": {
+          "grade": "D",
+          "source": "岐阜県山のグレーディング（岐阜県）",
+          "sourceUrl": "https://www.pref.gifu.lg.jp/page/14382.html",
+          "gradedRoute": "西穂高岳（新穂高ロープウェイ）",
+          "basis": "contains",
+          "lastVerified": "2026-11-04",
+          "note": "西穂高岳まででD。西穂高岳〜奥穂高岳（ジャンダルム）の区間だけの評価は無い"
         }
       }
     ],
@@ -14256,7 +14645,7 @@
     "metaTitle": "奥穂高岳 登山の難易度は上級｜山小屋泊・歩行18時間16分・標高差2,231m｜新島々駅からバス【百名山】｜Yamatch",
     "metaDescription": "奥穂高岳（標高3,190m・長野県北部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（上高地〜涸沢〜穂高岳山荘〜奥穂高岳（往復・2泊3日））は18時間16分・35.2km・標高差2231m。新宿から電車とバスで約4時間5分（新島々駅からバス1時間5分）。山小屋泊がおすすめです。日本第3位の高峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "奥穂高岳 登山の難易度は上級｜山小屋泊・歩行18時間16分・標高差2,231m｜新島々駅からバス【百名山】｜Yamatch",
     "ogDescription": "奥穂高岳（標高3,190m・長野県北部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（上高地〜涸沢〜穂高岳山荘〜奥穂高岳（往復・2泊3日））は18時間16分・35.2km・標高差2231m。新宿から電車とバスで約4時間5分（新島々駅からバス1時間5分）。山小屋泊がおすすめです。日本第3位の高峰。駐車場・装備・天気も掲載。",
@@ -21201,7 +21590,15 @@
         "trailheadName": "深田記念公園",
         "source": "YAMAPモデルコース（model-courses/22295）",
         "sourceUrl": "https://yamap.com/model-courses/22295",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "茅ヶ岳（深田公園駐車場）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "深田記念公園〜茅ヶ岳〜金ヶ岳（往復）",
@@ -21625,7 +22022,15 @@
         "trailheadName": "乾徳山登山口（徳和）",
         "source": "YAMAPモデルコース（model-courses/1159）",
         "sourceUrl": "https://yamap.com/model-courses/1159",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "乾徳山（徳和駐車場）＜銀晶水＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "徳和〜乾徳山〜道満山〜徳和峠（周回）",
@@ -21638,7 +22043,15 @@
         "trailheadName": "乾徳山登山口（徳和）",
         "source": "YAMAPモデルコース（model-courses/34470）",
         "sourceUrl": "https://yamap.com/model-courses/34470",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "乾徳山（徳和駐車場）＜銀晶水＞",
+          "basis": "contains",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "大平高原〜乾徳山〜笠盛山〜黒金山（周回）",
@@ -21705,7 +22118,7 @@
     "metaTitle": "乾徳山 登山の難易度は中〜上級｜日帰り7時間9分・標高差1,213m｜山梨市駅からバス32分【二百名山】｜Yamatch",
     "metaDescription": "乾徳山（標高2,031m・山梨県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（徳和〜国師ヶ原〜乾徳山〜高原ヒュッテ（往復））は7時間9分・10.4km・標高差1213m。新宿から電車とバスで約1時間59分（山梨市駅からバス32分）。日帰りできます。奥秩父の名峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "乾徳山 登山の難易度は中〜上級｜日帰り7時間9分・標高差1,213m｜山梨市駅からバス32分【二百名山】｜Yamatch",
     "ogDescription": "乾徳山（標高2,031m・山梨県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（徳和〜国師ヶ原〜乾徳山〜高原ヒュッテ（往復））は7時間9分・10.4km・標高差1213m。新宿から電車とバスで約1時間59分（山梨市駅からバス32分）。日帰りできます。奥秩父の名峰。駐車場・装備・天気も掲載。",
@@ -23898,7 +24311,15 @@
         "source": "YAMAPモデルコース（model-courses/5083）",
         "sourceUrl": "https://yamap.com/model-courses/5083",
         "lastVerified": "2026-10-24",
-        "note": "活火山。噴火警報が出たときは登れない範囲があるので、登る前に気象庁の情報を確認"
+        "note": "活火山。噴火警報が出たときは登れない範囲があるので、登る前に気象庁の情報を確認",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "焼岳（新中ノ湯登山口）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "上高地〜焼岳小屋〜中尾峠〜焼岳 北峰（往復）",
@@ -24378,7 +24799,15 @@
         "trailheadName": "柏原新道登山口（扇沢）",
         "source": "YAMAPモデルコース（model-courses/20162）",
         "sourceUrl": "https://yamap.com/model-courses/20162",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "鹿島槍ヶ岳（扇沢）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "大谷原〜赤岩尾根〜冷池山荘〜鹿島槍ヶ岳（往復・1泊2日）",
@@ -24391,7 +24820,15 @@
         "trailheadName": "大谷原",
         "source": "YAMAPモデルコース（model-courses/10169）",
         "sourceUrl": "https://yamap.com/model-courses/10169",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "鹿島槍ヶ岳（大谷原）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "柏原新道〜鹿島槍ヶ岳〜八峰キレット〜五竜岳〜遠見尾根（縦走・2泊3日）",
@@ -24408,6 +24845,15 @@
         "status": {
           "state": "caution",
           "label": "上級者向け（八峰キレット）"
+        },
+        "tech": {
+          "grade": "D",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "八峰キレット（アルプス平駅・大谷原）",
+          "basis": "contains",
+          "lastVerified": "2026-11-04",
+          "note": "八峰キレット"
         }
       }
     ],
@@ -24462,7 +24908,7 @@
     "metaTitle": "鹿島槍ヶ岳 登山の難易度は上級｜山小屋泊・歩行15時間32分・標高差2,406m｜信濃大町駅からバス【百名山】｜Yamatch",
     "metaDescription": "鹿島槍ヶ岳（標高2,889m・富山県・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（扇沢（柏原新道）〜爺ヶ岳〜冷池山荘〜鹿島槍ヶ岳（往復・1泊2日））は15時間32分・20.6km・標高差2406m。新宿から電車とバスで約3時間54分（信濃大町駅からバス40分）。山小屋泊がおすすめです。北アルプス後立山連峰の主峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "鹿島槍ヶ岳 登山の難易度は上級｜山小屋泊・歩行15時間32分・標高差2,406m｜信濃大町駅からバス【百名山】｜Yamatch",
     "ogDescription": "鹿島槍ヶ岳（標高2,889m・富山県・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（扇沢（柏原新道）〜爺ヶ岳〜冷池山荘〜鹿島槍ヶ岳（往復・1泊2日））は15時間32分・20.6km・標高差2406m。新宿から電車とバスで約3時間54分（信濃大町駅からバス40分）。山小屋泊がおすすめです。北アルプス後立山連峰の主峰。駐車場・装備・天気も掲載。",
@@ -25262,7 +25708,15 @@
         "trailheadName": "内山峠",
         "source": "YAMAPモデルコース（model-courses/4052）",
         "sourceUrl": "https://yamap.com/model-courses/4052",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "群馬県 登山ルート別 難易度グレーディング一覧表（群馬県・令和7年4月改定）",
+          "sourceUrl": "https://www.pref.gunma.jp/01/g3500213.html",
+          "gradedRoute": "荒船山（内山峠）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "相沢登山口〜中ノ宮〜艫岩〜荒船山（往復）",
@@ -25814,7 +26268,15 @@
         "trailheadName": "栗生登山口",
         "source": "YAMAPモデルコース（model-courses/49）",
         "sourceUrl": "https://yamap.com/model-courses/49",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "御座山（栗生登山口）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "白岩〜見晴台〜前衛峰〜御座山（往復）",
@@ -26221,7 +26683,15 @@
         "trailheadName": "岩菅山登山道入口（一の瀬）",
         "source": "YAMAPモデルコース（model-courses/24405）",
         "sourceUrl": "https://yamap.com/model-courses/24405",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "岩菅山（岩菅山登山口）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "東館山山頂駅〜寺小屋峰〜岩菅山〜一の瀬（縦走）",
@@ -26657,7 +27127,15 @@
         "trailheadName": "一ノ鳥居登山口（一ノ鳥居苑地）",
         "source": "YAMAPモデルコース（model-courses/8919）",
         "sourceUrl": "https://yamap.com/model-courses/8919",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "飯縄山（一ノ鳥居苑地）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "戸隠（飯縄山西登山口）〜萓ノ宮〜飯縄山（往復）",
@@ -27533,7 +28011,15 @@
         "distance": "10.0km",
         "elevation": "+1300m",
         "waypoints": "朝霧高原 → 毛無山",
-        "coeff": 28
+        "coeff": 28,
+        "tech": {
+          "grade": "B",
+          "source": "静岡県山のグレーディング（静岡県）",
+          "sourceUrl": "https://www.pref.shizuoka.jp/kankosports/kanko/kankoseisaku/1040866/1052256.html",
+          "gradedRoute": "毛無山(麓)",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "麓登山口〜毛無山〜大見岳〜タカデッキ〜雨ヶ岳〜根原（縦走）",
@@ -28335,7 +28821,15 @@
         "trailheadName": "羽衣（表参道入口）",
         "source": "YAMAPモデルコース（model-courses/22284）",
         "sourceUrl": "https://yamap.com/model-courses/22284",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "A",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "七面山（羽衣）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "羽衣〜表参道〜七面山〜最高地点〜奥の院（往復）",
@@ -28816,7 +29310,16 @@
         "trailheadName": "銀山平登山口",
         "source": "YAMAPモデルコース（model-courses/27325）",
         "sourceUrl": "https://yamap.com/model-courses/27325",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "D",
+          "source": "新潟 山のグレーディング（新潟県）",
+          "sourceUrl": "https://www.pref.niigata.lg.jp/site/opendata/1356812341916.html",
+          "gradedRoute": "荒沢岳（銀山平登山口）",
+          "basis": "same",
+          "lastVerified": "2026-11-04",
+          "note": "前嵓"
+        }
       },
       {
         "name": "裏越後三山：荒沢岳〜兎岳〜中ノ岳〜越後駒ヶ岳（周回）",
@@ -28833,6 +29336,15 @@
         "status": {
           "state": "caution",
           "label": "上級者向けの長い縦走"
+        },
+        "tech": {
+          "grade": "D",
+          "source": "新潟 山のグレーディング（新潟県）",
+          "sourceUrl": "https://www.pref.niigata.lg.jp/site/opendata/1356812341916.html",
+          "gradedRoute": "荒沢岳（銀山平登山口）",
+          "basis": "contains",
+          "lastVerified": "2026-11-04",
+          "note": "前嵓"
         }
       }
     ],
@@ -28870,7 +29382,7 @@
     "metaTitle": "荒沢岳 登山の難易度は中〜上級｜健脚向け日帰り8時間20分・標高差1,423m｜浦佐駅からバス【二百名山】｜Yamatch",
     "metaDescription": "荒沢岳（標高1,969m・新潟県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（銀山平〜前山〜前嵓〜荒沢岳（往復））は8時間20分・9km・標高差1423m。新宿から電車とバスで約2時間20分（浦佐駅からバス58分）。日帰りできます。奥只見の秘峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "荒沢岳 登山の難易度は中〜上級｜健脚向け日帰り8時間20分・標高差1,423m｜浦佐駅からバス【二百名山】｜Yamatch",
     "ogDescription": "荒沢岳（標高1,969m・新潟県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（銀山平〜前山〜前嵓〜荒沢岳（往復））は8時間20分・9km・標高差1423m。新宿から電車とバスで約2時間20分（浦佐駅からバス58分）。日帰りできます。奥只見の秘峰。駐車場・装備・天気も掲載。",
@@ -29599,7 +30111,15 @@
         "trailheadName": "老平登山口",
         "source": "YAMAPモデルコース（model-courses/9183）",
         "sourceUrl": "https://yamap.com/model-courses/9183",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "D",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "笊ヶ岳（老平）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "老平〜小笊ヶ岳〜笊ヶ岳〜布引山〜桧横手山（周回）",
@@ -29625,7 +30145,15 @@
         "trailheadName": "椹島",
         "source": "YAMAPモデルコース（model-courses/47880）",
         "sourceUrl": "https://yamap.com/model-courses/47880",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "D",
+          "source": "静岡県山のグレーディング（静岡県）",
+          "sourceUrl": "https://www.pref.shizuoka.jp/kankosports/kanko/kankoseisaku/1040866/1052256.html",
+          "gradedRoute": "笊ヶ岳(椹島)",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 155,
@@ -29667,7 +30195,7 @@
     "metaTitle": "笊ヶ岳 登山の難易度は上級｜山小屋泊・歩行16時間1分・標高差2,817m｜身延駅からバス【二百名山】｜Yamatch",
     "metaDescription": "笊ヶ岳（標高2,629m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（老平〜桧横手山〜布引山〜笊ヶ岳（往復））は16時間1分・19.9km・標高差2817m。新宿から電車とバスで約4時間18分（身延駅からバス）。山小屋泊がおすすめです。南アルプス深部の難峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "笊ヶ岳 登山の難易度は上級｜山小屋泊・歩行16時間1分・標高差2,817m｜身延駅からバス【二百名山】｜Yamatch",
     "ogDescription": "笊ヶ岳（標高2,629m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（老平〜桧横手山〜布引山〜笊ヶ岳（往復））は16時間1分・19.9km・標高差2817m。新宿から電車とバスで約4時間18分（身延駅からバス）。山小屋泊がおすすめです。南アルプス深部の難峰。駐車場・装備・天気も掲載。",
@@ -30054,7 +30582,15 @@
         "trailheadName": "白沢登山口",
         "source": "YAMAPモデルコース（model-courses/11107）",
         "sourceUrl": "https://yamap.com/model-courses/11107",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "餓鬼岳（白沢登山口）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "白沢登山口〜餓鬼岳〜唐沢岳（往復・山小屋泊）",
@@ -30067,7 +30603,15 @@
         "trailheadName": "白沢登山口",
         "source": "YAMAPモデルコース（model-courses/95007）",
         "sourceUrl": "https://yamap.com/model-courses/95007",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "餓鬼岳（白沢登山口）",
+          "basis": "contains",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 210,
@@ -30104,7 +30648,7 @@
     "metaTitle": "餓鬼岳 登山の難易度は上級｜山小屋泊・歩行13時間・標高差1,795m｜新宿から車で4時間【二百名山】｜Yamatch",
     "metaDescription": "餓鬼岳（標高2,647m・長野県北部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（白沢登山口〜大凪山〜餓鬼岳（往復））は13時間・12.8km・標高差1795m。車は新宿から約4時間。山小屋泊がおすすめです。北アルプスの展望台。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-10-25",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "餓鬼岳 登山の難易度は上級｜山小屋泊・歩行13時間・標高差1,795m｜新宿から車で4時間【二百名山】｜Yamatch",
     "ogDescription": "餓鬼岳（標高2,647m・長野県北部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（白沢登山口〜大凪山〜餓鬼岳（往復））は13時間・12.8km・標高差1795m。車は新宿から約4時間。山小屋泊がおすすめです。北アルプスの展望台。駐車場・装備・天気も掲載。",
@@ -30324,7 +30868,15 @@
         "distance": "11.0km",
         "elevation": "+1400m",
         "waypoints": "有明荘 → 有明山",
-        "coeff": 31
+        "coeff": 31,
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "有明山（中房）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 230,
@@ -30373,7 +30925,7 @@
     "metaTitle": "有明山 登山の難易度は中〜上級｜日帰り6時間44分・標高差991m｜穂高駅からバス55分【二百名山】｜Yamatch",
     "metaDescription": "有明山（標高2,268m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（有明山神社〜表参道〜有明山（往復））は6時間44分・6km・標高差991m。新宿から電車とバスで約3時間54分（穂高駅からバス55分）。日帰りできます。安曇野のシンボル「安曇富士」とも呼ばれる美しい山容。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "有明山 登山の難易度は中〜上級｜日帰り6時間44分・標高差991m｜穂高駅からバス55分【二百名山】｜Yamatch",
     "ogDescription": "有明山（標高2,268m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（有明山神社〜表参道〜有明山（往復））は6時間44分・6km・標高差991m。新宿から電車とバスで約3時間54分（穂高駅からバス55分）。日帰りできます。安曇野のシンボル「安曇富士」とも呼ばれる美しい山容。駐車場・装備・天気も掲載。",
@@ -30717,7 +31269,15 @@
         "trailheadName": "仲仙寺登山口",
         "source": "YAMAPモデルコース（model-courses/18165）",
         "sourceUrl": "https://yamap.com/model-courses/18165",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "A",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "経ヶ岳（仲仙寺）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "権兵衛峠〜北沢山〜経ヶ岳（往復）",
@@ -32091,7 +32651,15 @@
         "trailheadName": "枝折峠",
         "source": "YAMAPモデルコース（model-courses/192）",
         "sourceUrl": "https://yamap.com/model-courses/192",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "B",
+          "source": "新潟 山のグレーディング（新潟県）",
+          "sourceUrl": "https://www.pref.niigata.lg.jp/site/opendata/1356812341916.html",
+          "gradedRoute": "越後駒ヶ岳（枝折峠登山口）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "石抱橋〜道行山〜百草ノ池〜越後駒ヶ岳（往復）",
@@ -32584,6 +33152,14 @@
         "status": {
           "state": "caution",
           "label": "健脚向け（日帰りは12時間以上）"
+        },
+        "tech": {
+          "grade": "D",
+          "source": "群馬県 登山ルート別 難易度グレーディング一覧表（群馬県・令和7年4月改定）",
+          "sourceUrl": "https://www.pref.gunma.jp/01/g3500213.html",
+          "gradedRoute": "平ヶ岳（鷹ノ巣駐車場）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
         }
       },
       {
@@ -32634,7 +33210,7 @@
     "metaTitle": "平ヶ岳 登山の難易度は上級｜健脚向け日帰り12時間45分・標高差1,930m｜新宿から車で【百名山】｜Yamatch",
     "metaDescription": "平ヶ岳（標高2,141m・新潟県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（鷹ノ巣（平ヶ岳登山口）〜台倉山〜池ノ岳〜平ヶ岳（往復））は12時間45分・21.6km・標高差1930m。車は新宿から約4時間15分。日帰りできます。深田久弥が「孤高の山」と呼んだ秘峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-02",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "平ヶ岳 登山の難易度は上級｜健脚向け日帰り12時間45分・標高差1,930m｜新宿から車で【百名山】｜Yamatch",
     "ogDescription": "平ヶ岳（標高2,141m・新潟県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（鷹ノ巣（平ヶ岳登山口）〜台倉山〜池ノ岳〜平ヶ岳（往復））は12時間45分・21.6km・標高差1930m。車は新宿から約4時間15分。日帰りできます。深田久弥が「孤高の山」と呼んだ秘峰。駐車場・装備・天気も掲載。",
@@ -32848,7 +33424,15 @@
         "trailheadName": "祓川登山口（和田小屋）",
         "source": "YAMAPモデルコース（model-courses/183）",
         "sourceUrl": "https://yamap.com/model-courses/183",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "新潟 山のグレーディング（新潟県）",
+          "sourceUrl": "https://www.pref.niigata.lg.jp/site/opendata/1356812341916.html",
+          "gradedRoute": "苗場山（祓川駐車場）＜祓川ルート＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "小赤沢三合目〜苗場山（往復）",
@@ -32861,7 +33445,15 @@
         "trailheadName": "小赤沢三合目登山口（長野県栄村）",
         "source": "YAMAPモデルコース（model-courses/18127）",
         "sourceUrl": "https://yamap.com/model-courses/18127",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "苗場山（小赤沢三合目）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "赤湯温泉〜桂ノ沢〜苗場山（往復・1泊2日）",
@@ -33304,7 +33896,15 @@
         "trailheadName": "雨飾高原登山口",
         "source": "YAMAPモデルコース（model-courses/197）",
         "sourceUrl": "https://yamap.com/model-courses/197",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "雨飾山（小谷温泉）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "雨飾温泉（新潟県側）〜中ノ池〜雨飾山（往復）",
@@ -33317,7 +33917,15 @@
         "trailheadName": "雨飾山登山口（雨飾温泉）",
         "source": "YAMAPモデルコース（model-courses/27329）",
         "sourceUrl": "https://yamap.com/model-courses/27329",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "新潟 山のグレーディング（新潟県）",
+          "sourceUrl": "https://www.pref.niigata.lg.jp/site/opendata/1356812341916.html",
+          "gradedRoute": "雨飾山（雨飾温泉駐車場）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 280,
@@ -33354,7 +33962,7 @@
     "metaTitle": "雨飾山 登山の難易度は中〜上級｜日帰り6時間20分・標高差1,052m｜南小谷駅からバス40分【百名山】｜Yamatch",
     "metaDescription": "雨飾山（標高1,963m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（雨飾高原〜笹平〜雨飾山（往復））は6時間20分・7.5km・標高差1052m。新宿から電車とバスで約5時間30分（南小谷駅からバス40分）。日帰りできます。北アルプス最北端の名峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "雨飾山 登山の難易度は中〜上級｜日帰り6時間20分・標高差1,052m｜南小谷駅からバス40分【百名山】｜Yamatch",
     "ogDescription": "雨飾山（標高1,963m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（雨飾高原〜笹平〜雨飾山（往復））は6時間20分・7.5km・標高差1052m。新宿から電車とバスで約5時間30分（南小谷駅からバス40分）。日帰りできます。北アルプス最北端の名峰。駐車場・装備・天気も掲載。",
@@ -33715,7 +34323,15 @@
         "trailheadName": "笹ヶ峰",
         "source": "YAMAPモデルコース（model-courses/199）",
         "sourceUrl": "https://yamap.com/model-courses/199",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "新潟 山のグレーディング（新潟県）",
+          "sourceUrl": "https://www.pref.niigata.lg.jp/site/opendata/1356812341916.html",
+          "gradedRoute": "火打山（笹ヶ峰登山口）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "myoko-loop",
@@ -34244,7 +34860,15 @@
         "trailheadName": "戸隠キャンプ場",
         "source": "YAMAPモデルコース（model-courses/26904）",
         "sourceUrl": "https://yamap.com/model-courses/26904",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "D",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "高妻山（戸隠キャンプ場）（周回）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "戸隠キャンプ場〜弥勒尾根〜高妻山（往復）",
@@ -34274,6 +34898,15 @@
         "status": {
           "state": "caution",
           "label": "上級者向け（戸隠山の鎖場・蟻の塔渡り）"
+        },
+        "tech": {
+          "grade": "D",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "戸隠山（奥社駐車場・戸隠キャンプ場）",
+          "basis": "contains",
+          "lastVerified": "2026-11-04",
+          "note": "戸隠山の蟻の塔渡り"
         }
       }
     ],
@@ -34323,7 +34956,7 @@
     "metaTitle": "高妻山 登山の難易度は中〜上級｜健脚向け日帰り8時間58分・標高差1,506m｜長野駅からバス【百名山】｜Yamatch",
     "metaDescription": "高妻山（標高2,353m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（戸隠キャンプ場〜一不動〜五地蔵山〜高妻山〜弥勒尾根（周回））は8時間58分・12.6km・標高差1506m。新宿から電車とバスで約3時間（長野駅からバス1時間5分）。日帰りできます。戸隠連峰の最高峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "高妻山 登山の難易度は中〜上級｜健脚向け日帰り8時間58分・標高差1,506m｜長野駅からバス【百名山】｜Yamatch",
     "ogDescription": "高妻山（標高2,353m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（戸隠キャンプ場〜一不動〜五地蔵山〜高妻山〜弥勒尾根（周回））は8時間58分・12.6km・標高差1506m。新宿から電車とバスで約3時間（長野駅からバス1時間5分）。日帰りできます。戸隠連峰の最高峰。駐車場・装備・天気も掲載。",
@@ -34676,7 +35309,15 @@
         "trailheadName": "新穂高温泉",
         "source": "YAMAPモデルコース（model-courses/206）",
         "sourceUrl": "https://yamap.com/model-courses/206",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "笠ヶ岳（新穂高）＜笠新道＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "新穂高温泉〜笠新道〜笠ヶ岳〜抜戸岳〜弓折岳〜鏡平（周回・1泊2日）",
@@ -34689,7 +35330,15 @@
         "trailheadName": "新穂高温泉",
         "source": "YAMAPモデルコース（model-courses/74610）",
         "sourceUrl": "https://yamap.com/model-courses/74610",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "笠ヶ岳（新穂高）＜笠新道・小池新道＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 260,
@@ -34726,7 +35375,7 @@
     "metaTitle": "笠ヶ岳 登山の難易度は上級｜山小屋泊・歩行16時間4分・標高差2,243m｜新宿から高速バス【百名山】｜Yamatch",
     "metaDescription": "笠ヶ岳（標高2,898m・岐阜県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（新穂高温泉〜笠新道〜笠ヶ岳（往復・1泊2日））は16時間4分・20.4km・標高差2243m。新宿から高速バスなどで約5時間12分。山小屋泊がおすすめです。日本百名山の中でも「きつい山」として知られる笠新道。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "笠ヶ岳 登山の難易度は上級｜山小屋泊・歩行16時間4分・標高差2,243m｜新宿から高速バス【百名山】｜Yamatch",
     "ogDescription": "笠ヶ岳（標高2,898m・岐阜県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（新穂高温泉〜笠新道〜笠ヶ岳（往復・1泊2日））は16時間4分・20.4km・標高差2243m。新宿から高速バスなどで約5時間12分。山小屋泊がおすすめです。日本百名山の中でも「きつい山」として知られる笠新道。駐車場・装備・天気も掲載。",
@@ -35101,7 +35750,15 @@
         "source": "YAMAPモデルコース（model-courses/12392）",
         "sourceUrl": "https://yamap.com/model-courses/12392",
         "lastVerified": "2026-10-24",
-        "note": "剣ヶ峰まで登れるのは立入規制の緩和期間だけ（2026年は7月1日〜10月14日正午）"
+        "note": "剣ヶ峰まで登れるのは立入規制の緩和期間だけ（2026年は7月1日〜10月14日正午）",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "御嶽山（田の原）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "御岳ロープウェイ飯森高原駅〜女人堂〜剣ヶ峰（往復・黒沢口）",
@@ -35115,7 +35772,15 @@
         "source": "YAMAPモデルコース（model-courses/1514）",
         "sourceUrl": "https://yamap.com/model-courses/1514",
         "lastVerified": "2026-10-24",
-        "note": "剣ヶ峰まで登れるのは立入規制の緩和期間だけ（2026年は7月1日〜10月14日正午）"
+        "note": "剣ヶ峰まで登れるのは立入規制の緩和期間だけ（2026年は7月1日〜10月14日正午）",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "御嶽山（飯森高原駅）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "濁河温泉〜五の池小屋〜飛騨頂上〜剣ヶ峰（往復・小坂口）",
@@ -35129,7 +35794,15 @@
         "source": "YAMAPモデルコース（model-courses/95015）",
         "sourceUrl": "https://yamap.com/model-courses/95015",
         "lastVerified": "2026-10-24",
-        "note": "剣ヶ峰まで登れるのは立入規制の緩和期間だけ（2026年は7月1日〜10月14日正午）"
+        "note": "剣ヶ峰まで登れるのは立入規制の緩和期間だけ（2026年は7月1日〜10月14日正午）",
+        "tech": {
+          "grade": "B",
+          "source": "岐阜県山のグレーディング（岐阜県）",
+          "sourceUrl": "https://www.pref.gifu.lg.jp/page/14382.html",
+          "gradedRoute": "御嶽山（濁河）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 265,
@@ -35534,7 +36207,15 @@
         "trailheadName": "アルプス平（地蔵の頭）",
         "source": "YAMAPモデルコース（model-courses/60420）",
         "sourceUrl": "https://yamap.com/model-courses/60420",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "五竜岳（アルプス平駅）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "karamatsu-traverse",
@@ -35550,7 +36231,15 @@
         "trailheadName": "アルプス平（地蔵の頭）",
         "source": "YAMAPモデルコース（model-courses/23227）",
         "sourceUrl": "https://yamap.com/model-courses/23227",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "唐松・五竜（八方池山荘・アルプス平駅）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 235,
@@ -35604,7 +36293,7 @@
     "metaTitle": "五竜岳 登山の難易度は上級｜山小屋泊・歩行11時間10分・標高差1,636m｜神城駅から徒歩【百名山】｜Yamatch",
     "metaDescription": "五竜岳（標高2,814m・長野県北部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（アルプス平〜遠見尾根〜五竜岳（往復））は11時間10分・14.1km・標高差1636m。新宿から電車で約3時間40分（神城駅から徒歩10分）。山小屋泊がおすすめです。後立山連峰の主峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "五竜岳 登山の難易度は上級｜山小屋泊・歩行11時間10分・標高差1,636m｜神城駅から徒歩【百名山】｜Yamatch",
     "ogDescription": "五竜岳（標高2,814m・長野県北部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（アルプス平〜遠見尾根〜五竜岳（往復））は11時間10分・14.1km・標高差1636m。新宿から電車で約3時間40分（神城駅から徒歩10分）。山小屋泊がおすすめです。後立山連峰の主峰。駐車場・装備・天気も掲載。",
@@ -36013,7 +36702,15 @@
         "trailheadName": "銀山平（皇海山登山口）",
         "source": "YAMAPモデルコース（model-courses/18139）",
         "sourceUrl": "https://yamap.com/model-courses/18139",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "D",
+          "source": "群馬県 登山ルート別 難易度グレーディング一覧表（群馬県・令和7年4月改定）",
+          "sourceUrl": "https://www.pref.gunma.jp/01/g3500213.html",
+          "gradedRoute": "皇海山（銀山平）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "銀山平〜庚申山〜鋸山〜皇海山（往復）",
@@ -36026,7 +36723,15 @@
         "trailheadName": "銀山平（皇海山登山口）",
         "source": "YAMAPモデルコース（model-courses/26030）",
         "sourceUrl": "https://yamap.com/model-courses/26030",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "D",
+          "source": "群馬県 登山ルート別 難易度グレーディング一覧表（群馬県・令和7年4月改定）",
+          "sourceUrl": "https://www.pref.gunma.jp/01/g3500213.html",
+          "gradedRoute": "皇海山（銀山平）",
+          "basis": "contains",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 210,
@@ -36063,7 +36768,7 @@
     "metaTitle": "皇海山 登山の難易度は上級｜山小屋泊・歩行14時間17分・標高差2,216m｜新宿から車で【百名山】｜Yamatch",
     "metaDescription": "皇海山（標高2,144m・栃木県・群馬県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（銀山平〜庚申山〜鋸山〜皇海山〜六林班峠（周回））は14時間17分・24.4km・標高差2216m。車は新宿から約2時間50分。山小屋泊がおすすめです。栃木と群馬の境にある足尾山塊の主峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-02",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "皇海山 登山の難易度は上級｜山小屋泊・歩行14時間17分・標高差2,216m｜新宿から車で【百名山】｜Yamatch",
     "ogDescription": "皇海山（標高2,144m・栃木県・群馬県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（銀山平〜庚申山〜鋸山〜皇海山〜六林班峠（周回））は14時間17分・24.4km・標高差2216m。車は新宿から約2時間50分。山小屋泊がおすすめです。栃木と群馬の境にある足尾山塊の主峰。駐車場・装備・天気も掲載。",
@@ -36309,7 +37014,15 @@
         "trailheadName": "千畳敷（ロープウェイ山頂駅）",
         "source": "YAMAPモデルコース（model-courses/131）",
         "sourceUrl": "https://yamap.com/model-courses/131",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "木曽駒ヶ岳（千畳敷）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "nogaike-loop",
@@ -36905,7 +37618,15 @@
         "trailheadName": "百曲がりコース登山口（三城）",
         "source": "YAMAPモデルコース（model-courses/30127）",
         "sourceUrl": "https://yamap.com/model-courses/30127",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "美ヶ原（三城牧場）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 210,
@@ -37291,7 +38012,15 @@
         "trailheadName": "八方池山荘（リフト終点）",
         "source": "YAMAPモデルコース（model-courses/89）",
         "sourceUrl": "https://yamap.com/model-courses/89",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "唐松岳（八方池山荘）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "goryu-traverse",
@@ -37307,7 +38036,15 @@
         "trailheadName": "八方池山荘（リフト終点）",
         "source": "YAMAPモデルコース（model-courses/96256）",
         "sourceUrl": "https://yamap.com/model-courses/96256",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "唐松・五竜（八方池山荘・アルプス平駅）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "id": "kaerazu-traverse",
@@ -37327,6 +38064,15 @@
         "status": {
           "state": "caution",
           "label": "上級者向け（不帰ノ嶮）"
+        },
+        "tech": {
+          "grade": "D",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "不帰キレット（猿倉・八方池山荘）",
+          "basis": "same",
+          "lastVerified": "2026-11-04",
+          "note": "不帰ノ嶮"
         }
       }
     ],
@@ -37381,7 +38127,7 @@
     "metaTitle": "唐松岳 登山のコースタイム6時間48分｜難易度中級・日帰り可｜白馬駅からバス15分｜Yamatch",
     "metaDescription": "唐松岳（標高2,696m・長野県北部）のコースタイムは、代表コース（八方池山荘〜唐松岳（往復））で6時間48分・9.7km・標高差1013m。難易度は中級（体力のある中級者向け）。新宿から電車とバスで約3時間55分（白馬駅からバス15分）。日帰りできます。ゴンドラとリフトで1830mまで上がれる北アルプス入門の名峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "唐松岳 登山のコースタイム6時間48分｜難易度中級・日帰り可｜白馬駅からバス15分｜Yamatch",
     "ogDescription": "唐松岳（標高2,696m・長野県北部）のコースタイムは、代表コース（八方池山荘〜唐松岳（往復））で6時間48分・9.7km・標高差1013m。難易度は中級（体力のある中級者向け）。新宿から電車とバスで約3時間55分（白馬駅からバス15分）。日帰りできます。ゴンドラとリフトで1830mまで上がれる北アルプス入門の名峰。駐車場・装備・天気も掲載。",
@@ -37818,7 +38564,15 @@
         "trailheadName": "空木岳登山口（駒ヶ根高原）",
         "source": "YAMAPモデルコース（model-courses/25144）",
         "sourceUrl": "https://yamap.com/model-courses/25144",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "空木岳（駒ヶ根高原）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "千畳敷〜檜尾岳〜熊沢岳〜空木岳〜池山尾根（縦走・1泊2日）",
@@ -37831,7 +38585,15 @@
         "trailheadName": "千畳敷（ロープウェイ山頂駅）",
         "source": "YAMAPモデルコース（model-courses/25145）",
         "sourceUrl": "https://yamap.com/model-courses/25145",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "木曽駒→空木（千畳敷・駒ヶ根高原）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "伊奈川ダム〜越百山〜南駒ヶ岳〜空木岳（周回・2泊3日）",
@@ -37848,6 +38610,14 @@
         "status": {
           "state": "caution",
           "label": "上級者向け"
+        },
+        "tech": {
+          "grade": "D",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "空木→越百（今朝沢橋）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
         }
       }
     ],
@@ -37897,7 +38667,7 @@
     "metaTitle": "空木岳 登山の難易度は中〜上級｜山小屋泊・歩行13時間16分・標高差2,065m｜新宿から高速バス【百名山】｜Yamatch",
     "metaDescription": "空木岳（標高2,864m・長野県南部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（駒ヶ根高原〜池山尾根〜駒峰ヒュッテ〜空木岳（往復・1泊2日））は13時間16分・17.1km・標高差2065m。新宿から高速バスなどで約4時間5分。山小屋泊がおすすめです。中央アルプス南部の盟主。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "空木岳 登山の難易度は中〜上級｜山小屋泊・歩行13時間16分・標高差2,065m｜新宿から高速バス【百名山】｜Yamatch",
     "ogDescription": "空木岳（標高2,864m・長野県南部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（駒ヶ根高原〜池山尾根〜駒峰ヒュッテ〜空木岳（往復・1泊2日））は13時間16分・17.1km・標高差2065m。新宿から高速バスなどで約4時間5分。山小屋泊がおすすめです。中央アルプス南部の盟主。駐車場・装備・天気も掲載。",
@@ -38238,7 +39008,15 @@
         "trailheadName": "広河原登山口",
         "source": "YAMAPモデルコース（model-courses/23375）",
         "sourceUrl": "https://yamap.com/model-courses/23375",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "恵那山（峰越林道ゲート）＜広河原登山口＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "神坂峠〜千両山〜鳥越峠〜大判山〜恵那山（往復）",
@@ -38251,7 +39029,15 @@
         "trailheadName": "神坂峠登山口",
         "source": "YAMAPモデルコース（model-courses/8795）",
         "sourceUrl": "https://yamap.com/model-courses/8795",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "恵那山（神坂峠登山口）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "前宮登山口〜空峠〜一乃宮社〜恵那山（往復）",
@@ -38264,7 +39050,15 @@
         "trailheadName": "恵那山前宮登山口",
         "source": "YAMAPモデルコース（model-courses/22074）",
         "sourceUrl": "https://yamap.com/model-courses/22074",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "恵那山（前宮登山口）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 255,
@@ -38521,7 +39315,15 @@
         "trailheadName": "鳥倉登山口（越路バス停）",
         "source": "YAMAPモデルコース（model-courses/213）",
         "sourceUrl": "https://yamap.com/model-courses/213",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "D",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "塩見岳（鳥倉）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "越路〜鳥倉登山口〜塩見岳〜蝙蝠岳（往復・2泊3日）",
@@ -38534,7 +39336,15 @@
         "trailheadName": "鳥倉登山口（越路バス停）",
         "source": "YAMAPモデルコース（model-courses/95001）",
         "sourceUrl": "https://yamap.com/model-courses/95001",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "D",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "塩見岳（鳥倉）",
+          "basis": "contains",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 250,
@@ -38571,7 +39381,7 @@
     "metaTitle": "塩見岳 登山の難易度は上級｜山小屋泊・歩行14時間50分・標高差2,504m｜伊那大島駅からバス【百名山】｜Yamatch",
     "metaDescription": "塩見岳（標高3,052m・長野県南部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（越路〜鳥倉登山口〜三伏峠〜塩見岳（往復・1泊2日））は14時間50分・24.3km・標高差2504m。新宿から電車とバスで約5時間40分（伊那大島駅からバス1時間50分）。山小屋泊がおすすめです。南アルプス中央部に位置する3000m超の峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "塩見岳 登山の難易度は上級｜山小屋泊・歩行14時間50分・標高差2,504m｜伊那大島駅からバス【百名山】｜Yamatch",
     "ogDescription": "塩見岳（標高3,052m・長野県南部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（越路〜鳥倉登山口〜三伏峠〜塩見岳（往復・1泊2日））は14時間50分・24.3km・標高差2504m。新宿から電車とバスで約5時間40分（伊那大島駅からバス1時間50分）。山小屋泊がおすすめです。南アルプス中央部に位置する3000m超の峰。駐車場・装備・天気も掲載。",
@@ -38967,7 +39777,15 @@
         "trailheadName": "椹島",
         "source": "YAMAPモデルコース（model-courses/93559）",
         "sourceUrl": "https://yamap.com/model-courses/93559",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "D",
+          "source": "静岡県山のグレーディング（静岡県）",
+          "sourceUrl": "https://www.pref.shizuoka.jp/kankosports/kanko/kankoseisaku/1040866/1052256.html",
+          "gradedRoute": "千枚・荒川・赤石岳（椹島）（周回）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 255,
@@ -39005,7 +39823,7 @@
     "metaTitle": "荒川岳 登山の難易度は上級｜山小屋泊・歩行14時間49分・標高差2,423m｜静岡駅からバス【百名山】｜Yamatch",
     "metaDescription": "荒川岳（標高3,141m・静岡県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（椹島〜千枚小屋〜千枚岳〜悪沢岳（往復・山小屋泊））は14時間49分・23km・標高差2423m。新宿から電車とバスで約5時間53分（静岡駅からバス）。山小屋泊がおすすめです。南アルプス深部の3000m峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "荒川岳 登山の難易度は上級｜山小屋泊・歩行14時間49分・標高差2,423m｜静岡駅からバス【百名山】｜Yamatch",
     "ogDescription": "荒川岳（標高3,141m・静岡県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（椹島〜千枚小屋〜千枚岳〜悪沢岳（往復・山小屋泊））は14時間49分・23km・標高差2423m。新宿から電車とバスで約5時間53分（静岡駅からバス）。山小屋泊がおすすめです。南アルプス深部の3000m峰。駐車場・装備・天気も掲載。",
@@ -39426,7 +40244,15 @@
         "trailheadName": "椹島",
         "source": "YAMAPモデルコース（model-courses/25593）",
         "sourceUrl": "https://yamap.com/model-courses/25593",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "D",
+          "source": "静岡県山のグレーディング（静岡県）",
+          "sourceUrl": "https://www.pref.shizuoka.jp/kankosports/kanko/kankoseisaku/1040866/1052256.html",
+          "gradedRoute": "赤石岳(椹島)",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "椹島〜赤石岳〜大聖寺平〜荒川岳〜千枚小屋〜椹島（周回・2泊3日）",
@@ -39439,7 +40265,15 @@
         "trailheadName": "椹島",
         "source": "YAMAPモデルコース（model-courses/79561）",
         "sourceUrl": "https://yamap.com/model-courses/79561",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "D",
+          "source": "静岡県山のグレーディング（静岡県）",
+          "sourceUrl": "https://www.pref.shizuoka.jp/kankosports/kanko/kankoseisaku/1040866/1052256.html",
+          "gradedRoute": "千枚・荒川・赤石岳（椹島）（周回）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 255,
@@ -39477,7 +40311,7 @@
     "metaTitle": "赤石岳 登山の難易度は上級｜山小屋泊・歩行13時間49分・標高差2,390m｜静岡駅からバス【百名山】｜Yamatch",
     "metaDescription": "赤石岳（標高3,121m・静岡県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（椹島〜赤石小屋〜富士見平〜赤石岳（往復・1泊2日））は13時間49分・16.3km・標高差2390m。新宿から電車とバスで約5時間53分（静岡駅からバス）。山小屋泊がおすすめです。南アルプスの盟主とも呼ばれる3000m峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "赤石岳 登山の難易度は上級｜山小屋泊・歩行13時間49分・標高差2,390m｜静岡駅からバス【百名山】｜Yamatch",
     "ogDescription": "赤石岳（標高3,121m・静岡県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（椹島〜赤石小屋〜富士見平〜赤石岳（往復・1泊2日））は13時間49分・16.3km・標高差2390m。新宿から電車とバスで約5時間53分（静岡駅からバス）。山小屋泊がおすすめです。南アルプスの盟主とも呼ばれる3000m峰。駐車場・装備・天気も掲載。",
@@ -39906,7 +40740,15 @@
         "distance": "23.4km",
         "timeNote": "1泊2日（聖平小屋泊）。1日目の聖沢登山口→聖平小屋は6時間10分",
         "timeSource": "YAMA HACK「聖岳」（2026/03/10 更新）",
-        "timeSourceUrl": "https://yamahack.com/2309"
+        "timeSourceUrl": "https://yamahack.com/2309",
+        "tech": {
+          "grade": "C",
+          "source": "静岡県山のグレーディング（静岡県）",
+          "sourceUrl": "https://www.pref.shizuoka.jp/kankosports/kanko/kankoseisaku/1040866/1052256.html",
+          "gradedRoute": "聖岳(聖沢)",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "聖沢登山口〜聖岳〜兎岳〜百間洞〜赤石岳（縦走・山小屋泊）",
@@ -39919,7 +40761,15 @@
         "trailheadName": "聖沢登山口",
         "source": "YAMAPモデルコース（model-courses/52929）",
         "sourceUrl": "https://yamap.com/model-courses/52929",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "D",
+          "source": "静岡県山のグレーディング（静岡県）",
+          "sourceUrl": "https://www.pref.shizuoka.jp/kankosports/kanko/kankoseisaku/1040866/1052256.html",
+          "gradedRoute": "赤石岳・聖岳(椹島・聖沢)",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "椹島〜赤石岳〜百間洞〜兎岳〜聖岳（周回・山小屋泊）",
@@ -39932,7 +40782,15 @@
         "trailheadName": "椹島",
         "source": "YAMAPモデルコース（model-courses/102165）",
         "sourceUrl": "https://yamap.com/model-courses/102165",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "D",
+          "source": "静岡県山のグレーディング（静岡県）",
+          "sourceUrl": "https://www.pref.shizuoka.jp/kankosports/kanko/kankoseisaku/1040866/1052256.html",
+          "gradedRoute": "赤石岳・聖岳(椹島・聖沢)",
+          "basis": "contains",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 280,
@@ -39970,7 +40828,7 @@
     "metaTitle": "聖岳 登山の難易度は上級｜山小屋泊・歩行15時間45分｜静岡駅からバス【百名山】｜Yamatch",
     "metaDescription": "聖岳（標高3,013m・静岡県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（聖沢登山口〜聖平小屋〜聖岳（往復・山小屋泊））は15時間45分・23.4km。新宿から電車とバスで約5時間38分（静岡駅からバス）。山小屋泊がおすすめです。南アルプス最南部の3000m峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "聖岳 登山の難易度は上級｜山小屋泊・歩行15時間45分｜静岡駅からバス【百名山】｜Yamatch",
     "ogDescription": "聖岳（標高3,013m・静岡県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（聖沢登山口〜聖平小屋〜聖岳（往復・山小屋泊））は15時間45分・23.4km。新宿から電車とバスで約5時間38分（静岡駅からバス）。山小屋泊がおすすめです。南アルプス最南部の3000m峰。駐車場・装備・天気も掲載。",
@@ -40386,7 +41244,15 @@
         "trailheadName": "易老渡（芝沢ゲート）",
         "source": "YAMAPモデルコース（model-courses/216）",
         "sourceUrl": "https://yamap.com/model-courses/216",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "光岳（易老渡）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "畑薙（茶臼岳登山口）〜茶臼岳〜易老岳〜光岳（往復・2泊3日）",
@@ -40399,7 +41265,15 @@
         "trailheadName": "茶臼岳登山口（畑薙）",
         "source": "YAMAPモデルコース（model-courses/48474）",
         "sourceUrl": "https://yamap.com/model-courses/48474",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "D",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "茶臼岳・光岳(畑薙大吊橋)",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 280,
@@ -40436,7 +41310,7 @@
     "metaTitle": "光岳登山は日帰りできる？山小屋泊が基本（歩行16時間14分）・難易度上級｜新宿から高速バス【百名山】｜Yamatch",
     "metaDescription": "光岳（標高2,591m・静岡県）は山小屋泊が基本です（歩行16時間14分・難易度上級）。代表コース（芝沢ゲート〜易老渡〜易老岳〜光岳（往復・1泊2日））は16時間14分・25.8km・標高差2721m。新宿から高速バスなどで約6時間53分。百名山の最南部に位置する山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "光岳登山は日帰りできる？山小屋泊が基本（歩行16時間14分）・難易度上級｜新宿から高速バス【百名山】｜Yamatch",
     "ogDescription": "光岳（標高2,591m・静岡県）は山小屋泊が基本です（歩行16時間14分・難易度上級）。代表コース（芝沢ゲート〜易老渡〜易老岳〜光岳（往復・1泊2日））は16時間14分・25.8km・標高差2721m。新宿から高速バスなどで約6時間53分。百名山の最南部に位置する山。駐車場・装備・天気も掲載。",
@@ -40823,7 +41697,15 @@
         "trailheadName": "折立（薬師岳登山口）",
         "source": "YAMAPモデルコース（model-courses/31777）",
         "sourceUrl": "https://yamap.com/model-courses/31777",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "B",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "薬師岳（折立）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "太郎平小屋〜薬師峠〜薬師岳（往復・太郎平小屋に泊まる場合）",
@@ -41240,7 +42122,15 @@
         "trailheadName": "折立（薬師岳登山口）",
         "source": "YAMAPモデルコース（model-courses/24554）",
         "sourceUrl": "https://yamap.com/model-courses/24554",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "B",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "北ノ俣岳・黒部五郎岳（折立）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "飛越新道：飛越トンネル〜寺地山〜北ノ俣岳〜黒部五郎岳（往復・山小屋泊）",
@@ -41253,7 +42143,15 @@
         "trailheadName": "北ノ俣岳登山口（飛越トンネル）",
         "source": "YAMAPモデルコース（model-courses/10898）",
         "sourceUrl": "https://yamap.com/model-courses/10898",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "C",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "黒部五郎岳（飛越トンネル）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "折立〜薬師岳・黒部五郎岳（往復・山小屋泊）",
@@ -41303,7 +42201,7 @@
     "metaTitle": "黒部五郎岳 登山の難易度は上級｜山小屋泊・歩行18時間54分・標高差2,420m｜富山駅からバス【百名山】｜Yamatch",
     "metaDescription": "黒部五郎岳（標高2,840m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（折立〜太郎平小屋〜北ノ俣岳〜黒部五郎岳（往復・山小屋泊））は18時間54分・29.4km・標高差2420m。新宿から電車とバスで約3時間52分（富山駅からバス1時間40分）。山小屋泊がおすすめです。北アルプス奥部の秘峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "黒部五郎岳 登山の難易度は上級｜山小屋泊・歩行18時間54分・標高差2,420m｜富山駅からバス【百名山】｜Yamatch",
     "ogDescription": "黒部五郎岳（標高2,840m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（折立〜太郎平小屋〜北ノ俣岳〜黒部五郎岳（往復・山小屋泊））は18時間54分・29.4km・標高差2420m。新宿から電車とバスで約3時間52分（富山駅からバス1時間40分）。山小屋泊がおすすめです。北アルプス奥部の秘峰。駐車場・装備・天気も掲載。",
@@ -41672,7 +42570,15 @@
         "trailheadName": "広河原",
         "source": "YAMAPモデルコース（model-courses/84048）",
         "sourceUrl": "https://yamap.com/model-courses/84048",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "日本百名山のグレーディング一覧表（長野県ほか）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "間ノ岳（広河原）＜草すべり＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "白峰三山：広河原〜北岳〜間ノ岳〜農鳥岳〜奈良田（縦走・2泊3日）",
@@ -41685,7 +42591,15 @@
         "trailheadName": "広河原",
         "source": "YAMAPモデルコース（model-courses/625）",
         "sourceUrl": "https://yamap.com/model-courses/625",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "北岳→農鳥岳（広河原・奈良田）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "奈良田〜大門沢〜農鳥岳〜間ノ岳〜北岳〜広河原（縦走・2泊3日）",
@@ -41698,7 +42612,16 @@
         "trailheadName": "奈良田",
         "source": "YAMAPモデルコース（model-courses/26072）",
         "sourceUrl": "https://yamap.com/model-courses/26072",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "北岳→農鳥岳（広河原・奈良田）",
+          "basis": "same",
+          "lastVerified": "2026-11-04",
+          "note": "逆向き"
+        }
       }
     ],
     "driveTime": 140,
@@ -41748,7 +42671,7 @@
     "metaTitle": "間ノ岳 登山の難易度は上級｜山小屋泊・歩行17時間47分・標高差2,407m｜甲府駅からバス【百名山】｜Yamatch",
     "metaDescription": "間ノ岳（標高3,190m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（広河原〜北岳山荘〜中白根山〜間ノ岳（往復・1泊2日））は17時間47分・17.2km・標高差2407m。新宿から電車とバスで約3時間35分（甲府駅からバス1時間50分）。山小屋泊がおすすめです。日本第3位の高峰（奥穂高岳と同高）。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "間ノ岳 登山の難易度は上級｜山小屋泊・歩行17時間47分・標高差2,407m｜甲府駅からバス【百名山】｜Yamatch",
     "ogDescription": "間ノ岳（標高3,190m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（広河原〜北岳山荘〜中白根山〜間ノ岳（往復・1泊2日））は17時間47分・17.2km・標高差2407m。新宿から電車とバスで約3時間35分（甲府駅からバス1時間50分）。山小屋泊がおすすめです。日本第3位の高峰（奥穂高岳と同高）。駐車場・装備・天気も掲載。",
@@ -42121,7 +43044,15 @@
         "trailheadName": "広河原",
         "source": "YAMAPモデルコース（model-courses/88371）",
         "sourceUrl": "https://yamap.com/model-courses/88371",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "C",
+          "source": "山梨 山のグレーディング（山梨県）",
+          "sourceUrl": "https://www.pref.yamanashi.jp/kankou-sgn/shintyaku/grading.html",
+          "gradedRoute": "北岳→農鳥岳（広河原・奈良田）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 140,
@@ -42170,7 +43101,7 @@
     "metaTitle": "農鳥岳 登山の難易度は上級｜山小屋泊・歩行16時間57分・標高差2,718m｜甲府駅からバス1時間50分｜Yamatch",
     "metaDescription": "農鳥岳（標高3,026m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（奈良田〜大門沢小屋〜農鳥岳（往復・山小屋泊））は16時間57分・24km・標高差2718m。新宿から電車とバスで約3時間35分（甲府駅からバス1時間50分）。山小屋泊がおすすめです。白峰三山の最南端。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "農鳥岳 登山の難易度は上級｜山小屋泊・歩行16時間57分・標高差2,718m｜甲府駅からバス1時間50分｜Yamatch",
     "ogDescription": "農鳥岳（標高3,026m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（奈良田〜大門沢小屋〜農鳥岳（往復・山小屋泊））は16時間57分・24km・標高差2718m。新宿から電車とバスで約3時間35分（甲府駅からバス1時間50分）。山小屋泊がおすすめです。白峰三山の最南端。駐車場・装備・天気も掲載。",
@@ -42572,7 +43503,15 @@
         "trailheadName": "大白川（平瀬道登山口）",
         "source": "YAMAPモデルコース（model-courses/31812）",
         "sourceUrl": "https://yamap.com/model-courses/31812",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "C",
+          "source": "岐阜県山のグレーディング（岐阜県）",
+          "sourceUrl": "https://www.pref.gifu.lg.jp/page/14382.html",
+          "gradedRoute": "白山（大白川温泉）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 430,
@@ -42615,7 +43554,7 @@
     "metaTitle": "白山 登山の難易度は中級｜山小屋泊・歩行9時間21分・標高差1,524m｜金沢駅からバス【百名山】｜Yamatch",
     "metaDescription": "白山（標高2,702m・石川県）の難易度は中級（体力のある中級者向け）。代表コース（別当出合〜砂防新道〜黒ボコ岩〜白山 御前峰（往復））は9時間21分・12.3km・標高差1524m。新宿から電車とバスで約5時間6分（金沢駅からバス）。山小屋泊がおすすめです。富士山・立山と並ぶ日本三霊山のひとつ。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "白山 登山の難易度は中級｜山小屋泊・歩行9時間21分・標高差1,524m｜金沢駅からバス【百名山】｜Yamatch",
     "ogDescription": "白山（標高2,702m・石川県）の難易度は中級（体力のある中級者向け）。代表コース（別当出合〜砂防新道〜黒ボコ岩〜白山 御前峰（往復））は9時間21分・12.3km・標高差1524m。新宿から電車とバスで約5時間6分（金沢駅からバス）。山小屋泊がおすすめです。富士山・立山と並ぶ日本三霊山のひとつ。駐車場・装備・天気も掲載。",
@@ -44287,7 +45226,15 @@
         "trailheadName": "伊奈川ダム登山口",
         "source": "YAMAPモデルコース（model-courses/23869）",
         "sourceUrl": "https://yamap.com/model-courses/23869",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "D",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "南駒ヶ岳（今朝沢橋）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "伊奈川ダム〜越百山〜南駒ヶ岳〜赤椰岳（周回・山小屋泊）",
@@ -44300,7 +45247,15 @@
         "trailheadName": "伊奈川ダム登山口",
         "source": "YAMAPモデルコース（model-courses/65404）",
         "sourceUrl": "https://yamap.com/model-courses/65404",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "D",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "南駒ヶ岳（今朝沢橋）",
+          "basis": "contains",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 245,
@@ -44352,7 +45307,7 @@
     "metaTitle": "南駒ヶ岳 登山の難易度は上級｜山小屋泊・歩行15時間45分・標高差2,390m｜須原駅からタクシー【二百名山】｜Yamatch",
     "metaDescription": "南駒ヶ岳（標高2,841m・長野県南部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（伊奈川ダム〜越百山〜仙涯嶺〜南駒ヶ岳（周回・山小屋泊））は15時間45分・22.3km・標高差2390m。新宿から電車で約4時間2分（須原駅からタクシー）。山小屋泊がおすすめです。中央アルプスの空木岳南に連なる二百名山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "南駒ヶ岳 登山の難易度は上級｜山小屋泊・歩行15時間45分・標高差2,390m｜須原駅からタクシー【二百名山】｜Yamatch",
     "ogDescription": "南駒ヶ岳（標高2,841m・長野県南部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（伊奈川ダム〜越百山〜仙涯嶺〜南駒ヶ岳（周回・山小屋泊））は15時間45分・22.3km・標高差2390m。新宿から電車で約4時間2分（須原駅からタクシー）。山小屋泊がおすすめです。中央アルプスの空木岳南に連なる二百名山。駐車場・装備・天気も掲載。",
@@ -44741,7 +45696,15 @@
         "trailheadName": "三股",
         "source": "YAMAPモデルコース（model-courses/30194）",
         "sourceUrl": "https://yamap.com/model-courses/30194",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "蝶ヶ岳（三股）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "三股〜前常念岳〜常念岳〜蝶ヶ岳（周回・1泊2日）",
@@ -45848,7 +46811,15 @@
         "source": "YAMAPモデルコース（model-courses/181）",
         "sourceUrl": "https://yamap.com/model-courses/181",
         "lastVerified": "2026-10-26",
-        "coeff": 34
+        "coeff": 34,
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "燕岳（中房温泉）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "中房温泉〜燕岳〜北燕岳〜燕山荘〜大天井岳（往復・1泊2日）",
@@ -46099,7 +47070,15 @@
         "trailheadName": "扇沢（針ノ木岳登山口）",
         "source": "YAMAPモデルコース（model-courses/12388）",
         "sourceUrl": "https://yamap.com/model-courses/12388",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "針ノ木岳（扇沢）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "扇沢〜針ノ木岳〜スバリ岳〜赤沢岳〜種池山荘〜柏原新道（縦走・1泊2日）",
@@ -46536,7 +47515,15 @@
         "trailheadName": "高瀬ダム（ブナ立尾根登山口）",
         "source": "YAMAPモデルコース（model-courses/27729）",
         "sourceUrl": "https://yamap.com/model-courses/27729",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "烏帽子岳（高瀬ダム）＜ブナ立尾根＞",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "高瀬ダム〜烏帽子岳〜野口五郎岳（往復・山小屋泊）",
@@ -46549,7 +47536,15 @@
         "trailheadName": "高瀬ダム（ブナ立尾根登山口）",
         "source": "YAMAPモデルコース（model-courses/28481）",
         "sourceUrl": "https://yamap.com/model-courses/28481",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "tech": {
+          "grade": "C",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "烏帽子岳（高瀬ダム）＜ブナ立尾根＞",
+          "basis": "contains",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "driveTime": 225,
@@ -46586,7 +47581,7 @@
     "metaTitle": "烏帽子岳（北ア） 登山の難易度は上級｜健脚向け日帰り8時間15分・標高差1,475m｜信濃大町駅からバス【二百名山】｜Yamatch",
     "metaDescription": "烏帽子岳（北ア）（標高2,628m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（高瀬ダム〜ブナ立尾根〜烏帽子岳（往復））は8時間15分・7.8km・標高差1475m。新宿から電車とバスで約4時間24分（信濃大町駅からバス）。日帰りできます。裏銀座縦走路の入口に立つ山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "hasHeroPhotoScript": false,
     "ogTitle": "烏帽子岳（北ア） 登山の難易度は上級｜健脚向け日帰り8時間15分・標高差1,475m｜信濃大町駅からバス【二百名山】｜Yamatch",
     "ogDescription": "烏帽子岳（北ア）（標高2,628m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（高瀬ダム〜ブナ立尾根〜烏帽子岳（往復））は8時間15分・7.8km・標高差1475m。新宿から電車とバスで約4時間24分（信濃大町駅からバス）。日帰りできます。裏銀座縦走路の入口に立つ山。駐車場・装備・天気も掲載。",
@@ -66915,7 +67910,15 @@
         "source": "YAMAPモデルコース（model-courses/1122）",
         "sourceUrl": "https://yamap.com/model-courses/1122",
         "lastVerified": "2026-10-27",
-        "coeff": 25
+        "coeff": 25,
+        "tech": {
+          "grade": "B",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "天狗岳（渋ノ湯）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "唐沢鉱泉〜西尾根〜西天狗岳〜東天狗岳〜黒百合ヒュッテ（周回）",
@@ -67365,7 +68368,15 @@
         "source": "YAMAPモデルコース（model-courses/8016）",
         "sourceUrl": "https://yamap.com/model-courses/8016",
         "lastVerified": "2026-10-27",
-        "coeff": 8
+        "coeff": 8,
+        "tech": {
+          "grade": "A",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "北横岳（ロープウェイ）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "山頂駅〜北横岳〜雨池峠〜縞枯山（周回）",
@@ -68277,7 +69288,15 @@
         "source": "YAMAPモデルコース（model-courses/94936）",
         "sourceUrl": "https://yamap.com/model-courses/94936",
         "lastVerified": "2026-10-27",
-        "coeff": 26
+        "coeff": 26,
+        "tech": {
+          "grade": "D",
+          "source": "岐阜県山のグレーディング（岐阜県）",
+          "sourceUrl": "https://www.pref.gifu.lg.jp/page/14382.html",
+          "gradedRoute": "西穂高岳（新穂高ロープウェイ）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "西穂高口駅〜西穂山荘〜西穂独標（往復）",
@@ -68290,7 +69309,15 @@
         "source": "YAMAPモデルコース（model-courses/6696）",
         "sourceUrl": "https://yamap.com/model-courses/6696",
         "lastVerified": "2026-10-27",
-        "coeff": 17
+        "coeff": 17,
+        "tech": {
+          "grade": "C",
+          "source": "岐阜県山のグレーディング（岐阜県）",
+          "sourceUrl": "https://www.pref.gifu.lg.jp/page/14382.html",
+          "gradedRoute": "独標（新穂高ロープウェイ）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "上高地〜西穂山荘〜西穂独標〜西穂高岳（往復）",
@@ -68303,7 +69330,15 @@
         "source": "YAMAPモデルコース（model-courses/20145）",
         "sourceUrl": "https://yamap.com/model-courses/20145",
         "lastVerified": "2026-10-27",
-        "coeff": 37
+        "coeff": 37,
+        "tech": {
+          "grade": "D",
+          "source": "信州 山のグレーディング一覧表（長野県・2026年）",
+          "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html",
+          "gradedRoute": "西穂高岳（上高地）",
+          "basis": "same",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "vibePoints": [
@@ -68432,7 +69467,7 @@
     "hasHeroPhotoScript": false,
     "photos": [],
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>年中運行</span></div><div class=\"ts-line-name\">京王バス・濃飛バス「新宿〜飛騨高山線」・濃飛バス「平湯・新穂高線」・新穂高ロープウェイ</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>京王バス・濃飛バス「新宿〜飛騨高山線」　<span class=\"ts-duration\">約4時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">平湯温泉</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス「平湯・新穂高線」　<span class=\"ts-duration\">約36分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新穂高ロープウェイ（新穂高温泉駅）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ（第1・第2）　<span class=\"ts-duration\">約22分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">西穂高口駅</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR埼京線　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>京王バス・濃飛バス「新宿〜飛騨高山線」　<span class=\"ts-duration\">約4時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">平湯温泉</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス「平湯・新穂高線」　<span class=\"ts-duration\">約36分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新穂高ロープウェイ（新穂高温泉駅）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ（第1・第2）　<span class=\"ts-duration\">約22分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">西穂高口駅</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR湘南新宿ライン　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>京王バス・濃飛バス「新宿〜飛騨高山線」　<span class=\"ts-duration\">約4時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">平湯温泉</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス「平湯・新穂高線」　<span class=\"ts-duration\">約36分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新穂高ロープウェイ（新穂高温泉駅）</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ（第1・第2）　<span class=\"ts-duration\">約22分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">西穂高口駅</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約5時間38分\" data-omiya=\"約6時間8分\" data-yokohama=\"約6時間12分\">約5時間38分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約11,310円\" data-omiya=\"片道約11,840円\" data-yokohama=\"片道約11,930円\">片道約11,310円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>ロープウェイ代（片道2,400円）は別</li><li>新宿〜平湯温泉の高速バスは全席指定・予約制（1か月前から）</li><li>ロープウェイは天候不良や点検で運休することがある</li></ul></div><div class=\"ts-links\"><a href=\"https://www.nouhibus.co.jp/highwaybus/shinjuku/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>京王バス・濃飛バス 新宿〜飛騨高山線（時刻表・予約）</a><a href=\"https://www.nouhibus.co.jp/route_bus/shinhotaka-line/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>濃飛バス 平湯・新穂高線（時刻表・運賃）</a><a href=\"https://shinhotaka-ropeway.jp/price/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>新穂高ロープウェイ 料金・時刻</a></div></div>",
     "coeffMin": 17,
     "coeffMax": 37,
@@ -68707,7 +69742,16 @@
         "source": "YAMAPモデルコース（model-courses/1225）",
         "sourceUrl": "https://yamap.com/model-courses/1225",
         "lastVerified": "2026-10-27",
-        "coeff": 23
+        "coeff": 23,
+        "tech": {
+          "grade": null,
+          "level": "hard",
+          "source": "群馬県（自然環境課）「妙義山」",
+          "sourceUrl": "https://www.pref.gunma.jp/01/e2310245.html",
+          "basis": "official",
+          "note": "中間道から上の白雲山・金洞山のコースは「険しい岩場が多くあり大変危険」で、初心者は登らないよう呼びかけている",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "妙義神社〜中間道〜タルワキ沢〜相馬岳（往復）",
@@ -68720,7 +69764,16 @@
         "source": "YAMAPモデルコース（model-courses/12924）",
         "sourceUrl": "https://yamap.com/model-courses/12924",
         "lastVerified": "2026-10-27",
-        "coeff": 20
+        "coeff": 20,
+        "tech": {
+          "grade": null,
+          "level": "hard",
+          "source": "群馬県（自然環境課）「妙義山」",
+          "sourceUrl": "https://www.pref.gunma.jp/01/e2310245.html",
+          "basis": "official",
+          "note": "中間道から上の白雲山・金洞山のコースは「険しい岩場が多くあり大変危険」で、初心者は登らないよう呼びかけている",
+          "lastVerified": "2026-11-04"
+        }
       },
       {
         "name": "妙義神社〜相馬岳〜鷹戻し〜中之岳〜中之嶽神社（縦走）",
@@ -68733,7 +69786,16 @@
         "source": "YAMAPモデルコース（model-courses/20367）",
         "sourceUrl": "https://yamap.com/model-courses/20367",
         "lastVerified": "2026-10-27",
-        "coeff": 27
+        "coeff": 27,
+        "tech": {
+          "grade": null,
+          "level": "hard",
+          "source": "群馬県（自然環境課）「妙義山」",
+          "sourceUrl": "https://www.pref.gunma.jp/01/e2310245.html",
+          "basis": "official",
+          "note": "中間道から上の白雲山・金洞山のコースは「険しい岩場が多くあり大変危険」で、初心者は登らないよう呼びかけている",
+          "lastVerified": "2026-11-04"
+        }
       }
     ],
     "vibePoints": [
@@ -68861,7 +69923,7 @@
     "hasHeroPhotoScript": false,
     "photos": [],
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-04",
     "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>年中運行</span></div><div class=\"ts-line-name\">上越・北陸新幹線・JR信越本線・タクシー</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR湘南新宿ライン　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>上越・北陸新幹線　<span class=\"ts-duration\">約44分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">高崎駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR信越本線　<span class=\"ts-duration\">約36分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">松井田駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>タクシー　<span class=\"ts-duration\">約10分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">妙義神社</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>上越・北陸新幹線　<span class=\"ts-duration\">約23分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">高崎駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR信越本線　<span class=\"ts-duration\">約39分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">松井田駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>タクシー　<span class=\"ts-duration\">約10分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">妙義神社</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR上野東京ライン・宇都宮線　<span class=\"ts-duration\">約58分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>上越・北陸新幹線　<span class=\"ts-duration\">約43分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">高崎駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR信越本線　<span class=\"ts-duration\">約39分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">松井田駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>タクシー　<span class=\"ts-duration\">約10分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">妙義神社</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約2時間\" data-omiya=\"約1時間12分\" data-yokohama=\"約2時間30分\">約2時間</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約4,290円\" data-omiya=\"片道約3,660円\" data-yokohama=\"片道約4,620円\">片道約4,290円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>運賃は松井田駅まで（タクシー代は別）</li><li>妙義神社へのバスは無く、タクシー（約10分）を使う</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=松井田(群馬県)&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a></div></div>",
     "coeffMin": 20,
     "coeffMax": 27,
