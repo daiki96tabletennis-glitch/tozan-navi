@@ -7,10 +7,10 @@
 - 冬に行く前に役立つ情報（データか公式の出典があるものだけ）：
   代表コース（routes の1番目）の歩く時間と「何時までに歩き始めるか」（12月上旬の東京の日の入り 16:28＝国立天文台。
   日の入りの約1時間前の15:30に下山を終えるとして、歩く時間を引き、10分単位で切り下げる。休憩は含まない）、
-  帰りの最終バス（data/train_daytrip.json で公式の時刻表を確かめた値がある山だけ）、ケーブルカー・ロープウェーの有無（山のデータに書いてあるものだけ）
+  ケーブルカー・ロープウェーの有無（山のデータに書いてあるものだけ）
 - よくある質問を画面にも出す（前は Google 向けのデータの中だけにあった）
 
-値は mountains.json・gear-data.json・train_daytrip.json から作る。特徴・おすすめ理由の文は前のカードから引き継ぐ（足した2山は featurePoints に書いてあることだけで書いた）。
+値は mountains.json・gear-data.json から作る。帰りの最終バスは出さない（電車向けの記事ではないため。運営者の指示・2026-11-05）。特徴・おすすめ理由の文は前のカードから引き継ぐ（足した2山は featurePoints に書いてあることだけで書いた）。
 写真はページのスクリプトが mountains.json の photos から入れる。前のカードにあった記事の写真（images/photo-0X.jpg）と、弘法山の閉鎖の注意（data-closed）は引き継ぐ。
 何度流しても同じ結果になる。
 """
@@ -144,13 +144,11 @@ def card(i, m, feat, why, closed, img, gear, td):
     r0 = m['routes'][0]
     w = walk_min(r0['time'])
     start = (FINISH - w) // 10 * 10
-    bus = last_bus(mid, td)
     rows = (
         row(f'{CAR_SVG} 車', f'新宿から{mins(m["driveTimeShinjuku"])}')
         + row(f'{TRAIN_SVG} 電車', f'新宿から{train_label(m)}{mins(m["trainTimeShinjuku"])}')
         + row('代表コース', f'{E(r0["name"])}／歩く時間 {E(r0["time"])}（難易度 {E(m["difficulty"])}）')
         + row('冬の歩き始め', f'<strong>{hm(start)}まで</strong>に歩き始める（15時30分に下山を終える場合。休憩の時間は含まない）')
-        + (row('帰りの最終バス', bus) if bus else '')
         + (row('乗り物', f'{LIFT[mid]}で登り下りを短くできる') if mid in LIFT else '')
         + row('コース定数', f'<span class="coeff-badge">{rng}</span><span class="winter-badge">{winter_badge(m["gearCalendar"])}</span>')
         + row('特徴', E(feat))
@@ -253,7 +251,7 @@ def main():
              '山の中は早く暗くなるので、15時30分ごろには下山を終える計画にしましょう。各山の「冬の歩き始め」は、この時刻から代表コースの歩く時間を引いた目安です（休憩の時間は含みません）。</p>', s)
 
     # よくある質問を画面にも出す（中身は Google 向けのデータと同じ）
-    desc = f'12〜2月も雪や凍結が続かず、アイゼンなしで登れる関東の山7選。{names}を、新宿からの時間・歩く時間・冬は何時までに歩き始めるか・帰りの最終バスで比べられます。'
+    desc = f'12〜2月も雪や凍結が続かず、アイゼンなしで登れる関東の山7選。{names}を、新宿からの時間・歩く時間・冬は何時までに歩き始めるかで比べられます。'
     s = sub1(r'"text":"高尾山・鋸山・弘法山・御岳山・陣馬山(・筑波山・明神ヶ岳)?など[^"]*"',
              f'"text":"{names}など、関東の標高1,200m以下の山は太平洋側の気候の影響で積雪が少なく、Yamatchの装備の区分では冬も「アイゼン不要」です。ただし雪が降ったあとの数日は凍結が残ることがあるので、出発前に直近の降雪を確認してください。"', s)
     s = sub1(r'\{"@type":"Question","name":"(❄️通年アイゼン不要と積雪少\(要確認\)の違いは何ですか？|「❄️ 通年アイゼン不要」は何を基準にしていますか？)","acceptedAnswer":\{"@type":"Answer","text":"[^"]*"\}\}',

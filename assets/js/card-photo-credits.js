@@ -17,6 +17,11 @@
     });
   }
 
+  // 仕上げた写真（/images/graded/…。scripts/grade_photos.py）は元の写真の記録で引き、CC BY / BY-SA には「加工あり」を付ける（2026-11-05〜）
+  function modNote(p){
+    return p._graded && /^CC BY/.test(p.license || '') ? '・加工あり' : '';
+  }
+
   function creditHtml(p){
     if(p.source !== 'wikimedia_commons'){
       return '撮影：' + esc(p.author || 'Yamatch');
@@ -25,6 +30,7 @@
     var licUrl = p.licenseUrl || p.commonsPageUrl;
     var out = esc(p.author || '作者不明') + '（';
     out += licUrl ? '<a href="' + esc(licUrl) + '" target="_blank" rel="noopener">' + esc(lic) + '</a>' : esc(lic);
+    out += modNote(p);
     if(p.commonsPageUrl){
       out += '、<a href="' + esc(p.commonsPageUrl) + '" target="_blank" rel="noopener">Wikimedia Commons</a>';
     }
@@ -39,6 +45,7 @@
     var licUrl = p.licenseUrl || p.commonsPageUrl;
     var out = esc(p.author || '作者不明') + '（';
     out += licUrl ? '<a href="' + esc(licUrl) + '" target="_blank" rel="noopener">' + esc(lic) + '</a>' : esc(lic);
+    out += modNote(p);
     var links = [];
     list.forEach(function(q, i){
       if(q.commonsPageUrl) links.push('<a href="' + esc(q.commonsPageUrl) + '" target="_blank" rel="noopener">' + (i + 1) + '</a>');
@@ -55,7 +62,7 @@
       var file = p.commonsPageUrl || p.localPath || creditHtml(p);
       if(seenFile[file]) return;
       seenFile[file] = 1;
-      var key = (p.source || '') + '|' + (p.author || '') + '|' + (p.license || '');
+      var key = (p.source || '') + '|' + (p.author || '') + '|' + (p.license || '') + '|' + (p._graded ? 1 : 0);
       if(!groups[key]){ groups[key] = []; order.push(key); }
       groups[key].push(p);
     });
@@ -74,6 +81,14 @@
     return !!(n && n.className === 'ym-photo-credit');
   }
 
+  function lookup(src){
+    var path = cleanPath(src);
+    if(byPath[path]) return byPath[path];
+    var m = path.match(/^\/images\/graded\/(.+)$/);
+    var o = m && byPath['/images/' + m[1]];
+    return o ? Object.assign({}, o, { _graded: true }) : null;
+  }
+
   function scan(){
     if(!byPath) return;
     // いくつも写真を切り替える枠：枠の下にまとめて1行
@@ -82,7 +97,7 @@
       if(hasLine(wrap)) return;
       var list = [];
       wrap.querySelectorAll('img').forEach(function(img){
-        var p = byPath[cleanPath(img.getAttribute('src'))];
+        var p = lookup(img.getAttribute('src'));
         if(p) list.push(p);
       });
       addLine(wrap, list);
@@ -90,7 +105,7 @@
     // 1枚の写真
     document.querySelectorAll('img').forEach(function(img){
       if(img.closest('.mc-photo-carousel, .mountain-photo-carousel')) return;
-      var p = byPath[cleanPath(img.getAttribute('src'))];
+      var p = lookup(img.getAttribute('src'));
       if(!p) return;
       var n = img.nextElementSibling;
       if(n && n.className === 'ym-photo-credit'){
