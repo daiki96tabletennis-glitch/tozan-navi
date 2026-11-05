@@ -280,8 +280,8 @@ body{padding-bottom:80px}
 <script>
 (function(){
   // 写真は仕上げた版（data/photo_graded.json。scripts/grade_photos.py が作る）があればそちらを出す（2026-11-05〜）
-  var gradedP = fetch('/data/photo_graded.json').then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; });
-  Promise.all([fetch('/data/mountains.json').then(function(r){ return r.json(); }), gradedP]).then(function(res){
+  var gradedP = fetch('/data/photo_graded.json', { cache: 'no-cache' }).then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; });
+  Promise.all([fetch('/data/mountains.json', { cache: 'no-cache' }).then(function(r){ return r.json(); }), gradedP]).then(function(res){
     var mountains = res[0];
     var graded = (res[1] && res[1].photos) || {};
     var byId = {};
@@ -291,6 +291,15 @@ body{padding-bottom:80px}
       var m0 = byId[mid];
       if(!m0 || !m0.photos || !m0.photos.length) return;
       var m = { name: m0.name, photos: m0.photos.map(function(src){ return graded[src] && graded[src].graded ? graded[src].graded : src; }) };
+      // 仕上げた写真が開けないとき（古い一覧が端末に残っていたときなど）は、元の写真に戻す
+      var orig = {};
+      m.photos.forEach(function(g, i){ orig[g] = m0.photos[i]; });
+      function fallback(img){
+        img.addEventListener('error', function(){
+          var o = orig[img.getAttribute('src')];
+          if(o && o !== img.getAttribute('src')) img.setAttribute('src', o);
+        });
+      }
       var card = header.closest('.mountain-card');
       if(!card) return;
       var existingImg = card.querySelector('.mountain-photo');
@@ -299,9 +308,11 @@ body{padding-bottom:80px}
       if(m.photos.length === 1){
         if(existingCarousel) existingCarousel.remove();
         if(existingImg){
+          fallback(existingImg);
           if(existingImg.getAttribute('src') !== m.photos[0]) existingImg.setAttribute('src', m.photos[0]);
         } else {
           var img = document.createElement('img');
+          fallback(img);
           img.src = m.photos[0];
           img.className = 'mountain-photo';
           img.alt = m.name || '';
@@ -315,6 +326,7 @@ body{padding-bottom:80px}
         wrap.className = 'mountain-photo-carousel';
         m.photos.forEach(function(src, i){
           var img = document.createElement('img');
+          fallback(img);
           img.src = src;
           img.alt = m.name || '';
           img.loading = i === 0 ? 'eager' : 'lazy';
