@@ -7,8 +7,16 @@
   const WIKIDATA_API = 'https://www.wikidata.org/w/api.php';
   const CACHE_KEY = 'ym_image_candidate_cache_v2';
   const CACHE_TTL = 7 * 24 * 60 * 60 * 1000;
-  const PHOTO_MAX_EDGE = 2400;
-  const PHOTO_QUALITY = 0.9;
+  // 写真はサイトに載せる前に、長辺1600pxの WebP にそろえる（2026-11-05〜。サイト全体のデータ量を増やさないため）
+  // 自前の写真も Commons の写真も同じ。WebP にできない端末では JPEG（品質0.82）にする
+  const PHOTO_MAX_EDGE = 1600;
+  const WEBP_QUALITY = 80;
+  const JPEG_QUALITY = 0.82;
+  // HEIC（iPhone の写真）をブラウザが読めないとき（Chrome・Windows など）だけ読み込む
+  const HEIC_LIB = 'https://cdn.jsdelivr.net/npm/heic-to@1.6.6/dist/iife/heic-to.js';
+  // Safari は canvas から WebP を作れないので、そのときだけ WebP の変換器（Squoosh の libwebp）を読み込む
+  const WEBP_ENC = 'https://cdn.jsdelivr.net/npm/@jsquash/webp@1.5.0/codec/enc/webp_enc.js';
+  const WEBP_OPTIONS = { quality: WEBP_QUALITY, target_size: 0, target_PSNR: 0, method: 4, sns_strength: 50, filter_strength: 60, filter_sharpness: 0, filter_type: 1, partitions: 0, segments: 4, pass: 1, show_compressed: 0, preprocessing: 0, autofilter: 0, partition_limit: 0, alpha_compression: 1, alpha_filtering: 1, alpha_quality: 100, lossless: 0, exact: 0, image_hint: 0, emulate_jpeg_size: 0, thread_level: 0, low_memory: 0, near_lossless: 100, use_delta_palette: 0, use_sharp_yuv: 0 };
 
   const state = {
     mountains: [],
@@ -705,9 +713,23 @@
     return state.hashScans[id];
   }
 
-  function loadImage(file) {
+  function mb(bytes) {
+    return (bytes / 1024 / 1024).toFixed(bytes < 1024 * 1024 ? 2 : 1) + 'MB';
+  }
+
+  function loadScript(src) {
     return new Promise((resolve, reject) => {
-      const url = URL.createObjectURL(file);
+      const tag = document.createElement('script');
+      tag.src = src;
+      tag.onload = resolve;
+      tag.onerror = () => reject(new Error('変換の部品を読み込めませんでした（通信を確かめてください）'));
+      document.head.appendChild(tag);
+    });
+  }
+
+  function loadImage(blob) {
+    return new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(blob);
       const image = new Image();
       image.onload = () => {
         URL.revokeObjectURL(url);
@@ -715,18 +737,55 @@
       };
       image.onerror = () => {
         URL.revokeObjectURL(url);
-        reject(new Error(file.name + 'を画像として読み込めませんでした。JPEG・PNG・WebPをお試しください。'));
+        reject(new Error('画像として読み込めませんでした'));
       };
       image.src = url;
     });
   }
 
-  async function resizeOwnPhoto(file) {
-    if (file.size > 50 * 1024 * 1024) throw new Error(file.name + 'は50MBを超えているため追加できません。');
-    const image = await loadImage(file);
-    let width = image.naturalWidth;
-    let height = image.naturalHeight;
-    if (!width || !height) throw new Error(file.name + 'のサイズを確認できませんでした。');
+  function looksHeic(blob, name) {
+    return /image\/hei[cf]/i.test(blob.type || '') || /\.(heic|heif)$/i.test(name || '');
+  }
+
+  // ブラウザで読める形なら そのまま、読めない HEIC は JPEG に直してから読む
+  async function decodeImage(blob, name) {
+    try {
+      if (window.createImageBitmap) return await createImageBitmap(blob, { imageOrientation: 'from-image' });
+    } catch (error) { /* 次の方法で読む */ }
+    try {
+      return await loadImage(blob);
+    } catch (error) { /* HEIC なら変換して読む */ }
+    let heic = looksHeic(blob, name);
+    if (!heic) {
+      // 拡張子が無くても中身が HEIC のことがある（ftyp の heic / heix / mif1 など）
+      const head = new Uint8Array(await blob.slice(0, 16).arrayBuffer());
+      const brand = String.fromCharCode.apply(null, Array.prototype.slice.call(head, 4, 12));
+      heic = /^ftyp(hei|hev|mif1|msf1|avif)/.test(brand);
+    }
+    if (!heic) throw new Error(name + 'を画像として読み込めませんでした（JPEG・PNG・WebP・HEIC に対応）');
+    if (!window.HeicTo) await loadScript(HEIC_LIB);
+    const jpeg = await window.HeicTo({ blob, type: 'image/jpeg', quality: 0.95 });
+    return loadImage(jpeg);
+  }
+
+  let webpEncoder = null;
+  async function encodeWebpWasm(imageData) {
+    if (!webpEncoder) {
+      webpEncoder = import(WEBP_ENC).then((mod) => mod.default({ noInitialRun: true }));
+    }
+    const module = await webpEncoder;
+    const result = module.encode(imageData.data, imageData.width, imageData.height, WEBP_OPTIONS);
+    if (!result) throw new Error('WebP に変換できませんでした');
+    return new Blob([result], { type: 'image/webp' });
+  }
+
+  // 長辺1600pxに縮め、WebP にする（大きくなるときは縮めるだけ）。自前の写真・Commons の写真の両方で使う
+  async function optimizePhoto(blob, name) {
+    if (blob.size > 50 * 1024 * 1024) throw new Error(name + 'は50MBを超えているため追加できません。');
+    const image = await decodeImage(blob, name);
+    let width = image.naturalWidth || image.width;
+    let height = image.naturalHeight || image.height;
+    if (!width || !height) throw new Error(name + 'のサイズを確認できませんでした。');
     const scale = Math.min(1, PHOTO_MAX_EDGE / Math.max(width, height));
     width = Math.max(1, Math.round(width * scale));
     height = Math.max(1, Math.round(height * scale));
@@ -736,10 +795,27 @@
     const context = canvas.getContext('2d');
     context.fillStyle = '#ffffff';
     context.fillRect(0, 0, width, height);
+    context.imageSmoothingQuality = 'high';
     context.drawImage(image, 0, 0, width, height);
-    const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', PHOTO_QUALITY));
-    if (!blob) throw new Error(file.name + 'をJPEGへ変換できませんでした。');
-    return { blob, width, height };
+    if (image.close) image.close();
+    let out = await new Promise((resolve) => canvas.toBlob(resolve, 'image/webp', WEBP_QUALITY / 100));
+    if (!out || out.type !== 'image/webp') {
+      try {
+        out = await encodeWebpWasm(context.getImageData(0, 0, width, height));
+      } catch (error) {
+        out = await new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', JPEG_QUALITY));
+      }
+    }
+    if (!out) throw new Error(name + 'を変換できませんでした。');
+    const format = out.type === 'image/webp' ? 'WebP' : 'JPEG';
+    return {
+      blob: out,
+      width,
+      height,
+      format,
+      note: '長辺' + PHOTO_MAX_EDGE + 'pxの' + format + 'に変換',
+      summary: name + '：' + mb(blob.size) + ' → ' + mb(out.size) + '（' + width + '×' + height + '・' + format + '）'
+    };
   }
 
   function selectedOwnFiles() {
@@ -759,10 +835,12 @@
 
     let added = 0;
     const errors = [];
+    const summaries = [];
     const draft = ensureDraft(mountain.id);
     for (const file of files) {
       try {
-        const converted = await resizeOwnPhoto(file);
+        const converted = await optimizePhoto(file, file.name);
+        summaries.push(converted.summary);
         const contentHash = await sha256Blob(converted.blob);
         if (draft.some((item) => sameImage(item, { contentHash }))) {
           errors.push(file.name + 'はすでに採用画像に入っている同じ写真です。');
@@ -774,7 +852,7 @@
         draft.push({
           id: key,
           ownFileKey: key,
-          fileName: file.name.replace(/\.[^.]+$/, '') + '.jpg',
+          fileName: file.name.replace(/\.[^.]+$/, '') + (converted.format === 'WebP' ? '.webp' : '.jpg'),
           thumbnailUrl: preview,
           imageUrl: preview,
           previewUrl: preview,
@@ -786,10 +864,10 @@
           status: 'pending',
           width: converted.width,
           height: converted.height,
-          mimeType: 'image/jpeg',
+          mimeType: converted.blob.type,
           contentHash,
           selectedAt: new Date().toISOString(),
-          modifications: '最大2400pxのJPEGにリサイズ'
+          modifications: converted.note
         });
         added += 1;
       } catch (error) {
@@ -800,7 +878,8 @@
     $('camera-file').value = '';
     $('add-own').disabled = false;
     renderSelected();
-    const message = added + '枚を採用画像の末尾に追加しました。' + (errors.length ? '\n追加できなかった写真：' + errors.join(' / ') : '');
+    const message = added + '枚を採用画像の末尾に追加しました（下の「この山の変更をGitHubへ反映」を押すとサイトに載ります）。'
+      + (summaries.length ? '\n' + summaries.join('\n') : '') + (errors.length ? '\n追加できなかった写真：' + errors.join(' / ') : '');
     setStatus(message, errors.length ? 'warn' : 'ok', 'own-status');
   }
 
@@ -1035,9 +1114,14 @@
       for (let index = 0; index < draft.length; index += 1) {
         const item = draft[index];
         if (item.status !== 'pending') continue;
-        const blob = item.source === 'own'
-          ? state.ownFiles[item.ownFileKey]
-          : await downloadCommonsImage(item);
+        let blob = item.source === 'own' ? state.ownFiles[item.ownFileKey] : null;
+        if (!blob) {
+          // Commons の写真も長辺1600pxの WebP にしてから保存する（2026-11-05〜）
+          const converted = await optimizePhoto(await downloadCommonsImage(item), item.fileName);
+          blob = converted.blob;
+          item.modifications = 'Wikimedia Commonsの画像を' + converted.note;
+          item.contentHash = null;
+        }
         item.contentHash = item.contentHash || await sha256Blob(blob);
         const binary = await blobBase64(blob);
         preparedUploads.push({ item, binary });
@@ -1165,6 +1249,14 @@
   });
   $('find').addEventListener('click', () => getCandidates($('find').textContent.includes('再取得')));
   $('add-own').addEventListener('click', addOwnPhotos);
+  // 写真を選んだら、撮影者名が入っていればそのまま追加する（前は「追加」ボタンを押し忘れると採用されなかった）
+  ['own-files', 'camera-file'].forEach((id) => {
+    $(id).addEventListener('change', () => {
+      if (!$(id).files.length) return;
+      if ($('own-author').value.trim()) addOwnPhotos();
+      else setStatus('撮影者名を入れてから「選んだ自前写真を追加」を押してください。', 'warn', 'own-status');
+    });
+  });
   $('dedupe').addEventListener('click', dedupeCurrentDraft);
   $('reset').addEventListener('click', resetCurrentDraft);
   $('publish').addEventListener('click', publishChanges);

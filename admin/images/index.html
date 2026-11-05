@@ -7,7 +7,7 @@
   <title>山画像管理 | Yamatch Admin</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="./style.css">
-  <script defer src="./app.js?v=20261030a"></script>
+  <script defer src="./app.js?v=20261105"></script>
 </head>
 <body>
   <header>
@@ -61,12 +61,12 @@
 
     <section class="panel">
       <h2>自分で撮影した写真を追加</h2>
-      <p class="small">スマートフォン・パソコンの写真を選べます。大きな写真は、サイト表示に適したJPEGへ自動調整します。</p>
+      <p class="small">スマートフォン・パソコンの写真を選べます（JPEG・PNG・HEIC）。サイトが重くならないよう、長辺1600pxの WebP に自動で変換します（4〜5MBの写真はおよそ0.2〜0.5MBに）。Commons の写真も、反映するときに同じ形に変換します。</p>
       <div class="upload-area">
         <label class="file-button" for="own-files">写真ライブラリから選ぶ</label>
-        <input id="own-files" type="file" accept="image/*" multiple>
+        <input id="own-files" type="file" accept="image/*,.heic,.heif" multiple>
         <label class="file-button secondary-file" for="camera-file">カメラで撮影する</label>
-        <input id="camera-file" type="file" accept="image/*" capture="environment">
+        <input id="camera-file" type="file" accept="image/*,.heic,.heif" capture="environment">
         <label class="author-field">撮影者名
           <input id="own-author" autocomplete="name" placeholder="例：藤田 大樹">
         </label>

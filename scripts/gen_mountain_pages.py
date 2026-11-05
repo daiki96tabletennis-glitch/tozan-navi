@@ -335,10 +335,31 @@ def render_head(mt):
     return "\n".join(parts)
 
 
+def og_jpeg(mid, src):
+    """WebP の写真は、共有の画像に使えないアプリ（LINE など）があるので、JPEG の写しを作ってそちらを使う（2026-11-05〜）。
+    写しは /images/ogp/mountains/<山ID>.jpg（元の写真が新しくなったら作り直す）"""
+    from PIL import Image
+    a = os.path.join(SITE_ROOT, src.lstrip("/"))
+    rel = "/images/ogp/mountains/%s.jpg" % mid
+    b = os.path.join(SITE_ROOT, rel.lstrip("/"))
+    if not os.path.exists(a):
+        return None
+    if not os.path.exists(b) or os.path.getmtime(b) < os.path.getmtime(a):
+        os.makedirs(os.path.dirname(b), exist_ok=True)
+        im = Image.open(a).convert("RGB")
+        im.thumbnail((1200, 1200))
+        im.save(b, "JPEG", quality=85, optimize=True, progressive=True)
+    return rel
+
+
 def og_image_url(mt):
     """共有・検索結果の画像：その山の写真があれば1枚目、無ければサイト共通の画像"""
     for ph in mt.get("photos") or []:
         src = ph.get("src") if isinstance(ph, dict) else ph
+        if isinstance(src, str) and src.startswith("/") and src.lower().endswith(".webp"):
+            rel = og_jpeg(mt["id"], src)
+            if rel:
+                return "https://tozan-navi.com" + rel
         if isinstance(src, str) and src.startswith("/"):
             return "https://tozan-navi.com" + src
         if isinstance(src, str) and src.startswith("https://tozan-navi.com/"):

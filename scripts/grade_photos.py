@@ -97,7 +97,10 @@ def main(paths):
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         im = Image.open(src).convert('RGB')
         im.thumbnail((1600, 1600))  # 記事の枠（幅728px）の2倍あれば足りる
-        grade(im, PRESET_A).save(dst, 'JPEG', quality=86, optimize=True, progressive=True)
+        if dst.lower().endswith('.webp'):
+            grade(im, PRESET_A).save(dst, 'WEBP', quality=80, method=6)
+        else:
+            grade(im, PRESET_A).save(dst, 'JPEG', quality=86, optimize=True, progressive=True)
         m['photos'][path] = {'graded': out_rel, 'preset': 'A', 'at': datetime.date.today().isoformat()}
         print(path, '->', out_rel)
     with open(MAP, 'w') as f:

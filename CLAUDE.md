@@ -168,6 +168,15 @@
 5. 管理表（Excel）の修正履歴に追記し、変えた内容と、確認できなかった項目を報告する。本番への反映は運営者のプッシュ
 - `.github/workflows/site-check.yml` が、プッシュのたびと毎週月曜に `check_pages.py` を実行する（異常があれば GitHub からメール）
 
+## 管理画面の「山画像を管理」（/admin/images/）の写真の変換（2026-11-05〜。運営者の指示）
+- 自前の写真も Commons の写真も、GitHub に書く前にブラウザの中で「長辺1600pxの WebP（品質80）」にする（`admin/images/app.js` の `optimizePhoto`。前は自前が長辺2400pxの JPEG 品質0.9、Commons は1600pxの JPEG のまま）。4〜5MB の写真がおよそ0.2〜0.5MB になる。WebP にできないときは JPEG（品質0.82）
+- HEIC（iPhone の写真）：ブラウザが読めれば（Safari）そのまま、読めなければ（Chrome・Windows など）`heic-to`（jsDelivr・1.6.6。LGPL）を読み込んで変換する。拡張子が無くても中身の印（ftyp heic など）で見分ける
+- Safari は canvas から WebP を作れないので、そのときだけ Squoosh の WebP 変換器（`@jsquash/webp` 1.5.0 の codec/enc/webp_enc.js。wasm）を読み込む
+- 写真を選ぶと、撮影者名が入っていればすぐ「採用画像」に足す（前は「選んだ自前写真を追加」を押し忘れると何も起きなかった）。足したあとに「この山の変更をGitHubへ反映」を押すとサイトに載る。変換前後の大きさを画面に出す
+- 共有の画像（og:image）：1枚目の写真が WebP の山は、`gen_mountain_pages.py`（`og_jpeg`）が JPEG の写し `/images/ogp/mountains/<山ID>.jpg`（長辺1200px）を作って使う（LINE などが WebP を出せないため）
+- 前からある山の写真も 2026-11-05 に同じ形にした（運営者の指示。`scripts/migrations/convert_photos_webp_2026_11.py`。何度流しても同じ結果）：`photos` に載っている122枚を同じ名前の .webp にし、`photos`・`image-credits.json`（localPath・contentHash・modifications）・手で作った記事（articles/coeff-*）を書き換えた。ページに出る写真は合計で約33MB（1枚の真ん中の値 約250KB）。元の .jpg は消していない（検索の画像・共有ずみのリンクのため。どこからも使っていない）。どの山にも使っていない古い .jpg（34枚）と、それを指すクレジット6件はそのまま
+- 冬の記事の仕上げた写真（`grade_photos.py`）も WebP の元から作り直した（`/images/graded/…/*.webp`）
+
 ## 管理画面（/admin/）の山の編集（2026-10-19〜）
 - 山の編集は「変更を記録する」だけ。サイトのデータを GitHub に直接書く「GitHubに反映」と、mountains.json のダウンロードは外した（作業フォルダ・ページの作り直し・検証を通らず、データとページが食い違い、次のコピーで消えるため）
 - 記録は「変更履歴」タブに残り、「Claudeに共有する」でコピーして Claude のアプリに貼る。Claude が出典で確かめてから作業フォルダで直し、ページを作り直して反映する
