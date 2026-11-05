@@ -437,10 +437,23 @@ function applyDep(){
       if(!to || today <= to || el.getAttribute('data-expired')) continue;
       el.setAttribute('data-expired', '1');
       var year = to.slice(0, 4);
+      // たたむ注意のバナーの中：見出しの下に短い印を1つだけ（同じ印を重ねない）、本文には短い1行（2026-11-05〜）
+      var banner = el.closest ? el.closest('details.warn-banner') : null;
+      var chips = banner ? banner.querySelector('.warn-chips') : null;
+      if(chips){
+        var label = year + '年の期間は終了';
+        if(chips.textContent.indexOf(label) < 0){
+          var chip = document.createElement('span');
+          chip.className = 'warn-chip';
+          chip.textContent = label;
+          chips.appendChild(chip);
+        }
+      }
       var note = document.createElement('span');
       note.className = 'ym-expired-note';
-      note.textContent = year + '年のこの期間は終了しました。来季の日程は、発表を確認してから更新します。';
-      var body = el.querySelector('.warn-body') || el;
+      note.textContent = year + '年のこの期間は終了しました。来季の日程は発表を確かめてから更新します。';
+      var body = (el.tagName === 'DETAILS' ? el.querySelector('.warn-body') : null) || el;
+      if(banner && el === banner && banner.querySelector('.warn-shuttle[data-valid-to="' + to + '"]')) continue;
       body.appendChild(note);
     }
   }

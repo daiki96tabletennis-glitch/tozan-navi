@@ -59,7 +59,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261103c"
+ASSET_VER = "20261105b"
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
@@ -429,17 +429,20 @@ def render_bookmark_tabs(mt):
     tabs = []
     if mt.get("hasWeatherWidget"):
         tabs.append(("weather-card", "天気"))
-    if mt.get("trainAccessHtml"):
-        tabs.append(("sec-train", "電車・バス"))
-    tabs.append(("sec-car", "車アクセス時間"))
-    tabs.append(("sec-parking", "登山口・駐車場"))
+    # 電車・バスと車は1つの欄のタブ（2026-11-05〜）。押すとその欄へ移り、タブも切り替える
+    if render_train_access(mt):
+        tabs.append(("sec-access:train", "電車・バス"))
+    tabs.append(("sec-access:car", "車・駐車場"))
     tabs.append(("sec-season", "アイゼン要否"))
     tabs.append(("sec-routes", "ルート"))
     tabs.append(("sec-gear", "装備"))
-    buttons = "".join(
-        f'<button type="button" class="bookmark-tab" data-target="{target}">{label}</button>'
-        for target, label in tabs
-    )
+    def _btn(target, label):
+        acc = ""
+        if ":" in target:
+            target, a = target.split(":")
+            acc = f' data-acc="{a}"'
+        return f'<button type="button" class="bookmark-tab" data-target="{target}"{acc}>{label}</button>'
+    buttons = "".join(_btn(target, label) for target, label in tabs)
     return f'<div class="bookmark-tabs" id="bookmark-tabs">{buttons}</div>'
 
 
@@ -580,6 +583,72 @@ def render_car_access(mt):
     )
 
 
+ACC_TRAIN_ICON = ('<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/>'
+                  '<rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/>'
+                  '<line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>')
+ACC_CAR_ICON = ('<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/>'
+                '<rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><circle cx="6.5" cy="17.5" r="1.6" fill="#fff"/><circle cx="17.5" cy="17.5" r="1.6" fill="#fff"/></svg>')
+
+# どちらのタブを先に開くか（2026-11-05〜。運営者の指示）。順番：
+#  1. URL の ?access=train|car（山選び診断の結果など）
+#  2. 来たページ：トップ＝トップで選んでいる車／電車（localStorage ym_transportmode）、
+#     出発地別の全件一覧（車の時間の一覧）＝車、路線・駅・エリア・電車の記事＝電車、ほかの山ページ＝最後に選んだタブ（sessionStorage ym_access_last）
+#  3. 電車・バスの欄がある山は電車、無い山は車
+ACC_SCRIPT = r"""<script>(function(){
+var box=document.getElementById('sec-access');if(!box)return;
+var hasTrain=box.getAttribute('data-has-train')==='1';
+function ok(v){return v==='car'||(v==='train'&&hasTrain);}
+function pick(){
+  var m=location.search.match(/[?&]access=(train|car)/);if(m&&ok(m[1]))return m[1];
+  var p='';try{var r=new URL(document.referrer);if(r.origin===location.origin)p=r.pathname;}catch(e){}
+  var v=null;
+  if(p==='/'||p==='/index.html'){try{v=localStorage.getItem('ym_transportmode');}catch(e){}if(v)v=v.replace(/"/g,'');}
+  else if(/^\/search\/(shinjuku|omiya|yokohama|ofuna)\/$/.test(p))v='car';
+  else if(/^\/search\/(train-daytrip|shinjuku-beginner|[a-z0-9-]+-hiking)\//.test(p)||/^\/articles\/(train-access-mountains|cool-mountains-summer)\//.test(p))v='train';
+  else if(/^\/mountains\//.test(p)){try{v=sessionStorage.getItem('ym_access_last');}catch(e){}}
+  if(ok(v))return v;
+  return hasTrain?'train':'car';
+}
+function set(v,save){
+  if(!ok(v))return;
+  var tabs=box.querySelectorAll('.acc-tab'),panels=box.querySelectorAll('.acc-panel'),i;
+  for(i=0;i<tabs.length;i++){var on=tabs[i].getAttribute('data-acc')===v;tabs[i].setAttribute('aria-selected',on?'true':'false');tabs[i].className='acc-tab'+(on?' on':'');}
+  for(i=0;i<panels.length;i++){panels[i].hidden=panels[i].getAttribute('data-acc')!==v;}
+  if(save){try{sessionStorage.setItem('ym_access_last',v);}catch(e){}}
+}
+window.ymSetAccess=function(v){set(v,true);};
+var tabs=box.querySelectorAll('.acc-tab');
+for(var i=0;i<tabs.length;i++){tabs[i].addEventListener('click',function(){set(this.getAttribute('data-acc'),true);});}
+set(pick(),false);
+})();</script>"""
+
+
+def _as_panel(card_html, new_cls="acc-sec"):
+    """カードの枠（class="card"）を外して、タブの中の区切りにする"""
+    return re.sub(r'^<div class="card" id=', f'<div class="{new_cls}" id=', card_html, count=1)
+
+
+def render_access_tabs(mt):
+    """電車・バスと車（車の時間・登山口・駐車場）を1つの欄にまとめ、タブで切り替える（2026-11-05〜。運営者の指示）。
+    JavaScript が動かないときは両方とも出る（隠すのは ACC_SCRIPT）"""
+    train = render_train_access(mt)
+    car = _as_panel(render_car_access(mt)) + "\n  " + _as_panel(render_parking(mt))
+    has_train = bool(train)
+    tabs = ""
+    if has_train:
+        tabs = ('<div class="acc-tabs" role="tablist" aria-label="行き方">'
+                f'<button type="button" role="tab" class="acc-tab on" data-acc="train" aria-selected="true">{ACC_TRAIN_ICON}電車・バスで行く</button>'
+                f'<button type="button" role="tab" class="acc-tab" data-acc="car" aria-selected="false">{ACC_CAR_ICON}車で行く</button>'
+                '</div>\n  ')
+    panels = ""
+    if has_train:
+        panels += f'<div class="acc-panel" data-acc="train" role="tabpanel">\n  {_as_panel(train)}\n  </div>\n  '
+    panels += f'<div class="acc-panel" data-acc="car" role="tabpanel">\n  {car}\n  </div>'
+    extra = stay_link(mt) + listing_block(mt)
+    return (f'<div class="card ym-access" id="sec-access" data-has-train="{1 if has_train else 0}">\n  {tabs}{panels}\n'
+            f'{extra}</div>\n{ACC_SCRIPT}')
+
+
 def car_note(mt):
     """車の所要時間の注記。登山口まで一般車が入れない山は、どこまでの時間かを明記する"""
     tail = '渋滞を含まない目安です。休日や朝夕は長くなります。'
@@ -612,8 +681,6 @@ def render_parking(mt):
         f'<span class="info-val">{address}</span></div>\n'
         '</div>\n'
         f'{map_target}{map_btns}\n'
-        f'{stay_link(mt)}'
-        f'{listing_block(mt)}'
         '</div>'
     )
 
@@ -1227,6 +1294,22 @@ def render_nearby(mt, by_id):
     )
 
 
+BANNER_END = '\n    </div>\n  </details>'
+
+
+def warn_box(level, title, body, attrs=""):
+    """注意のバナー（2026-11-05〜）。たたんだ状態は見出しだけ（＋期限を過ぎたら「◯年の期間は終了」の印）、
+    「詳しく」で本文・リンク・駐車場からのバスを開く（スマホで画面の半分を占めていたため。運営者の指示）"""
+    return (
+        f'<details class="warn-banner warn-banner-{level}"{attrs}>\n'
+        '    <summary class="warn-sum"><span class="warn-icon">⚠️</span>'
+        f'<span class="warn-head"><span class="warn-title warn-title-{level}">{title}</span>'
+        '<span class="warn-chips"></span></span><span class="warn-more">詳しく</span></summary>\n'
+        '    <div class="warn-body">\n'
+        f'{body}' + BANNER_END
+    )
+
+
 def render_alerts(mt):
     """新構造の山：「現在のアクセス注意」を出典・確認日つきで全件表示する"""
     out = []
@@ -1240,17 +1323,9 @@ def render_alerts(mt):
         annual = ""
         if a.get("statusType") == "annual" and a.get("validTo"):
             annual = f' data-annual="1" data-valid-to="{esc(a["validTo"])}" data-kind="alert"'
-        out.append(
-            f'<div class="warn-banner warn-banner-{level}"{annual}>\n'
-            '    <div class="warn-icon">⚠️</div>\n'
-            '    <div class="warn-body">\n'
-            f'      <div class="warn-kicker warn-title-{level}">現在のアクセス注意</div>\n'
-            f'      <div class="warn-title warn-title-{level}">{esc(a.get("title") or "")}</div>\n'
-            f'      <div class="warn-text">{esc(a.get("text") or "")}</div>{link}\n'
-            f'      {verified}\n'
-            '    </div>\n'
-            '  </div>'
-        )
+        out.append(warn_box(level, esc(a.get("title") or ""),
+                            f'      <div class="warn-text">{esc(a.get("text") or "")}</div>{link}\n'
+                            f'      {verified}', annual))
     return "\n  ".join(out)
 
 
@@ -1277,13 +1352,8 @@ def _with_shuttle(html, mt):
         return html
     if not html:
         # 注意表示の無い山は、バスの案内だけの枠を出す
-        return ('<div class="warn-banner warn-banner-yellow">\n'
-                '    <div class="warn-icon">⚠️</div>\n'
-                '    <div class="warn-body">\n'
-                '      <div class="warn-title warn-title-yellow">マイカー規制：駐車場でバスに乗り換え</div>' + box + '\n'
-                '    </div>\n'
-                '  </div>')
-    end = '\n    </div>\n  </div>'
+        return warn_box("yellow", "マイカー規制：駐車場でバスに乗り換え", box.lstrip("\n"))
+    end = BANNER_END
     i = html.find(end)                      # 最初の注意表示の本文の終わりに入れる
     return html[:i] + box + html[i:] if i >= 0 else html
 
@@ -1306,15 +1376,7 @@ def _render_warn_banner(mt):
     link_html = ""
     if url:
         link_html = f'\n      <a href="{esc(url)}" target="_blank" rel="noopener" class="warn-link">{link_text} →</a>'
-    return (
-        f'<div class="warn-banner warn-banner-{level}">\n'
-        '    <div class="warn-icon">⚠️</div>\n'
-        '    <div class="warn-body">\n'
-        f'      <div class="warn-title warn-title-{level}">{title}</div>\n'
-        f'      <div class="warn-text">{text}</div>{link_html}\n'
-        '    </div>\n'
-        '  </div>'
-    )
+    return warn_box(level, title, f'      <div class="warn-text">{text}</div>{link_html}')
 
 
 def render_share(mt):
@@ -1432,15 +1494,8 @@ def generate_page(mt, by_id, gear_data):
         body_sections.append("")
         body_sections.append(f"  {caution}")
 
-    train = render_train_access(mt)
-    if train:
-        body_sections.append("")
-        body_sections.append(f"  {train}")
-
     body_sections.append("")
-    body_sections.append(f'  {render_car_access(mt)}')
-    body_sections.append("")
-    body_sections.append(f'  {render_parking(mt)}')
+    body_sections.append(f'  {render_access_tabs(mt)}')
     body_sections.append(f'  {render_season(mt)}')
     body_sections.append("")
     body_sections.append(f'  {render_routes(mt)}')

@@ -16,7 +16,7 @@
 <meta property="article:modified_time" content="2026-11-03T00:00:00+09:00">
 <link rel="canonical" href="https://tozan-navi.com/mountains/noguchigoro/">
 <meta name="google-site-verification" content="dJ2byH9b8xF8S5lqAyWV-DqRwPGLEjWXs_-Un9oXGHs" />
-<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261103c">
+<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261105b">
 <style>.header-title{color:white;font-family:Georgia,serif;font-size:19px;font-weight:bold}
 .header-sub{color:rgba(255,255,255,0.5);font-size:10px;margin-top:1px}
 .hero{background:#4e6535;border-radius:14px;overflow:hidden;margin-bottom:16px}
@@ -253,6 +253,27 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .ts-op a{color:#4e6535;text-decoration:underline}
 .ym-expired-note{display:block;font-size:11px;color:#8a5a00;background:#fff6e0;border-radius:6px;padding:5px 9px;margin-top:5px;line-height:1.6}
 .warn-banner + .warn-banner{margin-top:-4px}
+details.warn-banner{display:block;padding:0}
+.acc-tabs{display:flex;gap:4px;padding:4px;background:#eef2e6;border-radius:999px;margin:0 0 14px}
+.acc-tab{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;border:0;background:transparent;color:#4e6535;font:700 13.5px/1.2 inherit;font-family:inherit;padding:10px 6px;border-radius:999px;cursor:pointer;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;transition:background .15s,color .15s}
+.acc-tab.on{background:#4e6535;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.acc-tab svg{flex-shrink:0}
+.acc-tab.on svg circle[fill="#fff"]{fill:#4e6535}
+.acc-sec + .acc-sec{margin-top:16px;padding-top:14px;border-top:1px solid #ece8de}
+.acc-panel[hidden]{display:none}
+.warn-sum{display:flex;gap:8px;align-items:center;padding:10px 12px;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
+.warn-sum::-webkit-details-marker{display:none}
+.warn-sum .warn-icon{font-size:17px;line-height:1}
+.warn-head{flex:1;min-width:0}
+.warn-sum .warn-title{margin:0;line-height:1.45}
+.warn-chips:empty{display:none}
+.warn-chips{display:block;margin-top:3px}
+.warn-chip{display:inline-block;font-size:10.5px;font-weight:600;color:#8a5a00;background:#fff1cc;border-radius:999px;padding:1px 8px;line-height:1.6}
+.warn-more{flex-shrink:0;font-size:11px;font-weight:700;color:#6a6258;white-space:nowrap}
+.warn-more::after{content:"";display:inline-block;width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:0 2px 3px 6px;transition:transform .2s}
+details.warn-banner[open] .warn-more{font-size:0}
+details.warn-banner[open] .warn-more::after{transform:rotate(-135deg);margin-bottom:-1px}
+details.warn-banner > .warn-body{padding:0 14px 12px 37px}
 .gcal .cal-b{display:block;width:100%;border:0;padding:0;cursor:pointer;-webkit-appearance:none;appearance:none}
 .gcal .cal-split{background:linear-gradient(to bottom right,var(--ga) 0,var(--ga) 50%,var(--gb) 50%,var(--gb) 100%)}
 .gcal .cal-b.on{outline:2px solid #4e6535;outline-offset:1px}
@@ -306,7 +327,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   </div>
 </header>
 <main>
-  <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="sec-train">電車・バス</button><button type="button" class="bookmark-tab" data-target="sec-car">車アクセス時間</button><button type="button" class="bookmark-tab" data-target="sec-parking">登山口・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
+  <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="sec-access" data-acc="train">電車・バス</button><button type="button" class="bookmark-tab" data-target="sec-access" data-acc="car">車・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
   <div class="hero-meta-row"><div class="hero-counts" id="hero-counts" data-id="noguchigoro" style="display:none"></div><div class="mountain-updated">最終更新: 2026-11-03</div></div>
   <div class="hero-new">
     <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="#2a5010" style="opacity:0.04">
@@ -354,11 +375,15 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
   <p class="dl-note">野口五郎岳は上級レベル（コース定数70〜95）。代表コースの高瀬ダム〜烏帽子岳〜野口五郎岳〜竹村新道〜湯俣（周回・山小屋泊）は19時間14分・28.3km・標高差+2563m。初心者には不向きで、十分な経験と体力が必須です。</p>
 </div>
 
-  <div class="card" id="sec-train">
+  <div class="card ym-access" id="sec-access" data-has-train="1">
+  <div class="acc-tabs" role="tablist" aria-label="行き方"><button type="button" role="tab" class="acc-tab on" data-acc="train" aria-selected="true"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>電車・バスで行く</button><button type="button" role="tab" class="acc-tab" data-acc="car" aria-selected="false"><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><circle cx="6.5" cy="17.5" r="1.6" fill="#fff"/><circle cx="17.5" cy="17.5" r="1.6" fill="#fff"/></svg>車で行く</button></div>
+  <div class="acc-panel" data-acc="train" role="tabpanel">
+  <div class="acc-sec" id="sec-train">
   <div class="ym-annual ts-op" data-valid-to="2026-10-25" data-kind="transport">信濃大町駅〜七倉の裏銀座登山バス：2026年は7/17〜10/25（特定日のみ運行・予約不要） <a href="https://uraginzabus.com/" target="_blank" rel="noopener">出典</a></div><div class="ts-section"><div class="ts-header"><div class="ts-title"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>電車・バスでのアクセス</div><span class="ts-badge ts-badge-seasonal"><svg class="rec-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>⚠️ 季節運行</span></div><div class="ts-line-name">JR中央線特急あずさ＋裏銀座登山バス</div><div class="ts-route ts-route-shinjuku"><div class="ts-step"><div class="ts-node"><div class="ts-station">新宿駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>JR特急あずさ　<span class="ts-duration">約3時間14分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">信濃大町駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>裏銀座登山バス(季節運行・予約不要)　<span class="ts-duration">約55分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">七倉</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>特定区間タクシー(許可車両のみ・七倉山荘等手配)　<span class="ts-duration">約15分</span></span></div></div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">高瀬ダム</div></div></div></div><div class="ts-route ts-route-omiya" style="display:none"><div class="ts-step"><div class="ts-node"><div class="ts-station">大宮駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>JR湘南新宿ライン　<span class="ts-duration">約31分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">新宿駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>JR特急あずさ　<span class="ts-duration">約3時間14分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">信濃大町駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>裏銀座登山バス(季節運行・予約不要)　<span class="ts-duration">約55分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">七倉</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>特定区間タクシー(許可車両のみ・七倉山荘等手配)　<span class="ts-duration">約15分</span></span></div></div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">高瀬ダム</div></div></div></div><div class="ts-route ts-route-yokohama" style="display:none"><div class="ts-step"><div class="ts-node"><div class="ts-station">横浜駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>JR横浜線　<span class="ts-duration">約1時間</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">八王子駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>JR特急あずさ　<span class="ts-duration">約2時間41分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">信濃大町駅</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>裏銀座登山バス(季節運行・予約不要)　<span class="ts-duration">約55分</span></span></div></div><div class="ts-step"><div class="ts-node"><div class="ts-station">七倉</div></div><div class="ts-arrow"><span class="ts-method"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>特定区間タクシー(許可車両のみ・七倉山荘等手配)　<span class="ts-duration">約15分</span></span></div></div><div class="ts-step"><div class="ts-node ts-node-last"><div class="ts-station">高瀬ダム</div></div></div></div><div class="ts-summary"><div class="ts-dep-toggle"><button type="button" class="ts-dep-btn active" data-key="shinjuku" onclick="changeDepTrain('shinjuku')">新宿発</button><button type="button" class="ts-dep-btn" data-key="omiya" onclick="changeDepTrain('omiya')">大宮発</button><button type="button" class="ts-dep-btn" data-key="yokohama" onclick="changeDepTrain('yokohama')">横浜発</button></div><span class="ts-time-val" data-shinjuku="約4時間24分" data-omiya="約4時間55分" data-yokohama="約4時間51分">約4時間24分</span><span class="ts-fare-val" data-shinjuku="片道約9,110円" data-omiya="片道約9,110円" data-yokohama="片道約9,110円">片道約9,110円</span></div><div class="ts-note"><ul class="ts-note-list"><li>運賃は七倉まで（七倉〜高瀬ダムのタクシー代は別）</li><li>裏銀座登山バスは例年7月中旬〜10月下旬の特定日だけ</li><li>七倉〜高瀬ダムは一般車が通れず、七倉山荘などが手配するタクシーを使う</li></ul></div><div class="ts-links"><a href="https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=信濃大町&amp;type=1" target="_blank" rel="noopener" class="ts-link ts-link-yahoo"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>乗換案内で検索</a><a href="https://uraginzabus.com/" target="_blank" rel="noopener" class="ts-link ts-link-bus"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><rect x="1.5" y="7" width="21" height="9.5" rx="1.5" fill="currentColor"/><rect x="3.5" y="9" width="4" height="4" fill="white"/><rect x="9" y="9" width="4" height="4" fill="white"/><rect x="15" y="9" width="5" height="4" fill="white"/><circle cx="6" cy="18.5" r="2.3" fill="currentColor"/><circle cx="17" cy="18.5" r="2.3" fill="currentColor"/></svg>裏銀座登山バス公式サイト</a></div></div>
 </div>
-
-  <div class="card" id="sec-car"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg>車でのアクセス時間</h2>
+  </div>
+  <div class="acc-panel" data-acc="car" role="tabpanel">
+  <div class="acc-sec" id="sec-car"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/><circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg>車でのアクセス時間</h2>
     <div class="ag-a" id="access-grid">
 <div class="ai-a" data-dep="大船駅" data-min="225"><div class="ai-a-dep">大船駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:62%"></div></div><div class="ai-a-val">3時間45分</div></div>
 <div class="ai-a" data-dep="横浜駅" data-min="230"><div class="ai-a-dep">横浜駅</div><div class="ai-a-bar-wrap"><div class="ai-a-bar" style="width:64%"></div></div><div class="ai-a-val">3時間50分</div></div>
@@ -368,8 +393,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
     </div>
     <p class="car-note">※七倉までの時間です。登山口へは、そこからバス・ケーブルカー・タクシーなどに乗り換えます。渋滞を含まない目安です。休日や朝夕は長くなります。</p>
   </div>
-
-  <div class="card" id="sec-parking"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 16V8h3.5a2.5 2.5 0 0 1 0 5H9" stroke-linecap="round" stroke-linejoin="round"/></svg>登山口・駐車場</h2>
+  <div class="acc-sec" id="sec-parking"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 16V8h3.5a2.5 2.5 0 0 1 0 5H9" stroke-linecap="round" stroke-linejoin="round"/></svg>登山口・駐車場</h2>
 <div class="info-rows">
 <div class="info-row"><span class="info-label">登山口</span><span class="info-val">高瀬ダム（ブナ立尾根登山口）</span></div>
 <div class="info-row"><span class="info-label">駐車場</span><span class="info-val">七倉駐車場（無料）＋タクシー</span></div>
@@ -378,8 +402,37 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 <div class="map-btns"><a href="https://www.google.com/maps/search/?api=1&query=36.4747648%2C137.6910824&query_place_id=ChIJ88LhRWhfHWARTESFL0vM8sg" target="_blank" class="map-btn-link">Googleマップ</a>
 <a href="https://maps.apple.com/?ll=36.4747648,137.6910824&q=%E9%AB%98%E7%80%AC%E3%83%80%E3%83%A0" target="_blank" class="map-btn-link">Apple Maps</a>
 </div>
+</div>
+  </div>
 <div style="margin-top:10px;text-align:right"><a href="/listing/" style="font-size:11px;color:#8a8070;text-decoration:underline">地元のお店の掲載について（PR枠）</a></div>
 </div>
+<script>(function(){
+var box=document.getElementById('sec-access');if(!box)return;
+var hasTrain=box.getAttribute('data-has-train')==='1';
+function ok(v){return v==='car'||(v==='train'&&hasTrain);}
+function pick(){
+  var m=location.search.match(/[?&]access=(train|car)/);if(m&&ok(m[1]))return m[1];
+  var p='';try{var r=new URL(document.referrer);if(r.origin===location.origin)p=r.pathname;}catch(e){}
+  var v=null;
+  if(p==='/'||p==='/index.html'){try{v=localStorage.getItem('ym_transportmode');}catch(e){}if(v)v=v.replace(/"/g,'');}
+  else if(/^\/search\/(shinjuku|omiya|yokohama|ofuna)\/$/.test(p))v='car';
+  else if(/^\/search\/(train-daytrip|shinjuku-beginner|[a-z0-9-]+-hiking)\//.test(p)||/^\/articles\/(train-access-mountains|cool-mountains-summer)\//.test(p))v='train';
+  else if(/^\/mountains\//.test(p)){try{v=sessionStorage.getItem('ym_access_last');}catch(e){}}
+  if(ok(v))return v;
+  return hasTrain?'train':'car';
+}
+function set(v,save){
+  if(!ok(v))return;
+  var tabs=box.querySelectorAll('.acc-tab'),panels=box.querySelectorAll('.acc-panel'),i;
+  for(i=0;i<tabs.length;i++){var on=tabs[i].getAttribute('data-acc')===v;tabs[i].setAttribute('aria-selected',on?'true':'false');tabs[i].className='acc-tab'+(on?' on':'');}
+  for(i=0;i<panels.length;i++){panels[i].hidden=panels[i].getAttribute('data-acc')!==v;}
+  if(save){try{sessionStorage.setItem('ym_access_last',v);}catch(e){}}
+}
+window.ymSetAccess=function(v){set(v,true);};
+var tabs=box.querySelectorAll('.acc-tab');
+for(var i=0;i<tabs.length;i++){tabs[i].addEventListener('click',function(){set(this.getAttribute('data-acc'),true);});}
+set(pick(),false);
+})();</script>
   <div class="card" id="sec-season"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>シーズンカレンダー</h2>
     <div class="calendar gcal"><div class="cal-m"><div class="cal-l">1</div><button type="button" class="cal-b s-hard" data-tip="1月　冬山装備（12本爪アイゼン・ピッケル等）" aria-label="1月　冬山装備（12本爪アイゼン・ピッケル等）"></button></div><div class="cal-m"><div class="cal-l">2</div><button type="button" class="cal-b s-hard" data-tip="2月　冬山装備（12本爪アイゼン・ピッケル等）" aria-label="2月　冬山装備（12本爪アイゼン・ピッケル等）"></button></div><div class="cal-m"><div class="cal-l">3</div><button type="button" class="cal-b s-hard" data-tip="3月　冬山装備（12本爪アイゼン・ピッケル等）" aria-label="3月　冬山装備（12本爪アイゼン・ピッケル等）"></button></div><div class="cal-m"><div class="cal-l">4</div><button type="button" class="cal-b s-hard" data-tip="4月　冬山装備（12本爪アイゼン・ピッケル等）" aria-label="4月　冬山装備（12本爪アイゼン・ピッケル等）"></button></div><div class="cal-m"><div class="cal-l">5</div><button type="button" class="cal-b s-hard" data-tip="5月　冬山装備（12本爪アイゼン・ピッケル等）" aria-label="5月　冬山装備（12本爪アイゼン・ピッケル等）"></button></div><div class="cal-m"><div class="cal-l">6</div><button type="button" class="cal-b s-hard" data-tip="6月　冬山装備（12本爪アイゼン・ピッケル等）" aria-label="6月　冬山装備（12本爪アイゼン・ピッケル等）"></button></div><div class="cal-m"><div class="cal-l">7</div><button type="button" class="cal-b s-ok" data-tip="7月　アイゼン不要" aria-label="7月　アイゼン不要"></button></div><div class="cal-m"><div class="cal-l">8</div><button type="button" class="cal-b s-ok" data-tip="8月　アイゼン不要" aria-label="8月　アイゼン不要"></button></div><div class="cal-m"><div class="cal-l">9</div><button type="button" class="cal-b s-ok" data-tip="9月　アイゼン不要" aria-label="9月　アイゼン不要"></button></div><div class="cal-m"><div class="cal-l">10</div><button type="button" class="cal-b cal-split" style="--ga:#d4c19a;--gb:#b08868" data-tip="10月　10/1〜10/10 軽アイゼン等（チェーンスパイク・6本爪アイゼン等）　／　10/11〜 冬山装備（12本爪アイゼン・ピッケル等）" aria-label="10月　10/1〜10/10 軽アイゼン等（チェーンスパイク・6本爪アイゼン等）　／　10/11〜 冬山装備（12本爪アイゼン・ピッケル等）"></button></div><div class="cal-m"><div class="cal-l">11</div><button type="button" class="cal-b s-hard" data-tip="11月　冬山装備（12本爪アイゼン・ピッケル等）" aria-label="11月　冬山装備（12本爪アイゼン・ピッケル等）"></button></div><div class="cal-m"><div class="cal-l">12</div><button type="button" class="cal-b s-hard" data-tip="12月　冬山装備（12本爪アイゼン・ピッケル等）" aria-label="12月　冬山装備（12本爪アイゼン・ピッケル等）"></button></div></div>
     <div class="cal-detail" aria-live="polite">月をタップすると、その月の区分を表示します。</div>
@@ -586,7 +639,7 @@ var YM_MOUNTAIN_INIT = {
   ]
 };
 </script>
-<script src="../../assets/js/mountain-engine.js?v=20261103c"></script>
+<script src="../../assets/js/mountain-engine.js?v=20261105b"></script>
 
 
 
@@ -624,9 +677,9 @@ var YM_MOUNTAIN_INIT = {
 </script>
 
 
-<script src="../../assets/js/gear-common.js?v=20261103c"></script>
-<script src="../../assets/js/mountain.js?v=20261103c"></script>
-<script src="../../assets/js/counts-config.js?v=20261103c"></script>
+<script src="../../assets/js/gear-common.js?v=20261105b"></script>
+<script src="../../assets/js/mountain.js?v=20261105b"></script>
+<script src="../../assets/js/counts-config.js?v=20261105b"></script>
 <script src="../../assets/js/ym-counts.js?v=20261025a"></script>
 <script src="/assets/js/to-top.js?v=20261025a" defer></script>
 </body>

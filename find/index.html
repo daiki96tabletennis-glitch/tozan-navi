@@ -949,7 +949,9 @@ function _doShowResult(){
       if(fitNote) html += '<div class="rc-reason-fit">' + esc(fitNote) + '</div>';
       html += '</div>';
     }
-    html += '<a class="rc-cta" href="/mountains/' + esc(m.id) + '/">詳しく見る →</a>';
+    // 山ページの行き方のタブを、答えた交通手段で開く（2026-11-05〜）
+    var accQ = (answers.transport === 'car' || answers.transport === 'train') ? '?access=' + answers.transport : '';
+    html += '<a class="rc-cta" href="/mountains/' + esc(m.id) + '/' + accQ + '">詳しく見る →</a>';
     html += '</div>';
   });
 

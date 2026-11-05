@@ -410,6 +410,17 @@
 - 自動で分かるのは気象庁の警報だけ。自治体の立入規制の範囲（草津白根山の湯釜周辺など）や登山道の通行止めは分からないので、`status` / `warnBanner` は今までどおり手で書く
 - 月次の確認（`check_annual_updates.py`）が、警報の出ている山を Issue に載せる（手書きの注意文を見直すため）
 
+## 山ページの行き方のタブ（電車・バス／車。2026-11-05〜。運営者の指示）
+- 「電車・バスで行く」「車で行く」を1つの欄（`#sec-access`）のタブにした。車のタブは「車でのアクセス時間」と「登山口・駐車場」。前泊の宿のリンクと地元のお店の掲載枠（PR）はタブの下（どちらでも出る）。電車・バスの欄が無い山（11山）はタブを出さず車だけ。作るのは `gen_mountain_pages.py` の `render_access_tabs`、切り替えは同じファイルの `ACC_SCRIPT`（ページに直接書く。JavaScript が動かないときは両方出る）。上の目次は「電車・バス」「車・駐車場」（押すとそのタブに切り替えて移る。`mountain.js`）
+- 先に開くタブ：①URL の `?access=train|car`（山選び診断の結果のリンクは、答えた交通手段を付ける） ②来たページ（`document.referrer`）：トップ＝トップで選んでいる車／電車（localStorage `ym_transportmode`）、出発地別の全件一覧（`/search/shinjuku|omiya|yokohama|ofuna/`。車の時間の一覧）＝車、路線・駅・エリアのまとめ（`/search/…-hiking/`）・電車で行ける日帰り登山・新宿から行ける初心者向けの山・電車の記事（train-access-mountains・cool-mountains-summer）＝電車、ほかの山ページ＝最後に選んだタブ（sessionStorage `ym_access_last`） ③電車・バスの欄がある山は電車、無い山は車。電車・車の両方を並べる記事（紅葉・コース定数・冬の記事など）・山小屋・タイプ診断からは③
+- 電車か車かに分かれる新しいページを足したら、`ACC_SCRIPT` の決まりにも足す
+
+## 山ページの注意のバナー（規制・通行止め・駐車場からのバス。2026-11-05〜。運営者の指示）
+- スマホで画面の半分以上を占めていた（甲斐駒ヶ岳で812pxのうち475px）ので、たためる形にした（`<details>`）。たたんだ状態は ⚠️・見出し（`warnBanner.title` / `alerts[].title`）・「詳しく」だけで、期限（`data-valid-to`）を過ぎた山は見出しの下に「◯年の期間は終了」の印（`mountain-engine.js`。同じ印は1つだけ）。開くと本文・公式のリンク・最終確認日・駐車場からのバス（`carShuttle`）・終了の注記（1回だけ）
+- 作るのは `gen_mountain_pages.py` の `warn_box`（`render_alerts`・`_render_warn_banner`・`_with_shuttle` が使う）。CSS は `_base_mountain_style.css` の `.warn-sum` など
+- 見出しだけで中身が分かるように書く（たたんだ状態で読むのは見出しだけ）。2026-11-05 時点で32山、たたんだ高さは47〜98px
+- 気象庁の噴火警報の表示（`volcano-status.js`）は前のまま（たたまない）
+
 ## 山ページの検索結果の見出し・説明文（2026-10-12〜）
 - 山ごとに、検索する人がいちばん知りたいことに答える形で作る。知りたいことは Search Console の検索語から判定する
   1. Search Console の「検索パフォーマンス」を書き出す（期間28日・zip）→ `python3 scripts/gsc_import.py <zip>` → `data/seo_intents.json`（山ごとの表示回数・クリック率・掲載順位・取りこぼし、検索語の内訳：難易度／初心者／日帰り／時間／アクセス／標高差／名前だけ）

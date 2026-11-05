@@ -53,6 +53,9 @@
   tabs.forEach(function(tab){
     tab.addEventListener('click', function(){
       var id = tab.getAttribute('data-target');
+      // 電車・バス／車は1つの欄のタブ。押したほうに切り替えてから移る（2026-11-05〜）
+      var acc = tab.getAttribute('data-acc');
+      if(acc && window.ymSetAccess) window.ymSetAccess(acc);
       var el = document.getElementById(id);
       if(el) el.scrollIntoView({behavior: 'smooth', block: 'start'});
     });

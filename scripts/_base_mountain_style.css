@@ -234,6 +234,27 @@ footer{text-align:center;padding:24px;font-size:12px;color:#a09888}
 .ts-op a{color:#4e6535;text-decoration:underline}
 .ym-expired-note{display:block;font-size:11px;color:#8a5a00;background:#fff6e0;border-radius:6px;padding:5px 9px;margin-top:5px;line-height:1.6}
 .warn-banner + .warn-banner{margin-top:-4px}
+details.warn-banner{display:block;padding:0}
+.acc-tabs{display:flex;gap:4px;padding:4px;background:#eef2e6;border-radius:999px;margin:0 0 14px}
+.acc-tab{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;border:0;background:transparent;color:#4e6535;font:700 13.5px/1.2 inherit;font-family:inherit;padding:10px 6px;border-radius:999px;cursor:pointer;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;transition:background .15s,color .15s}
+.acc-tab.on{background:#4e6535;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.acc-tab svg{flex-shrink:0}
+.acc-tab.on svg circle[fill="#fff"]{fill:#4e6535}
+.acc-sec + .acc-sec{margin-top:16px;padding-top:14px;border-top:1px solid #ece8de}
+.acc-panel[hidden]{display:none}
+.warn-sum{display:flex;gap:8px;align-items:center;padding:10px 12px;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
+.warn-sum::-webkit-details-marker{display:none}
+.warn-sum .warn-icon{font-size:17px;line-height:1}
+.warn-head{flex:1;min-width:0}
+.warn-sum .warn-title{margin:0;line-height:1.45}
+.warn-chips:empty{display:none}
+.warn-chips{display:block;margin-top:3px}
+.warn-chip{display:inline-block;font-size:10.5px;font-weight:600;color:#8a5a00;background:#fff1cc;border-radius:999px;padding:1px 8px;line-height:1.6}
+.warn-more{flex-shrink:0;font-size:11px;font-weight:700;color:#6a6258;white-space:nowrap}
+.warn-more::after{content:"";display:inline-block;width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:0 2px 3px 6px;transition:transform .2s}
+details.warn-banner[open] .warn-more{font-size:0}
+details.warn-banner[open] .warn-more::after{transform:rotate(-135deg);margin-bottom:-1px}
+details.warn-banner > .warn-body{padding:0 14px 12px 37px}
 .gcal .cal-b{display:block;width:100%;border:0;padding:0;cursor:pointer;-webkit-appearance:none;appearance:none}
 .gcal .cal-split{background:linear-gradient(to bottom right,var(--ga) 0,var(--ga) 50%,var(--gb) 50%,var(--gb) 100%)}
 .gcal .cal-b.on{outline:2px solid #4e6535;outline-offset:1px}
