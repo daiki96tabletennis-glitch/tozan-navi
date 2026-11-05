@@ -31,15 +31,35 @@
     return out + '）';
   }
 
-  function addLine(after, credits){
-    var seen = {};
-    var parts = [];
-    credits.forEach(function(p){
-      var h = creditHtml(p);
-      if(seen[h]) return;
-      seen[h] = 1;
-      parts.push(h);
+  // 同じ作者・同じライセンスの写真は1つにまとめ、Commons のページへのリンクを「1・2・3」と番号で並べる（2026-11-05）
+  function groupHtml(list){
+    var p = list[0];
+    if(p.source !== 'wikimedia_commons' || list.length === 1) return creditHtml(p);
+    var lic = p.license || 'ライセンス不明';
+    var licUrl = p.licenseUrl || p.commonsPageUrl;
+    var out = esc(p.author || '作者不明') + '（';
+    out += licUrl ? '<a href="' + esc(licUrl) + '" target="_blank" rel="noopener">' + esc(lic) + '</a>' : esc(lic);
+    var links = [];
+    list.forEach(function(q, i){
+      if(q.commonsPageUrl) links.push('<a href="' + esc(q.commonsPageUrl) + '" target="_blank" rel="noopener">' + (i + 1) + '</a>');
     });
+    if(links.length) out += '、Wikimedia Commons ' + links.join('・');
+    return out + '）';
+  }
+
+  function addLine(after, credits){
+    var groups = {};
+    var order = [];
+    var seenFile = {};
+    credits.forEach(function(p){
+      var file = p.commonsPageUrl || p.localPath || creditHtml(p);
+      if(seenFile[file]) return;
+      seenFile[file] = 1;
+      var key = (p.source || '') + '|' + (p.author || '') + '|' + (p.license || '');
+      if(!groups[key]){ groups[key] = []; order.push(key); }
+      groups[key].push(p);
+    });
+    var parts = order.map(function(k){ return groupHtml(groups[k]); });
     if(!parts.length) return;
     var d = document.createElement('div');
     d.className = 'ym-photo-credit';
@@ -57,7 +77,8 @@
   function scan(){
     if(!byPath) return;
     // いくつも写真を切り替える枠：枠の下にまとめて1行
-    document.querySelectorAll('.mc-photo-carousel').forEach(function(wrap){
+    // 記事のカードは .mountain-photo-carousel、まとめのカードは .mc-photo-carousel（2026-11-05 に前者を足した。前は写真1枚ごとに作者の行が出て重なっていた）
+    document.querySelectorAll('.mc-photo-carousel, .mountain-photo-carousel').forEach(function(wrap){
       if(hasLine(wrap)) return;
       var list = [];
       wrap.querySelectorAll('img').forEach(function(img){
@@ -68,7 +89,7 @@
     });
     // 1枚の写真
     document.querySelectorAll('img').forEach(function(img){
-      if(img.closest('.mc-photo-carousel')) return;
+      if(img.closest('.mc-photo-carousel, .mountain-photo-carousel')) return;
       var p = byPath[cleanPath(img.getAttribute('src'))];
       if(!p) return;
       var n = img.nextElementSibling;
