@@ -433,6 +433,7 @@ def render_bookmark_tabs(mt):
     if render_train_access(mt):
         tabs.append(("sec-access:train", "電車・バス"))
     tabs.append(("sec-access:car", "車・駐車場"))
+    tabs.append(("sec-trailhead", "登山口"))
     tabs.append(("sec-season", "アイゼン要否"))
     tabs.append(("sec-routes", "ルート"))
     tabs.append(("sec-gear", "装備"))
@@ -583,10 +584,10 @@ def render_car_access(mt):
     )
 
 
-ACC_TRAIN_ICON = ('<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/>'
+ACC_TRAIN_ICON = ('<svg width="21" height="21" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/>'
                   '<rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/>'
                   '<line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>')
-ACC_CAR_ICON = ('<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/>'
+ACC_CAR_ICON = ('<svg width="23" height="23" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/>'
                 '<rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><circle cx="6.5" cy="17.5" r="1.6" fill="#fff"/><circle cx="17.5" cy="17.5" r="1.6" fill="#fff"/></svg>')
 
 # どちらのタブを先に開くか（2026-11-05〜。運営者の指示）。順番：
@@ -629,7 +630,7 @@ def _as_panel(card_html, new_cls="acc-sec"):
 
 
 def render_access_tabs(mt):
-    """電車・バスと車（車の時間・登山口・駐車場）を1つの欄にまとめ、タブで切り替える（2026-11-05〜。運営者の指示）。
+    """電車・バスと車（車の時間・駐車場）を1つの欄にまとめ、タブで切り替える。登山口と前泊の宿はタブの下（2026-11-05〜。運営者の指示）。
     JavaScript が動かないときは両方とも出る（隠すのは ACC_SCRIPT）"""
     train = render_train_access(mt)
     car = _as_panel(render_car_access(mt)) + "\n  " + _as_panel(render_parking(mt))
@@ -644,7 +645,10 @@ def render_access_tabs(mt):
     if has_train:
         panels += f'<div class="acc-panel" data-acc="train" role="tabpanel">\n  {_as_panel(train)}\n  </div>\n  '
     panels += f'<div class="acc-panel" data-acc="car" role="tabpanel">\n  {car}\n  </div>'
-    extra = stay_link(mt) + listing_block(mt)
+    # 登山口と前泊の宿は、電車・車のどちらのタブでも出す（タブの下）。駐車場は車のタブだけ（運営者の指示・2026-11-05）
+    extra = ('<div class="acc-common">\n  <div class="acc-sec" id="sec-trailhead">\n'
+             f'<div class="info-rows">\n<div class="info-row"><span class="info-label">登山口</span><span class="info-val">{esc(require(mt, "trailhead"))}</span></div>\n</div>\n'
+             + stay_link(mt) + listing_block(mt) + '</div>\n  </div>\n')
     return (f'<div class="card ym-access" id="sec-access" data-has-train="{1 if has_train else 0}">\n  {tabs}{panels}\n'
             f'{extra}</div>\n{ACC_SCRIPT}')
 
@@ -659,7 +663,6 @@ def car_note(mt):
 
 
 def render_parking(mt):
-    trailhead = esc(require(mt, "trailhead"))
     parking = esc(mt.get("parking") or "")
     address = esc(mt.get("address") or mt.get("trailheadAddress") or "")
     map_btns = mt.get("mapBtnsHtml") or ""
@@ -671,10 +674,8 @@ def render_parking(mt):
         'style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" '
         'stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/>'
         '<path d="M9 16V8h3.5a2.5 2.5 0 0 1 0 5H9" stroke-linecap="round" '
-        'stroke-linejoin="round"/></svg>登山口・駐車場</h2>\n'
+        'stroke-linejoin="round"/></svg>駐車場</h2>\n'
         '<div class="info-rows">\n'
-        f'<div class="info-row"><span class="info-label">登山口</span>'
-        f'<span class="info-val">{trailhead}</span></div>\n'
         f'<div class="info-row"><span class="info-label">駐車場</span>'
         f'<span class="info-val">{parking}</span></div>\n'
         f'<div class="info-row"><span class="info-label">住所</span>'

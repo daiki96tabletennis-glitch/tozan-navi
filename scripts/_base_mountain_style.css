@@ -242,6 +242,7 @@ details.warn-banner{display:block;padding:0}
 .acc-tab.on svg circle[fill="#fff"]{fill:#4e6535}
 .acc-sec + .acc-sec{margin-top:16px;padding-top:14px;border-top:1px solid #ece8de}
 .acc-panel[hidden]{display:none}
+.acc-common{margin-top:16px;padding-top:14px;border-top:1px solid #ece8de}
 .warn-sum{display:flex;gap:8px;align-items:center;padding:10px 12px;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
 .warn-sum::-webkit-details-marker{display:none}
 .warn-sum .warn-icon{font-size:17px;line-height:1}

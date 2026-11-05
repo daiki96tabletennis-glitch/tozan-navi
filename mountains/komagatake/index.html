@@ -261,6 +261,7 @@ details.warn-banner{display:block;padding:0}
 .acc-tab.on svg circle[fill="#fff"]{fill:#4e6535}
 .acc-sec + .acc-sec{margin-top:16px;padding-top:14px;border-top:1px solid #ece8de}
 .acc-panel[hidden]{display:none}
+.acc-common{margin-top:16px;padding-top:14px;border-top:1px solid #ece8de}
 .warn-sum{display:flex;gap:8px;align-items:center;padding:10px 12px;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
 .warn-sum::-webkit-details-marker{display:none}
 .warn-sum .warn-icon{font-size:17px;line-height:1}
@@ -328,7 +329,7 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
   </div>
 </header>
 <main>
-  <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="weather-card">天気</button><button type="button" class="bookmark-tab" data-target="sec-access" data-acc="train">電車・バス</button><button type="button" class="bookmark-tab" data-target="sec-access" data-acc="car">車・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
+  <div class="bookmark-tabs" id="bookmark-tabs"><button type="button" class="bookmark-tab" data-target="weather-card">天気</button><button type="button" class="bookmark-tab" data-target="sec-access" data-acc="train">電車・バス</button><button type="button" class="bookmark-tab" data-target="sec-access" data-acc="car">車・駐車場</button><button type="button" class="bookmark-tab" data-target="sec-trailhead">登山口</button><button type="button" class="bookmark-tab" data-target="sec-season">アイゼン要否</button><button type="button" class="bookmark-tab" data-target="sec-routes">ルート</button><button type="button" class="bookmark-tab" data-target="sec-gear">装備</button></div>
   <div class="hero-meta-row"><div class="hero-counts" id="hero-counts" data-id="komagatake" style="display:none"></div><div class="mountain-updated">最終更新: 2026-11-04</div></div>
   <div class="hero-new hero-100">
     <svg class="hero-bg-svg" viewBox="0 0 100 60" fill="#2a5010" style="opacity:0.04">
@@ -623,7 +624,7 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
 </div>
 
   <div class="card ym-access" id="sec-access" data-has-train="1">
-  <div class="acc-tabs" role="tablist" aria-label="行き方"><button type="button" role="tab" class="acc-tab on" data-acc="train" aria-selected="true"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>電車・バスで行く</button><button type="button" role="tab" class="acc-tab" data-acc="car" aria-selected="false"><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><circle cx="6.5" cy="17.5" r="1.6" fill="#fff"/><circle cx="17.5" cy="17.5" r="1.6" fill="#fff"/></svg>車で行く</button></div>
+  <div class="acc-tabs" role="tablist" aria-label="行き方"><button type="button" role="tab" class="acc-tab on" data-acc="train" aria-selected="true"><svg width="21" height="21" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>電車・バスで行く</button><button type="button" role="tab" class="acc-tab" data-acc="car" aria-selected="false"><svg width="23" height="23" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><circle cx="6.5" cy="17.5" r="1.6" fill="#fff"/><circle cx="17.5" cy="17.5" r="1.6" fill="#fff"/></svg>車で行く</button></div>
   <div class="acc-panel" data-acc="train" role="tabpanel">
   <div class="acc-sec" id="sec-train">
   <div class="ts-target">行き先：北沢峠へのアクセス（戸台パークから林道バス）</div>
@@ -641,9 +642,8 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
     </div>
     <p class="car-note">※戸台パークまでの時間です。登山口へは、そこからバス・ケーブルカー・タクシーなどに乗り換えます。渋滞を含まない目安です。休日や朝夕は長くなります。</p>
   </div>
-  <div class="acc-sec" id="sec-parking"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 16V8h3.5a2.5 2.5 0 0 1 0 5H9" stroke-linecap="round" stroke-linejoin="round"/></svg>登山口・駐車場</h2>
+  <div class="acc-sec" id="sec-parking"><h2><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 16V8h3.5a2.5 2.5 0 0 1 0 5H9" stroke-linecap="round" stroke-linejoin="round"/></svg>駐車場</h2>
 <div class="info-rows">
-<div class="info-row"><span class="info-label">登山口</span><span class="info-val">北沢峠</span></div>
 <div class="info-row"><span class="info-label">駐車場</span><span class="info-val">戸台パーク駐車場（林道バス乗り場）</span></div>
 <div class="info-row"><span class="info-label">住所</span><span class="info-val">長野県伊那市長谷黒河内396</span></div>
 </div>
@@ -654,7 +654,14 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
     </div>
 </div>
   </div>
+<div class="acc-common">
+  <div class="acc-sec" id="sec-trailhead">
+<div class="info-rows">
+<div class="info-row"><span class="info-label">登山口</span><span class="info-val">北沢峠</span></div>
+</div>
 <div style="margin-top:10px;text-align:right"><a href="/listing/" style="font-size:11px;color:#8a8070;text-decoration:underline">地元のお店の掲載について（PR枠）</a></div>
+</div>
+  </div>
 </div>
 <script>(function(){
 var box=document.getElementById('sec-access');if(!box)return;
