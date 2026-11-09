@@ -1602,7 +1602,28 @@
         "source": "YAMAPモデルコース（model-courses/22584）",
         "sourceUrl": "https://yamap.com/model-courses/22584",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "三峯神社",
+              "method": {
+                "icon": "bus",
+                "line": "西武バス"
+              },
+              "durationMin": 52,
+              "fareYen": 800
+            },
+            {
+              "station": "三峰口駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "16:30",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%89%E5%B3%AF%E7%A5%9E%E7%A4%BE&to=%E4%B8%89%E5%B3%B0%E5%8F%A3&type=1"
+        }
       }
     ],
     "driveTime": 130,
@@ -2047,7 +2068,28 @@
         "source": "YAMAPモデルコース（model-courses/14806）",
         "sourceUrl": "https://yamap.com/model-courses/14806",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "八丁池口",
+              "method": {
+                "icon": "bus",
+                "line": "東海バス（修善寺駅行き）"
+              },
+              "durationMin": 73,
+              "fareYen": 1850
+            },
+            {
+              "station": "修善寺駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "15:42",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%85%AB%E4%B8%81%E6%B1%A0%E5%8F%A3&to=%E4%BF%AE%E5%96%84%E5%AF%BA&type=1"
+        }
       },
       {
         "name": "天城縦走登山口〜万三郎岳〜八丁池〜天城峠（縦走）",
@@ -2061,7 +2103,37 @@
         "source": "YAMAPモデルコース（model-courses/15902）",
         "sourceUrl": "https://yamap.com/model-courses/15902",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "天城峠",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 1,
+              "fareYen": null
+            },
+            {
+              "station": "登尾",
+              "method": {
+                "icon": "bus",
+                "line": "東海バス"
+              },
+              "durationMin": 58,
+              "fareYen": 1690
+            },
+            {
+              "station": "修善寺駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "17:42",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A4%A9%E5%9F%8E%E5%B3%A0&to=%E4%BF%AE%E5%96%84%E5%AF%BA&type=1"
+        }
       }
     ],
     "driveTime": 140,
@@ -5425,7 +5497,26 @@
         "source": "YAMAPモデルコース（model-courses/66460）",
         "sourceUrl": "https://yamap.com/model-courses/66460",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "御座石鉱泉",
+              "method": {
+                "icon": "taxi",
+                "line": "タクシー"
+              },
+              "durationMin": null,
+              "fareYen": null
+            },
+            {
+              "station": "韮崎駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026-11-09）",
+          "lastVerified": "2026-11-09",
+          "note": "路線バスは無い（乗換案内で見つからない）"
+        }
       }
     ],
     "driveTime": 175,
@@ -5871,7 +5962,28 @@
         "source": "YAMAPモデルコース（model-courses/13957）",
         "sourceUrl": "https://yamap.com/model-courses/13957",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "三本松",
+              "method": {
+                "icon": "bus",
+                "line": "東武バス"
+              },
+              "durationMin": 60,
+              "fareYen": 1750
+            },
+            {
+              "station": "東武日光駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "19:38",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%89%E6%9C%AC%E6%9D%BE&to=%E6%9D%B1%E6%AD%A6%E6%97%A5%E5%85%89&type=1"
+        }
       }
     ],
     "driveTime": 175,
@@ -6337,7 +6449,28 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "奈良田温泉",
+              "method": {
+                "icon": "bus",
+                "line": "はやかわ乗合バス"
+              },
+              "durationMin": 90,
+              "fareYen": 1000
+            },
+            {
+              "station": "身延駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "15:55",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A5%88%E8%89%AF%E7%94%B0%E6%B8%A9%E6%B3%89&to=%E8%BA%AB%E5%BB%B6&type=1"
+        }
       }
     ],
     "driveTime": 140,
@@ -17285,7 +17418,26 @@
         "source": "YAMAPモデルコース（model-courses/18121）",
         "sourceUrl": "https://yamap.com/model-courses/18121",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "キリンテ",
+              "method": {
+                "icon": "bus",
+                "line": "会津バス「檜枝岐線」"
+              },
+              "durationMin": null,
+              "fareYen": null
+            },
+            {
+              "station": "会津田島駅"
+            }
+          ],
+          "source": "このサイトの会津駒ヶ岳の行き方（同じ路線）",
+          "lastVerified": "2026-11-09",
+          "note": "季節運行（アクセス欄と同じ路線。時刻は会津バスの時刻表で）"
+        }
       }
     ],
     "driveTime": 280,
@@ -18641,7 +18793,35 @@
         "source": "YAMAPモデルコース（model-courses/14190）",
         "sourceUrl": "https://yamap.com/model-courses/14190",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "沼山峠",
+              "method": {
+                "icon": "bus",
+                "line": "シャトルバス"
+              },
+              "durationMin": null,
+              "fareYen": null
+            },
+            {
+              "station": "御池",
+              "method": {
+                "icon": "bus",
+                "line": "会津バス「檜枝岐線」"
+              },
+              "durationMin": 120,
+              "fareYen": null
+            },
+            {
+              "station": "会津田島駅"
+            }
+          ],
+          "source": "このサイトの燧ヶ岳の行き方（逆向き）",
+          "lastVerified": "2026-11-09",
+          "note": "季節運行（運行期間・時刻は会津バスの時刻表で）"
+        }
       },
       {
         "id": "miharashi-loop",
@@ -19154,7 +19334,28 @@
         "source": "YAMAPモデルコース（model-courses/7191）",
         "sourceUrl": "https://yamap.com/model-courses/7191",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "小仏",
+              "method": {
+                "icon": "bus",
+                "line": "京王バス"
+              },
+              "durationMin": 21,
+              "fareYen": 280
+            },
+            {
+              "station": "高尾駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "19:40",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%B0%8F%E4%BB%8F&to=%E9%AB%98%E5%B0%BE%28%E6%9D%B1%E4%BA%AC%E9%83%BD%29&type=1"
+        }
       },
       {
         "name": "奥高尾縦走：陣馬高原下〜陣馬山〜景信山〜城山〜高尾山",
@@ -21256,7 +21457,28 @@
         "waypoints": "金時神社入口 → 公時神社 → 金時山 → 矢倉沢峠 → 金時登山口",
         "trailheadName": "金時神社入口",
         "source": "環境省 富士箱根伊豆国立公園 コース06",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "金時登山口",
+              "method": {
+                "icon": "bus",
+                "line": "小田急箱根高速バス（御殿場行き）"
+              },
+              "durationMin": 23,
+              "fareYen": 800
+            },
+            {
+              "station": "御殿場駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "18:42",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E9%87%91%E6%99%82%E7%99%BB%E5%B1%B1%E5%8F%A3&to=%E5%BE%A1%E6%AE%BF%E5%A0%B4&type=1"
+        }
       },
       {
         "name": "乙女峠〜長尾山〜金時山（往復）",
@@ -24490,7 +24712,29 @@
         "sourceUrl": "https://yamap.com/model-courses/18268",
         "lastVerified": "2026-10-24",
         "note": "活火山。噴火警報が出たときは登れない範囲があるので、登る前に気象庁の情報を確認",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "上高地バスターミナル",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス（予約制）"
+              },
+              "durationMin": 65,
+              "fareYen": 3100
+            },
+            {
+              "station": "新島々駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "17:55",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "note": "上高地のバスは季節運行（例年4月下旬〜11月15日）",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%8A%E9%AB%98%E5%9C%B0%E3%83%90%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB&to=%E6%96%B0%E5%B3%B6%E3%80%85&type=1"
+        }
       }
     ],
     "driveTime": 230,
@@ -24999,7 +25243,35 @@
           "lastVerified": "2026-11-04",
           "note": "八峰キレット"
         },
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "アルプス平",
+              "method": {
+                "icon": "cable",
+                "line": "五竜テレキャビン"
+              },
+              "durationMin": null,
+              "fareYen": null
+            },
+            {
+              "station": "エスカルプラザ",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 10,
+              "fareYen": null
+            },
+            {
+              "station": "神城駅"
+            }
+          ],
+          "source": "このサイトの五竜岳の行き方（逆向き）",
+          "lastVerified": "2026-11-09",
+          "note": "テレキャビンは季節運行。運賃は別（往復2,600円〜）"
+        }
       }
     ],
     "driveTime": 230,
@@ -29003,18 +29275,40 @@
         "byTrain": true
       },
       {
-        "name": "羽衣〜表参道〜七面山〜奥の院〜北参道（縦走）",
+        "name": "羽衣〜表参道〜七面山〜奥の院〜北参道〜赤沢入口（縦走）",
         "time": "9時間12分",
         "distance": "12.3km",
         "elevation": "+1574m",
         "descent": "-1769m",
         "coeff": 37,
-        "waypoints": "七面山表参道入口（羽衣） → 肝心坊 → 中適坊 → 晴雲坊 → … → 明浄坊 → 安住坊 → 七丁目休憩所",
+        "waypoints": "七面山表参道入口（羽衣） → 肝心坊 → 中適坊 → 晴雲坊 → … → 明浄坊 → 安住坊 → 七丁目休憩所 → 七面山登山口・赤沢入口バス停",
         "trailheadName": "羽衣（表参道入口）",
         "source": "YAMAPモデルコース（model-courses/22283）",
         "sourceUrl": "https://yamap.com/model-courses/22283",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "七面山登山口・赤沢入口",
+              "method": {
+                "icon": "bus",
+                "line": "はやかわ乗合バス"
+              },
+              "durationMin": 47,
+              "fareYen": 600
+            },
+            {
+              "station": "身延駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "16:38",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "note": "行きと同じバス停",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%83%E9%9D%A2%E5%B1%B1%E7%99%BB%E5%B1%B1%E5%8F%A3%E3%83%BB%E8%B5%A4%E6%B2%A2%E5%85%A5%E5%8F%A3&to=%E8%BA%AB%E5%BB%B6&type=1"
+        }
       }
     ],
     "driveTime": 155,
@@ -29041,11 +29335,11 @@
     "faq": [
       {
         "question": "七面山は初心者でも登れますか？難易度とコース定数を解説",
-        "answer": "七面山の難易度は中〜上級、コース定数33〜37です。初心者には難しく、経験が必要です。代表的な羽衣〜表参道〜敬慎院〜七面山（往復）は7時間59分・9.8km・標高差+1514mが目安。羽衣〜表参道〜七面山〜最高地点〜奥の院（往復）（9時間3分）、羽衣〜表参道〜七面山〜奥の院〜北参道（縦走）（9時間12分）という選び方もできます。日帰り登山が可能です。登山靴・レインウェア・水は必携です。"
+        "answer": "七面山の難易度は中〜上級、コース定数33〜37です。初心者には難しく、経験が必要です。代表的な羽衣〜表参道〜敬慎院〜七面山（往復）は7時間59分・9.8km・標高差+1514mが目安。羽衣〜表参道〜七面山〜最高地点〜奥の院（往復）（9時間3分）、羽衣〜表参道〜七面山〜奥の院〜北参道〜赤沢入口（縦走）（9時間12分）という選び方もできます。日帰り登山が可能です。登山靴・レインウェア・水は必携です。"
       },
       {
         "question": "七面山の所要時間は？日帰りできますか？",
-        "answer": "はい、七面山は日帰りできます。羽衣〜表参道〜敬慎院〜七面山（往復）は7時間59分（9.8km・標高差1514m）。羽衣〜表参道〜七面山〜最高地点〜奥の院（往復）・羽衣〜表参道〜七面山〜奥の院〜北参道（縦走）は山小屋に泊まる計画が基本です。"
+        "answer": "はい、七面山は日帰りできます。羽衣〜表参道〜敬慎院〜七面山（往復）は7時間59分（9.8km・標高差1514m）。羽衣〜表参道〜七面山〜最高地点〜奥の院（往復）・羽衣〜表参道〜七面山〜奥の院〜北参道〜赤沢入口（縦走）は山小屋に泊まる計画が基本です。"
       },
       {
         "question": "七面山へのアクセス方法は？新宿・横浜からの行き方",
@@ -29066,7 +29360,7 @@
     "metaTitle": "七面山 登山の難易度は中〜上級｜日帰り7時間59分・標高差1,514m｜身延駅からバス【二百名山】｜Yamatch",
     "metaDescription": "七面山（標高1,989m・山梨県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（羽衣〜表参道〜敬慎院〜七面山（往復））は7時間59分・9.8km・標高差1514m。新宿から電車とバスで約3時間38分（身延駅からバス）。日帰りできます。日蓮宗の霊山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "七面山 登山の難易度は中〜上級｜日帰り7時間59分・標高差1,514m｜身延駅からバス【二百名山】｜Yamatch",
     "ogDescription": "七面山（標高1,989m・山梨県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（羽衣〜表参道〜敬慎院〜七面山（往復））は7時間59分・9.8km・標高差1514m。新宿から電車とバスで約3時間38分（身延駅からバス）。日帰りできます。日蓮宗の霊山。駐車場・装備・天気も掲載。",
@@ -36420,7 +36714,35 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "八方池山荘",
+              "method": {
+                "icon": "cable",
+                "line": "八方アルペンライン（リフト・ゴンドラ）"
+              },
+              "durationMin": null,
+              "fareYen": null
+            },
+            {
+              "station": "八方バスターミナル",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス"
+              },
+              "durationMin": 15,
+              "fareYen": null
+            },
+            {
+              "station": "白馬駅"
+            }
+          ],
+          "source": "このサイトの唐松岳の行き方（逆向き）",
+          "lastVerified": "2026-11-09",
+          "note": "リフト・ゴンドラは季節運行。運賃は別"
+        }
       }
     ],
     "driveTime": 235,
@@ -38230,7 +38552,35 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "アルプス平",
+              "method": {
+                "icon": "cable",
+                "line": "五竜テレキャビン"
+              },
+              "durationMin": null,
+              "fareYen": null
+            },
+            {
+              "station": "エスカルプラザ",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 10,
+              "fareYen": null
+            },
+            {
+              "station": "神城駅"
+            }
+          ],
+          "source": "このサイトの五竜岳の行き方（逆向き）",
+          "lastVerified": "2026-11-09",
+          "note": "テレキャビンは季節運行。運賃は別（往復2,600円〜）"
+        }
       },
       {
         "id": "kaerazu-traverse",
@@ -38260,7 +38610,26 @@
           "lastVerified": "2026-11-04",
           "note": "不帰ノ嶮"
         },
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "猿倉",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通「猿倉線」（事前予約制）"
+              },
+              "durationMin": 27,
+              "fareYen": null
+            },
+            {
+              "station": "白馬駅"
+            }
+          ],
+          "source": "このサイトの白馬岳の行き方（逆向き）",
+          "lastVerified": "2026-11-09",
+          "note": "季節運行"
+        }
       }
     ],
     "driveTime": 240,
@@ -40965,7 +41334,35 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "椹島ロッヂ",
+              "method": {
+                "icon": "bus",
+                "line": "特種東海フォレスト送迎バス（要予約・対象宿泊者）"
+              },
+              "durationMin": 70,
+              "fareYen": null
+            },
+            {
+              "station": "畑薙第一ダム",
+              "method": {
+                "icon": "bus",
+                "line": "静鉄ジャストライン南アルプス登山線（季節運行）／乗合タクシー"
+              },
+              "durationMin": 200,
+              "fareYen": null
+            },
+            {
+              "station": "静岡駅"
+            }
+          ],
+          "source": "このサイトの赤石岳の行き方（逆向き）",
+          "lastVerified": "2026-11-09",
+          "note": "季節運行"
+        }
       },
       {
         "name": "椹島〜赤石岳〜百間洞〜兎岳〜聖岳（周回・山小屋泊）",
@@ -42801,7 +43198,28 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "奈良田温泉",
+              "method": {
+                "icon": "bus",
+                "line": "はやかわ乗合バス"
+              },
+              "durationMin": 90,
+              "fareYen": 1000
+            },
+            {
+              "station": "身延駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "15:55",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A5%88%E8%89%AF%E7%94%B0%E6%B8%A9%E6%B3%89&to=%E8%BA%AB%E5%BB%B6&type=1"
+        }
       },
       {
         "name": "奈良田〜大門沢〜農鳥岳〜間ノ岳〜北岳〜広河原（縦走・2泊3日）",
@@ -43255,7 +43673,28 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "奈良田温泉",
+              "method": {
+                "icon": "bus",
+                "line": "はやかわ乗合バス"
+              },
+              "durationMin": 90,
+              "fareYen": 1000
+            },
+            {
+              "station": "身延駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "15:55",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A5%88%E8%89%AF%E7%94%B0%E6%B8%A9%E6%B3%89&to=%E8%BA%AB%E5%BB%B6&type=1"
+        }
       }
     ],
     "driveTime": 140,
@@ -46415,7 +46854,26 @@
         "source": "YAMAPモデルコース（model-courses/18092）",
         "sourceUrl": "https://yamap.com/model-courses/18092",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "三股",
+              "method": {
+                "icon": "taxi",
+                "line": "タクシー"
+              },
+              "durationMin": null,
+              "fareYen": null
+            },
+            {
+              "station": "穂高駅"
+            }
+          ],
+          "source": "このサイトの蝶ヶ岳の行き方",
+          "lastVerified": "2026-11-09",
+          "note": "路線バスは無い"
+        }
       },
       {
         "name": "中房温泉〜燕岳〜大天井岳〜常念岳〜一ノ沢（縦走・1泊2日）",
@@ -46431,7 +46889,35 @@
         "lastVerified": "2026-10-24",
         "note": "下山口の一ノ沢林道は災害のため一般車両通行止め（復旧は2027年1月末予定）。通行止め箇所の手前まで約1.5km歩く",
         "noteSourceUrl": "https://www.city.azumino.nagano.jp/soshiki/32/66871.html",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "一ノ沢登山口",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 40,
+              "fareYen": null
+            },
+            {
+              "station": "林道崩落箇所",
+              "method": {
+                "icon": "taxi",
+                "line": "タクシー"
+              },
+              "durationMin": 30,
+              "fareYen": null
+            },
+            {
+              "station": "穂高駅"
+            }
+          ],
+          "source": "このサイトの常念岳の行き方（逆向き）",
+          "lastVerified": "2026-11-09",
+          "note": "林道の崩落で、タクシーは手前まで"
+        }
       }
     ],
     "driveTime": 230,
@@ -47315,7 +47801,26 @@
         "source": "YAMAPモデルコース（model-courses/18270）",
         "sourceUrl": "https://yamap.com/model-courses/18270",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "扇沢（柏原新道登山口）",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス「扇沢線」"
+              },
+              "durationMin": 40,
+              "fareYen": null
+            },
+            {
+              "station": "信濃大町駅"
+            }
+          ],
+          "source": "このサイトの針ノ木岳の行き方（逆向き）",
+          "lastVerified": "2026-11-09",
+          "note": "季節運行（運行期間はアクセス欄のとおり）"
+        }
       },
       {
         "name": "扇沢〜蓮華岳〜針ノ木岳〜赤沢岳〜種池山荘（縦走・1泊2日）",
@@ -47329,7 +47834,26 @@
         "source": "YAMAPモデルコース（model-courses/25983）",
         "sourceUrl": "https://yamap.com/model-courses/25983",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "扇沢（柏原新道登山口）",
+              "method": {
+                "icon": "bus",
+                "line": "アルピコ交通バス「扇沢線」"
+              },
+              "durationMin": 40,
+              "fareYen": null
+            },
+            {
+              "station": "信濃大町駅"
+            }
+          ],
+          "source": "このサイトの針ノ木岳の行き方（逆向き）",
+          "lastVerified": "2026-11-09",
+          "note": "季節運行（運行期間はアクセス欄のとおり）"
+        }
       }
     ],
     "driveTime": 230,
@@ -48212,7 +48736,26 @@
         "source": "YAMAPモデルコース（model-courses/98271）",
         "sourceUrl": "https://yamap.com/model-courses/98271",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "新穂高温泉",
+              "method": {
+                "icon": "bus",
+                "line": "濃飛バス「平湯・新穂高線」"
+              },
+              "durationMin": 32,
+              "fareYen": 910
+            },
+            {
+              "station": "平湯温泉"
+            }
+          ],
+          "source": "このサイトの笠ヶ岳の行き方（逆向き）",
+          "lastVerified": "2026-11-09",
+          "note": "平湯温泉からはバスタ新宿行きの高速バス（笠ヶ岳の行き方の逆）。鉄道の駅へはさらにバスの乗り継ぎ"
+        }
       }
     ],
     "driveTime": 225,
@@ -49062,7 +49605,28 @@
         "source": "YAMAPモデルコース（model-courses/11787）",
         "sourceUrl": "https://yamap.com/model-courses/11787",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "つるつる温泉",
+              "method": {
+                "icon": "bus",
+                "line": "西東京バス"
+              },
+              "durationMin": 19,
+              "fareYen": 490
+            },
+            {
+              "station": "武蔵五日市駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "19:32",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E3%81%A4%E3%82%8B%E3%81%A4%E3%82%8B%E6%B8%A9%E6%B3%89&to=%E6%AD%A6%E8%94%B5%E4%BA%94%E6%97%A5%E5%B8%82&type=1"
+        }
       },
       {
         "name": "古里駅〜大塚山〜御岳山〜日の出山〜つるつる温泉（縦走）",
@@ -50735,7 +51299,26 @@
         "sourceUrl": "https://yamap.com/model-courses/31791",
         "lastVerified": "2026-10-24",
         "note": "男坂（鎖場）は通行自粛、女坂は通行止め。男坂・女坂の中間道を通る",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "道の駅 果樹公園あしがくぼ",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 5,
+              "fareYen": null
+            },
+            {
+              "station": "芦ヶ久保駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E9%81%93%E3%81%AE%E9%A7%85%E6%9E%9C%E6%A8%B9%E5%85%AC%E5%9C%92%E3%81%82%E3%81%97%E3%81%8C%E3%81%8F%E3%81%BC&to=%E8%8A%A6%E3%83%B6%E4%B9%85%E4%BF%9D&type=1"
+        }
       }
     ],
     "driveTime": 115,
@@ -52356,7 +52939,25 @@
         "source": "YAMAPモデルコース（model-courses/11778）",
         "sourceUrl": "https://yamap.com/model-courses/11778",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "弘法の里湯",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 3,
+              "fareYen": null
+            },
+            {
+              "station": "鶴巻温泉駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09"
+        }
       },
       {
         "name": "鶴巻温泉〜吾妻山〜善波峠〜弘法山（往復）",
@@ -52792,7 +53393,25 @@
         "source": "YAMAPモデルコース（model-courses/8645）",
         "sourceUrl": "https://yamap.com/model-courses/8645",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "稲荷山コース入口（清滝）",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 8,
+              "fareYen": null
+            },
+            {
+              "station": "高尾山口駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09"
+        }
       }
     ],
     "driveTime": 65,
@@ -53479,7 +54098,38 @@
         "source": "YAMAPモデルコース（model-courses/96427）",
         "sourceUrl": "https://yamap.com/model-courses/96427",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "高尾山駅",
+              "method": {
+                "icon": "cable",
+                "line": "高尾登山ケーブル"
+              },
+              "durationMin": 6,
+              "fareYen": 490
+            },
+            {
+              "station": "清滝駅",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 8,
+              "fareYen": null
+            },
+            {
+              "station": "高尾山口駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "20:15",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "note": "ケーブルカーの最終は季節で変わる",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E9%AB%98%E5%B0%BE%E5%B1%B1%28%E9%AB%98%E5%B0%BE%E7%99%BB%E5%B1%B1%E9%9B%BB%E9%89%84%29&to=%E9%AB%98%E5%B0%BE%E5%B1%B1%E5%8F%A3&type=1"
+        }
       },
       {
         "name": "高尾山口駅〜高尾山〜城山〜千木良〜相模湖駅（縦走）",
@@ -54197,18 +54847,47 @@
         "byTrain": true
       },
       {
-        "name": "鳴虫山登山口〜神ノ主山〜鳴虫山〜合峰〜独標（縦走）",
+        "name": "鳴虫山登山口〜神ノ主山〜鳴虫山〜合峰〜独標〜日光市街（縦走）",
         "time": "4時間41分",
         "distance": "7.6km",
         "elevation": "+699m",
         "descent": "-677m",
         "coeff": 18,
-        "waypoints": "鳴虫山登山口 → 神ノ主山 → 鳴虫山 → 合峰 → 独標",
+        "waypoints": "鳴虫山登山口 → 神ノ主山 → 鳴虫山 → 合峰 → 独標 → 日光市街（安川町）",
         "trailheadName": "鳴虫山登山口",
         "source": "YAMAPモデルコース（model-courses/93246）",
         "sourceUrl": "https://yamap.com/model-courses/93246",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "日光市街（安川町）",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 1,
+              "fareYen": null
+            },
+            {
+              "station": "西参道茶屋",
+              "method": {
+                "icon": "bus",
+                "line": "東武バス"
+              },
+              "durationMin": 9,
+              "fareYen": 350
+            },
+            {
+              "station": "東武日光駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "note": "東武日光駅まで歩いても約28分",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%AE%89%E5%B7%9D%E7%94%BA%28%E6%A0%83%E6%9C%A8%E7%9C%8C%29&to=%E6%9D%B1%E6%AD%A6%E6%97%A5%E5%85%89&type=1"
+        }
       }
     ],
     "busUrl": "https://www.tobu-bus.com/pc/area/nikko.html",
@@ -54277,7 +54956,7 @@
     "metaTitle": "鳴虫山 登山の難易度は初〜中級｜日帰り5時間11分・標高差739m｜東武日光駅から徒歩20分｜Yamatch",
     "metaDescription": "鳴虫山（標高1,103m・栃木県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（東武日光駅〜神ノ主山〜鳴虫山〜合峰〜独標（周回））は5時間11分・10km・標高差739m。新宿から電車で約2時間17分（東武日光駅から徒歩20分）。日帰りできます。東武日光駅から徒歩約20分で登山口にアクセスできる日光の隠れた名山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "鳴虫山 登山の難易度は初〜中級｜日帰り5時間11分・標高差739m｜東武日光駅から徒歩20分｜Yamatch",
     "ogDescription": "鳴虫山（標高1,103m・栃木県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（東武日光駅〜神ノ主山〜鳴虫山〜合峰〜独標（周回））は5時間11分・10km・標高差739m。新宿から電車で約2時間17分（東武日光駅から徒歩20分）。日帰りできます。東武日光駅から徒歩約20分で登山口にアクセスできる日光の隠れた名山。駐車場・装備・天気も掲載。",
@@ -57021,7 +57700,28 @@
         "source": "YAMAPモデルコース（model-courses/61674）",
         "sourceUrl": "https://yamap.com/model-courses/61674",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "倉戸口",
+              "method": {
+                "icon": "bus",
+                "line": "西東京バス"
+              },
+              "durationMin": 22,
+              "fareYen": 480
+            },
+            {
+              "station": "奥多摩駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "19:01",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%80%89%E6%88%B8%E5%8F%A3&to=%E5%A5%A5%E5%A4%9A%E6%91%A9&type=1"
+        }
       },
       {
         "name": "水根〜鷹ノ巣山（往復）",
@@ -57364,7 +58064,25 @@
         "source": "YAMAPモデルコース（model-courses/95057）",
         "sourceUrl": "https://yamap.com/model-courses/95057",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "さがみ湖MORI MORI",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 41,
+              "fareYen": null
+            },
+            {
+              "station": "相模湖駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09"
+        }
       },
       {
         "name": "石老山入口〜石老山〜大明神〜嵐山〜相模湖（縦走）",
@@ -57378,7 +58096,25 @@
         "source": "YAMAPモデルコース（model-courses/63655）",
         "sourceUrl": "https://yamap.com/model-courses/63655",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "相模湖大橋",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 8,
+              "fareYen": null
+            },
+            {
+              "station": "相模湖駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09"
+        }
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.5999057%2C139.2051974&query_place_id=ChIJx9qRIgcaGWARhU31K9a1tO4",
@@ -59423,18 +60159,37 @@
         "byTrain": true
       },
       {
-        "name": "幕山登山口〜幕山〜南郷山（縦走）",
+        "name": "幕山登山口〜幕山〜南郷山〜吉浜（縦走）",
         "time": "3時間28分",
         "distance": "6.3km",
         "elevation": "+570m",
         "descent": "-659m",
         "coeff": 14,
-        "waypoints": "幕山登山口 → 幕山 → 南郷山 → 白銀林道出合",
+        "waypoints": "幕山登山口 → 幕山 → 南郷山 → 白銀林道出合 → 吉浜",
         "trailheadName": "幕山登山口（幕山公園）",
         "source": "YAMAPモデルコース（model-courses/20539）",
         "sourceUrl": "https://yamap.com/model-courses/20539",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "吉浜",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 21,
+              "fareYen": null
+            },
+            {
+              "station": "湯河原駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E8%B6%B3%E6%9F%84%E4%B8%8B%E9%83%A1%E6%B9%AF%E6%B2%B3%E5%8E%9F%E7%94%BA%E5%90%89%E6%B5%9C&to=%E6%B9%AF%E6%B2%B3%E5%8E%9F&type=1"
+        }
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.1649806%2C139.0928462&query_place_id=ChIJO9Eue_W8GWAR4y2jwyY0sgg",
@@ -59473,11 +60228,11 @@
     "faq": [
       {
         "question": "幕山は初心者でも登れますか？",
-        "answer": "幕山の難易度は初級、コース定数10〜14です。代表的な幕山登山口〜幕山〜大石ヶ平（周回）は2時間48分・4.7km・標高差+454mが目安。幕山登山口〜幕山（往復）（2時間22分）、幕山登山口〜幕山〜南郷山（縦走）（3時間28分）という選び方もできます。日帰り登山が可能です。登山靴・レインウェア・水は必携です。"
+        "answer": "幕山の難易度は初級、コース定数10〜14です。代表的な幕山登山口〜幕山〜大石ヶ平（周回）は2時間48分・4.7km・標高差+454mが目安。幕山登山口〜幕山（往復）（2時間22分）、幕山登山口〜幕山〜南郷山〜吉浜（縦走）（3時間28分）という選び方もできます。日帰り登山が可能です。登山靴・レインウェア・水は必携です。"
       },
       {
         "question": "幕山の所要時間は？日帰りできますか？",
-        "answer": "はい、幕山は日帰りできます。いちばん短い幕山登山口〜幕山（往復）は2時間22分（2.6km・標高差421m）。幕山登山口〜幕山〜大石ヶ平（周回）は2時間48分（4.7km・標高差454m）。幕山登山口〜幕山〜南郷山（縦走）は3時間28分（6.3km・標高差570m）。"
+        "answer": "はい、幕山は日帰りできます。いちばん短い幕山登山口〜幕山（往復）は2時間22分（2.6km・標高差421m）。幕山登山口〜幕山〜大石ヶ平（周回）は2時間48分（4.7km・標高差454m）。幕山登山口〜幕山〜南郷山〜吉浜（縦走）は3時間28分（6.3km・標高差570m）。"
       },
       {
         "question": "幕山へのアクセス方法は？新宿・横浜からの行き方",
@@ -59498,7 +60253,7 @@
     "metaTitle": "幕山 登山の難易度は初級｜日帰り2時間48分・標高差454m｜湯河原駅からバス18分｜Yamatch",
     "metaDescription": "幕山（標高626m・神奈川県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（幕山登山口〜幕山〜大石ヶ平（周回））は2時間48分・4.7km・標高差454m。新宿から電車とバスで約2時間7分（湯河原駅からバス18分）。日帰りできます。湘南の海と富士山を見渡せる湯河原の人気低山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-09",
     "hasHeroPhotoScript": false,
     "ogTitle": "幕山 登山の難易度は初級｜日帰り2時間48分・標高差454m｜湯河原駅からバス18分｜Yamatch",
     "ogDescription": "幕山（標高626m・神奈川県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（幕山登山口〜幕山〜大石ヶ平（周回））は2時間48分・4.7km・標高差454m。新宿から電車とバスで約2時間7分（湯河原駅からバス18分）。日帰りできます。湘南の海と富士山を見渡せる湯河原の人気低山。駐車場・装備・天気も掲載。",
@@ -60761,7 +61516,28 @@
         "source": "YAMAPモデルコース（model-courses/66294）",
         "sourceUrl": "https://yamap.com/model-courses/66294",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "陣馬高原下",
+              "method": {
+                "icon": "bus",
+                "line": "西東京バス"
+              },
+              "durationMin": 38,
+              "fareYen": 680
+            },
+            {
+              "station": "高尾駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "19:30",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E9%99%A3%E9%A6%AC%E9%AB%98%E5%8E%9F%E4%B8%8B&to=%E9%AB%98%E5%B0%BE%28%E6%9D%B1%E4%BA%AC%E9%83%BD%29&type=1"
+        }
       },
       {
         "name": "井戸〜軍刀利神社〜生藤山〜浅間峠〜上川乗（縦走）",
@@ -60775,7 +61551,28 @@
         "source": "YAMAPモデルコース（model-courses/22197）",
         "sourceUrl": "https://yamap.com/model-courses/22197",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "上川乗",
+              "method": {
+                "icon": "bus",
+                "line": "西東京バス"
+              },
+              "durationMin": 37,
+              "fareYen": 840
+            },
+            {
+              "station": "武蔵五日市駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "19:29",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%8A%E5%B7%9D%E4%B9%97&to=%E6%AD%A6%E8%94%B5%E4%BA%94%E6%97%A5%E5%B8%82&type=1"
+        }
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.662717%2C139.11608&query_place_id=ChIJAYTmdnM-GWARXUyCv_b2TgA",
@@ -62190,7 +62987,28 @@
         "source": "YAMAPモデルコース（model-courses/11787）",
         "sourceUrl": "https://yamap.com/model-courses/11787",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "つるつる温泉",
+              "method": {
+                "icon": "bus",
+                "line": "西東京バス"
+              },
+              "durationMin": 19,
+              "fareYen": 490
+            },
+            {
+              "station": "武蔵五日市駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "19:32",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E3%81%A4%E3%82%8B%E3%81%A4%E3%82%8B%E6%B8%A9%E6%B3%89&to=%E6%AD%A6%E8%94%B5%E4%BA%94%E6%97%A5%E5%B8%82&type=1"
+        }
       },
       {
         "name": "武蔵五日市駅〜金比羅山〜日の出山〜つるつる温泉（縦走）",
@@ -62594,7 +63412,37 @@
         "sourceUrl": "https://yamap.com/model-courses/96248",
         "lastVerified": "2026-11-09",
         "coeff": 24,
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "檜原温泉センター数馬の湯",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 8,
+              "fareYen": null
+            },
+            {
+              "station": "浅間尾根登山口",
+              "method": {
+                "icon": "bus",
+                "line": "西東京バス"
+              },
+              "durationMin": 50,
+              "fareYen": 1070
+            },
+            {
+              "station": "武蔵五日市駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "19:16",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E6%95%B0%E9%A6%AC%28%E6%9D%B1%E4%BA%AC%E9%83%BD%29&to=%E6%AD%A6%E8%94%B5%E4%BA%94%E6%97%A5%E5%B8%82&type=1"
+        }
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.7296265%2C139.1438986&query_place_id=ChIJq4b2Fos7GWARW1fW_C7A0AY",
@@ -63313,7 +64161,28 @@
         "source": "YAMAPモデルコース（model-courses/22057）",
         "sourceUrl": "https://yamap.com/model-courses/22057",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "根場入口",
+              "method": {
+                "icon": "bus",
+                "line": "富士急バス（西湖周遊バス）"
+              },
+              "durationMin": 33,
+              "fareYen": 730
+            },
+            {
+              "station": "河口湖駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "17:42",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E6%A0%B9%E5%A0%B4%E5%85%A5%E5%8F%A3&to=%E6%B2%B3%E5%8F%A3%E6%B9%96&type=1"
+        }
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.5052512%2C138.7046377&query_place_id=ChIJ27wCwzPgG2AReICB_osaSOs",
@@ -66518,7 +67387,28 @@
         "source": "YAMAPモデルコース（model-courses/13543）",
         "sourceUrl": "https://yamap.com/model-courses/13543",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "大楠芦名口",
+              "method": {
+                "icon": "bus",
+                "line": "京急バス"
+              },
+              "durationMin": 35,
+              "fareYen": 510
+            },
+            {
+              "station": "逗子駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "22:15",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A4%A7%E6%A5%A0%E8%8A%A6%E5%90%8D%E5%8F%A3&to=%E9%80%97%E5%AD%90&type=1"
+        }
       },
       {
         "name": "前田橋〜大楠山（往復）",
@@ -67656,7 +68546,28 @@
         "source": "YAMAPモデルコース（model-courses/22526）",
         "sourceUrl": "https://yamap.com/model-courses/22526",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "境橋",
+              "method": {
+                "icon": "bus",
+                "line": "西東京バス"
+              },
+              "durationMin": 11,
+              "fareYen": 280
+            },
+            {
+              "station": "奥多摩駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "19:12",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A2%83%E6%A9%8B&to=%E5%A5%A5%E5%A4%9A%E6%91%A9&type=1"
+        }
       },
       {
         "name": "奥多摩湖〜御前山〜鞘口山〜愛宕山〜奥多摩駅（縦走）",
@@ -70124,7 +71035,38 @@
           "note": "中間道から上の白雲山・金洞山のコースは「険しい岩場が多くあり大変危険」で、初心者は登らないよう呼びかけている",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "中之嶽神社",
+              "method": {
+                "icon": "walk",
+                "line": "徒歩"
+              },
+              "durationMin": 50,
+              "fareYen": null
+            },
+            {
+              "station": "四ツ家上",
+              "method": {
+                "icon": "bus",
+                "line": "しもにたバス（中之岳線）"
+              },
+              "durationMin": 24,
+              "fareYen": 200
+            },
+            {
+              "station": "下仁田駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "15:23",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "note": "バスは本数がとても少ない",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%AD%E4%B9%8B%E5%B6%BD%E7%A5%9E%E7%A4%BE&to=%E4%B8%8B%E4%BB%81%E7%94%B0&type=1"
+        }
       }
     ],
     "vibePoints": [
@@ -72656,7 +73598,28 @@
         "sourceUrl": "https://yamap.com/model-courses/26472",
         "lastVerified": "2026-10-31",
         "coeff": 22,
-        "byTrain": true
+        "byTrain": true,
+        "returnAccess": {
+          "legs": [
+            {
+              "station": "白石車庫",
+              "method": {
+                "icon": "bus",
+                "line": "イーグルバス"
+              },
+              "durationMin": 39,
+              "fareYen": 650
+            },
+            {
+              "station": "小川町駅"
+            }
+          ],
+          "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
+          "lastVerified": "2026-11-09",
+          "lastBus": "17:12",
+          "lastBusDay": "2026年11月の土曜の時刻",
+          "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E7%99%BD%E7%9F%B3%E8%BB%8A%E5%BA%AB&to=%E5%B0%8F%E5%B7%9D%E7%94%BA%28%E5%9F%BC%E7%8E%89%E7%9C%8C%29&type=1"
+        }
       },
       {
         "name": "剣ヶ峰駐車場〜堂平山〜笠山（往復）",

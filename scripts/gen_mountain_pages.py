@@ -546,14 +546,52 @@ def render_train_access(mt):
     if mt.get("trainAccessLabel"):
         caption = f'<div class="ts-target">行き先：{esc(mt["trainAccessLabel"])}</div>\n  '
     caption += render_annual_items(mt)
+    ret = render_returns(mt)
     if train_routes:
         ts = render_ts_section(train_routes, mt)
         if ts:
-            return f'<div class="card" id="sec-train">\n  {caption}{ts}\n</div>'
+            return f'<div class="card" id="sec-train">\n  {caption}{ts}{ret}\n</div>'
     ts = mt.get("trainAccessHtml")
     if not ts:
         return ""
-    return f'<div class="card" id="sec-train">\n  {ts}\n</div>'
+    return f'<div class="card" id="sec-train">\n  {ts}{ret}\n</div>'
+
+
+def render_returns(mt):
+    """縦走のあとの帰り方（routes[].returnAccess。下りる所から最寄りの鉄道の駅まで。2026-11-09〜。運営者の指示）"""
+    items = []
+    for i, r in enumerate(mt.get("routes") or [], 1):
+        ra = r.get("returnAccess")
+        if not ra:
+            continue
+        parts = []
+        for l in ra["legs"]:
+            parts.append(f'<span class="ret-st">{esc(l["station"])}</span>')
+            meth = l.get("method")
+            if meth:
+                bits = [esc(meth.get("line") or "")]
+                if l.get("durationMin"):
+                    bits.append(f'約{fmt_min(l["durationMin"])}')
+                if l.get("fareYen"):
+                    bits.append(f'{l["fareYen"]:,}円')
+                parts.append(f'<span class="ret-ar">→</span><span class="ret-mv">{" ".join(bits)}</span><span class="ret-ar">→</span>')
+        sub = []
+        if ra.get("lastBus"):
+            sub.append(f'<div class="ret-last">最終 {esc(ra["lastBus"])}（{esc(ra.get("lastBusDay") or "")}。曜日・季節で変わります）</div>')
+        if ra.get("note"):
+            sub.append(f'<div class="ret-note">{esc(ra["note"])}</div>')
+        link = ""
+        if ra.get("searchUrl"):
+            link = f'<a class="ret-link" href="{esc(ra["searchUrl"])}" target="_blank" rel="noopener">乗換案内で検索 →</a>'
+        items.append(
+            f'<div class="ret-item"><div class="ret-c"><span class="ret-n">コース{i}</span>{esc(r["name"])}</div>'
+            f'<div class="ret-legs">{"".join(parts)}</div>{"".join(sub)}{link}'
+            f'<div class="ret-src">出典：{esc(ra.get("source") or "")}</div></div>'
+        )
+    if not items:
+        return ""
+    return ('\n  <div class="ret-sec"><div class="ret-h">縦走のあとの帰り方（下りる所から最寄りの駅まで）</div>'
+            + "".join(items) + '</div>')
 
 
 def render_car_access(mt):
