@@ -39,6 +39,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_recommend_gear  # noqa: E402  (診断用月別装備JSONの生成。gear-data.json変更時に同時更新するため)
 from render_transit_routes import render_ts_section  # noqa: E402  (trainRoutes構造化データからのHTML生成。2026-09-23移行)
+from render_transit_routes import ICON_SVG as TRANSIT_ICON_SVG, render_link as render_transit_link  # noqa: E402  (帰り方のカードも行きと同じ形にする)
 
 SITE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH = os.path.join(SITE_ROOT, "data", "mountains.json")
@@ -557,8 +558,81 @@ def render_train_access(mt):
     return f'<div class="card" id="sec-train">\n  {ts}{ret}\n</div>'
 
 
+# 新しい形の帰り方のカード（運営者の案。2026-11-10 にまず雲取山だけで試す）
+RET_V2 = {"kumotori"}
+RET_LINK_ICON = ('<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align:-3px;margin-right:5px" fill="none" '
+                 'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.5"/>'
+                 '<circle cx="18" cy="6" r="2.5"/><path d="M8.2 16.2 C12 14 9 9.5 15.8 7.8"/></svg>')
+RET_CLOCK_ICON = ('<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align:-3px;margin-right:5px;flex-shrink:0" fill="none" '
+                  'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/>'
+                  '<path d="M12 7v5l3 2"/></svg>')
+
+
+def _short_course(mt, name):
+    """コース名を「歩き始め → 山 → 下りる所」の短い形にする（カードの見出し用）"""
+    base = re.sub(r'（[^（）]*）$', '', name)
+    base = re.sub(r'^[^：]*：', '', base)
+    parts = [p for p in base.split('〜') if p]
+    if len(parts) < 3:
+        return ' → '.join(parts)
+    core = re.sub(r'（[^（）]*）', '', mt.get('name') or '')
+    mid = next((p for p in parts[1:-1] if core and core in p), parts[len(parts) // 2])
+    return ' → '.join([parts[0], mid, parts[-1]])
+
+
+def _ret_leg(leg, is_last):
+    """行きの経路図（render_transit_routes.render_leg）と同じ形。乗り物の行に運賃も足す"""
+    node_cls = "ts-node ts-node-last" if is_last else "ts-node"
+    out = [f'<div class="ts-step"><div class="{node_cls}"><div class="ts-station">{esc(leg["station"])}</div></div>']
+    meth = leg.get("method")
+    if meth:
+        icon = TRANSIT_ICON_SVG.get(meth.get("icon"), TRANSIT_ICON_SVG["train"])
+        bits = []
+        if leg.get("durationMin"):
+            bits.append(f'約{fmt_min(leg["durationMin"])}')
+        if leg.get("fareYen"):
+            bits.append(f'{leg["fareYen"]:,}円')
+        tail = f'<span class="ts-duration">{"・".join(bits)}</span>' if bits else ""
+        out.append(f'<div class="ts-arrow"><span class="ts-method">{icon}{esc(meth.get("line") or "")}　{tail}</span></div>')
+    out.append("</div>")
+    return "".join(out)
+
+
+def render_returns_v2(mt):
+    cards = []
+    for i, r in enumerate(mt.get("routes") or [], 1):
+        ra = r.get("returnAccess")
+        if not ra:
+            continue
+        legs = ra["legs"]
+        route = "".join(_ret_leg(l, k == len(legs) - 1) for k, l in enumerate(legs))
+        last = ""
+        if ra.get("lastBus"):
+            day = f'<div class="ret2-day">{esc(ra.get("lastBusDay") or "")}</div>' if ra.get("lastBusDay") else ""
+            last = f'<div class="ret2-last">{RET_CLOCK_ICON}<div><b>最終バス {esc(ra["lastBus"])}発</b>{day}</div></div>'
+        note = f'<div class="ret2-note">{esc(ra["note"])}</div>' if ra.get("note") else ""
+        links = []
+        if ra.get("searchUrl"):
+            links.append(render_transit_link({"type": "yahoo", "label": "乗換案内", "url": ra["searchUrl"]}))
+        if ra.get("timetableUrl"):
+            links.append(render_transit_link({"type": "bus", "label": "公式時刻表", "url": ra["timetableUrl"]}))
+        links_html = f'<div class="ts-links">{"".join(links)}</div>' if links else ""
+        cards.append(
+            f'<div class="ret2-card"><div class="ret2-top"><span class="ret2-n">コース{i}</span>'
+            f'<span class="ret2-path">{esc(_short_course(mt, r["name"]))}</span></div>'
+            f'<div class="ret2-sub">下山口から駅まで</div><div class="ts-route">{route}</div>'
+            f'{last}{note}{links_html}'
+            f'<div class="ret2-src">出典：{esc(ra.get("source") or "")}（確認：{esc(ra.get("lastVerified") or "")}）</div></div>'
+        )
+    if not cards:
+        return ""
+    return f'\n  <div class="ret2"><div class="ret2-h">{RET_LINK_ICON}縦走コースの帰り方</div>{"".join(cards)}</div>'
+
+
 def render_returns(mt):
     """縦走のあとの帰り方（routes[].returnAccess。下りる所から最寄りの鉄道の駅まで。2026-11-09〜。運営者の指示）"""
+    if mt.get("id") in RET_V2:
+        return render_returns_v2(mt)
     items = []
     for i, r in enumerate(mt.get("routes") or [], 1):
         ra = r.get("returnAccess")

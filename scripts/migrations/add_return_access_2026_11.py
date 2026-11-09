@@ -29,11 +29,13 @@ def L(station, icon=None, line=None, minutes=None, fare=None):
     return {'station': station, 'method': {'icon': icon, 'line': line}, 'durationMin': minutes, 'fareYen': fare}
 
 
-def R(legs, last=None, note=None, source=YAHOO, search=None):
-    o = {'legs': legs, 'source': source, 'lastVerified': CHECKED}
+def R(legs, last=None, note=None, source=YAHOO, search=None, day=DAY, timetable=None, checked=CHECKED):
+    o = {'legs': legs, 'source': source, 'lastVerified': checked}
+    if timetable:
+        o['timetableUrl'] = timetable
     if last:
         o['lastBus'] = last
-        o['lastBusDay'] = DAY
+        o['lastBusDay'] = day
     if note:
         o['note'] = note
     if search:
@@ -69,7 +71,9 @@ RET = {
     ('makuyama', '幕山登山口〜幕山〜南郷山〜吉浜（縦走）'):
         R([L('吉浜', 'walk', '徒歩', 21), L('湯河原駅')], search=('神奈川県足柄下郡湯河原町吉浜', '湯河原')),
     ('kumotori', '鴨沢〜七ツ石山〜雲取山〜白岩山〜三峯神社（縦走・1泊2日）'):
-        R([L('三峯神社', 'bus', '西武バス', 52, 800), L('三峰口駅')], '16:30', search=('三峯神社', '三峰口')),
+        R([L('三峯神社', 'bus', '西武バス「三峯神社線」', 52, 800), L('三峰口駅')], '16:30', search=('三峯神社', '三峰口'),
+          day='平日・土日祝とも', note='紅葉の時期・連休は大幅な遅れや特別ダイヤあり',
+          source='西武バス「三峯神社線」の運行予定時刻表・運賃表', timetable='https://www.seibubus.co.jp/rosen/mitsumine/', checked='2026-11-10'),
     ('amagi', '天城縦走登山口〜万二郎岳〜万三郎岳〜八丁池〜八丁池口（縦走）'):
         R([L('八丁池口', 'bus', '東海バス（修善寺駅行き）', 73, 1850), L('修善寺駅')], '15:42', search=('八丁池口', '修善寺')),
     ('amagi', '天城縦走登山口〜万三郎岳〜八丁池〜天城峠（縦走）'):

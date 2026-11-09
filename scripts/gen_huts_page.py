@@ -60,8 +60,13 @@ def place_text(h):
         kind = '山頂の近く'
     else:
         # 登山口の近くかどうか：地図ボタンの行き先（gmapUrl の座標＝登山口・駐車場）から1km以内
+        # 車で行けない登山口（広河原・椹島など）は trailheadLatLng に別に持つ（地図ボタンは手前の駐車場）
         g = re.search(r'query=(-?[\d.]+)%2C(-?[\d.]+)', m.get('gmapUrl') or '')
-        if g and _km(c['lat'], c['lng'], float(g.group(1)), float(g.group(2))) <= 1 and d > 1.5:
+        pts = [(float(g.group(1)), float(g.group(2)))] if g else []
+        th = m.get('trailheadLatLng') or {}
+        if th.get('lat') and th.get('lng'):
+            pts.append((th['lat'], th['lng']))
+        if any(_km(c['lat'], c['lng'], a, b) <= 1 for a, b in pts) and d > 1.5:
             kind = '登山口の近く'
         elif d > 1.5 or (low is not None and low > 400):
             kind = '山頂から離れた場所（登山道の途中など）'
