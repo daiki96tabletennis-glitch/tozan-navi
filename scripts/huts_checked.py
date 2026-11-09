@@ -61,6 +61,13 @@ SEASON.update({
 })
 
 CAPACITY = {
+    # 2026-11-09：ChatGPT の監査の指摘を公式で確かめた
+    '広河原山荘': {'value': 101, 'text': '101人', 'note': '施設の収用人員（2021年10月竣工の新しい山荘）', 'source': 'https://ykbus.jp/hirogawarasansou/', 'checkedAt': '2026-11-09'},
+    '北岳山荘': {'value': 80, 'text': '80人', 'note': '収容人員', 'source': 'https://kitadake.ashiyasu.com/about/outline/', 'checkedAt': '2026-11-09'},
+    '北岳肩の小屋': {'value': 80, 'text': '80人', 'note': '1日の宿泊予約の上限', 'source': 'https://katanokoya.com/stay/', 'checkedAt': '2026-11-09'},
+    '蓼科山頂ヒュッテ': {'value': 33, 'text': '33人', 'note': '大部屋20人・個室3室（4・4・5人）', 'source': 'https://www.tateshinayama.com/plan', 'checkedAt': '2026-11-09'},
+    '七ツ石小屋': {'value': 10, 'text': '10人', 'note': '小屋泊の定員。テント場は別', 'source': 'https://nanatsuishigoya.com/%e5%b0%8f%e5%b1%8b%e6%b3%8a/', 'checkedAt': '2026-11-09'},
+    '萬岳荘': {'value': None, 'text': '宿泊部屋4室', 'note': '相部屋になることがある。人数の記載なし', 'source': 'https://bangakusou.wixsite.com/home/blank-1', 'checkedAt': '2026-11-09'},
     '硫黄岳山荘': {'value': 80, 'note': '受け入れをコロナ前の半分以下に制限', 'source': 'https://iodake.jp/sanso/'},
     '中岳避難小屋': {'value': 5, 'source': TF},
     '赤石岳避難小屋': {'value': 10, 'source': TF},
@@ -145,6 +152,25 @@ for _n in ['涸沢小屋', '常念小屋', '蝶ヶ岳ヒュッテ', '冷池山�
     CAPACITY[_n]['checkedAt'] = '2026-10-21'
 for _n in ['穂高岳山荘', '燕山荘', '村営白馬岳頂上宿舎', '村営天狗山荘', '村営八方池山荘', '鷲が峰ひゅって', '女人堂（金剛堂）', '元祖七合目 山口山荘', '赤岳鉱泉', '行者小屋']:
     CAPACITY[_n]['checkedAt'] = '2026-10-21'
+
+
+# 山小屋の公式サイトに書いてある標高（2026-11-09〜）。ページの「標高」は ここ → OpenStreetMap の値 → 出典の「標高◯m」の順に使う
+# （地図の値と公称がずれる小屋がある。富士宮口の胸突山荘は地図が3,550m、公式は約3,590m）。一律には直さず、公式で確かめた小屋だけ書く
+ELEVATION = {
+    '富士宮口九合五勺 胸突山荘': {'value': 3590, 'source': 'http://munatsuki.com/'},
+    '北岳肩の小屋': {'value': 3011, 'source': 'https://katanokoya.com/'},
+    '三伏峠小屋': {'value': 2580, 'source': 'http://sanpukutouge.com/'},
+    '美濃戸山荘': {'value': 1760, 'source': 'http://www.yatsugatake.gr.jp/'},
+}
+
+
+# 自分の公式サイトが無い小屋に出す、自治体・観光協会の案内のページ（2026-11-09〜）。ページでは「公式の案内（◯◯）」のボタン
+INFO_URL = {
+    '餓鬼岳小屋': ('https://kanko-omachi.gr.jp/special-mountain/', '大町市観光協会'),
+    '夜叉神峠小屋': ('https://minami-alpskankou.jp/?page_id=5607', '南アルプス市観光協会'),
+    '越百小屋': ('https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html', '長野県'),
+    '赤岳山荘': ('https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html', '長野県'),
+}
 
 
 def apply(h):

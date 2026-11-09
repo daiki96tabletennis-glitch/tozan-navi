@@ -169,7 +169,8 @@ BOOKING_EXTRA.update({
     '栂池山荘': {'m': ['Web（公式サイト）', '電話（090-7708-6341）'], 'src': 'https://www.tsugaikesansou.jp/'},
     '聖光小屋': {'m': ['電話（できる限り1週間前までに）'], 'src': 'https://seikougoya.info/'},
     '空木駒峰ヒュッテ': {'m': ['メール（宿泊予約メール）'], 'r': True, 'src': 'http://www.komaho.net/hutte/utsugi_hutte1.html'},
-    '萬岳荘': {'m': ['電話', 'メール'], 'r': True, 'src': 'https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html'},
+    # 2026-11-09：公式の宿泊のページに予約フォームがあり、電話は12:00〜13:00だけ（ChatGPT の指摘を公式で確かめた）
+    '萬岳荘': {'m': ['Web（予約フォーム）', '電話（12:00〜13:00のみ）', 'メール'], 'r': True, 'src': 'https://bangakusou.wixsite.com/home/stay-camp'},
     'ヒュッテみさやま': {'m': ['Web（公式サイトの予約）'], 'src': 'https://huttemisayama.net/stay/'},
     '介山荘': {'m': ['電話'], 'u': True},
     '白山南竜山荘': {'s': '4月1日から（受付は10月15日まで）', 'm': ['電話（予約センター）', 'FAX']},
@@ -181,7 +182,11 @@ BOOKING_EXTRA.update({
 BOOKING_EXTRA.update({   # 2026-10-21：「確認不能829項目の再調査」の指摘を目印に、原文で確認
     '村営八方池山荘': {'s': '随時受付', 'm': ['電話（八方池山荘へ直接）'], 't': '0261-72-2855（八方池山荘）', 'src': 'http://yamagoya.hakubakousha.com/facility/price/'},
     '空木駒峰ヒュッテ': {'m': ['メール（宿泊予約メール）'], 'r': True, 't': '電話番号の記載なし（宿泊の予約はメール alpees@outlook.jp）', 'src': 'http://www.komaho.net/hutte/utsugi_hutte1.html'},
-    '蓼科山頂ヒュッテ': {'sClear': True, 'u': True, 'm': ['Web（予約フォーム。宿泊の2日前まで）', '電話']},
+    # 2026-11-09：公式の予約のページに2027年度の受付開始日が出た
+    '蓼科山頂ヒュッテ': {'s': '一般は4月1日から、10名以上の団体は1月1日から（2027年度）', 'm': ['Web（予約フォーム。宿泊の2日前まで）', '電話'],
+                 'src': 'https://www.tateshinayama.com/reservation'},
+    # 2026-11-09：大部屋・テント泊は南ぷすリザーブ、個室は山梨交通トラベル事業部への電話（公式）
+    '広河原山荘': {'m': ['Web（南ぷすリザーブ。大部屋・テント泊）', '電話（個室は山梨交通トラベル事業部 055-222-1300）'], 'r': True},
     '蓼科山荘': {'s': '宿泊日の2か月前の同じ日の7:00から（2026年度の受付開始は4月2日10:00）', 'm': ['Web（やまたん）のみ（メール・電話の予約は受け付けない）'], 'src': 'https://www.yamatan.net/hut/tateshinasanso'},
     '七合目トモエ館': {'s': '5月11日 0:00ごろから（2026年。ネット予約のみ）', 'm': ['Webのみ'], 'src': 'https://tomoekan.com/'},
     '本八合目トモエ館': {'s': '5月11日 0:00ごろから（2026年。ネット予約のみ）', 'm': ['Webのみ'], 'src': 'https://tomoekan.com/'},

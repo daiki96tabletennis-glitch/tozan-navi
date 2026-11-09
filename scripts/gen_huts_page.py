@@ -17,6 +17,7 @@ import calendar, math, sys
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 import huts_season
 import huts_rules
+import huts_checked
 from huts_features import FEATURES
 assert set(FEATURES) <= set(h['name'] for h in H), set(FEATURES) - set(h['name'] for h in H)
 _sp = os.path.join(ROOT, 'data', 'summit_coords.json')
@@ -50,10 +51,7 @@ def place_text(h):
         return None
     d, i = best
     m = M[i]
-    ele = c.get('ele')
-    if ele is None:
-        mm = re.search(r'標高\s*([\d,]{3,5})\s*m', h.get('location') or '')
-        ele = int(mm.group(1).replace(',', '')) if mm else None
+    ele = hut_ele(h)                         # 公式の標高 → 地図 → 出典の順（「山頂より約◯m低い」もこの値で計算する）
     low = (m['elevation'] - ele) if ele else None
     dist = '%sの山頂から直線で約%s' % (m['name'], ('%dm' % (round(d * 10) * 100)) if d < 1 else ('%.1fkm' % d))
     if d <= 0.3:
@@ -78,7 +76,9 @@ def place_text(h):
 
 
 def hut_ele(h):
-    """山小屋の標高（OpenStreetMap の値、無ければ出典の「標高◯m」）。分からなければ None"""
+    """山小屋の標高（公式サイトの標高 huts_checked.ELEVATION → OpenStreetMap の値 → 出典の「標高◯m」）。分からなければ None"""
+    if h['name'] in huts_checked.ELEVATION:
+        return int(huts_checked.ELEVATION[h['name']]['value'])
     c = COORDS.get(h['name']) or {}
     if c.get('ele'):
         return int(c['ele'])
@@ -244,7 +244,8 @@ for h in H:
         m_html = fact('予約方法', '<span class="mt">予約なし</span>', E(none))
     elif methods:
         tags = ''.join('<span class="mt">%s</span>' % E(split_note(x)[0]) for x in methods)
-        subs = '／'.join(E(split_note(x)[1]) for x in methods if split_note(x)[1])
+        # 注記はどの方法の話か分かるように「方法：注記」で出す（前は注記だけを並べ、七ツ石小屋で「小屋泊／テント泊は『とっとこ』」と読めた。2026-11-09）
+        subs = '／'.join(E(split_note(x)[0] + '：' + split_note(x)[1]) for x in methods if split_note(x)[1])
         m_html = fact('予約方法', tags, subs or None)
     else:
         m_html = fact('予約方法', NA)
@@ -276,6 +277,9 @@ for h in H:
     links = []
     if h.get('officialUrl'):
         links.append('<a class="btn" href="%s" target="_blank" rel="noopener">公式サイト</a>' % E(h['officialUrl'].strip()))
+    elif h['name'] in huts_checked.INFO_URL:
+        iu, il = huts_checked.INFO_URL[h['name']]
+        links.append('<a class="btn" href="%s" target="_blank" rel="noopener">公式の案内（%s）</a>' % (E(iu), E(il)))
     if h.get('bookingSourceUrl') and h['bookingSourceUrl'] != h.get('officialUrl') and 'yamatan.net' in h['bookingSourceUrl']:
         links.append('<a class="btn btn2" href="%s" target="_blank" rel="noopener">予約サイト</a>' % E(h['bookingSourceUrl']))
     detail = []

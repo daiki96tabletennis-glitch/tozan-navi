@@ -2124,7 +2124,8 @@
       "openText": "2026/4/29～11/24 事前予約制（電話かメール bangakusou@gmail.com）",
       "bookingStart": null,
       "bookingMethods": [
-        "電話",
+        "Web（予約フォーム）",
+        "電話（12:00〜13:00のみ）",
         "メール"
       ],
       "bookingRequired": true,
@@ -2134,7 +2135,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
       "sourceUpdated": "2026-06-02",
       "lastVerified": "2026-10-21",
-      "bookingSourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
+      "bookingSourceUrl": "https://bangakusou.wixsite.com/home/stay-camp",
       "capacityRef": null,
       "capacityRefUrl": null,
       "auto": {
@@ -2156,6 +2157,13 @@
         "note": "事前予約制（長野県の山小屋のページの2026年の記載）",
         "source": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_cyuualps.html",
         "checkedAt": "2026-10-21"
+      },
+      "capacityFix": {
+        "value": null,
+        "text": "宿泊部屋4室",
+        "note": "相部屋になることがある。人数の記載なし",
+        "source": "https://bangakusou.wixsite.com/home/blank-1",
+        "checkedAt": "2026-11-09"
       }
     },
     {
@@ -2170,7 +2178,7 @@
       "officialUrl": "http://tateshinayama.com/",
       "tel": "049-266-9264",
       "openText": "2026/4/25〜10/31 ＊12/31(木)の年越し宿泊の予約受付は10/1（木）夜8時より開始",
-      "bookingStart": null,
+      "bookingStart": "一般は4月1日から、10名以上の団体は1月1日から（2027年度）",
       "bookingMethods": [
         "Web（予約フォーム。宿泊の2日前まで）",
         "電話"
@@ -2182,7 +2190,7 @@
       "sourceUrl": "https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/sotaikyo/yamagoya/yamagoya_yatsugatake.html",
       "sourceUpdated": "2026-06-04",
       "lastVerified": "2026-10-21",
-      "bookingSourceUrl": "http://tateshinayama.com/",
+      "bookingSourceUrl": "https://www.tateshinayama.com/reservation",
       "capacityRef": 70,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=799",
       "auto": {
@@ -2200,7 +2208,13 @@
         "source": "https://www.tateshinayama.com/newyear",
         "checkedAt": "2026-10-21"
       },
-      "bookingStartUnstated": true
+      "capacityFix": {
+        "value": 33,
+        "text": "33人",
+        "note": "大部屋20人・個室3室（4・4・5人）",
+        "source": "https://www.tateshinayama.com/plan",
+        "checkedAt": "2026-11-09"
+      }
     },
     {
       "id": "hut-10eff39f",
@@ -3292,12 +3306,13 @@
       ],
       "otherMountains": [],
       "location": null,
-      "officialUrl": "http://yamanashikotsu.co.jp/hirogawarasansou/",
+      "officialUrl": "https://ykbus.jp/hirogawarasansou/",
       "tel": null,
       "openText": "2026年の営業：6/26～11/3",
       "bookingStart": "4月1日 10:00から（2026年）",
       "bookingMethods": [
-        "Web（南ぷすリザーブ）"
+        "Web（南ぷすリザーブ。大部屋・テント泊）",
+        "電話（個室は山梨交通トラベル事業部 055-222-1300）"
       ],
       "bookingRequired": true,
       "capacity": null,
@@ -3317,6 +3332,13 @@
           "month": 4,
           "day": 1
         }
+      },
+      "capacityFix": {
+        "value": 101,
+        "text": "101人",
+        "note": "施設の収用人員（2021年10月竣工の新しい山荘）",
+        "source": "https://ykbus.jp/hirogawarasansou/",
+        "checkedAt": "2026-11-09"
       }
     },
     {
@@ -3392,6 +3414,13 @@
         "note": "10/24の宿泊まで（公式）",
         "source": "https://katanokoya.com/",
         "checkedAt": "2026-10-21"
+      },
+      "capacityFix": {
+        "value": 80,
+        "text": "80人",
+        "note": "1日の宿泊予約の上限",
+        "source": "https://katanokoya.com/stay/",
+        "checkedAt": "2026-11-09"
       }
     },
     {
@@ -3430,6 +3459,13 @@
           "month": 4,
           "day": 1
         }
+      },
+      "capacityFix": {
+        "value": 80,
+        "text": "80人",
+        "note": "収容人員",
+        "source": "https://kitadake.ashiyasu.com/about/outline/",
+        "checkedAt": "2026-11-09"
       }
     },
     {
@@ -3441,7 +3477,7 @@
       ],
       "otherMountains": [],
       "location": null,
-      "officialUrl": "https://daimonzawa.jp/",
+      "officialUrl": "https://www.daimonzawa.jp/news/index.html",
       "tel": null,
       "openText": "2026年の営業：7/上～9/下",
       "bookingStart": "個人は4月25日 9:30から、8人以上の団体は4月20日 9:30から（2026年）",
@@ -4655,6 +4691,13 @@
           "value": "◆◇◆◇ 予約必須 ◇◆◇◆ 🔴 一日 １０名様まで 必ず前日15:00までに予約をしてください。 🔴 当日予約は承っておりません。 🔴 予約のない方が、止むを得ず急遽宿泊する場合 小屋泊＋2000円の手数料をいただきます。（2025/4/29より） 🔴 キャンセル料はいただいておりません。 悪天候が予想される時などは無理せずキャンセルをご検討ください。 🔴 キャンセルのご連絡はなるべく早めに、できれば前々日の15:00までにお願いします。 空いた枠は、キャンセル待ちをしている方に使っていただける可能性があります。 小さな小屋ですが宿泊ご希望の方がたくさんいらっしゃる状況です。どうぞご理解ください。 🔴 キャンセルは当日の連絡になっても必ずご一報ください。 ご連絡なしの不着の場合、心配してこちらから連絡を差し上げる場合もあります。 🔴 以下のようなご予約はお断りしております。 ・到着予想時刻が日没を過ぎる予定の方 ・到着時刻が予想できない、到着できるかどうか不明という方 お電話・お問い合わせは 090-8815-1597 受付時間 9:00〜15:00 🟢 お電話では ・ご氏名 ・人数 ・入山口 ・到着予想時間 ・当日の連絡先(電話番号) (場合によっては緊急連絡先も) をお訊ねします。 ",
           "source": "https://www.yamatan.net/hut/nanatsuishigoya"
         }
+      },
+      "capacityFix": {
+        "value": 10,
+        "text": "10人",
+        "note": "小屋泊の定員。テント場は別",
+        "source": "https://nanatsuishigoya.com/%e5%b0%8f%e5%b1%8b%e6%b3%8a/",
+        "checkedAt": "2026-11-09"
       }
     },
     {
@@ -5129,7 +5172,7 @@
       ],
       "otherMountains": [],
       "location": null,
-      "officialUrl": "http://kitatan.com/hirutop.html",
+      "officialUrl": "https://kitatan.com/hirutop",
       "tel": null,
       "openText": "2026年の営業：通年",
       "bookingStart": null,
@@ -5139,7 +5182,7 @@
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": "http://kitatan.com/hirutop.html",
+      "bookingSourceUrl": "https://kitatan.com/hirutop",
       "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=2852",
       "sourceUpdated": null,
       "lastVerified": "2026-10-14",
@@ -6694,7 +6737,7 @@
         }
       ],
       "location": null,
-      "officialUrl": "http://www.myoko.tv/kouyaike/",
+      "officialUrl": "https://myokotourism.jp/kouyaike/",
       "tel": null,
       "openText": "2026年：5/1～10/25",
       "bookingStart": "4月1日 9:00から（2026年度。5月以降は利用月の2か月前の1日 0:00から）",
@@ -6705,7 +6748,7 @@
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": "http://www.myoko.tv/kouyaike/",
+      "bookingSourceUrl": "https://myokotourism.jp/kouyaike/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=464",
       "sourceUpdated": null,
       "lastVerified": "2026-10-21",
@@ -6759,7 +6802,7 @@
       ],
       "otherMountains": [],
       "location": null,
-      "officialUrl": "https://www.city.kitakata.fukushima.jp/soshiki/sangyo-y/43737.html",
+      "officialUrl": "https://cms2.town.nishiaizu.fukushima.jp/site/kanko/797.html",
       "tel": null,
       "openText": "例年 通年（7～8月と9月の金・土・日・祝日は管理人在駐）",
       "bookingStart": null,
@@ -6839,7 +6882,7 @@
       ],
       "otherMountains": [],
       "location": null,
-      "officialUrl": "https://www.city.kitakata.fukushima.jp/soshiki/sangyo-y/43737.html",
+      "officialUrl": "https://cms2.town.nishiaizu.fukushima.jp/site/kanko/797.html",
       "tel": null,
       "openText": "例年 通年（7～8月と9～10/上の金・土・日・祝日は管理人在駐）",
       "bookingStart": null,
@@ -7026,7 +7069,7 @@
       ],
       "otherMountains": [],
       "location": null,
-      "officialUrl": "http://www.ozejin-yamagoya.jp/ozenuma.html",
+      "officialUrl": "https://www.oze-info.jp/ozh_stay/ozenumahutte/",
       "tel": null,
       "openText": "2026年：5/23～10/24",
       "bookingStart": "3月9日から（Webは0:00から。電話の受付開始は、同じお知らせの中に8:00と8:30の両方の記載がある。2026年）",
