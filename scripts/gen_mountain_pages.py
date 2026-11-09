@@ -630,11 +630,13 @@ def _as_panel(card_html, new_cls="acc-sec"):
 
 
 # 代表的な登山ルートで、電車・バスで行ける場所から歩き始めるコース（routes[].byTrain）の印（2026-11-09〜）
-ROUTE_TRAIN_ICON = ('<svg class="rl-train" width="16" height="16" viewBox="0 0 24 24" role="img" aria-label="電車・バスで行けるコース" '
-                    'style="vertical-align:-2px;margin-right:5px;color:#4e6535;flex-shrink:0">'
-                    '<path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/>'
-                    '<rect x="9" y="9.5" width="3" height="3" fill="white"/>'
-                    '<line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>')
+ROUTE_TRAIN_ICON = ('<span class="rl-train" role="img" aria-label="電車・バスで行けるコース" '
+                    'style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;'
+                    'background:#eef2e6;border:1.5px solid #4e6535;color:#4e6535;margin-left:6px;vertical-align:-5px;flex-shrink:0">'
+                    '<svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true">'
+                    '<path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="#eef2e6"/>'
+                    '<rect x="9" y="9.5" width="3" height="3" fill="#eef2e6"/>'
+                    '<line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>')
 
 
 def render_access_tabs(mt):
@@ -1017,14 +1019,14 @@ def render_routes(mt):
             waypoints_html = f'<div class="rl-waypoints">{esc(r["waypoints"])}</div>'
         items.append(
             f'<div class="rl-item"><div class="rl-num">{i}</div><div class="rl-content">'
-            f'<div class="rl-name">{ROUTE_TRAIN_ICON if r.get("byTrain") else ""}{name}</div>{ssot_html}{waypoints_html}'
+            f'<div class="rl-name">{name}{ROUTE_TRAIN_ICON if r.get("byTrain") else ""}</div>{ssot_html}{waypoints_html}'
             f'<div class="rl-chips">{"".join(chips)}</div></div></div>'
         )
     items_html = "".join(items)
     train_note = ""
     if any(r.get("byTrain") for r in routes):
         train_note = ('<p style="font-size:11px;color:#9a9088;margin-top:8px;line-height:1.6;">'
-                      + ROUTE_TRAIN_ICON + '：アクセス欄の電車・バスで行ける場所から歩き始めるコース</p>')
+                      + ROUTE_TRAIN_ICON.replace('margin-left:6px', 'margin-right:4px') + '：アクセス欄の電車・バスで行ける場所から歩き始めるコース</p>')
     coeff_note = ""
     if any(r.get("coeff") is not None for r in routes):
         coeff_note = ('<p style="font-size:11px;color:#9a9088;margin-top:8px;line-height:1.6;">'
