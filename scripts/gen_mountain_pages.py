@@ -629,6 +629,14 @@ def _as_panel(card_html, new_cls="acc-sec"):
     return re.sub(r'^<div class="card" id=', f'<div class="{new_cls}" id=', card_html, count=1)
 
 
+# 代表的な登山ルートで、電車・バスで行ける場所から歩き始めるコース（routes[].byTrain）の印（2026-11-09〜）
+ROUTE_TRAIN_ICON = ('<svg class="rl-train" width="16" height="16" viewBox="0 0 24 24" role="img" aria-label="電車・バスで行けるコース" '
+                    'style="vertical-align:-2px;margin-right:5px;color:#4e6535;flex-shrink:0">'
+                    '<path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/>'
+                    '<rect x="9" y="9.5" width="3" height="3" fill="white"/>'
+                    '<line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>')
+
+
 def render_access_tabs(mt):
     """電車・バスと車（車の時間・駐車場）を1つの欄にまとめ、タブで切り替える。登山口と前泊の宿はタブの下（2026-11-05〜。運営者の指示）。
     JavaScript が動かないときは両方とも出る（隠すのは ACC_SCRIPT）"""
@@ -1009,10 +1017,14 @@ def render_routes(mt):
             waypoints_html = f'<div class="rl-waypoints">{esc(r["waypoints"])}</div>'
         items.append(
             f'<div class="rl-item"><div class="rl-num">{i}</div><div class="rl-content">'
-            f'<div class="rl-name">{name}</div>{ssot_html}{waypoints_html}'
+            f'<div class="rl-name">{ROUTE_TRAIN_ICON if r.get("byTrain") else ""}{name}</div>{ssot_html}{waypoints_html}'
             f'<div class="rl-chips">{"".join(chips)}</div></div></div>'
         )
     items_html = "".join(items)
+    train_note = ""
+    if any(r.get("byTrain") for r in routes):
+        train_note = ('<p style="font-size:11px;color:#9a9088;margin-top:8px;line-height:1.6;">'
+                      + ROUTE_TRAIN_ICON + '：アクセス欄の電車・バスで行ける場所から歩き始めるコース</p>')
     coeff_note = ""
     if any(r.get("coeff") is not None for r in routes):
         coeff_note = ('<p style="font-size:11px;color:#9a9088;margin-top:8px;line-height:1.6;">'
@@ -1024,7 +1036,7 @@ def render_routes(mt):
         'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
         '<circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/>'
         '<path d="M5 17 C5 12 9 12 9 9 C9 6 12 6 12 9 C12 13 19 13 19 7"/></svg>'
-        f'代表的な登山ルート</h2><div class="route-list-c">{items_html}</div>{coeff_note}</div>'
+        f'代表的な登山ルート</h2><div class="route-list-c">{items_html}</div>{train_note}{coeff_note}</div>'
     )
 
 
