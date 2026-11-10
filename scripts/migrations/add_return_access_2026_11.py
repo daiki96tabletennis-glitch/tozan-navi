@@ -156,6 +156,38 @@ RET = {
 }
 
 
+# 公式の時刻表のページ（2026-11-10。新しい形のカードの「公式時刻表」ボタン）。このサイトの別の山の電車・バス欄で使っている、
+# 同じ会社・同じ路線の時刻表のリンク（どれも 2026-11 のリンク切れの見直し済み）。キーは (山ID, 帰り方の最初の地点)
+NISITOKYO_OKUTAMA = 'https://www.nisitokyobus.co.jp/rosen/noriba/okutama.html'
+NISITOKYO_POCKET = 'https://www.nisitokyobus.co.jp/rosen/pocket.html'
+HAYAKAWA = 'https://www.town.hayakawa.yamanashi.jp/people/taffic.html'
+TOBU_NIKKO = 'https://www.tobu-bus.com/pc/area/nikko/'
+TIMETABLE = {
+    ('amagi', '八丁池口'): 'https://www.tokaibus.jp/rosen/timetable.html',
+    ('amagi', '天城峠'): 'https://www.tokaibus.jp/rosen/timetable.html',
+    ('nantaisan', '三本松'): TOBU_NIKKO,
+    ('nakimushiyama', '日光市街（安川町）'): TOBU_NIKKO,
+    ('kitadake', '奈良田温泉'): HAYAKAWA, ('ainodake', '奈良田温泉'): HAYAKAWA, ('noutori', '奈良田温泉'): HAYAKAWA,
+    ('nanaitsurasan', '七面山登山口・赤沢入口'): HAYAKAWA,
+    ('aizu_koma', 'キリンテ'): 'https://www.aizubus.com/rosen',
+    ('hiuchigatake', '沼山峠'): 'https://www.aizubus.com/rosen',
+    ('takao', '小仏'): 'https://transfer.navitime.biz/bus-navi/pc/transfer/DepArrTimeList?snode=00020348&gnode=00020514',
+    ('kintoki', '金時登山口'): 'https://odakyu-highway.jp/hakone/',
+    ('yakedake', '上高地バスターミナル'): 'https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/',
+    ('goryudake', '八方池山荘'): 'https://www.alpico.co.jp/traffic/local/hakuba/',
+    ('karamatsu', '猿倉'): 'https://www.alpico.co.jp/traffic/local/hakuba/sarukura/',
+    ('hijiridade', '椹島ロッヂ'): 'https://www.t-forest.com/alpsinfo/bus/',
+    ('harinokidake', '扇沢（柏原新道登山口）'): 'https://www.alpico.co.jp/traffic/local/hakuba/ogizawa/',
+    ('noguchigoro', '新穂高温泉'): 'https://www.nouhibus.co.jp/route_bus/shinhotaka-line/',
+    ('mitakesan', 'つるつる温泉'): NISITOKYO_POCKET, ('hinodesaan', 'つるつる温泉'): NISITOKYO_POCKET,
+    ('shodosan_namatate', '陣馬高原下'): NISITOKYO_POCKET, ('shodosan_namatate', '上川乗'): NISITOKYO_POCKET,
+    ('sengenrei', '檜原温泉センター数馬の湯'): NISITOKYO_POCKET,
+    ('takanosuyama', '倉戸口'): NISITOKYO_OKUTAMA, ('gozenyama', '境橋'): NISITOKYO_OKUTAMA,
+    ('juunigadake', '根場入口'): 'https://www.fujikyubus.co.jp/shuyu',
+    ('dodairasan', '白石車庫'): 'https://www.vill.higashichichibu.saitama.jp/soshiki/00/higashichichibumurarosennbasujikokuhyouunnchinnhyou.html',
+}
+
+
 def main():
     M = json.load(open(PATH, encoding='utf-8'))
     by = {m['id']: m for m in M}
@@ -172,9 +204,14 @@ def main():
             v = RET.get((m['id'], r['name']))
             if v:
                 r['returnAccess'] = json.loads(json.dumps(v))
+                tt = TIMETABLE.get((m['id'], v['legs'][0]['station']))
+                if tt and not r['returnAccess'].get('timetableUrl'):
+                    r['returnAccess']['timetableUrl'] = tt
                 hit.add((m['id'], r['name']))
             else:
                 r.pop('returnAccess', None)
+    used = {(mid, v['legs'][0]['station']) for (mid, _), v in RET.items()}
+    assert set(TIMETABLE) <= used, set(TIMETABLE) - used
     missing = set(RET) - hit
     assert not missing, missing
     json.dump(M, open(PATH, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)

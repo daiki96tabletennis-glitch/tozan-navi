@@ -558,8 +558,7 @@ def render_train_access(mt):
     return f'<div class="card" id="sec-train">\n  {ts}{ret}\n</div>'
 
 
-# 新しい形の帰り方のカード（運営者の案。2026-11-10 にまず雲取山だけで試す）
-RET_V2 = {"kumotori"}
+# 帰り方のカード（運営者の案。2026-11-10 に雲取山で試し、同じ日に全部の山を新しい形にした）
 RET_LINK_ICON = ('<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align:-3px;margin-right:5px" fill="none" '
                  'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.5"/>'
                  '<circle cx="18" cy="6" r="2.5"/><path d="M8.2 16.2 C12 14 9 9.5 15.8 7.8"/></svg>')
@@ -586,7 +585,8 @@ def _ret_leg(leg, is_last):
     out = [f'<div class="ts-step"><div class="{node_cls}"><div class="ts-station">{esc(leg["station"])}</div></div>']
     meth = leg.get("method")
     if meth:
-        icon = TRANSIT_ICON_SVG.get(meth.get("icon"), TRANSIT_ICON_SVG["train"])
+        ic = {"cable": "ropeway"}.get(meth.get("icon"), meth.get("icon"))
+        icon = TRANSIT_ICON_SVG.get(ic, TRANSIT_ICON_SVG["train"])
         bits = []
         if leg.get("durationMin"):
             bits.append(f'約{fmt_min(leg["durationMin"])}')
@@ -609,7 +609,9 @@ def render_returns_v2(mt):
         last = ""
         if ra.get("lastBus"):
             day = f'<div class="ret2-day">{esc(ra.get("lastBusDay") or "")}</div>' if ra.get("lastBusDay") else ""
-            last = f'<div class="ret2-last">{RET_CLOCK_ICON}<div><b>最終バス {esc(ra["lastBus"])}発</b>{day}</div></div>'
+            first = next((l["method"].get("icon") for l in legs if l.get("method") and l["method"].get("icon") not in ("walk", "taxi")), "bus")
+            word = "最終バス" if first == "bus" else "最終便"
+            last = f'<div class="ret2-last">{RET_CLOCK_ICON}<div><b>{word} {esc(ra["lastBus"])}発</b>{day}</div></div>'
         note = f'<div class="ret2-note">{esc(ra["note"])}</div>' if ra.get("note") else ""
         links = []
         if ra.get("searchUrl"):
@@ -631,8 +633,7 @@ def render_returns_v2(mt):
 
 def render_returns(mt):
     """縦走のあとの帰り方（routes[].returnAccess。下りる所から最寄りの鉄道の駅まで。2026-11-09〜。運営者の指示）"""
-    if mt.get("id") in RET_V2:
-        return render_returns_v2(mt)
+    return render_returns_v2(mt)
     items = []
     for i, r in enumerate(mt.get("routes") or [], 1):
         ra = r.get("returnAccess")
