@@ -412,7 +412,16 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "丹沢山",
     "metaDescriptionManual": "丹沢山（1,567m）はコース定数28〜35の中級者向け日帰りコース。渋沢駅からバスで大倉バス停へ、塔ノ岳経由で登る電車アクセスが人気。ブナ原生林の絶景が広がる百名山。",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "大倉",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "fuji",
@@ -1018,7 +1027,16 @@
       "lastVerified": "2026-10-19"
     },
     "coeffFromRoutes": true,
-    "representativeCoeff": 33
+    "representativeCoeff": 33,
+    "parkingTrailheads": [
+      {
+        "name": "富士宮口五合目",
+        "routes": [
+          1
+        ],
+        "by": "マイカー規制の期間はシャトルバスに乗り換え"
+      }
+    ]
   },
   {
     "id": "tsukuba",
@@ -1422,6 +1440,15 @@
       "/images/mountains/tsukuba/image-20261105102114333-qzqmn.webp",
       "/images/mountains/tsukuba/image-20261105102114334-ifh62.webp",
       "/images/mountains/tsukuba/image-20261105102114335-28pxa.webp"
+    ],
+    "parkingTrailheads": [
+      {
+        "name": "筑波山神社",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
     ]
   },
   {
@@ -1904,7 +1931,17 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "雲取山",
     "metaDescriptionManual": "雲取山（2,017m）は東京都最高峰の百名山。日帰りは健脚向き、初心者は雲取山荘1泊がおすすめ。鴨沢ルートの所要時間、コース定数43〜54、奥多摩駅からのバスアクセスを解説。",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "鴨沢（小袖登山口）",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "amagi",
@@ -2376,7 +2413,18 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "天城山",
     "metaAuto": true,
-    "mapTargetNote": "地図ボタンは駐車場（天城高原ハイカー専用駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認"
+    "mapTargetNote": "地図ボタンは駐車場（天城高原ハイカー専用駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認",
+    "parkingTrailheads": [
+      {
+        "name": "天城縦走登山口（天城高原）",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "okutama",
@@ -2932,7 +2980,17 @@
     "dlReasonsCheckedAt": "2026-10-12",
     "dlNoteHtmlOld": "<p class=\"dl-note\">大菩薩嶺は初〜中級レベル（コース定数22〜34）。代表コースの上日川峠〜大菩薩峠周回は4時間・9.0km・標高差+600m。登山初心者でも挑戦しやすいレベルです。</p>",
     "coeffFromRoutes": true,
-    "representativeCoeff": 16
+    "representativeCoeff": 16,
+    "parkingTrailheads": [
+      {
+        "name": "上日川峠",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "ryokami",
@@ -3370,7 +3428,16 @@
     "featureCheckedAt": "2026-10-09",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "両神山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "日向大谷口",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kobushigatake",
@@ -3845,7 +3912,17 @@
     "featureCheckedAt": "2026-10-09",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "甲武信ヶ岳",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "毛木平",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "mizugaki",
@@ -4282,7 +4359,17 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "瑞牆山",
     "metaDescriptionManual": "瑞牆山（2,230m）は奇岩・巨石が林立する百名山。瑞牆山荘からの往復コースの所要時間、コース定数24〜25、鎖場の難易度、韮崎駅からのバスアクセスと日帰りプランを解説。",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "瑞牆山荘",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "akagi",
@@ -4773,7 +4860,17 @@
       "https://www.japanesealps.net/100moutains/akagiyama/w_kurobisan/"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">赤城山は初〜中級レベル（コース定数10〜20）。代表コースの黒檜山〜駒ヶ岳周回は3時間30分・6.0km・標高差+500m。登山初心者でも挑戦しやすいレベルです。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">赤城山は初〜中級レベル（コース定数10〜20）。代表コースの黒檜山〜駒ヶ岳周回は3時間30分・6.0km・標高差+500m。登山初心者でも挑戦しやすいレベルです。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "黒檜山登山口",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kinpusan",
@@ -5311,7 +5408,16 @@
       "/images/mountains/kinpusan/image-20260907142545917-42f7s.webp"
     ],
     "coeffFromRoutes": true,
-    "representativeCoeff": 18
+    "representativeCoeff": 18,
+    "parkingTrailheads": [
+      {
+        "name": "大弛峠",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "houou",
@@ -5787,6 +5893,16 @@
     "daytripSources": [
       "https://www.yamakei-online.com/cl_record/detail.php?id=129058",
       "https://yamasugu.com/houousanzan-route/"
+    ],
+    "parkingTrailheads": [
+      {
+        "name": "夜叉神峠登山口",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
     ]
   },
   {
@@ -6249,7 +6365,17 @@
       "342"
     ],
     "volcanoScope": "summit",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "二荒山神社中宮祠（登拝門）",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kitadake",
@@ -6772,7 +6898,18 @@
       "lat": 35.6968864,
       "lng": 138.2715174,
       "name": "広河原"
-    }
+    },
+    "parkingTrailheads": [
+      {
+        "name": "広河原",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": "バスに乗り換え"
+      }
+    ]
   },
   {
     "id": "yatsugatake",
@@ -7318,7 +7455,16 @@
     "metaDescriptionManual": "八ヶ岳の難易度は中〜上級、初心者にはやや厳しい。山梨県・長野県南部、新宿から車で約2時間20分、コース定数40〜42、宿泊推奨。八ヶ岳連峰の最高峰。岩稜帯が続くダイナミックなルート。",
     "metaAuto": true,
     "coeffFromRoutes": true,
-    "representativeCoeff": 32
+    "representativeCoeff": 32,
+    "parkingTrailheads": [
+      {
+        "name": "美濃戸口",
+        "routes": [
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "keirisan",
@@ -8232,7 +8378,16 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "霧ヶ峰（車山）",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "霧ヶ峰（チャプリン）",
+        "routes": [
+          4
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "asama",
@@ -8668,7 +8823,17 @@
       "306"
     ],
     "volcanoScope": "summit",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "車坂峠（高峰高原）",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "tanigawa",
@@ -9222,7 +9387,24 @@
     "metaDescriptionManual": "谷川岳（1,977m）はロープウェイで天神平まで上がれば初心者も挑戦できる百名山。天神尾根コースの所要時間、コース定数18〜42、東京から電車での日帰りプランを解説。",
     "metaAuto": true,
     "coeffFromRoutes": true,
-    "representativeCoeff": 20
+    "representativeCoeff": 20,
+    "parkingTrailheads": [
+      {
+        "name": "天神平",
+        "routes": [
+          1
+        ],
+        "by": "ロープウェイに乗り換え"
+      },
+      {
+        "name": "西黒尾根登山口",
+        "routes": [
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "nasu",
@@ -9721,6 +9903,17 @@
       "/images/mountains/nasu/image-20260907142051656-bdjm6.webp",
       "/images/mountains/nasu/image-20260907142055091-r088c.webp",
       "/images/mountains/nasu/image-20260907142058061-9bpws.webp"
+    ],
+    "parkingTrailheads": [
+      {
+        "name": "峠の茶屋登山口",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
     ]
   },
   {
@@ -10309,7 +10502,16 @@
     "dlReasonsCheckedAt": "2026-10-12",
     "dlNoteHtmlOld": "<p class=\"dl-note\">日光白根山は中〜上級レベル（コース定数21〜31）。代表コースのロープウェイ〜山頂往復は5時間・9.0km・標高差+750m。初心者には難しく、経験が必要です。</p>",
     "coeffFromRoutes": true,
-    "representativeCoeff": 18
+    "representativeCoeff": 18,
+    "parkingTrailheads": [
+      {
+        "name": "丸沼高原ロープウェイ山頂駅",
+        "routes": [
+          1
+        ],
+        "by": "ロープウェイに乗り換え"
+      }
+    ]
   },
   {
     "id": "takeson",
@@ -10606,7 +10808,16 @@
       "https://yamahack.com/2283"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">武尊山は中〜上級レベル（コース定数29〜38）。代表コースの川場スキー場リフト利用ルートは5時間30分・9.0km・標高差+600m。初心者には難しく、経験が必要です。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">武尊山は中〜上級レベル（コース定数29〜38）。代表コースの川場スキー場リフト利用ルートは5時間30分・9.0km・標高差+600m。初心者には難しく、経験が必要です。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "川場スキー場リフト終点",
+        "routes": [
+          2
+        ],
+        "by": "リフトに乗り換え"
+      }
+    ]
   },
   {
     "id": "komagatake",
@@ -11187,7 +11398,16 @@
       "lastVerified": "2026-10-19"
     },
     "coeffFromRoutes": true,
-    "representativeCoeff": 30
+    "representativeCoeff": 30,
+    "parkingTrailheads": [
+      {
+        "name": "北沢峠",
+        "routes": [
+          1
+        ],
+        "by": "南アルプス林道バスに乗り換え"
+      }
+    ]
   },
   {
     "id": "senjogatake",
@@ -11759,7 +11979,16 @@
       "lastVerified": "2026-10-19"
     },
     "coeffFromRoutes": true,
-    "representativeCoeff": 28
+    "representativeCoeff": 28,
+    "parkingTrailheads": [
+      {
+        "name": "北沢峠",
+        "routes": [
+          1
+        ],
+        "by": "南アルプス林道バスに乗り換え"
+      }
+    ]
   },
   {
     "id": "shirouma",
@@ -12337,7 +12566,16 @@
     "metaDescriptionManual": "白馬岳（2,932m）の大雪渓ルートを徹底解説。コース定数35〜55の中〜上級で山小屋泊推奨。新宿から電車＋バスのアクセス、軽アイゼンなど必要装備、ベストシーズンまで紹介。",
     "metaAuto": true,
     "coeffFromRoutes": true,
-    "representativeCoeff": 49
+    "representativeCoeff": 49,
+    "parkingTrailheads": [
+      {
+        "name": "栂池自然園",
+        "routes": [
+          1
+        ],
+        "by": "ゴンドラ・ロープウェイに乗り換え"
+      }
+    ]
   },
   {
     "id": "norikura",
@@ -12980,7 +13218,16 @@
       "linkText": "アルピコ交通 乗鞍山頂シャトルバス",
       "sourceUrl": "https://www.alpico.co.jp/traffic/datas/files/2026/05/06/a973d48ce04cd80479f5d5530b12742189570fac.pdf",
       "lastVerified": "2026-10-19"
-    }
+    },
+    "parkingTrailheads": [
+      {
+        "name": "畳平",
+        "routes": [
+          1
+        ],
+        "by": "シャトルバスに乗り換え"
+      }
+    ]
   },
   {
     "id": "tateyama",
@@ -13463,7 +13710,17 @@
       "linkText": "立山黒部アルペンルートの運賃",
       "sourceUrl": "https://www.alpen-route.com/access_new/fare/person/route_data.json",
       "lastVerified": "2026-10-19"
-    }
+    },
+    "parkingTrailheads": [
+      {
+        "name": "室堂",
+        "routes": [
+          1,
+          2
+        ],
+        "by": "ケーブルカー・バスに乗り換え"
+      }
+    ]
   },
   {
     "id": "tsurugi",
@@ -13975,6 +14232,16 @@
     "photos": [
       "/images/mountains/tsurugi/image-20260811151011986-33udn.webp",
       "/images/mountains/tsurugi/image-20260811151014380-76y9m.webp"
+    ],
+    "parkingTrailheads": [
+      {
+        "name": "室堂",
+        "routes": [
+          1,
+          3
+        ],
+        "by": "ケーブルカー・バスに乗り換え"
+      }
     ]
   },
   {
@@ -14590,7 +14857,16 @@
       "lastVerified": "2026-10-19"
     },
     "coeffFromRoutes": true,
-    "representativeCoeff": 68
+    "representativeCoeff": 68,
+    "parkingTrailheads": [
+      {
+        "name": "上高地バスターミナル",
+        "routes": [
+          1
+        ],
+        "by": "バスに乗り換え"
+      }
+    ]
   },
   {
     "id": "hotaka",
@@ -15211,7 +15487,17 @@
       "lastVerified": "2026-10-19"
     },
     "coeffFromRoutes": true,
-    "representativeCoeff": 67
+    "representativeCoeff": 67,
+    "parkingTrailheads": [
+      {
+        "name": "上高地バスターミナル",
+        "routes": [
+          1,
+          2
+        ],
+        "by": "バスに乗り換え"
+      }
+    ]
   },
   {
     "id": "myoko",
@@ -15680,6 +15966,16 @@
     "metaAuto": true,
     "daytripSources": [
       "https://www.japanesealps.net/100moutains/myokosan/"
+    ],
+    "parkingTrailheads": [
+      {
+        "name": "燕温泉",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
     ]
   },
   {
@@ -16158,7 +16454,18 @@
       "https://yamatabitabi.com/archives/146503"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">巻機山は中〜上級レベル（コース定数38〜41）。代表コースの清水ルート（往復）は7時間・13.0km・標高差+1400m。初心者には難しく、経験が必要です。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">巻機山は中〜上級レベル（コース定数38〜41）。代表コースの清水ルート（往復）は7時間・13.0km・標高差+1400m。初心者には難しく、経験が必要です。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "清水（桜坂駐車場）",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "iide",
@@ -16688,7 +16995,17 @@
       "https://yamahack.com/2480"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">飯豊山は上級レベル（コース定数65〜90）。代表コースの川入〜剣ヶ峰〜御西岳縦走は16時間（1泊2日）・30.0km・標高差+2800m。初心者には不向きで、十分な経験と体力が必須です。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">飯豊山は上級レベル（コース定数65〜90）。代表コースの川入〜剣ヶ峰〜御西岳縦走は16時間（1泊2日）・30.0km・標高差+2800m。初心者には不向きで、十分な経験と体力が必須です。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "川入（御沢野営場）",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "shibutsu",
@@ -17258,7 +17575,17 @@
       "lastVerified": "2026-10-19"
     },
     "coeffFromRoutes": true,
-    "representativeCoeff": 22
+    "representativeCoeff": 22,
+    "parkingTrailheads": [
+      {
+        "name": "鳩待峠",
+        "routes": [
+          1,
+          2
+        ],
+        "by": "乗合バス・タクシーに乗り換え"
+      }
+    ]
   },
   {
     "id": "aizu_koma",
@@ -17755,7 +18082,18 @@
       "https://yamahack.com/1879"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">会津駒ヶ岳は中〜上級レベル（コース定数32〜37）。代表コースの滝沢登山口〜山頂往復は7時間・11.0km・標高差+1200m。初心者には難しく、経験が必要です。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">会津駒ヶ岳は中〜上級レベル（コース定数32〜37）。代表コースの滝沢登山口〜山頂往復は7時間・11.0km・標高差+1200m。初心者には難しく、経験が必要です。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "滝沢登山口",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "shirane_gunma",
@@ -18186,7 +18524,16 @@
       "351"
     ],
     "volcanoScope": "summit",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "草津温泉",
+        "routes": [
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "bandai",
@@ -18641,7 +18988,16 @@
       "https://yamahack.com/2601"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">磐梯山は中級レベル（コース定数22〜33）。代表コースの八方台ルート（往復）は4時間30分・8.0km・標高差+700m。登山経験がある程度あると安心です。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">磐梯山は中級レベル（コース定数22〜33）。代表コースの八方台ルート（往復）は4時間30分・8.0km・標高差+700m。登山経験がある程度あると安心です。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "八方台",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "hiuchigatake",
@@ -19192,7 +19548,18 @@
       "/images/mountains/hiuchigatake/image-20260811133738029-981bv.webp"
     ],
     "coeffFromRoutes": true,
-    "representativeCoeff": 27
+    "representativeCoeff": 27,
+    "parkingTrailheads": [
+      {
+        "name": "御池",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "takao",
@@ -20061,7 +20428,23 @@
     "yamapName": "大山",
     "metaDescriptionManual": "大山の難易度は初〜中級、登山初心者でも挑戦しやすい。神奈川県、新宿から車で約1時間5分、コース定数15〜23、日帰り可能。バスでもアクセス可。丹沢の霊峰。ケーブルカーあり。山頂からの展望と紅葉が名高い信仰の山。",
     "metaAuto": true,
-    "mapTargetNote": "地図ボタンは駐車場（伊勢原市営大山第2駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認"
+    "mapTargetNote": "地図ボタンは駐車場（伊勢原市営大山第2駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認",
+    "parkingTrailheads": [
+      {
+        "name": "大山ケーブルバス停",
+        "routes": [
+          2
+        ],
+        "by": ""
+      },
+      {
+        "name": "大山ケーブルカー 阿夫利神社駅",
+        "routes": [
+          1
+        ],
+        "by": "ケーブルカーに乗り換え"
+      }
+    ]
   },
   {
     "id": "tonosaki",
@@ -20492,6 +20875,16 @@
     "photos": [
       "/images/mountains/tonosaki/image-20260907142229164-w4zxc.webp",
       "/images/mountains/tonosaki/image-20260907142231550-uxg6c.webp"
+    ],
+    "parkingTrailheads": [
+      {
+        "name": "大倉",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
     ]
   },
   {
@@ -20913,6 +21306,15 @@
     "metaAuto": true,
     "daytripSources": [
       "https://yamahack.com/3215"
+    ],
+    "parkingTrailheads": [
+      {
+        "name": "大倉",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
     ]
   },
   {
@@ -21792,7 +22194,17 @@
       "https://www.hakonenavi.jp/feature/14394"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">金時山は初〜中級レベル（コース定数16〜19）。代表コースの乙女峠ルート（往復）は3時間・6.0km・標高差+500m。登山初心者でも挑戦しやすいレベルです。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">金時山は初〜中級レベル（コース定数16〜19）。代表コースの乙女峠ルート（往復）は3時間・6.0km・標高差+500m。登山初心者でも挑戦しやすいレベルです。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "金時神社入口",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kayagatake",
@@ -22225,7 +22637,18 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "茅ヶ岳",
     "metaAuto": true,
-    "mapTargetNote": "地図ボタンは駐車場（深田記念公園駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認"
+    "mapTargetNote": "地図ボタンは駐車場（深田記念公園駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認",
+    "parkingTrailheads": [
+      {
+        "name": "深田記念公園",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kentoku",
@@ -22663,7 +23086,17 @@
       "https://yamap.com/mountains/14413"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">乾徳山は中〜上級レベル（コース定数35〜40）。代表コースの徳和ルート（往復）は7時間・12.0km・標高差+1300m。初心者には難しく、経験が必要です。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">乾徳山は中〜上級レベル（コース定数35〜40）。代表コースの徳和ルート（往復）は7時間・12.0km・標高差+1300m。初心者には難しく、経験が必要です。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "乾徳山登山口（徳和）",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "hinata",
@@ -23105,7 +23538,17 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "日向山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "矢立石登山口",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "bonori",
@@ -23556,7 +23999,17 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "棒ノ折山（棒ノ嶺）",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "さわらびの湯",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "otake",
@@ -23979,7 +24432,16 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "大岳山",
     "metaDescriptionManual": "大岳山（1,266m）は御岳山から縦走できる奥多摩三山の一座。ケーブルカー利用の縦走ルートの所要時間、コース定数21〜21の初〜中級、新宿から電車での日帰りプランを解説。",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "御岳山駅",
+        "routes": [
+          1
+        ],
+        "by": "ケーブルカーに乗り換え"
+      }
+    ]
   },
   {
     "id": "jonengatake",
@@ -24542,7 +25004,16 @@
     "dlReasonsCheckedAt": "2026-10-12",
     "dlNoteHtmlOld": "<p class=\"dl-note\">常念岳は中〜上級レベル（コース定数32〜45）。代表コースの一ノ沢〜常念岳往復は9時間・14.0km・標高差+1500m。初心者には難しく、経験が必要です。</p>",
     "coeffFromRoutes": true,
-    "representativeCoeff": 36
+    "representativeCoeff": 36,
+    "parkingTrailheads": [
+      {
+        "name": "一ノ沢",
+        "routes": [
+          1
+        ],
+        "by": "タクシーに乗り換え"
+      }
+    ]
   },
   {
     "id": "yakedake",
@@ -25064,7 +25535,17 @@
       "/images/mountains/yakedake/image-20260811232425381-acdmi.webp",
       "/images/mountains/yakedake/image-20260811232428365-an4db.webp"
     ],
-    "mapTargetNote": "地図ボタンは駐車場（焼岳 新中の湯登山口 駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認"
+    "mapTargetNote": "地図ボタンは駐車場（焼岳 新中の湯登山口 駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認",
+    "parkingTrailheads": [
+      {
+        "name": "新中の湯登山口",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kashimayari",
@@ -25557,7 +26038,17 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "鹿島槍ヶ岳",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "柏原新道登山口（扇沢）",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "koganzan",
@@ -26008,7 +26499,16 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "小金沢山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "上日川峠",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "arafune",
@@ -26299,7 +26799,16 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "荒船山（経塚山）",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "内山峠",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "asamamakurayama",
@@ -26565,7 +27074,17 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "浅間隠山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "浅間隠山登山口（二度上峠側）",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kazahariyama",
@@ -26966,7 +27485,16 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "御座山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "栗生登山口",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "iwasugesan",
@@ -27863,7 +28391,17 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "飯縄山（飯綱山）",
     "metaDescriptionManual": "飯縄山の難易度・コース定数23〜23を解説。長野駅からバス約45分で飯綱登山口へアクセス可。二百名山、初〜中級・日帰り可。山頂からは北アルプスと善光寺平の大展望が広がる。2026年最新版。",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "一ノ鳥居登山口（一ノ鳥居苑地）",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kurohimesan",
@@ -28321,7 +28859,17 @@
       "https://www.yamakei-online.com/cl_record/detail.php?id=334057"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">黒姫山は中〜上級レベル（コース定数24〜30）。代表コースの大橋林道〜黒姫山往復は5時間30分・10.0km・標高差+1000m。初心者には難しく、経験が必要です。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">黒姫山は中〜上級レベル（コース定数24〜30）。代表コースの大橋林道〜黒姫山往復は5時間30分・10.0km・標高差+1000m。初心者には難しく、経験が必要です。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "大橋登山口（大橋林道口）",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kenashiyama",
@@ -28718,7 +29266,18 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "毛無山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "麓登山口",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "shirasunayama",
@@ -29129,7 +29688,17 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "白砂山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "白砂山登山口（野反湖）",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "nanaitsurasan",
@@ -29644,7 +30213,18 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "七面山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "羽衣（表参道入口）",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "arasawadake",
@@ -30070,7 +30650,17 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "荒沢岳",
     "metaAuto": true,
-    "mapTargetNote": "地図ボタンは駐車場（荒沢岳 登山口 駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認"
+    "mapTargetNote": "地図ボタンは駐車場（荒沢岳 登山口 駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認",
+    "parkingTrailheads": [
+      {
+        "name": "銀山平登山口",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "nakawarayama",
@@ -30448,7 +31038,16 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "和名倉山（白石山）",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "三ノ瀬登山口",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "yarigatake2",
@@ -30925,7 +31524,17 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "笊ヶ岳",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "老平登山口",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "gakedake",
@@ -31199,7 +31808,17 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "餓鬼岳",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "白沢登山口",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "arikayama",
@@ -31608,7 +32227,16 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "有明山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "有明荘",
+        "routes": [
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "keizandake",
@@ -32049,7 +32677,16 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "経ヶ岳",
     "metaAuto": true,
-    "mapTargetNote": "地図ボタンは駐車場（仲仙寺 駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認"
+    "mapTargetNote": "地図ボタンは駐車場（仲仙寺 駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認",
+    "parkingTrailheads": [
+      {
+        "name": "仲仙寺登山口",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "adatara",
@@ -32511,7 +33148,23 @@
       "https://www.tif.ne.jp/kuroganegoya/climbing.html"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">安達太良山は初〜中級レベル（コース定数16〜28）。代表コースのゴンドラ利用〜山頂往復は3時間30分・6.0km・標高差+500m。登山初心者でも挑戦しやすいレベルです。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">安達太良山は初〜中級レベル（コース定数16〜28）。代表コースのゴンドラ利用〜山頂往復は3時間30分・6.0km・標高差+500m。登山初心者でも挑戦しやすいレベルです。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "あだたら山ロープウェイ山頂駅",
+        "routes": [
+          1
+        ],
+        "by": "ロープウェイに乗り換え"
+      },
+      {
+        "name": "奥岳登山口",
+        "routes": [
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "azuma",
@@ -32995,7 +33648,16 @@
     ],
     "volcanoScope": "nearby",
     "metaDescriptionManual": "西吾妻山（2,035m）は天元台ロープウェイとリフトで北望台（1,820m）まで上がれる吾妻連峰最高峰の百名山。コース定数16〜30、初〜中級で日帰り可能。湿原と池塘が広がる穏やかな山頂稜線が魅力。",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "西吾妻山登山口（天元台・リフト終点）",
+        "routes": [
+          1
+        ],
+        "by": "ロープウェイ・リフトに乗り換え"
+      }
+    ]
   },
   {
     "id": "echigokoma",
@@ -33494,7 +34156,16 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "越後駒ヶ岳",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "枝折峠",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "hiragadake",
@@ -33768,7 +34439,16 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "平ヶ岳",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "平ヶ岳登山口（鷹ノ巣）",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "naeba",
@@ -34240,7 +34920,16 @@
       "https://niigataclimb.com/naeba_koakasawa/"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">苗場山は中〜上級レベル（コース定数28〜40）。代表コースの和田小屋〜苗場山（往復）は7時間・12.0km・標高差+1100m。初心者には難しく、経験が必要です。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">苗場山は中〜上級レベル（コース定数28〜40）。代表コースの和田小屋〜苗場山（往復）は7時間・12.0km・標高差+1100m。初心者には難しく、経験が必要です。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "祓川登山口（和田小屋）",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "amakazari",
@@ -34666,7 +35355,16 @@
       "https://yamahack.com/2746"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">雨飾山は中〜上級レベル（コース定数29〜34）。代表コースの雨飾高原〜山頂往復は6時間・10.0km・標高差+1100m。初心者には難しく、経験が必要です。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">雨飾山は中〜上級レベル（コース定数29〜34）。代表コースの雨飾高原〜山頂往復は6時間・10.0km・標高差+1100m。初心者には難しく、経験が必要です。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "雨飾高原登山口",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "hiuchi",
@@ -35209,7 +35907,17 @@
       "/images/mountains/hiuchi/image-20260811232637084-liho4.webp"
     ],
     "coeffFromRoutes": true,
-    "representativeCoeff": 37
+    "representativeCoeff": 37,
+    "parkingTrailheads": [
+      {
+        "name": "笹ヶ峰",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "takatsuma",
@@ -35659,7 +36367,17 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "高妻山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "戸隠キャンプ場",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kasagatake",
@@ -36095,7 +36813,17 @@
     "transfersYokohama": 2,
     "mapTargetNote": "地図ボタンは駐車場（新穂高第2駐車場）。2026-11-01 に Google マップで確認",
     "parkingSource": "https://kitaalpsgifu.jp/dl/pmap202606.pdf",
-    "parkingCheckedAt": "2026-11-01"
+    "parkingCheckedAt": "2026-11-01",
+    "parkingTrailheads": [
+      {
+        "name": "新穂高温泉",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "ontakesan",
@@ -36559,7 +37287,16 @@
       "https://www.vill.otaki.nagano.jp/bousai/funka_information.html"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">御嶽山は中〜上級レベル（コース定数18〜32）。代表コースの田の原〜剣ヶ峰（往復）は4時間30分・8.0km・標高差+600m。初心者には難しく、経験が必要です。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">御嶽山は中〜上級レベル（コース定数18〜32）。代表コースの田の原〜剣ヶ峰（往復）は4時間30分・8.0km・標高差+600m。初心者には難しく、経験が必要です。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "田の原",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "goryudake",
@@ -37089,7 +37826,17 @@
     "yamapName": "五竜岳",
     "metaAuto": true,
     "coeffFromRoutes": true,
-    "representativeCoeff": 42
+    "representativeCoeff": 42,
+    "parkingTrailheads": [
+      {
+        "name": "アルプス平（地蔵の頭）",
+        "routes": [
+          1,
+          2
+        ],
+        "by": "テレキャビンに乗り換え"
+      }
+    ]
   },
   {
     "id": "sukai",
@@ -37389,7 +38136,17 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "皇海山",
     "metaDescriptionManual": "皇海山（すかいさん・2,144m）は栃木・群馬の境にある百名山。コース定数57〜57、上級。足尾の銀山平から庚申山・鋸山を越える長いクラシックルートで登る。",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "銀山平（皇海山登山口）",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kisokoma",
@@ -37977,7 +38734,17 @@
     "dlReasonsCheckedAt": "2026-10-12",
     "dlNoteHtmlOld": "<p class=\"dl-note\">木曽駒ヶ岳は初〜中級レベル（コース定数11〜15）。代表コースの千畳敷〜乗越浄土〜木曽駒ヶ岳往復は4時間・4.0km・標高差+350m。登山初心者でも挑戦しやすいレベルです。</p>",
     "coeffFromRoutes": true,
-    "representativeCoeff": 12
+    "representativeCoeff": 12,
+    "parkingTrailheads": [
+      {
+        "name": "千畳敷",
+        "routes": [
+          1,
+          2
+        ],
+        "by": "バス・ロープウェイに乗り換え"
+      }
+    ]
   },
   {
     "id": "utsukushigahara",
@@ -38395,7 +39162,16 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "美ヶ原（王ヶ頭）",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "山本小屋",
+        "routes": [
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "karamatsu",
@@ -39001,7 +39777,18 @@
       "/images/mountains/karamatsu/image-20260811151649241-z1oqn.webp"
     ],
     "coeffFromRoutes": true,
-    "representativeCoeff": 26
+    "representativeCoeff": 26,
+    "parkingTrailheads": [
+      {
+        "name": "八方池山荘（リフト終点）",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": "ゴンドラ・リフトに乗り換え"
+      }
+    ]
   },
   {
     "id": "utsugi",
@@ -39452,7 +40239,16 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "空木岳",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "空木岳登山口（駒ヶ根高原）",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "enasan",
@@ -39754,7 +40550,16 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "恵那山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "神坂峠登山口",
+        "routes": [
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "shiomidake",
@@ -40199,7 +41004,17 @@
       "https://yamap.com/model-courses/213"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">塩見岳は上級レベル（コース定数55〜75）。代表コースの鳥倉〜塩見岳往復（1泊）は17時間・26.0km・標高差+2000m。初心者には不向きで、十分な経験と体力が必須です。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">塩見岳は上級レベル（コース定数55〜75）。代表コースの鳥倉〜塩見岳往復（1泊）は17時間・26.0km・標高差+2000m。初心者には不向きで、十分な経験と体力が必須です。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "鳥倉登山口",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "arakawadake",
@@ -40687,7 +41502,17 @@
       "lat": 35.4306835,
       "lng": 138.207313,
       "name": "椹島"
-    }
+    },
+    "parkingTrailheads": [
+      {
+        "name": "椹島",
+        "routes": [
+          1,
+          2
+        ],
+        "by": "送迎バスに乗り換え"
+      }
+    ]
   },
   {
     "id": "akaisidake",
@@ -41188,7 +42013,17 @@
       "lat": 35.4306835,
       "lng": 138.207313,
       "name": "椹島"
-    }
+    },
+    "parkingTrailheads": [
+      {
+        "name": "椹島",
+        "routes": [
+          1,
+          2
+        ],
+        "by": "送迎バスに乗り換え"
+      }
+    ]
   },
   {
     "id": "hijiridade",
@@ -42185,6 +43020,15 @@
     "metaAuto": true,
     "daytripSources": [
       "https://yamap.com/model-courses/216"
+    ],
+    "parkingTrailheads": [
+      {
+        "name": "易老渡",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
     ]
   },
   {
@@ -42613,7 +43457,16 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "薬師岳",
     "metaAuto": true,
-    "mapTargetNote": "地図ボタンは駐車場（有峰林道 折立駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認"
+    "mapTargetNote": "地図ボタンは駐車場（有峰林道 折立駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認",
+    "parkingTrailheads": [
+      {
+        "name": "折立",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kurobegorodam",
@@ -43058,7 +43911,17 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "黒部五郎岳",
     "metaAuto": true,
-    "mapTargetNote": "地図ボタンは駐車場（有峰林道 折立駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認"
+    "mapTargetNote": "地図ボタンは駐車場（有峰林道 折立駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認",
+    "parkingTrailheads": [
+      {
+        "name": "折立",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "ainodake",
@@ -43557,7 +44420,17 @@
       "lat": 35.6968864,
       "lng": 138.2715174,
       "name": "広河原"
-    }
+    },
+    "parkingTrailheads": [
+      {
+        "name": "広河原",
+        "routes": [
+          1,
+          2
+        ],
+        "by": "バスに乗り換え"
+      }
+    ]
   },
   {
     "id": "noutori",
@@ -44017,7 +44890,16 @@
       "lat": 35.6968864,
       "lng": 138.2715174,
       "name": "広河原"
-    }
+    },
+    "parkingTrailheads": [
+      {
+        "name": "広河原",
+        "routes": [
+          2
+        ],
+        "by": "バスに乗り換え"
+      }
+    ]
   },
   {
     "id": "hakusan",
@@ -44544,7 +45426,17 @@
       "linkText": "白山登山バスの運賃・運行日",
       "sourceUrl": "https://www.pref.ishikawa.lg.jp/hakusan/tozaninf/peak2.html",
       "lastVerified": "2026-10-19"
-    }
+    },
+    "parkingTrailheads": [
+      {
+        "name": "別当出合",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "zaosan",
@@ -44967,7 +45859,16 @@
       "212"
     ],
     "volcanoScope": "summit",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "蔵王山頂レストハウス（刈田）",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "karisaka",
@@ -45382,7 +46283,17 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "雁坂嶺",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "雁坂峠登山口（道の駅みとみ）",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "nokogiriyama",
@@ -45790,7 +46701,16 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "鋸岳",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "戸台",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "minamikomagatake",
@@ -46241,7 +47161,17 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "南駒ヶ岳",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "伊奈川ダム登山口",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "chogatake",
@@ -46751,7 +47681,16 @@
       "lat": 36.2461,
       "lng": 137.6353,
       "name": "上高地バスターミナル"
-    }
+    },
+    "parkingTrailheads": [
+      {
+        "name": "上高地バスターミナル",
+        "routes": [
+          1
+        ],
+        "by": "バスに乗り換え"
+      }
+    ]
   },
   {
     "id": "otenshoudake",
@@ -47251,7 +48190,18 @@
       "/images/mountains/otenshoudake/image-20260811152122365-xn38n.webp",
       "/images/mountains/otenshoudake/image-20260811152125007-fadri.webp"
     ],
-    "mapTargetNote": "地図ボタンは駐車場（中房第2駐車場）。2026-11-01 に Google マップで確認"
+    "mapTargetNote": "地図ボタンは駐車場（中房第2駐車場）。2026-11-01 に Google マップで確認",
+    "parkingTrailheads": [
+      {
+        "name": "中房温泉（燕岳登山口）",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "area": "長野県",
@@ -47696,7 +48646,17 @@
     "ogTitle": "燕岳 登山の難易度は中級｜健脚向け日帰り8時間55分・標高差1,425m｜穂高駅からバス【二百名山】｜Yamatch",
     "metaDescription": "燕岳（標高2,763m・長野県）の難易度は中級（体力のある中級者向け）。代表コース（中房温泉〜合戦尾根〜燕山荘〜燕岳（往復））は8時間55分・9.4km・標高差1425m。新宿から電車とバスで約3時間54分（穂高駅からバス55分）。日帰りできます。常念山脈の北部、安曇野市と大町市の境にそびえる二百名山。駐車場・装備・天気も掲載。",
     "ogDescription": "燕岳（標高2,763m・長野県）の難易度は中級（体力のある中級者向け）。代表コース（中房温泉〜合戦尾根〜燕山荘〜燕岳（往復））は8時間55分・9.4km・標高差1425m。新宿から電車とバスで約3時間54分（穂高駅からバス55分）。日帰りできます。常念山脈の北部、安曇野市と大町市の境にそびえる二百名山。駐車場・装備・天気も掲載。",
-    "mapTargetNote": "地図ボタンは駐車場（中房第2駐車場）。2026-11-01 に Google マップで確認"
+    "mapTargetNote": "地図ボタンは駐車場（中房第2駐車場）。2026-11-01 に Google マップで確認",
+    "parkingTrailheads": [
+      {
+        "name": "中房温泉（燕岳登山口）",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "harinokidake",
@@ -48182,7 +49142,18 @@
       "https://yamahack.com/2031"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">針ノ木岳は中級レベル（コース定数40〜42）。代表コースの扇沢〜針ノ木雪渓〜針ノ木岳往復は8時間・14.0km・標高差+1400m。登山経験がある程度あると安心です。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">針ノ木岳は中級レベル（コース定数40〜42）。代表コースの扇沢〜針ノ木雪渓〜針ノ木岳往復は8時間・14.0km・標高差+1400m。登山経験がある程度あると安心です。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "扇沢（針ノ木岳登山口）",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "eboshidake_kita",
@@ -48639,7 +49610,17 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "烏帽子岳",
     "metaDescriptionManual": "烏帽子岳の難易度は上級、初心者には不向き。北アルプス裏銀座、新宿から車で約3時間40分、コース定数38〜50、宿泊推奨。裏銀座縦走路の入口に立つ山。ブナ立尾根は北アルプス三大急登のひとつ。",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "高瀬ダム（ブナ立尾根登山口）",
+        "routes": [
+          1,
+          2
+        ],
+        "by": "タクシーに乗り換え"
+      }
+    ]
   },
   {
     "id": "noguchigoro",
@@ -49099,7 +50080,17 @@
     "driveTarget": "七倉",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "野口五郎岳",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "高瀬ダム（ブナ立尾根登山口）",
+        "routes": [
+          1,
+          2
+        ],
+        "by": "タクシーに乗り換え"
+      }
+    ]
   },
   {
     "id": "nokogiriyama_chiba",
@@ -50363,6 +51354,17 @@
     "photos": [
       "/images/mountains/takamizusanzan/image-20260811232743241-umrxb.webp",
       "/images/mountains/takamizusanzan/image-20260811232745130-c5x0x.webp"
+    ],
+    "parkingTrailheads": [
+      {
+        "name": "軍畑駅",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
     ]
   },
   {
@@ -50783,7 +51785,16 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "天覧山",
     "metaAuto": true,
-    "mapTargetNote": "地図ボタンは駐車場（飯能中央公園第一駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認"
+    "mapTargetNote": "地図ボタンは駐車場（飯能中央公園第一駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認",
+    "parkingTrailheads": [
+      {
+        "name": "飯能中央公園",
+        "routes": [
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "hiwadayama",
@@ -51645,7 +52656,18 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "伊豆ヶ岳",
     "metaDescriptionManual": "伊豆ヶ岳の難易度・コース定数16〜28を解説。西武秩父線・正丸駅から徒歩で登山口へ、電車アクセス抜群。奥武蔵を代表するハイキングコース。鎖場の男坂は通行自粛中のため中間道を利用。初〜中級・日帰り可。",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "正丸駅",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "bukosan",
@@ -52061,6 +53083,16 @@
       "/images/mountains/bukosan/image-20261102133923790-aqq0y.webp",
       "/images/mountains/bukosan/image-20261102133926791-c997f.webp",
       "/images/mountains/bukosan/image-20261102133930266-zr0gn.webp"
+    ],
+    "parkingTrailheads": [
+      {
+        "name": "一ノ鳥居",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
     ]
   },
   {
@@ -52474,7 +53506,17 @@
       "https://yamahack.com/6623"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">鍋割山は初〜中級レベル（コース定数30〜41）。代表コースの大倉〜後沢乗越〜鍋割山（往復）は約4時間〜4時間30分・9.4km・標高差+850m。登山初心者でも挑戦しやすいレベルです。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">鍋割山は初〜中級レベル（コース定数30〜41）。代表コースの大倉〜後沢乗越〜鍋割山（往復）は約4時間〜4時間30分・9.4km・標高差+850m。登山初心者でも挑戦しやすいレベルです。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "大倉",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "sannotou",
@@ -52884,6 +53926,15 @@
       "/images/mountains/sannotou/image-20260811152433274-x6a7l.webp",
       "/images/mountains/sannotou/image-20260811152436395-e8kyg.webp",
       "/images/mountains/sannotou/image-20260811152439057-auddv.webp"
+    ],
+    "parkingTrailheads": [
+      {
+        "name": "大倉",
+        "routes": [
+          3
+        ],
+        "by": ""
+      }
     ]
   },
   {
@@ -53738,7 +54789,17 @@
       "https://tabelog.com/tokyo/A1329/A132905/13133144/",
       "https://www.yamakei-online.com/cl_record/detail.php?id=294086"
     ],
-    "teahouseCheckedAt": "2026-10-19"
+    "teahouseCheckedAt": "2026-10-19",
+    "parkingTrailheads": [
+      {
+        "name": "小仏バス停",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "takagawayama",
@@ -54118,7 +55179,18 @@
       "https://san-tatsu.jp/articles/232504/"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">高川山は初〜中級レベル（コース定数17〜21）。代表コースの初狩駅〜高川山〜大月駅縦走は約3時間20分・8km・標高差+680m。登山初心者でも挑戦しやすいレベルです。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">高川山は初〜中級レベル（コース定数17〜21）。代表コースの初狩駅〜高川山〜大月駅縦走は約3時間20分・8km・標高差+680m。登山初心者でも挑戦しやすいレベルです。</p>",
+    "parkingTrailheads": [
+      {
+        "name": "初狩駅",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kobotokeshiroyama",
@@ -55638,7 +56710,18 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "平標山",
     "metaDescriptionManual": "平標山（1,984m）は6〜7月の高山植物で名高い「花の百名山」。松手山コースの所要時間とコース定数22〜28、越後湯沢駅からのバスアクセス、日帰りプランを解説。",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "平標登山口",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "tomisan",
@@ -56000,7 +57083,17 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "富山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "富山登山口（福満寺）",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "iyogatake",
@@ -56422,7 +57515,18 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "伊予ヶ岳",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "平群天神社",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "myojingatake",
@@ -57227,7 +58331,17 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "矢倉岳",
     "ogDescription": "矢倉岳（標高870m・神奈川県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（地蔵堂〜山伏平〜矢倉岳（往復））は3時間46分・5.3km・標高差616m。新宿から電車とバスで約2時間7分（新松田駅からバス47分）。日帰りできます。南足柄の丘から突き出た独立峰。駐車場・装備・天気も掲載。",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "地蔵堂",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kawanoriyama",
@@ -57627,7 +58741,16 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "川苔山",
     "ogDescription": "川苔山（標高1,363m・東京都）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（川乗橋〜百尋ノ滝〜川苔山〜鳩ノ巣駅（縦走））は7時間25分・12.3km・標高差1153m。新宿から電車とバスで約2時間6分（奥多摩駅からバス15分）。日帰りできます。沢沿いの百尋ノ滝コースが人気の奥多摩の名峰。駐車場・装備・天気も掲載。",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "川乗橋バス停",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "takanosuyama",
@@ -59815,7 +60938,16 @@
     "driveDistance": 91,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "百蔵山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "大月市営総合グラウンド（百蔵山登山口）",
+        "routes": [
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "ogiyama",
@@ -60142,7 +61274,17 @@
     "driveDistance": 75,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "扇山",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "梨ノ木平登山口",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "makuyama",
@@ -62627,7 +63769,17 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "三頭山",
     "metaDescriptionManual": "三頭山（1,531m）は奥多摩三山の一座。都民の森からのブナ林周回コースの所要時間、コース定数18〜30の中級、武蔵五日市駅からのバスアクセスと日帰りプランを解説。",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "檜原都民の森",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "honitayama",
@@ -67092,7 +68244,17 @@
     "driveDistance": 120,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "三ッ峠山（開運山）",
-    "metaAuto": true
+    "metaAuto": true,
+    "parkingTrailheads": [
+      {
+        "name": "三ツ峠登山口",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kamakura_alps",
@@ -68551,6 +69713,16 @@
     ],
     "busScheduleLinks": [
       "https://www.uedabus.co.jp/rosen/rosen.html"
+    ],
+    "parkingTrailheads": [
+      {
+        "name": "菅平牧場",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
     ]
   },
   {
@@ -68959,7 +70131,18 @@
     "busScheduleLinks": [
       "https://www.nisitokyobus.co.jp/rosen/noriba/okutama.html"
     ],
-    "mapTargetNote": "地図ボタンは駐車場（奥多摩 水と緑のふれあい館 駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認"
+    "mapTargetNote": "地図ボタンは駐車場（奥多摩 水と緑のふれあい館 駐車場）。2026-11-10 に Google マップ・OpenStreetMap で確認",
+    "parkingTrailheads": [
+      {
+        "name": "奥多摩湖",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "tengudake",
@@ -69389,7 +70572,17 @@
     "metaTitle": "天狗岳 登山の難易度は中級｜日帰り7時間31分・標高差832m｜茅野駅からバス52分【二百名山】｜Yamatch",
     "ogTitle": "天狗岳 登山の難易度は中級｜日帰り7時間31分・標高差832m｜茅野駅からバス52分【二百名山】｜Yamatch",
     "metaDescription": "天狗岳（標高2,646m・長野県）の難易度は中級（体力のある中級者向け）。代表コース（渋の湯〜黒百合ヒュッテ〜中山峠〜東天狗岳（往復））は7時間31分・9.4km・標高差832m。新宿から電車とバスで約2時間58分（茅野駅からバス52分）。日帰りできます。北八ヶ岳と南八ヶ岳の境に立つ二百名山。駐車場・装備・天気も掲載。",
-    "ogDescription": "天狗岳（標高2,646m・長野県）の難易度は中級（体力のある中級者向け）。代表コース（渋の湯〜黒百合ヒュッテ〜中山峠〜東天狗岳（往復））は7時間31分・9.4km・標高差832m。新宿から電車とバスで約2時間58分（茅野駅からバス52分）。日帰りできます。北八ヶ岳と南八ヶ岳の境に立つ二百名山。駐車場・装備・天気も掲載。"
+    "ogDescription": "天狗岳（標高2,646m・長野県）の難易度は中級（体力のある中級者向け）。代表コース（渋の湯〜黒百合ヒュッテ〜中山峠〜東天狗岳（往復））は7時間31分・9.4km・標高差832m。新宿から電車とバスで約2時間58分（茅野駅からバス52分）。日帰りできます。北八ヶ岳と南八ヶ岳の境に立つ二百名山。駐車場・装備・天気も掲載。",
+    "parkingTrailheads": [
+      {
+        "name": "渋の湯",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "kitayokodake",
@@ -69855,7 +71048,18 @@
       "334"
     ],
     "volcanoScope": "summit",
-    "mapTargetNote": "地図ボタンは駐車場（北八ヶ岳ロープウェイ 駐車場）。2026-11-01 に Google マップで確認"
+    "mapTargetNote": "地図ボタンは駐車場（北八ヶ岳ロープウェイ 駐車場）。2026-11-01 に Google マップで確認",
+    "parkingTrailheads": [
+      {
+        "name": "北八ヶ岳ロープウェイ山頂駅",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": "ロープウェイに乗り換え"
+      }
+    ]
   },
   {
     "id": "nyukasayama",
@@ -70316,7 +71520,17 @@
     "ogTitle": "入笠山 登山の難易度は初級｜日帰り2時間1分・標高差290m｜富士見駅からバス｜Yamatch",
     "metaDescription": "入笠山（標高1,955m・長野県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（ゴンドラ山頂駅〜入笠湿原〜入笠山（往復））は2時間1分・3.9km・標高差290m。新宿から電車とバスで約2時間37分（富士見駅からバス）。日帰りできます。南アルプスの北の端にある山。駐車場・装備・天気も掲載。",
     "ogDescription": "入笠山（標高1,955m・長野県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（ゴンドラ山頂駅〜入笠湿原〜入笠山（往復））は2時間1分・3.9km・標高差290m。新宿から電車とバスで約2時間37分（富士見駅からバス）。日帰りできます。南アルプスの北の端にある山。駐車場・装備・天気も掲載。",
-    "mapTargetNote": "地図ボタンは駐車場（富士見パノラマリゾート 第1駐車場）。2026-11-01 に Google マップで確認"
+    "mapTargetNote": "地図ボタンは駐車場（富士見パノラマリゾート 第1駐車場）。2026-11-01 に Google マップで確認",
+    "parkingTrailheads": [
+      {
+        "name": "ゴンドラ山頂駅",
+        "routes": [
+          1,
+          2
+        ],
+        "by": "ゴンドラに乗り換え"
+      }
+    ]
   },
   {
     "id": "nishihotaka",
@@ -70794,7 +72008,17 @@
     "ogDescription": "西穂高岳（標高2,909m・岐阜県・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（西穂高口駅〜西穂山荘〜西穂独標〜西穂高岳（往復））は7時間20分・7.7km・標高差962m。新宿から高速バスなどで約5時間38分。日帰りできます。穂高連峰の南西にそびえる岩峰の山。駐車場・装備・天気も掲載。",
     "mapTargetNote": "地図ボタンは駐車場（新穂高第2駐車場）。2026-11-01 に Google マップで確認",
     "parkingSource": "https://kitaalpsgifu.jp/dl/pmap202606.pdf",
-    "parkingCheckedAt": "2026-11-01"
+    "parkingCheckedAt": "2026-11-01",
+    "parkingTrailheads": [
+      {
+        "name": "新穂高ロープウェイ西穂高口駅",
+        "routes": [
+          1,
+          2
+        ],
+        "by": "ロープウェイに乗り換え"
+      }
+    ]
   },
   {
     "id": "myogisan",
@@ -71282,7 +72506,18 @@
     "ogTitle": "妙義山 登山の難易度は上級｜日帰り6時間25分・標高差898m｜松井田駅からタクシー【二百名山】｜Yamatch",
     "metaDescription": "妙義山（標高1,104m・群馬県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（妙義神社〜大の字〜大のぞき〜相馬岳〜タルワキ沢（周回））は6時間25分・4.9km・標高差898m。新宿から電車で約2時間（松井田駅からタクシー）。日帰りできます。日本三大奇景のひとつとされる群馬の岩山。駐車場・装備・天気も掲載。",
     "ogDescription": "妙義山（標高1,104m・群馬県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（妙義神社〜大の字〜大のぞき〜相馬岳〜タルワキ沢（周回））は6時間25分・4.9km・標高差898m。新宿から電車で約2時間（松井田駅からタクシー）。日帰りできます。日本三大奇景のひとつとされる群馬の岩山。駐車場・装備・天気も掲載。",
-    "mapTargetNote": "地図ボタンは駐車場（妙義山 市営第1駐車場）。2026-11-01 に Google マップで確認"
+    "mapTargetNote": "地図ボタンは駐車場（妙義山 市営第1駐車場）。2026-11-01 に Google マップで確認",
+    "parkingTrailheads": [
+      {
+        "name": "妙義神社",
+        "routes": [
+          1,
+          2,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "sennokurayama",
@@ -71689,7 +72924,16 @@
     "metaTitle": "仙ノ倉山 登山の難易度は中級｜健脚向け日帰り8時間36分・標高差1,366m｜越後湯沢駅からバス【二百名山】｜Yamatch",
     "ogTitle": "仙ノ倉山 登山の難易度は中級｜健脚向け日帰り8時間36分・標高差1,366m｜越後湯沢駅からバス【二百名山】｜Yamatch",
     "metaDescription": "仙ノ倉山（標高2,026m・群馬県・新潟県）の難易度は中級（体力のある中級者向け）。代表コース（平標登山口〜松手山〜平標山〜仙ノ倉山（往復））は8時間36分・11.9km・標高差1366m。新宿から電車とバスで約2時間4分（越後湯沢駅からバス35分）。日帰りできます。谷川連峰の最高峰で二百名山。駐車場・装備・天気も掲載。",
-    "ogDescription": "仙ノ倉山（標高2,026m・群馬県・新潟県）の難易度は中級（体力のある中級者向け）。代表コース（平標登山口〜松手山〜平標山〜仙ノ倉山（往復））は8時間36分・11.9km・標高差1366m。新宿から電車とバスで約2時間4分（越後湯沢駅からバス35分）。日帰りできます。谷川連峰の最高峰で二百名山。駐車場・装備・天気も掲載。"
+    "ogDescription": "仙ノ倉山（標高2,026m・群馬県・新潟県）の難易度は中級（体力のある中級者向け）。代表コース（平標登山口〜松手山〜平標山〜仙ノ倉山（往復））は8時間36分・11.9km・標高差1366m。新宿から電車とバスで約2時間4分（越後湯沢駅からバス35分）。日帰りできます。谷川連峰の最高峰で二百名山。駐車場・装備・天気も掲載。",
+    "parkingTrailheads": [
+      {
+        "name": "平標登山口",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "houkyozan",
@@ -72170,7 +73414,17 @@
     "metaTitle": "宝篋山 登山の難易度は初級｜日帰り3時間34分・標高差500m｜つくば駅からバス｜Yamatch",
     "ogTitle": "宝篋山 登山の難易度は初級｜日帰り3時間34分・標高差500m｜つくば駅からバス｜Yamatch",
     "metaDescription": "宝篋山（標高461m・茨城県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（宝篋山小田休憩所〜極楽寺コース〜宝篋山〜常願寺コース（周回））は3時間34分・6.2km・標高差500m。新宿から電車とバスで約1時間49分（つくば駅からバス）。日帰りできます。筑波山から南東に連なる筑波連山の支峰で、つくば市と土浦市の境にある標高461mの山。駐車場・装備・天気も掲載。",
-    "ogDescription": "宝篋山（標高461m・茨城県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（宝篋山小田休憩所〜極楽寺コース〜宝篋山〜常願寺コース（周回））は3時間34分・6.2km・標高差500m。新宿から電車とバスで約1時間49分（つくば駅からバス）。日帰りできます。筑波山から南東に連なる筑波連山の支峰で、つくば市と土浦市の境にある標高461mの山。駐車場・装備・天気も掲載。"
+    "ogDescription": "宝篋山（標高461m・茨城県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（宝篋山小田休憩所〜極楽寺コース〜宝篋山〜常願寺コース（周回））は3時間34分・6.2km・標高差500m。新宿から電車とバスで約1時間49分（つくば駅からバス）。日帰りできます。筑波山から南東に連なる筑波連山の支峰で、つくば市と土浦市の境にある標高461mの山。駐車場・装備・天気も掲載。",
+    "parkingTrailheads": [
+      {
+        "name": "宝篋山小田休憩所",
+        "routes": [
+          1,
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "ryugatake",
@@ -72576,7 +73830,17 @@
     "metaTitle": "竜ヶ岳 登山の難易度は初〜中級｜日帰り4時間7分・標高差621m｜河口湖駅からバス57分｜Yamatch",
     "ogTitle": "竜ヶ岳 登山の難易度は初〜中級｜日帰り4時間7分・標高差621m｜河口湖駅からバス57分｜Yamatch",
     "metaDescription": "竜ヶ岳（標高1,485m・山梨県・静岡県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（本栖湖キャンプ場〜竜ヶ岳〜湖畔登山口（周回））は4時間7分・6.6km・標高差621m。新宿から電車とバスで約2時間55分（河口湖駅からバス57分）。日帰りできます。富士五湖でいちばん深い本栖湖の南にそびえる、標高1,485mの山。駐車場・装備・天気も掲載。",
-    "ogDescription": "竜ヶ岳（標高1,485m・山梨県・静岡県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（本栖湖キャンプ場〜竜ヶ岳〜湖畔登山口（周回））は4時間7分・6.6km・標高差621m。新宿から電車とバスで約2時間55分（河口湖駅からバス57分）。日帰りできます。富士五湖でいちばん深い本栖湖の南にそびえる、標高1,485mの山。駐車場・装備・天気も掲載。"
+    "ogDescription": "竜ヶ岳（標高1,485m・山梨県・静岡県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（本栖湖キャンプ場〜竜ヶ岳〜湖畔登山口（周回））は4時間7分・6.6km・標高差621m。新宿から電車とバスで約2時間55分（河口湖駅からバス57分）。日帰りできます。富士五湖でいちばん深い本栖湖の南にそびえる、標高1,485mの山。駐車場・装備・天気も掲載。",
+    "parkingTrailheads": [
+      {
+        "name": "本栖湖キャンプ場（竜ヶ岳登山道入口）",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "narukamiyama",
@@ -73025,7 +74289,17 @@
     "metaTitle": "鳴神山 登山の難易度は初級｜日帰り2時間58分・標高差585m｜桐生駅北口からバス｜Yamatch",
     "ogTitle": "鳴神山 登山の難易度は初級｜日帰り2時間58分・標高差585m｜桐生駅北口からバス｜Yamatch",
     "metaDescription": "鳴神山（標高980m・群馬県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（駒形登山口〜鳴神山〜椚田峠〜赤柴登山口（周回））は2時間58分・5.5km・標高差585m。新宿から電車とバスで約2時間57分（桐生駅北口からバス）。日帰りできます。群馬県桐生市の北にある標高980mの山で、桐生岳と仁田山岳の2つの頂からなる。駐車場・装備・天気も掲載。",
-    "ogDescription": "鳴神山（標高980m・群馬県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（駒形登山口〜鳴神山〜椚田峠〜赤柴登山口（周回））は2時間58分・5.5km・標高差585m。新宿から電車とバスで約2時間57分（桐生駅北口からバス）。日帰りできます。群馬県桐生市の北にある標高980mの山で、桐生岳と仁田山岳の2つの頂からなる。駐車場・装備・天気も掲載。"
+    "ogDescription": "鳴神山（標高980m・群馬県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（駒形登山口〜鳴神山〜椚田峠〜赤柴登山口（周回））は2時間58分・5.5km・標高差585m。新宿から電車とバスで約2時間57分（桐生駅北口からバス）。日帰りできます。群馬県桐生市の北にある標高980mの山で、桐生岳と仁田山岳の2つの頂からなる。駐車場・装備・天気も掲載。",
+    "parkingTrailheads": [
+      {
+        "name": "駒形登山口",
+        "routes": [
+          1,
+          3
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "bukkasan",
@@ -73423,7 +74697,16 @@
     "metaTitle": "仏果山 登山の難易度は初級｜日帰り3時間41分・標高差607m｜本厚木駅からバス43分｜Yamatch",
     "ogTitle": "仏果山 登山の難易度は初級｜日帰り3時間41分・標高差607m｜本厚木駅からバス43分｜Yamatch",
     "metaDescription": "仏果山（標高747m・神奈川県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（仏果山登山口〜宮ヶ瀬越〜仏果山〜高取山（往復））は3時間41分・5.7km・標高差607m。新宿から電車とバスで約1時間41分（本厚木駅からバス43分）。日帰りできます。丹沢山地の東部、愛川町と清川村の境にある標高747mの山。駐車場・装備・天気も掲載。",
-    "ogDescription": "仏果山（標高747m・神奈川県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（仏果山登山口〜宮ヶ瀬越〜仏果山〜高取山（往復））は3時間41分・5.7km・標高差607m。新宿から電車とバスで約1時間41分（本厚木駅からバス43分）。日帰りできます。丹沢山地の東部、愛川町と清川村の境にある標高747mの山。駐車場・装備・天気も掲載。"
+    "ogDescription": "仏果山（標高747m・神奈川県）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（仏果山登山口〜宮ヶ瀬越〜仏果山〜高取山（往復））は3時間41分・5.7km・標高差607m。新宿から電車とバスで約1時間41分（本厚木駅からバス43分）。日帰りできます。丹沢山地の東部、愛川町と清川村の境にある標高747mの山。駐車場・装備・天気も掲載。",
+    "parkingTrailheads": [
+      {
+        "name": "仏果山登山口",
+        "routes": [
+          1
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "dodairasan",
@@ -73856,7 +75139,16 @@
     "metaTitle": "堂平山 登山の難易度は初〜中級｜日帰り4時間58分・標高差916m｜小川町駅からバス31分｜Yamatch",
     "ogTitle": "堂平山 登山の難易度は初〜中級｜日帰り4時間58分・標高差916m｜小川町駅からバス31分｜Yamatch",
     "metaDescription": "堂平山（標高876m・埼玉県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（皆谷バス停〜笠山〜堂平山〜剣ヶ峰〜白石車庫（縦走））は4時間58分・9.8km・標高差916m。新宿から電車とバスで約1時間48分（小川町駅からバス31分）。日帰りできます。小川町・ときがわ町・東秩父村の境にある標高876mの山で、笠山・大霧山と並ぶ比企三山のひとつ。駐車場・装備・天気も掲載。",
-    "ogDescription": "堂平山（標高876m・埼玉県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（皆谷バス停〜笠山〜堂平山〜剣ヶ峰〜白石車庫（縦走））は4時間58分・9.8km・標高差916m。新宿から電車とバスで約1時間48分（小川町駅からバス31分）。日帰りできます。小川町・ときがわ町・東秩父村の境にある標高876mの山で、笠山・大霧山と並ぶ比企三山のひとつ。駐車場・装備・天気も掲載。"
+    "ogDescription": "堂平山（標高876m・埼玉県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（皆谷バス停〜笠山〜堂平山〜剣ヶ峰〜白石車庫（縦走））は4時間58分・9.8km・標高差916m。新宿から電車とバスで約1時間48分（小川町駅からバス31分）。日帰りできます。小川町・ときがわ町・東秩父村の境にある標高876mの山で、笠山・大霧山と並ぶ比企三山のひとつ。駐車場・装備・天気も掲載。",
+    "parkingTrailheads": [
+      {
+        "name": "剣ヶ峰駐車場",
+        "routes": [
+          2
+        ],
+        "by": ""
+      }
+    ]
   },
   {
     "id": "takamatsuyama",

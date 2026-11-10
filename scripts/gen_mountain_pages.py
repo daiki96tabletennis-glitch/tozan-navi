@@ -785,6 +785,39 @@ def car_note(mt):
     return esc(f'※登山口の駐車場までの時間で、{tail}')
 
 
+def _course_nums(nums):
+    nums = sorted(nums)
+    if len(nums) >= 3 and nums == list(range(nums[0], nums[-1] + 1)):
+        return f"コース{nums[0]}〜{nums[-1]}"
+    return "コース" + "・".join(str(n) for n in nums)
+
+
+def parking_trailheads_row(mt):
+    """駐車場がどの登山口・どのコースに対応するか（parkingTrailheads。2026-11-10〜。運営者の指示）。
+    対応しないコースは「別の登山口」として登山口の名前を添える"""
+    ents = mt.get("parkingTrailheads") or []
+    if not ents:
+        return ""
+    routes = mt.get("routes") or []
+    used = set()
+    lines = []
+    for e in ents:
+        used.update(e["routes"])
+        by = f'<span class="pk-th-by">ここから{esc(e["by"])}</span>' if e.get("by") else ""
+        lines.append(f'<span class="pk-th"><b>{esc(e["name"])}</b>（{_course_nums(e["routes"])}）{by}</span>')
+    others = []
+    for i, r in enumerate(routes, start=1):
+        if i in used:
+            continue
+        nm = r.get("trailheadName") or re.split("〜", r.get("name") or "")[0]
+        others.append(f"コース{i}（{nm}）")
+    if others:
+        lines.append(f'<span class="pk-th-other">{esc("・".join(others))}は別の登山口から歩きます</span>')
+    # ラベルを「登山口」にすると mountain-engine.js が山の登山口の文で上書きするので別の名前にする
+    return ('<div class="info-row"><span class="info-label">対応する<br>登山口</span>'
+            f'<span class="info-val">{"".join(lines)}</span></div>\n')
+
+
 def render_parking(mt):
     parking = esc(mt.get("parking") or "")
     address = esc(mt.get("address") or mt.get("trailheadAddress") or "")
@@ -803,6 +836,7 @@ def render_parking(mt):
         f'<span class="info-val">{parking}</span></div>\n'
         f'<div class="info-row"><span class="info-label">住所</span>'
         f'<span class="info-val">{address}</span></div>\n'
+        f'{parking_trailheads_row(mt)}'
         '</div>\n'
         f'{map_target}{map_btns}\n'
         '</div>'
