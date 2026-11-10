@@ -140,7 +140,8 @@
         "source": "YAMAPモデルコース（model-courses/94542）",
         "sourceUrl": "https://yamap.com/model-courses/94542",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "菩提峠〜表尾根〜塔ノ岳〜丹沢山（往復）",
@@ -153,7 +154,8 @@
         "trailheadName": "菩提峠",
         "source": "YAMAPモデルコース（model-courses/19660）",
         "sourceUrl": "https://yamap.com/model-courses/19660",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "本谷林道〜天王寺峠〜丹沢山（周回）",
@@ -166,7 +168,8 @@
         "trailheadName": "本谷林道出合（塩水橋）",
         "source": "YAMAPモデルコース（model-courses/38641）",
         "sourceUrl": "https://yamap.com/model-courses/38641",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       }
     ],
     "driveTime": 50,
@@ -583,7 +586,8 @@
           "gradedRoute": "富士山(富士宮口)",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "id": "yoshida",
@@ -608,7 +612,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "subashiri",
@@ -632,7 +637,8 @@
           "gradedRoute": "富士山(須走口)",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 130,
@@ -1182,7 +1188,8 @@
         "source": "YAMAPモデルコース（model-courses/121）",
         "sourceUrl": "https://yamap.com/model-courses/121",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "つつじヶ丘〜おたつ石コース〜女体山・男体山（往復）",
@@ -1195,7 +1202,8 @@
         "trailheadName": "つつじヶ丘",
         "source": "YAMAPモデルコース（model-courses/9783）",
         "sourceUrl": "https://yamap.com/model-courses/9783",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "つくし湖〜薬王院コース〜男体山・女体山（往復）",
@@ -1208,7 +1216,8 @@
         "trailheadName": "つくし湖（薬王院コース入口）",
         "source": "YAMAPモデルコース（model-courses/19406）",
         "sourceUrl": "https://yamap.com/model-courses/19406",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 140,
@@ -1602,7 +1611,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "三峯神社〜白岩山〜雲取山（往復）",
@@ -1615,7 +1625,8 @@
         "trailheadName": "三峯神社",
         "source": "YAMAPモデルコース（model-courses/25532）",
         "sourceUrl": "https://yamap.com/model-courses/25532",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "鴨沢〜七ツ石山〜雲取山〜白岩山〜三峯神社（縦走・1泊2日）",
@@ -1652,7 +1663,8 @@
           "lastBusDay": "平日・土日祝とも",
           "note": "紅葉の時期・連休は大幅な遅れや特別ダイヤあり",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%89%E5%B3%AF%E7%A5%9E%E7%A4%BE&to=%E4%B8%89%E5%B3%B0%E5%8F%A3&type=1"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 130,
@@ -2093,7 +2105,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "天城縦走登山口〜万二郎岳〜万三郎岳〜八丁池〜八丁池口（縦走）",
@@ -2129,7 +2142,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%85%AB%E4%B8%81%E6%B1%A0%E5%8F%A3&to=%E4%BF%AE%E5%96%84%E5%AF%BA&type=1",
           "timetableUrl": "https://www.tokaibus.jp/rosen/timetable.html"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "天城縦走登山口〜万三郎岳〜八丁池〜天城峠（縦走）",
@@ -2174,7 +2188,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A4%A9%E5%9F%8E%E5%B3%A0&to=%E4%BF%AE%E5%96%84%E5%AF%BA&type=1",
           "timetableUrl": "https://www.tokaibus.jp/rosen/timetable.html"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 140,
@@ -2578,7 +2593,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "id": "saketsuishi-route",
@@ -2594,7 +2610,8 @@
         "trailheadName": "丸川峠分岐（裂石）",
         "source": "YAMAPモデルコース（model-courses/17253）",
         "sourceUrl": "https://yamap.com/model-courses/17253",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       },
       {
         "id": "ishimaru-loop",
@@ -2611,7 +2628,8 @@
         "source": "YAMAPモデルコース（model-courses/4139）",
         "sourceUrl": "https://yamap.com/model-courses/4139",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 160,
@@ -3135,7 +3153,8 @@
         "source": "YAMAPモデルコース（model-courses/12178）",
         "sourceUrl": "https://yamap.com/model-courses/12178",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "上落合橋〜八丁峠〜八丁尾根〜両神山（往復）",
@@ -3157,7 +3176,8 @@
           "basis": "official",
           "note": "八丁尾根の岩稜帯。両神山は鎖場や急斜面での転落・滑落による遭難が多い",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 165,
@@ -3579,7 +3599,8 @@
         "source": "YAMAPモデルコース（model-courses/9864）",
         "sourceUrl": "https://yamap.com/model-courses/9864",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "毛木平〜甲武信ヶ岳〜三宝山〜十文字峠（周回）",
@@ -3601,7 +3622,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "西沢渓谷入口〜徳ちゃん新道〜木賊山〜甲武信ヶ岳（往復）",
@@ -3622,7 +3644,8 @@
           "gradedRoute": "甲武信ヶ岳（西沢渓谷入口）＜徳ちゃん新道＞",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 200,
@@ -4072,7 +4095,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "みずがき山自然公園〜不動滝〜瑞牆山〜富士見平小屋（周回）",
@@ -4085,7 +4109,8 @@
         "trailheadName": "みずがき山自然公園",
         "source": "YAMAPモデルコース（model-courses/22279）",
         "sourceUrl": "https://yamap.com/model-courses/22279",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       },
       {
         "name": "瑞牆山荘〜瑞牆山〜富士見平〜金峰山（往復）",
@@ -4107,7 +4132,8 @@
           "basis": "contains",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 180,
@@ -4516,7 +4542,8 @@
         "trailheadName": "黒檜山登山口",
         "source": "YAMAPモデルコース（model-courses/52）",
         "sourceUrl": "https://yamap.com/model-courses/52",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       },
       {
         "name": "黒檜山登山口〜黒檜山（往復）",
@@ -4529,7 +4556,8 @@
         "trailheadName": "黒檜山登山口",
         "source": "YAMAPモデルコース（model-courses/10038）",
         "sourceUrl": "https://yamap.com/model-courses/10038",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "花見ヶ原森林公園〜黒檜山（往復）",
@@ -4542,7 +4570,8 @@
         "trailheadName": "花見ヶ原森林公園",
         "source": "YAMAPモデルコース（model-courses/13530）",
         "sourceUrl": "https://yamap.com/model-courses/13530",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "あかぎ広場前〜黒檜山〜駒ヶ岳（周回）",
@@ -4556,7 +4585,8 @@
         "sourceUrl": "https://yamap.com/model-courses/94751",
         "lastVerified": "2026-11-09",
         "coeff": 13,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 180,
@@ -5027,7 +5057,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "mawarimedaira-roundtrip",
@@ -5051,7 +5082,8 @@
           "gradedRoute": "金峰山（廻り目平）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "id": "mizugaki-sanso-roundtrip",
@@ -5075,7 +5107,8 @@
           "gradedRoute": "金峰山（瑞牆山荘）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 180,
@@ -5569,7 +5602,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "青木鉱泉〜ドンドコ沢〜地蔵岳〜観音岳〜薬師岳（周回）",
@@ -5594,7 +5628,8 @@
           "gradedRoute": "鳳凰山（青木鉱泉）＜地蔵岳・中道＞",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "loop"
       },
       {
         "name": "夜叉神峠〜薬師岳〜観音岳〜地蔵岳〜御座石鉱泉（縦走）",
@@ -5627,7 +5662,8 @@
           "source": "Yahoo!乗換案内（2026-11-09）",
           "lastVerified": "2026-11-09",
           "note": "路線バスは無い（乗換案内で見つからない）"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 175,
@@ -6056,7 +6092,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "梵字飯場跡〜志津峠〜男体山（往復）",
@@ -6069,7 +6106,8 @@
         "trailheadName": "梵字飯場跡",
         "source": "YAMAPモデルコース（model-courses/21293）",
         "sourceUrl": "https://yamap.com/model-courses/21293",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "二荒山神社〜男体山〜志津峠〜三本松（縦走）",
@@ -6105,7 +6143,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%89%E6%9C%AC%E6%9D%BE&to=%E6%9D%B1%E6%AD%A6%E6%97%A5%E5%85%89&type=1",
           "timetableUrl": "https://www.tobu-bus.com/pc/area/nikko/"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 175,
@@ -6537,7 +6576,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "広河原〜北岳〜北岳山荘〜間ノ岳（周回・1泊2日）",
@@ -6559,7 +6599,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "白峰三山縦走：広河原〜北岳〜間ノ岳〜農鳥岳〜奈良田（2泊3日）",
@@ -6603,7 +6644,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A5%88%E8%89%AF%E7%94%B0%E6%B8%A9%E6%B3%89&to=%E8%BA%AB%E5%BB%B6&type=1",
           "timetableUrl": "https://www.town.hayakawa.yamanashi.jp/people/taffic.html"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 140,
@@ -7064,7 +7106,8 @@
           "gradedRoute": "赤岳（美濃戸）＜北沢・地蔵尾根＞／赤岳（美濃戸）＜南沢・文三郎＞",
           "basis": "contains",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "loop"
       },
       {
         "id": "minotoguchi-roundtrip",
@@ -7089,7 +7132,8 @@
           "basis": "contains",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "kitazawa-loop",
@@ -7113,7 +7157,8 @@
           "gradedRoute": "赤岳・横岳・硫黄（美濃戸）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "loop"
       }
     ],
     "driveTime": 175,
@@ -7616,7 +7661,8 @@
           "gradedRoute": "蓼科山（七合目登山口）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "すずらん峠〜幸徳平〜蓼科山（往復）",
@@ -7629,7 +7675,8 @@
         "trailheadName": "すずらん峠（蓼科山登山口）",
         "source": "YAMAPモデルコース（model-courses/7752）",
         "sourceUrl": "https://yamap.com/model-courses/7752",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "すずらん峠〜蓼科山〜蓼科山荘〜竜源橋（周回）",
@@ -7642,7 +7689,8 @@
         "trailheadName": "すずらん峠（蓼科山登山口）",
         "source": "YAMAPモデルコース（model-courses/19575）",
         "sourceUrl": "https://yamap.com/model-courses/19575",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       }
     ],
     "driveTime": 200,
@@ -8072,7 +8120,8 @@
         "trailheadName": "車山肩バス停",
         "source": "YAMAPモデルコース（model-courses/24199）",
         "sourceUrl": "https://yamap.com/model-courses/24199",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       },
       {
         "name": "車山肩〜車山〜蝶々深山〜クヌルプヒュッテ（周回）",
@@ -8085,7 +8134,8 @@
         "trailheadName": "車山肩バス停",
         "source": "YAMAPモデルコース（model-courses/18128）",
         "sourceUrl": "https://yamap.com/model-courses/18128",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       },
       {
         "name": "車山肩〜車山〜南の耳〜男女倉山〜八島ヶ原〜蝶々深山（周回）",
@@ -8098,7 +8148,8 @@
         "trailheadName": "車山肩バス停",
         "source": "YAMAPモデルコース（model-courses/19649）",
         "sourceUrl": "https://yamap.com/model-courses/19649",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       },
       {
         "name": "霧ヶ峰（チャプリン）〜コロボックルヒュッテ〜車山（往復）",
@@ -8112,7 +8163,8 @@
         "sourceUrl": "https://yamap.com/model-courses/69926",
         "lastVerified": "2026-11-09",
         "coeff": 12,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 175,
@@ -8538,7 +8590,8 @@
         "lastVerified": "2026-10-24",
         "note": "前掛山へ登れるのは噴火警戒レベル1のときだけ（火口からおおむね500mまで）。登る前に気象庁と小諸市の情報を確認",
         "noteSourceUrl": "https://www.pref.nagano.lg.jp/sakuchi/sakuchi-shokan/kanko/asamatozan.html",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "車坂峠〜トーミの頭〜黒斑山（往復）",
@@ -8560,7 +8613,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "浅間山荘〜火山館〜賽の河原〜前掛山（往復）",
@@ -8583,7 +8637,8 @@
           "gradedRoute": "前掛山（浅間登山口）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 200,
@@ -8991,7 +9046,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "nishikuro-roundtrip",
@@ -9015,7 +9071,8 @@
           "gradedRoute": "谷川岳＜西黒尾根＞",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "id": "shigekura-traverse",
@@ -9039,7 +9096,8 @@
           "gradedRoute": "谷川岳＜西黒尾根＞",
           "basis": "contains",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 180,
@@ -9554,7 +9612,8 @@
         "source": "YAMAPモデルコース（model-courses/94691）",
         "sourceUrl": "https://yamap.com/model-courses/94691",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "峠の茶屋〜朝日岳〜茶臼岳（周回）",
@@ -9568,7 +9627,8 @@
         "source": "YAMAPモデルコース（model-courses/98343）",
         "sourceUrl": "https://yamap.com/model-courses/98343",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "峠の茶屋〜茶臼岳〜朝日岳〜三本槍岳（往復）",
@@ -9582,7 +9642,8 @@
         "source": "YAMAPモデルコース（model-courses/94920）",
         "sourceUrl": "https://yamap.com/model-courses/94920",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 215,
@@ -10071,7 +10132,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "suganuma-roundtrip",
@@ -10095,7 +10157,8 @@
           "gradedRoute": "日光白根山＜菅沼＞",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "id": "yumoto-roundtrip",
@@ -10111,7 +10174,8 @@
         "trailheadName": "湯元温泉（前白根山登り口）",
         "source": "YAMAPモデルコース（model-courses/19642）",
         "sourceUrl": "https://yamap.com/model-courses/19642",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 200,
@@ -10659,7 +10723,8 @@
           "gradedRoute": "剣ヶ峰山→武尊山",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "loop"
       },
       {
         "name": "川場スキー場（リフト利用）〜剣ヶ峰山〜武尊山（往復）",
@@ -10676,7 +10741,8 @@
         "status": {
           "state": "caution",
           "label": "積雪期のルート"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "オグナほたか（武尊山登山口）〜高手山〜剣ヶ峰山〜武尊山（往復）",
@@ -10689,7 +10755,8 @@
         "trailheadName": "武尊山登山口（オグナほたか）",
         "source": "YAMAPモデルコース（model-courses/23860）",
         "sourceUrl": "https://yamap.com/model-courses/23860",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 175,
@@ -10981,7 +11048,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "id": "kuroto-roundtrip",
@@ -11006,7 +11074,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04",
           "note": "黒戸尾根"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 205,
@@ -11570,7 +11639,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "id": "kashiwagi-roundtrip",
@@ -11586,7 +11656,8 @@
         "trailheadName": "柏木登山口",
         "source": "YAMAPモデルコース（model-courses/17364）",
         "sourceUrl": "https://yamap.com/model-courses/17364",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 205,
@@ -12151,7 +12222,8 @@
           "gradedRoute": "白馬岳（栂池）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "id": "daisekkei-roundtrip",
@@ -12186,7 +12258,8 @@
           "lastVerified": "2026-11-04",
           "note": "大雪渓"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "renge-roundtrip",
@@ -12202,7 +12275,8 @@
         "trailheadName": "蓮華温泉",
         "source": "YAMAPモデルコース（model-courses/20515）",
         "sourceUrl": "https://yamap.com/model-courses/20515",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 250,
@@ -12740,7 +12814,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "sanbondaki-roundtrip",
@@ -12756,7 +12831,8 @@
         "trailheadName": "三本滝",
         "source": "YAMAPモデルコース（model-courses/33900）",
         "sourceUrl": "https://yamap.com/model-courses/33900",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "id": "sanbondaki-traverse",
@@ -12772,7 +12848,8 @@
         "trailheadName": "三本滝",
         "source": "YAMAPモデルコース（model-courses/22870）",
         "sourceUrl": "https://yamap.com/model-courses/22870",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "driveTime": 230,
@@ -13380,7 +13457,8 @@
         "source": "YAMAPモデルコース（model-courses/36337）",
         "sourceUrl": "https://yamap.com/model-courses/36337",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "室堂〜雄山〜大汝山〜真砂岳〜別山（周回）",
@@ -13402,7 +13480,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 360,
@@ -13880,7 +13959,8 @@
           "lastVerified": "2026-11-04",
           "note": "カニのタテバイ・ヨコバイ"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "馬場島〜早月尾根〜剱岳（往復・山小屋泊）",
@@ -13901,7 +13981,8 @@
           "gradedRoute": "剱岳（馬場島）＜早月尾根＞",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "室堂〜一ノ越〜立山〜別山〜前剱〜剱岳〜雷鳥沢（周回・山小屋泊）",
@@ -13923,7 +14004,8 @@
           "basis": "contains",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 360,
@@ -14405,7 +14487,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "hidazawa-roundtrip",
@@ -14429,7 +14512,8 @@
           "gradedRoute": "槍ヶ岳（新穂高）＜飛騨乗越＞",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "id": "omote-ginza",
@@ -14453,7 +14537,8 @@
           "gradedRoute": "表銀座（中房温泉・上高地）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 220,
@@ -15030,7 +15115,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "dakesawa-loop",
@@ -15059,7 +15145,8 @@
           "basis": "contains",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "id": "nishiho-traverse",
@@ -15088,7 +15175,8 @@
           "basis": "contains",
           "lastVerified": "2026-11-04",
           "note": "西穂高岳まででD。西穂高岳〜奥穂高岳（ジャンダルム）の区間だけの評価は無い"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 220,
@@ -15641,7 +15729,8 @@
         "source": "YAMAPモデルコース（model-courses/198）",
         "sourceUrl": "https://yamap.com/model-courses/198",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "妙高高原スカイケーブル山頂駅〜天狗堂〜妙高山（往復）",
@@ -15654,7 +15743,8 @@
         "trailheadName": "妙高高原スカイケーブル山頂駅",
         "source": "YAMAPモデルコース（model-courses/24637）",
         "sourceUrl": "https://yamap.com/model-courses/24637",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "燕温泉〜天狗堂〜妙高山〜長助池〜麻平（周回）",
@@ -15668,7 +15758,8 @@
         "source": "YAMAPモデルコース（model-courses/24638）",
         "sourceUrl": "https://yamap.com/model-courses/24638",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 255,
@@ -16121,7 +16212,8 @@
         "source": "YAMAPモデルコース（model-courses/95241）",
         "sourceUrl": "https://yamap.com/model-courses/95241",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "桜坂〜井戸尾根〜巻機山〜牛ヶ岳（往復）",
@@ -16135,7 +16227,8 @@
         "source": "YAMAPモデルコース（model-courses/194）",
         "sourceUrl": "https://yamap.com/model-courses/194",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "桜坂〜ヌクビ沢〜割引岳〜巻機山〜井戸尾根（周回）",
@@ -16153,7 +16246,8 @@
           "state": "caution",
           "label": "上級者向け・ヌクビ沢は登り専用"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 210,
@@ -16613,7 +16707,8 @@
         "source": "YAMAPモデルコース（model-courses/1645）",
         "sourceUrl": "https://yamap.com/model-courses/1645",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "大日杉〜地蔵岳〜切合小屋〜飯豊山（往復・1泊2日）",
@@ -16626,7 +16721,8 @@
         "trailheadName": "大日杉小屋",
         "source": "YAMAPモデルコース（model-courses/18120）",
         "sourceUrl": "https://yamap.com/model-courses/18120",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "川入（御沢）〜飯豊山〜駒形山〜御西岳（往復・1泊2日）",
@@ -16640,7 +16736,8 @@
         "source": "YAMAPモデルコース（model-courses/72531）",
         "sourceUrl": "https://yamap.com/model-courses/72531",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 310,
@@ -17160,7 +17257,8 @@
         "source": "YAMAPモデルコース（model-courses/30367）",
         "sourceUrl": "https://yamap.com/model-courses/30367",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "yamanohana-traverse",
@@ -17179,7 +17277,8 @@
         "lastVerified": "2026-10-24",
         "note": "山ノ鼻〜至仏山の登山道は登り専用（下りには使えない）",
         "noteSourceUrl": "https://oze-fnd.or.jp/archives/206052/",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 195,
@@ -17730,7 +17829,8 @@
         "source": "YAMAPモデルコース（model-courses/94676）",
         "sourceUrl": "https://yamap.com/model-courses/94676",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "滝沢登山口〜会津駒ヶ岳〜中門岳（往復）",
@@ -17744,7 +17844,8 @@
         "source": "YAMAPモデルコース（model-courses/191）",
         "sourceUrl": "https://yamap.com/model-courses/191",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "滝沢登山口〜会津駒ヶ岳〜中門岳〜大津岐峠〜キリンテ（縦走）",
@@ -17778,7 +17879,8 @@
           "lastVerified": "2026-11-09",
           "note": "季節運行（アクセス欄と同じ路線。時刻は会津バスの時刻表で）",
           "timetableUrl": "https://www.aizubus.com/rosen"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 280,
@@ -18238,7 +18340,8 @@
         "elevation": "+200m",
         "waypoints": "弓池 → 逢ノ峰",
         "coeff": 7,
-        "trailheadName": "弓池"
+        "trailheadName": "弓池",
+        "courseType": "loop"
       },
       {
         "name": "草津温泉〜本白根山往復",
@@ -18248,7 +18351,8 @@
         "waypoints": "草津温泉 → 本白根山",
         "coeff": 16,
         "trailheadName": "草津温泉",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 205,
@@ -18676,7 +18780,8 @@
         "source": "YAMAPモデルコース（model-courses/190）",
         "sourceUrl": "https://yamap.com/model-courses/190",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "裏磐梯〜銅沼〜弘法清水〜磐梯山（周回）",
@@ -18689,7 +18794,8 @@
         "trailheadName": "裏磐梯登山口",
         "source": "YAMAPモデルコース（model-courses/13350）",
         "sourceUrl": "https://yamap.com/model-courses/13350",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       },
       {
         "name": "猪苗代登山口〜赤埴山〜磐梯山（往復）",
@@ -18702,7 +18808,8 @@
         "trailheadName": "猪苗代登山口（猪苗代スキー場）",
         "source": "YAMAPモデルコース（model-courses/77）",
         "sourceUrl": "https://yamap.com/model-courses/77",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 275,
@@ -19146,7 +19253,8 @@
         "source": "YAMAPモデルコース（model-courses/55305）",
         "sourceUrl": "https://yamap.com/model-courses/55305",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "miike-numayama",
@@ -19192,7 +19300,8 @@
           "lastVerified": "2026-11-09",
           "note": "季節運行（運行期間・時刻は会津バスの時刻表で）",
           "timetableUrl": "https://www.aizubus.com/rosen"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "id": "miharashi-loop",
@@ -19209,7 +19318,8 @@
         "source": "YAMAPモデルコース（model-courses/21243）",
         "sourceUrl": "https://yamap.com/model-courses/21243",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 295,
@@ -19702,7 +19812,8 @@
         "source": "YAMAPモデルコース（model-courses/13329）",
         "sourceUrl": "https://yamap.com/model-courses/13329",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "高尾山口駅〜6号路〜高尾山〜城山〜小仏峠（縦走）",
@@ -19738,7 +19849,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%B0%8F%E4%BB%8F&to=%E9%AB%98%E5%B0%BE%28%E6%9D%B1%E4%BA%AC%E9%83%BD%29&type=1",
           "timetableUrl": "https://transfer.navitime.biz/bus-navi/pc/transfer/DepArrTimeList?snode=00020348&gnode=00020514"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "奥高尾縦走：陣馬高原下〜陣馬山〜景信山〜城山〜高尾山",
@@ -19751,7 +19863,8 @@
         "trailheadName": "陣馬高原下バス停",
         "source": "YAMAPモデルコース（model-courses/20973）",
         "sourceUrl": "https://yamap.com/model-courses/20973",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "driveTime": 55,
@@ -20158,7 +20271,8 @@
         "source": "YAMAPモデルコース（model-courses/95323）",
         "sourceUrl": "https://yamap.com/model-courses/95323",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "大山ケーブル（バス停）〜阿夫利神社下社〜大山（往復）",
@@ -20172,7 +20286,8 @@
         "source": "YAMAPモデルコース（model-courses/63）",
         "sourceUrl": "https://yamap.com/model-courses/63",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "ヤビツ峠〜大山（往復）",
@@ -20185,7 +20300,8 @@
         "trailheadName": "ヤビツ峠",
         "source": "YAMAPモデルコース（model-courses/1162）",
         "sourceUrl": "https://yamap.com/model-courses/1162",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 45,
@@ -20583,7 +20699,8 @@
         "coeff": 28,
         "timeSource": "秦野市観光協会「塔ノ岳コース」（歩行推定時間6時間・14.4km）",
         "timeSourceUrl": "https://www.kankou-hadano.org/climbing/course05.html",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "ヤビツ峠〜表尾根〜塔ノ岳〜大倉（縦走）",
@@ -20596,7 +20713,8 @@
         "trailheadName": "ヤビツ峠",
         "source": "YAMAPモデルコース（model-courses/15375）",
         "sourceUrl": "https://yamap.com/model-courses/15375",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       },
       {
         "name": "大倉〜鍋割山〜塔ノ岳（周回）",
@@ -20610,7 +20728,8 @@
         "source": "YAMAPモデルコース（model-courses/19658）",
         "sourceUrl": "https://yamap.com/model-courses/19658",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 50,
@@ -21027,7 +21146,8 @@
         "timeSource": "YAMA HACK（大倉起点・1泊2日のコースとして掲載）",
         "timeSourceUrl": "https://yamahack.com/3215",
         "timeCheckedAt": "2026-10-12",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "青根（釜立林道）〜姫次〜蛭ヶ岳（往復）",
@@ -21040,7 +21160,8 @@
         "trailheadName": "青根登山口（釜立林道）",
         "source": "YAMAPモデルコース（model-courses/23371）",
         "sourceUrl": "https://yamap.com/model-courses/23371",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "丹沢主脈縦走：西丹沢〜檜洞丸〜蛭ヶ岳〜丹沢山〜塔ノ岳〜大倉（1泊2日）",
@@ -21053,7 +21174,8 @@
         "trailheadName": "西丹沢ビジターセンター",
         "source": "YAMAPモデルコース（model-courses/19662）",
         "sourceUrl": "https://yamap.com/model-courses/19662",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "driveTime": 50,
@@ -21458,7 +21580,8 @@
         "trailheadName": "陣馬高原下バス停",
         "source": "YAMAPモデルコース（model-courses/15260）",
         "sourceUrl": "https://yamap.com/model-courses/15260",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "陣馬高原下〜陣馬山〜一ノ尾根〜陣馬登山口〜藤野駅（縦走）",
@@ -21471,7 +21594,8 @@
         "trailheadName": "陣馬高原下バス停",
         "source": "YAMAPモデルコース（model-courses/35112）",
         "sourceUrl": "https://yamap.com/model-courses/35112",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       },
       {
         "name": "藤野駅〜陣馬登山口〜一ノ尾根〜陣馬山〜明王峠〜相模湖駅（縦走）",
@@ -21485,7 +21609,8 @@
         "source": "YAMAPモデルコース（model-courses/17352）",
         "sourceUrl": "https://yamap.com/model-courses/17352",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       }
     ],
     "driveTime": 75,
@@ -21867,7 +21992,8 @@
         "source": "YAMAPモデルコース（model-courses/8808）",
         "sourceUrl": "https://yamap.com/model-courses/8808",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "公時神社〜金時山〜矢倉沢峠",
@@ -21898,7 +22024,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E9%87%91%E6%99%82%E7%99%BB%E5%B1%B1%E5%8F%A3&to=%E5%BE%A1%E6%AE%BF%E5%A0%B4&type=1",
           "timetableUrl": "https://odakyu-highway.jp/hakone/"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "乙女峠〜長尾山〜金時山（往復）",
@@ -21911,7 +22038,8 @@
         "trailheadName": "乙女峠（乙女口）",
         "source": "YAMAPモデルコース（model-courses/19699）",
         "sourceUrl": "https://yamap.com/model-courses/19699",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 80,
@@ -22353,7 +22481,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "深田記念公園〜茅ヶ岳〜金ヶ岳（往復）",
@@ -22367,7 +22496,8 @@
         "source": "YAMAPモデルコース（model-courses/94601）",
         "sourceUrl": "https://yamap.com/model-courses/94601",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "深田記念公園〜茅ヶ岳〜金ヶ岳（周回）",
@@ -22381,7 +22511,8 @@
         "source": "YAMAPモデルコース（model-courses/22292）",
         "sourceUrl": "https://yamap.com/model-courses/22292",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 125,
@@ -22800,7 +22931,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "徳和〜乾徳山〜道満山〜徳和峠（周回）",
@@ -22822,7 +22954,8 @@
           "basis": "contains",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "大平高原〜乾徳山〜笠盛山〜黒金山（周回）",
@@ -22835,7 +22968,8 @@
         "trailheadName": "大平高原",
         "source": "YAMAPモデルコース（model-courses/20297）",
         "sourceUrl": "https://yamap.com/model-courses/20297",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       }
     ],
     "driveTime": 115,
@@ -23242,7 +23376,8 @@
         "source": "YAMAPモデルコース（model-courses/19948）",
         "sourceUrl": "https://yamap.com/model-courses/19948",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "竹宇駒ヶ岳神社〜矢立石〜日向山（往復）",
@@ -23256,7 +23391,8 @@
         "source": "YAMAPモデルコース（model-courses/94595）",
         "sourceUrl": "https://yamap.com/model-courses/94595",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "矢立石登山口〜日向山〜鞍掛山（往復）",
@@ -23270,7 +23406,8 @@
         "source": "YAMAPモデルコース（model-courses/24529）",
         "sourceUrl": "https://yamap.com/model-courses/24529",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 150,
@@ -23692,7 +23829,8 @@
         "source": "YAMAPモデルコース（model-courses/512）",
         "sourceUrl": "https://yamap.com/model-courses/512",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "白谷沢登山口〜権次入峠〜棒ノ嶺（往復）",
@@ -23705,7 +23843,8 @@
         "trailheadName": "白谷沢登山口",
         "source": "YAMAPモデルコース（model-courses/12228）",
         "sourceUrl": "https://yamap.com/model-courses/12228",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "さわらびの湯〜棒ノ嶺〜岩茸石山〜惣岳山〜御嶽駅（縦走）",
@@ -23719,7 +23858,8 @@
         "source": "YAMAPモデルコース（model-courses/22148）",
         "sourceUrl": "https://yamap.com/model-courses/22148",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       }
     ],
     "driveTime": 105,
@@ -24152,7 +24292,8 @@
         "source": "YAMAPモデルコース（model-courses/12192）",
         "sourceUrl": "https://yamap.com/model-courses/12192",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "奥多摩駅〜愛宕山〜鋸山〜大岳山〜御岳山駅（縦走）",
@@ -24165,7 +24306,8 @@
         "trailheadName": "奥多摩駅",
         "source": "YAMAPモデルコース（model-courses/17265）",
         "sourceUrl": "https://yamap.com/model-courses/17265",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       },
       {
         "name": "大岳鍾乳洞入口〜高岩山〜大岳山〜大滝（周回）",
@@ -24178,7 +24320,8 @@
         "trailheadName": "大岳鍾乳洞入口バス停",
         "source": "YAMAPモデルコース（model-courses/19346）",
         "sourceUrl": "https://yamap.com/model-courses/19346",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       }
     ],
     "driveTime": 95,
@@ -24589,7 +24732,8 @@
         "id": "ichinosawa-roundtrip",
         "trailheadId": "ichinosawa",
         "accessId": "ichinosawa",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "mitsumata-roundtrip",
@@ -24605,7 +24749,8 @@
         "trailheadName": "三股",
         "source": "YAMAPモデルコース（model-courses/1202）",
         "sourceUrl": "https://yamap.com/model-courses/1202",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "id": "mitsumata-traverse",
@@ -24621,7 +24766,8 @@
         "trailheadName": "三股",
         "source": "YAMAPモデルコース（model-courses/30195）",
         "sourceUrl": "https://yamap.com/model-courses/30195",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       }
     ],
     "driveTime": 220,
@@ -25173,7 +25319,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "上高地〜焼岳小屋〜中尾峠〜焼岳 北峰（往復）",
@@ -25187,7 +25334,8 @@
         "source": "YAMAPモデルコース（model-courses/17350）",
         "sourceUrl": "https://yamap.com/model-courses/17350",
         "lastVerified": "2026-10-24",
-        "note": "活火山。噴火警報が出たときは登れない範囲があるので、登る前に気象庁の情報を確認"
+        "note": "活火山。噴火警報が出たときは登れない範囲があるので、登る前に気象庁の情報を確認",
+        "courseType": "out_and_back"
       },
       {
         "name": "新中の湯〜焼岳〜中尾峠〜上高地（縦走）",
@@ -25225,7 +25373,8 @@
           "note": "上高地のバスは季節運行（例年4月下旬〜11月15日）",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%8A%E9%AB%98%E5%9C%B0%E3%83%90%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB&to=%E6%96%B0%E5%B3%B6%E3%80%85&type=1",
           "timetableUrl": "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 230,
@@ -25697,7 +25846,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "大谷原〜赤岩尾根〜冷池山荘〜鹿島槍ヶ岳（往復・1泊2日）",
@@ -25718,7 +25868,8 @@
           "gradedRoute": "鹿島槍ヶ岳（大谷原）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "柏原新道〜鹿島槍ヶ岳〜八峰キレット〜五竜岳〜遠見尾根（縦走・2泊3日）",
@@ -25773,7 +25924,8 @@
           "source": "このサイトの五竜岳の行き方（逆向き）",
           "lastVerified": "2026-11-09",
           "note": "テレキャビンは季節運行。運賃は別（往復2,600円〜）"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 230,
@@ -26191,7 +26343,8 @@
         "source": "YAMAPモデルコース（model-courses/28048）",
         "sourceUrl": "https://yamap.com/model-courses/28048",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "すずらん昆虫館前〜牛奥ノ雁ヶ腹摺山〜小金沢山（往復）",
@@ -26204,7 +26357,8 @@
         "trailheadName": "すずらん昆虫館前バス停",
         "source": "YAMAPモデルコース（model-courses/10510）",
         "sourceUrl": "https://yamap.com/model-courses/10510",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "小屋平〜石丸峠〜小金沢山〜牛奥ノ雁ヶ腹摺山〜すずらん昆虫館前（縦走）",
@@ -26217,7 +26371,8 @@
         "trailheadName": "小屋平バス停",
         "source": "YAMAPモデルコース（model-courses/1293）",
         "sourceUrl": "https://yamap.com/model-courses/1293",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "traverse"
       }
     ],
     "driveTime": 135,
@@ -26655,7 +26810,8 @@
           "gradedRoute": "荒船山（内山峠）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "相沢登山口〜中ノ宮〜艫岩〜荒船山（往復）",
@@ -26668,7 +26824,8 @@
         "trailheadName": "相沢登山口",
         "source": "YAMAPモデルコース（model-courses/20211）",
         "sourceUrl": "https://yamap.com/model-courses/20211",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "荒船不動〜星尾峠〜荒船山（往復）",
@@ -26681,7 +26838,8 @@
         "trailheadName": "荒船不動登山口",
         "source": "YAMAPモデルコース（model-courses/21410）",
         "sourceUrl": "https://yamap.com/model-courses/21410",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 175,
@@ -26945,7 +27103,8 @@
         "trailheadName": "浅間隠山登山口（二度上峠側）",
         "source": "YAMAPモデルコース（model-courses/8938）",
         "sourceUrl": "https://yamap.com/model-courses/8938",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "水無林道側〜浅間隠山（往復）",
@@ -26958,7 +27117,8 @@
         "trailheadName": "浅間隠山登山口（水無林道側）",
         "source": "YAMAPモデルコース（model-courses/1289）",
         "sourceUrl": "https://yamap.com/model-courses/1289",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "浅間隠山登山口〜浅間隠山〜二度上峠〜氷妻山（周回）",
@@ -26971,7 +27131,8 @@
         "trailheadName": "浅間隠山登山口（二度上峠側）",
         "source": "YAMAPモデルコース（model-courses/85797）",
         "sourceUrl": "https://yamap.com/model-courses/85797",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "loop"
       }
     ],
     "driveTime": 200,
@@ -27234,7 +27395,8 @@
           "gradedRoute": "御座山（栗生登山口）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "白岩〜見晴台〜前衛峰〜御座山（往復）",
@@ -27248,7 +27410,8 @@
         "source": "YAMAPモデルコース（model-courses/20645）",
         "sourceUrl": "https://yamap.com/model-courses/20645",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "長者の森〜見晴台〜前衛峰〜御座山（往復）",
@@ -27261,7 +27424,8 @@
         "trailheadName": "長者の森コース登山口",
         "source": "YAMAPモデルコース（model-courses/17321）",
         "sourceUrl": "https://yamap.com/model-courses/17321",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 180,
@@ -27639,7 +27803,8 @@
         "source": "YAMAPモデルコース（model-courses/2999）",
         "sourceUrl": "https://yamap.com/model-courses/2999",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "一の瀬〜ノッキリ〜岩菅山〜裏岩菅山（往復）",
@@ -27661,7 +27826,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "東館山山頂駅〜寺小屋峰〜岩菅山〜一の瀬（縦走）",
@@ -27674,7 +27840,8 @@
         "trailheadName": "東館山山頂駅",
         "source": "YAMAPモデルコース（model-courses/29798）",
         "sourceUrl": "https://yamap.com/model-courses/29798",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "driveTime": 260,
@@ -28106,7 +28273,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "戸隠（飯縄山西登山口）〜萓ノ宮〜飯縄山（往復）",
@@ -28119,7 +28287,8 @@
         "trailheadName": "飯縄山西登山口（戸隠）",
         "source": "YAMAPモデルコース（model-courses/18667）",
         "sourceUrl": "https://yamap.com/model-courses/18667",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "一ノ鳥居〜飯縄山〜霊仙寺山（往復）",
@@ -28133,7 +28302,8 @@
         "source": "YAMAPモデルコース（model-courses/94629）",
         "sourceUrl": "https://yamap.com/model-courses/94629",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 245,
@@ -28544,7 +28714,8 @@
         "source": "YAMAPモデルコース（model-courses/26906）",
         "sourceUrl": "https://yamap.com/model-courses/26906",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "表登山道入口〜しなの木〜日ノ出石〜黒姫山（往復）",
@@ -28557,7 +28728,8 @@
         "trailheadName": "黒姫山表登山道入口",
         "source": "YAMAPモデルコース（model-courses/14535）",
         "sourceUrl": "https://yamap.com/model-courses/14535",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "大橋登山口〜種池〜黒姫山〜峰ノ大池〜西登山口（周回）",
@@ -28571,7 +28743,8 @@
         "source": "YAMAPモデルコース（model-courses/42997）",
         "sourceUrl": "https://yamap.com/model-courses/42997",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 250,
@@ -29014,7 +29187,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "麓登山口〜毛無山〜大見岳〜タカデッキ〜雨ヶ岳〜根原（縦走）",
@@ -29027,7 +29201,8 @@
         "trailheadName": "麓登山口（毛無山駐車場）",
         "source": "YAMAPモデルコース（model-courses/6499）",
         "sourceUrl": "https://yamap.com/model-courses/6499",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       },
       {
         "name": "麓登山口〜毛無山〜タカデッキ〜雨ヶ岳〜端足峠（周回）",
@@ -29040,7 +29215,8 @@
         "trailheadName": "麓登山口（毛無山駐車場）",
         "source": "YAMAPモデルコース（model-courses/19724）",
         "sourceUrl": "https://yamap.com/model-courses/19724",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       }
     ],
     "driveTime": 130,
@@ -29421,7 +29597,8 @@
         "source": "YAMAPモデルコース（model-courses/9999）",
         "sourceUrl": "https://yamap.com/model-courses/9999",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "白砂山登山口〜白砂山〜中尾根の頭〜八間山（周回）",
@@ -29435,7 +29612,8 @@
         "source": "YAMAPモデルコース（model-courses/15536）",
         "sourceUrl": "https://yamap.com/model-courses/15536",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "富士見峠〜八間山〜中尾根の頭〜白砂山（往復）",
@@ -29448,7 +29626,8 @@
         "trailheadName": "野反峠（富士見峠）",
         "source": "YAMAPモデルコース（model-courses/21260）",
         "sourceUrl": "https://yamap.com/model-courses/21260",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 230,
@@ -29848,7 +30027,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "羽衣〜表参道〜七面山〜最高地点〜奥の院（往復）",
@@ -29862,7 +30042,8 @@
         "source": "YAMAPモデルコース（model-courses/88239）",
         "sourceUrl": "https://yamap.com/model-courses/88239",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "羽衣〜表参道〜七面山〜奥の院〜北参道〜赤沢入口（縦走）",
@@ -29899,7 +30080,8 @@
           "note": "行きと同じバス停",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%83%E9%9D%A2%E5%B1%B1%E7%99%BB%E5%B1%B1%E5%8F%A3%E3%83%BB%E8%B5%A4%E6%B2%A2%E5%85%A5%E5%8F%A3&to=%E8%BA%AB%E5%BB%B6&type=1",
           "timetableUrl": "https://www.town.hayakawa.yamanashi.jp/people/taffic.html"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 155,
@@ -30375,7 +30557,8 @@
           "lastVerified": "2026-11-04",
           "note": "前嵓"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "裏越後三山：荒沢岳〜兎岳〜中ノ岳〜越後駒ヶ岳（周回）",
@@ -30402,7 +30585,8 @@
           "lastVerified": "2026-11-04",
           "note": "前嵓"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 240,
@@ -30800,7 +30984,8 @@
         "trailheadName": "三ノ瀬登山口",
         "source": "YAMAPモデルコース（model-courses/32808）",
         "sourceUrl": "https://yamap.com/model-courses/32808",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "二瀬（造林小屋跡）〜和名倉山（往復）",
@@ -30814,7 +30999,8 @@
         "source": "YAMAPモデルコース（model-courses/10880）",
         "sourceUrl": "https://yamap.com/model-courses/10880",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 145,
@@ -31198,7 +31384,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "老平〜小笊ヶ岳〜笊ヶ岳〜布引山〜桧横手山（周回）",
@@ -31212,7 +31399,8 @@
         "source": "YAMAPモデルコース（model-courses/18737）",
         "sourceUrl": "https://yamap.com/model-courses/18737",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "椹島〜笊ヶ岳登山口〜笊ヶ岳（往復）",
@@ -31233,7 +31421,8 @@
           "gradedRoute": "笊ヶ岳(椹島)",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 155,
@@ -31680,7 +31869,8 @@
           "gradedRoute": "餓鬼岳（白沢登山口）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "白沢登山口〜餓鬼岳〜唐沢岳（往復・山小屋泊）",
@@ -31701,7 +31891,8 @@
           "gradedRoute": "餓鬼岳（白沢登山口）",
           "basis": "contains",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 210,
@@ -31960,7 +32151,8 @@
         "trailheadName": "有明山神社（安曇野市営第3駐車場）",
         "source": "YAMAPモデルコース（model-courses/30203）",
         "sourceUrl": "https://yamap.com/model-courses/30203",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "有明荘〜有明山往復",
@@ -31977,7 +32169,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 230,
@@ -32388,7 +32581,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "権兵衛峠〜北沢山〜経ヶ岳（往復）",
@@ -32401,7 +32595,8 @@
         "trailheadName": "権兵衛峠登山口",
         "source": "YAMAPモデルコース（model-courses/9072）",
         "sourceUrl": "https://yamap.com/model-courses/9072",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "大泉所ダム〜大泉山〜経ヶ岳（往復）",
@@ -32414,7 +32609,8 @@
         "trailheadName": "大泉所ダム登山口",
         "source": "YAMAPモデルコース（model-courses/33050）",
         "sourceUrl": "https://yamap.com/model-courses/33050",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 180,
@@ -32832,7 +33028,8 @@
         "source": "YAMAPモデルコース（model-courses/30061）",
         "sourceUrl": "https://yamap.com/model-courses/30061",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "奥岳登山口〜薬師岳〜安達太良山〜くろがね小屋（周回）",
@@ -32846,7 +33043,8 @@
         "source": "YAMAPモデルコース（model-courses/18153）",
         "sourceUrl": "https://yamap.com/model-courses/18153",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "沼尻登山口〜船明神山〜安達太良山〜鉄山（周回）",
@@ -32859,7 +33057,8 @@
         "trailheadName": "沼尻登山口",
         "source": "YAMAPモデルコース（model-courses/10233）",
         "sourceUrl": "https://yamap.com/model-courses/10233",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       }
     ],
     "driveTime": 260,
@@ -33310,7 +33509,8 @@
         "source": "YAMAPモデルコース（model-courses/188）",
         "sourceUrl": "https://yamap.com/model-courses/188",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "グランデコ（ゴンドラ山頂駅）〜西大巓〜西吾妻山（往復）",
@@ -33323,7 +33523,8 @@
         "trailheadName": "グランデコ ゴンドラ山頂駅",
         "source": "YAMAPモデルコース（model-courses/7455）",
         "sourceUrl": "https://yamap.com/model-courses/7455",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "白布峠〜矢筈山〜西大巓〜西吾妻山（往復）",
@@ -33336,7 +33537,8 @@
         "trailheadName": "白布峠",
         "source": "YAMAPモデルコース（model-courses/14162）",
         "sourceUrl": "https://yamap.com/model-courses/14162",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 305,
@@ -33809,7 +34011,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "石抱橋〜道行山〜百草ノ池〜越後駒ヶ岳（往復）",
@@ -33822,7 +34025,8 @@
         "trailheadName": "石抱橋バス停",
         "source": "YAMAPモデルコース（model-courses/22436）",
         "sourceUrl": "https://yamap.com/model-courses/22436",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "駒ヶ岳登山口〜小倉山〜百草ノ池〜越後駒ヶ岳（往復）",
@@ -33835,7 +34039,8 @@
         "trailheadName": "駒ヶ岳登山口",
         "source": "YAMAPモデルコース（model-courses/66828）",
         "sourceUrl": "https://yamap.com/model-courses/66828",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 235,
@@ -34319,7 +34524,8 @@
           "gradedRoute": "平ヶ岳（鷹ノ巣駐車場）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "中ノ岐登山口〜玉子石〜平ヶ岳（往復・宿の送迎を利用）",
@@ -34332,7 +34538,8 @@
         "trailheadName": "平ヶ岳中ノ岐登山口",
         "source": "YAMAPモデルコース（model-courses/17025）",
         "sourceUrl": "https://yamap.com/model-courses/17025",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 280,
@@ -34601,7 +34808,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "小赤沢三合目〜苗場山（往復）",
@@ -34622,7 +34830,8 @@
           "gradedRoute": "苗場山（小赤沢三合目）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "赤湯温泉〜桂ノ沢〜苗場山（往復・1泊2日）",
@@ -34635,7 +34844,8 @@
         "trailheadName": "小日橋（赤湯温泉道入口）",
         "source": "YAMAPモデルコース（model-courses/79131）",
         "sourceUrl": "https://yamap.com/model-courses/79131",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 210,
@@ -35083,7 +35293,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "雨飾温泉（新潟県側）〜中ノ池〜雨飾山（往復）",
@@ -35104,7 +35315,8 @@
           "gradedRoute": "雨飾山（雨飾温泉駐車場）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 280,
@@ -35520,7 +35732,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "myoko-loop",
@@ -35537,7 +35750,8 @@
         "source": "YAMAPモデルコース（model-courses/24565）",
         "sourceUrl": "https://yamap.com/model-courses/24565",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 265,
@@ -36069,7 +36283,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "戸隠キャンプ場〜弥勒尾根〜高妻山（往復）",
@@ -36083,7 +36298,8 @@
         "source": "YAMAPモデルコース（model-courses/26921）",
         "sourceUrl": "https://yamap.com/model-courses/26921",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "戸隠奥社〜戸隠山〜九頭龍山〜一不動〜高妻山（周回）",
@@ -36109,7 +36325,8 @@
           "basis": "contains",
           "lastVerified": "2026-11-04",
           "note": "戸隠山の蟻の塔渡り"
-        }
+        },
+        "courseType": "loop"
       }
     ],
     "driveTime": 255,
@@ -36530,7 +36747,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "新穂高温泉〜笠新道〜笠ヶ岳〜抜戸岳〜弓折岳〜鏡平（周回・1泊2日）",
@@ -36552,7 +36770,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 260,
@@ -36983,7 +37202,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "御岳ロープウェイ飯森高原駅〜女人堂〜剣ヶ峰（往復・黒沢口）",
@@ -37005,7 +37225,8 @@
           "gradedRoute": "御嶽山（飯森高原駅）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "濁河温泉〜五の池小屋〜飛騨頂上〜剣ヶ峰（往復・小坂口）",
@@ -37027,7 +37248,8 @@
           "gradedRoute": "御嶽山（濁河）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 265,
@@ -37450,7 +37672,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "karamatsu-traverse",
@@ -37504,7 +37727,8 @@
           "lastVerified": "2026-11-09",
           "note": "リフト・ゴンドラは季節運行。運賃は別",
           "timetableUrl": "https://www.alpico.co.jp/traffic/local/hakuba/"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 235,
@@ -37985,7 +38209,8 @@
           "gradedRoute": "皇海山（銀山平）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "loop"
       },
       {
         "name": "銀山平〜庚申山〜鋸山〜皇海山（往復）",
@@ -38006,7 +38231,8 @@
           "gradedRoute": "皇海山（銀山平）",
           "basis": "contains",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 210,
@@ -38308,7 +38534,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "nogaike-loop",
@@ -38325,7 +38552,8 @@
         "source": "YAMAPモデルコース（model-courses/24833）",
         "sourceUrl": "https://yamap.com/model-courses/24833",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 185,
@@ -38890,7 +39118,8 @@
         "source": "YAMAPモデルコース（model-courses/30527）",
         "sourceUrl": "https://yamap.com/model-courses/30527",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "山本小屋〜美しの塔〜王ヶ頭（往復）",
@@ -38903,7 +39132,8 @@
         "trailheadName": "山本小屋（美ヶ原高原）",
         "source": "YAMAPモデルコース（model-courses/102198）",
         "sourceUrl": "https://yamap.com/model-courses/102198",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "三城（百曲り）〜王ヶ頭〜王ヶ鼻〜ダテ河原（周回）",
@@ -38924,7 +39154,8 @@
           "gradedRoute": "美ヶ原（三城牧場）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "loop"
       }
     ],
     "driveTime": 210,
@@ -39328,7 +39559,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "id": "goryu-traverse",
@@ -39381,7 +39613,8 @@
           "source": "このサイトの五竜岳の行き方（逆向き）",
           "lastVerified": "2026-11-09",
           "note": "テレキャビンは季節運行。運賃は別（往復2,600円〜）"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "id": "kaerazu-traverse",
@@ -39431,7 +39664,8 @@
           "lastVerified": "2026-11-09",
           "note": "季節運行",
           "timetableUrl": "https://www.alpico.co.jp/traffic/local/hakuba/sarukura/"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 240,
@@ -39942,7 +40176,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "千畳敷〜檜尾岳〜熊沢岳〜空木岳〜池山尾根（縦走・1泊2日）",
@@ -39963,7 +40198,8 @@
           "gradedRoute": "木曽駒→空木（千畳敷・駒ヶ根高原）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "伊奈川ダム〜越百山〜南駒ヶ岳〜空木岳（周回・2泊3日）",
@@ -39988,7 +40224,8 @@
           "gradedRoute": "空木→越百（今朝沢橋）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "loop"
       }
     ],
     "driveTime": 185,
@@ -40395,7 +40632,8 @@
           "gradedRoute": "恵那山（峰越林道ゲート）＜広河原登山口＞",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "神坂峠〜千両山〜鳥越峠〜大判山〜恵那山（往復）",
@@ -40416,7 +40654,8 @@
           "gradedRoute": "恵那山（神坂峠登山口）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "前宮登山口〜空峠〜一乃宮社〜恵那山（往復）",
@@ -40437,7 +40676,8 @@
           "gradedRoute": "恵那山（前宮登山口）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 255,
@@ -40712,7 +40952,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "越路〜鳥倉登山口〜塩見岳〜蝙蝠岳（往復・2泊3日）",
@@ -40734,7 +40975,8 @@
           "basis": "contains",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 250,
@@ -41165,7 +41407,8 @@
         "source": "YAMAPモデルコース（model-courses/101244）",
         "sourceUrl": "https://yamap.com/model-courses/101244",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "椹島〜千枚岳〜悪沢岳〜荒川中岳〜赤石岳〜椹島（周回・山小屋泊）",
@@ -41187,7 +41430,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 255,
@@ -41671,7 +41915,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "椹島〜赤石岳〜大聖寺平〜荒川岳〜千枚小屋〜椹島（周回・2泊3日）",
@@ -41693,7 +41938,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 255,
@@ -42185,7 +42431,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "聖沢登山口〜聖岳〜兎岳〜百間洞〜赤石岳（縦走・山小屋泊）",
@@ -42236,7 +42483,8 @@
           "lastVerified": "2026-11-09",
           "note": "季節運行",
           "timetableUrl": "https://www.t-forest.com/alpsinfo/bus/"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "椹島〜赤石岳〜百間洞〜兎岳〜聖岳（周回・山小屋泊）",
@@ -42257,7 +42505,8 @@
           "gradedRoute": "赤石岳・聖岳(椹島・聖沢)",
           "basis": "contains",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "loop"
       }
     ],
     "driveTime": 280,
@@ -42720,7 +42969,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "畑薙（茶臼岳登山口）〜茶臼岳〜易老岳〜光岳（往復・2泊3日）",
@@ -42741,7 +42991,8 @@
           "gradedRoute": "茶臼岳・光岳(畑薙大吊橋)",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 280,
@@ -43183,7 +43434,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "太郎平小屋〜薬師峠〜薬師岳（往復・太郎平小屋に泊まる場合）",
@@ -43196,7 +43448,8 @@
         "trailheadName": "太郎平小屋",
         "source": "YAMAPモデルコース（model-courses/23033）",
         "sourceUrl": "https://yamap.com/model-courses/23033",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 355,
@@ -43619,7 +43872,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "飛越新道：飛越トンネル〜寺地山〜北ノ俣岳〜黒部五郎岳（往復・山小屋泊）",
@@ -43640,7 +43894,8 @@
           "gradedRoute": "黒部五郎岳（飛越トンネル）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "折立〜薬師岳・黒部五郎岳（往復・山小屋泊）",
@@ -43654,7 +43909,8 @@
         "source": "YAMAPモデルコース（model-courses/93846）",
         "sourceUrl": "https://yamap.com/model-courses/93846",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 355,
@@ -44080,7 +44336,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "白峰三山：広河原〜北岳〜間ノ岳〜農鳥岳〜奈良田（縦走・2泊3日）",
@@ -44124,7 +44381,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A5%88%E8%89%AF%E7%94%B0%E6%B8%A9%E6%B3%89&to=%E8%BA%AB%E5%BB%B6&type=1",
           "timetableUrl": "https://www.town.hayakawa.yamanashi.jp/people/taffic.html"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "奈良田〜大門沢〜農鳥岳〜間ノ岳〜北岳〜広河原（縦走・2泊3日）",
@@ -44146,7 +44404,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04",
           "note": "逆向き"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 140,
@@ -44572,7 +44831,8 @@
         "trailheadName": "奈良田",
         "source": "YAMAPモデルコース（model-courses/101274）",
         "sourceUrl": "https://yamap.com/model-courses/101274",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "広河原〜北岳〜中白根山〜間ノ岳〜農鳥岳〜奈良田（縦走・山小屋泊）",
@@ -44616,7 +44876,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A5%88%E8%89%AF%E7%94%B0%E6%B8%A9%E6%B3%89&to=%E8%BA%AB%E5%BB%B6&type=1",
           "timetableUrl": "https://www.town.hayakawa.yamanashi.jp/people/taffic.html"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 140,
@@ -45055,7 +45316,8 @@
         "lastVerified": "2026-10-24",
         "note": "2026年は砂防新道の南竜分岐〜黒ボコ岩のあいだが登山道改修工事のため10月下旬まで通行止め（う回路あり。工事の進み具合で前後する）",
         "noteSourceUrl": "https://www.pref.ishikawa.lg.jp/hakusan/tozaninf/attention.html",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "別当出合〜砂防新道〜御前峰〜観光新道（周回）",
@@ -45071,7 +45333,8 @@
         "lastVerified": "2026-10-24",
         "note": "2026年は砂防新道の南竜分岐〜黒ボコ岩のあいだが登山道改修工事のため10月下旬まで通行止め（う回路あり。工事の進み具合で前後する）。2026年は観光新道の別当出合〜別当坂分岐のあいだも整備工事のため11月まで通行止め",
         "noteSourceUrl": "https://www.pref.ishikawa.lg.jp/hakusan/tozaninf/attention.html",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "大白川〜平瀬道〜白山室堂〜御前峰（往復）",
@@ -45092,7 +45355,8 @@
           "gradedRoute": "白山（大白川温泉）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 430,
@@ -45583,7 +45847,8 @@
         "source": "YAMAPモデルコース（model-courses/25423）",
         "sourceUrl": "https://yamap.com/model-courses/25423",
         "lastVerified": "2026-10-24",
-        "note": "活火山。噴火警報が出たときは登れない範囲があるので、登る前に気象庁の情報を確認"
+        "note": "活火山。噴火警報が出たときは登れない範囲があるので、登る前に気象庁の情報を確認",
+        "courseType": "loop"
       },
       {
         "name": "蔵王ロープウェイ地蔵山頂駅〜熊野岳（往復）",
@@ -45598,7 +45863,8 @@
         "sourceUrl": "https://yamap.com/model-courses/20166",
         "lastVerified": "2026-10-24",
         "note": "活火山。噴火警報が出たときは登れない範囲があるので、登る前に気象庁の情報を確認",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "大黒天〜刈田岳〜熊野岳（往復）",
@@ -45612,7 +45878,8 @@
         "source": "YAMAPモデルコース（model-courses/25424）",
         "sourceUrl": "https://yamap.com/model-courses/25424",
         "lastVerified": "2026-10-24",
-        "note": "活火山。噴火警報が出たときは登れない範囲があるので、登る前に気象庁の情報を確認"
+        "note": "活火山。噴火警報が出たときは登れない範囲があるので、登る前に気象庁の情報を確認",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 335,
@@ -46011,7 +46278,8 @@
         "source": "YAMAPモデルコース（model-courses/31398）",
         "sourceUrl": "https://yamap.com/model-courses/31398",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "雁坂峠〜雁坂嶺〜東破風山〜破風山（往復）",
@@ -46025,7 +46293,8 @@
         "source": "YAMAPモデルコース（model-courses/31392）",
         "sourceUrl": "https://yamap.com/model-courses/31392",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "西沢渓谷入口〜木賊山〜甲武信ヶ岳〜破風山〜雁坂嶺（周回）",
@@ -46039,7 +46308,8 @@
         "source": "YAMAPモデルコース（model-courses/19816）",
         "sourceUrl": "https://yamap.com/model-courses/19816",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 125,
@@ -46442,7 +46712,8 @@
         "source": "YAMAPモデルコース（model-courses/32757）",
         "sourceUrl": "https://yamap.com/model-courses/32757",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 200,
@@ -46861,7 +47132,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "伊奈川ダム〜越百山〜南駒ヶ岳〜赤椰岳（周回・山小屋泊）",
@@ -46883,7 +47155,8 @@
           "basis": "contains",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 245,
@@ -47322,7 +47595,8 @@
         "sourceUrl": "https://yamap.com/model-courses/20029",
         "lastVerified": "2026-10-24",
         "note": "時間は徳沢から。上高地〜徳沢は片道約2時間（YAMAPのモデルコースに含まれない）",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "三股〜まめうち平〜蝶ヶ岳（往復）",
@@ -47343,7 +47617,8 @@
           "gradedRoute": "蝶ヶ岳（三股）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       },
       {
         "name": "三股〜前常念岳〜常念岳〜蝶ヶ岳（周回・1泊2日）",
@@ -47356,7 +47631,8 @@
         "trailheadName": "三股",
         "source": "YAMAPモデルコース（model-courses/30195）",
         "sourceUrl": "https://yamap.com/model-courses/30195",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       }
     ],
     "driveTime": 220,
@@ -47840,7 +48116,8 @@
         "source": "YAMAPモデルコース（model-courses/93785）",
         "sourceUrl": "https://yamap.com/model-courses/93785",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "パノラマ銀座：中房温泉〜燕岳〜大天井岳〜常念岳〜蝶ヶ岳〜三股（縦走・2泊3日）",
@@ -47873,7 +48150,8 @@
           "source": "このサイトの蝶ヶ岳の行き方",
           "lastVerified": "2026-11-09",
           "note": "路線バスは無い"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "中房温泉〜燕岳〜大天井岳〜常念岳〜一ノ沢（縦走・1泊2日）",
@@ -47917,7 +48195,8 @@
           "source": "このサイトの常念岳の行き方（逆向き）",
           "lastVerified": "2026-11-09",
           "note": "林道の崩落で、タクシーは手前まで"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 230,
@@ -48537,7 +48816,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "中房温泉〜燕岳〜北燕岳〜燕山荘〜大天井岳（往復・1泊2日）",
@@ -48551,7 +48831,8 @@
         "sourceUrl": "https://yamap.com/model-courses/100354",
         "lastVerified": "2026-10-26",
         "coeff": 61,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "vibePoints": [
@@ -48808,7 +49089,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "扇沢〜針ノ木岳〜スバリ岳〜赤沢岳〜種池山荘〜柏原新道（縦走・1泊2日）",
@@ -48842,7 +49124,8 @@
           "lastVerified": "2026-11-09",
           "note": "季節運行（運行期間はアクセス欄のとおり）",
           "timetableUrl": "https://www.alpico.co.jp/traffic/local/hakuba/ogizawa/"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "扇沢〜蓮華岳〜針ノ木岳〜赤沢岳〜種池山荘（縦走・1泊2日）",
@@ -48876,7 +49159,8 @@
           "lastVerified": "2026-11-09",
           "note": "季節運行（運行期間はアクセス欄のとおり）",
           "timetableUrl": "https://www.alpico.co.jp/traffic/local/hakuba/ogizawa/"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 230,
@@ -49307,7 +49591,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "高瀬ダム〜烏帽子岳〜野口五郎岳（往復・山小屋泊）",
@@ -49329,7 +49614,8 @@
           "basis": "contains",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 225,
@@ -49766,7 +50052,8 @@
         "source": "YAMAPモデルコース（model-courses/100978）",
         "sourceUrl": "https://yamap.com/model-courses/100978",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "裏銀座：高瀬ダム〜野口五郎岳〜水晶岳〜鷲羽岳〜双六岳〜新穂高（縦走・山小屋泊）",
@@ -49800,7 +50087,8 @@
           "lastVerified": "2026-11-09",
           "note": "平湯温泉からはバスタ新宿行きの高速バス（笠ヶ岳の行き方の逆）。鉄道の駅へはさらにバスの乗り継ぎ",
           "timetableUrl": "https://www.nouhibus.co.jp/route_bus/shinhotaka-line/"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 225,
@@ -50232,7 +50520,8 @@
         "source": "YAMAPモデルコース（model-courses/7952）",
         "sourceUrl": "https://yamap.com/model-courses/7952",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "浜金谷〜車力道〜鋸山〜日本寺・地獄のぞき（周回）",
@@ -50247,7 +50536,8 @@
         "sourceUrl": "https://yamap.com/model-courses/96575",
         "lastVerified": "2026-10-24",
         "note": "日本寺の境内は拝観料が必要",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 90,
@@ -50646,7 +50936,8 @@
         "source": "YAMAPモデルコース（model-courses/94845）",
         "sourceUrl": "https://yamap.com/model-courses/94845",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "御岳山駅〜御嶽神社〜日の出山〜つるつる温泉（縦走）",
@@ -50682,7 +50973,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E3%81%A4%E3%82%8B%E3%81%A4%E3%82%8B%E6%B8%A9%E6%B3%89&to=%E6%AD%A6%E8%94%B5%E4%BA%94%E6%97%A5%E5%B8%82&type=1",
           "timetableUrl": "https://www.nisitokyobus.co.jp/rosen/pocket.html"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "古里駅〜大塚山〜御岳山〜日の出山〜つるつる温泉（縦走）",
@@ -50695,7 +50987,8 @@
         "trailheadName": "古里駅",
         "source": "YAMAPモデルコース（model-courses/11821）",
         "sourceUrl": "https://yamap.com/model-courses/11821",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "driveTime": 95,
@@ -51106,7 +51399,8 @@
         "source": "YAMAPモデルコース（model-courses/1132）",
         "sourceUrl": "https://yamap.com/model-courses/1132",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "軍畑駅〜高水山〜岩茸石山〜惣岳山〜沢井駅（縦走）",
@@ -51120,7 +51414,8 @@
         "source": "YAMAPモデルコース（model-courses/55834）",
         "sourceUrl": "https://yamap.com/model-courses/55834",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "軍畑駅〜常福院〜高水山（往復）",
@@ -51134,7 +51429,8 @@
         "source": "YAMAPモデルコース（model-courses/34001）",
         "sourceUrl": "https://yamap.com/model-courses/34001",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 85,
@@ -51505,7 +51801,8 @@
         "source": "YAMAPモデルコース（model-courses/16452）",
         "sourceUrl": "https://yamap.com/model-courses/16452",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "飯能中央公園〜天覧山〜多峯主山（周回）",
@@ -51518,7 +51815,8 @@
         "trailheadName": "飯能中央公園",
         "source": "YAMAPモデルコース（model-courses/7389）",
         "sourceUrl": "https://yamap.com/model-courses/7389",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       },
       {
         "name": "東吾野駅〜天覚山〜久須美ケルン〜多峯主山〜天覧山〜飯能駅（縦走）",
@@ -51531,7 +51829,8 @@
         "trailheadName": "東吾野駅",
         "source": "YAMAPモデルコース（model-courses/31264）",
         "sourceUrl": "https://yamap.com/model-courses/31264",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "driveTime": 90,
@@ -51936,7 +52235,8 @@
         "source": "YAMAPモデルコース（model-courses/10024）",
         "sourceUrl": "https://yamap.com/model-courses/10024",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "高麗駅〜日和田山〜高指山〜物見山〜武蔵横手駅（縦走）",
@@ -51950,7 +52250,8 @@
         "source": "YAMAPモデルコース（model-courses/24797）",
         "sourceUrl": "https://yamap.com/model-courses/24797",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "日和田山登山口〜日和田山〜高指山〜物見山（往復）",
@@ -51964,7 +52265,8 @@
         "source": "YAMAPモデルコース（model-courses/94716）",
         "sourceUrl": "https://yamap.com/model-courses/94716",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 95,
@@ -52346,7 +52648,8 @@
         "sourceUrl": "https://yamap.com/model-courses/25421",
         "lastVerified": "2026-10-24",
         "note": "男坂（鎖場）は通行自粛、女坂は通行止め。男坂・女坂の中間道を通る",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "正丸駅〜伊豆ヶ岳〜古御岳〜高畑山〜子ノ権現〜吾野駅（縦走）",
@@ -52361,7 +52664,8 @@
         "sourceUrl": "https://yamap.com/model-courses/17133",
         "lastVerified": "2026-10-24",
         "note": "男坂（鎖場）は通行自粛、女坂は通行止め。男坂・女坂の中間道を通る",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "正丸駅〜伊豆ヶ岳〜山伏峠〜武川岳〜二子山〜芦ヶ久保（縦走）",
@@ -52395,7 +52699,8 @@
           "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
           "lastVerified": "2026-11-09",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E9%81%93%E3%81%AE%E9%A7%85%E6%9E%9C%E6%A8%B9%E5%85%AC%E5%9C%92%E3%81%82%E3%81%97%E3%81%8C%E3%81%8F%E3%81%BC&to=%E8%8A%A6%E3%83%B6%E4%B9%85%E4%BF%9D&type=1"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 115,
@@ -52793,7 +53098,8 @@
         "source": "YAMAPモデルコース（model-courses/16352）",
         "sourceUrl": "https://yamap.com/model-courses/16352",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "一ノ鳥居〜武甲山〜小持山〜大持山〜妻坂峠（周回）",
@@ -52807,7 +53113,8 @@
         "source": "YAMAPモデルコース（model-courses/1186）",
         "sourceUrl": "https://yamap.com/model-courses/1186",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "横瀬駅〜一ノ鳥居〜武甲山〜浦山口駅（縦走）",
@@ -52820,7 +53127,8 @@
         "trailheadName": "横瀬駅",
         "source": "YAMAPモデルコース（model-courses/127）",
         "sourceUrl": "https://yamap.com/model-courses/127",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "driveTime": 140,
@@ -53223,7 +53531,8 @@
         "source": "YAMAPモデルコース（model-courses/505）",
         "sourceUrl": "https://yamap.com/model-courses/505",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "大倉〜後沢乗越〜鍋割山〜小丸尾根（周回）",
@@ -53237,7 +53546,8 @@
         "source": "YAMAPモデルコース（model-courses/24524）",
         "sourceUrl": "https://yamap.com/model-courses/24524",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "寄〜櫟山〜栗ノ木洞〜後沢乗越〜鍋割山（往復）",
@@ -53250,7 +53560,8 @@
         "trailheadName": "寄バス停",
         "source": "YAMAPモデルコース（model-courses/21292）",
         "sourceUrl": "https://yamap.com/model-courses/21292",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 50,
@@ -53645,7 +53956,8 @@
         "trailheadName": "ヤビツ峠",
         "source": "YAMAPモデルコース（model-courses/94762）",
         "sourceUrl": "https://yamap.com/model-courses/94762",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "菩提峠〜二ノ塔〜三ノ塔（往復）",
@@ -53658,7 +53970,8 @@
         "trailheadName": "菩提峠",
         "source": "YAMAPモデルコース（model-courses/10034）",
         "sourceUrl": "https://yamap.com/model-courses/10034",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "大倉〜牛首〜三ノ塔〜塔ノ岳〜大倉尾根（周回）",
@@ -53672,7 +53985,8 @@
         "source": "YAMAPモデルコース（model-courses/19664）",
         "sourceUrl": "https://yamap.com/model-courses/19664",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 50,
@@ -54074,7 +54388,8 @@
           ],
           "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
           "lastVerified": "2026-11-09"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "鶴巻温泉〜吾妻山〜善波峠〜弘法山（往復）",
@@ -54088,7 +54403,8 @@
         "source": "YAMAPモデルコース（model-courses/94820）",
         "sourceUrl": "https://yamap.com/model-courses/94820",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "聖峰〜高取山〜念仏山〜善波峠〜弘法山〜秦野（縦走）",
@@ -54101,7 +54417,8 @@
         "trailheadName": "聖峰登山口",
         "source": "YAMAPモデルコース（model-courses/14807）",
         "sourceUrl": "https://yamap.com/model-courses/14807",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "driveTime": 55,
@@ -54483,7 +54800,8 @@
         "source": "YAMAPモデルコース（model-courses/8676）",
         "sourceUrl": "https://yamap.com/model-courses/8676",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "陣馬高原下〜陣馬山〜景信山〜小仏バス停（縦走）",
@@ -54496,7 +54814,8 @@
         "trailheadName": "陣馬高原下バス停",
         "source": "YAMAPモデルコース（model-courses/24635）",
         "sourceUrl": "https://yamap.com/model-courses/24635",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       },
       {
         "name": "小仏バス停〜景信山〜城山〜高尾山〜稲荷山（縦走）",
@@ -54528,7 +54847,8 @@
           ],
           "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
           "lastVerified": "2026-11-09"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "driveTime": 65,
@@ -54920,7 +55240,8 @@
         "source": "YAMAPモデルコース（model-courses/1184）",
         "sourceUrl": "https://yamap.com/model-courses/1184",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "初狩駅〜高川山〜田野倉駅（縦走）",
@@ -54934,7 +55255,8 @@
         "source": "YAMAPモデルコース（model-courses/26059）",
         "sourceUrl": "https://yamap.com/model-courses/26059",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "初狩（高川山登山道入口）〜高川山（周回）",
@@ -54948,7 +55270,8 @@
         "source": "YAMAPモデルコース（model-courses/10037）",
         "sourceUrl": "https://yamap.com/model-courses/10037",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTime": 85,
@@ -55267,7 +55590,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "note": "ケーブルカーの最終は季節で変わる",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E9%AB%98%E5%B0%BE%E5%B1%B1%28%E9%AB%98%E5%B0%BE%E7%99%BB%E5%B1%B1%E9%9B%BB%E9%89%84%29&to=%E9%AB%98%E5%B0%BE%E5%B1%B1%E5%8F%A3&type=1"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "高尾山口駅〜高尾山〜城山〜千木良〜相模湖駅（縦走）",
@@ -55280,7 +55604,8 @@
         "trailheadName": "高尾山口駅",
         "source": "YAMAPモデルコース（model-courses/96463）",
         "sourceUrl": "https://yamap.com/model-courses/96463",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       },
       {
         "name": "清滝駅〜稲荷山〜城山（往復）",
@@ -55293,7 +55618,8 @@
         "trailheadName": "清滝駅",
         "source": "YAMAPモデルコース（model-courses/96495）",
         "sourceUrl": "https://yamap.com/model-courses/96495",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "busUrl": "https://transfer.navitime.biz/keio-bus/pc/diagram/BusDiagram?stationCd=00003793&updown=0",
@@ -55631,7 +55957,8 @@
         "source": "YAMAPモデルコース（model-courses/8677）",
         "sourceUrl": "https://yamap.com/model-courses/8677",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "高尾山口駅〜草戸山〜榎窪山〜三沢峠〜梅の木平（周回）",
@@ -55645,7 +55972,8 @@
         "source": "YAMAPモデルコース（model-courses/8678）",
         "sourceUrl": "https://yamap.com/model-courses/8678",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "城山総合事務所入口〜金刀比羅宮〜草戸山〜高尾山口駅（縦走）",
@@ -55658,7 +55986,8 @@
         "trailheadName": "城山総合事務所入口バス停",
         "source": "YAMAPモデルコース（model-courses/28676）",
         "sourceUrl": "https://yamap.com/model-courses/28676",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "busUrl": "",
@@ -55968,7 +56297,8 @@
         "source": "YAMAPモデルコース（model-courses/10030）",
         "sourceUrl": "https://yamap.com/model-courses/10030",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "鳴虫山登山口〜神ノ主山〜鳴虫山（往復）",
@@ -55982,7 +56312,8 @@
         "source": "YAMAPモデルコース（model-courses/12350）",
         "sourceUrl": "https://yamap.com/model-courses/12350",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "鳴虫山登山口〜神ノ主山〜鳴虫山〜合峰〜独標〜日光市街（縦走）",
@@ -56026,7 +56357,8 @@
           "note": "東武日光駅まで歩いても約28分",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%AE%89%E5%B7%9D%E7%94%BA%28%E6%A0%83%E6%9C%A8%E7%9C%8C%29&to=%E6%9D%B1%E6%AD%A6%E6%97%A5%E5%85%89&type=1",
           "timetableUrl": "https://www.tobu-bus.com/pc/area/nikko/"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "busUrl": "https://www.tobu-bus.com/pc/area/nikko.html",
@@ -56440,7 +56772,8 @@
         "source": "YAMAPモデルコース（model-courses/24418）",
         "sourceUrl": "https://yamap.com/model-courses/24418",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "平標登山口〜平元新道〜平標山の家〜平標山（往復）",
@@ -56454,7 +56787,8 @@
         "source": "YAMAPモデルコース（model-courses/23801）",
         "sourceUrl": "https://yamap.com/model-courses/23801",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "平標登山口〜松手山〜平標山〜仙ノ倉山〜平元新道（周回）",
@@ -56468,7 +56802,8 @@
         "source": "YAMAPモデルコース（model-courses/53）",
         "sourceUrl": "https://yamap.com/model-courses/53",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTimeTachikawa": 175,
@@ -56851,7 +57186,8 @@
         "source": "YAMAPモデルコース（model-courses/5320）",
         "sourceUrl": "https://yamap.com/model-courses/5320",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "伏姫籠穴〜北峰〜南峰〜福満寺（周回）",
@@ -56864,7 +57200,8 @@
         "trailheadName": "伏姫籠穴駐車場",
         "source": "YAMAPモデルコース（model-courses/13558）",
         "sourceUrl": "https://yamap.com/model-courses/13558",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "loop"
       },
       {
         "name": "岩井側〜北峰〜南峰〜福満寺（周回）",
@@ -56877,7 +57214,8 @@
         "trailheadName": "市営富山地域無料駐車場",
         "source": "YAMAPモデルコース（model-courses/21093）",
         "sourceUrl": "https://yamap.com/model-courses/21093",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "loop"
       }
     ],
     "driveTimeTachikawa": 110,
@@ -57235,7 +57573,8 @@
         "source": "YAMAPモデルコース（model-courses/58）",
         "sourceUrl": "https://yamap.com/model-courses/58",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "平群天神社〜伊予ヶ岳〜富山〜岩井駅（縦走）",
@@ -57249,7 +57588,8 @@
         "source": "YAMAPモデルコース（model-courses/20995）",
         "sourceUrl": "https://yamap.com/model-courses/20995",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "平群天神社〜伊予ヶ岳〜富山（周回）",
@@ -57263,7 +57603,8 @@
         "source": "YAMAPモデルコース（model-courses/17305）",
         "sourceUrl": "https://yamap.com/model-courses/17305",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "driveTimeTachikawa": 115,
@@ -57660,7 +58001,8 @@
         "source": "YAMAPモデルコース（model-courses/15215）",
         "sourceUrl": "https://yamap.com/model-courses/15215",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "公時神社〜金時山〜矢倉沢峠〜明神ヶ岳〜宮城野（縦走）",
@@ -57673,7 +58015,8 @@
         "trailheadName": "公時神社登山口",
         "source": "YAMAPモデルコース（model-courses/15987）",
         "sourceUrl": "https://yamap.com/model-courses/15987",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       },
       {
         "name": "道了尊（大雄山最乗寺）〜明神ヶ岳〜明星ヶ岳〜宮城野（縦走）",
@@ -57686,7 +58029,8 @@
         "trailheadName": "道了尊バス停",
         "source": "YAMAPモデルコース（model-courses/11873）",
         "sourceUrl": "https://yamap.com/model-courses/11873",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "driveTimeTachikawa": 125,
@@ -58083,7 +58427,8 @@
         "source": "YAMAPモデルコース（model-courses/34009）",
         "sourceUrl": "https://yamap.com/model-courses/34009",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "地蔵堂〜山伏平〜矢倉岳〜足柄峠（周回）",
@@ -58097,7 +58442,8 @@
         "source": "YAMAPモデルコース（model-courses/64154）",
         "sourceUrl": "https://yamap.com/model-courses/64154",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "矢倉沢〜矢倉岳〜浜居場城址〜山北駅（縦走）",
@@ -58110,7 +58456,8 @@
         "trailheadName": "矢倉沢バス停",
         "source": "YAMAPモデルコース（model-courses/17425）",
         "sourceUrl": "https://yamap.com/model-courses/17425",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "driveTimeTachikawa": 110,
@@ -58480,7 +58827,8 @@
         "source": "YAMAPモデルコース（model-courses/61）",
         "sourceUrl": "https://yamap.com/model-courses/61",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "鳩ノ巣駅〜大根ノ山ノ神〜川苔山（往復）",
@@ -58493,7 +58841,8 @@
         "trailheadName": "鳩ノ巣駅",
         "source": "YAMAPモデルコース（model-courses/9997）",
         "sourceUrl": "https://yamap.com/model-courses/9997",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "奥多摩駅〜本仁田山〜鋸尾根〜川苔山〜鳩ノ巣駅（縦走）",
@@ -58507,7 +58856,8 @@
         "source": "YAMAPモデルコース（model-courses/19403）",
         "sourceUrl": "https://yamap.com/model-courses/19403",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       }
     ],
     "driveTimeTachikawa": 90,
@@ -58912,7 +59262,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%80%89%E6%88%B8%E5%8F%A3&to=%E5%A5%A5%E5%A4%9A%E6%91%A9&type=1",
           "timetableUrl": "https://www.nisitokyobus.co.jp/rosen/noriba/okutama.html"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "水根〜鷹ノ巣山（往復）",
@@ -58925,7 +59276,8 @@
         "trailheadName": "水根バス停",
         "source": "YAMAPモデルコース（model-courses/59100）",
         "sourceUrl": "https://yamap.com/model-courses/59100",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "水根〜鷹ノ巣山〜石尾根〜奥多摩駅（縦走）",
@@ -58938,7 +59290,8 @@
         "trailheadName": "水根バス停",
         "source": "YAMAPモデルコース（model-courses/30337）",
         "sourceUrl": "https://yamap.com/model-courses/30337",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "driveTimeTachikawa": 100,
@@ -59241,7 +59594,8 @@
         "source": "YAMAPモデルコース（model-courses/37985）",
         "sourceUrl": "https://yamap.com/model-courses/37985",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "石老山入口〜石老山〜大明神〜さがみ湖MORIMORI前（縦走）",
@@ -59273,7 +59627,8 @@
           ],
           "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
           "lastVerified": "2026-11-09"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "石老山入口〜石老山〜大明神〜嵐山〜相模湖（縦走）",
@@ -59305,7 +59660,8 @@
           ],
           "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
           "lastVerified": "2026-11-09"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.5999057%2C139.2051974&query_place_id=ChIJx9qRIgcaGWARhU31K9a1tO4",
@@ -59614,7 +59970,8 @@
         "source": "YAMAPモデルコース（model-courses/21052）",
         "sourceUrl": "https://yamap.com/model-courses/21052",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "畑倉登山口〜岩殿山（往復）",
@@ -59628,7 +59985,8 @@
         "source": "YAMAPモデルコース（model-courses/10383）",
         "sourceUrl": "https://yamap.com/model-courses/10383",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "畑倉登山口〜岩殿山〜天神山〜稚児落とし〜大月駅（縦走）",
@@ -59642,7 +60000,8 @@
         "source": "YAMAPモデルコース（model-courses/93620）",
         "sourceUrl": "https://yamap.com/model-courses/93620",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E7%95%91%E5%80%89%E7%99%BB%E5%B1%B1%E5%8F%A3%20%E5%B1%B1%E6%A2%A8%E7%9C%8C%E5%A4%A7%E6%9C%88%E5%B8%82",
@@ -59944,7 +60303,8 @@
         "source": "YAMAPモデルコース（model-courses/93241）",
         "sourceUrl": "https://yamap.com/model-courses/93241",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "道の駅あしがくぼ〜丸山（往復）",
@@ -59958,7 +60318,8 @@
         "source": "YAMAPモデルコース（model-courses/21451）",
         "sourceUrl": "https://yamap.com/model-courses/21451",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "正丸駅〜旧正丸峠〜二子山〜大野峠〜丸山〜芦ヶ久保（縦走）",
@@ -59971,7 +60332,8 @@
         "trailheadName": "正丸駅",
         "source": "YAMAPモデルコース（model-courses/14792）",
         "sourceUrl": "https://yamap.com/model-courses/14792",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.9768016%2C139.1370209&query_place_id=ChIJTVQRoonMHmARLR3H6NtZxVo",
@@ -60320,7 +60682,8 @@
         "source": "YAMAPモデルコース（model-courses/31589）",
         "sourceUrl": "https://yamap.com/model-courses/31589",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "谷峨駅〜大野山（往復）",
@@ -60334,7 +60697,8 @@
         "source": "YAMAPモデルコース（model-courses/21076）",
         "sourceUrl": "https://yamap.com/model-courses/21076",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "つぶらの公園〜大野山（往復）",
@@ -60347,7 +60711,8 @@
         "trailheadName": "大野山登り口（つぶらの公園）",
         "source": "YAMAPモデルコース（model-courses/25790）",
         "sourceUrl": "https://yamap.com/model-courses/25790",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.3870541%2C139.0495445&query_place_id=ChIJ0zxHkMgLGWAR8z9pwj7gXWU",
@@ -60677,7 +61042,8 @@
         "source": "YAMAPモデルコース（model-courses/93057）",
         "sourceUrl": "https://yamap.com/model-courses/93057",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "大月市営総合グラウンド〜百蔵山〜水場（周回）",
@@ -60691,7 +61057,8 @@
         "source": "YAMAPモデルコース（model-courses/31219）",
         "sourceUrl": "https://yamap.com/model-courses/31219",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "鳥沢駅〜扇山〜大久保山〜百蔵山〜猿橋駅（縦走）",
@@ -60704,7 +61071,8 @@
         "trailheadName": "鳥沢駅",
         "source": "YAMAPモデルコース（model-courses/31242）",
         "sourceUrl": "https://yamap.com/model-courses/31242",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://google.com/maps/search/百蔵山登山口/@35.6273,138.9869,15z",
@@ -61012,7 +61380,8 @@
         "source": "YAMAPモデルコース（model-courses/9727）",
         "sourceUrl": "https://yamap.com/model-courses/9727",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "鳥沢駅〜梨ノ木平〜扇山〜鳥沢駅（周回）",
@@ -61026,7 +61395,8 @@
         "source": "YAMAPモデルコース（model-courses/13557）",
         "sourceUrl": "https://yamap.com/model-courses/13557",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "梨ノ木平〜扇山〜百蔵山〜猿橋駅（縦走）",
@@ -61040,7 +61410,8 @@
         "source": "YAMAPモデルコース（model-courses/11835）",
         "sourceUrl": "https://yamap.com/model-courses/11835",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://google.com/maps/search/梨ノ木平駐車場/@35.6478,138.9742,15z",
@@ -61352,7 +61723,8 @@
         "source": "YAMAPモデルコース（model-courses/27751）",
         "sourceUrl": "https://yamap.com/model-courses/27751",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "幕山登山口〜幕山（往復）",
@@ -61366,7 +61738,8 @@
         "source": "YAMAPモデルコース（model-courses/12357）",
         "sourceUrl": "https://yamap.com/model-courses/12357",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "幕山登山口〜幕山〜南郷山〜吉浜（縦走）",
@@ -61399,7 +61772,8 @@
           "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
           "lastVerified": "2026-11-09",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E8%B6%B3%E6%9F%84%E4%B8%8B%E9%83%A1%E6%B9%AF%E6%B2%B3%E5%8E%9F%E7%94%BA%E5%90%89%E6%B5%9C&to=%E6%B9%AF%E6%B2%B3%E5%8E%9F&type=1"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.1649806%2C139.0928462&query_place_id=ChIJO9Eue_W8GWAR4y2jwyY0sgg",
@@ -61707,7 +62081,8 @@
         "source": "YAMAPモデルコース（model-courses/19302）",
         "sourceUrl": "https://yamap.com/model-courses/19302",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "大中寺〜太平山〜ぐみの木峠〜晃石山（周回）",
@@ -61720,7 +62095,8 @@
         "trailheadName": "大中寺",
         "source": "YAMAPモデルコース（model-courses/19303）",
         "sourceUrl": "https://yamap.com/model-courses/19303",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       },
       {
         "name": "岩舟駅〜岩船山〜晃石山〜太平山〜大平下駅（縦走）",
@@ -61733,7 +62109,8 @@
         "trailheadName": "岩舟駅",
         "source": "YAMAPモデルコース（model-courses/19304）",
         "sourceUrl": "https://yamap.com/model-courses/19304",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=36.3600991%2C139.6962942&query_place_id=ChIJ685pfXtHH2ARYyjTuzdH8cc",
@@ -62056,7 +62433,8 @@
         "source": "YAMAPモデルコース（model-courses/24531）",
         "sourceUrl": "https://yamap.com/model-courses/24531",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "梁川駅〜立野峠〜倉岳山（往復）",
@@ -62069,7 +62447,8 @@
         "trailheadName": "梁川駅",
         "source": "YAMAPモデルコース（model-courses/42701）",
         "sourceUrl": "https://yamap.com/model-courses/42701",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "秋山（倉岳山登り口）〜立野峠〜倉岳山（往復）",
@@ -62082,7 +62461,8 @@
         "trailheadName": "倉岳山登り口（秋山）",
         "source": "YAMAPモデルコース（model-courses/12920）",
         "sourceUrl": "https://yamap.com/model-courses/12920",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E7%A9%B4%E8%B7%AF%E5%B3%A0%E7%99%BB%E5%B1%B1%E5%8F%A3%20%E5%B1%B1%E6%A2%A8%E7%9C%8C%E5%A4%A7%E6%9C%88%E5%B8%82",
@@ -62384,7 +62764,8 @@
         "trailheadName": "旧笹子トンネル登山口",
         "source": "YAMAPモデルコース（model-courses/9293）",
         "sourceUrl": "https://yamap.com/model-courses/9293",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "笹子駅〜新中橋〜笹子雁ヶ腹摺山（往復）",
@@ -62398,7 +62779,8 @@
         "source": "YAMAPモデルコース（model-courses/89465）",
         "sourceUrl": "https://yamap.com/model-courses/89465",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "甲斐大和駅〜大鹿峠〜お坊山〜米沢山〜笹子雁ヶ腹摺山（縦走）",
@@ -62411,7 +62793,8 @@
         "trailheadName": "甲斐大和駅",
         "source": "YAMAPモデルコース（model-courses/22054）",
         "sourceUrl": "https://yamap.com/model-courses/22054",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.6131642%2C138.7801138&query_place_id=ChIJ5eS_4p9ZGWARK9LYCqDnClU",
@@ -62712,7 +63095,8 @@
         "trailheadName": "三国山・生藤山登山口（鎌沢）",
         "source": "YAMAPモデルコース（model-courses/12894）",
         "sourceUrl": "https://yamap.com/model-courses/12894",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "井戸〜軍刀利神社〜生藤山〜連行峰〜醍醐丸〜陣馬山〜陣馬高原下（縦走）",
@@ -62748,7 +63132,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E9%99%A3%E9%A6%AC%E9%AB%98%E5%8E%9F%E4%B8%8B&to=%E9%AB%98%E5%B0%BE%28%E6%9D%B1%E4%BA%AC%E9%83%BD%29&type=1",
           "timetableUrl": "https://www.nisitokyobus.co.jp/rosen/pocket.html"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "井戸〜軍刀利神社〜生藤山〜浅間峠〜上川乗（縦走）",
@@ -62784,7 +63169,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%8A%E5%B7%9D%E4%B9%97&to=%E6%AD%A6%E8%94%B5%E4%BA%94%E6%97%A5%E5%B8%82&type=1",
           "timetableUrl": "https://www.nisitokyobus.co.jp/rosen/pocket.html"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.662717%2C139.11608&query_place_id=ChIJAYTmdnM-GWARXUyCv_b2TgA",
@@ -63093,7 +63479,8 @@
         "source": "YAMAPモデルコース（model-courses/31227）",
         "sourceUrl": "https://yamap.com/model-courses/31227",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "禾生駅〜九鬼山〜紺屋の休場〜田野倉駅（縦走）",
@@ -63107,7 +63494,8 @@
         "source": "YAMAPモデルコース（model-courses/11865）",
         "sourceUrl": "https://yamap.com/model-courses/11865",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "禾生駅〜九鬼山〜札金峠〜馬立山〜猿橋駅（縦走）",
@@ -63121,7 +63509,8 @@
         "source": "YAMAPモデルコース（model-courses/22190）",
         "sourceUrl": "https://yamap.com/model-courses/22190",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.5749503%2C138.9290637&query_place_id=ChIJIfTpN2VCGWAR4jQOBy4Xs2Q",
@@ -63453,7 +63842,8 @@
         "source": "YAMAPモデルコース（model-courses/22003）",
         "sourceUrl": "https://yamap.com/model-courses/22003",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "都民の森〜三頭山〜大沢山〜三頭大滝（周回）",
@@ -63467,7 +63857,8 @@
         "source": "YAMAPモデルコース（model-courses/22472）",
         "sourceUrl": "https://yamap.com/model-courses/22472",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "深山橋〜ヌカザス山〜三頭山〜槇寄山〜仲の平（縦走）",
@@ -63480,7 +63871,8 @@
         "trailheadName": "深山橋バス停",
         "source": "YAMAPモデルコース（model-courses/22441）",
         "sourceUrl": "https://yamap.com/model-courses/22441",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.7375955%2C139.0311448&query_place_id=ChIJs-jrJehHGWARdCnnMZhj1b4",
@@ -63839,7 +64231,8 @@
         "source": "YAMAPモデルコース（model-courses/24522）",
         "sourceUrl": "https://yamap.com/model-courses/24522",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "鳩ノ巣駅〜大根ノ山ノ神〜瘤高山〜本仁田山（往復）",
@@ -63852,7 +64245,8 @@
         "trailheadName": "鳩ノ巣駅",
         "source": "YAMAPモデルコース（model-courses/21337）",
         "sourceUrl": "https://yamap.com/model-courses/21337",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "奥多摩駅〜本仁田山〜鋸尾根〜川苔山〜赤久奈山〜古里駅（縦走）",
@@ -63866,7 +64260,8 @@
         "source": "YAMAPモデルコース（model-courses/16335）",
         "sourceUrl": "https://yamap.com/model-courses/16335",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.8139775%2C139.1277765&query_place_id=ChIJs9cTEgAxGWARTUrRRp4VP8M",
@@ -64195,7 +64590,8 @@
         "source": "YAMAPモデルコース（model-courses/19275）",
         "sourceUrl": "https://yamap.com/model-courses/19275",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "御岳山駅〜日の出山〜顎掛岩〜つるつる温泉（縦走）",
@@ -64231,7 +64627,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E3%81%A4%E3%82%8B%E3%81%A4%E3%82%8B%E6%B8%A9%E6%B3%89&to=%E6%AD%A6%E8%94%B5%E4%BA%94%E6%97%A5%E5%B8%82&type=1",
           "timetableUrl": "https://www.nisitokyobus.co.jp/rosen/pocket.html"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "武蔵五日市駅〜金比羅山〜日の出山〜つるつる温泉（縦走）",
@@ -64244,7 +64641,8 @@
         "trailheadName": "武蔵五日市駅",
         "source": "YAMAPモデルコース（model-courses/24521）",
         "sourceUrl": "https://yamap.com/model-courses/24521",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.7860595%2C139.2160839&query_place_id=ChIJ8XQdCuglGWARvNw_E3OTheA",
@@ -64595,7 +64993,8 @@
         "trailheadName": "人里登山口",
         "source": "YAMAPモデルコース（model-courses/20940）",
         "sourceUrl": "https://yamap.com/model-courses/20940",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "traverse"
       },
       {
         "name": "浅間尾根登山口〜人里峠〜浅間嶺〜払沢の滝（縦走）",
@@ -64608,7 +65007,8 @@
         "trailheadName": "浅間尾根登山口バス停",
         "source": "YAMAPモデルコース（model-courses/33994）",
         "sourceUrl": "https://yamap.com/model-courses/33994",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "traverse"
       },
       {
         "name": "上川乗〜浅間嶺（往復）",
@@ -64621,7 +65021,8 @@
         "trailheadName": "上川乗バス停",
         "source": "YAMAPモデルコース（model-courses/61575）",
         "sourceUrl": "https://yamap.com/model-courses/61575",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "払沢の滝入口〜時坂峠〜浅間嶺〜人里峠〜数馬（縦走）",
@@ -64666,7 +65067,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E6%95%B0%E9%A6%AC%28%E6%9D%B1%E4%BA%AC%E9%83%BD%29&to=%E6%AD%A6%E8%94%B5%E4%BA%94%E6%97%A5%E5%B8%82&type=1",
           "timetableUrl": "https://www.nisitokyobus.co.jp/rosen/pocket.html"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.7296265%2C139.1438986&query_place_id=ChIJq4b2Fos7GWARW1fW_C7A0AY",
@@ -64971,7 +65373,8 @@
         "source": "YAMAPモデルコース（model-courses/15247）",
         "sourceUrl": "https://yamap.com/model-courses/15247",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "道の駅あしがくぼ〜岩菅山〜二子山雌岳・雄岳（周回）",
@@ -64985,7 +65388,8 @@
         "source": "YAMAPモデルコース（model-courses/59200）",
         "sourceUrl": "https://yamap.com/model-courses/59200",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "名郷バス停〜武川岳〜焼山〜二子山〜芦ヶ久保（縦走）",
@@ -64998,7 +65402,8 @@
         "trailheadName": "名郷バス停",
         "source": "YAMAPモデルコース（model-courses/31805）",
         "sourceUrl": "https://yamap.com/model-courses/31805",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.9768016%2C139.1370209&query_place_id=ChIJTVQRoonMHmARLR3H6NtZxVo",
@@ -65358,7 +65763,8 @@
         "source": "YAMAPモデルコース（model-courses/26056）",
         "sourceUrl": "https://yamap.com/model-courses/26056",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "桑留尾〜十二ヶ岳（往復）",
@@ -65371,7 +65777,8 @@
         "trailheadName": "桑留尾登山口",
         "source": "YAMAPモデルコース（model-courses/26057）",
         "sourceUrl": "https://yamap.com/model-courses/26057",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "文化洞トンネル〜十二ヶ岳〜節刀ヶ岳〜鬼ヶ岳〜根場（縦走）",
@@ -65407,7 +65814,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E6%A0%B9%E5%A0%B4%E5%85%A5%E5%8F%A3&to=%E6%B2%B3%E5%8F%A3%E6%B9%96&type=1",
           "timetableUrl": "https://www.fujikyubus.co.jp/shuyu"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.5052512%2C138.7046377&query_place_id=ChIJ27wCwzPgG2AReICB_osaSOs",
@@ -65768,7 +66176,8 @@
         "source": "YAMAPモデルコース（model-courses/16564）",
         "sourceUrl": "https://yamap.com/model-courses/16564",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "石割山ハイキングコース入口〜石割神社〜石割山（往復）",
@@ -65782,7 +66191,8 @@
         "source": "YAMAPモデルコース（model-courses/12347）",
         "sourceUrl": "https://yamap.com/model-courses/12347",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "石割山〜平尾山〜大平山〜飯盛山〜大出山入口（縦走）",
@@ -65795,7 +66205,8 @@
         "trailheadName": "石割山ハイキングコース入口",
         "source": "YAMAPモデルコース（model-courses/19737）",
         "sourceUrl": "https://yamap.com/model-courses/19737",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.44044%2C138.9028938&query_place_id=ChIJA9F5BwBvGWARhPj4xnhk0sw",
@@ -66130,7 +66541,8 @@
         "source": "YAMAPモデルコース（model-courses/96138）",
         "sourceUrl": "https://yamap.com/model-courses/96138",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "二宮駅〜役場口〜吾妻山（往復）",
@@ -66144,7 +66556,8 @@
         "source": "YAMAPモデルコース（model-courses/95578）",
         "sourceUrl": "https://yamap.com/model-courses/95578",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "二宮駅〜役場口〜吾妻山〜中里口（周回）",
@@ -66158,7 +66571,8 @@
         "source": "YAMAPモデルコース（model-courses/82431）",
         "sourceUrl": "https://yamap.com/model-courses/82431",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.2988745%2C139.2500963&query_place_id=ChIJ___b0_uuGWARwhyfGa0KsAI",
@@ -66456,7 +66870,8 @@
         "source": "YAMAPモデルコース（model-courses/95124）",
         "sourceUrl": "https://yamap.com/model-courses/95124",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "長瀞アルプス：野上駅〜野上峠〜宝登山〜長瀞駅（縦走）",
@@ -66469,7 +66884,8 @@
         "trailheadName": "野上駅",
         "source": "YAMAPモデルコース（model-courses/32089）",
         "sourceUrl": "https://yamap.com/model-courses/32089",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "traverse"
       },
       {
         "name": "宝登山麓〜宝登山（往復）",
@@ -66483,7 +66899,8 @@
         "source": "YAMAPモデルコース（model-courses/25284）",
         "sourceUrl": "https://yamap.com/model-courses/25284",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=36.0932348%2C139.1031136&query_place_id=ChIJkcCd0zbGHmART2BANYYED58",
@@ -66825,7 +67242,8 @@
         "source": "YAMAPモデルコース（model-courses/20369）",
         "sourceUrl": "https://yamap.com/model-courses/20369",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "風戸（皆野町営駐車場）〜破風山（往復）",
@@ -66838,7 +67256,8 @@
         "trailheadName": "破風山登り口",
         "source": "YAMAPモデルコース（model-courses/30122）",
         "sourceUrl": "https://yamap.com/model-courses/30122",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "秩父華厳前〜大前山〜札立峠〜破風山〜前原山〜皆野駅（縦走）",
@@ -66851,7 +67270,8 @@
         "trailheadName": "秩父華厳前バス停",
         "source": "YAMAPモデルコース（model-courses/20899）",
         "sourceUrl": "https://yamap.com/model-courses/20899",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%A2%A8%E6%88%B8%E7%99%BB%E5%B1%B1%E5%8F%A3%20%E5%9F%BC%E7%8E%89%E7%9C%8C%E7%9A%86%E9%87%8E%E7%94%BA",
@@ -67191,7 +67611,8 @@
         "source": "YAMAPモデルコース（model-courses/94794）",
         "sourceUrl": "https://yamap.com/model-courses/94794",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "小川町駅〜仙元山〜物見山〜小倉城跡〜武蔵嵐山駅（縦走）",
@@ -67204,7 +67625,8 @@
         "trailheadName": "小川町駅",
         "source": "YAMAPモデルコース（model-courses/21890）",
         "sourceUrl": "https://yamap.com/model-courses/21890",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=36.0324234%2C139.3131389&query_place_id=ChIJfbycmcLUHmARS6gqe0YQchw",
@@ -67531,7 +67953,8 @@
         "source": "YAMAPモデルコース（model-courses/15451）",
         "sourceUrl": "https://yamap.com/model-courses/15451",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "南登山道入口〜御嶽山〜古賀志山（周回）",
@@ -67544,7 +67967,8 @@
         "trailheadName": "古賀志山南登山道駐車場",
         "source": "YAMAPモデルコース（model-courses/13528）",
         "sourceUrl": "https://yamap.com/model-courses/13528",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       },
       {
         "name": "森林公園〜鞍掛山〜シゲト山〜古賀志山（周回）",
@@ -67558,7 +67982,8 @@
         "source": "YAMAPモデルコース（model-courses/19343）",
         "sourceUrl": "https://yamap.com/model-courses/19343",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%AE%87%E9%83%BD%E5%AE%AE%E5%B8%82%E6%A3%AE%E6%9E%97%E5%85%AC%E5%9C%92%E9%A7%90%E8%BB%8A%E5%A0%B4%2036.6199%2C139.7925",
@@ -67875,7 +68300,8 @@
         "trailheadName": "三ツ峠登山口",
         "source": "YAMAPモデルコース（model-courses/9170）",
         "sourceUrl": "https://yamap.com/model-courses/9170",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "out_and_back"
       },
       {
         "name": "三つ峠駅（憩いの森公園）〜八十八大師〜三ツ峠山（往復）",
@@ -67889,7 +68315,8 @@
         "source": "YAMAPモデルコース（model-courses/18170）",
         "sourceUrl": "https://yamap.com/model-courses/18170",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "三ツ峠登山口〜三ツ峠山〜木無山〜霜山〜河口湖駅（縦走）",
@@ -67902,7 +68329,8 @@
         "trailheadName": "三ツ峠登山口",
         "source": "YAMAPモデルコース（model-courses/123）",
         "sourceUrl": "https://yamap.com/model-courses/123",
-        "lastVerified": "2026-10-25"
+        "lastVerified": "2026-10-25",
+        "courseType": "traverse"
       }
     ],
     "busLinks": [
@@ -68297,7 +68725,8 @@
         "source": "YAMAPモデルコース（model-courses/22558）",
         "sourceUrl": "https://yamap.com/model-courses/22558",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "港南台駅〜大丸山〜天園〜大平山〜北鎌倉駅（縦走）",
@@ -68310,7 +68739,8 @@
         "trailheadName": "港南台駅",
         "source": "YAMAPモデルコース（model-courses/31233）",
         "sourceUrl": "https://yamap.com/model-courses/31233",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       },
       {
         "name": "金沢文庫駅〜大丸山〜天園〜大平山〜北鎌倉駅（縦走）",
@@ -68323,7 +68753,8 @@
         "trailheadName": "金沢文庫駅",
         "source": "YAMAPモデルコース（model-courses/21459）",
         "sourceUrl": "https://yamap.com/model-courses/21459",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       }
     ],
     "busLinks": [
@@ -68643,7 +69074,8 @@
           "lastBus": "22:15",
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A4%A7%E6%A5%A0%E8%8A%A6%E5%90%8D%E5%8F%A3&to=%E9%80%97%E5%AD%90&type=1"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "前田橋〜大楠山（往復）",
@@ -68657,7 +69089,8 @@
         "source": "YAMAPモデルコース（model-courses/9023）",
         "sourceUrl": "https://yamap.com/model-courses/9023",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "前田橋〜大楠山〜衣笠山（縦走）",
@@ -68671,7 +69104,8 @@
         "source": "YAMAPモデルコース（model-courses/32439）",
         "sourceUrl": "https://yamap.com/model-courses/32439",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       }
     ],
     "busLinks": [
@@ -69008,7 +69442,8 @@
         "source": "YAMAPモデルコース（model-courses/10028）",
         "sourceUrl": "https://yamap.com/model-courses/10028",
         "lastVerified": "2026-10-24",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "東武竹沢駅〜天王池〜官ノ倉山〜石尊山〜小川町駅（縦走）",
@@ -69021,7 +69456,8 @@
         "trailheadName": "東武竹沢駅",
         "source": "YAMAPモデルコース（model-courses/53031）",
         "sourceUrl": "https://yamap.com/model-courses/53031",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "traverse"
       },
       {
         "name": "東秩父中学校前〜臼入山〜烏森山〜官ノ倉山〜学校入口（周回）",
@@ -69034,7 +69470,8 @@
         "trailheadName": "東秩父中学校前バス停",
         "source": "YAMAPモデルコース（model-courses/26141）",
         "sourceUrl": "https://yamap.com/model-courses/26141",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       }
     ],
     "busLinks": [
@@ -69436,7 +69873,8 @@
         "trailheadName": "菅平牧場",
         "source": "YAMAPモデルコース（model-courses/33858）",
         "sourceUrl": "https://yamap.com/model-courses/33858",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       },
       {
         "name": "菅平牧場〜根子岳〜四阿山〜中四阿（周回）",
@@ -69449,7 +69887,8 @@
         "trailheadName": "菅平牧場",
         "source": "YAMAPモデルコース（model-courses/33860）",
         "sourceUrl": "https://yamap.com/model-courses/33860",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "loop"
       },
       {
         "name": "あずまや高原（四阿山登山口）〜里宮〜四阿山（往復）",
@@ -69462,7 +69901,8 @@
         "trailheadName": "四阿山登山口（あずまや高原）",
         "source": "YAMAPモデルコース（model-courses/29039）",
         "sourceUrl": "https://yamap.com/model-courses/29039",
-        "lastVerified": "2026-10-24"
+        "lastVerified": "2026-10-24",
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 220,
@@ -69813,7 +70253,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A2%83%E6%A9%8B&to=%E5%A5%A5%E5%A4%9A%E6%91%A9&type=1",
           "timetableUrl": "https://www.nisitokyobus.co.jp/rosen/noriba/okutama.html"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "奥多摩湖〜御前山〜鞘口山〜愛宕山〜奥多摩駅（縦走）",
@@ -69827,7 +70268,8 @@
         "source": "YAMAPモデルコース（model-courses/19273）",
         "sourceUrl": "https://yamap.com/model-courses/19273",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "奥多摩湖〜サス沢山〜惣岳山〜御前山（往復）",
@@ -69841,7 +70283,8 @@
         "source": "YAMAPモデルコース（model-courses/10016）",
         "sourceUrl": "https://yamap.com/model-courses/10016",
         "lastVerified": "2026-10-25",
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       }
     ],
     "driveTime": 125,
@@ -70405,7 +70848,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "唐沢鉱泉〜西尾根〜西天狗岳〜東天狗岳〜黒百合ヒュッテ（周回）",
@@ -70418,7 +70862,8 @@
         "source": "YAMAPモデルコース（model-courses/1487）",
         "sourceUrl": "https://yamap.com/model-courses/1487",
         "lastVerified": "2026-10-27",
-        "coeff": 24
+        "coeff": 24,
+        "courseType": "loop"
       },
       {
         "name": "渋の湯〜東天狗岳〜中山〜高見石小屋（周回）",
@@ -70432,7 +70877,8 @@
         "sourceUrl": "https://yamap.com/model-courses/93134",
         "lastVerified": "2026-10-27",
         "coeff": 31,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "vibePoints": [
@@ -70875,7 +71321,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "山頂駅〜北横岳〜雨池峠〜縞枯山（周回）",
@@ -70889,7 +71336,8 @@
         "sourceUrl": "https://yamap.com/model-courses/13388",
         "lastVerified": "2026-10-27",
         "coeff": 17,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "山頂駅〜北横岳〜亀甲池〜双子池〜雨池（周回）",
@@ -70903,7 +71351,8 @@
         "sourceUrl": "https://yamap.com/model-courses/19599",
         "lastVerified": "2026-10-27",
         "coeff": 23,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "vibePoints": [
@@ -71352,7 +71801,8 @@
         "sourceUrl": "https://yamap.com/model-courses/12180",
         "lastVerified": "2026-10-27",
         "coeff": 8,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "ゴンドラ山頂駅〜入笠山〜大阿原湿原（往復）",
@@ -71366,7 +71816,8 @@
         "sourceUrl": "https://yamap.com/model-courses/94180",
         "lastVerified": "2026-10-27",
         "coeff": 13,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "沢入登山口〜入笠湿原〜入笠山（往復）",
@@ -71379,7 +71830,8 @@
         "source": "YAMAPモデルコース（model-courses/9726）",
         "sourceUrl": "https://yamap.com/model-courses/9726",
         "lastVerified": "2026-10-27",
-        "coeff": 14
+        "coeff": 14,
+        "courseType": "out_and_back"
       }
     ],
     "vibePoints": [
@@ -71821,7 +72273,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "西穂高口駅〜西穂山荘〜西穂独標（往復）",
@@ -71843,7 +72296,8 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "上高地〜西穂山荘〜西穂独標〜西穂高岳（往復）",
@@ -71864,7 +72318,8 @@
           "gradedRoute": "西穂高岳（上高地）",
           "basis": "same",
           "lastVerified": "2026-11-04"
-        }
+        },
+        "courseType": "out_and_back"
       }
     ],
     "vibePoints": [
@@ -72288,7 +72743,8 @@
           "note": "中間道から上の白雲山・金洞山のコースは「険しい岩場が多くあり大変危険」で、初心者は登らないよう呼びかけている",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "妙義神社〜中間道〜タルワキ沢〜相馬岳（往復）",
@@ -72311,7 +72767,8 @@
           "note": "中間道から上の白雲山・金洞山のコースは「険しい岩場が多くあり大変危険」で、初心者は登らないよう呼びかけている",
           "lastVerified": "2026-11-04"
         },
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "妙義神社〜相馬岳〜鷹戻し〜中之岳〜中之嶽神社（縦走）",
@@ -72365,7 +72822,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "note": "バスは本数がとても少ない",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%AD%E4%B9%8B%E5%B6%BD%E7%A5%9E%E7%A4%BE&to=%E4%B8%8B%E4%BB%81%E7%94%B0&type=1"
-        }
+        },
+        "courseType": "traverse"
       }
     ],
     "vibePoints": [
@@ -72774,7 +73232,8 @@
         "sourceUrl": "https://yamap.com/model-courses/12351",
         "lastVerified": "2026-10-27",
         "coeff": 34,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "天神平〜谷川岳〜万太郎山〜仙ノ倉山〜平標山〜平標登山口（縦走）",
@@ -72787,7 +73246,8 @@
         "source": "YAMAPモデルコース（model-courses/80851）",
         "sourceUrl": "https://yamap.com/model-courses/80851",
         "lastVerified": "2026-10-27",
-        "coeff": 55
+        "coeff": 55,
+        "courseType": "traverse"
       }
     ],
     "vibePoints": [
@@ -73253,7 +73713,8 @@
         "sourceUrl": "https://yamap.com/model-courses/19236",
         "lastVerified": "2026-10-31",
         "coeff": 14,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "宝篋山小田休憩所〜尖浅間山〜宝篋山〜要害展望所（周回）",
@@ -73267,7 +73728,8 @@
         "sourceUrl": "https://yamap.com/model-courses/1126",
         "lastVerified": "2026-10-31",
         "coeff": 14,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "小町の館〜小町山〜鬼越山〜宝篋山〜東城寺（周回）",
@@ -73280,7 +73742,8 @@
         "source": "YAMAPモデルコース（model-courses/19237）",
         "sourceUrl": "https://yamap.com/model-courses/19237",
         "lastVerified": "2026-10-31",
-        "coeff": 18
+        "coeff": 18,
+        "courseType": "loop"
       }
     ],
     "vibePoints": [
@@ -73666,7 +74129,8 @@
         "sourceUrl": "https://yamap.com/model-courses/11093",
         "lastVerified": "2026-10-31",
         "coeff": 16,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "湖畔登山口〜竜ヶ岳（往復）",
@@ -73679,7 +74143,8 @@
         "source": "YAMAPモデルコース（model-courses/19720）",
         "sourceUrl": "https://yamap.com/model-courses/19720",
         "lastVerified": "2026-10-31",
-        "coeff": 13
+        "coeff": 13,
+        "courseType": "out_and_back"
       },
       {
         "name": "本栖湖キャンプ場〜竜ヶ岳〜端足峠〜湖畔登山口（周回）",
@@ -73693,7 +74158,8 @@
         "sourceUrl": "https://yamap.com/model-courses/29773",
         "lastVerified": "2026-10-31",
         "coeff": 20,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "vibePoints": [
@@ -74127,7 +74593,8 @@
         "sourceUrl": "https://yamap.com/model-courses/34461",
         "lastVerified": "2026-10-31",
         "coeff": 13,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       },
       {
         "name": "大滝登山口〜鳴神山〜椚田峠〜コツナギ橋登山口（周回）",
@@ -74140,7 +74607,8 @@
         "source": "YAMAPモデルコース（model-courses/23854）",
         "sourceUrl": "https://yamap.com/model-courses/23854",
         "lastVerified": "2026-10-31",
-        "coeff": 14
+        "coeff": 14,
+        "courseType": "loop"
       },
       {
         "name": "駒形登山口〜鳴神山〜三峰山〜大形山〜吾妻山〜桐生駅（縦走）",
@@ -74154,7 +74622,8 @@
         "sourceUrl": "https://yamap.com/model-courses/15910",
         "lastVerified": "2026-10-31",
         "coeff": 30,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       }
     ],
     "vibePoints": [
@@ -74538,7 +75007,8 @@
         "sourceUrl": "https://yamap.com/model-courses/16770",
         "lastVerified": "2026-10-31",
         "coeff": 15,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "out_and_back"
       },
       {
         "name": "あいかわ公園〜高取山〜仏果山〜仏果山登山口（周回）",
@@ -74551,7 +75021,8 @@
         "source": "YAMAPモデルコース（model-courses/38475）",
         "sourceUrl": "https://yamap.com/model-courses/38475",
         "lastVerified": "2026-10-31",
-        "coeff": 21
+        "coeff": 21,
+        "courseType": "loop"
       },
       {
         "name": "半僧坊前バス停〜経ヶ岳〜仏果山〜高取山〜水とエネルギー館（縦走）",
@@ -74564,7 +75035,8 @@
         "source": "YAMAPモデルコース（model-courses/20618）",
         "sourceUrl": "https://yamap.com/model-courses/20618",
         "lastVerified": "2026-10-31",
-        "coeff": 24
+        "coeff": 24,
+        "courseType": "traverse"
       }
     ],
     "vibePoints": [
@@ -74978,7 +75450,8 @@
           "lastBusDay": "2026年11月の土曜の時刻",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E7%99%BD%E7%9F%B3%E8%BB%8A%E5%BA%AB&to=%E5%B0%8F%E5%B7%9D%E7%94%BA%28%E5%9F%BC%E7%8E%89%E7%9C%8C%29&type=1",
           "timetableUrl": "https://www.vill.higashichichibu.saitama.jp/soshiki/00/higashichichibumurarosennbasujikokuhyouunnchinnhyou.html"
-        }
+        },
+        "courseType": "traverse"
       },
       {
         "name": "剣ヶ峰駐車場〜堂平山〜笠山（往復）",
@@ -74991,7 +75464,8 @@
         "source": "YAMAPモデルコース（model-courses/14486）",
         "sourceUrl": "https://yamap.com/model-courses/14486",
         "lastVerified": "2026-10-31",
-        "coeff": 13
+        "coeff": 13,
+        "courseType": "out_and_back"
       },
       {
         "name": "比企三山（笠山〜堂平山〜大霧山）周回",
@@ -75005,7 +75479,8 @@
         "sourceUrl": "https://yamap.com/model-courses/20062",
         "lastVerified": "2026-10-31",
         "coeff": 37,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "loop"
       }
     ],
     "vibePoints": [
@@ -75355,7 +75830,8 @@
         "sourceUrl": "https://yamap.com/model-courses/100614",
         "lastVerified": "2026-10-31",
         "coeff": 27,
-        "byTrain": true
+        "byTrain": true,
+        "courseType": "traverse"
       },
       {
         "name": "高松山入口バス停〜ビリ堂〜高松山〜尺里峠（周回）",
@@ -75368,7 +75844,8 @@
         "source": "YAMAPモデルコース（model-courses/27954）",
         "sourceUrl": "https://yamap.com/model-courses/27954",
         "lastVerified": "2026-10-31",
-        "coeff": 20
+        "coeff": 20,
+        "courseType": "loop"
       },
       {
         "name": "尺里峠〜高松山（往復）",
@@ -75381,7 +75858,8 @@
         "source": "YAMAPモデルコース（model-courses/21854）",
         "sourceUrl": "https://yamap.com/model-courses/21854",
         "lastVerified": "2026-10-31",
-        "coeff": 7
+        "coeff": 7,
+        "courseType": "out_and_back"
       }
     ],
     "vibePoints": [

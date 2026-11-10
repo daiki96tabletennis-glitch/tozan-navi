@@ -42,7 +42,7 @@
   const ogpMap = {ACPS:'acps',ACPL:'acpl',ACFS:'acfs',ACFL:'acfl',AHPS:'ahps',AHPL:'ahpl',AHFS:'ahfs',AHFL:'ahfl',VCPS:'vcps',VCPL:'vcpl',VCFS:'vcfs',VCFL:'vcfl',VHPS:'vhps',VHPL:'vhpl',VHFS:'vhfs',VHFL:'vhfl'};
   const names16 = {ACPS:'山岳探検家',ACPL:'孤高の登山家',ACFS:'ワイルドハイカー',ACFL:'バリエーター',AHPS:'展望ハンター',AHPL:'サイレントクライマー',AHFS:'お祭り登山家',AHFL:'フォトウォーカー',VCPS:'山岳研究家',VCPL:'深山の求道者',VCFS:'山旅人',VCFL:'隠れ登山家',VHPS:'山リゾーター',VHPL:'瞑想ハイカー',VHFS:'山ピクニック派',VHFL:'森の放浪者'};
   if(type && ogpMap[type]){
-    const img = 'https://tozan-navi.com/ogp/type-'+ogpMap[type]+'.png?v=20261025';
+    const img = 'https://tozan-navi.com/ogp/type-'+ogpMap[type]+'.png?v=20261110';
     document.querySelector('meta[property="og:image"]').content = img;
     document.querySelector('meta[name="twitter:image"]').content = img;
     if(names16[type]) document.querySelector('meta[property="og:title"]').content = '私は「'+names16[type]+'」でした！ - Yamatch登山タイプ診断';
@@ -882,13 +882,17 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
   <div id="standard-trend-notice" style="display:none;background:#fff6e0;border:1px solid #e8d090;border-radius:10px;padding:9px 12px;font-size:11px;color:#8a6a20;line-height:1.5;margin-bottom:10px;">
     ⚠️ これはこのタイプの標準的な傾向を表示しています。個人の診断結果ではありません。あなた自身の結果を見るには診断を受けてください。
   </div>
+  <div id="shared-cta" style="display:none;background:#eef3e6;border:1.5px solid #c8d4b8;border-radius:14px;padding:12px 14px;margin-bottom:12px;text-align:center;">
+    <div style="font-size:12px;color:#4a5e4a;margin-bottom:8px;line-height:1.5;">共有された診断結果です</div>
+    <button type="button" onclick="ymStartOwn()" style="width:100%;padding:13px;background:#4e6535;color:white;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;touch-action:manipulation;">あなたも診断する（12問・約2分）</button>
+  </div>
   <div id="result-type-card"></div>
-  <button onclick="window._shareNative&&window._shareNative()" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;background:white;border:1.5px solid #c8ddb0;border-radius:12px;font-size:13px;font-weight:700;color:#4e6535;cursor:pointer;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+  <button class="own-only" onclick="window._shareNative&&window._shareNative()" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;background:white;border:1.5px solid #c8ddb0;border-radius:12px;font-size:13px;font-weight:700;color:#4e6535;cursor:pointer;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>
     この結果をシェアする
   </button>
-  <button id="share-image-btn" class="share-btn sb-image" onclick="generateShareImage()" style="background:white;color:#4a5e4a;border:1.5px solid #c8ddb0;width:100%;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.06);">📸 シェア画像を保存（正方形）</button>
-  <button id="share-story-btn" class="share-btn sb-image" onclick="generateShareImage('story')" style="background:white;color:#4a5e4a;border:1.5px solid #c8ddb0;width:100%;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.06);">📱 ストーリー用を保存（縦長）</button>
+  <button id="share-image-btn" class="share-btn sb-image own-only" onclick="generateShareImage()" style="background:white;color:#4a5e4a;border:1.5px solid #c8ddb0;width:100%;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.06);">📸 シェア画像を保存（正方形）</button>
+  <button id="share-story-btn" class="share-btn sb-image own-only" onclick="generateShareImage('story')" style="background:white;color:#4a5e4a;border:1.5px solid #c8ddb0;width:100%;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.06);">📱 ストーリー用を保存（縦長）</button>
   <div id="radar-section" class="radar-section">
     <div class="radar-section-title">📊 あなたの登山スタイル診断</div>
     <div class="radar-wrap" id="radar-wrap"></div>
@@ -923,16 +927,16 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 
   <div id="result-cards"></div>
   <div id="compat-area"></div>
-  <div class="share-section">
+  <div class="share-section own-only">
     <div class="share-title">📤 友達にも診断してもらおう</div>
       <button class="share-btn sb-native" onclick="window._shareNative&&window._shareNative()" style="background:#4a5e4a;color:white;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg> シェア</button>
     <div class="share-btns">
       <a id="share-x" href="#" target="_blank" class="share-btn sb-x">𝕏 Xでシェア</a>
       <a id="share-line" href="#" target="_blank" class="share-btn sb-line">💬 LINE</a>
-      <button class="share-btn sb-copy" onclick="copyResult()">🔗 URLコピー</div>
+      <button class="share-btn sb-copy" onclick="copyResult()">🔗 URLコピー</button>
     </div>
   </div>
-  <button class="retry-btn" onclick="restart()">↺ もう一度診断する</div>
+  <button class="retry-btn" onclick="restart()">↺ もう一度診断する</button>
 </div>
 
 </main>
@@ -1257,6 +1261,8 @@ function buildIntroGrid(){
   grid.innerHTML = html;
 }
 function startQuiz(){current=1;show('q'+current);}
+// 共有された結果の画面から、自分の診断を1問目から始める
+function ymStartOwn(){ restart(); startQuiz(); window.scrollTo(0,0); }
 
 // 4軸スコアを保存済みのanswers全件から毎回再計算する。
 // （戻るボタンで回答を変更しても、差分加算だと古い回答分のスコアが残ってしまうため、
@@ -1306,6 +1312,7 @@ function goBack(){
 }
 
 function restart(){
+  if(location.search && window.history && history.replaceState) history.replaceState(null,'','/recommend/');
   if(window._hideStickyOnRestart) window._hideStickyOnRestart();
   Object.keys(answers).forEach(k=>delete answers[k]);
   axisScore.av=axisScore.ch=axisScore.pf=axisScore.sl=0;
@@ -1662,6 +1669,11 @@ function _doShowResult(opts){
   // 「このタイプの標準傾向」表示（旧形式のタイプ別URL・古いバナーからの復元時のみ）
   var trendNotice = document.getElementById('standard-trend-notice');
   if(trendNotice) trendNotice.style.display = opts.isStandardTrend ? 'block' : 'none';
+  // 共有のリンク（/type/◯◯/?r=… → /recommend/?type=…）から開いたときだけ「あなたも診断する」を出し、その人の結果のシェアは隠す
+  var fromShare = !!new URLSearchParams(location.search).get('type');
+  var sharedCta = document.getElementById('shared-cta');
+  if(sharedCta) sharedCta.style.display = fromShare ? 'block' : 'none';
+  document.querySelectorAll('#result .own-only').forEach(function(el){ el.style.display = fromShare ? 'none' : ''; });
 
   // スコアリング（安全フィルターで選択レベルを大幅に超える山を除外した上でスコアリング）
   const coeffLimitForFilter=answers.coeff||999;
@@ -1792,18 +1804,16 @@ function _doShowResult(opts){
     + 'あなたのタイプは？→';
   // 共有URLに実際の診断スコア（4軸・体力レベル）を埋め込み、
   // 別ブラウザ・別端末で開いても診断直後と同じ結果（タイプ・スコア・おすすめ山）を再現できるようにする。
-  const shareParams = new URLSearchParams();
-  shareParams.set('av', axisScore.av);
-  shareParams.set('ch', axisScore.ch);
-  shareParams.set('pf', axisScore.pf);
-  shareParams.set('sl', axisScore.sl);
-  if(answers.coeff!=null) shareParams.set('coeff', answers.coeff);
+  // 共有のURLは短い形 ?r=<4桁><体力の記号>（4桁は 行動/観察・挑戦/癒し・計画/自由・仲間/ソロ の点に3を足した数、体力は 14→a 22→b 35→c 60→d）。
+  // タイプのページが前の形（?av=&ch=&pf=&sl=&coeff=）に直して診断結果の画面へ送る
+  const clamp3=function(v){ v=Math.round(Number(v)||0); return Math.max(-3,Math.min(3,v))+3; };
+  const shareR=''+clamp3(axisScore.av)+clamp3(axisScore.ch)+clamp3(axisScore.pf)+clamp3(axisScore.sl)+({14:'a',22:'b',35:'c',60:'d'}[answers.coeff]||'');
   // 共有のURLは、検索に出るタイプのページ（/type/◯◯/）にする。スコアつきで開くと、そのページが診断結果の画面へ切り替える
   const TYPE_SLUG={'ACFL':'variation-seeker','ACFS':'wild-hiker','ACPL':'solitary-climber','ACPS':'mountain-explorer','AHFL':'photo-walker','AHFS':'party-hiker','AHPL':'silent-climber','AHPS':'view-hunter','VCFL':'hidden-hiker','VCFS':'mountain-traveler','VCPL':'deep-mountain-seeker','VCPS':'mountain-researcher','VHFL':'forest-wanderer','VHFS':'mountain-picnic','VHPL':'meditation-hiker','VHPS':'mountain-resort'};
-  const shareUrlWithType='https://tozan-navi.com/type/'+TYPE_SLUG[typeCode]+'/?'+shareParams.toString();
-  const diagStartUrl='https://tozan-navi.com/recommend/?start=1';  // 1問目から始まるURL
-  // 共有する文：診断の結果のURLと、その下に診断の最初の画面のURL
-  const shareFull=shareText.replace(/あなたのタイプは？→$/,'')+'\n結果を見る → '+shareUrlWithType+'\n\nあなたも診断（12問・約2分）→ '+diagStartUrl+'\n#登山タイプ診断';
+  const shareUrlWithType='https://tozan-navi.com/type/'+TYPE_SLUG[typeCode]+'/?r='+shareR;
+  window._shareUrl=shareUrlWithType;
+  // 共有する文：URL は結果の1つだけ（LINE はURLごとにカードを出すため）。開いた人には結果の画面に「あなたも診断する」が出る
+  const shareFull=shareText.replace(/あなたのタイプは？→$/,'')+'\n結果と診断はこちら → '+shareUrlWithType+'\n#登山タイプ診断';
   document.getElementById('share-x').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareFull);
   document.getElementById('share-line').href='https://line.me/R/msg/text/?'+encodeURIComponent(shareFull);
   window._shareNative=function(){
@@ -2314,8 +2324,8 @@ function _doShowResult(opts){
 }
 
 function copyResult(){
-  navigator.clipboard.writeText('https://tozan-navi.com/recommend/')
-    .then(()=>alert('URLをコピーしました！友達にシェアしてね🗻'));
+  navigator.clipboard.writeText(window._shareUrl||'https://tozan-navi.com/recommend/')
+    .then(()=>alert('結果のURLをコピーしました！友達にシェアしてね🗻'));
 }
 // JSONから最新データを読み込んでからグリッドを構築
 document.addEventListener('DOMContentLoaded', function(){

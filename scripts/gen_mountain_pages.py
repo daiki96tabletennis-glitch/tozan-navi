@@ -752,6 +752,42 @@ ROUTE_TRAIN_ICON = ('<span class="rl-train" role="img" aria-label="電車・バ�
                     '<line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>')
 
 
+# コースの種類（routes[].courseType。2026-11-10〜。運営者の指示）。時間などの印の先頭に出す
+COURSE_TYPE = {
+    'out_and_back': ('往復', '同じ道で戻るコース',
+                     '<path d="M3 8 H17 M13 4 L17 8 L13 12 M21 16 H7 M11 12 L7 16 L11 20"/>'),
+    'loop': ('周回', '別の道で歩き始めた場所に戻るコース',
+             '<path d="M19 12 A7 7 0 1 1 15.5 5.9"/><path d="M15 2.5 L16 6.3 L12.2 7.3"/>'),
+    'traverse': ('縦走', '歩き始めと別の場所に下りるコース',
+                 '<circle cx="4" cy="17" r="2"/><path d="M6 17 C10 17 9 7 14 7 H19 M16 4 L19 7 L16 10"/>'),
+}
+_TYPE_WORDS = '往復|周回|縦走|ピストン'
+
+
+def course_type_chip(r):
+    t = COURSE_TYPE.get(r.get("courseType"))
+    if not t:
+        return ""
+    label, title, path = t
+    return (f'<span class="rl-chip rl-type" title="{title}"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" '
+            f'fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">{path}</svg>{label}</span>')
+
+
+def route_display_name(r):
+    """ページに出すコース名から、種類の語（印で出すので）を外す。データのコース名は変えない"""
+    name = r.get("name") or ""
+    t = COURSE_TYPE.get(r.get("courseType"))
+    if not t:
+        return name
+    w = '(?:%s)' % _TYPE_WORDS
+    out = re.sub(r'（' + w + r'）', '', name)
+    out = re.sub(r'（' + w + r'・', '（', out)
+    out = re.sub(r'・' + w + r'）', '）', out)
+    out = re.sub(r'・' + w + r'・', '・', out)
+    out = re.sub(r'(?<=[^〜・（\s])' + w + r'$', '', out)
+    return out.strip() or name
+
+
 def render_access_tabs(mt):
     """電車・バスと車（車の時間・駐車場）を1つの欄にまとめ、タブで切り替える。登山口と前泊の宿はタブの下（2026-11-05〜。運営者の指示）。
     JavaScript が動かないときは両方とも出る（隠すのは ACC_SCRIPT）"""
@@ -1127,8 +1163,10 @@ def render_routes(mt):
     routes = require(mt, "routes")
     items = []
     for i, r in enumerate(routes, start=1):
-        name = esc(r.get("name") or "")
+        name = esc(route_display_name(r))
         chips = []
+        if course_type_chip(r):
+            chips.append(course_type_chip(r))
         if r.get("time"):
             chips.append(f'<span class="rl-chip">⏱&nbsp;{esc(r["time"])}</span>')
         if r.get("distance"):

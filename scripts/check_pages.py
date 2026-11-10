@@ -704,6 +704,27 @@ def check_route_tech(mountains):
     return out
 
 
+def check_course_type(mountains):
+    """コースの種類（routes[].courseType：往復 out_and_back／周回 loop／縦走 traverse）。
+    scripts/migrations/add_course_type_2026_11.py がコース名から決める。コースを足す・名前を変えたら流す。"""
+    out = []
+    names = {'out_and_back': '往復', 'loop': '周回', 'traverse': '縦走'}
+    for m in mountains:
+        for i, r in enumerate(m.get('routes') or [], start=1):
+            t = r.get('courseType')
+            where = 'コース%d' % i
+            if t not in names:
+                out.append({'id': m['id'], 'problem': where + ' courseType が無い・値が違う: ' + str(t) + '（add_course_type_2026_11.py を流す）'})
+                continue
+            nm = r.get('name') or ''
+            said = [v for v in names.values() if ('（' + v) in nm or ('・' + v) in nm or (v + '）') in nm or nm.endswith(v)]
+            if said and names[t] not in said:
+                out.append({'id': m['id'], 'problem': where + ' コース名は「' + '・'.join(said) + '」なのに courseType が ' + names[t]})
+            if r.get('returnAccess') and t != 'traverse':
+                out.append({'id': m['id'], 'problem': where + ' 帰り方（returnAccess）があるのに縦走でない'})
+    return out
+
+
 def check_listings(mountains):
     """「登山口の近く（PR）」の掲載枠（data/listings.json・gen_mountain_pages.py）。データの書き方と、ページの PR 表示・広告リンクの印・期限。"""
     import datetime as _dt
@@ -830,6 +851,7 @@ def main():
     packm_issues = check_packing_mountains()
     listing_issues = check_listings(mountains)
     tech_issues = check_route_tech(mountains)
+    ctype_issues = check_course_type(mountains)
     import sync_search_hubs
     hub_issues = sync_search_hubs.hub_problems(mountains)
 
@@ -876,6 +898,7 @@ def main():
     report.append(section('19. 持ち物チェックリストの山の一覧（packing_mountains.json）', packm_issues, fmt))
     report.append(section('20. 地元のお店の掲載枠（listings.json・PR表示）', listing_issues, fmt))
     report.append(section('21. コースの技術的難易度（山のグレーディング・岩場の難所のラベル）', tech_issues, fmt))
+    report.append(section('22. コースの種類（往復・周回・縦走。routes[].courseType）', ctype_issues, fmt))
     if ssot_warns:
         report.append('## 参考：運行期間の期限切れ（来季の再確認対象。件数に含めない）\n' + '\n'.join('- ' + fmt(w) for w in ssot_warns) + '\n')
     report.append(f"## 参考：既知の未解決（調査待ちのレガシー。件数に含めない）\n- 10. 所要時間: {len(time_known)}件 / 11. 駅名: {len(station_known)}件（scripts/check_known_issues.json）\n")
@@ -887,7 +910,7 @@ def main():
              + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues)
              + len(train_routes_issues) + len(route_dup_issues) + len(time_issues)
              + len(station_issues) + len(coeff_issues) + len(restricted_issues) + len(seat_issues)
-             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues) + len(listing_issues) + len(tech_issues))
+             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues) + len(listing_issues) + len(tech_issues) + len(ctype_issues))
 
     if args.json:
         with open(args.json, 'w', encoding='utf-8') as f:
