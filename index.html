@@ -1156,7 +1156,7 @@ function App() {
     if (v.elevation.length) parts.push("標高" + v.elevation.map(function(e) { return e === 0 ? "〜1000m" : (e + "m〜"); }).join("・"));
     if (v.crampons !== "すべて") parts.push(v.crampons);
     if (v.line.length) parts.push(v.line.join("・"));
-    if (v.vibe) parts.push(({view:"絶景",forest:"森歩き",rock:"岩場",highland:"高原",accessible:"お手軽",volcano:"火山",wetland:"湿原",historic:"歴史"})[v.vibe] || v.vibe);
+    if (v.vibe) parts.push(({view:"絶景",forest:"森歩き",rock:"岩場",chain:"鎖場",highland:"高原",accessible:"お手軽",volcano:"火山",wetland:"湿原",historic:"歴史"})[v.vibe] || v.vibe);
     if (v.month !== new Date().getMonth() + 1) parts.push(v.month + "月");
     return parts.join(" / ");
   };
@@ -1221,7 +1221,7 @@ function App() {
 
   const filtered = useMemo(() => {
     let list = mountains.filter(m => {
-      var matchVibe = !vibeFilter || (m.vibes || []).indexOf(vibeFilter) > -1;
+      var matchVibe = !vibeFilter || (vibeFilter === 'chain' ? (m.routes || []).some(function(r){ return r.chains; }) : (m.vibes || []).indexOf(vibeFilter) > -1);
       const matchSearch = !search || m.name.includes(search) || m.kana.includes(search);
       const matchArea = area.length === 0 || area.some(a => m.area.includes(a));
       const matchCat = categoryFilter === "すべて" || m.category === categoryFilter;
@@ -1734,6 +1734,7 @@ function App() {
                 {key:"view",      emoji:"⛰", label:"絶景"},
                 {key:"forest",    emoji:"🌲", label:"森歩き"},
                 {key:"rock",      emoji:"🧗", label:"岩場"},
+                {key:"chain",     emoji:<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{display:"block"}}><rect x="0.8" y="16" width="8.5" height="5" rx="2.5" transform="rotate(-45 5 18.5)"/><path d="M7.8 14.2l2-2"/><rect x="7.75" y="9.5" width="8.5" height="5" rx="2.5" transform="rotate(45 12 12)"/><path d="M14.2 9.8l2-2"/><rect x="14.7" y="3" width="8.5" height="5" rx="2.5" transform="rotate(-45 19 5.5)"/></svg>, label:"鎖場"},
                 {key:"highland",  emoji:"🏞️", label:"高原"},
                 {key:"accessible",emoji:"🚡", label:"お手軽"},
                 {key:"volcano",   emoji:"🌋", label:"火山"},
