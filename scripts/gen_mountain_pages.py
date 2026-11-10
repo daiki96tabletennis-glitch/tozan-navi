@@ -40,6 +40,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_recommend_gear  # noqa: E402  (診断用月別装備JSONの生成。gear-data.json変更時に同時更新するため)
 from render_transit_routes import render_ts_section  # noqa: E402  (trainRoutes構造化データからのHTML生成。2026-09-23移行)
 from render_transit_routes import ICON_SVG as TRANSIT_ICON_SVG, render_link as render_transit_link  # noqa: E402  (帰り方のカードも行きと同じ形にする)
+from ym_icons import svg as ym_icon  # noqa: E402  (線画のアイコン。鎖場の印など)
 
 SITE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH = os.path.join(SITE_ROOT, "data", "mountains.json")
@@ -508,6 +509,7 @@ def render_dl_card(mt):
     )
     note_html = mt.get("dlNoteHtml") or ""
     reasons_html = mt.get("dlReasonsHtml") or ""
+    note_html, reasons_html = with_chain(mt, note_html, reasons_html)
     tail = note_html or reasons_html or ""
     return (
         '<div class="card dl-card">\n'
@@ -1133,6 +1135,59 @@ def tech_line(t):
     return f'<div class="rl-access" style="color:#7a5a3a">{body}。出典：{src}</div>'
 
 
+# 鎖場（routes[].chains。2026-11-10〜。運営者の指示：鎖場が多い・有名な鎖場のあるコース）
+CHAIN_STYLE = "background:#ece6dc;color:#5a4636"
+
+
+def chain_tag(r):
+    if not r.get("chains"):
+        return ""
+    return (f'<span class="rl-tag rl-tag-chain" style="{CHAIN_STYLE};display:inline-flex;align-items:center;gap:3px">'
+            f'{ym_icon("chain")}鎖場</span>')
+
+
+def chain_line(r):
+    ch = r.get("chains")
+    if not ch:
+        return ""
+    src = f'<a href="{esc(ch["sourceUrl"])}" target="_blank" rel="noopener" style="color:#7a7068">{esc(ch["source"])}</a>'
+    return f'<div class="rl-access" style="color:#5a4636">鎖場：{esc(ch["spots"])}。出典：{src}</div>'
+
+
+def chain_mark(mt):
+    """難易度の欄に入れる「鎖場」の印とコースの番号（鎖場のコースが無ければ空）"""
+    nums = [i for i, r in enumerate(mt.get("routes") or [], start=1) if r.get("chains")]
+    if not nums:
+        return ""
+    which = "すべてのコース" if len(nums) == len(mt["routes"]) and len(nums) > 1 else "・".join(f"コース{n}" for n in nums)
+    return (f'<span class="dl-chain" style="{CHAIN_STYLE};display:inline-flex;align-items:center;gap:3px;font-size:11px;'
+            f'font-weight:700;padding:1px 6px;border-radius:4px;margin-right:6px;vertical-align:1px">{ym_icon("chain")}鎖場</span>'
+            f'<span style="font-weight:700">{which}</span>：')
+
+
+def with_chain(mt, note_html, reasons_html):
+    """難易度の文の数は変えずに鎖場に触れる（運営者の指示）。理由の箇条書きは鎖場について書いた行に印を付け、
+    1文だけの山はその文の後ろに一言足す"""
+    mark = chain_mark(mt)
+    if not mark:
+        return note_html, reasons_html
+    if reasons_html and not note_html:
+        lis = list(re.finditer(r'<li([^>]*)>', reasons_html))
+        lis.sort(key=lambda m: 'minus' not in m.group(1))  # 難しくする点の行を先に
+        for m in lis:
+            end = reasons_html.find('</li>', m.end())
+            if '鎖' in reasons_html[m.end():end]:
+                return note_html, reasons_html[:m.end()] + mark + reasons_html[m.end():]
+        raise SystemExit(f'{mt["id"]}: 難易度の理由に鎖場の行が無い（鎖場の行を書くか、入れ替える行を決める）')
+    if note_html:
+        nums = [i for i, r in enumerate(mt.get("routes") or [], start=1) if r.get("chains")]
+        spots = "・".join(dict.fromkeys(r["chains"]["spots"] for r in mt["routes"] if r.get("chains")))
+        add = f' {mark}{esc(spots)}'
+        k = note_html.rfind('</p>')
+        return (note_html[:k] + add + note_html[k:] if k >= 0 else note_html + add), reasons_html
+    return note_html, reasons_html
+
+
 def tech_summary(mt):
     """難易度の欄に出す、その山のコースでいちばん難しいもの"""
     routes = mt.get("routes") or []
@@ -1178,10 +1233,12 @@ def render_routes(mt):
         ssot_html = ""
         # 旧構造の山でも、ルートに trailheadName / status があれば表示する
         th_name = (mt.get("routeTrailheads") or {}).get(r.get("id")) or r.get("trailheadName")
-        if mt.get("dataModel") == "ssot-v1" or th_name or r.get("status") or tech_level(r.get("tech")):
+        if mt.get("dataModel") == "ssot-v1" or th_name or r.get("status") or tech_level(r.get("tech")) or r.get("chains"):
             tags = []
             if tech_level(r.get("tech")):
                 tags.append(tech_tag(r["tech"]))
+            if r.get("chains"):
+                tags.append(chain_tag(r))
             if r.get("id") and r.get("id") == mt.get("representativeRouteId"):
                 tags.append('<span class="rl-tag rl-tag-rep">代表ルート</span>')
             st = r.get("status")
@@ -1193,6 +1250,7 @@ def render_routes(mt):
             line = f'登山口：{esc(th_name)}' if th_name else ""
             ssot_html = f'<div class="rl-th">{"".join(tags)}{line}</div>'
         ssot_html += tech_line(r.get("tech"))
+        ssot_html += chain_line(r)
         if r.get("note"):
             ssot_html += f'<div class="rl-access">{esc(r["note"])}</div>'
         if r.get("accessNote"):

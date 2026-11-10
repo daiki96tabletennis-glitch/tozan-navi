@@ -3177,7 +3177,13 @@
           "note": "八丁尾根の岩稜帯。両神山は鎖場や急斜面での転落・滑落による遭難が多い",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "chains": {
+          "spots": "八丁尾根（クサリ場の連続）",
+          "source": "YAMAP「両神山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/24",
+          "lastVerified": "2026-11-10"
+        }
       }
     ],
     "driveTime": 165,
@@ -7107,7 +7113,13 @@
           "basis": "contains",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "loop"
+        "courseType": "loop",
+        "chains": {
+          "spots": "赤岳の南峰〜竜頭峰の岩稜（鎖場が続く）",
+          "source": "山と溪谷オンライン「南八ヶ岳の岩稜を一気に縦走。赤岳〜横岳〜硫黄岳」",
+          "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=2658",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "id": "minotoguchi-roundtrip",
@@ -7158,7 +7170,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "loop"
+        "courseType": "loop",
+        "chains": {
+          "spots": "赤岳の南峰〜竜頭峰・横岳（鎖やハシゴが連続）",
+          "source": "山と溪谷オンライン「南八ヶ岳の岩稜を一気に縦走。赤岳〜横岳〜硫黄岳」",
+          "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=2658",
+          "lastVerified": "2026-11-10"
+        }
       }
     ],
     "driveTime": 175,
@@ -9072,7 +9090,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "chains": {
+          "spots": "西黒尾根の岩稜（3か所の鎖場が続く）",
+          "source": "日本アルプス登山ガイド「谷川岳 西黒尾根コース」",
+          "sourceUrl": "https://www.japanesealps.net/100moutains/tanigawadake/nishikuroone/",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "id": "shigekura-traverse",
@@ -9097,7 +9121,13 @@
           "basis": "contains",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "chains": {
+          "spots": "西黒尾根の岩稜（3か所の鎖場が続く）",
+          "source": "日本アルプス登山ガイド「谷川岳 西黒尾根コース」",
+          "sourceUrl": "https://www.japanesealps.net/100moutains/tanigawadake/nishikuroone/",
+          "lastVerified": "2026-11-10"
+        }
       }
     ],
     "driveTime": 180,
@@ -10724,7 +10754,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "loop"
+        "courseType": "loop",
+        "chains": {
+          "spots": "武尊神社からのルートの上部（鎖場が連続）",
+          "source": "日本アルプス登山ガイド「武尊山」",
+          "sourceUrl": "https://www.japanesealps.net/100moutains/hotakayama/",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "name": "川場スキー場（リフト利用）〜剣ヶ峰山〜武尊山（往復）",
@@ -11075,7 +11111,13 @@
           "lastVerified": "2026-11-04",
           "note": "黒戸尾根"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "chains": {
+          "spots": "黒戸尾根のはしご・鎖",
+          "source": "観光庁「甲斐駒ヶ岳」（地域観光資源の多言語解説文）",
+          "sourceUrl": "https://www.mlit.go.jp/tagengo-db/en/R6-00201.html",
+          "lastVerified": "2026-11-10"
+        }
       }
     ],
     "driveTime": 205,
@@ -13960,7 +14002,13 @@
           "note": "カニのタテバイ・ヨコバイ"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "chains": {
+          "spots": "カニのタテバイ・カニのヨコバイ",
+          "source": "ヤマケイオンライン「剱岳」（山と溪谷社）",
+          "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=496",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "name": "馬場島〜早月尾根〜剱岳（往復・山小屋泊）",
@@ -14005,7 +14053,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "chains": {
+          "spots": "カニのタテバイ・カニのヨコバイ",
+          "source": "ヤマケイオンライン「剱岳」（山と溪谷社）",
+          "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=496",
+          "lastVerified": "2026-11-10"
+        }
       }
     ],
     "driveTime": 360,
@@ -14488,7 +14542,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "chains": {
+          "spots": "山頂の穂先（鎖とはしご）",
+          "source": "日本アルプス登山ガイド「槍ヶ岳 槍沢コース」",
+          "sourceUrl": "https://www.japanesealps.net/north/yarigatake/yarisawa/",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "id": "hidazawa-roundtrip",
@@ -14513,7 +14573,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "chains": {
+          "spots": "山頂の穂先（鎖とはしご）",
+          "source": "日本アルプス登山ガイド「槍ヶ岳 槍沢コース」",
+          "sourceUrl": "https://www.japanesealps.net/north/yarigatake/yarisawa/",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "id": "omote-ginza",
@@ -14538,7 +14604,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "chains": {
+          "spots": "山頂の穂先（鎖とはしご）",
+          "source": "日本アルプス登山ガイド「槍ヶ岳 槍沢コース」",
+          "sourceUrl": "https://www.japanesealps.net/north/yarigatake/yarisawa/",
+          "lastVerified": "2026-11-10"
+        }
       }
     ],
     "driveTime": 220,
@@ -15116,7 +15188,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "chains": {
+          "spots": "穂高岳山荘から上のクサリと2連の鉄ハシゴ",
+          "source": "The Japan Alps「穂高岳 難所詳細ルートガイド（涸沢ルート）」",
+          "sourceUrl": "https://thejapanalps.com/wp-content/uploads/2021/12/okuhotaka-dake.pdf",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "id": "dakesawa-loop",
@@ -15146,7 +15224,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "chains": {
+          "spots": "穂高岳山荘から上のクサリと2連の鉄ハシゴ",
+          "source": "The Japan Alps「穂高岳 難所詳細ルートガイド（涸沢ルート）」",
+          "sourceUrl": "https://thejapanalps.com/wp-content/uploads/2021/12/okuhotaka-dake.pdf",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "id": "nishiho-traverse",
@@ -15730,7 +15814,13 @@
         "sourceUrl": "https://yamap.com/model-courses/198",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "chains": {
+          "spots": "九合目の鎖場（貝摺ノ嶮）",
+          "source": "日本アルプス登山ガイド「妙高山 燕登山道コース」",
+          "sourceUrl": "https://www.japanesealps.net/100moutains/myokosan/tsubame_tozando/",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "name": "妙高高原スカイケーブル山頂駅〜天狗堂〜妙高山（往復）",
@@ -15744,7 +15834,13 @@
         "source": "YAMAPモデルコース（model-courses/24637）",
         "sourceUrl": "https://yamap.com/model-courses/24637",
         "lastVerified": "2026-10-24",
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "chains": {
+          "spots": "九合目の鎖場（貝摺ノ嶮）",
+          "source": "日本アルプス登山ガイド「妙高山 燕登山道コース」",
+          "sourceUrl": "https://www.japanesealps.net/100moutains/myokosan/tsubame_tozando/",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "name": "燕温泉〜天狗堂〜妙高山〜長助池〜麻平（周回）",
@@ -15759,7 +15855,13 @@
         "sourceUrl": "https://yamap.com/model-courses/24638",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "chains": {
+          "spots": "九合目の鎖場（貝摺ノ嶮）",
+          "source": "日本アルプス登山ガイド「妙高山 燕登山道コース」",
+          "sourceUrl": "https://www.japanesealps.net/100moutains/myokosan/tsubame_tozando/",
+          "lastVerified": "2026-11-10"
+        }
       }
     ],
     "driveTime": 255,
@@ -22932,7 +23034,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "chains": {
+          "spots": "籏立岩・山頂直下の一枚岩",
+          "source": "日本アルプス登山ガイド「乾徳山 徳和コース」",
+          "sourceUrl": "https://www.japanesealps.net/200moutains/kentokuzan/tokuwa_course/",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "name": "徳和〜乾徳山〜道満山〜徳和峠（周回）",
@@ -22955,7 +23063,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "chains": {
+          "spots": "籏立岩・山頂直下の一枚岩",
+          "source": "日本アルプス登山ガイド「乾徳山 徳和コース」",
+          "sourceUrl": "https://www.japanesealps.net/200moutains/kentokuzan/tokuwa_course/",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "name": "大平高原〜乾徳山〜笠盛山〜黒金山（周回）",
@@ -22969,7 +23083,13 @@
         "source": "YAMAPモデルコース（model-courses/20297）",
         "sourceUrl": "https://yamap.com/model-courses/20297",
         "lastVerified": "2026-10-24",
-        "courseType": "loop"
+        "courseType": "loop",
+        "chains": {
+          "spots": "籏立岩・山頂直下の一枚岩",
+          "source": "日本アルプス登山ガイド「乾徳山 徳和コース」",
+          "sourceUrl": "https://www.japanesealps.net/200moutains/kentokuzan/tokuwa_course/",
+          "lastVerified": "2026-11-10"
+        }
       }
     ],
     "driveTime": 115,
@@ -30558,7 +30678,13 @@
           "note": "前嵓"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "chains": {
+          "spots": "前嵓の鉄鎖",
+          "source": "ヤマケイオンライン「荒沢岳」（山と溪谷社）",
+          "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=307",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "name": "裏越後三山：荒沢岳〜兎岳〜中ノ岳〜越後駒ヶ岳（周回）",
@@ -30586,7 +30712,13 @@
           "note": "前嵓"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "chains": {
+          "spots": "前嵓の鉄鎖",
+          "source": "ヤマケイオンライン「荒沢岳」（山と溪谷社）",
+          "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=307",
+          "lastVerified": "2026-11-10"
+        }
       }
     ],
     "driveTime": 240,
@@ -36326,7 +36458,13 @@
           "lastVerified": "2026-11-04",
           "note": "戸隠山の蟻の塔渡り"
         },
-        "courseType": "loop"
+        "courseType": "loop",
+        "chains": {
+          "spots": "胸突岩などの鎖場・蟻の塔渡り",
+          "source": "ニッポン旅マガジン「戸隠山『蟻の塔渡り』とは」",
+          "sourceUrl": "https://tabi-mag.jp/arinotowatari/",
+          "lastVerified": "2026-11-10"
+        }
       }
     ],
     "driveTime": 255,
@@ -38210,7 +38348,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "loop"
+        "courseType": "loop",
+        "chains": {
+          "spots": "庚申山〜鋸山（ハシゴと鎖場の連続）",
+          "source": "山と溪谷オンライン「日帰り百名山の最難関・皇海山クラシックルート」",
+          "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=5316",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "name": "銀山平〜庚申山〜鋸山〜皇海山（往復）",
@@ -38232,7 +38376,13 @@
           "basis": "contains",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "chains": {
+          "spots": "庚申山〜鋸山（ハシゴと鎖場の連続）",
+          "source": "山と溪谷オンライン「日帰り百名山の最難関・皇海山クラシックルート」",
+          "sourceUrl": "https://www.yamakei-online.com/yama-ya/detail.php?id=5316",
+          "lastVerified": "2026-11-10"
+        }
       }
     ],
     "driveTime": 210,
@@ -57574,7 +57724,13 @@
         "sourceUrl": "https://yamap.com/model-courses/58",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "chains": {
+          "spots": "山頂への鎖場",
+          "source": "YAMAP モデルコース「伊予ヶ岳」の説明",
+          "sourceUrl": "https://yamap.com/model-courses/58",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "name": "平群天神社〜伊予ヶ岳〜富山〜岩井駅（縦走）",
@@ -57589,7 +57745,13 @@
         "sourceUrl": "https://yamap.com/model-courses/20995",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "chains": {
+          "spots": "山頂への鎖場",
+          "source": "YAMAP モデルコース「伊予ヶ岳」の説明",
+          "sourceUrl": "https://yamap.com/model-courses/58",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "name": "平群天神社〜伊予ヶ岳〜富山（周回）",
@@ -57604,7 +57766,13 @@
         "sourceUrl": "https://yamap.com/model-courses/17305",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "chains": {
+          "spots": "山頂への鎖場",
+          "source": "YAMAP モデルコース「伊予ヶ岳」の説明",
+          "sourceUrl": "https://yamap.com/model-courses/58",
+          "lastVerified": "2026-11-10"
+        }
       }
     ],
     "driveTimeTachikawa": 115,
@@ -72744,7 +72912,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "chains": {
+          "spots": "奥の院・大のぞき下の三連の鎖場",
+          "source": "日本アルプス登山ガイド「妙義山 白雲山コース」",
+          "sourceUrl": "https://www.japanesealps.net/200moutains/myougisan/hakuunsan/",
+          "lastVerified": "2026-11-10"
+        }
       },
       {
         "name": "妙義神社〜中間道〜タルワキ沢〜相馬岳（往復）",
@@ -72823,7 +72997,13 @@
           "note": "バスは本数がとても少ない",
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%AD%E4%B9%8B%E5%B6%BD%E7%A5%9E%E7%A4%BE&to=%E4%B8%8B%E4%BB%81%E7%94%B0&type=1"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "chains": {
+          "spots": "奥の院・大のぞき下の三連の鎖場など",
+          "source": "日本アルプス登山ガイド「妙義山 白雲山コース」",
+          "sourceUrl": "https://www.japanesealps.net/200moutains/myougisan/hakuunsan/",
+          "lastVerified": "2026-11-10"
+        }
       }
     ],
     "vibePoints": [
