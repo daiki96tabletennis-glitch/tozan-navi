@@ -1154,6 +1154,21 @@ def chain_line(r):
     return f'<div class="rl-access" style="color:#5a4636">鎖場：{esc(ch["spots"])}。出典：{src}</div>'
 
 
+def rock_tag(r):
+    if not r.get("rocks"):
+        return ""
+    return (f'<span class="rl-tag rl-tag-rock" style="{CHAIN_STYLE};display:inline-flex;align-items:center;gap:3px">'
+            f'{ym_icon("rock")}岩場</span>')
+
+
+def rock_line(r):
+    rk = r.get("rocks")
+    if not rk:
+        return ""
+    src = f'<a href="{esc(rk["sourceUrl"])}" target="_blank" rel="noopener" style="color:#7a7068">{esc(rk["source"])}</a>'
+    return f'<div class="rl-access" style="color:#5a4636">岩場：{esc(rk["spots"])}。出典：{src}</div>'
+
+
 def chain_mark(mt):
     """難易度の欄に入れる「鎖場」の印とコースの番号（鎖場のコースが無ければ空）"""
     nums = [i for i, r in enumerate(mt.get("routes") or [], start=1) if r.get("chains")]
@@ -1233,12 +1248,14 @@ def render_routes(mt):
         ssot_html = ""
         # 旧構造の山でも、ルートに trailheadName / status があれば表示する
         th_name = (mt.get("routeTrailheads") or {}).get(r.get("id")) or r.get("trailheadName")
-        if mt.get("dataModel") == "ssot-v1" or th_name or r.get("status") or tech_level(r.get("tech")) or r.get("chains"):
+        if mt.get("dataModel") == "ssot-v1" or th_name or r.get("status") or tech_level(r.get("tech")) or r.get("chains") or r.get("rocks"):
             tags = []
             if tech_level(r.get("tech")):
                 tags.append(tech_tag(r["tech"]))
             if r.get("chains"):
                 tags.append(chain_tag(r))
+            if r.get("rocks"):
+                tags.append(rock_tag(r))
             if r.get("id") and r.get("id") == mt.get("representativeRouteId"):
                 tags.append('<span class="rl-tag rl-tag-rep">代表ルート</span>')
             st = r.get("status")
@@ -1251,6 +1268,7 @@ def render_routes(mt):
             ssot_html = f'<div class="rl-th">{"".join(tags)}{line}</div>'
         ssot_html += tech_line(r.get("tech"))
         ssot_html += chain_line(r)
+        ssot_html += rock_line(r)
         if r.get("note"):
             ssot_html += f'<div class="rl-access">{esc(r["note"])}</div>'
         if r.get("accessNote"):

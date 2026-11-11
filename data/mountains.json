@@ -461,7 +461,6 @@
       "volcano",
       "view",
       "alpine",
-      "rock",
       "historic"
     ],
     "types": [
@@ -1189,7 +1188,13 @@
         "sourceUrl": "https://yamap.com/model-courses/121",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "rocks": {
+          "spots": "白雲橋・おたつ石コースの奇岩の道と、女体山からの岩場",
+          "source": "YAMAP「筑波山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/90",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "つつじヶ丘〜おたつ石コース〜女体山・男体山（往復）",
@@ -1203,7 +1208,13 @@
         "source": "YAMAPモデルコース（model-courses/9783）",
         "sourceUrl": "https://yamap.com/model-courses/9783",
         "lastVerified": "2026-10-24",
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "白雲橋・おたつ石コースの奇岩の道と、女体山からの岩場",
+          "source": "YAMAP「筑波山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/90",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "つくし湖〜薬王院コース〜男体山・女体山（往復）",
@@ -4102,7 +4113,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "花崗岩の岩峰が林立し、岩塔の根元を縫って登る",
+          "source": "YAMAP「瑞牆山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/177",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "みずがき山自然公園〜不動滝〜瑞牆山〜富士見平小屋（周回）",
@@ -4116,7 +4133,13 @@
         "source": "YAMAPモデルコース（model-courses/22279）",
         "sourceUrl": "https://yamap.com/model-courses/22279",
         "lastVerified": "2026-10-24",
-        "courseType": "loop"
+        "courseType": "loop",
+        "rocks": {
+          "spots": "花崗岩の岩峰が林立し、岩塔の根元を縫って登る",
+          "source": "YAMAP「瑞牆山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/177",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "瑞牆山荘〜瑞牆山〜富士見平〜金峰山（往復）",
@@ -4139,7 +4162,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "花崗岩の岩峰が林立し、岩塔の根元を縫って登る",
+          "source": "YAMAP「瑞牆山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/177",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 180,
@@ -5064,7 +5093,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "山頂の五丈岩（花崗岩の巨岩）",
+          "source": "ヤマケイオンライン「金峰山」（山と溪谷社）",
+          "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=351",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "id": "mawarimedaira-roundtrip",
@@ -5089,7 +5124,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "山頂の五丈岩（花崗岩の巨岩）",
+          "source": "ヤマケイオンライン「金峰山」（山と溪谷社）",
+          "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=351",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "id": "mizugaki-sanso-roundtrip",
@@ -5114,7 +5155,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "山頂の五丈岩（花崗岩の巨岩）",
+          "source": "ヤマケイオンライン「金峰山」（山と溪谷社）",
+          "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=351",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 180,
@@ -5635,7 +5682,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "loop"
+        "courseType": "loop",
+        "rocks": {
+          "spots": "地蔵岳のオベリスク（花崗岩の尖塔）",
+          "source": "ヤマケイオンライン「鳳凰山 地蔵岳」（山と溪谷社）",
+          "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=584",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "夜叉神峠〜薬師岳〜観音岳〜地蔵岳〜御座石鉱泉（縦走）",
@@ -5669,7 +5722,13 @@
           "lastVerified": "2026-11-09",
           "note": "路線バスは無い（乗換案内で見つからない）"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "rocks": {
+          "spots": "地蔵岳のオベリスク（花崗岩の尖塔）",
+          "source": "ヤマケイオンライン「鳳凰山 地蔵岳」（山と溪谷社）",
+          "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=584",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 175,
@@ -6458,8 +6517,7 @@
       "alpine",
       "flower",
       "ridge",
-      "view",
-      "rock"
+      "view"
     ],
     "types": [
       "adventure",
@@ -7145,7 +7203,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "森林限界から上はすべて岩場",
+          "source": "YAMAP「赤岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/101",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "id": "kitazawa-loop",
@@ -7680,7 +7744,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "大きな岩塊が折り重なる山頂",
+          "source": "YAMAP「蓼科山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/149",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "すずらん峠〜幸徳平〜蓼科山（往復）",
@@ -7694,7 +7764,13 @@
         "source": "YAMAPモデルコース（model-courses/7752）",
         "sourceUrl": "https://yamap.com/model-courses/7752",
         "lastVerified": "2026-10-24",
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "大きな岩塊が折り重なる山頂",
+          "source": "YAMAP「蓼科山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/149",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "すずらん峠〜蓼科山〜蓼科山荘〜竜源橋（周回）",
@@ -7708,7 +7784,13 @@
         "source": "YAMAPモデルコース（model-courses/19575）",
         "sourceUrl": "https://yamap.com/model-courses/19575",
         "lastVerified": "2026-10-24",
-        "courseType": "loop"
+        "courseType": "loop",
+        "rocks": {
+          "spots": "大きな岩塊が折り重なる山頂",
+          "source": "YAMAP「蓼科山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/149",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 200,
@@ -9526,8 +9608,7 @@
       "karamatsu"
     ],
     "vibes": [
-      "volcano",
-      "rock"
+      "volcano"
     ],
     "types": [
       "collector",
@@ -10035,8 +10116,7 @@
     "vibes": [
       "forest",
       "volcano",
-      "view",
-      "rock"
+      "view"
     ],
     "types": [
       "adventure",
@@ -14030,7 +14110,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "険しい岩場の山（早月尾根）",
+          "source": "YAMAP「剱岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/11",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "室堂〜一ノ越〜立山〜別山〜前剱〜剱岳〜雷鳥沢（周回・山小屋泊）",
@@ -15260,7 +15346,13 @@
           "lastVerified": "2026-11-04",
           "note": "西穂高岳まででD。西穂高岳〜奥穂高岳（ジャンダルム）の区間だけの評価は無い"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "rocks": {
+          "spots": "西穂高岳〜奥穂高岳の岩稜（北アルプス屈指の難コース）",
+          "source": "YAMAP「西穂高岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/1409",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 220,
@@ -16693,8 +16785,7 @@
       "flower",
       "alpine",
       "ridge",
-      "historic",
-      "rock"
+      "historic"
     ],
     "types": [
       "challenge",
@@ -17238,7 +17329,6 @@
       "tanigawa"
     ],
     "vibes": [
-      "rock",
       "wetland",
       "flower"
     ],
@@ -20691,8 +20781,7 @@
     ],
     "vibes": [
       "view",
-      "ridge",
-      "rock"
+      "ridge"
     ],
     "types": [
       "easy"
@@ -22095,7 +22184,13 @@
         "sourceUrl": "https://yamap.com/model-courses/8808",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "山頂周辺は岩場混じりの急な斜面",
+          "source": "YAMAP「金時山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/91",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "公時神社〜金時山〜矢倉沢峠",
@@ -22127,7 +22222,13 @@
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E9%87%91%E6%99%82%E7%99%BB%E5%B1%B1%E5%8F%A3&to=%E5%BE%A1%E6%AE%BF%E5%A0%B4&type=1",
           "timetableUrl": "https://odakyu-highway.jp/hakone/"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "rocks": {
+          "spots": "山頂周辺は岩場混じりの急な斜面",
+          "source": "YAMAP「金時山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/91",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "乙女峠〜長尾山〜金時山（往復）",
@@ -22141,7 +22242,13 @@
         "source": "YAMAPモデルコース（model-courses/19699）",
         "sourceUrl": "https://yamap.com/model-courses/19699",
         "lastVerified": "2026-10-24",
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "山頂周辺は岩場混じりの急な斜面",
+          "source": "YAMAP「金時山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/91",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 80,
@@ -23834,7 +23941,6 @@
     ],
     "vibes": [
       "river",
-      "rock",
       "forest"
     ],
     "types": [
@@ -24297,7 +24403,6 @@
       "jinba"
     ],
     "vibes": [
-      "rock",
       "forest"
     ],
     "types": [
@@ -25313,8 +25418,7 @@
       "jonengatake"
     ],
     "vibes": [
-      "volcano",
-      "rock"
+      "volcano"
     ],
     "types": [
       "collector",
@@ -26045,7 +26149,13 @@
           "lastVerified": "2026-11-09",
           "note": "テレキャビンは季節運行。運賃は別（往復2,600円〜）"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "rocks": {
+          "spots": "八峰キレット（日本三大キレットのひとつ）",
+          "source": "YAMAP「鹿島槍ヶ岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/174",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 230,
@@ -26809,7 +26919,6 @@
       "kazahariyama"
     ],
     "vibes": [
-      "rock",
       "view",
       "highland"
     ],
@@ -27516,7 +27625,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "岩峰になった山頂部",
+          "source": "YAMAP「御座山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/18",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "白岩〜見晴台〜前衛峰〜御座山（往復）",
@@ -27531,7 +27646,13 @@
         "sourceUrl": "https://yamap.com/model-courses/20645",
         "lastVerified": "2026-10-25",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "岩峰になった山頂部",
+          "source": "YAMAP「御座山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/18",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "長者の森〜見晴台〜前衛峰〜御座山（往復）",
@@ -27545,7 +27666,13 @@
         "source": "YAMAPモデルコース（model-courses/17321）",
         "sourceUrl": "https://yamap.com/model-courses/17321",
         "lastVerified": "2026-10-25",
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "岩峰になった山頂部",
+          "source": "YAMAP「御座山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/18",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 180,
@@ -28721,7 +28848,6 @@
     "vibes": [
       "forest",
       "flower",
-      "rock",
       "wetland"
     ],
     "types": [
@@ -31881,7 +32007,6 @@
       "eboshidake_kita"
     ],
     "vibes": [
-      "rock",
       "flower"
     ],
     "types": [
@@ -32169,7 +32294,6 @@
       "yakushidake"
     ],
     "vibes": [
-      "rock",
       "historic"
     ],
     "types": [
@@ -33043,7 +33167,6 @@
     ],
     "vibes": [
       "volcano",
-      "rock",
       "accessible",
       "view"
     ],
@@ -34818,8 +34941,7 @@
       "wetland",
       "highland",
       "view",
-      "flower",
-      "rock"
+      "flower"
     ],
     "types": [
       "collector",
@@ -35300,7 +35422,6 @@
     ],
     "vibes": [
       "forest",
-      "rock",
       "view",
       "flower"
     ],
@@ -37866,7 +37987,13 @@
           "note": "リフト・ゴンドラは季節運行。運賃は別",
           "timetableUrl": "https://www.alpico.co.jp/traffic/local/hakuba/"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "rocks": {
+          "spots": "唐松岳から五竜岳・白馬岳へ続く岩稜帯（不帰ノ嶮）",
+          "source": "YAMAP「唐松岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/58",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 235,
@@ -39764,7 +39891,13 @@
           "lastVerified": "2026-11-09",
           "note": "テレキャビンは季節運行。運賃は別（往復2,600円〜）"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "rocks": {
+          "spots": "唐松岳から五竜岳・白馬岳へ続く岩稜帯（不帰ノ嶮）",
+          "source": "YAMAP「唐松岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/58",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "id": "kaerazu-traverse",
@@ -39815,7 +39948,13 @@
           "note": "季節運行",
           "timetableUrl": "https://www.alpico.co.jp/traffic/local/hakuba/sarukura/"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "rocks": {
+          "spots": "唐松岳から五竜岳・白馬岳へ続く岩稜帯（不帰ノ嶮）",
+          "source": "YAMAP「唐松岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/58",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 240,
@@ -40349,7 +40488,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "rocks": {
+          "spots": "千畳敷からの縦走路の岩場",
+          "source": "YAMAP「空木岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/180",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "伊奈川ダム〜越百山〜南駒ヶ岳〜空木岳（周回・2泊3日）",
@@ -40375,7 +40520,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "loop"
+        "courseType": "loop",
+        "rocks": {
+          "spots": "山頂付近に花崗岩の岩が乱立",
+          "source": "YAMAP「南駒ヶ岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/2439",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 185,
@@ -41103,7 +41254,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "山頂一帯の岩場帯",
+          "source": "YAMAP「塩見岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/182",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "越路〜鳥倉登山口〜塩見岳〜蝙蝠岳（往復・2泊3日）",
@@ -41126,7 +41283,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "山頂一帯の岩場帯",
+          "source": "YAMAP「塩見岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/182",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 250,
@@ -46747,7 +46910,6 @@
       "minamikomagatake"
     ],
     "vibes": [
-      "rock",
       "ridge"
     ],
     "types": [
@@ -47283,7 +47445,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "rocks": {
+          "spots": "山頂付近に花崗岩の岩が乱立",
+          "source": "YAMAP「南駒ヶ岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/2439",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "伊奈川ダム〜越百山〜南駒ヶ岳〜赤椰岳（周回・山小屋泊）",
@@ -47306,7 +47474,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "rocks": {
+          "spots": "山頂付近に花崗岩の岩が乱立",
+          "source": "YAMAP「南駒ヶ岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/2439",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 245,
@@ -48899,7 +49073,8 @@
       "view",
       "alpine",
       "ridge",
-      "flower"
+      "flower",
+      "rock"
     ],
     "types": [
       "adventure",
@@ -48967,7 +49142,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "山頂一帯の花崗岩の奇岩（めがね岩・イルカ岩）",
+          "source": "ニッポン旅マガジン「燕岳・メガネ岩」",
+          "sourceUrl": "https://tabi-mag.jp/tsubakuro-megane/",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "中房温泉〜燕岳〜北燕岳〜燕山荘〜大天井岳（往復・1泊2日）",
@@ -48982,7 +49163,13 @@
         "lastVerified": "2026-10-26",
         "coeff": 61,
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "山頂一帯の花崗岩の奇岩（めがね岩・イルカ岩）",
+          "source": "ニッポン旅マガジン「燕岳・メガネ岩」",
+          "sourceUrl": "https://tabi-mag.jp/tsubakuro-megane/",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "vibePoints": [
@@ -49116,8 +49303,7 @@
     ],
     "vibes": [
       "alpine",
-      "flower",
-      "rock"
+      "flower"
     ],
     "types": [
       "adventure",
@@ -49742,7 +49928,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "山頂の烏帽子の形の岩塔",
+          "source": "YAMAP「烏帽子岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/55",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "高瀬ダム〜烏帽子岳〜野口五郎岳（往復・山小屋泊）",
@@ -49765,7 +49957,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "山頂の烏帽子の形の岩塔",
+          "source": "YAMAP「烏帽子岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/55",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "driveTime": 225,
@@ -50084,7 +50282,6 @@
       "eboshidake_kita"
     ],
     "vibes": [
-      "rock",
       "ridge",
       "view",
       "alpine"
@@ -50558,7 +50755,6 @@
     "vibes": [
       "view",
       "historic",
-      "rock",
       "accessible"
     ],
     "types": [
@@ -50972,7 +51168,6 @@
       "forest",
       "historic",
       "river",
-      "rock",
       "accessible"
     ],
     "types": [
@@ -52386,7 +52581,13 @@
         "sourceUrl": "https://yamap.com/model-courses/10024",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "男坂の岩場",
+          "source": "YAMAP「日和田山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/16255",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "高麗駅〜日和田山〜高指山〜物見山〜武蔵横手駅（縦走）",
@@ -52698,7 +52899,6 @@
       "tenzandake"
     ],
     "vibes": [
-      "rock",
       "forest",
       "historic"
     ],
@@ -55298,7 +55498,6 @@
     ],
     "vibes": [
       "view",
-      "rock",
       "accessible"
     ],
     "types": [
@@ -59763,7 +59962,13 @@
         "sourceUrl": "https://yamap.com/model-courses/37985",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "登山道に多くの奇岩",
+          "source": "YAMAP「石老山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/16200",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "石老山入口〜石老山〜大明神〜さがみ湖MORIMORI前（縦走）",
@@ -59796,7 +60001,13 @@
           "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
           "lastVerified": "2026-11-09"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "rocks": {
+          "spots": "登山道に多くの奇岩",
+          "source": "YAMAP「石老山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/16200",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "石老山入口〜石老山〜大明神〜嵐山〜相模湖（縦走）",
@@ -59829,7 +60040,13 @@
           "source": "Yahoo!乗換案内（2026年11月14日・土曜の時刻で検索）",
           "lastVerified": "2026-11-09"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "rocks": {
+          "spots": "登山道に多くの奇岩",
+          "source": "YAMAP「石老山」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/16200",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.5999057%2C139.2051974&query_place_id=ChIJx9qRIgcaGWARhU31K9a1tO4",
@@ -60099,7 +60316,6 @@
     "trainInfo": "新宿→大月駅（中央線特急あずさ約60分 or 特快約80分）→徒歩15分",
     "description": "スカイツリーと同じ高さ634mの山梨の名峰。大月駅から歩いて登れる駅近登山の代表格。山頂からの富士山展望は「秀麗富嶽十二景」に選定。稚児落としへの縦走コースは鎖場・岩場があり変化に富む。戦国時代の山城跡でもある歴史の山。",
     "vibes": [
-      "rock",
       "historic",
       "accessible"
     ],
@@ -61851,7 +62067,6 @@
     "vibes": [
       "forest",
       "flower",
-      "rock",
       "accessible"
     ],
     "types": [
@@ -65504,9 +65719,7 @@
     "trainLine": "西武秩父線",
     "trainInfo": "池袋→芦ヶ久保駅（西武秩父線特急レッドアロー約1時間10分）→徒歩15分",
     "description": "西武秩父線の芦ヶ久保駅からすぐ登れる奥武蔵の双耳峰。雌岳・雄岳の2つの峰からなり、岩稜の登り応えが楽しめる。丸山・武川岳への縦走路として登山口に使われることも多い。",
-    "vibes": [
-      "rock"
-    ],
+    "vibes": [],
     "types": [
       "easy"
     ],
@@ -65892,7 +66105,6 @@
     "trainInfo": "新宿→大月→河口湖駅（富士急行約1時間30分）→バス10分→文化洞トンネル",
     "description": "富士五湖エリアの西湖越しに富士山を望む展望の名峰。一から十二まで12の峰を越えていく岩稜縦走で、鎖場・吊橋・ロープが連続するスリリングなコース。西湖の絶景が随所に広がる。",
     "vibes": [
-      "rock",
       "ridge"
     ],
     "types": [
@@ -67370,7 +67582,6 @@
     "trainInfo": "池袋→西武秩父→御花畑→皆野駅（秩父鉄道約1時間50分）→徒歩",
     "description": "秩父鉄道の皆野駅から歩いてアクセスできる低山。展望の良い岩場の山頂と、アカヤシオ（春）の群落が人気。水潜寺（日本百番観音の最終礼所）への参拝路でもある。",
     "vibes": [
-      "rock",
       "historic",
       "ridge",
       "flower",
@@ -68082,7 +68293,6 @@
     "trainInfo": "新宿→宇都宮駅（湘南新宿ライン・宇都宮線約1時間52分）→バス約33分→徒歩約46分",
     "description": "宇都宮市民に愛される里山。南壁の垂直な岩壁はクライミングの名所で、バリエーションルートが豊富。中尾根コースは岩場・ロープのあるスリリングな縦走で人気。山頂から日光連山・筑波山が一望できる。",
     "vibes": [
-      "rock",
       "accessible"
     ],
     "types": [
@@ -68510,7 +68720,6 @@
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.5562596%2C138.7920551&query_place_id=ChIJx9bpMABfGWARoN0VzjlG1tE",
     "vibes": [
       "flower",
-      "rock",
       "accessible",
       "view"
     ],
@@ -69651,7 +69860,6 @@
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%AE%98%E3%83%8E%E5%80%89%E5%B1%B1%E7%99%BB%E5%B1%B1%E5%8F%A3%20%E5%9F%BC%E7%8E%89%E7%9C%8C%E6%AF%94%E4%BC%81%E9%83%A1%E5%B0%8F%E5%B7%9D%E7%94%BA",
     "vibes": [
       "forest",
-      "rock",
       "historic",
       "accessible"
     ],
@@ -72442,7 +72650,13 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "西穂独標から山頂へ連なる岩稜",
+          "source": "YAMAP「西穂高岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/1409",
+          "lastVerified": "2026-11-11"
+        }
       },
       {
         "name": "西穂高口駅〜西穂山荘〜西穂独標（往復）",
@@ -72487,7 +72701,13 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "rocks": {
+          "spots": "西穂独標から山頂へ連なる岩稜",
+          "source": "YAMAP「西穂高岳」の紹介文（山と溪谷社）",
+          "sourceUrl": "https://yamap.com/mountains/1409",
+          "lastVerified": "2026-11-11"
+        }
       }
     ],
     "vibePoints": [

@@ -46,6 +46,7 @@ LUCIDE = {
 
 CUSTOM = {
     # 鎖場（2026-11-10。運営者が7案から選んだ「斜めの鎖・3つの輪」）
+    'rock': '<path d="M2 20 4.5 12 9 8.5 13.5 11 15 20Z"/><path d="M13 20 15 15.5 19 14 22 20"/><path d="M2 20h20"/>',
     'chain': '<rect x="0.8" y="16" width="8.5" height="5" rx="2.5" transform="rotate(-45 5 18.5)"/><path d="M7.8 14.2l2-2"/><rect x="7.75" y="9.5" width="8.5" height="5" rx="2.5" transform="rotate(45 12 12)"/><path d="M14.2 9.8l2-2"/><rect x="14.7" y="3" width="8.5" height="5" rx="2.5" transform="rotate(-45 19 5.5)"/>',
     'climber': '<circle cx="15" cy="4" r="2"/><path d="m14 7-3 6 3 3v5"/><path d="m11 13-4 2v4"/><path d="m13.5 9 3.5-1 2-3"/><path d="M3 21h18"/>',
     'lantern': '<path d="M10 3h4"/><path d="M12 3v2"/><path d="M8.5 5h7"/><path d="M8.5 5C6 8 6 15 8.5 18"/><path d="M15.5 5C18 8 18 15 15.5 18"/><path d="M7 11.5h10"/><path d="M8.5 18h7"/><path d="M12 18v3"/>',

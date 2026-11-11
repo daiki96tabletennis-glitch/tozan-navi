@@ -726,6 +726,36 @@ def check_route_chains(mountains):
     return out
 
 
+def check_route_rocks(mountains):
+    """岩場（routes[].rocks）。scripts/migrations/add_route_rocks_2026_11.py が付ける。
+    出典つきか、鎖場のコースに重ねていないか、絞り込みの「岩場」（vibes の rock）が「rocks か chains のコースがある山」と同じか、
+    山ページにラベルが出ているか"""
+    out = []
+    for m in mountains:
+        page = os.path.join(ROOT, 'mountains', m['id'], 'index.html')
+        html = open(page, encoding='utf-8').read() if os.path.exists(page) else ''
+        has = False
+        for i, r in enumerate(m.get('routes') or [], start=1):
+            rk = r.get('rocks')
+            if not rk:
+                continue
+            has = True
+            if r.get('chains'):
+                out.append({'id': m['id'], 'problem': 'コース%d 鎖場と岩場を重ねている（鎖場だけにする）' % i})
+            for k in ('spots', 'source', 'sourceUrl', 'lastVerified'):
+                if not rk.get(k):
+                    out.append({'id': m['id'], 'problem': 'コース%d rocks.%s が無い' % (i, k)})
+            if rk.get('sourceUrl') and not str(rk['sourceUrl']).startswith('https://'):
+                out.append({'id': m['id'], 'problem': 'コース%d rocks.sourceUrl が https でない' % i})
+        rocky = any(r.get('rocks') or r.get('chains') for r in m.get('routes') or [])
+        tagged = 'rock' in (m.get('vibes') or [])
+        if rocky != tagged:
+            out.append({'id': m['id'], 'problem': '絞り込みの「岩場」（vibes の rock）が岩場・鎖場のコースと合わない（add_route_rocks_2026_11.py を流す）'})
+        if has and html and 'rl-tag-rock' not in html:
+            out.append({'id': m['id'], 'problem': '岩場のラベルがページに無い（gen_mountain_pages.py で作り直す）'})
+    return out
+
+
 def check_course_type(mountains):
     """コースの種類（routes[].courseType：往復 out_and_back／周回 loop／縦走 traverse）。
     scripts/migrations/add_course_type_2026_11.py がコース名から決める。コースを足す・名前を変えたら流す。"""
@@ -875,6 +905,7 @@ def main():
     tech_issues = check_route_tech(mountains)
     ctype_issues = check_course_type(mountains)
     chain_issues = check_route_chains(mountains)
+    rock_issues = check_route_rocks(mountains)
     import sync_search_hubs
     hub_issues = sync_search_hubs.hub_problems(mountains)
 
@@ -923,6 +954,7 @@ def main():
     report.append(section('21. コースの技術的難易度（山のグレーディング・岩場の難所のラベル）', tech_issues, fmt))
     report.append(section('22. コースの種類（往復・周回・縦走。routes[].courseType）', ctype_issues, fmt))
     report.append(section('23. 鎖場（routes[].chains。出典・ラベル）', chain_issues, fmt))
+    report.append(section('24. 岩場（routes[].rocks。出典・ラベル・絞り込みの岩場）', rock_issues, fmt))
     if ssot_warns:
         report.append('## 参考：運行期間の期限切れ（来季の再確認対象。件数に含めない）\n' + '\n'.join('- ' + fmt(w) for w in ssot_warns) + '\n')
     report.append(f"## 参考：既知の未解決（調査待ちのレガシー。件数に含めない）\n- 10. 所要時間: {len(time_known)}件 / 11. 駅名: {len(station_known)}件（scripts/check_known_issues.json）\n")
@@ -934,7 +966,7 @@ def main():
              + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues)
              + len(train_routes_issues) + len(route_dup_issues) + len(time_issues)
              + len(station_issues) + len(coeff_issues) + len(restricted_issues) + len(seat_issues)
-             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues) + len(listing_issues) + len(tech_issues) + len(ctype_issues) + len(chain_issues))
+             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues) + len(listing_issues) + len(tech_issues) + len(ctype_issues) + len(chain_issues) + len(rock_issues))
 
     if args.json:
         with open(args.json, 'w', encoding='utf-8') as f:
