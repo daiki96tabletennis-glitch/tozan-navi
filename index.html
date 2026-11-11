@@ -941,20 +941,17 @@ function App() {
     return (typeof m.fareShinjuku === "number" ? m.fareShinjuku : Infinity);
   };
   // アクセス難易度ティア：<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2d8a3e;margin-right:4px;vertical-align:1px"></span>良好 / <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4a830;margin-right:4px;vertical-align:1px"></span>ふつう / ⚠️要計画
-  // 乗換回数・所要時間・マイカー規制・季節限定バスの有無から機械的に算出
+  // 電車・バスの経路（乗り換え回数・時間・季節運行・予約・本数・タクシー）から scripts/build_access_tier.py が決めた値（mountains.json の accessTier）を読む（2026-11-11）
+  const ACCESS_TIER_STYLE = {
+    easy:   { label: "良好",   bg: "#e4f0e4", color: "#2a6828" },
+    normal: { label: "ふつう", bg: "#f5f0e0", color: "#8a7020" },
+    plan:   { label: "要計画", bg: "#f5ece0", color: "#8a5a20" }
+  };
   const getAccessTier = (m) => {
-    const t = getTrainTime(m);
-    if (t === Infinity) return null; // 電車データなし（車のみ山）は対象外
-    const transfers = (departure === "大宮" ? m.transfersOmiya : departure === "横浜" ? m.transfersYokohama : m.transfersShinjuku) || 0;
-    const seasonalOnly = typeof m.trainAccess === "string" && /季節|夏季|運行期間|季節運行/.test(m.trainAccess) && typeof m.trainAccess === "string" && !/直行/.test(m.trainAccess);
-    const hasMycarRestriction = !!m.warnBanner;
-    if (hasMycarRestriction || t > 240 || transfers >= 3) {
-      return { key: "plan", label: "要計画", bg: "#f5ece0", color: "#8a5a20" };
-    }
-    if (t <= 150 && transfers <= 1 && !seasonalOnly) {
-      return { key: "easy", label: "良好", bg: "#e4f0e4", color: "#2a6828" };
-    }
-    return { key: "normal", label: "ふつう", bg: "#f5f0e0", color: "#8a7020" };
+    var key = departure === "大宮" ? "omiya" : departure === "横浜" ? "yokohama" : "shinjuku";
+    var v = m.accessTier && m.accessTier[key];
+    if (!v || !ACCESS_TIER_STYLE[v.tier]) return null; // 電車データなし（車のみ山）は対象外
+    return Object.assign({ key: v.tier, reasons: v.reasons || [] }, ACCESS_TIER_STYLE[v.tier]);
   };
   const [categoryFilter, setCategoryFilter] = useState(() => ymInit("category"));
   const [dayTripOnly, setDayTripOnly]       = useState(() => ymInit("daytrip"));
@@ -2044,7 +2041,7 @@ function App() {
                           </span>
                         )}
                         {isTrainMode && (function(){ var tier = getAccessTier(m); return tier ? (
-                          <span style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "8px", fontWeight: "600", background: tier.bg, color: tier.color, display: "inline-flex", alignItems: "center", gap: "3px" }}>
+                          <span title={"アクセス難易度：" + tier.label + (tier.reasons.length ? "（" + tier.reasons.join("・") + "）" : "")} style={{ fontSize: "10px", padding: "2px 5px", borderRadius: "8px", fontWeight: "600", background: tier.bg, color: tier.color, display: "inline-flex", alignItems: "center", gap: "3px" }}>
                             <svg width="8" height="8" viewBox="0 0 8 8" style={{ flexShrink: 0 }}>
                               {tier.key === "easy" && <circle cx="4" cy="4" r="4" fill={tier.color} />}
                               {tier.key === "normal" && <rect x="0.5" y="0.5" width="7" height="7" rx="1.5" fill={tier.color} />}

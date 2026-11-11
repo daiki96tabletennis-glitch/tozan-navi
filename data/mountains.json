@@ -424,7 +424,25 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "fuji",
@@ -1041,7 +1059,30 @@
         ],
         "by": "マイカー規制の期間はシャトルバスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "tsukuba",
@@ -1469,7 +1510,21 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "kumotori",
@@ -1964,7 +2019,27 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "amagi",
@@ -2450,7 +2525,31 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "バスが1日3本",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "バスが1日3本",
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "バスが1日3本",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "okutama",
@@ -3019,7 +3118,32 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "ryokami",
@@ -3474,7 +3598,29 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "kobushigatake",
@@ -3962,7 +4108,30 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回"
+        ]
+      }
+    }
   },
   {
     "id": "mizugaki",
@@ -4430,7 +4599,30 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "akagi",
@@ -4935,7 +5127,32 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "バスの走る曜日が限られる"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "バスの走る曜日が限られる",
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "バスの走る曜日が限られる",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "kinpusan",
@@ -5503,7 +5720,30 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "houou",
@@ -6004,7 +6244,30 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "nantaisan",
@@ -6479,7 +6742,26 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "kitadake",
@@ -7015,7 +7297,30 @@
         ],
         "by": "バスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "yatsugatake",
@@ -7591,7 +7896,30 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "keirisan",
@@ -8074,7 +8402,29 @@
     "featureCheckedAt": "2026-10-09",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "蓼科山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "kirigamine",
@@ -8539,7 +8889,31 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "asama",
@@ -8988,7 +9362,26 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "tanigawa",
@@ -9574,7 +9967,31 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "nasu",
@@ -10086,7 +10503,29 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "nikko_shirane",
@@ -10685,7 +11124,31 @@
         ],
         "by": "ロープウェイに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え4回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え4回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "takeson",
@@ -11598,7 +12061,33 @@
         ],
         "by": "南アルプス林道バスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "senjogatake",
@@ -12181,7 +12670,33 @@
         ],
         "by": "南アルプス林道バスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "shirouma",
@@ -12771,7 +13286,35 @@
         ],
         "by": "ゴンドラ・ロープウェイに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "norikura",
@@ -13426,7 +13969,36 @@
         ],
         "by": "シャトルバスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え4回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え4回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "tateyama",
@@ -13921,7 +14493,32 @@
         ],
         "by": "ケーブルカー・バスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "tsurugi",
@@ -14464,7 +15061,32 @@
         ],
         "by": "ケーブルカー・バスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "yari",
@@ -15109,7 +15731,36 @@
         ],
         "by": "バスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "hotaka",
@@ -15761,7 +16412,36 @@
         ],
         "by": "バスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "myoko",
@@ -16261,7 +16941,30 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "makihata",
@@ -16753,7 +17456,30 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "予約が要る乗り物がある"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "予約が要る乗り物がある",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "予約が要る乗り物がある"
+        ]
+      }
+    }
   },
   {
     "id": "iide",
@@ -17295,7 +18021,33 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え4回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え4回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "shibutsu",
@@ -17876,7 +18628,31 @@
         ],
         "by": "乗合バス・タクシーに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "aizu_koma",
@@ -18387,7 +19163,33 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "shirane_gunma",
@@ -18829,7 +19631,34 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "バスの走る曜日が限られる",
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "バスの走る曜日が限られる",
+          "季節運行の乗り物を使う",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える",
+          "バスの走る曜日が限られる"
+        ]
+      }
+    }
   },
   {
     "id": "bandai",
@@ -19296,7 +20125,31 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "タクシーを使う区間がある"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "タクシーを使う区間がある",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "タクシーを使う区間がある",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "hiuchigatake",
@@ -19861,7 +20714,32 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "takao",
@@ -20320,7 +21198,21 @@
       "https://yamahack.com/2026"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">高尾山は初級レベル（コース定数13〜16）。代表コースの1号路（薬王院経由）は2時間・5.0km・標高差+400m。登山初心者でも安心して挑戦できます。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">高尾山は初級レベル（コース定数13〜16）。代表コースの1号路（薬王院経由）は2時間・5.0km・標高差+400m。登山初心者でも安心して挑戦できます。</p>",
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "oyama",
@@ -20752,7 +21644,25 @@
         ],
         "by": "ケーブルカーに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "tonosaki",
@@ -21195,7 +22105,25 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "hirugata",
@@ -21628,7 +22556,25 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "jinba",
@@ -22038,7 +22984,27 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "陣馬山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "バスの走る曜日が限られる"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "バスの走る曜日が限られる"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "バスの走る曜日が限られる"
+        ]
+      }
+    }
   },
   {
     "id": "kintoki",
@@ -22541,7 +23507,23 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "kayagatake",
@@ -22988,7 +23970,34 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "バスが1日2本",
+          "季節運行の乗り物を使う"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "バスが1日2本",
+          "季節運行の乗り物を使う",
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "バスが1日2本",
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "kentoku",
@@ -23457,7 +24466,25 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "hinata",
@@ -23912,7 +24939,30 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "タクシーを使う区間がある",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "タクシーを使う区間がある",
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "タクシーを使う区間がある",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "bonori",
@@ -24375,7 +25425,27 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "otake",
@@ -24809,7 +25879,25 @@
         ],
         "by": "ケーブルカーに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回"
+        ]
+      }
+    }
   },
   {
     "id": "jonengatake",
@@ -25384,7 +26472,34 @@
         ],
         "by": "タクシーに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "タクシーを使う区間がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "タクシーを使う区間がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "タクシーを使う区間がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "yakedake",
@@ -25918,7 +27033,35 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "kashimayari",
@@ -26430,7 +27573,31 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "koganzan",
@@ -26893,7 +28060,32 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "arafune",
@@ -27905,7 +29097,25 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "iwasugesan",
@@ -28369,7 +29579,31 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "岩菅山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "iizunasan",
@@ -28818,7 +30052,27 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "kurohimesan",
@@ -29288,7 +30542,34 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "タクシーを使う区間がある"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "予約が要る乗り物がある",
+          "タクシーを使う区間がある",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "タクシーを使う区間がある",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "kenashiyama",
@@ -29699,7 +30980,27 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "shirasunayama",
@@ -30123,7 +31424,35 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "バスが1日3本",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "バスが1日3本",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "バスが1日3本",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "nanaitsurasan",
@@ -30652,7 +31981,33 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "タクシーを使う区間がある",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え4回",
+          "タクシーを使う区間がある"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え4回",
+          "タクシーを使う区間がある"
+        ]
+      }
+    }
   },
   {
     "id": "arasawadake",
@@ -31102,7 +32457,29 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "nakawarayama",
@@ -31491,7 +32868,27 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "yarigatake2",
@@ -31981,7 +33378,36 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "タクシーを使う区間がある"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え4回",
+          "予約が要る乗り物がある",
+          "タクシーを使う区間がある"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え4回",
+          "予約が要る乗り物がある",
+          "タクシーを使う区間がある"
+        ]
+      }
+    }
   },
   {
     "id": "gakedake",
@@ -32685,7 +34111,34 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "バスの走る曜日が限られる"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "バスの走る曜日が限られる",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "バスの走る曜日が限られる",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "keizandake",
@@ -33138,7 +34591,29 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "adatara",
@@ -33618,7 +35093,29 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "azuma",
@@ -34114,7 +35611,31 @@
         ],
         "by": "ロープウェイ・リフトに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "echigokoma",
@@ -34625,7 +36146,35 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え4回",
+          "バスの走る曜日が限られる",
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "バスの走る曜日が限られる",
+          "季節運行の乗り物を使う"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え4回",
+          "バスの走る曜日が限られる",
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "hiragadake",
@@ -35393,7 +36942,30 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "タクシーを使う区間がある",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "タクシーを使う区間がある"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "タクシーを使う区間がある",
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "amakazari",
@@ -35829,7 +37401,30 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "hiuchi",
@@ -36384,7 +37979,32 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "takatsuma",
@@ -36853,7 +38473,33 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使う",
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使う"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "kasagatake",
@@ -37301,7 +38947,32 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "ontakesan",
@@ -37777,7 +39448,33 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "バスが1日2本",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "バスが1日2本",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "バスが1日2本",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "goryudake",
@@ -38325,7 +40022,29 @@
         ],
         "by": "テレキャビンに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "sukai",
@@ -39249,7 +40968,33 @@
         ],
         "by": "バス・ロープウェイに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え4回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え4回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "utsukushigahara",
@@ -39679,7 +41424,35 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "予約が要る乗り物がある",
+          "バスが1日2本",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "バスが1日2本",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "バスが1日2本",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "karamatsu",
@@ -40311,7 +42084,31 @@
         ],
         "by": "ゴンドラ・リフトに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "utsugi",
@@ -40786,7 +42583,29 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "enasan",
@@ -41569,7 +43388,32 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "arakawadake",
@@ -42069,7 +43913,36 @@
         ],
         "by": "送迎バスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "akaisidake",
@@ -42582,7 +44455,36 @@
         ],
         "by": "送迎バスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "hijiridade",
@@ -43130,7 +45032,36 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "聖岳",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "terkari",
@@ -43593,7 +45524,39 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "タクシーを使う区間がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "タクシーを使う区間がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "タクシーを使う区間がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "yakushidake",
@@ -44032,7 +45995,33 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "kurobegorodam",
@@ -44490,7 +46479,33 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "ainodake",
@@ -45002,7 +47017,30 @@
         ],
         "by": "バスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "noutori",
@@ -45473,7 +47511,30 @@
         ],
         "by": "バスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "hakusan",
@@ -46013,7 +48074,33 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "zaosan",
@@ -46448,7 +48535,29 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "karisaka",
@@ -46876,7 +48985,27 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "nokogiriyama",
@@ -47293,7 +49422,29 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "minamikomagatake",
@@ -47768,7 +49919,36 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "タクシーを使う区間がある",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "タクシーを使う区間がある"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "タクシーを使う区間がある"
+        ]
+      }
+    }
   },
   {
     "id": "chogatake",
@@ -48290,7 +50470,36 @@
         ],
         "by": "バスに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "otenshoudake",
@@ -48804,7 +51013,34 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "バスの走る曜日が限られる"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "バスの走る曜日が限られる",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "バスの走る曜日が限られる",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "area": "長野県",
@@ -49274,7 +51510,34 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "バスの走る曜日が限られる"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "バスの走る曜日が限られる",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "バスの走る曜日が限られる",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "harinokidake",
@@ -49773,7 +52036,31 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "eboshidake_kita",
@@ -50254,7 +52541,36 @@
         ],
         "by": "タクシーに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "タクシーを使う区間がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "タクシーを使う区間がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "タクシーを使う区間がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "noguchigoro",
@@ -50725,7 +53041,36 @@
         ],
         "by": "タクシーに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "タクシーを使う区間がある",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "タクシーを使う区間がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "タクシーを使う区間がある",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "nokogiriyama_chiba",
@@ -51137,7 +53482,25 @@
         "lastVerified": "2026-10-12",
         "note": "土砂崩落のため当面の間、保田方面へ通り抜け不可。浜金谷駅〜山頂・林道口は通行可（富津市。ページの更新日は2025-06-04）"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "mitakesan",
@@ -51607,7 +53970,25 @@
       "https://tabi-mag.jp/tk1365/"
     ],
     "dlReasonsCheckedAt": "2026-10-12",
-    "dlNoteHtmlOld": "<p class=\"dl-note\">御岳山は初級レベル（コース定数14〜14）。代表コースの御嶽駅〜山頂往復は3時間・5.5km・標高差+440m。登山初心者でも安心して挑戦できます。</p>"
+    "dlNoteHtmlOld": "<p class=\"dl-note\">御岳山は初級レベル（コース定数14〜14）。代表コースの御嶽駅〜山頂往復は3時間・5.5km・標高差+440m。登山初心者でも安心して挑戦できます。</p>",
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回"
+        ]
+      }
+    }
   },
   {
     "id": "takamizusanzan",
@@ -52006,7 +54387,23 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "tenzandake",
@@ -52438,7 +54835,21 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "hiwadayama",
@@ -52865,7 +55276,21 @@
     "featureCheckedAt": "2026-10-10",
     "driveCheckedAt": "2026-10-10",
     "yamapName": "日和田山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "izugatake",
@@ -53322,7 +55747,21 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "bukosan",
@@ -53751,7 +56190,30 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "タクシーを使う区間がある",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "タクシーを使う区間がある",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "タクシーを使う区間がある",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "nabewari",
@@ -54177,7 +56639,25 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "sannotou",
@@ -54599,7 +57079,25 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "koubousan",
@@ -55028,7 +57526,21 @@
         "lastVerified": "2026-10-30",
         "note": "2026-10-24 から閉鎖。再開の時期は未定"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "kagenobusan",
@@ -55469,7 +57981,25 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "takagawayama",
@@ -55862,7 +58392,25 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "kobotokeshiroyama",
@@ -56260,7 +58808,25 @@
     ],
     "busScheduleLinks": [
       "https://transfer.navitime.biz/bus-navi/pc/transfer/DepArrTimeList?snode=00020348&gnode=00020514"
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "kusatoriyama",
@@ -56600,7 +59166,21 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=%E6%96%B0%E5%AE%BF&to=%E9%AB%98%E5%B0%BE%E5%B1%B1%E5%8F%A3%E9%A7%85&type=1"
     ],
-    "busScheduleLinks": null
+    "busScheduleLinks": null,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "nakimushiyama",
@@ -56978,7 +59558,23 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=%E6%96%B0%E5%AE%BF&to=%E6%9D%B1%E6%AD%A6%E6%97%A5%E5%85%89%E9%A7%85&type=1"
     ],
-    "busScheduleLinks": null
+    "busScheduleLinks": null,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "tairappyo",
@@ -57405,7 +60001,25 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "tomisan",
@@ -57780,7 +60394,27 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "iyogatake",
@@ -58234,7 +60868,28 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "myojingatake",
@@ -58661,7 +61316,24 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "明神ヶ岳",
     "ogDescription": "明神ヶ岳（標高1,169m・神奈川県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（宮城野〜明神ヶ岳（往復））は4時間・7.2km・標高差724m。新宿から電車とバスで約2時間14分（小田原駅からバス）。日帰りできます。金時山・矢倉岳と並ぶ箱根外輪山の名峰。駐車場・装備・天気も掲載。",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "yaguradake",
@@ -59055,7 +61727,26 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "kawanoriyama",
@@ -59467,7 +62158,26 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回"
+        ]
+      }
+    }
   },
   {
     "id": "takanosuyama",
@@ -59896,7 +62606,31 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "鷹ノ巣山",
     "ogDescription": "鷹ノ巣山（標高1,737m・東京都）の難易度は中級（体力のある中級者向け）。代表コース（峰谷〜浅間尾根〜鷹ノ巣山〜榧ノ木山〜倉戸口（縦走））は8時間・13.6km・標高差1378m。新宿から電車とバスで約2時間27分（奥多摩駅からバス36分）。日帰りできます。奥多摩随一の展望峰。駐車場・装備・天気も掲載。",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "バスが1日3本"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "バスが1日3本",
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "バスが1日3本",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "ishirousan",
@@ -60290,7 +63024,21 @@
     "driveDistance": 60,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "石老山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "iwadonoyama",
@@ -60624,7 +63372,21 @@
     "driveDistance": 86,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "岩殿山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "maruyama_okubusuma",
@@ -61001,7 +63763,28 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "丸山",
     "metaDescriptionManual": "丸山の難易度は初〜中級、登山初心者でも挑戦しやすい。埼玉県、新宿から車で約1時間55分、コース定数12〜18、日帰り可能。奥武蔵の展望台として知られる円形の山頂が特徴。",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "ohnoyama",
@@ -61363,7 +64146,23 @@
     "driveDistance": 87,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "大野山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "momakurasan",
@@ -61699,7 +64498,21 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "ogiyama",
@@ -62039,7 +64852,27 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "makuyama",
@@ -62399,7 +65232,23 @@
     "driveDistance": 98,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "幕山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "taiheizan",
@@ -62756,7 +65605,21 @@
     "driveDistance": 92,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "太平山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "kuratakeyama",
@@ -63087,7 +65950,21 @@
     "driveDistance": 81,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "倉岳山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "sasakogarigaburiyama",
@@ -63417,7 +66294,25 @@
     "driveDistance": 101,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "笹子雁ヶ腹摺山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "shodosan_namatate",
@@ -63801,7 +66696,21 @@
     "driveDistance": 70,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "生藤山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "kukiyama",
@@ -64162,7 +67071,25 @@
     "driveDistance": 89,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "九鬼山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "mitosaan",
@@ -64554,7 +67481,34 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "バスの走る曜日が限られる",
+          "季節運行の乗り物を使う",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "バスの走る曜日が限られる",
+          "季節運行の乗り物を使う",
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "季節運行の乗り物を使い、3時間を超える",
+          "バスの走る曜日が限られる",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "honitayama",
@@ -64909,7 +67863,25 @@
     "driveDistance": 72,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "本仁田山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "hinodesaan",
@@ -65315,7 +68287,27 @@
     "driveDistance": 61,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "日の出山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回"
+        ]
+      }
+    }
   },
   {
     "id": "sengenrei",
@@ -65697,7 +68689,21 @@
     "driveDistance": 62,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "浅間嶺",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "futagoyama_okumusa",
@@ -66082,7 +69088,27 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "二子山（横瀬二子山雌岳）",
     "metaDescriptionManual": "二子山の難易度は初〜中級、登山初心者でも挑戦しやすい。埼玉県、新宿から車で約1時間55分、コース定数12〜18、日帰り可能。西武秩父線の芦ヶ久保駅からすぐ登れる奥武蔵の双耳峰。",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "juunigadake",
@@ -66494,7 +69520,30 @@
     "driveDistance": 114,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "十二ヶ岳",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "ishiwariyama",
@@ -66860,7 +69909,30 @@
     "driveDistance": 123,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "石割山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "azumayama_ninomiya",
@@ -67189,7 +70261,21 @@
     "driveDistance": 69,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "吾妻山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "hodosan",
@@ -67559,7 +70645,29 @@
     "driveDistance": 90,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "宝登山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "hafuzan_chichibu",
@@ -67929,7 +71037,26 @@
     "driveDistance": 94,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "破風山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "ranzan_saitama",
@@ -68270,7 +71397,21 @@
     "driveDistance": 62,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "大平山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "kogashiyama",
@@ -68635,7 +71776,25 @@
     "driveDistance": 130,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "古賀志山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "mitsutoge",
@@ -69059,7 +72218,27 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "kamakura_alps",
@@ -69386,7 +72565,21 @@
     "driveDistance": 53,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "大平山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "okusuyama",
@@ -69775,7 +72968,21 @@
     "driveDistance": 60,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "大楠山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   },
   {
     "id": "kannokura",
@@ -70173,7 +73380,28 @@
     "driveDistance": 75,
     "driveCheckedAt": "2026-10-10",
     "yamapName": "官ノ倉山",
-    "metaAuto": true
+    "metaAuto": true,
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "azumayasan",
@@ -70539,7 +73767,26 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "gozenyama",
@@ -70961,7 +74208,26 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回"
+        ]
+      }
+    }
   },
   {
     "id": "tengudake",
@@ -71404,7 +74670,33 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "バスが1日2本",
+          "季節運行の乗り物を使う",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "バスが1日2本",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "バスが1日2本",
+          "季節運行の乗り物を使い、3時間を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "kitayokodake",
@@ -71884,7 +75176,30 @@
         ],
         "by": "ロープウェイに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "2時間30分を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "2時間30分を超える"
+        ]
+      }
+    }
   },
   {
     "id": "nyukasayama",
@@ -72358,7 +75673,31 @@
         ],
         "by": "ゴンドラに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "季節運行の乗り物を使う",
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "季節運行の乗り物を使い、3時間を超える"
+        ]
+      }
+    }
   },
   {
     "id": "nishihotaka",
@@ -72861,7 +76200,33 @@
         ],
         "by": "ロープウェイに乗り換え"
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "予約が要る乗り物がある",
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "4時間を超える",
+          "乗り換え3回",
+          "予約が要る乗り物がある"
+        ]
+      }
+    }
   },
   {
     "id": "myogisan",
@@ -73375,7 +76740,30 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "タクシーを使う区間がある"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "タクシーを使う区間がある",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "タクシーを使う区間がある"
+        ]
+      }
+    }
   },
   {
     "id": "sennokurayama",
@@ -73793,7 +77181,25 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "houkyozan",
@@ -74287,7 +77693,27 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回"
+        ]
+      },
+      "yokohama": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回"
+        ]
+      }
+    }
   },
   {
     "id": "ryugatake",
@@ -74706,7 +78132,29 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "narukamiyama",
@@ -75168,7 +78616,30 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "plan",
+        "reasons": [
+          "乗り換え3回",
+          "2時間30分を超える"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "2時間30分を超える",
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "bukkasan",
@@ -75578,7 +79049,25 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "dodairasan",
@@ -76023,7 +79512,27 @@
         ],
         "by": ""
       }
-    ]
+    ],
+    "accessTier": {
+      "shinjuku": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "omiya": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      },
+      "yokohama": {
+        "tier": "normal",
+        "reasons": [
+          "乗り換え2回"
+        ]
+      }
+    }
   },
   {
     "id": "takamatsuyama",
@@ -76394,6 +79903,20 @@
     "metaTitle": "高松山 登山の難易度は初〜中級｜日帰り6時間28分・標高差1,049m｜新松田駅下車｜Yamatch",
     "ogTitle": "高松山 登山の難易度は初〜中級｜日帰り6時間28分・標高差1,049m｜新松田駅下車｜Yamatch",
     "metaDescription": "高松山（標高801m・神奈川県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（新松田駅〜尺里峠〜高松山〜ビリ堂〜山北駅（縦走））は6時間28分・14.9km・標高差1049m。新宿から電車で約1時間21分（新松田駅下車）。日帰りできます。丹沢大山国定公園に属する、山北町と松田町の境の標高801mの山。駐車場・装備・天気も掲載。",
-    "ogDescription": "高松山（標高801m・神奈川県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（新松田駅〜尺里峠〜高松山〜ビリ堂〜山北駅（縦走））は6時間28分・14.9km・標高差1049m。新宿から電車で約1時間21分（新松田駅下車）。日帰りできます。丹沢大山国定公園に属する、山北町と松田町の境の標高801mの山。駐車場・装備・天気も掲載。"
+    "ogDescription": "高松山（標高801m・神奈川県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（新松田駅〜尺里峠〜高松山〜ビリ堂〜山北駅（縦走））は6時間28分・14.9km・標高差1049m。新宿から電車で約1時間21分（新松田駅下車）。日帰りできます。丹沢大山国定公園に属する、山北町と松田町の境の標高801mの山。駐車場・装備・天気も掲載。",
+    "accessTier": {
+      "shinjuku": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "omiya": {
+        "tier": "easy",
+        "reasons": []
+      },
+      "yokohama": {
+        "tier": "easy",
+        "reasons": []
+      }
+    }
   }
 ]

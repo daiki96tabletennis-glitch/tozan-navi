@@ -756,6 +756,22 @@ def check_route_rocks(mountains):
     return out
 
 
+def check_access_tier(mountains):
+    """トップのアクセス難易度（accessTier）。scripts/build_access_tier.py が経路・注記・運行期間から作る。
+    経路などを直したのに流し忘れると食い違う"""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('build_access_tier', os.path.join(ROOT, 'scripts', 'build_access_tier.py'))
+    bat = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(bat)
+    A = json.load(open(os.path.join(ROOT, 'data', 'accesses.json'), encoding='utf-8'))
+    want = bat.compute(mountains, A)
+    out = []
+    for m in mountains:
+        if (m.get('accessTier') or None) != want[m['id']]:
+            out.append({'id': m['id'], 'problem': 'accessTier が経路と食い違う（build_access_tier.py --write を流す）'})
+    return out
+
+
 def check_course_type(mountains):
     """コースの種類（routes[].courseType：往復 out_and_back／周回 loop／縦走 traverse）。
     scripts/migrations/add_course_type_2026_11.py がコース名から決める。コースを足す・名前を変えたら流す。"""
@@ -906,6 +922,7 @@ def main():
     ctype_issues = check_course_type(mountains)
     chain_issues = check_route_chains(mountains)
     rock_issues = check_route_rocks(mountains)
+    tier_issues = check_access_tier(mountains)
     import sync_search_hubs
     hub_issues = sync_search_hubs.hub_problems(mountains)
 
@@ -955,6 +972,7 @@ def main():
     report.append(section('22. コースの種類（往復・周回・縦走。routes[].courseType）', ctype_issues, fmt))
     report.append(section('23. 鎖場（routes[].chains。出典・ラベル）', chain_issues, fmt))
     report.append(section('24. 岩場（routes[].rocks。出典・ラベル・絞り込みの岩場）', rock_issues, fmt))
+    report.append(section('25. アクセス難易度（accessTier。build_access_tier.py）', tier_issues, fmt))
     if ssot_warns:
         report.append('## 参考：運行期間の期限切れ（来季の再確認対象。件数に含めない）\n' + '\n'.join('- ' + fmt(w) for w in ssot_warns) + '\n')
     report.append(f"## 参考：既知の未解決（調査待ちのレガシー。件数に含めない）\n- 10. 所要時間: {len(time_known)}件 / 11. 駅名: {len(station_known)}件（scripts/check_known_issues.json）\n")
@@ -966,7 +984,7 @@ def main():
              + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues)
              + len(train_routes_issues) + len(route_dup_issues) + len(time_issues)
              + len(station_issues) + len(coeff_issues) + len(restricted_issues) + len(seat_issues)
-             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues) + len(listing_issues) + len(tech_issues) + len(ctype_issues) + len(chain_issues) + len(rock_issues))
+             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues) + len(listing_issues) + len(tech_issues) + len(ctype_issues) + len(chain_issues) + len(rock_issues) + len(tier_issues))
 
     if args.json:
         with open(args.json, 'w', encoding='utf-8') as f:
