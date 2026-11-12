@@ -769,6 +769,10 @@ def check_access_tier(mountains):
     for m in mountains:
         if (m.get('accessTier') or None) != want[m['id']]:
             out.append({'id': m['id'], 'problem': 'accessTier が経路と食い違う（build_access_tier.py --write を流す）'})
+        if m.get('trainAccess'):
+            for fr, to, name, nv in bat.seasons(m, A):
+                if not (fr and to) and not nv:
+                    out.append({'id': m['id'], 'problem': '季節運行の「%s」に運行期間（validFrom・validTo）が無い（確かめられないときは needsVerification を付ける）' % name})
     return out
 
 
@@ -972,7 +976,7 @@ def main():
     report.append(section('22. コースの種類（往復・周回・縦走。routes[].courseType）', ctype_issues, fmt))
     report.append(section('23. 鎖場（routes[].chains。出典・ラベル）', chain_issues, fmt))
     report.append(section('24. 岩場（routes[].rocks。出典・ラベル・絞り込みの岩場）', rock_issues, fmt))
-    report.append(section('25. アクセス難易度（accessTier。build_access_tier.py）', tier_issues, fmt))
+    report.append(section('25. アクセス難易度（accessTier。build_access_tier.py）・季節運行の期間', tier_issues, fmt))
     if ssot_warns:
         report.append('## 参考：運行期間の期限切れ（来季の再確認対象。件数に含めない）\n' + '\n'.join('- ' + fmt(w) for w in ssot_warns) + '\n')
     report.append(f"## 参考：既知の未解決（調査待ちのレガシー。件数に含めない）\n- 10. 所要時間: {len(time_known)}件 / 11. 駅名: {len(station_known)}件（scripts/check_known_issues.json）\n")

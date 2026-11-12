@@ -58,7 +58,11 @@ window.YMPacking = (function () {
       g.items.forEach(function (it) {
         if (it.stay && it.stay.indexOf(opts.stay) < 0) return;
         if (it.minElev && (opts.elev || 0) < it.minElev) return;
-        var prod = (it.gearCat && opts.mid && opts.month && gearProduct(opts.mid, opts.month, it.gearCat)) || it.product || null;
+        // 山の装備カード（gear-data.json）は月に1組だけで、月の途中で区分が変わる月は前の区分の商品が入っている。
+        // その月の雪の時期の欄（軽アイゼン等・冬山装備）には使わず、欄の商品のままにする
+        // （前は燕岳の11月の冬山装備の欄に6本爪アイゼン・一般の登山靴が出ていた。2026-11-11）
+        var useCard = it.gearCat && opts.mid && opts.month && !(g.gear && cell && typeof cell === 'object');
+        var prod = (useCard && gearProduct(opts.mid, opts.month, it.gearCat)) || it.product || null;
         if (prod) prod = prod.replace(/\(来月分\)$/, '');
         var prods = it.products ? it.products.slice() : (prod ? [prod] : []);
         var note = it.note || '';

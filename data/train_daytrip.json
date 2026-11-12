@@ -325,14 +325,57 @@
     },
     "jinba": {
       "route": 2,
-      "accessUntil": "藤野駅",
       "fares": {
         "shinjuku": 1040,
         "omiya": 1230,
         "yokohama": 1230
       },
       "faresSource": "Yahoo!路線情報（新宿・大宮・横浜〜藤野、2026-10-30 確認）",
-      "note": "藤野駅から陣馬登山口へのバス（神奈川中央交通「野08」）は2026年6月の改正で減り、土日祝は全便運休です。このコースは藤野駅から歩いて登り、相模湖駅へ下ります。"
+      "note": "藤野駅から陣馬登山口へのバス（神奈川中央交通「野08」）は2026年6月の改正で減り、土日祝は全便運休です。このコースは藤野駅から歩いて登り、相模湖駅へ下ります。",
+      "legs": {
+        "shinjuku": [
+          {
+            "station": "新宿駅",
+            "method": {
+              "icon": "train",
+              "line": "JR中央線（高尾乗換込み）"
+            },
+            "durationMin": 58,
+            "fareYen": null
+          },
+          {
+            "station": "藤野駅"
+          }
+        ],
+        "omiya": [
+          {
+            "station": "大宮駅",
+            "method": {
+              "icon": "train",
+              "line": "JR武蔵野線・中央線（西国分寺・高尾乗換込み）"
+            },
+            "durationMin": 89,
+            "fareYen": null
+          },
+          {
+            "station": "藤野駅"
+          }
+        ],
+        "yokohama": [
+          {
+            "station": "横浜駅",
+            "method": {
+              "icon": "train",
+              "line": "JR横浜線・中央線（八王子・高尾乗換込み）"
+            },
+            "durationMin": 83,
+            "fareYen": null
+          },
+          {
+            "station": "藤野駅"
+          }
+        ]
+      }
     },
     "oyama": {
       "route": 0,

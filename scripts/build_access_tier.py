@@ -19,7 +19,8 @@
 - 良好：上のどれでもなく、合計2時間30分（150分）以内・乗り換え1回まで・季節運行の乗り物を使わない
 - ふつう：それ以外（季節運行の乗り物を使う・2時間30分を超える・乗り換え2回・バスの走る曜日が限られる＝「平日のみ」「土日祝のみ」「全便運休」など）
 - 季節運行：annualItems の kind=transport（「ダイヤ」の切り替えだけの項目は除く）、新しい形の山は代表コースのアクセスの
-  operation.statusType が annual / temporary、または経路の札（badge）の文に「季節」「夏季限定」「運休」
+  operation.statusType が annual / temporary（mode が year＝通年は除く）、または経路の札（badge）の文に「季節」「夏季限定」「◯月は運休」
+  （前は札の「運休」だけで季節運行にしていて、通年運行の木曽駒ヶ岳（「点検運休あり」）を季節運行と数えていた。2026-11-11 に直した）
 """
 import json
 import os
@@ -47,18 +48,29 @@ def legs_of(m, dep):
     return (R.get(dep) or {}).get('legs') or []
 
 
-def seasonal(m, A):
+def seasons(m, A):
+    """電車・バスの経路で使う季節運行の乗り物の運行期間 [(validFrom, validTo, 名前, 要確認か)]。
+    旧い形の山は annualItems の kind=transport（「ダイヤ」の切り替えだけの項目は除く）、
+    新しい形の山は代表コースのアクセスの operation（mode が year＝通年のものは除く）。期間が分からないものは (None, None, …)"""
+    out = []
     for a in m.get('annualItems') or []:
         if a.get('kind') == 'transport' and 'ダイヤ' not in (a.get('label') or ''):
-            return True
+            out.append((a.get('validFrom'), a.get('validTo'), a.get('label'), bool(a.get('needsVerification'))))
     if m.get('dataModel') == 'ssot-v1':
         rep = [r for r in m.get('routes') or [] if r.get('id') == m.get('representativeRouteId')]
         for r in rep:
-            op = (A.get(r.get('accessId')) or {}).get('operation') or {}
-            if op.get('statusType') in ('annual', 'temporary'):
-                return True
+            ac = A.get(r.get('accessId')) or {}
+            op = ac.get('operation') or {}
+            if op.get('statusType') in ('annual', 'temporary') and op.get('mode') != 'year':
+                out.append((op.get('validFrom'), op.get('validTo'), ac.get('name') or r.get('accessId'), bool(ac.get('needsVerification'))))
+    return out
+
+
+def seasonal(m, A):
+    if seasons(m, A):
+        return True
     b = ((m.get('trainRoutes') or {}).get('badge') or {}).get('label') or ''
-    return bool(re.search(r'季節|夏季限定|運休', b))
+    return bool(re.search(r'季節|夏季限定|月は運休', b))
 
 
 def tier_for(m, dep, cap, A):

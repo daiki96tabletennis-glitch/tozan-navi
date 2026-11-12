@@ -61,7 +61,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261105b"
+ASSET_VER = "20261111a"
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
@@ -1056,7 +1056,12 @@ def gear_closed_attrs(mt):
     closed = [str(i + 1) for i, e in enumerate(cal) if e == "closed"]
     partial = [str(i + 1) for i, e in enumerate(cal)
                if isinstance(e, dict) and "closed" in (e.get("before"), e.get("after"))]
+    # 月の途中で区分が変わり、翌月がその後の区分と同じ月は、切り替わる日から翌月のカードを出す（mountain.js。2026-11-11）
+    switch = [f'{i + 1}:{e["changeDate"]}' for i, e in enumerate(cal)
+              if isinstance(e, dict) and e.get("after") != "closed" and cal[(i + 1) % 12] == e.get("after")]
     out = ""
+    if switch:
+        out += f' data-gear-switch="{",".join(switch)}"'
     if closed:
         out += f' data-gear-closed="{",".join(closed)}"'
     if partial:

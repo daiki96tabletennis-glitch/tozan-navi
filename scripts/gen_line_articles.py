@@ -61,7 +61,8 @@ def only_walk_dropped(full, cut):
 
 def access_html(m, item):
     full = m['trainRoutes']['routes']['shinjuku']['legs']
-    legs = legs_until(full, item.get('accessUntil'))
+    own = item.get('legs')  # 山の経路とは別の駅から歩くコース（記事の側に新宿からの区間と運賃 fare を持つ。陣馬山。2026-11-11）
+    legs = own or legs_until(full, item.get('accessUntil'))
     parts = []
     total = 0
     for x in legs:
@@ -72,9 +73,9 @@ def access_html(m, item):
             total += d
             parts.append('<span class="la-mv">%s %s</span>' % (E(meth.get('line') or ''), hm(d)))
     line = '<span class="la-ar">→</span>'.join(parts)
-    fare = m.get('fareShinjuku')
+    fare = item.get('fare') if own else m.get('fareShinjuku')
     head = '新宿から約%s' % hm(total)
-    whole = not item.get('accessUntil') or only_walk_dropped(full, legs)
+    whole = bool(own and fare) or (not own and (not item.get('accessUntil') or only_walk_dropped(full, legs)))
     if fare and whole:
         head += '・%s' % yen(fare)
     note = ''

@@ -173,15 +173,14 @@
     "operation": {
       "statusType": "annual",
       "mode": "seasonal",
-      "validFrom": null,
-      "validTo": null,
+      "validFrom": "2026-04-18",
+      "validTo": "2026-11-03",
       "seasonYear": 2026,
       "reservation": null,
-      "note": "戸倉〜鳩待峠の乗合バス・タクシーの2026年の運行期間は未確認"
+      "note": "戸倉〜鳩待峠の乗合バス・乗合タクシー（関越交通など）。道路開通日の4/17と11/4〜5の便はない"
     },
-    "sourceUrl": null,
-    "lastVerified": "2026-10-05",
-    "needsVerification": true
+    "sourceUrl": "https://www.pref.gunma.jp/uploaded/attachment/697963.pdf",
+    "lastVerified": "2026-11-11"
   },
   "sarukura": {
     "id": "sarukura",
@@ -733,17 +732,16 @@
       "restriction": "林道一ノ沢線は一般車両通行止め。市内の駐車場に停め、地元タクシーで通行止め箇所の手前まで行き、歩行者用通路を通って登山口へ（約1.5km）"
     },
     "operation": {
-      "statusType": "temporary",
-      "mode": "restricted",
-      "validFrom": null,
-      "validTo": "2027-01-31",
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-04-17",
+      "validTo": "2026-11-26",
       "seasonYear": 2026,
       "reservation": null,
-      "note": "災害復旧工事の竣工予定は令和9年（2027年）1月末"
+      "note": "林道一ノ沢線の冬期通行止めの解除（4/17）〜冬期通行止め（11/27から）。崩落の復旧工事中で、タクシーだけが崩落箇所の手前まで入れ、登山口まで約1.5km歩く（竣工予定は2027年1月末）"
     },
     "sourceUrl": "https://www.city.azumino.nagano.jp/soshiki/32/66871.html",
-    "lastVerified": "2026-10-05",
-    "needsVerification": false
+    "lastVerified": "2026-11-11"
   },
   "mitsumata": {
     "id": "mitsumata",
@@ -1069,15 +1067,14 @@
     "operation": {
       "statusType": "annual",
       "mode": "seasonal",
-      "validFrom": "2026-04-24",
-      "validTo": null,
+      "validFrom": "2026-05-01",
+      "validTo": "2026-10-25",
       "seasonYear": 2026,
       "reservation": null,
-      "note": "道路の開通日。会津バス檜枝岐線の2026年の運行期間は未確認"
+      "note": "会津バス 檜枝岐線（会津田島駅〜尾瀬御池）。5月23日までは尾瀬御池止まり。11月1日からは檜枝岐止まり"
     },
-    "sourceUrl": "https://oze-fnd.or.jp/archives/197543/",
-    "lastVerified": "2026-10-05",
-    "needsVerification": true
+    "sourceUrl": "https://www.aizubus.com/travel/oze/",
+    "lastVerified": "2026-11-11"
   },
   "numayama-toge": {
     "id": "numayama-toge",

@@ -198,7 +198,7 @@ function gearRenderCard(c, mid, position){
   var catKey = c.c.replace('_next','');
   var iconKey = catKey;
   if(catKey === 'shoe' && c.p && (c.p.indexOf('マンタテック')>=0 || c.p.indexOf('ネパール')>=0)) iconKey = 'winter_shoe';
-  var label = window.GEAR_LABEL[c.c] || c.c;
+  var label = c.l || window.GEAR_LABEL[c.c] || c.c;
   var badgeStyle = window.GEAR_BADGE_STYLE[c.i] || '';
   var badgeHtml = '<span class="gear-badge" style="' + badgeStyle + ';font-size:9px;padding:1px 5px;border-radius:8px;font-weight:700;white-space:nowrap;flex-shrink:0;display:inline-block;line-height:1.5">' + c.i + '</span>';
 
@@ -228,6 +228,11 @@ function gearRenderCard(c, mid, position){
       var now = new Date();
       var month = now.getMonth() + 1;
       var cards = null;
+      // 月の途中で区分が変わる月は、切り替わる日から翌月のカードを出す（data-gear-switch="月:日"。2026-11-11）
+      (container.getAttribute('data-gear-switch') || '').split(',').forEach(function(x){
+        var a = x.split(':');
+        if(+a[0] === month && now.getDate() >= +a[1]) month = month % 12 + 1;
+      });
       for(var key in variants){
         if(variants[key].indexOf(month) !== -1){ cards = JSON.parse(key); break; }
       }

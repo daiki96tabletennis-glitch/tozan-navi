@@ -51,6 +51,11 @@ def chosen_route(m):
 
 
 def dep_legs(m, dep='shinjuku'):
+    """(山の経路の全区間, 記事で使う区間)。courses に legs があれば、山の経路ではなくその区間を使う（全区間は None）。
+    山の経路とは別の駅から歩き始めるコースを載せるとき（陣馬山＝本線は高尾駅からのバス、記事は藤野駅から歩く。2026-11-11）"""
+    own = (course(m).get('legs') or {}).get(dep)
+    if own:
+        return None, own
     legs = legs_of(m, dep)
     until = course(m).get('accessUntil')
     if not until:
@@ -63,6 +68,8 @@ def dep_legs(m, dep='shinjuku'):
 
 def dep_time(m, dep='shinjuku'):
     full, cut = dep_legs(m, dep)
+    if full is None:
+        return sum(l.get('durationMin') or 0 for l in cut)
     if cut is full:
         return m.get('trainTime' + dep.capitalize())
     return sum(l.get('durationMin') or 0 for l in cut)
@@ -70,6 +77,8 @@ def dep_time(m, dep='shinjuku'):
 
 def dep_fare(m, dep='shinjuku'):
     full, cut = dep_legs(m, dep)
+    if full is None:
+        return (course(m).get('fares') or {}).get(dep)
     dropped = [l for l in full[len(cut) - 1:] if l.get('method')]
     if cut is full or all('徒歩' in (l['method'].get('line') or '') for l in dropped):
         return m.get('fare' + dep.capitalize())

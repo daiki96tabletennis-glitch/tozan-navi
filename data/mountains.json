@@ -17491,16 +17491,14 @@
     "coeffMin": 56,
     "coeffMax": 65,
     "daytrip": false,
-    "trainAccess": "新宿駅→JR中央線快速約15分→東京駅→東北新幹線やまびこ約1時間40分→郡山駅→JR磐越西線快速約1時間12分→会津若松駅→JR磐越西線約34分→山都駅→飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）約45分→川入バス停→徒歩約30分→御沢野営場（登山口）",
+    "trainAccess": null,
     "driveOfuna": 310,
     "driveShinjuku": 275,
     "driveYokohama": 285,
     "driveOmiya": 245,
     "description": "東北の秘峰。アプローチが長く体力を要する。高山植物の宝庫。",
     "yamapUrl": "https://yamap.com/mountains/155",
-    "busLinks": [
-      "https://transit.yahoo.co.jp/search/result?from=新宿&to=山都駅&type=1"
-    ],
+    "busLinks": [],
     "warnBanner": null,
     "nearby": [
       "arakawadake",
@@ -17546,9 +17544,7 @@
     "address": "福島県喜多方市山都町",
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=37.7886556%2C139.786694&query_place_id=ChIJH5z_mZrFil8RcOyBFRPfw10",
     "amapUrl": "https://maps.apple.com/?ll=37.7886556,139.786694&q=%E5%B7%9D%E5%85%A5",
-    "busScheduleLinks": [
-      "https://www.city.kitakata.fukushima.jp/soshiki/sangyo-y/36163.html"
-    ],
+    "busScheduleLinks": [],
     "gearLinks": [
       {
         "id": "boots",
@@ -17626,7 +17622,6 @@
         "source": "YAMAPモデルコース（model-courses/1645）",
         "sourceUrl": "https://yamap.com/model-courses/1645",
         "lastVerified": "2026-10-24",
-        "byTrain": true,
         "courseType": "out_and_back"
       },
       {
@@ -17655,7 +17650,6 @@
         "source": "YAMAPモデルコース（model-courses/72531）",
         "sourceUrl": "https://yamap.com/model-courses/72531",
         "lastVerified": "2026-10-24",
-        "byTrain": true,
         "courseType": "out_and_back"
       }
     ],
@@ -17666,17 +17660,17 @@
     "lines": [],
     "driveTimeTachikawa": 295,
     "driveTachikawa": 295,
-    "fareShinjuku": 9460,
-    "fareYokohama": 10010,
-    "fareOmiya": 8030,
-    "trainAccessYokohama": "横浜駅→JR上野東京ライン約26分→東京駅→東北新幹線やまびこ約1時間40分→郡山駅→JR磐越西線快速約1時間12分→会津若松駅→JR磐越西線約34分→山都駅→飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）約45分→川入バス停→徒歩約30分→御沢野営場（登山口）",
-    "trainAccessOmiya": "大宮駅→東北新幹線やまびこ約1時間15分→郡山駅→JR磐越西線快速約1時間12分→会津若松駅→JR磐越西線約34分→山都駅→飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）約45分→川入バス停→徒歩約30分→御沢野営場（登山口）",
-    "transfersShinjuku": 2,
-    "transfersYokohama": 3,
-    "transfersOmiya": 2,
-    "trainTimeYokohama": 307,
-    "trainTimeOmiya": 256,
-    "trainTimeShinjuku": 296,
+    "fareShinjuku": null,
+    "fareYokohama": null,
+    "fareOmiya": null,
+    "trainAccessYokohama": null,
+    "trainAccessOmiya": null,
+    "transfersShinjuku": null,
+    "transfersYokohama": null,
+    "transfersOmiya": null,
+    "trainTimeYokohama": null,
+    "trainTimeOmiya": null,
+    "trainTimeShinjuku": null,
     "faq": [
       {
         "question": "飯豊山は初心者でも登れますか？難易度とコース定数を解説",
@@ -17687,8 +17681,8 @@
         "answer": "飯豊山は山小屋泊が基本です。川入（御沢）〜三国岳〜切合小屋〜飯豊山（往復・1泊2日）は歩行14時間9分（20.8km・標高差2245m）。大日杉〜地蔵岳〜切合小屋〜飯豊山（往復・1泊2日）は歩行14時間49分（21.3km・標高差2328m）。川入（御沢）〜飯豊山〜駒形山〜御西岳（往復・1泊2日）は歩行16時間36分（26.3km・標高差2540m）。"
       },
       {
-        "question": "飯豊山へのアクセス方法は？新宿・横浜からの行き方",
-        "answer": "東北新幹線で郡山駅へ行き、磐越西線を会津若松で乗り継いで山都駅へ。山都駅からは喜多方市の飯豊山登山アクセスバス（夏の金〜月曜のみ）で川入へ向かいます。新宿から約4時間56分・9,460円、大宮から約4時間16分・8,030円、横浜から約5時間7分・10,010円が目安です（運賃は山都駅まで。乗り換えの待ち時間とバス代は別）。車の場合は都心から約5時間10分が目安です。"
+        "question": "飯豊山へのアクセス方法は？",
+        "answer": "登山口の川入（御沢）へは車で行くのが基本です。新宿から車で約4時間35分が目安で、川入キャンプ場駐車場（約100台・無料）に停めて歩き始めます。"
       },
       {
         "question": "飯豊山の登山シーズンはいつですか？おすすめの時期",
@@ -17697,218 +17691,20 @@
     ],
     "hasWeatherWidget": false,
     "vibesHtml": "<div class=\"rec-card\">\n    <div class=\"rec-card-title\"><span class=\"eyebrow\">Vibes</span><span>こんな気分の人に</span></div>\n    <div class=\"rec-list\"><div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>東北の大きな稜線を歩きたい人</strong>——切合から本山、御西岳へと、ゆったりした稜線が続く</span></div>\n<div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>高山植物を見たい人</strong>——固有種のイイデリンドウが夏に咲く</span></div>\n<div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>山小屋泊で静かな山に浸りたい人</strong>——行程が長く、山の中で泊まりながら歩く</span></div></div>\n    </div>",
-    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-seasonal\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>⚠️ 季節運行</span></div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR中央線快速　<span class=\"ts-duration\">約15分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">東京駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>東北新幹線やまびこ　<span class=\"ts-duration\">約1時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">郡山駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR磐越西線快速　<span class=\"ts-duration\">約1時間12分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">会津若松駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR磐越西線　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">山都駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）　<span class=\"ts-duration\">約45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">川入バス停</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><circle cx=\"13\" cy=\"4\" r=\"1.8\" fill=\"currentColor\"/><path d=\"M11 21 L13 15 L10 12 L11 8 L15 10 L17 13 M13 15 L16 20 M11 8 L8 11\"/></svg>徒歩　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">御沢野営場（登山口）</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>東北新幹線やまびこ　<span class=\"ts-duration\">約1時間15分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">郡山駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR磐越西線快速　<span class=\"ts-duration\">約1時間12分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">会津若松駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR磐越西線　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">山都駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）　<span class=\"ts-duration\">約45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">川入バス停</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><circle cx=\"13\" cy=\"4\" r=\"1.8\" fill=\"currentColor\"/><path d=\"M11 21 L13 15 L10 12 L11 8 L15 10 L17 13 M13 15 L16 20 M11 8 L8 11\"/></svg>徒歩　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">御沢野営場（登山口）</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR上野東京ライン　<span class=\"ts-duration\">約26分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">東京駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>東北新幹線やまびこ　<span class=\"ts-duration\">約1時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">郡山駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR磐越西線快速　<span class=\"ts-duration\">約1時間12分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">会津若松駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR磐越西線　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">山都駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）　<span class=\"ts-duration\">約45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">川入バス停</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><circle cx=\"13\" cy=\"4\" r=\"1.8\" fill=\"currentColor\"/><path d=\"M11 21 L13 15 L10 12 L11 8 L15 10 L17 13 M13 15 L16 20 M11 8 L8 11\"/></svg>徒歩　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">御沢野営場（登山口）</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約4時間56分\" data-omiya=\"約4時間16分\" data-yokohama=\"約5時間7分\">約4時間56分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約9,460円\" data-omiya=\"片道約8,030円\" data-yokohama=\"片道約10,010円\">片道約9,460円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>運賃は山都駅まで（バス代は別）</li><li>アクセスバスは例年7月中旬〜9月中旬の金〜月曜だけ（2026年の運行日は未確認）</li><li>運行の無い日はタクシー</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=山都駅&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://www.city.kitakata.fukushima.jp/soshiki/sangyo-y/36163.html\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>飯豊山登山アクセスバスの案内（喜多方市）</a></div></div>",
-    "relatedLinksHtml": "<div class=\"related-links-card\">\n  <div class=\"related-links-title\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"3\" rx=\"1\"/><line x1=\"8\" y1=\"11\" x2=\"16\" y2=\"11\"/><line x1=\"8\" y1=\"15\" x2=\"13\" y2=\"15\"/></svg>関連するまとめ</div>\n    <a href=\"/search/shinjuku-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>新宿から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">新宿発・飯豊山と難易度・時間を比較できる</span>\n    </a>\n    <a href=\"/search/ofuna-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>大船・横浜から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">神奈川発で飯豊山の前後に検討したい山を比較</span>\n    </a>\n    <a href=\"/search/train-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車で行ける日帰り登山一覧</span>\n      <span class=\"related-link-sub\">車なしOK・駅近の山だけを集めたリスト</span>\n    </a>\n    <a href=\"/recommend/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"12,3 14,10 12,12 10,10\" fill=\"currentColor\" stroke=\"none\"/><polygon points=\"12,21 10,14 12,12 14,14\" fill=\"currentColor\" opacity=\"0.5\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"white\" stroke=\"none\"/></svg>登山タイプ診断で自分に合う山を探す</span>\n      <span class=\"related-link-sub\">12問・約2分。16タイプのどれかと、そのタイプに合う山がわかる</span>\n    </a>\n</div>",
+    "trainAccessHtml": null,
+    "relatedLinksHtml": "<div class=\"related-links-card\">\n  <div class=\"related-links-title\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"3\" rx=\"1\"/><line x1=\"8\" y1=\"11\" x2=\"16\" y2=\"11\"/><line x1=\"8\" y1=\"15\" x2=\"13\" y2=\"15\"/></svg>関連するまとめ</div>\n    <a href=\"/search/shinjuku-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>新宿から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">新宿発・飯豊山と難易度・時間を比較できる</span>\n    </a>\n    <a href=\"/search/ofuna-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>大船・横浜から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">神奈川発で飯豊山の前後に検討したい山を比較</span>\n    </a>\n    <a href=\"/recommend/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"12,3 14,10 12,12 10,10\" fill=\"currentColor\" stroke=\"none\"/><polygon points=\"12,21 10,14 12,12 14,14\" fill=\"currentColor\" opacity=\"0.5\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"white\" stroke=\"none\"/></svg>登山タイプ診断で自分に合う山を探す</span>\n      <span class=\"related-link-sub\">12問・約2分。16タイプのどれかと、そのタイプに合う山がわかる</span>\n    </a>\n</div>",
     "dlNoteHtml": null,
     "introHtml": "<div class=\"card\"><h2><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" style=\"vertical-align:-3px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 3h10l4 4v14H5z\"/><path d=\"M15 3v4h4\"/><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"/><line x1=\"8\" y1=\"16\" x2=\"13\" y2=\"16\"/></svg>山の紹介</h2><p class=\"intro-text\">東北の秘峰。アプローチが長く体力を要する。高山植物の宝庫。上級レベルでコース定数56〜65、山小屋泊が一般的。代表コース（川入（御沢）〜三国岳〜切合小屋〜飯豊山（往復・1泊2日））は所要14時間9分/20.8km/標高差+2245m。</p></div>",
     "mapBtnsHtml": "<div class=\"map-btns\"><a href=\"https://www.google.com/maps/search/?api=1&query=37.7886556%2C139.786694&query_place_id=ChIJH5z_mZrFil8RcOyBFRPfw10\" target=\"_blank\" class=\"map-btn-link\">Googleマップ</a>\n<a href=\"https://maps.apple.com/?ll=37.7886556,139.786694&q=%E5%B7%9D%E5%85%A5\" target=\"_blank\" class=\"map-btn-link\">Apple Maps</a>\n</div>",
-    "metaTitle": "飯豊山 登山の難易度は上級｜山小屋泊・歩行14時間9分・標高差2,245m｜山都駅からバス【百名山】｜Yamatch",
-    "metaDescription": "飯豊山（標高2,105m・福島県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（川入（御沢）〜三国岳〜切合小屋〜飯豊山（往復・1泊2日））は14時間9分・20.8km・標高差2245m。新宿から電車とバスで約4時間56分（山都駅からバス）。山小屋泊がおすすめです。東北の秘峰。駐車場・装備・天気も掲載。",
+    "metaTitle": "飯豊山 登山の難易度は上級｜山小屋泊・歩行14時間9分・標高差2,245m｜新宿から車で【百名山】｜Yamatch",
+    "metaDescription": "飯豊山（標高2,105m・福島県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（川入（御沢）〜三国岳〜切合小屋〜飯豊山（往復・1泊2日））は14時間9分・20.8km・標高差2245m。車は新宿から約4時間35分。山小屋泊がおすすめです。東北の秘峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-11",
     "hasHeroPhotoScript": false,
-    "ogTitle": "飯豊山 登山の難易度は上級｜山小屋泊・歩行14時間9分・標高差2,245m｜山都駅からバス【百名山】｜Yamatch",
-    "ogDescription": "飯豊山（標高2,105m・福島県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（川入（御沢）〜三国岳〜切合小屋〜飯豊山（往復・1泊2日））は14時間9分・20.8km・標高差2245m。新宿から電車とバスで約4時間56分（山都駅からバス）。山小屋泊がおすすめです。東北の秘峰。駐車場・装備・天気も掲載。",
+    "ogTitle": "飯豊山 登山の難易度は上級｜山小屋泊・歩行14時間9分・標高差2,245m｜新宿から車で【百名山】｜Yamatch",
+    "ogDescription": "飯豊山（標高2,105m・福島県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（川入（御沢）〜三国岳〜切合小屋〜飯豊山（往復・1泊2日））は14時間9分・20.8km・標高差2245m。車は新宿から約4時間35分。山小屋泊がおすすめです。東北の秘峰。駐車場・装備・天気も掲載。",
     "climbedBtnStyle": "rounded",
-    "trainRoutes": {
-      "badge": {
-        "type": "seasonal",
-        "style": null,
-        "icon": "check",
-        "label": "⚠️ 季節運行"
-      },
-      "lineName": null,
-      "routes": {
-        "shinjuku": {
-          "legs": [
-            {
-              "station": "新宿駅",
-              "method": {
-                "icon": "train",
-                "line": "JR中央線快速"
-              },
-              "durationMin": 15,
-              "fareYen": null
-            },
-            {
-              "station": "東京駅",
-              "method": {
-                "icon": "train",
-                "line": "東北新幹線やまびこ"
-              },
-              "durationMin": 100,
-              "fareYen": null
-            },
-            {
-              "station": "郡山駅",
-              "method": {
-                "icon": "train",
-                "line": "JR磐越西線快速"
-              },
-              "durationMin": 72,
-              "fareYen": null
-            },
-            {
-              "station": "会津若松駅",
-              "method": {
-                "icon": "train",
-                "line": "JR磐越西線"
-              },
-              "durationMin": 34,
-              "fareYen": null
-            },
-            {
-              "station": "山都駅",
-              "method": {
-                "icon": "bus",
-                "line": "飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）"
-              },
-              "durationMin": 45,
-              "fareYen": null
-            },
-            {
-              "station": "川入バス停",
-              "method": {
-                "icon": "walk",
-                "line": "徒歩"
-              },
-              "durationMin": 30,
-              "fareYen": null
-            },
-            {
-              "station": "御沢野営場（登山口）"
-            }
-          ]
-        },
-        "yokohama": {
-          "legs": [
-            {
-              "station": "横浜駅",
-              "method": {
-                "icon": "train",
-                "line": "JR上野東京ライン"
-              },
-              "durationMin": 26,
-              "fareYen": null
-            },
-            {
-              "station": "東京駅",
-              "method": {
-                "icon": "train",
-                "line": "東北新幹線やまびこ"
-              },
-              "durationMin": 100,
-              "fareYen": null
-            },
-            {
-              "station": "郡山駅",
-              "method": {
-                "icon": "train",
-                "line": "JR磐越西線快速"
-              },
-              "durationMin": 72,
-              "fareYen": null
-            },
-            {
-              "station": "会津若松駅",
-              "method": {
-                "icon": "train",
-                "line": "JR磐越西線"
-              },
-              "durationMin": 34,
-              "fareYen": null
-            },
-            {
-              "station": "山都駅",
-              "method": {
-                "icon": "bus",
-                "line": "飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）"
-              },
-              "durationMin": 45,
-              "fareYen": null
-            },
-            {
-              "station": "川入バス停",
-              "method": {
-                "icon": "walk",
-                "line": "徒歩"
-              },
-              "durationMin": 30,
-              "fareYen": null
-            },
-            {
-              "station": "御沢野営場（登山口）"
-            }
-          ]
-        },
-        "omiya": {
-          "legs": [
-            {
-              "station": "大宮駅",
-              "method": {
-                "icon": "train",
-                "line": "東北新幹線やまびこ"
-              },
-              "durationMin": 75,
-              "fareYen": null
-            },
-            {
-              "station": "郡山駅",
-              "method": {
-                "icon": "train",
-                "line": "JR磐越西線快速"
-              },
-              "durationMin": 72,
-              "fareYen": null
-            },
-            {
-              "station": "会津若松駅",
-              "method": {
-                "icon": "train",
-                "line": "JR磐越西線"
-              },
-              "durationMin": 34,
-              "fareYen": null
-            },
-            {
-              "station": "山都駅",
-              "method": {
-                "icon": "bus",
-                "line": "飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）"
-              },
-              "durationMin": 45,
-              "fareYen": null
-            },
-            {
-              "station": "川入バス停",
-              "method": {
-                "icon": "walk",
-                "line": "徒歩"
-              },
-              "durationMin": 30,
-              "fareYen": null
-            },
-            {
-              "station": "御沢野営場（登山口）"
-            }
-          ]
-        }
-      },
-      "note": "アクセスバスは例年7月中旬〜9月中旬の金〜月曜だけ（2026年の運行日は未確認）。運行の無い日はタクシー",
-      "summaryNote": "運賃は山都駅まで（バス代は別）",
-      "links": [
-        {
-          "type": "yahoo",
-          "label": "乗換案内で検索",
-          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=山都駅&type=1"
-        },
-        {
-          "type": "bus",
-          "label": "飯豊山登山アクセスバスの案内（喜多方市）",
-          "url": "https://www.city.kitakata.fukushima.jp/soshiki/sangyo-y/36163.html"
-        }
-      ]
-    },
+    "trainRoutes": null,
     "recommendReason": "高山植物の宝庫。アプローチが長い東北の秘峰",
     "gmapUrlLegacy": "https://google.com/maps/search/川入/@37.8525,139.6311,16z",
     "amapUrlLegacy": "https://maps.apple.com/?ll=37.8525,139.6311&q=川入",
@@ -17926,22 +17722,10 @@
         "seasonYear": null,
         "sourceUrl": "https://www.town.nishiaizu.fukushima.jp/site/kanko/797.html",
         "lastVerified": "2026-10-06"
-      },
-      {
-        "kind": "transport",
-        "label": "山都駅〜川入の飯豊山登山アクセスバス（喜多方市）",
-        "validFrom": null,
-        "validTo": null,
-        "seasonYear": null,
-        "sourceUrl": "https://www.city.kitakata.fukushima.jp/soshiki/sangyo-y/36163.html",
-        "lastVerified": "2026-10-06"
       }
     ],
-    "verifyNotes": [
-      "飯豊山登山アクセスバスの2026年の運行日・運賃"
-    ],
     "needsVerification": true,
-    "fareCheckedAt": "2026-10-07",
+    "fareCheckedAt": null,
     "gearCalendar": [
       "winter_gear",
       "winter_gear",
@@ -18022,29 +17806,246 @@
         "by": ""
       }
     ],
-    "accessTier": {
-      "shinjuku": {
-        "tier": "plan",
-        "reasons": [
-          "4時間を超える",
-          "乗り換え4回",
-          "季節運行の乗り物を使い、3時間を超える"
-        ]
-      },
-      "omiya": {
-        "tier": "plan",
-        "reasons": [
-          "4時間を超える",
-          "乗り換え3回",
-          "季節運行の乗り物を使い、3時間を超える"
-        ]
-      },
-      "yokohama": {
-        "tier": "plan",
-        "reasons": [
-          "4時間を超える",
-          "乗り換え4回",
-          "季節運行の乗り物を使い、3時間を超える"
+    "archivedTrainAccess": {
+      "archivedAt": "2026-11-11",
+      "reason": "山都駅〜川入の飯豊山登山アクセスバスの2026年の運行を確かめられない（喜多方市の地域公共交通 総合パンフレット・令和8年9月作成に載っていない）。運営者の指示で電車アクセスを外した",
+      "sourceUrl": "https://www.city.kitakata.fukushima.jp/uploaded/attachment/58161.pdf",
+      "fields": {
+        "trainAccess": "新宿駅→JR中央線快速約15分→東京駅→東北新幹線やまびこ約1時間40分→郡山駅→JR磐越西線快速約1時間12分→会津若松駅→JR磐越西線約34分→山都駅→飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）約45分→川入バス停→徒歩約30分→御沢野営場（登山口）",
+        "trainAccessOmiya": "大宮駅→東北新幹線やまびこ約1時間15分→郡山駅→JR磐越西線快速約1時間12分→会津若松駅→JR磐越西線約34分→山都駅→飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）約45分→川入バス停→徒歩約30分→御沢野営場（登山口）",
+        "trainAccessYokohama": "横浜駅→JR上野東京ライン約26分→東京駅→東北新幹線やまびこ約1時間40分→郡山駅→JR磐越西線快速約1時間12分→会津若松駅→JR磐越西線約34分→山都駅→飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）約45分→川入バス停→徒歩約30分→御沢野営場（登山口）",
+        "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-seasonal\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>⚠️ 季節運行</span></div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR中央線快速　<span class=\"ts-duration\">約15分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">東京駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>東北新幹線やまびこ　<span class=\"ts-duration\">約1時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">郡山駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR磐越西線快速　<span class=\"ts-duration\">約1時間12分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">会津若松駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR磐越西線　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">山都駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）　<span class=\"ts-duration\">約45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">川入バス停</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><circle cx=\"13\" cy=\"4\" r=\"1.8\" fill=\"currentColor\"/><path d=\"M11 21 L13 15 L10 12 L11 8 L15 10 L17 13 M13 15 L16 20 M11 8 L8 11\"/></svg>徒歩　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">御沢野営場（登山口）</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>東北新幹線やまびこ　<span class=\"ts-duration\">約1時間15分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">郡山駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR磐越西線快速　<span class=\"ts-duration\">約1時間12分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">会津若松駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR磐越西線　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">山都駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）　<span class=\"ts-duration\">約45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">川入バス停</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><circle cx=\"13\" cy=\"4\" r=\"1.8\" fill=\"currentColor\"/><path d=\"M11 21 L13 15 L10 12 L11 8 L15 10 L17 13 M13 15 L16 20 M11 8 L8 11\"/></svg>徒歩　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">御沢野営場（登山口）</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR上野東京ライン　<span class=\"ts-duration\">約26分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">東京駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>東北新幹線やまびこ　<span class=\"ts-duration\">約1時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">郡山駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR磐越西線快速　<span class=\"ts-duration\">約1時間12分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">会津若松駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR磐越西線　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">山都駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）　<span class=\"ts-duration\">約45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">川入バス停</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><circle cx=\"13\" cy=\"4\" r=\"1.8\" fill=\"currentColor\"/><path d=\"M11 21 L13 15 L10 12 L11 8 L15 10 L17 13 M13 15 L16 20 M11 8 L8 11\"/></svg>徒歩　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">御沢野営場（登山口）</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約4時間56分\" data-omiya=\"約4時間16分\" data-yokohama=\"約5時間7分\">約4時間56分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約9,460円\" data-omiya=\"片道約8,030円\" data-yokohama=\"片道約10,010円\">片道約9,460円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>運賃は山都駅まで（バス代は別）</li><li>山都駅〜川入のアクセスバスは2026年の運行を確かめられない</li><li>山都駅からタクシーを使う</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=山都駅&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://www.city.kitakata.fukushima.jp/soshiki/sangyo-y/36163.html\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>飯豊山登山アクセスバスの案内（喜多方市）</a></div></div>",
+        "trainRoutes": {
+          "badge": {
+            "type": "seasonal",
+            "style": null,
+            "icon": "check",
+            "label": "⚠️ 季節運行"
+          },
+          "lineName": null,
+          "routes": {
+            "shinjuku": {
+              "legs": [
+                {
+                  "station": "新宿駅",
+                  "method": {
+                    "icon": "train",
+                    "line": "JR中央線快速"
+                  },
+                  "durationMin": 15,
+                  "fareYen": null
+                },
+                {
+                  "station": "東京駅",
+                  "method": {
+                    "icon": "train",
+                    "line": "東北新幹線やまびこ"
+                  },
+                  "durationMin": 100,
+                  "fareYen": null
+                },
+                {
+                  "station": "郡山駅",
+                  "method": {
+                    "icon": "train",
+                    "line": "JR磐越西線快速"
+                  },
+                  "durationMin": 72,
+                  "fareYen": null
+                },
+                {
+                  "station": "会津若松駅",
+                  "method": {
+                    "icon": "train",
+                    "line": "JR磐越西線"
+                  },
+                  "durationMin": 34,
+                  "fareYen": null
+                },
+                {
+                  "station": "山都駅",
+                  "method": {
+                    "icon": "bus",
+                    "line": "飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）"
+                  },
+                  "durationMin": 45,
+                  "fareYen": null
+                },
+                {
+                  "station": "川入バス停",
+                  "method": {
+                    "icon": "walk",
+                    "line": "徒歩"
+                  },
+                  "durationMin": 30,
+                  "fareYen": null
+                },
+                {
+                  "station": "御沢野営場（登山口）"
+                }
+              ]
+            },
+            "yokohama": {
+              "legs": [
+                {
+                  "station": "横浜駅",
+                  "method": {
+                    "icon": "train",
+                    "line": "JR上野東京ライン"
+                  },
+                  "durationMin": 26,
+                  "fareYen": null
+                },
+                {
+                  "station": "東京駅",
+                  "method": {
+                    "icon": "train",
+                    "line": "東北新幹線やまびこ"
+                  },
+                  "durationMin": 100,
+                  "fareYen": null
+                },
+                {
+                  "station": "郡山駅",
+                  "method": {
+                    "icon": "train",
+                    "line": "JR磐越西線快速"
+                  },
+                  "durationMin": 72,
+                  "fareYen": null
+                },
+                {
+                  "station": "会津若松駅",
+                  "method": {
+                    "icon": "train",
+                    "line": "JR磐越西線"
+                  },
+                  "durationMin": 34,
+                  "fareYen": null
+                },
+                {
+                  "station": "山都駅",
+                  "method": {
+                    "icon": "bus",
+                    "line": "飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）"
+                  },
+                  "durationMin": 45,
+                  "fareYen": null
+                },
+                {
+                  "station": "川入バス停",
+                  "method": {
+                    "icon": "walk",
+                    "line": "徒歩"
+                  },
+                  "durationMin": 30,
+                  "fareYen": null
+                },
+                {
+                  "station": "御沢野営場（登山口）"
+                }
+              ]
+            },
+            "omiya": {
+              "legs": [
+                {
+                  "station": "大宮駅",
+                  "method": {
+                    "icon": "train",
+                    "line": "東北新幹線やまびこ"
+                  },
+                  "durationMin": 75,
+                  "fareYen": null
+                },
+                {
+                  "station": "郡山駅",
+                  "method": {
+                    "icon": "train",
+                    "line": "JR磐越西線快速"
+                  },
+                  "durationMin": 72,
+                  "fareYen": null
+                },
+                {
+                  "station": "会津若松駅",
+                  "method": {
+                    "icon": "train",
+                    "line": "JR磐越西線"
+                  },
+                  "durationMin": 34,
+                  "fareYen": null
+                },
+                {
+                  "station": "山都駅",
+                  "method": {
+                    "icon": "bus",
+                    "line": "飯豊山登山アクセスバス（喜多方市・夏の金〜月曜のみ）"
+                  },
+                  "durationMin": 45,
+                  "fareYen": null
+                },
+                {
+                  "station": "川入バス停",
+                  "method": {
+                    "icon": "walk",
+                    "line": "徒歩"
+                  },
+                  "durationMin": 30,
+                  "fareYen": null
+                },
+                {
+                  "station": "御沢野営場（登山口）"
+                }
+              ]
+            }
+          },
+          "note": "山都駅〜川入のアクセスバスは2026年の運行を確かめられない。山都駅からタクシーを使う",
+          "summaryNote": "運賃は山都駅まで（バス代は別）",
+          "links": [
+            {
+              "type": "yahoo",
+              "label": "乗換案内で検索",
+              "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=山都駅&type=1"
+            },
+            {
+              "type": "bus",
+              "label": "飯豊山登山アクセスバスの案内（喜多方市）",
+              "url": "https://www.city.kitakata.fukushima.jp/soshiki/sangyo-y/36163.html"
+            }
+          ]
+        },
+        "trainTimeShinjuku": 296,
+        "trainTimeOmiya": 256,
+        "trainTimeYokohama": 307,
+        "fareShinjuku": 9460,
+        "fareOmiya": 8030,
+        "fareYokohama": 10010,
+        "transfersShinjuku": 2,
+        "transfersOmiya": 2,
+        "transfersYokohama": 3,
+        "fareCheckedAt": "2026-10-07",
+        "busLinks": [
+          "https://transit.yahoo.co.jp/search/result?from=新宿&to=山都駅&type=1"
+        ],
+        "busScheduleLinks": [
+          "https://www.city.kitakata.fukushima.jp/soshiki/sangyo-y/36163.html"
+        ],
+        "annualItemsTransport": [
+          {
+            "kind": "transport",
+            "label": "山都駅〜川入の飯豊山登山アクセスバス（喜多方市）",
+            "validFrom": null,
+            "validTo": null,
+            "seasonYear": null,
+            "sourceUrl": "https://www.city.kitakata.fukushima.jp/soshiki/sangyo-y/36163.html",
+            "lastVerified": "2026-11-11",
+            "needsVerification": true,
+            "note": "山都駅〜川入の飯豊山登山アクセスバスの2026年の運行を確かめられない（喜多方市の地域公共交通 総合パンフレット・令和8年9月作成に載っていない）。山都駅からタクシーを使う"
+          }
+        ],
+        "faqAccessAnswer": "東北新幹線で郡山駅へ行き、磐越西線を会津若松で乗り継いで山都駅へ。山都駅からは喜多方市の飯豊山登山アクセスバス（夏の金〜月曜のみ）で川入へ向かいます。新宿から約4時間56分・9,460円、大宮から約4時間16分・8,030円、横浜から約5時間7分・10,010円が目安です（運賃は山都駅まで。乗り換えの待ち時間とバス代は別）。車の場合は都心から約5時間10分が目安です。",
+        "verifyNotes": [
+          "飯豊山登山アクセスバスの2026年の運行日・運賃"
         ]
       }
     }
@@ -18254,7 +18255,7 @@
       },
       {
         "question": "至仏山へのアクセス方法は？新宿・横浜からの行き方",
-        "answer": "鳩待峠へのアクセス（戸倉で乗換）：新宿から約3時間28分（10,430円）、大宮から約2時間55分（8,890円）、横浜から約3時間55分（10,460円）が目安です。車の場合：鳩待峠へはマイカーで入れない。戸倉駐車場で乗合バス・乗合タクシーに乗り換える。"
+        "answer": "鳩待峠へのアクセス（戸倉で乗換）：新宿から約3時間28分（10,430円）、大宮から約2時間55分（8,890円）、横浜から約3時間55分（10,460円）が目安です。2026年の運行（利用）期間は4/18〜11/3です。車の場合：鳩待峠へはマイカーで入れない。戸倉駐車場で乗合バス・乗合タクシーに乗り換える。"
       },
       {
         "question": "至仏山の登山シーズンはいつですか？おすすめの時期",
@@ -18485,18 +18486,18 @@
         "open"
       ],
       "transport": [
-        "unknown",
-        "unknown",
-        "unknown",
-        "unknown",
-        "unknown",
-        "unknown",
-        "unknown",
-        "unknown",
-        "unknown",
-        "unknown",
-        "unknown",
-        "unknown"
+        "none",
+        "none",
+        "none",
+        "partial",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "partial",
+        "none"
       ],
       "gear": [
         "winter",
@@ -18516,11 +18517,11 @@
     "trainAccessOperation": {
       "statusType": "annual",
       "mode": "seasonal",
-      "validFrom": null,
-      "validTo": null,
+      "validFrom": "2026-04-18",
+      "validTo": "2026-11-03",
       "seasonYear": 2026,
       "reservation": null,
-      "note": "戸倉〜鳩待峠の乗合バス・タクシーの2026年の運行期間は未確認"
+      "note": "戸倉〜鳩待峠の乗合バス・乗合タクシー（関越交通など）。道路開通日の4/17と11/4〜5の便はない"
     },
     "routeTrailheads": {
       "hatomachi-roundtrip": "鳩待峠",
@@ -20401,7 +20402,7 @@
       },
       {
         "question": "燧ヶ岳へのアクセス方法は？新宿・横浜からの行き方",
-        "answer": "御池へのアクセス：新宿から約5時間（7,870円）、大宮から約5時間25分（8,480円）、横浜から約6時間5分（9,000円）が目安です。車の場合：御池への道路は冬期閉鎖（2026年は4/24 14時に開通）。"
+        "answer": "御池へのアクセス：新宿から約5時間（7,870円）、大宮から約5時間25分（8,480円）、横浜から約6時間5分（9,000円）が目安です。2026年の運行（利用）期間は5/1〜10/25です。車の場合：御池への道路は冬期閉鎖（2026年は4/24 14時に開通）。"
       },
       {
         "question": "燧ヶ岳の登山シーズンはいつですか？",
@@ -20585,15 +20586,15 @@
         "none",
         "none",
         "none",
+        "none",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
         "partial",
-        "ok",
-        "ok",
-        "ok",
-        "ok",
-        "ok",
-        "ok",
-        "ok",
-        "ok"
+        "none",
+        "none"
       ],
       "gear": [
         "winter",
@@ -20613,11 +20614,11 @@
     "trainAccessOperation": {
       "statusType": "annual",
       "mode": "seasonal",
-      "validFrom": "2026-04-24",
-      "validTo": null,
+      "validFrom": "2026-05-01",
+      "validTo": "2026-10-25",
       "seasonYear": 2026,
       "reservation": null,
-      "note": "道路の開通日。会津バス檜枝岐線の2026年の運行期間は未確認"
+      "note": "会津バス 檜枝岐線（会津田島駅〜尾瀬御池）。5月23日までは尾瀬御池止まり。11月1日からは檜枝岐止まり"
     },
     "routeTrailheads": {
       "miike-roundtrip": "御池",
@@ -22586,7 +22587,7 @@
     "coeffMin": 14,
     "coeffMax": 24,
     "daytrip": true,
-    "trainAccess": "新宿駅→JR中央線(約58分・高尾乗換)→藤野駅→神奈川中央交通バス「野08」約4分→陣馬登山口",
+    "trainAccess": "新宿駅→JR中央線（中央特快）約44分→高尾駅→西東京バス「美32」約37分→陣馬高原下",
     "driveOfuna": 75,
     "driveShinjuku": 80,
     "driveYokohama": 80,
@@ -22594,7 +22595,7 @@
     "description": "山頂に白馬のモニュメント。高尾〜陣馬縦走コースのゴール。茶屋が充実。",
     "yamapUrl": "https://yamap.com/mountains/29",
     "busLinks": [
-      "https://transit.yahoo.co.jp/search/result?from=新宿&to=藤野駅&type=1"
+      "https://transit.yahoo.co.jp/search/result?from=%E6%96%B0%E5%AE%BF&to=%E9%AB%98%E5%B0%BE%E9%A7%85&type=1"
     ],
     "warnBanner": null,
     "nearby": [
@@ -22718,7 +22719,8 @@
         "source": "YAMAPモデルコース（model-courses/15260）",
         "sourceUrl": "https://yamap.com/model-courses/15260",
         "lastVerified": "2026-10-24",
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "byTrain": true
       },
       {
         "name": "陣馬高原下〜陣馬山〜一ノ尾根〜陣馬登山口〜藤野駅（縦走）",
@@ -22732,7 +22734,8 @@
         "source": "YAMAPモデルコース（model-courses/35112）",
         "sourceUrl": "https://yamap.com/model-courses/35112",
         "lastVerified": "2026-10-24",
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "byTrain": true
       },
       {
         "name": "藤野駅〜陣馬登山口〜一ノ尾根〜陣馬山〜明王峠〜相模湖駅（縦走）",
@@ -22746,34 +22749,34 @@
         "source": "YAMAPモデルコース（model-courses/17352）",
         "sourceUrl": "https://yamap.com/model-courses/17352",
         "lastVerified": "2026-10-24",
-        "byTrain": true,
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "byTrain": true
       }
     ],
     "driveTime": 75,
     "driveTimeShinjuku": 80,
     "driveTimeYokohama": 80,
     "driveTimeOmiya": 100,
-    "nearestStation": "藤野駅",
+    "nearestStation": "高尾駅",
     "trainLine": "JR中央線",
-    "trainTimeShinjuku": 62,
-    "trainInfo": "新宿→藤野駅（中央線約58分）→バス約4分",
+    "trainTimeShinjuku": 81,
+    "trainInfo": "新宿→高尾駅（中央線約44分）→バス約37分",
     "lines": [
       "JR中央線",
       "京王線"
     ],
     "driveTimeTachikawa": 70,
     "driveTachikawa": 70,
-    "fareShinjuku": 1250,
-    "fareYokohama": 1440,
-    "fareOmiya": 1440,
-    "trainAccessYokohama": "横浜駅→JR横浜線・中央線(約83分・八王子/高尾乗換)→藤野駅→神奈川中央交通バス「野08」約4分→陣馬登山口",
-    "trainAccessOmiya": "大宮駅→JR武蔵野線・中央線(約89分・西国分寺/高尾乗換)→藤野駅→神奈川中央交通バス「野08」約4分→陣馬登山口",
-    "transfersShinjuku": 0,
+    "fareShinjuku": 1395,
+    "fareYokohama": 1714,
+    "fareOmiya": 1714,
+    "trainAccessYokohama": "横浜駅→JR横浜線・中央線（八王子乗換）約1時間12分→高尾駅→西東京バス「美32」約37分→陣馬高原下",
+    "trainAccessOmiya": "大宮駅→JR埼京線・武蔵野線・中央線（武蔵浦和・西国分寺乗換）約1時間12分→高尾駅→西東京バス「美32」約37分→陣馬高原下",
+    "transfersShinjuku": 1,
     "transfersYokohama": 1,
     "transfersOmiya": 1,
-    "trainTimeYokohama": 87,
-    "trainTimeOmiya": 93,
+    "trainTimeYokohama": 109,
+    "trainTimeOmiya": 109,
     "photos": [
       "/images/mountains/jinba/01.webp",
       "/images/mountains/jinba/02.webp",
@@ -22791,7 +22794,7 @@
       },
       {
         "question": "陣馬山へのアクセス方法は？新宿・横浜からの行き方",
-        "answer": "新宿駅からは電車・バスを乗り継いで約1時間2分（運賃約1,250円）、藤野駅が最寄りです。大宮からは約1時間33分（運賃約1,440円）、横浜からは約1時間27分（運賃約1,440円）が目安です。車の場合は都心から約1時間15分が目安です。"
+        "answer": "JR中央線の高尾駅北口から西東京バス「美32」で陣馬高原下へ（約37分・1時間に1本ほど）。新宿から約1時間21分・1,395円、大宮から約1時間49分・1,714円、横浜から約1時間49分・1,714円が目安です。藤野駅から歩いて登る道もあります。車の場合は都心から約1時間15分が目安です。"
       },
       {
         "question": "陣馬山の登山シーズンはいつですか？おすすめの時期",
@@ -22800,28 +22803,28 @@
     ],
     "hasWeatherWidget": true,
     "vibesHtml": "<div class=\"rec-card\">\n    <div class=\"rec-card-title\"><span class=\"eyebrow\">Vibes</span><span>こんな気分の人に</span></div>\n    <div class=\"rec-list\">\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span>高尾〜陣馬の縦走を完走して達成感を味わいたい</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span>山頂の白馬モニュメントで記念写真を撮りたい</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span>茶屋でゆっくり休憩しながらの山歩きがしたい</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span>ロングトレイル・縦走デビューにちょうどいい一座を探している</span></div>\n    </div>\n  </div>",
-    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge\" style=\"background:#fde8d8;color:#8a5010;\"><svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3 L22 20 H2 Z\"/><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"14\"/><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"17.1\"/></svg>⚠️ バスは平日朝のみ運行</span></div><div class=\"ts-line-name\">JR中央線・神奈川中央交通「野08 和田行」</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR中央線（高尾乗換込み）　<span class=\"ts-duration\">約58分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">藤野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>神奈川中央交通バス「野08」　<span class=\"ts-duration\">約4分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">陣馬登山口</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR武蔵野線・中央線（西国分寺・高尾乗換込み）　<span class=\"ts-duration\">約1時間29分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">藤野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>神奈川中央交通バス「野08」　<span class=\"ts-duration\">約4分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">陣馬登山口</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR横浜線・中央線（八王子・高尾乗換込み）　<span class=\"ts-duration\">約1時間23分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">藤野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>神奈川中央交通バス「野08」　<span class=\"ts-duration\">約4分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">陣馬登山口</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約1時間2分\" data-omiya=\"約1時間33分\" data-yokohama=\"約1時間27分\">約1時間2分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約1,250円\" data-omiya=\"片道約1,440円\" data-yokohama=\"片道約1,440円\">片道約1,250円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>藤野駅からのバスは土日祝は全便運休で、平日の朝だけ</li><li>週末は高尾駅から西東京バスで陣馬高原下へ（約37分）</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=藤野駅&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://transfer.navitime.biz/bus-navi/pc/transfer/DepArrTimeList?snode=00020348&amp;gnode=00042341\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>バス時刻表</a></div></div>",
+    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>年中運行</span></div><div class=\"ts-line-name\">JR中央線・西東京バス「美32」陣馬高原下行</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR中央線（中央特快）　<span class=\"ts-duration\">約44分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">高尾駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>西東京バス「美32」　<span class=\"ts-duration\">約37分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">陣馬高原下</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR埼京線・武蔵野線・中央線（武蔵浦和・西国分寺乗換）　<span class=\"ts-duration\">約1時間12分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">高尾駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>西東京バス「美32」　<span class=\"ts-duration\">約37分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">陣馬高原下</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR横浜線・中央線（八王子乗換）　<span class=\"ts-duration\">約1時間12分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">高尾駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>西東京バス「美32」　<span class=\"ts-duration\">約37分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">陣馬高原下</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約1時間21分\" data-omiya=\"約1時間49分\" data-yokohama=\"約1時間49分\">約1時間21分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約1,395円\" data-omiya=\"片道約1,714円\" data-yokohama=\"片道約1,714円\">片道約1,395円</span></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=%E6%96%B0%E5%AE%BF&amp;to=%E9%AB%98%E5%B0%BE%E9%A7%85&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://transfer.navitime.biz/bus-navi/pc/transfer/DepArrTimeList?snode=00020348&amp;gnode=00042341\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>バス時刻表</a></div></div>",
     "relatedLinksHtml": "<div class=\"related-links-card\">\n  <div class=\"related-links-title\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"3\" rx=\"1\"/><line x1=\"8\" y1=\"11\" x2=\"16\" y2=\"11\"/><line x1=\"8\" y1=\"15\" x2=\"13\" y2=\"15\"/></svg>関連するまとめ<a href=\"/articles/coeff-20/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 3v16a2 2 0 0 0 2 2h16\"/><path d=\"M18 17V9\"/><path d=\"M13 17V5\"/><path d=\"M8 17v-3\"/></svg>コース定数20以下｜初心者向け登山5選</span>\n      <span class=\"related-link-sub\">陣馬山と同じくらいの体力レベルの山を比較</span>\n    </a>\n</div>\n    <a href=\"/search/shinjuku-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>新宿から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">新宿発・陣馬山と難易度・時間を比較できる</span>\n    </a>\n    <a href=\"/search/ofuna-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>大船・横浜から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">神奈川発で陣馬山の前後に検討したい山を比較</span>\n    </a>\n    <a href=\"/search/train-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車で行ける日帰り登山一覧</span>\n      <span class=\"related-link-sub\">車なしOK・駅近の山だけを集めたリスト</span>\n    </a>\n    <a href=\"/search/shinjuku-beginner/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21V10\"/><path d=\"M12 10C12 6 9 5 6 5c0 4 2 6 6 6Z\"/><path d=\"M12 13C12 9 15 8 18 8c0 4-2 6-6 6Z\"/></svg>新宿から行ける初心者向けの山一覧</span>\n      <span class=\"related-link-sub\">コース定数15以下の初級山のみ。陣馬山と難易度比較に</span>\n    </a>\n\n    <a href=\"/search/odakyu-hiking/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>小田急線で行ける登山8選</span>\n      <span class=\"related-link-sub\">陣馬山と難易度・アクセスを比較できる</span>\n    </a>\n\n    <a href=\"/search/jr-chuo-hiking/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>中央線で行ける登山6選</span>\n      <span class=\"related-link-sub\">陣馬山と難易度・アクセスを比較できる</span>\n    </a>\n    <a href=\"/recommend/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"12,3 14,10 12,12 10,10\" fill=\"currentColor\" stroke=\"none\"/><polygon points=\"12,21 10,14 12,12 14,14\" fill=\"currentColor\" opacity=\"0.5\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"white\" stroke=\"none\"/></svg>登山タイプ診断で自分に合う山を探す</span>\n      <span class=\"related-link-sub\">12問・約2分。16タイプのどれかと、そのタイプに合う山がわかる</span>\n    </a>\n</div>",
     "dlNoteHtml": "<p class=\"dl-note\">陣馬山は初〜中級レベル（コース定数14〜24）。代表コースの陣馬高原下〜陣馬新道〜陣馬山（往復）は3時間21分・6km・標高差+599m。登山初心者でも挑戦しやすいレベルです。</p>",
     "introHtml": "<div class=\"card\"><h2><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" style=\"vertical-align:-3px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 3h10l4 4v14H5z\"/><path d=\"M15 3v4h4\"/><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"/><line x1=\"8\" y1=\"16\" x2=\"13\" y2=\"16\"/></svg>山の紹介</h2><p class=\"intro-text\">山頂に白馬のモニュメント。高尾〜陣馬縦走コースのゴール。茶屋が充実。初〜中級レベルでコース定数14〜24、日帰りでの登山が可能。代表コース（陣馬高原下〜陣馬新道〜陣馬山（往復））は所要3時間21分/6km/標高差+599m。公共交通機関でのアクセス可（藤野駅→バス4分→陣馬登山口）。</p></div>",
     "mapBtnsHtml": "<div class=\"map-btns\"><a href=\"https://www.google.com/maps/search/?api=1&query=35.6635954%2C139.1895204&query_place_id=ChIJ7_lWjOUXGWARl9prAQpG898\" target=\"_blank\" class=\"map-btn-link\">Googleマップ</a>\n<a href=\"https://maps.apple.com/?ll=35.6635954,139.1895204&q=%E9%99%A3%E9%A6%AC%E9%AB%98%E5%8E%9F%E4%B8%8B\" target=\"_blank\" class=\"map-btn-link\">Apple Maps</a>\n</div>",
-    "metaTitle": "陣馬山 登山の難易度は初〜中級｜日帰り3時間21分・標高差599m｜藤野駅からバス4分｜Yamatch",
-    "metaDescription": "陣馬山（標高857m・東京都）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（陣馬高原下〜陣馬新道〜陣馬山（往復））は3時間21分・6km・標高差599m。新宿から電車とバスで約1時間2分（藤野駅からバス4分）。日帰りできます。山頂に白馬のモニュメント。駐車場・装備・天気も掲載。",
+    "metaTitle": "陣馬山 登山の難易度は初〜中級｜日帰り3時間21分・標高差599m｜高尾駅からバス37分｜Yamatch",
+    "metaDescription": "陣馬山（標高857m・東京都）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（陣馬高原下〜陣馬新道〜陣馬山（往復））は3時間21分・6km・標高差599m。新宿から電車とバスで約1時間21分（高尾駅からバス37分）。日帰りできます。山頂に白馬のモニュメント。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-11",
     "hasHeroPhotoScript": false,
-    "ogTitle": "陣馬山 登山の難易度は初〜中級｜日帰り3時間21分・標高差599m｜藤野駅からバス4分｜Yamatch",
-    "ogDescription": "陣馬山（標高857m・東京都）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（陣馬高原下〜陣馬新道〜陣馬山（往復））は3時間21分・6km・標高差599m。新宿から電車とバスで約1時間2分（藤野駅からバス4分）。日帰りできます。山頂に白馬のモニュメント。駐車場・装備・天気も掲載。",
+    "ogTitle": "陣馬山 登山の難易度は初〜中級｜日帰り3時間21分・標高差599m｜高尾駅からバス37分｜Yamatch",
+    "ogDescription": "陣馬山（標高857m・東京都）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（陣馬高原下〜陣馬新道〜陣馬山（往復））は3時間21分・6km・標高差599m。新宿から電車とバスで約1時間21分（高尾駅からバス37分）。日帰りできます。山頂に白馬のモニュメント。駐車場・装備・天気も掲載。",
     "climbedBtnStyle": "flat",
     "weatherBeforeIntro": false,
     "trainRoutes": {
       "badge": {
-        "type": null,
-        "style": "background:#fde8d8;color:#8a5010;",
-        "icon": "warn",
-        "label": "⚠️ バスは平日朝のみ運行"
+        "type": "year",
+        "style": null,
+        "icon": "check",
+        "label": "年中運行"
       },
-      "lineName": "JR中央線・神奈川中央交通「野08 和田行」",
+      "lineName": "JR中央線・西東京バス「美32」陣馬高原下行",
       "routes": {
         "shinjuku": {
           "legs": [
@@ -22829,22 +22832,22 @@
               "station": "新宿駅",
               "method": {
                 "icon": "train",
-                "line": "JR中央線（高尾乗換込み）"
+                "line": "JR中央線（中央特快）"
               },
-              "durationMin": 58,
+              "durationMin": 44,
               "fareYen": null
             },
             {
-              "station": "藤野駅",
+              "station": "高尾駅",
               "method": {
                 "icon": "bus",
-                "line": "神奈川中央交通バス「野08」"
+                "line": "西東京バス「美32」"
               },
-              "durationMin": 4,
+              "durationMin": 37,
               "fareYen": null
             },
             {
-              "station": "陣馬登山口"
+              "station": "陣馬高原下"
             }
           ]
         },
@@ -22854,22 +22857,22 @@
               "station": "大宮駅",
               "method": {
                 "icon": "train",
-                "line": "JR武蔵野線・中央線（西国分寺・高尾乗換込み）"
+                "line": "JR埼京線・武蔵野線・中央線（武蔵浦和・西国分寺乗換）"
               },
-              "durationMin": 89,
+              "durationMin": 72,
               "fareYen": null
             },
             {
-              "station": "藤野駅",
+              "station": "高尾駅",
               "method": {
                 "icon": "bus",
-                "line": "神奈川中央交通バス「野08」"
+                "line": "西東京バス「美32」"
               },
-              "durationMin": 4,
+              "durationMin": 37,
               "fareYen": null
             },
             {
-              "station": "陣馬登山口"
+              "station": "陣馬高原下"
             }
           ]
         },
@@ -22879,33 +22882,33 @@
               "station": "横浜駅",
               "method": {
                 "icon": "train",
-                "line": "JR横浜線・中央線（八王子・高尾乗換込み）"
+                "line": "JR横浜線・中央線（八王子乗換）"
               },
-              "durationMin": 83,
+              "durationMin": 72,
               "fareYen": null
             },
             {
-              "station": "藤野駅",
+              "station": "高尾駅",
               "method": {
                 "icon": "bus",
-                "line": "神奈川中央交通バス「野08」"
+                "line": "西東京バス「美32」"
               },
-              "durationMin": 4,
+              "durationMin": 37,
               "fareYen": null
             },
             {
-              "station": "陣馬登山口"
+              "station": "陣馬高原下"
             }
           ]
         }
       },
-      "note": "藤野駅からのバスは土日祝は全便運休で、平日の朝だけ。週末は高尾駅から西東京バスで陣馬高原下へ（約37分）",
+      "note": null,
       "summaryNote": null,
       "links": [
         {
           "type": "yahoo",
           "label": "乗換案内で検索",
-          "url": "https://transit.yahoo.co.jp/search/result?from=新宿&to=藤野駅&type=1"
+          "url": "https://transit.yahoo.co.jp/search/result?from=%E6%96%B0%E5%AE%BF&to=%E9%AB%98%E5%B0%BE%E9%A7%85&type=1"
         },
         {
           "type": "bus",
@@ -22987,22 +22990,16 @@
     "metaAuto": true,
     "accessTier": {
       "shinjuku": {
-        "tier": "normal",
-        "reasons": [
-          "バスの走る曜日が限られる"
-        ]
+        "tier": "easy",
+        "reasons": []
       },
       "omiya": {
-        "tier": "normal",
-        "reasons": [
-          "バスの走る曜日が限られる"
-        ]
+        "tier": "easy",
+        "reasons": []
       },
       "yokohama": {
-        "tier": "normal",
-        "reasons": [
-          "バスの走る曜日が限られる"
-        ]
+        "tier": "easy",
+        "reasons": []
       }
     }
   },
@@ -26101,7 +26098,7 @@
       },
       {
         "question": "常念岳へのアクセス方法は？新宿・横浜からの行き方",
-        "answer": "一ノ沢登山口へのアクセス（林道通行止め中）：新宿から約4時間（12,200円）、大宮から約4時間30分（11,890円）、横浜から約4時間34分（12,200円）が目安です。車の場合：林道一ノ沢線は一般車両通行止め。市内の駐車場に停め、地元タクシーで通行止め箇所の手前まで行き、歩行者用通路を通って登山口へ（約1.5km）。"
+        "answer": "一ノ沢登山口へのアクセス（林道通行止め中）：新宿から約4時間（12,200円）、大宮から約4時間30分（11,890円）、横浜から約4時間34分（12,200円）が目安です。2026年の運行（利用）期間は4/17〜11/26です。車の場合：林道一ノ沢線は一般車両通行止め。市内の駐車場に停め、地元タクシーで通行止め箇所の手前まで行き、歩行者用通路を通って登山口へ（約1.5km）。"
       },
       {
         "question": "常念岳の登山シーズンはいつですか？おすすめの時期",
@@ -26344,18 +26341,18 @@
         "open"
       ],
       "transport": [
+        "none",
+        "none",
+        "none",
+        "partial",
         "ok",
         "ok",
         "ok",
         "ok",
         "ok",
         "ok",
-        "ok",
-        "ok",
-        "ok",
-        "ok",
-        "ok",
-        "ok"
+        "partial",
+        "none"
       ],
       "gear": [
         "winter",
@@ -26373,13 +26370,13 @@
       ]
     },
     "trainAccessOperation": {
-      "statusType": "temporary",
-      "mode": "restricted",
-      "validFrom": null,
-      "validTo": "2027-01-31",
+      "statusType": "annual",
+      "mode": "seasonal",
+      "validFrom": "2026-04-17",
+      "validTo": "2026-11-26",
       "seasonYear": 2026,
       "reservation": null,
-      "note": "災害復旧工事の竣工予定は令和9年（2027年）1月末"
+      "note": "林道一ノ沢線の冬期通行止めの解除（4/17）〜冬期通行止め（11/27から）。崩落の復旧工事中で、タクシーだけが崩落箇所の手前まで入れ、登山口まで約1.5km歩く（竣工予定は2027年1月末）"
     },
     "routeTrailheads": {
       "ichinosawa-roundtrip": "一ノ沢登山口",
@@ -40974,24 +40971,21 @@
         "tier": "plan",
         "reasons": [
           "4時間を超える",
-          "乗り換え3回",
-          "季節運行の乗り物を使い、3時間を超える"
+          "乗り換え3回"
         ]
       },
       "omiya": {
         "tier": "plan",
         "reasons": [
           "4時間を超える",
-          "乗り換え4回",
-          "季節運行の乗り物を使い、3時間を超える"
+          "乗り換え4回"
         ]
       },
       "yokohama": {
         "tier": "plan",
         "reasons": [
           "4時間を超える",
-          "乗り換え4回",
-          "季節運行の乗り物を使い、3時間を超える"
+          "乗り換え4回"
         ]
       }
     }
@@ -48897,11 +48891,12 @@
       {
         "kind": "transport",
         "label": "塩山駅〜西沢渓谷入口の山梨交通バス",
-        "validFrom": null,
-        "validTo": null,
-        "seasonYear": null,
-        "sourceUrl": "https://ykbus.jp/",
-        "lastVerified": "2026-10-06"
+        "validFrom": "2026-04-25",
+        "validTo": "2026-11-23",
+        "seasonYear": 2026,
+        "sourceUrl": "https://ykbus.jp/wp/wp-content/themes/yamako/pdf/timetable/220001.pdf",
+        "lastVerified": "2026-11-11",
+        "note": "西沢渓谷入口まで行く便の運転日：4/25〜11/23の土曜・休日と、4/30、5/1、7/21〜8/31、10/1〜11/13（ほかは窪平止まり）"
       },
       {
         "kind": "info",
