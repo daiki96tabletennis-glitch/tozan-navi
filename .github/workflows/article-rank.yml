@@ -38,10 +38,7 @@ jobs:
         run: |
           pip install -q google-auth requests
           python3 scripts/article_rank.py
-          git add data/article_rank.json
-          if git diff --cached --quiet; then echo "変化なし"; exit 0; fi
           git config user.name "yamatch-article-rank"
           git config user.email "actions@users.noreply.github.com"
-          git commit -q -m "記事一覧の並び順を更新（直近1週間の表示回数）"
-          git pull -q --rebase
-          git push -q
+          # 最新の状態の上に乗せ直して送る（公開のコピーで同じファイルが送られるとぶつかって失敗していた。2026-11-15）
+          bash scripts/git_publish.sh "記事一覧の並び順を更新（直近1週間の表示回数）" "" data/article_rank.json

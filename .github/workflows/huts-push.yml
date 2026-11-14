@@ -79,11 +79,7 @@ jobs:
       - name: マイページのお知らせを更新する（失敗があったとき・解消したとき）
         if: always() && steps.ready.outputs.ok == '1' && inputs.test != true
         run: |
-          python3 scripts/admin_notice.py --kind push --report push_report.md --code "$(cat push_code.txt 2>/dev/null || echo 1)"
-          if [ ! -f data/admin_notices.json ]; then echo "お知らせなし"; exit 0; fi
-          git add data/admin_notices.json
-          if git diff --cached --quiet; then echo "お知らせの変化なし"; exit 0; fi
           git config user.name "yamatch-admin-notice"
           git config user.email "actions@users.noreply.github.com"
-          git commit -q -m "運営者向けのお知らせを更新（山小屋の通知）"
-          git pull -q --rebase && git push -q
+          # 最新の状態の上にお知らせを作り直して送る（ほかの定期実行と同じ行を書き換えてぶつかるため。2026-11-15）
+          bash scripts/git_publish.sh "運営者向けのお知らせを更新（山小屋の通知）" 'python3 scripts/admin_notice.py --kind push --report push_report.md --code "$(cat push_code.txt 2>/dev/null || echo 1)"' data/admin_notices.json

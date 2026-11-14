@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write   # マイページのお知らせ（data/admin_notices.json）だけをコミットする
+  actions: read     # 定期実行が止まっていないかを見る（毎日の見張りが止まったときに気づくため）
 
 jobs:
   check:
@@ -35,11 +36,24 @@ jobs:
       - name: マイページのお知らせを更新する
         if: always()
         run: |
-          python3 scripts/admin_notice.py --kind sitecheck --report check_pages_report.txt --code "$(cat check_code.txt)"
-          if [ ! -f data/admin_notices.json ]; then echo "お知らせなし"; exit 0; fi
-          git add data/admin_notices.json
-          if git diff --cached --quiet; then echo "お知らせの変化なし"; exit 0; fi
           git config user.name "yamatch-admin-notice"
           git config user.email "actions@users.noreply.github.com"
-          git commit -q -m "運営者向けのお知らせを更新（サイトの検証）"
-          git pull -q --rebase && git push -q
+          # 最新の状態の上にお知らせを作り直して送る（ほかの定期実行と同じ行を書き換えてぶつかるため。2026-11-15）
+          bash scripts/git_publish.sh "運営者向けのお知らせを更新（サイトの検証）" 'python3 scripts/admin_notice.py --kind sitecheck --report check_pages_report.txt --code "$(cat check_code.txt)"' data/admin_notices.json
+      # 定期実行が止まっていないかを見る（毎日の見張り restriction-watch.yml でも見ている。その見張り自体が止まったときに気づくため、ここでも見る）
+      - name: 定期実行が止まっていないかを見る
+        id: health
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          python3 scripts/check_workflows_health.py --out health_report.md
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+      - name: マイページのお知らせを更新する（定期実行）
+        if: always()
+        run: |
+          git config user.name "yamatch-admin-notice"
+          git config user.email "actions@users.noreply.github.com"
+          # 最新の状態の上にお知らせを作り直して送る（ほかの定期実行と同じ行を書き換えてぶつかるため。2026-11-15）
+          bash scripts/git_publish.sh "運営者向けのお知らせを更新（定期実行の見張り）" 'python3 scripts/admin_notice.py --kind health --report health_report.md --code "${{ steps.health.outputs.code }}"' data/admin_notices.json

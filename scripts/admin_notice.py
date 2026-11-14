@@ -5,9 +5,12 @@
   python3 scripts/admin_notice.py --kind annual    --report annual_report.md --code 1
   python3 scripts/admin_notice.py --kind huts      --report huts_report.md
   python3 scripts/admin_notice.py --kind sitecheck --report check_pages_report.txt --code 0
+  python3 scripts/admin_notice.py --kind restrict  --report restrict_report.md --code 1
+  python3 scripts/admin_notice.py --kind health    --report health_report.md --code 0
 
 - 種類ごとに最新の1件だけを持つ（annual＝毎月の年次データ確認／huts＝山小屋の定期更新／sitecheck＝サイトの検証）
 - 報告の文を、見出しと箇条書きに分けてそのまま入れる（要約・書き換えはしない。AIは使わない）
+- 報告のファイルが無く、終了コードが0以外なら「実行に失敗した」を出す（スクリプトが途中で止まったとき）
 - 中身が前回と同じなら書き換えない（毎回コミットが出るのを防ぐ）。書き換えたときは終了コード0で「更新」と出す
 - 表示はマイページ（assets/js/admin-notices.js）。運営者の端末だけに出すが、このファイル自体は公開されるので、
   保守の情報（期限切れ・確認待ち・検証の異常）以外は入れない
@@ -16,12 +19,14 @@ import argparse, datetime, hashlib, json, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'data', 'admin_notices.json')
-TITLE = {'annual': '毎月の年次データ確認', 'huts': '山小屋の定期更新', 'sitecheck': 'サイトの検証', 'push': '山小屋の予約開始の通知（送信）', 'insta': '山小屋の Instagram の見張り（Meta AI）'}
+TITLE = {'annual': '毎月の年次データ確認', 'huts': '山小屋の定期更新', 'sitecheck': 'サイトの検証', 'push': '山小屋の予約開始の通知（送信）', 'insta': '山小屋の Instagram の見張り（Meta AI）', 'restrict': '規制・閉鎖の出典の見張り（毎日）', 'health': '定期実行の見張り（毎日）'}
 NEXT = {'annual': 'Claude のアプリで「月次更新して」と伝えてください。',
         'huts': '候補や変更のあった小屋を公式サイトで確かめ、Claude のアプリで反映を頼んでください。',
         'sitecheck': 'Claude のアプリで「check_pages.py の異常を直して」と伝えてください。',
         'push': 'GitHub の実行結果を開いて失敗の内容を確かめ、Claude のアプリに伝えてください。',
-        'insta': '候補の URL を開いて投稿の本文（画像なら画面の写真）を確かめ、Claude のアプリに貼ってください。原文から日付を読んで登録します。'}
+        'insta': '候補の URL を開いて投稿の本文（画像なら画面の写真）を確かめ、Claude のアプリに貼ってください。原文から日付を読んで登録します。',
+        'restrict': 'Claude のアプリで「◯◯山の規制の出典を確かめて」と、山の名前を添えて伝えてください。出典を読んで、解除・変更ならサイトを直します。',
+        'health': 'GitHub の Actions の画面で、その定期実行の記録を開いてください。止まっていれば「Enable workflow」、失敗なら内容を Claude のアプリに伝えてください。'}
 EMPTY = re.compile(r'^(?:-\s*)?(?:なし|異常なし|変化はありませんでした|（--no-fetch のため未確認）)$')
 MAX_LINES, MAX_CHARS = 60, 240
 
@@ -71,9 +76,13 @@ def main():
     ap.add_argument('--out', default=OUT)
     a = ap.parse_args()
     if not os.path.exists(a.report):
-        print('報告のファイルがありません（今回は実行なし）：' + a.report)
-        return
-    secs = parse(open(a.report, encoding='utf-8', errors='replace').read(), a.kind)
+        if not a.code:
+            print('報告のファイルがありません（今回は実行なし）：' + a.report)
+            return
+        # 確認のスクリプトが途中で止まり、報告ができなかった（前は何も出ずに終わっていた。2026-11-15）
+        secs = [{'heading': '実行に失敗した', 'lines': ['確認のスクリプトが最後まで動かず、報告ができなかった（終了コード %d）。実行結果のページで失敗の内容を見て、Claude のアプリに伝えてください' % a.code]}]
+    else:
+        secs = parse(open(a.report, encoding='utf-8', errors='replace').read(), a.kind)
     if a.kind == 'huts':
         # 「集中して見に行った小屋」だけの報告は、知らせる中身が無い
         real = [s for s in secs if [l for l in s['lines'] if not l.startswith('集中して見に行った小屋')]]
@@ -101,7 +110,7 @@ def main():
     if os.environ.get('GITHUB_REPOSITORY') and os.environ.get('GITHUB_RUN_ID'):
         item['url'] = '%s/%s/actions/runs/%s' % (os.environ.get('GITHUB_SERVER_URL', 'https://github.com'),
                                                  os.environ['GITHUB_REPOSITORY'], os.environ['GITHUB_RUN_ID'])
-    order = ['annual', 'huts', 'insta', 'sitecheck', 'push']
+    order = ['health', 'restrict', 'annual', 'huts', 'insta', 'sitecheck', 'push']
     data['items'] = sorted([i for i in data['items'] if i['kind'] != a.kind] + [item], key=lambda i: order.index(i['kind']))
     data['updatedAt'] = today
     json.dump(data, open(a.out, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

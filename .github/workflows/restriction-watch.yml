@@ -1,0 +1,93 @@
+# 毎日の見張り（2026-11-15〜。運営者の指示）
+# ① 規制・閉鎖の出典ページ ② 定期実行が止まっていないか ③ 毎月の見張り（年次データ）の記録が消えないように毎日読む
+# ①：規制・閉鎖の出典ページの毎日の見張り
+# 規制中の山・注意のバナー・期間の無い閉鎖の出典を毎日読み、内容が変わった・最近の日付の「解除」「再開」の記載があれば、
+# マイページ・管理画面のお知らせ（data/admin_notices.json）に14日間出し、見つけた日だけ Issue（メール）を作る。
+# 山のデータは書き換えない（反映は、運営者が Claude のアプリで頼み、出典を読んで確かめてから行う）。
+name: 規制・閉鎖と定期実行の見張り
+
+on:
+  schedule:
+    - cron: '40 22 * * *'   # 毎日 7:40（日本時間）
+  workflow_dispatch:
+
+permissions:
+  contents: write   # マイページのお知らせ（data/admin_notices.json）だけをコミットする
+  issues: write
+  actions: read     # ②：ほかの定期実行の記録を読む
+
+concurrency:
+  group: restriction-watch
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # 前回読んだ出典ページの要約（ハッシュ）と、見つけたものの記録。リポジトリにはコミットせず、キャッシュで持ち回る
+      # ③：毎月の見張りは前回の出典ページの要約をキャッシュに持つが、GitHub のキャッシュは7日使われないと消える。
+      # 月1回の実行だけでは毎回消えて「初回」になり、出典の変更を知らせられないので、ここで毎日読んで消えないようにする
+      - name: 毎月の見張りの記録を読む（消えないように）
+        uses: actions/cache/restore@v4
+        with:
+          path: annual_state.json
+          key: annual-state-keepalive-${{ github.run_id }}
+          restore-keys: annual-state-
+      - uses: actions/cache/restore@v4
+        with:
+          path: restrict_state.json
+          key: restrict-state-${{ github.run_id }}
+          restore-keys: restrict-state-
+      - name: 確認する
+        id: check
+        run: |
+          set +e
+          python3 scripts/check_restriction_sources.py --state restrict_state.json --out restrict_report.md --new-out restrict_new.txt
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          echo "new=$(cat restrict_new.txt 2>/dev/null || echo 0)" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: restrict_state.json
+          key: restrict-state-${{ github.run_id }}
+      - name: マイページのお知らせを更新する
+        if: always()
+        run: |
+          git config user.name "yamatch-admin-notice"
+          git config user.email "actions@users.noreply.github.com"
+          # 最新の状態の上にお知らせを作り直して送る（ほかの定期実行と同じ行を書き換えてぶつかるため。2026-11-15）
+          bash scripts/git_publish.sh "運営者向けのお知らせを更新（規制・閉鎖の見張り）" 'python3 scripts/admin_notice.py --kind restrict --report restrict_report.md --code "${{ steps.check.outputs.code }}"' data/admin_notices.json
+      - name: 定期実行が止まっていないかを見る
+        id: health
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          python3 scripts/check_workflows_health.py --out health_report.md
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+      - name: マイページのお知らせを更新する（定期実行）
+        if: always()
+        run: |
+          git config user.name "yamatch-admin-notice"
+          git config user.email "actions@users.noreply.github.com"
+          # 最新の状態の上にお知らせを作り直して送る（ほかの定期実行と同じ行を書き換えてぶつかるため。2026-11-15）
+          bash scripts/git_publish.sh "運営者向けのお知らせを更新（定期実行の見張り）" 'python3 scripts/admin_notice.py --kind health --report health_report.md --code "${{ steps.health.outputs.code }}"' data/admin_notices.json
+      - name: Issue を作る（今日新しく見つけたときだけ）
+        if: steps.check.outputs.new != '0' && steps.check.outputs.new != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "@${{ github.repository_owner }} 規制・閉鎖の出典ページに変化がありました。"
+            echo
+            echo "**次にやること**：Claude のアプリで yamatch のフォルダを開き、「◯◯山の規制の出典を確かめて」と伝えてください。"
+            echo "出典を読んで、解除・変更ならサイトを直します（自動では書き換えません）。"
+            echo
+            cat restrict_report.md
+          } > issue_body.md
+          gh issue create --title "規制・閉鎖の出典の変化 $(date +%Y-%m-%d)" --body-file issue_body.md
