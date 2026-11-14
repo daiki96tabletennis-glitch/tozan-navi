@@ -1,0 +1,416 @@
+{
+  "_note": "冬の特集記事（初日の出登山・ダイヤモンド富士）の手で書く中身。日の出・日の入り・ダイヤモンド富士の日付と時刻は scripts/sun_calc.py・diamond_fuji.py で計算する（ここには書かない）。scripts/gen_winter_specials.py が記事を作る。確かめた日は checkedAt",
+  "hatsuhinode": {
+    "year": 2027,
+    "checkedAt": "2026-11-12",
+    "firstTrainNote": "2027年1月1日（金・祝）の新宿駅4時以降の出発で、Yahoo!路線情報で検索（2026-11-12）。元日の臨時列車・終夜運転は含まない",
+    "mountains": [
+      {
+        "id": "takao",
+        "station": "高尾山口駅",
+        "firstArrive": "6:09",
+        "place": "山頂",
+        "shrine": {
+          "name": "高尾山薬王院",
+          "where": "1号路の途中（山頂の手前）",
+          "url": "https://www.takaosan.or.jp/"
+        },
+        "howto": "始発で着いてから日の出までは約40分で、駅から歩いて山頂まで登るには足りません。高尾山ケーブルカーの元日の運転と京王線の元日の臨時列車は、2026年11月12日時点でまだ発表されていません。",
+        "links": [
+          {
+            "label": "高尾登山電鉄（ケーブルカー）",
+            "url": "https://www.takaotozan.co.jp/"
+          },
+          {
+            "label": "京王電鉄",
+            "url": "https://www.keio.co.jp/"
+          }
+        ]
+      },
+      {
+        "id": "mitakesan",
+        "station": "御嶽駅",
+        "firstArrive": "6:24",
+        "place": "山頂（武蔵御嶽神社）",
+        "shrine": {
+          "name": "武蔵御嶽神社",
+          "where": "山頂",
+          "url": "https://musashimitakejinja.jp/"
+        },
+        "howto": "御嶽駅からはバスとケーブルカーを乗り継ぎます。始発で着いてから日の出まで約25分しかなく、元日のバス・ケーブルカーの早朝の運転が無ければ間に合いません。御岳登山鉄道の元日の運転は、2026年11月12日時点でまだ発表されていません。",
+        "links": [
+          {
+            "label": "御岳登山鉄道（ケーブルカー）",
+            "url": "https://www.mitaketozan.co.jp/"
+          }
+        ]
+      },
+      {
+        "id": "hinodesaan",
+        "station": "御嶽駅",
+        "firstArrive": "6:24",
+        "place": "山頂",
+        "shrine": {
+          "name": "武蔵御嶽神社",
+          "where": "御岳山の山頂（日の出山への途中）",
+          "url": "https://musashimitakejinja.jp/"
+        },
+        "howto": "御岳山のケーブルカーの山上の駅からさらに歩きます。始発の電車では間に合わないので、元日のケーブルカーの早朝の運転（2026年11月12日時点で未発表）を待つか、御岳山の宿坊に前の日から泊まる、などの計画が要ります。",
+        "links": [
+          {
+            "label": "御岳登山鉄道（ケーブルカー）",
+            "url": "https://www.mitaketozan.co.jp/"
+          }
+        ]
+      },
+      {
+        "id": "tsukuba",
+        "station": "つくば駅",
+        "firstArrive": "6:06",
+        "place": "女体山・御幸ヶ原",
+        "shrine": {
+          "name": "筑波山神社",
+          "where": "麓に拝殿、男体山・女体山の山頂に本殿",
+          "url": "https://www.tsukubasanjinja.jp/"
+        },
+        "howto": "つくば駅からバスでケーブルカー・ロープウェイの乗り場へ行きます。始発で着いてから日の出まで約40分で、元日のバス・ケーブルカー・ロープウェイの早朝の運転が無ければ間に合いません。2027年元日の運転は、2026年11月12日時点でまだ発表されていません。",
+        "links": [
+          {
+            "label": "筑波山ケーブルカー＆ロープウェイ",
+            "url": "https://www.mt-tsukuba.com/"
+          },
+          {
+            "label": "関東鉄道（バス）",
+            "url": "https://www.kantetsu.co.jp/"
+          }
+        ]
+      },
+      {
+        "id": "oyama",
+        "station": "伊勢原駅",
+        "firstArrive": "6:17",
+        "place": "阿夫利神社下社・山頂",
+        "shrine": {
+          "name": "大山阿夫利神社",
+          "where": "中腹に下社、山頂に本社",
+          "url": "https://www.afuri.or.jp/"
+        },
+        "howto": "伊勢原駅からバスと大山ケーブルカーを乗り継ぎます。始発で着いてから日の出まで約30分で、元日のバス・ケーブルカーの早朝の運転が無ければ山頂はもちろん下社にも間に合いません。2027年元日の運転は、2026年11月12日時点でまだ発表されていません。",
+        "links": [
+          {
+            "label": "大山ケーブルカー",
+            "url": "https://www.ooyama-cable.co.jp/"
+          }
+        ]
+      },
+      {
+        "id": "nokogiriyama_chiba",
+        "station": "浜金谷駅",
+        "firstArrive": "7:35",
+        "place": "山頂の展望台",
+        "shrine": {
+          "name": "日本寺",
+          "where": "山の南側の斜面一帯（境内）",
+          "url": "https://www.nihonji.jp/"
+        },
+        "howto": "新宿から始発で行っても、浜金谷駅に着くのは日の出のあとです。電車で行くなら、日の出のあとに登って日本寺へ初詣をする計画が向いています。",
+        "links": [
+          {
+            "label": "鋸山ロープウェー",
+            "url": "https://www.mt-nokogiri.co.jp/"
+          }
+        ]
+      },
+      {
+        "id": "ryugatake",
+        "station": "河口湖駅",
+        "firstArrive": "7:58",
+        "place": "山頂・石仏の見晴台",
+        "shrine": null,
+        "howto": "電車では日の出に間に合いません。車で本栖湖まで行き、暗いうちに登ります。山頂から見ると、元日の太陽は富士山頂の少し右から昇ります。計算では、山頂から太陽が富士山頂に重なるのは{ryugatake_range}ごろです。登山道の途中の低い場所ほど重なる日が遅くなり、元日に石仏の見晴台で富士山頂の真ん中から昇ったという登山記録があります。",
+        "links": [],
+        "diamondLink": true
+      }
+    ],
+    "publish": false,
+    "_publishNote": "false のあいだは、記事一覧・サイトマップ・山のページ・ほかの2本からリンクしない。公開のコピーでも articles/hatsuhinode-hiking などを渡さない（2026-11-14 運営者の指示。写真AC の写真がそろってから公開）"
+  },
+  "diamond": {
+    "checkedAt": "2026-11-12",
+    "include": [
+      {
+        "id": "ryugatake",
+        "why": "冬の朝、富士山頂から日が昇るダイヤモンド富士の名所。元日には初日の出とあわせて多くの人が登ります"
+      },
+      {
+        "id": "takao",
+        "why": "国の「関東の富士見百景」に、高尾山山頂から見る冬至のころのダイヤモンド富士が載っています"
+      },
+      {
+        "id": "ishiwariyama",
+        "why": "冬（1月中旬）の夕方に見られます。山頂の正面に富士山、足もとに山中湖が広がります"
+      },
+      {
+        "id": "tonosaki",
+        "why": "冬（2月下旬）の夕方に見られます。山頂に通年営業の尊仏山荘があり、泊まれば暗い道を下りずにすみます"
+      },
+      {
+        "id": "nanaitsurasan",
+        "why": "春分・秋分のころ、富士山頂から日が昇るご来光で知られる山です。宿坊に泊まれば日の出の時刻に山の上にいられます"
+      },
+      {
+        "id": "ohnoyama",
+        "why": "国の「関東の富士見百景」に、大野山のダイヤモンド富士が載っています"
+      },
+      {
+        "id": "koubousan",
+        "why": "国の「関東の富士見百景」に、弘法山のダイヤモンド富士が載っています。歩く時間が短く、日没のあとの下りも短い山です"
+      },
+      {
+        "id": "nokogiriyama_chiba",
+        "why": "国の「関東の富士見百景」に、東京湾ごしに見る鋸山のダイヤモンド富士が載っています"
+      }
+    ],
+    "extra": {
+      "nokogiriyama_chiba": {
+        "viewSource": "国土交通省 関東地方整備局「関東の富士見百景」（房総半島（富津市）からの富士・鋸山）",
+        "viewUrl": "https://www.ktr.mlit.go.jp/chiiki/chiiki00000111.html"
+      }
+    },
+    "note": {
+      "ryugatake": "山頂より低い登山道の途中（石仏の見晴台など）ほど、重なる日が遅くなります。元日に石仏の見晴台で、富士山頂の真ん中から昇ったという登山記録があります。",
+      "takao": "冬至のころ、太陽は富士山頂のすぐ上をかすめて沈みます（計算では太陽の中心が山頂の約0.4°上）。大気の具合で山頂に重なって見える日があり、関東地方整備局は高尾山山頂のダイヤモンド富士を12月17〜26日の日没としています。"
+    },
+    "ktr": {
+      "url": "https://www.ktr.mlit.go.jp/chiiki/chiiki00000111.html",
+      "compare": [
+        {
+          "id": "takao",
+          "ktr": "12月17〜26日（日没）"
+        },
+        {
+          "id": "nokogiriyama_chiba",
+          "ktr": "4月18〜19日・8月23〜24日（日没）"
+        },
+        {
+          "id": "koubousan",
+          "ktr": "3月24日・9月18日（日没）"
+        },
+        {
+          "id": "ohnoyama",
+          "ktr": "3月18〜19日・9月24〜25日（日没）"
+        }
+      ]
+    }
+  },
+  "views": {
+    "checkedAt": "2026-11-12",
+    "mountains": [
+      {
+        "id": "zaosan",
+        "what": "樹氷（スノーモンスター）",
+        "text": "山形県側の蔵王ロープウェイ地蔵山頂駅のあたりで、雪と氷に覆われた木が並ぶ樹氷が見られます。例年の見ごろは12月下旬〜2月中旬ごろで、気象条件によって見られないことがあります。",
+        "where": "蔵王ロープウェイ地蔵山頂駅のあたり（山形県側）",
+        "season": "12月下旬〜2月中旬ごろ（例年）",
+        "source": "山形県の公式観光サイト「やまがたへの旅」蔵王の樹氷",
+        "url": "https://yamagatakanko.com/attractions/detail_2721.html",
+        "note": "Yamatch の蔵王山のページのコース（刈田岳・熊野岳）とは別の、山形県側のロープウェイで見る景色です。",
+        "access": "JR山形駅からバス約40分の蔵王温泉で、蔵王ロープウェイに乗り継ぐ（山形県の公式観光サイト）",
+        "lift": "蔵王ロープウェイ"
+      },
+      {
+        "id": "azuma",
+        "what": "吾妻連峰の樹氷原",
+        "text": "稜線一帯に広がるアオモリトドマツの林が、冬には一面の樹氷原になります。",
+        "where": "天元台から西吾妻山へ続く稜線",
+        "season": "冬",
+        "source": "林野庁 東北森林管理局「置賜森林管理署の見所（天元台）」",
+        "url": "https://www.rinya.maff.go.jp/tohoku/introduction/gaiyou_kyoku/annai/midokoro/250311_25.html",
+        "note": null
+      },
+      {
+        "id": "kitayokodake",
+        "what": "雪山の入門",
+        "text": "冬も晴れる日が多く、雪が比較的少ない八ヶ岳で、雪山を始める人に人気の山です。北八ヶ岳ロープウェイ（約7分）で標高2,200m台の山頂駅まで上がれます。",
+        "where": "北八ヶ岳ロープウェイ山頂駅から山頂",
+        "season": "冬",
+        "source": "Yamatch の北横岳のページ（山の特徴）",
+        "url": "/mountains/kitayokodake/",
+        "note": null
+      },
+      {
+        "id": "nyukasayama",
+        "what": "銀世界の湿原とスノートレッキング",
+        "text": "ゴンドラで山頂エリアまで上がり、スノーシューで雪原を歩けます。入笠湿原は一面の銀世界になり、山頂（1,955m）からは日本百名山を含む30座以上を見渡せます。冬は遠くまで見渡せる日が多いとされています。",
+        "where": "富士見パノラマリゾートのゴンドラ山頂駅から入笠湿原・山頂",
+        "season": "冬",
+        "source": "富士見パノラマリゾートの発表（2026年2月）",
+        "url": "https://san-tatsu.jp/pressrelease/507217/",
+        "note": null
+      },
+      {
+        "id": "okutama",
+        "what": "霧氷の草原",
+        "text": "春はツツジ、夏は高山植物、秋は黄金色の草原、冬は霧氷と、季節ごとに景色が変わる山です。稜線のどこからでも、草原ごしに富士山と南アルプスが見えます。",
+        "where": "大菩薩峠から雷岩への稜線",
+        "season": "冬",
+        "source": "Yamatch の大菩薩嶺のページ（山の特徴）",
+        "url": "/mountains/okutama/",
+        "note": null
+      },
+      {
+        "id": "akagi",
+        "what": "関東の氷の世界",
+        "text": "山頂エリアは前橋の市街地よりおよそ10℃低く、冬は「関東でも楽しめる氷の世界」になると前橋市が紹介しています。カルデラ湖の大沼を、黒檜山・駒ヶ岳・地蔵岳が囲みます。",
+        "where": "大沼のまわりと黒檜山",
+        "season": "冬",
+        "source": "前橋市 報道発表資料（2026年1月30日）",
+        "url": "https://www.city.maebashi.gunma.jp/material/files/group/10/20260130.pdf",
+        "note": null
+      }
+    ]
+  },
+  "photos": {
+    "hatsuhinode": {
+      "takao": {
+        "pick": "C1",
+        "src": "/images/articles/hatsuhinode-hiking/takao.webp",
+        "credit": "江戸村のとくぞう",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Takaosann-1.jpg",
+        "commonsTitle": "File:Takaosann-1.jpg",
+        "modifications": "長辺1600pxのWebPに変換"
+      },
+      "nokogiriyama_chiba": {
+        "pick": "C2",
+        "src": "/images/articles/hatsuhinode-hiking/nokogiriyama_chiba.webp",
+        "credit": "Ineshima",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:View_from_summit_of_Nokogiriyama.jpg",
+        "commonsTitle": "File:View from summit of Nokogiriyama.jpg",
+        "modifications": "長辺1600pxのWebPに変換"
+      },
+      "ryugatake": {
+        "pick": "P4",
+        "src": "/images/articles/hatsuhinode-hiking/ryugatake.webp",
+        "source": "pakutaso",
+        "pageUrl": "https://www.pakutaso.com/20190524142post-20916.html",
+        "sourceTitle": "竜ヶ岳から撮影した富士山頂から昇る太陽とダイヤモンド富士",
+        "modifications": "長辺1600pxのWebPに変換"
+      }
+    },
+    "diamond": {
+      "takao": {
+        "pick": "C13",
+        "src": "/images/articles/diamond-fuji/takao.webp",
+        "credit": "Tobihino1977",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Views_of_Mt_Fuji_from_near_the_summit_of_Mt_Takao..jpg",
+        "commonsTitle": "File:Views of Mt Fuji from near the summit of Mt Takao..jpg",
+        "modifications": "長辺1600pxのWebPに変換"
+      },
+      "ishiwariyama": {
+        "pick": "C4",
+        "src": "/images/articles/diamond-fuji/ishiwariyama.webp",
+        "credit": "Koda6029",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:%E7%9F%B3%E5%89%B2%E5%B1%B1%E5%B1%B1%E9%A0%82.jpg",
+        "commonsTitle": "File:石割山山頂.jpg",
+        "modifications": "長辺1600pxのWebPに変換"
+      },
+      "tonosaki": {
+        "pick": "C3",
+        "src": "/images/articles/diamond-fuji/tonosaki.webp",
+        "credit": "Σ64",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Mt.Fuji_from_Mt.Tonodake_07.jpg",
+        "commonsTitle": "File:Mt.Fuji from Mt.Tonodake 07.jpg",
+        "modifications": "長辺1600pxのWebPに変換"
+      },
+      "ohnoyama": {
+        "pick": "C1",
+        "src": "/images/articles/diamond-fuji/ohnoyama.webp",
+        "credit": "Quercus acuta",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:View_of_Mount_Fuji_from_Mount_%C5%8Cno.jpg",
+        "commonsTitle": "File:View of Mount Fuji from Mount Ōno.jpg",
+        "modifications": "長辺1600pxのWebPに変換"
+      },
+      "koubousan": {
+        "pick": "C2",
+        "src": "/images/articles/diamond-fuji/koubousan.webp",
+        "credit": "Raita Futo from Tokyo, Japan",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Fuji_view_from_Mount_Oyama_(50828220592).jpg",
+        "commonsTitle": "File:Fuji view from Mount Oyama (50828220592).jpg",
+        "modifications": "長辺1600pxのWebPに変換"
+      },
+      "nanaitsurasan": {
+        "pick": "F3",
+        "src": "/images/articles/diamond-fuji/nanaitsurasan.webp",
+        "credit": "Masahiko Satoh",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+        "pageUrl": "https://www.flickr.com/photos/70889690@N00/8001500955/",
+        "source": "flickr",
+        "sourceTitle": "Flickr:下山途中に見た富士山",
+        "modifications": "長辺1600pxのWebPに変換"
+      },
+      "ryugatake": {
+        "pick": "P4",
+        "src": "/images/articles/diamond-fuji/ryugatake.webp",
+        "source": "pakutaso",
+        "pageUrl": "https://www.pakutaso.com/20190524142post-20916.html",
+        "sourceTitle": "竜ヶ岳から撮影した富士山頂から昇る太陽とダイヤモンド富士",
+        "modifications": "長辺1600pxのWebPに変換"
+      }
+    },
+    "views": {
+      "zaosan": {
+        "pick": "C4",
+        "src": "/images/articles/winter-views/zaosan.webp",
+        "credit": "Raita Futo from Tokyo, Japan",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Mount_Zao_winter_landscapes_(51843220326).jpg",
+        "commonsTitle": "File:Mount Zao winter landscapes (51843220326).jpg",
+        "modifications": "長辺1600pxのWebPに変換"
+      },
+      "azuma": {
+        "pick": "C3",
+        "src": "/images/articles/winter-views/azuma.webp",
+        "credit": "Koda6029",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:%E8%A5%BF%E5%90%BE%E5%A6%BB%E5%B1%B1%E3%81%AE%E6%A8%B9%E6%B0%B7.JPG",
+        "commonsTitle": "File:西吾妻山の樹氷.JPG",
+        "modifications": "長辺1600pxのWebPに変換"
+      },
+      "kitayokodake": {
+        "pick": "C1",
+        "src": "/images/articles/winter-views/kitayokodake.webp",
+        "credit": "苗場山",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:%E5%8C%97%E6%A8%AA%E5%B2%B3.jpg",
+        "commonsTitle": "File:北横岳.jpg",
+        "modifications": "長辺1600pxのWebPに変換"
+      },
+      "akagi": {
+        "pick": "P5",
+        "src": "/images/articles/winter-views/akagi.webp",
+        "source": "pakutaso",
+        "pageUrl": "https://www.pakutaso.com/20180528138post-16212.html",
+        "sourceTitle": "赤城山覚満淵の雪と風のアート",
+        "modifications": "長辺1600pxのWebPに変換"
+      }
+    }
+  }
+}
