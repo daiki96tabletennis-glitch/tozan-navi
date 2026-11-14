@@ -57,7 +57,10 @@ def css():
              '.big-time{font-family:Outfit,sans-serif;font-size:20px;font-weight:700;color:#2a3e2a}'
              '.ws-links a{color:#4a6038;font-weight:700}'
              '.ws-src{font-size:12px;color:#777;margin-top:6px}'
-             '.ws-note{background:#f7f6f2;border-radius:10px;padding:10px 14px;font-size:13px;line-height:1.7;margin-top:10px}')
+             '.ws-note{background:#f7f6f2;border-radius:10px;padding:10px 14px;font-size:13px;line-height:1.7;margin-top:10px}'
+             # フッター（まとめ・記事22ページと同じ形。元の CSS に footer の指定が無く、スマホで左端にくっついていた。2026-11-15）
+             'footer{text-align:center;padding:24px 16px;font-size:12px;line-height:1.7;color:#a09888;border-top:1px solid #e8e4dc;margin-top:24px}'
+             'footer p{margin:0}')
     return m.group(0).replace('</style>', extra + '</style>')
 
 
@@ -490,7 +493,7 @@ def diamond(M, SC, W):
         ('初日の出とダイヤモンド富士を一緒に見られる山はありますか？',
          '竜ヶ岳です。計算では、山頂から太陽が富士山頂に重なるのは%sごろで、元日は山頂からだと少し外れます。登山道の途中の低い場所ほど重なる日が遅くなり、元日に石仏の見晴台で富士山頂の真ん中から昇ったという登山記録があります。' % ranges(M, SC)['ryugatake_range']),
     ]
-    photos = 'hero_diamond_fuji.jpg'
+    photos = 'hero_diamond_fuji.jpg?v=20261115'   # 運営者の絵に差し替えた日
     title = 'ダイヤモンド富士が見える場所・山【2026-2027】いつ何時？カレンダー｜高尾山・竜ヶ岳・丹沢'
     desc = 'ダイヤモンド富士はいつ・どこで見える？東京・神奈川・山梨・千葉の山頂から見られる日付と時間を、高尾山・竜ヶ岳・丹沢（塔ノ岳）・石割山・七面山・大野山・鋸山など厳選%d山で計算。冬（12〜2月）の見える山、2026-2027年のカレンダー、登山コース・駐車場つき。' % len(L)
     return page('diamond-fuji', title, desc, 'ダイヤモンド富士が見える場所・山<br>2026-2027年の日付と時間（カレンダー）', '冬の特集',
@@ -610,7 +613,7 @@ def views(M, SC, W):
         ('霧氷が見られる関東の山はどこですか？',
          'この記事では大菩薩嶺（冬は霧氷）を紹介しています。霧氷は気象条件で見られない日があります。'),
     ]
-    photos = 'hero_winter_views.jpg'
+    photos = 'hero_winter_views.jpg?v=20261115'   # 運営者の絵に差し替えた日
     names = '・'.join(M[it['id']]['name'] for it in V['mountains'])
     title = '冬の絶景が見られる山%d選【関東近郊】樹氷・霧氷・雪山へ日帰りで｜初心者向けロープウェイの山も' % len(cards)
     desc = '関東近郊で樹氷・霧氷・雪原・凍った湖など、冬にしか見られない絶景の山%d選（%s）。雪山初心者向けのロープウェイ・ゴンドラの山、日帰りのコース、冬の装備（チェーンスパイク・アイゼン）、蔵王の樹氷の見頃と行き方つき。' % (len(cards), names)

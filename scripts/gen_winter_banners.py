@@ -112,7 +112,8 @@ def views():
 
 
 def main():
-    out = {'hero_hatsuhinode.jpg': hatsuhinode(), 'hero_diamond_fuji.jpg': diamond(), 'hero_winter_views.jpg': views()}
+    # ダイヤモンド富士・冬の絶景は運営者の絵に差し替えた（2026-11-15。1200×630）。作り直すと上書きするので、この2枚は作らない
+    out = {'hero_hatsuhinode.jpg': hatsuhinode()}
     for name, im in out.items():
         p = os.path.join(ROOT, 'articles', 'images', name)
         im.convert('RGB').save(p, quality=88)

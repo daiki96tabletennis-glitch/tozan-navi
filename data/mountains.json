@@ -57144,13 +57144,6 @@
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=新宿&to=鶴巻温泉駅&type=1"
     ],
-    "warnBanner": {
-      "type": "red",
-      "title": "弘法山公園は閉鎖中",
-      "text": "ツキノワグマの再出没のため、秦野市が2026年10月24日から弘法山公園（弘法山・権現山・浅間山）を閉鎖しています。再開の時期は未定です。出かける前に秦野市の案内を確認してください。",
-      "url": "https://www.city.hadano.kanagawa.jp/kanko/tozan-hiking/2452.html",
-      "linkText": "秦野市の案内を見る"
-    },
     "nearby": [
       "oyama",
       "tonosaki"
@@ -57338,12 +57331,12 @@
     "dlNoteHtml": "<p class=\"dl-note\">弘法山は初級レベル（コース定数10〜19）。代表コースの秦野駅〜権現山〜弘法山〜吾妻山〜鶴巻温泉（縦走）は2時間36分・6.7km・標高差+294m。登山初心者でも安心して挑戦できます。</p>",
     "introHtml": "<div class=\"card\"><h2><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" style=\"vertical-align:-3px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 3h10l4 4v14H5z\"/><path d=\"M15 3v4h4\"/><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"/><line x1=\"8\" y1=\"16\" x2=\"13\" y2=\"16\"/></svg>山の紹介</h2><p class=\"intro-text\">鶴巻温泉駅から徒歩で行ける低山ハイク。吾妻山・浅間山・権現山・弘法山を結ぶ稜線歩きが楽しめる桜の名所。下山後に鶴巻温泉でひと風呂も楽しめる手軽なコース。</p></div>",
     "mapBtnsHtml": "<div class=\"map-btns\">\n      <a href=\"https://www.google.com/maps/search/?api=1&query=35.3721513%2C139.243082&query_place_id=ChIJVV-cTq2pGWARjTLCEX1RSGk\" target=\"_blank\" class=\"map-btn-link\">Googleマップ</a>\n      <a href=\"https://maps.apple.com/?ll=35.3721513,139.243082&q=%E5%BC%98%E6%B3%95%E5%B1%B1%E5%85%AC%E5%9C%92\" target=\"_blank\" class=\"map-btn-link\">Apple Maps</a>\n    </div>",
-    "metaTitle": "弘法山登山 初心者向けコース｜日帰り2時間36分・難易度初級｜秦野駅から徒歩25分【入山規制あり】｜Yamatch",
+    "metaTitle": "弘法山登山 初心者向けコース｜日帰り2時間36分・難易度初級｜秦野駅から徒歩25分｜Yamatch",
     "metaDescription": "弘法山（標高235m・神奈川県）は初心者でも登りやすい山（難易度初級）。代表コース（秦野駅〜権現山〜弘法山〜吾妻山〜鶴巻温泉（縦走））は2時間36分・6.7km・標高差294m。新宿から電車で約1時間35分（秦野駅から徒歩25分）。日帰りできます。鶴巻温泉駅から徒歩で行ける低山ハイク。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-14",
+    "mountainUpdated": "2026-11-15",
     "hasHeroPhotoScript": false,
-    "ogTitle": "弘法山登山 初心者向けコース｜日帰り2時間36分・難易度初級｜秦野駅から徒歩25分【入山規制あり】｜Yamatch",
+    "ogTitle": "弘法山登山 初心者向けコース｜日帰り2時間36分・難易度初級｜秦野駅から徒歩25分｜Yamatch",
     "ogDescription": "弘法山（標高235m・神奈川県）は初心者でも登りやすい山（難易度初級）。代表コース（秦野駅〜権現山〜弘法山〜吾妻山〜鶴巻温泉（縦走））は2時間36分・6.7km・標高差294m。新宿から電車で約1時間35分（秦野駅から徒歩25分）。日帰りできます。鶴巻温泉駅から徒歩で行ける低山ハイク。駐車場・装備・天気も掲載。",
     "climbedBtnStyle": "flat",
     "weatherBeforeIntro": false,
@@ -57534,24 +57527,7 @@
     "driveCheckedAt": "2026-10-10",
     "yamapName": "弘法山",
     "metaAuto": true,
-    "status": {
-      "level": "restricted",
-      "summary": "弘法山公園（弘法山・権現山・浅間山）は、ツキノワグマの再出没のため2026年10月24日から閉鎖中です（秦野市。再開の時期は未定）。",
-      "checkedAt": "2026-10-30",
-      "sourceUrl": "https://www.city.hadano.kanagawa.jp/kanko/tozan-hiking/2452.html"
-    },
-    "annualItems": [
-      {
-        "kind": "closure",
-        "label": "弘法山公園の閉鎖（クマの出没）",
-        "validFrom": null,
-        "validTo": null,
-        "seasonYear": null,
-        "sourceUrl": "https://www.city.hadano.kanagawa.jp/kanko/tozan-hiking/2452.html",
-        "lastVerified": "2026-10-30",
-        "note": "2026-10-24 から閉鎖。再開の時期は未定"
-      }
-    ],
+    "annualItems": [],
     "accessTier": {
       "shinjuku": {
         "tier": "easy",
