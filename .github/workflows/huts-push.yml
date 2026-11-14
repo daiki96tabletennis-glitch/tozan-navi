@@ -81,5 +81,5 @@ jobs:
         run: |
           git config user.name "yamatch-admin-notice"
           git config user.email "actions@users.noreply.github.com"
-          # 最新の状態の上にお知らせを作り直して送る（ほかの定期実行と同じ行を書き換えてぶつかるため。2026-11-15）
+          # 最新の状態の上にお知らせを作り直して送る（ほかの定期実行も同じ朝に同じファイルを書くので、ぶつからないように。2026-11-15）
           bash scripts/git_publish.sh "運営者向けのお知らせを更新（山小屋の通知）" 'python3 scripts/admin_notice.py --kind push --report push_report.md --code "$(cat push_code.txt 2>/dev/null || echo 1)"' data/admin_notices.json

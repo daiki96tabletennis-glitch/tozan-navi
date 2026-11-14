@@ -40,10 +40,11 @@ jobs:
         run: |
           git config user.name "yamatch-huts-update"
           git config user.email "actions@users.noreply.github.com"
-          # 最新の状態の上に、山小屋のデータを乗せ直し、お知らせ（Instagram の見張り・山小屋の定期更新）を作り直して送る。
-          # 前は「コミット → git pull --rebase → push」で、ほかの定期実行（予約開始の通知など）が同じ朝にお知らせのファイルの
-          # 同じ行を書き換えるため取り込みがぶつかり、2026-10〜11 に35回中20回失敗していた（2026-11-15 に直した）
+          # 最新の状態の上に、山小屋のデータを乗せ直し、お知らせ（Instagram の見張り・山小屋の定期更新）を作り直して送る
+          # （ほかの定期実行も同じ朝にお知らせのファイルを書くので、ぶつからない送り方にそろえた。2026-11-15）
           bash scripts/git_publish.sh "山小屋まとめを更新（出典の取り直し）" \
             'python3 scripts/admin_notice.py --kind insta --report insta_report.md --code "$(cat insta_code.txt 2>/dev/null || echo 0)"; python3 scripts/admin_notice.py --kind huts --report huts_report.md' \
             data/huts.json data/huts_history.json data/huts_rules.json huts sitemap.xml data/huts_meta_seen.json data/admin_notices.json
-          cat huts_report.md
+          # 見に行く対象が無い日は報告のファイルが作られない。前はここで「ファイルが無い」と失敗し、10/20〜11/13 の13回が
+          # 「失敗」と記録されていた（コミットと送信は済んでいた。2026-11-15 に gh でログを読んで分かった）
+          if [ -f huts_report.md ]; then cat huts_report.md; else echo "今日は見に行く対象がなく、報告はありません"; fi

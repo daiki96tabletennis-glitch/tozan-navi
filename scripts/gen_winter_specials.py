@@ -54,10 +54,20 @@ def css():
              '.tbl table{border-collapse:collapse;width:100%;min-width:560px;font-size:13px;background:#fff}'
              '.tbl th,.tbl td{padding:7px 8px;border-bottom:1px solid #e6e1d6;vertical-align:top;text-align:left}'
              '.tbl th{background:#f3f0e8;color:#4a5e3a;font-weight:700;white-space:nowrap}'
+             '.tbl td a{white-space:nowrap}'   # 表の山の名前を1文字ずつ折り返さない（2026-11-15）
              '.big-time{font-family:Outfit,sans-serif;font-size:20px;font-weight:700;color:#2a3e2a}'
              '.ws-links a{color:#4a6038;font-weight:700}'
              '.ws-src{font-size:12px;color:#777;margin-top:6px}'
              '.ws-note{background:#f7f6f2;border-radius:10px;padding:10px 14px;font-size:13px;line-height:1.7;margin-top:10px}'
+             # ダイヤモンド富士の月ごとのカレンダー（2026-11-15）
+             '.dfcal-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-bottom:10px}'
+             '.dfcal-legend{grid-column:1/-1;font-size:13px;line-height:2;background:#fff;border-radius:10px;padding:8px 12px}'
+             '.dfcal{background:#fff;border-radius:10px;padding:8px 8px 10px}.dfcal-h{font-weight:700;color:#2a3e2a;margin:0 0 4px 4px}'
+             '.dfcal table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:11px}'
+             '.dfcal th{color:#888;font-weight:600;padding:2px 0}.dfcal td{vertical-align:top;height:38px;padding:1px;border-top:1px solid #f0ede5;text-align:center}'
+             '.dfcal td.on{background:#fbf6ea}.dfd{display:block;color:#555}'
+             '.dfc{display:inline-block;min-width:16px;padding:0 2px;margin:1px;border-radius:4px;font-size:11px;font-weight:700;color:#fff;text-decoration:none;line-height:16px}'
+             '.dfc.am{background:#d98a2b}.dfc.pm{background:#5b5f9e}'
              # フッター（まとめ・記事22ページと同じ形。元の CSS に footer の指定が無く、スマホで左端にくっついていた。2026-11-15）
              'footer{text-align:center;padding:24px 16px;font-size:12px;line-height:1.7;color:#a09888;border-top:1px solid #e8e4dc;margin-top:24px}'
              'footer p{margin:0}')
@@ -323,12 +333,21 @@ def diamond_list(M, SC, W):
         ex = D['extra'].get(m['id'])
         if not fp and not ex:
             raise SystemExit('富士山が見える根拠が無い：' + m['id'])
-        lat, lng, ele = summit(m, SC)
+        # 計算する地点：観賞地点が山頂と違う山は viewpoints で指定する（弘法山＝権現山の展望台。2026-11-15）
+        vp = (D.get('viewpoints') or {}).get(m['id'])
+        if vp:
+            lat, lng, ele = vp['lat'], vp['lng'], vp['ele']
+            vname = vp['name']
+        else:
+            lat, lng, ele = summit(m, SC)
+            vname = '%sの山頂' % m['name']
         ev = diamond_fuji.events(lat, lng, ele)
         if not ev:
             raise SystemExit('計算でダイヤモンド富士の日が無い：' + m['id'])
         dkm, az, alt = diamond_fuji.fuji_view(lat, lng, ele)
-        out.append({'m': m, 'ev': ev, 'dkm': dkm, 'az': az, 'alt': alt, 'fp': fp, 'ex': ex, 'why': it['why']})
+        out.append({'m': m, 'ev': ev, 'dkm': dkm, 'az': az, 'alt': alt, 'fp': fp, 'ex': ex, 'why': it['why'],
+                    'vp': {'name': vname, 'lat': lat, 'lng': lng, 'ele': ele, 'why': (vp or {}).get('why'),
+                           'note': (D.get('viewNote') or {}).get(m['id'])}})
     out.sort(key=lambda x: x['ev'][0]['date'])
     return out
 
@@ -382,6 +401,45 @@ def tanzawa_more(M, SC):
     return '、'.join(out) + 'に見られます（計算）'
 
 
+def month_calendar(L):
+    """月ごとのカレンダー（2026年12月〜2027年11月のうち、見える日のある月だけ）。日付のマスに山の頭文字を出し、押すと山のカードへ移る。
+    JavaScript は使わない。山の頭文字が重なると分からないので、重なったら止める"""
+    abbr = {}
+    for x in L:
+        a = x['m']['name'][0]
+        if a in abbr.values():
+            raise SystemExit('カレンダーの頭文字が重なる：' + x['m']['name'])
+        abbr[x['m']['id']] = a
+    days = {}
+    for x in L:
+        for e in x['ev']:
+            d = e['from']
+            while d <= e['to']:
+                days.setdefault(d, []).append((x['m'], e))
+                d += datetime.timedelta(days=1)
+    months = sorted({(d.year, d.month) for d in days})
+    out = ['<div class="dfcal-legend">' + ''.join(
+        '<a href="#m-%s" class="dfc %s">%s</a>%s　' % (x['m']['id'], 'am' if x['ev'][0]['morning'] else 'pm', esc(abbr[x['m']['id']]), esc(x['m']['name'])) for x in L) +
+        '<br><span class="dfc am">　</span>日の出　<span class="dfc pm">　</span>日没（計算。前後2〜3日の幅を見てください）</div>']
+    for y, mo in months:
+        first = datetime.date(y, mo, 1)
+        nxt = datetime.date(y + (mo == 12), mo % 12 + 1, 1)
+        cells = [''] * ((first.weekday() + 1) % 7)   # 日曜はじまり
+        d = first
+        while d < nxt:
+            chips = ''.join('<a href="#m-%s" class="dfc %s" title="%s %s %sごろ">%s</a>' % (
+                m['id'], 'am' if e['morning'] else 'pm', esc(m['name']), '日の出' if e['morning'] else '日没', sun_calc.hm(e['time']), esc(abbr[m['id']]))
+                for m, e in days.get(d, []))
+            cells.append('<span class="dfd">%d</span>%s' % (d.day, chips))
+            d += datetime.timedelta(days=1)
+        while len(cells) % 7:
+            cells.append('')
+        rows = ''.join('<tr>%s</tr>' % ''.join('<td%s>%s</td>' % (' class="on"' if 'dfc' in c else '', c) for c in cells[i:i + 7]) for i in range(0, len(cells), 7))
+        out.append('<div class="dfcal"><div class="dfcal-h">%d年%d月</div><table><tr>%s</tr>%s</table></div>' % (
+            y, mo, ''.join('<th>%s</th>' % w for w in '日月火水木金土'), rows))
+    return '<div class="dfcal-wrap">' + ''.join(out) + '</div>'
+
+
 def diamond(M, SC, W):
     D = W['diamond']
     L = diamond_list(M, SC, W)
@@ -403,6 +461,12 @@ def diamond(M, SC, W):
         body = ''.join([
             row('選んだ理由', esc(x['why'])),
             row('ダイヤモンド富士', evs),
+            # 公式の案内がある山（高尾山）は、この記事の計算と並べて出す（2026-11-15）
+            row('公式の見ごろ', '%s<br><a href="%s" target="_blank" rel="noopener" style="color:#4a6038">%s</a>' % (
+                esc(D['official'][m['id']]['text']), esc(D['official'][m['id']]['url']), esc(D['official'][m['id']]['label'])))
+            if m['id'] in (D.get('official') or {}) else '',
+            row('計算した地点', esc('%s（北緯%.4f°・東経%.4f°・標高%sm）' % (x['vp']['name'], x['vp']['lat'], x['vp']['lng'], ('%g' % x['vp']['ele'])))
+                + ('<br><span style="font-size:12px;color:#666">%s</span>' % esc(x['vp']['why'] or x['vp']['note']) if (x['vp']['why'] or x['vp']['note']) else '')),
             row('富士山の方角', '%s（方位%d°）・山頂から約%dkm' % (direction(x['az']), round(x['az']), round(x['dkm']))),
             row('富士山の眺め', view),
             row('代表コース', '%s（%s・難易度 %s）' % (esc(r0.get('name') or ''), esc(r0.get('time') or ''), esc(m.get('difficulty') or ''))),
@@ -418,8 +482,9 @@ def diamond(M, SC, W):
                 m['id'], m['id'], n, esc(m['name']), esc(m.get('prefecture') or m.get('area') or ''), '{:,}'.format(int(m['elevation'])), side,
                 photo(m, W, 'diamond') + closed(m), body, (esc(note) + '<br>') if note else '', esc(tip), m['id'], esc(m['name'])))
         for e in x['ev']:
+            # 日付には年を付ける（12月は2026年、1〜11月は2027年。年をまたぐと分かりにくいため。2026-11-15）
             comp.append((e['date'], ['<a href="#m-%s" style="color:#4a6038;font-weight:700">%s</a>' % (m['id'], esc(m['name'])),
-                                     md(e['from']) + ('〜' + md(e['to']) if e['to'] != e['from'] else ''), '日の出' if e['morning'] else '日没',
+                                     '%d年%s' % (e['from'].year, md(e['from'])) + ('〜' + md(e['to']) if e['to'] != e['from'] else ''), '日の出' if e['morning'] else '日没',
                                      sun_calc.hm(e['time']), 'かすめる' if e['kind'] == 'near' else '重なる']))
     comp.sort(key=lambda r: ((r[0].month - 12) % 12, r[0].day))
     winter = [r for r in comp if r[0].month in (12, 1, 2)]
@@ -454,12 +519,14 @@ def diamond(M, SC, W):
         table(['都県', '山', '見える日（計算）'], pref_rows),
         '<h2 id="winter">冬（12〜2月）にダイヤモンド富士が見える山と時間</h2>',
         table(['山', '日付', '時間帯', '時刻', ''], [r[1] for r in winter]),
-        '<h2 id="calendar">ダイヤモンド富士カレンダー2026-2027（日付と時間・12月から）</h2>',
+        '<h2 id="calendar">ダイヤモンド富士カレンダー2026-2027（月ごと）</h2>',
+        month_calendar(L),
+        '<h3 style="font-size:16px;margin:18px 0 8px">日付の一覧（年・時刻つき・12月から）</h3>',
         table(['山', '日付', '時間帯', '時刻', ''], [r[1] for r in comp]),
         '<h2>ダイヤモンド富士が見える山%d選（12月から日付の順）</h2>' % len(L),
         '\n'.join(cards),
         '<h2 id="method">日付の計算のしかた</h2>',
-        '<div class="tips-card" style="padding:16px 20px;line-height:1.9">山頂の位置と標高から、富士山の剣ヶ峰（3,776m）が見える方角と高さ（地球の丸みと大気による浮き上がりを入れる）を出し、'
+        '<div class="tips-card" style="padding:16px 20px;line-height:1.9">観賞する地点（多くは山頂。弘法山は関東の富士見百景の観賞地点の権現山の展望台）の位置と標高から、富士山の剣ヶ峰（3,776m）が見える方角と高さ（地球の丸みと大気による浮き上がりを入れる）を出し、'
         '毎日、太陽がその方角に来た時刻に、太陽の中心が富士山頂からどれだけ離れているかを計算しました。太陽の半径（約0.27°）より近ければ「重なる」、少し外れる日は「かすめる」としています。'
         '地形で富士山が隠れるかどうかは計算していないので、山のデータで富士山が見えると確かめた山だけを載せています。<br><br>'
         '国土交通省 関東地方整備局「<a href="%s" target="_blank" rel="noopener" style="color:#4a6038">関東の富士見百景</a>」のダイヤモンド富士の一覧と、同じ場所で比べると次のとおりです（一覧は見る人の標高を考えない計算で、1〜3日ほどずれます）。</div>' % esc(D['ktr']['url']),
@@ -467,6 +534,7 @@ def diamond(M, SC, W):
         '<h2>あわせて読みたい</h2>',
         '<div class="tips-card" style="padding:16px 20px"><ul style="margin:0 0 0 18px;line-height:1.9">'
         '' + hatsu_li(W) + ''
+        '<li><a href="/articles/winter-views/" style="color:#4a6038;font-weight:700">冬の絶景が見られる山（樹氷・霧氷・雪原）と冬の行き方</a></li>'
         '<li><a href="/articles/winter-no-crampons/" style="color:#4a6038;font-weight:700">冬でも登れる関東の山7選｜雪なし・アイゼン不要</a></li></ul></div>',
     ])
     wn = [r for r in winter]
@@ -476,7 +544,7 @@ def diamond(M, SC, W):
         ('ダイヤモンド富士とは何ですか？',
          '富士山の山頂に太陽が重なり、ダイヤモンドのように輝いて見える景色のことです。見える日は場所ごとに決まっていて、富士山より東では日没、西では日の出のときに見られます。'),
         ('高尾山のダイヤモンド富士はいつ・何時ですか？',
-         '冬至のころ（12月下旬）の日没です。この記事の計算では%s。関東地方整備局は12月17〜26日としています。' % ev_short(get_ev(L, 'takao'))),
+         '冬至のころ（12月下旬）の日没です。この記事の計算（2026年）では%s。高尾登山電鉄の2025年の案内では、見ごろは12月17日〜28日・16時〜16時15分ごろ、観賞場所は高尾山山頂ともみじ台で、期間中はケーブルカー・リフトを18時まで延長運転しました。関東地方整備局は12月17〜26日としています。' % ev_short(get_ev(L, 'takao'))),
         ('竜ヶ岳のダイヤモンド富士はいつ・何時ですか？',
          '冬の朝の日の出です。この記事の計算では、山頂から太陽が富士山頂に重なるのは%sごろで、いちばん重なるのは%s。登山道の途中の低い場所ほど重なる日が遅くなります。%s' % (
              ranges(M, SC)['ryugatake_range'], best_text(get_ev(L, 'ryugatake')), ('駐車場は' + M['ryugatake']['parking'] + '。') if parking_ok(M['ryugatake']) else '')),
@@ -518,7 +586,7 @@ def winter_gear(m):
 
 def views(M, SC, W):
     V = W['views']
-    cards, toc, comp, easy = [], [], [], []
+    cards, toc, comp, easy, cat_rows = [], [], [], [], []
     for i, it in enumerate(V['mountains']):
         m = M[it['id']]
         n = NUM[i]
@@ -534,9 +602,13 @@ def views(M, SC, W):
             row('見られる場所', esc(it['where'])),
             row('時期', esc(it['season'])),
             row('冬の装備', esc(winter_gear(m))),
-            row('代表コース', '%s（%s・難易度 %s）' % (esc(r0.get('name') or ''), esc(r0.get('time') or ''), esc(m.get('difficulty') or ''))),
-            row('行き方', esc(it['access'])) if it.get('access') else
-            row('新宿から', '電車 約%s・車 約%s' % (dur(train) or '—', dur(drive) or '—') if train else '車 約%s' % (dur(drive) or '—')),
+            row('区分', esc(V['categories'][it['category']]['label'])),
+            # 冬の行き方（運行期間・冬ダイヤ・冬期閉鎖。公式で確かめた分だけ。2026-11-15）
+            row('冬の行き方', esc(it['winterAccess']) + ''.join(
+                '<br><a href="%s" target="_blank" rel="noopener" style="color:#4a6038">%s</a>' % (esc(l['url']), esc(l['label'])) for l in it.get('winterLinks') or [])),
+            # 樹氷を見るだけの山（蔵王）は登山コースを出さない。ほかはコースの時間が無雪期の値であることを書く
+            row('登山コース', '樹氷を見るだけなら登山はしない（山ページの登山コースは宮城県側の別の場所）') if it['category'] == 'sight' else
+            row('代表コース（無雪期）', '%s（%s・難易度 %s）' % (esc(r0.get('name') or ''), esc(r0.get('time') or ''), esc(m.get('difficulty') or ''))),
         ])
         cards.append(
             '<div class="mountain-card" id="m-%s">\n  <div class="mountain-card-header" data-mountain-id="%s">\n'
@@ -548,6 +620,9 @@ def views(M, SC, W):
                 m['id'], m['id'], n, esc(m['name']), esc(it['what']), esc(m.get('prefecture') or m.get('area') or ''), '{:,}'.format(int(m['elevation'])),
                 photo(m, W, 'views') + closed(m), esc(it['text']), body, src_a,
                 ('<div class="ws-note">%s</div>' % esc(it['note'])) if it.get('note') else '', m['id'], esc(m['name'])))
+        cat_rows.append((list(V['categories']).index(it['category']), [
+            esc(V['categories'][it['category']]['label']), '<a href="#m-%s" style="color:#4a6038;font-weight:700">%s</a>' % (m['id'], esc(m['name'])),
+            esc(it['what']), esc(it['season']), esc(winter_gear(m)), esc(it['winterShort'])]))
         lifts = it.get('lift') or '・'.join(l['method']['line'] for l in (((m.get('trainRoutes') or {}).get('routes') or {}).get('shinjuku') or {}).get('legs') or []
                                             if (l.get('method') or {}).get('icon') == 'ropeway')
         easy.append((0 if m.get('difficulty') == '初級' else 1, ['<a href="#m-%s" style="color:#4a6038;font-weight:700">%s</a>' % (m['id'], esc(m['name'])),
@@ -556,23 +631,25 @@ def views(M, SC, W):
                      '樹氷の場所へはロープウェイで（登山のコースとは別）' if it.get('lift') else
                      esc('日帰り可（代表コース%s）' % (r0.get('time') or '')) if m.get('daytrip') else '山小屋泊']))
         comp.append(['<a href="#m-%s" style="color:#4a6038;font-weight:700">%s %s</a>' % (m['id'], n, esc(m['name'])), esc(it['what']),
-                     esc(winter_gear(m)), esc(m.get('difficulty') or ''), ('約' + dur(train)) if (train and not it.get('access')) else '—'])
+                     esc(it['season']), esc(V['categories'][it['category']]['label']), esc(winter_gear(m))])
     toc_html = ('<nav class="tips-card" id="toc" aria-label="目次" style="padding:16px 20px"><div style="font-weight:700;color:#2a3e2a;margin-bottom:6px">目次</div>'
-                '<ul style="margin:0;padding:0;list-style:none;font-size:14px;line-height:1.7"><li style="margin:3px 0"><a href="#beginner" style="color:#4a6038">雪山初心者・日帰りで行ける冬の絶景の山</a></li>%s<li style="margin:3px 0"><a href="#compare" style="color:#4a6038">%d山の比較表</a></li>'
+                '<ul style="margin:0;padding:0;list-style:none;font-size:14px;line-height:1.7"><li style="margin:3px 0"><a href="#beginner" style="color:#4a6038">樹氷を見るだけ・雪山入門・冬山の経験者向け</a></li>%s<li style="margin:3px 0"><a href="#compare" style="color:#4a6038">%d山の比較表</a></li>'
                 '<li style="margin:3px 0"><a href="#tips" style="color:#4a6038">雪と氷の山に行く前に</a></li><li style="margin:3px 0"><a href="#faq" style="color:#4a6038">よくある質問</a></li></ul></nav>') % (''.join(toc), len(cards))
     body = '\n'.join([
         '<div class="info-note">⚠️ 雪と氷の山です。冬の装備（軽アイゼン等・冬山装備）は、山ごとの装備カレンダーで確かめてください。<a href="/articles/winter-no-crampons/" style="color:#5a4a10;font-weight:700">雪のない冬の山はこちら</a></div>',
         '<div class="lead-box">樹氷、霧氷、銀世界の湿原、凍った湖。冬にしか見られない景色に会える山を、Yamatch に載っている山から選びました。'
         'ロープウェイやゴンドラで高いところまで上がれる山もあり、雪山を始める人にも向いています。</div>',
         toc_html,
-        '<h2 id="beginner">雪山初心者・日帰りで行ける冬の絶景の山</h2>',
-        '<p style="margin:0 0 10px">ロープウェイやゴンドラで高いところまで上がれる山は、雪山を始める人に向いています。難易度の低い順です。'
-        '装備の「軽アイゼン等」はチェーンスパイク・6本爪アイゼンなど、「冬山装備」は12本爪アイゼン・ピッケルなどのことです。</p>',
-        table(['山', '難易度', '冬の装備（12〜2月）', '上がれる乗り物', '日帰り'], [r for _, r in sorted(easy, key=lambda t: t[0])]),
-        '<h2>関東近郊で冬の絶景が見られる山%d選（樹氷・霧氷・雪原・氷）</h2>' % len(cards),
+        '<h2 id="beginner">樹氷を見るだけ・雪山入門・冬山の経験者向けに分けて選ぶ</h2>',
+        '<div class="tips-card" style="padding:14px 18px;margin-bottom:10px;line-height:1.8"><ul style="margin:0 0 0 18px">' +
+        ''.join('<li><b>%s</b>：%s</li>' % (esc(c['label']), esc(c['text'])) for c in V['categories'].values()) +
+        '</ul><p style="margin:8px 0 0;font-size:12.5px;color:#666">%s 装備の「軽アイゼン等」はチェーンスパイク・6本爪アイゼンなど、「冬山装備」は12本爪アイゼン・ピッケルなどのことです。'
+        '登山コースの時間は無雪期の値で、雪の時期は長くかかります。</p></div>' % esc(V['categoryNote']),
+        table(['区分', '山', '見どころ', '見ごろ', '冬の装備（12〜2月）', '冬の行き方の注意'], [r for _, r in sorted(cat_rows, key=lambda t: t[0])]),
+        '<h2>関東発で冬の絶景が見られる山%d選（樹氷・霧氷・雪原・氷）</h2>' % len(cards),
         '\n'.join(cards),
         '<h2 id="compare">%d山の比較表</h2>' % len(cards),
-        table(['山', '冬の見どころ', '冬の装備', '難易度', '新宿から電車'], comp),
+        table(['山', '冬の見どころ', '見ごろ', '区分', '冬の装備'], comp),
         '<h2 id="tips">雪と氷の山に行く前に</h2>',
         '<div class="tips-card" style="padding:16px 20px"><ul style="margin:0 0 0 18px;line-height:1.9">'
         '<li>装備は山ごとの装備カレンダーで確かめましょう。「軽アイゼン等」の月はチェーンスパイク・6本爪アイゼンなど、「冬山装備」の月は12本爪アイゼン・ピッケル・冬用の登山靴などが要ります</li>'
@@ -589,14 +666,18 @@ def views(M, SC, W):
     faq = [
         ('樹氷と霧氷の違いは何ですか？',
          '気象の用語では、霧氷は、空気中の冷たい水滴などが木の枝に凍りついてできる氷をまとめた呼び方で、樹氷はその一つです。蔵王の「スノーモンスター」は、樹氷に雪が積もって大きく育ったものです。'),
-        ('雪山初心者におすすめの関東近郊の山はどこですか？',
-         'この記事では、難易度が初級の%sです。ロープウェイやゴンドラで高いところまで上がれます。冬の装備は、%s。' % (
-             '・'.join(M[i]['name'] for i in vz if M[i].get('difficulty') == '初級'),
-             '、'.join('%sは%s' % (M[i]['name'], winter_gear(M[i]).replace('12〜2月：', '12〜2月は')) for i in vz if M[i].get('difficulty') == '初級'))),
+        ('雪山初心者におすすめの関東発の山はどこですか？',
+         'この記事で「雪山入門の候補」にしたのは%sです。冬の装備は、%s。経験者と一緒に、天気の良い日に行きましょう（区分は目安で、安全を約束するものではありません）。' % (
+             '・'.join(M[i]['name'] for i in vz if vz[i]['category'] == 'entry'),
+             '、'.join('%sは%s' % (M[i]['name'], winter_gear(M[i]).replace('12〜2月：', '12〜2月は')) for i in vz if vz[i]['category'] == 'entry'))),
         ('日帰りで行ける雪山・冬の絶景の山はありますか？',
-         '%sは日帰りで歩けるコースがあります（代表コース：%s）。蔵王山の樹氷は、山形県側の蔵王ロープウェイで見に行けます。冬は日が短いので、早めに歩き始めましょう。' % (
-             '・'.join(M[i]['name'] for i in vz if M[i].get('daytrip') and not vz[i].get('lift')),
-             '、'.join('%s %s' % (M[i]['name'], (M[i].get('routes') or [{}])[0].get('time') or '') for i in vz if M[i].get('daytrip') and not vz[i].get('lift')))),
+         '%sは、冬もロープウェイ・ゴンドラ・バスで登山口へ行けます（冬の運行期間・点検の運休は記事の「冬の行き方」を見てください）。蔵王山の樹氷は、山形県側の蔵王ロープウェイで登山なしで見られます。'
+         '大菩薩嶺は、12月14日から4月中旬は上日川峠へのバスが運休し県道も冬期閉鎖になるので、無雪期の代表コースはそのまま使えません。コースの時間は無雪期の値で、冬は長くかかります。' % (
+             '・'.join(M[i]['name'] for i in vz if vz[i]['category'] != 'sight' and i != 'okutama'))),
+        ('大菩薩嶺に冬に登れますか？バスはありますか？',
+         vz['okutama']['winterAccess'] + '。'),
+        ('入笠山は冬もゴンドラで行けますか？',
+         vz['nyukasayama']['winterAccess'] + '。'),
         ('蔵王の樹氷の見頃・時期はいつですか？',
          '%s。%s' % (vz['zaosan']['season'], vz['zaosan']['text'].split('。')[0] + '。')),
         ('蔵王の樹氷への行き方は？',
@@ -605,20 +686,21 @@ def views(M, SC, W):
          '装備カレンダーでは、%s。「軽アイゼン等」はチェーンスパイク・6本爪アイゼンなど、「冬山装備」は12本爪アイゼン・ピッケルなどです。' % (
              '、'.join('%sは%s' % (M[i]['name'], winter_gear(M[i]).replace('12〜2月：', '12〜2月が')) for i in ('kitayokodake', 'nyukasayama', 'akagi')))),
         ('スノーシューで歩ける関東近郊の山はありますか？',
-         '入笠山です。ゴンドラで山頂エリアまで上がり、スノーシューで雪原を歩けます（富士見パノラマリゾートの発表）。'),
+         '入笠山です。ゴンドラで山頂エリアまで上がり、スノーシューで雪原を歩けます（富士見パノラマリゾートのプレスリリース）。'),
         ('関東から行ける樹氷の山はどこですか？',
          'この記事では、蔵王山（蔵王ロープウェイ地蔵山頂駅のあたり。例年12月下旬〜2月中旬ごろ）と、西吾妻山（天元台から続く稜線の樹氷原）を紹介しています。'),
         ('雪山が初めてでも行ける冬の絶景の山はありますか？',
-         'ロープウェイやゴンドラで高いところまで上がれる入笠山・北横岳などがあります。装備は山ごとの装備カレンダーで確かめ、冬山装備の月は経験者と一緒に行きましょう。'),
+         'ロープウェイやゴンドラで高いところまで上がれる入笠山・北横岳などがあります。北横岳は冬山装備が要る標高2,480mの山です。装備は山ごとの装備カレンダーで確かめ、冬山装備の月は経験者と一緒に行きましょう。'),
         ('霧氷が見られる関東の山はどこですか？',
          'この記事では大菩薩嶺（冬は霧氷）を紹介しています。霧氷は気象条件で見られない日があります。'),
     ]
     photos = 'hero_winter_views.jpg?v=20261115'   # 運営者の絵に差し替えた日
     names = '・'.join(M[it['id']]['name'] for it in V['mountains'])
-    title = '冬の絶景が見られる山%d選【関東近郊】樹氷・霧氷・雪山へ日帰りで｜初心者向けロープウェイの山も' % len(cards)
-    desc = '関東近郊で樹氷・霧氷・雪原・凍った湖など、冬にしか見られない絶景の山%d選（%s）。雪山初心者向けのロープウェイ・ゴンドラの山、日帰りのコース、冬の装備（チェーンスパイク・アイゼン）、蔵王の樹氷の見頃と行き方つき。' % (len(cards), names)
-    return page('winter-views', title, desc, '冬の絶景が見られる山%d選【関東近郊】<br>樹氷・霧氷・雪山へ日帰りで' % len(cards), '冬の特集',
-                ['冬季', '📍 関東近郊', '樹氷・霧氷'], body, faq, '冬にしか見られない絶景の山', photos)
+    # 「関東近郊」だと東北の蔵王山・西吾妻山と合わないので「関東発」（2026-11-15。外部の監査の指摘）
+    title = '冬の絶景が見られる山%d選【関東発】樹氷・霧氷・雪原｜雪山初心者向けロープウェイの山・冬の行き方も' % len(cards)
+    desc = '関東から行ける樹氷・霧氷・雪原・凍った湖など、冬にしか見られない絶景の山%d選（%s）。樹氷を見るだけ・雪山入門・冬山の経験者向けに分け、冬のロープウェイ・ゴンドラ・バスの運行、冬の装備（チェーンスパイク・アイゼン）、蔵王の樹氷の見頃と行き方を載せました。' % (len(cards), names)
+    return page('winter-views', title, desc, '冬の絶景が見られる山%d選【関東発】<br>樹氷・霧氷・雪原と冬の行き方' % len(cards), '冬の特集',
+                ['冬季', '📍 関東発', '樹氷・霧氷'], body, faq, '冬にしか見られない絶景の山', photos)
 
 
 def main():

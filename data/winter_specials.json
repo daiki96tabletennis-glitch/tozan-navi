@@ -201,6 +201,26 @@
           "ktr": "3月18〜19日・9月24〜25日（日没）"
         }
       ]
+    },
+    "viewpoints": {
+      "koubousan": {
+        "name": "権現山の展望台（弘法山公園）",
+        "lat": 35.3717774,
+        "lng": 139.2432975,
+        "ele": 243.3,
+        "why": "関東の富士見百景の観賞地点が「弘法山公園 展望台」（権現山の山頂の展望台）のため。弘法山の山頂で計算すると1日ずれる",
+        "source": "OpenStreetMap の権現山の山頂（標高243.3m）"
+      }
+    },
+    "official": {
+      "takao": {
+        "label": "高尾登山電鉄の案内（2025年）",
+        "url": "https://www.takaotozan.co.jp/diamond/",
+        "text": "見ごろは12月17日〜28日・16時〜16時15分ごろ。観賞場所は高尾山山頂と、もみじ台（山頂から徒歩約5分）。期間中はケーブルカー・リフトを18時まで延長運転（天候不順のときは通常運転）。2026年の案内は2026年11月15日時点でまだ出ていない"
+      }
+    },
+    "viewNote": {
+      "nokogiriyama_chiba": "鋸山の山頂で計算。関東の富士見百景の観賞地点（ロープウェー山頂駅のあたり）で計算しても同じ日付（時刻は1分ほどの差）"
     }
   },
   "views": {
@@ -216,7 +236,16 @@
         "url": "https://yamagatakanko.com/attractions/detail_2721.html",
         "note": "Yamatch の蔵王山のページのコース（刈田岳・熊野岳）とは別の、山形県側のロープウェイで見る景色です。",
         "access": "JR山形駅からバス約40分の蔵王温泉で、蔵王ロープウェイに乗り継ぐ（山形県の公式観光サイト）",
-        "lift": "蔵王ロープウェイ"
+        "lift": "蔵王ロープウェイ",
+        "category": "sight",
+        "winterAccess": "JR山形駅からバス約40分の蔵王温泉で、蔵王ロープウェイに乗り継ぐ。樹氷は地蔵山頂駅のあたりで、登山はしない。山ページの登山コース（宮城県側の刈田岳・熊野岳）とは別の場所",
+        "winterLinks": [
+          {
+            "label": "山形県の公式観光サイト",
+            "url": "https://yamagatakanko.com/attractions/detail_2721.html"
+          }
+        ],
+        "winterShort": "ロープウェイで地蔵山頂駅へ（登山なし）"
       },
       {
         "id": "azuma",
@@ -226,7 +255,16 @@
         "season": "冬",
         "source": "林野庁 東北森林管理局「置賜森林管理署の見所（天元台）」",
         "url": "https://www.rinya.maff.go.jp/tohoku/introduction/gaiyou_kyoku/annai/midokoro/250311_25.html",
-        "note": null
+        "note": null,
+        "category": "expert",
+        "winterAccess": "天元台ロープウェイ（8:00〜17:00）と冬のリフトで北望台へ。北望台行きのリフトの最終は15:00。2026-27年は11月28日から冬の営業（点検の運休日あり）",
+        "winterLinks": [
+          {
+            "label": "天元台高原（冬）",
+            "url": "https://www.winter.tengendai.jp/"
+          }
+        ],
+        "winterShort": "天元台ロープウェイとリフト（北望台行きの最終15:00）"
       },
       {
         "id": "kitayokodake",
@@ -236,7 +274,16 @@
         "season": "冬",
         "source": "Yamatch の北横岳のページ（山の特徴）",
         "url": "/mountains/kitayokodake/",
-        "note": null
+        "note": null,
+        "category": "entry",
+        "winterAccess": "茅野駅からアルピコ交通のバスと北八ヶ岳ロープウェイで山頂駅へ。ロープウェイは2026年11月24日〜12月18日が点検で運休。冬山装備が要る標高2,480mの山",
+        "winterLinks": [
+          {
+            "label": "北八ヶ岳ロープウェイ",
+            "url": "https://www.kitayatu.jp/ropeway/"
+          }
+        ],
+        "winterShort": "ロープウェイ（11/24〜12/18は点検で運休）"
       },
       {
         "id": "nyukasayama",
@@ -244,9 +291,18 @@
         "text": "ゴンドラで山頂エリアまで上がり、スノーシューで雪原を歩けます。入笠湿原は一面の銀世界になり、山頂（1,955m）からは日本百名山を含む30座以上を見渡せます。冬は遠くまで見渡せる日が多いとされています。",
         "where": "富士見パノラマリゾートのゴンドラ山頂駅から入笠湿原・山頂",
         "season": "冬",
-        "source": "富士見パノラマリゾートの発表（2026年2月）",
+        "source": "富士見パノラマリゾートのプレスリリース（2026年2月・さんたつ掲載）",
         "url": "https://san-tatsu.jp/pressrelease/507217/",
-        "note": null
+        "note": null,
+        "category": "entry",
+        "winterAccess": "冬はウインターシーズン（2026年は12月12日から）のゴンドラで山頂エリアへ。ゴンドラは8:30〜16:00（下りの最終16:30）。富士見駅からの送迎バスの冬の運行はここでは確かめていない",
+        "winterLinks": [
+          {
+            "label": "富士見パノラマリゾート（冬山・スノートレッキング）",
+            "url": "https://www.fujimipanorama.com/snow/trekking/"
+          }
+        ],
+        "winterShort": "ゴンドラ（冬は12/12から・8:30〜16:00）"
       },
       {
         "id": "okutama",
@@ -256,7 +312,20 @@
         "season": "冬",
         "source": "Yamatch の大菩薩嶺のページ（山の特徴）",
         "url": "/mountains/okutama/",
-        "note": null
+        "note": null,
+        "category": "expert",
+        "winterAccess": "上日川峠へのバスは2026年12月13日まで。12月14日から4月中旬はバスが運休し、県道も冬期閉鎖（例年、塩山側は12月中旬から、大和側は1月上旬から）。上日川峠から歩く代表コースは冬はそのまま使えない。冬の登山口と歩く時間はここでは確かめていない",
+        "winterLinks": [
+          {
+            "label": "栄和交通（時刻表）",
+            "url": "https://eiwa-kotsu.jp/root.html"
+          },
+          {
+            "label": "甲州市（県道の冬期閉鎖）",
+            "url": "https://www.city.koshu.yamanashi.jp/faq/2012033100570/"
+          }
+        ],
+        "winterShort": "12/14〜4月中旬はバス運休・県道も冬期閉鎖"
       },
       {
         "id": "akagi",
@@ -266,9 +335,33 @@
         "season": "冬",
         "source": "前橋市 報道発表資料（2026年1月30日）",
         "url": "https://www.city.maebashi.gunma.jp/material/files/group/10/20260130.pdf",
-        "note": null
+        "note": null,
+        "category": "entry",
+        "winterAccess": "前橋駅からのバスは12月から冬ダイヤ。2026-27年の冬ダイヤは関越交通がまだ発表していない（夏ダイヤは11月30日まで）",
+        "winterLinks": [
+          {
+            "label": "関越交通（赤城山）",
+            "url": "https://kan-etsu.net/pages/42/"
+          }
+        ],
+        "winterShort": "バスは12月から冬ダイヤ（未発表）"
       }
-    ]
+    ],
+    "categoryNote": "区分は、冬の装備（装備カレンダー）・難易度・ロープウェイやゴンドラの有無から決めた記事の目安で、天気・雪の状態・経験によって変わります。安全を約束するものではありません。",
+    "categories": {
+      "sight": {
+        "label": "樹氷を見るだけ（登山なし）",
+        "text": "ロープウェイで上がり、駅のまわりで景色を見る。登山はしない"
+      },
+      "entry": {
+        "label": "雪山入門の候補",
+        "text": "ロープウェイ・ゴンドラで高いところまで上がれる、または冬の装備が軽アイゼン等の山。経験者と一緒に、天気の良い日に"
+      },
+      "expert": {
+        "label": "冬山の経験者向け",
+        "text": "冬山装備が要る稜線や、冬は登山口へのバス・車が使えない山"
+      }
+    }
   },
   "photos": {
     "hatsuhinode": {
@@ -323,13 +416,14 @@
         "modifications": "長辺1600pxのWebPに変換"
       },
       "tonosaki": {
-        "pick": "C3",
+        "pick": "C18",
         "src": "/images/articles/diamond-fuji/tonosaki.webp",
-        "credit": "Σ64",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:Mt.Fuji_from_Mt.Tonodake_07.jpg",
-        "commonsTitle": "File:Mt.Fuji from Mt.Tonodake 07.jpg",
+        "credit": "Kirt Cathey from Tokyo, Japan",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Sunset_Fuji_-_Flickr_-_Kirt_Seth_Cathey.jpg",
+        "source": "wikimedia_commons",
+        "sourceTitle": "File:Sunset Fuji - Flickr - Kirt Seth Cathey.jpg",
         "modifications": "長辺1600pxのWebPに変換"
       },
       "ohnoyama": {
@@ -353,14 +447,14 @@
         "modifications": "長辺1600pxのWebPに変換"
       },
       "nanaitsurasan": {
-        "pick": "F3",
+        "pick": "F4",
         "src": "/images/articles/diamond-fuji/nanaitsurasan.webp",
         "credit": "Masahiko Satoh",
         "license": "CC BY 2.0",
         "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
-        "pageUrl": "https://www.flickr.com/photos/70889690@N00/8001500955/",
+        "pageUrl": "https://www.flickr.com/photos/70889690@N00/8001512297/",
         "source": "flickr",
-        "sourceTitle": "Flickr:下山途中に見た富士山",
+        "sourceTitle": "Flickr:御来光直前",
         "modifications": "長辺1600pxのWebPに変換"
       },
       "ryugatake": {
@@ -394,21 +488,19 @@
         "modifications": "長辺1600pxのWebPに変換"
       },
       "kitayokodake": {
-        "pick": "C1",
+        "pick": "P1",
         "src": "/images/articles/winter-views/kitayokodake.webp",
-        "credit": "苗場山",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:%E5%8C%97%E6%A8%AA%E5%B2%B3.jpg",
-        "commonsTitle": "File:北横岳.jpg",
+        "source": "pakutaso",
+        "pageUrl": "https://www.pakutaso.com/20211039300post-36161.html",
+        "sourceTitle": "雪を纏った樹氷に覆われた北横岳の冬景色",
         "modifications": "長辺1600pxのWebPに変換"
       },
       "akagi": {
-        "pick": "P5",
+        "pick": "P4",
         "src": "/images/articles/winter-views/akagi.webp",
         "source": "pakutaso",
-        "pageUrl": "https://www.pakutaso.com/20180528138post-16212.html",
-        "sourceTitle": "赤城山覚満淵の雪と風のアート",
+        "pageUrl": "https://www.pakutaso.com/20180531138post-16213.html",
+        "sourceTitle": "赤城山覚満淵（かくまんぶち）の凍った湿原",
         "modifications": "長辺1600pxのWebPに変換"
       }
     }

@@ -40,5 +40,5 @@ jobs:
           python3 scripts/article_rank.py
           git config user.name "yamatch-article-rank"
           git config user.email "actions@users.noreply.github.com"
-          # 最新の状態の上に乗せ直して送る（公開のコピーで同じファイルが送られるとぶつかって失敗していた。2026-11-15）
+          # 最新の状態の上に乗せ直して送る（公開のコピーで同じファイルが送られてもぶつからないように。2026-11-15）
           bash scripts/git_publish.sh "記事一覧の並び順を更新（直近1週間の表示回数）" "" data/article_rank.json

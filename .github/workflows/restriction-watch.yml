@@ -59,7 +59,7 @@ jobs:
         run: |
           git config user.name "yamatch-admin-notice"
           git config user.email "actions@users.noreply.github.com"
-          # 最新の状態の上にお知らせを作り直して送る（ほかの定期実行と同じ行を書き換えてぶつかるため。2026-11-15）
+          # 最新の状態の上にお知らせを作り直して送る（ほかの定期実行も同じ朝に同じファイルを書くので、ぶつからないように。2026-11-15）
           bash scripts/git_publish.sh "運営者向けのお知らせを更新（規制・閉鎖の見張り）" 'python3 scripts/admin_notice.py --kind restrict --report restrict_report.md --code "${{ steps.check.outputs.code }}"' data/admin_notices.json
       - name: 定期実行が止まっていないかを見る
         id: health
@@ -75,7 +75,7 @@ jobs:
         run: |
           git config user.name "yamatch-admin-notice"
           git config user.email "actions@users.noreply.github.com"
-          # 最新の状態の上にお知らせを作り直して送る（ほかの定期実行と同じ行を書き換えてぶつかるため。2026-11-15）
+          # 最新の状態の上にお知らせを作り直して送る（ほかの定期実行も同じ朝に同じファイルを書くので、ぶつからないように。2026-11-15）
           bash scripts/git_publish.sh "運営者向けのお知らせを更新（定期実行の見張り）" 'python3 scripts/admin_notice.py --kind health --report health_report.md --code "${{ steps.health.outputs.code }}"' data/admin_notices.json
       - name: Issue を作る（今日新しく見つけたときだけ）
         if: steps.check.outputs.new != '0' && steps.check.outputs.new != ''

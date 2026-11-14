@@ -16,14 +16,14 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 import gen_winter_specials as G  # noqa: E402
 
-DAY = '2026-11-14'
+DAY = '2026-11-15'
 ICON = ('<svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px" fill="none" stroke="currentColor" stroke-width="2" '
         'stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/>'
         '<path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>')
 ARTICLES = [
     ('/articles/hatsuhinode-hiking/', '初日の出登山 関東｜山頂の日の出の時刻', '元日の始発で間に合うか・初詣ができる神社つき'),
     ('/articles/diamond-fuji/', 'ダイヤモンド富士が見える場所・山と時間', '2026-2027年のカレンダー。山頂から見られる日付と時刻を計算'),
-    ('/articles/winter-views/', '冬の絶景が見られる山（樹氷・霧氷・雪山）', '関東近郊。雪山初心者向けのロープウェイの山・日帰りのコース・冬の装備'),
+    ('/articles/winter-views/', '冬の絶景が見られる山（樹氷・霧氷・雪原）', '関東発。樹氷を見るだけ・雪山入門の山と、冬のロープウェイ・バスの運行'),
 ]
 
 
