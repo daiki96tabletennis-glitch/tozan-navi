@@ -18,6 +18,7 @@ import html
 import json
 import os
 import re
+import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PAGE = os.path.join(ROOT, 'articles', 'winter-no-crampons', 'index.html')
@@ -254,7 +255,7 @@ def main():
     desc = f'12月・1月・2月も雪や凍結が続かず、アイゼンなしで登れる関東の山7選。{names}を、新宿からの時間・歩く時間・冬は何時までに歩き始めるかで比べられます。'
     s = sub1(r'"text":"高尾山・鋸山・弘法山・御岳山・陣馬山(・筑波山・明神ヶ岳)?など[^"]*"',
              f'"text":"{names}など、関東の標高1,200m以下の山は太平洋側の気候の影響で積雪が少なく、Yamatchの装備の区分では冬も「アイゼン不要」です。ただし雪が降ったあとの数日は凍結が残ることがあるので、出発前に直近の降雪を確認してください。"', s)
-    s = sub1(r'\{"@type":"Question","name":"(❄️通年アイゼン不要と積雪少\(要確認\)の違いは何ですか？|「❄️ 通年アイゼン不要」は何を基準にしていますか？)","acceptedAnswer":\{"@type":"Answer","text":"[^"]*"\}\}',
+    s = sub1(r'\{"@type":"Question","name":"(❄️通年アイゼン不要と積雪少\(要確認\)の違いは何ですか？|「❄️ 通年アイゼン不要」は何を基準にしていますか？|「通年アイゼン不要」は何を基準にしていますか？)","acceptedAnswer":\{"@type":"Answer","text":"[^"]*"\}\}',
              '{"@type":"Question","name":"「❄️ 通年アイゼン不要」は何を基準にしていますか？","acceptedAnswer":{"@type":"Answer","text":"Yamatchの装備カレンダーで、12か月すべてが「アイゼン不要」の区分になっている山です。雪が降ったあとの数日だけ滑り止めが要る日は例外として扱っているので、念のためチェーンスパイクを持っていくと安心です。"}}', s)
     faq = faq_block(faq_items(s))
     if '<!-- winter-faq:start -->' in s:
@@ -275,6 +276,10 @@ def main():
              '<p class="article-desc">12〜2月も雪や凍結が続かず、アイゼンなしで登れる関東の山を7つ選びました。新宿からの時間、歩く時間、冬は何時までに歩き始めるかまで比べられます。</p>', s)
     s = sub1(r'最終更新: [0-9-]+</span>', f'最終更新: {UPDATED}</span>', s)
     s = sub1(r"title:'[^']*'", f"title:'{SHORT}'", s, count=1)
+    # 絵文字は線画のアイコンにする（2026-11-15。ym_icons.emoji_to_icons。何度流しても同じ結果）
+    sys.path.insert(0, os.path.join(ROOT, 'scripts'))
+    import ym_icons
+    s = ym_icons.emoji_to_icons(s)
     open(PAGE, 'w', encoding='utf-8').write(s)
 
     # 記事を紹介しているほかのページ

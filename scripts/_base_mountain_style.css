@@ -303,3 +303,18 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
 .hero-counts .hc-item{display:inline-flex;align-items:center;gap:3px;font-size:12px;color:#4a4540}
 .hero-counts .hc-item b{font-weight:700}
 .ym-ic{display:inline-block;vertical-align:-0.14em;flex-shrink:0;}
+
+/* コースの比較表（2026-11-15〜。gen_mountain_pages.py の render_route_table） */
+.rc-title{font-size:12px;font-weight:700;color:#4e6535;margin:2px 0 6px}
+.rc-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 4px;border:1px solid #e6e1d6;border-radius:10px}
+.rc-table{width:100%;border-collapse:collapse;font-size:11.5px;line-height:1.45}
+.rc-table th{font-size:10.5px;font-weight:700;color:#6a6058;background:#f6f3ec;padding:6px 5px;text-align:left;white-space:nowrap;border-bottom:1px solid #e6e1d6}
+.rc-table td{padding:7px 5px;border-bottom:1px solid #f0ede8;vertical-align:top;color:#2a2520}
+.rc-table tr:last-child td{border-bottom:none}
+.rc-table td.rc-n{font-weight:600;min-width:7.5em}
+.rc-num{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:5px;background:#4e6535;color:#fff;font-size:10px;font-weight:700;margin-right:5px;vertical-align:1px}
+.rc-table td.rc-v{white-space:nowrap}
+.rc-table td.rc-time{font-weight:700;color:#4e6535}
+.rc-table td.rc-c{text-align:center}
+.rc-table td.rc-hz .rl-tag{display:inline-flex;margin:0 3px 3px 0;white-space:nowrap}
+.rc-note{font-size:10.5px;color:#9a9088;margin:0 0 10px;line-height:1.6}

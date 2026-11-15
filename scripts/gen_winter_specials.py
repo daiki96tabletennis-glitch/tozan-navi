@@ -60,8 +60,10 @@ def css():
              '.ws-src{font-size:12px;color:#777;margin-top:6px}'
              '.ws-note{background:#f7f6f2;border-radius:10px;padding:10px 14px;font-size:13px;line-height:1.7;margin-top:10px}'
              # ダイヤモンド富士の月ごとのカレンダー（2026-11-15）
-             '.dfcal-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-bottom:10px}'
-             '.dfcal-legend{grid-column:1/-1;font-size:13px;line-height:2;background:#fff;border-radius:10px;padding:8px 12px}'
+             '.dfcal-wrap{display:flex;gap:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding:2px 2px 10px;margin-bottom:10px}'
+             '.dfcal-wrap .dfcal{flex:0 0 270px;scroll-snap-align:start}'
+             '.dfcal-legend{font-size:13px;line-height:2;background:#fff;border-radius:10px;padding:8px 12px;margin-bottom:8px}'
+             '.dfcal-hint{font-size:12.5px;color:#666;margin:0 0 6px;text-align:center}'
              '.dfcal{background:#fff;border-radius:10px;padding:8px 8px 10px}.dfcal-h{font-weight:700;color:#2a3e2a;margin:0 0 4px 4px}'
              '.dfcal table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:11px}'
              '.dfcal th{color:#888;font-weight:600;padding:2px 0}.dfcal td{vertical-align:top;height:38px;padding:1px;border-top:1px solid #f0ede5;text-align:center}'
@@ -418,9 +420,10 @@ def month_calendar(L):
                 days.setdefault(d, []).append((x['m'], e))
                 d += datetime.timedelta(days=1)
     months = sorted({(d.year, d.month) for d in days})
-    out = ['<div class="dfcal-legend">' + ''.join(
+    legend = ('<div class="dfcal-legend">' + ''.join(
         '<a href="#m-%s" class="dfc %s">%s</a>%s　' % (x['m']['id'], 'am' if x['ev'][0]['morning'] else 'pm', esc(abbr[x['m']['id']]), esc(x['m']['name'])) for x in L) +
-        '<br><span class="dfc am">　</span>日の出　<span class="dfc pm">　</span>日没（計算。前後2〜3日の幅を見てください）</div>']
+        '<br><span class="dfc am">　</span>日の出　<span class="dfc pm">　</span>日没（計算。前後2〜3日の幅を見てください）</div>')
+    out = []
     for y, mo in months:
         first = datetime.date(y, mo, 1)
         nxt = datetime.date(y + (mo == 12), mo % 12 + 1, 1)
@@ -437,7 +440,9 @@ def month_calendar(L):
         rows = ''.join('<tr>%s</tr>' % ''.join('<td%s>%s</td>' % (' class="on"' if 'dfc' in c else '', c) for c in cells[i:i + 7]) for i in range(0, len(cells), 7))
         out.append('<div class="dfcal"><div class="dfcal-h">%d年%d月</div><table><tr>%s</tr>%s</table></div>' % (
             y, mo, ''.join('<th>%s</th>' % w for w in '日月火水木金土'), rows))
-    return '<div class="dfcal-wrap">' + ''.join(out) + '</div>'
+    # 月を横に並べてスクロールする（縦に長くなりすぎるため。運営者の指示・2026-11-15）
+    return (legend + '<p class="dfcal-hint">← 横にスクロールすると、ほかの月（%d年%d月〜%d年%d月）が見られます →</p>' % (
+        months[0][0], months[0][1], months[-1][0], months[-1][1]) + '<div class="dfcal-wrap">' + ''.join(out) + '</div>')
 
 
 def diamond(M, SC, W):

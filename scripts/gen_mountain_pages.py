@@ -1238,6 +1238,41 @@ def tech_summary(mt):
     )
 
 
+# コースの比較表（2026-11-15〜。運営者の指示「塔ノ岳だけまずつくって」。見た目を確かめてから広げる）
+ROUTE_TABLE_IDS = {"tonosaki"}
+
+
+def render_route_table(mt):
+    """代表的な登山ルートの上に、コースを横に並べて比べる表。中身はすべて routes のデータ。難所の列は、どれかのコースに難所のデータがある山だけ"""
+    routes = mt.get("routes") or []
+    if mt.get("id") not in ROUTE_TABLE_IDS or len(routes) < 2:
+        return ""
+    has_hz = any(tech_level(r.get("tech")) or r.get("chains") or r.get("rocks") for r in routes)
+    has_train = any(r.get("byTrain") for r in routes)
+    icon = ROUTE_TRAIN_ICON.replace("margin-left:6px", "margin-left:0")
+    head = ["コース", "種類", "歩く時間", "距離", "登り"] + (["難所"] if has_hz else []) + (["電車"] if has_train else [])
+    rows = []
+    for i, r in enumerate(routes, start=1):
+        t = COURSE_TYPE.get(r.get("courseType"))
+        hz = "".join([tech_tag(r["tech"]) if tech_level(r.get("tech")) else "", chain_tag(r), rock_tag(r)]) or "—"
+        cells = [
+            f'<td class="rc-n"><span class="rc-num">{i}</span>{esc(route_display_name(r))}</td>',
+            f'<td class="rc-v">{esc(t[0]) if t else "—"}</td>',
+            f'<td class="rc-v rc-time">{esc(r.get("time") or "—")}</td>',
+            f'<td class="rc-v">{esc(r.get("distance") or "—")}</td>',
+            f'<td class="rc-v">{esc((r.get("elevation") or "—").lstrip("+"))}</td>',
+        ]
+        if has_hz:
+            cells.append(f'<td class="rc-hz">{hz}</td>')
+        if has_train:
+            cells.append(f'<td class="rc-v rc-c">{icon if r.get("byTrain") else "—"}</td>')
+        rows.append("<tr>" + "".join(cells) + "</tr>")
+    return ('<div class="rc-title">コースを比べる（%dコース）</div>' % len(routes)
+            + '<div class="rc-wrap"><table class="rc-table"><thead><tr>' + "".join(f"<th>{h}</th>" for h in head)
+            + '</tr></thead><tbody>' + "".join(rows) + '</tbody></table></div>'
+            + '<p class="rc-note">番号は下のコースの一覧と同じです。登りは累積の標高差、電車の印は電車・バスで行ける場所から歩き始めるコース。</p>')
+
+
 def render_routes(mt):
     routes = require(mt, "routes")
     items = []
@@ -1307,7 +1342,7 @@ def render_routes(mt):
         'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
         '<circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/>'
         '<path d="M5 17 C5 12 9 12 9 9 C9 6 12 6 12 9 C12 13 19 13 19 7"/></svg>'
-        f'{esc(mt["name"])}の代表的な登山ルート</h2><div class="route-list-c">{items_html}</div>{train_note}{coeff_note}</div>'
+        f'{esc(mt["name"])}の代表的な登山ルート</h2>{render_route_table(mt)}<div class="route-list-c">{items_html}</div>{train_note}{coeff_note}</div>'
     )
 
 

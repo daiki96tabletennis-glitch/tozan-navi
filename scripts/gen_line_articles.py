@@ -22,6 +22,17 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MARK = '<!-- generated: scripts/gen_line_articles.py（手で編集しない。data/line_articles.json を直して作り直す） -->'
 TODAY = None
+# 出発地（記事ごとに line_articles.json の dep。無ければ新宿。横浜発の JR 東海道線の記事のため 2026-11-15〜）
+DEP = 'shinjuku'
+DEP_NAME = {'shinjuku': '新宿', 'yokohama': '横浜', 'omiya': '大宮'}
+
+
+def dep_name():
+    return DEP_NAME[DEP]
+
+
+def dep_key(field):
+    return field + DEP[0].upper() + DEP[1:]
 
 E = html.escape
 
@@ -60,7 +71,7 @@ def only_walk_dropped(full, cut):
 
 
 def access_html(m, item):
-    full = m['trainRoutes']['routes']['shinjuku']['legs']
+    full = m['trainRoutes']['routes'][DEP]['legs']
     own = item.get('legs')  # 山の経路とは別の駅から歩くコース（記事の側に新宿からの区間と運賃 fare を持つ。陣馬山。2026-11-11）
     legs = own or legs_until(full, item.get('accessUntil'))
     parts = []
@@ -73,8 +84,8 @@ def access_html(m, item):
             total += d
             parts.append('<span class="la-mv">%s %s</span>' % (E(meth.get('line') or ''), hm(d)))
     line = '<span class="la-ar">→</span>'.join(parts)
-    fare = item.get('fare') if own else m.get('fareShinjuku')
-    head = '新宿から約%s' % hm(total)
+    fare = item.get('fare') if own else m.get(dep_key('fare'))
+    head = '%sから約%s' % (dep_name(), hm(total))
     whole = bool(own and fare) or (not own and (not item.get('accessUntil') or only_walk_dropped(full, legs)))
     if fare and whole:
         head += '・%s' % yen(fare)
@@ -99,9 +110,9 @@ def alt_access_html(alt):
             total += x['min']
             parts.append('<span class="la-mv">%s %s</span>' % (E(x['line']), hm(x['min'])))
     src = '・'.join('<a href="%s" target="_blank" rel="noopener">%s</a>' % (E(u), E(t)) for t, u in alt.get('sources') or [])
-    return ('<div class="la-access la-alt-access"><div class="la-h">%s<span class="la-sum">新宿から約%s・%s（%s）</span></div>'
+    return ('<div class="la-access la-alt-access"><div class="la-h">%s<span class="la-sum">%sから約%s・%s（%s）</span></div>'
             '<div class="la-legs">%s</div><p class="la-anote">%s</p><p class="la-src">出典：%s（%s 確認）</p></div>'
-            % (E(alt['title']), hm(total), yen(alt['fare']), E(alt.get('fareNote') or ''),
+            % (E(alt['title']), dep_name(), hm(total), yen(alt['fare']), E(alt.get('fareNote') or ''),
                '<span class="la-ar">→</span>'.join(parts), E(alt.get('note') or ''), src, E(alt.get('checked') or '')))
 
 
@@ -194,9 +205,9 @@ def fill(text, by):
         if kind == 'up':
             return '+%sm' % str(r.get('elevation')).lstrip('+').replace('m', '')
         if kind == 'train':
-            return hm(m['trainTimeShinjuku'])
+            return hm(m[dep_key('trainTime')])
         if kind == 'fare':
-            return yen(m['fareShinjuku'])
+            return yen(m[dep_key('fare')])
         if kind == 'status':
             st = m.get('status') or {}
             return 'いまは閉鎖中' if st.get('level') == 'restricted' else '通年で歩ける'
@@ -235,6 +246,8 @@ CSS = '''<style id="la-css">
 
 
 def build(slug, cfg, by, gear, pages_dir):
+    global DEP
+    DEP = cfg.get('dep') or 'shinjuku'
     path = os.path.join(pages_dir, slug, 'index.html')
     src = open(path, encoding='utf-8').read()
     color, tint = cfg['color'], cfg['tint']

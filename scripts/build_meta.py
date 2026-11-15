@@ -104,6 +104,33 @@ INTENT = json.load(open(_ip, encoding='utf-8'))['mountains'] if os.path.exists(_
 EASY = ('初級', '初〜中級')
 
 
+# 「難易度」の見出しの新しい型を試す山（2026-11-15〜。運営者の指示「塔ノ岳だけまずつくって」）。
+# 前の型は答え（難易度・時間）が見出しで済んでしまい、難易度の検索の CTR が低かった（28日で表示1.8万回・平均5位・CTR 2.1%）。
+# 新しい型は「初心者は登れる？」と、ページで分かること（難所・コースの比較）を見出しに出す。ページには比較表（gen_mountain_pages.py の ROUTE_TABLE_IDS）を置く
+DIFF_TEST_IDS = {"tonosaki"}
+
+
+def hazard(m):
+    """コースの難所（データにあるものだけ）：鎖場 → 岩場 → 技術D・E → 技術C"""
+    rs = m.get('routes') or []
+    if any(r.get('chains') for r in rs):
+        return '鎖場あり'
+    if any(r.get('rocks') for r in rs):
+        return '岩場あり'
+    if any((r.get('tech') or {}).get('grade') in ('D', 'E') or (r.get('tech') or {}).get('level') == 'hard' for r in rs):
+        return '岩場の難所あり'
+    if any((r.get('tech') or {}).get('grade') == 'C' for r in rs):
+        return '難所あり'
+    return ''
+
+
+def diff_test_head(m):
+    lv, n = m.get('difficulty') or '', len(m.get('routes') or [])
+    q = '初心者でも登れる・' if lv == '初級' else '初心者は登れる？'
+    parts = ([hazard(m)] if hazard(m) else []) + (['%dコースの時間を比較' % n] if n >= 2 else [])
+    return '%s登山の難易度は%s｜%s' % (m['name'], lv, (q + '・'.join(parts)) if parts else q.rstrip('・'))
+
+
 def intent_of(m):
     """その山で、検索する人がいちばん知りたいこと（Search Console の検索語から。scripts/gsc_import.py）。
     検索語のデータが無い山・「コース」「標高差」が多い山は、サイト全体でいちばん多い「難易度」の形にする"""
@@ -141,6 +168,8 @@ def build_title(m):
         a_short = ''
     else:
         head = '%s 登山の難易度は%s｜%s%s' % (name, lv, tp, ('・標高差' + g) if g else '')
+    if it == '難易度' and m['id'] in DIFF_TEST_IDS:
+        head, a_short = diff_test_head(m), ''
     tag = '【%s】' % cat if cat in ('百名山', '二百名山') else ''
     if (m.get('status') or {}).get('level') == 'restricted':
         tag = '【入山規制あり】'
@@ -194,6 +223,8 @@ def build_desc(m):
         s += a_long + '。'
     if it != '日帰り':
         s += '日帰りできます。' if day else '山小屋泊がおすすめです。'
+    if it == '難易度' and m['id'] in DIFF_TEST_IDS and len(m.get('routes') or []) >= 2:
+        s += '%dコースの時間・距離・登りを表で比べられます。' % len(m['routes'])
     ss = summit_season(m)
     if ss:
         s += '山頂まで登れるのは決まった期間だけです（%d年は%s〜%s。期間外は登れません）。' % ss

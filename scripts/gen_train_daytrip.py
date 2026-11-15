@@ -212,9 +212,9 @@ def card(n, m, lb):
         + '  <h3 class="td-name"><span class="td-no">%d</span><a href="/mountains/%s/">%s</a><span class="td-sub">%s・%s・%sm</span></h3>\n' % (
             n, E(m['id']), E(m['name']), E(m.get('difficulty')), E(m.get('area') or ''), '{:,}'.format(int(m['elevation'])) if m.get('elevation') else '')
         + '  %s\n' % photo_box(m, 'td-photo-img')
-        + '  <div class="td-key"><div><span>🚃 新宿から</span><b>%s</b></div><div><span>💴 片道</span><b>%s</b></div><div><span>🥾 歩く</span><b>%s</b></div></div>\n' % (
+        + '  <div class="td-key"><div><span>⏱ 新宿から</span><b>%s</b></div><div><span>💴 片道</span><b>%s</b></div><div><span>🥾 歩く</span><b>%s</b></div></div>\n' % (
             E(hm(dep_time(m))), E(yen(dep_fare(m))), E(r.get('time') or '—'))
-        + '  <div class="td-sec"><div class="td-h">🚃 行き方（新宿から）</div><div class="td-path">%s</div>%s</div>\n' % (
+        + '  <div class="td-sec"><div class="td-h">🛤 行き方（新宿から）</div><div class="td-path">%s</div>%s</div>\n' % (
             path_text(m), ('<ul class="td-notes">%s</ul>' % notes) if notes else '')
         + '  <div class="td-sec"><div class="td-h">🥾 コース</div><div class="td-walk"><b>%s</b><span>%s%s</span></div></div>\n' % (
             E(r.get('name') or ''), E(r.get('time') or ''), ('・' + walk) if walk else '')
@@ -455,6 +455,10 @@ def main():
         '<link rel="canonical" href="%s">' % URL,
     ] + ['<script type="application/ld+json">%s</script>' % json.dumps(x, ensure_ascii=False, separators=(',', ':')) for x in ld] + [
         style, '</head>', '<body>', MARK, header, main_html, footer, '<script src="/assets/js/to-top.js?v=20261025a" defer></script>', '<script src="/assets/js/card-photos.js?v=20261030" defer></script>', '<script src="/assets/js/card-photo-credits.js?v=20261105b" defer></script>', '</body>', '</html>', ''])
+    # 絵文字は線画のアイコンにする（2026-11-15。運営者の指示。前は見出しに絵文字を使っていた＝2026-10-30 の指示）
+    sys.path.insert(0, os.path.join(ROOT, 'scripts'))
+    import ym_icons
+    page = ym_icons.emoji_to_icons(page)
     open(PAGE, 'w', encoding='utf-8').write(page)
     print('作りました：%d山（ほか%d山）／最終バス 確認済み %d・徒歩 %d・確認中 %d' % (
         total, len(rest), sum(1 for v in cfg['lastBus'].values() if v.get('status') == 'ok'),
