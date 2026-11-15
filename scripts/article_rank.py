@@ -5,7 +5,7 @@
 - GA4 の「表示回数」（screenPageViews）を、記事ごとに直近7日間（GA4 は1〜2日遅れるので、7日前〜昨日）で数え、多い順に並べる
 - 新しい記事は、記事一覧に初めて載った日から14日間は、表示回数に関係なく上に出す（新しい順）
 - 書くのは並び順と、記事が初めて載った日だけ。**表示回数は書かない**（リポジトリもサイトも誰でも読めるため）
-- 対象は、記事一覧の上のカード（articles/index.html の class="acard"）。将来まとめ記事も入れるときは TARGETS を足す
+- 対象は、記事一覧の上のカード（articles/index.html の class="acard"）。コース定数の5本（coeff-10〜50）は 2026-11-16 にまとめの欄（チップ）へ移したので対象外（運営者の指示）。将来まとめ記事も入れるときは TARGETS を足す
 - AIは使わない。.github/workflows/article-rank.yml が毎朝実行し、data/article_rank.json をコミットする
 
   python3 scripts/article_rank.py            # GA4 を読んで data/article_rank.json を書く（鍵は admin_dashboard.py と同じ）
