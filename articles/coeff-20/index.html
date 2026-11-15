@@ -193,12 +193,6 @@ body{padding-bottom:80px}
 <a href="/articles/" class="other-article-link"><span>記事一覧をみる</span><span>→</span></a>
 </div>
 </main>
-<div class="share-section">
-  <button class="share-btn share-btn-native" onclick="if(navigator.share){navigator.share({title:'コース定数20以下のおすすめ登山（関東）',url:location.href})}else{navigator.clipboard.writeText(location.href);alert('URLをコピーしました')}">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="16"/><path d="M8 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-3"/></svg>シェア
-  </button>
-  <button class="share-btn share-btn-copy" onclick="navigator.clipboard.writeText(location.href);alert('URLをコピーしました')">URLをコピー</button>
-</div>
 
 <script>
 (function(){
@@ -388,4 +382,5 @@ function gearRenderCard(c, mid, position){
 
 <script src="/assets/js/to-top.js?v=20261025a" defer></script>
 <script src="/assets/js/card-photo-credits.js?v=20261105b" defer></script>
+<script src="/assets/js/share-btn.js?v=20261116" defer></script>
 </body></html>

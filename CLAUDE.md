@@ -603,6 +603,12 @@
 - 将来まとめ記事（`/search/…`）も入れるときは、`article_rank.py` の `TARGETS` と、ページの並べ替えのスクリプトを足す
 - 定期実行がコミットするので、公開のコピーの手順2で GitHub 側の `data/article_rank.json` を作業フォルダへ戻す
 
+## 記事・まとめの共有ボタン（2026-11-16〜。運営者の指示「簡易的なもので iOS 共有ボタンのみ・ヘッダーとフッターに」）
+- `assets/js/share-btn.js` が、記事（/articles/<記事>/）とまとめ（/search/<まとめ>/）の全48ページで、ヘッダーの右（iOS の共有の形のアイコン。Lucide「share」）とページの下（「このページを共有する」。footer の前、footer が無いページは main の後ろ）にボタンを差し込む。押すと端末の共有（題名は og:title、URL は canonical）、使えない端末は URL をコピー。GA4 の `share_click`（place・method）
+- 読み込みは `scripts/migrations/add_share_button_2026_11.py`（記事・まとめを足したら流す）。`gen_winter_specials.py`（冬の特集・温泉サウナ・サウナシュラン）と `gen_train_daytrip.py` は自分で入れる。`gen_line_articles.py`・`gen_gourmet_article.py` はページの末尾を引き継ぐので残る
+- 幅400px未満の端末では、ロゴとボタンが重ならないよう、ヘッダーのボタンの文字を「検索」「記事一覧」に縮める（375pxでも前から4px重なっていた）
+- 前からあった共有の帯（「シェア」「URLをコピー」。コース定数の5本・冬でも登れる山・東京から3時間・グルメ）は外した（二重になるため。冬でも登れる山の帯は `{{` の書き間違いで動いていなかった）。前のページは `.claude/backup/old_share_section_2026_11_16/`
+
 ## 一番上へ戻るボタン（2026-10-25〜）
 - トップ・山ページ・記事・まとめ（`/search/`）・ガイドに、`assets/js/to-top.js` を読み込む。少しでも（40px）スクロールすると右下に半透明の ⇧ ボタンが出て、押すと一番上へ戻る。画面の下に固定のバー（下のメニューなど）があるときはその上に出す
 - 山ページは `gen_mountain_pages.py`、電車で行ける日帰り登山20選は `gen_train_daytrip.py` が読み込みを入れる。山グルメの記事は `tokyo-daytrip-5` のページの末尾を写すので、そのページに入っていればよい

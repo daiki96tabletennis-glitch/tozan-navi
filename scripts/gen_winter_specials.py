@@ -127,6 +127,7 @@ def page(slug, title, desc, h1, label, pills, body, faq, crumb, photos):
                esc(label), h1, esc(desc), CAL_ICON, UPDATED, ''.join('\n      <span class="meta-pill">%s</span>' % esc(p) for p in pills)),
            '<main>', body, faq_html, '</main>', FOOTER,
            '<script src="/assets/js/to-top.js?v=20261025a" defer></script>',
+           '<script src="/assets/js/share-btn.js?v=20261116" defer></script>',   # 共有ボタン（ヘッダーとページの下。2026-11-16）
            '<script src="/assets/js/card-photo-credits.js?v=20261105b" defer></script>',
            '</body></html>\n']
     return '\n'.join(x for x in out if x != '')

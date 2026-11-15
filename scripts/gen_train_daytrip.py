@@ -454,7 +454,7 @@ def main():
         '<meta property="og:type" content="website">', '<meta property="og:url" content="%s">' % URL,
         '<link rel="canonical" href="%s">' % URL,
     ] + ['<script type="application/ld+json">%s</script>' % json.dumps(x, ensure_ascii=False, separators=(',', ':')) for x in ld] + [
-        style, '</head>', '<body>', MARK, header, main_html, footer, '<script src="/assets/js/to-top.js?v=20261025a" defer></script>', '<script src="/assets/js/card-photos.js?v=20261030" defer></script>', '<script src="/assets/js/card-photo-credits.js?v=20261105b" defer></script>', '</body>', '</html>', ''])
+        style, '</head>', '<body>', MARK, header, main_html, footer, '<script src="/assets/js/to-top.js?v=20261025a" defer></script>', '<script src="/assets/js/share-btn.js?v=20261116" defer></script>', '<script src="/assets/js/card-photos.js?v=20261030" defer></script>', '<script src="/assets/js/card-photo-credits.js?v=20261105b" defer></script>', '</body>', '</html>', ''])
     # 絵文字は線画のアイコンにする（2026-11-15。運営者の指示。前は見出しに絵文字を使っていた＝2026-10-30 の指示）
     sys.path.insert(0, os.path.join(ROOT, 'scripts'))
     import ym_icons
