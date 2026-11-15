@@ -1,0 +1,532 @@
+{
+  "_note": "記事「登山のあとの温泉・サウナ」（/articles/hiking-onsen-sauna/）の中身。scripts/gen_onsen_article.py が mountains.json（コース・時間・装備・写真）と合わせてページを作る。料金・日帰りの時間・最終受付・設備は施設の公式サイトで確かめた値だけを書く（checked）。ホテルは日帰り入浴の時間を書く（運営者の指示・2026-11-15）。施設の写真は外観だけ（Wikimedia Commons の作者表示つき、または楽天トラベルの API。運営者の指示・2026-11-15）。元の案は運営者が用意した hiking-onsen-sauna.html",
+  "checked": "2026-11-15",
+  "plans": [
+    {
+      "id": "ishiwariyama",
+      "route": 0,
+      "mode": "電車・バス",
+      "why": "割れ目の入った巨岩のある石割神社を通って、富士山と山中湖を見下ろす山頂へ。下山後は山中湖を見下ろすホテルで日帰り入浴ができます。",
+      "move": "山中湖平野から富士急バス「ふじっ湖号」でホテルマウント富士入口へ。バス停からホテルの送迎（約10分。着いたら電話で呼ぶ）",
+      "moveShort": "バス＋ホテルの送迎（約10分）",
+      "facilities": [
+        {
+          "key": "mtfuji",
+          "name": "ホテルマウント富士",
+          "type": "ホテルの日帰り入浴",
+          "tags": [
+            "日帰り入浴",
+            "タオル付き"
+          ],
+          "text": "山中湖を見下ろす高台のホテル。日帰り入浴は「満天星の湯」と「はなれの湯」で、受付の時間が湯ごとに違います。",
+          "fee": "2,500円（フェイスタオル・バスタオル付き）",
+          "feeShort": "2,500円",
+          "hours": "満天星の湯 14:00〜18:00／はなれの湯 12:00〜16:00（水曜は14:00〜16:00）",
+          "last": "受付は上の時間内。土日・繁忙期は15:00で受付を終える場合あり",
+          "note": "日帰り入浴の受付は夕方で終わります。午前に歩き始め、早めに下山しましょう。サウナを日帰りで使えるかは、公式サイトに書かれていません",
+          "links": [
+            {
+              "label": "日帰り入浴（公式）",
+              "url": "https://www.mtfuji-hotel.com/spa/dayuse.html"
+            },
+            {
+              "label": "アクセス・送迎（公式）",
+              "url": "https://www.mtfuji-hotel.com/access/"
+            }
+          ],
+          "photo": {
+            "src": "/images/articles/hiking-onsen-sauna/mtfuji.webp",
+            "alt": "明神山から見たホテルマウント富士と山中湖",
+            "credit": "Alpsdake",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Hotel_Mt_Fuji_from_Mount_Myojin.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kukiyama",
+      "route": 1,
+      "mode": "電車",
+      "why": "山頂の南側の「富士見平」から富士山を大きく望める山。禾生駅から登って田野倉駅へ下りる、駅から駅への縦走です。帰りの電車を少し乗れば、駅前の温泉に着きます。",
+      "move": "田野倉駅から富士急行線で都留市駅へ（河口湖方面）。駅から徒歩1分",
+      "moveShort": "富士急行線＋徒歩1分",
+      "facilities": [
+        {
+          "key": "yorimichi",
+          "name": "山梨泊まれる温泉 より道の湯",
+          "type": "温泉・サウナ",
+          "tags": [
+            "温泉",
+            "サウナ",
+            "岩盤浴",
+            "駅から徒歩1分"
+          ],
+          "text": "都留市駅の目の前の温泉施設。サウナ（男性サウナは定期的にロウリュ熱波）、岩盤浴、レストランがあり、泊まることもできます。",
+          "fee": "平日1,300円／土日祝1,500円（岩盤浴＋550円、館内着・タオル＋300円）",
+          "feeShort": "1,300円〜",
+          "hours": "10:00〜23:00（岩盤浴は22:00まで）",
+          "last": "22:00（岩盤浴は21:00）",
+          "note": "帰りは都留市駅から大月方面の電車へ",
+          "links": [
+            {
+              "label": "料金・営業時間（公式）",
+              "url": "https://yorimichinoyu.jp/price/"
+            },
+            {
+              "label": "アクセス（公式）",
+              "url": "https://yorimichinoyu.jp/access/"
+            }
+          ],
+          "rakutenHotelNo": "167096"
+        }
+      ]
+    },
+    {
+      "id": "kagenobusan",
+      "route": 2,
+      "mode": "電車・バス",
+      "why": "小仏から景信山・城山・高尾山とつなぐ奥高尾の縦走。茶屋の多い尾根を歩いて高尾山口へ下り、駅のそばのサウナや温泉へ。",
+      "move": "稲荷山コースで高尾山口駅へ下りる。TAKAO 36 SAUNA は駅の改札から徒歩2分、極楽湯は駅のとなり",
+      "moveShort": "高尾山口駅から徒歩すぐ",
+      "facilities": [
+        {
+          "key": "takao36",
+          "name": "TAKAO 36 SAUNA",
+          "type": "サウナ専門",
+          "tags": [
+            "サウナ",
+            "時間制",
+            "駅から徒歩2分"
+          ],
+          "text": "時間制のサウナ施設。3階の「山」と2階の「麓」の2つの浴室があり、男女の入れ替えの日程は公式サイトのお知らせにあります。温泉ではありません。",
+          "fee": "平日 25分1,000円・60分1,800円・120分2,800円／休日 25分1,000円・45分1,800円・90分2,800円（タオル込み。延長は20分500円）",
+          "feeShort": "25分1,000円〜",
+          "hours": "11:00〜20:00（木曜休み。木曜が祝日なら金曜。繁忙期は不定休・無休あり）",
+          "last": "19:00",
+          "note": "女性は25分のプラン以外で30分の延長が無料",
+          "links": [
+            {
+              "label": "料金・営業時間（公式）",
+              "url": "https://takao36sauna.com/price/"
+            },
+            {
+              "label": "アクセス（公式）",
+              "url": "https://takao36sauna.com/access/"
+            }
+          ]
+        },
+        {
+          "key": "gokurakuyu",
+          "name": "京王高尾山温泉 極楽湯",
+          "type": "温泉・サウナ",
+          "tags": [
+            "天然温泉",
+            "サウナ",
+            "水風呂",
+            "駅のとなり"
+          ],
+          "text": "高尾山口駅のとなりの日帰り温泉。地下約1,000mから湧く天然温泉（アルカリ性単純温泉）の露天岩風呂、サウナ、水風呂があります。",
+          "fee": "平日1,100円／土日祝・繁忙期1,300円",
+          "feeShort": "1,100円〜",
+          "hours": "8:00〜22:30（年中無休。点検などで臨時休業あり）",
+          "last": "21:45",
+          "note": "登山の帰りの時間は混み合います",
+          "links": [
+            {
+              "label": "営業案内（公式）",
+              "url": "https://www.takaosan-onsen.jp/info/index.html"
+            },
+            {
+              "label": "お風呂（公式）",
+              "url": "https://www.takaosan-onsen.jp/bath/index.html"
+            }
+          ],
+          "photo": {
+            "src": "/images/articles/hiking-onsen-sauna/gokurakuyu.webp",
+            "alt": "京王高尾山温泉 極楽湯の外観",
+            "credit": "Thirteen-fri",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Keio-Takaosan-Onsen-Gokurakuyu.jpg"
+          }
+        }
+      ],
+      "linkAlso": [
+        "takao"
+      ]
+    },
+    {
+      "id": "tenzandake",
+      "route": 0,
+      "mode": "電車・バス",
+      "why": "飯能駅から歩いて登れる低山。飯能の街と関東平野を眺めて軽く歩いたあとは、宮沢湖のほとりの温泉で午後をゆっくり過ごせます。",
+      "move": "飯能駅北口1番線から「メッツァ」行きのバスでメッツァへ。バス停から徒歩約5分",
+      "moveShort": "バス＋徒歩約5分",
+      "facilities": [
+        {
+          "key": "kirari",
+          "name": "宮沢湖温泉 喜楽里 別邸",
+          "type": "温泉・岩盤浴",
+          "tags": [
+            "天然温泉",
+            "露天風呂",
+            "温熱房・岩盤浴"
+          ],
+          "text": "宮沢湖を望む露天風呂のある天然温泉。「温熱房」と岩盤浴があり、食事をして長く過ごせます（公式サイトに「サウナ」の名前の設備は書かれていません）。",
+          "fee": "入館（タオルなし）平日1,050円／土・休日1,100円。ゆったりコース（タオル・温熱房と岩盤浴つき）平日1,900円／土・休日2,150円",
+          "feeShort": "1,050円〜",
+          "hours": "9:00〜23:00",
+          "last": "22:00",
+          "note": "未就学児は入館できません。帰りのバスの時刻を先に確かめましょう",
+          "links": [
+            {
+              "label": "料金（公式）",
+              "url": "https://www.yurakirari.com/miyazawako/fee/"
+            },
+            {
+              "label": "アクセス（公式）",
+              "url": "https://www.yurakirari.com/miyazawako/access/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kintoki",
+      "route": 0,
+      "mode": "電車・バス",
+      "why": "金太郎の伝説の山。山頂の正面に富士山が見えます。下りたあとは箱根湯本の温泉か、ふもとの入生田のサウナへ。",
+      "move": "金時神社入口から箱根登山バス（桃源台線）で箱根湯本駅へ。箱根湯寮は駅から無料送迎バスで3分。山賊サウナは箱根登山電車で入生田駅へ行き、徒歩5分ほど",
+      "moveShort": "バス＋送迎3分",
+      "facilities": [
+        {
+          "key": "yuryo",
+          "name": "箱根湯寮",
+          "type": "温泉・サウナ",
+          "tags": [
+            "露天風呂",
+            "サウナ（熱ノ室）",
+            "沢水風呂"
+          ],
+          "text": "大浴場「本殿 湯楽庵 大湯」に露天風呂・壷風呂、熱ノ室（サウナ。ロウリュウサービスあり）、沢水風呂があります。",
+          "fee": "平日1,700〜1,800円／土休日2,000〜2,200円（時期で変わる）。タオルは販売（バスタオル550円・フェイスタオル300円）",
+          "feeShort": "1,700円〜",
+          "hours": "平日10:00〜20:00／土休日10:00〜21:00（年中無休。点検の休館あり：2026年12月1〜3日）",
+          "last": "平日19:00／土休日20:00",
+          "note": "小学生未満は大浴場を使えません",
+          "links": [
+            {
+              "label": "料金（公式）",
+              "url": "https://www.hakoneyuryo.jp/price/"
+            },
+            {
+              "label": "大浴場（公式）",
+              "url": "https://www.hakoneyuryo.jp/spa/public/"
+            }
+          ]
+        },
+        {
+          "key": "sanzoku",
+          "name": "山賊サウナ",
+          "type": "サウナ専門",
+          "tags": [
+            "サウナ",
+            "水風呂",
+            "外気浴"
+          ],
+          "text": "入生田駅のそばのサウナ施設。サウナ室が3つ（大涌谷・大平台・早雲山＝スチームサウナ）と水風呂「芦ノ湖」、外気浴の「仙石原」があります。温泉ではありません。",
+          "fee": "1時間30分1,800円／2時間2,300円（飲み放題つきは2,150円・2,650円）。延長30分500円",
+          "feeShort": "90分1,800円〜",
+          "hours": "月〜金・祝 10:00〜21:00／土・日 9:00〜21:00（年中無休。月1回ほど点検の休業あり）",
+          "last": "19:30",
+          "note": "水着の貸し出しあり（男性300円・女性500円）",
+          "links": [
+            {
+              "label": "料金（公式）",
+              "url": "https://sanzokusauna.com/price/"
+            },
+            {
+              "label": "施設（公式）",
+              "url": "https://sanzokusauna.com/shop/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kirigamine",
+      "route": 0,
+      "also": "keirisan",
+      "alsoRoute": 0,
+      "mode": "車",
+      "why": "草原の霧ヶ峰を軽く歩くか、百名山の蓼科山にしっかり登るか。どちらも、帰りに白樺湖のほとりのホテルで日帰り入浴ができます。",
+      "move": "車山肩・蓼科山の七合目登山口から車で白樺湖へ",
+      "moveShort": "車",
+      "facilities": [
+        {
+          "key": "ikenotaira",
+          "name": "白樺リゾート 池の平ホテル 湖天の湯",
+          "type": "ホテルの日帰り入浴",
+          "tags": [
+            "天然温泉",
+            "日帰り入浴",
+            "水着・湯あみ着エリア"
+          ],
+          "text": "白樺湖のほとりのホテルの温泉。北八ヶ岳・蓼科山の「樽が沢温泉」の源泉で、水着・湯あみ着で入るエリアもあります。",
+          "fee": "通常日2,000円／繁忙日2,500円（タオル・バスタオル・湯あみ着込み）",
+          "feeShort": "2,000円〜",
+          "hours": "日帰り入浴 11:30〜23:00（季節で変わる）",
+          "last": "22:00",
+          "note": "冬は登山口への道・駐車場の状況と、山の装備を確かめましょう",
+          "links": [
+            {
+              "label": "湖天の湯（公式）",
+              "url": "https://www.shirakabaresort.jp/familyland/attraction/spa.html"
+            }
+          ],
+          "photo": {
+            "src": "/images/articles/hiking-onsen-sauna/ikenotaira.webp",
+            "alt": "白樺リゾート 池の平ホテルの新本館",
+            "credit": "Tak5525",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Ikenotaira_shinhonkan.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ishirousan",
+      "route": 1,
+      "mode": "電車・バス",
+      "why": "言い伝えのある岩や大きな岩が次々に現れる低山。相模湖側へ下りると、そのまま温泉に着きます。",
+      "move": "コースの終わりがさがみ湖MORI MORI前（うるりはさがみ湖MORI MORIの中）。帰りは同じバス停から相模湖駅へ（約8分）",
+      "moveShort": "下山口のそば",
+      "facilities": [
+        {
+          "key": "uruli",
+          "name": "さがみ湖温泉 うるり",
+          "type": "温泉・サウナ",
+          "tags": [
+            "露天風呂",
+            "ロウリュサウナ",
+            "水風呂",
+            "岩盤浴"
+          ],
+          "text": "木々に囲まれた露天風呂から石老山を眺められます。30分に1回オートロウリュが動くサウナと水風呂、岩盤浴「ゆめうるり」があります。",
+          "fee": "平日950円／土日祝・繁忙期1,100円（タオルセットつきは1,300円・1,450円）。岩盤浴600円",
+          "feeShort": "950円〜",
+          "hours": "日によって変わる（2026年11月の例：平日11:00〜21:00、土曜11:00〜22:00、日曜10:00〜21:00）",
+          "last": "閉館の30分前",
+          "note": "休館日と営業時間は公式サイトの営業カレンダーで確かめましょう（2026年11月は5日・11日・12日が休館）",
+          "links": [
+            {
+              "label": "料金・営業時間（公式）",
+              "url": "https://www.sagamiko-resort.jp/spa/price.html"
+            },
+            {
+              "label": "お風呂の種類・サウナ（公式）",
+              "url": "https://www.sagamiko-resort.jp/spa/type.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hinodesaan",
+      "route": 1,
+      "mode": "電車・バス",
+      "why": "御岳山から日の出山を越え、コースの終わりが温泉。電車で行く人にうれしい定番のコースです。",
+      "move": "コースの終わりがつるつる温泉。帰りは西東京バスで武蔵五日市駅へ（約20分）",
+      "moveShort": "コースの終点",
+      "facilities": [
+        {
+          "key": "tsurutsuru",
+          "name": "生涯青春の湯 つるつる温泉",
+          "type": "温泉・サウナ",
+          "tags": [
+            "天然温泉",
+            "露天風呂",
+            "サウナ"
+          ],
+          "text": "地下1,500mから汲み上げるアルカリ性単純温泉（pH10.1）。竹に囲まれた岩風呂と、景色の開けたひのき風呂の露天があり（男女は日替わり）、サウナもあります。",
+          "fee": "町外の大人 平日1,050円／土日休日・繁忙特定日1,150円（3時間。超えると1時間300円）",
+          "feeShort": "1,050円〜",
+          "hours": "10:00〜20:00（毎月第3火曜休み。ほかに年2回の点検休館）",
+          "last": "19:00",
+          "note": "武蔵五日市駅へのバスの時刻を先に確かめましょう",
+          "links": [
+            {
+              "label": "料金・営業案内（公式）",
+              "url": "https://www.tsurutsuru-onsen.com/?page_id=49"
+            },
+            {
+              "label": "アクセス（公式）",
+              "url": "https://www.tsurutsuru-onsen.com/?page_id=54"
+            }
+          ],
+          "photo": {
+            "src": "/images/articles/hiking-onsen-sauna/tsurutsuru.webp",
+            "alt": "つるつる温泉と送迎の機関車型バス",
+            "credit": "っ",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Hinode_Mitsusawa_Tsurutsuru_Onsen.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bukosan",
+      "route": 0,
+      "mode": "電車・タクシー",
+      "why": "秩父のシンボルの山をしっかり登ったあと、西武秩父駅前の温泉へ。露天風呂から、さっきまでいた武甲山が見えます。",
+      "move": "一ノ鳥居登山口から車・タクシーで西武秩父駅前へ（登山口へのバスは無い）",
+      "moveShort": "タクシー・車",
+      "facilities": [
+        {
+          "key": "matsurinoyu",
+          "name": "西武秩父駅前温泉 祭の湯",
+          "type": "温泉・サウナ",
+          "tags": [
+            "天然温泉",
+            "露天風呂",
+            "サウナ",
+            "水風呂",
+            "駅前"
+          ],
+          "text": "武甲山を望む露天風呂のある駅前の温泉。サウナと水風呂（塩サウナは女湯だけ）、別料金の個室サウナ、フードコートや土産店があります。",
+          "fee": "平日1,100円／土日祝・特定日1,380円。個室サウナ（1部屋90分）平日3,000円／土日祝・特定日5,000円",
+          "feeShort": "1,100円〜",
+          "hours": "10:00〜22:00（土日祝は朝風呂 6:00〜9:00も）",
+          "last": "21:30（個室サウナは19:40）",
+          "note": "秩父夜祭の12月2日・3日は特別営業",
+          "links": [
+            {
+              "label": "営業時間・料金（公式）",
+              "url": "https://www.seibu-leisure.co.jp/matsuri/serviceguide/index.html"
+            },
+            {
+              "label": "温泉（公式）",
+              "url": "https://www.seibu-leisure.co.jp/matsuri/onsen/index.html"
+            }
+          ],
+          "photo": {
+            "src": "/images/articles/hiking-onsen-sauna/matsurinoyu.webp",
+            "alt": "西武秩父駅前温泉 祭の湯の外観",
+            "credit": "Asturio Cantabrio",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+            "pageUrl": "https://commons.wikimedia.org/wiki/File:Seibu-Chichibu_Ekimae_Onsen_ac_(1).jpg"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kamakura_alps",
+      "route": 0,
+      "mode": "電車",
+      "why": "建長寺から天園を通って鎌倉駅へ。午後は江ノ電で海辺の温泉へ行き、海と富士山・江の島を眺められます。",
+      "move": "鎌倉駅から江ノ電で稲村ヶ崎駅へ。駅から徒歩3分",
+      "moveShort": "江ノ電＋徒歩3分",
+      "facilities": [
+        {
+          "key": "inamura",
+          "name": "稲村ヶ崎温泉",
+          "type": "温泉・サウナ",
+          "tags": [
+            "天然温泉",
+            "サウナ",
+            "海が見える"
+          ],
+          "text": "海の目の前の温泉。黄金色のモール泉（炭酸水素塩冷鉱泉）で、朝は海を一望でき、夜は江の島の夜景が楽しめます。サウナと源泉掛け流しの水風呂があります。",
+          "fee": "1,600円（入浴料1,250円＋施設利用料350円。繁忙期は特別料金の場合あり）",
+          "feeShort": "1,600円",
+          "hours": "9:00〜21:00（年中無休。点検の休館あり）",
+          "last": "20:00",
+          "note": "13歳未満は、大人と一緒でも入れません",
+          "links": [
+            {
+              "label": "公式サイト",
+              "url": "https://www.inamuragasaki-onsen.jp/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hinata",
+      "route": 1,
+      "mode": "車",
+      "why": "白い砂の山頂から甲斐駒ヶ岳を間近に見る山。尾白川渓谷の駐車場からすぐの温泉で、源泉の露天風呂に入れます。",
+      "move": "尾白川渓谷の駐車場から車ですぐ（電車の人は小淵沢駅からタクシー）",
+      "moveShort": "車",
+      "facilities": [
+        {
+          "key": "verga",
+          "name": "白州・尾白の森名水公園 べるが 尾白の湯",
+          "type": "温泉・サウナ",
+          "tags": [
+            "温泉",
+            "源泉露天風呂",
+            "サウナ",
+            "水風呂"
+          ],
+          "text": "尾白川の河岸の地下から湧く高濃度の温泉。男女とも源泉露天風呂と、天然水で割った希釈露天風呂があります。サウナと水風呂もあります（女湯はドライサウナとミストサウナ）。",
+          "fee": "市外の大人830円（北杜市内410円）",
+          "feeShort": "830円",
+          "hours": "10:00〜21:00（水曜休み。祝日なら翌日）",
+          "last": "20:30",
+          "note": "矢立石登山口への林道は冬に閉鎖されます（山ページの注意を見てください）",
+          "links": [
+            {
+              "label": "温泉・お風呂（公式）",
+              "url": "https://www.verga.info/onesen-furo"
+            },
+            {
+              "label": "アクセス（公式）",
+              "url": "https://www.verga.info/acsess"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "adatara",
+      "route": 0,
+      "mode": "新幹線・バス／車",
+      "why": "ロープウェイで上がって百名山へ。下りたら、山麓の源泉かけ流しの温泉で「ほんとの空」を眺められます。",
+      "move": "あだたら山ロープウェイで山麓の奥岳へ下り、奥岳の湯へ",
+      "moveShort": "ロープウェイで山麓へ",
+      "facilities": [
+        {
+          "key": "okudake",
+          "name": "あだたら山 奥岳の湯",
+          "type": "温泉",
+          "tags": [
+            "源泉かけ流し",
+            "半露天風呂"
+          ],
+          "text": "標高約950mの温泉。泉質は単純酸性温泉（pH2.5）で、内湯は源泉かけ流し。窓を開け放つ半露天風呂から山並みと空を眺められます。サウナはありません。",
+          "fee": "大人800円（その日のロープウェイ往復券で100円引き）",
+          "feeShort": "800円",
+          "hours": "10:00〜18:00（2026年11月1日から）",
+          "last": "17:30",
+          "note": "ロープウェイの運行期間・最終の下りを確かめましょう。冬は雪山になります",
+          "links": [
+            {
+              "label": "奥岳の湯（公式）",
+              "url": "https://www.adatara-resort.com/spa/"
+            },
+            {
+              "label": "営業時間のお知らせ（公式）",
+              "url": "https://www.adatara-resort.com/spa/news/article/copy_of_spa202604.html"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
