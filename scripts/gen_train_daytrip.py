@@ -9,6 +9,7 @@
 電車の時間・運賃・乗り継ぎ・コース・特徴：data/mountains.json（山ページと同じ値。特徴は出典つきの featurePoints だけ）
 ページの見た目（style・header・footer）は、いまのページから引き継ぐ。
 """
+import datetime
 import html, json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -148,6 +149,17 @@ def last_short(lb):
     return '確認中'
 
 
+def season_html(cfg):
+    """冬のあいだだけ出す季節の記事の枠（data/train_daytrip.json の season。2026-11-15〜）。期限を過ぎたら作らない。ページの上でも期限で隠す"""
+    se = cfg.get('season') or {}
+    vt = se.get('validTo')
+    if not se.get('items') or not vt or datetime.date.today().isoformat() > vt:
+        return ''
+    links = ''.join('<a class="td-season-a" href="%s"><b>%s</b><span>%s</span></a>' % (E(i['url']), E(i['label']), E(i['sub'])) for i in se['items'])
+    return ('  <div class="td-season" id="td-season" data-valid-to="%s"><h2>%s</h2><div class="td-season-g">%s</div></div>\n'
+            '  <script>(function(){var b=document.getElementById(\'td-season\');var d=new Date();var t=d.getFullYear()+\'-\'+(\'0\'+(d.getMonth()+1)).slice(-2)+\'-\'+(\'0\'+d.getDate()).slice(-2);if(b&&t>b.getAttribute(\'data-valid-to\'))b.parentNode.removeChild(b);})();</script>') % (E(vt), E(se.get('title') or ''), links)
+
+
 def picks_html(cfg, D):
     """冒頭の「迷ったらこの3コース」。数字はカードと同じデータ、ひとことは山の featurePoints の文。"""
     out = []
@@ -254,6 +266,13 @@ def main():
         gtag += '\n<script defer src="/assets/js/ym-track.js?v=20261103b"></script>'
     extra_css = '''
 /* 2026-10 作り直し：電車で行く人向けの20選 */
+.td-season{margin:4px 0 14px;background:white;border:1px solid #e0dbd4;border-radius:14px;padding:12px 14px}
+.td-season h2{font-size:15px;font-weight:800;color:#2a3820;margin:0 0 8px}
+.td-season-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.td-season-a{display:flex;flex-direction:column;gap:2px;background:#f0ede5;border-radius:10px;padding:9px 11px;text-decoration:none}
+.td-season-a b{font-size:13px;color:#2a3820}
+.td-season-a span{font-size:11.5px;color:#5a5248}
+@media(max-width:680px){.td-season-g{grid-template-columns:1fr}}
 .td-picks{margin:4px 0 14px}
 .td-picks h2{font-size:17px;font-weight:800;color:#2a3820;margin:0 0 8px}
 .td-pick-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
@@ -413,6 +432,7 @@ def main():
         '    <a href="#g-hyaku" class="rs-tag">電車で行く百名山</a>',
         '    <a href="#more" class="rs-tag">ほかの電車で行ける山</a>',
         '  </div>',
+        season_html(cfg),
         picks_html(cfg, D),
         '  <div class="td-index"><table><tr><th>#</th><th>山</th><th>難易度</th><th>新宿から</th><th>片道</th><th>歩く時間</th><th>帰りの最終バス</th></tr>%s</table></div>' % ''.join(idx_rows),
         '\n'.join(cards),

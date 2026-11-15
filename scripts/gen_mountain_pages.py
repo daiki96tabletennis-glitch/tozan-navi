@@ -518,7 +518,7 @@ def render_dl_card(mt):
         '<svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-3px;'
         'margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" '
         'stroke-linecap="round" stroke-linejoin="round">'
-        '<path d="M3 20 L9 8 L13 15 L16 11 L21 20 Z"/></svg>難易度</h2>\n'
+        '<path d="M3 20 L9 8 L13 15 L16 11 L21 20 Z"/></svg>' + esc(mt['name']) + 'の難易度</h2>\n'
         '  <div class="dl-head">\n'
         '    <span class="dl-label">難易度</span>\n'
         f'    <span class="dl-value">{difficulty}</span>\n'
@@ -535,7 +535,7 @@ def render_weather(mt):
     if not mt.get("hasWeatherWidget"):
         return ""
     _, weather_tpl = load_static_assets()
-    return weather_tpl.replace("__MID__", mt["id"])
+    return weather_tpl.replace("__MID__", mt["id"]).replace(">山周辺の天気", ">" + esc(mt["name"]) + "周辺の天気")
 
 
 def render_train_access(mt):
@@ -553,10 +553,14 @@ def render_train_access(mt):
     if train_routes:
         ts = render_ts_section(train_routes, mt)
         if ts:
+            # 見出しに山名（「◯◯ アクセス」の検索に合わせる。2026-11-15）
+            ts = re.sub(r'(<div class=\"ts-title\">.*?</svg>)電車・バスでのアクセス', lambda m: m.group(1) + esc(mt['name']) + 'への電車・バスでのアクセス', ts, count=1)
+        if ts:
             return f'<div class="card" id="sec-train">\n  {caption}{ts}{ret}\n</div>'
     ts = mt.get("trainAccessHtml")
     if not ts:
         return ""
+    ts = re.sub(r'(<div class=\"ts-title\">.*?</svg>)電車・バスでのアクセス', lambda m: m.group(1) + esc(mt['name']) + 'への電車・バスでのアクセス', ts, count=1)
     return f'<div class="card" id="sec-train">\n  {ts}{ret}\n</div>'
 
 
@@ -692,7 +696,7 @@ def render_car_access(mt):
         'rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" '
         'fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/>'
         '<circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" '
-        'fill="#3a3530"/></svg>車でのアクセス時間</h2>\n'
+        'fill="#3a3530"/></svg>' + esc(mt['name']) + 'への車でのアクセス時間</h2>\n'
         f'    <div class="ag-a" id="access-grid">\n{rows_html}\n    </div>\n'
         f'    <p class="car-note">{car_note(mt)}</p>\n'
         '  </div>'
@@ -1075,7 +1079,7 @@ def render_season(mt):
     body = gear_calendar.render_calendar(cal)
     extra = render_season_ssot_extra(mt) if (mt.get("dataModel") == "ssot-v1" and mt.get("monthlyStatus")) else ""
     return (
-        f'<div class="card" id="sec-season"><h2>{SEASON_ICON}シーズンカレンダー</h2>\n'
+        f'<div class="card" id="sec-season"><h2>{SEASON_ICON}{esc(mt["name"])}のシーズンカレンダー</h2>\n'
         f'{body}{extra}'
         '  </div>'
     )
@@ -1303,7 +1307,7 @@ def render_routes(mt):
         'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
         '<circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/>'
         '<path d="M5 17 C5 12 9 12 9 9 C9 6 12 6 12 9 C12 13 19 13 19 7"/></svg>'
-        f'代表的な登山ルート</h2><div class="route-list-c">{items_html}</div>{train_note}{coeff_note}</div>'
+        f'{esc(mt["name"])}の代表的な登山ルート</h2><div class="route-list-c">{items_html}</div>{train_note}{coeff_note}</div>'
     )
 
 
@@ -1759,7 +1763,7 @@ def generate_page(mt, by_id, gear_data):
         # 噴火警戒レベル：assets/js/volcano-status.js が、気象庁のデータを読んでここに出す
         codes = ",".join(str(c) for c in mt["volcanoCodes"])
         body_sections.append(f'  <div id="volcano-status" data-codes="{esc(codes)}"></div>')
-    body_sections.append(f'  {mt.get("introHtml","")}')
+    body_sections.append('  ' + re.sub(r'>山の紹介</h2>', '>' + esc(mt["name"]) + 'の紹介</h2>', mt.get("introHtml", "")))
     body_sections.append("")
     body_sections.append(f'  {render_dl_card(mt)}')
 
