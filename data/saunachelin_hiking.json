@@ -1,0 +1,176 @@
+{
+  "_note": "まとめ記事「サウナシュラン受賞サウナに寄れる山」（/articles/saunachelin-hiking/）の中身。scripts/gen_sauna_article.py がページを作る。運営者の指示（2026-11-16）：日帰りで使える施設だけ・登山口から車で30分程度以内・地図で登山口とサウナの位置を示す・受賞年を書く。受賞年はサウナシュラン公式サイト（saunachelin.com の各年のページと殿堂入りのページ）。車の時間は OSRM（OpenStreetMap の道路の経路検索）の値を5分単位に切り上げた目安（渋滞・冬の通行止めを含まない）。始点は山の地図ボタンの行き先（駐車場・登山口）。施設の位置はサウナシュラン公式サイトの座標（S.WAVE だけ国土地理院の住所検索）。外した施設：日帰りで使えない・確かめられない（別邸 仙寿庵・KAMAKURA HOTEL・サウナスイートキャビン＝宿泊者向け、サーマルクライムスタジオ富士＝会員制、エイトホテル湘南藤沢・BOTANICAL POOL CLUB＝日帰りでサウナを使えるか確かめられない）、車で30分を超える（SAUNA TEN＝天狗岳から約46分、おちあいろう＝天城山から約53分）",
+  "checked": "2026-11-16",
+  "chelinSource": "https://saunachelin.com/",
+  "saunas": [
+    {
+      "key": "onari",
+      "name": "御成桑拿 Onari Sauna",
+      "area": "神奈川県鎌倉市",
+      "lat": 35.31881,
+      "lng": 139.548884,
+      "awards": [
+        "2026年"
+      ],
+      "kind": "パブリックサウナ（男女とも水着で入る）",
+      "text": "鎌倉駅の西口から徒歩3分の、男女とも水着で入るパブリックサウナ。屋上に鎌倉の街を見下ろす外気浴のデッキがあります。",
+      "dayuse": "日帰りで利用できる（宿泊施設ではない）",
+      "url": "https://onari-sauna.com/",
+      "mountains": [
+        {
+          "id": "kamakura_alps",
+          "from": "鎌倉駅（コースの終わり）",
+          "lat": 35.319,
+          "lng": 139.5503,
+          "walk": "鎌倉駅の西口から徒歩3分"
+        }
+      ],
+      "home": "https://onari-sauna.com/",
+      "urlLabel": null
+    },
+    {
+      "key": "swave",
+      "name": "THERMAL SPA S.WAVE（大磯プリンスホテル）",
+      "area": "神奈川県大磯町",
+      "lat": 35.30196,
+      "lng": 139.279037,
+      "awards": [
+        "2018年"
+      ],
+      "kind": "ホテルの温泉・スパ",
+      "text": "大磯プリンスホテルの温泉・スパ。3階が温泉フロア、4階が有料のスパフロアです。",
+      "dayuse": "日帰り利用のプランあり。混雑の状況で、日帰りではスパを使えない日がある",
+      "url": "https://www.princehotels.co.jp/oiso/facility/onsen/",
+      "mountains": [
+        {
+          "id": "azumayama_ninomiya",
+          "car": 10
+        },
+        {
+          "id": "koubousan",
+          "car": 25
+        }
+      ],
+      "home": "https://www.princehotels.co.jp/oiso/",
+      "urlLabel": "温泉・スパの案内"
+    },
+    {
+      "key": "cycl",
+      "name": "CYCL（サイクル）",
+      "area": "山梨県山中湖村",
+      "lat": 35.4152276283435,
+      "lng": 138.89553063713754,
+      "awards": [
+        "2024年"
+      ],
+      "kind": "湖畔のサウナ（男女とも水着で入る・予約優先）",
+      "text": "富士山と山中湖を望む湖畔のサウナ。富士山系の天然の地下水を掛け流した、飲める水風呂があります。料金は2時間30分の時間制で、タオルセットと展望ラウンジのフリードリンクつき。",
+      "dayuse": "時間制で日帰り利用（予約優先）",
+      "url": "https://cycl.co.jp/",
+      "mountains": [
+        {
+          "id": "ishiwariyama",
+          "car": 15
+        }
+      ],
+      "home": "https://cycl.co.jp/",
+      "urlLabel": null
+    },
+    {
+      "key": "satoyama",
+      "name": "Satoyama Terrace",
+      "area": "千葉県富津市",
+      "lat": 35.20831305968865,
+      "lng": 139.9143245253245,
+      "awards": [
+        "2025年"
+      ],
+      "kind": "アウトドアサウナ（宿泊もできる）",
+      "text": "里山に建つアウトドアサウナ。日帰りは2時間半の利用で、日帰りサウナの予約は要りません。",
+      "dayuse": "日帰り利用あり（予約不要）",
+      "url": "https://satoyama-terrace.com/sauna/",
+      "mountains": [
+        {
+          "id": "nokogiriyama_chiba",
+          "car": 20
+        },
+        {
+          "id": "iyogatake",
+          "car": 25
+        },
+        {
+          "id": "tomisan",
+          "car": 25
+        }
+      ],
+      "home": "https://satoyama-terrace.com/",
+      "urlLabel": "サウナの案内（日帰り）"
+    },
+    {
+      "key": "thesauna",
+      "name": "The Sauna（LAMP野尻湖）",
+      "area": "長野県信濃町",
+      "lat": 36.8256775732838,
+      "lng": 138.204693225291,
+      "awards": [
+        "2019年",
+        "2022年",
+        "2023年（殿堂入り）"
+      ],
+      "kind": "フィンランド式の薪サウナ（予約制）",
+      "text": "LAMP野尻湖の、大自然の中にぽつんと建つ丸太小屋のフィンランド式サウナ。日帰りは、ほかの人とサウナを分け合うパブリックサウナと、貸切のプライベートサウナのプランがあります。",
+      "dayuse": "日帰りのプランあり（Web で予約）",
+      "url": "https://www.chillnn.com/ja/17baa91924516f",
+      "mountains": [
+        {
+          "id": "myoko",
+          "car": 15
+        },
+        {
+          "id": "kurohimesan",
+          "car": 15
+        },
+        {
+          "id": "takatsuma",
+          "car": 20
+        },
+        {
+          "id": "hiuchi",
+          "car": 20
+        },
+        {
+          "id": "iizunasan",
+          "car": 25
+        }
+      ],
+      "home": "https://lampinc.co.jp/nojiriko/sauna/",
+      "urlLabel": "予約（日帰りのプラン）"
+    },
+    {
+      "key": "kingqueen",
+      "name": "おふろcafe オンセンバルコニー King&Queen",
+      "area": "埼玉県所沢市",
+      "lat": 35.81186238253307,
+      "lng": 139.43036022534935,
+      "awards": [
+        "2025年"
+      ],
+      "kind": "日帰り温泉・サウナ",
+      "text": "天然温泉の内湯・露天湯と3つのサウナがある日帰り温泉。",
+      "dayuse": "日帰り温泉（年中無休）",
+      "url": "https://king-and-queen.site/guide/",
+      "mountains": [
+        {
+          "id": "tenzandake",
+          "car": 25
+        },
+        {
+          "id": "hiwadayama",
+          "car": 30
+        }
+      ],
+      "home": "https://king-and-queen.site/",
+      "urlLabel": "料金・営業時間"
+    }
+  ]
+}
