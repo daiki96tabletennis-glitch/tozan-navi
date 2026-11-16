@@ -1,22 +1,15 @@
 {
  "items": [
   {
-   "id": "health-2026-11-15-35cb55bdce",
+   "id": "health-2026-11-16-bd9ddaf71d",
    "kind": "health",
    "title": "定期実行の見張り（毎日）",
-   "date": "2026-11-15",
-   "needsAction": true,
-   "digest": "35cb55bdce",
-   "sections": [
-    {
-     "heading": "失敗が続いている定期実行",
-     "lines": [
-      "山小屋の定期更新（毎日）：直近10回のうち3回失敗（最後の失敗 11/13）— https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/43346917379"
-     ]
-    }
-   ],
-   "next": "GitHub の Actions の画面で、その定期実行の記録を開いてください。止まっていれば「Enable workflow」、失敗なら内容を Claude のアプリに伝えてください。",
-   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/43666183164"
+   "date": "2026-11-16",
+   "needsAction": false,
+   "digest": "bd9ddaf71d",
+   "sections": [],
+   "next": null,
+   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/43791809429"
   },
   {
    "id": "restrict-2026-11-16-25ea70c70f",
