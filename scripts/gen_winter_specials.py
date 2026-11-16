@@ -576,7 +576,8 @@ def diamond(M, SC, W):
 
 # ---------------------------------------------------------------- 冬にしか見られない景色
 def winter_gear(m):
-    cal = m.get('gearCalendar') or []
+    # スノーシューが要る月（snowshoeMonths）は「スノーシュー等」「冬山装備＋スノーシュー」で出す（2026-11-17）
+    cal = gear_calendar.display_calendar(m.get('gearCalendar') or [], m.get('snowshoeMonths'))
     parts = []
     for mo in (12, 1, 2):
         v = cal[mo - 1] if len(cal) >= mo else None

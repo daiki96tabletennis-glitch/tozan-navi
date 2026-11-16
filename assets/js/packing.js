@@ -39,7 +39,7 @@ window.YMPacking = (function () {
     return null;
   }
 
-  /* opts: { mid, elev, gear(12か月), month(1〜12 または null), day(日。分かるときだけ), stay('day'|'hut'|'tent') }
+  /* opts: { mid, elev, gear(12か月), snow(スノーシューが要る月の番号の配列。山の snowshoeMonths), month(1〜12 または null), day(日。分かるときだけ), stay('day'|'hut'|'tent') }
      返り値：[{ key, title, lead, items:[{ id, label, note, product, src }] }] */
   function build(opts) {
     var kinds = opts.month ? gearKinds(opts.gear, opts.month) : [];
@@ -50,6 +50,8 @@ window.YMPacking = (function () {
       kinds = [opts.day >= split.changeDate ? split.after : split.before];
       split = null;
     }
+    // スノーシューが要る月（2026-11-17）は「スノーシュー」の欄も出す（data/packing.json の gear: ["snowshoe"]）
+    if (opts.month && opts.snow && opts.snow.indexOf(opts.month) >= 0) kinds = kinds.concat(['snowshoe']);
     var out = [];
     DATA.groups.forEach(function (g) {
       if (g.stay && g.stay.indexOf(opts.stay) < 0) return;
@@ -138,10 +140,12 @@ window.YMPacking = (function () {
     var elev = parseInt(el.getAttribute('data-elev') || '0', 10);
     var gear = [];
     try { gear = JSON.parse(el.getAttribute('data-gear') || '[]'); } catch (e) {}
+    var snow = [];
+    try { snow = JSON.parse(el.getAttribute('data-snow') || '[]'); } catch (e) {}
     var state = { month: new Date().getMonth() + 1, stay: 'hut' };
 
     function draw() {
-      var groups = build({ mid: mid, elev: elev, gear: gear, month: state.month, stay: state.stay });
+      var groups = build({ mid: mid, elev: elev, gear: gear, snow: snow, month: state.month, stay: state.stay });
       var ck = readChecks();
       var pre = mid + ':' + state.stay + ':' + state.month + ':';
       var total = 0, done = 0;

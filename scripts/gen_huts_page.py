@@ -869,10 +869,11 @@ def packing_block(m):
     """持ち物・服装のチェックリスト（assets/js/packing.js が data/packing.json から描く）"""
     return ('<h2 class="sec" id="packing">%sの山小屋泊の持ち物・服装</h2>\n'
             '<p class="lead">行く月と泊まり方を選ぶと、持ち物と服装のチェックリストになります。雪の残る時期・冬山の装備は、%sの装備カレンダーから選んでいます。</p>\n'
-            '<div id="ym-packing" data-mid="%s" data-name="%s" data-elev="%s" data-gear="%s">持ち物リストを読み込み中…</div>\n'
+            '<div id="ym-packing" data-mid="%s" data-name="%s" data-elev="%s" data-gear="%s" data-snow="%s">持ち物リストを読み込み中…</div>\n'
             '<script src="/assets/js/gear-common.js?v=%s" defer></script>\n<script src="/assets/js/packing.js?v=%s" defer></script>\n') % (
         E(m['name']), E(m['name']), E(m['id']), E(m['name']), m.get('elevation') or 0,
-        E(json.dumps(m.get('gearCalendar') or [], ensure_ascii=False, separators=(',', ':'))), MAP_VER, MAP_VER)
+        E(json.dumps(m.get('gearCalendar') or [], ensure_ascii=False, separators=(',', ':'))),
+        E(json.dumps(m.get('snowshoeMonths') or [], separators=(',', ':'))), MAP_VER, MAP_VER)
 
 
 # ---------- 山小屋の選び方（山小屋が多い山。data/huts_guides.json。手で書いた出典つきの内容） ----------

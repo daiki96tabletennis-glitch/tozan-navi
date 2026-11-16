@@ -84,6 +84,8 @@ CUSTOM = {
     'trekking-pole': '<path d="M13 2.5h4"/><path d="M15 2.5 8.5 20"/><path d="M7.5 16.5h3.5"/><path d="M8.5 20l-.6 1.5"/>',
     'water-bottle': '<path d="M10 2h4"/><path d="M10 2v3L8 8v12a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V8l-2-3V2"/><path d="M8 12h8"/><path d="M8 16h8"/>',
     'rain-jacket': '<path d="M9 3c.8 1.6 5.2 1.6 6 0l5 3v6h-3v9H7v-9H4V6z"/><path d="M12 5v16"/><path d="M14.5 13h1"/>',
+    # スノーシュー（2026-11-17。スノーシューを上から見た形：枠・2本の横桟・足を置く所）
+    'snowshoe': '<path d="M12 2c3.3 0 5 3.4 5 8.5S15 22 12 22s-5-6.4-5-11.5S8.7 2 12 2z"/><path d="M8.2 7.5h7.6"/><path d="M7.3 15h9.4"/><path d="M10 9.8h4v3h-4z"/>',
     'down-jacket': '<path d="M9 3c.8 1.6 5.2 1.6 6 0l5 3v6h-3v9H7v-9H4V6z"/><path d="M7 9.5h10"/><path d="M7 13.5h10"/><path d="M7 17.5h10"/>',
 }
 

@@ -28,6 +28,8 @@ def build():
             'elev': int(m['elevation']) if m.get('elevation') else 0,
             'gear': m.get('gearCalendar') or [],
         })
+        if m.get('snowshoeMonths'):   # スノーシューが要る月（2026-11-17）
+            rows[-1]['snow'] = m['snowshoeMonths']
     rows.sort(key=lambda r: r['name'])
     return rows
 

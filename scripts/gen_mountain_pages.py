@@ -1076,7 +1076,7 @@ def gear_closed_attrs(mt):
 def render_season(mt):
     """装備カレンダー（4区分＋月途中の切替）。新構造の山は、その下に公共交通の行を出す"""
     cal = require(mt, "gearCalendar")
-    body = gear_calendar.render_calendar(cal)
+    body = gear_calendar.render_calendar(cal, mt.get("snowshoeMonths"))   # スノーシューの月（2026-11-17）
     extra = render_season_ssot_extra(mt) if (mt.get("dataModel") == "ssot-v1" and mt.get("monthlyStatus")) else ""
     return (
         f'<div class="card" id="sec-season"><h2>{SEASON_ICON}{esc(mt["name"])}のシーズンカレンダー</h2>\n'

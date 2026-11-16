@@ -623,6 +623,10 @@ def check_gear_calendar(mountains):
             issues.append({'id': mid, 'problem': '装備カレンダー：' + pr})
         if probs:
             continue
+        for pr in gear_calendar.validate_snow(cal, m.get('snowshoeMonths')):   # スノーシューの月（2026-11-17）
+            issues.append({'id': mid, 'problem': '装備カレンダー：' + pr})
+        if m.get('snowshoeMonths') and not m.get('snowshoeSources'):
+            issues.append({'id': mid, 'problem': 'スノーシューの月に出典（snowshoeSources）が無い'})
         old = m.get('seasonCalendar') or []
         for i, e in enumerate(cal):
             keys = [e] if isinstance(e, str) else [e['before'], e['after']]
@@ -636,7 +640,7 @@ def check_gear_calendar(mountains):
             html_text = read(page)
             if 'class="calendar gcal"' not in html_text:
                 issues.append({'id': mid, 'problem': 'ページの装備カレンダーが旧形式のまま（再生成が必要）'})
-            for i, e in enumerate(cal):
+            for i, e in enumerate(gear_calendar.display_calendar(cal, m.get('snowshoeMonths'))):
                 tip = gear_calendar.detail_text(i + 1, e)
                 if ('data-tip="' + tip + '"') not in html_text:
                     issues.append({'id': mid, 'problem': f'{i+1}月：ページの表示がデータと違う（再生成が必要）'})

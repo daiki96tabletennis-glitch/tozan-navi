@@ -6,18 +6,28 @@ gearCalendar は12か月の配列。各月は次のどちらか。
   - 文字列：no_crampons / light_crampons / winter_gear / closed
   - 月の途中で変わる月だけ：{"split": true, "before": <区分>, "after": <区分>, "changeDate": <after が始まる日>}
 「closed（入山不可）」は装備の段階ではなく、登山道閉鎖などで登れない期間。
+
+スノーシュー（2026-11-17〜。運営者の指示「スノーシューが要る山と月はそう表示したい。区分は6区分」）：
+データは gearCalendar の4区分のまま、山の snowshoeMonths（スノーシュー・ワカン等が要る月の番号のリスト）を別に持ち、
+表示のときに組み合わせる（冬山装備＋その月 → snowshoe_winter「冬山装備＋スノーシュー」、軽アイゼン等・アイゼン不要＋その月 → snowshoe「スノーシュー等」）。
+4区分を使うトップの絞り込み・診断・持ち物などは今までどおり動く。新しい2区分の凡例は、その区分がある山にだけ出す
 """
 import calendar
 import datetime
 import html
 
 KEYS = ('no_crampons', 'light_crampons', 'winter_gear', 'closed')
-LABEL = {'no_crampons': 'アイゼン不要', 'light_crampons': '軽アイゼン等', 'winter_gear': '冬山装備', 'closed': '入山不可'}
-SUB = {'light_crampons': 'チェーンスパイク・6本爪アイゼン等', 'winter_gear': '12本爪アイゼン・ピッケル等'}
+SNOW_KEYS = ('snowshoe', 'snowshoe_winter')   # 表示だけの区分（snowshoeMonths と組み合わせて作る）
+LABEL = {'no_crampons': 'アイゼン不要', 'light_crampons': '軽アイゼン等', 'winter_gear': '冬山装備', 'closed': '入山不可',
+         'snowshoe': 'スノーシュー等', 'snowshoe_winter': '冬山装備＋スノーシュー'}
+SUB = {'light_crampons': 'チェーンスパイク・6本爪アイゼン等', 'winter_gear': '12本爪アイゼン・ピッケル等',
+       'snowshoe': 'スノーシュー・ワカン等', 'snowshoe_winter': '12本爪アイゼン・ピッケル＋スノーシュー・ワカン等'}
 # 色は既存のカレンダー（s-ok / s-gear / s-hard / s-closed）と同じ
-CLS = {'no_crampons': 's-ok', 'light_crampons': 's-gear', 'winter_gear': 's-hard', 'closed': 's-closed'}
-COLOR = {'no_crampons': '#9cb088', 'light_crampons': '#d4c19a', 'winter_gear': '#b08868', 'closed': '#d9d5cf'}
-FROM_CLS = {v: k for k, v in CLS.items()}
+CLS = {'no_crampons': 's-ok', 'light_crampons': 's-gear', 'winter_gear': 's-hard', 'closed': 's-closed',
+       'snowshoe': 's-snow', 'snowshoe_winter': 's-snowh'}
+COLOR = {'no_crampons': '#9cb088', 'light_crampons': '#d4c19a', 'winter_gear': '#b08868', 'closed': '#d9d5cf',
+         'snowshoe': '#a8c4d8', 'snowshoe_winter': '#6e88a6'}
+FROM_CLS = {v: k for k, v in CLS.items() if k in KEYS}
 FROM_GEAR = {'normal': 'no_crampons', 'snow_caution': 'light_crampons', 'winter': 'winter_gear'}
 NOTE = ('※装備区分は例年の目安です。積雪・凍結状況は年や時期によって大きく変わります。'
         '出発前に直近の登山記録・現地情報・天気を確認してください。「入山不可」は登山道閉鎖等の情報に基づきます。')
@@ -84,6 +94,37 @@ def validate(cal):
     return probs
 
 
+def with_snow(key, snow):
+    """4区分の値と、その月にスノーシューが要るか → 表示の区分"""
+    if not snow or key == 'closed':
+        return key
+    return 'snowshoe_winter' if key == 'winter_gear' else 'snowshoe'
+
+
+def display_calendar(cal, snow_months=()):
+    """gearCalendar と snowshoeMonths → 表示用の12か月（区分は6つ）"""
+    sm = set(int(x) for x in (snow_months or ()))
+    out = []
+    for i, e in enumerate(cal):
+        snow = (i + 1) in sm
+        if isinstance(e, str):
+            out.append(with_snow(e, snow))
+        else:
+            b, a = with_snow(e['before'], snow), with_snow(e['after'], snow)
+            out.append(b if b == a else dict(e, before=b, after=a))
+    return out
+
+
+def validate_snow(cal, snow_months):
+    probs = []
+    for x in snow_months or ():
+        if not isinstance(x, int) or not 1 <= x <= 12:
+            probs.append(f'snowshoeMonths の月が不正（{x}）')
+        elif cal[x - 1] == 'closed':
+            probs.append(f'snowshoeMonths：{x}月は入山不可の月')
+    return probs
+
+
 def _full(key):
     return LABEL[key] + (f'（{SUB[key]}）' if key in SUB else '')
 
@@ -96,8 +137,12 @@ def detail_text(month, entry):
     return f'{month}月　{month}/1〜{month}/{d - 1} {_full(entry["before"])}　／　{month}/{d}〜 {_full(entry["after"])}'
 
 
-def render_calendar(cal):
-    """カレンダー本体＋凡例＋タップ時の表示欄＋注意書き（カードの中身）"""
+def render_calendar(cal, snow_months=()):
+    """カレンダー本体＋凡例＋タップ時の表示欄＋注意書き（カードの中身）。snow_months はスノーシューが要る月"""
+    cal = display_calendar(cal, snow_months)
+    used = set()
+    for e in cal:
+        used.update([e] if isinstance(e, str) else [e['before'], e['after']])
     cells = []
     for i, e in enumerate(cal):
         tip = html.escape(detail_text(i + 1, e), quote=True)
@@ -111,7 +156,7 @@ def render_calendar(cal):
     legend = ''.join(
         f'<div class="leg"><div class="leg-dot" style="background:{COLOR[k]}"></div>{LABEL[k]}'
         + (f'<small>{SUB[k]}</small>' if k in SUB else '') + '</div>'
-        for k in KEYS)
+        for k in KEYS + tuple(k for k in SNOW_KEYS if k in used))   # スノーシューの2区分は、その区分がある山だけ
     return (f'    <div class="calendar gcal">{"".join(cells)}</div>\n'
             f'    <div class="cal-detail" aria-live="polite">{HINT}</div>\n'
             f'    <div class="cal-legend">\n  {legend}\n</div>\n'

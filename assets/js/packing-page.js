@@ -91,7 +91,7 @@
     var p = (state.date || '').split('-');
     // このページは「準備のときの忘れ物を防ぐ」ためのもの（運営者の指示）。持ち物ではない「出発前にすること」（予約・計画書など）は出さない
     return window.YMPacking.build({
-      mid: m ? m.id : null, elev: m ? m.elev : 0, gear: m ? m.gear : [],
+      mid: m ? m.id : null, elev: m ? m.elev : 0, gear: m ? m.gear : [], snow: m ? (m.snow || []) : [],
       month: p.length === 3 ? +p[1] : null, day: p.length === 3 ? +p[2] : null, stay: state.stay
     }).filter(function (g) { return SKIP_GROUPS.indexOf(g.key) < 0; });
   }

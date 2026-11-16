@@ -468,12 +468,23 @@ const GEAR_VIEW = {
   no_crampons:    { label: "アイゼン不要", bg: "#e6f0e8", color: "#2d6040", rank: 0 },
   light_crampons: { label: "軽アイゼン等", bg: "#f5f0e0", color: "#7a5a20", rank: 1 },
   winter_gear:    { label: "冬山装備",     bg: "#f5e8e8", color: "#8a3030", rank: 2 },
-  closed:         { label: "入山不可",     bg: "#e6e2dc", color: "#5a5248", rank: 3 }
+  closed:         { label: "入山不可",     bg: "#e6e2dc", color: "#5a5248", rank: 3 },
+  // スノーシューが要る月（mountains.json の snowshoeMonths。表示だけの区分。2026-11-17）
+  snowshoe:        { label: "スノーシュー等",         bg: "#e3edf5", color: "#2c5578", rank: 1 },
+  snowshoe_winter: { label: "冬山装備＋スノーシュー", bg: "#e4e8f2", color: "#34466e", rank: 2 }
 };
+function gearWithSnow(key, snow) {
+  if (!snow || key === "closed") return key;
+  return key === "winter_gear" ? "snowshoe_winter" : "snowshoe";
+}
 function gearStateFor(mountain, month) {
   const cal = mountain.gearCalendar;
-  const e = (cal && cal.length === 12) ? cal[month - 1] : null;
+  const snow = (mountain.snowshoeMonths || []).indexOf(month) >= 0;
+  const e0 = (cal && cal.length === 12) ? cal[month - 1] : null;
+  const e = (typeof e0 === "string") ? gearWithSnow(e0, snow)
+    : (e0 && e0.split) ? { split: true, before: gearWithSnow(e0.before, snow), after: gearWithSnow(e0.after, snow), changeDate: e0.changeDate } : e0;
   if (typeof e === "string" && GEAR_VIEW[e]) return GEAR_VIEW[e];
+  if (e && e.split && e.before === e.after && GEAR_VIEW[e.before]) return GEAR_VIEW[e.before];
   if (e && e.split && GEAR_VIEW[e.before] && GEAR_VIEW[e.after]) {
     const a = GEAR_VIEW[e.before], b = GEAR_VIEW[e.after];
     const strict = a.rank >= b.rank ? a : b;

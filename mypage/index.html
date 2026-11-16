@@ -939,7 +939,7 @@ function applyTemplate(type){
     var month = d ? parseInt(d.slice(5,7),10) : null;
     var day = d ? parseInt(d.slice(8,10),10) : null;
     var stay = type==='stay' ? 'hut' : type;
-    var groups = window.YMPacking.build({ mid: m?m.id:null, elev: m?m.elevation:0, gear: m?m.gearCalendar:null, month: month, day: day, stay: stay });
+    var groups = window.YMPacking.build({ mid: m?m.id:null, elev: m?m.elevation:0, gear: m?m.gearCalendar:null, snow: m?(m.snowshoeMonths||[]):[], month: month, day: day, stay: stay });
     currentItems = [];
     groups.forEach(function(g){ g.items.forEach(function(it){ currentItems.push({label:it.label, checked:false, product:it.product||null}); }); });
     var who = m ? m.name : '';

@@ -412,6 +412,27 @@
      "label": "スパッツ（ゲイター）"
     }
    ]
+  },
+  {
+   "key": "snowshoe",
+   "title": "この時期に要るもの（スノーシュー）",
+   "gear": [
+    "snowshoe"
+   ],
+   "lead": "雪が深く、足が沈む時期です。スノーシューかワカン（かんじき）があると、沈まずに歩けます。",
+   "items": [
+    {
+     "id": "snowshoe",
+     "label": "スノーシュー（またはワカン）",
+     "gearCat": "snowshoe",
+     "product": "MSR ライトニングアッセント"
+    },
+    {
+     "id": "sgaiter",
+     "label": "ロングスパッツ（雪が靴に入らないように）",
+     "product": "モンベル GORE-TEX ライトスパッツ ロング"
+    }
+   ]
   }
  ],
  "experiences": [
