@@ -1,0 +1,599 @@
+{
+ "_note": "scripts/build_onsen_near.py が作る（手で編集しない）。下山後に寄れそうな温泉・サウナがある山（ざっくりの目安。営業期間・料金は未確認）。近い施設の一部は © OpenStreetMap contributors（ODbL）",
+ "mountains": {
+  "tsukuba": {
+   "name": "筑波山",
+   "why": [
+    "osm"
+   ],
+   "near": "筑波山温泉つくばの湯"
+  },
+  "houou": {
+   "name": "鳳凰山",
+   "why": [
+    "osm"
+   ],
+   "near": "金山沢温泉"
+  },
+  "nantaisan": {
+   "name": "男体山",
+   "why": [
+    "osm",
+    "name"
+   ],
+   "near": "日光小倉山温泉；春暁庭ゆりん"
+  },
+  "kitadake": {
+   "name": "北岳",
+   "why": [
+    "osm"
+   ],
+   "near": "金山沢温泉"
+  },
+  "kirigamine": {
+   "name": "霧ヶ峰",
+   "why": [
+    "article"
+   ],
+   "near": "白樺リゾート 池の平ホテル 湖天の湯"
+  },
+  "nikko_shirane": {
+   "name": "日光白根山",
+   "why": [
+    "name"
+   ],
+   "near": "日光湯元温泉（奥日光高原ホテル・休暇村日光湯元など）"
+  },
+  "komagatake": {
+   "name": "甲斐駒ヶ岳",
+   "why": [
+    "osm"
+   ],
+   "near": "仙流荘"
+  },
+  "senjogatake": {
+   "name": "仙丈ヶ岳",
+   "why": [
+    "osm"
+   ],
+   "near": "仙流荘"
+  },
+  "shirouma": {
+   "name": "白馬岳",
+   "why": [
+    "osm"
+   ],
+   "near": "栂の湯"
+  },
+  "norikura": {
+   "name": "乗鞍岳",
+   "why": [
+    "osm"
+   ],
+   "near": "せせらぎの湯"
+  },
+  "yari": {
+   "name": "槍ヶ岳",
+   "why": [
+    "osm"
+   ],
+   "near": "梓湖畔の湯"
+  },
+  "hotaka": {
+   "name": "奥穂高岳",
+   "why": [
+    "osm"
+   ],
+   "near": "梓湖畔の湯"
+  },
+  "myoko": {
+   "name": "妙高山",
+   "why": [
+    "article",
+    "osm",
+    "name"
+   ],
+   "near": "The Sauna（LAMP野尻湖）"
+  },
+  "shibutsu": {
+   "name": "至仏山",
+   "why": [
+    "osm"
+   ],
+   "near": "戸倉の湯"
+  },
+  "aizu_koma": {
+   "name": "会津駒ヶ岳",
+   "why": [
+    "osm"
+   ],
+   "near": "駒の湯"
+  },
+  "shirane_gunma": {
+   "name": "草津白根山",
+   "why": [
+    "osm",
+    "name"
+   ],
+   "near": "瑠璃乃湯"
+  },
+  "takao": {
+   "name": "高尾山",
+   "why": [
+    "nearArticle"
+   ],
+   "near": "TAKAO 36 SAUNA"
+  },
+  "jinba": {
+   "name": "陣馬山",
+   "why": [
+    "nearArticle"
+   ],
+   "near": "TAKAO 36 SAUNA"
+  },
+  "kintoki": {
+   "name": "金時山",
+   "why": [
+    "article"
+   ],
+   "near": "箱根湯寮"
+  },
+  "kentoku": {
+   "name": "乾徳山",
+   "why": [
+    "osm"
+   ],
+   "near": "みとみ笛吹の湯"
+  },
+  "hinata": {
+   "name": "日向山",
+   "why": [
+    "article",
+    "osm"
+   ],
+   "near": "白州・尾白の森名水公園 べるが 尾白の湯"
+  },
+  "bonori": {
+   "name": "棒ノ折山",
+   "why": [
+    "osm"
+   ],
+   "near": "さわらびの湯"
+  },
+  "yakedake": {
+   "name": "焼岳",
+   "why": [
+    "name"
+   ],
+   "near": "中の湯温泉旅館"
+  },
+  "iizunasan": {
+   "name": "飯縄山",
+   "why": [
+    "article"
+   ],
+   "near": "The Sauna（LAMP野尻湖）"
+  },
+  "kurohimesan": {
+   "name": "黒姫山",
+   "why": [
+    "article"
+   ],
+   "near": "The Sauna（LAMP野尻湖）"
+  },
+  "shirasunayama": {
+   "name": "白砂山",
+   "why": [
+    "name"
+   ],
+   "near": "応徳温泉 くつろぎの湯（道の駅六合の隣）"
+  },
+  "arasawadake": {
+   "name": "荒沢岳",
+   "why": [
+    "osm"
+   ],
+   "near": "かもしかの湯"
+  },
+  "arikayama": {
+   "name": "有明山",
+   "why": [
+    "osm",
+    "name"
+   ],
+   "near": "中房温泉湯原の湯"
+  },
+  "keizandake": {
+   "name": "経ヶ岳",
+   "why": [
+    "osm"
+   ],
+   "near": "みはらしの湯"
+  },
+  "adatara": {
+   "name": "安達太良山",
+   "why": [
+    "article",
+    "osm"
+   ],
+   "near": "あだたら山 奥岳の湯"
+  },
+  "azuma": {
+   "name": "西吾妻山",
+   "why": [
+    "name"
+   ],
+   "near": "白布温泉 東屋"
+  },
+  "echigokoma": {
+   "name": "越後駒ヶ岳",
+   "why": [
+    "osm"
+   ],
+   "near": "白銀の湯"
+  },
+  "hiuchi": {
+   "name": "火打山",
+   "why": [
+    "article"
+   ],
+   "near": "The Sauna（LAMP野尻湖）"
+  },
+  "takatsuma": {
+   "name": "高妻山",
+   "why": [
+    "article"
+   ],
+   "near": "The Sauna（LAMP野尻湖）"
+  },
+  "kasagatake": {
+   "name": "笠ヶ岳",
+   "why": [
+    "osm",
+    "name"
+   ],
+   "near": "中崎山荘 奥飛騨の湯"
+  },
+  "goryudake": {
+   "name": "五竜岳",
+   "why": [
+    "osm"
+   ],
+   "near": "竜神の湯"
+  },
+  "kisokoma": {
+   "name": "木曽駒ヶ岳",
+   "why": [
+    "osm"
+   ],
+   "near": "こまくさの湯"
+  },
+  "karamatsu": {
+   "name": "唐松岳",
+   "why": [
+    "osm"
+   ],
+   "near": "白馬八方温泉 八方の湯"
+  },
+  "utsugi": {
+   "name": "空木岳",
+   "why": [
+    "osm"
+   ],
+   "near": "こまくさの湯"
+  },
+  "arakawadake": {
+   "name": "荒川岳",
+   "why": [
+    "osm"
+   ],
+   "near": "白樺荘"
+  },
+  "akaisidake": {
+   "name": "赤石岳",
+   "why": [
+    "osm"
+   ],
+   "near": "白樺荘"
+  },
+  "ainodake": {
+   "name": "間ノ岳",
+   "why": [
+    "osm"
+   ],
+   "near": "金山沢温泉"
+  },
+  "noutori": {
+   "name": "農鳥岳",
+   "why": [
+    "osm"
+   ],
+   "near": "金山沢温泉"
+  },
+  "zaosan": {
+   "name": "蔵王山",
+   "why": [
+    "name"
+   ],
+   "near": "蔵王温泉の共同浴場（上湯・下湯など）"
+  },
+  "nokogiriyama": {
+   "name": "鋸岳",
+   "why": [
+    "osm"
+   ],
+   "near": "仙流荘"
+  },
+  "chogatake": {
+   "name": "蝶ヶ岳",
+   "why": [
+    "osm"
+   ],
+   "near": "梓湖畔の湯"
+  },
+  "otenshoudake": {
+   "name": "大天井岳",
+   "why": [
+    "osm",
+    "name"
+   ],
+   "near": "中房温泉湯原の湯"
+  },
+  "tsubakurodake": {
+   "name": "燕岳",
+   "why": [
+    "osm",
+    "name"
+   ],
+   "near": "中房温泉湯原の湯"
+  },
+  "nokogiriyama_chiba": {
+   "name": "鋸山",
+   "why": [
+    "article",
+    "osm"
+   ],
+   "near": "Satoyama Terrace"
+  },
+  "mitakesan": {
+   "name": "御岳山",
+   "why": [
+    "nearArticle"
+   ],
+   "near": "生涯青春の湯 つるつる温泉"
+  },
+  "takamizusanzan": {
+   "name": "高水三山",
+   "why": [
+    "nearArticle"
+   ],
+   "near": "生涯青春の湯 つるつる温泉"
+  },
+  "tenzandake": {
+   "name": "天覧山・多峯主山",
+   "why": [
+    "article",
+    "osm"
+   ],
+   "near": "宮沢湖温泉 喜楽里 別邸"
+  },
+  "hiwadayama": {
+   "name": "日和田山",
+   "why": [
+    "article",
+    "osm"
+   ],
+   "near": "おふろcafe オンセンバルコニー King&Queen"
+  },
+  "bukosan": {
+   "name": "武甲山",
+   "why": [
+    "article"
+   ],
+   "near": "西武秩父駅前温泉 祭の湯"
+  },
+  "koubousan": {
+   "name": "弘法山",
+   "why": [
+    "article",
+    "osm"
+   ],
+   "near": "THERMAL SPA S.WAVE（大磯プリンスホテル）"
+  },
+  "kagenobusan": {
+   "name": "景信山",
+   "why": [
+    "article"
+   ],
+   "near": "TAKAO 36 SAUNA"
+  },
+  "takagawayama": {
+   "name": "高川山",
+   "why": [
+    "osm",
+    "nearArticle"
+   ],
+   "near": "日の出鉱泉"
+  },
+  "kobotokeshiroyama": {
+   "name": "小仏城山",
+   "why": [
+    "nearArticle"
+   ],
+   "near": "TAKAO 36 SAUNA"
+  },
+  "kusatoriyama": {
+   "name": "草戸山",
+   "why": [
+    "nearArticle"
+   ],
+   "near": "TAKAO 36 SAUNA"
+  },
+  "nakimushiyama": {
+   "name": "鳴虫山",
+   "why": [
+    "osm"
+   ],
+   "near": "ほの香"
+  },
+  "tairappyo": {
+   "name": "平標山",
+   "why": [
+    "osm"
+   ],
+   "near": "雪ささの湯"
+  },
+  "tomisan": {
+   "name": "富山",
+   "why": [
+    "article"
+   ],
+   "near": "Satoyama Terrace"
+  },
+  "iyogatake": {
+   "name": "伊予ヶ岳",
+   "why": [
+    "article"
+   ],
+   "near": "Satoyama Terrace"
+  },
+  "ishirousan": {
+   "name": "石老山",
+   "why": [
+    "article",
+    "osm"
+   ],
+   "near": "さがみ湖温泉 うるり"
+  },
+  "maruyama_okubusuma": {
+   "name": "丸山（奥武蔵）",
+   "why": [
+    "nearArticle"
+   ],
+   "near": "西武秩父駅前温泉 祭の湯"
+  },
+  "makuyama": {
+   "name": "幕山",
+   "why": [
+    "osm"
+   ],
+   "near": "ゆとろの湯"
+  },
+  "kukiyama": {
+   "name": "九鬼山",
+   "why": [
+    "article",
+    "osm"
+   ],
+   "near": "山梨泊まれる温泉 より道の湯"
+  },
+  "mitosaan": {
+   "name": "三頭山",
+   "why": [
+    "osm"
+   ],
+   "near": "檜原温泉センター 数馬の湯"
+  },
+  "honitayama": {
+   "name": "本仁田山",
+   "why": [
+    "osm"
+   ],
+   "near": "もえぎの湯"
+  },
+  "hinodesaan": {
+   "name": "日の出山",
+   "why": [
+    "article",
+    "osm"
+   ],
+   "near": "生涯青春の湯 つるつる温泉"
+  },
+  "futagoyama_okumusa": {
+   "name": "二子山（奥武蔵）",
+   "why": [
+    "nearArticle"
+   ],
+   "near": "西武秩父駅前温泉 祭の湯"
+  },
+  "juunigadake": {
+   "name": "十二ヶ岳",
+   "why": [
+    "osm"
+   ],
+   "near": "いずみの湯"
+  },
+  "ishiwariyama": {
+   "name": "石割山",
+   "why": [
+    "article",
+    "osm"
+   ],
+   "near": "ホテルマウント富士"
+  },
+  "azumayama_ninomiya": {
+   "name": "吾妻山",
+   "why": [
+    "article"
+   ],
+   "near": "THERMAL SPA S.WAVE（大磯プリンスホテル）"
+  },
+  "ranzan_saitama": {
+   "name": "嵐山",
+   "why": [
+    "osm"
+   ],
+   "near": "玉川温泉"
+  },
+  "kamakura_alps": {
+   "name": "鎌倉アルプス",
+   "why": [
+    "article"
+   ],
+   "near": "稲村ヶ崎温泉"
+  },
+  "okusuyama": {
+   "name": "大楠山",
+   "why": [
+    "osm"
+   ],
+   "near": "明徳湯"
+  },
+  "nyukasayama": {
+   "name": "入笠山",
+   "why": [
+    "osm"
+   ],
+   "near": "水神の湯"
+  },
+  "nishihotaka": {
+   "name": "西穂高岳",
+   "why": [
+    "osm",
+    "name"
+   ],
+   "near": "中崎山荘 奥飛騨の湯"
+  },
+  "myogisan": {
+   "name": "妙義山",
+   "why": [
+    "osm"
+   ],
+   "near": "もみじの湯"
+  },
+  "sennokurayama": {
+   "name": "仙ノ倉山",
+   "why": [
+    "osm"
+   ],
+   "near": "雪ささの湯"
+  },
+  "takamatsuyama": {
+   "name": "高松山",
+   "why": [
+    "osm"
+   ],
+   "near": "さくらの湯"
+  }
+ }
+}

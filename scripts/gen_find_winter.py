@@ -246,7 +246,7 @@ var QUESTIONS = [
     ] },
   { id: 'after', text: '下山したあと、何をしたいですか？', sub: '冷えた体を温める楽しみに合う山を上げます',
     choices: [
-      { value: 'onsen',  icon: 'droplets', label: '温泉・サウナで温まりたい', sub: '近くに日帰り温泉・サウナがある山' },
+      { value: 'onsen',  icon: 'droplets', label: '温泉・サウナで温まりたい', sub: '登山口の近くや帰り道に温泉・サウナがある山' },
       { value: 'food',   icon: 'utensils', label: '茶屋や山小屋で温かいものを', sub: '山頂や途中でひと休み' },
       { value: 'shrine', icon: 'bell',     label: '初詣・神社やお寺に寄りたい', sub: '信仰の山・古い道・史跡' },
       { value: 'none',   icon: 'check',    label: '特にない', sub: 'おまかせで選んでほしい' }
@@ -491,7 +491,7 @@ function scoreMount(m){
   // 下山後
   if(answers.after === 'onsen'){
     // 記事の山か、特徴の文・紹介文に書いてある山かで差を付けない
-    if(m.onsen || m.sauna || m.onsenText) score += 25;
+    if(m.onsen || m.sauna || m.onsenText || m.onsenNear) score += 25;
   } else if(answers.after === 'food'){
     if(m.food) score += 20;
   } else if(answers.after === 'shrine'){
@@ -542,6 +542,8 @@ function buildReasons(x){
   if(answers.after === 'onsen' && (m.onsen || m.sauna)){
     var fac = (m.onsen || []).concat(m.sauna || []);
     out.push({ l: '下山後に寄れる温泉・サウナ', t: fac.slice(0, 3).join('・') + '（温泉・サウナの記事で紹介）' });
+  } else if(answers.after === 'onsen' && typeof m.onsenNear === 'string'){
+    out.push({ l: '近くの温泉・サウナ', t: m.onsenNear + 'など（地図のデータからの目安。冬の営業日・時間は公式で確かめてください）' });
   }
   var want = { fuji: ['view'], ice: ['alpine', 'view'], pano: ['view'], easy: ['easy', 'casual'] }[answers.see] || [];
   var add = { food: ['casual', 'hut'], shrine: ['historic'] }[answers.after] || [];
