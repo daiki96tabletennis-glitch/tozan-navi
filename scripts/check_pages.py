@@ -780,6 +780,19 @@ def check_access_tier(mountains):
     return out
 
 
+def check_winter_find():
+    """冬の山選び診断（/find/winter/）のデータ data/winter_find.json とページが、mountains.json などと食い違っていないか
+    （scripts/build_winter_find.py → scripts/gen_find_winter.py）。"""
+    import subprocess
+    out = []
+    for script, what in (('build_winter_find.py', 'data/winter_find.json'), ('gen_find_winter.py', 'find/winter/index.html')):
+        r = subprocess.run([sys.executable, os.path.join(ROOT, 'scripts', script), '--check'], capture_output=True, text=True)
+        if r.returncode != 0:
+            out.append({'id': '-', 'problem': '%s が古い（python3 scripts/%s を実行）' % (what, script)})
+            break
+    return out
+
+
 def check_course_type(mountains):
     """コースの種類（routes[].courseType：往復 out_and_back／周回 loop／縦走 traverse）。
     scripts/migrations/add_course_type_2026_11.py がコース名から決める。コースを足す・名前を変えたら流す。"""
@@ -931,6 +944,7 @@ def main():
     chain_issues = check_route_chains(mountains)
     rock_issues = check_route_rocks(mountains)
     tier_issues = check_access_tier(mountains)
+    wfind_issues = check_winter_find()
     import sync_search_hubs
     hub_issues = sync_search_hubs.hub_problems(mountains)
 
@@ -981,6 +995,7 @@ def main():
     report.append(section('23. 鎖場（routes[].chains。出典・ラベル）', chain_issues, fmt))
     report.append(section('24. 岩場（routes[].rocks。出典・ラベル・絞り込みの岩場）', rock_issues, fmt))
     report.append(section('25. アクセス難易度（accessTier。build_access_tier.py）・季節運行の期間', tier_issues, fmt))
+    report.append(section('26. 冬の山選び診断（winter_find.json・/find/winter/）', wfind_issues, fmt))
     if ssot_warns:
         report.append('## 参考：運行期間の期限切れ（来季の再確認対象。件数に含めない）\n' + '\n'.join('- ' + fmt(w) for w in ssot_warns) + '\n')
     report.append(f"## 参考：既知の未解決（調査待ちのレガシー。件数に含めない）\n- 10. 所要時間: {len(time_known)}件 / 11. 駅名: {len(station_known)}件（scripts/check_known_issues.json）\n")
@@ -992,7 +1007,7 @@ def main():
              + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues)
              + len(train_routes_issues) + len(route_dup_issues) + len(time_issues)
              + len(station_issues) + len(coeff_issues) + len(restricted_issues) + len(seat_issues)
-             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues) + len(listing_issues) + len(tech_issues) + len(ctype_issues) + len(chain_issues) + len(rock_issues) + len(tier_issues))
+             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues) + len(listing_issues) + len(tech_issues) + len(ctype_issues) + len(chain_issues) + len(rock_issues) + len(tier_issues) + len(wfind_issues))
 
     if args.json:
         with open(args.json, 'w', encoding='utf-8') as f:

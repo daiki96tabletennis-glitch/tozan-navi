@@ -305,7 +305,7 @@ def hatsuhinode(M, SC, W):
         '<div class="tips-card" style="padding:16px 20px"><ul style="margin:0 0 0 18px;line-height:1.9">'
         '<li><a href="/articles/diamond-fuji/" style="color:#4a6038;font-weight:700">ダイヤモンド富士が見える山（日付と時刻）</a></li>'
         '<li><a href="/articles/winter-no-crampons/" style="color:#4a6038;font-weight:700">冬でも登れる関東の山7選｜雪なし・アイゼン不要</a></li>'
-        '<li><a href="/search/train-daytrip/" style="color:#4a6038;font-weight:700">電車で行ける日帰り登山</a></li></ul></div>',
+        '<li><a href="/search/train-daytrip/" style="color:#4a6038;font-weight:700">電車で行ける日帰り登山</a></li>' + '<li><a href="/find/winter/" style="color:#4a6038;font-weight:700">冬の山選び診断（9問で11〜3月に行ける山がわかる）</a></li>' + '</ul></div>',
     ])
     faq = [
         ('%d年の元日、山頂の日の出は何時ですか？' % y,
@@ -541,7 +541,7 @@ def diamond(M, SC, W):
         '<div class="tips-card" style="padding:16px 20px"><ul style="margin:0 0 0 18px;line-height:1.9">'
         '' + hatsu_li(W) + ''
         '<li><a href="/articles/winter-views/" style="color:#4a6038;font-weight:700">冬の絶景が見られる山（樹氷・霧氷・雪原）と冬の行き方</a></li>'
-        '<li><a href="/articles/winter-no-crampons/" style="color:#4a6038;font-weight:700">冬でも登れる関東の山7選｜雪なし・アイゼン不要</a></li></ul></div>',
+        '<li><a href="/articles/winter-no-crampons/" style="color:#4a6038;font-weight:700">冬でも登れる関東の山7選｜雪なし・アイゼン不要</a></li>' + '<li><a href="/find/winter/" style="color:#4a6038;font-weight:700">冬の山選び診断（9問で11〜3月に行ける山がわかる）</a></li>' + '</ul></div>',
     ])
     wn = [r for r in winter]
     faq = [
@@ -667,7 +667,7 @@ def views(M, SC, W):
         '<div class="tips-card" style="padding:16px 20px"><ul style="margin:0 0 0 18px;line-height:1.9">'
         '<li><a href="/articles/winter-no-crampons/" style="color:#4a6038;font-weight:700">冬でも登れる関東の山7選｜雪なし・アイゼン不要</a></li>'
         '<li><a href="/articles/diamond-fuji/" style="color:#4a6038;font-weight:700">ダイヤモンド富士が見える山（日付と時刻）</a></li>'
-        '' + hatsu_li(W) + '</ul></div>',
+        '' + hatsu_li(W) + '' + '<li><a href="/find/winter/" style="color:#4a6038;font-weight:700">冬の山選び診断（9問で11〜3月に行ける山がわかる）</a></li>' + '</ul></div>',
     ])
     vz = {it['id']: it for it in V['mountains']}
     faq = [

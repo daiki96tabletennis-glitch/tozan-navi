@@ -1,7 +1,7 @@
 """冬の山選び診断（/find/winter/）のデータ data/winter_find.json を作る（2026-11-17〜。運営者の指示「冬登山に特化した山選び診断」）。
 手で編集しない。mountains.json・gear-data.json・accesses.json・winter_specials.json・onsen_sauna.json・saunachelin_hiking.json から作る。
 
-- 12月〜3月（2026年12月〜2027年3月）の月ごとに：装備の区分（gearCalendar）、ピッケルのカード（gear-data.json の axe）、
+- 11月〜3月（2026年11月〜2027年3月）の月ごとに：装備の区分（gearCalendar）、ピッケルのカード（gear-data.json の axe）、
   電車・バスで行けるか／車で行けるか（ok／part＝月の一部だけ／no）と、その理由（期間つき）
   - 電車・バス：季節運行の乗り物（build_access_tier.py の seasons()。月日で見る＝毎年同じ時期に走る前提）が走っていない日は行けない。
     期間の分からない季節運行は「走っていない」とする。閉鎖（closure）の名前にロープウェイ・ゴンドラ・バスなどがあれば、その期間も行けない
@@ -29,7 +29,7 @@ import gen_winter_specials as GW  # noqa: E402
 import sun_calc  # noqa: E402
 
 OUT = os.path.join(ROOT, 'data', 'winter_find.json')
-MONTHS = [(2026, 12), (2027, 1), (2027, 2), (2027, 3)]
+MONTHS = [(2026, 11), (2026, 12), (2027, 1), (2027, 2), (2027, 3)]
 # 冬山装備の月に、冬も登山口まで行けることを公式の情報で確かめた山（冬の絶景の記事で確かめた山は自動で入る）
 #  kisokoma：中央アルプス駒ヶ岳ロープウェイと、しらび平へのバスは通年（山のデータの経路の札「通年運行（冬ダイヤ・点検運休あり）」）
 VERIFIED = {'kisokoma': '駒ヶ岳ロープウェイとバスは通年運行（冬ダイヤ・点検の運休あり）'}
@@ -93,7 +93,7 @@ def closures(m):
 def closure_on(a, d):
     f, t = a.get('validFrom'), a.get('validTo')
     if not f and not t:
-        return d.month in (12, 1, 2, 3)
+        return d.month in (12, 1, 2, 3)  # 期間の分からない冬期閉鎖は11月には数えない（大菩薩嶺の県道は12月中旬から）
     fd = datetime.date.fromisoformat(f) if f else datetime.date(2026, 11, 1)
     td = datetime.date.fromisoformat(t) if t else datetime.date(2027, 3, 31)
     return fd <= d <= td
@@ -173,7 +173,7 @@ def ev_month(ev):
     out = {}
     for e in ev:
         for mo in sorted({e['from'].month, e['to'].month, e['date'].month}):
-            if mo in (12, 1, 2, 3):
+            if mo in (11, 12, 1, 2, 3):
                 out.setdefault(str(mo), []).append(GW.ev_text(e))
     return out
 

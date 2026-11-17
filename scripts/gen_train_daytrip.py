@@ -268,7 +268,7 @@ def main():
 /* 2026-10 作り直し：電車で行く人向けの20選 */
 .td-season{margin:4px 0 14px;background:white;border:1px solid #e0dbd4;border-radius:14px;padding:12px 14px}
 .td-season h2{font-size:15px;font-weight:800;color:#2a3820;margin:0 0 8px}
-.td-season-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.td-season-g{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .td-season-a{display:flex;flex-direction:column;gap:2px;background:#f0ede5;border-radius:10px;padding:9px 11px;text-decoration:none}
 .td-season-a b{font-size:13px;color:#2a3820}
 .td-season-a span{font-size:11.5px;color:#5a5248}

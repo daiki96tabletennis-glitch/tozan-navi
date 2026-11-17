@@ -2,6 +2,16 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<script>
+/* 11〜3月は、同じURLのまま冬の山選び診断（/find/winter/ の中身）に入れ替える（2026-11-17。運営者の指示）。?mode=all で通年の診断 */
+(function(){
+  var mo = new Date().getMonth() + 1;
+  if(!(mo >= 11 || mo <= 3) || /[?&]mode=all(&|$)/.test(location.search)) return;
+  window.YM_WINTER_SWAP = true;
+  document.documentElement.className += ' ym-winter-swap';
+})();
+</script>
+<style>html.ym-winter-swap body{visibility:hidden;}</style>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>山選び診断 | 初心者でも行ける山をかんたん検索 - Yamatch</title>
 <meta name="description" content="交通手段・体力・好みの雰囲気を選ぶだけ。初心者でもすぐ行ける山が見つかる、Yamatchの山選び診断。">
@@ -223,6 +233,8 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
     </div>
     <button class="start-btn" onclick="startQuiz()">診断スタート →</button>
     <div class="intro-note">※都内から車で6時間以内で行ける山から提案します</div>
+    <a id="find-winter-link" href="/find/winter/" style="display:none;margin:18px auto 0;max-width:360px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.35);border-radius:12px;padding:10px 14px;color:white;text-decoration:none;text-align:left"><span style="display:block;font-size:11px;color:rgba(255,255,255,0.75)">冬（12〜3月）に行くなら</span><span style="display:block;font-size:14px;font-weight:800">冬の山選び診断はこちら →</span></a>
+    <script>(function(){var mo=new Date().getMonth()+1;if(mo>=11||mo<=3){var a=document.getElementById('find-winter-link');if(a)a.style.display='block';}})();</script>
   </div>
 </div>
 
@@ -367,14 +379,18 @@ var answers = {};
 var currentQ = 0;
 var mountainsData = [];
 
-fetch('/data/mountains.json')
-  .then(function(r){ return r.json(); })
-  .then(function(data){
-    mountainsData = data;
-    // 噴火警報が出ている山は「規制中」として診断から外す（気象庁のデータ）
-    if(window.YMVolcano) window.YMVolcano.load(function(){ window.YMVolcano.apply(mountainsData); });
-  })
-  .catch(function(){});
+function loadMountains(){
+  fetch('/data/mountains.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      mountainsData = data;
+      // 噴火警報が出ている山は「規制中」として診断から外す（気象庁のデータ）
+      if(window.YMVolcano) window.YMVolcano.load(function(){ window.YMVolcano.apply(mountainsData); });
+    })
+    .catch(function(){});
+}
+// 冬（11〜3月）に冬の診断へ入れ替えるときは読まない（入れ替えに失敗したときだけ読む）
+if(!window.YM_WINTER_SWAP) loadMountains();
 
 function startQuiz(){
   answers = {};
@@ -979,6 +995,52 @@ function esc(s){
   if(!s) return '';
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
+</script>
+<script>
+/* 冬の診断への入れ替え（11〜3月）：/find/winter/ の本文と見た目をこのページに入れ、スクリプトを順に動かす。
+   読めなかったら通年の診断をそのまま出す。検索向けの title・説明文・canonical はこのページ（/find/）のまま */
+(function(){
+  if(!window.YM_WINTER_SWAP) return;
+  var done = false;
+  function fallback(){
+    if(done) return;
+    done = true;
+    document.documentElement.className = document.documentElement.className.replace(' ym-winter-swap', '');
+    loadMountains();
+  }
+  var timer = setTimeout(fallback, 5000);
+  fetch('/find/winter/').then(function(r){ if(!r.ok) throw new Error('http'); return r.text(); }).then(function(html){
+    if(done) return;
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    var st = doc.querySelector('head style');
+    if(!st || !doc.body) throw new Error('parse');
+    done = true;
+    clearTimeout(timer);
+    document.documentElement.className = document.documentElement.className.replace(' ym-winter-swap', '');
+    Array.prototype.forEach.call(document.querySelectorAll('head style'), function(el){ el.parentNode.removeChild(el); });
+    var ns = document.createElement('style');
+    ns.textContent = st.textContent;
+    document.head.appendChild(ns);
+    var scripts = Array.prototype.slice.call(doc.body.querySelectorAll('script'));
+    scripts.forEach(function(sc){ sc.parentNode.removeChild(sc); });
+    document.body.innerHTML = doc.body.innerHTML;
+    document.body.setAttribute('data-winter-swap', '1');
+    (function next(i){
+      if(i >= scripts.length) return;
+      var el = document.createElement('script');
+      if(scripts[i].src){
+        el.src = scripts[i].getAttribute('src');
+        el.onload = el.onerror = function(){ next(i + 1); };
+        document.body.appendChild(el);
+      } else {
+        el.textContent = scripts[i].textContent;
+        document.body.appendChild(el);
+        next(i + 1);
+      }
+    })(0);
+    window.scrollTo(0, 0);
+  }).catch(fallback);
+})();
 </script>
 </body>
 </html>
