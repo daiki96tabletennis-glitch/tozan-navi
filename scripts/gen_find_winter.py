@@ -152,7 +152,7 @@ TEMPLATE = r"""<!DOCTYPE html>
 </div>
 <div id="step-intro" class="step active">
   <div class="intro-hero">
-    <h1 class="intro-hero-title">冬の山選び診断<br>12月・1月・2月に登れる山</h1>
+    <h1 class="intro-hero-title">冬の山選び診断<br>11月〜3月に登れる山</h1>
     <div class="intro-hero-sub">9問に答えるだけ。雪の無い山からチェーンスパイクの山、雪山入門まで、行く月の装備と冬の運休・通行止めを見て提案します</div>
     <div class="intro-tags">
       <span class="intro-tag">@@SNOW@@雪なし〜雪山入門</span>

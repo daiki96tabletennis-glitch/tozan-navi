@@ -1536,9 +1536,16 @@ def render_gear(mt, gear_data):
 
 
 def packing_link(mt):
-    """山小屋のページ（/huts/<山ID>/）がある山だけ、山小屋泊の持ち物・服装のチェックリストへのリンクを出す"""
+    """山小屋のページ（/huts/<山ID>/）があり、その山のコース上に山小屋がある山だけ、山小屋泊の持ち物・服装のチェックリストへのリンクを出す。
+    山の一覧は data/huts_stay_mountains.json（gen_huts_page.py が作る。登山口の近くの宿・別ルートの小屋だけの山は入らない。2026-11-17）"""
     mid = mt["id"]
     if not os.path.exists(os.path.join(SITE_ROOT, "huts", mid, "index.html")):
+        return ""
+    try:
+        stay = json.load(open(os.path.join(SITE_ROOT, "data", "huts_stay_mountains.json"), encoding="utf-8"))["mountains"]
+    except (OSError, ValueError, KeyError):
+        stay = None
+    if stay is not None and mid not in stay:
         return ""
     return (
         f'<a class="gear-packing-link" href="/huts/{mid}/#packing" '

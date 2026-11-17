@@ -1641,6 +1641,12 @@
           "day": 1,
           "time": "11:00"
         }
+      },
+      "seasonFix": {
+        "value": "6/12～10/12",
+        "note": "公式の営業期間。宿泊は10/11の泊まりまで（予約サイト・長野県の案内）",
+        "source": "https://www.ina-city-kankou.co.jp/yamagoya/senjo/",
+        "checkedAt": "2026-11-17"
       }
     },
     {
@@ -1725,6 +1731,12 @@
           "source": "https://www.yamatan.net/news/66x6x2r77p",
           "year": 2026
         }
+      },
+      "seasonFix": {
+        "value": "5/2～5/6、7/1～10/12",
+        "note": "公式の営業期間（GWは5/2～6）。夏の宿泊は10/11の泊まりまで（予約サイト・長野県の案内）",
+        "source": "https://www.ina-city-kankou.co.jp/yamagoya/shiomi/",
+        "checkedAt": "2026-11-17"
       }
     },
     {
@@ -2011,13 +2023,10 @@
       "id": "hut-7870354b",
       "name": "木曽殿山荘",
       "region": "中央アルプス",
-      "mountainIds": [],
-      "otherMountains": [
-        {
-          "id": "utsugi",
-          "relation": "木曽駒ヶ岳方面からの縦走"
-        }
+      "mountainIds": [
+        "utsugi"
       ],
+      "otherMountains": [],
       "location": "空木岳・東川岳鞍部、木曽殿越 標高2587m",
       "officialUrl": "https://www.kisodonosansou.com/",
       "tel": "0573-72-4380",
@@ -2081,7 +2090,8 @@
       "name": "越百小屋",
       "region": "中央アルプス",
       "mountainIds": [
-        "minamikomagatake"
+        "minamikomagatake",
+        "utsugi"
       ],
       "otherMountains": [],
       "location": "越百山西1km 標高2340m",
@@ -2279,13 +2289,10 @@
       "id": "hut-bd33a29a",
       "name": "硫黄岳山荘",
       "region": "八ヶ岳",
-      "mountainIds": [],
-      "otherMountains": [
-        {
-          "id": "yatsugatake",
-          "relation": "硫黄岳・横岳からの縦走"
-        }
+      "mountainIds": [
+        "yatsugatake"
       ],
+      "otherMountains": [],
       "location": "南八ケ岳 硫黄岳と横岳の鞍部 標高2,650ｍ",
       "officialUrl": "https://iodake.jp/sanso/",
       "tel": "0266-73-6673（予約専用：事務所）",
@@ -2517,13 +2524,10 @@
       "id": "hut-6b20aa67",
       "name": "天狗温泉浅間山荘",
       "region": "その他",
-      "mountainIds": [],
-      "otherMountains": [
-        {
-          "id": "asama",
-          "relation": "火山館コース（前掛山方面）の登山口"
-        }
+      "mountainIds": [
+        "asama"
       ],
+      "otherMountains": [],
       "location": "佐久平駅から小諸駅経由バス40分、浅間山登山口下車、徒歩40分、小諸駅から送迎車25分（要予約） 標高1400m",
       "officialUrl": "http://www.tenguspa.com/",
       "tel": "0267-22-0959",
@@ -2825,13 +2829,10 @@
       "id": "hut-dcb95faa",
       "name": "七合目行場山荘",
       "region": "その他",
-      "mountainIds": [],
-      "otherMountains": [
-        {
-          "id": "ontakesan",
-          "relation": "黒沢口のルート"
-        }
+      "mountainIds": [
+        "ontakesan"
       ],
+      "otherMountains": [],
       "location": "黒沢口七合目 標高2180m",
       "officialUrl": "http://www.ontake-7-gyouba.com/",
       "tel": "090-4380-5200 予約 FAX 0264-46-2014",
@@ -2859,13 +2860,10 @@
       "id": "hut-be276b8e",
       "name": "女人堂（金剛堂）",
       "region": "その他",
-      "mountainIds": [],
-      "otherMountains": [
-        {
-          "id": "ontakesan",
-          "relation": "黒沢口のルート"
-        }
+      "mountainIds": [
+        "ontakesan"
       ],
+      "otherMountains": [],
       "location": "黒沢口八合目 標高2470m 女人堂から剣が峰頂上（3,067m）まで約2時間半",
       "officialUrl": "https://ontake-nyonindo.jimdofree.com/",
       "tel": "090-8329-1385 FAX 0264-46-2415",
@@ -2895,13 +2893,10 @@
       "id": "hut-f89a29c6",
       "name": "石室山荘",
       "region": "その他",
-      "mountainIds": [],
-      "otherMountains": [
-        {
-          "id": "ontakesan",
-          "relation": "黒沢口のルート"
-        }
+      "mountainIds": [
+        "ontakesan"
       ],
+      "otherMountains": [],
       "location": "黒沢口九合目 標高2,820m",
       "officialUrl": "http://www.ontake-ishimuro.com/",
       "tel": "0264-46-2016（黒澤館）",
@@ -4313,6 +4308,12 @@
         "note": "公式の収容人数。予約サイトに登録の定員は120人",
         "source": "https://www.raichozawa.net/",
         "checkedAt": "2026-10-21"
+      },
+      "seasonFix": {
+        "value": null,
+        "note": "公式サイトに営業期間の日付の記載なし。予約サイト（やまたん）は4/15～10/12、山と溪谷オンラインの一覧は4/18～10/6で食い違う",
+        "source": "https://www.raichozawa.net/",
+        "checkedAt": "2026-11-17"
       }
     },
     {

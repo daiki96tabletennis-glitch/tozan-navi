@@ -33,16 +33,18 @@ HUT_MOUNTAINS = {
     '北沢峠 こもれび山荘': ['komagatake', 'senjogatake'], '大平山荘': ['komagatake', 'senjogatake'], '仙丈小屋': ['senjogatake'], '馬の背ヒュッテ': ['senjogatake'],
     '塩見小屋': ['shiomidake'], '三伏峠小屋': ['shiomidake'], '聖光小屋': ['hijiridade', 'terkari'], '県営光岳小屋': ['terkari'],
     '駒ヶ岳頂上山荘': ['kisokoma'], '宝剣山荘': ['kisokoma'], '天狗荘': ['kisokoma'], '西駒山荘': [],
-    '木曽殿山荘': [], '空木駒峰ヒュッテ': ['utsugi'], '越百小屋': ['minamikomagatake'],
+    '木曽殿山荘': ['utsugi'], '空木駒峰ヒュッテ': ['utsugi'], '越百小屋': ['minamikomagatake', 'utsugi'],
     '蓼科山頂ヒュッテ': ['keirisan'], '蓼科山荘': ['keirisan'],
     '赤岳頂上山荘': ['yatsugatake'], '赤岳天望荘': ['yatsugatake'], '行者小屋': ['yatsugatake'], '赤岳鉱泉': ['yatsugatake'], '赤岳山荘': ['yatsugatake'],
-    '美濃戸山荘': ['yatsugatake'], '硫黄岳山荘': [],
+    '美濃戸山荘': ['yatsugatake'], '硫黄岳山荘': ['yatsugatake'],
     '苗場山頂ヒュッテ－自然体験交流センター': ['naeba'], '甲武信小屋': ['kobushigatake'], '十文字小屋': [], '金峰山小屋': ['kinpusan'],
-    '二ノ池山荘': ['ontakesan'], '二の池ヒュッテ': ['ontakesan'], '女人堂（金剛堂）': [], '石室山荘': [], '七合目行場山荘': [],
-    '天狗温泉浅間山荘': [], '鷲が峰ひゅって': ['kirigamine'], 'ヒュッテみさやま': ['kirigamine'], '八島山荘': ['kirigamine'],
+    '二ノ池山荘': ['ontakesan'], '二の池ヒュッテ': ['ontakesan'], '女人堂（金剛堂）': ['ontakesan'], '石室山荘': ['ontakesan'], '七合目行場山荘': ['ontakesan'],
+    '天狗温泉浅間山荘': ['asama'], '鷲が峰ひゅって': ['kirigamine'], 'ヒュッテみさやま': ['kirigamine'], '八島山荘': ['kirigamine'],
     '美ヶ原高原ホテル・山本小屋': ['utsukushigahara'], '山本小屋ふる里館': ['utsukushigahara'], '萬岳荘': [],
 }
 # 別のルート・縦走で使う小屋：山小屋名 → [(山のID, どういう関係か)]
+# 2026-11-17：木曽殿山荘（空木岳のコース3）・硫黄岳山荘（八ヶ岳のコース3）・御嶽山の黒沢口の3軒（コース2）・天狗温泉浅間山荘（浅間山のコース3の登山口）は、
+# 10月のコースの見直しでサイトのコースの通過点になったので「対応する山」に移した（YAMAP のモデルコースの通過点で確かめた）。越百小屋に空木岳（コース3）を足した
 HUT_OTHER = {
     '岳沢小屋': [('hotaka', '岳沢・前穂高岳経由のルート')],
     '横尾山荘': [('chogatake', '横尾から登るルート')],
@@ -51,11 +53,7 @@ HUT_OTHER = {
     'キレット小屋': [('goryudake', '鹿島槍ヶ岳との縦走（八峰キレット）'), ('kashimayari', '五竜岳との縦走（八峰キレット）')],
     '位ヶ原山荘': [('norikura', '乗鞍高原側から歩いて登るルート')],
     '西駒山荘': [('kisokoma', '桂小場からのルート')],
-    '木曽殿山荘': [('utsugi', '木曽駒ヶ岳方面からの縦走')],
-    '硫黄岳山荘': [('yatsugatake', '硫黄岳・横岳からの縦走')],
     '十文字小屋': [('kobushigatake', '十文字峠経由のルート')],
-    '女人堂（金剛堂）': [('ontakesan', '黒沢口のルート')], '石室山荘': [('ontakesan', '黒沢口のルート')], '七合目行場山荘': [('ontakesan', '黒沢口のルート')],
-    '天狗温泉浅間山荘': [('asama', '火山館コース（前掛山方面）の登山口')],
     '萬岳荘': [('enasan', '神坂峠の近く（富士見台高原）。前泊・後泊に使える')],
 }
 # 八ヶ岳のページにも「キレット小屋」（赤岳・権現岳の間）があるので、北アルプスのものだけを使う

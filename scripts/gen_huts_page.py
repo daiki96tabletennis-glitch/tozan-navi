@@ -30,6 +30,10 @@ def _km(a, b, c, d2):
     return 2 * 6371 * math.asin(math.sqrt(x))
 
 
+# 登山口の宿・山荘（山小屋泊ではなく前泊の宿にあたる。位置の判定で登山口の近くと出ない小屋もここで外す）
+TRAILHEAD_LODGES = {'天狗温泉浅間山荘', '清四郎小屋'}
+
+
 def place_text(h):
     """山小屋のだいたいの場所を、位置データから文にする（山頂からの直線距離と、分かれば標高の差）。
     位置の分からない小屋・山は None。距離は直線で、歩く距離ではない"""
@@ -1136,3 +1140,17 @@ urls += ['<url><loc>%s/huts/%s/</loc><lastmod>%s</lastmod><changefreq>monthly</c
 assert sm.count('</urlset>') == 1
 open(sp, 'w', encoding='utf-8').write(sm.replace('</urlset>', '\n'.join(urls) + '\n</urlset>'))
 print('山ごと %d ページ／山小屋ごと %d ページ（うち検索に出さない %d）／sitemap %d 件' % (len(count), len(H), noindex, len(urls)))
+# 山ページの「山小屋泊の持ち物・服装はこちら」のリンクを出す山（2026-11-17。運営者の指示「山小屋がない山にも装備欄の下に山小屋の持ち物リンクがあるのはおかしい」）
+# その山のコース上（mountainIds）に、登山口の近く（place_text の判定）でない山小屋が1軒以上ある山だけ。
+# 別ルート・縦走で使う小屋（otherMountains）しか無い山、登山口の宿・小屋しか無い山は出さない。gen_mountain_pages.py の packing_link が読む
+_stay = {}
+for h in H:
+    pt = place_text(h)
+    kind = pt[0] if pt else None
+    for mid in h['mountainIds']:
+        if mid in M and kind != '登山口の近く' and h['name'] not in TRAILHEAD_LODGES:
+            _stay.setdefault(mid, []).append(h['name'])
+json.dump({'note': '山小屋泊の持ち物のリンクを出す山（コース上に、登山口の近くでない山小屋がある山）。scripts/gen_huts_page.py が作る（手で編集しない）',
+           'mountains': {k: sorted(v) for k, v in sorted(_stay.items())}},
+          open(os.path.join(ROOT, 'data', 'huts_stay_mountains.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+print('山小屋泊の持ち物のリンクを出す山 %d' % len(_stay))
