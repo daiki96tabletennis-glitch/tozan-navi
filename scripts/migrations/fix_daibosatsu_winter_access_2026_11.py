@@ -9,7 +9,7 @@
   今冬の日付は発表されていないので、期間なしの closure（出典の見張りだけ。毎日の規制・閉鎖の見張りにも入る）
 - 注記に「バスは4月中旬〜12月中旬の土日祝だけ（冬は県道も閉鎖）」を足す（1山3項目まで）
 
-何度流しても同じ結果。このあと build_access_tier.py --write → gen_mountain_pages.py --id okutama → gen_winter_specials.py → check_pages.py
+何度流しても同じ結果。このあと build_derived.py → build_access_tier.py --write → gen_mountain_pages.py --id okutama → gen_winter_specials.py → check_pages.py
 """
 import json
 import os
@@ -40,4 +40,17 @@ if NOTE not in note:
 m['trainAccessHtml'] = render_ts_section(tr, m)
 m['mountainUpdated'] = DAY
 json.dump(M, open(path, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+
+# 新しい形の山なので、注記の正は accesses.json（上日川峠のアクセス）。mountains.json だけに書くと build_derived.py で消える
+# （2026-11-17 に、季節ダイヤを入れたときの build_derived.py で消えたので足した）
+apath = os.path.join(ROOT, 'data', 'accesses.json')
+araw = open(apath, encoding='utf-8').read()
+AC = json.loads(araw)
+for a in (AC if isinstance(AC, list) else AC.values()):
+    if a.get('id') == 'kamihikawa':
+        atr = a['trainRoutes']
+        an = atr.get('note') or ''
+        if NOTE not in an:
+            atr['note'] = (an.rstrip('。') + '。' + NOTE) if an else NOTE
+open(apath, 'w', encoding='utf-8').write(json.dumps(AC, ensure_ascii=False, indent=2) + ('\n' if araw.endswith('\n') else ''))
 print('ok', tr['note'])

@@ -27,8 +27,26 @@ WINTER = [
      'seasonYear': '2026〜27', 'sourceUrl': 'https://www.fujimipanorama.com/snow/access/', 'lastVerified': DAY,
      'note': '毎日運行・予約不要。富士見駅9時15分・10時発、帰りは15時・17時発'},
 ]
-NOTE = ('無料シャトルバスは夏（2026年4/25〜11/24）は富士見駅10時発、冬（12/12〜2027年4/4）は9:15・10:00発。'
-        'ゴンドラは夏（2026年4/25〜11/15）と冬（12/12〜2027年4/4）に運行')
+# 運行の期間・時刻は季節ダイヤ（transitSeasons）で出す（日付で夏と冬を切り替える。2026-11-17 運営者の指示）。注記には季節で変わらないことだけ
+NOTE = ''
+SEASONS = [
+    {'key': 'summer', 'label': '夏ダイヤ（グリーンシーズン）', 'from': '2026-04-25', 'to': '2026-11-15',   # 山へ上がれるのはゴンドラの最終日まで
+     'lines': ['富士見駅からの無料シャトルバス：富士見駅10時発の1便（11月24日まで）',
+               'ゴンドラ：4月25日〜11月15日、8:30〜16:00（11月は15:30まで）'],
+     'links': [{'label': '夏のアクセス・シャトルバス', 'url': 'https://www.fujimipanorama.com/summer/access'},
+               {'label': '夏のゴンドラの営業・料金', 'url': 'https://www.fujimipanorama.com/summer/ticket'}],
+     'timetable': {'label': '富士見パノラマ 夏のシャトルバス', 'url': 'https://www.fujimipanorama.com/summer/access'},
+     'lastVerified': '2026-10-27'},
+    {'key': 'winter', 'label': '冬ダイヤ（ウインターシーズン）', 'from': '2026-12-12', 'to': '2027-04-04',
+     'lines': ['富士見駅からの無料送迎バス：毎日運行・予約不要。行きは富士見駅9:15発・10:00発、帰りは15:00発・17:00発',
+               'ゴンドラ：8:30〜16:00（下りの最終16:30）。冬山登山は往復2,400円',
+               'ゴンドラ山頂駅から入笠山の山頂まで、スノーシューで往復約3時間（用具はレンタルあり）'],
+     'links': [{'label': '冬のアクセス・送迎バスの時刻', 'url': 'https://www.fujimipanorama.com/snow/access/'},
+               {'label': '冬山登山・スノートレッキング', 'url': 'https://www.fujimipanorama.com/snow/trekking/'},
+               {'label': '冬の営業期間・ゴンドラ料金', 'url': 'https://www.fujimipanorama.com/snow/ticket/'}],
+     'timetable': {'label': '富士見パノラマ 冬の送迎バス', 'url': 'https://www.fujimipanorama.com/snow/access/'},
+     'lastVerified': DAY},
+]
 SUMMARY = 'ゴンドラ代（片道2,000円。冬の登山は往復2,400円）は別'
 FAQ_SEASON = ('入笠山のゴンドラは、春〜秋（2026年は4月25日〜11月15日）と冬（2026年12月12日〜2027年4月4日）に動きます。'
               '6月は入笠湿原のスズランが見ごろです。冬はゴンドラ山頂駅から山頂まで、スノーシューで往復約3時間のスノートレッキングが定番で、'
@@ -41,6 +59,8 @@ labels = {w['label'] for w in WINTER}
 m['annualItems'] = [a for a in m.get('annualItems') or [] if a.get('label') not in labels] + [dict(w) for w in WINTER]
 tr = m['trainRoutes']
 tr['note'] = NOTE
+m['transitSeasons'] = SEASONS
+m['transitSeasonsName'] = '富士見パノラマのゴンドラ・送迎バス'
 tr['summaryNote'] = SUMMARY
 m['trainAccessHtml'] = render_ts_section(tr, m)
 for f in m.get('faq') or []:

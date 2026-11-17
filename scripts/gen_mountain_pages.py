@@ -61,7 +61,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261111a"
+ASSET_VER = "20261117a"
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
@@ -549,6 +549,7 @@ def render_train_access(mt):
     if mt.get("trainAccessLabel"):
         caption = f'<div class="ts-target">行き先：{esc(mt["trainAccessLabel"])}</div>\n  '
     caption += render_annual_items(mt)
+    caption += render_transit_seasons(mt)
     ret = render_returns(mt)
     if train_routes:
         ts = render_ts_section(train_routes, mt)
@@ -983,10 +984,13 @@ def annual_attrs(valid_to, kind):
 
 
 def render_annual_items(mt):
-    """旧構造の山：annualItems（今年の運行期間など）を電車・バス欄の上に出す"""
+    """旧構造の山：annualItems（今年の運行期間など）を電車・バス欄の上に出す。
+    季節ダイヤ（transitSeasons）を持つ山は、乗り物の運行期間はそちらで出すので、ここでは出さない（2026-11-17）"""
     out = []
     for it in mt.get("annualItems") or []:
         if not (it.get("validFrom") or it.get("validTo")):
+            continue
+        if mt.get("transitSeasons") and (it.get("kind") or "transport") == "transport":
             continue
         rng = f'{_md(it.get("validFrom"))}〜{_md(it.get("validTo"))}'
         link = ""
@@ -996,6 +1000,41 @@ def render_annual_items(mt):
         out.append(f'<div{annual_attrs(it.get("validTo"), it.get("kind") or "transport").replace("ym-annual", "ym-annual ts-op")}>'
                    f'{esc(it.get("label") or "")}：{it.get("seasonYear") or ""}年は{rng}{note}{link}</div>')
     return "".join(out)
+
+
+def render_transit_seasons(mt):
+    """季節ダイヤ（夏ダイヤ・冬ダイヤなど。mt["transitSeasons"]）。2026-11-17〜。運営者の指示
+    「冬ダイヤがある山は、夏の期間が終わったら冬ダイヤの表示に切り替える。夏の終わりから冬の始まりの前は、冬ダイヤは何日からかを出す。リンクも冬の案内・時刻表に」。
+    全部の季節を書き出し、mountain-engine.js が開いた日の日付で1つだけ見せる（期間中の季節、無ければ次に始まる季節）。
+    電車・バス欄の時刻表のボタン（.ts-link-bus）も、見せる季節の timetable に差し替える。JavaScript が動かないときは全部見える"""
+    ss = mt.get("transitSeasons") or []
+    if not ss:
+        return ""
+    out = []
+    for z in ss:
+        lines = "".join(f"<li>{esc(x)}</li>" for x in z.get("lines") or [])
+        links = "".join(
+            f'<a class="ts-season-link" href="{esc(l["url"])}" target="_blank" rel="noopener">{esc(l["label"])} →</a>'
+            for l in z.get("links") or [])
+        tt = z.get("timetable") or {}
+        out.append(
+            f'<div class="ts-season" data-key="{esc(z["key"])}" data-label="{esc(z["label"])}" data-from="{esc(z["from"])}" data-to="{esc(z["to"])}"'
+            + (f' data-timetable="{esc(tt["url"])}" data-timetable-label="{esc(tt["label"])}"' if tt.get("url") else "")
+            + f'><div class="ts-season-h"><b class="ts-season-name">{esc(z["label"])}</b>'
+            f'<span class="ts-season-range">{_ymd(z["from"])}〜{_ymd(z["to"])}</span></div>'
+            f'<ul class="ts-season-lines">{lines}</ul>'
+            + (f'<div class="ts-season-links">{links}</div>' if links else "")
+            + (f'<p class="ts-season-src">確認日：{esc(z["lastVerified"])}</p>' if z.get("lastVerified") else "")
+            + '</div>')
+    return '<div class="ts-seasons" data-ts-seasons>' + "".join(out) + '</div>'
+
+
+def _ymd(d):
+    """2026-12-12 → 2026年12月12日"""
+    if not d:
+        return ""
+    y, m, dd = d.split("-")
+    return f"{int(y)}年{int(m)}月{int(dd)}日"
 
 
 def _md(d):
@@ -1029,7 +1068,11 @@ def render_season_ssot_extra(mt):
         if st and st.get("state") == "closed":
             notes.append(f'{esc(r.get("name") or "")}：{esc(st.get("label") or "通行止め")}')
     op = mt.get("trainAccessOperation") or {}
-    if op.get("validFrom") or op.get("validTo"):
+    if mt.get("transitSeasons"):
+        # 季節ダイヤ（夏・冬）の期間は、電車・バスの欄の季節ダイヤの枠で出す（2026-11-17）
+        for z in mt["transitSeasons"]:
+            notes.append((f'公共交通（{esc(z.get("label") or "")}）：{_md(z.get("from"))}〜{_md(z.get("to"))}', z.get("to")))
+    elif op.get("validFrom") or op.get("validTo"):
         rng = f'{_md(op.get("validFrom"))}〜{_md(op.get("validTo"))}'
         # 運行期間は毎年変わる。期限（data-valid-to）を過ぎたら mountain-engine.js が「終了」の注記を足す
         notes.append((f'公共交通（{esc(mt.get("trainAccessLabel") or "")}）：{op.get("seasonYear") or ""}年は{rng}'

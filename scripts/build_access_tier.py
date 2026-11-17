@@ -48,7 +48,35 @@ def legs_of(m, dep):
     return (R.get(dep) or {}).get('legs') or []
 
 
+def _md_in(f, t, md):
+    a, b = f[5:], t[5:]
+    return a <= md <= b if a <= b else (md >= a or md <= b)
+
+
+def season_groups(m, A):
+    """季節運行を「どれか1つが走っていれば行ける」まとまりに分けて返す [([(validFrom, validTo), ...], 名前, 要確認か)]。
+    まとまりの中のどれかが走っていればそのまとまりは走っている。すべてのまとまりが走っている日だけ行ける。
+    季節ダイヤ（transitSeasons。夏ダイヤ・冬ダイヤなど）を持つ山は、その期間をひとまとまりにする（annualItems の乗り物・
+    accesses.json の operation は見ない）。夏と冬で1年じゅうがつながる山（赤城山のバス）は季節運行に数えない（2026-11-17）"""
+    ts = m.get('transitSeasons') or []
+    if ts:
+        per = [(x.get('from'), x.get('to')) for x in ts]
+        import datetime
+        d0 = datetime.date(2026, 1, 1)
+        if all(any(f and t and _md_in(f, t, (d0 + datetime.timedelta(i)).strftime('%m-%d')) for f, t in per) for i in range(365)):
+            return []
+        name = m.get('transitSeasonsName') or '・'.join(x.get('label') or '' for x in ts)
+        return [(per, name, any(not (f and t) for f, t in per))]
+    return [([(f, t)], label, nv) for f, t, label, nv in _seasons_raw(m, A)]
+
+
 def seasons(m, A):
+    """季節運行の期間を1つずつ並べたもの [(validFrom, validTo, 名前, 要確認か)]（季節ダイヤの山は夏・冬を別々に並べる。
+    どれかが走れば行けるかは season_groups で見る）"""
+    return [(f, t, label, nv) for per, label, nv in season_groups(m, A) for f, t in per]
+
+
+def _seasons_raw(m, A):
     """電車・バスの経路で使う季節運行の乗り物の運行期間 [(validFrom, validTo, 名前, 要確認か)]。
     旧い形の山は annualItems の kind=transport（「ダイヤ」の切り替えだけの項目は除く）、
     新しい形の山は代表コースのアクセスの operation（mode が year＝通年のものは除く）。期間が分からないものは (None, None, …)"""
@@ -67,7 +95,7 @@ def seasons(m, A):
 
 
 def seasonal(m, A):
-    if seasons(m, A):
+    if season_groups(m, A):
         return True
     b = ((m.get('trainRoutes') or {}).get('badge') or {}).get('label') or ''
     return bool(re.search(r'季節|夏季限定|月は運休', b))

@@ -16,7 +16,7 @@ OUT = os.path.join(ROOT, 'find', 'winter', 'index.html')
 URL = 'https://tozan-navi.com/find/winter/'
 TITLE = '冬の山選び診断｜12月・1月・2月に登れる関東の山を9問で【雪なし〜雪山入門】'
 DESC = ('雪の無い山からチェーンスパイクの山、雪山入門まで。行く月・装備・交通手段を選ぶと、装備カレンダーと冬の運休・通行止めを見て、'
-        '関東から日帰りで行ける冬の山を提案します。富士山・霧氷・ダイヤモンド富士・下山後の温泉でも選べます。')
+        '関東から日帰りで行ける冬の山を提案します。富士山・雪景色・山頂からの大展望・下山後の温泉でも選べます。')
 OG_IMAGE = 'https://tozan-navi.com/articles/images/hero_winter_views.jpg?v=20261115'
 CAR_SVG = ('<svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/>'
            '<rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/>'
@@ -228,7 +228,8 @@ var QUESTIONS = [
   { id: 'transport', text: '山へはどうやって行きますか？', sub: '冬に運休するバス・ロープウェイの山は、電車・バスでは出しません',
     choices: [
       { value: 'train', icon: 'train-front', label: '電車・バスだけで行きたい', sub: '車を持っていない、または運転しない' },
-      { value: 'car',   icon: 'car',         label: '車で行ける', sub: '冬用タイヤ・チェーンを用意できる' }
+      { value: 'car',       icon: 'car', label: '車（冬用タイヤ・チェーンあり）', sub: '雪や凍結の道も走れる' },
+      { value: 'carnormal', icon: 'car', label: '車（ノーマルタイヤ）', sub: '雪や凍結の心配が少ない山だけにします' }
     ] },
   { id: 'fitness', text: '普段の運動量はどのくらいですか？', sub: '冬は日が短いので、歩く時間の上限にも使います',
     choices: [
@@ -239,13 +240,13 @@ var QUESTIONS = [
   { id: 'see', text: '冬の山で何を見たいですか？', sub: '一番ピンとくるものを選んでください',
     choices: [
       { value: 'fuji',    icon: 'mountain',  label: '空気の澄んだ冬の富士山', sub: '山頂や稜線から富士山が見える山' },
-      { value: 'ice',     icon: 'snowflake', label: '霧氷・樹氷・雪景色', sub: '冬にしか見られない景色' },
-      { value: 'diamond', icon: 'sunrise',   label: 'ダイヤモンド富士', sub: '富士山頂に太陽が重なる日に' },
+      { value: 'ice',     icon: 'snowflake', label: '雪景色・霧氷', sub: '雪の上を歩く、冬にしか見られない景色' },
+      { value: 'pano',    icon: 'binoculars', label: '山頂からの大展望', sub: '360度の眺め・名峰や海まで見渡せる山' },
       { value: 'easy',    icon: 'sparkles',  label: 'とにかく気軽に', sub: '寒い時期は短く楽しみたい' }
     ] },
   { id: 'after', text: '下山したあと、何をしたいですか？', sub: '冷えた体を温める楽しみに合う山を上げます',
     choices: [
-      { value: 'onsen',  icon: 'droplets', label: '温泉・サウナで温まりたい', sub: 'Yamatch の温泉・サウナの記事の山' },
+      { value: 'onsen',  icon: 'droplets', label: '温泉・サウナで温まりたい', sub: '近くに日帰り温泉・サウナがある山' },
       { value: 'food',   icon: 'utensils', label: '茶屋や山小屋で温かいものを', sub: '山頂や途中でひと休み' },
       { value: 'shrine', icon: 'bell',     label: '初詣・神社やお寺に寄りたい', sub: '信仰の山・古い道・史跡' },
       { value: 'none',   icon: 'check',    label: '特にない', sub: 'おまかせで選んでほしい' }
@@ -417,6 +418,8 @@ function scoreMount(m){
   var st = answers.transport === 'train' ? acc.train : acc.car;
   if(answers.transport === 'train' && !m.train) return null;
   if(st === 'no') return null;
+  // ノーマルタイヤ：その月が「アイゼン不要」の山だけ（山頂近くまで雪・凍結が続かない山なら、登山口までの道もふだん雪が少ないとみる目安）
+  if(answers.transport === 'carnormal' && rank > 0) return null;
   var route = pickRoute(m, wg);
   if(!route) return null;
 
@@ -445,8 +448,9 @@ function scoreMount(m){
 
   // 冬山装備の山の重み付け（2026-11-17。運営者の指示「冬山装備の山を重み付けして、冬の絶景の5山以外も出したい」）
   if(wg){
-    if(m.view && m.view.cat === 'entry') score += 30;
-    if(m.view && m.view.cat === 'expert' && answers.gear === 'expert') score += 10;
+    // 冬の絶景の記事の区分は、記事の山だけが上に来すぎないよう小さくする（2026-11-17 運営者の指示）
+    if(m.view && m.view.cat === 'entry') score += 15;
+    if(m.view && m.view.cat === 'expert' && answers.gear === 'expert') score += 5;
     if(m.lift) score += 15;
     var axe = (m.axe || {})[mo];
     if(axe !== '推奨') score += 10;
@@ -472,14 +476,12 @@ function scoreMount(m){
   if(answers.see === 'fuji'){
     score += m.fuji ? 30 : -10;
   } else if(answers.see === 'ice'){
-    if(m.view) score += 35;
-    else if(ICE_RE.test(fpText(m))) score += 22;
-    if(wg) score += 10;
-    if(!m.view && !ICE_RE.test(fpText(m)) && !wg) score -= 10;
-  } else if(answers.see === 'diamond'){
-    if(dia) score += 45;
-    else if(m.dia) score += 5;
-    else score -= 10;
+    // 雪景色：その月の雪の段階で全部の山を同じ基準で見る。霧氷・樹氷が書いてある山（記事・特徴の文・紹介文）は少し足す
+    score += [-10, 15, 25][rank];
+    if(m.view || m.iceText || ICE_RE.test(fpText(m))) score += 10;
+  } else if(answers.see === 'pano'){
+    // 大展望：ホームの絞り込みの「絶景」と同じ山（360度・大パノラマなどが出典に書いてある山）
+    score += m.pano ? 30 : -10;
   } else if(answers.see === 'easy'){
     if(hasTag(m, 'accessible') || hasTag(m, 'easy') || hasTag(m, 'casual')) score += 20;
     if(m.lift) score += 8;
@@ -488,8 +490,8 @@ function scoreMount(m){
 
   // 下山後
   if(answers.after === 'onsen'){
-    if(m.onsen || m.sauna) score += 28;
-    else if(/温泉|サウナ/.test(fpText(m))) score += 15;
+    // 記事の山か、特徴の文・紹介文に書いてある山かで差を付けない
+    if(m.onsen || m.sauna || m.onsenText) score += 25;
   } else if(answers.after === 'food'){
     if(m.food) score += 20;
   } else if(answers.after === 'shrine'){
@@ -530,7 +532,7 @@ function fmtMin(v){
 
 function buildReasons(x){
   var m = x.m, out = [];
-  if(answers.see === 'diamond' && x.dia){
+  if(x.dia){
     out.push({ l: 'ダイヤモンド富士', t: x.dia.join('／') + '（計算の目安。天気・見る場所で変わります）' });
   }
   if(m.view && (answers.see === 'ice' || x.wg)){
@@ -541,13 +543,14 @@ function buildReasons(x){
     var fac = (m.onsen || []).concat(m.sauna || []);
     out.push({ l: '下山後に寄れる温泉・サウナ', t: fac.slice(0, 3).join('・') + '（温泉・サウナの記事で紹介）' });
   }
-  var want = { fuji: ['view'], ice: ['alpine', 'view'], diamond: ['view'], easy: ['easy', 'casual'] }[answers.see] || [];
+  var want = { fuji: ['view'], ice: ['alpine', 'view'], pano: ['view'], easy: ['easy', 'casual'] }[answers.see] || [];
   var add = { food: ['casual', 'hut'], shrine: ['historic'] }[answers.after] || [];
   want = want.concat(add);
   var pts = (m.fp || []).map(function(p, i){
     var hit = want.indexOf(p.t) > -1 ? 1 : 0;
     if(answers.see === 'fuji' && /富士山/.test((p.l || '') + (p.x || ''))) hit = 2;
     if(answers.see === 'ice' && ICE_RE.test((p.l || '') + (p.x || ''))) hit = 2;
+    if(answers.after === 'onsen' && /温泉|サウナ/.test((p.l || '') + (p.x || ''))) hit = 2;
     return { p: p, i: i, hit: hit };
   });
   pts.sort(function(a, b){ return (b.hit - a.hit) || (a.i - b.i); });
@@ -567,7 +570,7 @@ function cardHtml(x, i){
   h += '<span class="rb rb-gear">' + MONTH_LABEL[answers.when] + '：' + esc(GEAR_SHORT[x.gear.worst]) + '</span>';
   if(answers.transport === 'train') h += '<span class="rb rb-train">電車・バスOK</span>';
   var tm = travelMin(m);
-  if(answers.transport === 'car' && tm) h += '<span class="rb rb-drive">' + ic('car') + tm + '分</span>';
+  if(answers.transport !== 'train' && tm) h += '<span class="rb rb-drive">' + ic('car') + tm + '分</span>';
   if(x.dia) h += '<span class="rb rb-dia">ダイヤモンド富士</span>';
   if(m.cat === '百名山') h += '<span class="rb rb-100">百名山</span>';
   if(x.wg && !m.winterOk) h += '<span class="rb rb-warn">冬の登山口は未確認</span>';
@@ -588,6 +591,9 @@ function cardHtml(x, i){
   if(x.st === 'part' && x.acc.why && x.acc.why.length){
     notes.push(MONTH_LABEL[answers.when] + 'は一部の日だけ行けます：' + x.acc.why.join('、'));
   }
+  if(answers.transport === 'carnormal'){
+    notes.push(MONTH_LABEL[answers.when] + 'はアイゼン不要の山ですが、雪が降った翌日や冷え込んだ朝は道が凍ることがあります。出発前に道路の情報を確かめてください。');
+  }
   if(x.wg){
     notes.push('コースの時間・難易度は雪の無い時期の値です。冬はラッセルや凍結で長くかかります。');
     if(m.winterOk) notes.push('冬の行き方：' + m.winterOk);
@@ -598,7 +604,7 @@ function cardHtml(x, i){
     notes.forEach(function(n){ h += '<li>' + esc(n) + '</li>'; });
     h += '</ul></div>';
   }
-  var accQ = '?access=' + (answers.transport === 'car' ? 'car' : 'train');
+  var accQ = '?access=' + (answers.transport !== 'train' ? 'car' : 'train');
   h += '<a class="rc-cta" href="/mountains/' + esc(m.id) + '/' + accQ + '">詳しく見る →</a>';
   h += '<a class="rc-sub" href="/packing/?m=' + esc(m.id) + '&amp;s=day">この山の冬の持ち物リストを作る →</a>';
   h += '</div>';
@@ -634,7 +640,7 @@ function _doShowResult(){
   var dep = answers.depart || 'ofuna';
   var depLabel = dep === 'shinjuku' ? '新宿・都内' : dep === 'omiya' ? '大宮・埼玉' : '横浜・大船';
   var gearLabel = { none: '雪の無い', light: 'チェーンスパイクで行ける', entry: '雪山入門の', expert: '雪山の' }[answers.gear] || '';
-  if(answers.who === 'family') gearLabel = '雪の無い';
+  if(answers.who === 'family' || answers.transport === 'carnormal') gearLabel = '雪の無い';
   document.getElementById('result-headline').textContent = MONTH_LABEL[answers.when] + '・' + depLabel + '発・' + gearLabel + '日帰りの山';
   document.getElementById('result-count').textContent = scored.length ? '条件に合う山：' + scored.length + '件中、上位3件を表示' : '';
   var top3 = pickTop3(scored);
@@ -651,7 +657,7 @@ function _doShowResult(){
     if(more.length){
       mh = '<div class="more-list"><div class="more-title">ほかの候補</div>';
       more.forEach(function(x){
-        mh += '<a href="/mountains/' + esc(x.m.id) + '/?access=' + (answers.transport === 'car' ? 'car' : 'train') + '">' + esc(x.m.name) + '<span>' + esc(x.m.diff || '') + '・' + GEAR_SHORT[x.gear.worst] + '・歩く' + fmtMin(x.route.min) + '</span></a>';
+        mh += '<a href="/mountains/' + esc(x.m.id) + '/?access=' + (answers.transport !== 'train' ? 'car' : 'train') + '">' + esc(x.m.name) + '<span>' + esc(x.m.diff || '') + '・' + GEAR_SHORT[x.gear.worst] + '・歩く' + fmtMin(x.route.min) + '</span></a>';
       });
       mh += '</div>';
     }
@@ -685,6 +691,7 @@ function buildGearSection(){
   }
   if(snow.length) g.push({ title: '雪・凍結に備えるもの', items: snow });
   if(answers.transport === 'car') g.push({ title: '車で行く人', items: [ item('car', '冬用タイヤ・タイヤチェーン', '山の道路は朝晩に凍る。駐車場が雪で使えないこともある', true) ] });
+  if(answers.transport === 'carnormal') g.push({ title: 'ノーマルタイヤで行く人', items: [ item('car', '出発前に道路の情報と天気を確かめる', '雪が降った翌日や冷え込んだ朝は、低い山の道でも凍ることがある。雪の予報が出たら行き先を変えるか、電車・バスで', true) ] });
   var html = '<button class="info-toggle" onclick="toggleInfo(this)"><span><span class="info-toggle-icon">' + ic('backpack') + '</span>冬の持ち物チェックリスト</span><span class="info-toggle-arrow">›</span></button><div class="info-body">';
   g.forEach(function(gr){
     html += '<div class="gear-group"><div class="gear-group-title">' + gr.title + '</div><div class="gear-items">';

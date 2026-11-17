@@ -424,6 +424,60 @@ function applyDep(){
 })();
 
 
+// === 季節ダイヤ（夏ダイヤ・冬ダイヤ。2026-11-17〜）===
+// 開いた日の日付で1つだけ見せる：期間中の季節があればそれ（「いまは◯◯」）、無ければ次に始まる季節（「◯◯は◯月◯日から」）、
+// どれも終わっていれば最後の季節（「◯年の期間は終了」）。電車・バス欄の時刻表のボタンも、見せる季節の時刻表に差し替える
+(function(){
+  function pad(n){ return n < 10 ? '0' + n : String(n); }
+  function md(d){ var p = d.split('-'); return parseInt(p[1], 10) + '月' + parseInt(p[2], 10) + '日'; }
+  function run(){
+    var box = document.querySelector('[data-ts-seasons]');
+    if(!box) return;
+    var ss = box.querySelectorAll('.ts-season');
+    if(!ss.length) return;
+    var d = new Date();
+    var today = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+    var pick = null, state = '';
+    for(var i = 0; i < ss.length; i++){
+      if(ss[i].getAttribute('data-from') <= today && today <= ss[i].getAttribute('data-to')){ pick = ss[i]; state = 'now'; break; }
+    }
+    if(!pick){
+      for(var j = 0; j < ss.length; j++){
+        var f = ss[j].getAttribute('data-from');
+        if(f > today && (!pick || f < pick.getAttribute('data-from'))){ pick = ss[j]; state = 'soon'; }
+      }
+    }
+    if(!pick){
+      for(var k = 0; k < ss.length; k++){
+        if(!pick || ss[k].getAttribute('data-to') > pick.getAttribute('data-to')) pick = ss[k];
+      }
+      state = 'past';
+    }
+    for(var n = 0; n < ss.length; n++){ if(ss[n] !== pick) ss[n].style.display = 'none'; }
+    var h = pick.querySelector('.ts-season-h');
+    var badge = document.createElement('span');
+    var label = pick.getAttribute('data-label');
+    if(state === 'now'){ badge.className = 'ts-season-state'; badge.textContent = 'いまは' + label; }
+    else if(state === 'soon'){ badge.className = 'ts-season-state soon'; badge.textContent = label + 'は' + md(pick.getAttribute('data-from')) + 'から'; }
+    else { badge.className = 'ts-season-state soon'; badge.textContent = pick.getAttribute('data-to').slice(0, 4) + '年の期間は終了'; }
+    if(h) h.insertBefore(badge, h.firstChild);
+    var tt = pick.getAttribute('data-timetable');
+    if(tt){
+      var bus = document.querySelectorAll('.ts-link-bus');
+      for(var b = 0; b < bus.length; b++){
+        bus[b].setAttribute('href', tt);
+        var lab = pick.getAttribute('data-timetable-label');
+        if(lab){
+          var t = bus[b].lastChild;
+          if(t && t.nodeType === 3){ t.nodeValue = lab; } else { bus[b].appendChild(document.createTextNode(lab)); }
+        }
+      }
+    }
+  }
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', run); } else { run(); }
+})();
+
+
 // === 毎年変わる情報：期限（data-valid-to）を過ぎたら「終了」の注記を足す ===
 (function(){
   function pad(n){ return n < 10 ? '0' + n : String(n); }

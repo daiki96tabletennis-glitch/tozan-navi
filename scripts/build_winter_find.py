@@ -10,7 +10,9 @@
     解除の日が無い閉鎖は3月末まで閉鎖とみる。冬山装備の月は、コースがその乗り物に頼っているので、季節運行の乗り物が止まる日も車で行けない
   - 月の1日・8日・15日・22日・末日で見る
 - コース（泊を含まないもの）：時間・技術の難しさ（routes[].tech.grade）・鎖場・岩場・電車の印・種類
-- 冬の特集：ダイヤモンド富士の日（記事と同じ計算。gen_winter_specials.diamond_list）、冬の絶景の区分（views）
+- 冬の特集：ダイヤモンド富士の日（記事と同じ計算。記事の山は gen_winter_specials.diamond_list＝観賞地点の指定つき、
+  ほかに特徴の文に富士山の眺めが書いてある山すべてを山頂で計算）、冬の絶景の区分（views）
+- 特徴の文・紹介文に温泉・サウナ（onsenText）、霧氷・樹氷（iceText）が書いてある山の印
 - 下山後の楽しみ：温泉・サウナの記事のプラン（onsen_sauna.json）、サウナシュランの記事（saunachelin_hiking.json）
 - 冬山装備の月の、冬の登山口までの道の確認：冬の絶景の記事で冬の行き方を確かめた山と VERIFIED だけ「確認済み」。ほかは「未確認」
 mountains.json などを直したら流し直す（古いと check_pages.py セクション26で止まる）。--check は書かずに同じかを見る。
@@ -24,9 +26,10 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
-from build_access_tier import seasons  # noqa: E402
+from build_access_tier import season_groups  # noqa: E402
 import gen_winter_specials as GW  # noqa: E402
 import sun_calc  # noqa: E402
+import diamond_fuji  # noqa: E402
 
 OUT = os.path.join(ROOT, 'data', 'winter_find.json')
 MONTHS = [(2026, 11), (2026, 12), (2027, 1), (2027, 2), (2027, 3)]
@@ -38,6 +41,8 @@ WINTER_WORDS = re.compile(r'冬期|冬季')
 FOOD = re.compile(r'温泉|茶屋|食堂|名物|そば|うどん|売店|カフェ|ごはん|ご飯|定食|だんご|団子|山小屋|山荘')
 FUJI = re.compile(r'富士山[^。]{0,20}(見|望|眺|展望|正面|パノラマ|ながめ)|(見|望|眺|展望|正面|パノラマ)[^。]{0,12}富士山')
 STAY = re.compile(r'泊')
+ONSEN = re.compile(r'温泉|サウナ')
+ICE = re.compile(r'霧氷|樹氷')
 
 
 def mins(s):
@@ -111,19 +116,20 @@ def closure_text(a):
 
 
 def month_access(m, A, y, mo, winter_gear):
-    sea = seasons(m, A)
+    sea = season_groups(m, A)
     cls = closures(m)
     road = uses_road(m)
     tr_ok, car_ok, why = [], [], []
     for d in sample_days(y, mo):
         t_ok = bool(m.get('trainAccess'))
         c_ok = True
-        for f, t, label, _nv in sea:
-            run = bool(f and t) and md_in(f, t, d)
+        for per, label, _nv in sea:
+            run = any(f and t and md_in(f, t, d) for f, t in per)
             if not run:
                 if t_ok:
                     t_ok = False
-                txt = (label or '季節運行の乗り物') + ('（%s〜%s）' % (jd(f), jd(t)) if f and t else '（運行期間が不明）')
+                spans = ['%s〜%s' % (jd(f), jd(t)) for f, t in per if f and t]
+                txt = (label or '季節運行の乗り物') + ('（%s）' % '・'.join(spans) if spans and len(spans) == len(per) else '（運行期間が不明）')
                 if txt not in why:
                     why.append(txt)
                 if winter_gear:
@@ -224,6 +230,12 @@ def build():
         fuji = [p.get('text') for p in fp if FUJI.search((p.get('label') or '') + (p.get('text') or ''))]
         v = views.get(mid)
         d = dia.get(mid)
+        dia_ev = d['ev'] if d else None
+        if not dia_ev and fuji:
+            # ダイヤモンド富士：記事に載せた山だけでなく、特徴の文に富士山の眺めが書いてある山すべてで、記事と同じ計算をする（山頂で計算。2026-11-17 運営者の指示「記事で特集されている山だけが出やすくなる選択肢がある」）
+            lat, lng, ele = GW.summit(m, SC)
+            dia_ev = diamond_fuji.events(lat, lng, ele)
+        text_all = fptext + ' ' + (m.get('description') or '') + ' ' + (m.get('recommendReason') or '')
         ver = None
         if v and v.get('winterAccess'):
             ver = v.get('winterShort') or v.get('winterAccess')
@@ -249,8 +261,16 @@ def build():
             item['onsen'] = onsen[mid]
         if sauna.get(mid):
             item['sauna'] = sauna[mid]
-        if d:
-            item['dia'] = ev_month(d['ev'])
+        if dia_ev:
+            dm = ev_month(dia_ev)
+            if dm:
+                item['dia'] = dm
+        if 'view' in (m.get('vibes') or []):
+            item['pano'] = True  # ホームの絞り込みの「絶景」（厳選。山頂・稜線からの特別な展望）
+        if ONSEN.search(text_all):
+            item['onsenText'] = True
+        if ICE.search(text_all):
+            item['iceText'] = True
         if v:
             item['view'] = {'cat': v.get('category'), 'what': v.get('what'), 'season': v.get('season')}
         if ver:

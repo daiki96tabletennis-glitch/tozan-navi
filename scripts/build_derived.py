@@ -15,7 +15,7 @@
 
 使い方: python3 scripts/build_derived.py [--check]   （--check は書き込まず差分の有無だけ返す）
 """
-import json, os, re, sys, copy, datetime, urllib.parse
+import json, os, re, sys, copy, datetime, calendar, urllib.parse
 import gear_calendar
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
@@ -85,7 +85,18 @@ def monthly_status(mt, access):
     transport = ['unknown'] * 12
     if access and access.get('trainRoutes'):
         opn = access.get('operation') or {}
-        if opn.get('mode') == 'year': transport = ['ok'] * 12
+        ts = mt.get('transitSeasons') or []
+        if ts:
+            # 季節ダイヤ（夏・冬）を持つ山は、どれかが走っている日を数える（2026-11-17）
+            def _in(f, t, x):
+                a, b = f[5:], t[5:]
+                return a <= x <= b if a <= b else (x >= a or x <= b)
+            transport = []
+            for mth in range(1, 13):
+                days = [datetime.date(year, mth, d).strftime('%m-%d') for d in range(1, calendar.monthrange(year, mth)[1] + 1)]
+                n = sum(1 for x in days if any(z.get('from') and z.get('to') and _in(z['from'], z['to'], x) for z in ts))
+                transport.append('ok' if n == len(days) else 'partial' if n else 'none')
+        elif opn.get('mode') == 'year': transport = ['ok'] * 12
         elif opn.get('validFrom') or opn.get('validTo'):
             transport = [{'full': 'ok', 'most': 'partial', 'part': 'partial', 'none': 'none'}[s]
                          for s in month_span(opn.get('validFrom'), opn.get('validTo'), year)]
@@ -189,7 +200,10 @@ def derive(mt, TH, AC):
                 parts.append(f"{tr_ac['name']}：新宿から{hm(mt['trainTimeShinjuku'])}（{mt['fareShinjuku']:,}円）、"
                              f"大宮から{hm(mt['trainTimeOmiya'])}（{mt['fareOmiya']:,}円）、横浜から{hm(mt['trainTimeYokohama'])}（{mt['fareYokohama']:,}円）が目安です。")
                 opn = tr_ac.get('operation') or {}
-                if opn.get('validFrom') and opn.get('validTo'):
+                if mt.get('transitSeasons'):
+                    parts.append('運行（利用）期間は、' + '、'.join(
+                        f"{z['label']}が{z['from'][:4]}年{md(z['from'])}〜" + (z['to'][:4] + '年' if z['to'][:4] != z['from'][:4] else '') + md(z['to']) for z in mt['transitSeasons']) + 'です。')
+                elif opn.get('validFrom') and opn.get('validTo'):
                     parts.append(f"{opn.get('seasonYear')}年の運行（利用）期間は{md(opn['validFrom'])}〜{md(opn['validTo'])}です。")
                 if opn.get('reservation'): parts.append(opn['reservation'] + '。')
             else:
