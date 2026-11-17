@@ -33,7 +33,7 @@ LOWER = {'azuma': [1, 2, 3], 'keizandake': [1]}   # 冬山装備 → 軽アイ�
 # 公式・自治体の観光局・ガイド会社が、その山（代表コースか、冬に行けるほうのコース）で冬のスノーシューのツアー・コースを案内している月。
 # 踏み固められた道は軽アイゼン・チェーンスパイクでも歩けるので、装備カードは「条件次第」にして、そのことを書く
 TEIBAN = {
-    'nyukasayama': [1, 2], 'kirigamine': [1, 2], 'utsukushigahara': [1, 2, 3], 'asama': [1, 2, 3],
+    'nyukasayama': [1, 2], 'kirigamine': [1, 2], 'utsukushigahara': [1, 2, 3], 'asama': [12, 1, 2, 3],   # 浅間山の12月は 2026-11-17 に足した（fix_gear_calendar_hut_reports_2026_11.py。高峰温泉の現地情報）
     'kitayokodake': [1, 2, 3],   # 2026-11-17 運営者の指示「入れて」（長野県の観光サイトがスノーシューで山頂に立てる山として紹介）
 }
 TEIBAN_SRC = {
@@ -63,6 +63,13 @@ TEIBAN_SRC = {
     'asama': [
         {'url': 'https://www.komoro-tour.jp/wp/wp-content/uploads/2024/12/790c62004ec3c11fe2276ace4498a392.pdf', 'date': '2025-01-25・02-22・03-08（開催日）', 'kind': 'official',
          'says': '小諸市観光局のツアー「雪山初心者大歓迎！スノーシューで行く」黒斑山（車坂峠から）'},
+        # 12月（2026-11-17。fix_gear_calendar_hut_reports_2026_11.py の ASAMA_SRC と同じ）
+        {'url': 'https://www.yamakei-online.com/mt_info/past.php?id=1069&yy=2022', 'date': '2022-12-20', 'kind': 'official',
+         'says': '高峰温泉（車坂峠の近く）の現地情報「週末の雪で50cm積もっています。スノーシューを楽しめる季節になりました」'},
+        {'url': 'https://www.yamakei-online.com/mt_info/past.php?id=1069&yy=2022', 'date': '2022-12-26', 'kind': 'official',
+         'says': '高峰温泉（車坂峠の近く）の現地情報「登山道では70cm以上の積雪があり、スノーシューが必要です」'},
+        {'url': 'https://www.yamakei-online.com/mt_info/past.php?id=1069&yy=2024', 'date': '2024-12-30', 'kind': 'official',
+         'says': '高峰温泉（車坂峠の近く）の現地情報「パウダースノーの雪がたくさん積もり、スノーシューを楽しめます」'},
     ],
 }
 TEIBAN_NOTE = {
