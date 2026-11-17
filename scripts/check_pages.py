@@ -648,6 +648,59 @@ def check_gear_calendar(mountains):
     return issues
 
 
+FAQ_MONTHS = re.compile(r'(\d{1,2}月?(?:〜\d{1,2}月?)?(?:[・、]\d{1,2}月?(?:〜\d{1,2}月?)?)*)(?:は|も|が|の|に)')
+
+
+def _faq_months(s):
+    out = []
+    for part in re.split('[・、]', s):
+        ms = [int(x) for x in re.findall(r'\d{1,2}', part) if 1 <= int(x) <= 12]
+        if len(ms) >= 2 and '〜' in part:
+            i = ms[0]
+            while True:
+                out.append(i)
+                if i == ms[1]:
+                    break
+                i = i % 12 + 1
+        else:
+            out += ms
+    return out
+
+
+def check_faq_gear(mountains):
+    """よくある質問（シーズン）の答えの「◯月〜◯月は軽アイゼン等／冬山装備／登りやすい」が、装備カレンダー（gearCalendar）と食い違っていないか（2026-11-17〜）。
+    前は12山で「5月〜11月が登りやすいシーズンです」（冬山装備の月を含むひな形の文）が残っていた。月の途中で変わる月は、どちらかの区分なら合っているとみる"""
+    out = []
+    for m in mountains:
+        cal = m.get('gearCalendar') or []
+        if len(cal) != 12:
+            continue
+        cats = [{e} if isinstance(e, str) else {e['before'], e['after']} for e in cal]
+        for f in m.get('faq') or []:
+            if 'シーズン' not in f.get('question', ''):
+                continue
+            for sent in f.get('answer', '').split('。'):
+                hits = list(FAQ_MONTHS.finditer(sent))
+                for k, mm in enumerate(hits):
+                    rest = sent[mm.end():hits[k + 1].start() if k + 1 < len(hits) else len(sent)]
+                    rest = re.split(r'\d{1,2}月', rest)[0]   # 次の月の話（「5月までは」など）の前まで
+                    mos = _faq_months(mm.group(1))
+                    if not mos:
+                        continue
+                    if re.search('冬山装備|12本爪|ピッケル', rest) and '軽アイゼン' not in rest:
+                        want, bad = '冬山装備', [x for x in mos if 'winter_gear' not in cats[x - 1]]
+                    elif re.search('軽アイゼン|チェーンスパイク|6本爪', rest):
+                        want, bad = '軽アイゼン等', [x for x in mos if 'light_crampons' not in cats[x - 1]]
+                    elif re.search('登りやすい|登山シーズン|が目安|がおすすめ|が中心', rest) and not re.search('アイゼン|凍結|積雪|雪', rest[:15]):
+                        want, bad = '登りやすい', [x for x in mos if cats[x - 1] <= {'winter_gear', 'closed'}]
+                    else:
+                        continue
+                    if bad:
+                        out.append({'id': m['id'], 'problem': 'よくある質問「%s」：%sを%sと書いているが、装備カレンダーは違う（%s）'
+                                    % (f['question'][:24], '・'.join('%d月' % x for x in bad), want, sent[:60])})
+    return out
+
+
 def check_photo_credits(mountains):
     """山の写真（photos）に、作者・ライセンスの記録（data/image-credits.json）があるか。
     Wikimedia Commons の CC BY / BY-SA は表示が必須。2026-08 に上書きで12山の記録が消えていた。"""
@@ -945,6 +998,7 @@ def main():
     rock_issues = check_route_rocks(mountains)
     tier_issues = check_access_tier(mountains)
     wfind_issues = check_winter_find()
+    faqgear_issues = check_faq_gear(mountains)
     import sync_search_hubs
     hub_issues = sync_search_hubs.hub_problems(mountains)
 
@@ -996,6 +1050,7 @@ def main():
     report.append(section('24. 岩場（routes[].rocks。出典・ラベル・絞り込みの岩場）', rock_issues, fmt))
     report.append(section('25. アクセス難易度（accessTier。build_access_tier.py）・季節運行の期間', tier_issues, fmt))
     report.append(section('26. 冬の山選び診断（winter_find.json・/find/winter/）', wfind_issues, fmt))
+    report.append(section('27. よくある質問（シーズン）の答えと装備カレンダー', faqgear_issues, fmt))
     if ssot_warns:
         report.append('## 参考：運行期間の期限切れ（来季の再確認対象。件数に含めない）\n' + '\n'.join('- ' + fmt(w) for w in ssot_warns) + '\n')
     report.append(f"## 参考：既知の未解決（調査待ちのレガシー。件数に含めない）\n- 10. 所要時間: {len(time_known)}件 / 11. 駅名: {len(station_known)}件（scripts/check_known_issues.json）\n")
@@ -1007,7 +1062,7 @@ def main():
              + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues)
              + len(train_routes_issues) + len(route_dup_issues) + len(time_issues)
              + len(station_issues) + len(coeff_issues) + len(restricted_issues) + len(seat_issues)
-             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues) + len(listing_issues) + len(tech_issues) + len(ctype_issues) + len(chain_issues) + len(rock_issues) + len(tier_issues) + len(wfind_issues))
+             + len(ssot_issues) + len(gearcal_issues) + len(hub_issues) + len(photo_issues) + len(packm_issues) + len(listing_issues) + len(tech_issues) + len(ctype_issues) + len(chain_issues) + len(rock_issues) + len(tier_issues) + len(wfind_issues) + len(faqgear_issues))
 
     if args.json:
         with open(args.json, 'w', encoding='utf-8') as f:
