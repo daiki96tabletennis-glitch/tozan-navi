@@ -646,6 +646,7 @@
 - アフィリエイトは楽天の直接フォーマットを使用（A8.net経由は使わない）
 - ブランド公式サイトの画像はホットリンクしない
 - 天気APIはJMA seamless。座標は `weatherLat` / `weatherLng`（登山口座標）
+- 山ページの天気（`scripts/_weather_widget_block.html`）は Open-Meteo（api.open-meteo.com）を直接読む。2026-11-17 の昼に api.open-meteo.com だけ接続できない障害があり（open-meteo.com は表示できた。手元の Mac と外のサーバーの両方で時間切れ。しばらくして直った）、時間切れの決まりが無かったため「天気情報を取得中...」のまま止まっていた。10秒で打ち切って「天気の提供元（Open-Meteo）に、いまつながりません」と出すようにした。表示されないと言われたら、まず `curl -m 15 "https://api.open-meteo.com/v1/forecast?latitude=35.6&longitude=139.2&current=temperature_2m"` で提供元が応答するかを見る
 
 ## 記事「登山のあとの温泉・サウナ」（/articles/hiking-onsen-sauna/。2026-11-15〜。運営者の指示。元の案は運営者が用意した HTML）
 - 12プラン（石割山・九鬼山・景信山（高尾山へ縦走）・天覧山・金時山・霧ヶ峰と蓼科山・石老山・日の出山・武甲山・鎌倉アルプス・日向山・安達太良山）と14施設。`scripts/gen_onsen_article.py` が `data/onsen_sauna.json`（施設の料金・日帰りの時間・最終受付・設備・下山後の行き方）と mountains.json（コース・時間・難易度・冬の装備・山の写真）から作る（手で編集しない）。見た目は冬の特集記事の部品（`gen_winter_specials.py` の page・row・table・winter_gear）

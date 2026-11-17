@@ -480,9 +480,14 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
       else if(popPercent >= 35) level = Math.max(level, 1);
       return level;
     }
-    function showError(){
+    function showError(e){
       var el = document.getElementById('weather-content');
-      if(el){ el.className = 'weather-error'; el.textContent = '天気情報を取得できませんでした'; }
+      if(!el) return;
+      el.className = 'weather-error';
+      // 天気の提供元（Open-Meteo）が応答しないときは、取得中のまま止めずに10秒で打ち切る（2026-11-17。api.open-meteo.com に接続できない障害があった）
+      el.textContent = (e && e.name === 'AbortError')
+        ? '天気の提供元（Open-Meteo）に、いまつながりません。時間をおいて開き直してください'
+        : '天気情報を取得できませんでした';
     }
     function hourLabel(timeStr){
       var hh = timeStr.substring(11,13);
@@ -630,10 +635,12 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
         + '&hourly=temperature_2m,weather_code,precipitation_probability,wind_speed_10m'
         + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max'
         + '&timezone=Asia%2FTokyo&forecast_days=10';
-      fetch(url)
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = ctrl ? setTimeout(function(){ ctrl.abort(); }, 10000) : null;
+      fetch(url, ctrl ? { signal: ctrl.signal } : undefined)
         .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.json(); })
-        .then(function(data){ saveToCache(data); render(data); })
-        .catch(showError);
+        .then(function(data){ if(timer) clearTimeout(timer); saveToCache(data); render(data); })
+        .catch(function(e){ if(timer) clearTimeout(timer); showError(e); });
     }
 
     var cached = loadFromCache();
