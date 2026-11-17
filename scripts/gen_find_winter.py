@@ -1,6 +1,6 @@
 """冬の山選び診断（/find/winter/index.html）を作る（2026-11-17〜。運営者の指示「冬登山に特化した山選び診断を、既存の山選び診断を改造して」）。
 手で編集しない。見た目（CSS）は /find/index.html から読み、冬の分を足す。山のデータは data/winter_find.json（scripts/build_winter_find.py）。
-よくある質問の数（アイゼン不要の山の数など）は winter_find.json から数えるので、データを直したら build_winter_find.py → このスクリプトの順に流す。
+データを直したら build_winter_find.py → このスクリプトの順に流す（見た目は /find/ と同じ。記事のような説明・よくある質問は置かない＝運営者の指示 2026-11-17）。
 --check は書かずに同じかを見る（check_pages.py セクション26）。
 """
 import json
@@ -48,18 +48,15 @@ def base_css():
     css = max(re.findall(r'<style>(.*?)</style>', s, re.S), key=len)
     if 'ym-winter-swap' in css:
         raise SystemExit('/find/ の見た目に入れ替え用の指定が混ざっている')
-    # 冬のページの上の絵：写真は使わず、色と山の形だけにする
-    css = re.sub(r"\.intro-hero\{[^}]*\}", '', css, count=1)
+    # 見た目は /find/ と同じ（上の写真・ヘッダー・選択肢・結果の見出し。2026-11-17 運営者の指示「UIは以前の山選び診断に揃えて」）
     return css
 
 
 WINTER_CSS = """
-.intro-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#22384a 0%,#35546a 55%,#4e6535 100%);padding:40px 20px 36px;text-align:center;}
-.intro-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(170deg,transparent 40%,rgba(255,255,255,0.10) 41%) ,linear-gradient(195deg,transparent 45%,rgba(255,255,255,0.14) 46%);pointer-events:none;}
-.intro-hero>*{position:relative;z-index:1;}
-.intro-kicker{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#dce8f0;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:3px 10px;margin-bottom:10px;}
-.choice-icon .ym-ic{width:28px;height:28px;color:#3d5a6e;}
-.rb-gear{background:#eaf1f6;color:#2f5068;border:0.5px solid #a9c2d4;}
+.intro-hero h1{margin:0 0 8px;}
+.intro-tag .ym-ic{margin-right:3px;}
+.choice-icon .ym-ic{width:28px;height:28px;color:#4e6535;}
+.rb-gear{background:#eef4e8;color:#4a6838;border:0.5px solid #b0cc90;}
 .rb-warn{background:#fdf0e4;color:#8a5010;border:0.5px solid #e2b583;}
 .rb-dia{background:#fff4e0;color:#8a5820;border:0.5px solid #d4a860;}
 .rc-course{padding:9px 14px;border-top:1px solid #f0ede5;font-size:12px;color:#3a3530;line-height:1.6;}
@@ -74,94 +71,10 @@ WINTER_CSS = """
 .more-list a{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px solid #f4f1ea;color:#2a2520;text-decoration:none;font-size:13px;font-weight:700;}
 .more-list a:last-child{border-bottom:none;}
 .more-list a span{font-size:11px;color:#8a7a6a;font-weight:400;white-space:nowrap;}
-.wf-links{display:flex;flex-direction:column;gap:8px;margin-top:16px;}
-.wf-link{display:flex;align-items:center;gap:10px;background:white;border:1px solid #e0dbd4;border-radius:12px;padding:11px 14px;text-decoration:none;color:#2a2520;}
-.wf-link .ym-ic{color:#3d5a6e;width:20px;height:20px;flex-shrink:0;}
-.wf-link b{display:block;font-size:13px;}
-.wf-link small{display:block;font-size:11px;color:#8a7a6a;}
-.wf-about{padding:24px 16px 0;}
-.wf-about h2{font-size:17px;color:#2a3820;margin:22px 0 8px;}
-.wf-about h2:first-child{margin-top:0;}
-.wf-about p{font-size:13px;color:#4a4540;margin:0 0 10px;line-height:1.75;}
-.wf-about ul{font-size:13px;color:#4a4540;margin:0 0 10px;padding-left:20px;line-height:1.75;}
-.faq-item{background:white;border:1px solid #e0dbd4;border-radius:12px;margin-bottom:8px;}
-.faq-item summary{cursor:pointer;padding:12px 14px;font-size:13.5px;font-weight:700;color:#2a2520;list-style:none;}
-.faq-item summary::-webkit-details-marker{display:none;}
-.faq-item summary::before{content:"Q. ";color:#3d5a6e;}
-.faq-item p{padding:0 14px 12px;margin:0;font-size:12.5px;}
-.wf-crumb{font-size:11px;color:#8a7a6a;padding:10px 16px 0;}
-.wf-crumb a{color:#6a7a5a;text-decoration:none;}
-.result-header{background:linear-gradient(160deg,#22384a,#2d5228);}
-footer{max-width:680px;margin:30px auto 0;padding:20px 16px 40px;font-size:11px;color:#8a7a6a;text-align:center;line-height:1.8;}
-footer a{color:#6a7a5a;text-decoration:none;margin:0 6px;}
 """
 
 
-def stats():
-    d = json.load(open(os.path.join(ROOT, 'data', 'winter_find.json'), encoding='utf-8'))
-    M = d['mountains']
-
-    def gear_mo(m, mo):
-        e = m['g'][mo]
-        return e if isinstance(e, str) else e['b']
-
-    s = {}
-    for mo in ('12', '1', '2'):
-        s['none' + mo] = sum(1 for m in M if m['day'] and not m['rest'] and gear_mo(m, mo) == 'no_crampons')
-        s['light' + mo] = sum(1 for m in M if m['day'] and not m['rest'] and gear_mo(m, mo) == 'light_crampons')
-    # 冬（1月）に電車・バスで行けなくなる山（季節運行が止まる。冬山装備の山は除く＝この診断の入門・経験者で出る山は別）
-    stop = [m['name'] for m in M if m['train'] and m['day'] and not m['rest'] and m['acc']['1']['train'] == 'no'
-            and gear_mo(m, '1') != 'winter_gear']
-    s['trainStop'] = stop
-    s['n'] = len(M)
-    return s
-
-
-FAQ = []
-
-
-def faq_items(s):
-    stop = '・'.join(s['trainStop'][:8]) + ('など' if len(s['trainStop']) > 8 else '')
-    return [
-        ('12月・1月に雪の無い関東の山はどこ？',
-         '診断で「雪の無い山がいい」を選ぶと、Yamatch の装備カレンダーでその月が「アイゼン不要」の山だけを出します。'
-         '日帰りで行けるアイゼン不要の山は、12月が%d山、1月が%d山、2月が%d山です。代表的な山は「冬でも登れる関東の山7選」にまとめています。' % (s['none12'], s['none1'], s['none2'])),
-        ('チェーンスパイク（軽アイゼン）で行ける冬の山は？',
-         '「うっすら雪・凍結くらいまで」を選ぶと、アイゼン不要の山に加えて、その月が「軽アイゼン等」（チェーンスパイク・6本爪アイゼンなど）の山も出します。'
-         '日帰りで行ける軽アイゼン等の山は、1月が%d山です。' % s['light1']),
-        ('雪山初心者でも行ける関東近郊の山は？',
-         '「雪山に行きたい（入門）」を選ぶと、冬山装備（12本爪アイゼン・ピッケル等）の月の山のうち、難易度が中級まで・鎖場の無いコースの山を出し、'
-         'ロープウェイで高いところまで上がれる北横岳などを上にします。初めての雪山は、経験者と一緒に天気の良い日に行ってください。'
-         'コースの時間・難易度は雪の無い時期の値で、冬は長くかかります。'),
-        ('冬に電車・バスで行けなくなる山は？',
-         '季節運行のバス・ロープウェイが冬に止まる山は、電車・バスを選ぶと出しません（運行期間は各社・自治体の発表）。'
-         '1月に止まる山は、%sです。道路の冬期閉鎖が分かっている山は、車を選んでも出しません。' % stop),
-        ('冬の登山で気をつけることは？',
-         '日が短いので、15時30分ごろまでに下山を終える計画にします（12月上旬の東京の日の入りは16時28分。国立天文台）。'
-         '結果のカードには、そこから逆算した「冬の歩き始めの目安」を出します。凍結した道の下り、手足の冷え、車は冬用タイヤにも気をつけてください。'),
-        ('ダイヤモンド富士が見られる山も選べる？',
-         '「ダイヤモンド富士」を選ぶと、行く月にダイヤモンド富士が見られる山を上にし、日付と時刻の目安（計算）を出します。'
-         '一覧は「ダイヤモンド富士が見える場所・山」の記事にあります。'),
-    ]
-
-
-LINKS = [
-    ('sun', '/articles/winter-no-crampons/', '冬でも登れる関東の山7選', '12月・1月も雪なし・アイゼン不要'),
-    ('snowflake', '/articles/winter-views/', '冬の絶景が見られる山6選', '樹氷・霧氷・ロープウェイで行ける雪山'),
-    ('sunrise', '/articles/diamond-fuji/', 'ダイヤモンド富士が見える場所・山', 'いつ・何時に見えるかのカレンダー'),
-    ('droplets', '/articles/hiking-onsen-sauna/', '登山のあとの温泉・サウナ', '下山後に寄れる日帰り温泉12プラン'),
-]
-
-
-def links_html():
-    out = ['<div class="wf-links">']
-    for ic, url, t, sub in LINKS:
-        out.append('<a class="wf-link" href="%s">%s<span><b>%s</b><small>%s</small></span></a>' % (url, I.svg(ic, size='20px', style=I.ICON_STYLE), esc(t), esc(sub)))
-    out.append('</div>')
-    return ''.join(out)
-
-
-def jsonld(faq):
+def jsonld():
     graph = [
         {'@type': 'WebPage', '@id': URL, 'url': URL, 'name': TITLE, 'description': DESC, 'inLanguage': 'ja',
          'isPartOf': {'@type': 'WebSite', 'name': 'Yamatch', 'url': 'https://tozan-navi.com/'}},
@@ -169,23 +82,20 @@ def jsonld(faq):
             {'@type': 'ListItem', 'position': 1, 'name': 'Yamatch', 'item': 'https://tozan-navi.com/'},
             {'@type': 'ListItem', 'position': 2, 'name': '山選び診断', 'item': 'https://tozan-navi.com/find/'},
             {'@type': 'ListItem', 'position': 3, 'name': '冬の山選び診断', 'item': URL}]},
-        {'@type': 'FAQPage', 'mainEntity': [
-            {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq]},
     ]
     return json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False)
 
 
 def page():
-    s = stats()
-    faq = faq_items(s)
-    faq_html = ''.join('<details class="faq-item"><summary>%s</summary><p>%s</p></details>' % (esc(q), esc(a)) for q, a in faq)
     html = TEMPLATE
     rep = {
         '@@TITLE@@': esc(TITLE + ' - Yamatch'), '@@OGTITLE@@': esc('冬の山選び診断 - Yamatch'), '@@DESC@@': esc(DESC), '@@URL@@': URL,
-        '@@OGIMG@@': OG_IMAGE, '@@CSS@@': base_css() + WINTER_CSS, '@@JSONLD@@': jsonld(faq), '@@FAQ@@': faq_html,
-        '@@LINKS@@': links_html(), '@@ICONS@@': icons_js(), '@@LOGO@@': LOGO,
+        '@@OGIMG@@': OG_IMAGE, '@@CSS@@': base_css() + WINTER_CSS, '@@JSONLD@@': jsonld(), 
+        '@@ICONS@@': icons_js(),
+        '@@TRAIN@@': I.svg('train-front', size='12px', style=I.ICON_STYLE), '@@TIMER@@': I.svg('timer', size='12px', style=I.ICON_STYLE),
+        '@@FREE@@': I.svg('sparkles', size='12px', style=I.ICON_STYLE),
         '@@SNOW@@': I.svg('snowflake', size='12px', style=I.ICON_STYLE),
-        '@@NONE1@@': str(s['none1']), '@@LIGHT1@@': str(s['light1']),
+        
     }
     for k, v in rep.items():
         if k not in html:
@@ -233,7 +143,6 @@ TEMPLATE = r"""<!DOCTYPE html>
   <div class="ym-header-inner">
     <a href="/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>戻る</a>
     <div class="ym-header-title">冬の山選び診断</div>
-    <a href="/" aria-label="Yamatch トップ">@@LOGO@@</a>
   </div>
 </header>
 <main>
@@ -243,14 +152,13 @@ TEMPLATE = r"""<!DOCTYPE html>
 </div>
 <div id="step-intro" class="step active">
   <div class="intro-hero">
-    <div class="intro-kicker">@@SNOW@@ 11月〜3月の山選び</div>
     <h1 class="intro-hero-title">冬の山選び診断<br>12月・1月・2月に登れる山</h1>
     <div class="intro-hero-sub">9問に答えるだけ。雪の無い山からチェーンスパイクの山、雪山入門まで、行く月の装備と冬の運休・通行止めを見て提案します</div>
     <div class="intro-tags">
-      <span class="intro-tag">雪なし〜雪山入門</span>
-      <span class="intro-tag">電車・車どちらも</span>
-      <span class="intro-tag">約2分</span>
-      <span class="intro-tag">無料</span>
+      <span class="intro-tag">@@SNOW@@雪なし〜雪山入門</span>
+      <span class="intro-tag">@@TRAIN@@電車・車どちらも</span>
+      <span class="intro-tag">@@TIMER@@約2分</span>
+      <span class="intro-tag">@@FREE@@無料</span>
     </div>
     <button class="start-btn" onclick="startQuiz()">診断スタート →</button>
     <div class="intro-note">※関東（新宿・大宮・横浜）から日帰りで行ける山から選びます</div>
@@ -289,26 +197,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     </a>
   </div>
 </div>
-<div class="wf-crumb"><a href="/">Yamatch</a> › <a href="/find/?mode=all">山選び診断</a> › 冬の山選び診断</div>
-<section class="wf-about">
-  <h2>冬の山選び診断でわかること</h2>
-  <p>冬の山は、同じ山でも月によって雪や凍結の状態が変わり、季節運行のバスやロープウェイが止まって登山口まで行けなくなる山もあります。この診断は、Yamatch の装備カレンダー（月ごとのアイゼン不要／軽アイゼン等／冬山装備）と、バス・ロープウェイの運行期間、道路の冬期閉鎖のデータを見て、その月に日帰りで行ける山を選びます。</p>
-  <ul>
-    <li>雪の無い山がいい人：その月が「アイゼン不要」の山だけ（1月は日帰りで@@NONE1@@山）</li>
-    <li>チェーンスパイクを持っている人：「軽アイゼン等」の山まで（1月は@@LIGHT1@@山を足す）</li>
-    <li>雪山に行きたい人：冬山装備の山を、難しさ・コースの長さ・ロープウェイの有無などで重み付けして選ぶ</li>
-  </ul>
-  <p>富士山の見える山・霧氷や樹氷・ダイヤモンド富士、下山後の温泉・サウナや初詣でも選べます。11〜3月は、山選び診断（/find/）を開くとこの冬の診断になります。</p>
-  <h2>よくある質問</h2>
-  @@FAQ@@
-  <h2>冬の山の記事</h2>
-  @@LINKS@@
-</section>
 </main>
-<footer>
-  <div>Yamatch（やまっち） — 出発地から登る山を探せる登山サーチ</div>
-  <div><a href="/">トップ</a><a href="/about/">運営者について</a><a href="/privacy/">プライバシーポリシー</a><a href="/listing/">お店の掲載</a></div>
-</footer>
 <script src="/assets/js/volcano-status.js?v=20261010a"></script>
 <script>
 var IC = @@ICONS@@;
