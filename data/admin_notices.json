@@ -172,15 +172,22 @@
    "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/43346917379"
   },
   {
-   "id": "sitecheck-2026-11-02-bd9ddaf71d",
+   "id": "sitecheck-2026-11-17-1a87632a16",
    "kind": "sitecheck",
    "title": "サイトの検証",
-   "date": "2026-11-02",
-   "needsAction": false,
-   "digest": "bd9ddaf71d",
-   "sections": [],
-   "next": null,
-   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/41454869341"
+   "date": "2026-11-17",
+   "needsAction": true,
+   "digest": "1a87632a16",
+   "sections": [
+    {
+     "heading": "26. 冬の山選び診断（winter_find.json・/find/winter/）（1件）",
+     "lines": [
+      "-: data/winter_find.json が古い（python3 scripts/build_winter_find.py を実行）"
+     ]
+    }
+   ],
+   "next": "Claude のアプリで「check_pages.py の異常を直して」と伝えてください。",
+   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/44097142188"
   },
   {
    "id": "push-2026-10-21-bd9ddaf71d",
