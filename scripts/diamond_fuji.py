@@ -61,7 +61,12 @@ def _time_at_az(lat, lng, date, az, morning):
     return lo + (hi - lo) / 2
 
 
-def daily(lat, lng, elev, start=datetime.date(2026, 12, 1), days=366):
+# 計算する期間：記事を作り直した日から1年（2026-11-18。前は 2026-12-01 からで、11月下旬の石割山などが翌年の分だけ出ていた＝外部の監査の指摘）
+START = datetime.date(2026, 11, 18)
+DAYS = 365
+
+
+def daily(lat, lng, elev, start=START, days=DAYS):
     """毎日の [(日付, 太陽の方位が富士山頂と同じになる時刻, 太陽の中心−山頂の高さの差（度）)]"""
     dkm, az, falt = fuji_view(lat, lng, elev)
     morning = az < 180
@@ -79,7 +84,7 @@ def daily(lat, lng, elev, start=datetime.date(2026, 12, 1), days=366):
 NEAR = 0.6  # 太陽の中心が山頂からこれ以内を通る日は「ほぼ重なる」（大気差の日ごとの違いで重なることがある）
 
 
-def events(lat, lng, elev, start=datetime.date(2026, 12, 1), days=366):
+def events(lat, lng, elev, start=START, days=DAYS):
     """ダイヤモンド富士の日。[{'date', 'time', 'diff', 'kind', 'from', 'to', 'morning'}]
     - 太陽が山頂を通り過ぎる（前の日と次の日で上下が入れ替わる）とき：差の小さいほうの日。kind は 'hit'
     - 入れ替わらず、差がいちばん小さくなる日（冬至・夏至のころ）：差が太陽の半径以内なら 'hit'、NEAR 以内なら 'near'（山頂をかすめる）

@@ -162,6 +162,20 @@ NISITOKYO_OKUTAMA = 'https://www.nisitokyobus.co.jp/rosen/noriba/okutama.html'
 NISITOKYO_POCKET = 'https://www.nisitokyobus.co.jp/rosen/pocket.html'
 HAYAKAWA = 'https://www.town.hayakawa.yamanashi.jp/people/taffic.html'
 TOBU_NIKKO = 'https://www.tobu-bus.com/pc/area/nikko/'
+RET.update({
+    # 2026-11-18 に追加した山（Yahoo!乗換案内 2026年11月14日・土曜。西武バスは公式）
+    ('myohogatake', '大輪〜表参道〜妙法ヶ岳〜奥宮参道入口（縦走）'):
+        R([L('三峯神社', 'bus', '西武バス「三峯神社線」', 55, 800), L('三峰口駅')], '16:30', search=('三峯神社', '三峰口'),
+          day='平日・土日祝とも', note='奥宮参道入口のすぐ先が三峯神社のバス停。紅葉の時期・連休は大幅な遅れや特別ダイヤあり',
+          source='西武バス「三峯神社線」の時刻表・運賃', timetable='https://www.seibubus.co.jp/rosen/mitsumine/', checked='2026-11-18'),
+    ('numazu_alps', '黒瀬バス停〜香貫山〜横山〜徳倉山〜志下山〜志下公会堂前バス停（縦走）'):
+        R([L('志下公会堂前', 'bus', '東海バス（沼津駅行き）', 21, 420), L('沼津駅')], '17:46', search=('志下公会堂前/東海バス', '沼津'), checked='2026-11-18',
+          timetable='https://www.tokaibus.jp/rosen/timetable.html'),
+    ('numazu_alps', '多比バス停〜大平山〜鷲頭山〜徳倉山〜香貫山〜黒瀬バス停（縦走）'):
+        R([L('黒瀬', 'bus', '東海バス（沼津駅行き）', 13, 260), L('沼津駅')], '18:47', search=('黒瀬/東海バス', '沼津'), checked='2026-11-18',
+          timetable='https://www.tokaibus.jp/rosen/timetable.html'),
+})
+
 TIMETABLE = {
     ('amagi', '八丁池口'): 'https://www.tokaibus.jp/rosen/timetable.html',
     ('amagi', '天城峠'): 'https://www.tokaibus.jp/rosen/timetable.html',

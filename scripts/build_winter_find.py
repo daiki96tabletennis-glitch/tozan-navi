@@ -12,6 +12,7 @@
 - コース（泊を含まないもの）：時間・技術の難しさ（routes[].tech.grade）・鎖場・岩場・電車の印・種類
 - 冬の特集：ダイヤモンド富士の日（記事と同じ計算。記事の山は gen_winter_specials.diamond_list＝観賞地点の指定つき、
   ほかに特徴の文に富士山の眺めが書いてある山すべてを山頂で計算）、冬の絶景の区分（views）
+- 駐車場の標高とノーマルタイヤで行ける目安（road。data/winter_road.json＝scripts/build_winter_road.py）
 - 下山後に寄れそうな温泉・サウナ（onsenNear。data/onsen_near_mountains.json＝scripts/build_onsen_near.py）
 - 特徴の文・紹介文に温泉・サウナ（onsenText）、霧氷・樹氷（iceText）が書いてある山の印
 - 下山後の楽しみ：温泉・サウナの記事のプラン（onsen_sauna.json）、サウナシュランの記事（saunachelin_hiking.json）
@@ -193,6 +194,7 @@ def build():
     SA = json.load(open(os.path.join(ROOT, 'data', 'saunachelin_hiking.json'), encoding='utf-8'))
     dia = {x['m']['id']: x for x in GW.diamond_list(Mby, SC, W)}
     views = {x['id']: x for x in W['views']['mountains']}
+    road = json.load(open(os.path.join(ROOT, 'data', 'winter_road.json'), encoding='utf-8'))['mountains']
     near_onsen = json.load(open(os.path.join(ROOT, 'data', 'onsen_near_mountains.json'), encoding='utf-8'))['mountains']
     onsen = {}
     for p in ON['plans']:
@@ -271,6 +273,11 @@ def build():
             item['pano'] = True  # ホームの絞り込みの「絶景」（厳選。山頂・稜線からの特別な展望）
         if ONSEN.search(text_all):
             item['onsenText'] = True
+        rd = road.get(mid)
+        if rd:
+            item['road'] = {'e': rd.get('elev'), 'nt': {k: v for k, v in rd['normal'].items() if str(k) in g}}
+            if rd.get('note'):
+                item['road']['note'] = rd['note']
         if mid in near_onsen:
             item['onsenNear'] = near_onsen[mid].get('near') or True
         if ICE.search(text_all):

@@ -309,7 +309,7 @@ var QUESTIONS = [
     choices: [
       { value: 'train', icon: 'train-front', label: '電車・バスだけで行きたい', sub: '車を持っていない、または運転しない' },
       { value: 'car',       icon: 'car', label: '車（冬用タイヤ・チェーンあり）', sub: '雪や凍結の道も走れる' },
-      { value: 'carnormal', icon: 'car', label: '車（ノーマルタイヤ）', sub: '雪や凍結の心配が少ない山だけにします' }
+      { value: 'carnormal', icon: 'car', label: '車（ノーマルタイヤ）', sub: '駐車場が低く、雪の日が少ない山だけにします' }
     ] },
   { id: 'fitness', text: '普段の運動量はどのくらいですか？', sub: '冬は日が短いので、歩く時間の上限にも使います',
     choices: [
@@ -498,8 +498,9 @@ function scoreMount(m){
   var st = answers.transport === 'train' ? acc.train : acc.car;
   if(answers.transport === 'train' && !m.train) return null;
   if(st === 'no') return null;
-  // ノーマルタイヤ：その月が「アイゼン不要」の山だけ（山頂近くまで雪・凍結が続かない山なら、登山口までの道もふだん雪が少ないとみる目安）
-  if(answers.transport === 'carnormal' && rank > 0) return null;
+  // ノーマルタイヤ：駐車場の標高が月ごとの目安より低い山だけ（気象庁の平年値の積雪日数から。1・2月500m・12・3月800m・11月1,200m未満。
+  // scripts/build_winter_road.py。標高が分からない山は出さない）
+  if(answers.transport === 'carnormal' && !(m.road && m.road.nt && m.road.nt[mo] === true)) return null;
   var route = pickRoute(m, wg);
   if(!route) return null;
 
@@ -597,9 +598,9 @@ function scoreMount(m){
   return { m: m, score: score, route: route, gear: g, acc: acc, st: st, dia: dia, wg: wg };
 }
 
-// 冬の歩き始めの目安：15:30 に下山を終えるとして、歩く時間を引き、10分単位で切り下げ
+// 冬の歩き始めの目安：15:30 に下山を終えるとして、歩く時間と休憩・遅れの余裕（1時間。2026-11-18）を引き、10分単位で切り下げ
 function startBy(min){
-  var t = 15 * 60 + 30 - min;
+  var t = 15 * 60 + 30 - min - 60;
   t = Math.floor(t / 10) * 10;
   var h = Math.floor(t / 60), mi = t % 60;
   return h + ':' + (mi < 10 ? '0' : '') + mi;
@@ -659,7 +660,7 @@ function cardHtml(x, i){
   h += '</div>';
   // コース
   h += '<div class="rc-course">' + ic('route') + '<b>コース：</b>' + esc(x.route.n) + '（歩く時間 ' + fmtMin(x.route.min) + '）<br>';
-  h += ic('timer') + '<b>冬の歩き始めの目安：</b>' + startBy(x.route.min) + 'まで（15:30に下山を終えるとして）<br>';
+  h += ic('timer') + '<b>冬の歩き始めの目安：</b>' + startBy(x.route.min) + 'まで（15:30に下山を終えるとして。休憩と遅れの余裕を1時間みた目安）<br>';
   h += ic('snowflake') + esc(gearText(x.gear)) + '</div>';
   // 理由
   var rs = buildReasons(x);
@@ -674,7 +675,9 @@ function cardHtml(x, i){
     notes.push(MONTH_LABEL[answers.when] + 'は一部の日だけ行けます：' + x.acc.why.join('、'));
   }
   if(answers.transport === 'carnormal'){
-    notes.push(MONTH_LABEL[answers.when] + 'はアイゼン不要の山ですが、雪が降った翌日や冷え込んだ朝は道が凍ることがあります。出発前に道路の情報を確かめてください。');
+    var lim = { '11': '1,200', '12': '800', '1': '500', '2': '500', '3': '800' }[answers.when];
+    notes.push('駐車場の標高は約' + (m.road && m.road.e !== null ? Number(m.road.e).toLocaleString() + 'm' : '（不明・山頂より低い）') + '。' + MONTH_LABEL[answers.when] + 'に雪が積もる日が少ない標高（' + lim + 'm未満）の目安でノーマルタイヤでも出しています。雪が降った翌日や冷え込んだ朝は道が凍ることがあるので、出発前に道路の情報を確かめてください。');
+    if(m.road && m.road.note) notes.push(m.road.note);
   }
   if(x.wg){
     notes.push('コースの時間・難易度は雪の無い時期の値です。冬はラッセルや凍結で長くかかります。');
@@ -722,7 +725,7 @@ function _doShowResult(){
   var dep = answers.depart || 'ofuna';
   var depLabel = dep === 'shinjuku' ? '新宿・都内' : dep === 'omiya' ? '大宮・埼玉' : '横浜・大船';
   var gearLabel = { none: '雪の無い', light: 'チェーンスパイクで行ける', entry: '雪山入門の', expert: '雪山の' }[answers.gear] || '';
-  if(answers.who === 'family' || answers.transport === 'carnormal') gearLabel = '雪の無い';
+  if(answers.who === 'family') gearLabel = '雪の無い';
   document.getElementById('result-headline').textContent = MONTH_LABEL[answers.when] + '・' + depLabel + '発・' + gearLabel + '日帰りの山';
   document.getElementById('result-count').textContent = scored.length ? '条件に合う山：' + scored.length + '件中、上位3件を表示' : '';
   var top3 = pickTop3(scored);

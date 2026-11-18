@@ -6,9 +6,12 @@
 - 人気記事と同じ作り：目次、山ごとの見出し（h2「① 高尾山（たかおさん）」）、最後に7山の比較表
 - 冬に行く前に役立つ情報（データか公式の出典があるものだけ）：
   代表コース（routes の1番目）の歩く時間と「何時までに歩き始めるか」（12月上旬の東京の日の入り 16:28＝国立天文台。
-  日の入りの約1時間前の15:30に下山を終えるとして、歩く時間を引き、10分単位で切り下げる。休憩は含まない）、
+  日の入りの約1時間前の15:30に下山を終えるとして、歩く時間と休憩・遅れの余裕（1時間）を引き、10分単位で切り下げる）、
+  ※ 余裕の1時間は 2026-11-18 に足した（外部の監査の指摘「休憩や行動の遅れを見込んでいない」。運営者の指示「適宜改善して」）
   ケーブルカー・ロープウェーの有無（山のデータに書いてあるものだけ）
 - よくある質問を画面にも出す（前は Google 向けのデータの中だけにあった）
+3回目（2026-11-18。外部の監査を受けて）：安全を言い切る文（「完全にアイゼン不要で安心」「安全に楽しめます」「独り占め」「虫や藪もない」）を
+  事実に近い言い方にし、御岳山のカードに冬の凍結の注意（御岳ビジターセンターの現地情報。山と溪谷オンラインの山岳最新情報）を足した
 
 値は mountains.json・gear-data.json から作る。帰りの最終バスは出さない（電車向けの記事ではないため。運営者の指示・2026-11-05）。特徴・おすすめ理由の文は前のカードから引き継ぐ（足した2山は featurePoints に書いてあることだけで書いた）。
 写真はページのスクリプトが mountains.json の photos から入れる。前のカードにあった記事の写真（images/photo-0X.jpg）と、弘法山の閉鎖の注意（data-closed）は引き継ぐ。
@@ -22,13 +25,29 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PAGE = os.path.join(ROOT, 'articles', 'winter-no-crampons', 'index.html')
-UPDATED = '2026-11-05'
+UPDATED = '2026-11-18'
 ORDER = ['takao', 'nokogiriyama_chiba', 'koubousan', 'mitakesan', 'jinba', 'tsukuba', 'myojingatake']
 NUM = '①②③④⑤⑥⑦'
 TITLE = '冬でも登れる関東の山7選｜12月・1月も雪なし・アイゼン不要'  # 「12月 登山 雪なし 関東」の検索に合わせた（2026-11-15）
 SHORT = '冬でも登れる関東の山7選（雪なし・アイゼン不要）'
 SUNSET = ('16時28分', 'https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s1312.html')  # 東京・2026年12月1〜13日（国立天文台 暦計算室）
 FINISH = 15 * 60 + 30  # 下山を終える目安（日の入りの約1時間前）
+MARGIN = 60  # 休憩・行動の遅れの余裕（2026-11-18）
+# 冬の注意（出典の本文で確かめたものだけ。2026-11-18）
+WINTER_NOTE = {
+    'mitakesan': ('沢沿いのロックガーデンや大岳山方面は、冬に凍結することがあります。御岳ビジターセンターは冬（12〜3月）にたびたび「凍結あり。チェーンスパイクの用意を」と案内しています（2025年12月18日「ロックガーデンで凍結も」など）',
+                  'https://www.yamakei-online.com/mt_info/past.php?id=1065', '御岳ビジターセンターの現地情報（山と溪谷オンライン）'),
+}
+WORDING = (
+    ('標高は低いですが冬でも完全にアイゼン不要で安心して歩けます。', '標高が低く、例年は積雪が少なくて、滑り止めなしで歩ける日が多い山です。'),
+    ('ケーブルカーを利用すれば体力的に余裕があり、冬でも安全に楽しめます。ロックガーデンなど変化に富んだコースが魅力です。',
+     'ケーブルカーを使えば体力に余裕を持って歩けます。ロックガーデンなど変化に富んだコースが魅力ですが、沢沿いは冬に凍結することがあります。'),
+    ('透き通った空気の中で富士山の絶景を独り占めできます。', '澄んだ空気の中で富士山の眺めを楽しめます。'),
+    ('アイゼン不要の関東低山は、冬でも安全に楽しめる貴重な登山フィールドです。', 'アイゼン不要の関東の低山は、冬でも比較的挑戦しやすい山です。出発前に直近の雪と凍結を確かめ、早めに下山を終えましょう。'),
+    ('標高の高い山や北向き斜面は凍結・積雪のリスクがありますが、本記事で紹介する低山は空気が澄んで眺望が良く、虫や藪もない快適なシーズンとして楽しめます。防寒対策と滑りにくい靴は必須です。',
+     '危険が無いわけではありません。本記事の山は例年、積雪が少なく滑り止めなしで歩ける日が多い山ですが、雪のあとの数日や日陰・沢沿いには凍結が残ります。冬は日が短く寒いので、防寒具・ヘッドランプ・チェーンスパイクを持ち、早めに下山を終えましょう。'),
+    ('雪のない冬の低山は、空気が澄んで眺めがよく、虫や藪もない快適な季節です。', '積雪の少ない冬の低山は、空気が澄んで眺めがよく、虫が少なく落ち葉で見通しも良い季節です。'),
+)
 NEW_TEXT = {
     'tsukuba': (
         '「西の富士、東の筑波」と並び称された百名山。男体山と女体山の2つの峰があり、最高点の女体山から霞ヶ浦と関東平野を見下ろす360度の眺めが広がります。',
@@ -144,12 +163,13 @@ def card(i, m, feat, why, closed, img, gear, td):
     rng = f'{m["coeffMin"]}〜{m["coeffMax"]}' if m.get('coeffMin') != m.get('coeffMax') else str(m['coeffMin'])
     r0 = m['routes'][0]
     w = walk_min(r0['time'])
-    start = (FINISH - w) // 10 * 10
+    start = (FINISH - w - MARGIN) // 10 * 10
     rows = (
         row(f'{CAR_SVG} 車', f'新宿から{mins(m["driveTimeShinjuku"])}')
         + row(f'{TRAIN_SVG} 電車', f'新宿から{train_label(m)}{mins(m["trainTimeShinjuku"])}')
         + row('代表コース', f'{E(r0["name"])}／歩く時間 {E(r0["time"])}（難易度 {E(m["difficulty"])}）')
-        + row('冬の歩き始め', f'<strong>{hm(start)}まで</strong>に歩き始める（15時30分に下山を終える場合。休憩の時間は含まない）')
+        + row('冬の歩き始め', f'<strong>{hm(start)}まで</strong>に歩き始める（15時30分に下山を終える場合。休憩と遅れの余裕を1時間みた目安）')
+        + (row('冬の注意', E(WINTER_NOTE[mid][0]) + f'（<a href="{E(WINTER_NOTE[mid][1])}" target="_blank" rel="noopener" style="color:#4a6038">{E(WINTER_NOTE[mid][2])}</a>）') if mid in WINTER_NOTE else '')
         + (row('乗り物', f'{LIFT[mid]}で登り下りを短くできる') if mid in LIFT else '')
         + row('コース定数', f'<span class="coeff-badge">{rng}</span><span class="winter-badge">{winter_badge(m["gearCalendar"])}</span>')
         + row('特徴', E(feat))
@@ -224,6 +244,8 @@ def main():
     gear = json.load(open(os.path.join(ROOT, 'data/gear-data.json')))
     td = json.load(open(os.path.join(ROOT, 'data/train_daytrip.json')))
     s = open(PAGE, encoding='utf-8').read()
+    for a, b in WORDING:
+        s = s.replace(a, b)
     old = old_texts(s)
     names = '・'.join(ms[i]['name'] for i in ORDER)
     cards = []
@@ -249,7 +271,7 @@ def main():
              '<a href="/guide/gear-checklist/" style="color:#4a6038;font-weight:bold">冬山の持ち物ガイド</a>で確認しておきましょう。</p>', s)
     s = sub1(r'<p>(冬は日没が早いため|12月上旬の東京の日の入りは)[\s\S]*?</p>',
              f'<p>12月上旬の東京の日の入りは{SUNSET[0]}で、1年でいちばん早い時期です（<a href="{SUNSET[1]}" target="_blank" rel="noopener" style="color:#4a6038">国立天文台</a>）。'
-             '山の中は早く暗くなるので、15時30分ごろには下山を終える計画にしましょう。各山の「冬の歩き始め」は、この時刻から代表コースの歩く時間を引いた目安です（休憩の時間は含みません）。</p>', s)
+             '山の中は早く暗くなるので、15時30分ごろには下山を終える計画にしましょう。各山の「冬の歩き始め」は、この時刻から代表コースの歩く時間と、休憩や遅れの余裕（1時間）を引いた目安です。</p>', s)
 
     # よくある質問を画面にも出す（中身は Google 向けのデータと同じ）
     desc = f'12月・1月・2月も雪や凍結が続かず、アイゼンなしで登れる関東の山7選。{names}を、新宿からの時間・歩く時間・冬は何時までに歩き始めるかで比べられます。'
@@ -275,7 +297,8 @@ def main():
     s = sub1(r'<p class="article-desc">[\s\S]*?</p>',
              '<p class="article-desc">12〜2月も雪や凍結が続かず、アイゼンなしで登れる関東の山を7つ選びました。新宿からの時間、歩く時間、冬は何時までに歩き始めるかまで比べられます。</p>', s)
     s = sub1(r'最終更新: [0-9-]+</span>', f'最終更新: {UPDATED}</span>', s)
-    s = sub1(r"title:'[^']*'", f"title:'{SHORT}'", s, count=1)
+    # 前の共有の帯（title:'…'）は 2026-11-16 に外した。残っているページだけ直す
+    s = re.sub(r"title:'[^']*'", f"title:'{SHORT}'", s, count=1)
     # 絵文字は線画のアイコンにする（2026-11-15。ym_icons.emoji_to_icons。何度流しても同じ結果）
     sys.path.insert(0, os.path.join(ROOT, 'scripts'))
     import ym_icons

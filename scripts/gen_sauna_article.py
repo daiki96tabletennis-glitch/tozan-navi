@@ -32,7 +32,7 @@ CSS_EXTRA = ('<style>'
              '.sc-mt b a{color:#4a6038}'
              '.sc-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}'
              '.sc-links a{display:inline-flex;align-items:center;gap:5px;background:#f3f0e8;border:1px solid #e3ddcf;color:#3a5a28;font-weight:700;font-size:13px;border-radius:10px;padding:7px 12px;text-decoration:none}'
-             '.sc-time{display:inline-block;background:#eef4fb;color:#1a4a70;font-weight:700;font-size:12.5px;border-radius:8px;padding:1px 8px;margin-left:6px}'
+             '.sc-plan{display:inline-block;background:#f3efe4;color:#5a4a2a;font-weight:700;font-size:12px;border-radius:8px;padding:1px 8px;margin-left:6px}.sc-time{display:inline-block;background:#eef4fb;color:#1a4a70;font-weight:700;font-size:12.5px;border-radius:8px;padding:1px 8px;margin-left:6px}'
              '</style>')
 
 
@@ -67,9 +67,10 @@ def build():
                 frm = '登山口・駐車場（地図の行き先）'
             how = x.get('walk') or '車で約%d分' % x['car']
             mpts.append({'n': m['name'], 'la': la, 'lo': lo, 't': how})
-            mts.append('<div class="sc-mt"><b><a href="/mountains/%s/">%s</a></b><span class="sc-time">%s</span><br>'
-                       '<span style="font-size:13px;color:#555">%sから。代表コース：%s（%s・難易度 %s）</span></div>' % (
-                           m['id'], esc(m['name']), esc(how), esc(frm), esc(r['name']), esc(r['time']), esc(m.get('difficulty') or '')))
+            plan, pnote = trip_plan(m, r, x)
+            mts.append('<div class="sc-mt"><b><a href="/mountains/%s/">%s</a></b><span class="sc-time">%s</span><span class="sc-plan">%s</span><br>'
+                       '<span style="font-size:13px;color:#555">%sから。代表コース：%s（%s・難易度 %s）%s</span></div>' % (
+                           m['id'], esc(m['name']), esc(how), esc(plan), esc(frm), esc(r['name']), esc(r['time']), esc(m.get('difficulty') or ''), esc(pnote)))
             rows.append(['<a href="#s-%s" style="color:#4a6038;font-weight:700">%s</a>' % (s['key'], esc(m['name'])),
                          esc(s['name']), esc(how), esc('・'.join(s['awards']))])
         pt = {'s': {'n': s['name'], 'la': s['lat'], 'lo': s['lng']}, 'm': mpts}
@@ -101,7 +102,7 @@ def build():
         '<p class="sc-legend"><span class="sc-dot" style="background:#c8650a"></span>サウナ<span class="sc-dot" style="background:#4e6535"></span>山の登山口・駐車場（点にふれると名前が出ます）</p>',
         '<h2 id="list">山とサウナの一覧（%d山）</h2>' % nm,
         W.table(['山', 'サウナ', '登山口から', 'サウナシュラン'], rows),
-        '<p style="font-size:12.5px;color:#666;margin:4px 0 16px">車の時間は、山の地図ボタンの行き先（駐車場・登山口）から、道路の経路検索（OpenStreetMap の道路データ）で求めた目安です。渋滞や冬の通行止めは含みません。</p>',
+        '<p style="font-size:12.5px;color:#666;margin:4px 0 16px">車の時間は、山の地図ボタンの行き先（駐車場・登山口）から、道路の経路検索（OpenStreetMap の道路データ）で求めた目安です。渋滞や冬の通行止めは含みません。山の横の印（日帰り向け・早朝出発・健脚向け・前泊・宿泊がおすすめ）は、新宿からの車の往復と代表コースの歩く時間、サウナの1時間を足した合計（12時間以内／15時間以内／それより長い）で分けた目安で、休憩や渋滞は入れていません。</p>',
         '\n'.join(cards),
         '<h2 id="about">選び方と注意</h2>',
         '<div class="tips-card" style="padding:16px 20px"><ul style="margin:0 0 0 18px;line-height:1.9">'
@@ -135,6 +136,31 @@ def build():
     page = page.replace('<script src="/assets/js/card-photo-credits.js?v=20261105b" defer></script>',
                         '<script src="/assets/js/sauna-map.js?v=20261116" defer></script>', 1)
     return ym_icons.emoji_to_icons(page)
+
+
+def walk_min(t):
+    h = re.search(r'(\d+)時間', t or '')
+    mi = re.search(r'(\d+)分', t or '')
+    return (int(h.group(1)) if h else 0) * 60 + (int(mi.group(1)) if mi else 0)
+
+
+def trip_plan(m, r, x):
+    """東京から登山とサウナを1日でできるかの目安（2026-11-18。外部の監査の指摘「施設が日帰りで使えることと、東京から1日で回れることは別」）。
+    新宿からの車の往復＋代表コースの歩く時間＋サウナ（1時間）の合計で分ける：12時間以内＝日帰り向け、15時間以内＝早朝出発・健脚向け、
+    それより長い・山が日帰り不可＝前泊・宿泊がおすすめ。休憩・渋滞は入れていない"""
+    w = walk_min(r.get('time'))
+    drive = m.get('driveTimeShinjuku') or 0
+    total = drive * 2 + w + 60
+    if not m.get('daytrip') or total > 15 * 60:
+        plan = '前泊・宿泊がおすすめ'
+    elif total > 12 * 60:
+        plan = '早朝出発・健脚向け'
+    else:
+        plan = '東京から日帰り向け'
+    note = ''
+    if r.get('courseType') == 'traverse' and not x.get('walk'):
+        note = '。縦走コースなので、車で行くときは下山口から車へ戻る方法も考えておきましょう（車の時間は登山口・駐車場から）'
+    return plan, note
 
 
 def main():

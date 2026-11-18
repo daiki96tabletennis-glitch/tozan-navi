@@ -405,7 +405,7 @@ def tanzawa_more(M, SC):
 
 
 def month_calendar(L):
-    """月ごとのカレンダー（2026年12月〜2027年11月のうち、見える日のある月だけ）。日付のマスに山の頭文字を出し、押すと山のカードへ移る。
+    """月ごとのカレンダー（diamond_fuji.START から1年のうち、見える日のある月だけ）。日付のマスに山の頭文字を出し、押すと山のカードへ移る。
     JavaScript は使わない。山の頭文字が重なると分からないので、重なったら止める"""
     abbr = {}
     for x in L:
@@ -460,6 +460,8 @@ def diamond(M, SC, W):
         view = esc(x['fp'][0].get('text') or x['fp'][0].get('label')) if x['fp'] else (
             '<a href="%s" target="_blank" rel="noopener">%s</a>' % (esc(x['ex']['viewUrl']), esc(x['ex']['viewSource'])))
         evs = '<br>'.join('<span class="big-time" style="font-size:16px">%s</span>' % esc(ev_text(e)) for e in x['ev'])
+        # 時刻は太陽が富士山頂に重なる時刻で、ふだんの日の出・日の入りとは違う（2026-11-18。外部の監査の指摘で書き分けた）
+        evs += '<br><span style="font-size:12px;color:#8a8078">時刻は太陽が富士山頂に重なる時刻（計算）で、ふだんの日の出・日の入りの時刻とは違います</span>'
         note = D['note'].get(m['id'])
         side = '日の出' if x['ev'][0]['morning'] else '日没'
         tip = ('日没のころのダイヤモンド富士は、そのあと暗い道を下ることになります。ヘッドランプを持ち、下りの時間を見て計画しましょう。' if side == '日没'
@@ -492,7 +494,7 @@ def diamond(M, SC, W):
             comp.append((e['date'], ['<a href="#m-%s" style="color:#4a6038;font-weight:700">%s</a>' % (m['id'], esc(m['name'])),
                                      '%d年%s' % (e['from'].year, md(e['from'])) + ('〜' + md(e['to']) if e['to'] != e['from'] else ''), '日の出' if e['morning'] else '日没',
                                      sun_calc.hm(e['time']), 'かすめる' if e['kind'] == 'near' else '重なる']))
-    comp.sort(key=lambda r: ((r[0].month - 12) % 12, r[0].day))
+    comp.sort(key=lambda r: r[0])   # 計算の期間（diamond_fuji.START から1年）の日付の順
     winter = [r for r in comp if r[0].month in (12, 1, 2)]
     by_pref = {}
     for x in L:
@@ -527,9 +529,9 @@ def diamond(M, SC, W):
         table(['山', '日付', '時間帯', '時刻', ''], [r[1] for r in winter]),
         '<h2 id="calendar">ダイヤモンド富士カレンダー2026-2027（月ごと）</h2>',
         month_calendar(L),
-        '<h3 style="font-size:16px;margin:18px 0 8px">日付の一覧（年・時刻つき・12月から）</h3>',
+        '<h3 style="font-size:16px;margin:18px 0 8px">日付の一覧（年・時刻つき・日付の順）</h3>',
         table(['山', '日付', '時間帯', '時刻', ''], [r[1] for r in comp]),
-        '<h2>ダイヤモンド富士が見える山%d選（12月から日付の順）</h2>' % len(L),
+        '<h2>ダイヤモンド富士が見える山%d選（日付の順）</h2>' % len(L),
         '\n'.join(cards),
         '<h2 id="method">日付の計算のしかた</h2>',
         '<div class="tips-card" style="padding:16px 20px;line-height:1.9">観賞する地点（多くは山頂。弘法山は関東の富士見百景の観賞地点の権現山の展望台）の位置と標高から、富士山の剣ヶ峰（3,776m）が見える方角と高さ（地球の丸みと大気による浮き上がりを入れる）を出し、'

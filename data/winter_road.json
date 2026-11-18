@@ -1,0 +1,1898 @@
+{
+ "_note": "scripts/build_winter_road.py が作る（手で編集しない）。駐車場の標高と、ノーマルタイヤで行ける目安（月ごと）。根拠は .claude/winter_road_research_2026_11.md",
+ "limit": {
+  "11": 1200,
+  "12": 800,
+  "1": 500,
+  "2": 500,
+  "3": 800
+ },
+ "sources": [
+  {
+   "label": "気象庁 過去の気象データ 平年値（1991〜2020年）積雪1cm以上の日数",
+   "url": "https://www.data.jma.go.jp/stats/etrn/index.php"
+  },
+  {
+   "label": "国土地理院 標高API",
+   "url": "https://maps.gsi.go.jp/development/elevation_s.html"
+  },
+  {
+   "label": "国土交通省 横浜国道事務所「しっかり準備！ウィンタードライブ」",
+   "url": "https://www.ktr.mlit.go.jp/yokohama/yokokoku_index015.html"
+  }
+ ],
+ "mountains": {
+  "tanzawa": {
+   "elev": 291,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "fuji": {
+   "elev": 1448,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "tsukuba": {
+   "elev": 260,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "kumotori": {
+   "elev": 533,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "amagi": {
+   "elev": 1043,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "okutama": {
+   "elev": 1584,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "ryokami": {
+   "elev": 639,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "kobushigatake": {
+   "elev": 1458,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "mizugaki": {
+   "elev": 1515,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "akagi": {
+   "elev": 1352,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "kinpusan": {
+   "elev": 2360,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "houou": {
+   "elev": 1372,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "nantaisan": {
+   "elev": 651,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "kitadake": {
+   "elev": 876,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "yatsugatake": {
+   "elev": 1488,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "keirisan": {
+   "elev": 1637,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "kirigamine": {
+   "elev": 1800,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "asama": {
+   "elev": 1974,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "tanigawa": {
+   "elev": 743,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "nasu": {
+   "elev": 1466,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "nikko_shirane": {
+   "elev": 1386,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "takeson": {
+   "elev": 1268,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "komagatake": {
+   "elev": 867,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "senjogatake": {
+   "elev": 867,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "shirouma": {
+   "elev": 829,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "norikura": {
+   "elev": 1455,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "tateyama": {
+   "elev": 2419,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "tsurugi": {
+   "elev": 2419,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "yari": {
+   "elev": 1009,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "hotaka": {
+   "elev": 1009,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "myoko": {
+   "elev": 1106,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   },
+   "snowRegion": true
+  },
+  "makihata": {
+   "elev": 731,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   },
+   "snowRegion": true
+  },
+  "iide": {
+   "elev": 469,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "shibutsu": {
+   "elev": 984,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "aizu_koma": {
+   "elev": 1096,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "shirane_gunma": {
+   "elev": 1175,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "bandai": {
+   "elev": 1194,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "hiuchigatake": {
+   "elev": 1504,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "takao": {
+   "elev": 201,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "oyama": {
+   "elev": 315,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "tonosaki": {
+   "elev": 292,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "hirugata": {
+   "elev": 292,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "jinba": {
+   "elev": 327,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "kintoki": {
+   "elev": 687,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   },
+   "note": "国土交通省 横浜国道事務所「しっかり準備！ウィンタードライブ」：箱根峠の山間部ではノーマルタイヤで積雪・凍結により動けなくなる事態が起きている"
+  },
+  "kayagatake": {
+   "elev": 942,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "kentoku": {
+   "elev": 698,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "hinata": {
+   "elev": 1120,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "bonori": {
+   "elev": 243,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "otake": {
+   "elev": 408,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "jonengatake": {
+   "elev": 1329,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "yakedake": {
+   "elev": 1594,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "kashimayari": {
+   "elev": 1434,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "koganzan": {
+   "elev": 1916,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "arafune": {
+   "elev": 1065,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "asamamakurayama": {
+   "elev": 1389,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "kazahariyama": {
+   "elev": 1432,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "iwasugesan": {
+   "elev": 1554,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "iizunasan": {
+   "elev": 1131,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "kurohimesan": {
+   "elev": 1140,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "kenashiyama": {
+   "elev": 865,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "shirasunayama": {
+   "elev": 1505,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "nanaitsurasan": {
+   "elev": 505,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "arasawadake": {
+   "elev": 762,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   },
+   "snowRegion": true
+  },
+  "nakawarayama": {
+   "elev": 1280,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "yarigatake2": {
+   "elev": 488,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "gakedake": {
+   "elev": 990,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "arikayama": {
+   "elev": 1366,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "keizandake": {
+   "elev": 915,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "adatara": {
+   "elev": 946,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "azuma": {
+   "elev": 926,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "echigokoma": {
+   "elev": 1001,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   },
+   "snowRegion": true
+  },
+  "hiragadake": {
+   "elev": 836,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   },
+   "snowRegion": true
+  },
+  "naeba": {
+   "elev": 1366,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   },
+   "snowRegion": true
+  },
+  "amakazari": {
+   "elev": 1169,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "hiuchi": {
+   "elev": 1312,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   },
+   "snowRegion": true
+  },
+  "takatsuma": {
+   "elev": 1194,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "kasagatake": {
+   "elev": 1078,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "ontakesan": {
+   "elev": 2188,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "goryudake": {
+   "elev": 833,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "sukai": {
+   "elev": 827,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "kisokoma": {
+   "elev": 851,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "utsukushigahara": {
+   "elev": 1937,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "karamatsu": {
+   "elev": 770,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "utsugi": {
+   "elev": 874,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "enasan": {
+   "elev": 1557,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "shiomidake": {
+   "elev": 1626,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "arakawadake": {
+   "elev": 926,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "akaisidake": {
+   "elev": 926,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "hijiridade": {
+   "elev": 714,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "terkari": {
+   "elev": 714,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "yakushidake": {
+   "elev": 1359,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "kurobegorodam": {
+   "elev": 1359,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "ainodake": {
+   "elev": 876,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "noutori": {
+   "elev": 876,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "hakusan": {
+   "elev": 1200,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "zaosan": {
+   "elev": 1757,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "karisaka": {
+   "elev": 1102,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "nokogiriyama": {
+   "elev": 865,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "minamikomagatake": {
+   "elev": 996,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "chogatake": {
+   "elev": 1009,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "otenshoudake": {
+   "elev": 1406,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "tsubakurodake": {
+   "elev": 1406,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "harinokidake": {
+   "elev": 1434,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "eboshidake_kita": {
+   "elev": 1248,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "noguchigoro": {
+   "elev": 1248,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "nokogiriyama_chiba": {
+   "elev": 47,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "mitakesan": {
+   "elev": 378,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "takamizusanzan": {
+   "elev": 243,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "tenzandake": {
+   "elev": 115,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "hiwadayama": {
+   "elev": 116,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "izugatake": {
+   "elev": 299,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "bukosan": {
+   "elev": 518,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "nabewari": {
+   "elev": 291,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "sannotou": {
+   "elev": 291,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "koubousan": {
+   "elev": 243,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "kagenobusan": {
+   "elev": 284,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "takagawayama": {
+   "elev": 457,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "kobotokeshiroyama": {
+   "elev": 284,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "kusatoriyama": {
+   "elev": 190,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "nakimushiyama": {
+   "elev": 539,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "tairappyo": {
+   "elev": 972,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   },
+   "snowRegion": true
+  },
+  "tomisan": {
+   "elev": 31,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "iyogatake": {
+   "elev": 69,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "myojingatake": {
+   "elev": 616,
+   "where": "国土地理院の地名検索「箱根町宮城野」（地図の行き先は宮城野支所前のバス停。町の代表点なので目安）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   },
+   "note": "国土交通省 横浜国道事務所「しっかり準備！ウィンタードライブ」：箱根峠の山間部ではノーマルタイヤで積雪・凍結により動けなくなる事態が起きている"
+  },
+  "yaguradake": {
+   "elev": 416,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "kawanoriyama": {
+   "elev": 412,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "takanosuyama": {
+   "elev": 615,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "ishirousan": {
+   "elev": 201,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "iwadonoyama": {
+   "elev": null,
+   "where": "駐車場の位置は無いが、山頂が634m（駐車場はそれより低い）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "maruyama_okubusuma": {
+   "elev": 314,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "ohnoyama": {
+   "elev": 726,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   },
+   "note": "国土交通省 横浜国道事務所「しっかり準備！ウィンタードライブ」：山北町の山間部ではノーマルタイヤで積雪・凍結により動けなくなる事態が起きている"
+  },
+  "momakurasan": {
+   "elev": null,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": null,
+    "12": null,
+    "1": null,
+    "2": null,
+    "3": null
+   }
+  },
+  "ogiyama": {
+   "elev": null,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": null,
+    "12": null,
+    "1": null,
+    "2": null,
+    "3": null
+   }
+  },
+  "makuyama": {
+   "elev": 162,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "taiheizan": {
+   "elev": 228,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "kuratakeyama": {
+   "elev": null,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": null,
+    "12": null,
+    "1": null,
+    "2": null,
+    "3": null
+   }
+  },
+  "sasakogarigaburiyama": {
+   "elev": 1116,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "shodosan_namatate": {
+   "elev": 447,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "kukiyama": {
+   "elev": 420,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "mitosaan": {
+   "elev": 990,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "honitayama": {
+   "elev": 330,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "hinodesaan": {
+   "elev": 233,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "sengenrei": {
+   "elev": 274,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "futagoyama_okumusa": {
+   "elev": 314,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "juunigadake": {
+   "elev": 940,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "ishiwariyama": {
+   "elev": 1042,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "azumayama_ninomiya": {
+   "elev": 130,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "hodosan": {
+   "elev": 186,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "hafuzan_chichibu": {
+   "elev": null,
+   "where": "駐車場の位置は無いが、山頂が627m（駐車場はそれより低い）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "ranzan_saitama": {
+   "elev": 44,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "kogashiyama": {
+   "elev": 216,
+   "where": "地図ボタンの行き先の文にある座標（宇都宮市森林公園駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "mitsutoge": {
+   "elev": 1231,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "kamakura_alps": {
+   "elev": 90,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "okusuyama": {
+   "elev": 57,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "kannokura": {
+   "elev": null,
+   "where": "駐車場の位置は無いが、山頂が344m（駐車場はそれより低い）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "azumayasan": {
+   "elev": 1594,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "gozenyama": {
+   "elev": 531,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": false,
+    "2": false,
+    "3": true
+   }
+  },
+  "tengudake": {
+   "elev": 1853,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "kitayokodake": {
+   "elev": 1757,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "nyukasayama": {
+   "elev": 1033,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "nishihotaka": {
+   "elev": 1078,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "myogisan": {
+   "elev": 429,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "sennokurayama": {
+   "elev": 972,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": false,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   },
+   "snowRegion": true
+  },
+  "houkyozan": {
+   "elev": 22,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "ryugatake": {
+   "elev": 905,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   }
+  },
+  "narukamiyama": {
+   "elev": 426,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "bukkasan": {
+   "elev": 292,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  },
+  "dodairasan": {
+   "elev": 820,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": false,
+    "1": false,
+    "2": false,
+    "3": false
+   },
+   "note": "堂平天文台（星と緑の創造センター）の案内：白石峠からの道は冬は積雪・凍結するので冬用タイヤを勧める（予約サイトに載っている施設の案内文で確認。施設の公式ページでは未確認）"
+  },
+  "takamatsuyama": {
+   "elev": 90,
+   "where": "地図ボタンの行き先（駐車場）",
+   "normal": {
+    "11": true,
+    "12": true,
+    "1": true,
+    "2": true,
+    "3": true
+   }
+  }
+ }
+}

@@ -170,6 +170,10 @@ PT = {
     'bukkasan': [T('仏果山登山口', [1])],
     'dodairasan': [T('剣ヶ峰駐車場', [2])],
     'mitsutoge': [T('三ツ峠登山口', [1, 3])],
+    'myohogatake': [T('三峯神社', [1, 2])],                 # 2026-11-18 に追加した山
+    'hamaishidake': [T('薩埵峠', [3])],
+    'numazu_alps': [T('香貫山登山口（香陵台）', [1])],
+    'minano_alps': [T('秩父華厳の滝', [1, 2])],
 }
 
 D = json.load(open(PATH, encoding='utf-8'))

@@ -385,6 +385,8 @@ def check_train_routes_schema(mountains):
 # 同一内容のルートを複数の山が持つのが正当なもの（同じ縦走路を共有する山）
 SHARED_ROUTE_ALLOWLIST = {
     ('椹島〜荒川岳〜赤石岳縦走（2泊）', frozenset({'arakawadake', 'akaisidake'})),
+    # 皆野アルプスは破風山を含む尾根。同じ YAMAP の縦走（20899）を両方の山に入れる（運営者の指示・2026-11-18「別の山として足す。コースが重なってもよい」）
+    ('秩父華厳前〜大前山〜札立峠〜破風山〜前原山〜皆野駅（縦走）', frozenset({'hafuzan_chichibu', 'minano_alps'})),
 }
 
 
