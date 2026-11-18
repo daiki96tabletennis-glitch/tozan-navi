@@ -52,6 +52,11 @@ def fix_coeff(m, new):
         if m.get(k): m[k] = fix(m[k])
 
 
+def hm(n):
+    n = int(n)
+    return ('%d時間%d分' % (n // 60, n % 60) if n % 60 else '%d時間' % (n // 60)) if n >= 60 else '%d分' % n
+
+
 def day_answer(m, old):
     name = m['name']
     tail = ''
@@ -68,6 +73,22 @@ def day_answer(m, old):
         longs = [r for r in rs if r not in ds and (r.get('status') or {}).get('state') != 'closed']
         if longs:
             parts.append('%sは山小屋に泊まる計画が基本です。' % '・'.join(r['name'] for r in longs))
+    elif any(dayok(r) for r in rs):
+        # 泊を含まないコースはあるが、新宿からの往復の移動と合わせると14時間を超える山（2026-11-18 の日帰りの決まり。
+        # scripts/migrations/daytrip_definition_2026_11.py）。「山小屋泊が基本」とは書かない
+        ds = sorted([r for r in rs if dayok(r)], key=lambda r: mins(r['time']))
+        tt = m.get('trainTimeShinjuku') if m.get('trainAccess') else None
+        dt = m.get('driveTimeShinjuku')
+        mv = '・'.join(x for x in (('電車・バスで約%s' % hm(tt)) if isinstance(tt, (int, float)) else '',
+                                   ('車で約%s' % hm(dt)) if isinstance(dt, (int, float)) else '') if x)
+        parts = ['%sは、東京から日帰りで登るのは難しく、前泊か山小屋泊がおすすめです。' % name]
+        parts.append('新宿から登山口までは%sかかり、往復の移動といちばん短い%s（%s）を合わせると14時間を超えます。' % (mv, ds[0]['name'], ds[0]['time']))
+        for r in ds:
+            parts.append('%sは歩行%s（%s・標高差%s）。' % (r['name'], r['time'], r.get('distance'), elev_txt(r)))
+        longs = [r for r in rs if r not in ds and (r.get('status') or {}).get('state') != 'closed']
+        if longs:
+            parts.append('%sは山小屋に泊まる計画が基本です。' % '・'.join(r['name'] for r in longs))
+        return ''.join(parts)
     else:
         rep = rep_route(m)
         parts = ['%sは山小屋泊が基本です。' % name]
@@ -97,8 +118,10 @@ def sync(m):
                                      m['dlNoteHtml'])
     # 紹介文の「日帰りでの登山が可能／山小屋泊が一般的」を日帰りの区分に合わせる
     if m.get('introHtml'):
-        m['introHtml'] = m['introHtml'].replace('日帰りでの登山が可能', '@@DAY@@').replace('山小屋泊が一般的', '@@DAY@@') \
-            .replace('@@DAY@@', '日帰りでの登山が可能' if m.get('daytrip') else '山小屋泊が一般的')
+        not_day = '前泊か山小屋泊が一般的' if any(dayok(r) for r in (m.get('routes') or [])) else '山小屋泊が一般的'
+        m['introHtml'] = m['introHtml'].replace('日帰りでの登山が可能', '@@DAY@@').replace('前泊か山小屋泊が一般的', '@@DAY@@') \
+            .replace('山小屋泊が一般的', '@@DAY@@') \
+            .replace('@@DAY@@', '日帰りでの登山が可能' if m.get('daytrip') else not_day)
     # よくある質問の「代表的な◯◯は◯時間・◯km・標高差◯が目安。◯◯（◯時間）という選び方もできます。」を作り直す
     others = [r for r in (m.get('routes') or []) if r is not rep and (r.get('status') or {}).get('state') != 'closed']
     def tmpl(_):

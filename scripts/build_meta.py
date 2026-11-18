@@ -40,6 +40,17 @@ def rep_route(m):
     return rs[0] if rs else {}
 
 
+def day_route(m):
+    """泊を含まないコースがあるか（2026-11-18 の日帰りの決まりで、移動と合わせて14時間を超えるため日帰り不可になった山は「前泊推奨」と書く）"""
+    def mn(t):
+        h = re.search(r'(\d+)時間', t or '')
+        mi = re.search(r'(\d+)分', t or '')
+        return (int(h.group(1)) if h else 0) * 60 + (int(mi.group(1)) if mi else 0) if (h or mi) else None
+    # sync_route_text.py の dayok と同じ（泊を含まない・9時間未満・通行止めでない）
+    return any(mn(r.get('time')) is not None and mn(r.get('time')) < 540 and not re.search(r'泊', r.get('name') or '')
+               and (r.get('status') or {}).get('state') != 'closed' for r in m.get('routes') or [])
+
+
 def time_phrase(m, r):
     """「日帰り1時間30分」「1泊2日・歩行10時間」など。時間が無ければ日帰りかどうかだけ"""
     t = (r.get('time') or '').strip()
@@ -52,6 +63,8 @@ def time_phrase(m, r):
         return (('健脚向け日帰り' if long_day else '日帰り') + core.group(1)) if core else '日帰り'
     if stay and core:
         return '%s・歩行%s' % (stay.group(1).replace('日合計', '日間'), core.group(1))
+    if day_route(m):
+        return ('前泊推奨・歩行' + core.group(1)) if core else '前泊推奨'
     return ('山小屋泊・歩行' + core.group(1)) if core else '山小屋泊'
 
 
@@ -160,9 +173,9 @@ def build_title(m):
         head = ('%s登山 初心者向けコース｜%s・難易度%s' % (name, tp, lv)) if lv in EASY else ('%s登山は初心者でも登れる？難易度%s｜%s' % (name, lv, tp))
     elif it == '日帰り':
         head = ('%s 日帰り登山｜%s・難易度%s' % (name, ('歩行' + ct) if ct else '日帰り可', lv)) if day else (
-            '%s登山は日帰りできる？山小屋泊が基本%s・難易度%s' % (name, ('（歩行%s）' % ct) if ct else '', lv))
+            '%s登山は日帰りできる？%s%s・難易度%s' % (name, '前泊か山小屋泊が基本' if day_route(m) else '山小屋泊が基本', ('（歩行%s）' % ct) if ct else '', lv))
     elif it == '時間':
-        head = '%s 登山のコースタイム%s｜難易度%s・%s' % (name, ct or '', lv, '日帰り可' if day else '山小屋泊')
+        head = '%s 登山のコースタイム%s｜難易度%s・%s' % (name, ct or '', lv, '日帰り可' if day else ('前泊推奨' if day_route(m) else '山小屋泊'))
     elif it == 'アクセス':
         head = '%s 登山のアクセス｜%s｜難易度%s・%s' % (name, a_short or '車', lv, tp)
         a_short = ''
@@ -207,7 +220,7 @@ def build_desc(m):
         s = head + ('は初心者でも登りやすい山（難易度%s）。' % lv if lv in EASY else 'は初心者には厳しい山（難易度%s・%s）。' % (lv, ld))
         s += (course + '。') if course else ''
     elif it == '日帰り':
-        s = head + ('は、登れる期間中なら日帰りで登れます' if (day and summit_season(m)) else 'は日帰りで登れます' if day else 'は山小屋泊が基本です') + ('（歩行%s・難易度%s）。' % (ct, lv) if ct else '（難易度%s）。' % lv)
+        s = head + ('は、登れる期間中なら日帰りで登れます' if (day and summit_season(m)) else 'は日帰りで登れます' if day else ('は東京からの日帰りは難しく、前泊か山小屋泊が基本です' if day_route(m) else 'は山小屋泊が基本です')) + ('（歩行%s・難易度%s）。' % (ct, lv) if ct else '（難易度%s）。' % lv)
         s += (course + '。') if course else ''
     elif it == '時間':
         s = (head + 'のコースタイムは、代表コース（%s）で%s。' % (r['name'], '・'.join(bits))) if course else head + 'の登山ガイド。'
