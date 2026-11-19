@@ -1726,7 +1726,7 @@
         "icon": "check",
         "label": "通年運行（冬ダイヤ・点検運休あり）"
       },
-      "lineName": "高速バス（新宿〜駒ヶ根線）・伊那バス「駒ヶ岳ロープウェイ線」・駒ヶ岳ロープウェイ",
+      "lineName": "高速バス（新宿〜駒ヶ根線）・路線バス（駒ヶ岳ロープウェイ線）・駒ヶ岳ロープウェイ",
       "routes": {
         "shinjuku": {
           "legs": [
@@ -1743,18 +1743,9 @@
               "station": "駒ヶ根駅",
               "method": {
                 "icon": "bus",
-                "line": "バス"
+                "line": "路線バス（駒ヶ岳ロープウェイ線）"
               },
-              "durationMin": 25,
-              "fareYen": null
-            },
-            {
-              "station": "菅の台バスセンター",
-              "method": {
-                "icon": "bus",
-                "line": "中央アルプス観光バス"
-              },
-              "durationMin": 30,
+              "durationMin": 45,
               "fareYen": null
             },
             {
@@ -1795,18 +1786,9 @@
               "station": "駒ヶ根駅",
               "method": {
                 "icon": "bus",
-                "line": "バス"
+                "line": "路線バス（駒ヶ岳ロープウェイ線）"
               },
-              "durationMin": 25,
-              "fareYen": null
-            },
-            {
-              "station": "菅の台バスセンター",
-              "method": {
-                "icon": "bus",
-                "line": "中央アルプス観光バス"
-              },
-              "durationMin": 30,
+              "durationMin": 45,
               "fareYen": null
             },
             {
@@ -1847,18 +1829,9 @@
               "station": "駒ヶ根駅",
               "method": {
                 "icon": "bus",
-                "line": "バス"
+                "line": "路線バス（駒ヶ岳ロープウェイ線）"
               },
-              "durationMin": 25,
-              "fareYen": null
-            },
-            {
-              "station": "菅の台バスセンター",
-              "method": {
-                "icon": "bus",
-                "line": "中央アルプス観光バス"
-              },
-              "durationMin": 30,
+              "durationMin": 45,
               "fareYen": null
             },
             {
@@ -1886,8 +1859,8 @@
         },
         {
           "type": "bus",
-          "label": "バス時刻表",
-          "url": "https://www.chuo-alps.com/access/bus/"
+          "label": "路線バス・ロープウェイ時刻表",
+          "url": "https://chuo-alps.com/timetable/"
         }
       ]
     },
@@ -1897,20 +1870,20 @@
       "yokohama": 7636
     },
     "trainTimes": {
-      "shinjuku": 283,
-      "omiya": 313,
-      "yokohama": 317
+      "shinjuku": 273,
+      "yokohama": 307,
+      "omiya": 303
     },
     "transfers": {
-      "shinjuku": 3,
-      "omiya": 4,
-      "yokohama": 4
+      "shinjuku": 2,
+      "yokohama": 3,
+      "omiya": 3
     },
     "busLinks": [
       "https://transit.yahoo.co.jp/search/result?from=新宿&to=駒ヶ根駅&type=1"
     ],
     "busScheduleLinks": [
-      "https://www.chuo-alps.com/access/bus/"
+      "https://chuo-alps.com/timetable/"
     ],
     "car": {
       "parking": "菅の台バスセンター駐車場（約300台・800円）",
@@ -1923,10 +1896,10 @@
       "validTo": null,
       "seasonYear": 2026,
       "reservation": null,
-      "note": "バス・ロープウェイは通年運行（夏ダイヤ2026/4/10〜11/30、それ以外は冬ダイヤ。点検運休あり）"
+      "note": "バス・ロープウェイは通年運行（2026年度は夏ダイヤ4/10〜11/30、ほかは冬ダイヤ。2026/12/1〜12/6・2027/1/27〜2/4はロープウェイ点検運休）"
     },
     "sourceUrl": "https://www.chuo-alps.com/fare/",
-    "lastVerified": "2026-10-08",
+    "lastVerified": "2026-11-19",
     "needsVerification": false
   },
   "happo": {

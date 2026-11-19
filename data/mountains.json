@@ -609,7 +609,21 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "閉山中",
+          "from": "09-11",
+          "to": "07-09",
+          "text": "富士山の登山道は夏の開山期間（静岡県側の富士宮・須走ルートは2026年は7月10日〜9月10日）のほかは閉鎖です",
+          "sources": [
+            {
+              "label": "静岡県 富士山の登山期間",
+              "url": "https://www.pref.shizuoka.jp/machizukuri/doro/fujisandoro/1029179.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "id": "yoshida",
@@ -635,7 +649,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "閉山中",
+          "from": "09-11",
+          "to": "06-30",
+          "text": "富士山の吉田ルートは夏の開山期間（2026年は7月1日〜9月10日）のほかは閉鎖です",
+          "sources": [
+            {
+              "label": "山梨県 富士登山",
+              "url": "https://www.pref.yamanashi.jp/fujisan/annzenn/documents/r8fujitozan.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "id": "subashiri",
@@ -660,7 +688,21 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "閉山中",
+          "from": "09-11",
+          "to": "07-09",
+          "text": "富士山の登山道は夏の開山期間（静岡県側の富士宮・須走ルートは2026年は7月10日〜9月10日）のほかは閉鎖です",
+          "sources": [
+            {
+              "label": "静岡県 富士山の登山期間",
+              "url": "https://www.pref.shizuoka.jp/machizukuri/doro/fujisandoro/1029179.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 130,
@@ -714,7 +756,7 @@
     "metaTitle": "富士山 登山の難易度は中級｜山小屋泊・歩行9時間2分・標高差1,389m｜河口湖駅からバス【百名山】｜Yamatch",
     "metaDescription": "富士山（標高3,776m・静岡県）の難易度は中級（体力のある中級者向け）。代表コース（富士宮口五合目〜富士宮ルート〜剣ヶ峰（往復））は9時間2分・8.1km・標高差1389m。新宿から電車とバスで約2時間50分（河口湖駅からバス55分）。山小屋泊がおすすめです。日本最高峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "富士山 登山の難易度は中級｜山小屋泊・歩行9時間2分・標高差1,389m｜河口湖駅からバス【百名山】｜Yamatch",
     "ogDescription": "富士山（標高3,776m・静岡県）の難易度は中級（体力のある中級者向け）。代表コース（富士宮口五合目〜富士宮ルート〜剣ヶ峰（往復））は9時間2分・8.1km・標高差1389m。新宿から電車とバスで約2時間50分（河口湖駅からバス55分）。山小屋泊がおすすめです。日本最高峰。駐車場・装備・天気も掲載。",
@@ -2709,7 +2751,25 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-14",
+          "to": "04-17",
+          "text": "上日川峠へのバス（栄和交通）は2026年は12月13日まで。県道も冬期閉鎖で（甲州市：例年、塩山側の県道201号は12月中旬〜4月中旬、大和側の県道218号は1月上旬〜4月中旬）、冬は上日川峠へ行けません。期間は2026年のバスの運行から数えた目安です",
+          "sources": [
+            {
+              "label": "栄和交通",
+              "url": "https://eiwa-kotsu.jp/root.html"
+            },
+            {
+              "label": "甲州市（県道の冬期閉鎖）",
+              "url": "https://www.city.koshu.yamanashi.jp/faq/2012033100570/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "id": "saketsuishi-route",
@@ -2744,7 +2804,25 @@
         "sourceUrl": "https://yamap.com/model-courses/4139",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-14",
+          "to": "04-17",
+          "text": "上日川峠へのバス（栄和交通）は2026年は12月13日まで。県道も冬期閉鎖で（甲州市：例年、塩山側の県道201号は12月中旬〜4月中旬、大和側の県道218号は1月上旬〜4月中旬）、冬は上日川峠へ行けません。期間は2026年のバスの運行から数えた目安です",
+          "sources": [
+            {
+              "label": "栄和交通",
+              "url": "https://eiwa-kotsu.jp/root.html"
+            },
+            {
+              "label": "甲州市（県道の冬期閉鎖）",
+              "url": "https://www.city.koshu.yamanashi.jp/faq/2012033100570/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 160,
@@ -2801,7 +2879,7 @@
     "metaTitle": "大菩薩嶺 登山の難易度は初〜中級｜日帰り4時間20分・標高差554m｜甲斐大和駅からバス41分【百名山】｜Yamatch",
     "metaDescription": "大菩薩嶺（標高2,057m・山梨県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（上日川峠〜大菩薩嶺〜大菩薩峠（周回））は4時間20分・7.2km・標高差554m。新宿から電車とバスで約2時間4分（甲斐大和駅からバス41分）。日帰りできます。草原状の稜線から富士山や南アルプスの展望が開ける。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-15",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "大菩薩嶺 登山の難易度は初〜中級｜日帰り4時間20分・標高差554m｜甲斐大和駅からバス41分【百名山】｜Yamatch",
     "ogDescription": "大菩薩嶺（標高2,057m・山梨県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（上日川峠〜大菩薩嶺〜大菩薩峠（周回））は4時間20分・7.2km・標高差554m。新宿から電車とバスで約2時間4分（甲斐大和駅からバス41分）。日帰りできます。草原状の稜線から富士山や南アルプスの展望が開ける。駐車場・装備・天気も掲載。",
@@ -4318,6 +4396,20 @@
           "source": "YAMAP「瑞牆山」の紹介文（山と溪谷社）",
           "sourceUrl": "https://yamap.com/mountains/177",
           "lastVerified": "2026-11-11"
+        },
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "11-24",
+          "to": "04-03",
+          "text": "韮崎駅〜みずがき山荘の路線バス（韮崎瑞牆線）は2026年は2026-04-04〜2026-11-23（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "韮崎駅〜みずがき山荘の路線バス（韮崎瑞牆線）",
+              "url": "http://cus4.kyohoku.jp/routebus/kayagatakemizugakidenen-bus/schedule-mizugakiline/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       },
       {
@@ -4367,6 +4459,20 @@
           "source": "YAMAP「瑞牆山」の紹介文（山と溪谷社）",
           "sourceUrl": "https://yamap.com/mountains/177",
           "lastVerified": "2026-11-11"
+        },
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "11-24",
+          "to": "04-03",
+          "text": "韮崎駅〜みずがき山荘の路線バス（韮崎瑞牆線）は2026年は2026-04-04〜2026-11-23（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "韮崎駅〜みずがき山荘の路線バス（韮崎瑞牆線）",
+              "url": "http://cus4.kyohoku.jp/routebus/kayagatakemizugakidenen-bus/schedule-mizugakiline/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       }
     ],
@@ -4417,7 +4523,7 @@
     "metaTitle": "瑞牆山 登山の難易度は中級｜日帰り5時間37分・標高差928m｜韮崎駅からバス1時間20分【百名山】｜Yamatch",
     "metaDescription": "瑞牆山（標高2,230m・山梨県）の難易度は中級（体力のある中級者向け）。代表コース（瑞牆山荘〜富士見平小屋〜瑞牆山（往復））は5時間37分・5.4km・標高差928m。新宿から電車とバスで約2時間56分（韮崎駅からバス1時間20分）。日帰りできます。奇岩・巨石が林立する個性的な山容。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "瑞牆山 登山の難易度は中級｜日帰り5時間37分・標高差928m｜韮崎駅からバス1時間20分【百名山】｜Yamatch",
     "ogDescription": "瑞牆山（標高2,230m・山梨県）の難易度は中級（体力のある中級者向け）。代表コース（瑞牆山荘〜富士見平小屋〜瑞牆山（往復））は5時間37分・5.4km・標高差928m。新宿から電車とバスで約2時間56分（韮崎駅からバス1時間20分）。日帰りできます。奇岩・巨石が林立する個性的な山容。駐車場・装備・天気も掲載。",
@@ -7059,7 +7165,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-04",
+          "to": "06-25",
+          "text": "広河原へは一般車が入れず（マイカー規制）、南アルプス登山バスは2026年は6月26日〜11月3日でした。期間外は広河原へ行けません",
+          "sources": [
+            {
+              "label": "南アルプス観光 登山バス",
+              "url": "https://minami-alpskankou.jp/?page_id=6542"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "広河原〜北岳〜北岳山荘〜間ノ岳（周回・1泊2日）",
@@ -7082,7 +7202,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-04",
+          "to": "06-25",
+          "text": "広河原へは一般車が入れず（マイカー規制）、南アルプス登山バスは2026年は6月26日〜11月3日でした。期間外は広河原へ行けません",
+          "sources": [
+            {
+              "label": "南アルプス観光 登山バス",
+              "url": "https://minami-alpskankou.jp/?page_id=6542"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "白峰三山縦走：広河原〜北岳〜間ノ岳〜農鳥岳〜奈良田（2泊3日）",
@@ -7127,7 +7261,21 @@
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A5%88%E8%89%AF%E7%94%B0%E6%B8%A9%E6%B3%89/%E5%B1%B1%E6%A2%A8%E7%9C%8C%E6%97%A9%E5%B7%9D%E7%94%BA&to=%E8%BA%AB%E5%BB%B6&type=1&hb=1&lb=1",
           "timetableUrl": "https://www.town.hayakawa.yamanashi.jp/people/taffic.html"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-04",
+          "to": "06-25",
+          "text": "広河原へは一般車が入れず（マイカー規制）、南アルプス登山バスは2026年は6月26日〜11月3日でした。期間外は広河原へ行けません",
+          "sources": [
+            {
+              "label": "南アルプス観光 登山バス",
+              "url": "https://minami-alpskankou.jp/?page_id=6542"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 140,
@@ -7178,7 +7326,7 @@
     "metaTitle": "北岳 登山の難易度は上級｜山小屋泊・歩行11時間40分・標高差1,771m｜甲府駅からバス【百名山】｜Yamatch",
     "metaDescription": "北岳（標高3,193m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（広河原〜白根御池小屋〜肩の小屋〜北岳（往復））は11時間40分・10.3km・標高差1771m。新宿から電車とバスで約3時間35分（甲府駅からバス1時間50分）。山小屋泊がおすすめです。日本第2位の高峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-10",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "北岳 登山の難易度は上級｜山小屋泊・歩行11時間40分・標高差1,771m｜甲府駅からバス【百名山】｜Yamatch",
     "ogDescription": "北岳（標高3,193m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（広河原〜白根御池小屋〜肩の小屋〜北岳（往復））は11時間40分・10.3km・標高差1771m。新宿から電車とバスで約3時間35分（甲府駅からバス1時間50分）。山小屋泊がおすすめです。日本第2位の高峰。駐車場・装備・天気も掲載。",
@@ -7650,6 +7798,20 @@
           "source": "YAMAP「赤岳」の紹介文（山と溪谷社）",
           "sourceUrl": "https://yamap.com/mountains/101",
           "lastVerified": "2026-11-11"
+        },
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "10-26",
+          "to": "05-01",
+          "text": "美濃戸口へのアクセスは2026年は2026-05-02〜2026-10-25（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "美濃戸口へのアクセス",
+              "url": "https://www.alpico.co.jp/traffic/local/suwa/minotoguchi/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       },
       {
@@ -7734,7 +7896,7 @@
     "metaTitle": "八ヶ岳（赤岳） 登山の難易度は中〜上級｜前泊推奨・歩行8時間43分・標高差1,256m｜茅野駅からバス【百名山】｜Yamatch",
     "metaDescription": "八ヶ岳（赤岳）（標高2,899m・山梨県・長野県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（美濃戸〜行者小屋〜地蔵尾根〜赤岳（周回））は8時間43分・10.8km・標高差1256m。新宿から電車とバスで約2時間44分（茅野駅からバス38分）。山小屋泊がおすすめです。八ヶ岳連峰の最高峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "八ヶ岳（赤岳） 登山の難易度は中〜上級｜前泊推奨・歩行8時間43分・標高差1,256m｜茅野駅からバス【百名山】｜Yamatch",
     "ogDescription": "八ヶ岳（赤岳）（標高2,899m・山梨県・長野県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（美濃戸〜行者小屋〜地蔵尾根〜赤岳（周回））は8時間43分・10.8km・標高差1256m。新宿から電車とバスで約2時間44分（茅野駅からバス38分）。山小屋泊がおすすめです。八ヶ岳連峰の最高峰。駐車場・装備・天気も掲載。",
@@ -8750,7 +8912,21 @@
         "lastVerified": "2026-11-09",
         "coeff": 12,
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "10-26",
+          "to": "05-01",
+          "text": "上諏訪駅〜霧ヶ峰の路線バス（霧ヶ峰線）は2026年は2026-05-02〜2026-10-25（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "上諏訪駅〜霧ヶ峰の路線バス（霧ヶ峰線）",
+              "url": "https://www.kirigamine-vc.jp/information/6585"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 175,
@@ -8808,7 +8984,7 @@
     "metaTitle": "霧ヶ峰 登山の難易度は初級｜日帰り1時間30分・標高差177m｜茅野駅からバス1時間32分【百名山】｜Yamatch",
     "metaDescription": "霧ヶ峰（標高1,925m・長野県南部）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（車山肩〜車山〜車山乗越〜コロボックルヒュッテ（周回））は1時間30分・3.7km・標高差177m。新宿から電車とバスで約3時間38分（茅野駅からバス1時間32分）。日帰りできます。高原のなだらかな地形が広がる。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "霧ヶ峰 登山の難易度は初級｜日帰り1時間30分・標高差177m｜茅野駅からバス1時間32分【百名山】｜Yamatch",
     "ogDescription": "霧ヶ峰（標高1,925m・長野県南部）の難易度は初級（登山が初めての人でも歩きやすい）。代表コース（車山肩〜車山〜車山乗越〜コロボックルヒュッテ（周回））は1時間30分・3.7km・標高差177m。新宿から電車とバスで約3時間38分（茅野駅からバス1時間32分）。日帰りできます。高原のなだらかな地形が広がる。駐車場・装備・天気も掲載。",
@@ -10481,7 +10657,25 @@
         "sourceUrl": "https://yamap.com/model-courses/94691",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-14",
+          "to": "03-26",
+          "text": "栃木県が県道那須高原線（大丸温泉〜峠の茶屋）を冬期通行止めにする予定（12/14 11時〜3/26 11時）で、峠の茶屋へ行けません。ロープウェイ行きのバスも11月30日までで、冬は大丸温泉で折り返します",
+          "sources": [
+            {
+              "label": "栃木県 通行規制",
+              "url": "https://www.pref.tochigi.lg.jp/h57/system/desaki/desaki/tusukoukisei/zyuutai7.html"
+            },
+            {
+              "label": "関東自動車",
+              "url": "https://www.kantobus.co.jp/topics/topics.php?id=1416"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "峠の茶屋〜朝日岳〜茶臼岳（周回）",
@@ -10496,7 +10690,25 @@
         "sourceUrl": "https://yamap.com/model-courses/98343",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-14",
+          "to": "03-26",
+          "text": "栃木県が県道那須高原線（大丸温泉〜峠の茶屋）を冬期通行止めにする予定（12/14 11時〜3/26 11時）で、峠の茶屋へ行けません。ロープウェイ行きのバスも11月30日までで、冬は大丸温泉で折り返します",
+          "sources": [
+            {
+              "label": "栃木県 通行規制",
+              "url": "https://www.pref.tochigi.lg.jp/h57/system/desaki/desaki/tusukoukisei/zyuutai7.html"
+            },
+            {
+              "label": "関東自動車",
+              "url": "https://www.kantobus.co.jp/topics/topics.php?id=1416"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "峠の茶屋〜茶臼岳〜朝日岳〜三本槍岳（往復）",
@@ -10511,7 +10723,25 @@
         "sourceUrl": "https://yamap.com/model-courses/94920",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-14",
+          "to": "03-26",
+          "text": "栃木県が県道那須高原線（大丸温泉〜峠の茶屋）を冬期通行止めにする予定（12/14 11時〜3/26 11時）で、峠の茶屋へ行けません。ロープウェイ行きのバスも11月30日までで、冬は大丸温泉で折り返します",
+          "sources": [
+            {
+              "label": "栃木県 通行規制",
+              "url": "https://www.pref.tochigi.lg.jp/h57/system/desaki/desaki/tusukoukisei/zyuutai7.html"
+            },
+            {
+              "label": "関東自動車",
+              "url": "https://www.kantobus.co.jp/topics/topics.php?id=1416"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 215,
@@ -10566,7 +10796,7 @@
     "metaTitle": "那須岳 登山の難易度は中級｜日帰り3時間41分・標高差551m｜那須塩原駅からバス【百名山】｜Yamatch",
     "metaDescription": "那須岳（標高1,915m・栃木県）の難易度は中級（体力のある中級者向け）。代表コース（峠の茶屋〜茶臼岳〜牛ヶ首（周回））は3時間41分・6.6km・標高差551m。新宿から電車とバスで約3時間4分（那須塩原駅からバス）。日帰りできます。栃木県の名峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "那須岳 登山の難易度は中級｜日帰り3時間41分・標高差551m｜那須塩原駅からバス【百名山】｜Yamatch",
     "ogDescription": "那須岳（標高1,915m・栃木県）の難易度は中級（体力のある中級者向け）。代表コース（峠の茶屋〜茶臼岳〜牛ヶ首（周回））は3時間41分・6.6km・標高差551m。新宿から電車とバスで約3時間4分（那須塩原駅からバス）。日帰りできます。栃木県の名峰。駐車場・装備・天気も掲載。",
@@ -11978,7 +12208,22 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-04",
+          "to": "05-31",
+          "text": "北沢峠へは南アルプス林道を一般車が通れず、林道バスは2026年は6月1日〜11月3日でした。期間外は北沢峠へ行けません",
+          "sources": [
+            {
+              "label": "伊那市 南アルプス林道バス",
+              "url": "https://www.inacity.jp/kankojoho/sangaku_alps/minamialps/minamialps_jikokuhyo.html"
+            }
+          ],
+          "lastVerified": "2026-11-19",
+          "alt": "kuroto-roundtrip"
+        }
       },
       {
         "id": "kuroto-roundtrip",
@@ -12064,7 +12309,7 @@
     "metaTitle": "甲斐駒ヶ岳 登山の難易度は上級｜前泊推奨・歩行8時間32分・標高差1,176m｜茅野駅からバス【百名山】｜Yamatch",
     "metaDescription": "甲斐駒ヶ岳（標高2,967m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（北沢峠〜双児山〜駒津峰〜甲斐駒ヶ岳〜仙水峠（周回））は8時間32分・8.7km・標高差1176m。新宿から電車とバスで約4時間6分（茅野駅からバス）。山小屋泊がおすすめです。白い花崗岩の山頂が印象的。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "甲斐駒ヶ岳 登山の難易度は上級｜前泊推奨・歩行8時間32分・標高差1,176m｜茅野駅からバス【百名山】｜Yamatch",
     "ogDescription": "甲斐駒ヶ岳（標高2,967m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（北沢峠〜双児山〜駒津峰〜甲斐駒ヶ岳〜仙水峠（周回））は8時間32分・8.7km・標高差1176m。新宿から電車とバスで約4時間6分（茅野駅からバス）。山小屋泊がおすすめです。白い花崗岩の山頂が印象的。駐車場・装備・天気も掲載。",
@@ -12601,7 +12846,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-04",
+          "to": "05-31",
+          "text": "北沢峠へは南アルプス林道を一般車が通れず、林道バスは2026年は6月1日〜11月3日でした。期間外は北沢峠へ行けません",
+          "sources": [
+            {
+              "label": "伊那市 南アルプス林道バス",
+              "url": "https://www.inacity.jp/kankojoho/sangaku_alps/minamialps/minamialps_jikokuhyo.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "id": "kashiwagi-roundtrip",
@@ -12672,7 +12931,7 @@
     "metaTitle": "仙丈ヶ岳 登山の難易度は中〜上級｜前泊推奨・歩行7時間35分・標高差1,124m｜茅野駅からバス【百名山】｜Yamatch",
     "metaDescription": "仙丈ヶ岳（標高3,033m・山梨県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（北沢峠〜小仙丈ヶ岳〜仙丈ヶ岳〜藪沢（周回））は7時間35分・8.9km・標高差1124m。新宿から電車とバスで約4時間6分（茅野駅からバス）。山小屋泊がおすすめです。南アルプスの女王。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "仙丈ヶ岳 登山の難易度は中〜上級｜前泊推奨・歩行7時間35分・標高差1,124m｜茅野駅からバス【百名山】｜Yamatch",
     "ogDescription": "仙丈ヶ岳（標高3,033m・山梨県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（北沢峠〜小仙丈ヶ岳〜仙丈ヶ岳〜藪沢（周回））は7時間35分・8.9km・標高差1124m。新宿から電車とバスで約4時間6分（茅野駅からバス）。山小屋泊がおすすめです。南アルプスの女王。駐車場・装備・天気も掲載。",
@@ -13246,7 +13505,21 @@
           "note": "大雪渓"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-27",
+          "to": "04-23",
+          "text": "長野県が猿倉への県道（白馬岳線の猿倉〜二股）を冬期通行止めにする予定（11/27 10時〜4/23 10時）で、猿倉へ行けません",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "id": "renge-roundtrip",
@@ -13320,7 +13593,7 @@
     "metaTitle": "白馬岳登山は日帰りできる？山小屋泊が基本（歩行14時間7分）・難易度中〜上級｜白馬駅からバス【百名山】｜Yamatch",
     "metaDescription": "白馬岳（標高2,932m・長野県北部）は山小屋泊が基本です（歩行14時間7分・難易度中〜上級）。代表コース（栂池自然園〜白馬大池〜小蓮華山〜白馬岳（往復・1泊2日））は14時間7分・18.6km・標高差1717m。新宿から電車とバスで約4時間7分（白馬駅からバス27分）。北アルプス屈指の高山植物の宝庫。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "白馬岳登山は日帰りできる？山小屋泊が基本（歩行14時間7分）・難易度中〜上級｜白馬駅からバス【百名山】｜Yamatch",
     "ogDescription": "白馬岳（標高2,932m・長野県北部）は山小屋泊が基本です（歩行14時間7分・難易度中〜上級）。代表コース（栂池自然園〜白馬大池〜小蓮華山〜白馬岳（往復・1泊2日））は14時間7分・18.6km・標高差1717m。新宿から電車とバスで約4時間7分（白馬駅からバス27分）。北アルプス屈指の高山植物の宝庫。駐車場・装備・天気も掲載。",
@@ -13830,7 +14103,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-01",
+          "to": "06-30",
+          "text": "畳平へは一般車が入れず（マイカー規制）、シャトルバスは2026年は7月1日〜10月31日でした。期間外は畳平へ行けません",
+          "sources": [
+            {
+              "label": "アルピコ交通 乗鞍線",
+              "url": "https://www.alpico.co.jp/traffic/local/kamikochi/echoline/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "id": "sanbondaki-roundtrip",
@@ -13847,7 +14134,21 @@
         "source": "YAMAPモデルコース（model-courses/33900）",
         "sourceUrl": "https://yamap.com/model-courses/33900",
         "lastVerified": "2026-10-24",
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-13",
+          "to": "04-09",
+          "text": "長野県が乗鞍岳線（三本滝〜国民休暇村）を冬期通行止めにする予定（11/13 18時〜4/9 11時）で、三本滝へ車で行けません（三本滝から上は10/31〜4/27）",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "id": "sanbondaki-traverse",
@@ -13864,7 +14165,21 @@
         "source": "YAMAPモデルコース（model-courses/22870）",
         "sourceUrl": "https://yamap.com/model-courses/22870",
         "lastVerified": "2026-10-24",
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-13",
+          "to": "04-09",
+          "text": "長野県が乗鞍岳線（三本滝〜国民休暇村）を冬期通行止めにする予定（11/13 18時〜4/9 11時）で、三本滝へ車で行けません（三本滝から上は10/31〜4/27）",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 230,
@@ -13920,7 +14235,7 @@
     "metaTitle": "乗鞍岳 登山の難易度は初〜中級｜日帰り2時間53分・標高差428m｜新島々駅からバス【百名山】｜Yamatch",
     "metaDescription": "乗鞍岳（標高3,026m・長野県北部）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（畳平〜肩ノ小屋〜剣ヶ峰（往復））は2時間53分・6km・標高差428m。新宿から電車とバスで約4時間53分（新島々駅からバス）。日帰りできます。バスで2700mの畳平まで行けるため、初心者でも3000m峰に登れる。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "乗鞍岳 登山の難易度は初〜中級｜日帰り2時間53分・標高差428m｜新島々駅からバス【百名山】｜Yamatch",
     "ogDescription": "乗鞍岳（標高3,026m・長野県北部）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（畳平〜肩ノ小屋〜剣ヶ峰（往復））は2時間53分・6km・標高差428m。新宿から電車とバスで約4時間53分（新島々駅からバス）。日帰りできます。バスで2700mの畳平まで行けるため、初心者でも3000m峰に登れる。駐車場・装備・天気も掲載。",
@@ -14502,7 +14817,21 @@
         "sourceUrl": "https://yamap.com/model-courses/36337",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-14",
+          "text": "立山黒部アルペンルートは2026年は4月15日〜11月30日の運行で、冬は室堂へ行けません",
+          "sources": [
+            {
+              "label": "立山黒部アルペンルート",
+              "url": "https://www.alpen-route.com/timetable/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "室堂〜雄山〜大汝山〜真砂岳〜別山（周回）",
@@ -14525,7 +14854,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-14",
+          "text": "立山黒部アルペンルートは2026年は4月15日〜11月30日の運行で、冬は室堂へ行けません",
+          "sources": [
+            {
+              "label": "立山黒部アルペンルート",
+              "url": "https://www.alpen-route.com/timetable/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 360,
@@ -14581,7 +14924,7 @@
     "metaTitle": "立山 登山の難易度は初〜中級｜前泊推奨・歩行6時間23分・標高差920m｜立山駅からバス50分【百名山】｜Yamatch",
     "metaDescription": "立山（標高3,015m・富山県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（室堂〜一ノ越〜雄山〜大汝山〜富士ノ折立（立山三山・周回））は6時間23分・8km・標高差920m。新宿から電車とバスで約4時間15分（立山駅からバス50分）。山小屋泊がおすすめです。富山県を代表する霊峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "立山 登山の難易度は初〜中級｜前泊推奨・歩行6時間23分・標高差920m｜立山駅からバス50分【百名山】｜Yamatch",
     "ogDescription": "立山（標高3,015m・富山県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（室堂〜一ノ越〜雄山〜大汝山〜富士ノ折立（立山三山・周回））は6時間23分・8km・標高差920m。新宿から電車とバスで約4時間15分（立山駅からバス50分）。山小屋泊がおすすめです。富山県を代表する霊峰。駐車場・装備・天気も掲載。",
@@ -15040,6 +15383,20 @@
           "source": "ヤマケイオンライン「剱岳」（山と溪谷社）",
           "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=496",
           "lastVerified": "2026-11-10"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-14",
+          "text": "立山黒部アルペンルートは2026年は4月15日〜11月30日の運行で、冬は室堂へ行けません",
+          "sources": [
+            {
+              "label": "立山黒部アルペンルート",
+              "url": "https://www.alpen-route.com/timetable/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       },
       {
@@ -15097,6 +15454,20 @@
           "source": "ヤマケイオンライン「剱岳」（山と溪谷社）",
           "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=496",
           "lastVerified": "2026-11-10"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-14",
+          "text": "立山黒部アルペンルートは2026年は4月15日〜11月30日の運行で、冬は室堂へ行けません",
+          "sources": [
+            {
+              "label": "立山黒部アルペンルート",
+              "url": "https://www.alpen-route.com/timetable/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       }
     ],
@@ -15150,7 +15521,7 @@
     "metaTitle": "剱岳 登山の難易度は上級｜山小屋泊・歩行13時間47分・標高差1,871m｜立山駅からバス【百名山】｜Yamatch",
     "metaDescription": "剱岳（標高2,999m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（室堂〜雷鳥沢〜剱沢〜前剱〜剱岳（往復・山小屋泊））は13時間47分・14.4km・標高差1871m。新宿から電車とバスで約4時間25分（立山駅からバス1時間）。山小屋泊がおすすめです。日本最難関の百名山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "剱岳 登山の難易度は上級｜山小屋泊・歩行13時間47分・標高差1,871m｜立山駅からバス【百名山】｜Yamatch",
     "ogDescription": "剱岳（標高2,999m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（室堂〜雷鳥沢〜剱沢〜前剱〜剱岳（往復・山小屋泊））は13時間47分・14.4km・標高差1871m。新宿から電車とバスで約4時間25分（立山駅からバス1時間）。山小屋泊がおすすめです。日本最難関の百名山。駐車場・装備・天気も掲載。",
@@ -15616,6 +15987,25 @@
           "source": "日本アルプス登山ガイド「槍ヶ岳 槍沢コース」",
           "sourceUrl": "https://www.japanesealps.net/north/yarigatake/yarisawa/",
           "lastVerified": "2026-11-10"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-16",
+          "to": "04-16",
+          "text": "上高地へは一年じゅう一般車が入れず（マイカー規制）、バスは2026年は4月17日〜11月15日でした。期間外は上高地へバス・車で行けません",
+          "sources": [
+            {
+              "label": "アルピコ交通 上高地線",
+              "url": "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/"
+            },
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19",
+          "alt": "hidazawa-roundtrip"
         }
       },
       {
@@ -15678,6 +16068,20 @@
           "source": "日本アルプス登山ガイド「槍ヶ岳 槍沢コース」",
           "sourceUrl": "https://www.japanesealps.net/north/yarigatake/yarisawa/",
           "lastVerified": "2026-11-10"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-23",
+          "text": "長野県が中房温泉への県道（槍ヶ岳矢村線の中房温泉〜宮城ゲート）を冬期通行止めにする予定（12/1 15時〜4/23 12時）で、歩き始めの中房温泉へ行けません",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       }
     ],
@@ -15732,7 +16136,7 @@
     "metaTitle": "槍ヶ岳 登山の難易度は上級｜山小屋泊・歩行18時間35分・標高差2,213m｜新島々駅からバス【百名山】｜Yamatch",
     "metaDescription": "槍ヶ岳（標高3,180m・長野県北部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（上高地〜槍沢〜槍ヶ岳（往復・2泊3日））は18時間35分・38.4km・標高差2213m。新宿から電車とバスで約4時間5分（新島々駅からバス1時間5分）。山小屋泊がおすすめです。北アルプスの象徴。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "槍ヶ岳 登山の難易度は上級｜山小屋泊・歩行18時間35分・標高差2,213m｜新島々駅からバス【百名山】｜Yamatch",
     "ogDescription": "槍ヶ岳（標高3,180m・長野県北部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（上高地〜槍沢〜槍ヶ岳（往復・2泊3日））は18時間35分・38.4km・標高差2213m。新宿から電車とバスで約4時間5分（新島々駅からバス1時間5分）。山小屋泊がおすすめです。北アルプスの象徴。駐車場・装備・天気も掲載。",
@@ -16301,6 +16705,24 @@
           "source": "The Japan Alps「穂高岳 難所詳細ルートガイド（涸沢ルート）」",
           "sourceUrl": "https://thejapanalps.com/wp-content/uploads/2021/12/okuhotaka-dake.pdf",
           "lastVerified": "2026-11-10"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-16",
+          "to": "04-16",
+          "text": "上高地へは一年じゅう一般車が入れず（マイカー規制）、バスは2026年は4月17日〜11月15日でした。期間外は上高地へバス・車で行けません",
+          "sources": [
+            {
+              "label": "アルピコ交通 上高地線",
+              "url": "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/"
+            },
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       },
       {
@@ -16337,6 +16759,24 @@
           "source": "The Japan Alps「穂高岳 難所詳細ルートガイド（涸沢ルート）」",
           "sourceUrl": "https://thejapanalps.com/wp-content/uploads/2021/12/okuhotaka-dake.pdf",
           "lastVerified": "2026-11-10"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-16",
+          "to": "04-16",
+          "text": "上高地へは一年じゅう一般車が入れず（マイカー規制）、バスは2026年は4月17日〜11月15日でした。期間外は上高地へバス・車で行けません",
+          "sources": [
+            {
+              "label": "アルピコ交通 上高地線",
+              "url": "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/"
+            },
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       },
       {
@@ -16427,7 +16867,7 @@
     "metaTitle": "奥穂高岳 登山の難易度は上級｜山小屋泊・歩行18時間16分・標高差2,231m｜新島々駅からバス【百名山】｜Yamatch",
     "metaDescription": "奥穂高岳（標高3,190m・長野県北部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（上高地〜涸沢〜穂高岳山荘〜奥穂高岳（往復・2泊3日））は18時間16分・35.2km・標高差2231m。新宿から電車とバスで約4時間5分（新島々駅からバス1時間5分）。山小屋泊がおすすめです。日本第3位の高峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "奥穂高岳 登山の難易度は上級｜山小屋泊・歩行18時間16分・標高差2,231m｜新島々駅からバス【百名山】｜Yamatch",
     "ogDescription": "奥穂高岳（標高3,190m・長野県北部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（上高地〜涸沢〜穂高岳山荘〜奥穂高岳（往復・2泊3日））は18時間16分・35.2km・標高差2231m。新宿から電車とバスで約4時間5分（新島々駅からバス1時間5分）。山小屋泊がおすすめです。日本第3位の高峰。駐車場・装備・天気も掲載。",
@@ -18664,7 +19104,21 @@
         "sourceUrl": "https://yamap.com/model-courses/30367",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-05",
+          "to": "04-16",
+          "text": "群馬県が鳩待峠への県道（尾瀬ヶ原土出線の津奈木橋〜鳩待峠）を冬期閉鎖にする予定（11/5 14時〜4/16 10時）で、鳩待峠へ行けません。戸倉からのバスも11月3日までです",
+          "sources": [
+            {
+              "label": "群馬県 冬期閉鎖",
+              "url": "https://www.pref.gunma.jp/06/h2810053.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "id": "yamanohana-traverse",
@@ -18684,7 +19138,21 @@
         "note": "山ノ鼻〜至仏山の登山道は登り専用（下りには使えない）",
         "noteSourceUrl": "https://oze-fnd.or.jp/archives/206052/",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-05",
+          "to": "04-16",
+          "text": "群馬県が鳩待峠への県道（尾瀬ヶ原土出線の津奈木橋〜鳩待峠）を冬期閉鎖にする予定（11/5 14時〜4/16 10時）で、鳩待峠へ行けません。戸倉からのバスも11月3日までです",
+          "sources": [
+            {
+              "label": "群馬県 冬期閉鎖",
+              "url": "https://www.pref.gunma.jp/06/h2810053.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 195,
@@ -18734,7 +19202,7 @@
     "metaTitle": "至仏山 登山の難易度は中級｜日帰り6時間20分・標高差728m｜上毛高原駅からバス【百名山】｜Yamatch",
     "metaDescription": "至仏山（標高2,228m・群馬県）の難易度は中級（体力のある中級者向け）。代表コース（鳩待峠〜小至仏山〜至仏山（往復））は6時間20分・9.3km・標高差728m。新宿から電車とバスで約3時間28分（上毛高原駅からバス）。日帰りできます。尾瀬を代表する山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "至仏山 登山の難易度は中級｜日帰り6時間20分・標高差728m｜上毛高原駅からバス【百名山】｜Yamatch",
     "ogDescription": "至仏山（標高2,228m・群馬県）の難易度は中級（体力のある中級者向け）。代表コース（鳩待峠〜小至仏山〜至仏山（往復））は6時間20分・9.3km・標高差728m。新宿から電車とバスで約3時間28分（上毛高原駅からバス）。日帰りできます。尾瀬を代表する山。駐車場・装備・天気も掲載。",
@@ -19260,7 +19728,21 @@
         "sourceUrl": "https://yamap.com/model-courses/94676",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "11-01",
+          "to": "04-30",
+          "text": "会津高原尾瀬口駅〜檜枝岐のバス（滝沢登山口まで）は2026年は2026-05-01〜2026-10-31（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "会津高原尾瀬口駅〜檜枝岐のバス（滝沢登山口まで）",
+              "url": "https://www.aizubus.com/rosen"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "滝沢登山口〜会津駒ヶ岳〜中門岳（往復）",
@@ -19275,7 +19757,21 @@
         "sourceUrl": "https://yamap.com/model-courses/191",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "11-01",
+          "to": "04-30",
+          "text": "会津高原尾瀬口駅〜檜枝岐のバス（滝沢登山口まで）は2026年は2026-05-01〜2026-10-31（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "会津高原尾瀬口駅〜檜枝岐のバス（滝沢登山口まで）",
+              "url": "https://www.aizubus.com/rosen"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "滝沢登山口〜会津駒ヶ岳〜中門岳〜大津岐峠〜キリンテ（縦走）",
@@ -19310,7 +19806,21 @@
           "note": "季節運行（アクセス欄と同じ路線。時刻は会津バスの時刻表で）",
           "timetableUrl": "https://www.aizubus.com/rosen"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "11-01",
+          "to": "04-30",
+          "text": "会津高原尾瀬口駅〜檜枝岐のバス（滝沢登山口まで）は2026年は2026-05-01〜2026-10-31（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "会津高原尾瀬口駅〜檜枝岐のバス（滝沢登山口まで）",
+              "url": "https://www.aizubus.com/rosen"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 280,
@@ -19359,7 +19869,7 @@
     "metaTitle": "会津駒ヶ岳 登山の難易度は中〜上級｜前泊推奨・歩行5時間54分・標高差1,086m｜会津田島駅からバス【百名山】｜Yamatch",
     "metaDescription": "会津駒ヶ岳（標高2,133m・福島県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（滝沢登山口〜駒ノ大池〜会津駒ヶ岳（往復））は5時間54分・8.7km・標高差1086m。新宿から電車とバスで約5時間20分（会津田島駅からバス）。山小屋泊がおすすめです。湿原と池塘が広がる稜線が美しい。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "会津駒ヶ岳 登山の難易度は中〜上級｜前泊推奨・歩行5時間54分・標高差1,086m｜会津田島駅からバス【百名山】｜Yamatch",
     "ogDescription": "会津駒ヶ岳（標高2,133m・福島県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（滝沢登山口〜駒ノ大池〜会津駒ヶ岳（往復））は5時間54分・8.7km・標高差1086m。新宿から電車とバスで約5時間20分（会津田島駅からバス）。山小屋泊がおすすめです。湿原と池塘が広がる稜線が美しい。駐車場・装備・天気も掲載。",
@@ -20264,7 +20774,19 @@
         "sourceUrl": "https://yamap.com/model-courses/190",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "text": "福島県が磐梯山ゴールドラインを11月13日17時から冬期通行止めにしていて、八方台へ行けません。解除は2027年4月下旬ごろの予定です",
+          "sources": [
+            {
+              "label": "福島県",
+              "url": "https://www.pref.fukushima.lg.jp/sec/41351a/sv-gl-ll-closed-for-winter.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "裏磐梯〜銅沼〜弘法清水〜磐梯山（周回）",
@@ -20350,7 +20872,7 @@
     "metaTitle": "磐梯山 登山の難易度は中級｜日帰り4時間50分・標高差722m｜猪苗代駅からタクシー【百名山】｜Yamatch",
     "metaDescription": "磐梯山（標高1,816m・福島県）の難易度は中級（体力のある中級者向け）。代表コース（八方台〜弘法清水〜磐梯山（往復））は4時間50分・7km・標高差722m。新宿から電車で約2時間29分（猪苗代駅からタクシー）。日帰りできます。福島のシンボル。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "磐梯山 登山の難易度は中級｜日帰り4時間50分・標高差722m｜猪苗代駅からタクシー【百名山】｜Yamatch",
     "ogDescription": "磐梯山（標高1,816m・福島県）の難易度は中級（体力のある中級者向け）。代表コース（八方台〜弘法清水〜磐梯山（往復））は4時間50分・7km・標高差722m。新宿から電車で約2時間29分（猪苗代駅からタクシー）。日帰りできます。福島のシンボル。駐車場・装備・天気も掲載。",
@@ -20774,7 +21296,21 @@
         "sourceUrl": "https://yamap.com/model-courses/55305",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "10-26",
+          "to": "04-30",
+          "text": "冬は国道352号（七入橋〜御池）が冬期規制になり、御池へ行けません（前季は2025年11月4日〜2026年4月24日。今冬の期間は未発表。福島県）。御池へのバスは2026年は10月25日まででした。期間はバスの運行から数えた目安です",
+          "sources": [
+            {
+              "label": "福島県 山口土木事務所",
+              "url": "https://www.pref.fukushima.lg.jp/sec/41361a/road.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "id": "miike-numayama",
@@ -20821,7 +21357,21 @@
           "note": "季節運行（運行期間・時刻は会津バスの時刻表で）",
           "timetableUrl": "https://www.aizubus.com/rosen"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "10-26",
+          "to": "04-30",
+          "text": "冬は国道352号（七入橋〜御池）が冬期規制になり、御池へ行けません（前季は2025年11月4日〜2026年4月24日。今冬の期間は未発表。福島県）。御池へのバスは2026年は10月25日まででした。期間はバスの運行から数えた目安です",
+          "sources": [
+            {
+              "label": "福島県 山口土木事務所",
+              "url": "https://www.pref.fukushima.lg.jp/sec/41361a/road.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "id": "miharashi-loop",
@@ -20839,7 +21389,21 @@
         "sourceUrl": "https://yamap.com/model-courses/21243",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "10-26",
+          "to": "04-30",
+          "text": "冬は国道352号（七入橋〜御池）が冬期規制になり、御池へ行けません（前季は2025年11月4日〜2026年4月24日。今冬の期間は未発表。福島県）。御池へのバスは2026年は10月25日まででした。期間はバスの運行から数えた目安です",
+          "sources": [
+            {
+              "label": "福島県 山口土木事務所",
+              "url": "https://www.pref.fukushima.lg.jp/sec/41361a/road.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 295,
@@ -20893,7 +21457,7 @@
     "metaTitle": "燧ヶ岳 登山の難易度は中〜上級｜前泊推奨・歩行7時間36分・標高差1,024m｜会津田島駅からバス【百名山】｜Yamatch",
     "metaDescription": "燧ヶ岳（標高2,356m・福島県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（御池〜広沢田代〜熊沢田代〜俎嵓〜柴安嵓（往復））は7時間36分・8.5km・標高差1024m。新宿から電車とバスで約5時間（会津田島駅からバス2時間）。山小屋泊がおすすめです。東北最高峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "燧ヶ岳 登山の難易度は中〜上級｜前泊推奨・歩行7時間36分・標高差1,024m｜会津田島駅からバス【百名山】｜Yamatch",
     "ogDescription": "燧ヶ岳（標高2,356m・福島県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（御池〜広沢田代〜熊沢田代〜俎嵓〜柴安嵓（往復））は7時間36分・8.5km・標高差1024m。新宿から電車とバスで約5時間（会津田島駅からバス2時間）。山小屋泊がおすすめです。東北最高峰。駐車場・装備・天気も掲載。",
@@ -24149,7 +24713,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "11-24",
+          "to": "04-03",
+          "text": "韮崎駅〜深田記念公園のバス（韮崎深田公園線）は2026年は2026-04-04〜2026-11-23（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "韮崎駅〜深田記念公園のバス（韮崎深田公園線）",
+              "url": "http://cus4.kyohoku.jp/routebus/kayagatakemizugakidenen-bus/schedule-fukadakoenline/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "深田記念公園〜茅ヶ岳〜金ヶ岳（往復）",
@@ -24164,7 +24742,21 @@
         "sourceUrl": "https://yamap.com/model-courses/94601",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "11-24",
+          "to": "04-03",
+          "text": "韮崎駅〜深田記念公園のバス（韮崎深田公園線）は2026年は2026-04-04〜2026-11-23（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "韮崎駅〜深田記念公園のバス（韮崎深田公園線）",
+              "url": "http://cus4.kyohoku.jp/routebus/kayagatakemizugakidenen-bus/schedule-fukadakoenline/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "深田記念公園〜茅ヶ岳〜金ヶ岳（周回）",
@@ -24179,7 +24771,21 @@
         "sourceUrl": "https://yamap.com/model-courses/22292",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "11-24",
+          "to": "04-03",
+          "text": "韮崎駅〜深田記念公園のバス（韮崎深田公園線）は2026年は2026-04-04〜2026-11-23（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "韮崎駅〜深田記念公園のバス（韮崎深田公園線）",
+              "url": "http://cus4.kyohoku.jp/routebus/kayagatakemizugakidenen-bus/schedule-fukadakoenline/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 125,
@@ -24221,7 +24827,7 @@
     "metaTitle": "茅ヶ岳 登山の難易度は初〜中級｜日帰り4時間28分・標高差763m｜韮崎駅からバス25分【二百名山】｜Yamatch",
     "metaDescription": "茅ヶ岳（標高1,704m・山梨県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（深田記念公園〜茅ヶ岳（往復））は4時間28分・6.4km・標高差763m。新宿から電車とバスで約2時間10分（韮崎駅からバス25分）。日帰りできます。「ニセ八ヶ岳」の異名を持つ。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-10",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "茅ヶ岳 登山の難易度は初〜中級｜日帰り4時間28分・標高差763m｜韮崎駅からバス25分【二百名山】｜Yamatch",
     "ogDescription": "茅ヶ岳（標高1,704m・山梨県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（深田記念公園〜茅ヶ岳（往復））は4時間28分・6.4km・標高差763m。新宿から電車とバスで約2時間10分（韮崎駅からバス25分）。日帰りできます。「ニセ八ヶ岳」の異名を持つ。駐車場・装備・天気も掲載。",
@@ -25107,7 +25713,19 @@
         "sourceUrl": "https://yamap.com/model-courses/19948",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "text": "矢立石登山口への林道（雨乞尾白川線）は冬期閉鎖です。今季の期間は未発表（前季は2025年12月10日〜2026年4月24日。山梨県）",
+          "sources": [
+            {
+              "label": "山梨県 林道の通行規制",
+              "url": "https://www.pref.yamanashi.jp/rindoujyouhou/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "竹宇駒ヶ岳神社〜矢立石〜日向山（往復）",
@@ -25137,7 +25755,19 @@
         "sourceUrl": "https://yamap.com/model-courses/24529",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "text": "矢立石登山口への林道（雨乞尾白川線）は冬期閉鎖です。今季の期間は未発表（前季は2025年12月10日〜2026年4月24日。山梨県）",
+          "sources": [
+            {
+              "label": "山梨県 林道の通行規制",
+              "url": "https://www.pref.yamanashi.jp/rindoujyouhou/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 150,
@@ -25179,7 +25809,7 @@
     "metaTitle": "日向山 登山の難易度は初〜中級｜日帰り3時間14分・標高差566m｜小淵沢駅からタクシー｜Yamatch",
     "metaDescription": "日向山（標高1,660m・山梨県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（矢立石登山口〜日向山（往復））は3時間14分・4.3km・標高差566m。新宿から電車で約3時間5分（小淵沢駅からタクシー）。日帰りできます。山頂が花崗岩の白砂のビーチ状になる奇景が人気。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-15",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "日向山 登山の難易度は初〜中級｜日帰り3時間14分・標高差566m｜小淵沢駅からタクシー｜Yamatch",
     "ogDescription": "日向山（標高1,660m・山梨県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（矢立石登山口〜日向山（往復））は3時間14分・4.3km・標高差566m。新宿から電車で約3時間5分（小淵沢駅からタクシー）。日帰りできます。山頂が花崗岩の白砂のビーチ状になる奇景が人気。駐車場・装備・天気も掲載。",
@@ -26522,7 +27152,21 @@
         "trailheadId": "ichinosawa",
         "accessId": "ichinosawa",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-27",
+          "to": "04-16",
+          "text": "一ノ沢への林道は冬は通行止めで、タクシーで入れるのは2026年は4月17日〜11月26日でした（安曇野市）。期間外は一ノ沢へ行けません",
+          "sources": [
+            {
+              "label": "安曇野市",
+              "url": "https://www.city.azumino.nagano.jp/soshiki/32/66871.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "id": "mitsumata-roundtrip",
@@ -26593,7 +27237,7 @@
     "metaTitle": "常念岳 登山の難易度は中〜上級｜山小屋泊・歩行9時間・標高差1,500m｜穂高駅からタクシー【百名山】｜Yamatch",
     "metaDescription": "常念岳（標高2,857m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（一ノ沢〜常念岳往復）は9時間・14.0km・標高差1500m。新宿から電車で約4時間（穂高駅からタクシー）。山小屋泊がおすすめです。北アルプスのパノラマ台。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "常念岳 登山の難易度は中〜上級｜山小屋泊・歩行9時間・標高差1,500m｜穂高駅からタクシー【百名山】｜Yamatch",
     "ogDescription": "常念岳（標高2,857m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（一ノ沢〜常念岳往復）は9時間・14.0km・標高差1500m。新宿から電車で約4時間（穂高駅からタクシー）。山小屋泊がおすすめです。北アルプスのパノラマ台。駐車場・装備・天気も掲載。",
@@ -27135,7 +27779,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-13",
+          "to": "04-09",
+          "text": "長野県が国道158号の旧道（中の湯の1号カーブ〜11号カーブ）を冬期通行止めにする予定（11/13 15時〜4/9 9時）で、新中の湯登山口へ行けません",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "上高地〜焼岳小屋〜中尾峠〜焼岳 北峰（往復）",
@@ -27150,7 +27808,25 @@
         "sourceUrl": "https://yamap.com/model-courses/17350",
         "lastVerified": "2026-10-24",
         "note": "活火山。噴火警報が出たときは登れない範囲があるので、登る前に気象庁の情報を確認",
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-16",
+          "to": "04-16",
+          "text": "上高地へは一年じゅう一般車が入れず（マイカー規制）、バスは2026年は4月17日〜11月15日でした。期間外は上高地へバス・車で行けません",
+          "sources": [
+            {
+              "label": "アルピコ交通 上高地線",
+              "url": "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/"
+            },
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "新中の湯〜焼岳〜中尾峠〜上高地（縦走）",
@@ -27189,7 +27865,21 @@
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E4%B8%8A%E9%AB%98%E5%9C%B0%E3%83%90%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB&to=%E6%96%B0%E5%B3%B6%E3%80%85&type=1&hb=1&lb=1",
           "timetableUrl": "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-13",
+          "to": "04-09",
+          "text": "長野県が国道158号の旧道（中の湯の1号カーブ〜11号カーブ）を冬期通行止めにする予定（11/13 15時〜4/9 9時）で、新中の湯登山口へ行けません",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 230,
@@ -27239,7 +27929,7 @@
     "metaTitle": "焼岳 登山の難易度は中〜上級｜日帰り5時間44分・標高差867m｜新島々駅からバス55分【百名山】｜Yamatch",
     "metaDescription": "焼岳（標高2,455m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（新中の湯登山口〜焼岳 北峰（往復））は5時間44分・6.5km・標高差867m。新宿から電車とバスで約3時間55分（新島々駅からバス55分）。日帰りできます。北アルプス唯一の活火山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-10",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "焼岳 登山の難易度は中〜上級｜日帰り5時間44分・標高差867m｜新島々駅からバス55分【百名山】｜Yamatch",
     "ogDescription": "焼岳（標高2,455m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（新中の湯登山口〜焼岳 北峰（往復））は5時間44分・6.5km・標高差867m。新宿から電車とバスで約3時間55分（新島々駅からバス55分）。日帰りできます。北アルプス唯一の活火山。駐車場・装備・天気も掲載。",
@@ -27690,7 +28380,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-14",
+          "text": "長野県が扇沢への県道（扇沢大町線の扇沢〜日向山）を冬期通行止めにする予定（12/1 10時から。解除は4月中旬）で、扇沢へ行けません。扇沢へのバスも11月30日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "大谷原〜赤岩尾根〜冷池山荘〜鹿島槍ヶ岳（往復・1泊2日）",
@@ -27712,7 +28416,21 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-27",
+          "to": "03-31",
+          "text": "長野県が大谷原への県道（白馬岳大町線の大谷原〜鹿島黒沢高原入口）を冬期通行止めにする予定（11/27 10時〜3/31 10時）で、大谷原へ車で行けません",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "柏原新道〜鹿島槍ヶ岳〜八峰キレット〜五竜岳〜遠見尾根（縦走・2泊3日）",
@@ -27774,6 +28492,20 @@
           "source": "YAMAP「鹿島槍ヶ岳」の紹介文（山と溪谷社）",
           "sourceUrl": "https://yamap.com/mountains/174",
           "lastVerified": "2026-11-11"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-14",
+          "text": "長野県が扇沢への県道（扇沢大町線の扇沢〜日向山）を冬期通行止めにする予定（12/1 10時から。解除は4月中旬）で、扇沢へ行けません。扇沢へのバスも11月30日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       }
     ],
@@ -27828,7 +28560,7 @@
     "metaTitle": "鹿島槍ヶ岳 登山の難易度は上級｜山小屋泊・歩行15時間32分・標高差2,406m｜信濃大町駅からバス【百名山】｜Yamatch",
     "metaDescription": "鹿島槍ヶ岳（標高2,889m・富山県・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（扇沢（柏原新道）〜爺ヶ岳〜冷池山荘〜鹿島槍ヶ岳（往復・1泊2日））は15時間32分・20.6km・標高差2406m。新宿から電車とバスで約3時間54分（信濃大町駅からバス40分）。山小屋泊がおすすめです。北アルプス後立山連峰の主峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "鹿島槍ヶ岳 登山の難易度は上級｜山小屋泊・歩行15時間32分・標高差2,406m｜信濃大町駅からバス【百名山】｜Yamatch",
     "ogDescription": "鹿島槍ヶ岳（標高2,889m・富山県・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（扇沢（柏原新道）〜爺ヶ岳〜冷池山荘〜鹿島槍ヶ岳（往復・1泊2日））は15時間32分・20.6km・標高差2406m。新宿から電車とバスで約3時間54分（信濃大町駅からバス40分）。山小屋泊がおすすめです。北アルプス後立山連峰の主峰。駐車場・装備・天気も掲載。",
@@ -28217,7 +28949,25 @@
         "sourceUrl": "https://yamap.com/model-courses/28048",
         "lastVerified": "2026-10-25",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-14",
+          "to": "04-17",
+          "text": "上日川峠へのバスは2026年は12月13日まで。小屋平を通る県道218号も冬期閉鎖で（甲州市：例年1月上旬〜4月中旬）、冬は小屋平へ行けません。期間は2026年のバスの運行から数えた目安です",
+          "sources": [
+            {
+              "label": "栄和交通",
+              "url": "https://eiwa-kotsu.jp/root.html"
+            },
+            {
+              "label": "甲州市（県道の冬期閉鎖）",
+              "url": "https://www.city.koshu.yamanashi.jp/faq/2012033100570/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "すずらん昆虫館前〜牛奥ノ雁ヶ腹摺山〜小金沢山（往復）",
@@ -28299,7 +29049,7 @@
     "metaTitle": "小金沢山 登山の難易度は初〜中級｜日帰り5時間・標高差876m｜甲斐大和駅からバス41分【二百名山】｜Yamatch",
     "metaDescription": "小金沢山（標高2,014m・山梨県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（小屋平〜石丸峠〜天狗棚山〜小金沢山（往復））は5時間・9.5km・標高差876m。新宿から電車とバスで約2時間1分（甲斐大和駅からバス41分）。日帰りできます。大菩薩連嶺の一峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "小金沢山 登山の難易度は初〜中級｜日帰り5時間・標高差876m｜甲斐大和駅からバス41分【二百名山】｜Yamatch",
     "ogDescription": "小金沢山（標高2,014m・山梨県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（小屋平〜石丸峠〜天狗棚山〜小金沢山（往復））は5時間・9.5km・標高差876m。新宿から電車とバスで約2時間1分（甲斐大和駅からバス41分）。日帰りできます。大菩薩連嶺の一峰。駐車場・装備・天気も掲載。",
@@ -31620,7 +32370,25 @@
         "sourceUrl": "https://yamap.com/model-courses/9999",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-25",
+          "to": "04-21",
+          "text": "群馬県が国道405号（和光原〜野反湖）を冬期閉鎖にする予定（11/25 15時〜4/21 10時）で、野反湖の登山口へ行けません。野反湖へのバスも10月20日までです",
+          "sources": [
+            {
+              "label": "群馬県 冬期閉鎖",
+              "url": "https://www.pref.gunma.jp/06/h2810053.html"
+            },
+            {
+              "label": "中之条町 六合地区路線バス",
+              "url": "https://www.town.nakanojo.gunma.jp/uploaded/life/13968_25974_misc.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "白砂山登山口〜白砂山〜中尾根の頭〜八間山（周回）",
@@ -31635,7 +32403,25 @@
         "sourceUrl": "https://yamap.com/model-courses/15536",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-25",
+          "to": "04-21",
+          "text": "群馬県が国道405号（和光原〜野反湖）を冬期閉鎖にする予定（11/25 15時〜4/21 10時）で、野反湖の登山口へ行けません。野反湖へのバスも10月20日までです",
+          "sources": [
+            {
+              "label": "群馬県 冬期閉鎖",
+              "url": "https://www.pref.gunma.jp/06/h2810053.html"
+            },
+            {
+              "label": "中之条町 六合地区路線バス",
+              "url": "https://www.town.nakanojo.gunma.jp/uploaded/life/13968_25974_misc.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "富士見峠〜八間山〜中尾根の頭〜白砂山（往復）",
@@ -31649,7 +32435,25 @@
         "source": "YAMAPモデルコース（model-courses/21260）",
         "sourceUrl": "https://yamap.com/model-courses/21260",
         "lastVerified": "2026-10-24",
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-25",
+          "to": "04-21",
+          "text": "群馬県が国道405号（和光原〜野反湖）を冬期閉鎖にする予定（11/25 15時〜4/21 10時）で、野反湖の登山口へ行けません。野反湖へのバスも10月20日までです",
+          "sources": [
+            {
+              "label": "群馬県 冬期閉鎖",
+              "url": "https://www.pref.gunma.jp/06/h2810053.html"
+            },
+            {
+              "label": "中之条町 六合地区路線バス",
+              "url": "https://www.town.nakanojo.gunma.jp/uploaded/life/13968_25974_misc.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 230,
@@ -31686,7 +32490,7 @@
     "metaTitle": "白砂山 登山の難易度は中〜上級｜前泊推奨・歩行7時間8分・標高差1,174m｜新宿から高速バス【二百名山】｜Yamatch",
     "metaDescription": "白砂山（標高2,140m・群馬県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（野反湖（白砂山登山口）〜地蔵峠〜堂岩山〜白砂山（往復））は7時間8分・11.6km・標高差1174m。新宿から高速バスなどで約4時間35分。山小屋泊がおすすめです。野反湖を起点とするアクセスのよい奥志賀の山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "白砂山 登山の難易度は中〜上級｜前泊推奨・歩行7時間8分・標高差1,174m｜新宿から高速バス【二百名山】｜Yamatch",
     "ogDescription": "白砂山（標高2,140m・群馬県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（野反湖（白砂山登山口）〜地蔵峠〜堂岩山〜白砂山（往復））は7時間8分・11.6km・標高差1174m。新宿から高速バスなどで約4時間35分。山小屋泊がおすすめです。野反湖を起点とするアクセスのよい奥志賀の山。駐車場・装備・天気も掲載。",
@@ -32650,6 +33454,18 @@
           "source": "ヤマケイオンライン「荒沢岳」（山と溪谷社）",
           "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=307",
           "lastVerified": "2026-11-10"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "text": "冬は奥只見シルバーラインが閉鎖され、銀山平へ行けません（2026年は3月20日に解除。今冬の閉鎖の開始は未発表。魚沼市）。銀山平へのバスも11月3日までです",
+          "sources": [
+            {
+              "label": "魚沼市",
+              "url": "https://www.city.uonuma.lg.jp/page/1022378.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       },
       {
@@ -32684,6 +33500,18 @@
           "source": "ヤマケイオンライン「荒沢岳」（山と溪谷社）",
           "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=307",
           "lastVerified": "2026-11-10"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "text": "冬は奥只見シルバーラインが閉鎖され、銀山平へ行けません（2026年は3月20日に解除。今冬の閉鎖の開始は未発表。魚沼市）。銀山平へのバスも11月3日までです",
+          "sources": [
+            {
+              "label": "魚沼市",
+              "url": "https://www.city.uonuma.lg.jp/page/1022378.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       }
     ],
@@ -32721,7 +33549,7 @@
     "metaTitle": "荒沢岳 登山の難易度は中〜上級｜前泊推奨・歩行8時間20分・標高差1,423m｜浦佐駅からバス【二百名山】｜Yamatch",
     "metaDescription": "荒沢岳（標高1,969m・新潟県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（銀山平〜前山〜前嵓〜荒沢岳（往復））は8時間20分・9km・標高差1423m。新宿から電車とバスで約2時間20分（浦佐駅からバス58分）。山小屋泊がおすすめです。奥只見の秘峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "荒沢岳 登山の難易度は中〜上級｜前泊推奨・歩行8時間20分・標高差1,423m｜浦佐駅からバス【二百名山】｜Yamatch",
     "ogDescription": "荒沢岳（標高1,969m・新潟県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（銀山平〜前山〜前嵓〜荒沢岳（往復））は8時間20分・9km・標高差1423m。新宿から電車とバスで約2時間20分（浦佐駅からバス58分）。山小屋泊がおすすめです。奥只見の秘峰。駐車場・装備・天気も掲載。",
@@ -34348,7 +35176,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-23",
+          "text": "長野県が中房温泉への県道（槍ヶ岳矢村線の中房温泉〜宮城ゲート）を冬期通行止めにする予定（12/1 15時〜4/23 12時）で、有明荘へ行けません。バスも11月3日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 230,
@@ -34397,7 +35239,7 @@
     "metaTitle": "有明山 登山の難易度は中〜上級｜前泊推奨・歩行6時間44分・標高差991m｜穂高駅からバス【二百名山】｜Yamatch",
     "metaDescription": "有明山（標高2,268m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（有明山神社〜表参道〜有明山（往復））は6時間44分・6km・標高差991m。新宿から電車とバスで約3時間54分（穂高駅からバス55分）。山小屋泊がおすすめです。安曇野のシンボル「安曇富士」とも呼ばれる美しい山容。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "有明山 登山の難易度は中〜上級｜前泊推奨・歩行6時間44分・標高差991m｜穂高駅からバス【二百名山】｜Yamatch",
     "ogDescription": "有明山（標高2,268m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（有明山神社〜表参道〜有明山（往復））は6時間44分・6km・標高差991m。新宿から電車とバスで約3時間54分（穂高駅からバス55分）。山小屋泊がおすすめです。安曇野のシンボル「安曇富士」とも呼ばれる美しい山容。駐車場・装備・天気も掲載。",
@@ -36443,7 +37285,19 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "text": "新潟県が国道352号（駒ノ湯入口〜銀山平。枝折峠を含む）を11月4日から冬期通行止めにしていて、枝折峠・銀山平へ行けません。解除は例年6月下旬で、今季の日は未発表です",
+          "sources": [
+            {
+              "label": "新潟県 魚沼地域整備部",
+              "url": "https://www.pref.niigata.lg.jp/site/uonuma-seibi/352toukiheisa.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "石抱橋〜道行山〜百草ノ池〜越後駒ヶ岳（往復）",
@@ -36457,7 +37311,19 @@
         "source": "YAMAPモデルコース（model-courses/22436）",
         "sourceUrl": "https://yamap.com/model-courses/22436",
         "lastVerified": "2026-10-25",
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "text": "新潟県が国道352号（駒ノ湯入口〜銀山平。枝折峠を含む）を11月4日から冬期通行止めにしていて、枝折峠・銀山平へ行けません。解除は例年6月下旬で、今季の日は未発表です",
+          "sources": [
+            {
+              "label": "新潟県 魚沼地域整備部",
+              "url": "https://www.pref.niigata.lg.jp/site/uonuma-seibi/352toukiheisa.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "駒ヶ岳登山口〜小倉山〜百草ノ池〜越後駒ヶ岳（往復）",
@@ -36525,7 +37391,7 @@
     "metaTitle": "越後駒ヶ岳 登山の難易度は中〜上級｜前泊推奨・歩行8時間30分・標高差1,333m｜小出駅からバス【百名山】｜Yamatch",
     "metaDescription": "越後駒ヶ岳（標高2,003m・新潟県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（枝折峠〜明神峠〜百草ノ池〜越後駒ヶ岳（往復））は8時間30分・14.3km・標高差1333m。新宿から電車とバスで約2時間36分（小出駅からバス）。山小屋泊がおすすめです。越後三山の主峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "越後駒ヶ岳 登山の難易度は中〜上級｜前泊推奨・歩行8時間30分・標高差1,333m｜小出駅からバス【百名山】｜Yamatch",
     "ogDescription": "越後駒ヶ岳（標高2,003m・新潟県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（枝折峠〜明神峠〜百草ノ池〜越後駒ヶ岳（往復））は8時間30分・14.3km・標高差1333m。新宿から電車とバスで約2時間36分（小出駅からバス）。山小屋泊がおすすめです。越後三山の主峰。駐車場・装備・天気も掲載。",
@@ -37785,7 +38651,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-27",
+          "to": "04-15",
+          "text": "長野県が小谷温泉から上の県道（川尻小谷糸魚川線の小谷温泉上〜林道入口）を冬期通行止めにする予定（11/27 15時〜4/15 12時）で、雨飾高原へ行けません。村営バスも11月30日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "雨飾温泉（新潟県側）〜中ノ池〜雨飾山（往復）",
@@ -37844,7 +38724,7 @@
     "metaTitle": "雨飾山 登山の難易度は中〜上級｜前泊推奨・歩行6時間20分・標高差1,052m｜南小谷駅からバス【百名山】｜Yamatch",
     "metaDescription": "雨飾山（標高1,963m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（雨飾高原〜笹平〜雨飾山（往復））は6時間20分・7.5km・標高差1052m。新宿から電車とバスで約5時間30分（南小谷駅からバス40分）。山小屋泊がおすすめです。北アルプス最北端の名峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "雨飾山 登山の難易度は中〜上級｜前泊推奨・歩行6時間20分・標高差1,052m｜南小谷駅からバス【百名山】｜Yamatch",
     "ogDescription": "雨飾山（標高1,963m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（雨飾高原〜笹平〜雨飾山（往復））は6時間20分・7.5km・標高差1052m。新宿から電車とバスで約5時間30分（南小谷駅からバス40分）。山小屋泊がおすすめです。北アルプス最北端の名峰。駐車場・装備・天気も掲載。",
@@ -38247,7 +39127,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "10-26",
+          "to": "07-10",
+          "text": "笹ヶ峰へのアクセスは2026年は2026-07-11〜2026-10-25（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "笹ヶ峰へのアクセス",
+              "url": "http://niigata-kankou.or.jp/spot/detail_31014.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "id": "myoko-loop",
@@ -38265,7 +39159,21 @@
         "sourceUrl": "https://yamap.com/model-courses/24565",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "10-26",
+          "to": "07-10",
+          "text": "笹ヶ峰へのアクセスは2026年は2026-07-11〜2026-10-25（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "笹ヶ峰へのアクセス",
+              "url": "http://niigata-kankou.or.jp/spot/detail_31014.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 265,
@@ -38319,7 +39227,7 @@
     "metaTitle": "火打山 登山の難易度は中〜上級｜山小屋泊・歩行10時間14分・標高差1,293m｜妙高高原駅からバス【百名山】｜Yamatch",
     "metaDescription": "火打山（標高2,462m・新潟県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（笹ヶ峰〜黒沢橋〜高谷池ヒュッテ〜天狗ノ庭〜火打山（往復））は10時間14分・16.2km・標高差1293m。新宿から電車とバスで約3時間36分（妙高高原駅からバス50分）。山小屋泊がおすすめです。妙高山と並ぶ頸城山塊の名峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-16",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "火打山 登山の難易度は中〜上級｜山小屋泊・歩行10時間14分・標高差1,293m｜妙高高原駅からバス【百名山】｜Yamatch",
     "ogDescription": "火打山（標高2,462m・新潟県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（笹ヶ峰〜黒沢橋〜高谷池ヒュッテ〜天狗ノ庭〜火打山（往復））は10時間14分・16.2km・標高差1293m。新宿から電車とバスで約3時間36分（妙高高原駅からバス50分）。山小屋泊がおすすめです。妙高山と並ぶ頸城山塊の名峰。駐車場・装備・天気も掲載。",
@@ -38823,7 +39731,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "12-05",
+          "to": "03-31",
+          "text": "長野駅〜戸隠キャンプ場の観光特急戸隠線（予約制）は2026年は2026-04-01〜2026-12-04（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "長野駅〜戸隠キャンプ場の観光特急戸隠線（予約制）",
+              "url": "https://www.alpico.co.jp/traffic/express/express_togakushi/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "戸隠キャンプ場〜弥勒尾根〜高妻山（往復）",
@@ -38838,7 +39760,21 @@
         "sourceUrl": "https://yamap.com/model-courses/26921",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "12-05",
+          "to": "03-31",
+          "text": "長野駅〜戸隠キャンプ場の観光特急戸隠線（予約制）は2026年は2026-04-01〜2026-12-04（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "長野駅〜戸隠キャンプ場の観光特急戸隠線（予約制）",
+              "url": "https://www.alpico.co.jp/traffic/express/express_togakushi/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "戸隠奥社〜戸隠山〜九頭龍山〜一不動〜高妻山（周回）",
@@ -38920,7 +39856,7 @@
     "metaTitle": "高妻山 登山の難易度は中〜上級｜前泊推奨・歩行8時間58分・標高差1,506m｜長野駅からバス【百名山】｜Yamatch",
     "metaDescription": "高妻山（標高2,353m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（戸隠キャンプ場〜一不動〜五地蔵山〜高妻山〜弥勒尾根（周回））は8時間58分・12.6km・標高差1506m。新宿から電車とバスで約3時間（長野駅からバス1時間5分）。山小屋泊がおすすめです。戸隠連峰の最高峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "高妻山 登山の難易度は中〜上級｜前泊推奨・歩行8時間58分・標高差1,506m｜長野駅からバス【百名山】｜Yamatch",
     "ogDescription": "高妻山（標高2,353m・長野県北部）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（戸隠キャンプ場〜一不動〜五地蔵山〜高妻山〜弥勒尾根（周回））は8時間58分・12.6km・標高差1506m。新宿から電車とバスで約3時間（長野駅からバス1時間5分）。山小屋泊がおすすめです。戸隠連峰の最高峰。駐車場・装備・天気も掲載。",
@@ -39799,7 +40735,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "10-19",
+          "to": "07-03",
+          "text": "木曽福島駅〜田の原のバス（田の原線）は2026年は2026-07-04〜2026-10-18（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "木曽福島駅〜田の原のバス（田の原線）",
+              "url": "https://www.vill.otaki.nagano.jp/kurashi/basu_tanohara.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "御岳ロープウェイ飯森高原駅〜女人堂〜剣ヶ峰（往復・黒沢口）",
@@ -39895,7 +40845,7 @@
     "metaTitle": "御嶽山登山は日帰りできる？前泊か山小屋泊が基本（歩行5時間10分）・難易度中〜上級｜木曽福島駅からバス【登れるのは7/1〜10/14】｜Yamatch",
     "metaDescription": "御嶽山（標高3,067m・長野県南部）は東京からの日帰りは難しく、前泊か山小屋泊が基本です（歩行5時間10分・難易度中〜上級）。代表コース（田の原〜王滝頂上〜剣ヶ峰（往復・王滝口））は5時間10分・6.4km・標高差887m。新宿から電車とバスで約4時間45分（木曽福島駅からバス1時間15分）。山頂まで登れるのは決まった期間だけです（2026年は7/1〜10/14。期間外は登れません）。独立峰の霊峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "御嶽山登山は日帰りできる？前泊か山小屋泊が基本（歩行5時間10分）・難易度中〜上級｜木曽福島駅からバス【登れるのは7/1〜10/14】｜Yamatch",
     "ogDescription": "御嶽山（標高3,067m・長野県南部）は東京からの日帰りは難しく、前泊か山小屋泊が基本です（歩行5時間10分・難易度中〜上級）。代表コース（田の原〜王滝頂上〜剣ヶ峰（往復・王滝口））は5時間10分・6.4km・標高差887m。新宿から電車とバスで約4時間45分（木曽福島駅からバス1時間15分）。山頂まで登れるのは決まった期間だけです（2026年は7/1〜10/14。期間外は登れません）。独立峰の霊峰。駐車場・装備・天気も掲載。",
@@ -41046,7 +41996,7 @@
     "coeffMin": 12,
     "coeffMax": 19,
     "daytrip": true,
-    "trainAccess": "バスタ新宿→高速バス約3時間40分→駒ヶ根駅→バス約25分→菅の台バスセンター→中央アルプス観光バス約30分→しらび平→ロープウェイ約8分→千畳敷",
+    "trainAccess": "バスタ新宿→高速バス約3時間40分→駒ヶ根駅→路線バス（駒ヶ岳ロープウェイ線）約45分→しらび平→ロープウェイ約8分→千畳敷",
     "driveOfuna": 185,
     "driveShinjuku": 180,
     "driveYokohama": 190,
@@ -41106,7 +42056,7 @@
     "gmapUrl": "https://www.google.com/maps/search/?api=1&query=35.7432283%2C137.8912366",
     "amapUrl": "https://maps.apple.com/?ll=35.7432283,137.8912366&q=%E8%8F%85%E3%81%AE%E5%8F%B0%E3%83%90%E3%82%B9%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC",
     "busScheduleLinks": [
-      "https://www.chuo-alps.com/access/bus/"
+      "https://chuo-alps.com/timetable/"
     ],
     "gearLinks": [
       {
@@ -41224,7 +42174,7 @@
     "driveTimeOmiya": 210,
     "nearestStation": "駒ヶ根駅",
     "trainLine": "JR飯田線",
-    "trainTimeShinjuku": 283,
+    "trainTimeShinjuku": 273,
     "trainInfo": null,
     "lines": [],
     "driveTimeTachikawa": 170,
@@ -41232,13 +42182,13 @@
     "fareShinjuku": 7020,
     "fareYokohama": 7636,
     "fareOmiya": 7548,
-    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→バスタ新宿→高速バス約3時間40分→駒ヶ根駅→バス約25分→菅の台バスセンター→中央アルプス観光バス約30分→しらび平→ロープウェイ約8分→千畳敷",
-    "trainAccessOmiya": "大宮駅→JR埼京線約30分→バスタ新宿→高速バス約3時間40分→駒ヶ根駅→バス約25分→菅の台バスセンター→中央アルプス観光バス約30分→しらび平→ロープウェイ約8分→千畳敷",
-    "transfersShinjuku": 3,
-    "transfersYokohama": 4,
-    "transfersOmiya": 4,
-    "trainTimeYokohama": 317,
-    "trainTimeOmiya": 313,
+    "trainAccessYokohama": "横浜駅→JR湘南新宿ライン約34分→バスタ新宿→高速バス約3時間40分→駒ヶ根駅→路線バス（駒ヶ岳ロープウェイ線）約45分→しらび平→ロープウェイ約8分→千畳敷",
+    "trainAccessOmiya": "大宮駅→JR埼京線約30分→バスタ新宿→高速バス約3時間40分→駒ヶ根駅→路線バス（駒ヶ岳ロープウェイ線）約45分→しらび平→ロープウェイ約8分→千畳敷",
+    "transfersShinjuku": 2,
+    "transfersYokohama": 3,
+    "transfersOmiya": 3,
+    "trainTimeYokohama": 307,
+    "trainTimeOmiya": 303,
     "faq": [
       {
         "question": "木曽駒ヶ岳は初心者でも登れますか？難易度とコース定数を解説",
@@ -41250,7 +42200,7 @@
       },
       {
         "question": "木曽駒ヶ岳へのアクセス方法は？新宿・横浜からの行き方",
-        "answer": "千畳敷へのアクセス（菅の台からバス・ロープウェイ）：新宿から約4時間43分（7,020円）、大宮から約5時間13分（7,548円）、横浜から約5時間17分（7,636円）が目安です。車の場合：しらび平（ロープウェイ乗り場）へは一般車両で入れない。菅の台バスセンターで路線バスに乗り換える。"
+        "answer": "千畳敷へのアクセス（菅の台からバス・ロープウェイ）：新宿から約4時間33分（7,020円）、大宮から約5時間3分（7,548円）、横浜から約5時間7分（7,636円）が目安です。車の場合：しらび平（ロープウェイ乗り場）へは一般車両で入れない。菅の台バスセンターで路線バスに乗り換える。"
       },
       {
         "question": "木曽駒ヶ岳の登山シーズンはいつですか？おすすめの時期",
@@ -41260,7 +42210,7 @@
     "warnBannerLevel": "yellow",
     "hasWeatherWidget": true,
     "vibesHtml": "<div class=\"rec-card\">\n    <div class=\"rec-card-title\"><span class=\"eyebrow\">Vibes</span><span>こんな気分の人に</span></div>\n    <div class=\"rec-list\"><div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>ロープウェイで2600mの絶景に立ちたい人</strong>——千畳敷カールから見上げる中央アルプスの壁は圧巻</span></div>\n<div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>初心者でも本格的な高山体験をしたい人</strong>——ロープウェイ利用でコース定数11〜15の入りやすい百名山</span></div>\n<div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>夏の高山植物と雷鳥を見たい人</strong>——千畳敷カールは夏のお花畑と雷鳥の楽園</span></div></div>\n    </div>",
-    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>通年運行（冬ダイヤ・点検運休あり）</span></div><div class=\"ts-line-name\">高速バス（新宿〜駒ヶ根線）・伊那バス「駒ヶ岳ロープウェイ線」・駒ヶ岳ロープウェイ</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>高速バス　<span class=\"ts-duration\">約3時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">駒ヶ根駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>バス　<span class=\"ts-duration\">約25分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">菅の台バスセンター</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>中央アルプス観光バス　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">しらび平</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>ロープウェイ　<span class=\"ts-duration\">約8分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">千畳敷</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR埼京線　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>高速バス　<span class=\"ts-duration\">約3時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">駒ヶ根駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>バス　<span class=\"ts-duration\">約25分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">菅の台バスセンター</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>中央アルプス観光バス　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">しらび平</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>ロープウェイ　<span class=\"ts-duration\">約8分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">千畳敷</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR湘南新宿ライン　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>高速バス　<span class=\"ts-duration\">約3時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">駒ヶ根駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>バス　<span class=\"ts-duration\">約25分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">菅の台バスセンター</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>中央アルプス観光バス　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">しらび平</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>ロープウェイ　<span class=\"ts-duration\">約8分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">千畳敷</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約4時間43分\" data-omiya=\"約5時間13分\" data-yokohama=\"約5時間17分\">約4時間43分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約7,020円\" data-omiya=\"片道約7,548円\" data-yokohama=\"片道約7,636円\">片道約7,020円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>高速バスとロープウェイは日で運賃が変わる（表示は月〜木・ロープウェイC運賃の場合）</li><li>菅の台から先はマイカー規制で、バスとロープウェイを乗り継ぐ</li><li>夏休み・紅葉の時期は2〜3時間待ちになることがある</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=駒ヶ根駅&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://www.chuo-alps.com/access/bus/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>バス時刻表</a></div></div>",
+    "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>通年運行（冬ダイヤ・点検運休あり）</span></div><div class=\"ts-line-name\">高速バス（新宿〜駒ヶ根線）・路線バス（駒ヶ岳ロープウェイ線）・駒ヶ岳ロープウェイ</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>高速バス　<span class=\"ts-duration\">約3時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">駒ヶ根駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>路線バス（駒ヶ岳ロープウェイ線）　<span class=\"ts-duration\">約45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">しらび平</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>ロープウェイ　<span class=\"ts-duration\">約8分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">千畳敷</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR埼京線　<span class=\"ts-duration\">約30分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>高速バス　<span class=\"ts-duration\">約3時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">駒ヶ根駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>路線バス（駒ヶ岳ロープウェイ線）　<span class=\"ts-duration\">約45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">しらび平</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>ロープウェイ　<span class=\"ts-duration\">約8分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">千畳敷</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR湘南新宿ライン　<span class=\"ts-duration\">約34分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">バスタ新宿</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>高速バス　<span class=\"ts-duration\">約3時間40分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">駒ヶ根駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>路線バス（駒ヶ岳ロープウェイ線）　<span class=\"ts-duration\">約45分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">しらび平</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>ロープウェイ　<span class=\"ts-duration\">約8分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">千畳敷</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約4時間33分\" data-omiya=\"約5時間3分\" data-yokohama=\"約5時間7分\">約4時間33分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約7,020円\" data-omiya=\"片道約7,548円\" data-yokohama=\"片道約7,636円\">片道約7,020円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>高速バスとロープウェイは日で運賃が変わる（表示は月〜木・ロープウェイC運賃の場合）</li><li>菅の台から先はマイカー規制で、バスとロープウェイを乗り継ぐ</li><li>夏休み・紅葉の時期は2〜3時間待ちになることがある</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=駒ヶ根駅&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://chuo-alps.com/timetable/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>路線バス・ロープウェイ時刻表</a></div></div>",
     "relatedLinksHtml": "<div class=\"related-links-card\">\n  <div class=\"related-links-title\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"3\" rx=\"1\"/><line x1=\"8\" y1=\"11\" x2=\"16\" y2=\"11\"/><line x1=\"8\" y1=\"15\" x2=\"13\" y2=\"15\"/></svg>関連するまとめ</div>\n    <a href=\"/search/shinjuku-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>新宿から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">新宿発・木曽駒ヶ岳と難易度・時間を比較できる</span>\n    </a>\n    <a href=\"/search/ofuna-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>大船・横浜から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">神奈川発で木曽駒ヶ岳の前後に検討したい山を比較</span>\n    </a>\n    <a href=\"/search/train-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車で行ける日帰り登山一覧</span>\n      <span class=\"related-link-sub\">車なしOK・駅近の山だけを集めたリスト</span>\n    </a>\n    <a href=\"/search/shinjuku-beginner/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21V10\"/><path d=\"M12 10C12 6 9 5 6 5c0 4 2 6 6 6Z\"/><path d=\"M12 13C12 9 15 8 18 8c0 4-2 6-6 6Z\"/></svg>新宿から行ける初心者向けの山一覧</span>\n      <span class=\"related-link-sub\">コース定数15以下の初級山のみ。木曽駒ヶ岳と難易度比較に</span>\n    </a>\n    <a href=\"/recommend/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"12,3 14,10 12,12 10,10\" fill=\"currentColor\" stroke=\"none\"/><polygon points=\"12,21 10,14 12,12 14,14\" fill=\"currentColor\" opacity=\"0.5\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"white\" stroke=\"none\"/></svg>登山タイプ診断で自分に合う山を探す</span>\n      <span class=\"related-link-sub\">12問・約2分。16タイプのどれかと、そのタイプに合う山がわかる</span>\n    </a>\n</div>",
     "dlNoteHtml": null,
     "introHtml": "<div class=\"card\"><h2><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" style=\"vertical-align:-3px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 3h10l4 4v14H5z\"/><path d=\"M15 3v4h4\"/><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"/><line x1=\"8\" y1=\"16\" x2=\"13\" y2=\"16\"/></svg>山の紹介</h2><p class=\"intro-text\">ロープウェイで標高2,612mの千畳敷カールまで一気にアクセス。初心者でも本格的な高山の雰囲気を楽しめる中央アルプスの主峰。夏の千畳敷カールは高山植物の宝庫。初〜中級レベルでコース定数12〜19、日帰りでの登山が可能。代表コース（千畳敷〜乗越浄土〜中岳〜木曽駒ヶ岳（往復））は所要3時間23分/3.5km/標高差+437m。</p></div>",
@@ -41268,7 +42218,7 @@
     "metaTitle": "木曽駒ヶ岳 登山の難易度は初〜中級｜日帰り3時間23分・標高差437m｜新宿から高速バス【百名山】｜Yamatch",
     "metaDescription": "木曽駒ヶ岳（標高2,956m・長野県南部）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（千畳敷〜乗越浄土〜中岳〜木曽駒ヶ岳（往復））は3時間23分・3.5km・標高差437m。新宿から高速バスなどで約4時間43分。日帰りできます。ロープウェイで標高2,612mの千畳敷カールまで一気にアクセス。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "木曽駒ヶ岳 登山の難易度は初〜中級｜日帰り3時間23分・標高差437m｜新宿から高速バス【百名山】｜Yamatch",
     "ogDescription": "木曽駒ヶ岳（標高2,956m・長野県南部）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（千畳敷〜乗越浄土〜中岳〜木曽駒ヶ岳（往復））は3時間23分・3.5km・標高差437m。新宿から高速バスなどで約4時間43分。日帰りできます。ロープウェイで標高2,612mの千畳敷カールまで一気にアクセス。駐車場・装備・天気も掲載。",
@@ -41281,7 +42231,7 @@
         "icon": "check",
         "label": "通年運行（冬ダイヤ・点検運休あり）"
       },
-      "lineName": "高速バス（新宿〜駒ヶ根線）・伊那バス「駒ヶ岳ロープウェイ線」・駒ヶ岳ロープウェイ",
+      "lineName": "高速バス（新宿〜駒ヶ根線）・路線バス（駒ヶ岳ロープウェイ線）・駒ヶ岳ロープウェイ",
       "routes": {
         "shinjuku": {
           "legs": [
@@ -41298,18 +42248,9 @@
               "station": "駒ヶ根駅",
               "method": {
                 "icon": "bus",
-                "line": "バス"
+                "line": "路線バス（駒ヶ岳ロープウェイ線）"
               },
-              "durationMin": 25,
-              "fareYen": null
-            },
-            {
-              "station": "菅の台バスセンター",
-              "method": {
-                "icon": "bus",
-                "line": "中央アルプス観光バス"
-              },
-              "durationMin": 30,
+              "durationMin": 45,
               "fareYen": null
             },
             {
@@ -41350,18 +42291,9 @@
               "station": "駒ヶ根駅",
               "method": {
                 "icon": "bus",
-                "line": "バス"
+                "line": "路線バス（駒ヶ岳ロープウェイ線）"
               },
-              "durationMin": 25,
-              "fareYen": null
-            },
-            {
-              "station": "菅の台バスセンター",
-              "method": {
-                "icon": "bus",
-                "line": "中央アルプス観光バス"
-              },
-              "durationMin": 30,
+              "durationMin": 45,
               "fareYen": null
             },
             {
@@ -41402,18 +42334,9 @@
               "station": "駒ヶ根駅",
               "method": {
                 "icon": "bus",
-                "line": "バス"
+                "line": "路線バス（駒ヶ岳ロープウェイ線）"
               },
-              "durationMin": 25,
-              "fareYen": null
-            },
-            {
-              "station": "菅の台バスセンター",
-              "method": {
-                "icon": "bus",
-                "line": "中央アルプス観光バス"
-              },
-              "durationMin": 30,
+              "durationMin": 45,
               "fareYen": null
             },
             {
@@ -41441,8 +42364,8 @@
         },
         {
           "type": "bus",
-          "label": "バス時刻表",
-          "url": "https://www.chuo-alps.com/access/bus/"
+          "label": "路線バス・ロープウェイ時刻表",
+          "url": "https://chuo-alps.com/timetable/"
         }
       ]
     },
@@ -41491,7 +42414,7 @@
       "validTo": null,
       "seasonYear": 2026,
       "reservation": null,
-      "note": "バス・ロープウェイは通年運行（夏ダイヤ2026/4/10〜11/30、それ以外は冬ダイヤ。点検運休あり）"
+      "note": "バス・ロープウェイは通年運行（2026年度は夏ダイヤ4/10〜11/30、ほかは冬ダイヤ。2026/12/1〜12/6・2027/1/27〜2/4はロープウェイ点検運休）"
     },
     "routeTrailheads": {
       "senjojiki-roundtrip": "千畳敷（ロープウェイ山頂駅）",
@@ -41629,24 +42552,50 @@
         "tier": "plan",
         "reasons": [
           "4時間を超える",
-          "乗り換え3回"
+          "乗り換え2回"
         ]
       },
       "omiya": {
         "tier": "plan",
         "reasons": [
           "4時間を超える",
-          "乗り換え4回"
+          "乗り換え3回"
         ]
       },
       "yokohama": {
         "tier": "plan",
         "reasons": [
           "4時間を超える",
-          "乗り換え4回"
+          "乗り換え3回"
         ]
       }
-    }
+    },
+    "annualItems": [
+      {
+        "kind": "suspension",
+        "label": "ロープウェイ運休（点検）",
+        "validFrom": "2026-12-01",
+        "validTo": "2026-12-06",
+        "seasonYear": "2026",
+        "showDaysBefore": 30,
+        "note": "点検のためロープウェイが運休します。路線バスも駒ヶ根駅前〜駒ヶ根橋の折り返しだけになり、しらび平・千畳敷へは行けません（菅の台から先はマイカー規制なので、車でも同じです）",
+        "sourceUrl": "https://chuo-alps.com/wp-content/uploads/2026/01/%E3%80%90%E7%A2%BA%E5%AE%9A%E3%80%912026R8%E5%B9%B4%E5%BA%A6%E3%83%90%E3%82%B9%E5%81%9C%E6%99%82%E5%88%BB%E8%A1%A8.pdf",
+        "linkText": "路線バス・ロープウェイ時刻表（2026年度）",
+        "lastVerified": "2026-11-19"
+      },
+      {
+        "kind": "suspension",
+        "label": "ロープウェイ運休（点検）",
+        "validFrom": "2027-01-27",
+        "validTo": "2027-02-04",
+        "seasonYear": "2026",
+        "showDaysBefore": 30,
+        "note": "点検のためロープウェイが運休します。路線バスも駒ヶ根駅前〜駒ヶ根橋の折り返しだけになり、しらび平・千畳敷へは行けません（菅の台から先はマイカー規制なので、車でも同じです）",
+        "sourceUrl": "https://chuo-alps.com/wp-content/uploads/2026/01/%E3%80%90%E7%A2%BA%E5%AE%9A%E3%80%912026R8%E5%B9%B4%E5%BA%A6%E3%83%90%E3%82%B9%E5%81%9C%E6%99%82%E5%88%BB%E8%A1%A8.pdf",
+        "linkText": "路線バス・ロープウェイ時刻表（2026年度）",
+        "lastVerified": "2026-11-19"
+      }
+    ]
   },
   {
     "id": "utsukushigahara",
@@ -41793,7 +42742,21 @@
         "sourceUrl": "https://yamap.com/model-courses/30527",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-18",
+          "to": "04-20",
+          "text": "長野県がビーナスライン・美ヶ原公園線など美ヶ原への道を冬期通行止めにする予定（11/18 11時〜4/20 11時）で、登山口へ車で行けません。直行バスも10月12日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "山本小屋〜美しの塔〜王ヶ頭（往復）",
@@ -41807,7 +42770,21 @@
         "source": "YAMAPモデルコース（model-courses/102198）",
         "sourceUrl": "https://yamap.com/model-courses/102198",
         "lastVerified": "2026-10-24",
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-18",
+          "to": "04-20",
+          "text": "長野県がビーナスライン・美ヶ原公園線など美ヶ原への道を冬期通行止めにする予定（11/18 11時〜4/20 11時）で、登山口へ車で行けません。直行バスも10月12日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "三城（百曲り）〜王ヶ頭〜王ヶ鼻〜ダテ河原（周回）",
@@ -41829,7 +42806,21 @@
           "basis": "same",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-18",
+          "to": "04-20",
+          "text": "長野県がビーナスライン・美ヶ原公園線など美ヶ原への道を冬期通行止めにする予定（11/18 11時〜4/20 11時）で、登山口へ車で行けません。直行バスも10月12日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 210,
@@ -41881,7 +42872,7 @@
     "metaTitle": "美ヶ原登山 初心者向けコース｜日帰り1時間38分・難易度初級｜松本駅からバス1時間20分【百名山】｜Yamatch",
     "metaDescription": "美ヶ原（標高2,034m・長野県中部）は初心者でも登りやすい山（難易度初級）。代表コース（美ヶ原自然保護センター〜王ヶ頭〜王ヶ鼻（周回））は1時間38分・4.2km・標高差169m。新宿から電車とバスで約3時間50分（松本駅からバス1時間20分）。日帰りできます。日本最大規模の高原状の山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "美ヶ原登山 初心者向けコース｜日帰り1時間38分・難易度初級｜松本駅からバス1時間20分【百名山】｜Yamatch",
     "ogDescription": "美ヶ原（標高2,034m・長野県中部）は初心者でも登りやすい山（難易度初級）。代表コース（美ヶ原自然保護センター〜王ヶ頭〜王ヶ鼻（周回））は1時間38分・4.2km・標高差169m。新宿から電車とバスで約3時間50分（松本駅からバス1時間20分）。日帰りできます。日本最大規模の高原状の山。駐車場・装備・天気も掲載。",
@@ -43768,6 +44759,20 @@
           "source": "YAMAP「塩見岳」の紹介文（山と溪谷社）",
           "sourceUrl": "https://yamap.com/mountains/182",
           "lastVerified": "2026-11-11"
+        },
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "08-31",
+          "to": "07-17",
+          "text": "伊那大島駅〜鳥倉登山口の登山バス（鳥倉線）は2026年は2026-07-18〜2026-08-30（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "伊那大島駅〜鳥倉登山口の登山バス（鳥倉線）",
+              "url": "https://www.ibgr.jp/general-route/torikura_off2/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       },
       {
@@ -43797,6 +44802,20 @@
           "source": "YAMAP「塩見岳」の紹介文（山と溪谷社）",
           "sourceUrl": "https://yamap.com/mountains/182",
           "lastVerified": "2026-11-11"
+        },
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "08-31",
+          "to": "07-17",
+          "text": "伊那大島駅〜鳥倉登山口の登山バス（鳥倉線）は2026年は2026-07-18〜2026-08-30（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "伊那大島駅〜鳥倉登山口の登山バス（鳥倉線）",
+              "url": "https://www.ibgr.jp/general-route/torikura_off2/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       }
     ],
@@ -43834,7 +44853,7 @@
     "metaTitle": "塩見岳 登山の難易度は上級｜山小屋泊・歩行14時間50分・標高差2,504m｜伊那大島駅からバス【百名山】｜Yamatch",
     "metaDescription": "塩見岳（標高3,052m・長野県南部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（越路〜鳥倉登山口〜三伏峠〜塩見岳（往復・1泊2日））は14時間50分・24.3km・標高差2504m。新宿から電車とバスで約5時間40分（伊那大島駅からバス1時間50分）。山小屋泊がおすすめです。南アルプス中央部に位置する3000m超の峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-04",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "塩見岳 登山の難易度は上級｜山小屋泊・歩行14時間50分・標高差2,504m｜伊那大島駅からバス【百名山】｜Yamatch",
     "ogDescription": "塩見岳（標高3,052m・長野県南部）の難易度は上級（十分な経験が要る上級者向け）。代表コース（越路〜鳥倉登山口〜三伏峠〜塩見岳（往復・1泊2日））は14時間50分・24.3km・標高差2504m。新宿から電車とバスで約5時間40分（伊那大島駅からバス1時間50分）。山小屋泊がおすすめです。南アルプス中央部に位置する3000m超の峰。駐車場・装備・天気も掲載。",
@@ -44254,7 +45273,21 @@
         "sourceUrl": "https://yamap.com/model-courses/101244",
         "lastVerified": "2026-10-25",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "10-13",
+          "to": "07-10",
+          "text": "椹島へは一般車が入れず、畑薙第一ダムからの送迎バス（山小屋の宿泊者だけ）は2026年は7月11日〜10月12日でした。期間外は椹島へ行けません",
+          "sources": [
+            {
+              "label": "特種東海フォレスト",
+              "url": "https://www.t-forest.com/alpsinfo/bus/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "椹島〜千枚岳〜悪沢岳〜荒川中岳〜赤石岳〜椹島（周回・山小屋泊）",
@@ -44277,7 +45310,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "10-13",
+          "to": "07-10",
+          "text": "椹島へは一般車が入れず、畑薙第一ダムからの送迎バス（山小屋の宿泊者だけ）は2026年は7月11日〜10月12日でした。期間外は椹島へ行けません",
+          "sources": [
+            {
+              "label": "特種東海フォレスト",
+              "url": "https://www.t-forest.com/alpsinfo/bus/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 255,
@@ -44315,7 +45362,7 @@
     "metaTitle": "荒川岳 登山の難易度は上級｜山小屋泊・歩行14時間49分・標高差2,423m｜静岡駅からバス【百名山】｜Yamatch",
     "metaDescription": "荒川岳（標高3,141m・静岡県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（椹島〜千枚小屋〜千枚岳〜悪沢岳（往復・山小屋泊））は14時間49分・23km・標高差2423m。新宿から電車とバスで約5時間53分（静岡駅からバス）。山小屋泊がおすすめです。南アルプス深部の3000m峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "荒川岳 登山の難易度は上級｜山小屋泊・歩行14時間49分・標高差2,423m｜静岡駅からバス【百名山】｜Yamatch",
     "ogDescription": "荒川岳（標高3,141m・静岡県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（椹島〜千枚小屋〜千枚岳〜悪沢岳（往復・山小屋泊））は14時間49分・23km・標高差2423m。新宿から電車とバスで約5時間53分（静岡駅からバス）。山小屋泊がおすすめです。南アルプス深部の3000m峰。駐車場・装備・天気も掲載。",
@@ -44791,7 +45838,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "10-13",
+          "to": "07-10",
+          "text": "椹島へは一般車が入れず、畑薙第一ダムからの送迎バス（山小屋の宿泊者だけ）は2026年は7月11日〜10月12日でした。期間外は椹島へ行けません",
+          "sources": [
+            {
+              "label": "特種東海フォレスト",
+              "url": "https://www.t-forest.com/alpsinfo/bus/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "椹島〜赤石岳〜大聖寺平〜荒川岳〜千枚小屋〜椹島（周回・2泊3日）",
@@ -44814,7 +45875,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "10-13",
+          "to": "07-10",
+          "text": "椹島へは一般車が入れず、畑薙第一ダムからの送迎バス（山小屋の宿泊者だけ）は2026年は7月11日〜10月12日でした。期間外は椹島へ行けません",
+          "sources": [
+            {
+              "label": "特種東海フォレスト",
+              "url": "https://www.t-forest.com/alpsinfo/bus/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 255,
@@ -44852,7 +45927,7 @@
     "metaTitle": "赤石岳 登山の難易度は上級｜山小屋泊・歩行13時間49分・標高差2,390m｜静岡駅からバス【百名山】｜Yamatch",
     "metaDescription": "赤石岳（標高3,121m・静岡県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（椹島〜赤石小屋〜富士見平〜赤石岳（往復・1泊2日））は13時間49分・16.3km・標高差2390m。新宿から電車とバスで約5時間53分（静岡駅からバス）。山小屋泊がおすすめです。南アルプスの盟主とも呼ばれる3000m峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "赤石岳 登山の難易度は上級｜山小屋泊・歩行13時間49分・標高差2,390m｜静岡駅からバス【百名山】｜Yamatch",
     "ogDescription": "赤石岳（標高3,121m・静岡県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（椹島〜赤石小屋〜富士見平〜赤石岳（往復・1泊2日））は13時間49分・16.3km・標高差2390m。新宿から電車とバスで約5時間53分（静岡駅からバス）。山小屋泊がおすすめです。南アルプスの盟主とも呼ばれる3000m峰。駐車場・装備・天気も掲載。",
@@ -45336,7 +46411,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "10-13",
+          "to": "07-10",
+          "text": "聖沢登山口・椹島へは一般車が入れず、畑薙第一ダムからの送迎バス（山小屋の宿泊者だけ）は2026年は7月11日〜10月12日でした。期間外は登山口へ行けません",
+          "sources": [
+            {
+              "label": "特種東海フォレスト",
+              "url": "https://www.t-forest.com/alpsinfo/bus/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "聖沢登山口〜聖岳〜兎岳〜百間洞〜赤石岳（縦走・山小屋泊）",
@@ -45388,7 +46477,21 @@
           "note": "季節運行",
           "timetableUrl": "https://www.t-forest.com/alpsinfo/bus/"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "10-13",
+          "to": "07-10",
+          "text": "聖沢登山口・椹島へは一般車が入れず、畑薙第一ダムからの送迎バス（山小屋の宿泊者だけ）は2026年は7月11日〜10月12日でした。期間外は登山口へ行けません",
+          "sources": [
+            {
+              "label": "特種東海フォレスト",
+              "url": "https://www.t-forest.com/alpsinfo/bus/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "椹島〜赤石岳〜百間洞〜兎岳〜聖岳（周回・山小屋泊）",
@@ -45410,7 +46513,21 @@
           "basis": "contains",
           "lastVerified": "2026-11-04"
         },
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "10-13",
+          "to": "07-10",
+          "text": "聖沢登山口・椹島へは一般車が入れず、畑薙第一ダムからの送迎バス（山小屋の宿泊者だけ）は2026年は7月11日〜10月12日でした。期間外は登山口へ行けません",
+          "sources": [
+            {
+              "label": "特種東海フォレスト",
+              "url": "https://www.t-forest.com/alpsinfo/bus/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 280,
@@ -45448,7 +46565,7 @@
     "metaTitle": "聖岳 登山の難易度は上級｜山小屋泊・歩行15時間45分｜静岡駅からバス【百名山】｜Yamatch",
     "metaDescription": "聖岳（標高3,013m・静岡県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（聖沢登山口〜聖平小屋〜聖岳（往復・山小屋泊））は15時間45分・23.4km。新宿から電車とバスで約5時間38分（静岡駅からバス）。山小屋泊がおすすめです。南アルプス最南部の3000m峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "聖岳 登山の難易度は上級｜山小屋泊・歩行15時間45分｜静岡駅からバス【百名山】｜Yamatch",
     "ogDescription": "聖岳（標高3,013m・静岡県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（聖沢登山口〜聖平小屋〜聖岳（往復・山小屋泊））は15時間45分・23.4km。新宿から電車とバスで約5時間38分（静岡駅からバス）。山小屋泊がおすすめです。南アルプス最南部の3000m峰。駐車場・装備・天気も掲載。",
@@ -45903,7 +47020,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "11-09",
+          "to": "06-30",
+          "text": "道の駅遠山郷〜易老渡の予約制タクシーは2026年は2026-07-01〜2026-11-08（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "道の駅遠山郷〜易老渡の予約制タクシー",
+              "url": "https://tohyamago.com/archives/3681"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "畑薙（茶臼岳登山口）〜茶臼岳〜易老岳〜光岳（往復・2泊3日）",
@@ -45962,7 +47093,7 @@
     "metaTitle": "光岳登山は日帰りできる？山小屋泊が基本（歩行16時間14分）・難易度上級｜新宿から高速バス【百名山】｜Yamatch",
     "metaDescription": "光岳（標高2,591m・静岡県）は山小屋泊が基本です（歩行16時間14分・難易度上級）。代表コース（芝沢ゲート〜易老渡〜易老岳〜光岳（往復・1泊2日））は16時間14分・25.8km・標高差2721m。新宿から高速バスなどで約6時間53分。百名山の最南部に位置する山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "光岳登山は日帰りできる？山小屋泊が基本（歩行16時間14分）・難易度上級｜新宿から高速バス【百名山】｜Yamatch",
     "ogDescription": "光岳（標高2,591m・静岡県）は山小屋泊が基本です（歩行16時間14分・難易度上級）。代表コース（芝沢ゲート〜易老渡〜易老岳〜光岳（往復・1泊2日））は16時間14分・25.8km・標高差2721m。新宿から高速バスなどで約6時間53分。百名山の最南部に位置する山。駐車場・装備・天気も掲載。",
@@ -46400,7 +47531,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "09-28",
+          "to": "07-10",
+          "text": "富山駅〜折立の夏山バスは2026年は2026-07-11〜2026-09-27（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "富山駅〜折立の夏山バス",
+              "url": "https://www.kosokubus.com/?dir=sp&page=_arimine"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "太郎平小屋〜薬師峠〜薬師岳（往復・太郎平小屋に泊まる場合）",
@@ -46454,7 +47599,7 @@
     "metaTitle": "薬師岳 登山の難易度は中〜上級｜山小屋泊・歩行13時間10分・標高差1,846m｜富山駅からバス【百名山】｜Yamatch",
     "metaDescription": "薬師岳（標高2,926m・富山県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（折立〜太郎平小屋〜薬師岳（往復））は13時間10分・20km・標高差1846m。新宿から電車とバスで約3時間52分（富山駅からバス1時間40分）。山小屋泊がおすすめです。北アルプス南部の大きな山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "薬師岳 登山の難易度は中〜上級｜山小屋泊・歩行13時間10分・標高差1,846m｜富山駅からバス【百名山】｜Yamatch",
     "ogDescription": "薬師岳（標高2,926m・富山県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（折立〜太郎平小屋〜薬師岳（往復））は13時間10分・20km・標高差1846m。新宿から電車とバスで約3時間52分（富山駅からバス1時間40分）。山小屋泊がおすすめです。北アルプス南部の大きな山。駐車場・装備・天気も掲載。",
@@ -46864,7 +48009,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "09-28",
+          "to": "07-10",
+          "text": "富山駅〜折立の夏山バスは2026年は2026-07-11〜2026-09-27（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "富山駅〜折立の夏山バス",
+              "url": "https://www.kosokubus.com/?dir=sp&page=_arimine"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "飛越新道：飛越トンネル〜寺地山〜北ノ俣岳〜黒部五郎岳（往復・山小屋泊）",
@@ -46901,7 +48060,21 @@
         "sourceUrl": "https://yamap.com/model-courses/93846",
         "lastVerified": "2026-10-25",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "09-28",
+          "to": "07-10",
+          "text": "富山駅〜折立の夏山バスは2026年は2026-07-11〜2026-09-27（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "富山駅〜折立の夏山バス",
+              "url": "https://www.kosokubus.com/?dir=sp&page=_arimine"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 355,
@@ -46938,7 +48111,7 @@
     "metaTitle": "黒部五郎岳 登山の難易度は上級｜山小屋泊・歩行18時間54分・標高差2,420m｜富山駅からバス【百名山】｜Yamatch",
     "metaDescription": "黒部五郎岳（標高2,840m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（折立〜太郎平小屋〜北ノ俣岳〜黒部五郎岳（往復・山小屋泊））は18時間54分・29.4km・標高差2420m。新宿から電車とバスで約3時間52分（富山駅からバス1時間40分）。山小屋泊がおすすめです。北アルプス奥部の秘峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "黒部五郎岳 登山の難易度は上級｜山小屋泊・歩行18時間54分・標高差2,420m｜富山駅からバス【百名山】｜Yamatch",
     "ogDescription": "黒部五郎岳（標高2,840m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（折立〜太郎平小屋〜北ノ俣岳〜黒部五郎岳（往復・山小屋泊））は18時間54分・29.4km・標高差2420m。新宿から電車とバスで約3時間52分（富山駅からバス1時間40分）。山小屋泊がおすすめです。北アルプス奥部の秘峰。駐車場・装備・天気も掲載。",
@@ -47354,7 +48527,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-04",
+          "to": "06-25",
+          "text": "広河原へは一般車が入れず（マイカー規制）、南アルプス登山バスは2026年は6月26日〜11月3日でした。期間外は広河原へ行けません",
+          "sources": [
+            {
+              "label": "南アルプス観光 登山バス",
+              "url": "https://minami-alpskankou.jp/?page_id=6542"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "白峰三山：広河原〜北岳〜間ノ岳〜農鳥岳〜奈良田（縦走・2泊3日）",
@@ -47399,7 +48586,21 @@
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A5%88%E8%89%AF%E7%94%B0%E6%B8%A9%E6%B3%89/%E5%B1%B1%E6%A2%A8%E7%9C%8C%E6%97%A9%E5%B7%9D%E7%94%BA&to=%E8%BA%AB%E5%BB%B6&type=1&hb=1&lb=1",
           "timetableUrl": "https://www.town.hayakawa.yamanashi.jp/people/taffic.html"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-04",
+          "to": "06-25",
+          "text": "広河原へは一般車が入れず（マイカー規制）、南アルプス登山バスは2026年は6月26日〜11月3日でした。期間外は広河原へ行けません",
+          "sources": [
+            {
+              "label": "南アルプス観光 登山バス",
+              "url": "https://minami-alpskankou.jp/?page_id=6542"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "奈良田〜大門沢〜農鳥岳〜間ノ岳〜北岳〜広河原（縦走・2泊3日）",
@@ -47472,7 +48673,7 @@
     "metaTitle": "間ノ岳 登山の難易度は上級｜山小屋泊・歩行17時間47分・標高差2,407m｜甲府駅からバス【百名山】｜Yamatch",
     "metaDescription": "間ノ岳（標高3,190m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（広河原〜北岳山荘〜中白根山〜間ノ岳（往復・1泊2日））は17時間47分・17.2km・標高差2407m。新宿から電車とバスで約3時間35分（甲府駅からバス1時間50分）。山小屋泊がおすすめです。日本第3位の高峰（奥穂高岳と同高）。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-10",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "間ノ岳 登山の難易度は上級｜山小屋泊・歩行17時間47分・標高差2,407m｜甲府駅からバス【百名山】｜Yamatch",
     "ogDescription": "間ノ岳（標高3,190m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（広河原〜北岳山荘〜中白根山〜間ノ岳（往復・1泊2日））は17時間47分・17.2km・標高差2407m。新宿から電車とバスで約3時間35分（甲府駅からバス1時間50分）。山小屋泊がおすすめです。日本第3位の高峰（奥穂高岳と同高）。駐車場・装備・天気も掲載。",
@@ -47917,7 +49118,21 @@
           "searchUrl": "https://transit.yahoo.co.jp/search/result?from=%E5%A5%88%E8%89%AF%E7%94%B0%E6%B8%A9%E6%B3%89/%E5%B1%B1%E6%A2%A8%E7%9C%8C%E6%97%A9%E5%B7%9D%E7%94%BA&to=%E8%BA%AB%E5%BB%B6&type=1&hb=1&lb=1",
           "timetableUrl": "https://www.town.hayakawa.yamanashi.jp/people/taffic.html"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-04",
+          "to": "06-25",
+          "text": "広河原へは一般車が入れず（マイカー規制）、南アルプス登山バスは2026年は6月26日〜11月3日でした。期間外は広河原へ行けません",
+          "sources": [
+            {
+              "label": "南アルプス観光 登山バス",
+              "url": "https://minami-alpskankou.jp/?page_id=6542"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 140,
@@ -47966,7 +49181,7 @@
     "metaTitle": "農鳥岳 登山の難易度は上級｜山小屋泊・歩行16時間57分・標高差2,718m｜甲府駅からバス1時間50分｜Yamatch",
     "metaDescription": "農鳥岳（標高3,026m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（奈良田〜大門沢小屋〜農鳥岳（往復・山小屋泊））は16時間57分・24km・標高差2718m。新宿から電車とバスで約3時間35分（甲府駅からバス1時間50分）。山小屋泊がおすすめです。白峰三山の最南端。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-10",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "農鳥岳 登山の難易度は上級｜山小屋泊・歩行16時間57分・標高差2,718m｜甲府駅からバス1時間50分｜Yamatch",
     "ogDescription": "農鳥岳（標高3,026m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（奈良田〜大門沢小屋〜農鳥岳（往復・山小屋泊））は16時間57分・24km・標高差2718m。新宿から電車とバスで約3時間35分（甲府駅からバス1時間50分）。山小屋泊がおすすめです。白峰三山の最南端。駐車場・装備・天気も掲載。",
@@ -48380,7 +49595,21 @@
         "note": "2026年は砂防新道の南竜分岐〜黒ボコ岩のあいだが登山道改修工事のため10月下旬まで通行止め（う回路あり。工事の進み具合で前後する）",
         "noteSourceUrl": "https://www.pref.ishikawa.lg.jp/hakusan/tozaninf/attention.html",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "10-14",
+          "to": "07-03",
+          "text": "金沢駅〜市ノ瀬の白山登山バスは2026年は2026-07-04〜2026-10-13（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "金沢駅〜市ノ瀬の白山登山バス",
+              "url": "https://www.pref.ishikawa.lg.jp/hakusan/tozaninf/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "別当出合〜砂防新道〜御前峰〜観光新道（周回）",
@@ -48397,7 +49626,21 @@
         "note": "2026年は砂防新道の南竜分岐〜黒ボコ岩のあいだが登山道改修工事のため10月下旬まで通行止め（う回路あり。工事の進み具合で前後する）。2026年は観光新道の別当出合〜別当坂分岐のあいだも整備工事のため11月まで通行止め",
         "noteSourceUrl": "https://www.pref.ishikawa.lg.jp/hakusan/tozaninf/attention.html",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "10-14",
+          "to": "07-03",
+          "text": "金沢駅〜市ノ瀬の白山登山バスは2026年は2026-07-04〜2026-10-13（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "金沢駅〜市ノ瀬の白山登山バス",
+              "url": "https://www.pref.ishikawa.lg.jp/hakusan/tozaninf/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "大白川〜平瀬道〜白山室堂〜御前峰（往復）",
@@ -48462,7 +49705,7 @@
     "metaTitle": "白山 登山の難易度は中級｜山小屋泊・歩行9時間21分・標高差1,524m｜金沢駅からバス【百名山】｜Yamatch",
     "metaDescription": "白山（標高2,702m・石川県）の難易度は中級（体力のある中級者向け）。代表コース（別当出合〜砂防新道〜黒ボコ岩〜白山 御前峰（往復））は9時間21分・12.3km・標高差1524m。新宿から電車とバスで約5時間6分（金沢駅からバス）。山小屋泊がおすすめです。富士山・立山と並ぶ日本三霊山のひとつ。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-04",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "白山 登山の難易度は中級｜山小屋泊・歩行9時間21分・標高差1,524m｜金沢駅からバス【百名山】｜Yamatch",
     "ogDescription": "白山（標高2,702m・石川県）の難易度は中級（体力のある中級者向け）。代表コース（別当出合〜砂防新道〜黒ボコ岩〜白山 御前峰（往復））は9時間21分・12.3km・標高差1524m。新宿から電車とバスで約5時間6分（金沢駅からバス）。山小屋泊がおすすめです。富士山・立山と並ぶ日本三霊山のひとつ。駐車場・装備・天気も掲載。",
@@ -48937,7 +50180,19 @@
         "sourceUrl": "https://yamap.com/model-courses/25423",
         "lastVerified": "2026-10-24",
         "note": "活火山。噴火警報が出たときは登れない範囲があるので、登る前に気象庁の情報を確認",
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "text": "冬は蔵王エコーラインが閉鎖され、刈田岳・大黒天へ車で行けません（前季は2024年11月5日〜2025年4月25日。今冬の日付は未発表。宮城県）",
+          "sources": [
+            {
+              "label": "宮城県",
+              "url": "https://www.pref.miyagi.jp/documents/35909/r7zaoecholine.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "蔵王ロープウェイ地蔵山頂駅〜熊野岳（往復）",
@@ -48968,7 +50223,19 @@
         "sourceUrl": "https://yamap.com/model-courses/25424",
         "lastVerified": "2026-10-24",
         "note": "活火山。噴火警報が出たときは登れない範囲があるので、登る前に気象庁の情報を確認",
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "text": "冬は蔵王エコーラインが閉鎖され、刈田岳・大黒天へ車で行けません（前季は2024年11月5日〜2025年4月25日。今冬の日付は未発表。宮城県）",
+          "sources": [
+            {
+              "label": "宮城県",
+              "url": "https://www.pref.miyagi.jp/documents/35909/r7zaoecholine.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 335,
@@ -49017,7 +50284,7 @@
     "metaTitle": "蔵王山 登山の難易度は初〜中級｜日帰り1時間42分・標高差183m｜山形駅からバス37分【百名山】｜Yamatch",
     "metaDescription": "蔵王山（標高1,841m・宮城県・山形県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（蔵王山頂レストハウス〜熊野岳〜刈田岳（周回））は1時間42分・5km・標高差183m。新宿から電車とバスで約3時間26分（山形駅からバス37分）。日帰りできます。東北を代表する火山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "蔵王山 登山の難易度は初〜中級｜日帰り1時間42分・標高差183m｜山形駅からバス37分【百名山】｜Yamatch",
     "ogDescription": "蔵王山（標高1,841m・宮城県・山形県）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（蔵王山頂レストハウス〜熊野岳〜刈田岳（周回））は1時間42分・5km・標高差183m。新宿から電車とバスで約3時間26分（山形駅からバス37分）。日帰りできます。東北を代表する火山。駐車場・装備・天気も掲載。",
@@ -49403,7 +50670,21 @@
         "sourceUrl": "https://yamap.com/model-courses/31398",
         "lastVerified": "2026-10-25",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "11-24",
+          "to": "04-24",
+          "text": "塩山駅〜西沢渓谷入口の山梨交通バスは2026年は2026-04-25〜2026-11-23（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "塩山駅〜西沢渓谷入口の山梨交通バス",
+              "url": "https://ykbus.jp/wp/wp-content/themes/yamako/pdf/timetable/220001.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "雁坂峠〜雁坂嶺〜東破風山〜破風山（往復）",
@@ -49418,7 +50699,21 @@
         "sourceUrl": "https://yamap.com/model-courses/31392",
         "lastVerified": "2026-10-25",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "11-24",
+          "to": "04-24",
+          "text": "塩山駅〜西沢渓谷入口の山梨交通バスは2026年は2026-04-25〜2026-11-23（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "塩山駅〜西沢渓谷入口の山梨交通バス",
+              "url": "https://ykbus.jp/wp/wp-content/themes/yamako/pdf/timetable/220001.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "西沢渓谷入口〜木賊山〜甲武信ヶ岳〜破風山〜雁坂嶺（周回）",
@@ -49433,7 +50728,21 @@
         "sourceUrl": "https://yamap.com/model-courses/19816",
         "lastVerified": "2026-10-25",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "11-24",
+          "to": "04-24",
+          "text": "塩山駅〜西沢渓谷入口の山梨交通バスは2026年は2026-04-25〜2026-11-23（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "塩山駅〜西沢渓谷入口の山梨交通バス",
+              "url": "https://ykbus.jp/wp/wp-content/themes/yamako/pdf/timetable/220001.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 125,
@@ -49482,7 +50791,7 @@
     "metaTitle": "雁坂嶺 登山の難易度は中級｜日帰り7時間36分・標高差1,272m｜塩山駅からバス1時間3分【二百名山】｜Yamatch",
     "metaDescription": "雁坂嶺（標高2,289m・山梨県・埼玉県）の難易度は中級（体力のある中級者向け）。代表コース（雁坂峠〜雁坂嶺（往復））は7時間36分・13.1km・標高差1272m。新宿から電車とバスで約2時間28分（塩山駅からバス1時間3分）。日帰りできます。奥秩父主脈の一峰で、雁坂峠（日本三大峠のひとつ）のすぐ北に位置する。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "雁坂嶺 登山の難易度は中級｜日帰り7時間36分・標高差1,272m｜塩山駅からバス1時間3分【二百名山】｜Yamatch",
     "ogDescription": "雁坂嶺（標高2,289m・山梨県・埼玉県）の難易度は中級（体力のある中級者向け）。代表コース（雁坂峠〜雁坂嶺（往復））は7時間36分・13.1km・標高差1272m。新宿から電車とバスで約2時間28分（塩山駅からバス1時間3分）。日帰りできます。奥秩父主脈の一峰で、雁坂峠（日本三大峠のひとつ）のすぐ北に位置する。駐車場・装備・天気も掲載。",
@@ -49857,7 +51166,21 @@
         "sourceUrl": "https://yamap.com/model-courses/32757",
         "lastVerified": "2026-10-25",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "10-13",
+          "to": "07-16",
+          "text": "茅野駅〜戸台パークの南アルプスジオライナーは2026年は2026-07-17〜2026-10-12（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "茅野駅〜戸台パークの南アルプスジオライナー",
+              "url": "https://www.jrbuskanto.co.jp/jwp/topics/topics02/20260501_geoliner.html"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 200,
@@ -49908,7 +51231,7 @@
     "metaTitle": "鋸岳 登山の難易度は上級｜山小屋泊・歩行14時間44分・標高差2,153m｜茅野駅からバス【二百名山】｜Yamatch",
     "metaDescription": "鋸岳（標高2,685m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（戸台〜角兵衛沢〜鋸岳（往復））は14時間44分・25.4km・標高差2153m。新宿から電車とバスで約3時間11分（茅野駅からバス1時間5分）。山小屋泊がおすすめです。南アルプス北端の鋸状稜線が特徴的な難峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "鋸岳 登山の難易度は上級｜山小屋泊・歩行14時間44分・標高差2,153m｜茅野駅からバス【二百名山】｜Yamatch",
     "ogDescription": "鋸岳（標高2,685m・山梨県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（戸台〜角兵衛沢〜鋸岳（往復））は14時間44分・25.4km・標高差2153m。新宿から電車とバスで約3時間11分（茅野駅からバス1時間5分）。山小屋泊がおすすめです。南アルプス北端の鋸状稜線が特徴的な難峰。駐車場・装備・天気も掲載。",
@@ -50803,7 +52126,25 @@
         "lastVerified": "2026-10-24",
         "note": "時間は徳沢から。上高地〜徳沢は片道約2時間（YAMAPのモデルコースに含まれない）",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-16",
+          "to": "04-16",
+          "text": "上高地へは一年じゅう一般車が入れず（マイカー規制）、バスは2026年は4月17日〜11月15日でした。期間外は上高地へバス・車で行けません",
+          "sources": [
+            {
+              "label": "アルピコ交通 上高地線",
+              "url": "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/"
+            },
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "三股〜まめうち平〜蝶ヶ岳（往復）",
@@ -50889,7 +52230,7 @@
     "metaTitle": "蝶ヶ岳 登山の難易度は中級｜前泊推奨・歩行8時間45分・標高差1,257m｜新島々駅からバス1時間5分｜Yamatch",
     "metaDescription": "蝶ヶ岳（標高2,677m・長野県）の難易度は中級（体力のある中級者向け）。代表コース（上高地（徳沢）〜長塀山〜蝶ヶ岳〜横尾（周回））は8時間45分・11.9km・標高差1257m。新宿から電車とバスで約4時間5分（新島々駅からバス1時間5分）。山小屋泊がおすすめです。常念山脈南端の山で、穂高・槍ヶ岳の絶好の展望台。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "蝶ヶ岳 登山の難易度は中級｜前泊推奨・歩行8時間45分・標高差1,257m｜新島々駅からバス1時間5分｜Yamatch",
     "ogDescription": "蝶ヶ岳（標高2,677m・長野県）の難易度は中級（体力のある中級者向け）。代表コース（上高地（徳沢）〜長塀山〜蝶ヶ岳〜横尾（周回））は8時間45分・11.9km・標高差1257m。新宿から電車とバスで約4時間5分（新島々駅からバス1時間5分）。山小屋泊がおすすめです。常念山脈南端の山で、穂高・槍ヶ岳の絶好の展望台。駐車場・装備・天気も掲載。",
@@ -51353,7 +52694,21 @@
         "sourceUrl": "https://yamap.com/model-courses/93785",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-23",
+          "text": "長野県が中房温泉への県道（槍ヶ岳矢村線の中房温泉〜宮城ゲート）を冬期通行止めにする予定（12/1 15時〜4/23 12時）で、中房温泉へ行けません。バスも11月3日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "パノラマ銀座：中房温泉〜燕岳〜大天井岳〜常念岳〜蝶ヶ岳〜三股（縦走・2泊3日）",
@@ -51387,7 +52742,21 @@
           "lastVerified": "2026-11-09",
           "note": "路線バスは無い"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-23",
+          "text": "長野県が中房温泉への県道（槍ヶ岳矢村線の中房温泉〜宮城ゲート）を冬期通行止めにする予定（12/1 15時〜4/23 12時）で、中房温泉へ行けません。バスも11月3日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "中房温泉〜燕岳〜大天井岳〜常念岳〜一ノ沢（縦走・1泊2日）",
@@ -51432,7 +52801,21 @@
           "lastVerified": "2026-11-09",
           "note": "林道の崩落で、タクシーは手前まで"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-23",
+          "text": "長野県が中房温泉への県道（槍ヶ岳矢村線の中房温泉〜宮城ゲート）を冬期通行止めにする予定（12/1 15時〜4/23 12時）で、中房温泉へ行けません。バスも11月3日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 230,
@@ -51481,7 +52864,7 @@
     "metaTitle": "大天井岳 登山の難易度は上級｜山小屋泊・歩行14時間55分・標高差2,110m｜穂高駅からバス【二百名山】｜Yamatch",
     "metaDescription": "大天井岳（標高2,922m・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（中房温泉〜合戦尾根〜燕山荘〜大天井岳（往復・1泊2日））は14時間55分・17.4km・標高差2110m。新宿から電車とバスで約3時間54分（穂高駅からバス55分）。山小屋泊がおすすめです。常念山脈の最高峰で北アルプス表銀座縦走路の要衝。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "大天井岳 登山の難易度は上級｜山小屋泊・歩行14時間55分・標高差2,110m｜穂高駅からバス【二百名山】｜Yamatch",
     "ogDescription": "大天井岳（標高2,922m・長野県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（中房温泉〜合戦尾根〜燕山荘〜大天井岳（往復・1泊2日））は14時間55分・17.4km・標高差2110m。新宿から電車とバスで約3時間54分（穂高駅からバス55分）。山小屋泊がおすすめです。常念山脈の最高峰で北アルプス表銀座縦走路の要衝。駐車場・装備・天気も掲載。",
@@ -52087,6 +53470,20 @@
           "source": "ニッポン旅マガジン「燕岳・メガネ岩」",
           "sourceUrl": "https://tabi-mag.jp/tsubakuro-megane/",
           "lastVerified": "2026-11-11"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-23",
+          "text": "長野県が中房温泉への県道（槍ヶ岳矢村線の中房温泉〜宮城ゲート）を冬期通行止めにする予定（12/1 15時〜4/23 12時）で、中房温泉へ行けません。バスも11月3日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       },
       {
@@ -52108,6 +53505,20 @@
           "source": "ニッポン旅マガジン「燕岳・メガネ岩」",
           "sourceUrl": "https://tabi-mag.jp/tsubakuro-megane/",
           "lastVerified": "2026-11-11"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-23",
+          "text": "長野県が中房温泉への県道（槍ヶ岳矢村線の中房温泉〜宮城ゲート）を冬期通行止めにする予定（12/1 15時〜4/23 12時）で、中房温泉へ行けません。バスも11月3日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       }
     ],
@@ -52188,7 +53599,7 @@
     "hasHeroPhotoScript": false,
     "photos": [],
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "vibesHtml": "<div class=\"rec-card\">\n    <div class=\"rec-card-title\"><span class=\"eyebrow\">Vibes</span><span>こんな気分の人に</span></div>\n    <div class=\"rec-list\">\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>北アルプスに初めて登る人</strong>——急登でも登山道は整備され、合戦小屋までにベンチが4つある</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>山小屋泊を楽しみたい人</strong>——燕山荘から山頂まで約40分。喫茶室でケーキを味わえる</span></div>\n      <div class=\"rec-item\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><span><strong>白い岩と高山植物を見たい人</strong>——花崗岩の岩峯群と、7月ごろから咲くコマクサ</span></div>\n    </div>\n  </div>",
     "relatedLinksHtml": "<div class=\"related-links-card\">\n  <div class=\"related-links-title\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:4px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"3\" rx=\"1\"/><line x1=\"8\" y1=\"11\" x2=\"16\" y2=\"11\"/><line x1=\"8\" y1=\"15\" x2=\"13\" y2=\"15\"/></svg>関連するまとめ</div>\n    <a href=\"/search/shinjuku-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>新宿から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">新宿発・燕岳と難易度・時間を比較できる</span>\n    </a>\n    <a href=\"/search/ofuna-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20 L9 9 L13 15 L16 11 L21 20 Z\"/></svg>大船・横浜から日帰りで行ける山一覧</span>\n      <span class=\"related-link-sub\">神奈川発で燕岳の前後に検討したい山を比較</span>\n    </a>\n    <a href=\"/search/train-daytrip/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車で行ける日帰り登山一覧</span>\n      <span class=\"related-link-sub\">車なしOK・駅近の山だけを集めたリスト</span>\n    </a>\n    <a href=\"/recommend/\" class=\"related-link-item\">\n      <span class=\"related-link-main\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"12,3 14,10 12,12 10,10\" fill=\"currentColor\" stroke=\"none\"/><polygon points=\"12,21 10,14 12,12 14,14\" fill=\"currentColor\" opacity=\"0.5\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"white\" stroke=\"none\"/></svg>登山タイプ診断で自分に合う山を探す</span>\n      <span class=\"related-link-sub\">12問・約2分。16タイプのどれかと、そのタイプに合う山がわかる</span>\n    </a>\n</div>",
     "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge\" style=\"background:#fde8d8;color:#8a5010;\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>⚠️ バス季節運行（夏季）</span></div><div class=\"ts-line-name\">JR特急あずさ・大糸線・南安タクシー定期バス</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約2時間59分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">穂高駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>南安タクシー「中房温泉行き定期バス」　<span class=\"ts-duration\">約55分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">中房温泉（夏季運行）</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR湘南新宿ライン　<span class=\"ts-duration\">約31分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約2時間59分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">穂高駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>南安タクシー「中房温泉行き定期バス」　<span class=\"ts-duration\">約55分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">中房温泉（夏季運行）</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR横浜線　<span class=\"ts-duration\">約1時間</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">八王子駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約2時間26分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">穂高駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>南安タクシー「中房温泉行き定期バス」　<span class=\"ts-duration\">約55分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">中房温泉（夏季運行）</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約3時間54分\" data-omiya=\"約4時間25分\" data-yokohama=\"約4時間21分\">約3時間54分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約8,670円\" data-omiya=\"片道約8,670円\" data-yokohama=\"片道約8,670円\">片道約8,670円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>中房温泉へのバスは4月下旬〜11月上旬の所定日だけ・1日5便ほど</li><li>中房線は通れる時間に規制がある（安曇野市の最新の情報を確かめる）</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=穂高駅&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://nan-an.co.jp/nakabusa/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>中房温泉行き定期バス 時刻表</a></div></div>",
@@ -52392,7 +53803,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-14",
+          "text": "長野県が扇沢への県道（扇沢大町線の扇沢〜日向山）を冬期通行止めにする予定（12/1 10時から。解除は4月中旬）で、扇沢へ行けません。扇沢へのバスも11月30日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "扇沢〜針ノ木岳〜スバリ岳〜赤沢岳〜種池山荘〜柏原新道（縦走・1泊2日）",
@@ -52427,7 +53852,21 @@
           "note": "季節運行（運行期間はアクセス欄のとおり）",
           "timetableUrl": "https://www.alpico.co.jp/traffic/local/hakuba/ogizawa/"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-14",
+          "text": "長野県が扇沢への県道（扇沢大町線の扇沢〜日向山）を冬期通行止めにする予定（12/1 10時から。解除は4月中旬）で、扇沢へ行けません。扇沢へのバスも11月30日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "扇沢〜蓮華岳〜針ノ木岳〜赤沢岳〜種池山荘（縦走・1泊2日）",
@@ -52462,7 +53901,21 @@
           "note": "季節運行（運行期間はアクセス欄のとおり）",
           "timetableUrl": "https://www.alpico.co.jp/traffic/local/hakuba/ogizawa/"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "04-14",
+          "text": "長野県が扇沢への県道（扇沢大町線の扇沢〜日向山）を冬期通行止めにする予定（12/1 10時から。解除は4月中旬）で、扇沢へ行けません。扇沢へのバスも11月30日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 230,
@@ -52516,7 +53969,7 @@
     "metaTitle": "針ノ木岳 登山の難易度は中級｜山小屋泊・歩行10時間4分・標高差1,535m｜信濃大町駅からバス【二百名山】｜Yamatch",
     "metaDescription": "針ノ木岳（標高2,821m・富山県）の難易度は中級（体力のある中級者向け）。代表コース（扇沢〜大沢小屋〜針ノ木雪渓〜針ノ木岳（往復））は10時間4分・11.1km・標高差1535m。新宿から電車とバスで約3時間54分（信濃大町駅からバス40分）。山小屋泊がおすすめです。後立山連峰南端、日本三大雪渓のひとつ針ノ木大雪渓で知られる山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "針ノ木岳 登山の難易度は中級｜山小屋泊・歩行10時間4分・標高差1,535m｜信濃大町駅からバス【二百名山】｜Yamatch",
     "ogDescription": "針ノ木岳（標高2,821m・富山県）の難易度は中級（体力のある中級者向け）。代表コース（扇沢〜大沢小屋〜針ノ木雪渓〜針ノ木岳（往復））は10時間4分・11.1km・標高差1535m。新宿から電車とバスで約3時間54分（信濃大町駅からバス40分）。山小屋泊がおすすめです。後立山連峰南端、日本三大雪渓のひとつ針ノ木大雪渓で知られる山。駐車場・装備・天気も掲載。",
@@ -52924,6 +54377,20 @@
           "source": "YAMAP「烏帽子岳」の紹介文（山と溪谷社）",
           "sourceUrl": "https://yamap.com/mountains/55",
           "lastVerified": "2026-11-11"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-27",
+          "to": "04-16",
+          "text": "長野県が七倉への県道（槍ヶ岳線の七倉〜葛温泉上）を冬期通行止めにする予定（11/27 10時〜4/16 10時）で、七倉・高瀬ダムへ行けません。七倉へのバスも10月25日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       },
       {
@@ -52953,6 +54420,20 @@
           "source": "YAMAP「烏帽子岳」の紹介文（山と溪谷社）",
           "sourceUrl": "https://yamap.com/mountains/55",
           "lastVerified": "2026-11-11"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-27",
+          "to": "04-16",
+          "text": "長野県が七倉への県道（槍ヶ岳線の七倉〜葛温泉上）を冬期通行止めにする予定（11/27 10時〜4/16 10時）で、七倉・高瀬ダムへ行けません。七倉へのバスも10月25日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       }
     ],
@@ -52990,7 +54471,7 @@
     "metaTitle": "烏帽子岳（北ア） 登山の難易度は上級｜前泊推奨・歩行8時間15分・標高差1,475m｜信濃大町駅からバス【二百名山】｜Yamatch",
     "metaDescription": "烏帽子岳（北ア）（標高2,628m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（高瀬ダム〜ブナ立尾根〜烏帽子岳（往復））は8時間15分・7.8km・標高差1475m。新宿から電車とバスで約4時間24分（信濃大町駅からバス）。山小屋泊がおすすめです。裏銀座縦走路の入口に立つ山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "烏帽子岳（北ア） 登山の難易度は上級｜前泊推奨・歩行8時間15分・標高差1,475m｜信濃大町駅からバス【二百名山】｜Yamatch",
     "ogDescription": "烏帽子岳（北ア）（標高2,628m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（高瀬ダム〜ブナ立尾根〜烏帽子岳（往復））は8時間15分・7.8km・標高差1475m。新宿から電車とバスで約4時間24分（信濃大町駅からバス）。山小屋泊がおすすめです。裏銀座縦走路の入口に立つ山。駐車場・装備・天気も掲載。",
@@ -53419,7 +54900,21 @@
         "sourceUrl": "https://yamap.com/model-courses/100978",
         "lastVerified": "2026-10-25",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-27",
+          "to": "04-16",
+          "text": "長野県が七倉への県道（槍ヶ岳線の七倉〜葛温泉上）を冬期通行止めにする予定（11/27 10時〜4/16 10時）で、七倉・高瀬ダムへ行けません。七倉へのバスも10月25日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "裏銀座：高瀬ダム〜野口五郎岳〜水晶岳〜鷲羽岳〜双六岳〜新穂高（縦走・山小屋泊）",
@@ -53454,7 +54949,21 @@
           "note": "平湯温泉からはバスタ新宿行きの高速バス（笠ヶ岳の行き方の逆）。鉄道の駅へはさらにバスの乗り継ぎ",
           "timetableUrl": "https://www.nouhibus.co.jp/route_bus/shinhotaka-line/"
         },
-        "courseType": "traverse"
+        "courseType": "traverse",
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "11-27",
+          "to": "04-16",
+          "text": "長野県が七倉への県道（槍ヶ岳線の七倉〜葛温泉上）を冬期通行止めにする予定（11/27 10時〜4/16 10時）で、七倉・高瀬ダムへ行けません。七倉へのバスも10月25日までです",
+          "sources": [
+            {
+              "label": "長野県 冬期通行止め予定（令和8年度）",
+              "url": "https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "driveTime": 225,
@@ -53491,7 +55000,7 @@
     "metaTitle": "野口五郎岳 登山の難易度は上級｜山小屋泊・歩行19時間14分・標高差2,563m｜信濃大町駅からバス｜Yamatch",
     "metaDescription": "野口五郎岳（標高2,924m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（高瀬ダム〜烏帽子岳〜野口五郎岳〜竹村新道〜湯俣（周回・山小屋泊））は19時間14分・28.3km・標高差2563m。新宿から電車とバスで約4時間24分（信濃大町駅からバス）。山小屋泊がおすすめです。裏銀座縦走路中央に位置する北アルプスの静かな名峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "野口五郎岳 登山の難易度は上級｜山小屋泊・歩行19時間14分・標高差2,563m｜信濃大町駅からバス｜Yamatch",
     "ogDescription": "野口五郎岳（標高2,924m・富山県）の難易度は上級（十分な経験が要る上級者向け）。代表コース（高瀬ダム〜烏帽子岳〜野口五郎岳〜竹村新道〜湯俣（周回・山小屋泊））は19時間14分・28.3km・標高差2563m。新宿から電車とバスで約4時間24分（信濃大町駅からバス）。山小屋泊がおすすめです。裏銀座縦走路中央に位置する北アルプスの静かな名峰。駐車場・装備・天気も掲載。",
@@ -67880,7 +69389,21 @@
         "sourceUrl": "https://yamap.com/model-courses/22003",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "12-01",
+          "to": "03-31",
+          "text": "武蔵五日市駅・数馬〜都民の森のバス（急行便・連絡バス）は2026年は2026-04-01〜2026-11-30（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "武蔵五日市駅・数馬〜都民の森のバス（急行便・連絡バス）",
+              "url": "https://www.hinohara-mori.jp/access_bus/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "都民の森〜三頭山〜大沢山〜三頭大滝（周回）",
@@ -67895,7 +69418,21 @@
         "sourceUrl": "https://yamap.com/model-courses/22472",
         "lastVerified": "2026-10-24",
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "12-01",
+          "to": "03-31",
+          "text": "武蔵五日市駅・数馬〜都民の森のバス（急行便・連絡バス）は2026年は2026-04-01〜2026-11-30（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "武蔵五日市駅・数馬〜都民の森のバス（急行便・連絡バス）",
+              "url": "https://www.hinohara-mori.jp/access_bus/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "深山橋〜ヌカザス山〜三頭山〜槇寄山〜仲の平（縦走）",
@@ -67984,7 +69521,7 @@
     "metaTitle": "三頭山 登山の難易度は中級｜日帰り3時間36分・標高差690m｜武蔵五日市駅からバス｜Yamatch",
     "metaDescription": "三頭山（標高1,531m・東京都）の難易度は中級（体力のある中級者向け）。代表コース（都民の森〜鞘口峠〜三頭山〜ムシカリ峠〜三頭大滝（周回））は3時間36分・5.6km・標高差690m。新宿から電車とバスで約2時間30分（武蔵五日市駅からバス）。日帰りできます。奥多摩三山のひとつで、東京都檜原村に位置する。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-18",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "三頭山 登山の難易度は中級｜日帰り3時間36分・標高差690m｜武蔵五日市駅からバス｜Yamatch",
     "ogDescription": "三頭山（標高1,531m・東京都）の難易度は中級（体力のある中級者向け）。代表コース（都民の森〜鞘口峠〜三頭山〜ムシカリ峠〜三頭大滝（周回））は3時間36分・5.6km・標高差690m。新宿から電車とバスで約2時間30分（武蔵五日市駅からバス）。日帰りできます。奥多摩三山のひとつで、東京都檜原村に位置する。駐車場・装備・天気も掲載。",
@@ -75221,7 +76758,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "10-26",
+          "to": "05-01",
+          "text": "茅野駅〜渋の湯のバス（奥蓼科渋の湯線）は2026年は2026-05-02〜2026-10-25（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "茅野駅〜渋の湯のバス（奥蓼科渋の湯線）",
+              "url": "https://www.alpico.co.jp/traffic/datas/files/2026/04/02/2388a3c99697f371a9d8b22b450a7b085505b7f2.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "唐沢鉱泉〜西尾根〜西天狗岳〜東天狗岳〜黒百合ヒュッテ（周回）",
@@ -75250,7 +76801,21 @@
         "lastVerified": "2026-10-27",
         "coeff": 31,
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "car_only",
+          "label": "冬は電車・バスで行けない",
+          "from": "10-26",
+          "to": "05-01",
+          "text": "茅野駅〜渋の湯のバス（奥蓼科渋の湯線）は2026年は2026-05-02〜2026-10-25（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）",
+          "sources": [
+            {
+              "label": "茅野駅〜渋の湯のバス（奥蓼科渋の湯線）",
+              "url": "https://www.alpico.co.jp/traffic/datas/files/2026/04/02/2388a3c99697f371a9d8b22b450a7b085505b7f2.pdf"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "vibePoints": [
@@ -75378,7 +76943,7 @@
     "hasHeroPhotoScript": false,
     "photos": [],
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-03",
+    "mountainUpdated": "2026-11-19",
     "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge\" style=\"background:#fde8d8;color:#8a5010;\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>⚠️ バス季節運行</span></div><div class=\"ts-line-name\">JR特急あずさ・アルピコ交通「奥蓼科渋の湯線」</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約2時間6分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">茅野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通「奥蓼科渋の湯線」　<span class=\"ts-duration\">約52分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">渋の湯（季節運行）</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR武蔵野線・中央線（立川乗換）　<span class=\"ts-duration\">約55分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">立川駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約1時間42分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">茅野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通「奥蓼科渋の湯線」　<span class=\"ts-duration\">約52分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">渋の湯（季節運行）</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR京浜東北線・横浜線（八王子乗換）　<span class=\"ts-duration\">約1時間8分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">八王子駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約1時間33分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">茅野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通「奥蓼科渋の湯線」　<span class=\"ts-duration\">約52分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">渋の湯（季節運行）</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約2時間58分\" data-omiya=\"約3時間29分\" data-yokohama=\"約3時間33分\">約2時間58分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約7,760円\" data-omiya=\"片道約7,760円\" data-yokohama=\"片道約7,100円\">片道約7,760円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>渋の湯へのバスは2026年は5月2日〜10月25日の土日祝と8月1日〜30日だけ、1日2便</li><li>運行の無い日は茅野駅からタクシー</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=茅野駅&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://www.alpico.co.jp/traffic/local/suwa/shibunoyu/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通 奥蓼科渋の湯線 時刻表</a></div></div>",
     "coeffMin": 24,
     "coeffMax": 31,
@@ -75720,7 +77285,21 @@
           "lastVerified": "2026-11-04"
         },
         "byTrain": true,
-        "courseType": "out_and_back"
+        "courseType": "out_and_back",
+        "winter": {
+          "state": "closed",
+          "label": "ロープウェイ運休",
+          "from": "11-24",
+          "to": "12-18",
+          "text": "北八ヶ岳ロープウェイが整備点検で運休し（2026年11月24日〜12月18日）、山頂駅へ行けません",
+          "sources": [
+            {
+              "label": "北八ヶ岳ロープウェイ",
+              "url": "https://www.kitayatu.jp/ropeway/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "山頂駅〜北横岳〜雨池峠〜縞枯山（周回）",
@@ -75735,7 +77314,21 @@
         "lastVerified": "2026-10-27",
         "coeff": 17,
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "ロープウェイ運休",
+          "from": "11-24",
+          "to": "12-18",
+          "text": "北八ヶ岳ロープウェイが整備点検で運休し（2026年11月24日〜12月18日）、山頂駅へ行けません",
+          "sources": [
+            {
+              "label": "北八ヶ岳ロープウェイ",
+              "url": "https://www.kitayatu.jp/ropeway/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       },
       {
         "name": "山頂駅〜北横岳〜亀甲池〜双子池〜雨池（周回）",
@@ -75750,7 +77343,21 @@
         "lastVerified": "2026-10-27",
         "coeff": 23,
         "byTrain": true,
-        "courseType": "loop"
+        "courseType": "loop",
+        "winter": {
+          "state": "closed",
+          "label": "ロープウェイ運休",
+          "from": "11-24",
+          "to": "12-18",
+          "text": "北八ヶ岳ロープウェイが整備点検で運休し（2026年11月24日〜12月18日）、山頂駅へ行けません",
+          "sources": [
+            {
+              "label": "北八ヶ岳ロープウェイ",
+              "url": "https://www.kitayatu.jp/ropeway/"
+            }
+          ],
+          "lastVerified": "2026-11-19"
+        }
       }
     ],
     "vibePoints": [
@@ -75878,7 +77485,7 @@
     "hasHeroPhotoScript": false,
     "photos": [],
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "trainAccessHtml": "<div class=\"ts-section\"><div class=\"ts-header\"><div class=\"ts-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>電車・バスでのアクセス</div><span class=\"ts-badge ts-badge-year\"><svg class=\"rec-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>年中運行</span></div><div class=\"ts-line-name\">JR特急あずさ・アルピコ交通「北八ヶ岳ロープウェイ線」・北八ヶ岳ロープウェイ</div><div class=\"ts-route ts-route-shinjuku\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">新宿駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約2時間6分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">茅野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通「北八ヶ岳ロープウェイ線」　<span class=\"ts-duration\">約59分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">北八ヶ岳ロープウェイ山麓駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>北八ヶ岳ロープウェイ　<span class=\"ts-duration\">約7分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">山頂駅</div></div></div></div><div class=\"ts-route ts-route-omiya\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">大宮駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR武蔵野線・中央線（立川乗換）　<span class=\"ts-duration\">約55分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">立川駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約1時間42分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">茅野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通「北八ヶ岳ロープウェイ線」　<span class=\"ts-duration\">約59分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">北八ヶ岳ロープウェイ山麓駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>北八ヶ岳ロープウェイ　<span class=\"ts-duration\">約7分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">山頂駅</div></div></div></div><div class=\"ts-route ts-route-yokohama\" style=\"display:none\"><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">横浜駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR京浜東北線・横浜線（八王子乗換）　<span class=\"ts-duration\">約1時間8分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">八王子駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>JR特急あずさ　<span class=\"ts-duration\">約1時間33分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">茅野駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通「北八ヶ岳ロープウェイ線」　<span class=\"ts-duration\">約59分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node\"><div class=\"ts-station\">北八ヶ岳ロープウェイ山麓駅</div></div><div class=\"ts-arrow\"><span class=\"ts-method\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>北八ヶ岳ロープウェイ　<span class=\"ts-duration\">約7分</span></span></div></div><div class=\"ts-step\"><div class=\"ts-node ts-node-last\"><div class=\"ts-station\">山頂駅</div></div></div></div><div class=\"ts-summary\"><div class=\"ts-dep-toggle\"><button type=\"button\" class=\"ts-dep-btn active\" data-key=\"shinjuku\" onclick=\"changeDepTrain('shinjuku')\">新宿発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"omiya\" onclick=\"changeDepTrain('omiya')\">大宮発</button><button type=\"button\" class=\"ts-dep-btn\" data-key=\"yokohama\" onclick=\"changeDepTrain('yokohama')\">横浜発</button></div><span class=\"ts-time-val\" data-shinjuku=\"約3時間12分\" data-omiya=\"約3時間43分\" data-yokohama=\"約3時間47分\">約3時間12分</span><span class=\"ts-fare-val\" data-shinjuku=\"片道約9,160円\" data-omiya=\"片道約9,160円\" data-yokohama=\"片道約8,500円\">片道約9,160円</span></div><div class=\"ts-note\"><ul class=\"ts-note-list\"><li>ロープウェイ代（片道1,400円）は別</li><li>ロープウェイは2026年11月24日〜12月18日に点検で運休</li></ul></div><div class=\"ts-links\"><a href=\"https://transit.yahoo.co.jp/search/result?from=新宿&amp;to=茅野駅&amp;type=1\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-yahoo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><path d=\"M2 7 H14 L20 11.5 V17 H2 Z\" fill=\"currentColor\"/><rect x=\"4\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><rect x=\"9\" y=\"9.5\" width=\"3\" height=\"3\" fill=\"white\"/><line x1=\"1\" y1=\"19.5\" x2=\"21\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>乗換案内で検索</a><a href=\"https://www.alpico.co.jp/traffic/local/search/result/3005/\" target=\"_blank\" rel=\"noopener\" class=\"ts-link ts-link-bus\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:-2px;margin-right:3px\"><rect x=\"1.5\" y=\"7\" width=\"21\" height=\"9.5\" rx=\"1.5\" fill=\"currentColor\"/><rect x=\"3.5\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"4\" fill=\"white\"/><rect x=\"15\" y=\"9\" width=\"5\" height=\"4\" fill=\"white\"/><circle cx=\"6\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/><circle cx=\"17\" cy=\"18.5\" r=\"2.3\" fill=\"currentColor\"/></svg>アルピコ交通 北八ヶ岳ロープウェイ線 時刻表</a></div></div>",
     "coeffMin": 8,
     "coeffMax": 23,

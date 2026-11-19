@@ -488,6 +488,21 @@ function applyDep(){
 })();
 
 
+// === 点検などの運休のお知らせ：始まる日の1か月前（data-show-from）から終わる日（data-show-until）まで見せる（2026-11-19〜） ===
+(function(){
+  function pad(n){ return n < 10 ? '0' + n : String(n); }
+  function run(){
+    var d = new Date();
+    var today = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+    var els = document.querySelectorAll('[data-show-from][data-show-until]');
+    for(var i = 0; i < els.length; i++){
+      var on = els[i].getAttribute('data-show-from') <= today && today <= els[i].getAttribute('data-show-until');
+      if(on) els[i].removeAttribute('hidden'); else els[i].setAttribute('hidden', '');
+    }
+  }
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', run); } else { run(); }
+})();
+
 // === 毎年変わる情報：期限（data-valid-to）を過ぎたら「終了」の注記を足す ===
 (function(){
   function pad(n){ return n < 10 ? '0' + n : String(n); }

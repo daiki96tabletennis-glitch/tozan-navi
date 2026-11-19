@@ -16,7 +16,7 @@
 <meta property="article:modified_time" content="2026-11-18T00:00:00+09:00">
 <link rel="canonical" href="https://tozan-navi.com/mountains/nanaitsurasan/">
 <meta name="google-site-verification" content="dJ2byH9b8xF8S5lqAyWV-DqRwPGLEjWXs_-Un9oXGHs" />
-<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261119a">
+<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261119b">
 <style>.header-title{color:white;font-family:Georgia,serif;font-size:19px;font-weight:bold}
 .header-sub{color:rgba(255,255,255,0.5);font-size:10px;margin-top:1px}
 .hero{background:#4e6535;border-radius:14px;overflow:hidden;margin-bottom:16px}
@@ -352,6 +352,9 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
 .ts-season-links{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px}
 .ts-season-links a{color:#1a4a70;font-weight:700}
 .ts-season-src{font-size:11.5px;color:#7a8a98;margin:6px 0 0}
+
+/* 点検などの運休のお知らせは、期間の1か月前まで hidden（mountain-engine.js が出す。2026-11-19） */
+.warn-banner[hidden]{display:none!important}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -710,7 +713,7 @@ var YM_MOUNTAIN_INIT = {
   ]
 };
 </script>
-<script src="../../assets/js/mountain-engine.js?v=20261119a"></script>
+<script src="../../assets/js/mountain-engine.js?v=20261119b"></script>
 
 
 
@@ -748,9 +751,9 @@ var YM_MOUNTAIN_INIT = {
 </script>
 
 
-<script src="../../assets/js/gear-common.js?v=20261119a"></script>
-<script src="../../assets/js/mountain.js?v=20261119a"></script>
-<script src="../../assets/js/counts-config.js?v=20261119a"></script>
+<script src="../../assets/js/gear-common.js?v=20261119b"></script>
+<script src="../../assets/js/mountain.js?v=20261119b"></script>
+<script src="../../assets/js/counts-config.js?v=20261119b"></script>
 <script src="../../assets/js/ym-counts.js?v=20261025a"></script>
 <script src="/assets/js/to-top.js?v=20261025a" defer></script>
 </body>

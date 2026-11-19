@@ -88,8 +88,8 @@ def jd(s):
 def closures(m):
     out = []
     for a in m.get('annualItems') or []:
-        if a.get('kind') != 'closure':
-            continue
+        if a.get('kind') not in ('closure', 'suspension'):
+            continue  # suspension＝点検などで乗り物が止まる期間（木曽駒ヶ岳のロープウェイ。2026-11-19〜）
         f, t = a.get('validFrom'), a.get('validTo')
         if not f and not t and not WINTER_WORDS.search(a.get('label') or ''):
             continue  # 期間の無い閉鎖（災害の通行止めなど）は冬の判定に使わない

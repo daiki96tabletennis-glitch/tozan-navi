@@ -61,7 +61,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261119a"
+ASSET_VER = "20261119b"
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
@@ -1023,6 +1023,8 @@ def render_annual_items(mt):
             continue
         if mt.get("transitSeasons") and (it.get("kind") or "transport") == "transport":
             continue
+        if it.get("kind") == "suspension":
+            continue  # 点検などの運休は、ページの上の注意のバナー（render_suspensions）で期間の前から出す
         rng = f'{_md(it.get("validFrom"))}〜{_md(it.get("validTo"))}'
         link = ""
         if it.get("sourceUrl"):
@@ -1306,29 +1308,37 @@ def winter_line(r):
 
 
 def rep_route_of(mt):
-    for r in mt.get("routes") or []:
+    """代表コース（新しい形は representativeRouteId、旧い形は1番目）"""
+    routes = mt.get("routes") or []
+    for r in routes:
         if r.get("id") and r.get("id") == mt.get("representativeRouteId"):
             return r
-    return None
+    return routes[0] if routes and not mt.get("representativeRouteId") else None
 
 
-def winter_alt_id(mt):
-    """代表コースが冬に使えない（state が closed）とき、その期間だけ代表にするコース（routes[代表].winter.alt）"""
+def winter_alt_index(mt):
+    """代表コースが冬に使えない（state が closed で期間がある）とき、その期間だけ代表にするコースの番号（1から）。
+    routes[代表].winter.alt はコースの id か番号"""
     rr = rep_route_of(mt)
     w = (rr or {}).get("winter") or {}
-    return w.get("alt") if w.get("state") == "closed" else None
+    alt = w.get("alt")
+    if w.get("state") != "closed" or not alt or not (w.get("from") and w.get("to")):
+        return None
+    for i, r in enumerate(mt.get("routes") or [], start=1):
+        if alt == i or (r.get("id") and r.get("id") == alt):
+            return i
+    raise SystemExit("winter.alt のコースが無い：%s %s" % (mt.get("id"), alt))
 
 
 def winter_swap_note(mt):
     """代表コースが冬に使えない期間だけ出す案内（2026-11-19。運営者の指示「代表的な登山口がアクセス不可の場合は、アクセスできる
     登山口にその期間だけ変えて欲しい」）。期間はページを開いた日の日付で決める（WINTER_SWAP_SCRIPT）"""
-    alt = winter_alt_id(mt)
-    if not alt:
+    n_alt = winter_alt_index(mt)
+    if not n_alt:
         return ""
     rr = rep_route_of(mt)
     w = rr["winter"]
     routes = mt["routes"]
-    n_alt = next(i for i, r in enumerate(routes, start=1) if r.get("id") == alt)
     n_rep = next(i for i, r in enumerate(routes, start=1) if r is rr)
     st, color = WINTER_STYLE["closed"]
     return (f'<div class="rl-winter-swap" data-from="{esc(w["from"])}" data-to="{esc(w["to"])}" hidden '
@@ -1470,7 +1480,7 @@ def render_routes(mt):
         ssot_html = ""
         # 旧構造の山でも、ルートに trailheadName / status があれば表示する
         th_name = (mt.get("routeTrailheads") or {}).get(r.get("id")) or r.get("trailheadName")
-        if mt.get("dataModel") == "ssot-v1" or th_name or r.get("status") or tech_level(r.get("tech")) or r.get("chains") or r.get("rocks") or winter_shown(r):
+        if mt.get("dataModel") == "ssot-v1" or th_name or r.get("status") or tech_level(r.get("tech")) or r.get("chains") or r.get("rocks") or winter_shown(r) or i == winter_alt_index(mt):
             tags = []
             if tech_level(r.get("tech")):
                 tags.append(tech_tag(r["tech"]))
@@ -1482,7 +1492,7 @@ def render_routes(mt):
                 tags.append(winter_tag(r))
             if r.get("id") and r.get("id") == mt.get("representativeRouteId"):
                 tags.append('<span class="rl-tag rl-tag-rep rl-rep-normal">代表ルート</span>')
-            if r.get("id") and r.get("id") == winter_alt_id(mt):
+            if i == winter_alt_index(mt):
                 tags.append('<span class="rl-tag rl-tag-rep rl-rep-winter" hidden>この期間の代表ルート</span>')
             st = r.get("status")
             if st and st.get("state") == "closed":
@@ -1869,7 +1879,40 @@ def _with_shuttle(html, mt):
 
 
 def render_warn_banner(mt):
-    return _with_shuttle(_render_warn_banner(mt), mt)
+    parts = [x for x in (_with_shuttle(_render_warn_banner(mt), mt), render_suspensions(mt)) if x]
+    return "\n  ".join(parts)
+
+
+def _jmd(d):
+    """2026-12-01 → 12月1日"""
+    y, m, dd = d.split("-")
+    return f"{int(m)}月{int(dd)}日"
+
+
+def render_suspensions(mt):
+    """点検などで乗り物が止まる期間（annualItems の kind が suspension）を、ページの上の注意のバナーで出す（2026-11-19〜。運営者の指示
+    「点検運休の1か月前から表示を出したい（何日から何日はロープウェイ運休みたいな）」）。
+    mountain-engine.js が、開いた日が data-show-from（始まる日の showDaysBefore 日前。決まっていなければ30日前）〜data-show-until（終わる日）の
+    あいだだけ見せる（それ以外は hidden のまま）。期間のあとは自動で消える"""
+    out = []
+    for it in mt.get("annualItems") or []:
+        if it.get("kind") != "suspension" or not (it.get("validFrom") and it.get("validTo")):
+            continue
+        fr = datetime.date.fromisoformat(it["validFrom"])
+        show = fr - datetime.timedelta(days=int(it.get("showDaysBefore") or 30))
+        same_year = it["validFrom"][:4] == it["validTo"][:4]
+        rng = f'{_jmd(it["validFrom"])}〜{_jmd(it["validTo"])}' if same_year else \
+              f'{it["validFrom"][:4]}年{_jmd(it["validFrom"])}〜{it["validTo"][:4]}年{_jmd(it["validTo"])}'
+        title = f'{rng}は{esc(it.get("label") or "運休")}'
+        link = ""
+        if it.get("sourceUrl"):
+            link = (f'\n      <a href="{esc(it["sourceUrl"])}" target="_blank" rel="noopener" '
+                    f'class="warn-link">{esc(it.get("linkText") or "公式の案内")} →</a>')
+        verified = f'<div class="warn-verified">最終確認：{esc(it.get("lastVerified") or "")}</div>' if it.get("lastVerified") else ""
+        attrs = f' hidden data-show-from="{show.isoformat()}" data-show-until="{esc(it["validTo"])}"'
+        out.append(warn_box("yellow", title,
+                            f'      <div class="warn-text">{esc(it.get("note") or "")}</div>{link}\n      {verified}', attrs))
+    return "\n  ".join(out)
 
 
 def _render_warn_banner(mt):

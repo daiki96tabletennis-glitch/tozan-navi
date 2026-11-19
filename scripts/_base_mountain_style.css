@@ -333,3 +333,6 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
 .ts-season-links{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px}
 .ts-season-links a{color:#1a4a70;font-weight:700}
 .ts-season-src{font-size:11.5px;color:#7a8a98;margin:6px 0 0}
+
+/* 点検などの運休のお知らせは、期間の1か月前まで hidden（mountain-engine.js が出す。2026-11-19） */
+.warn-banner[hidden]{display:none!important}
