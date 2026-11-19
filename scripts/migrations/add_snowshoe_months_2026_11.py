@@ -27,8 +27,10 @@ import add_gear_new_mountains_2026_11 as R  # noqa: E402
 from fix_winter_gear_road_closures_2026_11 import RANK, cur_of  # noqa: E402
 
 DAY = '2026-11-17'
-MONTHS = {'tanigawa': [12, 1, 2], 'makihata': [12, 1, 2, 3], 'tairappyo': [12], 'azuma': [1, 2, 3], 'keizandake': [1]}
-LOWER = {'azuma': [1, 2, 3], 'keizandake': [1]}   # 冬山装備 → 軽アイゼン等
+# 経ヶ岳は 2026-11-18 に2・3月を足し、12・2・3月も軽アイゼン等に下げた（運営者の指示「調べ直す」。ヤマレコの2021-12〜2026-03の記録。
+# 仲仙寺からの代表コースの記録はワカン・スノーシューのラッセルが中心で、12本爪・ピッケルの記録はほぼ権兵衛峠からの別ルート。EXTRA_SRC）
+MONTHS = {'tanigawa': [12, 1, 2], 'makihata': [12, 1, 2, 3], 'tairappyo': [12], 'azuma': [1, 2, 3], 'keizandake': [1, 2, 3]}
+LOWER = {'azuma': [1, 2, 3], 'keizandake': [12, 1, 2, 3]}   # 冬山装備 → 軽アイゼン等
 # スノーシュー登山の定番の山（2026-11-17。運営者の指示「入笠山・霧ヶ峰・美ヶ原などスノーシュー登山で定番の山が入っていないのはおかしい」）
 # 公式・自治体の観光局・ガイド会社が、その山（代表コースか、冬に行けるほうのコース）で冬のスノーシューのツアー・コースを案内している月。
 # 踏み固められた道は軽アイゼン・チェーンスパイクでも歩けるので、装備カードは「条件次第」にして、そのことを書く
@@ -88,6 +90,18 @@ EXTRA_SRC = {
         {'url': 'https://yamap.com/activities/46243602/article', 'date': '2026-02-20', 'kind': 'record',
          'says': '天元台のリフト終点から西吾妻山へスノーシューで往復。アイゼン・ピッケルの記載なし'},
     ],
+    'keizandake': [
+        {'url': 'https://www.yamareco.com/modules/yamareco/detail-3936048.html', 'date': '2022-01', 'kind': 'record',
+         'says': 'トレースなし。5合目過ぎでワカン。ツボ足だと8合目まで膝〜腿、その上は腰のラッセル'},
+        {'url': 'https://www.yamareco.com/modules/yamareco/detail-3969911.html', 'date': '2022-02', 'kind': 'record',
+         'says': '六合目までトレースがありツボ足、その上はトレースが消えてワカンを使った'},
+        {'url': 'https://www.yamareco.com/modules/yamareco/detail-9285699.html', 'date': '2026-02', 'kind': 'record',
+         'says': '七合目から上はトレースが無く、股まで沈むラッセル。ワカンを持っておらず苦労した'},
+        {'url': 'https://www.yamareco.com/modules/yamareco/detail-6558830.html', 'date': '2024-03', 'kind': 'record',
+         'says': '6合目でトレースが途切れ、山頂までほぼラッセル。膝上〜太腿まで沈んだ'},
+        {'url': 'https://www.yamareco.com/modules/yamareco/detail-9368543.html', 'date': '2026-03', 'kind': 'record',
+         'says': 'ワカンとアイゼンを併用して登った'},
+    ],
     'makihata': [
         {'url': 'https://yamap.com/activities/15387027/article', 'date': '2022-01-25', 'kind': 'record',
          'says': '巻機山・牛ヶ岳まで全行程スノーシューで歩いた'},
@@ -96,7 +110,7 @@ EXTRA_SRC = {
 NOTE = {
     'makihata': '1月は記録が1件だけだが、12月・2月が「要る」ため同じにした',
     'azuma': '2月は記録が1件だけだが、1月・3月が「要る」ため同じにした。12本爪アイゼン・ピッケルまでは要らない（6本爪の軽アイゼン）',
-    'keizandake': '降雪の後やトレースの無い日。トレースがあればチェーンスパイクだけで登れた記録もある。12本爪アイゼン・ピッケルまでは要らない',
+    'keizandake': '降雪の後やトレースの無い日（1〜3月）。トレースがあればチェーンスパイクだけで登れた記録もある。仲仙寺からの道では12本爪アイゼン・ピッケルまでは要らない',
 }
 SNOW_CARD = {'c': 'snowshoe', 'i': '推奨', 'p': 'MSR ライトニングアッセント',
              'r': '雪が深く、トレースが無いと膝〜腰まで沈む時期です。スノーシューかワカン（かんじき）があると沈まずに歩けます。降雪の後は特に要ります。'}
@@ -151,14 +165,14 @@ def main():
                 if want:
                     idx = max(i for i, c in enumerate(cards) if c['c'] in ('shoe', 'rain', 'crampon')) + 1
                     cards.insert(idx, dict(R.WINTER_NEXT if want == 'winter_gear' else R.LIGHT_NEXT))
-        m['mountainUpdated'] = DAY
+        m['mountainUpdated'] = max(m.get('mountainUpdated') or '', DAY)
     for mid, mos in TEIBAN.items():
         m = by[mid]
         m['snowshoeMonths'] = sorted(mos)
         m['snowshoeSources'] = TEIBAN_SRC[mid]
         m['snowshoeCheckedAt'] = DAY
         m['snowshoeNote'] = TEIBAN_NOTE[mid]
-        m['mountainUpdated'] = DAY
+        m['mountainUpdated'] = max(m.get('mountainUpdated') or '', DAY)
         for mo in mos:
             cards = G[mid][str(mo)]
             cards[:] = [c for c in cards if c['c'] != 'snowshoe']
@@ -171,7 +185,7 @@ def main():
         m['snowshoeCheckedAt'] = DAY
         if NOTE.get(mid):
             m['snowshoeNote'] = NOTE[mid]
-        m['mountainUpdated'] = DAY
+        m['mountainUpdated'] = max(m.get('mountainUpdated') or '', DAY)
         for mo in mos:
             cards = G[mid][str(mo)]
             cards[:] = [c for c in cards if c['c'] != 'snowshoe']

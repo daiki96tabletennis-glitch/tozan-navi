@@ -59,9 +59,9 @@
         "tanigawa",
         "nasu",
         "adatara",
-        "karamatsu",
         "kisokoma",
-        "tateyama"
+        "akagi",
+        "amagi"
       ]
     }
   ],
@@ -259,54 +259,60 @@
       "status": "pending",
       "operator": "あだたらエクスプレス（ゴンドラ）・福島交通（奥岳→二本松駅）"
     },
-    "karamatsu": {
-      "status": "pending",
-      "operator": "八方アルペンライン（ゴンドラ・リフト）・アルピコ交通（八方→白馬駅）",
-      "note": "八方アルペンライン（ゴンドラ・リフト）の2026年のグリーンシーズンは11月3日まで（白馬観光開発のお知らせ）。下りの最終時刻は確認中です"
-    },
     "kisokoma": {
       "status": "pending",
       "operator": "駒ヶ岳ロープウェイ・中央アルプス観光バス（しらび平→菅の台）",
       "note": "運行会社の公式サイトが開けず、確認できていません"
     },
-    "tateyama": {
-      "status": "ok",
-      "operator": "立山黒部アルペンルート",
-      "rows": [
-        {
-          "from": "室堂（11月3日まで）",
-          "to": "立山駅",
-          "weekday": "16:20",
-          "holiday": "16:20"
-        },
-        {
-          "from": "室堂（11月4日〜30日）",
-          "to": "立山駅",
-          "weekday": "15:30",
-          "holiday": "15:30"
-        }
-      ],
-      "note": "立山駅行きの最終接続の便です（立山駅着は11月3日まで17:27、11月4日から16:37）。アルペンルートは11月30日まで。天候で運休・遅れることがあります",
-      "sources": [
-        {
-          "label": "立山黒部アルペンルートの時刻表（4/15〜11/3）",
-          "url": "https://www.alpen-route.com/_wp/wp-content/uploads/2026/02/2026_timetable_nagano-toyama0626edit.pdf",
-          "revised": "2026年6月26日現在",
-          "checkedAt": "2026-10-30"
-        },
-        {
-          "label": "立山黒部アルペンルートの時刻表（11/4〜11/30）",
-          "url": "https://www.alpen-route.com/_wp/wp-content/uploads/2026/10/c49a07b8c7e70e5fe4112e6d31fd0c04.pdf",
-          "revised": "2026年9月30日現在",
-          "checkedAt": "2026-10-30"
-        }
-      ],
-      "indexRow": 1,
-      "indexLabel": "11/4から"
-    },
     "kawanoriyama": {
       "status": "walk",
       "text": "下りは鳩ノ巣駅まで歩いて戻れます（行きは奥多摩駅からバスで川乗橋へ。鳩ノ巣駅から歩いて往復することもできます）"
+    },
+    "akagi": {
+      "status": "ok",
+      "operator": "関越交通",
+      "rows": [
+        {
+          "from": "あかぎ広場前",
+          "to": "前橋駅",
+          "weekday": "17:17",
+          "holiday": "17:17"
+        }
+      ],
+      "note": "2026年12月1日〜2027年3月31日の冬ダイヤ。平日は富士見温泉で乗り換え（前橋駅着18:10）",
+      "revised": "2026-12-01",
+      "checkedAt": "2026-11-18",
+      "sourceUrl": "https://kan-etsu.net/files/libs/14686/202611131729401095.pdf",
+      "sources": [
+        {
+          "label": "関越交通 冬ダイヤ（土日祝）",
+          "url": "https://kan-etsu.net/files/libs/14686/202611131729401095.pdf",
+          "revised": "2026年12月1日改正",
+          "checkedAt": "2026-11-18"
+        },
+        {
+          "label": "関越交通 冬ダイヤ（平日）",
+          "url": "https://kan-etsu.net/files/libs/14685/202611131729328577.pdf",
+          "revised": "2026年12月1日改正",
+          "checkedAt": "2026-11-18"
+        }
+      ]
+    },
+    "amagi": {
+      "status": "ok",
+      "operator": "東海バス",
+      "rows": [
+        {
+          "from": "天城縦走登山口",
+          "to": "伊東駅",
+          "weekday": "16:45",
+          "holiday": "16:45"
+        }
+      ],
+      "note": "伊東駅着17:40。バスは1日3往復（土曜などは増発便あり）",
+      "revised": "2026-03-01",
+      "checkedAt": "2026-11-18",
+      "sourceUrl": "https://www.tokaibus.jp/images/6589.pdf"
     }
   },
   "courses": {
@@ -385,13 +391,13 @@
       "route": 0,
       "note": "奥岳登山口からあだたら山ロープウェイで山頂駅へ上がって歩き始めます（ロープウェイの運賃・時間は上の合計に入っていません）。"
     },
-    "karamatsu": {
-      "route": 0,
-      "note": "八方からゴンドラとリフトを乗り継いで八方池山荘へ上がって歩き始めます（ゴンドラ・リフトの運賃・時間は上の合計に入っていません）。"
-    },
     "kintoki": {
       "route": 0,
       "note": "バスタ新宿から小田急ハイウェイバスで金時登山口まで乗り換えなしで行く方法もあります（2,400円。小田急ハイウェイバスの運賃表、2026-11-03 確認）。高速バスは本数が少なく、予約が要ります。"
+    },
+    "akagi": {
+      "route": 3,
+      "note": "直通のバスは土日祝だけで、平日は富士見温泉で乗り換えます。12月〜3月は冬ダイヤです。"
     }
   },
   "season": {

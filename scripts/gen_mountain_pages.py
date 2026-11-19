@@ -1221,6 +1221,42 @@ def rock_line(r):
     return f'<div class="rl-access" style="color:#5a4636">岩場：{esc(rk["spots"])}。出典：{src}</div>'
 
 
+# 冬に使えないコース（routes[].winter。2026-11-19 試作。運営者の指示「特定のコースが冬に利用不可能だったり、そこまでの道のりが
+# 冬季に通行止めのコースは分かる様にしたい」）。state：closed＝冬は登山口へ行けない・登山道が閉鎖／car_only＝冬は電車・バスでは
+# 行けない（車なら行ける）／unknown＝冬の行き方を確かめられていない。from・to は "MM-DD"（年をまたぐ）
+WINTER_STYLE = {
+    "closed": ("background:#fde2e2;color:#b02a2a", "#b02a2a"),
+    "car_only": ("background:#fdf0d8;color:#8a5a10", "#8a5a10"),
+    "unknown": ("background:#ececec;color:#5a5a5a", "#6a6a6a"),
+}
+
+
+def _wmd(s):
+    m, d = s.split("-")
+    return f"{int(m)}/{int(d)}"
+
+
+def winter_tag(r):
+    w = r.get("winter")
+    if not w:
+        return ""
+    st, _ = WINTER_STYLE[w["state"]]
+    return (f'<span class="rl-tag rl-tag-winter" style="{st};display:inline-flex;align-items:center;gap:3px">'
+            f'{ym_icon("snowflake")}{esc(w["label"])}</span>')
+
+
+def winter_line(r):
+    w = r.get("winter")
+    if not w:
+        return ""
+    _, color = WINTER_STYLE[w["state"]]
+    period = f'（{_wmd(w["from"])}〜{_wmd(w["to"])}）' if w.get("from") and w.get("to") else ""
+    srcs = w.get("sources") or []
+    src = "・".join(f'<a href="{esc(s["url"])}" target="_blank" rel="noopener" style="color:#7a7068">{esc(s["label"])}</a>' for s in srcs)
+    tail = f'。出典：{src}（{esc(w.get("lastVerified") or "")}確認）' if src else ""
+    return f'<div class="rl-access" style="color:{color}">冬{period}：{esc(w["text"])}{tail}</div>'
+
+
 def chain_mark(mt):
     """難易度の欄に入れる「鎖場」の印とコースの番号（鎖場のコースが無ければ空）"""
     nums = [i for i, r in enumerate(mt.get("routes") or [], start=1) if r.get("chains")]
@@ -1282,7 +1318,7 @@ def tech_summary(mt):
 
 
 # コースの比較表（2026-11-15〜。運営者の指示「塔ノ岳だけまずつくって」。見た目を確かめてから広げる）
-ROUTE_TABLE_IDS = {"tonosaki"}
+ROUTE_TABLE_IDS = {"tonosaki", "kinpusan"}   # kinpusan は冬に使えないコースの試作（2026-11-19）
 
 
 def render_route_table(mt):
@@ -1292,12 +1328,14 @@ def render_route_table(mt):
         return ""
     has_hz = any(tech_level(r.get("tech")) or r.get("chains") or r.get("rocks") for r in routes)
     has_train = any(r.get("byTrain") for r in routes)
+    has_winter = any(r.get("winter") for r in routes)
     icon = ROUTE_TRAIN_ICON.replace("margin-left:6px", "margin-left:0")
-    head = ["コース", "種類", "歩く時間", "距離", "登り"] + (["難所"] if has_hz else []) + (["電車"] if has_train else [])
+    head = ["コース", "種類", "歩く時間", "距離", "登り"] + (["難所"] if has_hz else []) + (["電車"] if has_train else []) + (["冬"] if has_winter else [])
     rows = []
     for i, r in enumerate(routes, start=1):
         t = COURSE_TYPE.get(r.get("courseType"))
         hz = "".join([tech_tag(r["tech"]) if tech_level(r.get("tech")) else "", chain_tag(r), rock_tag(r)]) or "—"
+        wt = winter_tag(r) or "—"
         cells = [
             f'<td class="rc-n"><span class="rc-num">{i}</span>{esc(route_display_name(r))}</td>',
             f'<td class="rc-v">{esc(t[0]) if t else "—"}</td>',
@@ -1309,6 +1347,8 @@ def render_route_table(mt):
             cells.append(f'<td class="rc-hz">{hz}</td>')
         if has_train:
             cells.append(f'<td class="rc-v rc-c">{icon if r.get("byTrain") else "—"}</td>')
+        if has_winter:
+            cells.append(f'<td class="rc-hz">{wt}</td>')
         rows.append("<tr>" + "".join(cells) + "</tr>")
     return ('<div class="rc-title">コースを比べる（%dコース）</div>' % len(routes)
             + '<div class="rc-wrap"><table class="rc-table"><thead><tr>' + "".join(f"<th>{h}</th>" for h in head)
@@ -1335,7 +1375,7 @@ def render_routes(mt):
         ssot_html = ""
         # 旧構造の山でも、ルートに trailheadName / status があれば表示する
         th_name = (mt.get("routeTrailheads") or {}).get(r.get("id")) or r.get("trailheadName")
-        if mt.get("dataModel") == "ssot-v1" or th_name or r.get("status") or tech_level(r.get("tech")) or r.get("chains") or r.get("rocks"):
+        if mt.get("dataModel") == "ssot-v1" or th_name or r.get("status") or tech_level(r.get("tech")) or r.get("chains") or r.get("rocks") or r.get("winter"):
             tags = []
             if tech_level(r.get("tech")):
                 tags.append(tech_tag(r["tech"]))
@@ -1343,6 +1383,8 @@ def render_routes(mt):
                 tags.append(chain_tag(r))
             if r.get("rocks"):
                 tags.append(rock_tag(r))
+            if r.get("winter"):
+                tags.append(winter_tag(r))
             if r.get("id") and r.get("id") == mt.get("representativeRouteId"):
                 tags.append('<span class="rl-tag rl-tag-rep">代表ルート</span>')
             st = r.get("status")
@@ -1356,6 +1398,7 @@ def render_routes(mt):
         ssot_html += tech_line(r.get("tech"))
         ssot_html += chain_line(r)
         ssot_html += rock_line(r)
+        ssot_html += winter_line(r)
         if r.get("note"):
             ssot_html += f'<div class="rl-access">{esc(r["note"])}</div>'
         if r.get("accessNote"):

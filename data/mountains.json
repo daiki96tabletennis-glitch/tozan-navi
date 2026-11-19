@@ -223,7 +223,7 @@
     "metaTitle": "丹沢山 登山の難易度は中級｜健脚向け日帰り10時間49分・標高差1,751m｜渋沢駅からバス【百名山】｜Yamatch",
     "metaDescription": "丹沢山（標高1,567m・神奈川県）の難易度は中級（体力のある中級者向け）。代表コース（大倉〜大倉尾根〜塔ノ岳〜丹沢山（往復））は10時間49分・18km・標高差1751m。新宿から電車とバスで約1時間25分（渋沢駅からバス15分）。日帰りできます。神奈川県最高峰エリア。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-18",
     "hasHeroPhotoScript": false,
     "ogTitle": "丹沢山 登山の難易度は中級｜健脚向け日帰り10時間49分・標高差1,751m｜渋沢駅からバス【百名山】｜Yamatch",
     "ogDescription": "丹沢山（標高1,567m・神奈川県）の難易度は中級（体力のある中級者向け）。代表コース（大倉〜大倉尾根〜塔ノ岳〜丹沢山（往復））は10時間49分・18km・標高差1751m。新宿から電車とバスで約1時間25分（渋沢駅からバス15分）。日帰りできます。神奈川県最高峰エリア。駐車場・装備・天気も掲載。",
@@ -4404,7 +4404,7 @@
       },
       {
         "question": "瑞牆山の登山シーズンはいつですか？おすすめの時期",
-        "answer": "瑞牆山の登山シーズンは5月〜10月が目安です。11月〜4月は山頂直下などに凍結や残雪があり、チェーンスパイクや6本爪アイゼンなどの軽アイゼン等が要ります。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "瑞牆山の登山シーズンは5月〜10月が目安です。11月〜4月は山頂直下などに凍結や残雪があり、チェーンスパイクや6本爪アイゼンなどの軽アイゼン等が要ります。1月〜4月は瑞牆山荘が「アイゼン必須」「チェーンスパイクは厳しい」と案内することが多く、6本爪以上のアイゼンが安心です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
       }
     ],
     "hasWeatherWidget": true,
@@ -4417,7 +4417,7 @@
     "metaTitle": "瑞牆山 登山の難易度は中級｜日帰り5時間37分・標高差928m｜韮崎駅からバス1時間20分【百名山】｜Yamatch",
     "metaDescription": "瑞牆山（標高2,230m・山梨県）の難易度は中級（体力のある中級者向け）。代表コース（瑞牆山荘〜富士見平小屋〜瑞牆山（往復））は5時間37分・5.4km・標高差928m。新宿から電車とバスで約2時間56分（韮崎駅からバス1時間20分）。日帰りできます。奇岩・巨石が林立する個性的な山容。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-18",
     "hasHeroPhotoScript": false,
     "ogTitle": "瑞牆山 登山の難易度は中級｜日帰り5時間37分・標高差928m｜韮崎駅からバス1時間20分【百名山】｜Yamatch",
     "ogDescription": "瑞牆山（標高2,230m・山梨県）の難易度は中級（体力のある中級者向け）。代表コース（瑞牆山荘〜富士見平小屋〜瑞牆山（往復））は5時間37分・5.4km・標高差928m。新宿から電車とバスで約2時間56分（韮崎駅からバス1時間20分）。日帰りできます。奇岩・巨石が林立する個性的な山容。駐車場・装備・天気も掲載。",
@@ -5412,6 +5412,20 @@
           "source": "ヤマケイオンライン「金峰山」（山と溪谷社）",
           "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=351",
           "lastVerified": "2026-11-11"
+        },
+        "winter": {
+          "state": "closed",
+          "label": "冬は通行止め",
+          "from": "12-01",
+          "to": "05-31",
+          "text": "山梨県が大弛峠への林道（川上牧丘線の柳平ゲート〜大弛峠）を凍結と落石のため通行止めにする予定で、車でも登山口へ行けません。塩山駅からの予約制バスも2026年は11月8日で終わりました",
+          "sources": [
+            {
+              "label": "山梨県 林道の通行規制",
+              "url": "https://www.pref.yamanashi.jp/rindoujyouhou/kisei.php?id=61"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       },
       {
@@ -5443,6 +5457,12 @@
           "source": "ヤマケイオンライン「金峰山」（山と溪谷社）",
           "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=351",
           "lastVerified": "2026-11-11"
+        },
+        "winter": {
+          "state": "unknown",
+          "label": "冬の道路は未確認",
+          "text": "長野県川上村の廻り目平へ行く道が冬に通れるかは、公式の案内で確かめられていません。出かける前に川上村・金峰山荘に確かめてください",
+          "lastVerified": "2026-11-19"
         }
       },
       {
@@ -5474,6 +5494,24 @@
           "source": "ヤマケイオンライン「金峰山」（山と溪谷社）",
           "sourceUrl": "https://www.yamakei-online.com/yamanavi/yama.php?yama_id=351",
           "lastVerified": "2026-11-11"
+        },
+        "winter": {
+          "state": "car_only",
+          "label": "冬は車だけ",
+          "from": "11-24",
+          "to": "04-03",
+          "text": "韮崎駅からの路線バス（韮崎瑞牆線）は2026年は11月23日までで、冬は電車・バスでは行けません。車では行けますが、瑞牆山荘は冬は冬用タイヤが要ると案内しています",
+          "sources": [
+            {
+              "label": "韮崎瑞牆線の時刻表",
+              "url": "http://cus4.kyohoku.jp/routebus/kayagatakemizugakidenen-bus/schedule-mizugakiline/"
+            },
+            {
+              "label": "瑞牆山荘の現地情報",
+              "url": "https://www.yamakei-online.com/mt_info/past.php?id=1015&yy=2024"
+            }
+          ],
+          "lastVerified": "2026-11-19"
         }
       }
     ],
@@ -5516,7 +5554,7 @@
     "metaTitle": "金峰山 登山の難易度は中級｜日帰り5時間13分・標高差575m｜塩山駅からバス1時間25分【百名山】｜Yamatch",
     "metaDescription": "金峰山（標高2,599m・山梨県）の難易度は中級（体力のある中級者向け）。代表コース（大弛峠〜朝日岳〜金峰山（往復））は5時間13分・8.1km・標高差575m。新宿から電車とバスで約2時間48分（塩山駅からバス1時間25分）。日帰りできます。奥秩父の盟主。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": "2026-03-16T00:00:00+09:00",
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "金峰山 登山の難易度は中級｜日帰り5時間13分・標高差575m｜塩山駅からバス1時間25分【百名山】｜Yamatch",
     "ogDescription": "金峰山（標高2,599m・山梨県）の難易度は中級（体力のある中級者向け）。代表コース（大弛峠〜朝日岳〜金峰山（往復））は5時間13分・8.1km・標高差575m。新宿から電車とバスで約2時間48分（塩山駅からバス1時間25分）。日帰りできます。奥秩父の盟主。駐車場・装備・天気も掲載。",
@@ -19977,7 +20015,7 @@
       "level": "restricted",
       "summary": "湯釜・本白根山は火口周辺500m規制のため立入禁止（湯釜見学不可、駐車場・レストハウス利用不可）。弓池〜逢ノ峰周回は通行可能。",
       "checkedAt": "2026-09-24",
-      "sourceUrl": "https://www.town.kusatsu.gunma.jp/www/contents/1779431376046/index.html"
+      "sourceUrl": "https://www.town.kusatsu.gunma.jp/s001/110/060/1779431376046/index.html"
     },
     "recommendReason": "コバルトブルーの火口湖・湯釜で知られる活火山",
     "gmapUrlLegacy": "https://google.com/maps/search/草津温泉/@36.6173,138.5396,16z",
@@ -20003,8 +20041,8 @@
         "validFrom": null,
         "validTo": null,
         "seasonYear": null,
-        "sourceUrl": "https://www.town.kusatsu.gunma.jp/www/contents/1779431376046/index.html",
-        "lastVerified": "2026-10-06"
+        "sourceUrl": "https://www.town.kusatsu.gunma.jp/s001/110/060/1779431376046/index.html",
+        "lastVerified": "2026-11-19"
       }
     ],
     "annualNotApplicable": true,
@@ -22784,7 +22822,7 @@
     "metaTitle": "蛭ヶ岳 登山の難易度は中〜上級｜健脚向け日帰り12時間30分・標高差1,700m｜渋沢駅からバス15分｜Yamatch",
     "metaDescription": "蛭ヶ岳（標高1,673m・神奈川県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（大倉〜塔ノ岳〜蛭ヶ岳（往復））は12時間30分・26.0km・標高差1700m。新宿から電車とバスで約1時間25分（渋沢駅からバス15分）。日帰りできます。丹沢最高峰。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-17",
+    "mountainUpdated": "2026-11-18",
     "hasHeroPhotoScript": false,
     "ogTitle": "蛭ヶ岳 登山の難易度は中〜上級｜健脚向け日帰り12時間30分・標高差1,700m｜渋沢駅からバス15分｜Yamatch",
     "ogDescription": "蛭ヶ岳（標高1,673m・神奈川県）の難易度は中〜上級（経験と体力が要る中〜上級者向け）。代表コース（大倉〜塔ノ岳〜蛭ヶ岳（往復））は12時間30分・26.0km・標高差1700m。新宿から電車とバスで約1時間25分（渋沢駅からバス15分）。日帰りできます。丹沢最高峰。駐車場・装備・天気も掲載。",
@@ -30081,7 +30119,7 @@
     ],
     "seasonCalendar": [
       "s-gear",
-      "s-gear",
+      "s-hard",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -30095,7 +30133,8 @@
     ],
     "calLegend": [
       "アイゼン不要",
-      "軽アイゼン等"
+      "軽アイゼン等",
+      "冬山装備"
     ],
     "trailhead": "一ノ鳥居苑地",
     "parking": "一ノ鳥居苑地駐車場（約100台・無料）",
@@ -30167,8 +30206,8 @@
       18,
       24
     ],
-    "seasonNoGear": "5月〜11月",
-    "season6Crampons": "12月〜4月",
+    "seasonNoGear": "5月〜10月",
+    "season6Crampons": "3月〜4月・11月〜1月",
     "routes": [
       {
         "name": "一ノ鳥居苑地〜十三仏〜飯縄山（往復）",
@@ -30261,7 +30300,7 @@
       },
       {
         "question": "飯縄山の登山シーズンはいつですか？おすすめの時期",
-        "answer": "飯縄山の登山シーズンは5月〜11月が目安です。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
+        "answer": "飯縄山の雪の無いシーズンは5月〜10月が目安です。11月〜1月と3月〜4月は積雪・凍結があり、チェーンスパイクや6本爪アイゼンなどの軽アイゼン等が要ります。2月は12本爪アイゼン・ピッケル等の冬山装備が要る時期です。12月〜3月の冬道は駒つなぎの場から急な斜面を登るので、10本爪以上のアイゼンが安心という登山記録が多くあります。実際の残雪・気象状況は年によって変動するため、直前の最新情報も確認してください。"
       }
     ],
     "hasWeatherWidget": false,
@@ -30274,7 +30313,7 @@
     "metaTitle": "飯縄山 登山の難易度は初〜中級｜日帰り4時間35分・標高差838m｜長野駅からバス47分【二百名山】｜Yamatch",
     "metaDescription": "飯縄山（標高1,917m・長野県北部）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（一ノ鳥居苑地〜十三仏〜飯縄山（往復））は4時間35分・7.5km・標高差838m。新宿から電車とバスで約2時間42分（長野駅からバス47分）。日帰りできます。長野市の北西にそびえる修験道の山。駐車場・装備・天気も掲載。",
     "ogUpdatedTime": null,
-    "mountainUpdated": "2026-11-16",
+    "mountainUpdated": "2026-11-19",
     "hasHeroPhotoScript": false,
     "ogTitle": "飯縄山 登山の難易度は初〜中級｜日帰り4時間35分・標高差838m｜長野駅からバス47分【二百名山】｜Yamatch",
     "ogDescription": "飯縄山（標高1,917m・長野県北部）の難易度は初〜中級（初心者が次に挑戦しやすい）。代表コース（一ノ鳥居苑地〜十三仏〜飯縄山（往復））は4時間35分・7.5km・標高差838m。新宿から電車とバスで約2時間42分（長野駅からバス47分）。日帰りできます。長野市の北西にそびえる修験道の山。駐車場・装備・天気も掲載。",
@@ -30422,7 +30461,7 @@
     "fareCheckedAt": "2026-10-07",
     "gearCalendar": [
       "light_crampons",
-      "light_crampons",
+      "winter_gear",
       "light_crampons",
       "light_crampons",
       "no_crampons",
@@ -34636,8 +34675,8 @@
     ],
     "seasonCalendar": [
       "s-gear",
-      "s-hard",
-      "s-hard",
+      "s-gear",
+      "s-gear",
       "s-gear",
       "s-gear",
       "s-ok",
@@ -34646,12 +34685,11 @@
       "s-ok",
       "s-gear",
       "s-gear",
-      "s-hard"
+      "s-gear"
     ],
     "calLegend": [
       "アイゼン不要",
-      "軽アイゼン等",
-      "冬山装備"
+      "軽アイゼン等"
     ],
     "trailhead": "仲仙寺",
     "parking": "仲仙寺駐車場（約30台・無料）",
@@ -34723,8 +34761,8 @@
       25,
       35
     ],
-    "seasonNoGear": "5月〜10月",
-    "season6Crampons": "11月〜4月",
+    "seasonNoGear": "6月〜9月",
+    "season6Crampons": "10月〜5月",
     "routes": [
       {
         "name": "仲仙寺〜大泉山〜経ヶ岳（往復）",
@@ -34800,7 +34838,7 @@
       },
       {
         "question": "経ヶ岳の登山シーズンはいつですか？おすすめの時期",
-        "answer": "5月〜11月が登りやすいシーズンです。冬季は積雪・凍結に注意が必要です。"
+        "answer": "経ヶ岳の登山シーズンは6月〜9月が目安です。10月〜5月は残雪や凍結で軽アイゼン等（チェーンスパイク・6本爪アイゼン等）が要る時期です。1月〜3月は雪が深く、トレースの無い日はスノーシューかワカンが要ります。残雪や凍結の状況は年によって変わるため、直前の最新情報を確認してください。"
       }
     ],
     "hasWeatherWidget": false,
@@ -34982,8 +35020,8 @@
     "fareCheckedAt": "2026-10-07",
     "gearCalendar": [
       "light_crampons",
-      "winter_gear",
-      "winter_gear",
+      "light_crampons",
+      "light_crampons",
       "light_crampons",
       "light_crampons",
       "no_crampons",
@@ -34992,7 +35030,7 @@
       "no_crampons",
       "light_crampons",
       "light_crampons",
-      "winter_gear"
+      "light_crampons"
     ],
     "vibePoints": [
       {
@@ -35071,7 +35109,9 @@
       }
     },
     "snowshoeMonths": [
-      1
+      1,
+      2,
+      3
     ],
     "snowshoeSources": [
       {
@@ -35109,10 +35149,40 @@
         "date": "2025-03-20",
         "kind": "record",
         "says": "踏み抜きが多く、8合目で先行者の足跡が途切れて撤退。ワカン等の記載なし"
+      },
+      {
+        "url": "https://www.yamareco.com/modules/yamareco/detail-3936048.html",
+        "date": "2022-01",
+        "kind": "record",
+        "says": "トレースなし。5合目過ぎでワカン。ツボ足だと8合目まで膝〜腿、その上は腰のラッセル"
+      },
+      {
+        "url": "https://www.yamareco.com/modules/yamareco/detail-3969911.html",
+        "date": "2022-02",
+        "kind": "record",
+        "says": "六合目までトレースがありツボ足、その上はトレースが消えてワカンを使った"
+      },
+      {
+        "url": "https://www.yamareco.com/modules/yamareco/detail-9285699.html",
+        "date": "2026-02",
+        "kind": "record",
+        "says": "七合目から上はトレースが無く、股まで沈むラッセル。ワカンを持っておらず苦労した"
+      },
+      {
+        "url": "https://www.yamareco.com/modules/yamareco/detail-6558830.html",
+        "date": "2024-03",
+        "kind": "record",
+        "says": "6合目でトレースが途切れ、山頂までほぼラッセル。膝上〜太腿まで沈んだ"
+      },
+      {
+        "url": "https://www.yamareco.com/modules/yamareco/detail-9368543.html",
+        "date": "2026-03",
+        "kind": "record",
+        "says": "ワカンとアイゼンを併用して登った"
       }
     ],
     "snowshoeCheckedAt": "2026-11-17",
-    "snowshoeNote": "降雪の後やトレースの無い日。トレースがあればチェーンスパイクだけで登れた記録もある。12本爪アイゼン・ピッケルまでは要らない"
+    "snowshoeNote": "降雪の後やトレースの無い日（1〜3月）。トレースがあればチェーンスパイクだけで登れた記録もある。仲仙寺からの道では12本爪アイゼン・ピッケルまでは要らない"
   },
   {
     "id": "adatara",
