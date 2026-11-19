@@ -447,10 +447,20 @@ function fpText(m){ return (m.fp || []).map(function(p){ return (p.l || '') + ' 
 function isRestricted(m){ return m.rest || (m.status && m.status.level === 'restricted'); }
 
 // 歩くコース：泊まらないコースのうち、条件に合うもののいちばん短いもの
+// その月（15日）にコースが冬に使えないか（routes[].winter。closed は誰も、car_only は電車・バスの人だけ使えない。2026-11-19〜）
+function winterBlocked(r){
+  var w = r.w;
+  if(!w || !w.f || !w.t) return false;
+  if(w.st !== 'closed' && !(w.st === 'car_only' && answers.transport === 'train')) return false;
+  var md = ('0' + answers.when).slice(-2) + '-15';
+  return w.f <= w.t ? (md >= w.f && md <= w.t) : (md >= w.f || md <= w.t);
+}
+
 function pickRoute(m, winterGear){
   var cap = WALK_CAP[answers.fitness] || 300;
   var list = (m.routes || []).filter(function(r){
     if(r.min > cap) return false;
+    if(winterBlocked(r)) return false;
     if(answers.who === 'family' && (r.chain || r.rock)) return false;
     if(winterGear){
       if(r.tech === 'D' || r.tech === 'E') return false;
@@ -462,6 +472,9 @@ function pickRoute(m, winterGear){
     var tr = list.filter(function(r){ return r.train; });
     if(tr.length) list = tr;
   }
+  // 冬の行き方を確かめられていないコースは、ほかに使えるコースがあれば選ばない
+  var known = list.filter(function(r){ return !(r.w && r.w.st === 'unknown'); });
+  if(known.length) list = known;
   list.sort(function(a, b){ return a.min - b.min; });
   return list[0] || null;
 }

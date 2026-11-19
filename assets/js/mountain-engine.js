@@ -430,7 +430,17 @@ function applyDep(){
 (function(){
   function pad(n){ return n < 10 ? '0' + n : String(n); }
   function md(d){ var p = d.split('-'); return parseInt(p[1], 10) + '月' + parseInt(p[2], 10) + '日'; }
+  function hideEndedBusLinks(){
+    // バスの時刻表のボタンは、そのバスの運行期間（data-bus-to）を過ぎたら隠す。次の期間がデータに入れば、運行の前でも見える（2026-11-19）
+    var d = new Date();
+    var today = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+    var as = document.querySelectorAll('a.ts-link-bus[data-bus-to]');
+    for(var i = 0; i < as.length; i++){
+      if(as[i].getAttribute('data-bus-to') < today) as[i].style.display = 'none';
+    }
+  }
   function run(){
+    hideEndedBusLinks();
     var box = document.querySelector('[data-ts-seasons]');
     if(!box) return;
     var ss = box.querySelectorAll('.ts-season');

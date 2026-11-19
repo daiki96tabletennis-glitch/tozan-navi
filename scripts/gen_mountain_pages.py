@@ -61,7 +61,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261117a"
+ASSET_VER = "20261119a"
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
@@ -538,6 +538,35 @@ def render_weather(mt):
     return weather_tpl.replace("__MID__", mt["id"]).replace(">山周辺の天気", ">" + esc(mt["name"]) + "周辺の天気")
 
 
+_BUS_LINK_SEASONS = None
+
+
+def bus_link_periods(mt, html):
+    """バスの時刻表のボタン（.ts-link-bus）に、そのバスの運行期間（data-bus-from / data-bus-to）を書く（2026-11-19〜。運営者の指示
+    「バスの時刻表リンクが機能していない間は見えない様に。次のダイヤが出て運行期間前でも見れるように。見えないだけで裏では持っておく」）。
+    どのリンクがどの期間かは data/bus_link_seasons.json（scripts/migrations/build_bus_link_seasons_2026_11.py）。
+    mountain-engine.js が、開いた日が data-bus-to を過ぎていたら隠す"""
+    global _BUS_LINK_SEASONS
+    if _BUS_LINK_SEASONS is None:
+        path = os.path.join(SITE_ROOT, "data", "bus_link_seasons.json")
+        _BUS_LINK_SEASONS = json.load(open(path, encoding="utf-8")) if os.path.exists(path) else {}
+    links = _BUS_LINK_SEASONS.get(mt["id"]) or {}
+    for url, ref in links.items():
+        if ref == "operation":
+            op = mt.get("trainAccessOperation") or {}
+            fr, to = op.get("validFrom"), op.get("validTo")
+        else:
+            items = [a for a in mt.get("annualItems") or [] if a.get("kind") == "transport" and a.get("label") == ref]
+            fr = min((a.get("validFrom") for a in items if a.get("validFrom")), default=None)
+            to = max((a.get("validTo") for a in items if a.get("validTo")), default=None)
+        if not to:
+            continue
+        attrs = f' data-bus-to="{esc(to)}"' + (f' data-bus-from="{esc(fr)}"' if fr else "")
+        html = html.replace(f'<a href="{esc(url)}" target="_blank" rel="noopener" class="ts-link ts-link-bus">',
+                            f'<a href="{esc(url)}" target="_blank" rel="noopener" class="ts-link ts-link-bus"{attrs}>')
+    return html
+
+
 def render_train_access(mt):
     # 2026-09-23移行: trainRoutes(構造化データ)があればそちらから生成する。
     # 合計所要時間・運賃はレグ合計からではなく既存のtrainTimeXxx/fareXxxを使う
@@ -553,6 +582,8 @@ def render_train_access(mt):
     ret = render_returns(mt)
     if train_routes:
         ts = render_ts_section(train_routes, mt)
+        if ts:
+            ts = bus_link_periods(mt, ts)
         if ts:
             # 見出しに山名（「◯◯ アクセス」の検索に合わせる。2026-11-15）
             ts = re.sub(r'(<div class=\"ts-title\">.*?</svg>)電車・バスでのアクセス', lambda m: m.group(1) + esc(mt['name']) + 'への電車・バスでのアクセス', ts, count=1)
@@ -1226,7 +1257,6 @@ def rock_line(r):
 # 行けない（車なら行ける）／unknown＝冬の行き方を確かめられていない。from・to は "MM-DD"（年をまたぐ）
 WINTER_STYLE = {
     "closed": ("background:#fde2e2;color:#b02a2a", "#b02a2a"),
-    "car_only": ("background:#fdf0d8;color:#8a5a10", "#8a5a10"),
     "unknown": ("background:#ececec;color:#5a5a5a", "#6a6a6a"),
 }
 
@@ -1236,9 +1266,24 @@ def _wmd(s):
     return f"{int(m)}/{int(d)}"
 
 
+def winter_shown(r):
+    """印と詳細を出す冬の情報か。car_only（冬は電車・バスでは行けない）は印を出さず、期間中だけ電車のバッジを外す
+    （2026-11-19。運営者の指示「冬は車だけは、その期間は電車アクセスバッジを外せば良いだけ」）"""
+    w = r.get("winter")
+    return bool(w) and w.get("state") != "car_only"
+
+
+def train_badge(r, icon):
+    """電車のバッジ。冬に電車・バスで行けない期間（closed・car_only）は、ページを開いた日の日付で隠す（WINTER_SCRIPT）"""
+    w = r.get("winter") or {}
+    if w.get("state") in ("closed", "car_only") and w.get("from") and w.get("to"):
+        return icon.replace('<span class="rl-train"', f'<span class="rl-train" data-wfrom="{esc(w["from"])}" data-wto="{esc(w["to"])}"', 1)
+    return icon
+
+
 def winter_tag(r):
     w = r.get("winter")
-    if not w:
+    if not winter_shown(r):
         return ""
     st, _ = WINTER_STYLE[w["state"]]
     return (f'<span class="rl-tag rl-tag-winter" style="{st};display:inline-flex;align-items:center;gap:3px">'
@@ -1247,14 +1292,64 @@ def winter_tag(r):
 
 def winter_line(r):
     w = r.get("winter")
-    if not w:
+    if not winter_shown(r):
         return ""
     _, color = WINTER_STYLE[w["state"]]
     period = f'（{_wmd(w["from"])}〜{_wmd(w["to"])}）' if w.get("from") and w.get("to") else ""
     srcs = w.get("sources") or []
     src = "・".join(f'<a href="{esc(s["url"])}" target="_blank" rel="noopener" style="color:#7a7068">{esc(s["label"])}</a>' for s in srcs)
-    tail = f'。出典：{src}（{esc(w.get("lastVerified") or "")}確認）' if src else ""
-    return f'<div class="rl-access" style="color:{color}">冬{period}：{esc(w["text"])}{tail}</div>'
+    tail = f'<br>出典：{src}（{esc(w.get("lastVerified") or "")}確認）' if src else ""
+    # 詳細と出典は、はじめはたたんでおく（2026-11-19。運営者の指示「詳細や出典はデフォは縮小していてトグルで見れる形に」）
+    return (f'<details class="rl-winter" style="font-size:11px;color:{color};margin:0 0 5px;line-height:1.6">'
+            f'<summary style="cursor:pointer;font-weight:700">冬{period}の詳細と出典</summary>'
+            f'<div style="margin-top:2px">{esc(w["text"])}{tail}</div></details>')
+
+
+def rep_route_of(mt):
+    for r in mt.get("routes") or []:
+        if r.get("id") and r.get("id") == mt.get("representativeRouteId"):
+            return r
+    return None
+
+
+def winter_alt_id(mt):
+    """代表コースが冬に使えない（state が closed）とき、その期間だけ代表にするコース（routes[代表].winter.alt）"""
+    rr = rep_route_of(mt)
+    w = (rr or {}).get("winter") or {}
+    return w.get("alt") if w.get("state") == "closed" else None
+
+
+def winter_swap_note(mt):
+    """代表コースが冬に使えない期間だけ出す案内（2026-11-19。運営者の指示「代表的な登山口がアクセス不可の場合は、アクセスできる
+    登山口にその期間だけ変えて欲しい」）。期間はページを開いた日の日付で決める（WINTER_SWAP_SCRIPT）"""
+    alt = winter_alt_id(mt)
+    if not alt:
+        return ""
+    rr = rep_route_of(mt)
+    w = rr["winter"]
+    routes = mt["routes"]
+    n_alt = next(i for i, r in enumerate(routes, start=1) if r.get("id") == alt)
+    n_rep = next(i for i, r in enumerate(routes, start=1) if r is rr)
+    st, color = WINTER_STYLE["closed"]
+    return (f'<div class="rl-winter-swap" data-from="{esc(w["from"])}" data-to="{esc(w["to"])}" hidden '
+            f'style="{st};font-size:12px;line-height:1.6;padding:8px 10px;border-radius:8px;margin:0 0 10px">'
+            f'{ym_icon("snowflake")} {_wmd(w["from"])}〜{_wmd(w["to"])}は、コース{n_rep}（{esc(route_display_name(rr))}）の登山口へ行けないため、'
+            f'この期間はコース{n_alt}（{esc(route_display_name(routes[n_alt - 1]))}）を代表ルートにしています</div>')
+
+
+# 開いた日が期間（MM-DD。年をまたぐ）に入るとき：電車・バスで行けないコースの電車のバッジを隠し、
+# 代表コースが使えないなら案内を出して代表ルートの印を入れ替える
+WINTER_SCRIPT = r"""<script>(function(){
+var d=new Date();var md=('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
+function inP(f,t){return f<=t?(md>=f&&md<=t):(md>=f||md<=t);}
+var tb=document.querySelectorAll('.rl-train[data-wfrom]');
+for(var k=0;k<tb.length;k++){if(inP(tb[k].getAttribute('data-wfrom'),tb[k].getAttribute('data-wto')))tb[k].style.display='none';}
+var box=document.querySelector('.rl-winter-swap');if(!box)return;
+if(!inP(box.getAttribute('data-from'),box.getAttribute('data-to')))return;
+box.hidden=false;
+var a=document.querySelectorAll('.rl-rep-normal');for(var i=0;i<a.length;i++)a[i].hidden=true;
+var b=document.querySelectorAll('.rl-rep-winter');for(var j=0;j<b.length;j++)b[j].hidden=false;
+})();</script>"""
 
 
 def chain_mark(mt):
@@ -1328,7 +1423,7 @@ def render_route_table(mt):
         return ""
     has_hz = any(tech_level(r.get("tech")) or r.get("chains") or r.get("rocks") for r in routes)
     has_train = any(r.get("byTrain") for r in routes)
-    has_winter = any(r.get("winter") for r in routes)
+    has_winter = any(winter_shown(r) for r in routes)
     icon = ROUTE_TRAIN_ICON.replace("margin-left:6px", "margin-left:0")
     head = ["コース", "種類", "歩く時間", "距離", "登り"] + (["難所"] if has_hz else []) + (["電車"] if has_train else []) + (["冬"] if has_winter else [])
     rows = []
@@ -1346,7 +1441,7 @@ def render_route_table(mt):
         if has_hz:
             cells.append(f'<td class="rc-hz">{hz}</td>')
         if has_train:
-            cells.append(f'<td class="rc-v rc-c">{icon if r.get("byTrain") else "—"}</td>')
+            cells.append(f'<td class="rc-v rc-c">{train_badge(r, icon) if r.get("byTrain") else "—"}</td>')
         if has_winter:
             cells.append(f'<td class="rc-hz">{wt}</td>')
         rows.append("<tr>" + "".join(cells) + "</tr>")
@@ -1375,7 +1470,7 @@ def render_routes(mt):
         ssot_html = ""
         # 旧構造の山でも、ルートに trailheadName / status があれば表示する
         th_name = (mt.get("routeTrailheads") or {}).get(r.get("id")) or r.get("trailheadName")
-        if mt.get("dataModel") == "ssot-v1" or th_name or r.get("status") or tech_level(r.get("tech")) or r.get("chains") or r.get("rocks") or r.get("winter"):
+        if mt.get("dataModel") == "ssot-v1" or th_name or r.get("status") or tech_level(r.get("tech")) or r.get("chains") or r.get("rocks") or winter_shown(r):
             tags = []
             if tech_level(r.get("tech")):
                 tags.append(tech_tag(r["tech"]))
@@ -1386,7 +1481,9 @@ def render_routes(mt):
             if r.get("winter"):
                 tags.append(winter_tag(r))
             if r.get("id") and r.get("id") == mt.get("representativeRouteId"):
-                tags.append('<span class="rl-tag rl-tag-rep">代表ルート</span>')
+                tags.append('<span class="rl-tag rl-tag-rep rl-rep-normal">代表ルート</span>')
+            if r.get("id") and r.get("id") == winter_alt_id(mt):
+                tags.append('<span class="rl-tag rl-tag-rep rl-rep-winter" hidden>この期間の代表ルート</span>')
             st = r.get("status")
             if st and st.get("state") == "closed":
                 tags.append(f'<span class="rl-tag rl-tag-ng">{esc(st.get("label") or "通行止め")}</span>')
@@ -1409,7 +1506,7 @@ def render_routes(mt):
             waypoints_html = f'<div class="rl-waypoints">{esc(r["waypoints"])}</div>'
         items.append(
             f'<div class="rl-item"><div class="rl-num">{i}</div><div class="rl-content">'
-            f'<div class="rl-name">{name}{ROUTE_TRAIN_ICON if r.get("byTrain") else ""}</div>{ssot_html}{waypoints_html}'
+            f'<div class="rl-name">{name}{train_badge(r, ROUTE_TRAIN_ICON) if r.get("byTrain") else ""}</div>{ssot_html}{waypoints_html}'
             f'<div class="rl-chips">{"".join(chips)}</div></div></div>'
         )
     items_html = "".join(items)
@@ -1428,7 +1525,8 @@ def render_routes(mt):
         'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
         '<circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/>'
         '<path d="M5 17 C5 12 9 12 9 9 C9 6 12 6 12 9 C12 13 19 13 19 7"/></svg>'
-        f'{esc(mt["name"])}の代表的な登山ルート</h2>{render_route_table(mt)}<div class="route-list-c">{items_html}</div>{train_note}{coeff_note}</div>'
+        f'{esc(mt["name"])}の代表的な登山ルート</h2>{winter_swap_note(mt)}{render_route_table(mt)}<div class="route-list-c">{items_html}</div>{train_note}{coeff_note}'
+        f'{WINTER_SCRIPT if any((r.get("winter") or {}).get("from") for r in routes) else ""}</div>'
     )
 
 

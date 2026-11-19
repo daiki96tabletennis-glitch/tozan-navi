@@ -215,7 +215,10 @@ def build():
                 continue
             routes.append({'i': i + 1, 'n': r.get('name'), 'min': t, 'tech': ((r.get('tech') or {}).get('grade') or ''),
                            'chain': bool(r.get('chains')), 'rock': bool(r.get('rocks')), 'train': bool(r.get('byTrain')),
-                           'type': r.get('courseType')})
+                           'type': r.get('courseType'),
+                           # 冬に使えないコース（routes[].winter。2026-11-19〜）：st＝closed／car_only／unknown、f・t＝MM-DD
+                           'w': ({'st': r['winter']['state'], 'f': r['winter'].get('from'), 't': r['winter'].get('to')}
+                                 if r.get('winter') else None)})
         if not routes:
             continue
         fp = m.get('featurePoints') or []

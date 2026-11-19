@@ -1,0 +1,145 @@
+{
+ "_note": "電車・バスの欄のバスの時刻表のボタンを、そのバスが走る期間だけ見せる対応表（scripts/migrations/build_bus_link_seasons_2026_11.py が作る。手で編集しない）。値は annualItems の label か operation（新しい形の山の代表コースのアクセスの運行期間）",
+ "ainodake": {
+  "https://ykbus.jp/travel/hirogawara/": "甲府駅〜広河原の南アルプス登山バス"
+ },
+ "aizu_koma": {
+  "https://www.aizubus.com/rosen": "会津高原尾瀬口駅〜檜枝岐のバス（滝沢登山口まで）"
+ },
+ "akaisidake": {
+  "https://www.t-forest.com/alpsinfo/bus/": "畑薙第一ダム〜椹島の送迎バス"
+ },
+ "amakazari": {
+  "https://www.vill.otari.nagano.jp/soshiki/kankochiikishinko-kankoshoko/gyomu/9/1/163.html": "南小谷駅〜雨飾高原の村営バス"
+ },
+ "arakawadake": {
+  "https://www.t-forest.com/alpsinfo/bus/": "畑薙第一ダム〜椹島の送迎バス"
+ },
+ "arasawadake": {
+  "https://minamiechigo.co.jp/pdf/koide/jikoku/weekday/okutadamiR6-4-all-w.pdf": "浦佐駅〜銀山平・奥只見ダムの急行バス"
+ },
+ "arikayama": {
+  "https://nan-an.co.jp/nakabusa/": "穂高駅〜中房温泉の定期バス"
+ },
+ "chogatake": {
+  "https://www.alpico.co.jp/traffic/sawayaka/route/kamikochi/shinjuku/": "松本〜新島々〜上高地の路線バス",
+  "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/": "松本〜新島々〜上高地の路線バス"
+ },
+ "eboshidake_kita": {
+  "https://uraginzabus.com/": "信濃大町駅〜七倉の裏銀座登山バス"
+ },
+ "echigokoma": {
+  "https://www.iine-uonuma.jp/31055/": "大湯公園・白銀の湯〜枝折峠の「うおぬま滝雲シャトルバス」"
+ },
+ "hakusan": {
+  "https://www.hokutetsu.co.jp/tourism-bus/": "金沢駅〜市ノ瀬の白山登山バス"
+ },
+ "harinokidake": {
+  "https://www.alpico.co.jp/traffic/local/hakuba/ogizawa/": "信濃大町駅〜扇沢の路線バス"
+ },
+ "hijiridade": {
+  "https://www.t-forest.com/alpsinfo/bus/": "畑薙第一ダム〜椹島の送迎バス"
+ },
+ "hiuchi": {
+  "https://myokotourism.jp/access/": "operation"
+ },
+ "hiuchigatake": {
+  "https://www.aizubus.com/": "operation"
+ },
+ "hotaka": {
+  "https://www.alpico.co.jp/traffic/sawayaka/route/kamikochi/shinjuku/": "operation",
+  "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/": "operation"
+ },
+ "kashimayari": {
+  "https://www.alpico.co.jp/traffic/local/hakuba/ogizawa/": "信濃大町駅〜扇沢の路線バス"
+ },
+ "kayagatake": {
+  "http://cus4.kyohoku.jp/routebus/kayagatakemizugakidenen-bus/schedule-fukadakoenline/": "韮崎駅〜深田記念公園のバス（韮崎深田公園線）"
+ },
+ "keirisan": {
+  "https://www.alpico.co.jp/traffic/local/suwa/": "茅野駅〜蓼科山登山口方面のバス（蓼科高原ラウンドバス）"
+ },
+ "kinpusan": {
+  "https://eiwa-kotsu.jp/oodarumi.html": "operation"
+ },
+ "kirigamine": {
+  "https://www.alpico.co.jp/traffic/local/suwa/": "上諏訪駅〜霧ヶ峰の路線バス（霧ヶ峰線）"
+ },
+ "kitadake": {
+  "https://ykbus.jp/travel/hirogawara/": "甲府駅〜広河原の南アルプス登山バス"
+ },
+ "koganzan": {
+  "https://eiwa-kotsu.jp/root.html": "甲斐大和駅〜上日川峠のバス"
+ },
+ "komagatake": {
+  "https://www.inacity.jp/kankojoho/sangaku_alps/minamialps/minamialps_jikokuhyo.html": "operation"
+ },
+ "kurobegorodam": {
+  "https://www.chitetsu.co.jp/?page_id=741": "富山駅〜折立の夏山バス"
+ },
+ "noguchigoro": {
+  "https://uraginzabus.com/": "信濃大町駅〜七倉の裏銀座登山バス"
+ },
+ "nokogiriyama": {
+  "https://www.inacity.jp/kankojoho/sangaku_alps/minamialps/minamialps_jikokuhyo.html": "茅野駅〜戸台パークの南アルプスジオライナー"
+ },
+ "noutori": {
+  "https://ykbus.jp/travel/hirogawara/": "甲府駅〜広河原の南アルプス登山バス"
+ },
+ "okutama": {
+  "https://eiwa-kotsu.jp/root.html": "operation"
+ },
+ "ontakesan": {
+  "https://ontakekotsu.com/regular": "木曽福島駅〜田の原のバス（田の原線）"
+ },
+ "otenshoudake": {
+  "https://nan-an.co.jp/nakabusa/": "穂高駅〜中房温泉の定期バス"
+ },
+ "senjogatake": {
+  "https://www.inacity.jp/kankojoho/sangaku_alps/minamialps/minamialps_jikokuhyo.html": "operation"
+ },
+ "shibutsu": {
+  "https://kan-etsu.net/pages/43/": "operation"
+ },
+ "shiomidake": {
+  "https://www.ibgr.jp/general-route/torikura_off2/": "伊那大島駅〜鳥倉登山口の登山バス（鳥倉線）"
+ },
+ "shirasunayama": {
+  "https://www.town.nakanojo.gunma.jp/soshiki/4/3615.html": "長野原草津口駅〜野反湖の六合地区路線バス"
+ },
+ "takatsuma": {
+  "https://www.alpico.co.jp/traffic/express/express_togakushi/": "長野駅〜戸隠キャンプ場の観光特急戸隠線（予約制）"
+ },
+ "tateyama": {
+  "https://www.alpen-route.com/timetable/": "立山黒部アルペンルート"
+ },
+ "tengudake": {
+  "https://www.alpico.co.jp/traffic/local/suwa/shibunoyu/": "茅野駅〜渋の湯のバス（奥蓼科渋の湯線）"
+ },
+ "terkari": {
+  "https://tohyamago.com/archives/3681": "道の駅遠山郷〜易老渡の予約制タクシー"
+ },
+ "tsubakurodake": {
+  "https://nan-an.co.jp/nakabusa/": "穂高駅〜中房温泉の定期バス"
+ },
+ "tsurugi": {
+  "https://www.alpen-route.com/timetable/": "立山黒部アルペンルート"
+ },
+ "utsukushigahara": {
+  "https://www.utsukushigahara-bus.net/": "松本駅〜美ヶ原自然保護センターの直行バス"
+ },
+ "yakedake": {
+  "https://www.alpico.co.jp/traffic/sawayaka/route/kamikochi/shinjuku/": "松本〜新島々〜上高地の路線バス（中の湯経由）",
+  "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/": "松本〜新島々〜上高地の路線バス（中の湯経由）"
+ },
+ "yakushidake": {
+  "https://www.chitetsu.co.jp/?page_id=741": "富山駅〜折立の夏山バス"
+ },
+ "yari": {
+  "https://www.alpico.co.jp/traffic/sawayaka/route/kamikochi/shinjuku/": "operation",
+  "https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/": "operation"
+ },
+ "yatsugatake": {
+  "https://www.alpico.co.jp/traffic/local/suwa/": "operation"
+ }
+}
