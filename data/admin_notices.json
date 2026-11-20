@@ -12,12 +12,12 @@
    "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/43791809429"
   },
   {
-   "id": "restrict-2026-11-19-03e849b2bd",
+   "id": "restrict-2026-11-20-6ea5509e22",
    "kind": "restrict",
    "title": "規制・閉鎖の出典の見張り（毎日）",
-   "date": "2026-11-19",
+   "date": "2026-11-20",
    "needsAction": true,
-   "digest": "03e849b2bd",
+   "digest": "6ea5509e22",
    "sections": [
     {
      "heading": "",
@@ -28,19 +28,20 @@
     {
      "heading": "出典ページが変わった・解除の記載がある（出典を読んで、解除・変更ならサイトを直す）",
      "lines": [
-      "奥穂高岳・槍ヶ岳：上高地へはマイカーで入れません（2026-11-19 見つけた）— https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/"
+      "奥穂高岳・槍ヶ岳：上高地へはマイカーで入れません（2026-11-20 見つけた）— https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/"
      ]
     },
     {
      "heading": "出典ページを取得できなかった（URLの変更・リンク切れの可能性）",
      "lines": [
       "至仏山：https://oze-fnd.or.jp/archives/197701/（HTTP Error 403: Forbidden）",
-      "草津白根山：https://www.jrbuskanto.co.jp/jwp/local_emergency/e_kusatsu（<urlopen error timed out>）"
+      "草津白根山：https://www.jrbuskanto.co.jp/jwp/local_emergency/e_kusatsu（<urlopen error timed out>）",
+      "※ 今回が初回の取得だった出典：1件（次回から変更を検知します）"
      ]
     }
    ],
    "next": "Claude のアプリで「◯◯山の規制の出典を確かめて」と、山の名前を添えて伝えてください。出典を読んで、解除・変更ならサイトを直します。",
-   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/44454179811"
+   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/44669588315"
   },
   {
    "id": "annual-2026-11-01-9e49cb8eba",
