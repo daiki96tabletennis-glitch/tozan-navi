@@ -12,23 +12,23 @@
    "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/43791809429"
   },
   {
-   "id": "restrict-2026-11-21-f7d84abe44",
+   "id": "restrict-2026-11-22-738bf38fcc",
    "kind": "restrict",
    "title": "規制・閉鎖の出典の見張り（毎日）",
-   "date": "2026-11-21",
+   "date": "2026-11-22",
    "needsAction": true,
-   "digest": "f7d84abe44",
+   "digest": "738bf38fcc",
    "sections": [
     {
      "heading": "",
      "lines": [
-      "見張っている出典：26件／知らせるもの：3件（今日見つけた：2件）／取得できず：2件"
+      "見張っている出典：26件／知らせるもの：3件（今日見つけた：1件）／取得できず：0件"
      ]
     },
     {
      "heading": "出典ページが変わった・解除の記載がある（出典を読んで、解除・変更ならサイトを直す）",
      "lines": [
-      "木曽駒ヶ岳：しらび平へはマイカーで入れません（2026-11-21 見つけた）— https://www.chuo-alps.com/　記載：11/21(土)駒ヶ岳ロープウェイ運行再開のお知らせ",
+      "木曽駒ヶ岳：しらび平へはマイカーで入れません（2026-11-22 見つけた）— https://www.chuo-alps.com/",
       "荒沢岳：奥只見シルバーラインの冬期閉鎖（銀山平へ車で行けない）（2026-11-21 見つけた）— https://www.city.uonuma.lg.jp/page/1022378.html　記載：規制解除：令和8年10月9日(金曜日）15時00分～ ／ 規制解除：令和8年3月20日(金曜日）6時00分～",
       "奥穂高岳・槍ヶ岳：上高地へはマイカーで入れません（2026-11-20 見つけた）— https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/"
      ]
@@ -36,13 +36,12 @@
     {
      "heading": "出典ページを取得できなかった（URLの変更・リンク切れの可能性）",
      "lines": [
-      "至仏山：https://oze-fnd.or.jp/archives/197701/（HTTP Error 403: Forbidden）",
-      "草津白根山：https://www.jrbuskanto.co.jp/jwp/local_emergency/e_kusatsu（<urlopen error timed out>）"
+      "※ 今回が初回の取得だった出典：1件（次回から変更を検知します）"
      ]
     }
    ],
    "next": "Claude のアプリで「◯◯山の規制の出典を確かめて」と、山の名前を添えて伝えてください。出典を読んで、解除・変更ならサイトを直します。",
-   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/44861233083"
+   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/44977033514"
   },
   {
    "id": "annual-2026-11-01-9e49cb8eba",
@@ -197,5 +196,5 @@
    "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/39520018231"
   }
  ],
- "updatedAt": "2026-11-21"
+ "updatedAt": "2026-11-22"
 }
