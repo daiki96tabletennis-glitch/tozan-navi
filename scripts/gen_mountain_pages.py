@@ -61,7 +61,8 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261123a"
+ASSET_VER = "20261123b"
+_AMENITIES = None
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
@@ -883,7 +884,9 @@ def winter_access_block(mt, by_id):
     period = f'{_wmd(w["from"])}〜{_wmd(w["to"])}'
     th = mt.get("trailhead") or ""
     n_alt = winter_alt_index(mt)
-    head = (f'<div style="font-weight:700;margin-bottom:4px">{ym_icon("snowflake")} {period}は、登山口の{esc(th)}へ行けません</div>'
+    # 災害などで一年じゅう通れないとき（01-01〜12-31）は期間を書かない
+    when = "いま" if (w["from"], w["to"]) == ("01-01", "12-31") else f"{period}は"
+    head = (f'<div style="font-weight:700;margin-bottom:4px">{ym_icon("snowflake")} {when}、登山口の{esc(th)}へ行けません</div>'
             f'<div style="font-size:12px;line-height:1.6">{esc(w.get("text") or "")}</div>')
     body = ""
     if n_alt and winter_alt_view(mt, by_id):
@@ -1100,6 +1103,56 @@ def listing_block(mt):
     return (head + ''.join(cards) +
             '<div style="margin-top:10px;text-align:right"><a href="/listing/" '
             'style="font-size:11px;color:#8a8070;text-decoration:underline">地元のお店の掲載について（PR枠）</a></div>\n')
+
+
+def amenities_block(mt):
+    """山小屋と下山後の温泉の要約（2026-11-23〜）。はじめは閉じた形で、詳しくは /huts/ へ。
+    中身は data/mountain_amenities.json（build_mountain_amenities.py）。データに無い料金・時間は書かない"""
+    global _AMENITIES
+    if _AMENITIES is None:
+        with open(os.path.join(SITE_ROOT, "data", "mountain_amenities.json"), encoding="utf-8") as f:
+            _AMENITIES = json.load(f)["mountains"]
+    a = _AMENITIES.get(mt["id"])
+    if not a:
+        return ""
+    name = esc(mt["name"])
+    sum_st = 'style="cursor:pointer;font-size:15px;font-weight:700;color:#2a3820;padding:10px 0"'
+    li_st = 'style="padding:9px 0;border-top:1px solid #e0dbd0;font-size:13px;line-height:1.7;color:#4a4238"'
+    link_st = 'style="color:#3a5828;font-weight:700"'
+    parts = []
+    if a.get("huts"):
+        rows = []
+        for h in a["huts"]:
+            page = os.path.exists(os.path.join(SITE_ROOT, "huts", h["id"], "index.html"))
+            title = f'<a href="/huts/{esc(h["id"])}/" {link_st}>{esc(h["name"])}</a>' if page else f'<b>{esc(h["name"])}</b>'
+            booking = f'<br>予約の開始：{esc(h["booking"])}' if h.get("booking") else "<br>予約の開始：公式サイトで確認"
+            official = (f'<br><a href="{esc(h["url"])}" target="_blank" rel="noopener" {link_st}>公式サイト</a>'
+                        if h.get("url") else "")
+            rows.append(f"<li {li_st}>{title}{booking}{official}</li>")
+        more = a["hutCount"] - len(a["huts"])
+        label = f"{name}の山小屋をすべて見る（{a['hutCount']}軒）" if more > 0 else f"{name}の山小屋の比較と予約を見る"
+        all_link = (f'<a href="/huts/{esc(mt["id"])}/" {link_st}>{label} →</a>'
+                    if os.path.exists(os.path.join(SITE_ROOT, "huts", mt["id"], "index.html")) else "")
+        parts.append(f'<details class="ym-amenity"><summary {sum_st}>コース上の山小屋（{a["hutCount"]}軒）</summary>'
+                     f'<ul style="list-style:none;margin:0;padding:0">{"".join(rows)}</ul>'
+                     f'<p style="margin:6px 0 10px;font-size:13px">{all_link}</p></details>')
+    o = a.get("onsen")
+    if o:
+        lines = [f"<b>{esc(o['name'])}</b>"]
+        if o.get("checked"):
+            if o.get("move"):
+                lines.append(f"下山後の移動：{esc(o['move'])}")
+            if o.get("fee"):
+                lines.append(f"日帰り入浴：{esc(o['fee'])}")
+            if o.get("url"):
+                lines.append(f'<a href="{esc(o["url"])}" target="_blank" rel="noopener" {link_st}>公式サイト</a>')
+            lines.append(f'<a href="/articles/hiking-onsen-sauna/" {link_st}>登山のあとの温泉・サウナ →</a>')
+        else:
+            credit = "（施設の位置 © OpenStreetMap contributors）" if o.get("osm") else ""
+            lines.append(f"下山後に寄れそうな温泉の目安です。営業日・料金は施設の公式情報で確かめてください{credit}")
+        parts.append(f'<details class="ym-amenity"><summary {sum_st}>下山後の温泉</summary>'
+                     f'<p style="margin:0 0 10px;font-size:13px;line-height:1.8;color:#4a4238">{"<br>".join(lines)}</p></details>')
+    return f'<div class="card" id="sec-amenities"><h2>{name}の山小屋・温泉</h2>{"".join(parts)}</div>'
 
 
 def stay_link(mt):
@@ -1393,8 +1446,10 @@ def winter_shown(r):
 def train_badge(r, icon):
     """電車のバッジ。冬に電車・バスで行けない期間（closed・car_only）は、ページを開いた日の日付で隠す（WINTER_SCRIPT）"""
     w = r.get("winter") or {}
-    if w.get("state") in ("closed", "car_only") and w.get("from") and w.get("to"):
-        return icon.replace('<span class="rl-train"', f'<span class="rl-train" data-wfrom="{esc(w["from"])}" data-wto="{esc(w["to"])}"', 1)
+    # 解除日が未発表の閉鎖は from・to を入れず、電車・バスで行けない期間だけ trainFrom・trainTo に持つ（2026-11-23）
+    f, t = w.get("trainFrom") or w.get("from"), w.get("trainTo") or w.get("to")
+    if w.get("state") in ("closed", "car_only") and f and t:
+        return icon.replace('<span class="rl-train"', f'<span class="rl-train" data-wfrom="{esc(f)}" data-wto="{esc(t)}"', 1)
     return icon
 
 
@@ -1413,12 +1468,13 @@ def winter_line(r):
         return ""
     _, color = WINTER_STYLE[w["state"]]
     period = f'（{_wmd(w["from"])}〜{_wmd(w["to"])}）' if w.get("from") and w.get("to") else ""
+    summary = "通行止めの詳細と出典" if (w.get("from"), w.get("to")) == ("01-01", "12-31") else f"冬{period}の詳細と出典"
     srcs = w.get("sources") or []
     src = "・".join(f'<a href="{esc(s["url"])}" target="_blank" rel="noopener" style="color:#7a7068">{esc(s["label"])}</a>' for s in srcs)
     tail = f'<br>出典：{src}（{esc(w.get("lastVerified") or "")}確認）' if src else ""
     # 詳細と出典は、はじめはたたんでおく（2026-11-19。運営者の指示「詳細や出典はデフォは縮小していてトグルで見れる形に」）
     return (f'<details class="rl-winter" style="font-size:11px;color:{color};margin:0 0 5px;line-height:1.6">'
-            f'<summary style="cursor:pointer;font-weight:700">冬{period}の詳細と出典</summary>'
+            f'<summary style="cursor:pointer;font-weight:700">{summary}</summary>'
             f'<div style="margin-top:2px">{esc(w["text"])}{tail}</div></details>')
 
 
@@ -2169,6 +2225,9 @@ def generate_page(mt, by_id, gear_data):
 
     body_sections.append("")
     body_sections.append(f'  {render_access_tabs(mt, by_id)}')
+    amenities = amenities_block(mt)
+    if amenities:
+        body_sections.append(f'  {amenities}')
     body_sections.append(f'  {render_season(mt)}')
     body_sections.append("")
     body_sections.append(f'  {render_routes(mt)}')

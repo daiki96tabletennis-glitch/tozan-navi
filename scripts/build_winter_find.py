@@ -217,7 +217,7 @@ def build():
                            'chain': bool(r.get('chains')), 'rock': bool(r.get('rocks')), 'train': bool(r.get('byTrain')),
                            'type': r.get('courseType'),
                            # 冬に使えないコース（routes[].winter。2026-11-19〜）：st＝closed／car_only／unknown、f・t＝MM-DD
-                           'w': ({'st': r['winter']['state'], 'f': r['winter'].get('from'), 't': r['winter'].get('to')}
+                           'w': ({'st': r['winter']['state'], 'f': r['winter'].get('from') or r['winter'].get('closeFrom'), 't': r['winter'].get('to') or r['winter'].get('trainTo') or ('03-31' if r['winter'].get('closeFrom') else None)}
                                  if r.get('winter') else None)})
         if not routes:
             continue

@@ -951,6 +951,54 @@ def split_known(name, issues, known):
     return new, old
 
 
+def check_prose_bus_times(mountains):
+    """紹介文・よくある質問などの「バス◯分」と電車・バスの経路（trainRoutes の legs）の食い違い（2026-11-23〜）。
+    前は雲取山の紹介文が「バス15分」、アクセス欄が「バス35分」だった。trainInfo は画面に出ないので見ない"""
+    fields = ('introHtml', 'description', 'faq', 'metaDescription', 'ogDescription', 'metaTitle', 'ogTitle',
+              'recommendReason', 'dlReasonsHtml', 'featurePoints', 'vibePoints',
+              'trainAccess', 'trainAccessOmiya', 'trainAccessYokohama')
+    out = []
+    for m in mountains:
+        ok, bus = set(), set()
+        for r in ((m.get('trainRoutes') or {}).get('routes') or {}).values():
+            run = 0
+            for l in r.get('legs') or []:
+                d = l.get('durationMin')
+                if d and (l.get('method') or {}).get('icon') == 'bus':
+                    bus.add(d)
+                    run += d
+                elif run:
+                    ok.add(run)
+                    run = 0
+            if run:
+                ok.add(run)
+        for rt in m.get('routes') or []:
+            for l in (rt.get('returnAccess') or {}).get('legs') or []:
+                if l.get('durationMin'):
+                    ok.add(l['durationMin'])
+        if not bus:
+            continue
+        ok |= bus
+        for k in fields:
+            v = m.get(k)
+            if not v:
+                continue
+            t = v if isinstance(v, str) else json.dumps(v, ensure_ascii=False)
+            t = re.sub(r'<[^>]+>', '', t)
+            for g in re.finditer(r'バス(?:で|に乗り)?(?:約)?(\d{1,3})分', t):
+                if int(g.group(1)) not in ok:
+                    out.append({'id': m['id'], 'field': k, 'text': t[max(0, g.start() - 12):g.end() + 6], 'legs': sorted(bus)})
+    # 山小屋・温泉の要約のデータが古くないか
+    try:
+        import build_mountain_amenities as bma
+        with open(os.path.join(ROOT, 'data', 'mountain_amenities.json'), encoding='utf-8') as f:
+            if json.load(f) != bma.build():
+                out.append({'id': '-', 'field': 'mountain_amenities.json', 'text': '古い。build_mountain_amenities.py を実行', 'legs': []})
+    except FileNotFoundError:
+        out.append({'id': '-', 'field': 'mountain_amenities.json', 'text': 'ファイルが無い', 'legs': []})
+    return out
+
+
 def section(title, issues, formatter):
     lines = [f'## {title}（{len(issues)}件）']
     if not issues:
@@ -1001,6 +1049,7 @@ def main():
     tier_issues = check_access_tier(mountains)
     wfind_issues = check_winter_find()
     faqgear_issues = check_faq_gear(mountains)
+    prosebus_issues = check_prose_bus_times(mountains)
     import sync_search_hubs
     hub_issues = sync_search_hubs.hub_problems(mountains)
 
@@ -1053,6 +1102,8 @@ def main():
     report.append(section('25. アクセス難易度（accessTier。build_access_tier.py）・季節運行の期間', tier_issues, fmt))
     report.append(section('26. 冬の山選び診断（winter_find.json・/find/winter/）', wfind_issues, fmt))
     report.append(section('27. よくある質問（シーズン）の答えと装備カレンダー', faqgear_issues, fmt))
+    report.append(section('28. 本文の「バス◯分」と経路・山小屋と温泉の要約', prosebus_issues,
+                           lambda it: f"{it['id']} {it['field']}: {it['text']} / 経路 {it['legs']}"))
     if ssot_warns:
         report.append('## 参考：運行期間の期限切れ（来季の再確認対象。件数に含めない）\n' + '\n'.join('- ' + fmt(w) for w in ssot_warns) + '\n')
     report.append(f"## 参考：既知の未解決（調査待ちのレガシー。件数に含めない）\n- 10. 所要時間: {len(time_known)}件 / 11. 駅名: {len(station_known)}件（scripts/check_known_issues.json）\n")
@@ -1060,7 +1111,7 @@ def main():
     text = '\n'.join(report)
     print(text)
 
-    total = (len(broken_links) + len(broken_images) + len(required_field_issues)
+    total = (len(prosebus_issues) + len(broken_links) + len(broken_images) + len(required_field_issues)
              + len(seo_issues) + len(title_dupes) + len(mismatch_issues) + len(transit_issues)
              + len(train_routes_issues) + len(route_dup_issues) + len(time_issues)
              + len(station_issues) + len(coeff_issues) + len(restricted_issues) + len(seat_issues)

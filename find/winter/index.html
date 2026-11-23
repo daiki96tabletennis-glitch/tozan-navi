@@ -207,6 +207,17 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
 .more-list a{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px solid #f4f1ea;color:#2a2520;text-decoration:none;font-size:13px;font-weight:700;}
 .more-list a:last-child{border-bottom:none;}
 .more-list a span{font-size:11px;color:#8a7a6a;font-weight:400;white-space:nowrap;}
+.fw-guide{background:white;border:1px solid #e0dbd4;border-radius:12px;padding:14px;margin-bottom:20px;}
+.fw-guide h2{margin:0 0 3px;font-size:16px;color:#2a3820;line-height:1.4;}
+.fw-guide-lead{margin:0 0 10px;font-size:12px;color:#6a6258;line-height:1.6;}
+.fw-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;}
+.fw-tab{min-height:42px;padding:6px;border:1px solid #c8d4b8;border-radius:8px;background:#f6f8f1;color:#4e6535;font:700 13px 'Zen Kaku Gothic New',sans-serif;cursor:pointer;}
+.fw-tab[aria-selected="true"]{background:#4e6535;border-color:#4e6535;color:#fff;}
+.fw-tab:focus-visible,.fw-img-link:focus-visible{outline:3px solid #2a3820;outline-offset:2px;}
+.fw-img-link{display:block;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;}
+.fw-img-link img{display:block;width:100%;height:auto;}
+.fw-zoom{display:block;margin-top:7px;text-align:center;font-size:12px;font-weight:700;color:#4e6535;text-decoration:none;}
+.fw-guide-note{margin:10px 0 0;padding:9px 11px;border-radius:10px;background:#fdf6ec;border:1px solid #ecd2ab;font-size:12px;color:#6a4a20;line-height:1.6;}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>
@@ -265,6 +276,23 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
     </div>
     <div class="result-cards" id="result-cards"></div>
     <div id="more-list"></div>
+    <section class="fw-guide" aria-labelledby="fw-guide-title">
+      <h2 id="fw-guide-title">はじめて登山をする人へ</h2>
+      <p class="fw-guide-lead">出発前にやることと、冬の服装をまとめました。</p>
+      <div class="fw-tabs" role="tablist" aria-label="はじめての登山のガイド">
+        <button class="fw-tab" id="fw-tab-0" type="button" role="tab" aria-selected="true" aria-controls="fw-panel-0" onclick="fwGuideTab(0)">登山の基本</button>
+        <button class="fw-tab" id="fw-tab-1" type="button" role="tab" aria-selected="false" aria-controls="fw-panel-1" onclick="fwGuideTab(1)">冬の服装</button>
+      </div>
+      <div id="fw-panel-0" role="tabpanel" aria-labelledby="fw-tab-0">
+        <a class="fw-img-link" href="/images/find/winter-hiking-basics.webp" target="_blank" rel="noopener" onclick="fwGuideOpen('basics')"><img src="/images/find/winter-hiking-basics.webp" width="1216" height="1294" loading="lazy" decoding="async" alt="登山の基本。登山前は、体力に合うコースを選び、登山計画を作り、地図をスマホに保存し、天気・日没時刻・通行止めを確認して家族に行程を伝え、登山届を出す。当日は、こまめに地図を見て、ルートから外れたら立ち止まり、遅れたら山頂にこだわらず引き返す。持ち物は靴、雨具・防寒着、飲料と行動食、充電済みスマホとモバイルバッテリー、ヘッドライト。"></a>
+        <a class="fw-zoom" href="/images/find/winter-hiking-basics.webp" target="_blank" rel="noopener" onclick="fwGuideOpen('basics')">画像を大きく見る</a>
+      </div>
+      <div id="fw-panel-1" role="tabpanel" aria-labelledby="fw-tab-1" hidden>
+        <a class="fw-img-link" href="/images/find/winter-clothing-basics.webp" target="_blank" rel="noopener" onclick="fwGuideOpen('clothing')"><img src="/images/find/winter-clothing-basics.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="冬の低山での服装の基本。肌着は化繊かウール、中間着はフリースや薄手ダウン、上着は防風のシェルの3層で重ね着する。長ズボン、登山用ソックスと滑りにくい靴、手袋、帽子、ネックウォーマーをそろえる。歩いて暑くなったら脱ぎ、休憩中はすぐ防寒着を着る。綿のTシャツだけ、厚着のしすぎ、休憩中に上着を着ないのは避ける。"></a>
+        <a class="fw-zoom" href="/images/find/winter-clothing-basics.webp" target="_blank" rel="noopener" onclick="fwGuideOpen('clothing')">画像を大きく見る</a>
+      </div>
+      <p class="fw-guide-note" id="fw-guide-note"></p>
+    </section>
     <div id="gear-section" class="info-section"></div>
     <div id="tips-section" class="info-section"></div>
     <button class="retry-btn" onclick="resetQuiz()">↺ もう一度診断する</button>
@@ -763,9 +791,32 @@ function _doShowResult(){
     if(typeof gtag === 'function') gtag('event', 'diagnosis_complete', { diagnosis_type: 'find_winter', top_mountain_id: top3[0].m.id });
   }
   show('step-result');
+  fwGuideTab(0);
+  document.getElementById('fw-guide-note').textContent = fwGuideNote();
   document.getElementById('gear-section').innerHTML = buildGearSection();
   document.getElementById('tips-section').innerHTML = buildTipsSection();
   window.scrollTo(0, 0);
+}
+
+// ===== はじめて登山をする人へ（2026-11-23。運営者の絵）=====
+function fwGuideTab(n){
+  [0, 1].forEach(function(i){
+    document.getElementById('fw-tab-' + i).setAttribute('aria-selected', i === n ? 'true' : 'false');
+    document.getElementById('fw-panel-' + i).hidden = i !== n;
+  });
+}
+function fwGuideOpen(name){
+  if(typeof gtag === 'function') gtag('event', 'winter_guide_open', { guide: name });
+}
+// 絵は雪の無い低山の目安なので、選んだ雪の段階に合わせて足元の注意を添える
+function fwGuideNote(){
+  if(answers.who !== 'family' && (answers.gear === 'entry' || answers.gear === 'expert')){
+    return '雪山はスポーツシューズでは登れません。絵の服装は低山の目安で、雪山はさらに防寒と冬靴・アイゼンが要ります。登山がはじめての人は、まず雪の無い山か、ガイド付きのツアーがおすすめです。';
+  }
+  if(answers.who !== 'family' && answers.gear === 'light'){
+    return '雪や凍結のある道は、スポーツシューズではなく、登山靴にチェーンスパイクや軽アイゼンを付けて歩きます。';
+  }
+  return '冬は日陰の道が凍ることがあるので、足元は登山靴が安心です。雪が降ったあとは、出かける前に山の状況を確かめてください。';
 }
 
 // ===== 冬の持ち物・注意 =====

@@ -21,12 +21,14 @@
 """
 import datetime
 import json
+import re
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 MP = os.path.join(ROOT, 'data', 'mountains.json')
 AP = os.path.join(ROOT, 'data', 'accesses.json')
 DAY = '2026-11-19'
+DAY3 = '2026-11-23'
 L = '冬は通行止め'
 
 
@@ -139,9 +141,9 @@ CLOSED = [
     ('noguchigoro', [1, 2], L, '11-27', '04-16',
      '長野県が七倉への県道（槍ヶ岳線の七倉〜葛温泉上）を冬期通行止めにする予定（11/27 10時〜4/16 10時）で、七倉・高瀬ダムへ行けません。七倉へのバスも10月25日までです',
      [src('長野県 冬期通行止め予定（令和8年度）', 'https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf')], None),
-    ('shirouma', [2], L, '11-27', '04-23',
-     '長野県が猿倉への県道（白馬岳線の猿倉〜二股）を冬期通行止めにする予定（11/27 10時〜4/23 10時）で、猿倉へ行けません',
-     [src('長野県 冬期通行止め予定（令和8年度）', 'https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf')], None),
+    ('shirouma', [2], L, '11-19', '04-23',
+     '長野県が猿倉への県道（白馬岳線の猿倉〜二股）を冬期通行止めにしています（2026年11/19 17時〜4/23 10時の予定。降雪予報で11/27から早まりました）。猿倉へ行けません',
+     [src('長野県 冬期通行止め予定（令和8年度）', 'https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf'), src('長野県大町建設事務所（11/19 開始に変更）', 'https://www.pref.nagano.lg.jp/omachiken/index.html')], None),
     ('norikura', [2, 3], L, '11-13', '04-09',
      '長野県が乗鞍岳線（三本滝〜国民休暇村）を冬期通行止めにする予定（11/13 18時〜4/9 11時）で、三本滝へ車で行けません（三本滝から上は10/31〜4/27）',
      [src('長野県 冬期通行止め予定（令和8年度）', 'https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf')], None),
@@ -198,6 +200,104 @@ CAR_ONLY = [
 ]
 
 
+# 3回目（2026-11-23。運営者の指示「33山を調べて」）：冬山装備の月があるのに冬の印が無かった33山を、県の冬期通行止めの一覧などで確かめた
+GUNMA_R8 = src('群馬県 冬期閉鎖（令和8年度）', 'https://www.pref.gunma.jp/site/houdou/779146.html')
+CLOSED += [
+    ('nikko_shirane', [2], L, '12-25', '04-23',
+     '群馬県が国道120号（金精道路の金精トンネル〜丸沼スキー場入口）を冬期閉鎖にする予定（12/25 12時〜4/23 12時）で、菅沼へ行けません',
+     [GUNMA_R8], None),
+    ('shirane_gunma', [1], L, '11-11', '04-21',
+     '群馬県が国道292号（志賀草津道路の天狗山ゲート〜渋峠）を冬期閉鎖にしていて（11/11 13時〜4/21 10時の予定）、弓池へ行けません',
+     [GUNMA_R8], None),
+    ('azuma', [3], L, '11-04', '04-30',
+     '県道の西吾妻スカイバレーが2026年11月4日から冬期通行止めで、白布峠へ行けません。解除は2027年4月下旬ごろの予定です',
+     [src('福島県 猪苗代土木事務所', 'https://www.pref.fukushima.lg.jp/sec/41351a/sv-gl-ll-closed-for-winter.html')], None),
+    ('hiragadake', [1, 2], L, '11-04', '06-30',
+     '国道352号が2026年11月4日から冬期通行止めで（新潟側は駒ノ湯入口〜銀山平・銀山平〜県境、福島側は県境〜御池）、登山口へ行けません。解除は例年6月下旬です',
+     [src('新潟県 魚沼地域振興局', 'https://www.pref.niigata.lg.jp/site/uonuma-seibi/352toukiheisa.html'),
+      src('福島県 山口土木事務所', 'https://www.pref.fukushima.lg.jp/sec/41361a/road.html')], None),
+    ('nishihotaka', [3], L, '11-16', '04-16',
+     '上高地へは一年じゅう一般車が入れず（マイカー規制）、バスは2026年は4月17日〜11月15日でした。期間外は上高地へバス・車で行けません',
+     [src('アルピコ交通 上高地線', 'https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/'),
+      src('長野県 冬期通行止め予定（令和8年度）', 'https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf')], None),
+    ('yarigatake2', [3], L, '10-13', '07-10',
+     '椹島へは一般車が入れず、畑薙第一ダムからの送迎バス（山小屋の宿泊者だけ）は2026年は7月11日〜10月12日でした。期間外は椹島へ行けません',
+     [src('特種東海フォレスト', 'https://www.t-forest.com/alpsinfo/bus/')], None),
+    ('karamatsu', [3], L, '11-19', '04-23',
+     '下山口の猿倉への県道（白馬岳線の猿倉〜二股）を長野県が冬期通行止めにしています（2026年11/19 17時〜4/23 10時の予定。降雪予報で11/27から早まりました）。猿倉から帰れません',
+     [src('長野県 冬期通行止め予定（令和8年度）', 'https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf'), src('長野県大町建設事務所（11/19 開始に変更）', 'https://www.pref.nagano.lg.jp/omachiken/index.html')], None),
+]
+NEW33 = {('nikko_shirane', 2), ('shirane_gunma', 1), ('azuma', 3), ('hiragadake', 1), ('hiragadake', 2), ('nishihotaka', 3), ('yarigatake2', 3), ('karamatsu', 3)}
+# 車は通年で行けるが、電車・バスは行けない（annualItems に項目が無いので期間を直接書く）
+CAR_ONLY_FIXED = {
+    ('houou', 1): None,
+    ('houou', 3): None,
+}
+HOUOU_CAR = {
+    'state': 'car_only', 'label': '冬は電車・バスで行けない', 'from': '11-04', 'to': '06-25',
+    'text': '夜叉神峠を通るバスは2026年は6月26日〜11月3日です。夜叉神までの林道は山梨県の案内で通年通行できるので、車では行けます',
+    'sources': [src('山梨県 南アルプスマイカー規制', 'https://www.pref.yamanashi.jp/minami-alps-ks/50915161945.html')],
+}
+# 公式の案内で冬に行けるか確かめられなかったコース。推測で「行ける」「行けない」にしない
+UNKNOWN = {
+    'kobushigatake': [1, 2, 3], 'houou': [2], 'keirisan': [1, 2, 3], 'asama': [1, 2, 3], 'nikko_shirane': [1, 3],
+    'takeson': [1, 2, 3], 'myoko': [1, 2, 3], 'makihata': [1, 2, 3], 'iide': [1, 2, 3], 'shirane_gunma': [2],
+    'iwasugesan': [1, 2, 3], 'iizunasan': [1, 2, 3], 'kurohimesan': [1, 2, 3], 'nakawarayama': [1, 2], 'yarigatake2': [1, 2],
+    'gakedake': [1, 2], 'adatara': [1, 2, 3], 'azuma': [2], 'naeba': [1, 2, 3], 'sukai': [1, 2], 'utsugi': [1, 2, 3],
+    'enasan': [1, 2, 3], 'minamikomagatake': [1, 2], 'tairappyo': [1, 2, 3], 'azumayasan': [1, 2, 3], 'sennokurayama': [1, 2],
+}
+UNKNOWN_NOTE = {
+    ('adatara', 1): 'あだたら山ロープウェイの登山向けの運行は2026年は11月8日まで毎日、11月29日まで土日祝だけで、このコースは冬は使えません。',
+}
+
+
+def unknown_winter(mid, n, route):
+    start = re.split('〜', route.get('name') or '')[0]
+    text = UNKNOWN_NOTE.get((mid, n), '') + start + 'へ行く道路やバスが冬に使えるかは、公式の案内で確かめられていません。出かける前に自治体・宿・バス会社に確かめてください'
+    return {'state': 'unknown', 'label': '冬の道路は未確認', 'text': text, 'lastVerified': DAY3}
+
+
+# 4回目（2026-11-23。MUSE の調査結果を、出典のページを開いて確かめたものだけ）
+NAGANO_R8 = src('長野県 冬期通行止め予定（令和8年度）', 'https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf')
+NIIGATA_352 = src('新潟県 魚沼地域振興局', 'https://www.pref.niigata.lg.jp/site/uonuma-seibi/352toukiheisa.html')
+YUZAWA = src('湯沢町 登山情報', 'https://www.town.yuzawa.lg.jp/soshikikarasagasu/kikkakusangyoukankoubu/kankyonorinka/9/2/3/1029.html')
+OKUWA = src('大桑村 登山情報のお知らせ', 'https://www.vill.okuwa.lg.jp/kanko/miru-asobu/chuoalpstozan/chuuouarupusutozanntozannjouhounooshirase.html')
+ZAO = src('蔵王町観光物産協会', 'https://www.zao-machi.com/news/257.html')
+TOYAMA = src('富山県 有峰林道', 'https://www.pref.toyama.jp/documents/58006/ariminerinndouitizu.pdf')
+INAGAWA = '2026年6月28日の法面崩落で、伊奈川専用林道が歩行者も含めて全面通行止めです。復旧の目途は立っておらず、大桑村側から登れません'
+# (山, コース, 印, from, to, 文, 出典, 追加の項目)。解除日が未発表なら from・to は入れず、closeFrom と電車・バスで行けない期間を持つ
+M4 = [
+    ('keirisan', [1], L, '11-20', '06-20', '佐久市が林道大河原線・唐沢線（蓼科スカイライン）を2026年11月20日正午から通行止めにし、立科町の町道夢の平線も通行止めで、七合目登山口へ行けません。解除は2027年6月中旬ごろの予定です',
+     [src('佐久市 林道の通行', 'https://www.city.saku.nagano.jp/machizukuri/ringyo/chui/rinndoutuukou.html')], {}),
+    ('hiuchi', [1, 2], L, '11-06', '04-30', '県道39号妙高高原公園線が2026年11月6日14時から冬季通行止めで、迂回路が無く笹ヶ峰へ行けません。解除は2027年4月下旬の予定です',
+     [src('妙高観光局', 'https://myokotourism.jp/news/%e3%80%90%e9%80%9a%e8%a1%8c%e6%ad%a2%e3%82%81%e3%80%91%e7%ac%b9%e3%83%b6%e5%b3%b0%e3%81%b8%e3%81%ae%e9%81%93%e8%b7%af%e5%86%ac%e5%ad%a3%e9%96%89%e9%8e%96%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b/')], {'trainFrom': '10-26', 'trainTo': '07-10'}),
+    ('zaosan', [1, 3], L, '11-04', '04-23', '蔵王エコーライン・ハイラインが2026年11月4日17時から2027年4月23日11時（予定）まで冬期通行止めで、車で行けません', [ZAO], {}),
+    ('arasawadake', [1, 2], L, '11-04', '06-30', '国道352号（駒ノ湯入口〜銀山平・銀山平船着場〜県境）が2026年11月4日9時から冬期通行止めで、銀山平へ行けません。解除は例年6月下旬です', [NIIGATA_352], {}),
+    ('echigokoma', [1, 2], L, '11-04', '06-30', '国道352号（駒ノ湯入口〜銀山平。枝折峠を含む）が2026年11月4日9時から冬期通行止めで、枝折峠・銀山平へ行けません。解除は例年6月下旬です', [NIIGATA_352], {}),
+    ('bandai', [1], L, '11-13', '04-30', '磐梯山ゴールドラインが2026年11月13日17時から冬期通行止めで、八方台へ行けません。解除は2027年4月下旬ごろの予定です',
+     [src('福島県 猪苗代土木事務所', 'https://www.pref.fukushima.lg.jp/sec/41351a/sv-gl-ll-closed-for-winter.html')], {}),
+    ('ontakesan', [1], L, None, None, '村道41号線（八海山〜田の原）が2026年11月5日から冬期全面通行止めで、田の原へ行けません。来春の解除日はこのサイトでは確かめられていません',
+     [src('御嶽山ビジターセンター', 'https://ontake-vc.jp/yamanews/20261029/')], {'closeFrom': '11-05', 'trainFrom': '10-19', 'trainTo': '07-03'}),
+    ('yakushidake', [1], L, None, None, '有峰林道が2026年11月13日から冬期閉鎖で、折立へ行けません。来季の開通日は未発表です', [TOYAMA], {'closeFrom': '11-13', 'trainFrom': '09-28', 'trainTo': '07-10'}),
+    ('kurobegorodam', [1, 3], L, None, None, '有峰林道が2026年11月13日から冬期閉鎖で、折立へ行けません。来季の開通日は未発表です', [TOYAMA], {'closeFrom': '11-13', 'trainFrom': '09-28', 'trainTo': '07-10'}),
+    ('hakusan', [1, 2], L, None, None, '白山公園線（白峰の風嵐〜別当出合）が2026年11月18日から冬季閉鎖で、市ノ瀬・別当出合へ行けません。例年春ごろまでで、来春の解除日は未発表です',
+     [src('白山市 観光サイト', 'https://www.urara-hakusanbito.com/topic/detail_142.html')], {'closeFrom': '11-18', 'trainFrom': '10-14', 'trainTo': '07-03'}),
+    ('naeba', [1], L, None, None, '祓川登山口の駐車場までの道路が2026年11月20日から通行止めです。来春の解除日は未発表です', [YUZAWA], {'closeFrom': '11-20', 'trainFrom': '11-20', 'trainTo': '03-31'}),
+    ('naeba', [3], L, None, None, '町道赤湯線（苗場スキー場〜小日橋）が2026年11月9日から冬期通行止めで、小日橋まで車で行けません。赤湯温泉山口館も今年度の営業を終えました。来春の解除日は未発表です', [YUZAWA], {'closeFrom': '11-09'}),
+    ('enasan', [2], L, None, None, '神坂峠へ通じる林道大谷霧ヶ原線を、中津川市が2026年11月20日に通行止めにしました。来春の解除日は未発表です',
+     [src('中津川市 林道の通行', 'https://www.city.nakatsugawa.lg.jp/life/rt/5/1/25452.html')], {'closeFrom': '11-20'}),
+    ('adatara', [1], '冬はロープウェイなし', '11-24', '04-10', 'あだたら山ロープウェイの通常の運行は2026年は4月11日〜11月23日です。来季の開始日は未発表で、期間は2026年の運行から数えた目安です',
+     [src('あだたら高原リゾート', 'https://www.adatara-resort.com/green/about/index.html')], {}),
+    ('makihata', [1, 2, 3], '冬は桜坂へ車で行けない', None, None, '新潟県警の冬山情報によると、冬は清水集落から桜坂駐車場まで積雪で車が通れず、清水集落にも駐車場がありません',
+     [src('新潟県警察 冬山情報（巻機山）', 'https://www.pref.niigata.lg.jp/site/kenkei/osirase-anzen-ansin-mizuyamajsetugaijiko-sangaku-huyuyama-jouhou-makihata-makihata.html')], {}),
+    ('minamikomagatake', [1, 2], '災害で通行止め', '01-01', '12-31', INAGAWA, [OKUWA], {}),
+    ('utsugi', [3], '災害で通行止め', '01-01', '12-31', INAGAWA, [OKUWA], {}),
+]
+# 公式の運行・通行の案内を確かめたので「未確認」の印を外すコース
+CONFIRMED_OPEN = {'asama': [1, 2], 'myoko': [1, 3], 'iizunasan': [1, 2, 3], 'tairappyo': [1, 2, 3], 'sennokurayama': [1],
+                  'kobushigatake': [3], 'nakawarayama': [2]}
+
+
 def mmdd(d, delta):
     x = datetime.date.fromisoformat(d) + datetime.timedelta(days=delta)
     return x.strftime('%m-%d')
@@ -214,7 +314,7 @@ def main():
             w = {'state': 'closed', 'label': label}
             if f and t:
                 w.update({'from': f, 'to': t})
-            w.update({'text': text, 'sources': sources, 'lastVerified': DAY})
+            w.update({'text': text, 'sources': sources, 'lastVerified': DAY3 if (mid, n) in NEW33 else DAY})
             if alt:
                 w['alt'] = alt
                 if ALT_FROM.get(mid):
@@ -239,6 +339,26 @@ def main():
                               'text': '%sは2026年は%s〜%s（期間外は電車・バスで行けない。来季の開始は未発表なので2026年の日付で数えた）' % (
                                   name, vf, vt),
                               'sources': [src(name, url)] if url else [], 'lastVerified': DAY}
+    for key in CAR_ONLY_FIXED:
+        assert key not in want, key
+        assert by[key[0]]['routes'][key[1] - 1].get('byTrain'), key
+        want[key] = dict(HOUOU_CAR, lastVerified=DAY3)
+    for mid, nums in UNKNOWN.items():
+        for n in nums:
+            assert (mid, n) not in want, (mid, n)
+            want[(mid, n)] = unknown_winter(mid, n, by[mid]['routes'][n - 1])
+    for mid, nums, label, f, t, text, sources, more in M4:
+        for n in nums:
+            w = {'state': 'closed', 'label': label}
+            if f and t:
+                w.update({'from': f, 'to': t})
+            w.update(more)
+            w.update({'text': text, 'sources': sources, 'lastVerified': DAY3})
+            want[(mid, n)] = w
+    for mid, nums in CONFIRMED_OPEN.items():
+        for n in nums:
+            assert want[(mid, n)]['state'] == 'unknown', (mid, n)
+            del want[(mid, n)]
     # このスクリプトで入れた分を入れ直す（金峰山は別のスクリプト）
     changed = set()
     targets = {mid for mid, _ in want}

@@ -1,0 +1,1647 @@
+{
+ "_note": "scripts/build_mountain_amenities.py が作る（手で編集しない）。checked=false の温泉は下山後に寄れそうな目安で、営業・料金は未確認。osm=true は © OpenStreetMap contributors（ODbL）",
+ "mountains": {
+  "adatara": {
+   "onsen": {
+    "name": "あだたら山 奥岳の湯",
+    "checked": true,
+    "fee": "800円",
+    "move": "ロープウェイで山麓へ",
+    "url": "https://www.adatara-resort.com/spa/"
+   }
+  },
+  "ainodake": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-0fa657a1",
+     "name": "北岳山荘",
+     "booking": "4月1日 10:00から（2026年）",
+     "url": "https://www.city.minami-alps.yamanashi.jp/docs/kitadake-sansou.html"
+    }
+   ],
+   "onsen": {
+    "name": "金山沢温泉",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "aizu_koma": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-72443e50",
+     "name": "会津駒ヶ岳 駒の小屋",
+     "booking": "4月1日 7:00から（電話・メール。メールだけの早期予約は3月1日から。2026年）",
+     "url": "http://komanokoya.com/"
+    }
+   ],
+   "onsen": {
+    "name": "駒の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "akaisidake": {
+   "hutCount": 3,
+   "huts": [
+    {
+     "id": "hut-4eaf05dd",
+     "name": "荒川小屋",
+     "booking": "7/11〜9/22の宿泊分は、泊まる月ごとに Web で6月15日・19日・23日の17:00から、電話で6月29日・7月3日・7月8日の10:00から（2026年）。9/23以降は予約制ではなく当日受付（10/10・11泊だけ10月1日から電話で予約）",
+     "url": "https://www.t-forest.com/alpsinfo/climber/lodgeinfo/"
+    },
+    {
+     "id": "hut-7fdfb7cd",
+     "name": "赤石小屋",
+     "booking": "7/11〜9/22の宿泊分は、泊まる月ごとに Web で6月15日・19日・23日の17:00から、電話で6月29日・7月3日・7月8日の10:00から（2026年）。9/23以降は予約制ではなく当日受付（10/10・11泊だけ10月1日から電話で予約）",
+     "url": "https://www.t-forest.com/alpsinfo/climber/lodgeinfo/"
+    },
+    {
+     "id": "hut-b64e1ab8",
+     "name": "赤石岳避難小屋",
+     "booking": "7/11〜9/22の宿泊分は、泊まる月ごとに Web で6月15日・19日・23日の17:00から、電話で6月29日・7月3日・7月8日の10:00から（2026年）",
+     "url": "https://www.t-forest.com/alpsinfo/climber/lodgeinfo/"
+    }
+   ],
+   "onsen": {
+    "name": "白樺荘",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "arakawadake": {
+   "hutCount": 5,
+   "huts": [
+    {
+     "id": "hut-bb8d3262",
+     "name": "千枚小屋",
+     "booking": "7/11〜9/22の宿泊分は、泊まる月ごとに Web で6月15日・19日・23日の17:00から、電話で6月29日・7月3日・7月8日の10:00から（2026年）。9/23以降は予約制ではなく当日受付（10/10・11泊だけ10月1日から電話で予約）",
+     "url": "https://www.t-forest.com/alpsinfo/climber/lodgeinfo/"
+    },
+    {
+     "id": "hut-4eaf05dd",
+     "name": "荒川小屋",
+     "booking": "7/11〜9/22の宿泊分は、泊まる月ごとに Web で6月15日・19日・23日の17:00から、電話で6月29日・7月3日・7月8日の10:00から（2026年）。9/23以降は予約制ではなく当日受付（10/10・11泊だけ10月1日から電話で予約）",
+     "url": "https://www.t-forest.com/alpsinfo/climber/lodgeinfo/"
+    },
+    {
+     "id": "hut-7fdfb7cd",
+     "name": "赤石小屋",
+     "booking": "7/11〜9/22の宿泊分は、泊まる月ごとに Web で6月15日・19日・23日の17:00から、電話で6月29日・7月3日・7月8日の10:00から（2026年）。9/23以降は予約制ではなく当日受付（10/10・11泊だけ10月1日から電話で予約）",
+     "url": "https://www.t-forest.com/alpsinfo/climber/lodgeinfo/"
+    }
+   ],
+   "onsen": {
+    "name": "白樺荘",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "arasawadake": {
+   "onsen": {
+    "name": "かもしかの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "arikayama": {
+   "onsen": {
+    "name": "中房温泉湯原の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "azuma": {
+   "onsen": {
+    "name": "白布温泉 東屋",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "azumayama_ninomiya": {
+   "onsen": {
+    "name": "THERMAL SPA S.WAVE（大磯プリンスホテル）",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "bonori": {
+   "onsen": {
+    "name": "さわらびの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "bukosan": {
+   "onsen": {
+    "name": "西武秩父駅前温泉 祭の湯",
+    "checked": true,
+    "fee": "1,100円〜",
+    "move": "タクシー・車",
+    "url": "https://www.seibu-leisure.co.jp/matsuri/serviceguide/index.html"
+   }
+  },
+  "chogatake": {
+   "hutCount": 3,
+   "huts": [
+    {
+     "id": "hut-bf39f1a9",
+     "name": "徳沢ロッヂ",
+     "booking": "1月28日 9:00から（2026年）",
+     "url": "http://www.m-kamikouchi.jp/tokuzawalodge/"
+    },
+    {
+     "id": "hut-b3a84840",
+     "name": "氷壁の宿 徳澤園",
+     "booking": "4/25〜7/24と10/13以降の宿泊分は1月31日 9:00から、全日程は2月1日 9:00から（2026年）",
+     "url": "https://www.tokusawaen.com/"
+    },
+    {
+     "id": "hut-697c1181",
+     "name": "蝶ヶ岳ヒュッテ",
+     "booking": "やまたんは4月1日10:00から（5/14以降の宿泊分は宿泊日の6週前の同じ曜日0:00から）、モンベルの予約サイトは宿泊日の1か月前の同じ日0:00から、電話（松本事務所）は宿泊日が月〜木曜なら3週間前の月曜、金〜日曜なら3週間前の金曜の各10:00から（6/29以降の宿泊分）（2026年）",
+     "url": "https://chougatake.com/"
+    }
+   ],
+   "onsen": {
+    "name": "梓湖畔の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "eboshidake_kita": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-abddcb35",
+     "name": "烏帽子小屋",
+     "booking": "宿泊日の1か月前から（コールセンター休業日は前営業日から）",
+     "url": "https://www.ne.jp/asahi/eboshidake/2628/"
+    },
+    {
+     "id": "hut-91ed1526",
+     "name": "七倉山荘",
+     "booking": null,
+     "url": "http://www.webmarunaka.com/nanakura/"
+    }
+   ]
+  },
+  "echigokoma": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-edc82a71",
+     "name": "駒の小屋（越後駒ヶ岳避難小屋）",
+     "booking": null,
+     "url": "https://www.city.uonuma.lg.jp/page/1013581.html"
+    }
+   ],
+   "onsen": {
+    "name": "白銀の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "fuji": {
+   "hutCount": 42,
+   "huts": [
+    {
+     "id": "hut-f12d5b89",
+     "name": "スバルライン五合目 富士山みはらし",
+     "booking": "4月1日 9:00から（2026年）",
+     "url": "https://www.fujisan5.com/"
+    },
+    {
+     "id": "hut-27ccaec4",
+     "name": "スバルライン五合目 富士急雲上閣（ロッジ・フジヤマ）",
+     "booking": "4月10日 12:00から（2026年）",
+     "url": "https://www.unjokaku.jp/"
+    },
+    {
+     "id": "hut-8f70f4cb",
+     "name": "七合目トモエ館",
+     "booking": "5月11日 0:00ごろから（2026年。ネット予約のみ）",
+     "url": "https://tomoekan.com/"
+    }
+   ]
+  },
+  "futagoyama_okumusa": {
+   "onsen": {
+    "name": "西武秩父駅前温泉 祭の湯",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "gakedake": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-ba19e45d",
+     "name": "餓鬼岳小屋",
+     "booking": null,
+     "url": null
+    }
+   ]
+  },
+  "goryudake": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-3f91149c",
+     "name": "五竜山荘",
+     "booking": "残雪期の宿泊分は4月1日 9:00から、夏季（6/20〜）の宿泊分は5月20日 7:00から（2026年）",
+     "url": "https://hakubakan.com/lodge/goryusanso/"
+    }
+   ],
+   "onsen": {
+    "name": "竜神の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "hakusan": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-5d2d5a6d",
+     "name": "白山室堂",
+     "booking": "4月1日 9:00から（2026年）",
+     "url": "https://hakusan-guide.or.jp/hakusan_stay/murodou/"
+    }
+   ]
+  },
+  "harinokidake": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-64c901b2",
+     "name": "大沢小屋",
+     "booking": null,
+     "url": "http://www.harinoki.com/"
+    },
+    {
+     "id": "hut-7d35bed9",
+     "name": "針ノ木小屋",
+     "booking": null,
+     "url": "http://www.harinoki.com/"
+    }
+   ]
+  },
+  "hijiridade": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-cab96e1e",
+     "name": "聖光小屋",
+     "booking": "3月20日から（2026年）",
+     "url": "https://seikougoya.info/"
+    },
+    {
+     "id": "hut-49e084f2",
+     "name": "聖平小屋",
+     "booking": "Webは7月分が6月15日、8月分が6月19日、9月分が6月23日の各17:00から（電話は約2週間後から。2026年）",
+     "url": "https://ikawa-kanko.com/"
+    }
+   ]
+  },
+  "hinata": {
+   "onsen": {
+    "name": "白州・尾白の森名水公園 べるが 尾白の湯",
+    "checked": true,
+    "fee": "830円",
+    "move": "車",
+    "url": "https://www.verga.info/onesen-furo"
+   }
+  },
+  "hinodesaan": {
+   "onsen": {
+    "name": "生涯青春の湯 つるつる温泉",
+    "checked": true,
+    "fee": "1,050円〜",
+    "move": "コースの終点",
+    "url": "https://www.tsurutsuru-onsen.com/?page_id=49"
+   }
+  },
+  "hirugata": {
+   "hutCount": 3,
+   "huts": [
+    {
+     "id": "hut-3c3cf313",
+     "name": "みやま山荘",
+     "booking": "宿泊日の2か月前から（電話の受付は9:00〜19:00）",
+     "url": "https://miyamasansou.com/"
+    },
+    {
+     "id": "hut-e1f550f6",
+     "name": "尊仏山荘",
+     "booking": "3か月先の末日分まで予約可（例：4月中なら7月31日分まで）。遅くとも前日までに予約",
+     "url": "https://sonbutsusanso.amebaownd.com/"
+    },
+    {
+     "id": "hut-79abf15d",
+     "name": "蛭ヶ岳山荘",
+     "booking": null,
+     "url": "https://kitatan.com/hirutop"
+    }
+   ]
+  },
+  "hiuchi": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-e2a1200a",
+     "name": "高谷池ヒュッテ",
+     "booking": "4月1日 9:00から（2026年度。5月以降は利用月の2か月前の1日 0:00から）",
+     "url": "https://myokotourism.jp/kouyaike/"
+    }
+   ],
+   "onsen": {
+    "name": "The Sauna（LAMP野尻湖）",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "hiuchigatake": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-d3e00f11",
+     "name": "尾瀬沼ヒュッテ",
+     "booking": "3月9日から（Webは0:00から。電話の受付開始は、同じお知らせの中に8:00と8:30の両方の記載がある。2026年）",
+     "url": "https://www.oze-info.jp/ozh_stay/ozenumahutte/"
+    },
+    {
+     "id": "hut-310054a7",
+     "name": "長蔵小屋",
+     "booking": "3月1日から（2026年）",
+     "url": "https://chozogoya.com/"
+    }
+   ]
+  },
+  "hiwadayama": {
+   "onsen": {
+    "name": "おふろcafe オンセンバルコニー King&Queen",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "honitayama": {
+   "onsen": {
+    "name": "もえぎの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "hotaka": {
+   "hutCount": 4,
+   "huts": [
+    {
+     "id": "hut-251f0dc7",
+     "name": "横尾山荘",
+     "booking": "電話は宿泊日の1か月前（前月の同じ日）7:00から（Web（やまたん）は7/1〜10/25泊の限定数だけ、2か月前から）",
+     "url": "https://www.yokoo-sanso.co.jp/"
+    },
+    {
+     "id": "hut-25ee6520",
+     "name": "涸沢ヒュッテ",
+     "booking": "宿泊日の1か月前の同じ日の朝8:00から（Webは前々日18:00、電話は前日18:00まで。2026年の4/27〜5/27泊の電話予約は4月20日8:00から）",
+     "url": "https://www.karasawa-hyutte.com/"
+    },
+    {
+     "id": "hut-f16d6440",
+     "name": "涸沢小屋",
+     "booking": "宿泊日の1か月前から（4/27〜5/25の宿泊分は一括して4月25日から）",
+     "url": "http://www.karasawagoya.com/"
+    }
+   ],
+   "onsen": {
+    "name": "梓湖畔の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "houou": {
+   "hutCount": 5,
+   "huts": [
+    {
+     "id": "hut-af328452",
+     "name": "南御室小屋",
+     "booking": "宿泊日の1か月前から（GW営業分は例年4月1日から）",
+     "url": "http://www.houousan.com/"
+    },
+    {
+     "id": "hut-55ef1644",
+     "name": "薬師岳小屋",
+     "booking": "宿泊日の1か月前から（GW営業分は例年4月1日から）",
+     "url": "http://www.houousan.com/"
+    },
+    {
+     "id": "hut-50a3f3fd",
+     "name": "鳳凰小屋",
+     "booking": "4月1日から（2026年。夏の営業分・電話で受付。宿泊は完全予約制。テント泊は指定日だけ予約制で、8名以上のグループは日程にかかわらず予約が必要）",
+     "url": "http://houougoya.jp/"
+    }
+   ],
+   "onsen": {
+    "name": "金山沢温泉",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "iide": {
+   "hutCount": 3,
+   "huts": [
+    {
+     "id": "hut-385c0e05",
+     "name": "飯豊切合小屋",
+     "booking": "1年中いつでも予約できる（管理人の案内「山小屋の宿泊予約は、1年中受け付けております」）",
+     "url": "https://iide.3gaku.jp/"
+    },
+    {
+     "id": "hut-48d3749c",
+     "name": "三国岳避難小屋（三国小屋）",
+     "booking": null,
+     "url": "https://cms2.town.nishiaizu.fukushima.jp/site/kanko/797.html"
+    },
+    {
+     "id": "hut-d8db1fe6",
+     "name": "飯豊山避難小屋（本山小屋）",
+     "booking": null,
+     "url": "https://cms2.town.nishiaizu.fukushima.jp/site/kanko/797.html"
+    }
+   ]
+  },
+  "iizunasan": {
+   "onsen": {
+    "name": "The Sauna（LAMP野尻湖）",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "ishirousan": {
+   "onsen": {
+    "name": "さがみ湖温泉 うるり",
+    "checked": true,
+    "fee": "950円〜",
+    "move": "下山口のそば",
+    "url": "https://www.sagamiko-resort.jp/spa/price.html"
+   }
+  },
+  "ishiwariyama": {
+   "onsen": {
+    "name": "ホテルマウント富士",
+    "checked": true,
+    "fee": "2,500円",
+    "move": "バス＋ホテルの送迎（約10分）",
+    "url": "https://www.mtfuji-hotel.com/spa/dayuse.html"
+   }
+  },
+  "iyogatake": {
+   "onsen": {
+    "name": "Satoyama Terrace",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "jinba": {
+   "onsen": {
+    "name": "TAKAO 36 SAUNA",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "jonengatake": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-b059e31d",
+     "name": "常念小屋",
+     "booking": "宿泊日の1か月前（前月の同じ日）の朝8:00から",
+     "url": "http://mt-jonen.com/"
+    }
+   ]
+  },
+  "juunigadake": {
+   "onsen": {
+    "name": "いずみの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "kagenobusan": {
+   "onsen": {
+    "name": "TAKAO 36 SAUNA",
+    "checked": true,
+    "fee": "25分1,000円〜",
+    "move": "高尾山口駅から徒歩すぐ",
+    "url": "https://takao36sauna.com/price/"
+   }
+  },
+  "kamakura_alps": {
+   "onsen": {
+    "name": "稲村ヶ崎温泉",
+    "checked": true,
+    "fee": "1,600円",
+    "move": "江ノ電＋徒歩3分",
+    "url": "https://www.inamuragasaki-onsen.jp/"
+   }
+  },
+  "karamatsu": {
+   "hutCount": 3,
+   "huts": [
+    {
+     "id": "hut-6f04ec94",
+     "name": "唐松岳頂上山荘",
+     "booking": "宿泊日の120日前から（Web）",
+     "url": "http://karamatsu.jp/index.html"
+    },
+    {
+     "id": "hut-670d5eeb",
+     "name": "村営八方池山荘",
+     "booking": "随時受付",
+     "url": "http://yamagoya.hakubakousha.com/"
+    },
+    {
+     "id": "hut-9955887f",
+     "name": "村営天狗山荘",
+     "booking": "5月8日 9:00から（2026年）",
+     "url": "http://yamagoya.hakubakousha.com/"
+    }
+   ],
+   "onsen": {
+    "name": "白馬八方温泉 八方の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "karisaka": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-318aab37",
+     "name": "雁坂小屋",
+     "booking": null,
+     "url": "http://karisakakoya.blogspot.com/"
+    }
+   ]
+  },
+  "kasagatake": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-17a71dde",
+     "name": "笠ヶ岳山荘",
+     "booking": "6月1日から",
+     "url": "https://kasagatake.com/"
+    }
+   ],
+   "onsen": {
+    "name": "中崎山荘 奥飛騨の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "kashimayari": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-6980deb5",
+     "name": "冷池山荘",
+     "booking": "7月分は5月15日、8月分までは5月22日、10月17日までの全期間は5月29日の各10:00から（2026年。電話・Webとも同じ日程。テント泊の予約は別日程）",
+     "url": "https://www.kasimayari.jp/"
+    },
+    {
+     "id": "hut-91a27ad5",
+     "name": "種池山荘",
+     "booking": "7月分は5月15日、8月分までは5月22日、10月17日までの全期間は5月29日の各10:00から（2026年。電話・Webとも同じ日程。テント泊の予約は別日程）",
+     "url": "https://www.kasimayari.jp/"
+    }
+   ]
+  },
+  "keirisan": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-10eff39f",
+     "name": "蓼科山荘",
+     "booking": "宿泊日の2か月前の同じ日の7:00から（2026年度の受付開始は4月2日10:00）",
+     "url": "http://www7a.biglobe.ne.jp/~g-factory/tateshinalodge/yama.html"
+    },
+    {
+     "id": "hut-e86564b3",
+     "name": "蓼科山頂ヒュッテ",
+     "booking": "一般は4月1日から、10名以上の団体は1月1日から（2027年度）",
+     "url": "http://tateshinayama.com/"
+    }
+   ]
+  },
+  "keizandake": {
+   "onsen": {
+    "name": "みはらしの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "kentoku": {
+   "onsen": {
+    "name": "みとみ笛吹の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "kinpusan": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-b363fca7",
+     "name": "金峰山荘",
+     "booking": "2月2日 10:00から（2026年度）",
+     "url": "https://mawarime-daira.com/"
+    },
+    {
+     "id": "hut-7b069b75",
+     "name": "金峰山小屋",
+     "booking": null,
+     "url": "https://www.kimpou.com/"
+    }
+   ]
+  },
+  "kintoki": {
+   "onsen": {
+    "name": "箱根湯寮",
+    "checked": true,
+    "fee": "1,700円〜",
+    "move": "バス＋送迎3分",
+    "url": "https://www.hakoneyuryo.jp/price/"
+   }
+  },
+  "kirigamine": {
+   "hutCount": 3,
+   "huts": [
+    {
+     "id": "hut-f29304aa",
+     "name": "八島山荘",
+     "booking": "4/29〜5/10の宿泊分は3月29日から。5/11以降はメールフォームでも受付（宿泊の3日前〜当日は電話）",
+     "url": "https://yashimasanso.net/"
+    },
+    {
+     "id": "hut-01137b54",
+     "name": "鷲が峰ひゅって",
+     "booking": "宿泊月の前月1日 0:00から（例：7月分は6月1日）",
+     "url": "https://nature2.jp/wasshie/"
+    },
+    {
+     "id": "hut-0e066900",
+     "name": "ヒュッテみさやま",
+     "booking": null,
+     "url": "https://huttemisayama.net/"
+    }
+   ],
+   "onsen": {
+    "name": "白樺リゾート 池の平ホテル 湖天の湯",
+    "checked": true,
+    "fee": "2,000円〜",
+    "move": "車",
+    "url": "https://www.shirakabaresort.jp/familyland/attraction/spa.html"
+   }
+  },
+  "kisokoma": {
+   "hutCount": 3,
+   "huts": [
+    {
+     "id": "hut-eb43b826",
+     "name": "天狗荘",
+     "booking": null,
+     "url": "https://miyadakankou.co.jp/tengusou"
+    },
+    {
+     "id": "hut-f4e1b7b5",
+     "name": "宝剣山荘",
+     "booking": null,
+     "url": "https://miyadakankou.co.jp/"
+    },
+    {
+     "id": "hut-bcf76061",
+     "name": "駒ヶ岳頂上山荘",
+     "booking": null,
+     "url": "https://miyadakankou.co.jp/chojosansou"
+    }
+   ],
+   "onsen": {
+    "name": "こまくさの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "kitadake": {
+   "hutCount": 3,
+   "huts": [
+    {
+     "id": "hut-0fa657a1",
+     "name": "北岳山荘",
+     "booking": "4月1日 10:00から（2026年）",
+     "url": "https://www.city.minami-alps.yamanashi.jp/docs/kitadake-sansou.html"
+    },
+    {
+     "id": "hut-d0e50f8a",
+     "name": "白根御池小屋",
+     "booking": "4月1日 10:00から（2026年）",
+     "url": "https://shiraneoike.ashiyasu.com/"
+    },
+    {
+     "id": "hut-9c20ab7e",
+     "name": "北岳肩の小屋",
+     "booking": null,
+     "url": "https://katanokoya.com/"
+    }
+   ],
+   "onsen": {
+    "name": "金山沢温泉",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "kobotokeshiroyama": {
+   "onsen": {
+    "name": "TAKAO 36 SAUNA",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "kobushigatake": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-54bfa9cf",
+     "name": "甲武信小屋",
+     "booking": "個人・テント泊は2月2日 10:00から、10人以上の団体は1月26日 10:00から（2026年。この受付は4〜7月分で、8月以降の分は営業開始後に案内）",
+     "url": "https://www.kobushigoya.net/"
+    }
+   ]
+  },
+  "koganzan": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-e3d3a4c2",
+     "name": "福ちゃん荘",
+     "booking": "個人は宿泊の1週間前から、団体は3か月前から",
+     "url": "http://www.kcnet.ne.jp/~fukuchan/"
+    },
+    {
+     "id": "hut-43bfc8d1",
+     "name": "介山荘",
+     "booking": null,
+     "url": "http://www.kaizansou.jp/"
+    }
+   ]
+  },
+  "komagatake": {
+   "hutCount": 5,
+   "huts": [
+    {
+     "id": "hut-24d85c1b",
+     "name": "北沢峠 こもれび山荘",
+     "booking": "宿泊日の3か月前の同じ日 0:00から",
+     "url": "https://www.ina-city-kankou.co.jp/yamagoya/kitazawa/"
+    },
+    {
+     "id": "hut-75719802",
+     "name": "甲斐駒ヶ岳七丈小屋",
+     "booking": "夏山（5/25〜11/23泊）は4月1日 10:00から、冬季は10月5日 13:00から（2026年）",
+     "url": "https://www.kaikoma.info/"
+    },
+    {
+     "id": "hut-8731af8d",
+     "name": "長衛小屋",
+     "booking": "4月1日から（2026年。小屋泊は完全予約制で電話。テント泊は予約不要）",
+     "url": "https://choei.ashiyasu.com/"
+    }
+   ],
+   "onsen": {
+    "name": "仙流荘",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "koubousan": {
+   "onsen": {
+    "name": "THERMAL SPA S.WAVE（大磯プリンスホテル）",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "kukiyama": {
+   "onsen": {
+    "name": "山梨泊まれる温泉 より道の湯",
+    "checked": true,
+    "fee": "1,300円〜",
+    "move": "富士急行線＋徒歩1分",
+    "url": "https://yorimichinoyu.jp/price/"
+   }
+  },
+  "kumotori": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-e7281938",
+     "name": "七ツ石小屋",
+     "booking": "宿泊日の13週間（91日）前から（例：12月5日の宿泊は9月5日から。予約は前日15:00まで）",
+     "url": "https://nanatsuishigoya.com/"
+    },
+    {
+     "id": "hut-3c5e75db",
+     "name": "雲取山荘",
+     "booking": "宿泊日の3か月前から（10名以上の団体はそれより前でも可）",
+     "url": "http://kumotorisansou.com/"
+    }
+   ]
+  },
+  "kurobegorodam": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-2efc5250",
+     "name": "太郎平小屋",
+     "booking": "5月7日 9:00から（Web。電話は5月11日から。2026年）",
+     "url": "https://ltaro.com/lodge/tarodaira-goya/"
+    }
+   ]
+  },
+  "kurohimesan": {
+   "onsen": {
+    "name": "The Sauna（LAMP野尻湖）",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "kusatoriyama": {
+   "onsen": {
+    "name": "TAKAO 36 SAUNA",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "makuyama": {
+   "onsen": {
+    "name": "ゆとろの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "maruyama_okubusuma": {
+   "onsen": {
+    "name": "西武秩父駅前温泉 祭の湯",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "minamikomagatake": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-91ab7fef",
+     "name": "越百小屋",
+     "booking": null,
+     "url": null
+    }
+   ]
+  },
+  "minano_alps": {
+   "onsen": {
+    "name": "秩父温泉 満願の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "mitakesan": {
+   "onsen": {
+    "name": "生涯青春の湯 つるつる温泉",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "mitosaan": {
+   "onsen": {
+    "name": "檜原温泉センター 数馬の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "mitsutoge": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-5e22e23b",
+     "name": "三ツ峠山荘",
+     "booking": "Webは宿泊日の365日前から4日前まで（予約サイト「やまたん」の設定。電話でも受付）",
+     "url": "http://mitsutouge.net/"
+    },
+    {
+     "id": "hut-87a2820f",
+     "name": "四季楽園",
+     "booking": null,
+     "url": "https://shikirakuen.com/"
+    }
+   ]
+  },
+  "mizugaki": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-e151f345",
+     "name": "富士見平小屋",
+     "booking": null,
+     "url": "https://www.fujimidairagoya.jp/"
+    }
+   ]
+  },
+  "myogisan": {
+   "onsen": {
+    "name": "もみじの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "myoko": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-2b893e2f",
+     "name": "黒沢池ヒュッテ",
+     "booking": null,
+     "url": null
+    }
+   ],
+   "onsen": {
+    "name": "The Sauna（LAMP野尻湖）",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "naeba": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-8a6f8c64",
+     "name": "苗場山頂ヒュッテ－自然体験交流センター",
+     "booking": null,
+     "url": "http://sakae-akiyamago.com/stay/4888/"
+    }
+   ]
+  },
+  "nakawarayama": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-f2e5e7df",
+     "name": "将監小屋",
+     "booking": null,
+     "url": null
+    }
+   ]
+  },
+  "nakimushiyama": {
+   "onsen": {
+    "name": "ほの香",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "nantaisan": {
+   "onsen": {
+    "name": "日光小倉山温泉、春暁庭ゆりん",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "nikko_shirane": {
+   "onsen": {
+    "name": "日光湯元温泉（奥日光高原ホテル・休暇村日光湯元など）",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "nishihotaka": {
+   "onsen": {
+    "name": "中崎山荘 奥飛騨の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "noguchigoro": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-91ed1526",
+     "name": "七倉山荘",
+     "booking": null,
+     "url": "http://www.webmarunaka.com/nanakura/"
+    },
+    {
+     "id": "hut-8098c896",
+     "name": "野口五郎小屋",
+     "booking": null,
+     "url": "https://www.gorougoya.com/"
+    }
+   ]
+  },
+  "nokogiriyama": {
+   "onsen": {
+    "name": "仙流荘",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "nokogiriyama_chiba": {
+   "onsen": {
+    "name": "Satoyama Terrace",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "norikura": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-f6e894de",
+     "name": "肩ノ小屋",
+     "booking": null,
+     "url": "https://norikurakata.com/"
+    }
+   ],
+   "onsen": {
+    "name": "せせらぎの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "noutori": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-0fa657a1",
+     "name": "北岳山荘",
+     "booking": "4月1日 10:00から（2026年）",
+     "url": "https://www.city.minami-alps.yamanashi.jp/docs/kitadake-sansou.html"
+    },
+    {
+     "id": "hut-98d5a0ab",
+     "name": "農鳥小屋",
+     "booking": "個人は4月25日 9:30から、8人以上の団体は4月20日 9:30から（2026年）",
+     "url": "https://www.daimonzawa.jp/news/index.html"
+    }
+   ],
+   "onsen": {
+    "name": "金山沢温泉",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "nyukasayama": {
+   "onsen": {
+    "name": "水神の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "okusuyama": {
+   "onsen": {
+    "name": "明徳湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "okutama": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-e3d3a4c2",
+     "name": "福ちゃん荘",
+     "booking": "個人は宿泊の1週間前から、団体は3か月前から",
+     "url": "http://www.kcnet.ne.jp/~fukuchan/"
+    },
+    {
+     "id": "hut-43bfc8d1",
+     "name": "介山荘",
+     "booking": null,
+     "url": "http://www.kaizansou.jp/"
+    }
+   ]
+  },
+  "ontakesan": {
+   "hutCount": 5,
+   "huts": [
+    {
+     "id": "hut-dcb95faa",
+     "name": "七合目行場山荘",
+     "booking": null,
+     "url": "http://www.ontake-7-gyouba.com/"
+    },
+    {
+     "id": "hut-7603f6fa",
+     "name": "二の池ヒュッテ",
+     "booking": null,
+     "url": "https://www.ninoikehutte.com/"
+    },
+    {
+     "id": "hut-5c85b374",
+     "name": "二ノ池山荘",
+     "booking": null,
+     "url": "http://ninoike2905.com/"
+    }
+   ]
+  },
+  "otenshoudake": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-6bd368b4",
+     "name": "大天荘",
+     "booking": "3月18日 10:00から（2026年）",
+     "url": "https://www.enzanso.co.jp/daitenso"
+    },
+    {
+     "id": "hut-0ab94a0e",
+     "name": "燕山荘",
+     "booking": "3月18日 10:00から（2026年。個室は4/1・4/7・4/21・5/12・5/26の5回に分けて受付）",
+     "url": "https://www.enzanso.co.jp/"
+    }
+   ],
+   "onsen": {
+    "name": "中房温泉湯原の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "ranzan_saitama": {
+   "onsen": {
+    "name": "玉川温泉",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "senjogatake": {
+   "hutCount": 5,
+   "huts": [
+    {
+     "id": "hut-41904c2e",
+     "name": "仙丈小屋",
+     "booking": "宿泊日の3か月前の同じ日から",
+     "url": "https://www.ina-city-kankou.co.jp/yamagoya/senjo/"
+    },
+    {
+     "id": "hut-24d85c1b",
+     "name": "北沢峠 こもれび山荘",
+     "booking": "宿泊日の3か月前の同じ日 0:00から",
+     "url": "https://www.ina-city-kankou.co.jp/yamagoya/kitazawa/"
+    },
+    {
+     "id": "hut-8731af8d",
+     "name": "長衛小屋",
+     "booking": "4月1日から（2026年。小屋泊は完全予約制で電話。テント泊は予約不要）",
+     "url": "https://choei.ashiyasu.com/"
+    }
+   ],
+   "onsen": {
+    "name": "仙流荘",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "sennokurayama": {
+   "onsen": {
+    "name": "雪ささの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "shibutsu": {
+   "hutCount": 3,
+   "huts": [
+    {
+     "id": "hut-cc8bb9be",
+     "name": "LUCY尾瀬鳩待（旧 鳩待山荘）",
+     "booking": "宿泊日の1年前から",
+     "url": "https://hoshinoresorts.com/ja/hotels/lucyozehatomachi/"
+    },
+    {
+     "id": "hut-c7128530",
+     "name": "山の鼻小屋",
+     "booking": "2月1日から（山と溪谷オンライン「尾瀬ナビ」の記載。公式サイトの2025年の案内では、7月以降の分は宿泊月の2か月前の1日から）",
+     "url": "https://hpdsp.jp/yamanohanagoya/"
+    },
+    {
+     "id": "hut-585d84bc",
+     "name": "至仏山荘",
+     "booking": null,
+     "url": "https://www.tokyo-pt.co.jp/oze/mountain-villa/reserve.html"
+    }
+   ],
+   "onsen": {
+    "name": "戸倉の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "shiomidake": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-1401d075",
+     "name": "三伏峠小屋",
+     "booking": "宿泊日の21日前から（例：8月21日泊は8月1日から）",
+     "url": "http://sanpukutouge.com/"
+    },
+    {
+     "id": "hut-3d9b67ce",
+     "name": "塩見小屋",
+     "booking": "GW（5/2〜5/6泊）は4月1日 13:00から、夏（7/1〜10/11泊）は6月1日 9:00から（2026年。Web・やまたん）",
+     "url": "https://www.ina-city-kankou.co.jp/yamagoya/shiomi/"
+    }
+   ]
+  },
+  "shirane_gunma": {
+   "onsen": {
+    "name": "瑠璃乃湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "shirasunayama": {
+   "onsen": {
+    "name": "応徳温泉 くつろぎの湯（道の駅六合の隣）",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "shirouma": {
+   "hutCount": 6,
+   "huts": [
+    {
+     "id": "hut-3236777c",
+     "name": "村営白馬岳頂上宿舎",
+     "booking": "5月8日 9:00から（2026年）",
+     "url": "http://yamagoya.hakubakousha.com/"
+    },
+    {
+     "id": "hut-b4e48d1b",
+     "name": "栂池ヒュッテ",
+     "booking": "5月20日 7:00から（2026年の夏季シーズン分）",
+     "url": "https://hakubakan.com/lodge/tsugaikehutte/"
+    },
+    {
+     "id": "hut-8f6f2a1c",
+     "name": "猿倉荘",
+     "booking": "5月20日 7:00から（2026年）",
+     "url": "https://hakubakan.com/lodge/sarukuraso-hakubajiri/"
+    }
+   ],
+   "onsen": {
+    "name": "栂の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "sukai": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-9ff29f20",
+     "name": "庚申山荘（無人の避難小屋）",
+     "booking": null,
+     "url": "https://www.city.nikko.lg.jp/kanko_bunka_sports/activity/1/4/6167.html"
+    }
+   ]
+  },
+  "tairappyo": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-0bba53e2",
+     "name": "平標山乃家",
+     "booking": "4月1日から（令和8年度）",
+     "url": "https://tairappyouyama.wixsite.com/yamanoie"
+    }
+   ],
+   "onsen": {
+    "name": "雪ささの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "takagawayama": {
+   "onsen": {
+    "name": "日の出鉱泉",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "takamatsuyama": {
+   "onsen": {
+    "name": "さくらの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "takamizusanzan": {
+   "onsen": {
+    "name": "生涯青春の湯 つるつる温泉",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "takao": {
+   "onsen": {
+    "name": "TAKAO 36 SAUNA",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "takatsuma": {
+   "onsen": {
+    "name": "The Sauna（LAMP野尻湖）",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "tanigawa": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-f3cb81c6",
+     "name": "谷川岳肩の小屋",
+     "booking": "3月1日から",
+     "url": "https://www.enjoy-minakami.jp/news/471/"
+    }
+   ]
+  },
+  "tanzawa": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-3c3cf313",
+     "name": "みやま山荘",
+     "booking": "宿泊日の2か月前から（電話の受付は9:00〜19:00）",
+     "url": "https://miyamasansou.com/"
+    },
+    {
+     "id": "hut-e1f550f6",
+     "name": "尊仏山荘",
+     "booking": "3か月先の末日分まで予約可（例：4月中なら7月31日分まで）。遅くとも前日までに予約",
+     "url": "https://sonbutsusanso.amebaownd.com/"
+    }
+   ]
+  },
+  "tateyama": {
+   "hutCount": 4,
+   "huts": [
+    {
+     "id": "hut-fbdc17e9",
+     "name": "ホテル立山",
+     "booking": "宿泊サービスは2026年8月31日で終了（飲食・売店は営業）",
+     "url": "https://h-tateyama.alpen-route.co.jp/"
+    },
+    {
+     "id": "hut-37a4b581",
+     "name": "内蔵助山荘",
+     "booking": "宿泊日の2か月前から（例：7月20日泊は5月20日から）",
+     "url": "https://kuranosukesanso.jimdofree.com/"
+    },
+    {
+     "id": "hut-7be6f1a9",
+     "name": "雷鳥沢ヒュッテ",
+     "booking": "宿泊日の3か月前から",
+     "url": "https://www.raichozawa.net/"
+    }
+   ]
+  },
+  "tenzandake": {
+   "onsen": {
+    "name": "宮沢湖温泉 喜楽里 別邸",
+    "checked": true,
+    "fee": "1,050円〜",
+    "move": "バス＋徒歩約5分",
+    "url": "https://www.yurakirari.com/miyazawako/fee/"
+   }
+  },
+  "terkari": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-7b052d08",
+     "name": "県営光岳小屋",
+     "booking": "6月22日 9:00から（2026年）",
+     "url": "https://www.chillnn.com/1863f95fe2d74"
+    },
+    {
+     "id": "hut-cab96e1e",
+     "name": "聖光小屋",
+     "booking": "3月20日から（2026年）",
+     "url": "https://seikougoya.info/"
+    }
+   ]
+  },
+  "tomisan": {
+   "onsen": {
+    "name": "Satoyama Terrace",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "tonosaki": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-e1f550f6",
+     "name": "尊仏山荘",
+     "booking": "3か月先の末日分まで予約可（例：4月中なら7月31日分まで）。遅くとも前日までに予約",
+     "url": "https://sonbutsusanso.amebaownd.com/"
+    }
+   ]
+  },
+  "tsubakurodake": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-0ab94a0e",
+     "name": "燕山荘",
+     "booking": "3月18日 10:00から（2026年。個室は4/1・4/7・4/21・5/12・5/26の5回に分けて受付）",
+     "url": "https://www.enzanso.co.jp/"
+    }
+   ],
+   "onsen": {
+    "name": "中房温泉湯原の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "tsukuba": {
+   "onsen": {
+    "name": "筑波山温泉つくばの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "tsurugi": {
+   "hutCount": 6,
+   "huts": [
+    {
+     "id": "hut-f738f289",
+     "name": "剣山荘",
+     "booking": "Webは2月2日 12:00から、電話は3月5日 10:00から（2026年）",
+     "url": "https://www.kenzanso.com/"
+    },
+    {
+     "id": "hut-ebff67b9",
+     "name": "剱澤小屋",
+     "booking": "1月10日 13:00から（2026年）",
+     "url": "https://tsurugisawagoya.com/"
+    },
+    {
+     "id": "hut-7be6f1a9",
+     "name": "雷鳥沢ヒュッテ",
+     "booking": "宿泊日の3か月前から",
+     "url": "https://www.raichozawa.net/"
+    }
+   ]
+  },
+  "utsugi": {
+   "hutCount": 3,
+   "huts": [
+    {
+     "id": "hut-a104e228",
+     "name": "空木駒峰ヒュッテ",
+     "booking": "6月1日から（2026年）",
+     "url": "http://www.komaho.net/hutte/utsugi_hutte1.html"
+    },
+    {
+     "id": "hut-7870354b",
+     "name": "木曽殿山荘",
+     "booking": null,
+     "url": "https://www.kisodonosansou.com/"
+    },
+    {
+     "id": "hut-91ab7fef",
+     "name": "越百小屋",
+     "booking": null,
+     "url": null
+    }
+   ],
+   "onsen": {
+    "name": "こまくさの湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "utsukushigahara": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-ddb1f317",
+     "name": "山本小屋ふる里館",
+     "booking": "宿泊日の180日前から（公式のお知らせに「180日後の販売」とあり、2026年12月12日の宿泊は6月15日、2027年1月1日の宿泊は7月5日に販売開始）",
+     "url": "http://www.furusatokan.jp/"
+    },
+    {
+     "id": "hut-2972671c",
+     "name": "美ヶ原高原ホテル・山本小屋",
+     "booking": null,
+     "url": "https://www.utsukushigahara.com/"
+    }
+   ]
+  },
+  "yakedake": {
+   "hutCount": 1,
+   "huts": [
+    {
+     "id": "hut-f86aea36",
+     "name": "焼岳小屋",
+     "booking": "宿泊日の1か月前から",
+     "url": "https://www.m-kamikouchi.jp/yakedake/"
+    }
+   ],
+   "onsen": {
+    "name": "中の湯温泉旅館",
+    "checked": false,
+    "osm": false
+   }
+  },
+  "yakushidake": {
+   "hutCount": 2,
+   "huts": [
+    {
+     "id": "hut-2efc5250",
+     "name": "太郎平小屋",
+     "booking": "5月7日 9:00から（Web。電話は5月11日から。2026年）",
+     "url": "https://ltaro.com/lodge/tarodaira-goya/"
+    },
+    {
+     "id": "hut-61bd3fd6",
+     "name": "薬師岳山荘",
+     "booking": "5月から（山行の2か月ほど前に連絡）",
+     "url": "http://www.yakushidake-sansou.com/"
+    }
+   ]
+  },
+  "yari": {
+   "hutCount": 6,
+   "huts": [
+    {
+     "id": "hut-5541ffbb",
+     "name": "ヒュッテ大槍",
+     "booking": "5月19日 10:00から（2026年）",
+     "url": "https://www.enzanso.co.jp/hutte-ooyari"
+    },
+    {
+     "id": "hut-e590d57b",
+     "name": "槍ヶ岳山荘",
+     "booking": "宿泊日の1か月前の朝9:00から（例：8月15日の宿泊は7月15日9:00から）",
+     "url": "https://www.yarigatake.co.jp/"
+    },
+    {
+     "id": "hut-bb7e1024",
+     "name": "槍平小屋",
+     "booking": "Web（やまたん）は5月1日 12:00から（2026年度の全期間分）、電話（山小屋直通）は宿泊日の1か月前（前月の同じ日）の10:00から",
+     "url": "https://www.yaridaira.jp/"
+    }
+   ],
+   "onsen": {
+    "name": "梓湖畔の湯",
+    "checked": false,
+    "osm": true
+   }
+  },
+  "yatsugatake": {
+   "hutCount": 7,
+   "huts": [
+    {
+     "id": "hut-90585120",
+     "name": "行者小屋",
+     "booking": "夏季（5/30〜10/31泊）は4月1日 12:00から、年末年始（12/26〜1/2泊）は11月9日 12:00から（2026年）",
+     "url": "https://www.akadakekousen.jp/"
+    },
+    {
+     "id": "hut-1fd8bd45",
+     "name": "赤岳鉱泉",
+     "booking": "夏季（5/1〜11/30泊）は4月1日 12:00から、冬季（12/1〜4/30泊）は11月9日 12:00から（2026年）",
+     "url": "https://www.akadakekousen.jp/"
+    },
+    {
+     "id": "hut-bd33a29a",
+     "name": "硫黄岳山荘",
+     "booking": null,
+     "url": "https://iodake.jp/sanso/"
+    }
+   ]
+  },
+  "zaosan": {
+   "onsen": {
+    "name": "蔵王温泉の共同浴場（上湯・下湯など）",
+    "checked": false,
+    "osm": false
+   }
+  }
+ }
+}
