@@ -179,13 +179,6 @@ code{background:#e8e0d5;border-radius:4px;padding:1px 5px;font-size:11px;font-fa
 /* GitHub自動反映 */
 .gh-section{background:#eef4e8;border-radius:12px;padding:14px 16px;margin-bottom:10px;border:1px solid #c0d8a8;}
 .gh-title{font-size:12px;font-weight:700;color:#3a6030;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
-.gh-token-row{display:flex;gap:8px;align-items:center;margin-bottom:10px;}
-.gh-token-input{flex:1;padding:8px 12px;border-radius:8px;border:1px solid #b0d0a0;font-size:12px;font-family:monospace;background:#fafff8;outline:none;}
-.gh-token-input:focus{border-color:#4a6038;}
-.gh-token-save{background:#4a6038;color:white;border:none;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;}
-.gh-token-status{font-size:11px;margin-bottom:8px;padding:5px 10px;border-radius:6px;display:none;}
-.gh-token-status.ok{background:#d4edda;color:#155724;display:block;}
-.gh-token-status.err{background:#f8d7da;color:#721c24;display:block;}
 .gh-push-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#1f883d;color:white;border:none;border-radius:10px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;width:100%;transition:background 0.15s;}
 .gh-push-btn:hover{background:#1a7035;}
 .gh-push-btn:disabled{background:#a0b8a0;cursor:not-allowed;}
@@ -484,17 +477,6 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
       <div class="gh-push-status" id="record-status"></div>
     </div>
 
-    <!-- 山画像の管理で使う GitHub トークン（写真の追加・並べ替えは /admin/images/ が GitHub に書く） -->
-    <div class="section-card" id="gh-token-area">
-      <div class="section-title">山画像の管理で使う GitHub トークン</div>
-      <div style="font-size:11px;color:#7a7068;margin-bottom:6px;line-height:1.6;">「山画像を管理」で写真を追加・並べ替えするときに使います。端末ごとに1回保存してください（ホーム画面に追加したアプリは別に保存が必要です）。</div>
-      <div class="gh-token-row">
-        <input type="password" class="gh-token-input" id="gh-token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
-        <button class="gh-token-save" onclick="saveToken()">保存</button>
-      </div>
-      <div class="gh-token-status" id="gh-token-status"></div>
-    </div>
-
     <!-- 反映手順マニュアル -->
     <div class="manual-card">
       <div class="manual-title">📖 サイトに反映する手順</div>
@@ -530,11 +512,6 @@ fetch('/data/mountains.json')
     console.error('mountains.json fetch error:', err);
     document.getElementById('mt-list').innerHTML = '<div class="loading">⚠️ データ読み込みエラー: ' + err.message + '<br>data/mountains.json がGitHubに存在するか確認してください。</div>';
   });
-
-// ページ読み込み時にトークン状態を復元
-window.addEventListener('DOMContentLoaded', function() {
-  loadToken();
-});
 
 function renderList(data) {
   const list = document.getElementById('mt-list');
@@ -769,32 +746,7 @@ function getFormData() {
   };
 }
 
-// ===== GitHub トークン管理 =====
-function saveToken() {
-  var token = document.getElementById('gh-token-input').value.trim();
-  var statusEl = document.getElementById('gh-token-status');
-  if (!token.startsWith('ghp_') && !token.startsWith('github_pat_')) {
-    statusEl.className = 'gh-token-status err';
-    statusEl.textContent = '⚠️ トークンの形式が正しくありません（ghp_ で始まるものを入力）';
-    return;
-  }
-  localStorage.setItem('ym_gh_token', token);
-  document.getElementById('gh-token-input').value = '●'.repeat(20);
-  statusEl.className = 'gh-token-status ok';
-  statusEl.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M20 6 9 17l-5-5"/></svg> トークンを保存しました';
-  setTimeout(function() { statusEl.style.display = 'none'; }, 3000);
-}
-
-function loadToken() {
-  var token = localStorage.getItem('ym_gh_token');
-  if (token) {
-    document.getElementById('gh-token-input').value = '●'.repeat(20);
-    var statusEl = document.getElementById('gh-token-status');
-    statusEl.className = 'gh-token-status ok';
-    statusEl.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M20 6 9 17l-5-5"/></svg> トークン設定済み';
-  }
-}
-
+// GitHub トークンの保存は /assets/js/admin-token.js（ヘッダーの下の帯）
 // ===== GitHub API でPush =====
 // 変更を記録するだけ（サイトのデータは書き換えない）。記録は「変更履歴」タブから Claude に渡す
 function recordOnly() {
@@ -1094,6 +1046,7 @@ function copyTsv() {
 
 </script>
 
+<script src="/assets/js/admin-token.js?v=20261123a"></script>
 <script src="/assets/js/admin-notices.js?v=20261016a"></script>
 <script src="/assets/js/admin-analytics.js?v=20261030a"></script>
 <script src="/assets/js/counts-config.js?v=20261020a"></script>

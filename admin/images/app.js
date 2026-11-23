@@ -1067,7 +1067,8 @@
     if (!mountain || !hasChanges(mountain.id)) return;
     const token = localStorage.getItem('ym_gh_token');
     if (!token) {
-      setStatus('GitHubトークンがありません。先に通常の管理者画面でGitHubトークンを保存してください。スマートフォンの場合も、その端末で一度保存が必要です。', 'err', 'publish-status');
+      setStatus('GitHub トークンがこの端末にありません。開いた画面で設定すると、続けて反映します。', 'err', 'publish-status');
+      window.YmGhToken.open({ reason: 'この端末にトークンがありません。保存すると、続けて反映します。', onSaved: publishChanges });
       return;
     }
 
@@ -1194,7 +1195,9 @@
       setStatus(finalMessage, warnings.length ? 'warn' : 'ok', 'publish-status');
     } catch (error) {
       if (/（401）/.test(error.message)) {
-        setStatus('反映に失敗しました。GitHub のトークンが使えなくなっています（期限切れ・取り消し）。\nGitHub で新しいトークンを作り、管理画面の「山画像の管理で使う GitHub トークン」に保存し直してから、もう一度押してください（写真の選び直しは不要です）。\n\n' + error.message, 'err', 'publish-status');
+        setStatus('GitHub トークンの期限が切れています。開いた画面で更新すると、続けて反映します（写真の選び直しは不要です）。', 'err', 'publish-status');
+        window.YmGhToken.paint('expired');
+        window.YmGhToken.open({ reason: 'トークンの期限が切れています。更新すると、続けて反映します。', onSaved: publishChanges });
         return;
       }
       setStatus('反映に失敗しました。\n' + error.message + '\n\n※画像ファイル自体は保存済みの可能性があります。もう一度「この山の変更をGitHubへ反映」を押してください（写真の選び直しは不要です）。', 'err', 'publish-status');

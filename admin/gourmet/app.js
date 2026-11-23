@@ -107,9 +107,15 @@
   function ghUrl(path) {
     return 'https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + path.split('/').map(encodeURIComponent).join('/');
   }
+  function tokenExpired() {
+    window.YmGhToken.paint('expired');
+    window.YmGhToken.open({ reason: 'トークンの期限が切れています。更新したら、もう一度「GitHubへ反映」を押してください。' });
+    return new Error('GitHub トークンの期限が切れています。更新してから、もう一度押してください');
+  }
   async function ghGet(path, t, allowMissing) {
     var res = await fetch(ghUrl(path) + '?t=' + Date.now(), { headers: ghHeaders(t) });
     if (allowMissing && res.status === 404) return null;
+    if (res.status === 401) throw tokenExpired();
     if (!res.ok) throw new Error(path + ' の取得に失敗しました（' + res.status + '）');
     return res.json();
   }
@@ -164,7 +170,10 @@
 
   async function saveImage(key, image, message, fileBytes, fileName) {
     var t = token();
-    if (!t) throw new Error('GitHub のトークンがありません。管理画面のトップで保存してください');
+    if (!t) {
+      window.YmGhToken.open({ reason: 'この端末にトークンがありません。保存したら、もう一度「GitHubへ反映」を押してください。' });
+      throw new Error('GitHub トークンがこの端末にありません');
+    }
     if (fileBytes) await ghPut(IMG_DIR + fileName, bytesB64(fileBytes), message, t);
     // 書く直前に GitHub の最新を読み、その項目の image だけを替える
     var f = await ghGet(DATA_PATH, t, false);
@@ -310,10 +319,11 @@
       var t = token();
       var d;
       if (t) {
-        // GitHub の最新（ほかの端末で反映した分も含む）
-        var f = await ghGet(DATA_PATH, t, false);
-        d = JSON.parse(b64Text(f.content));
-      } else {
+        // GitHub の最新（ほかの端末で反映した分も含む）。トークンが切れていても一覧は出す（状態はページ上の帯に出る）
+        var latest = await fetch(ghUrl(DATA_PATH) + '?t=' + Date.now(), { headers: ghHeaders(t) });
+        if (latest.ok) d = JSON.parse(b64Text((await latest.json()).content));
+      }
+      if (!d) {
         d = await (await fetch('/' + DATA_PATH + '?t=' + Date.now())).json();
       }
       var ms = await (await fetch('/data/mountains.json')).json();
@@ -333,8 +343,7 @@
         box.appendChild(renderItem(it));
       });
       var withPhoto = d.items.filter(function (x) { return x.image && x.image.src; }).length;
-      $('load-status').innerHTML = '<p class="small">' + d.items.length + '軒（写真あり ' + withPhoto + '）' +
-        (t ? '' : '｜<b class="gm-warn">GitHub のトークンが未保存です。反映するには管理画面のトップで保存してください</b>') + '</p>';
+      $('load-status').innerHTML = '<p class="small">' + d.items.length + '軒（写真あり ' + withPhoto + '）' + '</p>';
     } catch (e) {
       $('load-status').textContent = '読み込みに失敗しました：' + e.message;
     }
