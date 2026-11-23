@@ -58,14 +58,18 @@ def parse(text, kind):
         if kind == 'sitecheck' and not re.match(r'^\d+\.', s['heading']):
             continue                                   # 件数の一覧など、セクション以外は入れない
         out.append({'heading': s['heading'], 'lines': [l[:MAX_CHARS] for l in lines]})
-    n = 0
-    for s in out:                                      # 長すぎる報告は切り、切ったことを書く
-        room = max(0, MAX_LINES - n)
-        if len(s['lines']) > room:
-            rest = len(s['lines']) - room
-            s['lines'] = s['lines'][:room] + ['ほか%d件（全文は実行結果のページ）' % rest]
-        n += len(s['lines'])
-    return [s for s in out if s['lines']]
+    # 長すぎる報告は切り、切ったことを書く。どの見出しも最低8行は残す
+    # （前は先の見出しが枠を使い切り、後ろの YAMAP リンクの誤りなどが「ほか1件」だけになっていた。2026-11-23）
+    keep = [min(len(s['lines']), 8) for s in out]
+    room = max(0, MAX_LINES - sum(keep))
+    for i, s in enumerate(out):
+        extra = min(room, len(s['lines']) - keep[i])
+        keep[i] += extra
+        room -= extra
+        if len(s['lines']) > keep[i]:
+            rest = len(s['lines']) - keep[i]
+            s['lines'] = s['lines'][:keep[i]] + ['ほか%d件（全文は実行結果のページ）' % rest]
+    return out
 
 
 def main():

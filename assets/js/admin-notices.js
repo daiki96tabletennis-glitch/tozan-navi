@@ -61,8 +61,7 @@
     if (it.next) body += '<div style="margin-top:10px;padding:8px 10px;background:#f0ede5;border-radius:8px;font-size:12px"><b>次にやること</b>：' + esc(it.next) + '</div>';
     if (it.url) body += '<div style="margin-top:8px"><a href="' + esc(it.url) + '" target="_blank" rel="noopener" style="color:#4e6535;font-size:12px">実行結果の全文を見る（GitHub）</a></div>';
     if (it.needsAction && !isSeen) body += '<button type="button" data-seen="' + esc(it.id) + '" style="margin-top:10px;border:1px solid #4e6535;background:#fff;color:#4e6535;border-radius:999px;padding:6px 14px;font-size:12px;font-family:inherit">確認済みにする</button>';
-    var open = it.needsAction && !isSeen;
-    return '<details' + (open ? ' open' : '') + ' style="border-top:1px solid #eeece6;padding:10px 0">'
+    return '<details style="border-top:1px solid #eeece6;padding:10px 0">'
       + '<summary style="list-style:none;display:flex;align-items:center;gap:8px;cursor:pointer">'
       + '<span style="width:9px;height:9px;border-radius:50%;flex-shrink:0;background:' + (isSeen ? '#b9b2a6' : dot) + '"></span>'
       + '<span style="flex:1;min-width:0"><b style="color:#2a3820;font-size:13.5px">' + esc(it.title) + '</b>'
@@ -70,6 +69,84 @@
       + '<span style="font-size:11px;color:#93897c">開く</span></summary>'
       + (body ? '<div style="font-size:12.5px;line-height:1.6;color:#2f2b26">' + body + '</div>' : '')
       + '</details>';
+  }
+
+  // 今やることの仕分け（2026-11-23。運営者の指示「大量に残っていて使いづらいけど、大事な更新は見れる様にしたい」）。
+  // now＝いま直す・確かめる／later＝来季の発表待ちや取得の失敗など、急がないもの／''＝件数のまとめなど項目ではない行
+  function today() {
+    var d = new Date();
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+  }
+  function classify(it, sec, line) {
+    var h = sec.heading || '', m;
+    if (/^見張っている|^※/.test(line)) return '';
+    if (/^ほか\d+件/.test(line)) return 'later';
+    if (it.kind === 'restrict') return /取得できなかった/.test(h) ? 'later' : 'now';
+    if (it.kind === 'annual') {
+      if (/YAMAP/.test(h)) return 'now';
+      if (/30日以内/.test(h)) {
+        m = /（(\d{4}-\d{2}-\d{2}) まで）/.exec(line);
+        return m && m[1] >= today() ? 'now' : 'later';
+      }
+      return 'later';
+    }
+    if (it.kind === 'insta') return /見張りの状態/.test(h) || /^【予約の受付状況】/.test(line) ? 'later' : 'now';
+    return 'now';
+  }
+  function lineKey(kind, line) {
+    var h = 5381, i;
+    for (i = 0; i < line.length; i++) h = ((h * 33) ^ line.charCodeAt(i)) >>> 0;
+    return kind + ':' + h.toString(36);
+  }
+  function doneLines() {
+    try { return JSON.parse(get('ym_admin_done') || '[]'); } catch (e) { return []; }
+  }
+  function sort(items) {
+    var done = doneLines(), now = [], later = [], hidden = 0, i, j, k, it, sec, c, key;
+    for (i = 0; i < items.length; i++) {
+      it = items[i];
+      if (!it.needsAction) continue;
+      for (j = 0; j < it.sections.length; j++) {
+        sec = it.sections[j];
+        for (k = 0; k < sec.lines.length; k++) {
+          c = classify(it, sec, sec.lines[k]);
+          if (c === 'later') later.push({ it: it, heading: sec.heading, line: sec.lines[k] });
+          if (c !== 'now') continue;
+          key = lineKey(it.kind, sec.lines[k]);
+          if (done.indexOf(key) >= 0) hidden++;
+          else now.push({ it: it, line: sec.lines[k], key: key });
+        }
+      }
+    }
+    return { now: now, later: later, hidden: hidden };
+  }
+  function nowRow(r) {
+    var m = /https?:\/\/[^\s　）)]+/.exec(r.line);
+    var text = r.line.replace(/\s*[—／]?\s*https?:\/\/[^\s　）)]+/, '');
+    return '<li style="list-style:none;padding:9px 0;border-top:1px solid #eeece6">'
+      + '<div style="font-size:11px;color:#93897c">' + esc(r.it.title) + '</div>'
+      + '<div style="font-size:13px;line-height:1.55;color:#2f2b26;overflow-wrap:anywhere">' + esc(text) + '</div>'
+      + '<div style="display:flex;align-items:center;gap:12px;margin-top:6px">'
+      + (m ? '<a href="' + esc(m[0]) + '" target="_blank" rel="noopener" style="color:#4e6535;font-size:12px">出典を開く</a>' : '')
+      + '<button type="button" data-done="' + esc(r.key) + '" style="margin-left:auto;min-height:32px;border:1px solid #4e6535;background:#fff;color:#4e6535;border-radius:999px;padding:4px 14px;font-size:12px;font-family:inherit">対応した</button>'
+      + '</div></li>';
+  }
+  function laterBlock(list) {
+    var groups = [], map = {}, i, g, key, h = '';
+    for (i = 0; i < list.length; i++) {
+      key = list[i].it.kind + '|' + (list[i].heading || '');
+      if (!map[key]) { map[key] = { it: list[i].it, heading: list[i].heading, lines: [] }; groups.push(map[key]); }
+      map[key].lines.push(list[i].line);
+    }
+    for (i = 0; i < groups.length; i++) {
+      g = groups[i];
+      h += '<details style="padding:6px 0"><summary style="cursor:pointer;font-size:12.5px;color:#2f2b26">'
+        + esc((g.heading || g.it.title).replace(/（.*$/, '')) + '　' + g.lines.length + '件<span style="color:#93897c;font-size:11px">（' + esc(g.it.date) + ' 時点）</span></summary>'
+        + '<ul style="margin:4px 0 0;padding-left:18px;font-size:12px;line-height:1.55;color:#6a6258">';
+      for (var j = 0; j < g.lines.length; j++) h += '<li style="margin:2px 0;overflow-wrap:anywhere">' + esc(g.lines[j]) + '</li>';
+      h += '</ul></details>';
+    }
+    return h;
   }
 
   function settings() {
@@ -100,7 +177,7 @@
       + '<li><b>山小屋の定期更新</b>：変化や候補があったとき。記載が変わった小屋、予約開始日の候補、読み取れなくなった小屋</li>'
       + '<li><b>山小屋の Instagram の見張り（Meta AI）</b>：毎日。Meta AI がスプレッドシートに書いた、予約・営業に関する投稿のうち、まだ確かめていないもの（14日間）。要約は Meta AI のもので原文ではないので、URL を開いて確かめる</li>'
       + '<li><b>サイトの検証</b>：プッシュのたびと毎週月曜。結果が変わったときに、異常のある項目</li>'
-      + '<li>種類ごとに最新の1件が出ます。黄色の印＝対応が必要、緑＝異常なし、灰色＝確認済み</li>'
+      + '<li>上の「今やること」に、規制の変更・これから切れる期限・検証の異常など急ぐものだけを出します。「対応した」を押すと消え、同じ内容はまた出ません。新しい内容は出ます（この端末の中だけの記録）</li><li>来季の発表待ちや読めなかった出典は「あとで確認」にたたみます</li><li>記録は種類ごとに最新の1件です。黄色の印＝対応が必要、緑＝異常なし、灰色＝確認済み</li>'
       + '<li>「確認済みにする」は、この端末の中だけの記録です。データを直して次の実行で内容が変わると、新しいお知らせとして出ます</li>'
       + '<li>GitHub の定期実行が自動で作ります（AIは使いません）。山のデータやページは書き換えません</li>'
       + '<li>お知らせのデータ（/data/admin_notices.json）は公開されています。入るのは保守の情報だけです</li>'
@@ -108,15 +185,29 @@
   }
 
   function render(data) {
-    var items = (data && data.items) || [], sn = seen(), todo = 0, i, h;
-    for (i = 0; i < items.length; i++) if (items[i].needsAction && sn.indexOf(items[i].id) < 0) todo++;
+    var items = (data && data.items) || [], sn = seen(), r = sort(items), i, h;
     h = '<div style="background:#fff;border-radius:16px;padding:14px 16px 6px;margin:14px 0 4px;box-shadow:0 1px 1px rgba(26,22,14,.03),0 2px 5px rgba(26,22,14,.05);border-left:4px solid #4e6535">'
       + '<div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px"><b style="font-size:14px;color:#2a3820">運営者向けのお知らせ</b>'
-      + '<span style="font-size:11.5px;border-radius:999px;padding:1px 9px;background:' + (todo ? '#f6ecc4' : '#e9efe0') + ';color:#2a3820">' + (todo ? '未確認 ' + todo + '件' : '未確認なし') + '</span></div>';
+      + '<span style="font-size:11.5px;border-radius:999px;padding:1px 9px;background:' + (r.now.length ? '#f6ecc4' : '#e9efe0') + ';color:#2a3820">' + (r.now.length ? '今やること ' + r.now.length + '件' : '今やることなし') + '</span></div>';
     if (!items.length) {
       h += '<div style="font-size:12.5px;color:#6a6258;padding:4px 0 10px">まだお知らせはありません（GitHub の定期実行が動くと、ここに出ます）。</div>';
+    } else if (r.now.length) {
+      h += '<ul style="margin:0;padding:0">';
+      for (i = 0; i < r.now.length; i++) h += nowRow(r.now[i]);
+      h += '</ul>';
+    } else {
+      h += '<div style="font-size:12.5px;color:#6a6258;padding:2px 0 10px">いま急いで直すものはありません。</div>';
     }
-    for (i = 0; i < items.length; i++) h += card(items[i], sn.indexOf(items[i].id) >= 0);
+    if (r.later.length) {
+      h += '<details style="border-top:1px solid #eeece6;padding:10px 0"><summary style="cursor:pointer;font-weight:700;font-size:13px;color:#2a3820">あとで確認 ' + r.later.length + '件'
+        + '<span style="display:block;font-weight:400;font-size:11px;color:#93897c">来季の発表待ち・ページを読めなかった出典など。月次更新でまとめて見ます</span></summary>' + laterBlock(r.later) + '</details>';
+    }
+    if (items.length) {
+      h += '<details style="border-top:1px solid #eeece6;padding:10px 0"><summary style="cursor:pointer;font-size:12.5px;color:#6a6258">定期実行の記録をすべて見る（' + items.length + '種類）</summary>';
+      for (i = 0; i < items.length; i++) h += card(items[i], sn.indexOf(items[i].id) >= 0);
+      if (r.hidden) h += '<button type="button" id="ym-admin-undone" style="margin:8px 0 2px;border:1px solid #cfc8ba;background:#fff;color:#6a6258;border-radius:999px;padding:5px 12px;font-size:11.5px;font-family:inherit">「対応した」を元に戻す（' + r.hidden + '件）</button>';
+      h += '</details>';
+    }
     if (ALWAYS) {
       h += settings() + '</div>';
     } else {
@@ -142,6 +233,14 @@
   box.addEventListener('click', function (e) {
     var t = e.target;
     if (t && t.id === 'ym-admin-unseen') { del('ym_admin_seen'); load(); return; }
+    if (t && t.id === 'ym-admin-undone') { del('ym_admin_done'); load(); return; }
+    if (t && t.getAttribute && t.getAttribute('data-done')) {
+      var dn = doneLines();
+      dn.push(t.getAttribute('data-done'));
+      set('ym_admin_done', JSON.stringify(dn.slice(-300)));
+      load();
+      return;
+    }
     if (t && t.id === 'ym-admin-copy') {
       var done = function () { t.textContent = 'コピーしました'; setTimeout(function () { t.textContent = 'コピー'; }, 1500); };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(KEY_SHOWN).then(done, function () {});
