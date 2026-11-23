@@ -1,14 +1,33 @@
 (function(){
-  // 標高は最初から本当の値を出す（前は0から数え上げ、一瞬「0m」と見えた。2026-11-23）
+  // 数字カウントアップ（標高のみ。動的更新される値には触れない）
   var elevEl = document.querySelector('.stat-card .stat-val');
   if(elevEl){
     var target = parseInt(elevEl.textContent.replace(/,/g,''), 10);
     if(!isNaN(target) && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
       var statCard = elevEl.closest('.stat-card');
-      if(statCard){
-        statCard.classList.add('stat-counted');
-        setTimeout(function(){ statCard.classList.remove('stat-counted'); }, 500);
-      }
+      elevEl.textContent = '0';
+      if(statCard) statCard.classList.add('stat-counting');
+      setTimeout(function(){
+        var start = null;
+        var dur = 1400;
+        function step(ts){
+          if(!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          var val = Math.round(target * eased);
+          elevEl.textContent = val.toLocaleString('ja-JP');
+          if(p < 1) requestAnimationFrame(step);
+          else {
+            elevEl.textContent = target.toLocaleString('ja-JP');
+            if(statCard){
+              statCard.classList.remove('stat-counting');
+              statCard.classList.add('stat-counted');
+              setTimeout(function(){ statCard.classList.remove('stat-counted'); }, 500);
+            }
+          }
+        }
+        requestAnimationFrame(step);
+      }, 350);
     }
   }
 

@@ -994,6 +994,19 @@ function App() {
   const [matrixOpen, setMatrixOpen] = useState(false);
   const [showBoard, setShowBoard] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  // 絞り込みとメニューを開いているあいだ、後ろのホームの画面を動かさない（iPhone は overflow だけでは止まらないので body を固定する。2026-11-23）
+  const scrollLocked = filterOpen || showMenu;
+  useEffect(() => {
+    if (!scrollLocked) return;
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var st = document.body.style;
+    var prev = { position: st.position, top: st.top, left: st.left, right: st.right, width: st.width, overflowY: st.overflowY };
+    st.position = "fixed"; st.top = (-y) + "px"; st.left = "0"; st.right = "0"; st.width = "100%"; st.overflowY = "scroll";
+    return function() {
+      st.position = prev.position; st.top = prev.top; st.left = prev.left; st.right = prev.right; st.width = prev.width; st.overflowY = prev.overflowY;
+      window.scrollTo(0, y);
+    };
+  }, [scrollLocked]);
   const [boardInitMountain, setBoardInitMountain] = useState("");
   const [selected, setSelected] = useState(null);
   const [starredMountains, setStarredMountains] = useState(() => lsGet("ym_favorites", []));
@@ -1357,7 +1370,7 @@ function App() {
               </div>
               <button onClick={() => setShowMenu(false)} style={{background:"none",border:"none",fontSize:"22px",cursor:"pointer",color:"#a09888",padding:"4px",lineHeight:1}}>✕</button>
             </div>
-            <div style={{flex:1,overflowY:"auto"}}>
+            <div style={{flex:1,overflowY:"auto",overscrollBehavior:"contain"}}>
               {[
                 {label:"ホーム",href:"/",icon:<path d="M4 11 L12 4 L20 11 V20 H4 Z M9 20 V13 H15 V20"/>},
                 {label:"山選び診断",href:"/find/",icon:<path d="M3 19 L9 9 L13 15 L16 11 L21 19 Z"/>},
@@ -1526,7 +1539,7 @@ function App() {
             {/* 半透明背景 */}
             <div style={{position:"absolute",inset:0,background:"rgba(0,0,0,0.45)"}}></div>
             {/* パネル */}
-            <div style={{position:"relative",marginTop:"auto",background:"white",borderRadius:"20px 20px 0 0",maxHeight:"80vh",overflowY:"auto",WebkitOverflowScrolling:"touch",animation:"slideUp 0.3s cubic-bezier(0.22,1,0.36,1) both"}} onClick={e => e.stopPropagation()}>
+            <div style={{position:"relative",marginTop:"auto",background:"white",borderRadius:"20px 20px 0 0",maxHeight:"80vh",overflowY:"auto",overscrollBehavior:"contain",WebkitOverflowScrolling:"touch",animation:"slideUp 0.3s cubic-bezier(0.22,1,0.36,1) both"}} onClick={e => e.stopPropagation()}>
               {/* ハンドル */}
               <div style={{display:"flex",justifyContent:"center",padding:"10px 0 0"}}>
                 <div style={{width:"36px",height:"4px",background:"#ddd8d0",borderRadius:"2px"}}></div>
