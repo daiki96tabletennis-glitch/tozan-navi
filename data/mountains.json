@@ -16451,14 +16451,14 @@
       "trailPeriods": [],
       "gearSource": "6月は雪渓のため冬山装備、7月は切替日が不明のため安全側で軽アイゼン等（2026-10-09）",
       "gearSplits": {
-        "10": {
-          "before": "light_crampons",
-          "after": "winter_gear",
-          "changeDate": 21
-        },
         "7": {
           "before": "light_crampons",
           "after": "no_crampons",
+          "changeDate": 21
+        },
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
           "changeDate": 21
         }
       }
@@ -17181,14 +17181,14 @@
       "trailPeriods": [],
       "gearSource": "6月は雪渓のため冬山装備、7月は切替日が不明のため安全側で軽アイゼン等（2026-10-09）",
       "gearSplits": {
-        "10": {
-          "before": "light_crampons",
-          "after": "winter_gear",
-          "changeDate": 21
-        },
         "7": {
           "before": "light_crampons",
           "after": "no_crampons",
+          "changeDate": 21
+        },
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
           "changeDate": 21
         }
       }
@@ -60497,7 +60497,12 @@
         "tier": "easy",
         "reasons": []
       }
-    }
+    },
+    "photos": [
+      "/images/mountains/koubousan/image-20261123044345554-8fy0t.webp",
+      "/images/mountains/koubousan/image-20261123044347965-jtw9a.webp",
+      "/images/mountains/koubousan/image-20261123044350020-15fyo.webp"
+    ]
   },
   {
     "id": "kagenobusan",
