@@ -103,8 +103,8 @@ CLOSED = [
      '野反湖へのバスも10月20日までです',
      [src('群馬県 冬期閉鎖', 'https://www.pref.gunma.jp/06/h2810053.html'),
       src('中之条町 六合地区路線バス', 'https://www.town.nakanojo.gunma.jp/uploaded/life/13968_25974_misc.pdf')], None),
-    ('utsukushigahara', [1, 2, 3], L, '11-18', '04-20',
-     '長野県がビーナスライン・美ヶ原公園線など美ヶ原への道を冬期通行止めにする予定（11/18 11時〜4/20 11時）で、登山口へ車で行けません。'
+    ('utsukushigahara', [1, 3], L, '11-18', '04-20',
+     '長野県がビーナスライン・美ヶ原公園線を冬期通行止めにする予定（11/18 11時〜4/20 11時）で、この登山口へ車で行けません。'
      '直行バスも10月12日までです',
      [src('長野県 冬期通行止め予定', 'https://www.pref.nagano.lg.jp/michikanri/infra/doro/joho/hiroba/documents/r8tokiheisa.pdf')], None),
     ('kitayokodake', [1, 2, 3], 'ロープウェイ運休', '11-24', '12-18',
@@ -358,8 +358,8 @@ HINTS.update({
                  'sources': [src('YAMA HACK 乗鞍岳', 'https://yamahack.com/1843')]},
     'adatara': {'from': '11-24', 'to': '04-10', 'text': '冬はロープウェイを使わず、奥岳登山口（あだたら高原スキー場）から歩きます（コース2）',
                 'sources': [src('山と溪谷オンライン 冬の安達太良山', 'https://www.yamakei-online.com/yama-ya/detail.php?id=887')]},
-    'utsukushigahara': {'from': '11-18', 'to': '04-20', 'text': '冬の日帰りは、県道178号で行ける山本小屋ふる里館が起点です（コース2。冬はバスなし・凍結注意）',
-                        'sources': [src('山と溪谷オンライン 冬の美ヶ原', 'https://www.yamakei-online.com/yama-ya/detail.php?id=1756')]},
+    'utsukushigahara': {'from': '11-18', 'to': '04-20', 'text': '冬はビーナスライン側から行けません。日帰りは県道178号（長和町側）から山本小屋ふる里館へ入ります（コース2）。冬用タイヤが必須で、バスはありません。出かける前に道路状況を確認してください',
+                        'sources': [src('山と溪谷オンライン 冬の美ヶ原', 'https://www.yamakei-online.com/yama-ya/detail.php?id=1756'), NAGANO_R8]},
     'tsubakurodake': {'from': '12-01', 'to': '04-23', 'text': _NAKA, 'sources': [_ENZAN]},
     'otenshoudake': {'from': '12-01', 'to': '04-23', 'text': _NAKA + '。冬山の経験者向けです', 'sources': [_ENZAN]},
     'hotaka': {'from': '11-16', 'to': '04-16', 'text': _KAMI, 'sources': [_ENV]},
@@ -447,7 +447,7 @@ def main():
             assert want[(mid, n)]['state'] == 'unknown', (mid, n)
             del want[(mid, n)]
     # 7回目：メディアの記事で冬に使えると確かめた登山口の印を外す
-    for key in (('keirisan', 2), ('adatara', 2), ('utsukushigahara', 2)):
+    for key in (('keirisan', 2), ('adatara', 2)):
         assert key in want, key
         del want[key]
     for mid, nums in M5:
@@ -469,6 +469,13 @@ def main():
              'sources': (old['sources'] if old else []) + [s for s in sources if not old or s not in old['sources']],
              'lastVerified': DAY4}
         want[(mid, n)] = w
+    # 美ヶ原：閉鎖はビーナスライン・美ヶ原公園線で、代表の登山口の山本小屋へは県道178号で入る（2026-11-24。運営者の指摘「行ける・行けないの記載が矛盾」）
+    want[('utsukushigahara', 1)]['keepAccess'] = True   # アクセス欄に「山本小屋へ行けません」を出さない
+    for a in by['utsukushigahara'].get('annualItems') or []:
+        if a.get('kind') == 'closure' and 'ビーナスライン' in (a.get('label') or ''):
+            a['carOpen'] = True     # 冬の山選び診断：車（冬用タイヤ）は行ける
+            a['carNote'] = '冬は県道178号（長和町側）から山本小屋へ入ります。ビーナスライン側からは行けません。冬用タイヤが必須で、出かける前に道路状況を確認してください。'
+            a['note'] = '11/18 11時〜4/20 11時の予定。長和町からの県道178号（美ヶ原和田線）はこの一覧に無く、山本小屋へはこの道で入る。冬用タイヤが必須で、出かける前に道路状況を確認する'
     # このスクリプトで入れた分を入れ直す（金峰山は別のスクリプト）
     changed = set()
     for m in M:

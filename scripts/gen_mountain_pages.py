@@ -878,7 +878,8 @@ def winter_access_block(mt, by_id):
     （電車・バスの経路・新宿からの時間と運賃・季節運行・車の時間・駐車場・地図）。代わりが無い山は「この登山口へ行けない」だけ"""
     rr = rep_route_of(mt)
     w = (rr or {}).get("winter") or {}
-    if w.get("state") != "closed" or not (w.get("from") and w.get("to")):
+    # keepAccess：代表コースは閉じるが、アクセス欄の登山口へは別の道で行ける山（美ヶ原＝県道178号で山本小屋へ）
+    if w.get("state") != "closed" or w.get("keepAccess") or not (w.get("from") and w.get("to")):
         return ""
     st, color = WINTER_STYLE["closed"]
     period = f'{_wmd(w["from"])}〜{_wmd(w["to"])}'

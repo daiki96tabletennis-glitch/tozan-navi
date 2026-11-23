@@ -635,6 +635,7 @@ function cardHtml(x, i){
   if(x.st === 'part' && x.acc.why && x.acc.why.length){
     notes.push(MONTH_LABEL[answers.when] + 'は一部の日だけ行けます：' + x.acc.why.join('、'));
   }
+  if(answers.transport === 'car' && m.carNote) notes.push(m.carNote);
   if(answers.transport === 'carnormal'){
     var lim = { '11': '1,200', '12': '800', '1': '500', '2': '500', '3': '800' }[answers.when];
     notes.push('駐車場の標高は約' + (m.road && m.road.e !== null ? Number(m.road.e).toLocaleString() + 'm' : '（不明・山頂より低い）') + '。' + MONTH_LABEL[answers.when] + 'に雪が積もる日が少ない標高（' + lim + 'm未満）の目安でノーマルタイヤでも出しています。雪が降った翌日や冷え込んだ朝は道が凍ることがあるので、出発前に道路の情報を確かめてください。');

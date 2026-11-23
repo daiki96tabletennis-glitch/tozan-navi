@@ -138,7 +138,9 @@ def month_access(m, A, y, mo, winter_gear):
                     c_ok = False
         for a in cls:
             if closure_on(a, d):
-                c_ok = False
+                # carOpen：閉鎖の区間を避けて車で行ける（美ヶ原＝県道178号で山本小屋へ。2026-11-24）
+                if not a.get('carOpen'):
+                    c_ok = False
                 if road or LIFT_WORDS.search(a.get('label') or ''):
                     t_ok = False
                 txt = closure_text(a)
@@ -256,6 +258,7 @@ def build():
             'dt': {'shinjuku': m.get('driveTimeShinjuku') or m.get('driveTime'), 'omiya': m.get('driveTimeOmiya') or m.get('driveTime'),
                    'ofuna': m.get('driveOfuna') or m.get('driveTime')},
             'train': bool(m.get('trainAccess')), 'lift': lift_of(m),
+            'carNote': next((a['carNote'] for a in m.get('annualItems') or [] if a.get('carNote')), None),
             'g': g, 'axe': ax, 'acc': acc, 'routes': routes, 'tags': tags,
             'fp': [{'t': p.get('tag'), 'l': p.get('label'), 'x': p.get('text')} for p in fp[:5]],
             'fuji': bool(fuji), 'food': bool(FOOD.search(fptext)),
