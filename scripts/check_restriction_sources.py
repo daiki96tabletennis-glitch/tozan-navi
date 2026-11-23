@@ -11,6 +11,8 @@
 - 注意のバナー（warnBanner）の url
 - 新しい形の山の注意（alerts[].sourceUrl）
 - 期間の無い閉鎖・通行止め（annualItems の kind が closure で validTo が無いもの）の sourceUrl
+- 点検などの運休（annualItems の kind が suspension）の sourceUrl と、ロープウェイ・ケーブルカーの運休が載る公式ページ（LIFT_PAGES。2026-11-23〜。
+  新しい点検日程が出たら知らせる。運営者の指示「日付で自動切替＋見張り」）
 
 知らせること
 - 前の日から、ページの中の「日付と規制・閉鎖に関わる行」が変わった（check_annual_updates.py の fetch_keylines と同じ取り出し方）
@@ -27,6 +29,7 @@ import json
 import os
 import re
 import sys
+import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
@@ -36,7 +39,27 @@ KEEP_DAYS = 14
 LIFT_RE = re.compile(r'解除|再開|解放|開通|通行可能|通行できます|運行を再開|入山できます')
 # 出典ではないリンク（地図・乗換案内）は見張らない（注意のバナーのリンクに混ざっている）
 NOT_SOURCE = re.compile(r'google\.[a-z.]+/maps|maps\.google|transit\.yahoo|navitime\.co\.jp|jorudan')
+# コースの行き方が頼るロープウェイ・ケーブルカーの、運休の日程が載る公式ページ（URL・山・名前）
+LIFT_PAGES = [
+    ('https://www.kitayatu.jp/ropeway/', ['北横岳'], '北八ヶ岳ロープウェイの運休'),
+    ('https://www.mitaketozan.co.jp/news.html', ['御岳山', '日の出山', '大岳山'], '御岳山ケーブルカーの運休・運賃'),
+    ('https://www.ooyama-cable.co.jp/timetable/', ['大山（丹沢）'], '大山ケーブルカーの運休'),
+    ('https://shinhotaka-ropeway.jp/news-event/', ['西穂高岳'], '新穂高ロープウェイの運休'),
+    ('https://chuo-alps.com/timetable/', ['木曽駒ヶ岳'], '駒ヶ岳ロープウェイの運休'),
+    ('https://www.winter.tengendai.jp/', ['西吾妻山'], '天元台ロープウェイ・リフトの運休'),
+    ('https://www.happo-one.jp/ticket', ['唐松岳'], '八方尾根のリフトの営業期間・登山者の料金'),
+    ('https://www.hakubagoryu.jp/guide-for-sightseers-and-hikers/', ['五竜岳'], '五竜テレキャビンの冬の営業期間・登山者の案内'),
+    ('https://www.marunuma.jp/winter/mountain/', ['日光白根山'], '丸沼高原の冬のロープウェイ・登山の決まり'),
+]
+LIFT_URLS = {p[0] for p in LIFT_PAGES}
 NEAR_DAYS = 30   # 初日の「解除」の知らせは、今日の前後30日の日付がある行だけ（昔の解除の記載を知らせないため）
+
+
+def pdf_links(url):
+    """ページから張られた PDF の一覧（駒ヶ岳ロープウェイのように、運休の日程が PDF の中だけにあり、年度の PDF に差し替わるページのため）"""
+    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (compatible; yamatch-annual-check)'})
+    text = urllib.request.urlopen(req, timeout=30).read().decode('utf-8', 'replace')
+    return sorted(set(re.findall(r'href=["\']([^"\']+\.pdf)', text, re.I)))
 
 
 def dates_in(line, today):
@@ -81,8 +104,11 @@ def collect():
         for al in m.get('alerts') or []:
             add(al.get('sourceUrl'), m['name'], al.get('title'))
         for it in m.get('annualItems') or []:
-            if it.get('kind') == 'closure' and not it.get('validTo'):
+            if (it.get('kind') == 'closure' and not it.get('validTo')) or it.get('kind') == 'suspension':
                 add(it.get('sourceUrl'), m['name'], it.get('label'))
+    for url, names, label in LIFT_PAGES:
+        for n in names:
+            add(url, n, label)
     return by_url
 
 
@@ -102,6 +128,8 @@ def main():
     for url, t in sorted(targets.items()):
         try:
             keys = fetch_keylines(url)
+            if url in LIFT_URLS:
+                keys = '\n'.join([keys] + pdf_links(url))
         except Exception as e:
             failed.append((url, t, str(e)[:80]))
             continue

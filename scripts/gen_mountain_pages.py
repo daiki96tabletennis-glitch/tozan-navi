@@ -61,7 +61,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261119b"
+ASSET_VER = "20261123a"
 
 DEP_ORDER = [
     ("大船駅", "driveOfuna", "ofuna"),
@@ -826,12 +826,126 @@ def route_display_name(r):
     return out.strip() or name
 
 
-def render_access_tabs(mt):
+def _hm_min(n):
+    n = int(n)
+    return (f"{n // 60}時間{n % 60}分" if n % 60 else f"{n // 60}時間") if n >= 60 else f"{n}分"
+
+
+# 代わりの登山口の行き方を作るときに、ほかの山（winter.altAccessFrom）から借りる項目
+ALT_ACCESS_KEYS = ("trainRoutes", "trainAccessHtml", "trainAccessLabel", "annualItems", "transitSeasons", "parking", "address",
+                   "trailheadAddress", "mapBtnsHtml", "gmapUrl", "amapUrl", "mapTargetName", "trailhead", "carShuttle", "driveTarget",
+                   "dataModel", "parkingTrailheads")
+
+
+def winter_alt_view(mt, by_id):
+    """代表コースの登山口が冬に使えないとき、代わりの登山口の行き方を作るための山のデータ（view, winter, コースの番号, 登山口の名前）。
+    代わりの登山口が同じほかの山（altAccessFrom）が無ければ None"""
+    n_alt = winter_alt_index(mt)
+    if not n_alt:
+        return None
+    w = rep_route_of(mt)["winter"]
+    d = by_id.get(w.get("altAccessFrom") or "")
+    if not d:
+        return None
+    view = dict(mt)
+    for k in list(view):
+        if k.startswith(("drive", "trainTime", "fare", "transfers", "trainAccess")):
+            del view[k]
+    for k in ALT_ACCESS_KEYS:
+        view.pop(k, None)
+    for k, v in d.items():
+        if k.startswith(("drive", "trainTime", "fare", "transfers", "trainAccess")) or k in ALT_ACCESS_KEYS:
+            view[k] = v
+    view["routes"] = []     # 縦走の帰り方（render_returns）は出さない
+    return view, w, n_alt, d.get("trailhead") or ""
+
+
+def _strip_ids(html):
+    """代わりの登山口の行き方の写しから id を外す（同じ id が2つにならないように）"""
+    return re.sub(r'\s+id="[^"]*"', "", html)
+
+
+def _two_ways(normal, winter):
+    return (f'<div class="acc-v acc-v-normal">{normal}</div>\n  '
+            f'<div class="acc-v acc-v-winter" hidden>{winter}</div>')
+
+
+def winter_access_block(mt, by_id):
+    """アクセス欄の上に出す、代表コースの登山口が冬に使えない期間の案内（2026-11-19。運営者の指示「代表的な登山口としてアクセス欄で
+    書いてある登山口が使えない時は、他の登山口を出す様にしたい」）。期間（winter.from・to）の間だけ WINTER_SCRIPT が出す。
+    代わりのコース（winter.alt）があれば、その登山口への行き方を、同じ登山口のほかの山（winter.altAccessFrom）のデータで出す
+    （電車・バスの経路・新宿からの時間と運賃・季節運行・車の時間・駐車場・地図）。代わりが無い山は「この登山口へ行けない」だけ"""
+    rr = rep_route_of(mt)
+    w = (rr or {}).get("winter") or {}
+    if w.get("state") != "closed" or not (w.get("from") and w.get("to")):
+        return ""
+    st, color = WINTER_STYLE["closed"]
+    period = f'{_wmd(w["from"])}〜{_wmd(w["to"])}'
+    th = mt.get("trailhead") or ""
+    n_alt = winter_alt_index(mt)
+    head = (f'<div style="font-weight:700;margin-bottom:4px">{ym_icon("snowflake")} {period}は、登山口の{esc(th)}へ行けません</div>'
+            f'<div style="font-size:12px;line-height:1.6">{esc(w.get("text") or "")}</div>')
+    body = ""
+    if n_alt and winter_alt_view(mt, by_id):
+        ath = winter_alt_view(mt, by_id)[3]
+        body = (f'<div style="margin-top:8px;padding-top:8px;border-top:1px dashed #e7b8b8;color:#2a2520">'
+                f'この期間は、コース{n_alt}の登山口・{esc(ath)}から歩けます。下の「電車・バスで行く」「車で行く」は{esc(ath)}への行き方です</div>')
+    elif n_alt:
+        ar = mt["routes"][n_alt - 1]
+        d = by_id.get(w.get("altAccessFrom") or "") or {}
+        ath = d.get("trailhead") or ar.get("trailheadName") or re.split("〜", ar.get("name") or "")[0]
+        rows = []
+        if d.get("trainAccess") and d.get("trainTimeShinjuku"):
+            legs = (((d.get("trainRoutes") or {}).get("routes") or {}).get("shinjuku") or {}).get("legs") or []
+            chain = " → ".join(l.get("station") for l in legs if l.get("station")) or d["trainAccess"]
+            fare = f'・{d["fareShinjuku"]:,}円' if isinstance(d.get("fareShinjuku"), int) else ""
+            seas = "".join(f'<br><span style="color:{color}">{esc(a["label"])}は{esc(a["validFrom"][:4])}年は{_wmd(a["validFrom"][5:])}〜{_wmd(a["validTo"][5:])}</span>'
+                           for a in d.get("annualItems") or [] if a.get("kind") == "transport" and a.get("validFrom") and a.get("validTo"))
+            rows.append(f'<div class="info-row"><span class="info-label">電車・バス</span><span class="info-val">{esc(chain)}（新宿から約{_hm_min(d["trainTimeShinjuku"])}{fare}）{seas}</span></div>')
+        if d.get("driveTimeShinjuku"):
+            rows.append(f'<div class="info-row"><span class="info-label">車</span><span class="info-val">新宿から約{_hm_min(d["driveTimeShinjuku"])}（渋滞を含まない目安）</span></div>')
+        if d.get("parking"):
+            # 行の名前を「駐車場」にすると mountain-engine.js がこの山の駐車場の文で上書きするので別の名前にする
+            rows.append(f'<div class="info-row"><span class="info-label">車を置く所</span><span class="info-val">{esc(d["parking"])}</span></div>')
+        # 地図のボタンは mountain-engine.js が class="map-btn-link" をこの山の地図に書き換えるので、別の class と同じ見た目の style にする
+        maps = (d.get("mapBtnsHtml") or "").replace(
+            'class="map-btn-link"',
+            'class="map-btn-alt" style="display:inline-flex;align-items:center;gap:4px;background:#f0f5ec;color:#4a6038;font-size:11px;'
+            'padding:5px 12px;border-radius:20px;border:1px solid #c8d8b8;font-weight:500;margin:4px 6px 0 0"')
+        more = (f'<div style="font-size:12px;margin-top:4px"><a href="/mountains/{esc(d["id"])}/" style="color:#4a6038">{esc(ath)}への詳しい行き方（{esc(d["name"])}のページ）</a></div>'
+                if d.get("id") else '<div style="font-size:12px;margin-top:4px;color:#6a6058">この登山口への行き方は、このサイトにはまだ載っていません</div>')
+        body = (f'<div style="margin-top:8px;padding-top:8px;border-top:1px dashed #e7b8b8;color:#2a2520">'
+                f'<div style="font-weight:700;margin-bottom:4px">この期間は、コース{n_alt}の登山口・{esc(ath)}から歩けます</div>'
+                + (f'<div class="info-rows">{"".join(rows)}</div>' if rows else "") + maps + more + '</div>')
+    return (f'<div class="acc-winter" data-from="{esc(w["from"])}" data-to="{esc(w["to"])}" hidden '
+            f'style="{st};font-size:13px;line-height:1.6;padding:10px 12px;border-radius:8px;margin:0 0 12px">{head}{body}</div>\n  ')
+
+
+def render_access_tabs(mt, by_id=None):
     """電車・バスと車（車の時間・駐車場）を1つの欄にまとめ、タブで切り替える。登山口と前泊の宿はタブの下（2026-11-05〜。運営者の指示）。
     JavaScript が動かないときは両方とも出る（隠すのは ACC_SCRIPT）"""
     train = render_train_access(mt)
     car = _as_panel(render_car_access(mt)) + "\n  " + _as_panel(render_parking(mt))
     has_train = bool(train)
+    # 代表コースの登山口が冬に使えない期間は、タブの中身を代わりの登山口の行き方にする（2026-11-19。運営者の指示「タブも切り替える」）。
+    # 両方を作っておき、WINTER_SCRIPT が期間中だけ .acc-v-normal を隠して .acc-v-winter を出す
+    alt = winter_alt_view(mt, by_id or {})
+    th_val = esc(require(mt, "trailhead"))
+    th_keep = ""
+    if alt:
+        view, w, n_alt, ath = alt
+        note = (f'<div class="acc-v-note" style="font-size:12px;color:#b02a2a;margin:0 0 8px">{ym_icon("snowflake")} '
+                f'{_wmd(w["from"])}〜{_wmd(w["to"])}は、コース{n_alt}の登山口・{esc(ath)}への行き方です</div>')
+        train_alt = render_train_access(view)
+        if has_train:
+            train_w = (_strip_ids(_as_panel(train_alt)) if train_alt else
+                       '<p style="font-size:13px;color:#5a5248">この登山口へは電車・バスでは行けません</p>')
+            train = _two_ways(_as_panel(train), note + train_w)
+        car_w = _strip_ids(_as_panel(render_car_access(view)) + "\n  " + _as_panel(render_parking(view)))
+        car = _two_ways(car, note + car_w)
+        th_val = (f'<span class="acc-v acc-v-normal">{th_val}</span>'
+                  f'<span class="acc-v acc-v-winter" hidden>{esc(ath)}（{_wmd(w["from"])}〜{_wmd(w["to"])}。{th_val}へは行けません）</span>')
+        th_keep = " data-keep"
     tabs = ""
     if has_train:
         tabs = ('<div class="acc-tabs" role="tablist" aria-label="行き方">'
@@ -840,13 +954,14 @@ def render_access_tabs(mt):
                 '</div>\n  ')
     panels = ""
     if has_train:
-        panels += f'<div class="acc-panel" data-acc="train" role="tabpanel">\n  {_as_panel(train)}\n  </div>\n  '
+        panels += f'<div class="acc-panel" data-acc="train" role="tabpanel">\n  {train if alt else _as_panel(train)}\n  </div>\n  '
     panels += f'<div class="acc-panel" data-acc="car" role="tabpanel">\n  {car}\n  </div>'
     # 登山口と前泊の宿は、電車・車のどちらのタブでも出す（タブの下）。駐車場は車のタブだけ（運営者の指示・2026-11-05）
     extra = ('<div class="acc-common">\n  <div class="acc-sec" id="sec-trailhead">\n'
-             f'<div class="info-rows">\n<div class="info-row"><span class="info-label">登山口</span><span class="info-val">{esc(require(mt, "trailhead"))}</span></div>\n</div>\n'
+             f'<div class="info-rows">\n<div class="info-row"{th_keep}><span class="info-label">登山口</span><span class="info-val">{th_val}</span></div>\n</div>\n'
              + stay_link(mt) + listing_block(mt) + '</div>\n  </div>\n')
-    return (f'<div class="card ym-access" id="sec-access" data-has-train="{1 if has_train else 0}">\n  {tabs}{panels}\n'
+    wab = winter_access_block(mt, by_id or {})
+    return (f'<div class="card ym-access" id="sec-access" data-has-train="{1 if has_train else 0}">\n  {wab}{tabs}{panels}\n'
             f'{extra}</div>\n{ACC_SCRIPT}')
 
 
@@ -1054,7 +1169,7 @@ def render_transit_seasons(mt):
             f'<div class="ts-season" data-key="{esc(z["key"])}" data-label="{esc(z["label"])}" data-from="{esc(z["from"])}" data-to="{esc(z["to"])}"'
             + (f' data-timetable="{esc(tt["url"])}" data-timetable-label="{esc(tt["label"])}"' if tt.get("url") else "")
             + f'><div class="ts-season-h"><b class="ts-season-name">{esc(z["label"])}</b>'
-            f'<span class="ts-season-range">{_ymd(z["from"])}〜{_ymd(z["to"])}</span></div>'
+            f'<span class="ts-season-range">{esc(z.get("rangeText") or (_ymd(z["from"]) + "〜" + _ymd(z["to"])))}</span></div>'
             f'<ul class="ts-season-lines">{lines}</ul>'
             + (f'<div class="ts-season-links">{links}</div>' if links else "")
             + (f'<p class="ts-season-src">確認日：{esc(z["lastVerified"])}</p>' if z.get("lastVerified") else "")
@@ -1104,7 +1219,7 @@ def render_season_ssot_extra(mt):
     if mt.get("transitSeasons"):
         # 季節ダイヤ（夏・冬）の期間は、電車・バスの欄の季節ダイヤの枠で出す（2026-11-17）
         for z in mt["transitSeasons"]:
-            notes.append((f'公共交通（{esc(z.get("label") or "")}）：{_md(z.get("from"))}〜{_md(z.get("to"))}', z.get("to")))
+            notes.append((f'公共交通（{esc(z.get("label") or "")}）：{esc(z.get("rangeText") or (_md(z.get("from")) + "〜" + _md(z.get("to"))))}', z.get("to")))
     elif op.get("validFrom") or op.get("validTo"):
         rng = f'{_md(op.get("validFrom"))}〜{_md(op.get("validTo"))}'
         # 運行期間は毎年変わる。期限（data-valid-to）を過ぎたら mountain-engine.js が「終了」の注記を足す
@@ -1354,6 +1469,10 @@ var d=new Date();var md=('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).s
 function inP(f,t){return f<=t?(md>=f&&md<=t):(md>=f||md<=t);}
 var tb=document.querySelectorAll('.rl-train[data-wfrom]');
 for(var k=0;k<tb.length;k++){if(inP(tb[k].getAttribute('data-wfrom'),tb[k].getAttribute('data-wto')))tb[k].style.display='none';}
+var acc=document.querySelector('.acc-winter');
+if(acc&&inP(acc.getAttribute('data-from'),acc.getAttribute('data-to'))){acc.hidden=false;
+var vn=document.querySelectorAll('.acc-v-normal');for(var x=0;x<vn.length;x++)vn[x].hidden=true;
+var vw=document.querySelectorAll('.acc-v-winter');for(var y=0;y<vw.length;y++)vw[y].hidden=false;}
 var box=document.querySelector('.rl-winter-swap');if(!box)return;
 if(!inP(box.getAttribute('data-from'),box.getAttribute('data-to')))return;
 box.hidden=false;
@@ -1901,7 +2020,8 @@ def render_suspensions(mt):
         fr = datetime.date.fromisoformat(it["validFrom"])
         show = fr - datetime.timedelta(days=int(it.get("showDaysBefore") or 30))
         same_year = it["validFrom"][:4] == it["validTo"][:4]
-        rng = f'{_jmd(it["validFrom"])}〜{_jmd(it["validTo"])}' if same_year else \
+        rng = _jmd(it["validFrom"]) if it["validFrom"] == it["validTo"] else \
+              f'{_jmd(it["validFrom"])}〜{_jmd(it["validTo"])}' if same_year else \
               f'{it["validFrom"][:4]}年{_jmd(it["validFrom"])}〜{it["validTo"][:4]}年{_jmd(it["validTo"])}'
         title = f'{rng}は{esc(it.get("label") or "運休")}'
         link = ""
@@ -2048,7 +2168,7 @@ def generate_page(mt, by_id, gear_data):
         body_sections.append(f"  {caution}")
 
     body_sections.append("")
-    body_sections.append(f'  {render_access_tabs(mt)}')
+    body_sections.append(f'  {render_access_tabs(mt, by_id)}')
     body_sections.append(f'  {render_season(mt)}')
     body_sections.append("")
     body_sections.append(f'  {render_routes(mt)}')

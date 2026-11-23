@@ -182,6 +182,10 @@ CLOSED = [
      [src('宮城県', 'https://www.pref.miyagi.jp/documents/35909/r7zaoecholine.pdf')], None),
 ]
 
+# 代わりのコースの登山口への行き方を、アクセス欄に出すときに使うほかの山（同じ登山口から登る山。2026-11-19）。
+# 甲斐駒ヶ岳の竹宇駒ヶ岳神社は、同じ登山口の山が無い（日向山の経路は矢立石まで）ので行き方は出さない
+ALT_FROM = {'yari': 'kasagatake'}
+
 # 季節運行の乗り物が止まる期間は電車・バスで行けない（car_only）。(山, [コースの番号], 乗り物の見つけ方)
 # 見つけ方：annualItems の transport の label に含まれる語、または 'op'（コースのアクセスの operation）
 CAR_ONLY = [
@@ -213,6 +217,8 @@ def main():
             w.update({'text': text, 'sources': sources, 'lastVerified': DAY})
             if alt:
                 w['alt'] = alt
+                if ALT_FROM.get(mid):
+                    w['altAccessFrom'] = ALT_FROM[mid]
             want[(mid, n)] = w
     for mid, nums, key in CAR_ONLY:
         m = by[mid]

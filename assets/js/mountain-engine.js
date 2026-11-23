@@ -79,8 +79,10 @@ function ymRailEnd(route){
 function ymTransitLinks(key){
   var from = YM_TRANSIT_FROM[key];
   if(!from){ return; }
-  var route = document.querySelector('.ts-route-' + key);
   document.querySelectorAll('a.ts-link-yahoo').forEach(function(a){
+    // 冬に代わりの登山口の行き方（.acc-v-winter）もあるので、リンクと同じ欄の経路を見る（2026-11-19）
+    var scope = (a.closest && a.closest('.acc-v')) || document;
+    var route = scope.querySelector('.ts-route-' + key);
     var cur = a.getAttribute('href') || '';
     if(cur.indexOf('transit.yahoo.co.jp') < 0){ return; }
     // 別の処理でリンクが書き換えられていたら、それを元のリンクにする
@@ -352,6 +354,8 @@ function applyDep(){
       var label = row.querySelector('.info-label');
       var val = row.querySelector('.info-val');
       if(!label || !val) return;
+      // 冬に代わりの登山口の行き方（.acc-v-winter）と、冬の切り替えのある登山口の行（data-keep）は書き換えない（2026-11-19）
+      if(row.closest('.acc-v-winter') || row.hasAttribute('data-keep')) return;
       if(label.textContent === '登山口' && mt.trailhead) val.textContent = mt.trailhead;
       if(label.textContent === '駐車場' && mt.parking) val.textContent = mt.parking;
       if(label.textContent === '住所' && mt.address) val.textContent = mt.address;
@@ -359,6 +363,7 @@ function applyDep(){
 
     // 6. 地図リンク
     document.querySelectorAll('.map-btn-link').forEach(function(a){
+      if(a.closest('.acc-v-winter')) return;
       if(a.textContent.includes('Google') && mt.gmapUrl) a.href = mt.gmapUrl;
       if(a.textContent.includes('Apple') && mt.amapUrl) a.href = mt.amapUrl;
     });

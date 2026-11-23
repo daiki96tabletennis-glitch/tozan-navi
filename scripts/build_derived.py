@@ -202,7 +202,7 @@ def derive(mt, TH, AC):
                 opn = tr_ac.get('operation') or {}
                 if mt.get('transitSeasons'):
                     parts.append('運行（利用）期間は、' + '、'.join(
-                        f"{z['label']}が{z['from'][:4]}年{md(z['from'])}〜" + (z['to'][:4] + '年' if z['to'][:4] != z['from'][:4] else '') + md(z['to']) for z in mt['transitSeasons']) + 'です。')
+                        (f"{z['label']}が{z['rangeText']}" if z.get('rangeText') else f"{z['label']}が{z['from'][:4]}年{md(z['from'])}〜" + (z['to'][:4] + '年' if z['to'][:4] != z['from'][:4] else '') + md(z['to'])) for z in mt['transitSeasons']) + 'です。')
                 elif opn.get('validFrom') and opn.get('validTo'):
                     parts.append(f"{opn.get('seasonYear')}年の運行（利用）期間は{md(opn['validFrom'])}〜{md(opn['validTo'])}です。")
                 if opn.get('reservation'): parts.append(opn['reservation'] + '。')

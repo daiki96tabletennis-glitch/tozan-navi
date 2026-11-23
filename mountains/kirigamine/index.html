@@ -16,7 +16,7 @@
 <meta property="article:modified_time" content="2026-11-19T00:00:00+09:00">
 <link rel="canonical" href="https://tozan-navi.com/mountains/kirigamine/">
 <meta name="google-site-verification" content="dJ2byH9b8xF8S5lqAyWV-DqRwPGLEjWXs_-Un9oXGHs" />
-<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261119b">
+<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261123a">
 <style>.header-title{color:white;font-family:Georgia,serif;font-size:19px;font-weight:bold}
 .header-sub{color:rgba(255,255,255,0.5);font-size:10px;margin-top:1px}
 .hero{background:#4e6535;border-radius:14px;overflow:hidden;margin-bottom:16px}
@@ -374,7 +374,7 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Yamatch","item":"https://tozan-navi.com/"},{"@type":"ListItem","position":2,"name":"霧ヶ峰","item":"https://tozan-navi.com/mountains/kirigamine/"}]}</script>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>h1,h2,h3,.ym-logo,.type-name,.mountain-name,.sec-title,.header-title{font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;}</style>
-<script defer src="/scripts/photo-credits.js?v=20261119b"></script>
+<script defer src="/scripts/photo-credits.js?v=20261123a"></script>
 </head>
 <body>
 <header>
@@ -758,6 +758,10 @@ var d=new Date();var md=('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).s
 function inP(f,t){return f<=t?(md>=f&&md<=t):(md>=f||md<=t);}
 var tb=document.querySelectorAll('.rl-train[data-wfrom]');
 for(var k=0;k<tb.length;k++){if(inP(tb[k].getAttribute('data-wfrom'),tb[k].getAttribute('data-wto')))tb[k].style.display='none';}
+var acc=document.querySelector('.acc-winter');
+if(acc&&inP(acc.getAttribute('data-from'),acc.getAttribute('data-to'))){acc.hidden=false;
+var vn=document.querySelectorAll('.acc-v-normal');for(var x=0;x<vn.length;x++)vn[x].hidden=true;
+var vw=document.querySelectorAll('.acc-v-winter');for(var y=0;y<vw.length;y++)vw[y].hidden=false;}
 var box=document.querySelector('.rl-winter-swap');if(!box)return;
 if(!inP(box.getAttribute('data-from'),box.getAttribute('data-to')))return;
 box.hidden=false;
@@ -968,7 +972,7 @@ var YM_MOUNTAIN_INIT = {
   ]
 };
 </script>
-<script src="../../assets/js/mountain-engine.js?v=20261119b"></script>
+<script src="../../assets/js/mountain-engine.js?v=20261123a"></script>
 
 
 
@@ -1006,9 +1010,9 @@ var YM_MOUNTAIN_INIT = {
 </script>
 
 
-<script src="../../assets/js/gear-common.js?v=20261119b"></script>
-<script src="../../assets/js/mountain.js?v=20261119b"></script>
-<script src="../../assets/js/counts-config.js?v=20261119b"></script>
+<script src="../../assets/js/gear-common.js?v=20261123a"></script>
+<script src="../../assets/js/mountain.js?v=20261123a"></script>
+<script src="../../assets/js/counts-config.js?v=20261123a"></script>
 <script src="../../assets/js/ym-counts.js?v=20261025a"></script>
 <script src="/assets/js/to-top.js?v=20261025a" defer></script>
 </body>

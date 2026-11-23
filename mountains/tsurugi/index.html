@@ -16,7 +16,7 @@
 <meta property="article:modified_time" content="2026-11-19T00:00:00+09:00">
 <link rel="canonical" href="https://tozan-navi.com/mountains/tsurugi/">
 <meta name="google-site-verification" content="dJ2byH9b8xF8S5lqAyWV-DqRwPGLEjWXs_-Un9oXGHs" />
-<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261119b">
+<link rel="stylesheet" href="../../assets/css/mountain.css?v=20261123a">
 <style>.header-title{color:white;font-family:Georgia,serif;font-size:19px;font-weight:bold}
 .header-sub{color:rgba(255,255,255,0.5);font-size:10px;margin-top:1px}
 .hero{background:#4e6535;border-radius:14px;overflow:hidden;margin-bottom:16px}
@@ -374,7 +374,7 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Yamatch","item":"https://tozan-navi.com/"},{"@type":"ListItem","position":2,"name":"剱岳","item":"https://tozan-navi.com/mountains/tsurugi/"}]}</script>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>h1,h2,h3,.ym-logo,.type-name,.mountain-name,.sec-title,.header-title{font-family:"Zen Kaku Gothic New",-apple-system,sans-serif;}</style>
-<script defer src="/scripts/photo-credits.js?v=20261119b"></script>
+<script defer src="/scripts/photo-credits.js?v=20261123a"></script>
 </head>
 <body>
 <header>
@@ -448,6 +448,7 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
 </div>
 
   <div class="card ym-access" id="sec-access" data-has-train="1">
+  <div class="acc-winter" data-from="12-01" data-to="04-14" hidden style="background:#fde2e2;color:#b02a2a;font-size:13px;line-height:1.6;padding:10px 12px;border-radius:8px;margin:0 0 12px"><div style="font-weight:700;margin-bottom:4px"><svg class="ym-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 20-1.25-2.5L6 18" /><path d="M10 4 8.75 6.5 6 6" /><path d="m14 20 1.25-2.5L18 18" /><path d="m14 4 1.25 2.5L18 6" /><path d="m17 21-3-6h-4" /><path d="m17 3-3 6 1.5 3" /><path d="M2 12h6.5L10 9" /><path d="m20 10-1.5 2 1.5 2" /><path d="M22 12h-6.5L14 15" /><path d="m4 10 1.5 2L4 14" /><path d="m7 21 3-6-1.5-3" /><path d="m7 3 3 6h4" /></svg> 12/1〜4/14は、登山口の室堂へ行けません</div><div style="font-size:12px;line-height:1.6">立山黒部アルペンルートは2026年は4月15日〜11月30日の運行で、冬は室堂へ行けません</div></div>
   <div class="acc-tabs" role="tablist" aria-label="行き方"><button type="button" role="tab" class="acc-tab on" data-acc="train" aria-selected="true"><svg width="21" height="21" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>電車・バスで行く</button><button type="button" role="tab" class="acc-tab" data-acc="car" aria-selected="false"><svg width="23" height="23" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/><circle cx="6.5" cy="17.5" r="1.6" fill="#fff"/><circle cx="17.5" cy="17.5" r="1.6" fill="#fff"/></svg>車で行く</button></div>
   <div class="acc-panel" data-acc="train" role="tabpanel">
   <div class="acc-sec" id="sec-train">
@@ -525,6 +526,10 @@ var d=new Date();var md=('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).s
 function inP(f,t){return f<=t?(md>=f&&md<=t):(md>=f||md<=t);}
 var tb=document.querySelectorAll('.rl-train[data-wfrom]');
 for(var k=0;k<tb.length;k++){if(inP(tb[k].getAttribute('data-wfrom'),tb[k].getAttribute('data-wto')))tb[k].style.display='none';}
+var acc=document.querySelector('.acc-winter');
+if(acc&&inP(acc.getAttribute('data-from'),acc.getAttribute('data-to'))){acc.hidden=false;
+var vn=document.querySelectorAll('.acc-v-normal');for(var x=0;x<vn.length;x++)vn[x].hidden=true;
+var vw=document.querySelectorAll('.acc-v-winter');for(var y=0;y<vw.length;y++)vw[y].hidden=false;}
 var box=document.querySelector('.rl-winter-swap');if(!box)return;
 if(!inP(box.getAttribute('data-from'),box.getAttribute('data-to')))return;
 box.hidden=false;
@@ -727,7 +732,7 @@ var YM_MOUNTAIN_INIT = {
   ]
 };
 </script>
-<script src="../../assets/js/mountain-engine.js?v=20261119b"></script>
+<script src="../../assets/js/mountain-engine.js?v=20261123a"></script>
 
 
 
@@ -765,9 +770,9 @@ var YM_MOUNTAIN_INIT = {
 </script>
 
 
-<script src="../../assets/js/gear-common.js?v=20261119b"></script>
-<script src="../../assets/js/mountain.js?v=20261119b"></script>
-<script src="../../assets/js/counts-config.js?v=20261119b"></script>
+<script src="../../assets/js/gear-common.js?v=20261123a"></script>
+<script src="../../assets/js/mountain.js?v=20261123a"></script>
+<script src="../../assets/js/counts-config.js?v=20261123a"></script>
 <script src="../../assets/js/ym-counts.js?v=20261025a"></script>
 <script src="/assets/js/to-top.js?v=20261025a" defer></script>
 </body>
