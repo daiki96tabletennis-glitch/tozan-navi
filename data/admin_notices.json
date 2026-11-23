@@ -12,17 +12,17 @@
    "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/43791809429"
   },
   {
-   "id": "restrict-2026-11-22-738bf38fcc",
+   "id": "restrict-2026-11-23-e8cc6ad0a7",
    "kind": "restrict",
    "title": "規制・閉鎖の出典の見張り（毎日）",
-   "date": "2026-11-22",
+   "date": "2026-11-23",
    "needsAction": true,
-   "digest": "738bf38fcc",
+   "digest": "e8cc6ad0a7",
    "sections": [
     {
      "heading": "",
      "lines": [
-      "見張っている出典：26件／知らせるもの：3件（今日見つけた：1件）／取得できず：0件"
+      "見張っている出典：38件／知らせるもの：3件（今日見つけた：0件）／取得できず：1件"
      ]
     },
     {
@@ -36,12 +36,13 @@
     {
      "heading": "出典ページを取得できなかった（URLの変更・リンク切れの可能性）",
      "lines": [
-      "※ 今回が初回の取得だった出典：1件（次回から変更を検知します）"
+      "草津白根山：https://www.jrbuskanto.co.jp/jwp/local_emergency/e_kusatsu（<urlopen error timed out>）",
+      "※ 今回が初回の取得だった出典：12件（次回から変更を検知します）"
      ]
     }
    ],
    "next": "Claude のアプリで「◯◯山の規制の出典を確かめて」と、山の名前を添えて伝えてください。出典を読んで、解除・変更ならサイトを直します。",
-   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/44977033514"
+   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/45103932728"
   },
   {
    "id": "annual-2026-11-01-9e49cb8eba",
@@ -196,5 +197,5 @@
    "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/39520018231"
   }
  ],
- "updatedAt": "2026-11-22"
+ "updatedAt": "2026-11-23"
 }
