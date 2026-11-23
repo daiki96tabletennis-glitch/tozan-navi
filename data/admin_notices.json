@@ -175,15 +175,25 @@
    "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/44853349497"
   },
   {
-   "id": "sitecheck-2026-11-23-bd9ddaf71d",
+   "id": "sitecheck-2026-11-23-19253f9399",
    "kind": "sitecheck",
    "title": "サイトの検証",
    "date": "2026-11-23",
-   "needsAction": false,
-   "digest": "bd9ddaf71d",
-   "sections": [],
-   "next": null,
-   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/45115767607"
+   "needsAction": true,
+   "digest": "19253f9399",
+   "sections": [
+    {
+     "heading": "18. 写真のクレジット（作者・ライセンスの記録）（4件）",
+     "lines": [
+      "keirisan: 写真のクレジットの記録が無い：/images/mountains/keirisan/image-20261123050700195-qplcl.webp",
+      "keirisan: 写真のクレジットの記録が無い：/images/mountains/keirisan/image-20261123050702473-pfo8c.webp",
+      "keirisan: 写真のクレジットの記録が無い：/images/mountains/keirisan/image-20261123050705091-0v4f5.webp",
+      "keirisan: 写真のクレジットの記録が無い：/images/mountains/keirisan/image-20261123050707201-xs83s.webp"
+     ]
+    }
+   ],
+   "next": "Claude のアプリで「check_pages.py の異常を直して」と伝えてください。",
+   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/45115787318"
   },
   {
    "id": "push-2026-10-21-bd9ddaf71d",
