@@ -964,7 +964,7 @@ def render_access_tabs(mt, by_id=None):
              f'<div class="info-rows">\n<div class="info-row"{th_keep}><span class="info-label">登山口</span><span class="info-val">{th_val}</span></div>\n</div>\n'
              + stay_link(mt) + listing_block(mt) + '</div>\n  </div>\n')
     wab = winter_access_block(mt, by_id or {})
-    return (f'<div class="card ym-access" id="sec-access" data-has-train="{1 if has_train else 0}">\n  {wab}{tabs}{panels}\n'
+    return (f'<div class="card ym-access" id="sec-access" data-has-train="{1 if has_train else 0}">\n  {winter_hint(mt)}{wab}{tabs}{panels}\n'
             f'{extra}</div>\n{ACC_SCRIPT}')
 
 
@@ -1501,6 +1501,20 @@ def winter_alt_index(mt):
     raise SystemExit("winter.alt のコースが無い：%s %s" % (mt.get("id"), alt))
 
 
+def winter_hint(mt):
+    """冬に歩き始められる登山口のヒント（2026-11-24。運営者の指示「詳しく書かなくても良いからヒントは簡単に」）。
+    行き方までは書かない。期間（winterHint.from・to）の間だけ WINTER_SCRIPT が出す"""
+    h = mt.get("winterHint")
+    if not h:
+        return ""
+    st, _ = WINTER_STYLE["closed"]
+    src = "・".join(f'<a href="{esc(x["url"])}" target="_blank" rel="noopener" style="color:inherit">{esc(x["label"])}</a>' for x in h.get("sources") or [])
+    return (f'<div class="w-hint" data-from="{esc(h["from"])}" data-to="{esc(h["to"])}" hidden '
+            f'style="{st};font-size:13px;line-height:1.6;padding:8px 10px;border-radius:8px;margin:0 0 10px">'
+            f'{ym_icon("snowflake")} {esc(h["text"])}'
+            f'<div style="font-size:10px;opacity:.8;margin-top:2px">出典：{src}</div></div>')
+
+
 def winter_swap_note(mt):
     """代表コースが冬に使えない期間だけ出す案内（2026-11-19。運営者の指示「代表的な登山口がアクセス不可の場合は、アクセスできる
     登山口にその期間だけ変えて欲しい」）。期間はページを開いた日の日付で決める（WINTER_SWAP_SCRIPT）"""
@@ -1523,6 +1537,8 @@ def winter_swap_note(mt):
 WINTER_SCRIPT = r"""<script>(function(){
 var d=new Date();var md=('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
 function inP(f,t){return f<=t?(md>=f&&md<=t):(md>=f||md<=t);}
+var wh=document.querySelectorAll('.w-hint');
+for(var h=0;h<wh.length;h++){if(inP(wh[h].getAttribute('data-from'),wh[h].getAttribute('data-to')))wh[h].hidden=false;}
 var tb=document.querySelectorAll('.rl-train[data-wfrom]');
 for(var k=0;k<tb.length;k++){if(inP(tb[k].getAttribute('data-wfrom'),tb[k].getAttribute('data-wto')))tb[k].style.display='none';}
 var acc=document.querySelector('.acc-winter');
@@ -1710,8 +1726,8 @@ def render_routes(mt):
         'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
         '<circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/>'
         '<path d="M5 17 C5 12 9 12 9 9 C9 6 12 6 12 9 C12 13 19 13 19 7"/></svg>'
-        f'{esc(mt["name"])}の代表的な登山ルート</h2>{winter_swap_note(mt)}{render_route_table(mt)}<div class="route-list-c">{items_html}</div>{train_note}{coeff_note}'
-        f'{WINTER_SCRIPT if any((r.get("winter") or {}).get("from") for r in routes) else ""}</div>'
+        f'{esc(mt["name"])}の代表的な登山ルート</h2>{winter_hint(mt)}{winter_swap_note(mt)}{render_route_table(mt)}<div class="route-list-c">{items_html}</div>{train_note}{coeff_note}'
+        f'{WINTER_SCRIPT if mt.get("winterHint") or any((r.get("winter") or {}).get("from") or (r.get("winter") or {}).get("trainFrom") for r in routes) else ""}</div>'
     )
 
 

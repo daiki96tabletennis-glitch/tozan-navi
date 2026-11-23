@@ -299,6 +299,92 @@ CONFIRMED_OPEN = {'asama': [1, 2], 'myoko': [1, 3], 'iizunasan': [1, 2, 3], 'tai
                   'kobushigatake': [3], 'nakawarayama': [2]}
 
 
+# 5回目（2026-11-24。運営者の指示「冬はどう登ればよいか簡単なヒントを」「縦走で帰りが通行止めの登山口はマークがない」）
+DAY4 = '2026-11-24'
+AZUMINO = src('安曇野市 北アルプス登山（林道の通行情報）', 'https://www.city.azumino.nagano.jp/soshiki/32/66871.html')
+AZUMINO_T = src('安曇野市観光協会 北アルプス登山', 'https://azumino-e-tabi.net/kitaalps')
+KAMIKOCHI = src('アルピコ交通 上高地線', 'https://www.alpico.co.jp/traffic/local/kamikochi/shinshimashima/')
+HIROGAWARA = src('南アルプス観光 登山バス', 'https://minami-alpskankou.jp/?page_id=6542')
+M5 = [
+    ('jonengatake', [2, 3]), ('chogatake', [2, 3]),
+]
+M5_TEXT = '三股登山口への林道烏川線が2026年11月27日10時から冬期通行止めで、三股へ行けません（安曇野市。例年4月下旬ごろまで）'
+# 縦走で下山口（または歩き始め）が冬に通れないコース。(山, コース, from, to, 足す文, 足す出典)。期間は両端の閉鎖を合わせた長いほう
+END = [
+    ('hotaka', 3, '11-16', '04-16', '下山口の上高地へのバスは2026年は11月15日まで（翌年は4月17日から）で、期間外は上高地から帰れません', [KAMIKOCHI]),
+    ('ainodake', 3, '11-04', '06-25', '下山口の広河原へのバスは2026年は6月26日〜11月3日で、期間外は広河原から帰れません', [HIROGAWARA]),
+    ('yari', 3, '11-16', '04-23', '下山口の上高地へのバスも2026年は11月15日まで（翌年は4月17日から）です', [KAMIKOCHI]),
+    ('yakedake', 3, '11-13', '04-16', '下山口の上高地へのバスも2026年は11月15日まで（翌年は4月17日から）です', [KAMIKOCHI]),
+    ('norikura', 3, '11-01', '06-30', '下山口の畳平へのシャトルバスも2026年は7月1日〜10月31日です', [src('アルピコ交通 乗鞍線', 'https://www.alpico.co.jp/traffic/local/kamikochi/echoline/')]),
+    ('otenshoudake', 2, '11-27', '04-23', '下山口の三股への林道烏川線も2026年11月27日から冬期通行止めです', [AZUMINO]),
+    ('otenshoudake', 3, '11-27', '04-23', '下山口の一ノ沢への林道一ノ沢線も2026年11月27日から冬期通行止めです', [AZUMINO]),
+]
+END_LABEL = '冬は下山口から帰れない'
+# 冬に歩き始められる登山口のヒント（公式の案内で確かめた山だけ。行き方までは書かない）。金峰山・甲斐駒ヶ岳・槍ヶ岳は代表コースの切り替え（alt）で案内済み
+HINTS = {
+    'hinata': {'from': '12-01', 'to': '04-30', 'text': '冬は矢立石への林道が閉鎖されるので、尾白川渓谷駐車場（竹宇駒ヶ岳神社）から歩きます（コース2）',
+               'sources': [src('やまなし観光推進機構 日向山', 'https://www.yamanashi-kankou.jp/kankou/spot/p2_2225.html')]},
+    'okutama': {'from': '12-14', 'to': '04-17', 'text': '冬は上日川峠へ行けないので、県道の閉鎖区間の下の裂石から歩きます（コース2の丸川峠へ）',
+                'sources': [src('甲州市（県道の冬期閉鎖）', 'https://www.city.koshu.yamanashi.jp/faq/2012033100570/')]},
+    'ainodake': {'from': '11-04', 'to': '06-25', 'text': '冬は広河原へ行けないので、奈良田から大門沢を登ります（コース3の登りの道。奈良田へ戻る計画に。冬山の経験者向け）',
+                 'sources': [src('早川町 はやかわ乗合バス', 'https://www.town.hayakawa.yamanashi.jp/people/taffic.html')]},
+    # 6回目（2026-11-24。運営者の指示「続けて調べる」）
+    'echigokoma': {'from': '11-04', 'to': '06-30', 'text': '冬の入山口は駒ノ湯からの小倉尾根（コース3）などです。深いラッセルと雪崩の危険があり、冬山の経験者向けです',
+                   'sources': [src('新潟県警察 冬山情報（越後駒ヶ岳）', 'https://www.pref.niigata.lg.jp/site/kenkei/osirase-anzen-ansin-mizuyamajsetugaijiko-sangaku-huyuyama-jouhou-echigo-echigo.html')]},
+    'makihata': {'from': '12-01', 'to': '03-31', 'text': '冬は桜坂まで車で入れないので、清水集落から歩きます。清水集落に駐車場はありません',
+                 'sources': [src('新潟県警察 冬山情報（巻機山）', 'https://www.pref.niigata.lg.jp/site/kenkei/osirase-anzen-ansin-mizuyamajsetugaijiko-sangaku-huyuyama-jouhou-makihata-makihata.html')]},
+    'amakazari': {'from': '11-27', 'to': '04-15', 'text': '冬は豪雪で入山者がほとんどいません。新潟県側の入山口の雨飾山荘も冬は閉鎖されます',
+                  'sources': [src('新潟県警察 冬山情報（雨飾山）', 'https://www.pref.niigata.lg.jp/site/kenkei/osirase-anzen-ansin-mizuyamajsetugaijiko-sangaku-huyuyama-jouhou-amakazari-amakazari.html')]},
+    'nasu': {'from': '12-14', 'to': '03-26', 'text': '冬は県道が大丸温泉から先で通行止めになるので、大丸温泉から歩きます',
+             'sources': [src('栃木県 通行規制', 'https://www.pref.tochigi.lg.jp/h57/system/desaki/desaki/tusukoukisei/zyuutai7.html')]},
+    'bandai': {'from': '11-13', 'to': '04-30', 'text': '冬は八方台へ行けません。スキー場の営業中は、猪苗代スキー場（ミネロ）のリフトを使って猪苗代登山口側から登れます（コース3）',
+               'sources': [src('裏磐梯ビジターセンター', 'https://urabandai-vc.jp/info/%E5%86%AC%E3%81%AE%E8%A3%8F%E7%A3%90%E6%A2%AF%E2%91%A3/')]},
+}
+
+
+# 7回目（2026-11-24。運営者の指示「公式でなくても有名な山メディアの記事とかも探して」）。山と溪谷オンライン（記事・登山口・山小屋の現地情報）・
+# YAMAP MAGAZINE・YAMA HACK と公式の本文を開いて確かめたものだけ。個人の登山記録は根拠にしていない
+_ENV = src('環境省 上高地の冬期入山', 'https://chubu.env.go.jp/shinetsu/pre_2025/press_00049.html')
+_KAMI = '冬は中の湯ゲートから釜トンネルを歩いて上高地へ入ります（入山届が必要。冬山の経験者向け）'
+_ENZAN = src('燕山荘 年末年始営業のご案内', 'https://www.enzanso.co.jp/enzanso/new-year')
+_NAKA = '冬は宮城ゲートから中房温泉まで約13kmの車道を歩きます（約5時間）'
+_TOMATA = src('山と溪谷オンライン 椹島ロッヂの現地情報', 'https://www.yamakei-online.com/mt_info/past.php?id=1034&yy=2026')
+_TOMATA_T = '冬は林道東俣線が徒歩・自転車も含めて通行禁止で、畑薙から椹島へ入れません（前季は2026年4月25日まで）'
+_ALPEN = src('立山黒部アルペンルート', 'https://www.alpen-route.com/timetable/')
+HINTS.update({
+    'keirisan': {'from': '11-20', 'to': '06-20', 'text': '冬は七合目へ行けないので、女乃神茶屋（すずらん峠）の登山口から登ります（コース2）',
+                 'sources': [src('YAMAP MAGAZINE 雪山登山【甲信越編】', 'https://yamap.com/magazine/21969')]},
+    'norikura': {'from': '12-01', 'to': '04-10', 'text': 'スキー場の営業中（例年12月上旬〜4月上旬）は、Mt.乗鞍スノーリゾートのリフトで上がり、ツアーコースから肩の小屋口を経て登ります（冬山の経験者向け）',
+                 'sources': [src('YAMA HACK 乗鞍岳', 'https://yamahack.com/1843')]},
+    'adatara': {'from': '11-24', 'to': '04-10', 'text': '冬はロープウェイを使わず、奥岳登山口（あだたら高原スキー場）から歩きます（コース2）',
+                'sources': [src('山と溪谷オンライン 冬の安達太良山', 'https://www.yamakei-online.com/yama-ya/detail.php?id=887')]},
+    'utsukushigahara': {'from': '11-18', 'to': '04-20', 'text': '冬の日帰りは、県道178号で行ける山本小屋ふる里館が起点です（コース2。冬はバスなし・凍結注意）',
+                        'sources': [src('山と溪谷オンライン 冬の美ヶ原', 'https://www.yamakei-online.com/yama-ya/detail.php?id=1756')]},
+    'tsubakurodake': {'from': '12-01', 'to': '04-23', 'text': _NAKA, 'sources': [_ENZAN]},
+    'otenshoudake': {'from': '12-01', 'to': '04-23', 'text': _NAKA + '。冬山の経験者向けです', 'sources': [_ENZAN]},
+    'hotaka': {'from': '11-16', 'to': '04-16', 'text': _KAMI, 'sources': [_ENV]},
+    'yakedake': {'from': '11-13', 'to': '04-16', 'text': '冬は新中の湯登山口へ車で行けません。上高地へは中の湯ゲートから釜トンネルを歩いて入ります（入山届が必要）', 'sources': [_ENV]},
+    'chogatake': {'from': '11-16', 'to': '04-16', 'text': _KAMI, 'sources': [_ENV]},
+    'jonengatake': {'from': '11-27', 'to': '04-16', 'text': '冬は一ノ沢・三股への林道がどちらも通行止めで、林道のゲートから歩いて入ります（冬山の経験者向け）', 'sources': [AZUMINO]},
+    'kitadake': {'from': '11-04', 'to': '06-25', 'text': '冬は広河原へ行けません。夜叉神峠の駐車場までは車で行けるので、そこから歩いて入ります（冬山の経験者向け）',
+                 'sources': [src('南アルプス市 マイカー規制情報', 'https://www.city.minami-alps.yamanashi.jp/docs/19511.html')]},
+    'arakawadake': {'from': '12-01', 'to': '04-25', 'text': _TOMATA_T, 'sources': [_TOMATA]},
+    'akaisidake': {'from': '12-01', 'to': '04-25', 'text': _TOMATA_T, 'sources': [_TOMATA]},
+    'hijiridade': {'from': '12-01', 'to': '04-25', 'text': _TOMATA_T, 'sources': [_TOMATA]},
+    'tateyama': {'from': '12-01', 'to': '04-14', 'text': '冬は室堂へ行けません。立山黒部アルペンルートが開く4月中旬から入れます', 'sources': [_ALPEN]},
+    'tsurugi': {'from': '12-01', 'to': '04-14', 'text': '冬は室堂へ行けず、馬場島へも伊折ゲートから先は車で入れません。室堂へはアルペンルートが開く4月中旬から入れます',
+                'sources': [_ALPEN, src('かみいち旅ネット', 'https://kami1tabi.net/topics/20251128135654.html')]},
+    'hakusan': {'from': '11-18', 'to': '04-30', 'text': '冬は白峰の風嵐から先の道路が閉鎖され、別当出合まで歩くことになります（冬山の経験者向け）',
+                'sources': [src('白山市 観光サイト', 'https://www.urara-hakusanbito.com/topic/detail_142.html')]},
+    'shibutsu': {'from': '11-05', 'to': '04-16', 'text': '冬は鳩待峠へ行けません。道路が開く4月中旬から5月6日までの残雪期に登れます（2026年は4月17日〜5月6日）',
+                 'sources': [src('尾瀬保護財団 至仏山の残雪期利用', 'https://oze-fnd.or.jp/archives/197597/')]},
+    'hiuchi': {'from': '11-06', 'to': '04-30', 'text': '冬は笹ヶ峰へ車で入れません。登山口までの除雪が終わるのはゴールデンウイーク前が目安です',
+               'sources': [src('山と溪谷オンライン 高谷池ヒュッテの現地情報', 'https://www.yamakei-online.com/mt_info/info_detail.php?id=36495')]},
+    'zaosan': {'from': '11-04', 'to': '04-23', 'text': '冬は山形県側の蔵王ロープウェイで地蔵山頂駅へ上がり、熊野岳へ登れます（コース2。冬山の経験者向け）',
+               'sources': [src('やまがたへの旅 蔵王の樹氷', 'https://yamagatakanko.com/attractions/detail_2721.html')]},
+})
+
+
 def mmdd(d, delta):
     x = datetime.date.fromisoformat(d) + datetime.timedelta(days=delta)
     return x.strftime('%m-%d')
@@ -360,8 +446,36 @@ def main():
         for n in nums:
             assert want[(mid, n)]['state'] == 'unknown', (mid, n)
             del want[(mid, n)]
+    # 7回目：メディアの記事で冬に使えると確かめた登山口の印を外す
+    for key in (('keirisan', 2), ('adatara', 2), ('utsukushigahara', 2)):
+        assert key in want, key
+        del want[key]
+    for mid, nums in M5:
+        for n in nums:
+            assert (mid, n) not in want, (mid, n)
+            want[(mid, n)] = {'state': 'closed', 'label': L, 'closeFrom': '11-27', 'trainFrom': '11-27', 'trainTo': '04-30',
+                              'text': M5_TEXT, 'sources': [AZUMINO, AZUMINO_T], 'lastVerified': DAY4}
+    koganzan = dict(want[('koganzan', 1)], lastVerified=DAY4)
+    assert ('koganzan', 3) not in want
+    want[('koganzan', 3)] = koganzan   # 歩き始めが小屋平（コース1と同じ閉鎖）
+    assert ('tsurugi', 2) not in want
+    want[('tsurugi', 2)] = {'state': 'closed', 'label': L, 'closeFrom': '12-01',
+                            'text': '馬場島へ通じる伊折ゲート（県道333号）は冬は閉鎖され、馬場島へ車で行けません（前季は2025年12月1日13時から。今冬の日は未発表）',
+                            'sources': [src('かみいち旅ネット', 'https://kami1tabi.net/topics/20251128135654.html')], 'lastVerified': DAY4}
+    for mid, n, f, t, text, sources in END:
+        old = want.get((mid, n))
+        w = {'state': 'closed', 'label': old['label'] if old else END_LABEL, 'from': f, 'to': t,
+             'text': (old['text'] + '。' if old else '') + text,
+             'sources': (old['sources'] if old else []) + [s for s in sources if not old or s not in old['sources']],
+             'lastVerified': DAY4}
+        want[(mid, n)] = w
     # このスクリプトで入れた分を入れ直す（金峰山は別のスクリプト）
     changed = set()
+    for m in M:
+        h = HINTS.get(m['id'])
+        if h and m.get('winterHint') != dict(h, lastVerified=DAY4):
+            m['winterHint'] = dict(h, lastVerified=DAY4)
+            changed.add(m['id'])
     targets = {mid for mid, _ in want}
     for m in M:
         if m['id'] == 'kinpusan':
@@ -377,7 +491,7 @@ def main():
                     r['winter'] = w
                     changed.add(m['id'])
     for mid in changed:
-        by[mid]['mountainUpdated'] = max(by[mid].get('mountainUpdated') or '', DAY)
+        by[mid]['mountainUpdated'] = max(by[mid].get('mountainUpdated') or '', DAY4)
     open(MP, 'w', encoding='utf-8').write(json.dumps(M, ensure_ascii=False, indent=2) + ('\n' if raw.endswith('\n') else ''))
     print('対象', len(targets), '山', len(want), 'コース。変えた山', len(changed))
     print(' '.join(sorted(changed)))
