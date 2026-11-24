@@ -446,52 +446,116 @@ def month_calendar(L):
         months[0][0], months[0][1], months[-1][0], months[-1][1]) + '<div class="dfcal-wrap">' + ''.join(out) + '</div>')
 
 
+def _k_icon(name, color=None):
+    import ym_icons
+    if name == 'car':
+        return CAR_SVG
+    st = 'vertical-align:-0.15em;margin-right:4px;flex-shrink:0' + (';color:%s' % color if color else '')
+    return ym_icons.svg(name, '1.05em', 'ym-ic', st)
+
+
+CAR_SVG = ('<svg class="ym-ic" width="1.05em" height="1.05em" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align:-0.15em;margin-right:4px">'
+           '<path d="M4 13l1.5-4A2 2 0 0 1 7.3 8h9.4a2 2 0 0 1 1.8 1.2L20 13z" fill="currentColor"/><rect x="2.5" y="13" width="19" height="4.5" rx="2" fill="currentColor"/>'
+           '<rect x="6.5" y="9.2" width="4" height="2.8" rx="0.5" fill="white"/><rect x="11.5" y="9.2" width="6" height="2.8" rx="0.5" fill="white"/>'
+           '<circle cx="6.5" cy="17.5" r="1.6" fill="#3a3530"/><circle cx="17.5" cy="17.5" r="1.6" fill="#3a3530"/></svg>')
+
+# キーエンス流の見た目（2026-11-24。運営者の指示「ダイヤモンド富士の記事もキーエンス流で少し修正したい。載せるべき情報は載せたままで」）。
+# CSS は冬でも登れる山7選（gen_winter_no_crampons.py）と同じものに、表・カレンダー・フッターの分を足す
+K_EXTRA_CSS = (
+    '.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 8px;background:var(--paper);border-radius:14px}'
+    '.tbl table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px}'
+    '.tbl th,.tbl td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}'
+    '.tbl tr:last-child td{border-bottom:none}'
+    '.tbl th{color:var(--sub);font-size:12px;font-weight:700;white-space:nowrap;background:#f7f5f0}'
+    '.tbl td a{white-space:nowrap;font-weight:700;text-decoration:none}'
+    '.tbl td.t{color:var(--blue);font-weight:800;font-family:Outfit,sans-serif;white-space:nowrap}'
+    '.dfcal-wrap{display:flex;gap:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding:2px 2px 10px;margin-bottom:10px}'
+    '.dfcal-wrap .dfcal{flex:0 0 270px;scroll-snap-align:start}'
+    '.dfcal-legend{font-size:13px;line-height:2;background:var(--paper);border-radius:12px;padding:10px 14px;margin-bottom:8px}'
+    '.dfcal-hint{font-size:12.5px;color:var(--note);margin:0 0 6px;text-align:center}'
+    '.dfcal{background:var(--paper);border-radius:12px;padding:8px 8px 10px}.dfcal-h{font-weight:800;margin:0 0 4px 4px}'
+    '.dfcal table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:11px}'
+    '.dfcal th{color:var(--note);font-weight:600;padding:2px 0}.dfcal td{vertical-align:top;height:38px;padding:1px;border-top:1px solid #f0ede5;text-align:center}'
+    '.dfcal td.on{background:#fbf6ea}.dfd{display:block;color:var(--sub)}'
+    '.dfc{display:inline-block;min-width:16px;padding:0 2px;margin:1px;border-radius:4px;font-size:11px;font-weight:700;color:#fff;text-decoration:none;line-height:16px}'
+    '.dfc.am{background:#d98a2b}.dfc.pm{background:#5b5f9e}'
+    '.fact.deadline .v{font-size:19px;line-height:1.45}'
+    '.ev-line{display:block}'
+    '.mc-caution{background:var(--amber-bg);color:#5a3d0c;border-radius:12px;padding:10px 14px;font-size:13.5px;margin:0 18px 12px;line-height:1.7}'
+    '.mc-caution b{color:var(--amber)}'
+    '.mc-photo-wrap img.mountain-photo{width:100%;aspect-ratio:3/2;max-height:380px;object-fit:cover;display:block;background:#dcd6c8}'
+    '.mc-photo-wrap .ym-photo-credit{padding:0 18px}'
+    '.why .k{display:flex;align-items:center}'
+    '.prose{background:var(--paper);border-radius:14px;padding:16px 18px;font-size:15px;line-height:1.9}'
+    '.prose p{margin:0 0 10px}.prose p:last-child{margin:0}'
+    'footer{text-align:center;padding:24px 16px;font-size:12px;line-height:1.7;color:#a09888;border-top:1px solid #e8e4dc;margin-top:8px}'
+    'footer p{margin:0}'
+    '@media (max-width:640px){.tbl table{font-size:12.5px;min-width:0}.tbl th,.tbl td{padding:8px 6px}}.tbl td.nw{white-space:nowrap}')
+
+
+def k_page(slug, title, desc, crumb, photos, body, faq):
+    """キーエンス流の記事の枠。head（検索の見出し・説明文・構造化データ・計測）は page() と同じ中身"""
+    import gen_winter_no_crampons as nc
+    url = '%s/articles/%s/' % (SITE, slug)
+    ld = [
+        {'@context': 'https://schema.org', '@type': 'Article', 'headline': title, 'description': desc,
+         'author': {'@type': 'Person', 'name': 'Yamatch編集部'},
+         'publisher': {'@type': 'Organization', 'name': 'Yamatch', 'url': SITE}, 'dateModified': K_UPDATED, 'url': url,
+         'image': '%s/articles/images/%s' % (SITE, photos)},
+        {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
+            {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq]},
+        {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+            {'@type': 'ListItem', 'position': 1, 'name': 'Yamatch', 'item': SITE + '/'},
+            {'@type': 'ListItem', 'position': 2, 'name': '登山ガイド記事', 'item': SITE + '/articles/'},
+            {'@type': 'ListItem', 'position': 3, 'name': crumb, 'item': url}]},
+    ]
+    out = ['<!DOCTYPE html>\n<html lang="ja">\n<head>\n' + GEN,
+           '<!-- Google tag (gtag.js) -->\n<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTVVTEEGF"></script>\n'
+           "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TMTVVTEEGF');</script>\n"
+           '<script defer src="/assets/js/ym-track.js?v=20261103b"></script>',
+           '<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">',
+           '<title>%s | Yamatch</title>' % esc(title),
+           '<meta name="description" content="%s">' % esc(desc),
+           '<meta property="og:title" content="%s | Yamatch">' % esc(title),
+           '<meta property="og:description" content="%s">' % esc(desc),
+           '<meta property="og:type" content="article">\n<meta property="og:url" content="%s">\n<meta property="og:site_name" content="Yamatch">' % url,
+           '<meta property="og:image" content="%s/articles/images/%s">' % (SITE, esc(photos)),
+           '<meta property="article:modified_time" content="%s">' % K_UPDATED,
+           ''.join('<script type="application/ld+json">%s</script>\n' % json.dumps(x, ensure_ascii=False, separators=(',', ':')) for x in ld).rstrip('\n'),
+           '<link rel="canonical" href="%s">' % url,
+           '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">',
+           '<style>' + nc.CSS + K_EXTRA_CSS + '</style>', '</head>\n<body>', HEADER,
+           '<main class="wrap">', body, '</main>', FOOTER,
+           '<script src="/assets/js/to-top.js?v=20261025a" defer></script>',
+           '<script src="/assets/js/share-btn.js?v=20261116" defer></script>',
+           '<script src="/assets/js/card-photo-credits.js?v=20261124" defer></script>',
+           '</body></html>\n']
+    return '\n'.join(x for x in out if x != '')
+
+
+K_UPDATED = '2026-11-24'
+
+
+def ktable(head, rows, tcol=None, nowrap=(0,)):
+    """表（tcol 列目は時刻の色＝青。nowrap の列は折り返さない＝山の名前を1文字ずつ折り返さない）"""
+    def td(i, c):
+        if i == tcol:
+            return '<td class="t">%s</td>' % c
+        return '<td class="nw">%s</td>' % c if i in nowrap else '<td>%s</td>' % c
+    return ('<div class="tbl"><table><thead><tr>%s</tr></thead><tbody>%s</tbody></table></div>' % (
+        ''.join('<th>%s</th>' % esc(h) for h in head),
+        ''.join('<tr>%s</tr>' % ''.join(td(i, c) for i, c in enumerate(r)) for r in rows)))
+
+
 def diamond(M, SC, W):
     D = W['diamond']
     L = diamond_list(M, SC, W)
-    cards, toc, comp = [], [], []
-    for i, x in enumerate(L):
+    comp = []
+    for x in L:
         m = x['m']
-        n = NUM[i] if i < len(NUM) else '%d.' % (i + 1)
-        toc.append('<li style="margin:3px 0"><a href="#m-%s" style="color:#4a6038">%s %s</a></li>' % (m['id'], n, esc(m['name'])))
-        r0 = (m.get('routes') or [{}])[0]
-        drive = m.get('driveTimeShinjuku') or m.get('driveShinjuku')
-        train = m.get('trainTimeShinjuku')
-        view = esc(x['fp'][0].get('text') or x['fp'][0].get('label')) if x['fp'] else (
-            '<a href="%s" target="_blank" rel="noopener">%s</a>' % (esc(x['ex']['viewUrl']), esc(x['ex']['viewSource'])))
-        evs = '<br>'.join('<span class="big-time" style="font-size:16px">%s</span>' % esc(ev_text(e)) for e in x['ev'])
-        # 時刻は太陽が富士山頂に重なる時刻で、ふだんの日の出・日の入りとは違う（2026-11-18。外部の監査の指摘で書き分けた）
-        evs += '<br><span style="font-size:12px;color:#8a8078">時刻は太陽が富士山頂に重なる時刻（計算）で、ふだんの日の出・日の入りの時刻とは違います</span>'
-        note = D['note'].get(m['id'])
-        side = '日の出' if x['ev'][0]['morning'] else '日没'
-        tip = ('日没のころのダイヤモンド富士は、そのあと暗い道を下ることになります。ヘッドランプを持ち、下りの時間を見て計画しましょう。' if side == '日没'
-               else '日の出のころのダイヤモンド富士は、暗いうちに登ることになります。ヘッドランプを持ちましょう。')
-        body = ''.join([
-            row('選んだ理由', esc(x['why'])),
-            row('ダイヤモンド富士', evs),
-            # 公式の案内がある山（高尾山）は、この記事の計算と並べて出す（2026-11-15）
-            row('公式の見ごろ', '%s<br><a href="%s" target="_blank" rel="noopener" style="color:#4a6038">%s</a>' % (
-                esc(D['official'][m['id']]['text']), esc(D['official'][m['id']]['url']), esc(D['official'][m['id']]['label'])))
-            if m['id'] in (D.get('official') or {}) else '',
-            row('計算した地点', esc('%s（北緯%.4f°・東経%.4f°・標高%sm）' % (x['vp']['name'], x['vp']['lat'], x['vp']['lng'], ('%g' % x['vp']['ele'])))
-                + ('<br><span style="font-size:12px;color:#666">%s</span>' % esc(x['vp']['why'] or x['vp']['note']) if (x['vp']['why'] or x['vp']['note']) else '')),
-            row('富士山の方角', '%s（方位%d°）・山頂から約%dkm' % (direction(x['az']), round(x['az']), round(x['dkm']))),
-            row('富士山の眺め', view),
-            row('代表コース', '%s（%s・難易度 %s）' % (esc(r0.get('name') or ''), esc(r0.get('time') or ''), esc(m.get('difficulty') or ''))),
-            row('新宿から', '電車 約%s・車 約%s' % (dur(train) or '—', dur(drive) or '—') if train else '車 約%s' % (dur(drive) or '—')),
-            row('駐車場', esc(m['parking'])) if parking_ok(m) else '',
-        ])
-        cards.append(
-            '<div class="mountain-card" id="m-%s">\n  <div class="mountain-card-header" data-mountain-id="%s">\n'
-            '    <h2 class="mountain-card-title" style="margin:0;padding:0;border:none;font-size:18px;line-height:1.4">%s %s</h2>\n'
-            '    <div class="mountain-card-sub">%s・標高%sm・%s</div>\n  </div>\n  %s\n  <div class="mountain-card-body">\n    %s\n'
-            '    <div class="ws-note">%s%s</div>\n'
-            '    <p style="margin-top:10px"><a href="/mountains/%s/" style="color:#4a6038;font-weight:700">%sの登山ガイドを見る →</a></p>\n  </div>\n</div>' % (
-                m['id'], m['id'], n, esc(m['name']), esc(m.get('prefecture') or m.get('area') or ''), '{:,}'.format(int(m['elevation'])), side,
-                photo(m, W, 'diamond') + closed(m), body, (esc(note) + '<br>') if note else '', esc(tip), m['id'], esc(m['name'])))
         for e in x['ev']:
             # 日付には年を付ける（12月は2026年、1〜11月は2027年。年をまたぐと分かりにくいため。2026-11-15）
-            comp.append((e['date'], ['<a href="#m-%s" style="color:#4a6038;font-weight:700">%s</a>' % (m['id'], esc(m['name'])),
+            comp.append((e['date'], ['<a href="#m-%s">%s</a>' % (m['id'], esc(m['name'])),
                                      '%d年%s' % (e['from'].year, md(e['from'])) + ('〜' + md(e['to']) if e['to'] != e['from'] else ''), '日の出' if e['morning'] else '日没',
                                      sun_calc.hm(e['time']), 'かすめる' if e['kind'] == 'near' else '重なる']))
     comp.sort(key=lambda r: r[0])   # 計算の期間（diamond_fuji.START から1年）の日付の順
@@ -502,48 +566,129 @@ def diamond(M, SC, W):
     pref_rows = []
     for pf in ('東京都', '神奈川県', '山梨県', '千葉県'):
         for x in by_pref.get(pf, []):
-            pref_rows.append([esc(pf), '<a href="#m-%s" style="color:#4a6038;font-weight:700">%s</a>' % (x['m']['id'], esc(x['m']['name'])), esc(ev_short(x['ev']))])
+            pref_rows.append([esc(pf), '<a href="#m-%s">%s</a>' % (x['m']['id'], esc(x['m']['name'])), esc(ev_short(x['ev']))])
     ktr_rows = []
     for c in D['ktr']['compare']:
         x = next(v for v in L if v['m']['id'] == c['id'])
         ktr_rows.append([esc(x['m']['name']), ' / '.join(esc(md(e['from']) + ('〜' + md(e['to']) if e['to'] != e['from'] else '')) for e in x['ev']), esc(c['ktr'])])
-    toc_html = ('<nav class="tips-card" id="toc" aria-label="目次" style="padding:16px 20px"><div style="font-weight:700;color:#2a3e2a;margin-bottom:6px">目次</div>'
-                '<ul style="margin:0;padding:0;list-style:none;font-size:14px;line-height:1.7"><li style="margin:3px 0"><a href="#about" style="color:#4a6038">ダイヤモンド富士とは</a></li>'
-                '<li style="margin:3px 0"><a href="#pref" style="color:#4a6038">見える場所（東京・神奈川・山梨・千葉）</a></li>'
-                '<li style="margin:3px 0"><a href="#winter" style="color:#4a6038">冬（12〜2月）に見える山と時間</a></li>'
-                '<li style="margin:3px 0"><a href="#calendar" style="color:#4a6038">ダイヤモンド富士カレンダー2026-2027</a></li>%s'
-                '<li style="margin:3px 0"><a href="#method" style="color:#4a6038">日付の計算のしかた</a></li><li style="margin:3px 0"><a href="#faq" style="color:#4a6038">よくある質問</a></li></ul></nav>') % ''.join(toc)
+
+    # 目的から選ぶ（山名を押すとカードへ）
+    def chips(xs):
+        return '<div class="chips">' + ''.join('<a class="chip" href="#m-%s">%s</a>' % (x['m']['id'], esc(x['m']['name'])) for x in xs) + '</div>'
+
+    def walk(m):
+        t = ((m.get('routes') or [{}])[0].get('time')) or ''
+        g = re.match(r'(?:(\d+)時間)?(?:(\d+)分)?', t)
+        return int(g.group(1) or 0) * 60 + int(g.group(2) or 0) if g and t else 9999
+    goals = [
+        ('冬（12〜2月）に見たい', '寒い時期は空気が澄んで、富士山がよく見えます', [x for x in L if any(e['date'].month in (12, 1, 2) for e in x['ev'])], 'snowflake'),
+        ('朝の日の出で見たい', '富士山の西側の山。暗いうちに登ります', [x for x in L if any(e['morning'] for e in x['ev'])], 'sunrise'),
+        ('夕方の日没で見たい', '富士山の東側の山。日没のあと暗い道を下ります', [x for x in L if any(not e['morning'] for e in x['ev'])], 'sunset'),
+        ('歩く時間を短くしたい', '代表コースの歩く時間が3時間以内', [x for x in L if walk(x['m']) <= 180], 'timer'),
+    ]
+    goals_html = ''.join('<div class="goal"><h3>%s%s</h3><p>%s</p>%s</div>' % (_k_icon(ic), esc(t), esc(s), chips(xs)) for t, s, xs, ic in goals if xs)
+
+    cards = []
+    for i, x in enumerate(L):
+        m = x['m']
+        n = NUM[i] if i < len(NUM) else '%d.' % (i + 1)
+        r0 = (m.get('routes') or [{}])[0]
+        drive = m.get('driveTimeShinjuku') or m.get('driveShinjuku')
+        train = m.get('trainTimeShinjuku')
+        morning = x['ev'][0]['morning']
+        side = '日の出' if morning else '日没'
+        view = esc(x['fp'][0].get('text') or x['fp'][0].get('label')) if x['fp'] else (
+            '<a href="%s" target="_blank" rel="noopener">%s</a>' % (esc(x['ex']['viewUrl']), esc(x['ex']['viewSource'])))
+        evs = ''.join('<span class="ev-line num">%s</span>' % esc(ev_text(e)) for e in x['ev'])
+        official = ''
+        if m['id'] in (D.get('official') or {}):
+            o = D['official'][m['id']]
+            official = '<div class="k">%s公式の見ごろ</div><p>%s<br><a href="%s" target="_blank" rel="noopener">%s</a></p>' % (
+                _k_icon('check'), esc(o['text']), esc(o['url']), esc(o['label']))
+        vp = x['vp']
+        point = esc('%s（北緯%.4f°・東経%.4f°・標高%sm）' % (vp['name'], vp['lat'], vp['lng'], ('%g' % vp['ele'])))
+        if vp['why'] or vp['note']:
+            point += '<br><span class="note">%s</span>' % esc(vp['why'] or vp['note'])
+        note = D['note'].get(m['id'])
+        tip = ('日没のころのダイヤモンド富士は、そのあと暗い道を下ることになります。ヘッドランプを持ち、下りの時間を見て計画しましょう。' if not morning
+               else '日の出のころのダイヤモンド富士は、暗いうちに登ることになります。ヘッドランプを持ちましょう。')
+        tags = ['<span class="tag g">%s%s</span>' % (_k_icon('sunrise' if morning else 'sunset'), side)]
+        tags.append('<span class="tag">難易度 %s</span>' % esc(m.get('difficulty') or ''))
+        facts = (
+            '<div class="fact deadline"><div class="k">%sダイヤモンド富士の日と時刻</div><div class="v">%s</div>'
+            '<div class="s">時刻は太陽が富士山頂に重なる時刻（計算）で、ふだんの日の出・日の入りの時刻とは違います</div></div>' % (_k_icon('calendar'), evs)
+            + '<div class="fact"><div class="k">%s歩く時間</div><div class="v num">%s</div></div>' % (_k_icon('footprints'), esc(r0.get('time') or '—'))
+            + '<div class="fact"><div class="k">%s富士山の方角</div><div class="v">%s<span class="note">（方位%d°）</span></div></div>' % (_k_icon('compass'), direction(x['az']), round(x['az']))
+            + '<div class="fact"><div class="k">%s新宿から電車</div><div class="v num">%s</div></div>' % (_k_icon('train-front'), (dur(train) or '—') if train else '—')
+            + '<div class="fact"><div class="k">%s新宿から車</div><div class="v num">%s</div></div>' % (_k_icon('car'), dur(drive) or '—'))
+        why = (
+            '<div class="tags">%s</div>' % ''.join(tags)
+            + '<div class="k">%sこの山を選んだ理由</div><p>%s</p>' % (_k_icon('signpost'), esc(x['why']))
+            + '<div class="k">%s富士山の眺め</div><p>%s（山頂から富士山まで約%dkm）</p>' % (_k_icon('mountain-snow'), view, round(x['dkm']))
+            + official
+            + '<div class="k">%s計算した地点</div><p>%s</p>' % (_k_icon('map-pin'), point)
+            + ('<div class="k">%s駐車場</div><p>%s</p>' % (_k_icon('car'), esc(m['parking'])) if parking_ok(m) else '')
+            + '<p class="course">%s代表コース：%s（難易度 %s）</p>' % (_k_icon('route'), esc(r0.get('name') or ''), esc(m.get('difficulty') or '')))
+        ph = photo(m, W, 'diamond')
+        cards.append(
+            '<article class="mc" id="m-%s" data-mountain-id="%s">'
+            '<div class="mc-head"><h2 class="mc-title"><span class="mc-no num">%s</span>%s<small>%s</small></h2>'
+            '<p class="mc-catch">%s</p><p class="mc-name">%s・標高 <span class="num">%s</span>m・%sに見える</p></div>'
+            '%s%s'
+            '<div class="mc-body"><div class="facts">%s</div><div class="why">%s</div></div>'
+            '<div class="mc-caution">%s<b>注意</b>　%s%s</div>'
+            '<a class="mc-cta" href="/mountains/%s/"><span>%sの行き方・コース・装備を見る</span><span>→</span></a></article>' % (
+                m['id'], m['id'], n, esc(m['name']), esc(m.get('kana') or ''),
+                esc(ev_short(x['ev'])), esc(m.get('prefecture') or m.get('area') or ''), '{:,}'.format(int(m['elevation'])), side,
+                ('<div class="mc-photo-wrap">%s</div>' % ph) if ph else '', closed(m),
+                facts, why, _k_icon('triangle-alert', 'var(--amber)'), (esc(note) + '<br>') if note else '', esc(tip), m['id'], esc(m['name'])))
+
+    n_m = sum(1 for x in L if any(e['morning'] for e in x['ev']))
+    rel = ('<div class="rel">' + ('<a href="/articles/hatsuhinode-hiking/"><div class="ph"></div><span>初日の出登山 関東<small>山頂の日の出の時刻と元日の始発</small></span></a>' if hatsu_li(W) else '')
+           + '<a href="/articles/winter-views/"><img src="/articles/images/hero_winter_views.jpg?v=20261115" alt="" loading="lazy"><span>冬の絶景が見られる山6選<small>樹氷・霧氷・雪原と冬の行き方</small></span></a>'
+           '<a href="/articles/winter-no-crampons/"><img src="/articles/images/hero_winter.jpg" alt="" loading="lazy"><span>冬でも登れる関東の山7選<small>雪なし・アイゼン不要（12〜2月）</small></span></a>'
+           '<a href="/find/winter/"><img src="/recommend/images/find-banner-bg.jpg?v=20261025" alt="" loading="lazy"><span>冬の山選び診断<small>9問で11〜3月に行ける山がわかる</small></span></a>'
+           '<a href="/articles/"><div class="ph"></div><span>記事一覧をみる<small>すべての記事・まとめ</small></span></a></div>')
     body = '\n'.join([
-        '<div class="info-note">⚠️ 日付と時刻は計算の目安です。前後2〜3日の幅を見て計画し、当日の天気（富士山が見えるか）を確かめてください。</div>',
-        '<div class="lead-box">山頂から見て、太陽が富士山の頂上にちょうど重なる「ダイヤモンド富士」。ダイヤモンド富士の名所として知られる山と、冬に見られて無理なく行ける山の%d山を選び、その日付と時刻を計算しました。<br><br>'
-        '富士山の東側の山（丹沢・高尾・房総など）では夕方の日没に、西側の山（竜ヶ岳・七面山）では朝の日の出に見られます。</div>' % len(L),
-        toc_html,
-        '<h2 id="about">ダイヤモンド富士とは</h2>',
-        '<div class="tips-card" style="padding:16px 20px;line-height:1.9">富士山の山頂に太陽が重なり、ダイヤモンドのように輝いて見える景色のことです。'
-        '太陽が富士山の真上に来るのは、見る場所ごとに決まった日だけで、多くの場所では1年に2回（冬至のころの1回だけの場所もあります）。'
-        '富士山より東の場所（東京・神奈川・千葉や、山梨の山中湖のあたり）では夕日が沈むとき、西の場所（本栖湖や身延のあたり）では朝日が昇るときに見られます。'
-        'ここでは、登山で山頂から見られる日付と時間を計算しました。</div>',
-        '<h2 id="pref">ダイヤモンド富士が見える場所（東京・神奈川・山梨・千葉の山）</h2>',
-        table(['都県', '山', '見える日（計算）'], pref_rows),
-        '<h2 id="winter">冬（12〜2月）にダイヤモンド富士が見える山と時間</h2>',
-        table(['山', '日付', '時間帯', '時刻', ''], [r[1] for r in winter]),
-        '<h2 id="calendar">ダイヤモンド富士カレンダー2026-2027（月ごと）</h2>',
-        month_calendar(L),
-        '<h3 style="font-size:16px;margin:18px 0 8px">日付の一覧（年・時刻つき・日付の順）</h3>',
-        table(['山', '日付', '時間帯', '時刻', ''], [r[1] for r in comp]),
-        '<h2>ダイヤモンド富士が見える山%d選（日付の順）</h2>' % len(L),
+        '<div class="hero">',
+        ' <span class="label">%s冬の特集</span>' % _k_icon('sun'),
+        ' <h1 class="article-title">ダイヤモンド富士が見える場所・山<br>2026-2027年の日付と時間（カレンダー）</h1>',
+        ' <p class="lead">見える日は場所ごとに決まっています。富士山の東の山は夕方の日没、西の山は朝の日の出。%d山の日付と時刻を計算しました。</p>' % len(L),
+        ' <p class="note" style="margin:-10px 0 14px">最終更新: %s</p>' % K_UPDATED,
+        ' <div class="intro"><p>山頂から見て、太陽が富士山の頂上にちょうど重なる「ダイヤモンド富士」。ダイヤモンド富士の名所として知られる山と、冬に見られて無理なく行ける山の%d山を選び、その日付と時刻を計算しました。</p>'
+        '<p>富士山の東側の山（丹沢・高尾・房総など）では夕方の日没に、西側の山（竜ヶ岳・七面山）では朝の日の出に見られます（朝に見られる山は%d山）。</p></div>' % (len(L), n_m),
+        ' <div class="caution"><span style="color:var(--amber)">%s</span><span><b>日付と時刻は計算の目安です。</b>前後2〜3日の幅を見て計画し、当日の天気（富士山が見えるか）を確かめてください。</span></div>' % _k_icon('triangle-alert'),
+        ' <div class="legend"><span><i style="background:var(--green)"></i>おすすめ・次にすること</span><span><i style="background:var(--blue)"></i>日付・時刻</span><span><i style="background:var(--amber)"></i>注意</span><span><i style="background:#c9c3b8"></i>補足</span></div>',
+        '</div>',
+        '<section id="goals"><span class="label">%s選び方</span><h2>見たい時間帯と季節で選べば、迷わない</h2><p class="sec-sub">山名を押すと、その山の説明へ移ります。</p><div class="goals">%s</div></section>' % (_k_icon('signpost'), goals_html),
+        '<section id="about"><span class="label">%s基本</span><h2>ダイヤモンド富士とは：太陽が富士山頂に重なる瞬間</h2>' % _k_icon('sun')
+        + '<div class="prose"><p>富士山の山頂に太陽が重なり、ダイヤモンドのように輝いて見える景色のことです。'
+        '太陽が富士山の真上に来るのは、見る場所ごとに決まった日だけで、多くの場所では1年に2回（冬至のころの1回だけの場所もあります）。</p>'
+        '<p>富士山より東の場所（東京・神奈川・千葉や、山梨の山中湖のあたり）では夕日が沈むとき、西の場所（本栖湖や身延のあたり）では朝日が昇るときに見られます。'
+        'ここでは、登山で山頂から見られる日付と時間を計算しました。</p></div></section>',
+        '<section id="pref"><span class="label">%s場所</span><h2>ダイヤモンド富士が見える場所（東京・神奈川・山梨・千葉の山）</h2>' % _k_icon('map-pin')
+        + ktable(['都県', '山', '見える日（計算）'], pref_rows, nowrap=(0, 1)) + '</section>',
+        '<section id="winter"><span class="label blue">%s冬</span><h2>冬（12〜2月）にダイヤモンド富士が見える山と時間</h2>' % _k_icon('snowflake')
+        + ktable(['山', '日付', '時間帯', '時刻', ''], [r[1] for r in winter], 3, (0, 2)) + '</section>',
+        '<section id="calendar"><span class="label blue">%sカレンダー</span><h2>ダイヤモンド富士カレンダー2026-2027（月ごと）</h2>' % _k_icon('calendar')
+        + month_calendar(L)
+        + '<h3 style="margin:18px 0 8px">日付の一覧（年・時刻つき・日付の順）</h3>'
+        + ktable(['山', '日付', '時間帯', '時刻', ''], [r[1] for r in comp], 3, (0, 2)) + '</section>',
+        '<section id="mountains"><span class="label">%s山ごとの説明</span><h2>ダイヤモンド富士が見える山%d選（日付の順）</h2><p class="sec-sub">青い枠が見える日と時刻、黄色い枠が気をつけること。</p>' % (_k_icon('mountain'), len(L)),
         '\n'.join(cards),
-        '<h2 id="method">日付の計算のしかた</h2>',
-        '<div class="tips-card" style="padding:16px 20px;line-height:1.9">観賞する地点（多くは山頂。弘法山は関東の富士見百景の観賞地点の権現山の展望台）の位置と標高から、富士山の剣ヶ峰（3,776m）が見える方角と高さ（地球の丸みと大気による浮き上がりを入れる）を出し、'
+        '</section>',
+        '<section id="method"><span class="label">%s計算のしかた</span><h2>日付の計算のしかた</h2>' % _k_icon('compass')
+        + '<div class="prose"><p>観賞する地点（多くは山頂。弘法山は関東の富士見百景の観賞地点の権現山の展望台）の位置と標高から、富士山の剣ヶ峰（3,776m）が見える方角と高さ（地球の丸みと大気による浮き上がりを入れる）を出し、'
         '毎日、太陽がその方角に来た時刻に、太陽の中心が富士山頂からどれだけ離れているかを計算しました。太陽の半径（約0.27°）より近ければ「重なる」、少し外れる日は「かすめる」としています。'
-        '地形で富士山が隠れるかどうかは計算していないので、山のデータで富士山が見えると確かめた山だけを載せています。<br><br>'
-        '国土交通省 関東地方整備局「<a href="%s" target="_blank" rel="noopener" style="color:#4a6038">関東の富士見百景</a>」のダイヤモンド富士の一覧と、同じ場所で比べると次のとおりです（一覧は見る人の標高を考えない計算で、1〜3日ほどずれます）。</div>' % esc(D['ktr']['url']),
-        table(['山', 'この記事の計算', '関東地方整備局の一覧'], ktr_rows),
-        '<h2>あわせて読みたい</h2>',
-        '<div class="tips-card" style="padding:16px 20px"><ul style="margin:0 0 0 18px;line-height:1.9">'
-        '' + hatsu_li(W) + ''
-        '<li><a href="/articles/winter-views/" style="color:#4a6038;font-weight:700">冬の絶景が見られる山（樹氷・霧氷・雪原）と冬の行き方</a></li>'
-        '<li><a href="/articles/winter-no-crampons/" style="color:#4a6038;font-weight:700">冬でも登れる関東の山7選｜雪なし・アイゼン不要</a></li>' + '<li><a href="/find/winter/" style="color:#4a6038;font-weight:700">冬の山選び診断（9問で11〜3月に行ける山がわかる）</a></li>' + '</ul></div>',
+        '地形で富士山が隠れるかどうかは計算していないので、山のデータで富士山が見えると確かめた山だけを載せています。</p>'
+        '<p>国土交通省 関東地方整備局「<a href="%s" target="_blank" rel="noopener">関東の富士見百景</a>」のダイヤモンド富士の一覧と、同じ場所で比べると次のとおりです（一覧は見る人の標高を考えない計算で、1〜3日ほどずれます）。</p></div>' % esc(D['ktr']['url'])
+        + '<div style="height:10px"></div>' + ktable(['山', 'この記事の計算', '関東地方整備局の一覧'], ktr_rows) + '</section>',
+        '@@FAQ@@',
+        '<div class="next"><span class="label" style="color:#d9e6cf">%sまとめ</span><h2>見たい日を決めて、天気と下山の時間を確かめる</h2>' % _k_icon('check')
+        + '<ol><li>カレンダーで、行ける日にダイヤモンド富士が見える山を選ぶ</li><li>前日に、富士山が見える天気かを確かめる（前後2〜3日の幅も見る）</li>'
+        '<li>ヘッドランプと防寒着を持ち、暗い時間の登り下りを計画する（泊まれる山は山小屋・宿坊も）</li></ol>'
+        '<a class="btn" href="#calendar">カレンダーを見る</a><a class="btn" href="/packing/?s=day">持ち物チェックリスト</a><a class="btn" href="/find/winter/">冬の山選び診断（9問）</a></div>',
+        '<section id="related" style="padding:0 0 40px"><span class="label">%sあわせて読みたい</span><h2>その他のおすすめ記事</h2>%s</section>' % (_k_icon('book-open'), rel),
     ])
     wn = [r for r in winter]
     faq = [
@@ -572,8 +717,10 @@ def diamond(M, SC, W):
     photos = 'hero_diamond_fuji.jpg?v=20261115'   # 運営者の絵に差し替えた日
     title = 'ダイヤモンド富士が見える場所・山【2026-2027】いつ何時？カレンダー｜高尾山・竜ヶ岳・丹沢'
     desc = 'ダイヤモンド富士はいつ・どこで見える？東京・神奈川・山梨・千葉の山頂から見られる日付と時間を、高尾山・竜ヶ岳・丹沢（塔ノ岳）・石割山・七面山・大野山・鋸山など厳選%d山で計算。冬（12〜2月）の見える山、2026-2027年のカレンダー、登山コース・駐車場つき。' % len(L)
-    return page('diamond-fuji', title, desc, 'ダイヤモンド富士が見える場所・山<br>2026-2027年の日付と時間（カレンダー）', '冬の特集',
-                ['ダイヤモンド富士', '📍 関東', '計算'], body, faq, 'ダイヤモンド富士が見える山', photos)
+    faq_html = ('<section id="faq"><span class="label">%sよくある質問</span><h2>よくある質問</h2>' % _k_icon('message-circle')
+                + ''.join('<details class="qa"><summary>%s</summary><p>%s</p></details>' % (esc(q), esc(a)) for q, a in faq) + '</section>')
+    body = body.replace('@@FAQ@@', faq_html)
+    return k_page('diamond-fuji', title, desc, 'ダイヤモンド富士が見える山', photos, body, faq)
 
 
 # ---------------------------------------------------------------- 冬にしか見られない景色
