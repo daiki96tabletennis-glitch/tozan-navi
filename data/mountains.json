@@ -16569,14 +16569,14 @@
       "trailPeriods": [],
       "gearSource": "6月は雪渓のため冬山装備、7月は切替日が不明のため安全側で軽アイゼン等（2026-10-09）",
       "gearSplits": {
-        "10": {
-          "before": "light_crampons",
-          "after": "winter_gear",
-          "changeDate": 21
-        },
         "7": {
           "before": "light_crampons",
           "after": "no_crampons",
+          "changeDate": 21
+        },
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
           "changeDate": 21
         }
       }
@@ -17313,14 +17313,14 @@
       "trailPeriods": [],
       "gearSource": "6月は雪渓のため冬山装備、7月は切替日が不明のため安全側で軽アイゼン等（2026-10-09）",
       "gearSplits": {
-        "10": {
-          "before": "light_crampons",
-          "after": "winter_gear",
-          "changeDate": 21
-        },
         "7": {
           "before": "light_crampons",
           "after": "no_crampons",
+          "changeDate": 21
+        },
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
           "changeDate": 21
         }
       }
@@ -58367,7 +58367,11 @@
         "tier": "easy",
         "reasons": []
       }
-    }
+    },
+    "photos": [
+      "/images/mountains/tenzandake/image-20261124134423262-zsy71.webp",
+      "/images/mountains/tenzandake/image-20261124134425919-q7bed.webp"
+    ]
   },
   {
     "id": "hiwadayama",
