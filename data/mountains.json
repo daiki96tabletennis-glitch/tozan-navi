@@ -16560,14 +16560,14 @@
       "trailPeriods": [],
       "gearSource": "6月は雪渓のため冬山装備、7月は切替日が不明のため安全側で軽アイゼン等（2026-10-09）",
       "gearSplits": {
-        "10": {
-          "before": "light_crampons",
-          "after": "winter_gear",
-          "changeDate": 21
-        },
         "7": {
           "before": "light_crampons",
           "after": "no_crampons",
+          "changeDate": 21
+        },
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
           "changeDate": 21
         }
       }
@@ -17304,14 +17304,14 @@
       "trailPeriods": [],
       "gearSource": "6月は雪渓のため冬山装備、7月は切替日が不明のため安全側で軽アイゼン等（2026-10-09）",
       "gearSplits": {
-        "10": {
-          "before": "light_crampons",
-          "after": "winter_gear",
-          "changeDate": 21
-        },
         "7": {
           "before": "light_crampons",
           "after": "no_crampons",
+          "changeDate": 21
+        },
+        "10": {
+          "before": "light_crampons",
+          "after": "winter_gear",
           "changeDate": 21
         }
       }
@@ -65269,7 +65269,12 @@
           "乗り換え2回"
         ]
       }
-    }
+    },
+    "photos": [
+      "/images/mountains/yaguradake/image-20261124125916278-n6cjw.webp",
+      "/images/mountains/yaguradake/image-20261124125918741-032t9.webp",
+      "/images/mountains/yaguradake/image-20261124125921266-xy4iw.webp"
+    ]
   },
   {
     "id": "kawanoriyama",
