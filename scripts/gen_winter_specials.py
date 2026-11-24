@@ -7,7 +7,7 @@
 
 中身：data/winter_specials.json（手で書く。元日の運行・神社・注記）と mountains.json。
 日の出・ダイヤモンド富士の日付と時刻は scripts/sun_calc.py・diamond_fuji.py で計算する。
-見た目は「冬でも登れる関東の山7選」（articles/winter-no-crampons）の CSS を読み込んで使う。手で編集しない。
+見た目は scripts/winter_specials_base.css（もとは「冬でも登れる関東の山7選」の CSS。2026-11-24 に写した）を読み込んで使う。手で編集しない。
   python3 scripts/gen_winter_specials.py          書く
   python3 scripts/gen_winter_specials.py --check  書かずに、いまのファイルと同じかを見る（違えば終了コード1）
 """
@@ -46,10 +46,9 @@ def summit(m, SC):
 
 
 def css():
-    s = open(os.path.join(ROOT, 'articles', 'winter-no-crampons', 'index.html'), encoding='utf-8').read()
-    m = re.search(r'<style>.*?</style>', s, re.S)
-    if not m:
-        raise SystemExit('winter-no-crampons の CSS が見つからない')
+    # 前は記事「冬でも登れる関東の山7選」のページから読んでいた。2026-11-24 にその記事の見た目を作り直したので、前の CSS を
+    # scripts/winter_specials_base.css に写して、そこから読む（冬の特集・温泉・サウナの記事の見た目は変えない）
+    m = re.search(r'<style>.*?</style>', '<style>' + open(os.path.join(ROOT, 'scripts', 'winter_specials_base.css'), encoding='utf-8').read() + '</style>', re.S)
     extra = ('.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:8px}'
              '.tbl table{border-collapse:collapse;width:100%;min-width:560px;font-size:13px;background:#fff}'
              '.tbl th,.tbl td{padding:7px 8px;border-bottom:1px solid #e6e1d6;vertical-align:top;text-align:left}'

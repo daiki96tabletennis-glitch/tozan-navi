@@ -245,6 +245,9 @@ def sub1(pat, rep, s, count=0):
 
 
 def main():
+    # 2026-11-24 から記事は scripts/gen_winter_no_crampons.py が作る（作りが変わったので、このスクリプトは流さない）
+    if 'generated: scripts/gen_winter_no_crampons.py' in open(PAGE, encoding='utf-8').read():
+        raise SystemExit('この記事は scripts/gen_winter_no_crampons.py で作る')
     ms = {m['id']: m for m in json.load(open(os.path.join(ROOT, 'data/mountains.json')))}
     gear = json.load(open(os.path.join(ROOT, 'data/gear-data.json')))
     td = json.load(open(os.path.join(ROOT, 'data/train_daytrip.json')))
