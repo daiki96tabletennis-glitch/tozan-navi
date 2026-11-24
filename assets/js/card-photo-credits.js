@@ -1,4 +1,5 @@
 /* 記事・まとめのカードに出す山の写真に、作者とライセンスを添える。
+   2026-11-24〜：山ページと同じく「写真クレジット」を開くと見える形（details）にした（運営者の指示「全ページで、展開したら見れる式に」）。
    写真はページのスクリプトが mountains.json の photos から後で入れるので、
    data/image-credits.json の localPath と img の src を照らし、見つけた写真の下に1行ずつ出す。
    Wikimedia Commons の CC BY / BY-SA は表示が必須。 */
@@ -22,17 +23,21 @@
     return p._graded && /^CC BY/.test(p.license || '') ? '・加工あり' : '';
   }
 
+  function isOwn(p){ return p.source === 'own' || !p.license || p.license === 'YAMATCH自前写真'; }
+  function siteName(p){ return p.source === 'wikimedia_commons' ? 'Wikimedia Commons' : (p.sourceName || '元の写真'); }
+  function pageOf(p){ return p.commonsPageUrl || p.sourcePageUrl; }
+
   function creditHtml(p){
-    if(p.source !== 'wikimedia_commons'){
+    if(isOwn(p)){
       return '撮影：' + esc(p.author || 'Yamatch');
     }
     var lic = p.license || 'ライセンス不明';
-    var licUrl = p.licenseUrl || p.commonsPageUrl;
+    var licUrl = p.licenseUrl || pageOf(p);
     var out = esc(p.author || '作者不明') + '（';
     out += licUrl ? '<a href="' + esc(licUrl) + '" target="_blank" rel="noopener">' + esc(lic) + '</a>' : esc(lic);
     out += modNote(p);
-    if(p.commonsPageUrl){
-      out += '、<a href="' + esc(p.commonsPageUrl) + '" target="_blank" rel="noopener">Wikimedia Commons</a>';
+    if(pageOf(p)){
+      out += '、<a href="' + esc(pageOf(p)) + '" target="_blank" rel="noopener">' + esc(siteName(p)) + '</a>';
     }
     return out + '）';
   }
@@ -40,17 +45,17 @@
   // 同じ作者・同じライセンスの写真は1つにまとめ、Commons のページへのリンクを「1・2・3」と番号で並べる（2026-11-05）
   function groupHtml(list){
     var p = list[0];
-    if(p.source !== 'wikimedia_commons' || list.length === 1) return creditHtml(p);
+    if(isOwn(p) || list.length === 1) return creditHtml(p);
     var lic = p.license || 'ライセンス不明';
-    var licUrl = p.licenseUrl || p.commonsPageUrl;
+    var licUrl = p.licenseUrl || pageOf(p);
     var out = esc(p.author || '作者不明') + '（';
     out += licUrl ? '<a href="' + esc(licUrl) + '" target="_blank" rel="noopener">' + esc(lic) + '</a>' : esc(lic);
     out += modNote(p);
     var links = [];
     list.forEach(function(q, i){
-      if(q.commonsPageUrl) links.push('<a href="' + esc(q.commonsPageUrl) + '" target="_blank" rel="noopener">' + (i + 1) + '</a>');
+      if(pageOf(q)) links.push('<a href="' + esc(pageOf(q)) + '" target="_blank" rel="noopener">' + (i + 1) + '</a>');
     });
-    if(links.length) out += '、Wikimedia Commons ' + links.join('・');
+    if(links.length) out += '、' + esc(siteName(p)) + ' ' + links.join('・');
     return out + '）';
   }
 
@@ -68,11 +73,11 @@
     });
     var parts = order.map(function(k){ return groupHtml(groups[k]); });
     if(!parts.length) return;
-    var d = document.createElement('div');
+    var d = document.createElement('details');
     d.className = 'ym-photo-credit';
     // 横並び（flex）のカードでも1行を丸ごと使う。使わないと本文の列が押しつぶされ、スマホで右にはみ出す（2026-10-31）
     d.style.cssText = 'order:-1;flex:0 0 100%;width:100%;box-sizing:border-box;font-size:11px;line-height:1.5;color:#7a776e;margin:4px 0 6px;padding:0 2px;word-break:break-word';
-    d.innerHTML = '写真：' + parts.join('／');
+    d.innerHTML = '<summary style="cursor:pointer;color:#7a776e">写真クレジット</summary><div style="margin-top:2px">写真：' + parts.join('／') + '</div>';
     after.insertAdjacentElement('afterend', d);
   }
 

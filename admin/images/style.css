@@ -349,3 +349,6 @@ button:disabled { cursor: not-allowed; opacity: .48; }
   .candidate-grid, .selected-grid { grid-template-columns: 1fr; }
   .candidate-card > img, .selected-card img { height: 190px; }
 }
+
+.candidate-card.is-excluded { opacity: .62; }
+.excluded-toggle { grid-column: 1 / -1; text-align: center; padding: 6px 0; }

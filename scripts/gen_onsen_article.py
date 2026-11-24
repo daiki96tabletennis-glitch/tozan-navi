@@ -44,8 +44,9 @@ CSS_EXTRA = ('<style>'
 
 
 def credit(ph):
-    return ('<div class="ym-photo-credit" style="font-size:11px;line-height:1.5;color:#7a776e;margin:2px 0 6px;padding:0 2px;word-break:break-word">'
-            '写真（外観）：%s（<a href="%s" target="_blank" rel="noopener">%s</a>、<a href="%s" target="_blank" rel="noopener">Wikimedia Commons</a>）</div>' % (
+    # 山ページと同じく「写真クレジット」を開くと見える形（2026-11-24）
+    return ('<details class="ym-photo-credit" style="font-size:11px;line-height:1.5;color:#7a776e;margin:2px 0 6px;padding:0 2px;word-break:break-word"><summary style="cursor:pointer;color:#7a776e">写真クレジット</summary>'
+            '<div style="margin-top:2px">写真（外観）：%s（<a href="%s" target="_blank" rel="noopener">%s</a>、<a href="%s" target="_blank" rel="noopener">Wikimedia Commons</a>）</div></details>' % (
                 esc(ph['credit']), esc(ph['licenseUrl']), esc(ph['license']), esc(ph['pageUrl'])))
 
 
@@ -172,8 +173,8 @@ def build():
                   '下山後に温泉やサウナに寄れる関東発の日帰り登山%d山。歩く時間、温泉・サウナの料金と最終受付（ホテルは日帰り入浴の時間）、下山口からの行き方を公式サイトで確かめて紹介します。' % n,
                   '登山のあとの温泉・サウナが<br>最高な山%d選' % n, '温泉・サウナ', ['関東発', '日帰り'], body, faq, '登山のあとの温泉・サウナ', BANNER)
     page = page.replace('</head>', CSS_EXTRA + '\n</head>', 1)
-    page = page.replace('<script src="/assets/js/card-photo-credits.js?v=20261105b" defer></script>',
-                        '<script src="/assets/js/card-photo-credits.js?v=20261105b" defer></script>\n<script src="/assets/js/onsen-rakuten.js?v=20261115" defer></script>', 1)
+    page = page.replace('<script src="/assets/js/card-photo-credits.js?v=20261124" defer></script>',
+                        '<script src="/assets/js/card-photo-credits.js?v=20261124" defer></script>\n<script src="/assets/js/onsen-rakuten.js?v=20261115" defer></script>', 1)
     page = ym_icons.emoji_to_icons(page)
     return page
 

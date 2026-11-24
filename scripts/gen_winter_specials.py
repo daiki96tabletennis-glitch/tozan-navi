@@ -127,7 +127,7 @@ def page(slug, title, desc, h1, label, pills, body, faq, crumb, photos):
            '<main>', body, faq_html, '</main>', FOOTER,
            '<script src="/assets/js/to-top.js?v=20261025a" defer></script>',
            '<script src="/assets/js/share-btn.js?v=20261116" defer></script>',   # 共有ボタン（ヘッダーとページの下。2026-11-16）
-           '<script src="/assets/js/card-photo-credits.js?v=20261105b" defer></script>',
+           '<script src="/assets/js/card-photo-credits.js?v=20261124" defer></script>',
            '</body></html>\n']
     return '\n'.join(x for x in out if x != '')
 
@@ -171,13 +171,14 @@ def photo(m, W=None, art=None):
     if rec:
         img = '<img src="%s" class="mountain-photo" alt="%s" loading="lazy">' % (esc(rec['src']), esc(m['name']))
         if rec.get('source') == 'pakutaso':   # 表示は不要だが、ぱくたその推奨に合わせて出す
-            return img + ('<div class="ym-photo-credit" style="font-size:11px;line-height:1.5;color:#7a776e;margin:4px 0 6px;padding:0 2px">'
-                          '写真：<a href="https://www.pakutaso.com" target="_blank" rel="noopener">フリー素材ぱくたそ</a></div>')
+            return img + ('<details class="ym-photo-credit" style="font-size:11px;line-height:1.5;color:#7a776e;margin:4px 0 6px;padding:0 2px"><summary style="cursor:pointer;color:#7a776e">写真クレジット</summary>'
+                          '<div style="margin-top:2px">写真：<a href="https://www.pakutaso.com" target="_blank" rel="noopener">フリー素材ぱくたそ</a></div></details>')
         if not rec.get('credit'):
             return img
         lic = '<a href="%s" target="_blank" rel="noopener">%s</a>' % (esc(rec['licenseUrl']), esc(rec['license'])) if rec.get('licenseUrl') else esc(rec['license'])
-        return img + ('<div class="ym-photo-credit" style="font-size:11px;line-height:1.5;color:#7a776e;margin:4px 0 6px;padding:0 2px;word-break:break-word">'
-                      '写真：%s（%s、<a href="%s" target="_blank" rel="noopener">%s</a>）</div>' % (
+        # 山ページと同じく「写真クレジット」を開くと見える形（2026-11-24）
+        return img + ('<details class="ym-photo-credit" style="font-size:11px;line-height:1.5;color:#7a776e;margin:4px 0 6px;padding:0 2px;word-break:break-word"><summary style="cursor:pointer;color:#7a776e">写真クレジット</summary>'
+                      '<div style="margin-top:2px">写真：%s（%s、<a href="%s" target="_blank" rel="noopener">%s</a>）</div></details>' % (
                           esc(rec['credit']), lic, esc(rec['pageUrl']), 'Flickr' if rec.get('source') == 'flickr' else 'Wikimedia Commons'))
     # ダイヤモンド富士・冬の絶景は、記事に合う写真を選んだ山だけ写真を出す（山ページの写真は使わない。運営者の指示・2026-11-14）
     if art in ONLY_PICKED:

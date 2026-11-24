@@ -76,12 +76,45 @@ STATION = {'takao', 'nokogiriyama_chiba', 'koubousan', 'tenzandake'}  # 新宿�
 
 
 def photo_of(m, graded):
-    """1枚目の写真。仕上げた版（photo_graded.json）があればそちら（前の記事と同じ。クレジットは card-photo-credits.js が元の記録で引く）"""
-    p = (m.get('photos') or [None])[0]
-    if not p:
-        return None
-    g = (graded.get(p) or {}).get('graded')
-    return g if g and os.path.exists(os.path.join(ROOT, g.lstrip('/'))) else p
+    """山の写真（山ページと同じ順）。仕上げた版（photo_graded.json）があればそちら（前の記事と同じ。クレジットは card-photo-credits.js が元の記録で引く）"""
+    out = []
+    for p in m.get('photos') or []:
+        g = (graded.get(p) or {}).get('graded')
+        out.append(g if g and os.path.exists(os.path.join(ROOT, g.lstrip('/'))) else p)
+    return out
+
+
+# 写真の切り替え（山ページ・前の記事と同じ 4.5秒。動きを減らす設定の端末では切り替えない）
+CAROUSEL_JS = """(function(){
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.mountain-photo-carousel').forEach(function(wrap){
+    var imgs = wrap.querySelectorAll('img');
+    var dots = wrap.querySelectorAll('.mountain-photo-dot');
+    if(imgs.length < 2) return;
+    var idx = 0;
+    setInterval(function(){
+      imgs[idx].classList.remove('mpc-active');
+      if(dots[idx]) dots[idx].classList.remove('mpc-active');
+      idx = (idx + 1) % imgs.length;
+      imgs[idx].classList.add('mpc-active');
+      if(dots[idx]) dots[idx].classList.add('mpc-active');
+    }, 4500);
+  });
+})();"""
+
+
+def photo_box(name, photos):
+    """写真が複数あれば、山ページと同じく4.5秒ごとに切り替え、下に点で枚数を出す（2026-11-24。運営者の指示）。
+    枠の class は card-photo-credits.js がクレジットを1行にまとめる mountain-photo-carousel"""
+    if not photos:
+        return f'<div class="mc-nophoto">{E(name)}の写真は準備中</div>'
+    if len(photos) == 1:
+        return f'<img class="mc-photo" src="{E(photos[0])}" alt="{E(name)}" loading="lazy">' + credit(photos[0])
+    act = ' class="mpc-active"'
+    imgs = ''.join(f'<img src="{E(p)}" alt="{E(name)}" loading="lazy"{act if i == 0 else ""}>' for i, p in enumerate(photos))
+    dots = ''.join(f'<span class="mountain-photo-dot{" mpc-active" if i == 0 else ""}"></span>' for i in range(len(photos)))
+    return (f'<div class="mountain-photo-carousel mc-photo">{imgs}<div class="mountain-photo-dots">{dots}</div></div>'
+            + ''.join(credit(p) for p in photos))
 
 
 def coeff(m):
@@ -184,6 +217,12 @@ section{padding:40px 0 8px}
 .mc-catch{font-size:16px;font-weight:700;color:var(--green);margin:8px 0 0;line-height:1.55}
 .mc-name{font-size:13px;color:var(--sub);margin:4px 0 0}
 .mc-photo{aspect-ratio:3/2;width:100%;max-height:380px;object-fit:cover;display:block;background:#dcd6c8}
+.mountain-photo-carousel{position:relative;overflow:hidden}
+.mountain-photo-carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+.mountain-photo-carousel img.mpc-active{opacity:1}
+.mountain-photo-dots{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:5px;z-index:2}
+.mountain-photo-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.5);transition:background .3s}
+.mountain-photo-dot.mpc-active{background:#fff}
 .mc-nophoto{aspect-ratio:3/1;background:linear-gradient(135deg,#c9d2bb,#e7e2d5);display:flex;align-items:center;justify-content:center;color:#5f6b52;font-size:13px}
 .mc-body{display:grid;grid-template-columns:2fr 3fr;gap:18px;padding:16px 18px 6px}
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-content:start}
@@ -242,7 +281,7 @@ def credit(path):
         return ''
     lic = f'<a href="{E(p["licenseUrl"])}" target="_blank" rel="noopener">{E(p["license"])}</a>' if p.get('licenseUrl') else E(p.get('license') or '')
     src = f'・<a href="{E(p["commonsPageUrl"])}" target="_blank" rel="noopener">Wikimedia Commons</a>' if p.get('commonsPageUrl') else ''
-    return f'<div class="note" style="padding:4px 18px 0">写真：{E(p.get("author") or "")}（{lic}{src}）</div>'
+    return f'<details class="note ym-photo-credit" style="padding:4px 18px 0"><summary style="cursor:pointer;color:#7a776e">写真クレジット</summary><div style="margin-top:2px">写真：{E(p.get("author") or "")}（{lic}{src}）</div></details>'
 
 
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
@@ -264,7 +303,7 @@ ICON_AT = [
     ('<div class="k">どんな山？</div>', 'mountain', 7),
     ('<div class="k">冬に行く理由</div>', 'snowflake', 7),
     ('<p class="course">代表コース：', 'route', 7),
-    ('<span class="tag g">12か月アイゼン不要</span>', 'snowflake', 7),
+    ('<span class="tag g">通年アイゼン不要</span>', 'snowflake', 7),
     ('<span class="tag g">駅から歩ける</span>', 'train-front', 4),
     ('<span class="label amber">持ち物</span>', 'backpack', 1),
     ('<h3>チェーンスパイク（あれば）</h3>', 'hiking-boot', 1),
@@ -375,9 +414,8 @@ def main(out=PAGE, standalone=False):
     cards = ''
     for r in rows:
         m, mid = r['m'], r['id']
-        photo = (f'<img class="mc-photo" src="{E(r["photo"])}" alt="{E(m["name"])}" loading="lazy">' + credit(r['photo']) if r['photo']
-                 else f'<div class="mc-nophoto">{E(m["name"])}の写真は準備中</div>')
-        tags = ['<span class="tag g">12か月アイゼン不要</span>']
+        photo = photo_box(m['name'], r['photo'])
+        tags = ['<span class="tag g">通年アイゼン不要</span>']
         if mid in STATION:
             tags.append('<span class="tag g">駅から歩ける</span>')
         if mid in w.LIFT:
@@ -424,7 +462,7 @@ def main(out=PAGE, standalone=False):
  <p class="lead">装備・移動時間・何時までに歩き始めるかを、1ページで比べられます。</p>
  <p class="note" style="margin:-10px 0 14px">最終更新: {UPDATED}</p>
  <div class="intro">
-  <p>積雪の少ない冬の低山は、空気が澄んで眺めがよく、虫が少なく、落ち葉で見通しも良い季節です。ここで選んだ7山は、Yamatch の装備カレンダーで12か月とも<b>「アイゼン不要」</b>の山です。</p>
+  <p>積雪の少ない冬の低山は、空気が澄んで眺めがよく、虫が少なく、落ち葉で見通しも良い季節です。ここで選んだ7山は、Yamatch の装備カレンダーで<b>通年「アイゼン不要」</b>の山です。</p>
   <p>駅から歩き始められる山、ケーブルカーやロープウェーで楽ができる山、富士山が見える山と、目的に合わせて選べます。電車・バスで行ける日帰りの山は<a href="/search/train-daytrip/">電車で行ける日帰り登山</a>もどうぞ。</p>
  </div>
  <div class="caution"><span>⚠️</span><span><b>雪のあとの数日は、凍結が残ることがあります。</b>日陰や木道は滑りやすいので、チェーンスパイクがあれば持っていくと安心です。</span></div>
@@ -477,6 +515,7 @@ def main(out=PAGE, standalone=False):
 </section>
 </main>
 <script>{gear_js}</script>
+<script>{CAROUSEL_JS}</script>
 {tail}</body></html>
 '''
     doc = add_icons(doc)

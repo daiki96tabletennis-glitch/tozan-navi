@@ -133,7 +133,7 @@ def build():
                   'サウナシュランに選ばれたことのあるサウナのうち、登山口から車で30分ほどで行けて日帰りで使える%d施設と、近くの%d山を地図で紹介。受賞年・日帰り利用・車の時間の目安つき。' % (len(D['saunas']), nm),
                   'サウナシュラン受賞サウナに<br>寄れる山%d選' % nm, 'サウナ', ['地図つき', '日帰り'], body, faq, 'サウナシュラン受賞サウナに寄れる山', BANNER)
     page = page.replace('</head>', CSS_EXTRA + '\n</head>', 1)
-    page = page.replace('<script src="/assets/js/card-photo-credits.js?v=20261105b" defer></script>',
+    page = page.replace('<script src="/assets/js/card-photo-credits.js?v=20261124" defer></script>',
                         '<script src="/assets/js/sauna-map.js?v=20261116" defer></script>', 1)
     return ym_icons.emoji_to_icons(page)
 

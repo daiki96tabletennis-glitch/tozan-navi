@@ -87,10 +87,11 @@ def main():
                     lic = E(img.get('license') or '')
                     if img.get('licenseUrl'):
                         lic = '<a href="%s" target="_blank" rel="noopener">%s</a>' % (E(img['licenseUrl']), lic)
-                    cap = '<figcaption>写真：%s（%s）／<a href="%s" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption>' % (
+                    # 山ページと同じく「写真クレジット」を開くと見える形（2026-11-24）
+                    cap = '<figcaption><details class="ym-photo-credit"><summary style="cursor:pointer;color:#7a776e">写真クレジット</summary><div style="margin-top:2px">写真：%s（%s）／<a href="%s" target="_blank" rel="noopener">Wikimedia Commons</a></div></details></figcaption>' % (
                         E(img.get('credit') or '作者不明'), lic, E(img.get('pageUrl') or ''))
                 elif img.get('credit'):
-                    cap = '<figcaption>写真：%s</figcaption>' % E(img['credit'])
+                    cap = '<figcaption><details class="ym-photo-credit"><summary style="cursor:pointer;color:#7a776e">写真クレジット</summary><div style="margin-top:2px">写真：%s</div></details></figcaption>' % E(img['credit'])
                 photo = ('<figure class="gm-photo"><img src="%s" alt="%s" loading="lazy">%s</figure>'
                          % (E(img['src']), E(img.get('alt') or it['place']), cap))
             if it.get('hutId'):
