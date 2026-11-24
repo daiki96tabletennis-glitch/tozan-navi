@@ -61,7 +61,7 @@ EXCLUDED_DIRS = {"daibosatsurei", "nikko_nantai", "shirane_nikko", "takao-hiking
 EXCLUDED_IDS = set()
 
 # 共通JS/CSSの版番号。assets/js・assets/css を変更したら更新する（ホーム画面に追加したアプリ等で古いJSが使われ続けるのを防ぐ）
-ASSET_VER = "20261123c"
+ASSET_VER = "20261124b"
 _AMENITIES = None
 
 DEP_ORDER = [

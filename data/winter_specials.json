@@ -393,7 +393,9 @@
         "source": "photoac",
         "pageUrl": "https://www.photo-ac.com/main/detail/22573871",
         "sourceTitle": "朝焼け 日の出,高尾山,朝日",
-        "modifications": "長辺1600pxのWebPに変換"
+        "modifications": "長辺1600pxのWebPに変換",
+        "credit": "nobunaga1509",
+        "authorUrl": "https://www.photo-ac.com/profile/23426269"
       },
       "nokogiriyama_chiba": {
         "pick": "C2",
@@ -411,7 +413,9 @@
         "source": "pakutaso",
         "pageUrl": "https://www.pakutaso.com/20190524142post-20916.html",
         "sourceTitle": "竜ヶ岳から撮影した富士山頂から昇る太陽とダイヤモンド富士",
-        "modifications": "長辺1600pxのWebPに変換"
+        "modifications": "長辺1600pxのWebPに変換",
+        "credit": "Redsugar",
+        "authorUrl": "https://www.pakutaso.com/redsugar.html"
       }
     },
     "diamond": {
@@ -483,7 +487,9 @@
         "source": "pakutaso",
         "pageUrl": "https://www.pakutaso.com/20190524142post-20916.html",
         "sourceTitle": "竜ヶ岳から撮影した富士山頂から昇る太陽とダイヤモンド富士",
-        "modifications": "長辺1600pxのWebPに変換"
+        "modifications": "長辺1600pxのWebPに変換",
+        "credit": "Redsugar",
+        "authorUrl": "https://www.pakutaso.com/redsugar.html"
       }
     },
     "views": {
@@ -513,7 +519,9 @@
         "source": "pakutaso",
         "pageUrl": "https://www.pakutaso.com/20211039300post-36161.html",
         "sourceTitle": "雪を纏った樹氷に覆われた北横岳の冬景色",
-        "modifications": "長辺1600pxのWebPに変換"
+        "modifications": "長辺1600pxのWebPに変換",
+        "credit": "Redsugar",
+        "authorUrl": "https://www.pakutaso.com/redsugar.html"
       },
       "akagi": {
         "pick": "P4",
@@ -521,7 +529,42 @@
         "source": "pakutaso",
         "pageUrl": "https://www.pakutaso.com/20180531138post-16213.html",
         "sourceTitle": "赤城山覚満淵（かくまんぶち）の凍った湿原",
-        "modifications": "長辺1600pxのWebPに変換"
+        "modifications": "長辺1600pxのWebPに変換",
+        "credit": "タケル",
+        "authorUrl": "https://www.pakutaso.com/takelungo.html"
+      },
+      "nyukasayama": {
+        "pick": "C-op",
+        "src": "/images/articles/winter-views/nyukasayama.webp",
+        "credit": "skyseeker",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Yatsugatake_(34401648931).jpg",
+        "commonsTitle": "File:Yatsugatake (34401648931).jpg",
+        "modifications": "長辺1600pxのWebPに変換",
+        "note": "運営者が選んだ写真（2026-11-24）。入笠山（富士見パノラマリゾートのゲレンデ）から見た冬の八ヶ岳"
+      },
+      "okutama": {
+        "pick": "A-op",
+        "src": "/images/articles/winter-views/okutama.webp",
+        "source": "photoac",
+        "pageUrl": "https://www.photo-ac.com/main/detail/32967268",
+        "sourceTitle": "大菩薩嶺から見る富士山",
+        "modifications": "WebPに変換（Sサイズ・長辺640px）",
+        "note": "運営者が選んでダウンロード（2026-11-24）",
+        "more": [
+          {
+            "src": "/images/articles/winter-views/okutama-2.webp",
+            "source": "photoac",
+            "pageUrl": "https://www.photo-ac.com/main/detail/4674776",
+            "sourceTitle": "山梨県百名山・大菩薩嶺",
+            "modifications": "長辺1600pxのWebPに変換",
+            "credit": "雰囲気イケメン",
+            "authorUrl": "https://www.photo-ac.com/profile/2243332"
+          }
+        ],
+        "credit": "sab3317",
+        "authorUrl": "https://www.photo-ac.com/profile/27294759"
       }
     }
   }

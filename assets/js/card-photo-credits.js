@@ -28,6 +28,10 @@
   function pageOf(p){ return p.commonsPageUrl || p.sourcePageUrl; }
 
   function creditHtml(p){
+    if(p.source === 'photoac' || p.source === 'pakutaso'){
+      var link = '<a href="' + esc(p.sourcePageUrl || '') + '" target="_blank" rel="noopener">' + esc(p.sourceName || '') + '</a>';
+      return (p.author && p.author !== p.sourceName) ? '写真：' + esc(p.author) + '（' + link + '）' : '写真：' + link;
+    }
     if(isOwn(p)){
       return '撮影：' + esc(p.author || 'Yamatch');
     }
@@ -45,7 +49,7 @@
   // 同じ作者・同じライセンスの写真は1つにまとめ、Commons のページへのリンクを「1・2・3」と番号で並べる（2026-11-05）
   function groupHtml(list){
     var p = list[0];
-    if(isOwn(p) || list.length === 1) return creditHtml(p);
+    if(isOwn(p) || p.source === 'photoac' || p.source === 'pakutaso' || list.length === 1) return creditHtml(p);
     var lic = p.license || 'ライセンス不明';
     var licUrl = p.licenseUrl || pageOf(p);
     var out = esc(p.author || '作者不明') + '（';

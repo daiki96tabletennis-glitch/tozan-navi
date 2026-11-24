@@ -88,6 +88,11 @@ CAL_ICON = ('<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke=
             'style="vertical-align:-2px;margin-right:3px;display:inline-block"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>')
 
 
+def _carousel_js():
+    import gen_winter_no_crampons as nc
+    return nc.CAROUSEL_JS
+
+
 def page(slug, title, desc, h1, label, pills, body, faq, crumb, photos):
     url = '%s/articles/%s/' % (SITE, slug)
     ld = [
@@ -125,6 +130,7 @@ def page(slug, title, desc, h1, label, pills, body, faq, crumb, photos):
            '    <div class="article-meta"><span class="meta-pill updated-pill">%s 最終更新: %s</span>%s</div>\n  </div>\n</div>' % (
                esc(label), h1, esc(desc), CAL_ICON, UPDATED, ''.join('\n      <span class="meta-pill">%s</span>' % esc(p) for p in pills)),
            '<main>', body, faq_html, '</main>', FOOTER,
+           ('<script>%s</script>' % _carousel_js()) if 'mountain-photo-carousel' in body else '',
            '<script src="/assets/js/to-top.js?v=20261025a" defer></script>',
            '<script src="/assets/js/share-btn.js?v=20261116" defer></script>',   # 共有ボタン（ヘッダーとページの下。2026-11-16）
            '<script src="/assets/js/card-photo-credits.js?v=20261124" defer></script>',
@@ -164,22 +170,46 @@ def hatsu_li(W):
     return '<li><a href="/articles/hatsuhinode-hiking/" style="color:#4a6038;font-weight:700">初日の出登山 関東（山頂の日の出の時刻と元日の始発）</a></li>'
 
 
+def _picked_img(rec, alt, carousel=False, first=False):
+    """記事のために選んだ写真1枚の img と、写真クレジット（作者・ライセンス・元のページ）"""
+    cls = (' class="mpc-active"' if first else '') if carousel else ' class="mountain-photo"'
+    img = '<img src="%s"%s alt="%s" loading="lazy">' % (esc(rec['src']), cls, esc(alt))
+    if rec.get('source') in ('pakutaso', 'photoac'):   # 表示は不要だが、推奨に合わせて出す
+        name = 'フリー素材ぱくたそ' if rec['source'] == 'pakutaso' else '写真AC'
+        url = rec.get('pageUrl') or ('https://www.pakutaso.com' if rec['source'] == 'pakutaso' else 'https://www.photo-ac.com/')
+        link = '<a href="%s" target="_blank" rel="noopener">%s</a>' % (esc(url), name)
+        # 作者はその写真のページに出ている名前（写真AC の「作者」・ぱくたその撮影者。2026-11-24 運営者の指示）
+        return img, ('写真：%s（%s）' % (esc(rec['credit']), link)) if rec.get('credit') else '写真：' + link
+    if not rec.get('credit'):
+        return img, ''
+    lic = '<a href="%s" target="_blank" rel="noopener">%s</a>' % (esc(rec['licenseUrl']), esc(rec['license'])) if rec.get('licenseUrl') else esc(rec['license'])
+    return img, '写真：%s（%s、<a href="%s" target="_blank" rel="noopener">%s</a>）' % (
+        esc(rec['credit']), lic, esc(rec['pageUrl']), 'Flickr' if rec.get('source') == 'flickr' else 'Wikimedia Commons')
+
+
+def _credit_box(lines):
+    lines = [x for x in lines if x]
+    if not lines:
+        return ''
+    # 山ページと同じく「写真クレジット」を開くと見える形（2026-11-24）
+    return ('<details class="ym-photo-credit" style="font-size:11px;line-height:1.5;color:#7a776e;margin:4px 0 6px;padding:0 2px;word-break:break-word"><summary style="cursor:pointer;color:#7a776e">写真クレジット</summary>'
+            + ''.join('<div style="margin-top:2px">%s</div>' % x for x in lines) + '</details>')
+
+
 def photo(m, W=None, art=None):
     """カードの写真。記事に合わせて選んだ写真（winter_specials.json の photos。scripts/winter_photos.py で選ぶ）があればそれ、無ければ山の1枚目。
-    記事のために取り込んだ Commons の写真は image-credits.json に無いので、作者・ライセンスの1行をここで書く（card-photo-credits.js と同じ形）"""
+    記事のために取り込んだ写真は image-credits.json に無いので、作者・ライセンスをここで書く。
+    more（2枚目以降）があるときは、山ページと同じく4.5秒ごとに切り替える（2026-11-24。大菩薩嶺に写真ACの2枚。運営者の指示）"""
     rec = ((W or {}).get('photos') or {}).get(art, {}).get(m['id']) if art else None
     if rec:
-        img = '<img src="%s" class="mountain-photo" alt="%s" loading="lazy">' % (esc(rec['src']), esc(m['name']))
-        if rec.get('source') == 'pakutaso':   # 表示は不要だが、ぱくたその推奨に合わせて出す
-            return img + ('<details class="ym-photo-credit" style="font-size:11px;line-height:1.5;color:#7a776e;margin:4px 0 6px;padding:0 2px"><summary style="cursor:pointer;color:#7a776e">写真クレジット</summary>'
-                          '<div style="margin-top:2px">写真：<a href="https://www.pakutaso.com" target="_blank" rel="noopener">フリー素材ぱくたそ</a></div></details>')
-        if not rec.get('credit'):
-            return img
-        lic = '<a href="%s" target="_blank" rel="noopener">%s</a>' % (esc(rec['licenseUrl']), esc(rec['license'])) if rec.get('licenseUrl') else esc(rec['license'])
-        # 山ページと同じく「写真クレジット」を開くと見える形（2026-11-24）
-        return img + ('<details class="ym-photo-credit" style="font-size:11px;line-height:1.5;color:#7a776e;margin:4px 0 6px;padding:0 2px;word-break:break-word"><summary style="cursor:pointer;color:#7a776e">写真クレジット</summary>'
-                      '<div style="margin-top:2px">写真：%s（%s、<a href="%s" target="_blank" rel="noopener">%s</a>）</div></details>' % (
-                          esc(rec['credit']), lic, esc(rec['pageUrl']), 'Flickr' if rec.get('source') == 'flickr' else 'Wikimedia Commons'))
+        recs = [rec] + list(rec.get('more') or [])
+        if len(recs) == 1:
+            img, cr = _picked_img(rec, m['name'])
+            return img + _credit_box([cr])
+        parts = [_picked_img(r, m['name'], True, i == 0) for i, r in enumerate(recs)]
+        dots = ''.join('<span class="mountain-photo-dot%s"></span>' % (' mpc-active' if i == 0 else '') for i in range(len(recs)))
+        return ('<div class="mountain-photo-carousel">%s<div class="mountain-photo-dots">%s</div></div>' % (''.join(p[0] for p in parts), dots)
+                + _credit_box([p[1] for p in parts]))
     # ダイヤモンド富士・冬の絶景は、記事に合う写真を選んだ山だけ写真を出す（山ページの写真は使わない。運営者の指示・2026-11-14）
     if art in ONLY_PICKED:
         return ''
