@@ -120,7 +120,8 @@ EASY = ('初級', '初〜中級')
 # 「難易度」の見出しの新しい型を試す山（2026-11-15〜。運営者の指示「塔ノ岳だけまずつくって」）。
 # 前の型は答え（難易度・時間）が見出しで済んでしまい、難易度の検索の CTR が低かった（28日で表示1.8万回・平均5位・CTR 2.1%）。
 # 新しい型は「初心者は登れる？」と、ページで分かること（難所・コースの比較）を見出しに出す。ページには比較表（gen_mountain_pages.py の ROUTE_TABLE_IDS）を置く
-DIFF_TEST_IDS = {"tonosaki"}
+# 2026-11-25 に、難易度の検索が多い10山に広げた（塔ノ岳の8日分では良し悪しが分からず、数を増やして確かめる。基準の数字は .claude/seo_2026_11_25/difficulty_test.json。2026-12-23 ごろに比べる）
+DIFF_TEST_IDS = {"tonosaki", "takao", "fuji", "tsubakurodake", "yari", "oyama", "kitadake", "mizugaki", "hotaka", "myogisan", "tanigawa"}
 
 
 def hazard(m):

@@ -1615,7 +1615,8 @@ def tech_summary(mt):
 
 
 # コースの比較表（2026-11-15〜。運営者の指示「塔ノ岳だけまずつくって」。見た目を確かめてから広げる）
-ROUTE_TABLE_IDS = {"tonosaki", "kinpusan"}   # kinpusan は冬に使えないコースの試作（2026-11-19）
+# 2026-11-25：「◯◯ 難易度」「◯◯ ルート 難易度」の検索が多い10山に広げた（Search Console 直近28日で表示350回以上。build_meta.py の DIFF_TEST_IDS と同じ山）
+ROUTE_TABLE_IDS = {"tonosaki", "kinpusan", "takao", "fuji", "tsubakurodake", "yari", "oyama", "kitadake", "mizugaki", "hotaka", "myogisan", "tanigawa"}   # kinpusan は冬に使えないコースの試作（2026-11-19）
 
 
 def render_route_table(mt):
@@ -1626,8 +1627,9 @@ def render_route_table(mt):
     has_hz = any(tech_level(r.get("tech")) or r.get("chains") or r.get("rocks") for r in routes)
     has_train = any(r.get("byTrain") for r in routes)
     has_winter = any(winter_shown(r) for r in routes)
+    has_coeff = any(r.get("coeff") is not None for r in routes)   # 体力の目安（コース定数。2026-11-25）
     icon = ROUTE_TRAIN_ICON.replace("margin-left:6px", "margin-left:0")
-    head = ["コース", "種類", "歩く時間", "距離", "登り"] + (["難所"] if has_hz else []) + (["電車"] if has_train else []) + (["冬"] if has_winter else [])
+    head = ["コース", "種類", "歩く時間", "距離", "登り"] + (["体力（定数）"] if has_coeff else []) + (["難所"] if has_hz else []) + (["電車"] if has_train else []) + (["冬"] if has_winter else [])
     rows = []
     for i, r in enumerate(routes, start=1):
         t = COURSE_TYPE.get(r.get("courseType"))
@@ -1640,6 +1642,8 @@ def render_route_table(mt):
             f'<td class="rc-v">{esc(r.get("distance") or "—")}</td>',
             f'<td class="rc-v">{esc((r.get("elevation") or "—").lstrip("+"))}</td>',
         ]
+        if has_coeff:
+            cells.append(f'<td class="rc-v">{esc(r["coeff"]) if r.get("coeff") is not None else "—"}</td>')
         if has_hz:
             cells.append(f'<td class="rc-hz">{hz}</td>')
         if has_train:
@@ -1650,7 +1654,7 @@ def render_route_table(mt):
     return ('<div class="rc-title">コースを比べる（%dコース）</div>' % len(routes)
             + '<div class="rc-wrap"><table class="rc-table"><thead><tr>' + "".join(f"<th>{h}</th>" for h in head)
             + '</tr></thead><tbody>' + "".join(rows) + '</tbody></table></div>'
-            + '<p class="rc-note">番号は下のコースの一覧と同じです。登りは累積の標高差、電車の印は電車・バスで行ける場所から歩き始めるコース。</p>')
+            + '<p class="rc-note">番号は下のコースの一覧と同じです。登りは累積の標高差、体力（定数）は歩く時間・距離・登り下りから計算した体力の目安（大きいほどきつい）、電車の印は電車・バスで行ける場所から歩き始めるコース。</p>')
 
 
 def render_routes(mt):
