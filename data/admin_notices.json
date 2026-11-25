@@ -198,33 +198,25 @@
    "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/44853349497"
   },
   {
-   "id": "sitecheck-2026-11-25-8151c1ae72",
+   "id": "sitecheck-2026-11-25-d70a4610b6",
    "kind": "sitecheck",
    "title": "サイトの検証",
    "date": "2026-11-25",
    "needsAction": true,
-   "digest": "8151c1ae72",
+   "digest": "d70a4610b6",
    "sections": [
     {
      "heading": "1. 画像切れ（4件）",
      "lines": [
-      "articles/coeff-20/index.html → /images/mountains/takao/01.webp",
-      "articles/coeff-20/index.html → /images/mountains/jinba/01.webp",
+      "search/train-daytrip/index.html → /images/mountains/jinba/01.webp",
       "search/train-daytrip/index.html → /images/mountains/takao/01.webp",
-      "search/train-daytrip/index.html → /images/mountains/jinba/01.webp"
-     ]
-    },
-    {
-     "heading": "18. 写真のクレジット（作者・ライセンスの記録）（3件）",
-     "lines": [
-      "jinba: 写真のクレジットの記録が無い：/images/mountains/jinba/image-20261125002500298-csqhh.webp",
-      "jinba: 写真のクレジットの記録が無い：/images/mountains/jinba/image-20261125002502502-zlgt6.webp",
-      "jinba: 写真のクレジットの記録が無い：/images/mountains/jinba/image-20261125002504902-i36bq.webp"
+      "articles/coeff-20/index.html → /images/mountains/takao/01.webp",
+      "articles/coeff-20/index.html → /images/mountains/jinba/01.webp"
      ]
     }
    ],
    "next": "Claude のアプリで「check_pages.py の異常を直して」と伝えてください。",
-   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/45518878728"
+   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/45520302735"
   },
   {
    "id": "push-2026-10-21-bd9ddaf71d",
