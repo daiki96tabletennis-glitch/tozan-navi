@@ -354,7 +354,7 @@
       "officialUrl": "http://www.m-kamikouchi.jp/tokuzawalodge/",
       "tel": "0263-95-2526 FAX0263-95-2527",
       "openText": "2026/4/25～11/5、Web完全予約制",
-      "bookingStart": "1月28日 9:00から（2026年）",
+      "bookingStart": "2027年分は1月下旬からWebで（予定。2026年は1月28日 9:00から）",
       "bookingMethods": [
         "Web（完全予約制）"
       ],
@@ -375,7 +375,8 @@
           "month": 1,
           "day": 28
         }
-      }
+      },
+      "bookingSourceUrl": "http://www.489pro.com/asp/489/menu.asp?id=20000090&liop=1&list=YES&ty=ser"
     },
     {
       "id": "hut-b3a84840",
@@ -854,7 +855,13 @@
       "bookingSourceUrl": "https://webmarunaka.com/nanakura/yoyaku",
       "capacityRef": 32,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=937",
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 32,
+        "note": "大町市観光協会の2026年度の山小屋情報",
+        "source": "https://kanko-omachi.gr.jp/special-mountain/",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-abddcb35",
@@ -882,7 +889,14 @@
       "bookingSourceUrl": "https://www.ne.jp/asahi/eboshidake/2628/",
       "capacityRef": 70,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=940",
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 30,
+        "text": "約30人（2026年）",
+        "note": "通常は約50人。2026年は約30人の予約制（北アルプス山小屋友交会）",
+        "source": "https://kita-alps.yamagoya.gr.jp/area05/329.html",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-8098c896",
@@ -1513,8 +1527,10 @@
       "tel": "0261-22-1584",
       "openText": "例年：7月上旬～9月下旬",
       "bookingStart": null,
-      "bookingMethods": null,
-      "bookingRequired": false,
+      "bookingMethods": [
+        "電話（事務所 0261-22-1584。ネット予約なし）"
+      ],
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "http://www.harinoki.com/",
       "officialNote": null,
@@ -1529,7 +1545,8 @@
         "note": "8月17日のお知らせ「今シーズンの大沢小屋の営業は終了いたしました」。例年は7月上旬～9月下旬",
         "source": "http://www.harinoki.com/",
         "checkedAt": "2026-10-20"
-      }
+      },
+      "bookingSourceUrl": "http://www.harinoki.com/"
     },
     {
       "id": "hut-f6e894de",
@@ -2436,7 +2453,13 @@
       "bookingSourceUrl": "https://www.yatsu-honzawaonsen.com/akadake.html",
       "capacityRef": 200,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=765",
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 100,
+        "note": "八ヶ岳観光協会",
+        "source": "http://www.mt-yatsugatake.sakura.ne.jp/yamagoya/yamagoya-544/",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-4c9abaf2",
@@ -2672,6 +2695,12 @@
         "note": "完全予約制（電話）。栄村秋山郷観光協会の2026年の案内",
         "source": "http://sakae-akiyamago.com/stay/4888/",
         "checkedAt": "2026-10-20"
+      },
+      "capacityFix": {
+        "value": 92,
+        "note": "栄村秋山郷観光協会",
+        "source": "http://sakae-akiyamago.com/play/3704/",
+        "checkedAt": "2026-11-25"
       }
     },
     {
@@ -2750,7 +2779,7 @@
       "officialUrl": "https://yashimasanso.net/",
       "tel": "0266-58-5357",
       "openText": "2026/4/25～ ＊Web予約・電話予約も",
-      "bookingStart": "4/29〜5/10の宿泊分は3月29日から。5/11以降はメールフォームでも受付（宿泊の3日前〜当日は電話）",
+      "bookingStart": "2027年分は4月から（2026年は4/29〜5/10の宿泊分が3月29日から）",
       "bookingMethods": [
         "Web",
         "電話"
@@ -2770,7 +2799,8 @@
         "note": "14人以上の団体は受けない",
         "source": "https://yashimasanso.net/?page_id=29",
         "checkedAt": "2026-11-25"
-      }
+      },
+      "bookingSourceUrl": "https://yashimasanso.net/?page_id=29"
     },
     {
       "id": "hut-01137b54",
@@ -2839,7 +2869,13 @@
         "source": "https://huttemisayama.net/%E5%86%AC%E5%AD%A3%E5%96%B6%E6%A5%AD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/",
         "checkedAt": "2026-10-20"
       },
-      "bookingSourceUrl": "https://huttemisayama.net/contact/"
+      "bookingSourceUrl": "https://huttemisayama.net/contact/",
+      "capacityFix": {
+        "value": 18,
+        "note": "全館の宿泊定員（公式）",
+        "source": "https://huttemisayama.net/stay/",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-b38bb6cf",
@@ -2898,7 +2934,13 @@
       "bookingSourceUrl": "https://www.yamakei-online.com/mt_info/info_detail.php?id=37448",
       "capacityRef": 150,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=538",
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 150,
+        "note": "秩父観光協会",
+        "source": "https://www.chichibuji.gr.jp/hotel/hotel-syousai46/",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-7b069b75",
@@ -2916,7 +2958,7 @@
       "bookingMethods": [
         "Web（予約フォーム）"
       ],
-      "bookingRequired": false,
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": "https://www.kimpou.com/",
       "officialNote": null,
@@ -2932,6 +2974,13 @@
         "note": "冬季は週末と年末年始のみ。3月～4月中旬は休み（公式）",
         "source": "https://www.kimpou.com/",
         "checkedAt": "2026-10-21"
+      },
+      "capacityFix": {
+        "value": 60,
+        "text": "約60人",
+        "note": "金峰山観光案内（川上村）",
+        "source": "https://kinpusankankou.com/spot/index.php",
+        "checkedAt": "2026-11-25"
       }
     },
     {
@@ -3087,7 +3136,7 @@
       "openText": "2026/7/1～10/11 ＊公式Lineより完全予約制",
       "bookingStart": null,
       "bookingMethods": [
-        "公式LINE"
+        "公式LINEのみ（電話予約は不可）"
       ],
       "bookingRequired": true,
       "capacity": null,
@@ -3098,7 +3147,13 @@
       "lastVerified": "2026-10-14",
       "capacityRef": 50,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=1021",
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 50,
+        "note": "王滝村の御嶽山の山小屋の案内",
+        "source": "http://www.ontake.jp/karada/%E5%BE%A1%E5%B6%BD%E5%B1%B1%E7%99%BB%E5%B1%B1",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-8731af8d",
@@ -3414,7 +3469,13 @@
       "capacityRef": 50,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=686",
       "periodAuto": "6/上～10/中 （夏期以外は 金土日の営業）",
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 100,
+        "note": "全24室（公式）",
+        "source": "https://www.mountaintrad.co.jp/yamanashi/aoki/aokikosen/data.html",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-835f3ad2",
@@ -4391,7 +4452,13 @@
       "capacityRef": 260,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=837",
       "periodAuto": "4/15～11/24",
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 260,
+        "note": "53室（富山県の観光サイト）",
+        "source": "https://www.e-muchtoyama.com/detail/index_1067.html",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-7be6f1a9",
@@ -4811,6 +4878,12 @@
           "month": null,
           "day": null
         }
+      },
+      "capacityFix": {
+        "value": 200,
+        "note": "22室（秩父観光協会）",
+        "source": "https://www.chichibuji.gr.jp/hotel/hotel-syousai45/",
+        "checkedAt": "2026-11-25"
       }
     },
     {
@@ -4957,7 +5030,13 @@
       "lastVerified": "2026-10-14",
       "capacityRef": 80,
       "capacityRefUrl": "https://www.yamakei-online.com/lodge/detail.php?id=568",
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 80,
+        "note": "甲州市の観光サイト",
+        "source": "https://www.koshu-kankou.jp/map/m4945.html",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-43bfc8d1",
@@ -5410,12 +5489,14 @@
       "openText": "例年 7/上～10/初（変動あり）",
       "bookingStart": null,
       "bookingMethods": [
-        "Web（予約フォーム）"
+        "電話",
+        "FAX",
+        "Web（予約申込みフォーム）"
       ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": "http://www.unkaiso.com/",
+      "bookingSourceUrl": "https://www.unkaiso.com/contact/index.html",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=618",
       "sourceUpdated": null,
       "lastVerified": "2026-10-21",
@@ -5723,13 +5804,12 @@
       "openText": "例年 通年（夏期以外は不定期営業）",
       "bookingStart": null,
       "bookingMethods": [
-        "Web（やまたん）",
-        "電話"
+        "Web（やまたん）のみ（20名以上の団体は電話・FAX）"
       ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": "https://mtfuji.satogoya.jp/",
+      "bookingSourceUrl": "https://mtfuji.satogoya.jp/?page_id=23",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=647",
       "sourceUpdated": null,
       "lastVerified": "2026-10-14",
@@ -5939,10 +6019,9 @@
       "openText": "例年 6/下～9/中",
       "bookingStart": "2027年分はゴールデンウィーク明けにWeb予約開始の予定（電話は7月1日から。2026年は5月8日 10:00から）",
       "bookingMethods": [
-        "Web",
-        "電話（7月1日から）"
+        "Webのみ（メール・電話の予約不可）"
       ],
-      "bookingRequired": false,
+      "bookingRequired": true,
       "capacity": null,
       "capacitySourceUrl": null,
       "bookingSourceUrl": "https://kamaiwakan.jpn.org/",
@@ -6283,14 +6362,15 @@
       "officialUrl": "http://www.fujisanhotel.com/",
       "tel": null,
       "openText": "例年 6/30～9/10",
-      "bookingStart": null,
+      "bookingStart": "個人はネット予約で5月10日ごろから、団体（電話）と旅行業者は2月1日から（2026年）",
       "bookingMethods": [
-        "Webのみ（電話予約不可・当日予約不可）"
+        "Webのみ（個人の電話予約は受け付けない・前日12:00まで）",
+        "電話（団体のみ）"
       ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
-      "bookingSourceUrl": "https://mtfuji.jpn.org/list.php",
+      "bookingSourceUrl": "https://www.fujisanhotel.com/contents/top.php",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=661",
       "sourceUpdated": null,
       "lastVerified": "2026-10-14",
@@ -6489,7 +6569,13 @@
       "lastVerified": "2026-11-01",
       "capacityRef": null,
       "capacityRefUrl": null,
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 50,
+        "note": "静岡県の富士登山の案内",
+        "source": "https://www.fujisan223.com/rule/stay/subashiri/higashifujisansou.html",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-7bc3223d",
@@ -6504,11 +6590,14 @@
       "tel": null,
       "openText": "2026年の営業：7/1～9/10（予定。公式サイト）",
       "bookingStart": "5月1日から（2026年）",
-      "bookingMethods": null,
-      "bookingRequired": false,
+      "bookingMethods": [
+        "電話",
+        "メール"
+      ],
+      "bookingRequired": true,
       "capacity": 50,
       "capacitySourceUrl": "https://fujisan-sunaharaigogou.com/",
-      "bookingSourceUrl": "https://fujisan-sunaharaigogou.com/",
+      "bookingSourceUrl": "https://fujisan-sunaharaigogou.com/contact-2",
       "sourceUrl": "https://fujisan-sunaharaigogou.com/service",
       "sourceUpdated": null,
       "lastVerified": "2026-11-01",
@@ -6567,7 +6656,13 @@
       "lastVerified": "2026-11-01",
       "capacityRef": null,
       "capacityRefUrl": null,
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 120,
+        "note": "静岡県の富士登山の案内",
+        "source": "https://www.fujisan223.com/rule/stay/subashiri/setokan.html",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-66f867fa",
@@ -6582,7 +6677,9 @@
       "tel": null,
       "openText": "2026年：7/20から（工事のため。公式サイト）",
       "bookingStart": "4月1日から（2026年。公式サイトのお知らせの日付）",
-      "bookingMethods": null,
+      "bookingMethods": [
+        "電話（090-3158-6624）"
+      ],
       "bookingRequired": false,
       "capacity": null,
       "capacitySourceUrl": null,
@@ -6593,7 +6690,13 @@
       "periodManual": true,
       "capacityRef": null,
       "capacityRefUrl": null,
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 150,
+        "note": "静岡県の富士登山の案内",
+        "source": "https://www.fujisan223.com/rule/stay/subashiri/taiyokan.html",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-835d4666",
@@ -6618,7 +6721,13 @@
       "lastVerified": "2026-11-01",
       "capacityRef": null,
       "capacityRefUrl": null,
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 80,
+        "note": "静岡県の富士登山の案内",
+        "source": "https://www.fujisan223.com/rule/stay/subashiri/miharashikan.html",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-976d9890",
@@ -6632,12 +6741,14 @@
       "officialUrl": "https://fujisan-edoya.com/edoya2/",
       "tel": null,
       "openText": "2026年：7/10～8/29の宿泊まで（公式サイト）",
-      "bookingStart": "5月10日から（2026年）",
-      "bookingMethods": null,
-      "bookingRequired": false,
+      "bookingStart": "宿泊日の2か月前の同じ日の11:00から（2026年は5月10日から。やまたん）",
+      "bookingMethods": [
+        "Web（やまたん）のみ（電話不可）"
+      ],
+      "bookingRequired": true,
       "capacity": 100,
       "capacitySourceUrl": "https://fujisan-edoya.com/edoya2/",
-      "bookingSourceUrl": "https://fujisan-edoya.com/edoya2/",
+      "bookingSourceUrl": "https://fujisan-edoya.com/booking/edoya2/",
       "sourceUrl": "https://www.yamakei-online.com/lodge/detail.php?id=638",
       "sourceUpdated": null,
       "lastVerified": "2026-11-01",
@@ -6677,7 +6788,14 @@
       "lastVerified": "2026-11-01",
       "capacityRef": null,
       "capacityRefUrl": null,
-      "auto": {}
+      "auto": {},
+      "capacityFix": {
+        "value": 30,
+        "text": "約30人",
+        "note": "公式（静岡県の案内では150人）",
+        "source": "http://www.fujisan-yamaguchiya.com/stay.html",
+        "checkedAt": "2026-11-25"
+      }
     },
     {
       "id": "hut-3c989c9d",
@@ -6767,13 +6885,7 @@
       "lastVerified": "2026-11-01",
       "capacityRef": null,
       "capacityRefUrl": null,
-      "auto": {},
-      "capacityFix": {
-        "value": 18,
-        "note": "予約サイト（やまたん）",
-        "source": "https://www.yamatan.net/search?area=fujisan",
-        "checkedAt": "2026-11-25"
-      }
+      "auto": {}
     },
     {
       "id": "hut-62e11707",

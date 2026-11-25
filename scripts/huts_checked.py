@@ -218,7 +218,6 @@ CAPACITY.update({   # 2026-11-25：MUSE の調査（公式・自治体・観光�
     '御殿場口新五合目 大石茶屋': {'value': 50, 'note': '御殿場市のよくある質問', 'source': 'https://www.city.gotemba.lg.jp/faq/sightq/', 'checkedAt': '2026-11-25'},
     '御殿場口七合九勺 赤岩八合館': {'value': 150, 'note': '静岡県の富士登山の案内', 'source': 'https://www.fujisan223.com/rule/stay/gotemba/akaiwa.html', 'checkedAt': '2026-11-25'},
     '御殿場口七合四勺 わらじ館': {'value': 39, 'note': '予約サイト（やまたん）', 'source': 'https://www.yamatan.net/hut/warazikan', 'checkedAt': '2026-11-25'},
-    '御殿場口新六合目 半蔵坊': {'value': 18, 'note': '予約サイト（やまたん）', 'source': 'https://www.yamatan.net/search?area=fujisan', 'checkedAt': '2026-11-25'},
     'スバルライン五合目 富士山みはらし': {'value': 46, 'note': '個室5室・大部屋24人', 'source': 'https://www.fujisan5.com/lodge.php', 'checkedAt': '2026-11-25'},
     '黒沢池ヒュッテ': {'value': 100, 'note': '頸城五山トレイルの案内', 'source': 'https://www.kubiki-five-mountains-trail.com/accommodation', 'checkedAt': '2026-11-25'},
     '槍ヶ岳山荘': {'value': 400, 'note': '公式サイト（中国語のページ）', 'source': 'https://www.yarigatake.co.jp/china/', 'checkedAt': '2026-11-25'},
@@ -244,4 +243,24 @@ CAPACITY.update({   # 2026-11-25：MUSE の調査（公式・自治体・観光�
     '黒部五郎小舎': {'value': 60, 'source': 'https://www.sugorokugoya.com/kurobe/', 'checkedAt': '2026-11-25'},
     'わさび平小屋': {'value': 65, 'source': 'https://www.sugorokugoya.com/wasabi/', 'checkedAt': '2026-11-25'},
     '八島山荘': {'value': 13, 'note': '14人以上の団体は受けない', 'source': 'https://yashimasanso.net/?page_id=29', 'checkedAt': '2026-11-25'},
+})
+
+CAPACITY.update({   # 2026-11-25（2回目）：MUSE の追加の調査を、出典のページで数字を確かめたものだけ。半蔵坊は予約サイト18人・静岡県12人で食い違うので外した
+    '金峰山小屋': {'value': 60, 'text': '約60人', 'note': '金峰山観光案内（川上村）', 'source': 'https://kinpusankankou.com/spot/index.php', 'checkedAt': '2026-11-25'},
+    '赤岳頂上山荘': {'value': 100, 'note': '八ヶ岳観光協会', 'source': 'http://www.mt-yatsugatake.sakura.ne.jp/yamagoya/yamagoya-544/', 'checkedAt': '2026-11-25'},
+    '青木鉱泉': {'value': 100, 'note': '全24室（公式）', 'source': 'https://www.mountaintrad.co.jp/yamanashi/aoki/aokikosen/data.html', 'checkedAt': '2026-11-25'},
+    '二の池ヒュッテ': {'value': 50, 'note': '王滝村の御嶽山の山小屋の案内', 'source': 'http://www.ontake.jp/karada/%E5%BE%A1%E5%B6%BD%E5%B1%B1%E7%99%BB%E5%B1%B1', 'checkedAt': '2026-11-25'},
+    'ヒュッテみさやま': {'value': 18, 'note': '全館の宿泊定員（公式）', 'source': 'https://huttemisayama.net/stay/', 'checkedAt': '2026-11-25'},
+    '富士山頂 山口屋': {'value': 30, 'text': '約30人', 'note': '公式（静岡県の案内では150人）', 'source': 'http://www.fujisan-yamaguchiya.com/stay.html', 'checkedAt': '2026-11-25'},
+    '須走口本六合目 瀬戸館': {'value': 120, 'note': '静岡県の富士登山の案内', 'source': 'https://www.fujisan223.com/rule/stay/subashiri/setokan.html', 'checkedAt': '2026-11-25'},
+    '須走口七合目 大陽館': {'value': 150, 'note': '静岡県の富士登山の案内', 'source': 'https://www.fujisan223.com/rule/stay/subashiri/taiyokan.html', 'checkedAt': '2026-11-25'},
+    '須走口五合目 東富士山荘': {'value': 50, 'note': '静岡県の富士登山の案内', 'source': 'https://www.fujisan223.com/rule/stay/subashiri/higashifujisansou.html', 'checkedAt': '2026-11-25'},
+    '須走口本七合目 見晴館': {'value': 80, 'note': '静岡県の富士登山の案内', 'source': 'https://www.fujisan223.com/rule/stay/subashiri/miharashikan.html', 'checkedAt': '2026-11-25'},
+    '苗場山頂ヒュッテ－自然体験交流センター': {'value': 92, 'note': '栄村秋山郷観光協会', 'source': 'http://sakae-akiyamago.com/play/3704/', 'checkedAt': '2026-11-25'},
+    '七倉山荘': {'value': 32, 'note': '大町市観光協会の2026年度の山小屋情報', 'source': 'https://kanko-omachi.gr.jp/special-mountain/', 'checkedAt': '2026-11-25'},
+    '甲武信小屋': {'value': 150, 'note': '秩父観光協会', 'source': 'https://www.chichibuji.gr.jp/hotel/hotel-syousai46/', 'checkedAt': '2026-11-25'},
+    '雲取山荘': {'value': 200, 'note': '22室（秩父観光協会）', 'source': 'https://www.chichibuji.gr.jp/hotel/hotel-syousai45/', 'checkedAt': '2026-11-25'},
+    '雷鳥荘': {'value': 260, 'note': '53室（富山県の観光サイト）', 'source': 'https://www.e-muchtoyama.com/detail/index_1067.html', 'checkedAt': '2026-11-25'},
+    '福ちゃん荘': {'value': 80, 'note': '甲州市の観光サイト', 'source': 'https://www.koshu-kankou.jp/map/m4945.html', 'checkedAt': '2026-11-25'},
+    '烏帽子小屋': {'value': 30, 'text': '約30人（2026年）', 'note': '通常は約50人。2026年は約30人の予約制（北アルプス山小屋友交会）', 'source': 'https://kita-alps.yamagoya.gr.jp/area05/329.html', 'checkedAt': '2026-11-25'},
 })
