@@ -198,25 +198,25 @@
    "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/44853349497"
   },
   {
-   "id": "sitecheck-2026-11-25-2e576b2dec",
+   "id": "sitecheck-2026-11-25-d70a4610b6",
    "kind": "sitecheck",
    "title": "サイトの検証",
    "date": "2026-11-25",
    "needsAction": true,
-   "digest": "2e576b2dec",
+   "digest": "d70a4610b6",
    "sections": [
     {
      "heading": "1. 画像切れ（4件）",
      "lines": [
-      "search/train-daytrip/index.html → /images/mountains/takao/01.webp",
       "search/train-daytrip/index.html → /images/mountains/jinba/01.webp",
-      "articles/coeff-20/index.html → /images/mountains/jinba/01.webp",
-      "articles/coeff-20/index.html → /images/mountains/takao/01.webp"
+      "search/train-daytrip/index.html → /images/mountains/takao/01.webp",
+      "articles/coeff-20/index.html → /images/mountains/takao/01.webp",
+      "articles/coeff-20/index.html → /images/mountains/jinba/01.webp"
      ]
     }
    ],
    "next": "Claude のアプリで「check_pages.py の異常を直して」と伝えてください。",
-   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/45521901401"
+   "url": "https://github.com/daiki96tabletennis-glitch/tozan-navi/actions/runs/45521865608"
   },
   {
    "id": "push-2026-10-21-bd9ddaf71d",
