@@ -279,6 +279,7 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
 
 </main>
 <script src="/assets/js/volcano-status.js?v=20261010a"></script>
+<script src="/assets/js/diag-back.js?v=20261126"></script>
 <script>
 var QUESTIONS = [
   {
@@ -386,6 +387,9 @@ function loadMountains(){
       mountainsData = data;
       // 噴火警報が出ている山は「規制中」として診断から外す（気象庁のデータ）
       if(window.YMVolcano) window.YMVolcano.load(function(){ window.YMVolcano.apply(mountainsData); });
+      // 山ページの「診断の結果に戻る」・ブラウザの戻るで来たとき（?back=1）は、預けた答えで結果を出し直す（2026-11-25）
+      var back = window.YMDiagBack && window.YMDiagBack.restore('find');
+      if(back){ answers = back; _doShowResult(); }
     })
     .catch(function(){});
 }
@@ -393,6 +397,7 @@ function loadMountains(){
 if(!window.YM_WINTER_SWAP) loadMountains();
 
 function startQuiz(){
+  if(window.YMDiagBack) window.YMDiagBack.clear();
   answers = {};
   currentQ = 0;
   _transitioning = false;
@@ -563,6 +568,46 @@ function getTrainTime(m){
   return (typeof v === 'number' && v > 0) ? v : null;
 }
 
+var FOOD_RE = /温泉|茶屋|食堂|名物|そば|うどん|売店|カフェ|ごはん|ご飯|定食|だんご|団子/;
+var QUIET_RE = /静か|人が少な|登山者が少な|登山者も少な|穴場|ひっそり|訪れる人が少|人の少な/;
+// 選んだ好み（景色・道・ほかの楽しみ）に合っているか（2026-11-26）。2・3位を選ぶときに、1位が合っている好みはすべて合う山だけにする
+function fitFlags(m){
+  var all = normVibes(m.vibes).slice();
+  featureTags(m).forEach(function(t){ if(all.indexOf(t) === -1) all.push(t); });
+  var rock = all.indexOf('rock') > -1, ridge = all.indexOf('ridge') > -1;
+  var fp = (m.featurePoints || []).map(function(p){ return p.label + ' ' + p.text; }).join(' ');
+  var f = { vibe: vibeHits(m) > 0, path: true, extra: true };
+  if(answers.path === 'smooth') f.path = !rock;
+  else if(answers.path === 'rocky') f.path = rock;
+  else if(answers.path === 'ridge') f.path = ridge;
+  if(answers.extra === 'food') f.extra = FOOD_RE.test(fp);
+  else if(answers.extra === 'season') f.extra = hasSeasonPoint(m);
+  else if(answers.extra === 'history') f.extra = all.indexOf('historic') > -1;
+  else if(answers.extra === 'quiet') f.extra = all.indexOf('quiet') > -1 || QUIET_RE.test(fp + ' ' + (m.description || '') + ' ' + (m.recommendReason || ''));
+  return f;
+}
+// 1位が合っている好みに、すべて合っている山か
+// 1位でも合わない好みがあれば、そのことを結果の件数の行に添える（ほかの条件の中に合う山が無いとき）
+function missNote(top){
+  if(!top) return '';
+  var f = fitFlags(top.m), ids = { vibe: 'vibe', path: 'path', extra: 'extra' }, miss = [];
+  Object.keys(f).forEach(function(k){
+    if(f[k]) return;
+    var q = QUESTIONS.filter(function(q){ return q.id === ids[k]; })[0];
+    var c = q && q.choices.filter(function(c){ return c.value === answers[k]; })[0];
+    if(c) miss.push('「' + c.label + '」');
+  });
+  return miss.length ? '。' + miss.join('') + 'に合う山は、ほかの条件の中に見つからなかったため、近い山を出しています' : '';
+}
+function fitCount(m){
+  var f = fitFlags(m);
+  return Object.keys(f).filter(function(k){ return f[k]; }).length;
+}
+function fitsLike(top, x){
+  var a = fitFlags(top.m), b = fitFlags(x.m);
+  return Object.keys(a).every(function(k){ return !a[k] || b[k]; });
+}
+
 function scoreMount(m){
   var score = 0;
 
@@ -668,7 +713,7 @@ function scoreMount(m){
   // --- 登山のほかの楽しみ（2026-10-25 に追加） ---
   var fpText = (m.featurePoints || []).map(function(p){ return p.label + ' ' + p.text; }).join(' ');
   if(answers.extra === 'food'){
-    if(/温泉|茶屋|食堂|名物|そば|うどん|売店|カフェ|ごはん|ご飯|定食|だんご|団子/.test(fpText)) score += 20;
+    if(FOOD_RE.test(fpText)) score += 20;
   } else if(answers.extra === 'season'){
     if(hasSeasonPoint(m)) score += 20;
     if(allTags.indexOf('flower') > -1 || allTags.indexOf('season') > -1) score += 5;
@@ -677,7 +722,7 @@ function scoreMount(m){
   } else if(answers.extra === 'quiet'){
     // 静かな山：特徴のタグ quiet か、特徴・紹介文に「静か」「人が少ない」「穴場」などと書いてある山を上げ、茶屋やロープウェイのある人の多い山は下げる
     var quietText = fpText + ' ' + (m.description || '') + ' ' + (m.recommendReason || '');
-    if(allTags.indexOf('quiet') > -1 || /静か|人が少な|登山者が少な|登山者も少な|穴場|ひっそり|訪れる人が少|人の少な/.test(quietText)) score += 22;
+    if(allTags.indexOf('quiet') > -1 || QUIET_RE.test(quietText)) score += 22;
     if(allTags.indexOf('casual') > -1) score -= 12;
     if(allTags.indexOf('accessible') > -1) score -= 6;
   }
@@ -892,6 +937,9 @@ function _doShowResult(){
   // 選んだ気分に合う山が3つ以上あれば、合わない山は候補から外す（「高原・湿原」で岩山が出る、などを防ぐ）
   var vibeMatched = scored.filter(function(x){ return vibeHits(x.m) > 0; });
   if(vibeMatched.length >= 3) scored = vibeMatched;
+  // 選んだ好み（景色・道・ほかの楽しみ）に多く合う山を先に、同じなら点数の順（2026-11-26。前は点数の合計だけで、好みに合わない山が1位になることがあった）
+  scored.forEach(function(x){ x.fit = fitCount(x.m); });
+  scored.sort(function(a, b){ return (b.fit - a.fit) || (b.score - a.score); });
 
   var dep = answers.depart || 'ofuna';
   var depLabel = dep === 'shinjuku' ? '新宿・都内' : dep === 'omiya' ? '大宮・埼玉' : '横浜・大船';
@@ -900,18 +948,25 @@ function _doShowResult(){
 
   var whoLabel = {solo:'ひとりで', friends:'友人・パートナーと', family:'子ども・家族と'}[answers.who] || '';
   document.getElementById('result-headline').textContent = (targetMonth() + 1) + '月・' + depLabel + '発・' + (whoLabel ? whoLabel + '、' : '') + fitLabel + '登れる山';
-  document.getElementById('result-count').textContent = '条件に合う山：' + scored.length + '件中、上位3件を表示';
+  document.getElementById('result-count').textContent = '条件に合う山：' + scored.length + '件中、上位3件を表示' + missNote(scored[0]);
 
   // TOP1は最高スコアで固定、2・3位は上位プール（1位から30点以内。少なければ45点以内）から抽選
   // 同じ回答でも「もう一度診断する」で違う山に出会える
   function pickTop3(list){
+    var _fx = window.YMDiagBack && window.YMDiagBack.pick(list, 3);
+    if(_fx) return _fx;
+    // 登頂記録のある山は1位にしない（2026-11-26。運営者の指示）
+    if(window.YMDiagBack) list = window.YMDiagBack.notClimbedFirst(list, function(x){ return x.m.id; });
     if(list.length <= 3) return list;
     var top1 = list[0];
     var best = top1.score;
-    var pool = list.slice(1).filter(function(x){ return x.score >= best - 30; });
+    // 2・3位は、1位が合っている好み（景色・道・ほかの楽しみ）にすべて合う山の中から選ぶ（2026-11-26。運営者の指示「選んだ選択肢にきちんと合った山を」）
+    var fits = list.slice(1).filter(function(x){ return fitsLike(top1, x); });
+    var pool = fits.filter(function(x){ return x.score >= best - 30; });
     // 候補が少ないときも、1位から45点を超えて離れた山は混ぜない（合わない山が上位に出るのを防ぐ）
-    if(pool.length < 4) pool = list.slice(1).filter(function(x){ return x.score >= best - 45; });
-    if(pool.length < 2) pool = list.slice(1, 3);
+    if(pool.length < 4) pool = fits.filter(function(x){ return x.score >= best - 45; });
+    if(pool.length < 2) pool = fits.slice(0, 2);
+    if(pool.length < 2) pool = pool.concat(list.slice(1).filter(function(x){ return pool.indexOf(x) === -1; })).slice(0, 2);
     // Fisher-Yatesで2件抽選
     var arr = pool.slice();
     for(var i = arr.length - 1; i > 0; i--){
@@ -923,6 +978,8 @@ function _doShowResult(){
     return [top1].concat(picks);
   }
   var top3 = pickTop3(scored);
+  // 好みに合わない旨の注記は、実際に1位に出す山で見る（登頂済みの山を1位から外したときのため）
+  if(top3.length) document.getElementById('result-count').textContent = '条件に合う山：' + scored.length + '件中、上位3件を表示' + missNote(top3[0]);
   var rankClass = ['r1','r2','r3'];
 
   if(top3.length === 0){
@@ -934,6 +991,7 @@ function _doShowResult(){
     show('step-result');
     document.getElementById('gear-section').innerHTML = buildGearSection();
     document.getElementById('tips-section').innerHTML = buildTipsSection();
+    if(window.YMDiagBack) window.YMDiagBack.save('find', '山選び診断', answers, document.getElementById('step-result'));
     return;
   }
 
@@ -952,6 +1010,7 @@ function _doShowResult(){
     html += '</div>';
     html += '<div class="rc-badges">';
     html += '<span class="rb rb-diff">' + esc(m.difficulty||'') + '</span>';
+    if(window.YMDiagBack && window.YMDiagBack.climbed().indexOf(m.id) > -1) html += '<span class="rb rb-climbed" style="background:#ece6dc;color:#5a4636">登頂済み</span>';
     if(m.trainAccess) html += '<span class="rb rb-train"><svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M2 7 H14 L20 11.5 V17 H2 Z" fill="currentColor"/><rect x="4" y="9.5" width="3" height="3" fill="white"/><rect x="9" y="9.5" width="3" height="3" fill="white"/><line x1="1" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> 電車OK</span>';
     if(driveStr && answers.transport === 'car') html += '<span class="rb rb-drive">' + driveStr + '</span>';
     if(is100) html += '<span class="rb rb-100">🏆 百名山</span>';
@@ -976,10 +1035,12 @@ function _doShowResult(){
   show('step-result');
   document.getElementById('gear-section').innerHTML = buildGearSection();
   document.getElementById('tips-section').innerHTML = buildTipsSection();
+  if(window.YMDiagBack) window.YMDiagBack.save('find', '山選び診断', answers, document.getElementById('step-result'));
   window.scrollTo(0, 0);
 }
 
 function resetQuiz(){
+  if(window.YMDiagBack) window.YMDiagBack.clear();
   answers = {};
   currentQ = 0;
   show('step-intro');

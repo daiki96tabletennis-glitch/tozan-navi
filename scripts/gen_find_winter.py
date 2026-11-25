@@ -227,6 +227,7 @@ TEMPLATE = r"""<!DOCTYPE html>
 </div>
 </main>
 <script src="/assets/js/volcano-status.js?v=20261010a"></script>
+<script src="/assets/js/diag-back.js?v=20261126"></script>
 <script>
 var IC = @@ICONS@@;
 function ic(n){ return IC[n] || ''; }
@@ -305,10 +306,14 @@ fetch('/data/winter_find.json')
     loaded = true;
     // 噴火警報が出ている山は「規制中」として外す（気象庁のデータ。山選び診断と同じ）
     if(window.YMVolcano) window.YMVolcano.load(function(){ window.YMVolcano.apply(mountainsData); });
+    // 山ページの「診断の結果に戻る」・ブラウザの戻るで来たとき（?back=1）は、預けた答えで結果を出し直す（2026-11-25）
+    var back = window.YMDiagBack && window.YMDiagBack.restore('find_winter');
+    if(back){ answers = back; _doShowResult(); }
   })
   .catch(function(){ loaded = true; });
 
 function startQuiz(){
+  if(window.YMDiagBack) window.YMDiagBack.clear();
   answers = {}; currentQ = 0; _transitioning = false;
   show('step-q'); renderQ();
   if(typeof gtag === 'function') gtag('event', 'diagnosis_start', { diagnosis_type: 'find_winter' });
@@ -611,6 +616,7 @@ function cardHtml(x, i){
   h += '<div><div class="rc-name">' + esc(m.name) + '</div><div class="rc-area">' + esc(m.area) + ' ' + (m.ele || '').toLocaleString() + 'm</div></div></div>';
   h += '<div class="rc-badges">';
   h += '<span class="rb rb-diff">' + esc(m.diff || '') + '</span>';
+  if(window.YMDiagBack && window.YMDiagBack.climbed().indexOf(m.id) > -1) h += '<span class="rb rb-climbed" style="background:#ece6dc;color:#5a4636">登頂済み</span>';
   h += '<span class="rb rb-gear">' + MONTH_LABEL[answers.when] + '：' + esc(GEAR_SHORT[x.gear.worst]) + '</span>';
   if(answers.transport === 'train') h += '<span class="rb rb-train">電車・バスOK</span>';
   var tm = travelMin(m);
@@ -658,12 +664,51 @@ function cardHtml(x, i){
   return h;
 }
 
+// 選んだ好み（見たいもの・下山後）に合っているか（2026-11-26）。2・3位とほかの候補を選ぶときに、1位が合っている好みはすべて合う山を先にする
+function fitFlags(x){
+  var m = x.m, f = { see: true, after: true };
+  if(answers.see === 'fuji') f.see = !!m.fuji;
+  else if(answers.see === 'ice') f.see = RANK[x.gear.worst] >= 1 || !!(m.view || m.iceText || ICE_RE.test(fpText(m)));
+  else if(answers.see === 'pano') f.see = !!m.pano;
+  else if(answers.see === 'easy') f.see = hasTag(m, 'accessible') || hasTag(m, 'easy') || hasTag(m, 'casual') || !!m.lift;
+  if(answers.after === 'onsen') f.after = !!(m.onsen || m.sauna || m.onsenText || m.onsenNear);
+  else if(answers.after === 'food') f.after = !!m.food;
+  else if(answers.after === 'shrine') f.after = hasTag(m, 'historic');
+  return f;
+}
+// 1位でも合わない好みがあれば、そのことを結果の件数の行に添える（ほかの条件の中に合う山が無いとき）
+function missNote(top){
+  if(!top) return '';
+  var f = fitFlags(top), miss = [];
+  Object.keys(f).forEach(function(k){
+    if(f[k]) return;
+    var q = QUESTIONS.filter(function(q){ return q.id === k; })[0];
+    var c = q && q.choices.filter(function(c){ return c.value === answers[k]; })[0];
+    if(c) miss.push('「' + c.label + '」');
+  });
+  return miss.length ? '。' + miss.join('') + 'に合う山は、ほかの条件の中に見つからなかったため、近い山を出しています' : '';
+}
+function fitCount(x){
+  var f = fitFlags(x);
+  return Object.keys(f).filter(function(k){ return f[k]; }).length;
+}
+function fitsLike(top, x){
+  var a = fitFlags(top), b = fitFlags(x);
+  return Object.keys(a).every(function(k){ return !a[k] || b[k]; });
+}
 function pickTop3(list){
+  var _fx = window.YMDiagBack && window.YMDiagBack.pick(list, 3);
+  if(_fx) return _fx;
+  // 登頂記録のある山は1位にしない（2026-11-26。運営者の指示）
+  if(window.YMDiagBack) list = window.YMDiagBack.notClimbedFirst(list, function(x){ return x.m.id; });
   if(list.length <= 3) return list;
   var top1 = list[0], best = top1.score;
-  var pool = list.slice(1).filter(function(x){ return x.score >= best - 30; });
-  if(pool.length < 4) pool = list.slice(1).filter(function(x){ return x.score >= best - 45; });
-  if(pool.length < 2) pool = list.slice(1, 3);
+  // 2・3位は、1位が合っている好みにすべて合う山の中から選ぶ（2026-11-26。運営者の指示「選んだ選択肢にきちんと合った山を」）
+  var fits = list.slice(1).filter(function(x){ return fitsLike(top1, x); });
+  var pool = fits.filter(function(x){ return x.score >= best - 30; });
+  if(pool.length < 4) pool = fits.filter(function(x){ return x.score >= best - 45; });
+  if(pool.length < 2) pool = fits.slice(0, 2);
+  if(pool.length < 2) pool = pool.concat(list.slice(1).filter(function(x){ return pool.indexOf(x) === -1; })).slice(0, 2);
   var arr = pool.slice();
   for(var i = arr.length - 1; i > 0; i--){
     var j = Math.floor(Math.random() * (i + 1)); var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
@@ -683,14 +728,18 @@ function _doShowResult(){
   if(ov){ ov.classList.remove('active'); document.body.style.overflow = ''; }
   var scored = [];
   mountainsData.forEach(function(m){ var x = scoreMount(m); if(x && x.score > 0) scored.push(x); });
-  scored.sort(function(a, b){ return b.score - a.score; });
+  // 選んだ好み（見たいもの・下山後）に多く合う山を先に、同じなら点数の順（2026-11-26）
+  scored.forEach(function(x){ x.fit = fitCount(x); });
+  scored.sort(function(a, b){ return (b.fit - a.fit) || (b.score - a.score); });
   var dep = answers.depart || 'ofuna';
   var depLabel = dep === 'shinjuku' ? '新宿・都内' : dep === 'omiya' ? '大宮・埼玉' : '横浜・大船';
   var gearLabel = { none: '雪の無い', light: 'チェーンスパイクで行ける', entry: '雪山入門の', expert: '雪山の' }[answers.gear] || '';
   if(answers.who === 'family') gearLabel = '雪の無い';
   document.getElementById('result-headline').textContent = MONTH_LABEL[answers.when] + '・' + depLabel + '発・' + gearLabel + '日帰りの山';
-  document.getElementById('result-count').textContent = scored.length ? '条件に合う山：' + scored.length + '件中、上位3件を表示' : '';
+  document.getElementById('result-count').textContent = scored.length ? '条件に合う山：' + scored.length + '件中、上位3件を表示' + missNote(scored[0]) : '';
   var top3 = pickTop3(scored);
+  // 好みに合わない旨の注記は、実際に1位に出す山で見る（登頂済みの山を1位から外したときのため）
+  if(top3.length) document.getElementById('result-count').textContent = '条件に合う山：' + scored.length + '件中、上位3件を表示' + missNote(top3[0]);
   if(!top3.length){
     document.getElementById('result-cards').innerHTML = '<div class="empty-result"><div class="empty-result-text">条件に合う山が見つかりませんでした。<br>移動時間や雪の段階を変えてお試しください。</div></div>';
     document.getElementById('result-headline').textContent = '条件に合う山が見つかりませんでした';
@@ -699,7 +748,9 @@ function _doShowResult(){
   } else {
     document.getElementById('result-cards').innerHTML = top3.map(cardHtml).join('');
     var used = top3.map(function(x){ return x.m.id; });
-    var more = scored.filter(function(x){ return used.indexOf(x.m.id) === -1; }).slice(0, 6);
+    // ほかの候補も、1位が合っている好みにすべて合う山を先に（点数の順）
+    var rest = scored.filter(function(x){ return used.indexOf(x.m.id) === -1; });
+    var more = rest.filter(function(x){ return fitsLike(top3[0], x); }).concat(rest.filter(function(x){ return !fitsLike(top3[0], x); })).slice(0, 6);
     var mh = '';
     if(more.length){
       mh = '<div class="more-list"><div class="more-title">ほかの候補</div>';
@@ -716,6 +767,7 @@ function _doShowResult(){
   document.getElementById('fw-guide-note').textContent = fwGuideNote();
   document.getElementById('gear-section').innerHTML = buildGearSection();
   document.getElementById('tips-section').innerHTML = buildTipsSection();
+  if(window.YMDiagBack) window.YMDiagBack.save('find_winter', '冬の山選び診断', answers, document.getElementById('step-result'));
   window.scrollTo(0, 0);
 }
 
@@ -792,7 +844,7 @@ function buildTipsSection(){
   return html;
 }
 function toggleInfo(btn){ btn.classList.toggle('open'); btn.nextElementSibling.classList.toggle('open'); }
-function resetQuiz(){ answers = {}; currentQ = 0; show('step-intro'); window.scrollTo(0, 0); }
+function resetQuiz(){ if(window.YMDiagBack) window.YMDiagBack.clear(); answers = {}; currentQ = 0; show('step-intro'); window.scrollTo(0, 0); }
 function show(id){
   document.querySelectorAll('.step').forEach(function(el){ el.classList.remove('active'); });
   document.getElementById(id).classList.add('active');

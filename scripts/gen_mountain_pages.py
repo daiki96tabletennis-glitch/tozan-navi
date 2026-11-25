@@ -2283,6 +2283,7 @@ def generate_page(mt, by_id, gear_data):
     body_sections.append(FOOTER_BLOCK.rstrip("\n"))
     body_sections.append(render_scripts(mt))
     body_sections.append('<script src="/assets/js/to-top.js?v=20261025a" defer></script>')  # 一番上へ戻るボタン（2026-10-25）
+    body_sections.append('<script src="/assets/js/diag-back.js?v=20261126" defer></script>')  # 診断の結果に戻る（2026-11-25）
     body_sections.append("</body>")
     body_sections.append("</html>")
 

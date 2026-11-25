@@ -955,6 +955,7 @@ footer{text-align:center;padding:20px;font-size:12px;color:#a09888;border-top:1p
 
 <script src="/assets/js/gear-common.js?v=20261002"></script>
 <script src="/assets/js/volcano-status.js?v=20261010a"></script>
+<script src="/assets/js/diag-back.js?v=20261126"></script>
 <script>
 // 山データは /data/mountains.json を唯一の正とする（ページ内にコピーを持たない）。読み込み後に下のPromise内で埋める。
 const MOUNTAINS = [];
@@ -1313,6 +1314,7 @@ function goBack(){
 }
 
 function restart(){
+  if(window.YMDiagBack) window.YMDiagBack.clear();
   if(location.search && window.history && history.replaceState) history.replaceState(null,'','/recommend/');
   if(window._hideStickyOnRestart) window._hideStickyOnRestart();
   Object.keys(answers).forEach(k=>delete answers[k]);
@@ -1697,7 +1699,8 @@ function _doShowResult(opts){
     if(rc) rc.innerHTML='<div style="padding:24px;text-align:center;font-size:14px;color:#5a5248;">山データの読み込みに失敗しました。通信状況を確認して、ページを再読み込みしてください。</div>';
     return;
   }
-  const top3=scored.slice(0,3);
+  // 登頂記録のある山は1位にしない（2026-11-26。運営者の指示）
+  const top3=(window.YMDiagBack ? window.YMDiagBack.notClimbedFirst(scored, function(m){ return m.id; }) : scored).slice(0,3);
 
   // タイプカード
   const rareLabel=RARE_LABELS[type.affilLevel];
@@ -1732,7 +1735,7 @@ function _doShowResult(opts){
   document.getElementById('result-cards').innerHTML=top3.map((m,i)=>{
     const catClass=m.category==='百名山'?'rb-100':'rb-pop';
     const dayBadge=m.daytrip?'<span class="rb rb-day">日帰り</span>':'<span class="rb rb-stay">宿泊</span>';
-    const trainBadge=m.trainAccess?'<span class="rb rb-train">電車OK</span>':'';
+    const trainBadge=(m.trainAccess?'<span class="rb rb-train">電車OK</span>':'')+((window.YMDiagBack&&window.YMDiagBack.climbed().indexOf(m.id)>-1)?'<span class="rb" style="background:#ece6dc;color:#5a4636">登頂済み</span>':'');
     const ranks=['r1','r2','r3'];
     const reasons=getReasons(m, depLabel, m.drive, typeCode);
     const gearData=getGearList(m);
@@ -2327,6 +2330,11 @@ function _doShowResult(opts){
       }));
     } catch(e) {}
   }
+  // 山ページの「診断の結果に戻る」（2026-11-25）。共有のURL（?type=…）で見ている結果はそのURLへ、自分の結果は ?back=1 で保存済みの結果から出し直す
+  if(window.YMDiagBack){
+    var _shared = /[?&]type=/.test(location.search);
+    window.YMDiagBack.save('type', '登山タイプ診断', null, document.getElementById('result'), _shared ? location.pathname + location.search : null);
+  }
 }
 
 function copyResult(){
@@ -2421,6 +2429,12 @@ document.addEventListener('DOMContentLoaded', function(){
         }
       })();
 
+      // 山ページの「診断の結果に戻る」・ブラウザの戻るで来たとき（?back=1）：保存済みの自分の結果を出し直す（2026-11-25）
+      if(window.YMDiagBack && window.YMDiagBack.restore('type') !== null){
+        var _sv = null;
+        try { _sv = JSON.parse(localStorage.getItem('ym_type_result') || 'null'); } catch(e) {}
+        if(_sv) setTimeout(function(){ showResultFromSaved(_sv); }, 0);
+      }
       // ?type=XXX でアクセスした場合は診断結果も表示
       // 4軸スコア(av/ch/pf/sl)がURLに含まれていれば、診断直後・共有URLからの
       // 「個人の診断結果」として実スコアをそのまま復元する。
