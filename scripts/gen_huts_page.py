@@ -19,6 +19,7 @@ import huts_season
 import huts_rules
 import huts_checked
 from huts_features import FEATURES
+from huts_availability import AVAIL, CHECKED as AVAIL_CHECKED
 assert set(FEATURES) <= set(h['name'] for h in H), set(FEATURES) - set(h['name'] for h in H)
 _sp = os.path.join(ROOT, 'data', 'summit_coords.json')
 SUMMITS = json.load(open(_sp, encoding='utf-8'))['mountains'] if os.path.exists(_sp) else {}
@@ -726,6 +727,53 @@ def methods_text(ms):
     return '・'.join(split_note(x)[0] for x in ms) if ms else None
 
 
+_YT_SLUG = {k: v.get('yamatan') for k, v in json.load(open(os.path.join(ROOT, 'data', 'huts_sources.json'), encoding='utf-8'))['huts'].items() if v.get('yamatan')}
+
+
+def avail(h, x):
+    """空き状況の見方（2026-11-25〜）。huts_availability.py に確かめた小屋はその文、ほかは予約方法から。(文, URL, ボタンの文字) か None"""
+    if x['none']:
+        return None
+    name = h['name']
+    if name in AVAIL:
+        a = AVAIL[name]
+        return a['how'], a.get('url'), a.get('label')
+    ms = ' '.join(x['methods'] or [])
+    yt = None
+    if name in _YT_SLUG:
+        yt = 'https://www.yamatan.net/hut/' + _YT_SLUG[name]
+    else:
+        for u in (h.get('bookingSourceUrl'), h.get('officialUrl')):
+            if u and 'yamatan.net/hut/' in u:
+                yt = u
+    if yt and ('やまたん' in ms or 'Yamatan' in ms):
+        return ('予約サイト「やまたん」の%sのページで、日付ごとの空き（予約できる日）を確かめられます。予約もそのまま申し込めます。' % name
+                + ('電話でも受け付けています。' if '電話' in ms else '')), yt, 'やまたんで空き状況を見る'
+    tel = h.get('tel')
+    if 'LINE' in ms and 'Web' not in ms:
+        return '予約は%sで受け付けています。空き状況も同じ方法で問い合わせてください。' % methods_text(x['methods']), h.get('officialUrl'), '公式サイト'
+    if ('Web' in ms or 'ネット' in ms) and h.get('bookingSourceUrl'):
+        return ('予約はWebで受け付けています。空きは公式の予約のページで日付を選んで確かめてください（カレンダーで見られる小屋と、申し込んだあとに返事が来る小屋があります）。'
+                + ('電話でも受け付けています。' if '電話' in ms else '')), h.get('bookingSourceUrl'), '予約のページ'
+    if '電話' in ms:
+        return ('予約は電話で受け付けています。空き状況も電話で問い合わせてください%s。' % (('（%s）' % tel) if tel else '')), h.get('officialUrl'), '公式サイト'
+    return None
+
+
+def avail_block(h, x):
+    a = avail(h, x)
+    if not a:
+        return ''
+    how, url, label = a
+    btn = ('<p style="margin:8px 0 0"><a class="btn" href="%s" target="_blank" rel="noopener">%s →</a></p>' % (E(url), E(label or '公式サイト'))) if url else ''
+    return ('<section class="avail" style="background:#fff;border:1px solid #d8d2c4;border-radius:10px;padding:12px 14px;margin:0 0 12px">'
+            '<h2 class="sec" style="margin:0 0 6px;font-size:17px">%sの空き状況の見方</h2>'
+            '<p style="margin:0;font-size:14px;line-height:1.8">%s</p>%s'
+            '<p class="upd" style="margin:6px 0 0">%s</p></section>\n') % (
+        E(h['name']), E(how), btn,
+        ('公式サイト・予約サイトで確かめた内容（%s）' % AVAIL_CHECKED) if h['name'] in AVAIL else '予約方法からの案内です。最新の受付は公式サイトで確かめてください')
+
+
 def huts_of(mid):
     """その山の小屋：ルート上の小屋 → 別ルート・縦走の小屋 の順"""
     a = [h for h in H if mid in h['mountainIds']]
@@ -1007,17 +1055,18 @@ for h in H:
     s_main, s_sub = split_note(x['start']) if x['start'] else (None, None)
     mt_txt = methods_text(x['methods'])
     # タイトル：答え（予約の開始）を先に見せる
+    # 2026-11-25：「◯◯ 予約」「◯◯ 空き状況」「予約状況」の検索に合わせ、題名に「予約・空き状況」を入れる（答え＝予約の開始は残す）
     if x['none']:
         title = '%sは予約不要｜営業期間・定員・利用方法【%d年】| Yamatch' % (name, YEAR)
     elif s_main and len(s_main) <= 24:
-        title = '%sの予約はいつから？%s【%d年】予約方法・営業期間 | Yamatch' % (name, s_main, YEAR)
+        title = '%sの予約・空き状況｜予約は%s【%d年】営業期間 | Yamatch' % (name, s_main, YEAR)
     elif s_main:
-        title = '%sの予約はいつから？予約開始日・予約方法・営業期間【%d年】| Yamatch' % (name, YEAR)
+        title = '%sの予約・空き状況｜予約はいつから？予約開始日【%d年】| Yamatch' % (name, YEAR)
     else:
-        title = '%sの予約方法・営業期間・定員【%d年】| Yamatch' % (name, YEAR)
+        title = '%sの予約・空き状況の確認方法｜予約方法・営業期間【%d年】| Yamatch' % (name, YEAR)
     if len(title) > 48:
         # 長い名前・長い答えのときは、後ろの決まり文句を落として答えが切れないようにする
-        title = title.replace('予約方法・営業期間 | Yamatch', '| Yamatch')
+        title = title.replace('営業期間 | Yamatch', '| Yamatch')
     parts = []
     if x['none']:
         parts.append('%s（%s）は予約の受付がない小屋です。%s' % (name, mts_txt, x['none'].rstrip('。') + '。'))
@@ -1028,6 +1077,9 @@ for h in H:
             parts.append('%s（%s）の予約情報。' % (name, mts_txt))
         if mt_txt:
             parts.append('予約方法は%s。' % mt_txt)
+        _av = avail(h, x)
+        if _av:
+            parts.append('空き状況の見方も案内。')
     if x['season'] and x['season'] != '—':
         parts.append('営業期間は%s。' % x['season'])
     if x['cap']:
@@ -1043,6 +1095,9 @@ for h in H:
         qa.append(('%sは予約が必要ですか？' % name, '予約は不要です。%s' % x['none']))
     elif x['start']:
         qa.append(('%sの予約はいつからできますか？' % name, '%s。最新の受付状況は公式サイトで確認してください。' % x['start']))
+    _av = avail(h, x)
+    if _av:
+        qa.append(('%sの空き状況はどこで確認できますか？' % name, _av[0]))
     if mt_txt:
         qa.append(('%sの予約方法は？' % name, '%sで受け付けています。%s' % (mt_txt, '予約は必須です。' if h['bookingRequired'] else '')))
     if x['season'] and x['season'] != '—':
@@ -1067,7 +1122,7 @@ for h in H:
         for o in sum(huts_of(i), []):
             if o['id'] != h['id'] and o not in sib:
                 sib.append(o)
-    _t = '%s｜%s（%d年）' % (E(name), '予約不要・利用方法' if x['none'] else '予約開始日・予約方法', YEAR)
+    _t = '%s｜%s（%d年）' % (E(name), '予約不要・利用方法' if x['none'] else '予約・空き状況・予約開始日', YEAR)
     _c = COORDS.get(name)
     _fm = h['mountainIds'][0] if h['mountainIds'] else None
     _sub = ('標高 %sm' % format(hut_ele(h), ',')) if hut_ele(h) else ''
@@ -1087,6 +1142,7 @@ for h in H:
             (' › <a href="/huts/%s/">%sの山小屋</a>' % (E(h['mountainIds'][0]), E(M[h['mountainIds'][0]]['name']))) if h['mountainIds'] else '', E(name))
         + '<div class="fact" style="background:#e9efe0;margin-bottom:12px"><div class="fl">%s</div>%s</div>\n' % ('予約' if x['none'] else '予約はいつから？', ans)
         + '<p class="upd">最終確認：<time datetime="%s">%s</time></p>\n' % (h.get('lastVerified') or VERIFIED, VERIFIED_JA)
+        + avail_block(h, x)
         + (('<p class="lead">%sは、%s%s</p>\n' % (E(name), ('「%s」にあります。' % E(x['place'][0])) if x['place'][0] else '', E(x['place'][1]) + '。')) if x.get('place') else '')
         + '<div id="list">\n%s\n</div>\n' % own
         + alert_html

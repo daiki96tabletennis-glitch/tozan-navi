@@ -1125,7 +1125,8 @@ def amenities_block(mt):
         rows = []
         for h in a["huts"]:
             page = os.path.exists(os.path.join(SITE_ROOT, "huts", h["id"], "index.html"))
-            title = f'<a href="/huts/{esc(h["id"])}/" {link_st}>{esc(h["name"])}</a>' if page else f'<b>{esc(h["name"])}</b>'
+            title = (f'<a href="/huts/{esc(h["id"])}/" {link_st}>{esc(h["name"])}の予約・空き状況</a>' if page
+                     else f'<b>{esc(h["name"])}</b>')
             booking = f'<br>予約の開始：{esc(h["booking"])}' if h.get("booking") else "<br>予約の開始：公式サイトで確認"
             official = (f'<br><a href="{esc(h["url"])}" target="_blank" rel="noopener" {link_st}>公式サイト</a>'
                         if h.get("url") else "")
@@ -1134,7 +1135,14 @@ def amenities_block(mt):
         label = f"{name}の山小屋をすべて見る（{a['hutCount']}軒）" if more > 0 else f"{name}の山小屋の比較と予約を見る"
         all_link = (f'<a href="/huts/{esc(mt["id"])}/" {link_st}>{label} →</a>'
                     if os.path.exists(os.path.join(SITE_ROOT, "huts", mt["id"], "index.html")) else "")
-        parts.append(f'<details class="ym-amenity"><summary {sum_st}>コース上の山小屋（{a["hutCount"]}軒）</summary>'
+        # 2026-11-25：「◯◯ 予約」「空き状況」の検索が多いので、閉じた欄の外にも小屋のページへのリンクを出す
+        quick = [f'<a href="/huts/{esc(h["id"])}/" {link_st}>{esc(h["name"])}</a>' for h in a["huts"]
+                 if os.path.exists(os.path.join(SITE_ROOT, "huts", h["id"], "index.html"))]
+        if quick:
+            parts.append('<p style="margin:0 0 4px;font-size:14px;line-height:1.8;color:#4a4238">山小屋の予約・空き状況：'
+                         + "・".join(quick) + (f'　<a href="/huts/{esc(mt["id"])}/" {link_st}>比較 →</a>'
+                         if os.path.exists(os.path.join(SITE_ROOT, "huts", mt["id"], "index.html")) else "") + '</p>')
+        parts.append(f'<details class="ym-amenity"><summary {sum_st}>コース上の山小屋（{a["hutCount"]}軒・予約の開始）</summary>'
                      f'<ul style="list-style:none;margin:0;padding:0">{"".join(rows)}</ul>'
                      f'<p style="margin:6px 0 10px;font-size:13px">{all_link}</p></details>')
     o = a.get("onsen")
