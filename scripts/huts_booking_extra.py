@@ -200,3 +200,22 @@ BOOKING_EXTRA.update({   # 2026-10-21：前の2回で確かめられなかった
              'm': ['電話のみ'], 'r': True, 'src': 'https://houougoya.jp/info/'},
     '雨飾温泉 雨飾山荘': {'m': ['Web（公式サイトの予約）', '電話']},
 })
+BOOKING_EXTRA.update({   # 2026-11-25：MUSE の調査を、出典のページを開いて原文を確かめたものだけ（同じ小屋の前の項目も入れ直している）
+    '馬場島荘': {'s': '冬期（12/28〜1/3の宿泊）の分は2026年12月1日 7:00から', 'm': ['Web（やまたん）のみ'], 'r': True, 'src': 'https://www.yamatan.net/hut/banbazimaso'},
+    '馬の背ヒュッテ': {'s': '4月15日 13:00から（2026年。やまたん）', 'm': ['Web（やまたん）', '電話（8:00〜20:00）'], 'r': True, 'src': 'https://www.yamatan.net/hut/umanosehutte'},
+    '栂池山荘': {'s': '2027年分は3月1日から（予定）', 'm': ['Web（公式サイト）', '電話（090-7708-6341）'], 'src': 'https://www.tsugaikesansou.jp/'},
+    '白山南竜山荘': {'s': '4月1日 9:00から（2027年は4月1日（木）9:00から。受付は10月15日まで）', 'm': ['電話（予約センター。8:00〜13:00・14:00〜17:00）', 'FAX'],
+               'src': 'https://city-hakusan.com/news/%e3%80%90%e7%99%bd%e5%b1%b1%e3%80%91%e5%8d%97%e7%ab%9c%e5%b1%b1%e8%8d%98%e3%81%ae%e5%96%b6%e6%a5%ad%e7%b5%82%e4%ba%86%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/'},
+    '石室山荘': {'s': '5月1日から（2026年）', 'm': ['電話（山荘直通 090-8873-9761）'], 'src': 'https://www.kurosawakan.com/info/石室山荘オープンのお知らせ-2/'},
+    '須走口五合目 山荘菊屋': {'s': '4月3日 11:00から（2026年。やまたん）', 'm': ['Web（やまたん）'], 'src': 'https://www.yamatan.net/hut/kikuya'},
+    '宝永山荘': {'s': '2月14日 12:00から（2026年。やまたん）', 'm': ['Web（やまたん）'], 'r': True, 'src': 'https://www.yamatan.net/hut/hoeisanso'},
+    '本八合目 富士山ホテル': {'m': ['Webのみ（電話予約不可・当日予約不可）'], 'src': 'https://mtfuji.jpn.org/list.php'},
+    '花小屋': {'m': ['電話'], 'src': 'https://mtfuji.jpn.org/list.php'},
+    '須走口五合目 東富士山荘': {'m': ['電話（5/1〜11/10は山荘直通 0550-84-5057）'], 'src': 'http://www4.tokai.or.jp/yamagoya/yamagoya.html'},
+    '七合目行場山荘': {'m': ['電話', 'FAX', 'メール'], 'r': True, 'src': 'http://www.ontake-7-gyouba.com/details.html'},
+    '天狗温泉浅間山荘': {'m': ['Web（公式サイト）', '電話'], 'src': 'https://tenguspa.com/'},
+    'ヒュッテみさやま': {'m': ['Web（公式サイトの予約）', 'メール', '電話（宿泊日まで3日以内など急ぐとき）'], 'src': 'https://huttemisayama.net/contact/'},
+    '至仏山荘': {'m': ['Web', '電話（予約受付日程表あり）'], 'r': True, 'p': '2026年：4/17～10/24', 'src': 'https://www.tokyo-pt.co.jp/oze/mountain-villa/reserve.html'},
+    # 電話の受付時間は栄村秋山郷観光協会の2026年の案内（前は長野県のポータルの「9:00～16:00」）
+    '苗場山頂ヒュッテ－自然体験交流センター': {'m': ['電話のみ（留守番電話・SNS・メールでは受け付けない）'], 'r': True, 't': '080-7183-4024（受付 8:00〜18:00）', 'src': 'http://sakae-akiyamago.com/stay/4888/'},
+})
