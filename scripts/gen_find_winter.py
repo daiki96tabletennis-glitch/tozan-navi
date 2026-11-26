@@ -228,6 +228,8 @@ TEMPLATE = r"""<!DOCTYPE html>
 </main>
 <script src="/assets/js/volcano-status.js?v=20261010a"></script>
 <script src="/assets/js/diag-back.js?v=20261126"></script>
+<script src="/assets/js/card-photo-credits.js?v=20261126" defer></script>
+<script src="/assets/js/diag-photos.js?v=20261126"></script>
 <script>
 var IC = @@ICONS@@;
 function ic(n){ return IC[n] || ''; }
@@ -768,6 +770,8 @@ function _doShowResult(){
   document.getElementById('gear-section').innerHTML = buildGearSection();
   document.getElementById('tips-section').innerHTML = buildTipsSection();
   if(window.YMDiagBack) window.YMDiagBack.save('find_winter', '冬の山選び診断', answers, document.getElementById('step-result'));
+  // 山ページと同じ写真（mountains.json の photos。結果を出したあとに読む）
+  if(window.YMDiagPhotos) window.YMDiagPhotos.render(document.getElementById('result-cards'));
   window.scrollTo(0, 0);
 }
 

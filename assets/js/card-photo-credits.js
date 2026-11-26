@@ -132,6 +132,8 @@
     if(timer) clearTimeout(timer);
     timer = setTimeout(scan, 150);
   }
+  // 写真をあとから入れるページ（診断の結果のカード。diag-photos.js）が呼ぶ（2026-11-26）
+  window.YMCardCredits = { scan: later };
 
   fetch('/data/image-credits.json', { cache: 'no-cache' }).then(function(r){ return r.ok ? r.json() : {}; }).then(function(all){
     byPath = {};

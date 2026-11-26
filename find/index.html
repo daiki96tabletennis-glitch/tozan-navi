@@ -280,6 +280,8 @@ main{max-width:680px;margin:0 auto;padding:0 0 120px;}
 </main>
 <script src="/assets/js/volcano-status.js?v=20261010a"></script>
 <script src="/assets/js/diag-back.js?v=20261126"></script>
+<script src="/assets/js/card-photo-credits.js?v=20261126" defer></script>
+<script src="/assets/js/diag-photos.js?v=20261126"></script>
 <script>
 var QUESTIONS = [
   {
@@ -385,6 +387,7 @@ function loadMountains(){
     .then(function(r){ return r.json(); })
     .then(function(data){
       mountainsData = data;
+      if(window.YMDiagPhotos) window.YMDiagPhotos.use(data);
       // 噴火警報が出ている山は「規制中」として診断から外す（気象庁のデータ）
       if(window.YMVolcano) window.YMVolcano.load(function(){ window.YMVolcano.apply(mountainsData); });
       // 山ページの「診断の結果に戻る」・ブラウザの戻るで来たとき（?back=1）は、預けた答えで結果を出し直す（2026-11-25）
@@ -1036,6 +1039,7 @@ function _doShowResult(){
   document.getElementById('gear-section').innerHTML = buildGearSection();
   document.getElementById('tips-section').innerHTML = buildTipsSection();
   if(window.YMDiagBack) window.YMDiagBack.save('find', '山選び診断', answers, document.getElementById('step-result'));
+  if(window.YMDiagPhotos) window.YMDiagPhotos.render(document.getElementById('result-cards'));
   window.scrollTo(0, 0);
 }
 
