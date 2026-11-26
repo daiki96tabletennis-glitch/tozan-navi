@@ -433,7 +433,7 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
   <script>
   (function(){
     var MID = 'mizugaki';
-    var CACHE_KEY = 'ym_weather_' + MID;
+    var CACHE_KEY = 'ym_weather2_' + MID; // 2026-11-26：風の単位を m/s にし、山頂の高さの風を足したので、前の保存を使わない
     var CACHE_TTL = 60 * 60 * 1000;
 
     var WMAP = {
@@ -461,8 +461,9 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
       return m + '/' + d + '(' + WD[wd] + ')';
     }
     function windColor(speed){
-      if(speed >= 10) return 'wind-red';
-      if(speed >= 5) return 'wind-yellow';
+      // 山の風の目安：10m/s で歩きにくくなり、15m/s で歩くのが難しくなる
+      if(speed >= 15) return 'wind-red';
+      if(speed >= 10) return 'wind-yellow';
       return 'wind-green';
     }
     var COND = [
@@ -476,8 +477,8 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
       var level = 0;
       if(WCODE_LEVEL2.indexOf(weatherCode) >= 0) level = 2;
       else if(WCODE_LEVEL1.indexOf(weatherCode) >= 0) level = Math.max(level, 1);
-      if(windSpeed >= 11) level = 2;
-      else if(windSpeed >= 6) level = Math.max(level, 1);
+      if(windSpeed >= 15) level = 2;
+      else if(windSpeed >= 10) level = Math.max(level, 1);
       if(popPercent >= 65) level = 2;
       else if(popPercent >= 35) level = Math.max(level, 1);
       return level;
@@ -490,6 +491,57 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
       el.textContent = (e && e.name === 'AbortError')
         ? '天気の提供元（Open-Meteo）に、いまつながりません。時間をおいて開き直してください'
         : '天気情報を取得できませんでした';
+    }
+    // 山頂の高さの風（2026-11-26）：地上10mの風は、予報モデルの中でならされた低い地形の上の値で、稜線の風より弱く出る。
+    // 上空の決まった高さ（925〜500hPa）の風を、その高さ（ジオポテンシャル高度）で山頂の標高に合わせて直線で割り振る
+    var PLEVELS = [925, 850, 700, 600, 500];
+    var ELEV = 0;
+    function summitWind(json, i){
+      var h = json.hourly, pts = [];
+      for(var k=0; k<PLEVELS.length; k++){
+        var w = h['wind_speed_' + PLEVELS[k] + 'hPa'], z = h['geopotential_height_' + PLEVELS[k] + 'hPa'];
+        if(w && z && w[i] != null && z[i] != null) pts.push([z[i], w[i]]);
+      }
+      var sfc = h.wind_speed_10m ? h.wind_speed_10m[i] : null;
+      if(!pts.length) return sfc;
+      pts.sort(function(a,b){ return a[0]-b[0]; });
+      var v;
+      // いちばん低い高さ（925hPa＝約800m）より低い山頂は、地上10mの風（高さ0mとみなす）と925hPaの風のあいだで割り振る
+      // （森の中の低い山の山頂で、上空の風をそのまま出すと強すぎるため。2026-11-26）
+      if(ELEV <= pts[0][0]) v = (sfc != null && pts[0][0] > 0) ? sfc + (pts[0][1] - sfc) * Math.max(ELEV, 0) / pts[0][0] : pts[0][1];
+      else if(ELEV >= pts[pts.length-1][0]) v = pts[pts.length-1][1];
+      else {
+        for(var j=1; j<pts.length; j++){
+          if(ELEV <= pts[j][0]){
+            var r = (ELEV - pts[j-1][0]) / (pts[j][0] - pts[j-1][0]);
+            v = pts[j-1][1] + (pts[j][1] - pts[j-1][1]) * r; break;
+          }
+        }
+      }
+      return (sfc != null && sfc > v) ? sfc : v;
+    }
+    // 体感温度：風冷え（気温10℃以下・風速1.3m/s以上の式。風は山頂の高さの風）
+    function feelsLike(t, ms){
+      if(t == null || ms == null) return t;
+      var kmh = ms * 3.6;
+      if(t > 10 || kmh < 4.8) return t;
+      var p = Math.pow(kmh, 0.16);
+      return 13.12 + 0.6215*t - 11.37*p + 0.3965*t*p;
+    }
+    function hourIndex(json, timeStr){
+      return json.hourly && json.hourly.time ? json.hourly.time.indexOf(timeStr.substring(0,13) + ':00') : -1;
+    }
+    function dayWindMax(json, dateStr){
+      var mx = null;
+      for(var i=0; i<json.hourly.time.length; i++){
+        var t = json.hourly.time[i];
+        if(t.substring(0,10) !== dateStr) continue;
+        var hh = parseInt(t.substring(11,13), 10);
+        if(hh < 6 || hh > 18) continue;
+        var v = summitWind(json, i);
+        if(v != null && (mx == null || v > mx)) mx = v;
+      }
+      return mx;
     }
     function hourLabel(timeStr){
       var hh = timeStr.substring(11,13);
@@ -526,14 +578,18 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
         if(idx2 >= json.hourly.time.length) continue;
         var t = json.hourly.time[idx2];
         var hinfo = wInfo(json.hourly.weather_code[idx2]);
-        var htemp = Math.round(json.hourly.temperature_2m[idx2]);
+        var htempRaw = json.hourly.temperature_2m[idx2];
+        var htemp = Math.round(htempRaw);
         var hpop = json.hourly.precipitation_probability[idx2];
-        var hwind = Math.round(json.hourly.wind_speed_10m[idx2]);
-        var hwc = windColor(json.hourly.wind_speed_10m[idx2]);
+        var hws = summitWind(json, idx2);
+        var hwind = Math.round(hws);
+        var hwc = windColor(hws);
+        var hfeel = Math.round(feelsLike(htempRaw, hws));
         html += '<div class="weather-hourly-slot">';
         html += '<div class="weather-hourly-time">' + labels[k] + '（' + hourLabel(t) + '）</div>';
         html += '<div class="weather-hourly-icon">' + hinfo[0] + '</div>';
         html += '<div class="weather-hourly-temp">' + htemp + '℃</div>';
+        if(hfeel < htemp) html += '<div class="weather-hourly-sub">体感 ' + hfeel + '℃</div>';
         html += '<div class="weather-hourly-sub">☔ ' + (hpop != null ? hpop : '—') + '%</div>';
         html += '<div class="weather-hourly-sub"><span class="wind-dot ' + hwc + '"></span> ' + hwind + 'm/s</div>';
         html += '</div>';
@@ -548,7 +604,11 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
       var cur = json.current;
       var todayPeak = dayTimePeak(json, json.daily.time[0]);
       var todayPop = todayPeak ? todayPeak.avg : json.daily.precipitation_probability_max[0];
-      var condLevel = judgeCondition(cur.weather_code, cur.wind_speed_10m, todayPop);
+      var ci = hourIndex(json, cur.time);
+      var curWind = ci >= 0 ? summitWind(json, ci) : cur.wind_speed_10m;
+      var todayMax = dayWindMax(json, json.daily.time[0]);
+      if(todayMax != null && todayMax > curWind) curWind = todayMax;
+      var condLevel = judgeCondition(cur.weather_code, curWind, todayPop);
       var cond = COND[condLevel];
       var html = '';
       html += '<div class="weather-condition-badge ' + cond.cls + '">' + cond.label + '</div>';
@@ -578,6 +638,8 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
             + '</span>';
         }
         html += '</div>';
+        var dw = dayWindMax(json, days[i]);
+        if(dw != null) html += '<div class="weather-day-pop" style="color:#7a7268"><span class="wind-dot ' + windColor(dw) + '"></span> ' + Math.round(dw) + 'm/s</div>';
         if(isToday){
           html += '<div class="weather-day-tap-hint">▼ タップで時間帯別</div>';
         }
@@ -585,7 +647,7 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
       }
       html += '</div>';
       html += buildHourlyPanel(json);
-      html += '<div class="weather-disclaimer">⚠️ 山周辺の参考値。山頂の天候とは異なる場合があります</div>';
+      html += '<div class="weather-disclaimer">⚠️ 山頂の標高での目安。風は日中（6〜18時）の最大</div>';
       html += '<div class="weather-credit">Weather data by Open-Meteo.com</div>';
       el.innerHTML = html;
       var todayCard = document.getElementById('weather-today-card');
@@ -622,19 +684,22 @@ details.warn-banner > .warn-body{padding:0 14px 12px 37px}
         if(!raw) return null;
         var obj = JSON.parse(raw);
         if(!obj || !obj.ts || (Date.now() - obj.ts) > CACHE_TTL) return null;
+        ELEV = obj.elev || 0;
         return obj.data;
       }catch(e){ return null; }
     }
     function saveToCache(data){
-      try{ sessionStorage.setItem(CACHE_KEY, JSON.stringify({ts:Date.now(), data:data})); }catch(e){}
+      try{ sessionStorage.setItem(CACHE_KEY, JSON.stringify({ts:Date.now(), data:data, elev:ELEV})); }catch(e){}
     }
     function fetchWeather(lat, lng, elevation){
+      ELEV = elevation;
       var url = 'https://api.open-meteo.com/v1/forecast'
         + '?latitude=' + lat
         + '&longitude=' + lng
         + '&elevation=' + elevation
         + '&current=temperature_2m,weather_code,wind_speed_10m,precipitation'
-        + '&hourly=temperature_2m,weather_code,precipitation_probability,wind_speed_10m'
+        + '&hourly=temperature_2m,weather_code,precipitation_probability,wind_speed_10m,' + PLEVELS.map(function(p){ return 'wind_speed_' + p + 'hPa,geopotential_height_' + p + 'hPa'; }).join(',')
+        + '&wind_speed_unit=ms'
         + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max'
         + '&timezone=Asia%2FTokyo&forecast_days=10';
       var ctrl = window.AbortController ? new AbortController() : null;
